@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: ebc73c75d9a23a53ac94f28208251dcff83e684a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fdff6e1c29b8484aaea3bb647e2f1738d1889c6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030701"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142241"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Az Azure IoT Hub-eszközök felhasználói adatkérési funkciói
 
@@ -49,4 +49,4 @@ A REST API-kat használó eszközök exportálási műveleteit is el lehet vége
 
 ## <a name="links-to-additional-documentation"></a>További dokumentációra mutató hivatkozások
 
-Az Azure IoT Hub Service API-k teljes dokumentációja [IoT hub Service API](https://docs.microsoft.com/rest/api/iothub/service/configuration)-kon található.
+Az Azure IoT Hub Service API-k teljes dokumentációja [IoT hub Service API](/rest/api/iothub/service/configuration)-kon található.

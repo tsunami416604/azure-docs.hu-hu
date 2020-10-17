@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
-ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514841"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143262"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Szolgáltatási mód az Azure Signaler szolgáltatásban
 
@@ -51,11 +51,11 @@ Ebben a módban nincs kiszolgálói kapcsolat (ha a Service SDK-t a kiszolgáló
 > [!NOTE]
 > A REST API és a WebSocket mód is támogatott a Signal Service [Management SDK](https://github.com/Azure/azure-signalr/blob/dev/docs/management-sdk-guide.md)-ban. Ha a .NET-től eltérő nyelvet használ, az ezt a [specifikációt](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)követő REST API-kat manuálisan is meghívhatja.
 >
-> Ha Azure Functions használ, az üzenetek kimeneti Kötésként való elküldéséhez a [signaler szolgáltatás kötéseit használhatja a Azure Functionshoz](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service) (a továbbiakban a függvény kötése).
+> Ha Azure Functions használ, az üzenetek kimeneti Kötésként való elküldéséhez a [signaler szolgáltatás kötéseit használhatja a Azure Functionshoz](../azure-functions/functions-bindings-signalr-service.md) (a továbbiakban a függvény kötése).
 
 Az is lehetséges, hogy a kiszolgálói alkalmazás üzeneteket és kapcsolódási eseményeket fogad az ügyfelektől. A szolgáltatás a webhookok használatával továbbítja az üzeneteket és a kapcsolódási eseményeket az előre konfigurált végpontoknak (felsőbb rétegnek nevezik). Az alapértelmezett üzemmódhoz képest nincs garancia a stickie-re, és a HTTP-kérelmek kevésbé hatékonyak, mint a WebSocket-kapcsolatok.
 
-A felsőbb réteg konfigurálásával kapcsolatos további információkért tekintse meg ezt a [dokumentációt](https://docs.microsoft.com/azure/azure-signalr/concept-upstream).
+A felsőbb réteg konfigurálásával kapcsolatos további információkért tekintse meg ezt a [dokumentációt](./concept-upstream.md).
 
 Alább látható egy diagram, amely bemutatja, hogyan működik a kiszolgáló nélküli üzemmód:
 

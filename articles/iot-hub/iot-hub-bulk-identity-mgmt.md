@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d53e0cb92ead0d60ae335e95903cd69ae2700140
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003864"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142815"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub-eszközidentitások tömeges importálása vagy exportálása
 
@@ -27,7 +27,7 @@ Az importálási és exportálási műveletek olyan *feladatok* kontextusában l
 
 A **RegistryManager** osztály a **ExportDevicesAsync** és a **ImportDevicesAsync** metódusokat tartalmazza, amelyek a **feladatok** keretrendszerét használják. Ezek a módszerek lehetővé teszik az IoT hub összes azonosítójának beállításjegyzékének teljes körű exportálását, importálását és szinkronizálását.
 
-Ebből a témakörből megtudhatja, hogyan végezheti el a **RegistryManager** osztály és a **feladat** rendszerét az IoT hub azonosító-beállításjegyzékbe irányuló és onnan érkező eszközök tömeges importálására és exportálására. Az Azure IoT Hub Device Provisioning Service használatával az emberi beavatkozás nélkül is engedélyezheti a nulla érintéses, igény szerinti üzembe helyezést egy vagy több IoT-hubhoz. További információt a [kiépítési szolgáltatás dokumentációjában](/azure/iot-dps)talál.
+Ebből a témakörből megtudhatja, hogyan végezheti el a **RegistryManager** osztály és a **feladat** rendszerét az IoT hub azonosító-beállításjegyzékbe irányuló és onnan érkező eszközök tömeges importálására és exportálására. Az Azure IoT Hub Device Provisioning Service használatával az emberi beavatkozás nélkül is engedélyezheti a nulla érintéses, igény szerinti üzembe helyezést egy vagy több IoT-hubhoz. További információt a [kiépítési szolgáltatás dokumentációjában](../iot-dps/index.yml)talál.
 
 ## <a name="what-are-jobs"></a>Mik azok a feladatok?
 
@@ -262,7 +262,7 @@ Ha az importálási fájl kettős metaadatokat tartalmaz, akkor ez a metaadatok 
 
 Az eszközök importálási folyamatának vezérléséhez használja az összes eszköz szerializálási adatkészletének opcionális **importMode** tulajdonságát. A **importMode** tulajdonság a következő beállításokkal rendelkezik:
 
-| importMode | Leírás |
+| importMode | Description |
 | --- | --- |
 | **createOrUpdate** |Ha egy eszköz nem létezik a megadott **azonosítóval**, az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer felülírja a meglévő adatokat a megadott bemeneti adatokkal anélkül, hogy a **ETAG** értéket kellene megadnia. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
 | **létrehozása** |Ha egy eszköz nem létezik a megadott **azonosítóval**, az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer hibát ír a naplófájlba. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
@@ -399,7 +399,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>A tároló SAS URI-azonosítójának beolvasása
 
-A következő mintakód bemutatja, hogyan hozhatja ki a blob-tárolók olvasási, írási és törlési engedélyekkel rendelkező [sas URI-ját](../storage/common/storage-dotnet-shared-access-signature-part-1.md) :
+A következő mintakód bemutatja, hogyan hozhatja ki a blob-tárolók olvasási, írási és törlési engedélyekkel rendelkező [sas URI-ját](../storage/common/storage-sas-overview.md) :
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -438,8 +438,8 @@ Az Azure IoT Hub kezelésével kapcsolatos további tudnivalókért tekintse meg
 A IoT Hub képességeinek további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)
 
 Ha szeretné megtekinteni a IoT Hub Device Provisioning Service használatát a nulla érintéses, igény szerinti kiépítés engedélyezéséhez, olvassa el a következő témakört: 
 
-* [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)
+* [Azure IoT Hub Device Provisioning Service](../iot-dps/index.yml)

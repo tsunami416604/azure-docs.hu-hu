@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d51f5e8d2fac1e2b180a608c840d0a322e76271
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514237"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143241"
 ---
 # <a name="upstream-settings"></a>Felsőbb rétegbeli beállítások
 
@@ -34,7 +34,7 @@ Ha a megadott esemény bekövetkezik, egy elem szabályait egyenként kell ellen
 
 A különböző mintázatok támogatásához parametrizálja az URL-címet. Három előre definiált paraméter létezik:
 
-|Előre definiált paraméter|Leírás|
+|Előre definiált paraméter|Description|
 |---------|---------|
 |hub| A hub az Azure Signaler szolgáltatás fogalma. A hub elkülönítési egység. A felhasználók és az üzenetek kézbesítési köre korlátozott egy hubhoz.|
 |Kategória| A kategória a következő értékek egyike lehet: <ul><li>**kapcsolatok**: kapcsolat élettartamának eseményei. Az ügyfél kapcsolata csatlakoztatva van vagy le van választva. Ide tartozik a csatlakoztatott és a leválasztott események is.</li><li>**üzenetek**: akkor aktiválódik, amikor az ügyfelek egy központi metódust hív meg. Minden egyéb eseményt tartalmaz, kivéve a **kapcsolatok** kategóriájában lévőket.</li></ul>|
@@ -88,7 +88,7 @@ Ha kiválasztja `ManagedIdentity` , a felügyelt identitást előre kell engedé
 
 ## <a name="create-upstream-settings-via-resource-manager-template"></a>Felsőbb rétegbeli beállítások létrehozása Resource Manager-sablon használatával
 
-A felsőbb rétegbeli beállítások [Azure Resource Manager sablon](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)használatával történő létrehozásához állítsa be a tulajdonságot `upstream` a `properties` tulajdonságban. Az alábbi kódrészletből megtudhatja, hogyan állíthatja be a `upstream` tulajdonságot a felsőbb rétegbeli beállítások létrehozásához és frissítéséhez.
+A felsőbb rétegbeli beállítások [Azure Resource Manager sablon](../azure-resource-manager/templates/overview.md)használatával történő létrehozásához állítsa be a tulajdonságot `upstream` a `properties` tulajdonságban. Az alábbi kódrészletből megtudhatja, hogyan állíthatja be a `upstream` tulajdonságot a felsőbb rétegbeli beállítások létrehozásához és frissítéséhez.
 
 ```JSON
 {
@@ -145,7 +145,7 @@ Content-Type: Application/JSON
 
 Content-Type: `application/json`
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |Hiba |sztring |Egy lezárt kapcsolatok hibaüzenete. Üres, ha a kapcsolatok hiba nélkül zárulnak.|
 
@@ -153,7 +153,7 @@ Content-Type: `application/json`
 
 Content-Type: `application/json` vagy `application/x-msgpack`
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |InvocationId |sztring | Egy Meghívási üzenetet jelölő, nem kötelező karakterlánc. Részletek keresése a [hívásokban](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Cél |sztring | Ugyanaz, mint a [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)szereplő esemény és a cél. |

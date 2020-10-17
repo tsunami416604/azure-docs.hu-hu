@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eadc976270888499be1ed01040cc4ff00632e8e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60318460"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142276"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>IoT Hub-fájlfeltöltés konfigurálása a PowerShell használatával
 
@@ -23,15 +23,15 @@ Ha IoT Hubban szeretné használni a [fájlfeltöltés funkciót](iot-hub-devgui
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
-* [Azure PowerShell parancsmagok](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* [Azure PowerShell parancsmagok](/powershell/azure/install-Az-ps).
 
-* Egy Azure IoT hub. Ha nem rendelkezik IoT-hubhoz, a [New-AzIoTHub parancsmag](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) használatával létrehozhat egyet, vagy a portál használatával [létrehozhat egy IoT hubot](iot-hub-create-through-portal.md).
+* Egy Azure IoT hub. Ha nem rendelkezik IoT-hubhoz, a [New-AzIoTHub parancsmag](/powershell/module/az.iothub/new-aziothub) használatával létrehozhat egyet, vagy a portál használatával [létrehozhat egy IoT hubot](iot-hub-create-through-portal.md).
 
-* Egy Azure-tárfiók. Ha nem rendelkezik Azure Storage-fiókkal, akkor az [Azure Storage PowerShell-parancsmagjai](https://docs.microsoft.com/powershell/module/az.storage/) segítségével létrehozhat egyet, vagy a portál használatával [létrehozhat egy Storage-fiókot](../storage/common/storage-create-storage-account.md)
+* Egy Azure-tárfiók. Ha nem rendelkezik Azure Storage-fiókkal, akkor az [Azure Storage PowerShell-parancsmagjai](/powershell/module/az.storage/) segítségével létrehozhat egyet, vagy a portál használatával [létrehozhat egy Storage-fiókot](../storage/common/storage-account-create.md)
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be Azure-fiókját
 
@@ -123,7 +123,7 @@ Set-AzIotHub `
     -FileUploadNotificationMaxDeliveryCount 10
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a IoT Hub fájl feltöltési képességeiről: [fájlok feltöltése eszközről](iot-hub-devguide-file-upload.md).
 
@@ -136,5 +136,5 @@ Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure
 A IoT Hub képességeinek további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)
 * [A IoT-megoldás biztonságossá tétele az alapoktól](../iot-fundamentals/iot-security-ground-up.md)

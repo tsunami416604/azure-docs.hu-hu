@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
-ms.openlocfilehash: bd7cc37b8fc81fc9d4109826743f2243913d0604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d374ff372e0bc3fb183d9210f663987e4804114
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60735024"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142531"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>IoT Hub-fájlfeltöltések konfigurálása az Azure Portallal
 
@@ -39,7 +39,7 @@ Ha IoT Hub szeretné használni a [fájlfeltöltés funkciót](iot-hub-devguide-
 
    ![IoT Hub fájl feltöltésének konfigurálása a portálon](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A IoT Hub fájlfeltöltés funkcióival kapcsolatos további információkért lásd: [fájlok feltöltése egy eszközről](iot-hub-devguide-file-upload.md) a IoT hub Fejlesztői útmutatóban.
 
@@ -52,5 +52,5 @@ Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure
 A IoT Hub képességeinek további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)
 * [A IoT-megoldás biztonságossá tétele az alapoktól](../iot-fundamentals/iot-security-ground-up.md)

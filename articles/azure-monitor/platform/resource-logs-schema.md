@@ -4,12 +4,12 @@ description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatás
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 17b4b161e76f018d8f669ee7e9b5dd578bb3e035
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9d3dafdf62bda2d07eb7f9d7c357f61ec913d44
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278396"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144004"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Az Azure-erőforrás naplóihoz tartozó általános és szolgáltatás-specifikus séma
 
@@ -23,7 +23,7 @@ Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category
 
 ## <a name="top-level-common-schema"></a>Legfelső szintű közös séma
 
-| Name (Név) | Kötelező vagy nem kötelező | Leírás |
+| Név | Kötelező vagy nem kötelező | Description |
 |---|---|---|
 | time | Kötelező | Az esemény időbélyegzője (UTC). |
 | resourceId | Kötelező | Az eseményt kibocsátó erőforrás erőforrás-azonosítója. A bérlői szolgáltatások esetében ez a/tenants/Tenant-ID/Providers/Provider-Name. formátumú. |
@@ -64,7 +64,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Azure Data Explorer | [Azure Adatkezelő-naplók](/azure/data-explorer/using-diagnostic-logs) |
 | Azure Database for MySQL | [Diagnosztikai naplók Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Naplók Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#resource-logs) |
-| Azure Databricks | [Diagnosztikai naplózás az Azure Databricksben](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| Azure Databricks | [Diagnosztikai naplózás az Azure Databricksben](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
 | Azure Digital Twins | [Azure digitális Twins-diagnosztika beállítása](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs-naplók](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | A séma nem érhető el. |
@@ -96,4 +96,3 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 * [Stream erőforrás-erőforrás naplófájljai **Event Hubs**](./resource-logs.md#send-to-azure-event-hubs)
 * [Az erőforrás-napló diagnosztikai beállításainak módosítása a Azure Monitor használatával REST API](/rest/api/monitor/diagnosticsettings)
 * [Naplók elemzése az Azure Storage-ból Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)
-

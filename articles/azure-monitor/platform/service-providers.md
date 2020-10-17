@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d92dd191c8bfe590f6dab392ff679e5d7712ae6c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921091"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143849"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Szolgáltatók Azure Monitor naplófájljai
 
@@ -35,7 +35,7 @@ Ebben az architektúrában egy munkaterületet helyezünk üzembe az ügyfél b�
 
 A szolgáltatói rendszergazdák kétféleképpen férhetnek hozzá egy Log Analytics munkaterülethez az ügyfél bérlője számára:
 
-- Az ügyfél [Azure Active Directory vendég felhasználóként (B2B)](../../active-directory/b2b/what-is-b2b.md)veheti fel az egyes felhasználókat a szolgáltatótól. A szolgáltató rendszergazdáinak be kell jelentkezniük az egyes ügyfelek könyvtárába a Azure Portal, hogy el tudják érni ezeket a munkaterületeket. Ehhez az is szükséges, hogy az ügyfelek az egyes szolgáltatók rendszergazdáinak egyéni hozzáférését kezeljék.
+- Az ügyfél [Azure Active Directory vendég felhasználóként (B2B)](../../active-directory/external-identities/what-is-b2b.md)veheti fel az egyes felhasználókat a szolgáltatótól. A szolgáltató rendszergazdáinak be kell jelentkezniük az egyes ügyfelek könyvtárába a Azure Portal, hogy el tudják érni ezeket a munkaterületeket. Ehhez az is szükséges, hogy az ügyfelek az egyes szolgáltatók rendszergazdáinak egyéni hozzáférését kezeljék.
 - A jobb méretezhetőség és rugalmasság érdekében a szolgáltatók az [Azure világítótorony](../../lighthouse/overview.md) Azure-beli [delegált erőforrás-kezelési](../../lighthouse/concepts/azure-delegated-resource-management.md) funkciójának használatával érhetik el az ügyfél bérlőjét. Ezzel a módszerrel a szolgáltatói rendszergazdák egy Azure AD felhasználói csoportba tartoznak a szolgáltató bérlője számára, és ez a csoport a bevezetési folyamat során kap hozzáférést minden ügyfél számára. Ezek a rendszergazdák ezután hozzáférhetnek az egyes ügyfelek munkaterületeihez a saját szolgáltatói bérlőn belül, és nem kell egyenként bejelentkezniük az egyes ügyfelek bérlői számára. Az ügyfelek Log Analytics munkaterületek erőforrásainak ily módon való elérése csökkenti az ügyfél oldalán szükséges munkát, és megkönnyíti az adatok összegyűjtését és elemzését ugyanazon szolgáltató által felügyelt eszközökön keresztül, például [Azure monitor munkafüzetek](./workbooks-overview.md)használatával. További információ: az [ügyfelek erőforrásainak figyelése nagy méretekben](../../lighthouse/how-to/monitor-at-scale.md).
 
 Az elosztott architektúra előnyei a következők:
@@ -81,7 +81,7 @@ A naplók központi helyen történő megvalósításának két lehetősége van
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Munkaterületek létrehozásának és konfigurálásának automatizálása [Resource Manager-sablonok](template-workspace-configuration.md) használatával
+* Munkaterületek létrehozásának és konfigurálásának automatizálása [Resource Manager-sablonok](../samples/resource-manager-workspace.md) használatával
 
 * Munkaterületek létrehozásának automatizálása a [PowerShell](./powershell-workspace-configuration.md) használatával
 

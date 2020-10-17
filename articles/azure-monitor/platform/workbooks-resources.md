@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: b0d16844315ce0adefcac9dc815640d4444df28b
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 27e98ae51cbea654ca0f06979b289a497a5aedf3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932328"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143529"
 ---
 # <a name="workbook-resource-parameters"></a>Munkafüzet erőforrás-paraméterei
 
@@ -98,7 +98,7 @@ Az erőforrás-választóból származó értékek a munkafüzet kontextusában,
 > Ezzel a módszerrel más vezérlőkhöz, például mérőszámokhoz is köthető erőforrásokhoz.
 
 ## <a name="resource-parameter-options"></a>Erőforrás-paraméter beállításai
-| Paraméter | Magyarázat | Példa |
+| Paraméterek | Magyarázat | Példa |
 | ------------- |:-------------|:-------------|
 | `{Applications}` | A kiválasztott erőforrás-azonosító | _/Subscriptions/<alazonosító>/resourceGroups/<Resource-Group>/Providers/<erőforrás-típus>/acmeauthentication_ |
 | `{Applications:label}` | A kiválasztott erőforrás címkéje | `acmefrontend` |
@@ -111,5 +111,5 @@ Az erőforrás-választóból származó értékek a munkafüzet kontextusában,
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
+* [Ismerkedjen](./workbooks-overview.md#visualizations) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

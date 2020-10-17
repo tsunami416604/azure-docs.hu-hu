@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: d7d41a875d8e0c30085bafd346e316672359de26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039bea98090edcc5966be3cea54b31c61c18dc10
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87375356"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92157970"
 ---
 :::row:::
     :::column span="3":::
@@ -25,7 +25,7 @@ ms.locfileid: "87375356"
 
 Ha a csomagot a Android Studio-projektből kívánja felhasználni, hajtsa végre a következő módosításokat:
 
-1. A projekt szintű *Build. gradle* fájlban adja hozzá a következőt a `repository` szakaszhoz:
+1. A projekt szintű *Build. gradle* fájlban adja hozzá a következőt a `repositories` szakaszhoz:
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```

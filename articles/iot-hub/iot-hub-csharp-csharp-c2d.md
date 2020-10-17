@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: ff6153abb3e930e3268ed7768e4ab44c9b5824cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8df9884c0104792240d85d9ebd4235ef2a18741
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449569"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142350"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetek küldése a felhőből az eszközre IoT Hub (.NET) használatával
 
@@ -228,6 +228,6 @@ Ebben a szakaszban a **SendCloudToDevice** alkalmazást úgy módosítja, hogy v
 
 Ebben a útmutatóban megtanulta, hogyan küldhet és fogadhat üzeneteket a felhőből az eszközre.
 
-Ha szeretné megtekinteni a IoT Hubt használó teljes körű megoldásokat, tekintse meg az [Azure IoT távoli monitorozási megoldásának gyorsítása](https://docs.microsoft.com/azure/iot-suite/)című témakört.
+Ha szeretné megtekinteni a IoT Hubt használó teljes körű megoldásokat, tekintse meg az [Azure IoT távoli monitorozási megoldásának gyorsítása](/azure/iot-suite/)című témakört.
 
 Ha többet szeretne megtudni a IoT Hub-megoldások fejlesztéséről, tekintse meg a [IoT hub fejlesztői útmutatót](iot-hub-devguide.md).

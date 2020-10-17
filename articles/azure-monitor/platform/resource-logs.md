@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87800500"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143916"
 ---
 # <a name="azure-resource-logs"></a>Azure-erőforrásnaplók
 Az Azure-erőforrás-naplók olyan [platform-naplók](platform-logs-overview.md) , amelyek betekintést nyújtanak az Azure-erőforrásokon belül végrehajtott műveletekre. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik. A rendszer alapértelmezés szerint nem gyűjti az erőforrás-naplókat. Minden egyes Azure-erőforráshoz létre kell hoznia egy diagnosztikai beállítást, hogy az erőforrás-naplókat egy Log Analytics munkaterületre küldje el, amelyet [Azure monitor naplók](data-platform-logs.md), az Azure Event Hubs az Azure-on kívüli továbbítására, illetve az Azure Storage-ba történő archiválásra kíván használni.
@@ -27,7 +27,7 @@ További információ a diagnosztikai beállítások létrehozásáról és a Az
 - A naplózási lekérdezésekkel összetett elemzéseket végezhet, és részletes elemzéseket készíthet a naplózási adatokról.
 - A naplózási riasztásokat összetett riasztási logikával használhatja.
 
-[Hozzon létre egy diagnosztikai beállítást](diagnostic-settings.md) , amely erőforrás-naplókat küld egy log Analytics munkaterületre. Ezeket az adattáblákat a [Azure monitor naplók struktúrája](../log-query/logs-structure.md)című témakörben leírtak szerint tárolja a rendszer. Az erőforrás-naplók által használt táblák attól függnek, hogy az erőforrás milyen típusú gyűjteményt használ:
+[Hozzon létre egy diagnosztikai beállítást](diagnostic-settings.md) , amely erőforrás-naplókat küld egy log Analytics munkaterületre. Ezeket az adattáblákat a [Azure monitor naplók struktúrája](./data-platform-logs.md)című témakörben leírtak szerint tárolja a rendszer. Az erőforrás-naplók által használt táblák attól függnek, hogy az erőforrás milyen típusú gyűjteményt használ:
 
 - Azure Diagnostics – az összes írásos érték a _AzureDiagnostics_ tábla.
 - Az erőforrás-specifikus – az erőforrás minden kategóriája esetében az egyes táblákba kerül.

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 1b51e2338dabd34ec69d311a9eb1a5c4a644f628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322754"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142765"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT-eszközök csatlakoztatása az Azure-hoz: IoT Hub és Event Hubs
 
@@ -26,7 +26,7 @@ Az Azure a különböző típusú kapcsolatokhoz és kommunikációhoz kifejezet
 
 Az Azure IoT Hub a felhőalapú átjáró, amely összekapcsolja a IoT-eszközöket az adatok összegyűjtéséhez és az üzleti elemzések és automatizálás megszerzéséhez. Emellett IoT Hub olyan funkciókat is tartalmaz, amelyek gazdagítják az eszközök és a háttérrendszer közötti kapcsolatot. A kétirányú kommunikációs képességek azt jelentik, hogy az eszközökről érkező adatok fogadása közben parancsok és szabályzatok visszaküldését is lehetővé teszi az eszközök számára. Például a felhőből az eszközre való üzenetküldéssel frissítheti a tulajdonságokat, vagy meghívja az eszközkezelés műveleteit. A felhőből az eszközre irányuló kommunikáció lehetővé teszi a Felhőbeli intelligencia küldését a peremhálózati eszközökre Azure IoT Edge használatával. A IoT Hub által biztosított egyedi Eszközállapot-identitás segíti a IoT-megoldás jobb védelmét az esetleges támadásokkal szemben. 
 
-Az [azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) az Azure Big Data streaming szolgáltatás. Nagy átviteli sebességű adatstreamelési helyzetekhez tervezték, ahol az ügyfelek több milliárd lekérdezést küldhetnek naponta. Az Event Hubs particionált felhasználói modellt használ a stream horizontális skálázásához, és integrálódik az Azure olyan big data- és elemzési szolgáltatásaival, mint a Databricks, a Stream Analytics, az ADLS és a HDInsight. Az olyan funkciókkal, mint a Event Hubs rögzítés és az automatikus feltöltés, ez a szolgáltatás a big data alkalmazások és megoldások támogatására szolgál. Emellett a IoT Hub Event Hubs használ a telemetria flow elérési útjához, így a IoT-megoldás a Event Hubs óriási erejét is kihasználja.
+Az [azure Event Hubs](../event-hubs/event-hubs-about.md) az Azure Big Data streaming szolgáltatás. Nagy átviteli sebességű adatstreamelési helyzetekhez tervezték, ahol az ügyfelek több milliárd lekérdezést küldhetnek naponta. Az Event Hubs particionált felhasználói modellt használ a stream horizontális skálázásához, és integrálódik az Azure olyan big data- és elemzési szolgáltatásaival, mint a Databricks, a Stream Analytics, az ADLS és a HDInsight. Az olyan funkciókkal, mint a Event Hubs rögzítés és az automatikus feltöltés, ez a szolgáltatás a big data alkalmazások és megoldások támogatására szolgál. Emellett a IoT Hub Event Hubs használ a telemetria flow elérési útjához, így a IoT-megoldás a Event Hubs óriási erejét is kihasználja.
 
 Az összegzéshez mindkét megoldás nagy léptékű adatfeldolgozásra van tervezve. A IoT-eszközök Azure-felhőhöz való csatlakoztatásának üzleti értékének maximalizálása érdekében csak a IoT Hub biztosítja a IoT-specifikus funkciókat.  Ha most kezdi a IoT, az adatfeldolgozási forgatókönyvek támogatásához IoT Hub kezdve azonnal biztosíthatja, hogy az üzleti és technikai igények kielégítése érdekében azonnali hozzáféréssel rendelkezzen a teljes funkcionalitású IoT-funkciókhoz.
 
@@ -47,7 +47,7 @@ Az alábbi táblázat részletesen ismerteti, hogy a IoT Hub két rétege hogyan
 
 Ha az eszközről a felhőbe irányuló adatfeldolgozás csak az esetet használja, javasoljuk, hogy használja a IoT Hubt, mivel az IoT-hez tervezett szolgáltatást nyújt. 
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 A IoT Hub képességeinek további megismeréséhez tekintse meg a [IoT hub fejlesztői útmutató](iot-hub-devguide.md)című témakört.
 

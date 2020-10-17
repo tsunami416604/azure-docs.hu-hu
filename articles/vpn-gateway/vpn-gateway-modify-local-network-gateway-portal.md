@@ -5,85 +5,82 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 10/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: af3513c4a4f3b3187e85c65de51ad2e6e2d7279c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ff4f1238764d7bdab6e74d29254a6388ea76d78
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983181"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143118"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Helyi hálózati átjáró beállításainak módosítása az Azure Portal használatával
 
 A helyi hálózati átjáró AddressPrefix vagy GatewayIPAddress vonatkozó beállítások néha változnak. Ez a cikk bemutatja, hogyan módosíthatja a helyi hálózati átjáró beállításait. Ezeket a beállításokat más módszer használatával is módosíthatja, ha a következő listából választ egy másik lehetőséget:
-
-A kapcsolat törlése előtt érdemes lehet letölteni a csatlakoztatott eszközök konfigurációját a megadott PSK beszerzéséhez. Így nem kell újradefiniálni a másik oldalon.
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
->
 
 ## <a name="local-network-gateway-configuration"></a><a name="configure-lng"></a>Helyi hálózati átjáró konfigurációja
 
 Az alábbi képernyőképen egy helyi hálózati átjáró erőforrásának **konfigurációs** lapja látható nyilvános IP-cím végpont használatával:
 
-:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/ip-address.png" alt-text="Helyi hálózati átjáró konfigurálása – IP-cím":::
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/settings.png" alt-text="IP-cím beállításai" lightbox="./media/vpn-gateway-modify-local-network-gateway-portal/settings-expand.png":::
 
-Ez ugyanaz a konfigurációs oldal, amely FQDN-végponttal rendelkezik:
+Ez a konfigurációs oldal FQDN-végponttal:
 
-:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/fqdn.png" alt-text="Helyi hálózati átjáró konfigurálása – IP-cím":::
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/name.png" alt-text="IP-cím beállításai":::
 
-## <a name="modify-the-gateway-ip-address"></a><a name="ip"></a>Átjáró IP-címének módosítása
+## <a name="to-modify-the-gateway-ip-address-or-fqdn"></a><a name="ip"></a>Az átjáró IP-címének vagy teljes tartománynevének módosítása
 
-Ha a VPN-eszköz, amelyhez csatlakozni akar, megváltoztatta nyilvános IP-címét, a változtatásnak megfelelően módosítania kell a helyi hálózati átjárót.
+> [!NOTE]
+> Helyi hálózati átjáró nem módosítható FQDN-végpont és IP-cím végpontja között. Törölnie kell az ehhez a helyi hálózati átjáróhoz társított összes kapcsolatot, létre kell hoznia egy újat az új végponttal (IP-cím vagy teljes tartománynév), majd újra létre kell hoznia a kapcsolatokat.
+>
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában kattintson a **konfiguráció**elemre.
+Ha a VPN-eszköz, amelyhez csatlakozni szeretne, megváltoztatta a nyilvános IP-címét, módosítsa a helyi hálózati átjárót a következő lépésekkel:
+
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
 2. Az **IP-cím** mezőben módosítsa az IP-címet.
-3. Kattintson a **Mentés** gombra a beállítások mentéséhez.
+3. A beállítások mentéséhez válassza a **Mentés** lehetőséget.
 
-## <a name="modify-the-gateway-fqdn"></a><a name="fqdn"></a>Az átjáró teljes tartománynevének módosítása
+Ha a VPN-eszköz, amelyhez csatlakozni szeretne, megváltoztatta a teljes tartománynevet (teljes tartománynév), módosítsa a helyi hálózati átjárót a következő lépésekkel:
 
-Ha a VPN-eszköz, amelyhez csatlakozni szeretne, megváltoztatta annak FQDN-jét (teljes tartománynév), módosítania kell a helyi hálózati átjárót, hogy tükrözze a változást.
-
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában kattintson a **konfiguráció**elemre.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
 2. A **teljes** tartománynév mezőben módosítsa a tartománynevet.
-3. Kattintson a **Mentés** gombra a beállítások mentéséhez.
+3. A beállítások mentéséhez válassza a **Mentés** lehetőséget.
 
-> ! Megjegyzés Helyi hálózati átjáró nem módosítható FQDN-végpont és IP-cím végpontja között. Törölnie kell az ehhez a helyi hálózati átjáróhoz társított összes kapcsolatot, létre kell hoznia egy újat az új végponttal (IP-cím vagy teljes tartománynév), majd újra létre kell hoznia a kapcsolatokat.
+## <a name="to-modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>IP-címek előtagjainak módosítása
 
-## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>IP-cím előtagjainak módosítása
+További címelőtagok felvétele:
 
-### <a name="to-add-additional-address-prefixes"></a>További címelőtagok felvétele:
-
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában kattintson a **konfiguráció**elemre.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
 2. Adja hozzá az IP-címtartományt a *további címtartomány hozzáadása* mezőben.
-3. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+3. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
-### <a name="to-remove-address-prefixes"></a>Címelőtagok eltávolítása:
+Címelőtagok eltávolítása:
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában kattintson a **konfiguráció**elemre.
-2. Kattintson a **"..."** elemre az eltávolítani kívánt előtagot tartalmazó sorban.
-3. Kattintson az **Eltávolítás** elemre.
-4. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
+2. Válassza a **"..."** lehetőséget az eltávolítani kívánt előtagot tartalmazó sorban.
+3. Válassza az **Eltávolítás**lehetőséget.
+4. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
-## <a name="modify-bgp-settings"></a><a name="bgp"></a>BGP-beállítások módosítása
+## <a name="to-modify-bgp-settings"></a><a name="bgp"></a>A BGP-beállítások módosítása
 
-### <a name="to-add-or-update-bgp-settings"></a>BGP-beállítások hozzáadása vagy frissítése:
+BGP-beállítások hozzáadása vagy frissítése:
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában kattintson a **konfiguráció**elemre.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
 2. A **"BGP-beállítások konfigurálása"** lehetőség kiválasztásával megjelenítheti vagy frissítheti a helyi hálózati átjáró BGP-konfigurációit
 3. Az autonóm rendszerszám vagy BGP-társ IP-cím hozzáadása vagy frissítése a megfelelő mezőkben
-4. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+4. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
-### <a name="to-remove-bgp-settings"></a>A BGP-beállítások eltávolítása:
+A BGP-beállítások eltávolítása:
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában kattintson a **konfiguráció**elemre.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
 2. A **"BGP-beállítások konfigurálása"** lehetőség kiválasztásával távolítsa el a meglévő BGP ASN-és BGP-társ IP-címét
-3. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+3. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

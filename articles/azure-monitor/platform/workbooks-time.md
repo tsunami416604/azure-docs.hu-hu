@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 471b775abfebec646ab3950803622271c0bd559b
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 37f2219313a0d4c533d587a765dd22d527a5910f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932294"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143444"
 ---
 # <a name="workbook-time-parameters"></a>Munkafüzet-idő paraméterei
 
@@ -59,7 +59,7 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 4. A szöveg vezérlőelem szövege a következő lesz: _a kiválasztott időtartomány az elmúlt 24 óra_
 
 ## <a name="time-parameter-options"></a>Az idő paraméter beállításai
-| Paraméter | Magyarázat | Példa |
+| Paraméterek | Magyarázat | Példa |
 | ------------- |:-------------|:-------------|
 | `{TimeRange}` | Időtartomány felirata | Az elmúlt 24 óra |
 | `{TimeRange:label}` | Időtartomány felirata | Az elmúlt 24 óra |
@@ -78,5 +78,5 @@ requests
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
+* [Ismerkedjen](./workbooks-overview.md#visualizations) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

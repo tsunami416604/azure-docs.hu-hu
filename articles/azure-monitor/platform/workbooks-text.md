@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 7241777c0b94ce7ccadbd273c5c305c679bfe30a
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0ac4c348b776cee2356f77424698b078947f4ad3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932311"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143570"
 ---
 # <a name="workbook-text-parameters"></a>Munkafüzet szövegének paraméterei
 
@@ -85,5 +85,5 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
+* [Ismerkedjen](./workbooks-overview.md#visualizations) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

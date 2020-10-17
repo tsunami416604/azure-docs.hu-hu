@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 48a3972d7b7db3f0c68866f23d6deca0bbce2e35
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377391"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92157964"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
 
@@ -197,7 +197,7 @@ Az alkalmazást az iOS-szimulátorban a **termék**  >  **futtatása** vagy a (&
 A kimenő VOIP-hívást úgy teheti meg, hogy egy felhasználói azonosítót biztosít a szövegmezőben, és a **hívás indítása** gombra koppint. A Calling `8:echo123` egy echo-robottal csatlakozik, ez nagyszerű megoldás az első lépésekhez és a hangeszközök ellenőrzéséhez. 
 
 > [!NOTE]
-> Amikor először végez hívást, a rendszer kérni fogja a mikrofon elérését. Éles alkalmazásban az API-t kell használnia az `AVAudioSession` [engedély állapotának ellenőrzése](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) és az alkalmazás működésének zökkenőmentes frissítése érdekében, ha az engedély nem lett megadva.
+> Amikor először végez hívást, a rendszer kérni fogja a mikrofon elérését. Éles alkalmazásokban az API-val kell `AVAudioSession` [ellenőriznie az engedélyek állapotát](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) , és megfelelően frissíteni az alkalmazás viselkedését, ha az engedély nem lett megadva.
 
 ## <a name="sample-code"></a>Példakód
 

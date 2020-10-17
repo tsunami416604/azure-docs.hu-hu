@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: d99cc571394ad7a9c85fb7367c672f96a7302362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018501"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142460"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Feladatok ütemezett és szórása (.NET)
 
@@ -58,7 +58,7 @@ Az oktatóanyag végén két .NET-es (C#) konzolos alkalmazás található:
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -261,7 +261,7 @@ Ebben a szakaszban létrehoz egy .NET-konzol alkalmazást (a C# használatával)
     ```
 
     > [!NOTE]
-    > A lekérdezési szintaxissal kapcsolatos további információkért lásd: [IoT hub lekérdezési nyelv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language).
+    > A lekérdezési szintaxissal kapcsolatos további információkért lásd: [IoT hub lekérdezési nyelv](./iot-hub-devguide-query-language.md).
     >
 
 1. Végül adja a következő sorokat a **Main** metódushoz:
@@ -311,4 +311,4 @@ Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen met
 
 * Ha továbbra is szeretné megkezdeni a IoT Hub és az eszközkezelés mintáit, például a távoli belső vezérlőprogram frissítését, olvassa el az [oktatóanyag: a belső vezérlőprogram frissítésének módja című témakört](tutorial-firmware-update.md).
 
-* A mesterséges intelligenciát használó eszközök Azure IoT Edge használatával történő üzembe helyezésével kapcsolatos további információkért lásd: [Bevezetés a IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)használatába.
+* A mesterséges intelligenciát használó eszközök Azure IoT Edge használatával történő üzembe helyezésével kapcsolatos további információkért lásd: [Bevezetés a IoT Edge](../iot-edge/quickstart-linux.md)használatába.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 3d683ada6401c4ba4f2e232948e9712643339fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533468"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142508"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (.NET)
 
@@ -181,4 +181,4 @@ További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatóköny
 
 * [Eszközfelügyelet – első lépések](iot-hub-node-node-device-management-get-started.md)
 
-* [Ismerkedés az IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Ismerkedés az IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)

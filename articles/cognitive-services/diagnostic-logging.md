@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9660aa3923964392f1789570d26dd825e0fef350
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71827904"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143189"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Diagnosztikai naplózás engedélyezése az Azure Cognitive Services
 
@@ -24,7 +24,7 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan engedélyezheti az Azur
 
 A diagnosztikai naplózás engedélyezéséhez a naplófájlok tárolásához valahol szüksége lesz. Ez az oktatóanyag az Azure Storage és a Log Analytics használatát ismerteti.
 
-* [Azure Storage](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) – a házirend-naplózás, a statikus elemzés vagy a biztonsági mentés diagnosztikai naplóinak megőrzése. A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-kibocsátó naplókat, ha a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
+* [Azure Storage](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) – a házirend-naplózás, a statikus elemzés vagy a biztonsági mentés diagnosztikai naplóinak megőrzése. A Storage-fióknak nem kell ugyanahhoz az előfizetéshez tartoznia, mint az erőforrás-kibocsátó naplókat, ha a beállítást konfiguráló felhasználó rendelkezik mindkét előfizetéshez megfelelő Azure RBAC-hozzáféréssel.
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) – egy rugalmas napló keresési és elemzési eszköze, amely lehetővé teszi az Azure-erőforrások által generált nyers naplók elemzését.
 
 > [!NOTE]
@@ -111,7 +111,7 @@ by bin(TimeGenerated, 10s), OperationName
 | render areachart kind=unstacked
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan engedélyezheti a naplózást, valamint a különböző Azure-szolgáltatások által támogatott mérőszámokat és naplózási kategóriákat, olvassa el a Microsoft Azure [metrikáinak áttekintését](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) , valamint az [Azure diagnosztikai naplók áttekintését ismertető](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) cikket.
 * Az Event hubok megismeréséhez olvassa el az alábbi cikkeket:

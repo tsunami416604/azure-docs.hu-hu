@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 2e96ac5052221475d9aec11d4ed96e8f9c308d70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024fa2f86890c6e8e791b5cf66a4e67328f62f63
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710107"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143893"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>A Log Analytics virtuális gépi bővítményének hibaelhárítása az Azure Monitorban
 Ez a cikk segítséget nyújt a Windows-és Linux-alapú virtuális gépek Log Analytics virtuálisgép-bővítményével kapcsolatos hibaelhárítási hibák elhárításához Microsoft Azure rendszeren, és javaslatot tesz a lehetséges megoldásokra.
@@ -52,7 +52,7 @@ Ha a linuxos virtuálisgép-bővítmény *log Analytics ügynöke* nem telepíti
 
 1. Ha a bővítmény állapota *ismeretlen* , ellenőrizze, hogy az Azure VM-ügynök telepítve van-e és megfelelően működik-e a virtuálisgép-ügynök naplófájljának áttekintésével `/var/log/waagent.log`
    * Ha a napló nem létezik, a virtuálisgép-ügynök nincs telepítve.
-   * [Az Azure-beli virtuálisgép-ügynök telepítése Linux rendszerű virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#installation)
+   * [Az Azure-beli virtuálisgép-ügynök telepítése Linux rendszerű virtuális gépeken](../../virtual-machines/extensions/agent-linux.md#installation)
 2. Egyéb nem kifogástalan állapotok esetén tekintse át a Linux rendszerű virtuális gépek bővítményének Log Analytics-ügynökének naplófájljait a következőben: `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` és `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
 3. Ha a bővítmény állapota Kifogástalan, de nem töltődik fel az adatai, tekintse át a Linux-naplófájlok Log Analytics ügynökét a következőben: `/var/opt/microsoft/omsagent/log/omsagent.log`
 
@@ -60,5 +60,4 @@ További információ: Linux- [bővítmények hibaelhárítása](../../virtual-m
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure-on kívüli számítógépeken futó Linux Log Analytics ügynökkel kapcsolatos további hibaelhárítási útmutatót az [azure log Analytics Linux-ügynök hibaelhárítása](agent-linux-troubleshoot.md)című témakörben talál.  
-
+Az Azure-on kívüli számítógépeken futó Linux Log Analytics ügynökkel kapcsolatos további hibaelhárítási útmutatót az [azure log Analytics Linux-ügynök hibaelhárítása](agent-linux-troubleshoot.md)című témakörben talál.
