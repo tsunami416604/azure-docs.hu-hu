@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ce0006c493228d99131ca564a34600800f0ab5e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226225"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169081"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Windows beszédfelismerési eszközökhöz készült SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként való használatához. A beszélgetések átírásához csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott. Más beszédekhez a mikrofonos tömb geometriáját biztosító lineáris MIC-tömbök támogatottak.
 
@@ -44,7 +44,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Az **Eclipse ide-indító** **munkaterület** mezőjébe írja be az új munkaterület-könyvtár nevét. Ezután válassza a **Launch** (Indítás) lehetőséget.
 
-   ![Az Eclipse Launcher képernyőképe](../media/speech-devices-sdk/eclipse-launcher.png)
+   ![Képernyőkép, amely megjeleníti az Eclipse-indítót, ahol megadhatja a munkaterület könyvtárának nevét.](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. Az Eclipse IDE főablaka hamarosan megjelenik. Ha megnyílt, zárja be az üdvözlőképernyőt.
 
@@ -52,7 +52,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Elindul az **új Java-projekt** varázsló. **Tallózással keresse** meg a minta projekt helyét. Válassza a **Befejezés** lehetőséget.
 
-   ![A New Java Project varázsló képernyőképe](../media/speech-devices-sdk/eclipse-new-java-project.png)
+   ![Az új Java-projekt varázslót bemutató képernyőkép.](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
 1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza **Configure**  >  a helyi menü**Konvertálás a Maven-re projektre** parancsát. Válassza a **Befejezés** lehetőséget.
 
@@ -127,11 +127,11 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Elindul a Speech Devices SDK példa alkalmazás, amely a következő lehetőségeket jeleníti meg:
 
-   ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](../media/speech-devices-sdk/java-sample-app-windows.png)
+   ![Képernyőkép egy példa Speech Devices SDK-alkalmazásról és-lehetőségekről.](../media/speech-devices-sdk/java-sample-app-windows.png)
 
 1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet**  >  **elindításával**. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor `participants.properties` a projekt mappájában a **cél/osztályok**fájlba helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
 
-   ![Bemutató beszélgetés átirata alkalmazás](../media/speech-devices-sdk/cts-sample-app-windows.png)
+   ![Képernyőkép a bemutató beszélgetés átiratának alkalmazásáról.](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
 ## <a name="create-and-run-a-standalone-application"></a>Önálló alkalmazás létrehozása és futtatása
 
@@ -139,11 +139,11 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Megjelenik az **Exportálás** ablak. Bontsa ki a **javát** , és válassza a **futtatható jar-fájl** lehetőséget, majd kattintson a **tovább**gombra.
 
-   ![Az exportálási ablak képernyőképe](../media/speech-devices-sdk/eclipse-export-windows.png)
+   ![Képernyőfelvétel: az Exportálás ablak, ahol kiválasztja a futtatható JAR-fájlt.](../media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra**.
 
-   ![Képernyőfelvétel a futtatható JAR-fájl exportálásáról](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
+   ![Képernyőkép, amely megjeleníti a futtatható JAR fájl exportálási ablakát, ahol az Exportálás célhelyét választja.](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. A `kws.table` `participants.properties` `unimic_runtime.dll` `pma.dll` fent kiválasztott célmappában helyezze el a,,, és `Microsoft.CognitiveServices.Speech.extension.pma.dll` a fájlt, mivel az alkalmazásnak szüksége van rájuk.
 

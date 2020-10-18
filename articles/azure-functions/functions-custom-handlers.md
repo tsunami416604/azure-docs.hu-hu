@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 8/18/2020
 ms.topic: article
-ms.openlocfilehash: f3106553def982eb90ccc90822206e75a11ce354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294594"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164550"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions egyéni kezelők (előzetes verzió)
 
@@ -566,7 +566,7 @@ A functions gazdagép további naplófájlokat jelenít meg, beleértve az egyé
 
 Helyileg a naplók a konzolon lesznek kinyomtatva.
 
-Az Azure-ban a naplófájlok megtekintéséhez [Application Insights nyomkövetést kell lekérdezni](functions-monitoring.md#query-telemetry-data) . Ha az alkalmazás nagy mennyiségű naplót hoz létre, akkor a rendszer csak a naplóüzenetek egy részhalmazát továbbítja Application Insightsnak. A [mintavétel letiltása](functions-monitoring.md#configure-sampling) az összes üzenet naplózásának biztosításához.
+Az Azure-ban a naplófájlok megtekintéséhez [Application Insights nyomkövetést kell lekérdezni](analyze-telemetry-data.md#query-telemetry-data) . Ha az alkalmazás nagy mennyiségű naplót hoz létre, akkor a rendszer csak a naplóüzenetek egy részhalmazát továbbítja Application Insightsnak. A [mintavétel letiltása](configure-monitoring.md#configure-sampling) az összes üzenet naplózásának biztosításához.
 
 ### <a name="test-custom-handler-in-isolation"></a>Egyéni kezelő tesztelése elkülönítésben
 

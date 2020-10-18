@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992881"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168273"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -187,9 +187,11 @@ Ha első alkalommal tekinti meg a változási előzményeket az alkalmazás-mód
 - **Ez a vártnál több időt vesz**igénybe. Ez az üzenet azt jelenti, hogy a regisztráció 2 percnél hosszabb időt vesz igénybe. Ez szokatlan, de nem feltétlenül jelenti azt, hogy valamilyen hiba történt. Megtekintheti az **előfizetéseket | Erőforrás-szolgáltató** a **Microsoft. ChangeAnalysis** erőforrás-szolgáltató regisztrációs állapotának kereséséhez. A felhasználói felület használatával törölheti, újra regisztrálhatja vagy frissítheti a regisztrációt, és megtekintheti, hogy ez segít-e. Ha a probléma továbbra is fennáll, forduljon changeanalysishelp@microsoft.com a támogatási szolgálathoz.
     ![Az RP-regisztráció túl hosszú ideig történő hibaelhárítása](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
 
+![Képernyőfelvétel a problémák diagnosztizálása és megoldása eszközről egy olyan virtuális géphez, amelyen a hibaelhárítási eszközök vannak kiválasztva.](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
+![Képernyőkép a virtuális gép legutóbbi változásainak hibaelhárítási eszközének csempéről.](./media/change-analysis/analyze-recent-changes.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az [Azure app Services-alkalmazások](azure-web-apps.md)Application Insights engedélyezése.
 - Engedélyezze Application Insights az [Azure-beli virtuális gépek és az Azure-beli virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazásai](azure-vm-vmss-apps.md)számára.

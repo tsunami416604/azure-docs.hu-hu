@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a85c129dd11e587a0714e92c850315101df103f0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015924"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166182"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -25,6 +25,7 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
 
 * Hindi támogatás a Hangulatelemzés v3. x verzióhoz, a modell verziójától kezdve `2020-04-01` . 
 * `2020-09-01`A v3/languages végponthoz tartozó verzióját, amely növeli a nyelvi észlelést és a pontosságot.
+* v3 elérhetőség Közép-Indiában és Észak-Egyesült Arab Emírségekben.
 
 ## <a name="september-2020"></a>2020. szeptember
 
@@ -218,7 +219,7 @@ Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvek](text-analytics-user-scenarios.md)

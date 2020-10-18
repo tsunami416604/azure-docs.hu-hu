@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ac044666b8f723e3cc26fd7a30f5dd8a8f77d90
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399533"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168035"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
@@ -68,7 +68,7 @@ A következő alapvető Azure Identity Management-képességek:
 
 - Egyszeri bejelentkezés
 
-- Többtényezős hitelesítés
+- Multi-Factor Authentication
 
 - Biztonsági monitorozás, riasztások és gépi tanuláson alapuló jelentések
 
@@ -90,7 +90,7 @@ Számos szervezet olyan szoftveres (SaaS) alkalmazásokra támaszkodik, mint pé
 
 Nem csak a felhasználóknak nem kell több felhasználónevet és jelszót kezelnie, az alkalmazások hozzáférését a szervezeti csoportok és az alkalmazotti állapotuk alapján automatikusan kiépítheti vagy kiépítheti. Az [Azure ad olyan biztonsági és hozzáférési irányítási vezérlőket vezet be](../../active-directory/active-directory-enterprise-apps-manage-sso.md) , amelyek segítségével központilag kezelheti a felhasználók hozzáférését az SaaS-alkalmazásokon keresztül.
 
-#### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+#### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Az [Azure multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és kritikus második biztonsági réteget hoz létre a felhasználói bejelentkezésekhez és tranzakciókra. Az [MFA segít megvédeni](../../active-directory/authentication/concept-mfa-howitworks.md) az adathozzáférést az adatkezeléshez és az alkalmazásokhoz, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít. Erős hitelesítést tesz lehetővé számos ellenőrzési lehetőség – telefonhívás, szöveges üzenet vagy Mobile apps-értesítés, valamint ellenőrző kód és külső OAuth-tokenek – használatával.
 
@@ -367,7 +367,8 @@ A [Azure monitor](../../azure-monitor/overview.md) az adott típusú erőforrás
 
 A Felhőbeli alkalmazások számos mozgó részből összetettek. A figyelési szolgáltatással biztosítható, hogy az alkalmazás kifogástalan állapotban maradjon. Emellett segít elhárítani a lehetséges problémákat vagy a múltbeli hibák elhárítását.
 
-![Azure Monitor ](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) emellett a figyelési adatok segítségével mélyebb elemzéseket nyerhet az alkalmazásról. Ezzel az ismerettel javíthatja az alkalmazások teljesítményét vagy karbantartását, vagy automatizálhatja azokat a műveleteket, amelyek egyébként manuális beavatkozást igényelnek.
+![Diagram, amely bemutatja, hogy a figyelési adataival részletes elemzéseket kaphat az alkalmazásról.](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png)
+Emellett a figyelési adatok segítségével mélyebb elemzéseket nyerhet az alkalmazásról. Ezzel az ismerettel javíthatja az alkalmazások teljesítményét vagy karbantartását, vagy automatizálhatja azokat a műveleteket, amelyek egyébként manuális beavatkozást igényelnek.
 
 A hálózati biztonság naplózása létfontosságú a hálózati sebezhetőségek észleléséhez, valamint az informatikai biztonsági és szabályozási irányítási modell megfelelőségének biztosításához. A biztonsági csoport nézetben lekérheti a konfigurált hálózati biztonsági csoport és biztonsági szabályok, valamint a hatályos biztonsági szabályok beolvasását. Az alkalmazott szabályok listájának használatával meghatározhatja a nyitott és az SS hálózati biztonsági rést tartalmazó portokat.
 
@@ -430,7 +431,7 @@ A Resource Manager számos előnyt kínál:
 > [!Note]
 > A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi üzemi modellt használta, és szeretne többet megtudni a változásokról, tekintse meg a [Resource Manager-telepítés és a klasszikus üzembe helyezés ismertetése](../../azure-resource-manager/management/deployment-models.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A biztonságról további információt a részletes biztonsági témakörökben talál:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77658506"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168507"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Útmutató a tervezői csempék Azure Monitor való megtekintéséhez
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk az egyéni nézetekben elérhető csempék beállításairól nyújt útmutatást.
@@ -104,7 +104,7 @@ A **fánk** csempe egyetlen számot jelenít meg, amely összefoglalja a log lek
 ## <a name="line-chart-tile"></a>Vonalas diagram csempe
 Ez a csempe egy olyan vonalas diagram, amely egyszerre több adatsorozatot jelenít meg egy napló lekérdezésében. 
 
-![Vonalas diagram és ábrafelirat csempe](media/view-designer-tiles/tile-line-chart.png)
+![Képernyőfelvétel a Azure Monitor View Designerben található vonalas diagram csempéről.](media/view-designer-tiles/tile-line-chart.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -125,7 +125,7 @@ Ez a csempe egy olyan vonalas diagram, amely egyszerre több adatsorozatot jelen
 ## <a name="line-chart-and-callout-tile"></a>Vonalas diagram és ábrafelirat csempe
 Ez a csempe egy olyan vonalas diagrammal is rendelkezik, amely egyszerre több adatsorozatot jelenít meg egy naplózási lekérdezésből, valamint egy összesített értéket tartalmazó ábrafeliratot. 
 
-![Vonalas diagram és ábrafelirat csempe](media/view-designer-tiles/tile-line-chart-callout.png)
+![Képernyőfelvétel egy vonalas diagramról és egy ábrafelirat csempéről a Azure Monitor View Designerben. az ábrafelirat egy összegzett értéket ábrázolva kibővíti a diagramot.](media/view-designer-tiles/tile-line-chart-callout.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |

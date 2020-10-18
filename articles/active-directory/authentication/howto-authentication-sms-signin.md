@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849057ab1ccde2e0771f0c1cd52ea399ffe4cea7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cdc0dea825cb32275a2ada3a49d7d622180aa468
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964689"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166631"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Felhasználók konfigurálása és engedélyezése SMS-alapú hitelesítéshez Azure Active Directory használatával (előzetes verzió)
 
@@ -96,13 +96,17 @@ Ha az SMS-Sign telefonszáma be van állítva, akkor az [Azure multi-Factor Auth
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A Azure Active Directory ablak bal oldali navigációs menüjében válassza a **felhasználók**lehetőséget.
 1. Válassza ki az SMS-alapú hitelesítéshez engedélyezett felhasználót az előző szakaszban (például contoso- *felhasználó*), majd válassza a **hitelesítési módszerek**lehetőséget.
-1. Adja meg a felhasználó telefonszámát, beleértve az országkód *(például + 1 XXXXXXXXX*) értéket. A Azure Portal ellenőrzi, hogy a telefonszám formátuma megfelelő-e.
+1. Válassza a **+ hitelesítési módszer hozzáadása**lehetőséget, majd a *módszer kiválasztása* legördülő menüben válassza a **telefonszám**lehetőséget.
 
-    ![Az SMS-alapú hitelesítéshez használandó Azure Portal telefonszámának beállítása a felhasználó számára](./media/howto-authentication-sms-signin/set-user-phone-number.png)
+    Adja meg a felhasználó telefonszámát, beleértve az országkód *(például + 1 XXXXXXXXX*) értéket. A Azure Portal ellenőrzi, hogy a telefonszám formátuma megfelelő-e.
+
+    Ezután a *telefon típusa* legördülő menüben válassza a *mobil*, *alternatív mobil*vagy *más* , igény szerint lehetőséget.
+
+    :::image type="content" source="media/howto-authentication-sms-signin/set-user-phone-number.png" alt-text="Az SMS-alapú hitelesítéshez használandó Azure Portal telefonszámának beállítása a felhasználó számára":::
 
     A telefonszámnak egyedinek kell lennie a bérlőben. Ha több felhasználóhoz ugyanazt a telefonszámot próbálja használni, hibaüzenet jelenik meg.
 
-1. Ha a telefonszámot egy felhasználói fiókra szeretné alkalmazni, válassza a **Mentés**lehetőséget.
+1. Ha a telefonszámot egy felhasználói fiókra szeretné alkalmazni, válassza a **Hozzáadás**lehetőséget.
 
 A sikeres kiépítés után egy pipa jelenik meg az *SMS-bejelentkezés engedélyezéséhez*.
 
@@ -144,7 +148,7 @@ Ha hibaüzenet jelenik meg, amikor a Azure Portal egy felhasználói fiókhoz pr
 1. Győződjön meg arról, hogy a telefonszám nem használatos a bérlő más részén.
 1. Győződjön meg arról, hogy a fiókhoz nincs beállítva hangszám. Ha a hangszám be van állítva, törölje a telefonszámot, és próbálkozzon újra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD-ba való bejelentkezés további módjai jelszó nélkül, például a Microsoft Authenticator alkalmazás-vagy FIDO2 biztonsági kulcsainak használata: az [Azure ad-hez készült jelszó nélküli hitelesítési beállítások][concepts-passwordless].
 

@@ -4,15 +4,15 @@ description: A Microsoft kereskedelmi Marketplace-ajánlatok készlete hozzájá
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 07/21/2020
-ms.openlocfilehash: 8a8b64bc0ed2702066a1ba280f1b40aabbcdb11b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: e5f1a70182d4b31a1bcd0a811be32bdfc55129d9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87098404"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168440"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Az Azure-beli használati kötelezettségvállalás előnyei
 
@@ -27,3 +27,33 @@ Az előny kihasználása érdekében egyszerűen vásárolhat az Azure Marketpla
 
 > [!IMPORTANT]
 > A kizárások a Piactéri juttatás előtt aláírt CtC-megállapodásokra vonatkozhatnak. Ha kérdése van a jogosultsággal kapcsolatban, forduljon a Microsoft-fiók ügyvezetőhöz.
+
+## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>Annak megállapítása, hogy a szervezet rendelkezik-e Azure-beli felhasználási kötelezettségvállalással (MACC/CtC)
+
+Ha nem biztos abban, hogy a szervezete rendelkezik-e megfelelő szerződéssel, jelentkezzen be a piactéren a [Azure Portalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) belül a szervezethez társított bérlő alatt. Ha a díjszabási szűrőben az **Azure Benefit jogosult** lehetőség jelenik meg, akkor a megfelelő Azure-beli felhasználási kötelezettségvállalása érvényes. Az Azure Marketplace-beli vásárlások beszerzése hozzájárul a szervezet Azure-beli fogyasztási kötelezettségvállalásához, ha közvetlenül az Azure Piactéren keresztül vásárol.
+
+[![Az Azure Benefit jogosult menüpontja.](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
+
+## <a name="determine-which-offers-are-eligible-for-azure-consumption-commitments-maccctc"></a>Határozza meg, hogy mely ajánlatok jogosultak az Azure-beli felhasználási kötelezettségvállalásokra (MACC/CtC)
+
+1. Jelentkezzen be a piactéren a [Azure Portalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) belül a szervezethez társított bérlő alatt.
+2. Alkalmazza az **Azure Benefit jogosult** szűrőt (a fenti képen) azon ajánlatok felderítésére, amelyek jogosultak a szervezet Azure-beli felhasználási kötelezettségvállalására.
+
+   > [!NOTE]
+   > Ha nem rendelkezik ezzel a szűrővel, a szervezetnek nincs megfelelő kötelezettségvállalása. Ha úgy gondolja, hogy ez helytelen, lépjen kapcsolatba a Microsoft-fiók ügyvezetővel.
+ 
+3. Az ajánlatokat az **Azure-juttatások** alapján kell bevezetni, amely további jelezheti, hogy az ajánlathoz kapcsolódó szoftver/IP-költségek hozzájárulnak a szervezete által felszámított Azure-szolgáltatásokra vonatkozó Azure-beli felhasználási kötelezettségvállaláshoz.
+
+    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Az Azure Benefit jogosult jelvénye.&quot;:::
+
+   > [!NOTE]
+   > Az Azure Marketplace-en keresztül az Ön szervezete számára felszámított szolgáltatások Microsoft Azure a szervezet elkötelezettségét illetően. Az &quot;Azure Benefit jogosult" ajánlatok előnye, hogy a harmadik féltől származó gyártó által átadott szoftverek/IP-költségek az Azure Marketplace-beli számla 100%-ában is hozzájárulnak.
+
+4. Az ajánlatot közvetlenül az Azure Marketplace-en keresztül vásárolhatja meg vagy hozza létre. A Microsoft minden egyes számlázási időszakban, beleértve a szoftver/IP-költségeket is, a megfelelő ajánlat 100%-ában járul hozzá a vállalat Azure-beli felhasználási kötelezettségvállalásához.
+
+> [!IMPORTANT]
+> Az ajánlatokat közvetlenül az Azure Marketplace-en keresztül kell megvásárolni, egy olyan regisztrációval, amely a szervezet Azure-beli fogyasztási kötelezettségvállalásával kapcsolatos, hogy hozzájáruljon a vásárláshoz a kötelezettségvállalás teljesítése érdekében. A Cloud Solution Provider (CSP), bármely más viszonteladói csatorna vagy a piactéren kívül vásárolt ajánlatok nem járulnak hozzá a kötelezettségvállaláshoz.
+
+## <a name="next-steps"></a>További lépések
+
+- Ha többet szeretne megtudni arról, hogy a szervezet hogyan használhatja ki az Azure Marketplace-t, végezze el a Microsoft Learn modult: a [Felhőbeli közbeszerzés és az Azure Marketplace irányításának egyszerűsítése](https://aka.ms/cm.marketplaceprocurement).

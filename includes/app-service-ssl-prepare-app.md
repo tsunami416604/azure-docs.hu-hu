@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd73ac372a21a32eac0c742a7f0f525db2d1a4fe
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78301002"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169098"
 ---
 ## <a name="prepare-your-web-app"></a>A webalkalmazás előkészítése
 
@@ -31,7 +31,7 @@ Keresse meg és válassza ki a **app Services**.
 
 A **app Services** lapon válassza ki a webalkalmazás nevét.
 
-![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-ssl-prepare-app/select-app.png)
+![Képernyőfelvétel a App Services oldaláról Azure Portal az összes futó Web Apps listáját jeleníti meg, a lista első alkalmazásával.](./media/app-service-ssl-prepare-app/select-app.png)
 
 A webalkalmazás felügyeleti lapján található.  
 

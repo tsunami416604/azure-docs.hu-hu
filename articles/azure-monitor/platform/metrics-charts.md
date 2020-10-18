@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079553"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168562"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Az Azure Metrikaböngésző speciális funkciói
 
@@ -77,15 +77,15 @@ Szűrőket alkalmazhat a diagramokra, amelyek dimenziókat tartalmazó metrikák
 
 2. Válassza ki a szűrni kívánt dimenziót (tulajdonságot)
 
-   ![metrika képe](./media/metrics-charts/00006.png)
+   ![A szűrni kívánt dimenziókat (tulajdonságokat) megjelenítő képernyőkép.](./media/metrics-charts/00006.png)
 
 3. Válassza ki, hogy mely dimenzió értékeket kívánja felvenni a diagram ábrázolásakor (ez a példa a sikeres tárolási tranzakciók szűrését mutatja):
 
-   ![metrika képe](./media/metrics-charts/00007.png)
+   ![A sikeres tárolási tranzakciók szűrését bemutató képernyőkép.](./media/metrics-charts/00007.png)
 
 4. Miután kiválasztotta a szűrő értékeit, kattintson a szűrési választóból a bezáráshoz. A diagramon most már látható, hogy hány tárolási tranzakciót sikerült végrehajtani:
 
-   ![metrika képe](./media/metrics-charts/00008.png)
+   ![A tárolási tranzakciók számának számát bemutató képernyőkép](./media/metrics-charts/00008.png)
 
 5. Az 1-4-es lépések megismétlésével több szűrőt is alkalmazhat ugyanarra a diagramra.
 
@@ -104,11 +104,11 @@ A mérőszámok dimenzió alapján való felosztásával megjelenítheti, hogy a
 
 2. Válassza ki azt a dimenziót, amelyre a diagramot szeretné szegmentálni:
 
-   ![metrika képe](./media/metrics-charts/00010.png)
+   ![A diagramot ábrázoló kiválasztott dimenziót megjelenítő képernyőkép.](./media/metrics-charts/00010.png)
 
    A diagram most már több sort is megjelenít, egyet a dimenzió minden szegmenséhez:
 
-   ![metrika képe](./media/metrics-charts/00012.png)
+   ![Képernyőkép, amely több sort mutat be, egyet a dimenzió minden egyes szegmenséhez.](./media/metrics-charts/00012.png)
 
 3. Kattintson a **csoportosítási választóból** a bezáráshoz.
 
@@ -125,7 +125,7 @@ Egy másik példa a rendelkezésre álló memória ingadozása, ahol az érték 
 
 Az y tengely tartományának vezérléséhez használja a "..." diagram menü, és a speciális diagram beállításainak eléréséhez válassza a **diagram szerkesztése** lehetőséget. Módosítsa az Y tengely tartománya szakaszban található értékeket, vagy az **automatikus** gomb használatával térjen át az alapértelmezett értékekre.
 
-![metrika képe](./media/metrics-charts/00014-manually-set-granularity.png)
+![Képernyőfelvétel: a diagram szerkesztése lehetőség.](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
 > Az y tengely azon határainak zárolása, amelyek a különböző számításokat vagy összegeket követik egy adott időtartamon belül (és így a darabszámot, a Sum, a minimum vagy a maximális összesítést használják) általában a rögzített idő részletességét kell megadnia az automatikus alapértékek helyett. Erre azért van szükség, mert a diagramok értékei változnak, amikor az időrészletességet automatikusan módosítja a felhasználó átméretezni a böngészőablakot, vagy az egyik képernyőfelbontásról egy másikra kerül. Az időbeli részletesség változása hatással van a diagram kinézetére, és az y tengely tartományának aktuális kijelölését érvényteleníti.
@@ -138,7 +138,7 @@ Egy diagramterület színének módosításához kattintson a diagramhoz tartoz�
 
 A diagram színeinek konfigurálása után a diagramot egy irányítópultra rögzítve maradnak. A következő szakasz bemutatja, hogyan rögzítheti a diagramokat.
 
-![metrika képe](./media/metrics-charts/018.png)
+![A diagram rögzítését bemutató képernyőkép.](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>Diagramok rögzítése az irányítópultokon
 

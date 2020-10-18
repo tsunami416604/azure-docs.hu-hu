@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 02fbe721f1bf5737ad1d10d656ea75ed1372b484
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284880"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168477"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-illesztőprogramok telepítése a Linuxon futó N sorozatú virtuális gépeken
 
@@ -310,7 +310,7 @@ Ha le szeretné kérdezni a GPU-eszköz állapotát, SSH-t a virtuális gépre, 
 
 Ha az illesztőprogram telepítve van, az alábbihoz hasonló kimenet jelenik meg. Vegye figyelembe, hogy a **GPU-util** 0%-ot mutat, ha jelenleg nem fut GPU-s munkaterhelés a virtuális gépen. Az illesztőprogram verziószáma és a GPU adatai eltérhetnek a megjelenített adatoktól.
 
-![NVIDIA-eszköz állapota](./media/n-series-driver-setup/smi-nv.png)
+![Képernyőkép, amely a GPU-eszköz állapotának lekérdezése után megjeleníti a kimenetet.](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>X11-kiszolgáló

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207164"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168188"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>A bejövő adatkezelővel kapcsolatos gyakori kérdések és problémák elhárítása
 
@@ -85,15 +85,15 @@ Miután az AK-fürt felett sikeresen telepítette az alkalmazást, egy új Pod, 
 A hüvelyek listájának lekérése a [Cloud Shell](https://shell.azure.com/): `kubectl get pods -o wide` .
 Elvárjuk, hogy létrehozták a "test-agic-app-Pod" nevű Pod-t. IP-címmel fog rendelkezni. Ennek a címnek a Application Gateway VNET belül kell lennie, amely az AK-val együtt használható.
 
-![hüvely](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
+![Képernyőkép az Azure Cloud Shell bash ablakáról, amely a listában a test-agic-app-Pod-t tartalmazó hüvelyek listáját jeleníti meg.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
 
 A szolgáltatások listájának lekérése: `kubectl get services -o wide` . A rendszer a "test-agic-app-Service" nevű szolgáltatást várta.
 
-![hüvely](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
+![Képernyőkép az Azure Cloud Shell bash ablakáról, amely a listában a test-agic-app-Pod-t tartalmazó szolgáltatások listáját jeleníti meg.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
 
 A ingresses listájának beolvasása: `kubectl get ingress` . Elvárjuk, hogy létrejött a "test-agic-app-beáramló" nevű bejövő erőforrás. Az erőforrás "test.agic.contoso.com" állomásnévvel fog rendelkezni.
 
-![hüvely](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
+![Képernyőkép az Azure Cloud Shell bash ablakáról, amely megjeleníti a ingresses listáját, amely tartalmazza a test-agic-app-behatolást a listában.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
 Az egyik hüvely AGIC lesz. `kubectl get pods` Megjeleníti a hüvelyek listáját, amelyek közül az egyik a "beáramló – Azure" lesz. A pod összes naplójának lekérésével `kubectl logs <name-of-ingress-controller-pod>` ellenőrizheti, hogy sikeres volt-e az üzembe helyezés. A sikeres telepítés a következő sorokat adta hozzá a naplóhoz:
 ```
@@ -120,7 +120,7 @@ Végül a `cURL` parancsot a [Cloud Shellon](https://shell.azure.com/) belül is
 1. `kubectl get ingress`A Application Gateway nyilvános IP-címének lekéréséhez használja
 2. A `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>` használata
 
-![hüvely](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
+![Képernyőkép a bash-ablakról Azure Cloud Shell a cURL parancs sikeresen létrehozta a HTTP-kapcsolatokat a tesztelési alkalmazáshoz.](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
 Az eredmény `HTTP/1.1 200 OK` azt jelzi, hogy a Application Gateway + AK + AGIC rendszer a várt módon működik.
 

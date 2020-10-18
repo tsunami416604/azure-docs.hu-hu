@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a654454c1ef3d5ea1ff7e6eb525bb153f7875c1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430729"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168205"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>A fejlesztői portál oldalai stílusának testreszabása
 
@@ -31,7 +31,7 @@ A fejlesztői portál testreszabásának három leggyakoribb módja van az Azure
 
 Ebből a cikkből megtudhatja, hogyan szabhatja testre az elemek stílusát az örökölt **fejlesztői** portál oldalain, és megtekintheti a módosításokat.
 
-![stílus testreszabása](./media/modify-developer-portal-style/developer_portal.png)
+![Képernyőfelvétel: a régi fejlesztői portálon a beállítások módosításának helyét mutatja.](./media/modify-developer-portal-style/developer_portal.png)
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -49,7 +49,7 @@ Ebből a cikkből megtudhatja, hogyan szabhatja testre az elemek stílusát az �
 2. Kattintson a **fejlesztői portál (örökölt)** gombra az **Áttekintés** ablak tetején.
 3. A képernyő bal felső részén egy két ecsetet ábrázoló ikon látható. Vigye a mutatót az ikon fölé a portál testreszabási menüjének megnyitásához.
 
-    ![stílus testreszabása](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
+    ![Képernyőkép, amely kiemeli az ikont két ecsettel.](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
 4. Válassza a menü **Stílusok** elemét a stílus testreszabási paneljének megnyitásához.
 
     A **Stílusok** panellel testre szabható összes elem megjelenik az oldalon.

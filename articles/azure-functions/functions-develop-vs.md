@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functionseke
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612809"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167797"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure-függvények fejlesztése a Visual Studióval  
 
@@ -229,13 +229,11 @@ Az alkalmazás beállításait az alábbi módokon is kezelheti:
 
 ## <a name="monitoring-functions"></a>Figyelési függvények
 
-A függvények végrehajtásának ajánlott figyelése a Function alkalmazás Azure Application Insights-nal való integrálásával. Ha a Azure Portalban hoz létre egy Function alkalmazást, a rendszer alapértelmezés szerint ezt az integrációt végzi. Ha azonban a Visual Studio Publishing szolgáltatásban hozza létre a Function alkalmazást, az Azure-beli Function alkalmazásban való integráció nem történik meg.
+A függvények végrehajtásának ajánlott figyelése a Function alkalmazás Azure Application Insights-nal való integrálásával. Ha a Azure Portalban hoz létre egy Function alkalmazást, a rendszer alapértelmezés szerint ezt az integrációt végzi. Ha azonban a Visual Studio Publishing szolgáltatásban hozza létre a Function alkalmazást, az Azure-beli Function alkalmazásban való integráció nem történik meg. A Application Insightsnak a Function alkalmazáshoz való kapcsolódásával kapcsolatos további információkért lásd: [Application Insights integrációjának engedélyezése](configure-monitoring.md#enable-application-insights-integration).
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+Ha többet szeretne megtudni a Application Insights használatával végzett figyelésről, tekintse meg a [Azure functions figyelése](functions-monitoring.md)című témakört.
 
-További információért lásd: [Azure functions figyelése](functions-monitoring.md).
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Functions Core Toolsről: a [Azure functions Core Tools használata](functions-run-local.md).
 

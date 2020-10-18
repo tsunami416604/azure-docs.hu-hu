@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc06f7c75e27d831994b97b97f3d20bb34c3a6c5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847484"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167933"
 ---
 # <a name="manage-farms"></a>Farmok kezelése
 
@@ -25,7 +25,7 @@ Ehhez a következő lépések szükségesek:
 
     Itt látható a minta képe:
 
-    ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
+    ![A farmok lapot megjelenítő képernyőkép.](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
 2. Válassza a **farm létrehozása** elemet, és adja meg a **nevet**, a **növényeket** és a **címeket**.
@@ -33,14 +33,14 @@ Ehhez a következő lépések szükségesek:
 
 A farm határának definiálásának két módja van:
 
-1. **Megjelölés térképen**: a Térkép vezérlőelem használatával rajzolhatja meg és jelölheti meg a farm határát. A határok megjelöléséhez a  ![ Project Farm veri ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) és megjelöli a pontos határokat.
+1. **Megjelölés térképen**: a Térkép vezérlőelem használatával rajzolhatja meg és jelölheti meg a farm határát. A szegélyek megjelöléséhez a térképen a diagram  ![ szegélyeit ábrázoló ceruza ikon látható, ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) és a pontos határokat kell megjelölnie.
 
-    ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
+    ![Képernyőkép, amely megjeleníti a rajzolt határokat egy térképen.](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
 2. **GeoJson-kód beillesztése**: a GeoJson formátuma a földrajzi adatstruktúrák kódolása JavaScript Object Notation (JSON) használatával. Ezzel a beállítással megjelenítheti azt a szövegmezőt, amelyben meg lehet adni egy GeoJSON karakterláncot a farm határainak megjelöléséhez. GeoJSON-kódot a GeoJSON.io is létrehozhat.
 Az elemleírások segítségével kitöltheti az információkat.
 
-    ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
+    ![A farm létrehozása képernyő GeoJson-kód beillesztése lehetőségét kiemelő képernyőkép.](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
 
 3.  Farm létrehozásához válassza a **Submit (Küldés** ) lehetőséget. Létrejön egy új Farm, és megjelenik a **farmok** oldalon.
 
@@ -71,7 +71,7 @@ A **Farms** lap a létrehozott farmok listáját jeleníti meg. Farm törléséh
 1.  A farm adatainak törléséhez válasszon ki egy farmot a listából.
 2.  Válassza a **Farm törlése** elemet a farm törléséhez.
 
-    ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
+    ![Képernyőkép, amely a farm törlése képernyőt jeleníti meg, és kiemeli a Törlés gombot.](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
 
     > [!NOTE]
     > Farm törlésekor a farmhoz társított eszközöket és térképeket nem törli a rendszer. Az eszközhöz és a térképekhez kapcsolódó Farm-információk nem lesznek relevánsak. Továbbra is megtekintheti az eszközöket, a telemetria és a térképeket a FarmBeats szolgáltatásból.

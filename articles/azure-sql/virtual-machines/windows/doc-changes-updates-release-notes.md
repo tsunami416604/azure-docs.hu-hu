@@ -10,18 +10,24 @@ ms.service: virtual-machines-sql
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/21/2020
-ms.openlocfilehash: 6e2665a413b3d43f7e1b294ebfc390c57d995f29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: d05b603d3f854d919df43e633449e37301a5e77d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758642"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168324"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépített lemezképével végezheti el. Ez a cikk az új funkciókkal és fejlesztésekkel kapcsolatos dokumentációs módosításokat összegzi az [Azure Virtual Machines SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)legújabb kiadásaiban. 
+
+## <a name="october-2020"></a>2020. október
+
+| Módosítások | Részletek |
+| --- | --- |
+| **DNN for AG** | Most már beállíthat egy [Distributed Network name (DNN) figyelőt](availability-group-distributed-network-name-dnn-listener-configure.md) is a SQL Server 2019 CU8 és újabb verzióra, hogy lecserélje a hagyományos [VNN-figyelőt](availability-group-overview.md#connectivity), és megtagadja a Azure Load Balancer szükségességét.   | 
 
 ## <a name="september-2020"></a>2020. szeptember
 

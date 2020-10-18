@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatáv
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19edfaf7998632ed1ebb48ff4ad36468669732ae
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206198"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167746"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -139,7 +139,7 @@ A létrehozási folyamat létrehoz egy *function.js* fájlt a Build mappában ta
 
 Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](functions-scale.md#how-the-consumption-and-premium-plans-work). Emiatt a fájl csak trigger-információkkal, nem bemeneti vagy kimeneti kötésekkel rendelkezik.
 
-A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Bemutatunk egy példát:
+A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Például:
 
 ```json
 {
@@ -164,18 +164,7 @@ A NuGet-csomag [Microsoft \. net \. SDK \. függvények](https://www.nuget.org/p
 
 Ugyanez a csomag a functions futtatókörnyezet 1. x és 2. x verziójára is használható. A cél-keretrendszer az 1. x projekt megkülönböztetése egy 2. x projektből. Az alábbiakban láthatók a *. csproj* -fájlok azon részei, amelyek különböző cél-keretrendszereket és azonos csomagot mutatnak be `Sdk` :
 
-**Functions 1.x**
-
-```xml
-<PropertyGroup>
-  <TargetFramework>net461</TargetFramework>
-</PropertyGroup>
-<ItemGroup>
-  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
-</ItemGroup>
-```
-
-**Functions 2.x**
+# <a name="v2x"></a>[v2. x +](#tab/v2)
 
 ```xml
 <PropertyGroup>
@@ -186,6 +175,19 @@ Ugyanez a csomag a functions futtatókörnyezet 1. x és 2. x verziójára is ha
   <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
 </ItemGroup>
 ```
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+---
+
 
 A `Sdk` csomagok függőségei közé az eseményindítók és a kötések tartoznak. Egy 1. x projekt egy 1. x eseményindítóra és kötésre hivatkozik, mivel ezek az eseményindítók és kötések a .NET-keretrendszert célozzák meg, a 2. x eseményindítók és kötések pedig a .NET Core-t célozzák meg.
 
@@ -259,25 +261,6 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>Naplózás
-
-Ha a kimeneti adatokat a C#-ban szeretné naplózni, adjon meg egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot. Azt javasoljuk, hogy nevezze el `log` , ahogy az alábbi példában is látható:  
-
-```csharp
-public static class SimpleExample
-{
-    [FunctionName("QueueTrigger")]
-    public static void Run(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        ILogger log)
-    {
-        log.LogInformation($"C# function processed: {myQueueItem}");
-    }
-} 
-```
-
-Ne használja `Console.Write` a Azure functions. További információ: [naplók írása C#-függvényekben](functions-monitoring.md#write-logs-in-c-functions) a **figyelő Azure functions** cikkben.
-
 ## <a name="async"></a>Aszinkron
 
 A függvény [aszinkron](/dotnet/csharp/programming-guide/concepts/async/)működéséhez használja a `async` kulcsszót, és egy `Task` objektumot ad vissza.
@@ -327,6 +310,237 @@ public static class CancellationTokenExample
     }
 }
 ```
+
+## <a name="logging"></a>Naplózás
+
+A függvény kódjában a kimenetet a Application Insights nyomkövetésként megjelenő naplókba írhatja. A naplókba való írás ajánlott módja, ha egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)típusú paramétert tartalmaz, amely általában a neve `log` . A függvények futtatásához használt futtatókörnyezet 1. x verziója `TraceWriter` , amely Application Insights is ír, de nem támogatja a strukturált naplózást. Ne használja a paranccsal `Console.Write` írni a naplókat, mert a Application Insights nem rögzíti ezeket az adatfájlokat. 
+
+### <a name="ilogger"></a>ILogger
+
+A függvény definíciójában adjon meg egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) paramétert, amely támogatja a [strukturált naplózást](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
+
+Ha egy `ILogger` objektummal rendelkezik, a `Log<level>` [ILogger bővítményi metódusokat hívhat meg a](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) naplók létrehozásához. A következő kód a `Information` naplókat írja be a kategóriába `Function.<YOUR_FUNCTION_NAME>.User.` :
+
+```cs
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
+{
+    logger.LogInformation("Request for item with key={itemKey}.", id);
+```
+
+### <a name="structured-logging"></a>Strukturált naplózás
+
+A helyőrzők sorrendje, a nevük nem, meghatározza, hogy a rendszer mely paramétereket használja a naplófájlban. Tegyük fel, hogy a következő kóddal rendelkezik:
+
+```csharp
+string partitionKey = "partitionKey";
+string rowKey = "rowKey";
+logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionKey, rowKey);
+```
+
+Ha megtartja ugyanazt az üzenetet, és megfordítja a paraméterek sorrendjét, az eredményül kapott üzenet szövege nem megfelelő helyen lenne.
+
+A helyőrzők kezelése így történik, így strukturált naplózást végezhet. Application Insights a paraméter név-érték párokat és az üzenet karakterláncát tárolja. Ennek az az oka, hogy az üzenet argumentumai olyan mezők lesznek, amelyeken lekérdezéseket végezhet.
+
+Ha a naplózó metódus hívása az előző példához hasonlóan néz ki, akkor lekérdezheti a mezőt `customDimensions.prop__rowKey` . A `prop__` rendszer hozzáadja az előtagot annak biztosításához, hogy ne legyenek ütközések a futtatókörnyezet által hozzáadott és mezőket tartalmazó mezők között.
+
+A mezőre hivatkozva az eredeti üzenet sztringjét is lekérdezheti `customDimensions.prop__{OriginalFormat}` .  
+
+Az alábbi példa az adat JSON-ábrázolását mutatja be `customDimensions` :
+
+```json
+{
+  "customDimensions": {
+    "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
+    "Category":"Function",
+    "LogLevel":"Information",
+    "prop__message":"c9519cbf-b1e6-4b9b-bf24-cb7d10b1bb89"
+  }
+}
+```
+
+## <a name="log-custom-telemetry-in-c-functions"></a>Egyéni telemetria naplózása C#-függvényekben
+
+A Application Insights SDK egy függvény-specifikus verziója, amellyel egyéni telemetria-adatok küldhetők a függvényekből Application Insights: [Microsoft. Azure. webjobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). A következő paranccsal telepítheti a csomagot a parancssorból:
+
+# <a name="command"></a>[Parancs](#tab/cmd)
+
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+Ebben a parancsban cserélje le a parancsot a `<VERSION>` csomag egy olyan verziójára, amely támogatja a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/)telepített verzióját. 
+
+A következő C#-példák az [Egyéni TELEMETRIA API](../azure-monitor/app/api-custom-events-metrics.md)-t használják. A példa egy .NET-osztályhoz tartozó könyvtárra mutat, de a Application Insights kód a C#-parancsfájl esetében azonos.
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+A futtatókörnyezet 2. x vagy újabb verziói a Application Insights újabb funkcióit használják a telemetria automatikus összekapcsolásához a jelenlegi művelettel. Nem szükséges manuálisan beállítani a műveletet `Id` , `ParentId` vagy a `Name` mezőket.
+
+```cs
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public class HttpTrigger2
+    {
+        private readonly TelemetryClient telemetryClient;
+
+        /// Using dependency injection will guarantee that you use the same configuration for telemetry collected automatically and manually.
+        public HttpTrigger2(TelemetryConfiguration telemetryConfiguration)
+        {
+            this.telemetryClient = new TelemetryClient(telemetryConfiguration);
+        }
+
+        [FunctionName("HttpTrigger2")]
+        public Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
+            HttpRequest req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.Query
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Write an event to the customEvents table.
+            var evt = new EventTelemetry("Function called");
+            evt.Context.User.Id = name;
+            this.telemetryClient.TrackEvent(evt);
+
+            // Generate a custom metric, in this case let's use ContentLength.
+            this.telemetryClient.GetMetric("contentLength").TrackValue(req.ContentLength);
+
+            // Log a custom dependency in the dependencies table.
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            dependency.Context.User.Id = name;
+            this.telemetryClient.TrackDependency(dependency);
+
+            return Task.FromResult<IActionResult>(new OkResult());
+        }
+    }
+}
+```
+
+Ebben a példában az egyéni metrikai adatokat a gazdagép összesíti, mielőtt elküldi őket a customMetrics táblába. További információkért tekintse meg a [GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) dokumentációját Application Insights. 
+
+Helyileg történő futtatáskor hozzá kell adnia a `APPINSIGHTS_INSTRUMENTATIONKEY` Application Insights kulccsal rendelkező beállítást a fájl [local.settings.js](functions-run-local.md#local-settings-file) .
+
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+```cs
+using System;
+using System.Net;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.WebJobs;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public static class HttpTrigger2
+    {
+        private static string key = TelemetryConfiguration.Active.InstrumentationKey = 
+            System.Environment.GetEnvironmentVariable(
+                "APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process);
+
+        private static TelemetryClient telemetryClient = 
+            new TelemetryClient() { InstrumentationKey = key };
+
+        [FunctionName("HttpTrigger2")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+            HttpRequestMessage req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.GetQueryNameValuePairs()
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Get request body
+            dynamic data = await req.Content.ReadAsAsync<object>();
+
+            // Set name to query string or body data
+            name = name ?? data?.name;
+         
+            // Track an Event
+            var evt = new EventTelemetry("Function called");
+            UpdateTelemetryContext(evt.Context, context, name);
+            telemetryClient.TrackEvent(evt);
+            
+            // Track a Metric
+            var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
+            UpdateTelemetryContext(metric.Context, context, name);
+            telemetryClient.TrackMetric(metric);
+            
+            // Track a Dependency
+            var dependency = new DependencyTelemetry
+                {
+                    Name = "GET api/planets/1/",
+                    Target = "swapi.co",
+                    Data = "https://swapi.co/api/planets/1/",
+                    Timestamp = start,
+                    Duration = DateTime.UtcNow - start,
+                    Success = true
+                };
+            UpdateTelemetryContext(dependency.Context, context, name);
+            telemetryClient.TrackDependency(dependency);
+        }
+        
+        // Correlate all telemetry with the current Function invocation
+        private static void UpdateTelemetryContext(TelemetryContext context, ExecutionContext functionContext, string userName)
+        {
+            context.Operation.Id = functionContext.InvocationId.ToString();
+            context.Operation.ParentId = functionContext.InvocationId.ToString();
+            context.Operation.Name = functionContext.FunctionName;
+            context.User.Id = userName;
+        }
+    }    
+}
+```
+---
+
+Ne telefonáljon, `TrackRequest` vagy `StartOperation<RequestTelemetry>` mert a függvény meghívásakor duplikált kérelmeket fog látni.  A függvények futtatókörnyezete automatikusan nyomon követi a kérelmeket.
+
+Nincs beállítva `telemetryClient.Context.Operation.Id` . Ez a globális beállítás helytelen korrelációt okoz, ha sok függvény egyidejűleg fut. Ehelyett hozzon létre egy új telemetria-példányt ( `DependencyTelemetry` , `EventTelemetry` ), és módosítsa a `Context` tulajdonságát. Ezután továbbítsa a telemetria-példányt a megfelelő `Track` metódusba `TelemetryClient` ( `TrackDependency()` , `TrackEvent()` , `TrackMetric()` ). Ez a módszer biztosítja, hogy a telemetria megfelelő korrelációs adatokat biztosítson az aktuális függvény meghívásához.
+
 
 ## <a name="environment-variables"></a>Környezeti változók
 
@@ -430,7 +644,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

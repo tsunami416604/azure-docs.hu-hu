@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kerülheti el a teljesítménnyel kapcsolatos p
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: a305c692c63f278c4edc4240f7adf9de22b22c56
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106093"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168307"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Kapcsolatok kezelése Azure Functionsban
 
@@ -21,11 +21,11 @@ A rendelkezésre álló kapcsolatok száma részben korlátozott, mert egy Funct
 
 Ez a korlát/példány. Ha a [méretezési vezérlő](functions-scale.md#how-the-consumption-and-premium-plans-work) felvette a több kérés kezelésére szolgáló Function app-példányokat, minden példányhoz tartozik egy független kapcsolódási korlát. Ez azt jelenti, hogy nincs globális kapcsolati korlát, és az összes aktív példányon több mint 600 aktív kapcsolat lehet.
 
-Hibaelhárítás esetén győződjön meg arról, hogy engedélyezte a Application Insights használatát a Function alkalmazáshoz. Application Insights segítségével megtekintheti a függvények alkalmazásainak (például a végrehajtások) mérőszámait. További információ: [telemetria megtekintése Application Insightsban](functions-monitoring.md#view-telemetry-in-application-insights).  
+Hibaelhárítás esetén győződjön meg arról, hogy engedélyezte a Application Insights használatát a Function alkalmazáshoz. Application Insights segítségével megtekintheti a függvények alkalmazásainak (például a végrehajtások) mérőszámait. További információ: [telemetria megtekintése Application Insightsban](analyze-telemetry-data.md#view-telemetry-in-application-insights).  
 
 ## <a name="static-clients"></a>Statikus ügyfelek
 
-Ha el szeretné kerülni, hogy a szükségesnél több kapcsolat ne legyen használatban, ne hozzon létre újakat az egyes függvények meghívásával. Javasoljuk, hogy az ügyfélkapcsolatokat minden olyan nyelven újra használja, amelyet a függvényének megírásával használhat. Például a .NET-ügyfelek, például a [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1), a [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)és az Azure Storage-ügyfelek kezelhetik a kapcsolatokat, ha egyetlen, statikus ügyfelet használ.
+Ha el szeretné kerülni, hogy a szükségesnél több kapcsolat ne legyen használatban, ne hozzon létre újakat az egyes függvények meghívásával. Javasoljuk, hogy az ügyfélkapcsolatokat minden olyan nyelven újra használja, amelyet a függvényének megírásával használhat. Például a .NET-ügyfelek, például a [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true), a [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)és az Azure Storage-ügyfelek kezelhetik a kapcsolatokat, ha egyetlen, statikus ügyfelet használ.
 
 Az alábbiakban néhány útmutatást talál, ha a szolgáltatásra jellemző ügyfelet használ egy Azure Functions alkalmazásban:
 
@@ -39,7 +39,7 @@ Ez a szakasz az ügyfelek a függvény kódjából történő létrehozásához 
 
 ### <a name="httpclient-example-c"></a>HttpClient-példa (C#)
 
-Íme egy példa a C#-függvény kódjára, amely létrehoz egy statikus [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) -példányt:
+Íme egy példa a C#-függvény kódjára, amely létrehoz egy statikus [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) -példányt:
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +52,7 @@ public static async Task Run(string input)
 }
 ```
 
-A .NET-beli [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) kapcsolatos gyakori kérdés, hogy "érdemes megsemmisíteni az ügyfelem?" Általánosságban elmondható, hogy olyan objektumokat távolít el, amelyek a használat közben lépnek érvénybe `IDisposable` . Azonban nem távolítja el a statikus ügyfelet, mert a függvény befejeződése után nem használja. Azt szeretné, hogy a statikus ügyfél az alkalmazás időtartamára éljünk.
+A .NET-beli [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) kapcsolatos gyakori kérdés, hogy "érdemes megsemmisíteni az ügyfelem?" Általánosságban elmondható, hogy olyan objektumokat távolít el, amelyek a használat közben lépnek érvénybe `IDisposable` . Azonban nem távolítja el a statikus ügyfelet, mert a függvény befejeződése után nem használja. Azt szeretné, hogy a statikus ügyfél az alkalmazás időtartamára éljünk.
 
 ### <a name="http-agent-examples-javascript"></a>HTTP-ügynökre vonatkozó példák (JavaScript)
 
@@ -143,10 +143,10 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient-kapcsolatok
 
-A függvény kódja a .NET-keretrendszer adatszolgáltatóját használhatja SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) számára, hogy kapcsolatot hozzon egy SQL-alapú kapcsolati adatbázissal. Ez a ADO.NET alapuló adatkeretrendszerek alapjául szolgáló szolgáltató is, például [Entity Framework](/ef/ef6/). A [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) és a [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) kapcsolattól eltérően a ADO.NET alapértelmezés szerint implementálja a kapcsolatok készletezését. Mivel azonban továbbra is kifogyhat a kapcsolatok, érdemes optimalizálni a kapcsolatokat az adatbázissal. További információ: [SQL Server kapcsolatok készletezése (ADO.net)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
+A függvény kódja a .NET-keretrendszer adatszolgáltatóját használhatja SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient)) számára, hogy kapcsolatot hozzon egy SQL-alapú kapcsolati adatbázissal. Ez a ADO.NET alapuló adatkeretrendszerek alapjául szolgáló szolgáltató is, például [Entity Framework](/ef/ef6/). A [HttpClient](/dotnet/api/system.net.http.httpclient) és a [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) kapcsolattól eltérően a ADO.NET alapértelmezés szerint implementálja a kapcsolatok készletezését. Mivel azonban továbbra is kifogyhat a kapcsolatok, érdemes optimalizálni a kapcsolatokat az adatbázissal. További információ: [SQL Server kapcsolatok készletezése (ADO.net)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Egyes adatkeretrendszerek (például a Entity Framework) általában a konfigurációs fájl **ConnectionStrings** szakaszából kapják meg a kapcsolatok karakterláncait. Ebben az esetben explicit módon fel kell vennie az SQL Database-kapcsolódási karakterláncokat a Function app-beállítások és a helyi projektben lévő [local.settings.jsfájljának](functions-run-local.md#local-settings-file) a **kapcsolódási karakterláncok** gyűjteményéből. Ha a [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) egy példányát hozza létre, a kapcsolati sztring értékét a többi kapcsolattal együtt kell tárolnia az **Alkalmazásbeállítások** között.
+> Egyes adatkeretrendszerek (például a Entity Framework) általában a konfigurációs fájl **ConnectionStrings** szakaszából kapják meg a kapcsolatok karakterláncait. Ebben az esetben explicit módon fel kell vennie az SQL Database-kapcsolódási karakterláncokat a Function app-beállítások és a helyi projektben lévő [local.settings.jsfájljának](functions-run-local.md#local-settings-file) a **kapcsolódási karakterláncok** gyűjteményéből. Ha a [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) egy példányát hozza létre, a kapcsolati sztring értékét a többi kapcsolattal együtt kell tárolnia az **Alkalmazásbeállítások** között.
 
 ## <a name="next-steps"></a>További lépések
 

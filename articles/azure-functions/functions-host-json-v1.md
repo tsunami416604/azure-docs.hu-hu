@@ -3,12 +3,12 @@ title: host.jsAzure Functions 1. x esetén
 description: Dokumentáció a v1 futtatókörnyezettel rendelkező fájl Azure Functions host.jsához.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81757514"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167720"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.jsAzure Functions 1. x esetén
 
@@ -230,7 +230,7 @@ Ha több Function-alkalmazás között oszt meg egy Storage-fiókot, győződjö
 
 ## <a name="logger"></a>Tuskózó
 
-A [ILogger objektum](functions-monitoring.md#write-logs-in-c-functions) vagy a [Context. log](functions-monitoring.md#write-logs-in-javascript-functions)által írt naplók szűrését vezérli.
+A [ILogger](functions-dotnet-class-library.md#ilogger) objektum vagy a [Context. log](functions-reference-node.md#contextlog-method)által írt naplók szűrését vezérli.
 
 ```json
 {
@@ -340,7 +340,7 @@ Az egyszeri zárolási viselkedés konfigurációs beállításai. További info
 
 *1. x verzió*
 
-Egy objektum használatával létrehozott naplók konfigurációs beállításai `TraceWriter` . Lásd: [C# naplózás](functions-reference-csharp.md#logging) és [Node.js naplózás](functions-reference-node.md#writing-trace-output-to-the-console).
+Egy objektum használatával létrehozott naplók konfigurációs beállításai `TraceWriter` . További információt a [C# naplózás] című témakörben talál.
 
 ```json
 {

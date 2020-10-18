@@ -2,28 +2,26 @@
 title: A fejlesztői környezet beállítása Linuxon
 description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
 ms.topic: conceptual
-ms.date: 2/23/2018
+ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249994"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168409"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
->
->  
+> * [Mac OS X](service-fabric-get-started-mac.md)
 
-Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-fejlesztéshez készült opcionális SDK-kat is telepítheti. 
+Az Azure Service Fabric alkalmazások telepítéséhez és futtatásához [Service-Fabric-Application-model.md] a linuxos fejlesztői gépen telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-fejlesztéshez készült opcionális SDK-kat is telepítheti. 
 
-A cikkben ismertetett lépések azt feltételezik, hogy natív telepítést végez Linuxon, vagy a Service Fabric-tároló beépített rendszerképét használja (`mcr.microsoft.com/service-fabric/onebox:latest`).
+A cikkben ismertetett lépések azt feltételezik, hogy natív módon telepíti a Linux rendszert, vagy használja a (Service Fabric beépített-tároló rendszerképét) [ https://hub.docker.com/_/microsoft-service-fabric-onebox ], például: `mcr.microsoft.com/service-fabric/onebox:u18` .
 
-A Service Fabric-futtatókörnyezet és az SDK telepítése nem támogatott a Linuxra készült Windows alrendszeren. A felhőben máshol vagy a helyszínen üzemeltetett Service Fabric-entitásokat kezelheti az Azure Service Fabric parancssori felületével (CLI), mely támogatott. A parancssori felület telepítési módját a [Service Fabric parancssori felület telepítését](./service-fabric-cli.md) ismertető témakörben találja.
+A felhőben vagy a helyszínen üzemeltetett Service Fabric entitásokat az Azure Service Fabric parancssori felületével (CLI) kezelheti. A parancssori felület telepítési módját a [Service Fabric parancssori felület telepítését](./service-fabric-cli.md) ismertető témakörben találja.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -42,9 +40,17 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak.
 
 ## <a name="installation-methods"></a>Telepítési módok
 
-### <a name="script-installation-ubuntu"></a>Telepítés szkripttel (Ubuntu)
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 
-Az egyszerű használat érdekében megadunk egy szkriptet a Service Fabric-futtatókörnyezetnek és a Service Fabric általános SDK-nak a **sfctl** CLI felülettel együttes telepítéséhez. Futtassa a manuális telepítési lépéseket a következő szakaszban. Láthatja a telepített elemeket és az azokhoz tartozó licenceket. A szkript a futtatáskor azt feltételezi, hogy Ön átolvasta és elfogadja a telepített szoftverek licencfeltételeit.
+# <a name="ubuntu"></a>[Ubuntu](#tab/sdksetupubuntu)
+
+## <a name="update-your-apt-sources"></a>Frissítse az APT-forrásait
+Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz használatával történő telepítéséhez először frissítenie kell az Advanced Packaging Tool (APT) forrásait.
+
+## <a name="script-installation"></a>Telepítés szkripttel
+
+A kényelmes használat érdekében parancsfájlt biztosít a Service Fabric futtatókörnyezet és a Service Fabric Common SDK, valamint a [ **sfctl** CLI](service-fabric-cli.md)telepítésére. A szkript a futtatáskor azt feltételezi, hogy Ön átolvasta és elfogadja a telepített szoftverek licencfeltételeit. Azt is megteheti, hogy futtatja a [manuális telepítési](#manual-installation) lépéseket a következő szakaszban, amely a társított licenceket és a telepítés alatt álló összetevőket is bemutatja.
 
 A szkript sikeres futtatását követően folytathatja a [Helyi fürt beállítása](#set-up-a-local-cluster) lépéssel.
 
@@ -52,13 +58,8 @@ A szkript sikeres futtatását követően folytathatja a [Helyi fürt beállít�
 sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
 ```
 
-### <a name="manual-installation"></a>Manuális telepítés
+## <a name="manual-installation"></a>Manuális telepítés
 A Service Fabric-futtatókörnyezet és az általános SDK manuális telepítéséhez kövesse a jelen útmutató hátralévő részét.
-
-## <a name="update-your-apt-sources-or-yum-repositories"></a>APT-források vagy Yum-adattárak frissítése
-Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz használatával történő telepítéséhez először frissítenie kell az Advanced Packaging Tool (APT) forrásait.
-
-### <a name="ubuntu"></a>Ubuntu
 
 1. Nyisson meg egy terminált.
 
@@ -100,8 +101,30 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
     sudo apt-get update
     ```
 
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>A Service Fabric SDK telepítése és beállítása helyi fürthöz
 
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
+A források frissítése után telepítheti az SDK-t. Telepítse a Service Fabric SDK-csomagot, erősítse meg a telepítést, és fogadja el a licencszerződést.
+
+### <a name="ubuntu"></a>Ubuntu
+
+```bash
+sudo apt-get install servicefabricsdkcommon
+```
+
+> [!TIP]
+>   A következő parancsok automatizálják a Service Fabric-csomagok licenceinek elfogadását:
+>   ```bash
+>   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
+>   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
+>   ```
+
+# <a name="red-hat-enterprise-linux-74"></a>[Red Hat Enterprise Linux 7.4](#tab/sdksetuprhel74)
+
+## <a name="update-your-yum-repositories"></a>A yum-adattárak frissítése
+Az SDK és a kapcsolódó futásidejű csomag a yum parancssori eszköz használatával történő telepítéséhez először frissítenie kell a csomag forrásait.
+
+## <a name="manual-installation-rhel"></a>Manuális telepítés (RHEL)
+A Service Fabric-futtatókörnyezet és az általános SDK manuális telepítéséhez kövesse a jelen útmutató hátralévő részét.
 
 1. Nyisson meg egy terminált.
 2. Töltse le és telepítse az Extra Packages for Enterprise Linux (EPEL) programot.
@@ -129,50 +152,69 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
     sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
     ```
 
-6. Telepítse a .NET SDK-t.
-
-    ```bash
-    yum install rh-dotnet20 -y
-    ```
-
-## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>A Service Fabric SDK telepítése és beállítása helyi fürthöz
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster-rhel"></a>A Service Fabric SDK telepítése és beállítása helyi fürthöz (RHEL)
 
 A források frissítése után telepítheti az SDK-t. Telepítse a Service Fabric SDK-csomagot, erősítse meg a telepítést, és fogadja el a licencszerződést.
-
-### <a name="ubuntu"></a>Ubuntu
-
-```bash
-sudo apt-get install servicefabricsdkcommon
-```
-
-> [!TIP]
->   A következő parancsok automatizálják a Service Fabric-csomagok licenceinek elfogadását:
->   ```bash
->   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
->   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
->   ```
-
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
 
 ```bash
 sudo yum install servicefabricsdkcommon
 ```
 
+---
+
+## <a name="included-packages"></a>Belefoglalt csomagok
 Az SDK-telepítéssel együtt érkező Service Fabric-futtatókörnyezet az alábbi táblázatban szereplő csomagokat tartalmazza. 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-**Ubuntu** | 2.0.0 | AzulJDK 1,8 | Implicit módon az npm-ből | legújabb |
+**Ubuntu** | 2.0.7 | AzulJDK 1,8 | Implicit módon az npm-ből | legújabb |
 **RHEL** | - | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
 
 ## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
-Ha a telepítés befejeződött, indítson egy helyi fürtöt.
+1. Indítsa el a helyi Service Fabric-fürtöt a fejlesztéshez.
+
+# <a name="container-based-local-cluster"></a>[Tároló-alapú helyi fürt](#tab/localclusteroneboxcontainer)
+
+Tároló-alapú Service Fabric- [fürt](https://hub.docker.com/r/microsoft/service-fabric-onebox/)elindítása.
+
+1. Telepítse a Mobyt a Docker-tárolók üzembe helyezéséhez.
+    ```bash
+    sudo apt-get install moby-engine moby-cli -y
+    ```
+2. Frissítse a Docker-démon konfigurációját a gazdagépen a következő beállításokkal, majd indítsa újra a Docker-démont. Részletek: [IPv6-támogatás engedélyezése](https://docs.docker.com/config/daemon/ipv6/)
+
+    ```json
+    {
+        "ipv6": true,
+        "fixed-cidr-v6": "fd00::/64"
+    }
+    ```
+
+3. Indítsa el a fürtöt.<br/>
+    <b>Ubuntu 18,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
+    ```
+
+    <b>Ubuntu 16,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára.
+
+# <a name="local-cluster"></a>[Helyi fürt](#tab/localcluster)
+
+Miután telepítette az SDK-t a fenti lépések használatával, indítson el egy helyi fürtöt.
 
 1. Futtassa a fürttelepítési szkriptet.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
+
+---
 
 2. Nyisson meg egy webböngészőt, és lépjen a **Service Fabric Explorer** () webhelyre `http://localhost:19080/Explorer` . A fürt indításakor megjelenik a Service Fabric Explorer irányítópultja. Eltarthat néhány percig, amíg a rendszer teljesen beállítja a fürtöt. Ha a böngésző nem tudja megnyitni az URL-címet, vagy a Service Fabric Explorer azt mutatja, hogy a rendszer nem áll készen, várjon néhány percet, és próbálkozzon újra.
 
@@ -217,9 +259,9 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
 
 A generátorok telepítése után hozzon létre futtatható vendégalkalmazásokat vagy tárolószolgáltatásokat a `yo azuresfguest` vagy a `yo azuresfcontainer` futtatásával.
 
-## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 fejlesztői környezet beállítása
+## <a name="set-up-net-core-31-development"></a>A .NET Core 3,1-fejlesztés beállítása
 
-Telepítse az [Ubuntu rendszerre készült .NET Core 2.0 SDK-t](https://www.microsoft.com/net/core#linuxubuntu)[a C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md) első lépéseként. A .NET Core 2.0 Service Fabric-alkalmazások csomagjai a NuGet.org webhelyen érhetők el, jelenleg előzetes verzióban.
+Telepítse a [.net Core 3,1 SDK for Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) alkalmazást a [C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md)megkezdéséhez. A .NET Core Service Fabric alkalmazások csomagjai a NuGet.org futnak.
 
 ## <a name="set-up-java-development"></a>Java fejlesztői környezet beállítása
 
@@ -308,7 +350,7 @@ A Service Fabric SDK-k eltávolításához futtassa a következő parancsokat.
     npm uninstall -g generator-azuresfguest
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)

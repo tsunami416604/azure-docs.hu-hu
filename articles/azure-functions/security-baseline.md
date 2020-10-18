@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f22473d4a865e2925ecbfe74d68811c12f7c26d7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107521"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168086"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions Azure biztonsági alapterve
 
@@ -315,7 +315,7 @@ Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmad
 
 - [A Azure Functions diagnosztikai beállításainak engedélyezése](./functions-monitor-log-analytics.md)
 
-- [A Azure Functions Application Insights engedélyezése](./functions-monitoring.md#enable-application-insights-integration)
+- [A Azure Functions Application Insights engedélyezése](./configure-monitoring.md#enable-application-insights-integration)
 
 - [Riasztások létrehozása az Azure-ban](../azure-monitor/learn/tutorial-response.md)
 
@@ -369,7 +369,7 @@ Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmad
 
 **Útmutató**: a Azure Functionshoz való hozzáférés szabályozása Azure Active Directory (ad) segítségével történik. Az Azure AD nem rendelkezik az alapértelmezett jelszavak fogalmával.
 
-Az adatsíkok hozzáférése több módon is szabályozható, beleértve az engedélyezési kulcsokat, a hálózati korlátozásokat és az HRE-identitás érvényességét. Az engedélyezési kulcsokat a Azure Functions HTTP-végpontokhoz csatlakozó ügyfelek használják, és bármikor újra létrehozhatók. Ezek a kulcsok alapértelmezés szerint jönnek létre az új HTTP-végpontokhoz.
+Az adatsíkok hozzáférése több módon is szabályozható, beleértve az engedélyezési kulcsokat, a hálózati korlátozásokat és az Azure AD-identitások érvényességét. Az engedélyezési kulcsokat a Azure Functions HTTP-végpontokhoz csatlakozó ügyfelek használják, és bármikor újra létrehozhatók. Ezek a kulcsok alapértelmezés szerint jönnek létre az új HTTP-végpontokhoz.
 
 Több üzembe helyezési módszer is elérhető az alkalmazások működéséhez, amelyek némelyike generált hitelesítő adatok készletét is kihasználhatja. Tekintse át az alkalmazáshoz használt üzembe helyezési módszereket.
 
@@ -463,7 +463,7 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 - [A Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára](../app-service/configure-authentication-provider-aad.md)
 
-- [HRE-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center figyelés**: igen
 

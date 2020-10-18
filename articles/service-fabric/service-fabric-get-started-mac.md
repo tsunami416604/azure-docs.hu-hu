@@ -2,22 +2,20 @@
 title: Fejlesztői környezet beállítása macOS rendszeren
 description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A telepítés befejezése után készen áll az alkalmazások macOS rendszeren való létrehozására.
 ms.topic: conceptual
-ms.date: 11/17/2017
+ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0d5a31f22fb0472882e3854488fbd1c3249879d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adec05a4d8e34374fe260343c73b1ecd14ba04f1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539860"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168171"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
->
->  
+> * [Mac OS X](service-fabric-get-started-mac.md)
 
 A Mac OS X használatával Linux-fürtökön futó Azure Service Fabric-alkalmazásokat hozhat létre. Ez a cikk bemutatja, hogyan állíthatja be Mac gépét a fejlesztéshez.
 
@@ -53,31 +51,41 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >[!TIP]
     >Javasoljuk, hogy növelje a Docker számára lefoglalt erőforrásokat nagy méretű alkalmazások tesztelése esetén. Ehhez válassza a **Docker ikont**, majd a **Speciális** lehetőséget a magok és a memória számának módosításához.
 
-2. Hozzon létre egy `Dockerfile` nevű fájlt egy új könyvtárban a Service Fabric-rendszerkép létrehozásához:
-
-    ```Dockerfile
-    FROM mcr.microsoft.com/service-fabric/onebox:latest
-    WORKDIR /home/ClusterDeployer
-    RUN ./setup.sh
-    #Generate the local
-    RUN locale-gen en_US.UTF-8
-    #Set environment variables
-    ENV LANG=en_US.UTF-8
-    ENV LANGUAGE=en_US:en
-    ENV LC_ALL=en_US.UTF-8
-    EXPOSE 19080 19000 80 443
-    #Start SSH before running the cluster
-    CMD /etc/init.d/ssh start && ./run.sh
+2. Indítsa el a fürtöt.<br/>
+    <b>Ubuntu 18,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
+    <b>Ubuntu 16,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára.
+
+
+
+3. Nem kötelező: a bővített Service Fabric rendszerkép kiépítése.
+
+    Egy új könyvtárban hozzon létre egy nevű fájlt a `Dockerfile` testreszabott rendszerkép létrehozásához:
+
     >[!NOTE]
-    >Módosíthatja úgy a fájlt, hogy az további programokat vagy függőségeket adjon hozzá a tárolóhoz.
+    >A fenti képen a Docker további programokat vagy függőségeket adhat hozzá a tárolóhoz.
     >A `RUN apt-get install nodejs -y` részlet hozzáadása például lehetővé teszi a `nodejs`-alkalmazások vendég végrehajtható fájlokként való támogatását.
+    ```Dockerfile
+    FROM mcr.microsoft.com/service-fabric/onebox:u18
+    RUN apt-get install nodejs -y
+    EXPOSE 19080 19000 80 443
+    WORKDIR /home/ClusterDeployer
+    CMD ["./ClusterDeployer.sh"]
+    ```
     
     >[!TIP]
-    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára.
+    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára.
 
-3. Az újrafelhasználható rendszerképnek a `Dockerfile` fájlból történő létrehozásához nyissa meg a terminált, és használja a `cd` parancsot a `Dockerfile` fájlt tartalmazó könyvtáron, majd futtassa az alábbi parancsot:
+    Az újrahasznosítható rendszerkép létrehozásához `Dockerfile` nyissa meg a terminált, és `cd` a közvetlenül a következő `Dockerfile` parancsot:
 
     ```bash 
     docker build -t mysfcluster .
@@ -86,7 +94,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >[!NOTE]
     >Ez a művelet eltarthat egy ideig, de csak egyszer kell végrehajtani.
 
-4. Most már gyorsan hozzáadhatja a Service Fabric egy helyi másolatát, amikor csak szükség van rá, az alábbi parancs futtatásával:
+    Most gyorsan elindíthatja Service Fabric helyi példányát, amikor a futtatásához szükség van rá:
 
     ```bash 
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
@@ -97,18 +105,17 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >
     >Ha az alkalmazás bizonyos portokon figyel, a portokat további `-p` címkékkel kell meghatározni. Ha például az alkalmazás a 8080-as porton figyel, adja hozzá az alábbi `-p` címkét:
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
+    >`docker run -itd -p 19000:19000 -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:u18`
     >
 
-5. A fürt eltarthat egy kis ideig. Ha fut, a következő parancs használatával megtekintheti a naplókat, vagy az irányítópultra ugorhat a fürtök állapotának megtekintéséhez `http://localhost:19080` :
+4. A fürt eltarthat egy kis ideig. Ha fut, a következő parancs használatával megtekintheti a naplókat, vagy az irányítópultra ugorhat a fürtök állapotának megtekintéséhez: `http://localhost:19080`
 
     ```bash 
     docker logs sftestcluster
     ```
 
 
-
-6. A tároló leállításához és törléséhez használja a következő parancsot. Ezt a tárolót azonban a következő lépésben fogjuk használni.
+5. A tároló leállításához és tisztításához használja az alábbi parancsot. Ezt a tárolót azonban a következő lépésben fogjuk használni.
 
     ```bash 
     docker rm -f sftestcluster
@@ -118,7 +125,8 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
  
  A Mac gép tárolójában futó helyi fürt ismert korlátozásai a következők: 
  
- * A DNS-szolgáltatás nem fut, és nem támogatott – [132. probléma](https://github.com/Microsoft/service-fabric/issues/132).
+ * A DNS-szolgáltatás nem fut, és jelenleg nem támogatott a tárolón belül. [Probléma #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * A Container-alapú alkalmazások futtatásához az SF futtatására van szükség egy Linux-gazdagépen. A beágyazott tároló alkalmazások jelenleg nem támogatottak.
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>A Service Fabric parancssori felület (sfctl) beállítása Mac gépen
 
@@ -185,9 +193,9 @@ Miután létrehozta és kiépítette a Service Fabric-alkalmazását, a [Service
     bash install.sh
     ```
 
-## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 fejlesztői környezet beállítása
+## <a name="set-up-net-core-31-development"></a>A .NET Core 3,1-fejlesztés beállítása
 
-Telepítse az [Mac rendszerre készült .NET Core 2.0 SDK-t](https://www.microsoft.com/net/core#macos)[a C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md) első lépéseként. A .NET Core 2.0 Service Fabric-alkalmazások csomagjai a NuGet.org webhelyen találhatók, amely jelenleg előzetes verzióban érhető el.
+Telepítse a [.net Core 3,1 SDK for Mac](https://www.microsoft.com/net/core#macos) alkalmazást a [C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md)megkezdéséhez. A .NET Core Service Fabric alkalmazások csomagjai a NuGet.org futnak.
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Az Eclipse-hez készült Service Fabric beépülő modul telepítése Mac gépen
 
@@ -210,7 +218,7 @@ Az attribútumok a következők:
 >Ha a tárolót más, az `sfonebox` névtől eltérő néven indítja, frissítse a név értéket a Service Fabric-aktor Java alkalmazásában lévő testclient.sh fájlban.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 <!-- Links -->
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse-hez készült Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)

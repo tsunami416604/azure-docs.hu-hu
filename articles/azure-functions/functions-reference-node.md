@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317176"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164822"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -18,7 +18,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure Functionst, először olvassa el a következő cikkek egyikét:
 
-| Első lépések | Alapelvek| Interaktív tanulás |
+| Első lépések | Fogalmak| Interaktív tanulás |
 | -- | -- | -- | 
 | <ul><li>[Node.js függvény a Visual Studio Code használatával](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[Node.js függvény a Terminal/Command parancssorral](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -290,49 +290,17 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. A `context.log` (z) rendszeren további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinten történő írására:
+Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írja a folyamatos átviteli függvény naplóit, és más naplózási szintek is elérhetők legyenek. A nyomkövetési naplózást a következő szakaszban részletesen ismertetjük. 
 
+## <a name="write-trace-output-to-logs"></a>Nyomkövetési kimenet írása a naplókba
 
-| Módszer                 | Leírás                                |
-| ---------------------- | ------------------------------------------ |
-| **hiba (_üzenet_)**   | A hiba szintű naplózás vagy az alacsonyabb értékre ír.   |
-| **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű naplózás vagy alacsonyabb értékre írás. |
-| **információ (_üzenet_)**    | Az adatszintű naplózás vagy az alacsonyabb értékre írja az adatokat.    |
-| **részletes (_üzenet_)** | Írás a részletes szintű naplózásba.           |
+A függvények területen a `context.log` metódusokkal lehet nyomkövetési kimenetet írni a naplókba és a konzolba. A híváskor az `context.log()` üzenet a naplókba kerül az alapértelmezett nyomkövetési szinten, amely az _adatok_ nyomkövetési szintje. A függvények integrálva vannak az Azure Application Insights a Function app-naplók jobb rögzítése érdekében. A Application Insights a Azure Monitor részeként lehetővé teszi az alkalmazások telemetria és a nyomkövetési kimenetek gyűjtését, vizuális megjelenítését és elemzését. További információ: [monitoring Azure functions](functions-monitoring.md).
 
-A következő példa egy naplót ír a figyelmeztetési nyomkövetési szintre:
+Az alábbi példa egy naplót ír az információs nyomkövetési szinten, beleértve a Meghívási azonosítót is:
 
 ```javascript
-context.log.warn("Something has happened."); 
+context.log("Something has happened. " + context.invocationId); 
 ```
-
-A [nyomkövetési szint küszöbértékét beállíthatja a naplózáshoz](#configure-the-trace-level-for-console-logging) a fájl host.js. A naplók írásával kapcsolatos további információkért lásd: [nyomkövetési kimenetek írása](#writing-trace-output-to-the-console) alább.
-
-Olvassa el a [figyelési Azure functions](functions-monitoring.md) , ha többet szeretne megtudni a függvények naplóinak megtekintéséről és lekérdezéséről.
-
-## <a name="writing-trace-output-to-the-console"></a>Nyomkövetési kimenet írása a konzolra 
-
-A függvények területen a `context.log` metódusokkal lehet nyomkövetési kimenetet írni a konzolra. A functions v2. x-ben a függvényalkalmazás szinten rögzített nyomkövetési kimenetek `console.log` lesznek rögzítve. Ez azt jelenti, hogy a kimenete `console.log` nem kötődik egy adott függvény meghívásához, és nem jelenik meg egy adott függvény naplóiban. Azonban a Application Insights propagálják őket. A függvények v1. x-ben nem használható a- `console.log` konzolra való íráshoz.
-
-A híváskor az `context.log()` üzenet a konzolra kerül az alapértelmezett nyomkövetési szinten, amely az _adatok_ nyomkövetési szintje. A következő kód a-konzolra ír az információs nyomkövetési szinten:
-
-```javascript
-context.log({hello: 'world'});  
-```
-
-Ez a kód egyenértékű a fenti kóddal:
-
-```javascript
-context.log.info({hello: 'world'});  
-```
-
-Ez a kód a konzolon a hiba szintjén írja a következőt:
-
-```javascript
-context.log.error("An error has occurred.");  
-```
-
-Mivel a _hiba_ a legmagasabb nyomkövetési szint, ez a nyomkövetés minden nyomkövetési szinten a kimenetbe kerül, amíg a naplózás engedélyezve van.
 
 Minden `context.log` metódus támogatja ugyanazt a paraméter-formátumot, amelyet a Node.js [util. Format metódus](https://nodejs.org/api/util.html#util_util_format_format)támogat. Vegye figyelembe a következő kódot, amely az alapértelmezett nyomkövetési szinttel írja be a függvény naplóit:
 
@@ -348,9 +316,39 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', 
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>A konzol naplózási szintjének konfigurálása
+> [!NOTE]  
+> Ne használja `console.log` a-t nyomkövetési kimenetek írásához. Mivel `console.log` a rendszer a függvény alkalmazási szintjén rögzíti a kimenetet, nem kötődik egy adott függvény hívásához, és nem jelenik meg egy adott függvény naplóiban. Emellett a függvények futtatókörnyezetének 1. x verziója nem támogatja a használatát a `console.log` -konzolra való íráshoz.
 
-Az 1. x függvények lehetővé teszik a küszöbérték nyomkövetési szintjének meghatározását a konzolra való íráshoz, így könnyen szabályozható, hogy a rendszer hogyan írja a nyomkövetéseket a konzolra a függvényből. A konzolra írt összes nyomkövetés küszöbértékének megadásához használja a `tracing.consoleLevel` host.jsfájljában található tulajdonságot. Ez a beállítás a Function alkalmazás összes függvényére érvényes. A következő példa a nyomkövetési küszöbértéket állítja be a részletes naplózás engedélyezéséhez:
+### <a name="trace-levels"></a>Nyomkövetési szintek
+
+Az alapértelmezett szinten kívül a következő naplózási módszerek is elérhetők, amelyek lehetővé teszik a függvények naplóinak adott nyomkövetési szinten való írását.
+
+| Metódus                 | Leírás                                |
+| ---------------------- | ------------------------------------------ |
+| **hiba (_üzenet_)**   | Hiba szintű eseményt ír a naplókba.   |
+| **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű eseményt ír a naplókba. |
+| **információ (_üzenet_)**    | Az adatszintű naplózás vagy az alacsonyabb értékre írja az adatokat.    |
+| **részletes (_üzenet_)** | Írás a részletes szintű naplózásba.           |
+
+Az alábbi példa a figyelmeztetési nyomkövetési szinten ugyanazt a naplót írja be az információs szint helyett:
+
+```javascript
+context.log.warn("Something has happened. " + context.invocationId); 
+```
+
+Mivel a _hiba_ a legmagasabb nyomkövetési szint, ez a nyomkövetés minden nyomkövetési szinten a kimenetbe kerül, amíg a naplózás engedélyezve van.
+
+### <a name="configure-the-trace-level-for-logging"></a>Nyomkövetési szint konfigurálása a naplózáshoz
+
+A functions lehetővé teszi a küszöbértékek nyomkövetési szintjének meghatározását a naplókba vagy a konzolba való íráshoz. Az adott küszöbérték-beállítások a függvények futtatókörnyezetének verziójától függenek.
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+A naplókba írt Nyomkövetések küszöbértékének megadásához használja a `logging.logLevel` tulajdonságot a host.jsfájljában. Ezzel a JSON-objektummal meghatározhatja a Function alkalmazás összes függvényének alapértelmezett küszöbértékét, és meghatározhatja az egyes függvények adott küszöbértékeit is. További információ: [a Azure functions figyelésének konfigurálása](configure-monitoring.md).
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+A naplókba és a konzolba írt összes nyomkövetés küszöbértékének megadásához használja a `tracing.consoleLevel` host.jsfájljában található tulajdonságot. Ez a beállítás a Function alkalmazás összes függvényére érvényes. A következő példa a nyomkövetési küszöbértéket állítja be a részletes naplózás engedélyezéséhez:
 
 ```json
 {
@@ -360,7 +358,65 @@ Az 1. x függvények lehetővé teszik a küszöbérték nyomkövetési szintjé
 }  
 ```
 
-A **consoleLevel** értékei a metódusok neveinek felelnek meg `context.log` . Ha le szeretné tiltani az összes nyomkövetési naplózást a konzolon, állítsa a **consoleLevel** beállítást _ki_értékre. További információ: [host.json Reference](functions-host-json-v1.md).
+A **consoleLevel** értékei a metódusok neveinek felelnek meg `context.log` . Ha le szeretné tiltani az összes nyomkövetési naplózást a konzolon, állítsa a **consoleLevel** beállítást _ki_értékre. További információ: [host.jsa v1. x dokumentációjában](functions-host-json-v1.md).
+
+---
+
+### <a name="log-custom-telemetry"></a>Egyéni telemetria naplózása
+
+Alapértelmezés szerint a függvények a kimenetet nyomkövetésként Application Insightsba írja. A további szabályozáshoz Ehelyett használhatja a [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) -t, hogy egyéni telemetria-adatait küldjön a Application Insights-példányra. 
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.operationId};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+---
+
+A `tagOverrides` paraméter beállítja a `operation_Id` függvény Meghívási azonosítóját. Ez a beállítás lehetővé teszi egy adott függvény összes automatikusan generált és egyéni telemetria korrelációját.
 
 ## <a name="http-triggers-and-bindings"></a>HTTP-eseményindítók és-kötések
 
@@ -720,7 +776,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

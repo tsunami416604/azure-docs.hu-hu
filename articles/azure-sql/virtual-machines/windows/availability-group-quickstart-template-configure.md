@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 207ee67c207f028b5f4bd45d99a7ef431429debb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf5c3f7d854081c7306a038cc452b620d1af00d0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293568"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167991"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure Gyorsindítás sablonok használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,6 +33,8 @@ Ez a cikk azt ismerteti, hogyan használható az Azure gyorsindítási sablonok 
    | &nbsp; | &nbsp; |
 
 A rendelkezésre állási csoport konfigurációjának más részeit manuálisan kell elvégezni, például a rendelkezésre állási csoport létrehozását és a belső terheléselosztó létrehozását. Ez a cikk az automatikus és manuális lépések sorát ismerteti.
+
+Habár ez a cikk az Azure rövid útmutató sablonjaival konfigurálja a rendelkezésre állási csoport környezetét, a [Azure Portal](availability-group-azure-portal-configure.md), a [PowerShell vagy az Azure CLI](availability-group-az-commandline-configure.md)használatával, vagy [manuálisan](availability-group-manually-configure-tutorial.md) is megteheti. 
  
 
 ## <a name="prerequisites"></a>Előfeltételek 
@@ -102,6 +104,9 @@ A szokásos módon hozza létre manuálisan a rendelkezésre állási csoportot 
 > Jelenleg *ne hozzon* létre figyelőt, mert az **101-SQL-VM-aglistener-Setup**  rövid útmutató sablonja a 4. lépésben automatikusan elvégezhető. 
 
 ## <a name="create-load-balancer"></a>Terheléselosztó létrehozása
+
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
 Az Always On rendelkezésre állási csoport figyelője a Azure Load Balancer belső példányát igényli. A belső terheléselosztó egy "lebegő" IP-címet biztosít a rendelkezésre állási csoport figyelője számára, amely gyorsabb feladatátvételt és újracsatlakoztatást tesz lehetővé. Ha a rendelkezésre állási csoportban lévő SQL Server virtuális gépek ugyanazon rendelkezésre állási csoportba tartoznak, alapszintű Load balancert is használhat. Ellenkező esetben standard Load balancert kell használnia. 
 
 > [!IMPORTANT]

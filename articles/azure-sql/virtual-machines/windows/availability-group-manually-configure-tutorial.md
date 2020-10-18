@@ -14,28 +14,29 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee249a33187c3f8776cfc8fc750590c58f74579e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360922"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168154"
 ---
-# <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Oktatóanyag: SQL Server rendelkezésre állási csoport konfigurálása az Azure Virtual Machines-on manuálisan
-
+# <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>Oktatóanyag: rendelkezésre állási csoport manuális konfigurálása (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre SQL Server always on rendelkezésre állási csoportot az Azure Virtual Machines-on. A teljes oktatóanyag egy rendelkezésre állási csoportot hoz létre két SQL Server adatbázis-replikával.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre always on rendelkezésre állási csoportot az Azure Virtual Machines (VM) SQL Serverához. A teljes oktatóanyag egy rendelkezésre állási csoportot hoz létre két SQL Server adatbázis-replikával.
 
-**Becsült időtartam**: az előfeltételek teljesítése után körülbelül 30 percet vesz igénybe.
+Habár ez a cikk manuálisan konfigurálja a rendelkezésre állási csoport környezetét, ez a [Azure Portal](availability-group-azure-portal-configure.md), a [PowerShell vagy az Azure CLI](availability-group-az-commandline-configure.md), illetve az Azure-gyorsindítási [sablonok](availability-group-quickstart-template-configure.md) használatával is lehetséges. 
 
-A diagram az oktatóanyagban felépített tudnivalókat mutatja be.
 
-![Rendelkezésreállási csoport](./media/availability-group-manually-configure-tutorial/00-EndstateSampleNoELB.png)
+**Becsült időtartam**: az [Előfeltételek](availability-group-manually-configure-prerequisites-tutorial.md) teljesítése után körülbelül 30 percet vesz igénybe.
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag feltételezi, hogy rendelkezik SQL Server always on rendelkezésre állási csoportokkal kapcsolatos alapvető ismeretekkel. Ha további információra van szüksége, tekintse [meg az Always On rendelkezésre állási csoportok áttekintése (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)című témakört.
+
+Az oktatóanyag megkezdése előtt be kell [fejeznie az Always On rendelkezésre állási csoportok létrehozásához szükséges előfeltételeket az Azure Virtual Machinesban](availability-group-manually-configure-prerequisites-tutorial.md). Ha ezek az előfeltételek már befejeződtek, ugorjon a [fürt létrehozása](#CreateCluster)lehetőségre.
 
 A következő táblázat felsorolja azokat az előfeltételeket, amelyeket el kell végeznie az oktatóanyag megkezdése előtt:
 
@@ -49,11 +50,8 @@ A következő táblázat felsorolja azokat az előfeltételeket, amelyeket el ke
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Feladatátvételi fürtszolgáltatás hozzáadása** | Mindkét SQL Server példánynak szüksége van erre a szolgáltatásra |
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Telepítési tartományi fiók** | -Helyi rendszergazda az egyes SQL Servereken <br/> -SQL Server sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagja SQL Server egyes példányaihoz  |
 
-
-Az oktatóanyag megkezdése előtt be kell [fejeznie az Always On rendelkezésre állási csoportok létrehozásához szükséges előfeltételeket az Azure Virtual Machinesban](availability-group-manually-configure-prerequisites-tutorial.md). Ha ezek az előfeltételek már befejeződtek, ugorjon a [fürt létrehozása](#CreateCluster)lehetőségre.
-
-  >[!NOTE]
-  > Az oktatóanyagban ismertetett lépések közül sokat automatizálhat az [Azure SQL VM parancssori](availability-group-az-cli-configure.md) felülettel és az [Azure Gyorsindítás sablonjaival](availability-group-quickstart-template-configure.md).
+>[!NOTE]
+> Az oktatóanyagban ismertetett lépések közül sokat automatizálhat a [Azure Portal](availability-group-azure-portal-configure.md), [a PowerShell és az az az CLI](availability-group-az-cli-configure.md) és az [Azure gyorsindítási sablonok](availability-group-quickstart-template-configure.md)használatával.
 
 
 <!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
@@ -139,7 +137,7 @@ Ebben a példában a Windows-fürt fájlmegosztást használ a fürt Kvórumána
 
 1. Kattintson a jobb gombbal a **megosztások**elemre, és válassza az **új megosztás...** lehetőséget.
 
-   ![Új megosztás](./media/availability-group-manually-configure-tutorial/48-newshare.png)
+   ![Kattintson a jobb gombbal a Megosztások elemre, és válassza az új megosztás](./media/availability-group-manually-configure-tutorial/48-newshare.png)
 
    Megosztás létrehozásához használja **a megosztott mappa létrehozása varázslót** .
 
@@ -153,7 +151,7 @@ Ebben a példában a Windows-fürt fájlmegosztást használ a fürt Kvórumána
 
 1. Győződjön meg arról, hogy a fürt létrehozásához használt fiók teljes hozzáféréssel rendelkezik.
 
-   ![Új megosztás](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
+   ![Győződjön meg arról, hogy a fürt létrehozásához használt fiók teljes körű vezérléssel rendelkezik](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
 
 1. Válassza az **OK** lehetőséget.
 
@@ -169,7 +167,7 @@ Ezután állítsa be a fürt kvórumát.
 
 1. **Feladatátvevőfürt-kezelő**kattintson a jobb gombbal a fürtre, mutasson a **További műveletek**pontra, majd válassza a **fürt kvórum beállításainak konfigurálása..**. lehetőséget.
 
-   ![Új megosztás](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
+   ![Válassza a fürt kvórum beállításainak konfigurálása lehetőséget.](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
 
 1. A **fürt Kvórumának konfigurálása varázslóban**kattintson a **Tovább gombra**.
 
@@ -191,13 +189,13 @@ A fürt alapvető erőforrásai egy tanúsító fájlmegosztás használatára v
 
 ## <a name="enable-availability-groups"></a>Rendelkezésre állási csoportok engedélyezése
 
-Ezután engedélyezze a **AlwaysOn rendelkezésre állási csoportok** funkciót. Hajtsa végre ezeket a lépéseket mindkét SQL Serveren.
+Ezután engedélyezze az **AlAlwaysOnon rendelkezésre állási csoportok** funkciót. Hajtsa végre ezeket a lépéseket mindkét SQL Serveren.
 
 1. A **kezdőképernyőn** indítsa el a **SQL Server konfigurációkezelő**.
 2. A böngésző fáján válassza a **SQL Server szolgáltatások**elemet, majd kattintson a jobb gombbal a **SQL Server (MSSQLSERVER)** szolgáltatásra, és válassza a **Tulajdonságok**lehetőséget.
-3. Válassza a **AlwaysOn magas rendelkezésre állása** lapot, majd válassza a **AlwaysOn rendelkezésre állási csoportok engedélyezése**lehetőséget a következő módon:
+3. Válassza a **AlwaysOn magas rendelkezésre állása** lapot, majd válassza az **alAlwaysOnon rendelkezésre állási csoportok engedélyezése**lehetőséget az alábbiak szerint:
 
-    ![AlwaysOn rendelkezésre állási csoportok engedélyezése](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
+    ![AlAlwaysOnon rendelkezésre állási csoportok engedélyezése](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
 
 4. Kattintson az **Alkalmaz** gombra. A felugró párbeszédpanelen kattintson az **OK gombra** .
 
@@ -208,7 +206,7 @@ Ismételje meg ezeket a lépéseket a többi SQL Server.
 <!-----------------
 ## <a name="endpoint-firewall"></a>Open firewall for the database mirroring endpoint
 
-Each instance of SQL Server that participates in an Availability Group requires a database mirroring endpoint. This endpoint is a TCP port for the instance of SQL Server that is used to synchronize the database replicas in the Availability Groups on that instance.
+Each instance of SQL Server that participates in an availability group requires a database mirroring endpoint. This endpoint is a TCP port for the instance of SQL Server that is used to synchronize the database replicas in the availability groups on that instance.
 
 On both SQL Servers, open the firewall for the TCP port for the database mirroring endpoint.
 
@@ -242,7 +240,7 @@ Repeat these steps on the second SQL Server.
 
 1. Kattintson a jobb gombbal a **megosztások**elemre, és válassza az **új megosztás...** lehetőséget.
 
-   ![Új megosztás](./media/availability-group-manually-configure-tutorial/48-newshare.png)
+   ![Új megosztás kiválasztása](./media/availability-group-manually-configure-tutorial/48-newshare.png)
 
    Megosztás létrehozásához használja **a megosztott mappa létrehozása varázslót** .
 
@@ -256,7 +254,7 @@ Repeat these steps on the second SQL Server.
 
 1. Győződjön meg arról, hogy mindkét kiszolgáló SQL Server és SQL Server Agent szolgáltatás fiókja teljes hozzáféréssel rendelkezik.
 
-   ![Új megosztás](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
+   ![Győződjön meg arról, hogy mindkét kiszolgáló SQL Server és SQL Server Agent szolgáltatás fiókja teljes hozzáféréssel rendelkezik.](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
 
 1. Válassza az **OK** lehetőséget.
 
@@ -285,7 +283,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 
     ![Új rendelkezésre állási csoport elindítása varázsló](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
 
-2. A **Bevezetés** lapon válassza a **tovább**lehetőséget. A rendelkezésre **állási csoport nevének megadása** lapon adja meg a rendelkezésre állási **csoport nevét a**rendelkezésre állási csoport nevében. Például **AG1**. Kattintson a **Tovább** gombra.
+2. A **Bevezetés** lapon válassza a **tovább**lehetőséget. A rendelkezésre **állási csoport nevének megadása** lapon adja meg a rendelkezésre állási **csoport nevét a**rendelkezésre állási csoport nevében. Például: **AG1**. Kattintson a **Tovább** gombra.
 
     ![Új rendelkezésre állási csoport varázsló, rendelkezésre állási csoport nevének megadása](./media/availability-group-manually-configure-tutorial/58-newagname.png)
 
@@ -317,7 +315,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
    >A teljes szinkronizálás teljes biztonsági mentést készít az adatbázisról SQL Server első példányán, és visszaállítja a második példányra. Nagyméretű adatbázisok esetén a teljes szinkronizálás nem ajánlott, mert hosszú időt is igénybe vehet. Ezt az időt manuálisan is elvégezheti, ha kézzel készít biztonsági másolatot az adatbázisról, és visszaállítja azt `NO RECOVERY` . Ha az adatbázis már vissza van állítva a `NO RECOVERY` második SQL Server a rendelkezésre állási csoport konfigurálása előtt, válassza a **csak csatlakozás**lehetőséget. Ha a rendelkezésre állási csoport konfigurálása után szeretné a biztonsági mentést készíteni, válassza a **kezdeti adatszinkronizálás kihagyása**lehetőséget.
    >
 
-   ![Új rendelkezésre állási csoport varázsló, válassza a kezdeti adatszinkronizálás lehetőséget.](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
+   ![Válassza ki a kezdeti adatszinkronizálás kihagyása lehetőséget.](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
 
 9. Az **Érvényesítés** lapon válassza a **tovább**lehetőséget. Ennek a lapnak a következő képhez hasonlóan kell kinéznie:
 
@@ -340,13 +338,13 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 
    A **AlwaysOn irányítópultjának** az alábbi képernyőképhez hasonlóan kell kinéznie:
 
-   ![Rendelkezésre állási csoport irányítópultja](./media/availability-group-manually-configure-tutorial/78-agdashboard.png)
+   ![rendelkezésre állási csoport irányítópultja](./media/availability-group-manually-configure-tutorial/78-agdashboard.png)
 
    Láthatja a replikákat, az egyes replikák feladatátvételi módját, valamint a szinkronizálási állapotot.
 
 2. A **Feladatátvevőfürt-kezelő**területen válassza ki a fürtöt. Válassza a **szerepkörök**lehetőséget. A használt rendelkezésre állási csoport neve a fürt egyik szerepköre. A rendelkezésre állási csoport nem rendelkezik IP-címmel az ügyfélkapcsolatokhoz, mert nem konfigurált egy figyelőt. Az Azure Load Balancer létrehozása után konfigurálnia kell a figyelőt.
 
-   ![Rendelkezésre állási csoport a Feladatátvevőfürt-kezelő](./media/availability-group-manually-configure-tutorial/80-clustermanager.png)
+   ![rendelkezésre állási csoport a Feladatátvevőfürt-kezelő](./media/availability-group-manually-configure-tutorial/80-clustermanager.png)
 
    > [!WARNING]
    > Ne próbálkozzon a rendelkezésre állási csoport feladatátvételével a Feladatátvevőfürt-kezelő. Az összes feladatátvételi műveletet a SSMS **AlwaysOn-irányítópultján** belül kell végrehajtani. További információ: [a Feladatátvevőfürt-kezelő és a rendelkezésre állási csoportok használatának korlátozásai](https://msdn.microsoft.com/library/ff929171.aspx).
@@ -358,6 +356,8 @@ Ezen a ponton van egy rendelkezésre állási csoport, amely replikákat tartalm
 
 ## <a name="create-an-azure-load-balancer"></a>Azure-terheléselosztó létrehozása
 
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
 Az Azure Virtual Machines szolgáltatásban egy SQL Server rendelkezésre állási csoport terheléselosztó szükséges. A terheléselosztó tárolja a rendelkezésre állási csoport figyelők és a Windows Server feladatátvevő fürt IP-címeit. Ez a szakasz összefoglalja, hogyan hozható létre a terheléselosztó a Azure Portalban.
 
 Az Azure-ban a terheléselosztó lehet standard Load Balancer vagy egy alapszintű Load Balancer. Standard Load Balancer több funkcióval rendelkezik, mint az alapszintű Load Balancer. Rendelkezésre állási csoport esetén a standard Load Balancerra akkor van szükség, ha rendelkezésre állási zónát használ (a rendelkezésre állási csoport helyett). A terheléselosztó SKU közötti különbség részleteiért lásd: [Load BALANCER SKU-összehasonlítás](../../../load-balancer/skus.md).
@@ -365,7 +365,7 @@ Az Azure-ban a terheléselosztó lehet standard Load Balancer vagy egy alapszint
 1. A Azure Portal nyissa meg az erőforráscsoportot, amelyben az SQL-kiszolgálókat, majd válassza a **+ Hozzáadás**lehetőséget.
 1. **Load Balancer**keresése. Válassza ki a Microsoft által közzétett terheléselosztó.
 
-   ![Rendelkezésre állási csoport a Feladatátvevőfürt-kezelő](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
+   ![Válassza ki a Microsoft által közzétett terheléselosztó](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
 
 1. Kattintson a **Létrehozás** gombra.
 1. Konfigurálja a terheléselosztó következő paramétereit.

@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: aee6e6d8ca505bfdcfd4a51e4693779f44b2b0c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8c0aef1817581e2b09297d8807676cf0049e1d3e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226445"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169076"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Linux Speech Devices SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként való használatához. Jelenleg csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott.
 
@@ -70,7 +70,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Az **Eclipse ide-indító** **munkaterület** mezőjébe írja be az új munkaterület-könyvtár nevét. Ezután válassza a **Launch** (Indítás) lehetőséget.
 
-   ![Az Eclipse Launcher képernyőképe](../media/speech-devices-sdk/eclipse-launcher-linux.png)
+   ![Képernyőkép, amely az Eclipse indítót jeleníti meg.](../media/speech-devices-sdk/eclipse-launcher-linux.png)
 
 1. Az Eclipse IDE főablaka hamarosan megjelenik. Ha megnyílt, zárja be az üdvözlőképernyőt.
 
@@ -161,22 +161,22 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Elindul a Speech Devices SDK példa alkalmazás, amely a következő lehetőségeket jeleníti meg:
 
-   ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](../media/speech-devices-sdk/java-sample-app-linux.png)
+   ![A Speech Devices SDK-példa alkalmazást és beállításokat bemutató képernyőkép.](../media/speech-devices-sdk/java-sample-app-linux.png)
 
 1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet**  >  **elindításával**. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor `participants.properties` a projekt mappájában lévő **cél/osztályokba**helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
 
-   ![Bemutató beszélgetés átirata alkalmazás](../media/speech-devices-sdk/cts-sample-app-linux.png)
+   ![Képernyőkép, amely bemutatja a bemutató beszélgetési alkalmazás átiratát.](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
 ## <a name="create-and-run-standalone-the-application"></a>Önálló alkalmazás létrehozása és futtatása
 
 1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza az **Exportálás**lehetőséget. 
 1. Megjelenik az **Exportálás** ablak. Bontsa ki a **javát** , és válassza a **futtatható jar-fájl** lehetőséget, majd kattintson a **tovább**gombra.
 
-   ![Az exportálási ablak képernyőképe](../media/speech-devices-sdk/eclipse-export-linux.png) 
+   ![Az exportálási ablakot megjelenítő képernyőkép.](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
 1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra**.
  
-   ![Képernyőfelvétel a futtatható JAR-fájl exportálásáról](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
+   ![A futtatható JAR-fájl exportálási ablakát megjelenítő képernyőkép.](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 
 1. Adja `kws.table` `participants.properties` meg a fent kiválasztott célmappát, mivel az alkalmazásnak szüksége van rájuk.
 

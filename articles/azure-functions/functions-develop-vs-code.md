@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 1614ac0711c6a83d7e303b5a4b6ebbdf23ba2e03
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104070"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167899"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Az Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -93,7 +93,7 @@ A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a 
 
 A nyelvtől függően ezek a többi fájl is létrejön:
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * A függvényt megvalósító [HttpExample.cs-függvénytár-fájl](functions-dotnet-class-library.md#functions-class-library-project) .
 
@@ -125,7 +125,7 @@ Ezen a ponton adhat hozzá bemeneti és kimeneti kötéseket a függvényhez a [
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések a kiterjesztési csomagokban vannak implementálva. Telepítenie kell a kiterjesztési csomagokat a szükséges eseményindítók és kötések számára. A kötési bővítmények telepítésének folyamata a projekt nyelvétől függ.
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a projektben szükséges kiterjesztési csomagok telepítéséhez. A következő parancs telepíti az Azure Storage bővítményt, amely a blob, a várólista és a Table Storage kötéseit valósítja meg.
 
@@ -145,7 +145,7 @@ Hozzáadhat egy új függvényt egy meglévő projekthez az előre meghatározot
 
 A művelet eredménye a projekt nyelvétől függ:
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A rendszer új C#-függvénytárat (. cs) ad hozzá a projekthez.
 
@@ -161,7 +161,7 @@ A függvényt kiterjesztheti a bemeneti és kimeneti kötések hozzáadásával.
 
 Az alábbi példák egy nevű Storage-várólistához csatlakoznak `outqueue` , ahol a Storage-fiók kapcsolati karakterlánca a `MyStorageConnection` local.settings.jsalkalmazás beállításában van beállítva.
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus-definícióhoz:
 
@@ -384,15 +384,13 @@ További információ: [streaming logs](functions-monitoring.md#streaming-logs).
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> A folyamatos átviteli naplók csak a functions gazdagép egyetlen példányát támogatják. Ha a függvény több példányra van méretezve, a más példányokból származó adatok nem jelennek meg a log streamben. A Application Insights [élő metrikastream](../azure-monitor/app/live-stream.md) több példányt támogat. A streaming Analytics közel valós időben is a [mintavételezésen](functions-monitoring.md#configure-sampling)alapul.
+> A folyamatos átviteli naplók csak a functions gazdagép egyetlen példányát támogatják. Ha a függvény több példányra van méretezve, a más példányokból származó adatok nem jelennek meg a log streamben. A Application Insights [élő metrikastream](../azure-monitor/app/live-stream.md) több példányt támogat. A streaming Analytics közel valós időben is a [mintavételezésen](configure-monitoring.md#configure-sampling)alapul.
 
 ### <a name="application-insights"></a>Application Insights
 
-Javasoljuk, hogy figyelje a függvények végrehajtását úgy, hogy integrálja a Function alkalmazást a Application Insightsával. Ha a Azure Portalban hoz létre egy Function alkalmazást, az integráció alapértelmezés szerint bekövetkezik. Ha a Visual Studio Publishing szolgáltatásban hozza létre a Function alkalmazást, integrálnia kell Application Insights magát.
+Javasoljuk, hogy figyelje a függvények végrehajtását úgy, hogy integrálja a Function alkalmazást a Application Insightsával. Ha a Azure Portalban hoz létre egy Function alkalmazást, az integráció alapértelmezés szerint bekövetkezik. Ha a Visual Studio Publishing szolgáltatásban hozza létre a Function alkalmazást, integrálnia kell Application Insights magát. További információt a [Application Insights integrációjának engedélyezése](configure-monitoring.md#enable-application-insights-integration)című témakörben talál.
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-További információért lásd: [Azure functions figyelése](functions-monitoring.md).
+Ha többet szeretne megtudni a Application Insights használatával végzett figyelésről, tekintse meg a [Azure functions figyelése](functions-monitoring.md)című témakört.
 
 ## <a name="c-script-projects"></a>C \# parancsfájl-projektek
 

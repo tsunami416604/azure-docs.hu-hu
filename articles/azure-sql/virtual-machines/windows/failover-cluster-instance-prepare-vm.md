@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272498"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164244"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuális gépek előkészítése a (z) rendszerhez (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -101,14 +101,14 @@ Az erőforrás-szolgáltató regisztrációjának törlése után eltávolíthat
 
 Az egyes virtuális gépeken nyissa meg a SQL Server által használt Windows tűzfal TCP-portot. Alapértelmezés szerint ez a 1433-es port. A SQL Server portot azonban módosíthatja egy Azure-beli virtuális gép üzembe helyezése során, így megnyithatja azt a portot, amelyet SQL Server használ a környezetben. Ez a port automatikusan megnyílik az Azure Marketplace-en üzembe helyezett SQL Server rendszerképeken. 
 
-[Terheléselosztó](hadr-vnn-azure-load-balancer-configure.md)használata esetén meg kell nyitnia azt a portot is, amelyet az állapot-mintavétel használ. Alapértelmezés szerint ez a 59999-es port. A terheléselosztó létrehozásakor azonban bármilyen TCP-port is megadható. 
+[Terheléselosztó](failover-cluster-instance-vnn-azure-load-balancer-configure.md)használata esetén meg kell nyitnia azt a portot is, amelyet az állapot-mintavétel használ. Alapértelmezés szerint ez a 59999-es port. A terheléselosztó létrehozásakor azonban bármilyen TCP-port is megadható. 
 
 Ez a tábla a szükséges portokat részletezi az Ön által megnyitható portoktól függően: 
 
    | Cél | Port | Jegyzetek
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot. </br> </br> **Felhasználta**: az összes%-os konfiguráció. |
-   | Állapotadat-mintavétel | TCP 59999 | Bármilyen nyitott TCP-port. Konfigurálja a terheléselosztó [állapotának](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) mintavételét és a fürtöt a port használatára. </br> </br> **A**(z): a Load Balancer használatával. |
+   | Állapotadat-mintavétel | TCP 59999 | Bármilyen nyitott TCP-port. Konfigurálja a terheléselosztó [állapotának](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) mintavételét és a fürtöt a port használatára. </br> </br> **A**(z): a Load Balancer használatával. |
    | Fájlmegosztás | UDP 445 | A fájlmegosztási szolgáltatás által használt port. </br> </br> **A**(z): verzió prémium fájlmegosztás használatával. |
 
 ## <a name="join-the-domain"></a>Csatlakozás a tartományhoz
@@ -120,7 +120,7 @@ A virtuális gépeket is csatlakoztatnia kell a tartományhoz. Ezt megteheti egy
 Az Azure piactéren létrehozott virtuális gépekhez csatlakoztatott tároló tartozik. Ha a prémium szintű fájlmegosztás vagy az Azure Shared Disks használatával tervezi beállítani a (z)%-os tárhelyet, eltávolíthatja a csatlakoztatott tárolót a költségek mentéséhez, mivel a rendszer a feladatátvevő fürt példányához nem használja a helyi tárterületet. Azonban lehetséges, hogy a csatlakoztatott tárolót Közvetlen tárolóhelyek-es verziós megoldásokhoz is használhatja, ezért előfordulhat, hogy a rendszer nem segít eltávolítani őket ebben az esetben. Tekintse át a következőt:-es tárolási megoldás annak megállapításához, hogy a csatlakoztatott tároló eltávolítása optimális-e a költségek megtakarításához 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy előkészítette a virtuális gép környezetét, készen áll a feladatátvevő fürt példányának konfigurálására. 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e87e3d59fec354ca3590a79accb45a74172793b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60456726"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167882"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>A Storage Explorer használata az Azure File Storage szolgáltatással
 
@@ -73,7 +73,7 @@ A következő lépések bemutatják, hogyan tekintheti meg egy fájlmegosztás t
 
 1. A fájlmegosztás tartalma megjelenik a fő ablaktáblán.
     
-    ![A megosztás tartalma](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![Képernyőfelvétel a megosztás fő paneljéről Storage Explorer a megosztás tartalmának megjelenítéséhez.](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>Fájlmegosztás törlése
 
@@ -191,7 +191,7 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
 
 1.  A fájlmegosztás tartalma megjelenik a fő ablaktáblán.
 
-    ![A megosztás tartalma](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![Képernyőkép a Storage Explorer fájlmegosztás myazurefileshare fő paneljéről, amely a megosztás tartalmát mutatja az első kiválasztott mappával.](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  A fájlmegosztás tartalma megjelenik a fő ablaktáblán.
 

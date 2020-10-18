@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a5f92e0092d3e20db25b519fec46e6018dd543
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514921"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168018"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatikus vész-helyreállítási megoldás a StorSimple-on üzemeltetett fájlmegosztás Azure Site Recovery használatával
 
@@ -294,7 +294,7 @@ A feladatátvételi teszt során Active Directoryra vonatkozó megfontolásokér
 1. A Azure Portal válassza a fájlkiszolgáló virtuális géphez létrehozott **Recovery Services** - &gt; tároló **helyreállítási terveket (site Recovery)** &gt; **recoveryplan_name** .
 1. A helyreállítási terv panelen kattintson a **további** &gt; **tervezett feladatátvétel**lehetőségre.  
 
-   ![Helyreállítási terv](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
+   ![Képernyőkép a tervezett feladatátvételi és feladatátvételi lehetőségekről.](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 1. A **tervezett feladatátvétel megerősítése** panelen válassza ki a forrás-és célhelyeket, válassza a célként kijelölt hálózat lehetőséget, majd kattintson a pipa ikonra ✓ a feladatátvételi folyamat elindításához.
 1. A replika virtuális gépek létrehozása után a rendszer függőben lévő állapotban van. A feladatátvétel elvégzéséhez kattintson a **véglegesít** gombra.
 1. A replikáció befejezése után a virtuális gépek a másodlagos helyen kezdődnek.
@@ -361,5 +361,5 @@ A kapacitás megtervezése legalább két fontos folyamatból tevődik fel:
   > Futtassa újra a helyreállítási tervet a készülék feladatátvételének befejeződése után.
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A Azure Site Recovery használatával létrehozhat egy teljes automatikus vész-helyreállítási tervet egy olyan fájlkiszolgáló virtuális géphez, amely a StorSimple-tárolón üzemeltetett fájlmegosztást tárolja. A feladatátvételt másodpercek alatt elindíthatja bárhonnan, megszakítás esetén, és néhány percen belül üzembe helyezheti és futtathatja az alkalmazást.

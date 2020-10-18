@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715944"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167695"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -131,8 +131,8 @@ Ha saját naplózási szolgáltatóra van szüksége, regisztráljon egy egyéni
 A Application Insights Azure Functions automatikusan hozzáadja.
 
 > [!WARNING]
-> - Ne adja hozzá `AddApplicationInsightsTelemetry()` a szolgáltatások gyűjteményhez, mert regisztrálja azokat a szolgáltatásokat, amelyek ütköznek a környezet által nyújtott szolgáltatásokkal.
-> - Ne regisztrálja saját magát, `TelemetryConfiguration` vagy `TelemetryClient` Ha a beépített Application Insights funkciót használja. Ha konfigurálnia kell a saját `TelemetryClient` példányát, hozzon létre egyet a befecskendezés használatával, `TelemetryConfiguration` ahogyan az [Azure functions figyelése](./functions-monitoring.md#version-2x-and-later-2)című részen látható.
+> - Ne adja hozzá `AddApplicationInsightsTelemetry()` a szolgáltatások gyűjteményhez, amely regisztrálja azokat a szolgáltatásokat, amelyek ütköznek a környezet által nyújtott szolgáltatásokkal.
+> - Ne regisztrálja saját magát `TelemetryConfiguration` , vagy `TelemetryClient` Ha a beépített Application Insights funkciót használja. Ha konfigurálnia kell a saját `TelemetryClient` példányát, hozzon létre egyet a befecskendezés használatával, ahogyan az a `TelemetryConfiguration` [C# függvények napló egyéni telemetria](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions)is látható.
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> és ILoggerFactory
 
@@ -287,7 +287,7 @@ namespace MyNamespace
 }
 ```
 
-Adja hozzá a konfigurációs szolgáltatókat a `ConfigurationBuilder` tulajdonságához `IFunctionsConfigurationBuilder` . További információ a konfigurációs szolgáltatók használatáról: [konfiguráció a ASP.net Coreban](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers).
+Adja hozzá a konfigurációs szolgáltatókat a `ConfigurationBuilder` tulajdonságához `IFunctionsConfigurationBuilder` . További információ a konfigurációs szolgáltatók használatáról: [konfiguráció a ASP.net Coreban](/aspnet/core/fundamentals/configuration/#configuration-providers).
 
 A a `FunctionsHostBuilderContext` következőből származik: `IFunctionsConfigurationBuilder.GetContext()` . Ezzel a kontextussal kérheti le az aktuális környezeti nevet, és feloldja a konfigurációs fájlok helyét a Function app mappában.
 
@@ -306,7 +306,7 @@ Alapértelmezés szerint a konfigurációs fájlok (például * aappsettings.js*
 > [!IMPORTANT]
 > A felhasználási vagy prémium csomagokban futó Function apps esetében az eseményindítókban használt konfigurációs értékek módosítása a skálázási hibákhoz vezethet. Ha az osztály ezen tulajdonságok bármelyikét megváltoztatja, a `FunctionsStartup` Function app indítási hibát eredményez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

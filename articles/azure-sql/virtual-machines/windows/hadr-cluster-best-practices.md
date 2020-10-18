@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317021"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167950"
 ---
-# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürt konfigurálásának ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
+# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürtkonfiguráció ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 A magas rendelkezésre állást és a vész-helyreállítást (HADR) használó fürt a SQL Server Azure Virtual Machines (VM) használatával. 
@@ -45,8 +45,6 @@ A következő táblázat felsorolja az Azure-beli virtuális géppel való haszn
 ||[Tanúsító lemez](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Felhőbeli tanúsító](/windows-server/failover-clustering/deploy-cloud-witness)  |[Tanúsító fájlmegosztás](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**Támogatott operációs rendszer**| Mind |Windows Server 2016 +| Mind|
-
-
 
 
 ### <a name="disk-witness"></a>Tanúsító lemez
@@ -82,28 +80,29 @@ Első lépésként tekintse [meg a tanúsító fájlmegosztás konfigurálása](
 
 **Támogatott operációs rendszer**: Windows Server 2012 és újabb verziók   
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
-A hagyományos helyszíni hálózati környezetekben a SQL Server feladatátvevő fürt példánya egyetlen számítógépen futó SQL Server egyetlen példánya lehet. Mivel a feladatátvevő fürt példánya feladatátvételt hajt végre a csomópontról a csomópontra, a példány virtuális hálózatának neve (VNN) egységes csatlakozási pontot biztosít, és lehetővé teszi, hogy az alkalmazások a SQL Server-példányhoz kapcsolódjanak anélkül, hogy a csomópont éppen aktív. Feladatátvétel esetén a virtuális hálózat neve az új aktív csomópontra van regisztrálva az indítás után. Ez a folyamat átlátható a SQL Serverhoz csatlakozó ügyfél vagy alkalmazás számára, és ez lekicsinyíti az állásidőt, amely miatt az ügyfél vagy az alkalmazás hibát tapasztal. 
+A hagyományos helyszíni hálózati környezetekben a SQL Server feladatátvevő fürt példánya egyetlen számítógépen futó SQL Server egyetlen példánya lehet. Mivel a feladatátvevő fürt példánya feladatátvételt hajt végre a csomópontról a csomópontra, a példány virtuális hálózatának neve (VNN) egységes csatlakozási pontot biztosít, és lehetővé teszi, hogy az alkalmazások a SQL Server-példányhoz kapcsolódjanak anélkül, hogy a csomópont éppen aktív. Feladatátvétel esetén a virtuális hálózat neve az új aktív csomópontra van regisztrálva az indítás után. Ez a folyamat átlátható a SQL Serverhoz csatlakozó ügyfél vagy alkalmazás számára, és ez lekicsinyíti az állásidőt, amely miatt az ügyfél vagy az alkalmazás hibát tapasztal. Hasonlóképpen, a rendelkezésre állási csoport figyelője egy VNN használatával irányítja át a forgalmat a megfelelő replikára. 
 
-Használjon Azure Load Balancer vagy egy elosztott hálózati névvel (DNN) rendelkező VNN, hogy átirányítsa a forgalmat a feladatátvevő fürt VNN a SQL Server Azure-beli virtuális gépeken. A DNN szolgáltatás jelenleg csak SQL Server 2019 CU2 és újabb verziókban érhető el Windows Server 2016 (vagy újabb) rendszerű virtuális gépen. 
+Használjon Azure Load Balancer vagy elosztott hálózati névvel (DNN) rendelkező VNN, hogy átirányítsa a forgalmat az Azure-beli virtuális gépeken futó SQL Server, vagy egy rendelkezésre állási csoportban lévő meglévő VNN-figyelőt. 
+
 
 A következő táblázat a HADR-kapcsolatok támogatását hasonlítja össze: 
 
 | |**Virtuális hálózat neve (VNN)**  |**Elosztott hálózat neve (DNN)**  |
 |---------|---------|---------|
-|**Operációs rendszer minimális verziója**| Mind | Mind |
-|**Minimális SQL Server-verzió** |Mind |SQL Server 2019 CU2|
-|**Támogatott HADR-megoldás** | Feladatátvevőfürt-példány <br/> Rendelkezésre állási csoport | Feladatátvevőfürt-példány|
+|**Operációs rendszer minimális verziója**| Mind | Windows Server 2016 |
+|**Minimális SQL Server-verzió** |Mind |SQL Server 2019 CU2 (-es)<br/> SQL Server 2019 CU8 (AG)|
+|**Támogatott HADR-megoldás** | Feladatátvevőfürt-példány <br/> Rendelkezésre állási csoport | Feladatátvevőfürt-példány <br/> Rendelkezésre állási csoport|
 
 
 ### <a name="virtual-network-name-vnn"></a>Virtuális hálózat neve (VNN)
 
-Mivel a virtuális IP-hozzáférési pont az Azure-ban eltérően működik, konfigurálnia kell a [Azure Load Balancert](../../../load-balancer/index.yml) , hogy a forgalmat a-es csomópontok IP-címére irányítsa. Az Azure Virtual Machines szolgáltatásban a terheléselosztó tárolja azon VNN IP-címét, amelyeknek a fürtözött SQL Server erőforrásai támaszkodnak. A terheléselosztó elosztja az előtéri bejövő folyamatokat, majd átirányítja a forgalmat a háttér-készlet által definiált példányokra. A forgalom áramlását a terheléselosztási szabályok és az állapot-mintavételek használatával konfigurálhatja. A SQL Server-alapú, a háttérbeli készlet példányai a SQL Server rendszert futtató Azure-beli virtuális gépek. 
+Mivel a virtuális IP-hozzáférési pont az Azure-ban eltérően működik, konfigurálnia kell a [Azure Load Balancert](../../../load-balancer/index.yml) , hogy a forgalmat a (vagy a rendelkezésre állási csoport figyelője) IP-címére irányítsa. Az Azure Virtual Machines szolgáltatásban a terheléselosztó tárolja azon VNN IP-címét, amelyeknek a fürtözött SQL Server erőforrásai támaszkodnak. A terheléselosztó elosztja az előtéri bejövő folyamatokat, majd átirányítja a forgalmat a háttér-készlet által definiált példányokra. A forgalom áramlását a terheléselosztási szabályok és az állapot-mintavételek használatával konfigurálhatja. A SQL Server-alapú, a háttérbeli készlet példányai a SQL Server rendszert futtató Azure-beli virtuális gépek. 
 
 A terheléselosztó használata során enyhe feladatátvételi késleltetés történik, mivel az állapotfigyelő szolgáltatás alapértelmezés szerint 10 másodpercenként ellenőrzi az élő állapotot. 
 
-Az első lépésekhez megtudhatja, hogyan [konfigurálhatja a Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md)-t egy-ra. 
+Első lépésként ismerje meg, hogyan konfigurálhatja Azure Load Balancer a [feladatátvevő fürt példányára](failover-cluster-instance-vnn-azure-load-balancer-configure.md) vagy egy [rendelkezésre állási csoportra](availability-group-vnn-azure-load-balancer-configure.md)
 
 **Támogatott operációs rendszer**: mind   
 **Támogatott SQL-verzió**: ALL   
@@ -112,22 +111,22 @@ Az első lépésekhez megtudhatja, hogyan [konfigurálhatja a Azure Load Balance
 
 ### <a name="distributed-network-name-dnn"></a>Elosztott hálózat neve (DNN)
 
-Az elosztott hálózat neve egy új Azure-szolgáltatás SQL Server 2019 CU2. A DNN lehetővé teszi, hogy SQL Server ügyfelek a terheléselosztó használata nélkül kapcsolódjanak a SQL Server feladatátvevő fürt példányához. 
+Az elosztott hálózat neve a SQL Server 2019 új Azure-szolgáltatása. A DNN lehetővé teszi, hogy SQL Server ügyfelek a terheléselosztó használata nélkül kapcsolódjanak a SQL Server feladatátvevő fürt példányához vagy a rendelkezésre állási csoporthoz. 
 
-DNN-erőforrás létrehozásakor a fürt a fürt összes csomópontjának IP-címeivel köti össze a DNS-nevet. Az SQL-ügyfél megpróbál csatlakozni a lista minden IP-címéhez, hogy megkeresse azt a csomópontot, ahol a feladatátvevő fürt példánya jelenleg fut. Ezt `MultiSubnetFailover=True` a folyamatot a kapcsolatok karakterláncának megadásával gyorsíthatja fel. Ez a beállítás azt jelzi, hogy a szolgáltató az összes IP-címet párhuzamosan próbálja kipróbálni, így az ügyfél azonnal tud csatlakozni az-hoz. 
+DNN-erőforrás létrehozásakor a fürt a fürt összes csomópontjának IP-címeivel köti össze a DNS-nevet. Az SQL-ügyfél megpróbál csatlakozni a lista minden IP-címéhez, hogy megkeresse, melyik erőforráshoz kell csatlakoznia.  Ezt `MultiSubnetFailover=True` a folyamatot a kapcsolatok karakterláncának megadásával gyorsíthatja fel. Ez a beállítás azt jelzi, hogy a szolgáltató az összes IP-címet párhuzamosan próbálja kipróbálni, így az ügyfél azonnal tud csatlakozni a (z) vagy a figyelőhöz. 
 
 Ha lehetséges, az elosztott hálózatnév használata a terheléselosztó során ajánlott: 
 - A végpontok közötti megoldás sokkal megbízhatóbb, mivel már nem kell fenntartania a terheléselosztó erőforrását. 
 - A terheléselosztó-mintavételek kiküszöbölése a feladatátvétel időtartamát csökkentheti. 
-- A DNN leegyszerűsíti a feladatátvevő fürt példányának üzembe helyezését és felügyeletét SQL Server Azure-beli virtuális gépeken. 
+- A DNN leegyszerűsíti a feladatátvevő fürt példánya vagy a rendelkezésre állási csoport figyelő üzembe helyezését és felügyeletét SQL Server Azure-beli virtuális gépeken. 
 
-A legtöbb SQL Server funkció transzparens módon működik együtt. Ezekben az esetekben egyszerűen lecserélheti a meglévő VNN DNS-nevet a DNN DNS-névre, vagy megadhatja a DNN értéket a meglévő VNN DNS-névvel. Egyes kiszolgálóoldali összetevők azonban olyan hálózati aliast igényelnek, amely a VNN nevét a DNN-névre képezi le. Bizonyos esetekben szükség lehet a DNN DNS-név explicit használatára, például ha bizonyos URL-címeket definiál egy kiszolgálóoldali konfigurációban. 
+A legtöbb SQL Server a funkciók a DNN használatakor transzparens módon működnek együtt a rendelkezésre állási csoportokkal, de vannak olyan szolgáltatások, amelyek különleges megfontolást igényelhetnek. További információért lásd: a [DNN együttműködési](failover-cluster-instance-dnn-interoperability.md) és az [AG és a DNN együttműködési képesség](availability-group-dnn-interoperability.md) . 
 
-Az első lépésekhez megtudhatja, hogyan [konfigurálhat egy DNN-erőforrást egy-os](hadr-distributed-network-name-dnn-configure.md)értékre. 
+Első lépésként ismerje meg, hogyan konfigurálhatja az elosztott hálózati név erőforrást [egy feladatátvevő fürt](failover-cluster-instance-distributed-network-name-dnn-configure.md) vagy egy [rendelkezésre állási csoport](availability-group-distributed-network-name-dnn-listener-configure.md) számára.
 
 **Támogatott operációs rendszer**: Windows Server 2016 és újabb verziók   
-**Támogatott SQL-verzió**: SQL Server 2019-es és újabb verziók   
-**Támogatott HADR-megoldás**: csak feladatátvevő fürt példánya
+**Támogatott SQL-verzió**: SQL Server 2019 CU2 (Version) és SQL Server 2019 CU8 (AG)   
+**Támogatott HADR-megoldás**: feladatátvevő fürt példánya és rendelkezésre állási csoport   
 
 
 ## <a name="limitations"></a>Korlátozások
@@ -144,7 +143,7 @@ Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Miután meghatározta a megoldásához szükséges ajánlott eljárásokat, első lépésként [készítse elő a SQL Server VMt a következőre](failover-cluster-instance-prepare-vm.md):. A rendelkezésre állási csoportot az [Azure CLI](availability-group-az-cli-configure.md)vagy az [Azure Gyorsindítás sablonjaival](availability-group-quickstart-template-configure.md)is létrehozhatja. 
+Miután meghatározta a megoldáshoz szükséges ajánlott eljárásokat, első lépésként [készítse elő a SQL Server VMt a (](failover-cluster-instance-prepare-vm.md) [Azure Portal](availability-group-azure-portal-configure.md)), az [Azure CLI/PowerShell](availability-group-az-cli-configure.md)vagy az [Azure gyorsindítási sablonok](availability-group-quickstart-template-configure.md)használatával, vagy hozza létre a rendelkezésre állási csoportot. 
 

@@ -3,12 +3,12 @@ title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan telepítheti és konfigurálhatja a VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 69df9b6337674233e1f257cc509115d5f58d2e7f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a52b2d06e65de0d056653f12065e36d83d6d8e0c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152070"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167763"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -90,7 +90,7 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
    :::image type="content" source="media/tutorial-vmware-hcx/select-ovf-template.png" alt-text="Nyissa meg a helyszíni vCenter, és válassza ki a helyszíni vCenter üzembe helyezni kívánt OVF-sablont." lightbox="media/tutorial-vmware-hcx/select-ovf-template.png":::
 
 
-1. Válassza ki az HCX-összekötő üzembe helyezéséhez szükséges nevet és helyet, egy erőforrást vagy fürtöt, majd tekintse át a részleteket és a szükséges erőforrásokat.  
+1. Válassza ki a nevet és a helyet, egy erőforrást vagy fürtöt, ahová az HCX-összekötőt telepíti, majd tekintse át a részleteket és a szükséges erőforrásokat.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/configure-template.png" alt-text="Nyissa meg a helyszíni vCenter, és válassza ki a helyszíni vCenter üzembe helyezni kívánt OVF-sablont." lightbox="media/tutorial-vmware-hcx/configure-template.png":::
 
@@ -268,7 +268,7 @@ Ennek a lépésnek a teljes körű áttekintéséhez tekintse meg az [Azure VMwa
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-done.png" alt-text="Nyissa meg a helyszíni vCenter, és válassza ki a helyszíni vCenter üzembe helyezni kívánt OVF-sablont." lightbox="media/tutorial-vmware-hcx/compute-profile-done.png":::
 
-Ennek a lépésnek a végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldást – VMware HCX Create számítási Profile](https://www.youtube.com/embed/qASXi5xrFzM) videó.
+Ennek a lépésnek a teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást – VMware HCX hozzon létre egy számítási profilt tartalmazó](https://www.youtube.com/embed/qASXi5xrFzM) videót.
 
 
 
@@ -296,7 +296,9 @@ Itt az ideje, hogy konfigurálja a Service Mesh szolgáltatást a helyszíni és
 
 1. Tekintse át azokat a szolgáltatásokat, amelyek engedélyezve lesznek, majd válassza a **Folytatás**lehetőséget.  
 
-1. A **speciális konfigurációban – a kimenő hálózati profilok felülbírálása** válassza a **Folytatás**lehetőséget.  A kimenő hálózati profilok olyan hálózathoz csatlakoznak, amelyen keresztül a távoli hely összekötő készülékei elérhetők.  
+1. A **speciális konfigurációban – a kimenő hálózati profilok felülbírálása** válassza a **Folytatás**lehetőséget.  
+
+   A kimenő hálózati profilok olyan hálózathoz csatlakoznak, amelyen keresztül a távoli hely összekötő készülékei elérhetők.  
   
 1. A **Speciális konfiguráció-hálózati bővítmények Felskálázása**lapon tekintse át, majd válassza a **Folytatás**lehetőséget. 
 
@@ -345,7 +347,7 @@ Ha a helyszíni környezetből az Azure VMware megoldásba kívánja terjeszteni
 Ennek a lépésnek a teljes körű áttekintéséhez tekintse meg az [Azure VMware Solution-VMware HCX hálózati bővítmény](https://www.youtube.com/embed/cNlp0f_tTr0) videóját.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha elérte ezt a pontot, és a készülék összekötő-alagútjának állapota felfelé és zöldre van **állítva** , a VMware HCX használatával áttelepítheti és védetté teheti az Azure VMware megoldás virtuális gépeket.  Az Azure VMware-megoldás támogatja a munkaterhelések áttelepítését (vagy egy hálózati bővítménnyel).  A számítási feladatokat továbbra is áttelepítheti a vSphere-környezetbe a hálózatok helyi létrehozása és a virtuális gépek üzembe helyezése között.  A HCX használatával kapcsolatos további információkért látogasson el a VMware technikai dokumentációra:
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667693"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166454"
 ---
 # <a name="get-started-with-custom-keyword"></a>Bevezetés az egyéni kulcsszavak használatába
 
@@ -54,7 +54,7 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
 1. A portál a kulcsszóhoz jelölt kiejtéseket hoz létre. Hallgassa meg az egyes jelölteket a lejátszás gombokra kattintva, és távolítsa el az összes helytelen kiejtés melletti ellenőrzéseket. Ha csak a jó kiejtéseket jelölte be, kattintson a **betanítás** gombra a Kulcsszóválasztó modell létrehozásának megkezdéséhez. 
 
-    ![A kulcsszó áttekintése](media/custom-keyword/custom-kws-portal-choose-prons.png)
+    ![Képernyőkép, amely bemutatja, hol válassza ki a megfelelő pronounciations.](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
 1. A modell létrehozása akár harminc percet is igénybe vehet. A kulcsszó listája a **feldolgozástól** a **sikeres** modell befejeződése után módosul. Ezután letöltheti a fájlt.
 
@@ -84,6 +84,6 @@ KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(key
 > [!NOTE]
 > Az itt látható példa a helyi kulcsszavas felismerést használja, mert nincs szükség `SpeechConfig` objektumra a hitelesítési környezethez, és nem lép kapcsolatba a háttérrel. A kulcsszó-felismerést és az ellenőrzést azonban [folyamatos háttérbeli kapcsolatok](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword)használatával is futtathatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tesztelje egyéni kulcsszavait a [Speech Devices SDK](https://aka.ms/sdsdk-quickstart)rövid útmutatójában.

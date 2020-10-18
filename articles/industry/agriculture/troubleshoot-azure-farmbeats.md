@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc2eb7ecb7f0587c065aac1cfb57cfae10b732ac
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797938"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168290"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Az Azure FarmBeats hibaelhárítása
 
@@ -174,7 +174,7 @@ Egy eszköz törlésekor a következő gyakori hibák valamelyike merülhet fel:
 
 Ha már engedélyezte a hozzáférést, és ezzel a hibával szembesül, próbálkozzon újra az oldal frissítésével. Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel/naplókkal.
 
-![Projekt FarmBeats](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
+![Az engedélyezési hibát bemutató képernyőkép.](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
 ### <a name="accelerator-issues"></a>Gyorsító problémák  
 
@@ -293,7 +293,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 6. A bal oldali panelen válassza a **blob-tárolók**lehetőséget, majd válassza ki a Azure Data Factory naplók vagy **appinsights** app Service naplókhoz tartozó **feladatokhoz** tartozó naplókat.
 7. Válassza a **Letöltés** lehetőséget, majd töltse le a naplókat a számítógép egy helyi mappájába.
 
-    ![Projekt FarmBeats](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
+    ![A letöltött naplófájlokat megjelenítő képernyőkép.](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Azure Data Factory a feladatokhoz tartozó naplók vagy App Service-naplók gyűjtése a Gyorssegédhez
 
@@ -327,26 +327,26 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 > [!NOTE]
 > Ha meg szeretné tekinteni a szolgáltatások címkéit az erőforráscsoporthoz, kattintson az "Oszlopok szerkesztése" elemre, és adja hozzá a "címkék" kifejezést az erőforráscsoport nézethez.
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Projekt FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="A SKU: Datahub címkét kiemelő képernyőkép.":::
 
 3. Az adatfeldolgozó áttekintés lapján kattintson a **Szerző és figyelő**elemre. Megnyílik egy új lap a böngészőben. Kattintson a **figyelés** elemre
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Projekt FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="A SKU: Datahub címkét kiemelő képernyőkép.":::
 
 4. Ekkor megjelenik az időjárási feladatok végrehajtásának részét képező folyamat-futtatások listája. Kattintson arra a feladatokra, amelyhez naplókat szeretne gyűjteni
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Projekt FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="A SKU: Datahub címkét kiemelő képernyőkép.":::
 
 5. A folyamat áttekintése lapon láthatja a tevékenységek futtatásának listáját. Jegyezze fel azoknak a tevékenységeknek a futtatási azonosítóit, amelyekhez naplókat szeretne gyűjteni
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Projekt FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="A SKU: Datahub címkét kiemelő képernyőkép.":::
 
 6. Lépjen vissza az FarmBeats erőforráscsoporthoz a Azure Portalban, és kattintson a **datahublogs-XXXX** nevű Storage-fiókra.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Projekt FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="A SKU: Datahub címkét kiemelő képernyőkép.":::
 
 7. Kattintson a **tárolók**  ->  **adfjobs**elemre. A keresőmezőbe írja be a fenti 5. lépésben feljegyzett feladatok futtatási AZONOSÍTÓját.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Projekt FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="A SKU: Datahub címkét kiemelő képernyőkép.":::
 
 8. A keresési eredmény tartalmazza azt a mappát, amely a feladatokhoz tartozó naplókat tartalmaz. Töltse le a naplókat, és küldje el, hogy farmbeatssupport@microsoft.com segítséget nyújtson a probléma hibakereséséhez.

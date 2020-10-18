@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 98ba8c54b1754d6384dfcedb86e6c4889e52cb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26bac8115a64d78ce64bc400f98fb26cb929ba4d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444842"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164499"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted konfigurálása Azure Key Vault használatával 
 
@@ -149,7 +149,7 @@ A SSMS olyan varázslót biztosít, amely megkönnyíti a Always Encrypted konfi
 1. Bontsa ki az **adatbázisok**  >  **Klinika**  >  **táblái**elemet.
 2. Kattintson a jobb gombbal a **páciensek** táblára, és válassza az **oszlopok titkosítása** lehetőséget a Always encrypted varázsló megnyitásához:
 
-    ![Oszlopok titkosítása](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
+    ![Képernyőfelvétel: az oszlopok titkosításának kiemelése... menüpont.](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
 A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlopok kiválasztása**, **főkulcs konfigurálása**, **ellenőrzés**és **Összefoglalás**.
 
@@ -574,7 +574,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 Láthatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges információt.
 
-   ![Új konzolos alkalmazás](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
+   ![Képernyőkép, amely azt mutatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges adattípust.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
 Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges információhoz, először ellenőrizze, hogy a felhasználó rendelkezik-e megfelelő engedélyekkel a Azure Key Vault: *Get*, *unwrapKey*és *ellenőrzés*. Részletes információkért lásd: [oszlopok főkulcsainak létrehozása és tárolása (Always encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
@@ -584,7 +584,7 @@ Ezután adja hozzá az *oszlop titkosítási beállítás = engedélyezve* param
 2. Kattintson az adatbázismotor **kapcsolódása**elemre  >  **Database Engine** a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások**elemre.
 3. Kattintson a **további kapcsolatok paramétereinek** és típus **oszlop titkosítási beállítás = engedélyezve**elemre.
 
-    ![Új konzolos alkalmazás](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
+    ![Képernyőkép, amely a további javítási paraméterek lapot mutatja.](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
 
 4. Futtassa a következő lekérdezést a klinika adatbázisán.
 
@@ -596,7 +596,7 @@ Ezután adja hozzá az *oszlop titkosítási beállítás = engedélyezve* param
    
    ![Új konzolos alkalmazás](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha az adatbázis a Always Encrypted használatára van konfigurálva, a következőket teheti:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86131663"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167814"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Hibaelhárítás: nem sikerült törölni a virtuális hálózatot az Azure-ban
 
@@ -48,7 +48,7 @@ A klasszikus virtuális hálózatok esetében lépjen a Azure Portal klasszikus 
 
 A virtuális hálózatok esetében lépjen a virtuális hálózat **Áttekintés** lapjára. Keresse meg a virtuális hálózati átjáróhoz **csatlakoztatott eszközöket** .
 
-![A csatlakoztatott eszköz keresése](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![Képernyőkép a Azure Portal virtuális hálózatához csatlakoztatott eszközök listájáról. A virtuális hálózati átjáró ki van emelve a listában.](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
 Az átjáró eltávolítása előtt először távolítsa el az átjárón lévő összes **összekötő** objektumot. 
 
@@ -56,7 +56,7 @@ Az átjáró eltávolítása előtt először távolítsa el az átjárón lév�
 
 Nyissa meg a virtuális hálózat **Áttekintés** lapját. Keresse meg az Application Gateway **csatlakoztatott eszközeit** .
 
-![A csatlakoztatott eszköz keresése](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![Képernyőkép a Azure Portal virtuális hálózatához csatlakoztatott eszközök listájáról. Az Application Gateway ki van emelve a listában.](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 Ha van egy Application Gateway, el kell távolítania a virtuális hálózat törlése előtt.
 
@@ -64,7 +64,7 @@ Ha van egy Application Gateway, el kell távolítania a virtuális hálózat tö
 
 Ha a Active Directory-tartomány szolgáltatás engedélyezve van, és csatlakozik a virtuális hálózathoz, a virtuális hálózat nem törölhető. 
 
-![A csatlakoztatott eszköz keresése](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Képernyőkép a Azure Portal Azure AD Domain Services képernyőjéről. A Virtual Network/alhálózat mezőben elérhető érték van kiemelve.](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
 A szolgáltatás letiltásához lásd: [Azure Active Directory Domain Services letiltása a Azure Portal használatával](../active-directory-domain-services/delete-aadds.md).
 

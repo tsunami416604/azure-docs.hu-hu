@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962961"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168222"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Hozzáférési korlátozások Azure App Service
 
@@ -36,7 +36,7 @@ Ha hozzáférési korlátozási szabályt szeretne hozzáadni az alkalmazáshoz,
 
 A hozzáférési korlátozások felhasználói felületén áttekintheti az alkalmazáshoz definiált hozzáférési korlátozási szabályok listáját.
 
-![hozzáférési korlátozások listázása](media/app-service-ip-restrictions/access-restrictions-browse.png)
+![Képernyőfelvétel a hozzáférési korlátozások képernyőről Azure Portal a kiválasztott alkalmazáshoz megadott hozzáférési korlátozási szabályok listáját jeleníti meg.](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
 A lista megjeleníti az alkalmazásra vonatkozó összes jelenlegi korlátozást. Ha az alkalmazás VNet korlátozást is tartalmaz, akkor a táblázat azt mutatja, hogy a szolgáltatási végpontok engedélyezve vannak-e a Microsoft. Web számára. Ha nincs definiált korlátozás az alkalmazáshoz, az alkalmazás bárhonnan elérhető lesz.  
 
@@ -68,11 +68,11 @@ A szolgáltatás-végpontokkal konfigurálhatja az alkalmazást Application Gate
 
 Bármelyik sorra rákattinthat egy meglévő hozzáférés-korlátozási szabály szerkesztéséhez. A módosítások azonnal érvénybe lépnek, beleértve a prioritási sorrend változásait is.
 
-![hozzáférés-korlátozási szabály szerkesztése](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+![Képernyőkép az IP-korlátozás szerkesztése párbeszédpanelről Azure Portal a meglévő hozzáférés-korlátozási szabályok mezőinek megjelenítéséhez.](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
 Egy szabály szerkesztésekor a típus nem módosítható egy IP-cím szabály és egy Virtual Network szabály között. 
 
-![hozzáférés-korlátozási szabály szerkesztése](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![A Virtual Network szabály beállításait megjelenítő Azure Portal az IP-korlátozás szerkesztése párbeszédpanel képernyőképe.](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
 Egy szabály törléséhez kattintson a **...** elemre a szabályon, majd kattintson az **Eltávolítás**gombra.
 
@@ -90,7 +90,7 @@ Ahhoz a forgatókönyvhöz, amelyben a felhasználók explicit módon blokkoljá
 
 Az alkalmazáshoz való hozzáférés szabályozása mellett az alkalmazás által használt SCM-webhelyhez is korlátozhatja a hozzáférést. Az SCM-hely a web Deploy végpontja és a kudu-konzol is. Külön rendelhet hozzáférési korlátozásokat az SCM-webhelyhez az alkalmazásból, vagy használhatja ugyanazt a készletet az alkalmazáshoz és az SCM-helyhez is. Ha bejelöli a négyzetet, hogy ugyanazokat a korlátozásokat adja meg, mint az alkalmazás, akkor minden kimarad. Ha törli a jelet a jelölőnégyzetből, a rendszer az SCM-hely korábbi beállításait is alkalmazza. 
 
-![hozzáférési korlátozások listázása](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+![Képernyőfelvétel: a Azure Portal hozzáférési korlátozások képernyője, amely azt mutatja, hogy az SCM-helyhez vagy az alkalmazáshoz nincs beállítva hozzáférési korlátozás.](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Hozzáférés-korlátozási szabályok programozott manipulációja ##
 
