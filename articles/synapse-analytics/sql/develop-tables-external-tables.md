@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6c76fcc0fefdf8aa3ae97a4c131481f7ea6ada81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a9bb3ac7d3028937a422f2cd94aca4f4f4f41b58
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288851"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167535"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
@@ -165,6 +165,8 @@ Külső fájlformátum létrehozásával megadhatja a külső tábla által hiva
 
 ### <a name="syntax-for-create-external-file-format"></a>KÜLSŐ FÁJLFORMÁTUM létrehozásának szintaxisa
 
+#### <a name="sql-pool"></a>[SQL-készlet](#tab/sql-pool)
+
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
 CREATE EXTERNAL FILE FORMAT file_format_name  
@@ -192,6 +194,40 @@ WITH (
     | Encoding = {'UTF8' | 'UTF16'}
 }
 ```
+
+#### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-on-demand)
+
+```syntaxsql
+-- Create an external file format for PARQUET files.  
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = PARQUET  
+    [ , DATA_COMPRESSION = {  
+        'org.apache.hadoop.io.compress.SnappyCodec'  
+      | 'org.apache.hadoop.io.compress.GzipCodec'      }  
+    ]);  
+
+--Create an external file format for DELIMITED TEXT files
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = DELIMITEDTEXT  
+    [ , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' ]
+    [ , FORMAT_OPTIONS ( <format_options> [ ,...n  ] ) ]  
+    );  
+
+<format_options> ::=  
+{  
+    FIELD_TERMINATOR = field_terminator  
+    | STRING_DELIMITER = string_delimiter
+    | First_Row = integer
+    | USE_TYPE_DEFAULT = { TRUE | FALSE }
+    | Encoding = {'UTF8' | 'UTF16'}
+    | PARSER_VERSION = {'parser_version'}
+}
+```
+
+---
+
 
 ### <a name="arguments-for-create-external-file-format"></a>Argumentumok külső FÁJLFORMÁTUM LÉTREHOZÁSához
 
@@ -244,6 +280,8 @@ A parketta külső tábláiból való olvasáskor a rendszer figyelmen kívül h
 A DELIMITEDTEXT fájlformátum típusa a következő tömörítési módszert támogatja:
 
 - DATA_COMPRESSION = ' org. Apache. Hadoop. IO. compress. GzipCodec '
+
+A PARSER_VERSION = "parser_version" a fájlok olvasásakor használandó elemző verziót határozza meg. A részletekért olvassa el PARSER_VERSION argumentumot a [OpenRowset argumentumokban](develop-openrowset.md#arguments) .
 
 ### <a name="example-for-create-external-file-format"></a>Példa külső FÁJLFORMÁTUM létrehozására
 

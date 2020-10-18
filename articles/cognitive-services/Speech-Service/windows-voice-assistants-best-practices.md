@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293642"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165145"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Tervezési asszisztensi tapasztalatok a Windows 10 rendszerhez
 
@@ -69,8 +69,8 @@ Még ha az állapotok is gyorsan változnak, érdemes megfontolni az UX megadás
 
 Ha a Segéd-alkalmazás fókuszban van, az ügyfél szándéka egyértelműen együttműködik az alkalmazással, így az összes hangaktiválási élményt a fő alkalmazás nézetnek kell kezelnie. Ezt a nézetet az ügyfél átméretezi. A Segéd-rendszerhéj interakciójának magyarázata érdekében a dokumentum többi része a contoso nevű pénzügyi szolgáltatási asszisztens konkrét példáját használja. Ebben és az azt követő diagramokban az ügyfél azt mondja majd, hogy a bal oldali rajzfilm-buborékokban a jobb oldalon megjelenik a képregény-buborékok.
 
-**Alkalmazáson belüli nézet. Kezdeti állapot a Hangaktiválás megkezdésekor:** 
- ![ képernyőkép a Windows hangsegédről az aktiválás előtt](media/voice-assistants/windows_voice_assistant/initial_state.png)
+**Alkalmazáson belüli nézet. Kezdeti állapot a Hangaktiválás megkezdése után:** 
+ ![ képernyőfelvétel a contoso Finance Assistant alkalmazás alapértelmezett vászonra való megnyitásáról. A jobb oldalon a "contoso" című Cartoon Speech buborék látható.](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
 **Alkalmazáson belüli nézet. A sikeres hangaktiválást követően a zenehallgatási folyamat megkezdődik:** ![ képernyőkép a hangsegédről a Windowsban, miközben a hangsegéd figyeli a funkciót](media/voice-assistants/windows_voice_assistant/listening.png)
 
@@ -108,9 +108,9 @@ A Segédnek meg kell valósítania az elbocsátási útmutatót ebben a szakaszb
 - Ha az alkalmazás &quot; használatban van &quot; , akkor továbbra is bezárhatja a zárolást. &quot;a használatban &quot; bármilyen bemenet vagy kimenet szerepel. Ha például zenét vagy videót tart fenn, az alkalmazás továbbra is zárolhatja a zárolást. &quot;A következő &quot; lépésekkel és más többkapcsoló párbeszédpanelekkel megtarthatja az alkalmazás zárolását.
 - **Az alkalmazás elutasításának megvalósítási részletei** a [fenti zárolás megvalósítási útmutatójában](windows-voice-assistants-implementation-guide.md#closing-the-application)találhatók.
 
-![Képernyőkép a Windows hangsegédről az aktiválás előtt](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
+![A contoso Finance Assistant alkalmazás fenti zárolási nézetét ábrázoló képernyőkép.](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
-![Képernyőkép a Windows hangsegédről az aktiválás előtt](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
+![Képernyőfelvétel a Windows zárolási képernyőjén látható asztalról.](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
 ### <a name="privacy-amp-security-considerations-above-lock"></a>Adatvédelem &amp; biztonsági megfontolások a zárolás felett
 
@@ -161,7 +161,7 @@ A **gyors válaszok** a Hangaktiválás előzetes verziójában is megjelennek. 
 
 ![A hangsegéd képernyőképei a Windowsban a kompakt nézet bővítése előtt és után](media/voice-assistants/windows_voice_assistant/compact_transition.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a hangsegéd fejlesztésével](how-to-windows-voice-assistants-get-started.md)

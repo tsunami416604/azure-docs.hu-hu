@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b81d3f74c20f42620ceeae08bec5d484909377a7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150413"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167474"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Indexelő kapcsolatai egy privát végponton keresztül (Azure Cognitive Search)
 
@@ -23,7 +23,7 @@ Az indexelő kapcsolódási módszer használatához két követelmény van:
 
 + A tartalmat vagy kódot biztosító Azure-erőforrást előzőleg regisztrálni kell az [Azure Private link Service](https://azure.microsoft.com/services/private-link/)-ben.
 
-+ Az Azure Cognitive Search szolgáltatásnak alapszintű vagy magasabbnak kell lennie (az ingyenes szint nem érhető el). Emellett a készségkészlet rendelkező indexelő esetében a keresési szolgáltatásnak S2 vagy magasabbnak kell lennie. További információ: [szolgáltatási korlátok](search-limits-quotas-capacity.md#shared-private-link-resource-limits).
++ Az Azure Cognitive Search szolgáltatásnak alapszintű vagy magasabbnak kell lennie (az ingyenes szint nem érhető el). Emellett, ha az indexelő készségkészlet rendelkezik, a szintnek Standard 2 (S2) vagy magasabb szintűnek kell lennie. További információ: [szolgáltatási korlátok](search-limits-quotas-capacity.md#shared-private-link-resource-limits).
 
 ## <a name="shared-private-link-resources-management-apis"></a>Megosztott privát kapcsolatok erőforrásainak kezelési API-jai
 
@@ -169,7 +169,7 @@ Szerezze be a megosztott privát kapcsolati erőforrás állapotát a [Get API](
 - Ha az indexelő létrehozása a és a sikeres futtatása nélkül történik, az azt `executionEnvironment` jelenti, hogy az Azure Cognitive Search úgy döntött, hogy végrehajtási környezete a keresési szolgáltatás specifikus "privát" környezete. Ez azonban a különböző tényezők (az indexelő által felhasznált erőforrások, a keresési szolgáltatás terhelése stb.) alapján változhat, és egy későbbi időpontban meghiúsulhat – javasoljuk, hogy állítsa be úgy, hogy a `executionEnvironment` `"Private"` későbbiekben ne legyen sikertelen.
 - A [kvóták és a korlátok](search-limits-quotas-capacity.md) határozzák meg, hogy hány megosztott magánhálózati kapcsolati erőforrás hozható létre, és függ a keresési szolgáltatás SKU-jának.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a privát végpontokról:
 

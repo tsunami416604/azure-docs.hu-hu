@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: f4c1e96a0603caa8e026f1968299fa24b8755a42
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee709868cd7e78afbcc480913c4e4c8fd2acf832
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88003201"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167185"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -63,6 +63,12 @@ A verziók életciklusáról további tudnivalókat [Az AKS-ben támogatott Kube
 Az AKS támogatja a GPU-kompatibilis csomópontkészletek létrehozását. Az Azure jelenlegi kínálatában egy vagy több GPU-val kompatibilis virtuális gépek érhetők el. A GPU-kompatibilis virtuális gépeket a nagy számítási és grafikai igényű, valamint vizualizációs számítási feladatok elvégzésére tervezték.
 
 További információ: [GPU-k használata az AKS-en][aks-gpu].
+
+### <a name="confidential-computing-nodes-public-preview"></a>Bizalmas számítástechnikai csomópontok (nyilvános előzetes verzió)
+
+Az AK támogatja az Intel SGX ENKLÁVÉHOZ-alapú bizalmas számítástechnikai csomópont-készletek (DCSv2 virtuális gépek) létrehozását. A bizalmas számítástechnikai csomópontok lehetővé teszik, hogy a tárolók hardveres, megbízható és elszigetelt végrehajtási környezetben (enklávékban) fussanak. A tárolók és a kód integritása közötti elkülönítés az igazolással együtt segíti a védelmi részletes biztonsági stratégiát. A bizalmas számítástechnikai csomópontok egyaránt támogatják a bizalmas tárolókat (a meglévő Docker-alkalmazásokat) és az enklávéban lévő Aware tárolókat.
+
+További információ: [bizalmas számítástechnikai csomópontok az AK][conf-com-node] -ban
 
 ### <a name="storage-volume-support"></a>A tárkötetek támogatását
 
@@ -143,3 +149,4 @@ Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS ü
 [kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
+[conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a966579e1acc02f1479c41520dcbbc58d420647c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444769"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164516"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted konfigurálása a Windows tanúsítványtároló használatával
 
@@ -97,7 +97,7 @@ A SSMS a CMK, a CEK és a titkosított oszlopok beállításával megkönnyíti 
 1. Bontsa ki az **adatbázisok**  >  **Klinika**  >  **táblái**elemet.
 2. Kattintson a jobb gombbal a **páciensek** táblára, és válassza az **oszlopok titkosítása** lehetőséget a Always encrypted varázsló megnyitásához:
 
-    ![Oszlopok titkosítása](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
+    ![Képernyőkép, amely megjeleníti a titkosítás Colunns... menüpont a betegek táblában.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
 A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlop kijelölése**, **főkulcs konfigurálása** (CMK), **Érvényesítés**és **Összefoglalás**.
 
@@ -149,7 +149,7 @@ Most, hogy a Always Encrypted be van állítva, létrehozhat egy olyan alkalmaz�
 1. Nyissa meg a Visual studiót, és hozzon létre egy új C#-konzol alkalmazást. Győződjön meg arról, hogy a projekt a **.NET-keretrendszer 4,6** -es vagy újabb verziójára van beállítva.
 2. Nevezze el a projekt **AlwaysEncryptedConsoleApp** , és kattintson **az OK**gombra.
 
-![Új konzolos alkalmazás](./media/always-encrypted-certificate-store-configure/console-app.png)
+![Képernyőkép, amely az újonnan elnevezett AlwaysEncryptedConsoleApp projektet mutatja.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>A Always Encrypted engedélyezéséhez módosítsa a kapcsolódási karakterláncot
 
@@ -510,7 +510,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 Láthatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges információt.
 
-   ![Új konzolos alkalmazás](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
+   ![Képernyőkép, amely a titkosított oszlopokban lévő titkosított adattípusokat jeleníti meg.](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
 
 Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges információhoz, hozzáadhatja az **oszlop titkosítási beállítás = engedélyezve** paramétert a kapcsolathoz.
 
@@ -518,7 +518,7 @@ Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges infor
 2. Kattintson az adatbázismotor **kapcsolódása**elemre  >  **Database Engine** a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások**elemre.
 3. Kattintson a **további kapcsolatok paramétereinek** és típus **oszlop titkosítási beállítás = engedélyezve**elemre.
 
-    ![Új konzolos alkalmazás](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
+    ![Képernyőfelvétel: a további kapcsolatok paramétereinek lapja, amelynél az oszlop titkosítási beállítása = engedélyezve típus szerepel a mezőben.](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. Futtassa a következő lekérdezést a **Klinika** adatbázisán.
 
     ```tsql
@@ -532,7 +532,7 @@ Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges infor
 > [!NOTE]
 > Ha egy másik számítógépről csatlakozik a SSMS (vagy bármely ügyféllel), nem fog tudni hozzáférni a titkosítási kulcsokhoz, és nem tudja visszafejteni az adatok visszafejtését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután létrehozta a Always Encryptedt használó adatbázist, a következőket teheti:
 

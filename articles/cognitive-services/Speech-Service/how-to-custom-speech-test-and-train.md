@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd9b85f22866c529b66fa6df07bd524516726086
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84628052"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165332"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
 
@@ -46,9 +46,9 @@ Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adatt
 
 | Adattípus | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
-| [Hang](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/A |
-| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1 – 1000 órányi hang |
-| [Kapcsolódó szöveg](#related-text-data-for-training) | Nem | N/a | Igen | 1-200 MB kapcsolódó szöveg |
+| [Audió](#audio-data-for-testing) | Yes<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | No | N.A. |
+| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Yes | 1 – 1000 órányi hang |
+| [Kapcsolódó szöveg](#related-text-data-for-training) | No | N/a | Yes | 1-200 MB kapcsolódó szöveg |
 
 A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és. zip fájlként kell feltölteni. Az egyes adatkészletek csak egyetlen adattípust tartalmazhatnak.
 
@@ -59,7 +59,7 @@ A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és. zip fá
 
 Az adatok feltöltéséhez navigáljon a <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech portálra <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. A portálon kattintson az **adatok feltöltése** elemre a varázsló indításához és az első adatkészlet létrehozásához. Az adatok feltöltésének engedélyezése előtt meg kell adnia, hogy ki kell választania egy beszédfelismerési adattípust az adatkészlethez.
 
-![Hang kiválasztása a Speech Portalon](./media/custom-speech/custom-speech-select-audio.png)
+![Képernyőfelvétel a hangfeltöltési lehetőségről a beszédfelismerési portálról.](./media/custom-speech/custom-speech-select-audio.png)
 
 A feltöltött adatkészleteknek meg kell felelniük a választott adattípusra vonatkozó követelményeknek. Az adatait a feltöltés előtt helyesen kell formázni. A helyesen formázott adat biztosítja, hogy a Custom Speech szolgáltatás pontosan dolgozza fel azokat. A követelmények a következő részekben találhatók.
 
@@ -119,7 +119,7 @@ A hangfájlok a rögzítés elején és végén is lehetnek csendben. Ha lehets�
 
 A Word törlési vagy helyettesítési problémák megoldásához jelentős mennyiségű adattal kell foglalkoznia az elismerés javítása érdekében. Általánosságban elmondható, hogy nagyjából 10 – 1 000 órányi hanganyagot biztosít a Word-by-Word típusú átírásoknak. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
 
-  Például:
+  Példa:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place

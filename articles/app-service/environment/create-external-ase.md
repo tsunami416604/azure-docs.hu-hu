@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e4922d8855173ab2539c3960aacf54c89aaf1b7b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: aa65508c4f8df2c11bab74cd34f3311b21c63d9c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148248"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164601"
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service-környezet létrehozása
 
@@ -61,7 +61,7 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 1. A [Azure Portal](https://portal.azure.com/)válassza az **erőforrás létrehozása**  >  **web és mobil**  >  **webalkalmazás**lehetőséget.
 
-    ![Webalkalmazás létrehozása][1]
+    ![Képernyőfelvétel: az Azure Marketplace-en kiválasztott Web és mobil kiválasztott Azure Portal és a jobb oldalon megnyitott új webalkalmazás létrehozásának képernyője.][1]
 
 2. Válassza ki előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
 
@@ -71,7 +71,7 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 5. Válassza ki a App Service tervet, majd válassza az **új létrehozása**lehetőséget. A Linux Web Apps és a Windows Web Apps nem lehet ugyanabban a App Service csomagban, de ugyanabban a App Service Environmentban lehet. 
 
-    ![Új App Service terv][2]
+    ![Képernyőfelvétel: a webalkalmazás panelt, az App Service-csomag ablaktábláját és az új App Service terv panelt bemutató Azure Portal.][2]
 
 6. A **hely** legördülő listában válassza ki azt a régiót, ahol létre kívánja hozni a központot. Ha kijelöl egy meglévő beadási lehetőséget, akkor a rendszer nem hoz létre új kiegészítőt. A App Service tervet a kiválasztott szakszolgáltatásban hozza létre a rendszer. 
 
@@ -99,7 +99,7 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 1. A [Azure Portal](https://portal.azure.com/) **hozzon létre egy erőforrást**  >  **web és mobil**  >  **Web App for containers.** 
 
-    ![Webalkalmazás létrehozása][7]
+    ![Képernyőkép a Azure Portalről, amely az Azure Marketplace-en kiválasztott Web és mobil, a jobb oldalon pedig a Web App for Containers panelt jeleníti meg.][7]
 
 1. Válassza ki előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
 
@@ -107,7 +107,7 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 1. Válassza ki a App Service tervet, majd válassza az **új létrehozása**lehetőséget. A Linux Web Apps és a Windows Web Apps nem lehet ugyanabban a App Service csomagban, de ugyanabban a App Service Environmentban lehet. 
 
-    ![Új App Service terv][8]
+    ![Képernyőkép a Web App for Containers ablaktáblát, az App Service-csomag ablaktáblát és az új App Servicei terv panelt megjelenítő Azure Portal.][8]
 
 1. A **hely** legördülő listában válassza ki azt a régiót, ahol létre kívánja hozni a központot. Ha kijelöl egy meglévő beadási lehetőséget, akkor a rendszer nem hoz létre új kiegészítőt. A App Service tervet a kiválasztott szakszolgáltatásban hozza létre a rendszer. 
 

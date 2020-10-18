@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, érzékelő, megjelenítő, vizualizáció, mélység, RGB, szín, IMU, hang, mikrofon, pont felhő
-ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277283"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166105"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect Viewer
 
@@ -36,7 +36,7 @@ A megjelenítő két üzemmódban működhet: az érzékelőből vagy a rögzít
 
 Indítsa el az alkalmazást a futtatásával `k4aviewer.exe` .
 
-![Eszköz belső vezérlőprogram-verziójának ellenőrzése a megjelenítővel](./media/how-to-guides/open-viewer.png)
+![Képernyőkép, amely az elindított megjelenítő alkalmazást jeleníti meg.](./media/how-to-guides/open-viewer.png)
 
 ### <a name="use-the-viewer-with-live-data"></a>A megjelenítő használata élő adatértékekkel
 

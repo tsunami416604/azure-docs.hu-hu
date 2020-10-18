@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75482568"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165553"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Talaj nedvesség-hő előállítása
 
@@ -54,7 +54,7 @@ Miután összekapcsolta a Sensor-fiókját az Azure FarmBeats, hozzá kell rende
 2.  Válassza a **MyFarm**  >  **eszközök hozzáadása**elemet.
 3.  Megjelenik az **eszközök hozzáadása** ablak. Válassza ki a farm nedvesség-érzékelőkhöz kapcsolódó összes eszközt.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Képernyőkép, amely az eszközök hozzáadása képernyőt jeleníti meg.](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
 4. Válassza az **eszközök hozzáadása**lehetőséget.     
 
@@ -70,7 +70,7 @@ Ez a lépés egy olyan feladatot vagy hosszan futó műveletet hoz létre, amely
 6.  A **felszín nedvesség** - **érzékelő kiválasztása mértéke**mezőben adja meg a térképhez használni kívánt mértéket.
     Az érzékelő mértékének megkereséséhez a **szenzorokban**válassza ki a talaj nedvességtartalmának érzékelőjét. Az **érzékelő tulajdonságainál**használja a **mérték neve** értéket.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![Képernyőkép, amely a talaj nedvességtartalmának képernyőjét mutatja.](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
 7.  Válassza a **leképezések előállítása**lehetőséget.

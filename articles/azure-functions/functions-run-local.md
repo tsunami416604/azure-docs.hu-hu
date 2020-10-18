@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 094449ddcbfc2baf41657d00de030ef3c1cddbb5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108490"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164863"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -333,7 +333,7 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 Functions-projekt futtatásához futtassa a functions gazdagépet. A gazdagép lehetővé teszi az eseményindítók használatát a projektben lévő összes függvénynél. A Start parancs a projekt nyelvétől függően változhat.
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 ```
 func start --build
@@ -574,15 +574,11 @@ A függvények végrehajtásának ajánlott figyelése az Azure Application Insi
 
 ### <a name="application-insights-integration"></a>Application Insights integráció
 
-Application Insights integrációt engedélyezni kell, amikor létrehozza a Function alkalmazást az Azure-ban. Ha a Function alkalmazás valamilyen okból nem kapcsolódik Application Insights-példányhoz, egyszerűen elvégezheti ezt az integrációt a Azure Portal. 
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+Application Insights integrációt engedélyezni kell, amikor létrehozza a Function alkalmazást az Azure-ban. Ha a Function alkalmazás valamilyen okból nem kapcsolódik Application Insights-példányhoz, egyszerűen elvégezheti ezt az integrációt a Azure Portal. További információ: [Application Insights integráció engedélyezése](configure-monitoring.md#enable-application-insights-integration).
 
 ### <a name="enable-streaming-logs"></a>Folyamatos átviteli naplók engedélyezése
 
 Megtekintheti a függvények által a helyi számítógépen lévő parancssori munkamenetben létrehozott naplófájlok streamjét. 
-
-#### <a name="native-streaming-logs"></a>Natív adatfolyam-naplók
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 

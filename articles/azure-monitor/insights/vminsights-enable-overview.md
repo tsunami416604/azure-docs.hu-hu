@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
-ms.openlocfilehash: 4041b824d099edbefcc45c68163257ca69ddf7de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions
+ms.openlocfilehash: b903fda9a64233b4906941167ca7fd5819a0316b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995678"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164482"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs-áttekintés engedélyezése
 
@@ -37,30 +38,42 @@ Mielőtt elkezdené, győződjön meg róla, hogy tisztában van az alábbi rés
 >[!NOTE]
 >Az ebben a szakaszban ismertetett információk a [Service Map megoldásra](service-map.md)is érvényesek.  
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
 
 A Azure Monitor for VMs a következő régiókban támogatja a Log Analytics munkaterületet:
 
-- USA nyugati középső régiója
-- USA nyugati régiója
-- USA 2. nyugati régiója
-- USA déli középső régiója
-- USA keleti régiója
-- USA 2. keleti régiója
-- USA középső régiója
-- USA északi középső régiója
-- US Gov az
-- US Gov VA
-- Közép-Kanada
-- Az Egyesült Királyság déli régiója
-- Észak-Európa
-- Nyugat-Európa
-- Kelet-Ázsia
-- Délkelet-Ázsia
-- Közép-India
-- Kelet-Japán
-- Kelet-Ausztrália
-- Délkelet-Ausztrália
+- Afrika
+  - Dél-Afrika északi régiója
+- Ázsia és a Csendes-óceáni térség
+  - Kelet-Ázsia
+  - Délkelet-Ázsia
+- Ausztrália
+  - Kelet-Ausztrália
+  - Délkelet-Ausztrália
+- Azure Government
+  - US Gov az
+  - US Gov VA
+- Kanada
+  - Közép-Kanada
+- Európa
+  - Észak-Európa
+  - Nyugat-Európa
+- India
+  - Közép-India
+- Japán
+  - Kelet-Japán
+- Egyesült Királyság
+  - Az Egyesült Királyság déli régiója
+- Egyesült Államok
+  - USA középső régiója
+  - USA keleti régiója
+  - USA 2. keleti régiója
+  - USA északi középső régiója
+  - USA déli középső régiója
+  - USA nyugati középső régiója
+  - USA nyugati régiója
+  - USA 2. nyugati régiója
+
 
 >[!NOTE]
 >Bármelyik régióban nyomon követheti az Azure-beli virtuális gépeket. Maguk a virtuális gépek nem korlátozódnak a Log Analytics munkaterület által támogatott régiókra.
@@ -111,7 +124,7 @@ Azure Monitor for VMs a következő két ügynököt kell telepíteni az egyes v
 
 Az alábbi módszerek több módszert is biztosítanak ezeknek az ügynököknek a üzembe helyezésére. 
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 |:---|:---|
 | [Azure Portal](./vminsights-enable-portal.md) | Telepítsen mindkét ügynököt egyetlen virtuális gépre, virtuálisgép-méretezési csoportra vagy az Azure arc-hoz csatlakoztatott hibrid virtuális gépekre. |
 | [Resource Manager-sablonok](vminsights-enable-powershell.md) | Telepítse mindkét ügynököt a támogatott módszerek bármelyikével egy Resource Manager-sablon üzembe helyezéséhez, beleértve a CLI-t és a PowerShellt is. |
@@ -136,6 +149,6 @@ További információ az adatok gyűjtéséről és használatáról: a [Microso
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Teljesítményfigyelő funkció használatának megismeréséhez tekintse meg a [Azure monitor for VMS teljesítményének megtekintése](vminsights-performance.md)című témakört. A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbcacd7f2094f9b0b9dcea3fea4d804fd96923e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74974938"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165315"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Az eszközök regisztrálásának kezelése az Azure Portal használatával
 
@@ -24,7 +24,7 @@ Az *eszközök* regisztrálása létrehoz egy egyetlen eszközről vagy egy olya
 
 Az eszközöket kétféleképpen lehet regisztrálni a kiépítési szolgáltatással:
 
-* A **beléptetési csoport** olyan eszközök csoportja, amelyek közös igazolási mechanizmussal rendelkeznek X. 509 tanúsítványokban, és amelyek aláírását ugyanazzal az aláíró tanúsítvánnyal írta alá, amely lehet a [Főtanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) vagy a [köztes tanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate), amely az eszköz tanúsítványának fizikai eszközön történő előállítására szolgál. Azt javasoljuk, hogy nagy számú eszközhöz használjon egy regisztrációs csoportot, amely megosztja a kívánt kezdeti konfigurációt, vagy ha az eszközök mindegyike ugyanahhoz a bérlőhöz fog csatlakozni. Vegye figyelembe, hogy csak az X. 509 igazolási mechanizmust használó eszközök regisztrálása *beléptetési csoportként*. 
+* A **beléptetési csoport** olyan eszközök csoportja, amelyek közös igazolási mechanizmussal rendelkeznek X. 509 tanúsítványokban, és amelyek aláírását ugyanazzal az aláíró tanúsítvánnyal írta alá, amely lehet a [Főtanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) vagy a [köztes tanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate), amely az eszköz tanúsítványának fizikai eszközön történő előállítására szolgál. Azt javasoljuk, hogy nagy számú eszközhöz használjon egy regisztrációs csoportot, amely megosztja a kívánt kezdeti konfigurációt, vagy ha az eszközök mindegyike ugyanahhoz a bérlőhöz fog csatlakozni. 
 
     Az alábbi lépéseket követve létrehozhat egy regisztrációs csoportot a portálon az eszközök egy csoportjának használatával:
 

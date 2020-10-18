@@ -3,12 +3,12 @@ title: host.jsAzure Functions 2. x esetén
 description: A v2 futtatókörnyezettel rendelkező fájl Azure Functions host.jsdokumentációja.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321849"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167651"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x és újabb verziók – host.json referencia 
 
@@ -138,7 +138,7 @@ A cikk következő fejezetei ismertetik az egyes legfelső szintű tulajdonságo
 
 Ez a beállítás a [naplózás](#logging)gyermeke.
 
-A Application Insights vezérlőelem-beállításai, beleértve a [mintavételi beállításokat](./functions-monitoring.md#configure-sampling)is.
+A Application Insights vezérlőelem-beállításai, beleértve a [mintavételi beállításokat](./configure-monitoring.md#configure-sampling)is.
 
 A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példáját](#sample-hostjson-file).
 
@@ -246,7 +246,7 @@ Az összes függvény időtúllépési időtartamát jelzi. A TimeSpan karakterl
 
 | Csomag típusa | Alapértelmezett (min.) | Maximum (min.) |
 | -- | -- | -- |
-| Felhasználás | 5 | 10 |
+| Használatalapú | 5 | 10 |
 | <sup>1</sup> . prémium | 30 | -1 (nem kötött)<sup>2</sup> |
 | Dedikált (App Service) | 30 | -1 (nem kötött)<sup>2</sup> |
 
@@ -310,7 +310,7 @@ A Function alkalmazás naplózási viselkedését szabályozza, beleértve a App
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Meghatározza, hogy a fájlok naplózása milyen szintű legyen engedélyezve.  A lehetőségek a következők:, `never` `always` `debugOnly` . |
-|Naplózási szint|n/a|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
+|Naplózási szint|n/a|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering) a ASP.net Core dokumentációjában. |
 |konzol|n/a| A [konzol](#console) naplózási beállítása. |
 |applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
 
@@ -413,7 +413,7 @@ Tegyük fel például, hogy helyileg futtatta az alkalmazás-betekintési mintav
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a host.jsfájl frissítéséhez](functions-reference.md#fileupdate)

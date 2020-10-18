@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22ab643fb4ed7eae477c8f77d9621266d9146be
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589300"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165766"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -23,7 +23,7 @@ Más globális konfigurációs beállítások is találhatók a fájl [host.jsj�
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Application Insights rendszerállapot-kulcsa. Csak a vagy a valamelyikét használja `APPINSIGHTS_INSTRUMENTATIONKEY` `APPLICATIONINSIGHTS_CONNECTION_STRING` . További információ: [Azure functions figyelése](functions-monitoring.md). 
+Application Insights rendszerállapot-kulcsa. Csak a vagy a valamelyikét használja `APPINSIGHTS_INSTRUMENTATIONKEY` `APPLICATIONINSIGHTS_CONNECTION_STRING` . Ha Application Insights egy szuverén felhőben fut, használja a t `APPLICATIONINSIGHTS_CONNECTION_STRING` . További információ: a [Azure functions figyelésének konfigurálása](configure-monitoring.md). 
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -31,7 +31,12 @@ Application Insights rendszerállapot-kulcsa. Csak a vagy a valamelyikét haszn�
 
 ## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-A Application Insightshoz tartozó kapcsolatok karakterlánca. `APPLICATIONINSIGHTS_CONNECTION_STRING`Akkor használja, `APPINSIGHTS_INSTRUMENTATIONKEY` Ha a Function alkalmazáshoz a kapcsolati sztring használatával támogatott további testreszabások szükségesek. További információ: a [kapcsolatok karakterláncai](../azure-monitor/app/sdk-connection-string.md). 
+A Application Insightshoz tartozó kapcsolatok karakterlánca. `APPLICATIONINSIGHTS_CONNECTION_STRING` `APPINSIGHTS_INSTRUMENTATIONKEY` A következő esetekben használja a parancsot:
+
++ Ha a Function alkalmazásnak a kapcsolati sztringtel támogatott kiegészítő testreszabásokat kell használnia. 
++ Ha a Application Insights-példány egy szuverén felhőben fut, amelyhez egyéni végpont szükséges.
+
+További információ: a [kapcsolatok karakterláncai](../azure-monitor/app/sdk-connection-string.md). 
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -204,7 +209,7 @@ További információ: [Egyéni függőségek](functions-reference-python.md#rem
 
 _Ez a beállítás jelenleg előzetes verzióban érhető el._  
 
-Ezzel a beállítással szabályozható a Azure Functions skálázási vezérlő naplózása. További információkért lásd: a [vezérlő naplófájljainak skálázása](functions-monitoring.md#scale-controller-logs-preview).
+Ezzel a beállítással szabályozható a Azure Functions skálázási vezérlő naplózása. További információkért lásd: a [vezérlő naplófájljainak skálázása](functions-monitoring.md#scale-controller-logs).
 
 |Kulcs|Mintaérték|
 |-|-|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298711"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164397"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Egy prémium szintű fájlmegosztás (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie
 - Egy olyan fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel mind az Azure-beli virtuális gépeken, mind pedig a Active Directory.
 - [Két vagy több előkészített Windows Azure-beli virtuális gép](failover-cluster-instance-prepare-vm.md) egy [rendelkezésre állási csoporton](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) belül vagy különböző [rendelkezésre állási zónákban](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
 - A fürtözött meghajtóként használandó [prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) az adatfájlok adatbázisának tárolási kvótája alapján.
-- A [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)legújabb verziója. 
+- A [PowerShell](/powershell/azure/install-az-ps)legújabb verziója. 
 
 ## <a name="mount-premium-file-share"></a>Prémium fájlmegosztás csatlakoztatása
 
@@ -194,7 +194,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Kapcsolat konfigurálása 
 
-Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné irányítani, konfigurálja a környezetének megfelelő kapcsolódási lehetőséget. Létrehozhat egy [Azure Load balancert](hadr-vnn-azure-load-balancer-configure.md) , vagy ha a SQL Server 2019 és a Windows Server 2016 (vagy újabb) rendszert használja, megtekintheti helyette az [elosztott hálózat neve](hadr-distributed-network-name-dnn-configure.md) funkciót. 
+Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné irányítani, konfigurálja a környezetének megfelelő kapcsolódási lehetőséget. Létrehozhat egy [Azure Load balancert](failover-cluster-instance-vnn-azure-load-balancer-configure.md) , vagy ha a SQL Server 2019 CU2 (vagy újabb) és a Windows Server 2016 (vagy újabb) rendszert használja, Ehelyett használhatja a [Distributed Network name](failover-cluster-instance-distributed-network-name-dnn-configure.md) szolgáltatást. 
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -202,9 +202,10 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 - A FileStream nem támogatott egy prémium szintű fájlmegosztást használó feladatátvevő fürt esetén. A FileStream használatához [közvetlen tárolóhelyek](failover-cluster-instance-storage-spaces-direct-manually-configure.md) vagy [Azure Shared Disks](failover-cluster-instance-azure-shared-disks-manually-configure.md) használatával helyezze üzembe a fürtöt.
 - Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#management-modes) támogatott. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha még nem tette meg, állítsa be a kapcsolatot a [virtuális hálózat nevével és az Azure Load balancerrel](hadr-vnn-azure-load-balancer-configure.md) vagy az [elosztott hálózat nevével (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Ha még nem tette meg, állítsa be a kapcsolatot a [virtuális hálózat nevével és az Azure Load balancerrel](failover-cluster-instance-vnn-azure-load-balancer-configure.md) vagy az [elosztott hálózat nevével (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
+
 
 Ha a prémium fájlmegosztás nem az Ön számára megfelelő, az Azure-beli [megosztott lemezekkel](failover-cluster-instance-azure-shared-disks-manually-configure.md) vagy [közvetlen tárolóhelyekekkel](failover-cluster-instance-storage-spaces-direct-manually-configure.md) hozza létre a-t. 
 

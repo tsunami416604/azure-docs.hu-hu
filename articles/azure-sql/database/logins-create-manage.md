@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 7be78a0c05942aebb9e3154a79035d71f87becd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca458bebf75f8e77774236166704794b817b7c3f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334908"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167134"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése SQL Database, SQL felügyelt példányhoz és az Azure szinapszis Analytics szolgáltatáshoz
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -42,7 +42,7 @@ Amikor egy felhasználó megpróbál csatlakozni egy adatbázishoz, felhasznál�
 - [SQL-hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication).
 
   Ezzel a hitelesítési módszerrel a felhasználó egy felhasználói fiók nevét és a hozzá tartozó jelszót küld a kapcsolat létrehozásához. Ezt a jelszót a rendszer a főadatbázisban tárolja a bejelentkezéshez csatolt felhasználói fiókokhoz, vagy a bejelentkezéshez *nem* csatolt felhasználói fiókokat tartalmazó adatbázisban tárolja.
-- [Azure Active Directory hitelesítés](authentication-aad-overview.md)
+- [Azure Active Directory-hitelesítés](authentication-aad-overview.md)
 
   Ezzel a hitelesítési módszerrel a felhasználó elküld egy felhasználói fióknevet és kéréseket, hogy a szolgáltatás a Azure Active Directory (Azure AD) által tárolt hitelesítő adatokat használja.
 
@@ -65,7 +65,7 @@ Az adatbázishoz tartozó rendszergazdai fiókok azonosításához nyissa meg a 
 
 ![SQL Server-rendszergazdák](./media/logins-create-manage/sql-admins.png)
 
-![SQL Server-rendszergazdák](./media/logins-create-manage/sql-admins2.png)
+![Képernyőfelvétel a Tulajdonságok menüpontra.](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
 > A rendszergazdai bejelentkezési név nem módosítható a létrehozása után. A kiszolgáló-rendszergazda jelszavának alaphelyzetbe állításához lépjen a [Azure Portalra](https://portal.azure.com), kattintson az **SQL-kiszolgálók**elemre, válassza ki a kiszolgálót a listából, majd kattintson a **jelszó alaphelyzetbe állítása**elemre. A felügyelt SQL-példány jelszavának alaphelyzetbe állításához lépjen a Azure Portalre, kattintson a példányra, majd a **jelszó alaphelyzetbe állítása**elemre. Használhatja a PowerShellt vagy az Azure CLI-t is.
@@ -169,6 +169,6 @@ A hatékony hozzáférés-vezérlés Active Directory biztonsági csoportokhoz, 
 - Az [adatmaszkolás](dynamic-data-masking-overview.md) használatával korlátozhatja a bizalmas adatok megjelenítését.
 - A [tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az összes Azure SQL Database és SQL felügyelt példány biztonsági funkciójának áttekintését lásd: [biztonsági áttekintés](security-overview.md).

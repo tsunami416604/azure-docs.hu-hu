@@ -11,71 +11,95 @@ ms.service: virtual-machines-sql
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/13/2017
+ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 34d76d7c85a478b5e31a692e653752aa1653884c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293662"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166539"
 ---
-# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>SQL Server always on rendelkezésre állási csoportok bemutatása az Azure-on Virtual Machines
-
+# <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On rendelkezésre állási csoport SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk SQL Server rendelkezésre állási csoportokat mutatja be az Azure Virtual Machines-on. 
+Ez a cikk a SQL Server Azure Virtual Machines (VM) szolgáltatásban való rendelkezésre állási csoportjait mutatja be. 
 
-Az Azure Virtual Machines always on rendelkezésre állási csoportok hasonlók a helyszíni always on rendelkezésre állási csoportokhoz. További információ: [Always On rendelkezésre állási csoportok (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx). 
+## <a name="overview"></a>Áttekintés
 
-Az alábbi ábra az Azure Virtual Machines teljes SQL Server rendelkezésre állási csoportjának részeit mutatja be.
+Az Azure Virtual Machines always on rendelkezésre állási csoportok hasonlók a [helyszíni always on rendelkezésre állási csoportokhoz](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Mivel azonban a virtuális gépek az Azure-ban futnak, néhány további szempontot is figyelembe kell vennie, mint például a VM-redundancia és az útválasztási forgalom az Azure-hálózaton. 
+
+Az alábbi ábra az Azure-beli virtuális gépeken SQL Server rendelkezésre állási csoportot ábrázolja:
 
 ![Rendelkezésreállási csoport](./media/availability-group-overview/00-EndstateSampleNoELB.png)
 
-Az Azure-beli rendelkezésre állási csoport fő különbsége, hogy ezek a virtuális gépek (VM-EK) [terheléselosztó](../../../load-balancer/load-balancer-overview.md)szükségesek a Virtual machines. A terheléselosztó tárolja a rendelkezésre állási csoport figyelő IP-címeit. Ha egynél több rendelkezésre állási csoporttal rendelkezik, a csoportoknak figyelőre van szükségük. Egy terheléselosztó több figyelőt is támogat.
 
-Emellett egy Azure IaaS VM vendég feladatátvevő fürtön egyetlen hálózati ADAPTERt (fürtcsomópont) és egyetlen alhálózatot is ajánlunk. Az Azure-hálózatkezelés fizikai redundanciával rendelkezik, ami felesleges hálózati adaptereket és alhálózatokat tesz lehetővé az Azure IaaS VM-vendég fürtön. Bár a fürtellenőrzési jelentés figyelmeztetést küld, amely szerint a csomópontok csak egyetlen hálózaton érhetők el, ez a figyelmeztetés nyugodtan figyelmen kívül hagyható az Azure IaaS virtuális gépek vendég feladatátvevő fürtjein. 
+## <a name="vm-redundancy"></a>VM-redundancia 
 
-A redundancia és a magas rendelkezésre állás növeléséhez a SQL Server virtuális gépeknek ugyanahhoz a [rendelkezésre állási csoporthoz](availability-group-manually-configure-prerequisites-tutorial.md#create-availability-sets)vagy különböző [rendelkezésre állási zónákhoz](/azure/availability-zones/az-overview)kell tartoznia. 
+A redundancia és a magas rendelkezésre állás növeléséhez a SQL Server virtuális gépeknek ugyanahhoz a [rendelkezésre állási csoporthoz](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)vagy különböző [rendelkezésre állási zónákhoz](/azure/availability-zones/az-overview)kell tartoznia.
 
-|  | Windows Server-verzió | SQL Server verziója | SQL Server kiadás | WSFC kvórum konfigurációja | DR több régióval | Több alhálózatot támogató támogatás | Meglévő AD támogatása | DR többzónás azonos régióval | Dist-AG támogatás AD-tartomány nélkül | A dist-AG támogatása fürt nélkül |  
-| :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| **[Azure Portal](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | ENT | Felhőbeli tanúsító | Nem | Igen | Igen | Igen | Nem | Nem |
-| **[Azure CLI/PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | ENT | Felhőbeli tanúsító | Nem | Igen | Igen | Igen | Nem | Nem |
-| **[Gyorsindítás sablonok](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | ENT | Felhőbeli tanúsító | Nem | Igen | Igen | Igen | Nem | Nem |
-| **[Kézi](availability-group-manually-configure-prerequisites-tutorial.md)** | Mind | Mind | Mind | Mind | Igen | Igen | Igen | Igen | Igen | Igen |
-
-A **SQL Server AlwaysOn-fürt (előzetes verzió)** sablon el lett távolítva az Azure Marketplace-ről, és már nem érhető el. 
-
-Ha készen áll egy SQL Server rendelkezésre állási csoport létrehozására az Azure Virtual Machines-on, tekintse meg ezeket az oktatóanyagokat.
-
-## <a name="manually-with-azure-cli"></a>Manuális az Azure CLI-vel
-
-A rendelkezésre állási csoport konfigurálásához és üzembe helyezéséhez ajánlott az Azure CLI használata, mivel ez a legegyszerűbb és leggyorsabb üzembe helyezés. Az Azure CLI-vel a Windows feladatátvevő fürt létrehozása, SQL Server virtuális gépek csatlakoztatása a fürthöz, valamint a figyelő és a belső Load Balancer létrehozása 30 percen belül is elvégezhető. Ez a lehetőség továbbra is a rendelkezésre állási csoport manuális létrehozását igényli, de automatizálja az összes többi szükséges konfigurációs lépést. 
-
-További információ: az Azure [SQL VM CLI használata az Always On rendelkezésre állási csoport konfigurálásához SQL Server Azure-beli virtuális gépen](availability-group-az-cli-configure.md). 
-
-## <a name="automatically-with-azure-quickstart-templates"></a>Automatikus az Azure Gyorsindítás sablonjaival
-
-Az Azure rövid útmutató sablonjai az SQL virtuális gép erőforrás-szolgáltatóját használják a Windows feladatátvevő fürt üzembe helyezéséhez, a SQL Server virtuális gépekhez való csatlakozáshoz, a figyelő létrehozásához és a belső Load Balancer konfigurálásához. Ehhez a lehetőséghez továbbra is a rendelkezésre állási csoport és a belső Load Balancer (ILB) manuális létrehozása szükséges. Ez azonban automatizálja és leegyszerűsíti az összes többi szükséges konfigurációs lépést, beleértve a ILB konfigurációját is. 
-
-További információt az Azure-beli virtuális gépeken [SQL Server az Always On rendelkezésre állási csoport konfigurálása az Azure gyorsindítási sablonnal](availability-group-quickstart-template-configure.md)című témakörben talál.
+A rendelkezésre állási csoport olyan erőforrások csoportosítása, amelyek úgy vannak konfigurálva, hogy ne legyenek két tartomány ugyanabban a rendelkezésre állási zónában. Ezzel megelőzhető, hogy a csoportba tartozó erőforrások több erőforrásra is hatással legyenek az üzembe helyezés során. 
 
 
-## <a name="automatically-with-an-azure-portal-template"></a>Automatikus Azure Portal sablonnal
+## <a name="connectivity"></a>Kapcsolatok 
 
-[Az Always On rendelkezésre állási csoport konfigurálása az Azure-beli virtuális gépen automatikusan – Resource Manager](availability-group-azure-marketplace-template-configure.md)
+A hagyományos helyszíni telepítés során az ügyfelek a virtuális hálózat neve (VNN) használatával csatlakoznak a rendelkezésre állási csoport figyelője számára, és a figyelő a rendelkezésre állási csoportban lévő megfelelő SQL Server replikához irányítja a forgalmat. Azonban további követelmény, hogy az Azure-hálózaton keresztül irányítsa a forgalmat. 
+
+Ha SQL Server Azure-beli virtuális gépeken, állítson be egy [Load balancert](availability-group-vnn-azure-load-balancer-configure.md) a rendelkezésre állási csoport figyelője felé irányuló forgalom átirányításához, vagy ha SQL Server 2019 CU8 vagy újabb verzióval rendelkezik, konfigurálhat egy [Distributed Network name (DNN) figyelőt](availability-group-distributed-network-name-dnn-listener-configure.md) , hogy lecserélje a hagyományos VNN rendelkezésre állási csoport figyelőjét. 
 
 
-## <a name="manually-in-the-azure-portal"></a>Manuálisan a Azure Portal
+### <a name="vnn-listener"></a>VNN-figyelő 
 
-Saját maga is létrehozhatja a virtuális gépeket a sablon nélkül. Először hajtsa végre az előfeltételeket, majd hozza létre a rendelkezésre állási csoportot. Tekintse meg a következő témaköröket: 
+[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) használatával irányíthatja át a forgalmat az ügyfélről a hagyományos rendelkezésre állási csoport virtuális hálózati neve (VNN) figyelőre az Azure-hálózaton. 
 
-- [SQL Server always on rendelkezésre állási csoportok előfeltételeinek konfigurálása az Azure-ban Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md)
+A terheléselosztó tárolja a VNN-figyelő IP-címeit. Ha egynél több rendelkezésre állási csoporttal rendelkezik, a csoportoknak VNN-figyelőre van szükségük. Egy terheléselosztó több figyelőt is támogat.
 
-- [Always On rendelkezésre állási csoport létrehozása a rendelkezésre állás és a vész-helyreállítás javítása érdekében](availability-group-manually-configure-tutorial.md)
+Első lépésként tekintse meg [a Load Balancer konfigurálása](availability-group-vnn-azure-load-balancer-configure.md)című témakört. 
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="dnn-listener"></a>DNN-figyelő
 
-[SQL Server always on rendelkezésre állási csoport konfigurálása az Azure Virtual Machines különböző régiókban](availability-group-manually-configure-multiple-regions.md)
+SQL Server 2019 CU8 az elosztott hálózati név (DNN) figyelő támogatását mutatja be. A DNN-figyelő felváltja a hagyományos rendelkezésre állási csoport figyelőjét, amely nem feltétlenül szükséges ahhoz, hogy egy Azure-beli hangos Balancer átirányítsa a forgalmat az Azure-hálózaton. 
+
+A DNN-figyelő a javasolt HADR-kapcsolati megoldás az Azure-ban, mivel leegyszerűsíti az üzembe helyezést, csökkenti a karbantartást és a költségeket, és meghibásodás esetén csökkenti a feladatátvételi időt. 
+
+A DNN figyelő használatával cserélje le a meglévő VNN-figyelőt, vagy használja azt egy meglévő VNN-figyelővel együtt, hogy a rendelkezésre állási csoport két különböző csatlakozási ponttal rendelkezik – az egyik a VNN-figyelő neve (és a port, ha nem alapértelmezett), és egy az DNN-figyelő neve és portja. Ez olyan ügyfelek számára hasznos lehet, akik el szeretnék kerülni a terheléselosztó feladatátvételi késését, de továbbra is kihasználják a VNN-figyelőtől függő SQL Server szolgáltatások előnyeit, például az elosztott rendelkezésre állási csoportok, a Service Broker vagy a FileStream. További információ: [DNN-figyelő és SQL Server funkció együttműködési képesség](availability-group-dnn-interoperability.md)
+
+Első lépésként tekintse meg [a DNN-figyelő konfigurálása](availability-group-distributed-network-name-dnn-listener-configure.md)című témakört.
+
+
+## <a name="deployment"></a>Üzembe helyezés 
+
+A rendelkezésre állási csoportok több lehetőség közül választhatnak az Azure-beli virtuális gépeken való SQL Server, amelyek némelyike több automatizálással rendelkezik, mint a többi. 
+
+Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalmazza: 
+
+| |**[Azure Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](availability-group-az-cli-configure.md)**|**[Gyorsindítás sablonok](availability-group-quickstart-template-configure.md)**|**[Kézi](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+|---------|---------|---------|--------- |---------|
+|**SQL Server-verzió** |2016 + |2016 +|2016 +|2012 +|
+|**SQL Server-kiadás** |Enterprise |Enterprise |Enterprise |Enterprise, standard|
+|**Windows Server-verzió**| 2016 + | 2016 + | 2016 + | Mind| 
+|**Létrehozza a fürtöt**|Igen|Igen | Igen |Nem|
+|**Létrehozza a rendelkezésre állási csoportot** |Igen |Nem|Nem|Nem|
+|**A figyelő és a Load Balancer egymástól függetlenül jön létre** |Nem|Nem|Nem|Igen|
+|**Lehetséges DNN-figyelőt létrehozni ezzel a módszerrel?**|Nem|Nem|Nem|Igen|
+|**WSFC kvórum konfiguráció**n|Felhőbeli tanúsító|Felhőbeli tanúsító|Felhőbeli tanúsító|Mind|
+|**DR több régióban** |Nem|Nem|Nem|Igen|
+|**Többalhálózat támogatása** |Igen|Igen|Igen|Igen|
+|**Meglévő AD támogatása**|Igen|Igen|Igen|Igen|
+|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Igen|
+|**AD-t nem tartalmazó elosztott AG**|Nem|Nem|Nem|Igen|
+|**Fürt nélküli elosztott AG** |Nem|Nem|Nem|Igen|
+||||||
+
+
+
+## <a name="considerations"></a>Megfontolandó szempontok 
+
+Azure IaaS virtuális gépek vendég feladatátvevő fürtjein kiszolgálónként (fürtcsomópontonként) egyetlen hálózati adapter és egyetlen alhálózat használatát javasoljuk. Az Azure-hálózatkezelés fizikai redundanciával rendelkezik, ami felesleges hálózati adaptereket és alhálózatokat tesz lehetővé az Azure IaaS VM-vendég fürtön. Bár a fürtellenőrzési jelentés figyelmeztetést küld, amely szerint a csomópontok csak egyetlen hálózaton érhetők el, ez a figyelmeztetés nyugodtan figyelmen kívül hagyható az Azure IaaS virtuális gépek vendég feladatátvevő fürtjein. 
+
+## <a name="next-steps"></a>További lépések
+
+Tekintse át a [HADR ajánlott eljárásait](hadr-cluster-best-practices.md) , és ismerkedjen meg a rendelkezésre állási csoport üzembe helyezésével a [Azure Portal](availability-group-azure-portal-configure.md), az [Azure CLI/PowerShell](availability-group-az-cli-configure.md), a [Gyorsindítás sablonok](availability-group-quickstart-template-configure.md) vagy a [manuális](availability-group-manually-configure-prerequisites-tutorial.md)használatával.
+
+Azt is megteheti, hogy egy [fürtözött rendelkezésre állási csoportot](availability-group-clusterless-workgroup-configure.md) vagy rendelkezésre állási csoportot telepít [több régióban](availability-group-manually-configure-multiple-regions.md). 

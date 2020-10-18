@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 10/09/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 570a21a307d60ab1e2c02d6481746576f5dcf0e3
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930288"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166930"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Útmutató: érzelmek észlelése a Text Analytics API használatával
 
@@ -23,7 +23,7 @@ A Text Analytics API Hangulatelemzés funkciója kiértékeli a szöveget, és a
 
 A hangulati elemzési kérelem elküldése után az API az érzelmeket tartalmazó címkéket (például "negatív", "semleges" és "pozitív") és a megbízhatósági pontszámokat adja vissza a mondat és a dokumentum szintjén.
 
-A Hangulatelemzés számos különböző nyelvet támogat, több előzetes verzióban. További információ: [támogatott nyelvek](../text-analytics-supported-languages.md).
+A Hangulatelemzés számos különböző nyelvet támogat, több előzetes verzióban. További információt a [támogatott nyelvek](../text-analytics-supported-languages.md) ismertetésében talál.
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Verziók és szolgáltatások Hangulatelemzés
 
@@ -36,7 +36,7 @@ A Hangulatelemzés számos különböző nyelvet támogat, több előzetes verzi
 | Linux-alapú [Docker-tároló](text-analytics-how-to-install-containers.md) | X  |  |
 | Vélemény bányászata                            |                       | X                                 |
 
-### <a name="sentiment-scoring-and-labeling"></a>Érzelmek pontozása és címkézése
+## <a name="sentiment-scoring-and-labeling"></a>Érzelmek pontozása és címkézése
 
 A (z) v3 Hangulatelemzés a szövegre, a mondatok és a dokumentumok szintjén visszaadott szövegre vonatkozik, és mindegyikhez megbízhatósági pontszám szükséges. 
 
@@ -51,7 +51,7 @@ A feliratok *pozitívak*, *negatívok*és *semlegesek*. A dokumentum szintjén a
 
 A megbízhatósági pontszámok 1-től 0-ig terjedhetnek. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. Minden egyes dokumentumhoz vagy mondathoz a címkékhez kapcsolódó előre jelzett pontszámok (pozitív, negatív és semleges) legfeljebb 1 adható hozzá.
 
-### <a name="opinion-mining"></a>Vélemény bányászata
+## <a name="opinion-mining"></a>Vélemény bányászata
 
 A kivonás a Hangulatelemzés egyik funkciója, amely a 3,1-es verziótól kezdődően érhető el. 1. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is.
 

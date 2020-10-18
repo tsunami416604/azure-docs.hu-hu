@@ -13,22 +13,23 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482799"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164567"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Rendelkezésre állási csoport konfigurálása SQL Server Azure-beli virtuális gépen (Azure Portal – előzetes verzió)
+# <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure Portal használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport (előzetes verzió) konfigurálásához 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ez a cikk azt ismerteti, hogyan használható a [Azure Portal](https://portal.azure.com) az Azure-beli virtuális gépeken futó SQL Server rendelkezésre állási csoportjának konfigurálásához. 
 
 A Azure Portal használatával hozzon létre egy új fürtöt, vagy hozzon létre egy meglévő fürtöt, majd hozza létre a rendelkezésre állási csoportot, a figyelőt és a belső Load balancert. 
 
-   > [!NOTE]
-   > Ez a funkció jelenleg előzetes verzióban üzemel, ezért ha a kívánt régió nem érhető el, térjen vissza később. 
+Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. 
+
+Habár ez a cikk a Azure Portal használja a rendelkezésre állási csoport környezetének konfigurálására, a [PowerShell vagy az Azure CLI, az](availability-group-az-commandline-configure.md) [Azure Gyorsindítás sablonok](availability-group-quickstart-template-configure.md)vagy [manuálisan](availability-group-manually-configure-tutorial.md) is használható. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -177,7 +178,7 @@ A központi telepítés állapotát a **tevékenység naplójában** tekintheti 
 
 ## <a name="remove-cluster"></a>Fürt eltávolítása
 
-Távolítsa el az összes SQL Server virtuális gépet a fürtből annak megsemmisítéséhez, majd távolítsa el a fürt metaadatait az SQL VM erőforrás-szolgáltatójából. Ezt az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) vagy a PowerShell legújabb verziójának használatával teheti meg. 
+Távolítsa el az összes SQL Server virtuális gépet a fürtből annak megsemmisítéséhez, majd távolítsa el a fürt metaadatait az SQL VM erőforrás-szolgáltatójából. Ezt az [Azure CLI](/cli/azure/install-azure-cli) vagy a PowerShell legújabb verziójának használatával teheti meg. 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -261,7 +262,7 @@ Ez azt jelzi, hogy az erőforrás-szolgáltató nem fér hozzá a SQL Server szo
 - Ellenőrizze, hogy a portálon megadott hitelesítő adatok megfelelnek-e a SQL Server szolgáltatásnak. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 A rendelkezésre állási csoportokról további információt a következő témakörben talál:

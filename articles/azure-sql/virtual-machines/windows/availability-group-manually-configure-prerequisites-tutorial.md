@@ -14,18 +14,20 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea9c8b91237f4590d1999c99fbb356d78994390d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075705"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166896"
 ---
-# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Always On rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
+# <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Oktatóanyag: rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ez az oktatóanyag bemutatja, hogyan végezheti el az [Azure Virtual Machines (VM) SQL Server always on rendelkezésre állási csoport](availability-group-manually-configure-tutorial.md)létrehozásához szükséges előfeltételeket. Az előfeltételek teljesítése után egy tartományvezérlő, két SQL Server virtuális gép és egy tanúsító kiszolgáló található egyetlen erőforráscsoporthoz.
+
+Habár ez a cikk manuálisan konfigurálja a rendelkezésre állási csoport környezetét, ez a [Azure Portal](availability-group-azure-portal-configure.md), a [PowerShell vagy az Azure CLI](availability-group-az-commandline-configure.md), illetve az Azure-gyorsindítási [sablonok](availability-group-quickstart-template-configure.md) használatával is lehetséges. 
 
 **Becsült idő**: az előfeltételek teljesítéséhez több óráig is eltarthat. Az idő nagy részében a virtuális gépek létrehozása történik.
 
@@ -60,7 +62,7 @@ Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https:
 8. Válasszon ki egy helyet. A hely az az Azure-régió, ahol létre szeretné hozni a rendelkezésre állási csoportot. Ez a cikk egy Azure-beli hely összes erőforrását felépíti.
 9. Ellenőrizze, hogy be van-e jelölve **a rögzítés az irányítópulton** jelölőnégyzet. Ez a választható beállítás a Azure Portal irányítópulton helyezi el az erőforráscsoport parancsikonját.
 
-   ![Erőforráscsoport](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
+   ![Erőforráscsoport-parancsikon a Azure Portal](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
 
 10. Válassza a **Létrehozás** lehetőséget az erőforráscsoport létrehozásához.
 
@@ -118,13 +120,13 @@ Az új virtuális hálózat egy **rendszergazda**nevű alhálózattal rendelkezi
 
     Jegyezze fel a már létrehozott alhálózatot.
 
-   ![A virtuális hálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
+   ![Jegyezze fel a már létrehozott alhálózatot](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
 
 5. Második alhálózat létrehozásához válassza a **+ alhálózat**lehetőséget.
 6. Az **alhálózat hozzáadása**területen konfigurálja az alhálózatot úgy, hogy beírja a **sqlsubnet** **nevet**. Az Azure automatikusan megadja a **címtartomány érvényes tartományát**. Győződjön meg arról, hogy ez a címtartomány legalább 10 címmel rendelkezik. Éles környezetben több címet is igényelhet.
 7. Válassza az **OK** lehetőséget.
 
-    ![A virtuális hálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
+    ![Alhálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
 A következő táblázat összefoglalja a hálózati konfiguráció beállításait:
 
@@ -311,7 +313,7 @@ Az elsődleges tartományvezérlő újraindítása után beállíthatja a másod
 
     ![Központi telepítés konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/28-deploymentconfig.png)
 
-18. Kattintson a **Kiválasztás** elemre.
+18. Válassza a **Kiválasztás** lehetőséget.
 19. Kapcsolódjon a rendszergazdai fiók használatával (**Corp. CONTOSO. COM\domainadmin**) és jelszó (**contoso! 0000**).
 20. A **tartomány kiválasztása az erdőből**területen válassza ki a tartományt, majd kattintson **az OK gombra**.
 21. A **tartományvezérlő beállításainál**használja az alapértelmezett értékeket, és állítsa be a Címtárszolgáltatások helyreállító módjának jelszavát.
@@ -560,6 +562,6 @@ A portok megnyitásának módszere a használt tűzfal megoldástól függ. A k�
 Ismételje meg ezeket a lépéseket a második SQL Server VM.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [SQL Server always on rendelkezésre állási csoport létrehozása az Azure-ban Virtual Machines](availability-group-manually-configure-tutorial.md)

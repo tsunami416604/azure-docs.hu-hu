@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81000251"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165672"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -34,7 +34,7 @@ A pénztári és a feltétel-figyelési megoldást három részből fejlesztheti
 * Az irányítópult testreszabása a kezelők számára az eszközök figyeléséhez és kezeléséhez
 * Az adatexportálás konfigurálása az áruházbeli kezelők számára az elemzések futtatásához és az elemzések megjelenítéséhez
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Hozzon létre egy kiskereskedelmi áruházbeli alkalmazást az Azure IoT Central **in-store Analytics-Checkout** sablon használatával
 > * Az Alkalmazásbeállítások testreszabása
@@ -148,7 +148,7 @@ RuuviTag-eszköz sablonjának hozzáadása az alkalmazáshoz:
 
 1. Kattintson a **Tovább: Testreszabás** elemre.
 
-    ![Azure IoT Central RuuviTag-érzékelő eszköz sablonja](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
+    ![Képernyőfelvétel: a Next (Testreszabás) gomb kiemelése.](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
 1. Kattintson a **Létrehozás** gombra. Az alkalmazás hozzáadja a RuuviTag-eszköz sablonját.
 
@@ -191,7 +191,7 @@ A `humidity` telemetria típusnál végezze el a következő módosításokat:
 
 1. A módosítások mentéséhez válassza a **Mentés** gombot.
 
-    ![Azure IoT Central RuuviTag-sablon testreszabása](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
+    ![Képernyőkép, amely a testreszabási képernyőt jeleníti meg, és kiemeli a Mentés gombot.](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
 
 Felhőbeli tulajdonság hozzáadása az alkalmazásban lévő eszköz sablonhoz:
 

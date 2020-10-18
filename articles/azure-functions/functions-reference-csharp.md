@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205434"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164839"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# parancsfájl (. CSX) fejlesztői referenciája
 
@@ -249,7 +249,17 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> További információ a helyett használható újabb naplózási keretrendszerről `TraceWriter` : [naplók írása a C# függvényekben](functions-monitoring.md#write-logs-in-c-functions) a **figyelő Azure functions** cikkben.
+> További információ a helyett használható újabb naplózási keretrendszerről `TraceWriter` : [ILogger](functions-dotnet-class-library.md#ilogger) dokumentáció a .net Class Library fejlesztői útmutatójában.
+
+### <a name="custom-metrics-logging"></a>Egyéni metrikák naplózása
+
+A `LogMetric` bővítmény metódusának használatával `ILogger` Egyéni metrikákat hozhat létre a Application Insightsban. Íme egy példa metódus hívása:
+
+```csharp
+logger.LogMetric("TestMetric", 1234);
+```
+
+Ez a kód egy alternatív megoldás `TrackMetric` a .net-hez készült Application INSIGHTS API-val való hívásra.
 
 ## <a name="async"></a>Aszinkron
 
@@ -519,7 +529,7 @@ A következő táblázat felsorolja az egyes kötési típusok .NET-attribútuma
 > | Storage-tábla | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: da9b7216908b4a4ba80a421427f473c217f76c28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993738"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167049"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -110,7 +110,7 @@ A rugalmas kiszolgáló szolgáltatás beépített teljesítmény-figyelési és
 
 További információért tekintse meg a [figyelési fogalmakat](concepts-monitoring.md) .
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a MySQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 
@@ -121,10 +121,18 @@ A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi 
 
 A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy globálisan elérhető. A Azure Database for MySQL rugalmas kiszolgálója jelenleg a következő Azure-régiókban érhető el:
 
+- Nyugat-Európa
 - Észak-Európa
-- Délkelet-Ázsia
+- Az Egyesült Királyság déli régiója
 - USA 2. keleti régiója
 - USA 2. nyugati régiója
+- USA középső régiója
+- USA keleti régiója
+- Közép-Kanada
+- Délkelet-Ázsia
+- Dél-Korea középső régiója
+- Kelet-Japán
+- Kelet-Ausztrália
 
 Hamarosan új kiszolgálók hozzáadásán dolgozunk.
 
@@ -137,7 +145,7 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy elolvasta Azure Database for MySQL egykiszolgálós üzembe helyezési mód bevezetését, készen áll a következőre:
 
 - Hozza létre az első kiszolgálót. 

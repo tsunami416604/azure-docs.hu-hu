@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdd59d078da1df021b7e23ec858ba7305f72cfa1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683899"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164210"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Vész-helyreállítási FarmBeats
 
@@ -45,18 +45,18 @@ Elindíthatja a feladatátvételt, és helyreállíthatja a tárolt adatokat, am
 Másolja a visszaállított Cosmos DB hozzáférési kulcsát, és frissítse az új FarmBeats-Datahub Key Vault.
 
 
-  ![Vészhelyreállítás](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
+  ![Képernyőfelvétel: a hozzáférési kulcs másolatának beolvasása.](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > Másolja a visszaállított Cosmos DB URL-címét, és frissítse azt az új FarmBeats-Datahub App Service-konfigurációban. Mostantól törölhet Cosmos DB fiókot az új FarmBeats-telepítésben.
 
-  ![Vészhelyreállítás](./media/disaster-recovery-for-farmbeats/configuration.png)
+  ![A visszaállított Cosmos DB URL-címének másolási helyét bemutató képernyőkép.](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Storage-fiók konfigurálása
 
 Másolja a visszaállított Storage-fiók hozzáférési kulcsát, és frissítse azt az új FarmBeats Datahub Key Vault.
 
-![Vészhelyreállítás](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
+![Képernyőfelvétel: a visszaállított Storage-fiók elérési kulcsának másolása.](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > Győződjön meg arról, hogy a Storage-fiók nevét frissíti az új FarmBeats batch virtuálisgép-konfigurációs fájlban.

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cba2517f536c9044ad15c628c793529f93b988ce
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966491"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164999"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Felhasználói hitelesítési kapcsolattartási adatok előzetes feltöltése Azure Active Directory önkiszolgáló jelszó-visszaállításhoz (SSPR)
 
@@ -48,16 +48,14 @@ Miután egy felhasználó ellenőrizte mobiltelefonszámát, az Azure AD-ben a *
 
 ## <a name="authentication-contact-info"></a>Hitelesítési kapcsolattartási adatok
 
-A Azure Portal egy Azure AD-felhasználójának **hitelesítési módszerek** lapján a globális rendszergazda manuálisan állíthatja be a hitelesítési kapcsolattartási adatokat, ahogy az alábbi ábrán is látható:
+A Azure Portal egy Azure AD-felhasználó **hitelesítési módszerei** lapon a globális rendszergazda manuálisan állíthatja be a hitelesítési kapcsolattartási adatokat. A meglévő metódusokat áttekintheti a *használható hitelesítési módszerek* szakaszban, vagy a **+ hitelesítési módszerek hozzáadásával**, ahogy az a következő képernyőképen is látható:
 
-![Hitelesítési kapcsolattartási adatok az Azure AD-ben egy felhasználónál][Contact]
+:::image type="content" source="media/howto-sspr-authenticationdata/user-authentication-contact-info.png" alt-text="Hitelesítési módszerek kezelése a Azure Portal":::
 
 Ehhez a hitelesítési kapcsolattartási adatokhoz a következő szempontokat kell figyelembe venni:
 
 * Ha a *telefon* mező fel van töltve, és a *mobiltelefon* engedélyezve van a SSPR-házirendben, a felhasználó ezt a számot látja a jelszó-visszaállítási regisztrációs lapon és a jelszó-visszaállítási munkafolyamatban.
-* A *másodlagos telefon* mező nincs használatban a jelszó-visszaállításhoz.
 * Ha az *e* -mail-mező fel van töltve, és az *e-mailek* engedélyezve vannak a SSPR szabályzatban, a felhasználó a jelszó-visszaállítási regisztrációs oldalon és a jelszó-visszaállítási munkafolyamatban láthatja a levelezést.
-* Ha a *másodlagos e-mail* mező fel van töltve, és az *e-mailek* engedélyezve vannak a SSPR szabályzatban, a felhasználó nem látja ezt az e-mailt a jelszó-visszaállítási regisztrációs lapon, de a jelszó-visszaállítási munkafolyamat során megjelenik.
 
 ## <a name="security-questions-and-answers"></a>Biztonsági kérdések és válaszok
 
@@ -163,11 +161,9 @@ Get-AzureADUser -ObjectID user@domain.com | select TelephoneNumber
 Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,TelephoneNumber | Format-Table
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután a hitelesítési kapcsolattartási adatok előre ki vannak töltve a felhasználók számára, végezze el a következő oktatóanyagot az önkiszolgáló jelszó-visszaállítás engedélyezéséhez:
 
 > [!div class="nextstepaction"]
 > [Az Azure AD önkiszolgáló jelszó-visszaállítás engedélyezése](tutorial-enable-sspr.md)
-
-[Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "A globális rendszergazdák módosíthatják a felhasználó hitelesítési kapcsolattartási adatait"

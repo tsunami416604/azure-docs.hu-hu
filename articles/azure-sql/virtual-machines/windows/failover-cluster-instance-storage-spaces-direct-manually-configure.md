@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3cc579615a69b659bc1a4736984f0b3dcd6edb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272527"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165239"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Közvetlen tárolóhelyek (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +57,7 @@ A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie
 - Azure-előfizetés. Az első lépések [ingyenesek](https://azure.microsoft.com/free/). 
 - [Két vagy több előkészített Windows Azure-beli virtuális gép](failover-cluster-instance-prepare-vm.md) egy [rendelkezésre állási csoporton](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)belül.
 - Egy olyan fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel mind az Azure-beli virtuális gépeken, mind pedig a Active Directory.
-- A [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)legújabb verziója. 
+- A [PowerShell](/powershell/azure/install-az-ps)legújabb verziója. 
 
 
 ## <a name="add-the-windows-cluster-feature"></a>A Windows-fürt funkciójának hozzáadása
@@ -233,7 +233,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Kapcsolat konfigurálása 
 
-Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné irányítani, konfigurálja a környezetének megfelelő kapcsolódási lehetőséget. Létrehozhat egy [Azure Load balancert](hadr-vnn-azure-load-balancer-configure.md) , vagy ha a SQL Server 2019 és a Windows Server 2016 (vagy újabb) rendszert használja, megtekintheti helyette az [elosztott hálózat neve](hadr-distributed-network-name-dnn-configure.md) funkciót. 
+Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné irányítani, konfigurálja a környezetének megfelelő kapcsolódási lehetőséget. Létrehozhat egy [Azure Load balancert](failover-cluster-instance-vnn-azure-load-balancer-configure.md) , vagy ha a SQL Server 2019 CU2 (vagy újabb) és a Windows Server 2016 (vagy újabb) rendszert használja, Ehelyett használhatja a [Distributed Network name](failover-cluster-instance-distributed-network-name-dnn-configure.md) szolgáltatást. 
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -241,14 +241,14 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 - Az NTFS fájlrendszerrel formázott lemezként csatolt lemezek Közvetlen tárolóhelyek csak akkor használhatók, ha nincs bejelölve a lemezre vonatkozó jogosultsági lehetőség, vagy nincs törölve, amikor a tárolót hozzáadja a fürthöz. 
 - Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#management-modes) támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha még nem tette meg, állítsa be a kapcsolatot a [virtuális hálózat nevével és az Azure Load balancerrel](hadr-vnn-azure-load-balancer-configure.md) vagy az [elosztott hálózat nevével (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Ha még nem tette meg, állítsa be a kapcsolatot a [virtuális hálózat nevével és az Azure Load balancerrel](failover-cluster-instance-vnn-azure-load-balancer-configure.md) vagy az [elosztott hálózat nevével (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
 
 Ha Közvetlen tárolóhelyek nem az Ön számára megfelelő, az Ön számára megfelelő, az Azure-beli [megosztott lemezekkel](failover-cluster-instance-azure-shared-disks-manually-configure.md) vagy [prémium fájlmegosztás](failover-cluster-instance-premium-file-share-manually-configure.md) használatával hozza létre a-t. 
 
 További tudnivalókat az Azure-beli [virtuális gépekkel](failover-cluster-instance-overview.md) és a [fürt konfigurálásával kapcsolatos ajánlott eljárásokkal](hadr-cluster-best-practices.md)foglalkozó, a SQL Server az Azure-ban című témakörben 
 
-További információt a következő témakörben talál: 
+További információkért lásd: 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

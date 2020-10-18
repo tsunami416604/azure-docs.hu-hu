@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539397"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166590"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Útmutató a Designer vizualizációs részeinek megtekintéséhez Azure Monitor
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk az egyéni nézetekben elérhető vizualizációs részek beállításait ismerteti.
@@ -44,7 +44,7 @@ A következő szakaszok részletesen ismertetik a csempék típusát és azok tu
 ## <a name="list-of-queries-part"></a>Lekérdezések részének listája
 A lekérdezések listája a naplók listáját jeleníti meg. Az egyes lekérdezéseket kiválaszthatja az eredmények megjelenítéséhez. A nézet alapértelmezés szerint egyetlen lekérdezést tartalmaz, és további lekérdezések hozzáadásához kiválaszthatja a **+ lekérdezés** lehetőséget is.
 
-![Lekérdezések nézet listája](media/view-designer-parts/view-list-queries.png)
+![Képernyőkép a lekérdezési vizualizációk listájáról a Azure Monitor View Designerben.](media/view-designer-parts/view-list-queries.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -60,7 +60,7 @@ A lekérdezések listája a naplók listáját jeleníti meg. Az egyes lekérdez
 ## <a name="number-and-list-part"></a>Szám és lista része
 A fejléc egyetlen számot jelenít meg, amely egy napló lekérdezésében lévő rekordok számát jeleníti meg. A lista a lekérdezés első tíz eredményét jeleníti meg egy gráfmal, amely egy numerikus oszlop relatív értékét vagy időbeli változását jelzi.
 
-![Lekérdezések nézet listája](media/view-designer-parts/view-number-list.png)
+![Képernyőkép a Azure Monitor View Designerben lévő szám és lista vizualizációs részeiről.](media/view-designer-parts/view-number-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -81,7 +81,7 @@ A fejléc egyetlen számot jelenít meg, amely egy napló lekérdezésében lév
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Név |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -112,7 +112,7 @@ A fejlécnek két száma van, amely a rekordok számát jeleníti meg a különb
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Név |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -153,7 +153,7 @@ A fejléc egyetlen számot jelenít meg, amely összegzi a log lekérdezés Valu
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Név |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -185,7 +185,7 @@ A fejléc a két naplózási lekérdezés eredményét jeleníti meg az oszlopok
 | Művelet |Az értékgörbe számára végrehajtandó művelet. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Név |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -246,7 +246,7 @@ A fejlécben egy olyan vonalas diagram látható, amely több adatsorozatból á
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Név |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -282,7 +282,7 @@ A fejléc több adatsorozatot tartalmazó vonalas diagramot jelenít meg a napl�
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Név |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -352,7 +352,7 @@ A következő táblázat a küszöbértékek beállításait ismerteti:
 | Beállítás | Leírás |
 |:--- |:--- |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást, ha egy szín ikont szeretne megjeleníteni az egyes értékek bal oldalán. Az ikon jelzi az érték állapotát a megadott küszöbértékekhez viszonyítva. |
-| Name (Név) |A küszöb értékének neve |
+| Név |A küszöb értékének neve |
 | Küszöbérték |A küszöbérték értéke. Az egyes listaelemek állapotának színe az adott értéknél nagyobb legmagasabb küszöbérték színét adja meg. Ha nem lépi túl a küszöbértéket, a rendszer egy alapértelmezett színt használ. |
 | Szín |A küszöbértéket jelző szín |
 

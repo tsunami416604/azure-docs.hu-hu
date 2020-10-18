@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564af59c473d5c3f55bef059905500496adf060c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86224060"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165910"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure webalkalmazási tűzfal és Azure Policy
 
@@ -44,7 +44,7 @@ A WAF-erőforrások kezeléséhez számos beépített Azure-szabályzat találha
 3.  A hozzárendelések lapon válassza a felül a **házirend hozzárendelése** ikont.
 
 [!div class="mx-imgBorder"]
-![Azure webalkalmazási tűzfal](../media/waf-azure-policy/assign-policy.png)
+![A házirend-hozzárendelési lap alapjai lapot megjelenítő képernyőkép.](../media/waf-azure-policy/assign-policy.png)
 
 4.  A házirend-hozzárendelési lap alapjai lapon frissítse a következő mezőket:
     1.  **Hatókör**: válassza ki, hogy melyik Azure-előfizetéseket és-erőforráscsoportokat kell érintenie a Azure Policy.
@@ -52,7 +52,7 @@ A WAF-erőforrások kezeléséhez számos beépített Azure-szabályzat találha
     3.  **Házirend-definíció**: válassza ki azokat a Azure Policy, amelyekre alkalmazni kívánja a hatókört a kizárásokkal. Írja be a "webalkalmazási tűzfal" kifejezést a keresőmezőbe a megfelelő webalkalmazási tűzfal Azure Policy kiválasztásához.
 
 [!div class="mx-imgBorder"]
-![Azure webalkalmazási tűzfal](../media/waf-azure-policy/policy-listing.png)
+![Képernyőkép, amely az elérhető házirend-definíciókat jeleníti meg.](../media/waf-azure-policy/policy-listing.png)
 
 
 5.  Válassza a **Parameters (paraméterek** ) fület, és frissítse a házirendek paramétereit. A paraméter nevének további tisztázásához vigye a kurzort a paraméter neve melletti információs ikonra a további pontosításhoz.

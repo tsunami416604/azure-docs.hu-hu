@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/16/2020
 tags: connectors
-ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2fb2180acfe8fed5701ae4320ea0d1424ed9e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326779"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166284"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Az SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
@@ -67,6 +67,9 @@ Most folytassa a következő lépésekkel:
 
 ### <a name="connect-to-azure-sql-database-or-managed-instance"></a>Kapcsolódás Azure SQL Database vagy felügyelt példányhoz
 
+Az Azure SQL felügyelt példányainak helyszíni adatátjáró vagy integrációs szolgáltatási környezet használata nélküli eléréséhez [be kell állítania a nyilvános végpontot az Azure SQL felügyelt példányán](../azure-sql/managed-instance/public-endpoint-configure.md). A nyilvános végpont a 3342-es portot használja, ezért ügyeljen arra, hogy ezt a portszámot adja meg a logikai alkalmazással létesített kapcsolatok létrehozásakor.
+
+
 Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-műveletet](#add-sql-action), és korábban még nem hozott létre kapcsolatokat az adatbázishoz, a rendszer a következő lépések elvégzését kéri:
 
 1. A **Hitelesítés típusa**mezőben válassza ki Azure SQL Database vagy az Azure SQL felügyelt példányán az adatbázishoz szükséges és engedélyezett hitelesítést:
@@ -88,8 +91,8 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Kiszolgáló neve** | Igen | Az SQL-kiszolgáló címe, például: `Fabrikam-Azure-SQL.database.windows.net` |
-   | **Adatbázis neve** | Igen | Az SQL-adatbázis neve, például: `Fabrikam-Azure-SQL-DB` |
-   | **Tábla neve** | Igen | A használni kívánt tábla, például: `SalesLT.Customer` |
+   | **Adatbázis neve** | Yes | Az SQL-adatbázis neve, például: `Fabrikam-Azure-SQL-DB` |
+   | **Tábla neve** | Yes | A használni kívánt tábla, például: `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -129,10 +132,10 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **SQL-kiszolgáló neve** | Igen | Az SQL-kiszolgáló címe, például: `Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL-adatbázis neve** | Igen | A SQL Server-adatbázis neve, például: `Fabrikam-Azure-SQL-DB` |
-   | **Felhasználónév** | Igen | Az SQL Server és az adatbázis felhasználóneve |
-   | **Jelszó** | Igen | Az SQL Server és az adatbázis jelszava |
+   | **SQL-kiszolgáló neve** | Yes | Az SQL-kiszolgáló címe, például: `Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL-adatbázis neve** | Yes | A SQL Server-adatbázis neve, például: `Fabrikam-Azure-SQL-DB` |
+   | **Felhasználónév** | Yes | Az SQL Server és az adatbázis felhasználóneve |
+   | **Jelszó** | Yes | Az SQL Server és az adatbázis jelszava |
    | **Előfizetés** |  Igen, Windows-hitelesítéshez | A korábban az Azure-ban létrehozott adatátjáró-erőforráshoz tartozó Azure-előfizetés |
    | **Összekötő átjáró** | Igen, Windows-hitelesítéshez | Az Azure-ban korábban létrehozott adatátjáró-erőforrás neve <p><p>**Tipp**: Ha az átjáró nem jelenik meg a listában, ellenőrizze, hogy megfelelően [állította-e be az átjárót](../logic-apps/logic-apps-gateway-connection.md). |
    |||
@@ -248,11 +251,22 @@ Ha tárolt eljárást hív meg az SQL Server-összekötő használatával, a vis
 
 1. A JSON-tartalom tulajdonságaira való hivatkozáshoz kattintson a lista azon szerkesztési mezőire, amelyekben hivatkozni kíván ezekre a tulajdonságokra, hogy megjelenjen a dinamikus tartalmak listája. A listában a [**JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) elemzése alatt válassza ki a kívánt JSON-tartalom tulajdonságaihoz tartozó jogkivonatokat.
 
+## <a name="troubleshoot-problems"></a>Problémák elhárítása
+
+Nagyon gyakori a kapcsolódási probléma megtapasztalása. A következő példában egy hibaüzenet jelenik meg:
+
+> `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+>
+> `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+>
+> `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+
+A probléma elhárításához kövesse az [SQL Server csatlakozási hibák megoldását](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) ismertető témakört.
+
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
 Az összekötő eseményindítókkal, műveletekkel és korlátozásokkal kapcsolatos technikai információkért tekintse [meg az összekötő hivatkozási oldalát](/connectors/sql/), amely a hencegés leírásában jön létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók [a Azure Logic apps-összekötők](../connectors/apis-list.md) használatáról
-

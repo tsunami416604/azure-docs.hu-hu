@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan engedélyezheti az előfizetésében már üzem
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994516"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165400"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>A már üzembe helyezett Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
@@ -132,12 +132,10 @@ Ha közvetlenül szeretné engedélyezni a figyelést a Azure Portal egyik AK-f�
 2. Az erőforrások listájában kezdje el begépelni a **tárolókat**.  A lista a bemenet alapján szűri a szűrőket.
 
 3. Válassza a **Kubernetes Services**elemet.
+    
+4. A Kubernetes szolgáltatások listájában válasszon ki egy szolgáltatást.
 
-    ![A Kubernetes Services hivatkozása](./media/container-insights-onboard/portal-search-containers-01.png)
-
-4. A tárolók listájában válasszon ki egy tárolót.
-
-5. A tároló áttekintése lapon válassza a **tárolók figyelése**lehetőséget.
+5. A Kubernetes szolgáltatás áttekintése lapon válassza a **figyelés-** információk elemet.
 
 6. Ha egy meglévő Log Analytics munkaterülettel rendelkezik, amely a fürttel azonos előfizetésben található, **Azure monitor a tárolók** lapon, válassza ki azt a legördülő listából.
     A lista előadja az alapértelmezett munkaterületet és helyet, amelyet az AK-tároló üzembe helyez az előfizetésben.
@@ -378,7 +376,7 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
   }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 

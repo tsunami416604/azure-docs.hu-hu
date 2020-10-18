@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: b42c693943c41176936ac796f4586463e9af917c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076691"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164164"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Felhőalapú szolgáltatás létrehozása és üzembe helyezése
 A Azure Portal kétféle módszert biztosít a felhőalapú szolgáltatások létrehozására és üzembe helyezésére: *gyors létrehozás* és *Egyéni létrehozás*.
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan használható a gyors létrehozás módszer egy 
 >
 >
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 Az Azure-ban az alkalmazások felhőalapú szolgáltatásként való üzembe helyezéséhez három összetevő szükséges:
 
 * **Szolgáltatás definíciója**  
@@ -56,7 +56,7 @@ Ha felhőalapú szolgáltatást szeretne létrehozni webes szerepkörök vagy fe
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Kattintson az **erőforrás létrehozása > a számítás**elemre, majd görgessen le, és kattintson a **Cloud Service**elemre.
 
-    ![A felhőalapú szolgáltatás közzététele](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![Képernyőkép, amely kiemeli a Cloud Service lehetőséget az erőforrás létrehozása > számítás területen.](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. Az új **Cloud Service** ablaktáblán adja meg a **DNS-név**értékét.
 4. Hozzon létre egy új **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
 5. Válasszon egy **helyet**.
@@ -74,7 +74,7 @@ Ha a központi telepítési csomag [tanúsítvány használatára lett konfigur�
 2. Kattintson a **tanúsítvány csatolása**elemre, majd kattintson az **OK** gombra a **tanúsítványok hozzáadása** panelen.
 3. Kattintson a **create (létrehozás** ) elemre a **Cloud Service** ablaktáblán. Ha az üzemelő példány elérte a **kész** állapotot, folytassa a következő lépésekkel.
 
-    ![A felhőalapú szolgáltatás közzététele](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Képernyőfelvétel: a tanúsítvány feltöltésének folyamata.](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>Ellenőrizze, hogy az üzemelő példány sikeresen befejeződött-e
 1. Kattintson a Cloud Service-példányra.
@@ -86,7 +86,7 @@ Ha a központi telepítési csomag [tanúsítvány használatára lett konfigur�
 
 [TFSTutorialForCloudService]: ./cloud-services-choose-me.md
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
 * [A felhőalapú szolgáltatás kezelése](cloud-services-how-to-manage-portal.md).
