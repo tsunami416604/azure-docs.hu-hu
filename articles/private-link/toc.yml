@@ -1,4 +1,4 @@
-- name: Az Azure privát kapcsolat dokumentációja
+- name: A privát kapcsolat dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -24,6 +24,7 @@
     - name: Privát kapcsolati szolgáltatás létrehozása – ARM-sablon
       displayName: Resource Manager
       href: create-private-link-service-template.md
+  expanded: true
 - name: Oktatóanyagok
   items:
     - name: Csatlakozás egy tárfiókhoz
@@ -42,7 +43,7 @@
       items:
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
-- name: Útmutató
+- name: Használati útmutató
   items:
     - name: Privát csatlakozás webalkalmazáshoz
       href: create-private-endpoint-webapp-portal.md

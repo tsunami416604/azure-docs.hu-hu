@@ -6,10 +6,8 @@
       href: introduction.md
 - name: Első lépések
   items:
-    - name: Üzembe helyezés előtti folyamat
+    - name: 0 – Az üzembe helyezés megtervezése
       href: production-ready-deployment-steps.md
-    - name: Üzembe helyezés előtti ellenőrzőlista
-      href: pre-deployment-checklist.md
     - name: 1 – Az Azure VMware Solution üzembe helyezése
       href: deploy-azure-vmware-solution.md
     - name: 2 – Helyszíni csatlakozás
@@ -104,3 +102,7 @@
           href: fix-deployment-provisioning-failures.md
     - name: GYIK
       href: faq.md
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.vmware

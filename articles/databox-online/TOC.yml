@@ -34,7 +34,11 @@
     - name: Alapelvek
       items:
         - name: Követelmények áttekintése
-          href: azure-stack-edge-gpu-system-requirements.md
+          items:
+            - name: Azure Stack Edge esetén
+              href: azure-stack-edge-gpu-system-requirements.md
+            - name: Azure Stack Edge-blobtároló esetén
+              href: azure-stack-edge-gpu-system-requirements-rest.md
         - name: A korlátozások ismertetése
           href: azure-stack-edge-limits.md
         - name: Biztonsági áttekintés

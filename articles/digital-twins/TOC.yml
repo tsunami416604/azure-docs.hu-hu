@@ -193,7 +193,7 @@
       items:
         - name: Eszközszimulációs szolgáltatás
           href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
-        - name: Azure Digital Twins-minta
+        - name: Az Azure Digital Twins teljes körű mintái
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure Digital Twins-felderítő (minta)
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
@@ -201,10 +201,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: Integrációs minta a DPS-hez és az IoT Hubhoz
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
-        - name: Az Azure Digital Twins egyéni swaggerei Logic Apps-összekötőhöz
-          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: A SignalR integrációs mintája
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+        - name: Az Azure Digital Twins egyéni swaggerei Logic Apps-összekötőhöz
+          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: Azure-eszközök
       items:
         - name: Azure Cloud Shell

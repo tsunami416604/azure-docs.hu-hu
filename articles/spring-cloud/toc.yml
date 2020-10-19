@@ -92,6 +92,8 @@
     - name: Problémák önálló diagnosztizálása és megoldása
       href: spring-cloud-howto-self-diagnose-solve.md
     - name: Figyelés
+    - name: Szerepkörök és engedélyek létrehozása
+      href: spring-cloud-howto-permissions.md
       items:
         - name: Elosztott nyomkövetés és az App Insights
           href: spring-cloud-tutorial-distributed-tracing.md
