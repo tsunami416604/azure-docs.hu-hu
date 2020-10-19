@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24bdb192ddfe1759cb1d70fff9936979f5e28143
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 09066d9e51f12923772758b3aebcebd347a59380
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093361"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174120"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure biztonsági alapkonfiguráció biztonsági mentéshez
 
@@ -436,7 +436,7 @@ Támogató dokumentáció:
 
 - [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](../governance/management-groups/create.md)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -612,7 +612,7 @@ Emellett a Azure Policy használatával korlátozásokat állíthat be az ügyf�
 
 - [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](../governance/management-groups/create.md)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -818,9 +818,9 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 - [Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md)
 
-* [Hitelesítés Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+* [Hitelesítés Key Vault](../key-vault/general/authentication.md)
 
-* [Key Vault hozzáférési szabályzatok kiosztása](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+* [Key Vault hozzáférési szabályzatok kiosztása](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -868,7 +868,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 - [Megismerheti a Microsoft antimalware-t az Azure Cloud Services és Virtual Machines](../security/fundamentals/antimalware.md)
 
-- [Az adatszolgáltatások fenyegetés-észlelésének megismerése Azure Security Center](../security-center/threat-protection.md)
+- [Az adatszolgáltatások fenyegetés-észlelésének megismerése Azure Security Center](../security-center/azure-defender.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -924,7 +924,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 **Útmutató**: a helyszíni biztonsági mentéshez a titkosítást az Azure-ba történő biztonsági mentéshez megadott hozzáférési kód használatával biztosítjuk. Azure-beli virtuális gépek esetén a rendszer Storage Service Encryption (SSE) használatával titkosítja az inaktív adatokat. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához engedélyezheti a Key Vault törlését.
 
-- [A Soft delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [A Soft delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: igen
 

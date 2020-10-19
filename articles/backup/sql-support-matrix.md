@@ -4,12 +4,12 @@ description: Összefoglalja a támogatási beállításokat és korlátozásokat
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5126159f2f9e5761b5f6a073972935101bc03210
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946348"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174065"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server biztonsági mentésének támogatási mátrixa
 
@@ -41,7 +41,7 @@ A Azure Backup használatával biztonsági mentést készíthet a Microsoft Azur
 * Az összes biztonsági mentési típus (teljes/különbözeti/napló) és helyreállítási modellek (egyszerű/teljes/tömegesen naplózott) támogatottak.
 * A csak **olvasható** adatbázisok esetében a teljes és a másolási csak a teljes biztonsági mentési típusok támogatottak.
 * Az SQL natív tömörítés támogatott, ha a felhasználó explicit módon engedélyezi a biztonsági mentési szabályzatot. Azure Backup felülbírálja a példányok szintjének alapértelmezett értékeit a TÖMÖRÍTÉSi/NO_COMPRESSION záradékkal a felhasználó által beállított vezérlőelem értékétől függően.
-* A TDE-kompatibilis adatbázis biztonsági mentése támogatott. Ha egy TDE-titkosított adatbázist szeretne visszaállítani egy másik SQL Serverre, először [vissza kell állítania a tanúsítványt a célkiszolgálóra](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). A TDE-kompatibilis adatbázisok SQL Server 2016-es és újabb verzióinak biztonsági mentési tömörítése elérhető, de az [itt](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)leírtak szerint alacsonyabb adatátviteli mérettel.
+* A TDE-kompatibilis adatbázis biztonsági mentése támogatott. Ha egy TDE-titkosított adatbázist szeretne visszaállítani egy másik SQL Serverre, először [vissza kell állítania a tanúsítványt a célkiszolgálóra](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). A TDE-kompatibilis adatbázisok SQL Server 2016-es és újabb verzióinak biztonsági mentési tömörítése elérhető, de az [itt](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)leírtak szerint alacsonyabb adatátviteli mérettel.
 * A tükrözési adatbázisokhoz és az adatbázis-pillanatképekhez tartozó biztonsági mentési és visszaállítási műveletek nem támogatottak.
 * SQL Server **feladatátvevő fürt példánya (** nem támogatott).
 * Ha több biztonsági mentési megoldást használ a különálló SQL Server példány vagy az SQL always on rendelkezésre állási csoport biztonsági mentéséhez, a biztonsági mentés sikertelen lehet. Ne tegye meg. A rendelkezésre állási csoport két csomópontjának különálló, azonos vagy eltérő megoldásokkal történő biztonsági mentése a biztonsági mentés sikertelenségét is eredményezheti.
@@ -94,6 +94,6 @@ Differenciál | Elsődleges
 Napló |  Másodlagos
 Copy-Only teljes |  Másodlagos
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

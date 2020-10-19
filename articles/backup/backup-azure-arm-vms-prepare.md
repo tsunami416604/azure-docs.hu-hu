@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986511"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172747"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -37,6 +37,8 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
 * **Telepítse a virtuálisgép-ügynököt a virtuális gépre**: Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a számítógépen futó Azure VM-ügynök bővítményének telepítésével. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, akkor az ügynök telepítve van és fut. Ha egyéni virtuális gépet hoz létre, vagy egy helyszíni gépet telepít át, előfordulhat, hogy [manuálisan kell telepítenie az ügynököt](#install-the-vm-agent).
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="modify-storage-replication"></a>Tárolási replikáció módosítása
@@ -45,7 +47,7 @@ Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](../stor
 
 * Ha a tároló elsődleges biztonsági mentési mechanizmusa, javasoljuk, hogy használja a GRS-t.
 * A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) is használhatja egy olcsóbb megoldáshoz.
-* A [Zone-redundáns tárolás (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) a [rendelkezésre állási zónákban](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)replikálja az adatait, és biztosítja az adattárolást és a rugalmasságot ugyanabban a régióban.
+* A [Zone-redundáns tárolás (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) a [rendelkezésre állási zónákban](../availability-zones/az-overview.md#availability-zones)replikálja az adatait, és biztosítja az adattárolást és a rugalmasságot ugyanabban a régióban.
 
 Módosítsa a tárolási replikálás típusát a következőképpen:
 
@@ -149,10 +151,10 @@ A feladatok állapota a következő esetektől függően változhat:
 
 **Pillanatkép** | **Adatok átvitele a tárba** | **Feladatok állapota**
 --- | --- | ---
-Befejezve | Folyamatban | Folyamatban
-Befejezve | Kimarad | Befejezve
-Befejezve | Befejezve | Befejezve
-Befejezve | Sikertelen | Figyelmeztetéssel fejeződött be
+Befejeződött | Folyamatban | Folyamatban
+Befejeződött | Kimarad | Befejeződött
+Befejeződött | Befejeződött | Befejeződött
+Befejeződött | Sikertelen | Figyelmeztetéssel fejeződött be
 Sikertelen | Sikertelen | Sikertelen
 
 Ezzel a képességgel ugyanezen a virtuális gépen két biztonsági mentés futtatható párhuzamosan, de mindkét fázisban (pillanatkép, adatok átvitele a tárba) csak egy Alfeladat futhat. Így olyan helyzetekben, amikor egy folyamatban lévő biztonsági mentési feladat a következő nap biztonsági mentését eredményezte, a rendszer ezt a leválasztási funkciót fogja elkerülni. A következő napok biztonsági mentései a pillanatképet elvégezték, az **adatok a tárolóba való átvitele** pedig kimarad, ha egy korábbi nap biztonsági mentési feladata folyamatban van.

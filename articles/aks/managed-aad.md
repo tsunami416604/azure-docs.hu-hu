@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d34505b1f36d6de77e2bb1df9aa98b7a14b5f44d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936996"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171940"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AK által felügyelt Azure Active Directory integráció
 
@@ -32,7 +32,7 @@ Az AK által felügyelt Azure Active Directory integráció olyan nyilvános ré
 ## <a name="limitations"></a>Korlátozások 
 
 * Az AK által felügyelt Azure AD-integráció nem tiltható le.
-* a nem RBAC-kompatibilis fürtök nem támogatottak az AK által felügyelt Azue AD-integrációhoz
+* a nem RBAC-kompatibilis fürtök nem támogatottak az AK által felügyelt Azure AD-integrációhoz
 * Az AK által felügyelt Azure AD-integrációhoz társított Azure AD-bérlő módosítása nem támogatott
 
 ## <a name="prerequisites"></a>Előfeltételek

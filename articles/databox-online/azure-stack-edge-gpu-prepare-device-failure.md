@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 0d36a09b67e110551470f3908800e77c35b1e3be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7c7caf6c01c2e7ea9aaf141a2597ef338735d3d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843881"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173604"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>Felkészülés Azure Stack Edge Pro GPU-eszköz meghibásodására
 
@@ -66,7 +66,8 @@ A következő harmadik féltől származó adatvédelmi megoldások biztonsági 
 | Külső gyártótól származó szoftverek           | Hivatkozás a megoldásra                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | https://www.cohesity.com/solution/cloud/azure/ <br> Részletekért vegye fel a kapcsolatot az adatkapcsolattal.          |
-| Veritas                        | Részletekért forduljon a Veritashez.   |
+| CommVault                      | https://www.commvault.com/azure <br> A részletekért forduljon a CommVault.          |
+| Veritas                        | http://veritas.com/azure <br> Részletekért forduljon a Veritashez.   |
 
 
 ## <a name="protect-files-and-folders-on-vms"></a>A virtuális gépek fájljainak és mappáinak a védelemmel való ellátása
@@ -78,7 +79,8 @@ Az Azure Stack Edge együttműködik a Azure Backup és más, harmadik féltől 
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Microsoft Azure Recovery Services (MARS) ügynök a Azure Backup | Windows        | [A MARS-ügynök ismertetése](/azure/backup/backup-azure-about-mars)    |
 | Cohesity                | Windows, Linux | [Rövid Microsoft Azure integrációs, biztonsági mentési és helyreállítási megoldás](https://www.cohesity.com/solution/cloud/azure) <br>Részletekért vegye fel a kapcsolatot az adatkapcsolattal.                          |
-| Veritas                 | Windows, Linux | Részletekért forduljon a Veritashez.                    |
+| CommVault               | Windows, Linux | https://www.commvault.com/azure <br>A részletekért forduljon a CommVault.                          |
+| Veritas                 | Windows, Linux | http://veritas.com/azure <br> Részletekért forduljon a Veritashez.                    |
 
 
 

@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0583b68df603b04d47ac6104f0cf127b3c4bedd0
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "77621006"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173724"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Az Azure Functions bemutatása
 
@@ -19,7 +19,7 @@ Azure Functions lehetővé teszi, hogy kisebb kódrészleteket ("functions") fut
 
 Egy függvényt egy adott típusú esemény "aktivál". A [támogatott eseményindítók](./functions-triggers-bindings.md) például az adatváltozások megválaszolására, az üzenetek megválaszolására, az ütemezett futtatásra vagy egy HTTP-kérelem eredményére reagálnak.
 
-Habár a közvetlenül a számtalan szolgáltatással való integrációt végezheti el, a más szolgáltatásokkal való integrálás a kötések használatával egyszerűsíthető. A kötések lehetővé teszi, [hogy az Azure és a harmadik féltől származó szolgáltatások széles köréhez férhet hozzá](./functions-triggers-bindings.md).
+Bár a kódok közvetlenül a számtalan szolgáltatással szemben is lehetnek, a más szolgáltatásokkal való integrációt a kötések segítségével egyszerűsítjük. A kötések lehetővé teszi, [hogy az Azure és a harmadik féltől származó szolgáltatások széles köréhez férhet hozzá](./functions-triggers-bindings.md).
 
 ## <a name="features"></a>Szolgáltatások
 

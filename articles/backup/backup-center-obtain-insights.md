@@ -3,16 +3,16 @@ title: Bepillantást nyerhet a Backup Center használatával
 description: Ismerje meg, hogyan elemezheti a korábbi trendeket, és mélyebb elemzéseket készíthet a biztonsági mentésekről a Backup Center használatával.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 5964f285089feea721a0b452efed884e905b89cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f687ee123abe2f95ad0d23a6fe302f4a5c22e1
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994973"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173749"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Bepillantást nyerhet a Backup Center használatával
 
-A korábbi trendek elemzéséhez és a biztonsági másolatok mélyebb betekintéséhez a Backup Center egy felületet biztosít a [biztonsági mentési jelentésekhez](configure-reports.md), amely [Azure monitor naplókat](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) és [Azure-munkafüzeteket](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)használ. A biztonsági mentési jelentések a következő képességeket kínálja:
+A korábbi trendek elemzéséhez és a biztonsági másolatok mélyebb betekintéséhez a Backup Center egy felületet biztosít a [biztonsági mentési jelentésekhez](configure-reports.md), amely [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) és [Azure-munkafüzeteket](../azure-monitor/platform/workbooks-overview.md)használ. A biztonsági mentési jelentések a következő képességeket kínálja:
 
 - A Felhőbeli tárhely kiosztása és előrejelzése.
 
@@ -32,7 +32,7 @@ A korábbi trendek elemzéséhez és a biztonsági másolatok mélyebb betekint�
 
 ### <a name="configure-your-vaults-to-send-data-to-a-log-analytics-workspace"></a>A tárolók konfigurálása Log Analytics-munkaterületre való adatküldéshez
 
-[Ismerje meg, hogyan konfigurálhatja a diagnosztikai beállításokat a tárolók méretezéséhez](https://docs.microsoft.com/azure/backup/configure-reports#get-started)
+[Ismerje meg, hogyan konfigurálhatja a diagnosztikai beállításokat a tárolók méretezéséhez](./configure-reports.md#get-started)
 
 ### <a name="view-backup-reports-in-the-backup-center-portal"></a>Biztonsági mentési jelentések megtekintése a Backup Center portálon
 
@@ -42,17 +42,17 @@ A Backup Center **biztonsági mentési jelentések** menüpontjának kiválaszt�
 
 A következő nézetek érhetők el:
 
-1. **Összefoglalás** – ezen a lapon áttekintheti a Backup-hagyaték magas szintű áttekintését. [További információ](https://docs.microsoft.com/azure/backup/configure-reports#summary)
+1. **Összefoglalás** – ezen a lapon áttekintheti a Backup-hagyaték magas szintű áttekintését. [További információ](./configure-reports.md#summary)
 
-1. **Biztonsági másolati elemek** – ezen a lapon tekinthetők meg a biztonsági mentési elem szintjén felhasználható felhőalapú tárterület információi és trendjei. [További információ](https://docs.microsoft.com/azure/backup/configure-reports#backup-items)
+1. **Biztonsági másolati elemek** – ezen a lapon tekinthetők meg a biztonsági mentési elem szintjén felhasználható felhőalapú tárterület információi és trendjei. [További információ](./configure-reports.md#backup-items)
 
-1. **Használat** – ezen a lapon megtekintheti a biztonsági másolatok legfontosabb számlázási paramétereit. [További információ](https://docs.microsoft.com/azure/backup/configure-reports#usage)
+1. **Használat** – ezen a lapon megtekintheti a biztonsági másolatok legfontosabb számlázási paramétereit. [További információ](./configure-reports.md#usage)
 
-1. **Feladatok** – ezen a lapon megtekintheti a feladatok hosszan futó trendjét, például a sikertelen feladatok számát napi bontásban, valamint a feladat meghibásodásának leggyakoribb okait. [További információ](https://docs.microsoft.com/azure/backup/configure-reports#jobs)
+1. **Feladatok** – ezen a lapon megtekintheti a feladatok hosszan futó trendjét, például a sikertelen feladatok számát napi bontásban, valamint a feladat meghibásodásának leggyakoribb okait. [További információ](./configure-reports.md#jobs)
 
-1. **Házirendek** – ezen a lapon megtekintheti az összes aktív házirend adatait, például a társított elemek számát, valamint az adott szabályzatban biztonsági mentés alatt álló elemek által felhasznált teljes felhőalapú tárterületet. [További információ](https://docs.microsoft.com/azure/backup/configure-reports#policies)
+1. **Házirendek** – ezen a lapon megtekintheti az összes aktív házirend adatait, például a társított elemek számát, valamint az adott szabályzatban biztonsági mentés alatt álló elemek által felhasznált teljes felhőalapú tárterületet. [További információ](./configure-reports.md#policies)
 
-1. **Optimalizálás** – ezen a lapon betekintést nyerhet a biztonsági mentések lehetséges költségtakarékos lehetőségeibe. [További információ](https://docs.microsoft.com/azure/backup/configure-reports#optimize)
+1. **Optimalizálás** – ezen a lapon betekintést nyerhet a biztonsági mentések lehetséges költségtakarékos lehetőségeibe. [További információ](./configure-reports.md#optimize)
 
 ## <a name="next-steps"></a>Következő lépések
 

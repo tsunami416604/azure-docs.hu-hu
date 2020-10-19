@@ -3,12 +3,12 @@ title: Biztonsági mentések szabályozása a Backup Centerrel
 description: Ismerje meg, hogyan szabályozhatja az Azure-környezetet annak biztosításához, hogy az összes erőforrás megfelel a Backup Center biztonsági mentési perspektívájának.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614329"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173801"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>Biztonsági mentések szabályozása a Backup Centerrel
 
@@ -26,15 +26,15 @@ A Backup Center segítségével szabályozhatja az Azure-környezetet, így bizt
 
 ## <a name="azure-policies-for-backup"></a>Azure-szabályzatok biztonsági mentéshez
 
-A biztonsági mentéshez elérhető összes [Azure-házirend](https://docs.microsoft.com/azure/governance/policy/overview) megtekintéséhez válassza ki az **Azure-szabályzatok biztonsági mentéshez** menüpontot. Ez megjeleníti az előfizetések és az erőforráscsoportok hozzárendeléséhez elérhető összes beépített és egyéni [Azure-házirend-definíciót a biztonsági mentéshez](policy-reference.md) .
+A biztonsági mentéshez elérhető összes [Azure-házirend](../governance/policy/overview.md) megtekintéséhez válassza ki az **Azure-szabályzatok biztonsági mentéshez** menüpontot. Ez megjeleníti az előfizetések és az erőforráscsoportok hozzárendeléséhez elérhető összes beépített és egyéni [Azure-házirend-definíciót a biztonsági mentéshez](policy-reference.md) .
 
-A definíciók bármelyikének kiválasztásával [hozzárendelheti a szabályzatot](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) egy hatókörhöz.
+A definíciók bármelyikének kiválasztásával [hozzárendelheti a szabályzatot](../governance/policy/tutorials/create-and-manage.md#assign-a-policy) egy hatókörhöz.
 
 ![Azure Policy definíciók kiválasztása](./media/backup-center-govern-environment/azure-policy-definitions.png)
 
 ## <a name="backup-compliance"></a>Biztonsági mentés megfelelősége
 
-A biztonsági mentés megfelelősége menüpontra kattintva megtekintheti az erőforrások [megfelelőségét](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) az Azure-környezethez rendelt különböző beépített szabályzatoknak megfelelően. Megtekintheti az összes szabályzatnak megfelelő erőforrások százalékos arányát, valamint azokat a házirendeket, amelyek egy vagy több nem megfelelő erőforrással rendelkeznek.
+A biztonsági mentés megfelelősége menüpontra kattintva megtekintheti az erőforrások [megfelelőségét](../governance/policy/how-to/get-compliance-data.md) az Azure-környezethez rendelt különböző beépített szabályzatoknak megfelelően. Megtekintheti az összes szabályzatnak megfelelő erőforrások százalékos arányát, valamint azokat a házirendeket, amelyek egy vagy több nem megfelelő erőforrással rendelkeznek.
 
 ![Biztonsági másolatok megfelelőségének megtekintése](./media/backup-center-govern-environment/azure-policy-compliance.png)
 

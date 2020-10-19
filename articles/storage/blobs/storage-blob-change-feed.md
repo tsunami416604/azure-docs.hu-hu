@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 105978daeb93a2e5646222ff10055ba20a1dc481
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89568234"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172899"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage
 
@@ -139,7 +139,7 @@ Azure Resource Manager sablon használatával engedélyezheti a meglévő Storag
 A módosítási hírcsatorna számos metaadat-és naplófájlt hoz létre. Ezek a fájlok a Storage-fiók **$blobchangefeed** tárolójában találhatók. 
 
 > [!NOTE]
-> A jelenlegi kiadásban a **$blobchangefeed** tároló nem látható Azure Storage Explorer vagy a Azure Portal. A ListContainers API meghívása során jelenleg nem látja a $blobchangefeed tárolót, de a Blobok megjelenítéséhez közvetlenül a tárolón hívhatja a ListBlobs API-t.
+> A jelenlegi kiadásban a $blobchangefeed tároló csak Azure Portal látható, de nem látható a Azure Storage Explorerban. A ListContainers API meghívásakor jelenleg nem látható a $blobchangefeed tároló, de a Blobok megjelenítéséhez közvetlenül a tárolón hívhatja a ListBlobs API-t.
 
 Az ügyfélalkalmazások a Change feed Processor SDK-val megadott blob Change feed Processor Library használatával használhatják a változási csatornát. 
 

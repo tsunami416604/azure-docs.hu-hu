@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági másolatainak kezelése és figy
 description: Ismerje meg, hogyan kezelheti és figyelheti az Azure-beli virtuális gépek biztonsági mentéseit a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2052d80428af89862b5348943b446f1b800ab36f
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145433"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174091"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -24,6 +24,8 @@ A Azure Portal a Recovery Services-tároló irányítópultja hozzáférést biz
 A biztonsági mentéseket az irányítópult használatával és az egyes virtuális gépekre történő lefúrással kezelheti. A gépek biztonsági mentésének megkezdéséhez nyissa meg a tárolót az irányítópulton.
 
 ![Teljes irányítópult nézet a csúszkával](./media/backup-azure-manage-vms/bottom-slider.png)
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="view-vms-on-the-dashboard"></a>Virtuális gépek megtekintése az irányítópulton
 

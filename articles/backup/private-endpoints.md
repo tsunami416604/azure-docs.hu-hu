@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: e1121f1d1217ebd48c744135c976587545323f44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565163"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172239"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -387,7 +387,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 Létre kell hoznia három privát DNS-zónát, és csatolnia kell őket a virtuális hálózathoz.
 
-| **Zóna**                                                     | **Service** |
+| **Zóna**                                                     | **Szolgáltatás** |
 | ------------------------------------------------------------ | ----------- |
 | `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
 | `privatelink.blob.core.windows.net`                            | Blob        |
@@ -398,9 +398,9 @@ Létre kell hoznia három privát DNS-zónát, és csatolnia kell őket a virtu�
 
 Tekintse át [ezt a listát](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) a régiókódokhoz. Tekintse meg az alábbi hivatkozásokat az URL-elnevezési konvenciók a nemzeti régiókban:
 
-- [Kína](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Németország](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+- [Kína](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Németország](../germany/germany-developer-guide.md#endpoint-mapping)
+- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 #### <a name="adding-dns-records-for-custom-dns-servers"></a>DNS-rekordok hozzáadása az egyéni DNS-kiszolgálókhoz
 

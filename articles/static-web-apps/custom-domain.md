@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563347"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173688"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Egyéni tartomány beállítása az Azure Static Web Apps előzetes verziójában
 
@@ -29,11 +29,11 @@ Tartománynevek konfigurálásakor A "A" rekordok használatával képezhetők l
 
 Az alkalmazásokhoz számos különböző típusú DNS-konfiguráció érhető el.
 
-| Ha szeretné                                 | Majd                                                |
-| -----------------------------------------------| --------------------------------------------------- |
-| Támogatás `www.example.com` vagy `blog.example.net`| [CNAME rekord hozzárendelése](#map-a-cname-record)           |
-| Támogatja `example.com`                          | [Legfelső szintű tartomány konfigurálása](#configure-a-root-domain) |
-| Az összes altartományra mutat `www.example.com`      | [Helyettesítő karakter hozzárendelése](#map-a-wildcard-domain)            |
+| Ha szeretné | Majd |
+|--|--|
+| Támogatás `www.example.com` vagy `blog.example.net` | [CNAME rekord hozzárendelése](#map-a-cname-record) |
+| Támogatja `example.com` | [Legfelső szintű tartomány konfigurálása](#configure-a-root-domain) |
+| Az összes altartományra mutat `www.example.com` | [Helyettesítő karakter hozzárendelése](#map-a-wildcard-domain) |
 
 ## <a name="map-a-cname-record"></a>CNAME rekord hozzárendelése
 
@@ -46,6 +46,8 @@ Egy CNAME rekord egy tartományt képez le egy másikra. CNAME rekord használat
 1. A _statikus Web Apps_ lapon válassza ki az alkalmazás nevét.
 
 1. Kattintson a menü **Egyéni tartományok** elemére.
+
+1. Kattintson a **Hozzáadás** gombra
 
 1. Az _Egyéni tartományok_ ablakban másolja az URL-címet az **érték** mezőbe.
 

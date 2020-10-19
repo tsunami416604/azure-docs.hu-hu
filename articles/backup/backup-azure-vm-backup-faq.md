@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056718"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172840"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -24,7 +24,7 @@ Virtuális gép létrehozásakor engedélyezheti a biztonsági mentést a [támo
 ### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Miért tart sokáig a kezdeti biztonsági mentés elvégzése?
 
 A kezdeti biztonsági mentés mindig teljes biztonsági mentés, és az adatok méretétől és a biztonsági mentés feldolgozásának módjától függ. <br>
-A biztonsági mentési teljesítmény javítása érdekében tekintse meg a [biztonsági mentéssel kapcsolatos ajánlott eljárásokat](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices). [Biztonsági mentési szempontok](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) és [biztonsági mentési teljesítmény](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+A biztonsági mentési teljesítmény javítása érdekében tekintse meg a [biztonsági mentéssel kapcsolatos ajánlott eljárásokat](./backup-azure-vms-introduction.md#best-practices). [Biztonsági mentési szempontok](./backup-azure-vms-introduction.md#backup-and-restore-considerations) és [biztonsági mentési teljesítmény](./backup-azure-vms-introduction.md#backup-performance)<br>
 Bár a növekményes biztonsági mentések teljes időtartama kevesebb mint 24 óra, az első biztonsági mentésre ez nem feltétlenül igaz.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>A virtuális gép ára tartalmazza a biztonsági mentés költségeit?
@@ -109,7 +109,7 @@ A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését
 
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Megőrzöttek-e a felügyelt identitások, ha a bérlő változása a biztonsági mentés során történik?
 
-Ha a [bérlő megváltozik](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) , le kell tiltania és újra engedélyeznie kell a [felügyelt identitásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , hogy a biztonsági mentések újra működjenek.
+Ha a [bérlő megváltozik](/azure/devops/organizations/accounts/change-azure-ad-connection) , le kell tiltania és újra engedélyeznie kell a [felügyelt identitásokat](../active-directory/managed-identities-azure-resources/overview.md) , hogy a biztonsági mentések újra működjenek.
 
 ## <a name="restore"></a>Visszaállítás
 
@@ -207,6 +207,6 @@ Igen, legfeljebb 100 virtuális gép lehet, amely ugyanahhoz a biztonsági ment�
 
 Jelenleg a virtuális géphez rendelt biztonsági mentési házirend alapján megtekintheti a biztonsági mentési elem (VM) szintjén megőrzött adatmegőrzési beállításokat.
 
-A biztonsági másolatok megőrzési beállításainak megtekintésére az egyik lehetőség, hogy megkeresi a virtuális gép biztonsági mentési elemének [irányítópultját](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) a Azure Portal. A biztonsági mentési házirendre mutató hivatkozás kiválasztásával megtekintheti a virtuális géphez társított napi, heti, havi és éves adatmegőrzési pontok megőrzési időtartamát.
+A biztonsági másolatok megőrzési beállításainak megtekintésére az egyik lehetőség, hogy megkeresi a virtuális gép biztonsági mentési elemének [irányítópultját](./backup-azure-manage-vms.md#view-vms-on-the-dashboard) a Azure Portal. A biztonsági mentési házirendre mutató hivatkozás kiválasztásával megtekintheti a virtuális géphez társított napi, heti, havi és éves adatmegőrzési pontok megőrzési időtartamát.
 
-A [Backup Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) használatával megtekintheti az összes virtuális gép megőrzési beállításait egyetlen ablaktáblán belül. Keresse meg a Backup Explorert bármely Recovery Services-tárolóból, nyissa meg a **biztonsági mentési elemek** lapot, és válassza ki a speciális nézetet az egyes virtuális gépek részletes adatmegőrzési adatainak megtekintéséhez.
+A [Backup Explorer](./monitor-azure-backup-with-backup-explorer.md) használatával megtekintheti az összes virtuális gép megőrzési beállításait egyetlen ablaktáblán belül. Keresse meg a Backup Explorert bármely Recovery Services-tárolóból, nyissa meg a **biztonsági mentési elemek** lapot, és válassza ki a speciális nézetet az egyes virtuális gépek részletes adatmegőrzési adatainak megtekintéséhez.

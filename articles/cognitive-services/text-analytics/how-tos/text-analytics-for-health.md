@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309200"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173953"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
 
@@ -227,7 +227,11 @@ További információ: NGINX dokumentációja az [NGINX SSL-lezárásáról](htt
 
 
 ## <a name="example-api-request"></a>Példa API-kérelemre
-A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat nyújt.
+A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat nyújt.  Egy vizualizációs eszközt is biztosítottunk a tárolóban, amely elérhető a **bemutatónak** a tároló végponthoz való hozzáfűzésével, például:
+
+```bash
+http://<serverURL>:5000/demo
+```
 
 Az alábbi példában szereplő cURL-kérelem használatával küldjön le egy lekérdezést arra a tárolóra, amelyet telepített, majd a `serverURL` megfelelő értékkel cserélje le a változót.
 

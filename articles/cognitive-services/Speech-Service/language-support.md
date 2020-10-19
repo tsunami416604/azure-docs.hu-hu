@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7d5dd7d2d0aa3d10f439b5cf3604e2d595456f86
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048457"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172263"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -170,7 +170,7 @@ További információ a regionális elérhetőségről: [régiók](regions.md#st
 | `fr-CH` <sup>Új</sup> | Francia (Svájc) | Nő | `fr-CH-ArianeNeural` | Általános kérdések |
 | `fr-FR` | Francia (franciaországi) | Nő | `fr-FR-DeniseNeural` | Általános kérdések |
 | `fr-FR` <sup>Új</sup> | Francia (Franciaország) | Férfi | `fr-FR-HenriNeural` | Általános kérdések |
-| `he-IL` <sup>Új</sup> | Héber (Isareal) | Nő | `he-IL-HilaNeural` | Általános kérdések |
+| `he-IL` <sup>Új</sup> | Héber (Izrael) | Nő | `he-IL-HilaNeural` | Általános kérdések |
 | `hi-IN` | Hindi (India) | Nő | `hi-IN-SwaraNeural` | Általános kérdések |
 | `hr-HR` <sup>Új</sup> | Horvát (Horvátország) | Nő | `hr-HR-GabrijelaNeural` | Általános kérdések |
 | `hu-HU` <sup>Új</sup> | Magyar (Magyarország) | Nő | `hu-HU-NoemiNeural` | Általános kérdések |
@@ -393,7 +393,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Speaker Recognition
+## <a name="speaker-recognition"></a>Beszélőfelismerés
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 

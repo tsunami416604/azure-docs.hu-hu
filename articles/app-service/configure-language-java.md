@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: ed511f25132ea6bb766736804a5257ad7f6eff0a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149047"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171569"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -692,11 +692,15 @@ App Service lehetővé teszi a felhasználók számára a JVM főverziójának (
 
 Ha úgy dönt, hogy kijelöli a másodlagos verziót, időnként frissítenie kell a JVM alverzióját a helyen. Annak érdekében, hogy az alkalmazás az újabb alverzión fusson, hozzon létre egy átmeneti tárolóhelyet, és növelje az alverziót az átmeneti helyen. Miután meggyőződött róla, hogy az alkalmazás megfelelően fut az új alverzión, megváltoztathatja az átmeneti és az üzemi tárolóhelyeket.
 
+## <a name="jboss-eap-hardware-options"></a>JBoss EAP-hardver beállításai
+
+A JBoss EAP csak a prémium és az elkülönített hardveres beállításokban érhető el. Azok az ügyfelek, akik egy JBoss EAP-helyet hoztak létre ingyenes, megosztott, alapszintű vagy standard szinten a nyilvános előzetes verzióban, a nem várt viselkedés elkerülése érdekében fel kell skálázást a prémium vagy elkülönített hardveres szintre.
+
 ## <a name="java-runtime-statement-of-support"></a>A Java futtatókörnyezet támogatási nyilatkozata
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK-verziók és-karbantartás
 
-Az Azure által támogatott Java Development Kit (JDK) a [Azul Systems](https://www.azul.com/)által biztosított [Zulu](https://www.azul.com/downloads/azure-only/zulu/) . A Azul Zulu Enterprise-OpenJDK az Azure-hoz készült OpenJDK, valamint a Microsoft és a Azul rendszerek által támogatott, az Azure-ra vonatkozó, és a Azure Stack. A Java SE-alkalmazások létrehozásához és futtatásához szükséges összes összetevőt tartalmazzák. A JDK-t a [Java jdk-telepítésből](/azure/developer/java/fundamentals/java-jdk-long-term-support)telepítheti.
+Az Azure által támogatott Java Development Kit (JDK) a [Azul Systems](https://www.azul.com/)által biztosított [Zulu](https://www.azul.com/downloads/azure-only/zulu/) . A Azul Zulu Enterprise-OpenJDK az Azure-hoz készült OpenJDK, valamint a Microsoft és a Azul rendszerek által támogatott, az Azure-ra vonatkozó, és a Azure Stack. A Java SE-alkalmazások létrehozásához és futtatásához szükséges összes összetevőt tartalmazzák. A JDK-t a [Java jdk-telepítésből](https://aka.ms/azure-jdks)telepítheti.
 
 A főverzió frissítései a Azure App Service új futtatókörnyezeti beállításain keresztül lesznek elérhetők. Az ügyfelek a Java újabb verzióit frissítik a App Service üzembe helyezésének konfigurálásával, és felelősek a fő frissítés megfelelőségének teszteléséhez és biztosításához.
 

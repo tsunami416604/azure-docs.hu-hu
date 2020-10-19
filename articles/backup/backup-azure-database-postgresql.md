@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Database for PostgreSQL biztonsági mentésse
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: a30f822db134ce82e772602cb2430d7e8d0db23e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 3c326ff197f18333812438719908daced2b268bb
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093888"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173576"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL biztonsági mentés hosszú távú adatmegőrzéssel (előzetes verzió)
 
@@ -244,7 +244,7 @@ Ez a szakasz az Azure PostgreSQL-adatbázisok Azure Backup használatával tört
 
 Adja meg a Backup-tároló MSI **olvasási** hozzáférését azon a PG-kiszolgálón, amelyről biztonsági másolatot szeretne készíteni vagy visszaállítani:
 
-A PostgreSQL-adatbázis biztonságos kapcsolatának létrehozásához Azure Backup a [Managed Service Identity (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) hitelesítési modellt használja. Ez azt jelenti, hogy a Backup-tároló csak azokhoz az erőforrásokhoz férhet hozzá, amelyek kifejezetten engedélyt kaptak a felhasználótól.
+A PostgreSQL-adatbázis biztonságos kapcsolatának létrehozásához Azure Backup a [Managed Service Identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md) hitelesítési modellt használja. Ez azt jelenti, hogy a Backup-tároló csak azokhoz az erőforrásokhoz férhet hozzá, amelyek kifejezetten engedélyt kaptak a felhasználótól.
 
 A rendszer az MSI-t automatikusan a létrehozáskor rendeli hozzá a tárolóhoz. Meg kell adnia a tároló MSI-hozzáférését a PostgreSQL-kiszolgálókhoz, amelyekről biztonsági másolatot szeretne készíteni az adatbázisokról.
 
@@ -308,7 +308,7 @@ Hozzon létre hálózati vonalat, ha engedélyezi az **Azure-szolgáltatások ho
 
     ![Tároló blob-adatközreműködői szerepkörének kiosztása](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
 
-1. Azt is megteheti, hogy részletes engedélyeket ad a visszaállításhoz használt tárolóhoz az Azure CLI az az [role hozzárendelés Create](https://docs.microsoft.com/cli/azure/role/assignment) paranccsal.
+1. Azt is megteheti, hogy részletes engedélyeket ad a visszaállításhoz használt tárolóhoz az Azure CLI az az [role hozzárendelés Create](/cli/azure/role/assignment) paranccsal.
 
     ```azurecli
     az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id

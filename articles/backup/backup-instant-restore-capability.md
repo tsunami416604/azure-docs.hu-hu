@@ -4,12 +4,12 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95de22d8493181f098e480afc4f319c44c633e42
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000379"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173917"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -60,6 +60,8 @@ A növekményes Pillanatképek tárolása a virtuális gép Storage-fiókjában 
 ## <a name="configure-snapshot-retention"></a>Pillanatkép-megőrzés konfigurálása
 
 ### <a name="using-azure-portal"></a>Az Azure Portal használata
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 A Azure Portal egy, a **virtuális gép biztonsági mentési házirendje** panelen hozzáadott mezőt láthat az **azonnali visszaállítás** szakaszban. A pillanatképek megőrzésének időtartamát a **virtuális gép biztonsági mentési szabályzat** paneljén módosíthatja az adott biztonsági mentési szabályzathoz társított összes virtuális géphez.
 

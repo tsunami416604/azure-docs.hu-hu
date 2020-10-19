@@ -4,12 +4,12 @@ description: Ebben a cikkben megismerheti a szelektív lemezek biztonsági ment�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271375"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174117"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Szelektív lemezes biztonsági mentés és visszaállítás Azure-beli virtuális gépekhez
 
@@ -240,6 +240,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 ```
 
 ## <a name="using-the-azure-portal"></a>Az Azure Portal használata
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 A Azure Portal használatával megtekintheti a befoglalt és kizárt lemezeket a virtuális gép biztonsági mentése részletei panelen és a biztonsági mentési feladatok ablaktáblán.  A visszaállítás során, amikor kiválasztja a helyreállítási pontot a visszaállításhoz, a helyreállítási pontban megtekintheti a biztonsági másolatban szereplő lemezeket.
 

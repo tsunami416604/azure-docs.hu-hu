@@ -3,12 +3,12 @@ title: Titkosított Azure-beli virtuális gépek biztonsági mentése és vissza
 description: A titkosított Azure-beli virtuális gépek biztonsági mentését és visszaállítását ismerteti a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89014914"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173907"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Titkosított Azure-beli virtuális gépek biztonsági mentése és visszaállítása
 
@@ -16,13 +16,13 @@ Ez a cikk azt ismerteti, hogyan lehet biztonsági mentést készíteni és vissz
 
 ## <a name="encryption-using-platform-managed-keys"></a>Titkosítás a platform által felügyelt kulcsokkal
 
-Alapértelmezés szerint a virtuális gépek összes lemeze automatikusan titkosítva van, és a platform által felügyelt kulcsokat (főkulcsokat) használja, amelyek a [Storage szolgáltatás titkosítását](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)használják. A virtuális gépek biztonsági mentését Azure Backup használatával végezheti el anélkül, hogy a végponton a titkosítás támogatásához szükséges konkrét műveleteket kellene végrehajtania. A platform által felügyelt kulcsokkal történő titkosítással kapcsolatos további információkért [tekintse meg ezt a cikket](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys).
+Alapértelmezés szerint a virtuális gépek összes lemeze automatikusan titkosítva van, és a platform által felügyelt kulcsokat (főkulcsokat) használja, amelyek a [Storage szolgáltatás titkosítását](../storage/common/storage-service-encryption.md)használják. A virtuális gépek biztonsági mentését Azure Backup használatával végezheti el anélkül, hogy a végponton a titkosítás támogatásához szükséges konkrét műveleteket kellene végrehajtania. A platform által felügyelt kulcsokkal történő titkosítással kapcsolatos további információkért [tekintse meg ezt a cikket](../virtual-machines/windows/disk-encryption.md#platform-managed-keys).
 
 ![Titkosított lemezek](./media/backup-encryption/encrypted-disks.png)
 
 ## <a name="encryption-using-customer-managed-keys"></a>Titkosítás az ügyfelek által felügyelt kulcsokkal
 
-Ha egyéni felügyelt kulcsokkal (CMK) titkosítja a lemezeket, a lemezek titkosításához használt kulcsot a rendszer a Azure Key Vault tárolja, és Ön felügyeli. Storage Service Encryption (SSE) a CMK használatával eltér a Azure Disk Encryption (ADE) titkosítástól. Az ADE az operációs rendszer titkosítási eszközeit használja. Az SSE titkosítja az adatait a Storage szolgáltatásban, lehetővé téve a virtuális gépekhez tartozó operációs rendszerek vagy rendszerképek használatát. A felügyelt lemezek ügyfél által felügyelt kulcsokkal történő titkosításával kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
+Ha egyéni felügyelt kulcsokkal (CMK) titkosítja a lemezeket, a lemezek titkosításához használt kulcsot a rendszer a Azure Key Vault tárolja, és Ön felügyeli. Storage Service Encryption (SSE) a CMK használatával eltér a Azure Disk Encryption (ADE) titkosítástól. Az ADE az operációs rendszer titkosítási eszközeit használja. Az SSE titkosítja az adatait a Storage szolgáltatásban, lehetővé téve a virtuális gépekhez tartozó operációs rendszerek vagy rendszerképek használatát. A felügyelt lemezek ügyfél által felügyelt kulcsokkal történő titkosításával kapcsolatos további információkért tekintse meg [ezt a cikket](../virtual-machines/windows/disk-encryption.md#customer-managed-keys).
 
 ## <a name="encryption-support-using-ade"></a>Titkosítási támogatás az ADE használatával
 

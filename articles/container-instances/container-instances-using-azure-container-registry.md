@@ -5,12 +5,12 @@ services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89656997"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173656"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés az Azure Container Instancesben az Azure Container Registryből
 
@@ -22,19 +22,18 @@ ms.locfileid: "89656997"
 
 **Azure CLI**: az ebben a cikkben szereplő parancssori példák az [Azure CLI](/cli/azure/) -t használják, és a bash rendszerhéjhoz vannak formázva. [Az Azure CLI](/cli/azure/install-azure-cli) -t helyileg is telepítheti, vagy használhatja a [Azure Cloud Shell][cloud-shell-bash].
 
+## <a name="limitations"></a>Korlátozások
+
+* Nem végezheti el a hitelesítést úgy, hogy Azure Container Registry a lemezképek lekérését a tároló csoportjának telepítése során egy ugyanazon a tároló csoportban konfigurált [felügyelt identitás](container-instances-managed-identity.md) használatával.
+* Jelenleg nem lehet lekérni az Azure-Virtual Network üzembe helyezett [Azure Container Registry](../container-registry/container-registry-vnet.md) lemezképeit.
+
 ## <a name="configure-registry-authentication"></a>Regisztrációs adatbázis hitelesítésének konfigurálása
 
 Olyan éles környezetben, ahol hozzáférést biztosít a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, javasoljuk, hogy konfigurálja a beállításjegyzék-hozzáférést egy [egyszerű szolgáltatásnév](../container-registry/container-registry-auth-service-principal.md)használatával. Az egyszerű szolgáltatás lehetővé teszi, hogy [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../container-registry/container-registry-roles.md) biztosítson a tárolói lemezképekhez. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
 
 A Azure Container Registry további [hitelesítési lehetőségeket](../container-registry/container-registry-authentication.md)biztosít.
 
-> [!NOTE]
-> Nem végezheti el a hitelesítést úgy, hogy Azure Container Registry a lemezképek lekérését a tároló csoportjának telepítése során egy ugyanazon a tároló csoportban konfigurált [felügyelt identitás](container-instances-managed-identity.md) használatával.
-
-> [!NOTE]
-> Jelenleg nem lehet lekérni az Azure-Virtual Network üzembe helyezett [Azure Container Registry](../container-registry/container-registry-vnet.md) lemezképeit.
-
-A következő szakaszban létrehoz egy Azure Key vaultot és egy szolgáltatásnevet, és tárolja az egyszerű szolgáltatásnév hitelesítő adatait a tárolóban. 
+A következő szakaszban létrehoz egy Azure Key vaultot és egy szolgáltatásnevet, és tárolja az egyszerű szolgáltatásnév hitelesítő adatait a tárolóban.
 
 ### <a name="create-key-vault"></a>Kulcstároló létrehozása
 

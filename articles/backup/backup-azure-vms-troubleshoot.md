@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: da650453006b77490769d1cef57fc3d4f4447e40
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 6da91248c197eae12fbc59f2da8c5294d95117b6
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169370"
+ms.locfileid: "92173845"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -129,9 +129,9 @@ Az ellenőrzéshez keresse meg a ***rendszer-és Eseménynapló az alkalmazás n
 
 Megoldás:
 
-* Győződjön meg arról, hogy a virtuális gépek lemezein át kell osztani a terhelést. Ez csökkenti az egyes lemezek terhelését. [A IOPs szabályozását a diagnosztikai metrikák tárolási szinten való engedélyezésével](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)tekintheti meg.
+* Győződjön meg arról, hogy a virtuális gépek lemezein át kell osztani a terhelést. Ez csökkenti az egyes lemezek terhelését. [A IOPs szabályozását a diagnosztikai metrikák tárolási szinten való engedélyezésével](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm)tekintheti meg.
 * Módosítsa a biztonsági mentési szabályzatot a biztonsági mentések elvégzéséhez a csúcsidőben, amikor a virtuális gép terhelése a legalacsonyabb szinten van.
-* Frissítse az Azure-lemezeket a magasabb IOPs támogatásához. [További információ](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+* Frissítse az Azure-lemezeket a magasabb IOPs támogatásához. [További információ](../virtual-machines/disks-types.md)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState – Nem sikerült elkészíteni a pillanatképet a VSS (Kötet árnyékmásolata) szolgáltatás nem megfelelő állapota miatt
 
@@ -157,15 +157,15 @@ Hibakód: UserErrorSkuNotAvailable hibaüzenet: a virtuális gép létrehozása 
 
 Ez a hiba azért fordul elő, mert a visszaállítási művelet során kiválasztott virtuális gép mérete nem támogatott. <br>
 
-A probléma megoldásához a visszaállítási művelet során használja a [lemezek visszaállítása](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) lehetőséget. Ezeket a lemezeket használva hozzon létre egy virtuális gépet a [rendelkezésre álló támogatott](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) virtuálisgép-méretek közül a [PowerShell-parancsmagok](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)használatával.
+A probléma megoldásához a visszaállítási művelet során használja a [lemezek visszaállítása](./backup-azure-arm-restore-vms.md#restore-disks) lehetőséget. Ezeket a lemezeket használva hozzon létre egy virtuális gépet a [rendelkezésre álló támogatott](./backup-support-matrix-iaas.md#vm-compute-support) virtuálisgép-méretek közül a [PowerShell-parancsmagok](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks)használatával.
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported – a virtuális gép létrehozása nem sikerült, mert a Piactéri vásárlási kérelem nincs jelen
 
 Hibakód: UserErrorMarketPlaceVMNotSupported hibaüzenet: a virtuális gép létrehozása nem sikerült, mert a Piactéri vásárlási kérelem nem található.
 
-Azure Backup támogatja az Azure Marketplace-en elérhető virtuális gépek biztonsági mentését és helyreállítását. Ez a hiba akkor fordul elő, ha olyan virtuális gépet próbál visszaállítani (egy adott Tervtel/közzétevői beállítással), amely már nem érhető el az Azure Marketplace-en, további [információt itt talál](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal).
+Azure Backup támogatja az Azure Marketplace-en elérhető virtuális gépek biztonsági mentését és helyreállítását. Ez a hiba akkor fordul elő, ha olyan virtuális gépet próbál visszaállítani (egy adott Tervtel/közzétevői beállítással), amely már nem érhető el az Azure Marketplace-en, további [információt itt talál](/legal/marketplace/participation-policy#offering-suspension-and-removal).
 
-* A probléma megoldásához a visszaállítási művelet során használja a [lemezek visszaállítása](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) lehetőséget, majd a [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) vagy az [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) -PARANCSMAGok használatával hozza létre a virtuális gépet a legújabb Piactéri információkkal a virtuális géphez.
+* A probléma megoldásához a visszaállítási művelet során használja a [lemezek visszaállítása](./backup-azure-arm-restore-vms.md#restore-disks) lehetőséget, majd a [PowerShell](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) vagy az [Azure CLI](./tutorial-restore-disk.md) -PARANCSMAGok használatával hozza létre a virtuális gépet a legújabb Piactéri információkkal a virtuális géphez.
 * Ha a közzétevő nem rendelkezik Piactéri információval, az adatlemezek segítségével lekérheti az adatokat, és csatolhatja őket egy meglévő virtuális géphez.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – hiba történt a biztonsági mentési bővítmény konfigurációjának elemzésekor
@@ -321,8 +321,8 @@ Ha van olyan Azure Policy, amely [a környezetében található címkéket szab�
 
 Ha a visszaállítás után észleli, hogy a lemezek offline állapotban vannak:
 
-* Ellenőrizze, hogy a parancsfájlt futtató gép megfelel-e az operációs rendszer követelményeinek. [További információk](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
-* Győződjön meg arról, hogy nem áll helyre visszaállítás ugyanarra a forrásra, [További információ](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
+* Ellenőrizze, hogy a parancsfájlt futtató gép megfelel-e az operációs rendszer követelményeinek. [További információk](./backup-azure-restore-files-from-vm.md#system-requirements).  
+* Győződjön meg arról, hogy nem áll helyre visszaállítás ugyanarra a forrásra, [További információ](./backup-azure-restore-files-from-vm.md#original-backed-up-machine-versus-another-machine).
 
 ### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound – a visszaállítás nem sikerült, mert a virtuális gép pillanatképe nem található
 
@@ -405,7 +405,7 @@ A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolg�
 * **Ha négynél több virtuális gép osztozik ugyanazzal a felhőalapú szolgáltatással, a virtuális gépeket több biztonsági mentési házirendben is elosztja**. A biztonsági mentés időpontjának felosztása, így a több mint négy virtuális gép biztonsági mentése egyidőben megkezdődik. Próbálja meg elkülöníteni a házirendek indítási időpontját legalább egy órával.
 * **A virtuális gép magas processzoron vagy memórián fut**. Ha a virtuális gép nagy memórián vagy CPU-használaton fut, több mint 90 százalékkal, a pillanatkép-feladat várólistára kerül és késleltetve lesz. Végül túllépi az időkorlátot. Ha ez a probléma történik, próbálkozzon egy igény szerinti biztonsági mentéssel.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 A DHCP-t engedélyezni kell a vendégen a IaaS virtuális gép biztonsági mentésének működéséhez. Ha statikus magánhálózati IP-címmel kell rendelkeznie, konfigurálja a Azure Portal vagy a PowerShell használatával. Győződjön meg arról, hogy a virtuális gépen belül a DHCP-beállítás engedélyezve van.
 További információ arról, hogyan állítható be statikus IP-cím a PowerShell használatával:

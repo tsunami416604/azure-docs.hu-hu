@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurál
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981504"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171635"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -35,7 +35,7 @@ A Azure Backup automatikusan kezeli a tároló tárterületét. Meg kell adnia a
    - Javasoljuk, hogy ha az Azure-t elsődleges biztonsági mentési tárolási végpontként használja, folytassa az alapértelmezett **geo-redundáns** beállítás használatát.
    - Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amellyel csökkentheti az Azure Storage-költségeit.
    - További információ a [földrajzi](../storage/common/storage-redundancy.md#geo-redundant-storage) és [helyi](../storage/common/storage-redundancy.md#locally-redundant-storage) redundanciáról.
-   - Ha állásidő nélkül szeretné rendelkezésre állást biztosítani egy régióban, garantálhatja az [adattárolást, majd a zóna – redundáns tároló](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage)elemet.
+   - Ha állásidő nélkül szeretné rendelkezésre állást biztosítani egy régióban, garantálhatja az [adattárolást, majd a zóna – redundáns tároló](../storage/common/storage-redundancy.md#zone-redundant-storage)elemet.
 
 >[!NOTE]
 >A tár tárolási replikációs beállításai nem vonatkoznak az Azure-fájlmegosztás biztonsági mentésére, mert az aktuális megoldás a pillanatkép-alapú, és a tárolóra nem kerül át adatok. A pillanatképek tárolása ugyanabban a Storage-fiókban történik, mint a mentett fájlmegosztás.

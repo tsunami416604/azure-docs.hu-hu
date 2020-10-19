@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418908"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172661"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Egyszeri jelszóval kapcsolatos technikai profil definiálása egy Azure AD B2C egyéni házirendben
 
@@ -73,13 +73,15 @@ A kód generálási módjának konfigurálásához a következő beállításoka
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Nem | A kód lejárati ideje másodpercben. Minimum: `60` ; Maximum: `1200` ; Alapértelmezett: `600` . |
+| CodeExpirationInSeconds | Nem | A kód lejárati ideje másodpercben. Minimum: `60` ; Maximum: `1200` ; Alapértelmezett: `600` . Minden alkalommal, amikor kódot adnak meg (ugyanazt a kódot használja `ReuseSameCode` , vagy egy új kódot használ), a kód lejárata kiterjeszthető.  |
 | CodeLength | Nem | A kód hossza. Az alapértelmezett érték `6`. |
 | CharacterSet | Nem | A kód karakterkészlete, amely normál kifejezésben való használatra van formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
 | NumRetryAttempts | Nem | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősül. Az alapértelmezett érték `5`. |
 | NumCodeGenerationAttempts | Nem | A kód generálására irányuló kísérletek maximális száma azonosító alapján. Ha nincs megadva, az alapértelmezett érték 10. |
 | Művelet | Igen | A végrehajtandó művelet. Lehetséges érték: `GenerateCode` . |
-| ReuseSameCode | Nem | Azt határozza meg, hogy egy ismétlődő kód megadása helyett új kód generálását kell-e megadni, ha a megadott kód nem járt le, és még érvényes. Az alapértelmezett érték `false`. |
+| ReuseSameCode | Nem | Azt határozza meg, hogy ugyanazt a kódot kell-e megadnia ahelyett, hogy új kódot generáljon, ha a megadott kód nem járt le, és még érvényes. Az alapértelmezett érték `false`.  |
+
+
 
 ### <a name="example"></a>Példa
 

@@ -3,12 +3,12 @@ title: A Backup Center áttekintése
 description: Ez a cikk áttekintést nyújt az Azure-hoz készült Backup Centerről.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eab2e8f9694ca83d0e050f55bc6f6dd802a7331
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614282"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173738"
 ---
 # <a name="overview-of-backup-center"></a>A Backup Center áttekintése
 
@@ -16,9 +16,9 @@ A Backup Center **egyetlen egységes felügyeleti élményt** nyújt az Azure-ba
 
 A Backup Center legfontosabb előnyei a következők:
 
-* **Önálló ablaktábla a biztonsági másolatok kezeléséhez** – a Backup Center úgy lett kialakítva, hogy jól működjön a nagyméretű és az elosztott Azure-környezetek között. A Backup Center segítségével hatékonyan kezelheti a több számítási feladatra, tárolóra, előfizetésre, régióra és [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) -bérlőre kiterjedő biztonsági mentéseket.
+* **Önálló ablaktábla a biztonsági másolatok kezeléséhez** – a Backup Center úgy lett kialakítva, hogy jól működjön a nagyméretű és az elosztott Azure-környezetek között. A Backup Center segítségével hatékonyan kezelheti a több számítási feladatra, tárolóra, előfizetésre, régióra és [Azure Lighthouse](../lighthouse/overview.md) -bérlőre kiterjedő biztonsági mentéseket.
 * **DataSource-központú felügyelet** – a Backup Center olyan nézeteket és szűrőket biztosít, amelyek a biztonsági mentésben szereplő adatforrásokra (például virtuális gépekre és adatbázisokra) vannak központosítva. Ez lehetővé teszi az erőforrás-tulajdonos vagy a biztonsági mentési rendszergazda számára az elemek biztonsági mentésének figyelését és működését anélkül, hogy az adott elemre vonatkozó biztonsági mentésre kellene összpontosítani. Ennek a kialakításnak a kulcsfontosságú funkciója, hogy az adatforrás-specifikus tulajdonságok, például az adatforrás-előfizetés, az adatforrás-erőforráscsoport és az adatforrás-címkék alapján szűrheti a nézeteket. Ha például a szervezet a különböző részlegekhez tartozó virtuális gépekhez különböző címkéket rendel, akkor a Backup Center használatával szűrheti a biztonsági mentési információkat a mögöttes virtuális gépek címkéjén alapuló, a tár címkére való összpontosítás nélkül.
-* **Csatlakoztatott élmények** – a Backup Center natív integrációt biztosít a meglévő Azure-szolgáltatásokhoz, amelyek lehetővé teszik a nagy méretekben történő felügyeletet. A Backup Center például a [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) élményt használja a biztonsági másolatok szabályozásához. Emellett [Azure-munkafüzeteket](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) és [Azure monitor naplókat](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) is használ, amelyek segítenek a biztonsági másolatok részletes jelentéseinek megtekintéséhez. Így nem kell új alapelveket megtanulnia a Backup Center által kínált változatos funkciók használatához.
+* **Csatlakoztatott élmények** – a Backup Center natív integrációt biztosít a meglévő Azure-szolgáltatásokhoz, amelyek lehetővé teszik a nagy méretekben történő felügyeletet. A Backup Center például a [Azure Policy](../governance/policy/overview.md) élményt használja a biztonsági másolatok szabályozásához. Emellett [Azure-munkafüzeteket](../azure-monitor/platform/workbooks-overview.md) és [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) is használ, amelyek segítenek a biztonsági másolatok részletes jelentéseinek megtekintéséhez. Így nem kell új alapelveket megtanulnia a Backup Center által kínált változatos funkciók használatához.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 

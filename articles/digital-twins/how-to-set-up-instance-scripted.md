@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8157517c0df942c40d93853c8d18ae31e9909d21
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fd48ff8dd0f4fa44206f6636f869d4ea3f959ae5
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132516"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174173"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
 
@@ -57,10 +57,10 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
 
 1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés" lehetőséget. Ezzel feltölti a fájlt a Cloud Shellba, hogy az Cloud Shell ablakban is futtatható legyen.
 
-4. Futtassa a szkriptet a Cloud Shell ablakban a parancs elküldésével `./deploy.ps1` . (Emlékeztetés arra, hogy a Cloud Shellba való beillesztéshez használhatja a **CTRL + SHIFT + v billentyűkombinációt** a Windows és Linux rendszeren, vagy a **cmd + SHIFT + v** MacOS rendszeren. A helyi menüt is használhatja.)
+4. Futtassa a szkriptet úgy, hogy a Cloud Shell ablakban elküldi a `./deploy.ps1` parancsot az alkalmazás-regisztráció beállítását tartalmazó kapcsolóval. Az alábbi parancsot másolhatja (emlékeztetheti rá, hogy beilleszti Cloud Shellba, a **CTRL + SHIFT + v billentyűkombinációt** használhatja Windows és Linux rendszeren, vagy a **cmd + SHIFT + v** MacOS rendszeren. Használhatja a helyi menüt is).
 
     ```azurecli
-    ./deploy.ps1
+    ./deploy.ps1 -RegisterAadApp
     ```
 
     Ahogy a parancsfájl az automatikus telepítés lépésein fut, a rendszer a következő értékek megadását kéri:

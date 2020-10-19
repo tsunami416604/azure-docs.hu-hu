@@ -3,12 +3,12 @@ title: Adatmodell a Azure Backup diagnosztikai eseményeihez
 description: Ez az adatmodell a diagnosztikai események Log Analyticsba (LA) történő küldésének erőforrás-specifikus módjára hivatkozik.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52c5c0694ed59aea20453ae7a2bd3209d76df433
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569592"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173974"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Adatmodell a Azure Backup diagnosztikai eseményeihez
 
@@ -55,7 +55,7 @@ Ez a táblázat az alapszintű biztonsági mentési entitásokkal, például a t
 | ResourceGroupName                 | Szöveg          | Az erőforrás erőforráscsoport (például Recovery Services tároló) az összegyűjtött adatokhoz |
 | Sémaverzióval                     | Szöveg          | Ez a mező a séma aktuális verzióját jelöli. **V2** |
 | SecondaryBackupProtectionState    | Szöveg          | Azt jelzi, hogy engedélyezve van-e a másodlagos védelem a biztonsági mentési elemmel kapcsolatban  |
-| Állam                             | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
+| Állapot                             | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
 | StorageReplicationType            | Szöveg          | A tár tárolási replikálásának típusa. Például: GeoRedundant |
 | SubscriptionId                    | Szöveg          | Az erőforrás (például Recovery Services tároló) előfizetés-azonosítója, amelybe az adatok gyűjtése történik |
 | VaultName                         | Szöveg          | A tároló neve                                            |
@@ -88,7 +88,7 @@ Ez a táblázat a riasztással kapcsolatos mezők részleteit tartalmazza.
 | ProtectedContainerUniqueId     | Szöveg          | A riasztáshoz társított védett kiszolgáló egyedi azonosítója |
 | RecommendedAction              | Szöveg          | A riasztás feloldásához javasolt művelet                      |
 | Sémaverzióval                  | Szöveg          | A séma jelenlegi verziója, például **v2**            |
-| Állam                          | Szöveg          | A riasztási objektum aktuális állapota, például aktív, törölve |
+| Állapot                          | Szöveg          | A riasztási objektum aktuális állapota, például aktív, törölve |
 | StorageUniqueId                | Szöveg          | A tárolási entitás azonosítására használt egyedi azonosító                |
 | VaultUniqueId                  | Szöveg          | A riasztáshoz kapcsolódó tár azonosítására szolgáló egyedi azonosító    |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
@@ -108,7 +108,7 @@ Ez a táblázat az alapszintű védett példányokkal kapcsolatos mezőket tarta
 | ProtectedContainerUniqueId     | Szöveg          | A feladatot futtató védett tároló azonosítására szolgáló egyedi azonosító |
 | ProtectedInstanceCount         | Szöveg          | A társított biztonsági másolati elemhez vagy a védett tárolóhoz tartozó védett példányok száma az adott napon és időpontban |
 | Sémaverzióval                  | Szöveg          | A séma jelenlegi verziója, például **v2**            |
-| Állam                          | Szöveg          | A biztonsági mentési elem objektumának állapota, például aktív, törölve |
+| Állapot                          | Szöveg          | A biztonsági mentési elem objektumának állapota, például aktív, törölve |
 | VaultUniqueId                  | Szöveg          | A védett példányhoz társított védett tároló egyedi azonosítója |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
 
@@ -139,7 +139,7 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 | RecoveryJobLocation            | Szöveg          | A helyreállított helyreállítási pont tárolási helye |
 | RecoveryLocationType           | Szöveg          | A helyreállítási hely típusa                                |
 | Sémaverzióval                  | Szöveg          | A séma jelenlegi verziója, például **v2**            |
-| Állam                          | Szöveg          | A feladatütemezés aktuális állapota, például aktív, törölve |
+| Állapot                          | Szöveg          | A feladatütemezés aktuális állapota, például aktív, törölve |
 | VaultUniqueId                  | Szöveg          | A feladathoz társított védett tároló egyedi azonosítója |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
 
@@ -177,7 +177,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 | RetentionDuration               | Szöveg           | Konfigurált biztonsági másolatok megőrzési időtartama                    |
 | RetentionType                   | Szöveg           | Megőrzés típusa                                            |
 | Sémaverzióval                   | Szöveg           | Ez a mező a séma aktuális verzióját jelöli, **v2** |
-| Állam                           | Szöveg           | A házirend-objektum aktuális állapota. Például: aktív, törölve |
+| Állapot                           | Szöveg           | A házirend-objektum aktuális állapota. Például: aktív, törölve |
 | SynchronisationFrequencyPerDay  | Egész szám   | Napok száma egy nap során a rendszer az SC DPM és a MABS esetében szinkronizálja a fájlok biztonsági mentését |
 | VaultUniqueId                   | Szöveg           | Azon tár egyedi azonosítója, amelyhez ez a szabályzat tartozik          |
 | WeeklyRetentionDaysOfTheWeek    | Szöveg           | A heti megőrzéshez kiválasztott hét napjai               |
@@ -207,7 +207,7 @@ Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tarta
 | PreferredWorkloadOnVolume      | Szöveg          | A számítási feladatok, amelyekhez ez a kötet az előnyben részesített tároló      |
 | ProtectedContainerUniqueId     | Szöveg          | A biztonsági mentési elemmel társított védett tároló egyedi azonosítója |
 | Sémaverzióval                  | Szöveg          | A séma verziója. Például: **v2**                   |
-| Állam                          | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
+| Állapot                          | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
 | StorageAllocatedInMBs          | Szám        | A megfelelő biztonsági mentési tétel által lefoglalt tárterület a lemez típusú megfelelő tárolóban |
 | StorageConsumedInMBs           | Szám        | A megfelelő tároló biztonsági mentési eleme által felhasznált tárterület mérete |
 | StorageName                    | Szöveg          | A tárolási entitás neve. Például: E:\                      |
@@ -239,7 +239,7 @@ A fenti táblázatokban szereplő összes rekordhoz tartozik egy társított **m
 | AddonAzureBackupPolicy | Szabályzat |  Egy olyan rekordot jelöl, amely a biztonsági mentési és adatmegőrzési szabályzat összes adatát tartalmazza. Például: azonosító, név, megőrzési beállítások stb. |
 | AddonAzureBackupPolicy | PolicyAssociation | A biztonsági másolati elem és a rajta alkalmazott biztonsági mentési házirend közötti leképezést jelöli. |   
 
-Gyakran szükség van a különböző táblák közötti összekapcsolásra, valamint a különböző rekordokra, amelyek ugyanahhoz a táblához tartoznak (a művelet neve alapján megkülönböztetve) az elemzéshez szükséges összes mező beszerzéséhez. Az első lépésekhez tekintse meg a [minta lekérdezéseit](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries) . 
+Gyakran szükség van a különböző táblák közötti összekapcsolásra, valamint a különböző rekordokra, amelyek ugyanahhoz a táblához tartoznak (a művelet neve alapján megkülönböztetve) az elemzéshez szükséges összes mező beszerzéséhez. Az első lépésekhez tekintse meg a [minta lekérdezéseit](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries) . 
 
 ## <a name="next-steps"></a>Következő lépések
 

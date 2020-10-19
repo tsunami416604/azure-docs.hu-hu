@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a DPM és a MABS Azure Data Box
 description: A Azure Data Box használatával a kezdeti biztonsági mentési adatok a DPM és a MABS offline állapotba helyezhetők.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271494"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172223"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline előkészítés a DPM és a MABS Azure Data Box használatával (előzetes verzió)
 
@@ -18,7 +18,7 @@ ms.locfileid: "91271494"
 
 Ez a cikk azt ismerteti, hogyan használhatók a Azure Data Box a kezdeti biztonsági mentési adatok a DPM és a MABS szolgáltatásból az Azure Recovery Services-tárolóba való összevetéséhez.
 
-A [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) használatával a nagyméretű kezdeti DPM/MABS biztonsági mentések offline állapotba helyezhetők (a hálózat használata nélkül) egy Recovery Services-tárolóba. Ezzel a folyamattal időt és hálózati sávszélességet takaríthat meg, amely egyébként nagy mennyiségű biztonsági mentési adat online állapotba helyezésével nagy késleltetésű hálózaton keresztül történik. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
+A [Azure Data Box](../databox/data-box-overview.md) használatával a nagyméretű kezdeti DPM/MABS biztonsági mentések offline állapotba helyezhetők (a hálózat használata nélkül) egy Recovery Services-tárolóba. Ezzel a folyamattal időt és hálózati sávszélességet takaríthat meg, amely egyébként nagy mennyiségű biztonsági mentési adat online állapotba helyezésével nagy késleltetésű hálózaton keresztül történik. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 A Azure Data Boxon alapuló offline biztonsági mentés két különböző előnyt biztosít [Az Azure import/export szolgáltatás alapján az offline biztonsági mentéshez](backup-azure-backup-server-import-export.md):
 
@@ -39,8 +39,8 @@ A következő Data Box SKU-ket támogatja:
 
 | Biztonsági mentési adatméret (a MARS tömörítése után) kiszolgálónkénti bontásban \* | Támogatott Azure Data Box SKU |
 | --- | --- |
-| \<= 7,2 TB | [Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| > 7,2 TB és <= 80 TB\*\* | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| \<= 7,2 TB | [Azure Data Box Disk](../databox/data-box-disk-overview.md) |
+| > 7,2 TB és <= 80 TB\*\* | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 \*A tipikus tömörítési arányok 10-20%-ban változnak <br>
 \*\*[SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com)Ha várhatóan több mint 80 TB-os kezdeti biztonsági mentési adatra van szüksége egyetlen adatforrás esetében.
@@ -64,7 +64,7 @@ Ellenőrizze a következőket:
 
 ### <a name="order-and-receive-the-data-box-device"></a>A Data Box eszköz megrendelése és fogadása
 
-Az offline biztonsági mentés elindítása előtt győződjön meg arról, hogy a szükséges Data Box eszközök *kézbesítése* folyamatban van. A szükséglethez legmegfelelőbb SKU megrendeléséhez tekintse meg a [biztonsági másolatok mérete és a támogatott Data Box SKU](#backup-data-size-and-supported-data-box-skus) -ket. A Data Box-eszközök megrendeléséhez és fogadásához kövesse az [ebben a cikkben](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) ismertetett lépéseket.
+Az offline biztonsági mentés elindítása előtt győződjön meg arról, hogy a szükséges Data Box eszközök *kézbesítése* folyamatban van. A szükséglethez legmegfelelőbb SKU megrendeléséhez tekintse meg a [biztonsági másolatok mérete és a támogatott Data Box SKU](#backup-data-size-and-supported-data-box-skus) -ket. A Data Box-eszközök megrendeléséhez és fogadásához kövesse az [ebben a cikkben](../databox/data-box-disk-deploy-ordered.md) ismertetett lépéseket.
 
 > [!IMPORTANT]
 > Ne válassza a *BlobStorage* lehetőséget a **fiókhoz**. A DPM/MABS-kiszolgálónak olyan fiókra van szüksége, amely támogatja a *BlobStorage* kiválasztásakor nem támogatott lapok blobokat. Válassza a  **Storage v2 (általános célú v2)** lehetőséget **a Azure Data Box** feladathoz tartozó cél Storage-fiók létrehozásakor.
@@ -77,14 +77,14 @@ Miután megkapta a Azure Data Box eszközt a megrendelt Azure Data Box SKU alapj
 
 ### <a name="setup-azure-data-box-disk"></a>Azure Data Box lemez beállítása
 
-Ha egy vagy több Azure Data Box lemezt (egyenként 8 TB-ig) rendelt, kövesse az [itt](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up) leírt lépéseket a Data Box lemez kicsomagolásához, összekapcsolásához és feloldásához.
+Ha egy vagy több Azure Data Box lemezt (egyenként 8 TB-ig) rendelt, kövesse az [itt](../databox/data-box-disk-deploy-set-up.md) leírt lépéseket a Data Box lemez kicsomagolásához, összekapcsolásához és feloldásához.
 
 > [!NOTE]
 > Lehetséges, hogy a DPM/MABS-kiszolgáló nem rendelkezik USB-porttal. Ilyen esetben összekapcsolhatók a Azure Data Box lemez egy másik kiszolgálóval vagy ügyféllel, és elérhetővé tehetik az eszköz gyökerét hálózati megosztásként.
 
 ## <a name="setup-azure-data-box"></a>Telepítő Azure Data Box
 
-Ha egy Azure Data Box (akár 100 TB-ig) rendelt, kövesse az [itt](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) leírt lépéseket a Data Box beállításához.
+Ha egy Azure Data Box (akár 100 TB-ig) rendelt, kövesse az [itt](../databox/data-box-deploy-set-up.md) leírt lépéseket a Data Box beállításához.
 
 ### <a name="mount-your-azure-data-box-as-local-system"></a>Azure Data Box csatlakoztatása helyi rendszerszolgáltatásként
 
@@ -100,7 +100,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
    ```
 
 4. A fenti parancs eredményeképpen megnyíló parancssori ablak a helyi rendszerkörnyezetben található. Ezen a parancsablakban hajthatja végre az Azure-oldal blob-megosztásának hálózati meghajtóként való csatlakoztatásának lépéseit a Windows-kiszolgálón.
-5. Kövesse az alábbi [lépéseket a](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) DPM/MABS-Data Box kiszolgáló NFS-en keresztüli csatlakoztatásához, majd futtassa a következő parancsot a helyi rendszerparancssorban az Azure-oldal Blobok megosztásának csatlakoztatásához:
+5. Kövesse az alábbi [lépéseket a](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) DPM/MABS-Data Box kiszolgáló NFS-en keresztüli csatlakoztatásához, majd futtassa a következő parancsot a helyi rendszerparancssorban az Azure-oldal Blobok megosztásának csatlakoztatásához:
 
     ```cmd
     mount -o nolock \\<DeviceIPAddres>\<StorageAccountName_PageBlob X:
@@ -110,7 +110,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>A kezdeti biztonsági mentési adatok átvitele Azure Data Box eszközökre
 
-1. A DPM/MABS-kiszolgálón hajtsa végre az [új védelmi csoport létrehozásának](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)lépéseit. Ha online védelmet ad a meglévő védelmi csoportnak, kattintson a jobb gombbal a meglévő védelmi csoportra, és válassza az **online védelem hozzáadása** lehetőséget, és kezdje a **8. lépéssel**.
+1. A DPM/MABS-kiszolgálón hajtsa végre az [új védelmi csoport létrehozásának](/system-center/dpm/create-dpm-protection-groups)lépéseit. Ha online védelmet ad a meglévő védelmi csoportnak, kattintson a jobb gombbal a meglévő védelmi csoportra, és válassza az **online védelem hozzáadása** lehetőséget, és kezdje a **8. lépéssel**.
 2. A **csoporttagok kiválasztása** lapon adja meg azokat a számítógépeket és forrásokat, amelyekről biztonsági másolatot szeretne készíteni.
 3. Az **adatvédelmi módszer kiválasztása** lapon adja meg, hogyan szeretné kezelni a rövid és a hosszú távú biztonsági mentést. Győződjön meg arról, hogy az **online védelem** lehetőséget választotta.
 
@@ -163,7 +163,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
     > ![USB-meghajtó](./media/offline-backup-azure-data-box-dpm-mabs/usb-drive.png)
     >
     > Ha például a lemez elérési útja, a `\\mydomain\myserver\disk1\` *Disk1* pedig a *PageBlob*nevű KÖNYVTÁRAT tartalmazza, akkor a DPM/MABS-kiszolgáló varázslóban meg kell adni az elérési utat `\\mydomain\myserver\disk1\` .
-    > Ha [Azure Data Box 100 TB-os eszközt állít](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)be, adja meg a következőt az eszköz hálózati elérési útjaként `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
+    > Ha [Azure Data Box 100 TB-os eszközt állít](./offline-backup-azure-data-box.md#set-up-azure-data-box)be, adja meg a következőt az eszköz hálózati elérési útjaként `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
 
 15. Kattintson a **Tovább** gombra. Az **Összefoglalás** lapon tekintse át a beállításokat, majd válassza a **csoport létrehozása**lehetőséget.
 
@@ -193,8 +193,8 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
 
 Az Azure Data Box Disk sikeres biztonsági mentése után kövesse az alábbi lépéseket.
 
-- A Azure Data Box lemez Azure-ba való szállításához kövesse az [ebben a cikkben](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up) ismertetett lépéseket. Ha Azure Data Box 100-TB eszközt használt, kövesse az [alábbi lépéseket](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) a Azure Data Box Azure-ba való szállításához.
-- [Figyelje a Data Box feladatot](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) a Azure Portalban. A Azure Data Box-feladatok *befejezése*után a DPM/MABS-kiszolgáló automatikusan áthelyezi az adatait a Storage-fiókból a Recovery Services-tárolóba a következő ütemezett biztonsági mentés időpontjában. Ezután megjelöli a biztonsági mentési feladatot, *Ha a* helyreállítási pont létrehozása sikeresen megtörtént.
+- A Azure Data Box lemez Azure-ba való szállításához kövesse az [ebben a cikkben](../databox/data-box-disk-deploy-picked-up.md) ismertetett lépéseket. Ha Azure Data Box 100-TB eszközt használt, kövesse az [alábbi lépéseket](../databox/data-box-deploy-picked-up.md) a Azure Data Box Azure-ba való szállításához.
+- [Figyelje a Data Box feladatot](../databox/data-box-disk-deploy-upload-verify.md) a Azure Portalban. A Azure Data Box-feladatok *befejezése*után a DPM/MABS-kiszolgáló automatikusan áthelyezi az adatait a Storage-fiókból a Recovery Services-tárolóba a következő ütemezett biztonsági mentés időpontjában. Ezután megjelöli a biztonsági mentési feladatot, *Ha a* helyreállítási pont létrehozása sikeresen megtörtént.
 
   > [!NOTE]
   > A DPM/MABS-kiszolgáló elindítja a biztonsági mentést a védelmi csoport létrehozásakor ütemezett időpontokban. Ezek a feladatok azonban *arra várnak, hogy Azure Data Box feladat befejeződjön* , amíg a feladat befejeződik.

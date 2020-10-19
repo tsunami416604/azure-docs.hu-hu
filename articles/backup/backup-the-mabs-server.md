@@ -1,16 +1,16 @@
 ---
-title: A MABS-kiszolgáló biztonsági mentése
+title: MABS-kiszolgáló biztonsági mentése
 description: Ismerje meg, hogyan készíthet biztonsági másolatot a Microsoft Azure Backup-kiszolgálóról (MABS).
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: de62f0f57273ad7bd77df917d909627819165adb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946828"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172125"
 ---
-# <a name="back-up-the-mabs-server"></a>A MABS-kiszolgáló biztonsági mentése
+# <a name="back-up-the-mabs-server"></a>MABS-kiszolgáló biztonsági mentése
 
 Annak biztosítása érdekében, hogy az Microsoft Azure Backup-kiszolgáló (MABS) meghibásodása esetén az adat helyreállítható legyen, szüksége lesz egy stratégiára a MABS-kiszolgáló biztonsági mentéséhez. Ha nem készít biztonsági mentést, a hiba után manuálisan kell újraépíteni, és a lemezes helyreállítási pontok nem lesznek helyreállítva. A MABS-kiszolgálók biztonsági mentését a MABS-adatbázis biztonsági mentésével végezheti el.
 
@@ -184,9 +184,9 @@ Ha a MABS-kiszolgáló továbbra is működőképes, és a tárolási készlet s
 
 A MABS-adatbázis biztonsági mentését egy helyi lemezre is elvégezheti natív SQL Server biztonsági mentéssel, függetlenül a MABS-től.
 
-- Az SQL Server biztonsági mentés [áttekintése](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases).
+- Az SQL Server biztonsági mentés [áttekintése](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases).
 
-- [További információk](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) az SQL Servernek a felhőbe történő biztonsági mentéséről.
+- [További információk](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) az SQL Servernek a felhőbe történő biztonsági mentéséről.
 
 ## <a name="back-up-to-a-share-protected-by-mabs"></a>Biztonsági mentés egy MABS által védett megosztásra
 
@@ -238,9 +238,9 @@ Ez a biztonsági mentési lehetőség natív SQL-t használ a MABS-adatbázis bi
 
 A MABS-adatbázis biztonsági mentését ugyanúgy végezheti el, mint bármely más SQL Server-adatbázist SQL Server natív biztonsági mentés használatával.
 
-- Az SQL Server biztonsági mentés [áttekintése](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases).
+- Az SQL Server biztonsági mentés [áttekintése](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases).
 
-- [További információk](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) az SQL Servernek a felhőbe történő biztonsági mentéséről.
+- [További információk](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) az SQL Servernek a felhőbe történő biztonsági mentéséről.
 
 ### <a name="recover-the-mabs-database"></a>A MABS-adatbázis helyreállítása
 
@@ -329,7 +329,7 @@ A MABS-adatbázis visszaállítása és szinkronizálása, valamint a replika vi
 DpmSync -ReallocateReplica
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [MABS-támogatás mátrixa](backup-support-matrix-mabs-dpm.md)
 - [MABS – GYAKORI KÉRDÉSEK](backup-azure-dpm-azure-server-faq.md)

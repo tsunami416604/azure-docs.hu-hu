@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e27c6661c34ab6d177feec11f8e9ec891987ab48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfec218c1bf1d018157fc6d78c700991f332a13
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005751"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172804"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>A Service Fabric-szolgáltatások elhelyezési házirendjei
 Az elhelyezési házirendek olyan további szabályok, amelyek segítségével szabályozható a szolgáltatások elhelyezése bizonyos konkrét, kevésbé gyakori helyzetekben. Ilyen forgatókönyvek például a következők:
@@ -20,6 +20,7 @@ Az elhelyezési házirendek olyan további szabályok, amelyek segítségével s
 - A környezet kiterjed a geopolitikai vagy jogi szabályozás több területére, vagy olyan esetekre, amikor a szabályzatok határain belül kell kikényszeríteni
 - A kommunikációs teljesítményre vagy késésre vonatkozó megfontolások nagy távolságok vagy lassabb vagy kevésbé megbízható hálózati kapcsolatok használata miatt
 - Bizonyos számítási feladatokat a lehető legjobb közös elhelyezésű kell tartania, akár más számítási feladatokkal, akár az ügyfelek közelében
+- Egyetlen csomóponton több állapot nélküli példánynak kell lennie egy partíción
 
 A követelmények többsége a fürt fizikai elrendezésével van összhangban, amely a fürt tartalék tartománya. 
 
@@ -29,6 +30,7 @@ Az ilyen forgatókönyveket segítő speciális elhelyezési házirendek a köve
 2. Szükséges tartományok
 3. Előnyben részesített tartományok
 4. Replika csomagolásának letiltása
+5. Több állapot nélküli példány engedélyezése a csomóponton
 
 A következő vezérlők többsége konfigurálható a csomópont tulajdonságai és az elhelyezési megkötések használatával, de néhány bonyolultabb. A Service Fabric fürterőforrás-kezelője egyszerűbbé teszi a további elhelyezési házirendeket. Az elhelyezési házirendek egy névvel ellátott szolgáltatási példány alapján konfigurálhatók. Dinamikusan is frissíthetők.
 
@@ -122,6 +124,42 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 Mostantól lehetséges lenne ezeket a konfigurációkat használni a fürt olyan szolgáltatásaihoz, amelyek földrajzilag nem voltak átnyúlva? Lehetséges, hogy ez nem egy nagyszerű ok. A szükséges, érvénytelen és előnyben részesített tartományi konfigurációkat el kell kerülni, ha a forgatókönyvek nem igénylik. Nincs értelme arra, hogy egy adott munkaterhelést egyetlen állványon futtasson, vagy a helyi fürt egyes szegmenseit egy másikra szeretné kipróbálni. A különböző hardveres konfigurációkat a tartalék tartományok között kell elosztani, és a normál elhelyezési korlátozásokkal és a csomópont tulajdonságaival kell kezelni őket.
+
+## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>Egy partíció több állapot nélküli példányának elhelyezése egyetlen csomóponton
+A **AllowMultipleStatelessInstancesOnNode** elhelyezési házirend lehetővé teszi egy partíció több állapot nélküli példányának elhelyezését egyetlen csomóponton. Alapértelmezés szerint egyetlen partíció több példánya nem helyezhető el egy csomóponton. Még az a-1 szolgáltatással sem lehet a fürtben lévő csomópontok számán túl méretezni a példányok számát az adott elnevezett szolgáltatás esetében. Ez az elhelyezési házirend eltávolítja ezt a korlátozást, és lehetővé teszi, hogy a InstanceCount nagyobb legyen, mint a csomópontok száma.
+
+Ha már látott egy egészségügyi üzenetet (például " `The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: ReplicaExclusion` "), akkor ezt a feltételt találta, vagy valami hasonló. 
+
+A szabályzatnak a szolgáltatásban való megadásával a `AllowMultipleStatelessInstancesOnNode` InstanceCount a fürtben lévő csomópontok száma után is beállítható.
+
+Kód:
+
+```csharp
+ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription allowMultipleInstances = new ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription();
+serviceDescription.PlacementPolicies.Add(allowMultipleInstances);
+```
+
+PowerShell:
+
+```posh
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless –PartitionSchemeSingleton –PlacementPolicy @(“AllowMultipleStatelessInstancesOnNode”) -InstanceCount 10 -ServicePackageActivationMode ExclusiveProcess 
+```
+
+> [!NOTE]
+> Az elhelyezési házirend jelenleg előzetes verzióban érhető el, és a `EnableUnsupportedPreviewFeatures` fürt beállításai mögött van. Mivel ez a szolgáltatás előzetes verzióként érhető el, az előnézet konfigurációjának beállítása megakadályozza, hogy a fürt a vagy a rendszerre legyen frissítve. Más szóval létre kell hoznia egy új fürtöt, hogy kipróbálja a szolgáltatást.
+>
+
+> [!NOTE]
+> Jelenleg a szabályzat csak olyan állapot nélküli szolgáltatások esetében támogatott, amelyeknél a ExclusiveProcess [Service Package aktiválási módja](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)van.
+>
+
+> [!WARNING]
+> A házirend nem támogatott statikus portok végpontokkal való használata esetén. A mindkét esetben a nem megfelelő állapotú fürtöket az ugyanazon a csomóponton található több példánya is megpróbálhatja ugyanahhoz a porthoz kötni, és nem tud elindulni. 
+>
+
+> [!NOTE]
+> Ha nagy értékű [MinInstanceCount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) használ ezzel az elhelyezési házirenddel, akkor az alkalmazások frissítései megakadnak. Ha például öt csomópontos fürttel rendelkezik, és a InstanceCount = 10 érték van beállítva, akkor minden csomóponton két példány fog szerepelni. Ha a MinInstanceCount = 9-et állítja be, a megkísérelt alkalmazások frissítése megakad; a MinInstanceCount = 8 használatával elkerülhető.
+>
 
 ## <a name="next-steps"></a>Következő lépések
 - A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálását](service-fabric-cluster-resource-manager-configure-services.md) ismertető témakört.

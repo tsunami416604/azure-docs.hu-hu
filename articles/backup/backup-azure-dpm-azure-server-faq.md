@@ -4,12 +4,12 @@ description: Ebben a cikkben a Microsoft Azure Backup-kiszolgálóval (MABS) és
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324943"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172573"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server és DPM – gyakori kérdések
 
@@ -39,7 +39,7 @@ A felhőben védett adatforrásokkal rendelkező DPM-kiszolgálók esetében (a 
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Vannak javaslatok a víruskereső szoftverek kizárásának konfigurálására?
 
-Igen, javasoljuk a víruskeresők kizárásának konfigurálását. A DPM kizárásával kapcsolatban lásd: [víruskereső szoftver futtatása a DPM-kiszolgálón](https://docs.microsoft.com/system-center/dpm/run-antivirus-server). A MABS kizárásával kapcsolatban lásd: [a MABS-kiszolgáló víruskereső konfigurálása](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
+Igen, javasoljuk a víruskeresők kizárásának konfigurálását. A DPM kizárásával kapcsolatban lásd: [víruskereső szoftver futtatása a DPM-kiszolgálón](/system-center/dpm/run-antivirus-server). A MABS kizárásával kapcsolatban lásd: [a MABS-kiszolgáló víruskereső konfigurálása](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware és Hyper-V biztonsági mentés
 

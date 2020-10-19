@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtu
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506678"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174025"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Azure-beli virtuális gépek visszaállítása REST API használatával
 
@@ -122,7 +122,7 @@ A [megfelelő visszaállítási pont](#select-recovery-point)kiválasztása utá
 ***A biztonsági mentési elem összes visszaállítási művelete ugyanazzal a *post* API-val történik. Csak a kérelem törzse módosul a visszaállítási forgatókönyvek esetében.***
 
 > [!IMPORTANT]
-> A különböző visszaállítási lehetőségekkel és azok függőségeivel kapcsolatos összes adat [itt](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)szerepel. A műveletek elindítása előtt tekintse át a lépéseket.
+> A különböző visszaállítási lehetőségekkel és azok függőségeivel kapcsolatos összes adat [itt](./backup-azure-arm-restore-vms.md#restore-options)szerepel. A műveletek elindítása előtt tekintse át a lépéseket.
 
 A visszaállítási műveletek elindítása *post* kérelem. Ha többet szeretne megtudni az API-ról, tekintse meg a ["trigger Restore" REST API](/rest/api/backup/restores/trigger).
 
@@ -246,7 +246,7 @@ A következő kérelem törzse a lemez-visszaállítás indításához szükség
 
 ### <a name="restore-disks-selectively"></a>Lemezek szelektív visszaállítása
 
-Ha [szelektíven készít biztonsági mentést a lemezekről](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), akkor a rendszer a [helyreállítási pont összefoglalása](#select-recovery-point) és a [részletes válasz](https://docs.microsoft.com/rest/api/backup/recoverypoints/get)alapján megtekinti a jelenleg mentett lemezek listáját. A lemezeket szelektíven is visszaállíthatja, és további részleteket [itt](selective-disk-backup-restore.md#selective-disk-restore)talál. Ha a lemezeket szelektív módon szeretné visszaállítani a mentett lemezek listájáról, keresse meg a lemez LUN-jét a helyreállítási pont válaszában, és adja hozzá a **restoreDiskLunList** tulajdonságot a fenti példában látható módon a [kérelem törzséhez](#example-request) .
+Ha [szelektíven készít biztonsági mentést a lemezekről](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), akkor a rendszer a [helyreállítási pont összefoglalása](#select-recovery-point) és a [részletes válasz](/rest/api/backup/recoverypoints/get)alapján megtekinti a jelenleg mentett lemezek listáját. A lemezeket szelektíven is visszaállíthatja, és további részleteket [itt](selective-disk-backup-restore.md#selective-disk-restore)talál. Ha a lemezeket szelektív módon szeretné visszaállítani a mentett lemezek listájáról, keresse meg a lemez LUN-jét a helyreállítási pont válaszában, és adja hozzá a **restoreDiskLunList** tulajdonságot a fenti példában látható módon a [kérelem törzséhez](#example-request) .
 
 ```json
 {

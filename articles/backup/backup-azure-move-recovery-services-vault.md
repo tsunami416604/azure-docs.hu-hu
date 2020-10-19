@@ -4,12 +4,12 @@ description: Útmutatás az Recovery Services-tárolók Azure-előfizetések és
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056429"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171613"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -178,7 +178,7 @@ Ha meg kell őriznie a jelenlegi védett adatok védelmét a régi tárolóban, 
   - A biztonsági másolatból csak a régi tárolóban található nem lejárt helyreállítási pontok esetében állíthatja vissza a biztonsági mentést.
   - Az új tárolón létre kell hozni az új eredeti replikát.
 
-- Egy Azure-beli virtuális gép esetében [leállíthatja](backup-azure-manage-vms.md#stop-protecting-a-vm) a virtuális gép védelmét a régi tárolóban, áthelyezheti a virtuális gépet egy másik erőforráscsoporthoz, majd védetté teheti a virtuális gépet az új tárolóban. Tekintse meg a virtuális gép másik erőforráscsoporthoz való áthelyezésével kapcsolatos [útmutatást és korlátozásokat](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) .
+- Egy Azure-beli virtuális gép esetében [leállíthatja](backup-azure-manage-vms.md#stop-protecting-a-vm) a virtuális gép védelmét a régi tárolóban, áthelyezheti a virtuális gépet egy másik erőforráscsoporthoz, majd védetté teheti a virtuális gépet az új tárolóban. Tekintse meg a virtuális gép másik erőforráscsoporthoz való áthelyezésével kapcsolatos [útmutatást és korlátozásokat](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md) .
 
   Egy virtuális gépet egyszerre csak egy tárolóban lehet védeni. Az új erőforráscsoport virtuális gépe azonban az új tárolóban is védhető, mivel ez egy másik virtuális gép.
 

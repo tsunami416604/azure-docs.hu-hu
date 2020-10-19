@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448521"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174154"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és helyreállítása
 
@@ -112,6 +112,9 @@ A munkaterület törléséhez legalább *log Analytics közreműködői* engedé
 * Ha hibaüzenet jelenik meg, akkor *a munkaterület neve már használatban van* , vagy *ütközést* okoz a munkaterület létrehozásakor, az a következő lehet:
   * A munkaterület neve nem érhető el, és a szervezete vagy más ügyfél által használt személy használja.
   * A munkaterületet az elmúlt 14 napban törölték, és a neve a törlési időszak számára fenntartott marad. Ha felül szeretné bírálni a munkaterületet, hogy az azonos nevű új munkaterületet hozzon létre, az alábbi lépéseket követve állítsa helyre a munkaterületet, és végezzen végleges törlést:<br>
-     1. [Állítsa helyre](#recover-workspace) a munkaterületet.
-     2. A munkaterület [végleges törlése](#permanent-workspace-delete) .
-     3. Hozzon létre egy új munkaterületet ugyanazzal a munkaterület-névvel.
+    1. [Állítsa helyre](#recover-workspace) a munkaterületet.
+    2. A munkaterület [végleges törlése](#permanent-workspace-delete) .
+    3. Hozzon létre egy új munkaterületet ugyanazzal a munkaterület-névvel.
+* Ha olyan 204-hibakódot lát, amely *nem található erőforrást*mutat, az ok lehet egymást követő kísérlet a munkaterület törlése művelet használatára. a 204 egy üres válasz, amely általában azt jelenti, hogy az erőforrás nem létezik, így a törlés semmit nem végez.
+  Miután a törlési hívást sikeresen befejezte a háttérben, visszaállíthatja a munkaterületet, és elvégezheti az állandó törlési műveletet a korábban javasolt metódusok egyikében.
+
