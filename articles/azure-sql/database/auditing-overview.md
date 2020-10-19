@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 7ae7e20c32836d595d6e0fb4162a895407beeb5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02ea65748928fda7142ce17532999e1a069f6eb0
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828033"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169411"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -94,6 +94,17 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
   
    ![tárolási beállítások](./media/auditing-overview/auditing-select-destination.png)
 
+### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft ügyfélszolgálata műveletek naplózása (előzetes verzió)
+
+Az Azure SQL Server Microsoft ügyfélszolgálata műveletek (előzetes verzió) naplózása lehetővé teszi a Microsoft támogatási mérnökök műveleteinek naplózását, amikor egy támogatási kérelem során hozzá kell férniük a kiszolgálóhoz. Ennek a képességnek a használata a naplózással együtt nagyobb átláthatóságot biztosít a munkaerő számára, és lehetővé teszi a rendellenességek észlelését, a trendek megjelenítését és az adatveszteség-megelőzést.
+
+A Microsoft ügyfélszolgálata műveletek (előzetes verzió) naplózásának engedélyezéséhez navigáljon a **naplózás** elemre az **Azure SQL Server** panel biztonsági fejlécében, és váltson át **a** **Microsoft támogatási műveleteinek (előzetes verzió) naplózására** .
+
+  > [!IMPORTANT]
+  > A Microsoft támogatási műveleteinek (előzetes verzió) naplózása nem támogatja a Storage-fiók célhelyét. A képesség engedélyezéséhez be kell állítani egy Log Analytics munkaterületet vagy egy Event hub-célhelyet.
+
+![Képernyőkép a Microsoft ügyfélszolgálata műveletekről](./media/auditing-overview/support-operations.png)
+
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Naplózás a tárolási célhelyre
 
 A naplók a Storage-fiókba való írásának konfigurálásához válassza a **tárterület** lehetőséget, és nyissa meg a **tároló adatait**. Válassza ki azt az Azure Storage-fiókot, ahol a rendszer menti a naplókat, majd válassza ki a megőrzési időtartamot. Ezután kattintson az **OK** gombra. A megőrzési időtartamnál régebbi naplók törlődnek.
@@ -111,7 +122,7 @@ A naplók a Storage-fiókba való írásának konfigurálásához válassza a **
 - A naplókat egy VNet vagy tűzfal mögötti Azure Storage-fiókba is írhatja. A konkrét utasításokért lásd: [a VNet és a tűzfal mögötti Storage-fiókba való írás naplózása](audit-write-storage-account-behind-vnet-firewall.md).
 - A naplózási beállítások konfigurálása után bekapcsolhatja az új veszélyforrások észlelése funkciót, és konfigurálhatja az e-maileket a biztonsági riasztások fogadására. A veszélyforrások észlelése esetén a rendellenes adatbázis-tevékenységekkel kapcsolatos proaktív riasztásokat kap, amelyek potenciális biztonsági fenyegetéseket jelezhetnek. További információkért lásd: [a fenyegetések észlelésének első lépései](threat-detection-overview.md).
 - A naplózási formátumra, a tárolási mappa hierarchiájának és az elnevezési konvenciók részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](https://go.microsoft.com/fwlink/?linkid=829599).
-- HRE-hitelesítés használata esetén a sikertelen bejelentkezések rekordjai *nem* jelennek meg az SQL-naplóban. A sikertelen bejelentkezési naplózási rekordok megtekintéséhez látogasson el a [Azure Active Directory portálra](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), amely az események adatait naplózza.
+- Az Azure AD-hitelesítés használatakor a sikertelen bejelentkezések rekordjai *nem* jelennek meg az SQL-naplóban. A sikertelen bejelentkezési naplózási rekordok megtekintéséhez látogasson el a [Azure Active Directory portálra](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), amely az események adatait naplózza.
 - Az [írásvédett replikák](read-scale-out.md) naplózása automatikusan engedélyezve van. A tárolási mappák hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [SQL Database a naplózási napló formátumát](audit-log-format.md).
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Naplózás Log Analytics célhelyre

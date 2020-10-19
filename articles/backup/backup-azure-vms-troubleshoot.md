@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: da650453006b77490769d1cef57fc3d4f4447e40
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058114"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169370"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -324,6 +324,16 @@ Ha a visszaállítás után észleli, hogy a lemezek offline állapotban vannak:
 * Ellenőrizze, hogy a parancsfájlt futtató gép megfelel-e az operációs rendszer követelményeinek. [További információk](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
 * Győződjön meg arról, hogy nem áll helyre visszaállítás ugyanarra a forrásra, [További információ](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
 
+### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound – a visszaállítás nem sikerült, mert a virtuális gép pillanatképe nem található
+
+Hibakód: UserErrorInstantRpNotFound <br>
+Hibaüzenet: a visszaállítás nem sikerült, mert a virtuális gép pillanatképe nem található. A pillanatképet törölték, ellenőrizze.<br>
+
+Ez a hiba akkor fordul elő, ha olyan helyreállítási pontról próbál visszaállítani, amely nem lett átadva a tárolóba, és törölték a pillanatkép fázisában. 
+<br>
+A probléma megoldásához próbálja meg visszaállítani a virtuális gépet egy másik visszaállítási pontról.<br>
+
+#### <a name="common-errors"></a>Gyakori hibák 
 | A hiba részletei | Áthidaló megoldás |
 | --- | --- |
 | A Restore művelet belső felhőalapú hibával meghiúsult. |<ol><li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, DNS-beállításokkal van konfigurálva. A következőket tekintheti meg: <br>**$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Ha a **címe** konfigurálva van, a rendszer konfigurálja a DNS-beállításokat.<br> <li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, a **foglalt IP**-sel van konfigurálva, a felhőalapú szolgáltatásban lévő meglévő virtuális gépek pedig leállított állapotban vannak. A következő PowerShell-parancsmagok használatával megtekintheti, hogy a Cloud Service fenntartott-e egy IP-címet: **$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" $DEP. ReservedIPName**. <br><li>Egy virtuális gépet a következő speciális hálózati konfigurációkkal próbál visszaállítani ugyanazon a felhőalapú szolgáltatásban: <ul><li>Virtuális gépek a terheléselosztó konfigurációjában, belső és külső.<li>Több fenntartott IP-címmel rendelkező virtuális gépek. <li>Több hálózati adapterrel rendelkező virtuális gépek. </ul><li>Válasszon egy új felhőalapú szolgáltatást a felhasználói felületen, vagy tekintse meg a speciális hálózati konfigurációval rendelkező virtuális gépek [visszaállítási szempontjait](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) .</ol> |
@@ -395,7 +405,7 @@ A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolg�
 * **Ha négynél több virtuális gép osztozik ugyanazzal a felhőalapú szolgáltatással, a virtuális gépeket több biztonsági mentési házirendben is elosztja**. A biztonsági mentés időpontjának felosztása, így a több mint négy virtuális gép biztonsági mentése egyidőben megkezdődik. Próbálja meg elkülöníteni a házirendek indítási időpontját legalább egy órával.
 * **A virtuális gép magas processzoron vagy memórián fut**. Ha a virtuális gép nagy memórián vagy CPU-használaton fut, több mint 90 százalékkal, a pillanatkép-feladat várólistára kerül és késleltetve lesz. Végül túllépi az időkorlátot. Ha ez a probléma történik, próbálkozzon egy igény szerinti biztonsági mentéssel.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 A DHCP-t engedélyezni kell a vendégen a IaaS virtuális gép biztonsági mentésének működéséhez. Ha statikus magánhálózati IP-címmel kell rendelkeznie, konfigurálja a Azure Portal vagy a PowerShell használatával. Győződjön meg arról, hogy a virtuális gépen belül a DHCP-beállítás engedélyezve van.
 További információ arról, hogyan állítható be statikus IP-cím a PowerShell használatával:
