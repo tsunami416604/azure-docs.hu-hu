@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863ab9b600b81006cdeb670811c61ed961e8c623
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983702"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170264"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
@@ -46,7 +46,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **ApiManagement** | Felügyeleti forgalom az Azure API Managementhoz – dedikált központi telepítések. <br/><br/>*Megjegyzés:* Ez a címke az Azure API Management szolgáltatási végpontját jelöli a vezérlési sík régiónként. Ez lehetővé teszi, hogy az ügyfelek felügyeleti műveleteket hajtsanak végre a API Management szolgáltatáson konfigurált API-kkal, műveletekkel, házirendekkel és NamedValues.  | Bejövő | Igen | Igen |
 | **ApplicationInsightsAvailability** | Application Insights rendelkezésre állás. | Bejövő | Nem | Nem |
 | **AppConfiguration** | Alkalmazás konfigurációja. | Kimenő | Nem | Nem |
-| **AppService**    | Azure App Service. A rendszer ezt a címkét a webalkalmazások előtéri kimenő biztonsági szabályaihoz ajánlja. | Kimenő | Igen | Igen |
+| **AppService**    | Azure App Service. Ezt a címkét a Web Apps és a functions alkalmazások kimenő biztonsági szabályaihoz ajánlott használni.  | Kimenő | Igen | Igen |
 | **AppServiceManagement** | Felügyeleti forgalom a App Service Environment számára dedikált központi telepítések esetén. | Mindkettő | Nem | Igen |
 | **AzureActiveDirectory** | Azure Active Directory. | Kimenő | Nem | Igen |
 | **AzureActiveDirectoryDomainServices** | Felügyeleti forgalom a Azure Active Directory Domain Services számára dedikált központi telepítések esetén. | Mindkettő | Nem | Igen |

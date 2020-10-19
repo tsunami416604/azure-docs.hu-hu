@@ -4,12 +4,12 @@ description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Ba
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1711652434be3d9937c8199bc1999273ef58e4d0
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182037"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170297"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -103,7 +103,6 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 
 Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépet kiépítés sikertelen állapotba helyezi.<br>**Nyissa meg Azure Portal > virtuálisgép-> beállításait > bővítmények >-bővítmények állapota** elemre, és ellenőrizze, hogy az összes bővítmény üzembe helyezése **sikeres** volt-e. További információ: [kiépítési állapotok](../virtual-machines/states-lifecycle.md#provisioning-states).
 
-- Ha a VMSnapshot-bővítmény hibás állapotban van, kattintson a jobb gombbal a sikertelen bővítményre, és távolítsa el. Igény szerinti biztonsági mentés indítása. Ez a művelet újratelepíti a bővítményeket, majd futtatja a biztonsági mentési feladatot.  <br>
 - Ha bármely más bővítmény meghibásodott állapotban van, akkor az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy a bővítmények problémái megoldódott, és próbálkozzon újra a biztonsági mentési művelettel.
 - Ha a virtuális gép kiépítési állapota frissítési állapotban van, az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy kifogástalan, és próbálkozzon újra a biztonsági mentési művelettel.
 

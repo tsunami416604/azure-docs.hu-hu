@@ -977,7 +977,7 @@
                   href: virtual-machines/windows/backup-restore.md
                 - name: Azure Storage biztonsági mentéshez
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
-                - name: Always On rendelkezésre állási csoport
+                - name: Rendelkezésre állási csoport (AG)
                   href: virtual-machines/windows/availability-group-overview.md
                 - name: Feladatátvevőfürt-példány
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
@@ -1054,33 +1054,45 @@
                       href: virtual-machines/windows/automated-backup.md
                     - name: Automatikus biztonsági mentés (SQL 2014)
                       href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: Always On rendelkezésre állási csoport
+                - name: Rendelkezésre állási csoport (AG)
                   items:
-                    - name: Azure Portal
-                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
-                    - name: PowerShell vagy Az CLI
-                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
-                    - name: Azure-gyorssablonok
-                      href: virtual-machines/windows/availability-group-quickstart-template-configure.md
-                    - name: Több régió
-                      href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
-                    - name: Tartományfüggetlen (munkacsoport)
-                      href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
-                    - name: Manuális konfigurálás
+                    - name: AG létrehozása
                       items:
-                        - name: Előfeltételek
-                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
-                        - name: Oktatóanyag
-                          href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
-                        - name: Load Balancer – Azure Portal
-                          href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
-                        - name: Load Balancer – Azure PowerShell
-                          href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                        - name: Azure Portal
+                          href: virtual-machines/windows/availability-group-azure-portal-configure.md
+                        - name: PowerShell vagy Az CLI
+                          href: virtual-machines/windows/availability-group-az-commandline-configure.md
+                        - name: Azure-gyorssablonok
+                          href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                        - name: Több régió
+                          href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                        - name: Tartományfüggetlen (munkacsoport)
+                          href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
+                        - name: Manuális konfigurálás
+                          items:
+                            - name: Előfeltételek
+                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
+                            - name: Oktatóanyag
+                              href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                            - name: Load Balancer – Azure Portal
+                              href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+                            - name: Load Balancer – Azure PowerShell
+                              href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                    - name: Kapcsolat konfigurálása
+                      items:
+                        - name: VNN-figyelő
+                          displayName: virtual network name
+                          href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
+                        - name: DNN-figyelő
+                          displayName: distributed network name
+                          href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
+                        - name: DNN – Együttműködési lehetőség
+                          href: virtual-machines/windows/availability-group-dnn-interoperability.md
                 - name: Feladatátvevőfürt-példány (FCI)
                   items:
                     - name: Virtuális gép előkészítése FCI-hez
                       href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
-                    - name: 'FCI létrehozása a következővel:'
+                    - name: FCI létrehozása
                       items:
                         - name: Azure megosztott lemezek
                           href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
@@ -1088,16 +1100,14 @@
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
                         - name: Prémium fájlmegosztás (Win2012+)
                           href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
-                    - name: Elosztott hálózat neve (DNN)
+                    - name: Kapcsolat konfigurálása
                       items:
-                        - name: DNN létrehozása FCI-hez
-                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: Az FCI DNN és az SQL Server funkciói
+                        - name: Virtuális hálózat neve (VNN)
+                          href: virtual-machines/windows/failover-cluster-instance-vnn-azure-load-balancer-configure.md
+                        - name: Elosztott hálózat neve (DNN)
+                          href: virtual-machines/windows/failover-cluster-instance-distributed-network-name-dnn-configure.md
+                        - name: DNN – Együttműködési lehetőség
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
-                - name: Kapcsolat konfigurálása
-                  items:
-                    - name: Virtuális hálózat neve (VNN)
-                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: Referencia
           items:
             - name: Azure PowerShell

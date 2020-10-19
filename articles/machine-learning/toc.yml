@@ -89,6 +89,9 @@
     - name: Jupyter-notebookok
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
+    - name: Példa adattárra
+      displayName: 'example, examples, jupyter, python, notebook, github'
+      href: 'https://github.com/Azure/azureml-examples'
     - name: Tervezői példák és adathalmazok
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md

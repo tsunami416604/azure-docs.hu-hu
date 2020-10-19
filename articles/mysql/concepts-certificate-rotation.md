@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: d36fe791e34544a4d6132a49fc5ec3f2aa334654
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: cc32a67ab681341fd8320b9445f4e00013f2aa51
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127284"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170268"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változásának megismerése Azure Database for MySQL
 
@@ -104,7 +104,7 @@ Ha a főtanúsítványt a 2021 (02/15/2021) előtt nem frissíti, az SSL/TLS pro
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. milyen hatással van a App Service és a Azure Database for MySQL használata?
 Az Azure app Services esetében a Azure Database for MySQLhoz való csatlakozás két lehetséges forgatókönyvet tartalmazhat, amelyek attól függnek, hogy miként használja az SSL-t az alkalmazással.
 *   Ez az új tanúsítvány App Service platform szinten lett hozzáadva. Ha az alkalmazásban App Service platformon található SSL-tanúsítványokat használja, nincs szükség beavatkozásra.
-*   Ha explicit módon az SSL-tanúsítvány elérési útját is tartalmazza a kódban, akkor le kell töltenie az új tanúsítványt, és frissítenie kell a kódot az új tanúsítvány használatára.
+*   Ha explicit módon az SSL-tanúsítvány elérési útját is tartalmazza a kódban, akkor le kell töltenie az új tanúsítványt, és frissítenie kell a kódot az új tanúsítvány használatára. Jó példa erre a forgatókönyvre, ha egyéni tárolókat használ a App Service a [app Service dokumentációjában](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md) megosztva.
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mysql"></a>5. milyen hatással van az Azure Kubernetes Services (ak) használata a Azure Database for MySQL?
 Ha az Azure Kubernetes Services (ak) használatával próbál csatlakozni a Azure Database for MySQLhoz, hasonló a dedikált ügyfelek gazdagép-környezetéhez való hozzáféréshez. Tekintse át a lépéseket [itt](../aks/ingress-own-tls.md).

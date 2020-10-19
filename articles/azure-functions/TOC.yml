@@ -141,6 +141,9 @@
           displayName: 'secure, ssl'
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+    - name: Figyelés
+      href: functions-monitoring.md
+      displayName: 'App Insights, Application Insights, logs, logging'
     - name: Diagnosztika
       href: functions-diagnostics.md
     - name: Használatalapú csomag költségei
@@ -282,11 +285,18 @@
           href: functions-geo-disaster-recovery.md
     - name: Figyelés
       items:
-        - name: Függvények figyelés
-          href: functions-monitoring.md
+        - name: Figyelés konfigurálása
+          href: configure-monitoring.md
           displayName: 'App Insights, Application Insights, logs, logging'
-        - name: Naplók elemzése
+        - name: Telemetriai adatok elemzése
+          href: analyze-telemetry-data.md
+          displayName: 'App Insights, Application Insights, Kusto'
+        - name: Streamelési naplók
+          href: streaming-logs.md
+          displayName: monitoring
+        - name: Diagnosztikai naplók
           href: functions-monitor-log-analytics.md
+          displayName: 'Azure Monitor, Kusto, Log Analytics, metrics'
     - name: Biztonságos
       items:
         - name: SSL-tanúsítvány hozzáadása

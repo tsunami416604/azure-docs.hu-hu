@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9a93602327b5c5294d6c17c1804c04c6603dcf37
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9ebf07a5125995e66297d89643845b54aad246b8
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999878"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170309"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>X. 509 tanúsítvánnyal rendelkező eszközök csatlakoztatása a IoT Central alkalmazáshoz készült Node.js eszközoldali SDK-val
 
@@ -50,12 +50,15 @@ Ebben a szakaszban egy X. 509 tanúsítvány használatával csatlakozik egy oly
     npm install
     ```
 
-1. Hozzon létre egy főtanúsítványt, majd származtatja az eszköz tanúsítványát a szkript futtatásával. Ügyeljen arra, hogy csak kisbetűs alfanumerikus karaktereket és kötőjeleket használjon a tanúsítvány neveként:
+1. Hozzon létre egy főtanúsítványt, majd származtatja az eszköz tanúsítványát a szkript futtatásával:
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
+
+    > [!TIP]
+    > Az eszköz AZONOSÍTÓi betűket, számokat és karaktert tartalmazhatnak `-` .
 
 Ezek a parancsok három fájlt hoznak létre a gyökérhez és az eszköz tanúsítványához.
 

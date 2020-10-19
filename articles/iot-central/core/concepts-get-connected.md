@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 5f9f8be81c5b90ff5e7172b2aba41a108afc64bd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3fc10c9601deb66c8fb6182d5943011f1ef185ce
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126841"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170051"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -113,7 +113,7 @@ Ha biztonsági problémákba ütközik, vagy ha az elsődleges tanúsítvány le
 
 ### <a name="register-and-connect-devices"></a>Eszközök regisztrálása és csatlakoztatása
 
-Az eszközök X. 509 tanúsítvánnyal való tömeges csatlakoztatásához először regisztrálja az alkalmazásban lévő eszközöket egy CSV-fájl használatával [az eszközök azonosítóinak és az eszközök nevének importálásához](howto-manage-devices.md#import-devices). Az eszközök azonosítóinak mind kisbetűvel kell rendelkezniük.
+Az eszközök X. 509 tanúsítvánnyal való tömeges csatlakoztatásához először regisztrálja az alkalmazásban lévő eszközöket egy CSV-fájl használatával [az eszközök azonosítóinak és az eszközök nevének importálásához](howto-manage-devices.md#import-devices). Az eszköz AZONOSÍTÓi betűket, számokat és karaktert tartalmazhatnak `-` .
 
 X. 509 Leaf-tanúsítványok létrehozása az eszközökhöz az X. 509 regisztrációs csoportba feltöltött legfelső szintű vagy köztes tanúsítvány használatával. Használja az **eszköz azonosítóját** a `CNAME` levél tanúsítványainak értékeként. Az eszköz kódjának szüksége van az alkalmazás **azonosító hatókörének** értékére, az **eszköz azonosítójára**és a megfelelő eszköz tanúsítványára.
 
@@ -149,7 +149,7 @@ A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatok
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="X. 509 regisztrációs csoport hozzáadása képernyőkép":::
 
-1. Az `az iot central device compute-device-key` eszköz sas-kulcsainak létrehozásához használja az parancsot. Használja az előző lépésben a csoport elsődleges kulcsát. Az eszköz azonosítóinak kisbetűvel kell rendelkezniük:
+1. Az `az iot central device compute-device-key` eszköz sas-kulcsainak létrehozásához használja az parancsot. Használja az előző lépésben a csoport elsődleges kulcsát. Az eszköz azonosítója betűket, számokat és a karaktert is tartalmazhatja `-` :
 
     ```azurecli
     az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
@@ -170,7 +170,7 @@ A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatok
 
 1. [Hozzon létre egy regisztrációs csoportot](#create-an-enrollment-group) , majd [adjon hozzá és ellenőrizzen egy root vagy Intermediate X. 509 tanúsítványt](#add-and-verify-a-root-or-intermediate-x509-certificate) a IoT Central alkalmazáshoz.
 
-1. Az eszközökhöz tartozó levél-tanúsítványok létrehozása a IoT Central alkalmazáshoz hozzáadott legfelső szintű vagy köztes tanúsítvány használatával. A kisbetűket használó eszközök azonosítóit használja a `CNAME` levél tanúsítványainak.
+1. Az eszközökhöz tartozó levél-tanúsítványok létrehozása a IoT Central alkalmazáshoz hozzáadott legfelső szintű vagy köztes tanúsítvány használatával. Használja az eszköz azonosítóit a `CNAME` levélben lévő tanúsítványokban. Az eszköz AZONOSÍTÓi betűket, számokat és karaktert tartalmazhatnak `-` .
 
 1. Az OEM minden eszközt egy eszköz-AZONOSÍTÓval, egy generált levél X. 509 tanúsítvánnyal és az alkalmazás- **azonosító hatókörének** értékével villan fel.
 
@@ -185,7 +185,7 @@ A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatok
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Egyéni regisztráció-alapú eszközök kapcsolata
 
-Azok az ügyfelek, akik a saját hitelesítési hitelesítő adataival rendelkező eszközöket csatlakoztatnak, egyéni regisztrációkat használhatnak. Az egyéni regisztráció egyetlen, a csatlakozáshoz engedélyezett eszközre vonatkozó bejegyzés. Az egyéni regisztrációk X. 509 levél-tanúsítványokat vagy SAS-jogkivonatokat (fizikai vagy virtuális platformmegbízhatósági modulból) is használhatnak igazolási mechanizmusként. Az eszköz azonosítója (más néven regisztrációs azonosító) egy egyéni regisztrációban alfanumerikus, kisbetűs, és tartalmazhat kötőjeleket. További információ: [DPS egyéni regisztráció](../../iot-dps/concepts-service.md#individual-enrollment).
+Azok az ügyfelek, akik a saját hitelesítési hitelesítő adataival rendelkező eszközöket csatlakoztatnak, egyéni regisztrációkat használhatnak. Az egyéni regisztráció egyetlen, a csatlakozáshoz engedélyezett eszközre vonatkozó bejegyzés. Az egyéni regisztrációk X. 509 levél-tanúsítványokat vagy SAS-jogkivonatokat (fizikai vagy virtuális platformmegbízhatósági modulból) is használhatnak igazolási mechanizmusként. Az eszköz AZONOSÍTÓját (más néven regisztrációs azonosítót) egy egyéni regisztrációban az eszköz AZONOSÍTÓi tartalmazhatnak betűket, számokat és a `-` karaktert. További információ: [DPS egyéni regisztráció](../../iot-dps/concepts-service.md#individual-enrollment).
 
 > [!NOTE]
 > Amikor egyéni regisztrációt hoz létre egy eszközhöz, az a IoT Central alkalmazás alapértelmezett csoportos regisztrálási lehetőségeivel szemben elsőbbséget élvez.

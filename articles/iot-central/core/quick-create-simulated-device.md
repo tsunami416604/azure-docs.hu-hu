@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 26aba84fcc38fddf43c04550b1c3d1ce2d70b21f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 757575b31bde1a0e25cc3e70aad0cca0fdd45953
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87001951"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170330"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Gyors útmutató: szimulált eszköz hozzáadása a IoT Central alkalmazáshoz
 
@@ -128,7 +128,7 @@ Szimulált eszköz az alkalmazáshoz való hozzáadásához használja a létreh
 
 1. Új eszköz hozzáadása operátorként a bal oldali ablaktáblán válassza az **eszközök** lehetőséget. A **Devices (eszközök** ) lapon az **összes eszköz** és a **MXChip IoT fejlesztői készlet** -sablon látható. Válassza a **MXChip IoT fejlesztői készlet**lehetőséget.
 
-1. Szimulált fejlesztői készlet-eszköz hozzáadásához válassza a elemet **+** . Használja a javasolt **eszköz azonosítóját** , vagy adja meg a saját kisbetűs **eszközének azonosítóját**. Megadhatja az új eszköz nevét is. Győződjön meg arról, hogy a **szimulált** váltógomb be van **kapcsolva** , majd válassza a **Létrehozás**lehetőséget.
+1. Szimulált fejlesztői készlet-eszköz hozzáadásához válassza a elemet **+** . Használja a javasolt **eszköz azonosítóját** , vagy adja meg a sajátját. Az eszköz AZONOSÍTÓi betűket, számokat és karaktert tartalmazhatnak `-` . Megadhatja az új eszköz nevét is. Győződjön meg arról, hogy a **szimulált** váltógomb be van **kapcsolva** , majd válassza a **Létrehozás**lehetőséget.
 
     ![Szimulált eszköz](./media/quick-create-simulated-device/simulated-device.png)
 
@@ -160,7 +160,7 @@ Miután létrehozta az új szimulált eszközt, a szerkesztő ezzel az eszközze
 
     ![Előnézet eszköz konfigurálása](./media/quick-create-simulated-device/configure-preview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy **MXChip IoT fejlesztői készlet** , és hogyan adhat hozzá szimulált eszközt az alkalmazásához.
 

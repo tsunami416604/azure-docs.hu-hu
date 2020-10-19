@@ -31,6 +31,8 @@
       href: tutorial-private-endpoint-storage-portal.md
     - name: Kapcsolódás a Cosmos DB-fiókokhoz
       href: tutorial-private-endpoint-cosmosdb-portal.md
+    - name: Csatlakozás webalkalmazáshoz
+      href: tutorial-private-endpoint-webapp-portal.md
 - name: Alapelvek
   items:
     - name: Privát végpont

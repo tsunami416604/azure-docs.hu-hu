@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
-ms.openlocfilehash: 4b12c71390a6b03de2f6f6a4bd79707cbc357dfe
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6d4d9fd901337b9c05c7d7d7f271974273e9fe37
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169034"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170062"
 ---
 # <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>Oktatóanyag: Kapcsolódás egy webalkalmazáshoz egy Azure Private-végpont használatával
 
@@ -76,7 +76,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Alhálózat neve | **MySubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 8. Válassza a **Biztonság** fület.
 
@@ -206,7 +206,7 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
 7. A kapcsolat után nyissa meg a Windows PowerShellt a kiszolgálón.
 
-8. Írja be a következő szöveget: `nslookup <webapp-name>.azurewebsites.net`. Cserélje le az **\<webapp-name>** nevet az előző lépésekben létrehozott Storage-fiók nevére.  A következőhöz hasonló üzenet jelenik meg:
+8. Írja be a következő szöveget: `nslookup <webapp-name>.azurewebsites.net`. A helyére írja **\<webapp-name>** be az előző lépésekben létrehozott webalkalmazás nevét.  A következőhöz hasonló üzenet jelenik meg:
 
     ```powershell
     Server:  UnKnown
