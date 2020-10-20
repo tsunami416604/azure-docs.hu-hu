@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c67add18dc653cc033d0cf4990f9c44f07633ac2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047403"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205488"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
 
@@ -24,7 +24,8 @@ A cikk jelen verziója ezeket a lépéseket manuálisan, egyenként, a Azure Por
 * Ha ezeket a lépéseket manuálisan szeretné használni a parancssori felületről, tekintse meg a jelen cikk CLI-verzióját: [*útmutató: példány és hitelesítés (CLI) beállítása*](how-to-set-up-instance-cli.md).
 * Ha az üzembe helyezési parancsfájl mintájának használatával szeretne automatikus telepítést végezni, tekintse meg a jelen cikk parancsfájlokkal ellátott verzióját: [*útmutató: példány és hitelesítés beállítása (megírt)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Az Azure Digital Twins-példány létrehozása
 
@@ -94,72 +95,7 @@ Megtekintheti a *hozzáférés-vezérlés (iam) > szerepkör-* hozzárendelések
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
-Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a használatra, és hozzárendelt engedélyekkel rendelkezik a kezeléséhez. Ezután be kell állítania egy ügyfélalkalmazás engedélyeit, hogy hozzáférjenek az alkalmazáshoz.
-
-## <a name="set-up-access-permissions-for-client-applications"></a>Ügyfélalkalmazások hozzáférési engedélyeinek beállítása
-
-[!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
-
-Először navigáljon a [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) a Azure Portalban (ezt a hivatkozást használhatja, vagy megkeresheti a portálon található keresősáv használatával). Válassza a szolgáltatás menü *Alkalmazásregisztrációk* elemét, majd az *+ új regisztráció*lehetőséget.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
-
-A következő *alkalmazás regisztrálása* lapon adja meg a kért értékeket:
-* **Név**: a regisztrációhoz TÁRSÍTANDÓ Azure ad-alkalmazás megjelenítendő neve
-* **Támogatott fióktípus**: *csak az ebben a szervezeti könyvtárban lévő fiókok kijelölése (csak alapértelmezett címtár – egyetlen bérlő)*
-* **Átirányítási URI**: Azure *ad-alkalmazás válaszának URL-címe* az Azure ad-alkalmazáshoz. Adjon hozzá egy *nyilvános ügyfél/natív (mobile & Desktop) URI-* t a következőhöz: `http://localhost` .
-
-Ha elkészült, kattintson a *regisztráció* gombra.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
-
-A regisztráció befejezését követően a portál átirányítja a részleteket tartalmazó lapjára.
-
-### <a name="provide-azure-digital-twins-api-permission"></a>Azure digitális Twins API-engedély megadása
-
-Ezután konfigurálja a létrehozott alkalmazás-regisztrációt az Azure Digital Twins API-k alapkonfigurációs engedélyeivel.
-
-Az alkalmazás regisztrációjának portál lapján válassza az API- *engedélyek* lehetőséget a menüből. A következő engedélyek lapon kattintson a *+ engedély hozzáadása* gombra.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
-
-Az alábbi *API-engedélyek kérése* lapon váltson a *saját szervezet által használt API* -k lapra, és keressen rá az *Azure Digital Twins*kifejezésre. Válassza az _**Azure Digital Twins**_ lehetőséget a keresési eredmények közül, és folytassa az engedélyek hozzárendelését az Azure Digital Twins API-khoz.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
-
->[!NOTE]
-> Ha az előfizetése továbbra is rendelkezik egy meglévő Azure Digital Twins-példánnyal a szolgáltatás előző nyilvános előzetes verziójából (2020. július előtt), akkor helyette az _**Azure Smart Spaces szolgáltatást**_ kell keresnie és kiválasztania. Ez az API-k ugyanazon készletének régebbi neve (figyelje meg, hogy az *alkalmazás (ügyfél) azonosítója* megegyezik a fenti képernyőképen szereplővel), és a felhasználói élmény ezen a lépésen túl nem változik.
-> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
-
-Ezután kiválaszthatja, hogy mely engedélyeket kell megadni ezekhez az API-khoz. Bontsa ki az **olvasási (1)** engedélyt, és jelölje be az *olvasás. írás* az alkalmazás regisztrációs olvasójának és az író engedélyének megadására szolgáló jelölőnégyzetet.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
-
-Ha elkészült, kattintson a *hozzáadási engedélyek* elemre.
-
-### <a name="verify-success"></a>Sikeres ellenőrzés
-
-Az API- *engedélyek* lapon ellenőrizze, hogy már van-e olyan bejegyzés az Azure digitális Twins számára, amely az olvasási/írási jogosultságokat tükrözi:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
-
-Azt is ellenőrizheti, hogy az Azure Digital Twins-hoz kapcsolódott-e az alkalmazás regisztrációjának *manifest.jsján*, amely automatikusan frissült az Azure digitális Twins információi között az API-engedélyek hozzáadásakor.
-
-Ehhez válassza ki a *jegyzékfájlt* a menüből az alkalmazás regisztrációs jegyzékfájljának megtekintéséhez. Görgessen a Code (kód) ablak aljára, és keresse meg a következő mezőket `requiredResourceAccess` . Az értékeknek meg kell egyezniük az alábbi képernyőképen láthatókkal:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
-
-### <a name="collect-important-values"></a>Fontos értékek gyűjtése
-
-Ezután válassza az *Áttekintés* lehetőséget a menüsávon az alkalmazás regisztrációjának részleteinek megtekintéséhez:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
-
-Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és *KÖNYVTÁRát (bérlői azonosítóját)* . Ezekre az értékekre később szükség lesz az [ügyfélalkalmazás hitelesítéséhez az Azure digitális Twins API](how-to-authenticate-client.md)-kon. Ha Ön nem az a személy, aki az ilyen alkalmazások kódját fogja írni, meg kell osztania ezeket az értékeket a felhasználóval.
-
-### <a name="other-possible-steps-for-your-organization"></a>A szervezet egyéb lehetséges lépései
-
-[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a használatra, és hozzárendelt engedélyekkel rendelkezik a kezeléséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -167,5 +103,5 @@ Tesztelje az egyes REST API hívásokat a példányon az Azure Digital Twins CLI
 * [az DT Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Útmutató: az Azure digitális Twins parancssori felületének használata*](how-to-use-cli.md)
 
-Azt is megtudhatja, hogyan csatlakoztatható az ügyfélalkalmazás a példányhoz az ügyfélalkalmazás hitelesítési kódjának megírásával:
+Vagy tekintse meg a következő témakört: ügyfélalkalmazás összekötése a példánnyal a hitelesítési kóddal:
 * [*Útmutató: az alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)

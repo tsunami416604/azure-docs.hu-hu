@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 31660d13fe69d393a19167eaea8a69bfb6260467
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097337"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202072"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute felhőszolgáltatók (CSP) számára
 A Microsoft hatalmas léptékű szolgáltatásokat kínál a hagyományos viszonteladók és forgalmazók (CSP) számára, hogy gyorsan láthassák el ügyfeleiket új szolgáltatásokat és megoldásokat anélkül, hogy be kellene fektetniük az új szolgáltatások fejlesztésébe. Ahhoz, hogy lehetővé tegye a felhőszolgáltatók (CSP) számára az új szolgáltatások közvetlen felügyeletét, a Microsoft olyan programokat és API-kat biztosít, amelyek segítségével a CSP-k ügyfeleik nevében felügyelhetik a Microsoft Azure-erőforrásokat. Ezeknek az erőforrásoknak az egyike az ExpressRoute. Az ExpressRoute lehetővé teszi, hogy a CSP meglévő ügyfélerőforrásait csatlakoztassa az Azure-szolgáltatásokhoz. A ExpressRoute egy nagy sebességű privát kommunikációs hivatkozás az Azure szolgáltatásaihoz. 
@@ -28,7 +28,7 @@ A ExpressRoute a magas rendelkezésre állású áramkörökből áll, amelyek e
 A Microsoft Azure egyre nagyobb számban kínál szolgáltatásokat, amelyeket Ön biztosíthat az ügyfeleinek. A ExpressRoute segít Önnek és ügyfeleinek kihasználni ezeket a szolgáltatásokat azáltal, hogy nagy sebességű, kis késésű hozzáférést biztosítanak a Microsoft Azure-környezethez.
 
 ## <a name="microsoft-azure-management"></a>Microsoft Azure-kezelés
-A Microsoft az API-k segítségével felügyeli az Azure Customer-előfizetéseket, mivel lehetővé teszi a programozott integrációt a saját szolgáltatás-felügyeleti rendszereivel. A támogatott kezelési képességek [itt](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx) találhatók.
+A Microsoft az API-k segítségével felügyeli az Azure Customer-előfizetéseket, mivel lehetővé teszi a programozott integrációt a saját szolgáltatás-felügyeleti rendszereivel. A támogatott kezelési képességek [itt](/previous-versions/windows/mt844538(v=win.10)) találhatók.
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure erőforrás-kezelés
 Az ügyfelével kötött szerződése határozza meg az előfizetés kezelésének módját. A CSP közvetlenül kezelheti az erőforrások létrehozását és karbantartását, vagy az ügyfél megtarthatja a Microsoft Azure-előfizetés feletti felügyeletet, és maga hozhat létre igény szerinti Azure-erőforrásokat. Ha az ügyfél felügyeli az erőforrások létrehozását a Microsoft Azure-előfizetésében, a következő két modell egyikét fogja használni: "*Kapcsolódás*" modell vagy "*Direct-to*" modell. A modellek leírását a következő szakaszok tartalmazzák.  
@@ -124,11 +124,11 @@ A használt modelltől – Szolgáltatóhoz való csatlakozás vagy Szolgáltat�
 
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A felhőszolgáltatói szolgáltatás segítségével anélkül növelheti az ügyfelei számára nyújtott értéket, hogy költséges infrastruktúra- és képességberuházásokat kellene eszközölnie, és így megtarthatja pozícióját, mint első számú szolgáltató a kiszervezések terén. A Microsoft Azure-ral való zökkenőmentes integráció a CSP API-n keresztül valósítható meg, amelynek segítségével a Microsoft Azure felügyelete integrálható meglévő felügyeleti keretrendszerekbe.  
 
 További információt az alábbi hivatkozásokat követve tekinthet meg:
 
-[Azure a felhőszolgáltatói programban](https://docs.microsoft.com/azure/cloud-solution-provider).  
+[Azure a felhőszolgáltatói programban](/azure/cloud-solution-provider).  
 [Felkészülés a felhőszolgáltatóként kínált tranzakciók végrehajtására](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch).  
 [A Microsoft felhőszolgáltatói erőforrásai](https://partner.microsoft.com/solutions/cloud-reseller-resources).

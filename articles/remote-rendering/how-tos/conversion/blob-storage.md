@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80681648"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206543"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Modellek átalakítása az Azure Blob Storage használatával
 
@@ -28,7 +28,7 @@ A [modell-átalakítási](model-conversion.md) szolgáltatáshoz hozzáférésse
 A Storage-fiók és a blob-tárolók létrehozása a következő eszközök egyikével végezhető el:
 
 - [Azure Portal](https://portal.azure.com)
-- [az Command Line](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az Command Line](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - SDK-k (C#, Python...)
 
@@ -46,13 +46,13 @@ Kövesse a [fiók létrehozása](../create-an-account.md#link-storage-accounts) 
 
 A tárolt hozzáférési aláírások (SAS) használatával olvasási hozzáférést biztosíthat a bemenethez, és írási hozzáférést biztosít a kimenethez. Javasoljuk, hogy minden egyes modell átalakításakor új URI-ket generáljon. Mivel az URI-k egy kis idő elteltével lejárnak, a hosszabb időtartamra kiterjedően továbbra is előfordulhat, hogy az alkalmazás váratlanul megszakad.
 
-Az SAS-vel kapcsolatos részletek a [sas dokumentációjában](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)találhatók.
+Az SAS-vel kapcsolatos részletek a [sas dokumentációjában](../../../storage/common/storage-sas-overview.md)találhatók.
 
 SAS URI-t az alábbiak egyikével lehet létrehozni:
 
 - az PowerShell-modul
   - lásd a [PowerShell-parancsfájlok példáit](../../samples/powershell-example-scripts.md)
-- [az Command Line](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az Command Line](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
   - kattintson a jobb gombbal a tároló "közös hozzáférési aláírás beolvasása" elemre (olvasás, hozzáférés listázása beviteli tárolóhoz, írási hozzáférés a kimeneti tárolóhoz)
 - SDK-k (C#, Python...)
@@ -64,11 +64,11 @@ Példa a közös hozzáférési aláírások eszköz-átalakításban való hasz
 A modellek átalakításának megkezdéséhez fel kell töltenie azt a következő lehetőségek egyikének használatával:
 
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) – egy kényelmes felhasználói felület az Azure Blob Storage-ban található fájlok feltöltéséhez/letöltéséhez/kezeléséhez
-- [Azure-parancssor](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
-- [Azure PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.2.0)
+- [Azure-parancssor](../../../storage/blobs/storage-quickstart-blobs-cli.md)
+- [Azure PowerShell-modul](/powershell/azure/install-az-ps?view=azps-2.2.0)
   - lásd a [PowerShell-parancsfájlok példáit](../../samples/powershell-example-scripts.md)
-- [Storage SDK használata (Python, C#...)](https://docs.microsoft.com/azure/storage/)
-- [Az Azure Storage REST API-k használata](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
+- [Storage SDK használata (Python, C#...)](../../../storage/index.yml)
+- [Az Azure Storage REST API-k használata](/rest/api/storageservices/blob-service-rest-api)
 
 Az adatok átalakítására való feltöltésre példaként tekintse meg a PowerShell- [példa parancsfájljainak](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1.
 
@@ -80,7 +80,7 @@ Ha például SAS URI-t szeretne beolvasni a [Azure Storage Exploreron](https://a
 
 Ha nem csatlakoztatta a Storage-fiókot az Azure távoli megjelenítési fiókjához, a modell betöltéséhez közös hozzáférésű aláírás (SAS) szükséges. Megtudhatja, hogyan csatlakozhat a fiókhoz a fiók [létrehozása](../create-an-account.md#link-storage-accounts)című témakörben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A modell átalakításának konfigurálása](configure-model-conversion.md)
 - [A modell átalakítási REST API](conversion-rest-api.md)

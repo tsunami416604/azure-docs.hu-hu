@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/23/2018
+ms.date: 10/19/2020
 ms.author: duau
-ms.openlocfilehash: 4f646cdb4a3f000df219f627cbd7e7c841ed68ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8262a80fac42f103d571523c75c5064d5d43949
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651241"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207342"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Oktatóanyag: a webhely válaszának javítása Traffic Manager használatával
 
 Ez az oktatóanyag azt ismerteti, hogyan használható a Traffic Manager egy gyorsan reagáló webhely létrehozásához azáltal, hogy a legalacsonyabb késéssel irányítja át a felhasználói forgalmat a webhelyre. Általában a legalacsonyabb késésű adatközpont a földrajzi távolsághoz legközelebbi.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Két, egy alapszintű webhelyet futtató virtuális gép létrehozása az IIS-en
@@ -161,7 +161,7 @@ Adja hozzá az IIS-kiszolgálók- *myIISVMEastUS*myIISVMWestEurope futtató két
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Típus                    | Azure-végpont                                   |
-    | Név           | myEastUSEndpoint                                        |
+    | Name           | myEastUSEndpoint                                        |
     | Célerőforrás típusa           | Nyilvános IP-cím                          |
     | Célerőforrás          | **Válasszon nyilvános IP-címet**, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a *myIISVMEastUS-ip* nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|
     |        |           |
@@ -209,11 +209,11 @@ Ebben a szakaszban megtekintheti a Traffic Managert működés közben.
 
    ![Traffic Manager-profil tesztelése](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
 
-## <a name="delete-the-traffic-manager-profile"></a>A Traffic Manager-profil törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szüksége, törölje az erőforráscsoportokat (**ResourceGroupTM1** és **ResourceGroupTM2**). Ehhez válassza ki az erőforráscsoportot (**ResourceGroupTM1** vagy **ResourceGroupTM2**), majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Forgalom elosztása végpontok között](traffic-manager-configure-weighted-routing-method.md)

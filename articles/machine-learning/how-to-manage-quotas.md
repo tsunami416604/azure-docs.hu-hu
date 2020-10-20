@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a81af14992c8557c245ab3a1073f031a6c505084
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 93cf29651110356023752f2377c9a0fc358982a7
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019392"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203048"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kezelése & az erőforrásokra vonatkozó kvóták növelése Azure Machine Learning
 
@@ -47,8 +47,8 @@ Ebben a szakaszban az alábbi erőforrásokra vonatkozó alapértelmezett és ma
 + Virtual machines (Virtuális gépek)
 + Azure Machine Learning Compute
 + Azure Machine Learning folyamatok
-+ Container Instances
-+ Tárolás
++ Tárolópéldányok
++ Storage
 
 > [!IMPORTANT]
 > A korlátozások változhatnak. A legújabbak mindig az összes Azure szolgáltatási szintű kvóta [dokumentumában](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) találhatók.
@@ -101,7 +101,7 @@ A következő táblázat a nem megengedett további korlátozásokat mutatja be.
 
 További információ: [Container instances korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 Az Azure Storage-fiókok régiónként legfeljebb 250 Storage-fiókkal rendelkezhetnek, előfizetések szerint. Ez magában foglalja a standard és a Premium Storage fiókot is.
 
 A korlát növeléséhez kérjen egy kérést az [Azure-támogatáson](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)keresztül. Az Azure Storage csapata áttekinti az esetet, és akár 250 Storage-fiókot is jóváhagyhat egy adott régióban.
@@ -178,11 +178,13 @@ Ezen forgatókönyvek esetében a következő lépések végrehajtásával igén
     | Probléma típusa | Műszaki |
     | Szolgáltatás | Saját szolgáltatások. A legördülő listában válassza a __Machine learning__ lehetőséget. |
     | Probléma típusa | Munkaterület beállítása, SDK és parancssori felület |
-    | Probléma altípusa | Probléma a munkaterület kiépítésével vagy kezelésével |
+    | Probléma altípusa | A privát végpont és a saját DNS zóna juttatására vonatkozó kérelem |
 
 2. A __részletek__ szakaszban a __Leírás__ mező használatával adja meg a használni kívánt Azure-régiót és a használni kívánt forgatókönyvet. Ha több előfizetés esetében is kvótát kell megnövelnie, akkor ebben a mezőben az előfizetési azonosítók is szerepelnek.
 
 3. A kérelem létrehozásához válassza a __Létrehozás__ lehetőséget.
+
+:::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Képernyőkép a privát végpontról és a saját DNS-kvóta növelésére vonatkozó kérésről":::
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981315"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201052"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Network Performance Monitor for ExpressRoute konfigurálása
 
@@ -54,7 +54,7 @@ Hozzon létre egy olyan munkaterületet az előfizetésben, amely a virtuális h
 1. A [Azure Portal](https://portal.azure.com)válassza ki azt az előfizetést, amely az ExpressRoute-áramkörhöz tartozó virtuális hálózatok rendelkezik. Ezután keresse meg a szolgáltatások listáját a **piactéren** a következőhöz: "Network Performance monitor". A visszatérésnél kattintson ide a **Network Performance monitor** lap megnyitásához.
 
    >[!NOTE]
-   >Létrehozhat egy új munkaterületet, vagy használhat egy meglévő munkaterületet is. Ha meglévő munkaterületet szeretne használni, meg kell győződnie arról, hogy a munkaterület át lett telepítve az új lekérdezési nyelvre. [További információ...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
+   >Létrehozhat egy új munkaterületet, vagy használhat egy meglévő munkaterületet is. Ha meglévő munkaterületet szeretne használni, meg kell győződnie arról, hogy a munkaterület át lett telepítve az új lekérdezési nyelvre. [További információ...](../azure-monitor/log-query/log-query-overview.md)
    >
 
    ![portál](./media/how-to-npm/3.png)<br><br>
@@ -92,7 +92,7 @@ Hozzon létre egy olyan munkaterületet az előfizetésben, amely a virtuális h
 Javasoljuk, hogy legalább két ügynököt telepítsen a redundancia (például helyszíni, Azure virtuális hálózatok) ExpressRoute-kapcsolatok mindkét oldalán. Az ügynököt Windows Serverre kell telepíteni (2008 SP1 vagy újabb). A ExpressRoute-áramkörök figyelése a Windows asztali operációs rendszer és a Linux operációs rendszer használatával nem támogatott. Az ügynökök telepítéséhez kövesse az alábbi lépéseket:
    
   >[!NOTE]
-  >A SCOM által leküldett ügynökök (beleértve az [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)-t is) nem tudják folyamatosan felderíteni a helyüket, ha az Azure-ban futnak. Javasoljuk, hogy ezeket az ügynököket ne használja az Azure virtuális hálózatok a ExpressRoute figyeléséhez.
+  >A SCOM által leküldett ügynökök (beleértve az [MMA](/previous-versions/system-center/system-center-2012-R2/dn465154(v=sc.12))-t is) nem tudják folyamatosan felderíteni a helyüket, ha az Azure-ban futnak. Javasoljuk, hogy ezeket az ügynököket ne használja az Azure virtuális hálózatok a ExpressRoute figyeléséhez.
   >
 
 1. A **telepítő** futtatásával telepítse az ügynököt minden olyan kiszolgálóra, amelyet a ExpressRoute figyelésére kíván használni. A figyeléshez használt kiszolgáló lehet virtuális gép vagy helyszíni, és rendelkeznie kell internet-hozzáféréssel. Telepítenie kell legalább egy ügynököt a helyszínen, és egy ügynököt minden egyes, az Azure-ban figyelni kívánt hálózati szegmensen.
@@ -118,7 +118,7 @@ Javasoljuk, hogy legalább két ügynököt telepítsen a redundancia (például
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2,3: proxybeállítások konfigurálása (nem kötelező)
 
-Ha webproxyt használ az Internet eléréséhez, a következő lépésekkel konfigurálja a proxybeállításokat a Microsoft monitoring Agenthez. Hajtsa végre ezeket a lépéseket az egyes kiszolgálókon. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha igen, tekintse [meg a proxy beállításainak konfigurálása a Microsoft monitoring agenthez parancsfájl használatával](../log-analytics/log-analytics-windows-agent.md)című témakört.
+Ha webproxyt használ az Internet eléréséhez, a következő lépésekkel konfigurálja a proxybeállításokat a Microsoft monitoring Agenthez. Hajtsa végre ezeket a lépéseket az egyes kiszolgálókon. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha igen, tekintse [meg a proxy beállításainak konfigurálása a Microsoft monitoring agenthez parancsfájl használatával](../azure-monitor/platform/agent-windows.md)című témakört.
 
 Proxybeállítások konfigurálása a Microsoft monitoring Agent számára a Vezérlőpult használatával:
 
@@ -161,7 +161,7 @@ Az ügynök-kiszolgálókon nyisson meg egy PowerShell-ablakot rendszergazdai jo
 
 Az Azure-ban található ügynök-kiszolgálók figyeléséhez konfigurálnia kell a hálózati biztonsági csoport (NSG) szabályait, hogy engedélyezzék a TCP-forgalmat a NPM által a szintetikus tranzakciókhoz használt portokon. Az alapértelmezett port a 8084. Ez lehetővé teszi, hogy az Azure-beli virtuális gépen telepített figyelő ügynök kommunikáljon egy helyszíni figyelő ügynökkel.
 
-További információ a NSG: [hálózati biztonsági csoportok](../virtual-network/virtual-networks-create-nsg-arm-portal.md).
+További információ a NSG: [hálózati biztonsági csoportok](../virtual-network/tutorial-filter-network-traffic.md).
 
 >[!NOTE]
 >Győződjön meg arról, hogy telepítette az ügynököket (a helyszíni kiszolgáló ügynökét és az Azure Server Agent ügynököt is), és futtassa a PowerShell-parancsfájlt, mielőtt folytatná a lépést.

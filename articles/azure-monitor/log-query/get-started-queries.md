@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43a72db385d282ee189c179254cfc270929dbbf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87874061"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207189"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés az Azure Monitor-naplólekérdezésekkel
 
@@ -171,7 +171,7 @@ Az előző példa ezt a kimenetet hozza létre:
 A **Project** használatával is átnevezheti az oszlopokat, és újakat is meghatározhat. A következő példában a Project használatával végezheti el a következőket:
 
 * Csak a *számítógép* -és *TimeGenerated* eredeti oszlopainak kiválasztása.
-* Nevezze át a *tevékenység* oszlopot a *EventDetails*értékre.
+* A *tevékenység* oszlopot jeleníti meg *EventDetails*.
 * Hozzon létre egy új, *EventCode*nevű oszlopot. Az **alkarakterlánc ()** függvény csak az első négy karakter beolvasására szolgál a tevékenység mezőből.
 
 
@@ -242,7 +242,7 @@ A kimeneti világosabb kiválasztásához jelölje ki, ha idődiagramként szere
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a sztringek használatával végzett naplózási lekérdezésekben a karakterláncok használata [Azure monitor a naplók lekérdezésében](string-operations.md).
 - További információ az adatösszesítések naplózási lekérdezésekben való összesítéséről [Azure monitor log-lekérdezések speciális összesítései között](advanced-aggregations.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba9f2b10258f19504e3fd37723eceff7b8c37f6a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327714"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203483"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
 Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
@@ -110,7 +110,7 @@ Syslog
 | count 
 ```
 
-Bizonyos esetekben a kiértékelt oszlopot a lekérdezés feldolgozási enine implicit módon hozza létre, mivel a szűrés nem csak a következő mezőn történik:
+Bizonyos esetekben a kiértékelt oszlopot a lekérdezés-feldolgozó motor implicit módon hozza létre, mivel a szűrés nem csupán a következő mezőn történik:
 ```Kusto
 //less efficient
 SecurityEvent
@@ -342,7 +342,7 @@ Perf
 ) on Computer
 ```
 
-Gyakori eset, ha az ilyen hiba akkor fordul elő, amikor a [arg_max ()](/azure/kusto/query/arg-max-aggfunction) a legutóbbi előfordulás megkeresésére szolgál. Példa:
+Gyakori eset, ha az ilyen hiba akkor fordul elő, amikor a [arg_max ()](/azure/kusto/query/arg-max-aggfunction) a legutóbbi előfordulás megkeresésére szolgál. Például:
 
 ```Kusto
 Perf

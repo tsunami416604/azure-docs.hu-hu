@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/14/2020
-ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/16/2020
+ms.openlocfilehash: 48a044e53602b330e43b35ce2425b4b7a90582bf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044496"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206577"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Gyakori problémák az Azure Marketplace-en elérhető virtuálisgép-lemezképek tanúsításakor
 
@@ -35,7 +35,7 @@ A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről,
 - [Windows-rendszerképek](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
 
 > [!Note]
-> Ha olyan linuxos alaprendszerképet használ, amely nem a piactéren alapul, az első partíciót 2048 KB-ra lehet ellensúlyozni. Ez lehetővé teszi, hogy a formázatlan terület felhasználható legyen új számlázási adatok hozzáadására, és lehetővé teszi az Azure számára a virtuális gép közzétételét a piactéren.  
+> Ha az Azure Marketplace-ről nem készített linuxos alapképet használ, az első partíciót 2048 KB-ra ellensúlyozhatja. Ez lehetővé teszi, hogy a formázatlan terület felhasználható legyen új számlázási adatok hozzáadására, és lehetővé teszi az Azure számára a virtuális gép közzétételét az Azure Marketplace-en.  
 
 ## <a name="vm-extension-failure"></a>VM-bővítmény hibája
 
@@ -46,7 +46,7 @@ A virtuálisgép-bővítmények engedélyezéséhez tegye a következőket:
 1. Válassza ki a linuxos virtuális gépet.
 1. Lépjen a **diagnosztikai beállítások menüpontra**.
 1. Az alapmátrixok engedélyezéséhez frissítse a **Storage-fiókot**.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
    ![Vendégszintű monitorozás engedélyezése](./media/vm-certification-issues-solutions-1.png)
 
@@ -66,7 +66,7 @@ Győződjön meg arról, hogy a virtuális gép üzembe helyezési folyamatát s
 
 A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 
-|Forgatókönyv|Hiba|Ok|Megoldás|
+|Használati eset|Hiba|Ok|Megoldás|
 |---|---|---|---|
 |1|Érvénytelen virtuális merevlemez (VHD)|Ha a VHD-láblécben megadott cookie-érték helytelen, a VHD-fájl érvénytelennek tekintendő.|Hozza létre újra a lemezképet, és küldje el a kérést.|
 |2|Érvénytelen blob-típus|A virtuális gép kiépítés meghiúsult, mert a használt blokk egy oldal típusa helyett blob típusú.|Hozza létre újra a lemezképet, és küldje el a kérést.|
@@ -87,7 +87,7 @@ Ha a Visual studiót vagy bármely Office-licenccel rendelkező terméket megpr�
 
 A jóváhagyott alap kiválasztásáról további információt az Azure-beli [virtuális gépek technikai eszközeinek létrehozása](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)című témakörben talál.
 
-## <a name="tool-kit-test-case-execution-failed"></a>Az eszközkészlet tesztelési esetének végrehajtása nem sikerült 
+## <a name="tool-kit-test-case-execution-failed"></a>Az eszközkészlet tesztelési esetének végrehajtása nem sikerült
 
 A Microsoft minősítési eszközkészlet segítséget nyújt a tesztelési esetek futtatásához, és annak ellenőrzéséhez, hogy a VHD vagy a rendszerkép kompatibilis-e az Azure-környezettel.
 
@@ -97,7 +97,7 @@ Töltse le a [Microsoft minősítési eszközkészletet](azure-vm-image-certific
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Linux-tesztelési eseteket. A teszt érvényesítése a leírásban van megadva.
 
-|Forgatókönyv|Teszteset|Leírás|
+|Használati eset|Teszteset|Leírás|
 |---|---|---|
 |1|Bash-előzmények|A rendszer a virtuális gép rendszerképének létrehozása előtt törli a bash-előzmények fájljait.|
 |2|Linux-ügynök verziója|Telepíteni kell az Azure Linux Agent 2.2.41 vagy újabb verzióját.|
@@ -114,7 +114,7 @@ A következő táblázat felsorolja az eszközkészlet által futtatott Linux-te
 
 A következő táblázat felsorolja a korábbi tesztelési esetek végrehajtása során talált gyakori hibákat:
  
-|Forgatókönyv|Teszteset|Hiba|Megoldás|
+|Használati eset|Teszteset|Hiba|Megoldás|
 |---|---|---|---|
 |1|Linux-ügynök verziója – tesztelési eset|A Linux-ügynök minimális verziója 2.2.41 vagy újabb. Ezt a követelményt a 2020. május 1. óta kötelező megadni.|Frissítse a Linux-ügynök verzióját, és 2,241-es vagy újabb verziójának kell lennie. További információt a [Linux-ügynök verziójának frissítését ismertető oldalon](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)talál.|
 |2|Bash-előzmények tesztelési esete|Hibaüzenet jelenik meg, ha az elküldött képen a bash-előzmények mérete meghaladja az 1 kilobájtot (KB). A méret 1 KB-ra van korlátozva, így biztosítható, hogy a rendszer ne rögzítse az esetlegesen bizalmas adatokat a bash-előzmények fájljában.|A probléma megoldásához csatlakoztassa a virtuális merevlemezt bármely más működő virtuális géphez, és végezze el a kívánt módosításokat (például törölje a *. bash* -előzmények fájljait), hogy csökkentse a méretet 1 KB-nál kisebb vagy egyenlő értékre.|
@@ -125,7 +125,7 @@ A következő táblázat felsorolja a korábbi tesztelési esetek végrehajtása
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Windows-tesztelési eseteket, valamint a tesztek ellenőrzésének leírását:
 
-|Forgatókönyv |Tesztelési esetek|Leírás|
+|Használati eset |Tesztelési esetek|Leírás|
 |---|---|---|---|
 |1|Operációs rendszer architektúrája|Az Azure csak a 64 bites operációs rendszereket támogatja.|
 |2|Felhasználói fióktól való függőség|Az alkalmazás végrehajtása nem függhet a rendszergazdai fióktól.|
@@ -145,7 +145,7 @@ A következő táblázat felsorolja az eszközkészlet által futtatott Windows-
 |16|Windows Internet Name Service|Windows Internet Name Service. Ez a kiszolgálói funkció még nem támogatott. Az alkalmazás nem függ ettől a szolgáltatástól.|
 |17|Vezeték nélküli helyi hálózat szolgáltatás|Vezeték nélküli LAN szolgáltatás. Ez a kiszolgálói funkció még nem támogatott. Az alkalmazás nem függ ettől a szolgáltatástól.|
 
-Ha az előző tesztelési esetekkel kapcsolatos hibákkal találkozik, tekintse meg a megoldás táblázatának **Leírás** oszlopát. Ha további információra van szüksége, forduljon a támogatási csoporthoz. 
+Ha az előző tesztelési esetekkel kapcsolatos hibákkal találkozik, tekintse meg a megoldás táblázatának **Leírás** oszlopát. Ha további információra van szüksége, forduljon a támogatási csoporthoz.
 
 ## <a name="data-disk-size-verification"></a>Adatlemez méretének ellenőrzése
 
@@ -199,8 +199,8 @@ Frissítse a kernelt jóváhagyott verzióval, majd küldje el újra a kérelmet
 
 Ha a rendszerkép nincs telepítve a következő kernel-verziók egyikével, frissítse a megfelelő javításokkal. Kérje meg a szükséges jóváhagyást a támogatási csapattól a rendszerkép frissítése után a szükséges javításokkal:
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |OPERÁCIÓSRENDSZER-család|Verzió|Kernel|
@@ -261,12 +261,12 @@ Ha a tesztelési esetek virtuális gépen való futtatása során a hozzáféré
 Ellenőrizze, hogy engedélyezve van-e a megfelelő hozzáférés ahhoz a fiókhoz, amelyen az önteszt esetek futnak. Ha a hozzáférés nincs engedélyezve, engedélyezze a tesztelési esetek futtatását. Ha nem szeretné engedélyezni a hozzáférést, megoszthatja az egyéni tesztelési eset eredményeit a támogatási csapattal.
 
 ## <a name="download-failure"></a>Letöltési hiba
-    
+
 Tekintse meg az alábbi táblázatot a virtuálisgép-rendszerkép megosztott hozzáférési aláírás (SAS) URL-címével történő letöltésekor felmerülő problémákról.
 
-|Forgatókönyv|Hiba|Ok|Megoldás|
+|Használati eset|Hiba|Ok|Megoldás|
 |---|---|---|---|
-|1|A blob nem található|Lehet, hogy a VHD-t törölték vagy áthelyezték a megadott helyről.|| 
+|1|A blob nem található|Lehet, hogy a VHD-t törölték vagy áthelyezték a megadott helyről.||
 |2|BLOB használatban|A virtuális merevlemezt egy másik belső folyamat használja.|A VHD-nek a használatban lévő állapotban kell lennie, amikor letölti egy SAS URL-cím használatával.|
 |3|Érvénytelen SAS URL-cím|A virtuális merevlemezhez tartozó SAS URL-cím helytelen.|Szerezze be a megfelelő SAS URL-címet.|
 |4|Érvénytelen aláírás|A virtuális merevlemezhez tartozó SAS URL-cím helytelen.|Szerezze be a megfelelő SAS URL-címet.|
@@ -317,7 +317,7 @@ Az adatlemezzel kapcsolatos hibák megoldásához használja az alábbi tábláz
 
 ## <a name="remote-access-issue"></a>Távelérési probléma
 
-Ha a Windows-rendszerképhez nincs engedélyezve a RDP protokoll (RDP) beállítás, akkor ez a hibaüzenet jelenik meg. 
+Ha a Windows-rendszerképhez nincs engedélyezve a RDP protokoll (RDP) beállítás, akkor ez a hibaüzenet jelenik meg.
 
 Az RDP-hozzáférés engedélyezése a Windows-rendszerképekhez a beküldése előtt.
 
@@ -334,11 +334,11 @@ Alább láthatók a "bash-előzmények" törlésének lépései.
 
 Parancs: "Cat/dev/null eszközre > ~/.bash_history && History-c" ![ bash History parancs on Azure Portal](./media/vm-certification-issues-solutions-4.png)
 
-3. lépés A parancs sikeres végrehajtása után indítsa újra a virtuális gépet.
+3. lépés: a parancs sikeres végrehajtása után indítsa újra a virtuális gépet.
 
-4. lépés: Általánosítsa a virtuális gépet, végezze el a rendszerkép VHD-jét, és állítsa le a virtuális gépet.
+4. lépés. általánosítsa a virtuális gépet, használja a rendszerképet, és állítsa le a virtuális gépet.
 
-5. lépés     Re-Submit az általánosított képet.
+5. lépés Re-Submit az általánosított képet.
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Kivételek (egyéni sablonok) kérelmezése a virtuálisgép-rendszerképeken szelektív tesztek esetén
 
@@ -349,7 +349,7 @@ Az alábbi részekben olyan főbb forgatókönyvekkel fogunk foglalkozni, amikor
 
 Kivételek forgatókönyvei
 
-Három forgatókönyv/eset van, ahol a kiadók általában a kivételeket kérik. 
+Három forgatókönyv/eset van, ahol a kiadók általában a kivételeket kérik.
 
 * **Kivétel egy vagy több tesztelési eset esetében:** A kiadók a [Piactéri támogatási](https://aka.ms/marketplacepublishersupport) kérelmekre vonatkozó kivételeket is elérnek a tesztelési esetekhez. 
 
@@ -357,20 +357,22 @@ Három forgatókönyv/eset van, ahol a kiadók általában a kivételeket kérik
        Ebben az esetben a kiadók itt tölthetik le a [Certified test Tool eszközt](https://aka.ms/AzureCertificationTestTool) , és megadhatják a jelentést a [Marketplace Publisher támogatási szolgálatában](https://aka.ms/marketplacepublishersupport)
 
 
-* **Egyéni sablonok:** Egyes közzétevők olyan virtuálisgép-rendszerképeket tesznek közzé, amelyekhez egyéni ARM-sablon szükséges a virtuális gépek telepítéséhez. Ebben az esetben a kiadóknak meg kell adniuk az egyéni sablonokat a [piactér-közzétevő támogatásában](https://aka.ms/marketplacepublishersupport) , így a minősítési csapat is használhatja az ellenőrzést. 
+* **Egyéni sablonok:** Egyes közzétevők olyan virtuálisgép-rendszerképeket tesznek közzé, amelyekhez egyéni ARM-sablon szükséges a virtuális gépek telepítéséhez.
+
+Ebben az esetben a kiadóknak meg kell adniuk az egyéni sablonokat a [piactér-közzétevő támogatásában](https://aka.ms/marketplacepublishersupport) , így a minősítési csapat is használhatja az ellenőrzést.
 
 ### <a name="information-to-provide-for-exception-scenarios"></a>Kivételi forgatókönyvek megadására szolgáló információk
 
 A kiadóknak el kell érniük a támogatási szolgálatot a [Marketplace kiadó támogatásában](https://aka.ms/marketplacepublishersupport) a fenti forgatókönyvhöz tartozó kivételek kérelmezéséhez a további következő információkkal:
 
-   1.   Közzétevő azonosítója – közzétevő azonosítója a partner Center portálon
-   2.   Ajánlat azonosítója/neve – az ajánlat azonosítója/neve, amelyre a kivételt kérték 
-   3.   SKU/csomag azonosítója – a virtuálisgép-ajánlathoz tartozó csomag azonosítója/SKU, amelyre a kivételt kérték
-   4.    Verzió – annak a virtuálisgép-ajánlatnak a verziója, amelyre a kivételt kérték
-   5.   Kivétel típusa – tesztek, zárolt virtuális gép, egyéni sablonok
-   6.   Kérelem oka – a kivétel oka, valamint az arra vonatkozó információk, hogy milyen teszteket kell kizárni 
-   7. Ütemterv – a kivétel kérésének dátuma 
-   8.   Melléklet – bármilyen fontos dokumentum csatolása. A zárolt virtuális gépek esetében csatolja a teszt jelentést, és az egyéni sablonokhoz adja meg az egyéni ARM-sablont mellékletként. Nem sikerült csatolni a jelentést a zárolt virtuális gépekhez és az egyéni ARM-sablonhoz az egyéni sablonok esetén a rendszer megtagadást eredményez.
+   1. Közzétevő azonosítója – közzétevő azonosítója a partner Center portálon
+   1. Ajánlat azonosítója/neve – az ajánlat azonosítója/neve, amelyre a kivételt kérték 
+   1. SKU/csomag azonosítója – a virtuálisgép-ajánlathoz tartozó csomag azonosítója/SKU, amelyre a kivételt kérték
+   1. Verzió – annak a virtuálisgép-ajánlatnak a verziója, amelyre a kivételt kérték
+   1. Kivétel típusa – tesztek, zárolt virtuális gép, egyéni sablonok
+   1. Kérelem oka – a kivétel oka, valamint az arra vonatkozó információk, hogy milyen teszteket kell kizárni 
+   1. Ütemterv – a kivétel kérésének dátuma 
+   1. Melléklet – bármilyen fontos dokumentum csatolása. A zárolt virtuális gépek esetében csatolja a teszt jelentést, és az egyéni sablonokhoz adja meg az egyéni ARM-sablont mellékletként. Nem sikerült csatolni a jelentést a zárolt virtuális gépekhez és az egyéni ARM-sablonhoz az egyéni sablonok esetén a rendszer megtagadást eredményez.
 
 ## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>Biztonsági rések kezelése vagy kiaknázása egy virtuálisgép-ajánlatban
 
@@ -403,7 +405,7 @@ A lépések végrehajtásához elő kell készítenie a felvenni kívánt virtu�
 1. A **terv áttekintése** lap **név** oszlopában válassza ki azt a csomagot, amelyhez hozzá szeretné adni a virtuális gépet.
 1. A **technikai konfiguráció** lap virtuálisgép- **rendszerképek**területén válassza a **+ virtuálisgép-rendszerkép hozzáadása**elemet.
    > [!NOTE]
-   > Egyszerre csak egy virtuálisgép-rendszerképet adhat hozzá a csomaghoz. Több virtuálisgép-rendszerkép hozzáadásához tegye közzé az elsőt, és várjon, amíg a következő virtuálisgép-lemezkép hozzáadása előtt el nem éri a _közzétevő PM_ fázist.
+   > Egyszerre csak egy virtuálisgép-rendszerképet adhat hozzá a csomaghoz. Több virtuálisgép-rendszerkép hozzáadásához tegye közzé mindegyiket élőben, mielőtt hozzáadja a következő virtuálisgép-lemezképet.
 1. A megjelenő mezőkben adja meg a lemez új verzióját és a virtuális gép rendszerképét.
 1. Válassza a **Piszkozat mentése** lehetőséget.
 1. Folytassa a következő szakasszal, és távolítsa el a virtuális gép rendszerképét a biztonsági sebezhetőséggel.
@@ -425,6 +427,7 @@ Miután eltávolította vagy lecserélte a virtuálisgép-rendszerképet, újra 
 1. Válassza **a felülvizsgálat és közzététel**lehetőséget.
 1. Ha bármilyen információt meg kell adnia a minősítési csapatnak, adja hozzá a **Megjegyzések a minősítéshez** mezőben.
 1. Kattintson a **Publish** (Közzététel) elemre.
+1. Ha a közzététel állapota eléri a közzétételi fázist, válassza az **élő indítás**lehetőséget.
 
 A közzétételi folyamattal kapcsolatos további információkért lásd: az [ajánlat áttekintése és közzététele a kereskedelmi piactéren](../review-publish-offer.md).
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74bad563de60abc0c1eb7623a81c83fea03f5ee6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88509365"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207223"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Gyors útmutató: modell megjelenítése egységgel
 
@@ -18,7 +18,7 @@ Ez a rövid útmutató azt ismerteti, hogyan futtathat egy olyan Unity-mintát, 
 
 Nem fogjuk részletesen bemutatni az ARR API-t, vagy egy új Unity-projekt beállítását. Ezeket a témaköröket az [oktatóanyag: távolról renderelt modellek megtekintése](../tutorials/unity/view-remote-models/view-remote-models.md)című témakör ismerteti.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan végezheti el a következőket:
+E gyorsútmutató segítségével megtanulhatja a következőket:
 > [!div class="checklist"]
 >
 >* A helyi fejlesztési környezet beállítása
@@ -33,7 +33,7 @@ A következő szoftvereket kell telepíteni:
 
 * Windows SDK 10.0.18362.0 [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * A Visual Studio 2019 legújabb verziója [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Visual Studio-eszközök vegyes valósághoz](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). A következő számítási *feladatok* telepítése kötelező:
+* [Visual Studio-eszközök vegyes valósághoz](/windows/mixed-reality/install-the-tools). A következő számítási *feladatok* telepítése kötelező:
   * **Asztali fejlesztés C++ nyelven**
   * **Univerzális Windows-platform (UWP) fejlesztése**
 * GIT [(letöltés)](https://git-scm.com/downloads)
@@ -106,12 +106,12 @@ A jelenetben van egy [kivágott sík](../overview/features/cut-planes.md) objekt
 
 Az átalakítások szinkronizálásához kattintson a **szinkronizálás most** lehetőségre, vagy jelölje be a **minden keret szinkronizálása** beállítást. Összetevő-tulajdonságok esetében csak a módosítása elég.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő rövid útmutatóban a mintát egy HoloLens fogjuk üzembe helyezni, hogy az eredeti méretben megtekintse a távolról renderelt modellt.
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Unity-minta üzembe helyezése a HoloLens-ben](deploy-to-hololens.md)
+> [Gyorsútmutató: Unity-minta üzembe helyezése a HoloLensben](deploy-to-hololens.md)
 
 Azt is megteheti, hogy a minta asztali SZÁMÍTÓGÉPekre is telepíthető.
 

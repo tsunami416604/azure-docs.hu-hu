@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eac4b08b590f93b3ec450eb1e1329d706fa09a3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462377"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206203"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -24,7 +24,7 @@ ms.locfileid: "89462377"
 
 ### <a name="new-features"></a>Új funkciók
 
-* **NEURÁLIS TTS: új beszéd stílusa `en-US` Aria hang**. A AriaNeural a hírek beolvasása közben is megszólalhat. A "bemondás – formális" stílus komolyabban hangzik, míg a "bemondás – alkalmi" stílus nyugodtabb és informális. Tekintse meg [, hogyan használhatja a SSML a beszélő stílusokat](speech-synthesis-markup.md).
+* **NEURÁLIS TTS: új beszéd stílusa `en-US` Aria hang**. A AriaNeural a hírek elolvasása közben is megszólalhat. A "bemondás – formális" stílus komolyabban hangzik, míg a "bemondás – alkalmi" stílus nyugodtabb és informális. Tekintse meg [, hogyan használhatja a SSML a beszélő stílusokat](speech-synthesis-markup.md).
 
 * **Egyéni hang: új funkció jelenik meg, amely automatikusan bejelöli az adatképzési minőséget**. Az adatok feltöltésekor a rendszer megvizsgálja a hang-és átirat-adatok különböző aspektusait, és automatikusan kijavítja vagy szűri a problémákat a hangmodell minőségének javítása érdekében. Ez magában foglalja a hang mennyiségét, a zajszintet, a beszéd kiejtési pontosságát, a beszéd igazítását a normalizált szöveggel, valamint a hang és a parancsfájl formátumát. 
 
@@ -38,7 +38,7 @@ ms.locfileid: "89462377"
 
     * SSML-dokumentáció: a SSML-dokumentumhoz csatolva megtekintheti az összes hangolási funkció használatának szabályait.
 
-* **A hanglista API-t úgy frissítették, hogy egy felhasználóbarát megjelenítendő nevet és a neurális hangok által támogatott beszélő stílusokat tartalmazza**.
+* **A hanglista API frissült, így szerepel egy felhasználóbarát megjelenítendő név és a neurális hangok által támogatott beszélő stílusok is**.
 
 ### <a name="general-tts-voice-quality-improvements"></a>Általános TTS hang minőségének fejlesztése
 
@@ -64,10 +64,10 @@ ms.locfileid: "89462377"
 * A hangtartalom-létrehozási eszközzel kijavított hibák száma 
     * Kijavítottuk a problémát az automatikus frissítéssel. 
     * Rögzített problémák a zh-CN hangstílusokkal a Dél-Kelet-Ázsia régióban.
-    * Rögzített stabilitási probléma, beleértve az exportálási hibát a "break" címkével és az írásjelekkel kapcsolatos hibákat.    
+    * Rögzített stabilitási probléma, beleértve az exportálási hibát a "break" címkével és a központozás hibáit.
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Új beszéd-szöveg területi beállítások: 2020 – augusztus kiadás
-Az augusztusi beszéd-szöveg megjelent 26 új területi beállítás augusztusban: 2 európai nyelv `cs-CZ` és `hu-HU` 5 angol területi beállítás, valamint 19 spanyol területi beállítás, amely a legtöbb Dél-amerikai országot fedi le. Az alábbi lista az új területi beállítások listáját tartalmazza. A teljes nyelvi listát [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)találja.
+Az augusztusi beszéd-szöveg megjelent 26 új területi beállítás augusztusban: 2 európai nyelv `cs-CZ` és `hu-HU` 5 angol területi beállítás, valamint 19 spanyol területi beállítás, amely a legtöbb Dél-amerikai országot fedi le. Az alábbi lista az új területi beállítások listáját tartalmazza. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)találja a teljes nyelvi listát.
 
 | Területi beállítás  | Nyelv                          |
 |---------|-----------------------------------|
@@ -120,7 +120,7 @@ Az augusztusi beszéd-szöveg megjelent 26 új területi beállítás augusztusb
 - **JavaScript**: [probléma](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) javítva a streamek memóriavesztés esetén.
 - **JavaScript**: a NodeJS-ből származó OCSP-válaszok gyorsítótárazása hozzáadva.
 - **Java**: kijavított egy problémát, amely BigInteger-mezőket eredményezett, így mindig 0 értéket ad vissza.
-- **iOS**: [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) javítva a Speech SDK-alapú alkalmazások iOS App Store-ban való közzétételekor.
+- **iOS**: [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) javítva a Speech SDK-alapú alkalmazások az iOS App Store-ban való közzétételekor.
 
 **Példák**
 - **C++** [: Speaker Recognitionhoz](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)hozzáadott mintakód.
@@ -136,7 +136,7 @@ Egészségesek maradjanak!
 
 * **Egyéni hang-és hangvezérelt hangalapú tesztelés a felhasználói élmény egyszerűbbé tétele érdekében**: az új tesztelési funkcióval az egyes nyelvekre optimalizált, előre definiált, az általános és a hangsegéd-forgatókönyveket lefedő tesztelési készlettel automatikusan teszteli a rendszer. Ezeket a teszteket a rendszer gondosan kijelöli és teszteli, hogy tartalmazza a jellemző használati eseteket és a fonémák a nyelven. Emellett a felhasználók továbbra is kiválaszthatják saját tesztelési parancsfájljaik feltöltését a modellek betanításakor.
 
-* **Hangtartalom létrehozása: új funkciók állnak rendelkezésére, amelyek nagyobb teljesítményű hanghangolási és hangkezelési képességeket tesznek lehetővé**
+* **Hangtartalom létrehozása: új funkciók állnak rendelkezésére, amelyek lehetővé teszik a hatékonyabb hanghangolást és hangkezelési képességeket**
 
     * `Pitch`a, a `rate` és a `volume` továbbfejlesztett, hogy a hangolást előre meghatározott értékkel támogassa, például lassú, közepes és gyors. Most már egyértelmű, hogy a felhasználók "konstans" értéket válasszanak a hangszerkesztéshez.
 
@@ -162,7 +162,7 @@ Egészségesek maradjanak!
     * Frissített Katja a `de-DE` legújabb prosody modellezési módszerrel, a Mos (mean vélemények pontszáma) nyereség + 0,13. 
     * Frissítve a Nanami `ja-JP` egy új pitch Accent prosody-modellel, a Mos (mean vélemények pontszáma) nyereség + 0,19;  
 
-* Jobb Word szintű kiejtési pontosság 5 nyelven.
+* Jobb Word szintű kiejtési pontosság öt nyelven.
 
     | Nyelv | Kiejtési hiba csökkentése |
     |---|---|
@@ -205,12 +205,12 @@ Egészségesek maradjanak!
     -   `spx help csr examples`
 
 **Új funkciók**
--   **C \# , C++**: Speaker Recognition előzetes verzió: Ez a funkció lehetővé teszi a beszélők azonosítását (ki beszél?) és a hangszórók ellenőrzését (ez az, aki a következőt igényli?). Először [tekintse át az áttekintést](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/speaker-recognition-overview), olvassa el a [Speaker Recognition alapjairól szóló cikket](https://docs.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-basics), vagy az API- [referenciák dokumentációját](https://docs.microsoft.com/rest/api/speakerrecognition/).
+-   **C \# , C++**: Speaker Recognition előzetes verzió: Ez a funkció lehetővé teszi a beszélő azonosítását (ki beszél?) és a hangszórók ellenőrzését (az a beszélő, akit ők igényelnek?). Először [tekintse át az áttekintést](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/speaker-recognition-overview), olvassa el a [Speaker Recognition alapjairól szóló cikket](https://docs.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-basics), vagy az API- [referenciák dokumentációját](https://docs.microsoft.com/rest/api/speakerrecognition/).
 
 **Hibajavítások**
 -   **C \# , C++**: a rögzített mikrofon rögzítése nem működik a 1,12-ben a hangszórók felismerése során.
 -   **JavaScript**: javítások a Firefox szöveg-beszédéhez és a Safari MacOS és iOS rendszeren.
--   Javítás a Windows-alkalmazás-ellenőrző hozzáférés-megsértésének összeomlása a beszélgetés átírásakor a 8 csatornás adatfolyam használata esetén.
+-   Javítsa a Windows-alkalmazás-ellenőrző hozzáférés-megsértését a beszélgetés átírásakor, ha nyolc csatornás streamet használ.
 -   Javítsa ki a Windows-alkalmazás-ellenőrző hozzáférés-megsértésének összeomlását a többeszközes beszélgetések fordításakor.
 
 **Példák**
@@ -234,13 +234,13 @@ Egészségesek maradjanak!
 
 **& optimalizálások fejlesztése**
 - **JavaScript**: optimalizált böngésző-mikrofon implementálása a beszédfelismerés pontosságának növelésével.
-- **Java**: a VEDEL nélküli közvetlen JNI implementációt használó kötések újrabontása. Ezzel a megoldással a Windows, Android, Linux és Mac rendszerekhez használt összes Java-csomag esetében 10x-re csökkenti a kötések méretét, és megkönnyíti a beszédfelismerési SDK Java-implementációjának további fejlesztését.
+- **Java**: a VEDEL nélküli közvetlen JNI implementációt használó kötések újrabontása. Ez a változás a Windows, Android, Linux és Mac rendszerekhez használt összes Java-csomagra vonatkozóan 10x-re csökkenti a kötések méretét, és megkönnyíti a beszédfelismerési SDK Java-implementációjának további fejlesztését.
 - **Linux**: frissített támogatási [dokumentáció](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux) a legújabb RHEL 7-re vonatkozó megjegyzésekkel.
-- Továbbfejlesztett kapcsolati logika, amely szolgáltatás-és hálózati hibák esetén többször is csatlakoztatja a kapcsolódási kísérleteket.
+- Továbbfejlesztett kapcsolati logika a szolgáltatás-és hálózati hibák többszöri összekapcsolásának megkísérlése érdekében.
 - Frissítettük a [Portal.Azure.com](https://portal.azure.com) Speech rövid útmutatót, amely segít a fejlesztőknek az Azure Speech utazás következő lépésében.
 
 **Hibajavítások**
-- **C#, Java**: javítva a [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587) az SDK-kódtárak betöltésével a Linux ARM-on (32 és 64 bit).
+- **C#, Java**: javítva a [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587) az SDK-kódtárak betöltésével a Linux ARM-on (32 bites és 64 bites).
 - **C#**: az TranslationRecognizer, a IntentRecognizer és a kapcsolatok objektumaihoz tartozó natív fogópontok explicit ártalmatlanítása.
 - **C#**: rögzített hangbemeneti életciklus-kezelés a ConversationTranscriber objektumhoz.
 - Kijavított egy hibát `IntentRecognizer` , amelyben az eredmény oka nem volt megfelelően beállítva az egyszerű kifejezésekből származó leképezések felismerése során.
@@ -253,7 +253,7 @@ Egészségesek maradjanak!
 - **JavaScript**: gyors útmutató a [szöveg-beszéd](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript), a [fordítás](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation?tabs=script&pivots=programming-language-csharp)és a [Szándékfelismeréshoz](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript).
 - Kulcsszavas felismerési minták a [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) és a [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) rendszerhez.  
 
-**COVID – 19 rövidített tesztelés:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legkevesebb kézi ellenőrzési tesztet végrehajtani, mint általában. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
+**COVID – 19 rövidített tesztelés:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legkevesebb kézi ellenőrzési tesztet végrehajtani, mint általában. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt, és az automatizált tesztek mindegyike sikeres volt. Ha kihagyott valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
 Egészségesek maradjanak!
 
 ## <a name="speech-sdk-1110-2020-march-release"></a>Speech SDK 1.11.0:2020 – márciusi kiadás
@@ -261,7 +261,7 @@ Egészségesek maradjanak!
 - Linux: a Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 támogatása a System for Speech SDK konfigurálására [vonatkozó utasításokkal](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) .
 - Linux: a .NET Core C# támogatása a Linux ARM32 és a ARM64. További tudnivalók [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux). 
 - C#, C++: a `UtteranceId` (z) `ConversationTranscriptionResult` rendszerhez hozzáadva egy egységes azonosítót az összes köztes és a végső beszédfelismerési eredményben. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)– részletek.
-- Python: támogatás hozzáadva a rendszerhez `Language ID` . Tekintse meg a speech_sample. a. a [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)-tárházat.
+- Python: támogatás hozzáadva a rendszerhez `Language ID` . Lásd: speech_sample. a [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)-tárházban.
 - Windows: a Windows platformon az összes Win32 Console-alkalmazáshoz hozzáadott tömörített hangbemeneti formátum támogatása. Részletek [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
 - JavaScript: a NodeJS-ben támogatja a beszédfelismerést (szöveg – beszéd). További információ [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech). 
 - JavaScript: új API-k hozzáadása az összes küldési és fogadási üzenet ellenőrzésének engedélyezéséhez. További információ [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript). 
@@ -271,14 +271,14 @@ Egészségesek maradjanak!
 - C#, C++: javítva a probléma, hogy az `Connection MessageReceived` esemény használata összeomlást okozhat `Recognizer` , ha az objektumot az objektum előtt dobja el a rendszer `Connection` . [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)– részletek.
 - Android: a mikrofon hangpufferének mérete a 800ms-ról a 100ms-re csökkent a késés javítása érdekében.
 - Android: kijavított egy [problémát](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) az x86-os Android-emulátorban Android Studioban.
-- JavaScript: támogatás a kínai régiókban az API-val `fromSubscription` . Részletek [itt](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-). 
+- JavaScript: támogatás a kínai régiókban az API-val `fromSubscription` . Részletek [itt](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#fromsubscription-string--string-). 
 - JavaScript: további hibaüzenetek hozzáadása a NodeJS-től érkező sikertelen kapcsolatok esetén.
         
 **Példák**
 - Unity: a szándék-felismerés nyilvános mintája rögzített, ahol a LUIS JSON-importálás sikertelen volt. Részletek [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369).
 - Python: minta hozzáadva a következőhöz: `Language ID` . Részletek [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py).
     
-**Covid19 rövidített tesztelése:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legtöbb kézi eszköz-ellenőrzési tesztet végrehajtani, mint általában. Erre példa a mikrofon bemenetének és a hangszórók kimenetének tesztelése Linux, iOS és macOS rendszereken. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt ezen a platformon, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br> Köszönjük a folyamatos támogatást. Ahogy mindig, tegye fel kérdéseit vagy visszajelzéseit a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) vagy a [stack Overflowon](https://stackoverflow.microsoft.com/questions/tagged/731).<br>
+**Covid19 rövidített tesztelése:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legtöbb kézi eszköz-ellenőrzési tesztet végrehajtani, mint általában. Például nem sikerült tesztelni a mikrofon bemenetét és a hangszórók kimenetét Linux, iOS és macOS rendszereken. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt ezen a platformon, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br> Köszönjük a folyamatos támogatást. Ahogy mindig, tegye fel kérdéseit vagy visszajelzéseit a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) vagy a [stack Overflowon](https://stackoverflow.microsoft.com/questions/tagged/731).<br>
 Egészségesek maradjanak!
 
 ## <a name="speech-sdk-1100-2020-february-release"></a>Speech SDK 1.10.0:2020 – februári kiadás
@@ -329,7 +329,7 @@ Egészségesek maradjanak!
 
 - `OpenSSL` frissítve lett a b 1.1.1-es verzióra, és statikusan kapcsolódik a Linux rendszerhez készült Speech SDK Core-könyvtárhoz. Ez akkor fordulhat elő, ha a beérkezett fájlok `OpenSSL` nem lettek telepítve a `/usr/lib/ssl` rendszeren lévő könyvtárba. A probléma megoldásához tekintse meg a Speech SDK [dokumentációját](how-to-configure-openssl-linux.md) .
 - Módosítottuk a C#-tól a-ig visszaadott adattípust, `WordLevelTimingResult.Offset` `int` `long` hogy engedélyezzék a hozzáférést, `WordLevelTimingResults` Ha a beszédfelismerési adatok 2 percnél hosszabbak.
-- `PushAudioInputStream` és `PullAudioInputStream` most a WAV-fejléc információit a beszédfelismerési szolgáltatásnak küldi a (z) alapján `AudioStreamFormat` , opcionálisan megadhatja őket a létrehozásuk után. Az ügyfeleknek most a [támogatott hangbemenet formátumot](how-to-use-audio-input-streams.md)kell használniuk. Bármilyen más formátum esetén a rendszer az optimálisnál rosszabb eredményeket kap, vagy más problémákat okozhat. 
+- `PushAudioInputStream` és `PullAudioInputStream` most a WAV-fejléc információit a beszédfelismerési szolgáltatásnak küldi a (z) alapján `AudioStreamFormat` , opcionálisan megadhatja őket a létrehozásuk után. Az ügyfeleknek most a [támogatott hangbemenet formátumot](how-to-use-audio-input-streams.md)kell használniuk. Bármilyen más formátum esetén a rendszer az optimálisnál rosszabb felismerési eredményeket kap, vagy más problémákat okozhat. 
 
 **Hibajavítások**
 
@@ -369,7 +369,7 @@ Egészségesek maradjanak!
 **Kompatibilitástörő változások**
 
 - A beszélgetési átirat funkciói a névtér alatt lettek áthelyezve `Microsoft.CognitiveServices.Speech.Transcription` .
-- A beszélgetési átirat módszereinek egy része új `Conversation` osztályba kerül.
+- A beszélgetési átirat módszereinek részei új `Conversation` osztályba kerülnek.
 - Eldobott támogatás a 32 bites (ARMv7 és x86) iOS-hez
 
 **Hibajavítások**
@@ -442,7 +442,7 @@ Egészségesek maradjanak!
 - A .NET Core-alkalmazás problémáinak elhárítása az alapszintű függvénytár betöltéséhez a mintákban a net461 Target Framework használatával
 - Javítsa ki az esetenkénti problémákat, hogy natív kódtárakat helyezzen üzembe a minták kimeneti mappájába
 - Javítás a webes szoftvercsatorna megbízható bezárásakor
-- Javítsa a lehetséges összeomlást a Linuxon nagyon nagy terhelés alatt álló kapcsolatok megnyitásakor
+- Javítsa a lehetséges összeomlást a Linuxon futó nagy terhelésű kapcsolatok megnyitásakor
 - Javítsa ki a hiányzó metaadatokat a macOS-keretrendszer csomagban
 - Problémák elhárítása `pip install --user` Windows rendszeren
 
@@ -657,7 +657,7 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
 Megbízhatósági javítások és hibajavítások:
 
 - Rögzített potenciális végzetes hiba történt a versenyhelyzet ártalmatlanítását kiváltó feltétele miatt
-- Kijavított lehetséges végzetes hiba a nem beállított tulajdonságok esetében.
+- Kijavított lehetséges végzetes hiba történt a tulajdonságok törlése után.
 - További hibák és paraméterek ellenőrzése hozzáadva.
 - Objective-C: a lehetséges végzetes hiba történt a NSString-ben a név felülbírálása miatt.
 - Objective-C: az API igazított láthatósága

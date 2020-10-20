@@ -12,16 +12,16 @@ ms.date: 08/31/2020
 ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 47902b29da1dfe20fb54d633a0559e6a337fd771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01af0e620ecb100839f7b1101e5ff9fcfc874eea
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89183631"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206669"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>ADAL.NET és MSAL.NET közötti közvetítőt használó Android-alkalmazások migrálása
 
-Ha a .NET-hez (ADAL.NET) és a [hitelesítési közvetítőhöz](brokered-auth.md)jelenleg használt Xamarin Android-alkalmazással rendelkezik, akkor ideje áttérni a .net-hez Azure Active Directory készült [Microsoft Authentication Library ](msal-overview.md) -re (MSAL.net).
+Ha a .NET-hez (ADAL.NET) és a [hitelesítési közvetítőhöz](msal-android-single-sign-on.md)jelenleg használt Xamarin Android-alkalmazással rendelkezik, akkor ideje áttérni a .net-hez Azure Active Directory készült [Microsoft Authentication Library ](msal-overview.md) -re (MSAL.net).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -113,7 +113,7 @@ A MSAL.NET-ben két dolgot kell beállítania az Android-tevékenységhez:
 
 1. A AcquireTokenInteractive-hívásban használja a `.WithParentActivityOrWindow(App.RootViewController)` és a pass hivatkozást a használni kívánt tevékenységre mutató hivatkozással. Ebben a példában a MainActivity fogjuk használni.
 
-**Példa:**
+**Például:**
 
 A *app.cs*-ben:
 

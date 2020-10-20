@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: duau
-ms.openlocfilehash: 871af5b767e8cfe10db3a0a1c15c47340e25581f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f14f43fa341df40ecd35340b7311e1acd18004c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395026"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204707"
 ---
 # <a name="expressroute-qos-requirements"></a>Az ExpressRoute QoS-követelményei
 A Skype Vállalati verzió különböző számítási feladatokat tartalmaz, amelyek különböző QoS-kezelést igényelnek. Ha hangszolgáltatásokat tervez használni az ExpressRoute-on keresztül, teljesítenie kell az alábbiakban ismertetett követelményeket.
@@ -24,7 +24,7 @@ A Skype Vállalati verzió különböző számítási feladatokat tartalmaz, ame
 > 
 > 
 
-Az alábbi táblázat a Microsoft Teams és a Skype vállalati verzió által használt DSCP-megjelöléseket tartalmazza. További információkért lásd: [A QoS kezelése a Skype Vállalati verzióhoz](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS).
+Az alábbi táblázat a Microsoft Teams és a Skype vállalati verzió által használt DSCP-megjelöléseket tartalmazza. További információkért lásd: [A QoS kezelése a Skype Vállalati verzióhoz](/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS).
 
 | **Forgalomosztály** | **Kezelés (DSCP-jelölés)** | **Microsoft-csapatok és Skype vállalati munkaterhelések** |
 | --- | --- | --- |
@@ -34,7 +34,7 @@ Az alábbi táblázat a Microsoft Teams és a Skype vállalati verzió által ha
 | **Alapértelmezett** |AF11 (10) |Fájlátvitel |
 | |CS0 (0) |Bármi más |
 
-* Osztályoznia kell a munkaterheléseket, és meg kell jelölnie a megfelelő DSCP-értékeket. A DSCP-jelöléseket az [itt](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) leírt útmutatások alapján állíthatja be a hálózatban.
+* Osztályoznia kell a munkaterheléseket, és meg kell jelölnie a megfelelő DSCP-értékeket. A DSCP-jelöléseket az [itt](/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) leírt útmutatások alapján állíthatja be a hálózatban.
 * Több QoS várakozási sort kell konfigurálnia és támogatnia a hálózaton belül. A hangnak önálló osztálynak kell lennie, és meg kell kapnia az [RFC 3246](https://www.ietf.org/rfc/rfc3246.txt)-ben megadott EF-kezelést. 
 * Forgalomosztályonként meghatározhatja a várakozásisor-kezelési mechanizmust, a torlódásészlelési házirendet és a sávszélesség-kiosztást. Skype Vállalati verzió számítási feladatainak DSCP-jelölését azonban meg kell tartania. Ha a fenti listában nem szereplő DSCP-jelöléseket használ, például az AF31 (26) jelölést, ezt a DSCP-értéket 0 értékre kell felülírnia, mielőtt elküldi a csomagot a Microsoftnak. A Microsoft csak a fenti táblázatban szereplő DSCP-értékkel jelölt csomagokat küld. 
 
@@ -45,4 +45,3 @@ Az alábbi táblázat a Microsoft Teams és a Skype vállalati verzió által ha
   * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-classic.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-classic.md)
   * [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-classic.md)
-

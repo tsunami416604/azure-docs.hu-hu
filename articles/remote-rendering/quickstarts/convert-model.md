@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a3325592c2085034473163cb886ba2b8b416a30
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91652448"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205829"
 ---
-# <a name="quickstart-convert-a-model-for-rendering"></a>Gyors útmutató: modell átalakítása renderelésre
+# <a name="quickstart-convert-a-model-for-rendering"></a>Gyorsútmutató: Modell konvertálása a renderelés előtt
 
 A rövid útmutatóban [: modell megjelenítése egységgel](render-model.md), megtanulta, hogyan használható a Unity Sample Project egy beépített modell megjelenítéséhez. Ez az útmutató bemutatja, hogyan alakíthatja át saját modelljeit.
 
@@ -27,7 +27,7 @@ A következőket fogja megtanulni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Teljes rövid útmutató [: modell megjelenítése egységgel](render-model.md)
-* Azure PowerShell telepítése [(dokumentáció)](https://docs.microsoft.com/powershell/azure/)
+* Azure PowerShell telepítése [(dokumentáció)](/powershell/azure/)
   * Rendszergazdai jogosultságokkal rendelkező PowerShell megnyitása
   * Futtassa `Install-Module -Name Az -AllowClobber`
 
@@ -166,7 +166,7 @@ Connect-AzAccount
 ```
 
 > [!NOTE]
-> Ha a szervezet egynél több előfizetéssel rendelkezik, lehet, hogy meg kell adnia a SubscriptionId és a bérlői argumentumokat. A részletek a [AzAccount dokumentációjában](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)találhatók.
+> Ha a szervezet egynél több előfizetéssel rendelkezik, lehet, hogy meg kell adnia a SubscriptionId és a bérlői argumentumokat. A részletek a [AzAccount dokumentációjában](/powershell/module/az.accounts/connect-azaccount)találhatók.
 
 Váltson át a `azure-remote-rendering\Scripts` könyvtárra, és futtassa az átalakítási parancsfájlt:
 
@@ -193,7 +193,7 @@ Az átalakítási parancsfájl által létrehozott SAS URI-azonosító csak 24 �
 1. A következő képernyőn kattintson a bal oldali panel **Storage Explorer** elemére, és keresse meg a kimeneti modellt (*. arrAsset* fájlt) a *arroutput* blob Storage-tárolóban. Kattintson a jobb gombbal a fájlra, majd válassza a **közös hozzáférésű aláírás beolvasása** lehetőséget a helyi menüben: ![ aláírás-hozzáférés](./media/portal-storage-explorer.png)
 1. Megnyílik egy új képernyő, ahol kiválaszthatja a lejárati dátumot. Kattintson a **Létrehozás**gombra, és másolja ki a következő párbeszédpanelen megjelenő URI-t. Ez az új URI a parancsfájl által létrehozott ideiglenes URI-t váltja fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az alapokat, tekintse meg az oktatóanyagokat, amelyekkel részletesebb ismereteket szerezhet.
 

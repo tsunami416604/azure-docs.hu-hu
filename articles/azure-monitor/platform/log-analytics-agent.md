@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 015bd48060f47023877d8c48601770228b1500fe
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c09b50272ce73fe084e84d49be7d9d81cbe725aa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104342"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207138"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics-ügynök a Windows-és Linux-alapú virtuális gépekről gyűjt telemetria a Felhőbeli, a helyszíni gépeken, valamint a [System Center Operations Manager](/system-center/scom/) által figyelt, és az összegyűjtött adatokat a Azure monitor log Analytics munkaterületére küldi el. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](../../security-center/index.yml)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja. Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a hálózati követelményekről, valamint az üzembe helyezési módszerekről.
@@ -51,7 +51,7 @@ A következő táblázat felsorolja azokat az adattípusokat, amelyekkel a Log A
 A Log Analytics ügynök adatokat küld egy Log Analytics munkaterületre Azure Monitor. A Windows-ügynök többkiszolgálós lehet, hogy több munkaterületre és System Center Operations Manager felügyeleti csoportokra küldje az adatküldést. A Linux-ügynök csak egyetlen célhelyre tud küldeni, vagy egy munkaterületre vagy egy felügyeleti csoportra.
 
 ## <a name="other-services"></a>Egyéb szolgáltatások
-A Linux és a Windows rendszerhez készült ügynök nem csak Azure Monitorhoz való csatlakozáshoz használható. Más szolgáltatások, például a Azure Security Center és az Azure Sentinel az ügynökre és a csatlakoztatott Log Analytics munkaterületére támaszkodnak. Az ügynök a hibrid Runbook-feldolgozói szerepkör és más szolgáltatások (például [change Tracking](../../automation/change-tracking.md), [Update Management](../../automation/update-management/update-mgmt-overview.md)és [Azure Security Center](../../security-center/security-center-introduction.md)) üzemeltetéséhez is támogatja a Azure Automation. További információ a hibrid Runbook feldolgozói szerepkörről: [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+A Linux és a Windows rendszerhez készült ügynök nem csak Azure Monitorhoz való csatlakozáshoz használható. Más szolgáltatások, például a Azure Security Center és az Azure Sentinel az ügynökre és a csatlakoztatott Log Analytics munkaterületére támaszkodnak. Az ügynök a hibrid Runbook-feldolgozói szerepkör és más szolgáltatások (például [change Tracking](../../automation/change-tracking/overview.md), [Update Management](../../automation/update-management/update-mgmt-overview.md)és [Azure Security Center](../../security-center/security-center-intro.md)) üzemeltetéséhez is támogatja a Azure Automation. További információ a hibrid Runbook feldolgozói szerepkörről: [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="workspace-and-management-group-limitations"></a>Munkaterület és felügyeleti csoport korlátozásai
 
@@ -143,7 +143,7 @@ Például: `https://user01:password@proxy01.contoso.com:30443`
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az [adatforrásokat](agent-data-sources.md) , és Ismerje meg, hogy milyen adatforrások érhetők el az adatok Windows vagy Linux rendszerből való gyűjtéséhez. 
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 

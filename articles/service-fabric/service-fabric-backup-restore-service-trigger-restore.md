@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246690"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207393"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Biztonsági mentés visszaállítása az Azure-ban Service Fabric
 
@@ -190,6 +190,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 A visszaállítások állapotát nyomon követheti a TrackRestoreProgress használatával.
 
+> [!NOTE]
+> Ha a PowerShell használatával állítja vissza a partíciót, ha a backuplocation "$", a "~" utasítás használatával megmenekül
+>
+
 ### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer használata
 Service Fabric Explorerről is indíthat visszaállítást. Győződjön meg arról, hogy engedélyezve van-e a speciális mód a Service Fabric Explorer beállításokban.
 1. Válassza ki a kívánt partíciókat, majd kattintson a műveletek elemre. 
@@ -250,6 +254,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ```
 
 A visszaállítási folyamat nyomon követhető a TrackRestoreProgress használatával.
+
+> [!NOTE]
+> Ha a PowerShell használatával állítja vissza a partíciót, ha a backuplocation "$", a "~" utasítás használatával megmenekül
+>
 
 ## <a name="track-restore-progress"></a>Visszaállítási folyamat nyomon követése
 
@@ -323,7 +331,7 @@ A Service Fabric-fürtben megbízható állapot-nyilvántartó szolgáltatás é
 - [RestorePartition API-referenciák](/rest/api/servicefabric/sfclient-api-restorepartition)
 - [GetPartitionRestoreProgress API-referenciák](/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Rendszeres biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [Biztonsági mentés visszaállítása REST API referenciája](/rest/api/servicefabric/sfclient-index-backuprestore)
 

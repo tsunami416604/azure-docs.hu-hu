@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 073fab4aee084513db4ca05af6c12087c0a8f911
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360956"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206373"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -91,7 +91,7 @@ A régiókkal kapcsolatos további információkért lásd: Azure-beli [telephel
 
 Most, hogy már van egy erőforráscsoport egy támogatott régióban, a következő lépés az oktatóanyagban használni kívánt egyes szolgáltatások egyedi erőforrásainak létrehozása.
 
-### <a name="create-a-speech-service-resource"></a>Beszédfelismerési szolgáltatás erőforrásának létrehozása
+### <a name="create-a-speech-service-resource"></a>Speech szolgáltatás erőforrásának létrehozása
 
 A beszédfelismerési erőforrások létrehozásához kövesse az alábbi utasításokat:
 
@@ -167,7 +167,7 @@ A [bot Framework Emulator](https://github.com/microsoft/botframework-emulator) e
 1. A [bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) 4.3.0 vagy újabb verziójának telepítése
 2. Indítsa el a robot Framework emulátort, és nyissa meg a robotját:
    * **Fájl**  ->  **Nyissa meg a robotot**.
-3. Adja meg a robot URL-címét. Példa:
+3. Adja meg a robot URL-címét. Például:
 
    ```
    http://localhost:3978/api/messages
@@ -412,7 +412,7 @@ Kövesse az alábbi lépéseket egy kulcsszó-modell létrehozásához, konfigur
 
 A Windows Voice Assistant-ügyfél forráskódjában tekintse meg ezeket a fájlokat a kulcsszavak észlelésének engedélyezéséhez használt kód áttekintéséhez:
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) a beszédfelismerési SDK metódusának meghívása [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) , amely a modell helyi fájlból való létrehozásához használatos a lemezen.
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) a beszédfelismerési SDK metódusának meghívása [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest&preserve-view=true#fromfile-string-) , amely a modell helyi fájlból való létrehozásához használatos a lemezen.
 1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) a beszédfelismerési SDK metódusának hívását is tartalmazza [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) , amely aktiválja a kulcsszó folyamatos észlelését.
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>Választható A nyelv és a robot hangjának módosítása
@@ -478,7 +478,7 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
 * [Magas színvonalú NEURÁLIS TTS-hangokat támogató Azure-régió](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices) üzembe helyezése
 * A Direct line Speech Channel szolgáltatáshoz kapcsolódó díjszabás:
   * [A bot Service díjszabása](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Speech szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Beszédfelismerési szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Saját hang-kompatibilis bot kiépítése és üzembe helyezése:
   * Hozzon létre egy [robot Framework robotot](https://dev.botframework.com/). Regisztrálja a [Direct line Speech Channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) használatával, és [szabja testre a robotját](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
   * A meglévő [bot Framework-megoldások](https://microsoft.github.io/botframework-solutions/index)megismerése: [virtuális asszisztens](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) létrehozása és [kiterjesztése a közvetlen vonalas beszédre](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

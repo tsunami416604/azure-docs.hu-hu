@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 114a0d6f97149baad0c9e76fb359c52996820575
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85958361"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207155"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: az Apache HBase használata az Azure HDInsight
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Apache HBase-fürtöt az Azure HDInsight, hogyan hozhat létre HBase-táblákat és lekérdezési táblákat Apache Hive használatával.  A HBase-re vonatkozó általános információért lásd: [HDInsight HBase overview](./apache-hbase-overview.md) (A HDInsight HBase áttekintése).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Apache HBase-fürt létrehozása
@@ -207,6 +207,23 @@ A HBase-táblákban lévő adatlekérdezéseket [Apache Hive](https://hive.apach
 
 1. Az SSH-kapcsolatok kilépéséhez használja a következőt: `exit` .
 
+### <a name="separate-hive-and-hbase-clusters"></a>Különálló struktúra-és Hbase-fürtök
+
+A HBase-adatok eléréséhez szükséges struktúra-lekérdezést nem kell végrehajtani a HBase-fürtről. A struktúra (beleértve a Spark, a Hadoop, a HBase vagy az interaktív lekérdezés) struktúrával rendelkező fürtök a HBase-információk lekérdezéséhez használhatók, a következő lépések elvégzésével:
+
+1. Mindkét fürtöt ugyanahhoz a Virtual Networkhoz és alhálózathoz kell csatlakoztatni
+2. Másolás `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` a HBase-fürt átjárócsomópontokkal a kaptár-fürt átjárócsomópontokkal
+
+### <a name="secure-clusters"></a>Biztonságos fürtök
+
+A HBase az ESP-kompatibilis HBase használatával is lekérdezhető a kaptárból: 
+
+1. Több fürtből álló minta követése esetén mindkét fürtnek ESP-kompatibilisnek kell lennie. 
+2. Annak engedélyezéséhez, hogy a kaptár lekérdezze a HBase-fájlokat, győződjön meg arról, hogy a `hive` felhasználó engedélyt kap a HBase-adatbázis elérésére a HBase Apache Ranger beépülő modullal
+3. Ha különálló, ESP-kompatibilis fürtöket használ, a `/etc/hosts` HBase-fürt átjárócsomópontokkal tartozó tartalmat hozzá kell fűzni `/etc/hosts` a kaptár-fürt átjárócsomópontokkal. 
+> [!NOTE]
+> A fürtök méretezése után `/etc/hosts` újra hozzá kell fűzni
+
 ## <a name="use-hbase-rest-apis-using-curl"></a>HBase REST API-k használata Curl használatával
 
 A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgálónak.
@@ -312,7 +329,7 @@ Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett.
 1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Apache HBase-fürtöt. És hogyan hozhat létre táblákat, és hogyan tekintheti meg a táblák adatait a HBase-rendszerhéjból. Azt is megtanulta, hogyan használható struktúra-lekérdezés a HBase-táblákban található információkhoz. És hogyan használható a HBase C# REST API-k egy HBase tábla létrehozásához és adatok lekérdezéséhez a táblából. További információ:
 

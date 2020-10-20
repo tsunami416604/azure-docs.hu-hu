@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c8143a19d7e18b24e202018698b37e1b2855db4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f36836681e338c597c068a91a6d4bc011cce3511
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125422"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206797"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -164,7 +164,7 @@ A következő kimenet jelenik meg:
     WSManStackVersion              3.0
 ```
 
-Ha a verzió alacsonyabb, mint a 6.2.4, frissítenie kell a Windows PowerShell verzióját. A Windows PowerShell legújabb verziójának telepítéséhez tekintse meg a következőt: [install Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7).
+Ha a verzió alacsonyabb, mint a 6.2.4, frissítenie kell a Windows PowerShell verzióját. A Windows PowerShell legújabb verziójának telepítéséhez tekintse meg a következőt: [install Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true).
 
 **Azure PowerShell és Data Box modulok telepítése**
 
@@ -273,14 +273,44 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     Kattintson a **Tovább gombra: a biztonság** lehetőségre.
 
-1. Ha a **Biztonság**területen engedélyezni szeretné a szoftveres kettős titkosítást, válassza **a dupla titkosítás engedélyezése lehetőséget a rendeléshez**. 
+    A **biztonsági** képernyő segítségével saját eszközt használhat, és megoszthatja a jelszavakat, és választhatja a kettős titkosítás használatát. 
+
+    A **biztonsági** képernyőn megjelenő összes beállítás nem kötelező. Ha nem módosítja a beállításokat, az alapértelmezett beállítások lesznek érvényesek.
+
+    ![Data Box importálási sorrend biztonsági képernyője](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
+
+1. Ha nem szeretné, hogy a rendszer által generált jelszavakat Azure Data Box alapértelmezetten használja, bontsa ki **a saját jelszó**használata lehetőséget.
+
+   A rendszer által létrehozott jelszavak biztonságosak, és csak akkor ajánlott, ha a szervezet más nem igényel.
+
+   ![A saját jelszó beállításainak kibontása Data Box importálási sorrendhez](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+
+   - Ha saját jelszavát szeretné használni az új eszközhöz, az **eszköz jelszavának beállításával**válassza a **saját jelszó használata**lehetőséget, és írjon be egy jelszót, amely megfelel a biztonsági követelményeknek.
+   
+     ![Biztonsági képernyő Data Box importáláshoz, a saját eszköz jelszavának használatára vonatkozó beállítások](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+
+   - Saját jelszavak használata megosztásokhoz:
+
+     1. A **jelszavak megosztása**beállításnál válassza a **saját jelszavak használata** lehetőséget, majd **válassza a megosztások jelszavait**.
+     
+        ![Biztonsági képernyő Data Box importáláshoz, a saját megosztási jelszavak használatára vonatkozó beállítások](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+
+     1. A sorrendben adja meg az egyes Storage-fiókok jelszavát. A jelszót a rendszer a Storage-fiók összes megosztásán használni fogja.
+     
+        Ha az összes Storage-fiókhoz ugyanazt a jelszót szeretné használni, válassza a **Másolás az összesbe**lehetőséget. Ha végzett, válassza a **Mentés**lehetőséget.
+     
+        ![A megosztási jelszavak megadására szolgáló képernyő a Data Box importálási sorrendjéhez](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+       A **Biztonság** képernyőn a **jelszavak módosítása lehetőségre kattintva módosíthatja** a jelszavakat.
+
+1. Ha a **biztonságban**engedélyezni szeretné a szoftveres kettős titkosítást, bontsa ki a **kettős titkosítás (a biztonságos környezetek esetében)** elemet, és válassza **a rendeléshez a dupla titkosítás engedélyezése**lehetőséget.
+
+   ![Biztonsági képernyő Data Box importáláshoz, szoftveres titkosítás engedélyezése Data Box-rendeléshez](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
    A szoftveres titkosítás a Data Box lévő adatok AES-256 bites titkosításán felül történik.
 
    > [!NOTE]
    > Ha engedélyezi ezt a beállítást, megteheti, hogy a rendelés feldolgozása és az Adatmásolás tovább tart. Ez a beállítás a megrendelés létrehozása után nem módosítható.
-
-   ![Adatmező importálásának biztonsági képernyője, dupla titkosítás](media/data-box-deploy-ordered/select-data-box-import-07c.png)
 
    A folytatáshoz válassza a **tovább lehetőséget: kapcsolattartási adatok** .
 
@@ -296,7 +326,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
 10. Válassza a **szállítási címek hozzáadása** lehetőséget a szállítási adatok sikeres ellenőrzése után. Vissza fog térni a **kapcsolattartási adatok** lapra.
 
-11. Miután visszatért a **kapcsolattartási adatokhoz** , adjon hozzá egy vagy több e-mail-címet. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
+11. Miután visszatért a **kapcsolattartási adatokhoz**, adjon hozzá egy vagy több e-mail-címet. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
 
     Javasoljuk a csoportos e-mail-cím használatát, hogy az értesítéseket a rendszergazda távollétében is kézhez kaphassa.
 
@@ -338,7 +368,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
    |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés <string>|
    |részletes| Adja meg a részletes naplózást. | --verbose |
 
-2. A választott vagy terminálos parancssorban használja az az [adatmező-feladatsort](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) a Azure Data Box rendelés létrehozásához.
+2. A parancssorban válassza a választás vagy a terminál lehetőséget, futtassa az [Az adatmező-feladatok létrehozása](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) parancsot a Azure Data Box rendelés létrehozásához.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -506,7 +536,7 @@ A Microsoft ezután előkészíti, majd feladja a csomagot egy regionális fuvar
 
 ### <a name="track-a-single-order"></a>Egyetlen megrendelés nyomon követése
 
-Egy meglévő Azure Data Boxi rendelés nyomkövetési információinak lekéréséhez futtassa [az az databox Job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show)parancsot. A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
+Egy meglévő Azure Data Boxi rendelés nyomkövetési információinak lekéréséhez futtassa [az az databox Job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true)parancsot. A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -547,7 +577,7 @@ Egy meglévő Azure Data Boxi rendelés nyomkövetési információinak lekéré
 
 ### <a name="list-all-orders"></a>Az összes megrendelés listázása
 
-Ha több eszközt is megrendelt, az [az databox Job List](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) parancs futtatásával megtekintheti az összes Azure Data Box rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
+Ha több eszközt is megrendelt, az [az databox Job List](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) parancs futtatásával megtekintheti az összes Azure Data Box rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
 A parancs az egyes sorrendek időbélyegeit is megjeleníti.
 
 ```azurecli
@@ -666,7 +696,7 @@ Egy megszakított megrendelés törléséhez lépjen az **Áttekintés** elemre,
 
 ### <a name="cancel-an-order"></a>Rendelés visszavonása
 
-Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel)parancsot. Meg kell adnia a megrendelés megszakításának okát.
+Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true)parancsot. Meg kell adnia a megrendelés megszakításának okát.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -703,7 +733,7 @@ Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](
 
 ### <a name="delete-an-order"></a>Megrendelés törlése
 
-Ha megszakította Azure Data Box rendelést, az az [databox Job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) paranccsal törölheti a sorrendet.
+Ha megszakította Azure Data Box rendelést, az az [databox Job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) paranccsal törölheti a sorrendet.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]

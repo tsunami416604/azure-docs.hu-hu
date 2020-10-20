@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 341d24e73c9e07bb3155535d98a88145643c1692
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87985614"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201783"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>A modellátalakító REST API használata
 
@@ -45,7 +45,7 @@ Az átalakítási szolgáltatás három REST API végpontot biztosít a követke
 ### <a name="start-conversion-using-a-linked-storage-account"></a>Konverzió indítása társított Storage-fiók használatával
 Az Azure-beli távoli renderelési fióknak hozzáféréssel kell rendelkeznie a megadott Storage-fiókhoz a Storage- [fiókok összekapcsolásának](../create-an-account.md#link-storage-accounts)lépésein követve.
 
-| Végpont | Módszer |
+| Végpont | Metódus |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/Conversions/Create | POST |
 
@@ -54,7 +54,7 @@ Egy JSON-dokumentumba csomagolt, folyamatban lévő konverzió AZONOSÍTÓját a
 #### <a name="request-body"></a>A kérés törzse
 
 > [!NOTE]
-> `input.folderPath`Az Azure-ban történő átalakítás elvégzéséhez a rendszer lekéri az összes lehetőséget. Ha `input.folderPath` nincs megadva, a rendszer lekéri a tároló teljes tartalmát. Az összes lekérdezett blobnak és mappának [érvényes Windows-fájlnevekkel](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)kell rendelkeznie.
+> `input.folderPath`Az Azure-ban történő átalakítás elvégzéséhez a rendszer lekéri az összes lehetőséget. Ha `input.folderPath` nincs megadva, a rendszer lekéri a tároló teljes tartalmát. Az összes lekérdezett blobnak és mappának [érvényes Windows-fájlnevekkel](/windows/win32/fileio/naming-a-file#naming-conventions)kell rendelkeznie.
 
 ```json
 {
@@ -77,7 +77,7 @@ Egy JSON-dokumentumba csomagolt, folyamatban lévő konverzió AZONOSÍTÓját a
 ### <a name="start-conversion-using-provided-shared-access-signatures"></a>Konverzió indítása a megadott megosztott hozzáférési aláírásokkal
 Ha az ARR-fiók nincs csatolva a Storage-fiókhoz, ez a REST-felület lehetővé teszi, hogy *megosztott hozzáférési aláírásokkal (SAS)* biztosítson hozzáférést.
 
-| Végpont | Módszer |
+| Végpont | Metódus |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/Conversions/createWithSharedAccessSignature | POST |
 
@@ -91,7 +91,7 @@ A kérés törzse megegyezik a fenti REST-hívás létrehozásakor, de a bemenet
 > Ezek az SAS URI-tokenek a lekérdezési karakterláncok, nem pedig a teljes URI-azonosítók. 
 
 > [!NOTE]
-> `input.folderPath`Az Azure-ban történő átalakítás elvégzéséhez a rendszer lekéri az összes lehetőséget. Ha `input.folderPath` nincs megadva, a rendszer lekéri a tároló teljes tartalmát. Az összes lekérdezett blobnak és mappának [érvényes Windows-fájlnevekkel](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)kell rendelkeznie.
+> `input.folderPath`Az Azure-ban történő átalakítás elvégzéséhez a rendszer lekéri az összes lehetőséget. Ha `input.folderPath` nincs megadva, a rendszer lekéri a tároló teljes tartalmát. Az összes lekérdezett blobnak és mappának [érvényes Windows-fájlnevekkel](/windows/win32/fileio/naming-a-file#naming-conventions)kell rendelkeznie.
 
 ```json
 {
@@ -118,7 +118,7 @@ A kérés törzse megegyezik a fenti REST-hívás létrehozásakor, de a bemenet
 A fenti REST-hívások egyikével megkezdett folyamatos konverzió állapota a következő felületen kérdezhető le:
 
 
-| Végpont | Módszer |
+| Végpont | Metódus |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/Conversions/**conversionId** | GET |
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: baa8b1f302c0d8a7355f74b686ffedfb45ac22d3
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 2c60d2e874e861eebac54e24ba0cb949bfb9a57b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096045"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207682"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -148,7 +148,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-További információ: <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ: <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```javascript
 speechConfig.setProperty(
@@ -438,7 +438,7 @@ Ha meg szeretné határozni, hogy az egyes entitások hogyan legyenek beolvasva,
 
 Az `lexicon` elem legalább egy elemet tartalmaz `lexeme` . Minden `lexeme` elem tartalmaz legalább egy `grapheme` elemet, és egy vagy több `grapheme` , `alias` és `phoneme` elemet. Az `grapheme` elem a <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">helyesírást <span class="docon docon-navigate-external x-hidden-focus"></span> </a>leíró szöveget tartalmaz. Az `alias` elemek a betűszó vagy egy rövidített kifejezés kiejtésének jelzésére szolgálnak. Az `phoneme` elem a kiejtését leíró szöveget tartalmaz `lexeme` .
 
-Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be közvetlenül egy kifejezés kiejtése. Ha a kiejtést egy betűszóhoz vagy egy rövidített kifejezéshez kell beállítania, először adjon meg egy `alias` , majd társítsa a- `phoneme` t `alias` . Példa:
+Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be közvetlenül egy kifejezés kiejtése. Ha a kiejtést egy betűszóhoz vagy egy rövidített kifejezéshez kell beállítania, először adjon meg egy `alias` , majd társítsa a- `phoneme` t `alias` . Például:
 
 ```xml
   <lexeme>
@@ -451,7 +451,7 @@ Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be 
   </lexeme>
 ```
 
-Azt is megteheti, hogy közvetlenül `alias` a betűszóhoz vagy rövidített kifejezéshez adja meg a vártat. Példa:
+Azt is megteheti, hogy közvetlenül `alias` a betűszóhoz vagy rövidített kifejezéshez adja meg a vártat. Például:
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme> 
@@ -535,7 +535,7 @@ Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a bes
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
 | `pitch` | Megadja a szöveg alappályáját. A szurok a következőképpen fejezhető ki:<ul><li>Abszolút érték, amelyet a szám a "Hz" (Hertz) kifejezéssel jelez. Például: `<prosody pitch="600Hz">some text</prosody>`.</li><li>Egy relatív érték, amelyet a rendszer a "+" vagy "-" előtaggal, majd a "Hz" vagy "St" előtaggal jelöl, amely a szurok módosításához szükséges összeget határozza meg. Például: `<prosody pitch="+80Hz">some text</prosody>` vagy `<prosody pitch="-2st">some text</prosody>` . A "Szent" érték azt jelzi, hogy a változási egység semitone-e, amely a normál diatonikus-skálán lévő hang (fél lépés) fele.</li><li>Állandó érték:<ul><li>x – alacsony</li><li>alacsony</li><li>közepes</li><li>magas</li><li>x – magas</li><li>alapértelmezett</li></ul></li></ul> | Választható |
-| `contour` |A kontúr mostantól támogatja a neurális és a standard hangokat is. A kontúr a szurok változásait jelöli. Ezek a változások a beszédfelismerési kimenetben megadott időpontokban a célok tömbje jelennek meg. Az egyes célkitűzéseket paraméter párok halmaza határozza meg. Példa: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paraméterekben az első érték határozza meg a szurok változásának helyét a szöveg időtartamának százalékában. A második érték határozza meg a szurok növelésének vagy csökkentésének mértékét, egy relatív érték vagy a szurok enumerálási értéke alapján (lásd: `pitch` ). | Választható |
+| `contour` |A kontúr mostantól támogatja a neurális és a standard hangokat is. A kontúr a szurok változásait jelöli. Ezek a változások a beszédfelismerési kimenetben megadott időpontokban a célok tömbje jelennek meg. Az egyes célkitűzéseket paraméter párok halmaza határozza meg. Például: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paraméterekben az első érték határozza meg a szurok változásának helyét a szöveg időtartamának százalékában. A második érték határozza meg a szurok növelésének vagy csökkentésének mértékét, egy relatív érték vagy a szurok enumerálási értéke alapján (lásd: `pitch` ). | Választható |
 | `range` | Egy érték, amely a szövegben lévő szurok tartományát jelöli. `range`A leíráshoz megadhatja az azonos abszolút értékeket, relatív értékeket vagy enumerálási értékeket `pitch` . | Választható |
 | `rate` | Megadja a szöveg beszédi arányát. `rate`A következőképpen lehet kifejezni:<ul><li>Egy relatív érték, amely az alapértelmezett érték szorzóként funkcionál. Az *1* érték például nem változik a díjszabásban. Az *0,5* -es érték a sebesség felére csökkentéset eredményez. A *3* érték a ráta beutazását eredményezi.</li><li>Állandó érték:<ul><li>x – lassú</li><li>lassú</li><li>közepes</li><li>gyors</li><li>x – gyors</li><li>alapértelmezett</li></ul></li></ul> | Választható |
 | `duration` | Az az időtartam, amelynek el kell telnie, amíg a Speech szintézis (TTS) szolgáltatás beolvassa a szöveget, másodpercben vagy ezredmásodpercben. Például: *2s* vagy *1800ms*. Az időtartam csak a standard hangokat támogatja.| Választható |
@@ -731,6 +731,6 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 </speak>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Nyelvi támogatás: hangok, területi beállítások, nyelvek](language-support.md)

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 05/12/2020
-ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: ec076567d06a8237db2a708a5276a358f64a8388
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033251"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204911"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Együttes értékesítési lehetőség a Partnerközpontban
 
@@ -36,7 +36,7 @@ A partneri központban a közös értékesítés lehetőség jelenleg néhány a
 
 ## <a name="listing"></a>Listázás
 
-A közös értékesítéssel rendelkező listák segítenek a Microsoft értékesítési csapatoknak felvenni a megoldást a szélesebb közönség számára.
+A közös értékesítéssel rendelkező listák segítenek a Microsoft értékesítési csapatoknak felvenni a megoldást a szélesebb közönség számára. *(Az összes mezőt kötelező megadni.)*
 
 - Válassza ki azokat a Microsoft-platformokat, amelyekkel az ajánlatát létrehozta, kiterjeszti vagy integrálja a szolgáltatással.
 - Válassza ki az ajánlat által célzott piaci szegmenseket.
@@ -58,26 +58,26 @@ A megoldások típusai segítenek meghatározni azokat a forgatókönyveket, ame
 
 A megoldási területek segítenek a megoldás további meghatározásában.
 
-Az ajánlathoz legfeljebb három megoldási területet adhat hozzá. Minden egyes megoldási területen két megoldási alkörzet közül választhat. Több alkategória kiválasztásához használja a `Ctrl` kulcsot (Windows rendszeren) vagy a parancssort (Mac OS).
+Az ajánlathoz legfeljebb három megoldási területet adhat hozzá. Minden egyes megoldási területen két megoldási alkörzet közül választhat. Több alkategória kiválasztásához használja a `Ctrl` kulcsot (Windows rendszeren) vagy a parancssort (MacOS rendszeren).
 
 ## <a name="documents"></a>Dokumentumok
 
-Lehetősége van olyan biztosítéki dokumentumok biztosítására, amelyeket a Microsoft az ajánlatának megismerésére és az ügyfelek igényeinek megfelelő kiértékelésére használ majd. Az alábbi táblázatban felsorolt összes dokumentum nem kötelező.
+Lehetősége van olyan biztosítéki dokumentumok biztosítására, amelyeket a Microsoft az ajánlatának megismerésére és az ügyfelek igényeinek megfelelő kiértékelésére használ majd.
 
 | **Dokumentumok**    | **Leírás**  |
 | :------------------- | :-------------------|
-| *Ügyfél – pager* | Az ajánlat ügyfél általi használatra kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel annak megállapítása érdekében, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen áll-e. <br> <br> Használja a partner Centerben elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egy pager-sablon </li> <li> Microsoft Dynamics 365 1 – pager sablon </li> <li> Microsoft 365 1 – pager sablon </li> <li> Windows 10 1 – pager sablon </li> </ul> |
-| *Ügyfél bemutatása* | Csúsztassa a paklit a megoldás és a hozzá tartozó érték kiosztására. Miután meggyőződött arról, hogy ajánlata az ügyfél számára elkészült, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák azt az értéket, amelyet mindkét vállalat a közös megoldás telepítésekor végez. A bemutatónak ki kell terjednie a megoldásra, hogy miként segítheti az ügyfeleknek, hogy milyen iparágakban lehet a megoldás, és hogyan hasonlítható össze a versengő megoldásokkal. <br> <br> Használja a partner Centerben elérhető sablont.|
+| *Ügyfél – pager (kötelező)* | Az ajánlat ügyfél általi használatra kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel annak megállapítása érdekében, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen áll-e. <br> <br> Használja a partner Centerben elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egy pager-sablon </li> <li> Microsoft Dynamics 365 1 – pager sablon </li> <li> Microsoft 365 1 – pager sablon </li> <li> Windows 10 1 – pager sablon </li> </ul> |
+| *Ügyfél bemutatása (kötelező)* | Csúsztassa a paklit a megoldás és a hozzá tartozó érték kiosztására. Miután meggyőződött arról, hogy ajánlata az ügyfél számára elkészült, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák azt az értéket, amelyet mindkét vállalat a közös megoldás telepítésekor végez. A bemutatónak ki kell terjednie a megoldásra, hogy miként segítheti az ügyfeleknek, hogy milyen iparágakban lehet a megoldás, és hogyan hasonlítható össze a versengő megoldásokkal. <br> <br> Használja a partner Centerben elérhető sablont.|
 | *Ügyfél-esettanulmány* | Ez az információ egy potenciális ügyfelet mutat be, hogy a Microsoft milyen módon sikeresen telepítette ezt a megoldást az előző esetekben. <br> <br> Használja a partner Centerben elérhető sablont. |
-| *Ellenőrizhető ügyfél-WINS (nem kötelező)* | Az ügyfelek sikereire adott példák a megoldás telepítése után. |
-| *Channel pitch Deck (nem kötelező)* | Egy olyan információkkal, amelyek segítségével a csatornák viszonteladói többet tudhatnak meg a megoldásról, és elérhetik az értékesítési csapatait, hogy eladják az ajánlatot. A szolgáltatás általában egy liftre, a megcélzott ügyfelekre, az ügyfelek megkérdezésére, a beszélgetési pontokra, valamint a videókra, a dokumentációra és a támogatási információkra mutató hivatkozásokat tartalmaz. |
+| *Ellenőrizhető ügyfél-WINS* | Az ügyfelek sikereire adott példák a megoldás telepítése után. |
+| *Channel pitch Deck* | Egy olyan információkkal, amelyek segítségével a csatornák viszonteladói többet tudhatnak meg a megoldásról, és elérhetik az értékesítési csapatait, hogy eladják az ajánlatot. A szolgáltatás általában egy liftre, a megcélzott ügyfelekre, az ügyfelek megkérdezésére, a beszélgetési pontokra, valamint a videókra, a dokumentációra és a támogatási információkra mutató hivatkozásokat tartalmaz. |
 | *Hivatkozási architektúra diagramjai* | Egy dokumentum, amely a partner által létrehozott IP-címet jelképező modellt, valamint a Microsoft Cloud Services szolgáltatással való kapcsolatát, valamint az IP-cím közös értékesítésének technikai követelményeit mutatja be. |
 | *Egyéb dokumentumok* | Akár öt további dokumentumot vagy videót is feltölthet, hogy segítse a Microsoft értékesítési csapatait és a csatornák viszonteladóit, hogy többet tudjon meg a megoldásról, a szervezetről és/vagy a differenciálekről. |
 | *Külső hivatkozás URL-címe* | A termék webhelyére mutató hivatkozás, ahol a Microsoft értékesítési csoportjai és a csatorna-viszonteladók többet tudnak megtudni a megoldásról. |
 
 ## <a name="contacts"></a>Kapcsolattartók
 
-A kapcsolattartási adatok lehetővé teszik, hogy a Microsoft értékesítési csapatok és a csatornák viszonteladói további információkat kérjenek a szervezet megfelelő erőforrásáról. A kapcsolattartási adatok minden Microsoft értékesítési csapat számára elérhetők. Ha úgy dönt, hogy elérhetővé teszi az ajánlatot a CSP programban, a kapcsolattartási adatok a csatorna-viszonteladók számára is elérhetők.
+A kapcsolattartási adatok lehetővé teszik, hogy a Microsoft értékesítési csapatok és a csatornák viszonteladói további információkat kérjenek a szervezet megfelelő erőforrásáról. A kapcsolattartási adatok minden Microsoft értékesítési csapat számára elérhetők. *(Minden olyan földrajzi helyhez meg kell adni egy kapcsolattartót, amelyben az ajánlat elérhető a közös értékesítési programhoz.)* Ha úgy dönt, hogy elérhetővé teszi az ajánlatot a CSP programban, a kapcsolattartási adatok a csatorna-viszonteladók számára is elérhetők.
 
 Megadhatja a névjegyeket úgy, hogy letölti a CSV-sablont a partneri központból, és az egyes sorokban megtölti a kapcsolattartó adatait, és importálja ezt a CSV-fájlt. A CSV-fájlok importálása felülírja a meglévő névjegyeket.
 

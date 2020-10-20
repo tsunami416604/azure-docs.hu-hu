@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d02568dbb5dfc6b7feb38d353e1ba0ecd8ae25d6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588925"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203993"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
 
@@ -61,7 +61,7 @@ A fenti információknak a DigiCert CertCentral-fiókból való összegyűjtése
     -   **Fiókazonosító**: adja meg a DigiCert CertCentral-FIÓKjának azonosítóját
     -   **Fiók jelszava**: adja meg a DigiCert CertCentral-fiókjában létrehozott API-kulcsot
     -   **Szervezet azonosítója**: adja meg a DigiCert CertCentral-fiókból összegyűjtött OrgID 
-    -   Kattintson a **Létrehozás** elemre.
+    -   Kattintson a **Létrehozás** lehetőségre.
    
 6.  Látni fogja, hogy a DigicertCA már hozzá lett adva a hitelesítésszolgáltatók listájában.
 
@@ -136,13 +136,20 @@ További információkért tekintse meg a [tanúsítványok műveleteit a Key Va
 
 - Létrehozhatok Digicert helyettesítő tanúsítványt a kulcstartón keresztül? 
    Igen. Ez attól függ, hogyan konfigurálta a Digicert-fiókját.
-- Ha létrehozunk egy EV-tanúsítványt, hogyan adjuk meg? 
-   Tanúsítvány létrehozásakor kattintson a speciális házirend-konfiguráció elemre, majd adja meg a tanúsítvány típusát. Támogatott értékek: OV-SSL, EV-SSL
+- Hogyan hozhatók létre **OV-SSL vagy EV-SSL-** tanúsítvány a DigiCert-mel? 
+   A Key Vault támogatja az OV és az EV SSL-tanúsítványok létrehozását. Tanúsítvány létrehozásakor kattintson a speciális házirend-konfiguráció elemre, majd adja meg a tanúsítvány típusát. Támogatott értékek: OV-SSL, EV-SSL
+   
+   Ha a Digicert-fiókja lehetővé teszi, hogy ilyen típusú tanúsítványt hozzon létre a Key vaultban. Ilyen típusú tanúsítvány esetén az érvényesítést a DigiCert hajtja végre, és a támogatási csapatuk a lehető legjobban segítene Önnek a megoldásban, ha az érvényesítés sikertelen. A tanúsítványok létrehozásakor további információkat adhat meg a subjectName-ben.
+
+Példa
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+   
 - Van-e késés a Digicert-tanúsítványnak az integrációval való létrehozása és a tanúsítvány Digicert keresztüli közvetlen beszerzése révén?
    Nem. A tanúsítvány létrehozásakor a rendszer ellenőrzi, hogy az ellenőrzés folyamata hosszabb időt is igénybe vehet, és az ellenőrzés a folyamat DigiCert függ.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)

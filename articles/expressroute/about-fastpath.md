@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: bf600d835e177ce51870ed2a8894adcd667e3901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c44e6c6a7a9af4edc2c711b17ec50aa2bf62c98
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398052"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202447"
 ---
 # <a name="about-expressroute-fastpath"></a>Az ExpressRoute FastPath ismertetése
 
@@ -41,7 +41,7 @@ Míg a FastPath támogatja a legtöbb konfigurációt, nem támogatja a követke
 
 * VNet-társítás: Ha más virtuális hálózatokkal rendelkezik, amelyek az ExpressRoute-hez csatlakoznak, a helyszíni hálózatról a másik virtuális hálózatra irányuló hálózati forgalmat (azaz az úgynevezett "küllős" virtuális hálózatok) továbbra is a virtuális hálózati átjárónak küldi a rendszer. A megkerülő megoldás az összes virtuális hálózat közvetlen összekapcsolása a ExpressRoute-áramkörrel.
 
-* Alapszintű Load Balancer: Ha alapszintű belső terheléselosztó üzembe helyezését végzi a virtuális hálózaton, vagy a virtuális hálózatban üzembe helyezett Azure Pásti szolgáltatás alapszintű belső terheléselosztást használ, a helyszíni hálózatról az alapszintű Load balancerben üzemeltetett virtuális IP-címekre irányuló hálózati forgalmat a rendszer a virtuális hálózati átjárónak küldi el. A megoldás az alapszintű Load Balancer [standard Load balancerre](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)való frissítése.
+* Alapszintű Load Balancer: Ha alapszintű belső terheléselosztó üzembe helyezését végzi a virtuális hálózaton, vagy a virtuális hálózatban üzembe helyezett Azure Pásti szolgáltatás alapszintű belső terheléselosztást használ, a helyszíni hálózatról az alapszintű Load balancerben üzemeltetett virtuális IP-címekre irányuló hálózati forgalmat a rendszer a virtuális hálózati átjárónak küldi el. A megoldás az alapszintű Load Balancer [standard Load balancerre](../load-balancer/load-balancer-overview.md)való frissítése.
 
 * Privát hivatkozás: Ha a virtuális hálózatban lévő [privát végponthoz](../private-link/private-link-overview.md) csatlakozik a helyszíni hálózatról, a kapcsolat a virtuális hálózati átjárón keresztül fog haladni.
  

@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650476"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207529"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Oktatóanyag: az Azure távoli renderelés és a modell tárterületének védelme
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -188,11 +188,11 @@ Még egy "jelszó", a AccountKey a helyi alkalmazásból való eltávolításáh
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory (Azure AD) hitelesítés
 
-A HRE-hitelesítés lehetővé teszi annak meghatározását, hogy mely személyek vagy csoportok használják az ARR-t egy ellenőrzött módon. Az ARR beépített támogatást nyújt a [hozzáférési jogkivonatok](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) elfogadásához a fiók kulcsának használata helyett. Azt is megteheti, hogy a hozzáférési tokeneket időkorlátos, felhasználó-specifikus kulcsként tekinti át, amely csak a kért erőforrás bizonyos részeit oldja fel.
+A HRE-hitelesítés lehetővé teszi annak meghatározását, hogy mely személyek vagy csoportok használják az ARR-t egy ellenőrzött módon. Az ARR beépített támogatást nyújt a [hozzáférési jogkivonatok](../../../../active-directory/develop/access-tokens.md) elfogadásához a fiók kulcsának használata helyett. Azt is megteheti, hogy a hozzáférési tokeneket időkorlátos, felhasználó-specifikus kulcsként tekinti át, amely csak a kért erőforrás bizonyos részeit oldja fel.
 
 A **RemoteRenderingCoordinator** parancsfájlhoz tartozik egy **ARRCredentialGetter**nevű delegált, amely egy olyan metódust tartalmaz, amely egy **AzureFrontendAccountInfo** objektumot ad vissza, amely a távoli munkamenetek felügyeletének konfigurálására szolgál. Hozzárendelhet egy másik módszert a **ARRCredentialGetter**, amely lehetővé teszi, hogy Azure bejelentkezési folyamatot használjon, amely egy Azure hozzáférési tokent tartalmazó **AzureFrontendAccountInfo** objektumot hoz létre. Ez a hozzáférési jogkivonat a bejelentkezett felhasználóra jellemző lesz.
 
-1. Kövesse a következő [témakört: az üzembe helyezett alkalmazások hitelesítési](../../../how-tos/authentication.md#authentication-for-deployed-applications)hitelesítésének konfigurálása, pontosabban követheti az Azure térbeli horgonyok dokumentációjában az [Azure ad felhasználói hitelesítésben](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)felsorolt utasításokat. Ebbe beletartozik egy új Azure Active Directory alkalmazás regisztrálása és az ARR-példányhoz való hozzáférés konfigurálása.
+1. Kövesse a következő [témakört: az üzembe helyezett alkalmazások hitelesítési](../../../how-tos/authentication.md#authentication-for-deployed-applications)hitelesítésének konfigurálása, pontosabban követheti az Azure térbeli horgonyok dokumentációjában az [Azure ad felhasználói hitelesítésben](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)felsorolt utasításokat. Ebbe beletartozik egy új Azure Active Directory alkalmazás regisztrálása és az ARR-példányhoz való hozzáférés konfigurálása.
 1. Miután konfigurálta az új HRE alkalmazást, tekintse meg a HRE-alkalmazást az alábbi képekkel:
 
     **HRE alkalmazás – > hitelesítés** ![ Alkalmazás-hitelesítés](./media/app-authentication-public.png)
@@ -361,7 +361,7 @@ A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon
 
 A kód először a **AquireTokenSilent**használatával kísérli meg a token lekérését. Ez sikeres lesz, ha a felhasználó korábban hitelesítette az alkalmazást. Ha nem sikerül, lépjen tovább a felhasználó által érintett stratégiára.
 
-Ebben a kódban az [eszköz kódját](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code) használjuk a hozzáférési token beszerzéséhez. Ez a folyamat lehetővé teszi, hogy a felhasználó bejelentkezzen az Azure-fiókjába egy számítógépre vagy mobileszközön, és az eredményül kapott tokent visszaküldje a HoloLens alkalmazásnak.
+Ebben a kódban az [eszköz kódját](../../../../active-directory/develop/v2-oauth2-device-code.md) használjuk a hozzáférési token beszerzéséhez. Ez a folyamat lehetővé teszi, hogy a felhasználó bejelentkezzen az Azure-fiókjába egy számítógépre vagy mobileszközön, és az eredményül kapott tokent visszaküldje a HoloLens alkalmazásnak.
 
 Ennek az osztálynak a legfontosabb része az ARR perspektívából ez a sor:
 
@@ -422,7 +422,7 @@ Ha MSAL használatával hoz létre alkalmazást, a projekt **eszközök** mappá
 
 Kövesse a rövid [útmutatóban található lépéseket: Unity minta üzembe helyezése HoloLens – a HoloLens való kiépítéshez](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag hátralévő része elméleti témákat tartalmaz az Azure távoli renderelést használó, éles használatra kész alkalmazások létrehozásához.
 

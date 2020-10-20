@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 32d0ebc3f37f7af4d9cdb1940f1870dbf51f86b4
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055851"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206131"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-példaszkriptek
 
@@ -27,13 +27,13 @@ Az [ARR Samples adattár](https://github.com/Azure/azure-remote-rendering) a *pa
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minta szkriptek végrehajtásához a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)funkcionális beállítása szükséges.
+A minta szkriptek végrehajtásához a [Azure PowerShell](/powershell/azure/)funkcionális beállítása szükséges.
 
 1. Az Azure PowerShell telepítése:
     1. Nyisson meg egy PowerShell-ablakot rendszergazdai jogosultságokkal.
     1. Futtassa `Install-Module -Name Az -AllowClobber`
 
-1. Ha hibát tapasztal a parancsfájlok futtatásával kapcsolatban, győződjön meg arról, hogy a [végrehajtási házirend](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) megfelelően van beállítva:
+1. Ha hibát tapasztal a parancsfájlok futtatásával kapcsolatban, győződjön meg arról, hogy a [végrehajtási házirend](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) megfelelően van beállítva:
     1. Nyisson meg egy PowerShell-ablakot rendszergazdai jogosultságokkal.
     1. Futtassa `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
@@ -44,7 +44,7 @@ A minta szkriptek végrehajtásához a [Azure PowerShell](https://docs.microsoft
     1. Futtatás: `Connect-AzAccount` , és kövesse a képernyőn megjelenő utasításokat.
 
     > [!NOTE]
-    > Ha a szervezet egynél több előfizetéssel rendelkezik, lehet, hogy meg kell adnia a SubscriptionId és a bérlői argumentumokat. A részletek a [AzAccount dokumentációjában](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)találhatók.
+    > Ha a szervezet egynél több előfizetéssel rendelkezik, lehet, hogy meg kell adnia a SubscriptionId és a bérlői argumentumokat. A részletek a [AzAccount dokumentációjában](/powershell/module/az.accounts/connect-azaccount)találhatók.
 
 1. Töltse le a *Scripts* mappát az [Azure távoli renderelési GithHub adattárból](https://github.com/Azure/azure-remote-rendering).
 
@@ -276,5 +276,5 @@ A konverzió állapotát a következő paranccsal kérheti le:
 ## <a name="next-steps"></a>Következő lépések
 
 - [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)
-- [Gyors útmutató: modell átalakítása renderelésre](../quickstarts/convert-model.md)
+- [Gyorsútmutató: Modell konvertálása a renderelés előtt](../quickstarts/convert-model.md)
 - [Modell átalakítása](../how-tos/conversion/model-conversion.md)

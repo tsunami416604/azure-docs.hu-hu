@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cynthn
-ms.openlocfilehash: 361ed04a6448bec18fac94ad90a33fe01a49e595
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f3c1e305024eb255a85aa470105d99edd3c26982
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974158"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201307"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Adatlemez leválasztása Windows rendszerű virtuális gépről
 
@@ -53,8 +53,7 @@ Elvégezheti az adatlemezek *eltávolítását* , de a virtuális gépről való
 1. A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
 1. Válassza ki azt a virtuális gépet, amelyen a leválasztani kívánt adatlemez található.
 1. A **Beállítások** alatt válassza a **Lemezek** lehetőséget.
-1. A **lemezek** ablaktábla tetején válassza a **Szerkesztés**lehetőséget.
-1. A **lemezek** ablaktáblán a leválasztani kívánt adatlemez jobb szélén kattintson a **Leválasztás**lehetőségre.
+1. A **lemezek** ablaktáblán a leválasztani kívánt adatlemez jobb széléhez kattintson az **X** Delete (Törlés) gombra.
 1. A módosítások mentéséhez kattintson a lap tetején található **Mentés** gombra.
 
 A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.

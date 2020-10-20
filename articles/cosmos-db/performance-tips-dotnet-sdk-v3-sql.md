@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 432d9656bf56b87798d6563cfd545b34c20001b6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802990"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204027"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -62,7 +62,7 @@ Ha magas átviteli sebességet használ, vagy a másodpercenként 50 000-nál na
 > [!NOTE] 
 > A magas CPU-használat nagyobb késést és kérelem időtúllépési kivételt okozhat.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 <a id="direct-connection"></a>
 
 **Csatlakoztatási házirend: közvetlen kapcsolási mód használata**
@@ -163,7 +163,7 @@ Ha Azure Functions dolgozik, a példányoknak a meglévő [irányelveket](../azu
 A nagy mennyiségű adattartalommal rendelkező munkaterhelések esetében állítsa be a kérelem lehetőséget a következőre: `EnableContentResponseOnWrite` `false` . A szolgáltatás többé nem fogja visszaadni a létrehozott vagy frissített erőforrást az SDK-nak. Általában azért, mert az alkalmazás rendelkezik a létrehozandó objektummal, nincs szükség a szolgáltatás visszaküldésére. A fejléc értékei továbbra is elérhetők, például a kérések díja. A tartalom válaszának letiltásával növelheti a teljesítményt, mivel az SDK-nak már nem kell memóriát lefoglalnia vagy szerializálnia a válasz törzsét. Emellett csökkenti a hálózati sávszélesség használatát a további teljesítmény érdekében.  
 
 ```csharp
-ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
+ItemRequestOptions requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
 ItemResponse<Book> itemResponse = await this.container.CreateItemAsync<Book>(book, new PartitionKey(book.pk), requestOptions);
 // Resource will be null
 itemResponse.Resource
@@ -229,7 +229,7 @@ Container container = await this.cosmosDatabase.CreateContainerAsync(containerPr
 
 További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
-## <a name="throughput"></a>Teljesítmény
+## <a name="throughput"></a>Átviteli sebesség
 <a id="measure-rus"></a>
 
 **Az alacsonyabb RU/s használatának mérése és finomhangolása**

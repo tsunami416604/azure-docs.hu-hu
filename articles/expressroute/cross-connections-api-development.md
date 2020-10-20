@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
-ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b80392231dba26a10141dcd8247b092e8171894c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397848"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202480"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API-fejlesztés és-integráció
 
@@ -30,7 +30,7 @@ A expressRouteCrossConnections-erőforrásra való áttérés előnyei:
 
 * A ExpressRoute-partnerek jövőbeni továbbfejlesztései elérhetővé válnak a ExpressRouteCrossConnection-erőforráson.
 
-* A partnerek [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) alkalmazhatnak a expressRouteCrossConnection-erőforrásra. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
+* A partnerek [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../role-based-access-control/overview.md) alkalmazhatnak a expressRouteCrossConnection-erőforrásra. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
 
 * A expressRouteCrossConnection erőforrás olyan API-kat tesz elérhetővé, amelyek segíthetnek a ExpressRoute-kapcsolatok hibaelhárításában. Ide tartozik az ARP-tábla, a BGP-útválasztási táblázat összefoglalása és a BGP-útválasztási táblázat részletei. Ezt a képességet a klasszikus üzembe helyezési API-k nem támogatják.
 
@@ -51,7 +51,7 @@ A tesztelési társítási helyszínek: a dummy-eszközök és-portok alapértel
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. regisztrálja a Dev_Provider-előfizetést a expressRouteCrossConnections API eléréséhez
 
-A expressRouteCrossConnections API-hoz való hozzáféréshez a partner-előfizetést regisztrálni kell a **Microsoft. Network erőforrás-szolgáltatóban**. A regisztrációs folyamat befejezéséhez kövesse az [Azure Resource Providers és types](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) című cikk lépéseit.
+A expressRouteCrossConnections API-hoz való hozzáféréshez a partner-előfizetést regisztrálni kell a **Microsoft. Network erőforrás-szolgáltatóban**. A regisztrációs folyamat befejezéséhez kövesse az [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) című cikk lépéseit.
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. Azure Resource Manager REST API-hívások hitelesítésének beállítása
 
@@ -59,8 +59,8 @@ A legtöbb Azure-szolgáltatáshoz a Service API-k meghívása előtt érvényes
 
 A hitelesítési folyamat két fő lépést tesz szükségessé:
 
-1. [Regisztrálja az ügyfelet](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad).
-2. [Hozza létre a hozzáférési kérelmet](https://docs.microsoft.com/rest/api/azure/#create-the-request).
+1. [Regisztrálja az ügyfelet](/rest/api/azure/#register-your-client-application-with-azure-ad).
+2. [Hozza létre a hozzáférési kérelmet](/rest/api/azure/#create-the-request).
 
 ### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. adja meg a hálózati közreműködői engedélyt az ügyfélalkalmazás számára
 
@@ -76,12 +76,12 @@ A hitelesítés sikeres konfigurálása után meg kell adnia a hálózat közrem
 
 ### <a name="5-develop"></a>5. fejlesztés
 
-Fejlesztés a [EXPRESSROUTECROSSCONNECTIONS API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections)-val.
+Fejlesztés a [EXPRESSROUTECROSSCONNECTIONS API](/rest/api/expressroute/expressroutecrossconnections)-val.
 
 ## <a name="rest-api"></a>REST API
 
-REST API dokumentációért lásd: [ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) .
+REST API dokumentációért lásd: [ExpressRoute CrossConnections REST API](/rest/api/expressroute/expressroutecrossconnections) .
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az összes ExpressRoute REST API-ról: [EXPRESSROUTE REST API](https://docs.microsoft.com/rest/api/expressroute/)-k.
+További információ az összes ExpressRoute REST API-ról: [EXPRESSROUTE REST API](/rest/api/expressroute/)-k.

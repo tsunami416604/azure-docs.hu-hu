@@ -8,12 +8,12 @@ keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856432"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207580"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Az Azure HDInsight üzletmenet-folytonossági architektúrái
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, milyen üzleti folytonossági architektúrákat �
 
 ## <a name="apache-hive-and-interactive-query"></a>Apache Hive és interaktív lekérdezés
 
-A [kaptár replikálási v2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) a HDInsight-struktúra és az interaktív lekérdezési fürtök üzleti folytonosságának ajánlott. A replikálni kívánt önálló kaptár-fürt állandó részeit a tárolási rétegnek és a Hive-metaadattárnek kell megadnia. A kaptár-fürtök többfelhasználós forgatókönyvben Enterprise Security Package szükségük van a Azure Active Directory Domain Services és a Ranger Metaadattár.
+A [kaptár replikálási v2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) használata a HDInsight-struktúra és az interaktív lekérdezési fürtök üzleti folytonosságához ajánlott. A replikálni kívánt önálló kaptár-fürt állandó részeit a tárolási rétegnek és a Hive-metaadattárnek kell megadnia. A kaptár-fürtök többfelhasználós forgatókönyvben Enterprise Security Package szükségük van a Azure Active Directory Domain Services és a Ranger Metaadattár.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hive-interactive-query.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
 
@@ -57,6 +57,8 @@ Az *igény szerinti másodlagos* architektúrával rendelkező aktív elsődlege
 Egy *aktív, készenléti másodlagos állapotú aktív elsődlegesben*az alkalmazások az aktív elsődleges régióba írhatók, míg a normál működés során a (csak olvasási módban lévő) másodlagos fürtöt lefoglaló készenléti üzemmód fut. A normál műveletek során dönthet úgy, hogy kiszervezi a régió specifikus olvasási műveleteit a másodlagosra.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+
+A kaptár-replikációval és-kódokkal kapcsolatos további információkért tekintse meg [Apache Hive replikációt az Azure HDInsight-fürtökben](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication)
 
 ## <a name="apache-spark"></a>Apache Spark
 

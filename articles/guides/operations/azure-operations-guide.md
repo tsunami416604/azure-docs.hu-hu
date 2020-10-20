@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2508846e5dd2fcc96aade9ce64b599bb4154de00
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91397810"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203381"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Első lépések az Azure IT-kezelők számára
 
@@ -130,7 +130,7 @@ Szolgáltatások az Azure-ban és az Azure-beli és a helyszíni adatközpontok 
 
 - Azure Content Delivery Network
 
-Az Azure-szolgáltatásokkal kapcsolatos részletes dokumentációért lásd: az [Azure szolgáltatás dokumentációja](https://docs.microsoft.com/azure).
+Az Azure-szolgáltatásokkal kapcsolatos részletes dokumentációért lásd: az [Azure szolgáltatás dokumentációja](/azure).
 
 ## <a name="azure-key-concepts"></a>Az Azure-alapfogalmak
 
@@ -142,7 +142,7 @@ Az Azure használatának egyik előnye, hogy az alkalmazásait különböző ada
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használható. A Azure Portal a következő helyen található: [Portal.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópultot és az Azure-erőforrások kezelésére szolgáló eszközöket. Emellett számlázási és előfizetési információkat is biztosít. További információ: [Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és az [Azure-erőforrások kezelése a portálon keresztül](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használható. A Azure Portal a következő helyen található: [Portal.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópultot és az Azure-erőforrások kezelésére szolgáló eszközöket. Emellett számlázási és előfizetési információkat is biztosít. További információ: [Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és az [Azure-erőforrások kezelése a portálon keresztül](../../azure-resource-manager/management/manage-resources-portal.md).
 
 ### <a name="resources"></a>További források
 
@@ -170,11 +170,11 @@ Az Azure parancssori felület egy eszköz, amellyel Azure-erőforrásokat hozhat
 
 #### <a name="rest-apis"></a>REST API-k
 
-Az Azure a Azure Portal felhasználói felületét támogató REST API-k készletére épül. A REST API-k többsége támogatja az Azure-erőforrások és-alkalmazások programozott módon történő üzembe helyezését és kezelését bármely internetalapú eszközről. További információ: [Azure Rest SDK-dokumentáció](https://docs.microsoft.com/rest/api/index).
+Az Azure a Azure Portal felhasználói felületét támogató REST API-k készletére épül. A REST API-k többsége támogatja az Azure-erőforrások és-alkalmazások programozott módon történő üzembe helyezését és kezelését bármely internetalapú eszközről. További információ: [Azure Rest SDK-dokumentáció](/rest/api/index).
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-A rendszergazdák hozzáférhetnek a Azure PowerShell és az Azure CLI-hez egy Azure Cloud Shell nevű böngészővel elérhető felülettel. Ez az interaktív felület rugalmas eszközt biztosít a Linux-és Windows-rendszergazdák számára a választható parancssori felület használatához, vagy bash vagy PowerShell használatával. Azure Cloud Shell a portálon keresztül, önálló webes felületként, illetve számos más hozzáférési pontról is elérheti a [shell.Azure.com](https://shell.azure.com). További információ: [Azure Cloud Shell áttekintése](https://docs.microsoft.com/azure/cloud-shell/overview).
+A rendszergazdák hozzáférhetnek a Azure PowerShell és az Azure CLI-hez egy Azure Cloud Shell nevű böngészővel elérhető felülettel. Ez az interaktív felület rugalmas eszközt biztosít a Linux-és Windows-rendszergazdák számára a választható parancssori felület használatához, vagy bash vagy PowerShell használatával. Azure Cloud Shell a portálon keresztül, önálló webes felületként, illetve számos más hozzáférési pontról is elérheti a [shell.Azure.com](https://shell.azure.com). További információ: [Azure Cloud Shell áttekintése](../../cloud-shell/overview.md).
 
 ## <a name="azure-subscriptions"></a>Azure-előfizetések
 
@@ -282,7 +282,7 @@ Az üzembe helyezés automatizálásához a következő mechanizmusok érhetők 
 
 - **Sablon csatolása**: egy Resource Manager-sablonon belül egy másik sablonra is hivatkozhat. Ez lehetővé teszi, hogy a központi telepítés lebomlása célzott, célhoz tartozó sablonokba történjen.
 
-Bármely szövegszerkesztőben Resource Manager-sablonokat hozhat létre. A Visual studióhoz készült Azure SDK azonban olyan eszközöket tartalmaz, amelyek segítenek Önnek. A Visual Studióval hozzáadhat erőforrásokat a sablonhoz egy varázsló segítségével, majd közvetlenül a Visual studióból telepítheti és hibakeresést végezhet a sablonon belül. További információ: Azure Resource Manager- [sablonok készítése](../../resource-group-authoring-templates.md).
+Bármely szövegszerkesztőben Resource Manager-sablonokat hozhat létre. A Visual studióhoz készült Azure SDK azonban olyan eszközöket tartalmaz, amelyek segítenek Önnek. A Visual Studióval hozzáadhat erőforrásokat a sablonhoz egy varázsló segítségével, majd közvetlenül a Visual studióból telepítheti és hibakeresést végezhet a sablonon belül. További információ: Azure Resource Manager- [sablonok készítése](../../azure-resource-manager/templates/template-syntax.md).
 
 Végezetül átalakíthatja a meglévő erőforráscsoportokat egy újrafelhasználható sablonba a Azure Portalból. Ez akkor lehet hasznos, ha egy meglévő erőforráscsoport telepíthető sablonját szeretné létrehozni, vagy csak azt szeretné megvizsgálni, hogy az alapul szolgáló JSON-t kívánja-e használni. Egy erőforráscsoport exportálásához válassza az Automation- **parancsfájl** gombot az erőforráscsoport beállításainál.
 
@@ -314,7 +314,7 @@ Az Azure Virtual Machines az egyik központi IaaS-szolgáltatás az Azure-ban. A
 
 Amikor üzembe helyez egy Azure-beli virtuális gépet, kiválaszthat egy rendszerképet az Azure piactéren, vagy megadhatja a saját általánosított képét is. Ez a rendszerkép az operációs rendszer és a kezdeti konfiguráció alkalmazására szolgál. A telepítés során a Resource Manager bizonyos konfigurációs beállításokat fog kezelni, például a számítógép nevének, a rendszergazdai hitelesítő adatoknak és a hálózati konfigurációnak a hozzárendelését. Az Azure virtuálisgép-bővítmények segítségével további automatizálhatja a konfigurációkat, például a Szoftvertelepítés, a víruskereső-konfiguráció és a figyelési megoldások.
 
-Több méretben is létrehozhat virtuális gépeket. A virtuális gép mérete olyan erőforrás-kiosztást diktál, mint például a feldolgozás, a memória és a tárolókapacitás. Bizonyos esetekben, például a RDMA-kompatibilis hálózati adapterek és SSD-lemezek csak bizonyos virtuálisgép-méretekben érhetők el. A virtuálisgép-méretek és-képességek teljes listáját az Azure-beli virtuális gépek méretei [Windows](../../virtual-machines/windows/sizes.md) és [Linux](../../virtual-machines/linux/sizes.md)rendszerhez című témakörben tekintheti meg.
+Több méretben is létrehozhat virtuális gépeket. A virtuális gép mérete olyan erőforrás-kiosztást diktál, mint például a feldolgozás, a memória és a tárolókapacitás. Bizonyos esetekben, például a RDMA-kompatibilis hálózati adapterek és SSD-lemezek csak bizonyos virtuálisgép-méretekben érhetők el. A virtuálisgép-méretek és-képességek teljes listáját az Azure-beli virtuális gépek méretei [Windows](../../virtual-machines/sizes.md) és [Linux](../../virtual-machines/sizes.md)rendszerhez című témakörben tekintheti meg.
 
 ### <a name="use-cases"></a>Használati esetek
 
@@ -344,7 +344,7 @@ Hasonlóképpen használhatja az Azure CLI-t egy Azure Resource Manager-sablon �
 
 ### <a name="access-and-security-for-virtual-machines"></a>Virtuális gépekhez való hozzáférés és biztonság
 
-Ha a virtuális gépet az internetről kívánja elérni, a társított hálózati adaptert, vagy ha szükséges, a Load balancert a nyilvános IP-címmel kell konfigurálni. A nyilvános IP-cím tartalmaz egy DNS-nevet, amely a virtuális gépre vagy a terheléselosztó-re lesz feloldva. További információt az [IP-címek az Azure-ban](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)című témakörben talál.
+Ha a virtuális gépet az internetről kívánja elérni, a társított hálózati adaptert, vagy ha szükséges, a Load balancert a nyilvános IP-címmel kell konfigurálni. A nyilvános IP-cím tartalmaz egy DNS-nevet, amely a virtuális gépre vagy a terheléselosztó-re lesz feloldva. További információt az [IP-címek az Azure-ban](../../virtual-network/public-ip-addresses.md)című témakörben talál.
 
 A virtuális géphez a hálózati biztonsági csoport (NSG) erőforrás segítségével kezelheti a hozzáférést a nyilvános IP-címen keresztül. Egy NSG úgy viselkedik, mint egy tűzfal, és lehetővé teszi vagy megtagadja a forgalmat a hálózati adapter vagy az alhálózat között a megadott portok készletén. Ha például egy Távoli asztal munkamenetet szeretne létrehozni egy Azure-beli virtuális géppel, úgy kell konfigurálnia a NSG, hogy engedélyezze a bejövő forgalmat az 3389-as porton. További információ: [portok megnyitása egy virtuális gépen az Azure-ban a Azure Portal használatával](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
@@ -378,7 +378,7 @@ Az Azure Storage háromféle blobot támogat:
 
 - A **hozzáfűzési Blobok** olyan blokkokat tartalmaznak, mint a blokkos Blobok, de a hozzáfűzési műveletekre vannak optimalizálva. Ezeket gyakran használják egy vagy több forrásból származó adatok ugyanarra a blobba való naplózására. Előfordulhat például, hogy az összes nyomkövetési naplózást ugyanabba a hozzáfűző blobba írja, mint egy több virtuális gépen futó alkalmazáshoz. Egy hozzáfűző blob akár 195 GB méretű is lehet.
 
-További információ: az [Azure Blob Storage használatának első lépései a .NET használatával](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+További információ: az [Azure Blob Storage használatának első lépései a .NET használatával](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 #### <a name="file-storage"></a>File Storage
 
@@ -394,7 +394,7 @@ Az Azure Table Storage egy olyan szolgáltatás, amely strukturált NoSQL-adatok
 
 A Table Storage segítségével rugalmas adatkészleteket tárolhat, például webalkalmazások felhasználói adatait, címtárakat, eszközadatokat és bármilyen egyéb metaadatot, amelyre a szolgáltatásnak szüksége van. A tábla tetszőleges számú entitását tárolhatja. A Storage-fiókok tetszőleges számú táblát tartalmazhatnak, a Storage-fiók kapacitásának korlátozásával együtt.
 
-További információ: Ismerkedés [Az Azure Table Storage](../../cosmos-db/table-storage-how-to-use-dotnet.md)szolgáltatással.
+További információ: Ismerkedés [Az Azure Table Storage](../../cosmos-db/tutorial-develop-table-dotnet.md)szolgáltatással.
 
 #### <a name="queue-storage"></a>Queue Storage
 
@@ -414,15 +414,15 @@ Egy Storage-fióknak a Azure Portalból való üzembe helyezésén kívül a por
 
 #### <a name="powershell"></a>PowerShell
 
-Egy Azure Storage-fiók PowerShell használatával történő üzembe helyezése lehetővé teszi a Storage-fiók teljes üzembe helyezésének automatizálását. További információ: [Azure PowerShell használata az Azure Storage](../../storage/common/storage-powershell-guide-full.md)-ban.
+Egy Azure Storage-fiók PowerShell használatával történő üzembe helyezése lehetővé teszi a Storage-fiók teljes üzembe helyezésének automatizálását. További információ: [Azure PowerShell használata az Azure Storage](/powershell/module/az.storage/)-ban.
 
 Az Azure-erőforrások önálló üzembe helyezése mellett a Azure PowerShell modullal is üzembe helyezhet egy Azure Resource Manager-sablont. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és-Azure PowerShellokkal](../../azure-resource-manager/templates/deploy-powershell.md).
 
 #### <a name="command-line-interface-cli"></a>Parancssori felület (CLI)
 
-A PowerShell-modulhoz hasonlóan az Azure parancssori felülete is biztosítja az üzembe helyezés automatizálását, és Windows, OS X és Linux rendszereken is használható. A Storage-fiók létrehozásához az Azure CLI **Storage-fiók létrehozása** parancsot használhatja. További információ: [Az Azure CLI használata az Azure Storage](../../storage/common/storage-azure-cli.md) -ban.
+A PowerShell-modulhoz hasonlóan az Azure parancssori felülete is biztosítja az üzembe helyezés automatizálását, és Windows, OS X és Linux rendszereken is használható. A Storage-fiók létrehozásához az Azure CLI **Storage-fiók létrehozása** parancsot használhatja. További információ: [Az Azure CLI használata az Azure Storage](../../storage/blobs/storage-quickstart-blobs-cli.md) -ban.
 
-Hasonlóképpen használhatja az Azure CLI-t egy Azure Resource Manager-sablon üzembe helyezéséhez is. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../resource-group-template-deploy-cli.md).
+Hasonlóképpen használhatja az Azure CLI-t egy Azure Resource Manager-sablon üzembe helyezéséhez is. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md).
 
 ### <a name="access-and-security-for-azure-storage"></a>Hozzáférés és biztonság az Azure Storage-ban
 
@@ -446,7 +446,7 @@ Mindegyik Storage-fiókhoz két hitelesítő kulcs tartozik, egy elsődleges és
 
 #### <a name="shared-access-signatures"></a>Közös hozzáférésű aláírások
 
-Ha engedélyezni szeretné a felhasználók számára, hogy szabályozzák a tárolási erőforrásokhoz való hozzáférést, létrehozhat egy közös hozzáférési aláírást. A közös hozzáférésű aláírás egy olyan token, amelyet egy olyan URL-címhez lehet hozzáfűzni, amely lehetővé teszi egy tárolási erőforrás delegált hozzáférését. Bárki, aki rendelkezik a jogkivonattal, elérheti azt az erőforrást, amely az általa megadott engedélyekkel rendelkezik az érvényességi időszakra vonatkozóan. További információ: [közös hozzáférésű aláírások használata](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Ha engedélyezni szeretné a felhasználók számára, hogy szabályozzák a tárolási erőforrásokhoz való hozzáférést, létrehozhat egy közös hozzáférési aláírást. A közös hozzáférésű aláírás egy olyan token, amelyet egy olyan URL-címhez lehet hozzáfűzni, amely lehetővé teszi egy tárolási erőforrás delegált hozzáférését. Bárki, aki rendelkezik a jogkivonattal, elérheti azt az erőforrást, amely az általa megadott engedélyekkel rendelkezik az érvényességi időszakra vonatkozóan. További információ: [közös hozzáférésű aláírások használata](../../storage/common/storage-sas-overview.md).
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
@@ -456,7 +456,7 @@ A virtuális hálózatok a virtuális gépek közötti kommunikáció támogatá
 
 Alapértelmezés szerint az Azure-beli virtuális hálózatok csak az Azure-ban tárolt erőforrások számára érhetők el. Az ugyanahhoz a virtuális hálózathoz csatlakozó erőforrások kommunikálhatnak egymással. A virtuális gép hálózati adapterei és a terheléselosztó nyilvános IP-címmel társítható, hogy a virtuális gép elérhető legyen az interneten keresztül. Egy hálózati biztonsági csoport segítségével biztonságossá teheti a nyilvánosan elérhető erőforrásokhoz való hozzáférést.
 
-![Azure-Virtual Network 2 szintű webalkalmazáshoz](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+![Azure-Virtual Network 2 szintű webalkalmazáshoz](/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
 
 ### <a name="hybrid-virtual-networks"></a>Hibrid virtuális hálózatok
 
@@ -479,9 +479,9 @@ A virtuális hálózatok telepítéséhez több lehetőség is rendelkezésre á
 
 ### <a name="access-and-security-for-virtual-networks"></a>Hozzáférés és biztonság virtuális hálózatokhoz
 
-A hálózati biztonsági csoport segítségével biztonságossá teheti az Azure-beli virtuális hálózatokat. A NSG a hozzáférés-vezérlési listák (ACL) azon szabályainak listáját tartalmazza, amelyek engedélyezik vagy megtagadják a virtuális hálózatban lévő virtuálisgép-példányok hálózati forgalmát. A NSG társíthatja az alhálózatokhoz vagy az alhálózaton belüli egyedi virtuálisgép-példányokhoz is. Ha alhálózattal társít egy NSG, az ACL-szabályok az alhálózat összes virtuálisgép-példányára érvényesek lesznek. Emellett tovább korlátozhatja az egyes virtuális gépek forgalmát úgy, hogy közvetlenül az adott virtuális géppel társít egy NSG. További információ: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../../virtual-network/security-overview.md).
+A hálózati biztonsági csoport segítségével biztonságossá teheti az Azure-beli virtuális hálózatokat. A NSG a hozzáférés-vezérlési listák (ACL) azon szabályainak listáját tartalmazza, amelyek engedélyezik vagy megtagadják a virtuális hálózatban lévő virtuálisgép-példányok hálózati forgalmát. A NSG társíthatja az alhálózatokhoz vagy az alhálózaton belüli egyedi virtuálisgép-példányokhoz is. Ha alhálózattal társít egy NSG, az ACL-szabályok az alhálózat összes virtuálisgép-példányára érvényesek lesznek. Emellett tovább korlátozhatja az egyes virtuális gépek forgalmát úgy, hogy közvetlenül az adott virtuális géppel társít egy NSG. További információ: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../../virtual-network/network-security-groups-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Windows rendszerű virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
 - [Linux rendszerű virtuális gép létrehozása](../../virtual-machines/linux/quick-create-portal.md)

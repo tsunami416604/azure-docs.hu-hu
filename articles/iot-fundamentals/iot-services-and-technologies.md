@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: ad0712de85a08ed581ba89d7e01d8ba1244006b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977561"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206084"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>Milyen Azure-technológiákat és-szolgáltatásokat használhat a IoT-megoldások létrehozásához?
 
@@ -61,7 +61,7 @@ A [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) szolgáltatás h
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) lehetővé teszi, hogy a IoT számítási feladatainak részeit az Azure Cloud servicesből az eszközeire kiossza. A IoT Edge csökkentheti a megoldás késését, csökkentheti a felhőben tárolt adatok mennyiségét, és lehetővé teheti az off-line forgatókönyvek kikapcsolását. IoT Edge-eszközöket kezelheti IoT Central és néhány megoldási gyorssegéd használatával.
 
-A [Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) egy biztonságos, magas szintű alkalmazás-platform, amely beépített kommunikációs és biztonsági funkciókat biztosít az internethez csatlakoztatott eszközökhöz. Tartalmaz egy biztonságos mikrovezérlő-egységet, egy egyéni Linux-alapú operációs rendszert és egy felhőalapú biztonsági szolgáltatást, amely folyamatos, megújítható biztonságot nyújt.
+A [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) egy biztonságos, magas szintű alkalmazás-platform, amely beépített kommunikációs és biztonsági funkciókat biztosít az internethez csatlakoztatott eszközökhöz. Tartalmaz egy biztonságos mikrovezérlő-egységet, egy egyéni Linux-alapú operációs rendszert és egy felhőalapú biztonsági szolgáltatást, amely folyamatos, megújítható biztonságot nyújt.
 
 ### <a name="cloud-connectivity"></a>Felhőalapú kapcsolat
 
@@ -76,7 +76,7 @@ IoT Hub a megoldás-gyorssegédek alapvető összetevője, és az IoT-megvalós�
 
 ### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>A fizikai és a digitális világok közötti szakadék áthidalása
 
-Az [Azure Digital Twins](../digital-twins/about-digital-twins.md) egy IoT szolgáltatás, amely lehetővé teszi a fizikai környezet modellezését. A térbeli intelligencia gráf használatával modellezi a személyek, a szóközök és az eszközök közötti kapcsolatokat. A digitális és a fizikai világok egymással kapcsolatos adatkezelési megoldásaival kontextussal is kompatibilis megoldásokat hozhat létre.
+Az [Azure Digital Twins](../digital-twins/overview.md) egy IoT szolgáltatás, amely lehetővé teszi a fizikai környezet modellezését. A térbeli intelligencia gráf használatával modellezi a személyek, a szóközök és az eszközök közötti kapcsolatokat. A digitális és a fizikai világok egymással kapcsolatos adatkezelési megoldásaival kontextussal is kompatibilis megoldásokat hozhat létre.
 
 A IOT Central digitális ikrek használatával szinkronizálja az eszközöket és az adatokat a valós világban a digitális modellekkel, amelyek lehetővé teszik a felhasználók számára a csatlakoztatott eszközök figyelését és felügyeletét.
 
@@ -84,7 +84,7 @@ A IOT Central digitális ikrek használatával szinkronizálja az eszközöket �
 
 A IoT-eszközök általában nagy mennyiségű idősoros adatok előállítására szolgálnak, mint például az érzékelőkből származó hőmérséklet-beolvasások. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) tud csatlakozni egy IoT hubhoz, olvassa el a telemetria streamet az eszközökről, tárolja azokat, és lehetővé teszi a lekérdezését és megjelenítését.
 
-A [Azure Maps](/azure/azure-maps) térinformatikai szolgáltatások gyűjteménye, amely friss leképezési adatait használja a webes és mobil alkalmazások pontos földrajzi kontextusának biztosításához. Az alkalmazások létrehozásához REST API, webalapú JavaScript-vezérlőt vagy Android SDK-t használhat.
+A [Azure Maps](../azure-maps/index.yml) térinformatikai szolgáltatások gyűjteménye, amely friss leképezési adatait használja a webes és mobil alkalmazások pontos földrajzi kontextusának biztosításához. Az alkalmazások létrehozásához REST API, webalapú JavaScript-vezérlőt vagy Android SDK-t használhat.
 
 ## <a name="next-steps"></a>Következő lépések
 

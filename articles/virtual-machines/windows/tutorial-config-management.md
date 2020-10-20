@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25022cc70f3b6c8fc01aa556b6229ae8a6ccb82b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448867"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205090"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: változások figyelése és Windowsos virtuális gépek frissítése az Azure-ban
 
-Az Azure [change Tracking](../../automation/change-tracking.md) és [Update Management](../../automation/update-management/update-mgmt-overview.md)segítségével könnyedén azonosíthatja a Windows rendszerű virtuális gépek változásait az Azure-ban, és kezelheti az operációs rendszer frissítéseit ezekhez a virtuális gépekhez.
+Az Azure [change Tracking](../../automation/change-tracking/overview.md) és [Update Management](../../automation/update-management/update-mgmt-overview.md)segítségével könnyedén azonosíthatja a Windows rendszerű virtuális gépek változásait az Azure-ban, és kezelheti az operációs rendszer frissítéseit ezekhez a virtuális gépekhez.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Windows-frissítések kezelése.
@@ -199,7 +199,7 @@ Az előző diagramon az idő múlásával történt változások láthatók. Miu
 
 A sávdiagramok minden sora egy másik, nyomon követhető módosítás típusát jelöli. Ezek a típusok a Linux-démonok, a fájlok, a Windows-beállításkulcsok, a szoftverek és a Windows-szolgáltatások. A **módosítás lap a változás** részleteit jeleníti meg. A változások az egyes előfordulások sorrendjében jelennek meg, és a legutóbbi változás látható először.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megtanulta végrehajtani az alábbi műveleteket:
 

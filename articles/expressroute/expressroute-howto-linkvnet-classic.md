@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a731962f22985268093c547b09a8cd77c5b92660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8a1d48934d73f1035c6f2c4c76e56d9a0e4052
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395808"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206970"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a PowerShell (klasszikus) használatával
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Akár 10 virtuális hálózatot is összekapcsolhat egy ExpressRoute-áramkörh�
    * Az utasításokat követve [hozzon létre egy ExpressRoute áramkört](expressroute-howto-circuit-classic.md) , és engedélyezze a kapcsolati szolgáltatónak az áramkört.
    * Győződjön meg arról, hogy az Ön áramköréhez konfigurálva van az Azure-beli magánhálózati kapcsolat. Az útválasztási utasításokért tekintse meg az [Útválasztás konfigurálása](expressroute-howto-routing-classic.md) című cikket.
    * Győződjön meg arról, hogy az Azure Private peering konfigurálva van, és a hálózat és a Microsoft közötti BGP-társak is elérhetők, így a végpontok közötti kapcsolat engedélyezhető.
-   * Létre kell hoznia egy virtuális hálózatot és egy virtuális hálózati átjárót, és azt teljesen ki kell építeni. A [ExpressRoute virtuális hálózatának konfigurálásához](expressroute-howto-vnet-portal-classic.md)kövesse az utasításokat.
+   * Létre kell hoznia egy virtuális hálózatot és egy virtuális hálózati átjárót, és azt teljesen ki kell építeni. A [ExpressRoute virtuális hálózatának konfigurálásához](./expressroute-howto-add-gateway-portal-resource-manager.md)kövesse az utasításokat.
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>A legújabb PowerShell-parancsmagok letöltése
 

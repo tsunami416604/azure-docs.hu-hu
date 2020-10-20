@@ -3,14 +3,14 @@ title: Riasztások létrehozása Azure Automation Update Management
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja az Azure-riasztásokat, hogy tájékoztassanak a frissítési felmérések vagy üzembe helyezések állapotáról.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a46b5bf6c4be4953e6cde9972aa143be71406a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f832f0359bd8f9caf13008939f482b440faa1a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977011"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203177"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Riasztások létrehozása Update Managementhoz
 
@@ -86,3 +86,8 @@ Miután beállította a riasztásokat, beállíthat egy műveleti csoportot, ame
 
 ## <a name="next-steps"></a>Következő lépések
 
+* További információ a [Azure monitor riasztásokról](../../azure-monitor/platform/alerts-overview.md).
+
+* Tudnivalók a Log Analytics-munkaterületről származó adatok lekérdezéséhez és elemzéséhez szükséges [naplókról](../../azure-monitor/log-query/log-query-overview.md) .
+
+* A [használat és a költségek kezelése Azure monitor naplókkal](../../azure-monitor/platform/manage-cost-storage.md) : az adatmegőrzési időszak módosításával, valamint az adatfelhasználás elemzésével és riasztásával kapcsolatos költségek szabályozása.

@@ -1,16 +1,16 @@
 ---
 title: A társított Log Analytics-munkaterület esetében támogatott régiók
 description: Ez a cikk az Automation-fiók és a Log Analytics munkaterület közötti támogatott régió-hozzárendeléseket ismerteti, mivel azok a Azure Automation egyes szolgáltatásaihoz kapcsolódnak.
-ms.date: 09/03/2020
+ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440660"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207325"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
@@ -32,6 +32,7 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 |**USA**||
 |<sup>1</sup> . EastUS|EastUS2|
 |WestUS2|WestUS2|
+|SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
@@ -44,6 +45,7 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 |**Európa**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
+|SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |<sup>2</sup> . USGovArizona|USGovArizona|
@@ -86,5 +88,5 @@ Azt is megteheti, hogy leválasztja a munkaterületet az Automation-fiókjából
 ## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg Update Management [Update Management áttekintésében](../update-management/update-mgmt-overview.md).
-* Ismerkedjen meg a Change Tracking és a leltárral [change Tracking és leltár áttekintésében](../change-tracking.md).
+* Ismerkedjen meg a Change Tracking és a leltárral [change Tracking és leltár áttekintésében](../change-tracking/overview.md).
 * Ismerkedjen meg Start/Stop VMs during off-hours [Start/Stop VMS During off-hours áttekintésében](../automation-solution-vm-management.md).

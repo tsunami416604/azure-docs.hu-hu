@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 848894518077ca41d3166570bf0dc39914f1c439
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5fb00fb6382bb53f40ad63a95c880c47f91cae2f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131156"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201664"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
@@ -47,18 +47,17 @@ Az Azure Digital Twins használatának első lépése egy **Azure digitális Twi
 
 Emellett be kell állítania a ADT Explorer futtatásához szükséges engedélyeket a számítógépen, és elérheti az Azure digitális Twins-példányát. Ez lehetővé teszi, hogy a minta alkalmazás használatával vizsgálja meg a példányát és adatait.
 
-### <a name="set-up-azure-digital-twins-instance"></a>Azure digitális Twins-példány beállítása
+### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Az Azure digitális ikrek példányának és az alkalmazás regisztrálásának beállítása
 
-Először állítson be egy Azure digitális Twins-példányt és a szükséges hitelesítést ahhoz, hogy működjön vele. Ehhez kövesse az útmutató [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md)című témakör útmutatását. Az előnyben részesített felhasználói élménytől függően a telepítési cikk a [Azure Portal](how-to-set-up-instance-portal.md), a [CLI](how-to-set-up-instance-cli.md)vagy az [automatizált Cloud Shell üzembe helyezési parancsfájl-minta](how-to-set-up-instance-scripted.md)számára elérhető. Az utasítások összes verziója olyan lépéseket is tartalmaz, amelyekkel ellenőrizheti, hogy sikeresen elvégezte-e az egyes lépéseket, és készen áll az új példány használatára való áttérésre.
+Először **állítson be egy Azure digitális Twins-példányt** és a szükséges hitelesítést ahhoz, hogy működjön vele. Ehhez kövesse az útmutató [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md)című témakör útmutatását. Az előnyben részesített felhasználói élménytől függően a telepítési cikk a [Azure Portal](how-to-set-up-instance-portal.md), a [CLI](how-to-set-up-instance-cli.md)vagy az [automatizált Cloud Shell üzembe helyezési parancsfájl-minta](how-to-set-up-instance-scripted.md)számára elérhető. Az utasítások összes verziója olyan lépéseket is tartalmaz, amelyekkel ellenőrizheti, hogy sikeresen elvégezte-e az egyes lépéseket, és készen áll az új példány használatára való áttérésre.
+* Az Azure Digital Twins-példány beállítása után szüksége lesz a példány **_állomásneve_** (keresse meg a[portálon](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
-Ebben a rövid útmutatóban a példány beállításakor a következő értékekre lesz szüksége. Ha újra össze kell gyűjtenie ezeket az értékeket, az alábbi hivatkozásokra kattintva megkeresheti azokat a [Azure Portalban](https://portal.azure.com).
-* Azure digitális Twins-példány **_állomásneve_** ([Keresés a portálon](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure AD App Registration **_Application (ügyfél-) azonosító_** ([Keresés a portálon](how-to-set-up-instance-portal.md#collect-important-values))
-* Azure AD-alkalmazás regisztrációs **_könyvtárának (bérlői) azonosítója_** ([Keresés a portálon](how-to-set-up-instance-portal.md#collect-important-values))
+A ADT Explorer alkalmazás hitelesítéséhez egy **alkalmazás regisztrálását**is be kell állítania. Ennek beállításához kövesse az útmutató [*: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md) című témakör utasításait. 
+* Ha már rendelkezik az alkalmazás regisztrálásával, szüksége lesz a regisztrációs **_alkalmazás (ügyfél) azonosítójának_** és **_könyvtárának (BÉRLŐi) azonosítójának_** (a[portálon található](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
 
 ### <a name="set-adt-explorer-permissions"></a>ADT Explorer engedélyeinek beállítása
 
-Ezt követően készítse elő a létrehozott Azure digitális Twins-példányt, hogy együttműködjön a ADT Explorerrel, amely egy helyileg üzemeltetett webalkalmazás. Látogasson el a [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) lapra a Azure Portal, és válassza ki az alkalmazás regisztrációjának nevét a listából.
+Ezt követően készítse elő a létrehozott Azure digitális Twins-példányt, hogy együttműködjön a ADT Explorerrel, amely egy helyileg üzemeltetett webalkalmazás. Látogasson el a [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) lapra a Azure Portal, és válassza ki az **alkalmazás regisztrációjának** nevét, amelyet az előző szakaszban hozott létre a listából.
 
 Válassza a *hitelesítés* lehetőséget a regisztráció menüjében, és nyomja meg *a + platform hozzáadása*elemet.
 

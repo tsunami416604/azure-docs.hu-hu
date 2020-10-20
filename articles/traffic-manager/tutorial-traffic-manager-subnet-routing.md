@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: duau
-ms.openlocfilehash: 5c6551e721a4bf197ea7091b8c0b71829693ba76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 348f1d779f8ea67860726b8f8b7739921e7ad54a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398290"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205948"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Oktatóanyag: a Traffic Manager használatával a felhasználói alhálózat alapján adott végpontokra irányuló közvetlen forgalom
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti, hogy hogyan konfigurálhatja a forgalom-útválasztási met
 
 Ebben az oktatóanyagban – a felhasználói lekérdezés IP-címétől függően – egy belső vagy egy éles üzemű webhelyre irányítjuk a forgalmat alhálózati útválasztással.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Két, egy alapszintű webhelyet futtató virtuális gép létrehozása az IIS-en
@@ -174,7 +174,7 @@ Adja hozzá az IIS-kiszolgálók- *myIISVMEastUS*myIISVMWestEurope futtató két
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Típus                    | Azure-végpont                                   |
-    | Név           | myInternalWebSiteEndpoint                                        |
+    | Name           | myInternalWebSiteEndpoint                                        |
     | Célerőforrás típusa           | Nyilvános IP-cím                          |
     | Célerőforrás          | **Válasszon nyilvános IP-címet**, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a *myIISVMEastUS-ip* nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|
     |  Alhálózat útválasztási beállításai    |   Adja hozzá a *myVMEastUS* -teszt virtuális gép IP-címét. A virtuális gépről származó összes felhasználói lekérdezés a *myInternalWebSiteEndpoint*lesz átirányítva.    |
@@ -214,12 +214,13 @@ Ebben a szakaszban megtekintheti a Traffic Managert működés közben.
 
 7. Ezután kapcsolódjon a **Nyugat-Európában** található *myVMWestEurope* a 1-5-es lépések végrehajtásával, és keresse meg a Traffic Manager profil TARTOMÁNYNEVÉt erről a virtuális gépről. Mivel a virtuális gép *myVMWestEurope* IP-címe a végpont *myProductionWebsiteEndpoint*van társítva, a webböngésző elindítja a teszt webhely kiszolgáló- *myIISVMWestEurope*.
 
-## <a name="delete-the-traffic-manager-profile"></a>A Traffic Manager-profil törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szüksége, törölje az erőforráscsoportokat (**ResourceGroupTM1** és **ResourceGroupTM2**). Ehhez válassza ki az erőforráscsoportot (**ResourceGroupTM1** vagy **ResourceGroupTM2**), majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a [súlyozott forgalom útválasztási metódusról](traffic-manager-configure-weighted-routing-method.md).
-- További információ az [elsődleges útválasztási metódusról](traffic-manager-configure-priority-routing-method.md).
-- További információ a [földrajzi útválasztási metódusról](traffic-manager-configure-geographic-routing-method.md).
+Az alhálózatok útválasztási módszerével kapcsolatos további tudnivalókért tekintse meg a következőt:
+
+> [!div class="nextstepaction"]
+> [Alhálózat forgalmának útválasztási módszere](traffic-manager-routing-methods.md#subnet)

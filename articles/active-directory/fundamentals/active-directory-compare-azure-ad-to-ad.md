@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: e71ed9655c7b195fea8a2eeeaa76d8a28717637f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c8cf84aa697512b6d1147bf853d30761792370b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318556"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207308"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Az Active Directory és az Azure Active Directory összehasonlítása
 
@@ -39,9 +39,9 @@ A legtöbb rendszergazda ismeri a Active Directory tartományi szolgáltatások 
 | Hagyományos és örökölt alkalmazások| A legtöbb helyszíni alkalmazás LDAP-t, Windows-Integrated hitelesítést (NTLM és Kerberos) vagy fejléc-alapú hitelesítést használ a felhasználókhoz való hozzáférés szabályozásához.| Az Azure AD a helyszínen futó [Azure ad](../manage-apps/application-proxy.md) -alkalmazásproxy-ügynökök használatával biztosít hozzáférést az ilyen típusú helyszíni alkalmazásokhoz. Ha ezt a módszert használja, az Azure AD hitelesítheti Active Directory helyszíni felhasználóit Kerberos használatával a Migrálás során, vagy az örökölt alkalmazásokkal együtt kell létezni. |
 | SaaS-alkalmazások|A Active Directory natív módon nem támogatja az SaaS-alkalmazásokat, és szükség van összevonási rendszerre, például AD FSre.|Az OAuth2, SAML és WS-Authentication szolgáltatást támogató SaaS-alkalmazások \* integrálhatók az Azure ad hitelesítéshez való használatához. |
 | Üzletági (LOB) alkalmazások modern hitelesítéssel|A szervezetek a AD FS és a Active Directory használatával támogatják a modern hitelesítést igénylő LOB-alkalmazásokat.| A modern hitelesítést igénylő LOB-alkalmazások konfigurálhatók az Azure AD hitelesítés használatára. |
-| Mid-szintű/Daemon-szolgáltatások|A helyszíni környezetekben futó szolgáltatások általában az AD-szolgáltatásfiókok vagy a csoportosan felügyelt szolgáltatásfiókok (gMSA) használatával futnak. Ezek az alkalmazások ezután öröklik a szolgáltatásfiók engedélyeit.| Az Azure AD [felügyelt identitásokat](../managed-identities-azure-resources/index.yml) biztosít más számítási feladatok futtatásához a felhőben. Ezen identitások életciklusát az Azure AD kezeli, és az erőforrás-szolgáltatóhoz van kötve, nem használható más célra a Backdoor-hozzáférés eléréséhez.|
+| Mid-szintű/Daemon-szolgáltatások|A helyszíni környezetekben futó szolgáltatások általában az AD-szolgáltatásfiókok vagy a csoportosan felügyelt szolgáltatásfiókok (gMSA) használatával futnak. Ezek az alkalmazások ezután öröklik a szolgáltatásfiók engedélyeit.| Az Azure AD [felügyelt identitásokat](../managed-identities-azure-resources/index.yml) biztosít más számítási feladatok futtatásához a felhőben. Az identitások életciklusát az Azure AD kezeli, és az erőforrás-szolgáltatóhoz van kötve, ezért nem használható más célra a Backdoor-hozzáférés megszerzéséhez.|
 | **Eszközök**|||
-| Mobil|A Active Directory nem támogatja natív módon a mobileszközök külső megoldások nélküli használatát.| A Microsoft mobileszköz-kezelési megoldása (Microsoft Intune) integrálva van az Azure AD-vel. A Microsoft Intune eszköz állapotadatokat biztosít az identitásrendszer számára a hitelesítés során kiértékeléshez. |
+| Mobiltelefon|A Active Directory nem támogatja natív módon a mobileszközök külső megoldások nélküli használatát.| A Microsoft mobileszköz-kezelési megoldása (Microsoft Intune) integrálva van az Azure AD-vel. A Microsoft Intune eszköz állapotadatokat biztosít az identitásrendszer számára a hitelesítés során kiértékeléshez. |
 | Windows rendszerű asztali számítógépek|Active Directory lehetővé teszi a Windows-eszközök tartományhoz való csatlakoztatását Csoportházirend, System Center Configuration Manager vagy más, harmadik féltől származó megoldások használatával.|A Windows-eszközök csatlakoztathatók [Az Azure ad-hez](../devices/index.yml). A feltételes hozzáférés segítségével ellenőrizhető, hogy egy eszköz csatlakozik-e az Azure AD-hez a hitelesítési folyamat részeként. A Windows-eszközök a [Microsoft Intune](/intune/what-is-intune)használatával is kezelhetők. Ebben az esetben a feltételes hozzáférés azt mérlegeli, hogy az eszköz megfelelő-e (például naprakész biztonsági javítások és vírus-aláírások), mielőtt engedélyezi a hozzáférést az alkalmazásokhoz.|
 | Windows-kiszolgálók| A Active Directory Csoportházirend vagy más felügyeleti megoldásokkal erős felügyeleti képességeket biztosít a helyszíni Windows-kiszolgálók számára.| A Windows Server rendszerű virtuális gépek az Azure-ban kezelhetők [Azure ad Domain Services](../../active-directory-domain-services/index.yml)használatával. A [felügyelt identitások](../managed-identities-azure-resources/index.yml) akkor használhatók, ha a virtuális gépeknek hozzáférésre van szükségük az Identity System könyvtárához vagy erőforrásaihoz.|
 | Linux/UNIX rendszerű számítási feladatok|A Active Directory nem támogatja natív módon a nem Windows rendszerek használatát külső megoldások nélkül, bár a Linux rendszerű gépek úgy konfigurálhatók, hogy Kerberos-tartományként hitelesítsék magukat a Active Directory használatával.|A Linux/UNIX rendszerű virtuális gépek [felügyelt identitásokat](../managed-identities-azure-resources/index.yml) használhatnak az identitásrendszer vagy erőforrások eléréséhez. Néhány szervezet áttelepíti ezeket a számítási feladatokat a Felhőbeli tároló technológiákba, amelyek felügyelt identitásokat is használhatnak.|

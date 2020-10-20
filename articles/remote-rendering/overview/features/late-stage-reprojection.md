@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893203"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205642"
 ---
 # <a name="late-stage-reprojection"></a>Újravetítés késői fázisban
 
@@ -46,7 +46,7 @@ A síkbeli LSR újratervezi azokat az objektumokat, amelyek a megadott síkon k�
 
 ### <a name="configure-planar-lsr-in-unity"></a>Síkbeli LSR konfigurálása az egységben
 
-A sík paramétereit egy úgynevezett *fókuszpontból*származtatják, amelynek minden keretét meg kell adnia `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . A részletekért tekintse meg az [Unity Focus Point API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) -t. Ha nem állít be fókuszt, a rendszer tartalékot választ Önnek. Az automatikus tartalék azonban gyakran az optimálisnál rosszabb eredményeket eredményez.
+A sík paramétereit egy úgynevezett *fókuszpontból*származtatják, amelynek minden keretét meg kell adnia `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . A részletekért tekintse meg az [Unity Focus Point API](/windows/mixed-reality/focus-point-in-unity) -t. Ha nem állít be fókuszt, a rendszer tartalékot választ Önnek. Az automatikus tartalék azonban gyakran az optimálisnál rosszabb eredményeket eredményez.
 
 Saját maga is kiszámíthatja a fókuszt, bár érdemes lehet a távoli renderelési gazdagép alapján kiszámítani. Meghívásával szerezze be a következőt: `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` . A rendszer arra kéri, hogy adjon meg egy koordináta-keretet, amelyben kifejezni szeretné a fókuszt. A legtöbb esetben csak az eredményt szeretné megadni `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` .
 

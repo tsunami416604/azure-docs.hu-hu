@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803823"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203670"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -88,7 +88,7 @@ A videó minősége a hálózati minőség vagy a hiányzó H265-videó kodekkel
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>A MRC-mel rögzített videó nem tükrözi az élő élmény minőségét
 
-A HoloLens [vegyes valóság-rögzítéssel (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)rögzíthet videót. Az eredményül kapott videó azonban rosszabb minőségben működik, mint az élő élmény, két okból:
+A HoloLens [vegyes valóság-rögzítéssel (MRC)](/windows/mixed-reality/mixed-reality-capture-for-developers)rögzíthet videót. Az eredményül kapott videó azonban rosszabb minőségben működik, mint az élő élmény, két okból:
 * A videó frameráta 30 Hz-re van korlátozva, szemben a 60 Hz-es értékkel.
 * A videó-lemezképek nem haladnak át a [késői szakasz újravetítésének](../overview/features/late-stage-reprojection.md) feldolgozásának lépésén, így a videó choppier válik.
 

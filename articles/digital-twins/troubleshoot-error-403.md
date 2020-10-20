@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: bc4fbbc265bef00be27c890c3f090a49591dc415
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86fd6a5d7ca1cb9c828a4ad095720f1664b82caa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562740"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201430"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>A szolgáltatási kérelem sikertelen. Állapot: 403 (tiltott)
 
@@ -29,7 +29,7 @@ Ez a hiba általában azt jelzi, hogy a szolgáltatáshoz tartozó szerepkörala
 
 ### <a name="cause-2"></a>Ok #2
 
-Ha ügyfélalkalmazás használatával kommunikál az Azure Digital Twins szolgáltatással, ez a hiba azért fordulhat elő, mert a [Azure Active Directory (Azure ad)](../active-directory/fundamentals/active-directory-whatis.md) alkalmazás regisztrációja nem rendelkezik az Azure Digital Twins szolgáltatáshoz beállított engedélyekkel.
+Ha egy ügyfélalkalmazás használatával kommunikál az Azure Digital Twins szolgáltatással, amely az [alkalmazás regisztrálásával](how-to-create-app-registration.md)van hitelesítve, akkor ez a hiba akkor fordulhat elő, ha az alkalmazás regisztrációja nem rendelkezik az Azure Digital Twins szolgáltatáshoz beállított engedélyekkel.
 
 Az alkalmazás regisztrációjának az Azure Digital Twins API-khoz konfigurált hozzáférési engedélyekkel kell rendelkeznie. Ezután, amikor az ügyfélalkalmazás az alkalmazás regisztrálásakor hitelesíti magát, megkapja az alkalmazás-regisztrációhoz megadott engedélyeket.
 
@@ -59,23 +59,33 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 További információ erről a szerepkör-követelményről és a hozzárendelési folyamatról: a [ *felhasználó hozzáférési engedélyeinek beállítása* szakasz](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) , *útmutató: példány és hitelesítés beállítása (CLI vagy portál)*.
 
-Ha már rendelkezik ezzel a szerepkör-hozzárendeléssel, és továbbra is a 403-es problémát tapasztalja, folytassa a következő megoldással.
+Ha már rendelkezik ezzel a szerepkör-hozzárendeléssel, *és* Azure ad-alkalmazás-regisztrációt használ egy ügyfélalkalmazás hitelesítéséhez, folytassa a következő megoldással, ha a megoldás nem oldotta meg a 403 problémát.
 
 ### <a name="solution-2"></a>Megoldás #2
 
-A második megoldás annak ellenőrzése, hogy az Azure AD-alkalmazás regisztrációja rendelkezik-e az Azure Digital Twins szolgáltatáshoz konfigurált engedélyekkel. Ha nincs konfigurálva, állítsa be őket.
+Ha Azure AD-alkalmazás-regisztrációt használ egy ügyfélalkalmazás hitelesítéséhez, a második lehetséges megoldás annak ellenőrzése, hogy az alkalmazás regisztrációja rendelkezik-e az Azure Digital Twins szolgáltatáshoz konfigurált engedélyekkel. Ha ezek nincsenek konfigurálva, állítsa be őket.
 
 #### <a name="check-current-setup"></a>Aktuális beállítás keresése
 
-[!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
+Annak ellenőrzéséhez, hogy az engedélyek megfelelően vannak-e konfigurálva, keresse meg az [Azure ad-alkalmazás regisztrációjának áttekintése lapot](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) a Azure Portal. Ezt a lapot saját maga is elérheti, ha a portálon a *Alkalmazásregisztrációk* keres rá.
+
+Váltson a *minden alkalmazás* lapra, és tekintse meg az előfizetésében létrehozott összes regisztrációs alkalmazást.
+
+Ekkor megjelenik az imént létrehozott alkalmazás-regisztráció a listában. Válassza ki, hogy megnyissa a részleteit.
+
+:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Alkalmazásregisztrációk lap a Azure Portal":::
 
 Először ellenőrizze, hogy az Azure Digital Twins engedélyeinek beállításai megfelelően vannak-e beállítva a regisztrációhoz. Ehhez a menüsávban válassza a *jegyzékfájl* lehetőséget az alkalmazás regisztrációs jegyzékfájljának megtekintéséhez. Görgessen a Code (kód) ablak aljára, és keresse meg a következő mezőket `requiredResourceAccess` . Az értékeknek meg kell egyezniük az alábbi képernyőképen láthatókkal:
 
-[!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Alkalmazásregisztrációk lap a Azure Portal":::
+
+Ezután válassza az *API-engedélyek* lehetőséget a menüsávon annak ellenőrzéséhez, hogy az alkalmazás regisztrálása olvasási/írási engedélyt tartalmaz az Azure Digital Twins szolgáltatáshoz. Ehhez a következőhöz hasonló bejegyzést kell megjelennie:
+
+:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Alkalmazásregisztrációk lap a Azure Portal":::
 
 #### <a name="fix-issues"></a>Hibák elhárítása
 
-Ha ezek bármelyike másképp jelenik meg, mint a leírtak között, kövesse az alkalmazások regisztrálásának beállítása című témakör útmutatását az [ *ügyfélalkalmazások hozzáférési engedélyeinek beállítása* című szakaszban](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) , *útmutató: példány és hitelesítés beállítása (parancssori felület vagy portál)*.
+Ha bármelyike másképp jelenik meg, mint a leírtak, kövesse az alkalmazás regisztrációjának beállítása című témakör útmutatását [*: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
