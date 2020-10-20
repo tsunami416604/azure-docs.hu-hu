@@ -6,17 +6,17 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269726"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201120"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Azure-erőforrások kezelése és a költségek figyelése automatizálási feladatok létrehozásával (előzetes verzió)
 
 > [!IMPORTANT]
-> Ez a funkció nyilvános előzetes verzióban érhető el, és szolgáltatói szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez a képesség nyilvános előzetes verzióban érhető el, nem vonatkozik rá szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az [Azure-erőforrások](../azure-resource-manager/management/overview.md#terminology) egyszerűbb kezelése érdekében az Automation-feladatütemezés használatával automatizált felügyeleti feladatokat hozhat létre egy adott erőforráshoz vagy erőforráscsoporthoz, amely az erőforrástípus alapján eltérő lehet. Egy [Azure Storage-fiók](../storage/common/storage-account-overview.md)esetében például beállíthat egy Automation-feladatot, amely elküldi Önnek az adott Storage-fiók havi költségét. Azure-beli [virtuális gépek](https://azure.microsoft.com/services/virtual-machines/)esetén létrehozhat egy automatizálási feladatot, amely bekapcsolja vagy kikapcsolja a virtuális gépet egy előre meghatározott ütemterv szerint.
 
@@ -47,7 +47,7 @@ Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
 
 Jelenleg csak az erőforrás szintjén hozhat létre Automation-feladatokat, megtekintheti a feladat futtatási előzményeit, és szerkesztheti a feladat alapjául szolgáló logikai alkalmazás munkafolyamatát, amelyet a [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatás működtet. Az automatizálási feladatok több alapszintű és könnyű, mint [Azure Automation](../automation/automation-intro.md).
 
-Ezzel szemben az Azure Automation egy felhőalapú automatizálási és konfigurációs szolgáltatás, amely támogatja az Azure-beli és nem Azure-beli környezetek egységes felügyeletét. A szolgáltatás folyamat- [automatizálást biztosít a folyamatok](../automation/automation-intro.md#process-automation) [runbookok](../automation/automation-runbook-execution.md), a [változások követésével és leltározásával](../automation/change-tracking.md), a frissítési felügyelettel, a megosztott képességekkel és a heterogén funkciókkal való összeszereléshez. Az Automation szolgáltatás teljes körű irányítást biztosít a számítási feladatok és erőforrások üzembe helyezése, üzemeltetése és leszerelése során.
+Ezzel szemben az Azure Automation egy felhőalapú automatizálási és konfigurációs szolgáltatás, amely támogatja az Azure-beli és nem Azure-beli környezetek egységes felügyeletét. A szolgáltatás folyamat- [automatizálást biztosít a folyamatok](../automation/automation-intro.md#process-automation) [runbookok](../automation/automation-runbook-execution.md), a [változások követésével és leltározásával](../automation/change-tracking/overview.md), a frissítési felügyelettel, a megosztott képességekkel és a heterogén funkciókkal való összeszereléshez. Az Automation szolgáltatás teljes körű irányítást biztosít a számítási feladatok és erőforrások üzembe helyezése, üzemeltetése és leszerelése során.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653383"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204877"
 ---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
 Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, több útvonalon csatlakozhat a Microsofthoz. Ennek eredményeképpen előfordulhat, hogy az útválasztás nem lesz optimális – azaz a forgalom hosszabb úton jut el a Microsofthoz, illetve a Microsofttól az Ön hálózatába. Minél hosszabb a hálózati útvonal, annál nagyobb a késés. A késés közvetlen hatással van az alkalmazások teljesítményére és a felhasználói élményre. Ez a cikk ezt a problémát mutatja be, és ismerteti, hogyan optimalizálható az útválasztás a standard útválasztási technológiák segítségével.
@@ -64,7 +64,7 @@ Az útválasztás mindkét irodához való optimalizálásához ismernie kell, h
 >
 
 ## <a name="suboptimal-routing-from-microsoft-to-customer"></a>Optimálisnál rosszabb útválasztás a Microsofttól az ügyfél felé
-Itt látható egy másik példa, amelyben a Microsofttól induló kapcsolatok hosszabb útvonalat vesznek igénybe a hálózat eléréséhez. Ebben az esetben helyszíni Exchange-kiszolgálókat és az Exchange Online-t használja egy [hibrid környezetben](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx). Az irodák egy WAN hálózathoz csatlakoznak. Mindkét irodában meghirdeti a helyszíni kiszolgálók előtagjait a Microsoft számára a két ExpressRoute-kapcsolatcsoporton keresztül. Az Exchange Online bizonyos esetekben, például a postaládák áttelepítésekor kapcsolatot kezdeményez a helyszíni kiszolgálókkal. Sajnos a Los Angeles-i irodához irányuló kapcsolat az USA keleti régiójában lévő ExpressRoute-kapcsolatcsoporton keresztül van átirányítva, mielőtt az áthaladna az egész kontinensen vissza a nyugati partra. A probléma oka hasonló az első esetéhez. A Microsoft hálózata információ hiányában nem tudja megállapítani, hogy melyik ügyfélelőtag van közel az USA keleti régiójához, és melyik az USA nyugati régiójához. Emiatt a rossz útvonalat választja a Los Angeles-i irodához.
+Itt látható egy másik példa, amelyben a Microsofttól induló kapcsolatok hosszabb útvonalat vesznek igénybe a hálózat eléréséhez. Ebben az esetben helyszíni Exchange-kiszolgálókat és az Exchange Online-t használja egy [hibrid környezetben](/exchange/exchange-hybrid). Az irodák egy WAN hálózathoz csatlakoznak. Mindkét irodában meghirdeti a helyszíni kiszolgálók előtagjait a Microsoft számára a két ExpressRoute-kapcsolatcsoporton keresztül. Az Exchange Online bizonyos esetekben, például a postaládák áttelepítésekor kapcsolatot kezdeményez a helyszíni kiszolgálókkal. Sajnos a Los Angeles-i irodához irányuló kapcsolat az USA keleti régiójában lévő ExpressRoute-kapcsolatcsoporton keresztül van átirányítva, mielőtt az áthaladna az egész kontinensen vissza a nyugati partra. A probléma oka hasonló az első esetéhez. A Microsoft hálózata információ hiányában nem tudja megállapítani, hogy melyik ügyfélelőtag van közel az USA keleti régiójához, és melyik az USA nyugati régiójához. Emiatt a rossz útvonalat választja a Los Angeles-i irodához.
 
 ![2. ExpressRoute-eset– az optimálisnál rosszabb útválasztás a Microsofttól az ügyfél felé](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 

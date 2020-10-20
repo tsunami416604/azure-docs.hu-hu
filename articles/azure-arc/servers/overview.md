@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolg
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
 ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: c8d74bcaa7eb0b4adbb5aaf66626b9bfc349d639
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b2875cfdeb80aa17b19cee462dc35eaa7a3de665
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108898"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92200967"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Mi azok az Azure Arc-kompatibilis kiszolgálók?
 
@@ -23,7 +23,7 @@ Ha a gépet az Azure arc-kompatibilis kiszolgálókhoz kapcsolja, lehetővé tes
 
 - Az Azure Virtual Machines szolgáltatáshoz tartozó szabályzat-hozzárendeléssel megegyező módon rendeljen hozzá [Azure Policy vendég konfigurációkat](../../governance/policy/concepts/guest-configuration.md) . Napjainkban a legtöbb vendég konfigurációs házirend nem alkalmaz konfigurációkat, csak a számítógépen lévő beállításokat naplózzák. Az arc-kompatibilis kiszolgálókkal Azure Policy vendég konfigurációs szabályzatok használatának költségét az Azure Policy [díjszabási útmutatójában](https://azure.microsoft.com/pricing/details/azure-policy/)találja.
 
-- A felügyelt kiszolgálókon a telepített szoftverekkel, a Microsoft-szolgáltatásokkal, a Windows-beállításjegyzékkel és-fájlokkal, valamint a Linux-démonokkal kapcsolatos konfigurációs változások a Azure Automation [change Tracking és a leltár](../../automation/change-tracking.md)használatával.
+- A felügyelt kiszolgálókon a telepített szoftverekkel, a Microsoft-szolgáltatásokkal, a Windows-beállításjegyzékkel és-fájlokkal, valamint a Linux-démonokkal kapcsolatos konfigurációs változások a Azure Automation [change Tracking és a leltár](../../automation/change-tracking/overview.md)használatával.
 
 - Figyelheti a csatlakoztatott számítógép vendég operációs rendszerének teljesítményét, és felderítheti az alkalmazás-összetevőket, hogy a folyamatait és függőségeit a [Azure monitor for VMS](../../azure-monitor/insights/vminsights-overview.md)használatával kommunikáló más erőforrásokkal figyelje.
 
@@ -47,6 +47,6 @@ A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott he
 
 A csatlakoztatott gépi ügynök egy normál szívverésű üzenetet küld a szolgáltatásnak 5 percenként. Ha a szolgáltatás nem tudja fogadni ezeket a szívverési üzeneteket a gépről, a gép offline állapotba kerül, és a rendszer 15 – 30 percen belül automatikusan **megszakítja a kapcsolatot** a portálon. Amikor egy későbbi szívverési üzenetet kap a csatlakoztatott számítógép ügynökéről, az állapota automatikusan **csatlakoztatva**lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az arc-kompatibilis kiszolgálók több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények megismeréséhez, az ügynök műszaki részleteihez és a telepítési módszerekhez.
