@@ -4,19 +4,18 @@ summary: Az Azure Data Lake Analytics használatával big data-elemzési feladat
 metadata:
   title: Azure Data Lake Analytics
   description: Az Azure Data Lake Analytics használatával big data-elemzési feladatokat futtathat, amelyek akár hatalmas adatkészletekre is skálázhatók.
-  services: data-lake-analytics
   ms.service: data-lake-analytics
   ms.topic: landing-page
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 5dadcad164a309a7251a1e4627cf1e78f6e927d4
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 24f8293f7c7f60dd143a2ee0920c63d640cb97b6
+  ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87475719"
+  ms.lasthandoff: 10/20/2020
+  ms.locfileid: "92217626"
 landingContent:
 - title: Tudnivalók a Data Lake Analyticsről
   linkLists:
@@ -41,7 +40,7 @@ landingContent:
     - text: U-SQL – első lépések
       url: data-lake-analytics-u-sql-get-started.md
     - text: U-SQL nyelvi referencia
-      url: https://docs.microsoft.com/u-sql/
+      url: /u-sql/
     - text: Ismerkedés a U-SQL-katalógussal
       url: data-lake-analytics-u-sql-catalog.md
     - text: Felhasználó által definiált operátorok használata

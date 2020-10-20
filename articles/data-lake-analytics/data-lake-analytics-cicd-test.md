@@ -1,21 +1,18 @@
 ---
 title: A Azure Data Lake Analytics kód tesztelése
 description: Megtudhatja, hogyan adhat hozzá tesztelési eseteket a U-SQL és a kiterjesztett C#-kód számára a Azure Data Lake Analyticshoz.
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 08/30/2019
-ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129916"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219207"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>A Azure Data Lake Analytics kód tesztelése
 
@@ -112,7 +109,7 @@ A projekt összeállítása után válassza a **Test**  >  **Windows**  >  **tes
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Tesztelési esetek futtatása az Azure-folyamatokban<a name="run-test-cases-in-azure-devops"></a>
 
-Az **U-SQL-parancsfájlok tesztelési projektjei** és a **c# Udo tesztelési projektek** is öröklik a c# egység tesztelési projektjeit. A [Visual Studio tesztelési feladata](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) az Azure-folyamatokban ezeket a tesztelési eseteket futtathatja.
+Az **U-SQL-parancsfájlok tesztelési projektjei** és a **c# Udo tesztelési projektek** is öröklik a c# egység tesztelési projektjeit. A [Visual Studio tesztelési feladata](/azure/devops/pipelines/test/getting-started-with-continuous-testing) az Azure-folyamatokban ezeket a tesztelési eseteket futtathatja.
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>U-SQL-tesztelési esetek futtatása az Azure-folyamatokban
 
@@ -148,7 +145,7 @@ C# UDO-teszt esetén ügyeljen arra, hogy a következő szerelvényekre hivatkoz
 
 Ha [a Microsoft. Azure. DataLake. USQL. interfaces Nuget-csomagon](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/)keresztül hivatkozik rájuk, ügyeljen arra, hogy a létrehozási folyamat során vegyen fel egy Nuget-visszaállítási feladatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md)
 - [U-SQL-szkript futtatása a helyi gépen](data-lake-analytics-data-lake-tools-local-run.md)

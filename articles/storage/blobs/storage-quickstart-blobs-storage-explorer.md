@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f8768a1b2542eb0461ef0c50c96e22c80eced57a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f920a937f4b9b51f9babd03ed0fb42dd3c7775d8
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836462"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217789"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Gyors útmutató: Blobok létrehozása a Azure Storage Explorer használatával
 
@@ -30,7 +30,7 @@ A rövid útmutatóhoz az Azure Storage Explorer telepítése szükséges. Az Az
 
 Első indításkor megjelenik a **Microsoft Azure Storage Explorer – Csatlakozás** ablak. A Storage Explorer számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz. A csatlakozási lehetőségeket az alábbi táblázat ismerteti:
 
-|Feladat|Rendeltetés|
+|Feladat|Cél|
 |---|---|
 |Azure-fiók hozzáadása | Átirányítja a szervezet bejelentkezési lapjára az Azure-ba való hitelesítéshez. |
 |Kapcsolati sztring vagy közös hozzáférésű jogosultságkód URI azonosítójának használata | Egy tároló vagy tárfiók közvetlen elérésére szolgál egy SAS-token vagy egy közös kapcsolati sztring segítségével. |
@@ -38,7 +38,7 @@ Első indításkor megjelenik a **Microsoft Azure Storage Explorer – Csatlakoz
 
 Válassza **Az Azure-fiók hozzáadása** lehetőséget, és kattintson **a bejelentkezés..**. elemre. A képernyőn megjelenő utasításokat követve jelentkezzen be az Azure-fiókjába.
 
-![Microsoft Azure Storage Explorer – Csatlakozás ablak](media/storage-quickstart-blobs-storage-explorer/connect.png)
+![A Microsoft Azure Storage Explorer-csatlakozási ablakot megjelenítő képernyőkép.](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
 A csatlakozás befejeztével az Azure Storage Explorer betöltést követően megjeleníti az **Explorer** lapot. Ez a nézet betekintést nyújt az összes Azure Storage-fiókba, valamint a [Azurite-tároló emulátoron](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Cosmos db](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) fiókokon vagy [Azure stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) környezeteken keresztül konfigurált helyi tárhelyre.
 
@@ -70,7 +70,7 @@ Ha az **OK** gombra kattint, a kiválasztott fájlokat a rendszer sorba állítj
 
 Az **Azure Storage Explorerben** válasszon ki egy tárfiókhoz tartozó tárolót. A fő panelen a kiválasztott tárolóban található blobok listája látható.
 
-![Microsoft Azure Storage Explorer – Tárolóban lévő blobok listázása](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
+![Képernyőkép, amely bemutatja, hol válasszon ki egy tárolót Microsoft Azure Storage Explorerban.](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
 
 ## <a name="download-blobs"></a>Blobok letöltése
 
@@ -80,7 +80,7 @@ Blobok az **Azure Storage Explorer** használatával való letöltéséhez jelö
 
 Az Azure Storage Explorer lehetővé teszi a blobokról készült [pillanatképek](storage-blob-snapshots.md) rögzítését és kezelését. Egy blob pillanatképének elkészítéséhez kattintson a jobb gombbal a blobra, majd válassza a **Pillanatkép létrehozása** lehetőséget. Egy blob pillanatképének megtekintéséhez kattintson a jobb gombbal a blobra, majd válassza a **Pillanatképek kezelése** lehetőséget. Az aktuális lapon megjelenik a blob pillanatképeinek listája.
 
-![Microsoft Azure Storage Explorer – Tárolóban lévő blobok listázása](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
+![A Microsoft Azure Storage Explorerban található Blobok listáját bemutató képernyőkép.](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
 
 ## <a name="manage-access-policies"></a>Hozzáférési szabályzatok kezelése
 
@@ -94,7 +94,7 @@ A közös hozzáférésű jogosultságkódok (SAS) a Storage Exploreren kereszt�
 
 ![Microsoft Azure Storage Explorer – Tárolóban lévő blobok listázása](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között az **Azure Storage Explorer** használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 

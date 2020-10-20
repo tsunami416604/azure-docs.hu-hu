@@ -1,25 +1,23 @@
 ---
 title: Felhasználók hozzáadása egy Azure Data Lake Analytics-fiókhoz
 description: Megtudhatja, hogyan adhat hozzá felhasználókat a Data Lake Analytics-fiókhoz a felhasználó hozzáadása varázsló és a Azure PowerShell használatával.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 4819b5cb252d2c646905d277fcbedc57a55fe692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c04b1bbd62e156aeb8d3a0ebb244cfbc753dec52
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450214"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219377"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Felhasználó hozzáadása az Azure Portalon
 
 ## <a name="start-the-add-user-wizard"></a>A felhasználó hozzáadása varázsló elindítása
 1. Nyissa meg a Azure Data Lake Analyticst a használatával https://portal.azure.com .
 2. Kattintson a **felhasználó hozzáadása varázsló**elemre.
-3. A **felhasználó kiválasztása** lépésben keresse meg azt a felhasználót, akit hozzá kíván adni. Kattintson a **Kiválasztás** elemre.
+3. A **felhasználó kiválasztása** lépésben keresse meg azt a felhasználót, akit hozzá kíván adni. Válassza a **Kiválasztás** lehetőséget.
 4. a **szerepkör kiválasztása lépésben válassza ki** **Data Lake Analytics fejlesztőt**. Ez a szerepkör az U-SQL-feladatok elküldéséhez/figyeléséhez vagy kezeléséhez szükséges engedélyek minimális készletét határozza meg. Rendeljen hozzá ehhez a szerepkörhöz, ha a csoport nem az Azure-szolgáltatások kezelésére szolgál.
 5. A **katalógus engedélyeinek kiválasztása** lépésben válassza ki azokat az adatbázisokat, amelyekre a felhasználónak hozzá kell férnie. A feladatok elküldéséhez a "Master" nevű alapértelmezett statikus adatbázishoz olvasási és írási hozzáférés szükséges. Amikor elkészült, kattintson az **OK** gombra.
 6. A **kiválasztott engedélyek hozzárendelésének** utolsó lépésében tekintse át a varázsló által végrehajtott módosításokat. Kattintson az **OK** gombra.

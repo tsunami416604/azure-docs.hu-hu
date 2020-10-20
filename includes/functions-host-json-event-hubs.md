@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 2604a1608f21d7239db755027e15b8198fb3f9f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f3a58d3a7470867ab23249bbd645289e010ad89
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81791688"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92223161"
 ---
 ### <a name="functions-2x-and-higher"></a>Functions 2.x és újabb
 
@@ -31,7 +31,7 @@ ms.locfileid: "81791688"
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |maxBatchSize|10|A fogadott események száma fogadási hurokban.|
-|prefetchCount|300|A mögöttes alapértelmezett előzetes lehívási szám `EventProcessorHost` .|
+|prefetchCount|300|A mögöttes alapértelmezett előzetes lehívási szám `EventProcessorHost` . A minimálisan megengedett érték 10.|
 |batchCheckpointFrequency|1|Az EventHub kurzor ellenőrzőpontjának létrehozása előtt feldolgozandó eseményvezérelt kötegek száma.|
 
 > [!NOTE]
@@ -57,4 +57,3 @@ ms.locfileid: "81791688"
 
 > [!NOTE]
 > A host.jsAzure Functions 1. x verzióban való hivatkozását lásd: [host.jsAzure functions 1. x-re](../articles/azure-functions/functions-host-json-v1.md).
-

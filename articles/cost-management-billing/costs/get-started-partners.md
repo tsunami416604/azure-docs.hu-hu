@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372255"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827587"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -151,9 +151,11 @@ Az előfizetés költségeinek megtekintéséhez lépjen a **Költségkezelés +
 
 A költségelemzés, a költségvetések és a riasztások a használatalapú fizetés díjszabása szerinti költségek mellett érhetők el az előfizetés és az erőforráscsoport Azure RBAC-hatóköreihez.
 
-A fenntartott példányok amortizált nézetei és tényleges költségei nulla díjat mutatnak az Azure RBAC-hatókörben. A fenntartott példányok költségei csak azokban a számlázási hatókörökben jelennek meg, ahol a vásárlások történtek.
+A fenntartott példányok amortizált nézetei és tényleges költségei nulla díjat mutatnak az Azure RBAC-hatókörben. A jogosultságok, például a fenntartott példányok vásárlási költségei és a Marketplace díjai csak a partner bérlőjének azon számlázási hatóköreiben jelennek meg, ahol a vásárlások történtek.
 
 A nézetben látható költségek kiszámításához használt kiskereskedelmi árak ugyanazok, amelyeket az Azure-díjkalkulátor minden ügyfélnek megjelenít. A megjelenő költségek nem tartalmazzák az olyan kedvezményeket vagy jóváírásokat, amelyekkel a partnerek rendelkezhetnek. Ezek lehetnek például a partneri jóváírások, a szintkedvezmények vagy a globális szolgáltatási kedvezmények.
+
+ 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Költségek elemzése a költségelemzésben
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99f2197732a332e860af421f46d1049c2388043c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936826"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221230"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API C használatával #
 
@@ -28,21 +28,20 @@ Bár ez az alkalmazás C# nyelven íródott, az API egy REST-alapú webszolgált
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
-
-- A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető. A NuGet-csomag telepítése a Visual Studióban:
-
-   1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
-   2. Válassza a **NuGet-csomagok kezelése**lehetőséget.
-   3. Keresse meg és válassza ki a *Newtonsoft.Js*, majd telepítse a csomagot.
-
-- Ha Linux/MacOS rendszert használ, akkor az alkalmazás a [mono](https://www.mono-project.com/)használatával futtatható.
+- Ha Linux vagy MacOS rendszert használ, a [Visual Studio Code](https://code.visualstudio.com/) és a [.net Core](/dotnet/core/install/macos) használatával is követheti ezt a rövid útmutatót
+- [Ingyenes Azure-fiók](https://azure.microsoft.com/free/dotnet)
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódhoz:
+1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. 
+1. Adja hozzá a [Newtonsoft.Jst a](https://www.nuget.org/packages/Newtonsoft.Json/) NuGet-csomaghoz.
+    1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
+    2. Válassza a **NuGet-csomagok kezelése**lehetőséget.
+    3. Keresse meg és válassza ki a *Newtonsoft.Js*, majd telepítse a csomagot.
+1. Ezután adja hozzá a következő névtereket a fő kódhoz:
     
     ```csharp
     using Newtonsoft.Json;
@@ -175,7 +174,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)

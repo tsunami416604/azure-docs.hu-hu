@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 10/19/2020
 ms.author: juliako
-ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85130755"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219790"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Gyors útmutató: regisztráció és az első videó feltöltése
 
@@ -39,28 +39,32 @@ A Video Indexer használatával használható fájlformátumok listáját a [bem
 ### <a name="upload-a-video"></a>Videó feltöltése
 
 1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyre.
-2. A videó feltöltéséhez kattintson a **Feltöltés** gombra vagy hivatkozásra.
+1. A videó feltöltéséhez kattintson a **Feltöltés** gombra vagy hivatkozásra.
 
     > [!NOTE]
     > A videó neve nem lehet nagyobb, mint 80 karakter.
 
-    ![Feltöltés](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Feltöltés":::
+1. A videó feltöltése után a Video Indexer elkezdi indexelni és elemezni a videót. Ekkor megjelenik a folyamat állapota. 
 
-    A videó feltöltése után a Video Indexer elkezdi indexelni és elemezni a videót.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Feltöltés":::
+1. A Video Indexer elemzése után egy e-mailt fog kapni a videóra mutató hivatkozással, és egy rövid leírást arról, hogy mi található a videóban. Például: személyek, beszélt és írott szavak, témakörök és elnevezett entitások.
+1. Később megkeresheti a videóját a könyvtár listán, és különböző műveleteket hajthat végre. Például: keresés, újra index, szerkesztés.
 
-    ![Feltöltve](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Ha a Video Indexer befejezte az elemzést, kapni fog egy értesítést, benne a videóra mutató hivatkozással és a videóban talált tartalom rövid leírásával. Például: személyek, témák, OCR-ek.
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Feltöltés":::
+ 
 ## <a name="see-also"></a>Lásd még
 
 További részletekért tekintse meg a [videók feltöltése és indexelése](upload-index-videos.md) című témakört.
 
-A videók feltöltése és indexelése után megkezdheti [video Indexer](video-indexer-view-edit.md) webhely használatát, vagy [video Indexer fejlesztői portálon](video-indexer-use-apis.md) megtekintheti a videóban bekövetkező eredményeket. 
+A videók feltöltése és indexelése után megkezdheti [video Indexer webhely](video-indexer-view-edit.md) használatát, vagy [video Indexer fejlesztői portálon](video-indexer-use-apis.md) megtekintheti a videóban bekövetkező eredményeket. 
 
 [Az API-k használatának megkezdése](video-indexer-use-apis.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A részletes bevezetést a [bevezető laborban](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)tekintheti meg. 
 

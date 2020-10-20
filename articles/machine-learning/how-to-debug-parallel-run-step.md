@@ -11,12 +11,12 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 602babb3544093b7cd7c5b30ce4f4612148591cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315575"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216912"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep – hibakeresés és hibaelhárítás
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibaelhárít�
 
 ## <a name="testing-scripts-locally"></a>Parancsfájlok helyi tesztelése
 
-Tekintse meg a gépi tanulási folyamatok [helyi tesztelése című szakaszt](how-to-debug-pipelines.md#debug-scripts-locally) . A ParallelRunStep a ML-folyamatok lépéseit futtatja, így ugyanazt a választ is alkalmazza.
+Tekintse meg a gépi tanulási folyamatok [helyi tesztelése című szakaszt](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines) . A ParallelRunStep a ML-folyamatok lépéseit futtatja, így ugyanazt a választ is alkalmazza.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Parancsfájlok hibakeresése távoli környezetből
 
@@ -141,6 +141,8 @@ registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Következő lépések
+
+* Tekintse meg az alábbi [Jupyter-jegyzetfüzeteket Azure Machine learning folyamatok bemutatásával](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
 * A [azureml-pipeline-Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true) csomaggal kapcsolatos segítségért tekintse meg az SDK-referenciát. A ParallelRunStep osztály [dokumentációjának](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py&preserve-view=true) megtekintése.
 

@@ -7,14 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, openshift, aquasec, twistlock, Red Hat
-ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 914b29410a0f30e5c3d3a893c2e278ecbb83b648
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78271377"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218867"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Kiemelt tárolók futtatása Azure Red Hat OpenShift-fürtön
+
+> [!IMPORTANT]
+> Az Azure Red Hat OpenShift 3,11 2022. június 30-án megszűnik. Az új Azure Red Hat OpenShift 3,11-fürtök létrehozásának támogatása az 2020. november 30-ig folytatódik. A biztonsági rések elkerülése érdekében a rendszer leállítja a fennmaradó Azure Red Hat OpenShift 3,11-fürtöket a kivonulást követően.
+> 
+> Kövesse ezt az útmutatót [egy Azure Red Hat OpenShift 4-fürt létrehozásához](tutorial-create-cluster.md).
+> Ha konkrét kérdései vannak, vegye [fel velünk a kapcsolatot](mailto:arofeedback@microsoft.com).
 
 Nem futtathat tetszőleges jogosultságú tárolót az Azure Red Hat OpenShift-fürtökön.
 Az ARO-fürtökön két biztonsági figyelési és megfelelőségi megoldás futhat.
@@ -128,7 +134,7 @@ Először telepítse az `twistcli` eszközt a "Prisma-felhő telepítése" és a
 oc new-project twistlock
 ```
 
-Hagyja ki a "Prisma Cloud images to an Private Registry" (nem kötelező) szakaszát. Az Azure Red Hat Openshift nem fog működni. Használja helyette az online beállításjegyzéket.
+Hagyja ki a "Prisma Cloud images to an Private Registry" (nem kötelező) szakaszát. Az Azure Red Hat OpenShift nem fog működni. Használja helyette az online beállításjegyzéket.
 
 Az alábbiakban ismertetett javítások alkalmazásával követheti a hivatalos dokumentációt.
 Kezdje a "konzol telepítése" szakasszal.

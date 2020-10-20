@@ -2,7 +2,6 @@
 title: A Azure Security Center-riasztások sémái
 description: Ez a cikk a biztonsági riasztások Azure Security Center által használt különböző sémákat ismerteti.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901336"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220669"
 ---
 # <a name="security-alerts-schemas"></a>Biztonsági riasztások sémái
 
@@ -68,7 +67,7 @@ Az Azure Sentinel szolgáltatással kapcsolatos további információkért tekin
 
 
 
-### <a name="azure-activity-log"></a>[Azure-tevékenység naplója](#tab/schema-activitylog)
+### <a name="azure-activity-log"></a>[Azure-tevékenységnapló](#tab/schema-activitylog)
 
 Azure Security Center naplózza a biztonsági riasztásokat az Azure-tevékenység naplójában lévő eseményekként.
 
@@ -173,7 +172,7 @@ A biztonsági riasztások eseményeit a tevékenység naplójában tekintheti me
 
 A Microsoft Graph az adatokhoz és az intelligenciához tartozó átjáró a Microsoft 365ban. Egy egységesített programozható modellt biztosít, amellyel a Microsoft 365, a Windows 10 és a Enterprise Mobility + Security rengeteg adatmennyiségét érheti el. A Microsoft Graphban található adatmennyiség használatával olyan szervezeteknek és fogyasztóknak készült alkalmazásokat hozhat létre, amelyek több millió felhasználóval működnek.
 
-Az MS Graphba elküldett biztonsági riasztások sémája és JSON-ábrázolása [a Microsoft Graph dokumentációjában](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)érhető el.
+Az MS Graphba elküldett biztonsági riasztások sémája és JSON-ábrázolása [a Microsoft Graph dokumentációjában](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true)érhető el.
 
 ---
 

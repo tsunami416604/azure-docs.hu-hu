@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5918adfb6724c984f4a59fda802e2f4c5cde7c1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964685"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221196"
 ---
 # <a name="unsupported-language-deployments"></a>Nem támogatott nyelvű környezetek
 
@@ -35,11 +35,11 @@ Ahhoz, hogy a modellek központi telepítésre legyenek kijelöltek, a következ
 ## <a name="process"></a>Folyamat
 Miután áttelepítette a modelleket az üzembe helyezésre jelölt központból, megkeresheti őket a munkaterület **Beállítások** lapján, és görgetheti az oldal végére, ahol megjelenik a nem **támogatott Translator hub tréningek** szakasz.  Ez a szakasz csak akkor jelenik meg, ha olyan projektekkel rendelkezik, amelyek megfelelnek a fent említett előfeltételeknek.
 
-![Áttelepítés az elosztóról](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Képernyőfelvétel: a nem támogatott Translator hub képzések szakasz.](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 A nem **támogatott Translator hub tréningek** kiválasztási lapján a nem **kérelmezett képzések** lap az üzembe helyezésre jogosult modelleket tartalmazza.  Válassza ki a telepíteni kívánt modelleket, és küldje el a kérést.   A 30. áprilisi üzembe helyezési határidő előtt annyi modellt választhat, amennyit csak szeretne üzembe helyezéshez.
  
-![Áttelepítés az elosztóról](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![A nem kérelmezett Betanítások lapot megjelenítő képernyőkép.](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 Az elküldés után a modell többé nem lesz elérhető a nem **kérelmezett képzések** lapon, és ehelyett a **kért képzések** lapon fog megjelenni.  A kért képzések bármikor megtekinthetők.
 
@@ -54,7 +54,7 @@ Az üzembe helyezést követően a szokásos üzemeltetési díjak érvényesek.
 
 A standard egyéni fordítói modellektől eltérően a hub-modellek csak egyetlen régióban lesznek elérhetők, így a többrégiós üzemeltetési díjak nem lesznek érvényesek.  A üzembe helyezést követően bármikor megkezdheti a hub-modell üzembe helyezését az áttelepített egyéni Translator projekten keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Modell betanítása](how-to-train-model.md).
 - Az üzembe helyezett egyéni fordítási modell használatának megkezdése a [Microsoft Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)segítségével.

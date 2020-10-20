@@ -3,12 +3,12 @@ title: SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 description: Bevezetés SQL Server adatbázisok biztonsági mentésére az Azure Backup szolgáltatás használatával
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8130990f86311221ae6d097137a66a6e9b81be73
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254584"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218085"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 
@@ -23,7 +23,8 @@ SQL Server-adatbázis biztonsági mentése az Azure-ba és az Azure-ból való h
 1. Az adatbázis helyreállítása az Azure-ból.
 
 >[!NOTE]
->A DPM 2019 UR2 támogatja a fürt megosztott kötetei (CSV) használatával SQL Server feladatátvevő fürt példányait.
+>A DPM 2019 UR2 támogatja a fürt megosztott kötetei (CSV) használatával SQL Server feladatátvevő fürt példányait.<br><br>
+>A [SQL Server feladatátvevő fürt példányának](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure)  védelme az Azure-beli közvetlen tárolóhelyekekkel és az Azure-beli [megosztott lemezekkel rendelkező SQL Server feladatátvevő fürt példányával](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure) . Az Azure-beli virtuális gépeken üzembe helyezett SQL-példányok elleni védelem érdekében az DPM-kiszolgálót telepíteni kell az Azure-beli virtuális gépen. 
 
 ## <a name="prerequisites-and-limitations"></a>Előfeltételek és korlátozások
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 438d2fec9efc6a1ad3fcdaa2829573e7205820ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5473730484240f2c813c9ae279e1516ed93a45c5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385960"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214957"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Webes API-alkalmazás hozzáadása a Azure Active Directory B2C-bérlőhöz
 
@@ -34,11 +34,11 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 1. Válassza a **Regisztráció** lehetőséget.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** a webes API kódjában való használathoz.
 
-Ha olyan alkalmazással rendelkezik, amely megvalósítja az implicit engedélyezési folyamatot, például egy JavaScript-alapú egyoldalas alkalmazást (SPA), akkor a következő lépéseket követve engedélyezheti a folyamatot:
+Ha olyan alkalmazással rendelkezik, amely megvalósítja az implicit engedélyezési folyamatot, például egy [JavaScript-alapú egyoldalas alkalmazást (Spa)](tutorial-register-spa.md), akkor a következő lépéseket követve engedélyezheti a folyamatot:
 
 1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
 1. Az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és az **azonosító tokenek** jelölőnégyzetet.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
@@ -50,7 +50,7 @@ Ha olyan alkalmazással rendelkezik, amely megvalósítja az implicit engedélye
 6. A **Web App/web API belefoglalása** és az **implicit folyamat engedélyezése**lehetőségnél válassza az **Igen**lehetőséget.
 7. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Az éles alkalmazásban beállíthatja a válasz URL-címét egy értékre (például `https://localhost:44332` ). Tesztelési célból állítsa be a válasz URL-címét a következőre: `https://jwt.ms` .
 8. Az **alkalmazás-azonosító URI-ja**mezőben adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
-9. Kattintson a **Létrehozás** elemre.
+9. Kattintson a **Létrehozás** lehetőségre.
 10. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
 
 * * *

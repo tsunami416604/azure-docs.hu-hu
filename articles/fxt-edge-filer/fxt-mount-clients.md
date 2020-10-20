@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9ee50c146271106e2b9c693702827b2e1b52199
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86231352"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219547"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Oktatóanyag: a fürt csatlakoztatása
 
@@ -20,6 +20,7 @@ Ez az oktatóanyag bemutatja, hogyan csatlakoztathat NFS-ügyfeleket az Azure FX
 Ez az oktatóanyag a következőket tanítja:
 
 > [!div class="checklist"]
+>
 > * Stratégiák a terheléselosztási ügyfelek számára az ügyfél felé irányuló IP-címek tartománya között
 > * Csatlakozási útvonal létrehozása az ügyfélhez kapcsolódó IP-címről és névtér-csomópontból
 > * A csatlakoztatási parancsban használandó argumentumok
@@ -104,7 +105,7 @@ A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a b
 --- | ---
 ``nointr``            | Ha az ügyfelek az ezt a lehetőséget támogató régebbi operációsrendszer-kerneleket (mielőtt április 2008) használják, használja azt. A "intr" beállítás az alapértelmezett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ügyfelek csatlakoztatása után tesztelheti a munkafolyamatot, és megkezdheti a fürt megkezdését.
 

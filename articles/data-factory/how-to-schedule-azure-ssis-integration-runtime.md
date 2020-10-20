@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9647de255b749e064b94f57c9067aaff7dc3cb7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187251"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219462"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS integrációs modul indítása és leállítása ütemezés szerint
 
@@ -72,7 +72,7 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
 6. A **verziónál**válassza a **v2** elemet.
 7. A **hely**mezőben válassza ki az ADF létrehozásához támogatott helyek egyikét a legördülő listából.
 8. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-9. Kattintson a **Létrehozás** elemre.
+9. Kattintson a **Létrehozás** lehetőségre.
 10. Az Azure-irányítópulton a következő csempe jelenik meg állapottal: **Data Factory üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -136,7 +136,7 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
     1. A **kiszolgáló neve**mezőben adja meg ** &lt; a kiszolgáló nevét &gt; . database.Windows.net**.
     2. Válassza a **beállítások >>lehetőséget **.
     3. Az **adatbázishoz való kapcsolódáshoz**válassza a **SSISDB**lehetőséget.
-    4. Kattintson a **Csatlakozás** gombra. 
+    4. Válassza a **Kapcsolódás** lehetőséget. 
     5. Bontsa ki az **Integration Services-katalógusok**  ->  **SSISDB** -> a mappa-> **projects** -> a SSIS Project-> **csomagokat**. 
     6. Kattintson a jobb gombbal a futtatni kívánt SSIS-csomagra, és válassza a **jelentések**  ->  **szabványos jelentések**  ->  **minden végrehajtás**elemet. 
     7. Ellenőrizze, hogy futott-e. 
@@ -149,7 +149,7 @@ Most, hogy a folyamatok a várt módon működnek, létrehozhat eseményindító
 
 1. A folyamat eszköztárán válassza az **aktiválás** lehetőséget, és válassza az **új/szerkesztés**lehetőséget. 
 
-   ![Trigger – > új/szerkesztés](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
+   ![Képernyőfelvétel: a trigger-> új/szerkesztési menüpont.](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
 
 2. Az **Eseményindítók hozzáadása** panelen válassza az **+ új**lehetőséget.
 
@@ -220,7 +220,7 @@ Ha már nincs Azure Automation fiókja, hozzon létre egyet a lépés utasítás
 2. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).    
 3. Válassza az **új** lehetőséget a bal oldali menüben, majd válassza a **monitoring és felügyelet**lehetőséget, majd válassza az **Automation**lehetőséget. 
 
-   ![New-> Monitoring és felügyelet-> Automation](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
+   ![Képernyőkép a Monitoring és felügyelet > Automation lehetőségről.](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
     
 2. Az **Automation-fiók hozzáadása** panelen hajtsa végre a következő műveleteket.
 
@@ -262,7 +262,7 @@ A következő szakasz a PowerShell-runbook létrehozásának lépéseit ismertet
 
 1. Váltson a **runbookok** lapra, és válassza a **+ runbook hozzáadása** elemet az eszköztárból. 
 
-   ![Runbook gomb hozzáadása](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
+   ![Képernyőkép a + runbook hozzáadása gomb kiemeléséhez.](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
    
 2. Válassza az **új Runbook létrehozása** lehetőséget, és végezze el a következő műveleteket: 
 
@@ -339,13 +339,13 @@ A következő szakasz a PowerShell-runbook létrehozásának lépéseit ismertet
     2. A **ADATELŐÁLLÍTÓ neve**mezőbe írja be az ADF nevét Azure-SSIS IR. 
     3. A **AZURESSISNAME**mezőben adja meg Azure-SSIS IR nevét. 
     4. A **művelet**mezőben adja meg a **Start**értéket. 
-    5. Kattintson az **OK** gombra.  
+    5. Válassza az **OK** lehetőséget.  
 
    ![Runbook ablak elindítása](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
    
 6. A feladatok ablakban válassza a **kimenet** csempét. Az output ( **kimenet) ablakban**várjon a következő üzenetre: # # **# # # befejezett # #** # # #. A kezdő Azure-SSIS IR körülbelül 20 percet vesz igénybe. A **feladatok** ablakának bezárásához és a **Runbook** ablakhoz való visszatéréshez.
 
-   ![Azure SSIS IR – elindítva](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
+   ![Képernyőkép, amely kiemeli a kimenet csempéjét.](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
     
 7. Ismételje meg az előző két lépést a **Leállítás** beállításnál a **művelet**értékeként. Indítsa el újra a runbook az eszköztár **Start** gombjának kiválasztásával. Adja meg az erőforráscsoport, az ADF és a Azure-SSIS IR nevét. A **művelethez**írja be a **stop**értéket. A kimenet ablakban várjon a következő üzenetre: # # # **# # befejezett # #** # # # # # # # # **Leállítás**# # # # #. A Azure-SSIS IR leállítása nem tart, amíg el nem indul. A **feladatok** ablakának bezárásához és a **Runbook** ablakhoz való visszatéréshez.
 
@@ -373,7 +373,7 @@ Az előző szakaszban létrehozta a Azure Automation runbook, amely elindíthat�
     
 3. Váltson a **paraméterek és a futtatási beállítások** lapra. Adja meg az erőforráscsoport, az ADF és a Azure-SSIS IR nevét. A **művelethez**írja be a **Start** parancsot, és kattintson **az OK gombra**. Kattintson ismét az **OK gombra** a **runbook ütemezett** ütemtervének megtekintéséhez. 
 
-   ![Az Azure SSIS integrációs moduljának beosztása](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
+   ![A művelet mezőt kiemelő képernyőkép.](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     
 4. Ismételje meg az előző két lépést, és hozzon létre egy " **stop IR**" utasítással ellátott ütemtervet. Adja meg azt az időpontot, amely legalább 30 perccel azután van megadva, hogy a **Start IR napi** ütemterve meg van adva. A **művelethez**írja be a **Leállítás** értéket, és kattintson **az OK gombra**. Kattintson ismét az **OK gombra** a **runbook ütemezett** ütemtervének megtekintéséhez. 
 
@@ -383,7 +383,7 @@ Az előző szakaszban létrehozta a Azure Automation runbook, amely elindíthat�
     
 6. Miután végzett a teszteléssel, tiltsa le az ütemterveket szerkesztéssel. Válassza az **ütemtervek** lehetőséget a bal oldali menüben, válassza a **napi IR/leállítás**(IR) indítása naponta lehetőséget, majd válassza a **nem** lehetőséget az **engedélyezéshez**. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő blogbejegyzést:
 -   [ETL/ELT-munkafolyamatok modernizálása és kiterjesztése SSIS-tevékenységekkel az ADF-folyamatokban](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
 

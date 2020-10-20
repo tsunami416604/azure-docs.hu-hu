@@ -1,18 +1,16 @@
 ---
 title: A Visual Studio Code-hoz készült Azure Data Lake-eszközök használata
 description: Ismerje meg, hogyan hozhatja létre, tesztelheti és futtathatja a U-SQL-parancsfájlokat a Azure Data Lake Tools for Visual Studio Code használatával.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87126482"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221247"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>A Visual Studio Code-hoz készült Azure Data Lake-eszközök használata
 
@@ -146,7 +144,7 @@ Azure Data Lake eszközök több egyéni kódot is támogatnak. Útmutatásért 
 
 ## <a name="work-with-assemblies"></a>Szerelvények használata
 
-A szerelvények fejlesztésével kapcsolatos információkért lásd: [U-SQL-szerelvények fejlesztése Azure Data Lake Analytics feladatokhoz](data-lake-analytics-u-sql-develop-assemblies.md).
+A szerelvények fejlesztésével kapcsolatos információkért lásd: [U-SQL-szerelvények fejlesztése Azure Data Lake Analytics feladatokhoz]().
 
 A Data Lake Analytics-katalógusban Data Lake eszközök használatával regisztrálhat egyéni kód-szerelvényeket.
 
@@ -495,7 +493,7 @@ A VS Code-hoz készült Data Lake Tools a következő funkciókat támogatja:
 > [!NOTE]
 > Javasoljuk, hogy a Visual Studio 2.3.3000.4 vagy újabb verziójára frissítsen Azure Data Lake-eszközökre. A korábbi verziók már nem tölthetők le, és mostantól elavultnak számítanak.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A U-SQL fejlesztése Python, R és C Sharp Azure Data Lake Analytics a VS Code-ban](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [U-SQL helyi Futtatás és helyi hibakeresés a Visual Studio Code-ban](data-lake-tools-for-vscode-local-run-and-debug.md)

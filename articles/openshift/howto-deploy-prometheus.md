@@ -7,14 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, ARO, openshift, metrikák, Red Hat
-ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80886888"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218612"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Önálló Prometheus-példány üzembe helyezése Azure Red Hat OpenShift-fürtben
+
+> [!IMPORTANT]
+> Az Azure Red Hat OpenShift 3,11 2022. június 30-án megszűnik. Az új Azure Red Hat OpenShift 3,11-fürtök létrehozásának támogatása az 2020. november 30-ig folytatódik. A biztonsági rések elkerülése érdekében a rendszer leállítja a fennmaradó Azure Red Hat OpenShift 3,11-fürtöket a kivonulást követően.
+> 
+> Kövesse ezt az útmutatót [egy Azure Red Hat OpenShift 4-fürt létrehozásához](tutorial-create-cluster.md).
+> Ha konkrét kérdései vannak, vegye [fel velünk a kapcsolatot](mailto:arofeedback@microsoft.com).
 
 Ez a cikk azt ismerteti, hogyan konfigurálható egy, a Service Discovery szolgáltatást használó önálló Prometheus-példány egy Azure Red Hat OpenShift-fürtben.
 
@@ -205,7 +211,7 @@ További részletekért válassza az **állapot**  >  **céljait**.
 > [!NOTE]
 > A Prometheus minden sikeresen lekapart cél esetében felvesz egy adatpontot a felfelé mutató metrikába. Válassza a **Prometheus** lehetőséget a bal felső sarokban **, írja be a kifejezést** kifejezésként, majd válassza a **végrehajtás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni Prometheus-rendszerállapot-kialakítást adhat az alkalmazásaihoz. A Prometheus-ügyfél könyvtára, amely leegyszerűsíti a Prometheus-metrikák előkészítését, készen áll a különböző programozási nyelvekre.
 

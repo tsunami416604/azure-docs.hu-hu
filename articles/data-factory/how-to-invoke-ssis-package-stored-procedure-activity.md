@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2bad99a836da7aab64e8cc0d454423fd56ffce1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067824"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217779"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>SSIS-csomag futtatása a Tárolt eljárás tevékenységgel az Azure Data Factoryben
 
@@ -95,7 +95,7 @@ Ebben a lépésben a Data Factory felhasználói felületét használja egy foly
     7. Az adatbázishoz való kapcsolódás teszteléséhez kattintson a **Kapcsolódás tesztelése** gombra.
     8. Mentse a társított szolgáltatást a Save ( **Mentés** ) gombra kattintva. 
 
-        ![Azure SQL Database társított szolgáltatás](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
+        ![Képernyőkép, amely egy új társított szolgáltatás hozzáadásának folyamatát mutatja be.](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. A Tulajdonságok ablakban váltson az **SQL-fiók** lap **tárolt eljárás** fülére, és hajtsa végre a következő lépéseket: 
 
     1. Válassza a **Szerkesztés** elemet. 

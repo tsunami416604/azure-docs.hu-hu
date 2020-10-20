@@ -1,20 +1,18 @@
 ---
 title: Az Azure Data Lake Analytics áttekintése
 description: A Data Lake Analytics lehetővé teszi, hogy a felhőbeli adatokból kinyert információkat vállalkozása hasznára fordíthassa, bármennyi adatról legyen is szó.
-services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
-ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: 5503a4734ca687ba89d7d40270ae9157deb0ca91
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e49dd110c85573c034d593940e4d19a5466a1511
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89489986"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220125"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Mi az az Azure Data Lake Analytics?
 
@@ -52,7 +50,7 @@ A Data Lake Analytics egy költséghatékony megoldás big data-számítási fel
 A Azure Data Lake Storage Data Lake Analytics a legmagasabb teljesítmény-, átviteli sebesség-és párhuzamos, valamint az Azure Storage-Blobok, Azure SQL Database, Azure szinapszis Analytics (korábban SQL Data Warehouse) használatával működik.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Azure Data Lake Analytics újdonságait](data-lake-analytics-whats-new.md) az Azure Data Lake Analytics legújabb frissítésében tekintheti meg?
 * Ismerkedés a Data Lake Analytics [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [CLI](data-lake-analytics-get-started-cli.md) használatával

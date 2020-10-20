@@ -1,18 +1,16 @@
 ---
 title: U-SQL-adatbázis exportálása – Azure Data Lake eszközök a Visual studióhoz
 description: Ismerje meg, hogyan exportálhat egy U-SQL-adatbázist a Visual studióhoz készült Azure Data Lake Tools használatával, és hogyan importálhatja automatikusan egy helyi fiókba.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 11/27/2017
-ms.openlocfilehash: 05e55d1608323b8e746a1c82ccb915a2db58ce97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a768990a33f0d60a3222bd3ad323edcc53c9ec0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132092"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219088"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL-adatbázis exportálása
 
@@ -80,7 +78,7 @@ Az adatbázis importálása a különböző Data Lake Analytics fiókba:
 
 Ha a 3. lépésben a **séma és az adatok** lehetőséget választja, az eszköz egy U-SQL-feladatot futtat a táblákban tárolt adatok exportálásához. Emiatt az adatexportálási folyamat lassú lehet, és felmerülhet a költségek. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az U-SQL-adatbázisok megismerése](/u-sql/data-definition-language-ddl-statements) 
 * [U-SQL feladatok tesztelése és hibakeresése helyi futtatással és az Azure Data Lake U-SQL SDK használatával](data-lake-analytics-data-lake-tools-local-run.md)

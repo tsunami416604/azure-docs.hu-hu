@@ -1,18 +1,16 @@
 ---
 title: Felhasználó által definiált U-SQL-operátorok fejlesztése – Azure Data Lake Analytics
 description: Megtudhatja, hogyan fejleszthet felhasználó által definiált operátorokat Azure Data Lake Analytics feladatokban felhasználható és újra felhasználni.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 71cb6e026c81b00e475ae3f4e7fc4958a8de82a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11efdb727bacadb674fb49374ef1c70fcc788ecc
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87131803"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219989"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Felhasználó által definiált U-SQL-operátorok fejlesztése (Udo)
 Ez a cikk azt ismerteti, hogyan lehet felhasználó által definiált operátorokat feldolgozni egy U-SQL-feladatokban.
@@ -124,7 +122,7 @@ Ez a cikk azt ismerteti, hogyan lehet felhasználó által definiált operátoro
 
 2. Bontsa ki a minták, majd a kimenetek csomópontot, majd kattintson duplán a **Drivers.csv**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [U-SQL-kifejezések kiterjesztése felhasználói kóddal](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [A Visual studióhoz készült Data Lake Tools használata az U-SQL-alkalmazások fejlesztéséhez](data-lake-analytics-data-lake-tools-get-started.md)

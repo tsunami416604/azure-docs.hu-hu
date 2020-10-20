@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045399"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218255"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studióban a feladatok diagramjának használatával
 
@@ -87,7 +87,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
   
 #### <a name="output-sinks-live-output"></a>Kimeneti mosogatók (élő kimenet)
 
-![Feladatütemezés helyi kimeneti elsüllyedés](./media/debug-locally-using-job-diagram/live-output.png)
+![A helyi kimeneti mosogatókat bemutató feladatütemezés.](./media/debug-locally-using-job-diagram/live-output.png)
 
 |Metrika|Leírás|
 |-|-|
@@ -121,7 +121,7 @@ A felugró konzolon megjelennek a feladatok szintjének egyéb mérőszámai. Ha
 
 * Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](stream-analytics-out-of-order-and-late-events.md) , míg a helyi beviteli beállítások nem.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
 * [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)

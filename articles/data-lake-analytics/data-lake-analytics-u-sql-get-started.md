@@ -1,18 +1,16 @@
 ---
 title: Ismerkedés az U-SQL nyelvével Azure Data Lake Analytics
 description: Ismerkedjen meg az U-SQL nyelv alapjaival Azure Data Lake Analyticsban. Megírhatja az első lekérdezést változók használatával a fájlokból származó további adatokra, a sorhalmaz átalakítására és az összesített adatokra.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
-ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5920f2b5823e568d56d13107200eb0025a654db0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87128845"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219921"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Ismerkedés az U-SQL Azure Data Lake Analytics
 
@@ -21,7 +19,7 @@ Az U-SQL egy olyan nyelv, amely a deklaratív SQL-t a kényszerített C# haszná
 ## <a name="learning-resources"></a>Képzési források
 
 * A [u-SQL-oktatóanyag](https://aka.ms/usqltutorial) az u-SQL nyelvének többségét bemutató interaktív útmutatót nyújt. Ez a dokumentum az U-SQL-t megtanulni kívánó fejlesztők számára ajánlott olvasmány.
-* Az **u-SQL nyelvi szintaxissal**kapcsolatos részletes információkért tekintse meg az [u-SQL nyelvi referenciáját](https://docs.microsoft.com/u-sql/).
+* Az **u-SQL nyelvi szintaxissal**kapcsolatos részletes információkért tekintse meg az [u-SQL nyelvi referenciáját](/u-sql/).
 * Az **u-SQL tervezési filozófiájának**megismeréséhez tekintse meg a Visual Studio blogbejegyzését, amely bemutatja az [u-SQL-t – egy olyan nyelvet, amely megkönnyíti a Big adatfeldolgozást](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -225,7 +223,7 @@ OUTPUT @res
 
 A speciális összesítési forgatókönyvek esetében tekintse meg a U-SQL-dokumentációt az [aggregált, analitikus és hivatkozási függvények](/u-sql/built-in-functions) esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-szkriptek fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
