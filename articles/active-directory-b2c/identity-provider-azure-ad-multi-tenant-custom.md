@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 645a0d21fc25cb45914eed02e023a0076c457ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4343a5e185fdfe96e1e3298b0fc3fe6719f3a4a2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116294"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215841"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Több-bérlős Azure Active Directory bejelentkezésének beállítása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Ha egy adott Azure AD-szervezet felhasználói számára engedélyezni szeretné
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 1. Válassza az **új regisztráció**lehetőséget.
 1. Adja meg az alkalmazás **nevét** . Például: `Azure AD B2C App`.
-1. Válassza a fiókok lehetőséget az alkalmazás **bármely szervezeti könyvtárában** .
+1. Válassza a **fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő)** ehhez az alkalmazáshoz.
 1. Az **átirányítási URI**esetében fogadja el a **web**értékét, és írja be az alábbi URL-címet minden kisbetűvel, ahol a `your-B2C-tenant-name` helyére a Azure ad B2C bérlő neve kerül.
 
     ```
@@ -224,7 +224,7 @@ Ha a bejelentkezési folyamat sikeres, a böngésző átirányítja a `https://j
 
 A több-bérlős bejelentkezési képesség teszteléséhez hajtsa végre az utolsó két lépést egy másik Azure AD-bérlőt használó felhasználó hitelesítő adataival.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni szabályzatok használatakor előfordulhat, hogy további információra van szüksége, amikor a fejlesztés során hibaelhárítást végez a házirendben.
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0899132f308c7069395738140b35b138571483d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509685"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220856"
 ---
 # <a name="view-system-test-results"></a>Rendszer teszteredményeinek megtekintése
 
@@ -70,12 +70,12 @@ Központi telepítés igénylése:
 
 2. A sikeresen betanított modell esetében az "üzembe helyezés" gomb jelenik meg, ha nincs telepítve.
 
-    ![Modell üzembe helyezése](media/how-to/how-to-deploy-model.png)
+    ![Képernyőfelvétel: a modellek üzembe helyezésére szolgáló gomb kiemelése.](media/how-to/how-to-deploy-model.png)
 
 3.  Kattintson a telepítés elemre.
 4.  Válassza az **üzembe helyezett** lehetőséget azon régió (k) esetében, ahol szeretné telepíteni a modellt, majd kattintson a Save (Mentés) gombra. Több régió számára is kiválaszthatja az **üzembe helyezett** lehetőséget.
 
-    ![Modell üzembe helyezése](media/how-to/how-to-deploy-model-regions.png)
+    ![Képernyőkép, amely bemutatja, hol telepíthet vagy helyezhet üzembe egy modellt.](media/how-to/how-to-deploy-model-regions.png)
 
 5.  A modell állapotát az "állapot" oszlopban tekintheti meg.
 
@@ -90,7 +90,7 @@ A központi telepítési beállítások frissítése:
 
 2. Egy sikeresen üzembe helyezett modell esetében megjelenik egy **frissítés** gomb.
 
-    ![Modell üzembe helyezése](media/how-to/how-to-update-undeploy-model.png)
+    ![Képernyőfelvétel: a központi telepítési beállítások frissítésére szolgáló frissítés gomb.](media/how-to/how-to-update-undeploy-model.png)
 
 3.  Válassza a **Frissítés** lehetőséget.
 4.  Válassza az **üzembe helyezett** vagy a nem **telepített** lehetőséget azon régió (k) esetében, ahol a modellt központilag telepíteni szeretné, majd kattintson a **Save (Mentés**) gombra.

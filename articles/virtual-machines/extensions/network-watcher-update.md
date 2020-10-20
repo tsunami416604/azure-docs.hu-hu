@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: e367c348364d03cec6914c99e7ff112803fc58f6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 640b148dc22aa87592a6adcfca99c8ed35731934
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132431"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220587"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>A Network Watcher-bővítmény frissítése a legújabb verzióra
 
@@ -52,20 +52,22 @@ A bővítmény verzióját a Azure Portal, az Azure CLI vagy a PowerShell haszn�
 Futtassa az alábbi parancsot egy Azure CLI-parancssorból:
 
 ```azurecli
-az vm extension list --resource-group  <ResourceGroupName> --vm-name <VMName>
+az vm get-instance-view --resource-group  "SampleRG" --name "Sample-VM"
 ```
+Keresse meg a **"AzureNetworkWatcherExtension"** elemet a kimenetben, és azonosítsa a verziószámot a kimenet *"TypeHandlerVersion"* mezőjében.  Megjegyzés: a bővítményre vonatkozó információk többször is megjelennek a JSON-kimenetben. Tekintse meg a "bővítmények" blokkot, és látnia kell a bővítmény teljes verziószámát. 
 
-Keresse meg a AzureNetworkWatcher bővítményt a kimenetben. Azonosítsa a verziószámot a kimenet "TypeHandlerVersion" mezőjében.  
+Az alábbihoz hasonlónak kell megjelennie: ![ Azure CLI képernyőkép](./media/network-watcher/azure-cli-screenshot.png)
 
 #### <a name="usepowershell"></a>A PowerShell használata
 
 Futtassa a következő parancsokat egy PowerShell-parancssorból:
 
 ```powershell
-Get-AzVMExtension -ResourceGroupName <ResourceGroupName> -VMName <VMName>  
+Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 ```
+Keresse meg az Azure Network Watcher-bővítményt a kimenetben, és azonosítsa a verziószámot a kimenet *"TypeHandlerVersion"* mezőjében.   
 
-Keresse meg a AzureNetworkWatcher bővítményt a kimenetben. Azonosítsa a verziószámot a kimenet "TypeHandlerVersion" mezőjében.
+A következőhöz hasonlónak kell megjelennie: ![ PowerShell képernyőkép](./media/network-watcher/powershell-screenshot.png)
 
 ### <a name="update-your-extension"></a>Bővítmény frissítése
 
@@ -81,6 +83,25 @@ Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS"
 
 #Windows command
 Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS" `  -VMName "myVM1" `  -Name "AzureNetworkWatcherExtension" `  -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"   
+```
+
+Ha ez nem működik. Távolítsa el, majd telepítse újra a bővítményt az alábbi lépések segítségével. Ekkor a rendszer automatikusan hozzáadja a legújabb verziót.
+
+A bővítmény eltávolítása 
+
+```powershell
+#Same command for Linux and Windows
+Remove-AzVMExtension -ResourceGroupName "SampleRG" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension"
+``` 
+
+A bővítmény újbóli telepítése
+
+```powershell
+#Linux command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux" -typeHandlerVersion "1.4"
+
+#Windows command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -typeHandlerVersion "1.4"
 ```
 
 #### <a name="option-2-use-the-azure-cli"></a>2. lehetőség: az Azure CLI használata

@@ -3,12 +3,13 @@ title: Azure Functions telemetria elemzése Application Insights
 description: Megtudhatja, hogyan tekintheti meg és kérdezheti le Azure Functions telemetria az Azure Application Insights által gyűjtött és tárolt adatokat.
 ms.topic: how-to
 ms.date: 10/14/2020
-ms.openlocfilehash: c4ddf845a303ccda1b13e954d9946934c5f39fd9
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: contperfq2
+ms.openlocfilehash: 9091d59cbc3a4cf841e28505531c89c83e705c46
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168850"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217303"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Azure Functions telemetria elemzése Application Insights 
 
@@ -113,7 +114,7 @@ A következő telemetria-lekérdezések olyan mérőszámokra vonatkoznak, amely
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions figyeléséről:
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 9/29/2020
+ms.date: 10/19/2020
 ms.author: b-juche
-ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461478"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217048"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>A NFSv 4.1 Kerberos-titkosítás konfigurálása Azure NetApp Fileshoz
 
@@ -75,7 +75,7 @@ A NFSv 4.1 Kerberos konfigurálása két számítógépfiókot hoz létre Active
 * Egy számítógépfiók az SMB-megosztásokhoz
 * Egy számítógépfiók a NFSv 4.1-hez – ezt a fiókot az előtag alapján is azonosíthatja `NFS-` . 
 
-Miután létrehozta az első NFSv 4.1-es Kerberos-kötetet, állítsa be a titkosítási típust vagy a számítógépfiókot a következő PowerShell-parancs használatával:
+Miután létrehozta az első NFSv 4.1-es Kerberos-kötetet, állítsa be a számítógépfiók titkosítási típusát a következő PowerShell-parancs használatával:
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -89,18 +89,18 @@ Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Az
 
 2. Az utasítások megjelenítéséhez kattintson a kötet **csatlakoztatási utasításai** elemre.
 
-    Példa: 
+    Például: 
 
     ![A Kerberos-kötetek csatlakoztatására vonatkozó utasítások](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 
 3. Hozza létre a könyvtárat (csatlakoztatási pont) az új kötethez.  
 
 4. Állítsa be az alapértelmezett titkosítási típust az AES 256 értékre a számítógépfiók esetében:  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * Ezt a parancsot minden számítógépfiók esetében csak egyszer kell futtatnia.
     * Ezt a parancsot egy tartományvezérlőről vagy egy, az [RSAT](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) használatával telepített számítógépről futtathatja. 
-    * A `$COMPUTERACCOUNT` változó a Kerberos-kötet telepítésekor Active Directoryban létrehozott számítógépfiók. Ez az a fiók, amely a előtaggal van ellátva `NFS-` . 
+    * A `$NFSCOMPUTERACCOUNT` változó a Kerberos-kötet telepítésekor Active Directoryban létrehozott számítógépfiók. Ez az a fiók, amely a előtaggal van ellátva `NFS-` . 
     * A `$ANFSERVICEACCOUNT` változó egy nem Kiemelt jogosultságú Active Directory felhasználói fiók, amely delegált vezérlőkkel rendelkezik azon a szervezeti egységen, amelyben a számítógépfiók létrejött. 
 
 5. Csatlakoztassa a kötetet a gazdagépen: 

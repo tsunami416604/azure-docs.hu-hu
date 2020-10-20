@@ -1,20 +1,18 @@
 ---
-title: 'PowerShell-parancsfájl: blob-adatkészlet hozzáadása Azure-adatmegosztáshoz | Microsoft Docs'
+title: 'PowerShell-parancsfájl: blob-adatkészlet hozzáadása Azure-adatmegosztáshoz'
 description: Ez a PowerShell-parancsfájl egy blob-adatkészletet rendel hozzá egy meglévő megosztáshoz.
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 95a10b112c9f6448c437f20ee95f808632a31d2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f2a2dded0b9c817e0700f4f93782d3b5c11ac3f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307295"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221383"
 ---
 # <a name="use-powershell-to-create-a-data-share-in-azure"></a>Adatmegosztás létrehozása az Azure-ban a PowerShell használatával
 
@@ -44,11 +42,11 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Új – AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset?view=azps-2.6.0) | Adathalmazt rendel egy adatmegosztáshoz. |
+| [Új – AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset) | Adathalmazt rendel egy adatmegosztáshoz. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/).
 
 További Azure-adatmegosztási PowerShell-szkriptek az Azure-beli [adatmegosztás PowerShell-mintáinak](../../samples-powershell.md)használatával találhatók.

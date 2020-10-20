@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
-ms.date: 03/05/2020
-ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/05/2020
+ms.openlocfilehash: a102c9f375b37579cf6f92b08d67f762d3dfd26a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78943966"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220890"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Forgatókönyv: Apache Hive naplók kitöltik a lemezterületet az Azure HDInsight lévő fő csomópontokon
 
@@ -24,6 +24,7 @@ Egy Apache Hive-vagy LLAP-fürtön a nem kívánt naplók a teljes lemezterület
 
 1. Az SSH-hozzáférés meghiúsul, mert nincs szóköz a főcsomóponton.
 2. A Ambari *http-hibát ad: a 503 szolgáltatás nem érhető el*.
+3. A HiveServer2 Interactive nem tud újraindulni.
 
 A naplók a probléma előfordulásakor az `ambari-agent` alábbiakat mutatják be.
 ```
@@ -35,7 +36,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Ok
 
-A speciális kaptár-log4j konfigurációk esetében a *log4j. Append. RFA. MaxBackupIndex* paraméter nincs megadva. A naplófájlok végtelen generációját okozza.
+A speciális kaptár-log4j konfigurációk esetében az aktuális alapértelmezett törlési ütemterv az utolsó módosítás dátuma alapján 30 napnál régebbi fájlokra van beállítva.
 
 ## <a name="resolution"></a>Feloldás
 
@@ -43,34 +44,32 @@ A speciális kaptár-log4j konfigurációk esetében a *log4j. Append. RFA. MaxB
 
 2. Ugrás a `Advanced hive-log4j` Speciális beállítások területen található szakaszra.
 
-3. Állítsa `log4j.appender.RFA` a paramétert RollingFileAppender értékre. 
+3. Állítsa a `appender.RFA.strategy.action.condition.age` paramétert egy tetszőleges korra. Példa 14 napra: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. Állítsa be `log4j.appender.RFA.MaxFileSize` és `log4j.appender.RFA.MaxBackupIndex` az alábbiak szerint.
+4. Ha nem látja a kapcsolódó beállításokat, adja hozzá a következő beállításokat.
+    ```
+    # automatically delete hive log
+    appender.RFA.strategy.action.type = Delete
+    appender.RFA.strategy.action.basePath = ${sys:hive.log.dir}
+    appender.RFA.strategy.action.condition.type = IfLastModified
+    appender.RFA.strategy.action.condition.age = 30D
+    appender.RFA.strategy.action.PathConditions.type = IfFileName
+    appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
+    ```
 
-```
-log4jhive.log.maxfilesize=1024MB
-log4jhive.log.maxbackupindex=10
-
-log4j.appender.RFA=org.apache.log4j.RollingFileAppender
-log4j.appender.RFA.File=${hive.log.dir}/${hive.log.file}
-log4j.appender.RFA.MaxFileSize=${log4jhive.log.maxfilesize}
-log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
-log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
-```
 5. Állítsa `hive.root.logger` a `INFO,RFA` következőre: Az alapértelmezett beállítás a hibakeresés, ami nagyon nagy méretűvé teszi a naplókat.
 
-```
-# Define some default values that can be overridden by system properties
-hive.log.threshold=ALL
-hive.root.logger=INFO,RFA
-hive.log.dir=${java.io.tmpdir}/${user.name}
-hive.log.file=hive.log
-```
+    ```
+    # Define some default values that can be overridden by system properties
+    hive.log.threshold=ALL
+    hive.root.logger=INFO,RFA
+    hive.log.dir=${java.io.tmpdir}/${user.name}
+    hive.log.file=hive.log
+    ```
 
 6. Mentse a konfigurációkat, és indítsa újra a szükséges összetevőket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

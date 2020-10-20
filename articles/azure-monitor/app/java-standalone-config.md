@@ -4,12 +4,12 @@ description: Kód nélküli alkalmazások teljesítményének figyelése bármil
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36f2add41457d1d82b0efd6c6804496018c85225
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537657"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215263"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurációs lehetőségek – Java önálló ügynök a Azure Monitor Application Insights
 
@@ -164,9 +164,10 @@ Ha van olyan JMX mérőszáma, amelyet szeretne a rögzítéshez:
 }
 ```
 
-A JMX metrikákat a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_JMX_METRICS` .
+A numerikus és a logikai JMX metrikájának értékei támogatottak. A logikai JMX metrikái a hamis értékre vannak leképezve `0` , és `1` igaz.
 
-A környezeti változó tartalmának a fenti struktúrának megfelelő JSON-adatokat kell tartalmaznia, például: `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Metaspace", "attribute": "Usage.used", "display": "MetaSpace Used"}]`
+[//]: # "Megjegyzés: nem dokumentálja APPLICATIONINSIGHTS_JMX_METRICS itt"
+[//]: # "az ENV var-ban beágyazott JSON-fájl zavaros, és csak a kód nem szükséges csatolása esetén dokumentálható"
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikrométer (beleértve a Spring boot indítószerkezet mérőszámait)
 

@@ -7,14 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: ARO, openshift, privát fürt, Red Hat
-ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37e9dc996fddf2b592ea6bf7fff1e1f4825f3ca8
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83727647"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220628"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Privát fürt létrehozása az Azure Red Hat OpenShift 3,11
+
+> [!IMPORTANT]
+> Az Azure Red Hat OpenShift 3,11 2022. június 30-án megszűnik. Az új Azure Red Hat OpenShift 3,11-fürtök létrehozásának támogatása az 2020. november 30-ig folytatódik. A biztonsági rések elkerülése érdekében a rendszer leállítja a fennmaradó Azure Red Hat OpenShift 3,11-fürtöket a kivonulást követően.
+> 
+> Kövesse ezt az útmutatót [egy Azure Red Hat OpenShift 4-fürt létrehozásához](tutorial-create-cluster.md).
+> Ha konkrét kérdései vannak, vegye [fel velünk a kapcsolatot](mailto:arofeedback@microsoft.com).
 
 A privát fürtök a következő előnyöket nyújtják:
 
@@ -139,6 +145,6 @@ cat private-cluster.json | envsubst | curl -v -X PUT \
  https://management.azure.com/subscriptions/$SUBID/resourceGroups/$CLUSTER_NAME/providers/Microsoft.ContainerService/openShiftManagedClusters/$CLUSTER_NAME?api-version=2019-10-27-preview
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a OpenShift-konzol eléréséről: [webkonzol – útmutató](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html).

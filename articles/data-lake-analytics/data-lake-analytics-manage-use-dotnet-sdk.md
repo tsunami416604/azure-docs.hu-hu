@@ -1,19 +1,17 @@
 ---
 title: Azure Data Lake Analytics kezelése az Azure .NET SDK-val
 description: Ez a cikk azt ismerteti, hogyan használható az Azure .NET SDK Data Lake Analytics feladatokat, adatforrásokat és & felhasználókat kezelő alkalmazások írásához.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/18/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b06530488e74120f3cc511694d290840269db453
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9ece3fe54ca8596f610439f8a0dd228ae1ef907
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020065"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220907"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Az Azure Data Lake Analytics kezelése – .NET-alkalmazás
 

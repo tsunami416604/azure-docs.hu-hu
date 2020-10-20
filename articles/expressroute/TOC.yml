@@ -166,7 +166,7 @@
     - name: Ajánlott eljárások
       items:
         - name: A hálózatbiztonság és a felhőszolgáltatások ajánlott eljárásai
-          href: ../best-practices-network-security.md
+          href: /azure/cloud-adoption-framework/reference/networking-vdc
         - name: Útválasztás optimalizálása
           href: expressroute-optimize-routing.md
         - name: Aszimmetrikus útválasztás
@@ -192,9 +192,9 @@
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST
-      href: 'https://msdn.microsoft.com/library/azure/mt586720'
+      href: /rest/api/expressroute/
     - name: REST (klasszikus)
-      href: 'https://msdn.microsoft.com/library/azure/dn606310'
+      href: /previous-versions/azure/reference/dn606310(v=azure.100)
     - name: Resource Manager-sablon
       displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits

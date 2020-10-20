@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: 58a142f0be87bb56f9ded9ace5a5143931740e93
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c7bdf3e0300bffaffb7191aea019bed719cdc6fa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019860"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220618"
 ---
 # <a name="azure-media-services-v3-overview"></a>Az Azure Media Services v3 áttekintése
 
@@ -64,7 +64,7 @@ Media Services a felhőben különböző adathordozó-munkafolyamatokat hozhat l
 Megtudhatja, hogyan kódolhat és csomagolhat tartalmakat, közvetítheti a videókat igény szerint, hogyan közvetítheti élőben, és hogyan elemezheti videóit a Media Services v3 használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.
 
 > [!TIP]
-> A fejlesztés megkezdése előtt tekintse át a következőt:<br/>* [Alapvető fogalmak](concepts-overview.md) (incudes fontos fogalmak, például csomagolás, kódolás és védelem)<br/>* [Fejlesztés Media Services V3 API](media-services-apis-overview.md) -kkal (beleértve az API-k elérésére, az elnevezési konvenciók stb. vonatkozó információkat)
+> A fejlesztés megkezdése előtt tekintse át a következőt:<br/>* [Alapvető fogalmak](concepts-overview.md) (beleértve a fontos fogalmakat, például a csomagolást, a kódolást és a védelmet)<br/>* [Fejlesztés Media Services V3 API](media-services-apis-overview.md) -kkal (beleértve az API-k elérésére, az elnevezési konvenciók stb. vonatkozó információkat)
 
 ### <a name="sdks"></a>SDK-k
 

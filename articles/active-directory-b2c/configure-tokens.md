@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49a5ff61e5f7a17005561e0729a9b0fcb0f954d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10f86d194c5c70f2de0ab6502893e228800b1bdf
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389564"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215467"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Jogkivonatok konfigurálása a Azure Active Directory B2Cban
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja a [jogkivonatok élettart
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Hozzon létre egy felhasználói folyamatot](tutorial-create-user-flows.md) , amely lehetővé teszi a felhasználók számára az alkalmazásba való regisztrációt és bejelentkezést.
+[Hozzon létre egy felhasználói folyamatot](tutorial-create-user-flows.md), amellyel a felhasználók regisztrálhatnak és bejelentkezhetnek az alkalmazásba.
 
 ## <a name="configure-jwt-token-lifetime"></a>JWT-jogkivonat élettartamának konfigurálása
 
@@ -41,6 +41,9 @@ A jogkivonat élettartama bármely felhasználói folyamaton beállítható.
 
 8. Kattintson a **Mentés** gombra.
 
+> [!NOTE]
+> Az engedélyezési programkódot használó egylapos alkalmazások esetében a PKCE mindig 24 órás frissítési jogkivonat élettartama szükséges. [További információ a frissítési tokenek biztonsági vonatkozásairól a böngészőben](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
+
 ## <a name="configure-jwt-token-compatibility"></a>JWT-jogkivonat kompatibilitásának konfigurálása
 
 1. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
@@ -52,7 +55,7 @@ A jogkivonat élettartama bármely felhasználói folyamaton beállítható.
 
 5. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [hozzáférési tokenek igényléséről](access-tokens.md).
 

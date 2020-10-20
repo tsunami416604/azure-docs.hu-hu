@@ -1,18 +1,16 @@
 ---
 title: A U-SQL-katalógus használata Azure Data Lake Analytics
 description: Megtudhatja, hogyan oszthatja meg a kódot és az információkat a U-SQL-katalógus használatával. Táblázat értékű függvények létrehozása, nézetek létrehozása, táblák létrehozása és lekérdezése.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: how-to
 ms.date: 05/09/2017
-ms.openlocfilehash: 0ef1bff996589d09326e80b770953bd6b34966c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f92aadc8ccf18dd91b5dd4b35285f60b174e4cf7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132432"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220074"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Ismerkedés az U-SQL-katalógussal Azure Data Lake Analytics
 
@@ -168,7 +166,7 @@ OUTPUT @res
  >[!NOTE]
  >Jelenleg nem futtathat olyan táblát, amely ugyanabban a parancsfájlban van, mint ahol a táblázatot létrehozta.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
 * [Az Azure Data Lake Analytics-feladatok figyelése és hibaelhárítása az Azure Portal használatával](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

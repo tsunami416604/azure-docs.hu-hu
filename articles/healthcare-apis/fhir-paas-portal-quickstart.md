@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 03/15/2020
-ms.author: matjazl
-ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: cavoeg
+ms.openlocfilehash: f3b3430ef7669022e532166848cb16d6aa66efe8
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87851936"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220788"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Gyors útmutató: Azure API üzembe helyezése a FHIR Azure Portal használatával
 
@@ -65,7 +65,7 @@ Annak ellenőrzéséhez, hogy az új FHIR API-fiók ki van-e építve, egy böng
 
 Ha már nincs rá szükség, törölheti az erőforráscsoportot, a FHIR készült Azure API-t és az összes kapcsolódó erőforrást. Ehhez válassza ki az FHIR-fiókhoz tartozó Azure API-t tartalmazó erőforráscsoportot, válassza az **erőforráscsoport törlése**elemet, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezte a FHIR készült Azure API-t az előfizetésében. Ha további beállításokat szeretne megadni a FHIR készült Azure API-ban, folytassa a további beállítások útmutatóval.
 

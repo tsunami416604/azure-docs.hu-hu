@@ -6,25 +6,26 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: 7a471868bac8f5e0623942c0cc1dc4af4e3881e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185349"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220805"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Oktatóanyag: az Azure FXT Edge Filer-fürt létrehozása
 
-Miután telepítette és inicializálta az Azure FXT Edge Filer-beli hardveres csomópontjait a gyorsítótárhoz, a FXT-fürt szoftver használatával hozza létre a gyorsítótár-fürtöt. 
+Miután telepítette és inicializálta az Azure FXT Edge Filer-beli hardveres csomópontjait a gyorsítótárhoz, a FXT-fürt szoftver használatával hozza létre a gyorsítótár-fürtöt.
 
-Ez az oktatóanyag végigvezeti a hardveres csomópontok fürtként történő konfigurálásának lépésein. 
+Ez az oktatóanyag végigvezeti a hardveres csomópontok fürtként történő konfigurálásának lépésein.
 
-Az oktatóanyag során a következőket fogja elsajátítani: 
+Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
+>
 > * A fürt létrehozásának megkezdése előtt milyen információk szükségesek
 > * A fürt felügyeleti hálózata, a fürt hálózata és az ügyfél felé irányuló hálózat közötti különbség
-> * Kapcsolódás fürtcsomópont-csomóponthoz 
+> * Kapcsolódás fürtcsomópont-csomóponthoz
 > * Kezdeti fürt létrehozása egy Azure FXT Edge Filer-csomópont használatával
 > * Bejelentkezés a fürt Vezérlőpultján a fürt beállításainak konfigurálásához
 
@@ -34,14 +35,14 @@ Ez az eljárás 15 – 45 percet vesz igénybe attól függően, hogy mennyi kut
 
 Az oktatóanyag megkezdése előtt végezze el az alábbi előfeltételeket:
 
-* Az Azure FXT Edge Filer Hardware Systems telepítése az adatközpontban 
+* Az Azure FXT Edge Filer Hardware Systems telepítése az adatközpontban
 
-  Csak egy csomópontra van szükség a fürt létrehozásához, de [legalább két csomópontot kell felvennie](fxt-add-nodes.md) a fürt konfigurálásához és a használatra való használatra. 
+  Csak egy csomópontra van szükség a fürt létrehozásához, de [legalább két csomópontot kell felvennie](fxt-add-nodes.md) a fürt konfigurálásához és a használatra való használatra.
 
 * A megfelelő energiaellátási és hálózati kábelek csatlakoztatása a rendszerhez  
 * Kapcsolja be legalább egy Azure FXT Edge Filer-csomópontot, és [állítsa be a gyökér jelszavát](fxt-node-password.md)
 
-## <a name="gather-information-for-the-cluster"></a>A fürt adatainak összegyűjtése 
+## <a name="gather-information-for-the-cluster"></a>A fürt adatainak összegyűjtése
 
 Az Azure FXT Edge Filer-fürt létrehozásához a következő információk szükségesek:
 
@@ -52,18 +53,18 @@ Az Azure FXT Edge Filer-fürt létrehozásához a következő információk szü
 * IP-címek:
 
   * Egyetlen IP-cím a fürtszolgáltatáshoz, valamint a felügyeleti hálózathoz használandó hálózati maszk és útválasztó
-  * Az első és az utolsó IP-cím a fürt IP-címeinek folytonos tartományában (csomópont – csomópont) kommunikáció. A részletekért tekintse meg az alábbi [IP-címek eloszlása](#ip-address-distribution)című szakaszt. 
+  * Az első és az utolsó IP-cím a fürt IP-címeinek folytonos tartományában (csomópont – csomópont) kommunikáció. A részletekért tekintse meg az alábbi [IP-címek eloszlása](#ip-address-distribution)című szakaszt.
   * (Az ügyfelek felé irányuló IP-címek beállítása a fürt létrehozása után történik.)
 
 * Hálózati infrastruktúra adatai:
 
   * A fürt DNS-kiszolgálójának IP-címe
   * A fürt DNS-tartományának neve
-  * A fürt NTP-kiszolgálóinak neve vagy IP-címe (akár egy kiszolgáló, akár három vagy több) 
+  * A fürt NTP-kiszolgálóinak neve vagy IP-címe (akár egy kiszolgáló, akár három vagy több)
   * Azt határozza meg, hogy engedélyezi-e az IEEE 802.1 AX-2008 hivatkozás összesítését a fürt felületén
   * Ha engedélyezi a kapcsolat összesítését, az IEEE 802.3 ad (LACP) dinamikus összesítését is használja
 
-Ezeket a hálózati infrastruktúra-elemeket a fürt létrehozása után is konfigurálhatja, de jobb megoldás a létrehozáskor. 
+Ezeket a hálózati infrastruktúra-elemeket a fürt létrehozása után is konfigurálhatja, de jobb megoldás a létrehozáskor.
 
 ### <a name="ip-address-distribution"></a>IP-címek eloszlása
 
@@ -117,11 +118,11 @@ A parancs használatával `ifconfig` megtekintheti a rendszerhez rendelt címeke
 
 A parancs például `ifconfig | grep -B5 inet` internetes címmel rendelkező portokat keres, és öt sornyi kontextust biztosít a port azonosítójának megjelenítéséhez.
 
-Jegyezze fel az ifconfig jelentésben látható bármely IP-címet. A portok neveivel (például e0a vagy e0b) felsorolt címek jó beállítások. Ne használjon E7 * névvel rendelkező IP-címeket, mivel ezek a nevek csak a iDRAC/IPMI szolgáltatás portjaihoz használatosak.  
+Jegyezze fel az ifconfig jelentésben látható bármely IP-címet. A portok neveivel (például e0a vagy e0b) felsorolt címek jó beállítások. Ne használjon E7 * névvel rendelkező IP-címeket, mivel ezek a nevek csak a iDRAC/IPMI szolgáltatás portjaihoz használatosak.
 
 ## <a name="load-the-cluster-configuration-wizard"></a>A fürt konfigurációs varázslójának betöltése
 
-A fürt létrehozásához használja a böngészőalapú fürt konfigurációs eszközét. 
+A fürt létrehozásához használja a böngészőalapú fürt konfigurációs eszközét.
 
 Adja meg a csomópont IP-címét egy böngészőben. Ha a böngésző olyan üzenetet ad a helyről, amely nem megbízható, folytassa a helyet. (Az egyes Azure FXT Edge-alapú Filer-csomópontok nem rendelkeznek CA által biztosított biztonsági tanúsítványokkal.)
 
@@ -133,19 +134,19 @@ Hagyja üresen a **Felhasználónév** és a **jelszó** mezőket. A fürt létr
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 
-A fürtkonfiguráció eszköz végigvezeti az Azure FXT Edge Filer-fürt létrehozásához szükséges képernyők egy halmazán. Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a [szükséges információkkal](#gather-information-for-the-cluster) . 
+A fürtkonfiguráció eszköz végigvezeti az Azure FXT Edge Filer-fürt létrehozásához szükséges képernyők egy halmazán. Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a [szükséges információkkal](#gather-information-for-the-cluster) .
 
 ### <a name="creation-options"></a>Létrehozási beállítások
 
 Az első képernyő három lehetőséget biztosít. Ha nem rendelkezik speciális utasításokkal a támogatási személyzettől, használja a manuális konfigurálási lehetőséget.
 
-Kattintson a következőre: **manuálisan konfigurálja a fürtöt** az új fürtkonfiguráció-beállítási beállítások képernyő betöltéséhez. 
+Kattintson a következőre: **manuálisan konfigurálja a fürtöt** az új fürtkonfiguráció-beállítási beállítások képernyő betöltéséhez.
 
 A többi beállítást ritkán használják:
 
-* "A rendszerkép frissítése" megkéri, hogy a fürt létrehozása előtt telepítse az új operációsrendszer-szoftvereket. (A jelenleg telepített szoftververzió megjelenik a képernyő tetején.) Meg kell adnia a szoftvercsomag fájlját – vagy egy URL-címet, egy felhasználónevet vagy jelszót, vagy egy fájlt kell feltöltenie a számítógépről. 
+* "A rendszerkép frissítése" megkéri, hogy a fürt létrehozása előtt telepítse az új operációsrendszer-szoftvereket. (A jelenleg telepített szoftververzió megjelenik a képernyő tetején.) Meg kell adnia a szoftvercsomag fájlját – vagy egy URL-címet, egy felhasználónevet vagy jelszót, vagy egy fájlt kell feltöltenie a számítógépről.
 
-* A fürt telepítési fájlját esetenként a Microsoft ügyfélszolgálata és támogatása is használja. 
+* A fürt telepítési fájlját esetenként a Microsoft ügyfélszolgálata és támogatása is használja.
 
 ## <a name="cluster-options"></a>Fürt beállításai
 
@@ -157,36 +158,36 @@ Az oldal két fő szakaszra, **alapszintű konfigurációra** és **hálózati k
 
 A felső szakaszban adja meg az új fürt alapvető információit.
 
-![Az "alapszintű konfiguráció" szakasz részletei a böngésző grafikus felhasználói felület lapján. Három mezőt mutat be (fürt neve, rendszergazdai jelszó, Jelszó megerősítése)](media/fxt-cluster-create/basic-configuration.png) 
+![Az "alapszintű konfiguráció" szakasz részletei a böngésző grafikus felhasználói felület lapján. Három mezőt mutat be (fürt neve, rendszergazdai jelszó, Jelszó megerősítése)](media/fxt-cluster-create/basic-configuration.png)
 
 * **Fürt neve** – adjon meg egy egyedi nevet a fürt számára.
 
   A fürt nevének meg kell felelnie a következő feltételeknek:
   
   * 1 és 16 karakter közötti hosszúság
-  * Tartalmazhat betűket, számokat és kötőjelet (-) és aláhúzás (_) karaktereket. 
+  * Tartalmazhat betűket, számokat és kötőjelet (-) és aláhúzás (_) karaktereket.
   * Nem tartalmazhat más írásjeleket vagy speciális karaktereket
   
   Ezt a nevet később is megváltoztathatja a **fürt**  >  **általános telepítési** konfigurációs lapján. (A fürt beállításaival kapcsolatos további információkért olvassa el a [fürt konfigurációs útmutatóját](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html), amely nem része ennek a dokumentáció-készletnek.)
 
-  > [!NOTE] 
+  > [!NOTE]
   > A fürt neve azonosítja a figyelési vagy hibaelhárítási támogatáshoz feltöltött rendszerinformációkat, így hasznos lehet a vállalat nevének belefoglalása.
 
 * **Rendszergazdai jelszó** – az alapértelmezett rendszergazda felhasználó jelszavának beállítása `admin` .
   
   Egyéni felhasználói fiókokat kell beállítania minden olyan személy számára, aki felügyeli a fürtöt, de nem távolíthatja el a felhasználót `admin` . Jelentkezzen be, `admin` Ha további felhasználókat kell létrehoznia.
- 
+
   A jelszót a `admin` **Administration**  >  fürt Vezérlőpultjának adminisztráció**felhasználói** beállítások lapján módosíthatja. Részletekért olvassa el a **felhasználói** dokumentációt a [fürtkonfiguráció útmutatóban](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
 ### <a name="network-configuration"></a>Hálózati konfiguráció
 
-A **hálózatkezelés** szakasz felszólítja a fürt által használt hálózati infrastruktúra megadására. 
+A **hálózatkezelés** szakasz felszólítja a fürt által használt hálózati infrastruktúra megadására.
 
 Két különálló hálózat konfigurálható:
 
-* A *felügyeleti hálózat* rendszergazdai hozzáférést biztosít a fürthöz a konfiguráláshoz és a figyeléshez. Az itt megadott IP-címet a vezérlőpulthoz vagy SSH-hozzáféréshez való csatlakozáskor használja a rendszer. 
+* A *felügyeleti hálózat* rendszergazdai hozzáférést biztosít a fürthöz a konfiguráláshoz és a figyeléshez. Az itt megadott IP-címet a vezérlőpulthoz vagy SSH-hozzáféréshez való csatlakozáskor használja a rendszer.
 
   A legtöbb fürt csak egyetlen felügyeleti IP-címet használ, de ha felületeket szeretne hozzáadni, a fürt létrehozása után ezt megteheti.
 
@@ -216,9 +217,9 @@ A **felügyeleti** szakaszban található beállítások olyan hálózatra vonat
 
 * **MTU** – ha szükséges, állítsa be a fürt felügyeleti hálózatának maximális átviteli egységét (MTU).
 
-* **1 GB-os mgmt hálózat használata** – jelölje be ezt a jelölőnégyzetet, ha a FXT-csomópontokon a két 1 GbE hálózati portot csak a felügyeleti hálózathoz szeretné hozzárendelni. (Az összes többi forgalom számára elérhető 25GbE-/10 GbE-portok szükségesek.) Ha nem jelöli be ezt a jelölőnégyzetet, a felügyeleti hálózat az elérhető legnagyobb sebességű portot használja. 
+* **1 GB-os mgmt hálózat használata** – jelölje be ezt a jelölőnégyzetet, ha a FXT-csomópontokon a két 1 GbE hálózati portot csak a felügyeleti hálózathoz szeretné hozzárendelni. (Az összes többi forgalom számára elérhető 25GbE-/10 GbE-portok szükségesek.) Ha nem jelöli be ezt a jelölőnégyzetet, a felügyeleti hálózat az elérhető legnagyobb sebességű portot használja.
 
-### <a name="configure-the-cluster-network"></a>A fürt konfigurálása 
+### <a name="configure-the-cluster-network"></a>A fürt konfigurálása
 
 A fürt hálózati beállításai a fürtcsomópontok között, valamint a fürtcsomópontok és a fő filers közötti forgalomra vonatkoznak.
 
@@ -230,11 +231,11 @@ A fürt hálózati beállításai a fürtcsomópontok között, valamint a fürt
 
   A tartományban lévő **IP-címek számának** értékét a rendszer automatikusan kiszámítja és megjeleníti.
 
-* **Nem mgmt hálózati maszk (nem kötelező)** – a fürt hálózati maszkjának megadása. 
+* **Nem mgmt hálózati maszk (nem kötelező)** – a fürt hálózati maszkjának megadása.
 
   A rendszer automatikusan a felügyeleti hálózathoz megadott hálózati maszk értékét javasolja. szükség esetén módosítsa.
 
-* **Fürt útválasztója (nem kötelező)** – Itt adhatja meg a fürt által használt alapértelmezett átjáró-címeket. 
+* **Fürt útválasztója (nem kötelező)** – Itt adhatja meg a fürt által használt alapértelmezett átjáró-címeket.
 
   A rendszer automatikusan a felügyeleti hálózathoz megadott átjáró-címeket javasolja.
 
@@ -242,7 +243,7 @@ A fürt hálózati beállításai a fürtcsomópontok között, valamint a fürt
 
 * **Nem mgmt MTU (nem kötelező)** – ha szükséges, állítsa be a fürt számára a maximális átviteli egység (MTU) értékét.
 
-### <a name="configure-cluster-dns-and-ntp"></a>A fürt DNS-és NTP-kiszolgálójának konfigurálása 
+### <a name="configure-cluster-dns-and-ntp"></a>A fürt DNS-és NTP-kiszolgálójának konfigurálása
 
 A **fürt** szakasz alatt a DNS-és NTP-kiszolgálók megadására, valamint a hivatkozások összesítésének engedélyezésére szolgáló mezők találhatók. Ezek a beállítások a fürt által használt összes hálózatra érvényesek.
 
@@ -250,7 +251,7 @@ A **fürt** szakasz alatt a DNS-és NTP-kiszolgálók megadására, valamint a h
 
 * **DNS-kiszolgáló (k)** – adja meg egy vagy több DNS-kiszolgáló IP-címét.
 
-  A DNS használata ajánlott minden fürthöz, és kötelező, ha SMB-t, AD-t vagy Kerberost szeretne használni. 
+  A DNS használata ajánlott minden fürthöz, és kötelező, ha SMB-t, AD-t vagy Kerberost szeretne használni.
   
   Az optimális teljesítmény érdekében konfigurálja a fürt DNS-kiszolgálóját a ciklikus időszeleteléses terheléselosztáshoz a [DNS konfigurálása az Azure FXT Edge Filer-fürthöz](fxt-configure-network.md#configure-dns-for-load-balancing)című témakörben leírtak szerint.
 
@@ -272,13 +273,13 @@ A rendszer egy üzenetet jelenít meg a fürt létrehozásakor.
 
 ![fürtkonfiguráció állapotjelző üzenet a böngészőben: "a FXT csomópont most létrehozza a fürtöt. Ez több percet is igénybe vehet. A fürt létrehozása után látogasson el erre a hivatkozásra a konfiguráció befejezéséhez. " hivatkozással a "keresse meg ezt a hivatkozást"](media/fxt-cluster-create/creating-message.png)
 
-Néhány pillanat elteltével az üzenetben található hivatkozásra kattintva nyissa meg a fürtöt a Vezérlőpulton. (Ez a hivatkozás a **felügyeleti IP**-címen megadott IP-címet veszi át.) A hivatkozás a Létrehozás gombra kattintás után 15 másodperctől egy percet vesz igénybe. Ha a webes felület nem töltődik be, várjon néhány másodpercet, majd kattintson újra a hivatkozásra. 
+Néhány pillanat elteltével az üzenetben található hivatkozásra kattintva nyissa meg a fürtöt a Vezérlőpulton. (Ez a hivatkozás a **felügyeleti IP**-címen megadott IP-címet veszi át.) A hivatkozás a Létrehozás gombra kattintás után 15 másodperctől egy percet vesz igénybe. Ha a webes felület nem töltődik be, várjon néhány másodpercet, majd kattintson újra a hivatkozásra.
 
-A fürt létrehozása egy vagy több percet vesz igénybe, de a folyamat közben bejelentkezhet a Vezérlőpultba. Normális, hogy a Vezérlőpult irányítópult lapján megjelenjenek a figyelmeztetések, amíg a fürt létrehozási folyamata be nem fejeződik. 
+A fürt létrehozása egy vagy több percet vesz igénybe, de a folyamat közben bejelentkezhet a Vezérlőpultba. Normális, hogy a Vezérlőpult irányítópult lapján megjelenjenek a figyelmeztetések, amíg a fürt létrehozási folyamata be nem fejeződik.
 
-## <a name="open-the-settings-pages"></a>A beállítások lapok megnyitása 
+## <a name="open-the-settings-pages"></a>A beállítások lapok megnyitása
 
-A fürt létrehozása után testre kell szabnia a hálózat és a munkafolyamat konfigurációját. 
+A fürt létrehozása után testre kell szabnia a hálózat és a munkafolyamat konfigurációját.
 
 Az új fürt beállításához használja a Vezérlőpult webes felületét. Kövesse a fürt létrehozási állapota képernyő hivatkozását, vagy keresse meg a fürtön beállított felügyeleti IP-címet.
 
@@ -300,9 +301,9 @@ A folyamat ezen pontján a fürt már létezik, de csak egyetlen csomóponttal r
 
 ### <a name="required-configuration"></a>Szükséges konfiguráció
 
-Ezek a lépések a legtöbb vagy az összes fürthöz szükségesek. 
+Ezek a lépések a legtöbb vagy az összes fürthöz szükségesek.
 
-* Csomópontok hozzáadása a fürthöz 
+* Csomópontok hozzáadása a fürthöz
 
   A három csomópont a standard, de számos üzemi fürt legfeljebb 24 csomóponttal rendelkezik.
 
@@ -312,24 +313,24 @@ Ezek a lépések a legtöbb vagy az összes fürthöz szükségesek.
 
   Adja hozzá a fürt által használt összes háttér-tárolási rendszer *alapvető Filer* -definícióit. További információért olvassa el a [háttérbeli tároló hozzáadása és a virtuális névtér konfigurálása](fxt-add-storage.md#about-back-end-storage) című témakört.
 
-* Az ügyfél-hozzáférés és a virtuális névtér beállítása 
+* Az ügyfél-hozzáférés és a virtuális névtér beállítása
 
   Hozzon létre legalább egy virtuális kiszolgálót (VServer), és rendeljen hozzá egy IP-címtartományt a használni kívánt ügyfélszámítógépekhez. A fürt névterét (más néven globális névteret vagy GNS) is konfigurálnia kell, amely lehetővé teszi a háttérbeli tárolók virtuális elérési utakra történő leképezését. A fürt névterében az ügyfelek konzisztens és elérhető fájlrendszer-struktúrát biztosítanak, még akkor is, ha átváltják a háttérbeli adathordozót. A névtér emellett felhasználóbarát virtuális tárolási hierarchiát is biztosíthat az Azure Blob-tárolók vagy más támogatott felhőalapú objektumok tárolásához.
 
   A részletekért olvassa el [a névtér konfigurálása](fxt-add-storage.md#configure-the-namespace) című leírást. Ez a lépés a következőket tartalmazza:
   * Vservers létrehozása
-  * Csomópontok beállítása az ügyfél hálózati nézete és a háttérbeli tároló között 
+  * Csomópontok beállítása az ügyfél hálózati nézete és a háttérbeli tároló között
   * Az egyes VServer által kiszolgált ügyfél IP-címeinek meghatározása
 
-  > [!Note] 
+  > [!Note]
   > A fürt GNS beállításának megkezdése előtt jelentős tervezés javasolt. Segítségért olvassa el a [globális névtér használata](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html) és a VServers-csoportok [létrehozása és használata](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#creating-and-working-with-vservers) című szakaszt a fürt konfigurációs útmutatójában.
 
 * [Hálózati beállítások módosítása](fxt-configure-network.md)
 
   Az új fürthöz több hálózattal kapcsolatos beállításnak kell szerepelnie, amelyeket ellenőrizni kell vagy testre kell szabni. Az alábbi elemekkel kapcsolatos részletekért olvassa el a [hálózati beállítások módosítása](fxt-configure-network.md) elemet:
 
-  * DNS-és NTP-konfiguráció ellenőrzése 
-  * Címtárszolgáltatások konfigurálása, ha szükséges 
+  * DNS-és NTP-konfiguráció ellenőrzése
+  * Címtárszolgáltatások konfigurálása, ha szükséges
   * VLAN-ok beállítása
   * Proxykiszolgálók konfigurálása
   * IP-címek hozzáadása a fürt hálózatához
@@ -343,14 +344,14 @@ Ezek a lépések a legtöbb vagy az összes fürthöz szükségesek.
 
 ### <a name="optional-configuration"></a>Választható konfiguráció
 
-Ezek a lépések nem szükségesek az összes fürthöz. Ezek bizonyos típusú munkafolyamatokhoz vagy bizonyos fürtözött felügyeleti stílusokhoz szükségesek. 
+Ezek a lépések nem szükségesek az összes fürthöz. Ezek bizonyos típusú munkafolyamatokhoz vagy bizonyos fürtözött felügyeleti stílusokhoz szükségesek.
 
 * Csomópont-beállítások testreszabása
 
   Megadhatja a csomópontok nevét, és konfigurálhatja a csomópontok IPMI-portjait a fürtre kiterjedő szinten, vagy egyénileg. Ha ezeket a beállításokat a csomópontok fürthöz adása előtt konfigurálja, az új csomópontok automatikusan kiválaszthatják a beállításokat a csatlakozáskor. A beállításokat a régi fürt létrehozása dokumentum a csomópont- [beállítások testreszabása](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_node.html)című dokumentumban találja.
 
   > [!TIP]
-  > A termékhez tartozó dokumentáció még nem érhető el a Microsoft Azure dokumentációs webhelyen. A [fürt konfigurációs útmutatójának](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) és a [fürt létrehozási útmutatójának](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) örökölt verziójára mutató hivatkozások egy külön githubon üzemeltetett webhelyre mutatnak. 
+  > A termékhez tartozó dokumentáció még nem érhető el a Microsoft Azure dokumentációs webhelyen. A [fürt konfigurációs útmutatójának](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) és a [fürt létrehozási útmutatójának](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) örökölt verziójára mutató hivatkozások egy külön githubon üzemeltetett webhelyre mutatnak.
 
 * SMB konfigurálása
 
@@ -364,14 +365,13 @@ Ezek a lépések nem szükségesek az összes fürthöz. Ezek bizonyos típusú 
 
   Ha az Azure Blobtól eltérő felhőalapú tárolót szeretne használni, telepítenie kell egy további szolgáltatás-licencet. A FlashCloud<sup>TM</sup> -licenc megvásárlásával kapcsolatos részletekért forduljon a Microsoft képviselőjéhez. A részleteket a [háttérbeli tárolás hozzáadása és a virtuális névtér konfigurálása](fxt-add-storage.md#about-back-end-storage)című részben ismertetjük.
 
-
 ### <a name="enable-support"></a>Támogatás engedélyezése
 
 Az Azure FXT Edge Filer-fürt automatikusan feltöltheti a fürt támogatási adatait. Ezek a feltöltések lehetővé teszik a személyzet számára a lehető legjobb kiszolgálást.
 
 A támogatási feltöltések beállításához kövesse az alábbi lépéseket.
 
-1. Navigáljon a **fürt**  >  **támogatási** beállításai lapra. Fogadja el az adatvédelmi szabályzatot. 
+1. Navigáljon a **fürt**  >  **támogatási** beállításai lapra. Fogadja el az adatvédelmi szabályzatot.
 
    ![Képernyőfelvétel: a Vezérlőpult és az előugró ablak, amely a Confirm (megerősítés) gombbal fogadja el az adatvédelmi szabályzatot](media/fxt-cluster-create/fxt-privacy-policy.png)
 
@@ -389,9 +389,9 @@ A támogatási feltöltések beállításához kövesse az alábbi lépéseket.
 
    ![A támogatási beállítások lapon található, biztonságos proaktív támogatásról szóló szakaszt tartalmazó képernyőkép](media/fxt-cluster-create/fxt-support-sps.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozta az alapszintű fürtöt, és elfogadta az adatvédelmi szabályzatot, adja hozzá a fürt többi csomópontját. 
+Miután létrehozta az alapszintű fürtöt, és elfogadta az adatvédelmi szabályzatot, adja hozzá a fürt többi csomópontját.
 
 > [!div class="nextstepaction"]
 > [Fürtcsomópontok hozzáadása](fxt-add-nodes.md)

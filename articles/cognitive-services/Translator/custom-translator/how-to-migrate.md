@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537986"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220873"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Központi munkaterület és projektek áttelepíthetők az egyéni Fordítóba
 
@@ -55,7 +55,7 @@ Projekt átmigrálása:
 
 3. Kattintson az áttelepítés hivatkozásra a megfelelő projekthez.
 
-    ![Áttelepítés az elosztóról](media/how-to/how-to-migrate-from-hub.png)
+    ![Képernyőfelvétel: a kiválasztott projekt áttelepíteni kívánt gombjának kiemelése.](media/how-to/how-to-migrate-from-hub.png)
 
 4. Az áttelepítés hivatkozás megnyomásakor a következő űrlapot fogja megjeleníteni:
    * Adja meg azt a munkaterületet, amelyet át szeretne vinni az egyéni Fordítóba
@@ -76,7 +76,7 @@ Munkaterület átmigrálása:
 
 3. A "beállítások" lapon kattintson a munkaterület-adatáttelepítés egyéni Fordítóba elemre.
 
-    ![Áttelepítés az elosztóról](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![Képernyőfelvétel: a munkaterület-adatáttelepítés egyéni fordítói lehetőségre való kiemelése.](media/how-to/how-to-migrate-workspace-from-hub.png)
 
 4. A következő lapon válassza ki a két lehetőség egyikét:
 
@@ -143,7 +143,7 @@ Ez a táblázat a Microsoft Translator hub és az egyéni fordító funkcióit h
 
 Ha Ön olyan Közösség vagy szervezet, amely a fordító új nyelvi rendszerének létrehozására dolgozik, további információkért tekintse meg a [custommt@microsoft.com](mailto:custommt@microsoft.com) következőt:.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Modell betanítása](how-to-train-model.md).
 - Az üzembe helyezett egyéni fordítási modell használatának megkezdése [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)-n keresztül.

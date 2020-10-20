@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 10/15/2020
-ms.openlocfilehash: 1b61b643ea4b195878a1d12fc1ac4bb7fef23027
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a323dec66a3077784ff85deadd4f12086648fb3a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151361"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220458"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Az Azure Data Share gyakori hibáinak elhárítása 
 
@@ -34,7 +34,7 @@ Ez az alábbi okok miatt történhet:
     1. Keresse meg a **Microsoft.DataShare** elemet.
     1. Kattintson a **Regisztráció** parancsra. 
 
-    A lépések elvégzéséhez az Azure- [közreműködő szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) kell rendelkeznie az Azure-előfizetéshez. 
+    A lépések elvégzéséhez az Azure- [közreműködő szerepkörrel](../role-based-access-control/built-in-roles.md#contributor) kell rendelkeznie az Azure-előfizetéshez. 
 
 * **A meghívót az Azure-hoz tartozó bejelentkezési e-mail-címe helyett az e-mail aliasára küldte a rendszer.** Ha regisztrálta az Azure Data Share szolgáltatást, vagy már létrehozott egy Data Share-erőforrást az Azure-bérlőben, de még mindig nem látja a meghívást, akkor annak az lehet az oka, hogy a szolgáltató az e-mail aliasát adta meg címzettként az Azure-hoz tartozó bejelentkezési e-mail-címe helyett. Forduljon az adatszolgáltatóhoz, és győződjön meg arról, hogy az Azure-hoz tartozó bejelentkezési e-mail-címre küldte a meghívót, nem pedig az e-mail aliasára.
 
@@ -81,4 +81,3 @@ SQL-források esetén a pillanatkép-hibák további okai a következők:
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot. 
 
 Ha szeretné megtudni, hogyan fogadhat adatfogadást, folytassa az [elfogadás és fogadás adatgyűjtéssel](subscribe-to-data-share.md) foglalkozó oktatóanyagot.
-

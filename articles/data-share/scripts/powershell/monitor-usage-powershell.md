@@ -1,20 +1,17 @@
 ---
-title: 'PowerShell-parancsfájl: Azure-beli adatmegosztások használatának figyelése | Microsoft Docs'
+title: 'PowerShell-parancsfájl: Azure-beli adatmegosztás használatának figyelése'
 description: Ez a PowerShell-parancsfájl egy elküldett adatmegosztás használati metrikáit kérdezi le.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 0a4084d309dd0160970f1c03540705b310eb8e75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9ff7a29cba9b8e9ca058bfe742f484c5b495cd7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307207"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221315"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Az elküldett adatmegosztások használatának figyelése a PowerShell használatával
 
@@ -44,12 +41,12 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Get-AzDataShareSynchronization](/powershell/module/az.datashare/get-azdatasharesynchronization?view=azps-2.6.0) | Megosztáson lévő szinkronizálások listázása. |
-| [Get-AzDataShareSynchronizationDetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail?view=azps-2.6.0) | Beolvassa a megosztás szinkronizálásának részleteit. |
+| [Get-AzDataShareSynchronization](/powershell/module/az.datashare/get-azdatasharesynchronization) | Megosztáson lévő szinkronizálások listázása. |
+| [Get-AzDataShareSynchronizationDetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail) | Beolvassa a megosztás szinkronizálásának részleteit. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/).
 
 További Azure-adatmegosztási PowerShell-szkriptek az Azure-beli [adatmegosztás PowerShell-mintáinak](../../samples-powershell.md)használatával találhatók.

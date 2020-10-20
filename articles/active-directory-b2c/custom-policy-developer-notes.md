@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 23e443a542ed22906abb237e402834b707e623a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7788d45a9cc30cb688d33a629fbb6e53f5ca16cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852034"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214906"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
 
@@ -66,7 +66,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 | Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2-engedélyezési kód](authorization-code-flow.md) |  |  | X |  |
-| OAuth2 engedélyezési kód a PKCE |  |  | X | Csak mobil alkalmazások  |
+| OAuth2 engedélyezési kód a PKCE |  |  | X | [Nyilvános ügyfelek és egyoldalas alkalmazások](authorization-code-flow.md)  |
 | [OAuth2 implicit folyamat](implicit-flow-single-page-application.md) |  |  | X |  |
 | [OAuth2 erőforrás-tulajdonos jelszavas hitelesítő adatai](ropc-custom.md) |  | X |  |  |
 | [OIDC-kapcsolat](openid-connect.md) |  |  | X |  |
@@ -156,7 +156,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 | [Eseménynaplók Application Insights](application-insights-technical-profile.md) |  | X |  | Az élesben használt felhasználói folyamatok figyelésére szolgál. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Győződjön [meg arról, hogy elérhetők-e a Microsoft Graph műveletek Azure ad B2C](microsoft-graph-operations.md)
 - További információ [az egyéni házirendekről és a felhasználói folyamatokkal kapcsolatos különbségekről](custom-policy-overview.md).
