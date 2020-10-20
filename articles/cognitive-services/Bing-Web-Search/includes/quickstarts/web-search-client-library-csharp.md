@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3f8f7c41e4d18909ec4f483a0e37d83b4d05e79d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9dbed0de3cf6cc911111825a75430d0c616f4dc4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88931087"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217595"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a C#-alkalmazásba való Bing Web Search integrálását. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
@@ -54,6 +54,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch.Models;
 using System.Linq;
+using System.Threading.Tasks;
 ```
 
 ## <a name="create-project-scaffolding"></a>Projektszerkezet létrehozása
@@ -79,7 +80,7 @@ A következő szakaszban ebben az osztályban hozzuk létre a mintaalkalmazásun
 Ez a kód hozza létre a keresési lekérdezést.
 
 ```csharp
-public static async void WebResults(WebSearchClient client)
+public static async Task WebResults(WebSearchClient client)
 {
     try
     {
@@ -206,11 +207,11 @@ else
 Ebben az alkalmazásban a fő metódusban szerepel az ügyfelet példányosító, a `subscriptionKey` azonosítót érvényesítő és a `WebResults` metódust meghívő kód. Folytatás előtt győződjön meg arról, hogy érvényes előfizetői azonosítót adott meg az Azure-fiókjához.
 
 ```csharp
-static void Main(string[] args)
+static async Task Main(string[] args)
 {
     var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-    WebResults(client);
+    await WebResults(client);
 
     Console.WriteLine("Press any key to exit...");
     Console.ReadKey();
@@ -236,7 +237,7 @@ Ebben a példában a `count` és az `offset` paramétert használjuk a „Best r
 1. Adja hozzá ezt a kódot a konzolprojekthez:
 
     ```csharp
-    public static async void WebResultsWithCountAndOffset(WebSearchClient client)
+    public static async Task WebResultsWithCountAndOffset(WebSearchClient client)
     {
         try
         {
@@ -273,13 +274,13 @@ Ebben a példában a `count` és az `offset` paramétert használjuk a „Best r
 2. A `main` metódushoz adja hozzá a következőt: `WebResultsWithCountAndOffset`.
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -295,7 +296,7 @@ Ez a minta a `response_filter` paraméter segítségével szűri a keresési ere
 1. Adja hozzá ezt a kódot a konzolprojekthez:
 
     ```csharp
-    public static async void WebSearchWithResponseFilter(WebSearchClient client)
+    public static async Task WebSearchWithResponseFilter(WebSearchClient client)
     {
         try
         {
@@ -334,15 +335,15 @@ Ez a minta a `response_filter` paraméter segítségével szűri a keresési ere
 2. A `main` metódushoz adja hozzá a következőt: `WebResultsWithCountAndOffset`.
 
     ```csharp
-    static void Main(string[] args)
+    static Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
         // Search with news filter...
-        WebSearchWithResponseFilter(client);
+        await WebSearchWithResponseFilter(client);
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -358,7 +359,7 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
 1. Adja hozzá ezt a kódot a konzolprojekthez:
 
     ```csharp
-    public static async void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchClient client)
+    public static async Task WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchClient client)
     {
         try
         {
@@ -396,17 +397,17 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
 2. A `main` metódushoz adja hozzá a következőt: `WebResultsWithCountAndOffset`.
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
         // Search with news filter...
-        WebSearchWithResponseFilter(client);
+        await WebSearchWithResponseFilter(client);
         // Search with answer count, promote, and safe search
-        WebSearchWithAnswerCountPromoteAndSafeSearch(client);
+        await WebSearchWithAnswerCountPromoteAndSafeSearch(client);
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -419,7 +420,7 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót az alkalmazás kódjából.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

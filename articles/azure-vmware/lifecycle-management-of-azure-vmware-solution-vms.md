@@ -3,12 +3,12 @@ title: Azure VMware-megoldás virtuális gépek életciklus-kezelése
 description: Ismerje meg, hogyan kezelheti az Azure VMware megoldás virtuális gépei életciklusának minden aspektusát Microsoft Azure natív eszközökkel.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 928a632a34dd31272c7c3bf92f6dc6dda97cb6cc
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950363"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216249"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware-megoldás virtuális gépek életciklus-kezelése
 
@@ -53,8 +53,8 @@ Az Azure VMware megoldás virtuális gépei az MMA-n keresztül figyelhetők (m�
 A Azure Automation **Azure Update Management** egy hibrid környezetben kezeli a Windows-és Linux-alapú gépek operációs rendszerének frissítéseit. Figyeli a megfelelőség javítását, és továbbítja a javítási szórási riasztásokat a szervizelés Azure Monitor. Az Azure Update Managementnak csatlakoznia kell a Log Analytics munkaterülethez a tárolt adatmennyiségek használatával a virtuális gépek frissítéseinek állapotának felmérése érdekében.
 - Log Analytics Azure Update Managementhoz való hozzáadásához először [létre kell hoznia egy Azure Automation-fiókot](../automation/automation-create-standalone-account.md).
 - Log Analytics munkaterület automatizálási fiókjával való összekapcsolásához tekintse meg a [log Analytics munkaterület és az Automation-fiók](../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)című témakört.
-- Az Azure-Update Management a virtuális gépek számára történő engedélyezéséről az [Automation-fiókból történő Update Management engedélyezése](../automation/update-management/update-mgmt-enable-automation-account.md)című témakörben olvashat.
-- Miután hozzáadta a virtuális gépeket az Azure Update Managementhoz, [telepíthet frissítéseket a virtuális gépeken, és áttekintheti az eredményeket](../automation/update-management/update-mgmt-deploy-updates.md). 
+- Az Azure-Update Management a virtuális gépek számára történő engedélyezéséről az [Automation-fiókból történő Update Management engedélyezése](../automation/update-management/enable-from-automation-account.md)című témakörben olvashat.
+- Miután hozzáadta a virtuális gépeket az Azure Update Managementhoz, [telepíthet frissítéseket a virtuális gépeken, és áttekintheti az eredményeket](../automation/update-management/deploy-updates.md). 
 
 A **Azure Security Center** komplex veszélyforrások elleni védelmet biztosít a felhőben és a helyszínen futó hibrid számítási feladatokhoz. Felméri az Azure VMware-alapú virtuális gépek biztonsági réseit, és szükség esetén riasztásokat hoz létre. Ezek a biztonsági riasztások továbbítható a Azure Monitor a megoldáshoz.
 - Azure Security Center nem igényel telepítést. További információkért tekintse meg a [virtuális gépek támogatott szolgáltatásainak](../security-center/security-center-services.md)listáját.

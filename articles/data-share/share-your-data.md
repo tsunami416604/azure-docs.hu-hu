@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
-ms.openlocfilehash: 5aa760c661fd596c55693edd537ca7820c7d7f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adc3b4542b6eba0cc0df7d93ac2cabbf7c1c144a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489901"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216589"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Oktatóanyag: Adatok megosztása az Azure Data Share-rel  
 
@@ -33,7 +33,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 ### <a name="share-from-a-storage-account"></a>Megosztás egy Storage-fiókból:
 
-* Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](../storage/common/storage-account-create.md)
 * A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi.
 * Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi. 
 
@@ -86,7 +86,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
     | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
     | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-    | Név | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+    | Name | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
     | | |
 
 1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
@@ -139,6 +139,6 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 Az Azure-beli adatmegosztás már létrejött, és az adatmegosztás címzettje most már készen áll a meghívás elfogadására. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Azure-beli adatmegosztást, és hogyan hívhat meg címzetteket. Ha szeretne többet megtudni arról, hogy az adatfogyasztó hogyan fogadhat és fogadhat adatmegosztást, folytassa az [elfogadás és fogadás](subscribe-to-data-share.md) adatgyűjtéssel foglalkozó oktatóanyagot. 
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Azure-beli adatmegosztást, és hogyan hívhat meg címzetteket. Ha szeretne többet megtudni arról, hogy az adatfogyasztó hogyan fogadhat és fogadhat adatmegosztást, folytassa az [elfogadás és fogadás](subscribe-to-data-share.md) adatgyűjtéssel foglalkozó oktatóanyagot.

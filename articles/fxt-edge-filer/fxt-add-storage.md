@@ -6,42 +6,43 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79239216"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217524"
 ---
-# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Oktatóanyag: háttérbeli tároló hozzáadása és a virtuális névtér konfigurálása 
+# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Oktatóanyag: háttérbeli tároló hozzáadása és a virtuális névtér konfigurálása
 
-Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá háttérbeli tárhelyet a gyorsítótárhoz, és hogyan állíthatja be az ügyfél felé irányuló virtuális fájlrendszert. 
+Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá háttérbeli tárhelyet a gyorsítótárhoz, és hogyan állíthatja be az ügyfél felé irányuló virtuális fájlrendszert.
 
-A fürt csatlakozik a háttér-tárolási rendszerekhez az adatügyfelekre vonatkozó kérések eléréséhez, valamint a változások végleges tárolására a gyorsítótárban. 
+A fürt csatlakozik a háttér-tárolási rendszerekhez az adatügyfelekre vonatkozó kérések eléréséhez, valamint a változások végleges tárolására a gyorsítótárban.
 
-A névtér az ügyfélhez kapcsolódó pszeudo fájlrendszer, amely lehetővé teszi, hogy az ügyféloldali munkafolyamatok módosítása nélkül cserélje ki a háttérbeli tárolást. 
+A névtér az ügyfélhez kapcsolódó pszeudo fájlrendszer, amely lehetővé teszi, hogy az ügyféloldali munkafolyamatok módosítása nélkül cserélje ki a háttérbeli tárolást.
 
-Ebben az oktatóanyagban az alábbiakkal fog megismerkedni: 
+Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Háttérbeli tároló hozzáadása az Azure FXT Edge Filer-fürthöz 
+>
+> * Háttérbeli tároló hozzáadása az Azure FXT Edge Filer-fürthöz
 > * Az ügyfél felé irányuló elérési út definiálása a tároláshoz
 
 ## <a name="about-back-end-storage"></a>A háttérbeli tárterület ismertetése
 
 Az Azure FXT Edge Filer-fürt egy *alapszintű Filer* -definíciót használ a háttérbeli tárolási rendszer a FXT-fürthöz való csatolásához.
 
-Az Azure FXT Edge Filer számos népszerű NAS hardveres rendszerrel kompatibilis, és üres tárolókat használhat az Azure Blob vagy más felhőalapú tárolóból. 
+Az Azure FXT Edge Filer számos népszerű NAS hardveres rendszerrel kompatibilis, és üres tárolókat használhat az Azure Blob vagy más felhőalapú tárolóból.
 
 A Felhőbeli tárolók számára üresnek kell lennie, ha az FXT operációs rendszer teljes mértékben képes kezelni a felhőalapú tároló kötetén lévő összes adatmennyiséget. A meglévő adatait áthelyezheti a Felhőbeli tárolóba, miután a tárolót alapszintű Filer-ként hozzáadja a fürthöz.
 
 A Vezérlőpult segítségével adjon hozzá egy Core Filer-t a rendszerhez.
 
 > [!NOTE]
-> 
+>
 > Ha az Amazon AWS vagy a Google Cloud Storage szolgáltatást szeretné használni, telepítenie kell egy FlashCloud<sup>TM</sup> -szolgáltatás licencét. Forduljon a Microsoft képviselőjéhez egy licenckulcs esetében, majd kövesse az örökölt konfigurációs útmutató utasításait a [szolgáltatási licencek hozzáadásához vagy eltávolításához](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/install_licenses.html#install-licenses).
-> 
-> Az Azure Blob Storage támogatását az Azure FXT Edge Filer szoftverlicenc tartalmazza. 
+>
+> Az Azure Blob Storage támogatását az Azure FXT Edge Filer szoftverlicenc tartalmazza.
 
 Az alapszintű Filer-elemek hozzáadásával kapcsolatos részletesebb információkért olvassa el a következő témakört a fürtkonfiguráció útmutatójában:
 
@@ -59,7 +60,7 @@ Definiáljon egy alapvető Filer-t **Create** az alapszintű **Filer**  >  **Man
 
 ![Kattintson a Create (létrehozás) gombra az alapszintű filers lista felett a Core filers kezelése lapon.](media/fxt-cluster-config/create-core-filer-button.png)
 
-Az **új alapszintű Filer hozzáadása** varázsló végigvezeti a háttér-tárterületre mutató alapszintű Filer létrehozásának folyamatán. A fürtkonfiguráció útmutatója részletesen ismerteti a folyamatot, amely különbözik az NFS/NAS Storage és a Felhőbeli tárolás esetében (a hivatkozások a következők). 
+Az **új alapszintű Filer hozzáadása** varázsló végigvezeti a háttér-tárterületre mutató alapszintű Filer létrehozásának folyamatán. A fürtkonfiguráció útmutatója részletesen ismerteti a folyamatot, amely különbözik az NFS/NAS Storage és a Felhőbeli tárolás esetében (a hivatkozások a következők).
 
 Az alfeladatok a következők:
 
@@ -71,15 +72,15 @@ Az alfeladatok a következők:
 
 * A NAS Core filers esetében adja meg a teljes tartománynevet (FQDN) vagy IP-címet. A teljes TARTOMÁNYNEVEt minden alapvető Filer esetében ajánlott megadni, és az SMB-hozzáféréshez szükséges.
 
-* Válassza ki a gyorsítótár-házirendet – a varázsló második lapja felsorolja az új Core Filer elérhető gyorsítótár-házirendjeit. Részletekért olvassa el a [fürt konfigurációs útmutatójának gyorsítótár-házirendek című szakaszát](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html). 
+* Válassza ki a gyorsítótár-házirendet – a varázsló második lapja felsorolja az új Core Filer elérhető gyorsítótár-házirendjeit. Részletekért olvassa el a [fürt konfigurációs útmutatójának gyorsítótár-házirendek című szakaszát](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html).
 
   ![Egy hardveres NAS új Core Filer varázsló második lapja; Megnyílik a gyorsítótár-házirend legördülő menüje, amely több letiltott lehetőséget és három érvényes gyorsítótárazási házirend-beállítást (megkerülés, olvasási gyorsítótárazás és olvasási/írási gyorsítótárazás) mutat be.](media/fxt-cluster-config/new-nas-choose-cache-policy.png)
 
 * A felhőalapú tároláshoz meg kell adnia a Cloud Service-t és a hozzáférési hitelesítő adatokat más paraméterek között. Részletekért olvassa el a [Cloud Service és a Protocol](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#cloud-service-and-protocol) című témakört a fürt konfigurációs útmutatójában.
 
-  ![A Cloud Core Filer információi az új Core Filer varázslóban](media/fxt-cluster-config/new-core-filer-cloud3.png) 
+  ![A Cloud Core Filer információi az új Core Filer varázslóban](media/fxt-cluster-config/new-core-filer-cloud3.png)
   
-  Ha a fürthöz már hozzáadta a Felhőbeli hozzáférési hitelesítő adatokat, azok megjelennek a listában. Frissítse és adja hozzá a hitelesítő adatokat a **fürt**  >  **Felhőbeli hitelesítő adatok** beállításai lapon. 
+  Ha a fürthöz már hozzáadta a Felhőbeli hozzáférési hitelesítő adatokat, azok megjelennek a listában. Frissítse és adja hozzá a hitelesítő adatokat a **fürt**  >  **Felhőbeli hitelesítő adatok** beállításai lapon.
 
 Miután kitöltötte a varázsló összes szükséges beállítását, kattintson a **Filer hozzáadása** gombra a módosítás elküldéséhez.
 
@@ -91,14 +92,14 @@ A képernyőképen található alapszintű Filer hiányzik egy VServer. Össze k
 
 ## <a name="configure-the-namespace"></a>A névtér konfigurálása
 
-Az Azure FXT Edge Filer-fürt létrehoz egy *fürtözött névtér* nevű virtuális fájlrendszert, amely leegyszerűsíti az ügyfelek hozzáférését a különböző háttérrendszer-rendszereken tárolt adatszolgáltatásokhoz. Mivel az ügyfelek virtuális elérési úttal kérik a fájlokat, a tárolási rendszerek hozzáadhatók vagy lecserélhetők anélkül, hogy módosítani kellene az ügyfél-munkafolyamatot. 
+Az Azure FXT Edge Filer-fürt létrehoz egy *fürtözött névtér* nevű virtuális fájlrendszert, amely leegyszerűsíti az ügyfelek hozzáférését a különböző háttérrendszer-rendszereken tárolt adatszolgáltatásokhoz. Mivel az ügyfelek virtuális elérési úttal kérik a fájlokat, a tárolási rendszerek hozzáadhatók vagy lecserélhetők anélkül, hogy módosítani kellene az ügyfél-munkafolyamatot.
 
-A fürt névtere is lehetővé teszi, hogy a Felhőbeli és a NAS-alapú tárolási rendszereket egy hasonló adatstruktúrában is bemutassa. 
+A fürt névtere is lehetővé teszi, hogy a Felhőbeli és a NAS-alapú tárolási rendszereket egy hasonló adatstruktúrában is bemutassa.
 
-A fürt vservers fenntartják a névteret, és tartalmat szolgálnak ki az ügyfeleknek. A fürt névterének létrehozása két lépésből áll: 
+A fürt vservers fenntartják a névteret, és tartalmat szolgálnak ki az ügyfeleknek. A fürt névterének létrehozása két lépésből áll:
 
-1. VServer létrehozása 
-1. Csomópontok beállítása a háttérbeli tárolórendszer és az ügyfél felé irányuló fájlrendszer elérési útjai között 
+1. VServer létrehozása
+1. Csomópontok beállítása a háttérbeli tárolórendszer és az ügyfél felé irányuló fájlrendszer elérési útjai között
 
 ### <a name="create-a-vserver"></a>VServer létrehozása
 
@@ -109,7 +110,7 @@ A VServers olyan virtuális fájlkiszolgálók, amelyek azt szabályozzák, hogy
 * A VServers szabályozza a fájl-hozzáférési vezérlőket, beleértve az alapszintű Filer exportálási házirendeket és a felhasználói hitelesítési rendszereket
 * A VServers SMB-infrastruktúrát biztosít
 
-A fürt VServer konfigurálásának megkezdése előtt olvassa el a csatolt dokumentációt, és forduljon a Microsoft képviselőjéhez a névtér-és vservers megismerése érdekében. VLAN-ok használata esetén [hozza létre őket](fxt-configure-network.md#adjust-network-settings) a VServer létrehozása előtt. 
+A fürt VServer konfigurálásának megkezdése előtt olvassa el a csatolt dokumentációt, és forduljon a Microsoft képviselőjéhez a névtér-és vservers megismerése érdekében. VLAN-ok használata esetén [hozza létre őket](fxt-configure-network.md#adjust-network-settings) a VServer létrehozása előtt.
 
 A fürtkonfiguráció-útmutató ezen részei segítséget nyújtanak a FXT VServer és a globális névtér-funkciók megismerésében:
 
@@ -117,7 +118,7 @@ A fürtkonfiguráció-útmutató ezen részei segítséget nyújtanak a FXT VSer
 * [Globális névtér használata](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)
 * [VServer létrehozása](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver)
 
-Szüksége van legalább egy VServer a fürthöz. 
+Szüksége van legalább egy VServer a fürthöz.
 
 Új VServer létrehozásához a következő információk szükségesek:
 
@@ -129,7 +130,7 @@ Szüksége van legalább egy VServer a fürthöz.
 
 * Ha a hálózata VLAN-okat tartalmaz, melyik VLAN-t használja ehhez a VServer
 
-**VServer**  >  Hozzon létre egy új VServer a VServer**kezelése VServers** beállítások lapján. Részletekért olvassa el a [VServer létrehozásával](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) kapcsolatos témakört a fürt konfigurációs útmutatójában. 
+**VServer**  >  Hozzon létre egy új VServer a VServer**kezelése VServers** beállítások lapján. Részletekért olvassa el a [VServer létrehozásával](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) kapcsolatos témakört a fürt konfigurációs útmutatójában.
 
 ![új VServer létrehozásának előugró ablaka](media/fxt-cluster-config/new-vserver.png)
 
@@ -155,8 +156,7 @@ Másodszor, a **VServer**  >  -**exportálási házirendek** lapon alkalmazza a 
 
 A részletekért tekintse meg a következő témakört: az [alapvető Filer-exportálásokhoz való hozzáférés szabályozása](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) című cikk.
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután hozzáadta a tárolót, és konfigurálta az ügyfélhez kapcsolódó névteret, fejezze be a fürt kezdeti telepítését: 
 

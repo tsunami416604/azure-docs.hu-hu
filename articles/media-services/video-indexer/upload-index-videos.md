@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268825"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218955"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -72,15 +72,15 @@ A Video Indexer használatával használható fájlformátumok listáját a [bem
 > A videó nevének hossza nem haladhatja meg a 80 karaktert.
 
 1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyre.
-2. A videó feltöltéséhez kattintson a **Feltöltés** gombra vagy hivatkozásra.
+1. A videó feltöltéséhez kattintson a **Feltöltés** gombra vagy hivatkozásra.
 
-    ![Feltöltés](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Feltöltés":::
+1. A videó feltöltése után a Video Indexer elkezdi indexelni és elemezni a videót.
 
-    A videó feltöltése után a Video Indexer elkezdi indexelni és elemezni a videót.
-
-    ![Feltöltve](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Ha a Video Indexer befejezte az elemzést, kapni fog egy értesítést, benne a videóra mutató hivatkozással és a videóban talált tartalom rövid leírásával. Például: személyek, témák, OCR-ek.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Feltöltés":::
+1. A Video Indexer elemzése után egy e-mailt fog kapni a videóra mutató hivatkozással, és egy rövid leírást arról, hogy mi található a videóban. Például: személyek, témák, OCR-ek.
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>Feltöltés és indexelés API-val
 

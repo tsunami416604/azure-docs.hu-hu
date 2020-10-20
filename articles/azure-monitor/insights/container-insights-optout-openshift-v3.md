@@ -3,16 +3,25 @@ title: Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása | Micros
 description: Ez a cikk azt ismerteti, hogyan állíthatja le a Azure Monitor for containers szolgáltatással az Azure Red Hat OpenShift-fürt figyelését.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c21b17fd9faed7b133cd8ecad767ae7bd4aa868
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815436"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216531"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása 
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása
 
-Miután engedélyezte az Azure Red Hat OpenShift 3. x verziójú fürt figyelését, leállíthatja a fürt figyelését Azure Monitor for containers használatával, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a Azure Resource Manager sablonnal. 
+>[!IMPORTANT]
+> Az Azure Red Hat OpenShift 3,11 június 2022-én megszűnik.
+>
+> Október 2020-én már nem fog tudni új 3,11-fürtöket létrehozni.
+> A meglévő 3,11-es fürtök továbbra is a 2022-ig fognak működni, de ezt követően már nem lesznek támogatottak.
+>
+> Kövesse ezt az útmutatót [egy Azure Red Hat OpenShift 4-fürt létrehozásához](../../openshift/tutorial-create-cluster.md).
+> Ha konkrét kérdései vannak, vegye [fel velünk a kapcsolatot](mailto:aro-feedback@microsoft.com).
+
+Miután engedélyezte az Azure Red Hat OpenShift 3. x verziójú fürt figyelését, leállíthatja a fürt figyelését Azure Monitor for containers használatával, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a Azure Resource Manager sablonnal.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
@@ -126,6 +135,6 @@ A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, a
 ProvisioningState       : Succeeded
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a munkaterület csak a fürt figyelésének támogatásához lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../platform/delete-workspace.md)című témakört.

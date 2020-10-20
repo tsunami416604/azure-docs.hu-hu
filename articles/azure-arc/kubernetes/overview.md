@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes áttekintését tartalmazza.
 keywords: Kubernetes, arc, Azure, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: a4d53614a0ab6783b9adfe395fec4d79e7b62e1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601fcb096bf2bfeb1a6120015690c9aff4b6177b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858421"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216079"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Mi az Azure Arc-kompatibilis Kubernetes előzetes verziója?
 
@@ -72,10 +72,10 @@ Az Azure arc-kompatibilis Kubernetes jelenleg a következő régiókban támogat
 
     Nem. Az Azure arc-kompatibilis Kubernetes (például Azure Monitor, Azure Policy (forgalomirányító) összes funkciója natív módon elérhető az AK-val, amely már rendelkezik erőforrás-ábrázolással az Azure-ban.
     
-* Össze kell kapcsolni az AK-fürtöt Azure Stack HCI-re az Azure arc-ra? Mi a helyzet a Azure Stack hub vagy Azure Stack motoron futó Kubernetes-fürtökkel?
+* Össze kell kapcsolni az AK-fürtöt Azure Stack HCI-re az Azure arc-ra? Mi a helyzet a Azure Stack hub vagy a Azure Stack Edge rendszerű Kubernetes-fürtökkel?
 
     Igen, a fürtök az Azure arc-hoz való csatlakoztatása előnyökkel jár. Erőforrás-ábrázolást biztosít ezen Kubernetes-fürtökhöz Azure Resource Managerban. Ezen erőforrás-ábrázolások, például a fürtkonfiguráció, Azure Monitor, Azure Policy (forgalomirányító) használatával bővíthetők ezekhez a Kubernetes-fürtökhöz
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fürt összekötése](./connect-cluster.md)

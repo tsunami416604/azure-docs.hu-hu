@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772719"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017012"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosítók csatolása az Azure-fiókhoz
 
@@ -134,7 +134,7 @@ Igen. A csatolt partnerazonosító módosítható, hozzáadható vagy eltávolí
 
 A partnerazonosító és a fiók közötti hivatkozás minden ügyfél bérlője számára elkészül. Partnerazonosító csatolása az egyes ügyfélbérlőkben.
 
-Ha azonban az Azure Lighthouse-on keresztül kezeli az ügyfelek erőforrásait, akkor létre kell hoznia a hivatkozást a szolgáltató bérlőjében egy olyan fiók használatával, amely hozzáféréssel rendelkezik az ügyfél erőforrásaihoz. További információért lásd [a partnerazonosító csatolásával foglalkozó részt a partneri jóváírás engedélyezéséhez a delegált erőforrásokon](../../lighthouse/how-to/partner-earned-credit.md).
+Ha azonban az Azure Lighthouse-on keresztül kezeli az ügyfelek erőforrásait, akkor létre kell hoznia a hivatkozást a szolgáltató bérlőjében egy olyan fiók használatával, amely hozzáféréssel rendelkezik az ügyfél erőforrásaihoz. További információért lásd [a partnerazonosító a delegált erőforrásokra gyakorolt hatás nyomon követéséhez történő csatolását](../../lighthouse/how-to/partner-earned-credit.md) ismertető részt.
 
 **Más partnerek vagy ügyfelek is szerkeszthetik vagy eltávolíthatják a partnerazonosítóra mutató hivatkozást?**
 
@@ -164,7 +164,7 @@ Igen, partnerazonosítóját csatolhatja az Azure Stackhez.
 
 Ha [felügyelt szolgáltatási ajánlat az Azure Marketplace-en történő közzétételével](../../lighthouse/how-to/publish-managed-services-offers.md) kíván ügyfeleket felvenni az Azure által delegált erőforrás-kezelésbe, MPN-azonosítója automatikusan társítva lesz.
 
-Ha [Azure Resource Manager-sablonok üzembe helyezésével kíván ügyfeleket felvenni](../../lighthouse/how-to/onboard-customer.md), legalább egy olyan felhasználói fiókhoz kell társítania MPN-azonosítóját, amely hozzáféréssel rendelkezik minden egyes felvett előfizetéshez. Vegye figyelembe, hogy ezt a szolgáltató bérlőjében kell megtennie, nem pedig az egyes ügyfélbérlőkben. Az egyszerűség kedvéért azt javasoljuk, hogy hozzon létre egy olyan szolgáltatásnév-fiókot a bérlőjében, amely az MPN-azonosítójához van társítva, és adjon számára hozzáférést minden olyan ügyfélhez, akit [partneri jóváírásra jogosult, beépített Azure-szerepkörrel](/partner-center/azure-roles-perms-pec) vesz fel. További információért lásd [a partnerazonosító csatolásával foglalkozó részt a partneri jóváírás engedélyezéséhez a delegált erőforrásokon](../../lighthouse/how-to/partner-earned-credit.md).
+Ha [Azure Resource Manager-sablonok üzembe helyezésével kíván ügyfeleket felvenni](../../lighthouse/how-to/onboard-customer.md), legalább egy olyan felhasználói fiókhoz kell társítania MPN-azonosítóját, amely hozzáféréssel rendelkezik minden egyes felvett előfizetéshez. Vegye figyelembe, hogy ezt a szolgáltató bérlőjében kell megtennie, nem pedig az egyes ügyfélbérlőkben. Az egyszerűség kedvéért azt javasoljuk, hogy hozzon létre egy olyan szolgáltatásnév-fiókot a bérlőjében, amely az MPN-azonosítójához van társítva, és adjon számára hozzáférést minden olyan ügyfélhez, akit [partneri jóváírásra jogosult, beépített Azure-szerepkörrel](/partner-center/azure-roles-perms-pec) vesz fel. További információért lásd [a partnerazonosító a delegált erőforrásokra gyakorolt hatás nyomon követéséhez történő csatolását](../../lighthouse/how-to/partner-earned-credit.md) ismertető részt.
 
 **Hogyan ismertethetem a partnerrendszergazdai hivatkozást (PAL-t) az ügyfeleimmel?**
 

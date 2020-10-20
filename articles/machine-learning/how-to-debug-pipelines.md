@@ -1,25 +1,25 @@
 ---
 title: Hibakeresés & ML-folyamatok hibaelhárítása
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning folyamatok hibakeresése a Pythonban. Ismerje meg a folyamatok fejlesztésével kapcsolatos gyakori buktatókat, valamint a távoli végrehajtás előtt és közben a parancsfájlok hibakeresését segítő tippeket. Ismerje meg, hogyan használható a Visual Studio Code interaktív módon a gépi tanulási folyamatok hibakereséséhez.
+description: Azure Machine Learning folyamatok hibakeresése a Pythonban. Ismerje meg a folyamatok fejlesztésével kapcsolatos gyakori buktatókat, valamint a távoli végrehajtás előtt és közben a parancsfájlok hibakeresését segítő tippeket.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 author: lobrien
 ms.author: laobri
-ms.date: 08/28/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: be68ad35deca754df70bb51e83929e73ff132ba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d369aafa7fdade93df1fe1706aa90c5135c75e79
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315405"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216963"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
 
-Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibaelhárítást a [gépi tanulási folyamatokban](concept-ml-pipelines.md) a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -ban és [Azure Machine learning Designerben](https://docs.microsoft.com/azure/machine-learning/concept-designer). A következő témakörben található információk:
+Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibaelhárítást a [gépi tanulási folyamatokban](concept-ml-pipelines.md) a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -ban és [Azure Machine learning Designerben](https://docs.microsoft.com/azure/machine-learning/concept-designer).
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
@@ -33,6 +33,113 @@ Az alábbi táblázat a folyamat fejlesztése során felmerülő gyakori problé
 | A folyamat nem használja újra a lépéseket | Az ismételt használat alapértelmezés szerint engedélyezve van, de gondoskodjon arról, hogy ne tiltsa le egy folyamat lépéseiben. Ha az újbóli használat le van tiltva, a `allow_reuse` lépésben megadott paraméter a következő lesz: `False` . |
 | A folyamat feleslegesen fut újra | Annak biztosítása érdekében, hogy a lépések csak akkor fussanak újra, amikor a mögöttes adatokat vagy parancsfájlokat módosítják, az egyes lépésekhez tartozó forráskód-címtárakat le kell választva. Ha ugyanazt a könyvtárat használja több lépéshez, előfordulhat, hogy szükségtelen ismétléseket tapasztal. Használja a `source_directory` paramétert egy folyamat lépés objektumon, hogy az elkülönített könyvtárba mutasson erre a lépésre, és győződjön meg arról, hogy nem ugyanazt az `source_directory` útvonalat használja több lépéshez. |
 | A képzési időszakokra vagy más hurok-viselkedésre lelassított lépés | Próbáljon meg bármilyen írást váltani, beleértve a naplózást is `as_mount()` `as_upload()` . A **csatlakoztatási** mód távoli virtualizált fájlrendszert használ, és minden alkalommal feltölti a teljes fájlt. |
+
+## <a name="troubleshooting-parallelrunstep"></a>Hibaelhárítás `ParallelRunStep` 
+
+Az a parancsfájlnak `ParallelRunStep` két függvényt *kell tartalmaznia* :
+- `init()`: Használja ezt a funkciót bármilyen költséges vagy közös felkészüléshez a későbbi következtetésekhez. Használhatja például a modell betöltését egy globális objektumba. Ezt a függvényt a rendszer csak egyszer hívja meg a folyamat elején.
+-  `run(mini_batch)`: A függvény minden `mini_batch` példánynál futni fog.
+    -  `mini_batch`: `ParallelRunStep` meghívja a Run metódust, és egy listát vagy `DataFrame` a pandák argumentumot ad át a metódusnak. A mini_batch minden bejegyzése egy fájl elérési útja lesz, ha a bemenet `FileDataset` vagy egy Panda, `DataFrame` Ha a bemenet a `TabularDataset` .
+    -  `response`: a Run () metódusnak egy pandák `DataFrame` vagy egy tömböt kell visszaadnia. Append_row output_action esetében ezek a visszaadott elemek a közös kimeneti fájlba vannak hozzáfűzve. Summary_only esetén a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti elem egy sikeres futtatását jelzi a bemenet mini-batchben. Győződjön meg arról, hogy a Futtatás eredményében elegendő adat szerepel a kimenet leképezése a kimeneti eredmény futtatásához. A futtatási kimenet a kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
+
+```python
+%%writefile digit_identification.py
+# Snippets from a sample script.
+# Refer to the accompanying digit_identification.py
+# (https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)
+# for the implementation script.
+
+import os
+import numpy as np
+import tensorflow as tf
+from PIL import Image
+from azureml.core import Model
+
+
+def init():
+    global g_tf_sess
+
+    # Pull down the model from the workspace
+    model_path = Model.get_model_path("mnist")
+
+    # Construct a graph to execute
+    tf.reset_default_graph()
+    saver = tf.train.import_meta_graph(os.path.join(model_path, 'mnist-tf.model.meta'))
+    g_tf_sess = tf.Session()
+    saver.restore(g_tf_sess, os.path.join(model_path, 'mnist-tf.model'))
+
+
+def run(mini_batch):
+    print(f'run method start: {__file__}, run({mini_batch})')
+    resultList = []
+    in_tensor = g_tf_sess.graph.get_tensor_by_name("network/X:0")
+    output = g_tf_sess.graph.get_tensor_by_name("network/output/MatMul:0")
+
+    for image in mini_batch:
+        # Prepare each image
+        data = Image.open(image)
+        np_im = np.array(data).reshape((1, 784))
+        # Perform inference
+        inference_result = output.eval(feed_dict={in_tensor: np_im}, session=g_tf_sess)
+        # Find the best probability, and add it to the result list
+        best_result = np.argmax(inference_result)
+        resultList.append("{}: {}".format(os.path.basename(image), best_result))
+
+    return resultList
+```
+
+Ha egy másik fájl vagy mappa található a következtetési parancsfájllal megegyező könyvtárban, hivatkozhat rá az aktuális munkakönyvtár megkeresésével.
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
+### <a name="parameters-for-parallelrunconfig"></a>A ParallelRunConfig paraméterei
+
+`ParallelRunConfig` a `ParallelRunStep` Azure Machine learning folyamaton belüli példány fő konfigurációja. Ezzel a paranccsal becsomagolhatja a parancsfájlt, és konfigurálhatja a szükséges paramétereket, beleértve az alábbi bejegyzéseket:
+- `entry_script`: Egy felhasználói parancsfájl helyi fájl elérési útjaként, amely több csomóponton párhuzamosan fog futni. Ha `source_directory` van ilyen, használjon relatív elérési utat. Ellenkező esetben használja a gépen elérhető bármely elérési utat.
+- `mini_batch_size`: A mini-batch egyetlen hívásnak átadott mérete `run()` . (nem kötelező; az alapértelmezett érték a és a rendszerhez tartozó `10` fájlok `FileDataset` `1MB` `TabularDataset` .)
+    - A esetében `FileDataset` a minimális értékkel rendelkező fájlok száma `1` . Több fájlt is egyesítheti egyetlen mini-kötegbe.
+    - A esetében `TabularDataset` a mérete az adatmennyiség. Az értékek például a következők:,, `1024` `1024KB` `10MB` és `1GB` . A javasolt érték: `1MB` . A mini-batch-ból `TabularDataset` soha nem lesz keresztben a fájl határa. Ha például. csv fájlokkal rendelkezik, amelyek különböző méretűek, a legkisebb fájl 100 KB, a legnagyobb pedig 10 MB. Ha be van állítva `mini_batch_size = 1MB` , akkor az 1 MB-nál kisebb méretű fájlok egyetlen mini batch-ként lesznek kezelve. Az 1 MB-nál nagyobb méretű fájlok több mini-kötegre lesznek felosztva.
+- `error_threshold`: A rendszer figyelmen kívül hagyja a hibák számát a (z `TabularDataset` ) és a (z) esetében a `FileDataset` feldolgozás során. Ha a teljes bemenethez tartozó hibák száma meghaladja ezt az értéket, a rendszer megszakítja a feladatot. A hiba küszöbértéke a teljes bemenetre vonatkozik, nem a metódusnak eljuttatott egyes mini-batch esetében `run()` . A tartomány `[-1, int.max]` . A `-1` rész azt jelzi, hogy a rendszer figyelmen kívül hagyja az összes hibát a feldolgozás során.
+- `output_action`: Az alábbi értékek egyike azt jelzi, hogyan lesz rendszerezve a kimenet:
+    - `summary_only`: A felhasználói parancsfájl a kimenetet fogja tárolni. `ParallelRunStep` a csak a hiba küszöbértékének kiszámításához használja a kimenetet.
+    - `append_row`: Minden bemenet esetében csak egy fájl lesz létrehozva a kimeneti mappában, hogy az összes kimenetet sor szerint elválasztva fűzze hozzá.
+- `append_row_file_name`: Append_row output_action kimeneti fájljának testreszabása (nem kötelező; az alapértelmezett érték `parallel_run_step.txt` ).
+- `source_directory`: A számítási célra végrehajtandó összes fájlt tartalmazó mappák elérési útja (nem kötelező).
+- `compute_target`: Csak `AmlCompute` a támogatott.
+- `node_count`: A felhasználói parancsfájl futtatásához használandó számítási csomópontok száma.
+- `process_count_per_node`: A folyamatok száma egy csomóponton. Az ajánlott eljárás az, ha a GPU vagy a CPU egyik csomópontjának száma (opcionális; alapértelmezett érték) van beállítva `1` .
+- `environment`: A Python-környezet definíciója. Beállíthatja egy meglévő Python-környezet használatára vagy egy ideiglenes környezet beállítására. A definíció a szükséges alkalmazás-függőségek (opcionális) beállítására is felelős.
+- `logging_level`: Naplózási részletesség. A részletességgel bővülő értékek a következők: `WARNING` , `INFO` és `DEBUG` . (nem kötelező; az alapértelmezett érték: `INFO` )
+- `run_invocation_timeout`: A `run()` metódus meghívásának időtúllépése másodpercben. (nem kötelező; az alapértelmezett érték: `60` )
+- `run_max_try`: Maximális számú próbálkozás a `run()` mini batch számára. A nem `run()` sikerült, ha kivétel keletkezik, vagy ha a rendszer nem ad vissza semmit, ha `run_invocation_timeout` a szolgáltatás elérte az értéket (opcionális; az alapértelmezett érték `3` ). 
+
+A (z),,,, és as értéket megadhatja, `mini_batch_size` `node_count` hogy a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor a paraméterek értékei finomhangolása megtörténjen. Ebben a példában a `PipelineParameter` és a és a () `mini_batch_size` értéket fogja használni, `Process_count_per_node` Ha később újra elküld egy futtatást. 
+
+### <a name="parameters-for-creating-the-parallelrunstep"></a>A ParallelRunStep létrehozásához szükséges paraméterek
+
+Hozza létre a ParallelRunStep a parancsfájl, a környezeti konfiguráció és a paraméterek használatával. Adja meg azt a számítási célt, amely már a munkaterülethez van csatolva a következtetési parancsfájl végrehajtásának céljaként. `ParallelRunStep`A paranccsal hozhatja létre a Batch-következtetési folyamat lépését, amely a következő paramétereket veszi figyelembe:
+- `name`: A lépés neve a következő elnevezési korlátozásokkal: Unique, 3-32 karakter, és regex ^ \[ a-z \] ([-a-Z0-9] * [a-Z0-9])? $.
+- `parallel_run_config`: A `ParallelRunConfig` korábban definiált objektum.
+- `inputs`: Egy vagy több, egybeírt Azure Machine Learning-adathalmaz párhuzamos feldolgozásra particionálva.
+- `side_inputs`: Egy vagy több olyan hivatkozási adat vagy adatkészlet, amelyet nem kell particionálni.
+- `output`: `PipelineData` A kimeneti könyvtárnak megfelelő objektum.
+- `arguments`: A felhasználói parancsfájlnak átadott argumentumok listája. A unknown_args használatával kérheti le őket a belépési parancsfájlban (nem kötelező).
+- `allow_reuse`: Azt határozza meg, hogy a lépés felhasználja-e az előző eredményeket, ha ugyanazokkal a beállításokkal/bemenetekkel futnak. Ha ez a paraméter `False` , akkor a folyamat végrehajtása során a rendszer mindig új futtatást hoz létre ehhez a lépéshez. (nem kötelező; az alapértelmezett érték: `True` .)
+
+```python
+from azureml.pipeline.steps import ParallelRunStep
+
+parallelrun_step = ParallelRunStep(
+    name="predict-digits-mnist",
+    parallel_run_config=parallel_run_config,
+    inputs=[input_mnist_ds_consumption],
+    output=output_dir,
+    allow_reuse=True
+)
+```
 
 ## <a name="debugging-techniques"></a>Hibakeresési technikák
 
@@ -148,6 +255,10 @@ A OpenCensus Python-függvénytár ily módon történő használatával kapcsol
 Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végeznie a ML-folyamaton használt Python-kóddal. A Visual Studio Code (VS Code) és a debugpy használatával a kódot a betanítási környezetben futtatva is csatlakoztathatja. További információkért tekintse meg az [interaktív hibakeresést a vs Code útmutatóban](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines).
 
 ## <a name="next-steps"></a>Következő lépések
+
+* A használatával kapcsolatos teljes oktatóanyagért `ParallelRunStep` lásd [: oktatóanyag: Azure Machine learning folyamat létrehozása a Batch-pontozáshoz](tutorial-pipeline-batch-scoring-classification.md).
+
+* Az automatizált gépi tanulást ML-folyamatokban bemutató teljes példa: az [automatikus ml használata egy Azure Machine learning-folyamaton a Pythonban](how-to-use-automlstep-in-pipelines.md).
 
 * Tekintse meg az SDK-referenciát a [azureml-pipeline-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) csomag és a [azureml-Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) csomag súgójában.
 

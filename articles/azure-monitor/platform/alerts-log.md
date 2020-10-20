@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 40cf46746587cbd221bd958ccb528c9e40cf18bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299420"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217558"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
@@ -55,7 +55,7 @@ Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 
 1. A naplózási riasztások két típusú [**mértéken**](alerts-unified-log.md#measure)alapulnak:
     1. **Eredmények száma** – a lekérdezés által visszaadott rekordok száma.
-    1. **Metrika mérése**  -  *Összesítési érték* kiszámítva a kiválasztott kifejezések és a [bin ()](/azure/kusto/query/binfunction) kiválasztásával csoportosított összesítéssel. Példa:
+    1. **Metrika mérése**  -  *Összesítési érték* kiszámítva a kiválasztott kifejezések és a [bin ()](/azure/kusto/query/binfunction) kiválasztásával csoportosított összesítéssel. Például:
 
     ```Kusto
     // Reported errors
@@ -201,7 +201,7 @@ Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
     > [!NOTE]
     > A naplózási riasztási szabályok jelenleg [állapot nélküliek, és nem oldhatók](alerts-unified-log.md#state-and-resolving-alerts)fel.
 
-1. A szabályok szerkesztéséhez kattintson a felső sávon a **szabályok kezelése** gombra:
+1. A szabályok szerkesztéséhez kattintson a **riasztási szabályok kezelése** gombra a felső sávon:
 
     ![ riasztási szabályok kezelése](media/alerts-log/manage-alert-rules.png)
 

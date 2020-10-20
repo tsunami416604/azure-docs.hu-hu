@@ -1,17 +1,16 @@
 ---
 title: U-SQL-parancsfájlok kiterjesztése R-Azure Data Lake Analytics
 description: Megtudhatja, hogyan futtathat R-kódokat az U-SQL-szkriptekben Azure Data Lake Analytics használatával. R-kód beágyazása vagy hivatkozás a fájlokból.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab28ba1bb6185f5f0ab90df99f0abea7895b1bf4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87127400"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218000"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>U-SQL-parancsfájlok kiterjesztése R-kóddal Azure Data Lake Analytics
 
@@ -208,8 +207,8 @@ USING new Extension.R.Reducer(command:@myRScript, rReturnType:"charactermatrix")
 OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
-* [A U-SQL Window functions használata Azure Data Lake Analytics feladatokhoz](data-lake-analytics-use-window-functions.md)
+* [A U-SQL Window functions használata Azure Data Lake Analytics feladatokhoz](./data-lake-analytics-u-sql-get-started.md)

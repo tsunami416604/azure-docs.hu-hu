@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: 1bf5966ab3e4bb62c2be302a7791cadad9761a70
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 85ddda4bbb6702ed8c82a40d603c8ca87ffb7053
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150384"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217541"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Adatok megosztása és fogadása az Azure SQL Database-ből és az Azure Synapse Analyticsből
 
@@ -39,7 +39,7 @@ Az alábbi lista tartalmazza az SQL-forrásokból származó adatok megosztásá
 * A *Microsoft. SQL/Servers/Databases/Write*adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a Közreműködő szerepkör részét képezi.
 * Az adatraktár eléréséhez szükséges engedély. Ezt a következő lépések végrehajtásával teheti meg: 
     1. A Azure Portalban navigáljon az SQL Serverre, és állítsa be magát a Azure Active Directory-rendszergazdaként.
-    1. Kapcsolódjon a Azure SQL Database/adattárházhoz a [Lekérdezés-szerkesztő](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) használatával, vagy SQL Server Management Studio Azure Active Directory hitelesítéssel. 
+    1. Kapcsolódjon a Azure SQL Database/adattárházhoz a [Lekérdezés-szerkesztő](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) használatával, vagy SQL Server Management Studio Azure Active Directory hitelesítéssel. 
     1. A következő szkript végrehajtásával adja hozzá az adatmegosztási erőforrás felügyelt identitását db_datareaderként. Active Directory használatával kell kapcsolódnia, nem SQL Server a hitelesítéshez. 
     
         ```sql
@@ -77,7 +77,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
     | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
     | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-    | Név | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+    | Name | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
     | | |
 
 1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
@@ -144,7 +144,7 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 ### <a name="prerequisites-for-target-storage-account"></a>A célként megadott Storage-fiók előfeltételei
 Ha úgy dönt, hogy az Azure Storage-ba fogadja az adatgyűjtést, az alábbi lista tartalmazza az előfeltételek listáját.
 
-* Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)is. 
+* Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](../storage/common/storage-account-create.md)is. 
 * A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi. 
 * Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi.  
 
@@ -154,7 +154,7 @@ Ha úgy dönt, hogy befogadja az Azure SQL Databaseba az Azure szinapszis Analyt
 * A *Microsoft. SQL/Servers/Databases/Write*adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a Közreműködő szerepkör részét képezi. 
 * Az adatmegosztási erőforrás felügyelt identitására vonatkozó engedély a Azure SQL Database vagy az Azure szinapszis Analytics eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
     1. A Azure Portalban navigáljon az SQL Serverre, és állítsa be magát a Azure Active Directory-rendszergazdaként.
-    1. Kapcsolódjon a Azure SQL Database/adattárházhoz a [Lekérdezés-szerkesztő](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) használatával, vagy SQL Server Management Studio Azure Active Directory hitelesítéssel. 
+    1. Kapcsolódjon a Azure SQL Database/adattárházhoz a [Lekérdezés-szerkesztő](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) használatával, vagy SQL Server Management Studio Azure Active Directory hitelesítéssel. 
     1. A következő szkript végrehajtásával adja hozzá az adatmegosztás felügyelt identitását "db_datareader, db_datawriter, db_ddladmin" értékre. Active Directory használatával kell kapcsolódnia, nem SQL Server a hitelesítéshez. 
 
         ```sql
@@ -275,7 +275,7 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 
 >[!NOTE]
 > 1. A decimális ideiglenes típusra leképezett adattípusok esetén a pillanatkép jelenleg legfeljebb 28 pontosságot támogat. Ha a 28-nál nagyobb pontosságú adatmennyiségre van szüksége, érdemes lehet karakterlánccá konvertálni. 
-> 1.  Ha az Azure SQL Database-ből származó adatok megosztása az Azure szinapszis Analytics szolgáltatásba történik, nem minden adattípus támogatott. A részletekért tekintse meg a [SZINAPSZIS SQL-készlet Table adattípusait](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) . 
+> 1.  Ha az Azure SQL Database-ből származó adatok megosztása az Azure szinapszis Analytics szolgáltatásba történik, nem minden adattípus támogatott. A részletekért tekintse meg a [SZINAPSZIS SQL-készlet Table adattípusait](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) . 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted vagy dinamikus adatmaszkolás
 Az Azure-beli adatmegosztás jelenleg nem támogatja az Azure SQL-adatbázisokat, Always Encrypted konfigurálva. 
@@ -294,6 +294,3 @@ A pillanatképek meghibásodásának leggyakoribb oka az, hogy az adatmegosztás
 
 ## <a name="next-steps"></a>Következő lépések
 Megtanulta, hogyan oszthat meg és fogadhat adatait SQL-forrásokból az Azure adatmegosztási szolgáltatás használatával. Ha többet szeretne megtudni a más adatforrásokból történő megosztásról, folytassa a [támogatott adattárakkal](supported-data-stores.md).
-
-
-

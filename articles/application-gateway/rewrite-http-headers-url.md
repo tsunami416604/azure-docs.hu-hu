@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281191"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216674"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP-fejlécek és URL-cím újraírása Application Gateway
 
@@ -50,7 +50,7 @@ A Application Gateway URL-re való Újraírási képességével a következőket
 
 Az Application Gateway Azure Portal használatával történő újraírásának megismeréséhez lásd [itt](rewrite-url-portal.md).
 
-![kép](./media/rewrite-http-headers-url/url-rewrite-overview.png)
+![A Application Gateway tartalmazó URL-cím újraírásának folyamatát ismertető diagram.](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
 >[!NOTE]
 > Az URL-Újraírási funkció előzetes verzióban érhető el, és csak Standard_v2 és a Application Gateway WAF_v2 SKU-ban érhető el. Éles környezetben való használatra nem ajánlott. Az előzetes verziókkal kapcsolatos további tudnivalókért tekintse meg [a használati feltételeket itt](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -257,7 +257,7 @@ URL-átirányítás esetén Application Gateway átirányítási választ küld 
 - A fejlécek nevei a 7230-as [számú RFC-dokumentumban](https://tools.ietf.org/html/rfc7230#page-27)meghatározott alfanumerikus karaktereket és egyedi szimbólumokat tartalmazhatnak. Jelenleg nem támogatjuk az aláhúzás (_) speciális karaktert a fejlécek neveiben.
 - A kapcsolatok és a frissítési fejlécek nem írhatók át
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megtudhatja, hogyan írhatók át a HTTP-fejlécek Application Gateway használatával Azure Portal](rewrite-http-headers-portal.md)
 - [Megtudhatja, hogyan írhatja át az URL-címet Application Gateway használatával Azure Portal](rewrite-url-portal.md)

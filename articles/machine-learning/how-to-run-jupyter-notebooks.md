@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 94c67be39ddd9f52087fa4632e239a8e85930886
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171480"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221422"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -108,6 +108,16 @@ A jegyzetfüzetet a számítási példányhoz való csatlakozás nélkül is sze
 Ha egy számítási példány fut, akkor a kód befejezését is használhatja az [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)használatával, bármely Python-jegyzetfüzetben.
 
 A Jupyter vagy a JupyterLab a jegyzetfüzet eszköztáráról is elindíthatja.  A Azure Machine Learning nem biztosít frissítéseket, és nem javítja ki a Jupyter vagy a JupyterLab hibáit, mivel a Microsoft ügyfélszolgálata határán kívül nyílt forráskódú termékek.
+
+### <a name="focus-mode"></a>Fókusz mód
+
+Az aktuális nézet kibontásához használja a fókusz módot, így az aktív lapfülekre koncentrálhat. A fókusz mód elrejti a jegyzetfüzetek fájlkezelőjét.
+
+1. A terminál ablak eszköztárán válassza a **fókusz mód**lehetőséget a   fókusz üzemmód bekapcsolásához. Az ablak szélessége függően ez az eszköztár. **..** menüpontjában lehet.
+1. Fókusz módban a normál **nézet**lehetőségre kattintva térjen vissza a normál nézetbe.
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Új fájl létrehozása":::
+
 
 ### <a name="use-intellisense"></a>IntelliSense használata
 

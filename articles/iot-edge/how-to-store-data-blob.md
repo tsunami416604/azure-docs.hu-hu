@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 22cef5919e597d4cd83ad80f5758a0427c52e2bb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048151"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219734"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Adatok tárolása a peremhálózaton az Azure Blob Storage az IoT Edge-ben segítségével
 
@@ -92,7 +92,7 @@ A beállítás neve: `deviceAutoDeleteProperties` . Ha a IoT Edge szimulátort h
 | Tulajdonság | Lehetséges értékek | Magyarázat |
 | ----- | ----- | ---- |
 | deleteOn | igaz, hamis | Alapértelmezett értékre van állítva `false` . Ha be szeretné kapcsolni a szolgáltatást, állítsa ezt a mezőt a következőre: `true` . <br><br> Környezeti változó: `deviceAutoDeleteProperties__deleteOn={false,true}` |
-| deleteAfterMinutes | `<minutes>` | Itt adhatja meg az időt percben. Ha ez az érték lejár, a modul automatikusan törli a blobokat a helyi tárolóból. <br><br> Környezeti változó: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| deleteAfterMinutes | `<minutes>` | Itt adhatja meg az időt percben. Ha ez az érték lejár, a modul automatikusan törli a blobokat a helyi tárolóból. A jelenleg engedélyezett maximális percek száma 35791. <br><br> Környezeti változó: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
 | retainWhileUploading | igaz, hamis | Alapértelmezés szerint a értékre van állítva `true` , és megőrzi a blobot, amíg a deleteAfterMinutes lejár. Beállíthatja, hogy `false` a és a deleteAfterMinutes lejárata után azonnal törölje az adatvesztést. Megjegyzés: ennek a tulajdonságnak a működéséhez a uploadOn True értékre kell állítani.  <br><br> **Vigyázat**: Ha hozzáfűzési blobokat használ, ez a beállítás a helyi tárolóból törli a hozzáfűzési blobokat, ha az érték lejár, és a Blobok további hozzáfűzési műveletei sikertelenek lesznek. Érdemes meggyőződni arról, hogy a lejárati érték elég nagy az alkalmazás által végrehajtott hozzáfűzési műveletek várható gyakoriságához.<br><br> Környezeti változó: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>SMB-megosztás használata helyi tárolóként
@@ -195,7 +195,7 @@ A következő rövid útmutatók a IoT Edge által is támogatott nyelveket hasz
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Kapcsolódjon a helyi tárhelyhez Azure Storage Explorer
 
-A helyi Storage-fiókhoz való kapcsolódáshoz [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) használhat.
+A helyi Storage-fiókhoz való kapcsolódáshoz [Azure Storage Explorert](https://github.com/microsoft/AzureStorageExplorer/releases/tag/v1.14.2) használhat.
 
 1. Az Azure Storage Explorer letöltése és telepítése
 
@@ -232,7 +232,7 @@ Támogatott
 * BLOB szolgáltatás statisztikáinak beolvasása
 * Fiókadatok beolvasása
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Tárolók
 
 Támogatott
 

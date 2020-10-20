@@ -6,28 +6,29 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 5b62927930212fc7e59fc4329a29ceecbe2815e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85ad78eeb095b427b1a6334f57c351e926022dff
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185332"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217813"
 ---
 # <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Oktatóanyag: fürtcsomópontok hozzáadása egy Azure FXT Edge Filer-fürthöz
 
-Egy új Azure FXT Edge Filer-fürt csak egy csomóponttal hozható létre. További konfiguráció előtt legalább két csomópontot kell hozzáadnia, és magas rendelkezésre állást kell engedélyeznie. 
+Egy új Azure FXT Edge Filer-fürt csak egy csomóponttal hozható létre. További konfiguráció előtt legalább két csomópontot kell hozzáadnia, és magas rendelkezésre állást kell engedélyeznie.
 
-Ez az oktatóanyag bemutatja, hogyan adhat hozzá fürtcsomópontok és engedélyezheti a magas rendelkezésre állású (HA) szolgáltatást. 
+Ez az oktatóanyag bemutatja, hogyan adhat hozzá fürtcsomópontok és engedélyezheti a magas rendelkezésre állású (HA) szolgáltatást.
 
-Az oktatóanyag során a következőket fogja elsajátítani: 
+Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
+>
 > * Csomópontok hozzáadása a FXT-fürthöz
 > * A HA engedélyezése
 
 Az oktatóanyag lépéseinek elvégzése körülbelül 45 percet vesz igénybe.
 
-Az oktatóanyag elindítása előtt kapcsolja be a hozzáadni kívánt csomópontokat, és [állítsa be a kezdeti jelszavukat](fxt-node-password.md). 
+Az oktatóanyag elindítása előtt kapcsolja be a hozzáadni kívánt csomópontokat, és [állítsa be a kezdeti jelszavukat](fxt-node-password.md).
 
 ## <a name="1-load-the-cluster-nodes-page"></a>1. a fürtcsomópontok oldal betöltése
 
@@ -47,19 +48,19 @@ Csomópontok hozzáadásához kattintson a **Beállítások** fülre, és válas
 
 Az **FXT-csomópontok – nem összeillesztett** lista megjeleníti az összes ki nem osztott FXT-csomópontot (a legtöbb adatközpont csak néhányat tartalmaz. Keresse meg a fürthöz hozzáadni kívánt FXT-csomópontokat.
 
-> [!Tip] 
+> [!Tip]
 > Ha nem találja a kívánt csomópontot a nem **összeillesztett** listán, ellenőrizze, hogy az megfelel-e a követelményeknek:
-> 
+>
 > * A szolgáltatás be van kapcsolva, és [rendszergazdai jelszóval](fxt-node-password.md)rendelkezik.
 > * Csatlakoztatva van egy hálózathoz, amelyhez hozzáfér. Ha VLAN-okat használ, annak a fürttel azonos VLAN-on kell lennie.
-> * A Bonjour protokoll használatával észlelhető. 
+> * A Bonjour protokoll használatával észlelhető.
 >
 >   Egyes tűzfalbeállítások letiltják a Bonjour által használt TCP/UDP-portokat, ami megakadályozza, hogy a FXT operációs rendszer automatikusan észlelje a csomópontokat.
-> 
-> Ha a hozzáadni kívánt csomópont nem szerepel a listán, próbálja meg ezeket a megoldásokat: 
-> 
+>
+> Ha a hozzáadni kívánt csomópont nem szerepel a listán, próbálja meg ezeket a megoldásokat:
+>
 > * Az IP-cím megkereséséhez kattintson a **manuális felderítés** gombra.
-> 
+>
 > * Rendeljen hozzá manuálisan ideiglenes IP-címeket. Ez ritka, de szükség lehet a címkézett VLAN-ok használatára, és a csomópontok nem a megfelelő hálózaton vannak, vagy a hálózat nem engedélyezi az önkiszolgáló IP-címeket. A [statikus IP-cím manuális beállításához](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html)kövesse a jelen dokumentum örökölt verziójának utasításait.
 
 A listában megjelenik a csomópont neve, az IP-cím, a szoftver verziója és a jogosultsági állapot. Az **állapot** oszlopban általában "szeretne csatlakozni", vagy olyan rendszer-vagy hardverhiba-problémát jelez, amely miatt a csomópont nem jogosult a fürthöz való csatlakozásra.
@@ -70,45 +71,44 @@ A fürt összes csomópontjának az operációs rendszer azonos verzióját kell
 
 Ha többet szeretne megtudni az ezen a lapon található beállításokról, olvassa el a fürt [ **Cluster**  >  **FXT csomópontjait** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) a fürt konfigurációs útmutatójában.
 
-## <a name="3-click-the-allow-to-join-button"></a>3. kattintson a "csatlakozás engedélyezése" gombra 
+## <a name="3-click-the-allow-to-join-button"></a>3. kattintson a "csatlakozás engedélyezése" gombra
 
 Kattintson a hozzáadni kívánt csomópont **műveletek** oszlopában a **Csatlakozás engedélyezése**gombra.
 
-Miután rákattintott a gombra, a csomópont állapota változhat, mivel a szoftver frissítése folyamatban van a fürthöz való hozzáadás előkészítésében. 
+Miután rákattintott a gombra, a csomópont állapota változhat, mivel a szoftver frissítése folyamatban van a fürthöz való hozzáadás előkészítésében.
 
 Az alábbi képen egy olyan csomópont látható, amely a fürt csatlakoztatásának folyamatában van (a legvalószínűbb, hogy a Hozzáadás előtt egy operációsrendszer-frissítést kap). Nem jelenik meg gomb a **műveletek** oszlopban azon csomópontok esetében, amelyek a fürthöz való hozzáadás folyamatában vannak.
 
 ![a csomópont-tábla egy sora, amely a csomópont nevét, az IP-címet, a szoftvert, a "csatlakozásra engedélyezett" üzenetet és egy üres utolsó oszlopot jelenít meg.](media/fxt-cluster-config/node-join-in-process.png)
 
-Néhány pillanat elteltével az új csomópontnak szerepelnie kell a **FXT-csomópontok** beállításai lap tetején található fürtcsomópontok listájában. 
+Néhány pillanat elteltével az új csomópontnak szerepelnie kell a **FXT-csomópontok** beállításai lap tetején található fürtcsomópontok listájában.
 
 Ismételje meg ezt a folyamatot, hogy hozzáadja a többi csomópontot a fürthöz. Nem kell megvárnia, amíg egy csomópont befejezi a fürthöz való csatlakozást a másik elindítása előtt.
 
 ## <a name="enable-high-availability"></a>Magas rendelkezésre állás engedélyezése
 
-Miután hozzáadott egy második csomópontot a fürthöz, egy figyelmeztető üzenet jelenik meg a Vezérlőpult irányítópultján, hogy a magas rendelkezésre állási szolgáltatás nincs konfigurálva. 
+Miután hozzáadott egy második csomópontot a fürthöz, egy figyelmeztető üzenet jelenik meg a Vezérlőpult irányítópultján, hogy a magas rendelkezésre állási szolgáltatás nincs konfigurálva.
 
 A magas rendelkezésre állás (HA) lehetővé teszi, hogy a fürtcsomópontok kompenzálják egymást, ha az egyik leáll. A HA alapértelmezés szerint nincs engedélyezve.
 
 ![Az irányítópult lap "a fürt több csomóponttal rendelkezik, de a HA nincs engedélyezve..." üzenet jelenik meg. a feltételek táblában](media/fxt-cluster-config/no-ha-2-nodes.png)
 
-> [!Note] 
+> [!Note]
 > Ne engedélyezze, HA legalább három csomópontja van a fürtben.
 
-HA bekapcsolja ezt az eljárást, kapcsolja be a következőt: 
+HA bekapcsolja ezt az eljárást, kapcsolja be a következőt:
 
 1. Töltse be a **magas rendelkezésre állás** lapot a **Beállítások** lap **fürt** szakaszában.
 
    ![HA konfiguráció lap (a fürt > magas rendelkezésre állása). Az "engedélyezés HA" jelölőnégyzet felül van, és a Küldés gomb alul található.](media/fxt-cluster-config/enable-ha.png)
 
-2. Kattintson az **Engedélyezés** lehetőségre, majd kattintson a **Küldés** gombra. 
+2. Kattintson az **Engedélyezés** lehetőségre, majd kattintson a **Küldés** gombra.
 
 Az **irányítópulton** megjelenik egy riasztás, amely megerősíti, hogy a ha engedélyezve van.
 
 ![A "HA most már teljesen konfigurált" üzenetet megjelenítő irányítópult-táblázat](media/fxt-cluster-config/ha-configured-alert.png)
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután hozzáadta az összes csomópontot a fürthöz, a fürt hosszú távú tárolásának konfigurálásával folytassa a telepítést.
 

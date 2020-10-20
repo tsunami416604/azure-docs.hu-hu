@@ -1,20 +1,17 @@
 ---
-title: 'PowerShell-parancsfájl: Azure-beli adatmegosztási meghívás létrehozása | Microsoft Docs'
+title: 'PowerShell-parancsfájl: Azure-beli adatmegosztási meghívás létrehozása'
 description: Ez a PowerShell-parancsfájl adatmegosztási meghívást küld.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 220677df3bd0c221f61efd28a80b05cfd76e2734
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f65d081e724206c1c64ad08189d1b620bbb4f2c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086642"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221332"
 ---
 # <a name="use-a-powershell-script-to-monitor-the-usage-of-a-sent-data-share"></a>Az elküldett adatmegosztások használatának figyelése PowerShell-parancsfájl használatával
 
@@ -42,11 +39,11 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Új – AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation?view=azps-2.6.0) | Hozzon létre egy adatmegosztási meghívást. |
+| [Új – AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation) | Hozzon létre egy adatmegosztási meghívást. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/).
 
 További Azure-adatmegosztási PowerShell-szkriptek az Azure-beli [adatmegosztás PowerShell-mintáinak](../../samples-powershell.md)használatával találhatók.

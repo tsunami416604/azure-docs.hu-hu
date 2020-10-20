@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-csharp
-ms.openlocfilehash: 2760e6a46801871a25ecbe23a2400211ae312650
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f87cf1ed9194ff74f85dcd11ed398824750ef696
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88921698"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217286"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Gyors útmutató: a webes keresés a Bing Web Search REST API és C használatával #
 
@@ -29,14 +29,14 @@ Ez a rövid útmutatóban szereplő program csak a .NET Core osztályokat haszn�
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * Windows: [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)
-* Linux/macOS: [Mono](https://www.mono-project.com/)  
-* Egy előfizetői azonosító
+* Linux/macOS: [Visual Studio Code](https://code.visualstudio.com/) és [.net Core](https://dotnet.microsoft.com/download)
+* [Ingyenes Azure-előfizetés](https://azure.microsoft.com/free/dotnet)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>Projekt létrehozása és a függőségek deklarálása
 
-Hozzon létre egy új projektet a Visual Studióban vagy a Monóban. A következő kód használatával importálhatja a szükséges névtereket és típusokat:
+Hozzon létre egy Console-projektet a Visual Studióban vagy a VS Code-ban. A következő kód használatával importálhatja a szükséges névtereket és típusokat:
 
 ```csharp
 using System;
@@ -369,7 +369,7 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Web Search API egyoldalas alkalmazás oktatóanyaga](../tutorial-bing-web-search-single-page-app.md)

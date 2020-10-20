@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041b1766ae6a64f51d922de128ef316cc0ed8260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0fafe98c3ca48ecced46cef6fb5fe8876c7f50
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922169"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215994"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: felhasználói folyamatok létrehozása Azure Active Directory B2C
 
@@ -82,6 +82,9 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
 1. Válassza ki az országot és a régiót, adja meg a megjeleníteni kívánt nevet, adjon meg egy irányítószámot, majd kattintson a **Létrehozás**gombra. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
 1. Most már újra futtathatja a felhasználói folyamatot, és be kell tudnia jelentkezni a létrehozott fiókkal. A visszaadott jogkivonat tartalmazza az ország/régió, a név és az irányítószám mezőben kiválasztott jogcímeket.
 
+> [!NOTE]
+> A "felhasználói folyamat futtatása" élmény jelenleg nem kompatibilis a SPA válasz URL-címével, amely az engedélyezési kód folyamatát használja. Ha a "felhasználói folyamat futtatása" funkciót szeretné használni az ilyen típusú alkalmazásokhoz, regisztráljon egy "web" típusú válasz URL-címet, és az [itt](tutorial-register-spa.md)leírtak alapján engedélyezze az implicit folyamatot.
+
 ## <a name="create-a-profile-editing-user-flow"></a>Profil szerkesztése felhasználói folyamat létrehozása
 
 Ha engedélyezni szeretné a felhasználók számára a profil szerkesztését az alkalmazásban, használja a felhasználói folyamatokat szerkesztő profilt.
@@ -121,7 +124,7 @@ Ha engedélyezni szeretné, hogy az alkalmazás felhasználói visszaállítsa a
 1. Kattintson a **felhasználói folyamat futtatása**elemre, ellenőrizze a korábban létrehozott fiók e-mail-címét, majd válassza a **Folytatás**lehetőséget.
 1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás**lehetőséget. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

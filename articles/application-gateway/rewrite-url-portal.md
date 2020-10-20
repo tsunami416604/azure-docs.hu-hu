@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
-ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083157"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215773"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>URL-cím újraírása az Azure Application Gateway-Azure Portal (előzetes verzió)
 
@@ -79,7 +79,7 @@ Az alábbi példában, amikor a kérelem URL-címe */Article*tartalmaz, az URL-c
     
       a () az URL-cím elérési útjának újraírására szolgáló kifejezés összeállításakor használt alkarakterlánc rögzítésére szolgál. További információ: [itt](rewrite-http-headers-url.md#capturing).
 
-    : Kattintson az **OK** gombra.
+    : Válassza az **OK** lehetőséget.
 
     :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Újraírási készlet hozzáadása":::
 
@@ -99,7 +99,7 @@ Az alábbi példában, amikor a kérelem URL-címe */Article*tartalmaz, az URL-c
     
     `{var_uri_path_1}` és a `{var_uri_path_1}` feltételnek a kifejezésben való kiértékelése során rögzített alsztringek beolvasására szolgál. `.*article/(.*)/(.*)`
     
-   f. Kattintson az **OK** gombra.
+   f. Válassza az **OK** lehetőséget.
 
     :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Újraírási készlet hozzáadása":::
 
@@ -118,6 +118,6 @@ Tekintse át az alábbi mezőket a hozzáférési naplókban annak ellenőrzés�
 
 További információt a hozzáférési naplók összes mezőjéről [itt](application-gateway-diagnostics.md#for-application-gateway-and-waf-v2-sku)talál.
 
-##  <a name="next-steps"></a>További lépések
+##  <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogyan állíthatók be a gyakori használati esetekben az újraírások, tekintse meg az [általános írási forgatókönyvek](rewrite-http-headers.md)című témakört.

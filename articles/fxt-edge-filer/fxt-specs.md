@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 30af35075c06585b9c490495e9897c145e9974d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1a172adb54593421ef56e09c131e0ddcaee9f6e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184686"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215824"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Az Azure FXT Edge Filer-specifikációi
 
@@ -28,7 +28,7 @@ Ez a cikk az Azure FXT Edge Filer-hardveres csomópontjaival kapcsolatos hardver
 
 ## <a name="drive-specifications"></a>A meghajtó specifikációi
 
-A rendszer 10 meghajtó-öblöt tartalmaz, amelyek elölről elérhetők. Az egyes feltöltött meghajtók a kapacitással kapcsolatos információkkal jobbra vannak címkézve. 
+A rendszer 10 meghajtó-öblöt tartalmaz, amelyek elölről elérhetők. Az egyes feltöltött meghajtók a kapacitással kapcsolatos információkkal jobbra vannak címkézve.
 
 A meghajtón lévő számok a meghajtók közötti területre vannak kinyomtatva. Az Azure FXT Edge Filer-ben a 0. meghajtó a bal felső meghajtó, az 1. meghajtó pedig közvetlenül alatta van.
 
@@ -39,10 +39,9 @@ A meghajtón lévő számok a meghajtók közötti területre vannak kinyomtatva
 | 0, 1             | Operációs rendszer     | 480 GB SATA SSD |
 | 2, 3, 4, 5, 6, 7, 8, 9 | Adatok   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
 
-
 ## <a name="dimensions-and-weight"></a>Méretek és súlyozás
 
-Az Azure FXT Edge Filer úgy lett kialakítva, hogy a standard 19 "berendezés-rackbe illeszkedjen, és egy rack-egység magas (1U). 
+Az Azure FXT Edge Filer úgy lett kialakítva, hogy a standard 19 "berendezés-rackbe illeszkedjen, és egy rack-egység magas (1U).
 
 <!-- 10x2.5 inches version -->
 
@@ -84,15 +83,15 @@ Ez a szakasz az Azure FXT Edge Filer számára biztosít teljesítmény-és mér
 
 <!-- matches the Dell regulatory label exactly -->
 
-### <a name="power-and-thermal-measurements"></a>Teljesítmény-és termikus mérések 
+### <a name="power-and-thermal-measurements"></a>Teljesítmény-és termikus mérések
 
-Az Azure FXT Edge Filer-csomópontjai változó sebességű ventilátorokat használnak, így a teljesítmény a hőmérséklettől és a terheléstől függ. A ventilátorok maximális sebességét a nagy terhelésű és emelt szintű környezeti hőmérséklet bizonyos kombinációi érhetik el. 
+Az Azure FXT Edge Filer-csomópontjai változó sebességű ventilátorokat használnak, így a teljesítmény a hőmérséklettől és a terheléstől függ. A ventilátorok maximális sebességét a nagy terhelésű és emelt szintű környezeti hőmérséklet bizonyos kombinációi érhetik el.
 
-Ezek a diagramok energiafogyasztást és termikus kimeneti méréseket biztosítanak a gyakran használt feszültség-gyakorisági kombinációk esetében. 
+Ezek a diagramok energiafogyasztást és termikus kimeneti méréseket biztosítanak a gyakran használt feszültség-gyakorisági kombinációk esetében.
 
-| FXT 6600 bekapcsolás szobahőmérsékleten <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz | 
+| FXT 6600 bekapcsolás szobahőmérsékleten <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz |
 |---------|---|---|---|---|---|
-| Feszültség (V) | 100 | 120 | 208 | 230 | 240 | 
+| Feszültség (V) | 100 | 120 | 208 | 230 | 240 |
 | Gyakoriság (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Aktuális (A) | 5,02 | 4,16 |2,40 | 2,20 | 2,16 |
 | Látszólagos teljesítmény (VA) | 502 | 499 | 499 | 506 | 518|
@@ -100,9 +99,9 @@ Ezek a diagramok energiafogyasztást és termikus kimeneti méréseket biztosít
 | Valós teljesítmény (W) | 497 |494 | 489 | 496 | 508 |
 | Termikus elszóródás (BTU/HR) |1696 | 1686 | 1669 | 1692 | 1733 |
 
-| FXT 6600 teljesítmény a ventilátorok maximális sebességével | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz | 
+| FXT 6600 teljesítmény a ventilátorok maximális sebességével | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz |
 |---------|---|---|---|---|---|
-| Feszültség (V) | 100 |120 | 208 | 230 | 240| 
+| Feszültség (V) | 100 |120 | 208 | 230 | 240|
 | Gyakoriság (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Aktuális (A) | 5,98 | 5,01 | 2,81 | 2.55 | 2,48 |
 | Látszólagos teljesítmény (VA) | 598 | 601 | 584 | 587 | 595 |
@@ -110,13 +109,13 @@ Ezek a diagramok energiafogyasztást és termikus kimeneti méréseket biztosít
 | Valós teljesítmény (W) | 592 | 595 | 573 | 575 | 583 |
 | Termikus elszóródás (BTU/HR) | 2020 |2031 | 1954 | 1961 | 1990 |
 
-| FXT 6400 bekapcsolás szobahőmérsékleten <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz | 
+| FXT 6400 bekapcsolás szobahőmérsékleten <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz |
 |---------|---|---|---|---|---|
 | Feszültség (V) | 100 | 120 | 208 | 230 | 240 |
 | Gyakoriság (Hz) |60 | 60 | 60 | 50 | 50 |
 | Aktuális (A) | 4.63 | 3,86 | 2.24 | 2,04 | 1,94 |
 | Látszólagos teljesítmény (VA) | 463 | 463 | 466 | 469 | 466 |
-| Teljesítménytényező | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 | 
+| Teljesítménytényező | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
 | Valós teljesítmény (W) | 458 | 459 | 457 | 460 | 456 |
 | Termikus elszóródás (BTU/HR) | 1564 | 1565 | 1558 | 1569 | 1557 |
 
@@ -143,10 +142,10 @@ Ez a szakasz a hardver környezeti környezetének specifikációit ismerteti.
 | Maximális harmatpont         | 29 °C (84 °F)                       | 33 °C (91 °F)                 |
 | Magasság                  | akár 3048 méter (10 000 láb), az alábbi hőmérséklet-minősítéstől függően | akár 12 000 méter (39 370 méter) |
 
-> [!NOTE] 
+> [!NOTE]
 > **Magassági hőmérséklet de-Rating:** A maximális hőmérsékletet 1 °C/300 m (1 °F/547 Ft) csökkenti 950 m felett (3 117 Ft).
 
-### <a name="airflow-shock-and-vibration"></a>Légáram, sokk és vibráció 
+### <a name="airflow-shock-and-vibration"></a>Légáram, sokk és vibráció
 
 | Attribútum         | Specifikáció |
 |-------------------|---------------|
@@ -156,13 +155,13 @@ Ez a szakasz a hardver környezeti környezetének specifikációit ismerteti.
 | Vibráció, működési     | 0,26 G<sub>RMS</sub> 5 hz – 350 Hz véletlenszerű         |
 | Vibráció, nem működő | 1,88 G<sub>RMS</sub> 10 hz – 500 Hz 15 percre (mind a hat oldal tesztelt)  |
 
-## <a name="safety-regulation-compliance"></a>Biztonsági szabályozás megfelelősége 
+## <a name="safety-regulation-compliance"></a>Biztonsági szabályozás megfelelősége
 
-Az Azure FXT Edge Filer megfelel a felsorolt előírásoknak. 
+Az Azure FXT Edge Filer megfelel a felsorolt előírásoknak.
 
-| Kategória       | Szabályozási specifikáció | 
+| Kategória       | Szabályozási specifikáció |
 |----------------|--------------------------|
-| Általános biztonság | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 | 
+| Általános biztonság | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 |
 | EMC            | FCC A, ICES-003  <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (D osztály)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013 |
 | Energia         | A bizottsági rendelet (EU) nem. 617/2013  |
 | RoHS           |    EN 50581:2012   |

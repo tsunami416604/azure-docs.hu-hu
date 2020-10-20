@@ -3,12 +3,12 @@ title: Első lépések és Azure Lab Services labor létrehozása a csapatokon b
 description: Megtudhatja, hogyan kezdheti el és hozhat létre Azure Lab Services laborokat a csapatokon belül.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 4f8c0e2c5f7b75990460b0a1812d4fec3a758259
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: e17b0be223a1630402fc4f32c692d7ecfe184783
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092137"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217082"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Első lépések és labor Services-tesztkörnyezet létrehozása a csapatokon belül
 
@@ -24,6 +24,9 @@ A Azure Lab Services a csapaton belül a tipikus munkafolyamat
 1. A [labor-fiók létrehozója más felhasználókat is felvesz](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role) a **labor létrehozói** szerepkörbe. Például a labor-fiók létrehozója/rendszergazdája felveszi az oktatókat a **labor létrehozói** szerepkörbe, hogy a laborokat a saját osztályaik számára is létrehozzák.
 1. Ezután a pedagógusok létrehoznak laborokat, előre konfigurálják a sablon virtuális gépet, és közzéteszik a labort, hogy a virtuális gép mindenki számára elérhető legyen a csapatban.
 1. Miután a labor közzé lett téve, egy virtuális gépet rendelnek mindenkihöz a csoporttagság listán az első bejelentkezéskor Azure Lab Servicesre, vagy kattintson a Teams (SSO) **Azure Lab Services** alkalmazást tartalmazó lapra, vagy a [Labs webhelyének](https://labs.azure.com)elérésére. A felhasználók ezt követően a virtuális gép használatával elvégezhetik az osztály munkahelyi és munkahelyi feladatait.
+
+> [!IMPORTANT]
+> Azure Lab Services csak akkor használható csapatokban, ha a labor-fiókok ugyanabban a bérlőben jönnek létre, mint a csapatok.
 
 ## <a name="add-azure-lab-services-app-as-a-tab-to-a-team"></a>Azure Lab Services alkalmazás hozzáadása egy csapathoz lap
 

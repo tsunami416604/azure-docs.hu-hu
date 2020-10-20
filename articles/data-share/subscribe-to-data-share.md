@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489918"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216572"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Oktatóanyag: Adatok elfogadása és fogadása az Azure Data Share használatával  
 
@@ -34,7 +34,7 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 
 ### <a name="receive-data-into-a-storage-account"></a>Adatfogadás egy Storage-fiókba: 
 
-* Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)is. 
+* Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](../storage/common/storage-account-create.md)is. 
 * A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi. 
 * Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi.  
 
@@ -62,7 +62,7 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Az Azure Adatkezelő-fürtbe történő adatfogadás: 
 
-* Azure Adatkezelő-fürt ugyanabban az Azure-adatközpontban, mint az adatszolgáltató Adatkezelő-fürtje: Ha még nem rendelkezik ilyennel, létrehozhat egy [azure adatkezelő-fürtöt](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal). Ha nem ismeri az adatszolgáltató fürtje Azure-adatközpontját, később a folyamat során is létrehozhatja a fürtöt.
+* Azure Adatkezelő-fürt ugyanabban az Azure-adatközpontban, mint az adatszolgáltató Adatkezelő-fürtje: Ha még nem rendelkezik ilyennel, létrehozhat egy [azure adatkezelő-fürtöt](/azure/data-explorer/create-cluster-database-portal). Ha nem ismeri az adatszolgáltató fürtje Azure-adatközpontját, később a folyamat során is létrehozhatja a fürtöt.
 * Engedély az Azure Adatkezelő-fürtbe való írásra, amely megtalálható a *Microsoft. Kusto/fürtök/írás*szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi. 
 * Jogosultság a szerepkör-hozzárendelés hozzáadásához az Azure Adatkezelő-fürthöz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi. 
 
@@ -132,5 +132,5 @@ Ezek a lépések csak a pillanatkép-alapú megosztásra vonatkoznak.
 ## <a name="view-history"></a>Előzmények megtekintése
 Ez a lépés csak a pillanatkép-alapú megosztásra vonatkozik. A pillanatképek előzményeinek megtekintéséhez válassza az **Előzmények** fület. Itt megtalálhatja az elmúlt 30 napban létrehozott összes pillanatkép előzményeit. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan fogadhat és fogadhat Azure-adatmegosztást. Ha többet szeretne megtudni az Azure-beli adatmegosztási fogalmakról, folytassa a [fogalmakkal: az Azure adatmegosztási terminológiáját](terminology.md).

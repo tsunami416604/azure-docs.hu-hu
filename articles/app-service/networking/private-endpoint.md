@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 880100c3d67dfe10aacf10ed5bb57dec6e2c2a83
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873098"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217065"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Privát végpontok használata az Azure Web App-hoz
 
@@ -91,7 +91,7 @@ A névfeloldás például a következő lesz:
 
 |Név |Típus |Érték |Megjegyzés |
 |-----|-----|------|-------|
-|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|< – az Azure ezt a bejegyzést az Azure nyilvános DNS-ben hozza létre, hogy az App Service-t az privatelink irányítsa, és ezt az Egyesült Államok felügyeli|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|< – ezt a bejegyzést a DNS-rendszerben úgy kezelheti, hogy a magánhálózati végpont IP-címére mutasson.|
 
 A DNS-konfiguráció után a webalkalmazást a mywebappname.azurewebsites.net alapértelmezett névvel együtt érheti el. Ezt a nevet kell használnia, mert a rendszer az alapértelmezett tanúsítványt adja ki a *. azurewebsites.net.

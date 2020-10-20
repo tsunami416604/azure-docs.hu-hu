@@ -1,22 +1,20 @@
 ---
 title: A C#-kód hibakeresése Azure Data Lake U-SQL-feladatokhoz
 description: Ez a cikk azt ismerteti, hogyan lehet hibakeresést végezni a U-SQL-ben a Azure Data Lake Tools for Visual Studio használatával.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: ca6fe4ad35e59472e8cf8f3b8476417e01c2668f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87131871"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218017"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C# kód hibakeresése a sikertelen U-SQL-feladatokhoz
 
-Az U-SQL bővíthető modellt biztosít a C# használatával. A U-SQL-szkriptekben könnyen hívhat C#-függvényeket, és olyan analitikai funkciókat hajthat végre, amelyek az SQL-hez hasonló deklaratív nyelv nem támogatott. Ha többet szeretne megtudni az U-SQL bővíthetőségéről, tekintse meg a [u-SQL programozható útmutatóját](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
+Az U-SQL bővíthető modellt biztosít a C# használatával. A U-SQL-szkriptekben könnyen hívhat C#-függvényeket, és olyan analitikai funkciókat hajthat végre, amelyek az SQL-hez hasonló deklaratív nyelv nem támogatott. Ha többet szeretne megtudni az U-SQL bővíthetőségéről, tekintse meg a [u-SQL programozható útmutatóját](./data-lake-analytics-u-sql-programmability-guide.md#use-user-defined-functions-udf). 
 
 A gyakorlatban előfordulhat, hogy bármely kód hibakeresést igényel, de a felhőben lévő, korlátozott naplófájlokkal rendelkező elosztott feladatok nem végezhetők el egyéni kóddal. A [Visual studióhoz készült Azure Data Lake Tools](https://aka.ms/adltoolsvs) egy **sikertelen csúcspont-hibakereső**nevű szolgáltatást biztosít, amely megkönnyíti az Egyéni kódban előforduló hibák hibakeresését. Ha a U-SQL-feladatok sikertelenek, a szolgáltatás megtartja a meghibásodási állapotot, és az eszköz segítségével letöltheti a Felhőbeli meghibásodási környezetet a helyi gépre a hibakereséshez. A helyi Letöltés rögzíti a teljes felhőalapú környezetet, beleértve a bemeneti adatokat és a felhasználói kódokat is.
 
@@ -103,7 +101,7 @@ A sikertelen feladatok újraküldése:
 
 3. Küldje el újra az U-SQL-feladatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A U-SQL programozható útmutatója](data-lake-analytics-u-sql-programmability-guide.md)
 - [A felhasználó által definiált U-SQL-operátorok fejlesztése Azure Data Lake Analytics feladatokhoz](data-lake-analytics-u-sql-develop-user-defined-operators.md)

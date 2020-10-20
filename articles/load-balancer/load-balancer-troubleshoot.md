@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1cfe27fd5c63bc4c1436982212b91e07f54aedb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85801920"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217388"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -30,6 +30,12 @@ Ha a Load Balancer kapcsolat nem érhető el, a leggyakoribb tünetek a követke
 - A Load Balancer mögötti virtuális gépek nem válaszolnak a konfigurált porton lévő forgalomra
 
 Amikor a külső ügyfelek a háttérbeli virtuális gépeken haladnak végig a terheléselosztóon, a rendszer az ügyfelek IP-címét fogja használni a kommunikációhoz. Győződjön meg arról, hogy az ügyfelek IP-címe a NSG engedélyezési listába kerül. 
+
+## <a name="symptom-no-outbound-connectivity-from-standard-internal-load-balancers-ilb"></a>Tünet: nincs kimenő kapcsolat a standard belső terheléselosztó (ILB) szolgáltatásból
+
+**Ellenőrzés és megoldás**
+
+A standard szintű ILB **alapértelmezés szerint biztonságosak**. Az alapszintű ILB a *rejtett* nyilvános IP-címen keresztül csatlakozhatnak az internethez. Ez nem recommened az éles számítási feladatokhoz, mivel az IP-cím nem statikus és nem zárolható a NSG keresztül. Ha a közelmúltban áthelyezte az alapszintű ILB egy standard ILB, explicit módon hozzon létre egy nyilvános IP-címet, amely a NSG- [n keresztül](egress-only.md) lezárja az IP-címet. 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Tünet: a Load Balancer mögötti virtuális gépek nem válaszolnak az állapot-mintavételre
 Ahhoz, hogy a háttér-kiszolgálók részt vegyenek a terheléselosztó készletében, át kell adni a mintavétel-ellenőrzést. További információ az állapot-mintavételekről: Load Balancer mintavételek [ismertetése](load-balancer-custom-probe-overview.md). 
@@ -151,7 +157,7 @@ Ha úgy dönt, hogy megnyit egy támogatási esetet, a következő információk
 - A VNet belül található egyik háttérbeli virtuális gép Psping használatával tesztelheti a mintavételi port válaszát (például: Psping 10.0.0.4:3389), és rögzíthet eredményeket. 
 - Ha nem érkezik válasz ezen pingelési tesztekben, futtasson egyidejű netsh-nyomkövetést a háttérbeli virtuális gépen és a VNet teszt virtuális gépen a PsPing futtatásakor, majd állítsa le a netsh nyomkövetést. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti lépések nem oldják meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).
 
