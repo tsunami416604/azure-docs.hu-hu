@@ -68,7 +68,7 @@
             - name: Alapvető beállítások
               href: data-lake-analytics-u-sql-get-started.md
             - name: Nyelvi referencia
-              href: 'https://docs.microsoft.com/u-sql/'
+              href: /u-sql/
             - name: Katalógus
               href: data-lake-analytics-u-sql-catalog.md
             - name: Felhasználó által definiált operátorok
@@ -152,26 +152,26 @@
     - name: Node.js
       href: 'https://www.npmjs.com/package/azure-arm-datalake-analytics'
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python'
+      href: /python/api/overview/azure/data-lake-analytics
     - name: REST
       href: /rest/api/datalakeanalytics/
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.datalakeanalytics/allversions
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/dla'
+      href: /cli/azure/dla
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: További források
   items:
     - name: Azure Data Lake blog
-      href: 'https://blogs.msdn.microsoft.com/azuredatalake/'
+      href: /archive/blogs/azuredatalake/
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Módosítási kérelmek
       href: 'https://feedback.azure.com/forums/327234-data-lake'
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-lake-analytics.html'
+      href: /answers/topics/azure-data-lake-analytics.html
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/data-lake-analytics/'
     - name: Díjkalkulátor

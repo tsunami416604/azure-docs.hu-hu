@@ -1,18 +1,17 @@
 ---
 title: U-SQL-feladatok futtatása Python, R és C# rendszereken – Azure Data Lake Analytics
 description: Megtudhatja, hogyan használhatja a Python, az R és a C# mögötti kódot a feladatok elküldéséhez Azure Data Lakeban.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
-ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6066bd6ec2a4c986ae17ad0cce3e7f6f73b21e7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87876206"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219972"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>A U-SQL fejlesztése a Python, az R és a C# használatával Azure Data Lake Analytics a Visual Studio Code-ban
 Ismerje meg, hogy a Visual Studio Code (VSCode) segítségével hogyan írhat Python, R és C# kódokat a U-SQL használatával, és hogyan küldhet feladatokat Azure Data Lake szolgáltatásnak. A VSCode Azure Data Lake eszközeivel kapcsolatos további információkért lásd: [a Azure Data Lake Tools for Visual Studio Code használata](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -183,4 +182,4 @@ A kód mögötti fájl egy olyan C#-fájl, amely egyetlen U-SQL-parancsfájllal 
 * [Ismerkedés a Data Lake Analytics a PowerShell használatával](data-lake-analytics-get-started-powershell.md)
 * [A Data Lake Analytics használatának első lépései a Azure Portal](data-lake-analytics-get-started-portal.md)
 * [A Visual studióhoz készült Data Lake Tools használata az U-SQL-alkalmazások fejlesztéséhez](data-lake-analytics-data-lake-tools-get-started.md)
-* [Data Lake Analytics (U-SQL) katalógus használata](data-lake-analytics-use-u-sql-catalog.md)
+* [Data Lake Analytics (U-SQL) katalógus használata](./data-lake-analytics-u-sql-get-started.md)
