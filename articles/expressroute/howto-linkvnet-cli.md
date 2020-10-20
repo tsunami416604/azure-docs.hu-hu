@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
-ms.openlocfilehash: 41bb72ba4c220a0dd2ebb93f2bd313a15d108faa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9dda384e2ef30808559d10012dea2909b2af0fd
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856279"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206934"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Oktatóanyag: virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a CLI használatával
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan kapcsolhat virtuális hálózatok
 > * [PowerShell (klasszikus)](expressroute-howto-linkvnet-classic.md)
 > 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > - Ugyanahhoz az előfizetéshez tartozó virtuális hálózat összekapcsolása egy áramkörrel
 > - Egy másik előfizetéshez tartozó virtuális hálózat bevonása egy kapcsolatcsoportba
@@ -35,13 +35,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Szüksége lesz a parancssori felület (CLI) legújabb verziójára. További információ: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Szüksége lesz a parancssori felület (CLI) legújabb verziójára. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 * A konfigurálás megkezdése előtt tekintse át az [előfeltételeket](expressroute-prerequisites.md), az [útválasztási követelményeket](expressroute-routing.md)és a [munkafolyamatokat](expressroute-workflows.md) .
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. 
   * Az utasításokat követve [hozzon létre egy ExpressRoute áramkört](howto-circuit-cli.md) , és engedélyezze az áramkört a kapcsolat szolgáltatója számára. 
   * Győződjön meg arról, hogy az Ön áramköréhez konfigurálva van az Azure-beli magánhálózati kapcsolat. Az útválasztási utasításokért tekintse meg az [Útválasztás konfigurálása](howto-routing-cli.md) című cikket. 
   * Győződjön meg arról, hogy az Azure-beli magánhálózati társítás konfigurálva van. A hálózat és a Microsoft közötti BGP-társítást úgy kell létrehozni, hogy lehetővé váljon a végpontok közötti kapcsolat.
-  * Győződjön meg arról, hogy van egy virtuális hálózat és egy virtuális hálózati átjáró létrehozva és teljesen kiépítve. A [ExpressRoute virtuális hálózati átjárójának konfigurálásához](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)kövesse az utasításokat. Ügyeljen arra, hogy a következőt használja: `--gateway-type ExpressRoute` .
+  * Győződjön meg arról, hogy van egy virtuális hálózat és egy virtuális hálózati átjáró létrehozva és teljesen kiépítve. A [ExpressRoute virtuális hálózati átjárójának konfigurálásához](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)kövesse az utasításokat. Ügyeljen arra, hogy a következőt használja: `--gateway-type ExpressRoute` .
 * Akár 10 virtuális hálózatot is összekapcsolhat egy standard ExpressRoute áramkörrel. Szabványos ExpressRoute áramkör használata esetén minden virtuális hálózatnak ugyanabban a geopolitikai régióban kell lennie. 
 * Egyetlen VNet legfeljebb négy ExpressRoute-áramkörhöz lehet kapcsolni. A következő folyamat használatával hozzon létre egy új kapcsolati objektumot minden olyan ExpressRoute-áramkörhöz, amelyhez csatlakozik. A ExpressRoute-áramkörök lehetnek ugyanabban az előfizetésben, különböző előfizetésekben vagy a kettő kombinációjában is.
 * Ha engedélyezi a ExpressRoute prémium bővítményt, a ExpressRoute-áramkör geopolitikai régióján kívüli virtuális hálózatokat is összekapcsolhat. A prémium szintű bővítmény azt is lehetővé teszi, hogy a kiválasztott sávszélességtől függően több mint 10 virtuális hálózatot csatlakoztasson a ExpressRoute-áramkörhöz. A prémium szintű bővítménysel kapcsolatos további információkért olvassa el a [Gyakori kérdések](expressroute-faqs.md) című részt.

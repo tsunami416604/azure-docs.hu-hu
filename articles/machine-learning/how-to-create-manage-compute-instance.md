@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756619"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207087"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning számítási példány létrehozása és kezelése
 
@@ -256,6 +256,7 @@ A csomagokat közvetlenül Jupyter Notebook vagy RStudio is telepítheti:
 * Python: telepítési kód hozzáadása és végrehajtása Jupyter Notebook cellában.
 
 Vagy telepítheti egy terminál-ablakból is. Telepítse a Python-csomagokat a **python 3,6-AzureML-** környezetbe.  Telepítse az R-csomagokat az **r** -környezetbe.
+% pip és% Conda Magic functions automatikusan telepíti a csomagokat a jelenleg futó kernelbe a Jupyter notebook-munkamenetben.
 
 ## <a name="add-new-kernels"></a>Új kernelek hozzáadása
 

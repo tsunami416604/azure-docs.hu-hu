@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, állapot-konfiguráció, Update Man
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24aeb37cf868bed5d4211bc9b459a4736ceea4b2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715963"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205336"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Az Azure Automation bemutatása
 
@@ -35,7 +35,7 @@ A Azure Automation konfigurációjának kezelése lehetővé teszi két szolgál
 
 ### <a name="change-tracking-and-inventory"></a>Change Tracking és Inventory
 
-A Change Tracking és a leltár ötvözi a Change Tracking and Inventory függvényeket, így nyomon követheti a virtuális gépek és a kiszolgálói infrastruktúra változásait. A szolgáltatás támogatja a változások nyomon követését a környezetben lévő szolgáltatásokon, démonokon, szoftvereken, beállításjegyzékeken és fájlokon, így segít a nemkívánatos módosítások diagnosztizálásában és a riasztások felemelésében. A leltár-támogatás lehetővé teszi a vendég erőforrásainak lekérdezését a telepített alkalmazások és egyéb konfigurációs elemek láthatóságának érdekében. A szolgáltatás részleteiért lásd: [change Tracking és leltár](change-tracking.md).
+A Change Tracking és a leltár ötvözi a Change Tracking and Inventory függvényeket, így nyomon követheti a virtuális gépek és a kiszolgálói infrastruktúra változásait. A szolgáltatás támogatja a változások nyomon követését a környezetben lévő szolgáltatásokon, démonokon, szoftvereken, beállításjegyzékeken és fájlokon, így segít a nemkívánatos módosítások diagnosztizálásában és a riasztások felemelésében. A leltár-támogatás lehetővé teszi a vendég erőforrásainak lekérdezését a telepített alkalmazások és egyéb konfigurációs elemek láthatóságának érdekében. A szolgáltatás részleteiért lásd: [change Tracking és leltár](change-tracking/overview.md).
 
 ### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
 
@@ -94,7 +94,7 @@ Azure Automation támogatja a felügyeletet az infrastruktúra és az alkalmazá
 
 A [díjszabási](https://azure.microsoft.com/pricing/details/automation/) oldalon a Azure Automationhöz kapcsolódó árakat tekintheti át.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Automation-fiók létrehozása](automation-quickstart-create-account.md)

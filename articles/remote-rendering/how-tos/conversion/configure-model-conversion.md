@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575180"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205319"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
 
@@ -258,7 +258,7 @@ Az [összetevők formátumának változásai](configure-model-conversion.md#best
 ### <a name="texture-sizes"></a>Textúra mérete
 
 A forgatókönyv típusától függően a textúra-adatmennyiség meghaladhatja a rácsvonalak esetében felhasznált memóriát. A photogrammetry modellek jelöltek.
-Az átalakítás konfigurációja nem teszi lehetővé a textúrák automatikus méretezését. Ha szükséges, a textúra skálázást ügyféloldali előzetes feldolgozási lépésként kell elvégezni. Az átalakítási lépés a megfelelő [textúra tömörítési formátumának](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)kiválasztása:
+Az átalakítás konfigurációja nem teszi lehetővé a textúrák automatikus méretezését. Ha szükséges, a textúra skálázást ügyféloldali előzetes feldolgozási lépésként kell elvégezni. Az átalakítási lépés a megfelelő [textúra tömörítési formátumának](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)kiválasztása:
 
 * `BC1` átlátszatlan színes textúrák esetén
 * `BC7` a forrás színtextúrák alfa-csatornával

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: a862b978d7737d3d1c301d090012576f64a3ddda
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 70acacb9bacddaf403b79e11b460333c67641aae
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150745"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202208"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -80,12 +80,12 @@ A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peering
 
 ### <a name="microsoft-peering"></a>Microsoftos társviszony
 
-Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcsolathoz, az Azure-ban az áramkörön használt [nyilvános IP-címtartományok](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) is elérhetők. Az Azure Microsoft-partnerek hozzáférést biztosítanak a jelenleg az Azure-ban üzemeltetett szolgáltatásokhoz (az áramköri SKU-tól függően földrajzi korlátozásokkal). Egy adott szolgáltatás rendelkezésre állásának ellenőrzéséhez ellenőrizheti a szolgáltatás dokumentációját, és ellenőrizheti, hogy van-e fenntartott tartomány közzétéve az adott szolgáltatás számára. Ezután keresse meg a cél szolgáltatás IP-tartományait, és hasonlítsa össze az [Azure IP-tartományok és szolgáltatások címkék – nyilvános felhő XML-fájljában](https://www.microsoft.com/download/details.aspx?id=56519)felsorolt tartományokkal. Azt is megteheti, hogy megnyit egy támogatási jegyet a kérdéses szolgáltatáshoz a tisztázás érdekében.
+Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcsolathoz, az Azure-ban az áramkörön használt [nyilvános IP-címtartományok](../virtual-network/public-ip-addresses.md#public-ip-addresses) is elérhetők. Az Azure Microsoft-partnerek hozzáférést biztosítanak a jelenleg az Azure-ban üzemeltetett szolgáltatásokhoz (az áramköri SKU-tól függően földrajzi korlátozásokkal). Egy adott szolgáltatás rendelkezésre állásának ellenőrzéséhez ellenőrizheti a szolgáltatás dokumentációját, és ellenőrizheti, hogy van-e fenntartott tartomány közzétéve az adott szolgáltatás számára. Ezután keresse meg a cél szolgáltatás IP-tartományait, és hasonlítsa össze az [Azure IP-tartományok és szolgáltatások címkék – nyilvános felhő XML-fájljában](https://www.microsoft.com/download/details.aspx?id=56519)felsorolt tartományokkal. Azt is megteheti, hogy megnyit egy támogatási jegyet a kérdéses szolgáltatáshoz a tisztázás érdekében.
 
 **Támogatott**
 
 * [Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
-* Power BI az Azure regionális közösségén keresztül érhető el, [itt](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) találhatja meg a Power bi bérlő régióját.
+* Power BI az Azure regionális közösségén keresztül érhető el, [itt](/power-bi/service-admin-where-is-my-tenant-located) találhatja meg a Power bi bérlő régióját.
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure globális szolgáltatások közössége)
 * Azure nyilvános IP-címek IaaS (Virtual Machines, Virtual Network átjárók, terheléselosztó stb.)  
@@ -118,7 +118,7 @@ Ha az "érvényesítés szükséges" üzenet jelenik meg, Gyűjtse össze azokat
 A Dynamics 365-és Common Data Service-(CDS-) környezetek az Azure-ban futnak, ezért az ügyfelek az Azure-erőforrások mögöttes ExpressRoute-támogatás előnyeit élvezik. Ha az útválasztó szűrője tartalmazza azokat az Azure-régiókat, amelyeken a Dynamics 365/CDS-környezetek futnak, csatlakozhat a szolgáltatási végpontokhoz.
 
 > [!NOTE]
-> Az [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) **nem** szükséges a Dynamics 365-hez az Azure ExpressRoute-kapcsolaton keresztül, ha az ExpressRoute-áramkör ugyanazon a [geopolitikai régión](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)belül van üzembe helyezve.
+> Az [ExpressRoute Premium](#expressroute-premium) **nem** szükséges a Dynamics 365-hez az Azure ExpressRoute-kapcsolaton keresztül, ha az ExpressRoute-áramkör ugyanazon a [geopolitikai régión](./expressroute-locations-providers.md#expressroute-locations)belül van üzembe helyezve.
 
 ## <a name="data-and-connections"></a>Az adatkezelés és a kapcsolatok
 
@@ -152,15 +152,15 @@ Ha az egyik kapcsolat meghiúsul, nem fogja elveszíteni a kapcsolatot. Redundá
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Hogyan a redundancia megvalósítását a privát partnereken?
 
-Több ExpressRoute-áramkör különböző, egymástól eltérő helyekről vagy akár négy kapcsolatból is csatlakozhat ugyanahhoz a virtuális hálózathoz, hogy magas rendelkezésre állást biztosítson abban az esetben, ha egyetlen áramkör elérhetetlenné válik. Ezután az egyik helyi kapcsolathoz is [hozzárendelhet nagyobb súlyokat](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) egy adott áramkör előnyben részesítése érdekében. Erősen ajánlott, hogy az ügyfelek legalább két ExpressRoute-áramkört állítsanak be az egyes meghibásodási pontok elkerülése érdekében. 
+Több ExpressRoute-áramkör különböző, egymástól eltérő helyekről vagy akár négy kapcsolatból is csatlakozhat ugyanahhoz a virtuális hálózathoz, hogy magas rendelkezésre állást biztosítson abban az esetben, ha egyetlen áramkör elérhetetlenné válik. Ezután az egyik helyi kapcsolathoz is [hozzárendelhet nagyobb súlyokat](./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection) egy adott áramkör előnyben részesítése érdekében. Erősen ajánlott, hogy az ügyfelek legalább két ExpressRoute-áramkört állítsanak be az egyes meghibásodási pontok elkerülése érdekében. 
 
-[Itt](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) megtekintheti a magas rendelkezésre állást és [itt](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) megtervezheti a vész-helyreállítást.  
+[Itt](./designing-for-high-availability-with-expressroute.md) megtekintheti a magas rendelkezésre állást és [itt](./designing-for-disaster-recovery-with-expressroute-privatepeering.md) megtervezheti a vész-helyreállítást.  
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Hogyan valósítható meg a redundancia a Microsoft-partnereken?
 
-Erősen ajánlott, hogy ha az ügyfelek Microsoft-partneri kapcsolattal érik el az Azure-beli nyilvános szolgáltatásokat, például az Azure Storage vagy az Azure SQL szolgáltatást, valamint azokat az ügyfeleket, amelyek a Microsoft-partneri kapcsolatot használják a Microsoft 365, hogy az egyetlen meghibásodási pont elkerülése érdekében több áramkört implementálnak a különböző társi helyeken. Az ügyfelek megtehetik ugyanazt az előtagot mindkét áramkörön, és az [elérési út](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) alapján vagy különböző előtagokat is megadhatnak a helyi elérési út meghatározásához.
+Erősen ajánlott, hogy ha az ügyfelek Microsoft-partneri kapcsolattal érik el az Azure-beli nyilvános szolgáltatásokat, például az Azure Storage vagy az Azure SQL szolgáltatást, valamint azokat az ügyfeleket, amelyek a Microsoft-partneri kapcsolatot használják a Microsoft 365, hogy az egyetlen meghibásodási pont elkerülése érdekében több áramkört implementálnak a különböző társi helyeken. Az ügyfelek megtehetik ugyanazt az előtagot mindkét áramkörön, és az [elérési út](./expressroute-optimize-routing.md#solution-use-as-path-prepending) alapján vagy különböző előtagokat is megadhatnak a helyi elérési út meghatározásához.
 
-A magas rendelkezésre állás kialakításához [itt](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) talál további információt.
+A magas rendelkezésre állás kialakításához [itt](./designing-for-high-availability-with-expressroute.md) talál további információt.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan magas rendelkezésre állást biztosít a ExpressRoute-hez csatlakoztatott virtuális hálózatokon?
 
@@ -170,7 +170,7 @@ Magas rendelkezésre állást érhet el, ha akár négy ExpressRoute-áramkört 
 
 Meg kell valósítania az útválasztó (k) *helyi preferencia* attribútumát annak biztosításához, hogy a helyszínről az Azure-ba irányuló útvonal mindig a ExpressRoute-áramkör (ek) re legyen előnyben részesítve.
 
-További részletek [itt](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) találhatók a BGP-útvonal kiválasztása és az általános útválasztó-konfigurációk című részben. 
+További részletek [itt](./expressroute-optimize-routing.md#path-selection-on-microsoft-and-public-peerings) találhatók a BGP-útvonal kiválasztása és az általános útválasztó-konfigurációk című részben. 
 
 ### <a name="if-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>Ha a felhőalapú Exchange-ben nem közös helyen vagyok, és a szolgáltató pont-pont típusú kapcsolatot biztosít, akkor két fizikai kapcsolatot kell rendelni a helyszíni hálózat és a Microsoft között?
 
@@ -384,7 +384,7 @@ További információ: [ExpressRoute-partnerek és-helyszínek](expressroute-loc
 Igen. Microsoft 365 szolgáltatási végpontok elérhetők az interneten keresztül, annak ellenére, hogy a ExpressRoute konfigurálva van a hálózathoz. Ha a tartózkodási hely hálózata úgy van konfigurálva, hogy a ExpressRoute keresztül kapcsolódjon Microsoft 365-szolgáltatásokhoz, ellenőrizze a szervezet hálózati csapatát.
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>Hogyan tervezhetem meg a magas rendelkezésre állást az Azure ExpressRoute Microsoft 365 hálózati forgalmához?
-Tekintse meg a [magas rendelkezésre állásra és a feladatátvételre](https://aka.ms/erhighavailability) vonatkozó javaslatot az Azure ExpressRoute
+Tekintse meg a [magas rendelkezésre állásra és a feladatátvételre](/microsoft-365/enterprise/network-planning-with-expressroute) vonatkozó javaslatot az Azure ExpressRoute
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Hozzáférhetek az Office 365 amerikai kormányzati Közösség (GCC) szolgáltatásaihoz az Azure US government ExpressRoute áramkörén keresztül?
 
@@ -422,5 +422,4 @@ A meglévő áramkör továbbra is meghirdeti a Microsoft 365 előtagjait. Ha az
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>Az ExpressRoute szolgáltatás tárolja az ügyféladatokat?
 
-Nem. 
-
+Nem.

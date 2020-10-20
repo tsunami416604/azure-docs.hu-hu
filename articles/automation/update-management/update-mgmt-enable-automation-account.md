@@ -2,15 +2,15 @@
 title: Azure Automation Update Management engedélyezése az Automation-fiókból
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management Automation-fiókból.
 services: automation
-ms.date: 09/09/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 787338be06c2e30aabb6421a42e7cb3aaabf8a2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81b46bd1e30efff81748389ef62c46410479fb4b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669499"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206628"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Az Update Management engedélyezése Automation-fiókból
 
@@ -65,14 +65,14 @@ A munkaterülethez már jelentést küldő gépeket vagy gépeket manuálisan ke
 
     ![Mentett keresések](media/update-mgmt-enable-automation-account/managemachines.png)
 
-3. A munkaterületre jelentett összes elérhető gép Update Management engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes elérhető gépen** a gépek kezelése lapon. Ez a művelet letiltja a vezérlőt a számítógépek egyenkénti hozzáadásához. Ez a feladat hozzáadja a munkaterületnek jelentett számítógépek összes nevét a számítógépcsoport mentett keresési lekérdezéséhez `MicrosoftDefaultComputerGroup` . Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** gombot.
+3. A munkaterületre jelentett összes elérhető gép Update Management engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes elérhető gépen** a gépek kezelése lapon. Ez a művelet letiltja a vezérlőt, hogy egyenként vegyen fel gépeket, és hozzáadja a munkaterületnek jelentő összes gépet a számítógépcsoport mentett keresési lekérdezéséhez `MicrosoftDefaultComputerGroup` . Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** lehetőséget.
 
-4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a beállítás törli a mentett keresés és a hatókör konfigurációját a munkaterületről, és lehetővé teszi, hogy a szolgáltatás a jelenleg vagy a jövőben is tartalmazza az összes Azure-és nem Azure-beli gépet, amely a munkaterületre vonatkozik. Ha bejelöli ezt a jelölőnégyzetet, a művelet véglegesen letiltja a **gépek kezelése** gombot, mert nincs elérhető hatókör-konfiguráció.
+4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a beállítás törli a mentett keresés és a hatókör konfigurációját a munkaterületről, és lehetővé teszi, hogy a szolgáltatás a jelenleg vagy a jövőben is tartalmazza az összes Azure-és nem Azure-beli gépet, amely a munkaterületre vonatkozik. Ha ez a beállítás be van jelölve, a művelet véglegesen letiltja a **gépek kezelése** lehetőséget, mivel nincs elérhető hatókör-konfiguráció.
 
     > [!NOTE]
-    > Mivel ez a lehetőség törli a mentett kereséseket és a hatókör-konfigurációkat Log Analyticson belül, fontos, hogy a beállítás kiválasztása előtt távolítsa el az összes törlési zárolást a Log Analytics munkaterületen. Ha nem, akkor a beállítás nem távolítja el a konfigurációkat, ezért azokat manuálisan kell eltávolítania.
+    > Mivel ez a lehetőség törli a mentett keresés és a hatókör konfigurációját a Log Analyticson belül, fontos, hogy a beállítás kiválasztása előtt távolítsa el az összes törlési zárolást a Log Analytics munkaterületen. Ha nem, akkor a beállítás nem távolítja el a konfigurációkat, ezért azokat manuálisan kell eltávolítania.
 
-5. Szükség esetén ismét hozzáadhatja a hatókör-konfigurációkat a kezdeti mentett keresési lekérdezés újbóli hozzáadásával. További információ: a [Update Management központi telepítési hatókörének korlátozása](update-mgmt-scope-configuration.md).
+5. Szükség esetén visszaállíthatja a hatókör-konfigurációt a kezdeti mentett keresési lekérdezés újbóli hozzáadásával. További információ: a [Update Management központi telepítési hatókörének korlátozása](update-mgmt-scope-configuration.md).
 
 6. Egy vagy több gép funkciójának engedélyezéséhez válassza az **Engedélyezés a kiválasztott gépeken** lehetőséget, majd az egyes gépek melletti **Hozzáadás** lehetőséget. Ez a feladat hozzáadja a kiválasztott számítógépneveket a szolgáltatáshoz tartozó számítógépcsoport mentett keresési lekérdezéséhez.
 

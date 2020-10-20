@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a021d658711e77c3e3be0df722223cefe506abba
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566075"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204588"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -160,7 +160,7 @@ Teszt beállítása:
  - A 10Gbps prémium szintű ExpressRoute áramkör a privát társak beállításával azonosított helyen.
  - Egy Azure-VNet egy UltraPerformance-átjáróval a megadott régióban.
  - Egy Windows Server 2016 rendszert futtató DS5v2 virtuális gép a VNet. A virtuális gép nem csatlakozik a tartományhoz, és az alapértelmezett Azure-rendszerképből (optimalizálás vagy testreszabás nélkül) készült, és a AzureCT telepítve van.
- - Minden teszt a AzureCT Get-LinkPerformance parancsot használta 5 percenkénti terhelési teszttel a hat teszt futtatásához. Példa:
+ - Minden teszt a AzureCT Get-LinkPerformance parancsot használta 5 percenkénti terhelési teszttel a hat teszt futtatásához. Például:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
@@ -209,6 +209,6 @@ Teszt beállítása:
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md
 [Availability Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/AvailabilityTesting.md
-[Network Docs]: https://docs.microsoft.com/azure/index
+[Network Docs]: ../index.yml
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
 [ACT]: https://aka.ms/AzCT

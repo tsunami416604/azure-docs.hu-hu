@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bdd3f543c948ac2825b836fdbedd4c0f0d713b2c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889130"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208226"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Gyorsútmutató: Bevezetés az Azure Sentinel használatába
 
@@ -26,7 +26,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan lehet gyorsan megtekinteni é
 
 ## <a name="get-visualization"></a>Vizualizáció beolvasása
 
-A környezettel kapcsolatos események megjelenítéséhez és elemzéséhez először tekintse meg az Áttekintés irányítópultot, és kérje meg a szervezete biztonsági helyzetének a megismerését. A csempék minden elemére kattintva megtekintheti azokat a nyers adatforrásokat, amelyekről létrehozták őket. A zaj csökkentése és a riasztások számának csökkentése érdekében az Azure Sentinel fúziós technikát használ a riasztások incidensekkel való összekapcsolásához. az **incidensek** a kapcsolódó riasztások csoportjai, amelyek együttesen megvizsgálható és elhárítható, végrehajtható incidenseket hoznak létre.
+A környezettel kapcsolatos események megjelenítéséhez és elemzéséhez először tekintse meg az Áttekintés irányítópultot, és kérje meg a szervezete biztonsági helyzetének a megismerését. A csempék minden elemére kattintva megtekintheti azokat a nyers adatforrásokat, amelyekről létrehozták őket. A zaj csökkentése és a riasztások számának csökkentése érdekében az Azure Sentinel fúziós technikát használ a riasztások incidensekkel való összekapcsolásához. Az **incidensek** a kapcsolódó riasztások csoportjai, amelyek együttesen megvizsgálható és elhárítható, végrehajtható incidenseket hoznak létre.
 
 - A Azure Portal válassza az Azure Sentinel lehetőséget, majd válassza ki a figyelni kívánt munkaterületet.
 
@@ -44,7 +44,7 @@ Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági 
 
    ![Rosszindulatú forgalom térképe](./media/qs-get-visibility/map.png)
 
-- **Legutóbbi incidensek**: a legutóbbi incidensek, súlyosságuk és az incidenshez kapcsolódó riasztások számának megtekintése. Ha egy adott típusú riasztás hirtelen csúcsát látja, az azt jelentheti, hogy jelenleg fut aktív támadás. Ha például egy hirtelen 20 Pass-The-hash típusú eseményt használ a Microsoft Defender for Identity (korábbi nevén Azure ATP) számára, akkor lehetséges, hogy valaki jelenleg próbálkozik a támadással.
+- **Legutóbbi incidensek**: a legutóbbi incidensek, súlyosságuk és az incidenshez kapcsolódó riasztások számának megtekintése. Ha egy adott típusú riasztás hirtelen csúcsa jelenik meg, az azt jelentheti, hogy jelenleg fut aktív támadás. Ha például egy hirtelen 20 Pass-The-hash típusú eseményt használ a Microsoft Defender for Identity (korábbi nevén Azure ATP) számára, akkor lehetséges, hogy valaki jelenleg próbálkozik a támadással.
 
 - **Adatforrások rendellenességei**: a Microsoft adatelemzői olyan modelleket hoztak létre, amelyek folyamatosan keresik az adatforrásokból származó adatokkal kapcsolatos rendellenességeket. Ha nincs rendellenesség, semmi sem jelenik meg. Ha rendellenességek észlelhetők, érdemes részletesen bemutatni, hogy mi történt. Kattintson például az Azure-tevékenység csúcsára. A **diagramra** kattintva megtekintheti, hogy mikor történt a nyárs, majd szűrheti az adott időszakban bekövetkezett tevékenységeket, hogy megtudja, mi okozta a nyársat.
 
@@ -125,7 +125,7 @@ Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , ma
 
 A beépített észlelésekkel kapcsolatos további információkért lásd az [oktatóanyag: beépített elemzések](tutorial-detect-threats-built-in.md)beszerzése című témakört.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban megtanulta, hogyan kezdheti el az Azure Sentinel használatát. Folytassa az Oktatóanyaggal a [fenyegetések észleléséhez](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
 > [Hozzon létre egyéni veszélyforrás-észlelési szabályokat](tutorial-detect-threats-custom.md) a fenyegetésekre adott válaszok automatizálására.

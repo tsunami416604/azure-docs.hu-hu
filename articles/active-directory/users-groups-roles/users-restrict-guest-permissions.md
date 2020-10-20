@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42b86cadefea41bc438c8f2e91c5eaa86af172b0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055214"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204971"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>A vendég hozzáférési engedélyei (előzetes verzió) korlátozása Azure Active Directory
 
@@ -47,7 +47,7 @@ Módosítottuk a vendég felhasználói engedélyeinek meglévő Azure Portal ve
 
     ![Az Azure AD külső együttműködési beállítások lapja](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. Kattintson a **Mentés** gombra. A módosítások akár 15 percet is igénybe vehetnek a vendég felhasználóinak érvénybe léptetéséhez.
+1. Válassza a **Mentés** lehetőséget. A módosítások akár 15 percet is igénybe vehetnek a vendég felhasználóinak érvénybe léptetéséhez.
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Frissítés a Microsoft Graph API-val
 
@@ -139,14 +139,15 @@ Támogatott módon azt értjük, hogy a tapasztalatok a várt módon működnek.
 - Teams
 - Outlook (OWA)
 - SharePoint
+- Planner a Teams szolgáltatásban
+- Planner webalkalmazás
 
 ### <a name="services-currently-not-supported"></a>A szolgáltatások jelenleg nem támogatottak
 
 Az aktuális támogatás nélküli szolgáltatás kompatibilitási problémákba ütközhet az új vendég korlátozási beállítással.
 
 - Űrlapok
-- Planner a Teams szolgáltatásban
-- Planner alkalmazás
+- Planner Mobile-alkalmazás
 - Project
 - Yammer
 
@@ -157,7 +158,7 @@ Kérdés | Válasz
 Hová kell alkalmazni ezeket az engedélyeket? | Ezek a címtár-szintű engedélyek az Azure AD-szolgáltatások és-portálok esetében érvényesek, beleértve a Microsoft Graph, a PowerShell V2, a Azure Portal és a saját alkalmazások portált. Az együttműködési forgatókönyvekhez Microsoft 365 csoportokat kihasználó Microsoft 365-szolgáltatások is érintettek, különösen az Outlook, a Microsoft Teams és a SharePoint.
 A My apps portál mely részeit érinti ez a funkció? | A saját alkalmazások portál csoportok funkciója tiszteletben tartja ezeket az új engedélyeket. Ide tartozik a csoportok listájának és a csoporttagságok a saját alkalmazásokban való megtekintéséhez szükséges összes elérési út. Nem történt változás a csoport csempe rendelkezésre állása során. A csoport csempe rendelkezésre állását továbbra is az Azure felügyeleti portál meglévő csoport beállítása szabályozza.
 Felülbírálják ezeket az engedélyeket a SharePoint vagy a Microsoft Teams vendég beállításainak? | Nem. Ezek a meglévő beállítások továbbra is szabályozzák az alkalmazások élményét és elérését. Ha például problémát tapasztal a SharePointban, ellenőrizze a külső megosztási beállításokat.
-Mik a Planner és a Yammer ismert kompatibilitási problémái? | <li>Ha az engedélyek "korlátozott" értékre vannak beállítva, a Planner alkalmazásba bejelentkezett, vagy a Microsoft Teams-tervezőhöz való hozzáférés nem fog tudni hozzáférni a terveihez vagy a feladatokhoz.<li>A "korlátozott" értékre beállított engedélyek esetén a Yammer bejelentkezett vendégek nem hagyhatják el a csoportot.
+Mik a Planner és a Yammer ismert kompatibilitási problémái? | <li>Ha a "korlátozott" értékre van állítva, a Planner Mobile alkalmazásba bejelentkezett vendégek nem fognak tudni hozzáférni a csomagokhoz vagy a feladatokhoz.<li>A "korlátozott" értékre beállított engedélyek esetén a Yammer bejelentkezett vendégek nem hagyhatják el a csoportot.
 Módosulnak a meglévő vendég engedélyei a bérlőn? | Nem történt változás az aktuális beállításokban. A meglévő beállításokkal visszamenőleges kompatibilitást biztosítunk. Ön dönti el, hogy szeretne-e módosításokat végezni.
 A rendszer alapértelmezés szerint beállítja ezeket az engedélyeket? | Nem. A meglévő alapértelmezett engedélyek változatlanok maradnak. Igény szerint beállíthatja, hogy az engedélyek szigorúbbak legyenek.
 Vannak a szolgáltatásra vonatkozó licencfeltételek? | Nem, a szolgáltatáshoz nem tartozik új licencelési követelmény.

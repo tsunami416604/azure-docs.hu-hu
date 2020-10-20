@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302621"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207937"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -291,7 +291,7 @@ A pontozási kérelmek részleteit a Application Insights tárolja. A munkaterü
 >
 > A műveletek némelyike a munkaterület **tevékenységek** területén jelenik meg, de ezek az értesítések nem jelzik, hogy ki kezdeményezte a tevékenységet.
 
-### <a name="vulnerability-scanning"></a>Sebezhetőségi vizsgálat
+### <a name="vulnerability-scanning"></a>Biztonsági rések vizsgálata
 
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Az Azure Machine learning esetében engedélyeznie kell a Azure Container Registry erőforrás és az Azure Kubernetes szolgáltatás-erőforrások vizsgálatát. Lásd: [Azure Container Registry rendszerképek vizsgálata Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) és [Az Azure Kubernetes Services integrációja Security Center](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)használatával.
 
@@ -324,7 +324,7 @@ Az Azure Machine Learning munkaterülethez tartozó könyvtárak (kísérletek) 
 
 [![Kód pillanatkép-munkafolyamata](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
 
-### <a name="training"></a>Oktatás
+### <a name="training"></a>Képzés
 
 Az alábbi ábra a betanítási munkafolyamatot mutatja be.
 
@@ -376,6 +376,10 @@ A [Azure Policy](/azure/governance/policy) egy irányítási eszköz, amely lehe
 A Azure Policyről a [Azure Policy dokumentációjában](/azure/governance/policy/overview)talál további információt.
 
 További információ a Azure Machine Learningra vonatkozó házirendekről: a [megfelelőség naplózása és kezelése Azure Policyokkal](how-to-integrate-azure-policy.md).
+
+## <a name="resource-locks"></a>Erőforrás-zárolások
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

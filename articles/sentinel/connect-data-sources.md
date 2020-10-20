@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97873c9f59dc0d99293d2b1ebaf87af309dbcf47
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627142"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208294"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -158,8 +158,8 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | MCAS SecurityAlert  | [Microsoft Cloud App Security összekötése](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (esemény) | [Sysmon összekötése](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-események összekötése](../azure-monitor/platform/data-sources-windows-events.md) <br> [A Sysmon-elemző beszerzése](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | A Sysmon-gyűjtemény alapértelmezés szerint nincs telepítve a virtuális gépeken. A Sysmon-ügynök telepítésével kapcsolatos további információkért lásd: [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
-| ConfigurationData  | [VM-leltár automatizálása](../automation/automation-vm-inventory.md)| &#10007; | |
-| Konfigurációváltozás  | [VIRTUÁLIS gépek követésének automatizálása](../automation/change-tracking.md) | &#10007; | |
+| ConfigurationData  | [VM-leltár automatizálása](../automation/change-tracking/overview.md)| &#10007; | |
+| Konfigurációváltozás  | [VIRTUÁLIS gépek követésének automatizálása](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [Az F5 BIG-IP csatlakoztatása](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |
 | McasShadowItReporting  |  | &#10007; | |
 | Barracuda_CL | [A Barracuda csatlakoztatása](connect-barracuda.md) | &#10003; | |

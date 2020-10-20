@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 9457323b2642d0e7c5a623c13ec8440520bd5b8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56e889778e3b598dc4ded5f64eef20101c542b6a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88891776"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207512"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Oktatóanyag: távoli renderelés integrálása HoloLens holografikus alkalmazásba
 
@@ -33,7 +33,7 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 * A fiók adatai (fiókazonosító, fiók kulcsa, előfizetés azonosítója). Ha nem rendelkezik fiókkal, [hozzon létre egy fiókot](../../../how-tos/create-an-account.md).
 * Windows SDK 10.0.18362.0 [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk).
 * A Visual Studio 2019 [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)legújabb verziója.
-* [Visual Studio-eszközök vegyes valósághoz](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). A következő számítási *feladatok* telepítése kötelező:
+* [Visual Studio-eszközök vegyes valósághoz](/windows/mixed-reality/install-the-tools). A következő számítási *feladatok* telepítése kötelező:
   * **Asztali fejlesztés C++ nyelven**
   * **Univerzális Windows-platform (UWP) fejlesztése**
 * A Windows vegyes valóság alkalmazás-sablonok a Visual studióhoz [(letöltés)](https://marketplace.visualstudio.com/items?itemName=WindowsMixedRealityteam.WindowsMixedRealityAppTemplatesVSIX).
@@ -587,10 +587,10 @@ Ha a minta megfelelően fut, az azt jelzi, hogy közvetlenül az Ön előtt, a m
 
 A megfelelő állapot megjelenítéséhez egy szöveges panelen tekintse meg az oktatóanyag előre definiált verzióját a GitHubon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogy milyen lépéseket kell tennie ahhoz, hogy távoli renderelést lehessen felvenni egy Stock **holografikus alkalmazás** C++/DirectX11-mintába.
 Saját modell átalakításához tekintse meg a következő rövid útmutatót:
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: modell átalakítása renderelésre](../../../quickstarts/convert-model.md)
+> [Gyorsútmutató: Modell konvertálása a renderelés előtt](../../../quickstarts/convert-model.md)

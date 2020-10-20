@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a05216fd44a64c037561662009987615f5657a8
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84782517"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207172"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Az Azure távoli renderelés támogatási lehetőségei
 
@@ -56,8 +56,8 @@ Ha visszajelzést szeretne küldeni, ossza meg az Azure távoli rendereléssel k
 
 ## <a name="microsoft-qa"></a>Microsoft Q&A
 
-A Microsoft mérnököktől, az Azure legértékesebb szakemberektől (MVP), illetve a szakértői Közösségtől érkező technikai kérdésekkel kapcsolatos gyors és megbízható válaszokért forduljon hozzánk a [Microsoft Q&a](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html), az Azure előnyben részesített céljaként a közösségi támogatáshoz.
+A Microsoft mérnököktől, az Azure legértékesebb szakemberektől (MVP), illetve a szakértői Közösségtől érkező technikai kérdésekkel kapcsolatos gyors és megbízható válaszokért forduljon hozzánk a [Microsoft Q&a](/answers/topics/azure-remote-rendering.html), az Azure előnyben részesített céljaként a közösségi támogatáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hibaelhárítás](troubleshoot.md)

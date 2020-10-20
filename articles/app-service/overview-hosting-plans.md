@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f96b48b8fec07ab207ea3962a201bbff68a5339
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742973"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92200848"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomagok áttekintése
 
@@ -37,7 +37,7 @@ Az egyes szintek a App Service szolgáltatások egy adott részhalmazát is bizt
 <a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> Az új **PremiumV3** díjszabási csomag a **standard** szinthez képest a [Dv3 sorozatú virtuális GÉPEKet](../virtual-machines/dv3-dsv3-series.md) , valamint az SSD-tárolást és a négyszeres memória-mag arányt garantálja. A **PremiumV3** a megnövelt példányszámot is támogatja, miközben továbbra is biztosítja a **standard** szinten található összes speciális funkciót. A meglévő **PremiumV2** -szinten elérhető összes funkció a **PremiumV3**része.
+> Az új **PremiumV3** díjszabási csomag a **standard** szinthez képest gyorsabb processzorokkal (minimálisan 195 [ACU](https://docs.microsoft.com/azure/virtual-machines/acu) /virtuális CPU-val), SSD-tárolóval és négyszeres memória-mag aránnyal rendelkező gépeket garantál. A **PremiumV3** a megnövelt példányszámot is támogatja, miközben továbbra is biztosítja a **standard** szinten található összes speciális funkciót. A meglévő **PremiumV2** -szinten elérhető összes funkció a **PremiumV3**része.
 >
 > A többi dedikált platformhoz hasonlóan három virtuálisgép-méret érhető el ehhez a platformhoz:
 >

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 831e72610690753a62c04b51e277110653e0d2c9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107674"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204333"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning Azure biztonsági alapterve
 
@@ -721,7 +721,7 @@ Ha már nincs rájuk szükség, távolítsa el az Azure-erőforrásokat.
 
 - [A fájl integritás-figyelésének használata](../security-center/security-center-file-integrity-monitoring.md)
 
-- [A Azure Automation Change Tracking és a leltár ismertetése](../automation/change-tracking.md)
+- [A Azure Automation Change Tracking és a leltár ismertetése](../automation/change-tracking/overview.md)
 
 - [Az Azure-beli virtuális gépek leltározásának engedélyezése](../automation/automation-tutorial-installed-software.md)
 
@@ -820,7 +820,7 @@ Azure Machine Learning teljes mértékben támogatja a git-Tárházak használat
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Biztonsági javaslatok – útmutató](../security-center/recommendations-reference.md)
+- [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -834,7 +834,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 - [Azure Security Center javaslatok figyelése](../security-center/security-center-recommendations.md)
 
-- [Biztonsági javaslatok – útmutató](../security-center/recommendations-reference.md)
+- [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
 - [Azure Automation állapot konfigurációjának áttekintése](../automation/automation-dsc-overview.md)
 
@@ -1129,7 +1129,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-- [Címkék használata az erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: igen
 
@@ -1193,7 +1193,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

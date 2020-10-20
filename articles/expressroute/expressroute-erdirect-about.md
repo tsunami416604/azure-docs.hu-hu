@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: duau
-ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365fd8d0d04b7d144ca6826d3d5eff976558eb3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566398"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202153"
 ---
 # <a name="about-expressroute-direct"></a>Az ExpressRoute Direct ismertetése
 
@@ -39,7 +39,7 @@ A ExpressRoute Direct használata előtt először regisztrálnia kell az előfi
 | --- | --- |
 | Szolgáltatók használatával lehetővé teszi a gyors bevezetést és a meglévő infrastruktúrához való csatlakozást | 100 Gbps/10 GB/s infrastruktúra és az összes réteg teljes felügyeletét igényli
 | Integrálható több száz szolgáltatóval, többek között az Ethernettel és a MPLS | Közvetlen/dedikált kapacitás a szabályozott iparágak és a nagy adatfeldolgozás számára |
-| Áramköri SKU-i 50 Mbps és 10 GB/s között | Az ügyfél a következő áramköri SKU kombinációját választhatja a 100 GB/s ExpressRoute Direct-on: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> Az ügyfél a következő áramköri SKU kombinációját választhatja 10 GB/s ExpressRoute Direct-on:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| Áramköri SKU-i 50 Mbps és 10 GB/s között | Az ügyfél a következő áramköri SKU kombinációját választhatja a 100 GB/s ExpressRoute Direct-on: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> Az ügyfél a következő áramköri SKU kombinációját választhatja 10 GB/s ExpressRoute Direct-on:<ul><li>1 Gbit/s</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 | Egyetlen bérlőre optimalizált | Egyetlen bérlőre optimalizált több üzleti egységgel és több munkahelyi környezettel
 
 ## <a name="expressroute-direct-circuits"></a>Közvetlen ExpressRoute áramkörök
@@ -57,7 +57,7 @@ A ExpressRoute Direct a nagyméretű adatfeldolgozási forgatókönyveket támog
 | **100 GB/s ExpressRoute Direct** | **10 GB/s ExpressRoute Direct** | 
 | --- | --- |
 | **Előfizetett sávszélesség**: 200 GB/s | **Előfizetett sávszélesség**: 20 GB/s |
-| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbit/s</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 
@@ -73,7 +73,7 @@ A ExpressRoute Direct a nagyméretű adatfeldolgozási forgatókönyveket támog
     * Hozzá kell adnia a külső VLAN-címkét (STAG) a Microsoft által megadott VLAN-azonosító alapján – *csak a QinQ*
     * Egy porton és eszközön több BGP-munkamenetet (VLAN) kell támogatnia
     * IPv4-és IPv6-kapcsolat. *Az IPv6 esetében nem jön létre további alkapcsolat. Az IPv6-cím hozzá lesz adva a meglévő alkapcsolathoz*. 
-    * Opcionális: [kétirányú továbbítási észlelési (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) támogatás, amely alapértelmezés szerint a ExpressRoute-áramkörök összes privát társán konfigurálva van
+    * Opcionális: [kétirányú továbbítási észlelési (BFD)](./expressroute-bfd.md) támogatás, amely alapértelmezés szerint a ExpressRoute-áramkörök összes privát társán konfigurálva van
 
 ## <a name="vlan-tagging"></a>VLAN-címkézés
 

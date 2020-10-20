@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: duau
-ms.openlocfilehash: 1be507f3676a5531855e3a8deb6801b1a5cb8e74
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1835377f4690097c8390957bf7d897242ba7aace
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166715"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208056"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Oktatóanyag: a prioritási forgalom útválasztási módszerének konfigurálása Traffic Manager
 
@@ -70,7 +70,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     | Beállítás                | Érték                                              |
     | ---                    | ---                                                |
     | Típus                   | Válassza ki a végpont típusát. |    
-    | Név                   | Adjon meg egy nevet a végpont azonosításához. |
+    | Name                   | Adjon meg egy nevet a végpont azonosításához. |
     | Célerőforrás típusa   | Válassza ki a cél erőforrás-típusát. |
     | Célerőforrás        | Válassza ki az erőforrást a listából. |
     | Prioritás               | Adjon meg egy prioritási számot ehhez a végponthoz. 1 a legmagasabb prioritás. |
@@ -98,13 +98,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Ha a Traffic Manager-profilja működik, szerkessze a DNS-rekordot a mérvadó DNS-kiszolgálón, hogy a vállalat tartománynevét a Traffic Manager tartománynevére mutassa.
 
-## <a name="clean-up-resource"></a>Erőforrás törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a Traffic Manager profilra, keresse meg a profilt, és válassza a **Profil törlése**lehetőséget.
 
 :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-delete-priority-profile.png" alt-text="Traffic Manager prioritási profil létrehozása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Kiemelt útválasztási módszerről további információért lásd:
 

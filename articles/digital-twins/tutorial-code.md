@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 830052237580101d9141bbf812c050430c6269f2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144560"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201348"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -104,40 +104,21 @@ Ezután adjon hozzá kódot ehhez a fájlhoz, hogy kitöltsön néhány funkció
 
 Az alkalmazás első lépéseként hitelesítenie kell magát az Azure Digital Twins szolgáltatásban. Ezután létrehozhat egy szolgáltatás-ügyfél osztályt az SDK-függvények eléréséhez.
 
-A hitelesítéshez három információra van szüksége:
-* Az előfizetéshez tartozó *címtár (bérlő) azonosítója*
-* Az Azure Digital Twins-példány beállításakor létrehozott *alkalmazás-(ügyfél-) azonosító*
-* Az Azure Digital Twins-példány *állomásneve*
+A hitelesítéshez szüksége lesz az Azure Digital Twins-példány *állomásneve* .
 
->[!TIP]
-> Ha nem ismeri a *címtár-(bérlői) azonosítóját*, a következő parancs futtatásával kérheti le [Azure Cloud Shell](https://shell.azure.com):
-> 
-> ```azurecli
-> az account show --query tenantId
-> ```
-
-A *program.cs*illessze be a következő kódot a "Hello, World!" alá. a metódus nyomtatási sora `Main` . Állítsa be az értéket az `adtInstanceUrl` Azure Digital Twins-példány *állomásneve*, az `clientId` alkalmazás- *azonosító*és `tenantId` a címtár- *azonosító*értékre.
+A *program.cs*illessze be a következő kódot a "Hello, World!" alá. a metódus nyomtatási sora `Main` . Állítsa be az értékét az `adtInstanceUrl` Azure Digital Twins-példány *állomásneve*értékre.
 
 ```csharp
-string clientId = "<your-application-ID>";
-string tenantId = "<your-directory-ID>";
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+var credential = new DefaultAzureCredential();
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 Console.WriteLine($"Service client created – ready to go");
 ```
 
 Mentse a fájlt. 
 
-Vegye figyelembe, hogy ez a példa egy interaktív böngészőbeli hitelesítő adatot használ:
-```csharp
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-```
-
-Ez a hitelesítő adat a böngészőablak megnyitását eredményezi, és kéri az Azure-beli hitelesítő adatok megadását. 
-
 >[!NOTE]
-> Más típusú hitelesítő adatokkal kapcsolatos információkért tekintse meg a [Microsoft Identity platform hitelesítési kódtárainak](../active-directory/develop/reference-v2-libraries.md)dokumentációját.
+> Ez a példa a `DefaultAzureCredential` hitelesítést használja. Más típusú hitelesítő adatokkal kapcsolatos információkért tekintse meg a [Microsoft Identity platform hitelesítési kódtárainak](../active-directory/develop/reference-v2-libraries.md)dokumentációját, illetve az [ügyfélalkalmazások hitelesítésével](how-to-authenticate-client.md)kapcsolatos Azure digitális Twins-cikket.
 
 A következő paranccsal futtassa a kódot a parancsablakban: 
 
@@ -463,11 +444,10 @@ namespace minimal
         {
             Console.WriteLine("Hello World!");
             
-            string clientId = "<your-application-ID>";
-            string tenantId = "<your-directory-ID>";
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-            var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+            
+            var credential = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
             Console.WriteLine($"Service client created – ready to go");
 
             Console.WriteLine();

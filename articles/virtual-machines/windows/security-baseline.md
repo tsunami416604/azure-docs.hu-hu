@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5e52c09e6fc3d5e3d4210e213e0eb6af4e473559
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978020"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205029"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines Azure biztonsági alapterve
 
@@ -750,7 +750,7 @@ Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, 
 
 * [Bevezetés az Azure Automationbe](../../automation/automation-intro.md)
 
-* [A környezet változásainak követése a Change Tracking megoldással](../../automation/change-tracking.md)
+* [A környezet változásainak követése a Change Tracking megoldással](../../automation/change-tracking/overview.md)
 
 * [Azure Automation állapot konfigurációjának áttekintése](../../automation/automation-dsc-overview.md)
 
@@ -1125,7 +1125,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [Biztonsági riasztások az Azure Security Centerben](../../security-center/security-center-alerts-overview.md)
 
-* [Címkék használata az erőforrások rendszerezéséhez](../../azure-resource-manager/management/tag-resources.md)
+* [Címkék használata az Azure-erőforrások rendszerezéséhez](../../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: igen
 

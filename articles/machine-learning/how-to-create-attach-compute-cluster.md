@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: d33af7a9c2d48ded84bd675364469dab09a79d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ab5ba93545ffdbfd36850c08eda78cc239f694
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711298"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207121"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning számítási fürt létrehozása
 
@@ -48,9 +48,11 @@ A számítási fürtök biztonságos módon futtathatják a feladatokat egy [vir
 
     Ha újra csatolni szeretné a számítási célt, például a fürtkonfiguráció beállításainak módosításához, először el kell távolítania a meglévő mellékletet.
 
-* A jelen dokumentumban felsorolt forgatókönyvek némelyike __előzetesként__van megjelölve. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+* A jelen dokumentumban felsorolt forgatókönyvek némelyike __előzetesként__van megjelölve. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 * Azure Machine Learning a számítások alapértelmezett korlátai, például a lefoglalt magok száma. További információ: [Az Azure-erőforrások kezelése és kvóták igénylése](how-to-manage-quotas.md).
+
+* Az Azure lehetővé teszi az erőforrások _zárolásának_ elhelyezését, így azok nem törölhetők vagy csak olvashatók. Ne __alkalmazzon erőforrás-zárolást a munkaterületet tartalmazó erőforráscsoporthoz__. Ha a munkaterületet tartalmazó erőforráscsoporthoz zárolást alkalmaz, az Azure ML számítási fürtök méretezési műveletei nem lesznek érvényesek. Az erőforrások zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../azure-resource-manager/management/lock-resources.md).
 
 > [!TIP]
 > A fürtök általában legfeljebb 100 csomópontot tudnak méretezni, ha elegendő kvóta van a szükséges magok számához. Alapértelmezés szerint a fürtök a csomópontok közötti kommunikációt engedélyezik a fürt csomópontjai között, így például támogatják az MPI-feladatokat. A fürtöket azonban a csomópontok 1000S is méretezheti úgy, hogy egyszerűen [egy támogatási jegyet emelnek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)fel, és lehetővé teszi az előfizetés, a munkaterület vagy egy adott fürt számára a csomópontok közötti kommunikáció letiltását. 

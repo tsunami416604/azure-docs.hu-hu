@@ -4,16 +4,16 @@ description: Ismerkedjen meg Azure Analysis Servicesával, amely egy teljes kör
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 09/08/2020
+ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 11ab4e0404b7ebc8620cd1eb54edae9bb861e46b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018797"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201511"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -71,7 +71,7 @@ Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokho
 |<sup> [1](#naar) . S9v2</sup>    |    1280    |    400     |
 
 <a name="naar">1</a> – nem érhető el minden régióban.   
-<a name="rec">2</a> – v2 ajánlott.
+<a name="rec">2</a> – az S8 és az S9 [elavult](https://azure.microsoft.com/updates/azure-s8-and-s9-analysis-services-skus-retiring-on-31-august-2023/). a v2 ajánlott. 
 
 ## <a name="availability-by-region"></a>Rendelkezésre állás régiónként
 
@@ -85,7 +85,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA keleti régiója     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA 2. keleti régiója     |     S8, S9, S8v2, S9v2   |    1    |
+|USA 2. keleti régiója     |     S8v2, S9v2   |    1    |
 |USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA északi középső régiója     |     S8v2, S9v2    |    1     |
 |USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -93,9 +93,9 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|USA nyugati régiója     |    S8, S9, S8v2, S9v2   |    2  |
+|USA nyugati régiója     |    S8v2, S9v2   |    2  |
 |USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA 2. nyugati régiója    |    S8, S9, S8v2, S9v2  |    1     |
+|USA 2. nyugati régiója    |    S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Európa
 
@@ -105,17 +105,18 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |Észak-Európa     |    S8v2, S9v2      |    3     |
 |Az Egyesült Királyság déli régiója     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Nyugat-Európa    |   S8, S9, S8v2, S9v2  |  1  |
+|Nyugat-Európa    |   S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Kelet-Ausztrália     |    S8, S9, S8v2, S9v2    |    1     |
+|Kelet-Ausztrália     |    S8v2, S9v2    |    1     |
 |Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Kelet-Japán     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
+|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
+|Délkelet-Ázsia     |     S8v2, S9v2     |   1      |
 |Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Igényei szerint méretezhető
@@ -163,7 +164,7 @@ Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai szá
 
 A kiszolgáló szintjén a Analysis Services tűzfalat, Azure-hitelesítést, kiszolgálói rendszergazdai szerepköröket és Server-Side titkosítást biztosít. Az adatmodell szintjén a felhasználói szerepkörök, a sorcsoport és az objektumorientált biztonság gondoskodik az adatai biztonságáról, és azokat csak azok a felhasználók látják, akik számára a célja.
 
-### <a name="firewall"></a>Firewall
+### <a name="firewall"></a>Tűzfal
 
 Az Azure Analysis Services tűzfala minden olyan ügyfélkapcsolatot blokkol, amelyek IP-címe nincs megadva a szabályokban. Alapértelmezés szerint a tűzfalbeállítások nincs engedélyezve az új kiszolgálókon. Az ajánlott tűzfalbeállítások engedélyezve van, és a szabályok konfigurálása a kiszolgáló létesítési parancsfájljának részeként vagy a portálon közvetlenül a kiszolgáló létrehozása után történik. Az engedélyezett IP-címeket meghatározó szabályok egyesével, ügyfél IP-címenként vagy tartományonként is konfigurálhatók. A Power BI- (szolgáltatási) kapcsolatok szintén engedélyezhetők vagy blokkolhatók. A tűzfalat és a szabályokat a portálon vagy a PowerShell használatával konfigurálhatja. További információ: [Kiszolgálószintű tűzfal konfigurálása](analysis-services-qs-firewall.md).
 

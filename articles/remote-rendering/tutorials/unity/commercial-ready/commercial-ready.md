@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ff6d064b6bfabbd8a648c23b5648aae9b12a11d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510929"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207495"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Oktatóanyag: kereskedelmi használatra kész Azure Remote rendering-alkalmazás létrehozása
 
@@ -35,8 +35,8 @@ Ez a modul bemutatja, hogy milyen további funkciókra lehet szükség a kereske
 
 A rendszerszintű architektúrával kapcsolatos ajánlott eljárások széles körű áttekintését a következő webhelyen találja:
 
-* [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/)
-* [Első lépések útmutató Azure-fejlesztőknek](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)
+* [Azure Architecture Center](/azure/architecture/)
+* [Első lépések útmutató Azure-fejlesztőknek](../../../../guides/developer/azure-developer-guide.md)
 
 ## <a name="analytics"></a>Elemzés
 
@@ -54,7 +54,7 @@ Ennek eléréséhez az Azure egy erőforrás-címkézés nevű szolgáltatást k
 
 Az erőforrás-elnevezéssel és a címkézéssel kapcsolatos további információkért érdemes elindulni:
 
-* [Erőforrás-elnevezési és címkézési döntési útmutató](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+* [Erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
 
 ### <a name="diagnostics"></a>Diagnosztika
 
@@ -62,9 +62,9 @@ Az olyan hatékony eszközök, mint a Windows esemény-nyomkövetés (ETW) és a
 
 További információért látogasson el ide:
 
-* [Ügyféloldali teljesítmény-nyomkövetés létrehozása](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
-* [Windows esemény-nyomkövetés-(ETW-) adatok összegyűjtése](https://docs.microsoft.com/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
-* [A Windows-eszközök portáljának használata: naplózás](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
+* [Ügyféloldali teljesítmény-nyomkövetés létrehozása](../../../how-tos/performance-tracing.md)
+* [Windows esemény-nyomkövetés-(ETW-) adatok összegyűjtése](/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
+* [A Windows-eszközök portáljának használata: naplózás](/windows/mixed-reality/using-the-windows-device-portal)
 
 ### <a name="usage-analysis"></a>Használat elemzése
 
@@ -72,7 +72,7 @@ Az Azure Application Insights segítségével megismerheti, hogy a felhasználó
 
 További információért látogasson el ide:
 
-* [Használat elemzése Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)
+* [Használat elemzése Application Insights](../../../../azure-monitor/app/usage-overview.md)
 
 ## <a name="fast-startup-time-strategies"></a>Gyors indítási idő stratégiák
 
@@ -102,7 +102,7 @@ Ez a stratégia a *standard* és a *prémium* szintű munkamenetek közötti vá
 
 További információ az Azure távoli renderelési munkamenetekről:
 
-* [Remote Rendering-munkamenetek](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
+* [Remote Rendering-munkamenetek](../../../concepts/sessions.md)
 
 ## <a name="standard-vs-premium-server-size-routing-strategies"></a>Standard és prémium szintű kiszolgálói útválasztási stratégiák
 
@@ -164,9 +164,9 @@ Egyéb példák: továbbított videó, egyidejű háttérbeli feltöltések más
 A hálózati elemzéssel kapcsolatos további információkért tekintse meg a következőt:
 
 * [Azure Storage Blob letöltési sebesség tesztelése](https://www.azurespeed.com/Azure/Download)
-* [Az Azure Network Round Trip késési statisztikái](https://docs.microsoft.com/azure/networking/azure-network-latency)
-* [Kiszolgálóoldali teljesítmény-nyomkövetés](https://docs.microsoft.com/azure/remote-rendering/overview/features/performance-queries)
-* [Ügyféloldali teljesítmény-nyomkövetés](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
+* [Az Azure Network Round Trip késési statisztikái](../../../../networking/azure-network-latency.md)
+* [Kiszolgálóoldali teljesítmény-nyomkövetés](../../../overview/features/performance-queries.md)
+* [Ügyféloldali teljesítmény-nyomkövetés](../../../how-tos/performance-tracing.md)
 
 ## <a name="collaboration-considerations"></a>Együttműködési megfontolások
 
@@ -192,8 +192,8 @@ Ha azonban a 3D-eszközök többször is felhasználhatók, például egy tanít
 
 További információk:
 
-* [Vegyes valóságban megosztott tapasztalatok](https://docs.microsoft.com/windows/mixed-reality/shared-experiences-in-mixed-reality)
-* [Azure Storage-redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Vegyes valóságban megosztott tapasztalatok](/windows/mixed-reality/shared-experiences-in-mixed-reality)
+* [Azure Storage-redundancia](../../../../storage/common/storage-redundancy.md)
 
 ## <a name="managing-model-access"></a>Modell-hozzáférés kezelése
 
@@ -230,7 +230,7 @@ Ez a megközelítés még egy lépésből állhat azáltal, hogy megtartja a kor
 További információk:
 
 * [Microsoft Power automatizáló sablon az Azure Storage-replikáció OneDrive](https://flow.microsoft.com/galleries/public/templates/2f90b5d3-029b-4e2e-ad37-1c0fe6d187fe/when-a-file-is-uploaded-to-onedrive-copy-it-to-azure-storage-container/)
-* [A OneDrive File Storage API áttekintése](https://docs.microsoft.com/graph/onedrive-concept-overview)
+* [A OneDrive File Storage API áttekintése](/graph/onedrive-concept-overview)
 
 ### <a name="direct-cad-access"></a>Közvetlen CAD-hozzáférés
 
@@ -255,7 +255,7 @@ Számos nagyvállalati ügyfél azt adja meg, hogy a Azure Stack a saját Azure-
 További információk:
 
 * [Azure Marketplace](https://azure.microsoft.com/marketplace/)
-* [Oktatóanyag: Azure által felügyelt alkalmazások közzététele a piactéren](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/publish-marketplace-app)
+* [Oktatóanyag: Azure által felügyelt alkalmazások közzététele a piactéren](../../../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>Biztonság
 
@@ -277,6 +277,6 @@ A hitelesítéshez érdemes az ARR-hitelesítés és a munkamenet-felügyelet na
 
 További információk:
 
-* [Azure AD-szolgáltatás hitelesítése](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-service-authentication)
+* [Azure AD-szolgáltatás hitelesítése](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-service-authentication)
 * [A biztonsági helyzet megerősítése az Azure-ban](https://azure.microsoft.com/overview/security/)
 * [Felhőbeli biztonság](https://azure.microsoft.com/product-categories/security/)

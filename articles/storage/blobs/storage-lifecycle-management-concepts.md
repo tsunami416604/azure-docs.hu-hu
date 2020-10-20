@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264f0e59e2c43ca92fc5209b8613282a0b0fca37
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822393"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203772"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -22,8 +22,9 @@ Az adatkészletek egyedi életciklusokkal rendelkeznek. Az életciklus korai sza
 
 Az életciklus-kezelési házirend a következőket teszi lehetővé:
 
-- A Blobok átállítása a hűvösebb tárolási szintre (gyors elérésű, gyors archiválásra vagy az archiválásra) a teljesítmény és a költséghatékonyság optimalizálása érdekében
-- Blobok törlése életciklusuk végén
+- A Blobok gyors átállása azonnal, ha a teljesítmény optimalizálása érdekében elérhető 
+- Az áttérési Blobok, blob-verziók és blob-Pillanatképek egy hűvösebb tárolási rétegre (gyors elérésű, gyors archiválásra vagy lassú elérésű archiválásra), ha nem férnek hozzá, vagy nem módosítanak egy ideig
+- Blobok, blob-verziók és blob-Pillanatképek törlése az életciklusuk végén
 - A Storage-fiók szintjén naponta egyszer futtatandó szabályok definiálása
 - Szabályok alkalmazása a tárolók vagy a Blobok egy részhalmaza számára (név előtaggal vagy [blob-index címkékkel](storage-manage-find-blobs.md) szűrőként használva)
 
@@ -33,7 +34,7 @@ Vegyünk például egy olyan forgatókönyvet, amelyben az adatmennyiség az él
 
 ## <a name="availability-and-pricing"></a>Rendelkezésre állás és díjszabás
 
-Az életciklus-kezelési funkció az összes Azure-régióban elérhető az általános célú v2 (GPv2) fiókokhoz, a blob Storage-fiókokhoz és a prémium szintű blokk blob Storage-fiókokhoz. A Azure Portal egy meglévő általános célú (GPv1-) fiókot frissíthet egy GPv2-fiókra. A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
+Az életciklus-kezelési funkció az összes Azure-régióban elérhető az általános célú v2 (GPv2) fiókokhoz, a blob Storage-fiókokhoz, a prémium szintű blokk blob Storage-fiókokhoz és a Azure Data Lake Storage Gen2 fiókokhoz. A Azure Portal egy meglévő általános célú (GPv1-) fiókot frissíthet egy GPv2-fiókra. A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
 
 Az életciklus-kezelési szolgáltatás díjmentes. A blob szintű API-hívások [beállításakor](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) a rendszer a szokásos működési költséget számítja fel. A törlési művelet ingyenes. A díjszabással kapcsolatos további információkért lásd a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/)című témakört.
 
@@ -120,7 +121,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
    }
    ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A JSON-példával kapcsolatos további információkért tekintse meg a [szabályzatok](#policy) és [szabályok](#rules) szakaszt.
 
@@ -250,29 +251,41 @@ A következő minta szabály úgy szűri a fiókot, hogy a műveleteit a-ben és
 - Rétegbeli blob – a legutolsó módosítás után 30 nappal a lehűtési szintig
 - Szintű blob az archiválási szintre 90 nappal az utolsó módosítás után
 - A blob 2 555 nap (hét év) törlése az utolsó módosítás után
-- BLOB-Pillanatképek törlése 90 nappal a pillanatkép létrehozása után
+- Korábbi blob-verziók törlése a létrehozás után 90 nappal
 
 ```json
 {
   "rules": [
     {
-      "name": "ruleFoo",
       "enabled": true,
+      "name": "rulefoo",
       "type": "Lifecycle",
       "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "container1/foo" ]
-        },
         "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          "version": {
+            "delete": {
+              "daysAfterCreationGreaterThan": 90
+            }
           },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "baseBlob": {
+            "tierToCool": {
+              "daysAfterModificationGreaterThan": 30
+            },
+            "tierToArchive": {
+              "daysAfterModificationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterModificationGreaterThan": 2555
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "container1/foo"
+          ]
         }
       }
     }
@@ -299,24 +312,24 @@ A szűrők a következők:
 
 Ha a futtatási feltétel teljesül, a rendszer a szűrt blobokra alkalmazza a műveleteket.
 
-Az életciklus-kezelés támogatja a Blobok kiszervezését és törlését, valamint a blob-Pillanatképek törlését. Adjon meg legalább egy műveletet a Blobok vagy blob-Pillanatképek minden szabályához.
+Az életciklus-kezelés támogatja a Blobok, a korábbi blob-verziók és a blob-Pillanatképek leválasztását és törlését. Adjon meg legalább egy műveletet az alapblobok, a korábbi blob-verziók vagy a blob-Pillanatképek minden szabályához.
 
-| Művelet                      | Alap blob                                   | Pillanatkép      |
-|-----------------------------|---------------------------------------------|---------------|
-| tierToCool                  | Jelenleg a gyors elérésű szinten támogatott Blobok támogatása         | Nem támogatott |
-| enableAutoTierToHotFromCool | Jelenleg a ritka elérésű szinten támogatott Blobok támogatása        | Nem támogatott |
-| tierToArchive               | Jelenleg a gyors vagy a lassú elérésű szinten támogatja a blobokat | Nem támogatott |
-| delete                      | Támogatott `blockBlob` és `appendBlob`  | Támogatott     |
+| Művelet                      | Alap blob                                  | Pillanatkép      | Verzió
+|-----------------------------|--------------------------------------------|---------------|---------------|
+| tierToCool                  | Támogatott: `blockBlob`                  | Támogatott     | Támogatott     |
+| enableAutoTierToHotFromCool | Támogatott: `blockBlob`                  | Nem támogatott | Nem támogatott |
+| tierToArchive               | Támogatott: `blockBlob`                  | Támogatott     | Támogatott     |
+| delete                      | Támogatott `blockBlob` és `appendBlob` | Támogatott     | Támogatott     |
 
 >[!NOTE]
 >Ha ugyanazon a blobon több műveletet is definiál, az életciklus-kezelés a legkevesebb költséges műveletet alkalmazza a blobra. Például a művelet `delete` olcsóbb a műveletnél `tierToArchive` . `tierToArchive`A művelet olcsóbb a műveletnél `tierToCool` .
 
-A futtatási feltételek életkoron alapulnak. Az alapblobok az utolsó módosítás idejét használják a kor nyomon követéséhez, a blob-Pillanatképek pedig a pillanatkép létrehozásának idejét használják a kor nyomon követéséhez.
+A futtatási feltételek életkoron alapulnak. Az alapblobok az utolsó módosítás időpontját használják, a blob-verziók a verzió létrehozási idejét használják, a blob-Pillanatképek pedig a létrehozási időt használják a kor nyomon követéséhez.
 
 | Művelet futtatási feltétele               | Feltétel értéke                          | Leírás                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Egész számú érték, amely a kora napokat jelzi | Az alap blob-műveletek feltétele                                              |
-| daysAfterCreationGreaterThan       | Egész számú érték, amely a kora napokat jelzi | A blob-Pillanatképek műveleteinek feltétele                                          |
+| daysAfterCreationGreaterThan       | Egész számú érték, amely a kora napokat jelzi | A blob-verzió és a blob-pillanatkép műveleteinek feltétele                         |
 | daysAfterLastAccessTimeGreaterThan | Egész számú érték, amely a kora napokat jelzi | előnézet Az alap blob-műveletek feltétele az utolsó hozzáférés idejének engedélyezésekor |
 
 ## <a name="examples"></a>Példák
@@ -509,26 +522,35 @@ Egyes adatmennyiségeket csak akkor lehet lemondani, ha explicit módon meg van 
 }
 ```
 
-### <a name="delete-old-snapshots"></a>Régi Pillanatképek törlése
+### <a name="manage-versions"></a>Verziók kezelése
 
-A gyakran használt és a teljes élettartamon keresztül elért adatmennyiségek esetében a pillanatképeket gyakran a régebbi verziók nyomon követésére használják. Létrehozhat egy szabályzatot, amely a régi pillanatképeket törli a pillanatképek kora alapján. A pillanatképek korát a pillanatkép létrehozásának időpontjának kiértékelésével határozzuk meg. Ez a házirend-szabály törli a `activedata` Pillanatkép-létrehozás után 90 napos vagy régebbi tárolóban lévő blob-pillanatképeket.
+Azon adatmennyiségek esetében, amelyek élettartama során rendszeresen módosítják és hozzáfértek, engedélyezheti a blob Storage verziószámozását, hogy automatikusan fenntartsa az objektum korábbi verzióit. Létrehozhat egy szabályzatot a korábbi verziók kiválasztásához vagy törléséhez. A verziók korát a verzió létrehozási idejének kiértékelésével határozzuk meg. Ez a házirend-szabály a tárolóban lévő korábbi verziókat `activedata` , amelyek 90 nappal vagy annál régebbiek, miután a verzió létrehozása a ritka szintre történik, és törli az előző, 365 napos vagy régebbi verziókat.
 
 ```json
 {
   "rules": [
     {
-      "name": "snapshotRule",
       "enabled": true,
+      "name": "versionrule",
       "type": "Lifecycle",
-    "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "activedata" ]
-        },
+      "definition": {
         "actions": {
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "version": {
+            "tierToCool": {
+              "daysAfterCreationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterCreationGreaterThan": 365
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "activedata"
+          ]
         }
       }
     }

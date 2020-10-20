@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 17e3e8dca1c03f9783c0ca94350bb8a4ba5aca64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 737c7e61a7ae0573ca6de0d6daa8288313f70741
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935764"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201902"
 ---
 # <a name="securing-azure-sql-edge"></a>Az Azure SQL Edge védelme
 
@@ -92,8 +92,8 @@ Az Azure SQL és a Microsoft SQL Serverhöz hasonlóan az Azure SQL Edge ugyanaz
 
 Az Azure SQL Edge biztonsági eljárásai a biztonságos ügyfélalkalmazások írására is használhatók. További információ az ügyfélalkalmazások biztonságossá tételéről a hálózati rétegben: [ügyfél hálózati konfigurációja](https://docs.microsoft.com/sql/database-engine/configure-windows/client-network-configuration).
 
-### <a name="sql-server-security-catalog-views-and-functions"></a>SQL Server biztonsági katalógus nézetei és funkciói  
- A biztonsági információk több, a teljesítményre és a segédprogramra optimalizált nézetben és funkcióval is elérhetők. A következő táblázat a biztonsági nézetekről és a függvényekről tartalmaz információkat.  
+### <a name="security-catalog-views-and-functions"></a>A biztonsági katalógus nézetei és funkciói  
+A biztonsági információk több, a teljesítményre és a segédprogramra optimalizált nézetben és funkcióval is elérhetők. A következő táblázat az Azure SQL Edge biztonsági nézeteit és funkcióit ismerteti.  
   
 |Függvények és nézetek|Hivatkozások|  
 |---------------------------|---------|  

@@ -9,12 +9,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 928737608ae3e3e44b352724713a284ff9a45da9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90939609"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202956"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Hitelesítés az Azure kommunikációs szolgáltatásokban
 
@@ -33,7 +33,7 @@ Az alábbi táblázat ismerteti, hogy az Azure kommunikációs szolgáltatások 
 
 Az egyes engedélyezési beállítások rövid ismertetését az alábbiakban találja:
 
-- **Hozzáférési kulcs** hitelesítése az SMS-és felügyeleti műveletekhez. A hozzáférési kulcs hitelesítése megbízható szolgáltatási környezetben futó alkalmazások esetében megfelelő. Egy hozzáférési kulccsal való hitelesítéshez az ügyfél létrehoz egy [kivonatoló módszerként szolgáló hitelesítési kódot (HMAC)](https://en.wikipedia.org/wiki/HMAC) , és az `Authorization` összes HTTP-kérelem fejlécében tartalmazza azt. További információ: [hitelesítés egy hozzáférési kulccsal](#authenticate-with-an-access-key).
+- **Hozzáférési kulcs** hitelesítése az SMS-és felügyeleti műveletekhez. A hozzáférési kulcs hitelesítése megbízható szolgáltatási környezetben futó alkalmazások esetében megfelelő. Egy hozzáférési kulccsal való hitelesítéshez az ügyfél létrehoz egy [hash-alapú üzenet-hitelesítési kódot (HMAC)](https://en.wikipedia.org/wiki/HMAC) , és az `Authorization` összes HTTP-kérelem fejlécén belül tartalmazza azt. További információ: [hitelesítés egy hozzáférési kulccsal](#authenticate-with-an-access-key).
 - **Felhasználói hozzáférési jogkivonat** hitelesítése csevegéshez és híváshoz. A felhasználói hozzáférési tokenek lehetővé teszik az ügyfélalkalmazások számára, hogy közvetlenül az Azure kommunikációs szolgáltatásokkal hitelesítsék magukat. Ezek a tokenek a létrehozott kiszolgálóoldali jogkivonat-létesítési szolgáltatás alapján jönnek létre. Ezeket a rendszer a tokent használó ügyféleszközök számára adja meg a csevegés inicializálásához és az ügyféloldali kódtárak meghívásához. További információ: [hitelesítés felhasználói hozzáférési jogkivonattal](#authenticate-with-a-user-access-token).
 
 ## <a name="authenticate-with-an-access-key"></a>Hitelesítés hozzáférési kulccsal
@@ -192,5 +192,5 @@ A `refreshProactively` beállítással eldöntheti, hogyan fogja kezelni a jogki
 > [!div class="nextstepaction"]
 > [Felhasználói hozzáférési tokenek létrehozása](../quickstarts/access-tokens.md)
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 - [Az ügyfél és a kiszolgáló architektúrájának megismerése](../concepts/client-and-server-architecture.md)

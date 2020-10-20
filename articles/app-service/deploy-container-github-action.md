@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: d6f66993b0fb7f97c551f4fbcb305111cfb2097e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150281"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203194"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
 
@@ -25,7 +25,7 @@ Azure App Service tároló munkafolyamathoz a fájl három szakaszt tartalmaz:
 |Section  |Feladatok  |
 |---------|---------|
 |**Hitelesítés** | 1. az egyszerű szolgáltatásnév vagy a közzétételi profil beolvasása. <br /> 2. hozzon létre egy GitHub-titkot. |
-|**Építeni** | 1. hozza létre a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
+|**Buildelés** | 1. hozza létre a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
 |**Telepítés** | 1. Telepítse a tároló lemezképét. |
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -84,7 +84,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 Illessze be a JSON-kimenet tartalmát a titkos változó értékeként. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
-Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Példa:
+Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
 
 ```yaml
 - uses: azure/login@v1
@@ -100,7 +100,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 Az [alkalmazás szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a letöltött közzétételi profil tartalmát a titkos kulcs érték mezőjébe. Nevezze el a titkot `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-A GitHub-munkafolyamatok konfigurálásakor használja az `AZURE_WEBAPP_PUBLISH_PROFILE` Azure-webalkalmazás üzembe helyezése műveletet. Példa:
+A GitHub-munkafolyamatok konfigurálásakor használja az `AZURE_WEBAPP_PUBLISH_PROFILE` Azure-webalkalmazás üzembe helyezése műveletet. Például:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -114,7 +114,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 [Felhasználói szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titkos kulcs érték mezőjébe. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
-Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Példa:
+Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
 
 ```yaml
 - uses: azure/login@v1
@@ -190,15 +190,17 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>Üzembe helyezés App Service tárolón
 
-Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíteni, használja a `azure/webapps-deploy@v2` műveletet. Ehhez a művelethez öt paraméter tartozik:
+Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíteni, használja a `azure/webapps-deploy@v2` műveletet. Ehhez a művelethez hét paraméter tartozik:
 
 | **Paraméter**  | **Magyarázat**  |
 |---------|---------|
 | **alkalmazás neve** | Szükséges A App Service alkalmazás neve | 
-| **közzétételi profil** | Választható Profil fájl tartalmának közzététele a web Deploy Secrets szolgáltatásban |
-| **képek** | Teljesen minősített tároló-rendszerkép (ek) neve. Például: "myregistry.azurecr.io/nginx:latest" vagy "Python: 3.7.2-Alpine/". Többtárolós forgatókönyv esetén több tároló KépNeve is biztosítható (többsoros elválasztva) |
+| **közzétételi profil** | Választható A következőkre vonatkozik: Web Apps (Windows és Linux) és Web App containers (Linux). A multi-Container forgatókönyv nem támogatott. A profil ( \* . publishsettings) fájl tartalmának közzététele a web Deploy Secrets szolgáltatásban | 
 | **tárolóhely neve** | Választható Adja meg az üzemi tárolóhelytől eltérő meglévő tárolóhelyet |
-| **konfigurációs fájl** | Választható A Docker-Compose fájl elérési útja |
+| **csomag** | Választható Csak a webalkalmazásra vonatkozik: csomag vagy mappa elérési útja. \*. zip, \* . War, \* . jar vagy egy telepítendő mappa |
+| **képek** | Szükséges Csak a webalkalmazás-tárolók esetében érvényes: adja meg a teljes tároló rendszerkép (ek) nevét. Például: "myregistry.azurecr.io/nginx:latest" vagy "Python: 3.7.2-Alpine/". Többtárolós alkalmazások esetén több tároló-rendszerkép is megadható (több sorba tagolt) |
+| **konfigurációs fájl** | Választható Csak a webalkalmazás-tárolók esetében érvényes: a Docker-Compose fájl elérési útja. Teljes elérési útnak kell lennie, vagy az alapértelmezett munkakönyvtárhoz viszonyítva kell lennie. Többtárolós alkalmazások esetén szükséges. |
+| **indítás – parancs** | Választható Adja meg az indítási parancsot. Pl.: DotNet-Futtatás vagy DotNet filename.dll |
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
 

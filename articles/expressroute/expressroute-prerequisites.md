@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569628"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204792"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute-előfeltételek és ellenőrzőlista
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, ellenőriznie kell az alábbi szakaszokban felsorolt követelmények teljesülését.
@@ -34,14 +34,14 @@ Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltat
 * **Útválasztás**: attól függően, hogy hogyan csatlakozik a Microsoft Cloudhoz, Ön vagy a szolgáltatónak be kell állítania és kezelnie kell a BGP-munkameneteket az [útválasztási tartományokhoz](expressroute-circuit-peerings.md). Egyes Ethernet-kapcsolati szolgáltatók vagy felhőalapú Exchange-szolgáltatók a BGP-felügyeletet is biztosíthatják értéknövelt szolgáltatásként.
 * **NAT**: A Microsoft csak nyilvános IP-címeket fogad el a Microsoft társviszony-létesítésen keresztül. Ha a helyszíni hálózatban magánhálózati IP-címeket használ, Önnek vagy a szolgáltatónak le kell fordítania a magánhálózati IP-címeket a nyilvános IP-címekre [a NAT használatával](expressroute-nat.md).
 * **QoS**: A Skype Vállalati verzió különböző szolgáltatásokat tartalmaz (például hang, videó, szöveg), amelyek különböző QoS-kezelést igényelnek. Önnek és a szolgáltatónak teljesítenie kell a [QoS-követelményeket](expressroute-qos.md).
-* **Hálózati biztonság**: fontolja meg a [hálózati biztonság](../best-practices-network-security.md) használatát, amikor ExpressRoute-on keresztül csatlakozik a Microsoft Cloudhoz.
+* **Hálózati biztonság**: fontolja meg a [hálózati biztonság](/azure/cloud-adoption-framework/reference/networking-vdc) használatát, amikor ExpressRoute-on keresztül csatlakozik a Microsoft Cloudhoz.
 
 ## <a name="microsoft-365"></a>Microsoft 365
 Ha azt tervezi, hogy engedélyezi Microsoft 365 a ExpressRoute-on, tekintse át a következő dokumentumokat a Microsoft 365 követelményeivel kapcsolatos további információkért.
 
 * [Microsoft 365 Azure-ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
 * [Útválasztás a Microsoft 365 ExpressRoute](/microsoft-365/enterprise/routing-with-expressroute)
-* [Magas rendelkezésre állás és feladatátvétel az ExpressRoute használatával](https://aka.ms/erhighavailability)
+* [Magas rendelkezésre állás és feladatátvétel az ExpressRoute használatával](/microsoft-365/enterprise/network-planning-with-expressroute)
 * [URL-címek és IP-címtartományok Microsoft 365](/microsoft-365/enterprise/urls-and-ip-address-ranges)
 * [Hálózati tervezés és a Microsoft 365 teljesítményének finomhangolása](/microsoft-365/enterprise/network-planning-and-performance)
 * [A Microsoft 365 hálózati és áttelepítési tervezése](/microsoft-365/enterprise/network-and-migration-planning)

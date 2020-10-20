@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb321aeeae1f0ef5aaadce22e228024895176143
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318092"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202650"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering-fiók létrehozása
 
@@ -101,7 +101,7 @@ A többi legördülő lista az első lépésben van kiválasztva.
 
 Ha mindhárom szerepkört hozzáadta, az Azure távoli renderelési fiókja a rendszerhez rendelt felügyelt szolgáltatás-identitások használatával fér hozzá a Storage-fiókhoz.
 > [!IMPORTANT]
-> Az Azure-beli szerepkör-hozzárendeléseket az Azure Storage gyorsítótárazza, így akár 30 percet is igénybe vehet, amikor hozzáférést biztosít a távoli renderelési fiókjához, és amikor hozzáfér a Storage-fiókhoz. A részletekért tekintse meg a [szerepkör alap hozzáférés-vezérlési dokumentációját](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) .
+> Az Azure-beli szerepkör-hozzárendeléseket az Azure Storage gyorsítótárazza, így akár 30 percet is igénybe vehet, amikor hozzáférést biztosít a távoli renderelési fiókjához, és amikor hozzáfér a Storage-fiókhoz. A részletekért tekintse meg a [szerepkör alap hozzáférés-vezérlési dokumentációját](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) .
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 838501bf4195c99c4d4ef7805fb8f4cba79e05d2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151871"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207291"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -493,7 +493,7 @@ Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, 
 **Útmutató:** Azure Automation teljes körű vezérlést biztosít az üzembe helyezés, a műveletek és a számítási feladatok és erőforrások leszerelése során. Előfizetés-rendszergazdaként a DevTest Labs szolgáltatásban üzemeltetett virtuális gépekre telepített összes szoftver azonosításához Change Tracking használható. A jogosulatlan szoftverek eltávolításához saját folyamatot alkalmazhat, vagy használhatja Azure Automation állapot konfigurációját.
 
 - [Bevezetés az Azure Automationbe](../automation/automation-intro.md)
-- [A környezet változásainak követése a Change Tracking megoldással](../automation/change-tracking.md)
+- [A környezet változásainak követése a Change Tracking megoldással](../automation/change-tracking/overview.md)
 - [Azure Automation állapot konfigurációjának áttekintése](../automation/automation-dsc-overview.md)
 
 **Azure Security Center figyelés:** Nem érhető el
@@ -581,7 +581,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 - [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 - [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
-- [Biztonsági javaslatok – útmutató](../security-center/recommendations-reference.md)
+- [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 
@@ -591,7 +591,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 **Útmutató:** A DevTest Labs részeként létrehozott összes mögöttes számítási erőforrás biztonsági konfigurációinak fenntartásához Azure Security Center ajánlásokat kell használnia. Emellett egyéni operációsrendszer-lemezképeket vagy Azure Automation állapot-konfigurációt vagy DevTest Labs-összetevőket is használhat a szervezete által igényelt operációs rendszer biztonsági konfigurációjának létrehozásához.
 
 - [Azure Security Center javaslatok figyelése](../security-center/security-center-recommendations.md)
-- [Biztonsági javaslatok – útmutató](../security-center/recommendations-reference.md)
+- [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 - [Azure Automation állapot konfigurációjának áttekintése](../automation/automation-dsc-overview.md)
 - [Virtuális merevlemez feltöltése és használata új Windows rendszerű virtuális gépek létrehozásához az Azure-ban](../virtual-machines/windows/upload-generalized-managed.md)
 - [Linuxos virtuális gép létrehozása egyéni lemezről az Azure CLI-vel](../virtual-machines/linux/upload-vhd.md)
@@ -828,7 +828,7 @@ Ha az Azure Disk Encryption szolgáltatást használja, visszaállíthatja az Az
 Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
-- [Címkék használata az erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés:** igen
 

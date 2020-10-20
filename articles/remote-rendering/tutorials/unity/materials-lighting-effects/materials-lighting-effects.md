@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021068"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203245"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Oktatóanyag: az anyagok, a világítás és a hatások finomítása
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A felhasználók számára a vizuális visszajelzések fontos részét képezik a felhasználói élménynek bármely alkalmazásban. Az Azure Remote rendering a [hierarchikus állapotú felülbírálások](../../../overview/features/override-hierarchical-state.md)révén vizuális visszajelzési mechanizmusokat biztosít. A hierarchikus állapot felülbírálásai a modellek helyi példányaihoz csatolt összetevőkkel vannak implementálva. Megtanultuk, hogyan hozhatja létre ezeket a helyi példányokat a [távoli objektum gráfjának az Unity-hierarchiába való szinkronizálásához](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy).
 
-Először hozzunk létre egy burkolót a [**HierarchicalStateOverrideComponent**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) összetevő köré. A **HierarchicalStateOverrideComponent** a helyi parancsfájl, amely a távoli entitás felülbírálásait vezérli. Az [**oktatóanyag eszközei**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) közé tartozik egy **BaseEntityOverrideController**nevű absztrakt alaposztály, amelyet a burkoló létrehozásához fogunk kiterjeszteni.
+Először hozzunk létre egy burkolót a [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) összetevő köré. A **HierarchicalStateOverrideComponent** a helyi parancsfájl, amely a távoli entitás felülbírálásait vezérli. Az [**oktatóanyag eszközei**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) közé tartozik egy **BaseEntityOverrideController**nevű absztrakt alaposztály, amelyet a burkoló létrehozásához fogunk kiterjeszteni.
 
 1. Hozzon létre egy **EntityOverrideController** nevű új parancsfájlt, és cserélje le a tartalmát a következő kódra:
 
@@ -928,7 +928,7 @@ Mivel csak a háló első anyagát módosítjuk, előfordulhat, hogy nem változ
 
 ![Anyag szerkesztése példa](./media/material-edit-example.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk! Ezzel végrehajtotta az Azure távoli renderelés összes alapvető funkcióját. A következő fejezetben megismerheti az Azure-beli távoli renderelés és a blob-tároló biztonságossá tételét. Ezek az első lépések az Azure távoli renderelést használó kereskedelmi alkalmazások kiadásához.
 

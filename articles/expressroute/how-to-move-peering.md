@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
-ms.openlocfilehash: 5671be5e54a9bb789e349a4da6d0f1809807d974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401418"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206288"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Váltáson nyilvános társviszony-létesítésről Microsoft-társviszony-létesítésre
 
@@ -31,7 +31,7 @@ A Microsoft-partneri kapcsolathoz való kapcsolódáshoz be kell állítania és
 > [!Warning]
 > A Microsoft számára hirdetett NAT IP-készlet nem hirdethető meg az interneten. Ez megszakítja a más Microsoft-szolgáltatások kapcsolatait.
 
-A Microsoft-társítás konfigurálása előtt tekintse meg a [több hálózati elérési úttal rendelkező aszimmetrikus útválasztást](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) .
+A Microsoft-társítás konfigurálása előtt tekintse meg a [több hálózati elérési úttal rendelkező aszimmetrikus útválasztást](./expressroute-asymmetric-routing.md) .
 
 * Ha nyilvános társítást használ, és jelenleg IP-hálózati szabályok érvényesek az [Azure Storage](../storage/common/storage-network-security.md) vagy a [Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md)ELÉRÉSére használt nyilvános IP-címekhez, meg kell győződnie arról, hogy a Microsoft-TÁRSÍTÁSSAL konfigurált NAT IP-címkészlet szerepel az Azure Storage-fiók vagy az Azure SQL-FIÓKHOZ tartozó nyilvános IP-címek listáján.<br>
 * Ha a Microsoft-társat leállás nélkül szeretné áthelyezni, a jelen cikkben ismertetett lépéseket követve hozhatja meg.

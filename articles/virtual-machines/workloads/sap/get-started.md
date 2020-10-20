@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/05/2020
+ms.date: 10/19/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4a21300872e98a35ea27835385b4045921f4657
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ea5d291f372485da714104eaa7df19ed3a153423
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969568"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206186"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -82,6 +82,8 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja az SSO-t a legtöbb SA
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 10/16/2020: változás az Azure-beli virtuális gépeken az Azure-beli [virtuális gépeken a SLES és a pacemaker](./dbms-guide-ha-ibm.md)szolgáltatással, ha az SAP NW Azure-beli [virtuális gépeken a RHEL for SAP Applications](./high-availability-guide-rhel.md), [Ha az IBM DB2 LUW a RHEL](./high-availability-guide-rhel-ibm-db2-luw.md) [-on](./high-availability-guide-rhel-netapp-files.md)futó Azure [-](./high-availability-guide-rhel-multi-sid.md)beli virtuális gépeken ha az SAP NW-t Azure-beli [virtuális gépeken SLES for SAP-alkalmazásokhoz](./high-availability-guide-suse.md), [az](./sap-hana-high-availability.md)Azure- [beli virtuális gépeken futó SAP-ra épülő SLES multi-SID útmutatójában,](./high-availability-guide-suse-multi-sid.md)ha az Azure-beli virtuális gépeken futó SAP NW-t a [ANF for SAP-alkalmazásokhoz,](./high-availability-guide-suse-netapp-files.md)ha az Azure-beli virtuális gépeken, a SLES-on [,](./sap-hana-high-availability-netapp-files-red-hat.md) a SLES SAP HANA SAP HANA [HA for NFS on Azure VMs on SLES](./high-availability-guide-suse-nfs.md) , [HA SAP HANA Azure-beli virtuális gépeken a RHEL-on](./sap-hana-high-availability-rhel.md), [SAP HANA Azure-beli virtuális gépeken futó HSR-kibővíthető RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), [előkészítheti az Azure-infrastruktúrát az SAP ASCS/SCS és a WSFC, valamint a megosztott lemezzel](./sap-high-availability-infrastructure-wsfc-shared-disk.md), több biztonsági azonosítóval [ellátott](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) útmutató az SAP ASCS/SCS és a [WSFC és az Azure Shared](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) Disk szolgáltatáshoz  
+- 10/15/2020: a SAP BusinessObjects BI platform kiadása az Azure dokumentációjában, [SAP BUSINESSOBJECTS bi platform tervezési és megvalósítási útmutató az Azure](businessobjects-deployment-guide.md) -ban és az [SAP BusinessObjects bi platform üzembe helyezési útmutatója az Azure-beli Linux rendszerhez](businessobjects-deployment-guide-linux.md)
 - 10/05/2020: a RHEL-konfigurációs útmutatóban az Azure-beli [virtuális gépeken lévő pacemakerrel rendelkező SAP HANA kibővíthető HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) kiadása
 - 09/30/2020: a [SAP HANA magas rendelkezésre állásának](./sap-hana-high-availability-rhel.md)megváltozása az Azure-beli virtuális gépeken a RHEL-on, [Ha SAP HANA FELSKÁLÁZÁS a RHEL ANF](./sap-hana-high-availability-netapp-files-red-hat.md) és a [pacemaker beállítása az Azure](./high-availability-guide-rhel-pacemaker.md) -beli RHEL a RHEL 8,1-re vonatkozó utasítások módosításához
 - 09/29/2020: korlátozásokat és javaslatokat tesz a PPG használatáról az Azure-beli [Proximity-elhelyezési csoportok optimális hálózati késéséhez SAP-alkalmazásokkal](./sap-proximity-placement-scenarios.md) . 

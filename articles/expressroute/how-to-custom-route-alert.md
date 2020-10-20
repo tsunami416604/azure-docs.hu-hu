@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b812a727a555f8c4c95389f2ba0cc5ccea2f608a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766675"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205559"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
 
@@ -42,7 +42,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 * Már ismeri a [Azure Logic apps](../logic-apps/logic-apps-overview.md).
 
-* Ismeri a Azure PowerShell használatát. A hálózati előtagok ExpressRoute-átjárón való összegyűjtéséhez Azure PowerShell szükséges. Az általános Azure PowerShellről a [Azure PowerShell dokumentációjában](https://docs.microsoft.com/powershell/azure/?view=azps-4.1.0)talál további információt.
+* Ismeri a Azure PowerShell használatát. A hálózati előtagok ExpressRoute-átjárón való összegyűjtéséhez Azure PowerShell szükséges. Az általános Azure PowerShellről a [Azure PowerShell dokumentációjában](/powershell/azure/?view=azps-4.1.0)talál további információt.
 
 ### <a name="notes-and-limitations"></a><a name="limitations"></a>Megjegyzések és korlátozások
 
@@ -257,7 +257,7 @@ A PowerShell-parancsfájl futtatásakor a rendszer összegyűjti az értékek li
 
 * Riasztási üzenet az állapot részletes leírásához (OK, riasztás, figyelmeztetés)
 
-A PowerShell-parancsfájl egy JSON-kimenetre konvertálja az összegyűjtött adatokat. A runbook a [Write-output PowerShell-](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)  parancsmagot használja kimeneti adatfolyamként az információknak az ügyfél felé való továbbításához.
+A PowerShell-parancsfájl egy JSON-kimenetre konvertálja az összegyűjtött adatokat. A runbook a [Write-output PowerShell-](/powershell/module/Microsoft.PowerShell.Utility/Write-Output)  parancsmagot használja kimeneti adatfolyamként az információknak az ügyfél felé való továbbításához.
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4. a runbook ellenőrzése
 

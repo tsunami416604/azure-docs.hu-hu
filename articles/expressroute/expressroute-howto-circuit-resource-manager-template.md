@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
-ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566177"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202055"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>ExpressRoute-kör létrehozása Azure Resource Manager sablon használatával
 
@@ -25,7 +25,7 @@ ms.locfileid: "89566177"
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
 
-Megtudhatja, hogyan hozhat létre ExpressRoute áramkört egy Azure Resource Manager-sablonnak a Azure PowerShell használatával történő telepítésével. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablonra vonatkozó referenciát](/azure/templates/microsoft.network/expressroutecircuits).
+Megtudhatja, hogyan hozhat létre ExpressRoute áramkört egy Azure Resource Manager-sablonnak a Azure PowerShell használatával történő telepítésével. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](../azure-resource-manager/index.yml) és a [sablonra vonatkozó referenciát](/azure/templates/microsoft.network/expressroutecircuits).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
