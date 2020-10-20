@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: b44e15e4592de5e874ee50ebd390940e8ab16a22
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 2a62cae025be05a8f5a6ef4407737ab8da36a951
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92158039"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92210776"
 ---
 ## <a name="configure-the-sample-project"></a>A minta projekt konfigurálása
 
@@ -22,12 +22,10 @@ A mappa belsejében navigáljon a _AdtSampleApp_. Nyissa meg a _**AdtE2ESample. 
 
 A Visual Studióban a *megoldáskezelő* ablaktáblán hozza létre a _SampleClientApp >serviceConfig.jsmásolatát **. SABLONFÁJL** _ (a másoláshoz és a beillesztéshez használhatja a jobb gombbal kiválasztható menüket). Nevezze át a *serviceConfig.js*másolását. Ez egy előre beállított JSON-fájlként fog szolgálni a projekt futtatásához szükséges konfigurációs változók használatával.
 
-Válassza ki a fájl *serviceConfig.jsét* , és nyissa meg a szerkesztési ablakban. Módosítsa az `tenantId` azonosítót a *címtár-azonosítóra*, az `clientId` alkalmazás- *azonosítóra*, valamint az `instanceUrl` Azure Digital Twins instance *hostName* URL-címére (a *https://* az alább látható módon).
+Válassza ki a fájl *serviceConfig.jsét* , és nyissa meg a szerkesztési ablakban. Módosítsa az `instanceUrl` Azure-beli digitális Twins-példány *állomásnév* -URL-címét (a *https://* az alább látható módon).
 
 ```json
 {
-  "tenantId": "<your-directory-ID>",
-  "clientId": "<your-application-ID>",
   "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
 }
 ```

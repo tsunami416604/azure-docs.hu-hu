@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 71760e9b54ff3a520f0784ecda4484bb3ea047e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4513a1997dc2955e1c5488a4a3740afa88f51623
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88892660"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207274"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Gyors útmutató: natív C++ minta üzembe helyezése a HoloLens-ben
 
 Ez a rövid útmutató ismerteti, hogyan telepítheti és futtathatja a natív C++ oktatóanyag-alkalmazást egy HoloLens 2 rendszeren.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan végezheti el a következőket:
+E gyorsútmutató segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 >
@@ -32,7 +32,7 @@ A következő szoftvereket kell telepíteni:
 
 * Windows SDK 10.0.18362.0 [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * A Visual Studio 2019 legújabb verziója [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Visual Studio-eszközök vegyes valósághoz](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). A következő számítási *feladatok* telepítése kötelező:
+* [Visual Studio-eszközök vegyes valósághoz](/windows/mixed-reality/install-the-tools). A következő számítási *feladatok* telepítése kötelező:
   * **Asztali fejlesztés C++ nyelven**
   * **Univerzális Windows-platform (UWP) fejlesztése**
 * GIT [(letöltés)](https://git-scm.com/downloads)
@@ -87,15 +87,15 @@ Az alkalmazás most már lefordítható.
 
 ## <a name="launch-the-application"></a>Az alkalmazás indítása
 
-1. Csatlakoztassa a HoloLens USB-kábellel a számítógéphez.
+1. Csatlakoztassa a HoloLenst a számítógépéhez egy USB-kábellel.
 1. Kapcsolja be a HoloLens, és várjon, amíg megjelenik a Start menü.
-1. Indítsa el a hibakeresőt a Visual Studióban (F5). A rendszer automatikusan telepíti az alkalmazást az eszközre.
+1. Indítsa el a hibakeresőt a Visual Studióban (F5). Az alkalmazás automatikusan üzembe lesz helyezve az eszközön.
 
 A minta alkalmazásnak el kell indulnia, és egy szöveges panelnek kell megjelennie, amely tájékoztatja Önt az aktuális alkalmazás állapotáról. Az állapot indítási időpontban egy új munkamenet indítása vagy egy meglévő munkamenethez való csatlakozás. A modell betöltésének befejezése után a beépített motor modell közvetlenül a feje pozíciójában jelenik meg. A motor modellje a megfelelő működést is lehetővé teszi a helyileg megjelenített forgó adatkockával.
 
  Ha később el szeretné indítani a mintát, azt a HoloLens Start menüjéből is megtalálhatja, de előfordulhat, hogy egy lejárt munkamenet-AZONOSÍTÓval van lefordítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a rövid útmutató egy olyan oktatóanyag eredményein alapul, amely elmagyarázza, hogyan integrálható a távoli rendereléssel kapcsolatos összes darab egy készlet *holografikus alkalmazásba*. A szükséges lépések elsajátításához kövesse az alábbi oktatóanyagot:
 

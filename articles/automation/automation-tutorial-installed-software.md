@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: cad92ef376a14805049772cd0bfdbac04309f6c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c083f4576e123ea14d837ed3915c56d18d84623
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185823"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207563"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>A virtuális gépeken telepített szoftverek felderítése
 
@@ -137,7 +137,7 @@ ConfigurationData
 | summarize by Publisher, SoftwareName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg a szoftverek leltározását:
 
@@ -151,4 +151,4 @@ Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg a szoftverek leltáro
 További információ a Change Tracking és a leltár funkció áttekintésében olvasható.
 
 > [!div class="nextstepaction"]
-> [A Change Tracking és a leltár áttekintése](change-tracking.md)
+> [A Change Tracking és a leltár áttekintése](change-tracking/overview.md)

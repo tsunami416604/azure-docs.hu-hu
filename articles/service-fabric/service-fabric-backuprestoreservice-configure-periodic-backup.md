@@ -3,12 +3,12 @@ title: Rendszeres biztonsági mentési konfiguráció ismertetése
 description: Az Service Fabric rendszeres biztonsági mentési és visszaállítási funkciójának használatával konfigurálhatja a megbízható állapot-nyilvántartó szolgáltatások vagy Reliable Actors rendszeres biztonsági mentését.
 ms.topic: article
 ms.date: 2/01/2019
-ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633b13104ecc1697685f49a42b2a9c76b43b81d0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538619"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205693"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése
 
@@ -23,6 +23,9 @@ A megbízható állapot-nyilvántartó szolgáltatások vagy Reliable Actors ren
 A biztonsági mentési szabályzat a következő konfigurációkból áll:
 
 * **Automatikus visszaállítás adatvesztés**esetén: Megadja, hogy a rendszer automatikusan aktiválja-e a visszaállítást a legújabb elérhető biztonsági mentéssel, ha a partíció adatvesztési eseményt használ.
+> [!NOTE]
+> Azt javasoljuk, hogy ne állítson be automatikus visszaállítást üzemi fürtökben
+>
 
 * **Növekményes biztonsági mentések**maximális száma: meghatározza a két teljes biztonsági mentés közötti növekményes biztonsági mentések maximális számát. A növekményes biztonsági mentések maximális száma a felső korlátot határozza meg. A megadott számú növekményes biztonsági mentések a következő feltételek egyike után teljes biztonsági mentést végezhetnek.
 
@@ -86,6 +89,9 @@ A biztonsági mentési szabályzat a következő konfigurációkból áll:
             "ContainerName": "BackupContainer"
         }
         ```
+> [!NOTE]
+> A biztonsági mentési visszaállítási szolgáltatás nem működik a v1 Azure Storage-ban
+>
 
     2. **Fájlmegosztás**: ezt a tárolási típust _különálló_ fürtökhöz kell kiválasztani, ha az adatbiztonsági mentést a helyszínen kell tárolni. A tárolási típus leírásához meg kell adni a fájlmegosztás elérési útját, ahol a biztonsági másolatokat fel kell tölteni. A fájlmegosztás elérését az alábbi lehetőségek egyikével konfigurálhatja
         1. _Integrált Windows-hitelesítés_, ahol a fájlmegosztás elérését a Service Fabric fürthöz tartozó összes számítógép számára biztosítjuk. Ebben az esetben állítsa be a következő mezőket a _fájlmegosztás_ alapú biztonsági mentési tár konfigurálásához.
@@ -129,6 +135,10 @@ A biztonsági mentési szabályzat a következő konfigurációkból áll:
 
 ## <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
 Miután meghatározta a biztonsági mentési szabályzatot az adatbiztonsági mentési követelmények teljesítése érdekében, a biztonsági mentési szabályzatnak megfelelő módon kell társítania egy _alkalmazást_vagy _szolgáltatást_, vagy egy _partíciót_.
+
+> [!NOTE]
+> A biztonsági mentés engedélyezése előtt győződjön meg arról, hogy a folyamatban lévő alkalmazások frissítése nem történt meg
+>
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>A biztonsági mentési szabályzat hierarchikus propagálása
 Service Fabric az alkalmazás, a szolgáltatás és a partíciók közötti kapcsolat hierarchikus az [alkalmazás modelljében](./service-fabric-application-model.md)leírtak szerint. A biztonsági mentési szabályzat egy _alkalmazással_, _szolgáltatással_vagy a hierarchiában található _partícióval_ is társítható. A biztonsági mentési szabályzat hierarchikusan propagálja a következő szintre. Feltéve, hogy csak egy biztonsági mentési szabályzatot hozott létre és társít egy _alkalmazáshoz_, az összes _megbízható állapot-nyilvántartó szolgáltatáshoz_ és az alkalmazás _Reliable Actors_ tartozó összes _application_ állapot-nyilvántartó partíciót a biztonsági mentési szabályzattal kell elkészíteni. Ha a biztonsági mentési szabályzat _megbízható állapot-nyilvántartó szolgáltatáshoz_van társítva, a biztonsági mentési szabályzattal minden partíciója biztonsági mentésre kerül.
@@ -186,6 +196,9 @@ A biztonsági mentési szabályzatok letilthatók, ha nincs szükség az adatbiz
         "CleanBackup": true 
     }
     ```
+> [!NOTE]
+> Győződjön meg arról, hogy a biztonsági mentés letiltása előtt nincsenek folyamatban az alkalmazások frissítése
+>
 
 ## <a name="suspend--resume-backup"></a>Felfüggesztés & biztonsági mentés folytatása
 Bizonyos helyzetek ideiglenes felfüggesztést igényelhetnek az adatmennyiség rendszeres biztonsági mentéséről. Ilyen helyzetekben a követelménytől függően a backup API felfüggesztése egy _alkalmazáson_, _szolgáltatáson_vagy _partíción_is felhasználható. A biztonsági mentés rendszeres felfüggesztése az alkalmazás hierarchiájának az alkalmazott pontról való átjárása. 
@@ -213,6 +226,10 @@ Bár a Letiltás csak olyan szinten hívható meg, amely korábban engedélyezve
 A szolgáltatás partíciója nem várt hibák miatt elveszítheti az adatvesztést. Például a partíciók három másodpéldánya (beleértve az elsődleges replikát is) esetében a lemez megsérül vagy törölve lesz.
 
 Ha Service Fabric észleli, hogy a partíció adatvesztésben van, meghívja a `OnDataLossAsync` csatoló metódust a partíción, és elvárja, hogy a partíció elvégezze az adatvesztést. Ebben az esetben, ha a partíción a tényleges biztonsági mentési házirendben a `AutoRestoreOnDataLoss` jelző van beállítva, `true` akkor a visszaállítás automatikusan aktiválódik a partíció legújabb elérhető biztonsági másolatának használatával.
+
+> [!NOTE]
+> Azt javasoljuk, hogy ne állítson be automatikus visszaállítást üzemi fürtökben
+>
 
 ## <a name="get-backup-configuration"></a>Biztonsági mentési konfiguráció beolvasása
 Az _alkalmazások_, _szolgáltatások_és _partíciók_ hatókörében külön API-k érhetők el a biztonsági mentési konfigurációs információk lekéréséhez. Az [alkalmazás biztonsági mentési konfigurációs adatainak](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)beszerzése, a [szolgáltatás biztonsági mentési konfigurációs adatainak](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)beolvasása, valamint a [partíció biztonsági mentési konfigurációs adatainak](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) beolvasása ezen API-k Ezek az API-k elsősorban a megfelelő biztonsági mentési szabályzatot, a biztonsági mentési szabályzat hatálya alá eső hatókört és a biztonsági mentési felfüggesztés részleteit adják vissza. Az alábbi rövid leírás az API-k visszaadott eredményeiről szól.

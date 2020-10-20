@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5335442c7ffcdca950ba0e9c5f3b6bc9e4be9f63
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108150"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206452"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Számlázási adatok feltöltése az Azure-ba, és megtekintés a Azure Portal
 
@@ -117,7 +117,7 @@ A következő lépésekkel tekintheti meg a számlázási adatAzure Portalt:
 1. A nézet tetején kattintson a **Cost by Resource (erőforrás-ellenőrzés** ) gombra.
 1. Győződjön meg arról, hogy a hatóköre arra az előfizetésre van beállítva, amelyben az adatszolgáltatási erőforrásokat létrehozták.
 1. A nézet felső részén a hatókör-választó melletti legördülő listában válassza a **Cost by Resource (erőforrás-erőforrások** ) lehetőséget.
-1. Győződjön meg arról, hogy a Dátum szűrő az **adott hónapra** van beállítva, vagy egy másik időtartomány, amely az adatszolgáltatási erőforrások létrehozásának időpontját adja meg.
+1. Győződjön meg arról, hogy a Dátum szűrő az adott hónapra van beállítva, vagy egy másik időtartomány, amely az adatszolgáltatási erőforrások létrehozásakor **megjelenő** időzítést biztosítja.
 1. Kattintson a **szűrő hozzáadása** lehetőségre, ha **erőforrás-típussal** szeretne szűrőt felvenni,  =  `microsoft.azuredata/<data service type>` Ha csak egy Azure arc-kompatibilis adatszolgáltatásra kíván szűrni.
 1. Ekkor megjelenik a létrehozott és az Azure-ba feltöltött összes erőforrás listája. Mivel a számlázási mérőszám $0, látni fogja, hogy a Cost mindig $0.
 
@@ -135,11 +135,11 @@ A számlázási exportálási feladatok létrehozásával rendszeres időközön
 
 Az alábbi lépéseket követve állíthatja be a számlázási exportálási feladatokat:
 
-1. Kattintson a bal oldali exportálás elemre.
-1. Kattintson az Add (Hozzáadás) parancsra.
+1. Kattintson a bal oldali **Exportálás** elemre.
+1. Kattintson a **Hozzáadás** parancsra.
 1. Adja meg a név és az Exportálás gyakoriságát, majd kattintson a Tovább gombra.
-1. Válasszon új Storage-fiókot, vagy hozzon létre egy újat, és töltse ki az űrlapot a számlázási adatfájlok exportálásához a Storage-fiók, a tároló és a könyvtár elérési útjának megadásához, és kattintson a Tovább gombra.
-1. Kattintson a Létrehozás gombra.
+1. Hozzon létre egy új Storage-fiókot, vagy használjon egy meglévőt, és töltse ki az űrlapot a számlázási adatfájlok exportálásához a Storage-fiók, a tároló és a könyvtár elérési útjának megadásához, és kattintson a Tovább gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 A számlázási adatok exportálási fájljai körülbelül 4 órán belül elérhetők lesznek, és a számlázási exportálási feladatok létrehozásakor megadott ütemterv szerint lesznek exportálva.
 
@@ -156,7 +156,7 @@ A Azure Portalban ellenőrizheti a számlázási adatfájlokat.
 5. Kattintson arra a tárolóra, amelyet a fenti számlázási exportálási feladatok létrehozásakor adott meg.
 6. Kattintson arra a mappára, amelyet a fenti számlázási exportálási feladatok létrehozásakor adott meg.
 7. Bontsa ki a létrehozott mappákat és fájlokat, majd kattintson az egyik létrehozott. csv fájlra.
-8. Kattintson a letöltés gombra, amely menti a fájlt a helyi letöltések mappájába.
+8. Kattintson a **Letöltés** gombra, amely menti a fájlt a helyi letöltések mappájába.
 9. Nyissa meg a fájlt egy. csv-fájl megjelenítővel, például az Excel használatával.
 10. Szűrje az eredményeket úgy, hogy csak az **Erőforrás típusú**sorok jelenjenek meg  =  `Microsoft.AzureData/<data service resource type` .
 11. Látni fogja, hogy hány óra elteltével használták a rendszer a példányt a UsageQuantity oszlop aktuális 24 órában.

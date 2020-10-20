@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: df03fc3049deaf5ce57fda74ca98c748ace1fbbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce076da08a7c31d7e2637dd5b8b29c9202ea10e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935243"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206407"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Azure-felügyelet a Virtual Machines szolgáltatásban – ajánlott eljárások
 
@@ -32,7 +32,7 @@ Az összes szolgáltatás esetében automatikus bevezetést, automatikus konfigu
 |Azure Security Center    |Azure Security Center egy egységes infrastruktúra-alapú biztonsági felügyeleti rendszer, amely erősíti az adatközpontok biztonsági állapotát, és komplex veszélyforrások elleni védelmet biztosít a felhőben futó hibrid számítási feladatokhoz. [További](../security-center/security-center-intro.md)információ.  Az automanage Beállítja azt az előfizetést, amelyben a virtuális gép a Azure Security Center ingyenes szintű ajánlatában található. Ha az előfizetése már be van Azure Security Centerba, az automatikusan felügyelt nem konfigurálja újra.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |
 |Microsoft Antimalware    |Az Azure-hoz készült Microsoft antimalware egy ingyenes valós idejű védelem, amely segít a vírusok, kémprogramok és más kártevő szoftverek azonosításában és eltávolításában. Riasztásokat állít elő, amikor az ismert kártékony vagy nemkívánatos szoftverek megkísérlik telepíteni vagy futtatni magukat az Azure-rendszereken. [További](../security/fundamentals/antimalware.md)információ. |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Igen    |
 |Frissítéskezelés    |A virtuális gépek operációs rendszerének frissítéseinek kezeléséhez Azure Automation Update Management is használhatja. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát. [További](../automation/update-management/update-mgmt-overview.md)információ.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |
-|Change Tracking & leltár    |A Change Tracking és a leltár ötvözi a Change Tracking and Inventory függvényeket, így nyomon követheti a virtuális gépek és a kiszolgálói infrastruktúra változásait. A szolgáltatás támogatja a változások nyomon követését a környezetekben, a Daemon-szoftvereket, a beállításjegyzéket és az adott környezetben található fájlokat, így segít a nemkívánatos módosítások diagnosztizálásában és a riasztások felemelésében. A leltár-támogatás lehetővé teszi a vendég erőforrásainak lekérdezését a telepített alkalmazások és egyéb konfigurációs elemek láthatóságának érdekében.  [További](../automation/change-tracking.md)információ.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |
+|Change Tracking & leltár    |A Change Tracking és a leltár ötvözi a Change Tracking and Inventory függvényeket, így nyomon követheti a virtuális gépek és a kiszolgálói infrastruktúra változásait. A szolgáltatás támogatja a változások nyomon követését a környezetekben, a Daemon-szoftvereket, a beállításjegyzéket és az adott környezetben található fájlokat, így segít a nemkívánatos módosítások diagnosztizálásában és a riasztások felemelésében. A leltár-támogatás lehetővé teszi a vendég erőforrásainak lekérdezését a telepített alkalmazások és egyéb konfigurációs elemek láthatóságának érdekében.  [További](../automation/change-tracking/overview.md)információ.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |
 |Azure Automation-fiók    |Azure Automation támogatja a felügyeletet az infrastruktúra és az alkalmazások életciklusa során. [További](../automation/automation-intro.md)információ.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |
 |Log Analytics-munkaterület    |A Azure Monitor egy Log Analytics-munkaterületen tárolja a napló adatokat, amely egy Azure-erőforrás, valamint egy olyan tároló, amelybe az adatok gyűjtése, összesítése és felügyeleti határként szolgál. [További](../azure-monitor/platform/design-logs-deployment.md)információ.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |
 

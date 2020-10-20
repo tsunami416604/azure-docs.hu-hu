@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 194b0122987d4fdc5d100112c60006588d28f96c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac5fad51137cd08f2498db132768263a770430d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826918"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203874"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>A Azure Key Vault újdonságai
 
@@ -37,7 +37,7 @@ A Microsoft frissíti az Azure-szolgáltatásokat, hogy TLS-tanúsítványokat h
 
 - A [Azure Active Directory](/azure/active-directory) (Azure ad) szolgáltatások a 2020. július 7-én kezdték el ezt az áttérést.
 - Minden újonnan létrehozott Azure TLS/SSL-végpont frissített tanúsítványokat tartalmaz az új legfelső szintű hitelesítésszolgáltatókhoz.
-- A meglévő Azure-végpontok fokozatosan, 2020-ig, a 2020-es és a-es időszakra kezdődően, fokozatos módon alakulnak.
+- A meglévő Azure-végpontok a 2020. augusztus 13-án kezdődő fázisokban lesznek áttérni.
 - Az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub) és a [DPS](/azure/iot-dps/) továbbra is a Baltimore CYBERTRUST legfelső szintű hitelesítésszolgáltatóján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. A részletekért tekintse meg a következő témakört: blob post [Azure IOT TLS: változások jönnek! (... és miért érdeklik)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 - Az [Azure Storage](/azure/storage) továbbra is a Baltimore CyberTrust legfelső szintű hitelesítésszolgáltatóján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. A részletekért tekintse meg a blob post [Azure Storage TLS-t: változások jönnek! (... és miért érdeklik)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 
@@ -129,7 +129,7 @@ Ebben az évben megjelent új funkciók és integrációk:
 Az idei évben megjelent új funkciók:
 
 - Felügyelt Storage-fiókok kulcsai. A Storage-fiók kulcsainak funkció az Azure Storage-nal való egyszerűbb integrációt teszi ki. További információért tekintse meg az Áttekintés témakört, amely a [felügyelt Storage-fiókok kulcsairól nyújt áttekintést](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys).
-- Helyreállítható törlés. A Soft-delete funkció javítja a kulcstartók és a Key Vault-objektumok adatvédelmi védelmét. További információért lásd az áttekintést [ismertető témakört.](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+- Áltörlés. A Soft-delete funkció javítja a kulcstartók és a Key Vault-objektumok adatvédelmi védelmét. További információért lásd az áttekintést [ismertető témakört.](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
 
 ## <a name="2015"></a>2015
 
@@ -161,6 +161,6 @@ A második előzetes verzió (2015-02-01-es verzió – előzetes verzió) bejel
  
 Az első előzetes verzió (2014-12-08-es verzió – előzetes verzió) a 2015. január 8-án jelent meg.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további kérdése van, vegye fel velünk a kapcsolatot az [ügyfélszolgálaton](https://azure.microsoft.com/support/options/)keresztül.  

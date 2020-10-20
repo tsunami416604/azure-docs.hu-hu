@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 10/02/2020
-ms.openlocfilehash: 365d38eedd327bb50bbbea01a6847738c482b1bd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d214a746a4eb5035e007136da80f4c69ae1dd1c8
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091185"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204461"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -306,20 +306,20 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
  
 * **NameError (név nincs meghatározva), AttributeError (objektum nem rendelkezik attribútummal)**: Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure Portalból tekintheti meg, ha további információt szeretne kapni a nem definiált névvel vagy az attribútum hibával kapcsolatban. Az SDK segítségével `run.get_details()` megtekintheti a hibaüzenetet. Ekkor a rendszer a futtatáshoz létrehozott összes naplófájlt is felsorolja. Győződjön meg arról, hogy megtekinti a betanítási szkriptet, és javítsa ki a hibát, mielőtt elküldené a futtatást. 
 
-* A **Horovod le lett**állítva: a legtöbb esetben, ha "AbortedError: Horovod" állapotba került, akkor ez a kivétel azt jelenti, hogy a Horovod leállítását okozó egyik folyamat egy mögöttes kivételt észlelt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs` . Elosztott képzés esetén a naplók neve utótaggal van ellátva, `_rank` hogy könnyebben megkülönböztesse a naplókat. A Horovod leállítását okozó pontos hiba megtalálásához folytassa az összes naplófájlt, és keresse meg a `Traceback` driver_log fájlok végén található fájlt. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
+* A **Horovod le lett**állítva: a legtöbb esetben, ha "AbortedError: Horovod" állapotba került, akkor ez a kivétel azt jelenti, hogy a Horovod leállítását okozó egyik folyamat egy mögöttes kivételt észlelt. Az MPI-feladat mindegyik rangsora saját dedikált naplófájllal fog rendelkezni az Azure ML-ben. Ezen naplók neve `70_driver_logs`. Elosztott betanítás esetén a naplók neve a `_rank` utótaggal egészül ki, hogy könnyebben meg tudja őket különböztetni. A Horovod leállítását okozó pontos hiba megtalálásához folytassa az összes naplófájlt, és keresse meg a `Traceback` driver_log fájlok végén található fájlt. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
 
 * A **Run vagy a Experiment művelet törlése**: a kísérletek a [kísérlet. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) metódussal vagy a Azure Machine learning Studio-ügyfél kísérlet lapjának az "Archive Experiment" gomb használatával is archiválható. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
 
     Az egyes kísérletek vagy futtatások végleges törlése jelenleg nem támogatott. További információ a munkaterület-eszközök törléséről: [Machine learning szolgáltatás-munkaterület adatainak exportálása vagy törlése](how-to-export-delete-data.md).
 
-* A **metrikai dokumentum túl nagy**: a Azure Machine learning belső korláttal rendelkezik azon metrikai objektumok méretén, amelyek bejelentkezhetnek a betanítási futtatás során. Ha a "metrikus dokumentum túl nagy" hibaüzenet jelenik meg egy lista értékű metrika naplózásakor, próbálja meg a lista felosztása kisebb adattömbökre, például:
+* A **metrikai dokumentum túl nagy**: a Azure Machine learning belső korláttal rendelkezik azon metrikai objektumok méretén, amelyek bejelentkezhetnek a betanítási futtatás során. Ha „a metrikadokumentum túl nagy” hibát észlel egy értéklistát tartalmazó metrika naplózásakor, próbálja meg felosztani a listát kisebb tömbökre, például:
 
     ```python
     run.log_list("my metric name", my_metric[:N])
     run.log_list("my metric name", my_metric[N:])
     ```
 
-    Belsőleg az Azure ML ugyanazzal a metrikai névvel összefűzi a blokkokat egy összefüggő listához.
+    Az Azure ML belsőleg egy összefüggő listává fűzi össze az ugyanazzal a metrikanévvel rendelkező tömböket.
 
 ## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
@@ -365,7 +365,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
 * **automl_setup sikertelen**: 
-    * Windows rendszeren futtasson automl_setup egy Anaconda-parancssorból. A Miniconda telepítéséhez kattintson [ide](https://docs.conda.io/en/latest/miniconda.html).
+    * Windows rendszeren futtasson automl_setup egy Anaconda-parancssorból. Ezzel a hivatkozással [telepítheti a Miniconda](https://docs.conda.io/en/latest/miniconda.html).
     * A parancs futtatásával győződjön meg arról, hogy a 64 bites Conda telepítve van, és nem 32 bites `conda info` . A legyen `platform` `win-64` Windows vagy Mac rendszerű `osx-64` .
     * Győződjön meg arról, hogy a Conda 4.4.10 vagy újabb verziója telepítve van. A verziót a paranccsal lehet megtekinteni `conda -V` . Ha telepítve van egy korábbi verziója, a paranccsal frissítheti a parancsot: `conda update conda` .
     * Linux `gcc: error trying to exec 'cc1plus'`
@@ -373,17 +373,17 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
       * Új Conda-környezet létrehozásához adjon meg egy új nevet az első paraméterként automl_setup. Megtekintheti a meglévő Conda-környezeteket `conda env list` , és eltávolíthatja őket a használatával `conda env remove -n <environmentname>` .
       
 * a **automl_setup_linux. sh sikertelen**: ha a automl_setup_linus. sh sikertelen Ubuntu Linux a következő hibával:`unable to execute 'gcc': No such file or directory`-
-  1. Győződjön meg arról, hogy a 53-es és a 80-es kimenő portok engedélyezve vannak. Egy Azure-beli virtuális gépen ezt megteheti az Azure Portalon, ha kiválasztja a virtuális gépet, majd a hálózat lehetőségre kattint.
+  1. Győződjön meg arról, hogy a 53-es és a 80-es kimenő portok engedélyezve vannak. Egy Azure-beli virtuális gépen ezt elvégezheti a Azure Portal a virtuális gép kiválasztásával, majd a hálózatkezelés elemre kattintva.
   2. Futtassa a parancsot: `sudo apt-get update`
   3. Futtassa a parancsot: `sudo apt-get install build-essential --fix-missing`
   4. Futtatás `automl_setup_linux.sh` újra
 
 * a **Configuration. ipynb sikertelen**:
   * A helyi Conda esetében először győződjön meg arról, hogy a automl_setup sikeresen futott.
-  * Győződjön meg arról, hogy a subscription_id helyes. Keresse meg az subscription_id az Azure Portalon a minden szolgáltatás, majd az előfizetések lehetőség kiválasztásával. A (z) "<" és a ">" karakterek nem szerepelhetnek a subscription_id értékben. Például `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` érvényes a formátuma.
+  * Győződjön meg arról, hogy a subscription_id helyes. Keresse meg a subscription_id a Azure Portal a minden szolgáltatás, majd az előfizetések lehetőség kiválasztásával. A (z) "<" és a ">" karakterek nem szerepelhetnek a subscription_id értékben. Például `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` érvényes a formátuma.
   * Győződjön meg arról, hogy a közreműködő vagy a tulajdonos hozzáférése van az előfizetéshez.
   * Győződjön meg arról, hogy a régió a támogatott régiók egyike:,,,,,, `eastus2` `eastus` `westcentralus` `southeastasia` `westeurope` `australiaeast` `westus2` , `southcentralus` .
-  * Győződjön meg arról, hogy az Azure Portalon keresztül férhet hozzá a régióhoz.
+  * A Azure Portal használatával győződjön meg arról, hogy a régióhoz fér hozzá.
   
 * **sikertelen volt az importálás AutoMLConfig**: a Machine learning 1.0.76-verziójában módosult a csomag, amely az új verzióra való frissítés előtt el kell távolítani a korábbi verziót. Ha a `ImportError: cannot import name AutoMLConfig` rendszer a v 1.0.76 v 1.0.76 vagy újabb verzióra történő frissítés után észlelt, hárítsa el a hibát a következő parancs futtatásával: `pip uninstall azureml-train automl` és `pip install azureml-train-auotml` . A automl_setup. cmd parancsfájl ezt automatikusan elvégzi. 
 
@@ -481,6 +481,12 @@ Ha például megpróbál létrehozni vagy csatolni egy számítási célt egy ol
 Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Machine Learningkal végrehajtható műveletek korlátozása. Ezek a korlátozások megakadályozhatják a felhasználói felület elemeinek megjelenítését a Azure Machine Learning Studióban. Ha például olyan szerepkört rendelt hozzá, amely nem tud számítási példányt létrehozni, akkor a számítási példány létrehozásának lehetősége nem fog megjelenni a Studióban.
 
 További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
+
+## <a name="compute-cluster-wont-resize"></a>A számítási fürt nem lakik
+
+Ha a Azure Machine Learning számítási fürt a csomópont állapotának átméretezése (0 – > 0) miatt megakadt, akkor ezt az Azure-erőforrás zárolása okozhatja.
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

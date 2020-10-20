@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 52bfd76a12f431576d4fc3cc7a51c6e58c7551ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cb891ad63a23353437082f7cb1b1e45f146e5b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442751"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204218"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Webes API-kat meghívó mobil alkalmazás konfigurálása
 
@@ -160,7 +160,7 @@ A Xamarin. iOS felügyelt hitelesítésének engedélyezéséhez kövesse a jele
 
 ### <a name="enable-the-broker-for-msal-for-android"></a>Az Android rendszerhez készült MSAL-ügynök engedélyezése
 
-További információ a brókerek Androidon való engedélyezéséről: felügyelt [hitelesítés az Androidon](brokered-auth.md).
+További információ a brókerek Androidon való engedélyezéséről: felügyelt [hitelesítés az Androidon](msal-android-single-sign-on.md).
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>Az iOS és a macOS rendszerhez készült MSAL-ügynök engedélyezése
 
@@ -218,7 +218,7 @@ Az objektum ablakának beállításához kövesse az alábbi lépéseket:
 
     `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-1. A hívásban használja a következőt: `AcquireTokenInteractive` `.WithParentActivityOrWindow(App.RootViewController)` . Adja át a hivatkozást a használni kívánt objektum-ablakra. Bemutatunk egy példát:
+1. A hívásban használja a következőt: `AcquireTokenInteractive` `.WithParentActivityOrWindow(App.RootViewController)` . Adja át a hivatkozást a használni kívánt objektum-ablakra. Íme egy példa:
 
     Az `App.cs` szkriptben:
     ```csharp

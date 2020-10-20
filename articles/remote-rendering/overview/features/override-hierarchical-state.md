@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb120a533e4d11b34bb9712bf0164cec5a7728ce
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90884194"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207733"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
 
@@ -105,8 +105,8 @@ Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszol
 
 ## <a name="api-documentation"></a>API-dokumentáció
 
-* [C# HierarchicalStateOverrideComponent osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
-* [C++ HierarchicalStateOverrideComponent osztály](https://docs.microsoft.com/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
+* [C# HierarchicalStateOverrideComponent osztály](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
+* [C++ HierarchicalStateOverrideComponent osztály](/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
 ## <a name="next-steps"></a>Következő lépések
 

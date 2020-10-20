@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: 5de3d61f5b671f5ed6685e6cdee25be951fab69e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071880"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206951"
 ---
 # <a name="what-is-azure-expressroute"></a>Mi az az Azure ExpressRoute?
 A ExpressRoute lehetővé teszi a helyszíni hálózatok kibővítését a Microsoft-felhőbe egy magánhálózati kapcsolaton keresztül egy kapcsolati szolgáltató segítségével. A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services szolgáltatással, például a Microsoft Azure és a Microsoft 365sal.
@@ -39,7 +39,7 @@ További információ: [ExpressRoute GYIK](expressroute-faqs.md).
 A Microsoft egy iparági szabványnak megfelelő dinamikus útválasztási protokollt, a BGP-t alkalmazza az útvonalak cseréjéhez a helyszíni hálózat, az Azure-ban lévő példányai és a Microsoft nyilvános címek között. Több BGP-munkamenetet létesítünk a hálózattal, különböző forgalomprofilokkal. További részletek az [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok) című cikkben találhatók.
 
 ### <a name="redundancy"></a>Redundancia
-Minden [ExpressRoute-áramkör](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) két, két Microsoft Enterprise Edge-útválasztóhoz (msee), a kapcsolati szolgáltatótól/a hálózat szélétől. A Microsoft kettős BGP-kapcsolatot igényel a kapcsolatszolgáltatótól/a peremhálózatról – egyet-egyet mindegyik MSEE-hez. Dönthet úgy, hogy nem helyez üzembe redundáns eszközöket/Ethernet-kapcsolatcsoportokat az Ön oldalán. A kapcsolatszolgáltatók azonban redundáns eszközöket használnak annak biztosítása érdekében, hogy az Ön kapcsolatai redundáns módon jussanak el a Microsofthoz. Az [SLA](https://azure.microsoft.com/support/legal/sla/) érvényességének előfeltétele a redundáns 3. rétegbeli kapcsolódási konfiguráció.
+Minden [ExpressRoute-áramkör](./expressroute-locations.md#expressroute-locations) két, két Microsoft Enterprise Edge-útválasztóhoz (msee), a kapcsolati szolgáltatótól/a hálózat szélétől. A Microsoft kettős BGP-kapcsolatot igényel a kapcsolatszolgáltatótól/a peremhálózatról – egyet-egyet mindegyik MSEE-hez. Dönthet úgy, hogy nem helyez üzembe redundáns eszközöket/Ethernet-kapcsolatcsoportokat az Ön oldalán. A kapcsolatszolgáltatók azonban redundáns eszközöket használnak annak biztosítása érdekében, hogy az Ön kapcsolatai redundáns módon jussanak el a Microsofthoz. Az [SLA](https://azure.microsoft.com/support/legal/sla/) érvényességének előfeltétele a redundáns 3. rétegbeli kapcsolódási konfiguráció.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Kapcsolódás a Microsoft-felhőszolgáltatásokhoz
 Az ExpressRoute-kapcsolatok a következő szolgáltatásokhoz biztosítanak hozzáférést:
@@ -82,7 +82,7 @@ A közvetlen ExpressRoute által biztosított főbb funkciók közé tartoznak a
 * Fizikai elkülönítés a szabályozott, valamint dedikált és elszigetelt kapcsolódást igénylő iparágak, például a banki, kormányzati és kiskereskedelmi ágazatok számára
 * A kapcsolatcsoportok elosztásának üzleti egységen alapuló, részletes szabályzása
 
-További információ: [Az ExpressRoute Direct ismertetése](https://go.microsoft.com/fwlink/?linkid=2022973).
+További információ: [Az ExpressRoute Direct ismertetése](./expressroute-erdirect-about.md).
 
 ### <a name="bandwidth-options"></a>Sávszélesség-lehetőségek
 A sávszélességek széles választékához vásárolhat ExpressRoute-kapcsolatcsoportokat. A támogatott sávszélességek a következők szerint vannak felsorolva. Mindenképp egyeztessen kapcsolatszolgáltatójával a támogatott sávszélességekről.
@@ -91,7 +91,7 @@ A sávszélességek széles választékához vásárolhat ExpressRoute-kapcsolat
 * 100 Mbit/s
 * 200 Mbit/s
 * 500 Mbit/s
-* 1 Gbps
+* 1 Gbit/s
 * 2 Gbps
 * 5 Gbps
 * 10 Gbps
@@ -112,7 +112,7 @@ Kiválaszthatja az Ön számára optimális számlázási modellt. Válassza ki 
 ## <a name="faq"></a>GYIK
 Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyakori kérdéseit](expressroute-faqs.md).
 
-## <a name="whats-new"></a><a name="new"></a>Mi újság?
+## <a name="whats-new"></a><a name="new"></a>Újdonságok
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb ExpressRoute-frissítéseket az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) oldalon.
 

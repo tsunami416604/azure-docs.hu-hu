@@ -7,12 +7,12 @@ keywords: változások, nyomon követés, változások nyomon követése, leltá
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c440f27dcbd4ac509adea83d5c3085488cb488
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530539"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204248"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure-beli virtuális gépek változásainak hibáinak megoldása
 
@@ -222,7 +222,7 @@ Hasznos, ha követni tudja a végrehajtott módosításokat az Azure Portalon, d
 
     ![A képernyőfelvételen a W 3 S V C szolgáltatás leállításakor kapott e-mail-értesítés jelenik meg.](./media/automation-tutorial-troubleshoot-changes/email.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -238,4 +238,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 További információ a Change Tracking és a leltár funkció áttekintésében olvasható.
 
 > [!div class="nextstepaction"]
-> [A Change Tracking és a leltár áttekintése](./change-tracking.md)
+> [A Change Tracking és a leltár áttekintése](change-tracking/overview.md)

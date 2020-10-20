@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2806216bff462a673eddd8eba994d38b1c5e1fdc
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930492"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205846"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
 
@@ -30,8 +30,8 @@ A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és enge
 
 1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazást" vagy a `applicationId` beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
 
-    > [!IMPORTANT]
-    > Key Vault hivatkozások nem képesek a Key vaultban tárolt titkos kódok feloldására [hálózati korlátozásokkal](../key-vault/general/overview-vnet-service-endpoints.md).
+   > [!IMPORTANT]
+   > Key Vault hivatkozások nem képesek a Key vaultban tárolt titkos kódok feloldására [hálózati korlátozásokkal](../key-vault/general/overview-vnet-service-endpoints.md) , kivéve, ha az alkalmazás egy [app Service Environmenton](./environment/intro.md)belül fut.
 
 ## <a name="reference-syntax"></a>Hivatkozás szintaxisa
 
@@ -45,8 +45,8 @@ A Key Vault hivatkozás az űrlapra mutat `@Microsoft.KeyVault({referenceString}
 
 > [!NOTE] 
 > A verziókra jelenleg szükség van. A titkok elforgatásakor frissítenie kell a verziót az alkalmazás konfigurációjában.
-
 A teljes hivatkozás például a következőhöz hasonló lesz:
+
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)

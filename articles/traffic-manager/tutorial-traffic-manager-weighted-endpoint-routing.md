@@ -6,20 +6,20 @@ author: duongau
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 10/19/2020
 ms.author: duau
-ms.openlocfilehash: 90ed68e36b47d46c47e78407fac3b5fd74924b57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55c316a370b9e44e906e48b4716201384567c9c2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397083"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205880"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Oktatóanyag: A forgalom-útválasztás szabályozása súlyozott végpontokkal a Traffic Manager használatával
 
 Ez az oktatóanyag azt ismerteti, hogyan szabályozhatja a végpontok közötti felhasználói adatforgalom útválasztását az Azure Traffic Managerrel a súlyozott útválasztási móddal. Ezzel az útválasztási móddal a Traffic Manager-profil konfigurációjában súlyt rendel minden végponthoz. A felhasználói adatforgalom ezután az egyes végpontokhoz rendelt súly alapján továbbítódik. A súlyok 1 és 1000 közötti egész számok. Minél nagyobb a végponthoz hozzárendelt súlyérték, annál nagyobb a prioritása.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Két, alapszintű webhelyet futtató virtuális gép létrehozása az IIS-en.
@@ -106,7 +106,7 @@ A Traffic Manager a szolgáltatásvégpontok DNS-neve alapján irányítja a fel
 
 1. Válassza ki a bal oldali menü **Összes erőforrás** elemét. Az erőforrások listájában válassza a **myResourceGroupTM1** erőforráscsoportban a **myIISVMEastUS** erőforrást.
 2. Az **Áttekintés** lap **DNS-név** területén válassza a **Konfigurálás** lehetőséget.
-3. A **Konfiguráció** lap DNS-név címkéje alatt adjon hozzá egy egyedi nevet. Ez után válassza a **Mentés** lehetőséget.
+3. A **Konfiguráció** lap DNS-név címkéje alatt adjon hozzá egy egyedi nevet. Kattintson a **Mentés** gombra.
 4. Ismételje meg a 1-3. lépést a **myIISVMWestEurope** nevű virtuális géphez a **myResourceGroupTM2** erőforráscsoporthoz.
 
 ### <a name="create-a-test-vm"></a>Tesztelési virtuális gép létrehozása
@@ -158,7 +158,7 @@ Adja hozzá az IIS-kiszolgálókat futtató két virtuális gépet a myIISVMEast
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Típus                    | Adja meg az Azure-végpontot.                                   |
-    | Név           | Adja meg a **myEastUSEndpoint** nevet.                                        |
+    | Name           | Adja meg a **myEastUSEndpoint** nevet.                                        |
     | Célerőforrás típusa           | Válassza a **Nyilvános IP-cím** elemet.                          |
     | Célerőforrás          | Válasszon egy nyilvános IP-címet, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a **myIISVMEastUS-ip** nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|
     |  Tömeg      | Adja meg a **100** értéket.        |
@@ -201,11 +201,13 @@ Ebben a szakaszban megtekintheti a Traffic Managert működés közben.
 
 7. Ismételje meg a 1-6-es lépéseket a virtuális gép myVMWestEurope a súlyozott webhely válaszának megtekintéséhez.
 
-## <a name="delete-the-traffic-manager-profile"></a>A Traffic Manager-profil törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az ezen oktatóanyagban létrehozott erőforráscsoportokra, törölheti őket. Ehhez válassza ki az erőforráscsoportot (**ResourceGroupTM1** vagy **ResourceGroupTM2**), majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
+Az útválasztási módszerekről további információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Az adatforgalom meghatározott végpontokra való átirányítása a felhasználó földrajzi helye alapján](traffic-manager-configure-geographic-routing-method.md)
+> [Forgalom-útválasztási módszer](traffic-manager-routing-methods.md)
