@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9b2c5b24b88dd51596dfb5bd8b5f397419ca6e4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88505461"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215195"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Az egyszeri bejelentkezés és a jogkivonatok testreszabásának kezelése egyéni házirendek használatával Azure Active Directory B2C
 
@@ -87,6 +87,9 @@ Az előző példában az alábbi értékek vannak megadva:
     ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     ```
+
+> [!NOTE]
+> Az engedélyezési programkódot használó egylapos alkalmazások esetében a PKCE mindig 24 órás frissítési jogkivonat élettartama szükséges. [További információ a frissítési tokenek biztonsági vonatkozásairól a böngészőben](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
 
 ## <a name="next-steps"></a>Következő lépések
 

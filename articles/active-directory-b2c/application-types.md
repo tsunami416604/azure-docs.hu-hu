@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f99c5b9362380690badce832c3dd540137d35ac
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84295422"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215404"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C használható alkalmazások típusai
-
+ 
 A Azure Active Directory B2C (Azure AD B2C) számos modern alkalmazás-architektúrán támogatja a hitelesítést. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](protocols-overview.md) vagy [OpenID Connect](protocols-overview.md) protokollon alapul. Ez a cikk ismerteti a felépíthető alkalmazások típusait, a kívánt nyelvtől és platformtól függetlenül. A cikk segíthet az összetettebb feladatok megértésében, ezért érdemes elolvasni, mielőtt nekifog az alkalmazások létrehozásának.
 
 Az Azure AD B2Ct használó összes alkalmazást regisztrálni kell a [Azure ad B2C-bérlőben](tutorial-create-tenant.md) a [Azure Portal](https://portal.azure.com/)használatával. Az alkalmazás regisztrációs folyamata az értékeket gyűjti és rendeli hozzá, például:
@@ -75,6 +75,26 @@ Ha ezt a forgatókönyvet működés közben szeretné látni, próbálja ki az 
 
 Az egyszerű bejelentkezés megkönnyítésén kívül egy webkiszolgáló-alkalmazásnak is szüksége lehet a háttérbeli webszolgáltatás elérésére. Ebben az esetben a webalkalmazás egy kis mértékben eltérő [OpenID Connect folyamatot](openid-connect.md) hajt végre, és engedélyezési kódokkal és frissítési tokenekkel szerzi be a jogkivonatokat. Ezt a folyamatot a következő, [Webes API-k](#web-apis) című fejezet írja le.
 
+## <a name="single-page-applications"></a>Egyoldalas alkalmazások
+Számos modern webalkalmazás úgy van kialakítva, mint az ügyféloldali egyoldalas alkalmazások ("gyógyfürdők"). A fejlesztők a JavaScript vagy a SPA-keretrendszer, például a szögletes, a Vue és a reakciók használatával írhatják őket. Ezek az alkalmazások egy webböngészőben futnak, és különböző hitelesítési jellemzőkkel rendelkeznek, mint a hagyományos kiszolgálóoldali webes alkalmazások.
+
+Azure AD B2C **két** lehetőséget kínál az egyoldalas alkalmazások bejelentkezésére a felhasználók számára, és jogkivonatok beszerzése a háttér-szolgáltatások vagy webes API-k eléréséhez:
+
+### <a name="authorization-code-flow-with-pkce"></a>Engedélyezési kód folyamatábrája (PKCE)
+- [OAuth 2,0 engedélyezési kód folyamata (PKCE)](./authorization-code-flow.md). Az engedélyezési kód folyamatábrája lehetővé teszi, hogy az alkalmazás hitelesítő kódot cseréljen az **azonosító** jogkivonatok számára a védett API-k meghívásához szükséges hitelesített felhasználói és **hozzáférési** jogkivonatok megjelenítéséhez. Emellett visszaadja azokat a **frissítési** jogkivonatokat, amelyek hosszú távú hozzáférést biztosítanak az erőforrásokhoz a felhasználók nevében anélkül, hogy ezekkel a felhasználókkal való interakcióra lenne szükség. 
+
+Ez az **ajánlott** módszer. A korlátozott élettartamú frissítési tokenek segítségével az alkalmazás alkalmazkodik a [modern böngésző cookie-i adatvédelmi korlátaihoz](../active-directory/develop/reference-third-party-cookies-spas.md), például a Safari itp-hez.
+
+A folyamat előnyeit kihasználva az alkalmazás olyan hitelesítési függvénytárat használhat, amely támogatja azt, például [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser).
+
+<!-- ![Single-page applications-auth](./media/tutorial-single-page-app/spa-app-auth.svg) -->
+![Egyoldalas alkalmazások – hitelesítés](./media/tutorial-single-page-app/active-directory-oauth-code-spa.png)
+
+### <a name="implicit-grant-flow"></a>Implicit engedélyezési folyamat
+- [OAuth 2,0 implicit folyamat](implicit-flow-single-page-application.md). Egyes keretrendszerek, például [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core), csak az implicit engedélyezési folyamatot támogatják. Az implicit engedélyezési folyamat lehetővé teszi, hogy az alkalmazás **azonosítót** és **hozzáférési** jogkivonatokat kapjon. Az engedélyezési kód folyamatával ellentétben az implicit engedélyezési folyamat nem ad vissza **frissítési jogkivonatot**. 
+
+Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amelyek platformfüggetlen JavaScript-keretrendszereket használnak, például az Electron-et és a reakciós Natívt. Ezek a forgatókönyvek további képességeket igényelnek a natív platformokkal való interakcióhoz.
+
 ## <a name="web-apis"></a>Webes API-k
 
 A Azure AD B2C segítségével biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. A webes API-k az OAuth 2.0 használatával biztosíthatják az adatok védelmét a bejövő HTTP-kérések jogkivonatokkal történő hitelesítésével. A webes API hívója hozzáfűz egy jogkivonatot a HTTP-kérés hitelesítési fejlécéhez:
@@ -85,7 +105,7 @@ Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
 Accept: application/json
 ...
-```
+``` 
 
 Így a webes API a jogkivonat segítségével ellenőrizheti az API hívójának identitását, valamint a jogkivonatban kódolt jogcímek segítségével további információkhoz juthat a hívóról. Az [Azure AD B2C-jogkivonatok referenciájából](tokens-overview.md) további információkat tudhat meg az alkalmazásban elérhető jogkivonatok és jogcímek különböző típusairól.
 
@@ -142,6 +162,6 @@ Ha a Azure AD B2C alkalmazást a Azure Portalon kívül szerkeszti, akkor az egy
 
 Az alkalmazás törléséhez nyissa meg az [alkalmazás regisztrációs portálját](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) , és törölje az alkalmazást. Ahhoz, hogy láthatóvá lehessen tenni az alkalmazást, Önnek kell lennie az alkalmazás tulajdonosának (és nem csak a bérlő rendszergazdájának).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudjon meg többet a [Azure Active Directory B2C felhasználói folyamatai](user-flow-overview.md)által biztosított beépített szabályzatokról.

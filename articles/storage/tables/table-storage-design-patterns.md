@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41e07087574989935e89ba2c1f4c09a3c12b192d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006346"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215603"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
 Ez a cikk a Table service-megoldásokkal való használatra alkalmas mintákat ismerteti. Azt is megtudhatja, hogyan lehet gyakorlatilag a más Table Storage-kialakítási cikkekben tárgyalt problémák és kompromisszumok kezelésére. A következő ábra összefoglalja a különböző minták közötti kapcsolatokat:  
@@ -264,7 +264,7 @@ A kapcsolódó adatbázisokban általában az adatok normalizálása a több tá
 ![Részleg entitása és alkalmazotti entitása](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>Megoldás
-Ahelyett, hogy két különálló entitásban tárolja az adatokat, denormalizálja az adatokat, és megtartja a felettes adatainak másolatát a részleg entitásban. Példa:  
+Ahelyett, hogy két különálló entitásban tárolja az adatokat, denormalizálja az adatokat, és megtartja a felettes adatainak másolatát a részleg entitásban. Például:  
 
 ![Részleg entitása](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
@@ -294,7 +294,7 @@ A kapcsolati adatbázisban természetes, hogy a lekérdezésekben a kapcsolódó
 
 Tegyük fel, hogy az alábbi struktúra használatával tárolja az alkalmazott entitásokat a Table serviceban:  
 
-![Alkalmazotti entitás szerkezete](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
+![Képernyőkép, amely bemutatja, hogyan tárolhatja az alkalmazottak entitásait a Table serviceban.](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
 
 Emellett a korábbi adatokat is tárolnia kell a felülvizsgálatokhoz és a teljesítményhez az alkalmazottak által a szervezet számára dolgozott munkavégzéshez, és az adatoknak évente kell hozzáférnie. Az egyik lehetőség egy másik tábla létrehozása, amely az entitásokat az alábbi struktúrával tárolja:  
 

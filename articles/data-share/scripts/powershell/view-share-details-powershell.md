@@ -1,20 +1,18 @@
 ---
-title: 'PowerShell-parancsfájl: meglévő megosztások listázása az Azure-beli adatmegosztásban | Microsoft Docs'
+title: 'PowerShell-parancsfájl: meglévő megosztások listázása az Azure-beli adatmegosztásban'
 description: Ez a PowerShell-parancsfájl felsorolja és megjeleníti a megosztások részleteit.
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 6314bd348c22c901001b88eda6875181a2f69df4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54b4b6cedc2dc09e4a9d5c4b7b937e80750e17c6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307127"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220822"
 ---
 # <a name="use-powershell-to-view-the-details-of-a-sent-data-share"></a>Az elküldett adatmegosztás részleteinek megtekintése a PowerShell használatával
 
@@ -45,11 +43,11 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare?view=azps-2.6.0) | Lekérdezi és felsorolja a fiókban található megosztásokat. |
+| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare) | Lekérdezi és felsorolja a fiókban található megosztásokat. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/).
 
 További Azure-adatmegosztási PowerShell-szkriptek az Azure-beli [adatmegosztás PowerShell-mintáinak](../../samples-powershell.md)használatával találhatók.

@@ -1,18 +1,17 @@
 ---
 title: U-SQL-feladatok futtatása helyileg – Azure Data Lake U-SQL SDK
 description: Ismerje meg, hogyan futtathatja és tesztelheti a U-SQL-feladatokat helyileg a parancssori és programozási felületek használatával a helyi munkaállomáson.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132415"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215535"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>A U-SQL futtatása és tesztelése Azure Data Lake U-SQL SDK-val
 
@@ -157,7 +156,7 @@ A **Futtatás**nem kötelező argumentumai a következők:
 |-ScopeCEPTempPath|temp|Az adatfolyam-továbbításhoz használandó ideiglenes útvonal|
 |-OptFlags| |Az optimalizáló jelzők vesszővel tagolt listája|
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 `LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
@@ -362,7 +361,7 @@ nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
 ### <a name="method"></a>Metódus
 
-|Metódus|Leírás|Visszatérési|Paraméter|
+|Metódus|Leírás|Visszatérési|Paraméterek|
 |------|-----------|------|---------|
 |nyilvános Boole DoCompile ()|Az U-SQL-szkript fordítása|Igaz siker esetén| |
 |nyilvános Boole DoExec ()|A lefordított eredmény végrehajtása|Igaz siker esetén| |
@@ -380,7 +379,7 @@ Ellenőrizze a következőket:
 - Győződjön meg arról, hogy rendelkezik x64-környezettel. A Build cél platformnak és a tesztkörnyezetben x64-nek kell lennie, az **1. lépés: C# egység tesztelési projekt és a fenti konfiguráció létrehozása című témakörben** talál.
 - Győződjön meg arról, hogy az összes függőségi fájlt átmásolta a NugetPackage\build\runtime\ a Project Working könyvtárba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).
 - A diagnosztikai információk naplózásához tekintse meg [a Azure Data Lake Analytics diagnosztikai naplóinak elérését](data-lake-analytics-diagnostic-logs.md)ismertető témakört.

@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433908"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214923"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C új Alkalmazásregisztrációk felülete
 
@@ -53,13 +53,13 @@ A Azure AD B2C Alkalmazásregisztrációk felhasználói élmény az Azure AD-b�
 ## <a name="new-supported-account-types"></a>Új támogatott fióktípus
 
 Az új felhasználói élményben válasszon ki egy támogatási fiókot a következő lehetőségek közül:
-- Csak a szervezeti könyvtárban lévő fiókok.
-- Fiókok bármely szervezeti címtárban (bármely Azure AD-címtár – több-bérlős).
-- Fiókok bármely szervezeti címtárban vagy bármely identitás-szolgáltatóban. A felhasználók Azure AD B2C használatával történő hitelesítéséhez.
+- Csak az ebben a szervezeti címtárban található fiókok
+- Fiókok bármely szervezeti címtárban (bármely Azure AD-címtár – több-bérlős)
+- Fiókok bármely identitás-szolgáltató vagy szervezeti címtárban (a felhasználók felhasználói folyamatokkal történő hitelesítéséhez)
 
 A különböző fióktípus megismeréséhez válassza a létrehozási **élmény lehetőséget.**
 
-A régi élményben az alkalmazások létrehozása mindig ügyfél-alkalmazásként történt. Ezekhez az alkalmazásokhoz a fiók típusa **bármely szervezeti címtárban vagy bármely identitás-szolgáltatóban található fiókra van beállítva. A felhasználók Azure AD B2C használatával történő hitelesítéséhez**.
+A régi élményben az alkalmazások létrehozása mindig ügyfél-alkalmazásként történt. Ezekhez az alkalmazásokhoz a fiók típusa **bármely identitás-szolgáltató vagy szervezeti címtár fiókjaira van beállítva (a felhasználók felhasználói folyamatokkal történő hitelesítéséhez)**.
 > [!NOTE]
 > Ez a beállítás ahhoz szükséges, hogy Azure AD B2C felhasználói folyamatokat futtasson az alkalmazás felhasználóinak hitelesítéséhez. Megtudhatja [, hogyan regisztrálhat egy alkalmazást felhasználói folyamatokkal való használatra.](tutorial-register-applications.md)
 
@@ -96,13 +96,12 @@ A **kulcsok**helyett az új felhasználói élményben a tanúsítványok **& Se
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C bérlők nem alkalmazható szolgáltatásai
 A következő Azure AD-alkalmazás-regisztrációs képességek nem alkalmazhatók Azure AD B2C bérlők számára, illetve nem érhetők el:
-- **Szerepkörök és rendszergazdák** – ehhez olyan prémium szintű Azure ad P1 vagy P2 licencre van szükség, amely jelenleg nem érhető el Azure ad B2Choz.
+- **Szerepkörök és rendszergazdák** – jelenleg nem érhető el Azure ad B2Choz.
 - **Branding** – a felhasználói felület/UX testreszabása a **vállalati védjegyezési** felületen vagy felhasználói folyamat részeként van konfigurálva. Ismerkedjen meg [a Azure Active Directory B2C felhasználói felületének testreszabásával](customize-ui-overview.md).
 - **Közzétevő tartományának ellenőrzése** – az alkalmazás regisztrálva van a *. onmicrosoft.com*, amely nem ellenőrzött tartomány. Emellett a közzétevői tartományt elsődlegesen a felhasználói jóváhagyás biztosítására használják, amely nem vonatkozik Azure AD B2C alkalmazásokra a felhasználói hitelesítéshez. [További információ a közzétevő tartományáról](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
 - **Jogkivonat konfigurációja** – a jogkivonat a felhasználói folyamat részeként van konfigurálva, nem pedig alkalmazás.
 - A gyors üzembe helyezési **élmény jelenleg** nem érhető el Azure ad B2C bérlők számára.
-- Az **Integration Assistant** panel jelenleg nem érhető el Azure ad B2C bérlők számára.
-
+<!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->
 
 ## <a name="limitations"></a>Korlátozások
 Az új felhasználói élmény a következő korlátozásokkal jár:

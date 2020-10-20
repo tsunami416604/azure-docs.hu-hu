@@ -1,20 +1,17 @@
 ---
-title: 'PowerShell-parancsfájl: Azure-beli adatmegosztási pillanatkép-eseményindítók létrehozása és megtekintése | Microsoft Docs'
+title: 'PowerShell-parancsfájl: Azure-beli adatmegosztási pillanatkép-eseményindítók létrehozása és megtekintése'
 description: Ez a PowerShell-parancsfájl létrehozza és beolvassa a megosztási pillanatkép-eseményindítókat.
-services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 31d9754ddd9e9dfd0cca258901a6c8ab2c4a9cdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05b70641873ab352ca92ac199d99c05b2fe0f4e6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497165"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221298"
 ---
 # <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>Pillanatkép-eseményindítók létrehozása és megosztása a PowerShell használatával
 
@@ -47,12 +44,12 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Új – AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger?view=azps-2.6.0) | Hozzon létre egy megosztási pillanatkép-triggert. |
-| [Get-AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Beolvassa a megosztás szinkronizálásának beállításait. |
+| [Új – AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger) | Hozzon létre egy megosztási pillanatkép-triggert. |
+| [Get-AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting) | Beolvassa a megosztás szinkronizálásának beállításait. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/).
 
 További Azure-adatmegosztási PowerShell-szkriptek az Azure-beli [adatmegosztás PowerShell-mintáinak](../../samples-powershell.md)használatával találhatók.

@@ -94,25 +94,24 @@
     - name: Figyelés
     - name: Szerepkörök és engedélyek létrehozása
       href: spring-cloud-howto-permissions.md
-      items:
-        - name: Elosztott nyomkövetés és az App Insights
-          href: spring-cloud-tutorial-distributed-tracing.md
-        - name: Naplók és metrikák elemzése
-          href: diagnostic-services.md
-        - name: Naplók valós idejű streamelése
-          href: spring-cloud-howto-log-streaming.md
-    - name: DevOps-telepítés
-      items:
-        - name: CI/CD az Azure DevOps használatával
-          href: spring-cloud-howto-cicd.md
-        - name: CI/CD GitHub-műveletekkel
-          href: spring-cloud-howto-github-actions.md
-        - name: Hitelesítés a Key Vaulttal a GitHub Actionsben
-          href: spring-cloud-github-actions-key-vault.md
-    - name: Hibaelhárítás
-      items:
-        - name: Hibaelhárítási útmutató
-          href: spring-cloud-troubleshoot.md
+    - name: Elosztott nyomkövetés és az App Insights
+      href: spring-cloud-tutorial-distributed-tracing.md
+    - name: Naplók és metrikák elemzése
+      href: diagnostic-services.md
+    - name: Naplók valós idejű streamelése
+      href: spring-cloud-howto-log-streaming.md
+- name: DevOps-telepítés
+  items:
+    - name: CI/CD az Azure DevOps használatával
+      href: spring-cloud-howto-cicd.md
+    - name: CI/CD GitHub-műveletekkel
+      href: spring-cloud-howto-github-actions.md
+    - name: Hitelesítés a Key Vaulttal a GitHub Actionsben
+      href: spring-cloud-github-actions-key-vault.md
+- name: Hibaelhárítás
+  items:
+    - name: Hibaelhárítási útmutató
+      href: spring-cloud-troubleshoot.md
 - name: Referencia
   items:
     - name: Azure CLI beépülő modul

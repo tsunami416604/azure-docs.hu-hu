@@ -6,16 +6,16 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
-ms.openlocfilehash: bff8c89dcdcbb7c319e04e5e7518985badf5a5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399914186ce9de62ef46b682c8d4a6e51426cc26
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132313"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221111"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Az U-SQL és a Spark adatformátumai közötti különbségek ismertetése
 
-Ha [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) vagy [Azure HDInsight Sparkt](../hdinsight/spark/apache-spark-overview.md)szeretne használni, javasoljuk, hogy az adatait [Azure Data Lake Storage Gen1ról](../data-lake-store/data-lake-store-overview.md) [Azure Data Lake Storage Gen2ra](../storage/blobs/data-lake-storage-introduction.md)telepítse át.
+Ha [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) vagy [Azure HDInsight Sparkt](../hdinsight/spark/apache-spark-overview.md)szeretne használni, javasoljuk, hogy az adatait [Azure Data Lake Storage Gen1ról](../data-lake-store/data-lake-store-overview.md) [Azure Data Lake Storage Gen2ra](../storage/blobs/data-lake-storage-introduction.md)telepítse át.
 
 A fájlok áthelyezésén kívül a Spark számára elérhető U-SQL-táblákban is el szeretné végezni az adatok tárolását.
 
@@ -26,13 +26,13 @@ A fájlokban tárolt adatfájlok többféleképpen is áthelyezhetők:
 - [Azure Data Factory](../data-factory/introduction.md) folyamat írása az adatok [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) -fiókból a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) -fiókba való másolásához.
 - Írjon be egy Spark-feladatot, amely beolvassa az adatokat a [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) -fiókból, és írja azt a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) -fiókba. A használati eset alapján előfordulhat, hogy más formátumban szeretné írni, például a Parquet, ha nem kell megőriznie az eredeti fájlformátumot.
 
-Javasoljuk, hogy tekintse át a [Big Data Analytics-megoldások Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2re való frissítését](../storage/blobs/data-lake-storage-upgrade.md) ismertető cikket.
+Javasoljuk, hogy tekintse át a [Big Data Analytics-megoldások Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2re való frissítését](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md) ismertető cikket.
 
 ## <a name="move-data-stored-in-u-sql-tables"></a>Az U-SQL-táblákban tárolt adatáthelyezés
 
 A Spark nem értelmezi a U-SQL-táblákat. Ha a U-SQL-táblákban tárolt adatokkal rendelkezik, egy U-SQL-feladatot fog futtatni, amely Kinyeri a táblázatos adatok kibontását, és a Spark által értelmezett formátumban menti azt. A legmegfelelőbb formátum a Hive-metaadattár mappa elrendezését követő Parquet-fájlok készletének létrehozása.
 
-A kimenet a U-SQL-ben érhető el, a beépített parketta-előállítók használatával, valamint a dinamikus kimeneti particionálással a fájlokkal a partíciós mappák létrehozásához. [Minden eddiginél több fájlt dolgozhat fel, és a Parquet használatával](https://blogs.msdn.microsoft.com/azuredatalake/2018/06/11/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics) megtudhatja, hogyan hozhat létre ilyen Spark-adatmennyiséget.
+A kimenet a U-SQL-ben érhető el, a beépített parketta-előállítók használatával, valamint a dinamikus kimeneti particionálással a fájlokkal a partíciós mappák létrehozásához. [Minden eddiginél több fájlt dolgozhat fel, és a Parquet használatával](/archive/blogs/azuredatalake/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics) megtudhatja, hogyan hozhat létre ilyen Spark-adatmennyiséget.
 
 Az átalakítást követően a [Azure Data Lake Storage Gen1 fájlban tárolt adatáthelyezési](#move-data-stored-in-azure-data-lake-storage-gen1-files)fejezetben leírtak szerint másolja az adatfájlokat.
 
@@ -44,11 +44,11 @@ Az átalakítást követően a [Azure Data Lake Storage Gen1 fájlban tárolt ad
 - Az adatszervezet (particionálás) U-SQL-táblák két szintű particionálást biztosítanak. A külső szint ( `PARTITIONED BY` ) értéke és leképezése elsősorban a kaptár/Spark particionálási sémában, a mappa-hierarchiák használatával. Biztosítania kell, hogy a null értékek a megfelelő mappába legyenek leképezve. A `DISTRIBUTED BY` U-SQL belső szintje 4 terjesztési sémát kínál: ciklikus multiplexelés, tartomány, kivonat és közvetlen kivonat.
     A kaptár/Spark táblák csak az U-SQL-nél eltérő kivonatoló függvényt használnak az érték particionálásához vagy a kivonatoló particionáláshoz. Ha a U-SQL-tábla adatait adja meg, valószínűleg csak a Spark érték particionálásához lesz képes leképezni, és a végső Spark-lekérdezésektől függően szükség lehet az adatelrendezés további finomhangolására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Spark Code-fogalmak megismerése U-SQL-fejlesztőknek](understand-spark-code-concepts.md)
-- [Frissítse big data Analytics-megoldásait Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
-- [.NET az Apache Sparkhoz](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [Frissítse big data Analytics-megoldásait Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)
+- [.NET az Apache Sparkhoz](/dotnet/spark/what-is-apache-spark-dotnet)
 - [Adatátalakítás a Spark-tevékenységgel Azure Data Factory](../data-factory/transform-data-using-spark.md)
 - [Az adatátalakítás a Hadoop-struktúra tevékenységgel Azure Data Factory](../data-factory/transform-data-using-hadoop-hive.md)
 - [Mi az az Azure HDInsight-alapú Apache Spark?](../hdinsight/spark/apache-spark-overview.md)

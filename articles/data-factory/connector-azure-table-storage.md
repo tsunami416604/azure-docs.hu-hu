@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/27/2019
-ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: 5181ceb7d5959436b704202fd3179773c9654679
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417481"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220448"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table Storage-be vagy onnan máshová az Azure Data Factoryvel
 
@@ -222,7 +222,7 @@ Az adatok Azure-táblába való másolásához állítsa az adatkészlet Type (t
 
 A séma nélküli adattárak, például az Azure Table Data Factory a következő módszerek egyikével következtetik ki a sémát:
 
-* Ha a másolási tevékenységben megadja az oszlop leképezését, Data Factory a forrás oldali oszlopok listáját használja az adat lekéréséhez. Ebben az esetben, ha egy sor nem tartalmaz értéket egy oszlophoz, a rendszer null értéket ad meg.
+* Ha a másolási tevékenységben megadja az oszlop leképezését, a Data Factory a forrás oldali oszlopok listáját használja az adat lekéréséhez. Ebben az esetben, ha egy sor nem tartalmaz értéket egy oszlophoz, a rendszer null értéket ad meg.
 * Ha nem ad meg oszlop-hozzárendelést a másolási tevékenységben, Data Factory a séma kikövetkezteti a sémát az adathalmaz első sorának használatával. Ebben az esetben, ha az első sor nem tartalmazza a teljes sémát (például egyes oszlopokban Null érték van), a másolási művelet eredményeképpen egyes oszlopok kimaradnak.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -236,7 +236,7 @@ Az adatok Azure-táblázatból való másolásához állítsa a forrás típusá
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát **AzureTableSource**értékre kell állítani. |Igen |
-| azureTableSourceQuery |Az egyéni tábla-tárolási lekérdezéssel olvashatja el az adatolvasást. Tekintse meg a példákat a következő szakaszban. |Nem |
+| azureTableSourceQuery |Az egyéni tábla-tárolási lekérdezéssel olvashatja el az adatolvasást.<br/>A forrás lekérdezés az `$filter` Azure Table Storage által támogatott lekérdezési lehetőségből származó közvetlen leképezés, további információ a [doc](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-query-options)szintaxisáról, valamint az alábbi [azureTableSourceQuery példák című szakaszban](#azuretablesourcequery-examples)található példákban. |Nem |
 | azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy a tábla kivételének engedélyezése nem létezik-e.<br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett). |Nem |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-példák
@@ -348,5 +348,5 @@ Amikor az Azure Table-be vagy az-ba helyezi át az adatátvitelt, az [Azure Tabl
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664851"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215433"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Hibakódok: Azure Active Directory B2C
 
@@ -61,6 +61,7 @@ A Azure Active Directory B2C szolgáltatás a következő hibákat adhatja vissz
 | `AADB2C90055` | A {0} kérelemben megadott hatókörnek meg kell adnia egy erőforrást, például a következőt: " https://example.com/calendar.read ". |
 | `AADB2C90057` | A megadott alkalmazás nincs konfigurálva, hogy engedélyezze a OAuth implicit folyamatát. |
 | `AADB2C90058` | A megadott alkalmazás nincs konfigurálva a nyilvános ügyfelek engedélyezésére. |
+| `AADB2C99059` | A megadott kérelemnek egy code_challenge kell mutatnia. Az egylapos alkalmazások esetében az engedélyezési kód folyamatát kell használni.| 
 | `AADB2C90067` | A kilépés utáni átirányítási URI ( {0} "") formátuma érvénytelen. Adjon meg egy https-alapú URL-címet, például a https://example.com/return következőt: "", vagy a natív ügyfelekhez használja az IETF natív ügyfél URI-ját "urn: IETF: WG: OAuth: 2.0: OOB". |
 | `AADB2C90068` | A megadott "" AZONOSÍTÓJÚ alkalmazás {0} nem érvényes a szolgáltatásra. Használjon a B2C-portálon keresztül létrehozott alkalmazást, és próbálkozzon újra. |
 | `AADB2C90075` | A (z) {0} "" lépésben megadott "" jogcím-csere {1} http-hibát adott vissza a (z) "" kóddal és a következő okból: "" {2} {3} . |

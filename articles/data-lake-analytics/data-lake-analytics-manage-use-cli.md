@@ -1,17 +1,15 @@
 ---
 title: Azure Data Lake Analytics kezelése az Azure CLI-vel
 description: Ez a cikk azt ismerteti, hogyan használható az Azure CLI Data Lake Analytics feladatok, adatforrások & felhasználók kezelésére.
-services: data-lake-analytics
-ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: f91619860b577981d9717904a3d4a3074c2eaf0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19b471d85a52fe38b72ad55847d022fb56b3c4f0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320846"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220924"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure Data Lake Analytics kezelése az Azure parancssori felületével (CLI)
 
@@ -19,18 +17,17 @@ ms.locfileid: "91320846"
 
 Ismerje meg, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatforrásokat, felhasználókat és feladatokat az Azure CLI használatával. Ha más eszközökkel szeretné megtekinteni a felügyeleti témákat, kattintson a fenti fülre.
 
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag megkezdése előtt a következő erőforrásokkal kell rendelkeznie:
 
-* Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+- Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* Azure CLI. Lásd: [Install and configure Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (Az Azure parancssori felület telepítése és konfigurálása).
+- Azure CLI. Lásd: [Install and configure Azure CLI](/cli/azure/install-azure-cli) (Az Azure parancssori felület telepítése és konfigurálása).
 
-  * Töltse le és telepítse az **előzetes kiadású** [Azure parancssori felületi eszközöket](https://github.com/MicrosoftBigData/AzureDataLake/releases) a bemutató elvégzéséhez.
+  - Töltse le és telepítse az **előzetes kiadású** [Azure parancssori felületi eszközöket](https://github.com/MicrosoftBigData/AzureDataLake/releases) a bemutató elvégzéséhez.
 
-* A parancsot használva végezze el `az login` a hitelesítést, és válassza ki a használni kívánt előfizetést. További információ a munkahelyi vagy iskolai fiók segítségével történő hitelesítésről: [Connect to an Azure subscription from the Azure CLI](/cli/azure/authenticate-azure-cli) (Csatlakozás Azure-előfizetéshez az Azure parancssori felületről).
+- A parancsot használva végezze el `az login` a hitelesítést, és válassza ki a használni kívánt előfizetést. További információ a munkahelyi vagy iskolai fiók segítségével történő hitelesítésről: [Connect to an Azure subscription from the Azure CLI](/cli/azure/authenticate-azure-cli) (Csatlakozás Azure-előfizetéshez az Azure parancssori felületről).
 
    ```azurecli
    az login
@@ -46,11 +43,11 @@ Az oktatóanyag megkezdése előtt a következő erőforrásokkal kell rendelkez
 
 ## <a name="manage-accounts"></a>Fiókok kezelése
 
-Data Lake Analytics feladatok futtatása előtt rendelkeznie kell egy Data Lake Analytics-fiókkal. Az Azure HDInsight eltérően nem kell fizetnie egy Analytics-fiókot, ha nem fut a feladatokban. Csak akkor kell fizetnie, amikor egy feladatot futtat.  További információ: [Azure Data Lake Analytics Overview (áttekintés](data-lake-analytics-overview.md)).  
+Data Lake Analytics feladatok futtatása előtt rendelkeznie kell egy Data Lake Analytics-fiókkal. Az Azure HDInsight eltérően nem kell fizetnie egy Analytics-fiókot, ha nem fut a feladatokban. Csak akkor kell fizetnie, amikor egy feladatot futtat.  További információ: [Azure Data Lake Analytics Overview (áttekintés](data-lake-analytics-overview.md)).
 
 ### <a name="create-accounts"></a>Fiókok létrehozása
 
-A következő parancs futtatásával hozzon létre egy Data Lake fiókot, 
+A következő parancs futtatásával hozzon létre egy Data Lake fiókot,
 
    ```azurecli
    az dla account create --account "<Data Lake Analytics account name>" --location "<Location Name>" --resource-group "<Resource Group Name>" --default-data-lake-store "<Data Lake Store account name>"
@@ -88,10 +85,10 @@ Adott erőforráscsoporthoz tartozó Data Lake Analytics fiókok listázása
 
 Data Lake Analytics jelenleg a következő két adatforrást támogatja:
 
-* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage](../storage/common/storage-introduction.md)
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
+- [Azure Storage](../storage/common/storage-introduction.md)
 
-Analytics-fiók létrehozásakor ki kell jelölnie egy Azure Data Lake Storage fiókot az alapértelmezett Storage-fiókhoz. Az alapértelmezett Data Lake Storage-fiók a feladatok metaadatainak és a feladatok naplóinak tárolására szolgál. Az Analytics-fiók létrehozása után további Data Lake Storage fiókokat és/vagy Azure Storage-fiókokat adhat hozzá. 
+Analytics-fiók létrehozásakor ki kell jelölnie egy Azure Data Lake Storage fiókot az alapértelmezett Storage-fiókhoz. Az alapértelmezett Data Lake Storage-fiók a feladatok metaadatainak és a feladatok naplóinak tárolására szolgál. Az Analytics-fiók létrehozása után további Data Lake Storage fiókokat és/vagy Azure Storage-fiókokat adhat hozzá.
 
 ### <a name="find-the-default-data-lake-store-account"></a>Az alapértelmezett Data Lake Store fiók megkeresése
 
@@ -127,7 +124,7 @@ Meglévő blob Storage-fiók kulcsának frissítése:
    az dla account blob-storage update --access-key "<New Blob Storage Account Key>" --account "<Data Lake Analytics account name>" --storage-account-name "<Data Lake Store account name>"
    ```
 
-### <a name="list-data-sources"></a>Adatforrások listázása:
+### <a name="list-data-sources"></a>Adatforrások listázása
 
 A Data Lake Store fiókok listázása:
 
@@ -143,7 +140,7 @@ A blob Storage-fiók listázása:
 
 ![A "dataLakeStoreAccounts:" információval jelölt, az Azure C L-t bemutató képernyőkép.](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
-### <a name="delete-data-sources"></a>Adatforrások törlése:
+### <a name="delete-data-sources"></a>Adatforrások törlése
 
 Data Lake Store fiók törlése:
 
@@ -185,6 +182,7 @@ Ahhoz, hogy feladatot lehessen létrehozni, Data Lake Analytics fiókkal kell re
 >    ```
 
 ### <a name="cancel-jobs"></a>Feladatok megszakítása
+
 A LIST parancs használatával keresse meg a feladat AZONOSÍTÓját, majd a Mégse gombra kattintva szakítsa meg a feladatot.
 
    ```azurecli
@@ -212,7 +210,8 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-* [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
-* [A Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)
-* [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md)
-* [Az Azure Data Lake Analytics-feladatok figyelése és hibaelhárítása az Azure Portal használatával](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+- [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
+- [A Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)
+- [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md)
+- [Az Azure Data Lake Analytics-feladatok figyelése és hibaelhárítása az Azure Portal használatával](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

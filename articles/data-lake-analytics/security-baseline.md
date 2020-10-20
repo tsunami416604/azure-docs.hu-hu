@@ -7,32 +7,32 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d01808eac854e0a694608fc963bd97b035d29ac8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 03d960f95aed4c6843e29dbebd37feec64b6eae2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146185"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221145"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics Azure biztonsági alapterve
 
 Az Data Lake Analytics Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
+További információ: [Azure Security](../security/benchmarks/security-baselines-overview.md)alapkonfigurációk áttekintése.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](/azure/security/benchmarks/security-control-network-security).*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
 **Útmutató**: Data Lake Analytics a tűzfalbeállítások használatával korlátozza a külső IP-tartományokat, hogy engedélyezze a hozzáférést a helyi ügyfelektől és a harmadik féltől származó szolgáltatásokhoz. A tűzfalbeállítások konfigurálása a portálon, a REST API-kon vagy a PowerShellen keresztül érhető el.
 
-* [Tűzfalszabályok](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
+* [Tűzfalszabályok](/rest/api/datalakeanalytics/firewallrules)
 
-* [Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-powershell)
+* [Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel](./data-lake-analytics-manage-use-powershell.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -58,9 +58,9 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 **Útmutató**: Data Lake Analytics a tűzfalbeállítások használatával korlátozza a külső IP-tartományokat, hogy engedélyezze a hozzáférést a helyi ügyfelektől és a harmadik féltől származó szolgáltatásokhoz. A tűzfalbeállítások konfigurálása a portálon, a REST API-kon vagy a PowerShellen keresztül érhető el.
 
-* [Tűzfalszabályok](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
+* [Tűzfalszabályok](/rest/api/datalakeanalytics/firewallrules)
 
-* [Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-powershell)
+* [Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel](./data-lake-analytics-manage-use-powershell.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -124,7 +124,7 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-*További információ [: Security Control: naplózás és figyelés](/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
@@ -140,13 +140,13 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-* [Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)
+* [Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](./data-lake-analytics-diagnostic-logs.md)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
-* [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
+* [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
 
 * [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -158,9 +158,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: a Data Lake Analytics diagnosztikai beállításainak engedélyezése a naplózási és a kérelmek naplóihoz való hozzáféréshez. Ilyenek például az eseményforrás, a dátum, a felhasználó, az időbélyeg és más hasznos elemek.
 
-* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
-* [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)
+* [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/platform/platform-logs-overview.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -178,9 +178,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: Azure monitor a szervezet megfelelőségi szabályainak megfelelően állítsa be a log Analytics munkaterület megőrzési időszakát. Azure Storage-fiókokat használhat hosszú távú és archiválási tároláshoz.
 
-* [Az adatmegőrzési időszak módosítása Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+* [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 **Azure Security Center figyelés**: igen
 
@@ -190,11 +190,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: a rendellenes viselkedésre vonatkozó naplók elemzése és figyelése, valamint a Data Lake Analytics erőforrások eredményeinek rendszeres áttekintése. Az Azure Monitor Log Analytics munkaterülete segítségével tekintheti át a naplókat, és lekérdezéseket végezhet a naplózási adatokon. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik fél SIEM-nek.
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-* [További információ a Log Analytics munkaterületről](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [További információ a Log Analytics munkaterületről](../azure-monitor/log-query/get-started-portal.md)
 
-* [Egyéni lekérdezések végrehajtása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -204,11 +204,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: a Data Lake Analytics diagnosztikai beállításainak engedélyezése és naplók elküldése egy log Analytics-munkaterületre. A Log Analytics-munkaterületet az Azure Sentinelbe irányíthatja, mivel ez egy biztonsági előkészítési automatizált választ (felszárnyaló) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák megoldására való felhasználását.
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-* [Riasztás a log Analytics-naplófájlok adatkezeléséről](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
 
-* [Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)
+* [Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](./data-lake-analytics-diagnostic-logs.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -240,15 +240,15 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](/azure/security/benchmarks/security-control-identity-access-control).*
+*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
 **Útmutató**: az Azure ad olyan beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center figyelés**: igen
 
@@ -258,7 +258,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: a Data Lake Analytics nem rendelkezik az alapértelmezett jelszavak fogalmával, mivel a hitelesítés Azure Active Directory és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) által biztosított.
 
-* [Azure Data Lake Analytics áttekintése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-overview)
+* [Azure Data Lake Analytics áttekintése](./data-lake-analytics-overview.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -270,7 +270,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 Azure AD Privileged Identity Management és Azure Resource Manager használatával is engedélyezheti az igény szerinti hozzáférést.
 
-* [További információ a Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+* [További információ a Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center figyelés**: igen
 
@@ -280,7 +280,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: ha lehetséges, használjon Azure Active Directory SSO-t a különálló önálló hitelesítő adatok konfigurálása helyett. Azure Security Center identitás és hozzáférési javaslatok használata.
 
-* [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -290,9 +290,9 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: engedélyezze Azure Active Directory multi-Factor Authentication (MFA) használatát, és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait a Data Lake Analytics erőforrások védelméhez.
 
-* [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Identitás és hozzáférés figyelése Azure Security Centeron belül](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -302,9 +302,9 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: emelt szintű jogosultságokat igénylő felügyeleti feladatokhoz használjon biztonságos, Azure által felügyelt munkaállomás (más néven privilegizált hozzáférési munkaállomás vagy Paw) használatát.
 
-* [A biztonságos, Azure által felügyelt munkaállomások ismertetése](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+* [A biztonságos, Azure által felügyelt munkaállomások ismertetése](../active-directory/devices/concept-azure-managed-workstation.md)
 
-* [Az Azure AD MFA engedélyezése](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Az Azure AD MFA engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -314,9 +314,9 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: Azure Active Directory biztonsági jelentések használata naplók és riasztások generálásához, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-* [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -326,7 +326,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: az Azure ad nevesített helyeinek használata az IP-címtartományok vagy országok/régiók adott logikai csoportjaihoz való hozzáférés engedélyezéséhez.
 
-* [Az Azure AD nevesített helyeinek konfigurálása](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Az Azure AD nevesített helyeinek konfigurálása](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -336,7 +336,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) részletesen szabályozza az ügyfelek hozzáférését Data Lake Analytics erőforrásokhoz.
 
-* [Azure AD-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -346,9 +346,9 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: az Azure ad olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD identitás-és hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-* [Az Azure AD jelentéskészítés ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
-* [Az Azure AD-identitás és a hozzáférési felülvizsgálatok használata](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Az Azure AD-identitás és a hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -358,7 +358,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: a Data Lake Analytics és Azure Active Directory diagnosztikai beállításainak engedélyezése, az összes napló küldése egy log Analytics munkaterületre. A kívánt riasztások (például a letiltott titkok elérésére tett kísérletek) konfigurálása Log Analyticson belül.
 
-* [Azure AD-naplók integrálása Azure Monitor naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure AD-naplók integrálása Azure Monitor naplókkal](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -368,11 +368,11 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: a Azure Active Directory kockázatkezelési és identitás-védelmi funkcióinak használatával konfigurálhatja az Data Lake Analytics erőforrásaival kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához engedélyeznie kell az automatikus válaszokat az Azure Sentinel használatával.
 
-* [Az Azure AD kockázatos bejelentkezések megtekintése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -382,7 +382,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: nem alkalmazható; A Ügyfélszéf Azure Data Lake Analytics esetében nem támogatott.
 
-* [Támogatott szolgáltatások és forgatókönyvek általánosan elérhetővé](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Támogatott szolgáltatások és forgatókönyvek általánosan elérhetővé](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -390,13 +390,13 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
+*További információkért lásd [: biztonsági ellenőrzés:](../security/benchmarks/security-control-data-protection.md)adatvédelem.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
 **Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Data Lake Analytics erőforrások nyomon követését.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -406,17 +406,17 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: elkülönítés implementálása különálló előfizetések használatával, különálló biztonsági tartományok felügyeleti csoportjai, például a környezet, az adatérzékenység. A Data Lake Analytics korlátozásával szabályozhatja az alkalmazások és a vállalati környezetek igény szerinti Data Lake Analytics erőforrásaihoz való hozzáférés szintjét. A tűzfalszabályok konfigurálásakor csak a megadott hálózatokon keresztül adatokat kérő alkalmazások férhetnek hozzá a Data Lake Analytics erőforrásaihoz. Az Azure RBAC segítségével szabályozhatja Azure Data Lake Analytics hozzáférését.
 
-* [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-* [Azure szerepköralapú hozzáférés-vezérlés kezelése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
+* [Azure szerepköralapú hozzáférés-vezérlés kezelése](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
-* [Tűzfalszabályok](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
+* [Tűzfalszabályok](/rest/api/datalakeanalytics/firewallrules)
 
-* [Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-powershell)
+* [Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel](./data-lake-analytics-manage-use-powershell.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -428,9 +428,9 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és védelmet nyújt az ügyfelek adatvesztése és a kitettség ellen. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
-* [Azure Storage-fiókok biztonságossá tétele](https://docs.microsoft.com/azure/storage/common/storage-security-guide)
+* [Azure Storage-fiókok biztonságossá tétele](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -440,7 +440,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: Microsoft Azure az erőforrások alapértelmezés szerint a TLS 1,2-et fogják egyeztetni. Győződjön meg arról, hogy a Data Lake Analyticshoz csatlakozó ügyfelek a TLS 1,2-es vagy újabb használatával is megegyeznek.
 
-* [Példa műveleti lista](https://docs.microsoft.com/rest/api/datalakeanalytics/operations/list)
+* [Példa műveleti lista](/rest/api/datalakeanalytics/operations/list)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -450,7 +450,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: az adatazonosítási funkciók még nem érhetők el Azure Data Lake Analytics erőforrásokhoz. Külső gyártótól származó megoldás implementálása, ha az szükséges a megfelelőség szempontjából.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -460,7 +460,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata annak szabályozására, hogy a felhasználók hogyan használják a szolgáltatást.
 
-* [Azure-RBAC kezelése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
+* [Azure-RBAC kezelése](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -478,7 +478,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: az adattárolás az alapértelmezett Data Lake Storage Gen1 fiókban történik. Az inaktív adatok esetében Data Lake Storage Gen1 támogatja a "bekapcsolva, alapértelmezés szerint", transzparens titkosítást.
 
-* [Azure Data Lake Storage Gen1ban lévő adattitkosítás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption)
+* [Azure Data Lake Storage Gen1ban lévő adattitkosítás](../data-lake-store/data-lake-store-encryption.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -488,7 +488,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure Data Lake Analytics erőforrások üzemi példányain lépnek életbe.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -496,7 +496,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](/azure/security/benchmarks/security-control-vulnerability-management).*
+*További információ [: Security Control: sebezhetőségi kezelés](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
@@ -504,7 +504,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 A Microsoft a biztonsági rések kezelését a Azure Data Lake Analytics támogató mögöttes rendszereken hajtja végre.
 
-* [Azure Security Center javaslatok ismertetése](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+* [Azure Security Center javaslatok ismertetése](../security-center/recommendations-reference.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -546,7 +546,7 @@ A Microsoft a biztonsági rések kezelését a Azure Data Lake Analytics támoga
 
 ## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
@@ -554,11 +554,11 @@ A Microsoft a biztonsági rések kezelését a Azure Data Lake Analytics támoga
 
 Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is felderíthető, erősen ajánlott Azure Resource Manager erőforrások létrehozása és használata.
 
-* [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 
-* [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription)
 
-* [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -568,7 +568,7 @@ Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is fel
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -582,11 +582,11 @@ Emellett az Azure Policy használatával korlátozásokat állíthat be az ügyf
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-* [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -608,9 +608,9 @@ Emellett az Azure Policy használatával korlátozásokat állíthat be az ügyf
 
 Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -646,9 +646,9 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -666,7 +666,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: az Azure feltételes hozzáférésének konfigurálása a felhasználók "Microsoft Azure felügyelet" alkalmazáshoz való hozzáférésének tiltása a Azure Resource Manager való interakcióra.
 
-* [Feltételes hozzáférés konfigurálása az ARM-hozzáférés blokkolásához](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Feltételes hozzáférés konfigurálása az ARM-hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -690,16 +690,16 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](/azure/security/benchmarks/security-control-secure-configuration).*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. DataLakeAnalytics" névtérben egyéni szabályzatok létrehozásához a Azure Data Lake Analytics konfigurációjának naplózásához vagy érvényesítéséhez. Használhatja a Azure Data Lake Analyticshoz kapcsolódó beépített szabályzat-definíciókat is, például a következőket:
 - A Data Lake Analytics lévő diagnosztikai naplókat engedélyezni kell
 
-* [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias)
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -717,9 +717,9 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: az Azure Policy [megtagadás] és a [telepítés, ha nem létezik] az Azure-erőforrások biztonságos beállításainak betartatására használható.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy effektusok ismertetése](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -737,9 +737,9 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódokat, például az egyéni Azure-szabályzatokat, Azure Resource Manager sablonokat, a kívánt állapot-konfigurációs parancsfájlokat stb. Az Azure DevOps felügyelt erőforrásainak eléréséhez engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára, ha az integrálva van az Azure DevOps, vagy Active Directory, ha a TFS integrálva van.
 
-* [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-* [Engedélyek és csoportok az Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+* [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -773,7 +773,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. DataLakeAnalytics" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. Az Azure Policy [audit], [megtagadás] és [telepítés ha nem létezik] használatával automatikusan kényszerítheti ki a Azure Data Lake Analytics-erőforrások konfigurációit.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -815,7 +815,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
@@ -845,17 +845,17 @@ Az Azure-erőforrásokra feltöltött tartalom előzetes vizsgálata, például 
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
 **Útmutató**: Data Lake Analytics a feladatok naplóit és az adatok kimenetét az alapul szolgáló Data Lake Storage Gen1 szolgáltatás tárolja. Különböző módszerekkel másolhatja az Adatmásolást, beleértve a ADLCopy, a Azure PowerShell vagy a Azure Data Factoryt is. A Azure Automation használatával automatikusan biztonsági másolatot készíthet az adatbázisokról.
 
-* [Azure Data Lake Storage Gen1 erőforrások kezelése Storage Explorer használatával](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-in-storage-explorer)
+* [Azure Data Lake Storage Gen1 erőforrások kezelése Storage Explorer használatával](../data-lake-store/data-lake-store-in-storage-explorer.md)
 
-* [Adatok másolása az Azure Storage-Blobokból a Azure Data Lake Storage Gen1ba](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)
+* [Adatok másolása az Azure Storage-Blobokból a Azure Data Lake Storage Gen1ba](../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)
 
-* [Azure Automation áttekintése](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Automation áttekintése](../automation/automation-intro.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -865,9 +865,9 @@ Az Azure-erőforrásokra feltöltött tartalom előzetes vizsgálata, például 
 
 **Útmutató**: Data Lake Analytics a feladatok naplóit és az adatok kimenetét az alapul szolgáló Data Lake Storage Gen1 szolgáltatás tárolja. Különböző módszerekkel másolhatja az Adatmásolást, beleértve a ADLCopy, a Azure PowerShell vagy a Azure Data Factoryt is.
 
-* [Azure Data Lake Storage Gen1 erőforrások kezelése Storage Explorer használatával](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-in-storage-explorer)
+* [Azure Data Lake Storage Gen1 erőforrások kezelése Storage Explorer használatával](../data-lake-store/data-lake-store-in-storage-explorer.md)
 
-* [Adatok másolása az Azure Storage-Blobokból a Azure Data Lake Storage Gen1ba](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)
+* [Adatok másolása az Azure Storage-Blobokból a Azure Data Lake Storage Gen1ba](../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -885,9 +885,9 @@ Az Azure-erőforrásokra feltöltött tartalom előzetes vizsgálata, például 
 
 **Útmutató**: Data Lake Analytics a Data Lake Storage Gen1 vagy az Azure Storage-ban tárolt biztonsági mentések alapértelmezés szerint támogatják a titkosítást, és nem kapcsolhatók ki. A biztonsági mentéseket bizalmas adatokként kell kezelni, és az alapkonfiguráció részeként alkalmazni kell a megfelelő hozzáférési és adatvédelmi vezérlőket.
 
-* [Az Azure Data Lake Storage Gen1-ben tárolt adatok védelme](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data)
+* [Az Azure Data Lake Storage Gen1-ben tárolt adatok védelme](../data-lake-store/data-lake-store-secure-data.md)
 
-* [Az Azure Storage-beli adathozzáférés engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-auth)
+* [Az Azure Storage-beli adathozzáférés engedélyezése](../storage/common/storage-auth.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -895,7 +895,7 @@ Az Azure-erőforrásokra feltöltött tartalom előzetes vizsgálata, például 
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -917,9 +917,9 @@ Az Azure-erőforrásokra feltöltött tartalom előzetes vizsgálata, például 
 
 Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
-* [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-* [Címkék használata az erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -939,7 +939,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-* [A Azure Security Center biztonsági kapcsolattartó beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -949,9 +949,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: az Azure Security Center-riasztások és javaslatok exportálása a folyamatos exportálás funkcióval az Azure-erőforrásokkal kapcsolatos kockázatok azonosítása érdekében. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 
-* [Folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md)
 
-* [Riasztások továbbítása az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Riasztások továbbítása az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -961,7 +961,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan elindíthatja a válaszokat az "Logic apps" használatával a biztonsági riasztások és az Azure-erőforrások védelme érdekében javasolt javaslatok alapján.
 
-* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -969,7 +969,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
@@ -985,5 +985,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 4dbae9d08a4adf250c9317b392d80f8e04c53d56
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766317"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951009"
 ---
 ::: zone target="docs"
 
@@ -116,19 +116,19 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 A Data Box-megosztásokhoz történő csatlakozás után a következő lépés az adatok másolása. Az adatok másolásának megkezdése előtt tekintse át a következőket:
 
 * Ügyeljen rá, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Másolja a VHD-kat a lapblobba. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
+* Mindig hozzon létre egy mappát a megosztás alatt azokhoz a fájlokhoz, amelyeket másolni szeretne, majd másolja a fájlokat a létrehozott mappába. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
 * Az adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure-tárfiók korlátaival](data-box-limits.md#azure-storage-account-size-limits) foglalkozó cikkben ismertetett méretkorlátoknak.
-* Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
+* Ha meg szeretné őrizni a metaadatokat (ACL-ek, időbélyegek, fájlattribútumok) az adatok az Azure Filesba történő átvitelekor, kövesse a [fájlok ACL-jeinek, attribútumainak és időbélyegeinek az Azure Data Box használata esetén történő megőrzését](data-box-file-acls-preservation.md) ismertető szakasz utasításait  
+* Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg más, a Data Boxtól eltérő alkalmazás is feltölti, az a feltöltési feladat meghiúsulásához és az adatok sérüléséhez vezethet.
 * A következő megoldást javasoljuk:
   * Ne használjon egyidejűleg SMB-t és NFS-t.
   * Ne másolja ugyanazokat az adatokat ugyanarra a célhelyre az Azure-ban.
-
   Ilyen esetekben a végeredmény nem garantálható.
-* Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
 
 > [!IMPORTANT]
 > Gondoskodjon róla, hogy megtartja a forrásadatok egy másolatát addig, amíg ellenőrizheti, hogy a Data Box valóban átvitte-e az adatokat az Azure Storage-ba.
 
-Az SMB-megosztáshoz való csatlakozás után kezdje meg az adatok másolását. Az adatok másolásához bármilyen SMB-kompatibilis fájlmásoló eszközt használhat (ilyen például a Robocopy). A Robocopyval több másolási feladat is elindítható. Használja az alábbi parancsot:
+Az SMB-megosztáshoz való csatlakozás után kezdje meg az adatok másolását. Az adatok másolásához bármilyen SMB-kompatibilis fájlmásoló eszközt (pl.: Robocopy) használhat. A Robocopyval több másolási feladat is elindítható. Használja az alábbi parancsot:
 
 ```console
 robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>
