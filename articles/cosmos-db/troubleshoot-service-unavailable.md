@@ -7,12 +7,12 @@ ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 749592b778612c6903c9c15e336de3fb00978199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40787e1b7c40e5c238b2e400f6b449ad8963dd1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870867"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277132"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable-exceptions"></a>Azure Cosmos DB szolgáltatás nem elérhető kivételeinek diagnosztizálása és megoldása
 Az SDK nem tudott csatlakozni a Azure Cosmos DBhoz.
@@ -21,7 +21,7 @@ Az SDK nem tudott csatlakozni a Azure Cosmos DBhoz.
 A következő lista a szolgáltatás nem elérhető kivételeinek ismert okait és megoldásait tartalmazza.
 
 ### <a name="the-required-ports-are-being-blocked"></a>A szükséges portok blokkolása folyamatban van
-Ellenőrizze, hogy az összes [szükséges port](performance-tips-dotnet-sdk-v3-sql.md#networking) engedélyezve van-e.
+Ellenőrizze, hogy az összes [szükséges port](sql-sdk-connection-modes.md#service-port-ranges) engedélyezve van-e.
 
 ### <a name="client-side-transient-connectivity-issues"></a>Ügyféloldali átmeneti kapcsolódási problémák
 A szolgáltatás nem érhető el kivételek lehetnek olyan átmeneti kapcsolódási problémák, amelyek időtúllépést okoznak. A forgatókönyvhöz kapcsolódó verem-nyomkövetés általában `TransportException` hibát tartalmaz. Például:

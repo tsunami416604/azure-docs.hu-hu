@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dc41d2c13c834657534971041440bb744cfca38
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728998"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319827"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric felügyelt fürtök gyakran ismételt kérdései
 
@@ -41,7 +41,7 @@ Az SLA nem változik az aktuális Service Fabric erőforrás-modellből.
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Mi a különbség az alapszintű és a standard SKU-fürt között?
 
-Egy alapszintű SKU-fürt azt jelenti, hogy a konfigurációk többségét a Service Fabric erőforrás-szolgáltató biztosítja. Az alapszintű SKU-fürtök tesztelésre és üzem előtti környezetekre való használatra készültek. A standard SKU-fürtök lehetővé teszik a felhasználók számára, hogy az igényeiknek megfelelő módon konfigurálja a fürtöt. További információ: [Service Fabric felügyelt fürt SKU](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) -ban további részleteket.
+Egy alapszintű SKU-fürt azt jelenti, hogy a konfigurációk többségét a Service Fabric erőforrás-szolgáltató biztosítja. Az alapszintű SKU-fürtök tesztelésre és üzem előtti környezetekre való használatra készültek. A standard SKU-fürtök lehetővé teszik a felhasználók számára, hogy az igényeiknek megfelelő módon konfigurálja a fürtöt. További információ: [Service Fabric felügyelt fürt SKU](./overview-managed-cluster.md#service-fabric-managed-cluster-skus) -ban további részleteket.
 
 ## <a name="cluster-deployment-and-management"></a>Fürt üzembe helyezése és kezelése
 
@@ -66,7 +66,7 @@ Az előzetes verzióban az összes futtatókörnyezet frissítése automatikusan
 
 ### <a name="is-there-a-local-development-experience-for-service-fabric-managed-clusters"></a>Létezik-e helyi fejlesztési élmény Service Fabric felügyelt fürtökhöz?
 
-A helyi fejlesztési élmény változatlan marad a meglévő Service Fabric fürtökön. További információ: .NET- [alkalmazás létrehozása](https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-dotnet) a helyi fejlesztési felülettel kapcsolatos további részletekért.
+A helyi fejlesztési élmény változatlan marad a meglévő Service Fabric fürtökön. További információ: .NET- [alkalmazás létrehozása](./service-fabric-quickstart-dotnet.md) a helyi fejlesztési felülettel kapcsolatos további részletekért.
 
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>Telepíthetem az alkalmazásaikat Azure Resource Manager erőforrásként?
 

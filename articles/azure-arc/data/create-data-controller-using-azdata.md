@@ -1,6 +1,6 @@
 ---
-title: Adatvezérlő létrehozása az Azure-beli adatparancssori felület (azdata) használatával
-description: Hozzon létre egy Azure arc-adatkezelőt egy tipikus, többcsomópontos Kubernetes-fürtön, amelyet már létrehozott az Azure-beli adatparancssori felület (azdata) használatával.
+title: Adatvezérlő létrehozása az használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
+description: Hozzon létre egy Azure arc-adatkezelőt egy tipikus, több csomópontos Kubernetes-fürtön, amelyet már létrehozott a használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb5fac5987a36c425b9e130df17412e5ad902345
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761685"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310939"
 ---
-# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure-beli ív-adatkezelő létrehozása az Azure-beli adatparancssori felület (azdata) használatával
+# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure arc-adatkezelő létrehozása a használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -24,9 +24,9 @@ ms.locfileid: "91761685"
 
 Tekintse át a következő témakört: [Az Azure arc-adatkezelő létrehozása](create-data-controller.md) az áttekintési információkhoz.
 
-Az Azure-beli ív adatkezelő az Azure-beli adatcli használatával történő létrehozásához telepítenie kell az Azure-beli adatcli-t.
+Ha az Azure arc-adatkezelőt a használatával szeretné létrehozni, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] telepítenie kell a alkalmazást.
 
-   [Az Azure-beli adatcli telepítése](install-client-tools.md)
+   [Telepítse a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](install-client-tools.md)
 
 Függetlenül attól, hogy melyik cél platformot választja, a következő környezeti változókat kell megadnia az adatkezelő rendszergazda felhasználójának létrehozása előtt. A hitelesítő adatokat megadhatja más felhasználóknak, akiknek szükségük van rendszergazdai hozzáférésre az adatkezelőhöz.
 

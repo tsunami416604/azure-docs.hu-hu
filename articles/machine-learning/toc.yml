@@ -520,9 +520,6 @@
           href: how-to-debug-pipelines.md
         - name: Folyamatadatok naplózása az Application Insightsba
           href: how-to-log-pipelines-application-insights.md
-        - name: Párhuzamos futtatási lépés használata
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-use-parallel-run-step.md
         - name: Párhuzamos futtatási lépés hibakeresése és hibaelhárítása
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md

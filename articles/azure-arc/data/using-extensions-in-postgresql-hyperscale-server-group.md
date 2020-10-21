@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b9c3c66e58ae51773a959aba0b2c76d97b44445
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631766"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309496"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>PostgreSQL-bővítmények használata az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálói csoportban
 
@@ -57,11 +57,11 @@ azdata arc postgres server edit -n <name of your postgresql server group> --exte
 #### <a name="get-the-list-of-extensions-enabled"></a>Az engedélyezett bővítmények listájának beolvasása:
 Futtassa az alábbi parancs egyikét.
 
-##### <a name="with-azdata"></a>Azdata
+##### <a name="with-azure-data-cli-azdata"></a>A [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 ```console
 azdata arc postgres server show -n <server group name>
 ```
-Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Példa:
+Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Például:
 ```console
 "engine": {
       "extensions": [
@@ -78,7 +78,7 @@ Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Példa
 ```console
 kubectl describe postgresql-12s/postgres02
 ```
-Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Példa:
+Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Például:
 ```console
 Engine:
     Extensions:

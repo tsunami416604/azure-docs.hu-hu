@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e0fdbc50dd36e4ea23903a5929735c1c83bd394
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88752907"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320343"
 ---
 # <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>Rövid útmutató: az első statikus webalkalmazás felépítése az Azure CLI használatával
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverz
 - [GitHub](https://github.com)-fiók
 - [GitHubos személyes hozzáférési jogkivonat](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
 - [Azure](https://portal.azure.com) -fiók
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve (2.8.0 és újabb verzió)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve (2.8.0 és újabb verzió)
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
@@ -37,7 +37,7 @@ Ezután váltson az új mappára az alábbi parancs használatával.
 cd my-first-static-web-app
 ```
 
-## <a name="create-a-static-web-app"></a>Statikus Webalkalmazás létrehozása
+## <a name="create-a-static-web-app"></a>Statikus webalkalmazás létrehozása
 
 Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az Azure CLI-ből.
 
@@ -133,7 +133,7 @@ az staticwebapp delete \
     --resource-group my-first-static-web-app
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

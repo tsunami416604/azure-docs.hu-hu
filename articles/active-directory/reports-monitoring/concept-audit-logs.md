@@ -17,12 +17,12 @@ ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 994fe6c5005eeeab1399091dca5f72024fdd7262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812590"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319740"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -35,7 +35,7 @@ A jelentéskészítési architektúra a következő összetevőkből áll:
 - **Tevékenység** 
     - **Bejelentkezések** – a [bejelentkezési jelentés](concept-sign-ins.md) információt nyújt a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
     - **Auditnaplók** – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. A naplók például a felhasználók, alkalmazások, csoportok, szerepkörök és házirendek hozzáadásával vagy eltávolításával kapcsolatos, az Azure AD-ban található összes erőforráson végrehajtott módosítások.
-    - Naplók kiépítés **Provisioning logs**  -  A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) lehetővé teszik az ügyfelek számára, hogy a kiépítési szolgáltatás által végzett tevékenységeket figyeljenek, például egy csoport létrehozását a ServiceNow-ben, vagy egy munkanapokból importált felhasználót. 
+    - Naplók kiépítés **Provisioning logs**  -  A [kiépítési naplók](./concept-provisioning-logs.md) lehetővé teszik az ügyfelek számára, hogy a kiépítési szolgáltatás által végzett tevékenységeket figyeljenek, például egy csoport létrehozását a ServiceNow-ben, vagy egy munkanapokból importált felhasználót. 
 - **Biztonság** 
     - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek. 
     - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.

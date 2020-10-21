@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 26f635525afea289e2e791b802478040a7851eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87486510"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277685"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API fiók rugalmas skálázása
 
@@ -38,7 +38,7 @@ Ha csökkentenie kell a késést, számos lehetőség áll rendelkezésre a mér
 
 A következő szakaszokban az egyes megközelítések előnyeit és hátrányait ismertetjük. Ezután eldöntheti, hogy a legmegfelelőbb stratégia a rendszer skálázási igényeinek, a megoldás általános költségeit és hatékonysági igényeit is kiegyensúlyozza.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Az Azure Portal használata
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>A Azure Portal használata
 
 A Azure Portal használatával méretezheti Azure Cosmos DB Cassandra API fiók erőforrásait. További információ: az [átviteli sebesség kiépítése a tárolók és adatbázisok](set-throughput.md)számára. Ez a cikk az átviteli sebességnek a Azure Portal [adatbázisban](set-throughput.md#set-throughput-on-a-database) vagy [tároló](set-throughput.md#set-throughput-on-a-container) szintjén való beállításának relatív előnyeit ismerteti. Az ezekben a cikkekben említett "adatbázis" és "tároló" kifejezések a Cassandra API a "space" és a "Table" kifejezéssel jelennek meg.
 
@@ -62,7 +62,7 @@ Ennek a megközelítésnek az az előnye, hogy lehetővé teszi, hogy dinamikusa
 
 A standard (manuális) vagy az átviteli sebesség programozott módján kívül az Azure Cosmos-tárolókat is konfigurálhatja az Automatikus méretezéssel kiosztott átviteli sebességben. Az automatikus méretezés automatikusan és azonnal méretezhető a megadott RU-tartományokon belül, a SLA-kat nem veszélyeztetve. További információ: [Azure Cosmos-tárolók és-adatbázisok létrehozása az autoscale](provision-throughput-autoscale.md) cikkben.
 
-Ennek a megközelítésnek az az előnye, hogy ez a legegyszerűbb módszer a méretezési igények kezelésére a rendszeren. Garantálja, hogy **a beállított ru-tartományokon belül**ne alkalmazza a díjszabási korlátozásokat. A hátránya az, hogy ha a rendszer skálázási igénye előre jelezhető, az automatikus skálázás kevésbé költséghatékony módja a skálázási igények kezelésének, mint a fent említett, a testre szabott vezérlési sík vagy az SDK-szintű megoldások használata.
+Ennek a megközelítésnek az az előnye, hogy ez a legegyszerűbb módszer a méretezési igények kezelésére a rendszeren. **A beállított ru-tartományokon belül**nem fogja alkalmazni a díjszabási korlátozásokat. A hátránya az, hogy ha a rendszer skálázási igénye előre jelezhető, az automatikus skálázás kevésbé költséghatékony módja a skálázási igények kezelésének, mint a fent említett, a testre szabott vezérlési sík vagy az SDK-szintű megoldások használata.
 
 Ha a maximális átviteli sebességet (RUs) az CQL használatával szeretné beállítani vagy módosítani, használja a következőt (a térköz/táblanév helyett):
 
@@ -80,6 +80,6 @@ create table <keyspace name>.<table name> (pk int PRIMARY KEY, ck int) WITH cosm
 alter table <keyspace name>.<table name> WITH cosmosdb_autoscale_max_throughput=4000;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedés a [Cassandra API-fiókok, -adatbázisok és -táblák létrehozásával](create-cassandra-api-account-java.md) Java-alkalmazás használatával

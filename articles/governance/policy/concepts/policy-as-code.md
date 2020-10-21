@@ -1,29 +1,29 @@
 ---
-title: Szabályzat tervezése kódmunkafolyamatokként
+title: Azure Policy tervezése kód-munkafolyamatként
 description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-definíciók kódként való üzembe helyezéséhez és az erőforrások automatikus ellenőrzéséhez.
-ms.date: 09/22/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598217"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320612"
 ---
-# <a name="design-policy-as-code-workflows"></a>Szabályzat tervezése kódmunkafolyamatokként
+# <a name="design-azure-policy-as-code-workflows"></a>Azure Policy tervezése kód-munkafolyamatként
 
 Ahogy halad a felhő irányításával, érdemes áttérnie az egyes szabályzat-definíciók manuális felügyeletére a Azure Portal vagy a különböző SDK-k segítségével, hogy a vállalatnál könnyebben kezelhető és ismételhető legyen. A felhőben a rendszerek nagy léptékű kezelésének egyik meghatározó megközelítése a következő:
 
 - Infrastruktúra-kód: a környezeteket definiáló tartalom kezelésének gyakorlata, minden Azure Resource Manager sablonból (ARM-sablonokból), hogy Azure Policy definíciókat az Azure-tervezetekhez, mint a forráskód.
 - DevOps: a felhasználók, a folyamatok és a termékek Uniója, amelyek lehetővé teszik az értékek folyamatos teljesítését a végfelhasználók számára.
 
-A szabályzat mint kód az ötletek kombinációja. Lényegében tartsa meg a házirend-definíciókat a forrás vezérlőelemben, és valahányszor változás történik, tesztelje és ellenőrizze a változást. Ez azonban nem lehet olyan mértékben, hogy a szabályzatok a kód-vagy DevOps is betartsák az infrastruktúrát.
+A kód Azure Policy az ötletek kombinációja. Lényegében tartsa meg a házirend-definíciókat a forrás vezérlőelemben, és valahányszor változás történik, tesztelje és ellenőrizze a változást. Ez azonban nem lehet olyan mértékben, hogy a szabályzatok a kód-vagy DevOps is betartsák az infrastruktúrát.
 
 Az érvényesítési lépésnek más folyamatos integrációs vagy folyamatos üzembe helyezési munkafolyamatok összetevőjének is kell lennie. Ilyenek például az alkalmazás-környezet vagy a virtuális infrastruktúra üzembe helyezése. Azáltal, hogy Azure Policy érvényesítéssel a létrehozási és üzembe helyezési folyamat korai összetevőjét, az alkalmazás-és műveleti csapatok észlelik, ha a módosítások nem megfelelőek, jóval azelőtt, hogy túl későn történnek, és éles környezetben próbálnak üzembe helyezni.
 
 ## <a name="definitions-and-foundational-information"></a>Definíciók és alapvető információk
 
-Mielőtt beolvassa a szabályzat részleteit a kód munkafolyamata során, tekintse át az alábbi definíciókat és példákat:
+Mielőtt beolvassa a Azure Policy as Code-munkafolyamatának részleteit, tekintse át az alábbi definíciókat és példákat:
 
 - [Szabályzatdefiníció](./definition-structure.md)
 - [Kezdeményezési definíció](./initiative-definition-structure.md)
@@ -43,10 +43,10 @@ Emellett tekintse át a [Azure Policy-erőforrások exportálása](../how-to/exp
 
 ## <a name="workflow-overview"></a>A munkafolyamat áttekintése
 
-A szabályzatok javasolt általános munkafolyamata a következő ábrának megfelelően néz ki:
+A kód Azure Policy javasolt általános munkafolyamata az alábbi ábrához hasonlóan néz ki:
 
-:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Diagram, amely megjeleníti a szabályzatot, amely a Create (létrehozás) kód munkafolyamat-mezőiből áll a telepítésre." border="false":::
-   A szabályzatot a kód munkafolyamat-mezőiként ábrázoló diagram. A létrehozás kiterjed a szabályzat és a kezdeményezési definíciók létrehozására. A teszt letiltotta a hozzárendelést a kényszerítési módban. A megfelelőségi állapotra vonatkozó átjáró-ellenőrzés után a hozzárendelések M I/S I/szervizelését erőforrásainak megadása után kell megadni.  Az üzembe helyezés magában foglalja a hozzárendelésnek a kényszerítési módban való frissítését.
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Az a diagram, amely Azure Policy kód-munkafolyamati mezőket mutatja a Létrehozásból a telepítésbe való teszteléshez." border="false":::
+   A Azure Policy kód-munkafolyamat mezőinek ábrája. A létrehozás kiterjed a szabályzat és a kezdeményezési definíciók létrehozására. A teszt letiltotta a hozzárendelést a kényszerítési módban. A megfelelőségi állapotra vonatkozó átjáró-ellenőrzés után a hozzárendelések M I/S I/szervizelését erőforrásainak megadása után kell megadni.  Az üzembe helyezés magában foglalja a hozzárendelésnek a kényszerítési módban való frissítését.
 :::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>Szabályzat-definíciók létrehozása és frissítése
@@ -56,22 +56,19 @@ A szabályzat-definíciók JSON használatával jönnek létre, és a forrás ve
 ```text
 .
 |
-|- policies/  ________________________ # Root folder for policies
+|- policies/  ________________________ # Root folder for policy resources
 |  |- policy1/  ______________________ # Subfolder for a policy
 |     |- policy.json _________________ # Policy definition
 |     |- policy.parameters.json ______ # Policy definition of parameters
 |     |- policy.rules.json ___________ # Policy rule
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
-|
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy definition
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy definition
 |  |- policy2/  ______________________ # Subfolder for a policy
 |     |- policy.json _________________ # Policy definition
 |     |- policy.parameters.json ______ # Policy definition of parameters
 |     |- policy.rules.json ___________ # Policy rule
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy definition
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy definition
 |
 ```
 
@@ -89,17 +86,15 @@ Hasonlóképpen, a kezdeményezéseknek saját JSON-fájljuk és kapcsolódó f�
 |     |- policyset.json ______________ # Initiative definition
 |     |- policyset.definitions.json __ # Initiative list of policies
 |     |- policyset.parameters.json ___ # Initiative definition of parameters
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy initiative
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy initiative
 |
 |  |- init2/ _________________________ # Subfolder for an initiative
 |     |- policyset.json ______________ # Initiative definition
 |     |- policyset.definitions.json __ # Initiative list of policies
 |     |- policyset.parameters.json ___ # Initiative definition of parameters
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy initiative
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy initiative
 |
 ```
 
@@ -114,7 +109,7 @@ A hozzárendelésnek _letiltott_ [enforcementMode](./assignment-structure.md#enf
 > [!NOTE]
 > Míg a kényszerítési mód hasznos, nem helyettesíti a házirend-definíciók alapos tesztelését különféle feltételek mellett. A házirend-definíciót meg kell vizsgálni, `PUT` és `PATCH` REST API hívásokat, megfelelőségi és nem megfelelő erőforrásokat, valamint a peremhálózati eseteket, például az erőforrásból hiányzó tulajdonságot.
 
-A hozzárendelés üzembe helyezését követően a házirend-SDK vagy a [Azure Policy megfelelőség-ellenőrzés GitHub művelettel](https://github.com/marketplace/actions/azure-policy-compliance-scan) szerezheti be az új hozzárendelés [megfelelőségi adatait](../how-to/get-compliance-data.md) . A házirendek és hozzárendelések teszteléséhez használt környezetnek megfelelő és nem megfelelő erőforrásokkal kell rendelkeznie.
+A hozzárendelés üzembe helyezése után használja az Azure Policy SDK-t, a [Azure Policy megfelelőségi vizsgálat GitHub-műveletét](https://github.com/marketplace/actions/azure-policy-compliance-scan)vagy az [Azure-folyamatok biztonsági és megfelelőség-értékelési feladatát](/azure/devops/pipelines/tasks/deploy/azure-policy) , hogy az új hozzárendelés [megfelelőségi adatai beolvassák](../how-to/get-compliance-data.md) . A házirendek és hozzárendelések teszteléséhez használt környezetnek megfelelő és nem megfelelő erőforrásokkal kell rendelkeznie.
 A kód helyes egységének teszteléséhez hasonlóan szeretné tesztelni, hogy az erőforrások a várt módon működnek-e, és hogy nem rendelkezik-e hamis pozitív vagy hamis negatív értékekkel. Ha csak a vártnál teszteli és érvényesíti a műveletet, előfordulhat, hogy a szabályzat váratlanul és azonosítatlan hatással van. További információ: [új Azure Policy definíció hatásának kiértékelése](./evaluate-impact.md).
 
 ### <a name="enable-remediation-tasks"></a>Szervizelési feladatok engedélyezése
@@ -138,13 +133,13 @@ Az összes ellenőrzési kapu befejezése után frissítse a hozzárendelést az
 
 ## <a name="process-integrated-evaluations"></a>Integrált értékelések feldolgozása
 
-A szabályzatok általános munkafolyamata olyan házirendek és kezdeményezések fejlesztésére és üzembe helyezésére szolgál, amelyek méretezhetők a környezetben. A szabályzat kiértékelése azonban a telepítési folyamat részeként az Azure-ban üzembe helyezett vagy az erőforrásokat létrehozó munkafolyamatok részét képezi, például alkalmazások üzembe helyezése vagy ARM-sablonok futtatása az infrastruktúra létrehozásához.
+A kóddal való Azure Policy általános munkafolyamata olyan házirendek és kezdeményezések fejlesztésére és üzembe helyezésére szolgál, amelyek méretezhetők a környezetekben. A szabályzat kiértékelése azonban a telepítési folyamat részeként az Azure-ban üzembe helyezett vagy az erőforrásokat létrehozó munkafolyamatok részét képezi, például alkalmazások üzembe helyezése vagy ARM-sablonok futtatása az infrastruktúra létrehozásához.
 
 Ezekben az esetekben az alkalmazás vagy az infrastruktúra üzembe helyezését tesztelési előfizetésre vagy erőforráscsoporthoz kell elvégezni, ezért az adott hatókörre vonatkozó házirend-kiértékelést kell végrehajtani az összes meglévő házirend és kezdeményezés ellenőrzésének ellenőrzéséhez. Habár előfordulhat, hogy a **enforcementMode** _le vannak tiltva_ az ilyen környezetben, érdemes korán tudni, ha egy alkalmazás vagy infrastruktúra üzembe helyezése már nem sérti a szabályzat-definíciókat. Ennek a szabályzatnak a kiértékelése ezért a munkafolyamatok egyik lépése, valamint a nem megfelelő erőforrások létrehozására szolgáló sikertelen telepítések.
 
 ## <a name="review"></a>Áttekintés
 
-Ez a cikk ismerteti a szabályzatok általános munkafolyamatát, valamint azt is, hogy a szabályzatok kiértékelése más üzembe helyezési munkafolyamatok része legyen. Ezt a munkafolyamatot bármely olyan környezetben felhasználhatja, amely támogatja a parancsfájlokon alapuló lépéseket és az automatizálást az eseményindítók alapján.
+Ez a cikk a kód Azure Policy általános munkafolyamatát ismerteti, valamint azt is, hogy a szabályzatok kiértékelése más üzembe helyezési munkafolyamatok része legyen. Ezt a munkafolyamatot bármely olyan környezetben felhasználhatja, amely támogatja a parancsfájlokon alapuló lépéseket és az automatizálást az eseményindítók alapján. A jelen munkafolyamat GitHubon való használatáról szóló oktatóanyagért lásd [: oktatóanyag: Azure Policy implementálása kódként a GitHub](../tutorials/policy-as-code-github.md)használatával.
 
 ## <a name="next-steps"></a>Következő lépések
 

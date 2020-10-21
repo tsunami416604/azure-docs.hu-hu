@@ -5,15 +5,15 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43206fbc956602ddaf189f45648cf8a44a3dd143
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258309"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277317"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v4-hez
 
@@ -33,19 +33,12 @@ A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőme
 
 Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témakört kérdezi le? vegye figyelembe a következő lehetőségeket:
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 * **Csatlakoztatási mód: közvetlen mód használata**
 <a id="direct-connection"></a>
     
-    Az ügyfél Azure Cosmos DBhoz való csatlakozásának módja fontos hatással van a teljesítményre, különösen az ügyféloldali késések tekintetében. A csatlakozás mód az ügyfél konfigurálásához rendelkezésre álló legfontosabb konfigurációs beállítás. Azure Cosmos DB Java SDK v4 esetén a két elérhető kapcsolattípus a következő:  
-
-    * Közvetlen mód (alapértelmezett)      
-    * Átjáró üzemmód
-
-    Ezek a kapcsolódási módok lényegében feltétele az adatsík által igényelt útvonalakat – a dokumentumok olvasását és írását – az ügyfélszámítógépről a Azure Cosmos DB háttérbe tartozó partícióknak kell elvégeznie. A legjobb teljesítmény érdekében általában a közvetlen mód az előnyben részesített megoldás, amely lehetővé teszi, hogy az ügyfél közvetlenül a Azure Cosmos DB háttérbeli partíciókkal nyissa meg a TCP-kapcsolatokat, és küldje el a *Direct*ly-t, és ne legyen közvetítő. Ezzel szemben az átjáró módban az ügyfél által kért kérelmek átirányítva egy úgynevezett "átjáró" kiszolgálóra a Azure Cosmos DB előtér-kiszolgálón, amely a Azure Cosmos DB háttérbeli megfelelő partíció (k) re küldi a kéréseit. Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró mód egy további hálózati ugrást (ügyfél – átjáró és partíciós átjáró) is magában foglal minden alkalommal, amikor az összes adat beolvasása vagy írása Azure Cosmos DB. Emiatt a közvetlen mód jobb teljesítményt nyújt kevesebb hálózati ugrás miatt.
-
-    Az adatsík-kérelmek csatlakoztatási módja a *directMode ()* vagy a *gatewayMode ()* metódusok használatával van konfigurálva a Azure Cosmos db ügyfél-szerkesztőben az alább látható módon. Mindkét mód alapértelmezett beállításokkal való konfigurálásához a metódus argumentum nélkül hívható meg. Ellenkező esetben adja át a konfigurációs beállítások osztály példányát argumentumként (*DirectConnectionConfig* for *directMode ()*,  *GatewayConnectionConfig* for *gatewayMode (*).)
+    A Java SDK alapértelmezett csatlakoztatási módja a közvetlen. A *directMode ()* vagy a *gatewayMode ()* metódussal konfigurálhatja a csatlakoztatási módot az ügyfél-építőben az alább látható módon. Mindkét mód alapértelmezett beállításokkal való konfigurálásához a metódus argumentum nélkül hívható meg. Ellenkező esetben adja át a konfigurációs beállítások osztály példányát argumentumként (*DirectConnectionConfig* a *directMode ()*,  *GatewayConnectionConfig* for *gatewayMode (*).). Ha többet szeretne megtudni a különböző csatlakozási lehetőségekről, tekintse meg a [kapcsolódási módokat](sql-sdk-connection-modes.md) ismertető cikket.
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
 
@@ -320,7 +313,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     További információ: [Azure Cosmos db indexelési házirendek](indexing-policies.md).
 
-## <a name="throughput"></a>Teljesítmény
+## <a name="throughput"></a>Átviteli sebesség
 <a id="measure-rus"></a>
 
 * **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
@@ -372,4 +365,4 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partition-data.md)című témakört.
+Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partitioning-overview.md)című témakört.

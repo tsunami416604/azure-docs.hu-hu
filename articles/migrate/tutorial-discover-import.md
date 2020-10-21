@@ -3,12 +3,12 @@ title: Helyszíni kiszolgálók értékelése az importált CSV-fájllal Azure M
 description: Ismerteti, hogyan lehet felderíteni a helyszíni kiszolgálókat az Azure-ba való áttelepítéshez egy importált CSV-fájllal Azure Migrate Server Assessment használatával
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30f17bb6b22d4d19cf225aa52d8284f5306a44ee
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604223"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308388"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Oktatóanyag: kiszolgálók értékelése importált CSV-fájl használatával
 
@@ -203,4 +203,4 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Létrehozott egy Azure Migrate projektet 
-> * Egy importált CSV-fájlt használó felderített kiszolgálók. Most futtasson egy értékelést a [VMWare virtuális gép Azure-beli virtuális gépekre való áttelepítéséről](tutorial-assess-vmware.md).
+> * Egy importált CSV-fájlt használó felderített kiszolgálók. Most futtasson egy értékelést a [VMWare virtuális gép Azure-beli virtuális gépekre való áttelepítéséről](./tutorial-assess-vmware-azure-vm.md).

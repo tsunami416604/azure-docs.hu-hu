@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665395"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320715"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
 
@@ -40,13 +40,20 @@ Csatlakoztathat egy Azure Notification hub-t a kommunikációs szolgáltatások 
 
 A kommunikációs szolgáltatások az Azure Notification hub-t áteresztő szolgáltatásként használják a platform-specifikus leküldéses értesítési szolgáltatásokkal való kommunikációhoz a [Direct Send](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API használatával. Ez lehetővé teszi a meglévő Azure Notification hub-erőforrások és-konfigurációk újrafelhasználását, hogy alacsony késésű, megbízható hívási értesítéseket nyújtson az alkalmazásaihoz.
 
+> [!NOTE]
+> Jelenleg csak a leküldéses értesítések hívása támogatott.
+
 ### <a name="notification-hub-provisioning"></a>Értesítési központ kiépítés 
 
-Ha Notification Hubs használatával szeretne leküldéses értesítéseket küldeni az ügyféleszközök számára, [hozzon létre egy értesítési](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal) központot a kommunikációs szolgáltatások erőforrásával megegyező előfizetésen belül. Az Azure Notification Hubs-t konfigurálni kell a használni kívánt platform Notifications szolgáltatáshoz. Ha meg szeretné tudni, hogyan kérhet le leküldéses értesítéseket az ügyfélalkalmazás Notification Hubsről, tekintse meg a [Notification Hubs első lépéseivel foglalkozó](https://docs.microsoft.com/azure/notification-hubs/ios-sdk-get-started) témakört, és válassza ki a cél ügyféloldali platformot a lap tetején található legördülő listából.
+Ha Notification Hubs használatával szeretne leküldéses értesítéseket küldeni az ügyféleszközök számára, [hozzon létre egy értesítési](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal) központot a kommunikációs szolgáltatások erőforrásával megegyező előfizetésen belül. Az Azure Notification Hubs-t konfigurálni kell a használni kívánt platform Notifications szolgáltatáshoz. Ha meg szeretné tudni, hogyan kérhet le leküldéses értesítéseket az ügyfélalkalmazás Notification Hubsről, tekintse meg a [Notification Hubs első lépéseivel foglalkozó](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) témakört, és válassza ki a cél ügyféloldali platformot a lap tetején található legördülő listából.
 
-Miután konfigurálta az értesítési központot, társíthatja azt a kommunikációs szolgáltatások erőforrásaihoz úgy, hogy a Azure Resource Manager ügyfelet vagy a Azure Portalon keresztül megadja a hub kapcsolati karakterláncát. A kapcsolatok karakterláncának "Send" engedélyeket kell tartalmaznia. Javasoljuk, hogy hozzon létre egy másik hozzáférési szabályzatot, és csak az Ön központjának megfelelő engedélyeket küldje el. További információ a [Notification Hubs biztonsági és hozzáférési szabályzatokról](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)
+> [!NOTE]
+> Jelenleg a APNs és az FCM platform támogatott.
 
-> Megjegyzés: Apple Push Notification Service VOIP-értesítések engedélyezéséhez be kell állítania az értesítési központ nevét az alkalmazáscsomag AZONOSÍTÓjának az utótaggal való megadása érdekében `.voip` . Lásd: [a APNS VoIP használata a Notification Hubson](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
+Miután konfigurálta az értesítési központot, hozzárendelheti a kommunikációs szolgáltatások erőforrásához úgy, hogy a Azure Resource Manager ügyfelet vagy a Azure Portalon keresztül a hub kapcsolati karakterláncát adja meg. A kapcsolatok karakterláncának "Send" engedélyeket kell tartalmaznia. Javasoljuk, hogy hozzon létre egy másik hozzáférési szabályzatot, és csak az Ön központjának megfelelő engedélyeket küldje el. További információ a [Notification Hubs biztonsági és hozzáférési szabályzatokról](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)
+
+> [!IMPORTANT]
+> Apple Push Notification Service VOIP-értesítések engedélyezéséhez be kell állítania az értesítési központ nevét az alkalmazáscsomag AZONOSÍTÓjának az utótaggal való megadásához `.voip` . Lásd: [a APNS VoIP használata a Notification Hubson](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Az értesítési központ konfigurálása a Azure Resource Manager ügyfél használatával
 
@@ -68,11 +75,14 @@ A portálon navigáljon az Azure kommunikációs szolgáltatások erőforrásaih
 
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Ábra, amely bemutatja, hogyan integrálódik a kommunikációs szolgáltatások a Event Grid.":::
 
+> [!NOTE]
+> Ha az Azure Notification hub kapcsolati karakterláncát frissíti, a kommunikációs szolgáltatások erőforrását is frissíteni kell.
+
 #### <a name="device-registration"></a>Eszközregisztráció 
 
 Tekintse át a [hanghívási](../quickstarts/voice-video-calling/getting-started-with-calling.md) rövid útmutatót, amelyből megtudhatja, hogyan regisztrálja az eszközt a kommunikációs szolgáltatásokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](https://docs.microsoft.com/azure/event-grid/overview)
 * Ha többet szeretne megtudni az Azure Notification hub-fogalmakról, tekintse meg az [azure Notification Hubs dokumentációját](https://docs.microsoft.com/azure/notification-hubs/) .

@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/05/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 0db53bcd6516bd52e2796deaa49fe0dd582e0588
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fd795c9e251a7c4c0c8cbea5ce6c48cec3535484
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "76939393"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311756"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Rövid útmutató: Azure Private DNS-zóna létrehozása Azure PowerShell használatával
 
@@ -22,19 +22,13 @@ Ez a cikk végigvezeti az első saját DNS-zóna és -rekord Azure PowerShell-le
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Ha privát DNS-zónát szeretne közzétenni a virtuális hálózaton, meg kell adnia azon virtuális hálózatok listáját, amelyek feloldhatnak rekordokat a zónában.  Ezeket *csatolt* virtuális hálózatoknak nevezzük. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
 
-Ebben a cikkben az alábbiakkal ismerkedhet meg:
-
-> [!div class="checklist"]
-> * Privát DNS-zóna létrehozása
-> * Tesztelési célú virtuális gépek létrehozása
-> * További DNS-rekord létrehozása
-> * A saját zóna tesztelése
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 Ha szeretné, elvégezheti ezt a rövid útmutatót az [Azure CLI](private-dns-getstarted-cli.md)használatával.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
@@ -139,7 +133,7 @@ Most tesztelheti a **Private.contoso.com** saját zónájának névfeloldását.
 A névfeloldás teszteléséhez használhatja a ping parancsot. Ehhez konfigurálja mindkét virtuális gépen a tűzfalat arra, hogy engedélyezze a bejövő ICMP-csomagokat.
 
 1. Csatlakozzon a myVM01 virtuális géphez, és nyisson meg egy Windows PowerShell-ablakot rendszergazdai jogosultsággal.
-2. Futtassa a következő parancsot:
+2. Futtassa az alábbi parancsot:
 
    ```powershell
    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -197,7 +191,7 @@ Ismételje meg ezt a myVM02 gép esetében is.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Az összes erőforrás törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje a **MyAzureResourceGroup** erőforráscsoportot az ebben a cikkben létrehozott erőforrások törléséhez.
 
@@ -205,7 +199,7 @@ Ha már nincs rá szükség, törölje a **MyAzureResourceGroup** erőforráscso
 Remove-AzResourceGroup -Name MyAzureResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure DNS Private Zones forgatókönyvek](private-dns-scenarios.md)

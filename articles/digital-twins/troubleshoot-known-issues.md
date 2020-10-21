@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047641"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311690"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -19,7 +19,7 @@ Ez a cikk az Azure Digital Twins szolgáltatással kapcsolatos ismert problémá
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>"400-ügyfél hiba: helytelen kérelem" a Cloud Shell
 
-A Cloud Shell parancsai időnként sikertelenek lehetnek a következő hibával: "400-es ügyfél-hiba: hibás kérelem az URL-címhez: http://localhost:50342/oauth2/token ", amelyet a teljes verem nyomkövetése követ.
+A (z) rendszeren futó Cloud Shell parancsai *https://shell.azure.com* időnként sikertelenek lehetnek a következő hibával: "400-es ügyfél-hiba: hibás kérelem az URL-címhez: http://localhost:50342/oauth2/token ", amelyet a teljes verem nyomkövetése követ.
 
 Kifejezetten az Azure Digital Twins esetében ez a következő parancsokra van hatással:
 * `az dt route`
@@ -30,7 +30,11 @@ Kifejezetten az Azure Digital Twins esetében ez a következő parancsokra van h
 
 Ez a parancs újbóli futtatásával oldható fel `az login` Cloud shell és a további bejelentkezési lépések végrehajtásával. Ezután futtassa újra a parancsot.
 
-Egy másik megoldás, ha [telepíti az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t a gépére, így helyileg is futtathatja az Azure CLI-parancsokat. A helyi CLI nem tapasztalja ezt a problémát.
+Azt is megteheti, hogy megnyithatja a Cloud Shell ablaktáblát a Azure Portalban, és elvégezheti a Cloud Shell munkáját:
+
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="A &quot;Cloud Shell&quot; ikonnal jelölt Azure Portal megjelenítése, valamint a portál ablakának alján megjelenő Cloud Shell":::
+
+Végül egy másik megoldás, ha [telepíti az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t a gépére, így helyileg is futtathatja az Azure CLI-parancsokat. A helyi CLI nem tapasztalja ezt a problémát.
 
 ### <a name="possible-causes"></a>Lehetséges okok
 

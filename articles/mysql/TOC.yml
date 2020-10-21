@@ -85,6 +85,8 @@
               href: connect-cpp.md
             - name: Indítás
               href: connect-go.md
+            - name: GitHub Actions
+              href: quickstart-mysql-github-actions.md
     - name: Oktatóanyagok
       items:
         - name: Adatbázis tervezése

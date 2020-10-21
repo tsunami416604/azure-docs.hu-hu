@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
-ms.openlocfilehash: 70dbceb51ed030124d1b793d77c6bc287da91065
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e31150a15996d9c6e77c772e6d703a39adfa91f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81687643"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278927"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API bemutatása
 
@@ -31,7 +31,7 @@ A Cassandra API lehetővé teszi a Azure Cosmos DB tárolt adataival való inter
 
 **A meglévő kódok és eszközök használata**: Az Azure Cosmos DB protokollszintű kompatibilitást biztosít a meglévő Cassandra SDK-kkal és eszközökkel. A kompatibilitásnak köszönhetően meglévő kódbázisát minimális változtatásokkal az Azure Cosmos DB Cassandra API-val is használhatja.
 
-**Rugalmas teljesítmény és tárolás**: Az Azure Cosmos DB garantált átviteli teljesítményt biztosít a régiók között, a kiosztott átvitel pedig egyszerű Azure Portal-, PowerShell- és CLI-műveletek segítségével skálázható. [Rugalmasan méretezheti](manage-scale-cassandra.md) a táblák tárolási és átviteli sebességét a kiszámítható teljesítménnyel.
+**Adatátviteli és tárolási rugalmasság**: Azure Cosmos db az összes régióban biztosítja az átviteli sebességet, és Azure Portal, POWERSHELL vagy CLI műveletekkel méretezheti a kiosztott átviteli sebességet. [Rugalmasan méretezheti](manage-scale-cassandra.md) a táblák tárolási és átviteli sebességét a kiszámítható teljesítménnyel.
 
 **Globális terjesztés és rendelkezésre állás**: Az Azure Cosmos DB lehetővé teszi az adatok összes Azure-régióba történő globális terjesztését, és helyi kiszolgálását, miközben közel valós idejű adatelérést és magas rendelkezésre állást is biztosít. Az Azure Cosmos DB a régión belül 99,99%-os magas rendelkezésre állást, a régiók között pedig 99,999%-os olvasási és írási rendelkezésre állást biztosít felügyeleti kötelezettségek nélkül. További információ a [Globális adatterjesztés](distribute-data-globally.md) című cikkben található. 
 
@@ -41,7 +41,7 @@ A Cassandra API lehetővé teszi a Azure Cosmos DB tárolt adataival való inter
 
 **Esemény beszerzése**: Cassandra API hozzáférést biztosít egy állandó változási naplóhoz, a [változási csatornához](cassandra-change-feed.md), amely közvetlenül az adatbázisból tudja megkönnyíteni az események beszerzését. Az Apache Cassandra esetében az egyetlen egyenértékű az adatváltozások rögzítése (CDC), amely csupán egy olyan mechanizmus, amely az archiváláshoz adott táblákat jelöl, valamint elutasítja az írásokat az adott táblákba, amint a CDC-naplóhoz konfigurálható méretű lemez érhető el (ezek a képességek redundánsak Cosmos DB, mivel a vonatkozó szempontok automatikusan szabályozva vannak).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A következő nyelvspecifikus alkalmazások összeállításával gyorsan hozzákezdhet a Cassandra API-adatok létrehozásához és kezeléséhez:
   - [Node.js-alkalmazás](create-cassandra-nodejs.md)

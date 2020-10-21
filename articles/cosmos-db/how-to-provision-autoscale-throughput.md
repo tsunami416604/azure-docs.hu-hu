@@ -1,22 +1,25 @@
 ---
-title: Az adatméretezési teljesítmény kiépítése a Azure Cosmos DBban
-description: Megtudhatja, hogyan építhet ki az Azure Cosmos DB a tárolóban és az adatbázis szintjén a Azure Portal, a CLI, a PowerShell és számos más SDK használatával.
+title: Az adatméretezési teljesítmény kiépítése a Azure Cosmos DB SQL API-ban
+description: Megtudhatja, hogyan építhet ki az Azure Cosmos DB SQL API-k tároló-és adatbázis-szintjén található, az Azure Portal, a CLI, a PowerShell és más SDK-k használatával történő autoskálázási teljesítményt.
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 190289165b291edabf31320eee1328c1b0cf6205
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89017141"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277837"
 ---
-# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Az adatméretezési sebesség kiépítése a Azure Cosmos DB adatbázisán vagy tárolóján
+# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>A Azure Cosmos DB-SQL API-ban lévő adatbázison vagy tárolón lévő autoskálázási teljesítmény kiépítése
 
-Ez a cikk azt ismerteti, hogyan lehet kiépíteni az adatátviteli sebességet egy adatbázison vagy tárolón (gyűjtemény, gráf vagy tábla) Azure Cosmos DBban. Engedélyezheti az autoskálázást egyetlen tárolón, vagy kiépítheti az adatátviteli sebességet egy adatbázison, és megoszthatja azt az adatbázis összes tárolója között.
+Ez a cikk azt ismerteti, hogyan lehet kiépíteni az adatátviteli sebességet egy adatbázison vagy tárolón (gyűjtemény, gráf vagy tábla) Azure Cosmos DB SQL API-ban. Engedélyezheti az autoskálázást egyetlen tárolón, vagy kiépítheti az adatátviteli sebességet egy adatbázison, és megoszthatja azt az adatbázis összes tárolója között.
+
+Ha más API-t használ, tekintse meg a [MongoDB API](how-to-provision-throughput-mongodb.md)-t, [CASSANDRA API](how-to-provision-throughput-cassandra.md), [Gremlin API](how-to-provision-throughput-gremlin.md) -cikkeket az átviteli sebesség kiépítéséhez.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -30,7 +33,7 @@ Ez a cikk azt ismerteti, hogyan lehet kiépíteni az adatátviteli sebességet e
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Tároló létrehozása és az autoscale kiépített átviteli sebességének konfigurálása":::
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Ha a megosztott átviteli sebességű adatbázison szeretné kiépíteni az autoskálázást, válassza az **adatbázis átviteli sebességének kiépítése** lehetőséget új adatbázis létrehozásakor. 
 
@@ -52,7 +55,7 @@ Ha a megosztott átviteli sebességű adatbázison szeretné kiépíteni az auto
 > [!NOTE]
 > Ha engedélyezi az automatikus méretezést egy meglévő adatbázison vagy tárolón, a maximális RU/s értékét a rendszer határozza meg, az aktuális manuális kiépített átviteli sebesség beállításaitól és tárterülettől függően. A művelet befejezése után szükség esetén módosíthatja a maximális RU/mp-t. [Részletek](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
 
-## <a name="azure-cosmos-db-net-v3-sdk-for-sql-api"></a>Azure Cosmos DB .NET v3 SDK az SQL API-hoz
+## <a name="azure-cosmos-db-net-v3-sdk"></a>Azure Cosmos DB .NET v3 SDK
 
 A Azure Cosmos DB .NET SDK for SQL API [3,9-es vagy újabb verzióját](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) használja az autoscale-erőforrások kezeléséhez. 
 
@@ -109,7 +112,7 @@ int? currentThroughput = autoscaleContainerThroughput.Throughput;
 await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThroughput(newAutoscaleMaxThroughput));
 ```
 
-## <a name="azure-cosmos-db-java-v4-sdk-for-sql-api"></a>Azure Cosmos DB Java v4 SDK az SQL API-hoz
+## <a name="azure-cosmos-db-java-v4-sdk"></a>Azure Cosmos DB Java v4 SDK
 
 A Azure Cosmos DB Java SDK for SQL API [4,0-es vagy újabb verzióját](https://mvnrepository.com/artifact/com.azure/azure-cosmos) használhatja az autoscale-erőforrások kezeléséhez.
 
@@ -242,14 +245,6 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 ```
 
 ---
-
-## <a name="cassandra-api"></a>Cassandra API
-
-A Cassandra API-fiókok Azure Cosmos DB a [CQL parancsok](manage-scale-cassandra.md#use-autoscale), az [Azure CLI](cli-samples.md), a [Azure PowerShell](powershell-samples.md) vagy a [Azure Resource Manager sablonok](resource-manager-samples.md)használatával kiépíthető az autoskálázáshoz.
-
-## <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
-
-Azure Cosmos DB MongoDB API-hoz az [MongoDB-bővítmény parancsai](mongodb-custom-commands.md), az [Azure CLI](cli-samples.md), a [Azure PowerShell](powershell-samples.md) vagy a [Azure Resource Manager sablonok](resource-manager-samples.md)használatával lehet kiépíteni az autoskálázást.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

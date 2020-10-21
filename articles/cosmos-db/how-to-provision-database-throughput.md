@@ -1,26 +1,26 @@
 ---
-title: Adatbázis átviteli sebességének kiosztása Azure Cosmos DB-ben
-description: Megtudhatja, hogyan építhet ki adatátviteli sebességet Azure Cosmos DB adatbázis szintjén a Azure Portal, a CLI, a PowerShell és a különböző egyéb SDK-k használatával.
+title: Adatbázis átviteli sebességének kiépítése Azure Cosmos DB SQL API-ban
+description: Megtudhatja, hogyan építhet ki adatátviteli sebességet Azure Cosmos DB SQL API adatbázis szintjén Azure Portal, CLI, PowerShell és számos más SDK használatával.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/28/2019
+ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 668aa51bdb57dc4bcde0e3a95c481bb60e3d8ed3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a67a062c06950294ec9e49e2ec69552edc4ee77a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997370"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278621"
 ---
-# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Standard (manuális) átviteli sebesség kiépítése a Azure Cosmos DB található adatbázison
+# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Standard (manuális) átviteli sebesség kiépítése egy adatbázison Azure Cosmos DB-SQL API-ban
 
-Ez a cikk azt ismerteti, hogyan lehet szabványos (manuális) átviteli sebességet kiépíteni egy Azure Cosmos DB található adatbázison. Az átviteli sebességet egyetlen [tárolóhoz](how-to-provision-container-throughput.md)vagy egy adatbázishoz is kiépítheti, és megoszthatja az átviteli sebességet a tárolóban lévő tárolók között. A tárolók szintjének és az adatbázis szintű átviteli sebesség használatának megismeréséhez tekintse [meg a tárolók és adatbázisok átviteli sebességének használati esetei](set-throughput.md) című cikket. Az adatbázis-szint átviteli sebességét az Azure Portal vagy a Azure Cosmos DB SDK-k használatával is kiépítheti.
+Ez a cikk azt ismerteti, hogyan lehet a standard (manuális) átviteli sebességet Azure Cosmos DB SQL API-ban található adatbázison kiépíteni. Az átviteli sebességet egyetlen [tárolóhoz](how-to-provision-container-throughput.md)vagy egy adatbázishoz is kiépítheti, és megoszthatja az átviteli sebességet a tárolóban lévő tárolók között. A tárolók szintjének és az adatbázis szintű átviteli sebesség használatának megismeréséhez tekintse [meg a tárolók és adatbázisok átviteli sebességének használati esetei](set-throughput.md) című cikket. Az adatbázis-szint átviteli sebességét az Azure Portal vagy a Azure Cosmos DB SDK-k használatával is kiépítheti.
+
+Ha más API-t használ, tekintse meg a [MongoDB API](how-to-provision-throughput-mongodb.md)-t, [CASSANDRA API](how-to-provision-throughput-cassandra.md), [Gremlin API](how-to-provision-throughput-gremlin.md) -cikkeket az átviteli sebesség kiépítéséhez.
 
 ## <a name="provision-throughput-using-azure-portal"></a>Átviteli sebesség kiosztása az Azure Portallal
-
-### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -29,11 +29,11 @@ Ez a cikk azt ismerteti, hogyan lehet szabványos (manuális) átviteli sebessé
 1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új adatbázis**lehetőséget. Adja meg a következő adatokat:
 
    * Adja meg az adatbázis AZONOSÍTÓját.
-   * Válassza ki az **átviteli sebesség**lehetőséget.
+   * Válassza az **adatbázis-átviteli sebesség** beállítása lehetőséget.
    * Adja meg az átviteli sebességet (például 1000 RUs).
-   * Kattintson az **OK** gombra.
+   * Válassza az **OK** lehetőséget.
 
-    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="Képernyőkép az új adatbázis párbeszédpanelről":::
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Képernyőkép az új adatbázis párbeszédpanelről":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Átviteli sebesség kiépítése az Azure CLI vagy a PowerShell használatával
 
@@ -45,9 +45,7 @@ Megosztott átviteli sebességgel rendelkező adatbázis létrehozása:
 ## <a name="provision-throughput-using-net-sdk"></a>Átviteli sebesség kiosztása a .NET SDK használatával
 
 > [!Note]
-> A Cosmos SDK-k használatával az SQL API-hoz kiépítheti az átviteli sebességet az összes API-hoz. Az alábbi példát is használhatja Cassandra APIhoz is.
-
-### <a name="all-apis"></a><a id="dotnet-all"></a>Minden API
+> Az SQL API-hoz az Azure Cosmos SDK-k használatával kiépítheti az átviteli sebességet az összes API-hoz. Az alábbi példát is használhatja Cassandra APIhoz is.
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -70,15 +68,6 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 ---
 
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
-
-Hasonló parancs bármely CQL-kompatibilis illesztőprogrammal végrehajtható.
-
-```csharp
-// Create a Cassandra keyspace and provision throughput of 400 RU/s
-session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400");
-```
- 
 ## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekből megtudhatja, hogyan lehet kiépíteni az átviteli sebességet Azure Cosmos DBban:

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e844904f236e9d81404a3481af9349ac8881085
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761158"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310441"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Service Bus Azure biztonsági alapterve
 
@@ -62,7 +62,7 @@ A Azure Security Center használatával és a hálózati védelmi javaslatok kö
 
 - [A DDoS Protection konfigurálása](../virtual-network/manage-ddos-protection.md)
 
-- [Azure Security Center integrált veszélyforrások felderítése](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Security Center integrált veszélyforrások felderítése](../security-center/azure-defender.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -111,7 +111,7 @@ Egyéni szabályzat-definíciókat is létrehozhat, ha a beépített definíció
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure beépített szabályzat Service Bus névtérhez](/azure/service-bus-messaging/policy-samples#azure-service-bus-messaging)
+- [Azure beépített szabályzat Service Bus névtérhez](./policy-reference.md#azure-service-bus-messaging)
 
 - [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network)
 
@@ -129,7 +129,7 @@ A címkézéshez kapcsolódó beépített Azure Policy-definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon. 
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags) 
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md) 
 
 - [Virtual Network létrehozása](../virtual-network/quick-create-portal.md) 
 
@@ -143,7 +143,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Service Bus kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -177,7 +177,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [A Azure Service Bus diagnosztikai beállításainak engedélyezése](service-bus-diagnostic-logs.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -231,9 +231,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [A Azure Service Bus beépített szerepkörei](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center figyelés**: igen
 
@@ -311,7 +311,7 @@ Egyéni szabályzat-definíciókat is létrehozhat, ha a beépített definíció
 
 **Útmutató**: Azure Active Directory biztonsági jelentések és figyelés használata a környezetben előforduló gyanús vagy nem biztonságos tevékenységek észlelésére. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -347,7 +347,7 @@ Egyéni szabályzat-definíciókat is létrehozhat, ha a beépített definíció
 
 A további, rendszeres időközönként elforgatja Service Bus névtér közös hozzáférési aláírását.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -363,7 +363,7 @@ A további, rendszeres időközönként elforgatja Service Bus névtér közös 
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Ezután a Azure Monitor konfigurálhatja a naplókban előforduló bizonyos műveletekhez szükséges naplózási riasztásokat.
 
-- [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Hozzáférés engedélyezése Service Bus erőforrásokhoz a Azure Active Directory használatával](authenticate-application.md)
 
@@ -375,7 +375,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure Active Directory Identity Protection és kockázati észlelési funkciói segítségével konfigurálhatja az Service Bus-kompatibilis erőforrásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához engedélyeznie kell az automatikus válaszokat az Azure Sentinel használatával.
 
-- [Az Azure AD kockázatos bejelentkezések megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -403,7 +403,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: címkék használata a Service Bushoz kapcsolódó erőforrásokon a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követésében.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -413,11 +413,11 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: különálló előfizetések és felügyeleti csoportok implementálása fejlesztési, tesztelési és éles környezetekben. Service Bus névtereket olyan virtuális hálózatokkal kell elválasztani, amelyek saját végpontokkal vannak konfigurálva és címkézve megfelelően.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és felhasználása](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és felhasználása](../azure-resource-manager/management/tag-resources.md)
 
 - [Virtual Network létrehozása](../virtual-network/quick-create-portal.md)
 
@@ -437,7 +437,7 @@ A Microsoft kezeli a Azure Service Bus alapjául szolgáló infrastruktúrát, �
 
 - [Azure Service Bus névtér elérésének engedélyezése privát végpontokon keresztül](private-link-service.md)
 
-- [A hálózati biztonsági csoportok és a szolgáltatási címkék ismertetése](/azure/virtual-network/security-overview)
+- [A hálózati biztonsági csoportok és a szolgáltatási címkék ismertetése](../virtual-network/network-security-groups-overview.md)
 
 - [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
@@ -507,7 +507,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -527,11 +527,11 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és a különálló előfizetések használata, ahol szükséges, Azure Service Bus névterek és kapcsolódó erőforrások rendszerezése és nyomon követése. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -574,7 +574,7 @@ Egyéni szabályzat-definíciókat is létrehozhat, ha a beépített definíció
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -603,9 +603,9 @@ Egyéni szabályzat-definíciókat is létrehozhat, ha a beépített definíció
 
 Használjon Azure Policy aliasokat a "Microsoft. ServiceBus" névtérben, hogy egyéni szabályzatokat hozzon létre a konfigurációk naplózásához és érvényesítéséhez.
 
-- [Azure-beli beépített szabályzatok a Service Bus ](/azure/service-bus-messaging/policy-samples)
+- [Azure-beli beépített szabályzatok a Service Bus ](./policy-reference.md)
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -653,7 +653,7 @@ Használjon Azure Policy aliasokat a "Microsoft. ServiceBus" névtérben, hogy e
 
 - [Ügyfél által felügyelt kulcsok konfigurálása Service Bushoz](configure-customer-managed-key.md)
 
-- [Key Vault létrehozása](/azure/key-vault/quick-create-portal)
+- [Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -731,7 +731,7 @@ Gondoskodjon arról, hogy a Key Vault titkos kódok rendszeres automatikus bizto
 
 - [Ügyfél által felügyelt kulcsok konfigurálása Azure Service Bus adatok titkosításához a REST-ben](configure-customer-managed-key.md)
 
-- [Key Vault-kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -741,7 +741,7 @@ Gondoskodjon arról, hogy a Key Vault titkos kódok rendszeres automatikus bizto
 
 **Útmutató**: a Key Vault a helyreállítható Törlés engedélyezése a kulcsok véletlen vagy rosszindulatú törléssel szembeni megvédéséhez. Azure Service Bus az ügyfél által felügyelt kulcsokat kötelező törölni, és nem kell kiüríteni a konfigurációt.
 
-- [A Soft delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A Soft delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [Key Vault beállítása kulcsokkal](../event-hubs/configure-customer-managed-key.md)
 
@@ -775,7 +775,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md) 
 
-- [Címkék használata az erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -843,5 +843,5 @@ A munkafolyamat-automatizálási funkció Azure Security Center használatával 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

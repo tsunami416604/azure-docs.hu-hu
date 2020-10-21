@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 208c9b4172719b876766f0c4d07a17caa24bfd63
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273143"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310952"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Adatkezelő létrehozása Azure Data Studioban
 
@@ -25,7 +25,7 @@ Azure Data Studio használatával létrehozhat egy adatvezérlőt a központi te
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Hozzá kell férnie egy Kubernetes-fürthöz, és a kubeconfig-fájl úgy van konfigurálva, hogy a telepíteni kívánt Kubernetes-fürtre mutasson.
-- [Telepítenie kell az ügyféleszközök](install-client-tools.md) **Azure Data Studio** az **Azure arc** és az azure-beli **adatcli**nevű Azure Data Studio-bővítményeket is.
+- [Telepítenie kell az ügyféleszközök](install-client-tools.md) , például az **Azure Data Studio** **Azure arc** és a Azure Data Studio bővítmények Azure Data Studio **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** .
 - Azure Data Studio-ban be kell jelentkeznie az Azure-ba.  Ehhez írja be a CTRL/Command + SHIFT + P billentyűkombinációt a parancs szövege ablak megnyitásához, majd írja be a következőt: **Azure**.  Válassza **Az Azure: bejelentkezés**lehetőséget.   Egy Azure-fiók hozzáadásához kattintson a jobb felső sarokban található + ikonra a panelen.
 
 ## <a name="use-the-deployment-wizard-to-create-azure-arc-data-controller"></a>Az Azure arc-adatkezelő létrehozása a központi telepítési varázslóval

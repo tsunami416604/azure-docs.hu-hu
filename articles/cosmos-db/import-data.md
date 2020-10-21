@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 66eee67ae191d764228a85aaf1e63eae43208cc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16412e6949bd6bf3d9496b33a900a0331bd1e9fb
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537735"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278151"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Oktatóanyag: Adatok Azure Cosmos DB-be migrálása az adatmigrálási eszköz használatával
 
@@ -355,7 +355,7 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 ## <a name="import-to-the-sql-api-bulk-import"></a><a id="SQLBulkTarget"></a>Importálás SQL API-ba (tömeges importálás)
 
-Az Azure Cosmos DB tömeges importálójával egy Azure Cosmos DB-beli tárolt eljárás segítségével hatékonyabban importálhat bármelyik választható forrásból. Az eszköz támogatja az importálást egyetlen particionált Azure Cosmos-tárolóba. Támogatja továbbá a többrétegű importálást is, amely során az adatparticionálás több, egypartíciós Azure Cosmos-tárolón keresztül történik. Az adatok particionálásával kapcsolatban további információkat az [Azure Cosmos DB particionálási és méretezési eljárásait](partition-data.md) ismertető cikkben talál. Az eszköz létrehozza, végrehajtja, majd törli a tárolt eljárást a célgyűjtemény(ek)ben.  
+Az Azure Cosmos DB tömeges importálójával egy Azure Cosmos DB-beli tárolt eljárás segítségével hatékonyabban importálhat bármelyik választható forrásból. Az eszköz támogatja az importálást egyetlen particionált Azure Cosmos-tárolóba. Támogatja továbbá a többrétegű importálást is, amely során az adatparticionálás több, egypartíciós Azure Cosmos-tárolón keresztül történik. Az adatok particionálásával kapcsolatban további információkat az [Azure Cosmos DB particionálási és méretezési eljárásait](partitioning-overview.md) ismertető cikkben talál. Az eszköz létrehozza, végrehajtja, majd törli a tárolt eljárást a célgyűjtemény(ek)ben.  
 
 :::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="Képernyőkép a JSON-fájlok importálási beállításairól – Adatbázis-áttelepítési eszközök":::
 
@@ -414,7 +414,7 @@ Az Azure Cosmos DB tömeges importálási eszköze a következő speciális beá
 
 ## <a name="import-to-the-sql-api-sequential-record-import"></a><a id="SQLSeqTarget"></a>Importálás az SQL API-ba (szekvenciális rekordimportálás)
 
-Az Azure Cosmos DB szekvenciális rekord-importáló lehetővé teszi, hogy egy rekord-rekord alapján importáljon egy rendelkezésre álló forrás lehetőségből. Ez a lehetőség akkor lehet hasznos, ha olyan meglévő gyűjteménybe importál, amelynek már kimerült a tárolt eljárási kvótája. Az eszköz támogatja az importálást egyetlen (egypartíciós és több partíciós) Azure Cosmos-tárolóban. Emellett támogatja a többrétegű importálást is, amely során az adatparticionálás több, mint egy partíciós vagy több partíciós Azure Cosmos-tárolón keresztül történik. Az adatok particionálásával kapcsolatban további információkat az [Azure Cosmos DB particionálási és méretezési eljárásait](partition-data.md) ismertető cikkben talál.
+Az Azure Cosmos DB szekvenciális rekord-importáló lehetővé teszi, hogy egy rekord-rekord alapján importáljon egy rendelkezésre álló forrás lehetőségből. Ez a lehetőség akkor lehet hasznos, ha olyan meglévő gyűjteménybe importál, amelynek már kimerült a tárolt eljárási kvótája. Az eszköz támogatja az importálást egyetlen (egypartíciós és több partíciós) Azure Cosmos-tárolóban. Emellett támogatja a többrétegű importálást is, amely során az adatparticionálás több, mint egy partíciós vagy több partíciós Azure Cosmos-tárolón keresztül történik. Az adatok particionálásával kapcsolatban további információkat az [Azure Cosmos DB particionálási és méretezési eljárásait](partitioning-overview.md) ismertető cikkben talál.
 
 :::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="Képernyőkép a JSON-fájlok importálási beállításairól – Adatbázis-áttelepítési eszközök":::
 
@@ -531,7 +531,7 @@ Adja meg a speciális konfigurációs képernyőn annak a naplófájlnak a hely�
 
     :::image type="content" source="./media/import-data/newimport.png" alt-text="Képernyőkép a JSON-fájlok importálási beállításairól – Adatbázis-áttelepítési eszközök":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

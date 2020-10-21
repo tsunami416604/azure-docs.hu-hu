@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: cda123adb667b4c857e05ce53d603e328e995766
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 869bfcb87aa4846674db233c4268e9269929cd04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108167"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320167"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Használati adatok, metrikák és naplók feltöltése a Azure Monitorba
 
@@ -25,7 +25,7 @@ A használati adatokat rendszeresen exportálhatja számlázási célokra, a met
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez telepítenie kell az Azure CLI-t (az) és az Azure-beli adatcli-t (azdata).  [Telepítse az eszközöket](./install-client-tools.md).
+Szüksége lesz az Azure CLI-re (az) és a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] telepítésre.  [Telepítse az eszközöket](./install-client-tools.md).
 
 Az Azure-ba való adatfeltöltés előtt gondoskodnia kell arról, hogy az Azure-előfizetése a Microsoft. AzureData erőforrás-szolgáltatót regisztrálja.
 
@@ -45,7 +45,7 @@ az provider register -n Microsoft.AzureData --wait
 
 A következő kétlépéses módon töltheti fel az Azure-ba a használati adatokat, például a leltárt és az erőforrás-használatot:
 
-1. Exportálja a használati adatokat a ```azdata export``` paranccsal a következő módon:
+1. Exportálja a használati adatokat a `azdata export` paranccsal a következő módon:
 
    ```console
    #login to the data controller and enter the values at the prompt
@@ -56,7 +56,7 @@ A következő kétlépéses módon töltheti fel az Azure-ba a használati adato
    ```
    Ez a parancs létrehoz egy `usage.json` fájlt az összes Azure arc-kompatibilis adaterőforrással, például az SQL által felügyelt példányokkal és a PostgreSQL nagy kapacitású-példányokkal, amelyek az adatvezérlőn jönnek létre.
 
-2. A használati adatok feltöltése a ```azdata upload``` parancs használatával
+2. A használati adatok feltöltése a `azdata upload` parancs használatával
 
    > [!NOTE]
    > Várjon legalább 24 órát az Azure arc-adatkezelő létrehozása után a feltöltés futtatása előtt
@@ -426,7 +426,7 @@ Az előzetes verzió ideje alatt ez a folyamat éjjel történik. Az általános
 
 A metrikák feltöltéséhez az Azure monitor csak az utolsó 30 perces adatokat fogadja el ([További információ](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). A metrikák feltöltésére vonatkozó útmutató a metrikák az exportfájl létrehozása utáni azonnali feltöltésére szolgál, így megtekintheti a teljes adathalmazt Azure Portalban. Ha például a 2:00 ÓRAKOR exportálta a metrikákat, és a feltöltési parancsot 2:50 ÓRAKOR futtatta. Mivel a Azure Monitor csak az elmúlt 30 percben fogadja az adatgyűjtést, előfordulhat, hogy a portálon nem jelennek meg az összes információ. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Számlázási adatok feltöltése az Azure-ba, és megtekintés a Azure Portal](view-billing-data-in-azure.md)
 

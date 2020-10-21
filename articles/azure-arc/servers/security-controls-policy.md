@@ -1,15 +1,15 @@
 ---
 title: Az Azure arc használatára képes kiszolgálók Azure Policy vonatkozó megfelelőségi szabályozása (előzetes verzió)
 description: Felsorolja Azure Policy az Azure arc-kompatibilis kiszolgálók (előzetes verzió) számára elérhető megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7829a2e75b60f641af96a0e70b5e05d1d86deb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57d6a3a39ef28af8b350063c2f9f79117c8db0d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826064"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320127"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>Az Azure arc-kompatibilis kiszolgálókra vonatkozó megfelelőségi szabályozás Azure Policy
 
@@ -19,7 +19,7 @@ A [Azure Policy szabályozási megfelelősége](../../governance/policy/concepts
 
 [!INCLUDE [azure-policy-compliancecontrols-arcservers](../../../includes/policy/standards/byrp/microsoft.hybridcompute.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273041"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310921"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Az Azure arc-adatkezelő létrehozása
 
@@ -65,7 +65,7 @@ Több lehetőség is létezik az Azure arc-adatkezelő létrehozásához:
 > **Csak szeretné kipróbálni a dolgokat?**  
 > Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.
 > 
-- [Adatkezelő létrehozása Azure-beli adatcli-vel (azdata)](create-data-controller-using-azdata.md)
+- [Adatvezérlő létrehozása a szolgáltatással [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Adatvezérlő létrehozása Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Adatkezelő létrehozása a Azure Portal Jupyter notebookon keresztül Azure Data Studio](create-data-controller-resource-in-azure-portal.md)
 - [Adatvezérlő létrehozása Kubernetes eszközökkel, például kubectl vagy oC](create-data-controller-using-kubernetes-native-tools.md)

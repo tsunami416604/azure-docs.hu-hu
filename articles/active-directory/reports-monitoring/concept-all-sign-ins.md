@@ -17,12 +17,12 @@ ms.date: 09/23/2020
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fc5051a6cc8b8f36a980ff86690ed4f8cbac60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344784"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319777"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory bejelentkezési tevékenységgel kapcsolatos jelentések – előzetes verzió
 
@@ -32,8 +32,8 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
     - **Bejelentkezések** – információ arról, ha a felhasználók, alkalmazások és felügyelt erőforrások bejelentkeznek az Azure ad-ba és hozzáférnek az erőforrásokhoz.
     - **Naplók**  -  A [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
 - **Biztonság** 
-    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](concept-risky-sign-ins.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
-    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
+    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
+    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
 
 A Azure Active Directory klasszikus bejelentkezések jelentése az interaktív felhasználói bejelentkezések áttekintését nyújtja. Emellett három további, előzetes verzióban elérhető bejelentkezési jelentéshez férhet hozzá:
 
@@ -86,7 +86,7 @@ A bejelentkezési jelentés panelen válthat a következők közül:
 
 - **Egyszerű szolgáltatás-bejelentkezések** – olyan alkalmazások és egyszerű szolgáltatások, amelyek nem tartalmaznak felhasználót. Ezekben a bejelentkezésekben az alkalmazás vagy szolgáltatás hitelesítő adatokat szolgáltat a saját nevében az erőforrások hitelesítéséhez vagy eléréséhez.
 
-- **Felügyelt identitások az Azure-erőforrások számára** az Azure által felügyelt titkos kulcsokkal rendelkező Azure-erőforrások által végzett bejelentkezésekhez. További információ: [Mi az Azure-erőforrások felügyelt identitása?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+- **Felügyelt identitások az Azure-erőforrások számára** az Azure által felügyelt titkos kulcsokkal rendelkező Azure-erőforrások által végzett bejelentkezésekhez. További információ: [Mi az Azure-erőforrások felügyelt identitása?](../managed-identities-azure-resources/overview.md) 
 
 
 ![Bejelentkezési jelentések típusai](./media/concept-all-sign-ins/sign-ins-report-types.png)
@@ -209,7 +209,7 @@ Az adatelemzés egyszerűbbé tétele érdekében a nem interaktív bejelentkez�
 
 - IP-cím
 
-- status
+- Állapot
 
 - Erőforrás-azonosító
 
@@ -247,7 +247,7 @@ Ez a jelentés egy alapértelmezett listanézet, amely a következőket jelenít
 
 - Egyszerű szolgáltatásnév vagy azonosító
 
-- status
+- Állapot
 
 - IP-cím
 
@@ -265,7 +265,7 @@ Annak érdekében, hogy könnyebb legyen megemészteni az egyszerű szolgáltat�
 
 - Egyszerű szolgáltatásnév vagy azonosító
 
-- status
+- Állapot
 
 - IP-cím
 
@@ -312,7 +312,7 @@ Annak érdekében, hogy könnyebb legyen az adatelemzés, az Azure-erőforrások
 
 - Felügyelt identitás neve vagy azonosítója
 
-- status
+- Állapot
 
 - IP-cím
 
