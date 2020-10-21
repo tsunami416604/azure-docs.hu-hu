@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 91fa6a8da555d0b0cc79b262a83306c1f72aa68a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8801929412da614784c76dbdf7c8282b31364409
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567095"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327892"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Enterprise Security Package az Azure HDInsight
 
@@ -20,7 +20,7 @@ A vállalati biztonság egy opcionális csomag, amelyet hozzáadhat a HDInsight-
 
 * Active Directory integrációja a hitelesítéshez.
 
-    Korábban létrehozta a HDInsight-fürtöket a helyi rendszergazda felhasználóval és a helyi SSH-felhasználóval. A helyi rendszergazda felhasználó elérheti az összes fájlt, mappát, táblát és oszlopot.  A Enterprise Security Package lehetővé teszi a szerepköralapú hozzáférés-vezérlést a HDInsight és a Azure Active Directory Domain Services integrálásával.
+    Korábban létrehozta a HDInsight-fürtöket a helyi rendszergazda felhasználóval és a helyi SSH-felhasználóval. A helyi rendszergazda felhasználó elérheti az összes fájlt, mappát, táblát és oszlopot.  A Enterprise Security Package használatával engedélyezheti az Azure szerepköralapú hozzáférés-vezérlését a HDInsight és a Azure Active Directory Domain Services integrálásával.
 
     További információkért lásd:
 
@@ -59,7 +59,7 @@ A Enterprise Security Package az elsődleges tárolóként és a kiegészítő t
 
 További információ a Enterprise Security Package díjszabásáról és SLA-ról: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fürt beállítása Apache Hadoop, Spark és más HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Munkahelyi Apache Hadoop HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL](hdinsight-hadoop-windows-tools.md)

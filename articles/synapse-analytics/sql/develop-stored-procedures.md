@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f2046614f3665a699d02c76210676fb32f99fc73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288919"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279067"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Tárolt eljárások használata a szinapszis SQL-ben
 
-Tippek a tárolt eljárások megvalósításához a szinapszis SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
+Tippek a tárolt eljárások megvalósításához a szinapszis SQL-készletben megoldások fejlesztéséhez.
 
 ## <a name="what-to-expect"></a>Amire számíthat
 
@@ -181,7 +181,7 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXEARANYOS
 
-A szinapszis SQL nem teszi lehetővé, hogy egy tárolt eljárás eredmény-készletét egy INSERT utasítással használja. Egy alternatív megközelítés is használható. Példaként tekintse meg az [ideiglenes táblákról](develop-tables-temporary.md)szóló cikket.
+A szinapszis SQL nem teszi lehetővé, hogy egy tárolt eljárás eredmény-készletét egy INSERT utasítással használja. Egy alternatív megközelítés is használható. Példaként tekintse meg a következő cikket: [ideiglenes táblák](develop-tables-temporary.md) a kiépített szinapszis SQL-készlethez.
 
 ## <a name="limitations"></a>Korlátozások
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: b5c263506db68ea62b0d65b7b866cfab33a36236
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9bd7e7dab5384ecd3e1e87d763d4b8f081b669be
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976878"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329832"
 ---
 # <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
 
@@ -25,7 +25,7 @@ A Computer Vision egyes funkciói több nyelvet támogatnak; az itt nem említet
 
 Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi kód megadását. További információ: [optikai karakterfelismerés (OCR)](concept-recognizing-text.md) .
 
-|Nyelv| Nyelvkód | OCR API | A v 3.1 olvasása | Olvasás: v 3.1 – előzetes verzió. 2 |
+|Nyelv| Nyelvkód | OCR API | Olvasási 3,0 és 3,1 | Olvasás: v 3.2 – előzetes verzió. 1 |
 |:-----|:----:|:-----:|:---:|:---:|
 |Arab | `ar`|✔ | | |
 |Kínai (egyszerűsített) | `zh-Hans`|✔ | |✔ |
@@ -58,7 +58,7 @@ Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi k�
 
 Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API egyes műveletei más nyelveket is visszaadhatnak a `language` lekérdezési paraméterrel megadottak szerint. A többi művelet angol nyelven adja vissza az eredményeket, függetlenül attól, hogy milyen nyelven van megadva, mások pedig kivételt képeznek a nem támogatott nyelvek esetében. A műveletek a és a `visualFeatures` `details` lekérdezési paraméterekkel vannak megadva. az [áttekintést](overview.md) a képelemzéssel elvégezhető műveletek listájáról tekintheti meg.
 
-|Nyelv | Nyelvkód | Kategóriák | Címkék | Description | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumokat | Hírességek | Arcrészek |
+|Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumokat | Hírességek | Arcrészek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
@@ -66,7 +66,7 @@ Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/servi
 |Portugál | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Spanyol | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg az útmutatóban említett Computer Vision-funkciókkal.
 

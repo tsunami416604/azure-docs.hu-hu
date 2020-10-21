@@ -43,6 +43,12 @@
     - name: Címkeszabályozás kezelése
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: Azure Policy implementálása kódként a GitHubbal
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./tutorials/policy-as-code-github.md
+    - name: 'Információ: Erőforrások felügyelete és naplózása az Azure Policyvel'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/8-control-audit-resources-azure-policy
 - name: Példák
   items:
     - name: Index
@@ -113,7 +119,7 @@
     - name: Előírásoknak való megfelelőség
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
-    - name: Szabályzat tervezése kódmunkafolyamatokként
+    - name: Azure Policy tervezése kódmunkafolyamatokként
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Kubernetes-integráció

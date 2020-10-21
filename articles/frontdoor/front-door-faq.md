@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a5a02a063f90953982d42fe9c7d2c6dc199b2a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819022"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282294"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -71,7 +71,7 @@ Az Azure bejárati ajtó globális szolgáltatás, és nem kötődik egyetlen ad
 
 ### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Mik a POP-helyszínek az Azure-beli bejárati ajtón?
 
-Az Azure bejárati ajtaja ugyanazokat a listát tartalmazza, mint a POP (jelenléti pont) helyei a Microsoft Azure CDN. A POPs teljes listájáért tekintse meg [Azure CDN pop-helyszíneket a Microsofttól](https://docs.microsoft.com/azure/cdn/cdn-pop-locations).
+Az Azure bejárati ajtaja ugyanazokat a listát tartalmazza, mint a POP (jelenléti pont) helyei a Microsoft Azure CDN. A POPs teljes listájáért tekintse meg [Azure CDN pop-helyszíneket a Microsofttól](../cdn/cdn-pop-locations.md).
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Az Azure bejárati ajtó egy dedikált üzembe helyezés az alkalmazáshoz vagy megosztott az ügyfelek között?
 
@@ -91,9 +91,9 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtó
 
 - Konfigurálja az IP-hozzáférés a háttérrendszer számára, hogy fogadja a forgalmat az Azure bejárati ajtó háttérbeli IP-címe és az Azure infrastruktúra-szolgáltatásai között. Tekintse át az alábbi IP-hozzáférés a háttérrendszer:
  
-    - Tekintse át az [Azure IP-címtartományok és szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) *AzureFrontDoor. backend* szakaszát az első ajtó IPv4-háttér IP-címéhez, vagy használhatja a *AzureFrontDoor. backend* szolgáltatási címkét is a [hálózati biztonsági csoportokban](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules).
+    - Tekintse át az [Azure IP-címtartományok és szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) *AzureFrontDoor. backend* szakaszát az első ajtó IPv4-háttér IP-címéhez, vagy használhatja a *AzureFrontDoor. backend* szolgáltatási címkét is a [hálózati biztonsági csoportokban](../virtual-network/network-security-groups-overview.md#security-rules).
     - Az Azure-beli **IPv6** -háttér IP-területe a szolgáltatás címkéjén látható, nem szerepel az Azure IP-címtartományok JSON-fájljában. Ha explicit IPv6-címtartományt keres, a rendszer jelenleg csak a következőre korlátozódik: `2a01:111:2050::/44`
-    - Az Azure [alapszintű infrastruktúra-szolgáltatásai](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) virtualizált gazdagép IP-címein keresztül: `168.63.129.16` és `169.254.169.254`
+    - Az Azure [alapszintű infrastruktúra-szolgáltatásai](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) virtualizált gazdagép IP-címein keresztül: `168.63.129.16` és `169.254.169.254`
 
     > [!WARNING]
     > Előfordulhat, hogy a bejárati ajtó háttérbeli IP-címe később is változhat, ezért a megjelenő esetekben biztosítani fogjuk, hogy az [Azure IP-címtartományok és a szolgáltatási címkék](https://www.microsoft.com/download/details.aspx?id=56519)integrálva lennének. Javasoljuk, hogy az [Azure IP-címtartományok és a szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) esetében minden módosítást és frissítést előfizessen.
@@ -156,7 +156,7 @@ Az Azure bejárati ajtajának (AFD) egy nyilvános IP-címet vagy nyilvánosan f
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Milyen időtúllépéseket és korlátokat biztosít az Azure bejárati ajtó?
 
-Ismerje meg az Azure-előtérben lévő összes dokumentált [időtúllépést és korlátot](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
+Ismerje meg az Azure-előtérben lévő összes dokumentált [időtúllépést és korlátot](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits).
 
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Mennyi időt vesz igénybe egy szabály, hogy az a bejárati ajtó szabályainak motorba való felvétele után is érvénybe lép?
 
@@ -179,7 +179,7 @@ A bejárati ajtó támogatja a 1,0, 1,1 és 1,2 TLS-verziókat. A TLS 1,3 még n
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Milyen tanúsítványokat támogat az Azure-beli bejárati ajtó?
 
 Ha engedélyezni szeretné, hogy a HTTPS protokoll biztonságos módon kézbesítse a tartalmakat egy bejárati ajtó egyéni tartományán, dönthet úgy, hogy az Azure bejárati ajtó által felügyelt tanúsítványt használ, vagy a saját tanúsítványát használja.
-A bejárati ajtó által felügyelt beállítás a Digicert-on keresztül szabványos TLS/SSL-tanúsítványt, valamint a bejárati ajtó Key Vault tárolja. Ha úgy dönt, hogy saját tanúsítványt használ, akkor a tanúsítványokat egy támogatott HITELESÍTÉSSZOLGÁLTATÓTÓL is elvégezheti, és lehet szabványos TLS, kiterjesztett ellenőrzési tanúsítvány vagy akár helyettesítő tanúsítvány is. Az önaláírt tanúsítványok nem támogatottak. Megtudhatja [, hogyan engedélyezheti a HTTPS-t egy egyéni tartományhoz](https://aka.ms/FrontDoorCustomDomainHTTPS).
+A bejárati ajtó által felügyelt beállítás a Digicert-on keresztül szabványos TLS/SSL-tanúsítványt, valamint a bejárati ajtó Key Vault tárolja. Ha úgy dönt, hogy saját tanúsítványt használ, akkor a tanúsítványokat egy támogatott HITELESÍTÉSSZOLGÁLTATÓTÓL is elvégezheti, és lehet szabványos TLS, kiterjesztett ellenőrzési tanúsítvány vagy akár helyettesítő tanúsítvány is. Az önaláírt tanúsítványok nem támogatottak. Megtudhatja [, hogyan engedélyezheti a HTTPS-t egy egyéni tartományhoz](./front-door-custom-domain-https.md).
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>Támogatja a bejárati ajtó a tanúsítványok autorotációját?
 
@@ -220,7 +220,7 @@ Ha a TLS 1.0/1.1-es verzióval rendelkező egyéni tartományok használata enge
 
 ### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Beállítható a TLS-házirend a TLS protokoll verzióinak szabályozására?
 
-Az Azure-ban a minimális TLS-verziót az egyéni tartomány HTTPS-beállításai között Azure Portal vagy az [azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)használatával konfigurálhatja. Jelenleg a 1,0 és a 1,2 közötti választásra van lehetőség.
+Az Azure-ban a minimális TLS-verziót az egyéni tartomány HTTPS-beállításai között Azure Portal vagy az [azure REST API](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)használatával konfigurálhatja. Jelenleg a 1,0 és a 1,2 közötti választásra van lehetőség.
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Beállítható a bejárati ajtó, hogy csak bizonyos titkosítási csomagokat támogasson?
 
@@ -247,7 +247,7 @@ Ahhoz, hogy sikeresen HTTPS-kapcsolatot lehessen létesíteni a háttérrel, hog
 
 1. A **tanúsítvány tulajdonosának neve nem egyezik**: a HTTPS-kapcsolatok esetében a bejárati ajtó azt várja, hogy a háttérrendszer a háttérbeli állomásnévvel egyező tulajdonosi névvel rendelkező érvényes hitelesítésszolgáltatótól származó tanúsítványt jelenít meg. Ha például a háttérbeli állomásnév be van állítva, `myapp-centralus.contosonews.net` és az a tanúsítvány, amelyet a háttér a TLS-kézfogás során ad meg `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` , sem a tulajdonos, sem a tulajdonos nevében, akkor a bejárati ajtó elutasítja a kapcsolódást, és hibát eredményez. 
     1. **Megoldás**: noha a megfelelőség szempontjából nem ajánlott, megkerülheti ezt a hibát, ha letiltja a tanúsítvány tulajdonosának nevének ellenőrzését az előtérben. Ez a Azure Portal és az API BackendPoolsSettings területén található beállítások területen érhető el.
-2. A **tanúsítvány érvénytelen hitelesítésszolgáltatótól való üzemeltetése**: csak az [érvényes hitelesítésszolgáltatóktól](/azure/frontdoor/front-door-troubleshoot-allowed-ca) származó tanúsítványok használhatók a háttérbe a bejárati ajtónál. A belső hitelesítésszolgáltatóktól vagy önaláírt tanúsítványokból származó tanúsítványok nem engedélyezettek.
+2. A **tanúsítvány érvénytelen hitelesítésszolgáltatótól való üzemeltetése**: csak az [érvényes hitelesítésszolgáltatóktól](./front-door-troubleshoot-allowed-ca.md) származó tanúsítványok használhatók a háttérbe a bejárati ajtónál. A belső hitelesítésszolgáltatóktól vagy önaláírt tanúsítványokból származó tanúsítványok nem engedélyezettek.
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Használhatok ügyfél/kölcsönös hitelesítést az Azure bejárati ajtaján?
 

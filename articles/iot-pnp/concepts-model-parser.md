@@ -1,20 +1,19 @@
 ---
 title: A digitális Twins modell elemző ismertetése | Microsoft Docs
-description: Fejlesztőként megtudhatja, hogyan használhatja a DTDL-elemzőt a modellek ellenőrzésére
+description: Fejlesztőként megtudhatja, hogyan érvényesítheti a modelleket a DTDL-elemző használatával.
 author: rido-min
 ms.author: rmpablos
-ms.date: 04/29/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: peterpr
-ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d68abe8548dac3306228683e4b6ce8935a248ebc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87352284"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331787"
 ---
 # <a name="understand-the-digital-twins-model-parser"></a>A Digital Twins modellelemző megismerése
 
@@ -28,9 +27,12 @@ Az elemző a NuGet.org-ben érhető el az azonosító: [Microsoft. Azure. Digita
 dotnet add package Microsoft.Azure.DigitalTwins.Parser
 ```
 
+> [!NOTE]
+> Az írás időpontjában az elemző verziója a következő: `3.12.5` .
+
 ## <a name="use-the-parser-to-validate-a-model"></a>A modell érvényesítése az elemző használatával
 
-Az érvényesíteni kívánt modell a JSON-fájlokban leírt egy vagy több csatolóból állhat. Az elemző használatával betöltheti az adott mappában található összes fájlt, és az elemző használatával ellenőrizheti az összes fájlt egészként, beleértve a fájlok közötti hivatkozásokat is:
+Egy modell a JSON-fájlokban leírt egy vagy több illesztőfelületből is állhat. Az elemző használatával betöltheti az adott mappában található összes fájlt, és az elemző használatával ellenőrizheti az összes fájlt egészként, beleértve a fájlok közötti hivatkozásokat is:
 
 1. Hozzon létre egy `IEnumerable<string>` listát az összes modell tartalmáról:
 
@@ -57,18 +59,20 @@ Az érvényesíteni kívánt modell a JSON-fájlokban leírt egy vagy több csat
     IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     ```
 
-1. Ellenőrzési hibák ellenőrzése. Ha az elemző hibát talál, a `AggregateException` részletes hibaüzenetek listáját tartalmazza:
+1. Ellenőrzési hibák ellenőrzése. Ha az elemző hibát talál, a hibát tartalmazó `ParsingException` listát tartalmaz:
 
     ```csharp
     try
     {
         IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     }
-    catch (AggregateException ae)
+    catch (ParsingException pex)
     {
-        foreach (var e in ae.InnerExceptions)
+        Console.WriteLine(pex.Message);
+        foreach (var err in pex.Errors)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(err.PrimaryID);
+            Console.WriteLine(err.Message);
         }
     }
     ```
@@ -76,19 +80,10 @@ Az érvényesíteni kívánt modell a JSON-fájlokban leírt egy vagy több csat
 1. Vizsgálja meg a `Model` . Ha az ellenőrzés sikeres, a Model Parser API használatával ellenőrizheti a modellt. A következő kódrészlet azt mutatja be, hogyan lehet megismételni az összes elemzett modellt, és megjeleníti a meglévő tulajdonságokat:
 
     ```csharp
-    foreach (var m in parseResult)
+    foreach (var item in parseResult)
     {
-        Console.WriteLine(m.Key);
-        foreach (var item in m.Value.AsEnumerable<DTEntityInfo>())
-        {
-            var p = item as DTInterfaceInfo;
-            if (p!=null)
-            {
-                Console.WriteLine($"\t{p.Id}");
-                Console.WriteLine($"\t{p.Description.FirstOrDefault()}");
-            }
-            Console.WriteLine("--------------");
-        }
+        Console.WriteLine($"\t{item.Key}");
+        Console.WriteLine($"\t{item.Value.DisplayName?.Values.FirstOrDefault()}");
     }
     ```
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 92dcb1e75d43a946b9b6a238aaa360ec3d84dbb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b381e2dbdbfd30d10f37637b30bcdfbab8ed99a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619618"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331940"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Új bérlők kiépítése és katalógusa egy SaaS-alkalmazásban többvállalatos több-bérlős Azure SQL Database használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -150,7 +150,7 @@ A következő a kiépítési munkafolyamat legfontosabb elemei:
 - **Adja hozzá a bérlő nevét egy katalógus-kiterjesztési táblához**: a rendszer hozzáadja a helyszín nevét a katalógus bérlők táblájához.  Ez a Hozzáadás azt mutatja be, hogyan terjeszthető ki a katalógus-adatbázis további alkalmazásspecifikus adatok támogatásához.
 - **Nyissa meg az Events (események) lapot az új bérlő számára**: megnyílik a *Bushwillow blues* Events oldal a böngészőben.
 
-   ![események](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
+   ![Képernyőkép, amely az új bérlő eseményeinek oldalát jeleníti meg.](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 #### <a name="debugger-steps"></a>Hibakereső lépések
 
@@ -163,7 +163,7 @@ Annak megismeréséhez, hogy a Wingtip alkalmazás hogyan valósítja meg az új
 
 2. Adjon hozzá egy töréspontot úgy, hogy a kurzort bárhová helyezi a 38. sorban, a *New-bérlőt*tartalmazó sorban, majd nyomja le az **F9**billentyűt.
 
-   ![töréspont](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
+   ![Képernyőkép, amely kiemeli az új bérlőt tartalmazó sort.](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
 3. Futtassa a szkriptet az **F5**billentyű lenyomásával.
 
@@ -268,7 +268,7 @@ Az ilyen típusú automatizált szolgáltatás egyszerű vagy összetett lehet. 
 - [Parancsfájlok hibakeresése Windows PowerShell integrált parancsprogram-kezelési környezet](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

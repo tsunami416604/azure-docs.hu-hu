@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d9882f23096e19435566323de4d0ebaf7c0af3ef
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87439554"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331923"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Az Azure FarmBeats áttekintése (előzetes verzió)
 
 Az Azure FarmBeats egy, az Azure Marketplace-en elérhető üzleti célú ajánlat. Lehetővé teszi a mezőgazdasági adathalmazok összesítését a szolgáltatók között. Az Azure FarmBeats lehetővé teszi a mesterséges intelligencia (AI) vagy gépi tanulási (ML) modellek összeolvasztott adatkészleteken alapuló összeállítását. Az Azure FarmBeats használatával a mezőgazdasági vállalkozások a legfontosabb értékekre összpontosítanak, nem pedig az adatkezelés nem differenciált nagy mennyiségű emelését.
 
 > [!NOTE]
-> Az Azure FarmBeats jelenleg nyilvános előzetes verzióban érhető el. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az Azure-FarmBeats szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja az [Azure FarmBeats támogatási fórumát](https://aka.ms/farmbeatssupport) .
+> Az Azure FarmBeats jelenleg nyilvános előzetes verzióban érhető el. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az Azure-FarmBeats szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja az [Azure FarmBeats támogatási fórumát](https://aka.ms/farmbeatssupport) .
 
 ![A Project Farm veri](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
@@ -43,7 +43,7 @@ A Datahub bővíthető API-platformként lett kialakítva. Több szolgáltatóva
 
 Az Azure FarmBeats Accelerator egy minta webalkalmazás, amely a Datahub-re épül. A Gyorssegéd-ugrás elindítja a felhasználói felületet és a modell fejlesztését. Az Azure FarmBeats Accelerator Azure FarmBeats API-kat használ. Térképként jeleníti meg a betöltött érzékelő adatokat diagramok és modellek kimenetként. A Gyorssegéd használatával például gyorsan létrehozhatja a farmokat, és könnyen elvégezheti a vegetációs index térképét vagy az érzékelő elhelyezési térképét.
 
-## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 
 A rendszergazdák az előre definiált szerepkörök egyikével meghatározhatják az Azure FarmBeats hozzáférési szabályait. A szerepkörök határozzák meg, hogy az alkalmazás mely területeihez férhet hozzá a felhasználók, és milyen műveleteket végezhetnek el. Az Azure FarmBeats kétféle szerepkört biztosít a felhasználók és a partnerek számára.
 

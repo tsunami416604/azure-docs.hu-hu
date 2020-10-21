@@ -3,12 +3,12 @@ title: Azure Load Balancer szabály létrehozása fürthöz
 description: Azure Load Balancer konfigurálása az Azure Service Fabric-fürthöz tartozó portok megnyitásához.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e09c7b0b3e2bfa5a5ff834e243f5098cbbd947b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259047"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319904"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric-fürt portjainak megnyitása
 
@@ -60,7 +60,7 @@ Az Azure CLI-parancs néhány paraméterrel rendelkezik, amelyek a következő t
 
 
 >[!NOTE]
->A terheléselosztó Azure CLI-vel történő létrehozásával kapcsolatos további információkért lásd: terheléselosztó [létrehozása az Azure CLI-vel](../load-balancer/load-balancer-get-started-ilb-arm-cli.md).
+>A terheléselosztó Azure CLI-vel történő létrehozásával kapcsolatos további információkért lásd: terheléselosztó [létrehozása az Azure CLI-vel](../load-balancer/quickstart-load-balancer-standard-internal-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -96,8 +96,8 @@ $lb | Set-AzLoadBalancer
 A `New-AzLoadBalancerRuleConfig` parancshoz tartozó érték azt a `-FrontendPort` portot jelöli, amelyet a terheléselosztó a külső kapcsolatok számára tesz elérhetővé, és `-BackendPort` azt a portot jelöli, amelyen a Service Fabric-alkalmazás figyeli a szolgáltatást.
 
 >[!NOTE]
->A terheléselosztó PowerShell-lel történő létrehozásával kapcsolatos további információkért lásd: [Load Balancer létrehozása a PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)-lel.
+>A terheléselosztó PowerShell-lel történő létrehozásával kapcsolatos további információkért lásd: [Load Balancer létrehozása a PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md)-lel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Service Fabric hálózatkezeléséről](service-fabric-patterns-networking.md).

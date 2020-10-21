@@ -4,12 +4,12 @@ description: Ez a cikk az Azure Event Hubs-erőforrások eléréséhez Azure Act
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d606e6cd035d4dae388d8559d100988a46e8203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23fc0a59f9accc70c69c1096c1a15f1313ee2e0
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010018"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332450"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
 Az Azure Event Hubs támogatja a Azure Active Directory (Azure AD) hitelesítést az [Azure-erőforrások felügyelt identitásával](../active-directory/managed-identities-azure-resources/overview.md). Az Azure-erőforrások felügyelt identitásai engedélyezhetik Event Hubs erőforrásokhoz való hozzáférést az Azure Virtual Machines (VM), a Function apps, a Virtual Machine Scale Sets és más szolgáltatások által futtatott alkalmazások Azure AD-beli hitelesítő adataival. Ha felügyelt identitásokat használ az Azure-erőforrásokhoz az Azure AD-hitelesítéssel együtt, elkerülheti a hitelesítő adatok tárolását a felhőben futó alkalmazásaival.
@@ -26,7 +26,7 @@ Mielőtt felügyelt identitásokat használ az Azure-erőforrásokhoz a virtuál
 - [Azure Resource Manager ügyféloldali kódtárak](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Engedélyek megadása felügyelt identitásnak az Azure AD-ben
-Ahhoz, hogy az alkalmazásban egy felügyelt identitástól Event Hubs szolgáltatásra vonatkozó kérelmet engedélyezzen, először konfigurálja a felügyelt identitáshoz tartozó szerepköralapú hozzáférés-vezérlés (RBAC) beállításait. Az Azure Event Hubs olyan Azure-szerepköröket határoz meg, amelyek kiterjednek a Event Hubs küldésére és olvasására vonatkozó engedélyekre. Ha az Azure-szerepkör felügyelt identitáshoz van rendelve, a felügyelt identitás hozzáférést kap a megfelelő hatókörben Event Hubs adatokhoz.
+Ahhoz, hogy az alkalmazásban egy felügyelt identitástól Event Hubs szolgáltatásra vonatkozó kérést engedélyezzen, először konfigurálja az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) beállításait az adott felügyelt identitáshoz. Az Azure Event Hubs olyan Azure-szerepköröket határoz meg, amelyek kiterjednek a Event Hubs küldésére és olvasására vonatkozó engedélyekre. Ha az Azure-szerepkör felügyelt identitáshoz van rendelve, a felügyelt identitás hozzáférést kap a megfelelő hatókörben Event Hubs adatokhoz.
 
 Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [hitelesítés a Azure Active Directory használatával Event Hubs erőforrásaihoz való hozzáféréshez](authorize-access-azure-active-directory.md).
 
@@ -60,7 +60,7 @@ Ha szerepkört szeretne hozzárendelni Event Hubs erőforrásokhoz, navigáljon 
 4.  A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a hozzárendelni kívánt Event Hubs-szerepköröket. Ezután keresse meg a szerepkör hozzárendeléséhez regisztrált szolgáltatás identitását.
     
     ![Szerepkör-hozzárendelési lap hozzáadása](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  Kattintson a **Mentés** gombra. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a szolgáltatás identitása Event Hubs adattulajdonost tartalmaz.
+5.  Válassza a **Mentés** lehetőséget. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a szolgáltatás identitása Event Hubs adattulajdonost tartalmaz.
     
     ![Szerepkörhöz rendelt identitás](./media/authenticate-managed-identity/role-assigned.png)
 
@@ -149,7 +149,7 @@ Apache Kafka alkalmazások használatával üzeneteket küldhet és fogadhat az 
 - [Event Hubs for Kafka – üzenetek küldése és fogadása a felügyelt identitás OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az Azure-erőforrások felügyelt identitásának megismeréséhez tekintse meg a következő cikket: [Mi az Azure-erőforrások felügyelt identitása?](../active-directory/managed-identities-azure-resources/overview.md)
 - Tekintse meg a következő kapcsolódó cikkeket:
     - [Kérelmek hitelesítése az Azure Event Hubs alkalmazásból Azure Active Directory használatával](authenticate-application.md)

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: a850e5ea851ee539c663b00ecc7f2053eae8dc34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7904efb92aa8362605f1f68ee0b39f4241339031
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87534090"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332467"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>Feladat létrehozása és kreditek kiosztása
 
@@ -31,7 +31,7 @@ Az Azure Education-központ minden e-mail-címet elfogad a _____ @-ben ___.___ f
 > [!IMPORTANT]
 > A munkahelyi és iskolai fiókok a saját szabályzatok hatálya alá tartoznak, beleértve azt is, hogy a szervezettől eltérő tartományból származó e-mail-címek engedélyezettek-e (például student2@outlook.com a tartományhoz való hozzáadáskor @school.edu ). Az új felhasználók hozzáadása előtt ellenőrizze ezeket a szabályzatokat.
 
-Ha egy munkahelyi vagy iskolai fiókot (például: student1@school.edu ) szerepköralapú hozzáférés-vezérlésként (RBAC) vesznek fel a pedagógus szponzori portálon vagy a [Azure Portal](https://portal.azure.com), az Azure automatikusan e-mailt küld a címzettnek. Ehhez az e-mailhez a felhasználónak el kell fogadnia az új fiókot és az Azure-szerepkört, mielőtt hozzáférést kap az előfizetéshez. Ha Ön az oktatási asszisztens (TA) vagy a professzor, tájékoztassa a tanulókat arról, hogy az előfizetésük a várt módon jelenik meg a Azure Portal. Az e-mailnek a következőhöz hasonlóan kell kinéznie:
+Ha egy munkahelyi vagy iskolai fiókot (például) az student1@school.edu Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával adnak hozzá a oktatói szponzori portálon vagy a [Azure Portal](https://portal.azure.com), az Azure automatikusan e-mailt küld a címzettnek. Ehhez az e-mailhez a felhasználónak el kell fogadnia az új fiókot és az Azure-szerepkört, mielőtt hozzáférést kap az előfizetéshez. Ha Ön az oktatási asszisztens (TA) vagy a professzor, tájékoztassa a tanulókat arról, hogy az előfizetésük a várt módon jelenik meg a Azure Portal. Az e-mailnek a következőhöz hasonlóan kell kinéznie:
 
 :::image type="content" source="media/create-assignment-allocate-credit/azure-active-directory-get-started.png" alt-text="Azure Active Directory első lépések" border="false":::
 

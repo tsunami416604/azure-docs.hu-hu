@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0126c5348a2acaebea0400a94ca0a1d14a1bf6ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c1734af799ee473d6ba75fe2e8ab8429afa51d0
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707543"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318202"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -135,11 +135,11 @@ A **felülvizsgálat + létrehozás** lapon áttekintheti a beállításait, és
 
 Microsoft Graph használatával is létrehozhat hozzáférési csomagokat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a következőre:
 
-1. [Sorolja fel a katalógusban szereplő accessPackageResources](https://docs.microsoft.com/graph/api/accesspackagecatalog-list?view=graph-rest-beta&tabs=http) , és [hozzon létre egy accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&tabs=http) minden olyan erőforráshoz, amely még nem szerepel a katalógusban.
-1. Egy accessPackageCatalog egyes accessPackageResource [AccessPackageResourceRoles listázása](https://docs.microsoft.com/graph/api/accesspackage-list-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) . A szerepkörök listáját ezután egy szerepkör kiválasztására fogjuk használni, amikor a későbbiekben létrehoz egy accessPackageResourceRoleScope.
-1. [Hozzon létre egy accessPackage](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
-1. [Hozzon létre egy accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta&tabs=http).
-1. [Hozzon létre egy accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) minden, a hozzáférési csomagban szükséges erőforrás-szerepkörhöz.
+1. [Sorolja fel a katalógusban szereplő accessPackageResources](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta) , és [hozzon létre egy accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta) minden olyan erőforráshoz, amely még nem szerepel a katalógusban.
+1. Egy accessPackageCatalog egyes accessPackageResource [AccessPackageResourceRoles listázása](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) . A szerepkörök listáját ezután egy szerepkör kiválasztására fogjuk használni, amikor a későbbiekben létrehoz egy accessPackageResourceRoleScope.
+1. [Hozzon létre egy accessPackage](/graph/tutorial-access-package-api?view=graph-rest-beta).
+1. [Hozzon létre egy accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta).
+1. [Hozzon létre egy accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) minden, a hozzáférési csomagban szükséges erőforrás-szerepkörhöz.
 
 ## <a name="next-steps"></a>Következő lépések
 

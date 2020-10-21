@@ -4,12 +4,12 @@ description: Bemutatja, hogyan kezelheti a témakörök nagy csoportjait a Azure
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277db97211b196c9853470c2d12cc2246a4005b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502035"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330077"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Témakörök kezelése és események közzététele az Event Domain használatával
 
@@ -79,7 +79,7 @@ Vegye figyelembe, `endpoint` hogy a és a szükséges a `id` tartomány kezelés
 
 ## <a name="manage-access-to-topics"></a>Témakörökhöz való hozzáférés kezelése
 
-A témakörökhöz való hozzáférés kezelése [szerepkör-hozzárendelés](../role-based-access-control/role-assignments-cli.md)használatával történik. A szerepkör-hozzárendelés szerepköralapú hozzáférés-vezérléssel korlátozza az Azure-erőforrások műveleteit egy bizonyos hatókörön belüli jogosult felhasználók számára.
+A témakörökhöz való hozzáférés kezelése [szerepkör-hozzárendelés](../role-based-access-control/role-assignments-cli.md)használatával történik. A szerepkör-hozzárendelés az Azure szerepköralapú hozzáférés-vezérlés használatával korlátozza az Azure-erőforrásokon végrehajtott műveleteket egy bizonyos hatókörön belüli jogosult felhasználók számára.
 
 A Event Grid két beépített szerepkörrel rendelkezik, amelyek segítségével adott felhasználókhoz rendelhet hozzá különböző témaköröket a tartományon belül. Ezek a szerepkörök `EventGrid EventSubscription Contributor (Preview)` , amelyek lehetővé teszik az előfizetések létrehozását és törlését, és `EventGrid EventSubscription Reader (Preview)` amelyek csak az esemény-előfizetések listázását teszik lehetővé.
 

@@ -6,15 +6,16 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45303a8aaaa348d310d7f8b5e7cd98f8d465a282
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85114265"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280828"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Az Azure Cosmos DB gyakori használati helyzetei
-Ez a cikk áttekintést nyújt Azure Cosmos DB számos gyakori használati esetéről.  Az ebben a cikkben szereplő javaslatok kiindulási pontként szolgálnak az alkalmazás Cosmos DB való fejlesztésekor.   
+
+Ez a cikk áttekintést nyújt Azure Cosmos DB számos gyakori használati esetéről.  Az ebben a cikkben szereplő javaslatok kiindulási pontként szolgálnak az alkalmazás Cosmos DB való fejlesztésekor.
 
 A cikk elolvasása után a következő kérdésekre tud válaszolni: 
 
@@ -24,7 +25,8 @@ A cikk elolvasása után a következő kérdésekre tud válaszolni:
 * Milyen előnyökkel jár a webes és mobil alkalmazások Azure Cosmos DB használata?
 
 ## <a name="introduction"></a>Bevezetés
-[Azure Cosmos db](../cosmos-db/introduction.md) a Microsoft globálisan elosztott adatbázis-szolgáltatása. A szolgáltatás úgy lett kialakítva, hogy az ügyfelek rugalmasan (és egymástól függetlenül) méretezhetik az átviteli sebességet és a tárterületet tetszőleges számú földrajzi régión belül. A Azure Cosmos DB az első globálisan elosztott adatbázis-szolgáltatás a piacon, amely átfogó [szolgáltatási szintű szerződéseket](https://azure.microsoft.com/support/legal/sla/cosmos-db/) kínál, beleértve az átviteli sebességet, a késést, a rendelkezésre állást és a konzisztenciát. 
+
+[Azure Cosmos db](../cosmos-db/introduction.md) a Microsoft gyors NoSQL-adatbázisa, amely bármilyen méretű nyitott API-val rendelkezik. A szolgáltatás úgy lett kialakítva, hogy az ügyfelek rugalmasan (és egymástól függetlenül) méretezhetik az átviteli sebességet és a tárterületet tetszőleges számú földrajzi régión belül. A Azure Cosmos DB az első globálisan elosztott adatbázis-szolgáltatás a piacon, amely átfogó [szolgáltatási szintű szerződéseket](https://azure.microsoft.com/support/legal/sla/cosmos-db/) kínál, beleértve az átviteli sebességet, a késést, a rendelkezésre állást és a konzisztenciát.
 
 A Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis, amely számos alkalmazás és használati eset esetében használatos. Célszerű bármely olyan [kiszolgáló](https://azure.com/serverless) nélküli alkalmazáshoz, amelynél alacsony az ezredmásodperces válaszidő, és gyorsan és globálisan kell méretezni. Több adatmodellt (kulcs-érték, dokumentumok, gráfok és oszlopos) és számos API-t támogat az adathozzáféréshez, beleértve a [Azure Cosmos db API-ját a MongoDB, az](mongodb-introduction.md) [SQL API](documentdb-introduction.md)-t, a [Gremlin API](graph-introduction.md)-t és a [Table API](table-introduction.md) -t natív módon, és bővíthető módon. 
 
@@ -40,6 +42,7 @@ Az alábbiakban néhány olyan Azure Cosmos DB attribútumot ismertetünk, amely
 Ezek az attribútumok hasznosak olyan webes, mobil-, játék-és IoT-alkalmazásokban, amelyeknek alacsony a válaszideje, és nagy mennyiségű olvasást és írást kell kezelniük.
 
 ## <a name="iot-and-telematics"></a>IoT és telematika
+
 A IoT-használati esetek gyakran osztoznak bizonyos mintákban az adatfeldolgozásuk, feldolgozása és tárolása során.  Először is ezeknek a rendszereknek kell bevenniük a különböző területi beállítások eszköz-érzékelőkből származó adatmennyiséget. Ezután ezek a rendszerek a valós idejű elemzések elvégzése érdekében dolgozzák fel és elemzik a streaming-adatforrásokat. Az adatok ezután archiválva vannak a a Batch Analytics szolgáltatásban található hűtőházi tárolóba. A Microsoft Azure számos olyan szolgáltatást kínál, amely IoT-használati esetekre alkalmazható, például Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification hub, Azure Machine Learning, Azure HDInsight és Power BI. 
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
@@ -97,7 +100,7 @@ A JSON, a Cosmos DB által támogatott formátum érvényes formátum a felhaszn
 
 :::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Cosmos DB használatának megkezdéséhez kövesse a [gyors üzembe](create-sql-api-dotnet.md)helyezést, amely végigvezeti a fiók létrehozásán és a Cosmos db használatának első lépésein.
 

@@ -1,16 +1,16 @@
 ---
 title: Migrálás a Bridge to Kubernetesre
 services: azure-dev-spaces
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 description: Az Azure dev Spaces és a Kubernetes közötti áttelepítési folyamat ismertetése
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
-ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044700"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329798"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
 
@@ -46,14 +46,14 @@ Az Azure dev Spaces és a Bridge to Kubernetes hasonló funkciókkal rendelkezik
 | Azure Kubernetes Service | 15 Azure-régióban | Bármely AK szolgáltatási régió    |
 | **Biztonság** |
 | Biztonsági hozzáférés szükséges a fürtön  | AK-fürt közreműködői  | Kubernetes RBAC – központi telepítés frissítése   |
-| Biztonsági hozzáférés szükséges a fejlesztői számítógépen  | N.A.  | Helyi rendszergazda/sudo   |
+| Biztonsági hozzáférés szükséges a fejlesztői számítógépen  | N/A  | Helyi rendszergazda/sudo   |
 | **Használhatóság** |
 | Független a Kubernetes és a Docker-összetevőktől  | Nem  | Igen   |
 | Módosítások automatikus visszaállítása, hibakeresés utáni  | Nem  | Igen   |
-| **Környezetek** |
+| **Támogatott ügyfél-eszközök** |
 | Együttműködik a Visual Studio 2019-mel  | Igen  | Igen   |
 | Működik a Visual Studio Code-ban  | Igen  | Igen   |
-| Együttműködik a parancssori felülettel  | Igen  | Nem   |
+| A parancssori felülettel működik  | Igen  | Nem   |
 | **Operációs rendszer kompatibilitása** |
 | Windows 10 rendszeren működik  | Igen  | Igen  |
 | Linux rendszeren működik  | Igen  | Igen  |
@@ -136,7 +136,7 @@ Ha azt szeretné, hogy a Kubernetes az Azure dev Spaces a fürtben való letilt�
 1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes Visual Studio Code-ban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes][use-btk-vsc].
 1. Indítsa el a hibakeresést a Visual Studióban az újonnan létrehozott híd használatával a Kubernetes indítási profilhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a híd Kubernetes működéséről.
 

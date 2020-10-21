@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 77c54d6ea463b5a8a4952d243886b80f38312d27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc3323a3ae2d604557d7e09b38252d63f17c5470
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291486"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319911"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
 
@@ -45,7 +45,7 @@ Az alábbi táblázatok azt mutatják be, hogy mely áttelepítési forgatókön
 
 Az alábbi táblázat az offline áttelepítések Azure Database Migration Service támogatását mutatja be.
 
-| Cél  | Forrás | Támogatás | status |
+| Cél  | Forrás | Támogatás | Állapot |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | FE |
 |   | RDS SQL | X |  |
@@ -67,7 +67,7 @@ Az alábbi táblázat az offline áttelepítések Azure Database Migration Servi
 
 Az alábbi táblázat az online áttelepítések Azure Database Migration Service támogatását mutatja be.
 
-| Cél  | Forrás | Támogatás | status |
+| Cél  | Forrás | Támogatás | Állapot |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | FE |
 |   | RDS SQL | ✔ | FE |
@@ -81,13 +81,12 @@ Az alábbi táblázat az online áttelepítések Azure Database Migration Servic
 | **MySQL-hez készült Azure DB** | MySQL | ✔ | FE |
 |   | RDS MySQL | ✔ | FE |
 | **Azure-adatbázis PostgreSQL-hez – egyetlen kiszolgáló** | PostgreSQL | ✔ | FE |
-|   | Azure-adatbázis PostgreSQL-hez – egyetlen kiszolgáló * | ✔ | FE |
+|   | Azure-adatbázis PostgreSQL-hez – egyetlen kiszolgáló | ✔ | FE |
 |   | RDS PostgreSQL | ✔ | FE |
 |   | Oracle | ✔ | Nyilvános előzetes verzió |
 | **Azure-adatbázis PostgreSQL-hez – nagy kapacitású (Citus)** | PostgreSQL | ✔ | FE |
 |   | RDS PostgreSQL | ✔ | FE |
 
-* A PostgreSQL 10-es és újabb verziója támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 

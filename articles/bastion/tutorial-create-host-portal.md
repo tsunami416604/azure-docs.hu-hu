@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: daf3b6c36b191f52f0d7ac7638ef59695325f541
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a7937745e839b54d9ee7b6f056d10ff627e191d3
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078544"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327331"
 ---
-# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>Oktatóanyag: Azure Bastion-gazdagép létrehozása és Windows rendszerű virtuális gépekhez való kapcsolódás böngésző használatával
+# <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Oktatóanyag: a Bastion konfigurálása és a Windows rendszerű virtuális gépekhez való kapcsolódás böngésző használatával
 
 Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy virtuális géphez a böngészőben az Azure Bastion és a Azure Portal használatával. A Azure Portal a virtuális hálózatra helyezi a Bastion-t. A megerősített telepítés után a magánhálózati IP-címén keresztül csatlakozik egy virtuális géphez a Azure Portal használatával. A virtuális gépe nem igényel nyilvános IP-címet vagy speciális szoftvert. A szolgáltatás üzembe helyezését követően az RDP/SSH-élmény az azonos virtuális hálózatban lévő összes virtuális gép számára elérhető. További információ az Azure Bastion-ről: [Mi az az Azure Bastion?](bastion-overview.md).
 
@@ -85,7 +85,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a k�
 1. Válassza az **Erőforráscsoport törlése** elemet.
 1. Adja meg az erőforráscsoport nevét az erőforráscsoport neveként **, majd válassza** a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy megerősített gazdagépet, és hozzárendelte azt egy virtuális hálózathoz, majd kapcsolódott egy Windows rendszerű virtuális géphez. Dönthet úgy, hogy hálózati biztonsági csoportokat használ az Azure-beli megerősített alhálózattal. Ehhez tekintse meg a következőt:
 

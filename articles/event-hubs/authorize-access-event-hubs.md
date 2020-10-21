@@ -4,12 +4,12 @@ description: Ez a cikk az Azure Event Hubs-erőforrásokhoz való hozzáférés 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fc35387f4ac28ad4dd28bea0013bcdf1e1e9f02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85323182"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332382"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Az Azure Event Hubshoz való hozzáférés engedélyezése
 Minden alkalommal, amikor egy Event hub-ből tesz közzé vagy használ eseményeket/információkat, az ügyfél megpróbál hozzáférni Event Hubs erőforrásokhoz. A biztonságos erőforrásokra vonatkozó minden kérést engedélyezni kell, hogy a szolgáltatás biztosítsa, hogy az ügyfél rendelkezik a szükséges engedélyekkel az adatközzétételhez/felhasználáshoz. 
@@ -23,7 +23,7 @@ Az Azure Event Hubs a következő lehetőségeket kínálja a biztonságos erőf
 > Ez a cikk a Event Hubs és [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) forgatókönyvekre egyaránt vonatkozik. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-A Azure Active Directory (Azure AD) integrációja Event Hubs erőforrásokhoz szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfelek erőforrásaihoz való hozzáférés részletes szabályozásához. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket biztosíthat a rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A token használatával engedélyezhető egy Event Hubs erőforrás elérésére irányuló kérés.
+A Azure Active Directory (Azure AD) integrációja Event Hubs erőforrásokhoz Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosít az ügyfelek erőforrásaihoz való hozzáférés részletes szabályozásához. Az Azure RBAC segítségével engedélyeket biztosíthat a rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A token használatával engedélyezhető egy Event Hubs erőforrás elérésére irányuló kérés.
 
 Az Azure AD-vel történő hitelesítéssel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -40,7 +40,7 @@ Alapértelmezés szerint az összes Event Hubs erőforrás biztonságos, és csa
 Az SAS használatával történő engedélyezéssel kapcsolatos további információkért lásd: [hozzáférés engedélyezése Event Hubs erőforrásokhoz közös hozzáférési aláírások használatával](authorize-access-shared-access-signature.md).
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse át a GitHub-tárházban közzétett [RBAC-mintákat](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) . 
+- Tekintse át a GitHub-tárházban közzétett [Azure RBAC-mintákat](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) . 
 - Lásd az alábbi cikkeket:
     - [Kérelmek hitelesítése az Azure Event Hubs alkalmazásból Azure Active Directory használatával](authenticate-application.md)
     - [Felügyelt identitás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez](authenticate-managed-identity.md)

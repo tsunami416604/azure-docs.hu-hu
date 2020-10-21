@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619016"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330104"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-visszaállítás használata több-bérlős SaaS-alkalmazás helyreállításához az adatbázis biztonsági másolatainak használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -184,7 +184,7 @@ Képzelje el, hogy a régióban az alkalmazás központi telepítése történik
 
 3. Figyelje a helyreállítási folyamat állapotát a PowerShell-ablakban.
 
-    ![Helyreállítási folyamat](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![Képernyőkép a PowerShell-ablakról, amelyen nyomon követheti a helyreállítási folyamat állapotát.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > A helyreállítási feladatok kódjának megismeréséhez tekintse át a PowerShell-szkripteket a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\RecoveryJobs mappában.
@@ -202,7 +202,7 @@ Amíg az alkalmazás végpontja le van tiltva a Traffic Managerban, az alkalmaz�
 
   * Ha közvetlenül a bérlő offline állapotban nyitja meg a bérlői események lapot, a lap egy bérlő offline értesítését jeleníti meg. Ha például a contoso Concert Hall offline állapotban van, próbálja meg megnyitni a következőt:. http://events.wingtip-dpt.&lt User &gt; . trafficmanager.net/contosoconcerthall.
 
-    ![Helyreállítási folyamat](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![Az offline események lapot megjelenítő képernyőkép.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Új bérlő kiépítése a helyreállítási régióban
 Még a bérlői adatbázisok visszaállítása előtt is kiépítheti az új bérlőket a helyreállítási régióban. A helyreállítási régióban kiépített új bérlői adatbázisok haza a helyreállított adatbázisokkal.   

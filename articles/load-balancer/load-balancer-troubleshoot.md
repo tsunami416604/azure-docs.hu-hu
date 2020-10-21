@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217388"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314812"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -157,6 +157,17 @@ Ha úgy dönt, hogy megnyit egy támogatási esetet, a következő információk
 - A VNet belül található egyik háttérbeli virtuális gép Psping használatával tesztelheti a mintavételi port válaszát (például: Psping 10.0.0.4:3389), és rögzíthet eredményeket. 
 - Ha nem érkezik válasz ezen pingelési tesztekben, futtasson egyidejű netsh-nyomkövetést a háttérbeli virtuális gépen és a VNet teszt virtuális gépen a PsPing futtatásakor, majd állítsa le a netsh nyomkövetést. 
  
+## <a name="symptom-load-balancer-in-failed-state"></a>Tünet: Load Balancer sikertelen állapotban 
+
+**Resolution** (Osztás)
+
+- Miután azonosította a hibás állapotú erőforrást, lépjen a [Azure erőforrás-kezelőra](https://resources.azure.com/) , és azonosítsa az erőforrást ebben az állapotban. 
+- Frissítse a kapcsolót a jobb felső sarokban az olvasáshoz/íráshoz.
+- Kattintson a Szerkesztés elemre az erőforrás sikertelen állapotában.
+- Kattintson a PUT elemre, és győződjön meg arról, hogy a kiépítési állapot sikeresen frissítve lett.
+- Ezt követően folytathatja a műveletet más műveletekkel, mert az erőforrás nem meghibásodott állapotban van.
+
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti lépések nem oldják meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

@@ -4,12 +4,12 @@ description: Ez a cikk olyan információt tartalmaz, amely segít optimalizáln
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfac69a055c9b0c75032622caf7fb8502fad3406
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476257"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328266"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure DevTest Labs infrastruktúra irányítása – a Cost és a tulajdonjog kezelése
 A fejlesztési és tesztelési környezetek létrehozásakor a költségeket és a tulajdonjogot elsődleges szempontnak tekintjük. Ebben a szakaszban olyan információkat talál, amelyek segítségével optimalizálhatja a saját környezetének költségeit és a tulajdonjogát.
@@ -34,9 +34,9 @@ Csak az aktív Visual Studio-előfizetők (standard előfizetések, éves felhő
 
 Ha úgy dönt, hogy a DevTest ajánlatot használja, vegye figyelembe, hogy ez az előny kizárólag az alkalmazások fejlesztéséhez és teszteléséhez használható. Az előfizetésen belüli használat nem vállal pénzügyi felelősséggel vállalt SLA-t, kivéve az Azure DevOps és a HockeyApp használatát.
 
-## <a name="define-a-role-based-access-across-your-organization"></a>Szerepköralapú hozzáférés definiálása a szervezeten belül
+## <a name="define-role-based-access-across-your-organization"></a>Szerepköralapú hozzáférés definiálása a szervezeten belül
 ### <a name="question"></a>Kérdés
-Hogyan a saját DevTest Labs-környezetek szerepköralapú hozzáférés-vezérlésének megadásával biztosítható, hogy a fejlesztők és a tesztek a munkájukat is szabályozzák? 
+Hogyan az Azure szerepköralapú hozzáférés-vezérlésének meghatározása a saját DevTest Labs-környezetek számára annak biztosításához, hogy a fejlesztők és a tesztek hogyan tudják elvégezni a munkájukat? 
 
 ### <a name="answer"></a>Válasz
 Széles minta van, azonban a részletek a szervezettől függenek.

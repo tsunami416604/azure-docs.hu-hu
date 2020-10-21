@@ -9,19 +9,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: dad1f9f232cb9d713af81f6aea57a4ffe651da19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65dc9f556a9b7c257273349c056cf997973e942f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331964"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328283"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-formátum Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ha szeretné **elemezni az Excel-fájlokat**, kövesse ezt a cikket. A Azure Data Factory támogatja a ". xls" és az ". xlsx" is.
 
-Az Excel formátum a következő összekötők esetében támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md). Forrásként, de nem fogadóként támogatott.
+Az Excel formátum a következő összekötők esetében támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md). Forrásként, de nem fogadóként támogatott. 
+
+**Megjegyzés**: a ". xls" formátum nem támogatott a [http](connector-http.md)használata közben. 
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -71,7 +73,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="excel-as-source"></a>Excel forrásként 
 
-A másolási tevékenység *** \* forrása \* *** szakaszban a következő tulajdonságok támogatottak.
+A másolási tevékenység **_ \_ forrás \* *** szakaszában a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -147,7 +149,7 @@ source(allowSchemaDrift: true,
     firstRowAsHeader: true) ~> ExcelSourceInlineDataset
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység áttekintése](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)

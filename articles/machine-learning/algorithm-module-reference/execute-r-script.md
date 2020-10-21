@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542288"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330393"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
@@ -194,11 +194,11 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
     > [!NOTE]
     > Előfordulhat, hogy a meglévő R-kódnak kisebb módosításokat kell futtatnia a tervezői folyamatokban. Például a CSV formátumban megadott bemeneti adatokat explicit módon át kell alakítani egy adatkészletbe, mielőtt használni lehetne a kódban. Az R nyelvben használt adatok és oszlopok különböző módokon különböznek a tervezőben használt adatok és oszlopok típusaitól.
 
-    Ha a szkript mérete meghaladja a 16 KB-ot, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a *commandline érték meghaladja a 16597 karakteres korlátot*. 
+1. Ha a szkript mérete meghaladja a 16 KB-ot, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a *commandline érték meghaladja a 16597 karakteres korlátot*. 
     
     1. A szkriptet és más egyéni erőforrásokat csomagolja egy zip-fájlba.
     1. Töltse fel a zip-fájlt **fájl adatkészletként** a studióba. 
-    1. Húzza az adatkészlet modult a *saját adatkészletek* listájából a tervező szerzői műveletek oldal bal oldali modul paneljén. 
+    1. Húzza az adatkészlet modult a Designer authoring oldal bal oldali modul paneljének *adatkészletek* listájából. 
     1. Az adatkészlet moduljának csatlakoztatása az **R-parancsfájl végrehajtása** modul **parancsfájl-köteg** portjához.
     
     Az alábbi mintakód a szkriptet használja a parancsfájl-csomagban:
@@ -503,6 +503,6 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

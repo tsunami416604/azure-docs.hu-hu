@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44426103b8f0fce275f33682edbc3b84a08344b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257668"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329559"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Események elemzése és vizualizáció Azure Monitor naplókkal
  Azure Monitor naplók gyűjti és elemzi a felhőben üzemeltetett alkalmazások és szolgáltatások telemetria, és elemzési eszközöket biztosít a rendelkezésre állás és a teljesítmény maximalizálása érdekében. Ez a cikk azt ismerteti, hogyan futtathat lekérdezéseket Azure Monitor-naplókban, hogy betekintést nyerjen, és hárítsa el, mi történik a fürtben. A következő gyakori kérdéseket tárgyaljuk:
@@ -42,7 +42,7 @@ A-ben a `Summary` csempék egy gráf formájában jelennek meg az összes enged�
 
 Az alábbi képen a Service Fabric Analytics-megoldás kezdőlapja látható. Ez a Kezdőlap pillanatkép-nézetet jelenít meg a fürtben zajló eseményekről.
 
-![Service Fabric megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![A Service Fabric Analytics-megoldás kezdőlapját megjelenítő képernyőkép.](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
  Ha a fürt létrehozásakor engedélyezte a diagnosztika szolgáltatást, a következő eseményeket tekintheti meg: 
 

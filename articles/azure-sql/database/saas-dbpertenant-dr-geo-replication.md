@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2047832f8cfbf31c04c84eb7a70fee6631fa4b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619151"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330121"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Vész-helyreállítás egy több-bérlős SaaS-alkalmazáshoz az adatbázis-geo-replikáció használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ Ebben a feladatban egy olyan folyamatot indít el, amely a kiszolgálók, a ruga
     * **$DemoScenario = 1**, a bérlői kiszolgáló szinkronizálása és a készlet konfigurációs adatainak elindítása a katalógusba
 
 3. Nyomja le az **F5** billentyűt a szinkronizálási parancsfájl futtatásához. A rendszer új PowerShell-munkamenetet nyit meg a bérlői erőforrások konfigurációjának szinkronizálásához.
-![Szinkronizálási folyamat](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
+![A bérlői erőforrások konfigurációjának szinkronizálására megnyitott új PowerShell-munkamenetet bemutató képernyőkép.](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
 
 Hagyja a háttérben futó PowerShell-ablakot, és folytassa az oktatóanyag többi részével. 
 
@@ -301,7 +301,7 @@ Az alkalmazás úgy van kialakítva, hogy mindig a bérlői adatbázissal azonos
 
 Előfordulhat, hogy a bérlői adatbázisok a helyreállítási és az eredeti régiókban is elterjedhetnek. Az alkalmazás minden adatbázisnál megkeresi a régiót, amelyben az adatbázis található, a DNS-címkeresés a bérlői kiszolgáló nevében. SQL Database a kiszolgálónév egy alias. Az alias-kiszolgáló neve tartalmazza a régió nevét. Ha az alkalmazás nem ugyanabban a régióban található, mint az adatbázis, a a-kiszolgálóval megegyező régióban lévő példányra irányítja át. Az alkalmazás és az adatbázis közötti késleltetést az adott régióban lévő példányra irányítja át. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]

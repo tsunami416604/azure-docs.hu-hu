@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan derítheti fel az AWS-példányokat Azure Migra
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b837ae89831024b169782fe9ae1a062677a4b45b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275455"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311281"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Oktatóanyag: AWS-példányok felderítése kiszolgáló-értékeléssel
 
@@ -224,7 +224,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
    
    A PIN-kóddal való bejelentkezés nem támogatott.
 3. A sikeres bejelentkezést követően térjen vissza a webalkalmazáshoz. 
-4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő [engedélyekkel](tutorial-prepare-physical.md) a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
+4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő [engedélyekkel](./tutorial-discover-physical.md) a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
 1. A készülék sikeres regisztrálása után a **részletek megtekintése**lehetőségre kattintva megtekintheti a regisztráció részleteit.
 
 
@@ -258,7 +258,7 @@ A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjele
 1. Nyissa meg az Azure Migrate irányítópultját.
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure-beli virtuális gépekre való Migrálás [fizikai kiszolgálóinak felmérése](tutorial-migrate-aws-virtual-machines.md) .
 - [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.

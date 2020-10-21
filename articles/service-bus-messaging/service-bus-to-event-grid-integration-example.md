@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f64c8155724a1306f5074a9164bcf97391dfbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7f177b8738fdaf8d0975877d9af094b6f0a49a9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000345"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328147"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Oktatóanyag: válaszadás a Azure Event Grid által a Azure Functions és a Azure Logic Apps használatával kapott Azure Service Bus eseményekre
 Ebből az oktatóanyagból megtudhatja, hogyan válaszolhat a Azure Event Grid használatával fogadott Azure Service Bus eseményekre Azure Functions és Azure Logic Apps használatával. 
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve összekapcsolhatók a logikai alkalmazások Azur
         ![Logic Apps Designer – válassza ki a megosztott elérési kulcsot](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
     8. Válassza ki a **témakört** és az **előfizetést**. 
     
-        ![Logic Apps Designer – válassza ki Service Bus témakört és előfizetést](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+        ![Képernyőkép, amely bemutatja, hol válassza ki a témakört és az előfizetést.](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
 7. Válassza az **+ új lépés**lehetőséget, majd hajtsa végre a következő lépéseket: 
     1. Válassza a **Service Bus** lehetőséget.
     2. Válassza ki **az üzenet végrehajtása témakör-előfizetésben** a műveletek listájában. 

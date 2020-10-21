@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 10/12/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b033e141d176db839e897ac4add738a4a799de99
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970639"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315933"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -69,6 +69,10 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 - A helyszíni számítási feladatokból [, Azure-beli virtuális gépekből, Azure-fájlmegosztásból és egyebekből származó](../..//backup/backup-overview.md#what-can-i-back-up) ügyféladatok biztonsági mentése és visszaállítása
 - A [Backup Explorer](../../backup/monitor-azure-backup-with-backup-explorer.md) segítségével megtekintheti a biztonsági másolati elemek működési információit (beleértve a biztonsági mentéshez még nem konfigurált Azure-erőforrásokat), valamint a delegált előfizetések figyelési információit (feladatok és riasztások). A Backup Explorer jelenleg csak az Azure-beli virtuálisgép-szolgáltatásokhoz érhető el.
 - [Készítsen biztonsági mentési jelentéseket](../../backup/configure-reports.md) a delegált előfizetések között a korábbi trendek nyomon követéséhez, a biztonsági mentési tárolók felhasználásának elemzéséhez, valamint a biztonsági másolatok és visszaállítások ellenőrzéséhez
+
+[Azure-tervezetek](../../governance/blueprints/index.yml):
+
+- Az Azure tervrajzai segítségével összehangolhatja az erőforrás-sablonok és egyéb összetevők üzembe helyezését (az ügyfél-előfizetés előkészítéséhez [További hozzáférés](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) szükséges)
 
 [Azure Cost Management + számlázás](../../cost-management-billing/index.yml):
 

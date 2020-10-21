@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893724"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331736"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Szabály-hierarchia definiálása Azure Firewall házirend használatával
 
@@ -21,7 +21,7 @@ A biztonsági rendszergazdáknak tűzfalat kell kezelniük, és biztosítaniuk k
 Azure Firewall házirend lehetővé teszi a szabály-hierarchia definiálását és a megfelelőség érvényesítését:
 
 - Hierarchikus struktúrát biztosít ahhoz, hogy a központi alapházirendet egy alárendelt alkalmazási csapat házirendjére lehessen befedi. Az alapházirend magasabb prioritással rendelkezik, és a gyermek házirend előtt fut.
-- Egyéni szerepköralapú hozzáférés-vezérlési (RBAC) definíció használatával megakadályozhatja a véletlen alapházirend-eltávolítást, és szelektív hozzáférést biztosíthat a szabályok gyűjtési csoportjaihoz az előfizetésen vagy az erőforráscsoporton belül. 
+- Az Azure egyéni szerepkör-definíciójának használatával megakadályozhatja a véletlen alapházirend-eltávolítást, és szelektív hozzáférést biztosíthat a szabályok gyűjtési csoportjaihoz egy előfizetésen vagy erőforráscsoporton belül. 
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
 
@@ -151,9 +151,9 @@ A portálon felhasználókat adhat hozzá a AZFM-szabályok gyűjtési csoportj�
 
 Ismételje meg ezt az eljárást a többi tűzfal-házirendnél.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
-Az egyéni RBAC rendelkező tűzfalszabályok mostantól szelektív hozzáférést biztosítanak a tűzfalszabályok szabály-gyűjtési csoportjaihoz.
+Az egyéni szerepkörökkel rendelkező tűzfalszabályok mostantól szelektív hozzáférést biztosítanak a tűzfalszabályok szabály-összegyűjtési csoportjaihoz.
 
 A felhasználók nem rendelkeznek a következő engedélyekkel:
 - Törölje a Azure Firewall vagy a tűzfal házirendjét.

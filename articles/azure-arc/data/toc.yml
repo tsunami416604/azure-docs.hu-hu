@@ -24,7 +24,7 @@
       items:
         - name: Ügyféleszközök telepítése
           href: install-client-tools.md
-        - name: azdata
+        - name: Azure Data parancssori felület (azdata)
           items:
             - name: Telepítés
               href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
@@ -46,7 +46,7 @@
           href: create-data-controller-azure-data-studio.md
         - name: Adatkezelő erőforrás létrehozása (Portal)
           href: create-data-controller-resource-in-azure-portal.md
-        - name: Adatkezelő létrehozása (azdata)
+        - name: Adatkezelő létrehozása (Azure Data parancssori felület)
           href: create-data-controller-using-azdata.md
         - name: Adatkezelő létrehozása Kubernetes használatával
           href: create-data-controller-using-kubernetes-native-tools.md

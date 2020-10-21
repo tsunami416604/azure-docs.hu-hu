@@ -4,19 +4,19 @@ description: Azure Cosmos DB Core (SQL) API-erőforrások kezelése a PowerShell
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4147b9a3a5f0a249366431a4e43f924e89f9075
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840880"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281491"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Azure Cosmos DB Core (SQL) API-erőforrások kezelése a PowerShell használatával
 
-Az alábbi útmutató ismerteti, hogyan használható a PowerShell a Azure Cosmos DB Core (SQL) API-erőforrások (például a Cosmos-fiók, az adatbázis, a tároló és az átviteli sebesség) felügyeletére és automatizálására.
+Az alábbi útmutató ismerteti, hogyan használható a PowerShell a Azure Cosmos DB Core (SQL) API-erőforrások (például a Cosmos-fiók, az adatbázis, a tároló és az átviteli sebesség) felügyeletére és automatizálására. Más API-khoz készült PowerShell-parancsmagok esetében lásd: [PowerShell-minták a Cassandra](powershell-samples-cassandra.md), PowerShell-minták a [MongoDB API](powershell-samples-mongodb.md)-hoz, PowerShell-minták a [Gremlin](powershell-samples-gremlin.md), PowerShell-minták [táblázathoz](powershell-samples-table.md)
 
 > [!NOTE]
 > A cikkben szereplő minták az [az. CosmosDB](/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. A legújabb változásokért tekintse meg az az [. CosmosDB](/powershell/module/az.cosmosdb) API-referenciát ismertető oldalt.

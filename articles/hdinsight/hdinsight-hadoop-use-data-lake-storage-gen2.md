@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 94a84220b276edf8eaf539151964715675693dec
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 0675f77acbdecfe74634a6734b83c5b74019b8ab
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131377"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332025"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel
 
@@ -42,11 +42,11 @@ Az alábbi hivatkozásokra kattintva részletesen megtudhatja, hogyan hozhat lé
 
 ### <a name="what-kinds-of-permissions-does-data-lake-storage-gen2-support"></a>Milyen engedélyeket Data Lake Storage Gen2 támogatni?
 
-Data Lake Storage Gen2 egy hozzáférés-vezérlési modellt használ, amely támogatja a szerepköralapú hozzáférés-vezérlést (RBAC) és a POSIX-hez hasonló hozzáférés-vezérlési listákat (ACL-eket). A Data Lake Storage Gen1 csak az adathozzáférés szabályozásához támogatja a hozzáférés-vezérlési listát.
+A Data Lake Storage Gen2 egy hozzáférés-vezérlési modellt használ, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a POSIX-hez hasonló hozzáférés-vezérlési listákat (ACL-eket). A Data Lake Storage Gen1 csak az adathozzáférés szabályozásához támogatja a hozzáférés-vezérlési listát.
 
-A RBAC szerepkör-hozzárendeléseket használ az Azure-erőforrásokhoz tartozó felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz tartozó engedélyek hatékony alkalmazására. Ezek az Azure-erőforrások jellemzően felső szintű erőforrásokra (például Azure Blob Storage-fiókokra) korlátozzák. Az Azure Blob Storage esetében, valamint Data Lake Storage Gen2 is, ez a mechanizmus a fájlrendszer erőforrására lett kiterjesztve.
+Az Azure RBAC szerepkör-hozzárendeléseket használ az Azure-erőforrásokhoz tartozó felhasználókra, csoportokra és egyszerű szolgáltatásokra vonatkozó engedélyek hatékony alkalmazására. Ezek az Azure-erőforrások jellemzően felső szintű erőforrásokra (például Azure Blob Storage-fiókokra) korlátozzák. Az Azure Blob Storage esetében, valamint Data Lake Storage Gen2 is, ez a mechanizmus a fájlrendszer erőforrására lett kiterjesztve.
 
-További információ a RBAC-mel rendelkező fájlokra vonatkozó engedélyekről: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
+További információ az Azure RBAC kapcsolatos fájlengedélyek használatáról: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
 Az ACL-ekkel rendelkező fájlengedélyek részletes ismertetését lásd: [hozzáférés-vezérlési listák a fájlokon és könyvtárakon](../storage/blobs/data-lake-storage-access-control.md).
 
@@ -141,7 +141,7 @@ LOCATION 'abfs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure HDInsight-integráció Data Lake Storage Gen2 előzetes verzióval – ACL és biztonsági frissítés](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Az Azure Data Lake Storage Gen2 bemutatása](../storage/blobs/data-lake-storage-introduction.md)

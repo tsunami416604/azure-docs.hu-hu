@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-monitor
 author: rboucher
 tags: azure-service-management
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e206c12a85cfbaed3297f2a44bf0a5d694c2d170
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91642474"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92324366"
 ---
 **Adatgyűjtés mennyisége és megőrzése** 
 
@@ -47,7 +47,7 @@ ms.locfileid: "91642474"
 | Egyetlen bejegyzés maximális mérete | 30 MB | Nagyobb kötetek felosztása több bejegyzésbe. |
 | Mezőértékek maximális mérete  | 32 KB | A 32 KB-nál hosszabb mezők csonkolva lesznek. |
 
-**Search API**
+**Keresési API**
 
 | Kategória | Korlát | Megjegyzések |
 |:---|:---|:---|
@@ -70,31 +70,7 @@ A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfel
 
 Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan nem éri el, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt. 
 
-Ha értesítést szeretne kapni a munkaterületen lévő betöltési mennyiség korlátozásáról vagy eléréséről, hozzon létre egy [napló-riasztási szabályt](../articles/azure-monitor/platform/alerts-log.md) a következő lekérdezés és a riasztási logika alapján, a nullánál nagyobb eredmények száma, 5 perces próbaidőszak és 5 perc gyakorisága alapján.
-
-A betöltési mennyiség túllépte a küszöbértéket
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Error"
-```
-
-A betöltési mennyiség aránya a küszöbérték 80%-át meghaladta
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Warning"
-```
-
-A betöltési mennyiség aránya a küszöbérték 70%-át meghaladta
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Info"
-```
+Lásd: [log Analytics munkaterület állapotának figyelése Azure monitor-ben](../articles/azure-monitor/platform/monitor-workspace.md) , hogy riasztási szabályokat hozzon létre, hogy proaktívan értesüljön a betöltési korlátok elérésekor.
 
 >[!NOTE]
 >Attól függően, hogy mennyi ideig használta a Log Analytics, lehet, hogy hozzáfér a régi díjszabási csomagokhoz. További információ a [log Analytics korábbi díjszabási szintjeiről](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

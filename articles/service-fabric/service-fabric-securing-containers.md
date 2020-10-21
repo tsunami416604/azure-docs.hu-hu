@@ -4,17 +4,17 @@ description: Ismerkedjen meg a tanúsítványfájl Service Fabric Container Serv
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219882a3f7f6db665f1ec311098ef53464773b71
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050743"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313683"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Tanúsítványfájl importálása Service Fabricon futó tárolóba
 
 > [!NOTE]
-> Az Azure-on futó Service Fabric-fürtök esetében ajánlott [Service Fabric alkalmazás által felügyelt identitást](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) használni, hogy kiépítse az alkalmazás tanúsítványait egy tárolóból. A felügyelt identitás biztosítja a titkok és a tanúsítványok elkülönítését a szolgáltatási szinten, és lehetővé teszi az alkalmazás-tanúsítvány kiépítését az alkalmazás munkafolyamatának részeként, nem pedig az infrastruktúra munkafolyamatát. A CertificateRef mechanizmus egy későbbi kiadásban elavulttá válik.
+> Az Azure-on futó Service Fabric-fürtök esetében ajánlott [Service Fabric alkalmazás által felügyelt identitást](./concepts-managed-identity.md) használni, hogy kiépítse az alkalmazás tanúsítványait egy tárolóból. A felügyelt identitás biztosítja a titkok és a tanúsítványok elkülönítését a szolgáltatási szinten, és lehetővé teszi az alkalmazás-tanúsítvány kiépítését az alkalmazás munkafolyamatának részeként, nem pedig az infrastruktúra munkafolyamatát. A CertificateRef mechanizmus egy későbbi kiadásban elavulttá válik.
 
 Egy tanúsítvány megadásával biztonságossá teheti a tároló szolgáltatásokat. A Service Fabric a tárolón belüli szolgáltatások számára biztosít olyan tanúsítványt, amely a Windows vagy Linux rendszerű fürt csomópontjain telepített tanúsítványokhoz fér hozzá (5,7-es vagy újabb verzió). A tanúsítványt a fürt összes csomópontján lévő LocalMachine területen lévő tanúsítványtárolóba kell telepíteni. A tanúsítványnak megfelelő titkos kulcsnak elérhetőnek, elérhetőnek és Windows-exportálható kell lennie. A tanúsítvány információit az alkalmazás jegyzékfájljában, a címke alatt, a `ContainerHostPolicies` következő kódrészlet mutatja:
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 5fb00fb6382bb53f40ad63a95c880c47f91cae2f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201664"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331566"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
@@ -53,7 +53,7 @@ Először **állítson be egy Azure digitális Twins-példányt** és a szüksé
 * Az Azure Digital Twins-példány beállítása után szüksége lesz a példány **_állomásneve_** (keresse meg a[portálon](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
 A ADT Explorer alkalmazás hitelesítéséhez egy **alkalmazás regisztrálását**is be kell állítania. Ennek beállításához kövesse az útmutató [*: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md) című témakör utasításait. 
-* Ha már rendelkezik az alkalmazás regisztrálásával, szüksége lesz a regisztrációs **_alkalmazás (ügyfél) azonosítójának_** és **_könyvtárának (BÉRLŐi) azonosítójának_** (a[portálon található](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
+* Ha már rendelkezik az alkalmazás regisztrálásával, szüksége lesz a regisztrációs **_alkalmazás (ügyfél) azonosítójának_** és **_könyvtárának (BÉRLŐi) azonosítójának_** ([Keresse meg ezeket a portálon](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
 
 ### <a name="set-adt-explorer-permissions"></a>ADT Explorer engedélyeinek beállítása
 
@@ -322,7 +322,7 @@ Ha azt tervezi, hogy folytatja az Azure digitális Twins-oktatóanyagokat, az eb
 
 Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**Azure_Digital_Twins__ADT__explorer**_ és _**Azure_Digital_Twins_end_to_end_samples**_). Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

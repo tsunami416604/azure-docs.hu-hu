@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 16b9342f0374377349f338db7ce5c8389c77ea18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80e04ec06edc7169f0a4318c2c94de34dda9d96a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87424987"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331094"
 ---
 Ebben a lépésben azt értékeli, hogy hány Azure-fájlmegosztás szükséges. Egyetlen Windows Server-példány (vagy fürt) akár 30 Azure-fájlmegosztás szinkronizálására is képes.
 
@@ -28,11 +28,15 @@ Ha a HR-részleg (például) összesen 15 megosztást tartalmaz, érdemes lehet 
 
 Azure File Sync támogatja a kötetek gyökerének Azure-fájlmegosztás felé történő szinkronizálását. Ha a gyökérkönyvtárat szinkronizálja, akkor az összes almappa és fájl ugyanarra az Azure-megosztásra kerül.
 
-A kötet gyökerének szinkronizálása nem mindig a legjobb válasz. Több hely szinkronizálása is előnyökkel jár. Így például segít megőrizni az elemek számát a szinkronizálási hatókörben. Az alacsonyabb számú elemet tartalmazó Azure File Sync beállítása nem elég hasznos a fájlok szinkronizálásához. Az elemek alacsonyabb száma is előnyökkel jár, például a következő esetekben:
+A kötet gyökerének szinkronizálása nem mindig a legjobb válasz. Több hely szinkronizálása is előnyökkel jár. Így például segít megőrizni az elemek számát a szinkronizálási hatókörben. Az Azure-fájlmegosztás és a Azure File Sync a 100 000 000 elemekkel (fájlokkal és mappákkal) együtt teszteljük az ajánlott eljárást, ezért a legjobb megoldás a 20 vagy a 30 000 000 közötti szám egyetlen megosztásban történő kipróbálása és megtartása. Az alacsonyabb számú elemet tartalmazó Azure File Sync beállítása nem elég hasznos a fájlok szinkronizálásához. Az elemek alacsonyabb száma is előnyökkel jár, például a következő esetekben:
 
-* Az Azure fájlmegosztás pillanatképének felhőalapú visszaállítását biztonsági mentésként is elvégezheti.
+* A felhő tartalmának kezdeti vizsgálata, mielőtt a névtér megkezdődhet egy Azure File Sync engedélyezett kiszolgálón, gyorsabban elvégezhető.
+* Az Azure fájlmegosztás pillanatképének Felhőbeli visszaállítása gyorsabb lesz.
 * A helyszíni kiszolgálók vész-helyreállítási sebessége jelentősen felgyorsulhat.
 * Az Azure-fájlmegosztás (szinkronizáláson kívül) által közvetlenül végrehajtott módosítások észlelhetők és gyorsabban szinkronizálhatók.
+
+> [!TIP]
+> Ha nem biztos benne, hogy hány fájlt és mappát tartalmaz, tekintse meg a TreeSize eszközt a JAM Software GmbH-ból.
 
 #### <a name="a-structured-approach-to-a-deployment-map"></a>Egy üzembe helyezési Térkép strukturált megközelítése
 
@@ -53,14 +57,12 @@ A következő korlátozásokkal és ajánlott eljárásokkal határozhatja meg, 
 >
 > A közös gyökér alá tartozó csoportosítás nem befolyásolja az adataihoz való hozzáférést. Az ACL-ek maradnak. Csak a megosztási útvonalakat (például az SMB-vagy NFS-megosztásokat) kell módosítania, hogy azok a kiszolgálói mappákban legyenek, amelyeket mostantól egy közös gyökérben módosítanak. Semmi más nem változik.
 
-Azure File Sync egy másik fontos aspektusa, és a kiegyensúlyozott teljesítmény és a tapasztalatok megismerik a Azure File Sync teljesítményének méretezési tényezőit. A fájlok interneten keresztüli szinkronizálása természetesen a nagyobb fájlok több időt és sávszélességet is igénybe vesznek a szinkronizáláshoz.
-
 > [!IMPORTANT]
 > A Azure File Sync legfontosabb méretezési vektora a szinkronizálandó elemek (fájlok és mappák) száma.
 
 Azure File Sync támogatja akár 100 000 000 elem szinkronizálását egyetlen Azure-fájlmegosztás számára. Ez a korlát túlléphető, és csak azt jeleníti meg, hogy az Azure File Sync csapat rendszeresen tesztelje a teszteket.
 
-Az ajánlott eljárás az, hogy a szinkronizálási hatókörben lévő elemek száma ne legyen alacsony. Ez fontos szempont a mappák Azure-fájlmegosztás számára történő leképezésében.
+Az ajánlott eljárás az, hogy a szinkronizálási hatókörben lévő elemek száma ne legyen alacsony. Ez fontos szempont a mappák Azure-fájlmegosztás számára történő leképezésében. Az Azure-fájlmegosztás és a Azure File Sync a 100 000 000 elemekkel (fájlokkal és mappákkal) együtt teszteljük az ajánlott eljárást, ezért a legjobb megoldás a 20 vagy a 30 000 000 közötti szám egyetlen megosztásban történő kipróbálása és megtartása. Ossza szét a névteret több megosztásra, ha elkezdi túllépni ezeket a számokat. Továbbra is egyszerre több helyszíni megosztást is megadhat ugyanabba az Azure-fájlmegosztásba, ha a számok alatt nagyjából megmarad. Ez biztosítja a növekedéshez szükséges helyet.
 
 Ebben az esetben lehetséges, hogy a mappák egy halmaza képes logikailag szinkronizálni ugyanazt az Azure-fájlmegosztást (a korábban említett új, közös gyökérmappa-megközelítés használatával). Előfordulhat azonban, hogy továbbra is jobb lesz a mappák újracsoportosítása, például egy Azure-fájlmegosztás helyett kettőre szinkronizálva. Ezzel a módszerrel megtarthatja, hogy a fájlmegosztás hány fájlt és mappát használjon a kiszolgálón.
 
@@ -73,7 +75,7 @@ Ebben az esetben lehetséges, hogy a mappák egy halmaza képes logikailag szink
     :::column:::
         Az előző fogalmak kombinációjának segítségével meghatározhatja, hogy hány Azure-fájlmegosztás szükséges, és hogy a meglévő adatai mely részeit fogják megállapítani az Azure-fájlmegosztás végén.
         
-        Hozzon létre egy táblázatot, amely rögzíti a gondolatait, így a következő lépésben hivatkozhat rá. A szervezett maradás fontos, mert könnyen elveszítheti a leképezési terv részleteit, ha egyszerre több Azure-erőforrást is üzembe helyez. Ha segítségre van szüksége a teljes leképezés létrehozásához, letöltheti a Microsoft Excel-fájlokat sablonként.
+        Hozzon létre egy táblázatot, amely rögzíti a gondolatait, így szükség esetén hivatkozhat rá. A szervezett maradás fontos, mert könnyen elveszítheti a leképezési terv részleteit, ha egyszerre több Azure-erőforrást is üzembe helyez. Ha segítségre van szüksége a teljes leképezés létrehozásához, letöltheti a Microsoft Excel-fájlokat sablonként.
 
 [//]: # (A HTML csak úgy jelenik meg, ha egy beágyazott kétoszlopos táblázatot ad hozzá a munkaképek elemzésével és szövegével vagy hiperhivatkozásával ugyanazon a sorban.)
 

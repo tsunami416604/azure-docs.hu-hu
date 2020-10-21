@@ -122,6 +122,8 @@
       items:
         - name: Nincs jogosult előfizetés
           href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Foglalási kihasználtság hibaelhárítása
+          href: troubleshoot-reservation-utilization.md??toc=/azure/cost-management-billing/reservations/toc.json
 - name: Referencia
   items:
     - name: Reservations REST API

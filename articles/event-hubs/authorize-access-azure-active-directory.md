@@ -3,15 +3,15 @@ title: Azure Active Directoryval való hozzáférés engedélyezése
 description: Ez a cikk a Azure Active Directory használatával történő Event Hubs erőforrásokhoz való hozzáférés engedélyezésére vonatkozó információkat tartalmaz.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f69c3e5136ab47de4683cc65c32054d067dde13
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566261"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332399"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Hozzáférés engedélyezése Event Hubs erőforrásokhoz a Azure Active Directory használatával
-Az Azure Event Hubs támogatja a Azure Active Directory (Azure AD) használatát, hogy engedélyezze a kérelmeket Event Hubs erőforrásoknak. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó vagy egy egyszerű alkalmazás. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
+Az Azure Event Hubs támogatja a Azure Active Directory (Azure AD) használatát, hogy engedélyezze a kérelmeket Event Hubs erőforrásoknak. Az Azure AD-vel az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyeket biztosíthat egy rendszerbiztonsági tag számára, amely lehet egy felhasználó vagy egy egyszerű alkalmazás. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
 
 ## <a name="overview"></a>Áttekintés
 Ha egy rendszerbiztonsági tag (felhasználó vagy alkalmazás) megpróbál hozzáférni egy Event Hubs erőforráshoz, a kérést engedélyezni kell. Az Azure AD-vel az erőforrásokhoz való hozzáférés kétlépéses folyamat. 
@@ -39,7 +39,7 @@ Az Azure az Azure AD-vel és a OAuth-vel való hozzáférés engedélyezéséhez
 | [Azure Event Hubs adatfeladó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | Ezzel a szerepkörrel biztosíthatja a küldési hozzáférést Event Hubs erőforrásaihoz. |
 | [Azure Event Hubs adatfogadó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | Ennek a szerepkörnek a használatával biztosíthatja a Event Hubs erőforrásainak felhasználását/fogadását. |
 
-A séma-beállításjegyzék beépített szerepköreivel kapcsolatban lásd: [séma beállításjegyzékbeli szerepkörei](schema-registry-overview.md#role-based-access-control).
+A séma-beállításjegyzék beépített szerepköreivel kapcsolatban lásd: [séma beállításjegyzékbeli szerepkörei](schema-registry-overview.md#azure-role-based-access-control).
 
 ## <a name="resource-scope"></a>Erőforrás hatóköre 
 Mielőtt Azure-szerepkört rendeljen egy rendszerbiztonsági tag számára, határozza meg a rendszerbiztonsági tag hozzáférési hatókörét. Az ajánlott eljárások azt diktálják, hogy mindig csak a lehető legszűkebb hatókört adja meg.
@@ -71,9 +71,9 @@ További információ a beépített szerepkörök meghatározásáról: a [szere
 - [Event Hubs a Kafka-OAuth mintákhoz](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth). 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan rendeljen hozzá egy Azure-beli beépített szerepkört egy rendszerbiztonsági tag számára: [Event Hubs erőforrásokhoz való hozzáférés hitelesítése Azure Active Directory használatával](authenticate-application.md).
-- Ismerje meg, [hogyan hozhat létre egyéni szerepköröket a RBAC használatával](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
+- Ismerje meg [, hogyan hozhat létre egyéni szerepköröket az Azure RBAC használatával](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
 - Ismerje meg [, hogyan használhatja a Azure Active Directoryt az Eh használatával](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)
 
 Tekintse meg a következő kapcsolódó cikkeket:

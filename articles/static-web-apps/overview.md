@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 086feb3aa7c9a38756fded58538eb22e094a5960
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906793"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320494"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Mi az Azure statikus Web Apps előzetes verzió?
 
@@ -44,11 +44,11 @@ A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Mit tehet a statikus Web Apps
 
-- Hozzon létre **modern webalkalmazásokat** JavaScript-keretrendszerekkel és-tárakkal, például a [szögletes](getting-started.md?tabs=angular), a [reagálási](getting-started.md?tabs=react), a [karcsú](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), a [Vue](getting-started.md?tabs=react)vagy a [Blazer](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) használatával webszerelvény-alkalmazások létrehozásához [Azure functions](apis.md) háttérrel.
+- Hozzon létre **modern webalkalmazásokat** JavaScript-keretrendszerekkel és-tárakkal, például a [szögletes](getting-started.md?tabs=angular), a [reagálási](getting-started.md?tabs=react), a [karcsú](/learn/modules/publish-app-service-static-web-app-api/), a [Vue](getting-started.md?tabs=react)vagy a [Blazer](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) használatával webszerelvény-alkalmazások létrehozásához [Azure functions](apis.md) háttérrel.
 - **Statikus helyeket tehet közzé** olyan keretrendszerekkel, mint például a [Gatsby](publish-gatsby.md), a [Hugo](publish-hugo.md), a [VuePress](publish-vuepress.md).
 - **Webalkalmazások üzembe helyezése** olyan keretrendszerekkel, mint a [Next.js](deploy-nextjs.md) és a [Nuxt.js](deploy-nuxtjs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az első statikus alkalmazás létrehozása](getting-started.md)

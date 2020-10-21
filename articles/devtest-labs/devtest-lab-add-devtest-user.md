@@ -3,19 +3,19 @@ title: Tulajdonosok és felhasználók hozzáadása a Azure DevTest Labs-ben | M
 description: Azure DevTest Labs tulajdonosainak és felhasználóinak hozzáadása a Azure Portal vagy a PowerShell használatával
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 40173589c4798a8b00d940bca2a71f4d61f2c199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d6af68cd663e88af90d690375a4d45c538aad1d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533325"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330189"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Tulajdonosok és felhasználók hozzáadása a Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Azure DevTest Labs hozzáférését az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)vezérli. A RBAC segítségével elkülönítheti a munkatársain belüli feladatokat olyan *szerepkörökbe* , amelyekben csak a felhasználóknak a feladataik elvégzéséhez szükséges hozzáférést kell biztosítania. Ezen Azure-szerepkörök közül három a *tulajdonos*, a *DevTest Labs-felhasználó*és a *közreműködő*. Ebből a cikkből megtudhatja, milyen műveleteket végezhet el a három fő Azure-szerepkörben. Ebből a témakörből megtudhatja, hogyan adhat hozzá felhasználókat egy laborhoz – mindkettőt a portálon keresztül, egy PowerShell-parancsfájllal, és hogyan adhat hozzá felhasználókat az előfizetési szinten.
+Azure DevTest Labs hozzáférését az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)vezérli. Az Azure RBAC segítségével elkülönítheti a munkatársain belüli feladatokat olyan *szerepkörökbe* , amelyekben csak a felhasználóknak a feladataik elvégzéséhez szükséges hozzáférést kell biztosítania. Ezen Azure-szerepkörök közül három a *tulajdonos*, a *DevTest Labs-felhasználó*és a *közreműködő*. Ebből a cikkből megtudhatja, milyen műveleteket végezhet el a három fő Azure-szerepkörben. Ebből a témakörből megtudhatja, hogyan adhat hozzá felhasználókat egy laborhoz – mindkettőt a portálon keresztül, egy PowerShell-parancsfájllal, és hogyan adhat hozzá felhasználókat az előfizetési szinten.
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>Az egyes szerepkörökben végrehajtható műveletek
 Három fő szerepkört rendelhet hozzá a felhasználókhoz:
@@ -62,7 +62,7 @@ A következő lépések végigvezetik egy tulajdonos vagy felhasználó egy labo
 1. Az **engedélyek hozzáadása** ablakban végezze el a következő műveleteket: 
     1. Válasszon egy szerepkört (például: DevTest Labs user). Az [egyes szerepkörökben elvégezhető műveletek](#actions-that-can-be-performed-in-each-role) a tulajdonos, a DevTest-felhasználó és a közreműködői szerepkörök felhasználói által végrehajtható különféle műveleteket sorolja fel.
     2. Válassza ki a szerepkörbe felvenni kívánt felhasználót. 
-    3. Kattintson a **Mentés** gombra. 
+    3. Válassza a **Mentés** lehetőséget. 
 11. Amikor visszatér a **felhasználók** panelre, a felhasználó hozzá lett adva.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Külső felhasználó hozzáadása laborhoz a PowerShell használatával

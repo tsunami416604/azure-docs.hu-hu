@@ -3,12 +3,12 @@ title: Azure Event Grid található esemény-tartományok
 description: Ez a cikk azt ismerteti, hogyan használhatók az események a különböző üzleti szervezetekhez, ügyfelekhez vagy alkalmazásokhoz tartozó egyéni események forgalmának kezeléséhez.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86114363"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328827"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Az Event Grid témakörök kezeléséhez kapcsolódó események tartományának ismertetése
 
@@ -37,13 +37,13 @@ Emellett egyetlen végpontot is biztosít, amely az összes ügyfél-eseményt k
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
-A tartományokkal az Azure szerepköralapú hozzáférés-vezérlés (RBAC) révén részletes, gabona-engedélyezési és hitelesítési vezérlési lehetőségekkel látja el az egyes témaköröket. Ezekkel a szerepkörökkel korlátozhatja, hogy az alkalmazás minden bérlője csak azokra a témakörökre korlátozódjon, amelyeknek hozzáférést kíván biztosítani számukra.
+A tartományokban az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) révén részletes gabona-engedélyezési és hitelesítési vezérlést kap az egyes témakörökben. Ezekkel a szerepkörökkel korlátozhatja, hogy az alkalmazás minden bérlője csak azokra a témakörökre korlátozódjon, amelyeknek hozzáférést kíván biztosítani számukra.
 
-Az RBAC ugyanúgy működik, ahogy a [felügyelt hozzáférés-vezérlés](security-authorization.md) a többi Event Grid és az Azure-ban is működik. Az RBAC használatával egyéni szerepkör-definíciókat hozhat létre és alkalmazhat az esemény-tartományokban.
+Az Azure-beli RBAC ugyanúgy működnek, mint a [felügyelt hozzáférés-vezérlés](security-authorization.md) a többi Event Grid és az Azure-ban. Az Azure RBAC segítségével egyéni szerepkör-definíciókat hozhat létre és alkalmazhat az esemény-tartományokban.
 
 ### <a name="built-in-roles"></a>Beépített szerepkörök
 
-A Event Grid két beépített szerepkör-definícióval rendelkezik, amelyek megkönnyítik az RBAC való munkavégzést. Ezek a szerepkörök a **EventGrid EventSubscription közreműködő (előzetes verzió)** és a **EventGrid EventSubscription Reader (előzetes verzió)**. Ezeket a szerepköröket olyan felhasználókhoz rendeli, akiknek elő kell fizetniük az esemény tartományában lévő témakörökre. A szerepkör-hozzárendelést csak arra a témakörre kell hozzárendelni, amelyre a felhasználóknak elő kell fizetniük.
+A Event Grid két beépített szerepkör-definícióval rendelkezik, amelyek megkönnyítik az Azure-RBAC használatát az esemény-tartományokkal való munkavégzéshez. Ezek a szerepkörök a **EventGrid EventSubscription közreműködő (előzetes verzió)** és a **EventGrid EventSubscription Reader (előzetes verzió)**. Ezeket a szerepköröket olyan felhasználókhoz rendeli, akiknek elő kell fizetniük az esemény tartományában lévő témakörökre. A szerepkör-hozzárendelést csak arra a témakörre kell hozzárendelni, amelyre a felhasználóknak elő kell fizetniük.
 
 További információ ezekről a szerepkörökről: [Event Grid beépített szerepkörei](security-authorization.md#built-in-roles).
 

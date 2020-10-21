@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 09/29/2020
-ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450126"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330366"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -120,9 +120,47 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
 
     ![Python bemeneti térképének végrehajtása](media/module/python-module.png)
 
-4. Új Python-csomagok vagy-kódok felvételéhez adja hozzá az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-csomagban**. A **parancsfájlba** való bevitelnek a munkaterületre fájltípus-adatkészletként feltöltött tömörített fájlnak kell lennie. Feltöltheti az adatkészletet az **adatkészletek** eszköz lapján. Az adatkészlet modulját a tervező szerzői műveletek oldal bal oldali modul fájának **saját adatkészletek** listájából lehet áthúzni. 
+4. Ha új Python-csomagokat vagy-kódokat szeretne felvenni, akkor az ezeket az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-előfizetői** porthoz kell kötni. Ha a szkript mérete meghaladja a 16 KB-ot, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a *commandline érték meghaladja a 16597 karakteres korlátot*. 
 
-    A feltöltött tömörített archívumban található összes fájl használható a folyamat végrehajtása során. Ha az Archívum tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát, de egy **src** nevű könyvtárat kell megadnia az elérési útra.
+    
+    1. A szkriptet és más egyéni erőforrásokat csomagolja egy zip-fájlba.
+    1. Töltse fel a zip-fájlt **fájl adatkészletként** a studióba. 
+    1. Húzza az adatkészlet modult a Designer authoring oldal bal oldali modul paneljének *adatkészletek* listájából. 
+    1. Az adatkészlet moduljának csatlakoztatása az **R-parancsfájl végrehajtása** modul **parancsfájl-köteg** portjához.
+    
+    A feltöltött tömörített archívumban található összes fájl használható a folyamat végrehajtása során. Ha az Archívum tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát.
+    
+    A következő egy parancsfájl-köteg példa, amely egy Python-parancsfájlt és egy txt-fájlt tartalmaz:
+      
+    > [!div class="mx-imgBorder"]
+    > ![Példa parancsfájl-csomagra](media/module/python-script-bundle.png)  
+
+    A következő tartalma `my_script.py` :
+
+    ```python
+    def my_func(dataframe1):
+    return dataframe1
+    ```
+    Az alábbi mintakód azt mutatja be, hogyan használhatók a fájlok a parancsfájl-csomagban:    
+
+    ```python
+    import pandas as pd
+    from my_script import my_func
+ 
+    def azureml_main(dataframe1 = None, dataframe2 = None):
+ 
+        # Execution logic goes here
+        print(f'Input pandas.DataFrame #1: {dataframe1}')
+ 
+        # Test the custom defined python function
+        dataframe1 = my_func(dataframe1)
+ 
+        # Test to read custom uploaded files by relative path
+        with open('./Script Bundle/my_sample.txt', 'r') as text_file:
+            sample = text_file.read()
+    
+        return dataframe1, pd.DataFrame(columns=["Sample"], data=[[sample]])
+    ```
 
 5. A **Python-szkript** szövegmezőbe írja be vagy illessze be az érvényes Python-szkriptet.
 
@@ -272,6 +310,6 @@ Az előre telepített csomagok a következők:
 -    Werkzeug = = 0.16.1
 -    Wheel = = 0.34.2
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
