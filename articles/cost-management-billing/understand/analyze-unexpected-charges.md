@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: b2340e5b220936c1333cf842251b669b3e034042
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651904"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151213"
 ---
 # <a name="analyze-unexpected-charges"></a>Váratlan költségek elemzése
 
@@ -76,7 +76,7 @@ Gyakran előfordul, hogy az adott erőforrásért felelős csapat tudatában van
 
 ### <a name="analyze-the-audit-logs-for-the-resource"></a>Az erőforrás auditnaplóinak elemzése
 
-Amennyiben jogosult az erőforrás megtekintésére, rendelkeznie kell hozzáféréssel az auditnaplókhoz. Tekintse át a naplókat annak érdekében, hogy megtalálja, melyik felhasználó felelős az erőforrás legfrissebb módosításaiért. További információt az [Azure-tevékenységnapló eseményeinek megtekintését és lekérését](../../azure-monitor/platform/activity-log-view.md) ismertető szakaszban talál.
+Amennyiben jogosult az erőforrás megtekintésére, rendelkeznie kell hozzáféréssel az auditnaplókhoz. Tekintse át a naplókat annak érdekében, hogy megtalálja, melyik felhasználó felelős az erőforrás legfrissebb módosításaiért. További információt az [Azure-tevékenységnapló eseményeinek megtekintését és lekérését](../../azure-monitor/platform/activity-log.md#view-the-activity-log) ismertető szakaszban talál.
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>A felhasználói engedélyek elemzése az erőforrás fölérendelt hatókörében
 

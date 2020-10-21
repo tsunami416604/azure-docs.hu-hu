@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: c8ab6f51daf18802b83508a3e1bbd5af3ee59799
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50180984423b7c6d2921234a3502495016c4df5c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336896"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150110"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure-költségek kezelésének tervezése
 
@@ -24,7 +24,7 @@ Ez a cikk segít az Azure-költségkezelés megtervezésének első lépéseiben
 - Lekérheti a becsült költségeket a [díjkalkulátorral](https://azure.microsoft.com/pricing/calculator/), Azure-árlistával vagy szolgáltatások az Azure Portalon való hozzáadásakor.
 - Monitorozhatja a költségeket [költségvetésekkel](../costs/tutorial-acm-create-budgets.md), [riasztásokkal](../costs/cost-mgt-alerts-monitor-usage-spending.md) és [költségelemzésekkel](../costs/quick-acm-cost-analysis.md).
 - Áttekintheti a számlán feltüntetett díjakat a [használati adatokat tartalmazó fájlokkal](../manage/download-azure-invoice-daily-usage-date.md) összehasonlítva.
-- Integrálhatja a számlázási és költségadatokat saját jelentéskészítő rendszerébe a [számlázási](https://docs.microsoft.com/rest/api/billing/) és [használati](https://docs.microsoft.com/rest/api/consumption/) API-kkal.
+- Integrálhatja a számlázási és költségadatokat saját jelentéskészítő rendszerébe a [számlázási](/rest/api/billing/) és [használati](/rest/api/consumption/) API-kkal.
 - A Nagyvállalati Szerződéses (EA), felhőszolgáltatói (CSP-) és Azure Sponsorship-ügyfelek részére elérhető további erőforrásokat vehet igénybe.
 - [12 hónapig ingyenesen használhatja a legnépszerűbb Azure-szolgáltatások némelyikét](../manage/create-free-services.md), amelyek az [ingyenes Azure-fiókhoz](https://azure.microsoft.com/free/) érhetőek el. Az alább felsorolt ajánlásokon kívül tekintse meg, [hogyan kerülheti el, hogy díjak merüljenek fel ingyenes fiókja használatakor](../manage/avoid-charges-free-account.md).
 
@@ -125,7 +125,7 @@ Tekintse át a [Javaslatok alapján történő költségoptimalizálás](../cost
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrálás számlázási és használati API-kkal
 
-Használja az Azure [számlázási](https://docs.microsoft.com/rest/api/billing/) és [használati](https://docs.microsoft.com/rest/api/consumption/) API-jait a számlázással és a költségekkel kapcsolatos adatok programozott módon való lekéréséhez. A RateCard API és a Usage API együttes használatával lekérhető a számlázott használat. További információkért tekintse meg az [Információk a Microsoft Azure-erőforrások igénybevételéről](../manage/usage-rate-card-overview.md) szakaszt.
+Használja az Azure [számlázási](/rest/api/billing/) és [használati](/rest/api/consumption/) API-jait a számlázással és a költségekkel kapcsolatos adatok programozott módon való lekéréséhez. A RateCard API és a Usage API együttes használatával lekérhető a számlázott használat. További információkért tekintse meg az [Információk a Microsoft Azure-erőforrások igénybevételéről](../manage/usage-rate-card-overview.md) szakaszt.
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> További forrásanyagok és különleges esetek
 

@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017012"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132550"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosítók csatolása az Azure-fiókhoz
 
@@ -25,13 +25,13 @@ A PAL lehetővé teszi, hogy a Microsoft azonosítsa és felismerje az Azure-üg
 
 A partnerazonosító csatolása előtt ügyfelének hozzáférést kell adnia Önnek az Azure-erőforrásokhoz a következő lehetőségek valamelyikének használatával:
 
-- **Vendégfelhasználó**: Ügyfele hozzáadhatja Önt vendégfelhasználóként, és bármilyen Azure-szerepkört hozzárendelhet. További információkért tekintse meg a [Vendégfelhasználók hozzáadása másik címtárból](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) szakaszt.
+- **Vendégfelhasználó**: Ügyfele hozzáadhatja Önt vendégfelhasználóként, és bármilyen Azure-szerepkört hozzárendelhet. További információkért tekintse meg a [Vendégfelhasználók hozzáadása másik címtárból](../../active-directory/external-identities/what-is-b2b.md) szakaszt.
 
 - **Címtárfiók**: Az ügyfél létrehozhat egy felhasználói fiókot az Ön számára a saját címtárában, és bármilyen Azure-szerepkört hozzárendelhet.
 
 - **Egyszerű szolgáltatás**: Az ügyfél a címtárában hozzáadhat az Ön szervezetéből származó alkalmazást vagy szkriptet, és hozzárendelhet bármilyen Azure-szerepkört. Az alkalmazás vagy szkript identitása szolgáltatásnévként ismert.
 
-- **Azure Lighthouse**: Ügyfele delegálhat egy előfizetést (vagy erőforráscsoportot), így a felhasználói képesek használni a bérlőjéből. További információkért lásd az [Azure által delegált erőforrás-kezelést](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
+- **Azure Lighthouse**: Ügyfele delegálhat egy előfizetést (vagy erőforráscsoportot), így a felhasználói képesek használni a bérlőjéből. További információkért lásd az [Azure által delegált erőforrás-kezelést](../../lighthouse/concepts/azure-delegated-resource-management.md).
 
 ## <a name="link-to-a-partner-id"></a>Csatolás partnerazonosítóhoz
 
@@ -55,7 +55,7 @@ Amikor hozzáfér az ügyfelek erőforrásaihoz, az Azure Portalt, a PowerShellt
 
 1. Telepítse az [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) PowerShell-modult.
 
-2. Jelentkezzen be a felhasználói fiókkal vagy a szolgáltatásnévvel az ügyfél bérlőjébe. További információkért lásd: [Bejelentkezés a PowerShell-lel](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+2. Jelentkezzen be a felhasználói fiókkal vagy a szolgáltatásnévvel az ügyfél bérlőjébe. További információkért lásd: [Bejelentkezés a PowerShell-lel](/powershell/azure/authenticate-azureps).
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -89,7 +89,7 @@ C:\> remove-AzManagementPartner -PartnerId 12345
     C:\ az extension add --name managementpartner
     ```
 
-2. Jelentkezzen be a felhasználói fiókkal vagy a szolgáltatásnévvel az ügyfél bérlőjébe. További információkért lásd: [Bejelentkezés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+2. Jelentkezzen be a felhasználói fiókkal vagy a szolgáltatásnévvel az ügyfél bérlőjébe. További információkért lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
@@ -152,9 +152,9 @@ A Cloud Product Performance jelentéskészítő szolgáltatás a Partner Centerb
 
 A következő lehetséges okok miatt nem jelenik meg az ügyfél a jelentésekben
 
-1. A csatolt felhasználói fiók nem rendelkezik [Azure-beli szerepköralapú hozzáférés-vezérléssel (Azure RBAC-vel)](https://docs.microsoft.com/azure/role-based-access-control/overview) egyik ügyfél Azure-előfizetéséhez vagy erőforrásához sem.
+1. A csatolt felhasználói fiók nem rendelkezik [Azure-beli szerepköralapú hozzáférés-vezérléssel (Azure RBAC-vel)](../../role-based-access-control/overview.md) egyik ügyfél Azure-előfizetéséhez vagy erőforrásához sem.
 
-2. Nincs használatban az Azure-előfizetés, amelyben a felhasználó [Azure-beli szerepköralapú hozzáférés-vezérléssel (Azure RBAC-vel)](https://docs.microsoft.com/azure/role-based-access-control/overview) rendelkezik.
+2. Nincs használatban az Azure-előfizetés, amelyben a felhasználó [Azure-beli szerepköralapú hozzáférés-vezérléssel (Azure RBAC-vel)](../../role-based-access-control/overview.md) rendelkezik.
 
 **Működik-e a partnerazonosító csatolása funkció az Azure Stackkel?**
 

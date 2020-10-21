@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 3a523421c128ea26503c0848ad8fcf7d74636a04
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946015"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341329"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Gyors útmutató: Azure Security Center beállítása
 
@@ -35,7 +35,7 @@ Az Azure Defender előfizetésre való engedélyezéséhez hozzá kell rendelnie
 
 ## <a name="enable-security-center-on-your-azure-subscription"></a>Security Center engedélyezése az Azure-előfizetésben
 
-1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
+1. Jelentkezzen be az [Azure Portalon](https://azure.microsoft.com/features/azure-portal/).
 
 1. A portál menüjében válassza a **Security Center**lehetőséget. 
 
@@ -82,7 +82,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 1. A Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
 1. Válassza ki az adott előfizetést.
 1. Az **adatgyűjtés** lapon állítsa be az **automatikus kiépítés** **a**következőre:.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Security Center áttekintése irányítópult":::
 
@@ -96,7 +96,7 @@ A gépekre telepített ügynökkel Security Center további, a rendszerfrissít�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban engedélyezte az Azure Defender használatát, és kiépítte a Log Analytics ügynököt az egységes biztonsági felügyelet és a fenyegetések elleni védelem érdekében a hibrid felhőalapú számítási feladatokhoz. Ha többet szeretne megtudni a Security Center használatáról, folytassa a helyszínen és egyéb felhőszolgáltatásokban található Windows rendszerű számítógépek felvételével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
@@ -105,7 +105,7 @@ Ebben a rövid útmutatóban engedélyezte az Azure Defender használatát, és 
 Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
 > [!div class="nextstepaction"]
-> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [A költségek elemzésének megkezdése a Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

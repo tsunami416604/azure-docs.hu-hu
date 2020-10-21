@@ -8,20 +8,20 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: db042a6112944e1c825177506782758d0a96b390
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9be4b14ca51b56ec0a52147b409a56f87cf302
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448390"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341889"
 ---
-# <a name="using-custom-security-policies"></a>Egyéni biztonsági házirendek használata
+# <a name="using-custom-security-policies"></a>Egyéni biztonsági szabályzatok használata
 
 A rendszerek és a környezet biztonságossá tételéhez Azure Security Center biztonsági javaslatokat hoz létre. Ezek a javaslatok az iparági ajánlott eljárásokon alapulnak, amelyek az összes ügyfél számára biztosított általános, alapértelmezett biztonsági szabályzatba vannak beépítve. Security Center az iparági és a szabályozási szabványok ismeretében is származhatnak.
 
 Ezzel a funkcióval saját *Egyéni* kezdeményezéseket adhat hozzá. Ezután javaslatokat fog kapni, ha a környezet nem követi a létrehozott házirendeket. Az Ön által létrehozott egyéni kezdeményezések a szabályozási megfelelőségi irányítópult beépített kezdeményezései mellett jelennek meg, [az oktatóanyagban](security-center-compliance-dashboard.md)ismertetett módon.
 
-Amint azt [a Azure Policy dokumentációban](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location)tárgyaljuk, az egyéni kezdeményezés helyének megadásakor felügyeleti csoportnak vagy előfizetésnek kell lennie. 
+Amint azt [a Azure Policy dokumentációban](../governance/policy/concepts/definition-structure.md#definition-location)tárgyaljuk, az egyéni kezdeményezés helyének megadásakor felügyeleti csoportnak vagy előfizetésnek kell lennie. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Egyéni kezdeményezés hozzáadása az előfizetéshez 
 
@@ -136,7 +136,7 @@ Az alábbi példa egy egyéni házirendre mutat példát, beleértve a metaadato
 }
   ```
 
-A securityCenter tulajdonság használatának egy másik példáját a [REST API dokumentációjának ezen szakasza](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)tartalmazza.
+A securityCenter tulajdonság használatának egy másik példáját a [REST API dokumentációjának ezen szakasza](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)tartalmazza.
 
 
 ## <a name="next-steps"></a>Következő lépések
@@ -146,4 +146,4 @@ Ebben a cikkben megtanulta, hogyan hozhat létre egyéni biztonsági házirendek
 Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket: 
 
 - [A biztonsági házirendek áttekintése](tutorial-security-policy.md)
-- [A beépített biztonsági szabályzatok listája](security-center-policy-definitions.md)
+- [A beépített biztonsági szabályzatok listája](./policy-reference.md)

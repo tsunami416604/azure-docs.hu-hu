@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4dff56db9f1450ff7eb2a2b9ca6f4ca648e2ac38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447927"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150096"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Bevezetés a Microsoft Partnerszerződéshez tartozó számlázási fiók használatába
 
@@ -29,7 +29,7 @@ Az alábbi ábrán a számlázási fiók, a számlázási profilok, az ügyfelek
 
 ![A Microsoft Partnerszerződés számlázási hierarchiáját bemutató ábra](./media/mpa-overview/mpa-hierarchy.svg)
 
-A szervezetében **globális rendszergazda** és **rendszergazdai ügynök** szerepkörrel rendelkező felhasználók kezelhetik a számlázási fiókokat, a számlázási profilokat és az ügyfeleket. További információ: [Partnerközpont – Felhasználói szerepkörök és engedélyek hozzárendelése](https://docs.microsoft.com/partner-center/permissions-overview)
+A szervezetében **globális rendszergazda** és **rendszergazdai ügynök** szerepkörrel rendelkező felhasználók kezelhetik a számlázási fiókokat, a számlázási profilokat és az ügyfeleket. További információ: [Partnerközpont – Felhasználói szerepkörök és engedélyek hozzárendelése](/partner-center/permissions-overview)
 
 ## <a name="billing-profiles"></a>Számlázási profilok
 
@@ -47,7 +47,7 @@ Megtekintheti és kezelheti azokat az ügyfeleket, akik elfogadták a Microsoft-
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>Szabályzat engedélyezésével teheti átláthatóvá a költségeket
 
-Szabályzattal vezérelheti, hogy az ügyfelek vállalatának felhasználói megtekinthetik-e és elemezhetik-e az Azure-használati költségeiket a használatalapú díjszabás alapján. A szabályzat alapértelmezés szerint ki van kapcsolva, és a felhasználók nem tekinthetik meg a költségeket. Ha engedélyezve van, az előfizetéshez megfelelő [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) hozzáféréssel rendelkező felhasználók megtekinthetik és elemezhetik az előfizetés költségeit.
+Szabályzattal vezérelheti, hogy az ügyfelek vállalatának felhasználói megtekinthetik-e és elemezhetik-e az Azure-használati költségeiket a használatalapú díjszabás alapján. A szabályzat alapértelmezés szerint ki van kapcsolva, és a felhasználók nem tekinthetik meg a költségeket. Ha engedélyezve van, az előfizetéshez megfelelő [Azure RBAC](../../role-based-access-control/overview.md) hozzáféréssel rendelkező felhasználók megtekinthetik és elemezhetik az előfizetés költségeit.
 
 Szabályzat bekapcsolása:
 
@@ -69,7 +69,7 @@ Szabályzat bekapcsolása:
 
 ## <a name="resellers"></a>Viszonteladók
 
-A CSP [kétrétegű modelljében](https://docs.microsoft.com/partner-center) a közvetett szolgáltatók kiválaszthatják a viszonteladót, amikor előfizetéseket hoznak létre ügyfelek számára az Azure Portalon. A létrehozás után megtekinthetik az előfizetések listáját a viszonteladók szerint szűrve, valamint elemezhetik az ügyfelek költségeit az Azure költségelemzési szolgáltatásában viszonteladónként.
+A CSP [kétrétegű modelljében](/partner-center) a közvetett szolgáltatók kiválaszthatják a viszonteladót, amikor előfizetéseket hoznak létre ügyfelek számára az Azure Portalon. A létrehozás után megtekinthetik az előfizetések listáját a viszonteladók szerint szűrve, valamint elemezhetik az ügyfelek költségeit az Azure költségelemzési szolgáltatásában viszonteladónként.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft-partnerszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
@@ -83,5 +83,5 @@ Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálatta
 A számlázási fiókkal kapcsolatos tudnivalókért tekintse meg az alábbi cikkeket:
 
 - [További Azure-előfizetés létrehozása a Microsoft Partnerszerződésben](../manage/create-subscription.md)
-- A számlázási adatok integrálása saját jelentéskészítő rendszerrel az [Azure számlázási API-k használatával](https://docs.microsoft.com/rest/api/billing/)
-- [Gyorsútmutató az Azure Cost Managementhez partnerek számára](https://go.microsoft.com/fwlink/?linkid=2106482)
+- A számlázási adatok integrálása saját jelentéskészítő rendszerrel az [Azure számlázási API-k használatával](/rest/api/billing/)
+- [Gyorsútmutató az Azure Cost Managementhez partnerek számára](../costs/get-started-partners.md)

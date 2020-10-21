@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301448"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341685"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>GYIK – általános kérdések Azure Security Center
 
@@ -62,7 +62,7 @@ A biztonsági szabályzatok konfigurálásával kapcsolatos további informáci�
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. A potenciális biztonsági rések észlelése esetén javaslatok jönnek létre. A javaslatok végigvezetik a szükséges vezérlő konfigurálásának lépésein. Példák:
 
 * Kártevő szoftver kiépítés a kártékony szoftverek azonosításához és eltávolításához
-* [Hálózati biztonsági csoportok](../virtual-network/security-overview.md) és szabályok a virtuális gépek forgalmának vezérléséhez
+* [Hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md) és szabályok a virtuális gépek forgalmának vezérléséhez
 * Webalkalmazási tűzfal üzembe helyezése a webalkalmazásokra irányuló támadások elleni védelem érdekében
 * Hiányzó rendszerfrissítések telepítése
 * Az operációs rendszer azon konfigurációinak kezelése, amelyek nem felelnek meg a javasolt alapkonfigurációknak

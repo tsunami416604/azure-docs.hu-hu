@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950737"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341923"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Erőforrások megismerése és kezelése az eszközök leltározásával és felügyeleti eszközeivel
 
@@ -43,7 +43,7 @@ Az eszköz erőforrás-kezelési lehetőségei jelentősek, és folyamatosan nö
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|Minden felhasználó|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -68,22 +68,22 @@ A leltár oldal a következő eszközöket biztosítja:
     ![Leltár exportálási beállításai](./media/asset-inventory/inventory-export-options.png)
 
     > [!TIP]
-    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a &quot;Feel" kifejezést a nyelvhez. [További információ ebben a KQL-oktatóanyagban](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a &quot;Feel" kifejezést a nyelvhez. [További információ ebben a KQL-oktatóanyagban](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
 - **Eszközkezelés beállításai** – a leltár lehetővé teszi összetett felderítési lekérdezések végrehajtását. Ha megtalálta a lekérdezéseknek megfelelő erőforrásokat, a leltár a következő műveletekhez nyújt parancsikonokat:
 
     - Címkék kiosztása a szűrt erőforrásokhoz – jelölje be a címkével ellátni kívánt erőforrások melletti jelölőnégyzeteket.
     - Új kiszolgálók előkészítése a Security Centerhoz – használja a **nem Azure-kiszolgálók hozzáadása** eszköztár gombot.
-    - Munkaterhelések automatizálása a Azure Logic Apps használatával – a logikai alkalmazás **elindítása** gomb segítségével futtathat egy logikai alkalmazást egy vagy több erőforráson. A logikai alkalmazásokat előre elő kell készíteni, és el kell fogadni a megfelelő trigger típusát (HTTP-kérés). [További információ a Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)szolgáltatásról.
+    - Munkaterhelések automatizálása a Azure Logic Apps használatával – a logikai alkalmazás **elindítása** gomb segítségével futtathat egy logikai alkalmazást egy vagy több erőforráson. A logikai alkalmazásokat előre elő kell készíteni, és el kell fogadni a megfelelő trigger típusát (HTTP-kérés). [További információ a Logic apps](../logic-apps/logic-apps-overview.md)szolgáltatásról.
 
 
 ## <a name="how-does-asset-inventory-work"></a>Hogyan működik a tárgyieszköz-leltár?
 
-Az Asset Inventory az [Azure Resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)szolgáltatást használja, amely lehetővé teszi, hogy a Security Center biztonsági állapotát több előfizetésen keresztül lekérdezze.
+Az Asset Inventory az [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml)szolgáltatást használja, amely lehetővé teszi, hogy a Security Center biztonsági állapotát több előfizetésen keresztül lekérdezze.
 
 Az ARG úgy lett kialakítva, hogy hatékony erőforrás-feltárást biztosítson a nagy léptékű lekérdezési lehetőségekkel.
 
-A [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)használatával az eszközök leltározása gyors elemzéseket KÉSZÍTHET az ASC-adatforrások más erőforrás-tulajdonságokkal való hivatkozásával.
+A [Kusto lekérdezési nyelv (KQL)](/azure/data-explorer/kusto/query/)használatával az eszközök leltározása gyors elemzéseket KÉSZÍTHET az ASC-adatforrások más erőforrás-tulajdonságokkal való hivatkozásával.
 
 
 ## <a name="how-to-use-asset-inventory"></a>Az eszközök leltározásának használata
@@ -195,11 +195,11 @@ Ha a díjszabás vagy az ügynök figyelése nem vonatkozik egy erőforrásra, a
     > [!TIP]
     > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a &quot;Feel":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a Azure Security Center eszköz leltározási lapját ismerteti.
 
 A kapcsolódó eszközökről a következő lapokon talál további információt:
 
-- [Azure Resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-- [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml)
+- [Kusto lekérdezési nyelv (KQL)](/azure/data-explorer/kusto/query/)

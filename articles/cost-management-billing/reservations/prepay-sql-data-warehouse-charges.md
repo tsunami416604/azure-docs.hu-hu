@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: ca83760f09ea29ba0b21a0f7177dd3f3188c44cd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b82f4252754e79813629e0c792ee0ba35e437714
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686139"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151522"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Az Azure Synapse Analytics költségeinek csökkentése fenntartott kapacitással
 
@@ -27,7 +27,7 @@ A fenntartott kapacitás lejáratakor az Azure Synapse Analytics-példányok tov
 
 A díjszabással kapcsolatos információkért tekintse meg a [fenntartott Azure Synapse Analytics-kapacitáshoz kapcsolódó ajánlatot](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-Fenntartott Azure Synapse Analytics-kapacitást az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](monthly-payments-reservations.md). Fenntartott kapacitás vásárlása:
+Fenntartott Azure Synapse Analytics-kapacitást az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](./prepare-buy-reservation.md). Fenntartott kapacitás vásárlása:
 
 - Legalább egy nagyvállalati vagy használatalapú fizetéses előfizetés tulajdonosi szerepkörével kell rendelkeznie.
 - Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, Önnek EA-rendszergazdának kell lennie.

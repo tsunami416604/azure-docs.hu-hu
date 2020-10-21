@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: bed158fb99654bd48184073b1266ae630255558b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867cfa1321106c24354b29ea803a4fb914a6778d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613169"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341380"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
@@ -81,7 +81,7 @@ A gyorsítótár létrehozása után engedélyeznie kell azt a Key Vault szolgá
 
 ## <a name="add-resource-tags-optional"></a>Erőforrás-Címkék hozzáadása (nem kötelező)
 
-A **címkék** lapon hozzáadhat erőforrás- [CÍMKÉKET](https://go.microsoft.com/fwlink/?linkid=873112) az Azure HPC cache-példányhoz.
+A **címkék** lapon hozzáadhat erőforrás- [CÍMKÉKET](../azure-resource-manager/management/tag-resources.md) az Azure HPC cache-példányhoz.
 
 ## <a name="finish-creating-the-cache"></a>A gyorsítótár létrehozásának befejezése
 
@@ -105,7 +105,7 @@ A létrehozás befejeződése után egy értesítés jelenik meg az új Azure HP
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
 > [!NOTE]
-> Az Azure CLI jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja a Azure Portal.
+> Az Azure CLI jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja az Azure Portalt.
 
 Hozzon létre egy új Azure HPC-gyorsítótárat az az [HPC-cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) paranccsal.
 
@@ -192,11 +192,11 @@ Az üzenet tartalmaz néhány hasznos információt, beleértve az alábbi eleme
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 > [!CAUTION]
-> Az az. HPCCache PowerShell-modul jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk. Éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy egyes funkciók nem támogatottak, vagy korlátozott képességekkel rendelkeznek. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az az. HPCCache PowerShell-modul jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés. Az előzetes verzió használata NEM javasolt éles számítási feladatok esetén. Előfordulhat, hogy egyes funkciók nem támogatottak, vagy korlátozott képességekkel rendelkeznek. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Követelmények
 
-Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](/powershell/azure/install-az-ps). Ha a Cloud Shell használatát választja, további információt [a Azure Cloud Shell áttekintése](https://docs.microsoft.com/azure/cloud-shell/overview) című témakörben talál.
+Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](/powershell/azure/install-az-ps). Ha a Cloud Shell használatát választja, további információt [a Azure Cloud Shell áttekintése](../cloud-shell/overview.md) című témakörben talál.
 
 > [!IMPORTANT]
 > Míg az az **. HPCCache** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután a PowerShell-modul általánosan elérhetővé válik, az a PowerShell-modul kiadásainak része lesz, és natív módon elérhető a Azure Cloud Shellon belülről.
@@ -208,7 +208,7 @@ Install-Module -Name Az.HPCCache
 ## <a name="create-the-cache-with-azure-powershell"></a>A gyorsítótár létrehozása Azure PowerShell
 
 > [!NOTE]
-> Azure PowerShell jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja a Azure Portal.
+> Azure PowerShell jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja az Azure Portalt.
 
 Új Azure HPC-gyorsítótár létrehozásához használja a [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) parancsmagot.
 

@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 5aeb9046b8901580e4de37b1735a2d2dddd42fce
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652363"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147464"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -129,5 +129,5 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
     - [Fenntartott Azure Cosmos DB-kapacitással rendelkező Azure Cosmos DB-erőforrások](../../cosmos-db/cosmos-db-reserved-capacity.md)
     - [Fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrások](../../azure-sql/database/reserved-capacity-overview.md)
     - [Fenntartott Azure Cache for Redis-kapacitással rendelkező Azure Cache for Redis-erőforrások](../../azure-cache-for-redis/cache-reserved-pricing.md) További információk a szoftvercsomagok foglalásaival kapcsolatban:
-    - [Azure Reservations-beli Red Hat-szoftvercsomagok](../../virtual-machines/linux/prepay-rhel-software-charges.md)
+    - [Azure Reservations-beli Red Hat-szoftvercsomagok](../../virtual-machines/linux/prepay-suse-software-charges.md)
     - [Azure Reservations-beli SUSE-szoftvercsomagok](../../virtual-machines/linux/prepay-suse-software-charges.md)

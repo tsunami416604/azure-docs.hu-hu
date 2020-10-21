@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4677426337a48d4fde74f61b8a4ad6fcb695f420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577815"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341974"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Bevezetés az Azure Defender for Storage használatába
 
@@ -27,8 +27,8 @@ Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését *anélkül* , 
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|A Storage-hoz készült **Azure Defender** számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
-|Védett tárolási típusok:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Védett tárolási típusok:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 
@@ -66,6 +66,6 @@ Ebben a cikkben megtanulta az Azure Defender for Storage szolgáltatással kapcs
 A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket: 
 
 - Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy másik biztonsági terméktől Security Center fogadta-e, exportálhatja. Ha a riasztásokat az Azure Sentinelbe, a harmadik féltől származó SIEM-re vagy más külső eszközre szeretné exportálni, kövesse a [riasztások a Siem](continuous-export.md)-ben való exportálásának utasításait.
-- [A speciális Defender engedélyezése a Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [A speciális Defender engedélyezése a Storage-ban](../storage/common/azure-defender-storage-configure.md)
 - [Az Azure Defender tárolási riasztások listája](alerts-reference.md#alerts-azurestorage)
 - [A Microsoft fenyegetés-felderítési képességei](https://go.microsoft.com/fwlink/?linkid=2128684)

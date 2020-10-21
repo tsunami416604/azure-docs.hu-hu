@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: cavoeg
-ms.openlocfilehash: f3b3430ef7669022e532166848cb16d6aa66efe8
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: cabacd5204f4a9ac5c17c7bd66924482b5bf688a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220788"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339288"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Gyors útmutató: Azure API üzembe helyezése a FHIR Azure Portal használatával
 
@@ -67,7 +67,10 @@ Ha már nincs rá szükség, törölheti az erőforráscsoportot, a FHIR készü
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban üzembe helyezte a FHIR készült Azure API-t az előfizetésében. Ha további beállításokat szeretne megadni a FHIR készült Azure API-ban, folytassa a további beállítások útmutatóval.
+Ebben a rövid útmutatóban üzembe helyezte a FHIR készült Azure API-t az előfizetésében. Ha további beállításokat szeretne megadni a FHIR készült Azure API-ban, folytassa a további beállítások útmutatóval. Ha készen áll a FHIR készült Azure API használatára, olvassa el az alkalmazások regisztrálásával foglalkozó témakört.
 
 >[!div class="nextstepaction"]
 >[További beállítások a FHIR készült Azure API-ban](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[Alkalmazások regisztrálása – áttekintés](fhir-app-registration.md)

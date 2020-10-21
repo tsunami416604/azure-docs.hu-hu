@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: bfa84a993fafe9240ba765de8d87ea4afb69cbd5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ca4c1810912771f56661ca5b682b6991735f526e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015947"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150817"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>A foglalási kedvezmény alkalmazása az Azure Cosmos DB-re
 
@@ -121,4 +121,4 @@ Az Azure Reservationsszel kapcsolatos további információért tekintse meg a k
 * [Foglalások kezelése az Azure-ban](manage-reserved-vm-instance.md)  
 * [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)  
 * [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md)
-* [A foglalási kihasználtság ismertetése CSP-előfizetésnél](https://docs.microsoft.com/partner-center/azure-reservations)
+* [A foglalási kihasználtság ismertetése CSP-előfizetésnél](/partner-center/azure-reservations)

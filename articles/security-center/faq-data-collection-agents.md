@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441473"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341838"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -43,7 +43,7 @@ További információ a díjszabásról: [Security Center díjszabása](https://
 
 ## <a name="what-is-the-log-analytics-agent"></a>Mi a Log Analytics ügynök?
 
-A biztonsági rések és fenyegetések figyeléséhez Azure Security Center a [log Analytics ügynöktől](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) függ – ez ugyanaz az ügynök, amelyet a Azure monitor szolgáltatás használ. 
+A biztonsági rések és fenyegetések figyeléséhez Azure Security Center a [log Analytics ügynöktől](../azure-monitor/platform/log-analytics-agent.md) függ – ez ugyanaz az ügynök, amelyet a Azure monitor szolgáltatás használ. 
 
 Az ügynököt más néven Microsoft monitoring agentnek (vagy "MMA") nevezzük. 
 
@@ -66,7 +66,7 @@ A Windows-vagy Linux-IaaS virtuális gépek az alábbiak szerint minősülnek:
 
 - A Log Analytics ügynök bővítmény jelenleg nincs telepítve a virtuális gépen.
 - A virtuális gép fut állapotban van.
-- A Windows vagy Linux rendszerű Azure-beli [virtuális gép ügynöke](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) telepítve van.
+- A Windows vagy Linux rendszerű Azure-beli [virtuális gép ügynöke](../virtual-machines/extensions/agent-windows.md) telepítve van.
 - A virtuális gép nem használatos készülékként, például webalkalmazási tűzfalként vagy a következő generációs tűzfalon.
 
 
@@ -88,7 +88,7 @@ Az alapértelmezett munkaterület helye az Azure-régiótól függ:
 
 ## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Milyen adatokat gyűjtenek a Log Analytics ügynök?
 
-Az ügynök által figyelt alkalmazások és szolgáltatások teljes listájáért tekintse meg a [mi által figyelt Azure monitor?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services)című témakört.
+Az ügynök által figyelt alkalmazások és szolgáltatások teljes listájáért tekintse meg a [mi által figyelt Azure monitor?](../azure-monitor/monitor-reference.md#azure-services)című témakört.
 
 > [!IMPORTANT]
 > Vegye figyelembe, hogy egyes szolgáltatásokhoz, például a Azure Firewallhoz, ha engedélyezte a naplózást, és kiválasztott egy csevegő erőforrást a naplóhoz (például a naplót *részletesen*állítja be), jelentős hatással lehet az log Analytics munkaterület tárolási igényeire. 
@@ -118,7 +118,7 @@ Meglévő Log Analytics munkaterület kiválasztása:
     > [!NOTE]
     > A legördülő menüben csak azok a munkaterületek jelennek meg, amelyekhez hozzáférése van az Azure-előfizetéséhez.
 
-1. Kattintson a **Mentés** gombra. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
+1. Válassza a **Mentés** lehetőséget. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
 
     - Válassza a **nem** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **csak az új virtuális gépeken legyenek érvényesek**. Az új munkaterület-beállítások csak az új ügynök telepítésére érvényesek; újonnan felderített virtuális gépek, amelyeken nincs telepítve a Log Analytics ügynök.
     - Válassza az **Igen** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **minden virtuális gépen érvényesek**legyenek. Továbbá a Security Center létrehozott munkaterülethez csatlakozó összes virtuális gép újra csatlakozik az új cél munkaterülethez.

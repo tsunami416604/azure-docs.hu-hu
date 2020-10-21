@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: c31d3136ec4bcdf6da7680d41de078f8bd03d256
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447098"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341346"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Biztonsági incidensek kezelése Azure Security Center
 
 A osztályozásakor és a biztonsági riasztások kivizsgálása időigényes lehet a legképzettebb biztonsági elemzők számára is. Sok esetben nehéz megismerni, hogy hol kell kezdeni. 
 
-A Security Center az [elemzések](security-center-detection-capabilities.md) segítségével összekapcsolja az adatokat a különböző [biztonsági riasztások](security-center-managing-and-responding-alerts.md)között. Ezekkel a kapcsolatokkal a Security Center egyetlen nézetet biztosíthat a támadási kampányról és a kapcsolódó riasztásokról, amelyek segítenek megérteni a támadó műveleteit és az érintett erőforrásokat.
+A Security Center az [elemzések](./security-center-alerts-overview.md) segítségével összekapcsolja az adatokat a különböző [biztonsági riasztások](security-center-managing-and-responding-alerts.md)között. Ezekkel a kapcsolatokkal a Security Center egyetlen nézetet biztosíthat a támadási kampányról és a kapcsolódó riasztásokról, amelyek segítenek megérteni a támadó műveleteit és az érintett erőforrásokat.
 
 Ez az oldal áttekintést nyújt Security Center incidensekről.
 

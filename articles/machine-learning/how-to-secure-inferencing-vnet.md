@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e778538efe97266eb73f85e8548a9cd5ca1f53c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972509"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341311"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Azure Machine Learning következtetési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -119,11 +119,11 @@ A létrehozási folyamat befejezésekor futtathat következtetéseket vagy model
 
 Az AK-fürt és a virtuális hálózat közötti forgalom elkülönítésére két módszer áll rendelkezésre:
 
-* __Privát AK-fürt__: Ez a módszer az Azure Private link használatával hoz létre egy privát végpontot az AK-fürt számára a VNet belül.
-* __Belső AK-Load Balancer__: Ez a módszer konfigurálja a terheléselosztást a fürt számára, hogy belső IP-címet használjon a VNet.
+* __Privát AK-fürt__: Ez a módszer az Azure Private-hivatkozást használja a fürttel való kommunikáció biztonságossá tételéhez üzembe helyezési/felügyeleti műveletekhez.
+* __Belső AK-Load Balancer__: Ez a módszer konfigurálja a végpontot a központi telepítések számára, hogy a virtuális hálózaton belüli magánhálózati IP-címet használjanak.
 
 > [!WARNING]
-> Mindkét konfiguráció különböző módon valósítható meg ugyanazon cél eléréséhez (a VNet belül az AK-fürt felé irányuló adatforgalom biztonságossá tétele). **Használjon egyet vagy a másikat, de ne mindkettőt**.
+> **Használjon privát AK-t vagy belső terheléselosztó-t, de mindkettőt nem**.
 
 ### <a name="private-aks-cluster"></a>Privát AK-fürt
 

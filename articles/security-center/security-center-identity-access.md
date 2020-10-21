@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946220"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341262"
 ---
 # <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
 
@@ -30,7 +30,7 @@ Az identitással kapcsolatos tevékenységek és konfigurációs beállítások 
 
 Azure Security Center két dedikált biztonsági vezérlővel rendelkezik, amelyekkel biztosíthatja, hogy megfeleljen a szervezete identitásának és biztonsági követelményeinek: 
 
- - **Hozzáférés és engedélyek kezelése** – javasoljuk, hogy fogadja el a [legkevésbé privilegizált hozzáférési modellt](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) , és gondoskodjon arról, hogy a felhasználók csak a feladataik elvégzéséhez szükséges hozzáférést biztosítsanak. Ez a vezérlő a [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) megvalósítására vonatkozó javaslatokat is tartalmaz az erőforrásokhoz való hozzáférés szabályozásához.
+ - **Hozzáférés és engedélyek kezelése** – javasoljuk, hogy fogadja el a [legkevésbé privilegizált hozzáférési modellt](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) , és gondoskodjon arról, hogy a felhasználók csak a feladataik elvégzéséhez szükséges hozzáférést biztosítsanak. Ez a vezérlő a [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) megvalósítására vonatkozó javaslatokat is tartalmaz az erőforrásokhoz való hozzáférés szabályozásához.
  
  - Többtényezős hitelesítés **engedélyezése** – az [MFA](https://www.microsoft.com/security/business/identity/mfa) engedélyezve van, a fiókok biztonságosabbak, és a felhasználók továbbra is elvégezhetik az egyszeri bejelentkezéssel szinte bármilyen alkalmazást.
 
@@ -84,10 +84,10 @@ A következő Azure Resource Graph-lekérdezéssel megtekintheti, hogy mely fió
     > A fiókok neve helyett objektumazonosítókként jelennek meg a fiókok tulajdonosainak védelme érdekében.
 
 > [!TIP]
-> Alternatív megoldásként használhatja a Security Center REST API metódusának [értékelését – Get](https://docs.microsoft.com/rest/api/securitycenter/assessments/get).
+> Alternatív megoldásként használhatja a Security Center REST API metódusának [értékelését – Get](/rest/api/securitycenter/assessments/get).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő cikket:
 
 - [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)

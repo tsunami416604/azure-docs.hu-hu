@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220669"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341940"
 ---
 # <a name="security-alerts-schemas"></a>Biztonsági riasztások sémái
 
@@ -24,9 +24,9 @@ Ha az előfizetése engedélyezve van az Azure Defender számára, akkor biztons
 
 Ezeket a biztonsági riasztásokat megtekintheti Azure Security Center **veszélyforrások elleni védelmi** oldalain, illetve külső eszközökkel, például a következőkkel:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – a Microsoft Felhőbeli natív Siem-je. A Sentinel Connector Azure Security Center riasztásokat küld, és elküldi azokat az Azure Sentinel [log Analytics munkaterületére](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) .
-- Harmadik féltől származó SIEM-k – a Security Center [folyamatos exportálási](continuous-export.md) eszközeivel küldhet adatküldést az [Azure-Event Hubsba](https://docs.microsoft.com/azure/event-hubs/). Ezután integrálja az Event hub-adatait egy harmadik féltől származó SIEM-mel.
-- [A REST API](https://docs.microsoft.com/rest/api/securitycenter/) – ha a REST API használatával fér hozzá a riasztásokhoz, tekintse meg az [online riasztások API dokumentációját](https://docs.microsoft.com/rest/api/securitycenter/alerts).
+- [Azure Sentinel](../sentinel/index.yml) – a Microsoft Felhőbeli natív Siem-je. A Sentinel Connector Azure Security Center riasztásokat küld, és elküldi azokat az Azure Sentinel [log Analytics munkaterületére](../azure-monitor/learn/quick-create-workspace.md) .
+- Harmadik féltől származó SIEM-k – a Security Center [folyamatos exportálási](continuous-export.md) eszközeivel küldhet adatküldést az [Azure-Event Hubsba](../event-hubs/index.yml). Ezután integrálja az Event hub-adatait egy harmadik féltől származó SIEM-mel.
+- [A REST API](/rest/api/securitycenter/) – ha a REST API használatával fér hozzá a riasztásokhoz, tekintse meg az [online riasztások API dokumentációját](/rest/api/securitycenter/alerts).
 
 Ha bármilyen programozott módszert használ a riasztások felhasználásához, a megfelelő sémára lesz szüksége az Ön számára releváns mezők megtalálásához. Emellett, ha egy Event hub-ba exportál, vagy a munkafolyamat-automatizálást általános HTTP-összekötővel próbálja elindítani, a sémák segítségével megfelelően elemezheti a JSON-objektumokat.
 
@@ -60,7 +60,7 @@ A Sentinel Connector Azure Security Center riasztásokat küld, és elküldi azo
 
 Ha Security Center riasztásokat használó Sentinel-esetet vagy eseményt szeretne létrehozni, szüksége lesz az alább látható riasztások sémájára. 
 
-Az Azure Sentinel szolgáltatással kapcsolatos további információkért tekintse meg [a dokumentációt](https://docs.microsoft.com/azure/sentinel/).
+Az Azure Sentinel szolgáltatással kapcsolatos további információkért tekintse meg [a dokumentációt](../sentinel/index.yml).
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -172,7 +172,7 @@ A biztonsági riasztások eseményeit a tevékenység naplójában tekintheti me
 
 A Microsoft Graph az adatokhoz és az intelligenciához tartozó átjáró a Microsoft 365ban. Egy egységesített programozható modellt biztosít, amellyel a Microsoft 365, a Windows 10 és a Enterprise Mobility + Security rengeteg adatmennyiségét érheti el. A Microsoft Graphban található adatmennyiség használatával olyan szervezeteknek és fogyasztóknak készült alkalmazásokat hozhat létre, amelyek több millió felhasználóval működnek.
 
-Az MS Graphba elküldett biztonsági riasztások sémája és JSON-ábrázolása [a Microsoft Graph dokumentációjában](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true)érhető el.
+Az MS Graphba elküldett biztonsági riasztások sémája és JSON-ábrázolása [a Microsoft Graph dokumentációjában](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0)érhető el.
 
 ---
 
@@ -183,7 +183,7 @@ Ez a cikk azokat a sémákat ismerteti, amelyeket a Azure Security Center veszé
 
 A biztonsági riasztások Security Centeron kívülről történő elérésének módjaival kapcsolatos további információkért tekintse meg a következő lapokat:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – a Microsoft Felhőbeli natív Siem-je
-- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) – a Microsoft teljes körűen felügyelt, valós idejű adatfeldolgozási szolgáltatása
+- [Azure Sentinel](../sentinel/index.yml) – a Microsoft Felhőbeli natív Siem-je
+- [Azure Event Hubs](../event-hubs/index.yml) – a Microsoft teljes körűen felügyelt, valós idejű adatfeldolgozási szolgáltatása
 - Security Center [folyamatos exportálási funkciója](continuous-export.md)
-- [Log Analytics-munkaterületek](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) – a Azure Monitor a log Analytics munkaterületen tárolja a naplózási adatokat, egy olyan tárolót, amely adatokat és konfigurációs adatokat tartalmaz.
+- [Log Analytics-munkaterületek](../azure-monitor/learn/quick-create-workspace.md) – a Azure Monitor a log Analytics munkaterületen tárolja a naplózási adatokat, egy olyan tárolót, amely adatokat és konfigurációs adatokat tartalmaz.

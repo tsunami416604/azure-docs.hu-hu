@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766833"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125337"
 ---
 ::: zone target="docs"
 
@@ -273,7 +273,7 @@ Az adatok másolásának befejeződése után ellenőrizze az adatokat. Ha haszn
 
 Ha nem használta a másolásfelosztó eszközt az adatok másolásához, ellenőriznie kell az adatokat. Az adatok ellenőrzéséhez hajtsa végre a következő lépéseket.
 
-1. Futtassa a `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *DataBoxDiskImport* mappájában. Ez kizárólag Windows-környezetben érhető el. A Linux-felhasználóknak ellenőrizniük kell, hogy a lemezre másolt forrásadatok megfelelnek-e az [előfeltételeknek](https://docs.microsoft.com/azure/databox/data-box-disk-limits).
+1. Futtassa a `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *DataBoxDiskImport* mappájában. Ez kizárólag Windows-környezetben érhető el. A Linux-felhasználóknak ellenőrizniük kell, hogy a lemezre másolt forrásadatok megfelelnek-e az [előfeltételeknek](./data-box-disk-limits.md).
     
     ![A Data Box Disk érvényesítési eszköz kimenete](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -335,6 +335,6 @@ Az adatok ellenőrzéséhez végezze el az alábbi lépéseket.
 1. Futtassa a `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *DataBoxDiskImport* mappájában.
 2. A fájlok ellenőrzéséhez és az ellenőrzőösszegek létrehozásához használja a 2. lehetőséget. Az adatok méretétől függően a lépésben írtak elvégzése hosszabb időt is igénybe vehet. Ha hiba történik az érvényesítés és az ellenőrzőösszeg létrehozása során, a rendszer értesíti, és megjelenít egy, a hibanaplóra mutató hivatkozást.
 
-    Az adatok ellenőrzésével kapcsolatos további információért tekintse meg [az adatok ellenőrzését](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data) ismertető részt. Ha hibákat tapasztal az ellenőrzés során, tekintse meg az [ellenőrzési hibák elhárítását](data-box-disk-troubleshoot.md) ismertető részt.
+    Az adatok ellenőrzésével kapcsolatos további információért tekintse meg [az adatok ellenőrzését](#validate-data) ismertető részt. Ha hibákat tapasztal az ellenőrzés során, tekintse meg az [ellenőrzési hibák elhárítását](data-box-disk-troubleshoot.md) ismertető részt.
 
 ::: zone-end

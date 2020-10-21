@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: f9080d13c4358a03b3f13ffcf346af42e49c47c6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8d273aae3588a006f7b0a55d2798b7a43c040c9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689456"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148370"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Az Azure-foglalási kedvezmény alkalmazása Azure-beli dedikált gazdagépek esetében
 
@@ -36,17 +36,16 @@ Ha kérdése van vagy segítségre van szüksége,  [hozzon létre egy támogat
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik azok a foglalások az Azure-ban?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Mik azok a foglalások az Azure-ban?](./save-compute-costs-reservations.md)
 
-- [Azure-beli dedikált gazdagépek használata](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Azure-beli dedikált gazdagépek használata](../../virtual-machines/dedicated-hosts.md)
 
 - [Dedikált gazdagépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [Foglalások kezelése az Azure-ban](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [Foglalások kezelése az Azure-ban](./manage-reserved-vm-instance.md)
 
-- [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](./understand-reserved-instance-usage.md)
 
-- [A foglalási kihasználtság ismertetése vállalati regisztrációnál](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [A foglalási kihasználtság ismertetése vállalati regisztrációnál](./understand-reserved-instance-usage-ea.md)
 
-- [A foglalási kihasználtság ismertetése CSP-előfizetésnél](https://docs.microsoft.com/partner-center/azure-reservations)
-
+- [A foglalási kihasználtság ismertetése CSP-előfizetésnél](/partner-center/azure-reservations)

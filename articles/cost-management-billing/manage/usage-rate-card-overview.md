@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: da657fdf2545b585ccd5ec83a7f86897b67c4fe2
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: b3ae2b8323c9f278dcec432dfaac05e9fcfb4b49
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370249"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132108"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Az Azure Billing API-kkal szoftveres úton juthat az Azure-használatra vonatkozó megállapításokhoz.
 Az Azure Billing API-kkal lekérhetők a használattal és erőforrásokkal kapcsolatos adatok az előnyben részesített adatelemző eszközökbe. Az Azure erőforrás-használati és RateCard API-k segítségével pontosan előrejelezheti és felügyelheti a költségeket. Az API-k erőforrás-szolgáltatóként vannak implementálva, és az Azure Resource Manager által közzétett API-k családjának részei.  
@@ -36,13 +36,13 @@ Az Azure [Resource Usage API](/previous-versions/azure/reference/mt219003(v=azur
 * **Óránkénti vagy napi összesítések** – a hívók meghatározhatják, hogy az Azure-használati adatokat óránkénti gyűjtőkben vagy napi gyűjtőkben szeretnék-e megkapni. Az alapértelmezett beállítás a napi.
 * **Példány metaadatai (erőforrás-címkéket tartalmaz)** – az adatok példányszintű részletezése, például a teljes erőforrás URI-ja (/subscriptions/{előfizetési-azonosító}/..), az erőforráscsoport adatai és az erőforrás-címkék. Ezekkel a metaadatokkal determinisztikus és programozott módon oszthatja fel a használati adatokat a címkék alapján olyan használati esetekhez, mint például a szolgáltatások közötti díjszámítás.
 * **Erőforrás-metaadatok** – az erőforrás részletei, például a mérőszám neve, a mérőszám kategóriája, a mérőszám alkategóriája, az egység és a régió lehetővé teszik a hívó számára, hogy jobban megértse a felhasználást. Arra is törekszünk, hogy az erőforrás-metaadatokat az Azure Portal, az Azure-használati CSV, a nagyvállalati szerződéses számlázási CSV és más, nyilvános felületek között összehangoljuk, így lehetővé téve az adatok a különböző felületek közötti egyeztetését.
-* **Használati adatok különböző ajánlattípusokhoz** – a használati adatok olyan ajánlattípusokhoz érhetők el, mint a használatalapú fizetés, az MSDN, a pénzügyi keret, a pénzügyi kredit és a Nagyvállalati Szerződés, kivéve a [CSP](https://docs.microsoft.com/partner-center)-t.
+* **Használati adatok különböző ajánlattípusokhoz** – a használati adatok olyan ajánlattípusokhoz érhetők el, mint a használatalapú fizetés, az MSDN, a pénzügyi keret, a pénzügyi kredit és a Nagyvállalati Szerződés, kivéve a [CSP](/partner-center)-t.
 
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure Resource RateCard API (előzetes verzió)
 Az [Azure Resource RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) használatával lekérheti az elérhető Azure-erőforrások listáját, illetve az egyes erőforrások becsült díjszabásával kapcsolatos információkat. Az API a következőket tartalmazza:
 
 * **Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC)** – a hozzáférési szabályzatok konfigurálása az [Azure Portalon](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá a RateCard-adatokhoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót az olvasó, a tulajdonos vagy a közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetés használati adataihoz.
-* **A használatalapú fizetéshez, MSDN-hez, pénzügyi kerethez és pénzügyi kredithez kapcsolódó ajánlatok támogatása (a Nagyvállalati Szerződés és a [CSP](https://docs.microsoft.com/partner-center) nem támogatott)** – ez az API az Azure ajánlatszintű díjszabásairól nyújt információt.  Az API hívójának át kell adnia az ajánlat adatait az erőforrás részleteinek és díjszabásának lekéréséhez. Jelenleg nem tudjuk megadni a Nagyvállalati Szerződés díjait, mert az ilyen ajánlatoknak regisztrációnként testreszabott díjszabásai vannak.
+* **A használatalapú fizetéshez, MSDN-hez, pénzügyi kerethez és pénzügyi kredithez kapcsolódó ajánlatok támogatása (a Nagyvállalati Szerződés és a [CSP](/partner-center) nem támogatott)** – ez az API az Azure ajánlatszintű díjszabásairól nyújt információt.  Az API hívójának át kell adnia az ajánlat adatait az erőforrás részleteinek és díjszabásának lekéréséhez. Jelenleg nem tudjuk megadni a Nagyvállalati Szerződés díjait, mert az ilyen ajánlatoknak regisztrációnként testreszabott díjszabásai vannak.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 Néhány forgatókönyv, amelyek a Usage- és RateCard API-k kombinációjával válnak lehetségessé:

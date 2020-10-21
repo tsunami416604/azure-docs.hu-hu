@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 5340d6124ae4fdc669a30458b9e58cf4c86d6746
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684660"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150081"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Az Azure Nagyvállalati Szerződés számlájának ismertetése
 
@@ -436,7 +436,7 @@ A Power BI-jal kapcsolatos probléma esetén küldjön egy hibajegyet a [Power B
 
 ### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Miért nem jelennek meg az erőforráscímkék a jelentéseimben?
 
-Az erőforráscímkék felügyelete az Azure Portalon történik. Az Azure előfizetési csapatával az [Azure Portalon](https://portal.azure.com) veheti fel a kapcsolatot. Kövesse az [Azure-támogatáskérések létrehozása](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) cikkben leírt lépéseket.
+Az erőforráscímkék felügyelete az Azure Portalon történik. Az Azure előfizetési csapatával az [Azure Portalon](https://portal.azure.com) veheti fel a kapcsolatot. Kövesse az [Azure-támogatáskérések létrehozása](../../azure-portal/supportability/how-to-create-azure-support-request.md) cikkben leírt lépéseket.
 
 ### <a name="why-does-my-resource-rate-change-every-day"></a>Miért változik naponta az erőforrás-díjszabás?
 

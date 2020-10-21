@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c277da54e56fcd0ce68444d499b17e84f706ad03
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442496"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132584"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API-k
 
@@ -25,15 +25,15 @@ A Microsoft Nagyvállalati Szerződéssel rendelkező Azure-ügyfelek a REST API
 
 ### <a name="available-apis"></a>Elérhető API-k
 
-**Egyenleg és összefoglalás** – A [Balance és Summary API](../../billing/billing-enterprise-api-balance-summary.md) havi összefoglaló információkat nyújt az egyenlegekről, az új vásárlásokról, az Azure Marketplace szolgáltatási díjairól, a kiigazításokról és a többletköltségekről. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Egyenleg és összefoglalás](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) rész tartalmaz.
+**Egyenleg és összefoglalás** – A [Balance és Summary API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) havi összefoglaló információkat nyújt az egyenlegekről, az új vásárlásokról, az Azure Marketplace szolgáltatási díjairól, a kiigazításokról és a többletköltségekről. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Egyenleg és összefoglalás](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) rész tartalmaz.
 
-**Használati adatok** – A [Usage Details API](../../billing/billing-enterprise-api-usage-detail.md) a felhasznált mennyiségek napi részletezését és az adott regisztrációhoz kapcsolódó becsült költségeket jeleníti meg. Az eredmény a példányokkal, mérőszámokkal és részlegekkel kapcsolatos információkat is tartalmazza. Az API lekérdezhető számlázási időszak vagy egy megadott kezdő és záró dátum alapján. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Használati adatok](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) rész tartalmaz.
+**Használati adatok** – A [Usage Details API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) a felhasznált mennyiségek napi részletezését és az adott regisztrációhoz kapcsolódó becsült költségeket jeleníti meg. Az eredmény a példányokkal, mérőszámokkal és részlegekkel kapcsolatos információkat is tartalmazza. Az API lekérdezhető számlázási időszak vagy egy megadott kezdő és záró dátum alapján. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Használati adatok](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) rész tartalmaz.
 
-**Marketplace-díjak** – A [Marketplace Store Charge API](../../billing/billing-enterprise-api-marketplace-storecharge.md) a megadott számlázási időszakra, illetve a kezdési és befejezési dátumokra vonatkozóan napi bontásban adja vissza a használaton alapuló Marketplace-díjakat. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Marketplace-díjak](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) rész tartalmaz.
+**Marketplace-díjak** – A [Marketplace Store Charge API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) a megadott számlázási időszakra, illetve a kezdési és befejezési dátumokra vonatkozóan napi bontásban adja vissza a használaton alapuló Marketplace-díjakat. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Marketplace-díjak](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) rész tartalmaz.
 
 **Árlista** – A [Price Sheet API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) a regisztrációs és számlázási időszakokra vonatkozóan az egyes mérők esetében érvényes díjszabást biztosítja. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Árlista](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) rész tartalmaz.
 
-**Számlázási időszakok** – A [Billing Periods API](../../billing/billing-enterprise-api-billing-periods.md) olyan számlázási időszakok listáját adja vissza, amelyekben egy regisztráció használati adatai szerepelnek fordított időrendi sorrendben. Minden időszak tartalmazza a négy következő adathalmaz API-útvonalára mutató egyik tulajdonságot: BalanceSummary, UsageDetails, Marketplace Charges és Price Sheet. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Számlázási időszakok](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) rész tartalmaz.
+**Számlázási időszakok** – A [Billing Periods API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) olyan számlázási időszakok listáját adja vissza, amelyekben egy regisztráció használati adatai szerepelnek fordított időrendi sorrendben. Minden időszak tartalmazza a négy következő adathalmaz API-útvonalára mutató egyik tulajdonságot: BalanceSummary, UsageDetails, Marketplace Charges és Price Sheet. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Számlázási időszakok](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) rész tartalmaz.
 
 ### <a name="enable-api-data-access"></a>API-adathozzáférés engedélyezése
 

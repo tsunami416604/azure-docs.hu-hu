@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 91b3b7b71524c76006ad4d431774e05e47fd0266
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326606"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131071"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Új fiók az Azure Portalon vagy az Azure Fiókközpontban történő regisztrálásának hibaelhárítása
 
 Előfordulhat, hogy problémába ütközik, amikor új fiókot próbál meg regisztrálni a Microsoft Azure Portalon vagy az Azure Fiókközpontban. Ez a rövid útmutató végigvezeti a regisztrációs folyamaton, és minden lépésnél ismerteti a gyakorta felmerülő problémákat.
 
 > [!NOTE]
-> Ha már rendelkezik fiókkal, és bejelentkezési problémák elhárításával kapcsolatban van szüksége útmutatásra, tekintse meg [Az Azure-előfizetés bejelentkezési hibáinak elhárítása](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue) című cikket.
+> Ha már rendelkezik fiókkal, és bejelentkezési problémák elhárításával kapcsolatban van szüksége útmutatásra, tekintse meg [Az Azure-előfizetés bejelentkezési hibáinak elhárítása](./troubleshoot-sign-in-issue.md) című cikket.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -76,8 +76,8 @@ A probléma megoldásához ellenőrizze, hogy az alábbiak teljesülnek-e:
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>A következő üzenet jelenik meg: „A jelenlegi fióktípus nem támogatott”
 
-Ez a probléma akkor fordulhat elő, ha a fiók regisztrálva van egy olyan [nem felügyelt Azure AD-címtárban](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup), amely nem a cég vagy szervezet Azure AD-címtára.
-A probléma megoldásához regisztráljon egy másik fiókot Azure-fiókként, vagy vegye át a nem felügyelt AD-címtárat. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) ismertető cikket.
+Ez a probléma akkor fordulhat elő, ha a fiók regisztrálva van egy olyan [nem felügyelt Azure AD-címtárban](../../active-directory/users-groups-roles/directory-self-service-signup.md), amely nem a cég vagy szervezet Azure AD-címtára.
+A probléma megoldásához regisztráljon egy másik fiókot Azure-fiókként, vagy vegye át a nem felügyelt AD-címtárat. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../../active-directory/users-groups-roles/domains-admin-takeover.md) ismertető cikket.
 
 ## <a name="identity-verification-by-phone"></a>Személyazonosság ellenőrzése telefonon
 
@@ -107,7 +107,7 @@ Néhány további tipp:
 
 #### <a name="credit-card-declined-or-not-accepted"></a>A hitelkártya el lett utasítva, vagy nem elfogadott
 
-A virtuális hitelkártyák vagy bankkártyák és a feltöltőkártyák nem használhatók fizetőeszközként Azure-előfizetésekhez. Azzal kapcsolatban, hogy mi okozhatja még a kártya elutasítását, tekintse meg az [Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítását](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card) ismertető részt.
+A virtuális hitelkártyák vagy bankkártyák és a feltöltőkártyák nem használhatók fizetőeszközként Azure-előfizetésekhez. Azzal kapcsolatban, hogy mi okozhatja még a kártya elutasítását, tekintse meg az [Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítását](./troubleshoot-declined-card.md) ismertető részt.
 
 #### <a name="credit-card-form-doesnt-support-my-billing-address"></a>A hitelkártyaűrlap nem támogatja a számlázási címet
 
@@ -144,7 +144,7 @@ Töltse ki a Megállapodást.
 Ellenőrizze, hogy a megfelelő bejelentkezési hitelesítő adatokat használja-e. Ezután tekintse meg a kedvezményprogramot, és ellenőrizze, hogy jogosult-e erre.
 - MSDN
   - Az [MSDN-fiók lapján](https://msdn.microsoft.com/subscriptions/manage/default.aspx) ellenőrizze a jogosultsági állapotát.
-  - Ha nem tudja ellenőrizni az állapotát, forduljon az [MSDN-előfizetések ügyfélszolgálati központjához](https://msdn.microsoft.com/library/aa493452.aspx).
+  - Ha nem tudja ellenőrizni az állapotát, forduljon az [MSDN-előfizetések ügyfélszolgálati központjához](/previous-versions/mappoint/aa493452(v=msdn.10)).
 - Microsoft for Startups
   - Microsoft for Startups-jogosultsági állapotának ellenőrzéséhez jelentkezzen be a [Microsoft for Startups portáljára](https://startups.microsoft.com/#start-two).
   - Ha nem tudja ellenőrizni az állapotát, kérjen segítséget a [Microsoft for Startups fórumain](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
@@ -161,10 +161,10 @@ Azure in Open-előfizetés létrehozásához rendelkeznie kell egy olyan érvén
 
 Az Azure-számlázással és -előfizetésekkel kapcsolatos további hibaelhárítási cikkek
 
-- [Elutasított bankkártya](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Bejelentkezéssel kapcsolatos problémák az előfizetésben](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Nem található előfizetés](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Vállalati költségek nézet letiltva](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Elutasított bankkártya](./troubleshoot-declined-card.md)
+- [Bejelentkezéssel kapcsolatos problémák az előfizetésben](./troubleshoot-sign-in-issue.md)
+- [Nem található előfizetés](./no-subscriptions-found.md)
+- [Vállalati költségek nézet letiltva](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>Ha segítségre van szüksége, vegye fel velünk a kapcsolatot.
 
@@ -172,4 +172,4 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="find-out-more-about-azure-cost-management"></a>További információ az Azure Cost Managementről
 
-- [Az Azure Cost Management and Billing dokumentációja](https://docs.microsoft.com/azure/cost-management-billing)
+- [Az Azure Cost Management and Billing dokumentációja](../index.yml)

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681736"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149368"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Az Azure használati adatait és díjait tartalmazó fájl kifejezéseinek ismertetése
 
@@ -90,8 +90,8 @@ PublisherType | Összes | A közzétevő típusa (értékek: **Azure**, **AWS**,
 Mennyiség | Összes | A megvásárolt vagy igénybe vett egységek száma.
 ReservationId | EA, MCA | A megvásárolt foglaláspéldány egyedi azonosítója.
 ReservationName | EA, MCA | A megvásárolt foglaláspéldány neve.
-ResourceGroup | Összes | Az erőforrást tartalmazó [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) neve. Nem minden díjtétel az erőforráscsoportokon üzembe helyezett erőforrásokból származik. Az erőforráscsoporthoz nem kapcsolódó díjtételek a következőként jelennek meg: null/üres, **Egyéb** vagy **Nem alkalmazható**.
-ResourceId<sup>1</sup> | Összes | Az [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-erőforrás egyedi azonosítója.
+ResourceGroup | Összes | Az erőforrást tartalmazó [erőforráscsoport](../../azure-resource-manager/management/overview.md) neve. Nem minden díjtétel az erőforráscsoportokon üzembe helyezett erőforrásokból származik. Az erőforráscsoporthoz nem kapcsolódó díjtételek a következőként jelennek meg: null/üres, **Egyéb** vagy **Nem alkalmazható**.
+ResourceId<sup>1</sup> | Összes | Az [Azure Resource Manager](/rest/api/resources/resources)-erőforrás egyedi azonosítója.
 ResourceLocation | Összes | Az erőforrást futtató adatközpont helye. Lásd: Hely.
 ResourceName nevű erőforrásáról | EA, PAYG | Az erőforrás neve. Nem minden díjtétel az üzembe helyezett erőforrásokból származik. Az erőforrástípussal nem rendelkező díjtételek a következőként jelennek meg: null/üres, **Egyéb** vagy **Nem alkalmazható**.
 ResourceType | MCA | Az erőforráspéldány típusa. Nem minden díjtétel az üzembe helyezett erőforrásokból származik. Az erőforrástípussal nem rendelkező díjtételek a következőként jelennek meg: null/üres, **Egyéb** vagy **Nem alkalmazható**.

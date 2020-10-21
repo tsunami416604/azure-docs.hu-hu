@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 44f7ce657ea9341779e15f6e4817e8fae1515e47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d6d0d0a4c4b3328fa50777b5106bac202c9972ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685969"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151504"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Megtakarítás a SAP HANA nagyméretű példányaival Azure-foglalás segítségével
 
@@ -32,15 +32,15 @@ A fenntartott kapacitás megvásárlása előtt a HLI SKU-t ki kell építeni. A
 - A HANA fenntartott kapacitásához nem tartozhat megosztott foglalási hatókör. A foglalási hatókört nem lehet felosztani, egyesíteni vagy frissíteni.
 - Egyszerre csak egy HLI-t vásárolhat meg a fenntartott kapacitás API-hívásaival. Továbbiakat másik API-hívások kezdeményezésével vásárolhat.
 
-Fenntartott kapacitást az Azure Portalon, a [REST API](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase) használatával vásárolhat.
+Fenntartott kapacitást az Azure Portalon, a [REST API](/rest/api/reserved-vm-instances/reservationorder/purchase) használatával vásárolhat.
 
 ## <a name="buy-a-hana-large-instance-reservation"></a>A HANA nagy méretű példányaira vonatkozó foglalás vásárlása
 
-Az alábbi információk segítségével HLI-foglalást vásárolhat a [Reservation Order REST API-k](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase) használatával.
+Az alábbi információk segítségével HLI-foglalást vásárolhat a [Reservation Order REST API-k](/rest/api/reserved-vm-instances/reservationorder/purchase) használatával.
 
 ### <a name="get-the-reservation-order-and-price"></a>Foglalási rendelés és ár lekérése
 
-Első lépésként kérje le a foglalási rendelést és az árat a kiépített nagyméretű HANA-példány SKU-jához a [Calculate Price](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/calculate) API-val.
+Első lépésként kérje le a foglalási rendelést és az árat a kiépített nagyméretű HANA-példány SKU-jához a [Calculate Price](/rest/api/reserved-vm-instances/reservationorder/calculate) API-val.
 
 Az alábbi példa az [armclient](https://github.com/projectkudu/ARMClient) használatával végez REST API-hívást a PowerShell-lel. A foglalási rendelésnek, a Calculate Price API-kérelemnek és a kérelem törzsének a következőhöz hasonlóan kell kinéznie:
 
@@ -220,7 +220,7 @@ Az alábbi információk ismertetik a különböző foglalási mezők jelentés�
 
   **SKU** A HLI SKU neve. A következőhöz hasonlít: `SAP_HANA_On_Azure_<SKUname>`.
 
-  **Hely** Az elérhető HLI-régiók. Tekintse meg az [SAP HANA on Azure (Large Instances) SKU-i](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) című részt az elérhető régiók megismeréséért. A hely sztringformátumának lekéréséhez használja a [get locations API-hívást](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations#locationlistresult).
+  **Hely** Az elérhető HLI-régiók. Tekintse meg az [SAP HANA on Azure (Large Instances) SKU-i](../../virtual-machines/workloads/sap/hana-available-skus.md) című részt az elérhető régiók megismeréséért. A hely sztringformátumának lekéréséhez használja a [get locations API-hívást](/rest/api/resources/subscriptions/listlocations#locationlistresult).
 
   **Fenntartott erőforrás típusa** `SapHana`
 
@@ -248,5 +248,5 @@ location. You can also go to https://aka.ms/corequotaincrease to learn about quo
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók az [Azure REST API-k Postman és cURL használatával történő meghívásáról](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman).
-- Tekintse meg az [SAP HANA on Azure (Large Instances) SKU-i](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) című részt az elérhető SKU-k listájának és az elérhető régiók megismeréséért.
+- Tudnivalók az [Azure REST API-k Postman és cURL használatával történő meghívásáról](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman).
+- Tekintse meg az [SAP HANA on Azure (Large Instances) SKU-i](../../virtual-machines/workloads/sap/hana-available-skus.md) című részt az elérhető SKU-k listájának és az elérhető régiók megismeréséért.
