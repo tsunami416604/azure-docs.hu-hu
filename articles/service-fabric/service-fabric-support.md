@@ -5,12 +5,12 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: afadd68b4c74ede522aa16809fab341e5802c627
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 977cd79de629670cef526f072340f8897fa6446e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165927"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316499"
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségei
 
@@ -63,7 +63,7 @@ Alkalmanként speciális előzetes kiadásokat is tartalmaz, amelyek jelentős f
 
 Az előzetes verzió verziója mindig a fő és alverziószám 255-as számú. Ha például egy Service Fabric 255.255.5703.949-verziót lát, ez a verzió előzetes verzióban érhető el, és csak tesztelési fürtökben használható. Ezek az előzetes verziók a [Service Fabric csapat blogjában](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) is bejelentve lesznek, és a szolgáltatással kapcsolatos részleteket is tartalmaznak. A kérdésekkel kapcsolatos kérdések és visszajelzések megadásához használja az [Azure-Service Fabrici problémák című](#report-azure-service-fabric-issues) részben felsorolt lehetőségek egyikét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Támogatott Service Fabric verziók](service-fabric-versions.md)
 
@@ -71,6 +71,6 @@ Az előzetes verzió verziója mindig a fő és alverziószám 255-as számú. H
 [Microsoft Q&A question page]: /answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
-[acom-docs]: https://aka.ms/servicefabricdocs
-[sample-repos]: https://aka.ms/servicefabricsamples
+[acom-docs]: ./index.yml
+[sample-repos]: /samples/browse/?products=azure
 [msdn-forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?category=windowsazureplatform

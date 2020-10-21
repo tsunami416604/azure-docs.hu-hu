@@ -2,14 +2,14 @@
 title: A tárolók Azure Monitorának frissítése a metrikák számára | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan frissítheti Azure Monitor a tárolók számára az összesített metrikák vizsgálatát és riasztását támogató egyéni metrikák funkció engedélyezéséhez.
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a94f250c83fbd2779620376087a83b8851e583e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618145"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309436"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>A tárolókhoz készült Azure Monitor frissítése a metrikák engedélyezéséhez
 
@@ -26,6 +26,7 @@ A szolgáltatás részeként a következő metrikák engedélyezettek:
 | Bepillantást nyerhet. tároló/csomópontok | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | A *csomópont* -metrikák közé tartoznak a *gazdagép* dimenzióként. A következőket is tartalmazzák:<br> a csomópont neve a *gazdagép* dimenziójának értékeként. |
 | Bepillantást nyerhet. tároló/hüvely | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | A *Pod* -metrikák a következő dimenziókat tartalmazzák: ControllerName, Kubernetes névtér, név, fázis. |
 | Bepillantást nyerhet. tároló/tárolók | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
+| Bepillantást nyerhet. tároló/persistentvolumes | pvUsageExceededPercentage | |
 
 Ezen új képességek támogatásához egy új, tárolóban lévő ügynök szerepel a kiadásban, a **Microsoft/OMS: ciprod05262020** for AK és a **Microsoft/OMS: Ciprod09252020** for Azure arc enabled Kubernetes-fürtökben. Az AK új központi telepítései automatikusan tartalmazzák ezt a konfigurációs változást és képességet. A fürt frissítése a szolgáltatás támogatásához a Azure Portal, Azure PowerShell vagy az Azure CLI használatával végezhető el. Azure PowerShell és parancssori felülettel. Ezt a fürtöt vagy az előfizetésben lévő összes fürt számára engedélyezheti.
 

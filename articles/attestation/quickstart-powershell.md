@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d25cdce2670de64fecc8590a2f5f833c10d2df69
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421288"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316006"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Gyors útmutató: Azure-igazolás beállítása Azure PowerShell
 
@@ -23,7 +23,7 @@ Vegye figyelembe, hogy a PowerShell-galéria elavult Transport Layer Security (T
 - Figyelmeztetés: nem sikerült feloldani a (z) "" csomag forrását https://www.powershellgallery.com/api/v2
 - PackageManagement\Install-Package: nem található egyezés a megadott keresési feltételekhez és a modul nevéhez. 
 
-Ahhoz, hogy továbbra is használhassa a PowerShell-galéria, futtassa a következő parancsot az install-Module parancsok futtatása előtt.
+A PowerShell-galéria folytatásához futtassa a következő parancsot a Install-Module parancsok előtt.
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
@@ -81,7 +81,7 @@ Futtassa az alábbi parancsot az összes modul telepített verziójának ellenő
 ```powershell
 Get-InstalledModule
 ```
-Ha a verziók nem felelnek meg a minimális követelménynek, futtassa az Update-Module parancsait.
+Ha a verziók nem felelnek meg a minimális követelménynek, futtassa Update-Module parancsokat.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -122,7 +122,7 @@ New-AzResourceGroup -Name $attestationResourceGroup -Location $location
 
 ## <a name="create-and-manage-an-attestation-provider"></a>Igazolási szolgáltató létrehozása és kezelése
 
-A New-AzAttestation létrehoz egy igazolási szolgáltatót.
+New-AzAttestation létrehoz egy igazolási szolgáltatót.
 
 ```powershell
 $attestationProvider = "<attestation provider name>" 
@@ -137,7 +137,7 @@ New-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationReso
 
 A PolicySignersCertificateFile minta esetében lásd: [házirend-aláíró tanúsítvány példái](policy-signer-examples.md).
 
-A Get-AzAttestation lekéri az igazolási szolgáltató tulajdonságait, például az állapot-és a AttestURI. Jegyezze fel a AttestURI, mert később szükség lesz rá.
+Get-AzAttestation lekéri az igazolási szolgáltató tulajdonságait, például az állapot-és AttestURI. Jegyezze fel a AttestURI, mert később szükség lesz rá.
 
 ```azurepowershell
 Get-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup  
@@ -179,16 +179,16 @@ Ez az engedély hozzárendelhető egy AD-felhasználóhoz egy olyan szerepkörö
 
 Az alábbi PowerShell-parancsmagok egy igazolási szolgáltató (egy póló egyszerre) házirend-kezelését biztosítják.
 
-A Get-AzAttestationPolicy a megadott TEE aktuális szabályzatát adja vissza. A parancsmag a szabályzat szöveg-és JWT-formátumában jeleníti meg a szabályzatot.
+Get-AzAttestationPolicy a megadott TEE aktuális házirendjét adja vissza. A parancsmag a szabályzat szöveg-és JWT-formátumában jeleníti meg a szabályzatot.
 
 ```powershell
 $teeType = "<tee Type>"
 Get-AzAttestationPolicy   -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 
 ```
 
-A támogatott TEE-típusok a következők: "sgxenclave" és "vbsenclave".
+A támogatott TEE-típusok a következők: "SgxEnclave", "OpenEnclave" és "VbsEnclave".
 
-A set-AttestationPolicy új szabályzatot állít be a megadott PÓLÓhoz. A parancsmag a szabályzatot szöveges vagy JWT formátumban fogadja el, és a PolicyFormat paraméter vezérli. A "text" a PolicyFormat alapértelmezett értéke. 
+Set-AttestationPolicy új szabályzatot állít be a megadott PÓLÓhoz. A parancsmag a szabályzatot szöveges vagy JWT formátumban fogadja el, és a PolicyFormat paraméter vezérli. A "text" a PolicyFormat alapértelmezett értéke. 
 
 ```powershell
 $policyFormat = "<policy format>"
@@ -228,7 +228,7 @@ A házirend-aláíró tanúsítvány mintája: [példák a házirend-aláíró t
 
 További információ a parancsmagokról és a hozzájuk tartozó paraméterekről: [Azure igazolási PowerShell-parancsmagok](/powershell/module/az.attestation/?view=azps-4.3.0#attestation) 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [SGX ENKLÁVÉHOZ enklávé igazolása kód-minták használatával](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)

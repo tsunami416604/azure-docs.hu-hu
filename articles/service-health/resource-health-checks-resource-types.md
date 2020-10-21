@@ -3,12 +3,12 @@ title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Mi
 description: Támogatott erőforrástípusok az Azure Resource Health használatával
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bbc7b03a508c9b156de039b4f8706f5063fd23b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447043"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316119"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
 Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
@@ -51,7 +51,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/tartománynév
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A üzemi tárolóhelyek állapota Kifogástalan az összes szerepkör-példányon?</li><li>Kifogástalan a szerepkör az összes virtuálisgép-példánya között?</li><li>Mi az egyes virtuális gépek állapota egy felhőalapú szolgáltatás szerepkörén belül?</li><li>A virtuális gép állapota a platform vagy az ügyfél által kezdeményezett művelet miatt módosult?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li><li>[További](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services) információ a végrehajtott ellenőrzésekről</li></ul>|
+|<ul><li>A üzemi tárolóhelyek állapota Kifogástalan az összes szerepkör-példányon?</li><li>Kifogástalan a szerepkör az összes virtuálisgép-példánya között?</li><li>Mi az egyes virtuális gépek állapota egy felhőalapú szolgáltatás szerepkörén belül?</li><li>A virtuális gép állapota a platform vagy az ügyfél által kezdeményezett művelet miatt módosult?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li><li>[További](../cloud-services/resource-health-for-cloud-services.md) információ a végrehajtott ellenőrzésekről</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. cognitiveservices/fiókok
 |Végrehajtott ellenőrzések|
@@ -257,4 +257,4 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 ## <a name="next-steps"></a>Következő lépések
 -  További információ: [Bevezetés a Azure Service Health irányítópultra](service-health-overview.md) és [a Azure Resource Health bevezetésére](resource-health-overview.md) . 
 -  [Gyakori kérdések a Azure Resource Health](resource-health-faq.md)
-- Riasztások beállítása, hogy értesítést kapjon az állapottal kapcsolatos problémákról. További információ: [riasztások konfigurálása a szolgáltatás állapotára vonatkozó eseményekhez](./alerts-activity-log-service-notifications-portal.md). 
+- Riasztások beállítása, hogy értesítést kapjon az állapottal kapcsolatos problémákról. További információ: [riasztások konfigurálása a szolgáltatás állapotára vonatkozó eseményekhez](./alerts-activity-log-service-notifications-portal.md).

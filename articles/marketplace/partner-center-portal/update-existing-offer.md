@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: f83f5da03d2db5354b020ce7d0c3c8d70f1830a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 810c38397981a100c2d5a68492f8a15b75cd79bd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650107"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276043"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Meglévő ajánlat frissítése a kereskedelmi piactéren
 
@@ -67,7 +67,7 @@ Most, hogy eltakarta a tervet a régi árral, hozzon létre egy másolatot a ter
 
 1. A partner Centerben lépjen vissza a **terv áttekintés**elemre.
 2. Válassza az **új csomag létrehozása**lehetőséget. Adja meg a **csomag azonosítóját** és a **csomag nevét**, majd válassza a **Létrehozás**lehetőséget.
-1. Ha újra szeretné használni a technikai konfigurációt a rejtett csomagból, jelölje be a **technikai konfiguráció újrafelhasználása** jelölőnégyzetet. További információért olvassa el a [terv áttekintése című témakört](azure-vm-create-offer.md#plan-overview) .
+1. Ha újra szeretné használni a technikai konfigurációt a rejtett csomagból, jelölje be a **technikai konfiguráció újrafelhasználása** jelölőnégyzetet. További információért olvassa el [a Create Plans for a VM-ajánlat](../azure-vm-create-plans.md) című témakört.
     > [!IMPORTANT]
     > Ha azt választja, hogy a **terv újrahasznosítja egy másik csomag technikai konfigurációját**, később nem fogja tudni leállítani a fölérendelt terv értékesítését. Ne használja ezt a beállítást, ha le szeretné állítani a fölérendelt terv értékesítését.
 3. Fejezze be az új csomaghoz szükséges összes szakaszt, beleértve az új árat is.

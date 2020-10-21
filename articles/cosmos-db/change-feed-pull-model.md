@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59f1231e2edf3277898ff57d8e6f8da42ee057ca
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015636"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276990"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>A hírcsatorna lekérési modelljének módosítása Azure Cosmos DB
 
@@ -112,7 +112,7 @@ Az alábbi példa bemutatja, hogyan kérhető le a tárolóhoz tartozó tartomá
 IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 ```
 
-A tárolóhoz tartozó FeedRanges listájának beszerzése után a `FeedRange` [fizikai partíciók](partition-data.md#physical-partitions)közül egyet kell kapnia.
+A tárolóhoz tartozó FeedRanges listájának beszerzése után a `FeedRange` [fizikai partíciók](partitioning-overview.md#physical-partitions)közül egyet kell kapnia.
 
 A használatával `FeedRange` létrehozhatja a `FeedIterator` integrálással a változási csatorna több gépen vagy szálon történő feldolgozását. Az előző példától eltérően, amely megmutatta, hogyan szerezhet be egy-t `FeedIterator` a teljes tárolóhoz vagy egy partíciós kulcshoz, a FeedRanges használatával több FeedIterators is beszerezhető, amely párhuzamosan képes feldolgozni a változási csatornát.
 

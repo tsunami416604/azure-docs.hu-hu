@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88854915"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275614"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library konfigurációs fájl
 
@@ -34,6 +34,7 @@ Ez a cikk segítséget nyújt a konfigurációs fájl különböző beállítás
 |-----------|------------|-------------|-------|
 | `client_id` | Sztring | Igen | Az alkalmazás ügyfél-azonosítója az [alkalmazás regisztrációs oldaláról](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
 | `redirect_uri`   | Sztring | Igen | Az [alkalmazás-regisztrációs oldalának](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) átirányítási URI-ja |
+| `broker_redirect_uri_registered` | Logikai | Nem | Lehetséges értékek: `true` , `false` |
 | `authorities` | Listáját\<Authority> | Nem | Az alkalmazás által igényelt hatóságok listája |
 | `authorization_user_agent` | AuthorizationAgent (enumerálás) | Nem | Lehetséges értékek: `DEFAULT` , `BROWSER` , `WEBVIEW` |
 | `http` | HttpConfiguration | Nem | Konfigurálás `HttpUrlConnection` `connect_timeout` és `read_timeout` |
@@ -46,6 +47,10 @@ Az alkalmazás regisztrálásakor létrehozott ügyfél-azonosító vagy alkalma
 ### <a name="redirect_uri"></a>redirect_uri
 
 Az alkalmazás regisztrálásakor regisztrált átirányítási URI. Ha az átirányítási URI egy Broker-alkalmazáshoz tartozik, akkor a [nyilvános ügyfélalkalmazások átirányítási URI](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) -ja című témakörben találja, hogy a megfelelő átirányítási URI-formátumot használja-e a Broker-alkalmazáshoz.
+
+### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
+
+Ha felügyelt hitelesítést szeretne használni, a tulajdonságot a következőre kell `broker_redirect_uri_registered` beállítani: `true` . Felügyelt hitelesítési forgatókönyv esetén, ha az alkalmazás nem megfelelő formátumú, hogy kommunikáljon a közvetítővel a [nyilvános ügyfélalkalmazások átirányítási URI-ja](msal-client-application-configuration.md#redirect-uri-for-public-client-apps)című témakörben leírtak szerint, az alkalmazás ellenőrzi az átirányítási URI-t, és kivételt jelez az indításakor.
 
 ### <a name="authorities"></a>hatóságok
 
@@ -98,6 +103,7 @@ Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az i
 > A MSAL nem engedélyezhető és nem tiltható le a hitelesítésszolgáltató ellenőrzése.
 > A hatóságok vagy ismertek a konfiguráción vagy a Microsoft által a metaadatokon keresztül ismert fejlesztőként.
 > Ha a MSAL egy jogkivonatra vonatkozó kérelmet kap egy ismeretlen szolgáltatónak, az egy `MsalClientException` típusú `UnknownAuthority` eredményt eredményez.
+> A felügyelt hitelesítés Azure AD B2C esetén nem működik.
 
 #### <a name="authority-properties"></a>Szolgáltató tulajdonságai
 

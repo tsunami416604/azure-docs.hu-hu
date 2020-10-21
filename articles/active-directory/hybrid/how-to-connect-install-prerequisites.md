@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca2190079cb97e37318bd1c6a32dfb2b9b309a8d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662164"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276951"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -46,6 +46,14 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
 * Az Azure AD által használt tartományvezérlőnek írhatónak kell lennie. Írásvédett tartományvezérlő használata *nem támogatott*, és a Azure ad Connect nem hajtja végre az írási átirányítást.
 * A helyszíni erdők vagy tartományok használata "pontozott" (a név tartalmazza a "." pontot) A NetBIOS-nevek *nem támogatottak*.
 * Javasoljuk, hogy [engedélyezze a Active Directory Lomtárát](how-to-connect-sync-recycle-bin.md).
+
+### <a name="powershell-execution-policy"></a>PowerShell végrehajtási házirend
+A Azure Active Directory Connect aláírt PowerShell-parancsfájlokat futtat a telepítés részeként. Győződjön meg arról, hogy a PowerShell-végrehajtási házirend engedélyezi a parancsfájlok futtatását.
+
+A telepítés során a javasolt végrehajtási szabályzat a "RemoteSigned".
+
+A PowerShell végrehajtási házirendjének beállításával kapcsolatos további információkért lásd: [Set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect kiszolgáló
 A Azure AD Connect kiszolgáló kritikus identitási adatait tartalmaz. Fontos, hogy a kiszolgálóhoz való rendszergazdai hozzáférés megfelelő védelemmel legyen ellátott. Kövesse a [privilegizált hozzáférés biztonságossá](/windows-server/identity/securing-privileged-access/securing-privileged-access)tételével kapcsolatos útmutatást. 
@@ -91,7 +99,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
 * Ha az [expressz beállításokat](reference-connect-accounts-permissions.md#express-settings-installation) használja, vagy a verzióról a frissítésre van szüksége, vállalati rendszergazdai fiókkal kell rendelkeznie a helyszíni Active Directoryhoz.
 * Ha az egyéni beállítások telepítési útvonalát használja, több lehetőség is rendelkezésre áll. További információ: [egyéni telepítési beállítások](reference-connect-accounts-permissions.md#custom-installation-settings).
 
-### <a name="connectivity"></a>Kapcsolat
+### <a name="connectivity"></a>Kapcsolatok
 * A Azure AD Connect-kiszolgálónak az intraneten és az interneten egyaránt DNS-feloldásra van szüksége. A DNS-kiszolgálónak képesnek kell lennie a nevek feloldására a helyszíni Active Directory és az Azure AD-végpontokon.
 * Ha tűzfallal rendelkezik az intraneten, és meg kell nyitnia a portokat a Azure AD Connect-kiszolgálók és a tartományvezérlők között, további információért lásd: [Azure ad Connect portok](reference-connect-ports.md) .
 * Ha a proxy vagy a tűzfal korlátozza, hogy mely URL-címek érhetők el, meg kell nyitni az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) által dokumentált URL-címeket.

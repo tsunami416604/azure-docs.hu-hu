@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 264f0e59e2c43ca92fc5209b8613282a0b0fca37
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203772"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309801"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -31,6 +31,8 @@ Az életciklus-kezelési házirend a következőket teszi lehetővé:
 Vegyünk például egy olyan forgatókönyvet, amelyben az adatmennyiség az életciklus korai szakaszában, de csak két hét múlva alkalmanként válik elérhetővé. Az első hónapban a rendszer ritkán fér hozzá az adatkészlethez. Ebben az esetben a gyors tárolás a korai fázisokban a legjobb. A ritka elérésű tárolás a legmegfelelőbb az alkalmi hozzáféréshez. Az Archive Storage a legjobb lehetőség az adatvesztést követően a hónapban. Ha a tárolási rétegek mennyiségét az adatmennyiség tekintetében állítja be, az igényeinek leginkább megfelelő tárolási lehetőségeket is megtervezheti. Az áttérés eléréséhez az életciklus-kezelési házirend szabályai elérhetők az adatvesztéshez a hűvösebb rétegekbe.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+>[!NOTE]
+>Ha olyan adatokra van szüksége, amelyek olvashatók maradnak, például ha a StorSimple használja, ne állítson be olyan házirendet, amely a blobokat az archív szintre helyezi át.
 
 ## <a name="availability-and-pricing"></a>Rendelkezésre állás és díjszabás
 
@@ -326,7 +328,7 @@ Az életciklus-kezelés támogatja a Blobok, a korábbi blob-verziók és a blob
 
 A futtatási feltételek életkoron alapulnak. Az alapblobok az utolsó módosítás időpontját használják, a blob-verziók a verzió létrehozási idejét használják, a blob-Pillanatképek pedig a létrehozási időt használják a kor nyomon követéséhez.
 
-| Művelet futtatási feltétele               | Feltétel értéke                          | Leírás                                                                      |
+| Művelet futtatási feltétele               | Feltétel értéke                          | Description                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Egész számú érték, amely a kora napokat jelzi | Az alap blob-műveletek feltétele                                              |
 | daysAfterCreationGreaterThan       | Egész számú érték, amely a kora napokat jelzi | A blob-verzió és a blob-pillanatkép műveleteinek feltétele                         |

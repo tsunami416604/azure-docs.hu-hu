@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbfa780269f28e269fed51a25ec4255d18d8ab39
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570121"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277892"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Az Azure Kubernetes és a Azure Cosmos DB használata (előzetes verzió)
 
@@ -181,6 +181,6 @@ Az Azure Cosmos-fiók neve megegyezik a megadott DNS-előtaggal, amely a k8s-vel
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg [, hogyan dolgozhat az Azure Cosmos Database, tárolók és elemek](databases-containers-items.md) használatával
+* Ismerje meg [, hogyan dolgozhat az Azure Cosmos Database, tárolók és elemek](account-databases-containers-items.md) használatával
 * Útmutató a [kiépített átviteli sebességek optimalizálásához](optimize-cost-throughput.md)
 

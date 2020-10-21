@@ -1,18 +1,18 @@
 ---
 title: Az Azure IoT Hub beépített szabályzat-definíciói
 description: Az Azure IoT Hub beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 66b74fd8fe326666d3c34b59acba383fd4205e17
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: fae56b1f1c8f6439548f6acd51a553b873e20196
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151326"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316738"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Az Azure IoT Hub beépített definíciói Azure Policy
 

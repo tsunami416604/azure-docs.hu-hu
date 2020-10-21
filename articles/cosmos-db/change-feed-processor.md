@@ -6,15 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a802cc3d6178302445e0c31c52785d00207d0bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2da6fcb82b1ec14d6f57931709321871fa575d38
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998543"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277042"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben
 
@@ -68,9 +68,9 @@ A gazdagéppéldány normál életciklusa:
 
 A módosítási hírcsatorna processzora a felhasználói kódok hibáira is rugalmas. Ez azt jelenti, hogy ha a delegált implementációja kezeletlen kivételt tartalmaz (#4. lépés), akkor a rendszer leállítja a szál feldolgozását, és létrehoz egy új szálat. Az új szál azt vizsgálja, hogy a címbérleti tároló milyen legkésőbbi időpontot adott a partíciós kulcs értékeinek, és onnan indítsa újra a rendszert, és így gyakorlatilag ugyanazt a köteget küldi el a delegált állapotnak. Ez a viselkedés mindaddig folytatódni fog, amíg a delegált nem dolgozza fel megfelelően a módosításokat, és ez az oka, hogy a változási hírcsatorna processzorának "legalább egyszer" garanciája van, mert ha a delegált kód kivételt jelez, akkor a köteget újra próbálkozik.
 
-Ha meg szeretné akadályozni, hogy a Change feed processzora "ragadt" állapotba lépjen, és ne próbálkozzon ugyanazzal a módosítással, adja hozzá a meghatalmazott kódjában található logikát, hogy a rendszer kivétel esetén a kézbesítetlen levelek várólistáján jegyezze fel a dokumentumokat. Ez a kialakítás biztosítja, hogy nyomon követheti a feldolgozatlan módosításokat, miközben továbbra is képes tovább dolgozni a jövőbeli változásokat. Előfordulhat, hogy a kézbesítetlen levelek várólistája egyszerűen egy másik Cosmos-tároló. A pontos adattár nem számít, csupán azt, hogy a feldolgozatlan módosítások megmaradnak.
+Ha meg szeretné akadályozni, hogy a Change feed processzora "ragadt" állapotba lépjen, és ne próbálkozzon ugyanazzal a módosítással, adja hozzá a meghatalmazott kódjában található logikát, hogy a rendszer kivétel esetén a kézbesítetlen levelek várólistáján jegyezze fel a dokumentumokat. Ez a kialakítás biztosítja, hogy nyomon követheti a feldolgozatlan módosításokat, miközben továbbra is képes tovább dolgozni a jövőbeli változásokat. Lehet, hogy a kézbesítetlen levelek várólistája egy másik Cosmos-tároló. A pontos adattár nem számít, csupán azt, hogy a feldolgozatlan módosítások megmaradnak.
 
-Emellett a váltás a hírcsatorna- [kalkulátor](how-to-use-change-feed-estimator.md) használatával című cikk segítségével figyelheti a változási csatornához tartozó példányok állapotát, ahogy beolvasták a változási csatornát. A figyelésen kívül, ha a Change feed processzora "ragadt" állapotba kerül, és folyamatosan próbálkozik ugyanazzal a módosítással, akkor azt is megtudhatja, hogy a változási csatorna processzora a rendelkezésre álló erőforrások, például a processzor, a memória és a hálózati sávszélesség miatt marad-e hátra.
+Emellett a váltás a hírcsatorna- [kalkulátor](how-to-use-change-feed-estimator.md) használatával című cikk segítségével figyelheti a változási csatornához tartozó példányok állapotát, ahogy beolvasták a változási csatornát. Ezzel a becsléssel megtudhatja, hogy a változási csatorna processzora "ragadt" vagy lemaradt-e a rendelkezésre álló erőforrások, például a CPU, a memória és a hálózati sávszélesség miatt.
 
 ## <a name="deployment-unit"></a>Üzembe helyezési egység
 
@@ -94,7 +94,32 @@ Emellett a változási hírcsatorna processzora dinamikusan alkalmazkodik a tár
 
 ## <a name="change-feed-and-provisioned-throughput"></a>A hírcsatorna és a kiosztott átviteli sebesség módosítása
 
-A felszámított RUs díja, mivel a Cosmos-tárolókban lévő és kívüli adatáthelyezés mindig RUs-t használ. A bérleti tároló által felhasznált RUs díjait kell fizetnie.
+A figyelt tárolón a hírcsatorna olvasási műveleteinek módosítása az RUs-t fogja használni. 
+
+A címbérleti tároló műveletei a RUs-t használják. Minél nagyobb a példányok száma ugyanazzal a bérlet-tárolóval, annál nagyobb a potenciális RU-felhasználás. Ne felejtse el figyelni az RU-felhasználást a bérletek tárolón, ha úgy dönt, hogy méretezi és növeli a példányok számát.
+
+## <a name="starting-time"></a>Kezdés időpontja
+
+Alapértelmezés szerint, amikor a változási hírcsatorna processzora először indul el, inicializálja a bérletek tárolóját, és megkezdi a [feldolgozási életciklusát](#processing-life-cycle). A figyelt tárolóban történt minden olyan módosítást, amely a változási hírcsatorna processzorának első inicializálása előtt történt, a rendszer nem észleli.
+
+### <a name="reading-from-a-previous-date-and-time"></a>Olvasás egy korábbi dátumból és időpontból
+
+A módosítási hírcsatorna processzora inicializálható úgy, hogy egy **adott dátummal és**időponttal kezdődő módosításokat olvasson be, az a példányának átadásával `DateTime` a `WithStartTime` Builder bővítménnyel:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
+
+A módosítási hírcsatorna processzora az adott dátumra és időpontra lesz inicializálva, és megkezdi az azt követő módosítások olvasását.
+
+### <a name="reading-from-the-beginning"></a>Olvasás az elejétől
+
+Más forgatókönyvekben, például az adatáttelepítés során vagy egy tároló teljes előzményeinek elemzéséhez a **tároló élettartamának elejéről**kell olvasni a változási csatornát. Ehhez használhatja a `WithStartTime` Builder bővítményt, de a továbbítást `DateTime.MinValue.ToUniversalTime()` , amely a minimális érték UTC szerinti megjelenítését eredményezi, például `DateTime` :
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
+
+A módosítási hírcsatorna processzora inicializálva lesz, és megkezdi a módosítások olvasását a tároló élettartamának elejétől kezdve.
+
+> [!NOTE]
+> Ezek a testreszabási beállítások csak akkor működnek, ha a változási csatorna processzorának kiindulási pontját szeretné beállítani. Ha a bérletek tárolója első alkalommal lett inicializálva, a módosításnak nincs hatása.
 
 ## <a name="where-to-host-the-change-feed-processor"></a>A módosítási hírcsatorna processzorának üzemeltetése
 
@@ -105,7 +130,7 @@ A módosítási hírcsatorna processzora bármely olyan platformon üzemeltethet
 * A háttérben futó feladatok az [Azure Kubernetes szolgáltatásban](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service).
 * Egy [ASP.net által üzemeltetett szolgáltatás](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
 
-Míg a változási csatorna processzora rövid életű környezetekben futtatható, mivel a címbérleti tároló fenntartja az állapotot, a környezetek indítási és leállítási ciklusa késlelteti az értesítések fogadását (a processzor a környezet indításakor fellépő terhelés miatt).
+Míg a változási csatorna processzora rövid életű környezetekben futtatható, mivel a címbérleti tároló fenntartja az állapotot, a környezetek indítási ciklusa késleltetést ad az értesítések fogadásához (a processzor a környezet indításakor fellépő terhelés miatt).
 
 ## <a name="additional-resources"></a>További források
 

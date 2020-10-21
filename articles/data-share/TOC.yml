@@ -44,10 +44,6 @@
         - name: Megosztás az Azure Data Explorerből
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: Figyelés
-      href: how-to-monitor.md
-    - name: Hibaelhárítás
-      href: data-share-troubleshoot.md
     - name: Adathalmazok hozzáadása
       href: how-to-add-datasets.md
     - name: Adathalmaz-leképezések konfigurálása
@@ -58,10 +54,14 @@
       href: how-to-delete-invitation.md
     - name: Megosztási előfizetés visszavonása
       href: how-to-revoke-share-subscription.md
+    - name: Figyelés
+      href: how-to-monitor.md
     - name: Biztonság
       href: security.md
     - name: Vészhelyreállítás
       href: disaster-recovery.md
+    - name: Hibaelhárítás
+      href: data-share-troubleshoot.md
 - name: Referencia
   items:
     - name: .NET

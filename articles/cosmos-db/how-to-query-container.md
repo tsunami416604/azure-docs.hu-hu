@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261256"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276124"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos-tároló lekérdezése
 
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan lehet lekérdezni egy tárolót (gyűjtemény, g
 
 ## <a name="in-partition-query"></a>Partíción belüli lekérdezés
 
-Ha tárolóból kérdez le adatlekérdezést, akkor a Azure Cosmos DB automatikusan optimalizálja a lekérdezést. A lekérdezés a szűrőben megadott partíciós kulcs értékeinek megfelelő [fizikai partíciókhoz](partition-data.md#physical-partitions) irányítja a lekérdezést.
+Ha tárolóból kérdez le adatlekérdezést, akkor a Azure Cosmos DB automatikusan optimalizálja a lekérdezést. A lekérdezés a szűrőben megadott partíciós kulcs értékeinek megfelelő [fizikai partíciókhoz](partitioning-overview.md#physical-partitions) irányítja a lekérdezést.
 
 Vegyük például az alábbi lekérdezést egy Esélyegyenlőségi szűrővel `DeviceId` . Ha ezt a lekérdezést egy-on particionált tárolón futtatjuk `DeviceId` , akkor ez a lekérdezés egyetlen fizikai partícióra lesz szűrve.
 
@@ -61,7 +61,7 @@ A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállít�
 
 - **MaxBufferedItemCount**: kompromisszumot alakít ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha ez a beállítás nincs megadva, vagy az-1 értékre van állítva, az SDK kezeli a párhuzamos lekérdezés végrehajtása során pufferelt elemek számát.
 
-Mivel a Azure Cosmos DB a több partíciós lekérdezéseket is integrálással, a lekérdezési késés általában jól méretezhető, és a rendszer [fizikai partíciókat](partition-data.md#physical-partitions)ad hozzá. Az RU-díj azonban jelentősen megnő, mivel a fizikai partíciók száma növekszik.
+Mivel a Azure Cosmos DB a több partíciós lekérdezéseket is integrálással, a lekérdezési késés általában jól méretezhető, és a rendszer [fizikai partíciókat](partitioning-overview.md#physical-partitions)ad hozzá. Az RU-díj azonban jelentősen megnő, mivel a fizikai partíciók száma növekszik.
 
 Ha több partíciós lekérdezést futtat, a rendszer lényegében külön lekérdezést hajt végre az egyes fizikai partíciók esetében. Míg a több partíciós lekérdezések lekérdezései az indexet fogják használni, ha elérhetők, még nem annyira hatékonyak, mint a partíciós lekérdezésekben.
 
@@ -99,7 +99,7 @@ Próbálkozzon a több partíciós lekérdezések elkerülésével, ha a munkate
 - Több mint 30 000 RU-t tervez kiépíteni
 - 100 GB-nál több adat tárolását tervezi
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A particionálással kapcsolatos tudnivalókat az alábbi cikkekben találja Azure Cosmos DB:
 

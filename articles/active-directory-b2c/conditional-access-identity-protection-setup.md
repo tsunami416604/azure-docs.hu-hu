@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89271542"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309787"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Az Identity Protection és a feltételes hozzáférés beállítása Azure AD B2C
 
@@ -41,10 +41,12 @@ A következő kockázati észlelések jelenleg Azure AD B2C támogatottak:
 |Kockázat észlelésének típusa  |Leírás  |
 |---------|---------|
 | Szokatlan utazás     | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján.        |
-|Névtelen IP-cím     | Bejelentkezés névtelen IP-címről (például: Tor-böngésző, névtelen VPN-ek)        |
+|Névtelen IP-cím     | Jelentkezzen be egy névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek).        |
+|Kártevők társított IP-címe     | Jelentkezzen be egy kártevővel összekapcsolt IP-címről.         |
 |Szokatlan bejelentkezési tulajdonságok     | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára.        |
-|Kártevők társított IP-címe     | Bejelentkezés kártevővel összekapcsolt IP-címről         |
-|Azure AD-fenyegetések felderítése     | A Microsoft belső és külső veszélyforrások hírszerzési forrásai ismert támadási mintát azonosítottak        |
+|A rendszergazda által megerősített felhasználó sérült    | A rendszergazda azt jelezte, hogy a felhasználót feltörték.             |
+|Jelszó spray     | Jelentkezzen be a jelszó-szórásos támadáson keresztül.      |
+|Azure AD-fenyegetések felderítése     | A Microsoft belső és külső veszélyforrások hírszerzési forrásai ismert támadási mintát azonosítottak.        |
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>A Azure AD B2C bérlő kockázati eseményeinek megtekintése
 
@@ -143,6 +145,6 @@ Feltételes hozzáférési esemény eredményének áttekintése:
    - AppliedPolicies: az összes olyan feltételes hozzáférési szabályzat listája, amelyben teljesülnek a feltételek, és a szabályzatok be vannak kapcsolva.
    - ReportingPolicies: azoknak a feltételes hozzáférési házirendeknek a listája, amelyek a csak jelentés módra lettek beállítva, és a feltételek teljesültek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés hozzáadása egy felhasználói folyamathoz](conditional-access-user-flow.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: 6aa960837a3bfc7f8a04ca1f554fb10d635c2ea2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91349020"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275629"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rövid útmutató: a globális webalkalmazások Azure CLI-vel való létrehozásának első lépései
 
@@ -40,13 +40,13 @@ az extension add --name front-door
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
 Ebben a rövid útmutatóban két erőforráscsoport szükséges. Egy az *USA középső* régiójában, a második pedig az *USA déli középső*régiójában.
 
-Hozzon létre egy erőforráscsoportot az [az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)paranccsal:
+Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)paranccsal:
 
 ```azurecli-interactive
 az group create \
@@ -68,7 +68,7 @@ Ha még nem rendelkezik webalkalmazással, a következő parancsfájl használat
 
 A webalkalmazások létrehozása előtt két app Service-csomagra lesz szüksége, egyet az *USA középső* régiójában, a második pedig az *USA déli középső*régiójában.
 
-App Service-csomagok létrehozása az [az appservice Plan Create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true)paranccsal:
+App Service-csomagok létrehozása az [az appservice Plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true)paranccsal:
 
 ```azurecli-interactive
 az appservice plan create \
@@ -84,7 +84,7 @@ az appservice plan create \
 
 Az alábbi parancsok futtatásával egy webalkalmazás jön létre az előző lépésben az App Service-csomagokban. A webalkalmazások nevének globálisan egyedinek kell lennie.
 
-Webalkalmazás létrehozása az [az WebApp Create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true):
+Webalkalmazás létrehozása az [az WebApp Create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true):
 
 ```azurecli-interactive
 az webapp create \
@@ -104,7 +104,7 @@ Jegyezze fel az egyes webalkalmazások alapértelmezett állomásnevét, hogy me
 
 A következő lépésekkel hozhat létre alapszintű bejárati ajtót alapértelmezett terheléselosztási beállításokkal, állapot-mintavételi és útválasztási szabályokkal:
 
-Bejárati ajtó létrehozása az [az Network](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true)előtérben Create:
+Bejárati ajtó létrehozása az [az Network](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true)előtérben Create:
 
 ```azurecli-interactive
 az network front-door create \
@@ -134,7 +134,7 @@ Nyisson meg egy webböngészőt, és adja meg az állomásnév beszerzését a p
 
 Ha már nincs szüksége a bejárati ajtóval létrehozott erőforrásokra, törölje mindkét erőforráscsoportot. Az erőforráscsoport törlésekor a bejárati ajtót és az ahhoz kapcsolódó összes erőforrást is törli. 
 
-Az erőforráscsoport törléséhez használja az [az Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true):
+Az erőforráscsoport törléséhez használja az [az Group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true):
 
 ```azurecli-interactive
 az group delete \
@@ -144,7 +144,7 @@ az group delete \
 --name myRGFDSouthCentral
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 * Front Door

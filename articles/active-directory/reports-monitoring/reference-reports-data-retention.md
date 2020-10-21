@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5deb84cdc2dee61474c9f2bd1f93311d89f8918
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239546"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308880"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Mennyi ideig tart az Azure AD Store jelentéskészítési adatai?
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan használhatók az adatmegőrzési szabály
 | Azure AD-kiadás | Gyűjtemény kezdete |
 | :--              | :--   |
 | Prémium szintű Azure AD P1 <br /> Prémium szintű Azure AD P2 | Ha előfizetést regisztrál |
-| Azure AD Free| Amikor először nyitja meg a [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) panelt, vagy a [jelentéskészítő API-kat](https://aka.ms/aadreports) használja  |
+| Azure AD Free| Amikor először nyitja meg a [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) panelt, vagy a [jelentéskészítő API-kat](./overview-reports.md) használja  |
 
 ---
 

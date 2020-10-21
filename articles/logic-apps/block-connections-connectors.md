@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: bd6afa8b3776ed48d4b25a36b2902265fa0ab5c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269760"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310036"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Összekötők által létrehozott kapcsolatok blokkolása Azure Logic Apps
 
@@ -224,7 +224,7 @@ Az Azure Policy-definíciókkal kapcsolatos további információkért tekintse 
 
 * [Házirend szerkezetének meghatározása](../governance/policy/concepts/definition-structure.md)
 * [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
-* [Azure Policy beépített szabályzat-definíciók a Azure Logic Apps](../logic-apps/policy-samples.md)
+* [Azure Policy beépített szabályzat-definíciók a Azure Logic Apps](./policy-reference.md)
 
 <a name="create-policy-connector-usage"></a>
 
@@ -311,7 +311,7 @@ Az Azure Policy-definíciókkal kapcsolatos további információkért tekintse 
 
 * [Házirend szerkezetének meghatározása](../governance/policy/concepts/definition-structure.md)
 * [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
-* [Azure Policy beépített szabályzat-definíciók a Azure Logic Apps](../logic-apps/policy-samples.md)
+* [Azure Policy beépített szabályzat-definíciók a Azure Logic Apps](./policy-reference.md)
 
 <a name="create-policy-assignment"></a>
 
@@ -363,7 +363,7 @@ A szabályzat kipróbálásához hozzon létre egy kapcsolatokat a Logic app Des
 
 Az üzenet tartalmazza a következő információkat:
 
-| Leírás | Tartalom |
+| Description | Tartalom |
 |-------------|---------|
 | A hiba oka | `"Resource 'instagram' was disallowed by policy."` |
 | Hozzárendelés neve | `"Block Instagram connections"` |

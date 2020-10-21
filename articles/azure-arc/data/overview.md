@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 47fef490c5ece577823a14e3fa4c415f0f613ccb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947212"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316970"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Mik azok az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)?
 
@@ -22,7 +22,7 @@ Az Azure arc lehetővé teszi az Azure-beli adatszolgáltatások helyszíni, per
 
 Jelenleg a következő Azure arc-kompatibilis adatszolgáltatások érhetők el előzetes verzióban:
 
-- SQL Managed Instance
+- Felügyelt SQL-példány
 - PostgreSQL nagy kapacitású
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -41,13 +41,13 @@ Az Azure arc más Felhőbeli előnyöket is biztosít, például a gyors üzembe
 
 ## <a name="unified-management"></a>Egységes felügyelet
 
-A jól ismert eszközök, például a Azure Portal, a Azure Data Studio és az Azure-beli adatcli segítségével az Azure arc használatával üzembe helyezett adategységek egységes nézete is elérhető. A környezetében és az Azure-ban nem csupán számos különböző, a környezetben és az Azure-ban található, valamint a Kubernetes API-kkal kapcsolatos napló-és telemetria lehet megtekinteni és elemezni a mögöttes infrastruktúra kapacitásának és állapotának elemzéséhez. A honosított log Analytics és a teljesítmény monitorozása mellett mostantól kihasználhatja a Azure Monitort a teljes hagyatékon keresztüli átfogó operatív elemzésekhez.
+A jól ismert eszközök, például a Azure Portal, a Azure Data Studio és a segítségével az [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure arc használatával üzembe helyezett adategységek egyesített nézetét is megtekintheti. A környezetében és az Azure-ban nem csupán számos különböző, a környezetben és az Azure-ban található, valamint a Kubernetes API-kkal kapcsolatos napló-és telemetria lehet megtekinteni és elemezni a mögöttes infrastruktúra kapacitásának és állapotának elemzéséhez. A honosított log Analytics és a teljesítmény monitorozása mellett mostantól kihasználhatja a Azure Monitort a teljes hagyatékon keresztüli átfogó operatív elemzésekhez.
 
 ## <a name="disconnected-scenario-support"></a>Leválasztott forgatókönyvek támogatása
 
 A szolgáltatások számos szolgáltatása, például az önkiszolgáló üzembe helyezés, az automatizált biztonsági mentések/visszaállítás és a figyelés helyileg is futtatható az infrastruktúrában az Azure-hoz való közvetlen kapcsolódással vagy anélkül. A közvetlenül az Azure-hoz való csatlakozás további lehetőségeket biztosít a más Azure-szolgáltatásokkal való integrációhoz, például a Azure Monitorhoz, és lehetővé teszi, hogy a világ bármely pontjáról a Azure Portal és Azure Resource Manager API-kat használja az Azure arc-kompatibilis adatszolgáltatások kezeléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > **Csak szeretné kipróbálni a dolgokat?**  
 > Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.

@@ -402,6 +402,8 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: További források
   items:
+    - name: Támogatási lehetőségek
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - name: Kódminták
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: Régiónkénti rendelkezésre állás
@@ -425,10 +427,6 @@
     - name: Virtuális hálózatok konfigurálása
       maintainContext: true
       href: ../cognitive-services-virtual-networks.md
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/LUIS'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
     - name: Keresés
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog

@@ -1,5 +1,5 @@
 ---
-title: Azure-beli alárendelt DNS-zónák létrehozása
+title: 'Oktatóanyag: Azure-beli alárendelt DNS-zónák létrehozása'
 titleSuffix: Azure DNS
 description: Útmutató a gyermek DNS-zónák létrehozásához Azure Portalban.
 author: jonbeck
@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c763f761d77ac05d9f6b45e5656436faa5697e88
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89087904"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310070"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Oktatóanyag: új gyermek DNS-zóna létrehozása
 
@@ -105,7 +105,7 @@ Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, távol
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure DNS Private Zones forgatókönyvek](private-dns-scenarios.md)
