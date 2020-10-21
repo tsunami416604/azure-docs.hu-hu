@@ -1,19 +1,19 @@
 ---
 title: Privát végpont létrehozása biztonságos kapcsolatok létrehozásához
 titleSuffix: Azure Cognitive Search
-description: Magánhálózati végpont beállítása egy virtuális hálózatban az Azure Cognitive Search szolgáltatással való biztonságos kapcsolódáshoz
+description: Hozzon létre egy magánhálózati végpontot egy virtuális hálózaton egy Azure Cognitive Search szolgáltatás biztonságos kapcsolataihoz.
 manager: nitinme
 author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: bbbc79a129ec3140ea6d286cbdce0165e2f6ae7b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935755"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280401"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Hozzon létre egy privát végpontot biztonságos kapcsolódáshoz az Azure Cognitive Search
 
@@ -46,7 +46,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | ------- | ----- |
     | Előfizetés | Az előfizetés kiválasztása|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra** . |
-    | Name (Név) | *MyVirtualNetwork* megadása |
+    | Name | *MyVirtualNetwork* megadása |
     | Régió | Válassza ki a kívánt régiót |
     |||
 
@@ -96,7 +96,7 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Privát DNS-zóna  | Hagyja meg az alapértelmezett * * (új) privatelink.search.windows.net * * értéket. |
     |||
 
-1. Kattintson az **OK** gombra. 
+1. Válassza az **OK** lehetőséget. 
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
 
@@ -152,10 +152,16 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Válassza ki a bejövő portokat | Válassza a **http** és az **RDP**lehetőséget.|
     ||
 
+   > [!NOTE]
+   > Az IPv4-címek [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) formátumban is megadhatók. Ne felejtse el elkerülni a magánhálózati hálózat számára fenntartott IP-címtartományt az [RFC 1918](https://tools.ietf.org/html/rfc1918)-ben leírtak szerint:
+   >
+   > - `10.0.0.0 - 10.255.255.255  (10/8 prefix)`
+   > - `172.16.0.0 - 172.31.255.255  (172.16/12 prefix)`
+   > - `192.168.0.0 - 192.168.255.255 (192.168/16 prefix)`
+
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját.
 
 1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget. 
-
 
 ## <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
@@ -181,7 +187,6 @@ Töltse le, majd kapcsolódjon a virtuális gép *myVm* a következőképpen:
 1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás** lehetőséget.
 
 1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.  
-
 
 ## <a name="test-connections"></a>Kapcsolatok tesztelése
 

@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 0513b12c7ec9174c9a458400cd5682904d9ffb3b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938423"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313148"
 ---
 # <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Oktatóanyag: az Azure DB for PostgreSQL átmigrálása – egyetlen kiszolgáló az Azure DB for PostgreSQL-hez – egyetlen kiszolgáló online a DMS használatával a Azure Portal
 
 A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat egy [Azure Database for PostgreSQL-egykiszolgálós](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) példányról az Azure Database for PostgreSQL-egykiszolgálós példány vagy a Azure Database for PostgreSQL rugalmas kiszolgáló különböző verziójára minimális állásidővel. Ebben az oktatóanyagban áttelepíti a **DVD-kölcsönzési** minta adatbázisát egy Azure Database for PostgreSQL v10-ből Azure Database for PostgreSQL egyetlen kiszolgálóra a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
 > * Telepítse át a minta sémát a pg_dump segédprogram használatával.
@@ -229,7 +229,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
     > [!NOTE]
     > A **Azure Database for PostgreSQL** -portálon megtalálhatja a "kiszolgálónév", a "kiszolgáló portja", az "adatbázis neve" stb. részleteit.
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 
@@ -258,7 +258,18 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 * Válassza a **Migrálás futtatása** lehetőséget.
 
-    Megjelenik az áttelepítési tevékenység ablak, és a tevékenység **állapota** úgy frissül, hogy a **biztonsági mentés folyamatban van**.
+Megjelenik az áttelepítési tevékenység ablak, és a tevékenység **állapota** úgy frissül, hogy a **biztonsági mentés folyamatban van**. A következő hibaüzenet jelenhet meg, amikor az Azure DB for PostgreSQL 9,5 vagy 9,6 verzióról frissít:
+
+**Egy forgatókönyv ismeretlen hibát jelzett. 28000: nincs pg_hba. conf bejegyzés a replikációs kapcsolatban a (z) "40.121.141.121" gazdagépről, "SR" felhasználótól**
+
+Ennek az az oka, hogy a PostgreSQL nem rendelkezik megfelelő jogosultsággal a szükséges logikai replikációs összetevők létrehozásához. A szükséges jogosultságok engedélyezéséhez a következőket teheti:
+
+1. Nyissa meg a "kapcsolatbiztonsági" beállításokat a PostgreSQL-kiszolgálóhoz tartozó Azure-ADATBÁZIShoz, amelyet át szeretne telepíteni/frissíteni kíván.
+2. Adjon hozzá egy "_replrule" végződésű új tűzfalszabály nevét, és adja hozzá az IP-címet a hibaüzenetből a kezdő IP-cím és a záró IP-mezőhöz. A fenti példában szereplő hiba esetén –
+> Tűzfalszabály neve = sr_replrule; Start IP = 40.121.141.121; Záró IP = 40.121.141.121
+
+3. Kattintson a Mentés gombra, és hagyja, hogy a módosítás befejeződjön. 
+4. Próbálja megismételni a DMS-tevékenységet. 
 
 ## <a name="monitor-the-migration"></a>A migrálás monitorozása
 

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2007d8f0c558d35c0507b6e12bce6d6777fad52
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273007"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310901"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure arc-kompatibilis PostgreSQL-nagy kapacitású létrehozása Azure Data Studio használatával
 
@@ -62,7 +62,7 @@ Most már megvalósíthatja a következő lépést.
 1. A kapcsolatok lapon kattintson a bal felső sarokban található három pontra, és válassza az "új központi telepítés" lehetőséget.
 1. A központi telepítési lehetőségek közül válassza a **PostgreSQL nagy kapacitású Server Group-Azure arc** lehetőséget.
     >[!NOTE]
-    > Ha még nincs telepítve, a rendszer kérni fogja, hogy telepítse a CLI-t `azdata` .
+    > Előfordulhat, hogy a rendszer arra kéri, hogy telepítse az [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] itt, ha jelenleg nincs telepítve.
 1. Fogadja el az adatvédelmi és a licencfeltételeket, majd kattintson a lenti **kijelölés** elemre.
 1. A PostgreSQL nagy kapacitású-kiszolgálócsoport üzembe helyezése – Azure arc panelen adja meg a következő adatokat:
    - Adja meg a kiszolgálócsoport nevét

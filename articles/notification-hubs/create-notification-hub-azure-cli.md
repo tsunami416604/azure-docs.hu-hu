@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e7e140e26da79475bea032c8190ee64740370d04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875027"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312867"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rövid útmutató: Azure Notification hub létrehozása az Azure CLI használatával
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az Azure Notification Hubsokat, például az összes Azure-erőforrást, egy erőforráscsoporthoz kell telepíteni.  Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.  Tekintse meg, [Mi az Azure Resource Manager](/azure/azure-resource-manager/management/overview) az erőforráscsoportok megismeréséhez.
+Az Azure Notification Hubsokat, például az összes Azure-erőforrást, egy erőforráscsoporthoz kell telepíteni.  Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.  Tekintse meg, [Mi az Azure Resource Manager](../azure-resource-manager/management/overview.md) az erőforráscsoportok megismeréséhez.
 
 Ebben a rövid útmutatóban hozzon létre egy **spnhubrg** nevű erőforráscsoportot a **eastus** helyen a következő az [Group Create](/cli/azure/group#az-group-create) paranccsal.
 

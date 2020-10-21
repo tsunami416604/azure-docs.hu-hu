@@ -2,18 +2,18 @@
 title: Azure Batch szolgáltatások hitelesítése Azure Active Directory
 description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történő hitelesítéshez. Megtudhatja, hogyan végezheti el a hitelesítést két módszer egyikével.
 ms.topic: how-to
-ms.date: 01/28/2020
+ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8d84086e3fa59c1e04df5b2717738da44f5c14b2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cb8306da4022ea1819e2da32a2f513c83bed309f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144827"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309371"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
-Azure Batch támogatja a [Azure Active Directory][aad_about] (Azure ad) hitelesítését. Az Azure AD a Microsoft több-bérlős felhőalapú címtár-és Identitáskezelés-kezelő szolgáltatása. Az Azure maga az Azure AD-t használja az ügyfelek, a szolgáltatás-rendszergazdák és a szervezeti felhasználók hitelesítéséhez.
+Azure Batch támogatja a [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) hitelesítését. Az Azure AD a Microsoft több-bérlős felhőalapú címtár-és Identitáskezelés-kezelő szolgáltatása. Az Azure maga az Azure AD-t használja az ügyfelek, a szolgáltatás-rendszergazdák és a szervezeti felhasználók hitelesítéséhez.
 
 Az Azure AD-hitelesítés Azure Batch használatával történő használatakor kétféleképpen végezheti el a hitelesítést:
 
@@ -40,10 +40,8 @@ Az Azure AD-vel való hitelesítéshez ezt a végpontot kell használni a bérl�
 > A bérlő-specifikus végpontra akkor van szükség, ha egy egyszerű szolgáltatásnév használatával végzi a hitelesítést.
 >
 > A bérlő-specifikus végpont nem kötelező, ha az integrált hitelesítés használatával végzi a hitelesítést, de ajánlott. Azonban használhatja az Azure AD Common Endpoint (általános) végpontját is. A Common Endpoint (általános hitelesítő adatok összegyűjtése) felületet biztosít, ha nincs megadva egy adott bérlő. Az általános végpont `https://login.microsoftonline.com/common` .
->
->
 
-További információ az Azure AD-végpontokról: [hitelesítési forgatókönyvek az Azure ad-hez][aad_auth_scenarios].
+Az Azure AD-végpontokkal kapcsolatos további információkért lásd: [hitelesítés és engedélyezés](). /active-directory/develop/authentication-vs-authorization.md).
 
 ### <a name="batch-resource-endpoint"></a>Batch erőforrás-végpont
 
@@ -53,17 +51,15 @@ A **Azure batch erőforrás-végpont** használatával szerezzen be egy jogkivon
 
 ## <a name="register-your-application-with-a-tenant"></a>Alkalmazás regisztrálása Bérlővel
 
-Az Azure AD hitelesítéshez való használatának első lépése az alkalmazás regisztrálása egy Azure AD-bérlőben. Az alkalmazás regisztrálása lehetővé teszi, hogy meghívja az Azure [Active Directory-hitelesítési tár][aad_adal] (ADAL) a kódból. A ADAL API-t biztosít az Azure AD-vel való hitelesítéshez az alkalmazásból. Az alkalmazás regisztrálása kötelező, függetlenül attól, hogy integrált hitelesítést vagy egyszerű szolgáltatásnevet kíván használni.
+Az Azure AD hitelesítéshez való használatának első lépése az alkalmazás regisztrálása egy Azure AD-bérlőben. Az alkalmazás regisztrálása lehetővé teszi, hogy meghívja az Azure [Active Directory-hitelesítési tár](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) a kódból. A ADAL API-t biztosít az Azure AD-vel való hitelesítéshez az alkalmazásból. Az alkalmazás regisztrálása kötelező, függetlenül attól, hogy integrált hitelesítést vagy egyszerű szolgáltatásnevet kíván használni.
 
 Az alkalmazás regisztrálásakor az Azure AD-vel kapcsolatos információkat biztosít az alkalmazásról. Az Azure AD ezt követően egy alkalmazás-azonosítót (más néven *ügyfél-azonosítót*) biztosít az alkalmazás Azure ad-hez való hozzárendeléséhez futásidőben. Az alkalmazás-AZONOSÍTÓval kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
-A Batch-alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) az Azure Active Directory használatával történő [integrálását][aad_integrate]ismertető szakasz lépéseit. Ha natív alkalmazásként regisztrálja az alkalmazást, megadhat bármely érvényes URI-t az **átirányítási URI**-hoz. Nem kell valódi végpontnak lennie.
+A Batch-alkalmazás regisztrálásához kövesse az alkalmazás **regisztrálása** című rövid útmutatóban ismertetett lépéseket [: alkalmazás regisztrálása a Microsoft Identity platformon](../active-directory/develop/quickstart-register-app.md). Ha natív alkalmazásként regisztrálja az alkalmazást, megadhat bármely érvényes URI-t az **átirányítási URI**-hoz. Nem kell valódi végpontnak lennie.
 
 Az alkalmazás regisztrálását követően megjelenik az alkalmazás azonosítója:
 
-![Batch-alkalmazás regisztrálása az Azure AD-ben](./media/batch-aad-auth/app-registration-data-plane.png)
-
-Az alkalmazások Azure AD-vel való regisztrálásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](../active-directory/develop/authentication-vs-authorization.md).
+![A Azure Portalban megjelenő alkalmazás-azonosító képernyőképe.](./media/batch-aad-auth/app-registration-data-plane.png)
 
 ## <a name="get-the-tenant-id-for-your-active-directory"></a>A Active Directory bérlői AZONOSÍTÓjának beolvasása
 
@@ -73,7 +69,7 @@ A bérlő azonosítója azonosítja azt az Azure AD-bérlőt, amely hitelesíté
 1. Válassza ki a **Tulajdonságok** elemet.
 1. Másolja a **címtár-azonosítóhoz**megadott GUID értéket. Ezt az értéket a bérlői AZONOSÍTÓnak is nevezik.
 
-![A könyvtár AZONOSÍTÓjának másolása](./media/batch-aad-auth/aad-directory-id.png)
+![Képernyőkép a Azure Portal található címtár-AZONOSÍTÓról.](./media/batch-aad-auth/aad-directory-id.png)
 
 ## <a name="use-integrated-authentication"></a>Integrált hitelesítés használata
 
@@ -81,11 +77,8 @@ Az integrált hitelesítéssel történő hitelesítéshez meg kell adnia az alk
 
 Miután regisztrálta az alkalmazást, kövesse az alábbi lépéseket a Azure Portal, hogy hozzáférést biztosítson a Batch szolgáltatáshoz:
 
-1. A Azure Portal bal oldali navigációs paneljén válassza a **minden szolgáltatás**lehetőséget. Válassza az **alkalmazás-regisztrációk**lehetőséget.
-1. Keresse meg az alkalmazás nevét az alkalmazások regisztrációinak listájában:
-
-    ![Az alkalmazás nevének megkeresése](./media/batch-aad-auth/search-app-registration.png)
-
+1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget, majd válassza az **alkalmazás-regisztrációk**lehetőséget.
+1. Keresse meg az alkalmazás nevét az alkalmazások regisztrációinak listájában.
 1. Válassza ki az alkalmazást, és válassza az **API-engedélyek**lehetőséget.
 1. Az **API-engedélyek** szakaszban válassza az **engedély hozzáadása**elemet.
 1. Az **API kiválasztása lapon**keressen rá a Batch API kifejezésre. Keressen rá az egyes sztringekre, addig amíg meg nem találja az API-t:
@@ -95,8 +88,6 @@ Miután regisztrálta az alkalmazást, kövesse az alábbi lépéseket a Azure P
 1. Az **engedélyek kiválasztása**területen jelölje be a **hozzáférés Azure batch szolgáltatás** melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása**elemet.
 
 Az **API-engedélyek** szakasz azt mutatja, hogy az Azure ad-alkalmazás a Microsoft Graph és a Batch szolgáltatás API-ját is elérheti. Az Azure AD-vel való első regisztráláskor az engedélyek Microsoft Graph automatikusan megadhatók.
-
-![API-engedélyek megadása](./media/batch-aad-auth/required-permissions-data-plane.png)
 
 ## <a name="use-a-service-principal"></a>Egyszerű szolgáltatásnév használata
 
@@ -111,13 +102,11 @@ Ha az alkalmazás egy egyszerű szolgáltatással végzi a hitelesítést, az az
 
 Hajtsa végre a következő lépéseket az Azure Portalon:
 
-1. A Azure Portal bal oldali navigációs paneljén válassza a **minden szolgáltatás**lehetőséget. Válassza az **alkalmazás-regisztrációk**lehetőséget.
+1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Válassza az **alkalmazás-regisztrációk**lehetőséget.
 1. Válassza ki az alkalmazást az alkalmazás-regisztrációk listájából.
 1. Válassza ki az alkalmazást, majd válassza a **tanúsítványok & Secrets**elemet. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka**elemet.
-1. Titkos kód létrehozásához adja meg a titok leírását. Ezután válasszon ki egy vagy két év titkos kulcsának lejáratát.
+1. Titkos kód létrehozásához adja meg a titok leírását. Ezután válasszon ki egy évet, két évet vagy nincs lejáratot a titkos kulcshoz.
 1. A titok létrehozásához és megjelenítéséhez válassza a **Hozzáadás** lehetőséget. Másolja a titkos értéket egy biztonságos helyre, mivel az oldal elhagyása után többé nem fog tudni hozzáférni.
-
-    ![Titkos kulcs létrehozása](./media/batch-aad-auth/secret-key.png)
 
 ### <a name="assign-azure-rbac-to-your-application"></a>Azure-RBAC kiosztása az alkalmazáshoz
 
@@ -157,6 +146,9 @@ A következő Azure RBAC-műveletekhez egyéni szerepkörrel adhat engedélyeket
 
 Az egyéni szerepkörök az Azure AD által hitelesített felhasználókra vonatkoznak, nem a Batch-fiók hitelesítő adataival (megosztott kulcs). Vegye figyelembe, hogy a Batch-fiók hitelesítő adatai teljes hozzáférést biztosítanak a Batch-fiókhoz. Azt is vegye figyelembe, hogy az autopoolt használó feladatok készlet szintű engedélyeket igényelnek.
 
+> [!NOTE]
+> Bizonyos szerepkör-hozzárendeléseket meg kell adni a művelet mezőben, míg másokat meg kell adni a DataAction mezőben. További információ: [Azure erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftbatch).
+
 Íme egy példa egy egyéni szerepkör-definícióra:
 
 ```json
@@ -193,7 +185,7 @@ Az egyéni szerepkörök az Azure AD által hitelesített felhasználókra vonat
 }
 ```
 
-Az egyéni szerepkörök létrehozásával kapcsolatos általános információkért lásd: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md).
+Az egyéni szerepkörök létrehozásával kapcsolatos további információkért lásd: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md).
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>A Azure Active Directory bérlői AZONOSÍTÓjának beolvasása
 
@@ -212,10 +204,7 @@ Az ebben a szakaszban szereplő példák azt mutatják be, hogyan lehet hiteles�
 > [!NOTE]
 > Egy Azure AD-hitelesítési jogkivonat egy óra elteltével lejár. Ha hosszú élettartamú **BatchClient** objektumot használ, javasoljuk, hogy minden kérelem esetében kérjen le egy tokent a ADAL-ből, hogy mindig érvényes jogkivonat legyen.
 >
->
-> Ennek a .NET-ben való eléréséhez írjon egy metódust, amely lekéri a jogkivonatot az Azure AD-ből, és átadja ezt a metódust egy **BatchTokenCredentials** objektumnak meghatalmazottként. A delegált metódust minden, a Batch szolgáltatásnak küldött kérelemre meghívjuk, hogy érvényes jogkivonat legyen megadva. Alapértelmezés szerint a ADAL gyorsítótárazza a tokeneket, így a rendszer csak akkor kér le új jogkivonatot az Azure AD-ből, ha szükséges. Az Azure AD-jogkivonatokkal kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez][aad_auth_scenarios].
->
->
+> Ennek a .NET-ben való eléréséhez írjon egy metódust, amely lekéri a jogkivonatot az Azure AD-ből, és átadja ezt a metódust egy **BatchTokenCredentials** objektumnak meghatalmazottként. A delegált metódust minden, a Batch szolgáltatásnak küldött kérelemre meghívjuk, hogy érvényes jogkivonat legyen megadva. Alapértelmezés szerint a ADAL gyorsítótárazza a tokeneket, így a rendszer csak akkor kér le új jogkivonatot az Azure AD-ből, ha szükséges. További információ az Azure AD-tokenekről: [biztonsági jogkivonatok](../active-directory/develop/security-tokens.md).
 
 ### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Példa a kód használatára: az Azure AD integrált hitelesítésének használata a Batch .NET-tel
 
@@ -419,16 +408,8 @@ A **BatchServiceClient** objektum megnyitásához használja az egyszerű szolg�
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](../active-directory/index.yml). A ADAL használatát bemutató részletes példák az [Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=active-directory) Library-ben érhetők el.
-
-- Az egyszerű szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg [az alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md). Ha a Azure Portal használatával szeretne szolgáltatásnevet létrehozni, tekintse meg az [erőforrásokhoz hozzáférő Active Directory alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával](../active-directory/develop/howto-create-service-principal-portal.md)című témakört. A PowerShell vagy az Azure CLI használatával is létrehozhat egy egyszerű szolgáltatást.
-
-- A Batch-felügyeleti alkalmazások Azure AD-vel történő hitelesítéséhez tekintse meg [a Batch-felügyeleti megoldások Active Directory](batch-aad-auth-management.md)használatával történő hitelesítését ismertető témakört.
-
+- Tekintse át a [Azure Active Directory dokumentációját](../active-directory/index.yml). A ADAL használatát bemutató részletes példák az [Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=active-directory) Library-ben érhetők el.
+- Ismerje meg a [Azure Active Directory alkalmazás-és szolgáltatásnév-objektumait](../active-directory/develop/app-objects-and-service-principals.md) , valamint azt, hogy [miként hozható létre erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatás](../active-directory/develop/howto-create-service-principal-portal.md).
+- Tudnivalók a [Batch-felügyeleti megoldások Active Directory használatával történő hitelesítéséről](batch-aad-auth-management.md).
 - Az Azure AD-jogkivonattal hitelesített batch-ügyfelek létrehozásával kapcsolatban lásd: [Azure batch egyéni rendszerkép üzembe helyezése Python-parancsfájlos](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) minta használatával.
 
-[aad_about]: ../active-directory/fundamentals/active-directory-whatis.md "Mi az Azure Active Directory?"
-[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/develop/authentication-vs-authorization.md "Hitelesítési forgatókönyvek az Azure AD-hez"
-[aad_integrate]: ../active-directory/develop/quickstart-register-app.md "Alkalmazások integrálása a Azure Active Directory"
-[azure_portal]: https://portal.azure.com

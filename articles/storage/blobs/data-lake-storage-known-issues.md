@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fee5427981cbd2c04a5ee88500a1aee77e2e5ffd
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876124"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282205"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -92,11 +92,15 @@ A REST API-kat használó harmadik féltől származó alkalmazások továbbra i
 
 Ha a tárolóhoz [Névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) van megadva, akkor az ACL-ek nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
 
-## <a name="premium-performance-blockblobstorage-storage-accounts"></a>Prémium teljesítményű BlockBlobStorage Storage-fiókok
+### <a name="diagnostic-logs"></a>Diagnosztikai naplók
+
+A megőrzési napok beállítása még nem támogatott, de a naplókat manuálisan is törölheti bármilyen támogatott eszközzel, például a Azure Storage Explorer, a REST vagy az SDK használatával.
+
+## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Prémium szintű BlockBlobStorage Storage-fiókokra vonatkozó problémák
 
 ### <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-A diagnosztikai naplók még nem engedélyezhetők a Azure Portal használatával. A PowerShell használatával is engedélyezheti őket. Példa:
+A diagnosztikai naplók még nem engedélyezhetők a Azure Portal használatával. A PowerShell használatával is engedélyezheti őket. Például:
 
 ```powershell
 #To login
@@ -108,8 +112,6 @@ Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumG
 #Enable logging
 Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
 ```
-
-A megőrzési napok beállítása még nem támogatott, de a naplókat manuálisan is törölheti bármilyen támogatott eszközzel, például a Azure Storage Explorer, a REST vagy az SDK használatával.
 
 ### <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 

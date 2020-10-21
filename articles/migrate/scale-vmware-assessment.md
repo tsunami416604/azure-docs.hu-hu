@@ -3,12 +3,12 @@ title: Nagy számú VMware virtuális gép értékelése az Azure-ba való Migr�
 description: Ismerteti, hogyan lehet kiértékelni az Azure-ba való áttelepítéshez szükséges nagy számú VMware virtuális gépet az Azure Migrate szolgáltatás használatával. e
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171906"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314119"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Nagy számú VMware virtuális gép értékelése az Azure-ba való áttelepítéshez
 
@@ -26,7 +26,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 
 > [!NOTE]
-> Ha szeretné kipróbálni egy próba-koncepciót néhány virtuális gép értékeléséhez, mielőtt a méretezést kivizsgáljuk, kövesse az [oktatóanyag-sorozatot](tutorial-prepare-vmware.md)
+> Ha szeretné kipróbálni egy próba-koncepciót néhány virtuális gép értékeléséhez, mielőtt a méretezést kivizsgáljuk, kövesse az [oktatóanyag-sorozatot](./tutorial-discover-vmware.md)
 
 ## <a name="plan-for-assessment"></a>Az értékelés megtervezése
 
@@ -78,7 +78,7 @@ Az Azure és a VMware előkészítése a kiszolgálók értékeléséhez.
 2. Az Azure-fiók engedélyeinek beállítása a Azure Migrate való interakcióhoz.
 3. A VMware előkészítése az értékeléshez.
 
-A beállítások konfigurálásához kövesse az [oktatóanyag](tutorial-prepare-vmware.md) utasításait.
+A beállítások konfigurálásához kövesse az [oktatóanyag](./tutorial-discover-vmware.md) utasításait.
 
 
 ## <a name="create-a-project"></a>Projekt létrehozása
@@ -96,10 +96,10 @@ A tervezési követelményekkel összhangban tegye a következőket:
 1. Tekintse át az áttelepítési tervezés előkészítésének értékelését.
 
 
-A beállítások konfigurálásához kövesse az [oktatóanyag](tutorial-assess-vmware.md) utasításait.
+A beállítások konfigurálásához kövesse az [oktatóanyag](./tutorial-assess-vmware-azure-vm.md) utasításait.
     
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben:
  

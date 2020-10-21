@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: joflore
-ms.openlocfilehash: 5d89f1a3d6028afb3450e0112a6081c9c706775b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962462"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275867"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>SUSE Linux Enterprise rendszerű virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -165,7 +165,7 @@ A felügyelt tartomány a **winbind** és a YaST *Windows-tartomány tagsági* m
 
 1. Ha módosítani szeretné a Samba-felhasználók és-csoportok UID-és GID-tartományait, válassza a *szakértői beállítások*lehetőséget.
 
-1. Konfigurálja az NTP-időszinkronizálást a felügyelt tartományhoz az *NTP-konfiguráció*kiválasztásával. Adja meg a felügyelt tartomány IP-címeit. Ezek az IP-címek a felügyelt tartomány Azure Portal *Tulajdonságok* ablakában jelennek meg, például a *10.0.2.4* és a *végpontjául szolgáló*.
+1. Konfigurálja a hálózati idő protokoll (NTP) időszinkronizálását a felügyelt tartományhoz az *NTP-konfiguráció*kiválasztásával. Adja meg a felügyelt tartomány IP-címeit. Ezek az IP-címek a felügyelt tartomány Azure Portal *Tulajdonságok* ablakában jelennek meg, például a *10.0.2.4* és a *végpontjául szolgáló*.
 
 1. Kattintson az **OK gombra** , és erősítse meg a tartományhoz való csatlakozást, ha a rendszer erre kéri.
 
@@ -174,6 +174,127 @@ A felügyelt tartomány a **winbind** és a YaST *Windows-tartomány tagsági* m
     ![Példa a hitelesítési párbeszédpanelre, amikor egy SLE virtuális gépet csatlakoztat a felügyelt tartományhoz](./media/join-suse-linux-vm/domain-join-authentication-prompt.png)
 
 A felügyelt tartományhoz való csatlakozást követően bejelentkezhet a munkaállomásról az asztal vagy a konzol Display Manager használatával.
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>Virtuális gép csatlakoztatása a felügyelt tartományhoz a winbind használatával a YaST parancssori felületéről
+
+A felügyelt tartomány csatlakoztatása a **winbind** és a *YaST parancssori felület*használatával:
+
+* Csatlakozás a tartományhoz:
+
+  ```console
+  sudo yast samba-client joindomain domain=aaddscontoso.com user=<admin> password=<admin password> machine=<(optional) machine account>
+  ```
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>Virtuális gép csatlakoztatása a felügyelt tartományhoz a winbind használatával a terminálról
+
+A felügyelt tartomány csatlakoztatása a **winbind** és a * `samba net` parancs*használatával:
+
+1. A Kerberos-ügyfél és a Samba-winbind telepítése:
+
+   ```console
+   sudo zypper in krb5-client samba-winbind
+   ```
+
+2. A konfigurációs fájlok szerkesztése:
+
+   * /etc/samba/smb.conf
+   
+     ```ini
+     [global]
+         workgroup = AADDSCONTOSO
+         usershare allow guests = NO #disallow guests from sharing
+         idmap config * : backend = tdb
+         idmap config * : range = 1000000-1999999
+         idmap config AADDSCONTOSO : backend = rid
+         idmap config AADDSCONTOSO : range = 5000000-5999999
+         kerberos method = secrets and keytab
+         realm = AADDSCONTOSO.COM
+         security = ADS
+         template homedir = /home/%D/%U
+         template shell = /bin/bash
+         winbind offline logon = yes
+         winbind refresh tickets = yes
+     ```
+
+   * /etc/krb5.conf állományt
+   
+     ```ini
+     [libdefaults]
+         default_realm = AADDSCONTOSO.COM
+         clockskew = 300
+     [realms]
+         AADDSCONTOSO.COM = {
+             kdc = PDC.AADDSCONTOSO.COM
+             default_domain = AADDSCONTOSO.COM
+             admin_server = PDC.AADDSCONTOSO.COM
+         }
+     [domain_realm]
+         .aaddscontoso.com = AADDSCONTOSO.COM
+     [appdefaults]
+         pam = {
+             ticket_lifetime = 1d
+             renew_lifetime = 1d
+             forwardable = true
+             proxiable = false
+             minimum_uid = 1
+         }
+     ```
+
+   * /etc/Security/pam_winbind. conf
+   
+     ```ini
+     [global]
+         cached_login = yes
+         krb5_auth = yes
+         krb5_ccache_type = FILE
+         warn_pwd_expire = 14
+     ```
+
+   * /etc/nsswitch.conf
+   
+     ```ini
+     passwd: compat winbind
+     group: compat winbind
+     ```
+
+3. Győződjön meg arról, hogy az Azure AD-ben és a Linux-ban lévő dátum és idő szinkronban van. Ezt úgy teheti meg, hogy hozzáadja az Azure AD-kiszolgálót az NTP szolgáltatáshoz:
+   
+   1. Adja hozzá a következő sort a/etc/ntp.conf:
+     
+      ```console
+      server aaddscontoso.com
+      ```
+
+   1. Indítsa újra az NTP szolgáltatást:
+     
+      ```console
+      sudo systemctl restart ntpd
+      ```
+
+4. Csatlakozás a tartományhoz:
+
+   ```console
+   sudo net ads join -U Administrator%Mypassword
+   ```
+
+5. A winbind engedélyezése bejelentkezési forrásként a Linux rendszerű, csatlakoztatható hitelesítési modulokban (PAM):
+
+   ```console
+   pam-config --add --winbind
+   ```
+
+6. Engedélyezze a Kezdőlap könyvtárak automatikus létrehozását, hogy a felhasználók bejelentkezhetnek:
+
+   ```console
+   pam-config -a --mkhomedir
+   ```
+
+7. A winbind szolgáltatás elindítása és engedélyezése:
+
+   ```console
+   sudo systemctl enable winbind
+   sudo systemctl start winbind
+   ```
 
 ## <a name="allow-password-authentication-for-ssh"></a>Jelszó-hitelesítés engedélyezése SSH-hoz
 

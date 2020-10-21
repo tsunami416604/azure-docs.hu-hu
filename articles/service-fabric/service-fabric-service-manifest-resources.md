@@ -4,12 +4,12 @@ description: A végponti erőforrások leírása a szolgáltatás jegyzékfájlj
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017590"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313570"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása a szolgáltatás jegyzékfájljában
 ## <a name="overview"></a>Áttekintés
@@ -158,7 +158,7 @@ A HTTPS protokoll kiszolgáló-hitelesítést biztosít, és az ügyfél-kiszolg
 
 Linux-fürtök esetén a **saját** áruház alapértelmezett értéke a **/var/lib/sfcerts**mappa.
 
-Egy HTTPS-végpontot használó teljes alkalmazásra példát a következő témakörben talál: [https-végpont hozzáadása ASP.net Core webes API előtér-szolgáltatáshoz a vércse használatával](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest).
+Egy HTTPS-végpontot használó teljes alkalmazásra példát a következő témakörben talál: [https-végpont hozzáadása ASP.net Core webes API előtér-szolgáltatáshoz a vércse használatával](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest).
 
 ## <a name="port-acling-for-http-endpoints"></a>HTTP-végpontok hozzáférés portja
 A Service Fabric automatikusan megadja a HTTP (S)-végpontok alapértelmezett beállítását. **Nem** végez automatikus hozzáférés, ha egy végponthoz nincs társítva [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) , és a Service Fabric úgy van konfigurálva, hogy rendszergazdai jogosultságokkal rendelkező fiókkal fusson.

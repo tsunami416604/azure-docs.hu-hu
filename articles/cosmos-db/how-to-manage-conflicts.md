@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c158bc176c329fb46d0acde64b043b1b3e669e18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657d3f84a1dd196733ed23dd3b68db92e4b35e25
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570674"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279458"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az ütközés-feloldási házirendek kezelése Azure Cosmos DB
 
@@ -517,5 +517,5 @@ Ismerkedjen meg az alábbi Azure Cosmos DB fogalmakkal:
 - [Ügyfelek konfigurálása a többhelyű-hez](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [Régiók hozzáadása vagy eltávolítása a Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 - A [régióbeli írások configuremulti az alkalmazásokban](how-to-multi-master.md).
-- [Particionálás és adatelosztás](partition-data.md)
+- [Particionálás és adatelosztás](partitioning-overview.md)
 - [Indexelés az Azure Cosmos DB-ben](indexing-policies.md)

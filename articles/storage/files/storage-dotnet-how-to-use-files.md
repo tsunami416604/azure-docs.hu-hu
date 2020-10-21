@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fbfc347e1b514f9f59e2f238d2b1bfbaf59f2172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21b407002adce01155b37321c068fb10d2c003f6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710702"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319798"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -160,7 +160,7 @@ A *program.cs* fájlban adja hozzá a következő kódot a fájlmegosztás progr
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
-A következő metódus egy fájlmegosztást hoz létre, ha még nem létezik. A metódus egy [ShareClient](/dotnet/api/azure.storage.files.shares.shareclient) objektum létrehozásával kezdődik a kapcsolatok karakterlánca alapján. A minta ezután megkísérli a korábban létrehozott fájl letöltését. A metódus meghívása innen: `Main()` .
+A következő módszer olyan fájlmegosztást hoz létre, amely még nem létezik. A metódus egy [ShareClient](/dotnet/api/azure.storage.files.shares.shareclient) objektum létrehozásával kezdődik a kapcsolatok karakterlánca alapján. A minta ezután megkísérli a korábban létrehozott fájl letöltését. A metódus meghívása innen: `Main()` .
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CreateShare":::
 

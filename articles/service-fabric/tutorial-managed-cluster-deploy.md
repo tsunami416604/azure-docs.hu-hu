@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban egy Service Fabric felügyelt fürtöt fog
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410442"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316167"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Oktatóanyag: Service Fabric felügyelt fürt üzembe helyezése (előzetes verzió)
 
@@ -37,7 +37,7 @@ Az oktatóanyag elkezdése előtt:
 
 * Telepítse a [Service FABRIC SDK-t és a PowerShell-modult](service-fabric-get-started.md).
 
-* Telepítse [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) (vagy újabb).
+* Telepítse [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (vagy újabb).
 
 ## <a name="connect-to-your-azure-account"></a>Csatlakozás az Azure-fiókhoz
 
@@ -73,7 +73,7 @@ Ebben a lépésben adja meg a saját értékeit a következő paraméterekhez:
 
 * **Fürt neve**: adjon meg egy egyedi nevet a fürtnek, például *mysfcluster*.
 * **Rendszergazdai jelszó**: adja meg az RDP-hez a fürtben található mögöttes virtuális gépeken használandó jelszót.
-* **Ügyféltanúsítvány ujjlenyomata**: adja meg a fürt eléréséhez használni kívánt ügyféltanúsítvány ujjlenyomatát. Ha nem rendelkezik tanúsítvánnyal, kövesse [a tanúsítvány beállítása és lekérése](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) saját aláírású tanúsítvány létrehozásához című témakört.
+* **Ügyféltanúsítvány ujjlenyomata**: adja meg a fürt eléréséhez használni kívánt ügyféltanúsítvány ujjlenyomatát. Ha nem rendelkezik tanúsítvánnyal, kövesse [a tanúsítvány beállítása és lekérése](../key-vault/certificates/quick-create-portal.md) saját aláírású tanúsítvány létrehozásához című témakört.
 * **Fürt SKU**: adja meg a telepítendő [Service Fabric felügyelt fürt típusát](overview-managed-cluster.md#service-fabric-managed-cluster-skus) . *Alapszintű* Az SKU-fürtök csak tesztelési célú központi telepítésekhez használhatók, és nem engedélyezik a csomópontok hozzáadását vagy eltávolítását.
 
 ```powershell
@@ -110,7 +110,7 @@ A parancs végrehajtása több percet is igénybe vehet.
 
 Miután az üzembe helyezés befejeződött, keresse meg a Service Fabric Explorer értéket a portál Service Fabric felügyelt fürt erőforrásának áttekintés lapján. Ha a rendszer rákérdez a tanúsítványra, használja azt a tanúsítványt, amelyhez az ügyfél ujjlenyomatát adták a PowerShell-parancsban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a lépésben létrehozta és üzembe helyezte az első Service Fabric felügyelt fürtöt. A fürtök méretezésével kapcsolatos további tudnivalókért tekintse meg a következőt:
 

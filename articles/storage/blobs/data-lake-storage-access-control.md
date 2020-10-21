@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 188c30a79074b819c5785cf5560f5843a3fcf6b4
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131615"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320480"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2
 
@@ -199,7 +199,7 @@ Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korl�
 
 Új Data Lake Storage Gen2 tároló esetén a gyökérkönyvtár ("/") hozzáférési ACL-jéhez tartozó maszk alapértelmezés szerint **750** a könyvtárakhoz és a **640** fájlokhoz. Az alábbi táblázat a jogosultsági szintek szimbolikus jelölését mutatja be.
 
-|Entitás|Könyvtárak|Files|
+|Entitás|Könyvtárak|Fájlok|
 |--|--|--|
 |Tulajdonos felhasználó|`rwx`|`r-w`|
 |Tulajdonoscsoport|`r-x`|`r--`|
@@ -326,6 +326,11 @@ A rendszer az OID-t jeleníti meg.
 
 Ha a szolgáltatásnév helyes OID-je van, lépjen a Storage Explorer a **hozzáférés kezelése** lapra az OID hozzáadásához, és rendelje hozzá a megfelelő engedélyeket az OID-hez. Mindenképpen kattintson a **Mentés** lehetőségre.
 
+### <a name="can-i-set-the-acl-of-a-container"></a>Beállíthat egy tároló ACL-listáját?
+
+Nem. A tárolók nem rendelkeznek ACL-vel. Azonban beállíthatja a tároló gyökérkönyvtárának ACL-listáját. Minden tároló rendelkezik gyökérkönyvtárral, és ugyanaz a neve, mint a tároló. Ha például a tároló neve `my-container` , akkor a gyökérkönyvtár neve `myContainer/` . 
+
+Az Azure Storage REST API tartalmaz egy [set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)nevű műveletet, de ez a művelet nem használható egy tároló ACL-jéhez vagy egy tároló gyökérkönyvtárának beállításához. Ehelyett a művelettel jelezheti, hogy a tárolóban lévő Blobok [nyilvánosan elérhetők](anonymous-read-access-configure.md)-e. 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Hol tudhatok meg többet a POSIX hozzáférés-vezérlési modellről?
 

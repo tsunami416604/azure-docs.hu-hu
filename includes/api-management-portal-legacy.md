@@ -2,17 +2,18 @@
 author: mikebudzynski
 ms.service: api-management
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: b4c8e9b07905e954879e5b65adbaae765fc41c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44de30438d59252a431bf37ac6919a9bc186c8ed
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73176491"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315737"
 ---
 > [!NOTE]
-> A dokumentáció tartalma a régi fejlesztői portálról szól. Tekintse meg az alábbi cikkeket az új fejlesztői portálról:
+> A dokumentáció tartalma az elavult fejlesztői portálról szól. Továbbra is használhatja, a szokásos módon, a 2023 októberében való kivonulás után, amikor az összes API Management szolgáltatásból el lesz távolítva. Az elavult portál csak a kritikus biztonsági frissítéseket fogja kapni. További részletekért tekintse meg a következő cikkeket:
 > 
-> - [Az Azure API Management fejlesztői portál áttekintése](..\articles\api-management\api-management-howto-developer-portal.md)
-> - [A felügyelt fejlesztői portál elérése és testreszabása (oktatóanyag)](..\articles\api-management\api-management-howto-developer-portal-customize.md)
+> - [Ismerje meg, hogyan telepítheti át az új fejlesztői portálra](../articles/api-management/developer-portal-deprecated-migration.md)
+> - [Az Azure API Management új fejlesztői portál áttekintése](../articles/api-management/api-management-howto-developer-portal.md)
+> - [Az új fejlesztői portál elérése és testreszabása](../articles/api-management/api-management-howto-developer-portal-customize.md)

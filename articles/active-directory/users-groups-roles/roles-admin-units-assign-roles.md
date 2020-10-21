@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea638124ed81a494231c814962345c028fc12c9
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 00d60d803fb73a0f299b00179e5f598f3189e03e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940854"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309666"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Hatókörrel rendelkező szerepkörök társítása egy felügyeleti egységhez
 
@@ -60,7 +60,7 @@ Válassza ki a hozzárendelni kívánt szerepkört, majd válassza a **hozzáren
 
 > [!Note]
 >
-> Ha a PIM használatával szeretne szerepkört hozzárendelni egy felügyeleti egységhez, kövesse az [alábbi lépéseket.](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user?tabs=new#assign-a-role-with-restricted-scope)
+> Ha a PIM használatával szeretne szerepkört hozzárendelni egy felügyeleti egységhez, kövesse az [alábbi lépéseket.](../privileged-identity-management/pim-how-to-add-role-to-user.md?tabs=new#assign-a-role-with-restricted-scope)
 
 ### <a name="powershell"></a>PowerShell
 

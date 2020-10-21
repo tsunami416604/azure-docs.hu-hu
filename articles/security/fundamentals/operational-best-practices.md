@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 2c949447635ccdf4cf36acec43a09c1104b9fdd4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91943866"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280021"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
 Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
@@ -53,7 +53,7 @@ Győződjön meg arról, hogy a Security Operations csapata fogadja az Azure inc
 Az Azure beléptetési portálon gondoskodhat arról, hogy a rendszergazdai kapcsolattartási adatok a biztonsági műveleteket értesítő részleteket tartalmazzanak. A kapcsolattartási adatok egy e-mail-cím és egy telefonszám.
 
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Azure-előfizetések rendszerezése felügyeleti csoportokba
-Ha a cég több előfizetéssel rendelkezik, szüksége lehet egy hatékony módszerre az előfizetések hozzáférésének, szabályzatainak és megfelelőségének kezelésére. Az [Azure felügyeleti csoportjai](/azure/governance/management-groups/create) magasabb szintű hatókört biztosítanak az előfizetésekhez. Az előfizetéseket a felügyeleti csoportok nevű tárolóba szervezheti, és a felügyeleti csoportokra alkalmazhatja az irányítási feltételeit. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket.
+Ha a cég több előfizetéssel rendelkezik, szüksége lehet egy hatékony módszerre az előfizetések hozzáférésének, szabályzatainak és megfelelőségének kezelésére. Az [Azure felügyeleti csoportjai](/azure/governance/management-groups/create) magasabb szintű hatókört biztosítanak az előfizetésekhez. Az előfizetéseket felügyeleti csoportnak nevezett tárolókban rendezi, és ezekre a csoportokra alkalmazza a szabályozási feltételeket. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket.
 
 A felügyeleti csoportok és előfizetések rugalmas struktúráját létrehozhatja egy könyvtárba. Minden címtár egyetlen legfelső szintű felügyeleti csoportot kap, amelynek neve a gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. A felügyeleti csoport lehetővé teszi, hogy a globális házirendek és az Azure-beli szerepkör-hozzárendelések a címtár szintjén legyenek alkalmazva.
 
@@ -122,7 +122,7 @@ A biztonságos pontszám, amely a Center for Internet Security (CIS) vezérlők�
 **Részletek**: [Azure monitor használata adatok gyűjtésére és exportálására](/azure/azure-monitor/overview#integrate-and-export-data). Ez a gyakorlat kritikus fontosságú a biztonsági incidensek vizsgálatának engedélyezéséhez, és az online napló megtartásának korlátozása. Ha Azure Sentinelt használ, tekintse meg [az adatforrások összekapcsolását](../../sentinel/connect-data-sources.md)ismertető témakört.
 
 **Ajánlott**eljárás: a vizsgálat és a vadászat folyamatának felgyorsítása, valamint a téves pozitív érték csökkentése a támadási vizsgálat során a végpont-észlelési és a reagálási (EDR) képességek integrálásával.   
-**Részletek**: a [Microsoft Defender ATP-integrációjának engedélyezése](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) a Security Center biztonsági házirend segítségével. Vegye fontolóra az Azure Sentinel használatát a fenyegetések vadászatához és az incidensek megválaszolásához.
+**Részletek**: [a Microsoft Defender for Endpoint Integration engedélyezése](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) a Security Center biztonsági házirend segítségével. Vegye fontolóra az Azure Sentinel használatát a fenyegetések vadászatához és az incidensek megválaszolásához.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Végpontok közötti forgatókönyv-alapú Hálózatfigyelő figyelése
 Az ügyfelek egy végpontok közötti hálózatot építenek ki az Azure-ban a hálózati erőforrások, például a virtuális hálózat, a ExpressRoute, a Application Gateway és a terheléselosztó kombinálásával. A figyelés minden hálózati erőforráson elérhető.
@@ -221,7 +221,7 @@ További információ: [házirendek létrehozása és kezelése a megfelelőség
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD kockázati jelentések figyelése
 A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. A feltört identitások feltárása nem egyszerű feladat. Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy [kockázati észlelésnek](../../active-directory/reports-monitoring/concept-risk-events.md)nevezett rekordban tárol. A kockázati észlelések az Azure AD biztonsági jelentéseiben vannak rögzítve. További információért olvassa el a [veszélyeztetett felhasználókról szóló jelentést](../../active-directory/reports-monitoring/concept-user-at-risk.md) , valamint a [kockázatos bejelentkezések biztonsági jelentését](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:

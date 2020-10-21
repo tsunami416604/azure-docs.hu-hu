@@ -3,12 +3,12 @@ title: Service Fabric a projekt létrehozásának következő lépései
 description: Ismerje meg a Visual Studióban létrehozott alkalmazás-projektet.  Ismerje meg, hogyan hozhat létre szolgáltatásokat oktatóanyagokkal, és hogyan fejlesztheti Service Fabric szolgáltatásainak fejlesztését.
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01a69016e0c299fba0365fab5332b572fd2ca87a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75349412"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314470"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Az Service Fabric alkalmazás és a következő lépések
 Az Azure Service Fabric-alkalmazás létrejött. Ez a cikk néhány olyan oktatóanyagot ismertet, amely kipróbálható, a projekt sminkje, néhány további információ, amely érdekli, és lehetséges a következő lépések.
@@ -24,7 +24,7 @@ Vagy próbálja ki az alábbi lépések egyikét, és hozza létre az elsőt...
 - [Vendég végrehajtható szolgáltatás Windows rendszeren](quickstart-guest-app.md) 
 - [Windows-alapú tárolóalkalmazás](service-fabric-get-started-containers.md) 
 
-Érdemes lehet a [minta alkalmazásaink](https://aka.ms/servicefabricsamples)kipróbálására is.
+Érdemes lehet a [minta alkalmazásaink](/samples/browse/?products=azure)kipróbálására is.
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Kérdése van, vagy visszajelzést küldene?  Problémát kell jelentenie?
 Olvassa el a [gyakori kérdéseket](service-fabric-common-questions.md) , és válaszoljon arra, hogy mit tehet a Service Fabric és hogyan használható.
@@ -58,9 +58,7 @@ Az alkalmazás olyan bizalmas adatokat is tartalmazhat, mint például a tárol�
 ## <a name="learn-about-the-application-lifecycle"></a>Az alkalmazások életciklusának megismerése
 Más platformokhoz hasonlóan a Service Fabric alkalmazások általában a következő fázisokon haladnak át: tervezés, fejlesztés, tesztelés, üzembe helyezés, frissítés, karbantartás és eltávolítás. [Ez a cikk](service-fabric-application-lifecycle.md) áttekintést nyújt az API-król, valamint arról, hogyan használják a különböző szerepkörök a Service Fabric alkalmazás életciklusának fázisaiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Hozzon létre egy Windows-fürtöt az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 - Jelenítse meg a fürtöt, beleértve az üzembe helyezett alkalmazásokat és a fizikai elrendezést [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)segítségével.
 - [A szolgáltatások verziója és frissítése](service-fabric-application-upgrade-tutorial.md)
-
-

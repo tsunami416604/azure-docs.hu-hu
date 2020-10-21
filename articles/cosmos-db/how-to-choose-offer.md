@@ -1,17 +1,17 @@
 ---
-title: A megfelelő adatátviteli ajánlat kiválasztása Azure Cosmos DB
-description: Megtudhatja, hogyan választhat a standard (manuális) kiépített átviteli sebesség és az automatikus méretezés kiépített átviteli sebessége között a számítási feladatokhoz.
+title: A manuális és az automatikus skálázás közötti választás Azure Cosmos DB
+description: Megtudhatja, hogyan választhat a standard (manuális) kiépített átviteli sebesség és az automatikus méretezés kiosztott átviteli sebessége között a számítási feladatokhoz.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365238fd70e2e098e5a228ee71d5b9e0e584c71
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88605202"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279819"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>A standard (manuális) és az automatikus méretezés kiépített átviteli sebességének kiválasztása 
 
@@ -26,7 +26,7 @@ Ha kiosztott átviteli sebességet használ, a számítási feladathoz a számí
 
 Az alábbi táblázat a standard (manuális) és az automatikus skálázás közötti magas szintű összehasonlítást mutatja be.
 
-|Leírás|Standard (manuális)|Automatikus méretezés|
+|Description|Standard (manuális)|Automatikus méretezés|
 |-------------|------|-------|
 |Legmegfelelőbb a következőhöz:|Állandó vagy kiszámítható forgalommal rendelkező számítási feladatok|Változó vagy kiszámíthatatlan forgalommal rendelkező számítási feladatok. Lásd: [az autoscale használatának esetei](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Működés|Kiépítheti a statikus RU/s mennyiségét az `T` idő függvényében, hacsak nem módosítja őket manuálisan. Másodpercenként akár `T` ru/s átviteli sebességet is használhat. <br/><br/>Ha például a standard (manuális) 400 RU/s érték van megadva, akkor az átviteli sebesség a 400 RU/s-ben marad.|Állítsa be a legmagasabb vagy a maximális RU/mp értéket, `Tmax` Ha nem szeretné, hogy a rendszeren túllépjek. A rendszer automatikusan méretezi az átviteli sebességet `T` `0.1* Tmax <= T <= Tmax` . <br/><br/>Ha például az 4000 RU/s értékre állítja be a maximálisan engedélyezett RU/s értéket, a rendszer a 400-4000 RU/s-t fogja méretezni.|
@@ -54,22 +54,87 @@ Ha egy meglévő alkalmazás standard (manuális) kiosztott átviteli sebességg
 
 Először keresse meg az adatbázis vagy tároló [normalizált kérelmi egységének felhasználási metrikáját](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) . A normalizált kihasználtság azt méri, hogy jelenleg milyen mértékben használja a standard (manuális) kiépített átviteli sebességet. Minél közelebb van a számhoz, a 100%-ot, annál többet a kiépített RU/s-k használatával. [További](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) információ a metrikáról.
 
-Ezután határozza meg, hogy a normalizált kihasználtság hogyan változik az idő múlásával. Ha úgy látja, hogy a normalizált kihasználtsága változó vagy kiszámíthatatlan, érdemes lehet az adatbázison vagy a tárolón is engedélyezni az autoskálázást. Ezzel szemben, ha az állandó és kiszámítható, érdemes megfontolni a standard (manuális) kiépített átviteli sebesség megmaradása esetén. 
+Ezután határozza meg, hogy a normalizált kihasználtság hogyan változik az idő múlásával. Keresse meg a legmagasabb normalizált kihasználtságot minden órában. Ezután Számítsuk ki az átlagos normalizált kihasználtságot az egész órában. Ha úgy látja, hogy az átlagos kihasználtsága kevesebb, mint 66%, érdemes lehet engedélyezni az adatbázis vagy a tárolók autoskálázását. Ezzel szemben, ha az átlagos kihasználtság meghaladja a 66%-ot, azt javasoljuk, hogy a standard (manuális) kiosztott átviteli sebességen maradjon.
+
+> [!TIP]
+> Ha a fiókja többrégiós írások használatára van konfigurálva, és több régióval rendelkezik, akkor a 100 RU/s sebessége megegyezik a manuális és az automatikus skálázással. Ez azt jelenti, hogy az autoskálázás engedélyezése a kihasználtságtól függetlenül nem jár további költségekkel. Ezért javasoljuk, hogy a többrégiós írások használatakor minden esetben ajánlott az autoskálázást használni, ha több régióval rendelkezik, így kihasználhatja a megtakarítások előnyeit abban, hogy csak az alkalmazásra vonatkozó RU/s esetében fizessen. Ha többrégiós írásokkal és egy régióval rendelkezik, az átlagos használat alapján megállapíthatja, hogy az autoskálázás költséghatékonyan megtakarítást eredményez-e. 
+
+#### <a name="examples"></a>Példák
+
+Vessünk egy pillantást két különböző példás számítási feladatra, és elemezzük, hogy megfelelőek-e manuális vagy automatikus méretezési teljesítményhez. Az általános megközelítés szemléltetéséhez három órányi előzményt elemezzünk a manuális és az automatikus skálázás közötti árkülönbség meghatározásához. Az éles számítási feladatokhoz a (z) 7 – 30 napos előzményeket ajánlott használni (vagy ha van ilyen) az RU/s használatának mintájának létrehozásához.
+
+> [!NOTE]
+> Az ebben a dokumentációban látható összes példa az USA-ban nem kormányzati régióban üzembe helyezett Azure Cosmos-fiók díjszabásán alapul. A díjszabás és a számítás a használt régiótól függően változhat, a legfrissebb díjszabási információkért tekintse meg a Azure Cosmos DB [díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) .
+
+Előfeltételek:
+- Tegyük fel, hogy jelenleg 30 000 RU/s manuális átviteli sebességgel rendelkezik. 
+- Régiónk egyrégiós írásokkal van konfigurálva, egyetlen régióval. Ha több régióval rendelkezünk, az óradíjat a régiók számával szorozzuk meg.
+- Az egyrégiós írási fiókokban a manuális ($0,008 USD/100/s/s/s) és az automatikus skálázási sebesség ($0,012 USD/100/mp) esetében a nyilvános díjszabási díjakat használhatja. A részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) . 
+
+#### <a name="example-1-variable-workload-autoscale-recommended"></a>1. példa: változó munkaterhelés (ajánlott)
+
+Először tekintse meg a normalizált RU-felhasználást. Ez a munkaterhelés változó forgalmat tartalmaz, és a normalizált RU-fogyasztás 6% és 100% között van. A 100%-os időnként nehéz előre jelezni, de kevés a kihasználtsága. 
+
+:::image type="content" source="media/how-to-choose-offer/variable-workload_use_autoscale.png" alt-text="Számítási feladatok változó forgalommal – a normalizált RU-fogyasztás 6% és 100% között az összes órában":::
+
+Hasonlítsa össze a 30 000 RU/s manuális átviteli sebességét, illetve a maximális RU/s értéket a 30 000-ig (3000 – 30 000 RU/s). 
+
+Most elemezzük az előzményeket. Tegyük fel, hogy az alábbi táblázatban ismertetjük a kihasználtságot. A három órán át mért átlagos kihasználtság 39%. Mivel a normalizált RU használati átlaga 66%-nál kevesebb, az autoscale használatával mentjük. 
+
+Vegye figyelembe, hogy az 1. órában 6%-os használat esetén az autoskálázás a maximális RU/s érték 10%-ában számlázza a RU/s-t, ami a minimum óránkénti. Bár az automatikus skálázás díja bizonyos óráknál nagyobb lehet, mint a manuális átviteli sebesség, ha az átlagos kihasználtság az összes órában kevesebb mint 66%-kal csökken, az automatikus skálázás összességében olcsóbbá válik.
+
+|  | Kihasználtság |Számlázott autoskálázási RU/s  |1. lehetőség: manuális 30 000 RU/s  | 2. lehetőség: 3000 – 30 000 RU/s közötti autoskálázás |
+|---------|---------|---------|---------|---------|
+|1. óra  | 6%  |     3000  |  30 000 * 0,008/100 = $2,40        |   3000 * 0,012/100 = $0,36      |
+|Óra 2  | 100%  |     30 000    |  30 000 * 0,008/100 = $2,40       |  30 000 * 0,012/100 = $3,60      |
+|3. óra |  11  |     3300    |  30 000 * 0,008/100 = $2,40       |    3300 * 0,012/100 = $0,40     |
+|**Összesen**   |  |        |  $7,20       |    $4,36 (39%-os megtakarítás)    |
+
+#### <a name="example-2-steady-workload-manual-throughput-recommended"></a>2. példa: állandó munkaterhelés (javasolt manuális átviteli sebesség)
+
+Ez a munkaterhelés állandó forgalomban van, és a normalizált RU-használat 72%-ról 100%-ra nőtt. 30 000 RU/s kiépítve ez azt jelenti, hogy a rendszer a 21 600-tól a 30 000 RU/s-ig fogyasztjuk.
+
+:::image type="content" source="media/how-to-choose-offer/steady_workload_use_manual_throughput.png" alt-text="Számítási feladatok változó forgalommal – a normalizált RU-fogyasztás 6% és 100% között az összes órában":::
+
+Hasonlítsa össze a 30 000 RU/s manuális átviteli sebességét, illetve a maximális RU/s értéket a 30 000-ig (3000 – 30 000 RU/s).
+
+Tegyük fel, hogy a kihasználtsági előzményeket a táblázat ismerteti. A három órán át mért átlagos kihasználtság 88%. Mivel a normalizált RU felhasználási átlaga 66%-nál nagyobb, a manuális átviteli sebesség használatával mentjük.
+
+Általánosságban elmondható, hogy ha egy hónap alatt az 730 óra átlagos kihasználtsága nagyobb, mint 66%, akkor a manuális átviteli sebesség használatával mentjük. 
+
+|  | Kihasználtság |Számlázott autoskálázási RU/s  |1. lehetőség: manuális 30 000 RU/s  | 2. lehetőség: 3000 – 30 000 RU/s közötti autoskálázás |
+|---------|---------|---------|---------|---------|
+|1. óra  | 72%  |     21 600   |  30 000 * 0,008/100 = $2,40        |   21600 * 0,012/100 = $2,59      |
+|Óra 2  | 93%  |     28 000    |  30 000 * 0,008/100 = $2,40       |  28 000 * 0,012/100 = $3,36       |
+|3. óra |  100%  |     30 000    |  30 000 * 0,008/100 = $2,40       |    30 000 * 0,012/100 = $3,60     |
+|**Összesen**   |  |        |  $7,20       |    $9,55     |
 
 > [!TIP]
 > A normál (manuális) átviteli sebesség használatával a normalizált kihasználtsági metrikával becsülheti meg a tényleges RU/mp-t, ha automatikus méretezésre vált. Az aktuálisan kiosztott standard (manuális) RU/mp használatával szorozzuk meg a normalizált kihasználtságot egy adott időpontban. Ha például 5000 RU/s lett kiépítve, és a normalizált kihasználtság értéke 90%, az RU/s használata 0,9 * 5000 = 4500 RU/s. Ha úgy látja, hogy a forgalmi minta változó, de Ön vagy a kiépítés alatt áll, érdemes engedélyezni az autoskálázást, és ennek megfelelően módosítania kell az autoscale Max RU/s beállítást.
+
+#### <a name="how-to-calculate-average-utilization"></a>Az átlagos kihasználtság kiszámítása
+A legmagasabb RU/s mennyiségű, óránkénti méretezési számlák. A normalizált RU-felhasználás időbeli alakulásának elemzésekor fontos a legmagasabb kihasználtságot óránként használni az átlag kiszámításakor. 
+
+A legmagasabb kihasználtság átlagának kiszámítása az egész órában:
+1. Állítsa be az **összesítést** a nem leállított ru-használati metrikán a **Max**értékre.
+1. Válassza ki az **idő részletességét** 1 órára.
+1. Navigáljon a **diagram beállításaihoz**.
+1. Válassza a oszlopdiagram lehetőséget. 
+1. A **megosztás**területen válassza a **Letöltés az Excel programba** lehetőséget. A generált táblázatból számítsa ki az átlagos kihasználtságot az egész órában. 
+
+:::image type="content" source="media/how-to-choose-offer/variable-workload-highest-util-by-hour.png" alt-text="Számítási feladatok változó forgalommal – a normalizált RU-fogyasztás 6% és 100% között az összes órában":::
 
 ## <a name="measure-and-monitor-your-usage"></a>A használat mérése és figyelése
 Idővel, az átviteli sebesség típusának kiválasztása után figyelje az alkalmazást, és szükség szerint végezze el a szükséges módosításokat. 
 
 Ha autoskálázást használ, a Azure Monitor használatával megtekintheti a kiépített autoskálázási Max RU/s (az**autoskálázás maximális átviteli sebessége**) és a rendszer jelenleg (**kiépített átviteli sebesség**) méretét. Az alábbi példa egy változót vagy kiszámíthatatlan munkaterhelést mutat be az autoscale használatával. Vegye figyelembe, hogy ha nincs forgalom, a rendszer az RU/s-t a maximális RU/s érték legalább 10%-át méretezi, ami ebben az esetben 5000 RU/s és 50 000 RU/s. 
 
-:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Példa a munkaterhelés használatára az autoscale használatával":::
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Számítási feladatok változó forgalommal – a normalizált RU-fogyasztás 6% és 100% között az összes órában":::
 
 > [!NOTE]
 > Ha standard (manuális) kiosztott átviteli sebességet használ, a **kiosztott átviteli sebesség** mérőszáma arra utal, hogy mit állított be a felhasználó. Ha az autoscale átviteli sebességet használja, ez a metrika a rendszer aktuálisan méretezhető RU/s-re vonatkozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az [ru-kalkulátor](https://cosmos.azure.com/capacitycalculator/) használatával becsülheti meg az új számítási feladatok átviteli sebességét.
 * A meglévő számítási feladatok figyeléséhez használja a [Azure monitor](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) .
 * Megtudhatja, hogyan építhet ki az [Azure Cosmos-adatbázison vagy-tárolón az adatméretezési sebességet](how-to-provision-autoscale-throughput.md).

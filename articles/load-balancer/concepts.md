@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5c12b7d0bf9bed551e54ccb2e54a4674a8323a9c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 28c3e4ade2c78a1a77ef7263463803e40727ba8f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930917"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315308"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer algoritmus
 
@@ -57,6 +57,7 @@ A Load Balancer közvetlenül nem kommunikál a TCP-vagy UDP-vagy az alkalmazás
 
 ## <a name="next-steps"></a>Következő lépések
 
+- Ismerkedjen meg a Azure Load Balancer alkotó [összetevőkkel](components.md) .
 - Lásd: [nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) a Load Balancer használatának megkezdéséhez: hozzon létre egyet, hozzon létre virtuális gépeket egy egyéni IIS-bővítménnyel, és a virtuális gépek között a webalkalmazás terheléselosztását.
 - További információ a [Azure Load Balancer kimenő kapcsolatokról](load-balancer-outbound-connections.md).
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).

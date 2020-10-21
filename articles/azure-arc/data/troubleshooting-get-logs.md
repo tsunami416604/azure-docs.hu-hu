@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71c84b35c001be7fafdc2df53014050ae21dec63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936046"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320202"
 ---
 # <a name="get-azure-arc-enabled-data-services-logs"></a>Az Azure arc-kompatibilis adatszolgáltatások naplóinak beolvasása
 
@@ -22,48 +22,60 @@ ms.locfileid: "90936046"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure arc-kompatibilis adatszolgáltatási naplók lekéréséhez szüksége lesz az Azure-beli adatcli-eszközre. [Telepítési utasítások](./install-client-tools.md)
+A továbblépés előtt a következőkre lesz szüksége:
 
-A rendszergazdaként be kell jelentkeznie az Azure arc használatára képes adatszolgáltatás-kezelő szolgáltatásba.
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [Telepítési utasítások](./install-client-tools.md).
+* Rendszergazdai fiók az Azure arc-kompatibilis adatszolgáltatások vezérlőjébe való bejelentkezéshez.
 
 ## <a name="get-azure-arc-enabled-data-services-logs"></a>Az Azure arc-kompatibilis adatszolgáltatások naplóinak beolvasása
 
-Az Azure arc-kompatibilis adatszolgáltatások naplóit az összes hüvelyben vagy adott hüvelyben hibaelhárítási célból érheti el.  Ezt megteheti a szabványos Kubernetes-eszközökkel, például a `kubectl logs` paranccsal vagy ebben a cikkben az Azure-beli adatcli-eszköz használatával, amely megkönnyíti az összes napló egyszeri beolvasását.
+Az Azure arc-kompatibilis adatszolgáltatások naplóit az összes hüvelyben vagy adott hüvelyben hibaelhárítási célból érheti el. Ezt elvégezheti a szabványos Kubernetes-eszközökkel, például a `kubectl logs` paranccsal, vagy ebben a cikkben az eszközt fogja használni, amely megkönnyíti az [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] összes napló egyszerre történő beolvasását.
 
-Először győződjön meg róla, hogy bejelentkezett az adatvezérlőbe.
+1. Jelentkezzen be az adatkezelőbe egy rendszergazdai fiókkal.
 
-```console
-azdata login
-```
+   ```console
+   azdata login
+   ```
 
-Ezután futtassa a következő parancsot a naplók kiírásához:
-```console
-azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+2. A naplók kiírásához futtassa a következő parancsot:
 
-#Example:
-#azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
-```
+   ```console
+   azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+   ```
 
-A naplófájlok az aktuális munkakönyvtárban lesznek létrehozva, alapértelmezés szerint a "naplók" nevű alkönyvtárban.  A naplófájlokat egy másik könyvtárba is exportálhatja a paraméter használatával `--target-folder` .
+   Például:
 
-A (z) paraméter kihagyása mellett dönthet úgy is, hogy tömöríti a fájlokat `--skip-compress` .
+   ```console
+   #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
+   ```
 
-A memóriaképek kiváltásával kihagyhatja a memóriaképeket `--exclude-dumps` , de ez nem ajánlott, kivéve, ha Microsoft ügyfélszolgálata a memóriaképek kérését kérte.  A memóriakép készítése megköveteli, hogy az adatvezérlő beállítása `allowDumps` `true` az adatvezérlő létrehozási idejére legyen beállítva.
+Az adatkezelő létrehozza a naplófájlokat az aktuális munkakönyvtárban egy nevű alkönyvtárban `logs` . 
 
-Dönthet úgy is, hogy szűréssel gyűjti a naplókat egy adott Pod ( `--pod` ) vagy tároló ( `--container` ) név alapján.
+## <a name="options"></a>Beállítások
 
-Azt is megteheti, hogy szűréssel gyűjti a naplókat egy adott egyéni erőforráshoz a és a ismerhető átadásával `--resource-kind` `--resource-name` .  A `resource-kind` paraméter értékének az egyes egyéni erőforrás-definíciós nevek egyikének kell lennie, amelyeket a parancs kérhet le `kubectl get customresourcedefinition` .
+`azdata arc dc debug copy-logs` a a következő beállításokat biztosítja a kimenet kezeléséhez.
+
+* A naplófájlokat egy másik könyvtárba írja a paraméter használatával `--target-folder` .
+* Tömörítse a fájlokat úgy, hogy kihagyja a `--skip-compress` paramétert.
+* A memóriaképek kihagyása és a memóriaképek belefoglalása `--exclude-dumps` . Ez a módszer nem ajánlott, hacsak Microsoft ügyfélszolgálata nem kérte a memóriaképek megadását. A memóriakép készítése megköveteli, hogy az adatvezérlő beállítása `allowDumps` `true` az adatvezérlő létrehozási idejére legyen beállítva.
+* Szűrés a naplók összegyűjtéséhez csak egy adott Pod ( `--pod` ) vagy tároló ( `--container` ) néven.
+* A (z `--resource-kind` ) és paraméter átadásával szűrheti egy adott egyéni erőforrás naplóinak gyűjtését `--resource-name` . A `resource-kind` paraméter értékének az egyéni erőforrás-definíciós nevek egyikének kell lennie, amelyet a parancs kérhet le `kubectl get customresourcedefinition` .
+
+Ezeket a paramétereket a következő példában lecserélheti `<parameters>` . 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
+```
 
-#Example
+Példa:
+
+```console
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-Példa a mappa-hierarchiára.  Vegye figyelembe, hogy a mappa-hierarchiát a pod Name neve, majd a tároló, majd a tárolón belüli címtár-hierarchia rendezi.
+Példa a mappa-hierarchiára. A mappa-hierarchiát a pod name, majd a Container, majd a tárolón belüli címtár-hierarchia alapján rendezi a rendszer.
 
-```console
+```output
 <export directory>
 ├───debuglogs-arc-20200827-180403
 │   ├───bootstrapper-vl8j2
@@ -181,3 +193,7 @@ Példa a mappa-hierarchiára.  Vegye figyelembe, hogy a mappa-hierarchiát a pod
             ├───journal
             └───openvpn
 ```
+
+## <a name="next-steps"></a>Következő lépések
+
+[azdata arc DC hibakeresési naplók](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)
