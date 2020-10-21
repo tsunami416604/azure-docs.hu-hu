@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: c15724643fb3c8c74d3afe58509822c56d2d17f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0cd8245b6d8298ae1d99e2dbe1e8457a40dc7d6
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821956"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330410"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>A séma-referenciák útmutatója az triggerekhez és a műveletek típusaihoz Azure Logic Apps
 
@@ -826,9 +826,9 @@ A Azure Logic Apps különböző típusú műveleteket biztosít – mindegyiket
 | [**Csatlakozás**](#join-action) | Létrehoz egy karakterláncot egy tömb összes eleméről, és elválasztja ezeket az elemeket egy megadott elválasztói karakterrel. | 
 | [**JSON-elemzés**](#parse-json-action) | Felhasználóbarát jogkivonatokat hoz létre a JSON-tartalmak tulajdonságaiban. Ezeket a tulajdonságokat a logikai alkalmazásban található jogkivonatokkal is hivatkozhat. | 
 | [**Lekérdezés**](#query-action) | Tömböt hoz létre egy másik tömb elemeiből egy feltétel vagy szűrő alapján. | 
-| [**Válasz**](#response-action) | Egy bejövő hívásra vagy kérelemre vonatkozó választ hoz létre. | 
+| [**Reagálás**](#response-action) | Egy bejövő hívásra vagy kérelemre vonatkozó választ hoz létre. | 
 | [**Válassza**](#select-action) | JSON-objektumokkal rendelkező tömböt hoz létre egy másik tömb elemeinek a megadott Térkép alapján történő átalakításával. | 
-| [**Táblázat**](#table-action) | CSV-vagy HTML-táblázatot hoz létre egy tömbből. | 
+| [**Tábla**](#table-action) | CSV-vagy HTML-táblázatot hoz létre egy tömbből. | 
 | [**Befejezés**](#terminate-action) | Leállítja egy aktívan futó munkafolyamatot. | 
 | [**várj**](#wait-action) | Szünetelteti a munkafolyamatot egy adott időtartamra vagy a megadott dátumra és időpontra vonatkozóan. | 
 | [**Munkafolyamat**](#workflow-action) | Munkafolyamatot ágyaz be egy másik munkafolyamaton belül. | 
@@ -2309,6 +2309,9 @@ Ez a hurok-művelet olyan műveleteket tartalmaz, amelyek addig futnak, amíg a 
 | <*hurok – időtúllépés*> | Sztring | A hurok futtatásának leghosszabb időtartamára vonatkozó korlát. Az alapértelmezett `timeout` érték a `PT1H` , amely a szükséges [ISO 8601-formátum](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
+> [!NOTE]
+> Ha a kifejezés attól függ, hogy az összes művelet kimenete a-ig hurokon belülre esik-e, ügyeljen arra, hogy az adott műveletből származó összes hiba miatt megtörténjen.
+
 *Példa*
 
 Ez a hurok-műveleti definíció HTTP-kérést küld a megadott URL-címre, amíg teljesül a következő feltételek valamelyike:
@@ -2733,6 +2736,6 @@ Egyetlen logikai alkalmazás definíciójában az 5 percenként végrehajtandó 
 
 A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. A kimenő hívások vagy a végpontok elérésére irányuló kérések elvégzéséhez használt trigger vagy művelet alapján különböző hitelesítési típusok közül választhat. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [munkafolyamat-definíciós nyelvről](../logic-apps/logic-apps-workflow-definition-language.md)

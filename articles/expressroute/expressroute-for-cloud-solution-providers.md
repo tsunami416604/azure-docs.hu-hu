@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 31660d13fe69d393a19167eaea8a69bfb6260467
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 09fee610ccc15874481ecfd4693e4b89379caa7a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202072"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330036"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute felhőszolgáltatók (CSP) számára
 A Microsoft hatalmas léptékű szolgáltatásokat kínál a hagyományos viszonteladók és forgalmazók (CSP) számára, hogy gyorsan láthassák el ügyfeleiket új szolgáltatásokat és megoldásokat anélkül, hogy be kellene fektetniük az új szolgáltatások fejlesztésébe. Ahhoz, hogy lehetővé tegye a felhőszolgáltatók (CSP) számára az új szolgáltatások közvetlen felügyeletét, a Microsoft olyan programokat és API-kat biztosít, amelyek segítségével a CSP-k ügyfeleik nevében felügyelhetik a Microsoft Azure-erőforrásokat. Ezeknek az erőforrásoknak az egyike az ExpressRoute. Az ExpressRoute lehetővé teszi, hogy a CSP meglévő ügyfélerőforrásait csatlakoztassa az Azure-szolgáltatásokhoz. A ExpressRoute egy nagy sebességű privát kommunikációs hivatkozás az Azure szolgáltatásaihoz. 
@@ -60,7 +60,7 @@ Ez a csatlakozási forgatókönyv megköveteli, hogy az ügyfél közvetlenül k
 
 A két lehetőség közül választhat az ügyfél igényeinek megfelelően, és a jelenlegi igényeknek kell megadnia az Azure-szolgáltatásokat. A modellekkel és a kapcsolódó szerepköralapú hozzáférésvezérlés-, hálózat- és identitástervezési mintákkal kapcsolatos részletek az alábbi hivatkozásokon tekinthetők meg:
 
-* **Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)** – a RBAC a Azure Active Directoryon alapul.  Az Azure RBAC kapcsolatos további információkért lásd [itt](../role-based-access-control/role-assignments-portal.md).
+* **Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)** – az Azure RBAC a Azure Active Directoryon alapul.  Az Azure RBAC kapcsolatos további információkért lásd [itt](../role-based-access-control/role-assignments-portal.md).
 * **Hálózat** – A különféle hálózati témaköröket fedi le a Microsoft Azure-ban.
 * **Azure Active Directory (Azure ad)** – az Azure ad lehetővé teszi a Microsoft Azure és a külső gyártóktól származó SaaS-alkalmazások Identitáskezelés kezelését. További információ az Azure AD-ről: [itt](https://azure.microsoft.com/documentation/services/active-directory/).  
 
@@ -124,7 +124,7 @@ A használt modelltől – Szolgáltatóhoz való csatlakozás vagy Szolgáltat�
 
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A felhőszolgáltatói szolgáltatás segítségével anélkül növelheti az ügyfelei számára nyújtott értéket, hogy költséges infrastruktúra- és képességberuházásokat kellene eszközölnie, és így megtarthatja pozícióját, mint első számú szolgáltató a kiszervezések terén. A Microsoft Azure-ral való zökkenőmentes integráció a CSP API-n keresztül valósítható meg, amelynek segítségével a Microsoft Azure felügyelete integrálható meglévő felügyeleti keretrendszerekbe.  
 
 További információt az alábbi hivatkozásokat követve tekinthet meg:

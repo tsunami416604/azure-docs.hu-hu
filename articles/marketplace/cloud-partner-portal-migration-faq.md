@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bda72a72e8ac0adf48fd8981a6eccf40385469d5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 122de64e33778966d563cc8e94b46515e54769f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281400"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331209"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Gyakori kérdések az Cloud Partner Portalról a partneri központba való áttérésről
 
@@ -75,10 +75,10 @@ A Cloud Partner Portal által korábban támogatott összes típusú ajánlat t�
 
 A partner Centerben támogatott ajánlati típusok esetében az összes ajánlat az állapotuktól függetlenül mozgott. a draft, de a List és a Preview-only ajánlat is át lett helyezve.
 
-| Csomag típusa <img src="" width=150px>| Áthelyezte a partneri központba? <img src="" width=100px>| Következő lépések |
+| Csomag típusa <img src="" width=150px>| Áthelyezte a partneri központba? <img src="" width=100px>| További lépések |
 | --- | --- | --- |
-| SaaS | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](partner-center-portal/create-new-saas-offer.md). |
-| Virtuális gép | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace](azure-vm-create.md)-en. |
+| SaaS | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [SaaS-ajánlat tervezése a kereskedelmi piactéren](plan-saas-offer.md). |
+| Virtuális gép | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ a [virtuális gépek ajánlatának megtervezése](marketplace-virtual-machines.md)című témakörben található. |
 | Azure-alkalmazás | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt az [Azure-alkalmazás ajánlatának létrehozása](partner-center-portal/create-new-azure-apps-offer.md)című témakörben olvashat. |
 | Dynamics 365 Business Central | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 Business Central ajánlat](partner-center-portal/create-new-business-central-offer.md). |
 | Dynamics 365 a Customer engagement & PowerApps | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 for Customer Engagement & PowerApps ajánlat](partner-center-portal/create-new-customer-engagement-offer.md). |

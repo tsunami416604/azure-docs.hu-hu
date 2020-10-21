@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 17ec3c6d3b9b19b7bc6edcb82cef438e27189c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020099"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331991"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt figyelése az Azure-ban
 
@@ -57,7 +57,7 @@ Válassza ki az erőforrás **-ServiceFabric (mysfomsworkspace)**.
 
 Az **Áttekintés** lapon láthatók a csempék egy gráf formájában az összes engedélyezett megoldáshoz, beleértve az egyiket a Service Fabric. A Service Fabric Analytics megoldás folytatásához kattintson a **Service Fabric** gráfra.
 
-![Service Fabric megoldás](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![A Service Fabric gráfot bemutató képernyőkép.](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 Az alábbi képen a Service Fabric Analytics-megoldás kezdőlapja látható. Ez a Kezdőlap pillanatkép-nézetet jelenít meg a fürtben zajló eseményekről.
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 4c9cb1d0496fe05c208cfd446a51cbf4ef8e8d4e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108609"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332518"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 teljesítményének hangolása
 
@@ -25,7 +25,7 @@ A Data Lake Storage Gen1 méretezheti, hogy az összes elemzési forgatókönyv 
 
 Amikor adatfeldolgozást végez egy forrásoldali rendszerből Data Lake Storage Gen1ba, fontos figyelembe venni, hogy a forrás hardver, a forrás hálózati hardver és a Data Lake Storage Gen1 hálózati kapcsolata a szűk keresztmetszet.
 
-![Data Lake Storage Gen1 teljesítmény](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
+![Diagram, amely azt mutatja, hogy a forrás hardver, a forrás hálózati hardver és a Data Lake Storage Gen1 hálózati kapcsolat lehet a szűk keresztmetszet.](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
 Fontos, hogy az adatok áthelyezését ne befolyásolja ezek a tényezők.
 
@@ -100,7 +100,7 @@ Egy HDInsight-fürtben három réteg található, amelyek úgy állíthatók be,
 
 **Futtasson több csomóponttal és/vagy nagyobb méretű virtuális géppel rendelkező fürtöt.** Egy nagyobb fürt lehetővé teszi, hogy több FONALas tárolót futtasson az alábbi képen látható módon.
 
-![Data Lake Storage Gen1 teljesítmény](./media/data-lake-store-performance-tuning-guidance/VM.png)
+![A több SZÁLat tartalmazó tárolók használatát bemutató diagram.](./media/data-lake-store-performance-tuning-guidance/VM.png)
 
 **Használjon nagyobb hálózati sávszélességű virtuális gépeket.** A hálózati sávszélesség mennyisége szűk keresztmetszetet jelenthet, ha a Data Lake Storage Gen1 átviteli sebességnél kevesebb hálózati sávszélesség van. A különböző virtuális gépek eltérő hálózati sávszélességet fognak tartalmazni. Válasszon olyan virtuálisgép-típust, amely a legnagyobb lehetséges hálózati sávszélességgel rendelkezik.
 
@@ -108,7 +108,7 @@ Egy HDInsight-fürtben három réteg található, amelyek úgy állíthatók be,
 
 **Használjon kisebb FONALas tárolókat.** Csökkentse az egyes FONALak tárolóinak méretét, hogy több tárolót hozzon létre azonos mennyiségű erőforrással.
 
-![Data Lake Storage Gen1 teljesítmény](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+![A kisebb FONALas tárolók használatát bemutató diagram.](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
 
 A számítási feladattól függően mindig szükség van egy minimálisan szükséges szál-tároló méretre. Ha túl kis tárolót választ, a feladatok memórián kívüli problémákba fognak futni. Általában a FONALas tárolók nem lehetnek 1 GB-nál kisebbek. Ez általában a 3 GB-os FONALas tárolók esetében látható. Bizonyos munkaterhelések esetén nagyobb méretű FONALas tárolók szükségesek.
 
@@ -118,7 +118,7 @@ A számítási feladattól függően mindig szükség van egy minimálisan szük
 
 **Az összes rendelkezésre álló tároló használata.** Állítsa be, hogy a tevékenységek száma egyenlő vagy nagyobb legyen, mint a rendelkezésre álló tárolók száma, hogy az összes erőforrás használatban legyen.
 
-![Data Lake Storage Gen1 teljesítmény](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+![Az összes rendelkezésre álló tároló használatát bemutató diagram.](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
 
 **A sikertelen feladatok költségesek.** Ha az egyes feladatok nagy mennyiségű adattal dolgoznak fel, akkor a feladat meghibásodása költséges újrapróbálkozást eredményez. Ezért érdemes több feladatot létrehozni, amelyek mindegyike kis mennyiségű adat feldolgozását dolgozza fel.
 

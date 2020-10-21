@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 8cca75f7071b8b9c8d1108b82ebf8f7049ec316a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282580"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331821"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Bevezetés a kiépített átviteli sebességbe Azure Cosmos DB
 
@@ -96,7 +96,7 @@ A két modellt kombinálhatja. Az adatátviteli sebesség az adatbázison és a 
 
 Miután létrehozta az Azure Cosmos-tárolót vagy egy adatbázist, frissítheti a kiosztott átviteli sebességet. Az adatbázison vagy a tárolón konfigurálható maximális kiépített átviteli sebességnek nincs korlátja.
 
-### <a name="current-provisioned-throughput"></a>Aktuális kiépített átviteli sebesség
+### <a name="current-provisioned-throughput"></a><a id="current-provisioned-throughput"></a> Aktuális kiépített átviteli sebesség
 
 Lekérheti a tárolók vagy adatbázisok kiépített átviteli sebességét a Azure Portal vagy az SDK-k használatával:
 
@@ -136,6 +136,14 @@ A skálázási folyamat programozott módon ellenőrizhető az [aktuálisan kios
 
 [Azure monitor metrikák](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) használatával megtekintheti az erőforráson kiépített átviteli sebesség (ru/s) és tárterület előzményeit.
 
+## <a name="high-storage--low-throughput-program"></a><a id="high-storage-low-throughput-program"></a> Magas tárolási/alacsony átviteli sebességű program
+
+Az [aktuális kiosztott átviteli sebesség](#current-provisioned-throughput) című szakaszban leírtak szerint a tárolón vagy adatbázison kiépíthető minimális átviteli sebesség számos tényezőtől függ. Az egyik közülük a jelenleg tárolt adatok mennyisége, mivel a Azure Cosmos DB GB tárterületen legalább 10 RU/s kapacitást érvényesít.
+
+Ez olyan helyzetekben lehet fontos, amikor nagy mennyiségű adat tárolására van szükség, de az összehasonlításhoz alacsony átviteli sebességre van szükség. A forgatókönyvek jobb bevezetéséhez Azure Cosmos DB egy **"nagy tárolási/alacsony átviteli sebességű" programot** vezetett be, amely a jogosult fiókok esetében 10 – 1 értékre csökkenti az ru/s korlátot.
+
+Jelenleg legalább egy olyan tárolót vagy közös átviteli sebességű adatbázist kell használnia, amely a fiókban több mint 1 TB-nyi adatnak megfelelő jogosultságot tartalmaz. A programhoz való csatlakozáshoz és a teljes jogosultság felméréséhez mindössze annyit kell tennie, hogy kitölti [ezt a kérdőívet](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u). A Azure Cosmos DB csapat ezután nyomon követi és folytatja a bevezetést.
+
 ## <a name="comparison-of-models"></a>Modellek összehasonlítása
 Ez a táblázat a kiépítési standard (manuális) átviteli sebességének összehasonlítását mutatja be egy adatbázison és egy tárolón. 
 
@@ -149,7 +157,7 @@ Ez a táblázat a kiépítési standard (manuális) átviteli sebességének ös
 |Egy tároló logikai partíciójának maximális átviteli sebessége|10K RU/s|10K RU/s|10K RU/s|10K RU/s|
 |Tárolók logikai partícióinak maximális tárterülete (adatsorok és indexek)|20 GB|20 GB|20 GB|20 GB|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [logikai partíciókhoz](partitioning-overview.md).
 * Ismerje meg, hogyan hozhat [létre standard (manuális) Azure Cosmos-tárolón](how-to-provision-container-throughput.md).

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: devx-track-js
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4e8d7054fb0df265285bda223e360ea61612aaf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ca225f136b0c3a6fc8b47d00ff64064fe17d4ee
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263946"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281768"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Markdown csempe használata az Azure-irányítópultokon egyéni tartalom megjelenítéséhez
 
@@ -48,7 +48,7 @@ Az egyéni, statikus tartalmak megjelenítéséhez hozzáadhat egy Markdown csem
       ![Az URL-cím beírását bemutató képernyőkép](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > A további biztonság érdekében létrehozhat egy Markdown-fájlt, és tárolhatja azt egy [Azure Storage-fiók blobjában, ahol engedélyezve van a titkosítás](../storage/common/storage-service-encryption.md), majd mutasson a fájlra az URL-cím beállítás használatával. A Markdown-tartalom titkosítva van a Storage-fiók titkosítási beállításain keresztül. Csak a fájlra vonatkozó engedélyekkel rendelkező felhasználók láthatják a Markdown tartalmát az irányítópulton.
+      > A további biztonság érdekében létrehozhat egy Markdown-fájlt, és tárolhatja azt egy [Azure Storage-fiók blobjában, ahol engedélyezve van a titkosítás](../storage/common/storage-service-encryption.md), majd mutasson a fájlra az URL-cím beállítás használatával. A Markdown-tartalom titkosítva van a Storage-fiók titkosítási beállításain keresztül. Csak a fájlra vonatkozó engedélyekkel rendelkező felhasználók láthatják a Markdown tartalmát az irányítópulton. Állítson be egy CORS-szabályt a Storage-fiókon, hogy a Azure Portal ( _https://portal.azure.com/_ ) hozzáférhessen a blobban található Markdown-fájlhoz.
 
 1. A **kész** gombra kattintva zárja be a **Markdown szerkesztése** panelt. A tartalom megjelenik a Markdown csempén, amelyet a jobb alsó sarokban lévő fogantyú húzásával méretezheti át.
 

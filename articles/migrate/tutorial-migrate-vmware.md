@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan futtathatja a VMware virtuális gépek ügynök
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e263306cf18dfebe4b73f8d940b8eb5c99ed16f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530522"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310637"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök nélkül)
 
@@ -36,8 +36,8 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Az oktatóanyag elkezdése előtt:
 
-1. [Fejezze be az első oktatóanyagot](tutorial-prepare-vmware.md) az Azure és a VMware áttelepítésre való előkészítéséhez.
-2. Javasoljuk, hogy fejezze be a második oktatóanyagot a [VMWare virtuális gépek felméréséhez](tutorial-assess-vmware.md) , mielőtt áttelepíti őket az Azure-ba, de nem kell. 
+1. [Fejezze be az első oktatóanyagot](./tutorial-discover-vmware.md) az Azure és a VMware áttelepítésre való előkészítéséhez.
+2. Javasoljuk, hogy fejezze be a második oktatóanyagot a [VMWare virtuális gépek felméréséhez](./tutorial-assess-vmware-azure-vm.md) , mielőtt áttelepíti őket az Azure-ba, de nem kell. 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>A Azure Migrate Server áttelepítési eszköz hozzáadása
@@ -59,7 +59,7 @@ Ha még nem állított be Azure Migrate projektet, [ezt megteheti](how-to-add-to
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>A Azure Migrate berendezés beállítása
 
-Azure Migrate a kiszolgáló áttelepítése egy egyszerű VMware VM-készüléket futtat, amely a VMware virtuális gépek felderítésére, értékelésére és ügynök nélküli áttelepítésére szolgál. Ha követi az [értékelési oktatóanyagot](tutorial-assess-vmware.md), már beállította a készüléket. Ha nem, állítsa be most, a következő módszerek egyikével:
+Azure Migrate a kiszolgáló áttelepítése egy egyszerű VMware VM-készüléket futtat, amely a VMware virtuális gépek felderítésére, értékelésére és ügynök nélküli áttelepítésére szolgál. Ha követi az [értékelési oktatóanyagot](./tutorial-assess-vmware-azure-vm.md), már beállította a készüléket. Ha nem, állítsa be most, a következő módszerek egyikével:
 
 - **Petesejtek sablon**: [beállítás](how-to-set-up-appliance-vmware.md) egy VMware virtuális gépen egy letöltött petesejtek sablonnal.
 - **Parancsfájl**: [beállítás](deploy-appliance-script.md) egy VMware virtuális gépen vagy fizikai gépen PowerShell-telepítő parancsfájl használatával. Ezt a módszert akkor kell használni, ha nem állít be egy virtuális gépet egy PETESEJT-sablon használatával, vagy ha Azure Government.
@@ -210,13 +210,13 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
     - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](../security-center/security-center-just-in-time.md).
-    - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával.
+    - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md) használatával.
     - Az [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
     - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/security-center/) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/).
 - Figyelési és felügyeleti eszközök:
 -  Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

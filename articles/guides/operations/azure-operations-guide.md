@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 2508846e5dd2fcc96aade9ce64b599bb4154de00
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7b9e95c06dd48e78e42244d27d27d063bf5f0be7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203381"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327773"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Első lépések az Azure IT-kezelők számára
 
@@ -198,9 +198,9 @@ Ha túllépi a kredit összegét, a szolgáltatás le lesz tiltva a következő 
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Rendszergazdai hozzáférés biztosítása egy Azure-előfizetéshez
 
-A RBAC számos beépített szerepkörrel rendelkezik, amelyeket az engedélyek hozzárendeléséhez használhat. Ahhoz, hogy egy felhasználó egy Azure-előfizetés rendszergazdája legyen, rendelje hozzá őket a [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkörhöz az előfizetés hatókörében. A Tulajdonos szerepkör teljes hozzáférést biztosít a felhasználónak az előfizetés összes erőforrásához, beleértve a hozzáférés mások számára való delegálásának jogát is.
+Az Azure RBAC számos beépített szerepkörrel rendelkezik, amelyek segítségével engedélyeket rendelhet hozzá. Ahhoz, hogy egy felhasználó egy Azure-előfizetés rendszergazdája legyen, rendelje hozzá őket a [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkörhöz az előfizetés hatókörében. A Tulajdonos szerepkör teljes hozzáférést biztosít a felhasználónak az előfizetés összes erőforrásához, beleértve a hozzáférés mások számára való delegálásának jogát is.
 
-További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../../role-based-access-control/role-assignments-portal.md) ismertető cikket.
+További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Számlázási adatok megtekintése a Azure Portalban
 
@@ -238,7 +238,7 @@ A Resource Manager számos előnyt kínál:
 
 - Meghatározhatja az erőforrások közti függőségeket, hogy azok a megfelelő sorrendben legyenek telepítve.
 
-- Hozzáférés-vezérlést alkalmazhat az erőforráscsoport összes szolgáltatására, mivel a RBAC natív módon integrálva van a felügyeleti platformba.
+- Hozzáférés-vezérlést alkalmazhat az erőforráscsoport összes szolgáltatására, mivel az Azure RBAC natív módon integrálva van a felügyeleti platformba.
 
 - Az erőforrásokon címkéket alkalmazhat az előfizetésében lévő összes erőforrás logikus rendszerezéséhez.
 
@@ -286,7 +286,7 @@ Bármely szövegszerkesztőben Resource Manager-sablonokat hozhat létre. A Visu
 
 Végezetül átalakíthatja a meglévő erőforráscsoportokat egy újrafelhasználható sablonba a Azure Portalból. Ez akkor lehet hasznos, ha egy meglévő erőforráscsoport telepíthető sablonját szeretné létrehozni, vagy csak azt szeretné megvizsgálni, hogy az alapul szolgáló JSON-t kívánja-e használni. Egy erőforráscsoport exportálásához válassza az Automation- **parancsfájl** gombot az erőforráscsoport beállításainál.
 
-## <a name="security-of-azure-resources-rbac"></a>Azure-erőforrások biztonsága (RBAC)
+## <a name="security-of-azure-resources-azure-rbac"></a>Azure-erőforrások biztonsága (Azure RBAC)
 
 A felhasználói fiókokhoz operatív hozzáférést biztosíthat a megadott hatókörben: előfizetés, erőforráscsoport vagy egyedi erőforrás. Ez azt jelenti, hogy erőforrás-készletet telepíthet egy erőforráscsoport, például egy virtuális gép és minden kapcsolódó erőforrás számára, és engedélyeket adhat egy adott felhasználónak vagy csoportnak. Ez a módszer csak a célként megadott erőforráscsoporthoz tartozó erőforrásokhoz való hozzáférést korlátozza. Hozzáférést biztosíthat egyetlen erőforráshoz, például egy virtuális géphez vagy egy virtuális hálózathoz is.
 
@@ -306,7 +306,7 @@ A hozzáférés biztosításához rendeljen hozzá egy szerepkört a felhasznál
 
 - **Storage-fiók közreműködői**: az ezzel a szerepkörrel rendelkező felhasználók kezelhetik a tárolási fiókokat, de nem kezelhetik a Storage-fiókokhoz való hozzáférést.
 
-További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../../role-based-access-control/role-assignments-portal.md) ismertető cikket.
+További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
@@ -481,7 +481,7 @@ A virtuális hálózatok telepítéséhez több lehetőség is rendelkezésre á
 
 A hálózati biztonsági csoport segítségével biztonságossá teheti az Azure-beli virtuális hálózatokat. A NSG a hozzáférés-vezérlési listák (ACL) azon szabályainak listáját tartalmazza, amelyek engedélyezik vagy megtagadják a virtuális hálózatban lévő virtuálisgép-példányok hálózati forgalmát. A NSG társíthatja az alhálózatokhoz vagy az alhálózaton belüli egyedi virtuálisgép-példányokhoz is. Ha alhálózattal társít egy NSG, az ACL-szabályok az alhálózat összes virtuálisgép-példányára érvényesek lesznek. Emellett tovább korlátozhatja az egyes virtuális gépek forgalmát úgy, hogy közvetlenül az adott virtuális géppel társít egy NSG. További információ: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../../virtual-network/network-security-groups-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Windows rendszerű virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
 - [Linux rendszerű virtuális gép létrehozása](../../virtual-machines/linux/quick-create-portal.md)

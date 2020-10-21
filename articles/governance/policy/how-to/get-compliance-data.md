@@ -3,12 +3,12 @@ title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 36645d5eb50aaf571c608fc51127b47ac885777d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873625"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320421"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -88,7 +88,7 @@ Alapértelmezés szerint `az policy state trigger-scan` a elindítja az aktuáli
 az policy state trigger-scan --resource-group "MyRG"
 ```
 
-Azt is megteheti, hogy nem várja meg az aszinkron folyamat befejeződését, mielőtt folytatná a **nem várt** paramétert.
+Dönthet úgy is, hogy nem várja meg az aszinkron folyamat befejeződését, mielőtt folytatná a **No-WAIT** paramétert.
 
 #### <a name="on-demand-evaluation-scan---azure-powershell"></a>Igény szerinti értékelés vizsgálata – Azure PowerShell
 
@@ -156,6 +156,11 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
     "status": "Succeeded"
 }
 ```
+
+#### <a name="on-demand-evaluation-scan---visual-studio-code"></a>Igény szerinti értékelés vizsgálata – Visual Studio Code
+
+A Visual Studio Code-hoz készült Azure Policy-bővítmény képes egy adott erőforrásra vonatkozó értékelési vizsgálat futtatására. Ez a vizsgálat egy szinkron folyamat, ellentétben a Azure PowerShell és a REST metódusokkal.
+A részleteket és a lépéseket lásd: [igény szerinti értékelés a vs Code bővítménnyel](./extension-for-vscode.md#on-demand-evaluation-scan).
 
 ## <a name="how-compliance-works"></a>A megfelelőség működése
 

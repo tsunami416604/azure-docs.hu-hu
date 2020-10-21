@@ -67,6 +67,8 @@
       items:
         - name: Egy távoli fájl kódolása és streamelése REST használatával
           href: stream-files-tutorial-with-rest.md
+        - name: Felhasználó által kezelt kulcsok Media Services szolgáltatással
+          href: tutorial-byok.md
     - name: parancssori felület
       items:
         - name: Egy távoli fájl kódolása és streamelése parancssori felület használatával
@@ -175,6 +177,8 @@
         - name: Dinamikus titkosítás és kulcskézbesítés
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
+        - name: Felhasználó által kezelt kulcsok
+          href: concept-use-customer-managed-keys-byok.md
         - name: Több DRM-es rendszerek tervezése
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
@@ -385,7 +389,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Indítás
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions

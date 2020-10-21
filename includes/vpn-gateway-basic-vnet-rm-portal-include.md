@@ -1,27 +1,20 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 08/27/2020
+ms.date: 10/20/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89052450"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328434"
 ---
-Az alábbi lépéseket követve létrehozhat egy VNet a Resource Manager-alapú üzemi modellel és a Azure Portal. További információ a virtuális hálózatokról: [Virtual Network Overview (áttekintés](../articles/virtual-network/virtual-networks-overview.md)).
-
->[!NOTE]
->Ha egy virtuális hálózatot a létesítmények közötti architektúrák részeként használ, mindenképpen koordinálja a helyszíni hálózati rendszergazdájával, hogy kifaragjon egy olyan IP-címtartományt, amelyet kifejezetten ehhez a virtuális hálózathoz használhat. Ha egy duplikált címtartomány létezik a VPN-kapcsolat mindkét oldalán, a forgalom nem várt módon lesz átirányítva. Emellett, ha a virtuális hálózatot egy másik virtuális hálózathoz szeretné kapcsolni, a Címterület nem fedi át a másik virtuális hálózatot. Ennek megfelelően tervezze meg a hálózati konfigurációt.
->
->
-
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A **keresési erőforrások, szolgáltatások és dokumentumok (G +/)** területen írja be a *virtuális hálózat*kifejezést.
 

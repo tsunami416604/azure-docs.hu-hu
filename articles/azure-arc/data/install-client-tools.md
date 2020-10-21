@@ -9,19 +9,19 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d61bc99e851b28712262dba8512c06b6e8872c0e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ecf0f54913f980d879b562eb4aa8063acf6c4772
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108218"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320254"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Ügyféleszközök telepítése az Azure Arc-kompatibilis adatszolgáltatások üzembe helyezéséhez és felügyeletéhez
 
 > [!IMPORTANT]
-> Ha új havi kiadásra frissít, kérjük, frissítsen a Azure Data Studio legújabb verziójára, az Azure-beli adatcli-(azdata-) eszközre, valamint az Azure-beli adatcli-re és az Azure arc-bővítményekre a Azure Data Studiohoz.
+> Ha új havi kiadásra frissít, kérjük, frissítsen a Azure Data Studio legújabb verziójára, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] valamint az eszközre, valamint a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio Azure arc-bővítményeire is.
 
-Ez a dokumentum végigvezeti az Azure-beli adatcli (azdata), az Azure Data Studio, az Azure CLI (az) és a Kubernetes CLI-eszköz (kubectl) telepítésének lépésein az ügyfélszámítógépen.
+Ez a dokumentum végigvezeti a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , az Azure Data Studio, az Azure CLI (az) és a KUBERNETES CLI-eszköz (kubectl) telepítésének lépésein az ügyfélszámítógépen.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -31,10 +31,10 @@ Az alábbi táblázat az Azure arc-kompatibilis adatszolgáltatások létrehozá
 
 | Eszköz | Kötelező | Leírás | Telepítés |
 |---|---|---|---|
-| Azure-adatcli (azdata) | Igen | Big data-fürt telepítésére és felügyeletére szolgáló parancssori eszköz. Az Azure-beli adatcli tartalmaz egy parancssori segédprogramot is, amely az Azure SQL-és SQL Server-példányok és a postgres-kiszolgálók `azdata sql query` (egyetlen lekérdezés futtatása a parancssorból), `azdata sql shell` (interaktív rendszerhéj) és a parancsokkal való kapcsolódáshoz és lekérdezésekhez használható `azdata postgres query` `azdata postgres shell` . | [Telepítse](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
+| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] | Igen | Big data-fürt telepítésére és felügyeletére szolgáló parancssori eszköz. [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] a tartalmaz egy parancssori segédprogramot is, amely az Azure SQL-és SQL Server-példányok és a postgres-kiszolgálók `azdata sql query` (egyetlen lekérdezés futtatása a parancssorból), `azdata sql shell` (egy interaktív rendszerhéj) és a parancsok használatával való kapcsolódáshoz és lekérdezésekhez használható `azdata postgres query` `azdata postgres shell` . | [Telepítse](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
 | Azure Data Studio | Igen | Sokoldalú eszköz a különböző adatbázisok, például az Azure SQL, a SQL Server, a PostrgreSQL és a MySQL összekapcsolásához és lekérdezéséhez. A Azure Data Studio bővítmények felügyeleti élményt nyújtanak az Azure arc-kompatibilis adatszolgáltatásokhoz. | [Telepítse](/sql/azure-data-studio/download-azure-data-studio) |
-| Azure-adatcli-bővítmény a Azure Data Studio | Igen | Azure Data Studio bővítmény, amely telepíti az Azure-beli adatcli-t, ha még nem tette meg.| Telepítés a bővítmények katalógusában Azure Data Studio.|
-| Azure arc-bővítmény a Azure Data Studiohoz | Igen | Az Azure arc-kompatibilis adatszolgáltatások kezelési élményét biztosító Azure Data Studio bővítménye. A Azure Data Studiohoz tartozó Azure-adatcli-bővítmény függőséggel rendelkezik. | Telepítés a bővítmények katalógusában Azure Data Studio.|
+| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio bővítmény | Igen | Azure Data Studio-bővítmény, amely akkor lesz telepítve, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Ha még nem tette meg.| Telepítés a bővítmények katalógusában Azure Data Studio.|
+| Azure arc-bővítmény a Azure Data Studiohoz | Igen | Az Azure arc-kompatibilis adatszolgáltatások kezelési élményét biztosító Azure Data Studio bővítménye. A Azure Data Studio bővítményének függősége van [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] . | Telepítés a bővítmények katalógusában Azure Data Studio.|
 | PostgreSQL-bővítmény Azure Data Studio | Nem | PostgreSQL-bővítmény Azure Data Studio számára, amely felügyeleti funkciókat biztosít a PostgreSQL-hez. | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> Telepítés a bővítmények katalógusában Azure Data Studio.|
 | Azure CLI (az)<sup>1</sup> | Igen | Modern parancssori felület az Azure-szolgáltatások kezeléséhez. AK-alapú üzemelő példányokkal és az Azure arc-kompatibilis adatszolgáltatások leltárának és számlázási adatoknak az Azure-ba való feltöltésére használható. ([További információ](/cli/azure/?view=azure-cli-latest&preserve-view=true)). | [Telepítse](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) |
 | Kubernetes CLI (kubectl)<sup>2</sup> | Igen | Parancssori eszköz a Kubernetes-fürt kezeléséhez ([További információ](https://kubernetes.io/docs/tasks/tools/install-kubectl/)). | [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery) \| [Linuxos](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management) |
@@ -49,6 +49,6 @@ Az alábbi táblázat az Azure arc-kompatibilis adatszolgáltatások létrehozá
 
 <sup>3</sup> ha a PowerShellt használja, a curl a Invoke-WebRequest parancsmag aliasa.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure arc-adatkezelő létrehozása](create-data-controller.md)

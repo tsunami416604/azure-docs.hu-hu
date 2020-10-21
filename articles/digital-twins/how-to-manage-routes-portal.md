@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9d60297ba3bf16eac496703635ec8faf647c7f94
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 91c767fb031633900434b3aa07ccfae7cf7458cb
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279356"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332093"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Végpontok és útvonalak kezelése az Azure Digital Twins-ban (portál)
 
@@ -72,7 +72,7 @@ Megtekintheti az Azure Digital Twins-példány *végpontok* lapján létrehozott
 
 Ha a végpont létrehozása sikertelen, figyelje meg a hibaüzenetet, és néhány perc múlva próbálkozzon újra.
 
-Az Event Grid témakör az Azure Digital Twins-beli végpontként érhető el, a _név mezőben megadott_ név alatt. Ezt a nevet általában egy **esemény-útvonal**céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#event-routes).
+Az Event Grid témakör az Azure Digital Twins-beli végpontként érhető el, a _név mezőben megadott_ név alatt. Ezt a nevet általában egy **esemény-útvonal**céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#create-an-event-route).
 
 ### <a name="create-an-event-hubs-endpoint"></a>Event Hubs végpont létrehozása
 
@@ -94,7 +94,7 @@ Ha ellenőrizni szeretné, hogy a végpont sikeresen létrejött-e, tekintse meg
 
 Ha a végpont létrehozása sikertelen, figyelje meg a hibaüzenetet, és néhány perc múlva próbálkozzon újra.
 
-Az Event hub mostantól végpontként érhető el az Azure digitális Twins-ban, a _név_ mezőben megadott név alatt. Ezt a nevet általában egy **esemény-útvonal**céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#event-routes).
+Az Event hub mostantól végpontként érhető el az Azure digitális Twins-ban, a _név_ mezőben megadott név alatt. Ezt a nevet általában egy **esemény-útvonal**céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#create-an-event-route).
 
 ### <a name="create-a-service-bus-endpoint"></a>Service Bus végpont létrehozása
 
@@ -116,7 +116,7 @@ Ha ellenőrizni szeretné, hogy a végpont sikeresen létrejött-e, tekintse meg
 
 Ha a végpont létrehozása sikertelen, figyelje meg a hibaüzenetet, és néhány perc múlva próbálkozzon újra.
 
-A Service Bus témakör az Azure digitális Twins-beli végpontként érhető el, a _név mezőben megadott_ név alatt. Ezt a nevet általában egy **esemény-útvonal**céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#event-routes).
+A Service Bus témakör az Azure digitális Twins-beli végpontként érhető el, a _név mezőben megadott_ név alatt. Ezt a nevet általában egy **esemény-útvonal**céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#create-an-event-route).
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Végpont létrehozása a kézbesítetlen levelekkel
 
@@ -126,7 +126,7 @@ Ha olyan végpontot szeretne létrehozni, amelyen engedélyezve van a kézbesít
 
 Az API-kkal kapcsolatos utasításokért tekintse meg a jelen cikk [*API-k és parancssori felületének*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) verzióját.
 
-## <a name="event-routes"></a>Eseményútvonalak
+## <a name="create-an-event-route"></a>Esemény útvonalának létrehozása
 
 Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elküldéséhez meg kell határoznia egy **esemény-útvonalat**. Ezek az útvonalak lehetővé teszik a fejlesztők számára, hogy az események áramlását a rendszeren és az alárendelt szolgáltatásokon keresztül továbbítsák. További információk az esemény-útvonalakról a [*fogalmakban: az Azure Digital Twins eseményeinek továbbítása*](concepts-route-events.md).
 
@@ -135,7 +135,7 @@ Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elkül
 >[!NOTE]
 >Ha nemrég telepítette a végpontokat, ellenőrizze, hogy készen állnak-e a telepítésre, **mielőtt** új esemény-útvonalra próbálja használni őket. Ha nem tudja beállítani az útvonalat, mert a végpontok nem állnak készen, várjon néhány percet, és próbálkozzon újra.
 
-### <a name="create-an-event-route"></a>Esemény útvonalának létrehozása 
+### <a name="creation-steps-with-the-azure-portal"></a>A létrehozás lépései a Azure Portal
 
 Az események útvonalának definíciója az alábbi elemeket tartalmazza:
 * A használni kívánt útvonal neve
@@ -161,7 +161,7 @@ Ahhoz, hogy az útvonal engedélyezve legyen, legalább **egy esemény-útválas
 
 Ha elkészült, nyomja meg a _Save (Mentés_ ) gombot az esemény útvonalának létrehozásához.
 
-### <a name="filter-events"></a>Események szűrése
+## <a name="filter-events"></a>Események szűrése
 
 A fentiekben leírtak szerint az útvonalak **szűrő** mezővel rendelkeznek. Ha az útvonalon található szűrő értéke, a rendszer `false` nem küld eseményeket a végpontnak. 
 
@@ -219,7 +219,7 @@ Itt láthatók a támogatott útválasztási szűrők. A *szűrési szöveg sém
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)

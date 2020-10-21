@@ -6,14 +6,14 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3441d7c7f42c58928bb97c945e7b1e7673f7afa
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877100"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328879"
 ---
-# <a name="configure-device-redirections"></a>Eszköz átirányításának konfigurálása
+# <a name="configure-device-redirections"></a>Eszközátirányítások konfigurálása
 
 A Windows rendszerű virtuális asztali környezethez tartozó eszközök átirányításának konfigurálása lehetővé teszi, hogy a távoli munkamenetben nyomtatókat, USB-eszközöket, mikrofonokat és más perifériákat használjon. Egyes eszközök átirányításához a RDP protokoll (RDP) tulajdonságok és a Csoportházirend beállítások módosítása szükséges.
 
@@ -50,7 +50,10 @@ Az eszköz átirányításának konfigurálásához a következő RDP-tulajdons�
 - `camerastoredirect:s:*` átirányítja az összes kamerát.
 - `camerastoredirect:s:` letiltja a kamera átirányítását.
 
-Az egyes kamerákat a KSCATEGORY_VIDEO_CAMERA felületek pontosvesszővel tagolt listája alapján is átirányíthatja, például: `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` .
+>[!NOTE]
+>Annak ellenére, hogy a `camerastoredirect:s:` tulajdonság le van tiltva, a helyi kamerák átirányíthatók a `devicestoredirect:s:` tulajdonságon keresztül. A kamera-átirányítási készlet teljes letiltásához `camerastoredirect:s:` , illetve `devicestoredirect:s:` a Plug and Play eszközök olyan részhalmazának beállításához vagy definiálásához, amely nem tartalmaz kamerát.
+
+Az egyes kamerákat a KSCATEGORY_VIDEO_CAMERA felületek pontosvesszővel tagolt listája alapján is átirányíthatja, például: `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` . 
 
 ### <a name="clipboard-redirection"></a>Vágólap-átirányítás
 
@@ -78,7 +81,7 @@ Másodszor állítsa be a következő Csoportházirend a felhasználó helyi esz
 - Navigáljon a **számítógép-konfigurációs**  >  **házirendek** >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztali kapcsolat ügyfél**távoli elérési útjának  >  **USB-eszközök átirányítása**.
 - Válassza a **más támogatott távoli USB-eszközök RDP-átirányítása a számítógépről lehetőséget**.
 - Válassza az **engedélyezve** lehetőséget, majd válassza ki a **rendszergazdákat és a felhasználókat a távoli USB-átirányítás hozzáférési jogosultságok** mezőben.
-- Kattintson az **OK** gombra.
+- Válassza az **OK** lehetőséget.
 
 ### <a name="plug-and-play-device-redirection"></a>Plug and Play eszközök átirányítása
 

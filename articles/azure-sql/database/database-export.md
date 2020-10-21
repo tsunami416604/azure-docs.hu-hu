@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
-ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0e62a7d9b9beb8ecdfaabdd44fdd547dd78d38f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443804"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328190"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exportálás BACPAC-fájlba – Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -48,7 +48,7 @@ Az [Azure SQL felügyelt példányairól](../managed-instance/sql-managed-instan
 
 1. Ha a [Azure Portal](https://portal.azure.com)segítségével szeretne exportálni egy adatbázist, nyissa meg az adatbázis lapját, és kattintson az **Exportálás** gombra az eszköztáron.
 
-   ![Adatbázis-exportálás](./media/database-export/database-export1.png)
+   ![Képernyőkép, amely kiemeli az Exportálás gombot.](./media/database-export/database-export1.png)
 
 2. Adja meg a BACPAC fájlnevét, válasszon ki egy meglévő Azure Storage-fiókot és-tárolót az exportáláshoz, majd adja meg a megfelelő hitelesítő adatokat a forrás-adatbázishoz való hozzáféréshez. Ha Ön az Azure-rendszergazda, az Azure-rendszergazda nem **rendelkezik rendszergazdai** engedélyekkel az Azure SQL Database vagy az Azure SQL felügyelt példányában.
 
@@ -104,7 +104,7 @@ while ($exportStatus.Status -eq "InProgress")
 $exportStatus
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az adatbázisok archiválási célú exportálásának alternatívájaként a biztonsági másolatok hosszú távú [megőrzése](long-term-retention-overview.md)című témakörből megismerheti az önálló adatbázisok és a készletezett adatbázisok hosszú távú biztonsági mentését. Az SQL-ügynök feladatainak használatával ütemezheti az [adatbázis-másolatok biztonsági mentését](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) a hosszú távú biztonsági mentés alternatívájaként.
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a5d8c36382433024efd1f1cc6ba9fd878d28ddc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87461272"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329525"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Oktatóanyag: Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps használatával
 
@@ -243,7 +243,7 @@ Gratulálunk, sikeresen létrehozott és futtatott egy logikai alkalmazást, ame
 
 Más konfigurációváltozásokat is monitorozhat eseményrácsok és logikai alkalmazások segítségével, például:
 
-* Valamely virtuális gép szerepköralapú hozzáférés-vezérlési (RBAC) jogokat kap.
+* Egy virtuális gép megkapja az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) jogosultságait.
 * Egy hálózati adapter (NIC) egy hálózati biztonsági csoportja (NSG) módosul.
 * Lemezeket adnak hozzá vagy törölnek egy virtuális gépen.
 * Egy nyilvános IP-címet rendelnek egy virtuális gép hálózati adapteréhez.

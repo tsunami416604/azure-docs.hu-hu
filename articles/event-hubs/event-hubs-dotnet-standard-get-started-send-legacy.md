@@ -4,12 +4,12 @@ description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d33ebcabb728cf2fbf43b393de5eec6cb58af3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8819a95364bf41c6f9837c3db31a9800968d096c
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010698"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332161"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Események küldése vagy fogadása az Azure Event Hubs a .NET Core használatával (Microsoft. Azure. EventHubs)
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről a **Microsoft. Azure. EventHubs** .net Core Library használatával.
@@ -359,10 +359,10 @@ A következő lépéseket végrehajtva adja hozzá a .NET Standard kódtár [**M
 4. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a következő cikkeket:
 
-- [Szerepköralapú hozzáférés-vezérlési (RBAC) minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
+- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
     Ezek a minták a régi **Microsoft. Azure. EventHubs** könyvtárat használják, de egyszerűen frissítheti a legújabb **Azure. Messaging. EventHubs** könyvtár használatával. Ha át szeretné helyezni a mintát a régi könyvtárból az új verzióra, tekintse meg a [Microsoft. Azure. EventHubs-ről az Azure. Messaging. EventHubs-re való Migrálás útmutatóját](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 - [EventProcessorHost](event-hubs-event-processor-host.md)

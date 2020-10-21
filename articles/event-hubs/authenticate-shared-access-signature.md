@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan hitelesítheti Event Hubs erőforrások
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f0cdf37963e40d871ad1079e9ccd5d0eb61fa2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270100"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332433"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Hozzáférés hitelesítése Event Hubs erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával
 A közös hozzáférésű aláírás (SAS) részletesen szabályozza az Ön által a közös hozzáférési aláírással rendelkező ügyfelek számára biztosított hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
@@ -218,11 +218,11 @@ Ha például az engedélyezési szabályok hatókörét úgy szeretné meghatár
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Event Hubs ügyfelek hitelesítése SAS használatával 
 A Event Hubs gyártók által generált adatokból felhasznált háttérbeli alkalmazások hitelesítéséhez Event Hubs jogkivonat-hitelesítéshez az szükséges, hogy az ügyfelek rendelkezzenek a **felügyeleti jogokkal vagy** a Event Hubs névtér vagy az Event hub-példányhoz vagy a témakörhöz rendelt **figyelési** jogosultságokkal. Az adatok felhasználása Event Hubs fogyasztói csoportok használatával történik. Míg a SAS-szabályzat részletes hatókört biztosít, ez a hatókör csak az entitás szintjén van meghatározva, és nem a fogyasztói szinten. Ez azt jelenti, hogy a névtér szintjén vagy az Event hub-példányon vagy a témakör szintjén megadott jogosultságok az adott entitás fogyasztói csoportjaira lesznek alkalmazva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
 - [Engedélyezés SAS használatával](authenticate-shared-access-signature.md)
-- [Engedélyezés a szerepköralapú hozzáférés-vezérlés (RBAC) használatával](authenticate-shared-access-signature.md)
+- [Engedélyezés az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával](authenticate-shared-access-signature.md)
 - [További információ a Event Hubs](event-hubs-about.md)
 
 Tekintse meg a következő kapcsolódó cikkeket:

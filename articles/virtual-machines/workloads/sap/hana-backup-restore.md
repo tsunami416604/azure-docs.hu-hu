@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c2b606059f92cafc44e383c2aced0d6bed467c2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5fdaa1346e4837b3bf611d964158d132dcdfeeda
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149894"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282680"
 ---
-# <a name="backup-and-restore-on-sap-hana-on-azure"></a>SAP HANA biztonsági mentése és visszaállítása az Azure-ban
+# <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>SAP HANA biztonsági mentése és visszaállítása a HANA nagyméretű példányain
 
 >[!IMPORTANT]
 >Ez a cikk nem helyettesíti a SAP HANA adminisztrációs dokumentációt vagy az SAP-megjegyzéseket. Reméljük, hogy alapos ismeretekkel rendelkezik a SAP HANA adminisztrációval és műveletekkel kapcsolatban, különösen a biztonsági mentés, a visszaállítás, a magas rendelkezésre állás és a vész-helyreállítás terén. Ebben a cikkben a SAP HANA studióból származó képernyőképek jelennek meg. A tartalom, a struktúra és az SAP felügyeleti eszközeinek és az eszközöknek a tulajdonságai megváltozhatnak SAP HANA kiadásról a kiadásra.

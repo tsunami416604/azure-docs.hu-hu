@@ -4,12 +4,12 @@ description: Ez a cikk útmutatást nyújt a Azure DevTest Labs szervezeten bel�
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0438445f99a22ed9fd239156044d6b3f6b477edc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480847"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330614"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>A Azure DevTest Labs megvalósításának összehangolása
 Ez a cikk a Azure DevTest Labs gyors üzembe helyezésének és megvalósításának ajánlott módszerét ismerteti. Az alábbi képen az általános folyamat részletes útmutatást nyújt a különböző iparági követelmények és forgatókönyvek támogatásának rugalmasságával kapcsolatban.
@@ -36,7 +36,7 @@ A hálózati topológia bevezetését követően az első/kísérleti labor a k�
 
 1. Hozzon létre egy kezdeti DevTest Labs-környezetet.
 2. Határozza meg az engedélyezett virtuálisgép-rendszerképeket és-méreteket a laborban való használathoz. Döntse el, hogy az egyéni lemezképeket fel lehet-e tölteni az Azure-ba a DevTest Labs szolgáltatással való használatra.
-3. Biztonságos hozzáférés a laborhoz a tesztkörnyezet kezdeti hozzáférés-vezérlésének (RBAC) létrehozásával (labor-tulajdonosok és labor-felhasználók). Javasoljuk, hogy a DevTest Labs szolgáltatással rendelkező, szinkronizált Active Directory-fiókokat használjon Azure Active Directory.
+3. Biztonságos hozzáférés a laborhoz kezdeti Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) létrehozásával a laborhoz (labor owners and labor Users). Javasoljuk, hogy a DevTest Labs szolgáltatással rendelkező, szinkronizált Active Directory-fiókokat használjon Azure Active Directory.
 4. Konfigurálja a DevTest Labs szolgáltatást olyan házirendek használatára, mint az ütemtervek, a Cost Management, a igényelhető virtuális gépek, az egyéni lemezképek vagy a képletek.
 5. Hozzon létre egy online tárházat, például az Azure Repos/git programot.
 6. Döntse el, hogy a nyilvános vagy privát adattárakat vagy a kettő kombinációját használja-e. JSON-sablonok rendszerezése és hosszú távú fenntartása.

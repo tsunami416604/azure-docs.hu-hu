@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576854"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331685"
 ---
 # <a name="introduction-to-azure-defender"></a>Az Azure Defender bemutatása
 
@@ -36,13 +36,14 @@ Amikor engedélyezi az Azure Defender számára a Azure Security Center **díjsz
 - [Azure Defender App Service-hez](defender-for-app-service-introduction.md)
 - [Azure Defender tároláshoz](defender-for-storage-introduction.md)
 - [Azure Defender SQL-hez](defender-for-sql-introduction.md)
-- [Azure Defender IoT-hez](defender-for-iot-introduction.md)
 - [Azure Defender Kuberneteshez](defender-for-kubernetes-introduction.md)
 - [Azure Defender tárolóregisztrációs adatbázisokhoz](defender-for-container-registries-introduction.md)
 - [Azure Defender Key Vaulthoz](defender-for-key-vault-introduction.md)
 
 Ezeket a csomagokat a Security Center dokumentációjában külön ismertetjük.
 
+> [!TIP]
+> A IoT készült Azure Defender (előzetes verzió) egy külön termék. Az [Azure Defender IoT (előzetes verzió) bevezetésével kapcsolatos](../defender-for-iot/overview.md)összes részletet megtalálja. 
 
 ## <a name="hybrid-cloud-protection"></a>Hibrid Felhőbeli védelem
 
@@ -50,7 +51,6 @@ Az Azure-környezet védelme mellett hozzáadhat Azure Defender-képességeket i
 
 - A nem Azure-beli kiszolgálók elleni védelem
 - A virtuális gépeket más felhőkben (például AWS és GCP) is védetté teheti
-- IoT-eszközök megóvása
 
 Az adott környezetnek megfelelően testre szabott fenyegetési intelligenciát és rangsorolt riasztásokat kap, így a leginkább a legfontosabb dolgokra koncentrálhat.
 
@@ -92,7 +92,7 @@ További információ a következő lapokon:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta az Azure Defender előnyeit. 
 

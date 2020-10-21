@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34b4a7395102549dfea6f9d51ef8d1216bacddba
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230432"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327705"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure biztonsági alapkonfiguráció a HDInsight-hez
 
@@ -142,7 +142,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 **Útmutató**: szabványos biztonsági konfigurációk definiálása és implementálása az Azure HDInsight-fürthöz kapcsolódó hálózati erőforrásokhoz. Használjon Azure Policy aliasokat a "Microsoft. HDInsight" és a "Microsoft. Network" névterekben egyéni szabályzatok létrehozásához az Azure HDInsight-fürt hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez.
 
-Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, így például Azure Resource Manager sablonokat, RBAC-vezérlőket és házirendeket egyetlen terv definíciójában. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
+Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például a Azure Resource Manager sablonokat, az Azure RBAC-vezérlőket és a házirendeket egyetlen terv definíciójában. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
 Az elérhető Azure Policy aliasok megtekintése:
 
@@ -1296,7 +1296,7 @@ A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal é
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

@@ -4,12 +4,12 @@ description: Ez a cikk áttekintést nyújt az Azure Event Hubs (előzetes verzi
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938797"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330495"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry az Event Hubsban (előzetes verzió)
 Számos esemény-adatfolyam és üzenetküldési forgatókönyv esetén az esemény vagy az üzenet tartalma strukturált adatokat tartalmaz, amelyek szerializálása vagy deszerializálása séma-vezérelt formátum, például Apache Avro használatával történik. A küldők és a fogadók is ellenőrizhetik az adatok integritását egy séma-dokumentummal, mint a JSON-sémával. A séma által vezérelt formátumok esetében a séma elérhetővé tétele az üzenet fogyasztói számára előfeltétel, hogy a fogyasztó képes legyen deszerializálni az adatmennyiséget. 
@@ -50,8 +50,8 @@ Az alábbi ábrán a séma beállításjegyzékének Event Hubs:
 ## <a name="standard-vs-dedicated-limits"></a>Standard és dedikált korlátok
 A határértékek (például a névtérben lévő séma-csoportok száma) és a Event Hubs standard és dedikált szintjei esetében különböznek a [séma beállításjegyzékének korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations) című témakörben.
 
-## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
-Ha programozott módon fér hozzá a séma beállításjegyzékéhez, regisztrálnia kell egy alkalmazást Azure Active Directory (Azure AD-ben), és hozzá kell adnia az alkalmazás rendszerbiztonsági tag szerepét az egyik szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörhöz:
+## <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
+Ha programozott módon fér hozzá a séma beállításjegyzékéhez, regisztrálnia kell egy alkalmazást Azure Active Directory (Azure AD) szolgáltatásban, és hozzá kell adnia az alkalmazás rendszerbiztonsági tag az egyik Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) szerepkörhöz:
 
 | Szerepkör | Leírás | 
 | ---- | ----------- | 
@@ -62,7 +62,7 @@ Ha programozott módon fér hozzá a séma beállításjegyzékéhez, regisztrá
 
 Az alkalmazások a Azure Portal használatával történő regisztrálásával kapcsolatos utasításokért lásd: [alkalmazás regisztrálása az Azure ad](../active-directory/develop/quickstart-register-app.md)-ben. Jegyezze fel az ügyfél-azonosítót (az alkalmazás AZONOSÍTÓját), a bérlő AZONOSÍTÓját és a kódban használandó titkot. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha meg szeretné tudni, hogyan hozhat létre egy séma-beállításjegyzéket a Azure Portal használatával, tekintse meg a [Event Hubs séma-beállításjegyzék létrehozása a Azure Portal használatával](create-schema-registry.md)című témakört.
 - Tekintse meg az alábbi, **Avro ügyféloldali függvénytár** -mintákat.

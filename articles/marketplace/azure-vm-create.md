@@ -1,22 +1,22 @@
 ---
 title: Hozzon létre egy virtuálisgép-ajánlatot az Azure Marketplace-en.
-description: Ismerje meg, hogyan hozhat létre virtuálisgép-ajánlatokat az Azure Marketplace-en.
+description: Ismerje meg, hogyan hozhat létre virtuálisgép-ajánlatokat a Microsoft kereskedelmi piactéren.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/19/2020
-ms.openlocfilehash: 9395b607f235ab606c9013f9273c4162b8c953d7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.date: 10/20/2020
+ms.openlocfilehash: 5964292d7037465456efe22283a5552a2bfc7ad8
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284297"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331260"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en
 
-Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Azure-beli virtuális gépeket az [Azure Marketplace](https://azuremarketplace.microsoft.com/)-en. A Windows-alapú és a Linux-alapú virtuális gépeket is tartalmazza, amelyek egy operációs rendszert, egy virtuális merevlemezt (VHD) és legfeljebb 16 adatlemezt tartalmaznak.
+Ez a cikk bemutatja, hogyan hozhat létre Azure-beli virtuális gépeket az [Azure Marketplace](https://azuremarketplace.microsoft.com/)-hez. A Windows-alapú és a Linux-alapú virtuális gépeket is tartalmazza, amelyek egy operációs rendszert, egy virtuális merevlemezt (VHD) és legfeljebb 16 adatlemezt tartalmaznak.
 
 Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner Centerben](partner-center-portal/create-account.md). Győződjön meg arról, hogy a fiók regisztrálva van a kereskedelmi piactér programban.
 
@@ -79,7 +79,7 @@ A [Cloud Solution Provider (CSP)](https://azure.microsoft.com/offers/ms-azr-0145
 
 Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a folytatáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Virtuálisgép-ajánlat tulajdonságainak konfigurálása](azure-vm-create-properties.md)
 - [Ajánlatlistákra vonatkozó ajánlott eljárások](gtm-offer-listing-best-practices.md)

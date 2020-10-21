@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331199"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311221"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory jelentéskészítés és figyelés üzembe helyezésének megtervezése
 
@@ -73,7 +73,7 @@ Ebben a projektben megadhatja azokat a célközönségeket, amelyek felhasználj
 
 ### <a name="engage-the-right-stakeholders"></a>A megfelelő résztvevők bevonása
 
-A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak elérhetővé. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans). Gondoskodjon arról is, hogy a projektben szereplő érintett szerepkörök jól megértettek legyenek az érintett felek és a projekt bemeneti és elszámoltathatóság dokumentálása révén.
+A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak elérhetővé. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](../fundamentals/active-directory-deployment-plans.md). Gondoskodjon arról is, hogy a projektben szereplő érintett szerepkörök jól megértettek legyenek az érintett felek és a projekt bemeneti és elszámoltathatóság dokumentálása révén.
 
 ### <a name="plan-communications"></a>A kommunikáció tervezése
 
@@ -97,9 +97,9 @@ A jelentéskészítés és a monitorozás az üzleti igények kielégítésére 
 
 * Az üzleti igények kielégítéséhez szükséges megoldás
 * Örülök, hogy meg kell felelnie az üzleti igényeknek
-* Nem alkalmazható
+* Nem értelmezhető
 
-|Terület |Leírás |
+|Terület |Description |
 |-|-|
 |Megőrzés| **30 napnál hosszabb napló megőrzése**. Jogi vagy üzleti követelmények miatt a naplókat és az Azure AD bejelentkezési naplóit 30 napnál hosszabb ideig kell tárolni. |
 |Elemzés| **A naplóknak kereshetőnek kell lenniük**. A tárolt naplóknak analitikai eszközökkel kell kereshetőnek lennie. |
@@ -133,7 +133,7 @@ Ismerje meg, hogyan [telepítheti és használhatja a log Analytics-nézeteket a
 
 Az Azure Event hub-ba történő útválasztási naplók lehetővé teszik a harmadik féltől származó SIEM-eszközökkel való integrációt. Ez az integráció lehetővé teszi, hogy az Azure AD-tevékenységek naplójának adatait kombinálja a SIEM által kezelt egyéb adatszolgáltatásokkal, így a környezet mélyebb betekintést biztosít. 
 
-További információ [a naplók eseményközpontokba való streameléséről](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+További információ [a naplók eseményközpontokba való streameléséről](./tutorial-azure-monitor-stream-logs-to-event-hub.md).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Az Azure AD jelentéskészítési és figyelési műveleteinek és biztonságának megtervezése
 

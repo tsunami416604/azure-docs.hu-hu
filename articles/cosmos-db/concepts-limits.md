@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708951"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329372"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -19,7 +19,7 @@ Ez a cikk áttekintést nyújt az Azure Cosmos DB különböző erőforrásaihoz
 
 ## <a name="storage-and-database-operations"></a>Tárolási és adatbázis-műveletek
 
-Miután létrehozta az előfizetéséhez tartozó Azure Cosmos-fiókot, a fiókban lévő adatokat [adatbázisok, tárolók és elemek létrehozásával](databases-containers-items.md)kezelheti.
+Miután létrehozta az előfizetéséhez tartozó Azure Cosmos-fiókot, a fiókban lévő adatokat [adatbázisok, tárolók és elemek létrehozásával](account-databases-containers-items.md)kezelheti.
 
 ### <a name="provisioned-throughput"></a>Kiosztott átviteli sebesség
 
@@ -27,15 +27,15 @@ Az átviteli sebességet tároló szinten vagy adatbázis-szinten is kiépíthet
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Maximális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](create-support-request-quota-increase.md) |
-| Maximális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](create-support-request-quota-increase.md) |
+| Maximális RUs/tároló ([dedikált teljesítményű kiépített mód](account-databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](create-support-request-quota-increase.md) |
+| Maximális RUs/adatbázis ([megosztott teljesítményű kiépített mód](account-databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](create-support-request-quota-increase.md) |
 | Maximális RUs/(logikai) partíció | 10,000 |
 | Maximális tárterület az összes elem/(logikai) partíció között | 20 GB |
 | Eltérő (logikai) partíciós kulcsok maximális száma | Korlátlan |
 | Tárolók maximális száma | Korlátlan |
 | Tárolók maximális száma adatbázis szerint | Korlátlan |
 | A mellékletek maximális mérete (a melléklet funkció elavult) | 2 GB |
-| Minimálisan szükséges RUs 1 GB-onként | 10 RU/s |
+| 1 GB-os minimálisan szükséges RU/s | 10 RU/s<br>**Megjegyzés:** ha a tároló vagy az adatbázis több mint 1 TB adatmennyiséget tartalmaz, előfordulhat, hogy a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" program](set-throughput.md#high-storage-low-throughput-program) használatára. |
 
 > [!NOTE]
 > Ha többet szeretne megtudni a tárolási vagy átviteli sebességre vonatkozó magasabb korlátot igénylő munkaterhelések kezelésével kapcsolatos ajánlott eljárásokról, olvassa el [a szintetikus partíciós kulcs létrehozása](synthetic-partition-keys.md)című témakört.
@@ -55,8 +55,8 @@ A tárolók vagy adatbázisok aktuális és minimális átviteli sebessége a Az
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Minimális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimális RUs/tároló ([dedikált teljesítményű kiépített mód](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimális RUs/adatbázis ([megosztott teljesítményű kiépített mód](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Egy megosztott átviteli sebességű adatbázisban lévő minimális RUs/tároló | 100 |
 
 A Cosmos DB az SDK-k vagy a portál használatával támogatja a tárolók vagy adatbázisok rugalmas skálázását. Az egyes tárolók a minimális és a maximális érték között 10 – 100-szeres skálán belül, szinkronban és azonnal méretezhetők. Ha a kért átviteli sebesség kívül esik a tartományon, a skálázás aszinkron módon történik. Az aszinkron skálázás perctől akár órákig is eltarthat, a tárolóban kért átviteli sebességtől és az adattároló méretétől függően.  
@@ -248,7 +248,7 @@ A következő táblázat felsorolja az [ingyenes szintű fiókok Azure Cosmos db
 
   A fentiek mellett a [fiókra vonatkozó korlátok](#per-account-limits) az ingyenes szintű fiókok esetében is érvényesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 

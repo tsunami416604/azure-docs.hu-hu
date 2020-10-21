@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2020
+ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: c7a5a02a063f90953982d42fe9c7d2c6dc199b2a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1b49ac357fd021b23272112a24ae9371d12bc042
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282294"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331583"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -162,6 +162,10 @@ Ismerje meg az Azure-előtérben lévő összes dokumentált [időtúllépést �
 
 A szabályok motorjának konfigurációja körülbelül 10 – 15 percet vesz igénybe a frissítés befejezéséhez. A szabály a frissítés befejeződése után is érvénybe lép. 
 
+### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-vice-versa"></a>Konfigurálható Azure CDN az előtérben található profil mögött vagy fordítva?
+
+Az Azure bejárati ajtó és a Azure CDN nem konfigurálható együtt, mert mindkét szolgáltatás ugyanazt az Azure Edge-helyet használja, amikor válaszol a kérelmekre. 
+
 ## <a name="performance"></a>Teljesítmény
 
 ### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Hogyan támogatja az Azure bejárati ajtó a magas rendelkezésre állást és a méretezhetőséget?
@@ -271,7 +275,7 @@ A naplók elérhetők az Azure-előtérben. A portálon kattintson a **tevékeny
 
 Igen, az Azure bejárati ajtó támogatja a riasztásokat. A riasztások a metrikák használatára vannak konfigurálva. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

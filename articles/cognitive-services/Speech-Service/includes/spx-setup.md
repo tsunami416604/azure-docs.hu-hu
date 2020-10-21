@@ -5,16 +5,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 3c176f103371bfb1b35231f222b2045f1f4a3ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 203ba2988d817e3e396fd8aec3db00eba9832041
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327046"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92324951"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
 #### <a name="windows-install"></a>[Windows-telepítés](#tab/windowsinstall)
+
+> [!NOTE]
+> Windows rendszeren a platformhoz a [Microsoft Visual C++ terjeszthető változata szükséges a Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -hez. Ha első alkalommal telepíti ezt, a Windows újraindítására lehet szükség.
 
 Kövesse az alábbi lépéseket a Speech CLI Windows rendszeren történő telepítéséhez:
 

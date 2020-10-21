@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: efee261478cdc8b9b5349ef4c69ab5fc250315c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc12d1359ab7b6f664326cd3be448b79809c53e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619457"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332195"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Új bérlők kiépítése és katalogizálása az alkalmazással a bérlői SaaS-minták alapján
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Amikor egy bérlő számára telepít üzembe egy alkalmazást, az alkalmazás �
 
 Noha minden bérlő alkalmazása és adatbázisa teljesen elkülönített, különböző felügyeleti és elemzési forgatókönyvek működhetnek a bérlők között.  Például az alkalmazás új kiadásához tartozó séma módosítása az egyes bérlői adatbázisok sémájának módosítását igényli. A jelentéskészítési és elemzési forgatókönyvekhez szükség lehet a bérlői adatbázisokhoz való hozzáférésre is, függetlenül attól, hogy hol vannak üzembe helyezve.
 
-   ![alkalmazás/bérlői minta](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
+   ![Diagram, amely bemutatja, hogyan használható a bérlői katalógus az alkalmazással a bérlői mintában.](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
 
 A bérlői katalógus a bérlői azonosító és a bérlői adatbázis közötti leképezést tartalmaz, amely lehetővé teszi az azonosító feloldását egy kiszolgáló és egy adatbázis neveként.  A Wingtip SaaS-alkalmazásban a bérlő azonosítóját a bérlő nevének kivonatának számítja, bár más sémák is használhatók.  Habár az önálló alkalmazásoknak nincs szükségük a katalógusra a kapcsolatok kezeléséhez, a katalógus felhasználható más műveleteknek a bérlői adatbázisokra való kiterjesztésére is. A rugalmas lekérdezés például a katalógus használatával határozza meg azon adatbázisok készletét, amelyeken keresztül a lekérdezések terjesztése a több-bérlős jelentéskészítéshez.
 
@@ -147,7 +147,7 @@ Ha befejezte a minta vizsgálatát, törölje a létrehozott összes erőforrás
 
 - További információ a több-bérlős SaaS-adatbázis alkalmazásairól: [tervezési minták a több-bérlős SaaS-alkalmazásokhoz](saas-tenancy-app-design-patterns.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
 

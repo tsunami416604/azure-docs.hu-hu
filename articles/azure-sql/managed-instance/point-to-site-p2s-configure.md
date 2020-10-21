@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617689"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331906"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Gyors útmutató: pont – hely kapcsolat konfigurálása az Azure SQL felügyelt példányához a helyszíni környezetből
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -83,16 +83,16 @@ Ez a rövid útmutató:
 1. Nyissa meg a **VPN** -t a **hálózati & interneten** a helyi ügyfélszámítógépen, és válassza ki az SQL felügyelt példányának virtuális hálózatát, hogy kapcsolatot létesítsen ehhez a VNet. A következő képen a VNet neve **MyNewVNet**.
 
     ![VPN-kapcsolat](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Kattintson a **Csatlakozás** gombra.
+2. Válassza a **Kapcsolódás** lehetőséget.
 3. A párbeszédpanelen válassza a **kapcsolat**lehetőséget.
 
-    ![VPN-kapcsolat](./media/point-to-site-p2s-configure/vpn-connection2.png)  
+    ![Képernyőfelvétel: a csatlakozási gomb kiemelése.](./media/point-to-site-p2s-configure/vpn-connection2.png)  
 4. Ha a rendszer arra kéri, hogy a Csatlakozáskezelő emelt szintű jogosultságokkal rendelkezzen az útválasztási táblázat frissítéséhez, válassza a **Folytatás**lehetőséget.
 5. A folytatáshoz a felhasználói fiókok felügyelete párbeszédpanelen válassza az **Igen** lehetőséget.
 
    Létrehozott egy VPN-kapcsolatát az SQL felügyelt példányának VNet.
 
-    ![VPN-kapcsolat](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
+    ![Képernyőfelvétel: a kapcsolat létrehozásakor kiemeli a csatlakoztatott üzenetet.](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
 
 ## <a name="connect-with-ssms"></a>Csatlakozás SSMS segítségével
 
@@ -104,7 +104,7 @@ Ez a rövid útmutató:
 
 A csatlakozási lehetőség után megtekintheti a rendszer és a felhasználói adatbázisokat az adatbázisok csomópontban. A biztonság, a kiszolgálói objektumok, a replikálás, a felügyelet, a SQL Server Agent és a XEvent Profiler-csomópontok különböző objektumait is megtekintheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure-beli virtuális gépekről történő kapcsolódást bemutató rövid útmutató: [pont – hely kapcsolat konfigurálása](point-to-site-p2s-configure.md).
 - Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).
