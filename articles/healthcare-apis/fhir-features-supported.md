@@ -7,15 +7,15 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: matjazl
-ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cavoeg
+ms.openlocfilehash: ea9a47676b8294b2541c27d361b0dc2fa1ae3627
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007570"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339508"
 ---
-# <a name="features"></a>Szolgáltatások
+# <a name="features"></a>Funkciók
 
 A FHIR készült Azure API teljes körűen felügyelt üzembe helyezést biztosít az Azure-hoz készült Microsoft FHIR-kiszolgáló számára. A kiszolgáló a [FHIR](https://hl7.org/fhir) standard implementációja. Ez a dokumentum a FHIR-kiszolgáló fő funkcióit sorolja fel.
 
@@ -37,6 +37,7 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 | javítás                          | Nem        | Nem        | Nem        |                                                     |
 | delete                         | Igen       | Igen       | Igen       |                                                     |
 | Törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
+| előzmények                        | Igen       | Igen       | Igen       |                                                     |
 | létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
 | létrehozás (feltételes)           | Igen       | Igen       | Igen       |                                                     |
 | keresés                         | Részleges   | Részleges   | Részleges   | Lásd lent                                           |
@@ -45,7 +46,6 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 | képességek                   | Igen       | Igen       | Igen       |                                                     |
 | kötegelt                          | Igen       | Igen       | Igen       |                                                     |
 | tranzakció                    | Nem        | Igen       | Nem        |                                                     |
-| előzmények                        | Igen       | Igen       | Igen       |                                                     |
 | lapozófájl                         | Részleges   | Részleges   | Részleges   | `self` és `next` támogatottak                     |
 | közvetítők                 | Nem        | Nem        | Nem        |                                                     |
 
@@ -94,28 +94,30 @@ Az összes keresési paraméter típusa támogatott.
 | `_has`                  | Nem        | Nem        | Nem        |         |
 | `_type`                 | Igen       | Igen       | Igen       |         |
 | `_query`                | Nem        | Nem        | Nem        |         |
-
-| Keresési műveletek       | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
-|-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | Nem        | Nem        | Nem        |         |
+
+| Keresési eredmények paraméterei | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
+|-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Részleges        | Részleges   | Részleges        |   `_sort=_lastUpdated` támogatott       |
-| `_score`                | Nem        | Nem        | Nem        |         |
-| `_count`                | Igen       | Igen       | Igen       |         |
-| `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count` támogatott |
+| `_count`                | Igen       | Igen       | Igen       | `_count` legfeljebb 100 karakter hosszú lehet. Ha 100-nél magasabbra van állítva, akkor a rendszer csak 100 értéket ad vissza, és a kötegben figyelmeztetést ad vissza. |
 | `_include`              | Nem        | Igen       | Nem        |         |
 | `_revinclude`           | Nem        | Igen       | Nem        | A tartalmazott elemek 100-re korlátozódnak. |
+| `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count` támogatott |
+| `_total`                | Részleges   | Részleges   | Részleges   | _total = nem és _total = pontos      |
+| `_elements`             | Igen       | Igen       | Igen       |         |
 | `_contained`            | Nem        | Nem        | Nem        |         |
-| `_elements`             | Igen        | Igen        | Igen        |         |
+| `containedType`         | Nem        | Nem        | Nem        |         |
+| `_score`                | Nem        | Nem        | Nem        |         |
 
 ## <a name="extended-operations"></a>Kiterjesztett műveletek
 
 A REST API-t kiterjesztő összes támogatott művelet.
 
 | Keresési paraméter típusa | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
-|-----------------------|-----------|-----------|-----------|---------|
-| $export (teljes rendszeren)                | Igen       | Igen       | Igen       |         |
-| Beteg/$export         | Igen       | Igen       | Igen       |         |
-| Csoport/$export               | Igen       | Igen       | Igen       |         |
+|------------------------|-----------|-----------|-----------|---------|
+| $export (teljes rendszeren) | Igen       | Igen       | Igen       |         |
+| Beteg/$export        | Igen       | Igen       | Igen       |         |
+| Csoport/$export          | Igen       | Igen       | Igen       |         |
 
 ## <a name="persistence"></a>Kitartás
 
@@ -125,7 +127,7 @@ Jelenleg a FHIR-kiszolgáló nyílt forráskódú programkódja [Azure Cosmos db
 
 A Cosmos DB egy globálisan elosztott, többmodelles (SQL API-, MongoDB API-stb.-) adatbázis. Különböző konzisztencia- [szinteket](../cosmos-db/consistency-levels.md)támogat. Az alapértelmezett központi telepítési sablon konzisztens FHIR-kiszolgálót konfigurál `Strong` , de a konzisztencia-házirend a kérelem fejlécének használatával a kérelem alapján módosítható (általában nyugodt) `x-ms-consistency-level` .
 
-## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
+## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
 A FHIR-kiszolgáló [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) használ a hozzáférés-vezérléshez. Pontosabban, Role-Based Access Control (RBAC) kényszerítve van, ha a `FhirServer:Security:Enabled` konfigurációs paraméter értéke `true` , és a FHIR-kiszolgálónak küldött összes kérelemnek (kivéve `/metadata` ) a `Authorization` kérelem fejlécének kell lennie `Bearer <TOKEN>` . A tokennek tartalmaznia kell egy vagy több, a jogcímben definiált szerepkört `roles` . A rendszer akkor fogadja a kérést, ha a jogkivonat olyan szerepkört tartalmaz, amely engedélyezi a megadott műveletet a megadott erőforráson.
 

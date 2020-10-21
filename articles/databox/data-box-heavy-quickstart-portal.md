@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920789"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122823"
 ---
 ::: zone target = "docs"
 
@@ -124,7 +124,7 @@ A művelet végrehajtásának időtartama az adatok méretétől és az adatok m
  
 1. Másolja át az adatokat mindkét eszközcsomópontra a két 40 Gb/s sebességű adapter egyidejű használatával.
 
-    - Windows rendszerű gazdagép használata esetén használjon SMB-kompatibilis fájlmásoló eszközt, amilyen például a [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+    - Windows rendszerű gazdagép használata esetén használjon SMB-kompatibilis fájlmásoló eszközt, amilyen például a [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)).
     - NFS-gazdagép esetén a `cp` parancs vagy a `rsync` használatával másolhatja az adatokat.
 2. Az eszközön található megosztásokhoz a következő útvonalon csatlakozhat: `\\<IP address of your device>\ShareName`. A megosztás eléréséhez szükséges hitelesítő adatokat a Data Box Heavy helyi webes felhasználói felületének **Csatlakozás és másolás** lapján tekintheti meg.
 3. Gondoskodjon róla, hogy a megosztások és a mappák neve, valamint az adatok megfeleljenek [az Azure Storage és a Data Box Heavy szolgáltatás korlátaival](data-box-heavy-limits.md) foglalkozó cikkben foglaltaknak.

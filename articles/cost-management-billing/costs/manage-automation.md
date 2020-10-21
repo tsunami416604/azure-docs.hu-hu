@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 939e621da414fc2d4d55d85e8b66a409b1338941
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372187"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131972"
 ---
 # <a name="manage-costs-with-automation"></a>Költségek kezelése automatizálással
 
@@ -21,7 +21,7 @@ A Cost Management automatizálásával egy egyéni megoldáskészletet hozhat l�
 
 ## <a name="automate-cost-data-retrieval-for-offline-analysis"></a>Költségadatok lekérésének automatizálása offline elemzéshez
 
-Előfordulhat, hogy le kell töltenie az Azure-költségadatokat ahhoz, hogy egyesíteni tudja azokat más adathalmazokkal. Az is lehet, hogy integrálnia kell a költségadatokat a saját rendszereibe. Az adatok mennyiségétől függően többféle lehetőség áll rendelkezésre. Az API-k és az eszközök használatához minden esetben rendelkeznie kell Cost Management-engedélyekkel a megfelelő hatókörben. További információt az [adatokhoz való hozzáférés hozzárendelését](https://docs.microsoft.com/azure/cost-management-billing/costs/assign-access-acm-data) ismertető szakaszban talál.
+Előfordulhat, hogy le kell töltenie az Azure-költségadatokat ahhoz, hogy egyesíteni tudja azokat más adathalmazokkal. Az is lehet, hogy integrálnia kell a költségadatokat a saját rendszereibe. Az adatok mennyiségétől függően többféle lehetőség áll rendelkezésre. Az API-k és az eszközök használatához minden esetben rendelkeznie kell Cost Management-engedélyekkel a megfelelő hatókörben. További információt az [adatokhoz való hozzáférés hozzárendelését](./assign-access-acm-data.md) ismertető szakaszban talál.
 
 ## <a name="suggestions-for-handling-large-datasets"></a>Javaslatok a nagy méretű adathalmazok kezelésére
 
@@ -29,33 +29,33 @@ Ha a szervezet sok erőforrással vagy előfizetéssel van jelen az Azure-ban, r
 
 **Power BI**
 
-A Power BI-t nagyobb adatmennyiségek betöltéséhez és kezeléséhez használják. Ha Ön Nagyvállalati Szerződéssel rendelkező ügyfél, akkor a Power BI-sablonalkalmazással elemezheti a számlázási fiókja költségeit. A jelentés az ügyfelek által használt legfontosabb nézeteket tartalmazza. További információt [az Azure költségeinek a Power BI-sablonalkalmazással történő elemzését](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app) ismertető szakaszban talál.
+A Power BI-t nagyobb adatmennyiségek betöltéséhez és kezeléséhez használják. Ha Ön Nagyvállalati Szerződéssel rendelkező ügyfél, akkor a Power BI-sablonalkalmazással elemezheti a számlázási fiókja költségeit. A jelentés az ügyfelek által használt legfontosabb nézeteket tartalmazza. További információt [az Azure költségeinek a Power BI-sablonalkalmazással történő elemzését](./analyze-cost-data-azure-cost-management-power-bi-template-app.md) ismertető szakaszban talál.
 
 **Power BI-adatösszekötő**
 
-Ha naponta szeretné elemezni az adatokat, a [Power BI-adatösszekötő](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management) használatát javasoljuk a részletes elemzéshez szükséges adatok lekéréséhez. Az összekötő nyomon követi a költségek alakulását, és naprakészen tartja a létrehozott jelentéseket.
+Ha naponta szeretné elemezni az adatokat, a [Power BI-adatösszekötő](/power-bi/connect-data/desktop-connect-azure-cost-management) használatát javasoljuk a részletes elemzéshez szükséges adatok lekéréséhez. Az összekötő nyomon követi a költségek alakulását, és naprakészen tartja a létrehozott jelentéseket.
 
 **Cost Management – Exports**
 
-Az is előfordulhat, hogy nem kell minden nap elemeznie az adatokat. Ebben az esetben érdemes lehet a Cost Management [Exports](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) API-ját használni az adatok Azure Storage-fiókba való exportálásának ütemezéséhez. Az adatokat ezután szükség szerint betöltheti a Power BI-ba, vagy ha elég kicsi a fájl, az Excelben is elemezheti. Az exportálások elérhetők az Azure Portalon, vagy az [Exports API-val](https://docs.microsoft.com/rest/api/cost-management/exports) is konfigurálhatja őket.
+Az is előfordulhat, hogy nem kell minden nap elemeznie az adatokat. Ebben az esetben érdemes lehet a Cost Management [Exports](./tutorial-export-acm-data.md) API-ját használni az adatok Azure Storage-fiókba való exportálásának ütemezéséhez. Az adatokat ezután szükség szerint betöltheti a Power BI-ba, vagy ha elég kicsi a fájl, az Excelben is elemezheti. Az exportálások elérhetők az Azure Portalon, vagy az [Exports API-val](/rest/api/cost-management/exports) is konfigurálhatja őket.
 
 **Usage Details API**
 
-Akkor érdemes megfontolni a [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usageDetails) használatát, ha kis méretű költségadathalmazzal rendelkezik. Ha nagy mennyiségű költségadattal rendelkezik, akkor a lehető legkisebb mennyiségű használati adatot kell lekérnie az adott időszakból. Ehhez adjon meg egy rövid időtartományt, vagy használjon szűrőt a kérelemben. Például ha három év költségadataira van szüksége, az API jobban teljesít, amikor egyetlen hívás helyett több, különböző időtartományokat megcélzó hívást indít. Ezután betöltheti az adatokat az Excelbe a további elemzéshez.
+Akkor érdemes megfontolni a [Usage Details API](/rest/api/consumption/usageDetails) használatát, ha kis méretű költségadathalmazzal rendelkezik. Ha nagy mennyiségű költségadattal rendelkezik, akkor a lehető legkisebb mennyiségű használati adatot kell lekérnie az adott időszakból. Ehhez adjon meg egy rövid időtartományt, vagy használjon szűrőt a kérelemben. Például ha három év költségadataira van szüksége, az API jobban teljesít, amikor egyetlen hívás helyett több, különböző időtartományokat megcélzó hívást indít. Ezután betöltheti az adatokat az Excelbe a további elemzéshez.
 
 ## <a name="automate-retrieval-with-usage-details-api"></a>Lekérés automatizálása a Usage Details API-val
 
-A [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usageDetails) egyszerű módot kínál az Azure-számlájának megfelelő, nyers, nem összesített költségadatok lekérésére. Az API akkor hasznos, ha a szervezetnek programozott adatlekérési megoldásra van szüksége. Akkor érdemes megfontolni az API használatát, ha kisebb költségadathalmazokat szeretne elemezni. Ha nagyobb adathalmazokkal rendelkezik, használja a korábban említett megoldások egyikét. A Usage Details mérőeszközök alapján adja meg az adatokat, napi bontásban. A havi számla kiszámításához használják. Az API-k általánosan elérhető (GA) verziója a `2019-10-01`. Az API-kkal végzett foglalások és Azure Marketplace-vásárlások előzetes verziójának eléréséhez használja a `2019-04-01-preview` verziót.
+A [Usage Details API](/rest/api/consumption/usageDetails) egyszerű módot kínál az Azure-számlájának megfelelő, nyers, nem összesített költségadatok lekérésére. Az API akkor hasznos, ha a szervezetnek programozott adatlekérési megoldásra van szüksége. Akkor érdemes megfontolni az API használatát, ha kisebb költségadathalmazokat szeretne elemezni. Ha nagyobb adathalmazokkal rendelkezik, használja a korábban említett megoldások egyikét. A Usage Details mérőeszközök alapján adja meg az adatokat, napi bontásban. A havi számla kiszámításához használják. Az API-k általánosan elérhető (GA) verziója a `2019-10-01`. Az API-kkal végzett foglalások és Azure Marketplace-vásárlások előzetes verziójának eléréséhez használja a `2019-04-01-preview` verziót.
 
 ### <a name="usage-details-api-suggestions"></a>Usage Details API-ra vonatkozó javaslatok
 
 **Kérelmek ütemezése**
 
-Azt javasoljuk, hogy naponta _ne küldjön egynél több kérelmet_ a Usage Details API-nak. További információk a költségadatok frissítési gyakoriságáról és a kerekítésről [a költségkezelési adatok értelmezését](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#rated-usage-data-refresh-schedule) ismertető szakaszban találhatók.
+Azt javasoljuk, hogy naponta _ne küldjön egynél több kérelmet_ a Usage Details API-nak. További információk a költségadatok frissítési gyakoriságáról és a kerekítésről [a költségkezelési adatok értelmezését](./understand-cost-mgt-data.md) ismertető szakaszban találhatók.
 
 **Legfelső szintű hatókörök megcélzása szűrés nélkül**
 
-Az API-val lekérheti az összes szükséges adatot az Ön számára elérhető legmagasabb szintű hatókörben. A szűrés, a csoportosítás és az összesített elemzés elvégzése előtt várja meg, amíg a rendszer betölti a szükséges adatokat. Az API-t kifejezetten a nagy mennyiségű, nem összesített, nyers költségadatok biztosítására optimalizálták. További információk a Cost Management hatóköreiről [a hatókörök ismertetését és használatát](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-work-scopes) bemutató szakaszban találhatók. Miután letöltötte a hatókör szükséges adatait, Excelben a szűrőkkel és a kimutatásokkal lehetőség nyílik a további elemzésükre.
+Az API-val lekérheti az összes szükséges adatot az Ön számára elérhető legmagasabb szintű hatókörben. A szűrés, a csoportosítás és az összesített elemzés elvégzése előtt várja meg, amíg a rendszer betölti a szükséges adatokat. Az API-t kifejezetten a nagy mennyiségű, nem összesített, nyers költségadatok biztosítására optimalizálták. További információk a Cost Management hatóköreiről [a hatókörök ismertetését és használatát](./understand-work-scopes.md) bemutató szakaszban találhatók. Miután letöltötte a hatókör szükséges adatait, Excelben a szűrőkkel és a kimutatásokkal lehetőség nyílik a további elemzésükre.
 
 ## <a name="example-usage-details-api-requests"></a>Példák a Usage Details API kéréseire
 
@@ -329,6 +329,6 @@ A Cost Management-előfizetők felhasználói élményének biztosítása érdek
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure költségeinek elemzése a Power BI-sablonalkalmazással](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app).
-- [Exportált adatok létrehozása és kezelése](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) az Exports használatával.
-- További információ a [Usage Details API-ról](https://docs.microsoft.com/rest/api/consumption/usageDetails).
+- [Az Azure költségeinek elemzése a Power BI-sablonalkalmazással](./analyze-cost-data-azure-cost-management-power-bi-template-app.md).
+- [Exportált adatok létrehozása és kezelése](./tutorial-export-acm-data.md) az Exports használatával.
+- További információ a [Usage Details API-ról](/rest/api/consumption/usageDetails).

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4dbae9d08a4adf250c9317b392d80f8e04c53d56
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 9427ec4530ac249d5b8059d04fc85f1183c0081c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951009"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123891"
 ---
 ::: zone target="docs"
 
@@ -105,7 +105,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
     **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
     
-Linux-ügyfél használata esetén csatlakoztassa az SMB-megosztást az alábbi parancs használatával. Az alábbi vers paraméter az SMB Linux-gazdagép által támogatott verziója. Az alábbi parancsban adja meg a megfelelő verziót. A Data Box által támogatott SMB-verziókkal kapcsolatban tekintse meg a [Linux-ügyfelek esetében támogatott fájlrendszereket](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) ismertető cikket. 
+Linux-ügyfél használata esetén csatlakoztassa az SMB-megosztást az alábbi parancs használatával. Az alábbi vers paraméter az SMB Linux-gazdagép által támogatott verziója. Az alábbi parancsban adja meg a megfelelő verziót. A Data Box által támogatott SMB-verziókkal kapcsolatban tekintse meg a [Linux-ügyfelek esetében támogatott fájlrendszereket](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) ismertető cikket. 
 
 ```console
 sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox
@@ -131,7 +131,7 @@ A Data Box-megosztásokhoz történő csatlakozás után a következő lépés a
 Az SMB-megosztáshoz való csatlakozás után kezdje meg az adatok másolását. Az adatok másolásához bármilyen SMB-kompatibilis fájlmásoló eszközt (pl.: Robocopy) használhat. A Robocopyval több másolási feladat is elindítható. Használja az alábbi parancsot:
 
 ```console
-robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>
+robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>
 ```
 
 Az attribútumok leírását az alábbi táblázatban találja meg.

@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360692"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132125"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Számlázási fiókok és hatókörök az Azure Portalon
 
@@ -27,7 +27,7 @@ Az Azure Portal a következő típusú számlázási fiókokat támogatja:
 
 - **Microsoft-ügyfélszerződés**: A Microsoft-ügyfélszerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy [használatalapú fizetést használó fiókot](https://azure.microsoft.com/offers/ms-azr-0003p/) vagy egy [ingyenes Azure-fiókot](https://azure.microsoft.com/offers/ms-azr-0044p/), külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez is. Microsoft Ügyfélszerződés keretében legfeljebb 20 előfizetés adható meg. További információkért tekintse meg [a Microsoft-ügyfélszerződés számlázási fiókjával kapcsolatos első lépéseket](../understand/mca-overview.md).
 
-- **Microsoft-partnerszerződés**: A Microsoft-partnerszerződés számlázási fiókjai a felhőszolgáltatói partnerek (CSP-k) számára készülnek az új kereskedelmi felületen történő ügyfélkezeléshez. A partnereknek legalább egy [Azure-csomaggal](https://docs.microsoft.com/partner-center/purchase-azure-plan) rendelkező ügyfélre van szükségük ahhoz, hogy számlázási fiókjukat az Azure Portalon kezelhessék. További információért tekintse meg [a Microsoft-partnerszerződés számlázási fiókjával kapcsolatos első lépéseket](../understand/mpa-overview.md).
+- **Microsoft-partnerszerződés**: A Microsoft-partnerszerződés számlázási fiókjai a felhőszolgáltatói partnerek (CSP-k) számára készülnek az új kereskedelmi felületen történő ügyfélkezeléshez. A partnereknek legalább egy [Azure-csomaggal](/partner-center/purchase-azure-plan) rendelkező ügyfélre van szükségük ahhoz, hogy számlázási fiókjukat az Azure Portalon kezelhessék. További információért tekintse meg [a Microsoft-partnerszerződés számlázási fiókjával kapcsolatos első lépéseket](../understand/mpa-overview.md).
 
 A számlázási fiók típusának meghatározásával kapcsolatban lásd [a számlázási fiók típusának ellenőrzését](#check-the-type-of-your-account) ismertető cikket.
 

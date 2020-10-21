@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: c6bb335ad7783c180ceeaafde955d6ac9dcb8799
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d156887416fb9a587c9690c3b275229e91f1dbe
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280122"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339798"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archiválja a Azure Security Center újdonságait?
 
@@ -93,7 +93,7 @@ Minden biztonsági program több munkafolyamatot tartalmaz az incidensek megvál
 
 A munkafolyamatok futtatásának automatikus és manuális Security Center funkcióival kapcsolatos további információkért lásd: [munkafolyamat-automatizálás](workflow-automation.md).
 
-További információ a [Logic apps létrehozásáról](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+További információ a [Logic apps létrehozásáról](../logic-apps/logic-apps-overview.md).
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure Security Center integrációja a Windows felügyeleti központtal
@@ -214,7 +214,7 @@ Ma egy új képességet vezetünk be Security Center, amely lehetővé teszi, ho
 
 A munkafolyamatok futtatásának automatikus és manuális Security Center funkcióival kapcsolatos további információkért lásd: [munkafolyamat-automatizálás](workflow-automation.md).
 
-Logic Apps létrehozásával kapcsolatos további tudnivalókért lásd: [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+Logic Apps létrehozásával kapcsolatos további tudnivalókért lásd: [Azure Logic apps](../logic-apps/logic-apps-overview.md).
 
 
 ### <a name="quick-fix-for-bulk-resources-generally-available"></a>Általánosan elérhető a tömeges erőforrások gyors javítása
@@ -270,9 +270,9 @@ A virtuális gépekre telepített alkalmazások gyakran olyan biztonsági rések
 
 A IaaS-alapú virtuális gépeken futó SQL-adatbázisok biztonsági rések elleni védelme és a sebezhetőségi felmérés Azure Security Center támogatása már előzetes verzióban érhető el.
 
-A [sebezhetőségi felmérés](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni és követni az adatbázisok lehetséges biztonsági réseit, és segít orvosolni azokat. Az Azure biztonságos pontszámának részeként biztosítja a biztonsági helyzet láthatóságát, és tartalmazza a biztonsági problémák megoldásához és az adatbázis-erődítmények fejlesztéséhez szükséges lépéseket.
+A [sebezhetőségi felmérés](../azure-sql/database/sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni és követni az adatbázisok lehetséges biztonsági réseit, és segít orvosolni azokat. Az Azure biztonságos pontszámának részeként biztosítja a biztonsági helyzet láthatóságát, és tartalmazza a biztonsági problémák megoldásához és az adatbázis-erődítmények fejlesztéséhez szükséges lépéseket.
 
-A komplex [veszélyforrások elleni védelem](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket mutatnak az SQL Server eléréséhez vagy kiaknázásához. A szolgáltatás folyamatosan figyeli az adatbázist a gyanús tevékenységekhez, és a rendellenes adatbázis-hozzáférési mintákon biztosít műveleti alapú biztonsági riasztásokat. Ezek a riasztások biztosítják a gyanús tevékenység részleteit, valamint az ajánlott műveleteket a fenyegetés kivizsgálásához és enyhítéséhez.
+A komplex [veszélyforrások elleni védelem](../azure-sql/database/threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket mutatnak az SQL Server eléréséhez vagy kiaknázásához. A szolgáltatás folyamatosan figyeli az adatbázist a gyanús tevékenységekhez, és a rendellenes adatbázis-hozzáférési mintákon biztosít műveleti alapú biztonsági riasztásokat. Ezek a riasztások biztosítják a gyanús tevékenység részleteit, valamint az ajánlott műveleteket a fenyegetés kivizsgálásához és enyhítéséhez.
 
 
 ### <a name="support-for-custom-policies-preview"></a>Egyéni szabályzatok támogatása (előzetes verzió)
@@ -346,7 +346,7 @@ Ha engedélyezi a JIT-t a virtuális gépek számára, létre kell hoznia egy h�
 
 A rendszer naplózza a kérelmeket az Azure-tevékenység naplójában, így egyszerűen figyelheti és naplózhatja a hozzáférést. Az igény szerinti oldal segítségével gyorsan azonosíthatja azokat a meglévő virtuális gépeket, amelyeken a JIT engedélyezve van, és a virtuális gépek, amelyeken a JIT ajánlott.
 
-[További információ a Azure Firewallról](https://docs.microsoft.com/azure/firewall/overview).
+[További információ a Azure Firewallról](../firewall/overview.md).
 
 
 ### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>Egyszeri kattintás szervizelése a biztonsági helyzet fokozása érdekében (előzetes verzió)

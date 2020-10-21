@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611286"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340308"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -74,9 +74,9 @@ Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Hozzáférés-vezérlési Szerepkörök hozzáadása a fiókhoz
 
-Az Azure HPC cache az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) használatával engedélyezi a gyorsítótár-szolgáltatás számára, hogy hozzáférjen az Azure Blob Storage-célokhoz tartozó Storage-fiókhoz.
+Az Azure HPC cache az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/index.yml) használatával engedélyezi a gyorsítótár-szolgáltatás számára, hogy hozzáférjen az Azure Blob Storage-célokhoz tartozó Storage-fiókhoz.
 
-A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Storage-fiók közreműködőjét](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) és a [Storage blob adatközreműködőit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) a "HPC cache erőforrás-szolgáltató" felhasználóhoz.
+A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Storage-fiók közreműködőjét](../role-based-access-control/built-in-roles.md#storage-account-contributor) és a [Storage blob adatközreműködőit](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) a "HPC cache erőforrás-szolgáltató" felhasználóhoz.
 
 Ezt előre elvégezheti, vagy egy hivatkozásra kattintva megadhatja a blob Storage-tárolót tartalmazó oldalon. Ne feledje, hogy akár öt percet is igénybe vehet, hogy a szerepkör-beállítások továbbítsák az Azure-környezetet, ezért néhány percet várnia kell, miután hozzáadta a szerepköröket a tárolási cél létrehozása előtt.
 
@@ -185,9 +185,9 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 
 | Használati modell                   | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | Nincs                     |
+| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | Nincsenek                     |
 | 15%-nál nagyobb írások       | Olvasás/írás   | Soha                 | 1 óra                   |
-| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | Nincs                     |
+| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | Nincsenek                     |
 
 ### <a name="create-an-nfs-storage-target"></a>NFS-tárolási cél létrehozása
 

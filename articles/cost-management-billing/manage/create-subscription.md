@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 006c995217ced91690798ae68f04e3b6c3148228
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925045"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131955"
 ---
 # <a name="create-an-additional-azure-subscription"></a>További Azure-előfizetés létrehozása
 
@@ -30,7 +30,7 @@ A következő engedélyekre van szüksége az előfizetések létrehozásához:
 |---------|---------|
 |Nagyvállalati Szerződés (EA) |  Fióktulajdonosi szerepkör a Nagyvállalati Szerződéses regisztrációban. További információkért lásd [az Azure Nagyvállalati Szerződés Azure-beli felügyeleti szerepköreinek ismertetését](understand-ea-roles.md).    |
 |Microsoft-ügyfélszerződés (Microsoft Customer Agreement, MCA) |  Tulajdonosi vagy közreműködői szerepkör a számlaszakaszban, a számlázási profilban vagy a számlázási fiókban. Vagy Azure-előfizetés létrehozója szerepkör a számlaszakaszban.  További információkért lásd [az előfizetés számlázási szerepköreit és azok feladatát](understand-mca-roles.md#subscription-billing-roles-and-tasks).    |
-|Microsoft-partnerszerződés (MPA) |   Globális rendszergazda és rendszergazdai ügynök szerepkör a CSP-partnerszervezetben. További információ: [Partnerközpont – Felhasználói szerepkörök és engedélyek hozzárendelése](https://docs.microsoft.com/partner-center/permissions-overview)  Azure-előfizetések létrehozásához a felhasználónak be kell jelentkeznie a partnerbérlőbe.   |
+|Microsoft-partnerszerződés (MPA) |   Globális rendszergazda és rendszergazdai ügynök szerepkör a CSP-partnerszervezetben. További információ: [Partnerközpont – Felhasználói szerepkörök és engedélyek hozzárendelése](/partner-center/permissions-overview)  Azure-előfizetések létrehozásához a felhasználónak be kell jelentkeznie a partnerbérlőbe.   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Előfizetés létrehozása az Azure Portalon
 
@@ -79,7 +79,7 @@ További előfizetéseket programozott módon is létrehozhat. További informá
 
 - [Azure-előfizetés-rendszergazdák hozzáadása vagy módosítása](add-change-subscription-administrator.md)
 - [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-- [Felügyeleti csoportok létrehozása az erőforrások rendszerezéséhez és kezeléséhez](../../governance/management-groups/create.md)
+- [Felügyeleti csoportok létrehozása az erőforrások rendszerezéséhez és kezeléséhez](../../governance/management-groups/create-management-group-portal.md)
 - [Az Azure-előfizetés lemondása](cancel-azure-subscription.md)
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.

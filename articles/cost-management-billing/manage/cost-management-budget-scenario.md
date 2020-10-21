@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446461"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131462"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
 
-A költségek kézben tartása egy kritikus eleme annak, hogy a felhővel kapcsolatos befektetéseiből a lehető legtöbbet tudja kihozni. Számos forgatókönyv esetében a folyamatos üzleti tevékenységhez kritikus fontosságú a költségek láthatósága, a jelentéskészítés és a költségalapú előkészítés. [Azure Cost Management API](https://docs.microsoft.com/rest/api/consumption/)-k egy sor API-t biztosítanak ezen forgatókönyvek mindegyikéhez. Az API-k használati adatokat biztosítanak, így lehetővé teszik a példányszintű költségek részletes megtekintését.
+A költségek kézben tartása egy kritikus eleme annak, hogy a felhővel kapcsolatos befektetéseiből a lehető legtöbbet tudja kihozni. Számos forgatókönyv esetében a folyamatos üzleti tevékenységhez kritikus fontosságú a költségek láthatósága, a jelentéskészítés és a költségalapú előkészítés. [Azure Cost Management API](/rest/api/consumption/)-k egy sor API-t biztosítanak ezen forgatókönyvek mindegyikéhez. Az API-k használati adatokat biztosítanak, így lehetővé teszik a példányszintű költségek részletes megtekintését.
 
-A költségvetések általában a költségszabályozás részeként használatosak. A költségvetések hatóköre beállítható az Azure-ban. Például leszűkítheti a költségvetési nézetet előfizetés, erőforráscsoport vagy erőforrások gyűjteménye alapján. Amellett, hogy a Budgets API használatával e-mailben értesülhet a költségvetési küszöbértékek elérésekor, az [Azure Monitor-műveletcsoportokkal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) vezényelt műveleteket is elindíthat a költségvetési események eredményeként.
+A költségvetések általában a költségszabályozás részeként használatosak. A költségvetések hatóköre beállítható az Azure-ban. Például leszűkítheti a költségvetési nézetet előfizetés, erőforráscsoport vagy erőforrások gyűjteménye alapján. Amellett, hogy a Budgets API használatával e-mailben értesülhet a költségvetési küszöbértékek elérésekor, az [Azure Monitor-műveletcsoportokkal](../../azure-monitor/platform/action-groups.md) vezényelt műveleteket is elindíthat a költségvetési események eredményeként.
 
 A nem kritikus fontosságú munkaterhelést futtató ügyfelek egyik gyakori költségvetési forgatókönyve a költségvetés havonta előrelátható, kiszámítható költségek melletti felügyelete. Ehhez a forgatókönyvhöz az Azure-környezet részét képező erőforrások költségalapú vezénylése szükséges. Ebben a forgatókönyvben az előfizetésre 1000 dolláros havi költségvetés van beállítva. Emellett az értesítési küszöbértékek úgy vannak beállítva, hogy elindítsanak néhány vezénylést. Ez a forgatókönyv 80%-os költségküszöbértékkel indul, ami leállítja az összes virtuális gépet a **Választható** erőforráscsoportban. Ezután a 100%-os költség-küszöbértéknél minden virtuálisgép-példány le lesz állítva.
 
@@ -35,7 +35,7 @@ Az oktatóanyagban bemutatott műveletekkel lehetséges:
 
 ## <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
 
-Az [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) egy olyan szolgáltatás, amely lehetővé teszi az erőforrás-kezelési feladatok nagy részének parancsfájllal történő végrehajtását és a feladatok ütemezett vagy igény szerinti futtatását. Ennek a forgatókönyvnek a részeként létre fog hozni egy [Azure Automation-runbookot](https://docs.microsoft.com/azure/automation/automation-runbook-types) a virtuális gépek leállításához. A [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Azure V2-beli virtuális gépek leállítása) grafikus runbookot fogja használni a [katalógusból](https://docs.microsoft.com/azure/automation/automation-runbook-gallery) a forgatókönyv létrehozásához. Ha ezt a runbookot importálja az Azure-fiókjába, majd közzéteszi, akkor a költségvetési küszöbérték elérésekor leállíthatja a virtuális gépeket.
+Az [Azure Automation](../../automation/automation-intro.md) egy olyan szolgáltatás, amely lehetővé teszi az erőforrás-kezelési feladatok nagy részének parancsfájllal történő végrehajtását és a feladatok ütemezett vagy igény szerinti futtatását. Ennek a forgatókönyvnek a részeként létre fog hozni egy [Azure Automation-runbookot](../../automation/automation-runbook-types.md) a virtuális gépek leállításához. A [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Azure V2-beli virtuális gépek leállítása) grafikus runbookot fogja használni a [katalógusból](../../automation/automation-runbook-gallery.md) a forgatókönyv létrehozásához. Ha ezt a runbookot importálja az Azure-fiókjába, majd közzéteszi, akkor a költségvetési küszöbérték elérésekor leállíthatja a virtuális gépeket.
 
 ### <a name="create-an-azure-automation-account"></a>Azure Automation-fiók létrehozása
 
@@ -49,7 +49,7 @@ Az [Azure Automation](https://docs.microsoft.com/azure/automation/automation-int
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>A Stop Azure V2 VMs (Azure V2-beli virtuális gépek leállítása) runbook importálása
 
-Az [Azure Automation-runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) használatával importálja a [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Azure V2-beli virtuális gépek leállítása) grafikus runbookot a katalógusból.
+Az [Azure Automation-runbook](../../automation/automation-runbook-types.md) használatával importálja a [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Azure V2-beli virtuális gépek leállítása) grafikus runbookot a katalógusból.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókja hitelesítő adataival.
 1. Nyissa meg az Automation-fiókját a **Minden szolgáltatás**, majd az  > **Automation-fiókok** lehetőség kiválasztásával. Ezután válassza ki az Automation-fiókját.
@@ -60,7 +60,7 @@ Az [Azure Automation-runbook](https://docs.microsoft.com/azure/automation/automa
 1. Miután a runbook végrehajtotta az importálási folyamatot, válassza a **Szerkesztés** lehetőséget a grafikus runbook szerkesztése és közzététele lehetőség megjelenítéséhez.  
     ![Azure – Grafikus runbook szerkesztése](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. A runbook közzétételéhez válassza a **Közzététel** lehetőséget, és ha a rendszer rákérdez, kattintson az **Igen** gombra. Amikor közzétesz egy runbookot, felülírja a közzétett verziót a piszkozattal. Ebben az esetben még nincs közzétett verzió, mivel még csak most hozta létre a runbookot.
-    A runbook közzétételével kapcsolatos további információkért lásd a [Grafikus runbook létrehozása](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical) című témakört.
+    A runbook közzétételével kapcsolatos további információkért lásd a [Grafikus runbook létrehozása](../../automation/learn/automation-tutorial-runbook-graphical.md) című témakört.
 
 ## <a name="create-webhooks-for-the-runbook"></a>Webhookok létrehozása a runbookhoz
 
@@ -91,7 +91,7 @@ Ezzel elvégezte az Azure Automation beállítását. Egy egyszerű Postman-tesz
 
 ## <a name="create-an-azure-logic-app-for-orchestration"></a>Azure Logic App létrehozása vezényléshez
 
-A Logic Appsszel munkafolyamatként hozhat létre, ütemezhet és automatizálhat folyamatokat, lehetővé téve az alkalmazások, adatok, rendszerek és szolgáltatások integrációját egy adott vállalaton vagy szervezeten belül. Ebben a forgatókönyvben a létrehozott [logikai alkalmazás](https://docs.microsoft.com/azure/logic-apps/) valamivel többet fog tenni, mint csak létrehozott Automation-webhook meghívása.
+A Logic Appsszel munkafolyamatként hozhat létre, ütemezhet és automatizálhat folyamatokat, lehetővé téve az alkalmazások, adatok, rendszerek és szolgáltatások integrációját egy adott vállalaton vagy szervezeten belül. Ebben a forgatókönyvben a létrehozott [logikai alkalmazás](../../logic-apps/index.yml) valamivel többet fog tenni, mint csak létrehozott Automation-webhook meghívása.
 
 A költségvetés beállítható úgy, hogy egy adott küszöbérték teljesülése esetén értesítést indítson. Több küszöbértéket is megadhat, amelyekről értesítést kaphat, és a logikai alkalmazás a teljesített küszöbértéktől függően képes különböző műveleteket elvégezni. Ebben a példában egy olyan forgatókönyvet állíthat be, amely több értesítést küld. Az első értesítés a költségvetés 80%-ának elérésénél, a második pedig a költségvetés 100%-ának elérésénél érkezik. Az erőforráscsoport virtuális gépei a logikai alkalmazás használatával lesznek leállítva. Első lépésként a **Választható** küszöbérték 80%-os lesz, majd a második küszöbérték elérésénél az előfizetésben lévő összes virtuális gép le lesz állítva.
 
@@ -122,11 +122,11 @@ Miután az Azure üzembe helyezte a logikai alkalmazást, megnyílik a **Logic A
 Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot. A műveletek mindazon lépések, amelyek az eseményindító aktiválása után végbemennek.
 
 1. A **Logic Apps Designer** terület **Sablonok** szakaszában válassza az **Üres logikai alkalmazás** lehetőséget.
-1. Adjon hozzá egy új [eseményindítót](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) úgy, hogy a **Logic Apps Designer** keresőmezőjébe beírja a „http kérés” kulcsszavakat, és kiválasztja a **Kérés – HTTP-kérés fogadásakor** nevű eseményindítót.  
+1. Adjon hozzá egy új [eseményindítót](../../logic-apps/logic-apps-overview.md#logic-app-concepts) úgy, hogy a **Logic Apps Designer** keresőmezőjébe beírja a „http kérés” kulcsszavakat, és kiválasztja a **Kérés – HTTP-kérés fogadásakor** nevű eseményindítót.  
     ![Azure – Logic Apps-alkalmazás – HTTP-eseményindító](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
 1. Válassza az **Új lépés** > **Művelet hozzáadása** lehetőséget.  
     ![Azure – Új lépés – Művelet hozzáadása](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-1. A **Logic Apps Designer** keresőmezőjébe írja be a „JSON elemzése” kulcsszavakat, és válassza ki **Adatműveletek – JSON elemzése** [műveletet](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts).  
+1. A **Logic Apps Designer** keresőmezőjébe írja be a „JSON elemzése” kulcsszavakat, és válassza ki **Adatműveletek – JSON elemzése** [műveletet](../../logic-apps/logic-apps-overview.md#logic-app-concepts).  
     ![Azure – Logic Apps-alkalmazás – JSON elemzése művelet hozzáadása](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 1. Nevezze el „hasznos adat”-nak a **Tartalom** mezőben a JSON hasznos adat elemzéshez használt tartalmat, vagy használja a „Szövegtörzs” címkét a dinamikus tartalomból.
 1. Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget a **JSON elemzése** mezőben.  
@@ -311,7 +311,7 @@ A következő lépésként konfigurálni fogja a **Postmant**, hogy az Azure Con
     ```
 1. Küldje el a kérelmet a **Küldés** gomb lenyomásával.
 
-Most már a [Budgets API](https://docs.microsoft.com/rest/api/consumption/budgets) meghívásához szükséges összes elemmel rendelkezik. A Budgets API referenciája további részleteket tartalmaz az adott kérelmekkel kapcsolatban, beleértve az alábbiakat:
+Most már a [Budgets API](/rest/api/consumption/budgets) meghívásához szükséges összes elemmel rendelkezik. A Budgets API referenciája további részleteket tartalmaz az adott kérelmekkel kapcsolatban, beleértve az alábbiakat:
 
 - **budgetName** – Több költségvetés is támogatott.  A költségvetés nevének egyedinek kell lennie.
 - **category** – **Cost** vagy **Usage** kell, hogy legyen. Az API a költség és a használat kategóriájú költségvetéseket is támogatja.

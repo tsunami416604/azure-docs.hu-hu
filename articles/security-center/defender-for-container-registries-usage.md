@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57e8b6f47c4166c4f8b9f5de0f3e03a7d757e100
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532601"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342076"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>A biztonsági rések vizsgálatához használja az Azure Defender for Container nyilvántartót
 
@@ -29,8 +29,8 @@ Ha a képolvasó Security Center biztonsági réseket, Security Center a megáll
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Az **Azure Defender for Container** -beállításjegyzékek számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
 |Támogatott nyilvántartások és lemezképek:|![Igen, ](./media/icons/yes-icon.png) a nyilvános internetről elérhető és a rendszerhéj elérését biztosító, a Linux által üzemeltetett ACR-nyilvántartások.<br>![Nem található a ](./media/icons/no-icon.png) Windows által üzemeltetett ACR-jegyzék.<br>![Nincsenek ](./media/icons/no-icon.png) "privát" beállításjegyzékek – Security Center megköveteli, hogy a kibocsátásiegység-forgalmi jegyzékek elérhetők legyenek a nyilvános internetről. Security Center jelenleg nem tud csatlakozni a szolgáltatáshoz, vagy beolvasni azokat a beállításjegyzékeket, amelyekhez hozzáférés van korlátozva tűzfallal, szolgáltatási végponttal vagy privát végpontokkal, például az Azure Private-hivatkozással.<br>![Nincsenek olyan ](./media/icons/no-icon.png) Super minimalista képek, mint például a [Docker](https://hub.docker.com/_/scratch/) -lemezképek, vagy a "eltérítetlen" lemezképek, amelyek csak egy alkalmazást és annak futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül.|
-|Szükséges szerepkörök és engedélyek:|**Biztonsági olvasó** és [Azure Container Registry olvasó szerepkör](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Szükséges szerepkörök és engedélyek:|**Biztonsági olvasó** és [Azure Container Registry olvasó szerepkör](../container-registry/container-registry-roles.md)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 

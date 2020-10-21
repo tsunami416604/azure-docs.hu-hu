@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 49533947ff01aea07eaacd9d761b6414fb672a1c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018270"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339475"
 ---
 # <a name="azure-security-center-data-security"></a>Adatbiztonság Azure Security Center
 
@@ -51,7 +51,7 @@ A Microsoft a különböző bérlők által látott minták és fenyegetések fe
 ## <a name="manage-data-collection-from-machines"></a>Az adatgyűjtés kezelése a gépekről
 Ha bekapcsolja a Security Centert az Azure-ban, az adatgyűjtés bekapcsolódik minden előfizetésénél. Az előfizetések adatgyűjtését Security Center is engedélyezheti. Ha az adatgyűjtés engedélyezve van, Security Center kiépíti az Log Analytics ügynököt az összes meglévő támogatott Azure-beli virtuális gépen és a létrehozott újakon.
 
-A Log Analytics ügynök különböző biztonsággal kapcsolatos konfigurációkat vizsgál, és azokat az eseményeket [Windows esemény-nyomkövetés](https://docs.microsoft.com/windows/win32/etw/event-tracing-portal) (ETW) nyomkövetésbe. Az operációs rendszer emellett az eseménynaplóba írandó eseményeket hoz létre a gép futtatása során. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Log Analytics ügynök beolvassa az Eseménynapló-bejegyzéseket és a ETW-nyomkövetéseket, és átmásolja őket a munkaterületre (ok) elemzésre. A Log Analytics ügynök a folyamat-létrehozási eseményeket és a parancssori naplózást is lehetővé teszi.
+A Log Analytics ügynök különböző biztonsággal kapcsolatos konfigurációkat vizsgál, és azokat az eseményeket [Windows esemény-nyomkövetés](/windows/win32/etw/event-tracing-portal) (ETW) nyomkövetésbe. Az operációs rendszer emellett az eseménynaplóba írandó eseményeket hoz létre a gép futtatása során. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Log Analytics ügynök beolvassa az Eseménynapló-bejegyzéseket és a ETW-nyomkövetéseket, és átmásolja őket a munkaterületre (ok) elemzésre. A Log Analytics ügynök a folyamat-létrehozási eseményeket és a parancssori naplózást is lehetővé teszi.
 
 Ha nem használja az Azure Defendert, akkor a biztonsági házirendben letilthatja a virtuális gépekről történő adatgyűjtést is. Az Azure Defender által védett előfizetések esetében az adatgyűjtés szükséges. A virtuálisgép-lemez pillanatképeinek és összetevőinek gyűjtése akkor is engedélyezve lesz, ha letiltotta az adatgyűjtést.
 
@@ -82,10 +82,10 @@ Az ügyfelek a következő adatfolyamokból érhetik el Security Center kapcsol�
 
 | Adatfolyam                                                                                | Adattípusok                                                                                                                                                                                                          |
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Azure-tevékenységnapló](../azure-monitor/platform/activity-log.md)                       | Minden biztonsági riasztás, [jóváhagyott Security Center igény](security-center-just-in-time.md) szerinti hozzáférési kérés, valamint az [adaptív alkalmazások](security-center-adaptive-application.md)által létrehozott összes riasztás.|
-| [Naplók Azure Monitor](../azure-monitor/platform/data-platform.md)                      | Minden biztonsági riasztás.                                                                                                                                                                                                |
+| [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md)                       | Minden biztonsági riasztás, [jóváhagyott Security Center igény](security-center-just-in-time.md) szerinti hozzáférési kérés, valamint az [adaptív alkalmazások](security-center-adaptive-application.md)által létrehozott összes riasztás.|
+| [Azure Monitor-naplók](../azure-monitor/platform/data-platform.md)                      | Minden biztonsági riasztás.                                                                                                                                                                                                |
 | [Azure Resource Graph](../governance/resource-graph/overview.md)                      | A biztonsági riasztások, a biztonsági javaslatok, a sebezhetőségi felmérés eredményei, a biztonságos pontszám adatai, a megfelelőségi ellenőrzések állapota és egyebek.                                                                       |
-| [Azure Security Center – REST API](https://docs.microsoft.com/rest/api/securitycenter/) | Biztonsági riasztások, biztonsági javaslatok és egyebek.                                                                                                                                                                |
+| [Azure Security Center – REST API](/rest/api/securitycenter/) | Biztonsági riasztások, biztonsági javaslatok és egyebek.                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>Következő lépések

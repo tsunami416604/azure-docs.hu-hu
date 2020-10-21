@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883913"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342450"
 ---
 # <a name="protect-your-network-resources"></a>A hálózati erőforrások megóvása
 Azure Security Center folyamatosan elemzi az Azure-erőforrások biztonsági állapotát a hálózati biztonsággal kapcsolatos ajánlott eljárásokhoz. Ha Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
@@ -120,4 +120,4 @@ Erőforrások részletezése:
 
 Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következőket:
 
-- [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
+- [A gépek és alkalmazások védelme az Azure Security Centerben](./asset-inventory.md)

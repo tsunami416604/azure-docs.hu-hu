@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271107"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342348"
 ---
 # <a name="get-help-with-your-system"></a>Segítség kérése a rendszeren
 
@@ -57,4 +57,4 @@ Kövesse az alábbi lépéseket annak biztosításához, hogy a támogatási jeg
 
 ## <a name="request-a-quota-increase"></a>Kvóta növelésének kérése
 
-Olvassa el [a kvótát a vFXT-fürthöz](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) , hogy megtudja, milyen összetevőkre van szükség a avere-vFXT Azure-beli telepítéséhez. [Kvótát is igényelhet](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) a Azure Portal.
+Olvassa el [a kvótát a vFXT-fürthöz](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) , hogy megtudja, milyen összetevőkre van szükség a avere-vFXT Azure-beli telepítéséhez. [Kvótát is igényelhet](../azure-portal/supportability/resource-manager-core-quotas-request.md) a Azure Portal.

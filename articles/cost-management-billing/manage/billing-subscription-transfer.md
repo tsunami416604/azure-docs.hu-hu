@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 1fedad7dac4c253c68a0f27d0e0470123833a3be
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: d2814a989cb82216081083f3198d52ccd70210ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666109"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131921"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -69,7 +69,7 @@ Ha elfogadta egy Azure-előfizetés számlázási tulajdonjogát, javasoljuk, ho
 1. Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az Azure-beli szerepkör-hozzárendeléseket. További információ: [Azure-beli előfizetés-adminisztrátorok hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 1. Frissítse az előfizetés szolgáltatásaihoz tartozó hitelesítő adatokat, például:
    1. Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információk: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md)
-   1. A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-create-storage-account.md) ismertető témakörben olvashat.
+   1. A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-account-create.md) ismertető témakörben olvashat.
    1. Az olyan szolgáltatások távelérési hitelesítő adatai, mint az Azure-beli virtuális gépek.
 1. Ha egy partnerrel közösen dolgozik, fontolja meg a partnerazonosító frissítését az előfizetésen. A partnerazonosítót az [Azure Portalon](https://portal.azure.com) frissítheti. További információért lásd a [partnerazonosítók az Azure-fiókokhoz csatolását](link-partner-id.md) ismertető cikket.
 

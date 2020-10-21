@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c86561f7c677ec4a335ecb04cc0da95dad119d1e
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906352"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340971"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Gyors útmutató: automatikus válasz létrehozása egy adott biztonsági riasztáshoz egy Azure Resource Manager sablon (ARM-sablon) használatával
 
@@ -64,7 +64,7 @@ Más Security Center a gyors üzembe helyezési sablonokkal kapcsolatban tekints
 
     [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
-    További információ erről az üzembe helyezési lehetőségről: [telepítés használata gomb a sablonok a GitHub-tárházból történő telepítéséhez](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button).
+    További információ erről az üzembe helyezési lehetőségről: [telepítés használata gomb a sablonok a GitHub-tárházból történő telepítéséhez](../azure-resource-manager/templates/deploy-to-azure-button.md).
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
@@ -89,9 +89,9 @@ Ha már nincs rá szükség, törölje a munkafolyamat-automatizálást a Azure 
 1. Az eszköztáron válassza a **Törlés**lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372357"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132295"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -180,7 +180,7 @@ A Microsoft-ügyfélszerződést használó ügyfelek számára a következő ha
 
 Csak a *globális rendszergazda* és a *rendszergazdai ügynök* szerepkörrel rendelkező felhasználók kezelhetik és tekinthetik meg a számlázási fiókokhoz kapcsolódó költségeket, a számlázási profilokat és az ügyfeleket közvetlenül a partner Azure-bérlőjében. További információ a partnerközponti szerepkörökről: [Felhasználói szerepkörök és engedélyek hozzárendelése](/partner-center/permissions-overview).
 
-Az Azure Cost Management csak akkor támogatja a CSP-partnerügyfeleket, ha Microsoft-ügyfélszerződéssel rendelkeznek. A Microsoft-ügyfélszerződéssel még nem rendelkező támogatott CSP-ügyfelek esetén lásd a [Partnerközpontot](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+Az Azure Cost Management csak akkor támogatja a CSP-partnerügyfeleket, ha Microsoft-ügyfélszerződéssel rendelkeznek. A Microsoft-ügyfélszerződéssel még nem rendelkező támogatott CSP-ügyfelek esetén lásd a [Partnerközpontot](/azure/cloud-solution-provider/overview/partner-center-overview).
 
 A Cost Management nem támogatja a CSP-hatókörökben lévő felügyeleti csoportokat. Ha van CSP-előfizetése, és a költségelemzésben a hatókört egy felügyeleti csoportra állítja be, a következőhöz hasonló hibaüzenet jelenik meg:
 

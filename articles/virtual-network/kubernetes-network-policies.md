@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 0ecf3e5f30ee38c0d60c77df3d6aae3ad90930e9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 36e5bb33b7d555c3b457b63f94d9032ff390e6cb
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332287"
+ms.locfileid: "92342314"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati házirendjeinek áttekintése
 
@@ -112,7 +112,7 @@ A felhasználók korábban csak a parancssorban futtatott paranccsal tudtak megi
 ### <a name="supported-metrics"></a>Támogatott metrikák
 A támogatott metrikák listája a következő:
 
-|Metrika neve |Leírás  |Prometheus-metrika típusa  |Címkék  |
+|Metrika neve |Description  |Prometheus-metrika típusa  |Címkék  |
 |---------|---------|---------|---------|
 |`npm_num_policies`     |hálózati házirendek száma          |Kijelző         |-         |
 |`npm_num_iptables_rules`     | Iptables-szabályok száma     | Kijelző        |-         |         
@@ -154,7 +154,7 @@ Nyissa meg az Azure Portalt. Miután a fürtben megtalálta az adatait, navigál
 A munkafüzet megtekintése mellett (az alábbi képeken) közvetlenül is lekérdezheti a Prometheus-metrikákat az elemzések szakasz "naplók" szakaszában. Ez a lekérdezés például az összes összegyűjtött metrikát visszaküldi.
 | ahol a TimeGenerated > ezelőtt (5h) | ahol a név tartalmazza a "npm_"
 
-Log Analytics közvetlenül a metrikák esetében is lekérdezheti. További információ a Első lépésekról Log Analytics lekérdezésekkel] (https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
+Log Analytics közvetlenül a metrikák esetében is lekérdezheti. További információ a [első lépésekról log Analytics lekérdezésekkel](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Megtekintés a Grafana-irányítópulton
 Állítsa be a Grafana-kiszolgálót, és konfiguráljon egy Log Analytics adatforrást az [itt](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)leírtak szerint. Ezután importálja a [Grafana-irányítópultot egy log Analytics háttérrel](https://grafana.com/grafana/dashboards/10956) a Grafana Labs-be.
@@ -261,7 +261,7 @@ Az alábbiakban néhány példa a NPM metrikák a Container bepillantást a CI-b
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További tudnivalók az [Azure Kubernetes szolgáltatásról](../aks/intro-kubernetes.md).
 -  A [tároló hálózatkezelésének](container-networking-overview.md)megismerése.
 - [Telepítse a beépülő](deploy-container-networking.md) modult a Kubernetes-fürtök vagy a Docker-tárolók számára.

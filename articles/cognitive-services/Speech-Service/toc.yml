@@ -580,9 +580,8 @@
       href: how-to-migrate-from-translator-speech-api.md
 - name: További források
   items:
-    - name: Támogatás
-      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
-      href: support.md
+    - name: Támogatási lehetőségek
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: A Swagger dokumentációja
       href: swagger-documentation.md
     - name: Független felhők

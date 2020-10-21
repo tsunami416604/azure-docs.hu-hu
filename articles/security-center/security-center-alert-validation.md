@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 999888b12f10c07f7d42f14289e88030f9542a36
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971608"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340818"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Riasztások érvényesítése Azure Security Center
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
@@ -36,7 +36,7 @@ Miután telepítette Security Center ügynököt a számítógépre, hajtsa vég
 1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Riasztásnak kell megjelennie.
 
 > [!NOTE]
-> A Windows rendszerhez készült teszt-riasztások megtekintésekor ellenőrizze, hogy az **argumentumok naplózása engedélyezve** van-e **igaz**. Ha **hamis**, akkor engedélyeznie kell a parancssori argumentumok naplózását. Az engedélyezéshez használja a következő parancsot:
+> A Windows rendszerhez készült teszt-riasztások megtekintésekor ellenőrizze, hogy az **argumentumok naplózása engedélyezve** van-e **igaz**. Ha **hamis**, akkor engedélyeznie kell a parancssori argumentumok naplózását. Az engedélyezéshez használja a következő parancsot: 
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
@@ -65,7 +65,7 @@ A Kubernetes-csomópontok és-fürtök védelmével kapcsolatos további inform�
 ## <a name="next-steps"></a>Következő lépések
 Ez a cikk a riasztások érvényesítési folyamatát mutatta be. Most, hogy már ismeri az érvényesítést, tekintse meg a következő cikkeket:
 
-* [Azure Key Vault veszélyforrások észlelésének ellenőrzése Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
+* [Azure Key Vault-fenyegetésészlelés érvényesítése az Azure Security Centerben](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Biztonsági riasztások kezelése és válaszadás a Azure Security Centerban](security-center-managing-and-responding-alerts.md) – Ismerje meg, hogyan kezelheti a riasztásokat, és hogyan reagálhat a Security Center biztonsági incidensekre.
 * A [Azure Security Center biztonsági állapotának monitorozása](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának figyelését.
-* A [biztonsági riasztások megismerése Azure Security Centerban](security-center-alerts-type.md) – a különböző típusú biztonsági riasztások ismertetése.
+* A [biztonsági riasztások megismerése Azure Security Centerban](./security-center-alerts-overview.md) – a különböző típusú biztonsági riasztások ismertetése.

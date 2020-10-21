@@ -5,28 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439850"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340609"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei
 
 A meghívó e-mail-címe kritikus fontosságú összetevő, amely VÁLLALATKÖZI együttműködési felhasználókként szolgál az Azure AD-ben. Habár [nem szükséges, hogy e-mailt küldjön a B2B-együttműködéssel való meghívás meghívására](add-user-without-invite.md), így a felhasználónak minden szükséges információt meg kell hoznia arról, hogy elfogadják-e a meghívót. Egy hivatkozást is biztosít nekik, hogy a jövőben mindig hivatkozhatnak arra, amikor vissza kell térniük az erőforrásokhoz.
 
 ![A B2B meghívót tartalmazó e-mailt bemutató képernyőfelvétel](media/invitation-email-elements/invitation-email.png)
-
-> [!NOTE]
-> Ez az új e-mail-sablon továbbra is minden bérlő számára elérhető, így egyes bérlők továbbra is régebbi kialakítást használnak. A 2020. május végére az összes bérlő meghívója ezt a sablont fogja használni.
 
 ## <a name="explaining-the-email"></a>Az e-mail ismertetése
 
@@ -52,17 +49,11 @@ Az e-mail rövid figyelmeztetést küld a felhasználónak az adathalászatról,
 
 ![Az e-mailben szereplő adathalászati figyelmeztetés képe](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>Meghívó adatai
+### <a name="inviters-information-and-invitation-message"></a>Meghívó adatai és Meghívási üzenete
 
-Az e-mail tartalmazza a meghívót és a meghívót küldő szervezet adatait. Ide tartozik a küldő neve és e-mail-címe, valamint a szervezethez társított név és elsődleges tartomány. Az összes információnak segítenie kell a meghívást, hogy tájékozott döntést hozzon a meghívó elfogadásáról.
+Az e-mail tartalmazza a meghívót küldő szervezethez társított nevet és elsődleges tartományt. Ezek az információk segíthetnek a meghívásban tájékozott döntést hozni a meghívó elfogadásáról. Ha a meghívó tartalmaz egy üzenetet a meghívásuk részeként, amikor [vendég felhasználót nyit meg a címtárban, a csoportban vagy az alkalmazásban](add-users-administrator.md) , vagy amikor a meghívó API-t [használják](customize-invitation-api.md), az üzenet kiemelve jelenik meg az e-mail fő részében. Emellett a meghívó neve és a profil képe is szerepel, ha már be lettek állítva. Az üzenet maga egy szöveges felület, ezért biztonsági okokból nem dolgozza fel a HTML-címkéket.
 
-![A meghívó információinak képe az e-mailben](media/invitation-email-elements/inviters-information.png)
-
-### <a name="invitation-message"></a>Meghívó üzenet
-
-Ha a meghívó tartalmaz egy üzenetet a meghívásuk részeként, amikor [vendég felhasználót nyit meg a címtárban, a csoportban vagy az alkalmazásban](add-users-administrator.md) , vagy amikor a meghívó API-t [használják](customize-invitation-api.md), az üzenet kiemelve jelenik meg az e-mail fő részében. Emellett a meghívó neve és a profil képe is szerepel, ha már be lettek állítva. Az üzenet maga egy szöveges felület, ezért biztonsági okokból nem dolgozza fel a HTML-címkéket.
-
-![A meghívót tartalmazó üzenet képe az e-mailben](media/invitation-email-elements/invitation-message.png)
+![A meghívót tartalmazó üzenet képe az e-mailben](media/invitation-email-elements/invitation-message-inviters-info.png)
 
 ### <a name="accept-button-and-redirect-url"></a>Elfogadás gomb és átirányítási URL-cím
 
