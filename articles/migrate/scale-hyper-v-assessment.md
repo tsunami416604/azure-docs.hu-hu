@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 393c58334f4a1bead7e089d0a64b2d165b67401d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70279438"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317181"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Nagy számú Hyper-V virtuális gép értékelése az Azure-ba való áttelepítéshez
 
@@ -30,7 +30,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 
 > [!NOTE]
-> Ha szeretné kipróbálni egy próba-koncepciót néhány virtuális gép értékeléséhez, mielőtt a méretezést kivizsgáljuk, kövesse az [oktatóanyag-sorozatot](tutorial-prepare-hyper-v.md)
+> Ha szeretné kipróbálni egy próba-koncepciót néhány virtuális gép értékeléséhez, mielőtt a méretezést kivizsgáljuk, kövesse az [oktatóanyag-sorozatot](./tutorial-discover-hyper-v.md)
 
 ## <a name="plan-for-assessment"></a>Az értékelés megtervezése
 
@@ -66,7 +66,7 @@ Az Azure és a Hyper-V előkészítése a kiszolgálók értékeléséhez.
 2. Az Azure-fiók engedélyeinek beállítása a Azure Migrate való interakcióhoz
 3. Hyper-V-gazdagépek és virtuális gépek előkészítése
 
-A beállítások konfigurálásához kövesse az [oktatóanyag](tutorial-prepare-hyper-v.md) utasításait.
+A beállítások konfigurálásához kövesse az [oktatóanyag](./tutorial-discover-hyper-v.md) utasításait.
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
@@ -85,7 +85,7 @@ A tervezési követelményekkel összhangban tegye a következőket:
 [További](tutorial-assess-hyper-v.md) információ az értékelések létrehozásáról és áttekintéséről.
     
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben:
  

@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07dc11877b38e830d90f544f1d7524b378bf5902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f14960f98a4257b0c8f920915327661cd8b867c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053752"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310389"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Szerepkörhöz rendelt csoport létrehozása Azure Active Directory
 
-Csak az "isAssignableToRole" tulajdonsággal létrehozott, igaz értékre állított, vagy az Azure ad-portálon az **Azure ad-szerepkörökkel** rendelkező csoportokhoz rendelhető szerepkört lehet hozzárendelni. Ez a Group attribútum teszi azt a csoportot, amely egy Azure Active Directory (Azure AD) szerepkörhöz rendelhető hozzá. Ez a cikk bemutatja, hogyan hozhatja létre ezt a speciális típusú csoportot. **Megjegyzés:** Az isAssignableToRole tulajdonságot True értékre beállított csoport nem lehet dinamikus tagsági típus. További információ: [csoport használata az Azure ad szerepkör-hozzárendelések kezeléséhez](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept).
+Csak az "isAssignableToRole" tulajdonsággal létrehozott, igaz értékre állított, vagy az Azure ad-portálon az **Azure ad-szerepkörökkel** rendelkező csoportokhoz rendelhető szerepkört lehet hozzárendelni. Ez a Group attribútum teszi azt a csoportot, amely egy Azure Active Directory (Azure AD) szerepkörhöz rendelhető hozzá. Ez a cikk bemutatja, hogyan hozhatja létre ezt a speciális típusú csoportot. **Megjegyzés:** Az isAssignableToRole tulajdonságot True értékre beállított csoport nem lehet dinamikus tagsági típus. További információ: [csoport használata az Azure ad szerepkör-hozzárendelések kezeléséhez](./roles-groups-concept.md).
 
 ## <a name="using-azure-ad-admin-center"></a>Az Azure AD felügyeleti központ használata
 

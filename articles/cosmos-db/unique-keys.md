@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f5a867a00fa28dcd03842d02be16d88e3a7d2e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f26dc5214222bb7564c0ba2b199adefad056ed5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132653"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280998"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Egyedi kulcsokra vonatkozó korlátozások a Azure Cosmos DB
 
-Az egyedi kulcsok adatintegritási réteget vesznek fel egy Azure Cosmos-tárolóba. Egy Azure Cosmos-tároló létrehozásakor egyedi kulcs-szabályzatot kell létrehoznia. Egyedi kulcsokkal gondoskodhat arról, hogy a logikai partíción belül egy vagy több érték egyedi legyen. Emellett a [partíciós kulcs](partition-data.md)egyediségét is garantálhatja.
+Az egyedi kulcsok adatintegritási réteget vesznek fel egy Azure Cosmos-tárolóba. Egy Azure Cosmos-tároló létrehozásakor egyedi kulcs-szabályzatot kell létrehoznia. Egyedi kulcsokkal gondoskodhat arról, hogy a logikai partíción belül egy vagy több érték egyedi legyen. Emellett a [partíciós kulcs](partitioning-overview.md)egyediségét is garantálhatja.
 
 Miután létrehozta az egyedi kulcs-házirenddel rendelkező tárolót, a rendszer az egyedi kulcs megkötése által megadott módon megakadályozza a meglévő elemek új vagy frissítésének létrehozását egy logikai partíción belül. Az egyedi kulccsal összevont partíciós kulcs garantálja a tároló hatókörén belüli elem egyediségét.
 
@@ -53,7 +53,7 @@ Egyedi kulcsokat csak akkor adhat meg, ha létrehoz egy Azure Cosmos-tárolót. 
 
 * Az egyedi kulcsnév megkülönbözteti a kis-és nagybetűket. Vegyünk például egy olyan tárolót, amelyben az egyedi kulcs megszorítása van beállítva `/address/zipcode` . Ha az adatai egy nevű mezővel rendelkeznek `ZipCode` , Azure Cosmos db a "NULL" értéket szúrja be egyedi kulcsként, mert `zipcode` nem ugyanaz, mint `ZipCode` . Ennek az esetnek az eltérése miatt az irányítószámmal nem szúrható be minden más rekord, mert az ismétlődő "NULL" megsérti az egyedi kulcs megkötését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a [logikai partíciókhoz](partition-data.md)
+* További információ a [logikai partíciókhoz](partitioning-overview.md)
 * Ismerje [meg, hogyan határozhat meg egyedi kulcsokat](how-to-define-unique-keys.md) tároló létrehozásakor

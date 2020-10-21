@@ -31,6 +31,9 @@
     - name: Új erőforrások védelme a tervek erőforrás-zárolásával
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
+    - name: 'Információ: Több előfizetés szabályozása az Azure Blueprints használatával'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-govern-subscriptions-azure-blueprints
 - name: Példák
   items:
     - name: Index

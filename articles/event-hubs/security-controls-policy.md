@@ -1,18 +1,18 @@
 ---
 title: Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Event Hubs
 description: Felsorolja Azure Policy az Azure Event Hubs számára elérhető megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: event-hubs
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 6455e4e207a0a0028b97cf93f3572a028331e638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab5384793347f22141d36aca70e76284fdc7f26b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825995"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317698"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-hubs"></a>Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Event Hubs
 
@@ -22,7 +22,7 @@ A [Azure Policy szabályozási megfelelősége](../governance/policy/concepts/re
 
 [!INCLUDE [azure-policy-compliancecontrols-eventhubs](../../includes/policy/standards/byrp/microsoft.eventhub.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

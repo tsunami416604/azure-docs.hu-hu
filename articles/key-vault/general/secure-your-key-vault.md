@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: efbed9ec44bd386a4540c397ca8958fb3ccea807
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b04bd6975a2ba8824124c769e66da1e4ebe7534a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019885"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309937"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -130,7 +130,7 @@ A Key Vault tűzfallal és virtuális hálózatokkal kapcsolatos további inform
 
 ## <a name="private-endpoint-connection"></a>Magánhálózati végponti kapcsolatok
 
-Ha teljes mértékben le kell tiltani Key Vault a nyilvános expozíciót, egy Azure-beli privát végpont is használható. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
+Ha teljes mértékben le kell tiltani Key Vault a nyilvános expozíciót, egy Azure-beli [privát végpont](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) is használható. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
 Az Azure-szolgáltatások privát hivatkozásának használatának gyakori forgatókönyvei:
 
@@ -197,13 +197,13 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 > [!NOTE]
 > Ez a példa azt mutatja be, hogy a Key Vault hozzáférés hogyan legyen zárolva az éles környezetben. A fejlesztőknek saját előfizetéssel vagy erőforráscsoporthoz kell rendelkezniük, amely teljes körű engedélyekkel rendelkezik a tárolók, virtuális gépek és az alkalmazás fejlesztéséhez szükséges Storage-fiók kezeléséhez.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
-[Tudnivalók Azure Key Vault](overview.md) 
- [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 
- [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) 
- [Azure-RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 
- [Privát hivatkozás](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [Információk az Azure Key Vaultról](overview.md)
+- [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+- [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
+- [Azure RBAC-vel](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Privát kapcsolat](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 ## <a name="next-steps"></a>Következő lépések
 

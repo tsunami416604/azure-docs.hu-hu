@@ -55,6 +55,8 @@
               href: how-to-set-up-instance-portal.md
         - name: Alkalmazáshitelesítési kód írása
           href: how-to-authenticate-client.md
+        - name: Alkalmazásregisztráció létrehozása
+          href: how-to-create-app-registration.md
         - name: Példány áthelyezése egy másik régióba
           href: how-to-move-regions.md
     - name: Tervezési modellek

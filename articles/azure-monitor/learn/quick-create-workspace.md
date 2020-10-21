@@ -1,17 +1,17 @@
 ---
-title: Log Analytics munkaterület létrehozása az Azure Portalon | Microsoft Docs
+title: Log Analytics munkaterület létrehozása a Azure Portalban | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre Log Analytics munkaterületet a Felhőbeli és a helyszíni környezetekben lévő felügyeleti megoldások és adatgyűjtés engedélyezéséhez a Azure Portal.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: f86cc5e3edc659a233066fcf2544ed4a5019d0f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cf7c89c23b3df51dce2710be50c3c62f8f1e3cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324284"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320082"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Log Analytics-munkaterület létrehozása az Azure Portalon
 Az **log Analytics munkaterületek** menüjéből hozzon létre egy log Analytics munkaterületet a Azure Portal használatával. A Log Analytics munkaterület egy egyedi környezet, amely Azure Monitor naplózza az adatnaplót. Az egyes munkaterületek saját adattárral és konfigurációval rendelkeznek, és az adatforrások és megoldások úgy vannak konfigurálva, hogy egy adott munkaterületen tárolják az adataikat. Ha a következő forrásokból szeretne adatgyűjtést végrehajtani, Log Analytics munkaterületre van szüksége:
@@ -59,11 +59,8 @@ Ha olyan munkaterületet hoz létre, amely az elmúlt 14 napban törölve lett, 
    - Munkaterület [végleges törlése](../platform/delete-workspace.md#permanent-workspace-delete)
    - Új munkaterület létrehozása ugyanazzal a munkaterület-névvel
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy elérhetővé tett egy munkaterületet, beállíthatja a figyelési telemetria gyűjteményét, futtathatja a naplók kereséseit az adatelemzéshez, és hozzáadhat egy felügyeleti megoldást további információk és elemzési elemzések megadásához. 
 
-* Az Azure-erőforrások Azure Diagnostics vagy az Azure Storage szolgáltatással történő gyűjtésének engedélyezéséhez lásd: az [Azure-szolgáltatások naplófájljainak és metrikáinak gyűjtése a log Analytics való használatra](../platform/resource-logs.md#send-to-log-analytics-workspace).  
-* [Adja hozzá System Center Operations Manager adatforrásként](../platform/om-agents.md) az Operations Manager felügyeleti csoportot jelentő ügynököktől származó adatok gyűjtéséhez, és tárolja azt a log Analytics munkaterületen. 
-* [Configuration Manager](../platform/collect-sccm.md) összekapcsolásával importálhatja azokat a számítógépeket, amelyek a hierarchiában gyűjtemények tagjai.  
-* Tekintse át az elérhető [figyelési megoldásokat](../insights/solutions.md) , valamint azt, hogyan adhat hozzá vagy távolíthat el egy megoldást a munkaterületről.
-
+* Lásd: [log Analytics munkaterület állapotának figyelése Azure monitor](../platform/monitor-workspace.md) riasztási szabályok létrehozása a munkaterület állapotának figyeléséhez. 
+* Az Azure-erőforrások Azure Diagnostics vagy az Azure Storage használatával történő adatgyűjtésének engedélyezéséhez tekintse meg az [Azure-szolgáltatás naplófájljainak és metrikáinak gyűjtése a log Analytics való használatra](../platform/resource-logs.md#send-to-log-analytics-workspace) című témakört.

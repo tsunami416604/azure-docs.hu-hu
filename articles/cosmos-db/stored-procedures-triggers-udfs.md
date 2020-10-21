@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82509669"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279912"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
@@ -24,7 +24,7 @@ A tárolt eljárások, eseményindítók és felhasználó által definiált fü
 
 * **Eljárási logika:** JavaScript magas szintű programozási nyelv, amely gazdag és ismerős felületet biztosít az üzleti logika kiváltásához. Az adatokon összetett műveleteket is végrehajthat.
 
-* **Atomi tranzakciók:** Azure Cosmos DB garantálja, hogy az egyetlen tárolt eljáráson vagy triggeren belül végrehajtott adatbázis-műveletek atomiak. Ez az atomi funkció lehetővé teszi, hogy egy alkalmazás a kapcsolódó műveleteket egyetlen kötegbe egyesítse, hogy az összes művelet sikeres legyen, vagy egyik sem sikeres legyen.
+* **Atomi tranzakciók:** Egyetlen tárolt eljáráson vagy triggeren belül végrehajtott adatbázis-műveletek Azure Cosmos DB. Ez az atomi funkció lehetővé teszi, hogy egy alkalmazás a kapcsolódó műveleteket egyetlen kötegbe egyesítse, hogy az összes művelet sikeres legyen, vagy egyik sem sikeres legyen.
 
 * **Teljesítmény:** A JSON-adattípusok belsőleg le vannak képezve a JavaScript Language Type rendszerre. Ez a leképezés több optimalizációt is lehetővé tesz, például a JSON-dokumentumok lusta megvalósításának gyakorlatban a pufferben, és igény szerint elérhetővé teszi őket a végrehajtó kód számára. Más teljesítménybeli előnyökkel jár a hajózás üzleti logikája az adatbázishoz, amely a következőket tartalmazza:
 
@@ -55,7 +55,7 @@ Azure Cosmos DB a JavaScript futtatókörnyezet az adatbázismotor belsejében v
 
 ### <a name="scope-of-a-transaction"></a>Tranzakció hatóköre
 
-A tárolt eljárások egy Azure Cosmos-tárolóhoz vannak társítva, és a tárolt eljárás végrehajtása a logikai partíciós kulcsra terjed ki. A tárolt eljárásoknak tartalmaznia kell a logikai partíció kulcsának értékét a végrehajtás során, amely meghatározza a tranzakció hatóköréhez tartozó logikai partíciót. További információ: [Azure Cosmos db particionálási](partition-data.md) cikk.
+A tárolt eljárások egy Azure Cosmos-tárolóhoz vannak társítva, és a tárolt eljárás végrehajtása a logikai partíciós kulcsra terjed ki. A tárolt eljárásoknak tartalmaznia kell a logikai partíció kulcsának értékét a végrehajtás során, amely meghatározza a tranzakció hatóköréhez tartozó logikai partíciót. További információ: [Azure Cosmos db particionálási](partitioning-overview.md) cikk.
 
 ### <a name="commit-and-rollback"></a>Véglegesítés és visszaállítás
 
@@ -99,7 +99,7 @@ A [felhasználó által definiált függvények](sql-query-udfs.md) (UDF-k) az S
 
 Az SQL API-lekérdezési szintaxist használó lekérdezések kiadása mellett a [KISZOLGÁLÓOLDALI SDK](https://azure.github.io/azure-cosmosdb-js-server) lehetővé teszi, hogy az SQL ismerete nélkül JavaScript-interfész használatával végezzen lekérdezéseket. A JavaScript lekérdezési API lehetővé teszi, hogy programozott módon hozza létre a lekérdezéseket. A lekérdezéseket a JavaScript futtatókörnyezet elemzi, és a Azure Cosmos DBon belül hatékonyan hajtja végre. A JavaScript-lekérdezési API-támogatással kapcsolatos további információkért lásd: [a JavaScript nyelvi integrált lekérdezési API használata](javascript-query-api.md) című cikk. Példákat a [tárolt eljárások és eseményindítók írása JavaScript-lekérdezési API használatával](how-to-write-javascript-query-api.md) című cikkben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan írhat és használhat tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket Azure Cosmos DB a következő cikkekkel:
 

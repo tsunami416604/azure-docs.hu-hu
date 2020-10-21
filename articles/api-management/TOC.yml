@@ -80,6 +80,8 @@
       href: self-hosted-gateway-overview.md
     - name: Megfigyelhetőség
       href: observability.md
+    - name: CI/CD ARM-sablonokkal
+      href: devops-api-development-templates.md
 - name: Útmutatók
   items:
     - name: API-k meghatározása

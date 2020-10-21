@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 61a1d7cb3a5f43aa8100f1c7e8a102ab19b803f5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e35206b5fa9466cda064c09f060f45b437fafd20
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932447"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329576"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Események elemzése és vizualizáció Application Insights
 
@@ -32,7 +32,7 @@ A Service Fabric használatakor a Application Insights gazdag a box-ban. Az Átt
 
 A fenti képen a jobb oldali panelen két fő típusú bejegyzés szerepel a listán: kérelmek és események. A kérések az alkalmazás API-n keresztül, ebben az esetben HTTP-kérelmeken keresztül kezdeményezett hívások, az események pedig egyéni események, amelyek telemetria a kódban bárhol felvehetők. Az alkalmazások Application Insights API-ban való kialakításának megismerése az [Egyéni események és mérőszámok esetében](../azure-monitor/app/api-custom-events-metrics.md)továbbra is megtekinthető. A kérelemre kattintva további részleteket jeleníthet meg az alábbi ábrán látható módon, beleértve a Service Fabricra vonatkozó adatokat is, amelyeket a Application Insights Service Fabric NuGet csomagban gyűjtöttek be. Ez az információ hasznos lehet a hibaelhárításhoz és az alkalmazás állapotának megismeréséhez, és az összes információ kereshető a Application Insightson belül
 
-![Application Insights kérelem részletei](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![Képernyőkép, amely további részleteket jelenít meg, beleértve a Service Fabricra vonatkozó adatokat, amelyeket a rendszer a Application Insights Service Fabric NuGet csomagban gyűjt.](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
 Application Insights rendelkezik egy kijelölt nézettel, amely a-ban található összes adattal lekérdezhető. Az Áttekintés lap tetején válassza a "Metrikaböngésző" lehetőséget, hogy az Application Insights portálra navigáljon. Itt a Kusto lekérdezési nyelv használatával futtathat lekérdezéseket a korábban említett egyéni események, kérések, kivételek, teljesítményszámlálók és egyéb mérőszámok alapján. Az alábbi példa az összes kérelmet az elmúlt 1 órában mutatja.
 
@@ -48,7 +48,7 @@ Ha EventFlow segítségével-t használ az események összesítéséhez, akkor 
 "outputs": [
     {
         "type": "ApplicationInsights",
-        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE**_"
     }
 ]
 ```
@@ -65,13 +65,13 @@ Ha a .NET-ben fejleszti a fejlesztést, és valószínűleg a Service Fabric pro
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigálás a Application Insights erőforrásban Azure Portal
 
-Miután konfigurálta Application Insights az események és naplók kimenete, néhány percen belül meg kell jelennie a Application Insights erőforrásban. Navigáljon a Application Insights erőforráshoz, amely végigvezeti a Application Insights erőforrás-irányítópulton. A Application Insights tálcán válassza a **Keresés** lehetőséget, hogy megtekintse a kapott legújabb nyomokat, és hogy képes legyen szűrni rajtuk.
+Miután konfigurálta Application Insights az események és naplók kimenete, néhány percen belül meg kell jelennie a Application Insights erőforrásban. Navigáljon a Application Insights erőforráshoz, amely végigvezeti a Application Insights erőforrás-irányítópulton. A Application Insights tálcán válassza az _*Search** lehetőséget, hogy megtekintse a kapott legújabb nyomokat, és hogy képes legyen szűrni rajtuk.
 
 *Metrikaböngésző* egy hasznos eszköz az egyéni irányítópultok létrehozásához az alkalmazások, szolgáltatások és a fürt által jelentett mérőszámok alapján. A begyűjtött adatok alapján több diagramot is beállíthat a [Application Insights a metrikák feltárásával](../azure-monitor/platform/metrics-charts.md) kapcsolatban.
 
 Az **elemzés** gombra kattintva megtekintheti a Application Insights Analytics-portált, ahol az eseményeket és a nyomkövetéseket nagyobb hatókörrel és választható módon kérdezheti le. További információ erről a [Application Insights Analytics szolgáltatásában](../azure-monitor/log-query/log-query-overview.md)olvasható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Riasztások beállítása az AI-ben](../azure-monitor/platform/alerts-log.md) a teljesítmény vagy a használat változásairól való értesítéshez
 * Az [intelligens észlelés a Application Insights](../azure-monitor/app/proactive-diagnostics.md) a Application Insights küldött telemetria proaktív elemzését hajtja végre, hogy figyelmeztesse Önt a lehetséges teljesítménnyel kapcsolatos problémákról

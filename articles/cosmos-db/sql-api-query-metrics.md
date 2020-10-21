@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008692"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280524"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel
 
@@ -26,7 +26,7 @@ A Azure Cosmos DB SQL API-t biztosít [az adatlekérdezéshez](how-to-sql-query.
 
 ## <a name="about-sql-query-execution"></a>Tudnivalók az SQL-lekérdezések végrehajtásáról
 
-A Azure Cosmos DB tárolókban tárolja az adatok tárolását, ami bármilyen [tárterület méretére vagy a kérelmek átviteli sebességére](partition-data.md)is nőhet. A Azure Cosmos DB zökkenőmentesen méretezi az adatok körét a fedezetek alatt lévő fizikai partíciók között az adatok növekedésének és a kiosztott átviteli sebesség növelésének kezeléséhez. Az SQL-lekérdezéseket bármely tárolóra kiállíthatja a REST API vagy egy támogatott [SQL SDK](sql-api-sdk-dotnet.md)-k használatával.
+A Azure Cosmos DB tárolókban tárolja az adatok tárolását, ami bármilyen [tárterület méretére vagy a kérelmek átviteli sebességére](partitioning-overview.md)is nőhet. A Azure Cosmos DB zökkenőmentesen méretezi az adatok körét a fedezetek alatt lévő fizikai partíciók között az adatok növekedésének és a kiosztott átviteli sebesség növelésének kezeléséhez. Az SQL-lekérdezéseket bármely tárolóra kiállíthatja a REST API vagy egy támogatott [SQL SDK](sql-api-sdk-dotnet.md)-k használatával.
 
 A particionálás rövid áttekintése: egy olyan partíciós kulcsot határoz meg, mint a "város", amely meghatározza, hogy az Adatelosztás hogyan oszlik meg a fizikai partíciók között. Az egyetlen partíciós kulcsba (például "City" = = "Seattle") tartozó adattárolók egy fizikai partíción belül tárolódnak, de általában egyetlen fizikai partíció több partíciós kulccsal rendelkezik. Ha egy partíció eléri a tárterület méretét, a szolgáltatás zökkenőmentesen két új partícióra osztja fel a partíciót, és egyenletesen osztja el a partíciós kulcsot a partíciók között. Mivel a partíciók átmenetiek, az API-k egy "partíciós tartomány" absztrakcióját használják, amely a partíciós kulcs kivonatának tartományait jelöli. 
 
@@ -163,7 +163,7 @@ A Azure Cosmos DB általában a következő sorrendben hajtja végre a lekérdez
 
 Az összes partícióval kapcsolatban szükséges lekérdezéseknek nagyobb késésre van szükségük, és magasabb szintű RUs-t is felhasználhatnak. Mivel az egyes partíciók automatikusan indexelve vannak az összes tulajdonsággal, ebben az esetben a lekérdezés hatékonyan kiszolgálható az indexből. A Parallels lehetőségekkel gyorsabban lehet a partíciókat átölelő lekérdezéseket használni.
 
-A particionálással és a partíciós kulcsokkal kapcsolatos további tudnivalókért lásd: [particionálás Azure Cosmos DBban](partition-data.md).
+A particionálással és a partíciós kulcsokkal kapcsolatos további tudnivalókért lásd: [particionálás Azure Cosmos DBban](partitioning-overview.md).
 
 ### <a name="sdk-and-query-options"></a>Az SDK és a lekérdezés beállításai
 Tekintse meg a [teljesítménnyel kapcsolatos tippeket](performance-tips.md) és a [teljesítménytesztet](performance-testing.md) a Azure Cosmos db legjobb ügyféloldali teljesítményének megismeréséhez. Ez magában foglalja a legújabb SDK-k használatát, a platform-specifikus konfigurációk, például a kapcsolatok alapértelmezett számának, a Garbage-gyűjtemények gyakoriságának és a könnyű kapcsolódási lehetőségek (például a Direct/TCP) használatával történő konfigurálását. 
@@ -238,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Egység | Leírás | 
+| Metrika | Egység | Description | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | ezredmásodperc | Lekérdezés végrehajtási ideje | 
 | `queryCompileTimeInMs` | ezredmásodperc | Lekérdezés fordítási ideje  | 
@@ -260,7 +260,7 @@ Az ügyfél SDK-k belsőleg több lekérdezési műveletet végezhetnek el a lek
 
 Íme néhány példa a lekérdezésekre, és hogyan kell értelmezni a lekérdezés-végrehajtásból visszaadott metrikákat: 
 
-| Lekérdezés | Minta metrika | Leírás | 
+| Lekérdezés | Minta metrika | Description | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | A beolvasott dokumentumok száma 100 + 1 a TOP záradéknak megfelelően. A lekérdezési időt többnyire a és a vizsgálat során kell kitölteni `WriteOutputTime` `DocumentLoadTime` . | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | A RetrievedDocumentCount mostantól magasabb (500 + 1 a TOP záradéknak megfelelően). | 

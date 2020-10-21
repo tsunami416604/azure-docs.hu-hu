@@ -1,18 +1,18 @@
 ---
 title: 'Oktatóanyag: a tartomány és az altartomány üzemeltetése – Azure DNS'
-description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure DNS a DNS-zónák üzemeltetéséhez.
+description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja a Azure DNS a DNS-zónák üzemeltetéséhez.
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 207254164296d6ed3b0c412c4bf19322ca3ffc0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077993"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282162"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Oktatóanyag: Saját tartomány üzemeltetése az Azure DNS-ben
 
@@ -118,7 +118,7 @@ Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja a **c
 
 - Válassza ki a **contosoRG** erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy DNS-zónát a tartományhoz, és delegálta azt Azure DNSra. Az Azure DNS és a webalkalmazások részletesebb megismeréséhez folytassa a webalkalmazásokról szóló oktatóanyaggal.
 

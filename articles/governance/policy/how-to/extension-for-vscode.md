@@ -1,20 +1,20 @@
 ---
 title: Azure Policy-bővítmény a Visual Studio Code-hoz
 description: Megtudhatja, hogyan kereshet Azure Resource Manager aliasokat a Visual Studio Code-hoz készült Azure Policy bővítmény használatával.
-ms.date: 10/14/2020
+ms.date: 10/20/2020
 ms.topic: how-to
-ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077932"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317615"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-bővítmény használata a Visual Studio Code-hoz
 
-> A Azure Policy bővítmény **0.0.21** és újabb verziójára vonatkozik
+> A Azure Policy bővítmény **0.1.0** és újabb verziójára vonatkozik
 
-Megtudhatja, hogyan kereshet [aliasokat](../concepts/definition-structure.md#aliases) , és hogyan tekintheti át az erőforrásokat és a házirendeket a Visual Studio Code Azure Policy bővítményének használatával. Először is leírjuk, hogyan kell telepíteni a Azure Policy bővítményt a Visual Studio Code-ban. Ezután megismerheti az aliasok keresésének módját.
+Megtudhatja, hogyan használhatja a Visual Studio Code Azure Policy bővítményét az [aliasok](../concepts/definition-structure.md#aliases)keresésére, az erőforrások és a házirendek áttekintésére, az objektumok exportálására és a szabályzat-definíciók kiértékelésére. Először is leírjuk, hogyan kell telepíteni a Azure Policy bővítményt a Visual Studio Code-ban. Ezután megismerheti az aliasok keresésének módját.
 
 A Visual Studio Code-hoz készült Azure Policy-bővítmény a Visual Studio Code által támogatott összes platformra telepíthető. Ez a támogatás magában foglalja a Windows, a Linux és a macOS rendszer használatát.
 
@@ -25,7 +25,7 @@ A Visual Studio Code-hoz készült Azure Policy-bővítmény a Visual Studio Cod
 
 A cikk lépéseinek végrehajtásához a következő elemek szükségesek:
 
-- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-azure-policy-extension"></a>Azure Policy bővítmény telepítése
@@ -151,6 +151,51 @@ A Azure Policy bővítmény a házirendek ablaktáblán megjelenítendő előfiz
 1. A szűrő használatával kiválaszthatja, hogy melyik házirendet vagy jelenjen meg. A szűrő a _DisplayName_ paraméterrel működik a házirend-definícióhoz vagy a házirend-hozzárendeléshez.
 
 Amikor kijelöl egy házirendet vagy hozzárendelést, legyen az a keresési felületen keresztül, vagy kiválasztja azt a TreeView vezérlőben, a Azure Policy bővítmény megnyitja a szabályzatot vagy hozzárendelést jelölő JSON-értéket, valamint az összes erőforrás-kezelő tulajdonság értékét. A bővítmény ellenőrizheti a megnyitott Azure Policy JSON-sémát.
+
+## <a name="export-objects"></a>Objektumok exportálása
+
+Az előfizetések objektumai a helyi JSON-fájlba exportálhatók. Az **erőforrások** vagy **házirendek** ablaktáblán vigye az egérmutatót egy exportálható objektumra vagy válasszon ki. A kiemelt sor végén válassza a Mentés ikont, és válasszon ki egy mappát, amelybe menteni szeretné a JSON-t.
+
+A következő objektumokat lehet helyileg exportálni:
+
+- Erőforrások panel
+  - Erőforráscsoportok
+  - Egyéni erőforrások (vagy egy erőforráscsoport vagy egy erőforrás-szolgáltató alatt)
+- Házirendek ablaktábla
+  - Szabályzat-hozzárendelések
+  - Beépített szabályzat-definíciók
+  - Egyéni szabályzat-definíciók
+  - Kezdeményezések
+
+## <a name="on-demand-evaluation-scan"></a>Igény szerinti értékelési vizsgálat
+
+A kiértékelési vizsgálat a Visual Studio Code-hoz készült Azure Policy bővítménnyel indítható el. A próbaverzió elindításához jelölje ki és rögzítse a következő objektumokat: egy erőforrást, egy házirend-definíciót és egy házirend-hozzárendelést.
+
+1. Az egyes objektumok rögzítéséhez keresse meg az **erőforrások** ablaktáblán vagy a **házirendek** ablaktáblán, és jelölje ki a rögzítés a szerkesztési lapra ikont. Egy objektum rögzítésével hozzáadja azt a bővítmény **értékelési** ablaktáblájához.
+1. Az **értékelés** ablaktáblán válassza ki az egyes objektumok egyikét, és a kiválasztás a kiértékeléshez ikon használatával jelölje meg a kiértékelésben szereplőként.
+1. A **kiértékelés** ablaktábla tetején válassza a futtatási értékelés ikont. Megnyílik egy új panel a Visual Studio Code-ban, amely a kapott kiértékelési adatokat JSON formátumban.
+
+> [!NOTE]
+> Ha a kiválasztott házirend-definíció vagy egy [AuditIfNotExists](../concepts/effects.md#auditifnotexists) vagy [DeployIfNotExists](../concepts/effects.md#deployifnotexists), a **kiértékelés** ablaktáblán a plusz ikon használatával kiválasztott egy _kapcsolódó_ erőforrást a létezés ellenőrzéséhez.
+
+A kiértékelési eredmények a **policyEvaluations. evaluationResult** tulajdonsággal együtt tartalmazzák a házirend-definícióval és a házirend-hozzárendeléssel kapcsolatos információkat. A kimenet a következő példához hasonlóan néz ki:
+
+```json
+{
+    "policyEvaluations": [
+        {
+            "policyInfo": {
+                ...
+            },
+            "evaluationResult": "Compliant",
+            "effectDetails": {
+                "policyEffect": "Audit",
+                "existenceScope": "None"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="sign-out"></a>Kijelentkezés
 

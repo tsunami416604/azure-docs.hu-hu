@@ -9,21 +9,17 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Az Azure API for FHIR üzembe helyezése – portál
-      href: fhir-paas-portal-quickstart.md
-    - name: Az Azure API for FHIR üzembe helyezése – PowerShell
-      href: fhir-paas-powershell-quickstart.md
-    - name: Az Azure API for FHIR üzembe helyezése – parancssori felület
-      href: fhir-paas-cli-quickstart.md
-    - name: Az Azure API for FHIR üzembe helyezése – ARM-sablon
-      href: fhir-paas-arm-template-quickstart.md
-      displayName: deploy azure resource manager template
-    - name: Az FHIR Server for Azure üzembe helyezése – portál
-      href: fhir-oss-portal-quickstart.md
-    - name: Az FHIR Server for Azure üzembe helyezése – PowerShell
-      href: fhir-oss-powershell-quickstart.md
-    - name: Az FHIR Server for Azure üzembe helyezése – parancssori felület
-      href: fhir-oss-cli-quickstart.md
+    - name: Az Azure API for FHIR üzembe helyezése
+      expanded: false
+      items:
+        - name: A portál használata
+          href: fhir-paas-portal-quickstart.md
+        - name: A PowerShell használata
+          href: fhir-paas-powershell-quickstart.md
+        - name: A parancssori felület használata
+          href: fhir-paas-cli-quickstart.md
+        - name: ARM-sablon használata
+          href: fhir-paas-arm-template-quickstart.md
     - name: Az FHIR-hez készült Azure IoT-összekötő üzembe helyezése (előzetes verzió) – portál
       href: iot-fhir-portal-quickstart.md
 - name: Oktatóanyagok
@@ -93,6 +89,8 @@
       href: find-identity-object-ids.md
     - name: Diagnosztikai naplózás engedélyezése az Azure API for FHIR®-ben
       href: enable-diagnostic-logging.md
+    - name: Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak exportálása a diagnosztikai beállításokon keresztül
+      href: iot-metrics-diagnostics-export.md
     - name: Jogkivonat beszerzése az Azure API for FHIR-hoz – parancssori felület
       href: get-healthcare-apis-access-token-cli.md
     - name: Az FHIR-hez készült Azure IoT-összekötő hibaelhárítása (előzetes verzió)

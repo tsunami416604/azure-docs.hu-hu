@@ -86,7 +86,7 @@
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
-      href: resource-manager-samples.md
+      href: templates-samples-sql.md
 - name: Alapelvek
   items:
     - name: NoSQL vagy relációs adatbázisok
@@ -99,31 +99,17 @@
         - name: Konzisztenciaszintek
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: consistency-levels.md
-        - name: A megfelelő konzisztenciaszint kiválasztása
-          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
-          href: consistency-levels-choosing.md
-        - name: Konzisztenciaszintek és Azure Cosmos DB API-k
-          href: consistency-levels-across-apis.md
-        - name: 'Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között'
-          href: consistency-levels-tradeoffs.md
         - name: Magas rendelkezésre állás
           href: high-availability.md
-        - name: Kiosztott átviteli sebesség globális skálázása
-          displayName: 'request units, RUs, RU'
-          href: scaling-throughput.md
         - name: Ütközéstípusok és -feloldási szabályzatok
           displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: Globális terjesztés – technikai részletek
           href: global-dist-under-the-hood.md
-        - name: Régiónkénti jelenlét
-          href: regional-presence.md
     - name: Particionálás
       items:
-        - name: Particionálás áttekintése
-          href: partitioning-overview.md
         - name: Particionálás és horizontális skálázás
-          href: partition-data.md
+          href: partitioning-overview.md
         - name: Szintetikus partíciókulcs
           href: synthetic-partition-keys.md
     - name: Kapacitás
@@ -389,6 +375,9 @@
                     - name: LTRIM
                       displayName: 'LTRIM, left trim, built-in functions'
                       href: sql-query-ltrim.md
+                    - name: REGEXMATCH
+                      displayName: 'REGEXMATCH, built-in functions'
+                      href: sql-query-regexmatch.md
                     - name: REPLACE
                       displayName: 'REPLACE, built-in functions'
                       href: sql-query-replace.md
@@ -486,13 +475,11 @@
         - name: LINQ to SQL
           displayName: 'linq, .NET'
           href: sql-query-linq-to-sql.md
-    - name: Azure Cosmos-fiók használata
-      href: account-overview.md
+    - name: Azure Cosmos DB-erőforrásmodell
+      displayName: 'collection, document'
+      href: account-databases-containers-items.md
     - name: Tárolók és elemek
       items:
-        - name: 'Adatbázisok, tárolók és elemek használata'
-          displayName: 'collection, document'
-          href: databases-containers-items.md
         - name: Dokumentumadatok modellezése
           displayName: document
           href: modeling-data.md
@@ -564,12 +551,11 @@
         - name: A kiosztott átviteli sebesség költségeinek optimalizálása
           displayName: 'request units, RUs, RU'
           href: optimize-cost-throughput.md
-        - name: A lekérdezési költségek optimalizálása
-          href: optimize-cost-queries.md
+        - name: A kérelmezési költségek optimalizálása
+          displayName: 'request, cost, read, write, query, queries, RUs, RU'
+          href: optimize-cost-reads-writes.md
         - name: A tárolási költségek optimalizálása
           href: optimize-cost-storage.md
-        - name: Az olvasási és írási költségek optimalizálása
-          href: optimize-cost-reads-writes.md
         - name: A több régióban való üzemeltetés költségeinek optimalizálása
           href: optimize-cost-regions.md
         - name: Fejlesztési/tesztelési költségek optimalizálása
@@ -586,11 +572,6 @@
         - name: Biztonságos hozzáférés az adatokhoz
           displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
-        - name: IP-tűzfal
-          href: firewall-support.md
-        - name: Hozzáférés virtuális hálózatokról
-          displayName: service endpoint
-          href: vnet-service-endpoint.md
         - name: Szolgáltatáscímkék
           href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Szerepköralapú hozzáférés-vezérlés
@@ -605,8 +586,6 @@
           href: security-baseline.md
     - name: Alkalmasság vállalati használatra
       items:
-        - name: Online biztonsági mentés és igény szerinti helyreállítás
-          href: online-backup-and-restore.md
         - name: Megfelelőség
           href: compliance.md
         - name: Az Azure Policy támogatása
@@ -663,6 +642,8 @@
               href: cassandra-partitioning.md
             - name: Másodlagos indexek
               href: cassandra-secondary-index.md
+            - name: Konzisztenciaszintek leképezése
+              href: cassandra-consistency.md
         - name: Útmutatók
           items:
             - name: Migrálás a Cassandra API-ba
@@ -675,6 +656,14 @@
                   href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Csatorna módosítása
               href: cassandra-change-feed.md
+            - name: Tároló létrehozása – Cassandra API
+              href: how-to-create-container-cassandra.md
+            - name: Átviteli sebesség kiosztása – Cassandra API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-cassandra.md
+            - name: Kérelemegység-díjszabás keresése
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-cassandra.md
             - name: A Spring Data tárolása és kezelése
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra és Spark
@@ -700,12 +689,12 @@
                 - name: Táblaadatok másolása
                   href: cassandra-spark-table-copy-ops.md
             - name: Kezelés Resource Manager-sablonokkal
-              href: manage-cassandra-with-resource-manager.md
+              href: templates-samples-cassandra.md
               displayName: ARM
             - name: Kezelés a PowerShell-lel
-              href: powershell-samples.md
+              href: powershell-samples-cassandra.md
             - name: Kezelés az Azure CLI használatával
-              href: cli-samples.md
+              href: cli-samples-cassandra.md
     - name: MongoDB API
       items:
         - name: Áttekintés
@@ -760,6 +749,8 @@
               href: mongodb-feature-support.md
             - name: GYIK
               href: mongodb-api-faq.md
+            - name: Konzisztenciaszintek leképezése
+              href: mongodb-consistency.md
         - name: Útmutatók
           items:
             - name: Migrálás a MongoDB API-ba
@@ -793,18 +784,28 @@
               href: mongodb-change-streams.md
             - name: Adatindexelés felügyelete
               href: mongodb-indexing.md
+            - name: Tároló létrehozása – MongoDB API
+              href: how-to-create-container-mongodb.md
+            - name: Átviteli sebesség kiosztása – MongoDB API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-mongodb.md
+            - name: Kérelemegység-díjszabás keresése
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-mongodb.md
+            - name: Lekérdezési teljesítmény hibaelhárítása
+              href: mongodb-troubleshoot-query.md
             - name: A Spring Data tárolása és kezelése
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: A MongoDB bővítmény parancsai
               href: mongodb-custom-commands.md
               displayName: custom commands
             - name: Kezelés Resource Manager-sablonokkal
-              href: manage-mongodb-with-resource-manager.md
+              href: templates-samples-mongodb.md
               displayName: ARM
             - name: Kezelés a PowerShell-lel
-              href: powershell-samples.md
+              href: powershell-samples-mongodb.md
             - name: Kezelés az Azure CLI használatával
-              href: cli-samples.md
+              href: cli-samples-mongodb.md
             - name: Gyakori problémák megoldása
               href: mongodb-troubleshoot.md
     - name: Gremlin API
@@ -838,6 +839,10 @@
           items:
             - name: GYIK
               href: gremlin-api-faq.md
+            - name: Válaszfejlécek
+              href: gremlin-headers.md
+            - name: Korlátok
+              href: gremlin-limits.md
         - name: Útmutatók
           items:
             - name: Gráfadatok modellezése
@@ -848,6 +853,14 @@
               href: bulk-executor-graph-dotnet.md
             - name: Gremlin-lekérdezések optimalizálása
               href: graph-execution-profile.md
+            - name: Tároló létrehozása – Gremlin API
+              href: how-to-create-container-gremlin.md
+            - name: Átviteli sebesség kiosztása – Gremlin API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-gremlin.md
+            - name: Kérelemegység-díjszabás keresése
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-gremlin.md
             - name: Erőforrás-jogkivonatok használata
               href: how-to-use-resource-tokens-gremlin.md
             - name: Régiónkénti végpontok használata
@@ -859,12 +872,12 @@
             - name: A Spring Data tárolása és kezelése
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Kezelés Resource Manager-sablonokkal
-              href: manage-gremlin-with-resource-manager.md
+              href: templates-samples-gremlin.md
               displayName: ARM
             - name: Kezelés a PowerShell-lel
-              href: powershell-samples.md
+              href: powershell-samples-gremlin.md
             - name: Kezelés az Azure CLI használatával
-              href: cli-samples.md
+              href: cli-samples-gremlin.md
         - name: Referencia
           items:
             - name: Válaszfejlécek
@@ -927,15 +940,20 @@
           items:
             - name: Alkalmazások létrehozása Table API használatával
               href: table-support.md
+            - name: Tároló létrehozása – Table API
+              href: how-to-create-container-table.md
+            - name: Kérelemegység-díjszabás keresése
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-table.md
             - name: Tervezési útmutató a Table Storage-hoz
               href: table-storage-design-guide.md
             - name: Kezelés Resource Manager-sablonokkal
-              href: manage-table-with-resource-manager.md
+              href: templates-samples-table.md
               displayName: ARM
             - name: Kezelés a PowerShell-lel
-              href: powershell-samples.md
+              href: powershell-samples-table.md
             - name: Kezelés az Azure CLI használatával
-              href: cli-samples.md
+              href: cli-samples-table.md
         - name: Referencia
           items:
             - name: .NET
@@ -971,7 +989,7 @@
         - name: Az Azure parancssori felület használata
           href: manage-with-cli.md
         - name: Resource Manager-sablonok használata
-          href: manage-sql-with-resource-manager.md
+          href: manage-with-templates.md
           displayName: ARM
         - name: Áthelyezés régiók között
           href: how-to-move-regions.md
@@ -1018,7 +1036,7 @@
               href: storage-explorer.md
             - name: Adatok kezelése az Azure Cosmos Explorerrel
               href: data-explorer.md
-        - name: Tároló létrehozása
+        - name: Tároló létrehozása – SQL API
           href: how-to-create-container.md
         - name: Tároló létrehozása nagy partíciókulccsal
           href: large-partition-keys.md
@@ -1038,6 +1056,8 @@
           href: how-to-define-unique-keys.md
     - name: Teljesítmény
       items:
+        - name: Csatlakozási módok
+          href: sql-sdk-connection-modes.md
         - name: Lekérdezés
           items:
             - name: Lekérdezés-végrehajtási mérőszámok lekérése
@@ -1102,16 +1122,12 @@
               href: troubleshoot-java-async-sdk.md
     - name: Változáscsatorna
       items:
-        - name: Az Azure Cosmos DB eseményindító-naplói
-          href: how-to-configure-cosmos-db-trigger-logs.md
-        - name: Azure Cosmos DB-trigger kapcsolódási szabályzata
-          href: how-to-configure-cosmos-db-trigger-connection-policy.md
+        - name: Az Azure Cosmos DB-eseményindító speciális konfigurációja
+          href: how-to-configure-cosmos-db-trigger.md
         - name: Több Azure Cosmos DB-eseményindító
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB-eseményindítók hibaelhárítása
           href: troubleshoot-changefeed-functions.md
-        - name: Változáscsatorna-feldolgozó indításának időpontja
-          href: how-to-configure-change-feed-start-time.md
         - name: A változáscsatorna-becslő használata
           href: how-to-use-change-feed-estimator.md
         - name: Migrálás a változáscsatorna feldolgozó kódtárából
@@ -1180,8 +1196,8 @@
           href: how-to-setup-cmk.md
     - name: Alkalmasság vállalati használatra
       items:
-        - name: Adatok visszaállítása biztonsági mentésből
-          href: how-to-backup-and-restore.md
+        - name: Online biztonsági mentés és igény szerinti helyreállítás
+          href: online-backup-and-restore.md
         - name: Kvótanövelés kérése
           href: create-support-request-quota-increase.md
     - name: Figyelés

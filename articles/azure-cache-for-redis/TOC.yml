@@ -59,6 +59,8 @@
       href: cache-best-practices.md
     - name: Biztonság
       items:
+        - name: Hálózatelkülönítési lehetőségek
+          href: cache-network-isolation.md
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

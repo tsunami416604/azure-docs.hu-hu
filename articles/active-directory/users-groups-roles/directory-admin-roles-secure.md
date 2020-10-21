@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7224f8fe1461727504a85df4a5fd95ba871258a8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055809"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308726"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -302,7 +302,7 @@ Ha a Azure Active Directory a helyszíni Active Directoryhoz csatlakozik, köves
 
 #### <a name="establish-integrated-monitoring"></a>Integrált figyelés létrehozása
 
-A [Azure Security Center](../../security-center/security-center-intro.md):
+A [Azure Security Center](../../security-center/security-center-introduction.md):
 
 * Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetések között
 * Segít észlelni a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek
@@ -359,7 +359,7 @@ Az ütemterv 4. fázisát hat hónapon belül és azt meghaladóan kell megvaló
 Az emelt szintű hozzáférés biztonságossá tétele fontos, hogy biztonsági garanciákat hozzon létre üzleti eszközei számára. Azonban egy teljes biztonsági program részeként kell szerepelnie, amely folyamatos biztonsági garanciákat biztosít. A programnak olyan elemeket kell tartalmaznia, mint például a következők:
 
 * Szabályzat
-* Műveletek
+* Üzemeltetés
 * Információbiztonság
 * Kiszolgálók
 * Alkalmazások

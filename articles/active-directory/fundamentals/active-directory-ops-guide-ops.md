@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74ebd25cb48276f76cdf379eaa596f4ec1f3a2b9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601307"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312610"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Általános üzemeltetési útmutató Azure Active Directory
 
@@ -91,7 +91,7 @@ Néhány identitás-és hozzáférés-kezelési szolgáltatás a helyszíni ügy
 #### <a name="on-premises-agents-logs-recommended-reading"></a>A helyszíni ügynökök a javasolt olvasást naplózzák
 
 - [Alkalmazásproxyval kapcsolatos hibaelhárítás](../manage-apps/application-proxy-troubleshoot.md)
-- [Önkiszolgáló jelszó-visszaállítás hibaelhárítása – Azure Active Directory](../authentication/active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes)
+- [Önkiszolgáló jelszó-visszaállítás hibaelhárítása – Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [Az Azure AD Application Proxy-összekötők ismertetése](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect: átmenő hitelesítés – problémamegoldás](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
 - [Az Azure MFA NPS-bővítményhez tartozó hibakódok megoldása](../authentication/howto-mfa-nps-extension-errors.md)
@@ -172,7 +172,7 @@ A [réteg modell](/windows-server/identity/securing-privileged-access/securing-p
 
 A tartományvezérlők esetében ugyanúgy zárja be a helyszíni identitás-összetevők, például a Azure AD Connect, a AD FS és az SQL-szolgáltatások elérését.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A biztonságos identitás-infrastruktúrának hét aspektusa van. Ez a lista segít megtalálni azokat a műveleteket, amelyeket el kell végeznie a Azure Active Directory (Azure AD) műveleteinek optimalizálása érdekében.
 

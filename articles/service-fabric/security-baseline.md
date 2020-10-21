@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ea96b1bd1b1d661bb835e7bb48d58ce4c3e118
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227712"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309151"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric Azure biztonsági alapterve
 
@@ -78,7 +78,7 @@ A bejövő forgalom további ellenőrzéséhez vegye fontolóra az Azure webalka
 
 * [A DDoS Protection konfigurálása](../virtual-network/manage-ddos-protection.md)
 
-* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/threat-protection.md)
+* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -488,7 +488,7 @@ Ezt a folyamatot leegyszerűsítheti a HRE felhasználói fiókjainak diagnoszti
 
 * [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../governance/management-groups/create.md)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -572,7 +572,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 * [A inaktív adatok titkosításának megismerése az Azure-ban](../security/fundamentals/encryption-atrest.md)
 
-* [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](../storage/common/storage-encryption-keys-portal.md)
+* [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 * [Lemez titkosításának engedélyezése az Azure Service Fabric-fürtcsomópontok számára a Windows rendszerben](./service-fabric-enable-azure-disk-encryption-windows.md)
 
@@ -608,7 +608,7 @@ Külső gyártótól származó megoldás használata a sebezhetőségi felmér�
 
 * [Vezérelt káosz indukálása Service Fabric-fürtökben](./service-fabric-controlled-chaos.md)
 
-* [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -698,7 +698,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 * [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../governance/management-groups/create.md)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -1042,7 +1042,7 @@ Ha ügyfél által felügyelt kulcsokat használ, győződjön meg arról, hogy 
 
 * [Azure Storage-titkosítás inaktív állapotban](../storage/common/storage-service-encryption.md)
 
-* [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1074,7 +1074,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 * [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-* [Címkék használata az erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
+* [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: igen
 

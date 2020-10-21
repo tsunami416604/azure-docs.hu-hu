@@ -1,18 +1,18 @@
 ---
 title: A Azure Service Bus üzenetküldésre vonatkozó szabályozási megfelelőségi szabályozások Azure Policy
 description: Felsorolja Azure Policy Azure Service Bus üzenetkezeléshez elérhető szabályozási megfelelőségi ellenőrzéseket. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: d3f13011f61562c52350af7d123db90dddbbfcb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20f788c8c29b3bccca1df49acad0674432fbd813
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818966"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310431"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-bus-messaging"></a>A Azure Service Bus üzenetküldésre vonatkozó szabályozási megfelelőségi szabályozások Azure Policy
 
@@ -22,7 +22,7 @@ A [Azure Policy szabályozási megfelelősége](../governance/policy/concepts/re
 
 [!INCLUDE [azure-policy-compliancecontrols-servicebus](../../includes/policy/standards/byrp/microsoft.servicebus.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

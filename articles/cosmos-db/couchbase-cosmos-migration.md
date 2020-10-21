@@ -7,12 +7,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87366721"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282480"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrálás a CouchBase-ből Azure Cosmos DB SQL API-ba
 
@@ -33,7 +33,7 @@ Az alábbi főbb funkciók a Couchbase képest eltérő módon működnek Azure 
 
 * Azure Cosmos DB rendelkezik egy "ID" mezővel a dokumentumban, míg a Couchbase a gyűjtő részeként rendelkezik AZONOSÍTÓval. Az "ID" mező a partíción belül egyedi.
 
-* A skálázási vagy horizontális Felskálázási módszerrel Azure Cosmos DB a skálákat. Ez azt jelenti, hogy az adatmegosztás több szegmensre vagy partícióra történik. Ezek a partíciók/szegmensek a megadott Partition Key tulajdonság alapján jönnek létre. Kiválaszthatja a partíciós kulcsot az olvasási és írási műveletek optimalizálására, illetve a megfelelő írási/olvasási műveletekre is. További információért lásd a [particionálással](./partition-data.md) foglalkozó cikket.
+* A skálázási vagy horizontális Felskálázási módszerrel Azure Cosmos DB a skálákat. Ez azt jelenti, hogy az adatmegosztás több szegmensre vagy partícióra történik. Ezek a partíciók/szegmensek a megadott Partition Key tulajdonság alapján jönnek létre. Kiválaszthatja a partíciós kulcsot az olvasási és írási műveletek optimalizálására, illetve a megfelelő írási/olvasási műveletekre is. További információért lásd a [particionálással](./partitioning-overview.md) foglalkozó cikket.
 
 * Azure Cosmos DB nem szükséges, hogy a legfelső szintű hierarchia szerepeljen a gyűjteményben, mert a gyűjtemény neve már létezik. Ez a funkció sokkal egyszerűbbé teszi a JSON-struktúrát. Az alábbi példa az adatmodellben a Couchbase és a Azure Cosmos DB közötti különbségeket mutatja:
 
@@ -435,7 +435,7 @@ Az adatmigrálás kétféleképpen végezhető el.
 
 * **Használja a Azure Cosmos db adatimportálási eszközt:** Ez a beállítás ajánlott a kisebb mennyiségű adattal rendelkező virtuális gépek használatával történő áttelepítésre. A részletes lépésekért lásd az [adatimportálót](./import-data.md) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A teljesítmény teszteléséhez lásd: [teljesítmény-és méretezési tesztelés Azure Cosmos db](./performance-testing.md) cikkel.
 * A kód optimalizálásához tekintse meg [Azure Cosmos db cikk teljesítményével kapcsolatos tippeket](./performance-tips-async-java.md) .

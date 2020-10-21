@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8df913234be1f3e07677520e41b699fe6d503204
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570818"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314503"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>A Kubernetes web Dashboard elérése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -102,7 +102,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 ## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>Bejelentkezés az irányítópultra (kubernetes 1.16 +)
 
 > [!IMPORTANT]
-> [A Kubernetes-irányítópult](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) vagy a Kubernetes v 1.16-nek és a "Kubernetes-Dashboard" 1.10.1 a továbbiakban nem használhatók erőforrások lekérésére az [adott kiadásban található biztonsági javítás](https://github.com/kubernetes/dashboard/pull/3400)miatt. Ennek eredményeképpen a hitelesítési adatok nélküli kérések 401 jogosulatlan hibát adnak vissza. Egy szolgáltatásfiók által beolvasott tulajdonosi jogkivonat továbbra is használható ebben a Kubernetes- [irányítópulton](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui), de ez hatással van az irányítópult-bővítmény bejelentkezési folyamatára a régebbi verziókhoz képest.
+> [A Kubernetes-irányítópult](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) vagy a Kubernetes v 1.16-nek és a "Kubernetes-Dashboard" 1.10.1 a továbbiakban nem használhatók erőforrások lekérésére az [adott kiadásban található biztonsági javítás](https://github.com/kubernetes/dashboard/pull/3400)miatt. Ennek eredményeképpen a hitelesítési adatok nélküli kérések [401 jogosulatlan hibát](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998)adnak vissza. Egy szolgáltatásfiók által beolvasott tulajdonosi jogkivonat továbbra is használható ebben a Kubernetes- [irányítópulton](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui), de ez hatással van az irányítópult-bővítmény bejelentkezési folyamatára a régebbi verziókhoz képest.
 >
 >Ha továbbra is a 1,16 előtti verziót futtatja, akkor továbbra is megadhatja a "kubernetes-Dashboard" szolgáltatásfiók engedélyeit, de ez **nem ajánlott**:
 > ```console

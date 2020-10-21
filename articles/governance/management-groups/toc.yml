@@ -28,6 +28,11 @@
     - name: Felügyeleti csoport létrehozása – REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
+- name: Oktatóanyagok
+  items:
+    - name: 'Információ: Előfizetés-irányítási stratégia létrehozása'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
 - name: Útmutatók
   expanded: true
   items:

@@ -125,6 +125,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: A Batch biztonsági alapkonfigurációja
       href: ../../batch/security-baseline.md
+    - name: A Cloud Shell biztonsági alapkonfigurációja
+      href: ../../cloud-shell/security-baseline.md
     - name: A Cognitive Services biztonsági alapkonfigurációja
       href: ../../cognitive-services/security-baseline.md
     - name: A Container Instances biztonsági alapkonfigurációja

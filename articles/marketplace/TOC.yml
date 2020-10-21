@@ -105,30 +105,38 @@
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure-tárolóra vonatkozó ajánlat létrehozása
               href: partner-center-portal/create-azure-container-offer.md
-    - name: Azure-beli virtuális gépekre vonatkozó ajánlatok
+    - name: Azure-beli virtuális gépekre vonatkozó ajánlat
       items:
-        - name: Virtuálisgép-ajánlat megtervezése
+        - name: Virtuálisgép-ajánlat tervezése
           href: marketplace-virtual-machines.md
         - name: Virtuálisgép-ajánlat létrehozása és közzététele
           items:
-            - name: Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása
-              href: partner-center-portal/azure-vm-create-offer.md
-            - name: Azure-beli virtuális gép technikai eszközének létrehozása
+            - name: Virtuális gép technikai eszközeinek létrehozása
               items:
-                - name: A virtuális gép hitelesítési hibái
-                  href: partner-center-portal/vm-certification-issues-solutions.md
-                - name: Azure-beli virtuális gép technikai eszközének létrehozása
-                  href: partner-center-portal/create-azure-vm-technical-asset.md
-                - name: Azure-beli virtuális gép technikai eszközei – gyakori kérdések
-                  href: partner-center-portal/common-issues-during-vhd-creation.md
-                - name: VHD-ből üzembe helyezett virtuális gép tesztelése
-                  href: partner-center-portal/azure-vm-image-certification.md
-                - name: SAS URI
-                  items:
-                    - name: SAS URI beszerzése
-                      href: partner-center-portal/get-sas-uri.md
-                    - name: SAS URI – gyakori kérdések
-                      href: partner-center-portal/common-sas-uri-issues.md
+                - name: Virtuális gép létrehozása jóváhagyott alapból
+                  href: azure-vm-create-using-approved-base.md
+                - name: Virtuális gép létrehozása saját rendszerkép használatával
+                  href: azure-vm-create-using-own-image.md
+                - name: Virtuálisgép-rendszerkép tesztelése
+                  href: azure-vm-image-test.md
+                - name: SAS URI beszerzése
+                  href: azure-vm-get-sas-uri.md
+                - name: SAS-hibaüzenetek
+                  href: azure-vm-sas-failure-messages.md
+                - name: Virtuális gépek létrehozása – GYIK
+                  href: azure-vm-create-faq.md
+                - name: Virtuális gépek tanúsításával kapcsolatos hibaelhárítás
+                  href: azure-vm-create-certification-faq.md
+            - name: Virtuálisgép-ajánlat létrehozása
+              href: azure-vm-create.md
+            - name: Virtuálisgép-ajánlat tulajdonságainak konfigurálása
+              href: azure-vm-create-properties.md
+            - name: Virtuálisgép-ajánlatlista konfigurálása
+              href: azure-vm-create-listing.md
+            - name: Virtuálisgép-tervek létrehozása
+              href: azure-vm-create-plans.md
+            - name: Előzetes verzió célközönségének hozzáadása
+              href: azure-vm-create-preview.md
     - name: Tanácsadói szolgáltatások
       items:
         - name: Tanácsadói szolgáltatásokra vonatkozó ajánlat megtervezése
@@ -329,7 +337,7 @@
     - name: Műszaki és közzétételi támogatás – munkaidő
       href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: A partnerközpont támogatási lehetőségei
-      href: partner-center-portal/support.md
+      href: support.md
     - name: A partnerközpont közleményei
       href: /partner-center/announcements
     - name: Microsoft-partnerközösség

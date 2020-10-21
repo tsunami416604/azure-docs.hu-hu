@@ -3,12 +3,12 @@ title: Alkalmazások, szerepkörök és szolgáltatások felderítése helyszín
 description: Ismerje meg, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118647"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315198"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 
@@ -46,7 +46,7 @@ A készülék üzembe helyezése és a hitelesítő adatok megadása után a ké
 
 ## <a name="verify-permissions"></a>Engedélyek ellenőrzése
 
-[Létrehozott egy vCenter Server írásvédett fiókot](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) a felderítéshez és értékeléshez. A csak olvasási jogosultsággal rendelkező fióknak engedélyezve kell lennie **Virtual Machines**  >  **vendég műveleteihez**, hogy együttműködjön a virtuális géppel az alkalmazások felderítése érdekében.
+[Létrehozott egy vCenter Server írásvédett fiókot](./tutorial-discover-vmware.md#prepare-vmware) a felderítéshez és értékeléshez. A csak olvasási jogosultsággal rendelkező fióknak engedélyezve kell lennie **Virtual Machines**  >  **vendég műveleteihez**, hogy együttműködjön a virtuális géppel az alkalmazások felderítése érdekében.
 
 ### <a name="add-the-user-account-to-the-appliance"></a>A felhasználói fiók hozzáadása a berendezéshez
 
@@ -77,7 +77,7 @@ Ha a felderítést követően megadták a hitelesítő adatokat az alkalmazás f
 
 Az alkalmazás leltára Excel-formátumban van exportálva és letöltve. Az **alkalmazás leltározási** lapja az összes gépen felderített alkalmazást jeleníti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felmérés létrehozása](how-to-create-assessment.md) a felderített kiszolgálókhoz.
 - SQL Server adatbázisok értékelése [Azure Migrate használatával: adatbázis-értékelés](/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017).

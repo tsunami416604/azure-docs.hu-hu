@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801324"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281061"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
 
@@ -26,7 +26,7 @@ Az átviteli sebességet adatbázisok vagy tárolók között is kioszthatja, é
 
 * Ha egy adatbázison kiépíti az átviteli sebességet, az összes tároló, például a gyűjtemények/táblák/gráfok az adott adatbázison belül megoszthatják az átviteli sebességet a terhelés alapján. Az adatbázis szintjén fenntartott átviteli sebesség egyenlően oszlik meg, attól függően, hogy milyen munkaterhelést adott meg a tárolók adott készletén.
 
-* Ha egy tárolón kiépíti az átviteli sebességet, az átviteli sebesség garantált az adott tároló számára, és az SLA-t is támogatja. A logikai partíciós kulcs kiválasztása elengedhetetlen a tároló összes logikai partícióján belüli terhelés elosztásához. További részletekért lásd: [particionálás](partitioning-overview.md) és [horizontális skálázási](partition-data.md) cikkek.
+* Ha egy tárolón kiépíti az átviteli sebességet, az átviteli sebesség garantált az adott tároló számára, és az SLA-t is támogatja. A logikai partíciós kulcs kiválasztása elengedhetetlen a tároló összes logikai partícióján belüli terhelés elosztásához. További részletekért lásd: [particionálás](partitioning-overview.md) és [horizontális skálázási](partitioning-overview.md) cikkek.
 
 Az alábbiakban néhány, a kiosztott átviteli sebességre vonatkozó stratégiát kell eldöntenie:
 
@@ -58,9 +58,9 @@ Ahogy az az alábbi táblázatban is látható, az API megválasztása alapján 
 |----|----|----|
 |SQL API|Adatbázis|Tároló|
 |MongoDB-hez készült Azure Cosmos DB API|Adatbázis|Gyűjtemény|
-|Cassandra API|Kulcstartomány|Táblázat|
+|Cassandra API|Kulcstartomány|Tábla|
 |Gremlin API|Adatbázisfiók|Graph|
-|Table API|Adatbázisfiók|Táblázat|
+|Table API|Adatbázisfiók|Tábla|
 
 Az átviteli sebesség különböző szinteken való kiépítés révén a számítási feladatok jellemzői alapján optimalizálhatja költségeit. Ahogy azt korábban említettük, programozott módon és bármikor növelheti vagy csökkentheti a kiosztott átviteli sebességet az egyes tároló (k) esetében, vagy együttesen a különböző tárolók között. A számítási feladatok változásainak rugalmas skálázásával, csak a konfigurált átviteli sebességért kell fizetnie. Ha a tároló vagy a tárolók több régióban vannak elosztva, akkor a tárolón konfigurált átviteli sebesség és a tárolók halmaza garantáltan elérhető az összes régióban.
 

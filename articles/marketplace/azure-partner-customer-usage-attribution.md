@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 167c2f091d4d8a7d7d5c32009b484125d7275796
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261379"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282347"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -79,7 +79,7 @@ Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynö
 
 1. Egynél több GUID-azonosító regisztrálásához válassza ismét a **nyomkövetési GUID hozzáadása** elemet. Az oldalon további mezők jelennek meg.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
 Számos partneri megoldás Azure Resource Manager-sablonok használatával van üzembe helyezve. Ha van olyan Resource Manager-sablonja, amely elérhető az Azure Marketplace-en, a GitHubon vagy egy rövid útmutatóként, a sablon módosításának folyamata, amely lehetővé teszi az ügyfél-használati jóváírást, azonnal továbbítsa.
@@ -147,7 +147,7 @@ Ha engedélyezni szeretné az ügyfelek használati feltételeit, az API-hívás
 
 #### <a name="example-the-python-sdk"></a>Példa: a Python SDK
 
-A Python esetében használja a **config** attribútumot. Az attribútumot csak UserAgent lehet hozzáadni. Bemutatunk egy példát:
+A Python esetében használja a **config** attribútumot. Az attribútumot csak UserAgent lehet hozzáadni. Íme egy példa:
 
 ![Attribútum hozzáadása felhasználói ügynökhöz](media/marketplace-publishers-guide/python-for-lu.PNG)
 
@@ -268,7 +268,7 @@ A szoftverek központi telepítésekor a \<PARTNER> Microsoft képes azonosítan
 
 ## <a name="get-support"></a>Támogatás kérése
 
-Ismerje meg a kereskedelmi piactér támogatási lehetőségeit a [partner Center kereskedelmi piactér programjának támogatásával](./partner-center-portal/support.md).
+Ismerje meg a kereskedelmi piactér támogatási lehetőségeit a [partner Center kereskedelmi piactér programjának támogatásával](support.md).
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Technikai tanácsadási kérelem beküldése
 

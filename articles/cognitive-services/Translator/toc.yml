@@ -84,6 +84,8 @@
           href: request-limits.md
     - name: További források
       items:
+        - name: Támogatási lehetőségek
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Kódminták a GitHubon
           href: 'https://aka.ms/TranslatorGitHub'
         - name: GYIK
@@ -94,8 +96,6 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Megfelelőség
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Custom Translator
   items:
     - name: Áttekintés
@@ -148,6 +148,8 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: További források
       items:
+        - name: Támogatási lehetőségek
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Szószedet
           href: custom-translator/glossary.md
         - name: GYIK
@@ -158,5 +160,3 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: Titkosítás
           href: translator-encryption-of-data-at-rest.md
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
