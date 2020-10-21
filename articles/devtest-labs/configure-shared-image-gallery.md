@@ -3,12 +3,12 @@ title: Megosztott képgyűjtemény konfigurálása a Azure DevTest Labsban | Mic
 description: Megtudhatja, hogyan konfigurálhat egy megosztott képtárat Azure DevTest Labsban, amely lehetővé teszi, hogy a felhasználók a laboratóriumi erőforrások létrehozásakor hozzáférjenek a lemezképekhez egy megosztott helyről.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271039"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327977"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Megosztott rendszerkép-katalógus konfigurálása az Azure DevTest Labsben
 A DevTest Labs mostantól támogatja a [megosztott rendszerkép](../virtual-machines/windows/shared-image-galleries.md) -katalógus szolgáltatást. Lehetővé teszi, hogy a labor-felhasználók a laboratóriumi erőforrások létrehozásakor hozzáférjenek a lemezképekhez egy megosztott helyről. Emellett az egyéni felügyelt virtuálisgép-rendszerképekhez is felépítheti a struktúrát és a szervezetet. A megosztott rendszerkép-katalógus funkció a következőket támogatja:
@@ -16,7 +16,7 @@ A DevTest Labs mostantól támogatja a [megosztott rendszerkép](../virtual-mach
 - Lemezképek felügyelt globális replikálása
 - Lemezképek verziószámozása és csoportosítása a könnyebb felügyelet érdekében
 - A rendszerképeket a rendelkezésre állási zónákat támogató régiókban a zónák redundáns tárolási (ZRS) fiókjaival is elérhetővé teheti. A ZRS nagyobb rugalmasságot biztosít a zónabeli hibákkal szemben.
-- Az előfizetések és a bérlők közötti megosztás szerepköralapú hozzáférés-vezérléssel (RBAC).
+- Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával megoszthatja az előfizetéseket és még a bérlők között is.
 
 További információ: megosztott képkatalógus [dokumentációja](../virtual-machines/windows/shared-image-galleries.md). 
  
@@ -118,5 +118,5 @@ GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a virtuális gép létrehozása a csatolt megosztott rendszerképből rendszerkép használatával című cikket a következő cikkekből: virtuális gép [létrehozása megosztott rendszerkép használatával a gyűjteményből](add-vm-use-shared-image.md)

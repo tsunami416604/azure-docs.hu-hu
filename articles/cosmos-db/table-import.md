@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cf47c3b6af89ff3ff431d18d0bda2144427ec34
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85557625"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329406"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Adatok migrálása az Azure Cosmos DB Table API-fiókba
 
@@ -68,11 +68,11 @@ Használja az alábbi forrásbeállításokat, amikor egy Azure Table Storage-t�
 
 Ha az Azure Table Storage-ból való importáláskor szeretné lekérni a forrás kapcsolati karakterláncot, nyissa meg a Azure Portal, és kattintson a **Storage**  >  **-fiók**  >  **hozzáférési kulcsa**elemre, majd a Másolás gombra kattintva másolja a **kapcsolati karakterláncot**.
 
-:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Képernyőkép a HBase forrás beállításairól":::
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Képernyőfelvétel: a Storage-fiókok > fiók > hozzáférési kulcsok beállításai, és kiemeli a másolás gombot.":::
 
 Ha Azure Cosmos db Table API (előzetes verzió) fiókból történő importáláskor szeretné lekérni a forrás-kapcsolódási karakterláncot, nyissa meg a Azure Portal, kattintson **Azure Cosmos db**a  >  **fiók**  >  **kapcsolódási karakterlánca** elemre, majd a Másolás gombra kattintva másolja a **kapcsolódási karakterláncot**.
 
-:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Képernyőkép a HBase forrás beállításairól":::
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Képernyőfelvétel: a Storage-fiókok > fiók > hozzáférési kulcsok beállításai, és kiemeli a másolás gombot.":::
 
 [Példaparancs az Azure Table Storage esetén](#azure-table-storage)
 

@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: aa0f0878366e7afc51f066502c24c09a9981027b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9644cb51f7575df7dba757da23af33a26ae4201a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801358"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279257"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Node.js példák a Azure Cosmos DBban tárolt adatkezelésre
 
@@ -50,7 +50,7 @@ A [JavaScript SDK](sql-api-sdk-node.md)-ra is szüksége lesz.
 
 ## <a name="database-examples"></a>Adatbázis-példák
 
-A [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) -fájl bemutatja, hogyan hajthatja végre a szifilisz-műveleteket az adatbázison. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-adatbázisokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata. 
+A [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) -fájl bemutatja, hogyan hajthatja végre a szifilisz-műveleteket az adatbázison. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-adatbázisokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](account-databases-containers-items.md) fogalmi cikkének használata. 
 
 | Feladat | API-referencia |
 | --- | --- |
@@ -61,7 +61,7 @@ A [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samp
 
 ## <a name="container-examples"></a>Példák tárolókra
 
-A [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) -fájl bemutatja, hogyan hajthatja végre a szifilisz-műveleteket a tárolón. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-gyűjteményekről, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata. 
+A [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) -fájl bemutatja, hogyan hajthatja végre a szifilisz-műveleteket a tárolón. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-gyűjteményekről, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek](account-databases-containers-items.md) fogalmi cikkének használata. 
 
 | Feladat | API-referencia |
 | --- | --- |
@@ -72,7 +72,7 @@ A [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/sam
 
 ## <a name="item-examples"></a>Példák elemekre
 
-A [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) -fájl bemutatja, hogyan hajthatja végre a szifilisz-műveleteket az elemen. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-dokumentumokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata. 
+A [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) -fájl bemutatja, hogyan hajthatja végre a szifilisz-műveleteket az elemen. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-dokumentumokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](account-databases-containers-items.md) fogalmi cikkének használata. 
 
 | Feladat | API-referencia |
 | --- | --- |

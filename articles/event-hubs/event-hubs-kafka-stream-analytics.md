@@ -3,12 +3,12 @@ title: Azure Event Hubs – Apache Kafka események feldolgozása
 description: 'Oktatóanyag: Ez a cikk bemutatja, hogyan dolgozhatja fel az Event hub-n keresztül betöltött Kafka-eseményeket Azure Stream Analytics használatával'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1f0c7bf40b721a3f35fcf68c71cb38a4302a56f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531287"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319380"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Oktatóanyag: Event Hubs-események Apache Kafkaának feldolgozása a stream Analytics használatával 
 Ez a cikk bemutatja, hogyan továbbíthatja az adatstreameket a Event Hubsba, és hogyan dolgozhatja fel azokat Azure Stream Analytics használatával. Végigvezeti a következő lépéseken: 
@@ -25,7 +25,7 @@ Az Event hub által közzétett Kafka-végpont használatakor nincs szükség a 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt hozzákezd.
-* [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks).
+* [Java fejlesztői készlet (JDK) 1.7+](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * [Töltse le](https://maven.apache.org/download.cgi) és [telepítse](https://maven.apache.org/install.html) a Maven bináris archívumát.
 * [Git](https://www.git-scm.com/)
 * Egy **Azure Storage-fiók**. Ha még nem rendelkezik ilyennel, a folytatás előtt [hozzon létre egyet](../storage/common/storage-account-create.md) . Az ebben a bemutatóban található Stream Analytics feladata egy Azure Blob Storage-ban tárolja a kimeneti adatokat. 
@@ -110,7 +110,7 @@ A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végreh
     2. Válassza ki az **Azure-előfizetését**.
     3. Válassza ki a korábban létrehozott **Event hub-névteret** . 
     4. Válassza ki az **Event hub** **tesztjét** . 
-    5. Kattintson a **Mentés** gombra. 
+    5. Válassza a **Mentés** lehetőséget. 
 
         ![Event hub-beli bemeneti konfiguráció](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
@@ -123,7 +123,7 @@ A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végreh
     2. Válassza ki az Azure- **előfizetését**. 
     3. Válassza ki az **Azure Storage-fiókját**. 
     4. Adja meg annak a **tárolónak a nevét** , amely a stream Analytics lekérdezésből származó kimeneti adatokat tárolja.
-    5. Kattintson a **Mentés** gombra.
+    5. Válassza a **Mentés** lehetőséget.
 
         ![Blob Storage kimeneti konfiguráció](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
@@ -170,5 +170,5 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 
 
 
-## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan végezheti el a Event Hubs továbbítását a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. Ha többet szeretne megtudni a Apache Kafka Event Hubsről, tekintse meg [Az Azure Event Hubs Apache Kafka fejlesztői útmutató](apache-kafka-developer-guide.md)című témakört. 
+## <a name="next-steps"></a>Következő lépések
+Ebben a cikkben megtanulta, hogyan végezheti el a Event Hubs továbbítását a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. Ha többet szeretne megtudni a Apache Kafka Event Hubsről, tekintse meg [Az Azure Event Hubs Apache Kafka fejlesztői útmutató](apache-kafka-developer-guide.md)című témakört.

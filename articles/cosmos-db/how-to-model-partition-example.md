@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 91589a88712b093acfbb88df146074ad91ba0ea2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168375"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277990"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Adatok modellezése és particionálása az Azure Cosmos DB-ben való életből vett példa használatával
 
@@ -327,7 +327,7 @@ Ez a tárolt eljárás a bejegyzés és az új Megjegyzés törzsének AZONOSÍT
 - a bejegyzés cseréje
 - hozzáadja az új megjegyzést
 
-Mivel a tárolt eljárások atomi tranzakcióként vannak végrehajtva, garantálható, hogy a `commentCount` Megjegyzések és a tényleges Hozzászólások száma mindig szinkronban marad.
+Mivel a tárolt eljárások atomi tranzakcióként vannak végrehajtva, a `commentCount` és a hozzászólások tényleges száma mindig szinkronban marad.
 
 Nyilvánvalóan hasonló tárolt eljárást hívjuk fel, amikor új, az érték növelését szereti `likeCount` .
 
@@ -582,10 +582,10 @@ A jelen cikkben ismertetett skálázhatósági funkciók az adathalmazon belüli
 
 Az a változás, amelyet a frissítések más tárolók számára történő terjesztésére használunk, az összes frissítést tartósan tárolja. Ez lehetővé teszi az összes frissítés igénylését, mivel a tároló létrehozása és a rendszerindítási műveletek elvégezte a betöltési nézetek egyszeri észlelési műveletként, még akkor is, ha a rendszer már sok adattal rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gyakorlati adatmodellezés és particionálás után érdemes megtekinteni a következő cikkeket az érintett fogalmak áttekintéséhez:
 
-- [Adatbázisok, tárolók és elemek használata](databases-containers-items.md)
+- [Adatbázisok, tárolók és elemek használata](account-databases-containers-items.md)
 - [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 - [Adatcsatorna módosítása Azure Cosmos DB](change-feed.md)

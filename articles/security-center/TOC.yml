@@ -191,6 +191,9 @@
             - name: Igény szerinti hozzáférés kezelése
               displayName: 'jit, management'
               href: security-center-just-in-time.md
+        - name: Végponthoz készült Microsoft Defender-licenc használata
+          displayName: 'ATP, mdatp, wdatp'
+          href: security-center-wdatp.md
         - name: Adaptív alkalmazásvezérlők kezelése
           href: security-center-adaptive-application.md
         - name: Fájlintegritási monitorozás használata
@@ -201,8 +204,6 @@
               href: security-center-file-integrity-monitoring-baselines.md
         - name: Adaptív hálózatmegerősítés kezelése
           href: security-center-adaptive-network-hardening.md
-        - name: A Microsoft Defender ATP integrálása
-          href: security-center-wdatp.md
         - name: A Docker-gazdagépek megerősítése
           displayName: containers
           href: harden-docker-hosts.md

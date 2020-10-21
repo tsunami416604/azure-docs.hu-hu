@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3394156b073df54d6582dc43571137b21df29cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cfc9745fc4684a7b0d8f7da7e63149a6fe50f6d2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968939"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331838"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>Frissítés a Read v2. x verzióról a v3. x olvasásához
 
@@ -27,11 +27,12 @@ A következő táblázat segítségével határozhatja meg az API-útvonal **ver
 
 |Terméktípus| Verzió | Verzió sztringje 3. x API elérési úton |
 |:-----|:----|:----|
-|Szolgáltatás | Olvasási 3,0 | **v3.0** |
-|Tároló | Olvasási 3,0 előzetes verzió | **v3.0** |
-|Szolgáltatás/tároló | Olvasási 3,1 előzetes verzió | **v 3.1 – előzetes verzió. 2** |
+|Szolgáltatás | Olvasási 3,0 vagy 3,1 | **v 3.0** vagy **v 3.1** |
+|Szolgáltatás | Olvasási 3,2 előzetes verzió | **v 3.2 – előzetes verzió. 1** |
+|Tároló | Olvassa el a 3,0 előzetes verzióját, vagy olvassa el a 3,1 Preview | **v 3.0** vagy **v 3.1 – előzetes** verzió: 2 |
 
-Ezután a következő részekben leszűkítheti a műveleteit, és lecserélheti az API-útvonalon található **Version karakterláncot** a táblázatból származó értékre. Például az **olvasás v 3.1 előzetes** verziójának felhő-és tároló-verziói esetében frissítse az API-elérési utat a **https://{Endpoint}/View/v 3.1-Preview-ra. 2/Read/elemezze [? Language]**.
+
+Ezután a következő részekben leszűkítheti a műveleteit, és lecserélheti az API-útvonalon található **Version karakterláncot** a táblázatból származó értékre. Például az **olvasás v 3.2 előzetes** verziójának felhő-és tároló-verziói esetében frissítse az API elérési útját a **https://{Endpoint}/vízió/v 3.2 – preview. 1/Read/elemezz [? Language]** címen.
 
 ## <a name="servicecontainer"></a>Szolgáltatás/tároló
 

@@ -3,18 +3,18 @@ title: Biztonság és hitelesítés Azure Event Grid
 description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8220e0f913a16cc32b4598ecb3836cc892ea83fd
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5a1e4af17c2f4335ed26490bfc2408c66f4aee6b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318550"
+ms.locfileid: "92328725"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid erőforrásokhoz való hozzáférés engedélyezése
-Azure Event Grid lehetővé teszi a különböző felhasználók számára megadott hozzáférési szint szabályozását különböző **felügyeleti műveletek** , például esemény-előfizetések listázása, új adatbázisok létrehozása és kulcsok létrehozása céljából. Event Grid az Azure szerepköralapú hozzáférés-vezérlését (RBAC) használja.
+Azure Event Grid lehetővé teszi a különböző felhasználók számára megadott hozzáférési szint szabályozását különböző **felügyeleti műveletek** , például esemény-előfizetések listázása, új adatbázisok létrehozása és kulcsok létrehozása céljából. Event Grid Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ.
 
 > [!NOTE]
-> A EventGrid nem támogatja az események közzétételét Event Grid témakörök vagy tartományok számára. Használjon közös hozzáférésű aláírás (SAS) kulcsot vagy jogkivonatot az eseményeket közzétevő ügyfelek hitelesítéséhez. További információ: [közzétételi ügyfelek hitelesítése](security-authenticate-publishing-clients.md). 
+> A EventGrid nem támogatja az Azure RBAC számára az események közzétételét Event Grid témakörökben vagy tartományokban. Használjon közös hozzáférésű aláírás (SAS) kulcsot vagy jogkivonatot az eseményeket közzétevő ügyfelek hitelesítéséhez. További információ: [közzétételi ügyfelek hitelesítése](security-authenticate-publishing-clients.md). 
 
 ## <a name="operation-types"></a>Működési típusok
 
@@ -198,6 +198,6 @@ Ha például egy **mytopic**nevű egyéni témakörre szeretne előfizetni, szü
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Event Grid bevezetését lásd: [About Event Grid](overview.md)

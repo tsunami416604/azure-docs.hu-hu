@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053626"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314655"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Egyéni tartomány leképezése egy Azure Blob Storage-végpontra
 
@@ -23,7 +23,7 @@ Az egyéni tartományt egy blob Service-végpontra vagy egy [statikus webhely](s
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> Ez a leképezés csak altartományok esetén működik (például: `www.contoso.com` ). Ha azt szeretné, hogy a webes végpont elérhető legyen a legfelső szintű tartományban (például: `contoso.com` ), akkor a Azure CDNt kell használnia. Útmutatásért tekintse meg a jelen cikk [egyéni tartomány leképezése HTTPS-kompatibilis](#enable-https) szakasszal című szakaszát. Mivel ennek a cikknek a szakasza az egyéni tartomány legfelső szintű tartományának engedélyezéséhez szükséges, az adott szakaszon belül a HTTPS engedélyezésének lépései nem kötelező. 
+> Ez a leképezés csak altartományok esetén működik (például: `www.contoso.com` ). Ha azt szeretné, hogy a webes végpont elérhető legyen a legfelső szintű tartományban (például: `contoso.com` ), akkor a Azure CDNt kell használnia. Útmutatásért tekintse meg a jelen cikk [egyéni tartomány leképezése HTTPS-kompatibilis](#enable-https) szakasszal című szakaszát. Mivel ennek a cikknek a szakasza az egyéni tartomány legfelső szintű tartományának engedélyezésére szolgál, az adott szakaszon belüli lépés nem kötelező a HTTPS engedélyezéséhez. 
 
 <a id="enable-http"></a>
 

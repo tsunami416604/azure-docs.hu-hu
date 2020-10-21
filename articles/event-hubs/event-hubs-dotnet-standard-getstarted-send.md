@@ -4,12 +4,12 @@ description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 170484b5a24367eb19e69f0a72918d99b6595fca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4949d68750e95e5b62b8387f03c77c082fbaf7f4
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728505"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329321"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Események küldése és fogadása az Azure Event Hubs-.NET-ről (Azure. Messaging. EventHubs) 
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure. Messaging. EventHubs** .net-kódtár használatával. 
@@ -61,6 +61,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-a
 1. Adja hozzá a következő `using` utasításokat a **program.cs** fájl elejéhez:
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading.Tasks;
     using Azure.Messaging.EventHubs;
@@ -150,6 +151,7 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
 1. Adja hozzá a következő `using` utasításokat a **program.cs** fájl elejéhez.
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading.Tasks;
     using Azure.Storage.Blobs;
@@ -225,9 +227,9 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
     Ezek az események a küldő program futtatásával korábban a következő három eseményt küldik el az Event hub számára. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a mintákat a GitHubon. 
 
 - [Event Hubs minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
 - [Event Processor-minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
-- [Szerepköralapú hozzáférés-vezérlés (RBAC) minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 1e395e4e73f6c140d81189f1abbccca8c064f757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee440c77ec94a7c3e61c37e589aa5ef23031ca7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616652"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332416"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Ismerje meg a SaaS Analytics szolgáltatást Azure SQL Database, az Azure szinapszis Analytics, a Data Factory és a Power BI használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ Ezután a kibontott adatmennyiség átalakítja és betöltődik a [Star-Schema]
 
 A központi és a dimenzió táblázatok együttesen teszik lehetővé a hatékony analitikai feldolgozást. Az oktatóanyagban használt csillag-séma az alábbi képen látható:
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics-adf/starschematables.JPG)
+![Az oktatóanyagban használt csillag sémát bemutató diagram.](./media/saas-tenancy-tenant-analytics-adf/starschematables.JPG)
 
 Végül a Star-Schema táblákat kérdezi le. A lekérdezési eredmények vizuálisan láthatók a Power BI segítségével, hogy kiemelje a bérlői viselkedést és az alkalmazás használatát. Ezzel a csillag-sémával a következő lekérdezéseket futtatja:
 

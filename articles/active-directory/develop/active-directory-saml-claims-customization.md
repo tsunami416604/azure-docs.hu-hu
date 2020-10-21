@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421458"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275752"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -54,7 +54,7 @@ Ha az SAML-kérelem nem tartalmaz NameIDPolicy-elemet, akkor a Microsoft Identit
 
 A **név-azonosító formátum** legördülő listából választhatja ki az alábbi lehetőségek egyikét.
 
-| NameID formátuma | Leírás |
+| NameID formátuma | Description |
 |---------------|-------------|
 | **Alapértelmezett** | A Microsoft Identity platform az alapértelmezett forrás formátumot fogja használni. |
 | **Állandó** | A Microsoft Identity platform a NameID formátumot fogja használni állandóként. |
@@ -167,7 +167,7 @@ Jogcím feltételének hozzáadása:
 3. Válassza ki azokat a csoportokat, amelyekhez a felhasználónak tartoznia kell. Egy adott alkalmazáshoz tartozó jogcímek közül legfeljebb 50 egyedi csoportot választhat ki. 
 4. Válassza ki azt a **forrást** , ahol a jogcím le fogja kérdezni az értékét. Kiválaszthat egy felhasználói attribútumot a forrás attribútum legördülő menüből, vagy alkalmazhat egy átalakítást a felhasználói attribútumra, mielőtt jogcímet kibocsátja jogcímként.
 
-Fontos, hogy milyen sorrendben adja hozzá a feltételeket. Az Azure AD kiértékeli a feltételeket felülről lefelé, hogy eldöntse, melyik értéket kell kibocsátania a jogcímben. 
+Fontos, hogy milyen sorrendben adja hozzá a feltételeket. Az Azure AD kiértékeli a feltételeket felülről lefelé, hogy eldöntse, melyik értéket kell kibocsátania a jogcímben. A kifejezésben szereplő utolsó érték a jogcímben lesz kibocsátva.
 
 A Britta Simon például egy vendég felhasználó a contoso-bérlőben. Egy másik szervezethez tartozik, amely az Azure AD-t is használja. A fabrikam alkalmazás alábbi konfigurációjának megfelelően, amikor a Britta megpróbál bejelentkezni a fabrikam szolgáltatásba, a Microsoft Identity platform az alábbi feltételek szerint értékeli ki a feltételeket.
 

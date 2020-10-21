@@ -1,21 +1,23 @@
 ---
-title: Azure PowerShell-minták az Azure Cosmos DB-ben
-description: Azure PowerShell minták beszerzése általános feladatok végrehajtásához Azure Cosmos DB
+title: Azure PowerShell minták a Azure Cosmos DB Core (SQL) API-hoz
+description: Azure PowerShell minták beszerzése általános feladatok végrehajtásához Azure Cosmos DB for Core (SQL) API-ban
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0c2d13ef49676917bc48dd5a2e682471558567f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 174458d9e5be24de669060ea8264f62017489c7a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842971"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279318"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure PowerShell-minták az Azure Cosmos DB-ben
+# <a name="azure-powershell-samples-for-azure-cosmos-db-core-sql-api"></a>Azure PowerShell minták a Azure Cosmos DB Core (SQL) API-hoz
 
 Az alábbi táblázat a Azure Cosmos DB leggyakrabban használt Azure PowerShell parancsfájljaira mutató hivatkozásokat tartalmaz. A jobb oldalon található hivatkozásokkal navigáljon az API-specifikus mintákhoz. Az általános minták minden API esetében azonosak. Az összes Azure Cosmos DB PowerShell-parancsmagra vonatkozó hivatkozási lapok a [Azure PowerShell-hivatkozásban](/powershell/module/az.cosmosdb)érhetők el. Ellenőrizze, hogy rendszeresen frissülnek-e a frissítések `Az.CosmosDB` . Ezeket a PowerShell-mintákat a GitHub-adattárból is letölthetik Cosmos DBhoz, [Cosmos db PowerShell-mintákat a githubon](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb).
+
+Más API-khoz készült PowerShell-parancsmagok esetében lásd: [PowerShell-minták a Cassandra](powershell-samples-cassandra.md), PowerShell-minták a [MongoDB API](powershell-samples-mongodb.md)-hoz, PowerShell-minták a [Gremlin](powershell-samples-gremlin.md), PowerShell-minták [táblázathoz](powershell-samples-table.md)
 
 ## <a name="common-samples"></a>Gyakori minták
 
@@ -39,48 +41,4 @@ Az alábbi táblázat a Azure Cosmos DB leggyakrabban használt Azure PowerShell
 |[Adatbázisok vagy tárolók listázása és lekérése](scripts/powershell/sql/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adatbázis vagy tárolók listázása vagy beolvasása. |
 |[Átviteli sebességi műveletek](scripts/powershell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adatbázis vagy tároló átviteli műveletei, beleértve az autoscale és a standard átviteli sebesség közötti Get, Update és Migrálás folyamatát. |
 |[Erőforrások zárolásának törlése a törlésből](scripts/powershell/sql/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal. |
-|||
-
-## <a name="cassandra-api-samples"></a>Cassandra API minták
-
-|Feladat | Leírás |
-|---|---|
-|[Fiók, szóköz és tábla létrehozása](scripts/powershell/cassandra/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot, a térközt és a táblát. |
-|[Fiók, térköz és tábla létrehozása az autoscale paranccsal](scripts/powershell/cassandra/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot, a térközt és a táblát az autoscaletel. |
-|[Szóközök vagy táblázatok listázása és lekérése](scripts/powershell/cassandra/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Kilistázhatja vagy beolvashatja a tárhelyeket vagy a táblákat. |
-|[Átviteli sebességi műveletek](scripts/powershell/cassandra/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Lemezterület vagy tábla átviteli sebessége, beleértve az autoscale és a standard átviteli sebesség közötti Get, Update és Migrálás adatátviteli műveleteit. |
-|[Erőforrások zárolásának törlése a törlésből](scripts/powershell/cassandra/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal. |
-|||
-
-## <a name="mongo-db-api-samples"></a>Mongo DB API-minták
-
-|Feladat | Leírás |
-|---|---|
-|[Fiók, adatbázis és gyűjtemény létrehozása](scripts/powershell/mongodb/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot,-adatbázist és-gyűjteményt. |
-|[Hozzon létre egy fiókot, adatbázist és gyűjteményt az autoscale](scripts/powershell/mongodb/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot,-adatbázist és-gyűjteményt az autoskálázással. |
-|[Adatbázisok vagy gyűjtemények listázása és lekérése](scripts/powershell/mongodb/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adatbázis vagy gyűjtemény listázása vagy beolvasása. |
-|[Átviteli sebességi műveletek](scripts/powershell/mongodb/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adatátviteli műveletek egy adatbázishoz vagy gyűjteményhez, beleértve az autoscale és a standard átviteli sebesség közötti Get, Update és Migrálás folyamatát. |
-|[Erőforrások zárolásának törlése a törlésből](scripts/powershell/mongodb/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal. |
-|||
-
-## <a name="gremlin-api-samples"></a>Gremlin API-minták
-
-|Feladat | Leírás |
-|---|---|
-|[Fiók, adatbázis és gráf létrehozása](scripts/powershell/gremlin/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot, adatbázist és gráfot. |
-|[Hozzon létre egy fiókot, adatbázist és gráfot az autoscale](scripts/powershell/gremlin/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot, egy adatbázist és egy gráfot az autoscaletel. |
-|[Adatbázisok vagy diagramok listázása és lekérése](scripts/powershell/gremlin/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adatbázis vagy gráf listázása vagy beolvasása. |
-|[Átviteli sebességi műveletek](scripts/powershell/gremlin/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adatátviteli műveletek egy adatbázishoz vagy gráfhoz, beleértve az autoscale és a standard átviteli sebesség közötti Get, Update és Migrálás folyamatát. |
-|[Erőforrások zárolásának törlése a törlésből](scripts/powershell/gremlin/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal. |
-|||
-
-## <a name="table-api-samples"></a>Table API minták
-
-|Feladat | Leírás |
-|---|---|
-|[Fiók és tábla létrehozása](scripts/powershell/table/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot és-táblát. |
-|[Fiók és tábla létrehozása az autoscale paranccsal](scripts/powershell/table/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot és egy tábla-méretezést. |
-|[Táblázatok listázása és lekérése](scripts/powershell/table/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Táblázatok listázása vagy beolvasása. |
-|[Átviteli sebességi műveletek](scripts/powershell/table/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egy táblázat átviteli műveletei, beleértve a Get, a Update és az áttelepítés az autoscale és a standard átviteli sebesség között. |
-|[Erőforrások zárolásának törlése a törlésből](scripts/powershell/table/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal. |
 |||

@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89615f53f62329ca37ae4a4dde301a9fae6b1202
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400502"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279735"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Particionált gráfok használata az Azure Cosmos DB-ben
 
 A Azure Cosmos DB Gremlin API egyik fő funkciója a horizontális skálázási képességgel rendelkező nagyméretű diagramok kezelése. A tárolók egymástól függetlenül méretezhetők a tárolás és az átviteli sebesség tekintetében. Létrehozhat olyan Azure Cosmos DB tárolókat, amelyek automatikusan méretezhetők a Graph-adatmennyiség tárolására. Az adatértékek a megadott **partíciós kulcs**alapján automatikusan egyensúlyban vannak.
 
-A **particionálásra akkor van szükség** , ha a tároló várhatóan több mint 20 GB-ot tárol, vagy ha több mint 10 000 adategységet szeretne lefoglalni másodpercenként (RUs). A [Azure Cosmos db particionálási mechanizmussal](partition-data.md) azonos általános elvek vonatkoznak néhány, az alábbiakban ismertetett gráf-specifikus optimalizálásra.
+A **particionálásra akkor van szükség** , ha a tároló várhatóan több mint 20 GB-ot tárol, vagy ha több mint 10 000 adategységet szeretne lefoglalni másodpercenként (RUs). A [Azure Cosmos db particionálási mechanizmussal](partitioning-overview.md) azonos általános elvek vonatkoznak néhány, az alábbiakban ismertetett gráf-specifikus optimalizálásra.
 
 :::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="Gráf particionálás." border="false":::
 
@@ -78,7 +78,7 @@ A következő irányelvek segítségével biztosíthatja a teljesítményt és a
 
 - **Ha lehetséges, használja a kimenő irányt az élek lekérdezéséhez**. A fentiekben leírtaknak megfelelően a rendszer a széleket a kimenő irányú forrás csúcspontokkal tárolja. Így a több partíciós lekérdezések kiszolgálása a lehető legkisebbre csökkenthető, ha az adatforrásokat és a lekérdezéseket szem előtt tartva tervezték meg. Éppen ellenkezőleg, a `in()` lekérdezés mindig drága kiugró lekérdezés lesz.
 
-- **Olyan partíciós kulcsot válasszon, amely egyenletesen osztja el az adatelosztást a partíciók között**. Ez a döntés nagy mértékben függ a megoldás adatmodelljétől. További információ a megfelelő partíciós kulcs létrehozásáról a [particionálás és méretezés Azure Cosmos DBban című részében található](partition-data.md).
+- **Olyan partíciós kulcsot válasszon, amely egyenletesen osztja el az adatelosztást a partíciók között**. Ez a döntés nagy mértékben függ a megoldás adatmodelljétől. További információ a megfelelő partíciós kulcs létrehozásáról a [particionálás és méretezés Azure Cosmos DBban című részében található](partitioning-overview.md).
 
 - **Optimalizálja a lekérdezéseket a partíció határain belüli**adatgyűjtéshez. Az optimális particionálási stratégia a lekérdezési mintákhoz igazodik. Az adatok egyetlen partícióból való beszerzését biztosító lekérdezések biztosítják a lehető legjobb teljesítményt.
 
@@ -86,6 +86,6 @@ A következő irányelvek segítségével biztosíthatja a teljesítményt és a
 
 Ezután folytassa a következő cikkek elolvasásával:
 
-* Tudnivalók a [particionálásról és a méretezésről Azure Cosmos db](partition-data.md).
+* Tudnivalók a [particionálásról és a méretezésről Azure Cosmos db](partitioning-overview.md).
 * Ismerje meg a [GREMLIN API Gremlin-támogatását](gremlin-support.md).
 * Ismerje meg a [GREMLIN API bevezetését](graph-introduction.md).

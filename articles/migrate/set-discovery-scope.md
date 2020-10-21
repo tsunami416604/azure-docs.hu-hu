@@ -3,12 +3,12 @@ title: A VMware virtuális gép felderítési hatókörének beállítása Azure
 description: Ismerteti, hogyan állítható be a felderítési hatókör a VMware virtuális gépek felméréséhez és a Azure Migrate-re való áttelepítéshez.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919726"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314031"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Felderítési hatókör beállítása a VMware virtuális gépekhez
 
@@ -21,7 +21,7 @@ A készülék beállításakor a vCenter Serverhoz csatlakozik, és elindítja a
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Ha még nem állított be olyan vCenter-felhasználói fiókot, amelyet a Azure Migrate a felderítéshez használ, most [értékelje](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) vagy [ügynök nélküli Migrálás](tutorial-prepare-vmware.md#assign-permissions-to-an-account)esetén.
+Ha még nem állított be olyan vCenter-felhasználói fiókot, amelyet a Azure Migrate a felderítéshez használ, most [értékelje](./tutorial-discover-vmware.md#prepare-vmware) vagy [ügynök nélküli Migrálás](./migrate-support-matrix-vmware-migration.md#agentless-migration)esetén.
 
 
 ## <a name="assign-permissions-and-roles"></a>Engedélyek és szerepkörök kiosztása

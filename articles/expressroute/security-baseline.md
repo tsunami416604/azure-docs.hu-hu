@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 053a64f276a09cfd1e11d51743a557e7a238cbc2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e1a9a644e3ec4690dbb1f536dd15db995b56cf12
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207903"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331719"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure biztonsági alapkonfiguráció a ExpressRoute-hez
 
@@ -242,7 +242,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) konfigurálásához használhatja a Azure Portal identitás és hozzáférés-vezérlés (IAM) paneljét az előfizetéséhez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban.
 
-Emellett a ExpressRoute partner Resource Manager API-t használó partnerek Role-Based Access Control alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
+Emellett a ExpressRoute partner Resource Manager API-t használó partnerek szerepköralapú hozzáférés-vezérlést alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
 
 * [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -459,7 +459,7 @@ Helyek közötti IPSEC konfigurálása a ExpressRoute-en keresztül: https://doc
 
 Az Azure ExpressRoute rendelkezik egy áramköri tulajdonossal és egy áramköri felhasználói szerepkörrel is. Az áramköri felhasználók olyan virtuális hálózati átjárók tulajdonosai, amelyek nem a ExpressRoute áramkörhöz tartozó előfizetésben találhatók. Az áramkör tulajdonosa bármikor módosíthatja és visszavonhatja az engedélyeket. Az engedély visszavonása az összes olyan kapcsolati kapcsolat törlését eredményezi, amelynek a hozzáférését visszavonták. Az áramköri felhasználók beválthatják az engedélyeket (egy-egy hitelesítés virtuális hálózatonként).
 
-Emellett a ExpressRoute partner Resource Manager API-t használó partnerek Role-Based Access Control alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
+Emellett a ExpressRoute partner Resource Manager API-t használó partnerek szerepköralapú hozzáférés-vezérlést alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
 
 * [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -985,7 +985,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

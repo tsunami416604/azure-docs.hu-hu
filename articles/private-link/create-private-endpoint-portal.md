@@ -1,237 +1,256 @@
 ---
-title: Rövid útmutató – privát végpontok kezelése az Azure-ban
-description: Ismerje meg, hogyan hozhat létre privát végpontot a rövid útmutató Azure Portal használatával
+title: Rövid útmutató – privát végpont létrehozása a Azure Portal használatával
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy privát végpontot a Azure Portal használatával.
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.date: 09/16/2019
+ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: ef6d49c9046ba04bbac40ec9bf555e12d2faa8f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3deeca4635f33b63a6e0bcecc0c829d3df88e352
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84021704"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327505"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rövid útmutató: privát végpont létrehozása Azure Portal használatával
+# <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Rövid útmutató: privát végpont létrehozása a Azure Portal használatával
 
-A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépet Azure-Virtual Network, egy Azure Private-végponttal rendelkező logikai SQL Servert a Azure Portal használatával. Ezután biztonságosan hozzáférhet SQL Database a virtuális gépről.
+Ismerkedjen meg az Azure Private-hivatkozással egy privát végpont használatával, amellyel biztonságosan csatlakozhat egy Azure-webalkalmazáshoz.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ebben a rövid útmutatóban létrehoz egy privát végpontot egy Azure-webalkalmazáshoz, és üzembe helyez egy virtuális gépet a magánhálózati kapcsolat teszteléséhez.  
 
+A magánhálózati végpontok különböző típusú Azure-szolgáltatásokhoz, például az Azure SQL-hez és az Azure Storage-hoz is létrehozhatók.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-webalkalmazás az Azure **-** előfizetésében üzembe helyezett PremiumV2 vagy magasabb szintű app Service-csomaggal.  
+    * További információkat és példákat a rövid útmutató [: ASP.net Core Webalkalmazás létrehozása az Azure-ban](../app-service/quickstart-dotnetcore.md)című témakörben talál. 
+    * A webalkalmazások és végpontok létrehozásával kapcsolatos részletes oktatóanyagért lásd [: oktatóanyag: Kapcsolódás egy webalkalmazáshoz egy Azure Private-végpont használatával](tutorial-private-endpoint-webapp-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
-## <a name="create-a-vm"></a>Virtuális gép létrehozása
-Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálózatot a privát kapcsolati erőforrás eléréséhez használt virtuális gép (ebben a példában az Azure-beli SQL-kiszolgáló) üzemeltetéséhez.
+## <a name="create-a-virtual-network-and-bastion-host"></a>Virtuális hálózat és megerősített gazdagép létrehozása
 
-## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
+Ebben a szakaszban létrehoz egy virtuális hálózatot, alhálózatot és egy megerősített gazdagépet. 
 
-Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, amely a privát kapcsolati erőforrás eléréséhez használt virtuális gépet üzemelteti.
+A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuális géphez való biztonságos kapcsolódást fogja használni.
 
-Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
+1. Válassza ki a képernyő bal felső részén az **Erőforrás létrehozása > Hálózatkezelés > Virtuális hálózat** lehetőséget, vagy a keresőmezőben keressen rá a **virtuális hálózat** kifejezésre.
 
-| Paraméter                   | Érték                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroup |
-| **\<virtual-network-name>** | myVirtualNetwork          |
-| **\<region-name>**          | USA nyugati középső régiója    |
-| **\<IPv4-address-space>**   | 10.1.0.0/16          |
-| **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 10.1.0.0/24          |
+2. A **virtuális hálózat létrehozása**területen adja meg vagy válassza ki ezt az információt az **alapok** lapon:
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+    | **Beállítás**          | **Érték**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Projekt részletei**  |                                                                 |
+    | Előfizetés     | Válassza ki az Azure-előfizetését                                  |
+    | Erőforráscsoport   | **CreatePrivateEndpointQS kiválasztása – RG** |
+    | **Példány adatai** |                                                                 |
+    | Name             | **MyVNet** megadása                                    |
+    | Régió           | Válassza az **\<your-web-app-region>** lehetőséget. </br> Válassza ki azt a régiót, ahol a webalkalmazás telepítve van.|
 
-### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
+3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép**lehetőséget.
+4. Az **IP-címek** lapon adja meg a következő adatokat:
 
-1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+    | Beállítás            | Érték                      |
+    |--------------------|----------------------------|
+    | IPv4-címtartomány | Adja meg a **10.1.0.0/16** értéket |
 
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.  |
-    | **PÉLDÁNY RÉSZLETEI** |  |
-    | Virtuális gép neve | Adja meg a *myVm*. |
-    | Region | Válassza a **WestCentralUS**lehetőséget. |
-    | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Kép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
-    | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
-    | **RENDSZERGAZDAFIÓK** |  |
-    | Felhasználónév | Adja meg a választott felhasználónevet. |
-    | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Jelszó megerősítése | Adja meg újra a jelszót. |
-    | **BEJÖVŐPORT-SZABÁLYOK** |  |
-    | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **nincs**értéket. |
-    | **MEGTAKARÍTÁSI LEHETŐSÉG** |  |
-    | Már van Windows-licence? | Hagyja meg az alapértelmezett **nem**értéket. |
-    |||
+5. Az **alhálózat neve**alatt válassza ki az **alapértelmezett**szót.
 
-1. Válassza a **Tovább: lemezek**lehetőséget.
+6. Az **alhálózat szerkesztése**területen adja meg a következő adatokat:
 
-1. A **Virtuális gép létrehozása – Lemezek** lehetőségnél hagyja meg az alapértelmezett értékeket, és válassza a **Tovább: Hálózatkezelés** lehetőséget.
+    | Beállítás            | Érték                      |
+    |--------------------|----------------------------|
+    | Alhálózat neve | **MySubnet** megadása |
+    | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
+7. Válassza a **Mentés** lehetőséget.
 
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
-    | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
-    | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)**.|
-    | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
-    | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
-    | Válassza ki a bejövő portokat | Válassza a **http** és az **RDP**lehetőséget.|
-    |||
+8. Válassza a **Biztonság** fület.
+
+9. A **BastionHost**területen válassza az **Engedélyezés**lehetőséget. Adja meg a következő adatokat:
+
+    | Beállítás            | Érték                      |
+    |--------------------|----------------------------|
+    | Bástya neve | **MyBastionHost** megadása |
+    | AzureBastionSubnet címterület | Adja meg a **10.1.1.0/24** értéket |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőbe írja be a következőt: **myBastionIP**. </br> Válassza az **OK** lehetőséget. |
 
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját.
+8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
-## <a name="create-a-logical-sql-server"></a>Logikai SQL-kiszolgáló létrehozása
+## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Ebben a szakaszban egy logikai SQL Server-kiszolgálót fog létrehozni az Azure-ban. 
+Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végpont tesztelésére szolgál.
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **adatbázisok**  >  **SQL Database**lehetőséget.
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép** vagy a keresés a **virtuális gépen** elemet a keresőmezőbe.
+   
+2. A **virtuális gép létrehozása**területen írja be vagy válassza ki az értékeket az **alapok** lapon:
 
-1. Az **SQL Database létrehozása – alapok**lapon adja meg vagy válassza ki az alábbi adatokat:
+    | Beállítás | Érték                                          |
+    |-----------------------|----------------------------------|
+    | **Projekt részletei** |  |
+    | Előfizetés | Válassza ki az Azure-előfizetését |
+    | Erőforráscsoport | **CreatePrivateEndpointQS kiválasztása – RG** |
+    | **Példány adatai** |  |
+    | Virtuális gép neve | **MyVM** megadása |
+    | Régió | Válassza az **\<your-web-app-region>** lehetőséget. </br> Válassza ki azt a régiót, ahol a webalkalmazás telepítve van. |
+    | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
+    | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
+    | Azure Spot-példány | Válassza a **nem** lehetőséget |
+    | Méret | A virtuális gép méretének kiválasztása vagy az alapértelmezett beállítás megadása |
+    | **Rendszergazdai fiók** |  |
+    | Felhasználónév | Adjon meg egy felhasználónevet |
+    | Jelszó | Adja meg a jelszót |
+    | Jelszó megerősítése | Jelszó újbóli megadása |
 
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | **Adatbázis adatai** | |
-    | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.|
-    | **PÉLDÁNY RÉSZLETEI** |  |
-    | Adatbázis neve  | Adja meg a *mydatabase*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
-    |||
-5. A **kiszolgáló**területen válassza az **új létrehozása**lehetőséget. 
-6. Az **új kiszolgáló**mezőbe írja be vagy válassza ki az alábbi adatokat:
+3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**lehetőséget.
+  
+4. A hálózatkezelés lapon válassza ki vagy írja be a következőket:
 
     | Beállítás | Érték |
-    | ------- | ----- |
-    |Kiszolgálónév  | Adja meg a *MyServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
-    | Kiszolgáló-rendszergazdai bejelentkezés| Adja meg a választott rendszergazda nevét. |
-    | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
-    | Hely | Válassza ki azt az Azure-régiót, ahol a SQL Server szeretné tárolni. |
-    
-7. Válassza az **OK** lehetőséget. 
-8. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
-9. Amikor megjelenik a Megfelelt az ellenőrzésen üzenet, válassza a **Létrehozás** lehetőséget. 
-10. Amikor megjelenik a Megfelelt az ellenőrzésen üzenet, válassza a Létrehozás lehetőséget. 
+    |-|-|
+    | **Hálózati adapter** |  |
+    | Virtuális hálózat | **myVNet** |
+    | Alhálózat | **mySubnet** |
+    | Nyilvános IP-cím | Válassza a **Nincs** lehetőséget. |
+    | NIC hálózati biztonsági csoport | **Basic**|
+    | Nyilvános bejövő portok | Válassza a **Nincs** lehetőséget. |
+   
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
+  
+6. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 
-Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia egy privát végpontot. 
+Ebben a szakaszban létre fog hozni egy privát végpontot az előfeltételek szakaszban létrehozott webalkalmazáshoz.
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **magánhálózat**  >  **Private link Center (előzetes verzió)** lehetőséget.
-2. A **Private link Centerben – áttekintés**, a **szolgáltatáshoz való magánhálózati kapcsolat**létrehozásához válassza az **Indítás**lehetőséget.
-1. A **privát végpont létrehozása (előzetes verzió) – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+1. A portálon a képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózati**  >  **privát hivatkozás**lehetőséget, vagy a keresőmezőbe írja be a **privát hivatkozás**kifejezést.
+
+2. Kattintson a **Létrehozás** gombra.
+
+3. A **privát kapcsolat központban**válassza a bal oldali menüben a **privát végpontok** lehetőséget.
+
+4. A **privát végpontok**területen válassza a **+ Hozzáadás**lehetőséget.
+
+5. A **privát végpont létrehozása**elem **alapjai** lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **Projekt részletei** | |
     | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.|
-    | **PÉLDÁNY RÉSZLETEI** |  |
-    | Name | Adja meg a *myPrivateEndpoint* nevet. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
-    |Region|Válassza a **WestCentralUS**lehetőséget.|
-    |||
-5. Válassza a **Tovább: erőforrás**elemet.
-6. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
+    | Erőforráscsoport | Válassza a **CreatePrivateEndpointQS-RG**elemet. Ezt az erőforráscsoportot az előző szakaszban hozta létre.|
+    | **Példány adatai** |  |
+    | Name  | Adja meg a **myPrivateEndpoint** nevet. |
+    | Régió | Válassza az **\<your-web-app-region>** lehetőséget. </br> Válassza ki azt a régiót, ahol a webalkalmazás telepítve van. |
+
+6. Válassza ki az **erőforrás** lapot vagy a **következő: erőforrás** gombot az oldal alján.
+    
+7. Az **erőforrás**mezőben adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    |Kapcsolati módszer  | Válassza a kapcsolódás egy Azure-erőforráshoz a címtárban lehetőséget.|
-    | Előfizetés| Válassza ki előfizetését. |
-    | Erőforrás típusa | Válassza a **Microsoft. SQL/kiszolgálók**lehetőséget. |
-    | Erőforrás |*MyServer* kiválasztása|
-    |Célzott alerőforrás |*SqlServer* kiválasztása|
-    |||
-7. Válassza a **Tovább: konfigurálás**lehetőséget.
-8. A **privát végpont létrehozása (előzetes verzió) – konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
+    | Kapcsolati módszer | Válassza a **Kapcsolódás egy Azure-erőforráshoz a címtárban**lehetőséget. |
+    | Előfizetés | Válassza ki előfizetését. |
+    | Erőforrás típusa | Válassza a **Microsoft. Web/Sites**lehetőséget. |
+    | Erőforrás | Válassza az **\<your-web-app-name>** lehetőséget. </br> Válassza ki az előfeltételekben létrehozott webalkalmazás nevét. |
+    | Célzott alerőforrás | Válassza a **helyek**lehetőséget. |
+
+8. Válassza a **konfiguráció** lapot vagy a **következő: konfiguráció** gombot a képernyő alján.
+
+9. A **konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    |**HÁLÓZATKEZELÉS**| |
-    | Virtuális hálózat| Válassza a *MyVirtualNetwork*lehetőséget. |
-    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
-    |**PRIVÁT DNS-INTEGRÁCIÓ**||
-    |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. |
-    |Privát DNS-zóna |Válassza az *(új) privatelink. database. Windows. net* elemet |
-    |||
+    | **Hálózat** |  |
+    | Virtuális hálózat | Válassza a **myVNet**lehetőséget. |
+    | Alhálózat | Válassza a **mySubnet**lehetőséget. |
+    | **saját DNS integráció** |  |
+    | Integrálás saját DNS-zónával | Hagyja meg az alapértelmezett **Igen értéket**. |
+    | Előfizetés | Válassza ki előfizetését. |
+    | Privát DNS-zónák | Hagyja meg az alapértelmezett **(új) privatelink.azurewebsites.net**.
+    
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
-2. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget. 
- 
-## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Kapcsolódás a virtuális géphez Távoli asztal (RDP) használatával
+13. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 
+14. Válassza a **Létrehozás** lehetőséget.
 
-A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről: 
+## <a name="test-connectivity-to-private-endpoint"></a>A magánhálózati végponthoz való kapcsolódás tesztelése
 
-1. A portál keresési sávjába írja be a *myVm* szöveget.
+Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja használni a webalkalmazáshoz való kapcsolódáshoz a privát végponton keresztül.
 
-1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
+1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali navigációs ablaktáblán.
 
-1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
+2. Válassza a **CreatePrivateEndpointQS-RG**elemet.
 
-1. Nyissa meg a *letöltött. rdp* fájlt.
+3. Válassza a **myVM**lehetőséget.
 
-    1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
+4. A **myVM**áttekintés lapján válassza a **kapcsolat** , majd a **megerősített**lehetőséget.
 
-    1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+5. Válassza a kék **használat Bastion** gombot.
 
-        > [!NOTE]
-        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
+6. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-1. Válassza az **OK** lehetőséget.
+7. A kapcsolat után nyissa meg a Windows PowerShellt a kiszolgálón.
 
-1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás** lehetőséget.
+8. Írja be a következő szöveget: `nslookup <your-webapp-name>.azurewebsites.net`. A helyére írja **\<your-webapp-name>** be az előző lépésekben létrehozott webalkalmazás nevét.  A következőhöz hasonló üzenet jelenik meg:
 
-1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.  
-
-## <a name="access-sql-database-privately-from-the-vm"></a>Hozzáférési SQL Database a virtuális gépről
-
-1. A *myVM*távoli asztal nyissa meg a PowerShellt.
-
-2. Írja be a következő szöveget: `nslookup myserver.database.windows.net`. 
-
-    Egy ehhez hasonló üzenet jelenik meg:
-    ```azurepowershell
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
+
     Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
-    Address:  10.0.0.5
-    Aliases:   myserver.database.windows.net
+    Name:    mywebapp8675.privatelink.azurewebsites.net
+    Address:  10.1.0.5
+    Aliases:  mywebapp8675.azurewebsites.net
     ```
-3. Telepítse a [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. A **Kapcsolódás a kiszolgálóhoz**lapon adja meg vagy válassza ki az alábbi adatokat:
+    A rendszer a webalkalmazás neveként a **10.1.0.5** magánhálózati IP-címét adja vissza.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
 
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | Server type (Kiszolgáló típusa)| Válassza a **Database Engine** (Adatbázismotor) lehetőséget.|
-    | Kiszolgálónév| *MyServer.database.Windows.net* kiválasztása |
-    | Felhasználónév | Adja meg a felhasználónevet, username@servername amely az SQL Server létrehozásakor van megadva. |
-    |Jelszó |Adja meg az SQL-kiszolgáló létrehozásakor megadott jelszót. |
-    |Jelszó megjegyzése|Válassza az **Igen** lehetőséget.|
-    |||
-1. Kattintson a **Csatlakozás** gombra.
-2. A bal oldali menüben lévő adatbázisok tallózása.
-3. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
-4. A távoli asztali kapcsolat bezárásával *myVm*. 
+11. Nyissa meg az Internet Explorert a **myVM**-ben lévő megerősített kapcsolódásban.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
-Ha végzett a magánhálózati végpont, az SQL Server és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást: 
-1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup* lehetőséget a keresési eredmények közül. 
-2. Válassza az **Erőforráscsoport törlése** elemet. 
-3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
+12. Adja meg a webalkalmazás ( **https:// \<your-webapp-name> . azurewebsites.net**) URL-címét.
 
-## <a name="next-steps"></a>További lépések
+13. Ha még nem telepítette az alkalmazást, az alapértelmezett webalkalmazás-oldal jelenik meg:
 
-Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy logikai SQL Serveren és egy privát végponton a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál SQL Database privát kapcsolat használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Alapértelmezett webalkalmazás lap." border="true":::
+
+18. A **myVM**létesített kapcsolatok lezárása.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha nem folytatja az alkalmazás használatát, törölje a virtuális hálózatot, a virtuális gépet és a webalkalmazást a következő lépésekkel:
+
+1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+
+2. Válassza a **CreatePrivateEndpointQS-RG**elemet.
+
+3. Válassza az **Erőforráscsoport törlése** elemet.
+
+4. Írja be a **CreatePrivateEndpointQS-RG** **nevet az erőforráscsoport nevének megadása mezőbe**.
+
+5. Válassza a **Törlés** elemet.
+
+
+## <a name="next-steps"></a>Következő lépések
+
+Ebben a rövid útmutatóban létrehozta a következőket:
+
+* Virtuális hálózat és a megerősített gazdagép.
+* Virtuális gép.
+* Privát végpont egy Azure-webalkalmazáshoz.
+
+A virtuális gépet arra használta, hogy biztonságosan tesztelje a kapcsolatot a webalkalmazáshoz a privát végponton keresztül.
+
+
+
+A privát végpontot támogató szolgáltatásokkal kapcsolatos további információkért lásd:
+> [!div class="nextstepaction"]
+> [Privát kapcsolat elérhetősége](private-link-overview.md#availability)

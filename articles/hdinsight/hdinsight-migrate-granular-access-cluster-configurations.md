@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 058300dca3e7eae41b7d8010e1ca5ee7d4cdcf3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e67d705f8e878cff6934c2e8a172148fab3f1d71
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82598470"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328998"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -20,7 +20,7 @@ Néhány fontos módosítást vezetünk be, hogy a bizalmas adatok beszerzése �
 
 ## <a name="what-is-changing"></a>Mi változik?
 
-Korábban a titkos kulcsokat a HDInsight API-n keresztül lehet megszerezni a tulajdonos, közreműködő vagy olvasó [RBAC szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)rendelkező felhasználók számára, mivel azok mindenki számára elérhetővé válnak az `*/read` engedéllyel. A titkos kulcs olyan értékként van meghatározva, amely a felhasználó szerepkörének magasabb szintű hozzáférésének megszerzéséhez használható. Ezek közé tartoznak például a fürt átjárójának HTTP-hitelesítő adatai, a Storage-fiók kulcsainak és az adatbázis hitelesítő adatai.
+Korábban a HDInsight API-val a tulajdonosi, közreműködő vagy olvasó [Azure-szerepköröket](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)birtokló felhasználók is megszerezhették a titkos kulcsokat, mivel azok mindenki számára elérhetővé válnak az `*/read` engedéllyel. A titkos kulcs olyan értékként van meghatározva, amely a felhasználó szerepkörének magasabb szintű hozzáférésének megszerzéséhez használható. Ezek közé tartoznak például a fürt átjárójának HTTP-hitelesítő adatai, a Storage-fiók kulcsainak és az adatbázis hitelesítő adatai.
 
 2019. szeptember 3-ától a titkos kulcsokhoz való hozzáféréshez `Microsoft.HDInsight/clusters/configurations/action` engedély szükséges, ami azt jelenti, hogy a felhasználók már nem férhetnek hozzá az olvasó szerepkörrel rendelkező felhasználókhoz. Az ezzel az engedéllyel rendelkező szerepkörök a közreműködők, a tulajdonosok és az új HDInsight-fürt szerepkör (továbbiak az alább láthatók).
 
@@ -183,7 +183,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-A Azure Portal segítségével hozzáadhatja a HDInsight-fürt operátori szerepkör-hozzárendelését egy felhasználóhoz. Tekintse meg a dokumentációt, [és kezelje az Azure-erőforrásokhoz való hozzáférést a RBAC és a Azure Portal használatával – szerepkör-hozzárendelés hozzáadása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
+A Azure Portal segítségével hozzáadhatja a HDInsight-fürt operátori szerepkör-hozzárendelését egy felhasználóhoz. Tekintse meg a dokumentációt, [adja hozzá vagy távolítsa el az Azure szerepkör-hozzárendeléseket a Azure Portal használatával – szerepkör-hozzárendelés hozzáadása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
 
 ## <a name="faq"></a>GYIK
 

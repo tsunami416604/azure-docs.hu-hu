@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2245e13f348706f662055408196ea7a26484811
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121639"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314645"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate-projektek hibaelhárítása
 
@@ -52,7 +52,7 @@ Ha egy projektet próbál létrehozni és üzembe helyezési hibát észlel:
 - Ha a következő hibaüzenet jelenik meg: "a kérelmeknek felhasználói azonosítókat kell tartalmazniuk", ez azt jelezheti, hogy nincs hozzáférése a szervezet Azure Active Directory (Azure AD) bérlőhöz. Ebben az esetben:
     - Amikor első alkalommal ad hozzá egy Azure AD-bérlőhöz, e-mailben meghívót kap a bérlőhöz való csatlakozáshoz.
     - Fogadja el a bérlőhöz hozzáadandó meghívót.
-    - Ha nem látja az e-mailt, lépjen kapcsolatba a felhasználóval a bérlőhöz, és kérje meg őket, hogy küldje el újra [a meghívót](../active-directory/b2b/add-users-administrator.md#resend-invitations-to-guest-users) .
+    - Ha nem látja az e-mailt, lépjen kapcsolatba a felhasználóval a bérlőhöz, és kérje meg őket, hogy küldje el újra [a meghívót](../active-directory/external-identities/add-users-administrator.md#resend-invitations-to-guest-users) .
     - A meghívót tartalmazó e-mail fogadása után nyissa meg a meghívót, és válassza ki a hivatkozást a meghívás elfogadásához. Ezután jelentkezzen ki a Azure Portalból, és jelentkezzen be újra. (a böngésző frissítése nem fog működni.) Ezután megkezdheti az áttelepítési projekt létrehozását.
 
 ## <a name="how-do-i-delete-a-project"></a>Projekt törlése Hogyan
@@ -63,6 +63,6 @@ A projektek törléséhez [kövesse az alábbi utasításokat](create-manage-pro
 
 Győződjön meg arról, hogy a megfelelő projekt van kiválasztva. A Azure Migrate hub > **kiszolgálók** vagy **adatbázisok**ablakban kattintson a **módosítás** gombra a **projekt migrálása (módosítás)** elemre a képernyő jobb felső sarkában. Válassza ki a megfelelő előfizetést és a projekt nevét > **az OK gombra**. A lapot frissíteni kell a kiválasztott projekt hozzáadott eszközeivel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felmérési](how-to-assess.md) vagy [áttelepítési](how-to-migrate.md) eszközök hozzáadása Azure Migrate projektekhez.

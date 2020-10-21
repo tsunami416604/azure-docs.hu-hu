@@ -4,27 +4,27 @@ description: Ismerkedjen meg a beépített és a felhasználó által definiált
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 10/15/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18fdab8f4aa90e993f6802508c13a78565b9fa6e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870530"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279928"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Rendszerfunkciók (Azure Cosmos DB)
 
  A Cosmos DB számos beépített SQL-függvényt biztosít. A beépített függvények kategóriái alább láthatók.  
   
-|Function csoport|Leírás|Műveletek|  
+|Function csoport|Description|Üzemeltetés|  
 |--------------|-----------------|-----------------| 
 |[Tömb függvények](sql-query-array-functions.md)|A tömb függvények a tömb bemeneti értékén hajtanak végre műveletet, és numerikus, logikai vagy tömb értéket adnak vissza. | [ARRAY_CONCAT](sql-query-array-concat.md), [ARRAY_CONTAINS](sql-query-array-contains.md), [ARRAY_LENGTH](sql-query-array-length.md), [ARRAY_SLICE](sql-query-array-slice.md) |
 |[Dátum és idő függvények](sql-query-date-time-functions.md)|A dátum-és időfüggvények lehetővé teszik az aktuális UTC dátum és idő megszerzését két formában; egy numerikus időbélyeg, amelynek értéke a UNIX-kor ezredmásodpercben, vagy egy olyan karakterlánc, amely megfelel az ISO 8601 formátumnak. | [GetCurrentDateTime](sql-query-getcurrentdatetime.md), [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
 |[Matematikai függvények](sql-query-mathematical-functions.md)|A matematikai függvények mindegyike számítást végez, általában az argumentumként megadott bemeneti értékeken alapul, és numerikus értéket ad vissza. | [ABS](sql-query-abs.md), [ACO](sql-query-acos.md), [ASIN](sql-query-asin.md), [ATAN](sql-query-atan.md), [ATN2](sql-query-atn2.md), [mennyezet](sql-query-ceiling.md), [Cos](sql-query-cos.md), [gyermekágy](sql-query-cot.md), [fok](sql-query-degrees.md), [exp](sql-query-exp.md), [Floor](sql-query-floor.md), [log](sql-query-log.md), [log10](sql-query-log10.md), [PI](sql-query-pi.md), [Power](sql-query-power.md), [radián](sql-query-radians.md), [Rand](sql-query-rand.md), [Round](sql-query-round.md), [Sign](sql-query-sign.md), [Sin](sql-query-sin.md), [Sqrt](sql-query-sqrt.md), [Square](sql-query-square.md), [Tan](sql-query-tan.md), [TRUNC](sql-query-trunc.md) |
 |[Térbeli függvények](sql-query-spatial-functions.md)|A térbeli függvények egy műveletet hajtanak végre egy térbeli objektum bemeneti értékén, és numerikus vagy logikai értéket adnak vissza. | [ST_DISTANCE](sql-query-st-distance.md), [ST_INTERSECTS](sql-query-st-intersects.md), [ST_ISVALID](sql-query-st-isvalid.md), [ST_ISVALIDDETAILED](sql-query-st-isvaliddetailed.md), [ST_WITHIN](sql-query-st-within.md) |
-|[Sztringfüggvények](sql-query-string-functions.md)|A karakterlánc-függvény egy karakterlánc-bemeneti értéken hajt végre műveletet, és karakterláncot, numerikus vagy logikai értéket ad vissza. | [Összefűzés](sql-query-concat.md), [tartalmaz](sql-query-contains.md), [ENDSWITH](sql-query-endswith.md), [INDEX_OF](sql-query-index-of.md), [bal](sql-query-left.md), [hosszúság](sql-query-length.md), [alsó](sql-query-lower.md), [LTrim](sql-query-ltrim.md), [Csere](sql-query-replace.md), [replikálás](sql-query-replicate.md), [fordított](sql-query-reverse.md), [jobb](sql-query-right.md), [RTRIM](sql-query-rtrim.md), [STARTSWITH](sql-query-startswith.md), [StringToArray](sql-query-stringtoarray.md), [StringToBoolean](sql-query-stringtoboolean.md), [StringToNull](sql-query-stringtonull.md), [StringToNumber](sql-query-stringtonumber.md), [StringToObject](sql-query-stringtoobject.md), [alkarakterlánc](sql-query-substring.md), [ToString](sql-query-tostring.md), [Trim](sql-query-trim.md), [Upper](sql-query-upper.md) |
+|[Sztringfüggvények](sql-query-string-functions.md)|A karakterlánc-függvény egy karakterlánc-bemeneti értéken hajt végre műveletet, és karakterláncot, numerikus vagy logikai értéket ad vissza. | [Összefűzés](sql-query-concat.md), [tartalmaz](sql-query-contains.md), [ENDSWITH](sql-query-endswith.md), [INDEX_OF](sql-query-index-of.md), [bal](sql-query-left.md), [hosszúság](sql-query-length.md), [alsó](sql-query-lower.md), [LTrim](sql-query-ltrim.md), [REGEXMATCH](sql-query-regexmatch.md)[Csere](sql-query-replace.md), [REPLIKÁLÁS](sql-query-replicate.md), [fordított](sql-query-reverse.md), [jobb](sql-query-right.md), [RTRIM](sql-query-rtrim.md), [STARTSWITH](sql-query-startswith.md), [StringToArray](sql-query-stringtoarray.md), [StringToBoolean](sql-query-stringtoboolean.md), [StringToNull](sql-query-stringtonull.md), [StringToNumber](sql-query-stringtonumber.md), [StringToObject](sql-query-stringtoobject.md), [alstring](sql-query-substring.md), [ToString](sql-query-tostring.md), [Trim](sql-query-trim.md), [Upper](sql-query-upper.md) |
 |[Típusellenőrzési függvények](sql-query-type-checking-functions.md)|A típus-ellenőrzési függvények lehetővé teszik egy kifejezés típusának ellenőrzését az SQL-lekérdezéseken belül. | [IS_ARRAY](sql-query-is-array.md), [IS_BOOL](sql-query-is-bool.md), [IS_DEFINED](sql-query-is-defined.md), [IS_NULL](sql-query-is-null.md), [IS_NUMBER](sql-query-is-number.md), [IS_OBJECT](sql-query-is-object.md), [IS_PRIMITIVE](sql-query-is-primitive.md), [IS_STRING](sql-query-is-string.md) |
 
 ## <a name="built-in-versus-user-defined-functions-udfs"></a>Beépített és felhasználó által definiált függvények (UDF)
@@ -35,7 +35,7 @@ Ha jelenleg olyan felhasználó által definiált függvényt (UDF) használ, am
 
 Cosmos DB függvények és az ANSI SQL functions közötti fő különbség az, hogy a Cosmos DB Functions úgy lett kialakítva, hogy megfelelően működjön a séma nélküli és a vegyes séma adataival. Ha például egy tulajdonság hiányzik vagy nem numerikus értékkel rendelkezik (például: `unknown` ), az elem kimarad a hiba helyett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Tömb függvények](sql-query-array-functions.md)

@@ -2,13 +2,13 @@
 title: Hálózati biztonság az Azure Event Hubs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a privát végpontokról
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 02a3a3436c354f7a9c817298d0ce887e33d8016a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/20/2020
+ms.openlocfilehash: 9503fc26c22d7dbff13c5754288f577b7bb3242f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318484"
+ms.locfileid: "92331311"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Hálózati biztonság az Azure Event Hubs 
 Ez a cikk azt ismerteti, hogyan használható az Azure Event Hubs a következő biztonsági funkciókkal: 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure Event Hubs a következő 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatás címkével kapcsolatos további információkért lásd: [szolgáltatási címkék áttekintése](../virtual-network/service-tags-overview.md).
 
-A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules)   vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **EventHub**) megadásával a szabály megfelelő *forrás*   vagy *cél*   mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
+A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **EventHub**) megadásával a szabály megfelelő *forrás* vagy *cél* mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
 | Szolgáltatáscímke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -72,13 +72,13 @@ Az [Azure Private link Service](../private-link/private-link-overview.md) lehet�
 
 A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
-> [!NOTE]
-> Ez a funkció csak a **dedikált** szinten támogatott. További információ a dedikált platformról: [dedikált Event Hubs áttekintése](event-hubs-dedicated-overview.md). 
+> [!IMPORTANT]
+> Ez a funkció mind a **standard** , mind a **dedikált** szint esetében támogatott. Az alapszintű **csomag** nem támogatja.
 
 További információ: [privát végpontok konfigurálása az Event hub-hoz](private-link-service.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
 - [Az IP-tűzfal konfigurálása az Event hub esetében](event-hubs-ip-filtering.md)

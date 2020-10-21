@@ -3,12 +3,12 @@ title: Alkalmazás hitelesítése az Azure Event Hubs-erőforrások eléréséhe
 description: Ez a cikk a Azure Active Directory Azure Event Hubs-erőforrások eléréséhez való hitelesítésével kapcsolatos információkat tartalmaz.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c8503aa8db7350275648d9f5eda69e9e352c859
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50c697e5c430b72f8d5da393e90f1db7ff6d48a1
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566329"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332484"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Alkalmazás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
 A Microsoft Azure Azure Active Directory (Azure AD) alapján integrált hozzáférés-vezérlési felügyeletet biztosít az erőforrásokhoz és alkalmazásokhoz. Az Azure AD és az Azure Event Hubs használatának egyik legfőbb előnye, hogy a hitelesítő adatait többé nem kell a kódban tárolnia. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformon. A jogkivonatot kérő erőforrás neve `https://eventhubs.azure.net/` (a Kafka-ügyfelek esetében a jogkivonat igénylésére szolgáló erőforrás `https://<namespace>.servicebus.windows.net` ). Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti az Azure Event Hubs-erőforrásokra vonatkozó kéréseket.
@@ -16,7 +16,7 @@ A Microsoft Azure Azure Active Directory (Azure AD) alapján integrált hozzáf�
 Ha egy szerepkört egy Azure AD-rendszerbiztonsági tag rendel hozzá, az Azure hozzáférést biztosít ezen erőforrásokhoz az adott rendszerbiztonsági tag számára. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Event Hubs névtér vagy az alatta lévő erőforrás szintjére is kiterjed. Az Azure AD-biztonság szerepköröket rendelhet egy felhasználóhoz, egy csoporthoz, egy egyszerű alkalmazáshoz vagy egy [felügyelt identitáshoz az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md). 
 
 > [!NOTE]
-> A szerepkör-definíció engedélyek gyűjteménye. A szerepköralapú hozzáférés-vezérlés (RBAC) szabályozza, hogy ezek az engedélyek hogyan legyenek kikényszerítve a szerepkör-hozzárendeléssel. A szerepkör-hozzárendelés három elemből áll: rendszerbiztonsági tagból, szerepkör-definícióból és hatókörből. További információ: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
+> A szerepkör-definíció engedélyek gyűjteménye. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) szabályozza, hogy ezek az engedélyek hogyan legyenek kikényszerítve a szerepkör-hozzárendeléssel. A szerepkör-hozzárendelés három elemből áll: rendszerbiztonsági tagból, szerepkör-definícióból és hatókörből. További információ: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
 
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Az Azure Event Hubs beépített szerepkörei
 Az Azure az Azure AD-vel és a OAuth-vel való hozzáférés engedélyezéséhez a következő beépített Azure-szerepköröket biztosítja a Event Hubs adataihoz:
@@ -25,13 +25,13 @@ Az Azure az Azure AD-vel és a OAuth-vel való hozzáférés engedélyezéséhez
 - [Azure Event Hubs adatfeladó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): ezt a szerepkört használhatja a Event Hubs erőforrásokhoz való hozzáférés elküldéséhez.
 - [Azure Event Hubs adatfogadó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): használja ezt a szerepkört, hogy hozzáférést kapjon Event Hubs erőforrásaihoz.   
 
-A séma-beállításjegyzék beépített szerepköreivel kapcsolatban lásd: [séma beállításjegyzékbeli szerepkörei](schema-registry-overview.md#role-based-access-control).
+A séma-beállításjegyzék beépített szerepköreivel kapcsolatban lásd: [séma beállításjegyzékbeli szerepkörei](schema-registry-overview.md#azure-role-based-access-control).
 
 > [!IMPORTANT]
 > Előzetes kiadásunk a tulajdonosi vagy közreműködői szerepkörhöz Event Hubs adathozzáférési jogosultságok hozzáadását támogatja. Azonban a tulajdonosi és a közreműködő szerepkörre vonatkozó adathozzáférési jogosultságok már nem teljesülnek. Ha a tulajdonos vagy közreműködő szerepkört használja, váltson át az Azure Event Hubs adat-tulajdonosi szerepkör használatára.
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-szerepkörök kiosztása a Azure Portal használatával  
-Ha többet szeretne megtudni az Azure-erőforrásokhoz való hozzáférés kezeléséről a RBAC és a Azure Portal használatával, tekintse meg [ezt a cikket](..//role-based-access-control/role-assignments-portal.md). 
+Ha többet szeretne megtudni az Azure-erőforrásokhoz való hozzáférés kezeléséről az Azure RBAC és a Azure Portal használatával, tekintse meg [ezt a cikket](..//role-based-access-control/role-assignments-portal.md). 
 
 Miután meghatározta a szerepkör-hozzárendelés megfelelő hatókörét, navigáljon az adott erőforráshoz a Azure Portal. Jelenítse meg az erőforrás hozzáférés-vezérlési (IAM) beállításait, és kövesse az alábbi utasításokat a szerepkör-hozzárendelések kezeléséhez:
 
@@ -108,13 +108,13 @@ A jogkivonatok beszerzését támogató forgatókönyvek listáját a [Microsoft
 
     Ez a minta frissítve lett a legújabb **Azure. Messaging. EventHubs** könyvtár használatára.
 
-## <a name="next-steps"></a>Következő lépések
-- További információ a RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)?
+## <a name="next-steps"></a>További lépések
+- További információ az Azure RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)?
 - Az Azure-beli szerepkör-hozzárendelések Azure PowerShell, az Azure CLI vagy a REST API használatával történő hozzárendeléséről és kezeléséről a következő cikkekben talál további információt:
-    - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
-    - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése az Azure CLI-vel](../role-based-access-control/role-assignments-cli.md)
-    - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése a REST API](../role-based-access-control/role-assignments-rest.md)
-    - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése Azure Resource Manager-sablonokkal](../role-based-access-control/role-assignments-template.md)
+    - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)  
+    - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md)
+    - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](../role-based-access-control/role-assignments-rest.md)
+    - [Azure-beli szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával](../role-based-access-control/role-assignments-template.md)
 
 Tekintse meg a következő kapcsolódó cikkeket:
 - [Felügyelt identitás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez](authenticate-managed-identity.md)

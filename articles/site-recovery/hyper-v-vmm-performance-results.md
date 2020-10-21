@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73663167"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327637"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>A Hyper-V replikálásának tesztelési eredményei másodlagos helyre
 
@@ -47,7 +47,7 @@ A teszt pass:
 * A Hyper-V replika saját karbantartású memória-gyorsítótárat használ a IOPS terhelés csökkentése érdekében. Az írásokat a memóriában tárolja a VHDX, és a naplófájlnak a helyreállítási helyre történő elküldése előtt kiüríti őket a naplófájlba. A lemez kiürítése akkor is megtörténik, ha az írás előre meghatározott korlátot talált.
 * Az alábbi ábrán látható az állandó állapot IOPS terhelése a replikáláshoz. Láthatjuk, hogy a replikálás miatti IOPS-terhelés 5% körül van, ami nagyon alacsony.
 
-  ![Elsődleges eredmények](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![Diagram, amely az állandó állapotú IOPS-terhelést jeleníti meg a replikáláshoz.](./media/hyper-v-vmm-performance-results/IC744913.png)
 
 A Hyper-V replika az elsődleges kiszolgáló memóriáját használja a lemezek teljesítményének optimalizálása érdekében. Ahogy az az alábbi ábrán is látható, a memória terhelése az elsődleges fürt összes kiszolgálóján marginális. A memória terhelése a replikáció által használt memória százalékos arányát mutatja, a Hyper-V kiszolgáló összes telepített memóriájának összehasonlítva.
 
@@ -55,20 +55,20 @@ A Hyper-V replika az elsődleges kiszolgáló memóriáját használja a lemezek
 
 A Hyper-V replika minimális CPU-terheléssel rendelkezik. Ahogy az ábrán is látható, a replikálási terhelés a 2-3%-os tartományba esik.
 
-![Elsődleges eredmények](./media/hyper-v-vmm-performance-results/IC744915.png)
+![A replikálási terhelést bemutató gráf 2-3%-os tartományba esik.](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>Másodlagos kiszolgáló teljesítménye
 
 A Hyper-V replika kis mennyiségű memóriát használ a helyreállítási kiszolgálón a tárolási műveletek számának optimalizálása érdekében. A Graph összefoglalja a memória használatát a helyreállítási kiszolgálón. A memória terhelése a replikáció által használt memória százalékos arányát mutatja, a Hyper-V kiszolgáló összes telepített memóriájának összehasonlítva.
 
-![Másodlagos eredmények](./media/hyper-v-vmm-performance-results/IC744916.png)
+![Az a gráf, amely összegzi a memória használatát a helyreállítási kiszolgálón.](./media/hyper-v-vmm-performance-results/IC744916.png)
 
 A helyreállítási helyen lévő I/O-műveletek mennyisége az írási műveletek számának függvénye az elsődleges helyen. Tekintse meg a helyreállítási helyen lévő összes I/O-műveletet a teljes I/O-műveletekkel és az elsődleges helyen található írási műveletekkel összehasonlítva. A diagramok azt mutatják, hogy a helyreállítási hely teljes IOPS
 
 * Körülbelül 1,5 alkalommal az írási IOPS az elsődlegesen.
 * Az elsődleges hely teljes IOPS körülbelül 37%-a.
 
-![Másodlagos eredmények](./media/hyper-v-vmm-performance-results/IC744917.png)
+![Az elsődleges és másodlagos helyek IOPS összehasonlítását bemutató gráf.](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![Másodlagos eredmények](./media/hyper-v-vmm-performance-results/IC744918.png)
 
@@ -109,7 +109,7 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 | Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftverek |
 | --- | --- | --- | --- | --- | --- | --- |
 | Hyper-V-kiszolgálók a fürtben: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB – a HOST25 256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5 – 4620 0 \@ 2.20 GHz |4 |1 GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| VMM-kiszolgáló |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
+| VMM-kiszolgáló |2 | | |2 |1 Gbit/s |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Másodlagos hely
 
@@ -123,7 +123,7 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 | Hyper-V-kiszolgálók a fürtben: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel (R) Xeon (R) CPU E5 – 2630 0 \@ 2.30 GHz |2 |1 GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5 – 4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5 – 4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| VMM-kiszolgáló |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
+| VMM-kiszolgáló |2 | | |2 |1 Gbit/s |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Kiszolgáló munkaterhelései
 

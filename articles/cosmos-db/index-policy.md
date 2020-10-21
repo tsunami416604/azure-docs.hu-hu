@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b525f3299420f81670c0aea9872ac5fdef00be97
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089513"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277802"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 
@@ -101,7 +101,7 @@ Tekintse meg [ezt a szakaszt](how-to-manage-indexing-policy.md#indexing-policy-e
 
 Ha a belefoglalt elérési utak és a kizárt elérési utak ütköznek, a pontosabb elérési út elsőbbséget élvez.
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 **Belefoglalt elérési út**: `/food/ingredients/nutrition/*`
 
@@ -271,7 +271,7 @@ Az index-átalakítások során nincs hatása a rendelkezésre állás írásár
 
 Új index hozzáadásakor nincs hatása a rendelkezésre állás olvasására. A lekérdezések csak akkor használják az új indexeket, ha az index átalakítása befejeződött. Az index átalakítása során a lekérdezési motor továbbra is a meglévő indexeket fogja használni, így az indexelési módosítás megkezdése előtt meg kell figyelnie a hasonló olvasási teljesítményt az indexelési átalakítás során. Új indexek hozzáadásakor nem áll fenn a hiányos vagy inkonzisztens lekérdezési eredmények kockázata is.
 
-Az indexek eltávolításakor és az eldobott indexeken szűrt lekérdezések azonnali futtatásakor nincs garancia konzisztens vagy teljes lekérdezési eredményekre. Ha több indexet távolít el, és egyetlen indexelési házirendben is megváltoznak, a lekérdezési motor konzisztens és teljes eredményeket garantál az index-transzformáció során. Ha azonban több indexelési házirend módosításával távolítja el az indexeket, a lekérdezési motor nem garantál konzisztens vagy teljes eredményeket, amíg az összes index átalakítás be nem fejeződik. A legtöbb fejlesztő nem dobja el az indexeket, és azonnal megpróbálja futtatni ezeket az indexeket használó lekérdezéseket, így a gyakorlatban ez a helyzet nem valószínű.
+Az indexek eltávolításakor és az eldobott indexeken szűrt lekérdezések azonnali futtatásakor nincs garancia konzisztens vagy teljes lekérdezési eredményekre. Ha több indexet távolít el, és egyetlen indexelési házirendben is megváltoznak, a lekérdezési motor konzisztens és teljes eredményeket biztosít az index-transzformáció során. Ha azonban több indexelési házirend módosításával távolítja el az indexeket, a lekérdezési motor nem biztosít konzisztens vagy teljes eredményeket, amíg az összes index átalakítás be nem fejeződik. A legtöbb fejlesztő nem dobja el az indexeket, és azonnal megpróbálja futtatni ezeket az indexeket használó lekérdezéseket, így a gyakorlatban ez a helyzet nem valószínű.
 
 > [!NOTE]
 > Ha lehetséges, mindig egyetlen indexelési házirend módosításával érdemes több indexelési változást csoportosítani

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 227e27d25ad5d0c61ed4f36c234222a079315619
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85081069"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317141"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Nagy számú fizikai kiszolgáló értékelése az Azure-ba való áttelepítéshez
 
@@ -30,7 +30,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 
 > [!NOTE]
-> Ha szeretné kipróbálni egy próba-koncepciót, hogy néhány kiszolgálót mérjen fel a méretezés előtt, kövesse az [oktatóanyag-sorozatot](tutorial-prepare-physical.md).
+> Ha szeretné kipróbálni egy próba-koncepciót, hogy néhány kiszolgálót mérjen fel a méretezés előtt, kövesse az [oktatóanyag-sorozatot](./tutorial-discover-physical.md).
 
 ## <a name="plan-for-assessment"></a>Az értékelés megtervezése
 
@@ -64,7 +64,7 @@ Készítse elő az Azure-t és a fizikai kiszolgálókat a kiszolgálók érték
 2. Az Azure-fiók engedélyeinek beállítása a Azure Migrate való interakcióhoz.
 3. Készítse elő a fizikai kiszolgálókat.
 
-A beállítások konfigurálásához kövesse az [oktatóanyag](tutorial-prepare-physical.md) utasításait.
+A beállítások konfigurálásához kövesse az [oktatóanyag](./tutorial-discover-physical.md) utasításait.
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
@@ -83,7 +83,7 @@ A tervezési követelményekkel összhangban tegye a következőket:
 [További](tutorial-assess-physical.md) információ az értékelések létrehozásáról és áttekintéséről.
     
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben:
  

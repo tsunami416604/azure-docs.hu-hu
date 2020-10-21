@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d02568dbb5dfc6b7feb38d353e1ba0ecd8ae25d6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d5370343ac83d75df94e7291d26c87ce0c419d0e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203993"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327416"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
 
@@ -52,9 +52,9 @@ A fenti információknak a DigiCert CertCentral-fiókból való összegyűjtése
 
 1.  DigiCert-hitelesítésszolgáltató hozzáadásához navigáljon a DigiCert hozzáadni kívánt kulcstartóhoz. 
 2.  A Key Vault tulajdonságok lapon válassza a **tanúsítványok**lehetőséget.
-3.  Válassza **a hitelesítésszolgáltatók** fület. ![ Tanúsítvány tulajdonságai](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
+3.  Válassza **a hitelesítésszolgáltatók** fület. ![ hitelesítésszolgáltatók kiválasztása](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
 4.  Válassza a **Hozzáadás** lehetőséget.
- ![Tanúsítvány tulajdonságai](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
+ ![hitelesítésszolgáltatók hozzáadása](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  A hitelesítésszolgáltató **létrehozása** képernyőn válassza a következő értékeket:
     -   **Név**: azonosítható kiállítói név hozzáadása. Példa DigicertCA
     -   **Szolgáltató**: válassza a DigiCert lehetőséget a menüből.
@@ -101,24 +101,22 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 - **Fiókazonosító** -változó definiálása
 - **Szervezeti azonosító** változójának definiálása
 - **API-kulcs** változójának definiálása
-- **Kiállítói név** változó definiálása
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
-$issuerName = "DigiCertCA"
 ```
 
-4. Adja meg a **kiállítót**. Ezzel hozzáadja a Digicert-t a kulcstartóhoz.
+4. Adja meg a **kiállítót**. Ezzel hozzáadja a Digicert-t a kulcstartóhoz. Ha többet szeretne megtudni a paraméterekről, [olvassa el itt](https://docs.microsoft.com/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
 ```azurepowershell-interactive
-Set-AzureKeyVaultCertificateIssuer -VaultName $vaultName -IssuerName $issuerName -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org
+Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```
 
 5. **Házirend beállítása a tanúsítványhoz és a tanúsítvány kiállítása** a DigiCert közvetlenül a Key Vaulton belül.
 
 ```azurepowershell-interactive
-$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName DigiCertCA -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
+$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
@@ -128,7 +126,7 @@ A Digicert CA sikeresen kiállította a tanúsítványt a megadott Key Vaulton e
 
 Ha a kiállított tanúsítvány "letiltott" állapotban van a Azure Portalban, folytassa a **tanúsítvány-művelet** megtekintésével, hogy áttekintse az adott tanúsítványhoz tartozó DigiCert-hibaüzenetet.
 
- ![Tanúsítvány tulajdonságai](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+ ![Tanúsítvány művelete](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 
@@ -149,7 +147,7 @@ Példa
    Nem. A tanúsítvány létrehozásakor a rendszer ellenőrzi, hogy az ellenőrzés folyamata hosszabb időt is igénybe vehet, és az ellenőrzés a folyamat DigiCert függ.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)
