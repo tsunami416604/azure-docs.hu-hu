@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8b27c3d0982e945fcabc6e7748646ea2ee1a4184
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ffc74e05d6cbe7722b9bf293c1a1e75a7de1b879
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945281"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342059"
 ---
 # <a name="continuously-export-security-alerts-and-recommendations"></a>Biztonsági riasztások és javaslatok folyamatos exportálása
 
@@ -41,7 +41,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Anal
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|<ul><li>**Biztonsági rendszergazda** vagy az erőforráscsoport **tulajdonosa**</li><li>Írási engedélyek a célként megadott erőforráshoz</li><li>Ha az alábbiakban ismertetett Azure Policy "DeployIfNotExist" szabályzatot használja, a szabályzatok hozzárendelésére vonatkozó engedélyekre is szüksége lesz</li></ul>|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz), egyéb gov|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz), egyéb gov|
 |||
 
 
@@ -74,13 +74,13 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban&quot; :::
 
 1. Az &quot;exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="use-the-rest-api"></a>[**A REST API használata**](#tab/rest-api)
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>Folyamatos exportálás konfigurálása a REST API használatával
 
-A folyamatos exportálás konfigurálható és kezelhető a Azure Security Center [automations API](https://docs.microsoft.com/rest/api/securitycenter/automations)-n keresztül. Ezzel az API-val szabályokat hozhat létre vagy frissíthet a következő lehetséges célhelyekre való exportáláshoz:
+A folyamatos exportálás konfigurálható és kezelhető a Azure Security Center [automations API](/rest/api/securitycenter/automations)-n keresztül. Ezzel az API-val szabályokat hozhat létre vagy frissíthet a következő lehetséges célhelyekre való exportáláshoz:
 
 - Azure Event Hub
 - Log Analytics-munkaterület
@@ -97,7 +97,7 @@ Az API olyan további funkciókat biztosít, amelyek nem érhetők el a Azure Po
     > [!TIP]
     > Ha az API használatával több exportálási konfigurációt állított be, vagy ha csak API-paramétereket használt, akkor ezek a további funkciók nem jelennek meg a Security Center felhasználói felületen. Ehelyett megjelenik egy szalagcím, amely tájékoztatja, hogy más konfigurációk léteznek.
 
-További információ az automations API-ról a [REST API dokumentációjában](https://docs.microsoft.com/rest/api/securitycenter/automations).
+További információ az automations API-ról a [REST API dokumentációjában](/rest/api/securitycenter/automations).
 
 
 
@@ -117,8 +117,8 @@ A folyamatos exportálási konfigurációk a szervezeten belüli üzembe helyez�
 
     |Cél  |Szabályzat  |Házirend-azonosító  |
     |---------|---------|---------|
-    |Folyamatos Exportálás az Event hub-ba|[Az Event hub-ba való exportálás üzembe helyezése Azure Security Center riasztások és javaslatok esetén](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
-    |Folyamatos exportálás Log Analytics munkaterületre|[Azure Security Center riasztások és javaslatok Log Analytics munkaterületre való exportálásának központi telepítése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+    |Folyamatos Exportálás az Event hub-ba|[Az Azure Security Center-riasztások és -javaslatok Event Hubsba való exportálásának üzembe helyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+    |Folyamatos exportálás Log Analytics munkaterületre|[Az Azure Security Center-riasztások és -javaslatok Log Analytics-munkaterületre való exportálásának üzembe helyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
     ||||
 
     > [!TIP]
@@ -169,7 +169,7 @@ Az exportált adattípusok esemény-sémáinak megtekintéséhez keresse fel a [
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Az exportált riasztások és javaslatok megtekintése Azure Monitor
 
-Bizonyos esetekben dönthet úgy, hogy megtekinti az exportált biztonsági riasztásokat és/vagy javaslatokat [Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview). 
+Bizonyos esetekben dönthet úgy, hogy megtekinti az exportált biztonsági riasztásokat és/vagy javaslatokat [Azure monitorban](../azure-monitor/platform/alerts-overview.md). 
 
 Azure Monitor egységes riasztási élményt nyújt számos Azure-riasztáshoz, beleértve a diagnosztikai naplót, a metrikus riasztásokat és az egyéni riasztásokat Log Analytics munkaterület-lekérdezések alapján.
 
@@ -179,13 +179,13 @@ Ha Azure Monitor Security Center riasztásait és javaslatait szeretné megtekin
 
     ![Azure Monitor riasztások lapja](./media/continuous-export/azure-monitor-alerts.png)
 
-1. A szabály létrehozása lapon konfigurálja az új szabályt (ugyanúgy, mint a [naplózási riasztási szabály konfigurálása a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)):
+1. A szabály létrehozása lapon konfigurálja az új szabályt (ugyanúgy, mint a [naplózási riasztási szabály konfigurálása a Azure monitorban](../azure-monitor/platform/alerts-unified-log.md)):
 
     * Az **erőforrás**mezőben válassza ki azt a log Analytics munkaterületet, amelyhez biztonsági riasztásokat és javaslatokat exportált.
 
     * A **feltétel**beállításnál válassza az **egyéni naplók keresése**lehetőséget. A megjelenő oldalon konfigurálja a lekérdezést, az lookback időszakot és a gyakorisági időszakot. A keresési lekérdezésben beírhatja a *SecurityAlert* vagy a *SecurityRecommendation* kifejezést, hogy lekérdezze azokat az adattípusokat, amelyek Security Center folyamatos exportálást végeznek, amikor engedélyezi a folyamatos exportálást log Analytics szolgáltatásba. 
     
-    * Megadhatja az aktiválni kívánt [műveleti csoportot](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) is. A műveleti csoportok elindíthatják az e-mailek küldését, a ITSM jegyeket, a webhookokat és egyebeket.
+    * Megadhatja az aktiválni kívánt [műveleti csoportot](../azure-monitor/platform/action-groups.md) is. A műveleti csoportok elindíthatják az e-mailek küldését, a ITSM jegyeket, a webhookokat és egyebeket.
     ![Azure Monitor riasztási szabály](./media/continuous-export/azure-monitor-alert-rule.png)
 
 Ekkor megjelenik az új Azure Security Center riasztások vagy javaslatok (a beállított folyamatos exportálási szabályoktól és a Azure Monitor riasztási szabályban megadott feltételtől függően) Azure Monitor riasztásokban, a műveleti csoport automatikus indításával (ha meg van adva).
@@ -204,7 +204,7 @@ A riasztások vagy javaslatok CSV-jelentésének letöltéséhez nyissa meg a **
 
 ### <a name="what-are-the-costs-involved-in-exporting-data"></a>Milyen költségekkel jár az adatexportálás?
 
-A folyamatos Exportálás engedélyezése díjmentes. A Log Analytics munkaterületen lévő adatok betöltésének és megőrzésének költségei az ott konfigurált konfigurációtól függően merülhetnek fel. 
+A folyamatos exportálás engedélyezésének nincs költsége. A Log Analytics munkaterületen lévő adatok betöltésének és megőrzésének költségei az ott konfigurált konfigurációtól függően merülhetnek fel. 
 
 További információ a [log Analytics munkaterület díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/).
 
@@ -213,14 +213,14 @@ További információ az [Azure Event hub díjszabásáról](https://azure.micro
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a javaslatok és riasztások folyamatos exportálását. Azt is megtanulta, hogyan töltheti le a riasztási adatait CSV-fájlként. 
 
 Kapcsolódó anyagok esetében tekintse meg a következő dokumentációt: 
 
 - További információ a [munkafolyamat-automatizálási sablonokról](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
-- [Az Azure Event Hubs dokumentációja](https://docs.microsoft.com/azure/event-hubs/)
-- [Az Azure Sentinel dokumentációja](https://docs.microsoft.com/azure/sentinel/)
-- [Az Azure Monitor dokumentációja](https://docs.microsoft.com/azure/azure-monitor/)
+- [Az Azure Event Hubs dokumentációja](../event-hubs/index.yml)
+- [Az Azure Sentinel dokumentációja](../sentinel/index.yml)
+- [Az Azure Monitor dokumentációja](../azure-monitor/index.yml)
 - [Adattípusok sémáinak exportálása](https://aka.ms/ASCAutomationSchemas)

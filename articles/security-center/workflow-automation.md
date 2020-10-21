@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b713977d811411ea2ccd7dfa22c7757321ecd7aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b3fb116c4eb16e4280e2f71873e88dccff278
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712289"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92344032"
 ---
-# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatikus válaszok létrehozása a riasztások és javaslatok számára a munkafolyamat-automatizálással
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatikus válaszok létrehozása riasztásokhoz és javaslatokhoz munkafolyamat-automatizálással
 
 Minden biztonsági program több munkafolyamatot tartalmaz az incidensek megválaszolásához. Ezek a folyamatok magukban foglalhatják az érintett érintett felek értesítését, a módosítási felügyeleti folyamat indítását és az adott szervizelési lépések alkalmazását. A biztonsági szakértők azt ajánlják, hogy az eljárások több lépésének automatizálására legyen lehetőség. Az Automation csökkenti a terhelést. Emellett javíthatja a biztonságot, mivel biztosítja, hogy a folyamat lépései gyorsan, következetesen és az előre meghatározott követelményeknek megfelelően történjenek.
 
-Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatását ismerteti. Ez a funkció a biztonsági riasztások és javaslatok Logic Apps indítását is elvégezheti. Előfordulhat például, hogy egy adott felhasználót szeretne e-mailben elküldeni a Security Center riasztás esetén. Azt is megtudhatja, hogyan hozhat létre Logic Apps a [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)használatával.
+Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatását ismerteti. Ez a funkció a biztonsági riasztások és javaslatok Logic Apps indítását is elvégezheti. Előfordulhat például, hogy egy adott felhasználót szeretne e-mailben elküldeni a Security Center riasztás esetén. Azt is megtudhatja, hogyan hozhat létre Logic Apps a [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával.
 
 > [!NOTE]
 > Ha korábban a forgatókönyvek (előzetes verzió) nézetet használta az oldalsávon, akkor ugyanazokat a funkciókat fogja használni, mint az új munkafolyamat-automatizálási oldalon kibontott funkciókkal.
@@ -32,7 +32,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
-|Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** vagy **tulajdonos** az erőforráscsoporthoz<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie<br><br>Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepköröket/engedélyeket is meg kell adni:<br> - A [Logic app-operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )<br> - A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) engedélyei szükségesek<br>Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)|
+|Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** vagy **tulajdonos** az erőforráscsoporthoz<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie<br><br>Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepköröket/engedélyeket is meg kell adni:<br> - A [Logic app-operátor](../role-based-access-control/built-in-roles.md#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )<br> - A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](../role-based-access-control/built-in-roles.md#logic-app-contributor) engedélyei szükségesek<br>Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
@@ -109,9 +109,9 @@ Ebből a cikkből megtudhatta, hogyan hozhat létre Logic Apps, hogyan automatiz
 
 Kapcsolódó anyagok esetében lásd: 
 
-- [A Microsoft Learn modul, amely bemutatja, hogyan használható a Munkafolyamat-automatizálás a biztonsági válaszok automatizálására](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
+- [A Microsoft Learn modul, amely bemutatja, hogyan használható a Munkafolyamat-automatizálás a biztonsági válaszok automatizálására](/learn/modules/resolve-threats-with-azure-security-center/)
 - [Biztonsági javaslatok az Azure Security Centerben](security-center-recommendations.md)
 - [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)
-- [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
-- [Összekötők a Logic Appsben](https://docs.microsoft.com/connectors/)
-- [Munkafolyamat-automatizálási adattípusok sémái](https://aka.ms/ASCAutomationSchemas)
+- [Azure Logic Apps](../logic-apps/logic-apps-overview.md)
+- [Összekötők a Logic Appsben](/connectors/)
+- [Munkafolyamat-automatizálási adattípussémák](https://aka.ms/ASCAutomationSchemas)

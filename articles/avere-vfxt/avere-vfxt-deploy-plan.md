@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272790"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342399"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
 
@@ -75,8 +75,8 @@ Kövesse az alábbi irányelveket a avere vFXT-fürt hálózati infrastruktúrá
   |----------|-----------|----------|
   | Erőforráscsoport | Igen, ha üres | Üresnek kell lennie|
   | Tárfiók | **Igen** , ha a fürt létrehozása után csatlakoztat egy meglévő BLOB-tárolót <br/>  **Nem** , ha új BLOB-tárolót hoz létre a fürt létrehozása során | A meglévő blob-tárolónak üresnek kell lennie <br/> &nbsp; |
-  | Virtuális hálózat | Igen | Új Azure Blob-tároló létrehozásakor tartalmaznia kell egy tárolási szolgáltatási végpontot |
-  | Alhálózat | Igen | Nem szerepelhet más erőforrás |
+  | Virtuális hálózat | Yes | Új Azure Blob-tároló létrehozásakor tartalmaznia kell egy tárolási szolgáltatási végpontot |
+  | Alhálózat | Yes | Nem szerepelhet más erőforrás |
 
 ## <a name="ip-address-requirements"></a>IP-címekre vonatkozó követelmények
 
@@ -109,7 +109,7 @@ Minden vFXT-csomópont azonos lesz. Ez azt eredményezi, hogy ha három csomópo
 
 A lemezes gyorsítótár/csomópont konfigurálható, és 1000 GB és 8000 GB között lehet a düh. a Standard_E32s_v3-csomópontok esetében 4 TB/csomópont a javasolt gyorsítótár mérete.
 
-További információ ezekről a virtuális gépekről: a memória- [optimalizált virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) Microsoft Azure dokumentációban olvashatók.
+További információ ezekről a virtuális gépekről: a memória- [optimalizált virtuálisgép-méretek](../virtual-machines/sizes-memory.md) Microsoft Azure dokumentációban olvashatók.
 
 ## <a name="account-quota"></a>Fiók kvótája
 

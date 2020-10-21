@@ -4,12 +4,12 @@ description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan 
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3581c1f1660527bfbf2ae598349e30001962b1b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578070"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342178"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -166,7 +166,7 @@ Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, 
 
 ## <a name="typical-latency"></a>Jellemző késés
 
-A metrikus riasztások esetében általában 5 percen belül értesítést fog kapni, ha a riasztási szabály gyakorisága 1 perc. Az értesítési rendszerek nagy terhelésű betöltése esetén előfordulhat, hogy hosszú késést tapasztal.
+A metrikákhoz kapcsolódó riasztások esetében általában 5 percen belül értesítést fog kapni, ha a riasztási szabály gyakoriságát 1 percre állítja be. Ha az értesítési rendszerek nagyon leterheltek, nagyobb késést tapasztalhat.
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>A metrikus riasztások által támogatott erőforrástípusok
 
@@ -179,4 +179,5 @@ A támogatott erőforrástípusok teljes listáját ebben a [cikkben](./alerts-m
 - [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](./alerts-metric-create-templates.md)
 - [További információ a műveleti csoportokról](action-groups.md)
 - [További információ a dinamikus küszöbértékek feltételének típusáról](alerts-dynamic-thresholds.md)
+- [További információ a metrikus riasztásokkal kapcsolatos problémák elhárításáról](alerts-troubleshoot-metric.md)
 

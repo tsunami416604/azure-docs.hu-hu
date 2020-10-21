@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: f2f40d2ac6652b2b7c968a428961a9bd7f7b4288
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6be5e9bda27ddff157eda10bbb695dfacaecda7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217507"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342263"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>További dokumentáció az Azure FXT Edge Filer-hoz
 
@@ -19,7 +19,7 @@ Előfordulhat, hogy az ezen a docs.microsoft.com webhelyen kívüli erőforráso
 
 ## <a name="avere-vfxt-for-azure-cache-documentation"></a>Avere vFXT az Azure cache dokumentációjában
 
-Az Azure-hoz készült [avere-vFXT](https://docs.microsoft.com/azure/avere-vfxt/) egy hasonló, a fürthöz tartozó gyorsítótár-termék, amely a Microsoft Azure virtuális csomópontjait használja. A rendszer a Azure Portal használatával jön létre, de ugyanazt a Vezérlőpult-konfigurációs szoftvert használja, mint az Azure FXT Edge Filer Hardware cache.
+Az Azure-hoz készült [avere-vFXT](../avere-vfxt/index.yml) egy hasonló, a fürthöz tartozó gyorsítótár-termék, amely a Microsoft Azure virtuális csomópontjait használja. A rendszer a Azure Portal használatával jön létre, de ugyanazt a Vezérlőpult-konfigurációs szoftvert használja, mint az Azure FXT Edge Filer Hardware cache.
 
 ## <a name="legacy-hardware-documentation"></a>Régi hardver dokumentációja
 

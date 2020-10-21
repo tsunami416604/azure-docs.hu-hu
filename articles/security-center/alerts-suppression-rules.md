@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448485"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342093"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Riasztások letiltása az Azure Defenderből
 
@@ -26,7 +26,7 @@ Ez az oldal azt ismerteti, hogyan használhatja a riasztások letiltási szabál
 |Kiadás állapota:|Előnézet|
 |Árképzési|Ingyenes<br>(A legtöbb biztonsági riasztás csak az Azure Defenderrel érhető el)|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** és a **tulajdonos** létrehozhat/törölhet szabályokat.<br>A **biztonsági olvasó** és az **olvasó** megtekintheti a szabályokat.|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -49,16 +49,16 @@ A letiltási szabályok határozzák meg azokat a feltételeket, amelyek esetéb
 
 ## <a name="create-a-suppression-rule"></a>Mellőzési szabály létrehozása
 
-A nemkívánatos biztonsági riasztások figyelmen kívül hagyása érdekében többféleképpen hozhat létre szabályokat:
+A nemkívánatos biztonsági riasztások mellőzésére szolgáló szabályok létrehozásának lehetséges megoldásai:
 
-- Ha el szeretné tiltani a riasztásokat a felügyeleti csoport szintjén, használja a Azure Policy
-- Ha a riasztásokat az előfizetési szinten szeretné letiltani, a Azure Portal vagy a REST API az alább leírtak szerint használhatja
+- A riasztások felügyeleticsoport-szinten való mellőzéséhez használja az Azure Policyt
+- A riasztások előfizetésszinten való mellőzéséhez használhatja az Azure Portalt vagy a REST API-t, az alább ismertetett módon
 
 A tiltási szabályok csak azokat a riasztásokat hagyhatják el, amelyek már aktiválva lettek a kijelölt előfizetéseken.
 
 Szabály létrehozása közvetlenül a Azure Portalban:
 
-1. Security Center biztonsági riasztások oldaláról:
+1. A Security Center biztonsági riasztásokat tartalmazó oldalán:
 
     - Keresse meg azt a riasztást, amelyet nem szeretne többé látni, majd a riasztás három pont (...) menüjéből válassza az **elnyomási szabály létrehozása**elemet:
 
@@ -77,10 +77,10 @@ Szabály létrehozása közvetlenül a Azure Portalban:
 
     [![Mellőzési szabály létrehozási panelje](media/alerts-suppression-rules/new-suppression-rule-pane.png)](media/alerts-suppression-rules/new-suppression-rule-pane.png#lightbox)
 1. Adja meg a szabály részleteit:
-    - **Név** – a szabály neve. A szabályok nevének betűvel vagy számmal kell kezdődnie, 2 és 50 karakter közöttinek kell lennie, és nem tartalmazhat kötőjelet (-) vagy aláhúzást (_) tartalmazó szimbólumot. 
+    - **Név** – a szabály neve. A szabály nevének betűvel vagy számmal kell kezdődnie, hossza 2 és 50 karakter között lehet, és kötőjeleken (-) vagy aláhúzásjeleken (_) kívül nem tartalmazhat más szimbólumot. 
     - **Állapot** -engedélyezve vagy letiltva.
     - **OK** – válasszon egyet a beépített okok közül, vagy a "más" lehetőséget, ha azok nem felelnek meg az igényeinek.
-    - **Lejárati dátum** – a szabály befejezési dátuma és időpontja. A szabályok akár hat hónapig is futhatnak.
+    - **Lejárati dátum** – a szabály befejezési dátuma és időpontja. A szabályok legfeljebb hat hónapig futhatnak.
 1. Szükség esetén a **szimulálás** gombbal tesztelheti a szabályt, hogy megtekintse, hány riasztást kellett volna elutasítani, ha ez a szabály aktív volt.
 1. Mentse a szabályt. 
 
@@ -139,7 +139,7 @@ A REST API a következő letiltási szabályokra vonatkozó HTTP-metódusok:
 
 - **Törlés**: töröl egy meglévő szabályt (de nem módosítja az általa már elvetett riasztások állapotát).
 
-A részletekért és a használati példákért tekintse meg az [API dokumentációját](https://docs.microsoft.com/rest/api/securitycenter/). 
+A részletekért és a használati példákért tekintse meg az [API dokumentációját](/rest/api/securitycenter/). 
 
 
 ## <a name="next-steps"></a>Következő lépések

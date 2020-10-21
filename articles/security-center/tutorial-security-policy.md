@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 22885d9d29bfbfc008b668889f7813ece1df8918
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 5aa6906f7f06e109342d81db6171773a68642e0c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945744"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342280"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -33,7 +33,7 @@ A Azure Security Center a kiválasztott szabályzatok alapján hozza meg a bizto
 
 Security Center a következő lehetőségeket kínálja a biztonsági házirendek használatához:
 
-* **A beépített alapértelmezett házirend megtekintése és szerkesztése** – a Security Center engedélyezésekor az "ASC default" nevű beépített kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez. A kezdeményezés testreszabásához engedélyezheti vagy letilthatja az egyes házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](security-center-policy-definitions.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
+* **A beépített alapértelmezett házirend megtekintése és szerkesztése** – a Security Center engedélyezésekor az "ASC default" nevű beépített kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez. A kezdeményezés testreszabásához engedélyezheti vagy letilthatja az egyes házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](./policy-reference.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
 
 * **Saját egyéni szabályzatok hozzáadása** – Ha testre szeretné szabni az előfizetésre alkalmazott biztonsági kezdeményezéseket, akkor a Security Centeron belül megteheti. Ezután javaslatokat fog kapni, ha a gépek nem követik a létrehozott házirendeket. Az egyéni házirendek létrehozásával és hozzárendelésével kapcsolatos utasításokért lásd: [egyéni biztonsági házirendek használata](custom-security-policies.md).
 
@@ -132,14 +132,14 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 
    ![házirend letiltása](./media/tutorial-security-policy/disable-policy.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
    > [!NOTE]
    > A házirend-letiltási módosítások érvénybe léptetéséhez akár 12 órát is igénybe vehet.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk a biztonsági szabályzatokat ismerteti. A kapcsolódó információk a következő cikkekben találhatók:
 
 - [Ismerje meg, hogyan állíthatja be a szabályzatokat a PowerShell használatával](../governance/policy/assign-policy-powershell.md) - 

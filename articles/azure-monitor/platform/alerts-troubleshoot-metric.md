@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102153"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342127"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
 
@@ -228,7 +228,7 @@ Győződjön meg arról, hogy a megfelelő CLI-parancsokat használja a metrikai
 Metrikus riasztási szabály létrehozásához a következő engedélyekkel kell rendelkeznie:
 
 - Olvasási engedély a riasztási szabály cél erőforrásához
-- Írási engedély a riasztási szabályt létrehozó erőforráscsoport számára (ha a riasztási szabályt a Azure Portal hozza létre, a riasztási szabály ugyanabban az erőforráscsoportban jön létre, amelyben a cél-erőforrás található)
+- Írási engedély a riasztási szabályt létrehozó erőforráscsoport számára (ha a riasztási szabályt a Azure Portal hozza létre, a riasztási szabály alapértelmezés szerint ugyanabban az erőforráscsoportban jön létre, amelyben a célként megadott erőforrás található)
 - Olvasási engedély a riasztási szabályhoz társított összes műveleti csoporthoz (ha van ilyen)
 
 
@@ -250,7 +250,7 @@ Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, ve
 - Minden feltételben csak egy értéket lehet kijelölni dimenzión belül.
 - Nem használhatja a "minden aktuális és jövőbeli érték kijelölése" lehetőséget (válassza ki \* ).
 - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon kell beállítani az összes metrika esetében (a vonatkozó feltételek között).
-Példa:
+Például:
     - Vegyünk egy olyan metrikai riasztási szabályt, amely egy Storage-fiókban van definiálva, és két feltételt figyel:
         * **Tranzakciók** összesen > 5
         * Átlagos **SuccessE2ELatency** > 250 MS
@@ -264,6 +264,6 @@ Javasoljuk, hogy a *kiértékelés gyakorisága*nagyobb mértékű *összesíté
 -   Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
 -   Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).

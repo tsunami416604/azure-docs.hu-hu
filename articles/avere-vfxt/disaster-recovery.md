@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75966647"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342246"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Vész-helyreállítási útmutató az Azure-hoz készült avere-vFXT
 
@@ -112,12 +112,12 @@ Ha a biztonsági mentési tárolót az Azure-fürthöz tartozó avere-vFXT szere
 
 1. Ha szükséges, frissítse az ügyfeleket úgy, hogy az új fürtöt vagy az új Core Filer-t az eredeti helyett csatlakoztassa. (Ha a Replacement Core filert az eredeti tárolóval megegyező névvel és csatlakozási útvonallal adja hozzá, akkor nem kell frissítenie az ügyfelek folyamatait, kivéve, ha új IP-címen kell csatlakoztatnia az új fürtöt.)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-hoz készült avere-vFXT beállításainak testreszabásával kapcsolatos további információkért olvassa el a [fürt finomhangolása](avere-vfxt-tuning.md)című témakört.
 * További információ a vész-helyreállításról és az Azure-beli rugalmas alkalmazások létrehozásáról:
 
-  * [Műszaki útmutató az Azure rugalmasságáról](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-  * [Helyreállítás egész régióra kiterjedő szolgáltatáskimaradás esetén](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
-  * [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz](<https://docs.microsoft.com/azure/resiliency/resiliency-disaster-recovery-high-availability-azure-applications>)
+  * [Műszaki útmutató az Azure rugalmasságáról](/azure/architecture/framework/resiliency/overview)
+  * [Helyreállítás egész régióra kiterjedő szolgáltatáskimaradás esetén](/azure/architecture/resiliency/recovery-loss-azure-region)
+  * [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

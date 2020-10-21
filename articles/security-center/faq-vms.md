@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436012"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342212"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>GYAKORI kérdések – a Virtual Machines szolgáltatással kapcsolatos kérdések
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Milyen típusú virtuális gépek támogatottak?
 
-A [klasszikus és a Resource Manager-alapú üzemi modellekkel](../azure-classic-rm.md)létrehozott virtuális gépek (VM-EK) figyelése és javaslatai elérhetők.
+A [klasszikus és a Resource Manager-alapú üzemi modellekkel](/azure/security-center/./azure-resource-manager/management/deployment-models)létrehozott virtuális gépek (VM-EK) figyelése és javaslatai elérhetők.
 
 A támogatott platformok listáját a [Azure Security Center támogatott platformok](security-center-os-coverage.md) részben tekintheti meg.
 
@@ -51,7 +51,7 @@ Az alábbiakban láthatók a biztonsági rések, frissítések és problémák S
 Security Center általában óránként vizsgálja az új adatforrásokat, és ennek megfelelően frissíti az ajánlásokat. 
 
 > [!NOTE]
-> Security Center a Log Analytics ügynök használatával gyűjti és tárolja az adatokat. További információ: [Azure Security Center platform migrálása](security-center-platform-migration.md).
+> Security Center a Log Analytics ügynök használatával gyűjti és tárolja az adatokat. További információ: [Azure Security Center platform migrálása](./security-center-enable-data-collection.md).
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Miért jelenik meg a "VM-ügynök hiányzik?" üzenet?

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272773"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342416"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
@@ -64,7 +64,7 @@ Adja meg a következő információkat:
 
 * **Vezérlő felhasználóneve** – állítsa be a fürthöz tartozó virtuális gép legfelső szintű felhasználónevét.
 
-* **Hitelesítés típusa** – válassza a jelszó vagy az SSH nyilvános kulcsú hitelesítés lehetőséget a vezérlőhöz való csatlakozáshoz. A nyilvános SSH-kulcs módszere ajánlott; Ha segítségre van szüksége, olvassa el, [hogyan hozhat létre és HASZNÁLHAT SSH-kulcsokat](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) .
+* **Hitelesítés típusa** – válassza a jelszó vagy az SSH nyilvános kulcsú hitelesítés lehetőséget a vezérlőhöz való csatlakozáshoz. A nyilvános SSH-kulcs módszere ajánlott; Ha segítségre van szüksége, olvassa el, [hogyan hozhat létre és HASZNÁLHAT SSH-kulcsokat](../virtual-machines/linux/ssh-from-windows.md) .
 
 * **Jelszó** vagy **nyilvános SSH-kulcs** – a kiválasztott hitelesítési típustól függően meg kell adnia egy RSA nyilvános kulcsot vagy jelszót a következő mezőkben. Ezt a hitelesítő adatot a korábban megadott felhasználónévvel kell használni.
 

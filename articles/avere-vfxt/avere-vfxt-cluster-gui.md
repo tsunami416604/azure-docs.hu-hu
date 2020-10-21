@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79e7c5db2a2c445ae740a21744a0bdfe0736c01a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85505613"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342433"
 ---
 # <a name="access-the-vfxt-cluster"></a>Hozzáférés a vFXT-fürthöz
 
@@ -27,7 +27,7 @@ Két alapvető lépés:
 > [!NOTE]
 > Ez a cikk azt feltételezi, hogy nyilvános IP-címet állított be a fürt vezérlőjén vagy egy másik virtuális GÉPEN a fürt virtuális hálózatán belül. Ez a cikk azt ismerteti, hogyan használható a virtuális gép gazdagépként a fürt eléréséhez. Ha VPN-vagy ExpressRoute használ a virtuális hálózati hozzáféréshez, ugorjon a [Csatlakozás a avere vezérlőpulthoz](#connect-to-the-avere-control-panel-in-a-browser).
 
-A csatlakozás előtt győződjön meg arról, hogy a fürt létrehozásakor használt nyilvános vagy titkos SSH-kulcspár telepítve van a helyi gépen. Ha segítségre van szüksége, olvassa el az SSH-kulcsok [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) rendszerhez készült dokumentációját. Ha nyilvános kulcs helyett jelszót használt, a rendszer felszólítja, hogy adja meg a csatlakozáskor.
+A csatlakozás előtt győződjön meg arról, hogy a fürt létrehozásakor használt nyilvános vagy titkos SSH-kulcspár telepítve van a helyi gépen. Ha segítségre van szüksége, olvassa el az SSH-kulcsok [Windows](../virtual-machines/linux/ssh-from-windows.md) vagy [Linux](../virtual-machines/linux/mac-create-ssh-keys.md) rendszerhez készült dokumentációját. Ha nyilvános kulcs helyett jelszót használt, a rendszer felszólítja, hogy adja meg a csatlakozáskor.
 
 ## <a name="create-an-ssh-tunnel"></a>SSH-alagút létrehozása
 
@@ -65,6 +65,6 @@ Adja meg a `admin` fürt létrehozásakor megadott felhasználónevet és rendsz
 
 Kattintson a **Bejelentkezés** gombra, vagy nyomja le az ENTER billentyűt a billentyűzeten.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután bejelentkezett a fürt Vezérlőpultján, engedélyezze a [támogatást](avere-vfxt-enable-support.md).

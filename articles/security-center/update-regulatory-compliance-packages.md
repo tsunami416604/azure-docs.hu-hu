@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 5e32aa8491e18a66a3e8b90f065e6b785d1e3bd9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106263"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342195"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
 
@@ -41,7 +41,7 @@ A Microsoft emellett saját maga is nyomon követi a szabályozási szabványoka
 
 Olyan szabványokat adhat hozzá, mint például a NIST SP 800-53 R4, a SWIFT CSP CSCF-v2020, az Egyesült Királyság hivatalos és az Egyesült királyságbeli NHS, Kanada szövetségi PBMM és az Azure CIS 1.1.0 (új) – az Azure CIS 1.1.0 teljesebb körű bemutatása. 
 
-Emellett a közös megfelelőségi keretrendszereken alapuló, a Microsoft által készített, az Azure-ra vonatkozó biztonsági és megfelelőségi irányelvek is hozzáadhatók az **Azure**-hoz. (További[információ az Azure biztonsági teljesítménytesztről](https://docs.microsoft.com/azure/security/benchmarks/introduction).)
+Emellett a közös megfelelőségi keretrendszereken alapuló, a Microsoft által készített, az Azure-ra vonatkozó biztonsági és megfelelőségi irányelvek is hozzáadhatók az **Azure**-hoz. (További[információ az Azure biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).)
 
 Az irányítópulton további szabványok is támogatottak lesznek, amint azok elérhetővé válnak. 
 
@@ -110,12 +110,12 @@ Standard eltávolítása:
 1. Válassza az **Igen** lehetőséget. A standard el lesz távolítva. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan **adhat hozzá megfelelőségi csomagokat** a megfelelőség további szabványokkal való figyeléséhez. 
 
 Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket: 
 
-- [Azure-biztonsági teljesítményteszt](https://docs.microsoft.com/azure/security/benchmarks/introduction)
+- [Azure-biztonsági teljesítményteszt](../security/benchmarks/introduction.md)
 - [A Security Center szabályozási megfelelőségi irányítópultja](security-center-compliance-dashboard.md)
 - [Biztonsági szabályzatok használata](tutorial-security-policy.md)

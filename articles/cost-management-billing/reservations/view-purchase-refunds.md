@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d9e5269468f7cd4571e7ae686af7f1ef159b4ef3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b986aa2bfce203be85adbcde8e2966c167bf7ca1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681702"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151779"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>Foglalások vásárlási és visszatérítési tranzakcióinak megtekintése
 
@@ -39,11 +39,11 @@ A Nagyvállalati Beléptetés vagy a Microsoft Ügyfélszerződés számlázási
 
 [![Foglalási tranzakciókat bemutató példa](./media/view-purchase-refunds/power-bi-reservation-transactions.png)](./media/view-purchase-refunds/power-bi-reservation-transactions.png#lightbox)
 
-További információkért lásd: [Azure Cost Management Power BI-alkalmazás Nagyvállalati Szerződésekhez](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app).
+További információkért lásd: [Azure Cost Management Power BI-alkalmazás Nagyvállalati Szerződésekhez](../costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md).
 
 ## <a name="use-apis-to-get-reservation-transactions"></a>Foglalási tranzakciók lekérése API-k használatával
 
-A Nagyvállalati Szerződéssel (EA) és a Microsoft Ügyfélszerződéssel rendelkező felhasználók lekérhetik a foglalási tranzakciók adatait a [Reservation Transactions – List API](https://docs.microsoft.com/rest/api/consumption/reservationtransactions/list)-val.
+A Nagyvállalati Szerződéssel (EA) és a Microsoft Ügyfélszerződéssel rendelkező felhasználók lekérhetik a foglalási tranzakciók adatait a [Reservation Transactions – List API](/rest/api/consumption/reservationtransactions/list)-val.
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 

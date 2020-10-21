@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c80ed02e137ea092bae1346260dba71cd417bed9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: feb7be6ad5dbd0dfbd04b05836842d0476780d40
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688929"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151542"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Az Azure App Service-beli izolált bélyegek díjainak csökkentése fenntartott kapacitással
 
@@ -39,7 +39,7 @@ Ha egy vagy több windowsos feldolgozóval rendelkezik a bélyegen, akkor Window
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Fenntartott kapacitás vásárlása izolált bélyeghez
 
-Izolált bélyeghez az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) vásárolhat fenntartott kapacitást. A foglalásért fizethet [előre vagy havi részletekben](monthly-payments-reservations.md). Fenntartott kapacitás vásárlásához legalább egy nagyvállalati vagy egy használatalapú fizetéses, egyéni előfizetés tulajdonosi szerepkörével kell rendelkeznie.
+Izolált bélyeghez az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) vásárolhat fenntartott kapacitást. A foglalásért fizethet [előre vagy havi részletekben](./prepare-buy-reservation.md). Fenntartott kapacitás vásárlásához legalább egy nagyvállalati vagy egy használatalapú fizetéses, egyéni előfizetés tulajdonosi szerepkörével kell rendelkeznie.
 
 - Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Illetve ha ez a beállítás le van tiltva, akkor Önnek EA-rendszergazdának kell lennie.
 - A felhőszolgáltatói (CSP-) program esetében csak a felügyeleti ügynökök és az értékesítési ügynökök vásárolhatnak fenntartott Azure Synapse Analytics-kapacitást.

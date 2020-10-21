@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6091ccbb64ec880224e861e1b8ee2bd39363385c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440724"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342382"
 ---
-# <a name="secure-your-management-ports-with-just-in-time-access"></a>A felügyeleti portok védelme az igény szerinti hozzáféréssel
+# <a name="secure-your-management-ports-with-just-in-time-access"></a>Felügyeleti portok védelme igény szerinti hozzáféréssel
 
 Az Azure-Virtual Machines bejövő forgalmának zárolása Azure Security Center az igény szerinti (JIT) virtuálisgép-hozzáférési szolgáltatással. Ez csökkenti a támadásoknak való kitettséget, miközben egyszerű hozzáférést biztosít a virtuális géphez való csatlakozáshoz.
 
@@ -35,9 +35,9 @@ Ezen az oldalon megtudhatja, hogyan veheti fel a JIT-t a biztonsági programba. 
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
-|Támogatott virtuális gépek:|![Igen, ](./media/icons/yes-icon.png) Azure Resource Manager használatával üzembe helyezett virtuális gépek.<br>![](./media/icons/no-icon.png)A klasszikus üzembe helyezési modellel rendelkező virtuális gépeket nem. [További információ ezekről a telepítési modellekről](../azure-resource-manager/management/deployment-models.md).<br>![Nem ](./media/icons/no-icon.png) [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) által vezérelt Azure-tűzfalak által védett virtuális gépek|
+|Támogatott virtuális gépek:|![Igen, ](./media/icons/yes-icon.png) Azure Resource Manager használatával üzembe helyezett virtuális gépek.<br>![](./media/icons/no-icon.png)A klasszikus üzembe helyezési modellel rendelkező virtuális gépeket nem. [További információ ezekről a telepítési modellekről](../azure-resource-manager/management/deployment-models.md).<br>![Nem ](./media/icons/no-icon.png) [Azure Firewall Manager](../firewall-manager/overview.md) által vezérelt Azure-tűzfalak által védett virtuális gépek|
 |Szükséges szerepkörök és engedélyek:|Az **olvasó** -és **SecurityReader** szerepkörök egyaránt megtekinthetik a JIT-állapotot és a paramétereket.<br>Az JIT-sel használható egyéni szerepkörök létrehozásához tekintse meg a [Mi szükséges engedélyeket a JIT konfigurálásához és használatához?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)című témakörben.<br>Ha olyan felhasználók számára szeretne legkevesebb jogosultsági szintű szerepkört létrehozni, akiknek JIT-hozzáférést kell kérniük egy virtuális géphez, és nem kell más JIT-műveletet végezniük, használja a Security Center GitHub közösségi oldalain található [set-JitLeastPrivilegedRole szkriptet](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) .|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -164,7 +164,7 @@ A JIT-t a Azure Portal Azure Virtual Machines oldalain engedélyezheti egy virtu
 
 ### <a name="powershell"></a>[**PowerShell**](#tab/jit-config-powershell)
 
-### <a name="enable-jit-on-your-vms-using-powershell"></a>A JIT engedélyezése a virtuális gépeken a PowerShell használatával
+### <a name="enable-jit-on-your-vms-using-powershell"></a>A JIT engedélyezése virtuális gépeken a PowerShell-lel
 
 Az igény szerinti virtuális gépek PowerShell-lel való elérésének engedélyezéséhez használja a hivatalos Azure Security Center PowerShell-parancsmagot `Set-AzJitNetworkAccessPolicy` .
 
@@ -215,7 +215,7 @@ A következő PowerShell-parancsok hozza létre ezt a JIT-konfigurációt:
 
 Az igény szerinti virtuálisgép-hozzáférési szolgáltatás a Azure Security Center API-n keresztül is használható. Ezzel az API-val lekérheti a konfigurált virtuális gépekre vonatkozó információkat, újakat adhat hozzá, hozzáférést kérhet egy virtuális géphez, és egyéb műveleteket is elérhet. 
 
-További információ: [JIT hálózati hozzáférési házirendek](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+További információ: [JIT hálózati hozzáférési házirendek](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 
 --- 
@@ -229,7 +229,7 @@ További információ: [JIT hálózati hozzáférési házirendek](https://docs.
 
 
 
-## <a name="request-access-to-a-jit-enabled-vm"></a>Hozzáférés kérése egy JIT-kompatibilis virtuális géphez
+## <a name="request-access-to-a-jit-enabled-vm"></a>Hozzáférés kérése gy JIT-kompatibilis virtuális géphez
 
 A Azure Portal (Security Center vagy Azure-beli virtuális gépeken) vagy programozott módon hozzáférést igényelhet egy JIT-kompatibilis virtuális géphez.
 
@@ -319,7 +319,7 @@ Futtassa a következőt a PowerShellben:
     Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
     ```
 
-További információt a [PowerShell-parancsmag dokumentációjában talál](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview).
+További információt a [PowerShell-parancsmag dokumentációjában talál](/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 
 
@@ -329,7 +329,7 @@ További információt a [PowerShell-parancsmag dokumentációjában talál](htt
 
 Az igény szerinti virtuálisgép-hozzáférési szolgáltatás a Azure Security Center API-n keresztül is használható. Ezzel az API-val lekérheti a konfigurált virtuális gépekre vonatkozó információkat, újakat adhat hozzá, hozzáférést kérhet egy virtuális géphez, és egyéb műveleteket is elérhet. 
 
-További információ: [JIT hálózati hozzáférési házirendek](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+További információ: [JIT hálózati hozzáférési házirendek](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 ---
 
