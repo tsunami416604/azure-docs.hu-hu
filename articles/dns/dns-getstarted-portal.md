@@ -6,14 +6,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 93d9ce50a451221c86f5336107dba30695af159f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91355363"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282156"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Gyors útmutató: Azure DNS zóna és rekord létrehozása a Azure Portal használatával
 
@@ -31,6 +31,14 @@ You can also perform these steps using [Azure PowerShell](dns-getstarted-powersh
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 Az összes portál lépéseihez jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
@@ -105,7 +113,7 @@ A **www \. contoso. xyz** nevű állomásnév a **10.10.10.10**hasonlóan oldód
 
 Ha már nincs szüksége az ebben a rövid útmutatóban létrehozott erőforrásokra, távolítsa el őket a **MyResourceGroup** -erőforráscsoport törlésével. Nyissa meg a **MyResourceGroup** erőforráscsoportot, majd válassza az **erőforráscsoport törlése**elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban](./dns-web-sites-custom-domain.md)

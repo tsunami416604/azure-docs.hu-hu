@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 167d1f21a2eb7ea4c685b5bbbb5d8d64fcc1367e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261868"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278700"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Telepítse át az alkalmazást az Amazon DynamoDB-ból Azure Cosmos DB
 
@@ -23,8 +23,8 @@ A Azure Cosmos DB és a DynamoDB között a következők a legfontosabb fogalmi 
 
 |  DynamoDB | Azure Cosmos DB  |
 |---|---|
-|Nem alkalmazható|  Adatbázis |
-|Táblázat      |  Gyűjtemény |
+|Nem értelmezhető|  Adatbázis |
+|Tábla      |  Gyűjtemény |
 |  Elem |  Dokumentum |
 |Attribútum|Mező|
 |Másodlagos index|Másodlagos index|
@@ -144,7 +144,7 @@ client_documentDB = new CosmosClient("your connectionstring from the Azure porta
 
 A Azure Cosmos DB a következő lehetőségek közül választhat a kapcsolódás optimalizálásához:
 
-* **ConnectionMode** – közvetlen kapcsolati mód használata a Azure Cosmos db szolgáltatás adatcsomópontjaihoz való kapcsolódáshoz. Az átjáró mód csak a logikai címek inicializálására és gyorsítótárazására, valamint a frissítések frissítésére használható. További részletekért tekintse meg a [kapcsolati módokat](performance-tips.md#networking) ismertető cikket.
+* **ConnectionMode** – közvetlen kapcsolati mód használata a Azure Cosmos db szolgáltatás adatcsomópontjaihoz való kapcsolódáshoz. Az átjáró mód csak a logikai címek inicializálására és gyorsítótárazására, valamint a frissítések frissítésére használható. További részletekért tekintse meg a [kapcsolati módokat](sql-sdk-connection-modes.md) ismertető cikket.
 
 * **ApplicationRegion** – ezzel a beállítással adható meg az az előnyben részesített földrajzi replikált régió, amely a Azure Cosmos db való interakcióra szolgál. További információt a [globális terjesztéssel](distribute-data-globally.md) foglalkozó cikkben talál.
 
@@ -517,7 +517,7 @@ await cosmosDatabase.DeleteAsync();
 
 Amint láthatja, a Azure Cosmos DB támogatja a természetes lekérdezéseket (SQL), a műveletek aszinkron és sokkal egyszerűbbek. Az összetett kódot egyszerűen áttelepítheti Azure Cosmos DBre, ami egyszerűbbé válik az áttelepítés után.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [teljesítmény optimalizálásáról](performance-tips.md).
 - Tudnivalók az [olvasási és írási optimalizálásról](key-value-store-cost.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400143"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318450"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
@@ -39,7 +39,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
 * Egy olyan Azure Key Vault, amely rendelkezik a helyreállítható **törléssel** , és **nem** törölheti az engedélyezett tulajdonságokat
 
-  További információ ezekről a tulajdonságokról: [Azure Key Vault a Soft-delete áttekintése](../key-vault/general/soft-delete-overview.md) és [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Ha még nem ismeri a Azure Key Vaultt, megtudhatja, [hogyan hozhat létre kulcstartót](../key-vault/secrets/quick-create-portal.md#create-a-vault) a Azure Portal használatával vagy a [new-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)Azure PowerShell parancs használatával.
+  További információ ezekről a tulajdonságokról: [Azure Key Vault a Soft-delete áttekintése](../key-vault/general/soft-delete-overview.md) és [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md). Ha még nem ismeri a Azure Key Vaultt, megtudhatja, [hogyan hozhat létre kulcstartót](../key-vault/secrets/quick-create-portal.md#create-a-vault) a Azure Portal használatával vagy a [new-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)Azure PowerShell parancs használatával.
 
 * A Key vaultban a következő tulajdonság-értékekkel létrehozott kulcs:
 
@@ -52,7 +52,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
   ![Az ügyfél által felügyelt titkosítási kulcs létrehozása](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  További információ: az [ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) vagy a Azure PowerShell paranccsal, [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
+  További információ: az [ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md) vagy a Azure PowerShell paranccsal, [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
 
 * Egy eszköz, amellyel létrehozhatja az ISE-t úgy, hogy meghívja a Logic Apps REST API egy HTTPS PUT-kéréssel. Használhatja például a [Poster](https://www.getpostman.com/downloads/)-t, vagy létrehozhat egy logikai alkalmazást, amely elvégzi ezt a feladatot.
 
@@ -225,7 +225,7 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
    1. Ha elkészült a **hozzáférési szabályzatok** ablaktáblával, válassza a **Mentés**lehetőséget.
 
-További információ: a [hitelesítés Key Vault](/azure/key-vault/general/authentication) és [egy Key Vault hozzáférési szabályzat kiosztása](/azure/key-vault/general/assign-access-policy-portal).
+További információ: a [hitelesítés Key Vault](../key-vault/general/authentication.md) és [egy Key Vault hozzáférési szabályzat kiosztása](../key-vault/general/assign-access-policy-portal.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

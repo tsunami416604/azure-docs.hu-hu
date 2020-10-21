@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090399"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309915"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>A Azure Monitor-naplók figyelésére és nyomon követésére szolgáló lekérdezések megtekintése és létrehozása Azure Logic Apps
 
-Megtekintheti azokat az alapul szolgáló lekérdezéseket, amelyek a [Azure monitor naplók](../azure-monitor/log-query/log-query-overview.md) eredményeit eredményezik, és olyan lekérdezéseket hozhatnak létre, amelyek az adott feltételek alapján szűrik az eredményeket. Például megkeresheti az üzeneteket egy adott adatcsere-vezérlőelem száma alapján. A lekérdezések a [Kusto lekérdezési nyelvét](https://aka.ms/LogAnalyticsLanguageReference)használják, amelyet szerkeszthet, ha különböző eredményeket szeretne megtekinteni. További információ: [Azure monitor log lekérdezések](../azure-monitor/log-query/query-language.md).
+Megtekintheti azokat az alapul szolgáló lekérdezéseket, amelyek a [Azure monitor naplók](../azure-monitor/log-query/log-query-overview.md) eredményeit eredményezik, és olyan lekérdezéseket hozhatnak létre, amelyek az adott feltételek alapján szűrik az eredményeket. Például megkeresheti az üzeneteket egy adott adatcsere-vezérlőelem száma alapján. A lekérdezések a [Kusto lekérdezési nyelvét](/azure/data-explorer/kusto/query/)használják, amelyet szerkeszthet, ha különböző eredményeket szeretne megtekinteni. További információ: [Azure monitor log lekérdezések](/azure/data-explorer/kusto/query/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,11 +59,11 @@ Az eredmények adott tulajdonságok vagy értékek alapján történő keresés�
 
      ![Kezdés "Logic Apps B2B" megoldás előre elkészített lekérdezésekkel](./media/create-monitoring-tracking-queries/b2b-prebuilt-queries.png)
 
-   * Ha üres lekérdezésből szeretne kezdeni, kezdje el beírni a lekérdezés [Kusto lekérdezési nyelvét](../azure-monitor/log-query/query-language.md) .
+   * Ha üres lekérdezésből szeretne kezdeni, kezdje el beírni a lekérdezés [Kusto lekérdezési nyelvét](/azure/data-explorer/kusto/query/) .
 
      ![Indítás üres lekérdezéssel](./media/create-monitoring-tracking-queries/create-query-from-blank.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12-követési sémák](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)

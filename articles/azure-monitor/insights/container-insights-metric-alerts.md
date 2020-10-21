@@ -2,13 +2,13 @@
 title: Metrikai riasztások Azure Monitorről tárolók számára
 description: Ez a cikk a Azure Monitor for containers nyilvános előzetes verziójában elérhető javasolt metrikai riasztásokat tekinti át.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 83394faf3d7296522151b815bddd910d47e45d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 7d9e6cb9a89dfe65777f8bcf507186e24d38a422
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619950"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308647"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Ajánlott metrikai riasztások (előzetes verzió) Azure Monitorről tárolók számára
 
@@ -45,6 +45,7 @@ A Azure Monitor for containers szolgáltatással kapcsolatos riasztásokhoz a k�
 |Tároló átlagos munkakészletének memóriája (%) |Kiszámítja egy tároló átlagos munkakészlet-memóriáját.|Ha a munkakészletek átlagos kihasználtsága a tárolók száma meghaladja a 95%-ot. |
 |Average CPU % (Átlagos CPU-használat %-ban) |Kiszámítja a csomóponton felhasznált átlagos CPU-t. |Ha a csomópontok átlagos CPU-kihasználtsága nagyobb, mint 80% |
 |Lemez átlagos kihasználtsága (%) |Kiszámítja egy csomópont átlagos lemezterület-használatát.|Ha a csomópont lemezhasználata nagyobb, mint 80%. |
+|Állandó használat átlagos kihasználtsága (%) |Kiszámítja az átlagos PV-használatot Pod-ként. |Ha a hüvelyek átlagos PV-használata meghaladja a 80%-ot.|
 |Munkakészlet átlagos memóriája (%) |Kiszámítja egy csomópont átlagos munkakészletének memóriáját. |Ha egy csomópont átlagos munkakészlet-memóriája nagyobb, mint 80%. |
 |Tárolók számának újraindítása |Kiszámítja az újraindítási tárolók számát. | Ha a tároló újraindítása meghaladja a 0-nál nagyobb értéket. |
 |Sikertelen Pod-számok |Kiszámítja, hogy valamelyik Pod-állapot hibás állapotban van-e.|Ha a hibás állapotú hüvelyek száma nagyobb, mint 0. |
@@ -75,6 +76,8 @@ A következő riasztási alapú metrikák egyedi viselkedési jellemzőkkel rend
 
 * a *cpuExceededPercentage*, a *MemoryRssExceededPercentage*és a *memoryWorkingSetExceededPercentage* mérőszámok akkor lesznek elküldése, ha a processzor, a memória RSS-és a memória-munkakészletének értéke meghaladja a beállított küszöbértéket (az alapértelmezett küszöbérték 95%). Ezek a küszöbértékek kizárólag a vonatkozó riasztási szabályhoz megadott riasztási feltétel küszöbértékét jelentik. Ha ezeket a metrikákat szeretné összegyűjteni és elemezni a [metrikák Intézőből](../platform/metrics-getting-started.md), javasoljuk, hogy a küszöbértéket a riasztási küszöbértéknél alacsonyabb értékre konfigurálja. A tároló erőforrás-kihasználtsági küszöbértékek gyűjtési beállításaival kapcsolatos konfiguráció felülbírálható a szakasz ConfigMaps fájljában `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . A ConfigMap konfigurációs fájljának konfigurálásával kapcsolatos részletekért tekintse meg a [riasztásos metrikák konfigurálása című ConfigMaps](#configure-alertable-metrics-in-configmaps) .
 
+* a rendszer akkor továbbítja az *pvUsageExceededPercentage* metrikát, ha a kötet állandó kihasználtságának százalékos aránya meghaladja a beállított küszöbértéket (az alapértelmezett küszöbérték 60%). Ez a küszöbérték kizárólag a megfelelő riasztási szabályhoz megadott riasztási feltétel küszöbértékét határozza meg. Ha ezeket a metrikákat szeretné összegyűjteni és elemezni a [metrikák Intézőből](../platform/metrics-getting-started.md), javasoljuk, hogy a küszöbértéket a riasztási küszöbértéknél alacsonyabb értékre konfigurálja. Az állandó kötet-kihasználtsági küszöbértékek gyűjtési beállításaival kapcsolatos konfiguráció felülbírálható a szakasz ConfigMaps fájljában `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . A ConfigMap konfigurációs fájljának konfigurálásával kapcsolatos részletekért tekintse meg a [riasztásos metrikák konfigurálása című ConfigMaps](#configure-alertable-metrics-in-configmaps) . Alapértelmezés szerint ki van zárva az állandó mennyiségi mérőszámok gyűjteménye, amely jogcímeket tartalmaz a *Kube-System* névtérben. Ha engedélyezni szeretné a gyűjteményt ebben a névtérben, használja a `[metric_collection_settings.collect_kube_system_pv_metrics]` ConfigMap fájljának szakaszát. Részletekért lásd a [metrika-gyűjtemény beállításait](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings) .
+
 ## <a name="metrics-collected"></a>Összegyűjtött metrikák
 
 A szolgáltatás részeként a következő metrikákat engedélyezheti és gyűjtheti be, hacsak másként nincs megadva:
@@ -97,6 +100,7 @@ A szolgáltatás részeként a következő metrikákat engedélyezheti és gyűj
 |Bepillantást nyerhet. tároló/tárolók |cpuExceededPercentage |A felhasználó által konfigurálható küszöbértéket meghaladó tárolók CPU-kihasználtsági aránya (az alapértelmezett érték 95,0) a tároló neve, a vezérlő neve, a Kubernetes névtér, a pod neve.<br> Gyűjtött  |
 |Bepillantást nyerhet. tároló/tárolók |memoryRssExceededPercentage |A felhasználó által konfigurálható küszöbértéket meghaladó tárolók memóriabeli RSS-aránya (az alapértelmezett érték 95,0) a tároló neve, a vezérlő neve, a Kubernetes névtér, a pod neve.|
 |Bepillantást nyerhet. tároló/tárolók |memoryWorkingSetExceededPercentage |A felhasználó által konfigurálható küszöbértéket meghaladó tárolók memória-munkakészletének százalékos aránya (az alapértelmezett érték 95,0) a tároló neve, a vezérlő neve, a Kubernetes névtér, a pod neve.|
+|Bepillantást nyerhet. tároló/persistentvolumes |pvUsageExceededPercentage |Az állandó kötetek PV kihasználtsági aránya meghaladja a felhasználó által konfigurálható küszöbértéket (az alapértelmezett érték 60,0) a jogcím neve, a Kubernetes névtér, a kötet neve, a pod neve és a csomópont neve alapján.
 
 ## <a name="enable-alert-rules"></a>Riasztási szabályok engedélyezése
 
@@ -207,29 +211,40 @@ Az engedélyezett szabályokhoz létrehozott riasztások megtekintéséhez az **
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>Riasztásos metrikák konfigurálása a ConfigMaps-ben
 
-A ConfigMap konfigurációs fájljának konfigurálásához hajtsa végre az alábbi lépéseket a tárolók alapértelmezett erőforrás-kihasználtsági küszöbértékének felülbírálásához. Ezek a lépések csak a következő riasztási mérőszámokra érvényesek.
+A ConfigMap konfigurációs fájljának konfigurálásához hajtsa végre az alábbi lépéseket az alapértelmezett kihasználtsági küszöbértékek felülbírálásához. Ezek a lépések csak a következő riasztási mérőszámokra érvényesek:
 
 * *cpuExceededPercentage*
 * *memoryRssExceededPercentage*
 * *memoryWorkingSetExceededPercentage*
+* *pvUsageExceededPercentage*
 
-1. Szerkessze a ConfigMap YAML fájlt a szakasz alatt `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` .
+1. Szerkessze a ConfigMap YAML fájlt a szakasz `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` vagy a alatt `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` .
 
-2. A *cpuExceededPercentage* küszöbértékének 90%-ra való módosításához és a metrika begyűjtésének megkezdéséhez, ha az adott küszöbérték teljesül és túllépve, konfigurálja a ConfigMap-fájlt a következő példa használatával.
+   - Ha módosítani szeretné a *cpuExceededPercentage* küszöbértékét 90%-ra, és megkezdi a metrika gyűjtését, ha a küszöbérték teljesül és túllépi a határértéket, konfigurálja a ConfigMap-fájlt a következő példa használatával:
 
-    ```
-    container_cpu_threshold_percentage = 90.0
-    # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
-    container_memory_rss_threshold_percentage = 95.0
-    # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
-    container_memory_working_set_threshold_percentage = 95.0
-    ```
+     ```
+     [alertable_metrics_configuration_settings.container_resource_utilization_thresholds]
+         # Threshold for container cpu, metric will be sent only when cpu utilization exceeds or becomes equal to the following percentage
+         container_cpu_threshold_percentage = 90.0
+         # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
+         container_memory_rss_threshold_percentage = 95.0
+         # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
+         container_memory_working_set_threshold_percentage = 95.0
+     ```
 
-3. Futtassa a következő kubectl-parancsot: `kubectl apply -f <configmap_yaml_file.yaml>` .
+   - Ha módosítani szeretné a *pvUsageExceededPercentage* küszöbértékét 80%-ra, és megkezdi a metrika gyűjtését, ha a küszöbérték teljesül és túllépi a határértéket, konfigurálja a ConfigMap-fájlt a következő példa használatával:
+
+     ```
+     [alertable_metrics_configuration_settings.pv_utilization_thresholds]
+         # Threshold for persistent volume usage bytes, metric will be sent only when persistent volume utilization exceeds or becomes equal to the following percentage
+         pv_usage_threshold_percentage = 80.0
+     ```
+
+2. Futtassa a következő kubectl-parancsot: `kubectl apply -f <configmap_yaml_file.yaml>` .
 
     Példa: `kubectl apply -f container-azm-ms-agentconfig.yaml`.
 
-A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created` .
+A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása; nem minden alkalommal indulnak újra. Az újraindítások befejezését követően megjelenik egy üzenet, amely az alábbi példához hasonlóan jelenik meg, és tartalmazza a következő eredményt: `configmap "container-azm-ms-agentconfig" created` .
 
 ## <a name="next-steps"></a>Következő lépések
 

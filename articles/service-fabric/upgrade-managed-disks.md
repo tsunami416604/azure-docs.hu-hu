@@ -3,12 +3,12 @@ title: Fürtcsomópontok frissítése az Azure Managed Disks használatára
 description: A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717523"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316162"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Fürtcsomópontok frissítése az Azure Managed Disks használatára
 
@@ -25,7 +25,7 @@ Service Fabric fürtcsomópont a felügyelt lemezek használatára való frissí
 Ez a cikk végigvezeti egy példa-fürt elsődleges csomópont-típusának a felügyelt lemezek használatára való frissítésének lépésein, és a fürt leállásának elkerülésével (lásd az alábbi megjegyzést). A példaként szolgáló tesztelési fürt kezdeti állapota egy [ezüst tartósságú](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)csomópontból áll, amely egyetlen, öt csomóponttal rendelkező méretezési csoporttal rendelkezik.
 
 > [!NOTE]
-> Egy alapszintű SKU Load Balancer korlátai megakadályozzák a további méretezési csoport hozzáadását. Javasoljuk, hogy Ehelyett használja a standard SKU Load balancert. További információ: [a két SKU összevetése](/azure/load-balancer/skus).
+> Egy alapszintű SKU Load Balancer korlátai megakadályozzák a további méretezési csoport hozzáadását. Javasoljuk, hogy Ehelyett használja a standard SKU Load balancert. További információ: [a két SKU összevetése](../load-balancer/skus.md).
 
 > [!CAUTION]
 > Ezt az eljárást csak akkor fogja tapasztalni, ha a fürt DNS-függőségeivel rendelkezik (például [Service Fabric Explorerhoz](service-fabric-visualizing-your-cluster.md)való hozzáféréskor). Az [előtér-szolgáltatásokra vonatkozó ajánlott eljárás](/azure/architecture/microservices/design/gateway) az, hogy a csomópontok típusai előtt valamilyen [terheléselosztó](/azure/architecture/guide/technology-choices/load-balancing-overview) legyen elérhető, hogy leállás nélkül lehessen lecserélni a csomópontokat.
@@ -359,7 +359,7 @@ foreach($name in $nodeNames){
 
 ![Service Fabric Explorer a hibás állapotú csomópontok eltávolításakor](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan frissíthet egy Service Fabric-fürt virtuálisgép-méretezési csoportjait a felügyelt lemezek használatára, miközben elkerüli a szolgáltatás leállását a folyamat során. A kapcsolódó témakörökkel kapcsolatos további információkért tekintse meg az alábbi forrásokat.
 

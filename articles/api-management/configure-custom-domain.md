@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024860"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311143"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Egyéni tartománynév beállítása az Azure API Management-példányhoz
 
@@ -50,10 +50,10 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     Több végpont is van, amelyekhez egyéni tartománynevet rendelhet hozzá. Jelenleg a következő végpontok érhetők el:
 
     - **Átjáró** (alapértelmezett: `<apim-service-name>.azure-api.net` ),
-    - **Portál** (alapértelmezett: `<apim-service-name>.portal.azure-api.net` ),
+    - **Fejlesztői portál (örökölt)** (alapértelmezés: `<apim-service-name>.portal.azure-api.net` ),
+    - **Fejlesztői portál** (alapértelmezett: `<apim-service-name>.developer.azure-api.net` ).
     - **Felügyelet** (alapértelmezett: `<apim-service-name>.management.azure-api.net` ),
     - **SCM** (alapértelmezett: `<apim-service-name>.scm.azure-api.net` ),
-    - **Newportal** (alapértelmezett: `<apim-service-name>.developer.azure-api.net` ).
 
     > [!NOTE]
     > Csak az **átjáró** végpontja érhető el a felhasználási szinten való konfiguráláshoz.
@@ -95,6 +95,6 @@ Ha az egyéni tartománynévhez konfigurálja a DNS-t, két lehetőség közül 
 > [!NOTE]
 > Bár az API Management-példány IP-címe statikus, néhány esetben változhat. Ezért javasoljuk, hogy használjon CNAME-t az egyéni tartomány konfigurálásakor. A DNS-konfigurációs módszer kiválasztásakor vegye figyelembe a figyelmet. További tudnivalókat az [IP-dokumentációs cikkben](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses) és a [API Management GYIK](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A szolgáltatás frissítése és méretezése](upgrade-and-scale.md)

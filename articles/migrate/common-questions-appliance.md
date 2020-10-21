@@ -3,12 +3,12 @@ title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7839c2678152837cc9217e6afe13f7cca36ab4b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630491"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314781"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -42,7 +42,7 @@ A berendezés a következőképpen telepíthető:
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hogyan kapcsolódik a készülék az Azure-hoz?
 
-A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat. Győződjön meg arról, hogy ezek az [URL-címek](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) jóváhagyva lettek, hogy a készülék csatlakozhasson az Azure-hoz.
+A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat. Győződjön meg arról, hogy ezek az [URL-címek](./migrate-appliance.md#url-access) jóváhagyva lettek, hogy a készülék csatlakozhasson az Azure-hoz.
 
 - Ha az Azure ExpressRoute-t szeretné használni Azure Migrate replikációs forgalomhoz, a Microsoft-társításhoz vagy egy meglévő nyilvános társításhoz van szükség (az új ER-létrehozásokhoz elavult a nyilvános társrendszer).
 - Az Azure ExpressRoute-en keresztüli replikáció az (only) Private peering engedélyezése esetén nem támogatott.

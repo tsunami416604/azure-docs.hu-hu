@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090093"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315292"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migrálási terv létrehozása az Azure Migrate-tel
 
@@ -162,8 +162,8 @@ Ha készen áll az áttelepítésre, használja a Azure Migrate *kiszolgáló-á
 > [!NOTE]
 > A VMware virtuális gépek esetében a kiszolgáló értékelése a virtuális géphez megadott operációs rendszert használja vCenter Server a vendég operációs rendszer elemzésének kezeléséhez. A VMware-en futó Linux rendszerű virtuális gépek esetében jelenleg nem azonosítja a vendég operációs rendszer pontos kernel-verzióját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate)   Az Azure Cloud bevezetési keretrendszerében.
 - A Azure Migrate [első lépései](https://youtu.be/wFfq3YPxYHE) .
-- Hozzon létre egy értékelést a [VMWare virtuális gépek](tutorial-assess-vmware.md) vagy a [Hyper-V virtuális gépek](tutorial-assess-hyper-v.md)számára.
+- Hozzon létre egy értékelést a [VMWare virtuális gépek](./tutorial-assess-vmware-azure-vm.md) vagy a [Hyper-V virtuális gépek](tutorial-assess-hyper-v.md)számára.

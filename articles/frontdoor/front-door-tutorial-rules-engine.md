@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3366f1a16777ecf46951296e4a1c2c28aed75feb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c15b6115c2b07503320cd7b5f3c790be03aeea94
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031925"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278126"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Oktatóanyag: a szabályok motorjának konfigurálása
 
@@ -58,7 +58,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>Szabályok konfigurálása motor az Azure CLI-ben
 
-1. Ha még nem tette meg, telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-t. Adja hozzá az "előtérben" kiterjesztést: az Extension Add--Name bejárati ajtót. Ezután jelentkezzen be, és váltson az előfizetésre az az Account set--előfizetés <name_or_Id>.
+1. Ha még nem tette meg, telepítse az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-t. Adja hozzá az "előtérben" kiterjesztést: az Extension Add--Name bejárati ajtót. Ezután jelentkezzen be, és váltson az előfizetésre az az Account set--előfizetés <name_or_Id>.
 
 1. Első lépésként hozzon létre egy szabályt motort – ez a példa egy, a fejléc-alapú művelettel és egy egyeztetési feltétellel rendelkező szabályt mutat be. 
 
@@ -96,7 +96,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
     ```
 
-További információkért tekintse meg az AFD Rules Engine parancsainak teljes listáját [itt](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/rules-engine?view=azure-cli-latest&preserve-view=true).   
+További információkért tekintse meg az AFD Rules Engine parancsainak teljes listáját [itt](/cli/azure/ext/front-door/network/front-door/rules-engine?preserve-view=true&view=azure-cli-latest).   
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

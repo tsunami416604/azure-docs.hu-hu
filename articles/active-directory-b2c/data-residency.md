@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/06/2020
+ms.date: 10/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: f8c6f7daecd38babaa4f2961d04a6cd4c3b4dbed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cb7a97b3f57ee7ac10babc53ee2263d51838777
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840557"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309684"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: régió rendelkezésre állása & adattárolás
 
@@ -59,6 +59,14 @@ A következő országok/régiók a listához való felvételük folyamatban van.
 
 > Argentína, Ausztrália, Brazília, Chile, Kolumbia, Ecuador, Irak, Új-Zéland, Paraguay, Peru, Uruguay és Venezuela.
 
+## <a name="remote-profile-solution"></a>Távoli profil megoldása
+
+Azure AD B2C [Egyéni szabályzatokkal](custom-policy-overview.md)integrálható a [REST API-szolgáltatásokkal](custom-policy-rest-api-intro.md), amelyek lehetővé teszik a felhasználói profilok tárolását és olvasását egy távoli adatbázisból (például egy marketing-ADATBÁZISból, egy CRM-rendszerből vagy bármely üzletági alkalmazásból).  
+- A regisztrálási és a profil-szerkesztési folyamatok során Azure AD B2C meghívja az egyéni REST API, hogy megmaradjon a felhasználói profil a távoli adatforráshoz. A felhasználó hitelesítő adatait a rendszer Azure AD B2C könyvtárban tárolja. 
+- Bejelentkezéskor a hitelesítő adatok helyi vagy közösségi fiókkal való ellenőrzése után Azure AD B2C meghívja a REST API, amely felhasználói elsődleges kulcsként (e-mail cím vagy felhasználói objectId) küldi el a felhasználó egyedi azonosítóját. A REST API beolvassa az adatokat a távoli adatbázisból, és visszaadja a felhasználói profilt.  
+
+A regisztráció, a profil szerkesztése vagy a bejelentkezés befejezése után Azure AD B2C tartalmazza az alkalmazáshoz visszaadott hozzáférési jogkivonat felhasználói profilját. További információ: [Azure ad B2C távoli profil megoldás](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile) a githubban.
+
 ## <a name="preview-tenant"></a>Bérlő előzetes verziója
 
 Ha a B2C-bérlőt az Azure AD B2C's előzetes verziójának ideje alatt hozta létre, akkor valószínű, hogy a **bérlő típusa** az **előzetes verziójú bérlőt**mondja.
@@ -70,3 +78,7 @@ Egy előnézeti B2C-bérlőtől **nem érhető el áttelepítési útvonal** egy
 Ismert problémák merültek fel, ha törli a B2C-bérlőt, és létrehoz egy éles méretű B2C-bérlőt ugyanazzal a tartománynévvel. *Egy másik tartománynévvel rendelkező, éles méretű B2C-bérlőt kell létrehoznia*.
 
 ![Képernyőkép a bérlői típusról, mint az előzetes verzió bérlője.](./media/data-residency/preview-b2c-tenant.png)
+
+## <a name="next-steps"></a>Következő lépések
+
+- [Hozzon létre egy Azure ad B2C bérlőt](tutorial-create-tenant.md).

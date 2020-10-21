@@ -1,15 +1,15 @@
 ---
 title: Az Azure Kubernetes Service beépített szabályzat-definíciói
 description: Az Azure Kubernetes szolgáltatás beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5a2efdb41b5ed9c4bc9ade31e6faf30b081646e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e2dc0b00580b8becdc89bea485b98e865ab3455
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826113"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317865"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service beépített definíciói Azure Policy
 

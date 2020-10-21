@@ -11,21 +11,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 08/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f2673bd181bc24d821b41ae1466c05a9593f154
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87902258"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315747"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure API Management OAuth 2,0 használatával
 
 Számos API támogatja az [OAuth 2,0](https://oauth.net/2/) -et az API biztonságossá tételéhez, és gondoskodjon arról, hogy csak az érvényes felhasználók férjenek hozzá, és csak azokhoz az erőforrásokhoz férhessenek hozzá, amelyekre jogosultak. Az Azure API Management interaktív fejlesztői konzoljának az ilyen API-kkal való használatához a szolgáltatás lehetővé teszi, hogy konfigurálja a szolgáltatási példányt úgy, hogy az OAuth 2,0-kompatibilis API-val működjön.
-
-> [!IMPORTANT]
-> Az OAuth 2,0-hitelesítés még nem érhető el az új fejlesztői portál interaktív konzolján.
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>Előfeltételek
 

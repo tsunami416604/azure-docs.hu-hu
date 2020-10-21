@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568097"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282299"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -57,6 +57,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Filipino|  `fil`   |
 |Finn|   `fi`    |
 |Francia|    `fr`    |
+|Francia (Kanada)|   `fr-ca` |
 |Német|    `de`    |
 |Görög| `el`    |
 |gudzsaráti|  `gu`    |
@@ -364,6 +365,7 @@ A beszédet szöveggé alakíthatja, hogy a választott szöveg nyelvét leford�
 |Angol|
 |Finn|
 |Francia|
+|Francia (Kanada)|
 |Német|
 |gudzsaráti|
 |Hindi|
@@ -401,6 +403,7 @@ Szöveg konvertálása beszédre A szöveg és a beszéd használatával a ford�
 |Angol|
 |Finn|
 |Francia|
+|Francia (Kanada)|
 |Német|
 |Görög|
 |Héber|

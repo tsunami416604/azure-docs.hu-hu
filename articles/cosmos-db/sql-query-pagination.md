@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804197"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276093"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Tördelés Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Azure Cosmos DB a lekérdezések több oldalnyi eredményt is tartalmazhatnak. E
 
 Időnként a lekérdezési eredmények több oldalra lesznek felosztva. Az egyes lapok eredményeit külön lekérdezési végrehajtással hozza létre a rendszer. Ha a lekérdezési eredményeket egyetlen végrehajtással nem lehet visszaadni, Azure Cosmos DB automatikusan több oldalra osztja el az eredményeket.
 
-A lekérdezés által visszaadott elemek maximális számát a következő beállításával adhatja meg: `MaxItemCount` . A a `MaxItemCount` kérelem szerint van megadva, és garantálja, hogy a lekérdezési motor az adott számú elemet vagy kevesebbet adja vissza. Beállíthatja `MaxItemCount` , hogy `-1` Ha nem szeretné korlátozni az eredmények számát a lekérdezés-végrehajtás során.
+A lekérdezés által visszaadott elemek maximális számát a következő beállításával adhatja meg: `MaxItemCount` . A a `MaxItemCount` kérelem szerint van megadva, és azt jelzi, hogy a lekérdezési motor az elemek számát vagy kevesebbet adja vissza. Beállíthatja `MaxItemCount` , hogy `-1` Ha nem szeretné korlátozni az eredmények számát a lekérdezés-végrehajtás során.
 
 Emellett más okokból is előfordulhat, hogy a lekérdezési motornak több oldalra kell bontania a lekérdezési eredményeket. Ezek a következők:
 

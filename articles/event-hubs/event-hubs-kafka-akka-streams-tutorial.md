@@ -3,12 +3,12 @@ title: A Apache Kafka-Azure Event Hubs-hoz készült beadási streamek használa
 description: Ez a cikk azt ismerteti, hogyan csatlakoztathatók az Azure Event hub-ba a kiszolgált adatfolyamok.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 1fbbeef37c4cbdd52d2127c5242474ac46e42d25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43f0c359af6f699ce3e7c19948d706c09adeba70
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061699"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316327"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Az Akka Streams használata az Apache Kafkához készült Event Hubs szolgáltatással
 
@@ -30,7 +30,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 * Olvassa át az [Apache Kafkához készült Event Hubsot](event-hubs-for-kafka-ecosystem-overview.md) ismertető cikket. 
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt hozzákezd.
-* [Java fejlesztői készlet (JDK) 1.8+](https://aka.ms/azure-jdks)
+* [Java fejlesztői készlet (JDK) 1.8+](/azure/developer/java/fundamentals/java-jdk-long-term-support)
     * Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
 * [Maven](https://maven.apache.org/download.cgi) bináris archívum [letöltése](https://maven.apache.org/install.html) és telepítése

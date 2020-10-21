@@ -3,12 +3,12 @@ title: Azure Migrate kiszolgáló áttelepítésével kapcsolatos gyakori kérd�
 description: Választ kaphat a Azure Migrate kiszolgáló áttelepítésének a gépek áttelepítésére való használatával kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275540"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315236"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
 
@@ -34,8 +34,8 @@ Azure Migrate: a kiszolgáló áttelepítési eszköze UEFI-alapú gépeket tele
 | SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | Ubuntu Server 16,04, 18,04, 19,04, 19,10                | Y                                                                                                                                         | Y                              | Y                                                          |
-| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _A RHEL 8. x [manuális előkészítést](https://go.microsoft.com/fwlink/?linkid=2143939) igényel_   | Y                              | Y                                                          |
-| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_A cent OS 8. x [manuális előkészítést](https://go.microsoft.com/fwlink/?linkid=2143939) igényel_ | Y                              | Y                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _A RHEL 8. x [manuális előkészítést](./prepare-for-migration.md#linux-machines) igényel_   | Y                              | Y                                                          |
+| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_A cent OS 8. x [manuális előkészítést](./prepare-for-migration.md#linux-machines) igényel_ | Y                              | Y                                                          |
 | Oracle Linux 7,7, 7,7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Használhatom a Azure Migrate által létrehozott Recovery Services-tárolót a vész-helyreállítási forgatókönyvekhez?
@@ -43,11 +43,11 @@ A Azure Migrate által létrehozott Recovery Services-tároló használata vész
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>Hol kell telepíteni a replikációs berendezést az ügynök-alapú áttelepítésekhez?
 
-A replikációs berendezést dedikált gépre kell telepíteni. A replikációs berendezést nem szabad olyan számítógépre telepíteni, amelyet replikálni szeretne, vagy a Azure Migrate felderítési és értékelési berendezésen, amelyre korábban már telepítve van. További részletekért kövesse az [oktatóanyagot](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) .
+A replikációs berendezést dedikált gépre kell telepíteni. A replikációs berendezést nem szabad olyan számítógépre telepíteni, amelyet replikálni szeretne, vagy a Azure Migrate felderítési és értékelési berendezésen, amelyre korábban már telepítve van. További részletekért kövesse az [oktatóanyagot](./tutorial-migrate-physical-virtual-machines.md) .
 
 ## <a name="how-can-i-migrate-my-aws-ec2-instances-to-azure"></a>Hogyan telepíthetem az AWS EC2-példányokat az Azure-ba?
 
-Tekintse át ezt a [cikket](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines) az AWS EC2-példányok Azure-ba való felkereséséhez, értékeléséhez és migrálása érdekében.
+Tekintse át ezt a [cikket](./tutorial-migrate-aws-virtual-machines.md) az AWS EC2-példányok Azure-ba való felkereséséhez, értékeléséhez és migrálása érdekében.
 
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>Áttelepíthetem az Amazon Linux operációs rendszert futtató AWS virtuális gépeket?
 
@@ -79,18 +79,18 @@ A kiválasztott áttelepítési lehetőségtől függetlenül, az első lépés 
 Az alábbi szempontokat érdemes figyelembe venni az áttelepítési lehetőség eldöntése során.
 
 Az **ügynök nélküli áttelepítések** nem igényelnek olyan szoftvereket (ügynököket), amelyeket telepíteni kell az áttelepített forrásoldali virtuális gépeken/kiszolgálókon. Az ügynök nélküli beállítás összehangolja a replikációt a virtualizációs szolgáltató által biztosított funkciók integrálásával.
-A [VMWare virtuális gépek](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) és a [Hyper-V virtuális gépek](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v)esetében az ügynök nélküli replikációs lehetőségek érhetők el.
+A [VMWare virtuális gépek](./tutorial-migrate-vmware.md) és a [Hyper-V virtuális gépek](./tutorial-migrate-hyper-v.md)esetében az ügynök nélküli replikációs lehetőségek érhetők el.
 
 Az **ügynök-alapú áttelepítések** megkövetelik, hogy Azure Migrate szoftvert (ügynököket) telepítsen az áttelepíteni kívánt forrásoldali virtuális gépekre vagy gépekre. Az ügynök-alapú beállítás nem támaszkodik a virtualizációs platformra a replikálási funkciókhoz, ezért az x86/x64 architektúrát futtató kiszolgálókkal, valamint az ügynök-alapú replikációs módszer által támogatott operációs rendszer verziójának használatával használható.
 
-Az ügynök alapú áttelepítési beállítás a [VMWare virtuális gépek](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent), [a Hyper-V virtuális gépek](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), a [fizikai kiszolgálók](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), az AWS-en [futó](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines)virtuális gépek, a GCP-on futó virtuális gépek vagy más virtualizációs szolgáltatón futó virtuális gépek esetében használható. Az ügynök alapú áttelepítés fizikai kiszolgálóként kezeli a gépeket az áttelepítés céljára.
+Az ügynök alapú áttelepítési beállítás a [VMWare virtuális gépek](./tutorial-migrate-vmware-agent.md), [a Hyper-V virtuális gépek](./tutorial-migrate-physical-virtual-machines.md), a [fizikai kiszolgálók](./tutorial-migrate-physical-virtual-machines.md), az AWS-en [futó](./tutorial-migrate-aws-virtual-machines.md)virtuális gépek, a GCP-on futó virtuális gépek vagy más virtualizációs szolgáltatón futó virtuális gépek esetében használható. Az ügynök alapú áttelepítés fizikai kiszolgálóként kezeli a gépeket az áttelepítés céljára.
 
 Habár az ügynök nélküli áttelepítés további kényelmet és egyszerűséget biztosít a támogatott forgatókönyvek (VMWare és Hyper-V) ügynök-alapú replikációs lehetőségeinél, érdemes megfontolni az ügynök-alapú forgatókönyv használatát a következő használati esetekben:
 
 - IOPS korlátozott környezet: az ügynök nélküli replikáció pillanatképeket használ, és a tárolási IOPS/sávszélességet használja. Javasoljuk, hogy az ügynök-alapú áttelepítési módszert, ha a környezetében korlátozások vannak a tároló-vagy IOPS.
 - Ha nincs vCenter Server, a VMware virtuális gépeket fizikai kiszolgálóként kezelheti, és az ügynök alapú áttelepítési munkafolyamatot is használhatja.
 
-További információért olvassa el ezt a [cikket](https://docs.microsoft.com/azure/migrate/server-migrate-overview) a VMware-áttelepítések áttelepítési lehetőségeinek összehasonlításához.
+További információért olvassa el ezt a [cikket](./server-migrate-overview.md) a VMware-áttelepítések áttelepítési lehetőségeinek összehasonlításához.
 
 ## <a name="how-does-agentless-migration-work"></a>Hogyan működik az ügynök nélküli áttelepítés?
 
@@ -101,13 +101,13 @@ Az ügynök nélküli replikációs beállítás a virtualizációs szolgáltat�
 Ha a replikáció egy virtuális géphez van konfigurálva, először egy kezdeti replikálási fázison halad át. A kezdeti replikáció során létrejön egy virtuális gép pillanatképe, és a pillanatkép-lemezekről származó adatok teljes másolata replikálódik az előfizetésében lévő felügyelt lemezekre. Miután befejeződött a virtuális gép kezdeti replikálása, a replikálási folyamat egy növekményes replikálási (különbözeti replikáció) fázisra vált. A növekményes replikálási fázisban az utolsó befejezett replikációs ciklus óta bekövetkezett adatváltozásokat a rendszer rendszeres időközönként replikálja és alkalmazza a replika által felügyelt lemezekre, így a replikáció szinkronban van a virtuális gépen történt változásokkal. VMware-alapú virtuális gépek esetén a rendszer a VMware által módosított blokk követési technológiát használja a replikálási ciklusok közötti változások nyomon követésére. A replikálási ciklus elején létrejön egy virtuális gép pillanatképe, és a változások blokkolásának követése a jelenlegi pillanatkép és az utolsó sikeresen replikált pillanatkép közötti módosítások beszerzésére szolgál. Így csak a legutóbbi befejezett replikálási ciklus óta módosult adatváltozások replikálása szükséges a virtuális gép replikációjának megőrzéséhez. A rendszer az egyes replikációs ciklusok végén kibocsátja a pillanatképet, és elvégzi a pillanatkép-konszolidációt a virtuális gépen. Hasonlóképpen, a Hyper-V virtuális gépek esetében a Hyper-V replika változás-követési motorja az egymást követő replikálási ciklusok közötti változások nyomon követésére szolgál.
 Amikor az áttelepítési műveletet replikáló virtuális gépen hajtja végre, lehetősége van leállítani a helyszíni virtuális gépet, és egy végső növekményes replikálást hajthat végre, így biztosítva a nulla adatvesztést. Az áttelepítési lehetőség végrehajtásakor a virtuális géphez tartozó replika felügyelt lemezeket a rendszer a virtuális gép létrehozásához használja az Azure-ban.
 
-Első lépésként tekintse át a [VMware ügynök nélküli Migrálás](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) és a [Hyper-V ügynök nélküli áttelepítési](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v) oktatóanyagok című témakört.
+Első lépésként tekintse át a [VMware ügynök nélküli Migrálás](./tutorial-migrate-vmware.md) és a [Hyper-V ügynök nélküli áttelepítési](./tutorial-migrate-hyper-v.md) oktatóanyagok című témakört.
 
 ## <a name="how-does-agent-based-migration-work"></a>Hogyan működik az ügynök-alapú áttelepítés?
 
 A VMware virtuális gépek és a Hyper-V virtuális gépek ügynök nélküli áttelepítési lehetőségei mellett a kiszolgáló áttelepítési eszköze egy ügynök-alapú áttelepítési lehetőséget biztosít a fizikai kiszolgálókon futó Windows-és Linux-kiszolgálók áttelepítéséhez, illetve a VMware, Hyper-V, AWS, Google Cloud Platform stb. x86/x64 virtuális gépekként való futtatásához.
 
-Az ügynök-alapú áttelepítési módszer az áttelepített kiszolgálóra telepített ügynök szoftverét használja a kiszolgálói adatszolgáltatások Azure-ba történő replikálásához. A replikálási folyamat olyan kiszervezési architektúrát használ, amelyben az ügynök a replikációs eszköz vagy a konfigurációs kiszolgáló (vagy egy kibővíthető folyamat kiszolgálója) nevű dedikált replikációs kiszolgálóra továbbítja a replikálási adattovábbítást. [További](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture) információ az ügynök alapú áttelepítési lehetőség működéséről. 
+Az ügynök-alapú áttelepítési módszer az áttelepített kiszolgálóra telepített ügynök szoftverét használja a kiszolgálói adatszolgáltatások Azure-ba történő replikálásához. A replikálási folyamat olyan kiszervezési architektúrát használ, amelyben az ügynök a replikációs eszköz vagy a konfigurációs kiszolgáló (vagy egy kibővíthető folyamat kiszolgálója) nevű dedikált replikációs kiszolgálóra továbbítja a replikálási adattovábbítást. [További](./agent-based-migration-architecture.md) információ az ügynök alapú áttelepítési lehetőség működéséről. 
 
 Megjegyzés: a replikációs berendezés eltér a Azure Migrate felderítési berendezéstől, és külön/dedikált gépre kell telepíteni.
 
@@ -127,11 +127,11 @@ A kezdeti replikáció befejezésének ideje = {a lemezek mérete (vagy a felhas
 
 ### <a name="agent-based-vmware-vm-migration"></a>Ügynök-alapú VMware VM-Migrálás
 
-Egy ügynök-alapú replikációs módszer esetén a Deployment Planner segíthet a környezet megadásában az adatváltozáshoz, és a szükséges sávszélesség előrejelzésében is segít. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture#plan-vmware-deployment). 
+Egy ügynök-alapú replikációs módszer esetén a Deployment Planner segíthet a környezet megadásában az adatváltozáshoz, és a szükséges sávszélesség előrejelzésében is segít. További információkért tekintse meg ezt a [cikket](./agent-based-migration-architecture.md#plan-vmware-deployment). 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Hogyan a replikációt a Azure Migrate berendezés használatával az ügynök nélküli VMware-replikációhoz?  
 
-A NetQosPolicy használatával szabályozhatja a szabályozást. Példa:
+A NetQosPolicy használatával szabályozhatja a szabályozást. Például:
 
 A NetQosPolicy használandó AppNamePrefix: "GatewayWindowsService.exe". Létrehozhat egy szabályzatot az Azure Migrate berendezésen a készülék replikációs forgalmának szabályozásához egy olyan házirend létrehozásával, mint például ez:
 
@@ -153,10 +153,10 @@ Ha például egy virtuális gép négy órát vesz igénybe egy különbözeti c
 
 ## <a name="how-do-i-migrate-windows-server-2003-running-on-vmwarehyper-v-to-azure"></a>Hogyan a VMware/Hyper-V-n futó Windows Server 2003-et az Azure-ba?
 
-A [Windows Server 2003 kiterjesztett támogatása](https://go.microsoft.com/fwlink/?linkid=2140400) 2015. július 14-én fejeződött be.  Az Azure-támogatási csapat továbbra is segítséget nyújt a Windows Server 2003 Azure-beli futtatásával kapcsolatos problémák elhárításában. Ez a támogatás azonban olyan problémákra korlátozódik, amelyek nem igényelnek operációsrendszer-szintű hibaelhárítást vagy javítást.
+A [Windows Server 2003 kiterjesztett támogatása](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support) 2015. július 14-én fejeződött be.  Az Azure-támogatási csapat továbbra is segítséget nyújt a Windows Server 2003 Azure-beli futtatásával kapcsolatos problémák elhárításában. Ez a támogatás azonban olyan problémákra korlátozódik, amelyek nem igényelnek operációsrendszer-szintű hibaelhárítást vagy javítást.
 Az alkalmazások áttelepítése a Windows Server újabb verzióját futtató Azure-példányokra az ajánlott módszer annak biztosítására, hogy hatékonyan hasznosítsa az Azure-felhő rugalmasságát és megbízhatóságát.
 
-Ha azonban továbbra is a Windows Server 2003-es verzióját telepíti át az Azure-ba, a Azure Migrate: Server áttelepítési eszköz használatával, ha a Windows Server egy VMware vagy Hyper-V rendszeren futó virtuális gép, tekintse át ezt a cikket a [Windows server 2003 rendszerű gépek áttelepítésre való előkészítéséhez](https://go.microsoft.com/fwlink/?linkid=2140302).
+Ha azonban továbbra is a Windows Server 2003-es verzióját telepíti át az Azure-ba, a Azure Migrate: Server áttelepítési eszköz használatával, ha a Windows Server egy VMware vagy Hyper-V rendszeren futó virtuális gép, tekintse át ezt a cikket a [Windows server 2003 rendszerű gépek áttelepítésre való előkészítéséhez](./prepare-windows-server-2003-migration.md).
 
 ## <a name="what-is-the-difference-between-the-test-migration-and-migrate-operations"></a>Mi a különbség a tesztelési áttelepítés és az áttelepítési műveletek között?
 

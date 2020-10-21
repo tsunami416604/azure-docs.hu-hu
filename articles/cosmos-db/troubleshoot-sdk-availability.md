@@ -3,17 +3,17 @@ title: A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezé
 description: Ismerje meg az Azure Cosmos SDK rendelkezésre állási viselkedését többrégiós környezetben való működés esetén.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/05/2020
+ms.date: 10/20/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743964"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319366"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezésre állásának diagnosztizálása és megoldása
 
@@ -34,7 +34,7 @@ A területi beállítások megadásakor az ügyfél a következő táblázatban 
 | Egyszeri írási régió | Előnyben részesített régió | Elsődleges régió  |
 | Több írási régió | Előnyben részesített régió | Előnyben részesített régió  |
 
-Ha nem állít be előnyben részesített régiót:
+Ha **nem állít be előnyben részesített régiót**, az SDK-ügyfél alapértelmezett értéke az elsődleges régió:
 
 |Fiók típusa |Olvasások |Írások |
 |------------------------|--|--|
@@ -44,7 +44,9 @@ Ha nem állít be előnyben részesített régiót:
 > [!NOTE]
 > Az elsődleges régió az [Azure Cosmos-fiók régiójának](distribute-data-globally.md) első régiójára vonatkozik
 
-Ha az alábbi esetek bármelyike előfordul, az Azure Cosmos SDK-t használó ügyfél megjeleníti a naplókat, és az újrapróbálkozási információkat a **művelet diagnosztikai információinak**részeként tartalmazza:
+Normális körülmények között az SDK-ügyfél csatlakozni fog az előnyben részesített régióhoz (ha be van állítva egy területi beállítás) vagy az elsődleges régióra (ha nincs beállítva preferencia), és a műveletek az adott régióra korlátozódnak, kivéve, ha az alábbi esetek bármelyike bekövetkezik.
+
+Ezekben az esetekben az Azure Cosmos SDK-t használó ügyfél elérhetővé teszi a naplókat, és az újrapróbálkozási információkat a **művelet diagnosztikai információinak**részeként tartalmazza:
 
 * A válaszok *RequestDiagnosticsString* tulajdonsága a .NET v2 SDK-ban.
 * A .NET v3 SDK-beli válaszok és kivételek *diagnosztikai* tulajdonsága.
@@ -66,7 +68,7 @@ Ha eltávolít egy régiót, majd később visszaadja azt a fiókhoz, ha a hozz�
 
 Ha úgy konfigurálja az ügyfelet, hogy egy olyan régióhoz kapcsolódjon, amelyhez az Azure Cosmos-fiók nem rendelkezik, a rendszer figyelmen kívül hagyja az előnyben részesített régiót. Ha később hozzáadja ezt a régiót, akkor az ügyfél észleli azt, és véglegesen átvált az adott régióra.
 
-## <a name="failover-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Az írási régió feladatátvétele egyetlen írási régióbeli fiókban
+## <a name="fail-over-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Az írási régió feladatátvétele egyetlen írási régióbeli fiókban
 
 Ha az aktuális írási régió feladatátvételét kezdeményezi, a következő írási kérelem sikertelen lesz, amely egy ismert háttérbeli választ ad. Ha a rendszer ezt a választ észleli, az ügyfél lekérdezi a fiókot az új írási régió megismeréséhez, és folytatja az aktuális művelet ismételt megadását és az összes jövőbeli írási művelet végleges átirányítását az új régióba.
 
@@ -76,7 +78,7 @@ Ha a fiók egyetlen írási régió, és a regionális leállás egy írási mű
 
 ## <a name="session-consistency-guarantees"></a>Munkamenet konzisztenciájának garanciái
 
-A [munkamenet konzisztenciájának](consistency-levels.md#guarantees-associated-with-consistency-levels)használatakor az ügyfélnek biztosítania kell, hogy a saját írásait tudja olvasni. Az olyan egyszeri írási régió fiókjaiban, amelyekben az olvasási régió beállításai eltérnek az írási régiótól, előfordulhat, hogy a felhasználó írást okoz, és a helyi régióból való olvasáskor a helyi régió még nem kapta meg az adatreplikálást (a könnyű korlátozás sebessége). Ilyen esetekben az SDK észleli az olvasási művelet adott hibáját, és újrapróbálkozik a központi régió olvasásával a munkamenet konzisztenciájának biztosítása érdekében.
+A [munkamenet konzisztenciájának](consistency-levels.md#guarantees-associated-with-consistency-levels)használatakor az ügyfélnek biztosítania kell, hogy a saját írásait tudja olvasni. Az olyan egyszeri írási régió fiókjaiban, amelyekben az olvasási régió beállításai eltérnek az írási régiótól, előfordulhat, hogy a felhasználó írást okoz, és a helyi régióból való olvasáskor a helyi régió még nem kapta meg az adatreplikálást (a könnyű korlátozás sebessége). Ilyen esetekben az SDK észleli az olvasási művelet adott hibáját, és újrapróbálkozik az olvasással az elsődleges régióban a munkamenet konzisztenciájának biztosítása érdekében.
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>Átmeneti kapcsolódási problémák a TCP protokollon
 

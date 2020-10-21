@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a0cba1c3a7a3b713fa5f0603ad9e116068d8df66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2c7953ea7b85eca3628329b427f960f9466fd6b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618471"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316042"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -49,7 +49,7 @@ Ez a táblázat a blob Storage azon funkcióit sorolja fel, amelyeket a Azure Da
 |Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](storage-blob-soft-delete.md)|
 |Blobfuse|Előnézet|Még nem támogatott|[BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel](storage-how-to-mount-container-linux.md)|
 |Fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|BLOB Container ACL|Még nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Még nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Tároló ACL beállítása](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
+|BLOB Container ACL|Nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Tekintse meg a táblázat alatti kapcsolódó megjegyzést.|
 |Ügyfél által biztosított kulcsok|Még nem támogatott|Még nem támogatott|[Titkosítási kulcs megadása a blob Storage-kérelemben](encryption-customer-provided-keys.md)|
 |Egyéni tartományok|Még nem támogatott|Még nem támogatott|[Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)|
 |Titkosítási hatókörök|Még nem támogatott|Még nem támogatott|[Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md)|

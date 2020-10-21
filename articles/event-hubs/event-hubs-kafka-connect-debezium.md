@@ -5,18 +5,18 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: cac04bed797bb9956125bc1a38fdfa5c8285050e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4bd6cdf6d3a5dc30b90abc5094202360181ae0b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061682"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318520"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Az Azure Event Hubs (előzetes verzió) Apache Kafka csatlakozási támogatásának integrálása az adatváltozások rögzítésének Debezium
 
 Az **adatváltozások rögzítése (CDC)** a létrehozási, frissítési és törlési műveletekre reagáló, az adatbázistáblák sorainak változásainak nyomon követésére szolgáló módszer. A [Debezium](https://debezium.io/) egy elosztott platform, amely a különböző adatbázisokban elérhető adatváltozás-rögzítési funkciókra épül (például a [PostgreSQL logikai dekódolása](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)). Olyan [Kafka csatlakozási összekötőket](https://debezium.io/documentation/reference/1.2/connectors/index.html) biztosít, amelyek az adatbázistábla (ok) sorban álló változásaira koppintanak, és a [Apache Kafkaba](https://kafka.apache.org/)küldendő esemény-adatfolyamokra konvertálják őket.
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli adatváltozás-rögzítési rendszert az Azure [Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about?WT.mc_id=devto-blog-abhishgu) (a Kafka esetében), [Az Azure db for PostgreSQL és a](../postgresql/overview.md) Debezium használatával. A [Debezium PostgreSQL-összekötővel](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) továbbítja a PostgreSQL-ből származó adatbázis-módosításokat az Azure-beli Kafka-témakörökbe Event Hubs
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli adatváltozás-rögzítési rendszert az Azure [Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (a Kafka esetében), [Az Azure db for PostgreSQL és a](../postgresql/overview.md) Debezium használatával. A [Debezium PostgreSQL-összekötővel](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) továbbítja a PostgreSQL-ből származó adatbázis-módosításokat az Azure-beli Kafka-témakörökbe Event Hubs
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 

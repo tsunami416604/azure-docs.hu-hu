@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626479"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279222"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Oktatóanyag: webalkalmazások gyors méretezése és biztosítása az Azure-beli előtérben és az Azure webalkalmazási tűzfal (WAF) használatával
 
@@ -36,10 +36,10 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az oktatóanyagban szereplő utasítások az Azure CLI-t használják. [Tekintse meg ezt az útmutatót](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true) az Azure CLI-vel való ismerkedéshez.
+- Az oktatóanyagban szereplő utasítások az Azure CLI-t használják. [Tekintse meg ezt az útmutatót](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest) az Azure CLI-vel való ismerkedéshez.
 
   > [!TIP] 
-  > Az Azure CLI első lépéseinek egyszerű és gyors módja a [Bash Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+  > Az Azure CLI első lépéseinek egyszerű és gyors módja a [Bash Azure Cloud Shell](../cloud-shell/quickstart.md).
 
 - Győződjön meg arról, hogy a `front-door` bővítmény hozzá van adva az Azure CLI-hez:
 
@@ -48,7 +48,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
    ```
 
 > [!NOTE] 
-> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért tekintse meg az [Azure CLI-referenciát az](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true)előtérben.
+> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért tekintse meg az [Azure CLI-referenciát az](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest)előtérben.
 
 ## <a name="create-an-azure-front-door-resource"></a>Azure-beli előtérben lévő erőforrás létrehozása
 
@@ -62,7 +62,7 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 
 `--name`: Az Azure-beli előtérben lévő erőforrás neve.
 
-`--resource-group`: Az az erőforráscsoport, amelyben be szeretné helyezni az Azure bejárati erőforrását. További információ az erőforráscsoportok használatáról: [erőforráscsoportok kezelése az Azure-ban](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
+`--resource-group`: Az az erőforráscsoport, amelyben be szeretné helyezni az Azure bejárati erőforrását. További információ az erőforráscsoportok használatáról: [erőforráscsoportok kezelése az Azure-ban](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 A parancs futtatásakor kapott válaszban keresse meg a kulcsot `hostName` . Ezt az értéket egy későbbi lépésben kell megadnia. A a `hostName` létrehozott Azure-beli előtérben lévő erőforrás DNS-neve.
 
@@ -130,21 +130,21 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 
 A webalkalmazás egyéni tartományneve az a felhasználó, aki az alkalmazásra hivatkozik. Például: www.contoso.com. Kezdetben ez az Egyéni tartománynév arra a helyre mutat, ahol a futott, mielőtt bevezette az Azure-előtérben. Miután hozzáadta az Azure-beli bejárati ajtót, és WAF az alkalmazást, az adott egyéni tartománynak megfelelő DNS-bejegyzésnek az Azure bejárati ajtó erőforrására kell mutatnia. Ezt a módosítást úgy hajthatja végre, hogy áthelyezi a DNS-kiszolgáló bejegyzését az Azure bejárati ajtajára, amelyet az Azure-beli előtérben `hostName` lévő erőforrás létrehozásakor észlelt.
 
-A DNS-rekordok frissítésének konkrét lépései a DNS-szolgáltatótól függenek. Ha Azure DNSt használ a DNS-név üzemeltetéséhez, tekintse meg a [DNS-rekordok frissítésének](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) és az Azure-beli bejárati ajtóra mutató lépéseknek a dokumentációját `hostName` . 
+A DNS-rekordok frissítésének konkrét lépései a DNS-szolgáltatótól függenek. Ha Azure DNSt használ a DNS-név üzemeltetéséhez, tekintse meg a [DNS-rekordok frissítésének](../dns/dns-operations-recordsets-cli.md) és az Azure-beli bejárati ajtóra mutató lépéseknek a dokumentációját `hostName` . 
 
-Fontos megjegyezni, hogy ha ügyfeleinek a zóna csúcsán kell megszerezniük a webhelyét (például contoso.com). Ebben az esetben az Azure DNS és az [alias bejegyzéstípust](https://docs.microsoft.com/azure/dns/dns-alias) kell használnia a DNS-név üzemeltetéséhez. 
+Fontos megjegyezni, hogy ha ügyfeleinek a zóna csúcsán kell megszerezniük a webhelyét (például contoso.com). Ebben az esetben az Azure DNS és az [alias bejegyzéstípust](../dns/dns-alias.md) kell használnia a DNS-név üzemeltetéséhez. 
 
-Emellett frissítenie kell az Azure bejárati ajtajának konfigurációját, hogy [az egyéni tartományt hozzá lehessen adni](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) ahhoz, hogy tisztában legyen ezzel a leképezéssel.
+Emellett frissítenie kell az Azure bejárati ajtajának konfigurációját, hogy [az egyéni tartományt hozzá lehessen adni](./front-door-custom-domain.md) ahhoz, hogy tisztában legyen ezzel a leképezéssel.
 
-Végül, ha egyéni tartományt használ a webalkalmazás eléréséhez, és engedélyezni szeretné a HTTPS protokollt. [Az Azure-beli bejárati ajtóban be kell állítania az egyéni tartományhoz tartozó tanúsítványokat](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
+Végül, ha egyéni tartományt használ a webalkalmazás eléréséhez, és engedélyezni szeretné a HTTPS protokollt. [Az Azure-beli bejárati ajtóban be kell állítania az egyéni tartományhoz tartozó tanúsítványokat](./front-door-custom-domain-https.md). 
 
 ## <a name="lock-down-your-web-application"></a>A webalkalmazás zárolása
 
-Javasoljuk, hogy csak az Azure-előtérben lévő élek kommunikáljanak a webalkalmazással. Így biztosíthatja, hogy senki ne kerüljék el az Azure-beli elülső ajtó védelmét, és közvetlenül hozzáférjen az alkalmazáshoz. A zárolás végrehajtásához tekintse [meg hogyan a háttérbeli hozzáférés zárolása csak az Azure bejárati ajtót?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)című témakört.
+Javasoljuk, hogy csak az Azure-előtérben lévő élek kommunikáljanak a webalkalmazással. Így biztosíthatja, hogy senki ne kerüljék el az Azure-beli elülső ajtó védelmét, és közvetlenül hozzáférjen az alkalmazáshoz. A zárolás végrehajtásához tekintse [meg hogyan a háttérbeli hozzáférés zárolása csak az Azure bejárati ajtót?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)című témakört.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az oktatóanyagban használt erőforrásokra, az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) paranccsal távolítsa el az erőforráscsoportot, a bejárati ajtót és a WAF szabályzatot:
+Ha már nincs szüksége az oktatóanyagban használt erőforrásokra, az az [Group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) paranccsal távolítsa el az erőforráscsoportot, a bejárati ajtót és a WAF szabályzatot:
 
 ```azurecli-interactive
   az group delete \

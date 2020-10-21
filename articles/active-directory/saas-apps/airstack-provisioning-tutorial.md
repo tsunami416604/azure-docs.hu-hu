@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3990f9533aa6746011b1f070139b39ec884711c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcb971cd0bd0addd3190e2a3a5f9c6740494b7fd
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305852"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318963"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Airstack konfigurálása
 
@@ -89,7 +89,7 @@ Az Azure AD-vel való automatikus Airstack konfigurálása előtt hozzá kell ad
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Airstack alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Airstack számára, az [Airstack egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Airstack számára, az [Airstack egyszeri bejelentkezés oktatóanyagában](./airstack-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
 
 ### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Airstack az Azure AD-ben:
 
@@ -153,4 +153,3 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
-

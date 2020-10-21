@@ -4,12 +4,12 @@ description: Ismerkedjen meg a Azure Migrate szolgáltatás új és legújabb fr
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: a36e73496b07df18c61b07df9d90992c0ab399ce
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b03f3a7e10aa42f3393ecc22cb74f4e565587032
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124656"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314583"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
@@ -36,7 +36,7 @@ A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszo
 
 ## <a name="update-june-2020"></a>Frissítés (2020. június)
 
-- A helyszíni VMware virtuális gépek [Azure VMware-megoldásba (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) való áttelepítésének felmérése mostantól támogatott. [További információ](how-to-create-azure-vmware-solution-assessment.md)
+- A helyszíni VMware virtuális gépek [Azure VMware-megoldásba (AVS)](./concepts-azure-vmware-solution-assessment-calculation.md) való áttelepítésének felmérése mostantól támogatott. [További információ](how-to-create-azure-vmware-solution-assessment.md)
 - Több hitelesítő adat támogatása a készüléken a fizikai kiszolgálók felderítéséhez.
 - Támogatás, amely lehetővé teszi az Azure-bejelentkezést a készülékről olyan bérlőre, ahol a bérlői korlátozás konfigurálva van.
 
@@ -104,4 +104,4 @@ Ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMware vir
 
 - [Itt talál további információkat](https://azure.microsoft.com/pricing/details/azure-migrate/) az Azure Migrate díjszabásáról.
 - Tekintse meg az Azure Migrate használatával kapcsolatban felmerülő [gyakori kérdéseket](resources-faq.md).
-- Próbálja ki az oktatóanyagokat a [VMWare virtuális gépek](tutorial-assess-vmware.md) és a [Hyper-V virtuális gépek](tutorial-assess-hyper-v.md)értékeléséhez.
+- Próbálja ki az oktatóanyagokat a [VMWare virtuális gépek](./tutorial-assess-vmware-azure-vm.md) és a [Hyper-V virtuális gépek](tutorial-assess-hyper-v.md)értékeléséhez.

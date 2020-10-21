@@ -2,14 +2,14 @@
 title: Erőforrások zárolása a módosítások megakadályozása érdekében
 description: Megakadályozhatja, hogy a felhasználók a kritikus Azure-erőforrások frissítését vagy törlését az összes felhasználó és szerepkör zárolásának alkalmazásával.
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 10/20/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3830c7e78cf3cc607c7abfca63e6ae74f89b7aff
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87827282"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281750"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
@@ -66,11 +66,13 @@ A szolgáltatás összes elemének törléséhez, beleértve a zárolt infrastru
 
 ![Szolgáltatás törlése](./media/lock-resources/delete-service.png)
 
-## <a name="portal"></a>Portál
+## <a name="configure-locks"></a>Zárolások konfigurálása
+
+### <a name="portal"></a>Portál
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-## <a name="template"></a>Sablon
+### <a name="arm-template"></a>ARM-sablon
 
 Ha Resource Manager-sablont használ a zárolás üzembe helyezéséhez, a név és a típus eltérő értékeket használ a zárolás hatóköre alapján.
 
@@ -143,7 +145,7 @@ Az alábbi példa egy olyan sablont mutat be, amely egy app Service-csomagot, eg
 
 Az erőforráscsoportok zárolásának beállítására példát a következő témakörben talál: [erőforráscsoport létrehozása és zárolása](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 
-## <a name="powershell"></a>PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 A [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) parancs használatával zárolja a telepített erőforrásokat a Azure PowerShell.
 
@@ -184,7 +186,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceN
 Remove-AzResourceLock -LockId $lockId
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Az üzembe helyezett erőforrásokat az az [Lock Create](/cli/azure/lock#az-lock-create) paranccsal zárolhatja az Azure CLI használatával.
 
@@ -225,7 +227,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --re
 az lock delete --ids $lockid
 ```
 
-## <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST API
 
 A telepített erőforrásokat zárolhatja a [felügyeleti zárolások Rest APIával](/rest/api/resources/managementlocks). A REST API lehetővé teszi zárolások létrehozását és törlését, valamint a meglévő zárolásokkal kapcsolatos információk lekérését.
 

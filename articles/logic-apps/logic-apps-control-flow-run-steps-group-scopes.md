@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575010"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314844"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Műveletek futtatása a csoport állapota alapján a Azure Logic Apps hatókörök használatával
 
@@ -31,7 +31,7 @@ A cikkben szereplő példához a következő elemek szükségesek:
 
 * A Logic Apps által támogatott e-mail-szolgáltatótól származó e-mail-fiók. Ez a példa az Outlook.com-t használja. Ha más szolgáltatót használ, az általános folyamat ugyanaz marad, de a felhasználói felülete eltérő lesz.
 
-* Egy Bing Maps-kulcs. A kulcs beszerzéséhez tekintse meg <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">a Bing Maps-kulcs beszerzése</a>című témakört.
+* Egy Bing Maps-kulcs. A kulcs beszerzéséhez tekintse meg <a href="/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key" target="_blank">a Bing Maps-kulcs beszerzése</a>című témakört.
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -77,12 +77,12 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
       | ------- | ----- | ----------- |
       | **1. útvonalpont** | <*Start*> | Adja meg az útvonal forrását. | 
       | **2. útvonalpont** | <*végén*> | Adja meg az útvonal célhelyét. | 
-      | **Elkerülés** | Nincs | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route). | 
+      | **Elkerülés** | Nincsenek | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route). | 
       | **Optimalizálás** | timeWithTraffic | Válasszon egy paramétert az útvonal optimalizálásához, például a távolságot, az aktuális forgalmi információkkal rendelkező időt és így tovább. Ez a példa a következő értéket használja: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*saját preferencia*> | Adja meg az útvonal kiszámításához használandó távolsági egységet. Ez a példa a következő értéket használja: "Mile" | 
       | **Közlekedési mód** | Vezetés | Adja meg az útvonal utazási módját. Ez a példa a "vezetés" értéket használja. | 
-      | **Tranzit dátuma és időpontja** | Nincs | Csak az átviteli módra vonatkozik. | 
-      | **Tranzit Date-Type típusa** | Nincs | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit dátuma és időpontja** | Nincsenek | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit Date-Type típusa** | Nincsenek | Csak az átviteli módra vonatkozik. | 
       ||||  
 
 1. [Adjon hozzá egy feltételt](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy az aktuális utazási idő meghaladja-e a megadott időt. 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: jasonh
-ms.openlocfilehash: 01bfff6db7827218dafa539b8bc2c7ce0a7869f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad56bf0295efca45ee958e1ce135d79ed850d62
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409646"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277602"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés előtti lépések a MongoDB-ből Azure Cosmos DB API-MongoDB való áttelepítéshez
 
@@ -36,7 +36,7 @@ A MongoDB Azure Cosmos DB API-ját a következők konkrét jellemzőkkel bírnak
 
 - **Rugalmas kapacitás**: egy adott gyűjtemény vagy adatbázis kapacitása bármikor megváltozhat. Ez lehetővé teszi, hogy az adatbázis rugalmasan alkalmazkodjon a számítási feladatok átviteli követelményeihez.
 
-- **Automatikus**skálázás: a Azure Cosmos db egy automatikus particionálási rendszer, amely csak egy szegmens (vagy egy partíciós kulcs) megadását igényli. Az [automatikus particionálási mechanizmus](partition-data.md) az összes Azure Cosmos db API-ban meg van osztva, és lehetővé teszi a zökkenőmentes adattárolást és a horizontális eloszláson keresztüli teljes méretezést.
+- **Automatikus**skálázás: a Azure Cosmos db egy automatikus particionálási rendszer, amely csak egy szegmens (vagy egy partíciós kulcs) megadását igényli. Az [automatikus particionálási mechanizmus](partitioning-overview.md) az összes Azure Cosmos db API-ban meg van osztva, és lehetővé teszi a zökkenőmentes adattárolást és a horizontális eloszláson keresztüli teljes méretezést.
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>Áttelepítési lehetőségek a Azure Cosmos DB API-MongoDB
 
@@ -88,7 +88,7 @@ A [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) autom
 ## <a name="next-steps"></a>Következő lépések
 * [Telepítse át a MongoDB-adatait Cosmos DB a Database Migration Service használatával.](../dms/tutorial-mongodb-cosmos-db.md) 
 * [Átviteli sebesség az Azure Cosmos-tárolók és-adatbázisok számára](set-throughput.md)
-* [Particionálás az Azure Cosmos DB-ben](partition-data.md)
+* [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Globális eloszlás Azure Cosmos DB](distribute-data-globally.md)
 * [Indexelés az Azure Cosmos DB-ben](index-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

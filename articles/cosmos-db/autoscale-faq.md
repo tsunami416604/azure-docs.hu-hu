@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5905471dad5cf4e2e8191894af52c503c23e9036
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567587"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277975"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Gyakori kérdések a kiosztott átviteli sebességről Azure Cosmos DB
 
@@ -125,7 +125,7 @@ Tegyük fel például, hogy rendelkezik egy, a 400 – 4000 RU/s méretű autosc
 - 1. óra: T = 2: a tároló elindítja a kérelmeket, amelyek 1 másodperc alatt használják a 1000 RU-T. Emellett a 200-es számú, TTL értékű TTL-értéket is meg kell történnie. A számlázható RU/s még mindig 1000 RU/s. Függetlenül attól, hogy mikor történik a TTLs, a rendszer nem befolyásolja az automatikus skálázási méretezési logikát.
 
 ### <a name="what-is-the-mapping-between-the-max-rus-and-physical-partitions"></a>Mi a különbség a maximális RU/s és a fizikai partíciók között?
-Amikor először kiválasztja a maximális RU/s-t, Azure Cosmos DB a következőt fogja kiépíteni: Max RU/s/10 000 RU/s = # fizikai partíciók. Minden [fizikai partíció](partition-data.md#physical-partitions) legfeljebb 10 000 ru/s és 50 GB tárterületet tud támogatni. Mivel a tárterület mérete növekszik, Azure Cosmos DB automatikusan felosztja a partíciókat, hogy további fizikai partíciókat adjon hozzá a tárterület növeléséhez, vagy növelje a maximális RU/s értéket, ha [a tárterület meghaladja a társított korlátot](#what-is-the-storage-limit-associated-with-each-max-rus-option). 
+Amikor először kiválasztja a maximális RU/s-t, Azure Cosmos DB a következőt fogja kiépíteni: Max RU/s/10 000 RU/s = # fizikai partíciók. Minden [fizikai partíció](partitioning-overview.md#physical-partitions) legfeljebb 10 000 ru/s és 50 GB tárterületet tud támogatni. Mivel a tárterület mérete növekszik, Azure Cosmos DB automatikusan felosztja a partíciókat, hogy további fizikai partíciókat adjon hozzá a tárterület növeléséhez, vagy növelje a maximális RU/s értéket, ha [a tárterület meghaladja a társított korlátot](#what-is-the-storage-limit-associated-with-each-max-rus-option). 
 
 Az adatbázis vagy tároló maximális RU/s értéke egyenletesen oszlik el az összes fizikai partíció között. Tehát a teljes átviteli sebesség egyetlen fizikai partíción is méretezhető a következőre: az adatbázis vagy tároló/# fizikai partíciók maximális száma (RU/s). 
 
@@ -147,5 +147,5 @@ Ha például az 20 000 RU/s maximális átviteli sebesség lehetőséget válasz
 
 * Ismerje meg, hogyan [engedélyezhető az Azure Cosmos db-adatbázis vagy-tárolók autoskálázása](how-to-provision-autoscale-throughput.md).
 * Ismerje meg, hogy milyen [előnyökkel jár a kiépített átviteli sebesség az autoskálázással](provision-throughput-autoscale.md#benefits-of-autoscale).
-* További információ a [logikai és a fizikai partíciókhoz](partition-data.md).
+* További információ a [logikai és a fizikai partíciókhoz](partitioning-overview.md).
                         

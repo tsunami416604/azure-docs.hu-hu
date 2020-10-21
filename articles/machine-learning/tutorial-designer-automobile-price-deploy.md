@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a4923e48c890a50d642d937f014e466e998171cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95e5b3ac568cfa370fd1e49fad990b681aef46d9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896626"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311517"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel
 
@@ -61,7 +61,7 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
 
 1. Válassza a **Submit (Küldés**) lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
 
-    Ha az első fut, akár 20 percet is igénybe vehet, amíg a folyamat befejezi a futást. Az alapértelmezett számítási beállításokhoz a csomópont minimális mérete 0, ami azt jelenti, hogy a tervezőnek üresjárat után le kell foglalnia az erőforrásokat. Az ismétlődő folyamat-futtatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság növelése érdekében.
+    Ha ez az első futtatás, akár 20 percet is igénybe vehet, amíg a folyamat befejezi a futását. Az alapértelmezett számítási beállításokhoz a csomópont minimális mérete 0, ami azt jelenti, hogy a tervezőnek üresjárat után le kell foglalnia az erőforrásokat. Az ismétlődő folyamat-futtatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság növelése érdekében.
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
 
@@ -103,27 +103,23 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 
     Az üzembe helyezés befejeződése után a vászon fölötti sikeres értesítés jelenik meg. Néhány percet is igénybe vehet.
 
-## <a name="test-the-real-time-endpoint"></a>A valós idejű végpont tesztelése
+## <a name="view-the-real-time-endpoint"></a>Valós idejű végpont megtekintése
 
-Az üzembe helyezés befejeződése után a **végpontok** lapon ellenőrizheti a valós idejű végpontot.
+Az üzembe helyezés befejeződése után megtekintheti a valós idejű végpontot a **végpontok** lapon.
 
 1. A **végpontok** lapon válassza ki a telepített végpontot.
 
-    ![Képernyőfelvétel: a valós idejű végpontok lap, amely a legutóbb létrehozott végpontot mutatja](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
+1. A **részletek** lapon további információkat tekinthet meg, például a REST URI-t, az állapotot és a címkéket.
 
-1. Válassza a **Tesztelés** lehetőséget.
+1. A felhasználás **lapon** megtalálhatja a biztonsági kulcsokat, és megadhatja a hitelesítési módszereket.
 
-1. Manuálisan is beírhatja a tesztelési adatokat, vagy használhatja az autofilled Sample-adatokat, és kiválaszthatja a **teszt**lehetőséget.
-
-    A portál egy teszt kérelmet küld a végpontnak, és megjeleníti az eredményeket. Bár a bemeneti adatokhoz érték jön létre, a rendszer nem használja fel az előrejelzési érték generálására.
-
-    ![Képernyőfelvétel: a valós idejű végpont és az emelt szintű címke tesztelése](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
+További információ a webszolgáltatás használatáról: a [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre, helyezhet üzembe és használhat fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni arról, hogyan használhatja a tervezőt más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
 

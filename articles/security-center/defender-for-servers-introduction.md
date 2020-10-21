@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448293"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275242"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Bevezetés az Azure Defender for Servers szolgáltatásba
 
@@ -27,11 +27,18 @@ A Linux rendszerben az Azure Defender a Linux rendszerű gépek naplózási reko
 
 Az Azure Defender for Servers szolgáltatáshoz biztosított fenyegetések észlelési és védelmi képességei a következők:
 
+- A **Microsoft Defender for Endpoint integrált licence (csak Windows esetén)** – az Azure Defender for Servers tartalmazza [a Microsoft Defender for végpontot](https://www.microsoft.com/microsoft-365/security/endpoint-defender). Együttesen átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosítanak. [További információk](security-center-wdatp.md).
+
+    Ha a-végpont Defender észleli a fenyegetést, riasztást indít el. A riasztás Security Center jelenik meg. A Security Centerból is eldöntheti, hogy a Defender for Endpoint Console-t is felhasználja, és részletes vizsgálatot hajt végre a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender a végpontról.
+
+    > [!IMPORTANT]
+    > A **Microsoft Defender for Endpoint** érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
+
 - **Biztonsági rések felmérése virtuális gépekhez** – a Azure Security Center által tartalmazott sebezhetőségi képolvasót a Qualys működteti. 
 
     A Qualys "Scanner az Azure-Virtual Machines biztonsági réseinak valós idejű azonosítására szolgáló vezető eszközök egyike. Nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Centeron belül zökkenőmentesen kezelhető. [További információk](deploy-vulnerability-assessment-vm.md).
 
-- Igény szerinti **(JIT)** virtuálisgép-hozzáférés – a fenyegetést kezelő szereplők aktívan vadásznak a nyílt felügyeleti portok, például az RDP vagy az SSH számára elérhető gépekről. Az összes virtuális gép potenciális célpont a támadásoknak. Ha egy virtuális gép biztonsága sikeres, a rendszer belépési pontként használja a környezetében lévő további erőforrások támadásához.
+- Igény szerinti **(JIT) virtuális gép (VM) hozzáférés** – a fenyegetéseket kezelő szereplők aktívan vadásznak a nyílt felügyeleti portokkal, például az RDP-vel vagy az SSH-val. Az összes virtuális gép potenciális célpont a támadásoknak. Ha egy virtuális gép biztonsága sikeres, a rendszer belépési pontként használja a környezetében lévő további erőforrások támadásához.
 
     Ha engedélyezi az Azure Defender for Servers-t, a virtuális gépek igény szerinti elérésével zárolhatja a bejövő forgalmat a virtuális gépekre, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, amikor szükséges. [További információk](just-in-time-explained.md).
 
@@ -46,13 +53,6 @@ Az Azure Defender for Servers szolgáltatáshoz biztosított fenyegetések észl
 - **Adaptív hálózat megerősítése (** NSG) – a hálózati biztonsági csoportok (-ek) alkalmazása az erőforrások felé irányuló és onnan érkező forgalom szűrésére, javítja a hálózat biztonsági helyzetét. Azonban továbbra is előfordulhatnak olyan esetek, amikor a NSG keresztül áramló tényleges forgalom a definiált NSG-szabályok részhalmaza. Ezekben az esetekben a NSG-szabályoknak a tényleges forgalmi minták alapján történő megerősítése révén a biztonsági helyzet további javítása is megvalósítható.
 
     Az adaptív hálózat megerősítése ajánlásokat biztosít a NSG-szabályok további megerősítéséhez. Egy gépi tanulási algoritmust használ, amely a tényleges forgalom, az ismert megbízható konfiguráció, a veszélyforrások felderítése és más, a biztonsággal kapcsolatos mutatók szempontjából tényezőket tartalmaz, és javaslatokat tesz arra, hogy csak adott IP-/port-rekordok származó forgalmat engedélyezzen. [További információk](security-center-adaptive-network-hardening.md).
-
-- **Integráció a Microsoft Defender komplex veszélyforrások elleni védelemmel (ATP) (csak Windows)** – az Azure Defender a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) szolgáltatással integrálható. Együttesen átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosítanak. [További információk](security-center-wdatp.md).
-
-    > [!IMPORTANT]
-    > A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
-
-    Ha a Microsoft Defender ATP fenyegetést észlel, riasztást indít el. A riasztás Security Center jelenik meg. A Security Center a Microsoft Defender ATP-konzolt is elvégezheti, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 - A **Docker-gazdagép megerősítése** – Azure Security Center azonosítja a IaaS Linux rendszerű virtuális gépeken üzemeltetett nem felügyelt tárolókat, illetve a Docker-tárolókat futtató más Linux-gépeket. Security Center folyamatosan elemzi a tárolók konfigurációit. Ezután összehasonlítja azokat a Center for Internet Security (CIS) Docker-teljesítményteszttel. Security Center tartalmazza a CIS Docker-teljesítményteszt teljes szabályait, és riasztást küld, ha a tárolók nem elégítik ki a vezérlőelemek egyikét sem. [További információk](harden-docker-hosts.md).
 

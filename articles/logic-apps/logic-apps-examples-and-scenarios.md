@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090280"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317379"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és útmutatók Azure Logic Apps
 
@@ -126,7 +126,7 @@ A Visual Studióval, az Azure DevOps vagy bármely más verziókövetés és aut
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>A tartalomtípusok, a konverziók és az átalakítások kezelése
 
-Több tartalomtípus elérését, átalakítását és átalakítását a Azure Logic Apps [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs)számos funkciója segítségével végezheti el. A karakterlánc, a JSON és az XML között például a `@json()` és a `@xml()` munkafolyamat kifejezéseket lehet konvertálni. A Logic Apps motor megőrzi a tartalomtípusokat, hogy a szolgáltatások között veszteségmentes módon támogassa a tartalom átvitelét.
+Több tartalomtípus elérését, átalakítását és átalakítását a Azure Logic Apps [munkafolyamat-definíciós nyelv](./logic-apps-workflow-definition-language.md)számos funkciója segítségével végezheti el. A karakterlánc, a JSON és az XML között például a `@json()` és a `@xml()` munkafolyamat kifejezéseket lehet konvertálni. A Logic Apps motor megőrzi a tartalomtípusokat, hogy a szolgáltatások között veszteségmentes módon támogassa a tartalom átvitelét.
 
 * A Azure Logic Apps, például a, és [a tartalomtípusok kezelése](../logic-apps/logic-apps-content-type.md) `application/` `application/octet-stream``multipart/formdata`
 * [A függvények kifejezésekben való használatát ismertető útmutató a Azure Logic Apps és az energiagazdálkodás automatizálásához](../logic-apps/workflow-definition-language-functions-reference.md)
@@ -153,7 +153,7 @@ A Azure Logic Apps számos szolgáltatással integrálható, például a Azure F
 
 Ismerje meg, hogy a Azure Logic Apps, valamint más Azure-szolgáltatások és Microsoft-termékek mellett a vállalatok az összetett folyamatok egyszerűsítésével, rendszerezésével, automatizálásával és előkészítésével javítsák a [vállalatuk](https://aka.ms/logic-apps-customer-stories) rugalmasságát és az alapvető üzleti tevékenységekre koncentrálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg [Logic apps összekötői](../connectors/apis-list.md)
 * Ismerkedjen meg a [B2B vállalati integrációs forgatókönyvekkel Azure Logic apps](../logic-apps/logic-apps-enterprise-integration-overview.md)

@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f687923f1185d848c2c4f2f40d949c71a7743d65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940632"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311128"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Az Azure arc használatára képes SQL felügyelt példány konfigurálása
 
@@ -22,11 +22,11 @@ Ez a cikk azt ismerteti, hogyan konfigurálható az Azure arc használatára ké
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="configure-resources-for-azure-arc-enabled-sql-managed-instance"></a>Erőforrások konfigurálása az Azure arc használatára képes SQL felügyelt példányhoz
+## <a name="configure-resources"></a>Erőforrások konfigurálása
 
-### <a name="configure-using-azdata"></a>Konfigurálás a azdata használatával
+### <a name="configure-using-azure-data-cli-azdata"></a>Konfigurálás a használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
-A parancssori felülettel szerkesztheti az Azure arc használatára képes SQL felügyelt példányok konfigurációját `azdata` . Az alábbi parancs futtatásával tekintheti meg a konfigurációs beállításokat. 
+Az Azure arc használatára képes SQL felügyelt példányok konfigurációját szerkesztheti a használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] . Az alábbi parancs futtatásával tekintheti meg a konfigurációs beállításokat. 
 
 ```
 azdata arc sql mi edit --help

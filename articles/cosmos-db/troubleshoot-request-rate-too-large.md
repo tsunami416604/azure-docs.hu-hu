@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f8b1129c94ecf80efb60a13a0b80b1cc1817ff3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 905560094afa9338d44ba73120d316b3c81b5580
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871088"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277147"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-exceptions"></a>Azure Cosmos DB kérelmek arányának diagnosztizálása és megoldása túl nagy kivételek
 A "kérési arány túl nagy" üzenet vagy hibakód 429 jelzi, hogy a kérések szabályozása folyamatban van.
@@ -24,7 +24,7 @@ A következő szakasz a túl sok kérelem ismert okait és megoldásait tartalma
 Az 429-es kivételek számának megtekintéséhez tekintse meg az [Azure Cosmos db figyelését](monitor-cosmos-db.md) .
 
 #### <a name="cause"></a>Ok:
-A felhasznált átviteli sebesség (kérési egység/másodperc) túllépte a [kiosztott átviteli sebességet](set-throughput.md). Az SDK automatikusan újrapróbálkozik a kérelmekkel a megadott újrapróbálkozási házirend alapján. Ha ez a hiba gyakran előfordul, érdemes lehet növelni az átviteli sebességet a gyűjteményen. Tekintse meg a portál metrikáit, és ellenőrizze, hogy van-e 429-es hiba. Tekintse át a partíciós kulcsot, és győződjön meg arról, hogy a [tárolók és a kérelmek mennyiségének egyenletes eloszlását](partition-data.md)eredményezi.
+A felhasznált átviteli sebesség (kérési egység/másodperc) túllépte a [kiosztott átviteli sebességet](set-throughput.md). Az SDK automatikusan újrapróbálkozik a kérelmekkel a megadott újrapróbálkozási házirend alapján. Ha ez a hiba gyakran előfordul, érdemes lehet növelni az átviteli sebességet a gyűjteményen. Tekintse meg a portál metrikáit, és ellenőrizze, hogy van-e 429-es hiba. Tekintse át a partíciós kulcsot, és győződjön meg arról, hogy a [tárolók és a kérelmek mennyiségének egyenletes eloszlását](partitioning-overview.md)eredményezi.
 
 #### <a name="solution"></a>Megoldás:
 1. A kiépített átviteli sebesség növeléséhez használja a [portált vagy az SDK](set-throughput.md) -t.

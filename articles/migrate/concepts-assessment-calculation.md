@@ -3,12 +3,12 @@ title: Azure VM-értékelések Azure Migrate Server Assessment-ben
 description: Tudnivalók a Azure Migrate Server Assessment értékeléséről
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275523"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319317"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure-beli virtuális gépekre)
 
@@ -54,7 +54,7 @@ Ha Azure Migrate berendezést helyez üzembe a helyszíni kiszolgálók felderí
 
 Miután a készülék megkezdte a számítógép-felderítést, összegyűjtheti azokat a gépeket, amelyeket fel szeretne mérni egy csoportba, és értékelést kell futtatnia a csoportnak az **Azure VM**értékelési típussal.
 
-Kövesse a [VMware](tutorial-prepare-vmware.md), a [Hyper-V](tutorial-prepare-hyper-v.md)vagy a [fizikai kiszolgálók](tutorial-prepare-physical.md) oktatóanyagait, hogy kipróbálja ezeket a lépéseket.
+Kövesse a [VMware](./tutorial-discover-vmware.md), a [Hyper-V](./tutorial-discover-hyper-v.md)vagy a [fizikai kiszolgálók](./tutorial-discover-physical.md) oktatóanyagait, hogy kipróbálja ezeket a lépéseket.
 
 ## <a name="how-do-i-assess-with-imported-data"></a>Hogyan az importált adattal való értékelést?
 
@@ -173,7 +173,7 @@ Windows Server 2012 R2 és minden SPs | Az Azure teljes körű támogatást bizt
 Windows Server 2012 és minden SPs | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-ra.
 Windows Server 2008 R2 minden SPs-vel | Az Azure teljes körű támogatást biztosít.| Készen áll az Azure-ra.
 Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-ra.
-Windows Server 2003 és Windows Server 2003 R2 | Ezek az operációs rendszerek átadták a támogatási dátumokat, és szükségük van egy [egyéni támogatási szerződésre (CSA)](https://aka.ms/WSosstatement) az Azure támogatásához. | Feltételesen készen áll az Azure-ra. Az Azure-ba való Migrálás előtt érdemes frissíteni az operációs rendszert.
+Windows Server 2003 és Windows Server 2003 R2 | Ezek az operációs rendszerek átadták a támogatási dátumokat, és szükségük van egy [egyéni támogatási szerződésre (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) az Azure támogatásához. | Feltételesen készen áll az Azure-ra. Az Azure-ba való Migrálás előtt érdemes frissíteni az operációs rendszert.
 Windows 2000, Windows 98, Windows 95, Windows NT, Windows 3,1 és MS-DOS | Ezek az operációs rendszerek átadták a támogatásuk befejezésének dátumát. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Feltételesen készen áll az Azure-ra. Javasoljuk, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
 Windows 7, Windows 8 és Windows 10 | Az Azure [csak a Visual Studio-előfizetések](../virtual-machines/windows/client-images.md) támogatását biztosítja. | Feltételesen készen áll az Azure-ra.
 Windows 10 Pro | Az Azure támogatást nyújt a több- [bérlős üzemeltetési jogosultságokhoz.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Feltételesen készen áll az Azure-ra.
@@ -297,6 +297,6 @@ A költségek az értékelési beállításokban megadott pénznemben jelennek m
 
 [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat. 
 
-- Ismerje meg a [VMWare virtuális gépek](tutorial-prepare-vmware.md), a [Hyper-V virtuális gépek](tutorial-prepare-hyper-v.md)és a [fizikai kiszolgálók](tutorial-prepare-physical.md)értékelésének futtatását.
-- Tudnivalók a [CSV-fájllal importált](tutorial-assess-import.md)kiszolgálók értékeléséről.
+- Ismerje meg a [VMWare virtuális gépek](./tutorial-discover-vmware.md), a [Hyper-V virtuális gépek](./tutorial-discover-hyper-v.md)és a [fizikai kiszolgálók](./tutorial-discover-physical.md)értékelésének futtatását.
+- Tudnivalók a [CSV-fájllal importált](./tutorial-discover-import.md)kiszolgálók értékeléséről.
 - További információ a [függőségi vizualizáció](concepts-dependency-visualization.md)beállításáról.

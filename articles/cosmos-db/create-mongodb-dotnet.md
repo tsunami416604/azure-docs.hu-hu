@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e041ed67513a9be79c45f9fb4d1658d9d44aeeac
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: bffaca9db9a6ecefc9870a2e39ba86640d70b945
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123079"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281721"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: .NET-Webalkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val 
 
@@ -27,7 +27,7 @@ ms.locfileid: "92123079"
 > * [Golang](create-mongodb-go.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Gyorsan létrehozhat és lekérdezheti a dokumentum-, kulcs/érték-és Graph-adatbázisokat, amelyek mindegyike kihasználja a globális elosztási és horizontális méretezési képességeket Cosmos DB középpontjában. 
+Azure Cosmos DB a Microsoft gyors NoSQL-adatbázisa, amely bármilyen méretű nyitott API-val rendelkezik. Gyorsan létrehozhat és lekérdezheti a dokumentum-, kulcs/érték-és Graph-adatbázisokat, amelyek mindegyike kihasználja a globális elosztási és horizontális méretezési képességeket Cosmos DB középpontjában. 
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Cosmos-fiókot [Azure Cosmos db API-MongoDB](mongodb-introduction.md). Ezután létrehozhatja és üzembe helyezheti a [MongoDB .net-illesztőprogram](https://docs.mongodb.com/ecosystem/drivers/csharp/)használatával létrehozott Feladatlista-webalkalmazást.
 

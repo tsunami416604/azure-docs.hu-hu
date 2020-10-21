@@ -9,12 +9,12 @@ ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: abd6d6379fba1efac20255ca97e66e6b2d7e72ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324408"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282375"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
 
@@ -50,7 +50,7 @@ Az összetett indexek segítségével egyszerre több mezőn rendezheti a művel
 
 `db.coll.find().sort({name:1,age:1})`
 
-Az előző összetett index használatával a lekérdezéseket az összes mező ellentétes rendezési sorrendjével is hatékonyan rendezheti. Bemutatunk egy példát:
+Az előző összetett index használatával a lekérdezéseket az összes mező ellentétes rendezési sorrendjével is hatékonyan rendezheti. Íme egy példa:
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -324,7 +324,7 @@ A **háttérbeli** index tulajdonsághoz megadott értéktől függetlenül az i
 
 Új index hozzáadásakor nincs hatása a rendelkezésre állás olvasására. A lekérdezések csak akkor használják az új indexeket, ha az index átalakítása befejeződött. Az index átalakítása során a lekérdezési motor továbbra is a meglévő indexeket fogja használni, így az indexelési módosítás megkezdése előtt meg kell figyelnie a hasonló olvasási teljesítményt az indexelési átalakítás során. Új indexek hozzáadásakor nem áll fenn a hiányos vagy inkonzisztens lekérdezési eredmények kockázata is.
 
-Az indexek eltávolításakor és a lekérdezések azonnali futtatásakor a szűrők az eldobott indexeken vannak, az eredmények inkonzisztensek lehetnek, és nem teljesek, amíg az index átalakítása be nem fejeződik. Ha eltávolítja az indexeket, a lekérdezési motor nem garantál konzisztens vagy teljes eredményt, amikor a lekérdezések szűrik ezeket az újonnan eltávolított indexeket. A legtöbb fejlesztő nem dobja el az indexeket, és azonnal megpróbálja lekérdezni őket, így a gyakorlatban ez a helyzet nem valószínű.
+Az indexek eltávolításakor és a lekérdezések azonnali futtatásakor a szűrők az eldobott indexeken vannak, az eredmények inkonzisztensek lehetnek, és nem teljesek, amíg az index átalakítása be nem fejeződik. Ha eltávolítja az indexeket, a lekérdezési motor nem biztosít konzisztens vagy teljes eredményt, amikor a lekérdezések szűrik ezeket az újonnan eltávolított indexeket. A legtöbb fejlesztő nem dobja el az indexeket, és azonnal megpróbálja lekérdezni őket, így a gyakorlatban ez a helyzet nem valószínű.
 
 > [!NOTE]
 > [Nyomon követheti az index előrehaladását](#track-index-progress).

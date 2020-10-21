@@ -9,25 +9,25 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1061cd7a37cbe9ce5ea360de22594d6eb4c0c2f5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569936"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275301"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring-adatv2](sql-api-sdk-java-spring-v2.md)
-> * [Spring-adatforrások v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-összekötő](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -232,7 +232,7 @@ Ez az eredeti Azure Cosmos DB Sync Java SDK v2 az SQL API-hoz, amely támogatja 
 * További élettartam (TTL) támogatása a dokumentumokhoz.
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* A [particionált gyűjtemények](partition-data.md) és a [felhasználó által definiált teljesítményszint](performance-levels.md)implementálva.
+* A [particionált gyűjtemények](partitioning-overview.md) és a [felhasználó által definiált teljesítményszint](performance-levels.md)implementálva.
 
 ### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * Javítva lett egy hiba a HashPartitionResolver-ben, hogy a endian a többi SDK-val konzisztensek legyenek.
@@ -260,10 +260,10 @@ Ez az eredeti Azure Cosmos DB Sync Java SDK v2 az SQL API-hoz, amely támogatja 
 
 ## <a name="release-and-retirement-dates"></a>Kiadási és nyugdíjazási dátumok
 
-A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
+A Microsoft legalább **12 hónappal** előre biztosít értesítést az SDK-k kivonásáról az újabb vagy támogatott verzióra való zökkenőmentes váltás érdekében. Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
 
 > [!WARNING]
-> A 2020. május 30. után Azure Cosmos DB a továbbiakban nem javít hibajavításokat, új funkciókat adhat hozzá, és támogatást nyújt a Azure Cosmos DB Java SDK for SQL API-hoz tartozó 1. x verzióhoz. Ha nem szeretné frissíteni, az SDK 1. x verziójában küldött kérelmeket a Azure Cosmos DB szolgáltatás továbbra is kiszolgálja.
+> A 2020. május 30. után Azure Cosmos DB a továbbiakban nem javít hibajavításokat, új funkciókat adhat hozzá, és támogatást nyújt a Azure Cosmos DB Java SDK for SQL API-hoz tartozó 1. x verzióhoz. Ha nem szeretné frissíteni, az SDK 1.x-es verziójából küldött kéréseket továbbra is kiszolgálja az Azure Cosmos DB szolgáltatás.
 >
 > A 2016. február 29. után Azure Cosmos DB többé nem javít hibajavításokat, új funkciókat adhat hozzá, és támogatást nyújt a Azure Cosmos DB Java SDK for SQL API-hoz. Ha nem szeretné frissíteni, az SDK 0. x verziójában küldött kérelmeket a Azure Cosmos DB szolgáltatás továbbra is kiszolgálja.
 
@@ -330,5 +330,5 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.
+A Cosmos DB-ről a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás oldalán tekinthet meg további információt.
 

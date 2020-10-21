@@ -3,18 +3,18 @@ title: Virtuálisgép-méretezési csoport kiterjesztésének hozzáadása egy S
 description: A virtuálisgép-méretezési csoport bővítményének egy Service Fabric felügyelt fürtcsomópont-típussal való hozzáadásának módja
 ms.topic: article
 ms.date: 09/28/2020
-ms.openlocfilehash: 10487bad4fce41c68b4e2cb90c311b986d709eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be51a03494c90ba91cddb383b62b2477fabc8fc3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410319"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309282"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>Virtuálisgép-méretezési csoport kiterjesztésének hozzáadása egy Service Fabric felügyelt fürtcsomópont-típushoz (előzetes verzió)
 
 Egy Service Fabric felügyelt fürt mindegyik csomópont-típusát egy virtuálisgép-méretezési csoport támogatja. Ez lehetővé teszi a [virtuálisgép-méretezési csoport bővítményeinek](../virtual-machines/extensions/overview.md) hozzáadását a Service Fabric felügyelt fürtcsomópontok típusaihoz.
 
-Az [Add-AzServiceFabricManagedNodeTypeVMExtension](https://docs.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension?view=azps-4.7.0&preserve-view=true) PowerShell-paranccsal hozzáadhat egy virtuálisgép-méretezési csoport kiterjesztését egy csomópont-típushoz.
+Az [Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension?preserve-view=true&view=azps-4.7.0) PowerShell-paranccsal hozzáadhat egy virtuálisgép-méretezési csoport kiterjesztését egy csomópont-típushoz.
 
 Másik lehetőségként egy virtuálisgép-méretezési csoport bővítményt is használhat Service Fabric felügyelt fürtcsomópont-típushoz a Azure Resource Manager-sablonban, például:
 
@@ -51,7 +51,7 @@ Másik lehetőségként egy virtuálisgép-méretezési csoport bővítményt is
 }
 ```
 
-Service Fabric felügyelt fürtcsomópontok típusának konfigurálásával kapcsolatos további információkért lásd: [felügyelt fürtcsomópont típusa](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes).
+Service Fabric felügyelt fürtcsomópontok típusának konfigurálásával kapcsolatos további információkért lásd: [felügyelt fürtcsomópont típusa](/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes).
 
 ## <a name="next-steps"></a>Következő lépések
 
