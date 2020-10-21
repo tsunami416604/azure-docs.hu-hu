@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600500"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308946"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználók szervizelése az Azure Active Directory portálon
 
@@ -60,7 +60,7 @@ A kockázati jelentésekhez **megjelölt felhasználók** elérése a Microsoft 
 Végezze el a következő műveleteket az érintett fiókok javításához és a környezet biztonságossá tételéhez:
 
 1.  A többtényezős hitelesítés és az önkiszolgáló jelszó-visszaállítás [helyes adatainak ellenőrzése](https://aka.ms/MFAValid) . 
-2.  [Engedélyezze a többtényezős hitelesítést](https://aka.ms/MFAuth) az összes felhasználó számára. 
+2.  [Engedélyezze a többtényezős hitelesítést](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication) az összes felhasználó számára. 
 3.  Használja ezt a [szervizelési parancsfájlt](https://aka.ms/remediate) minden érintett fiókhoz, hogy automatikusan végrehajtsa a következő lépéseket: 
 
     a. Jelszó alaphelyzetbe állítása a fiók biztonságossá tételéhez és az aktív munkamenetek megöléséhez.
@@ -85,8 +85,8 @@ Végezze el a következő műveleteket az érintett fiókok javításához és a
 
 Ezenkívül el a következőket kell elvégeznie:
 
-- Olvassa el és implementálja ezt az [útmutatót a szokatlan tevékenységek kezeléséhez](https://aka.ms/fixaccount). 
-- [A naplózási folyamat lehetővé teszi](https://aka.ms/improvesecurity) a tevékenység elemzését a bérlőben. Ha elkészült, a naplózási tároló megkezdi a tevékenységek naplóinak feltöltését. Ezen a ponton a [biztonsági és megfelelőségi központ keresési és vizsgálati erőforrásait](https://aka.ms/sccsearch)is kihasználhatja. 
+- Olvassa el és implementálja ezt az [útmutatót a szokatlan tevékenységek kezeléséhez](/archive/blogs/office365security/how-to-fix-a-compromised-hacked-microsoft-office-365-account). 
+- [A naplózási folyamat lehetővé teszi](/archive/blogs/office365security/using-office-365-activity-data-to-improve-your-cybersecurity-stance-and-capability) a tevékenység elemzését a bérlőben. Ha elkészült, a naplózási tároló megkezdi a tevékenységek naplóinak feltöltését. Ezen a ponton a [biztonsági és megfelelőségi központ keresési és vizsgálati erőforrásait](https://aka.ms/sccsearch)is kihasználhatja. 
 - Tekintse át az összes postafiók engedélyek delegálásával és levelek továbbításával kapcsolatos szabályait. Ezzel a [PowerShell-szkripttel](https://aka.ms/delegateforwardrules) végezheti el ezt a feladatot. 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32d0ebc3f37f7af4d9cdb1940f1870dbf51f86b4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206131"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279002"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-példaszkriptek
 
@@ -21,6 +21,9 @@ Az Azure távoli renderelés a következő két REST API-t biztosítja:
 - [Munkamenet-REST API](../how-tos/session-rest-api.md)
 
 Az [ARR Samples adattár](https://github.com/Azure/azure-remote-rendering) a *parancsfájlokat* tartalmazó mappában található minta parancsfájlokat tartalmaz a szolgáltatás REST API-kkal való interakcióhoz. Ez a cikk a használatuk leírását ismerteti.
+
+> [!TIP]
+> Létezik egy [ARRT nevű UI-alapú eszköz](azure-remote-rendering-asset-tool.md) is a szolgáltatással való kommunikációhoz, amely kényelmes alternatíva a parancsfájlok használatával. ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT képernyőkép")
 
 > [!CAUTION]
 > Ha a REST API függvények hívása túl gyakran fordul elő, a kiszolgáló leszabályozását és a hibák visszaadását eredményezi. Ebben az esetben a HTTP-hibakód azonosítója 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
@@ -46,7 +49,7 @@ A minta szkriptek végrehajtásához a [Azure PowerShell](/powershell/azure/)fun
     > [!NOTE]
     > Ha a szervezet egynél több előfizetéssel rendelkezik, lehet, hogy meg kell adnia a SubscriptionId és a bérlői argumentumokat. A részletek a [AzAccount dokumentációjában](/powershell/module/az.accounts/connect-azaccount)találhatók.
 
-1. Töltse le a *Scripts* mappát az [Azure távoli renderelési GithHub adattárból](https://github.com/Azure/azure-remote-rendering).
+1. Töltse le a *Scripts* mappát az [Azure távoli renderelés GitHub-adattárból](https://github.com/Azure/azure-remote-rendering).
 
 ## <a name="configuration-file"></a>Konfigurációs fájl
 

@@ -12,23 +12,23 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f278f0713280dde27d6c3892b4d1f1557d17ecb4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d38f10e5a4f2562825ed2374317602b0640894ae
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215943"
+ms.locfileid: "92275874"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Oktatóanyag: webalkalmazás regisztrálása a Azure Active Directory B2Cban
 
 Az [alkalmazások](application-types.md) Azure Active Directory B2C (Azure ad B2C) való interakció előtt regisztrálni kell őket egy Ön által kezelt bérlőben. Ez az oktatóanyag bemutatja, hogyan regisztrálhat egy webalkalmazást a Azure Portal használatával. 
 
-A "webalkalmazás" egy hagyományos webalkalmazásra hivatkozik, amely a kiszolgálón a legtöbb alkalmazás logikáját végrehajtja. Ezeket olyan keretrendszerekkel lehet felépíteni, mint például a ASP.NET Core, a Maven (Java), a lombik (Python) és az Express (Node.js).
+A "webalkalmazás" egy hagyományos webalkalmazásra hivatkozik, amely a kiszolgálón futtatja a legtöbb alkalmazás-logikát. Ezeket olyan keretrendszerekkel lehet felépíteni, mint például a ASP.NET Core, a Maven (Java), a lombik (Python) és az Express (Node.js).
 
 > [!IMPORTANT]
-> Ha egy **egyoldalas alkalmazást ("Spa")** használ helyette (például szögletes, Vue vagy reakciót használ), Ismerje meg, [Hogyan regisztrálhat egy egyoldalas alkalmazást](tutorial-register-spa.md).
+> Ha egy egyoldalas alkalmazást ("SPA") használ helyette (például szögletes, Vue vagy reakciót használ), Ismerje meg, [Hogyan regisztrálhat egy egyoldalas alkalmazást](tutorial-register-spa.md).
 > 
-> Ha inkább **natív alkalmazást** használ (például iOS, Android, Mobile & Desktop), Ismerje meg, [Hogyan regisztrálhat egy natív ügyfélalkalmazás](add-native-application.md).
+> Ha inkább natív alkalmazást használ (például iOS, Android, Mobile & Desktop), Ismerje meg, [Hogyan regisztrálhat egy natív ügyfélalkalmazás](add-native-application.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -67,13 +67,11 @@ Ha webalkalmazást szeretne regisztrálni a Azure AD B2C-bérlőben, használhat
 1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 1. Adjon nevet az alkalmazásnak. Például: *webapp1*.
 1. A **Web App/web API belefoglalásához**válassza az **Igen**lehetőséget.
-1. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Beállíthatja például, hogy a helyi figyelést a következő időpontban: `https://localhost:44316` . Ha még nem ismeri a portszámot, megadhat egy helyőrző értéket, és később módosíthatja azt.
+1. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Beállíthatja például, hogy a helyi figyelést a következő időpontban: `http://localhost:5000` . A regisztrált alkalmazásokban bármikor hozzáadhat és módosíthat átirányítási URI-ket.
 
-    Az oktatóanyaghoz hasonló tesztelési célokra beállíthatja, hogy a rendszer `https://jwt.ms` megjelenítse a token tartalmát a vizsgálathoz. Ebben az oktatóanyagban állítsa be a **Válasz URL-címét** a következőre: `https://jwt.ms` .
+    Az átirányítási URI-k esetében a következő korlátozások érvényesek:
 
-    A válasz URL-címekre a következő korlátozások vonatkoznak:
-
-    * A válasz URL-címnek a sémával kell kezdődnie `https` .
+    * A válasz URL-címének a sémával kell kezdődnie `https` , hacsak nem használja `localhost` .
     * A válasz URL-címe megkülönbözteti a kis-és nagybetűket. Az esetnek egyeznie kell a futó alkalmazás URL-címének elérési útjával. Ha például az alkalmazás az elérési út részeként szerepel `.../abc/response-oidc` , ne adja meg `.../ABC/response-oidc` a válasz URL-címét. Mivel a webböngésző a kis-és nagybetűket megkülönböztető módon kezeli az elérési utakat, a hozzájuk társított cookie-k `.../abc/response-oidc` kizárható, ha a rendszer átirányítja a kis-és nagybetűket `.../ABC/response-oidc` .
 
 1. Válassza a **Létrehozás** lehetőséget az alkalmazás regisztrációjának befejezéséhez.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b49e6fc45a84f600131f571d1305c8160ddb1d21
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145973"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282260"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -83,7 +83,7 @@ await client.CreateEventRoute("routeName", er);
 
 1. Először létrejön egy `EventRoute` objektum, és a konstruktor a végpont nevét veszi át. Ez a `endpointName` mező egy végpontot azonosít, például egy Event hub, Event Grid vagy Service Bus. Ezeket a végpontokat az előfizetésében kell létrehoznia, és az Azure Digital Twins-hoz kell csatolni a vezérlési sík API-kkal a regisztrációs hívás előtt.
 
-2. Az Event Route objektumhoz tartozik egy [**szűrő**](./how-to-manage-routes-apis-cli.md#filter-events) mező is, amely az útvonalat követő események típusának korlátozására használható. A szűrője `true` lehetővé teszi az útvonal további szűrés nélküli használatát (a szűrő `false` letiltja az útvonalat). 
+2. Az Event Route objektumhoz tartozik egy [**szűrő**](how-to-manage-routes-apis-cli.md#filter-events) mező is, amely az útvonalat követő események típusának korlátozására használható. A szűrője `true` lehetővé teszi az útvonal további szűrés nélküli használatát (a szűrő `false` letiltja az útvonalat). 
 
 3. Ekkor a rendszer átadja ezt az esemény `CreateEventRoute` -útválasztási objektumot, valamint az útvonal nevét.
 
@@ -93,18 +93,19 @@ await client.CreateEventRoute("routeName", er);
 Az útvonalakat az [Azure Digital Twins CLI](how-to-use-cli.md)használatával is létrehozhatja.
 
 ## <a name="dead-letter-events"></a>Kézbesítetlen levelek eseményei
+
 Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek**nevezzük. Az Azure Digital Twins egy eseményt fog kézbesíteni, ha teljesülnek **az alábbi feltételek valamelyike** . 
 
-- Az esemény nem az adott időszakon belül érkezik
-- Az esemény kézbesítésére tett kísérletek száma túllépte a korlátot
+* Az esemény nem az adott időszakon belül érkezik
+* Az esemény kézbesítésére tett kísérletek száma túllépte a korlátot
 
-Ha a feltételek bármelyike teljesül, az esemény eldobása vagy elutasítása nem történik meg.  Alapértelmezés szerint az egyes végpontok **nem** kapcsolják be a kézbesítetlen betűket. Ennek engedélyezéséhez meg kell adnia egy Storage-fiókot, amely a végpont létrehozásakor a nem kézbesítési eseményeket fogja tárolni. A kézbesítések feloldásához le kell kérnie az eseményeket ebből a Storage-fiókból.
+Ha a feltételek bármelyike teljesül, az esemény eldobása vagy elutasítása nem történik meg. Alapértelmezés szerint az egyes végpontok **nem** kapcsolják be a kézbesítetlen betűket. Ennek engedélyezéséhez meg kell adnia egy Storage-fiókot, amely a végpont létrehozásakor a nem kézbesítési eseményeket fogja tárolni. Ezután lehívhatja az eseményeket ebből a Storage-fiókból a kézbesítés feloldásához.
 
 A kézbesítetlen levelek helyének beállítása előtt egy tárolóval rendelkező Storage-fiókkal kell rendelkeznie. Adja meg a tároló URL-címét a végpont létrehozásakor. A kézbesítetlen levél egy SAS-tokent tároló URL-ként van megadva. A jogkivonat csak a `write` Storage-fiókban lévő cél tárolóra vonatkozó engedélyre van szüksége. A teljesen formázott URL-cím a (z) formátumban jelenik meg: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
 További információ az SAS-tokenekről: [ *korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
-A következő témakörből megtudhatja, hogyan állíthat be egy kézbesítetlen levelet [*: hogyan kezelheti a végpontokat és az útvonalakat az Azure digitális Twins (API-k és parancssori felület)*](./how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)használatával.
+A következő témakörben megtudhatja, hogyan állíthatja be a végpontokat a kézbesítetlen üzenetek használatával [*: hogyan kezelheti a végpontokat és az útvonalakat az Azure digitális ikrekben (API-k és parancssori felület)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 
 ### <a name="types-of-event-messages"></a>Az esemény típusú üzenetek típusai
 

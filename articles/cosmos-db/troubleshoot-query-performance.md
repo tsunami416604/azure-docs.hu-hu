@@ -4,27 +4,27 @@ description: Ismerje meg, hogyan azonosíthatja, diagnosztizálhatja és elhár�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 09/12/2020
+ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089989"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277165"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
 
-Ez a cikk részletesen ismerteti a Azure Cosmos DB-lekérdezések hibaelhárításának általános javasolt megközelítését. Habár nem veszi figyelembe a jelen cikkben ismertetett lépéseket a lehetséges lekérdezési problémákkal kapcsolatos teljes körű védekezéssel, a leggyakoribb teljesítménybeli tippeket is itt találja. Ezt a cikket az Azure Cosmos DB Core (SQL) API lassú vagy költséges lekérdezéseinek kezdeti hibaelhárításához érdemes használni. A [diagnosztikai naplókat](cosmosdb-monitor-resource-logs.md) is használhatja a lassú vagy jelentős mennyiségű átviteli sebességet használó lekérdezések azonosítására.
+Ez a cikk részletesen ismerteti a Azure Cosmos DB-lekérdezések hibaelhárításának általános javasolt megközelítését. Habár nem veszi figyelembe a jelen cikkben ismertetett lépéseket a lehetséges lekérdezési problémákkal kapcsolatos teljes körű védekezéssel, a leggyakoribb teljesítménybeli tippeket is itt találja. Ezt a cikket az Azure Cosmos DB Core (SQL) API lassú vagy költséges lekérdezéseinek kezdeti hibaelhárításához érdemes használni. A [diagnosztikai naplókat](cosmosdb-monitor-resource-logs.md) is használhatja a lassú vagy jelentős mennyiségű átviteli sebességet használó lekérdezések azonosítására. Ha a MongoDB Azure Cosmos DB API-ját használja, használja a [Azure Cosmos db API-ját a MongoDB-lekérdezés hibaelhárítási útmutatója](mongodb-troubleshoot-query.md)
 
-A lekérdezési optimalizálásokat széles körben kategorizálhatja Azure Cosmos DBban:
+A Azure Cosmos DB lekérdezési optimalizálásait az alábbiak szerint széles körben kategorizáljuk:
 
 - Optimalizálások, amelyek csökkentik a lekérdezésre vonatkozó kérési egység (RU) díját
 - Optimalizálások, amelyek csak csökkentik a késést
 
-Ha csökkenti egy lekérdezés RU-díját, szinte biztosan csökkenti a késést is.
+Ha csökkenti egy lekérdezés RU-díját, általában a késést is csökkenti.
 
 Ez a cikk példákat tartalmaz, amelyeket újra létrehozhat a [táplálkozási adatkészlet](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)használatával.
 
@@ -191,7 +191,7 @@ Frissített indexelési házirend:
 
 **Ru díj:** 2,98 RUs
 
-Az indexelési házirendhez bármikor hozzáadhat tulajdonságokat, az írási rendelkezésre állásra és a teljesítményre gyakorolt hatás nélkül. Ha új tulajdonságot ad hozzá az indexhez, a tulajdonságot használó lekérdezések azonnal az új elérhető indexet fogják használni. A lekérdezés az új indexet fogja használni a létrehozás során. Így előfordulhat, hogy a lekérdezési eredmények inkonzisztensek, amíg az index újraépítése folyamatban van. Ha egy új tulajdonság indexelve van, a rendszer csak a meglévő indexeket használó lekérdezéseket fogja érinteni az index újraépítése során. [Nyomon követheti az index átalakításának folyamatát](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Az indexelési házirendhez bármikor hozzáadhat tulajdonságokat, és nincs hatással az írási vagy olvasási rendelkezésre állásra. [Nyomon követheti az index átalakításának folyamatát](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Az indexet használó rendszerfunkciók ismertetése
 
@@ -469,7 +469,7 @@ Itt látható a kapcsolódó összetett index:
 
 ## <a name="optimizations-that-reduce-query-latency"></a>A lekérdezés késését csökkentő optimalizálások
 
-Sok esetben az RU-díj akkor lehet elfogadható, ha a lekérdezés késése még mindig túl magas. A következő részekben áttekintheti a lekérdezések késésének csökkentéséhez szükséges tippeket. Ha ugyanazzal a lekérdezéssel többször is futtatja ugyanazt az adatkészletet, akkor minden alkalommal ugyanazzal az RU-díjjal fog rendelkezni. A lekérdezési késések azonban eltérőek lehetnek a lekérdezés végrehajtása során.
+Sok esetben az RU-díj akkor lehet elfogadható, ha a lekérdezés késése még mindig túl magas. A következő részekben áttekintheti a lekérdezések késésének csökkentéséhez szükséges tippeket. Ha ugyanazzal a lekérdezéssel többször is futtatja ugyanazt az adatkészletet, akkor a rendszer általában minden alkalommal ugyanazzal az RU-díjjal fog rendelkezni. A lekérdezési késések azonban eltérőek lehetnek a lekérdezés végrehajtása során.
 
 ### <a name="improve-proximity"></a>A közelség javítása
 

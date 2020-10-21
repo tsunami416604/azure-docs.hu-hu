@@ -12,17 +12,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/24/2020
+ms.date: 10/20/2020
 ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51f9043dcf329e4f3f23ddb930e53cfdfa2f107a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78871441fe7f9b0f6d02cdf6f05b97933abfca54
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631647"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275646"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 
@@ -42,7 +42,7 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
 | A kimenő forgalom TLS-ellenőrzése szűrve vagy Letiltva | Előfordulhat, hogy az ügynök regisztrációs lépése vagy az adatfeltöltés művelete sikertelen lehet, ha a hálózati réteg kimenő forgalmának TLS-ellenőrzése vagy leállítása történik. További információ a [TLS-ellenőrzés beállításáról](/previous-versions/tn-archive/ee796230(v=technet.10)) |
 | Az ügynököt futtató kiszolgáló tűzfalportjai |Az ügynök a következőt tűzfalportok megnyitását igényli, hogy kommunikálhasson az Azure AD Health szolgáltatásvégpontjaival.<br /><br /><li>443-as TCP-port</li><li>5671-es TCP-port</li> <br />Vegye figyelembe, hogy az ügynök legújabb verziójához a 5671-es portra már nincs szükség. Frissítsen a legújabb verzióra, így csak a 443-es port szükséges. További információ a [tűzfalportok engedélyezéséről](/previous-versions/sql/sql-server-2008/ms345310(v=sql.100)) |
 | Az alábbi webhelyek engedélyezése, amennyiben az Internet Explorer - Fokozott biztonsági beállítások be van kapcsolva |Amennyiben az Internet Explorer – Fokozott biztonsági beállítások be van kapcsolva, az alábbi webhelyeket engedélyezni kell azon a kiszolgálón, amelyiken az ügynök telepítve lesz.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \/ /aadcdn.msftauth.net</li><li>A szervezet Azure Active Directory által megbízhatóként megjelölt összevonási kiszolgálója. Például: https:\//sts.contoso.com</li> További információ az [IE konfigurálásáról](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Ha a hálózaton belül van proxyja, tekintse meg az alábbi megjegyzést.|
-| Gondoskodjon arról, hogy a gépen a PowerShell 4.0-s vagy újabb verziója legyen telepítve | <li>A Windows Server 2008 R2 a PowerShell 2.0-t tartalmazza, amely nem megfelelő az ügynök számára. Információk a PowerShell frissítéséről: [Ügynökök telepítése Windows Server 2008 R2 kiszolgálókon](#agent-installation-on-windows-server-2008-r2-servers).</li><li>A Windows Server 2012 a PowerShell 3.0-t tartalmazza, amely nem megfelelő az ügynök számára.</li><li>A Windows Server 2012 R2 és az annál újabb változatok már a PowerShell megfelelően új verzióját tartalmazzák.</li>|
+| Gondoskodjon arról, hogy a gépen a PowerShell 4.0-s vagy újabb verziója legyen telepítve | <li>A Windows Server 2012 a PowerShell 3.0-t tartalmazza, amely nem megfelelő az ügynök számára.</li><li>A Windows Server 2012 R2 és az annál újabb változatok már a PowerShell megfelelően új verzióját tartalmazzák.</li>|
 |A FIPS letiltása|Az Azure AD Connect Health-ügynökök nem támogatják a FIPS-t.|
 
 > [!IMPORTANT]
@@ -111,17 +111,6 @@ Az ügynök telepítésének ellenőrzéséhez keresse meg a következő szolgá
 
 ![Azure AD Connect Health AD FS Services](./media/how-to-connect-health-agent-install/install5.png)
 
-### <a name="agent-installation-on-windows-server-2008-r2-servers"></a>Ügynökök telepítése Windows Server 2008 R2 kiszolgálókon
-
-Windows Server 2008 R2 kiszolgálók esetén végezze el a következő lépéseket:
-
-1. Győződjön meg arról, hogy a kiszolgálón az 1. vagy annál magasabb szervizcsomag fut.
-2. Az ügynök telepítéséhez kapcsolja ki az Internet Explorer - Fokozott biztonsági beállításokat:
-3. Telepítse a Windows PowerShell 4.0 szolgáltatást mindegyik kiszolgálón az AD Health-ügynök telepítése előtt. A Windows PowerShell 4.0 telepítése:
-   * Telepítse a [Microsoft .NET keretrendszer 4.5-ös verzióját](https://www.microsoft.com/download/details.aspx?id=40779) az alábbi hivatkozás segítségével, ahonnan letöltheti az offline telepítőt.
-   * Telepítse a PowerShell ISE-t (a Windows-szolgáltatásokból)
-   * Telepítse az Internet Explorer 10-es vagy újabb verzióját a kiszolgálón. (Ez szükséges ahhoz, hogy a Health Service el tudja végezni a hitelesítést az Ön Azure-rendszergazdai hitelesítő adataival.)
-4. A Windows PowerShell 4.0 a Windows Server 2008 R2 rendszeren való telepítésével kapcsolatos további információkért lásd a wikicikket [itt](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx).
 
 ### <a name="enable-auditing-for-ad-fs"></a>AD FS-naplózás engedélyezése
 
@@ -130,20 +119,6 @@ Windows Server 2008 R2 kiszolgálók esetén végezze el a következő lépések
 >
 
 Annak érdekében, hogy a használatelemzés szolgáltatás adatokat gyűjthessen és elemezhessen, az Azure AD Connect Health-ügynöknek szüksége van az AD FS-naplókra. Ezek a naplók alapértelmezés szerint nincsenek bekapcsolva. Az AD FS-naplózás engedélyezéséhez és az AD FS-naplók helyének meghatározásához az AD FS-kiszolgálókon, kövesse az alábbi lépéseket.
-
-#### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>Az AD FS naplózásának engedélyezése Windows Server 2008 R2 rendszeren
-
-1. Kattintson a **Start** gombra, mutasson a **Programok**, majd a **Felügyeleti eszközök** pontra, végül kattintson a **Helyi biztonsági házirend** parancsra.
-2. Lépjen a **Biztonsági beállítások\Helyi házirendek\Felhasználói jogosultságok kiosztása** mappára, majd kattintson duplán a **Biztonsági naplózás létrehozása** elemre.
-3. A **Helyi biztonsági beállítások** lapon ellenőrizze, hogy az AD FS 2.0 szolgáltatásfiók szerepel-e a listában. Ha nincs a listában, a **Felhasználó vagy csoport hozzáadása** gombra kattintva adja hozzá, majd kattintson az **OK** gombra.
-4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot: <code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
-5. Zárja be a **Helyi biztonsági házirend** lapot.
-<br />   -- **Az alábbi lépések csak elsődleges AD FS-kiszolgálók esetén szükségesek.** -- <br />
-6. Nyissa meg az **AD FS kezelő** beépülő modulját. Az AD FS kezelő beépülő moduljának megnyitásához kattintson a **Start** gombra, mutasson a **Programok**, majd a **Felügyeleti eszközök** pontra, végül kattintson az **AD FS 2.0 kezelő** parancsra.
-7. A **Műveletek** panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
-8. A **összevonási szolgáltatás tulajdonságai** párbeszédpanelen kattintson az **események** fülre.
-9. Jelölje be a **Sikernaplók** és a **Hibanaplók** jelölőnégyzeteket.
-10. Kattintson az **OK** gombra.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Az AD FS naplózásának engedélyezése Windows Server 2012 R2 rendszeren
 

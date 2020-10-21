@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6c890e9fbda316bfa7f5f3a42572f35ca73811ea
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c74535b8cf11ec4beb413654bdddedb5ba847eea
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931801"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275535"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a kereskedelmi piactéren
 
@@ -683,7 +683,7 @@ Ha a következő türelmi időszakon belül megszakít egy előfizetést, a rend
 
 Az ügyfél számlázása akkor történik meg, ha a fenti türelmi időszak után megszakítják az előfizetést.  Ha a lemondás sikeres, az ügyfél azonnal elveszíti a Microsoft oldalán lévő SaaS-előfizetéshez való hozzáférést.
 
-##### <a name="deletehttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Törlés`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="deletehttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Törlése`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -953,11 +953,11 @@ A közzétevőnek be kell vezetnie egy webhookot az SaaS-szolgáltatásban, hogy
 
 A fejlesztési folyamat elindításához javasoljuk, hogy hozzon létre dummy API-válaszokat a közzétevő oldalon.  Ezek a válaszok a jelen dokumentumban megadott válaszok alapján is alapulhatnak.
 
-Ha a közzétevő készen áll a végpontok közötti tesztelésre: 
+Ha a közzétevő készen áll a végpontok közötti tesztelésre:
 
 * Egy SaaS-ajánlat közzététele egy korlátozott előzetes verzióban, és megtarthatja az előzetes verziót.
-* Ebben az ajánlatban 0 árat kell tervezni, így nem kell a tényleges számlázási költségeket kiváltani a tesztelés során.  Egy másik lehetőség, hogy nem nulla értékű árat állít be, és 24 órán belül megszakítja az összes teszt beszerzését. 
-* Győződjön meg arról, hogy az összes folyamat véget ért a végpontig, ugyanúgy, mint amikor az ügyfél megvásárolja az ajánlatot. 
+* Ebben az ajánlatban 0 árat kell tervezni, így nem kell a tényleges számlázási költségeket kiváltani a tesztelés során.  Egy másik lehetőség, hogy nem nulla értékű árat állít be, és 24 órán belül megszakítja az összes teszt beszerzését.
+* Győződjön meg arról, hogy az összes folyamat véget ért a végpontig, ugyanúgy, mint amikor az ügyfél megvásárolja az ajánlatot.
 * Ha a partner a teljes vásárlási és számlázási folyamatot szeretné tesztelni, ezt a $0-nál magasabb áron kínáljuk.  A vásárlás után a számlázás után létrejön egy számla.
 
 A vásárlás folyamata az ajánlat közzétételének helyétől függően Azure Portal vagy Microsoft AppSource helyekről indítható el.
@@ -966,8 +966,7 @@ A *terv módosítása*, a *mennyiség módosítása*és a *leiratkozási* művel
 
 ## <a name="get-support"></a>Támogatás kérése
 
-A kiadói támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](support.md) .
-
+A kiadói támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](../support.md) .
 
 ## <a name="next-steps"></a>Következő lépések
 

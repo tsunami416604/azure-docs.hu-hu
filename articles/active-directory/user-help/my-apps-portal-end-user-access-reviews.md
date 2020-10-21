@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbea4ef39b970f667c5dddec52f56a428d401f65
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798023"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277460"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Hozzáférési felülvizsgálat végrehajtása a saját alkalmazások portálján
 
@@ -45,7 +45,7 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
-    ![Alkalmazások lap a saját alkalmazások portálon](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Alkalmazások lap a saját alkalmazások portálon](media/my-apps-portal/my-apps-home.png)
 
 3. Válassza a **hozzáférési felülvizsgálatok** csempét a jóváhagyásra váró hozzáférési felülvizsgálatok listájának megtekintéséhez.
 
@@ -73,7 +73,7 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
     >[!Note]
     >A hozzáférését bármikor módosíthatja, amíg a hozzáférési felülvizsgálati időszak véget nem ér. Ha eltávolít egy alkalmazáshoz vagy csoporthoz való hozzáférését, azt nem távolítja el azonnal. Az eltávolítás akkor történik meg, amikor a hozzáférési felülvizsgálati időszak véget ér, vagy amikor a rendszergazda bezárja a felülvizsgálatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások elérése és használata a saját alkalmazások portálján](my-apps-portal-end-user-access.md)
 - [Profilinformációk módosítása](my-apps-portal-end-user-update-profile.md)

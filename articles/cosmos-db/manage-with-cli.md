@@ -4,14 +4,14 @@ description: Azure Cosmos DB Core (SQL) API-erőforrások kezelése az Azure CLI
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 631dd3242e695a1e7872a4b078ab3f9761591c56
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840591"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277771"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure Cosmos Core-(SQL-) API-erőforrások kezelése az Azure CLI-vel
 
@@ -20,6 +20,8 @@ Az alábbi útmutató az Azure Cosmos DB-fiókok, -adatbázisok és -tárolók f
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.12.1 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+
+Azure CLI-minták más API-khoz lásd: [CLI-minták a Cassandra](cli-samples-cassandra.md), CLI-minták a [MongoDB API](cli-samples-mongodb.md)-hoz, CLI-minták a [Gremlin](cli-samples-gremlin.md), CLI-minták [táblázathoz](cli-samples-table.md)
 
 > [!IMPORTANT]
 > Azure Cosmos DB erőforrásokat nem lehet átnevezni, mivel ez megsérti, hogyan működik az Azure Resource Manager erőforrás-URI-k.

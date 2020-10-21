@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320051"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280449"
 ---
 # <a name="managed-application-metered-billing"></a>Felügyelt alkalmazás mért számlázása 
 
@@ -67,7 +67,7 @@ A számlázási dimenziók az ajánlat minden csomagjában meg vannak osztva. Eg
 A dimenziót definiáló attribútumok az ajánlat minden csomagjában meg vannak osztva. Mielőtt közzéteszi az ajánlatot, az ezen attribútumok bármely csomag kontextusában történt módosítása hatással lesz az összes csomag dimenziójának meghatározására. Miután közzétette az ajánlatot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
 
 * Azonosító
-* Name (Név)
+* Name
 * Mértékegység
 
 A dimenziók egyéb attribútumai az egyes csomagokra jellemzőek, és a tervtől eltérő értékekkel rendelkezhetnek.  A terv közzététele előtt módosíthatja ezeket az értékeket, és csak ezt a csomagot fogja érinteni. Miután közzétette a csomagot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
@@ -93,7 +93,7 @@ A Marketplace-mérési szolgáltatással használt dimenzió azt mutatja be, hog
 Ha egy ajánlatot közzétesznek egy dimenzióval, az adott dimenzióra vonatkozó ajánlati szintű adatok már nem módosíthatók:
 
 * Azonosító
-* Name (Név)
+* Name
 * Mértékegység
 
 A csomag közzététele után a terv szintű részletek már nem módosíthatók:
@@ -117,8 +117,8 @@ Ha az alábbi problémák valamelyikével rendelkezik, nyisson meg egy támogat�
 * Egy olyan problémát, amelyet az oldal hibája vagy hibája miatt meg kell adni (pl. helytelen használati esemény).
 * A mért számlázással kapcsolatos egyéb problémák.
 
-Kövesse a [partner Center kereskedelmi piactér programjának támogatását](./support.md) ismertető témakör útmutatását a kiadói támogatási lehetőségek megismeréséhez és a Microsoft támogatási jegyének megnyitásához.
+Kövesse a [partner Center kereskedelmi piactér programjának támogatását](../support.md) ismertető témakör útmutatását a kiadói támogatási lehetőségek megismeréséhez és a Microsoft támogatási jegyének megnyitásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információért lásd: [Marketplace-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -k.

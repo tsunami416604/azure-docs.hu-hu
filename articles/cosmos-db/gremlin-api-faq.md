@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b43bd0a076a21429a5f6fe05ef0c20d62674acdf
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82614498"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281558"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Gyakori kérdések a Gremlin API-ról Azure Cosmos DB
 
@@ -99,7 +99,7 @@ Az RU-díj a bejárás munkahalmazán alapul, nem az eredményhalmazban. Ha pél
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Mi a Graph-adatbázisok maximális mérete Azure Cosmos DB Gremlin API-ban?
 
-A Azure Cosmos DB a [horizontális particionálások](partition-data.md) használatával automatikusan megjavítja a tárolási és az átviteli sebességre vonatkozó követelményeket. A számítási feladatok maximális átviteli sebességét és tárolókapacitását az adott tárolóhoz társított partíciók száma határozza meg. A Gremlin API-tárolók azonban az irányelvek egy adott készletével biztosítják a megfelelő teljesítménybeli teljesítményt. A particionálással és az ajánlott eljárásokkal kapcsolatos további információkért lásd: [particionálás Azure Cosmos db](partition-data.md) cikkben.
+A Azure Cosmos DB a [horizontális particionálások](partitioning-overview.md) használatával automatikusan megjavítja a tárolási és az átviteli sebességre vonatkozó követelményeket. A számítási feladatok maximális átviteli sebességét és tárolókapacitását az adott tárolóhoz társított partíciók száma határozza meg. A Gremlin API-tárolók azonban az irányelvek egy adott készletével biztosítják a megfelelő teljesítménybeli teljesítményt. A particionálással és az ajánlott eljárásokkal kapcsolatos további információkért lásd: [particionálás Azure Cosmos db](partitioning-overview.md) cikkben.
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>A C# kódon-fejlesztéshez a Microsoft. Azure. graphs csomagot vagy a Gremlin.NET kell használnia?
 
@@ -144,7 +144,7 @@ A Gremlin-kapcsolat egy WebSocket-kapcsolaton keresztül történik. Bár a WebS
 
 A Azure Cosmos DB Gremlin API még nem támogatja a Fluent API-hívásokat. A Fluent API-hívások olyan belső formázási funkciót igényelnek, amely a Azure Cosmos DB Gremlin API által jelenleg nem támogatott bytecode-támogatás. Ugyanezen ok miatt a legújabb Gremlin-JavaScript illesztőprogram is jelenleg nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos DB Gremlin-támogatás](gremlin-support.md)
 * Azure Cosmos DB Graph-adatbázis létrehozása, lekérdezése és bejárása a [Gremlin-konzol](create-graph-gremlin-console.md) használatával

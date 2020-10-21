@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570002"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320216"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>A PostgreSQL nagy kapacitású-kiszolgálócsoportok hibaelhárítása
 Ez a cikk néhány olyan technikát ismertet, amelyet a kiszolgálói csoport hibaelhárításához használhat. A cikk mellett érdemes elolvasnia, hogyan használhatja a [Kibana](monitor-grafana-kibana.md) a naplók keresésére vagy a [Grafana](monitor-grafana-kibana.md) használatával megjelenítheti a kiszolgálói csoport metrikáit. 
@@ -31,7 +31,7 @@ vagy
 azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
 ```
 
-Emellett a--help parancsot is használhatja bármely azdata-parancshoz egy adott parancs paramétereinek megjelenítéséhez. Példa:
+Emellett a--help parancsot is használhatja bármely azdata-parancshoz egy adott parancs paramétereinek megjelenítéséhez. Például:
 ```console
 azdata arc postgres server create --help
 ```
@@ -51,13 +51,13 @@ Tegyük fel például, hogy a PostgreSQL nagy kapacitású-kiszolgálócsoport h
 
 ### <a name="install-tools"></a>Eszközök telepítése
 
-Telepítse a Azure Data Studiot, `kubectl` és azon `azdata` az ügyfélszámítógépen, amelyet a jegyzetfüzetnek a Azure Data Studio-ben való futtatásához használ. Ehhez kövesse az [ügyféleszközök telepítése](install-client-tools.md) című témakör útmutatását.
+Telepítse a Azure Data Studiot, `kubectl` és azon [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] az ügyfélszámítógépen, amelyet a jegyzetfüzetnek a Azure Data Studio-ben való futtatásához használ. Ehhez kövesse az [ügyféleszközök telepítése](install-client-tools.md) című témakör útmutatását.
 
 ### <a name="update-the-path-environment-variable"></a>A PATH környezeti változó frissítése
 
 Győződjön meg arról, hogy ezek az eszközök bárhonnan meghívhatók ezen az ügyfélszámítógépen. Például egy Windows-ügyfélgépen frissítse a PATH rendszerkörnyezeti változót, és adja hozzá azt a mappát, amelyben a kubectl telepítette.
 
-### <a name="sign-in-with-azdata"></a>Bejelentkezés a `azdata`
+### <a name="sign-in-with-azure-data-cli-azdata"></a>Bejelentkezés a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 Jelentkezzen be az ív-adatkezelőből erről az ügyfélszámítógépről, és a Azure Data Studio elindítása előtt. Ehhez a következőhöz hasonló parancsot kell futtatnia:
 

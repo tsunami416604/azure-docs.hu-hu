@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: ac7879590424fa921425dcd077503733affeb634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ef5c0cb0ffca5cc156d64074ebe241cebbcfb8e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361747"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277265"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Sync Java SDK v2-hez
 
@@ -35,7 +35,7 @@ A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőme
 
 Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témakört kérdezi le? vegye figyelembe a következő lehetőségeket:
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 <a id="direct-connection"></a>
 
 1. **Csatlakoztatási mód: DirectHttps használata**
@@ -141,7 +141,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     További információ: [Azure Cosmos db indexelési házirendek](indexing-policies.md).
 
-## <a name="throughput"></a>Teljesítmény
+## <a name="throughput"></a>Átviteli sebesség
 <a id="measure-rus"></a>
 
 1. **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
@@ -184,4 +184,4 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
     Egy adott műveletre vonatkozó kérelem díja (a kérelmek feldolgozási díja) közvetlenül összefügg a dokumentum méretével. A nagyméretű dokumentumokon végzett műveletek többek között a kis méretű dokumentumok műveleteinél nagyobb mértékben járnak.
 
 ## <a name="next-steps"></a>Következő lépések
-Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partition-data.md)című témakört.
+Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partitioning-overview.md)című témakört.

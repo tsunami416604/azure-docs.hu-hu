@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bda72a72e8ac0adf48fd8981a6eccf40385469d5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369909"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281400"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Gyakori kérdések az Cloud Partner Portalról a partneri központba való áttérésről
 
@@ -78,7 +78,7 @@ A partner Centerben támogatott ajánlati típusok esetében az összes ajánlat
 | Csomag típusa <img src="" width=150px>| Áthelyezte a partneri központba? <img src="" width=100px>| Következő lépések |
 | --- | --- | --- |
 | SaaS | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](partner-center-portal/create-new-saas-offer.md). |
-| Virtuális gép | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace](partner-center-portal/azure-vm-create-offer.md)-en. |
+| Virtuális gép | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace](azure-vm-create.md)-en. |
 | Azure-alkalmazás | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt az [Azure-alkalmazás ajánlatának létrehozása](partner-center-portal/create-new-azure-apps-offer.md)című témakörben olvashat. |
 | Dynamics 365 Business Central | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 Business Central ajánlat](partner-center-portal/create-new-business-central-offer.md). |
 | Dynamics 365 a Customer engagement & PowerApps | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 for Customer Engagement & PowerApps ajánlat](partner-center-portal/create-new-customer-engagement-offer.md). |
@@ -155,16 +155,16 @@ Megfigyelheti néhány védjegyezési változást. Az *SKU* -ket például a par
 
 Továbbá a **piactéren** vagy a **kirakati részletekben**  (a tanácsadási szolgáltatás, Power bi alkalmazás) Cloud Partner Portal oldalain korábban megadott információkat a rendszer mostantól a partner Center **ajánlati lista** lapján gyűjti:
 
-[![Képernyőfelvétel: a partneri központ ajánlati listáját tartalmazó oldal.](media/cpp-pc-faq/offer-listing.png "Megjeleníti a partneri központ ajánlatának listáját tartalmazó oldalt")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[! [Képernyőfelvétel: a partner Center ajánlati listáját tartalmazó oldal.] (Media/CPP-PC-GYIK/offer-listing.png](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 Előfordulhat, hogy a Cloud Partner Portal egyetlen lapján a SKU-ban korábban megadott adatok gyűjtése a partner Center több oldalán történik:
 
-- Terv beállítása lap
+- A telepítés megtervezése lap
 - A lista megtervezése lap
 - Csomag rendelkezésre állása lap
 - Tervezze meg a technikai konfiguráció oldalát, ahogy az itt látható:
 
-![! [Képernyőfelvétel: a partner Center technikai konfigurációjának lapja.] (Media/CPP-PC-FAQ/technical-configuration.png "a partner Center technikai konfiguráció oldalát jeleníti meg")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+[![Megjeleníti a partner Center technikai konfigurációs lapját.](media/cpp-pc-faq/technical-configuration.png)](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 Az ajánlat azonosítója mostantól az ajánlat bal oldali navigációs sávján látható:
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0ccab295d39e463d4b6d1e764862678469fba751
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: acd5914ca9f465c69df4c017162ef92f795b235a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776408"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278370"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>Gyors útmutató: Spring-alapú adatAzure Cosmos DB v3-alkalmazás létrehozása Azure Cosmos DB SQL API-alapú adatkezeléshez
 
@@ -23,7 +23,7 @@ ms.locfileid: "91776408"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
-> * [Spring-adatforrások v3](create-sql-api-spring-data.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -52,9 +52,9 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és 
 
 *Egy Cosmos DB fiók szerkezete.* Az API-tól vagy programozási nyelvtől függetlenül Cosmos DB *fiók* nulla vagy több *adatbázist*tartalmaz, egy *adatbázis* (db) nulla vagy több *tárolót*tartalmaz, és egy *tároló* nulla vagy több elemet tartalmaz, ahogy az alábbi ábrán is látható:
 
-:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos-fiókok entitásai" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos-fiókok entitásai" border="false":::
 
-Az adatbázisokról, a tárolók és az elemek [itt](databases-containers-items.md) találhat további információt. Néhány fontos tulajdonság a tároló szintjén van meghatározva, köztük a *kiosztott átviteli sebesség* és a *partíciós kulcs*. 
+Az adatbázisokról, a tárolók és az elemek [itt](account-databases-containers-items.md) találhat további információt. Néhány fontos tulajdonság a tároló szintjén van meghatározva, köztük a *kiosztott átviteli sebesség* és a *partíciós kulcs*. 
 
 A kiépített átviteli sebességet a kérések egységei (*RUs*) mérik, amelyek monetáris díjszabással rendelkeznek, és a fiók működési költsége jelentősen meghatározó tényező. A kiépített átviteli sebesség a tároló részletessége vagy az adatbázis-részletesség alapján választható ki, azonban a tároló szintű átviteli specifikáció általában előnyben részesített. Az átviteli sebességről itt olvashat bővebben [.](set-throughput.md)
 

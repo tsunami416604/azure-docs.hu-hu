@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320085"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280529"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Rendellenesség-észlelő szolgáltatás forgalmi díjas számlázáshoz
 
@@ -74,7 +74,7 @@ Jegy elküldése:
     - **Kereskedelmi piactér**  >  **Mért számlázás**  >  **Helytelen használat lett elküldve SaaS-ajánlathoz**
 3. A **következő lépés**alatt jelölje be a **megoldások véleményezése** gombot a partner központba való bejelentkezéshez a támogatási jegy elküldéséhez.
 
-További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](support.md).
+További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](../support.md).
 
 ## <a name="next-step"></a>Következő lépés
 

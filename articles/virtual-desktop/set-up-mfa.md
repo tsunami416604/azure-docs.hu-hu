@@ -1,28 +1,28 @@
 ---
-title: Azure-Multi-Factor Authentication beállítása a Windows rendszerű virtuális asztali környezethez – Azure
-description: Az Azure Multi-Factor Authentication beállítása a fokozott biztonság érdekében a Windows Virtual Desktopban.
+title: Azure többtényezős hitelesítés beállítása a Windows rendszerű virtuális asztali környezethez – Azure
+description: Az Azure többtényezős hitelesítés beállítása a fokozott biztonság érdekében a Windows Virtual Desktopban.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 10/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108983"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312651"
 ---
-# <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Az Azure Multi-Factor Authentication engedélyezése Windows Virtual Desktophoz
+# <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Azure többtényezős hitelesítés engedélyezése a Windows rendszerű virtuális asztali gépeken
 
 >[!IMPORTANT]
 > Ha ezt az oldalt a Windowsos virtuális asztal (klasszikus) dokumentációjában látogatja meg, akkor a befejezést követően [térjen vissza a Windows virtuális asztali (klasszikus) dokumentációba](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) .
 
 A Windows rendszerű virtuális asztal Windows-ügyfele kiváló megoldás a Windows rendszerű virtuális asztalok helyi géppel való integrálására. Ha azonban a Windows rendszerű virtuális asztali fiókját a Windows-ügyfélre konfigurálja, bizonyos intézkedésekre van szükség, hogy a felhasználók biztonságban maradjanak.
 
-Amikor először jelentkezik be, az ügyfél a felhasználónevet, a jelszót és az Azure MFA-t kéri. Ezután, amikor legközelebb bejelentkezik, az ügyfél a Azure Active Directory (AD) vállalati alkalmazásból emlékszik a tokenre. Ha a **Megjegyzés**bejelölése lehetőséget választja, a felhasználók az ügyfél újraindítása után is bejelentkezhetnek, anélkül, hogy újra meg kellene adniuk a hitelesítő adataikat.
+Amikor először jelentkezik be, az ügyfél kéri a felhasználónevet, a jelszót és az Azure többtényezős hitelesítést. Ezután, amikor legközelebb bejelentkezik, az ügyfél a Azure Active Directory (AD) vállalati alkalmazásból emlékszik a tokenre. Ha a **megjegyezés** lehetőséget választja a munkamenet-gazdagép hitelesítő adatainak megadásához, a felhasználók a hitelesítő adatok újbóli megadása nélkül jelentkezhetnek be az ügyfél újraindítása után.
 
-Habár a hitelesítő adatok megjegyzése kényelmes, az üzembe helyezést a vállalati forgatókönyvek vagy a személyes eszközök kevésbé biztonságosak is tehetik. A felhasználók biztosításához meg kell győződnie arról, hogy az ügyfél továbbra is kéri az Azure Multi-Factor Authentication (MFA) hitelesítő adatok megadását. Ez a cikk bemutatja, hogyan konfigurálhatja a Windows rendszerű virtuális asztal feltételes hozzáférési szabályzatát a beállítás engedélyezéséhez.
+Habár a hitelesítő adatok megjegyzése kényelmes, az üzembe helyezést a vállalati forgatókönyvek vagy a személyes eszközök kevésbé biztonságosak is tehetik. A felhasználók számára biztosíthatja, hogy az ügyfél folyamatosan kérjen az Azure többtényezős hitelesítési hitelesítő adatait gyakrabban. Ez a cikk bemutatja, hogyan konfigurálhatja a Windows rendszerű virtuális asztal feltételes hozzáférési szabályzatát a beállítás engedélyezéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,14 +30,14 @@ A következő lépésekkel kell kezdenie:
 
 - Rendeljen hozzá prémium szintű Azure Active Directory P1 vagy P2-t tartalmazó licencet a felhasználókhoz.
 - Egy Azure Active Directory csoport, amely a felhasználók csoport tagjaként van hozzárendelve.
-- Engedélyezze az Azure MFA-t az összes felhasználó számára. Ennek módjáról további információt a [felhasználó kétlépéses ellenőrzésének megkövetelése](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)című témakörben talál.
+- Az Azure többtényezős hitelesítés engedélyezése az összes felhasználó számára. Ennek módjáról további információt a [felhasználó kétlépéses ellenőrzésének megkövetelése](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)című témakörben talál.
 
 > [!NOTE]
-> A következő beállítás a [Windows rendszerű virtuális asztali webes ügyfélprogramra](https://rdweb.wvd.microsoft.com/webclient/index.html)is érvényes.
+> A következő beállítás a [Windows rendszerű virtuális asztali webes ügyfélprogramra](https://rdweb.wvd.microsoft.com/arm/webclient/index.html)is érvényes.
 
 ## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-Ebből a témakörből megtudhatja, hogyan hozhat létre olyan feltételes hozzáférési szabályzatot, amely többtényezős hitelesítést igényel a Windows virtuális asztalhoz való csatlakozáskor:
+Ebből a témakörből megtudhatja, hogyan hozhat létre többtényezős hitelesítést igénylő feltételes hozzáférési szabályzatot a Windows rendszerű virtuális asztalhoz való csatlakozáskor:
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 2. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
@@ -63,7 +63,7 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre olyan feltételes hozz�
         Ezt követően folytassa a 10. lépéssel.
 
    >[!IMPORTANT]
-   > Ne válassza ki a Windows rendszerű virtuális asztali Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63) nevű alkalmazást. Ez az alkalmazás csak a felhasználói hírcsatorna beolvasására szolgál, és nem rendelkezhet MFA-val.
+   > Ne válassza ki a Windows rendszerű virtuális asztali Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63) nevű alkalmazást. Ez az alkalmazás csak a felhasználói csatorna lekérésére használható, és nem lehet többtényezős hitelesítés.
    > 
    > Ha a Windowsos virtuális asztalt (klasszikus) használja, ha a feltételes hozzáférési házirend blokkolja az összes hozzáférést, és csak a Windows rendszerű virtuális asztali alkalmazás-azonosítókat zárja ki, ezt úgy is megteheti, hogy hozzáadja az alkalmazás-azonosító 9cdead84-A844-4324-93f2-b2e6bb768d07 a szabályzathoz. Ha nem adja hozzá az alkalmazás AZONOSÍTÓját, a Windows rendszerű virtuális asztali (klasszikus) erőforrások hírcsatornáinak felderítését letiltja.
 
@@ -85,11 +85,11 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre olyan feltételes hozz�
     >A kijelölni kívánt alkalmazás AZONOSÍTÓjának megkereséséhez nyissa meg a **vállalati alkalmazások** elemet, és válassza a **Microsoft-alkalmazások** lehetőséget az alkalmazás típusa legördülő menüből.
 
 12. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, **többtényezős hitelesítés megkövetelése**, majd a **lehetőséget**.
-13. A **hozzáférés-vezérlési**  >  **munkamenet**területen válassza a **bejelentkezési gyakoriság**elemet, állítsa az értéket **1** értékre, a mértékegységet pedig **órákra**, majd válassza a **kiválasztás**lehetőséget.
+13. A **hozzáférés-vezérlési**  >  **munkamenet**területen válassza a **bejelentkezési gyakoriság**lehetőséget, állítsa be az értéket a kérések között, majd válassza a **kiválasztás**lehetőséget. Ha például az értéket 1 értékre állítja, és a mértékegységet **(** **óra**), a többtényezős hitelesítést igényel, ha a rendszer az utolsót követően egy órával elindítja a kapcsolódást.
 14. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 15. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ a feltételes hozzáférési házirendekről](../active-directory/conditional-access/concept-conditional-access-policies.md)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad35af600b8973268d07f3a8baae225b91cebc1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858013"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275230"
 ---
 # <a name="feature-coverage-for-machines"></a>Szolgáltatások lefedettsége gépekhez
 
@@ -28,7 +28,7 @@ Az alábbi két lap a Windows és Linux rendszerű virtuális gépekhez és kisz
 
 ### <a name="windows-machines"></a>[**Windows rendszerű gépek**](#tab/features-windows)
 
-|**Szolgáltatás**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Azure Defender szükséges**
+|**Szolgáltatás**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure arc-kompatibilis gépek**|**Azure Defender szükséges**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP-integráció](security-center-wdatp.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Igen|
 |[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](alerts-reference.md)|✔|✔|✔|Igen|
@@ -42,9 +42,9 @@ Az alábbi két lap a Windows és Linux rendszerű virtuális gépekhez és kisz
 |[Adaptív hálózat-megerősítés](security-center-adaptive-network-hardening.md)|✔|-|-|Igen|
 |[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Igen|
 |Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|-|-|-|Igen|
-|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Azure: nem<br><br>Nem Azure: igen|
-|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Azure: nem<br><br>Nem Azure: igen|
-|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: nem<br><br>Nem Azure: igen|
+|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
+|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
+|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
 |Lemez titkosításának felmérése|✔</br>( [támogatott forgatókönyvek](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)esetén)|✔|-|Nem|
 |Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Nem|
 |[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Nem|
@@ -52,7 +52,7 @@ Az alábbi két lap a Windows és Linux rendszerű virtuális gépekhez és kisz
 
 ### <a name="linux-machines"></a>[**Linux rendszerű gépek**](#tab/features-linux)
 
-|**Szolgáltatás**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Azure Defender szükséges**
+|**Szolgáltatás**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure arc-kompatibilis gépek**|**Azure Defender szükséges**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP-integráció](security-center-wdatp.md)|-|-|-|Igen|
 |[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](security-center-alerts-iaas.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Igen|
@@ -66,8 +66,8 @@ Az alábbi két lap a Windows és Linux rendszerű virtuális gépekhez és kisz
 |[Adaptív hálózat-megerősítés](security-center-adaptive-network-hardening.md)|✔|-|-|Igen|
 |[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Igen|
 |Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|✔|✔|✔|Igen|
-|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Azure: nem<br><br>Nem Azure: igen|
-|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Azure: nem<br><br>Nem Azure: igen|
+|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
+|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
 |[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Nem|
 |Lemez titkosításának felmérése|✔</br>( [támogatott forgatókönyvek](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)esetén)|✔|-|Nem|
 |Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Nem|

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63663d228052934616a59f5d84ff16a6510e46c9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361766"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282077"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>A NoSQL és a kapcsolati adatbázisok közötti különbségek megértése
 
@@ -93,8 +93,8 @@ Ismerje meg, hogyan kezelheti Azure Cosmos-fiókját és egyéb fogalmait:
 * [Útmutató az Azure Cosmos-fiók kezeléséhez](how-to-manage-database-account.md)
 * [Globális terjesztés](distribute-data-globally.md)
 * [Konzisztenciaszintek](consistency-levels.md)
-* [Azure Cosmos-tárolók és-elemek használata](databases-containers-items.md)
-* [VNET szolgáltatási végpont az Azure Cosmos-fiókhoz](vnet-service-endpoint.md)
-* [IP-tűzfal az Azure Cosmos-fiókhoz](firewall-support.md)
+* [Azure Cosmos-tárolók és-elemek használata](account-databases-containers-items.md)
+* [VNET szolgáltatási végpont az Azure Cosmos-fiókhoz](how-to-configure-vnet-service-endpoint.md)
+* [IP-tűzfal az Azure Cosmos-fiókhoz](how-to-configure-firewall.md)
 * [Útmutató Azure-régiók Azure Cosmos-fiókhoz való hozzáadásához és eltávolításához](how-to-manage-database-account.md)
 * [Azure Cosmos DB SLA-kat](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: ac48973653e89d43521979a5606a8a3a3c2e1346
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319983"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278024"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace mért számlázási API-k
 
@@ -151,7 +151,7 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
 
 *Lekérdezési paraméterek:*
 
-| Paraméter  | Ajánlás     |
+| Paraméterek  | Ajánlás     |
 | ---------- | -------------------- |
 | `ApiVersion` | 2018-08-31 használata. |
 
@@ -273,8 +273,8 @@ Egy meglévő élő ajánlathoz is használhat privát csomagot, hogy a tesztel�
 
 ## <a name="get-support"></a>Támogatás kérése
 
-Kövesse a [partner Center kereskedelmi piactér programjának támogatásával](./support.md) kapcsolatos útmutatást a közzétevők támogatási lehetőségeinek megismeréséhez, és nyisson meg egy támogatási jegyet a Microsofttal.
+Kövesse a [partner Center kereskedelmi piactér programjának támogatásával](../support.md) kapcsolatos útmutatást a közzétevők támogatási lehetőségeinek megismeréséhez, és nyisson meg egy támogatási jegyet a Microsofttal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service API-k mérésével kapcsolatos további információkért lásd: a [piactér-mérési szolgáltatás API-jai – gyakori kérdések](./marketplace-metering-service-apis-faq.md).

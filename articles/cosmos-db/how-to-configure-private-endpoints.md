@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9821e53abcdf95c6cf235cb9d39cd310fcfb66f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334429"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279723"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz
 
@@ -87,8 +87,8 @@ Az alábbi táblázat a különböző Azure Cosmos-fiók API-típusai, a támoga
 |Mongo   |  MongoDB       |  privatelink.mongo.cosmos.azure.com    |
 |Gremlin     | Gremlin        |  privatelink.gremlin.cosmos.azure.com   |
 |Gremlin     |  SQL       |  privatelink.documents.azure.com    |
-|Táblázat    |    Táblázat     |   privatelink.table.cosmos.azure.com    |
-|Táblázat     |   SQL      |  privatelink.documents.azure.com    |
+|Tábla    |    Tábla     |   privatelink.table.cosmos.azure.com    |
+|Tábla     |   SQL      |  privatelink.documents.azure.com    |
 
 ### <a name="fetch-the-private-ip-addresses"></a>A magánhálózati IP-címek beolvasása
 
@@ -402,7 +402,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-A PowerShell-parancsfájlban a `GroupId` változó csak egy értéket tartalmazhat. Ez az érték a fiók API-típusa. Az engedélyezett értékek a következők:,,, `Sql` `MongoDB` `Cassandra` `Gremlin` és `Table` . Néhány Azure Cosmos-fióktípus több API-n keresztül érhető el. Példa:
+A PowerShell-parancsfájlban a `GroupId` változó csak egy értéket tartalmazhat. Ez az érték a fiók API-típusa. Az engedélyezett értékek a következők:,,, `Sql` `MongoDB` `Cassandra` `Gremlin` és `Table` . Néhány Azure Cosmos-fióktípus több API-n keresztül érhető el. Például:
 
 * A Gremlin API-fiókok a Gremlin és az SQL API-fiókokból is elérhetők.
 * Table API fiók a tábla-és SQL API-fiókokból is elérhető.
@@ -684,7 +684,7 @@ Ha nem törli a DNS-rekordokat, előfordulhat, hogy váratlan adatsík-problém�
 
 A Azure Cosmos DB biztonsági funkcióival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* Ha Azure Cosmos DB tűzfalat szeretne konfigurálni, tekintse meg a [tűzfal támogatása](firewall-support.md)című témakört.
+* Ha Azure Cosmos DB tűzfalat szeretne konfigurálni, tekintse meg a [tűzfal támogatása](how-to-configure-firewall.md)című témakört.
 
 * Ha meg szeretné tudni, hogyan konfigurálhatja az Azure Cosmos-fiókhoz tartozó virtuális hálózati szolgáltatás végpontját, tekintse meg a [virtuális hálózatok elérésének konfigurálása](how-to-configure-vnet-service-endpoint.md)című témakört.
 

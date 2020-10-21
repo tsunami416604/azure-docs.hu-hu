@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 58db7dcade7567d632fb405b31c4ff7bdbc6e71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018969"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282064"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB-változáscsatorna olvasása
 
@@ -39,7 +39,7 @@ Leküldéses modell használata a legegyszerűbb módszer a változási hírcsat
 
 ### <a name="azure-functions"></a>Azure Functions
 
-A Azure Functions a legegyszerűbb lehetőség, ha csak most kezdi meg a változási hírcsatorna használatát. Az egyszerűsége miatt az ajánlott lehetőség a legtöbb módosítási hírcsatorna-használati esetre is. Ha Azure Cosmos DBhoz hoz létre Azure Functions-triggert, válassza ki a csatlakoztatni kívánt tárolót, és az Azure-függvény akkor aktiválódik, amikor változás van a tárolóban. Mivel Azure Functions a háttérben a változási csatornát használja, az automatikusan parallelizes a tároló [partícióinak](partition-data.md)feldolgozását.
+A Azure Functions a legegyszerűbb lehetőség, ha csak most kezdi meg a változási hírcsatorna használatát. Az egyszerűsége miatt az ajánlott lehetőség a legtöbb módosítási hírcsatorna-használati esetre is. Ha Azure Cosmos DBhoz hoz létre Azure Functions-triggert, válassza ki a csatlakoztatni kívánt tárolót, és az Azure-függvény akkor aktiválódik, amikor változás van a tárolóban. Mivel Azure Functions a háttérben a változási csatornát használja, az automatikusan parallelizes a tároló [partícióinak](partitioning-overview.md)feldolgozását.
 
 Az Azure Functions-val való fejlesztés egyszerű, és gyorsabb lehet, mint a módosítási hírcsatorna-feldolgozó üzembe helyezése. Az eseményindítók a Azure Functions portál használatával vagy programozott módon hozhatók létre az SDK-k használatával. A Visual Studio és a VS Code támogatást nyújt a Azure Functions írásához, és az Azure Functions CLI-t is használhatja a platformok közötti fejlesztéshez. A kódot megírhatja és hibakeresést végezhet az asztalon, majd egyetlen kattintással telepítheti a függvényt. További információkért tekintse meg a [kiszolgáló nélküli adatbázis-számítási feladatokat a Azure functions használatával](serverless-computing-database.md) és a [változási hírcsatorna használata Azure functions](change-feed-functions.md) cikkekkel című témakört.
 

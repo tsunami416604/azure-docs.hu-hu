@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c4f9954977d6c5523bc70586d3b0cbb0328bcd8
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262667"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278036"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-kulcsok védelme az Azure Key Vaulttal 
 
@@ -92,7 +92,7 @@ Most, ha futtatja az alkalmazást, elolvashatja a titkos kulcsot Key Vaultról.
  
 Hasonlóképpen hozzáadhat egy felhasználót is a kulcstartó eléréséhez. A **hozzáférési szabályzatok** kiválasztásával, majd az alkalmazás Visual studióból való futtatásához szükséges összes engedély megadásával saját magának kell felvennie a Key Vault. Ha az alkalmazás az asztalról fut, az identitást veszi igénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ha Azure Cosmos DB tűzfalat szeretne konfigurálni, tekintse meg a [tűzfalat támogató](firewall-support.md) cikket.
-* A virtuális hálózati szolgáltatás végpontjának konfigurálásához tekintse meg a [biztonságos hozzáférés a VNet szolgáltatás végpontjának használatával](vnet-service-endpoint.md) című cikket.
+* Ha Azure Cosmos DB tűzfalat szeretne konfigurálni, tekintse meg a [tűzfalat támogató](how-to-configure-firewall.md) cikket.
+* A virtuális hálózati szolgáltatás végpontjának konfigurálásához tekintse meg a [biztonságos hozzáférés a VNet szolgáltatás végpontjának használatával](how-to-configure-vnet-service-endpoint.md) című cikket.

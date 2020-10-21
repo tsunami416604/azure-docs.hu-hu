@@ -4,12 +4,12 @@ description: Áttekintést nyújt az Azure Site Recovery szolgáltatásról, és
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86135225"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281876"
 ---
 # <a name="about-site-recovery"></a>Tudnivalók a Site Recovery szolgáltatásról
 
@@ -50,11 +50,11 @@ A Site Recovery a következők replikációját képes kezelni:
 **Támogatott** | **Részletek**
 --- | ---
 **Replikációs forgatókönyvek** | Azure-beli virtuális gépeket replikálhat egyik Azure-régióból a másikba.<br/><br/>  Helyszíni VMware virtuális gépeket, Hyper-V virtuális gépeket, fizikai kiszolgálókat (Windows és Linux) replikálhat, Azure Stack virtuális gépeket az Azure-ba.<br/><br/> AWS Windows-példányok replikálása az Azure-ba.<br/><br/> Helyszíni VMware virtuális gépeket, a System Center VMM által felügyelt Hyper-V virtuális gépeket, valamint fizikai kiszolgálókat replikálhat egy másodlagos helyre.
-**Régiók** | Áttekintheti a Site Recovery által [támogatott régiókat](https://azure.microsoft.com/regions/services/). |
+**Régiók** | Áttekintheti a Site Recovery által [támogatott régiókat](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery). |
 **Replikált gépek** | Áttekintheti az [Azure-beli virtuális gépeknek](azure-to-azure-support-matrix.md#replicated-machine-operating-systems), a [helyszíni VMware virtuális gépeknek és fizikai kiszolgálóknak](vmware-physical-azure-support-matrix.md#replicated-machines), valamint a [helyszíni Hyper-V virtuális gépeknek](hyper-v-azure-support-matrix.md#replicated-vms) a replikációs követelményeit.
 **Számítási feladatok** | A támogatott replikációs gépeken futó bármilyen számítási feladat replikálható. És a Site Recovery csapata [számos](site-recovery-workload.md#workload-summary)alkalmazáshoz adott meg alkalmazásspecifikus teszteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a számítási [feladatok támogatásáról](site-recovery-workload.md).
 - Első lépések: [Azure-beli virtuális gép replikálása régiók között](azure-to-azure-quickstart.md).

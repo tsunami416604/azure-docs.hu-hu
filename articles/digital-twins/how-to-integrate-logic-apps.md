@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 21e72e63dae2c52d04aca0cd11971fe5cd23fb47
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 292305c3f899ac4156fd84e8edcb0d6e9a3c0b34
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207546"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280866"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrálás a Logic Apps használatával egyéni összekötővel
 
@@ -191,7 +191,7 @@ Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be az Azure-beli hi
 Az új *DigitalTwinsAdd* mezőbe írja be a mezőket a következőképpen:
 * _azonosító_: töltse ki a példányban a digitális kettős *azonosítót* , amelyet a logikai alkalmazás frissítésére szeretne.
 * _Twin_: ebben a mezőben adhatja meg azt a törzset, amelyhez a kiválasztott API-kérelem szükséges. A *DigitalTwinsUpdate*esetében ez a törzs JSON-javítási kód formájában szerepel. Ha többet szeretne megtudni egy JSON-javításról a Twin-fájl frissítéséhez, tekintse meg a következő témakört: a [Digital Twins](how-to-manage-twin.md#update-a-digital-twin) című rész, *útmutató: digitális ikrek kezelése*.
-* _API-Version_: a legújabb API-verzió. Az aktuális nyilvános előzetes verzióban ez az érték *2020-05-31 – előzetes* verzió
+* _API-Version_: a legújabb API-verzió. Ez az érték jelenleg *2020-10-31*.
 
 Kattintson a *Mentés gombra* a Logic apps Designerben.
 

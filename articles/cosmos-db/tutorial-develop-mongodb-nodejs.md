@@ -10,18 +10,18 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 992111f6b28356d5220e27a80068acdaf80b4055
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75444688"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280508"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB
 
 Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy olyan új alkalmazást, amelyet expressz és szögletes Node.js írt be, majd a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md)csatlakozik.
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Lehetővé teszi olyan dokumentum-, kulcs/érték-és Graph-adatbázisok gyors létrehozását és lekérdezését, amelyek kihasználják a globális elosztási és horizontális méretezési képességeket a Cosmos DB középpontjában. 
+Azure Cosmos DB a Microsoft gyors NoSQL-adatbázisa, amely bármilyen méretű nyitott API-val rendelkezik. Lehetővé teszi a modern alkalmazások fejlesztését SLA-alapú gyorsasággal és rendelkezésre állással, automatikus és azonnali méretezhetőséggel, valamint nyílt forráskódú API-kat számos NoSQL-motor számára.
 
 Ez a többrészes oktatóanyag a következő feladatokon vezet végig:
 
@@ -42,7 +42,7 @@ Ugyanezt az alkalmazást szeretné felépíteni a Reacttel? Lásd a [React vide�
 
 Az oktatóanyag lépésről lépésre végigvezeti az alkalmazás létrehozásának lépésein. Ha le szeretné tölteni a kész projektet, a kész alkalmazást az [angular-cosmosdb adattárból](https://github.com/Azure-Samples/angular-cosmosdb) töltheti le a GitHubról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

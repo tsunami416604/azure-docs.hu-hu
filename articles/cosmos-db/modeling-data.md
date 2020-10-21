@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0bf6836fd08e20d97f1cfd85627b25e31bf380
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136039"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278411"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Adatmodellezés Azure Cosmos DB
 
@@ -440,6 +440,6 @@ Ugyanúgy, ahogy egyetlen módon nem lehet a képernyőn egy adathalmazt képvis
 
 Ha többet szeretne megtudni a Azure Cosmos DBről, tekintse meg a szolgáltatás [dokumentációs](https://azure.microsoft.com/documentation/services/cosmos-db/) oldalát.
 
-Ha meg szeretné tudni, hogyan osztható fel az adatai több partícióra, tekintse meg az [Adatparticionálást Azure Cosmos DBban](sql-api-partition-data.md).
+Ha meg szeretné tudni, hogyan osztható fel az adatai több partícióra, tekintse meg az [Adatparticionálást Azure Cosmos DBban](partitioning-overview.md).
 
 Ha meg szeretné tudni, hogyan modellezheti és particionálhatja Azure Cosmos DB a valós példa használatával, tekintse át az [ adatmodellezés és particionálás – egy Real-World példát](how-to-model-partition-example.md).

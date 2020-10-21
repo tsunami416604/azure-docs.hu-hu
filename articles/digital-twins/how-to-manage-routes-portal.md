@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d60297ba3bf16eac496703635ec8faf647c7f94
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252833"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279356"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Végpontok és útvonalak kezelése az Azure Digital Twins-ban (portál)
 
@@ -117,6 +117,14 @@ Ha ellenőrizni szeretné, hogy a végpont sikeresen létrejött-e, tekintse meg
 Ha a végpont létrehozása sikertelen, figyelje meg a hibaüzenetet, és néhány perc múlva próbálkozzon újra.
 
 A Service Bus témakör az Azure digitális Twins-beli végpontként érhető el, a _név mezőben megadott_ név alatt. Ezt a nevet általában egy **esemény-útvonal**céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#event-routes).
+
+### <a name="create-an-endpoint-with-dead-lettering"></a>Végpont létrehozása a kézbesítetlen levelekkel
+
+Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek**nevezzük.
+
+Ha olyan végpontot szeretne létrehozni, amelyen engedélyezve van a kézbesítetlen üzenetek használata, az [ARM API](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) -kkal létre kell hoznia a végpontot a Azure Portal helyett.
+
+Az API-kkal kapcsolatos utasításokért tekintse meg a jelen cikk [*API-k és parancssori felületének*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) verzióját.
 
 ## <a name="event-routes"></a>Eseményútvonalak
 

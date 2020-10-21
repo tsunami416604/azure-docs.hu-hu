@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: a992d240955f42ec030a84c887ba086ce92f9790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb47dde8813f31f4a6acceb696a8b7c7eb0095be
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88605264"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281538"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Díjszabási modell az Azure Cosmos DB-ben
 
@@ -19,7 +19,7 @@ Az Azure Cosmos DB díjszabási modellje leegyszerűsíti a költségkezelést �
 
 - **Adatbázis-műveletek**: az adatbázis-műveletekért felszámított módszer a használt Azure Cosmos-fiók típusától függ.
 
-  - **Kiépített átviteli sebesség**: a [kiépített átviteli sebesség](set-throughput.md) (más néven fenntartott átviteli sebesség) garantálja a nagy teljesítményt bármilyen méretben. Megadhatja a szükséges átviteli [sebességet másodpercenként (](request-units.md) ru/s), és Azure Cosmos db a konfigurált átviteli sebesség biztosításához szükséges erőforrásokat. [Az átviteli sebességet egy adatbázison vagy tárolón is kiépítheti](set-throughput.md). A számítási feladatok igénye alapján bármikor fel-vagy lekicsinyítheti az átviteli sebességet, vagy használhatja az [autoskálázást](provision-throughput-autoscale.md) (bár az adatbázison vagy tárolón legalább egy minimális átviteli sebesség szükséges). A maximális kiosztott átviteli sebességért óradíjat számolunk fel egy adott órában.
+  - **Kiépített átviteli sebesség**: a [kiépített átviteli sebesség](set-throughput.md) (más néven fenntartott átviteli sebesség) nagy teljesítményt biztosít bármilyen méretben. Adja meg a [kérési egységek](request-units.md) másodpercenkénti számát (ru/s), és Azure Cosmos db a beállított átviteli sebesség biztosításához szükséges erőforrásokat. [Az átviteli sebességet egy adatbázison vagy tárolón is kiépítheti](set-throughput.md). A számítási feladatok igénye alapján bármikor fel-vagy lekicsinyítheti az átviteli sebességet, vagy használhatja az [autoskálázást](provision-throughput-autoscale.md) (bár az adatbázison vagy tárolón legalább egy minimális átviteli sebesség szükséges). A maximális kiosztott átviteli sebességért óradíjat számolunk fel egy adott órában.
 
    > [!NOTE]
    > Mivel a kiépített átviteli sebességi modell erőforrásokat rendel a tárolóhoz vagy az adatbázishoz, a kiosztott átviteli sebességért kell fizetnie, akkor is, ha nem futtat semmilyen munkaterhelést.

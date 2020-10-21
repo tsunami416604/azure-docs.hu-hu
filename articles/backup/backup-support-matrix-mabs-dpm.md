@@ -3,12 +3,12 @@ title: MABS & System Center DPM támogatási mátrix
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup Servert (MABS) vagy System Center DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332695"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276972"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -60,7 +60,7 @@ A DPM/MABS a következő táblázatban összefoglalt módon helyezhető üzembe.
 
 **Üzembe helyezés** | **Támogatás** | **Részletek**
 --- | --- | ---
-**Helyszíni üzembe helyezés** | Fizikai kiszolgáló<br/><br/>Hyper-V virtuális gép<br/><br/> VMware virtuális gép | Ha a DPM/MABS VMware virtuális gépként van telepítve, csak a virtuális gépeken futó VMware virtuális gépekről és munkaterhelésekről készít biztonsági mentést.
+**Helyszíni üzembe helyezés** | Fizikai kiszolgáló<br/><br/>Hyper-V virtuális gép<br/><br/> VMware virtuális gép | További részletekért tekintse meg a [védelmi mátrixot](backup-mabs-protection-matrix.md) . 
 **Azure Stack virtuális gépként van üzembe helyezve** | Csak MABS | A DPM nem használható Azure Stack virtuális gépek biztonsági mentésére.
 **Azure-beli virtuális gépként telepítve** | Az ezen a virtuális gépeken futó Azure-beli virtuális gépeket és munkaterheléseket védi | Az Azure-ban futó DPM/MABS nem tud biztonsági másolatot készíteni a helyszíni gépekről.
 

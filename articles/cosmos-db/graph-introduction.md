@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409612"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279833"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
 
@@ -48,7 +48,7 @@ A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a követk
 
   Az Azure Cosmos DB használatával nincs szükség az adatbázis és a gép erőforrásainak kezelésére. A legtöbb meglévő Graph-adatbázis platformja az infrastruktúra korlátaihoz van kötve, és gyakran magas fokú karbantartásra van szükség a működésének biztosítása érdekében. 
   
-  Teljes körűen felügyelt szolgáltatásként a Cosmos DB eltávolítja a virtuális gépek felügyeletének, a futásidejű szoftverek frissítésének, a horizontális skálázás vagy a replikálás kezelésének, vagy az adatréteg összetett frissítéseinek kezelésére vonatkozó igényt. Minden gráfról automatikus biztonsági mentés készül, és védelmet élveznek a regionális meghibásodásokkal szemben. Ezek a garanciák lehetővé teszik a fejlesztők számára, hogy a Graph-adatbázisok üzemeltetése és kezelése helyett az alkalmazás értékének megadására összpontosítsanak. 
+  Teljes körűen felügyelt szolgáltatásként a Cosmos DB eltávolítja a virtuális gépek felügyeletének, a futásidejű szoftverek frissítésének, a horizontális skálázás vagy a replikálás kezelésének, vagy az adatréteg összetett frissítéseinek kezelésére vonatkozó igényt. Minden gráfról automatikus biztonsági mentés készül, és védelmet élveznek a regionális meghibásodásokkal szemben. Ez lehetővé teszi a fejlesztők számára, hogy a Graph-adatbázisok működtetése és kezelése helyett az alkalmazás értékének megadására összpontosítsanak. 
 
 * **Automatikus indexelés**
 
@@ -150,7 +150,7 @@ A gráfok különösen akkor hasznosak, ha olyan kérdéseket kell megválaszoln
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gráfok Azure Cosmos DB általi támogatásával kapcsolatos további információkért lásd:
 

@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ae5632f2495ac5916ac8c86666e973c34d1b789
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215229"
+ms.locfileid: "92275282"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2,0 engedélyezési kód folyamata Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Az eszközön telepített alkalmazásokban a OAuth 2,0-as engedélyezési kód s
 
 Az OAuth 2,0 engedélyezési kód folyamatát a [OAuth 2,0 specifikáció 4,1. szakasza](https://tools.ietf.org/html/rfc6749)ismerteti. Használhatja hitelesítésre és engedélyezésre a legtöbb alkalmazás- [típusban](application-types.md), beleértve a webalkalmazásokat, az egylapos alkalmazásokat és a natív módon telepített alkalmazásokat. Az OAuth 2,0 engedélyezési kód folyamatával biztonságosan kaphat hozzáférési jogkivonatokat, és frissítheti az alkalmazásaihoz tartozó jogkivonatokat, amelyek az [engedélyezési kiszolgáló](protocols-overview.md)által védett erőforrások elérésére használhatók.  A frissítési jogkivonat lehetővé teszi, hogy az ügyfél új hozzáférési (és frissítési) jogkivonatokat szerezzen be a hozzáférési jogkivonat lejárta után, általában egy óra elteltével.
 
-<!-- This article focuses on the **public clients** OAuth 2.0 authorization code flow. A public client is any client application that cannot be trusted to securely maintain the integrity of a secret password. This includes single-page applications, mobile apps, desktop applications, and essentially any application that runs on a device and needs to get access tokens. -->
+Ez a cikk a **nyilvános ügyfelek** OAuth 2,0 engedélyezési kód folyamatát ismerteti. A nyilvános ügyfél olyan ügyfélalkalmazás, amely nem megbízható a titkos jelszó integritásának biztonságos fenntartásához. Ilyenek például az egylapos alkalmazások, a mobil alkalmazások, az asztali alkalmazások és lényegében bármely olyan alkalmazás, amely nem fut a kiszolgálón.
 
 > [!NOTE]
 > Ha Azure AD B2C használatával szeretne identitás-kezelést hozzáadni egy webalkalmazáshoz, használja az [OpenID connectet](openid-connect.md) a OAuth 2,0 helyett.
@@ -39,15 +39,9 @@ A cikkben szereplő HTTP-kérelmek kipróbálásához:
 
 ## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Az egyoldalas alkalmazásokhoz szükséges átirányítási URI-beállítás
 
-Az egyoldalas alkalmazásokhoz tartozó engedélyezési kód esetében további beállításokra van szükség.  Kövesse az [egyoldalas alkalmazás létrehozásának](tutorial-register-spa.md) utasításait, hogy az átirányítási URI-t helyesen megjelölje a CORS. Ha frissíteni szeretne egy meglévő átirányítási URI-t a CORS engedélyezéséhez, nyissa meg a jegyzékfájl-szerkesztőt, és állítsa be az `type` átirányítási URI mezőjét `spa` a `replyUrlsWithType` szakaszba. Az átirányítási URI-ra is kattinthat a hitelesítés lap "web" szakaszában, és kiválaszthatja az áttelepíteni kívánt URI azonosítókat az engedélyezési kód folyamatának használatával.
+Az egyoldalas alkalmazásokhoz tartozó engedélyezési kód esetében további beállításokra van szükség.  Kövesse az [egyoldalas alkalmazás létrehozásának](tutorial-register-spa.md) utasításait, hogy az átirányítási URI-t helyesen megjelölje a CORS. Ha frissíteni szeretne egy meglévő átirányítási URI-t a CORS engedélyezéséhez, kattintson az áttelepítés promptra az **alkalmazás regisztrációjának** **hitelesítése** lap "web" szakaszában. Másik lehetőségként megnyithatja a **Alkalmazásregisztrációk jegyzékfájl-szerkesztőt** , és beállíthatja az `type` átirányítási URI mezőjét `spa` a következő `replyUrlsWithType` szakaszra:.
 
 Az `spa` átirányítás típusa visszamenőlegesen kompatibilis az implicit folyamattal. Azok az alkalmazások, amelyek jelenleg az implicit folyamatot használják a jogkivonatok fogadására, problémák nélkül áthelyezhetők az `spa` átirányítási URI-típusra, és folytatják az implicit folyamat használatát.
-
-Ha megpróbálja használni az engedélyezési kód folyamatát, és ezt a hibaüzenetet látja:
-
-`access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
-
-Ezután meg kell keresnie az alkalmazás regisztrációját, és frissítenie kell az alkalmazás átirányítási URI-JÁT a típus értékre `spa` .
 
 ## <a name="1-get-an-authorization-code"></a>1. engedélyezési kód beszerzése
 Az engedélyezési kód folyamata azzal kezdődik, hogy az ügyfél átirányítja a felhasználót a `/authorize` végpontra. Ez a folyamat interaktív része, ahol a felhasználó végrehajtja a műveletet. Ebben a kérelemben az ügyfél a (z `scope` ) paraméterben azt jelzi, hogy milyen engedélyek szükségesek a felhasználótól való beolvasáshoz. A következő három példa (az olvashatóság érdekében sortöréssel) minden más felhasználói folyamatot használ.
@@ -65,7 +59,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &code_challenge_method=S256
 ```
 
-| Paraméterek | Kötelező? | Leírás |
+| Paraméterek | Kötelező? | Description |
 | --- | --- | --- |
 |Bérlő| Kötelező | A Azure AD B2C bérlő neve|
 | politika | Kötelező | A futtatandó felhasználói folyamat. Adja meg a Azure AD B2C bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in` , `b2c_1_sign_up` , vagy `b2c_1_edit_profile` . |
@@ -124,7 +118,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong 
 ```
 
-| Paraméterek | Kötelező? | Leírás |
+| Paraméterek | Kötelező? | Description |
 | --- | --- | --- |
 |Bérlő| Kötelező | A Azure AD B2C bérlő neve|
 |politika| Kötelező| Az engedélyezési kód beszerzéséhez használt felhasználói folyamat. Ebben a kérelemben nem használhat másik felhasználói folyamatot. |
@@ -191,7 +185,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Paraméterek | Kötelező? | Leírás |
+| Paraméterek | Kötelező? | Description |
 | --- | --- | --- |
 |Bérlő| Kötelező | A Azure AD B2C bérlő neve|
 |politika |Kötelező |Az eredeti frissítési jogkivonat beszerzéséhez használt felhasználói folyamat. Ebben a kérelemben nem használhat másik felhasználói folyamatot. |

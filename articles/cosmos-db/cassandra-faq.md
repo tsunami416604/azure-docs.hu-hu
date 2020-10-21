@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167606"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278182"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Cassandra APIról Azure Cosmos DB
 
@@ -79,11 +79,11 @@ A diagnosztikai naplókat a [Azure Cosmos db diagnosztikai naplózási](logging.
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Az elsődleges kulcs a Azure Cosmos DB partíciós kulcsának fogalmát képezi?
 
-Igen, a partíciós kulcs az entitás megfelelő helyen történő elhelyezésére szolgál. Azure Cosmos DB a fizikai partíción tárolt megfelelő logikai partíció megtalálására szolgál. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partition-data.md) cikkben. A lényeges elvihetőség az, hogy a logikai partíciók nem haladnak át a 20 GB-os korláton.
+Igen, a partíciós kulcs az entitás megfelelő helyen történő elhelyezésére szolgál. Azure Cosmos DB a fizikai partíción tárolt megfelelő logikai partíció megtalálására szolgál. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partitioning-overview.md) cikkben. A lényeges elvihetőség az, hogy a logikai partíciók nem haladnak át a 20 GB-os korláton.
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Mi történik, ha értesítést kapok, hogy egy partíció megtelt?
 
-Azure Cosmos DB a szolgáltatói szerződésen (SLA) alapuló rendszer. Korlátlan méretű, a késés, az átviteli sebesség, a rendelkezésre állás és a konzisztencia garanciáit biztosítja. Ez a korlátlan tárterület a horizontálisan kibővített adatmennyiségen alapul, és a particionálást a legfontosabb koncepcióként használja. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partition-data.md) cikkben.
+Azure Cosmos DB a szolgáltatói szerződésen (SLA) alapuló rendszer. Korlátlan méretű, a késés, az átviteli sebesség, a rendelkezésre állás és a konzisztencia garanciáit biztosítja. Ez a korlátlan tárterület a horizontálisan kibővített adatmennyiségen alapul, és a particionálást a legfontosabb koncepcióként használja. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partitioning-overview.md) cikkben.
 
 Be kell tartania a 20 GB-os korlátot az entitások számának és a logikai partíciók száma alapján. Annak érdekében, hogy az alkalmazás jól méretezhető legyen, azt javasoljuk, hogy *ne* hozzon létre egy gyors partíciót úgy, hogy az összes információt egy partícióban tárolja, és lekérdezi azt. Ez a hiba csak akkor jön el, ha az adatai elferdítve vannak: ez egy partíciós kulcs (több mint 20 GB). Az adateloszlás a Storage Portal használatával található. A hiba kijavításának módja a tábla újbóli létrehozása és a részletes elsődleges (partíciós kulcs) kiválasztása, amely lehetővé teszi az adatelosztást.
 

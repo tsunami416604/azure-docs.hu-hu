@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 66cf408799b37de1160ec3a76ee11ff1ffbb770b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe31e67168c4eaf6fe94c056a96fdf695ea94fe4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801409"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280000"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>Azure Cosmos DB.NET v3 SDK (Microsoft. Azure. Cosmos) példák az SQL API-ra
 
@@ -54,7 +54,7 @@ Azure-előfizetés vagy ingyenes Cosmos DB próbaverziós fiók
 
 ## <a name="database-examples"></a>Adatbázis-példák
 
-A minta *DatabaseManagement* -projekt [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) metódusa a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-adatbázisokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek használata](databases-containers-items.md).
+A minta *DatabaseManagement* -projekt [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) metódusa a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-adatbázisokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek használata](account-databases-containers-items.md).
 
 | Feladat | API-referencia |
 | --- | --- |
@@ -65,7 +65,7 @@ A minta *DatabaseManagement* -projekt [RunDatabaseDemo](https://github.com/Azure
 
 ## <a name="container-examples"></a>Példák tárolókra
 
-A minta *ContainerManagement* -projekt [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) metódusa a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-tárolókkal kapcsolatban, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek használata](databases-containers-items.md).
+A minta *ContainerManagement* -projekt [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) metódusa a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-tárolókkal kapcsolatban, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek használata](account-databases-containers-items.md).
 
 | Feladat | API-referencia |
 | --- | --- |
@@ -78,7 +78,7 @@ A minta *ContainerManagement* -projekt [RunContainerDemo](https://github.com/Azu
 
 ## <a name="item-examples"></a>Példák elemekre
 
-A minta *ItemManagement* -projekt [RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) metódusa a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-elemekről, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek használata](databases-containers-items.md).
+A minta *ItemManagement* -projekt [RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) metódusa a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-elemekről, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek használata](account-databases-containers-items.md).
 
 | Feladat | API-referencia |
 | --- | --- |

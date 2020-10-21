@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f5804819e3a7a63120fa8c64d8df27b16608ece1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798074"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277498"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>A csoportok adatainak frissítése a saját alkalmazások portálon
 
-Használhatja munkahelyi vagy iskolai fiókját a webalapú **My apps** portálon, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, a profil-és fiókadatok frissítését, a **csoportok** adatainak megtekintését, valamint az alkalmazások és csoportok **hozzáférési felülvizsgálatának** elvégzését. Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
+Használhatja munkahelyi vagy iskolai fiókját a webalapú **My apps** -portálon, amellyel megtekintheti és elindíthatja a szervezete felhőalapú alkalmazásait, a profil-és fiókadatok frissítését, a **csoportok** adatainak megtekintését, valamint az alkalmazások és csoportok **hozzáférési felülvizsgálatait** . Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -44,13 +44,11 @@ Ha a rendszergazda engedélyt kapott a **csoportok** csempék megtekintésére, 
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
-    ![Alkalmazások lap a saját alkalmazások portálon](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    ![Alkalmazások lap a saját alkalmazások portálon](media/my-apps-portal-end-user-groups/my-apps-home-large.png)
 
-3. A csoporttal kapcsolatos információk megtekintéséhez válassza a **csoportok** csempét.
+3. A csoporttal kapcsolatos információk megtekintéséhez húzza le a **saját alkalmazások** menüt, és válassza a **saját csoportok** lehetőséget.
 
-    ![Csoportok lap a tulajdonos és a tagok csoportokkal](media/my-apps-portal/my-apps-portal-groups-page.png)
-
-4. Az engedélyei alapján a **csoportok** lapon a következőket végezheti el:
+4. Az engedélyei alapján a **saját csoportok** lapon a következőket végezheti el:
 
     - **Tekintse át a saját csoportokat.** Megtekintheti a szervezeten belül a **saját területén lévő csoportok adatait** . Egy adott csoportnév kiválasztásával további részleteket talál a csoportról, beleértve a csoport típusát, a tagok számát, a csatlakozási szabályzatot és az aktív tagok listáját.
 
@@ -164,7 +162,7 @@ Egy már meglévő csoportot is csatlakozhat a **csoportok** lapról, vagy megha
 
     ![Csatlakozás a csoportok oldalhoz, a kilépés gomb kiemelésével](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások elérése és használata a saját alkalmazások portálon](my-apps-portal-end-user-access.md).
 

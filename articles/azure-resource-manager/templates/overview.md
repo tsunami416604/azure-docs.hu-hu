@@ -3,12 +3,12 @@ title: Sablonok – Áttekintés
 description: A Azure Resource Manager-sablonok használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119361"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280040"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -124,7 +124,7 @@ Ha elképzeli, hogy a rétegek külön életciklusokkal rendelkeznek, akkor a h�
 
 A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsolt sablonok használata az Azure Resource Manager eszközben](linked-templates.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).
 * A sablonfájlok tulajdonságairól további információt az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakörben talál.
