@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9b2c5b24b88dd51596dfb5bd8b5f397419ca6e4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e72bd04bb41537546191b8ceb320c0722bd10146
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215195"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340291"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Az egyszeri bejelentkezés és a jogkivonatok testreszabásának kezelése egyéni házirendek használatával Azure Active Directory B2C
 
@@ -90,6 +90,45 @@ Az előző példában az alábbi értékek vannak megadva:
 
 > [!NOTE]
 > Az engedélyezési programkódot használó egylapos alkalmazások esetében a PKCE mindig 24 órás frissítési jogkivonat élettartama szükséges. [További információ a frissítési tokenek biztonsági vonatkozásairól a böngészőben](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
+
+## <a name="provide-optional-claims-to-your-app"></a>Opcionális jogcímek megadása az alkalmazás számára
+
+A [függő entitásra vonatkozó házirend technikai profiljának](relyingparty.md#technicalprofile) kimeneti jogcímei az alkalmazásnak visszaadott értékek. A kimeneti jogcímek hozzáadásával a jogcímeket a rendszer sikeres felhasználói út után kiállítja a jogkivonatba, és a rendszer elküldi az alkalmazásnak. Módosítsa a technikai profil elemet a függő entitás szakaszban a kívánt jogcímek kimeneti jogcímként való hozzáadásához.
+
+1. Nyissa meg az egyéni házirend-fájlt. Például SignUpOrSignin.xml.
+1. Keresse meg a OutputClaims elemet. Adja hozzá a tokenbe felvenni kívánt OutputClaim. 
+1. Állítsa be a kimeneti jogcímek attribútumait. 
+
+A következő példa hozzáadja a `accountBalance` jogcímet. Az accountBalance-jogcímet egyensúlyt kell elküldeni az alkalmazásnak. 
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <!--Add the optional claims here-->
+      <OutputClaim ClaimTypeReferenceId="accountBalance" DefaultValue="" PartnerClaimType="balance" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+A OutputClaim elem a következő attribútumokat tartalmazza:
+
+  - **ClaimTypeReferenceId** – egy jogcím típusának azonosítója már definiálva van a [ClaimsSchema](claimsschema.md) szakaszban a házirend fájl vagy a szülő házirend fájljában.
+  - **PartnerClaimType** – lehetővé teszi a jogcím nevének módosítását a jogkivonatban. 
+  - **DefaultValue** – alapértelmezett érték. Beállíthatja az alapértelmezett értéket is egy jogcím- [feloldóhoz](claim-resolver-overview.md), például a bérlő azonosítóját.
+  - **AlwaysUseDefaultValue** – az alapértelmezett érték használatának kényszerítése.
 
 ## <a name="next-steps"></a>Következő lépések
 

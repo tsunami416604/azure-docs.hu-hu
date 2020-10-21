@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68338341d47b8fa15d0bd88ea23e951210105fc4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84782812"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340784"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Több-bérlős felügyelet a Security Center
 
@@ -52,9 +52,9 @@ A nézetek és a műveletek alapvetően azonosak. Néhány példa:
 
 - A **speciális Cloud Defense-funkciók kezelése és egyebek**: a veszélyforrások elleni védelem különböző szolgáltatásainak kezelése, például az igény szerinti [(JIT)](security-center-just-in-time.md)virtuálisgép-hozzáférés, az [adaptív hálózatok megerősítése](security-center-adaptive-network-hardening.md), az [adaptív alkalmazások vezérlése](security-center-adaptive-application.md)stb.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk bemutatja, hogyan működik a több-bérlős felügyelet a Security Centerban. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Megerősítheti a biztonsági helyzeteket Azure Security Centerekkel](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának monitorozását.
 * [Azure Security Center GYIK](faq-general.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Ismerje meg az Azure Lighthouse nagyvállalati forgatókönyveit – megismerheti,](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) hogy az Azure Lighthouse hogyan egyszerűsítheti le a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure ad-bérlőt használ.
+* [Ismerje meg az Azure Lighthouse nagyvállalati forgatókönyveit – megismerheti,](../lighthouse/concepts/enterprise.md) hogy az Azure Lighthouse hogyan egyszerűsítheti le a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure ad-bérlőt használ.

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 6b4b5fe5d7dffbcacc804500cc1f3f8f07f0090d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758540"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131139"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Hitelkártya hozzáadása vagy frissítése az Azure-ban
 
@@ -32,7 +32,7 @@ Microsoft Ügyfélszerződés esetén a fizetési módok a számlázási profilo
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Hitelkártyák kezelése Azure-előfizetés esetében
 
-A következő szakaszok azokra az ügyfelekre érvényesek, akik számlázási fiókkal rendelkeznek a Microsoft Online Services Programhoz. Ismerje meg, hogyan [ellenőrizheti számlázási fiókjának típusát](#check-the-type-of-your-account). Ha a számlázási fiók típusa Microsoft Online Services Program, a fizetési módok egyéni Azure-előfizetésekhez vannak társítva. Ha hibaüzenetet kap a hitelkártya hozzáadása után, lásd a [hitelkártya az Azure-regisztrációkor történő elutasítását](/azure/cost-management-billing/manage/troubleshoot-declined-card) ismertető cikket.
+A következő szakaszok azokra az ügyfelekre érvényesek, akik számlázási fiókkal rendelkeznek a Microsoft Online Services Programhoz. Ismerje meg, hogyan [ellenőrizheti számlázási fiókjának típusát](#check-the-type-of-your-account). Ha a számlázási fiók típusa Microsoft Online Services Program, a fizetési módok egyéni Azure-előfizetésekhez vannak társítva. Ha hibaüzenetet kap a hitelkártya hozzáadása után, lásd a [hitelkártya az Azure-regisztrációkor történő elutasítását](./troubleshoot-declined-card.md) ismertető cikket.
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Módosíthatja az előfizetéshez tartozó hitelkártyát új hitelkártya hozzáadásával.
 

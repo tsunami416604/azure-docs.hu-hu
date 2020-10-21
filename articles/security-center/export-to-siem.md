@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 0800c0d6fb2cf57b919d29ac354d2d89c06c7aeb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b4458a2b37a3da83591e101344d08c3090868696
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946656"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341804"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Riasztások továbbítása SIEM, SOAR vagy IT Service Management megoldásba
 
@@ -60,7 +60,7 @@ A Security Center a Microsoft Graph biztonsági API-val való beépített integr
 Ezzel az API-val a **teljes bérlő** (és számos más Microsoft biztonsági termékből származó adatok) riasztásait továbbíthatja harmadik féltől származó Siem és más népszerű platformokra:
 
 - **Splunk Enterprise és splunk Cloud**  -  [A Splunk Microsoft Graph biztonsági API-Add-On használata](https://splunkbase.splunk.com/app/4564/) 
-- **Power bi**  -  [Kapcsolódjon a Microsoft Graph biztonsági API-hoz Power bi Desktop](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-graph-security)
+- **Power bi**  -  [Kapcsolódjon a Microsoft Graph biztonsági API-hoz Power bi Desktop](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow**  -  [Kövesse a Microsoft Graph Security API-alkalmazás ServiceNow-tárolóból történő telepítésének és konfigurálásának utasításait](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar**  -  [IBM eszköz-támogatási modulja Azure Security Center Microsoft Graph API-n keresztül](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
 - **Palo Alto hálózatok**, **Anomali**, **kilátó**, **inspark**és több [Microsoft Graph biztonsági API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
@@ -84,7 +84,7 @@ Riasztások továbbítása a **ArcSight**, a **splunk**, a **SumoLogic**, a sysl
 > Az exportált adattípusok esemény-sémáinak megtekintéséhez keresse fel az [Event hub esemény-sémáit](https://aka.ms/ASCAutomationSchemas).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oldal azt ismerteti, hogyan biztosítható, hogy a Azure Security Center riasztási adatai elérhetők legyenek a SIEM, a SOAR vagy a ITSM eszközben. Kapcsolódó anyagok esetében lásd:
 

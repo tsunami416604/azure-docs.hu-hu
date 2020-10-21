@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 345535ae52b9a271bcee5ff7a2b651af144624f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684711"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132380"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Előfizetés számlázásának áttekintése REST API-kkal
 
@@ -32,7 +32,7 @@ Authorization: Bearer
 
 A `{subscriptionID}` paraméter megadása kötelező, és az előfizetési célt azonosítja.
 
-A `{billingPeriod}` paraméter megadása kötelező, és az aktuális [számlázási időszakot](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) határozza meg.
+A `{billingPeriod}` paraméter megadása kötelező, és az aktuális [számlázási időszakot](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) határozza meg.
 
 A `${startDate}` és az `${endDate}` paraméter megadása kötelező ehhez a példához, de a végponthoz nem kötelezők. Sztringként határozzák meg a dátumtartományt ÉÉÉÉ-HH-NN formátumban (például: `'20180501'` és `'20180615'`).
 
@@ -41,7 +41,7 @@ A következő fejlécek megadása kötelező:
 |Kérelem fejléce|Leírás|
 |--------------------|-----------------|
 |*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|
-|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 ## <a name="response"></a>Válasz
 
@@ -85,7 +85,7 @@ A **value** alatt lévő összes elem egy szolgáltatás használatával kapcsol
 |**meterDetails** | A használattal kapcsolatos részletes adatok. |
 |**nextLink**| Amikor meg van határozva, a következő részletező „oldal” URL-címét határozza meg. Üres, amikor az oldal az utolsó. |
 
-Ez a példa rövidítve van; a válaszmezők teljes leírását a [használati részletek felsorolásában](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy) találja.
+Ez a példa rövidítve van; a válaszmezők teljes leírását a [használati részletek felsorolásában](/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy) találja.
 
 A többi állapotkód hibafeltételt jelez. Ilyen esetekben a válaszobjektum ad magyarázatot arra, miért hiúsult meg a kérelem.
 
@@ -101,6 +101,6 @@ A többi állapotkód hibafeltételt jelez. Ilyen esetekben a válaszobjektum ad
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse meg [a vállalati jelentéskészítés áttekintését](https://docs.microsoft.com/azure/billing/billing-enterprise-api) ismertető szakaszt
-- Vizsgálja meg az [Enterprise Billing REST API](https://docs.microsoft.com/rest/api/billing/) használatának lehetőségét
-- [Bevezetés az Azure REST API használatába](https://docs.microsoft.com/rest/api/azure/)
+- Tekintse meg [a vállalati jelentéskészítés áttekintését](./enterprise-api.md) ismertető szakaszt
+- Vizsgálja meg az [Enterprise Billing REST API](/rest/api/billing/) használatának lehetőségét
+- [Bevezetés az Azure REST API használatába](/rest/api/azure/)

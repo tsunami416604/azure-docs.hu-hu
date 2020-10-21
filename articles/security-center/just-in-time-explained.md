@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 73b1ba5e93ad82498938055db50abb665849f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449008"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340019"
 ---
-# <a name="understanding-just-in-time-jit-vm-access"></a>Igény szerinti (JIT) VM-hozzáférés ismertetése
+# <a name="understanding-just-in-time-jit-vm-access"></a>Az igény szerinti (JIT) virtuálisgép-hozzáférés ismertetése
 
 Ez az oldal ismerteti a Azure Security Center igény szerinti (JIT) virtuálisgép-hozzáférési funkciójának alapelveit, valamint az ajánlás mögötti logikát.
 
@@ -40,14 +40,14 @@ Ennek a dilemmának a megoldásához Azure Security Center JIT-t kínál. A JIT 
 
 ## <a name="how-jit-operates-with-network-security-groups-and-azure-firewall"></a>Hogyan működik a JIT a hálózati biztonsági csoportokkal és a Azure Firewallokkal
 
-Ha engedélyezi a virtuális gépek igény szerinti elérését, kiválaszthatja a virtuális gépen azokat a portokat, amelyeken a bejövő forgalom le lesz tiltva. Security Center biztosítja, hogy a [hálózati biztonsági csoport](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) és a [Azure Firewall szabályok](https://docs.microsoft.com/azure/firewall/rule-processing)a kiválasztott portokra vonatkozó összes bejövő forgalmat megtagadva legyenek. Ezek a szabályok korlátozzák az Azure-beli virtuális gépek felügyeleti portjaihoz való hozzáférést, és megvédik azokat a támadásokkal szemben. 
+Ha engedélyezi a virtuális gépek igény szerinti elérését, kiválaszthatja a virtuális gépen azokat a portokat, amelyeken a bejövő forgalom le lesz tiltva. Security Center biztosítja, hogy a [hálózati biztonsági csoport](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) és a [Azure Firewall szabályok](../firewall/rule-processing.md)a kiválasztott portokra vonatkozó összes bejövő forgalmat megtagadva legyenek. Ezek a szabályok korlátozzák az Azure-beli virtuális gépek felügyeleti portjaihoz való hozzáférést, és megvédik azokat a támadásokkal szemben. 
 
 Ha már léteznek más szabályok a kiválasztott portokhoz, akkor a meglévő szabályok prioritást élveznek az új "minden bejövő forgalom tiltása" szabályban. Ha nincsenek meglévő szabályok a kiválasztott portokon, akkor az új szabályok elsődleges prioritást kapnak a NSG és a Azure Firewall.
 
-Amikor egy felhasználó hozzáférést kér egy virtuális géphez, Security Center ellenőrzi, hogy a felhasználó rendelkezik [-e Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) az adott virtuális géphez. Ha a kérést jóváhagyják, Security Center konfigurálja a NSG és a Azure Firewall, hogy engedélyezze a bejövő forgalmat a kiválasztott portokra a megfelelő IP-címről (vagy tartományból) a megadott időtartamra. Az idő lejárta után Security Center visszaállítja a NSG az előző állapotokra. A már létrehozott kapcsolatok nincsenek megszakítva.
+Amikor egy felhasználó hozzáférést kér egy virtuális géphez, Security Center ellenőrzi, hogy a felhasználó rendelkezik [-e Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) az adott virtuális géphez. Ha a kérést jóváhagyják, Security Center konfigurálja a NSG és a Azure Firewall, hogy engedélyezze a bejövő forgalmat a kiválasztott portokra a megfelelő IP-címről (vagy tartományból) a megadott időtartamra. Az idő lejárta után Security Center visszaállítja a NSG az előző állapotokra. A már létrehozott kapcsolatok nincsenek megszakítva.
 
 > [!NOTE]
-> A JIT nem támogatja a [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview)által vezérelt Azure-tűzfalak által védett virtuális gépeket.
+> A JIT nem támogatja a [Azure Firewall Manager](../firewall-manager/overview.md)által vezérelt Azure-tűzfalak által védett virtuális gépeket.
 
 
 

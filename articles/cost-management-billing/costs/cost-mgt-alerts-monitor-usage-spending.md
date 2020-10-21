@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 72e9fd0d5a178897cf84b2babe4c02f7ef920841
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531338"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131904"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Költségriasztások használata a használat és a kiadások monitorozásához
 
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Cost Management-riasztáso
 
 ## <a name="budget-alerts"></a>Költségvetési riasztások
 
-A költségvetési riasztások értesítést küldenek arról, ha a költségek használat vagy költség alapján elérik vagy túllépik a [költségvetés riasztási feltételében](tutorial-acm-create-budgets.md) meghatározott összeget. A Cost Management-költségvetéseket az Azure Portal vagy az [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) API segítségével tudja létrehozni.
+A költségvetési riasztások értesítést küldenek arról, ha a költségek használat vagy költség alapján elérik vagy túllépik a [költségvetés riasztási feltételében](tutorial-acm-create-budgets.md) meghatározott összeget. A Cost Management-költségvetéseket az Azure Portal vagy az [Azure Consumption](/rest/api/consumption) API segítségével tudja létrehozni.
 
 Az Azure Portalon a költségvetéseket a költségek határozzák meg. Az Azure Consumption API használatakor a költségvetések a költségek vagy a felhasználás mértéke alapján lesznek meghatározva. A költségvetési riasztások a költségalapú és a használatalapú költségvetést is támogatják. A költségvetési riasztások automatikusan jönnek létre, amikor teljesülnek a költségvetési riasztás feltételei. Az Azure Portalon megtekintheti az összes költségriasztást. Amint létrejön egy riasztás, megjelenik a költségriasztásokban. A rendszer riasztási e-mailt is küld a költségvetés riasztási címzettjeinek listájában szereplők számára.
 

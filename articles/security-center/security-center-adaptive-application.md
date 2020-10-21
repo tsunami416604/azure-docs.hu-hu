@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: c580dd26c64a27b88b4416e85da101b78782013e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076980"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339713"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -52,7 +52,7 @@ Ha az ismert alkalmazások listáját definiálja, és riasztásokat állít el�
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
-|Támogatott gépek:|![Igen ](./media/icons/yes-icon.png) , Windows és Linux rendszerű Azure-és nem Azure-beli gépek<br>![Igen ](./media/icons/yes-icon.png) [Azure arc](https://docs.microsoft.com/azure/azure-arc/) -gépek|
+|Támogatott gépek:|![Igen ](./media/icons/yes-icon.png) , Windows és Linux rendszerű Azure-és nem Azure-beli gépek<br>![Igen ](./media/icons/yes-icon.png) [Azure arc](../azure-arc/index.yml) -gépek|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági olvasó** és **olvasó** szerepkörök a csoportok és az ismert biztonságos alkalmazások listáját egyaránt megtekinthetik<br>A **közreműködő** és a **biztonsági rendszergazdai** szerepkörök egyaránt módosíthatják a csoportokat és az ismert alkalmazások listáját|
 |Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
@@ -85,7 +85,7 @@ Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazás-vezérlők la
     - **Nincs javaslat** – az alkalmazások meghatározott engedélyezési listáját nem tartalmazó gépek, és amelyek nem támogatják a szolgáltatást. A gép a következő okok miatt lehet ebben a lapon:
       - Hiányzik egy Log Analytics ügynök
       - Az Log Analytics ügynök nem küld eseményeket
-      - Ez egy olyan Windows-gép, amelyen már meglévő [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) -házirend van engedélyezve egy csoportházirend-objektum vagy egy helyi biztonsági házirend segítségével.
+      - Ez egy olyan Windows-gép, amelyen már meglévő [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) -házirend van engedélyezve egy csoportházirend-objektum vagy egy helyi biztonsági házirend segítségével.
 
       > [!TIP]
       > Security Centernek legalább két hétig kell lennie, hogy meghatározza a számítógépek csoportjaira vonatkozó egyedi ajánlásokat. Azok a gépek, amelyek nemrég lettek létrehozva, vagy olyan előfizetésekhez tartoznak, amelyek csak nemrég voltak engedélyezve az Azure Defenderrel, a **No javaslat** lapon jelennek meg.
@@ -224,7 +224,7 @@ Ha a gépet az egyik csoportból a másikba helyezi át, a rendszer az alkalmaz�
 
 Az adaptív alkalmazások programozott módon felügyeletéhez használja a REST API. 
 
-A teljes API-dokumentáció [itt](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols)található.
+A teljes API-dokumentáció [itt](/rest/api/securitycenter/adaptiveapplicationcontrols)található.
 
 A REST API elérhető függvények:
 
@@ -245,5 +245,5 @@ A REST API elérhető függvények:
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan használhatja az adaptív alkalmazások vezérlését Azure Security Center az Azure-beli és nem Azure-alapú gépeken futó alkalmazások engedélyezési listájainak definiálásához. Ha többet szeretne megtudni Security Center más felhőalapú munkaterhelés-védelmi funkcióival kapcsolatban, tekintse meg a következőt:
 
-* [Igény szerinti (JIT) VM-hozzáférés ismertetése](just-in-time-explained.md)
+* [Az igény szerinti (JIT) virtuálisgép-hozzáférés ismertetése](just-in-time-explained.md)
 * [Az Azure Kubernetes-fürtök védelme](defender-for-kubernetes-introduction.md)

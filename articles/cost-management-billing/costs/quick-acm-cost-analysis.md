@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 62651f611654fa601752308ac2fa7f4c388297d6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297861"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132839"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -32,7 +32,7 @@ Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
 A költségelemzés különböző Azure-fióktípusokat támogat. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md). A költségadatok megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához.
 
-További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../../cost-management/assign-access-acm-data.md).
+További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](./assign-access-acm-data.md).
 
 Új előfizetés esetén nem használhatja azonnal a Cost Management szolgáltatásait. Akár 48 órára is szükség lehet, hogy a Cost Management összes szolgáltatását használhassa.
 
@@ -108,7 +108,7 @@ Ha kikapcsolja a kiadások előrejelzését, a jövőbeli dátumok esetében nem
 
 Általánosságban elmondható, hogy a felhasznált erőforrásokra vonatkozó adatok vagy értesítések 8–12 órán belül jelennek meg.
 
-**Csoportosítást** végezhet általános tulajdonságok alapján a költségek lebontásához és a legfontosabb közreműködők azonosításához. Az erőforráscímkék szerinti csoportosításhoz például válassza ki azt a címkekulcsot, amely alapján csoportosítani szeretne. A költségek az egyes címkeértékek szerint vannak lebontva egy külön szegmenssel az olyan erőforrások számára, amelyeken nincs alkalmazva az adott címke.  A csoportosítási és szűrési lehetőségekkel kapcsolatban a [csoportosítási és szűrési lehetőségeket](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter) ismertető szakaszban talál további információt.
+**Csoportosítást** végezhet általános tulajdonságok alapján a költségek lebontásához és a legfontosabb közreműködők azonosításához. Az erőforráscímkék szerinti csoportosításhoz például válassza ki azt a címkekulcsot, amely alapján csoportosítani szeretne. A költségek az egyes címkeértékek szerint vannak lebontva egy külön szegmenssel az olyan erőforrások számára, amelyeken nincs alkalmazva az adott címke.  A csoportosítási és szűrési lehetőségekkel kapcsolatban a [csoportosítási és szűrési lehetőségeket](./group-filter.md) ismertető szakaszban talál további információt.
 
 A legtöbb [Azure-erőforrás támogatja a címkézést](../../azure-resource-manager/management/tag-support.md). Ugyanakkor néhány címke nem érhető el a Költségkezelés és számlázás területen. Továbbá az erőforráscsoport-címkék sem támogatottak. A címkék támogatása a címke erőforráson való alkalmazása *utáni* jelentett használatra vonatkozik. A címkék nem jelennek meg visszamenőlegesen a költségösszesítések esetében.
 

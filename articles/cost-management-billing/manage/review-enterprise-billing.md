@@ -7,12 +7,12 @@ ms.subservice: enterprise
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 652348d5feb7e382287c91536f1479f9aec126e1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 777c8549d79f820c1847e711969919df128cebd3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031806"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132414"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Nagyvállalati regisztráció számlázásának áttekintése REST API-kkal
 
@@ -37,9 +37,9 @@ A következő fejlécek megadása kötelező:
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
 |*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|  
-|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [API-kulcsra](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [API-kulcsra](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
+Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
 
 
 ## <a name="response"></a>Válasz  
@@ -90,9 +90,9 @@ A következő fejlécek megadása kötelező:
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
 |*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|  
-|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [API-kulcsra](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [API-kulcsra](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
+Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
 
 ### <a name="response"></a>Válasz  
 
@@ -146,9 +146,9 @@ A következő fejlécek megadása kötelező:
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
 |*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|  
-|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [API-kulcsra](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [API-kulcsra](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
+Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
 
 ### <a name="response"></a>Válasz  
 
@@ -183,6 +183,6 @@ Az alábbi példa az `1234` vállalati regisztráció REST API-jának kimenetét
 Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [regisztrációs fiókok használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy) kapcsolatos szakaszban találja.
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse meg [a vállalati jelentéskészítés áttekintését](https://docs.microsoft.com/azure/billing/billing-enterprise-api) ismertető szakaszt
-- Vizsgálja meg az [Enterprise Billing REST API](https://docs.microsoft.com/rest/api/billing/) használatának lehetőségét   
-- [Bevezetés az Azure REST API használatába](https://docs.microsoft.com/rest/api/azure/)   
+- Tekintse meg [a vállalati jelentéskészítés áttekintését](./enterprise-api.md) ismertető szakaszt
+- Vizsgálja meg az [Enterprise Billing REST API](/rest/api/billing/) használatának lehetőségét   
+- [Bevezetés az Azure REST API használatába](/rest/api/azure/)

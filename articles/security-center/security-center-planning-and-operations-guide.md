@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713796"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341243"
 ---
 # <a name="planning-and-operations-guide"></a>Tervezési és működtetési útmutató
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.
@@ -135,7 +135,7 @@ A Azure Security Center a Log Analytics ügynököt használja – ez ugyanaz az
 
 ### <a name="agent"></a>Ügynök
 
-Ha a biztonsági házirendben engedélyezve van az automatikus kiépítés, a Log Analytics ügynök ( [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) vagy [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)rendszerhez) az összes támogatott Azure-beli virtuális gépre és a létrehozott újakra van telepítve. Ha a virtuális gépen vagy számítógépen már telepítve van a Log Analytics ügynök, Azure Security Center a jelenleg telepített ügynököt fogja használni. Az ügynök folyamata nem invazív, és nagyon csekély hatással van a virtuális gépek teljesítményére.
+Ha a biztonsági házirendben engedélyezve van az automatikus kiépítés, a Log Analytics ügynök ( [Windows](../azure-monitor/platform/agent-windows.md) vagy [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)rendszerhez) az összes támogatott Azure-beli virtuális gépre és a létrehozott újakra van telepítve. Ha a virtuális gépen vagy számítógépen már telepítve van a Log Analytics ügynök, Azure Security Center a jelenleg telepített ügynököt fogja használni. Az ügynök folyamata nem invazív, és nagyon csekély hatással van a virtuális gépek teljesítményére.
 
 A Windows Log Analytics ügynökének a 443-es TCP-portot kell használnia. További részleteket talál a [Hibaelhárításról szóló cikkben](security-center-troubleshooting-guide.md).
 
@@ -217,7 +217,7 @@ A következő példában gyanús RDP-tevékenységre figyelmeztető üzenetet l�
 
 ![Gyanús tevékenység](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
-Ezen a lapon a támadás idejére, a forrás eszköznevére és a megcélzott virtuális gépre vonatkozó adatokat, illetve a javasolt következő lépésre vonatkozó információkat talál. Bizonyos esetekben előfordulhat, hogy a támadás forrására vonatkozó információ üres. Ezzel kapcsolatban további információkat talál a [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) (Hiányzó forrásadatok az Azure Security Center riasztásaiban) című cikkben.
+Ezen a lapon a támadás idejére, a forrás eszköznevére és a megcélzott virtuális gépre vonatkozó adatokat, illetve a javasolt következő lépésre vonatkozó információkat talál. Bizonyos esetekben előfordulhat, hogy a támadás forrására vonatkozó információ üres. Ezzel kapcsolatban további információkat talál a [Missing Source Information in Azure Security Center Alerts](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts) (Hiányzó forrásadatok az Azure Security Center riasztásaiban) című cikkben.
 
 A feltört rendszer azonosítása után futtathat egy korábban létrehozott munkafolyamat- [automatizálást](workflow-automation.md) . Ezek olyan eljárások gyűjteményei, amelyeket Security Center lehet végrehajtani a riasztások indítása után.
 
@@ -228,11 +228,11 @@ Az [incidensekre adott válaszokkal kapcsolatos videók Azure Security Center & 
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
 * [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
-* [Partneri megoldások monitorozása Azure Security Centerokkal](security-center-partner-solutions.md) – megtudhatja, hogyan figyelheti a partneri megoldások állapotát.
+* [Partneri megoldások monitorozása Azure Security Centerokkal](./security-center-partner-integration.md) – megtudhatja, hogyan figyelheti a partneri megoldások állapotát.
 * [Azure Security Center GYIK](faq-general.md) – gyakori kérdések a szolgáltatás használatával kapcsolatban.
-* [Azure Security Blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security Blog](/archive/blogs/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

@@ -1,15 +1,15 @@
 ---
 title: Billentyűparancsok az Azure Resource Graph Explorerben Azure Portal
 description: A Azure Portal Azure Resource Graph Explorer támogatja a billentyűparancsokat a műveletek végrehajtásához és a Navigálás megkönnyítéséhez.
-ms.date: 08/25/2020
+ms.date: 10/21/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdb53e079adf2f65180c15ab93da4f8343e3bab5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146436"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340121"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Az Azure Resource Graph Explorerrel használható billentyűparancsok
 
@@ -24,7 +24,7 @@ Ez a cikk a Azure Portal Azure Resource Graph Explorer-lapján működő billent
 |Behúzás növelése |<kbd>CTRL</kbd> + <kbd>]</kbd> |<kbd>Cmd</kbd> + <kbd>]</kbd> |
 |A vonal mozgatása lefelé |<kbd>ALT</kbd> + <kbd>↓</kbd> |<kbd>Lehetőség</kbd> + <kbd>↓</kbd> |
 |A sor feljebb helyezése |<kbd>ALT</kbd> + <kbd>↑</kbd> |<kbd>Lehetőség</kbd> + <kbd>↑</kbd> |
-|Csere |<kbd>CTRL</kbd> + <kbd>F</kbd> |<kbd>Cmd</kbd> + <kbd>ALT</kbd> + <kbd>F</kbd> |
+|Csere |<kbd>CTRL</kbd> + <kbd>H</kbd> |<kbd>Cmd</kbd> + <kbd>H</kbd> |
 |Az összes kijelölése |<kbd>CTRL</kbd> + <kbd>A</kbd> |<kbd>Cmd</kbd> + <kbd>A</kbd> |
 |Kijelölés lefelé |<kbd>Váltás</kbd> + <kbd>↓</kbd> |<kbd>Váltás</kbd> + <kbd>↓</kbd> |
 |Kijelölés jobbra |<kbd>Váltás</kbd> + <kbd>→</kbd> |<kbd>Váltás</kbd> + <kbd>→</kbd> |

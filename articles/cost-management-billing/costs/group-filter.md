@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 82e542eafe1578a969c4348fe7562ba1da106e2c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ac9828ca61009eb3ee39412169b2b454b9ecbd00
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683402"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131870"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>Csoportosítási és szűrési lehetőségek a költségelemzésben
 
@@ -49,10 +49,10 @@ Az alábbi táblázat felsorolja a költségelemzésben elérhető leggyakoribb 
 | **Szolgáltatásnév** vagy **Fogyasztásmérő kategóriája** | Költségek lebontása az Azure-szolgáltatás szerint. | A vásárlások és a Marketplace-használat **nem alkalmazható** vagy **nem hozzárendelt** értékként jelennek meg. |
 | **Szolgáltatásszint** vagy **Fogyasztásmérő alkategóriája** | A költségek lebontása az Azure fogyasztásmérőjének osztályozási alkategóriái alapján. | A vásárlások és a Marketplace-használat **nem alkalmazható** vagy **nem hozzárendelt** értékként jelennek meg. |
 | **Előfizetés** | Költségek lebontása az Azure-előfizetés és az AWS csatolt fiókja alapján. | A vásárlások és a bérlői erőforrások **nem alkalmazható** értékként jelenhetnek meg. |
-| **Tag** | Költségek lebontása egy adott címkekulcs címkeértékei alapján. | A címkék nem érhetők el a vásárlásokhoz, az előfizetésekhez nem társított bérlői erőforrásokhoz, az erőforráscsoporthoz nem üzembe helyezett előfizetési erőforrásokhoz vagy a klasszikus erőforrásokhoz. Egyes szolgáltatások nem tartalmaznak címkéket a használati adatokban. További információ [a címkék támogatásáról az egyes erőforrástípusokra vonatkozóan](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
+| **Tag** | Költségek lebontása egy adott címkekulcs címkeértékei alapján. | A címkék nem érhetők el a vásárlásokhoz, az előfizetésekhez nem társított bérlői erőforrásokhoz, az erőforráscsoporthoz nem üzembe helyezett előfizetési erőforrásokhoz vagy a klasszikus erőforrásokhoz. Egyes szolgáltatások nem tartalmaznak címkéket a használati adatokban. További információ [a címkék támogatásáról az egyes erőforrástípusokra vonatkozóan](../../azure-resource-manager/management/tag-support.md). |
 
 A kifejezésekkel kapcsolatos további információ: [Az Azure használati adatait és díjait tartalmazó fájl kifejezéseinek ismertetése](../understand/understand-usage.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Indítsa el a költségelemzést](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis).
+- [Indítsa el a költségelemzést](./quick-acm-cost-analysis.md).

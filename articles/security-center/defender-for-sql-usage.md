@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a532418ebc5cab08b06f8dde87e8126bf8e96ffe
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: aee886e4e5ccaa3e07851ba839532f47c0a46ef8
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217167"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342042"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
 
@@ -33,7 +33,7 @@ A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenci
 |Kiadás állapota:|Előnézet|
 |Árképzési|A **gépeken futó Azure Defender szolgáltatás** számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik.|
 |Védett SQL-verziók:|Azure SQL Server (a Microsoft támogatási szolgálata által érintett összes verzió)|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Azure Defender beállítása a gépeken futó SQL-kiszolgálókhoz
@@ -49,13 +49,13 @@ A fentiek mindegyikét alább találja.
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>1. lépés A Log Analytics-ügynök kiépítése az SQL Server gazdagépén:
 
 - **SQL Server Azure** -beli virtuális gépen – ha az SQL-gépe Azure-beli virtuális gépen üzemel, akkor [automatikusan kiépítheti a log Analytics-ügynököt](security-center-enable-data-collection.md#workspace-configuration). Azt is megteheti, hogy a manuális eljárást követve bevezeti [a Azure stack virtuális gépeket](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
-- **SQL Server az Azure arc** -ban – ha a SQL Server egy [Azure arc](https://docs.microsoft.com/azure/azure-arc/) -gépen üzemel, akkor a log Analytics-ügynököt a Security Center javaslat használatával telepítheti: "log Analytics ügynökének telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)". Azt is megteheti, hogy az [Azure arc dokumentációjában](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)követheti a manuális eljárást.
+- **SQL Server az Azure arc** -ban – ha a SQL Server egy [Azure arc](../azure-arc/index.yml) -gépen üzemel, akkor a log Analytics-ügynököt a Security Center javaslat használatával telepítheti: "log Analytics ügynökének telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)". Azt is megteheti, hogy az [Azure arc dokumentációjában](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)követheti a manuális eljárást.
 
 - **Helyszíni SQL Server** – ha a SQL Server Azure arc nélküli helyszíni Windows-gépen üzemel, két lehetőség közül választhat az Azure-hoz való csatlakozáshoz:
     
-    - Az **Azure arc üzembe helyezése** – bármely Windows-gépet összekapcsolhat Security Centerhoz. Az Azure arc azonban mélyebb integrációt tesz lehetővé az *összes* Azure-környezetben. Ha beállítja az Azure-ívet, a portálon megjelenik a **SQL Server – Azure arc** oldal, és a biztonsági riasztások az oldal dedikált **Biztonság** lapján jelennek meg. Ezért az első és ajánlott lehetőség az [Azure arc beállítása a gazdagépen](https://docs.microsoft.com/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-windows) , és kövesse az Azure-beli **SQL Server vonatkozó**utasításokat.
+    - Az **Azure arc üzembe helyezése** – bármely Windows-gépet összekapcsolhat Security Centerhoz. Az Azure arc azonban mélyebb integrációt tesz lehetővé az *összes* Azure-környezetben. Ha beállítja az Azure-ívet, a portálon megjelenik a **SQL Server – Azure arc** oldal, és a biztonsági riasztások az oldal dedikált **Biztonság** lapján jelennek meg. Ezért az első és ajánlott lehetőség az [Azure arc beállítása a gazdagépen](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) , és kövesse az Azure-beli **SQL Server vonatkozó**utasításokat.
         
-    - **A Windows rendszerű gép összekapcsolása az Azure arc nélkül** – ha úgy dönt, hogy a Windows-gépen futó SQL Servert az Azure arc használata nélkül kívánja összekapcsolni, kövesse a Windows rendszerű [gépek összekapcsolása a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+    - **A Windows rendszerű gép összekapcsolása az Azure arc nélkül** – ha úgy dönt, hogy a Windows-gépen futó SQL Servert az Azure arc használata nélkül kívánja összekapcsolni, kövesse a Windows rendszerű [gépek összekapcsolása a Azure monitor](../azure-monitor/platform/agent-windows.md).
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>2. lépés Engedélyezze a választható csomagot Security Center díjszabási és beállítási lapján:
@@ -75,7 +75,7 @@ A fentiek mindegyikét alább találja.
     A csomag a kiválasztott munkaterülethez csatlakoztatott összes SQL-kiszolgálón engedélyezve lesz. A védelem teljes mértékben aktív lesz az SQL Server példány első újraindítása után.
 
     >[!TIP] 
-    > Új munkaterület létrehozásához kövesse az [log Analytics-munkaterület létrehozása](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)című témakör utasításait.
+    > Új munkaterület létrehozásához kövesse az [log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md)című témakör utasításait.
 
 
 1. Szükség esetén az e-mail-értesítések konfigurálása a biztonsági riasztásokhoz. 
@@ -118,7 +118,7 @@ Az Azure Defender-riasztások a Security Center riasztások lapján, az erőforr
 
 1. A riasztásokat önállóan, részletes szervizelési lépésekkel és vizsgálati információkkal tervezték meg. Részletesebben is megvizsgálhat további Azure Security Center és Azure Sentinel-képességeket a szélesebb körű nézet érdekében:
 
-    * A további vizsgálatok érdekében engedélyezze SQL Server naplózási funkcióját. Ha Ön Azure Sentinel-felhasználó, feltöltheti az SQL-naplózási naplókat a Windows biztonsági napló eseményeiből a Sentinel szolgáltatásba, és élvezheti a részletes nyomozást. [További információ a SQL Server naplózásról](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15&preserve-view=true).
+    * A további vizsgálatok érdekében engedélyezze SQL Server naplózási funkcióját. Ha Ön Azure Sentinel-felhasználó, feltöltheti az SQL-naplózási naplókat a Windows biztonsági napló eseményeiből a Sentinel szolgáltatásba, és élvezheti a részletes nyomozást. [További információ a SQL Server naplózásról](/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?preserve-view=true&view=sql-server-ver15).
     * A biztonsági helyzet javításához használja Security Center javaslatait az egyes riasztásokban jelzett gazdagéphez. Ez csökkenti a jövőbeli támadások kockázatát. 
 
     [További információ a riasztások kezeléséről és megválaszolásáról](security-center-managing-and-responding-alerts.md).
@@ -130,5 +130,5 @@ Kapcsolódó anyagok esetében tekintse meg a következő cikket:
 
 - [Biztonsági riasztások SQL Database és az Azure szinapszis Analyticshez (korábban SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [E-mail-értesítések beállítása biztonsági riasztásokhoz](security-center-provide-security-contact-details.md)
-- [További információ az Azure Sentinelről](https://docs.microsoft.com/azure/sentinel/)
-- [Azure Security Center adatbiztonsági csomagja](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+- [További információ az Azure Sentinelről](../sentinel/index.yml)
+- [Azure Security Center adatbiztonsági csomagja](../azure-sql/database/azure-defender-for-sql.md)

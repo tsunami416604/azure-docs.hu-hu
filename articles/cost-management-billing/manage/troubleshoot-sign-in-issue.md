@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3ee600cb72d06781f87c8f68640576afa50cea06
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686496"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132329"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Az Azure-előfizetés bejelentkezési hibáinak elhárítása
 
 Ez az útmutató segítséget nyújt az Azure Portalra vagy az Azure Fiókközpontba való bejelentkezéssel kapcsolatos hibák megoldásában.
 
 > [!NOTE]
-> Ha problémát tapasztal egy új Azure-fiók regisztrálásakor, tekintse meg az [Azure-előfizetés regisztrációjával kapcsolatos hibák elhárítását](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up) ismertető szakaszt.
+> Ha problémát tapasztal egy új Azure-fiók regisztrálásakor, tekintse meg az [Azure-előfizetés regisztrációjával kapcsolatos hibák elhárítását](./troubleshoot-azure-sign-up.md) ismertető szakaszt.
 
 ## <a name="page-hangs-in-the-loading-status"></a>Az oldal betöltési állapotban lefagy
 
@@ -66,7 +66,7 @@ Ez a probléma akkor fordul elő, ha nem a megfelelő címtárat választotta ki
 A probléma megoldása:
 
 - A jobb felső sarokban kattintson a fiókjára, és ellenőrizze, hogy a megfelelő Azure-címtárat választotta-e ki.
-- Ha a megfelelő Azure-címtár van kiválasztva, de továbbra is megjelenik a hibaüzenet, adja hozzá a fiókot [Tulajdonosként](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator).
+- Ha a megfelelő Azure-címtár van kiválasztva, de továbbra is megjelenik a hibaüzenet, adja hozzá a fiókot [Tulajdonosként](./add-change-subscription-administrator.md).
 
 **2. forgatókönyv:** Az [Azure Fiókközpontba](https://account.windowsazure.com/Subscriptions) történő bejelentkezéskor jelenik meg a hibaüzenet
 
@@ -80,11 +80,11 @@ Ellenőrizze, hogy az Ön által használt fiók a Fiókadminisztrátor. Annak e
 
 Az Azure-számlázással és -előfizetésekkel kapcsolatos további hibaelhárítási cikkek
 
-- [Elutasított bankkártya](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Az előfizetésre való regisztrációval kapcsolatos problémák](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
-- [Nem található előfizetés](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Vállalati költségek nézet letiltva](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
-- [Az Azure-számlázás dokumentációja](https://docs.microsoft.com/azure/cost-management-billing/)
+- [Elutasított bankkártya](./troubleshoot-declined-card.md)
+- [Az előfizetésre való regisztrációval kapcsolatos problémák](./troubleshoot-azure-sign-up.md)
+- [Nem található előfizetés](./no-subscriptions-found.md)
+- [Vállalati költségek nézet letiltva](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Az Azure-számlázás dokumentációja](../index.yml)
 
 ## <a name="contact-us-for-help"></a>Ha segítségre van szüksége, vegye fel velünk a kapcsolatot.
 

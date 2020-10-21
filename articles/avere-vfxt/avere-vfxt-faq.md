@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 647a9792384a21dfc191371ef444cbdc098bc819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272691"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342365"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
 
@@ -160,7 +160,7 @@ Az SSD-k leválasztása és újbóli csatlakoztatása nem támogatott. Előfordu
 
 ### <a name="does-the-system-encrypt-the-cache"></a>Titkosítja a rendszeren a gyorsítótárat?
 
-Az adatlemezek a lemezek között vannak, de nincs titkosítva. Maguk a lemezek azonban titkosítva is lehetnek. További információ: [a házirendek biztonságossá tétele és használata az Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
+Az adatlemezek a lemezek között vannak, de nincs titkosítva. Maguk a lemezek azonban titkosítva is lehetnek. További információ: [a házirendek biztonságossá tétele és használata az Azure-beli virtuális gépeken](../virtual-machines/security-policy.md#encryption).
 
 ## <a name="technical-networking"></a>Technikai: hálózatkezelés
 
@@ -259,7 +259,7 @@ Nem. Az archiválási tárterületre vonatkozó szolgáltatói szerződés (SLA)
 
 A ritka elérésű rétegbeli blob Storage használata általában nem ajánlott az Azure Core Filer avere-vFXT. A lassú elérési szint alacsonyabb tárolási költségeket nyújt, de magasabb üzemeltetési költségeket is biztosít. (További részletekért lásd a [blob díjszabásának blokkolása](<https://azure.microsoft.com/pricing/details/storage/blobs/>) című témakört.) Ha az adatok elérése és módosítása vagy törlése gyakran megtörténik, vegye fontolóra a gyors használatot.
 
-A [hozzáférési szintek](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) további információt biztosítanak arról, hogy mikor érdemes a ritka elérésű rétegbeli tárterületet vFXT Core filerként használni.
+A [hozzáférési szintek](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier) további információt biztosítanak arról, hogy mikor érdemes a ritka elérésű rétegbeli tárterületet vFXT Core filerként használni.
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>Hogyan titkosítani a BLOB-tárolót?
 

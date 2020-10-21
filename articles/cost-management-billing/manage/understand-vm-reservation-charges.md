@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ee1d9ff8145051bbbe6b65004f7f358b5fdade
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686445"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132142"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Az Azure-foglalási kedvezmény alkalmazása virtuális gépekre
 
@@ -57,7 +57,7 @@ Windows rendszerű virtuálisgép-példányok futtatásakor a foglalás az infra
 
 ## <a name="discount-can-apply-to-different-sizes"></a>A kedvezmény különböző méretekre alkalmazható
 
-Ha egy Reserved VM Instances-példány megvásárlásakor kiválasztja a **Példányméret-rugalmasságra optimalizálva** beállítást, akkor a kedvezmény általi lefedettség a virtuális gép kiválasztott méretére vonatkozik. Ez vonatkozhat az ugyanazon sorozatú példányméret-rugalmassági csoportban található más virtuálisgép-méretekre is. További információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
+Ha egy Reserved VM Instances-példány megvásárlásakor kiválasztja a **Példányméret-rugalmasságra optimalizálva** beállítást, akkor a kedvezmény általi lefedettség a virtuális gép kiválasztott méretére vonatkozik. Ez vonatkozhat az ugyanazon sorozatú példányméret-rugalmassági csoportban található más virtuálisgép-méretekre is. További információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/reserved-vm-instance-size-flexibility.md) ismertető cikket.
 
 ## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>A Premium Storage virtuális gépekre a nem prémium szintű kedvezmények nem vonatkoznak
 
