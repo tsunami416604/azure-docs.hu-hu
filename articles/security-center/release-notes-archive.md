@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6bb335ad7783c180ceeaafde955d6ac9dcb8799
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289803"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280122"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archiválja a Azure Security Center újdonságait?
 
@@ -28,6 +28,50 @@ Ez az oldal a következő információkat tartalmazza:
 - Új funkciók
 - Hibajavítások
 - Elavult funkciók
+
+
+## <a name="april-2020"></a>2020. április
+
+Az áprilisi frissítések a következők:
+- [A dinamikus megfelelőségi csomagok már általánosan elérhetők](#dynamic-compliance-packages-are-now-generally-available)
+- [A Azure Security Center ingyenes szinten már szerepelnek a személyazonossággal kapcsolatos javaslatok](#identity-recommendations-now-included-in-azure-security-center-free-tier)
+
+
+### <a name="dynamic-compliance-packages-are-now-generally-available"></a>A dinamikus megfelelőségi csomagok már általánosan elérhetők
+
+A Azure Security Center szabályozási megfelelőségi irányítópult mostantól tartalmazza a **dinamikus megfelelőségi csomagokat** (mostantól általánosan elérhető) a további iparági és szabályozási szabványok nyomon követéséhez.
+
+A dinamikus megfelelőségi csomagok hozzáadhatók az előfizetéshez vagy a felügyeleti csoportjához a Security Center biztonsági házirend lapról. Ha standard vagy teljesítménytesztet készített elő, a szabvány a szabályzatoknak megfelelő megfelelőségi irányítópulton jelenik meg, amely az értékelésként leképezett összes megfelelőségi adattal együtt szerepel. A rendszer letölthetővé teszi az előkészített szabványok bármelyikének összegző jelentését.
+
+Most hozzáadhat olyan szabványokat, mint például a:
+
+- **NIST SP 800-53 R4**
+- **SWIFT CSP CSCF – v2020**
+- **Egyesült Királyság hivatalos és egyesült királysági NHS**
+- **Canada Federal PBMM**
+- **Azure CIS 1.1.0 (új)** (az Azure CIS 1.1.0 teljes körű képviselete)
+
+Emellett a közelmúltban hozzáadta az **Azure biztonsági teljesítménytesztet**, a Microsoft által készített Azure-specifikus iránymutatásokat a biztonsági és megfelelőségi ajánlott eljárásokhoz a közös megfelelőségi keretrendszerek alapján. Az irányítópulton további szabványok is támogatottak lesznek, amint azok elérhetővé válnak.  
+ 
+További információ [a szabványok készletének testreszabásáról a szabályozási megfelelőségi irányítópulton](update-regulatory-compliance-packages.md).
+
+
+### <a name="identity-recommendations-now-included-in-azure-security-center-free-tier"></a>A Azure Security Center ingyenes szinten már szerepelnek a személyazonossággal kapcsolatos javaslatok
+
+A Azure Security Center ingyenes szinten már általánosan elérhetők az identitásra és a hozzáférésre vonatkozó biztonsági javaslatok. Ez annak a erőfeszítésnek a részét képezi, hogy a Cloud Security testtartás-felügyeleti (CSPM) funkciók ingyenesek legyenek. Eddig ezek a javaslatok csak a standard díjszabási szinten voltak elérhetők.
+
+Az identitásra és a hozzáférésre vonatkozó javaslatok például a következők:
+
+- "A többtényezős hitelesítést engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon."
+- "Az előfizetéshez legfeljebb három tulajdonost kell kijelölni."
+- "Az elavult fiókokat el kell távolítani az előfizetésből."
+
+Ha előfizetése van az ingyenes díjszabási szinten, a biztonsági pontszámok hatással lesznek a változásokra, mivel soha nem értékelték a személyazonosságát és a hozzáférés biztonságát.
+
+További információ az [identitással és a hozzáférési javaslatokkal](recommendations-reference.md#recs-identity)kapcsolatban.
+
+További információ az [identitás és a hozzáférés figyeléséről](security-center-identity-access.md).
+
 
 
 ## <a name="march-2020"></a>2020. március

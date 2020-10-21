@@ -40,6 +40,8 @@
       href: quickstart-create-workspace.md
     - name: Az Azure parancssori felület használata. Synapse-munkaterület létrehozása az Azure CLI-vel
       href: quickstart-create-workspace-cli.md
+    - name: Az Azure parancssori felület használata. Synapse-munkaterület létrehozása az Azure PowerShell-lel
+      href: quickstart-create-workspace-powershell.md
     - name: Üzembe helyezés sablon használatával
       href: quickstart-deployment-template-workspaces.md
     - name: A Synapse Studio használata
@@ -388,7 +390,7 @@
           items:
             - name: SQL-készletek modellpontozási varázslója
               href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
-            - name: Regressziós kísérlet futtatása Azure AutoML használatával (pontozás a DW-ben)
+            - name: Regressziós kísérlet futtatása Azure AutoML használatával
               href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 'Eszközök integrációja (AI, ETL, BI)'
       items:
@@ -483,9 +485,9 @@
             - name: Csatlakozás a Cosmos DB-hez készült Azure Synapse Linkhez
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Power BI és kiszolgáló nélküli SQL-készlet használata Azure Cosmos DB elemzéséhez
-              href: ../cosmos-db/synapse-link-power-bi.mdtoc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Cosmos DB-adatok lekérdezése kiszolgáló nélküli SQL-készlettel
-              href: ./sql/query-cosmos-db-analytical-store.md
+              href: ./sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Az Azure Cosmos DB elemzési tárának lekérdezése az Apache Sparkkal
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Adatok másolása Synapse Linkből SQL-készletbe Apache Spark használatával
@@ -925,7 +927,7 @@
       href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/synapse@v43.3.0+incompatible'
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.synapse?view=azure-dotnet-preview
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API-k
       href: /rest/api/synapse/

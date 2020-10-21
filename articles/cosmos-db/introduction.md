@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2301219db250b97fd7ea2eb3814f5eba2c70148a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569866"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278423"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -56,11 +56,11 @@ Az adatbázis-séma és az indexek szinkronizálása az alkalmazás sémájával
 
 ### <a name="battle-tested-database-service"></a>A tesztelt adatbázis-szolgáltatás csata
 
-A Cosmos DB az Azure alapvető szolgáltatása. Közel egy évtizednél Cosmos DBt számos Microsoft-termék felhasználta a kritikus fontosságú alkalmazások globális méretekben történő felhasználásához, többek között a Skype, az Xbox, a Microsoft 365, az Azure és sok más szolgáltatáshoz. Napjainkban Cosmos DB az egyik leggyorsabban bővülő szolgáltatás az Azure-ban, amelyet számos külső ügyfél és olyan kritikus fontosságú alkalmazás használ, amely rugalmas skálázást, kulcsrakész globális elosztást, többrégiós írási replikálást igényel az olvasási és írási műveletek alacsony késése és magas rendelkezésre állása érdekében.
+A Cosmos DB egy alapvető szolgáltatás az Azure-ban. Közel egy évtizednél Cosmos DBt számos Microsoft-termék felhasználta a kritikus fontosságú alkalmazások globális méretekben történő felhasználásához, többek között a Skype, az Xbox, a Microsoft 365, az Azure és sok más szolgáltatáshoz. Napjainkban Cosmos DB az egyik leggyorsabban bővülő szolgáltatás az Azure-ban, amelyet számos külső ügyfél és olyan kritikus fontosságú alkalmazás használ, amely rugalmas skálázást, kulcsrakész globális elosztást, többrégiós írási replikálást igényel az olvasási és írási műveletek alacsony késése és magas rendelkezésre állása érdekében.
 
 ### <a name="ubiquitous-regional-presence"></a>Mindennapos regionális jelenlét
 
-A Cosmos DB az összes Azure-régióban elérhető, beleértve a nyilvános felhőben 54 + régiókat, az [Azure China 21Vianet](https://www.azure.cn/en-us/), az Azure germanyot, a Azure Governmentt és a védelmi minisztérium (DoD) Azure Government. Tekintse [meg Cosmos db regionális jelenlétét](regional-presence.md).
+A Cosmos DB az összes Azure-régióban elérhető, beleértve a nyilvános felhőben 54 + régiókat, az [Azure China 21Vianet](https://www.azure.cn/en-us/), az Azure germanyot, a Azure Governmentt és a védelmi minisztérium (DoD) Azure Government. Tekintse meg [a Azure Cosmos db magas rendelkezésre állását](high-availability.md).
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>Alapértelmezés szerint biztonságos, vállalati használatra kész
 
@@ -91,7 +91,7 @@ A Cosmos DB API-k közül választhat a Cosmos-adatbázisban tárolt adataival v
 
 Az olyan [webes, mobil-, játék-és IoT-alkalmazások](use-cases.md) , amelyek nagy mennyiségű adatot, olvasási és írási műveleteket igényelnek [globális szinten](distribute-data-globally.md) , a különböző adatokhoz közel valós válaszidő esetén, Cosmos db [garantált magas rendelkezésre állást](https://azure.microsoft.com/support/legal/sla/cosmos-db/), magas átviteli sebességet, kis késést és hangolt konzisztenciát biztosítanak. Ismerje meg, hogyan használhatók a Azure Cosmos DB a [IoT és a telematika](use-cases.md#iot-and-telematics), a [kiskereskedelmi és a marketing](use-cases.md#retail-and-marketing), a [játékok](use-cases.md#gaming) és a [webes és mobil alkalmazások](use-cases.md#web-and-mobile-applications)létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Cosmos DB alapfogalmai: [kulcsrakész globális terjesztés](distribute-data-globally.md) , [particionálás](partitioning-overview.md) és [kiépített átviteli sebesség](request-units.md).
 

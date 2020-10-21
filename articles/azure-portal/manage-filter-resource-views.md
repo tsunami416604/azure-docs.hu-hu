@@ -3,15 +3,15 @@ title: Azure-erőforrások adatainak megtekintése és szűrése
 description: Szűrje az adatokat, és használjon különböző nézeteket az Azure-erőforrások jobb megismeréséhez.
 author: mgblythe
 ms.service: azure-portal
-ms.topic: quickstart
+ms.topic: how-to
 ms.author: mblythe
 ms.date: 09/11/2020
-ms.openlocfilehash: 3b9783e7f452b38292c784d44ddb60672e150961
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f6185e1c4042110f446337c1b2c2904fefdae7a9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650398"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280249"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure-erőforrások adatainak megtekintése és szűrése
 
@@ -45,7 +45,7 @@ Mentheti a kiválasztott szűrőket és oszlopokat tartalmazó nézeteket is. N�
 
 ## <a name="summarize-resources-with-visuals"></a>Erőforrások összefoglalása vizualizációkkal
 
-Az eddig megtekintett nézetek _listáját_láthatjuk, de vannak olyan _összegző nézetek_ is, amelyek vizualizációkat tartalmaznak. Ezeket a nézeteket mentheti és használhatja, ahogyan a nézeteket is listázhatja. A szűrők a két típusú nézet között maradnak. A szokásos nézetek, például az alább látható **hely** nézet, valamint az adott szolgáltatásokhoz kapcsolódó nézetek, például a virtuális gépek **állapot** nézete.
+Az eddig megtekintett nézetek _listáját_láthatjuk, de vannak olyan _összegző nézetek_ is, amelyek vizualizációkat tartalmaznak. Ezeket a nézeteket mentheti és használhatja, ahogyan a nézeteket is listázhatja. A szűrők a két típusú nézet között maradnak. Szabványos nézetek érhetők el, például az alább látható **hely** nézet, valamint az adott szolgáltatásokhoz kapcsolódó nézetek, például az Azure Storage **állapot** nézete.
 
 :::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Az összes erőforrás Azure Portal nézete":::
 
@@ -81,7 +81,7 @@ Erőforrás-gráf lekérdezésének futtatása:
 
     További információ: [az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](../governance/resource-graph/first-query-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Portal áttekintése](azure-portal-overview.md)
 

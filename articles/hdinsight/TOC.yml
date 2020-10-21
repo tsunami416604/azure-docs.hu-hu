@@ -647,6 +647,8 @@
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: Az Apache Kafka használata az IoT Hubbal
               href: ./kafka/apache-kafka-connector-iot-hub.md
+            - name: Egyesített sémajegyzék
+              href: ./kafka/schema-registry.md
             - name: Streaming folyamatok létrehozása
               items:
                 - name: 'Apache Spark, Apache Kafka és Azure Cosmos DB'
@@ -845,6 +847,8 @@
               href: ./hdinsight-troubleshoot-hive.md
             - name: Az Apache Hive-naplók a teljes lemezterületet elfoglalják az átjárócsomóponton
               href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
+            - name: A Hive biztonsági beállításai
+              href: ./interactive-query/hdinsight-security-options-for-hive.md
 - name: ML-szolgáltatások
   items:
     - name: Áttekintés

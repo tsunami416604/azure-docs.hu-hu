@@ -930,7 +930,7 @@
     - name: Kibocsátási megjegyzések
       href: release-notes.md
     - name: Mintakód
-      href: 'https://aka.ms/servicefabricsamples'
+      href: /samples/browse/?products=azure
     - name: Támogatási lehetőségek
       href: service-fabric-support.md
     - name: Service Fabric-verziók

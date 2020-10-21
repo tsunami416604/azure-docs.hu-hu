@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: dc88b8dd433880cab9060418d1e610f3b217bcae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f36ae05ef5a87f05edd9318b5b8cbe028108c9d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821088"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312058"
 ---
-|Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek engedélyezéséhez identitás nélküli virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) |Ez a szabályzat egy rendszerhez rendelt felügyelt identitást hoz létre az Azure-ban üzemeltetett virtuális gépekhez, amelyek a vendég konfigurációja által támogatottak, de nincsenek felügyelt identitások. A rendszer által hozzárendelt felügyelt identitás az összes vendég konfigurációs hozzárendelés előfeltétele, és a számítógépeket a vendég konfigurációs házirendjének definícióinak használata előtt hozzá kell adni a gépekhez. A vendég konfigurációval kapcsolatos további információkért látogasson el a következő webhelyre: [https://aka.ms/gcpol](https://aka.ms/gcpol) . |módosítása |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenNone_Prerequisite.json) |
 |[Rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek engedélyezéséhez felhasználó által hozzárendelt identitással rendelkező virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) |Ez a szabályzat egy rendszerhez rendelt felügyelt identitást hoz létre az Azure-ban üzemeltetett virtuális gépekhez, amelyek a vendég konfigurációja által támogatottak, és rendelkeznek legalább egy felhasználó által hozzárendelt identitással, de nem rendelkeznek rendszer által hozzárendelt felügyelt identitással. A rendszer által hozzárendelt felügyelt identitás az összes vendég konfigurációs hozzárendelés előfeltétele, és a számítógépeket a vendég konfigurációs házirendjének definícióinak használata előtt hozzá kell adni a gépekhez. A vendég konfigurációval kapcsolatos további információkért látogasson el a következő webhelyre: [https://aka.ms/gcpol](https://aka.ms/gcpol) . |módosítása |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenUser_Prerequisite.json) |

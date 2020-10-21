@@ -3,12 +3,12 @@ title: Azure Service Fabric – a Service Fabric Application kulcstartó-referen
 description: Ez a cikk azt ismerteti, hogyan használható a Service-Fabric KeyVaultReference támogatása az alkalmazás titkos kulcsaihoz.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2221bb3e8e3ee3181b2cff70107dccc203954cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261141"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313798"
 ---
 # <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric alkalmazások KeyVaultReference támogatása (előzetes verzió)
 
@@ -18,7 +18,7 @@ A felhőalapú alkalmazások készítése során gyakran előforduló kihívás 
 > Az előzetes verziójú funkció használata éles környezetben nem ajánlott.
 
 > [!NOTE]
-> A kulcstartó referenciájának előzetes verziója csak a [verzióval](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) ellátott titkokat támogatja. A verzióval nem rendelkező titkok nem támogatottak.
+> A kulcstartó referenciájának előzetes verziója csak a [verzióval](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) ellátott titkokat támogatja. A verzióval nem rendelkező titkok nem támogatottak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

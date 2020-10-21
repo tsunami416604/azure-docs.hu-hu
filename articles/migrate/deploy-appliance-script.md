@@ -3,12 +3,12 @@ title: Azure Migrate berendezés beállítása parancsfájlokkal
 description: Megtudhatja, hogyan állíthat be egy Azure Migrate készüléket parancsfájl használatával
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438913"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317332"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Berendezés beállítása parancsfájlsal
 
@@ -16,7 +16,7 @@ Ez a cikk a VMware virtuális gépek és a Hyper-V virtuális gépek értékelé
 
 A készüléket a VMware és a Hyper-V virtuális gépekhez parancsfájl használatával, vagy a Azure Portalból letöltött sablon használatával telepítheti. A szkriptek használata akkor hasznos, ha nem tud virtuális gépet létrehozni a letöltött sablonnal.
 
-- A sablonok használatához kövesse a [VMware](tutorial-prepare-vmware.md) vagy a [Hyper-V](tutorial-prepare-hyper-v.md)oktatóanyagokat.
+- A sablonok használatához kövesse a [VMware](./tutorial-discover-vmware.md) vagy a [Hyper-V](./tutorial-discover-hyper-v.md)oktatóanyagokat.
 - Ha fizikai kiszolgálókon szeretné beállítani a készüléket, csak szkripteket használhat. Kövesse [ezt a cikket](how-to-set-up-appliance-physical.md).
 - Ha Azure Government felhőben szeretné beállítani a készüléket, kövesse [ezt a cikket](deploy-appliance-script-government.md).
 
@@ -26,7 +26,7 @@ A szkript beállítja a Azure Migrate készüléket egy meglévő fizikai gépre
 
 - A készülékként működni kívánó gépnek meg kell felelnie az alábbi hardver-és operációsrendszer-követelményeknek:
 
-Forgatókönyv | Követelmények
+Használati eset | Követelmények
 --- | ---
 VMware | Windows Server 2016, 32 GB memóriával, nyolc vCPU, körülbelül 80 GB lemezes tárolással
 Hyper-V | Windows Server 2016, 16 GB memóriával, nyolc vCPU, körülbelül 80 GB lemezes tárolással

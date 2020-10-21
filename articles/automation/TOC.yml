@@ -193,29 +193,33 @@
         - name: Változáskövetés és leltár
           items:
             - name: Áttekintés
-              href: change-tracking.md
+              href: change-tracking/overview.md
             - name: Régiók támogatása társított Log Analytics-munkaterület esetében
               href: how-to/region-mappings.md
             - name: Bekapcsolás
               items:
-                - name: A Change Tracking és az Inventory engedélyezése az Azure Portalról
-                  href: automation-enable-changes-from-browse.md
-                - name: A Change Tracking és az Inventory engedélyezése Azure-beli virtuális gépről
-                  href: automation-enable-changes-from-vm.md
-                - name: A Change Tracking és az Inventory engedélyezése Automation-fiókból
-                  href: automation-enable-changes-from-auto-acct.md
-                - name: A Change Tracking és az Inventory engedélyezése runbookból
-                  href: automation-enable-changes-from-runbook.md
+                - name: Engedélyezés az Azure Portalról
+                  href: change-tracking/enable-from-portal.md
+                - name: Engedélyezés Azure-beli virtuális gépről
+                  href: change-tracking/enable-from-vm.md
+                - name: Engedélyezés Automation-fiókból
+                  href: change-tracking/enable-from-automation-account.md
+                - name: Engedélyezés runbookból
+                  href: change-tracking/enable-from-runbook.md
             - name: A változáskövetés és a leltár kezelése
-              href: change-tracking-file-contents.md
+              href: change-tracking/manage-change-tracking.md
             - name: Leltárkezelés virtuális gépekről
-              href: automation-vm-inventory.md
+              href: change-tracking/manage-inventory-vms.md
             - name: Hatókör-konfigurációk használata
-              href: automation-scope-configurations-change-tracking.md
-            - name: Munkaterület leválasztása Automation-fiókról
-              href: automation-unlink-workspace-change-tracking.md
-            - name: Virtuális gépek eltávolítása a Change Trackingből és az Inventoryból
-              href: automation-remove-vms-from-change-tracking.md
+              href: change-tracking/manage-scope-configurations.md
+            - name: Riasztások konfigurálása
+              href: change-tracking/configure-alerts.md
+            - name: Letiltás
+              items:
+                - name: A Change Tracking és az Inventory eltávolítása
+                  href: change-tracking/remove-feature.md
+                - name: Virtuális gépek eltávolítása a Change Trackingből és az Inventoryból
+                  href: change-tracking/remove-vms-from-change-tracking.md
             - name: Hibaelhárítás
               items:
                 - name: Szolgáltatás üzembehelyezési problémáinak elhárítása
@@ -239,49 +243,49 @@
     - name: Frissítéskezelés
       items:
         - name: Áttekintés
-          href: update-management/update-mgmt-overview.md
+          href: update-management/overview.md
         - name: A társított Log Analytics-munkaterület esetében támogatott régiók
           href: how-to/region-mappings.md
         - name: Bekapcsolás
           items:
-            - name: Az Update Management engedélyezése Azure Resource Manager-sablonnal
-              href: update-management/update-mgmt-enable-template.md
-            - name: Az Update Management engedélyezése az Azure Portalról
-              href: update-management/update-mgmt-enable-portal.md
-            - name: Az Update Management engedélyezése Azure-beli virtuális gépről
-              href: update-management/update-mgmt-enable-vm.md
-            - name: Az Update Management engedélyezése Automation-fiókból
-              href: update-management/update-mgmt-enable-automation-account.md
-            - name: Az Update Management engedélyezése runbookból
-              href: update-management/update-mgmt-enable-runbook.md
+            - name: Engedélyezés Azure Resource Manager-sablonok használatával
+              href: update-management/enable-from-template.md
+            - name: Engedélyezés az Azure Portalról
+              href: update-management/enable-from-portal.md
+            - name: Engedélyezés Azure-beli virtuális gépről
+              href: update-management/enable-from-vm.md
+            - name: Engedélyezés Automation-fiókból
+              href: update-management/enable-from-automation-account.md
+            - name: Engedélyezés runbookból
+              href: update-management/enable-from-runbook.md
         - name: Virtuális gépek frissítéseinek kezelése
           items:
             - name: Bevezetés
-              href: update-management/update-mgmt-manage-updates-for-vm.md
+              href: update-management/manage-updates-for-vm.md
             - name: Megfelelőség kiértékelése
-              href: update-management/update-mgmt-view-update-assessments.md
+              href: update-management/view-update-assessments.md
             - name: Frissítések telepítése és állapot felülvizsgálata
-              href: update-management/update-mgmt-deploy-updates.md
+              href: update-management/deploy-updates.md
             - name: Előzetes és utólagos szkriptek használata
-              href: update-management/update-mgmt-pre-post-scripts.md
+              href: update-management/pre-post-scripts.md
             - name: Riasztások konfigurálása
-              href: update-management/update-mgmt-configure-alerts.md
+              href: update-management/configure-alerts.md
         - name: Integrálás a Configuration Managerrel
-          href: update-management/update-mgmt-mecmintegration.md
+          href: update-management/mecmintegration.md
         - name: Windows Update-ügyfél konfigurálása
-          href: update-management/update-mgmt-configure-wuagent.md
+          href: update-management/configure-wuagent.md
         - name: Dinamikus csoportok használata
-          href: update-management/update-mgmt-groups.md
+          href: update-management/configure-groups.md
         - name: Update Management-naplók lekérdezése
-          href: update-management/update-mgmt-query-logs.md
+          href: update-management/query-logs.md
         - name: Hatókör-konfigurációk használata
-          href: update-management/update-mgmt-scope-configuration.md
+          href: update-management/scope-configuration.md
         - name: Letiltás
           items:
             - name: Az Update Management eltávolítása
-              href: update-management/update-mgmt-remove-feature.md
+              href: update-management/remove-feature.md
             - name: Virtuális gépek eltávolítása az Update Managementből
-              href: update-management/update-mgmt-remove-vms.md
+              href: update-management/remove-vms.md
         - name: Hibaelhárítás
           items:
             - name: Szolgáltatás üzembehelyezési problémáinak elhárítása

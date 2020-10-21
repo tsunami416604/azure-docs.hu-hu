@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: c495e4135195d05dbb20c993f436cb42bd55fff6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 667d6a6726e6adfa84073c3bbd20ee4dc7c879cd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87506585"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282586"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-sql-api-database-and-container-using-azure-powershell"></a>Erőforrás-zárolás létrehozása az Azure Cosmos SQL API-adatbázishoz és-tárolóhoz Azure PowerShell használatával
 
@@ -47,8 +47,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) | Eltávolít egy erőforrás-zárolást. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](https://docs.microsoft.com/powershell/).
-
-További Azure Cosmos DB PowerShell-példaszkripteket az [Azure Cosmos DB PowerShell-szkriptek között](../../../powershell-samples.md) találhat.

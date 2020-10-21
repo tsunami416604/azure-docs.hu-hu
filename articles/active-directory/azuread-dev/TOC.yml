@@ -97,8 +97,6 @@
               href: howto-v1-enable-sso-android.md
             - name: Egyszeri bejelentkezés engedélyezése iOS rendszeren
               href: howto-v1-enable-sso-ios.md
-            - name: SAML-alapú SSO hibakeresése
-              href: howto-v1-debug-saml-sso-issues.md
         - name: Jogcímek konfigurálása
           items:
             - name: Szerepkörjogcímek konfigurálása

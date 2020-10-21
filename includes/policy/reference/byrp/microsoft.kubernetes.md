@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6c853667a95cd3688948f71d83866092bd207051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdae84f8df7f838186175d78219e9205daf09c37
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91859497"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310851"
 ---
-|Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[GitOps üzembe helyezése a Kubernetes-fürtön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Ez a szabályzat egy "sourceControlConfiguration" nevű Kubernetes-fürtöket helyez üzembe, így biztosítva, hogy a fürtök a definiált git-tárházból kapják meg az igazság forrását. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |DeployIfNotExists |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |
 |[Emelt szintű tárolók letiltása a Kubernetes-fürtben](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Ez a szabályzat nem engedélyezi a privilegizált tárolók létrehozását egy Kubernetes-fürtben. Ez a szabályzat általánosan elérhető a Kubernetes Service (ak) szolgáltatáshoz, valamint az AK-motor és az Azure arc-kompatibilis Kubernetes előzetes verziója. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |naplózás, megtagadás, letiltva |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |

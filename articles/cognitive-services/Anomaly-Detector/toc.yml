@@ -74,16 +74,8 @@
       href: 'https://arxiv.org/abs/1906.03821'
 - name: További források
   items:
-    - name: Támogatás
-      items:
-        - name: Támogatás kérése
-          href: 'https://aka.ms/adsupport'
-        - name: Stack Overflow
-          href: 'https://aka.ms/adso'
-        - name: MSDN
-          href: 'https://aka.ms/admsdn'
-        - name: Felhasználói vélemény
-          href: 'https://aka.ms/aduservoice'
+    - name: Támogatási lehetőségek
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
     - name: Díjszabás
       href: 'https://aka.ms/adpricing'
     - name: Régiónkénti rendelkezésre állás

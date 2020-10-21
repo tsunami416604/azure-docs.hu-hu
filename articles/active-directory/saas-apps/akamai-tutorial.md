@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329516"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319017"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai
 
@@ -26,9 +26,9 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Akamai a Azure A
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Akamai az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
-A Azure Active Directory és a Akamai vállalati alkalmazás-hozzáférés integrációja lehetővé teszi a felhőben vagy a helyszínen üzemeltetett örökölt alkalmazásokhoz való zökkenőmentes hozzáférést. Az integrált megoldás a Azure Active Directory modern képességeinek előnyeit veszi igénybe, például az [Azure ad feltételes hozzáférését](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal), [Azure ad Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) és [Azure ad Identity Governance](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview) az alkalmazás módosításainak vagy ügynökének telepítése nélkül való hozzáféréshez.
+A Azure Active Directory és a Akamai vállalati alkalmazás-hozzáférés integrációja lehetővé teszi a felhőben vagy a helyszínen üzemeltetett örökölt alkalmazásokhoz való zökkenőmentes hozzáférést. Az integrált megoldás a Azure Active Directory modern képességeinek előnyeit veszi igénybe, például az [Azure ad feltételes hozzáférését](../conditional-access/overview.md), [Azure ad Identity Protection](../identity-protection/overview-identity-protection.md) és [Azure ad Identity Governance](../governance/identity-governance-overview.md) az alkalmazás módosításainak vagy ügynökének telepítése nélkül való hozzáféréshez.
 
 Az alábbi ábrán az látható, hogy a Akamai EAA hogyan illeszkedik a szélesebb körű hibrid biztonságos hozzáférési forgatókönyvhöz
 
@@ -169,7 +169,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -589,14 +589,14 @@ Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Akamai-ben. A 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a Akamai csempére kattint, automatikusan be kell jelentkeznie arra a Akamai, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Akamai csempére kattint, automatikusan be kell jelentkeznie arra a Akamai, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
 - [A Akamai kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

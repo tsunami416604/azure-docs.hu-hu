@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan derítheti fel a helyszíni VMware virtuális g
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: f39ad3cbc357575f735b963346c8a8b0cc95e7c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e8f61c898b08cc0638597e77fd3260cb4593b2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442229"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311288"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>Oktatóanyag: VMware virtuális gépek felderítése kiszolgáló értékelésével
 
@@ -238,7 +238,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
    
    A PIN-kóddal való bejelentkezés nem támogatott.
 3. A sikeres bejelentkezést követően térjen vissza a webalkalmazáshoz. 
-4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő [engedélyekkel](tutorial-prepare-vmware.md#prepare-azure) a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
+4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő engedélyekkel a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
 1. A készülék sikeres regisztrálása után a **részletek megtekintése**lehetőségre kattintva megtekintheti a regisztráció részleteit.
 
 
@@ -248,7 +248,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfigurációjának és teljesítményének felderítéséhez.
 
 1. Az **1. lépés: vCenter Server hitelesítő adatok**megadása lapon kattintson a **hitelesítő adatok hozzáadása** lehetőségre a hitelesítő adatok rövid nevének megadásához, adja hozzá a **felhasználónevet** és a **jelszót** ahhoz a vCenter Server-fiókhoz, amelyet a berendezés a vCenter Server példányban található virtuális gépek felderítéséhez használ majd.
-    - Be kell állítania egy fiókot a szükséges engedélyekkel az [előző oktatóanyagban](tutorial-prepare-vmware.md#set-up-permissions-for-assessment).
+    - Be kell állítania egy fiókot a szükséges engedélyekkel az előző oktatóanyagban.
     - Ha a hatókör-felderítést meghatározott VMware-objektumokra (vCenter Server adatközpontokra, fürtökre, fürtökre, gazdagépekre, gazdagépekre vagy egyéni virtuális gépekre) szeretné alkalmazni, tekintse át az [ebben a cikkben](set-discovery-scope.md) szereplő utasításokat a Azure Migrate által használt fiók korlátozásához.
 1. A **2. lépés: adja meg a vCenter Server részleteket**lehetőségnél kattintson a **felderítési forrás hozzáadása** elemre, hogy a legördülő listából válassza ki a hitelesítő adatok rövid nevét, adja meg a vCenter Server példány **IP-címét/teljes tartománynevét** . A **portot** meghagyhatja az alapértelmezett értékre (443), vagy megadhat egy egyéni portot, amelyen vCenter Server figyeli, és kattintson a **Save (Mentés**) gombra.
 1. A Save (Mentés) gombra kattintva a készülék megpróbálja ellenőrizni a vCenter Serverhoz való kapcsolódást a megadott hitelesítő adatokkal, és megjeleníti az **ellenőrzési állapotot** a táblában a vCenter Server IP-cím/FQDN használatával.
@@ -266,7 +266,7 @@ A felderítés a következőképpen működik:
 - A telepített alkalmazások, szerepkörök és szolgáltatások felderítése hosszabb időt vesz igénybe. Az időtartam a felderített virtuális gépek számától függ. Az 500-es virtuális gépek esetében körülbelül egy óra telik, amíg az alkalmazás leltára megjelenik a Azure Migrate-portálon.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A [VMWare virtuális gépek felmérése](tutorial-assess-vmware.md) Azure-beli virtuális gépekre való áttelepítéshez.
+- A [VMWare virtuális gépek felmérése](./tutorial-assess-vmware-azure-vm.md) Azure-beli virtuális gépekre való áttelepítéshez.
 - [Tekintse át a](migrate-appliance.md#collected-data---vmware) berendezés által a felderítés során gyűjtött adatokat.

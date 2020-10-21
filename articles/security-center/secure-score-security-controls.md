@@ -1,5 +1,5 @@
 ---
-title: Biztonságos pontszám Azure Security Center
+title: Biztonsági pontszám az Azure Security Centerben
 description: Azure Security Center biztonságos pontszámának és biztonsági ellenőrzésének leírása
 services: security-center
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4897c1b54eff5eb06e0ef49f0c74e261f5a9687e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268264"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281285"
 ---
-# <a name="secure-score-in-azure-security-center"></a>Biztonságos pontszám Azure Security Center
+# <a name="secure-score-in-azure-security-center"></a>Biztonsági pontszám az Azure Security Centerben
 
 ## <a name="introduction-to-secure-score"></a>A biztonságos pontszám bemutatása
 
@@ -57,7 +57,7 @@ Security Center a pontszám kiemelten jelenik meg a portálon: ez az első dolog
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Szerezze be biztonságos pontszámát a REST API
 
-A pontszámot a [biztonságos pontszám API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) -n keresztül érheti el (jelenleg előzetes verzióban érhető el). Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a **Secure scores** API-t egy adott előfizetés pontszámának lekéréséhez. Emellett a **Secure score Controls** API használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
+A pontszámot a biztonságos pontszám API-n keresztül érheti el (jelenleg előzetes verzióban érhető el). Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a [Secure scores API](https://docs.microsoft.com/rest/api/securitycenter/securescores) -t egy adott előfizetés pontszámának lekéréséhez. Emellett a [Secure score Controls API](https://docs.microsoft.com/rest/api/securitycenter/securescorecontrols) használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
 
 ![Egyetlen biztonságos pontszám beolvasása az API-n keresztül](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -156,7 +156,7 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Nem engedélyezett hálózati hozzáférés korlátozása (max. pontszám 4)</p></strong>A szervezeten belüli végpontok közvetlen kapcsolódást biztosítanak a virtuális hálózatról a támogatott Azure-szolgáltatásokhoz. Az alhálózatban lévő virtuális gépek kommunikálhatnak az összes erőforrással. Ha korlátozni szeretné az alhálózaton belüli és az erőforrások közötti kommunikációt, hozzon létre egy hálózati biztonsági csoportot, és rendelje hozzá az alhálózathoz. A szervezetek a bejövő és kimenő szabályok létrehozásával korlátozhatják és védhetők a jogosulatlan forgalom ellen.</td>
-    <td class="tg-lboi"; width=55%>- A virtuális gépen lévő IP-továbbítást le kell tiltani<br>- A Kubernetes-szolgáltatásokban (előzetes verzió) meg kell határozni a jóváhagyott IP-tartományokat.<br>- ELAVULT A App Services elérését korlátozni kell (előzetes verzió)<br>- ELAVULT A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni<br>- A virtuális gépeket hálózati biztonsági csoporttal kell társítani<br>- A CORS nem teszi lehetővé minden erőforrás számára az API-alkalmazás elérését<br>- A CORS nem teszi lehetővé minden erőforrás számára a függvényalkalmazás elérését<br>- A CORS nem engedheti meg, hogy minden erőforrás hozzáférjen a webalkalmazáshoz<br>- A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz<br>- A távoli hibakeresést ki kell kapcsolni függvényalkalmazás<br>- A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz<br>- A hozzáférésnek korlátozva kell lennie az internetre irányuló virtuális gépekkel rendelkező, engedékeny hálózati biztonsági csoportoknak<br>- Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani<br>- A Kubernetes Azure Policy bővítményét telepíteni és engedélyezni kell a fürtökön (előzetes verzió)<br>- A tárolók csak az engedélyezett portokat figyelik (előzetes verzió)<br>- A szolgáltatásoknak csak az engedélyezett portok figyelésére kell figyelniük (előzetes verzió)<br>- A gazdagép hálózatkezelésének és portjainak használatát korlátozni kell (előzetes verzió)</td>
+    <td class="tg-lboi"; width=55%>- A virtuális gépen lévő IP-továbbítást le kell tiltani<br>- A Kubernetes-szolgáltatásokban (előzetes verzió) meg kell határozni a jóváhagyott IP-tartományokat.<br>- ELAVULT A App Services elérését korlátozni kell (előzetes verzió)<br>- ELAVULT A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni<br>- A virtuális gépeket hálózati biztonsági csoporttal kell társítani<br>- A CORS nem teszi lehetővé minden erőforrás számára az API-alkalmazás elérését<br>- A CORS nem teszi lehetővé minden erőforrás számára a függvényalkalmazás elérését<br>- A CORS nem engedheti meg, hogy minden erőforrás hozzáférjen a webalkalmazáshoz<br>- A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz<br>- A távoli hibakeresést ki kell kapcsolni függvényalkalmazás<br>- A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz<br>- A hozzáférésnek korlátozva kell lennie az internetre irányuló virtuális gépekkel rendelkező, engedékeny hálózati biztonsági csoportoknak<br>- Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani<br>- A Kubernetes Azure Policy bővítményét telepíteni és engedélyezni kell a fürtökön (előzetes verzió)<br>- A tárolók csak az engedélyezett portokat figyelik (előzetes verzió)<br>- A szolgáltatásoknak csak az engedélyezett portok figyelésére kell figyelniük (előzetes verzió)<br>- A gazdagép hálózatkezelésének és portjainak használatát korlátozni kell (előzetes verzió)<br>- A virtuális hálózatokat Azure Firewall kell védeni (előzetes verzió)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Adaptív alkalmazások vezérlésének alkalmazása (max. pontszám 3)</p></strong>Az adaptív alkalmazás-vezérlés (AAC) egy intelligens, automatizált és teljes körű megoldás, amellyel szabályozhatja, hogy mely alkalmazások futhatnak az Azure-ban és a nem Azure-beli gépeken. Emellett segít megerősíteni a gépeket a kártevők ellen.<br>A Security Center gépi tanulással hozza létre a számítógépek egy csoportjának ismert, biztonságos alkalmazásainak listáját.<br>A jóváhagyott alkalmazások listájának innovatív megközelítése a kezelési komplexitás nélkül biztosítja a biztonsági előnyöket.<br>Az AAC különösen fontos az olyan célra kiépített kiszolgálók esetében, amelyeknek adott alkalmazások futtatására van szükségük.</td>

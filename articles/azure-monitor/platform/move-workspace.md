@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d59fb0dc39103119edbc4096b506c588c38cece4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979689"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282872"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 
@@ -39,10 +39,12 @@ Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolás�
 - Azure Security Center
 
 >[!IMPORTANT]
-> **Azure Sentinel-ügyfelek:**
+> **Azure Sentinel-ügyfelek**
 > - A munkaterületre való üzembe helyezést követően az Azure Sentinel **jelenleg nem támogatja** a munkaterület áthelyezését más erőforráscsoportok vagy előfizetések számára. 
->
->   Ha már áthelyezte a munkaterületet, tiltsa le az összes aktív szabályt az **elemzés** alatt, majd engedélyezze újra az öt perc után. Ennek a legtöbb esetben a lehető leghatékonyabbnak kell lennie, de a rendszer nem támogatja, és a saját felelősségére kerül.
+> - Ha már áthelyezte a munkaterületet, tiltsa le az összes aktív szabályt az **elemzés** alatt, majd engedélyezze újra az öt perc után. Ennek a legtöbb esetben a lehető leghatékonyabbnak kell lennie, de a rendszer nem támogatja, és a saját felelősségére kerül.
+> 
+> **Riasztások**
+> - Az áthelyezés után az összes riasztást újra létre kell hozni, mivel az engedélyek a munkaterület Azure-erőforrás-AZONOSÍTÓján alapulnak, és a munkaterület áthelyezésével változnak. 
 
 ### <a name="delete-solutions-in-azure-portal"></a>Megoldások törlése Azure Portal
 A következő eljárással távolíthatja el a megoldásokat a Azure Portal használatával:

@@ -101,8 +101,10 @@
   items:
     - name: Alkalmazásintegráció
       items:
-        - name: Egy alkalmazás regisztrálása
+        - name: Webalkalmazás regisztrációja
           href: tutorial-register-applications.md
+        - name: Egyoldalas alkalmazás (SPA) regisztrációja
+          href: tutorial-register-spa.md
         - name: SAML-szolgáltató regisztrálása
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'

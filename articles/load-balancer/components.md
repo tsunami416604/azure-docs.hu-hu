@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 97b872c5fe0a155bb6e474f327f8d0c65e22b21f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930951"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317443"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
@@ -130,6 +130,7 @@ Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 
 ## <a name="limitations"></a>Korlátozások
 
+- További tudnivalók a Load Balancer [korlátairól](https://aka.ms/lblimits) 
 - A Load Balancer terheléselosztást és port továbbítást biztosít bizonyos TCP-vagy UDP-protokollokhoz. A terheléselosztási szabályok és a bejövő NAT-szabályok támogatják a TCP és az UDP használatát, de nem más IP-protokollok, beleértve az ICMP-t is.
 - A háttérbeli virtuális gép kimenő folyamata egy belső Load Balancer felületére sikertelen lesz.
 - Egy terheléselosztó-szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  

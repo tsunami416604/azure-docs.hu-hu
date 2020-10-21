@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ef7870363940a0db4ff09ae9ebd82eedb0e60495
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825641"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282278"
 ---
 # <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
 
@@ -32,11 +32,11 @@ A bejárati ajtó a 7. réteg (HTTP/HTTPS-réteg) használatával működik, és
 >[!NOTE]
 > Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. 
 > * Ha DNS-alapú globális útválasztást szeretne végezni, és **nem** rendelkezik a TRANSPORT Layer Security (TLS) protokoll leállítására ("SSL-kiszervezés"), a HTTP/HTTPS-kérelemre vagy az alkalmazás-réteg feldolgozására vonatkozó követelményekkel, tekintse át a [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
-> * Ha terheléselosztást szeretne betölteni a kiszolgálók között az alkalmazási réteg egyik régiójában, tekintse át [Application Gateway](../application-gateway/application-gateway-introduction.md)
+> * Ha terheléselosztást szeretne betölteni a kiszolgálók között az alkalmazási réteg egyik régiójában, tekintse át [Application Gateway](../application-gateway/overview.md)
 > * A hálózati réteg terheléselosztásának elvégzéséhez tekintse át [Load Balancer](../load-balancer/load-balancer-overview.md). 
 > 
 > A végpontok közötti forgatókönyvek igény szerint összekapcsolják ezeket a megoldásokat.
-> Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: [Az Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: [Az Azure terheléselosztási lehetőségeinek áttekintése](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="why-use-azure-front-door"></a>Miért érdemes az Azure bejárati ajtót használni?
 

@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 417a1dbc72c3b3c35c501351dcc8bda9dc95a78d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b2e94bfe1bef9ecdeaa4b2b84224967bb1c7741
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84431609"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281591"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>A Azure Cosmos DB API-hoz tartozó hírcsatorna módosítása a Cassandra-hoz
 
-A "Cassandra" Azure Cosmos DB API-n keresztüli [adatcsatorna](change-feed.md) -támogatás módosítása a Cassandra Query Language (CQL) lekérdezési predikátumán keresztül érhető el. Ezen predikátum-feltételek használatával lekérdezheti a Change feed API-t. Az alkalmazások az elsődleges kulcs (más néven partíciós kulcs) használatával is beszerezhetik a tábla módosításait, ahogy az a CQL-ben szükséges. Ezután az eredmények alapján további műveleteket hajthat végre. A tábla sorainak módosításait a rendszer a módosítási idő sorrendjében rögzíti, a rendezési sorrendet pedig egy partíciós kulcs garantálja.
+A "Cassandra" Azure Cosmos DB API-n keresztüli [adatcsatorna](change-feed.md) -támogatás módosítása a Cassandra Query Language (CQL) lekérdezési predikátumán keresztül érhető el. Ezen predikátum-feltételek használatával lekérdezheti a Change feed API-t. Az alkalmazások az elsődleges kulcs (más néven partíciós kulcs) használatával is beszerezhetik a tábla módosításait, ahogy az a CQL-ben szükséges. Ezután az eredmények alapján további műveleteket hajthat végre. A tábla sorainak módosításait a rendszer a módosítási idő sorrendjében rögzíti, a rendezési sorrendet pedig partíciós kulcsként.
 
 Az alábbi példa azt mutatja be, hogyan kérhető le egy módosítási hírcsatorna a Cassandra APIi tábla összes sorában a .NET használatával. Az predikátum COSMOS_CHANGEFEED_START_TIME () közvetlenül a CQL-n belül használható a változási csatornán lévő elemek lekérdezésére a megadott kezdési időpontból (ebben az esetben az aktuális datetime értéknél). A teljes minta letölthető [a C# nyelvhez itt és](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) a Javához [itt](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java).
 
@@ -144,6 +144,6 @@ A következő hibakódok és üzenetek támogatottak a Cassandra API változási
 
 * **Http-hibakód 429** – ha a módosítási csatornára korlátozott a ráta, üres lapot ad vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával](manage-cassandra-with-resource-manager.md)
