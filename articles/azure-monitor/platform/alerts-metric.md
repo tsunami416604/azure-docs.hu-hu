@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065862"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342161"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral
 
@@ -43,11 +43,11 @@ Az alábbi eljárás azt ismerteti, hogyan hozhat létre metrikus riasztási sza
 8. Ha a metrika dimenziókat tartalmaz, megjelenik egy megjelenített dimenziós tábla. Jelöljön ki egy vagy több értéket egy dimenzióban.
     - A megjelenített dimenzió értékei az elmúlt három nap mérőszám-adatain alapulnak.
     - Ha a keresett dimenzióérték nem jelenik meg, kattintson a "+" elemre egyéni érték hozzáadásához.
-    - Bármelyik dimenzióhoz **kiválaszthatja a lehetőséget \* ** is. **Válassza \* ki** dinamikusan méretezi a kijelölést egy dimenzió összes aktuális és jövőbeli értékére.
+    - Bármelyik dimenzió esetében*kiválaszthatja \* *az _ lehetőséget is. _*Válassza \* ki*_ dinamikusan méretezi a kijelölést egy dimenzió összes aktuális és jövőbeli értékére.
 
     A metrika riasztási szabálya kiértékeli a kiválasztott értékek összes kombinációjának feltételeit. [További információ a többdimenziós metrikák működésével kapcsolatos riasztásokról](alerts-metric-overview.md).
 
-9. Válassza ki a **küszöbérték** típusát, az **operátort**és az **összesítési típust**. Ez határozza meg azt a logikát, amelyet a metrika riasztási szabálya értékelni fog.
+9. Válassza ki a _*küszöbérték** típust, **operátort**és **összesítési típust**. Ez határozza meg azt a logikát, amelyet a metrika riasztási szabálya értékelni fog.
     - Ha **statikus** küszöbértéket használ, folytassa a **küszöbérték**meghatározásával. A metrikai diagram segítségével meghatározhatja, hogy mi lehet az ésszerű küszöbérték.
     - Ha **dinamikus** küszöbértéket használ, folytassa a **küszöbérték érzékenységének**meghatározásával. A metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket. [További információ a dinamikus küszöbértékek feltételének típusáról és az érzékenységi lehetőségekről](alerts-dynamic-thresholds.md).
 
@@ -154,8 +154,8 @@ A metrikus riasztási szabályokhoz dedikált PowerShell-parancsmagok érhetők 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Metrikai riasztások létrehozása Azure Resource Manager-sablonok használatával](./alerts-metric-create-templates.md).
-- A [metrikai riasztások működésének megismerése](alerts-metric-overview.md).
-- [Megtudhatja, hogyan működik a metrikák riasztásai a dinamikus küszöbértékek feltételével](alerts-dynamic-thresholds.md).
+- [Metrikus riasztások létrehozása Azure Resource Manager sablonok használatával](./alerts-metric-create-templates.md)
+- [A metrikai riasztások működésének ismertetése](alerts-metric-overview.md)
+- [Megtudhatja, hogyan működik a metrikák riasztásai a dinamikus küszöbértékek feltételével](alerts-dynamic-thresholds.md)
 - [A webes Hook sémájának ismertetése metrikus riasztásokhoz](./alerts-metric-near-real-time.md#payload-schema)
-
+- [A metrikus riasztásokkal kapcsolatos problémák elhárítása](alerts-troubleshoot-metric.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b6f4e50cac2f809172c2525ea9136a63e6bd9066
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107011"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341566"
 ---
 # <a name="access-built-in-metrics"></a>Beépített mérőszámok elérése
 
@@ -27,7 +27,7 @@ A metrikák elérését a gazdagépről a mérőszámok portjának kiírásával
 ```
 {
   "ExposedPorts": {
-    "9600/tcp": {},
+    "9600/tcp": {}
   },
   "HostConfig": {
     "PortBindings": {
@@ -50,7 +50,7 @@ Ha a edgeHub és a edgeAgent metrikáinak végpontját is szeretné leképezni, 
 
 A metrikák olyan címkéket tartalmaznak, amelyek segítenek azonosítani a begyűjtött metrika természetét. Az összes metrika a következő címkéket tartalmazza:
 
-| Címke | Leírás |
+| Címke | Description |
 |-|-|
 | iothub | Az az eszköz, amelyre az eszközt beszél |
 | edge_device | Az aktuális eszköz azonosítója |
@@ -62,7 +62,7 @@ A beépített hisztogramhoz és az összegző metrikához megadott quantiles 0,1
 
 A **edgeHub** modul a következő metrikákat állítja elő:
 
-| Név | Dimenziók | Leírás |
+| Name | Dimenziók | Description |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (műveleti forrás)<br> `id` (modul azonosítója) | Típus: számláló<br> GetTwin-hívások száma összesen |
 | `edgehub_messages_received_total` | `route_output` (az üzenetet küldő kimenet)<br> `id` | Típus: számláló<br> Az ügyfelektől fogadott üzenetek teljes száma |
@@ -85,7 +85,7 @@ A **edgeHub** modul a következő metrikákat állítja elő:
 
 A **edgeAgent** modul a következő metrikákat állítja elő:
 
-| Név | Dimenziók | Leírás |
+| Name | Dimenziók | Description |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Típus: mérőműszer<br> Az a mennyiség, ameddig a modul meg lett adva a központi telepítésben, és a futási állapotban volt. |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Típus: mérőműszer<br> A modul az üzemelő példányban megadott időtartamának mennyisége |
@@ -110,7 +110,7 @@ A **edgeAgent** modul a következő metrikákat állítja elő:
 | `edgeAgent_total_disk_write_bytes` | `module_name` | Típus: mérőműszer<br> A lemezre írt bájtok száma |
 | `edgeAgent_metadata` | `edge_agent_version`, `experimental_features`, `host_information` | Típus: mérőműszer<br> Az eszköz általános metaadatai. Az érték mindig 0, az adatok kódolása a címkék között történik. Figyelje meg `experimental_features` , hogy `host_information` JSON-objektumok. `host_information` úgy néz ki, mint ```{"OperatingSystemType": "linux", "Architecture": "x86_64", "Version": "1.0.10~dev20200803.4", "Provisioning": {"Type": "dps.tpm", "DynamicReprovisioning": false, "AlwaysReprovisionOnStartup": true}, "ServerVersion": "19.03.6", "KernelVersion": "5.0.0-25-generic", "OperatingSystem": "Ubuntu 18.04.4 LTS", "NumCpus": 6, "Virtualized": "yes"}``` . Megjegyzés: `ServerVersion` a Docker verziója, és `Version` a IoT Edge Security Daemon verziója. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure IoT Edge futtatókörnyezet és az architektúrájának ismertetése](iot-edge-runtime.md)
 * [A IoT Edge-ügynök és az IoT Edge hub-modulok ikrek tulajdonságai](module-edgeagent-edgehub.md)

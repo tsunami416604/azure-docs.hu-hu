@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 237565a7b72c3317e2c443f86965634ed7c9942c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f4dd6d67d60603ed6cad7056cff4bb07dcb1c2e5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336895"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149373"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Tudnivalók az Azure-előfizetés számlázási tulajdonjogának átadásáról
 
@@ -63,7 +63,7 @@ Az előfizetések Azure Portalon történő átadása az alábbi előfizetési t
 
 ## <a name="resources-transferred-with-subscriptions"></a>Előfizetésekkel együtt átadott erőforrások
 
-Az összes erőforrás, például virtuális gép, lemez és webhely át lesz helyezve az új fiókba. Ugyanakkor ha az előfizetést egy másik Azure AD-bérlőben található fiókba helyezi át, az előfizetés [rendszergazdai szerepkörei](../manage/add-change-subscription-administrator.md) és [Azure-beli szerepkör-hozzárendelései](../../role-based-access-control/role-assignments-portal.md) nem lesznek áthelyezve. Ezenkívül az [alkalmazásregisztrációkat](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) és más, bérlőspecifikus szolgáltatásokat sem adja át az előfizetéssel.
+Az összes erőforrás, például virtuális gép, lemez és webhely át lesz helyezve az új fiókba. Ugyanakkor ha az előfizetést egy másik Azure AD-bérlőben található fiókba helyezi át, az előfizetés [rendszergazdai szerepkörei](../manage/add-change-subscription-administrator.md) és [Azure-beli szerepkör-hozzárendelései](../../role-based-access-control/role-assignments-portal.md) nem lesznek áthelyezve. Ezenkívül az [alkalmazásregisztrációkat](../../active-directory/develop/quickstart-register-app.md) és más, bérlőspecifikus szolgáltatásokat sem adja át az előfizetéssel.
 
 ## <a name="transfer-account-ownership-to-another-countryregion"></a>Fiók tulajdonjogának átvitele másik országba/régióba
 
@@ -99,7 +99,7 @@ Az Azure Portalon megtekintheti, hogy mely felhasználók rendelkeznek olyan Azu
 Az [Azure-beli szerepkör-hozzárendeléseknek](../../role-based-access-control/role-assignments-portal.md) az átadás során történő eltávolítása esetén is előfordulhat, hogy az eredeti tulajdonosi fiók felhasználói továbbra is hozzáféréssel rendelkeznek az előfizetéshez más biztonsági mechanizmusokon keresztül, például:
 
 * Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információért lásd: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md).
-* A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-create-storage-account.md) ismertető témakörben olvashat.
+* A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-account-create.md) ismertető témakörben olvashat.
 * Az olyan szolgáltatások távelérési hitelesítő adatai, mint az Azure-beli virtuális gépek.
 
 Ha a címzettnek korlátoznia kell a hozzáférését az erőforrásokhoz, érdemes megfontolnia a szolgáltatáshoz társított titkos kódok frissítését. A legtöbb erőforrás frissíthető. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), majd a központi menüben válassza a **Minden erőforrás** elemet. Ezután válassza ki az erőforrást. Az erőforrás oldalán válassza a **Beállítások** elemet. Itt tekintheti meg és frissítheti a meglévő titkos kódokat.

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8fa72dcd857977474cf76eada500214bf8129aca
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993615"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340869"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Nem Azure-beli gépek összekapcsolásának Security Center
 
@@ -86,7 +86,7 @@ Azure Stack virtuális gépek hozzáadásához szüksége lesz az **ügynökök 
 1. Jelentkezzen be **Azure stack** -portálra, és nyissa meg a **virtuális gépek** lapot.
 1. Válassza ki a Security Center védelemmel ellátni kívánt virtuális gépet.
     >[!TIP]
-    > A virtuális gépek Azure Stackon való létrehozásával kapcsolatos információkért tekintse meg ezt a rövid útmutatót [a Windows rendszerű virtuális gépekről](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) , illetve [a Linux rendszerű virtuális gépekről](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal).
+    > A virtuális gépek Azure Stackon való létrehozásával kapcsolatos információkért tekintse meg ezt a rövid útmutatót [a Windows rendszerű virtuális gépekről](/azure-stack/user/azure-stack-quick-windows-portal) , illetve [a Linux rendszerű virtuális gépekről](/azure-stack/user/azure-stack-quick-linux-portal).
 1. Válassza a **Bővítmények** lehetőséget. Megjelenik a virtuális gépen telepített virtuálisgép-bővítmények listája.
 1. Válassza a **Hozzáadás** lapot. Az **új erőforrás** menü megjeleníti az elérhető virtuálisgép-bővítmények listáját.
 1. Válassza ki a **Azure monitor, a frissítés és a konfiguráció kezelése** bővítményt, és válassza a **Létrehozás**lehetőséget. Megnyílik a **telepítési bővítmény** konfigurációja lap.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2854f4124a570de4fb467eb6a5d49a3214742e
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613645"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341821"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Gyakori kérdések a Azure Monitor naplókat használó ügyfelek számára<a name="existingloganalyticscust"></a>
 
@@ -26,13 +26,13 @@ ms.locfileid: "91613645"
 
 Ha egy virtuális gépen már telepítve van a Log Analytics ügynök Azure-bővítményként, Security Center nem bírálja felül a meglévő munkaterület-kapcsolatokat. Ehelyett Security Center a meglévő munkaterületet használja. A virtuális gép védett lesz, ha a "biztonság" vagy a "SecurityCenterFree" megoldás telepítve van azon a munkaterületen, amelyre a jelentést küldi. 
 
-Egy Security Center megoldás van telepítve az adatgyűjtési képernyőn kiválasztott munkaterületre, ha még nincs jelen, és a megoldás csak a megfelelő virtuális gépekre lesz alkalmazva. Megoldás hozzáadásakor a rendszer alapértelmezés szerint automatikusan telepíti a Log Analytics munkaterülethez csatlakoztatott összes Windows-és Linux-ügynököt. A [megoldás célcsoportjának](../operations-management-suite/operations-management-suite-solution-targeting.md) használatával hatókört alkalmazhat a megoldásokra.
+Egy Security Center megoldás van telepítve az adatgyűjtési képernyőn kiválasztott munkaterületre, ha még nincs jelen, és a megoldás csak a megfelelő virtuális gépekre lesz alkalmazva. Megoldás hozzáadásakor a rendszer alapértelmezés szerint automatikusan telepíti a Log Analytics munkaterülethez csatlakoztatott összes Windows-és Linux-ügynököt. A [megoldás célcsoportjának](../azure-monitor/insights/solution-targeting.md) használatával hatókört alkalmazhat a megoldásokra.
 
 > [!TIP]
 > Ha a Log Analytics ügynök közvetlenül a virtuális gépre van telepítve (nem Azure-bővítményként), Security Center nem telepíti a Log Analytics-ügynököt, és a biztonsági figyelés korlátozott.
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Security Center telepítési megoldásokat a meglévő Log Analytics-munkaterületekre? Mik a számlázási következményei?
-Ha Security Center megállapítja, hogy egy virtuális gép már csatlakoztatva van egy létrehozott munkaterülethez, Security Center engedélyezi a megoldásokat a munkaterületen a díjszabási konfigurációnak megfelelően. A megoldásokat csak a megfelelő Azure-beli virtuális gépekre alkalmazza a [megoldás célcsoportján](../operations-management-suite/operations-management-suite-solution-targeting.md)keresztül, így a számlázás változatlan marad.
+Ha Security Center megállapítja, hogy egy virtuális gép már csatlakoztatva van egy létrehozott munkaterülethez, Security Center engedélyezi a megoldásokat a munkaterületen a díjszabási konfigurációnak megfelelően. A megoldásokat csak a megfelelő Azure-beli virtuális gépekre alkalmazza a [megoldás célcsoportján](../azure-monitor/insights/solution-targeting.md)keresztül, így a számlázás változatlan marad.
 
 - **Azure Defender off** – Security Center a "SecurityCenterFree" megoldást telepíti a munkaterületre. Nem számítunk fel díjat.
 - **Azure Defender on** – Security Center a "biztonsági" megoldást telepíti a munkaterületre.
@@ -40,7 +40,7 @@ Ha Security Center megállapítja, hogy egy virtuális gép már csatlakoztatva 
    ![Megoldások az alapértelmezett munkaterületen](./media/security-center-platform-migration-faq/solutions.png)
 
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Már van munkaterületem a saját környezetben, használhatom a biztonsági adatok gyűjtésére?
-Ha egy virtuális gépen már telepítve van a Log Analytics ügynök Azure-bővítményként, Security Center a meglévő csatlakoztatott munkaterületet használja. A munkaterületre egy Security Center megoldás van telepítve, ha még nincs jelen, és a megoldás csak a megfelelő virtuális gépekre vonatkozik, a [megoldás célcsoportján](../operations-management-suite/operations-management-suite-solution-targeting.md)keresztül.
+Ha egy virtuális gépen már telepítve van a Log Analytics ügynök Azure-bővítményként, Security Center a meglévő csatlakoztatott munkaterületet használja. A munkaterületre egy Security Center megoldás van telepítve, ha még nincs jelen, és a megoldás csak a megfelelő virtuális gépekre vonatkozik, a [megoldás célcsoportján](../azure-monitor/insights/solution-targeting.md)keresztül.
 
 Ha Security Center telepíti a Log Analytics-ügynököt a virtuális gépekre, akkor a Security Center által létrehozott alapértelmezett munkaterületet (ka) t használja, ha Security Center nem egy meglévő munkaterületre mutat.
 

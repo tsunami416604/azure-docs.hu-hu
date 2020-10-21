@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039fabbbb04f352042973f559e34a3c3a77e7500
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323655"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340427"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -85,7 +85,7 @@ Válassza a **nézet** lehetőséget További információk és beállítások m
 
 ### <a name="discovered-solutions"></a>Felderített megoldások
 
-Security Center automatikusan felderíti az Azure-ban futó biztonsági megoldásokat, de nem kapcsolódik Security Centerhoz, és megjeleníti a megoldásokat a **felderített megoldások** szakaszban. Ezen megoldások közé tartoznak az Azure-megoldások, például a [Azure ad Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)és a partneri megoldások.
+Security Center automatikusan felderíti az Azure-ban futó biztonsági megoldásokat, de nem kapcsolódik Security Centerhoz, és megjeleníti a megoldásokat a **felderített megoldások** szakaszban. Ezen megoldások közé tartoznak az Azure-megoldások, például a [Azure ad Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)és a partneri megoldások.
 
 > [!NOTE]
 > Az **Azure Defender** előfizetési szintjének engedélyezése a felderített megoldások szolgáltatáshoz. A díjszabással kapcsolatos további információkért tekintse meg a [díjszabást](security-center-pricing.md) .

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 729150188e918d4964f8abe729c66032d8e6c9c0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4dd22427038bc7c4052ee714c3ec3ce45d7a1837
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689150"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132822"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával
 
@@ -126,7 +126,7 @@ További információ: [Azure-díjkalkulátor](https://azure.microsoft.com/prici
 
 Az Azure Migrate egy olyan szolgáltatás, amely kiértékeli a szervezet aktuális számítási feladatait a helyszíni adatközpontokban. Betekintést nyújt az Ön számára abba, hogy mire lehet szüksége egy helyettesítő Azure-megoldástól. A Migrate először a helyszíni gépek vizsgálatát végzi el, hogy meghatározza a migrálás megvalósíthatóságát. Ezután javaslatot tesz egy Azure-beli virtuálisgép-méretre a teljesítmény maximalizálásához. Végül pedig megbecsüli az Azure-alapú megoldás költségét.
 
-További információ: [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview).
+További információ: [Azure Migrate](../../migrate/migrate-services-overview.md).
 
 ## <a name="analyze-and-manage-your-costs"></a>Költségek elemzése és kezelése
 

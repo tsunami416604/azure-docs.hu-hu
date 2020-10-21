@@ -7,12 +7,12 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 371bbd6919f787401da361339f705fa5edfa4547
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b7478199e4bb6f1e9ad986193370d4ea8610bd7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328691"
+ms.locfileid: "92340903"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Beépített Azure Policy-definíciók az Azure Security Centerben
 
@@ -42,7 +42,7 @@ Ha többet szeretne megtudni a Security Center által figyelt beépített szabá
 
 [!INCLUDE [azure-policy-reference-category-securitycenter](../../includes/policy/reference/bycat/policies-security-center.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan Azure Policy biztonsági házirend-definíciókat Security Center. További információt a következő cikkekben talál.
 
@@ -52,5 +52,5 @@ Ebből a cikkből megtudhatta, hogyan Azure Policy biztonsági házirend-definí
 - [Azure Security Center tervezési és üzemeltetési útmutató](./security-center-planning-and-operations-guide.md): megtudhatja, hogyan tervezhet és megismerheti a tervezési szempontokat Azure Security Centerokban.
 - [Biztonsági állapotmonitorozás az Azure Security Centerben](./security-center-monitoring.md): Útmutató az Azure-erőforrások állapotának monitorozásához.
 - [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](./security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelése és az azokra való reagálás.
-- [Partneri megoldások monitorozása az Azure Security Centerrel](./security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
+- [Partneri megoldások monitorozása az Azure Security Centerrel](./security-center-partner-integration.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 - [Azure Policy](../governance/policy/overview.md): megismerheti az Azure-erőforrások naplózását és szabályozását.

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f701e41c62336bcd7638360a27a0fb4c3ce3ec7d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 71561f6ecdde09f259e54260e7bab4dcc0e85c98
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686666"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132635"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>A számlázási fiók Azure Portalon való megtekintésével kapcsolatos hibák elhárítása
 
@@ -59,7 +59,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 Olvassa el az alábbi, a számlázással és az előfizetéssel kapcsolatos cikkeket, amelyek segíthetnek a problémák elhárításában.
 
-- [Elutasított bankkártya](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Az előfizetésbe való bejelentkezéssel kapcsolatos problémák](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Nem található előfizetés](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Vállalati költségek nézet letiltva](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Elutasított bankkártya](./troubleshoot-declined-card.md)
+- [Az előfizetésbe való bejelentkezéssel kapcsolatos problémák](./troubleshoot-sign-in-issue.md)
+- [Nem található előfizetés](./no-subscriptions-found.md)
+- [Vállalati költségek nézet letiltva](./enterprise-mgmt-grp-troubleshoot-cost-view.md)

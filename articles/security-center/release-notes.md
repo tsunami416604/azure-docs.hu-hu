@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 565282b2da5383c1d3471337f64588f97157a79c
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 098cfa1784571856cbd80d55fec4e6232e882d17
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328674"
+ms.locfileid: "92339849"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -227,7 +227,7 @@ További információ: [Key Vault Azure Defender](defender-for-key-vault-introdu
 
 Az **Azure Defender for Storage** észleli az Azure Storage-fiókokban potenciálisan ártalmas tevékenységeket. Az Ön adatai védetté tehetik, hogy blob-tárolóként, fájlmegosztásként vagy adattavakként vannak tárolva.
 
-A [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) és [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) támogatása már általánosan elérhető.
+A [Azure Files](../storage/files/storage-files-introduction.md) és [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) támogatása már általánosan elérhető.
 
 Október 1-től 2020-én megkezdjük a szolgáltatások erőforrásainak védelmét.
 
@@ -363,7 +363,7 @@ A hálózati biztonsági csoportokkal kapcsolatos következő biztonsági javasl
 
 ### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>Elavult előnézeti AK-javaslat: "Pod biztonsági szabályzatokat kell meghatározni a Kubernetes-szolgáltatásokban"
 
-A "Pod biztonsági házirendek meghatározása a Kubernetes-szolgáltatásokban" előzetes javaslat az [Azure Kubernetes szolgáltatás](https://docs.microsoft.com/azure/aks/use-pod-security-policies) dokumentációjában leírtaknak megfelelően elavult.
+A "Pod biztonsági házirendek meghatározása a Kubernetes-szolgáltatásokban" előzetes javaslat az [Azure Kubernetes szolgáltatás](../aks/use-pod-security-policies.md) dokumentációjában leírtaknak megfelelően elavult.
 
 A pod biztonsági házirend (előzetes verzió) funkció az elavult, és a továbbiakban nem lesz elérhető 2020. október 15-én, Azure Policy az AK-hoz.
 
@@ -481,7 +481,7 @@ További információ az [eszközök leltározásáról](asset-inventory.md).
 
 ### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>A Azure Active Directory biztonsági Alapértelmezések támogatása (a többtényezős hitelesítéshez)
 
-Security Center teljes körű támogatást kapott a [biztonsági alapértékekhez](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults), a Microsoft ingyenes Identity Security-védelmi szolgáltatásait.
+Security Center teljes körű támogatást kapott a [biztonsági alapértékekhez](../active-directory/fundamentals/concept-fundamentals-security-defaults.md), a Microsoft ingyenes Identity Security-védelmi szolgáltatásait.
 
 A biztonsági alapértékek előre konfigurált identitás-biztonsági beállításokat biztosítanak a szervezet számára az identitással kapcsolatos közös támadások elleni védelemhez. A biztonsági alapértékek már a több mint 5 000 000 bérlőt védik; az 50 000-bérlőket Security Center is védi.
 
@@ -489,7 +489,7 @@ Security Center mostantól biztonsági javaslatot nyújt, ha az Azure-előfizet�
 
 Célunk, hogy minél több ügyfelet ösztönözzön a Felhőbeli környezetek védelmére az MFA-val, és hogy enyhítse az egyik legnagyobb kockázatot is, amely a legjelentősebb a [biztonságos pontszám](secure-score-security-controls.md)szempontjából.
 
-További információ a [biztonsági alapbeállításokról](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
+További információ a [biztonsági alapbeállításokról](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 
 ### <a name="service-principals-recommendation-added"></a>Egyszerű szolgáltatásnév – javaslat hozzáadva
@@ -498,7 +498,7 @@ További információ a [biztonsági alapbeállításokról](https://docs.micros
 
 Az **előfizetések felügyeleti tanúsítványok helyett a szolgáltatással való ellátására szolgáló egyszerű szolgáltatásnév** használatával biztosíthatja, hogy az előfizetések biztonságos kezeléséhez használjon egyszerű szolgáltatásokat vagy Azure Resource Manager. 
 
-További információ az [alkalmazások és szolgáltatások egyszerű objektumairól Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object).
+További információ az [alkalmazások és szolgáltatások egyszerű objektumairól Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object).
 
 
 ### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Sebezhetőségi felmérés a virtuális gépeken – összevont javaslatok és szabályzatok
@@ -679,7 +679,7 @@ Az SQL-gépek speciális adatvédelmével kapcsolatos hat szabályzat elavult:
 - A rendszergazdáknak és az előfizetések tulajdonosainak szóló e-mailes értesítéseket engedélyezni kell az SQL felügyelt példány speciális biztonsági beállításaiban.
 - A rendszergazdák és az előfizetések tulajdonosainak szóló e-mail-értesítéseket engedélyezni kell az SQL Server speciális adatbiztonsági beállításaiban
 
-További információ a [beépített szabályzatokról](security-center-policy-definitions.md).
+További információ a [beépített szabályzatokról](./policy-reference.md).
 
 
 
@@ -699,7 +699,7 @@ A júniusi frissítések a következők:
 
 ### <a name="secure-score-api-preview"></a>Secure score API (előzetes verzió)
 
-Mostantól elérheti a pontszámát a [Secure score API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) -n keresztül (jelenleg előzetes verzióban érhető el). Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a **Secure scores** API-t egy adott előfizetés pontszámának lekéréséhez. Emellett a **Secure score Controls** API használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
+Mostantól elérheti a pontszámát a [Secure score API](/rest/api/securitycenter/securescores/) -n keresztül (jelenleg előzetes verzióban érhető el). Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a **Secure scores** API-t egy adott előfizetés pontszámának lekéréséhez. Emellett a **Secure score Controls** API használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
 
 A biztonságos pontszám API-val lehetséges külső eszközökre vonatkozó példákat a [GitHub-Közösség biztonságos pontszám területén](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)tekintheti meg.
 
@@ -725,7 +725,7 @@ További információ [az SQL-gépek speciális adatbiztonságáról](defender-f
 
 ### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>Két új javaslat a Log Analytics-ügynök üzembe helyezéséhez az Azure arc Machines szolgáltatásban (előzetes verzió)
 
-Két új javaslat lett hozzáadva a [log Analytics-ügynök](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) üzembe helyezéséhez az Azure arc-gépeken, és gondoskodni kell arról, hogy a Azure Security Center védelemmel rendelkezzenek:
+Két új javaslat lett hozzáadva a [log Analytics-ügynök](../azure-monitor/platform/log-analytics-agent.md) üzembe helyezéséhez az Azure arc-gépeken, és gondoskodni kell arról, hogy a Azure Security Center védelemmel rendelkezzenek:
 
 - **Log Analytics ügynöknek telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)**
 - **Log Analytics ügynöknek telepítve kell lennie a Linux-alapú Azure arc-gépeken (előzetes verzió)**
@@ -921,11 +921,11 @@ Az áthelyezett három javaslat a következőket tartalmazza:
 
 A vezérlőhöz hozzáadott két új javaslat a következő:
 
-- **A vendég konfigurációs bővítményt a Windows rendszerű virtuális gépekre (előzetes verzió) kell telepíteni** – a [Azure Policy vendég konfigurációjának](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) használatával a virtuális gépeken belül láthatók a kiszolgálók és az alkalmazások beállításai (csak Windows).
+- **A vendég konfigurációs bővítményt a Windows rendszerű virtuális gépekre (előzetes verzió) kell telepíteni** – a [Azure Policy vendég konfigurációjának](../governance/policy/concepts/guest-configuration.md) használatával a virtuális gépeken belül láthatók a kiszolgálók és az alkalmazások beállításai (csak Windows).
 
 - A **Windows Defender Exploit Guard védelmet engedélyezni kell a gépeken (előzetes verzió)** – a Windows Defender Exploit Guard kihasználja a Azure Policy vendég konfigurációs ügynököt. A kiaknázási Gárda négy összetevőből áll, amelyek célja, hogy zárolják az eszközöket a különböző támadási vektorok és a kártevők elleni támadásokban leggyakrabban használt viselkedések blokkolásával, miközben lehetővé teszik a vállalatok számára a biztonsági kockázatok és a termelékenységi követelmények kiegyensúlyozását (csak Windows).
 
-További információ a Windows Defender Exploit Guard-védelemről a biztonsági [rés kiaknázására szolgáló szabályzat létrehozása és üzembe helyezése című](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)témakörben.
+További információ a Windows Defender Exploit Guard-védelemről a biztonsági [rés kiaknázására szolgáló szabályzat létrehozása és üzembe helyezése című](/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)témakörben.
 
 További információ a biztonsági ellenőrzésekről: [bővített biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md).
 

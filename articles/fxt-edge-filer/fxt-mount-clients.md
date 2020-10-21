@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: c9ee50c146271106e2b9c693702827b2e1b52199
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219547"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340512"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Oktatóanyag: a fürt csatlakoztatása
 
@@ -94,14 +94,14 @@ A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a b
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Szükséges beállítások | Leírás |
+| Szükséges beállítások | Description |
 --- | ---
 ``hard`` | Az Azure FXT Edge Filer-fürthöz való Soft mounts az alkalmazás hibáival és az esetleges adatvesztéssel van társítva.
 ``proto=netid`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
 ``mountproto=netid`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
 ``retry=n`` | Állítsa be ``retry=30`` az átmeneti csatlakoztatási hibák elkerülését. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
 
-| Előnyben részesített beállítások  | Leírás |
+| Előnyben részesített beállítások  | Description |
 --- | ---
 ``nointr``            | Ha az ügyfelek az ezt a lehetőséget támogató régebbi operációsrendszer-kerneleket (mielőtt április 2008) használják, használja azt. A "intr" beállítás az alapértelmezett.
 
@@ -109,6 +109,6 @@ A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a b
 
 Az ügyfelek csatlakoztatása után tesztelheti a munkafolyamatot, és megkezdheti a fürt megkezdését.
 
-Ha át kell helyeznie az adatot egy új Cloud Core Filer-ba, használja ki a gyorsítótárazási struktúrát a párhuzamos adatfeldolgozás használatával. Egyes stratégiákat a [vFXT-fürtbe való áthelyezéssel kapcsolatos](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest)témakörben talál. (A avere vFXT for Azure egy felhőalapú termék, amely az Azure FXT Edge Filer-hez hasonló gyorsítótárazási technológiát használ.)
+Ha át kell helyeznie az adatot egy új Cloud Core Filer-ba, használja ki a gyorsítótárazási struktúrát a párhuzamos adatfeldolgozás használatával. Egyes stratégiákat a [vFXT-fürtbe való áthelyezéssel kapcsolatos](../avere-vfxt/avere-vfxt-data-ingest.md)témakörben talál. (A avere vFXT for Azure egy felhőalapú termék, amely az Azure FXT Edge Filer-hez hasonló gyorsítótárazási technológiát használ.)
 
 Ha hardveres problémát kell elhárítani, olvassa el az [Azure FXT Edge-beli hardveres állapotának figyelése](fxt-monitor.md) című cikkét.

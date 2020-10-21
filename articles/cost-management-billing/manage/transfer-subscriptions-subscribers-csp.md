@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: d2d098c3a80bbbdb8c9fb64b25cc5967ee693046
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371405"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132363"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure-előfizetések átvitele az előfizetők és a CSP-k között
 
@@ -26,7 +26,7 @@ A felhőszolgáltató [Azure-beli szakértői felügyelt szolgáltató (MSP)](ht
 A kérelem jóváhagyása után a felhőszolgáltató egyesített számlát biztosíthat az ügyfeleknek. A felhőszolgáltatói előfizetések átvitelével kapcsolatos részleteket lásd: [Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához](mpa-request-ownership.md).
 
 >[!IMPORTANT]
-> Miután egy EA-előfizetés átkerül egy CSP-partnerhez, az EA-előfizetésre előzőleg vonatkozó valamennyi kvótanövelés az alapértelmezett értékre áll vissza. Ha további kvótára lenne szükség az előfizetés átvitelét követően, kérje meg CSP-szolgáltatóját, hogy küldjön be egy [kvótanövelési](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests) kérelmet. 
+> Miután egy EA-előfizetés átkerül egy CSP-partnerhez, az EA-előfizetésre előzőleg vonatkozó valamennyi kvótanövelés az alapértelmezett értékre áll vissza. Ha további kvótára lenne szükség az előfizetés átvitelét követően, kérje meg CSP-szolgáltatóját, hogy küldjön be egy [kvótanövelési](../../azure-portal/supportability/regional-quota-requests.md) kérelmet. 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>Egyéb előfizetés-átvitelek CSP-partnerek részére
 
@@ -42,7 +42,7 @@ Ha más Azure-előfizetést szeretne továbbítani egy felhőszolgáltatói part
 1. A kezdés előtt [ellenőrizze](/rest/api/resources/resources/validatemoveresources), hogy az összes Azure-erőforrás áthelyezhető-e a forrás-előfizetésből a célelőfizetésbe.  
     Bizonyos Azure-erőforrások nem helyezhetők át az előfizetések között. Az áthelyezhető Azure-erőforrások teljes listájának megtekintéséhez lásd: [Áthelyezési művelet támogatása erőforrásokhoz](../../azure-resource-manager/management/move-support-resources.md).
     > [!IMPORTANT]
-    >  - Az Azure CSP csak az Azure Resource Manager erőforrásait támogatja. Ha a forrás-előfizetésben található bármely Azure-erőforrás a klasszikus Azure üzemi modellel lett létrehozva, akkor a migrálás előtt ezt migrálnia kell az [Azure Resource Managerbe](https://docs.microsoft.com/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm). A weboldalt csak a partnerek tekinthetik meg.
+    >  - Az Azure CSP csak az Azure Resource Manager erőforrásait támogatja. Ha a forrás-előfizetésben található bármely Azure-erőforrás a klasszikus Azure üzemi modellel lett létrehozva, akkor a migrálás előtt ezt migrálnia kell az [Azure Resource Managerbe](/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm). A weboldalt csak a partnerek tekinthetik meg.
 
 1. Ellenőrizze, hogy az összes forrás-előfizetési szolgáltatás az Azure Resource Manager-modellt használja-e. Ezután átviheti az erőforrásokat a forrás-előfizetésből a célelőfizetésbe az [Azure-erőforrások áthelyezésével](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
     > [!IMPORTANT]

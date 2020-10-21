@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/17/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 01fdaa95dd396e5545b65bada2a9d6410169230b
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 789bd2f62673e7faf562d3a407bf2f0a4fd861bf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052460"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125492"
 ---
 # <a name="quickstart-get-started-with-azure-data-box-to-export-data-from-azure"></a>Gyorsútmutató: Ismerkedés az Azure Data Boxszal az adatok Azure-ból való exportálásához
 
@@ -28,7 +28,7 @@ Előkészületek:
 
 * Győződjön meg róla, hogy a Data Box szolgáltatáshoz használt előfizetés a következő típusok valamelyikébe tartozik:
   * Microsoft nagyvállalati szerződés (EA). További információk az [EA-előfizetésekről](https://azure.microsoft.com/pricing/enterprise-agreement/).
-  * Felhőszolgáltató (CSP). További információk az [Azure CSP programjáról](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+  * Felhőszolgáltató (CSP). További információk az [Azure CSP programjáról](/azure/cloud-solution-provider/overview/azure-csp-overview).
   * Microsoft Azure szponzorálás. További információk az [Azure szponzorálási programjáról](https://azure.microsoft.com/offers/ms-azr-0036p/).
 
 * A Data Box-rendelések létrehozásához tulajdonosi vagy közreműködői jogosultsággal kell rendelkeznie az előfizetésen.
@@ -96,7 +96,7 @@ Ez a lépés kb. 5–7 percet vesz igénybe.
 
 A művelet végrehajtásának időtartama az adatok mennyiségétől és a hálózat sebességétől függ.
 
-1. Windows-ügyfél használata esetén használjon SMB-kompatibilis fájlmásoló eszközt, amilyen például a Robocopy. NFS-gazdagép esetén a `cp` parancs vagy a `rsync` használatával másolhatja az adatokat. Az adatok a Robocopyval való másolásával kapcsolatos további információkért lásd: [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+1. Windows-ügyfél használata esetén használjon SMB-kompatibilis fájlmásoló eszközt, amilyen például a Robocopy. NFS-gazdagép esetén a `cp` parancs vagy a `rsync` használatával másolhatja az adatokat. Az adatok a Robocopyval való másolásával kapcsolatos további információkért lásd: [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)).
 2. Csatlakozzon az eszközmegosztásokhoz, és kezdje meg az adatok másolását a gazdagépre.
 <!-- 1. Connect to the device shares using the path:`\\<IP address of your device>\ShareName`. To get the share access credentials, go to the **Connect & copy** page in the local web UI of the Data Box. --> 
 

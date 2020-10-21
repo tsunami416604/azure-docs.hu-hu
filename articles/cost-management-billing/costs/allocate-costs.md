@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 025b9b7e503f38a111bd158f17b7fbeec5b23579
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684983"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131088"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure-beli költségfelosztási szabályok létrehozása és kezelése (előzetes verzió)
 
@@ -58,16 +58,16 @@ Ha a költségeket a számítási, tárolási vagy hálózati költségek szerin
 
 Ha a költségeket a teljes költség arányában osztja fel, a százalékos arány a kiválasztott célok teljes költségeinek összege alapján lesz meghatározva az aktuális számlázási hónapban.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="A felosztás százalékos arányát szemléltető példa" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Szabálynév létrehozását szemléltető példa" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 A beállítás után az előre megadott százalékos arányok rögzítettek. Minden folyamatban lévő felosztás ezeken fog alapulni. A százalékos arányok csak akkor változnak, ha a szabályt manuálisan frissíti.
 
 1. Válassza az alábbi lehetőségek egyikét a **Százalékos arány kitöltése** listán.
     - **Felosztás egyenlően** – Mindegyik cél azonos százalékos arányban részesül a teljes költségből.
     - **Teljes költség** – Arányos elosztás a célok között a teljes költségük alapján. Az arány a kiválasztott forrásokból származó költségek elosztására szolgál.
-    - **Számítási költség** – Arányos elosztás a célok között az Azure számítási költségük alapján (erőforrástípusok a [Microsoft.Compute](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions) névtérben. Az arány a kiválasztott forrásokból származó költségek elosztására szolgál.
-    - **Tárolási költség** – Arányos elosztás a célok között az Azure tárolási költségük alapján (erőforrástípusok a [Microsoft.Storage](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) névtérben). Az arány a kiválasztott forrásokból származó költségek elosztására szolgál.
-    - **Hálózati költség** – Arányos elosztás a célok között az Azure hálózati költségük alapján (erőforrástípusok a [Microsoft.Network](https://docs.microsoft.com/azure/templates/microsoft.network/allversions) névtérben). Az arány a kiválasztott forrásokból származó költségek elosztására szolgál.
+    - **Számítási költség** – Arányos elosztás a célok között az Azure számítási költségük alapján (erőforrástípusok a [Microsoft.Compute](/azure/templates/microsoft.compute/allversions) névtérben. Az arány a kiválasztott forrásokból származó költségek elosztására szolgál.
+    - **Tárolási költség** – Arányos elosztás a célok között az Azure tárolási költségük alapján (erőforrástípusok a [Microsoft.Storage](/azure/templates/microsoft.storage/allversions) névtérben). Az arány a kiválasztott forrásokból származó költségek elosztására szolgál.
+    - **Hálózati költség** – Arányos elosztás a célok között az Azure hálózati költségük alapján (erőforrástípusok a [Microsoft.Network](/azure/templates/microsoft.network/allversions) névtérben). Az arány a kiválasztott forrásokból származó költségek elosztására szolgál.
     - **Egyéni** – Lehetővé teszi a százalékos arány manuális megadását egész számként. A megadott százalékok összegének 100%-nak kell lennie.
 1. A szabály konfigurálása után válassza a **Létrehozás** lehetőséget.
 
@@ -84,7 +84,7 @@ Ha a költségfelosztási szabály aktív, a kiválasztott forrásokból szárma
 
 A költségfelosztási szabály hatását a költségelemzésben tekintheti meg. Az Azure Portalon lépjen az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) oldalra. Válasszon ki a listáról egy olyan előfizetést, amely egy aktív költségfelosztási szabály célja. Ezután válassza ki a **Költségelemzés** menüpontot. A költségelemzésben válassza a **Csoportosítás**, majd a **Költségfelosztás** lehetőséget. Az eredményül kapott nézet az előfizetés költségeinek gyors lebontását mutatja. Az előfizetéshez rendelt költségek is megjelennek az alábbi ábrán látható módon.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="A költséglebontást szemléltető példa" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Szabálynév létrehozását szemléltető példa" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Erőforráscsoport költségfelosztásának megtekintése
 
@@ -94,7 +94,7 @@ Hasonló módszerrel ellenőrizheti a költségfelosztási szabály hatását eg
 
 Az Azure Portalon keresse meg a **Költségkezelés + Számlázás** > **Cost Management** > **Költségelemzés** lehetőséget. A költségelemzésben válassza a **Szűrő hozzáadása** lehetőséget. Válassza a **Címke** lehetőséget, és válassza ki a címkekulcsot és címkeértékeket, amelyekhez költséget rendelt.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="A címkézett elemek költségeit bemutató példa" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Szabálynév létrehozását szemléltető példa" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Meglévő költségfelosztási szabály szerkesztése
 
@@ -112,10 +112,10 @@ A költségfelosztási funkció jelenleg a költségelemzésben, a költségvet�
 A költségfelosztási funkció nyilvános előzetes verziója jelenleg nem támogatja a következőket:
 
 - Ütemezett [exportálások](tutorial-export-acm-data.md)
-- A [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) által közzétett adatok
+- A [Usage Details API](/rest/api/consumption/usagedetails/list) által közzétett adatok
 - Számlázási előfizetések terület
 - [Cost Management Power BI-alkalmazás](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
-- [Power BI Desktop-összekötő](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management)
+- [Power BI Desktop-összekötő](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
 ### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>A költségek szerepelnek a költségvetésekben és az előrejelzési nézetekben?
 <a name="budgets-forecast"></a>
@@ -144,5 +144,5 @@ Nem javasolt olyan szabályokat létrehozni, amelyek forrásai vagy céljai átf
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Felosztási szabályok létrehozása vagy frissítése a [Cost allocation Rest API](https://go.microsoft.com/fwlink/?linkid=2135004) használatával
+- Felosztási szabályok létrehozása vagy frissítése a [Cost allocation Rest API](/rest/api/cost-management/costallocationrules) használatával
 - További információ [a felhővel kapcsolatos befektetés optimalizálásáról az Azure Cost Management használatával](cost-mgt-best-practices.md)

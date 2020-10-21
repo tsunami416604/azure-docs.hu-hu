@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 6bbc38d79f51ba4ffcc3795718d276a7e9c0bf03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7252a6ccd77212f75f5db54e5f3fcad7aa2df50a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440771"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339730"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>A Azure Security Center teljes bérlőre kiterjedő láthatóságának megszerzése
 Ez a cikk bemutatja, hogyan kezelheti a szervezete biztonsági állapotát a Azure Active Directory bérlőhöz kapcsolódó összes Azure-előfizetésre vonatkozó biztonsági szabályzatok alkalmazásával.
@@ -33,10 +33,10 @@ A felügyeleti csoport automatikusan létrejön, ha az alábbi műveletek bárme
 2. Hozzon létre egy felügyeleti csoportot egy API-hívás használatával.
 3. Hozzon létre egy felügyeleti csoportot a PowerShell használatával.
 
-A felügyeleti csoportok részletes áttekintését az [erőforrások rendszerezése az Azure felügyeleti csoportokkal](../azure-resource-manager/management-groups-overview.md) című cikkben találja.
+A felügyeleti csoportok részletes áttekintését az [erőforrások rendszerezése az Azure felügyeleti csoportokkal](../governance/management-groups/overview.md) című cikkben találja.
 
 ## <a name="create-a-management-group-in-the-azure-portal"></a>Felügyeleti csoport létrehozása a Azure Portalban
-Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási szabályzatokat alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott szabályzatokat. Amíg a felügyeleti csoportok nem szükségesek a Security Center bevezetéséhez, erősen ajánlott legalább egy felügyeleti csoportot létrehozni, hogy a rendszer létrehozza a gyökérszintű felügyeleti csoportot. A csoport létrehozása után az Azure AD-bérlő alá tartozó összes előfizetés hozzá lesz kapcsolva. A PowerShellre és további információkra vonatkozó utasításokért lásd: [felügyeleti csoportok létrehozása az erőforrás-és szervezeti felügyelethez](../azure-resource-manager/management-groups-create.md).
+Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási szabályzatokat alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott szabályzatokat. Amíg a felügyeleti csoportok nem szükségesek a Security Center bevezetéséhez, erősen ajánlott legalább egy felügyeleti csoportot létrehozni, hogy a rendszer létrehozza a gyökérszintű felügyeleti csoportot. A csoport létrehozása után az Azure AD-bérlő alá tartozó összes előfizetés hozzá lesz kapcsolva. A PowerShellre és további információkra vonatkozó utasításokért lásd: [felügyeleti csoportok létrehozása az erőforrás-és szervezeti felügyelethez](../governance/management-groups/create-management-group-portal.md).
 
  
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).

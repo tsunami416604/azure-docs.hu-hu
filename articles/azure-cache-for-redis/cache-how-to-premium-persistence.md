@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 3e8cef04e0711492b6e76d4c865695ac75e21422
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9927d4780ea015502151188b61c50ddbd2656819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125679"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339543"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja az adatmegőrzést egy prémium szintű Azure cache-ben a Redis-példányhoz a Azure Portalon keresztül. A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. 
@@ -63,7 +63,7 @@ Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-ad
    | Beállítás      | Ajánlott érték  | Leírás |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Biztonsági mentés gyakorisága** | Legördülő menüből válassza ki a biztonsági mentés időközét, a választható lehetőségek közé **15 perc**, **30 perc**, **60 perc**, **6 óra**, **12 óra**és **24 óra**. | Ez az intervallum az előző biztonsági mentési művelet sikeres befejezését és az új biztonsági mentés eltelte után kezdődik. | 
-   | **Tárfiók** | Legördülő menüből válassza ki a Storage-fiókját. | A Storage-fióknak ugyanabban a régióban és előfizetésben kell kiválasztania, mint a gyorsítótár, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik.  | 
+   | **Storage-fiók** | Legördülő menüből válassza ki a Storage-fiókját. | A Storage-fióknak ugyanabban a régióban és előfizetésben kell kiválasztania, mint a gyorsítótár, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik.  | 
    | **Storage-kulcs** | Legördülő menüből válassza ki a használni kívánt **elsődleges kulcsot** vagy **másodlagos kulcsot** . | Ha az adatmegőrzési fiók tárolási kulcsa újragenerált, újra kell konfigurálnia a kívánt kulcsot a **tárolási kulcs** legördülő menüjéből. | 
 
     Az első biztonsági mentés a biztonsági mentés gyakorisági intervallumának eltelte után indul el.
@@ -83,11 +83,11 @@ Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-ad
 
 11. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné. 
 
-12. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
+12. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
 
 13. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás**lehetőséget.
 
-Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés**   oldalon. Ha az **állapot**    **futásra**mutat, a gyorsítótár készen áll a használatra. 
+Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra**mutat, a gyorsítótár készen áll a használatra. 
 
 ## <a name="persistence-faq"></a>Adatmegőrzés – gyakori kérdések
 Az alábbi lista az Azure cache Redis-megőrzési szolgáltatásával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
@@ -96,6 +96,7 @@ Az alábbi lista az Azure cache Redis-megőrzési szolgáltatásával kapcsolato
 * [Egyszerre engedélyezhető a AOF és a RDB megőrzése?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
 * [Milyen adatmegőrzési modellt választok?](#which-persistence-model-should-i-choose)
 * [Mi történik, ha egy másik méretre skálázást végezek, és a rendszer visszaállítja a biztonsági mentést, amely a skálázási művelet előtt történt?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+* [Használhatom ugyanazt a Storage-fiókot két különböző gyorsítótárban való adatmegőrzéshez?](#can-i-use-the-same-storage-account-for-persistence-across-two-different-caches)
 
 
 ### <a name="rdb-persistence"></a>RDB megőrzése
@@ -135,6 +136,9 @@ Mind a RDB, mind a AOF megőrzése esetén:
 * Ha nagyobb méretre méretezett, nincs hatása.
 * Ha kisebb méretre méretezett, és rendelkezik olyan egyéni [adatbázis](cache-configure.md#databases) -beállítással, amely nagyobb, mint az új mérethez tartozó [adatbázis-korlát](cache-configure.md#databases) , az ezekben az adatbázisokban tárolt adatmennyiség nem lesz visszaállítva. További információ: az [Egyéni adatbázisok beállítása a skálázás során?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
 * Ha kisebb méretre méretezett, és nincs elég hely a kisebb méretekben az utolsó biztonsági mentésből származó összes adatok tárolásához, a kulcsok a visszaállítási folyamat során törlődnek, jellemzően a [allkeys-LRU](https://redis.io/topics/lru-cache) kizárási házirend használatával.
+
+### <a name="can-i-use-the-same-storage-account-for-persistence-across-two-different-caches"></a>Használhatom ugyanazt a Storage-fiókot két különböző gyorsítótárban való adatmegőrzéshez?
+Igen, ugyanazt a Storage-fiókot használhatja két különböző gyorsítótárban való megőrzésre
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Módosíthatom a RDB biztonsági mentésének gyakoriságát a gyorsítótár létrehozása után?
 Igen, az **adatmegőrzés** panelen módosíthatja a RDB megőrzésének biztonsági mentésének gyakoriságát. Útmutatásért lásd: a Redis megőrzésének konfigurálása.

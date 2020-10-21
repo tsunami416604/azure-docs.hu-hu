@@ -7,18 +7,18 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4387a1aa5b22c9808f36364b71f89a71736958b8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: aba6ea467788c51d179ef9377243efb6035b6f98
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689473"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148351"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>Azure-foglalások költségének költséghelyi elszámolása
 
 A Nagyvállalati Szerződéssel és a Microsoft Ügyfélszerződéssel rendelkező számlázási olvasók láthatják a foglalások amortizált költségadatait. A költségadatokból költséghelyi elszámolást készíthetnek egy előfizetés, erőforráscsoport, erőforrás vagy címke pénzbeli értékéről a partnereiknek. Az amortizált adatokban a tényleges ár az arányosított óránkénti foglalási költség. A költség az erőforrás foglaláshasználatának teljes költsége az adott napra vonatkozóan.
 
-Az önálló előfizetéssel rendelkező felhasználók a használati fájlból szerezhetik meg az amortizált költségadatokat. Ha egy erőforrás foglalási kedvezményt kap, a használati fájl *AdditionalInfo* szakasza tartalmazza a foglalás adatait. További információért lásd [a használati adatok Azure Portalról való letöltését](https://docs.microsoft.com/azure/cost-management-billing/understand/download-azure-daily-usage#download-usage-from-the-azure-portal-csv) bemutató cikket.
+Az önálló előfizetéssel rendelkező felhasználók a használati fájlból szerezhetik meg az amortizált költségadatokat. Ha egy erőforrás foglalási kedvezményt kap, a használati fájl *AdditionalInfo* szakasza tartalmazza a foglalás adatait. További információért lásd [a használati adatok Azure Portalról való letöltését](../understand/download-azure-daily-usage.md#download-usage-from-the-azure-portal-csv) bemutató cikket.
 
 ## <a name="get-reservation-charge-back-data-for-chargeback"></a>Foglalások költséghelyi elszámolási adatainak beszerzése költséghelyi elszámoláshoz
 

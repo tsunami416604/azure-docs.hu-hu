@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 09/24/2020
+ms.date: 10/19/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 24b30842bea51394a375cf48e09b7547e057405c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 22b202d0ef54984ea2818112b49bbdf7f1098833
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91261736"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341617"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -26,7 +26,7 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 
 Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan. Az Azure Firewall statikus nyilvános IP-címet használ a virtuális hálózat erőforrásaihoz, így a külső tűzfalak azonosíthatják a virtuális hálózatból érkező forgalmat.  A szolgáltatás teljesen integrálva van az Azure Monitorral a naplózás és az elemzés érdekében.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Azure Firewall szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [Azure Firewall szolgáltatások](features.md).
 
@@ -34,7 +34,7 @@ Azure Firewall szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [
 
 Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 
-|Probléma  |Leírás  |Kockázatcsökkentés  |
+|Probléma  |Description  |Kockázatcsökkentés  |
 |---------|---------|---------|
 A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP protokollok hálózati szűrési szabályai nem működnek a SNAT a nyilvános IP-címével. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). A forgatókönyv egy későbbi kiadásban való támogatásának lehetőségeit vizsgálja.|
 |A PowerShell és a CLI nem támogatja az ICMP-t|A Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályokban.|Az ICMP protokollt a Portálon és a REST API is használhatja protokollként. Hamarosan felvesszük az ICMP-t a PowerShellben és a CLI-ben.|
@@ -50,15 +50,18 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |Az aktív FTP nem támogatott|Az aktív FTP szolgáltatás le van tiltva Azure Firewall az FTP-PORT parancs használatával történő FTP-visszafordulási támadásokkal szembeni védelem érdekében.|Ehelyett használhatja a passzív FTP-t. A tűzfalon továbbra is explicit módon meg kell nyitnia a 20. és a 21. TCP-portot.
 |Az SNAT-portok kihasználtsága metrika 0%-ot mutat|A Azure Firewall SNAT-kihasználtsági mérőszáma 0%-os használatot is megjeleníthet, még akkor is, ha SNAT-portok vannak használatban. Ebben az esetben a metrika a tűzfal állapota metrika részeként való használata helytelen eredményt ad.|Ezt a problémát megjavítottuk, és az éles környezetbe való bevezetésük a 2020-es májusira irányul. Bizonyos esetekben a tűzfal újratelepítése megoldja a problémát, de nem konzisztens. Közbenső megkerülő megoldásként csak a tűzfal állapota alapján keresse meg a *status = lecsökkentett állapotot*, nem a *status = sérült*állapotot. A port kimerülése *csökkentett teljesítményű*fog megjelenni. A *nem kifogástalan* állapot a jövőbeli használatra van fenntartva, ha a további mérőszámok hatással vannak a tűzfal állapotára.
 |A DNAT nem támogatott a kényszerített bújtatás használata esetén|A kényszerített bújtatással telepített tűzfalak esetében az aszimmetrikus útválasztás miatt nem támogatott a bejövő hozzáférés az internetről.|Ezt az aszimmetrikus útválasztás miatt tervezték meg. A bejövő kapcsolatok visszatérési útvonala a helyszíni tűzfalon megy keresztül, amely még nem látta el a kapcsolatot.
-|A kimenő passzív FTP nem működik több nyilvános IP-címmel rendelkező tűzfalak esetében|A passzív FTP különböző kapcsolatokat hoz létre a vezérlési és az adatcsatornákhoz. Ha egy több nyilvános IP-címmel rendelkező tűzfal kimenő adatokat küld, véletlenszerűen kiválasztja az egyik nyilvános IP-címét a forrás IP-címéhez. Az FTP meghiúsul, ha az adat-és vezérlési csatornák eltérő forrás IP-címeket használnak.|A rendszer explicit SNAT-konfigurációt tervez. Addig is érdemes egyetlen IP-címet használni ebben a helyzetben.|
+|Előfordulhat, hogy a kimenő passzív FTP nem működik a több nyilvános IP-címmel rendelkező tűzfalak esetében az FTP-kiszolgáló konfigurációjától függően.|A passzív FTP különböző kapcsolatokat hoz létre a vezérlési és az adatcsatornákhoz. Ha egy több nyilvános IP-címmel rendelkező tűzfal kimenő adatokat küld, véletlenszerűen kiválasztja az egyik nyilvános IP-címét a forrás IP-címéhez. Ha az adat-és vezérlési csatornák eltérő forrás IP-címeket használnak az FTP-kiszolgáló konfigurációjától függően, az FTP meghiúsulhat.|A rendszer explicit SNAT-konfigurációt tervez. Addig is beállíthatja az FTP-kiszolgálót, hogy fogadja az adatait, és különböző forrás IP-címekről vezérelje a csatornákat (lásd: [IIS-példa](https://docs.microsoft.com/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)). Másik megoldásként érdemes egyetlen IP-címet használni ebben a helyzetben.|
+|Előfordulhat, hogy a bejövő passzív FTP nem működik az FTP-kiszolgáló konfigurációjától függően |A passzív FTP különböző kapcsolatokat hoz létre a vezérlési és az adatcsatornákhoz. A címfordítást bejövő Azure Firewall kapcsolatai az egyik tűzfal magánhálózati IP-címére vonatkoznak a szimmetrikus útválasztás biztosításához. Ha az adat-és vezérlési csatornák eltérő forrás IP-címeket használnak az FTP-kiszolgáló konfigurációjától függően, az FTP meghiúsulhat.|Az eredeti forrás IP-cím megőrzése folyamatban van. Addig is beállíthatja az FTP-kiszolgálót, hogy fogadja az adatait, és különböző forrás IP-címekről vezérelje a csatornákat.|
 |A NetworkRuleHit metrika nem tartalmaz protokoll-dimenziót|A ApplicationRuleHit metrika lehetővé teszi a szűrési alapú protokoll használatát, de ez a képesség hiányzik a megfelelő NetworkRuleHit-metrikában.|A rendszer kivizsgálja a javítást.|
 |A 64000 és 65535 közötti portokkal rendelkező NAT-szabályok nem támogatottak|A Azure Firewall engedélyezi az 1-65535 tartomány bármely portját a hálózati és az alkalmazási szabályokban, azonban a NAT-szabályok csak a 1-63999 tartományba tartozó portokat támogatják.|Ez egy aktuális korlátozás.
 |A konfigurációs frissítések átlagosan öt percet vehetnek igénybe|Egy Azure Firewall konfigurációs frissítés átlagosan három-öt percet vehet igénybe, és a párhuzamos frissítések nem támogatottak.|A rendszer kivizsgálja a javítást.|
 |Azure Firewall SNI TLS-fejléceket használ a HTTPS-és MSSQL-forgalom szűréséhez|Ha a böngésző vagy a kiszolgáló szoftver nem támogatja a kiszolgálónév-jelző (SNI) bővítményt, nem fog tudni csatlakozni a Azure Firewallon keresztül.|Ha a böngésző vagy a kiszolgáló szoftvere nem támogatja a SNI-t, akkor az alkalmazás szabálya helyett hálózati szabály használatával is vezérelheti a kapcsolódást. Tekintse meg a SNI-t támogató szoftverek [kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) .|
 |Az egyéni DNS (előzetes verzió) nem működik a kényszerített bújtatással|Ha a kényszerített bújtatás engedélyezve van, az egyéni DNS (előzetes verzió) nem működik.|A rendszer kivizsgálja a javítást.|
-|Új nyilvános IP-cím támogatása több Availability Zones|Ha két rendelkezésre állási zónával (1 és 2, 2 és 3, vagy 1 és 3) rendelkező tűzfalat telepít, nem adhat hozzá új nyilvános IP-címet.|Ez egy nyilvános IP-cím-erőforrásra vonatkozó korlátozás.
+|Új nyilvános IP-cím támogatása több Availability Zones|Ha két rendelkezésre állási zónával (1 és 2, 2 és 3, vagy 1 és 3) rendelkező tűzfalat telepít, nem adhat hozzá új nyilvános IP-címet.|Ez egy nyilvános IP-cím-erőforrásra vonatkozó korlátozás.|
+|A Start/Stop nem működik kényszerített bújtatási módban konfigurált tűzfallal|Az indítás/leállítás nem működik a kényszerített bújtatási módban konfigurált Azure tűzfalon. A kényszerített bújtatással konfigurált Azure Firewall indítására tett kísérlet a következő hibát eredményezi:<br><br>*Set-AzFirewall: AzureFirewall FW-XX felügyeleti IP-konfiguráció nem adható hozzá meglévő tűzfalhoz. Ha kényszerített bújtatási támogatást szeretne használni, telepítse újra a felügyeleti IP-konfigurációt. <br> StatusCode: 400 <br> ReasonPhrase: hibás kérelem*|A vizsgálat alatt.<br><br>Megkerülő megoldásként törölheti a meglévő tűzfalat, és létrehozhat egy újat ugyanazzal a paraméterekkel.|
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](tutorial-firewall-deploy-portal.md)
 - [Azure Firewall üzembe helyezése sablon használatával](deploy-template.md)

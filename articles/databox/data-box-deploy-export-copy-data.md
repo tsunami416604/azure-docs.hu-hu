@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: fb1415874c42e3913d98d4a674732a4d9b98a0c5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742383"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123908"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Oktatóanyag: Adatok másolása az Azure Data Boxból SMB-n keresztül (Előzetes verzió)
 
@@ -82,7 +82,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
-Linux-ügyfél használata esetén csatlakoztassa az SMB-megosztást az alábbi parancs használatával. Az alábbi vers paraméter az SMB Linux-gazdagép által támogatott verziója. Az alábbi parancsban adja meg a megfelelő verziót. A Data Box által támogatott SMB-verziókkal kapcsolatban tekintse meg a [Linux-ügyfelek esetében támogatott fájlrendszereket](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) ismertető cikket. 
+Linux-ügyfél használata esetén csatlakoztassa az SMB-megosztást az alábbi parancs használatával. Az alábbi vers paraméter az SMB Linux-gazdagép által támogatott verziója. Az alábbi parancsban adja meg a megfelelő verziót. A Data Box által támogatott SMB-verziókkal kapcsolatban tekintse meg a [Linux-ügyfelek esetében támogatott fájlrendszereket](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) ismertető cikket. 
 
 ```console
 sudo mount -t nfs -o vers=2.1 169.254.143.85:/exportbvtdataset2_BlockBlob /home/databoxubuntuhost/databox
@@ -119,4 +119,3 @@ Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan küldheti
 
 > [!div class="nextstepaction"]
 > [Azure Data Box elküldése a Microsoftnak](./data-box-deploy-export-picked-up.md)
-

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 904ea7a50e4546d2721a9e701c78b6b77ed2d43a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a9ec5fd7d6e93d4413e86b5c9433cb6c0c9b59a1
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683181"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132312"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -110,7 +110,7 @@ Az Azure Cost Management a címkéket az egyes szolgáltatások által küldött
 
 - A címkéket közvetlenül az erőforrásokra kell alkalmazni, és nem öröklődnek implicit módon a szülő erőforráscsoportból.
 - Az erőforráscímkék csak az erőforráscsoportokban üzembe helyezett erőforrások esetén támogatottak.
-- Előfordulhat, hogy néhány üzembe helyezett erőforrás nem támogatja a címkéket vagy nem tartalmaz címkéket a használati adatokban – lásd: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/tag-support.md).
+- Előfordulhat, hogy néhány üzembe helyezett erőforrás nem támogatja a címkéket vagy nem tartalmaz címkéket a használati adatokban – lásd: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/management/tag-support.md).
 - Az erőforráscímkék csak a címke alkalmazásának idején szerepelnek a használati adatokban, így az előzményadatokra nem lesznek alkalmazva.
 - Az erőforráscímkék csak az adatok frissítése után érhetők el a Cost Managementben – lásd: [Költség- és használati adatok frissítései és megőrzése](#cost-and-usage-data-updates-and-retention).
 - Az erőforráscímkék csak akkor érhetők el a Cost Managementben, ha az erőforrás aktív/fut, és használati adatokat hoz létre (például akkor nem, ha a virtuális gép felszabadított állapotban van).
@@ -121,7 +121,7 @@ Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a követ
 
 - A címke közvetlenül az erőforrásra lett alkalmazva?
 - A címke több mint 24 órával ezelőtt lett alkalmazva? Lásd: [Költség- és használati adatok frissítése és megőrzése](#cost-and-usage-data-updates-and-retention)
-- Támogatja az erőforrás típusa a címkéket? Az alábbi erőforrástípusok 2019. december 1-től nem támogatják a címkéket a használati adatokban. A támogatott címkék teljes listája: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/tag-support.md).
+- Támogatja az erőforrás típusa a címkéket? Az alábbi erőforrástípusok 2019. december 1-től nem támogatják a címkéket a használati adatokban. A támogatott címkék teljes listája: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/management/tag-support.md).
     - Azure Active Directory B2C-címtárak
     - Azure Bastion
     - Azure-tűzfalak
@@ -185,4 +185,4 @@ Előfordulhat, hogy a kreditalapú és előre fizetett ajánlatok korábbi adata
 
 ## <a name="see-also"></a>Lásd még
 
-- Ha még nem végezte el a Cost Management első lépéseit, itt megtekintheti a [költségelemzés elkezdésének](../../cost-management/quick-acm-cost-analysis.md) lépéseit.
+- Ha még nem végezte el a Cost Management első lépéseit, itt megtekintheti a [költségelemzés elkezdésének](./quick-acm-cost-analysis.md) lépéseit.

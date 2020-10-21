@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 9343d3fa82302711311d8db3672713fa80fab1f7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122176"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341906"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése bizalmas számítástechnikai csomópontokkal az Azure CLI használatával (előzetes verzió)
 
@@ -27,11 +27,11 @@ Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy Azure K
 ### <a name="deployment-pre-requisites"></a>Üzembe helyezési előfeltételek
 
 1. Aktív Azure-előfizetéssel rendelkezik. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt
-1. Az Azure CLI 2.0.64 vagy újabb verzióját kell telepítenie és konfigurálnia az üzembe helyezési gépen (Futtatás a  `az --version` verzió megkereséséhez). Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) ismertető témakört.
+1. Az Azure CLI 2.0.64 vagy újabb verzióját kell telepítenie és konfigurálnia az üzembe helyezési gépen (Futtatás a `az --version` verzió megkereséséhez). Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) ismertető témakört.
 1. [AK – előzetes verziójú bővítmény](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) minimális verziója 0.4.62 
-1. Az előfizetésben legalább hat DCSv2-magot használhat a használatra. Alapértelmezés szerint a virtuális gép az Azure-előfizetések 8 maggal kapcsolatos bizalmas számítástechnikai kvótáját is felszámítja. Ha olyan fürtöt szeretne kiépíteni, amely több mint 8 magot igényel, kövesse az [alábbi](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) utasításokat a kvóta növeléséhez
+1. Legalább hat **DC <x> s-v2** mag érhető el az előfizetésben a használathoz. Alapértelmezés szerint a virtuális gép az Azure-előfizetések 8 maggal kapcsolatos bizalmas számítástechnikai kvótáját is felszámítja. Ha olyan fürtöt szeretne kiépíteni, amely több mint 8 magot igényel, kövesse az [alábbi](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) utasításokat a kvóta növeléséhez
 
-### <a name="confidential-computing-node-features"></a>A bizalmas számítástechnikai csomópont funkciói
+### <a name="confidential-computing-node-features-dcxs-v2"></a>A bizalmas számítástechnikai csomópont funkciói (DC <x> s-v2)
 
 1. Csak Linux-tárolókat támogató linuxos munkavégző csomópontok
 1. Ubuntu 2. generációs 18,04 Virtual Machines
@@ -94,14 +94,14 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --aks-custom-headers usegen2vm=true
 ```
-A fenti parancsnak egy DCSv2 Node-készlettel rendelkező új AK-fürtöt kell kiépítenie, és automatikusan telepítenie kell két démon-készletet – ([SGX enklávéhoz Device plugin](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX enklávéhoz quote Helper](confidential-nodes-aks-overview.md#sgx-quote))
+A fenti parancsnak egy, a **DC <x> s-v2** csomópont-készletekkel rendelkező új AK-fürtöt kell kiépítenie, és automatikusan telepítenie kell két démon-készletet – ([SGX enklávéhoz-eszköz beépülő modul](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX enklávéhoz](confidential-nodes-aks-overview.md#sgx-quote)
 
 Kérje le az AK-fürt hitelesítő adatait az az az AK Get-hitelesítőadats parancs használatával:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
-Győződjön meg arról, hogy a csomópontok megfelelően lettek létrehozva, és a SGX ENKLÁVÉHOZ-hez kapcsolódó démon-készletek a DCSv2 csomópont-készleteken futnak a kubectl Get hüvelyek & Nodes paranccsal az alábbiak szerint:
+Győződjön meg arról, hogy a csomópontok megfelelően lettek létrehozva, és a SGX ENKLÁVÉHOZ-hez kapcsolódó démon-készletek a **DC <x> s-v2** csomópont-készleteken futnak a kubectl get hüvelyek & Nodes paranccsal az alábbiak szerint:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -130,9 +130,12 @@ Először is lehetővé teszi a bizalmas számítástechnikai szolgáltatásokka
 ```azurecli-interactive
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
-Most adjon hozzá egy DCSv2-csomópont-készletet a fürthöz
-
-```azurecli-interactive
+Most adjon hozzá egy **DC <x> s-v2 csomópont-** készletet a fürthöz
+    
+> [!NOTE]
+> Ahhoz, hogy használni lehessen a bizalmas számítástechnikai funkciót, a meglévő AK-fürtnek legalább egy **DC <x> s-v2** VM SKU-alapú csomópont-készlettel kell rendelkeznie. További információ a bizalmas számítástechnikai DCsv2 VM SKU itt [elérhető SKU-k és támogatott régiók](virtual-machine-solutions.md).
+    
+  ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2 --aks-custom-headers usegen2vm=true
 
 output node pool added

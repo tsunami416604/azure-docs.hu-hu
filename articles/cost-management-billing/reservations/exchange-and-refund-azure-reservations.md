@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 553652832f3f4ce84a0a141455551e4977215184
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 32db8396a687428c668a9b8a4213b50986614083
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684422"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150128"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
@@ -21,7 +21,7 @@ Az Azure Reservations biztosítja a rugalmasságot a változó igények kielég�
 Az önkiszolgáló csere- és lemondási lehetőség nem érhető el az Egyesült Államok kormányának nagyvállalati szerződésével rendelkező ügyfelei számára. Az Egyesült Államok kormányának (US Government) egyéb előfizetési típusai támogatottak, például a használatalapú fizetés és a Felhőszolgáltató (CSP).
 
 > [!NOTE]
-> - **Meglévő foglalások cseréjéhez vagy visszatérítéséhez tulajdonosi hozzáféréssel kell rendelkeznie a foglalási rendeléshez**. Elvégezhető [a foglalást kezelő felhasználók hozzáadása vagy módosítása](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+> - **Meglévő foglalások cseréjéhez vagy visszatérítéséhez tulajdonosi hozzáféréssel kell rendelkeznie a foglalási rendeléshez**. Elvégezhető [a foglalást kezelő felhasználók hozzáadása vagy módosítása](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 > - A Microsoft jelenleg nem számol fel korai felmondási díjat a foglalásokhoz kapcsolódó visszatérítések után. Előfordulhat, hogy a visszatérítések a jövőben díjkötelesek lesznek. Jelenleg még nem határoztuk meg a díj bevezetésének dátumát.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Meglévő foglalások cseréje vagy visszatérítése

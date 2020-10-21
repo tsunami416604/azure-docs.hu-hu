@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0b3cf0c705048d37d422d62b77dc7d94c5ae13bd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371742"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149396"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>A frissített Azure-beli számlázási fiók használatának első lépései
 
@@ -104,8 +104,8 @@ Ha Cost Management vagy Billing API-kkal kérdezi le vagy frissíti a számláz�
 
 |API | Módosítások  |
 |---------|---------|
-|[Billing Accounts – List](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/billingaccounts/list) | A Billing Accounts – List API-ban a régi számlázási fiók agreementType tulajdonsága **MicrosoftOnlineServiceProgram**, az új számlázási fiók agreementType tulajdonsága pedig **MicrosoftCustomerAgreement**. Ha függőséget szeretne felvenni az agreementType tulajdonsághoz, frissítse. |
-|[Invoices – List By Billing Subscription](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Ez az API csak a fiók frissítése előtt létrehozott számlákat fogja visszaadni. Az új számlázási fiókban létrehozott számlák az [Invoices – List By Billing Subscription](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API használatával tekinthetők meg. |
+|[Billing Accounts – List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | A Billing Accounts – List API-ban a régi számlázási fiók agreementType tulajdonsága **MicrosoftOnlineServiceProgram**, az új számlázási fiók agreementType tulajdonsága pedig **MicrosoftCustomerAgreement**. Ha függőséget szeretne felvenni az agreementType tulajdonsághoz, frissítse. |
+|[Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Ez az API csak a fiók frissítése előtt létrehozott számlákat fogja visszaadni. Az új számlázási fiókban létrehozott számlák az [Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API használatával tekinthetők meg. |
 
 ## <a name="additional-information"></a>További információ
 

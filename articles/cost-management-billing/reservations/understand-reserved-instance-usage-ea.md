@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 20a9fb6a158134ffc18dc5bbb7eddd34d2b79562
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6e51363ff2f3782b77288f9dc1fcb8e59e9ffe0c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682008"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151796"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>A Nagyvállalati Szerződés foglalási költségeinek és használati adatainak lekérése
 
@@ -55,7 +55,7 @@ Az Azure használati adataiban elérhető egyéb információk módosultak:
 - Időtartam – 12 hónap vagy 36 hónap.
 - RINormalizationRatio – Elérhető az AdditionalInfo (További információk) alatt. Azt az arányt fejezi ki, hogy a foglalás milyen arányban jelenik meg a használati adatokban. Ha a példány méretrugalmassága engedélyezve van a foglalásban, akkor más méretekre is alkalmazható. Az érték azt az arányt mutatja, hogy a foglalás milyen arányban jelent meg a használati adatokban.
 
-[Lásd a mező definícióját](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+[Lásd a mező definícióját](/rest/api/consumption/usagedetails/list#definitions)
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Azure fogyasztási és foglalási használati adatok lekérése API használatával
 
@@ -71,7 +71,7 @@ Itt látható egy példahívás a Usage Details API-hoz:
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
-Ha többet szeretne tudni az {enrollmentId} és {billingPeriodId} változókról, tekintse meg a [Használati adatok – lista](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API-cikket.
+Ha többet szeretne tudni az {enrollmentId} és {billingPeriodId} változókról, tekintse meg a [Használati adatok – lista](/rest/api/consumption/usagedetails/list) API-cikket.
 
 A mérőket és szűrőket tartalmazó következő táblázat segítséget nyújt a gyakori foglalási problémák megoldásához.
 

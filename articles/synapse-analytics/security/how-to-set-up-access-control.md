@@ -9,14 +9,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260155"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341549"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
+# <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió) 
 
 Ez a cikk bemutatja, hogyan használhatja a szerepköröket és a hozzáférés-vezérlést a tevékenységek vezérléséhez és az adateléréshez. Ezeket az utasításokat követve az Azure szinapszis Analytics hozzáférés-vezérlése egyszerűsített. A felhasználókat csak három biztonsági csoport egyikére kell felvennie és eltávolítania.
 
@@ -31,12 +31,12 @@ A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez köve
   - Az Azure szinapszis Analytics-rendszergazda Apache Spark
 - Azure Data Lake Storage Gen 2 (ADLSGEN2) adathozzáférés-vezérlése.
 - A szinapszis SQL és a Spark adatbázisok hozzáférés-vezérlése
-
+- 
 ## <a name="steps-to-secure-a-synapse-workspace"></a>A szinapszis-munkaterület biztonságossá tételének lépései
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le azokat bármely tetszőleges névvel.
 
-|Beállítás | Példaérték | Leírás |
+|Beállítás | Példaérték | Description |
 | :------ | :-------------- | :---------- |
 | **Szinapszis-munkaterület** | WS1 |  A szinapszis munkaterület neve. |
 | **ADLSGEN2-fiók** | STG1 | A munkaterülethez használni kívánt ADLS-fiók. |
@@ -71,11 +71,12 @@ A tárterülettel kapcsolatos információk azonosítása:
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>3. lépés: a szinapszis-munkaterület létrehozása és konfigurálása
 
-A Azure Portal hozzon létre egy szinapszis-munkaterületet:
+ A Azure Portal hozzon létre egy szinapszis-munkaterületet:
 
+- Az előfizetés kiválasztása
+- Válassza ki az erőforráscsoportot – hozzá kell férnie egy olyan erőforráscsoporthoz, amelyhez hozzá lett rendelve a **tulajdonosi** szerepkör.
 - A munkaterület WS1 neve
-- STG1 kiválasztása a Storage-fiókhoz
-- Válassza a CNT1 lehetőséget a tárolóhoz, amelyet "fájlrendszerként" használ.
+- Válassza a STG1 lehetőséget a Storage-fiókhoz –. Válassza a CNT1 lehetőséget a tárolóhoz, amelyet "fájlrendszerként" használ.
 - WS1 megnyitása a szinapszis Studióban
 - Válassza a **kezelés**  >  **Access Control** a biztonsági csoportok társítása a következő szinapszis-szerepkörökhöz lehetőséget.
   - **WS1- \_ WSAdmins** társítása a szinapszis-munkaterület rendszergazdái számára
