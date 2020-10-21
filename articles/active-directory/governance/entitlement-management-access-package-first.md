@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c578d9df8c008d73460801547e6b9361e60baa8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597501"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318003"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -42,7 +42,7 @@ Az Azure Active Directory jogosultságok felügyeletének üzembe helyezési fol
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-Microsoft Graph használatával programozott módon is létrehozhat hozzáférési csomagokat. Egy olyan oktatóanyaghoz, amely bemutatja, hogyan hozhat létre programozott módon egy hozzáférési csomagot, tekintse meg a [jogosultságok kezelése API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta)-t.
+Microsoft Graph használatával programozott módon is létrehozhat hozzáférési csomagokat. Egy olyan oktatóanyaghoz, amely bemutatja, hogyan hozhat létre programozott módon egy hozzáférési csomagot, tekintse meg a [jogosultságok kezelése API](/graph/tutorial-access-package-api?view=graph-rest-beta)-t.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -67,7 +67,7 @@ Egy erőforrás-címtárhoz egy vagy több megosztani kívánt erőforrás tarto
 
 1. Hozza létre vagy konfigurálja a következő két felhasználót. Ezeket a neveket vagy más neveket is használhatja. A **Rendszergazda1** lehet az a felhasználó, aki jelenleg be van jelentkezve.
 
-    | Név | Címtárszerepkör |
+    | Name | Címtárszerepkör |
     | --- | --- |
     | **Rendszergazda1** | Globális rendszergazda<br/>-vagy-<br/>Felhasználói rendszergazda |
     | **Requestor1** | Felhasználó |
@@ -140,7 +140,7 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
 
     ![Új hozzáférési csomag – kérelmek lap – felhasználók és csoportok kiválasztása](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-16. Kattintson a **Kiválasztás** elemre.
+16. Válassza a **Kiválasztás** lehetőséget.
 
 17. Görgessen le a **jóváhagyás** és a **kérelmek engedélyezése** szakaszban.
 
@@ -266,7 +266,7 @@ Ebben a lépésben eltávolítja a végrehajtott módosításokat, és törli a 
 
 1. Törölje a **marketing-erőforrások** csoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megismerheti a jogosultságok kezelésének gyakori forgatókönyveit.
 > [!div class="nextstepaction"]

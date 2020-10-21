@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2535c05241c076e08f8f0f2ba9e2301fb353723e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79479559"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330478"
 ---
 # <a name="install-azure-farmbeats"></a>Az Azure FarmBeats telepítése
 
@@ -87,7 +87,7 @@ Az első két engedélyre van szükség a [HRE alkalmazás létrehozásának lé
 
 A FarmBeats-telepítést futtató személynek azon erőforráscsoport tulajdonosának kell lennie, amelyben a FarmBeats telepítve van. Az előfizetési tulajdonosok esetében ez automatikusan megtörténik az erőforráscsoport létrehozásakor. Mások számára hozza létre előre az erőforráscsoportot, és kérje meg az előfizetés tulajdonosát, hogy az erőforráscsoport tulajdonosa legyen.
 
-A Azure Portal a [szerepköralapú hozzáférés-vezérlésre](https://docs.microsoft.com/azure/role-based-access-control/check-access)vonatkozó utasításokat követve ellenőrizheti a hozzáférési engedélyeit.
+Az [Azure szerepköralapú hozzáférés-vezérlési](https://docs.microsoft.com/azure/role-based-access-control/check-access)utasításait követve ellenőrizheti a Azure Portal hozzáférési engedélyeit.
 
 ### <a name="decide-subscription-and-region"></a>Előfizetés és régió kiválasztása
 
@@ -172,7 +172,7 @@ A telepítés befejezése után ellenőrizheti a telepítést, és megkezdheti a
 
 A **Datahub** a következő címen érhető el: https:// \<FarmBeats-website-name> -API.azurewebsites.net/Swagger. Itt látni fogja a különböző FarmBeats API-objektumokat, és REST-műveleteket hajt végre az API-kon.
 
-## <a name="upgrade"></a>Frissítés
+## <a name="upgrade"></a>Upgrade
 
 A FarmBeats legújabb verzióra való frissítéséhez futtassa a következő lépéseket egy Cloud Shell példányban a PowerShell-környezet használatával. A felhasználónak azon előfizetés tulajdonosának kell lennie, amelyben a FarmBeats telepítve van.
 

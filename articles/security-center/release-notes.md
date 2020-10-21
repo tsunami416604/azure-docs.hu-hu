@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a93ba674e82da090eb2b7c8805880f6e79d7e5d7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 565282b2da5383c1d3471337f64588f97157a79c
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280213"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328674"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -172,7 +172,6 @@ A szeptemberben elérhető frissítések a következők:
 - [Erőforrás kivonása egy javaslatból](#exempt-a-resource-from-a-recommendation)
 - [A Security Center AWS-és GCP-összekötők több felhős élményt nyújtanak](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
 - [Kubernetes munkaterhelés-védelmi javaslat csomag](#kubernetes-workload-protection-recommendation-bundle)
-- [IoT fenyegetések elleni védelem fejlesztései az Azure Defender for IoT](#iot-threat-protection-enhancements-in-azure-defender-for-iot)
 - [A sebezhetőségi felmérés eredményei mostantól folyamatos exportálással érhetők el](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
 - [Biztonsági konfigurációs problémák megakadályozása az új erőforrások létrehozásakor feltett javaslatok végrehajtásakor](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
 - [A hálózati biztonsági csoport javaslatai javultak](#network-security-group-recommendations-improved)
@@ -201,7 +200,6 @@ Amikor engedélyezi az Azure Defender számára a Azure Security Center **díjsz
 - [Azure Defender App Service-hez](defender-for-app-service-introduction.md)
 - [Azure Defender tároláshoz](defender-for-storage-introduction.md)
 - [Azure Defender SQL-hez](defender-for-sql-introduction.md)
-- [Azure Defender IoT-hez](defender-for-iot-introduction.md)
 - [Azure Defender Key Vaulthoz](defender-for-key-vault-introduction.md)
 - [Azure Defender Kuberneteshez](defender-for-kubernetes-introduction.md)
 - [Azure Defender tárolóregisztrációs adatbázisokhoz](defender-for-container-registries-introduction.md)
@@ -293,13 +291,6 @@ Ha telepítette a Kubernetes Azure Policy bővítményét az AK-fürtön, a Kube
 Megadhatja például, hogy az emelt szintű tárolók ne legyenek létrehozva, és minden jövőbeli kérelem le lesz tiltva.
 
 További információ a [munkaterhelések elleni védelemben – ajánlott eljárások a Kubernetes belépésvezérlés használatával](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
-
-
-### <a name="iot-threat-protection-enhancements-in-azure-defender-for-iot"></a>IoT fenyegetések elleni védelem fejlesztései az Azure Defender for IoT
-
-A IoT készült Azure Defender több veszélyforrások elleni védelmi képességet biztosít a CyberX-ügynök nélküli technológia bevonásának köszönhetően. Ez biztonsági védelmet nyújt az olyan nem felügyelt rozsdaövezetek rehabilitálása-eszközök számára, mint például a gyártás, az Épületfelügyeleti rendszerek (BMS), az élettudományok, az energia és a víz segédprogramok, az olaj-& gáz és a logisztika.
-
-További információ: a [IoT készült Azure Defender bemutatása](defender-for-iot-introduction.md).
 
 
 ### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>A sebezhetőségi felmérés eredményei mostantól folyamatos exportálással érhetők el

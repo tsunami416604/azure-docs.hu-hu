@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: b812a727a555f8c4c95389f2ba0cc5ccea2f608a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b1b93110c3dba38dadf7079fc24ba12e81793c02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205559"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329849"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
 
@@ -58,7 +58,7 @@ Amikor Automation-fiókot hoz létre a Azure Portalban, a rendszer automatikusan
 
 * Létrehoz egy egyszerű szolgáltatásfiókot az alkalmazáshoz az Azure AD-ben.
 
-* Maga a közreműködő szerepkört (RBAC) rendeli hozzá a használatban lévő Azure-előfizetéshez. Ez a szerepkör a runbookok használatával felügyeli a Azure Resource Manager erőforrásokat.
+* Maga a közreműködő szerepkört (Azure RBAC) rendeli hozzá a használatban lévő Azure-előfizetéshez. Ez a szerepkör a runbookok használatával felügyeli a Azure Resource Manager erőforrásokat.
 
 Automation-fiók létrehozásához jogosultságok és engedélyek szükségesek. További információ: [Automation-fiók létrehozásához szükséges engedélyek](../automation/automation-create-standalone-account.md#permissions-required-to-create-an-automation-account).
 
@@ -453,6 +453,6 @@ Az utolsó lépés a munkafolyamat-ellenőrzés. Az **Logic apps áttekintése**
 
 :::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="Automation-fiók hozzáadása":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a munkafolyamat testreszabásáról: [Azure Logic apps](../logic-apps/logic-apps-overview.md).

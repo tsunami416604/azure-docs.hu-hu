@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 86fd6a5d7ca1cb9c828a4ad095720f1664b82caa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d1c3ad9aa034e6eace5323dd80c5275699a6e728
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201430"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331498"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>A szolgáltatási kérelem sikertelen. Állapot: 403 (tiltott)
 
@@ -25,7 +25,7 @@ Ez a hiba számos, hitelesítést igénylő szolgáltatási kérelem esetében f
 
 ### <a name="cause-1"></a>Ok #1
 
-Ez a hiba általában azt jelzi, hogy a szolgáltatáshoz tartozó szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek nincsenek megfelelően beállítva. Az Azure Digital Twins-példányok számos művelete megköveteli, hogy a **felügyelni kívánt példányon**rendelkezzen az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkörrel. 
+Ez a hiba általában azt jelzi, hogy az Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) engedélyei nincsenek megfelelően beállítva a szolgáltatáshoz. Az Azure Digital Twins-példányok számos művelete megköveteli, hogy a **felügyelni kívánt példányon**rendelkezzen az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkörrel. 
 
 ### <a name="cause-2"></a>Ok #2
 
@@ -87,7 +87,7 @@ Ezután válassza az *API-engedélyek* lehetőséget a menüsávon annak ellenő
 
 Ha bármelyike másképp jelenik meg, mint a leírtak, kövesse az alkalmazás regisztrációjának beállítása című témakör útmutatását [*: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el a telepítési lépéseket az új Azure Digital Twins-példány létrehozásához és hitelesítéséhez:
 * [*Útmutató: példány és hitelesítés beállítása (CLI)*](how-to-set-up-instance-cli.md)

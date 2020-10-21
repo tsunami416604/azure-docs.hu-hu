@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6de0a6632c53055dd3d3f428481dcc465b67ef6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6869aa8bc7ede7d2047abf8eddc98b01f567fa
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568012"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280805"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A Azure Cosmos DB metrikáinak monitorozása és hibakeresése
 
@@ -59,7 +59,7 @@ A partíciós kulcsok jó kihasználása elengedhetetlen a skálázható alkalma
 
 :::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
 
-Az egyenetlen átviteli sebesség a *gyakori partíciókat* okozhatja, ami szabályozható kérelmeket eredményezhet, és újraparticionálást igényelhet. A Azure Cosmos DB particionálásával kapcsolatos további információkért lásd: [particionálás és skálázás Azure Cosmos DBban](./partition-data.md).
+Az egyenetlen átviteli sebesség a *gyakori partíciókat* okozhatja, ami szabályozható kérelmeket eredményezhet, és újraparticionálást igényelhet. A Azure Cosmos DB particionálásával kapcsolatos további információkért lásd: [particionálás és skálázás Azure Cosmos DBban](./partitioning-overview.md).
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>A tárolási eloszlás meghatározása a partíciók között
 
@@ -71,7 +71,7 @@ A diagramon a partícióra kattintva megadhatja, hogy melyik partíciós kulcs d
 
 :::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
 
-Miután meghatározta, hogy melyik partíciós kulcs okozza az elferdítés eloszlását, lehet, hogy újra kell particionálnia a tárolót egy elosztott partíciós kulccsal. A Azure Cosmos DB particionálásával kapcsolatos további információkért lásd: [particionálás és skálázás Azure Cosmos DBban](./partition-data.md).
+Miután meghatározta, hogy melyik partíciós kulcs okozza az elferdítés eloszlását, lehet, hogy újra kell particionálnia a tárolót egy elosztott partíciós kulccsal. A Azure Cosmos DB particionálásával kapcsolatos további információkért lásd: [particionálás és skálázás Azure Cosmos DBban](./partitioning-overview.md).
 
 ## <a name="compare-data-size-against-index-size"></a>Az adatméret összehasonlítása az index méretével
 

@@ -4,12 +4,12 @@ description: Leírja, hogyan lehet Azure Resource Manager sablonokat a GitHub-m�
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure,subject-armqs
-ms.openlocfilehash: b5852a65b4ed3c7cc73352fed37eeff035f8563c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106790"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282850"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sablonok üzembe helyezése GitHub-műveletek használatával
 
@@ -40,13 +40,19 @@ A fájl két részből áll:
 
 Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
 
+Hozzon létre egy erőforráscsoportot, ha még nem rendelkezik ilyennel. 
+
+```azurecli-interactive
+    az group create -n {MyResourceGroup}
+```
+
 Cserélje le a helyőrzőt az `myApp` alkalmazás nevére. 
 
 ```azurecli-interactive
-   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
+   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra és az erőforráscsoport nevére. A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő adatait tartalmazza, amelyek hozzáférést biztosítanak a App Service alkalmazáshoz az alábbihoz hasonló módon. A JSON-objektum másolása később.
+A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra és az erőforráscsoport nevére. A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő adatait tartalmazza, amelyek hozzáférést biztosítanak a App Service alkalmazáshoz az alábbihoz hasonló módon. A JSON-objektum másolása később. Csak a `clientId` , `clientSecret` , `subscriptionId` és `tenantId` értékekkel rendelkező szakaszt kell megadnia. 
 
 ```output 
   {
@@ -73,9 +79,9 @@ Létre kell hoznia egy titkos kulcsot az Azure-beli hitelesítő adataihoz, erő
 
 1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adja meg a titkot a nevet `AZURE_CREDENTIALS` .
 
-1. Hozzon létre egy másik nevű titkot `AZURE_RG` . Adja hozzá az erőforráscsoport nevét a titok érték mezőjéhez. 
+1. Hozzon létre egy másik nevű titkot `AZURE_RG` . Adja hozzá az erőforráscsoport nevét a titkos kulcs értéke mezőhöz (például: `myResourceGroup` ). 
 
-1. Hozzon létre egy nevű további titkos kulcsot `AZURE_SUBSCRIPTION` . Adja hozzá az előfizetés-azonosítót a titkos kulcs értéke mezőhöz. 
+1. Hozzon létre egy nevű további titkos kulcsot `AZURE_SUBSCRIPTION` . Adja hozzá az előfizetés-azonosítót a titkos kulcs értéke mezőhöz (például: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ). 
 
 ## <a name="add-resource-manager-template"></a>Resource Manager-sablon hozzáadása
 
@@ -114,17 +120,19 @@ A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolya
             creds: ${{ secrets.AZURE_CREDENTIALS }}
      
           # Deploy ARM template
-        - uses: azure/arm-deploy@v1
         - name: Run ARM deploy
+          uses: azure/arm-deploy@v1
           with:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS
+            parameters: storageAccountType=Standard_LRS 
         
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
+    > [!NOTE]
+    > Az ARM üzembe helyezési műveletben megadhat egy JSON formátumú paramétereket (például: `.azuredeploy.parameters.json` ).  
 
     A munkafolyamat-fájl első szakasza a következőket tartalmazza:
 
@@ -147,7 +155,7 @@ Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a 
 
 Ha az erőforráscsoport és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az első ARM-sablon létrehozása](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)

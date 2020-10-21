@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f47e9cb93b90c8a2401d1dfe6c0ff7800b0bcf27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 007409d755da2d879297b4b898663dcbd9fd6d7f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401129"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329627"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs Azure biztonsági alapterve
 
@@ -397,7 +397,7 @@ Elnevezett helyszínek konfigurálása az Azure-ban: https://docs.microsoft.com/
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató**: Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerként az Azure-erőforrások, például a Event Hubs számára. Ez lehetővé teszi a szerepköralapú hozzáférés-vezérlést (RBAC) a rendszergazdai bizalmas erőforrások számára.
+**Útmutató**: Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerként az Azure-erőforrások, például a Event Hubs számára. Ez lehetővé teszi, hogy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) a rendszergazdai bizalmas erőforrások számára legyen elérhető.
 
  Azure AD-példány létrehozása és konfigurálása: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
@@ -539,9 +539,9 @@ Az ügyfelek adatvédelem az Azure-ban: https://docs.microsoft.com/azure/securit
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az Azure Event Hubs támogatja a Azure Active Directory (ad) használatát a Event Hubs erőforrásokra irányuló kérések engedélyezéséhez. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó vagy egy egyszerű alkalmazás.
+**Útmutató**: az Azure Event Hubs támogatja a Azure Active Directory (ad) használatát a Event Hubs erőforrásokra irányuló kérések engedélyezéséhez. Az Azure AD-vel az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyeket biztosíthat egy rendszerbiztonsági tag számára, amely lehet egy felhasználó vagy egy egyszerű alkalmazás.
 
-Az Azure AD RBAC és az Azure Event Hubs elérhető szerepköreinek megismerése: https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+Az Azure-RBAC és az Azure Event Hubs elérhető szerepköreinek megismerése: https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1087,7 +1087,7 @@ A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal é
 
 **Felelősség**: ügyfél
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági Alaptervekről](../security/benchmarks/security-baselines-overview.md)

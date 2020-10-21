@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 118e137f06a49f2c125b1ca156877514d65af86f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 34afc732d64a7aa29261989cc790c8a113208d96
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047063"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331770"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Az Azure Digital Twins CLI használata
 
@@ -23,7 +23,7 @@ A Azure Portal Azure Digital Twins-példányának kezelése mellett az Azure Dig
 * Kettős kapcsolatok kezelése
 * Végpontok konfigurálása
 * [Útvonalak](concepts-route-events.md) kezelése
-* [Biztonság](concepts-security.md) konfigurálása szerepköralapú hozzáférés-vezérléssel (RBAC)
+* [Biztonság](concepts-security.md) konfigurálása az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
@@ -41,7 +41,7 @@ Az alábbi lépésekkel ellenőrizheti, hogy a bővítmény legújabb verziója 
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a parancssori felülettel és a teljes körű parancsaival a dokumentációs dokumentációban:
 * [*az DT* Command Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

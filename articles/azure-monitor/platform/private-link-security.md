@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eac64eff8c87046fd1ce76ee71475fda79ac6f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802225"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329253"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -41,6 +41,9 @@ Azure Monitor a privát hivatkozás hatóköre olyan csoportosítási erőforrá
 ## <a name="planning-based-on-your-network"></a>Tervezés a hálózat alapján
 
 A AMPLS-erőforrások beállítása előtt vegye figyelembe a hálózat elkülönítésének követelményeit. Értékelje ki a virtuális hálózatok hozzáférését a nyilvános internethez, valamint az egyes Azure Monitor erőforrások (azaz Application Insights összetevők és Log Analytics munkaterületek) hozzáférési korlátozásait.
+
+> [!NOTE]
+> A központilag küllő hálózatok vagy a több hálózattal rendelkező hálózatok bármely más topológiája beállíthat egy privát kapcsolatot a hub (fő) VNet és a kapcsolódó Azure Monitor erőforrások között ahelyett, hogy minden egyes VNet létre kellene állítania egy privát hivatkozást. Ez különösen akkor hasznos, ha az ilyen hálózatok által használt Azure Monitor erőforrások meg vannak osztva. Ha azonban engedélyezni szeretné az egyes VNet számára a figyelési erőforrások különálló készletének elérését, hozzon létre egy privát hivatkozást az egyes hálózatok dedikált AMPLS.
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>Annak kiértékelése, hogy mely virtuális hálózatok csatlakozzanak egy privát kapcsolathoz
 
@@ -248,6 +251,6 @@ Csomagolja be a JavaScript-kódot a parancsfájlba, hogy a böngésző ne kísé
 
 Ha privát kapcsolaton keresztül csatlakozik a Azure Monitor-erőforrásokhoz, ezen erőforrás felé irányuló forgalomnak a hálózaton konfigurált privát végponton kell haladnia. A magánhálózati végpont engedélyezéséhez frissítse a DNS-beállításokat a [Kapcsolódás privát végponthoz](#connect-to-a-private-endpoint)című részben leírtak szerint. Egyes böngészők a beállított beállítások helyett a saját DNS-beállításait használják. Előfordulhat, hogy a böngésző megpróbál csatlakozni Azure Monitor nyilvános végpontokhoz, és teljesen megkerüli a privát hivatkozást. Győződjön meg arról, hogy a böngészők beállításai nem felülbírálják vagy gyorsítótárazzák a régi DNS-beállításokat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a [privát tárterületről](private-storage.md)

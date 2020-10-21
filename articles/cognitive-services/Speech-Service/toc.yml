@@ -229,6 +229,8 @@
   items:
     - name: A Szándékfelismerés dokumentációja
       href: index-intent-recognition.yml
+    - name: A Szándékfelismerés áttekintése
+      href: intent-recognition.md
     - name: Szándékfelismerés gyorsútmutatója
       href: quickstarts/intent-recognition.md
     - name: Útmutatók

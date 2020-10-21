@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 19c09bd03a3d1eb3b16f69b9a605a4ccb763030a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8076b417c8043a4f6796ccca0e67db79360ede73
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619542"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331668"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Több-bérlős elemzés a kinyert adategységek használatával – egybérlős alkalmazás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -95,7 +95,7 @@ A következő lépésekben telepíti a **tenantanalytics**nevű Analytics-tárol
 
 Most, hogy telepítette az alkalmazást, és kitöltötte érdekes bérlői adatokkal, használja a [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) -t a **tenants1-DPT- &lt; User &gt; ** és a **Catalog-DPT- &lt; User &gt; ** kiszolgálók bejelentkezési = *fejlesztői*, jelszó = *P \@ ssword1*használatával való összekapcsolásához. További útmutatásért tekintse meg a [bevezető oktatóanyagot](../../sql-database/saas-dbpertenant-wingtip-app-overview.md) .
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
+![A SQL Serverhoz való kapcsolódáshoz szükséges adatokat bemutató képernyőkép.](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
 A Object Explorer hajtsa végre a következő lépéseket:
 
@@ -110,7 +110,7 @@ Az elemzési tár csomópontjának kibontásával tekintse meg a SSMS Object Exp
 - A Star-Schema táblák a következők: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**és **dim_Dates**.
 - A tárolt eljárás a Star-Schema táblák nyers adattáblákból való feltöltésére szolgál.
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
+![Képernyőkép a SSMS Object Explorer látható adatbázis-elemekről.](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>Adatbányászat 
 

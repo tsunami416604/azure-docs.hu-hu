@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: d92dad445b1aeace24dc0af7d95289f5535a5680
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281812"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329032"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Virtuális gépek ajánlatának megtervezése
 
@@ -23,10 +23,7 @@ Mielőtt elkezdené, [hozzon létre egy kereskedelmi Piactéri fiókot a partner
 
 ### <a name="technical-fundamentals"></a>Technikai alapismeretek
 
-Az ajánlatok tervezésének, kiépítésének és tesztelésének folyamata időt vesz igénybe, és az Azure platformon és az ajánlat létrehozásához használt technológiákban is szaktudást igényel. A mérnöki csapatnak a következő Microsoft-technológiákkal kapcsolatos ismeretekkel kell rendelkeznie:
-
-- [Azure-alkalmazások tervezése és architektúrája](https://azure.microsoft.com/solutions/architecture/)
-- [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)és [Azure hálózatkezelés](https://azure.microsoft.com/services/?filter=networking#networking)
+Az ajánlatok tervezésének, kiépítésének és tesztelésének folyamata időt vesz igénybe, és az Azure platformon és az ajánlat létrehozásához használt technológiákban is szaktudást igényel. A mérnöki csapatnak rendelkeznie kell az [azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), az [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)és az [Azure Networking](https://azure.microsoft.com/services/?filter=networking#networking)szolgáltatásával, valamint az [Azure-alkalmazások tervezésével és architektúrával](https://azure.microsoft.com/solutions/architecture/)kapcsolatos ismeretekkel. Tekintse meg ezeket a további technikai forrásokat: 
 
 - Oktatóanyagok
   - [Linux rendszerű virtuális gépek](../virtual-machines/linux/tutorial-manage-vm.md)
@@ -40,9 +37,17 @@ Az ajánlatok tervezésének, kiépítésének és tesztelésének folyamata id�
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 
+A virtuálisgép-ajánlatok a következő műszaki követelményekkel rendelkeznek:
+
+- Elő kell készítenie egy operációs rendszer virtuális merevlemezét (VHD). Az adatlemezek virtuális merevlemezei nem kötelezőek. Ezt az alábbiakban részletesebben ismertetjük.
+- Az ügyfél bármikor lemondhatja az ajánlatot.
+- Létre kell hoznia legalább egy csomagot az ajánlathoz. A csomag díjszabása a kiválasztott [licencelési lehetőség](#licensing-options) alapján történik.
+   > [!IMPORTANT]
+   > A tervekben szereplő összes virtuálisgép-rendszerképnek azonos számú adatlemezzel kell rendelkeznie.
+
 A virtuális gépek két összetevőt tartalmaznak:
 
-- **Operációs rendszer virtuális merevlemeze (VHD)** – az ajánlatával üzembe helyezett operációs rendszert és megoldást tartalmazza. A VHD előkészítési folyamata attól függően eltérő, hogy Linux-, Windows-vagy egyéni virtuális gép-e.
+- **Operációs VHD** – az ajánlatával üzembe helyezett operációs rendszert és megoldást tartalmazza. A VHD előkészítési folyamata attól függően eltérő, hogy Linux-, Windows-vagy egyéni virtuális gép-e.
 - **Adatlemez virtuális merevlemezei** (nem kötelező) – dedikált, állandó tárterület egy virtuális géphez. Ne használja az operációs rendszer VHD-jét (például a C: meghajtót) az állandó információk tárolásához. 
     - Akár 16 adatlemez is felhasználható.
     - Adatlemez esetén használjon egy VHD-t, még akkor is, ha a lemez üres.
@@ -50,13 +55,7 @@ A virtuális gépek két összetevőt tartalmaznak:
     > [!NOTE]
     > A használt operációs rendszertől függetlenül csak a megoldáshoz szükséges adatlemezek minimális számát adja hozzá. Az ügyfelek nem tudják eltávolítani a rendszerkép részét képező lemezeket az üzembe helyezéskor, de mindig hozzáadhatnak lemezeket az üzembe helyezés során vagy azt követően is.
 
-A virtuálisgép-ajánlatok a következő műszaki követelményekkel rendelkeznek:
-
-- Elő kell készítenie egy operációs rendszer virtuális merevlemezét (VHD). Az adatlemezek virtuális merevlemezei nem kötelezőek.
-- Az ügyfél bármikor lemondhatja az ajánlatot.
-- Létre kell hoznia legalább egy csomagot az ajánlathoz. A csomag díjszabása a kiválasztott [licencelési lehetőség](#licensing-options) alapján történik.
-   > [!IMPORTANT]
-   > A tervekben szereplő összes virtuálisgép-rendszerképnek azonos számú adatlemezzel kell rendelkeznie.
+A technikai eszközök előkészítésével kapcsolatos részletes utasításokért lásd: [virtuális gép létrehozása jóváhagyott alap használatával](azure-vm-create-using-approved-base.md) vagy [virtuális gép létrehozása a saját rendszerkép használatával](azure-vm-create-using-own-image.md).
 
 ## <a name="preview-audience"></a>Előnézet célközönsége
 
@@ -132,7 +131,8 @@ Ha az ajánlatot a partner Centerben hozza létre, megjelenik az **viszonteladá
 > [!NOTE]
 > Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [**Cloud Solution Providers**](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+- [Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en](azure-vm-create.md)
 - [Hozzon létre egy virtuális gépet jóváhagyott alap használatával](azure-vm-create-using-approved-base.md) , vagy [hozzon létre egy virtuális gépet saját rendszerkép használatával](azure-vm-create-using-own-image.md).
 - [Ajánlatlistákra vonatkozó ajánlott eljárások](gtm-offer-listing-best-practices.md)

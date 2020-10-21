@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 45303a8aaaa348d310d7f8b5e7cd98f8d465a282
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: af49a7bec68c30e4ded576a8d84eac850eb745f8
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280828"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331362"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Az Azure Cosmos DB gyakori használati helyzetei
 
@@ -24,7 +24,7 @@ A cikk elolvasása után a következő kérdésekre tud válaszolni:
 * Milyen előnyökkel jár a Azure Cosmos DB használata eszközök internetes hálózata (IoT) rendszerek adattárában?
 * Milyen előnyökkel jár a webes és mobil alkalmazások Azure Cosmos DB használata?
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 [Azure Cosmos db](../cosmos-db/introduction.md) a Microsoft gyors NoSQL-adatbázisa, amely bármilyen méretű nyitott API-val rendelkezik. A szolgáltatás úgy lett kialakítva, hogy az ügyfelek rugalmasan (és egymástól függetlenül) méretezhetik az átviteli sebességet és a tárterületet tetszőleges számú földrajzi régión belül. A Azure Cosmos DB az első globálisan elosztott adatbázis-szolgáltatás a piacon, amely átfogó [szolgáltatási szintű szerződéseket](https://azure.microsoft.com/support/legal/sla/cosmos-db/) kínál, beleértve az átviteli sebességet, a késést, a rendelkezésre állást és a konzisztenciát.
 
@@ -100,7 +100,7 @@ A JSON, a Cosmos DB által támogatott formátum érvényes formátum a felhaszn
 
 :::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Cosmos DB használatának megkezdéséhez kövesse a [gyors üzembe](create-sql-api-dotnet.md)helyezést, amely végigvezeti a fiók létrehozásán és a Cosmos db használatának első lépésein.
 

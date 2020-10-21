@@ -3,12 +3,12 @@ title: Hitelesítési és engedélyezési problémák elhárítása – Azure Ev
 description: Ez a cikk tájékoztatást nyújt az Azure Event Hubs-vel kapcsolatos hitelesítési és engedélyezési hibák elhárításáról.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: cd5f48dfb146a027f0b95b4ddea3dc054a315c6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566227"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329610"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Hitelesítési és engedélyezési problémák elhárítása – Azure Event Hubs
 A [kapcsolódási problémák elhárítása](troubleshooting-guide.md) című cikk tippekkel szolgál az Azure Event Hubs kapcsolódási problémáinak elhárításához. Ez a cikk tippeket és javaslatokat tartalmaz az Azure Event Hubs-vel kapcsolatos hitelesítési és engedélyezési problémák elhárításához. 
@@ -21,7 +21,7 @@ Ha Azure Active Directory (Azure AD) szolgáltatást használ az Azure Event Hub
 - Az [Azure Event Hubs adatfeladót](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) a küldési hozzáféréshez.
 - [Azure Event Hubs adatfogadó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) a fogadási hozzáféréshez.
 
-A séma-beállításjegyzék beépített szerepköreivel kapcsolatban lásd: [séma beállításjegyzékbeli szerepkörei](schema-registry-overview.md#role-based-access-control).
+A séma-beállításjegyzék beépített szerepköreivel kapcsolatban lásd: [séma beállításjegyzékbeli szerepkörei](schema-registry-overview.md#azure-role-based-access-control).
 
 ### <a name="resource-scopes"></a>Erőforrás-hatókörök
 - **Fogyasztói csoport**: ezen a hatókörön a szerepkör-hozzárendelés csak erre az entitásra vonatkozik. A Azure Portal jelenleg nem támogatja az Azure-szerepkörök egy rendszerbiztonsági tag számára való hozzárendelését ezen a szinten. 
@@ -30,7 +30,7 @@ A séma-beállításjegyzék beépített szerepköreivel kapcsolatban lásd: [s�
 - **Erőforráscsoport**: a szerepkör-hozzárendelés az erőforráscsoport összes Event Hubs erőforrására vonatkozik.
 - **Előfizetés**: a szerepkör-hozzárendelés az előfizetés összes erőforrás-csoportjának összes Event Hubs erőforrására vonatkozik.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Alkalmazás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez](authenticate-application.md)
 - [Hozzáférés engedélyezése Event Hubs erőforrásokhoz a Azure Active Directory használatával](authorize-access-azure-active-directory.md)
@@ -43,12 +43,12 @@ Ha [sas](authenticate-shared-access-signature.md)-t használ, kövesse az alább
 - Ellenőrizze, hogy a kulcs lejárt-e. Javasoljuk, hogy a lejárata előtt is újítsa meg a SAS-t. Ha az ügyfél és a Event Hubs szolgáltatási csomópontok között óra van elferdítve, előfordulhat, hogy a hitelesítési jogkivonat lejár, mielőtt az ügyfél felismeri. Az aktuális implementációs fiókok órája akár 5 percet is igénybe vehet, azaz a token 5 perccel a lejárata előtt megújítja az ügyfelet. Ezért ha az óra ferde értéke 5 percnél nagyobb, akkor az ügyfél megfigyelheti az időszakos hitelesítési hibákat.
 - Ha a **sas kezdési ideje** **most**értékre van állítva, akkor az első néhány perc időszakos meghibásodása miatt időnként eldöntheti, hogy az aktuális idő a különböző gépeken milyen eltéréseket mutat. Állítsa be a kezdési időpontot legalább 15 percre a múltban, vagy ne állítsa be egyáltalán. Ugyanez általában a lejárati időre is vonatkozik. 
 
-További információkért tekintse át a következő cikkeket: 
+További információért tekintse át a következő cikkeket: 
 
 - [Hitelesítés közös hozzáférésű aláírások (SAS) használatával](authenticate-shared-access-signature.md). 
 - [A Event Hubs-erőforrásokhoz való hozzáférés engedélyezése közös hozzáférési aláírások használatával](authorize-access-shared-access-signature.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd az alábbi cikkeket:
 

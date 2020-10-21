@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 83cc1b2fd0936d814e4a31714fecfdea7ccce988
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f107741dc3e601d0a46c295932a745c99dadb96d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225666"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328076"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS Azure biztonsági alapterve
 
@@ -102,7 +102,7 @@ A Azure DNSban létezik a DNS-zóna közreműködői szerepköre, valamint a zó
 
 - [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-- [Az Azure-RBAC megismerése Azure DNS](dns-protect-zones-recordsets.md#role-based-access-control)
+- [Az Azure-RBAC megismerése Azure DNS](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **Azure Security Center figyelés**: igen
 
@@ -260,13 +260,13 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés kezelése az Azure RBAC
 
-**Útmutató**: az azure Role-Based Access Control (Azure RBAC) részletes hozzáférés-kezelést tesz lehetővé az Azure-felhasználók,-csoportok és-erőforrások számára. Az Azure RBAC segítségével megadhatja a felhasználók által igényelt hozzáférési szintet. 
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) részletes hozzáférés-kezelést tesz lehetővé az Azure-felhasználók,-csoportok és-erőforrások számára. Az Azure RBAC segítségével megadhatja a felhasználók által igényelt hozzáférési szintet. 
 
 A Azure DNSban létezik a DNS-zóna közreműködői szerepköre, valamint a zóna szintje és a Record set szintű Azure-RBAC. Saját egyéni Azure-szerepköröket is létrehozhat, így finomabb szabályozást is biztosíthat.
 
 - [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
-- [Az Azure-RBAC megismerése Azure DNS](dns-protect-zones-recordsets.md#role-based-access-control)
+- [Az Azure-RBAC megismerése Azure DNS](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [Az Azure-RBAC megismerése az Azure saját DNS](dns-protect-private-zones-recordsets.md)
 
@@ -494,7 +494,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-- [Címkék használata az erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: igen
 
@@ -558,7 +558,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

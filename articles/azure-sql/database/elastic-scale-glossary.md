@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362614"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330461"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastic Database eszközök szószedete
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Szegmenses **Térkép listázása**: egy szegmenses Térkép, amelyben a horizon
 
 **Több-bérlős** és **egybérlős**: ez egy egybérlős adatbázist és egy több-bérlős adatbázist mutat be:
 
-![Egy-és több-bérlős adatbázisok](./media/elastic-scale-glossary/multi-single-simple.png)
+![Képernyőkép, amely egy egybérlős adatbázist és egy több-bérlős adatbázist mutat be.](./media/elastic-scale-glossary/multi-single-simple.png)
 
 Itt láthatja **a több** -bérlős adatbázisok szétválasztását. 
 

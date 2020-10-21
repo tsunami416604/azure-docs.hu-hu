@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d33811dc056baa3d205d7d86c1bdd7bff74ae54
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574279"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330002"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>Modellekben lévő IoT Plug and Play-összetevők
 
@@ -69,7 +69,7 @@ A modell AZONOSÍTÓját a Device Twin tulajdonság tárolja, amely a következ�
 Az összetevők nélküli DTDL modellek hasznos egyszerűsítést biztosítanak egy eszközhöz vagy IoT Edge modulhoz, amely egyetlen telemetria, tulajdonsággal és paranccsal rendelkezik. Az összetevőket nem használó modellek egyszerűen áttelepíthetik egy meglévő eszközt vagy modult IoT Plug and Play eszközre vagy modulra – létrehoz egy DTDL modellt, amely leírja a tényleges eszközt vagy modult anélkül, hogy meg kellene határoznia az összetevőket.
 
 > [!TIP]
-> A modul lehet egy eszköz [modul] (.. /IOT-hub/IOT-hub-devguide-Module-Twins.MD vagy [IoT Edge modul](../iot-edge/about-iot-edge.md).
+> A modul lehet egy eszköz [modul](../iot-hub/iot-hub-devguide-module-twins.md) vagy egy [IoT Edge modul](../iot-edge/about-iot-edge.md).
 
 ## <a name="multiple-components"></a>Több összetevő
 
@@ -114,7 +114,7 @@ Több összetevővel rendelkező DTDL-modell esetén két vagy több összetevő
 
 Ebben a modellben három összetevő van definiálva a tartalom szakaszban – két `Thermostat` összetevő és egy `DeviceInformation` összetevő. Létezik egy alapértelmezett összetevő is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a modell-összetevőket, néhány további erőforrást is talál:
 

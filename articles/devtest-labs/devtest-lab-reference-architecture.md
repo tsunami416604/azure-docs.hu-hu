@@ -4,12 +4,12 @@ description: Ez a cikk a vállalat Azure DevTest Labsához nyújt útmutatást.
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 7b9652009a4e3c7bfdea029f204429a86562a552
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 29f739c2fb9dd1cc58bf6c400eeee1bebb6243c2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144544"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328844"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs a vállalatok hivatkozási architektúrája
 Ez a cikk olyan hivatkozási architektúrát tartalmaz, amely a vállalatok Azure DevTest Labs alapján történő központi telepítésében nyújt segítséget. A következőket tartalmazza:
@@ -24,7 +24,7 @@ Ez a cikk olyan hivatkozási architektúrát tartalmaz, amely a vállalatok Azur
 Ezek a hivatkozási architektúra legfontosabb elemei:
 
 - **Azure Active Directory (Azure ad)**: a DevTest Labs az [IDENTITÁSKEZELÉS az Azure ad szolgáltatással](../active-directory/fundamentals/active-directory-whatis.md)működik. Vegye figyelembe ezt a két fontos szempontot, amikor a felhasználók számára hozzáférést biztosít a DevTest Labs-alapú környezetekhez:
-    - **Erőforrás-kezelés**: hozzáférést biztosít a Azure Portalhoz az erőforrások kezeléséhez (virtuális gépek létrehozása; környezetek létrehozása, a Start, a Leállítás, az újraindítás, a törlés és az összetevők alkalmazása stb.). Az erőforrás-kezelés szerepköralapú hozzáférés-vezérlés (RBAC) használatával történik az Azure-ban. Szerepköröket rendelhet a felhasználókhoz, és beállíthatja az erőforrás-és hozzáférési szintű engedélyeket.
+    - **Erőforrás-kezelés**: hozzáférést biztosít a Azure Portalhoz az erőforrások kezeléséhez (virtuális gépek létrehozása; környezetek létrehozása, a Start, a Leállítás, az újraindítás, a törlés és az összetevők alkalmazása stb.). Az erőforrás-kezelést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával végezheti el. Szerepköröket rendelhet a felhasználókhoz, és beállíthatja az erőforrás-és hozzáférési szintű engedélyeket.
     - **Virtuális gépek (hálózati szintű)**: az alapértelmezett konfigurációban a virtuális gépek helyi rendszergazdai fiókot használnak. Ha van elérhető tartomány ([Azure ad Domain Services](../active-directory-domain-services/overview.md), egy helyszíni tartomány vagy egy felhőalapú tartomány), a gépek csatlakoztathatók a tartományhoz. A felhasználók ezután a tartományon alapuló identitások használatával csatlakozhatnak a virtuális gépekhez.
 - Helyszíni **kapcsolat**: az architektúra ábrán a [ExpressRoute](../expressroute/expressroute-introduction.md) van használatban. De használhat helyek közötti VPN- [t](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)is. Bár a ExpressRoute nem szükségesek a DevTest Labs szolgáltatáshoz, gyakran használják a vállalatokban. A ExpressRoute csak akkor szükséges, ha vállalati erőforrások elérésére van szüksége. Gyakori forgatókönyvek:
     - Olyan helyszíni adattal rendelkezik, amely nem helyezhető át a felhőbe.
@@ -62,5 +62,5 @@ Fontos megjegyezni, hogy a DevTest Labs a mögöttes Azure-erőforrásokat haszn
 ## <a name="security-considerations"></a>Biztonsági szempontok
 Azure DevTest Labs a meglévő erőforrásokat használja az Azure-ban (számítás, hálózatkezelés stb.). Így automatikusan kihasználhatja a platform beépített biztonsági funkcióit. Ahhoz például, hogy a bejövő távoli asztali kapcsolatok csak a vállalati hálózatról származzanak, egyszerűen vegyen fel egy hálózati biztonsági csoportot a virtuális hálózatra a távoli asztali átjárón. Az egyetlen további biztonsági szempont azon engedélyek szintje, amelyeket a laborokat a napi rendszerességgel használó csapattagoknak biztosítanak. A leggyakoribb engedélyek a [ *tulajdonos* és a *felhasználó*](devtest-lab-add-devtest-user.md). További információ ezekről a szerepkörökről: [tulajdonosok és felhasználók hozzáadása Azure DevTest Labsban](devtest-lab-add-devtest-user.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikket ebben a sorozatban: [a Azure DevTest Labs infrastruktúra vertikális Felskálázása](devtest-lab-guidance-scale.md).

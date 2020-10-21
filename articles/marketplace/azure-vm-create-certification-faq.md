@@ -7,14 +7,14 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: ee7a7101740e88d55d77f769263ab03a86b878d4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 14360ab7668248f39c8ad0916eb964ffe11f7959
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284394"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331294"
 ---
-# <a name="vm-certification-troubleshooting"></a>VM-tanúsítvány hibaelhárítása
+# <a name="vm-certification-troubleshooting"></a>Virtuális gépek tanúsításával kapcsolatos hibaelhárítás
 
 Amikor közzéteszi a virtuális gép (VM) rendszerképét az Azure Marketplace-en, az Azure csapata ellenőrzi, hogy a rendszerindítási, a biztonsági és az Azure-kompatibilitást biztosítja-e. Ha a kiváló minőségű tesztek bármelyike meghiúsul, a közzététel sikertelen lesz, és hibaüzenet jelenik meg, amely leírja a problémát.
 
@@ -410,7 +410,7 @@ A lépések végrehajtásához elő kell készítenie a felvenni kívánt virtu�
 5. A **technikai konfiguráció** lap virtuálisgép- **rendszerképek** területén válassza a **+ virtuálisgép-rendszerkép hozzáadása**elemet.
 
 > [!NOTE]
-> Egyszerre csak egy virtuálisgép-rendszerképet adhat hozzá. Több virtuálisgép-rendszerkép hozzáadásához tegye közzé az elsőt, és várjon, amíg el nem éri a közzétevő kijelentkezési szakaszát, majd adja hozzá a következő virtuálisgép-rendszerképet.
+> Egyszerre csak egy virtuálisgép-rendszerképet adhat hozzá. Több virtuálisgép-rendszerkép hozzáadásához tegye közzé az elsőt, mielőtt hozzáadja a következő virtuálisgép-lemezképet.
 
 6. A megjelenő mezőkben adja meg a lemez új verzióját és a virtuális gép rendszerképét.
 7. Válassza a **Piszkozat mentése** lehetőséget.
@@ -437,7 +437,7 @@ Az ajánlat újbóli közzétételéhez folytassa a következő szakasszal.
 
 A közzétételi folyamat befejezéséhez tekintse meg az [ajánlatok áttekintése és közzététele](review-publish-offer.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Virtuálisgép-ajánlat tulajdonságainak konfigurálása](azure-vm-create-properties.md)
 - [Aktív Piactéri előnyök](partner-center-portal/marketplace-rewards.md)

@@ -75,6 +75,8 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
+        - name: Blazor WebAssembly
+          href: tutorial-blazor-webassembly.md
         - name: JavaScript – Auth-kódfolyamat
           href: tutorial-v2-javascript-auth-code.md
         - name: JavaScript – Implicit folyamat
@@ -123,6 +125,9 @@
       href: authentication-flows-app-scenarios.md
     - name: Ajánlott eljárások az Identitásplatformhoz
       href: identity-platform-integration-checklist.md
+    - name: Mobilos egyszeri bejelentkezés (SSO)
+      href: mobile-sso-support-overview.md
+      displayName: 'android, ios'
     - name: Alkalmazáshasználati helyzetek
       displayName: App scenarios
       items:
@@ -291,10 +296,8 @@
           items:
             - name: Fiókok és bérlői profilok
               href: accounts-overview.md
-            - name: Engedélyezési ügynökök
-              href: authorization-agents.md
-            - name: Közvetített hitelesítés
-              href: brokered-auth.md
+            - name: SSO MSAL Androiddal
+              href: msal-android-single-sign-on.md
             - name: Integrálás az Azure AD B2C szolgáltatással
               href: msal-android-b2c.md
             - name: Migrálás MSAL.Androidra

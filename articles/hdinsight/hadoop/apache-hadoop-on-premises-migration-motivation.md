@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 595bf6f921265e9e8dbc0e0e065fe835efea14bc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072781"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331651"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
 
@@ -39,11 +39,11 @@ Az Azure HDInsight a Hadoop-összetevők Felhőbeli eloszlása. Az Azure HDInsig
 
 - **Felügyelt hardverek és konfigurációk** – nem kell aggódnia a fizikai hardver vagy infrastruktúra HDInsight-fürttel való használatával kapcsolatban. Csak adja meg a fürt konfigurációját, és az Azure beállítja.
 
-- A **könnyen méretezhető** HDInsight lehetővé teszi a számítási feladatok fel-és [leskálázását](../hdinsight-administer-use-portal-linux.md) . Az Azure az adatfeldolgozási feladatok megszakítása nélkül gondoskodik az adatok újraelosztásáról és a számítási feladatok kiegyensúlyozásáról.
+- A **könnyen méretezhető** HDInsight lehetővé teszi a számítási feladatok fel-és [leskálázását](../hdinsight-administer-use-portal-linux.md) . Az Azure az adatfeldolgozási feladatok megszakítása nélkül gondoskodik az adatok újraelosztásáról és a számítási feladatok kiegyensúlyozásáról.
 
 - **Globális rendelkezésre állás** – a HDInsight több [régióban](https://azure.microsoft.com/regions/services/) is elérhető, mint bármely más Big Data elemzési ajánlat. Az Azure HDInsight elérhető az Azure Governmentben, Kínában, és Németországban is, így megfelelhet a vállalati igényeknek a főbb szuverén területeken.
 
-- A **biztonságos és megfelelő** HDInsight lehetővé teszi a vállalati adategységek védelmét az [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md), [titkosítással](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)és az [Azure Active Directoryokkal](../domain-joined/hdinsight-security-overview.md)való integrációval. A HDInsight a legnépszerűbb iparági és kormányzati [megfelelőségi szabványoknak](https://azure.microsoft.com/overview/trusted-cloud)is megfelel.
+- A **biztonságos és megfelelő** HDInsight lehetővé teszi a vállalati adategységek védelmét az [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md), [titkosítással](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)és az [Azure Active Directoryokkal](../domain-joined/hdinsight-security-overview.md)való integrációval. A HDInsight továbbá megfelel a legnépszerűbb iparági és kormányzati [megfelelőségi szabványoknak](https://azure.microsoft.com/overview/trusted-cloud).
 
 - **Egyszerűsített verziókövetés** – az Azure HDInsight kezeli a Hadoop Eco-System összetevőinek verzióját, és naprakészen tartja azokat. A szoftverfrissítések általában egy összetett folyamat a helyszíni környezetekben.
 
@@ -51,9 +51,9 @@ Az Azure HDInsight a Hadoop-összetevők Felhőbeli eloszlása. Az Azure HDInsig
 
 - **Termelékenység** – különböző eszközöket használhat a Hadoop és a sparkhoz az előnyben részesített fejlesztési környezetben.
 
-- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök bővíthetők a telepített összetevőkkel, és a többi Big Data megoldással is integrálhatók az Azure piactéren történő [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)   üzembe helyezések használatával.
+- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök bővíthetők a telepített összetevőkkel, és a többi Big Data megoldással is integrálhatók az Azure piactéren történő [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) üzembe helyezések használatával.
 
-- **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure monitor naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md)   , így egyetlen felületet biztosít, amellyel az összes fürtöt nyomon követheti.
+- **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure monitor naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md) , így egyetlen felületet biztosít, amellyel az összes fürtöt nyomon követheti.
 
 - **Integráció más Azure-szolgáltatásokkal** – a HDInsight könnyen integrálható más népszerű Azure-szolgáltatásokkal, például a következőkkel:
 
@@ -185,7 +185,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Csak Felhőbeli felhasználók?|                 Igen||
 |MFA szükséges?|                       Nem|| 
 |Az adatengedélyezési követelmények?|  Igen||
-|Role-Based Access Control?|        Igen||
+|Szerepköralapú hozzáférés-vezérlés?|        Igen||
 |Naplózás szükséges?|                  Igen||
 |Inaktív adatok titkosítása?|          Igen||
 |Adattitkosítás az átvitel során?|       Igen||

@@ -3,12 +3,12 @@ title: Tesztkörnyezet hozzáadásának automatizálása a Azure DevTest Labsban
 description: Ez a cikk azt mutatja be, hogyan lehet automatizálni a felhasználókat a laborban Azure DevTest Labs a Azure Resource Manager sablonok, a PowerShell és a parancssori felület használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b016d6edcb75016302cf652f873881008de18abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61853efacc5974b81d46b2b8cca0f2796672d72d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483822"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327960"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet hozzáadásának automatizálása a laborban Azure DevTest Labs
 Azure DevTest Labs lehetővé teszi az önkiszolgáló fejlesztési és tesztelési környezetek gyors létrehozását a Azure Portal használatával. Ha azonban több csapattal és számos DevTest Labs-példánnyal rendelkezik, akkor a létrehozási folyamat automatizálása időt takaríthat meg. [Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Environments) lehetővé teszik a laborok, laboratóriumi virtuális gépek, Egyéni rendszerképek és képletek létrehozását, valamint a felhasználók automatikus módon való hozzáadását. Ez a cikk kifejezetten a felhasználók DevTest Labs-példányhoz való hozzáadására koncentrál.
@@ -179,7 +179,7 @@ New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinition
 Annak megadásához, hogy melyik erőforrást kell megadnia, a paraméterrel adhatja meg a (z `ResourceName` `ResourceType` ), `ResourceGroup` vagy a `scope` paraméter kombinációját. A paraméterek tetszőleges kombinációját használja, adjon meg elegendő információt a parancsmagnak a Active Directory objektum (felhasználó, csoport vagy egyszerű szolgáltatásnév), hatókör (erőforráscsoport vagy erőforrás) és szerepkör-definíció egyedi azonosításához.
 
 ## <a name="use-azure-command-line-interface-cli"></a>Az Azure parancssori felület (CLI) használata
-Az Azure CLI-ben a Labs-felhasználó hozzáadása a laborhoz a parancs használatával történik `az role assignment create` . Az Azure CLI-parancsmagokkal kapcsolatos további információkért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md).
+Az Azure CLI-ben a Labs-felhasználó hozzáadása a laborhoz a parancs használatával történik `az role assignment create` . Az Azure CLI-parancsmagokkal kapcsolatos további információkért lásd: [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md).
 
 Az elérni kívánt objektum a `objectId` , `signInName` `spn` paraméterrel adható meg. Az a labor, amelyhez az objektum hozzáférést kap `scope` , az URL-cím vagy a `resource-name` , és paraméterek kombinációja alapján azonosítható `resource-type` `resource-group` .
 

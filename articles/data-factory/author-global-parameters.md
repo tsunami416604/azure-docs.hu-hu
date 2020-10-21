@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20bb77711833a1a17082e25e31d4a2e14db5bf9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567536"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328183"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globális paraméterek a Azure Data Factory
 
@@ -52,7 +52,7 @@ A legtöbb felhasználási eset esetében javasoljuk, hogy globális paramétere
 
 ![Belefoglalás az ARM-sablonba](media/author-global-parameters/include-arm-template.png)
 
-Ha globális paramétereket ad hozzá az ARM-sablonhoz, egy olyan gyári szintű beállítást ad hozzá, amely felülbírálhatja más gyári beállítások, például az ügyfél által felügyelt kulcs vagy a git konfigurációját más környezetekben. Ha ezek a beállítások egy emelt szintű környezetben, például a ellenőrzését vagy a PRODon vannak engedélyezve, akkor jobb, ha egy PowerShell-parancsfájllal telepíti a globális paramétereket az alábbi lépésekben leírtak szerint.
+Ha globális paramétereket ad hozzá az ARM-sablonhoz, egy olyan gyári szintű beállítást ad hozzá, amely felülírja a más gyári szintű beállításokat, például az ügyfél által felügyelt kulcsot vagy a git-konfigurációt más környezetekben. Ha ezek a beállítások egy emelt szintű környezetben, például a ellenőrzését vagy a PRODon vannak engedélyezve, akkor jobb, ha egy PowerShell-parancsfájllal telepíti a globális paramétereket az alábbi lépésekben leírtak szerint.
 
 ### <a name="deploying-using-powershell"></a>Üzembe helyezés a PowerShell használatával
 
@@ -105,7 +105,7 @@ Write-Host "Updating" $newGlobalParameters.Count "global parameters."
 Set-AzDataFactoryV2 -InputObject $dataFactory -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Data Factory [folyamatos integrációs és üzembe helyezési folyamatának](continuous-integration-deployment.md) megismerése
 * Megtudhatja, hogyan használhatja a [vezérlési folyamat kifejezésének nyelvét](control-flow-expression-language-functions.md)

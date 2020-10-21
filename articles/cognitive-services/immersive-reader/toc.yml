@@ -40,6 +40,8 @@
       href: reference.md
 - name: További források
   items:
+    - name: Támogatási lehetőségek
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Nyelvi támogatás

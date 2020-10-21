@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: sample
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 10/21/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 948eea168b071813cf20e03d3a0744a824fd4c8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4327d8426a5dc1668993efd418c3f21624d407d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773892"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327654"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -27,9 +27,6 @@ A Microsoft Identity platformot a következő célra használhatja:
 - Hozzáférési jogkivonat megkövetelése egy védett webes API eléréséhez.
 
 Ez a cikk röviden leírja a Microsoft Identity platform végpontjának mintáit, és hivatkozásokat tartalmaz. Ezek a minták bemutatják, hogyan végezheti el, és az alkalmazásaiban használható kódrészleteket is megadhat. A kód mintája lapon a követelményekkel, a telepítéssel és a telepítéssel kapcsolatos részletes információkkal foglalkozó témaköröket talál. A kódban található megjegyzések segítenek megérteni a kritikus szakaszt.
-
-> [!NOTE]
-> Ha érdeklik a 1.0-s példák, tekintse meg az [Azure ad Code Samples (v 1.0 Endpoint)](../azuread-dev/sample-v1-code.md)című témakört.
 
 Az egyes típusok alapvető forgatókönyvének megismeréséhez tekintse meg [a Microsoft Identity platform végpontjának alkalmazás-típusai](v2-app-types.md)című témakört.
 
@@ -142,5 +139,4 @@ A Microsoft Graph API különböző használati mintáit bemutató [minták](htt
 
 ## <a name="see-also"></a>Lásd még
 
-- [Azure Active Directory (v 1.0) fejlesztői útmutató](../azuread-dev/v1-overview.md)
-- [A Microsoft Graph API fogalma és referenciája](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)
+[A Microsoft Graph API fogalma és referenciája](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)

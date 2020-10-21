@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77121724"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328759"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS GYIK
 
@@ -24,7 +24,7 @@ A tartománynévrendszer (DNS) lefordítja vagy feloldja a webhely vagy szolgál
 
 A Azure DNS DNS-tartományait a DNS-névkiszolgálók Azure globális hálózata üzemelteti. Ez a rendszer a legközelebb elérhető DNS-kiszolgáló által megválaszolt összes DNS-lekérdezést kiválasztó hálózatokat használ. Azure DNS gyors teljesítményt és magas rendelkezésre állást biztosít a tartomány számára.
 
-A Azure DNS Azure Resource Manageron alapul. Azure DNS a Resource Manager-funkciók előnyeit, például a szerepköralapú hozzáférés-vezérlést, a naplókat és az erőforrás-zárolást. A tartományokat és rekordokat a Azure Portal, Azure PowerShell parancsmagok és a platformfüggetlen Azure CLI segítségével kezelheti. Az automatikus DNS-kezelést igénylő alkalmazások a REST API és az SDK-k segítségével integrálhatók a szolgáltatással.
+A Azure DNS Azure Resource Manageron alapul. Azure DNS a Resource Manager-funkciók előnyeit, például az Azure szerepköralapú hozzáférés-vezérlését, a naplókat és az erőforrás-zárolást. A tartományokat és rekordokat a Azure Portal, Azure PowerShell parancsmagok és a platformfüggetlen Azure CLI segítségével kezelheti. Az automatikus DNS-kezelést igénylő alkalmazások a REST API és az SDK-k segítségével integrálhatók a szolgáltatással.
 
 ### <a name="how-much-does-azure-dns-cost"></a>Mennyibe kerül a Azure DNS?
 
@@ -177,7 +177,7 @@ A meglévő DNS-rekordok módosításai valamivel hosszabb időt vehetnek igény
 
 ### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>Hogyan tudom védeni a DNS-zónákat a véletlen törléssel?
 
-A Azure DNS Azure Resource Manager használatával felügyeli. A Azure Resource Manager által biztosított hozzáférés-vezérlési funkciók előnyei Azure DNS. A szerepköralapú hozzáférés-vezérlés szabályozza, hogy mely felhasználók rendelkeznek olvasási vagy írási hozzáféréssel a DNS-zónákhoz és a rekordhalmazokhoz. Az erőforrás-zárolások megakadályozzák a DNS-zónák és-rekordhalmazok véletlen módosítását vagy törlését.
+A Azure DNS Azure Resource Manager használatával felügyeli. A Azure Resource Manager által biztosított hozzáférés-vezérlési funkciók előnyei Azure DNS. Az Azure szerepköralapú hozzáférés-vezérléssel szabályozhatja, hogy mely felhasználók rendelkezzenek olvasási vagy írási hozzáféréssel a DNS-zónákhoz és a rekordhalmazokhoz. Az erőforrás-zárolások megakadályozzák a DNS-zónák és-rekordhalmazok véletlen módosítását vagy törlését.
 
 További információ: [DNS-zónák és-rekordok elleni védelem](dns-protect-zones-recordsets.md).
 

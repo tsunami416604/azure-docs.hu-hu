@@ -1,20 +1,20 @@
 ---
 title: A Azure Security Center beépített szabályzat-definíciói
 description: A Azure Security Center Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0c445dc882c40724c20c773b3a5e191fb06970a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 371bbd6919f787401da361339f705fa5edfa4547
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823139"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328691"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>A Azure Security Center beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Beépített Azure Policy-definíciók az Azure Security Centerben
 
 Ez az oldal a Azure Security Centerhoz kapcsolódó [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definíciók indexe. A következő csoportházirend-definíciók állnak rendelkezésre:
 
@@ -42,7 +42,7 @@ Ha többet szeretne megtudni a Security Center által figyelt beépített szabá
 
 [!INCLUDE [azure-policy-reference-category-securitycenter](../../includes/policy/reference/bycat/policies-security-center.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan Azure Policy biztonsági házirend-definíciókat Security Center. További információt a következő cikkekben talál.
 

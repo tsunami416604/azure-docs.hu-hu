@@ -7,24 +7,24 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015004"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331753"
 ---
 # <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
-A biztonság érdekében az Azure Digital Twins pontos hozzáférés-vezérlést tesz lehetővé az üzembe helyezés meghatározott adatai, erőforrásai és műveletei számára. Ez egy, a **szerepköralapú hozzáférés-vezérlés (RBAC)** nevű részletes szerepkör és az engedélyek kezelési stratégiája segítségével történik. Az Azure-hoz készült RBAC általános elveiről [itt](../role-based-access-control/overview.md)olvashat.
+A biztonság érdekében az Azure Digital Twins pontos hozzáférés-vezérlést tesz lehetővé az üzembe helyezés meghatározott adatai, erőforrásai és műveletei számára. Ezt az **Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)** nevű részletes szerepkör és az engedély-kezelési stratégia teszi lehetővé. Az Azure RBAC általános alapelveiről [itt](../role-based-access-control/overview.md)olvashat.
 
 Az Azure Digital Twins az inaktív adatok titkosítását is támogatja.
 
-## <a name="granting-permissions-with-rbac"></a>Engedélyek megadása a RBAC
+## <a name="granting-permissions-with-azure-rbac"></a>Engedélyek megadása az Azure RBAC
 
-A RBAC az Azure Digital Twins [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) szolgáltatással való integrációja révén biztosítjuk.
+Az Azure RBAC az Azure Digital Twins számára biztosítható [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) integrációja révén.
 
-A RBAC segítségével engedélyeket adhat egy *rendszerbiztonsági tag*számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítve van az Azure AD-ben, és egy OAuth 2,0 tokent kap vissza. Ez a jogkivonat egy Azure Digital Twins-példány hozzáférési kérelmének engedélyezésére használható.
+Az Azure RBAC segítségével engedélyeket adhat egy *rendszerbiztonsági tag*számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítve van az Azure AD-ben, és egy OAuth 2,0 tokent kap vissza. Ez a jogkivonat egy Azure Digital Twins-példány hozzáférési kérelmének engedélyezésére használható.
 
 ### <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 
@@ -57,7 +57,7 @@ Az Azure az alábbi Azure beépített szerepköröket biztosítja az Azure digit
 A beépített szerepkörök meghatározásával kapcsolatos további információkért lásd: a szerepkör- [*definíciók megismerése*](../role-based-access-control/role-definitions.md) az Azure RBAC dokumentációjában. Az egyéni Azure-szerepkörök létrehozásával kapcsolatos információkért lásd: [*Azure egyéni szerepkörök*](../role-based-access-control/custom-roles.md).
 
 A szerepköröket kétféleképpen rendelheti hozzá:
-* Az Azure Digital Twins hozzáférés-vezérlés (IAM) paneljén a Azure Portalban (lásd: [*szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a Azure Portal használatával*](../role-based-access-control/role-assignments-portal.md))
+* Az Azure Digital Twins hozzáférés-vezérlés (IAM) paneljén a Azure Portalban (lásd: [*Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával*](../role-based-access-control/role-assignments-portal.md))
 * szerepkör hozzáadására vagy eltávolítására szolgáló CLI-parancsok használatával
 
 A részletes útmutatásért próbálja ki az Azure Digital Twins [*oktatóanyagban: teljes körű megoldás összekapcsolása*](tutorial-end-to-end.md).
@@ -89,10 +89,10 @@ A hiba elhárításához a következők egyikét teheti:
 * A CORS fejlécének leszalaga `Access-Control-Allow-Origin` az üzenetből. Ez a fejléc azt jelzi, hogy a válasz megosztható-e. 
 * Alternatív megoldásként hozzon létre egy CORS-proxyt, és tegye elérhetővé az Azure digitális Twins REST API kérését. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg ezeket a fogalmakat működés közben [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md).
 
 * Tekintse meg, hogyan kezelheti ezeket a fogalmakat az ügyfélalkalmazás kódjában az [*alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)című témakörben.
 
-* További információ [Az Azure](../role-based-access-control/overview.md)-beli RBAC.
+* További információ az [Azure RBAC](../role-based-access-control/overview.md)-ről.

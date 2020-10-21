@@ -3,18 +3,18 @@ title: Azure DevTest Labs GYIK | Microsoft Docs
 description: Ez a cikk a Azure DevTest Labs kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 6f4c0e34242677eca6a32af4731817085be12436
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144586"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328385"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
 
 ## <a name="blog-post"></a>Blogbejegyzés
-A DevTest Labs csapatának blogja a 2019. március 20-án lett kivonva. 
+A DevTest Labs csapatának blogja a 2019. március 20-án lett kivonva. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Hol követhetem nyomon a szolgáltatás frissítéseit mostantól?
 Mostantól a szolgáltatás frissítéseit és az informatív blogbejegyzéseket közzétesszük az Azure blogon és az Azure frissítésein. Ezek a blogbejegyzések szükség esetén a dokumentációra is hivatkoznak.
@@ -22,7 +22,7 @@ Mostantól a szolgáltatás frissítéseit és az informatív blogbejegyzéseket
 Fizessen elő a [DevTest Labs Azure blogra](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) és az [DevTest Labs Azure-frissítéseire](https://azure.microsoft.com/updates/?product=devtest-lab) , és tájékozódjon a DevTest Labs új funkcióiról.
 
 ### <a name="what-happens-to-the-existing-blog-posts"></a>Mi történik a meglévő blogbejegyzésekkel?
-Jelenleg dolgozunk a meglévő blogbejegyzések áttelepítésén (kivéve a leállás-frissítéseket) a [DevTest Labs dokumentációjában](devtest-lab-overview.md). Ha az MSDN-blog elavult, a rendszer átirányítja a DevTest Labs dokumentációjának áttekintésére. Az átirányítást követően megkeresheti a "szűrés a következővel" című cikket. Még nem történt meg az összes bejegyzés áttelepítve, de ennek a hónapnak a végéig kell történnie. 
+Jelenleg dolgozunk a meglévő blogbejegyzések áttelepítésén (kivéve a leállás-frissítéseket) a [DevTest Labs dokumentációjában](devtest-lab-overview.md). Ha az MSDN-blog elavult, a rendszer átirányítja a DevTest Labs dokumentációjának áttekintésére. Az átirányítást követően megkeresheti a "szűrés a következővel" című cikket. Még nem történt meg az összes bejegyzés áttelepítve, de ennek a hónapnak a végéig kell történnie. 
 
 
 ### <a name="where-do-i-see-outage-updates"></a>Hol találhatók a leállás frissítései?
@@ -68,7 +68,7 @@ A DevTest Labs egy ingyenes szolgáltatás. A laborok létrehozása és a házir
 ## <a name="security"></a>Biztonság
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Melyek a DevTest Labs különböző biztonsági szintjei?
-A biztonsági hozzáférést Role-Based Access Control (RBAC) határozza meg. A hozzáférés működésének megismeréséhez segítséget nyújt a RBAC által meghatározott engedély, szerepkör és hatókör közötti különbségek megismerésében.
+A biztonsági hozzáférés meghatározása az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alapján történik. A hozzáférés működésének megismeréséhez segít megismerni az engedélyek, a szerepkörök és a hatókör közötti különbséget az Azure RBAC által meghatározottak szerint.
 
 - **Engedély**: az engedély meghatározott hozzáférés egy adott művelethez. Az engedélyek például olvasási jogosultsággal rendelkezhetnek az összes virtuális géphez.
 - **Szerepkör**: a szerepkör a felhasználók számára csoportosítható és hozzárendelhető engedélyek összessége. Egy előfizetéshez tartozó tulajdonosi szerepkörrel rendelkező felhasználó például hozzáférhet az előfizetésen belüli összes erőforráshoz.
@@ -83,7 +83,7 @@ Létrehozhat egyéni szerepköröket is a DevTest Labs szolgáltatásban. Ha sze
 
 Mivel a hatókörök hierarchikusak, amikor egy felhasználó egy bizonyos hatókörön belül rendelkezik engedélyekkel, a felhasználó automatikusan megkapja ezeket az engedélyeket a hatókör minden alacsonyabb szintű hatókörében. Ha például egy felhasználó az előfizetés tulajdonosa szerepkörhöz van rendelve, a felhasználó hozzáférhet az előfizetéshez tartozó összes erőforráshoz. Ilyen erőforrások például a virtuális gépek, a virtuális hálózatok és a laborok. Az előfizetés tulajdonosa automatikusan örökli a tesztkörnyezet tulajdonosának szerepkörét. Az ellenkezője azonban nem igaz. A labor tulajdonosa egy laborhoz fér hozzá, amely az előfizetési szintnél alacsonyabb hatókörű. Így a tesztkörnyezet tulajdonosai nem láthatják a laboron kívüli virtuális gépeket, virtuális hálózatokat és egyéb erőforrásokat.
 
-### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Hogyan a saját DevTest Labs-környezetek szerepköralapú hozzáférés-vezérlésének megadásával biztosítható, hogy a fejlesztők és a tesztek a munkájukat is szabályozzák?
+### <a name="how-do-i-define-azure-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Hogyan az Azure szerepköralapú hozzáférés-vezérlésének meghatározása a saját DevTest Labs-környezetek számára annak biztosításához, hogy a fejlesztők és a tesztek hogyan tudják elvégezni a munkájukat?
 Széles minta van, azonban a részletek a szervezettől függenek.
 
 A központi informatikai részlegnek csak a szükséges mértékeket kell használnia, és lehetővé kell tennie a projekt és az alkalmazás csapatának, hogy rendelkezzen a szükséges szintű szabályozással. Ez általában azt jelenti, hogy a központi informatikai részleg az előfizetés tulajdonosa, és az informatikai funkciók, például a hálózati konfigurációk kezelése. Az előfizetéshez tartozó **tulajdonosok** készletének kicsinek kell lennie. Ezek a tulajdonosok további tulajdonosokat is megadhatnak, amikor szükség van rá, vagy előfizetési szintű szabályzatokat alkalmaznak, például "nincs nyilvános IP".
