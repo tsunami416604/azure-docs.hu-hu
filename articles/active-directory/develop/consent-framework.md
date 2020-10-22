@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.openlocfilehash: a5e53c29c41b3c4a5a2dd1f421e128231aa5eec3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 74321bc75fa760727e7896f47cdfc5b2929047e5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327549"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366088"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory jóváhagyási keretrendszere
 
@@ -49,7 +49,7 @@ A következő lépések bemutatják, hogyan működik az alkalmazás-fejlesztő 
 
 1. Miután a felhasználó beleegyezett a hozzájárulásba, a rendszer egy engedélyezési kódot ad vissza az alkalmazásnak, amely a hozzáférési jogkivonat és a frissítési jogkivonat beszerzésére lett beváltva. További információ erről a folyamatról: [OAuth 2,0 engedélyezési kód folyamata](v2-oauth2-auth-code-flow.md).
 
-1. Rendszergazdaként a bérlő összes felhasználója nevében jóváhagyhatja az alkalmazás delegált engedélyeit is. A rendszergazdai jogosultság meggátolja, hogy a rendszer a bérlő összes felhasználója számára megjelenjen a belefoglalt hozzáférés párbeszédablakban, és a rendszergazda szerepkörrel rendelkező felhasználók [Azure Portal](https://portal.azure.com) is elvégezhető. Ha meg szeretné tudni, hogy mely rendszergazdai szerepkörök jogosultak a delegált engedélyekre, tekintse meg az [Azure ad-beli rendszergazdai szerepkörre vonatkozó engedélyeket](../users-groups-roles/directory-assign-admin-roles.md).
+1. Rendszergazdaként a bérlő összes felhasználója nevében jóváhagyhatja az alkalmazás delegált engedélyeit is. A rendszergazdai jogosultság meggátolja, hogy a rendszer a bérlő összes felhasználója számára megjelenjen a belefoglalt hozzáférés párbeszédablakban, és a rendszergazda szerepkörrel rendelkező felhasználók [Azure Portal](https://portal.azure.com) is elvégezhető. Ha meg szeretné tudni, hogy mely rendszergazdai szerepkörök jogosultak a delegált engedélyekre, tekintse meg az [Azure ad-beli rendszergazdai szerepkörre vonatkozó engedélyeket](../roles/permissions-reference.md).
 
     **Az alkalmazás delegált engedélyeinek beleegyezett**
 
@@ -61,6 +61,6 @@ A következő lépések bemutatják, hogyan működik az alkalmazás-fejlesztő 
    > [!IMPORTANT]
    > A explicit beleegyezés megadása az **engedélyek megadása** gomb használata jelenleg szükséges a ADAL.js használó egyoldalas alkalmazásokhoz (Spa). Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje [meg, hogyan alakíthat át egy alkalmazást több-bérlővé](howto-convert-app-to-be-multi-tenant.md)

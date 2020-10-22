@@ -3,17 +3,17 @@ title: Azure Storage-kód minták | Microsoft Docs
 description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A .NET, a Java, a Python, az Node.js, az Azure CLI és a C++ Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépések mintáit.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/06/2019
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: edf30d628a73c879ce81f68bda7cd2d7daa6cde3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cf1b643caef515411842d6aaf668708e873e96d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503650"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367890"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage-minták
 
@@ -49,11 +49,11 @@ A Node.js minták megismeréséhez töltse le a [Node.js Storage ügyféloldali 
 
 ## <a name="c-samples"></a>C++ minták
 
-A C++ minták megismeréséhez töltse le a [C++ Storage ügyféloldali kódtárat](https://www.nuget.org/packages/wastorage/) a NuGet webhelyről.
+A C++ minták megismeréséhez szerezze be a [C++ Azure Storage ügyféloldali kódtárat](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage) a githubról.
 
-* [Ismerkedés a Blobokkal](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)
-* [Ismerkedés a táblákkal](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted.cpp)
-* [Bevezetés az üzenetsorok használatába](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted.cpp)
+* [Ismerkedés az Azure-Blobokkal](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-blobs/sample/blob_getting_started.cpp)
+* [Ismerkedés a Azure Data Lake](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-datalake/sample/datalake_getting_started.cpp)
+* [Ismerkedés a Azure Files](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-shares/sample/file_share_getting_started.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -71,10 +71,10 @@ Az Azure CLI-minták megismeréséhez először [telepítse az Azure CLI](/cli/a
 | Java | [Java ügyféloldali kódtár – dokumentáció](https://docs.microsoft.com/java/api/overview/azure/storage) | [A Java Storage ügyféloldali kódtár forráskódja](https://github.com/azure/azure-storage-java) |
 | Python | [Python ügyféloldali kódtár – dokumentáció](https://azure-storage.readthedocs.io/) | [Forráskód a Python Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-python) |
 | Node.js | [Node.js ügyféloldali kódtár referenciája](https://azure.github.io/azure-storage-node) | [A Node.js Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-node) |
-| C++ | [C++ ügyféloldali kódtár – dokumentáció](https://azure.github.io/azure-storage-cpp/) | [Forráskód a C++ Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-cpp)|
+| C++ | [C++ ügyféloldali kódtár – dokumentáció](https://azure.github.io/azure-sdk-for-cpp/) | [Forráskód a C++ Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)|
 | Azure CLI | [Azure CLI-függvénytár – dokumentáció](/cli/azure/storage) | [Forráskód az Azure CLI Storage ügyféloldali kódtára számára](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek indexelik az egyes mintákat (blob, fájl, üzenetsor, tábla).
 
@@ -82,4 +82,5 @@ A következő cikkek indexelik az egyes mintákat (blob, fájl, üzenetsor, táb
 * [Javát használó Azure Storage-minták](storage-samples-java.md)
 * [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
 * [Azure Storage-minták a Python használatával](storage-samples-python.md)
+* [Azure Storage-minták C++ használatával](storage-samples-c-plus-plus.md)
 * [Azure Storage-minták az Azure CLI használatával](/azure/storage/blobs/storage-samples-blobs-cli)

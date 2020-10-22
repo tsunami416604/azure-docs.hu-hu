@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321089"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370814"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Felhasználók hozzáadása vagy törlése Azure Active Directory használatával
 
@@ -54,7 +54,7 @@ Létrehozhat egy új felhasználót a Azure Active Directory portál használat�
 
 1. Másolja a **jelszó** mezőben megadott automatikusan generált jelszót. Ezt a jelszót kell megadnia a felhasználónak, hogy első alkalommal jelentkezzen be.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 A rendszer létrehozza és hozzáadja a felhasználót az Azure AD-szervezethez.
 
@@ -103,6 +103,6 @@ A felhasználók hozzáadása után a következő alapvető folyamatokat végezh
 
 - [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
-- [Dinamikus csoportok és felhasználók használata](../users-groups-roles/groups-create-rule.md)
+- [Dinamikus csoportok és felhasználók használata](../enterprise-users/groups-create-rule.md)
 
-Más felhasználói felügyeleti feladatokat is elvégezhet, például a [vendég felhasználóinak egy másik címtárból való hozzáadásával](../external-identities/what-is-b2b.md) vagy [egy törölt felhasználó visszaállításával](active-directory-users-restore.md). További információ az egyéb elérhető műveletekről: [Azure Active Directory felhasználói kezelés dokumentációja](../users-groups-roles/index.yml).
+Más felhasználói felügyeleti feladatokat is elvégezhet, például a [vendég felhasználóinak egy másik címtárból való hozzáadásával](../external-identities/what-is-b2b.md) vagy [egy törölt felhasználó visszaállításával](active-directory-users-restore.md). További információ az egyéb elérhető műveletekről: [Azure Active Directory felhasználói kezelés dokumentációja](../enterprise-users/index.yml).

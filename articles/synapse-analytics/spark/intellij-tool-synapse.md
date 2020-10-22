@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: c17addc313954fbca5b81c4594d7317065350c09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be127d4214577e017522aec6a1b61b8f62638ed9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249569"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368740"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazás létrehozása a IntelliJ a szinapszis-munkaterület használatával
 
@@ -145,7 +145,7 @@ A Scala-alkalmazás létrehozása után távolról futtathatja azt.
     |Fő osztály neve|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont (**..**.) gombra kattintva módosíthatja, és egy másik osztályt is választhat.|
     |Feladatok konfigurációi|Módosíthatja az alapértelmezett kulcsot és értékeket. További információ: [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Parancssori argumentumok|Szükség esetén megadhat argumentumokat szóközzel elválasztva a Main osztály számára.|
-    |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Az Azure-beli virtuális fájlrendszerben is böngészheti a fájlokat, amelyek jelenleg csak ADLS Gen2 fürtöt támogatják. További információ: [Apache Spark konfiguráció](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) és [erőforrások feltöltése a fürtbe](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
+    |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Az Azure-beli virtuális fájlrendszerben is böngészheti a fájlokat, amelyek jelenleg csak ADLS Gen2 fürtöt támogatják. További információ: [Apache Spark konfiguráció] https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) és [erőforrások feltöltése a fürtbe](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
     |Feladatok feltöltési tárolója|Kibontás a további beállítások megjelenítéséhez.|
     |Tárhelytípusa|Válassza az **Azure Blob használata** lehetőséget a **fürt alapértelmezett Storage-fiókjának** feltöltéséhez és a legördülő listából való feltöltéséhez.|
     |Tárfiók|Adja meg a Storage-fiókját.|
@@ -270,7 +270,7 @@ Előfordulhat, hogy a szkript eredményét úgy szeretné látni, hogy elküld e
 
    ![Kijelölés küldése a Spark-konzolra](./media/intellij-tool-synapse/send-selection-to-console.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Synapse Analytics](../overview-what-is.md)
 - [Új Apache Spark-készlet létrehozása az Azure szinapszis Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

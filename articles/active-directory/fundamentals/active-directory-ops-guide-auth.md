@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601364"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371052"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
 
@@ -42,13 +42,13 @@ A Azure Active Directory kezelése a legfontosabb működési feladatok és foly
 | A kockázat-és sebezhetőségi jelentésekhez megjelölt felhasználók osztályozása és vizsgálata Azure AD Identity Protection | InfoSec-műveleti csapat |
 
 > [!NOTE]
-> A Azure AD Identity Protection prémium szintű Azure AD P2-licencet igényel. A követelmények megfelelő licencének megkereséséhez tekintse meg [a ingyenes Azure ad és prémium szintű Azure ad kiadások általánosan elérhető funkcióinak összevetését](https://azure.microsoft.com/pricing/details/active-directory/)ismertető témakört.
+> A Azure AD Identity Protection prémium szintű Azure AD P2-licencet igényel. A követelmények megfelelő licencének megkereséséhez tekintse meg [a ingyenes Azure ad és prémium szintű Azure ad kiadások általánosan elérhető funkcióinak összevetését](https://azure.microsoft.com/pricing/details/active-directory/)ismertető témakört.
 
 A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olyan feladatokhoz, amelyek nem rendelkeznek tulajdonossal, vagy nem módosítanak tulajdonjogot olyan feladatokhoz, amelyek nem illeszkednek a fenti javaslatokhoz.
 
 #### <a name="owner-recommended-reading"></a>Tulajdonos által ajánlott olvasás
 
-- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md)
+- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../roles/permissions-reference.md)
 - [Irányítás az Azure-ban](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>Hitelesítő adatok kezelése
@@ -119,7 +119,7 @@ Az összevont hitelesítés integrált Windows-hitelesítéssel (IWA) vagy zökk
 
 ### <a name="device-trust-access-policies"></a>Eszköz-megbízhatósági hozzáférési szabályzatok
 
-A szervezetben lévő felhasználóhoz hasonlóan az eszköz a védelemmel ellátni kívánt alapvető identitás. Az eszközök identitásával bármikor és bárhonnan biztosíthatja erőforrásait.Az eszköz hitelesítése és a megbízhatóság típusának nyilvántartása javítja a biztonsági helyzeteket és a használhatóságot:
+A szervezetben lévő felhasználóhoz hasonlóan az eszköz a védelemmel ellátni kívánt alapvető identitás. Az eszközök identitásával bármikor és bárhonnan biztosíthatja erőforrásait. Az eszköz hitelesítése és a megbízhatóság típusának nyilvántartása javítja a biztonsági helyzeteket és a használhatóságot:
 
 - A súrlódás elkerülése, például MFA esetén, ha az eszköz megbízható
 - Nem megbízható eszközökről való hozzáférés letiltása
@@ -128,7 +128,7 @@ A szervezetben lévő felhasználóhoz hasonlóan az eszköz a védelemmel ellá
 Ezt a célt az eszköz identitásának és az Azure AD-ben való kezelésének az alábbi módszerek egyikével végezheti el:
 
 - A szervezetek a [Microsoft Intune](/intune/what-is-intune) használatával kezelhetik az eszközt, és kikényszerítik a megfelelőségi szabályzatokat, tanúsítják az eszköz állapotát, valamint feltételes hozzáférési házirendeket állíthatnak be attól függően, hogy az eszköz megfelel-e Microsoft Intune felügyelheti az iOS-eszközöket, a Mac-asztalokat (JAMF-integráción keresztül), a Windows-asztalokat (natív módon a Windows 10 mobileszköz-felügyeletét, valamint a Microsoft Endpoint Configuration Manager) és az androidos mobileszközök közös felügyeletét.
-- A [hibrid Azure ad-csatlakozás](../devices/hybrid-azuread-join-managed-domains.md) a csoportházirendekkel vagy a Microsoft Endpoint Configuration managerekkel való felügyeletet biztosít Active Directory tartományhoz csatlakoztatott számítógépeket használó környezetekben. A szervezetek a PHS vagy a PTA, zökkenőmentes SSO használatával telepíthetnek felügyelt környezetet. Ha az eszközöket az Azure AD-be szeretné állítani, a Felhőbeli és a helyszíni erőforrások egyszeri bejelentkezésével maximalizálja a felhasználói hatékonyságot, miközben lehetővé teszi a Felhőbeli és helyszíni erőforrások biztonságos elérését a [feltételes hozzáféréssel](../conditional-access/overview.md)   egyidejűleg.
+- A [hibrid Azure ad-csatlakozás](../devices/hybrid-azuread-join-managed-domains.md) a csoportházirendekkel vagy a Microsoft Endpoint Configuration managerekkel való felügyeletet biztosít Active Directory tartományhoz csatlakoztatott számítógépeket használó környezetekben. A szervezetek a PHS vagy a PTA, zökkenőmentes SSO használatával telepíthetnek felügyelt környezetet. Ha az eszközöket az Azure AD-be szeretné állítani, a Felhőbeli és a helyszíni erőforrások egyszeri bejelentkezésével maximalizálja a felhasználói hatékonyságot, miközben lehetővé teszi a Felhőbeli és helyszíni erőforrások biztonságos elérését a [feltételes hozzáféréssel](../conditional-access/overview.md) egyidejűleg.
 
 Ha olyan tartományhoz csatlakoztatott Windows-eszközöket használ, amelyek nincsenek a felhőben regisztrálva, vagy a felhőben regisztrált, de feltételes hozzáférési házirendek nélküli tartományhoz csatlakoztatott Windows-eszközök, akkor regisztrálnia kell a nem regisztrált eszközöket, és mindkét esetben [használja a hibrid Azure ad JOIN vezérlőt](../conditional-access/require-managed-devices.md) a feltételes hozzáférési szabályzatokban.
 
@@ -177,7 +177,7 @@ Az [alkalmazások ad FSról az Azure ad-be való áttelepítése](../manage-apps
 
 ### <a name="assign-users-to-applications"></a>Felhasználók kiosztása alkalmazásokhoz
 
-A [felhasználók az alkalmazásokhoz való hozzárendelését](../manage-apps/assign-user-or-group-access-portal.md) a csoportok használatával lehet legjobban leképezni, mivel ezek nagyobb rugalmasságot és nagy mennyiségű felügyeletet tesznek lehetővé. A csoportok használatának előnyei közé tartoznak az [attribútum-alapú dinamikus csoporttagság](../users-groups-roles/groups-dynamic-membership.md) és az [alkalmazás-tulajdonosok delegálása](../fundamentals/active-directory-accessmanagement-managing-group-owners.md). Ezért ha már használja és kezeli a csoportokat, javasoljuk, hogy a következő műveleteket hajtsa végre a nagy léptékű felügyelet javítása érdekében:
+A [felhasználók az alkalmazásokhoz való hozzárendelését](../manage-apps/assign-user-or-group-access-portal.md) a csoportok használatával lehet legjobban leképezni, mivel ezek nagyobb rugalmasságot és nagy mennyiségű felügyeletet tesznek lehetővé. A csoportok használatának előnyei közé tartoznak az [attribútum-alapú dinamikus csoporttagság](../enterprise-users/groups-dynamic-membership.md) és az [alkalmazás-tulajdonosok delegálása](../fundamentals/active-directory-accessmanagement-managing-group-owners.md). Ezért ha már használja és kezeli a csoportokat, javasoljuk, hogy a következő műveleteket hajtsa végre a nagy léptékű felügyelet javítása érdekében:
 
 - A csoportok kezelésének és irányításának delegálása az alkalmazás tulajdonosainak.
 - Az alkalmazáshoz való önkiszolgáló hozzáférés engedélyezése.
@@ -189,8 +189,8 @@ Ha azonban olyan alkalmazásokat talál, amelyek egyéni felhasználókhoz rende
 #### <a name="assign-users-to-applications-recommended-reading"></a>Felhasználók kiosztása ajánlott olvasáshoz
 
 - [Felhasználók és csoportok társítása egy alkalmazáshoz Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md)
-- [Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory](../users-groups-roles/roles-delegate-app-roles.md)
-- [A Azure Active Directory csoportok dinamikus tagsági szabályai](../users-groups-roles/groups-dynamic-membership.md)
+- [Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory](../roles/delegate-app-roles.md)
+- [A Azure Active Directory csoportok dinamikus tagsági szabályai](../enterprise-users/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>Hozzáférési szabályzatok
 
@@ -248,7 +248,7 @@ A feltételes hozzáférés elengedhetetlen eszköz a szervezet biztonsági hely
 - Feltételes hozzáférési szabályzatok használata az [MFA megvalósításához](../conditional-access/plan-conditional-access.md), nem pedig felhasználónkénti **MFA** használata
 - Több alkalmazásra is alkalmazható alapszabályzatok kis készlete
 - Hozzon létre üres kivételi csoportokat, és vegye fel őket a szabályzatokhoz, hogy legyen egy kivételi stratégia
-- A [break Glass](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) -fiókok MFA-vezérlők nélküli megtervezése
+- A [break Glass](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency) -fiókok MFA-vezérlők nélküli megtervezése
 - Egységes felhasználói élményt biztosíthat Microsoft 365 ügyfélalkalmazások, például csapatok, OneDrive, Outlook stb.) számára. ugyanazon vezérlők megvalósításával olyan szolgáltatásokhoz, mint az Exchange Online és a SharePoint Online
 - A szabályzatokhoz való hozzárendelést olyan csoportokon keresztül kell megvalósítani, amelyek nem egyéniek
 - A szabályzatokban használt kivételi csoportok rendszeres felülvizsgálatával korlátozható, hogy a felhasználók ne legyenek a biztonsági testhelyzetben. Ha saját Azure AD P2-t használ, a hozzáférési felülvizsgálatok segítségével automatizálhatja a folyamatot
@@ -309,7 +309,7 @@ Az alábbi lista azokat az alkalmazásokat tartalmazza, amelyekkel megvizsgálha
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Az alkalmazások a bejelentkezett felhasználó teljes körű felhasználó megszemélyesítését adtak meg. Példa:
+- Az alkalmazások a bejelentkezett felhasználó teljes körű felhasználó megszemélyesítését adtak meg. Például:
 
 |Erőforrás | Engedély |
 | :- | :- |
@@ -347,7 +347,7 @@ Az alábbiakban láthatók azok a felhasználói és csoportos beállítások, a
 - [Alkalmazások integrálása a Azure Active Directory](../develop/quickstart-register-app.md)
 - [Alkalmazások, engedélyek és beleegyezett Azure Active Directory.](../develop/quickstart-register-app.md)
 - [Csoportok használata a Azure Active Directory erőforrásaihoz való hozzáférés kezeléséhez](./active-directory-manage-groups.md)
-- [Önkiszolgáló alkalmazás-hozzáférés felügyeletének beállítása Azure Active Directory](../users-groups-roles/groups-self-service-management.md)
+- [Önkiszolgáló alkalmazás-hozzáférés felügyeletének beállítása Azure Active Directory](../enterprise-users/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>Nem várt helyekről érkező forgalom
 
@@ -372,7 +372,7 @@ A bejelentkezési tevékenységhez való hozzáférés, az Azure AD naplózási 
 - [Office 365 felügyeleti tevékenység API-referenciája](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Az Azure Active Directory Power BI-tartalomcsomag használata](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A biztonságos identitás-infrastruktúrának 12 aspektusa van. Ez a lista segítséget nyújt a hitelesítő adatok biztonságossá tételéhez és kezeléséhez, a hitelesítési élmény meghatározásához, a hozzárendelés delegálásához, a használat méréséhez és a hozzáférési házirendek definiálásához a vállalati biztonsági helyzet alapján.
 

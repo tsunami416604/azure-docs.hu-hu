@@ -6,19 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 26a6ddf3ea3009c1463f40403c9d1860a7cb81f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1157ca31a66e5df92ff28f5d7190993e51d7dd65
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126003"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367635"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet használata a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással (előzetes verzió) 
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy kiszolgáló nélküli szinapszis SQL-készletet (amely korábban **SQL on-demand-** adatbázis néven ismert), és a Azure Cosmos db-ra vonatkozó szinapszis-hivatkozáson keresztül. Ezután lekérdezi az Azure Cosmos-tárolókat, majd létrehoz egy modellt, amely Power BI a nézeteket, hogy azok tükrözzék a lekérdezést.
-
-> [!NOTE]
-> A Azure Cosmos DB analitikus tároló és a kiszolgáló nélküli SQL-készlet használata jelenleg elérhető előzetes verzióban. A hozzáférés kéréséhez nyissa meg a [Azure Cosmos db csapatot](mailto:cosmosdbsynapselink@microsoft.com).
 
 Ebben a forgatókönyvben a felületi termékek értékesítésével kapcsolatos dummy-információkat a partner kiskereskedelmi tárolójában fogjuk használni. A bevételeket a rendszer a nagy háztartások közelsége és a hirdetés egy adott hétre gyakorolt hatása alapján elemzi. Ebben a cikkben két nézetet hoz létre a **RetailSales** és a **StoreDemographics** nevű nézetben, valamint egy lekérdezést közöttük. Ebből a [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) -tárházból lekérheti a minta termék adatait.
 

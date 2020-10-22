@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135357"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366656"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server felderítési hibák elhárítása
 
@@ -54,7 +54,7 @@ A probléma előfordulásakor a következő helyzetek történnek:
 
 A hiba megoldása érdekében:
 
-Töltse le a [PsExec eszközt](https://aka.ms/PsExec). 
+Töltse le a [PsExec eszközt](/sysinternals/downloads/psexec). 
 
 A PsExec eszköz használatával férhet hozzá a rendszer felhasználói környezetéhez, és meghatározhatja, hogy a proxy címe konfigurálva van-e. Ezután a következő eljárásokkal adhat hozzá vCenter a megkerülési listához.
 
@@ -79,6 +79,6 @@ DRA-proxy konfigurálásához:
 
 4. Indítsa újra a DRA Provider szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 
+[A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése](./vmware-azure-manage-configuration-server.md#refresh-configuration-server)

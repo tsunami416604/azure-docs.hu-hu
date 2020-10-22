@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: fa9f58f7d94396e3b26c6e05f52c210c980bc30a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c101cb4eca246ee68a30ba3499981c589c564f92
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149119"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368655"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -20,7 +20,7 @@ ms.locfileid: "92149119"
 
 Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el és kéri le, a Secrets Store Container Storage Interface (CSI) illesztőprogram használatával a titkokat a Kubernetes hüvelybe csatlakoztatni.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy egyszerű szolgáltatásnevet, vagy használjon felügyelt identitásokat.
@@ -185,6 +185,7 @@ Ha egyszerű szolgáltatást használ, adjon meg engedélyeket a kulcstartó el�
 1. Adja meg az egyszerű szolgáltatás engedélyeit a titkok beszerzéséhez:
     ```azurecli
     az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
+    az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
     ```
 
 1. Ezzel konfigurálta az egyszerű szolgáltatásnevet a Key vaultban található titkos kódok olvasásához szükséges engedélyekkel. A **$AZURE _CLIENT_SECRET** az egyszerű szolgáltatásnév jelszava. Adja hozzá a szolgáltatás egyszerű hitelesítő adatait olyan titkos Kubernetes, amelyet a Secrets Store CSI-illesztőprogramja elérhet:
@@ -237,6 +238,7 @@ Ha felügyelt identitásokat használ, rendeljen meghatározott szerepköröket 
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
+    az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
     ```
 
 ## <a name="deploy-your-pod-with-mounted-secrets-from-your-key-vault"></a>A pod üzembe helyezése csatlakoztatott titkos kulcsokkal a Key vaultból
@@ -309,8 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-        nodePublishSecretRef:
-          name: secrets-store-creds 
+        nodePublishSecretRef:           # Only required when using service principal mode
+          name: secrets-store-creds     # Only required when using service principal mode
 ```
 
 Futtassa a következő parancsot a pod üzembe helyezéséhez:

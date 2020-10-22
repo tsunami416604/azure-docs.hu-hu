@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0332b9aab0db456ed4517c09e541bee1b9884d04
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276492"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368995"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
@@ -310,7 +310,7 @@ Egyéni értékeket is elküldhet az egyéni tevékenység kódjából Azure Dat
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString-kimenetek lekérése
 
-A *SecureString*típusként kijelölt bizalmas tulajdonságértékek a jelen cikk néhány példájában láthatók a Data Factory felhasználói felület figyelés lapján.  A folyamat tényleges végrehajtása során azonban a *SecureString* tulajdonság a fájlon belül JSON-ként van szerializálva `activity.json` egyszerű szövegként. Példa:
+A *SecureString*típusként kijelölt bizalmas tulajdonságértékek a jelen cikk néhány példájában láthatók a Data Factory felhasználói felület figyelés lapján.  A folyamat tényleges végrehajtása során azonban a *SecureString* tulajdonság a fájlon belül JSON-ként van szerializálva `activity.json` egyszerű szövegként. Például:
 
 ```json
 "extendedProperties": {
@@ -387,5 +387,5 @@ A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adat�
 * [MapReduce tevékenység](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop streaming-tevékenység](transform-data-using-hadoop-streaming.md)
 * [Spark-tevékenység](transform-data-using-spark.md)
-* [Batch-végrehajtási tevékenység Machine Learning](transform-data-using-machine-learning.md)
+* [Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

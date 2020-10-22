@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dee5a56f309dab8f09a598219f6302c88f4308e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757843"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370712"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
 
@@ -219,9 +219,6 @@ Kövesse a [lekérdezés Azure Cosmos db analitikus tároló](../synapse-analyti
 
 A szinapszis SQL Server nélküli (előzetes verzió, amely korábban **SQL on-demand**néven ismert) használatával kérdezheti le és elemezheti a Azure Cosmos db tárolók adatait, amelyek engedélyezve vannak az Azure szinapszis hivatkozással. Közel valós időben elemezheti az adatait anélkül, hogy ez hatással lenne a tranzakciós munkaterhelések teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az analitikus áruházból származó adatok lekérdezését, valamint a BI-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a T-SQL felületen keresztül. További információért tekintse meg a [lekérdezési analitikus áruházat a SZINAPSZIS SQL Server nélküli](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) cikkben.
 
-> [!NOTE]
-> A Azure Cosmos DB analitikus tároló és a szinapszis SQL Server nélküli használata jelenleg az előzetes verzióban érhető el. A hozzáférés kéréséhez nyissa meg a [Azure Cosmos db csapatot](mailto:cosmosdbsynapselink@microsoft.com).
-
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>A szinapszis SQL Server nélküli használata az adatelemzéshez és megjelenítéséhez Power BI
 
 Létrehozhat egy szinapszis SQL Server nélküli adatbázist és a Azure Cosmos DB-re vonatkozó szinapszis-hivatkozáson keresztüli nézeteket. Később lekérdezheti az Azure Cosmos-tárolókat, majd létrehozhat egy modellt Power BI a nézeteken, hogy azok tükrözzék a lekérdezést. További információ: a [SZINAPSZIS SQL Server nélküli használata az Azure Cosmos db-adatelemzéshez a szinapszis-hivatkozással](synapse-link-power-bi.md) című cikkben.
@@ -240,7 +237,7 @@ További információért lásd a következő dokumentumokat:
 
 * [Az Azure szinapszis hivatkozása Azure Cosmos DB.](synapse-link.md)
 
-* [Az Azure Cosmos DB elemzési tár áttekintése.](analytical-store-introduction.md)
+* [Azure Cosmos DB analitikus áruház áttekintése.](analytical-store-introduction.md)
 
 * [Gyakran ismételt kérdések a Azure Cosmos DB-ra vonatkozó szinapszis-hivatkozásról.](synapse-link-frequently-asked-questions.md)
 

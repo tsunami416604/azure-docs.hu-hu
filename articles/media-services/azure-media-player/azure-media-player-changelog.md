@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91315082"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370576"
 ---
 # <a name="changelog"></a>Változásnapló
 
@@ -198,7 +198,7 @@ Ha az Apple-eszközökön a "playsinline" HLS-lejátszást használja, az "élő
 
 ### <a name="changes"></a>Módosítások ###
 
-- Módosítása [Élő felirat] A 608 és 708 közötti CEA-feliratok API-neve módosítva. További információ: CEA708- [feliratok beállításai](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
+- Módosítása [Élő felirat] A 608 és 708 közötti CEA-feliratok API-neve módosítva. További információ: CEA708- [feliratok beállításai](/javascript/api/azuremediaplayer/cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0 (hivatalos kiadás) ##
 
@@ -447,7 +447,7 @@ Ha az Apple-eszközökön a "playsinline" HLS-lejátszást használja, az "élő
 
 - Módosítása Frissített lejátszó a jelenlegi Chrome EME-követelményekhez
 - Módosítása Az alapértelmezett techOrder módosult, hogy megfeleljenek az új tech-html5FairPlayHLS (további információért lásd a [védett tartalmakat](azure-media-player-protected-content.md) )
-- Módosítása [AzureHtml5JS] MPEG-Dash-lejátszás engedélyezése a Safariban
+- Módosítása [AzureHtml5JS] Engedélyezve MPEG-Dash a lejátszás a Safariban
 - Módosítása Minták Módosította a többplatformos DRM-mintákat a FairPlay befogadásához
 
 ## <a name="174-official-hotfix-update"></a>1.7.4 (hivatalos gyorsjavítás frissítése) ##
@@ -741,6 +741,6 @@ Ha az Apple-eszközökön a "playsinline" HLS-lejátszást használja, az "élő
 
 Kezdeti előzetes kiadás
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

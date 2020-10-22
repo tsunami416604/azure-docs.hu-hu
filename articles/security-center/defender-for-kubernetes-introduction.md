@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3308a72421b851402642f12daf56359c7e3c9216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd92e1529b889671bc29939f7e9611eceac7ee20
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449065"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370508"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Bevezetés az Azure Defender for Kubernetes használatába
 
@@ -88,6 +88,23 @@ A fentiekben leírtaknak megfelelően a választható **Azure Defender for Kuber
 Javasoljuk, hogy mindkét esetben a lehető legteljesebb védelem érdekében végezze el a telepítést.
 
 Ha úgy dönt, hogy nem telepíti az ügynököt a gazdagépekre, a fenyegetések elleni védelem előnyeinek és biztonsági riasztásoknak csak egy részhalmazát kapja meg. A hálózati elemzéssel és a rosszindulatú kiszolgálókkal folytatott kommunikációval kapcsolatos riasztásokat továbbra is megkapja.
+
+
+### <a name="does-aks-allow-me-to-install-custom-vm-extensions-on-my-aks-nodes"></a>Az AK lehetővé teszi, hogy egyéni virtuálisgép-bővítményeket telepítsek az AK-csomópontokon?
+
+Az Azure Defender számára az AK-csomópontok figyeléséhez a Log Analytics ügynököt kell futtatnia. 
+
+Az AK felügyelt szolgáltatás, és mivel a log Analytics-ügynök egy Microsoft által felügyelt bővítmény, az AK-fürtökön is támogatott.
+
+
+
+### <a name="if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too"></a>Ha a fürtön már fut egy Azure Monitor a containers Agent számára, akkor is szükség van a Log Analytics-ügynökre?
+
+Az Azure Defender számára az AK-csomópontok figyeléséhez a Log Analytics ügynököt kell futtatnia.
+
+Ha a fürtök már futtatják a Azure Monitor a tárolók ügynöke számára, akkor a Log Analytics-ügynököt is telepítheti, és a két ügynök anélkül is dolgozhat egymással, hogy problémák lépnek fel.
+
+[További információ a Azure monitor for containers agentről](../azure-monitor/insights/container-insights-manage-agent.md).
 
 
 ## <a name="next-steps"></a>Következő lépések

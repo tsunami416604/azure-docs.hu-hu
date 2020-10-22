@@ -13,19 +13,19 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1bf6b33176bf7942fbd76fa86ecd61b4f24e154
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550265"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366003"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Megosztott eszköz mód Android-eszközökhöz
 
 > [!NOTE]
 > Ez a funkció nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Firstline-feldolgozók, például a kiskereskedelmi munkatársak, a hajózószemélyzet tagjai és a helyszíni szolgáltatások dolgozói gyakran közös mobileszköz használatával végzik munkájukat. Ez akkor válik problémamentesnek, amikor megkezdik a jelszavak megosztását, és a megosztott eszközön lévő ügyfél-és üzleti adatokhoz a PIN-kódok számát használják
 
@@ -36,7 +36,7 @@ A megosztott eszköz mód az eszköz Microsoft Identity-beli felügyeletét is b
 Megosztott eszköz üzemmódú alkalmazás létrehozásához a fejlesztők és a felhőalapú eszközök rendszergazdái együttesen működnek:
 
 - A fejlesztők egyfiókos alkalmazást írnak (a több fiókból álló alkalmazások nem támogatottak a megosztott eszköz módban), hozzáadhatók `"shared_device_mode_supported": true` az alkalmazás konfigurációjához, és kódot írhatnak az olyan dolgok kezelésére, mint például a megosztott eszközök kijelentkezése.
-- Az eszközök rendszergazdái az eszköz megosztását a hitelesítő alkalmazás telepítésével, valamint a hitelesítő alkalmazás használatával a megosztott módba állításával készíti el. A [hitelesítő alkalmazás](../user-help/user-help-auth-app-overview.md)használatával csak a [Cloud Device rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) szerepkörrel rendelkező felhasználók helyezhetnek el egy eszközt megosztott módba. A Azure Portal a (z) **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **felhőalapú eszköz rendszergazdája**segítségével konfigurálhatja a szervezeti szerepkörök tagságát.
+- Az eszközök rendszergazdái az eszköz megosztását a hitelesítő alkalmazás telepítésével, valamint a hitelesítő alkalmazás használatával a megosztott módba állításával készíti el. A [hitelesítő alkalmazás](../user-help/user-help-auth-app-overview.md)használatával csak a [Cloud Device rendszergazdai](../roles/permissions-reference.md#cloud-device-administrator-permissions) szerepkörrel rendelkező felhasználók helyezhetnek el egy eszközt megosztott módba. A Azure Portal a (z) **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **felhőalapú eszköz rendszergazdája**segítségével konfigurálhatja a szervezeti szerepkörök tagságát.
 
  Ez a cikk elsősorban a fejlesztőknek szól.
 
@@ -106,6 +106,6 @@ Az alábbi ábrán az alkalmazás teljes életciklusa látható, valamint az alk
 
 ![Megosztott eszközök alkalmazásának életciklusa](media/v2-shared-device-mode/lifecycle.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki az [Android-alkalmazás megosztott eszközének használatát](tutorial-v2-shared-device-mode.md) ismertető oktatóanyagot, amely bemutatja, hogyan futtathat egy firstline Worker alkalmazást egy megosztott módú Android-eszközön.

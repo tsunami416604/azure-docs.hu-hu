@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361904"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368383"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a külső vendég felhasználók számára a Azure Portal használatával
 
@@ -183,7 +183,7 @@ A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. 
 
 ![A vendég felhasználó nem tallózhat a címtárban lévő felhasználók között](./media/role-assignments-external-users/directory-no-users.png)
 
-Ha egy vendég felhasználónak további jogosultságokra van szüksége a címtárban, hozzárendelhet egy címtárbeli szerepkört a vendég felhasználóhoz. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/users-groups-roles/directory-assign-admin-roles.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
+Ha egy vendég felhasználónak további jogosultságokra van szüksége a címtárban, hozzárendelhet egy címtárbeli szerepkört a vendég felhasználóhoz. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/roles/permissions-reference.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
 
 ![Directory-olvasók szerepkörének kiosztása](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,11 +193,11 @@ A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. 
 
 ![A vendég felhasználó nem tallózhat a rendszerbiztonsági tag számára szerepkörök hozzárendeléséhez](./media/role-assignments-external-users/directory-no-browse.png)
 
-Ha a vendég felhasználó tudja, hogy valaki pontosan bejelentkezik a címtárba, hozzáférést biztosíthat. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/users-groups-roles/directory-assign-admin-roles.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
+Ha a vendég felhasználó tudja, hogy valaki pontosan bejelentkezik a címtárba, hozzáférést biztosíthat. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/roles/permissions-reference.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>A vendég felhasználó nem regisztrálhat alkalmazásokat, és nem hozhat létre egyszerű szolgáltatásokat
 
-A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. Ha egy vendég felhasználónak képesnek kell lennie az alkalmazások regisztrálására vagy egyszerű szolgáltatásnév létrehozására, a vendég felhasználót hozzáadhatja az [alkalmazás fejlesztői](../active-directory/users-groups-roles/directory-assign-admin-roles.md) szerepköréhez az Azure ad-ben. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
+A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. Ha egy vendég felhasználónak képesnek kell lennie az alkalmazások regisztrálására vagy egyszerű szolgáltatásnév létrehozására, a vendég felhasználót hozzáadhatja az [alkalmazás fejlesztői](../active-directory/roles/permissions-reference.md) szerepköréhez az Azure ad-ben. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
 
 ![A vendég felhasználó nem tud regisztrálni alkalmazásokat](./media/role-assignments-external-users/directory-access-denied.png)
 
@@ -211,7 +211,7 @@ Ha a vendég felhasználó hozzáférést kapott egy címtárhoz, de nem látja 
 
 ![Könyvtárak és előfizetések panel a Azure Portal](./media/role-assignments-external-users/directory-subscription.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal](../active-directory/b2b/add-users-administrator.md)
 - [Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](../active-directory/b2b/user-properties.md)

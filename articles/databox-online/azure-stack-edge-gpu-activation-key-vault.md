@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: c841c96326f636e16f3b4f86fcb88a0962011c0f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976831"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367601"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Key Vault integráció az Azure Stack Edge-vel 
 
@@ -22,7 +22,7 @@ Azure Key Vault integrálva van a Azure Stack Edge-erőforrással a titkos felü
 
 ## <a name="about-key-vault-and-azure-stack-edge"></a>A Key Vault és a Azure Stack Edge bemutatása
 
-Azure Key Vault Cloud Service a tokenekhez, jelszavakhoz, tanúsítványokhoz, API-kulcsokhoz és egyéb titkokhoz való hozzáférés biztonságos tárolására és szabályozására szolgál. Key Vault emellett megkönnyíti az adattitkosításhoz használt titkosítási kulcsok létrehozását és szabályozását. 
+Azure Key Vault Cloud Service a tokenekhez, jelszavakhoz, tanúsítványokhoz, API-kulcsokhoz és egyéb titkokhoz való hozzáférés biztonságos tárolására és szabályozására szolgál. Key Vault emellett megkönnyíti az adattitkosításhoz használt titkosítási kulcsok létrehozását és szabályozását. További információ az engedélyezett tranzakciókról és a kapcsolódó díjakról: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
 
 Az Azure Stack Edge szolgáltatás esetében a használt titkok egyike a csatorna integritási kulcsa (a (). Ez a kulcs lehetővé teszi a titkos kódok titkosítását. A Key Vault integrálásával a kiszolgálás biztonságosan tárolódik a Key vaultban. További információ: [titkos kulcsok és kulcsok biztonságos tárolása](../key-vault/general/overview.md#securely-store-secrets-and-keys).
 
@@ -44,6 +44,8 @@ A Key Vault a Azure Stack Edge-erőforráshoz jön létre az aktiválási kulcs 
 - Dönthet úgy is, hogy elfogadja az alapértelmezett kulcs nevét, vagy megadhatja a kulcstartó egyéni nevét. A kulcstároló nevének 3 – 24 karakter hosszúnak kell lennie. Már használatban lévő kulcstartó nem használható. <!--The MSI is then used to authenticate to key vault to retrieve secrets.--> 
 
     ![Azure Stack Edge-erőforrás létrehozása során létrehozott MSI](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+
+- Az Azure Key Vault tallózásához lépjen a Azure Stack Edge-erőforrás **Tulajdonságok** elemére, és válassza ki a kulcstároló nevét. 
 
 - A véletlen törlés megakadályozása érdekében az erőforrás-zárolás engedélyezve van a kulcstartón. A Key vaultban a Soft delete is engedélyezve van, amely lehetővé teszi, hogy a Key Vault 90 napon belül visszaállítható legyen, ha véletlen törlés van. További információ: Azure Key Vault a [Soft-delete áttekintése](../key-vault/general/soft-delete-overview.md)
 

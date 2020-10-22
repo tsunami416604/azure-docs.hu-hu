@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 06836673f1a567f64217d49cf8e0ca82e132111f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd68fd79d25e839876180ff25cacfa1ddf64eb2b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935585"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368808"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -34,7 +34,7 @@ A következő lépésekkel telepítheti a Defender for IoT biztonsági modulját
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. A IoT Hub ellenőrizze, hogy az eszköz IoT Edge- [eszközként](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)van-e regisztrálva.
+1. A IoT Hub ellenőrizze, hogy az eszköz IoT Edge- [eszközként](https://docs.microsoft.com/azure/iot-edge/how-to-manual-provision-symmetric-key#register-a-new-device)van-e regisztrálva.
 
 1. A IoT Edge modulhoz tartozó Defender számára szükséges, hogy a [naplózott keretrendszer](https://linux.die.net/man/8/auditd) telepítve legyen a IoT Edge eszközön.
 
@@ -139,7 +139,7 @@ Hajtsa végre az egyes lépéseket, hogy elvégezze a IoT IoT Edge-telepítésé
     }
     ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. Kattintson a **Tovább** gombra.
 
@@ -175,7 +175,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
 
 1. Ellenőrizze, hogy a következő tárolók futnak-e:
 
-   | Name (Név) | KÉP |
+   | Név | KÉP |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

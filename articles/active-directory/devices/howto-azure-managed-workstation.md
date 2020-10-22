@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a56cd23494f65b1c74e44868496855c6e4a32bf7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269556"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365816"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Biztonságos, Azure által felügyelt munkaállomás üzembe helyezése
 
@@ -51,11 +51,11 @@ A megoldás üzembe helyezése előtt válasszon ki egy profilt. Egyszerre több
 
 Az útmutatóban szereplő fogalmak feltételezik, hogy Microsoft 365 Nagyvállalati verzió E5 vagy egy egyenértékű SKU van. A jelen útmutatóban szereplő javaslatok közül néhányat alacsonyabb SKU-kal lehet megvalósítani. További információ: [Microsoft 365 nagyvállalati verzió licencelés](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise).
 
-A licencek kiépítés automatizálásához gondolja át a felhasználók [csoport alapú licencelését](../users-groups-roles/licensing-groups-assign.md) .
+A licencek kiépítés automatizálásához gondolja át a felhasználók [csoport alapú licencelését](../enterprise-users/licensing-groups-assign.md) .
 
 ## <a name="azure-active-directory-configuration"></a>Azure Active Directory konfiguráció
 
-Azure Active Directory (Azure AD) a rendszergazdai munkaállomásokhoz tartozó felhasználókat, csoportokat és eszközöket kezeli. Az Identity Services és szolgáltatások engedélyezése [rendszergazdai fiókkal](../users-groups-roles/directory-assign-admin-roles.md).
+Azure Active Directory (Azure AD) a rendszergazdai munkaállomásokhoz tartozó felhasználókat, csoportokat és eszközöket kezeli. Az Identity Services és szolgáltatások engedélyezése [rendszergazdai fiókkal](../roles/permissions-reference.md).
 
 A biztonságos munkaállomás-rendszergazdai fiók létrehozásakor a fiók elérhetővé válnak az aktuális munkaállomáson. Győződjön meg arról, hogy ismert biztonságos eszközt használ ehhez a kezdeti konfigurációhoz és az összes globális konfigurációhoz. Ha csökkenteni szeretné a támadási expozíciót az első alkalommal, vegye figyelembe az [útmutatást a kártevők elleni fertőzések megelőzése](/windows/security/threat-protection/intelligence/prevent-malware-infection)érdekében.
 
@@ -71,13 +71,13 @@ A többtényezős hitelesítés megkövetelése legalább a rendszergazdák szá
    * **Felhasználónév** - `secure-ws-admin@identityitpro.com`
    * **Címtárbeli szerepkör**  -  **Korlátozott rendszergazda** , és válassza ki az **Intune rendszergazdai** szerepkört.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Ezután két csoportot hoz létre: munkaállomás-felhasználók és munkaállomás-eszközök.
 
 A Azure Portal keresse meg **Azure Active Directory**  >  **csoportok**  >  **új csoportot**.
 
-1. A munkaállomás-felhasználók csoport esetében előfordulhat, hogy a felhasználók számára a licencek kiosztásának automatizálásához [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) szeretne konfigurálni.
+1. A munkaállomás-felhasználók csoport esetében előfordulhat, hogy a felhasználók számára a licencek kiosztásának automatizálásához [csoport alapú licencelést](../enterprise-users/licensing-groups-assign.md) szeretne konfigurálni.
 1. A munkaállomás-felhasználók csoportnál adja meg a következőt:
 
    * **Csoport típusa** – biztonság
@@ -86,14 +86,14 @@ A Azure Portal keresse meg **Azure Active Directory**  >  **csoportok**  >  **ú
 
 1. Adja hozzá a biztonságos munkaállomás rendszergazda felhasználóját: `secure-ws-admin@identityitpro.com`
 1. Hozzáadhat más felhasználókat is, akik a biztonságos munkaállomásokat kezelik.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A munkaállomás-eszközök csoportban adja meg a következőt:
 
    * **Csoport típusa** – biztonság
    * **Csoport neve** – biztonságos munkaállomások
    * **Tagság típusa** – hozzárendelve
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="azure-ad-device-configuration"></a>Azure AD-eszköz konfigurációja
 
@@ -117,7 +117,7 @@ Az eszközök Azure AD-hez való csatlakoztatásának további megerősítése:
 
 1. Nyissa meg az **Azure Active Directory** > **Eszközök** > **Eszközbeállítások** panelt.
 1. Válassza az **Igen** lehetőséget a **többtényezős hitelesítés megkövetelése az eszközökhöz való csatlakozáshoz**.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 #### <a name="configure-mobile-device-management"></a>A mobileszköz-kezelés konfigurálása
 
@@ -125,13 +125,13 @@ A Azure Portal:
 
 1. Keresse meg **Azure Active Directory**  >  **mobilitás (Mdm és MAM)**  >  **Microsoft Intune**.
 1. Módosítsa a **Mdm felhasználói hatókörét** az **összes**értékre.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Ezek a lépések lehetővé teszik bármely eszköz Intune-nal való kezelését. További információ [: az Intune gyors üzembe helyezésének beállítása a Windows 10-es eszközök automatikus regisztrálásához](/Intune/quickstart-setup-auto-enrollment). Az Intune konfigurációs és megfelelőségi szabályzatait egy későbbi lépésben hozza létre.
 
 #### <a name="azure-ad-conditional-access"></a>Azure AD-beli feltételes hozzáférés
 
-Az Azure AD feltételes hozzáférés segítségével a megfelelő eszközökre korlátozhatja a Kiemelt felügyeleti feladatokat. A **biztonságos munkaállomás-felhasználók** csoport előre definiált tagjainak a többtényezős hitelesítés végrehajtásához kell végrehajtaniuk a felhőalapú alkalmazásokba való bejelentkezéskor. Az ajánlott eljárás a vészhelyzeti hozzáférési fiókok kizárása a szabályzatból. További információ: [a vészhelyzeti hozzáférési fiókok kezelése az Azure ad-ben](../users-groups-roles/directory-emergency-access.md).
+Az Azure AD feltételes hozzáférés segítségével a megfelelő eszközökre korlátozhatja a Kiemelt felügyeleti feladatokat. A **biztonságos munkaállomás-felhasználók** csoport előre definiált tagjainak a többtényezős hitelesítés végrehajtásához kell végrehajtaniuk a felhőalapú alkalmazásokba való bejelentkezéskor. Az ajánlott eljárás a vészhelyzeti hozzáférési fiókok kizárása a szabályzatból. További információ: [a vészhelyzeti hozzáférési fiókok kezelése az Azure ad-ben](../roles/security-emergency-access.md).
 
 ## <a name="intune-configuration"></a>Intune-konfiguráció
 
@@ -200,7 +200,7 @@ Az Azure Portalon:
    * Késleltetett újraindítási emlékeztető (nap) – **3**
    * Függőben lévő újraindítások határidejének megadása (nap) – **3**
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A **hozzárendelések** lapon adja hozzá a **biztonságos munkaállomások** csoportot.
 
 Windows Update házirendekkel kapcsolatos további információkért lásd: [házirend CSP-Update](/windows/client-management/mdm/policy-csp-update).
@@ -221,7 +221,7 @@ A Windows Defender ATP és az Intune integrálásának konfigurálásához lépj
 
 1. A kapcsolatok létrejötte után térjen vissza az Intune-ba, és válassza a felül a **frissítés** lehetőséget.
 1. Adja meg a **10.0.15063 vagy újabb verziójú windowsos eszközök csatlakoztatása a következőhöz: Windows Defender ATP** beállításnál a **Be** értéket.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 További információ: a [Windows Defender komplex veszélyforrások elleni védelem](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection).
 
@@ -251,7 +251,7 @@ Futtassa az Intune-adatexportálási parancsfájlt `DeviceConfiguration_Export.p
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>További konfigurációk és megerősítés a megfontoláshoz
 
-Az itt található útmutatást követve biztonságos munkaállomást helyezett üzembe. Érdemes azonban további vezérlőket is figyelembe venni. Példa:
+Az itt található útmutatást követve biztonságos munkaállomást helyezett üzembe. Érdemes azonban további vezérlőket is figyelembe venni. Például:
 
 * másodlagos böngészőkhöz való hozzáférés korlátozása
 * kimenő HTTP engedélyezése
@@ -290,8 +290,8 @@ Bizonyos helyzetekben a biztonságos munkaállomáson olyan alkalmazások szüks
 1. A **Azure Portal** tallózással keresse meg **Microsoft Intune**  >  **ügyfélalkalmazások**  >  **alkalmazások**  >  **Hozzáadás**lehetőséget.
 1. Az **alkalmazás típusa** **területen válassza az üzletági lehetőséget**.
 1. Az **alkalmazáscsomag fájl**területen válassza ki a `GoogleChromeStandaloneEnterprise64.msi` fájlt a kibontott helyről, és kattintson az **OK gombra**.
-1. Az **alkalmazásadatok területen adja**meg a leírást és a közzétevőt. Kattintson az **OK** gombra.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Az **alkalmazásadatok területen adja**meg a leírást és a közzétevőt. Válassza az **OK** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 1. A **hozzárendelések** lapon válassza a **rendelkezésre álló lehetőséget a regisztrált eszközökhöz** a **hozzárendelés típusa**alatt.
 1. A **befoglalt csoportok**területen adja hozzá a **biztonságos munkaállomások** csoportot.
 1. Válassza **az OK**, majd a **Mentés**lehetőséget.
@@ -308,7 +308,7 @@ Előfordulhat, hogy telepítenie kell a Windows 32 bites alkalmazásokat vagy m�
 
 ### <a name="conditional-access-only-allowing-secured-workstation-ability-to-access-azure-portal"></a>A feltételes hozzáférés csak a biztonságos munkaállomás hozzáférését engedélyezi Azure Portal
 
-Az Azure AD lehetővé teszi az Azure Cloud Management portál felügyeletét és korlátozását, valamint azt, hogy ki és mi férhet hozzá. A [feltételes hozzáférés](../conditional-access/overview.md) engedélyezése biztosítja, hogy csak a biztonságos munkaállomás tudja kezelni vagy megváltoztatni az erőforrásokat. Fontos, hogy ennek a funkciónak a üzembe helyezése során vegye figyelembe, hogy a [vészhelyzeti hozzáférés](../users-groups-roles/directory-emergency-access.md) funkciói csak szélsőséges esetekben és a szabályzattal felügyelt fiók esetében használhatók.
+Az Azure AD lehetővé teszi az Azure Cloud Management portál felügyeletét és korlátozását, valamint azt, hogy ki és mi férhet hozzá. A [feltételes hozzáférés](../conditional-access/overview.md) engedélyezése biztosítja, hogy csak a biztonságos munkaállomás tudja kezelni vagy megváltoztatni az erőforrásokat. Fontos, hogy ennek a funkciónak a üzembe helyezése során vegye figyelembe, hogy a [vészhelyzeti hozzáférés](../roles/security-emergency-access.md) funkciói csak szélsőséges esetekben és a szabályzattal felügyelt fiók esetében használhatók.
 
 > [!NOTE]
 > Létre kell hoznia egy felhasználói csoportot, és fel kell vennie a vészhelyzeti felhasználót, amely megkerülheti a feltételes hozzáférési szabályzatot. Példánkban van egy **Emergency BreakGlass** nevű biztonsági csoport
@@ -341,11 +341,11 @@ A Microsoft Scripting Center [SetDesktopBackground.ps1](https://gallery.technet.
 1. Adja meg a parancsfájl **nevét** , és adja meg a **parancsfájl helyét**.
 1. Válassza a **Konfigurálás** lehetőséget.
    1. **A parancsfájl futtatásának beállítása a bejelentkezett hitelesítő adatokkal** **Igen**értékre.
-   1. Kattintson az **OK** gombra.
-1. Kattintson a **Létrehozás** gombra.
+   1. Válassza az **OK** lehetőséget.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Válassza a **hozzárendelések**  >  **csoportok lehetőséget**.
    1. Adja hozzá a biztonsági csoport **biztonságos munkaállomásait**.
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="enroll-and-validate-your-first-device"></a>Az első eszköz regisztrálása és ellenőrzése
 
@@ -428,11 +428,11 @@ Az MMA-ügynök üzembe helyezése az Intune PowerShell-parancsfájllal
 1. Adja meg a parancsfájl **nevét** , és adja meg a **parancsfájl helyét**.
 1. Válassza a **Konfigurálás** lehetőséget.
    1. **A parancsfájl futtatásának beállítása a bejelentkezett hitelesítő adatokkal** **Igen**értékre.
-   1. Kattintson az **OK** gombra.
-1. Kattintson a **Létrehozás** gombra.
+   1. Válassza az **OK** lehetőséget.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Válassza a **hozzárendelések**  >  **csoportok lehetőséget**.
    1. Adja hozzá a biztonsági csoport **biztonságos munkaállomásait**.
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
 
 Ezután be kell állítania Log Analytics az új naplók fogadásához
 1. A **Azure Portal**nyissa meg a **log Analytics munkaterületet** > Select-"Secure Workstation monitoring"
