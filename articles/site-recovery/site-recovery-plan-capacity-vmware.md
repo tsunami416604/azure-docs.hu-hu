@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135457"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368026"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás megtervezése és méretezése a VMware vész-helyreállításhoz az Azure-ba
 
@@ -20,7 +20,7 @@ Ebből a cikkből megtervezheti a kapacitást és a skálázást, amikor a helys
 
 ## <a name="how-do-i-start-capacity-planning"></a>Hogyan megkezdi a kapacitás megtervezését?
 
-A Azure Site Recovery infrastrukturális követelmények megismeréséhez a [Azure site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) a VMware-replikációhoz való futtatásával gyűjtsön információkat a replikációs környezetről. További információ: [tudnivalók Site Recovery Deployment Planner VMware-ről Azure-](site-recovery-deployment-planner.md)ra. 
+A Azure Site Recovery infrastrukturális követelmények megismeréséhez a [Azure site Recovery Deployment Planner](./site-recovery-deployment-planner.md) a VMware-replikációhoz való futtatásával gyűjtsön információkat a replikációs környezetről. További információ: [tudnivalók Site Recovery Deployment Planner VMware-ről Azure-](site-recovery-deployment-planner.md)ra. 
 
 A Site Recovery Deployment Planner egy olyan jelentést biztosít, amely teljes körű információkkal szolgál a kompatibilis és nem kompatibilis virtuális gépekről, a virtuális gépekről és a lemezeken tárolt adatokról. Az eszköz a hálózati sávszélességre vonatkozó követelményeket is összegzi, hogy megfeleljen a RPO és a sikeres replikáláshoz és feladatátvételi teszthez szükséges Azure-infrastruktúrának.
 
@@ -92,7 +92,7 @@ Miután a [Site Recovery Deployment Planner](site-recovery-deployment-planner.md
 
     ![A Azure Backup tulajdonságai párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-A szabályozáshoz a [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) parancsmag is használható. Bemutatunk egy példát:
+A szabályozáshoz a [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) parancsmag is használható. Íme egy példa:
 
 ```azurepowershell-interactive
 $mon = [System.DayOfWeek]::Monday
@@ -170,6 +170,6 @@ A regisztráció sikeres befejeződése után a kiszolgáló megjelenik a Azure 
  > [!NOTE]
  > Töltse le a [Windows rendszerhez készült fő célkiszolgáló egyesített telepítési fájljának](https://aka.ms/latestmobsvc)legújabb verzióját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner)letöltése és futtatása.

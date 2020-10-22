@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674ce347f929dd70e32537e9bde3139c5fafc7ea
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398306"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368009"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Az Azure – Azure virtuálisgép-hálózat csatlakozási problémáinak elhárítása
 
@@ -20,7 +20,7 @@ Ahhoz, hogy Site Recovery replikáció működjön, az adott URL-címekhez vagy 
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótár-tárolási fiókot, használhat egy engedélyezési listát az adott Storage-fiók URL-címeihez. Például a `cache1.blob.core.windows.net` és `cache2.blob.core.windows.net` a helyett `*.blob.core.windows.net` . |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótár-tárolási fiókot, használhat egy engedélyezési listát az adott Storage-fiók URL-címeihez. Például a `cache1.blob.core.windows.net` és `cache2.blob.core.windows.net` a helyett `*.blob.core.windows.net` . |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Az engedélyezéshez és a hitelesítéshez szükséges a Site Recovery szolgáltatás URL-címeihez. |
 | Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen. A megfelelő _site Recovery IP-címet_ használhatja, ha a tűzfal proxyja támogatja az IP-címeket. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő _site Recovery figyelési IP-címet_ . |
@@ -60,7 +60,7 @@ Nem lehet csatlakozni a hitelesítéshez és az Identity IP4-végpontok Microsof
 #### <a name="resolution"></a>Feloldás
 
 - A Azure Site Recovery hozzáférést igényel a Microsoft 365 IP-tartományokhoz a hitelesítéshez.
-- Ha az Azure hálózati biztonsági csoport (NSG) szabályai/tűzfal proxyja segítségével vezérli a kimenő hálózati kapcsolatot a virtuális gépen, győződjön meg arról, hogy engedélyezi a kommunikációt a Microsoft 365 IP-címtartományok számára. Hozzon létre egy [Azure Active Directory (Azure ad) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi az Azure ad-nek megfelelő összes IP-cím elérését.
+- Ha az Azure hálózati biztonsági csoport (NSG) szabályai/tűzfal proxyja segítségével vezérli a kimenő hálózati kapcsolatot a virtuális gépen, győződjön meg arról, hogy engedélyezi a kommunikációt a Microsoft 365 IP-címtartományok számára. Hozzon létre egy [Azure Active Directory (Azure ad) Service tag](../virtual-network/network-security-groups-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi az Azure ad-nek megfelelő összes IP-cím elérését.
 - Ha a jövőben új címeket adnak hozzá az Azure AD-hoz, létre kell hoznia új NSG-szabályokat.
 
 ### <a name="example-nsg-configuration"></a>Példa NSG-konfigurációra

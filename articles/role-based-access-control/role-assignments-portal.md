@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1aebb80fcba6c21ccce63772195af80b94092bde
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597631"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368318"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Ez a cikk azt ismerteti, hogyan rendelhet hozzá szerepköröket a Azure Portal használatával.
 
-Ha Azure Active Directory rendszergazdai szerepköröket kell társítania, tekintse meg [a rendszergazdai szerepkörök megtekintése és társítása a Azure Active Directory-ben](../active-directory/users-groups-roles/directory-manage-roles-portal.md)című témakört.
+Ha Azure Active Directory rendszergazdai szerepköröket kell társítania, tekintse meg [a rendszergazdai szerepkörök megtekintése és társítása a Azure Active Directory-ben](../active-directory/roles/manage-roles-portal.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -118,7 +118,7 @@ A felügyelt identitásokhoz szerepkör-hozzárendeléseket a jelen cikk korább
 > [!IMPORTANT]
 > A felügyelt identitás szerepkör-hozzárendelésének ezen alternatív lépések használatával történő hozzáadása jelenleg előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
 

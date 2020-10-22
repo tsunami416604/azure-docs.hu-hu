@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: dae9db6dd20ef4346050be73250c7a10f7a449ec
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 044ee51fb7ff675af0fb97224313c388c4cbeac1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940686"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Oktatóanyag: Azure Active Directory integráció a Mitel MiCloud csatlakozással vagy a CloudLink platformmal
 
@@ -172,7 +172,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -204,7 +204,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 Ebben a szakaszban létrehoz egy Britta Simon nevű felhasználót a MiCloud-összekötő fiókjában. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-A felhasználók a Mitel-fiók portálon való hozzáadásával kapcsolatos részletekért tekintse meg a [felhasználói cikk hozzáadása](https://oneview.mitel.com/s/article/Adding-a-User-092815) a Mitel Tudásbázisban című témakört.
+A felhasználók a Mitel-fiók portálon való hozzáadásával kapcsolatos részletekért tekintse meg a [felhasználói cikk hozzáadása](https://shoretelcommunity.force.com/s/article/Adding-Users-092815) a Mitel Tudásbázisban című témakört.
 
 Hozzon létre egy felhasználót a MiCloud csatlakozási fiókjában a következő részletekkel:
 
@@ -327,7 +327,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

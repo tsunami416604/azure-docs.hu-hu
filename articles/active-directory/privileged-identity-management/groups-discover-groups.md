@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68795033d36ad0bcb36b7cd81cea0d848ecd5113
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ef27475509c59b3c0caf194fd85530f3fdd6c7c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049009"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367839"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>Emelt szintű hozzáférési csoportok (előzetes verzió) Privileged Identity Management
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) esetében a szerepkör-hozzárendelések kezel
 
 ## <a name="identify-groups-to-manage"></a>Kezelendő csoportok azonosítása
 
-Az Azure AD-ben létrehozhat egy szerepkörhöz hozzárendelhető csoportot, amely a [szerepkör-hozzárendelhető csoport létrehozása Azure Active Directoryban](../users-groups-roles/roles-groups-create-eligible.md)című témakörben leírtak szerint használható. A csoport tulajdonosának kell lennie, hogy a felügyelete alá kerüljön Privileged Identity Management.
+Az Azure AD-ben létrehozhat egy szerepkörhöz hozzárendelhető csoportot, amely a [szerepkör-hozzárendelhető csoport létrehozása Azure Active Directoryban](../roles/groups-create-eligible.md)című témakörben leírtak szerint használható. A csoport tulajdonosának kell lennie, hogy a felügyelete alá kerüljön Privileged Identity Management.
 
 1. [Jelentkezzen be az Azure ad-be](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda szerepkör engedélyeivel.
 1. Válassza a **csoportok** lehetőséget, majd válassza ki a PIM-ban felügyelni kívánt szerepkörhöz hozzárendelhető csoportot. Kereshet és szűrheti a listát.

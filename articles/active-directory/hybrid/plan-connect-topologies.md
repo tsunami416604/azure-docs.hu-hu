@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f8987a8daccc012f9d6da53e46fe7c4e8b43ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146346"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359832"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek a Azure AD Connect szinkronizálást használják kulcsfontosságú integrációs megoldásként. Ebben a cikkben a támogatott és a nem támogatott konfigurációk is szerepelnek.
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure
 
 A cikkben található képek jelmagyarázata:
 
-| Description | Szimbólum |
+| Leírás | Szimbólum |
 | --- | --- |
 | Helyszíni Active Directory erdő |![Helyszíni Active Directory erdő](./media/plan-connect-topologies/legendad1.png) |
 | Helyszíni Active Directory szűrt importálással |![Active Directory szűrt importálással](./media/plan-connect-topologies/legendad2.png) |
@@ -142,7 +142,7 @@ Több átmeneti kiszolgáló is lehet, ha több biztonsági mentést szeretne k�
 
 ## <a name="multiple-azure-ad-tenants"></a>Több Azure AD-bérlő
 Javasoljuk, hogy egyetlen bérlőt az Azure AD-ben egy szervezet számára.
-Mielőtt több Azure AD-bérlőt szeretne használni, tekintse meg a [felügyeleti egységek kezelése az Azure ad-ben](../users-groups-roles/directory-administrative-units.md)című cikket. Olyan gyakori forgatókönyveket tartalmaz, amelyekben egyetlen bérlőt használhat.
+Mielőtt több Azure AD-bérlőt szeretne használni, tekintse meg a [felügyeleti egységek kezelése az Azure ad-ben](../roles/administrative-units.md)című cikket. Olyan gyakori forgatókönyveket tartalmaz, amelyekben egyetlen bérlőt használhat.
 
 ![Topológia több erdőhöz és több bérlőhöz](./media/plan-connect-topologies/multiforestmultidirectory.png)
 
@@ -168,7 +168,7 @@ Ez a topológia a következő korlátozásokkal rendelkezik a más támogatott h
 * A Windows 10-es eszközökhöz csak egy Azure AD-bérlő társítható.
 * Az egyszeri bejelentkezési (SSO) beállítás a jelszó-kivonatolási szinkronizáláshoz és az átmenő hitelesítéshez csak egy Azure AD-Bérlővel használható.
 
-A kölcsönösen kizárható objektumokra vonatkozó követelmények a visszaírási is érvényesek. Egyes visszaírási-funkciók nem támogatottak ehhez a topológiához, mert egyetlen helyszíni konfigurációt feltételeznek. Ezek a lehetőségek a következők:
+A kölcsönösen kizárható objektumokra vonatkozó követelmények a visszaírási is érvényesek. Egyes visszaírási-funkciók nem támogatottak ehhez a topológiához, mert egyetlen helyszíni konfigurációt feltételeznek. Ezek a funkciók a következők:
 
 * A csoport visszaírási alapértelmezett konfigurációval.
 * Eszköz visszaírási.

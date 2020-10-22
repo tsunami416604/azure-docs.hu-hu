@@ -3,12 +3,12 @@ title: Hibrid gépek összekötése az Azure-on nagy méretekben
 description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc-kompatibilis kiszolgálók használatával az egyszerű szolgáltatásnév használatával.
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: d789061c741b8a0da2edabcb56a67898ea28ec90
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f71bbc46ccac533db39176363f206ab033e60316
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108915"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360121"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hibrid gépek összekötése az Azure-on nagy méretekben
 
@@ -16,9 +16,9 @@ Az Azure arc-kompatibilis kiszolgálókat több Windows-vagy Linux-gépen is eng
 
 A csatlakoztatott számítógép-ügynök telepítéséhez és konfigurálásához szükséges telepítési módszerek megkövetelik, hogy a használt automatizált módszer rendszergazdai engedélyekkel rendelkezik a gépeken. Linux rendszeren a rendszergazdai fiók és a Windows rendszeren a helyi Rendszergazdák csoport tagjaként.
 
-Mielőtt elkezdené, tekintse át az [előfeltételeket](agent-overview.md#prerequisites) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek.
+Mielőtt elkezdené, tekintse át az [előfeltételeket](agent-overview.md#prerequisites) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek. A támogatott régiókkal és az egyéb kapcsolódó megfontolásokkal kapcsolatos információkért lásd: [támogatott Azure-régiók](overview.md#supported-regions).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 A folyamat végén sikeresen csatlakoztatta a hibrid gépeket az Azure arc-kompatibilis kiszolgálókhoz.
 
@@ -32,7 +32,7 @@ A [Azure PowerShell](/powershell/azure/install-az-ps) használatával létrehozh
 
 Az egyszerű szolgáltatásnév a PowerShell használatával történő létrehozásához hajtsa végre a következő műveleteket.
 
-1. Futtassa az alábbi parancsot. A parancsmag kimenetét [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) egy változóban kell tárolnia, vagy egy későbbi lépésben nem fogja tudni lekérni a szükséges jelszót.
+1. Futtassa az alábbi parancsot: A parancsmag kimenetét [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) egy változóban kell tárolnia, vagy egy későbbi lépésben nem fogja tudni lekérni a szükséges jelszót.
 
     ```azurepowershell-interactive
     $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
@@ -137,7 +137,7 @@ Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis
 
 ![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.
 

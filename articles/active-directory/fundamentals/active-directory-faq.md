@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de7395f42021144eab3dd400bf9a953d57b5a6ee
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: db8774d6868d55c7d040b1894c4a14d989cb2702
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312588"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371868"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Gyakori kérdések a Azure Active Directory
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -53,7 +53,7 @@ Az Azure AD fizetős szolgáltatásai, például a Enterprise Mobility + Securit
 
 Ha másoknak ugyanazzal az előfizetéssel kell bejelentkezniük, és hozzá kell férniük a szolgáltatásokhoz, a megfelelő [beépített szerepkört](../../role-based-access-control/built-in-roles.md)is hozzárendelheti. További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
-Alapértelmezés szerint az Azure-előfizetésre feliratkozott személy a globális rendszergazdai szerepkört rendeli hozzá a címtárhoz. A globális rendszergazda hozzáfér az összes Azure AD Directory-szolgáltatáshoz. Az Azure AD különböző rendszergazdai szerepkörökkel rendelkezik a címtár és az identitással kapcsolatos funkciók kezeléséhez. Ezek a rendszergazdák hozzáférhetnek a Azure Portal különböző szolgáltatásaihoz. A rendszergazda szerepköre határozza meg, hogy mit tehetnek, például felhasználók létrehozása vagy szerkesztése, rendszergazdai szerepkörök kiosztása mások számára, felhasználói jelszavak alaphelyzetbe állítása, felhasználói licencek kezelése vagy tartományok kezelése.  Az Azure AD címtár-rendszergazdákkal és azok szerepköreivel kapcsolatos további információkért lásd: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md) és [rendszergazdai szerepkörök kiosztása a Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md).
+Alapértelmezés szerint az Azure-előfizetésre feliratkozott személy a globális rendszergazdai szerepkört rendeli hozzá a címtárhoz. A globális rendszergazda hozzáfér az összes Azure AD Directory-szolgáltatáshoz. Az Azure AD különböző rendszergazdai szerepkörökkel rendelkezik a címtár és az identitással kapcsolatos funkciók kezeléséhez. Ezek a rendszergazdák hozzáférhetnek a Azure Portal különböző szolgáltatásaihoz. A rendszergazda szerepköre határozza meg, hogy mit tehetnek, például felhasználók létrehozása vagy szerkesztése, rendszergazdai szerepkörök kiosztása mások számára, felhasználói jelszavak alaphelyzetbe állítása, felhasználói licencek kezelése vagy tartományok kezelése.  Az Azure AD címtár-rendszergazdákkal és azok szerepköreivel kapcsolatos további információkért lásd: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md) és [rendszergazdai szerepkörök kiosztása a Azure Active Directoryban](../roles/permissions-reference.md).
 
 Emellett az Azure AD fizetős szolgáltatásai, például a Enterprise Mobility + Security kiegészítik az olyan webszolgáltatásokat, mint a Microsoft 365 és a Microsoft Azure, átfogó, nagyvállalati szintű felügyeleti és biztonsági megoldásokkal.
 

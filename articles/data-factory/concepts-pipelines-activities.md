@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93d741d22ac03c132954a48731451f891042d7b4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562009"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371171"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 
@@ -56,7 +56,7 @@ Adatátalakítási tevékenység | Számítási környezet
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop Streaming](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Machine Learning-tevékenységek: kötegelt végrehajtás és az erőforrás frissítése](transform-data-using-machine-learning.md) | Azure VM
+[Azure Machine Learning Studio (klasszikus) tevékenységek: kötegelt végrehajtás és erőforrás frissítése](transform-data-using-machine-learning.md) | Azure VM
 [Tárolt eljárás](transform-data-using-stored-procedure.md) | Azure SQL, Azure szinapszis Analytics (korábban SQL Data Warehouse) vagy SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Egyéni tevékenység](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -146,7 +146,7 @@ Címke | Leírás | Kötelező
 name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betű-szám vagy aláhúzás () karakterrel kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Igen</li></ul>
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 típus | A tevékenység típusa. Tekintse meg az [adattovábbítási tevékenységeket](#data-movement-activities), az [Adatátalakítási tevékenységeket](#data-transformation-activities)és a [vezérlési tevékenységek](#control-flow-activities) szakaszt a különböző típusú tevékenységekhez. | Igen
-linkedServiceName | A tevékenység által használt társított szolgáltatás neve.<br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. | HDInsight-tevékenységek, Azure Machine Learning kötegelt pontozási tevékenységek, tárolt eljárási tevékenységek esetében: igen. <br/><br/>Minden egyéb esetében: nem
+linkedServiceName | A tevékenység által használt társított szolgáltatás neve.<br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. | Igen, HDInsight tevékenység, Azure Machine Learning Studio (klasszikus) batch pontozási tevékenység, tárolt eljárás tevékenység. <br/><br/>Minden egyéb esetében: nem
 typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
 szabályzat | Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ez a tulajdonság egy időtúllépési és újrapróbálkozási viselkedést tartalmaz. Ha nincs megadva, a rendszer az alapértelmezett értékeket használja. További információkat a [Tevékenységszabályzat](#activity-policy) szakaszban talál. | Nem
 dependsOn | Ez a tulajdonság a tevékenységfüggőségek, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információért lásd: [Tevékenységfüggőség](#activity-dependency) | Nem

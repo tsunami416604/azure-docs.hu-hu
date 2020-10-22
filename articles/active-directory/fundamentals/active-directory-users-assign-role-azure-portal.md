@@ -13,25 +13,25 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7ab83bc9939d2f0b4b0ff0860ea97a0b07f12f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321242"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370933"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználóknak a Azure Active Directory
 
 Azure Active Directory (Azure AD) esetén, ha az egyik felhasználónak engedélyre van szüksége az Azure AD-erőforrások kezeléséhez, hozzá kell rendelnie azokat egy olyan szerepkörhöz, amely a szükséges engedélyeket biztosítja. Az Azure-erőforrásokat és az Azure AD-erőforrásokat kezelő szerepköröket kezelő szerepkörökkel kapcsolatos információkért lásd: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-További információ az elérhető Azure AD-szerepkörökről: [rendszergazdai szerepkörök Kiosztása Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md). A felhasználók hozzáadásával kapcsolatban lásd: [új felhasználók hozzáadása Azure Active Directoryhoz](add-users-azure-active-directory.md).
+További információ az elérhető Azure AD-szerepkörökről: [rendszergazdai szerepkörök Kiosztása Azure Active Directoryban](../roles/permissions-reference.md). A felhasználók hozzáadásával kapcsolatban lásd: [új felhasználók hozzáadása Azure Active Directoryhoz](add-users-azure-active-directory.md).
 
 ## <a name="assign-roles"></a>Szerepkörök hozzárendelése
 
 Az Azure AD-szerepkörök felhasználóhoz való hozzárendelésének általános módja a **hozzárendelt szerepkörök** lap egy felhasználó számára. Azt is megteheti, hogy a felhasználói jogosultságot a Privileged Identity Management (PIM) használatával egy szerepkörre emelt szintű szintre állítja be. További információ a PIM használatáról: [Privileged Identity Management](../privileged-identity-management/index.yml).
 
 > [!Note]
-> Ha rendelkezik egy prémium szintű Azure AD P2-licenccel, és már használja a PIM-t, az összes szerepkör-felügyeleti feladatot a rendszer a [Privileged Identity Management felhasználói felületén](../users-groups-roles/directory-manage-roles-portal.md)hajtja végre. Ez a funkció jelenleg csak egy szerepkör hozzárendelését hajtja végre egyszerre. Jelenleg nem választhat egyszerre több szerepkört, és nem rendelheti hozzá egyszerre a felhasználóhoz.
+> Ha rendelkezik egy prémium szintű Azure AD P2-licenccel, és már használja a PIM-t, az összes szerepkör-felügyeleti feladatot a rendszer a [Privileged Identity Management felhasználói felületén](../roles/manage-roles-portal.md)hajtja végre. Ez a funkció jelenleg csak egy szerepkör hozzárendelését hajtja végre egyszerre. Jelenleg nem választhat egyszerre több szerepkört, és nem rendelheti hozzá egyszerre a felhasználóhoz.
 >
 > ![A PIM-ben felügyelt Azure AD-szerepkörök olyan felhasználók számára, akik már használják a PIM-t, és prémium P2 licenccel rendelkeznek](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 
@@ -81,4 +81,4 @@ Ha el kell távolítania a szerepkör-hozzárendelést egy felhasználótól, az
 
 - [Vendégfelhasználók hozzáadása másik címtárból](../external-identities/what-is-b2b.md)
 
-A kipróbálható egyéb felhasználói felügyeleti feladatok a [Azure Active Directory felhasználói felügyeleti dokumentációban](../users-groups-roles/index.yml)érhetők el.
+A kipróbálható egyéb felhasználói felügyeleti feladatok a [Azure Active Directory felhasználói felügyeleti dokumentációban](../enterprise-users/index.yml)érhetők el.

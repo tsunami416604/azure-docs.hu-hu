@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c20bbd3ab02cd1eccd00e2d36c14eebf2f63205
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319726"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360307"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
@@ -24,7 +24,7 @@ ms.locfileid: "91319726"
 
 A nyilvános előzetes verzióban elérhető az Azure arc-kompatibilis adatszolgáltatások. Az arc-kompatibilis adatszolgáltatások lehetővé teszik az adatszolgáltatások bárhol történő kezelését.
 
-- Felügyelt SQL-példány
+- SQL Managed Instance
 - PostgreSQL nagy kapacitású
 
 Útmutatás: [Mi az az Azure arc-kompatibilis adatszolgáltatás?](overview.md)
@@ -62,3 +62,8 @@ Erre a kiadásra a következő problémák érvényesek:
 - A postgres nagy kapacitású- _feldolgozó csomópontok_ számának méretezése nem támogatott.
 - Ha az Azure Kubernetes Service Engine (ak motor) szolgáltatást használja az Azure arc-adatkezelővel és az adatbázis-példányokkal Azure Stack hubhoz, az újabb verzióra való frissítés nem támogatott. A Kubernetes-fürt frissítése előtt távolítsa el az Azure arc-adatkezelőt és az összes adatbázis-példányt.
 - Az előzetes verzió nem támogatja a postgres 11-es verziójú motor biztonsági mentését és visszaállítását. A szolgáltatás csak a 12-es verziójú postgres biztonsági mentését és visszaállítását támogatja.
+- Az Azure Kubernetes szolgáltatás (ak), a [több rendelkezésre állási zónára](../../aks/availability-zones.md) kiterjedő fürtök jelenleg nem támogatottak az Azure arc-kompatibilis adatszolgáltatások esetében. Ha el szeretné kerülni ezt a problémát, akkor amikor az AK-fürtöt Azure Portalban hozza létre, ha olyan régiót választ ki, ahol elérhetők zónák, törölje az összes zónát a kijelölés vezérlőelemből. Lásd a következő képet:
+
+   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Törölje az egyes zónák jelölőnégyzeteit a none érték megadásához.":::
+
+  

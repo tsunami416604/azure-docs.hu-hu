@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 7e97dc6ad4c6591a470e19050d79230f9ea7fd43
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 24b41a77985cac13e829d69ff77a4bf14fb40389
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164802"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371375"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 
@@ -33,7 +33,7 @@ Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó
 
 * Egy Azure Active Directory (Azure AD) tartomány.
 
-    Ha nem rendelkezik Azure AD-tartománnyal, hozza létre ezt a tartományt az Azure-előfizetésével. További információ: [Egyéni tartománynevek kezelése az Azure ad-ben](../../active-directory/users-groups-roles/domains-manage.md)
+    Ha nem rendelkezik Azure AD-tartománnyal, hozza létre ezt a tartományt az Azure-előfizetésével. További információ: [Egyéni tartománynevek kezelése az Azure ad-ben](../../active-directory/enterprise-users/domains-manage.md)
 
 * Egy felhasználó az Azure AD-tartományban egy **alkalmazás-rendszergazdai** szerepkörrel. Ezt a tagot fogja használni a Video Indexer-fiók Azure-hoz való csatlakoztatásakor.
 
@@ -184,7 +184,7 @@ A következő Azure Media Services kapcsolódó megfontolások érvényesek:
 
 * Ha meglévő Media Services-fiókhoz csatlakozik, Video Indexer nem módosítja az alapértelmezett adatfolyam-végpont konfigurációját. Ha nincs futó adatfolyam- **végpont**, akkor nem nézhet meg videókat ebből a Media Services fiókból vagy video Indexerból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Programozott módon használhatja a próbaverziós fiókját és/vagy az Azure-hoz kapcsolódó Video Indexer-fiókokat a következő témakörben található utasítások végrehajtásával: API-k [használata](video-indexer-use-apis.md).
 

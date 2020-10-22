@@ -1,14 +1,14 @@
 ---
 title: Az Azure arc-kompatibilis kiszolgálók ügynökének kezelése
 description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti, amelyeket általában az Azure arc-kompatibilis kiszolgálók csatlakoztatott számítógép-ügynök életciklusa során fog elvégezni.
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: af020d0ca586b950b444f2a3149ad207b5696050
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108932"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371426"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
 
@@ -138,7 +138,7 @@ A [yum](https://access.redhat.com/articles/yum-cheat-sheet) parancs műveleteit 
     zypper update
     ```
 
-A [Zypper](https://en.opensuse.org/Portal:Zypper) parancs műveleteit, például a csomagok telepítését és eltávolítását, a rendszer naplózza a `/var/log/zypper.log` naplófájlban. 
+A [Zypper](https://en.opensuse.org/Portal:Zypper) parancs műveleteit, például a csomagok telepítését és eltávolítását, a rendszer naplózza a `/var/log/zypper.log` naplófájlban.
 
 ## <a name="about-the-azcmagent-tool"></a>Tudnivalók a Azcmagent eszközről
 
@@ -148,9 +148,11 @@ A Azcmagent eszköz (Azcmagent.exe) használatával konfigurálható az Azure ar
 
 * **Leválasztás** – a gép leválasztása az Azure-ív használatával
 
-* **Újrakapcsolódás** – leválasztott gép újrakapcsolódása az Azure arc-hoz
+* **Megjelenítheti** az ügynök állapotát és a hozzá tartozó konfigurációs tulajdonságokat (erőforráscsoport-név, előfizetés-azonosító, verzió stb.), amely segíthet az ügynökkel kapcsolatos problémák elhárításában. Adja `-j` meg a paramétert az eredmények JSON formátumban való kimenetéhez.
 
-* **Megjelenítheti** az ügynök állapotát és a hozzá tartozó konfigurációs tulajdonságokat (erőforráscsoport-név, előfizetés-azonosító, verzió stb.), amely segíthet az ügynökkel kapcsolatos problémák elhárításában.
+* **Naplók** – létrehoz egy. zip fájlt a naplófájlokat tartalmazó aktuális könyvtárban, amely segítséget nyújt a hibaelhárításhoz.
+
+* **Verzió** – megjeleníti a csatlakoztatott gép ügynökének verzióját.
 
 * **-h vagy--help** – megjeleníti az elérhető parancssori paramétereket
 
@@ -158,7 +160,7 @@ A Azcmagent eszköz (Azcmagent.exe) használatával konfigurálható az Azure ar
 
 * **-v vagy--verbose** – részletes naplózás engedélyezése
 
-A **csatlakozást**, a **leválasztást**és az **újracsatlakozást** manuálisan is végrehajthatja interaktív módon, vagy automatizálhatja ugyanazzal a szolgáltatással, amelyet több ügynök bevezetéséhez vagy egy Microsoft Identity platform [hozzáférési jogkivonatának](../../active-directory/develop/access-tokens.md)használatával használ. Ha nem használ egyszerű szolgáltatásnevet a gép Azure arc-kompatibilis kiszolgálókhoz való regisztrálásához, tekintse meg az alábbi [cikket](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) egy egyszerű szolgáltatásnév létrehozásához.
+A **kapcsolódást** és a **leválasztást** manuálisan is elvégezheti, ha interaktív módon jelentkezett be, vagy automatizálja ugyanazt a szolgáltatásnevet, amelyet több ügynök bevezetéséhez vagy egy Microsoft Identity platform [hozzáférési jogkivonatához](../../active-directory/develop/access-tokens.md)használ. Ha nem használ egyszerű szolgáltatásnevet a gép Azure arc-kompatibilis kiszolgálókhoz való regisztrálásához, tekintse meg az alábbi [cikket](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) egy egyszerű szolgáltatásnév létrehozásához.
 
 >[!NOTE]
 >A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
@@ -198,28 +200,7 @@ Hozzáférési jogkivonat használatával történő leválasztáshoz futtassa a
 
 Az emelt szintű bejelentkezett hitelesítő adatokkal (interaktív) való leválasztáshoz futtassa a következő parancsot:
 
-`azcmagent disconnect --tenant-id <tenantID>`
-
-### <a name="reconnect"></a>Újracsatlakozás
-
-> [!WARNING]
-> A `reconnect` parancs elavult, és nem használható. A parancs el lesz távolítva egy jövőbeli ügynök-kiadásban, és a meglévő ügynökök nem tudják befejezni az újrakapcsolódási kérelmet. Ehelyett [válassza le](#disconnect) a gépet, majd [csatlakoztassa](#connect) újra.
-
-Ez a paraméter újracsatlakoztatja a már regisztrált vagy csatlakoztatott gépet az Azure arc-kompatibilis kiszolgálókhoz. Erre akkor lehet szükség, ha a gép ki van kapcsolva legalább 45 nappal, hogy a tanúsítványa lejár. Ez a paraméter a megadott hitelesítési beállítások használatával kéri le az új hitelesítő adatokat, amelyek megfelelnek a gépet jelképező Azure Resource Manager erőforrásnak.
-
-Ehhez a parancshoz magasabb jogosultságok szükségesek, mint az Azure-beli [csatlakoztatott gép](agent-overview.md#required-permissions) bevezetési szerepköre.
-
-Az egyszerű szolgáltatásnév használatával történő újrakapcsolódáshoz futtassa a következő parancsot:
-
-`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
-
-Hozzáférési jogkivonat használatával történő újrakapcsolódáshoz futtassa a következő parancsot:
-
-`azcmagent reconnect --access-token <accessToken>`
-
-Ha újra szeretne csatlakozni a rendszergazda jogú bejelentkezett hitelesítő adataihoz (interaktív), futtassa a következő parancsot:
-
-`azcmagent reconnect --tenant-id <tenantID>`
+`azcmagent disconnect`
 
 ## <a name="remove-the-agent"></a>Az ügynök eltávolítása
 
@@ -338,7 +319,7 @@ Ha úgy szeretné konfigurálni az ügynököt, hogy a proxykiszolgáló haszná
 sudo azcmagent_proxy remove
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.
 

@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d24c824782bdc6530b78450fc55a879a511ddc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88516622"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367686"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory egyszerű szolgáltatásnév az Azure SQL-sel
 
@@ -74,12 +74,12 @@ Az Azure AD-objektumok létrehozásához SQL Database és Azure Szinapszisban eg
     > [!NOTE]
     > A kiszolgáló identitása a CLI-parancsokkal is hozzárendelhető. További információ: [az SQL Server Create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) és [az SQL Server Update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update).
 
-2. Adja meg az Azure AD [**Directory-olvasók**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) engedélyeit a kiszolgáló számára létrehozott vagy a kiszolgálóhoz rendelt identitásnak.
+2. Adja meg az Azure AD [**Directory-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) engedélyeit a kiszolgáló számára létrehozott vagy a kiszolgálóhoz rendelt identitásnak.
     - Az engedély megadásához kövesse az SQL felügyelt példányának az alábbi cikkben elérhető leírását: az [Azure ad-rendszergazda kiépítése (SQL felügyelt példány)](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
     - Az engedélyt megadó Azure AD-felhasználónak az Azure AD **globális rendszergazdai** vagy **Kiemelt szerepkörű rendszergazdai** szerepkör részét kell képeznie.
 
 > [!IMPORTANT]
-> Az 1. és a 2. lépést a fenti sorrendben kell végrehajtani. Először hozza létre vagy rendelje hozzá a kiszolgáló identitását, majd adja meg a [**Directory-olvasók**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) engedélyét. Ha kihagyja a fenti lépések egyikét, vagy mindkettő végrehajtási hibát okoz az Azure AD-objektum Azure SQL-beli létrehozásakor egy Azure AD-alkalmazás nevében. Az Azure ad-felhasználó Azure ad-alkalmazás nevében történő létrehozásával kapcsolatos részletes utasításokért lásd [: oktatóanyag: Azure ad-felhasználók létrehozása az Azure ad-alkalmazások használatával](authentication-aad-service-principal-tutorial.md).
+> Az 1. és a 2. lépést a fenti sorrendben kell végrehajtani. Először hozza létre vagy rendelje hozzá a kiszolgáló identitását, majd adja meg a [**Directory-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) engedélyét. Ha kihagyja a fenti lépések egyikét, vagy mindkettő végrehajtási hibát okoz az Azure AD-objektum Azure SQL-beli létrehozásakor egy Azure AD-alkalmazás nevében. Az Azure ad-felhasználó Azure ad-alkalmazás nevében történő létrehozásával kapcsolatos részletes utasításokért lásd [: oktatóanyag: Azure ad-felhasználók létrehozása az Azure ad-alkalmazások használatával](authentication-aad-service-principal-tutorial.md).
 >
 > A **nyilvános előzetes**verzióban a címtár- **olvasók** szerepkört hozzárendelheti egy CSOPORThoz az Azure ad-ben. A csoport tulajdonosai ezután hozzáadhatják a felügyelt identitást a csoport tagjaként, ami megkerülheti a **globális rendszergazda** vagy a **Kiemelt szerepkörök rendszergazdájának** , hogy megadja a **címtár-olvasók** szerepkört. A szolgáltatással kapcsolatos további információkért lásd: az [Azure SQL Azure Active Directory Directory-olvasók szerepköre](authentication-aad-directory-readers-role.md).
 

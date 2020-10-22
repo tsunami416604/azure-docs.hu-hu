@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b7e96934c96dd944e17a1ef1ffb51a6ee89bf4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85318909"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360002"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – minták
 > [!NOTE]
@@ -34,7 +34,7 @@ A [GitHub Azure-DataFactory adattár](https://github.com/azure/azure-datafactory
 | [Több mint alkalmazástartomány dot Net-tevékenység mintája](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Ez a minta lehetővé teszi egy olyan egyéni .NET-tevékenység létrehozását, amely nem korlátozódik az ADF-indító által használt szerelvény-verzióra (például WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsv 6.0. x stb.). |
 | [R-szkript futtatása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Ez a minta tartalmazza a RScript.exe meghívásához használható Data Factory egyéni tevékenységet. Ez a minta csak a saját (nem igény szerinti) HDInsight-fürttel működik, amelyen már telepítve van az R. |
 | [Spark-feladatok meghívása a HDInsight Hadoop-fürtön](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Ez a minta bemutatja, hogyan hívhat meg egy Spark-programot a MapReduce tevékenység használatával. A Spark program csak az egyik Azure Blob-tárolóból másol át egy másikba. |
-| [Twitter-elemzés Azure Machine Learning batch pontozási tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Ez a minta azt mutatja be, hogyan használható a AzureMLBatchScoringActivity egy olyan Azure Machine Learning modell meghívására, amely Twitter-hangulat elemzését, pontozását, előrejelzését stb. |
+| [Twitter-elemzés Azure Machine Learning Studio (klasszikus) batch pontozási tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Ez a minta azt mutatja be, hogyan használható a AzureMLBatchScoringActivity egy olyan Azure Machine Learning modell meghívására, amely Twitter-hangulat elemzését, pontozását, előrejelzését stb. |
 | [Twitter-elemzés egyéni tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ez a minta azt mutatja be, hogyan használható egy egyéni .NET-tevékenység egy olyan Azure Machine Learning modell meghívásához, amely Twitter-hangulat elemzését, pontozását, előrejelzését stb. végzi. |
 | [Paraméteres folyamatok Azure Machine Learninghoz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |A minta egy végpontok közötti C#-kódot biztosít, amellyel N folyamatokat helyezhet üzembe a pontozáshoz és az átképzéshez egy másik régió paraméterrel, ahol a régiók listája egy parameters.txt fájlból származik, amely ebben a példában szerepel. |
 | [A Azure Stream Analytics-feladatokra vonatkozó referenciák frissítése](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Ez a minta azt mutatja be, hogyan használhatók a Azure Data Factory és a Azure Stream Analytics együtt a lekérdezések és a hivatkozási adataik futtatására, valamint az ütemtervek frissítésének beállítására. |

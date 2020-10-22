@@ -3,16 +3,16 @@ title: Azure Storage-minták .NET használatával | Microsoft Docs
 description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A .NET Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépéseket bemutató mintáit.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 760fedd94ef682b183eede1215186de973e9a216
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81010494"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359781"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Azure Storage-minták a V12 .NET ügyféloldali kódtárak használatával
 
@@ -329,11 +329,12 @@ A következő útmutatókból megtudhatja, hogyan telepítheti az Azure Storage 
 * [Első lépések az Azure Table Service-ben a .NET-ben](../../cosmos-db/tutorial-develop-table-dotnet.md)
 * [Első lépések az Azure file Service-ben a .NET-ben](../files/storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a mintákról más nyelveken:
 
 * Java: [Azure Storage-minták Java használatával](storage-samples-java.md)
 * Python: [Azure Storage-minták a Python használatával](storage-samples-python.md)
 * JavaScript/Node.js: [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
+* C++: [Azure Storage-minták c++ használatával](storage-samples-c-plus-plus.md)
 * Minden más nyelv: [Azure Storage-minták](storage-samples.md)

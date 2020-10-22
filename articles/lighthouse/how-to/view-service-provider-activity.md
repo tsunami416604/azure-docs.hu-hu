@@ -3,19 +3,19 @@ title: Szolgáltatói tevékenység megtekintése
 description: Az ügyfelek megtekinthetik a naplózott tevékenységeket a szolgáltatók által az Azure-beli delegált erőforrás-kezelésen keresztül végrehajtott műveletek megtekintéséhez.
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ec9d49de953a0fed3a5afc669e9297148aadf32
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974311"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371086"
 ---
 # <a name="view-service-provider-activity"></a>Szolgáltatói tevékenység megtekintése
 
 Azok az ügyfelek, akik az [Azure világítótoronyhoz](../overview.md) delegált előfizetésekkel rendelkeznek, [megtekinthetik az Azure-tevékenység naplójának](../../azure-monitor/platform/platform-logs-overview.md) adatait az összes végrehajtott művelet megtekintéséhez. Ez teljes körű láthatóságot biztosít az ügyfeleknek a szolgáltatók számára az Azure-beli [delegált erőforrás-kezelésen](../concepts/azure-delegated-resource-management.md)keresztül, valamint az ügyfél saját Azure Active Directory (Azure ad) bérlője által végzett műveletek végrehajtásával.
 
 > [!TIP]
-> Emellett Azure Policy beépített szabályzat-definíciókat is biztosítunk, amelyekkel [korlátozható a delegálás a bérlők kezelésére](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json) , valamint a [hatókörök delegálásának naplózása egy adott bérlőre](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). További információ: [a delegálások naplózása a környezetben](view-manage-service-providers.md#audit-delegations-in-your-environment).
+> Emellett Azure Policy beépített szabályzat-definíciókat is biztosítunk, amelyekkel [korlátozható a delegálás a bérlők kezelésére](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json) , valamint a [hatókörök delegálásának naplózása egy adott bérlőre](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). További információ: [a delegálások naplózása a környezetben](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
 ## <a name="view-activity-log-data"></a>Tevékenységnapló adatainak megtekintése
 

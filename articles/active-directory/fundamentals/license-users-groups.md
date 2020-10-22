@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977014"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359713"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licencek kiosztása vagy eltávolítása a Azure Active Directory portálon
 
@@ -144,10 +144,10 @@ A licenceket eltávolíthatja egy felhasználó Azure AD-felhasználó oldalár�
 
 A licencek hozzárendelése után a következő folyamatokat végezheti el:
 
-- [Licenc-hozzárendelési problémák azonosítása és megoldása](../users-groups-roles/licensing-groups-resolve-problems.md)
+- [Licenc-hozzárendelési problémák azonosítása és megoldása](../enterprise-users/licensing-groups-resolve-problems.md)
 
-- [Licenccel rendelkező felhasználók felvétele licencelési csoportba](../users-groups-roles/licensing-groups-migrate-users.md)
+- [Licenccel rendelkező felhasználók felvétele licencelési csoportba](../enterprise-users/licensing-groups-migrate-users.md)
 
-- [Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
+- [Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory](../enterprise-users/licensing-group-advanced.md)
 
 - [Profil adatainak hozzáadása vagy módosítása](active-directory-users-profile-azure-portal.md)

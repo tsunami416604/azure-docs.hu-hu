@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 836a5a003268a98dd8e63eed9bfdba741abcf4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20e255958cbd90aaddf060e42d7627c1e1ebec88
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397045"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371460"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -30,14 +30,14 @@ A következő erőforrást kell telepítenie:
 * A meglévő AK-fürtök nem telepíthetők át felügyelt identitásokra.
 * A fürt **frissítési** műveletei során a felügyelt identitás átmenetileg nem érhető el.
 * A felügyelt identitást engedélyező fürtök áthelyezési/áttelepíti a bérlők nem támogatottak.
-* Ha a fürt `aad-pod-identity` engedélyezve van, a csomópont által felügyelt identitás (NMI)-hüvelyek módosítja a csomópontok iptables-et az Azure-példány metaadatainak végpontjának lehallgatására. Ez a konfiguráció azt jelenti, hogy a metaadat-végpontra irányuló kéréseket a NMI akkor is elfogja, ha a pod nem használja `aad-pod-identity` . A AzurePodIdentityException CRD konfigurálható úgy, hogy tájékoztassa `aad-pod-identity` , hogy a tőkekövetelmény-ből származó, a CRD-ban definiált címkével rendelkező, a NMI-ben való feldolgozás nélkül proxyra irányuló kérelmeket. A `kubernetes.azure.com/managedby: aks` _Kube-_ rendszernévtérben címkével ellátott rendszerhüvelyeket ki kell ZÁRNI a `aad-pod-identity` AzurePodIdentityException CRD konfigurálásával. További információ: [a HRE-Pod-Identity letiltása egy adott Pod vagy alkalmazáshoz](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+* Ha a fürt `aad-pod-identity` engedélyezve van, a csomópont által felügyelt identitás (NMI)-hüvelyek módosítja a csomópontok iptables-et az Azure-példány metaadatainak végpontjának lehallgatására. Ez a konfiguráció azt jelenti, hogy a metaadat-végpontra irányuló kéréseket a NMI akkor is elfogja, ha a pod nem használja `aad-pod-identity` . A AzurePodIdentityException CRD konfigurálható úgy, hogy tájékoztassa `aad-pod-identity` , hogy a tőkekövetelmény-ből származó, a CRD-ban definiált címkével rendelkező, a NMI-ben való feldolgozás nélkül proxyra irányuló kérelmeket. A `kubernetes.azure.com/managedby: aks` _Kube-_ rendszernévtérben címkével ellátott rendszerhüvelyeket ki kell ZÁRNI a `aad-pod-identity` AzurePodIdentityException CRD konfigurálásával. További információ: [a HRE-Pod-Identity letiltása egy adott Pod vagy alkalmazáshoz](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
   Kivétel konfigurálásához telepítse a [MIC-Exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
 
 ## <a name="summary-of-managed-identities"></a>Felügyelt identitások összefoglalása
 
 Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
 
-| Identitás                       | Name (Név)    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
+| Identitás                       | Név    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
 |----------------------------|-----------|----------|
 | Vezérlősík | nem látható | Az AK által használt felügyelt hálózati erőforrások, beleértve a bejövő terheléselosztó és az AK által felügyelt nyilvános IP-címek | A csomópont-erőforráscsoport közreműködői szerepköre | Előnézet
 | Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | NA (kubernetes v 1.15 +) | Egyelőre nem támogatott

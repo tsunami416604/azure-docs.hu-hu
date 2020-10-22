@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: b66ee8117e5326a8ed8c1a1ad973fb13e942e0c7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 652566efda4d4f274dc5700d35bcf45c1ebfb9e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761973"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92347233"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el egy hívást az Azure kommunikációs szolgáltatásokkal a JavaScript-hez készült ügyféloldali kódtár meghívásával.
 
@@ -45,6 +45,14 @@ A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatáso
 ```console
 npm install @azure/communication-common --save
 npm install @azure/communication-calling --save
+```
+
+Ehhez a rövid útmutatóhoz a következő webpack-verziók ajánlottak:
+
+```console
+"webpack": "^4.42.0",
+"webpack-cli": "^3.3.11",
+"webpack-dev-server": "^3.10.3"
 ```
 
 A (z `--save` ) lehetőség a könyvtárat listázza a **package.js** fájlon belüli függőségként.
@@ -97,11 +105,10 @@ import { CallClient, CallAgent } from "@azure/communication-calling";
 import { AzureCommunicationUserCredential } from '@azure/communication-common';
 
 let call;
+let callAgent;
 const calleeInput = document.getElementById("callee-id-input");
 const callButton = document.getElementById("call-button");
 const hangUpButton = document.getElementById("hang-up-button");
-
-// quickstart code goes here
 ```
 
 ## <a name="object-model"></a>Objektummodell
@@ -120,12 +127,13 @@ Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások �
 Az `<USER_ACCESS_TOKEN>` erőforráshoz érvényes felhasználói hozzáférési tokent kell cserélnie. Ha még nem áll rendelkezésre jogkivonat, tekintse meg a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) dokumentációját. A használatával `CallClient` inicializáljon egy `CallAgent` példányt egy példánnyal, `CommunicationUserCredential` amely lehetővé teszi a hívások kezdeményezését és fogadását. Adja hozzá a következő kódot a **client.jshoz **:
 
 ```javascript
-const callClient = new CallClient();
-const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
-let callAgent;
-
-callAgent = await callClient.createCallAgent(tokenCredential);
-callButton.disabled = false;
+async function init() {
+    const callClient = new CallClient();
+    const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
+    callAgent = await callClient.createCallAgent(tokenCredential);
+    callButton.disabled = false;
+}
+init();
 ```
 
 ## <a name="start-a-call"></a>Hívás indítása

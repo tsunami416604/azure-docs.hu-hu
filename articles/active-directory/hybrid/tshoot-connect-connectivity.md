@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efca190f3dad1c0a323aa56ffd68b8b2597b5862
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317512"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370219"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Az Azure AD-kapcsolat hibáinak megoldása
 Ez a cikk azt ismerteti, hogyan működik a Azure AD Connect és az Azure AD közötti kapcsolat, és hogyan lehet elhárítani a kapcsolódási problémákat. Ezeket a problémákat legvalószínűbben a proxykiszolgáló fogja látni a környezetben.
@@ -186,7 +186,7 @@ A hitelesítés sikeres volt, de az Azure AD PowerShell hitelesítési problém�
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Azure AD globális rendszergazdai szerepkör szükséges
-A felhasználó hitelesítése sikerült. A felhasználóhoz azonban nincs hozzárendelve globális rendszergazdai szerepkör. Így [globális rendszergazdai szerepkört rendelhet](../users-groups-roles/directory-assign-admin-roles.md) a felhasználóhoz.
+A felhasználó hitelesítése sikerült. A felhasználóhoz azonban nincs hozzárendelve globális rendszergazdai szerepkör. Így [globális rendszergazdai szerepkört rendelhet](../roles/permissions-reference.md) a felhasználóhoz.
 
 <div id="privileged-identity-management">
 <!--

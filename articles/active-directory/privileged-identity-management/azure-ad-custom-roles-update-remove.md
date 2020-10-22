@@ -16,18 +16,18 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9e52dc28d2834b479ac0580ff990119a56772a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a35442dd8af1cd4acf22de453c8d10460e1e39f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87422028"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371528"
 ---
 # <a name="update-or-remove-an-assigned-azure-ad-custom-role-in-privileged-identity-management"></a>Hozzárendelt Azure AD egyéni szerepkör frissítése vagy eltávolítása Privileged Identity Management
 
 Ez a cikk azt ismerteti, hogyan lehet a Privileged Identity Management (PIM) használatával frissíteni vagy eltávolítani az alkalmazás-felügyelethez létrehozott egyéni szerepköröket az Azure Active Directory (Azure AD) felügyeleti felületén. 
 
-- További információ az Azure AD-ben az alkalmazások felügyeletének delegálására szolgáló egyéni szerepkörök létrehozásáról: [Azure Active Directory (előzetes verzió) – egyéni rendszergazdai szerepkörök](../users-groups-roles/roles-custom-overview.md). 
+- További információ az Azure AD-ben az alkalmazások felügyeletének delegálására szolgáló egyéni szerepkörök létrehozásáról: [Azure Active Directory (előzetes verzió) – egyéni rendszergazdai szerepkörök](../roles/custom-overview.md). 
 - Ha még nem használta Privileged Identity Management, további információt a [Privileged Identity Management használatának első](pim-getting-started.md)lépéseiben olvashat.
 
 > [!NOTE]
@@ -54,7 +54,7 @@ Az alábbi lépéseket követve frissítheti vagy eltávolíthatja a meglévő e
 
     ![Válassza az Eltávolítás vagy a frissítés lehetőséget a jogosult szerepkör-hozzárendelésben](./media/azure-ad-custom-roles-update-remove/remove-update.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni Azure AD-szerepkör aktiválása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aa8d08dde3cf2dbfb5cb1e819ba9941aea4e387
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5be746b73cef37826be36b13c6f491b8ef6ad809
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203704"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359016"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -58,12 +58,13 @@ Az adatsík API-k használata:
    - megtalálhatja az SDK-forrást, beleértve a példákat tartalmazó mappát is a GitHubban: az [Azure IoT Digital Twins ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - megtekintheti az [SDK-referenciák dokumentációját](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview).
    - a részletes információkat és használati példákat a jelen cikk [.net (C#) SDK (adatsíkja)](#net-c-sdk-data-plane) című szakaszában tekintheti meg.
-* Használhatja a **JavaScript** SDK-t. A JavaScript SDK használata...
-   - a csomagot a NPM-ből tekintheti meg és telepítheti: [Azure Azure digitális Twins ügyféloldali kódtár a javascripthez](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
-   - megtekintheti az [SDK-referenciák dokumentációját](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest).
 * Használhatja a **Java** SDK-t. A Java SDK használata...
    - a csomagot a Mavenből tekintheti meg és telepítheti: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - Az SDK-forrást a GitHubon találja: az [Azure IoT Digital Twins ügyféloldali kódtára a Javához](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
    - megtekintheti az [SDK-referenciák dokumentációját](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview)
+* Használhatja a **JavaScript** SDK-t. A JavaScript SDK használata...
+   - a csomagot a NPM-ből tekintheti meg és telepítheti: [Azure Azure digitális Twins ügyféloldali kódtár a javascripthez](https://www.npmjs.com/package/@azure/digital-twins).
+   - megtekintheti az [SDK-referenciák dokumentációját](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest).
 * Az autorest használatával egy másik nyelvhez is létrehozhat SDK-t. Kövesse az útmutató [*: egyéni SDK-k létrehozása az Azure digitális ikrekhez az autorest használatával*](how-to-create-custom-sdks.md)című témakör utasításait.
 
 A Date Plant API-kat a [CLI](how-to-use-cli.md)használatával is használhatja az Azure digitális ikrekkel.

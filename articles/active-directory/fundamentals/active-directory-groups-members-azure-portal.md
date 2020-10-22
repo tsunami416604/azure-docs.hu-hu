@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb7b7da4ed5268e66260e48d6367bbe02f0845a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797576"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371834"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Csoporttagok hozzáadása vagy eltávolítása Azure Active Directory használatával
 A Azure Active Directory használatával továbbra is hozzáadhat és eltávolíthat csoporttagokat.
@@ -61,6 +61,6 @@ A Azure Active Directory használatával továbbra is hozzáadhat és eltávolí
 
 - [Az erőforrásokhoz való hozzáférés kezelése csoportokkal](active-directory-manage-groups.md)
 
-- [A csoportban lévő felhasználók dinamikus szabályainak kezelése](../users-groups-roles/groups-create-rule.md)
+- [A csoportban lévő felhasználók dinamikus szabályainak kezelése](../enterprise-users/groups-create-rule.md)
 
 - [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](active-directory-how-subscriptions-associated-directory.md)

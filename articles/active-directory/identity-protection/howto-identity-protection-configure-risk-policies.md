@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49f3e082969b7483601088cd976d8cc30d500017
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337449"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367465"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Útmutató: kockázatkezelési szabályzatok konfigurálása és engedélyezése
 
@@ -45,7 +45,7 @@ A **magas** küszöbérték kiválasztása csökkenti a szabályzatok indítás�
 
 ## <a name="exclusions"></a>Kizárások
 
-Az összes házirend lehetővé teszi a felhasználók kizárását, például a [vészhelyzeti vagy a break-Glass rendszergazdai fiókjait](../users-groups-roles/directory-emergency-access.md). A szervezetek meghatározhatják, hogy a fiókok használatának módja alapján ki kell zárniuk a más fiókokat a meghatározott házirendekből. Az összes kizárást rendszeresen felül kell vizsgálni, hogy ellenőrizze, hogy továbbra is alkalmazhatók-e.
+Az összes házirend lehetővé teszi a felhasználók kizárását, például a [vészhelyzeti vagy a break-Glass rendszergazdai fiókjait](../roles/security-emergency-access.md). A szervezetek meghatározhatják, hogy a fiókok használatának módja alapján ki kell zárniuk a más fiókokat a meghatározott házirendekből. Az összes kizárást rendszeresen felül kell vizsgálni, hogy ellenőrizze, hogy továbbra is alkalmazhatók-e.
 
 A konfigurált megbízható [hálózati telephelyeket](../conditional-access/location-condition.md) az Identity Protection bizonyos kockázati észlelések esetén a téves pozitív érték csökkentése érdekében használja fel.
 
@@ -74,7 +74,7 @@ A felhasználói kockázat és a bejelentkezési kockázati házirendek engedél
    1. Szabályzat érvénybe **léptetése**  -  **Bekapcsolva**
    1. **Mentés**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Multi-Factor Authentication regisztrációs szabályzatának engedélyezése](howto-identity-protection-configure-mfa-policy.md)
 

@@ -2,13 +2,13 @@
 title: Törlés Teljes mód esetén
 description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes módú törlést Azure Resource Manager-sablonokban.
 ms.topic: conceptual
-ms.date: 10/06/2020
-ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: b1f7623d6eee1ff629412a4cc0d76e59e6c9e847
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766709"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370124"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -24,7 +24,6 @@ Az erőforrásokat az erőforrás-szolgáltatói névtér sorolja fel. Az erőfo
 
 > [!NOTE]
 > A sablonok teljes módban való üzembe helyezése előtt mindig használja a [mi-if műveletet](template-deploy-what-if.md) . Mi a teendő, hogy mely erőforrások lesznek létrehozva, törölve vagy módosítva. A mi – if használatával elkerülhető az erőforrások akaratlan törlése.
-
 Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="op_single_selector"]
 > - [Microsoft. HRE](#microsoftaad)
@@ -47,6 +46,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. AzureData](#microsoftazuredata)
 > - [Microsoft. AzureStack](#microsoftazurestack)
 > - [Microsoft. AzureStackHCI](#microsoftazurestackhci)
+> - [Microsoft. BareMetalInfrastructure](#microsoftbaremetalinfrastructure)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft. számlázás](#microsoftbilling)
 > - [Microsoft. BingMaps](#microsoftbingmaps)
@@ -176,6 +176,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft. Services](#microsoftservices)
 > - [Microsoft. SignalRService](#microsoftsignalrservice)
+> - [Microsoft. szingularitás](#microsoftsingularity)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft. Solutions](#microsoftsolutions)
 > - [Microsoft. SQL](#microsoftsql)
@@ -364,6 +365,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | privateClouds | Igen |
+> | privateClouds/bővítmények | Nem |
 > | privateClouds/engedélyek | Nem |
 > | privateClouds/fürtök | Nem |
 > | privateClouds / globalReachConnections | Nem |
@@ -426,12 +428,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | fürtök | Igen |
 
+## <a name="microsoftbaremetalinfrastructure"></a>Microsoft. BareMetalInfrastructure
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Törlés Teljes mód esetén |
+> | ------------- | ----------- |
+> | bareMetalInstances | Igen |
+
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | batchAccounts | Igen |
+> | batchAccounts/tanúsítványok | Nem |
+> | batchAccounts/készletek | Nem |
 
 ## <a name="microsoftbilling"></a>Microsoft. számlázás
 
@@ -973,7 +984,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | munkaterületek | Igen |
 > | munkaterületek/dbWorkspaces | Nem |
-> | munkaterületek/storageEncryption | Nem |
 > | munkaterületek/virtualNetworkPeerings | Nem |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
@@ -1129,6 +1139,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | applicationgroups/asztali számítógépek | Nem |
 > | applicationgroups / startmenuitems | Nem |
 > | hostpools | Igen |
+> | hostpools / msixpackages | Nem |
 > | hostpools / sessionhosts | Nem |
 > | hostpools / sessionhosts / usersessions | Nem |
 > | hostpools / usersessions | Nem |
@@ -1381,12 +1392,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | eszközök | Igen |
+> | networkFunctions | Igen |
+> | networkFunctionVendors | Nem |
 > | registeredSubscriptions | Nem |
 > | szállítók | Nem |
-> | szállítók/vendorskus | Nem |
-> | szállítók/vendorskus/previewSubscriptions | Nem |
-> | virtualnetworkfunctions | Igen |
-> | virtualnetworkfunctionvendors | Nem |
+> | szállítók/vendorSkus | Nem |
+> | szállítók/vendorSkus/previewSubscriptions | Nem |
+> | virtualNetworkFunctions | Igen |
+> | virtualNetworkFunctionVendors | Nem |
 
 ## <a name="microsofthydra"></a>Microsoft. Hydra
 
@@ -1507,9 +1520,20 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | munkaterületek | Igen |
+> | munkaterületek/batchEndpoints | Igen |
+> | munkaterületek/batchEndpoints/központi telepítések | Igen |
+> | munkaterületek/kódok | Nem |
+> | munkaterületek/kódok/verziók | Nem |
 > | munkaterületek/számítások | Nem |
+> | munkaterületek/adattárolók | Nem |
 > | munkaterületek/eventGridFilters | Nem |
+> | munkaterületek/feladatok | Nem |
+> | munkaterületek/labelingJobs | Nem |
 > | munkaterületek/linkedServices | Nem |
+> | munkaterületek/modellek | Nem |
+> | munkaterületek/modellek/verziók | Nem |
+> | munkaterületek/onlineEndpoints | Igen |
+> | munkaterületek/onlineEndpoints/központi telepítések | Igen |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
 
@@ -2157,6 +2181,17 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | SignalR | Igen |
 > | Jelző/eventGridFilters | Nem |
 
+## <a name="microsoftsingularity"></a>Microsoft. szingularitás
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Törlés Teljes mód esetén |
+> | ------------- | ----------- |
+> | fiókok | Igen |
+> | fiókok/accountQuotaPolicies | Nem |
+> | fiókok/groupPolicies | Nem |
+> | fiókok/feladatok | Nem |
+> | fiókok/storageContainers | Nem |
+
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
 > [!div class="mx-tableFixed"]
@@ -2289,6 +2324,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | fürtök | Igen |
+> | fürtök/privateEndpoints | Nem |
 > | streamingjobs | Igen |
 
 ## <a name="microsoftsubscription"></a>Microsoft. előfizetés
@@ -2423,6 +2459,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Runtimes | Nem |
 > | Kiszolgálófarmok | Igen |
 > | Kiszolgálófarmok/eventGridFilters | Nem |
+> | Kiszolgálófarmok/firstPartyApps | Nem |
+> | Kiszolgálófarmok/firstPartyApps/keyVaultSettings | Nem |
 > | helyek | Igen |
 > | helyek/konfiguráció  | Nem |
 > | helyek/eventGridFilters | Nem |
