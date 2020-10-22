@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318409"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371902"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory-szolgáltatások telepítési útmutatója
 
@@ -33,7 +33,7 @@ A jelen útmutatóban foglalt javaslatok közül sokat ingyenes Azure AD vagy eg
 A licenceléssel kapcsolatos további információkért tekintse meg a következő lapokat:
 
 * [Az Azure AD licencelése](https://azure.microsoft.com/pricing/details/active-directory/)
-* [Microsoft 365 Nagyvállalati verzió](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
+* [Microsoft 365 Vállalati](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Az Azure AD B2B licencelési útmutatója](../external-identities/licensing-guidance.md)
 
@@ -43,8 +43,8 @@ Ebben a fázisban a rendszergazdák lehetővé teszik az alapkonfiguráció bizt
 
 | Feladat | Részletek | Szükséges licenc |
 | ---- | ------ | ---------------- |
-| [Egynél több globális rendszergazda kijelölése](../users-groups-roles/directory-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. | Azure AD Free |
-| [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../users-groups-roles/directory-assign-admin-roles.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. | Azure AD Free |
+| [Egynél több globális rendszergazda kijelölése](../roles/security-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. | Azure AD Free |
+| [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../roles/permissions-reference.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. | Azure AD Free |
 | [Privileged Identity Management engedélyezése a rendszergazdai szerepkör használatának nyomon követéséhez](../privileged-identity-management/pim-getting-started.md) | A rendszergazdai szerepkör használatának követésének megkezdéséhez Privileged Identity Management engedélyezése. | Prémium szintű Azure AD P2 |
 | [Önkiszolgáló jelszó-visszaállítás bevezetése](../authentication/howto-sspr-deployment.md) | Csökkentse az ügyfélszolgálati hívásokat a jelszó-visszaállításhoz, mivel lehetővé teszi a munkatársak számára, hogy a rendszergazdáknak szóló szabályzatok segítségével visszaállítsák saját jelszavukat. | |
 | [Szervezethez tartozó egyéni tiltott jelszavak listájának létrehozása](../authentication/tutorial-configure-custom-password-protection.md) | Annak megakadályozása, hogy a felhasználók olyan jelszavakat hozzanak létre, amelyek a szervezet vagy a körzet általános szavait vagy kifejezéseit tartalmazzák. | |
@@ -69,7 +69,7 @@ Ezután hozzáadjuk az 1. fázisban meghatározott alapítványhoz a felhasznál
 | [Jelszó-kivonatolási szinkronizálás implementálása](../hybrid/how-to-connect-password-hash-synchronization.md) | Jelszó-kivonatok szinkronizálása a jelszó-változtatások replikálásához, a jelszavak hibás észleléséhez és szervizeléséhez, valamint a kiszivárgott hitelesítő adatok jelentéséhez. | Azure AD Free |
 | [Jelszó-visszaírási implementálása](../authentication/tutorial-enable-sspr-writeback.md) | A Felhőbeli jelszavak módosításának engedélyezése a helyi Windows Server Active Directory környezetbe való visszaíráshoz. | Prémium szintű Azure AD P1 |
 | [Azure AD Connect Health implementálása](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Engedélyezze a Azure AD Connect-kiszolgálók, a AD FS-kiszolgálók és a tartományvezérlők kulcsfontosságú állapot-statisztikáinak figyelését. | Prémium szintű Azure AD P1 |
-| [Licencek kiosztása a felhasználóknak csoporttagság szerint Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) | Időt és fáradságot takaríthat meg olyan licencelési csoportok létrehozásával, amelyek felhasználónként engedélyezik vagy letiltják a szolgáltatások használatát a csoportok beállítása helyett. | |
+| [Licencek kiosztása a felhasználóknak csoporttagság szerint Azure Active Directory](../enterprise-users/licensing-groups-assign.md) | Időt és fáradságot takaríthat meg olyan licencelési csoportok létrehozásával, amelyek felhasználónként engedélyezik vagy letiltják a szolgáltatások használatát a csoportok beállítása helyett. | |
 | [Csomag létrehozása a vendég felhasználói hozzáféréshez](../external-identities/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. | [Az Azure AD B2B licencelési útmutatója](../external-identities/licensing-guidance.md) |
 | [Az eszközkezelés stratégiájának kiválasztása](../devices/overview.md) | Döntse el, hogy a szervezet hogyan teszi lehetővé az eszközök használatát. A vs-csatlakozás regisztrálása, a saját eszköz és a vállalat által biztosított eszközök használata. | |
 | [A vállalati Windows Hello üzembe helyezése a munkahelyen](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | A jelszóval nem rendelkező hitelesítés előkészítése a Windows Hello használatával | |
@@ -93,7 +93,7 @@ A 4. fázis azt látja, hogy a rendszergazdák a legkevesebb jogosultsági alape
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management használatának kikényszerítása](../privileged-identity-management/pim-security-wizard.md) | Távolítsa el a felügyeleti szerepköröket a normál napi és a napi felhasználói fiókok között. A rendszergazda felhasználók jogosultak arra, hogy a szerepkört a multi-Factor Authentication-ellenőrzések sikeres végrehajtása, az üzleti indoklás megadásával vagy a kijelölt jóváhagyók jóváhagyásának kérelmezésével használják. | Prémium szintű Azure AD P2 |
 | [Azure AD-címtárbeli szerepkörök hozzáférési felülvizsgálatának befejezése a PIM-ben](../privileged-identity-management/pim-how-to-start-security-review.md) | A biztonsági és vezetői csapatokkal együttműködve hozhat létre hozzáférési felülvizsgálati szabályzatot a szervezeti szabályzatok alapján történő rendszergazdai hozzáférés áttekintéséhez. | Prémium szintű Azure AD P2 |
-| [Dinamikus csoporttagság-házirendek implementálása](../users-groups-roles/groups-dynamic-membership.md) | A dinamikus csoportok használatával a felhasználók a HR (vagy az igazság forrása) alapján automatikusan hozzárendelhetők a csoportokhoz, például részleg, cím, régió és egyéb attribútumok. |  |
+| [Dinamikus csoporttagság-házirendek implementálása](../enterprise-users/groups-dynamic-membership.md) | A dinamikus csoportok használatával a felhasználók a HR (vagy az igazság forrása) alapján automatikusan hozzárendelhetők a csoportokhoz, például részleg, cím, régió és egyéb attribútumok. |  |
 | [Csoportos alkalmazás-kiépítés implementálása](../manage-apps/what-is-access-management.md) | A csoport alapú hozzáférés-kezelés kiépítésével automatikusan kiépítheti a felhasználókat az SaaS-alkalmazásokhoz. |  |
 | [A felhasználók üzembe helyezésének és megszüntetésének automatizálása](../app-provisioning/user-provisioning.md) | A jogosulatlan hozzáférés megakadályozása érdekében távolítsa el az alkalmazotti fiók életciklusának manuális lépéseit. Az igazság (HR-rendszer) identitásait szinkronizálhatja az Azure AD-vel. |  |
 

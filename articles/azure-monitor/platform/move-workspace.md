@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d59fb0dc39103119edbc4096b506c588c38cece4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282872"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372276"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 
@@ -40,11 +40,20 @@ Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolás�
 
 >[!IMPORTANT]
 > **Azure Sentinel-ügyfelek**
-> - A munkaterületre való üzembe helyezést követően az Azure Sentinel **jelenleg nem támogatja** a munkaterület áthelyezését más erőforráscsoportok vagy előfizetések számára. 
-> - Ha már áthelyezte a munkaterületet, tiltsa le az összes aktív szabályt az **elemzés** alatt, majd engedélyezze újra az öt perc után. Ennek a legtöbb esetben a lehető leghatékonyabbnak kell lennie, de a rendszer nem támogatja, és a saját felelősségére kerül.
+> - Jelenleg az Azure Sentinel egy munkaterületre való telepítése után a munkaterület áthelyezése másik erőforráscsoporthoz vagy előfizetésre nem támogatott. 
+> - Ha már áthelyezte a munkaterületet, tiltsa le az összes aktív szabályt az **elemzés** alatt, majd engedélyezze újra az öt perc után. Ennek a legtöbb esetben a hatékony megoldásnak kell lennie, de a rendszer nem támogatja, és a saját felelősségére nem kerül sor.
 > 
-> **Riasztások**
-> - Az áthelyezés után az összes riasztást újra létre kell hozni, mivel az engedélyek a munkaterület Azure-erőforrás-AZONOSÍTÓján alapulnak, és a munkaterület áthelyezésével változnak. 
+> **Riasztások újbóli létrehozása**
+> - Az összes riasztást újra létre kell hozni egy áthelyezés után, mert az engedélyek a munkaterület Azure-erőforrás-azonosítója alapján változnak, amely a munkaterület áthelyezésekor változik.
+>
+> **Erőforrás-elérési utak frissítése**
+> - A munkaterület áthelyezése után a munkaterületre mutató összes Azure-vagy külső erőforrást át kell tekinteni és frissíteni kell, hogy az új erőforrás céljának elérési útjára mutasson.
+> 
+>   *Példák:*
+>   - [Riasztási szabályok Azure Monitor](alerts-resource-move.md)
+>   - Harmadik féltől származó alkalmazások
+>   - Egyéni parancsfájlok
+>
 
 ### <a name="delete-solutions-in-azure-portal"></a>Megoldások törlése Azure Portal
 A következő eljárással távolíthatja el a megoldásokat a Azure Portal használatával:

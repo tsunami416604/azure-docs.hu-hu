@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62f78ed9063d4736e541dda2b1763ffded8eab5d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88565927"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371477"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps
 
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan állíthat be mindkét fajta felügyelt identitást 
 
 * Azure-fiók és -előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). A felügyelt identitásnak és a cél Azure-erőforrásnak is, amelyhez hozzáférésre van szüksége, ugyanazt az Azure-előfizetést kell használnia.
 
-* Ahhoz, hogy felügyelt identitást lehessen biztosítani egy Azure-erőforráshoz, hozzá kell adnia egy szerepkört a cél erőforráshoz az identitáshoz. Szerepkörök hozzáadásához olyan [Azure ad-rendszergazdai engedélyekre](../active-directory/users-groups-roles/directory-assign-admin-roles.md) van szükség, amelyek szerepköröket rendelhetnek a megfelelő Azure ad-bérlőben található identitásokhoz.
+* Ahhoz, hogy felügyelt identitást lehessen biztosítani egy Azure-erőforráshoz, hozzá kell adnia egy szerepkört a cél erőforráshoz az identitáshoz. Szerepkörök hozzáadásához olyan [Azure ad-rendszergazdai engedélyekre](../active-directory/roles/permissions-reference.md) van szükség, amelyek szerepköröket rendelhetnek a megfelelő Azure ad-bérlőben található identitásokhoz.
 
 * Az elérni kívánt cél Azure-erőforrás. Ezen az erőforráson hozzá fog adni egy szerepkört a felügyelt identitáshoz, amely segít a logikai alkalmazásnak a cél erőforráshoz való hozzáférés hitelesítésében.
 
@@ -301,7 +301,7 @@ Ahhoz, hogy használni tudja a logikai alkalmazás felügyelt identitását a hi
    ![Válassza a "Hozzáadás" > "szerepkör-hozzárendelés hozzáadása" lehetőséget.](./media/create-managed-service-identity/add-role-to-resource.png)
 
    > [!TIP]
-   > Ha a **szerepkör-hozzárendelés hozzáadása** lehetőség le van tiltva, akkor valószínűleg nincs engedélye. További információ azokról az engedélyekről, amelyek lehetővé teszik az erőforrások szerepköreinek kezelését: [Azure Active Directory rendszergazdai szerepkör engedélyei](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+   > Ha a **szerepkör-hozzárendelés hozzáadása** lehetőség le van tiltva, akkor valószínűleg nincs engedélye. További információ azokról az engedélyekről, amelyek lehetővé teszik az erőforrások szerepköreinek kezelését: [Azure Active Directory rendszergazdai szerepkör engedélyei](../active-directory/roles/permissions-reference.md).
 
 1. A **szerepkör-hozzárendelés hozzáadása**területen válassza ki azt a **szerepkört** , amely megadja a személyazonosságához szükséges hozzáférést a cél erőforráshoz.
 
@@ -360,7 +360,7 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Módszer** | Igen | A futtatni kívánt művelet által használt HTTP-metódus |
+   | **Metódus** | Igen | A futtatni kívánt művelet által használt HTTP-metódus |
    | **URI** | Igen | A cél Azure-erőforrás vagy-entitás eléréséhez használt végpont URL-címe. Az URI-szintaxis általában magában foglalja az Azure-erőforrás vagy-szolgáltatás [erőforrás-azonosítóját](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) . |
    | **Fejlécek** | Nem | Minden szükséges vagy a kimenő kérelembe belefoglalni kívánt fejléc-érték, például a tartalom típusa |
    | **Lekérdezések** | Nem | A kérelembe belefoglalni kívánt lekérdezési paramétereket, például egy adott művelet paraméterét vagy a futtatni kívánt művelet API-verzióját |
@@ -376,7 +376,7 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
 
    | Tulajdonság | Kötelező | Példaérték | Leírás |
    |----------|----------|---------------|-------------|
-   | **Módszer** | Igen | `PUT`| A pillanatkép-blob művelet által használt HTTP-metódus |
+   | **Metódus** | Igen | `PUT`| A pillanatkép-blob művelet által használt HTTP-metódus |
    | **URI** | Igen | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Egy Azure-Blob Storage fájl erőforrás-azonosítója az Azure globális (nyilvános) környezetében, amely ezt a szintaxist használja |
    | **Fejlécek** | Igen, az Azure Storage-hoz | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Az `x-ms-blob-type` `x-ms-version` Azure Storage-műveletekhez szükséges és a fejléc értékei. <p><p>**Fontos**: a kimenő http-triggerben és az Azure Storage-beli műveleti kérelmekben a fejléchez a `x-ms-version` futtatni kívánt művelethez szükséges tulajdonság és API-verzió szükséges. <p>További információt az alábbi témakörökben talál: <p><p>- [Kérések fejlécei – pillanatkép-blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Verziószámozás az Azure Storage-szolgáltatásokhoz](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **Lekérdezések** | Igen, ehhez a művelethez | `comp` = `snapshot` | A lekérdezési paraméter neve és értéke a pillanatkép-blob művelethez. |
@@ -462,7 +462,7 @@ A Azure Portal először távolítsa el az identitás hozzáférését a [célk�
 1. Válassza ki az eltávolítani kívánt felügyelt identitásokat a szerepkörök listából. Az eszköztáron válassza az **Eltávolítás**lehetőséget.
 
    > [!TIP]
-   > Ha az **Eltávolítás** lehetőség le van tiltva, valószínűleg nincs engedélye. További információ azokról az engedélyekről, amelyek lehetővé teszik az erőforrások szerepköreinek kezelését: [Azure Active Directory rendszergazdai szerepkör engedélyei](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+   > Ha az **Eltávolítás** lehetőség le van tiltva, valószínűleg nincs engedélye. További információ azokról az engedélyekről, amelyek lehetővé teszik az erőforrások szerepköreinek kezelését: [Azure Active Directory rendszergazdai szerepkör engedélyei](../active-directory/roles/permissions-reference.md).
 
 A felügyelt identitás már el lett távolítva, és már nem fér hozzá a célként megadott erőforráshoz.
 

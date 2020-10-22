@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79fa01e53b53f3066e55736c105d6489ccbd96e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b6b262765a361befeadd9b5a42d37ca5e66497
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019844"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372055"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos alkalmazás-beállítások biztonságos mentése webalkalmazásokhoz
 
@@ -56,14 +56,19 @@ Ha már létrehozta a webalkalmazást, adja meg a webalkalmazáshoz való hozzá
     > A Visual Studio 2017 V 15,6 előtt javasoljuk, hogy telepítse a Visual studióhoz készült Azure Services-alapú hitelesítési bővítményt. Ez azonban már elavult, mivel a funkció integrálva van a Visual Studióban. Ezért ha a Visual Studio 2017 egy régebbi verzióját használja, javasoljuk, hogy frissítsen legalább VS 2017 15,6-ra vagy akár úgy, hogy ezt a funkciót natív módon használhassa, és a Key-vaultot a Visual Studio bejelentkezési identitásának használatával is elérheti.
     >
 
-4. Adja hozzá a következő NuGet-csomagokat a projekthez:
+4. Jelentkezzen be az Azure-ba a parancssori felület használatával:
+
+    ```azurecli
+    az login
+    ```
+
+5. Adja hozzá a következő NuGet-csomagokat a projekthez:
 
     ```
-    Microsoft.Azure.KeyVault
-    Microsoft.Azure.Services.AppAuthentication
-    Microsoft.Extensions.Configuration.AzureKeyVault
+    Azure.Identity
+    Azure.Extensions.AspNetCore.Configuration.Secrets
     ```
-5. Adja hozzá a következő kódot a Program.cs fájlhoz:
+6. Adja hozzá a következő kódot a Program.cs fájlhoz:
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -73,12 +78,7 @@ Ha már létrehozta a webalkalmazást, adja meg a webalkalmazáshoz való hozzá
                     var keyVaultEndpoint = GetKeyVaultEndpoint();
                     if (!string.IsNullOrEmpty(keyVaultEndpoint))
                     {
-                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        var keyVaultClient = new KeyVaultClient(
-                            new KeyVaultClient.AuthenticationCallback(
-                                azureServiceTokenProvider.KeyVaultTokenCallback));
-                        builder.AddAzureKeyVault(
-                        keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                        builder.AddAzureKeyVault(new Uri(keyVaultEndpoint), new DefaultAzureCredential(), new KeyVaultSecretManager());
                     }
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
@@ -88,11 +88,12 @@ Ha már létrehozta a webalkalmazást, adja meg a webalkalmazáshoz való hozzá
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Adja hozzá a Key Vault URL-címét launchsettings.jsfájlhoz. A környezeti változó neve *KEYVAULT_ENDPOINT* a 6. lépésben hozzáadott kódban van meghatározva.
+
+7. Adja hozzá a Key Vault URL-címét launchsettings.jsfájlhoz. A környezeti változó neve *KEYVAULT_ENDPOINT* a 7. lépésben hozzáadott kódban van meghatározva.
 
     ![Key Vault URL-cím hozzáadása projekt környezeti változóként](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-7. A projekt hibakeresésének megkezdése. A futtatásának sikeresnek kell lennie.
+8. A projekt hibakeresésének megkezdése. A futtatásának sikeresnek kell lennie.
 
 ## <a name="aspnet-and-net-applications"></a>ASP.NET és .NET-alkalmazások
 

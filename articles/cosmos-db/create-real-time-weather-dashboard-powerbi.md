@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 681929928e6e6b28c7950c8aeeadc8b181491f46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44a8d82ea2588abad6855fd8eaf7aed34256d87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804129"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370763"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Valós idejű irányítópult létrehozása Azure Cosmos DB és Power BI használatával
 
@@ -23,7 +23,7 @@ Ez a cikk a Power BI élő időjárási irányítópult létrehozásához szüks
 A jelentéskészítési irányítópultok több módon is beállíthatók a Azure Cosmos DBban tárolt adatszolgáltatásokhoz. Az elavult követelményektől és az adatmérettől függően a következő táblázat ismerteti az egyes forgatókönyvek jelentéskészítési beállításait:
 
 
-|Forgatókönyv |Telepítés |
+|Használati eset |Előkészületek |
 |---------|---------|
 |1. ad-hoc jelentések létrehozása (frissítés nélkül)    |  [Power BI Azure Cosmos DB-összekötő importálási móddal](powerbi-visualize.md)       |
 |2. ad hoc jelentések létrehozása rendszeres frissítéssel   |  [Power BI Azure Cosmos DB-összekötő importálási móddal (ütemezett rendszeres frissítés)](powerbi-visualize.md)       |
@@ -46,7 +46,7 @@ A Azure Analysis Services teljes körűen felügyelt platformot biztosít a felh
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Időjárási adatmennyiség beolvasása a Azure Cosmos DBba
 
-Betöltési folyamat beállítása az [időjárási adatmennyiség](https://catalog.data.gov/dataset/local-weather-archive) Azure Cosmos DBba való betöltéséhez. Beállíthat egy [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) feladatot a legújabb időjárási adatoknak a Azure Cosmos db a http-forrás és a Cosmos db fogadó használatával történő rendszeres betöltéséhez.
+Betöltési folyamat beállítása az [időjárási adatmennyiség](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) Azure Cosmos DBba való betöltéséhez. Beállíthat egy [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) feladatot a legújabb időjárási adatoknak a Azure Cosmos db a http-forrás és a Cosmos db fogadó használatával történő rendszeres betöltéséhez.
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>Power BI összekötése a Azure Cosmos DB
@@ -87,7 +87,7 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Időjárási adatmennyiség beolvasása a Azure Cosmos DBba 
 
-Betöltési folyamat beállítása az [időjárási adatmennyiség](https://catalog.data.gov/dataset/local-weather-archive) Azure Cosmos DBba való betöltéséhez. Beállíthat egy Azure Data Factory (ADF) feladatot a legújabb időjárási adatoknak a Azure Cosmos DB a HTTP-forrás és a Cosmos DB fogadó használatával történő rendszeres betöltéséhez.
+Betöltési folyamat beállítása az [időjárási adatmennyiség](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) Azure Cosmos DBba való betöltéséhez. Beállíthat egy Azure Data Factory (ADF) feladatot a legújabb időjárási adatoknak a Azure Cosmos DB a HTTP-forrás és a Cosmos DB fogadó használatával történő rendszeres betöltéséhez.
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Azure Analysis Services összekötése az Azure Cosmos-fiókkal
 

@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan biztosítja az Azure Cosmos DB az adatbázis v�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3658c621a5ac633bf42334df3e354c88afcf9b27
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6236b34c76ccd9e4688b97e7844cbadf9f515213
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278796"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372242"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Biztonság az Azure Cosmos DB-ben – Áttekintés
 
@@ -60,7 +60,7 @@ Ismerkedjen meg minden részlettel.
 |Biztonsági követelmény|Azure Cosmos DB biztonsági megközelítése|
 |---|---|
 |Hálózati biztonság|Az adatbázis biztonságossá tételéhez az IP-tűzfal használata az első védelmi réteg. Azure Cosmos DB támogatja a házirend által vezérelt IP-alapú hozzáférés-vezérlést a bejövő tűzfalak támogatásához. Az IP-alapú hozzáférés-vezérlések a hagyományos adatbázis-rendszerek által használt tűzfalszabályok hasonlóak, de kibővülnek, így az Azure Cosmos adatbázis-fiók csak jóváhagyott gépekből vagy felhőalapú szolgáltatásokból érhető el. További információt [Azure Cosmos db tűzfal támogatási](how-to-configure-firewall.md) cikkében talál.<br><br>Azure Cosmos DB lehetővé teszi egy adott IP-cím (168.61.48.0), egy IP-címtartomány (168.61.48.0/8), valamint az IP-címek és tartományok kombinációjának engedélyezését. <br><br>Azure Cosmos DB letiltja az ezen az engedélyezési listán kívüli gépekről származó összes kérelmet. A jóváhagyott gépektől és a Cloud servicestől érkező kéréseket a hitelesítési folyamatnak kell elvégeznie, hogy hozzáférés-vezérlést kapjon az erőforrásokhoz.<br><br> A [virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md) a hálózati elkülönítés eléréséhez és a Azure Cosmos db-erőforrások általános internetről való ellátásához használhatók. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például AzureCosmosDB) megadásával a szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.|
-|Engedélyezés|A Azure Cosmos DB kivonat-alapú üzenethitelesítő kódot (HMAC) használ a hitelesítéshez. <br><br>Minden kérelmet a titkos fiók kulcsa alapján kell kivonattal ellátni, és a rendszer a következő Base-64 kódolású kivonatot küldi el a Azure Cosmos DB összes hívásával. A kérelem érvényesítéséhez a Azure Cosmos DB szolgáltatás a helyes titkos kulcsot és tulajdonságokat használja a kivonat létrehozásához, majd összehasonlítja az értéket a kérelemben szereplővel. Ha a két érték egyezik, a művelet sikeresen engedélyezve lesz, és a rendszer feldolgozza a kérést, ellenkező esetben a rendszer elutasítja a kérelmet.<br><br>Használhat egy [elsődleges kulcsot](secure-access-to-data.md#primary-keys)vagy egy [erőforrás-tokent](secure-access-to-data.md#resource-tokens) , amely lehetővé teszi a részletes hozzáférést egy erőforráshoz, például egy dokumentumhoz.<br><br>További információ a [Azure Cosmos db erőforrásaihoz való hozzáférés biztonságossá tételéről](secure-access-to-data.md).|
+|Engedélyezés|A Azure Cosmos DB kivonat-alapú üzenethitelesítő kódot (HMAC) használ a hitelesítéshez. <br><br>Minden kérelmet a titkos fiók kulcsa alapján kell kivonattal ellátni, és a rendszer a következő Base-64 kódolású kivonatot küldi el a Azure Cosmos DB összes hívásával. A kérelem érvényesítéséhez a Azure Cosmos DB szolgáltatás a helyes titkos kulcsot és tulajdonságokat használja a kivonat létrehozásához, majd összehasonlítja az értéket a kérelemben szereplővel. Ha a két érték egyezik, a művelet sikeresen engedélyezve lesz, és a rendszer feldolgozza a kérést, ellenkező esetben a rendszer elutasítja a kérelmet.<br><br>Használhat egy [elsődleges kulcsot](#primary-keys)vagy egy [erőforrás-tokent](secure-access-to-data.md#resource-tokens) , amely lehetővé teszi a részletes hozzáférést egy erőforráshoz, például egy dokumentumhoz.<br><br>További információ a [Azure Cosmos db erőforrásaihoz való hozzáférés biztonságossá tételéről](secure-access-to-data.md).|
 |Felhasználók és engedélyek|A fiók elsődleges kulcsának használatával létrehozhat egy adatbázison felhasználói erőforrásokat és engedélyek erőforrásait. Az erőforrás-token egy adatbázisban lévő engedélyhez van társítva, és meghatározza, hogy a felhasználó rendelkezik-e hozzáféréssel (írható-olvasható, írásvédett vagy nincs hozzáférés) az adatbázisban lévő alkalmazás-erőforráshoz. Az alkalmazás erőforrásai közé tartozik a tároló, a dokumentumok, a mellékletek, a tárolt eljárások, az eseményindítók és a UDF. Az erőforrás-tokent a rendszer a hitelesítés során használja az erőforráshoz való hozzáférés megadásához vagy megtagadásához.<br><br>További információ a [Azure Cosmos db erőforrásaihoz való hozzáférés biztonságossá tételéről](secure-access-to-data.md).|
 |Active Directory-integráció (RBAC)| Az Azure Portal hozzáférés-vezérlés (IAM) használatával is megadhatja vagy korlátozhatja a Cosmos-fiók, az adatbázis, a tároló és az ajánlatok elérését. A IAM a szerepköralapú hozzáférés-vezérlést és a Active Directory integrációját biztosítja. Használhat beépített szerepköröket vagy egyéni szerepköröket egyéni felhasználókhoz és csoportokhoz. További információ: [Active Directory Integration](role-based-access-control.md) article.|
 |Globális replikálás|A Azure Cosmos DB kulcsrakész globális terjesztést kínál, amely lehetővé teszi az adatai replikálását az Azure egyik globális adatközpontja számára egy gombnyomással. A globális replikáció lehetővé teszi, hogy globálisan méretezhető legyen, és alacsony késésű hozzáférést biztosítson az adataihoz világszerte.<br><br>A biztonság kontextusában a globális replikáció biztosítja a regionális hibákkal szembeni adatvédelmet.<br><br>További információ: [Globális adatterjesztés](distribute-data-globally.md).|
@@ -80,6 +80,25 @@ Ismerkedjen meg minden részlettel.
 |Biztonsági és adatvédelmi tanúsítványok| A minősítések legnaprakészebb listája a teljes [Azure-megfelelőségi webhelyet](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) , valamint a legújabb [Azure-megfelelőségi dokumentumot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) tartalmazza minden minősítéssel (a Cosmos kifejezés keresése). A koncentráltabb olvasásért tekintse meg 2018 az [Azure #CosmosDB: Secure, Private, kompatibilis, SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP magas és sok más.
 
 A következő képernyőképen látható, hogyan használhatók a naplózási naplózási és a tevékenységi naplók a fiók figyeléséhez: :::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Az ügyfél-és adatbázis-szolgáltató feladatai":::
+
+<a id="primary-keys"></a>
+
+## <a name="primary-keys"></a>Elsődleges kulcsok
+
+Az elsődleges kulcsok hozzáférést biztosítanak az adatbázis-fiókhoz tartozó összes felügyeleti erőforráshoz. Elsődleges kulcsok:
+
+- Hozzáférés biztosítása a fiókokhoz, adatbázisokhoz, felhasználókhoz és engedélyekhez. 
+- Nem használható a tárolók és a dokumentumok részletes hozzáférésének biztosítására.
+- A fiók létrehozása során jönnek létre.
+- Bármikor újra létrehozhatók.
+
+Minden fiók két elsődleges kulcsot tartalmaz: egy elsődleges és egy másodlagos kulcsot. A kettős kulcsok célja, hogy újragenerálja vagy leállítsa a kulcsokat, és folyamatos hozzáférést biztosítson fiókjához és adataihoz.
+
+A Cosmos DB fiók két elsődleges kulcsa mellett két írásvédett kulcs is van. Ezek a csak olvasási jogosultsággal rendelkező kulcsok csak olvasási műveleteket engedélyeznek a fiókon. A csak olvasási jogosultsággal rendelkező kulcsok nem biztosítanak hozzáférést az olvasási engedélyek erőforrásaihoz.
+
+Az elsődleges, a másodlagos, az írásvédett és az írható-olvasható elsődleges kulcsok lekérhető és újragenerálható a Azure Portal használatával. Útmutatásért lásd: [hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#regenerate-account-key).
+
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Az ügyfél-és adatbázis-szolgáltató feladatai":::
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f937b03b2f838f69f56a4b132d0ea7a7e298b532
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091440"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372123"
 ---
 # <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
@@ -41,7 +41,7 @@ A Azure Portal Súgó és **támogatás** szolgáltatását is elérheti. A szol
 
 ### <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 
-Támogatási kérelem létrehozásához [tulajdonosnak](../../role-based-access-control/built-in-roles.md#owner), [közreműködőnek](../../role-based-access-control/built-in-roles.md#contributor) kell lennie, vagy a [támogatási kérelem közreműködői](../../role-based-access-control/built-in-roles.md#support-request-contributor) szerepköréhez kell rendelni az előfizetés szintjén. Ha előfizetést nem tartalmazó támogatási kérelmet szeretne létrehozni, például egy Azure Active Directory-forgatókönyv [, rendszergazdának](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)kell lennie.
+Támogatási kérelem létrehozásához [tulajdonosnak](../../role-based-access-control/built-in-roles.md#owner), [közreműködőnek](../../role-based-access-control/built-in-roles.md#contributor) kell lennie, vagy a [támogatási kérelem közreműködői](../../role-based-access-control/built-in-roles.md#support-request-contributor) szerepköréhez kell rendelni az előfizetés szintjén. Ha előfizetést nem tartalmazó támogatási kérelmet szeretne létrehozni, például egy Azure Active Directory-forgatókönyv [, rendszergazdának](../../active-directory/roles/permissions-reference.md)kell lennie.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Ugrás a Súgó + támogatás elemre a globális fejlécből
 

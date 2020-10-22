@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355040"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371987"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware virtuális gépről vagy fizikai gépről az Azure-ba irányuló feladatátvétel hibaelhárítása
 
@@ -55,7 +55,7 @@ A **Windows vendég operációs rendszerhez**tartozó illesztőprogramok indít�
     A következő eredményt adja, ha hidratálás szükséges:
 
     ```output
-    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
     This system doesn't meet no-hydration requirement.
     ```
@@ -168,7 +168,7 @@ A hiba megoldása érdekében:
 
 2. Ha az előző parancsok kimenete azt mutatja, hogy a http_proxy vagy https_proxy beállítások vannak meghatározva, használja a következő módszerek egyikét a fő célként megadott kommunikáció feloldásához a konfigurációs kiszolgálóval:
    
-   - Töltse le a [PsExec eszközt](https://aka.ms/PsExec).
+   - Töltse le a [PsExec eszközt](/sysinternals/downloads/psexec).
    - Az eszközzel elérheti a rendszer felhasználói környezetét, és meghatározhatja, hogy a proxy címe konfigurálva van-e. 
    - Ha a proxy konfigurálva van, nyissa meg az IE-t a rendszer felhasználói környezetében a PsExec eszköz használatával.
   

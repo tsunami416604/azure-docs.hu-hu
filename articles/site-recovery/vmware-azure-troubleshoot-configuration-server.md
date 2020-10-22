@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113071"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371953"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>A konfigurációs kiszolgáló problémáinak elhárítása
 
@@ -63,7 +63,7 @@ Ez a hiba akkor fordul elő, ha a szolgáltatás nem tudja beolvasni az adatátv
 
 A vCenter-felderítési hibák elhárításához adja hozzá a vCenter-kiszolgálót a mellőzési lista proxybeállításait. 
 
-- Töltse [le a PsExec eszközt innen a](https://aka.ms/PsExec) rendszerfelhasználói tartalmak eléréséhez.
+- Töltse [le a PsExec eszközt innen a](/sysinternals/downloads/psexec) rendszerfelhasználói tartalmak eléréséhez.
 - Az Internet Explorer rendszerfelhasználói tartalomban való megnyitásához futtassa a következő parancssori PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
 - Adja hozzá a proxybeállításokat az IE-ben, és indítsa újra a tmanssvc szolgáltatást.
 - A DRA-proxybeállítások konfigurálásához futtassa a CD C:\Program Files\Microsoft Azure Site Recovery Providert
@@ -163,16 +163,16 @@ A konfigurációs kiszolgáló frissítése meghiúsul, ha bizonyos szolgáltat�
 A probléma azonosításához keresse meg a C:\ProgramData\ASRSetupLogs\ CX_TP_InstallLogFile a konfigurációs kiszolgálón. Ha a következő hibákat keresi, a probléma megoldásához kövesse az alábbi lépéseket: 
 
 ```output
-2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-2018-06-28 14:28:12.944   Stopping svagents service.
-2018-06-28 14:31:32.949   Unable to stop svagents service.
-2018-06-28 14:31:32.949   Stopping svagents service.
-2018-06-28 14:34:52.960   Unable to stop svagents service.
-2018-06-28 14:34:52.960   Stopping svagents service.
-2018-06-28 14:38:12.971   Unable to stop svagents service.
-2018-06-28 14:38:12.971   Rolling back the install changes.
-2018-06-28 14:38:12.971   Upgrade has failed.
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
 ```
 
 A hiba megoldása érdekében:
@@ -194,7 +194,7 @@ Nem rendelkezik megfelelő engedélyekkel ahhoz, hogy alkalmazásokat hozzon lé
 
 A probléma megoldásához jelentkezzen be a Azure Portalba, és tegye a következők egyikét:
 
-- Kérje meg az alkalmazás fejlesztői szerepkörét a HRE-ben. Az alkalmazás fejlesztői szerepkörével kapcsolatos további információkért tekintse meg a [rendszergazdai szerepkörre vonatkozó engedélyeket Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+- Kérje meg az alkalmazás fejlesztői szerepkörét a HRE-ben. Az alkalmazás fejlesztői szerepkörével kapcsolatos további információkért tekintse meg a [rendszergazdai szerepkörre vonatkozó engedélyeket Azure Active Directory](../active-directory/roles/permissions-reference.md).
 - Győződjön meg arról, hogy a **felhasználó létrehozhat** -e alkalmazás-jelölőt *true* értékre a HRE-ben. További információkért lásd [: útmutató: a portál használata az erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatásnév létrehozásához](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>A Process Server/fő cél nem tud kommunikálni a konfigurációs kiszolgálóval 
@@ -258,4 +258,3 @@ Ez a probléma akkor fordulhat elő, ha a rendszer ideje helytelen.
 A hiba megoldása érdekében:
 
 Állítsa be a megfelelő időt a számítógépen, majd próbálja megismételni a bejelentkezést. 
- 

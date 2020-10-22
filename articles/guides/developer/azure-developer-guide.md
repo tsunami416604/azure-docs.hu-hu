@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 770c9f7d677f739781db6290fa0c43e410761d17
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327818"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372208"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -281,7 +281,7 @@ Azure-előfizetések létrehozásához vagy használatához Azure-fiókkal kell 
 
 Minden Azure-előfizetés bizalmi kapcsolattal rendelkezik egy Azure AD-példányhoz. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. További információkért lásd: [Az Azure-előfizetések társítása Azure Active Directoryhoz](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Az egyes Azure-fiókok identitásait, más néven *felhasználókat*is definiálhat, és *csoportokat* ADHAT meg az Azure ad-ben. A felhasználói csoportok létrehozása jó módszer az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával az előfizetések erőforrásaihoz való hozzáférés kezelésére. A csoportok létrehozásával kapcsolatos további információkért lásd: [csoport létrehozása Azure Active Directory előzetes](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)verzióban. Csoportokat a [PowerShell használatával](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)is létrehozhat és kezelhet.
+Az egyes Azure-fiókok identitásait, más néven *felhasználókat*is definiálhat, és *csoportokat* ADHAT meg az Azure ad-ben. A felhasználói csoportok létrehozása jó módja a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az előfizetések erőforrásaihoz való hozzáférés kezelésére. A csoportok létrehozásával kapcsolatos további információkért lásd: [csoport létrehozása Azure Active Directory előzetes](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)verzióban. Csoportokat a [PowerShell használatával](../../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)is létrehozhat és kezelhet.
 
 ### <a name="manage-your-subscriptions"></a>Feliratkozások kezelése
 
