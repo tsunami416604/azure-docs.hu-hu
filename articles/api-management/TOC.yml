@@ -62,8 +62,6 @@
       items:
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
-        - name: Beépített biztonsági vezérlők
-          href: api-management-security-controls.md
     - name: Előfizetések
       href: api-management-subscriptions.md
     - name: Verziók
@@ -160,6 +158,8 @@
       items:
         - name: Ismerkedés a fejlesztői portállal
           href: api-management-howto-developer-portal.md
+        - name: Migrálás az elavultról az új fejlesztői portálra
+          href: developer-portal-deprecated-migration.md
         - name: Hitelesítés az Azure AD-vel
           href: api-management-howto-aad.md
         - name: Hitelesítés az Azure AD B2C-vel
@@ -170,13 +170,13 @@
           href: api-management-howto-configure-notifications.md
         - name: OAuth-támogatás engedélyezése a konzolon
           href: api-management-howto-oauth2.md
-        - name: Régi portál – A portál testreszabása
+        - name: Elavult portál – A portál testreszabása
           href: api-management-customize-styles.md
-        - name: Régi portál – Lapok tartalmának és elrendezésének módosítása
+        - name: Elavult portál – Lapok tartalmának és elrendezésének módosítása
           href: api-management-modify-content-layout.md
-        - name: Régi portál – Testreszabás sablonokkal
+        - name: Elavult portál – Testreszabás sablonokkal
           href: api-management-developer-portal-templates.md
-    - name: Régi portál sablonjai
+    - name: Elavult portál sablonjai
       items:
         - name: Adatmodell-referencia
           href: api-management-template-data-model-reference.md
