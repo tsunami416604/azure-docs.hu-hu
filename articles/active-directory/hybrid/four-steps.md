@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600797"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369777"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Négy lépés egy erős identitás-alaprendszer számára a Azure Active Directory
 
@@ -156,7 +156,7 @@ A felhasználók az alkalmazásokhoz való hozzárendelése a csoportok használ
 * Attribútum – a dinamikus csoporttagság alapján
 * Delegálás az alkalmazás tulajdonosainak
 
-Az Azure AD lehetővé teszi az erőforrásokhoz való hozzáférés kezelését a biztonsági csoportok és Microsoft 365 csoportok használatával. Ezeket a csoportokat egy csoport tulajdonosa felügyelheti, aki jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Ez a szolgáltatás önkiszolgáló [csoportként](../users-groups-roles/groups-self-service-management.md)ismert, így időt takaríthat meg azzal, hogy lehetővé teszi, hogy a csoport tulajdonosai nem rendelkeznek rendszergazdai szerepkörrel a csoportok létrehozásához és kezeléséhez anélkül, hogy a rendszergazdáknak kellene hagyatkozni a kéréseik kezeléséhez.
+Az Azure AD lehetővé teszi az erőforrásokhoz való hozzáférés kezelését a biztonsági csoportok és Microsoft 365 csoportok használatával. Ezeket a csoportokat egy csoport tulajdonosa felügyelheti, aki jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Ez a szolgáltatás önkiszolgáló [csoportként](../enterprise-users/groups-self-service-management.md)ismert, így időt takaríthat meg azzal, hogy lehetővé teszi, hogy a csoport tulajdonosai nem rendelkeznek rendszergazdai szerepkörrel a csoportok létrehozásához és kezeléséhez anélkül, hogy a rendszergazdáknak kellene hagyatkozni a kéréseik kezeléséhez.
 
 ## <a name="step-4---operationalize-your-insights"></a>4. lépés – az működővé tenni
 
@@ -172,9 +172,9 @@ A biztonsági naplók és jelentések lehetővé teszik a gyanús tevékenysége
 
 Ahogy a műveletek megközelítésére gondol, a felügyeletnek néhány szintje van. Az első szint az adminisztrációs terhet helyezi a globális rendszergazda (ok) ra. Mindig a globális rendszergazdai szerepkört használja, a kisebb vállalatok számára is megfelelő lehet. De a nagyobb szervezetek számára, akik az egyes feladatokért felelős ügyfélszolgálati munkatársakkal és rendszergazdákkal foglalkoznak, a globális rendszergazda szerepkör kiosztása biztonsági kockázatot jelenthet, mivel a felhasználók számára lehetővé teszi, hogy a fenti, illetve azon kívüli feladatokat kezeljék, amelyeken felül kell állnia.
 
-Ebben az esetben érdemes megfontolni a felügyelet következő szintjét. Az Azure AD használatával a végfelhasználók "korlátozott rendszergazdaként" jelölhetők ki, akik kezelhetik a kevésbé Kiemelt szerepkörök feladatait. Például hozzárendelhet egy ügyfélszolgálati munkatársat a [biztonsági olvasó](../users-groups-roles/directory-assign-admin-roles.md#security-reader) szerepkörhöz, amely lehetővé teszi számukra, hogy a biztonsággal kapcsolatos funkciókat csak olvasási hozzáféréssel lehessen kezelni. Vagy lehet, hogy a [hitelesítés-rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#authentication-administrator) szerepkört az egyéni felhasználókhoz rendeli hozzá, így lehetővé teszi a nem jelszóval rendelkező hitelesítő adatok alaphelyzetbe állítását, illetve a Azure Service Health olvasását és konfigurálását.
+Ebben az esetben érdemes megfontolni a felügyelet következő szintjét. Az Azure AD használatával a végfelhasználók "korlátozott rendszergazdaként" jelölhetők ki, akik kezelhetik a kevésbé Kiemelt szerepkörök feladatait. Például hozzárendelhet egy ügyfélszolgálati munkatársat a [biztonsági olvasó](../roles/permissions-reference.md#security-reader) szerepkörhöz, amely lehetővé teszi számukra, hogy a biztonsággal kapcsolatos funkciókat csak olvasási hozzáféréssel lehessen kezelni. Vagy lehet, hogy a [hitelesítés-rendszergazdai](../roles/permissions-reference.md#authentication-administrator) szerepkört az egyéni felhasználókhoz rendeli hozzá, így lehetővé teszi a nem jelszóval rendelkező hitelesítő adatok alaphelyzetbe állítását, illetve a Azure Service Health olvasását és konfigurálását.
 
-További információ: [rendszergazdai szerepkör engedélyei Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+További információ: [rendszergazdai szerepkör engedélyei Azure Active Directory](../roles/permissions-reference.md).
 
 ### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Hibrid összetevők (Azure AD Connect Sync, AD FS) monitorozása Azure AD Connect Health használatával
 
@@ -212,7 +212,7 @@ Az árnyék felfedése mellett a [Microsoft Cloud app Security](/cloud-app-secur
 
 *"A Cloud App Security gyorsan észlelheti a rendellenességeket, és műveleteket végezhet."* --- [Eric LePenske, vezető menedzser, információbiztonság, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A hibrid identitási megoldások megvalósításának számos aspektusa van, de ez a négy lépésből álló ellenőrzőlista segít egy olyan identitás-infrastruktúra gyors megvalósításában, amely lehetővé teszi a felhasználók számára, hogy hatékonyabbá és biztonságosabbá tegyék a felhasználókat.
 

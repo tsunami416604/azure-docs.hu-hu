@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 43206fbc956602ddaf189f45648cf8a44a3dd143
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8735bf721ec85dcd556582f7fd887dd82b55a35d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277317"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369981"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v4-hez
 
@@ -148,49 +148,49 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     Azure Cosmos DB Java SDK v4-ben a közvetlen mód a legjobb választás az adatbázis teljesítményének növelésére a legtöbb munkaterheléssel. 
 
-    * ***Közvetlen üzemmód áttekintése***
+    * ***A Direct Mode _ áttekintése**
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendjének ábrája" border="false":::
 
-        A közvetlen módban alkalmazott ügyféloldali architektúra előre jelezhető hálózati kihasználtságot és többszörös hozzáférést biztosít Azure Cosmos DB replikához. A fenti ábrán látható, hogy a Direct Mode hogyan irányítja az ügyfelek kérelmeit a Cosmos DB háttérbeli replikára. A közvetlen módú architektúra legfeljebb 10 **csatornát** foglal le az ügyféloldali replikán. A csatornák egy TCP-kapcsolatok, amely előtt egy kérelem-puffer található, amely 30 kérelem mélyét képezi. A replikához tartozó csatornák dinamikusan vannak lefoglalva a replika **szolgáltatási végpontja**által igényelt módon. Amikor a felhasználó közvetlen módban bocsát ki egy kérést, a **TransportClient** a megfelelő szolgáltatási végpontra irányítja a kérést a partíciós kulcs alapján. A kérelmek **várólistájának** pufferei a szolgáltatási végpont előtt érkeznek.
+        A közvetlen módban alkalmazott ügyféloldali architektúra előre jelezhető hálózati kihasználtságot és többszörös hozzáférést biztosít Azure Cosmos DB replikához. A fenti ábrán látható, hogy a Direct Mode hogyan irányítja az ügyfelek kérelmeit a Cosmos DB háttérbeli replikára. A közvetlen üzemmód architektúrája legfeljebb 10 _*csatornát*foglal le az ügyfél oldalán az adatbázis-replikák esetében. A csatornák egy TCP-kapcsolatok, amely előtt egy kérelem-puffer található, amely 30 kérelem mélyét képezi. A replikához tartozó csatornák dinamikusan vannak lefoglalva a replika **szolgáltatási végpontja**által igényelt módon. Amikor a felhasználó közvetlen módban bocsát ki egy kérést, a **TransportClient** a megfelelő szolgáltatási végpontra irányítja a kérést a partíciós kulcs alapján. A kérelmek **várólistájának** pufferei a szolgáltatási végpont előtt érkeznek.
 
-    * ***A közvetlen mód konfigurációs beállításai***
+    * ***A közvetlen mód konfigurációs beállításai**_
 
-        Ha nem az alapértelmezett közvetlen mód viselkedését szeretné használni, hozzon létre egy *DirectConnectionConfig* -példányt, és szabja testre a tulajdonságait, majd adja át a testreszabott *directMode ()* metódusnak a Azure Cosmos db ügyfél-szerkesztőben.
+        Ha nem alapértelmezett közvetlen üzemmódú viselkedésre van szükség, hozzon létre egy _DirectConnectionConfig * példányt, és szabja testre a tulajdonságait, majd adja át a testreszabott *directMode ()* metódusnak a Azure Cosmos db ügyfél-szerkesztőben.
 
         Ezek a konfigurációs beállítások vezérlik a fent ismertetett közvetlen üzemmódú architektúra viselkedését.
 
         Első lépésként használja az alábbi ajánlott konfigurációs beállításokat. Ezek a *DirectConnectionConfig* beállítások olyan speciális konfigurációs beállítások, amelyek nem várt módon befolyásolhatják az SDK teljesítményét. Javasoljuk, hogy a felhasználók ne módosíthassák őket, hacsak nem érzik nagyon kényelmesnek a kompromisszumok megismerését, és elengedhetetlenek. Ha az adott témakörben problémákba ütközik, forduljon a [Azure Cosmos db csapatához](mailto:CosmosDBPerformanceSupport@service.microsoft.com) .
 
-        | Konfigurációs beállítás       | Alapértelmezett    |
-        | :------------------:       | :-----:    |
-        | idleConnectionTimeout      | "PT1M"     |
-        | maxConnectionsPerEndpoint  | "PT0S"     |
-        | connectTimeout             | "PT1M10S"  |
-        | idleEndpointTimeout        | 8388608    |
-        | maxRequestsPerConnection   | 10         |
+        | Konfigurációs beállítás       | Alapértelmezett   |
+        | :------------------:       | :-----:   |
+        | idleConnectionTimeout      | "PT0"     |
+        | maxConnectionsPerEndpoint  | "130"     |
+        | connectTimeout             | "PT5S"    |
+        | idleEndpointTimeout        | PT1H    |
+        | maxRequestsPerConnection   | 30      |
 
 * **A particionált gyűjtemények párhuzamos lekérdezésének finomhangolása**
 
     Azure Cosmos DB Java SDK v4 támogatja a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: a Azure Cosmos DB Java SDK v4-sel való együttműködéshez kapcsolódó [kód-minták](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy a lekérdezési késést és az adatátvitelt a soros munkatársaik
 
-    * ***SetMaxDegreeOfParallelism finomhangolása\:***
+    * ***SetMaxDegreeOfParallelism \: finomhangolása** _
     
         A párhuzamos lekérdezések több partíció párhuzamos lekérdezésével működnek. Az egyedi particionált gyűjteményekből származó adatok azonban a lekérdezéssel kapcsolatos sorosan kerülnek beolvasásra. Ezért a setMaxDegreeOfParallelism használatával állítsa be a legtöbb teljesítményű lekérdezés elérésének maximális esélyét biztosító partíciók számát, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, a setMaxDegreeOfParallelism használatával magas számot állíthat be, a rendszer pedig a minimális párhuzamosságot (a partíciók számát, a felhasználó által megadott bemenetet) adja meg.
 
         Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
 
-    * ***SetMaxBufferedItemCount finomhangolása\:***
+    _ ***Hangolás setMaxBufferedItemCount \: **_
     
-        A párhuzamos lekérdezés úgy lett kialakítva, hogy előzetesen beolvassa az eredményeket, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javulását segíti elő. a setMaxBufferedItemCount korlátozza az előre beolvasott eredmények számát. A setMaxBufferedItemCount beállítása a visszaadott eredmények várt számához (vagy egy magasabb szám) lehetővé teszi a lekérdezés számára, hogy a lehető legtöbbet fogadja az előzetes lekéréstől.
+        Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
-        Az előzetes lekérés ugyanúgy működik, mint a Maxanalyticsunits, és egyetlen puffer van az összes partícióból származó adatokhoz.
+        Pre-fetching works the same way irrespective of the MaxDegreeOfParallelism, and there is a single buffer for the data from all partitions.
 
-* **Az ügyfél felskálázása – munkaterhelés**
+**Az ügyfél Felskálázása – munkaterhelés**
 
-    Ha magas átviteli sebességű tesztelést végez, előfordulhat, hogy az ügyfélalkalmazás szűk keresztmetszetet okoz a processzor vagy a hálózat kihasználtsága miatt. Ha eléri ezt a pontot, továbbra is folytathatja a Azure Cosmos DB-fiók leküldését az ügyfélalkalmazások több kiszolgálón való skálázásával.
+    If you are testing at high throughput levels, the client application may become the bottleneck due to the machine capping out on CPU or network utilization. If you reach this point, you can continue to push the Azure Cosmos DB account further by scaling out your client applications across multiple servers.
 
-    Egy jó ökölszabály nem lépi túl a >50%-os CPU-kihasználtságot az adott kiszolgálón, hogy a késés alacsony legyen.
+    A good rule of thumb is not to exceed >50% CPU utilization on any given server, to keep latency low.
 
    <a id="tune-page-size"></a>
 
@@ -231,19 +231,19 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     Számos ok miatt előfordulhat, hogy a naplózást egy olyan szálban kell felvennie, amely nagy kérések átviteli sebességét eredményezi. Ha a cél az, hogy teljes mértékben telített legyen egy tároló kiépített átviteli sebessége a szál által generált kérelmekkel, a naplózási optimalizálás nagy mértékben növelheti a teljesítményt.
 
-    * ***Aszinkron naplózó konfigurálása***
+    * ***Aszinkron naplózó beállítása**_
 
         A szinkron naplózó késése szükségszerűen a kérés-előállító szál teljes késésének számítása. A nagy teljesítményű alkalmazási szálakból való kilépéshez olyan aszinkron naplózó használata javasolt, mint például a [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) .
 
-    * ***A nettó naplózás letiltása***
+    _ ***A nettó naplózás letiltása**_
 
-        A további CPU-költségek elkerülése érdekében a többfunkciós kódtár naplózása beszédes, és ki kell kapcsolni (a bejelentkezés a konfigurációban nem lehet elég). Ha nem hibakeresési módban van, tiltsa le a nettó naplózást. Tehát ha a log4j használatával távolítja el a további CPU-költségeket a (z) ``org.apache.log4j.Category.callAppenders()`` rendszerből, adja hozzá a következő sort a kód számára:
+        Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 
         ```java
         org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
         ```
 
- * **Operációs rendszer által megnyitott fájlok erőforrás-korlátja**
+ _ **Operációs rendszer által megnyitott fájlok erőforrás-korlátja**
  
     Bizonyos linuxos rendszerek (például a Red Hat) felső korláttal rendelkeznek a megnyitott fájlok számától, így a kapcsolatok teljes száma. A jelenlegi korlátok megtekintéséhez futtassa a következő parancsot:
 

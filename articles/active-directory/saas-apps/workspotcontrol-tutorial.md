@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "88526540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Oktatóanyag: Azure Active Directory integráció a Workspot-vezérlővel
@@ -103,20 +103,20 @@ Az Azure AD egyszeri bejelentkezés Workspot-vezérlővel való konfigurálásá
     ![Workspot és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
     1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő mintában:<br/>
-    ***https://<<i></i> példánynév> – SAML.workspot.com/SAML/metadata***
+    **_https://<<i></i> PÉLDÁNYNÉV> – saml.workspot.com/saml/metadata_*_
 
-    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő mintában:<br/>
-    ***https://<<i></i> példánynév> – SAML.workspot.com/SAML/Assertion***
+    1. A _ *Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő mintában: <br/> 
+    * *_https://<<i></i> példánynév>-SAML.workspot.com/SAML/Assertion_*_
 
-5. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a **további URL-címek beállítása**lehetőséget.
+5. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a _ * további URL-címek * * beállítása lehetőséget.
 
     ![Workspot és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL** szövegmezőben adjon meg egy URL-címet a következő mintában:<br/>
-    ***https://<<i></i> példánynév> – SAML.workspot.com/***
+    **_https://<<i></i> PÉLDÁNYNÉV> – saml.workspot.com/_*_
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Cserélje le ezeket az értékeket a tényleges azonosítóra, a válasz URL-címére és a bejelentkezési URL-címre. Az értékek lekéréséhez lépjen kapcsolatba a [Workspot-vezérlő](mailto:support@workspot.com) ügyfélszolgálatával. Vagy a Azure Portal **alapszintű SAML-konfiguráció** szakaszának mintázatait is megtekintheti.
+    > Ezek az értékek nem valósak. Cserélje le ezeket az értékeket a tényleges azonosítóra, a válasz URL-címére és a bejelentkezési URL-címre. Az értékek lekéréséhez lépjen kapcsolatba a [Workspot-vezérlő](mailto:support@workspot.com) ügyfélszolgálatával. Vagy a Azure Portal _*alapszintű SAML-konfiguráció** szakaszában található mintákat is megtekintheti.
 
 6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (Base64)** letöltéséhez az elérhető lehetőségek közül a követelmények szerint. Mentse a számítógépére.
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés Workspot-vezérlővel való konfigurálásá
 
     1. Válassza ki a **fájl frissítése** elemet az X. 509 tanúsítványba való feltöltéshez a Azure Portal által letöltött base-64 kódolású tanúsítványt.
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -176,7 +176,7 @@ Ebben a szakaszban egy teszt felhasználót hoz létre a Azure Portal.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Ezután jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

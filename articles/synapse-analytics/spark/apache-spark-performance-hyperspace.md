@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1833a606f3dbbc9826858bac4f3ba056b5b7ad8a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249365"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369862"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hipertér: Apache Spark indexelési alrendszere
 
@@ -32,7 +32,7 @@ Jogi nyilatkozat: a hipertér két esetben segít felgyorsítani a számítási 
 
 Ez a dokumentum a következő jegyzetfüzet-formában is elérhető: [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)és [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Előkészületek
 
 A kezdéshez indítson el egy új Spark-munkamenetet. Mivel ez a dokumentum csupán azt mutatja be, hogy milyen hipertér tud ajánlani, egy olyan konfigurációs módosítást fog végezni, amely lehetővé teszi számunkra, hogy kiemelje, milyen hipertér végez a kis adatkészleteken. 
 
@@ -410,7 +410,7 @@ FROM T
 WHERE Y = 2
 ```
 
-Az X lehet index oszlop, és az Y egy belefoglalható oszlop is lehet.
+Az Y lehet index oszlop, az X pedig egy belefoglalható oszlop is.
 
 :::zone pivot = "programming-language-scala"
 

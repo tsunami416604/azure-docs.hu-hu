@@ -3,12 +3,12 @@ title: Az Event hub használata Apache Kafka alkalmazásból – Azure Event Hub
 description: Ez a cikk az Azure Event Hubs Apache Kafka támogatásáról nyújt információt.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 2b101adf173f3d623bb85d811ba5832020313f14
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327297"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369590"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Az Azure Event Hubs használata Apache Kafka alkalmazásokból
 A Event Hubs egy olyan végpontot biztosít, amely kompatibilis a Apache Kafka® gyártóval és a fogyasztói API-kkal, amelyeket a legtöbb meglévő Apache Kafka ügyfélalkalmazás használhat a saját Apache Kafka-fürt futtatására. A Event Hubs a Apache Kafka gyártói és fogyasztói API-ügyfelét támogatja a 1,0-es és újabb verziókban.
@@ -62,7 +62,7 @@ Az Azure Event Hubs több lehetőséget kínál a biztonságos erőforrásokhoz 
 #### <a name="oauth-20"></a>OAuth 2.0
 A Event Hubs a Azure Active Directory (Azure AD) szolgáltatással integrálódik, amely egy **OAuth 2,0** -kompatibilis központi engedélyezési kiszolgálót biztosít. Az Azure AD-vel az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével részletesen megérthető engedélyeket biztosíthat az ügyfél-identitásoknak. Ezt a funkciót a Kafka-ügyfelekkel a mechanizmus protokoll-és **OAUTHBEARER** **SASL_SSL** megadásával veheti igénybe. Az Azure-szerepkörökkel és a hozzáférés-kezelés szintjeivel kapcsolatos részletekért lásd: [hozzáférés engedélyezése az Azure ad-vel](authorize-access-azure-active-directory.md).
 
-```xml
+```properties
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
 security.protocol=SASL_SSL
 sasl.mechanism=OAUTHBEARER
@@ -73,15 +73,19 @@ sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 #### <a name="shared-access-signature-sas"></a>Közös hozzáférésű jogosultságkód (SAS)
 A Event Hubs a **közös hozzáférésű aláírásokat (SAS)** is biztosítja a Event Hubs számára a Kafka-erőforrásokhoz való delegált hozzáféréshez. Az OAuth 2,0 token-alapú mechanizmus használatával történő hozzáférés engedélyezése a biztonsági és a könnyű használatot lehetővé teszi az SAS használatával. A beépített szerepkörök kihasználhatják az ACL-alapú hitelesítés szükségességét is, amelyet a felhasználónak kell karbantartani és felügyelni. Ezt a funkciót a Kafka-ügyfelekkel úgy használhatja, hogy megadta **SASL_SSL** a protokollhoz, és **egyszerű** a mechanizmus számára. 
 
-```xml
+```properties
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
 security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
+> [!IMPORTANT]
+> Cserélje le a helyére `{YOUR.EVENTHUBS.CONNECTION.STRING}` a Event Hubs névtérhez tartozó kapcsolatok karakterláncát. A kapcsolatok karakterláncának beolvasásával kapcsolatos utasításokért lásd: [Event Hubs-kapcsolatok karakterláncának beolvasása](event-hubs-get-connection-string.md). Íme egy példa a konfigurációra: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 > [!NOTE]
 > A Kafka-ügyfelek SAS-hitelesítésének használatakor a rendszer a létrehozott kapcsolatokat nem bontja le, amikor a SAS-kulcsot újragenerálták. 
+
 
 #### <a name="samples"></a>Példák 
 Az Event hub létrehozásával **és a sas** vagy OAuth használatával való elérésével kapcsolatos részletes utasításokért lásd: gyors útmutató [: adatstream Event Hubs a Kafka protokoll használatával](event-hubs-quickstart-kafka-enabled-event-hubs.md).
@@ -139,5 +143,5 @@ A felsorolt szolgáltatások és keretrendszerek általában a különböző for
 
 Ha az Azure-beli Kafka Streams keretrendszert kell használnia, [Apache Kafka a HDInsight-on](../hdinsight/kafka/apache-kafka-introduction.md) keresztül biztosítjuk Önnek ezt a lehetőséget. A Apache Kafka on HDInsight teljes körűen szabályozhatja Apache Kafka összes konfigurációs aspektusát, miközben az Azure platform különböző szempontjaival teljes mértékben integrálva van, a hiba/frissítés tartományból a hálózat elkülönítésére az integráció figyelése érdekében. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk a Kafka-Event Hubs bevezetését ismertette. További információ: [Apache Kafka fejlesztői útmutató az Azure Event Hubshoz](apache-kafka-developer-guide.md).

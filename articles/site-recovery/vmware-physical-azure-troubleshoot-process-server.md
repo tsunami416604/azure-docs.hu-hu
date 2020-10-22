@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499755"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369403"
 ---
 # <a name="troubleshoot-the-process-server"></a>A folyamat kiszolgálójának hibáinak megoldása
 
@@ -54,11 +54,11 @@ A Process Server számos rendszerállapot-riasztást generál. Ezeket a riasztá
 ![Kifogástalan][green] | Nincs  | A Process Server csatlakoztatva van és kifogástalan állapotú.
 ![Figyelmeztetés][yellow] | A megadott szolgáltatások nem futnak. | 1. Győződjön meg arról, hogy a szolgáltatások futnak.<br/> 2. Ha a szolgáltatások a várt módon futnak, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
 ![Figyelmeztetés][yellow]  | A CPU-kihasználtság > 80%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
-![Kritikus][red] |  A CPU-kihasználtság > 95%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) a VMware/fizikai kiszolgáló replikálásához.
+![Kritikus][red] |  A CPU-kihasználtság > 95%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a [Deployment Planner](./site-recovery-deployment-planner.md) a VMware/fizikai kiszolgáló replikálásához.
 ![Figyelmeztetés][yellow] | Memóriahasználat > 80% az elmúlt 15 percben. |  1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse a figyelmeztetéssel kapcsolatos utasításokat.<br/> 4. Ha a probléma továbbra is fennáll, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
-![Kritikus][red] | Memóriahasználat > 95% az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/> 2. kövesse a figyelmeztetéssel kapcsolatos utasításokat.<br/> 3.4. Ha a probléma továbbra is fennáll, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a VMware/fizikai kiszolgáló replikációs problémáinak [Deployment Plannerát](https://aka.ms/asr-v2a-deployment-planner) .
+![Kritikus][red] | Memóriahasználat > 95% az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/> 2. kövesse a figyelmeztetéssel kapcsolatos utasításokat.<br/> 3.4. Ha a probléma továbbra is fennáll, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a VMware/fizikai kiszolgáló replikációs problémáinak [Deployment Plannerát](./site-recovery-deployment-planner.md) .
 ![Figyelmeztetés][yellow] | A gyorsítótár-mappa szabad területe < 30% az elmúlt 15 percben. | 1. ne vegyen fel új gépeket, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>2. Győződjön meg arról, hogy a Process Servert használó virtuális gépek száma igazodik az [irányelvekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations).<br/> 3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
-![Kritikus][red] |  Szabad terület < 25% az elmúlt 15 percben | 1. kövesse a probléma figyelmeztetéséhez tartozó utasításokat.<br/> 2.3. A [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication)kövesse az alábbi utasításokat.<br/> 3. Ha a probléma továbbra is fennáll, futtassa a [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) a VMware/fizikai kiszolgáló replikálásához.
+![Kritikus][red] |  Szabad terület < 25% az elmúlt 15 percben | 1. kövesse a probléma figyelmeztetéséhez tartozó utasításokat.<br/> 2.3. A [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication)kövesse az alábbi utasításokat.<br/> 3. Ha a probléma továbbra is fennáll, futtassa a [Deployment Planner](./site-recovery-deployment-planner.md) a VMware/fizikai kiszolgáló replikálásához.
 ![Kritikus][red] | A folyamat kiszolgálójának nincs szívverése 15 percig vagy többet. A tmansvs szolgáltatás nem kommunikál a konfigurációs kiszolgálóval. | 1.) győződjön meg arról, hogy a Process Server működik-e.<br/> 2. Győződjön meg arról, hogy a tmassvc fut a Process Serveren.<br/> 3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
 
 
@@ -244,7 +244,7 @@ Győződjön meg arról, hogy az IP-cím alapú tűzfal blokkolja-e a hozzáfér
 Növelje meg a folyamat-kiszolgáló és az Azure közötti sávszélességet, és győződjön meg arról, hogy a probléma továbbra is fennáll.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](/answers/topics/azure-site-recovery.html). 
 

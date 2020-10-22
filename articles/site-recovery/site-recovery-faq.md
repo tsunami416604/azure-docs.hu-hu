@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű által�
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950493"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369437"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések az Azure Site Recovery szolgáltatásról
 
@@ -71,7 +71,7 @@ Tekintse át [site Recovery díjszabásának](https://azure.microsoft.com/pricin
 
 A [díjszabási számológép](https://aka.ms/asr_pricing_calculator) használatával megbecsülheti a költségeket site Recovery használata közben.
 
-A költségek részletes becsléséhez futtassa a Deployment Planner eszközt a [VMware](https://aka.ms/siterecovery_deployment_planner) -hez vagy a [Hyper-V-](https://aka.ms/asr-deployment-planner)hez, és használja a [Cost becslése jelentést](https://aka.ms/asr_DP_costreport).
+A költségek részletes becsléséhez futtassa a Deployment Planner eszközt a [VMware](./site-recovery-deployment-planner.md) -hez vagy a [Hyper-V-](https://aka.ms/asr-deployment-planner)hez, és használja a [Cost becslése jelentést](./site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 
 ### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>A felügyelt lemezek mostantól a VMware virtuális gépek és a fizikai kiszolgálók replikálására szolgálnak. Felmerülhetek-e további díjak a gyorsítótárbeli Storage-fiókhoz a felügyelt lemezekkel?
@@ -357,5 +357,5 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 
 [Ismerje meg](site-recovery-whats-new.md) az új frissítéseket, és szerezze be a [kumulatív információkat](service-updates-how-to.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Olvassa el a [Site Recovery áttekintését](site-recovery-overview.md)

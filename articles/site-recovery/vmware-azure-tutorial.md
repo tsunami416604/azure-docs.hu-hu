@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd87265140a0bfaeb7ef4dada6dd76be1269654b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501201"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369369"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -52,7 +52,7 @@ Fejezze be az előző oktatóanyagokat:
 2. Az **Első lépések** területen válassza ki a Site Recovery elemet. Ezután válassza **Az infrastruktúra előkészítése** lehetőséget.
 3. A **védelmi cél**  >  ,**ahol a gépek találhatók**, válassza **a**helyszíni lehetőséget.
 4. A **Hová szeretné replikálni a gépeket?** területen válassza **Az Azure-ba** lehetőséget.
-5. A **Virtualizáltak a gépek?** területen válassza az **Igen, a VMware vSphere hipervizorral** lehetőséget. Ezután válassza az **OK** gombot.
+5. A **Virtualizáltak a gépek?** területen válassza az **Igen, a VMware vSphere hipervizorral** lehetőséget. Ez után válassza az **OK** gombot.
 
 
 
@@ -106,7 +106,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 1. A vSphere Client-leltárban kattintson a jobb gombbal a virtuális gépre, és válassza az **Edit Settings** (Beállítások szerkesztése) elemet.
 2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután kattintson a **Tovább** gombra.
 3. Válassza ki a hálózati adapter típusát és a hálózatot.
-4. A virtuális hálózati adapter a virtuális gép bekapcsolásakor való csatlakoztatásához válassza a **Connect at power on** (Csatlakoztatás a bekapcsoláskor) elemet. Válassza a **Tovább** > **Befejezés** lehetőséget. Ezután válassza az **OK** gombot.
+4. A virtuális hálózati adapter a virtuális gép bekapcsolásakor való csatlakoztatásához válassza a **Connect at power on** (Csatlakoztatás a bekapcsoláskor) elemet. Válassza a **Tovább** > **Befejezés** lehetőséget. Ez után válassza az **OK** gombot.
 
 
 ## <a name="register-the-configuration-server"></a>A konfigurációs kiszolgáló regisztrálása
@@ -128,7 +128,7 @@ A konfigurációs kiszolgáló beállítása után regisztrálja a tárolóban.
 A konfigurációs kiszolgáló beállításának és regisztrálásának befejezése. A folytatás előtt győződjön meg arról, hogy az összes [előfeltétel](vmware-azure-deploy-configuration-server.md#prerequisites) teljesül a konfigurációs kiszolgáló sikeres beállításakor.
 
 
-1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása**lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken, majd válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló az Azure-hoz való kapcsolódáshoz használ. Ez után válassza a **Mentés** lehetőséget. Ez a beállítás a konfigurálás után nem módosítható.
+1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása**lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken, majd válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló az Azure-hoz való kapcsolódáshoz használ. Kattintson a **Mentés** gombra. Ez a beállítás a konfigurálás után nem módosítható.
 2. A **Recovery Services**-tároló kiválasztása lapon válassza ki az Azure-előfizetését, valamint a megfelelő erőforráscsoportot és tárat.
 3. A **Független gyártótól származó szoftver telepítése** területen fogadja el a licencszerződést. Kattintson a **Letöltés és telepítés** gombra a MySQL-kiszolgáló telepítéséhez. Ha a MySQL-t az elérési úton helyezte, akkor ez a lépés kihagyható. [További](vmware-azure-deploy-configuration-server.md#configure-settings) információ
 4. A **Berendezés konfigurációjának ellenőrzése** területen a rendszer ellenőrzi az előfeltételeket, mielőtt továbblépne.
@@ -144,7 +144,7 @@ A konfigurációs kiszolgáló beállításának és regisztrálásának befejez
 A konfigurációs kiszolgáló regisztrálása után Site Recovery a megadott beállítások használatával csatlakozik a VMware-kiszolgálókhoz, és felfedi a virtuális gépeket.
 
 > [!NOTE]
-> Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez válassza a **konfigurációs kiszolgálók**  >  ***kiszolgáló neve***  >  **frissítési kiszolgáló**elemet.
+> Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez válassza a **konfigurációs kiszolgálók**  >  **_kiszolgáló neve_*_ > _* frissítési kiszolgáló**elemet.
 
 ## <a name="set-up-the-target-environment"></a>A célkörnyezet beállítása
 
@@ -180,11 +180,11 @@ Engedélyezze a virtuális gépek replikálását a következőképpen:
 2. A **Forrás** mezőben válassza a **Helyszíni** lehetőséget, majd a **Forrás helye** mezőben válassza ki a konfigurációs kiszolgálót.
 3. A **Gép típusa** mezőben válassza a **Virtual Machines** lehetőséget.
 4. A **vCenter/vSphere hipervizor** mezőben válassza ki a vSphere-gazdagépet vagy az azt felügyelő vCenter-kiszolgálót.
-5. Válassza ki a folyamatkiszolgálót (alapértelmezés szerint telepítve van a konfigurációs kiszolgáló virtuális gépén). Ezután válassza az **OK** gombot. Az egyes folyamatok kiszolgálóinak állapota ajánlott korlátként és egyéb paraméterekként van megjelölve. Válassza ki az egészséges folyamat kiszolgálóját. Nem lehet kiválasztani egy [kritikus](vmware-physical-azure-monitor-process-server.md#process-server-alerts) Process Servert. A hibák [elhárításához és megoldásához,](vmware-physical-azure-troubleshoot-process-server.md) **illetve** a [kibővíthető folyamat kiszolgálójának](vmware-azure-set-up-process-server-scale.md)beállításához is használható.
+5. Válassza ki a folyamatkiszolgálót (alapértelmezés szerint telepítve van a konfigurációs kiszolgáló virtuális gépén). Ez után válassza az **OK** gombot. Az egyes folyamatok kiszolgálóinak állapota ajánlott korlátként és egyéb paraméterekként van megjelölve. Válassza ki az egészséges folyamat kiszolgálóját. Nem lehet kiválasztani egy [kritikus](vmware-physical-azure-monitor-process-server.md#process-server-alerts) Process Servert. A hibák [elhárításához és megoldásához,](vmware-physical-azure-troubleshoot-process-server.md) **illetve** a [kibővíthető folyamat kiszolgálójának](vmware-azure-set-up-process-server-scale.md)beállításához is használható.
 6. A **Cél** mezőben válassza ki az előfizetést és az erőforráscsoportot, amelyben a feladatátviteli virtuális gépeket létre szeretné hozni. A Resource Manager-alapú üzemi modellt használjuk.
 7. Válassza ki azt az Azure-hálózatot és alhálózatot, amelyhez a feladatátvétel után létrejövő Azure-beli virtuális gépek csatlakoznak.
 8. Ha a hálózati beállítást minden olyan virtuális gépre alkalmazni szeretné, amelyen engedélyezte a replikációt, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Válassza a **Konfigurálás később** lehetőséget az Azure-hálózat számítógépenkénti kiválasztásához.
-9. **Virtual Machines**  >  **válassza a virtuális gépek lehetőséget**, és válassza ki a replikálni kívánt gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután válassza az **OK** gombot. Ha nem tudja megtekinteni/kijelölni egy adott virtuális gépet, [további](https://aka.ms/doc-plugin-VM-not-showing) információ a probléma megoldásáról.
+9. **Virtual Machines**  >  **válassza a virtuális gépek lehetőséget**, és válassza ki a replikálni kívánt gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ez után válassza az **OK** gombot. Ha nem tudja megtekinteni/kijelölni egy adott virtuális gépet, [további](./vmware-azure-troubleshoot-replication.md) információ a probléma megoldásáról.
 10. A **Tulajdonságok**  >  **tulajdonságok konfigurálása**területen válassza ki azt a fiókot, amelyet a Process-kiszolgáló a mobilitási szolgáltatás automatikus telepítéséhez használ a gépen.
 11. A replikációs **Beállítások**  >  **replikációs beállítások konfigurálása**területen ellenőrizze, hogy a megfelelő replikációs házirend van-e kiválasztva.
 12. Válassza a **replikáció engedélyezése**lehetőséget. Amikor engedélyezi a replikációt egy adott virtuális gépen, a Site Recovery telepíti a mobilitási szolgáltatást.
@@ -192,7 +192,7 @@ Engedélyezze a virtuális gépek replikálását a következőképpen:
 14. 15 vagy több percet is igénybe vehet, hogy a módosítások életbe lépjenek és megjelenjenek a portálon.
 15. A hozzáadott virtuális gépek figyeléséhez tekintse meg a virtuális gépek legutóbbi felderített idejét a **konfigurációs kiszolgálók**  >  **utolsó kapcsolatfelvétele**című résznél. Ha nem szeretné megvárni az ütemezett felderítést a virtuális gépek hozzáadásához, emelje ki a konfigurációs kiszolgálót (ne válassza ki), majd válassza a **Frissítés** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A replikáció engedélyezése után futtasson egy részletezést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > [!div class="nextstepaction"]
 > [Vészhelyreállítási próba végrehajtása](site-recovery-test-failover-to-azure.md)

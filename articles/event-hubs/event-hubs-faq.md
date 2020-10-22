@@ -3,12 +3,12 @@ title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 65b6fd40c66ec055a5b80ccea9d2dd9ba1510d54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94ddfbf0803ea7ab53b1b42b977a9ebdd2354bc5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729100"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369607"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -132,7 +132,7 @@ bootstrap. Servers = {a. EVENTHUBS. FQDN}: 9093 Request. timeout. MS = 60000 Sec
 
 Példa:
 
-bootstrap. Servers = dummynamespace. servicebus. Windows. net: 9093 Request. timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanizmus = PLAIN sasl.jaas.config= org. Apache. Kafka. Common. Security. Plain. PlainLoginModule szükséges username = "$ConnectionString" password = "Endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+bootstrap. Servers = dummynamespace. servicebus. Windows. net: 9093 Request. timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanizmus = PLAIN sasl.jaas.config= org. Apache. Kafka. Common. Security. Plain. PlainLoginModule szükséges username = "$ConnectionString" password = "Endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = XXXXXXXXXXXXXXXXXXXXX ";
 
 Megjegyzés: Ha sasl.jaas.config nem támogatott konfiguráció a keretrendszerben, keresse meg a SASL felhasználónevének és jelszavának beállításához használt konfigurációkat, és használja ezeket. Adja meg a felhasználónevet $ConnectionString és a jelszót a Event Hubs-kapcsolódási karakterlánchoz.
 

@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cb101e415499150cd3d825fe5f42ce0dbc766fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662529"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369794"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Hogyan biztosítja az Azure AD a felhőben szabályozott felügyeletet a helyszíni számítási feladatokhoz
 
@@ -107,7 +107,7 @@ A szervezeteknek olyan folyamatra van szükségük, amely a méretezhető hozzá
 
 Ez általában a hozzáférés-jóváhagyási döntéseket delegálja az üzleti döntéshozóknak. Emellett maguk is bejárhatják a felhasználókat. A vállalati marketing alkalmazásban található bizalmas ügyféladatokat használó felhasználóknak például ismerniük kell a vállalat szabályzatait. Emellett előfordulhat, hogy a vendég felhasználói nem tudnak az olyan szervezeten belüli adatkezelési követelményekkel kapcsolatban, amelyeknek meghívást kaptak.
 
-A szervezetek az olyan technológiákon keresztül automatizálják a hozzáférési életciklus folyamatát, mint a [dinamikus csoportok](../users-groups-roles/groups-dynamic-membership.md), a felhasználó által az [SaaS-alkalmazásokhoz](../saas-apps/tutorial-list.md)való kiépítés, illetve [a rendszer használatával a tartományok közötti Identitáskezelés (scim](../app-provisioning/use-scim-to-provision-users-and-groups.md)) szabványhoz integrált alkalmazások. A szervezetek azt is szabályozhatják [, hogy mely vendég felhasználók férhetnek hozzá a helyszíni alkalmazásokhoz](../external-identities/hybrid-cloud-to-on-premises.md). Ezek a hozzáférési jogosultságok rendszeresen áttekinthetők az ismétlődő [Azure ad hozzáférési felülvizsgálatok](../governance/access-reviews-overview.md)használatával.
+A szervezetek az olyan technológiákon keresztül automatizálják a hozzáférési életciklus folyamatát, mint a [dinamikus csoportok](../enterprise-users/groups-dynamic-membership.md), a felhasználó által az [SaaS-alkalmazásokhoz](../saas-apps/tutorial-list.md)való kiépítés, illetve [a rendszer használatával a tartományok közötti Identitáskezelés (scim](../app-provisioning/use-scim-to-provision-users-and-groups.md)) szabványhoz integrált alkalmazások. A szervezetek azt is szabályozhatják [, hogy mely vendég felhasználók férhetnek hozzá a helyszíni alkalmazásokhoz](../external-identities/hybrid-cloud-to-on-premises.md). Ezek a hozzáférési jogosultságok rendszeresen áttekinthetők az ismétlődő [Azure ad hozzáférési felülvizsgálatok](../governance/access-reviews-overview.md)használatával.
 
 ## <a name="future-directions"></a>Jövőbeli irányok
 

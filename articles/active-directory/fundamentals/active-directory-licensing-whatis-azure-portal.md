@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb0c1773a08bc934eebc4f110cec43e4b07e49e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565055"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369811"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Mi a Azure Active Directory csoportos licencelése?
 
@@ -39,7 +39,7 @@ A csoport alapú licencelés használatához a következő licencek egyike szük
 ### <a name="required-number-of-licenses"></a>Szükséges licencek száma
 A licenccel rendelkező csoportok esetében az egyes egyedi tagokhoz is licenccel kell rendelkeznie. Noha nem kell hozzárendelni az a csoport minden tagját, legalább annyi licenccel kell rendelkeznie, hogy tartalmazza az összes tagot. Ha például olyan egyedi tagokkal 1 000 rendelkezik, akik a bérlőhöz tartozó licencelt csoportok részét képezik, legalább 1 000 licenccel kell rendelkeznie a licencszerződés teljesítéséhez.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A csoportalapú licencelés fő funkciói az alábbiak:
 
@@ -65,9 +65,9 @@ Ha visszajelzést vagy szolgáltatási kérést használ, ossza meg velünk az [
 
 A csoportalapú licencelés segítségével folytatott licenckezelés egyéb forgatókönyveivel kapcsolatos további tudnivalókért tekintse át az alábbi témaköröket:
 
-* [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](../users-groups-roles/licensing-groups-assign.md)
-* [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](../users-groups-roles/licensing-groups-resolve-problems.md)
-* [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Felhasználók áttelepítése licencek között a csoport alapú licencelés használatával Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](../users-groups-roles/licensing-group-advanced.md)
-* [PowerShell-példák csoportházirend-alapú licenceléshez Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](../enterprise-users/licensing-groups-assign.md)
+* [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](../enterprise-users/licensing-groups-resolve-problems.md)
+* [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](../enterprise-users/licensing-groups-migrate-users.md)
+* [Felhasználók áttelepítése licencek között a csoport alapú licencelés használatával Azure Active Directory](../enterprise-users/licensing-groups-change-licenses.md)
+* [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](../enterprise-users/licensing-group-advanced.md)
+* [PowerShell-példák csoportházirend-alapú licenceléshez Azure Active Directory](../enterprise-users/licensing-ps-examples.md)

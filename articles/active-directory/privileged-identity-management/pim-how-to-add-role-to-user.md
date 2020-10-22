@@ -13,16 +13,16 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69884b9e07172e9b25f4c14884be8713da23cbdb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533842"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369828"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kiosztása Privileged Identity Management
 
-A Azure Active Directory (Azure AD) használatával a globális rendszergazda **állandó** Azure ad-rendszergazdai szerepkör-hozzárendeléseket végezhet. Ezek a szerepkör-hozzárendelések a [Azure Portal](../users-groups-roles/directory-assign-admin-roles.md) vagy a [PowerShell-parancsok](/powershell/module/azuread#directory_roles)használatával hozhatók létre.
+A Azure Active Directory (Azure AD) használatával a globális rendszergazda **állandó** Azure ad-rendszergazdai szerepkör-hozzárendeléseket végezhet. Ezek a szerepkör-hozzárendelések a [Azure Portal](../roles/permissions-reference.md) vagy a [PowerShell-parancsok](/powershell/module/azuread#directory_roles)használatával hozhatók létre.
 
 A Azure AD Privileged Identity Management (PIM) szolgáltatás azt is lehetővé teszi, hogy a Kiemelt szerepkörű rendszergazdák állandó rendszergazdai szerepkör-hozzárendeléseket hozzanak. Emellett a Kiemelt szerepkörű rendszergazdák **jogosultak** lehetnek az Azure ad rendszergazdai szerepköreire. Egy jogosult rendszergazda szükség esetén aktiválhatja a szerepkört, majd az engedélyeik lejárta után lejárnak.
 
@@ -30,7 +30,7 @@ A Azure AD Privileged Identity Management (PIM) szolgáltatás azt is lehetővé
 
 A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szerepkörök részét egy új verzióra frissíti a rendszer, amely megfelel az Azure-erőforrás-szerepkörökkel kapcsolatos élményeknek. Ez további funkciókat hoz létre, valamint [a meglévő API módosításait](azure-ad-roles-features.md#api-changes)is. Az új verzió bevezetését követően a cikkben ismertetett eljárások a jelenleg használt Privileged Identity Management verziójától függenek. Az ebben a szakaszban ismertetett lépéseket követve meghatározhatja, hogy a Privileged Identity Management melyik verzióját kell megadnia. A Privileged Identity Management-verziójának megismerése után kiválaszthatja a jelen cikkben szereplő, az adott verziónak megfelelő eljárásokat.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../roles/permissions-reference.md#privileged-role-administrator) szerepkörnek.
 1. Nyissa meg **Azure ad Privileged Identity Management**. Ha az Áttekintés oldal tetején található egy szalagcím, kövesse a jelen cikk **új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **előző verzió** lapon megjelenő utasításokat.
 
   [![Válassza az Azure AD > Privileged Identity Management lehetőséget.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
@@ -41,7 +41,7 @@ A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szer
 
 Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azure AD-rendszergazdai szerepkörre.
 
-1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../roles/permissions-reference.md#privileged-role-administrator) szerepkörnek.
 
     További információ a Privileged Identity Management kezeléséhez szükséges további rendszergazdai hozzáférésről: [hozzáférés biztosítása más rendszergazdák számára a Privileged Identity Management kezeléséhez](pim-how-to-give-access-to-pim.md).
 
@@ -77,7 +77,7 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
 ## <a name="assign-a-role-with-restricted-scope"></a>Korlátozott hatókörű szerepkör társítása
 
-Bizonyos szerepkörök esetében a megadott engedélyek hatóköre egyetlen felügyeleti egységre, egyszerű szolgáltatásnév vagy alkalmazásra korlátozható. Ez az eljárás egy példa arra, ha olyan szerepkört rendel hozzá, amely egy felügyeleti egység hatókörével rendelkezik. A felügyeleti egységen keresztüli hatókört támogató szerepkörök listáját a [hatókörrel rendelkező szerepkörök felügyeleti egységhez való hozzárendelésével](../users-groups-roles/roles-admin-units-assign-roles.md)foglalkozó témakörben tekintheti meg. Ez a szolgáltatás jelenleg az Azure AD-szervezeteknek van bevezetve.
+Bizonyos szerepkörök esetében a megadott engedélyek hatóköre egyetlen felügyeleti egységre, egyszerű szolgáltatásnév vagy alkalmazásra korlátozható. Ez az eljárás egy példa arra, ha olyan szerepkört rendel hozzá, amely egy felügyeleti egység hatókörével rendelkezik. A felügyeleti egységen keresztüli hatókört támogató szerepkörök listáját a [hatókörrel rendelkező szerepkörök felügyeleti egységhez való hozzárendelésével](../roles/admin-units-assign-roles.md)foglalkozó témakörben tekintheti meg. Ez a szolgáltatás jelenleg az Azure AD-szervezeteknek van bevezetve.
 
 1. Jelentkezzen be a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazdai engedélyekkel.
 
@@ -97,7 +97,7 @@ Bizonyos szerepkörök esetében a megadott engedélyek hatóköre egyetlen fel�
    - Válassza ki a szerepkör hatókörét (ebben az esetben a felügyeleti egységeket)
    - Felügyeleti egység kiválasztása a hatókörhöz
 
-A felügyeleti egységek létrehozásával kapcsolatos további információkért lásd: [felügyeleti egységek hozzáadása és eltávolítása](../users-groups-roles/roles-admin-units-manage.md).
+A felügyeleti egységek létrehozásával kapcsolatos további információkért lásd: [felügyeleti egységek hozzáadása és eltávolítása](../roles/admin-units-manage.md).
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Meglévő szerepkör-hozzárendelés frissítése vagy eltávolítása
 

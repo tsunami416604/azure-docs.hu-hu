@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797525"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369131"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>A csoport adatainak szerkesztése Azure Active Directory használatával
 
@@ -53,7 +53,7 @@ A Azure Active Directory (Azure AD) használatával szerkesztheti a csoportok be
     
     - **Tagság típusa** Módosítsa a tagság típusát. További információ a különböző rendelkezésre álló tagsági típusokról [: útmutató: alapszintű csoport létrehozása és Tagok hozzáadása a Azure Active Directory portál használatával](active-directory-groups-create-azure-portal.md).
     
-    - **Objektumazonosító.** Az objektumazonosító nem módosítható, de a csoport PowerShell-parancsaiban használható. További információ a PowerShell-parancsmagok használatáról: [Azure Active Directory parancsmagok a csoport beállításainak konfigurálásához](../users-groups-roles/groups-settings-v2-cmdlets.md).
+    - **Objektumazonosító.** Az objektumazonosító nem módosítható, de a csoport PowerShell-parancsaiban használható. További információ a PowerShell-parancsmagok használatáról: [Azure Active Directory parancsmagok a csoport beállításainak konfigurálásához](../enterprise-users/groups-settings-v2-cmdlets.md).
 
 ## <a name="next-steps"></a>Következő lépések
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
@@ -64,7 +64,7 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 - [Tagok hozzáadása vagy eltávolítása egy csoportból](active-directory-groups-members-azure-portal.md)
 
-- [A csoportban lévő felhasználók dinamikus szabályainak kezelése](../users-groups-roles/groups-create-rule.md)
+- [A csoportban lévő felhasználók dinamikus szabályainak kezelése](../enterprise-users/groups-create-rule.md)
 
 - [Csoporttagságok kezelése](active-directory-groups-membership-azure-portal.md)
 
