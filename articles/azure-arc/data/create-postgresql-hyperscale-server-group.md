@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7fdc367e3db298b60dc9a15453d58a738c13274a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108303"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364422"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport létrehozása
 
@@ -112,7 +112,7 @@ A PostgreSQL-példány végpontjait a következő parancs futtatásával tekinth
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
-Példa:
+Például:
 ```console
 [
   {
@@ -138,7 +138,7 @@ Ha Azure-beli virtuális gépet használ a teszteléshez, kövesse az alábbi ut
 
 Ha Azure-beli virtuális gépet használ, a végpont IP-címe nem fogja megjeleníteni a _nyilvános_ IP-címet. A nyilvános IP-cím megkereséséhez használja a következő parancsot:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -148,7 +148,7 @@ Előfordulhat, hogy a hálózati biztonsági átjárón (NSG) keresztül fel kel
 
 Egy szabály beállításához ismernie kell a NSG nevét. A NSG az alábbi parancs használatával határozhatja meg:
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -156,7 +156,7 @@ Ha megkapta a NSG nevét, a következő parancs használatával adhat hozzá tű
 
 Cserélje le a--Destination-port-Ranges paraméter értékét a lenti "azdata arc postgres Server List" parancsból kapott portszámra.
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 
@@ -169,7 +169,7 @@ Nyissa meg Azure Data Studiot, és kapcsolódjon a példányhoz a fenti külső 
 
 Ne feledje, hogy ha Azure-beli virtuális gépet használ, szüksége lesz a _nyilvános_ IP-címére, amely a következő parancs segítségével érhető el:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -183,7 +183,7 @@ Most már csatlakozhat bármelyik psql:
 psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el a Azure Database for PostgreSQL nagy kapacitású kapcsolatos fogalmakat és útmutatókat az adatok több PostgreSQL nagy kapacitású-csomóponton keresztüli terjesztéséhez, valamint a Azure Database for PostgreSQL nagy kapacitású teljesítményének kihasználása érdekében. :
     * [Csomópontok és táblák](../../postgresql/concepts-hyperscale-nodes.md)

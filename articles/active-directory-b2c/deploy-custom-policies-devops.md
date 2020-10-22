@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 411fa207323a9bff6cfcc3b17769203c444dd844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dba5f96d90304418d7ebd297419c1f36244f868
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388680"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363929"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Egyéni szabályzatok üzembe helyezése az Azure-folyamatokkal
 
@@ -33,7 +33,7 @@ Három fő lépés szükséges ahhoz, hogy lehetővé tegye az Azure-folyamatok 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure ad B2C bérlő](tutorial-create-tenant.md)és a címtárbeli felhasználó hitelesítő adatai a [B2C IEF házirend-rendszergazdai](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) szerepkörrel
+* [Azure ad B2C bérlő](tutorial-create-tenant.md)és a címtárbeli felhasználó hitelesítő adatai a [B2C IEF házirend-rendszergazdai](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) szerepkörrel
 * A bérlőre feltöltött [Egyéni szabályzatok](custom-policy-get-started.md)
 * A bérlőben regisztrált [felügyeleti alkalmazás](microsoft-graph-get-started.md) a Microsoft Graph API Permission *Policy. ReadWrite. TrustFramework*
 * [Azure-folyamat](https://azure.microsoft.com/services/devops/pipelines/)és hozzáférés egy [Azure DevOps Services-projekthez][devops-create-project]
@@ -151,7 +151,7 @@ Ezután adjon hozzá egy feladatot a házirendfájl telepítéséhez.
     * **Feladat verziója**: 2. *
     * **Megjelenítendő név**: annak a szabályzatnak a neve, amelyet a feladatnak fel kell töltenie. Például *B2C_1A_TrustFrameworkBase*.
     * **Típus**: fájl elérési útja
-    * **Parancsfájl elérési útja**: válassza a három pontot (***..***.), keresse meg a *parancsfájlok* mappát, majd válassza ki a *DeployToB2C.ps1* fájlt.
+    * **Parancsfájl elérési útja**: válassza a három pontot (**_..._* _), keresse meg a _Scripts * mappát, majd válassza ki a *DeployToB2C.ps1* fájlt.
     * **Argumentumok**
 
         Adja meg a következő értékeket az **argumentumokhoz**. Cserélje le az `{alias-name}` értéket az előző szakaszban megadott aliasra.
@@ -207,7 +207,7 @@ A kiadási folyamat tesztelése:
 
 Egy értesítési szalagcím jelenik meg, amely szerint a kiadás várólistára került. Az állapot megtekintéséhez válassza ki a hivatkozást az értesítési szalagcímben, vagy válassza ki a listából a **kiadások** lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk:
 
