@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5a983931bd372931eacff2f7b21f3358f536046
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278787"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362926"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégmeghívási jogosultság kezelése
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a Azure Active Directory (Azure AD) 
 
 Alapértelmezés szerint a címtárban lévő összes felhasználó és vendég meghívhatja a vendégeket, még akkor is, ha nincsenek rendszergazdai szerepkörhöz rendelve. A külső együttműködési beállítások lehetővé teszik a vendég meghívások be-és kikapcsolását a szervezet különböző típusaihoz. Az egyes felhasználóknak küldött meghívókat olyan szerepkörök hozzárendelésével is delegálhatja, amelyek lehetővé teszik a vendégek meghívását.
 
-Az Azure AD lehetővé teszi az Azure ad-címtárban lévő külső vendégek által megjelenített felhasználók korlátozását. Alapértelmezés szerint a vendég felhasználók korlátozott jogosultsági szintre vannak beállítva, amelyek letiltják a felhasználók, csoportok vagy más címtárbeli erőforrások számbavételét, de lehetővé teszi, hogy a nem rejtett csoportok tagságát lássák. Az új előzetes verzió lehetővé teszi, hogy a vendég hozzáférését még tovább korlátozza, hogy a vendégek csak a saját profiljuk adatait tudják megtekinteni. Részletekért lásd: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió)](../users-groups-roles/users-restrict-guest-permissions.md).
+Az Azure AD lehetővé teszi az Azure ad-címtárban lévő külső vendégek által megjelenített felhasználók korlátozását. Alapértelmezés szerint a vendég felhasználók korlátozott jogosultsági szintre vannak beállítva, amelyek letiltják a felhasználók, csoportok vagy más címtárbeli erőforrások számbavételét, de lehetővé teszi, hogy a nem rejtett csoportok tagságát lássák. Az új előzetes verzió lehetővé teszi, hogy a vendég hozzáférését még tovább korlátozza, hogy a vendégek csak a saját profiljuk adatait tudják megtekinteni. Részletekért lásd: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió)](../enterprise-users/users-restrict-guest-permissions.md).
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>B2B külső együttműködési beállítások konfigurálása
 

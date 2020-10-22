@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361908"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362569"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Oktatóanyag: a log Analytics varázsló konfigurálása
 
@@ -45,7 +45,7 @@ Ismerkedjen meg a következő cikkekkel:
 
 - [A tevékenységek naplóinak integrálása a Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Vészhelyzeti hozzáférési fiók kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)
+- [Vészhelyzeti hozzáférési fiók kezelése az Azure AD-ben](../roles/security-emergency-access.md)
 
 - [KQL– rövid áttekintés](/azure/data-explorer/kql-quick-reference)
 
@@ -96,11 +96,11 @@ A log Analytics-munkaterület konfigurálása két fő lépésből áll:
 
 7. Keresse meg az **Azure Active Directoryt**.
 
-    ![Azure aktív Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 8. A **figyelés** szakaszban kattintson a **diagnosztikai beállítások**elemre.
 
-    ![Azure aktív Firectory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
 9. A **diagnosztikai beállítások** lapon kattintson a **diagnosztikai beállítás hozzáadása**elemre.
 
@@ -128,7 +128,7 @@ Ez az eljárás bemutatja, hogyan futtathat lekérdezéseket a **Kusto lekérdez
 
 2. Keresse meg az **Azure Active Directoryt**.
 
-    ![Azure aktív Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. A **figyelés** szakaszban kattintson a **naplók**elemre.
 
@@ -210,7 +210,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
 2. Keresse meg az **Azure Active Directoryt**.
 
-    ![Azure aktív Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. A **figyelés** szakaszban kattintson a **naplók**elemre.
 
@@ -268,7 +268,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     3. Kattintson a **Felülvizsgálat + létrehozás** elemre. 
 
-    4. Kattintson a **Létrehozás** elemre.
+    4. Kattintson a **Létrehozás** gombra.
 
 
 15. A **művelet testreszabása**területen hajtsa végre a következő lépéseket:
@@ -301,7 +301,7 @@ Ez az eljárás bemutatja, hogyan hozhat létre egy új munkafüzetet a gyors ü
 
 2. Keresse meg az **Azure Active Directoryt**.
 
-    ![Azure aktív Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. A **figyelés** szakaszban kattintson a **munkafüzetek**elemre.
 
@@ -353,7 +353,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 2. Keresse meg az **Azure Active Directoryt**.
 
-    ![Azure aktív Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. A **figyelés** szakaszban kattintson a **munkafüzetek**elemre.
 
@@ -392,7 +392,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan kezelheti az eszközök identitásait a Azure Portal használatával.
 > [!div class="nextstepaction"]

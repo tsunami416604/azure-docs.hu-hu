@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c761be04c7d31567e727e93b84c98a1b3510e3d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979874"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362552"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -124,20 +124,20 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 
 | Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot | Hozzáadhat Microsoft 365 csoportot | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Intune-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Exchange-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
-| [Teams szolgáltatás rendszergazdája](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
-| [SharePoint-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  | :heavy_check_mark: |
-| [Alkalmazás-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
-| [Cloud Application Administrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
+| [Globális rendszergazda](../roles/permissions-reference.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Felhasználói rendszergazda](../roles/permissions-reference.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Intune-rendszergazda](../roles/permissions-reference.md) | Katalógus tulajdonosa | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [Exchange-rendszergazda](../roles/permissions-reference.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
+| [Teams szolgáltatás rendszergazdája](../roles/permissions-reference.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
+| [SharePoint-rendszergazda](../roles/permissions-reference.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  | :heavy_check_mark: |
+| [Alkalmazás-rendszergazda](../roles/permissions-reference.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
+| [Cloud Application Administrator](../roles/permissions-reference.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
 | Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha az alkalmazás tulajdonosa |  |
 
 > [!NOTE]
-> Ha a felhasználó egy biztonsági csoportot vagy Microsoft 365 csoportot ad hozzá, akkor a csoport nem lehet szerepkörhöz hozzárendelhető. Ha a felhasználó olyan csoportot ad hozzá, amely a hozzáférési csomag létrehozásakor szerepkörhöz rendelhető, akkor a szerepkörhöz hozzárendelhető csoport tulajdonosának is kell lennie. További információ: [a szerepkörhöz hozzárendelhető csoport létrehozása Azure Active Directoryban](../users-groups-roles/roles-groups-create-eligible.md).
+> Ha a felhasználó egy biztonsági csoportot vagy Microsoft 365 csoportot ad hozzá, akkor a csoport nem lehet szerepkörhöz hozzárendelhető. Ha a felhasználó olyan csoportot ad hozzá, amely a hozzáférési csomag létrehozásakor szerepkörhöz rendelhető, akkor a szerepkörhöz hozzárendelhető csoport tulajdonosának is kell lennie. További információ: [a szerepkörhöz hozzárendelhető csoport létrehozása Azure Active Directoryban](../roles/groups-create-eligible.md).
 
-Egy feladat legkevésbé Kiemelt szerepkörének meghatározásához [a rendszergazdai szerepkörök a Azure Active Directoryban](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)is hivatkozhatnak a rendszergazda szerepkörre.
+Egy feladat legkevésbé Kiemelt szerepkörének meghatározásához [a rendszergazdai szerepkörök a Azure Active Directoryban](../roles/delegate-by-task.md#entitlement-management)is hivatkozhatnak a rendszergazda szerepkörre.
 
 ## <a name="next-steps"></a>Következő lépések
 

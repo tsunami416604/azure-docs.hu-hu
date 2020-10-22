@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e13fe634db49dcc3f015eb90410c3b7753c8363
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: df1285145d0e8b04bf743a3967099d27d1195269
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318062"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362790"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -183,7 +183,7 @@ Az ingyenes bérlőket használó ügyfeleink akár 7 napig is hozzáférhetnek 
 **Szolgáltatás kategóriája:** Csoport kezelése  
 A **termék képességei:** Együttműködés
 
-Annak érdekében, hogy az ügyfelek rugalmasabban hozzanak létre olyan, címtárra kiterjedő csoportokat, amelyek megfelelnek az igényeiknek **, a csoport** **Groups**  >  **általános** beállításai közül a Azure Portal, a [dinamikus csoportokra vonatkozó dokumentációra](../users-groups-roles/groups-dynamic-membership.md)mutató hivatkozást váltottunk ki. Továbbfejlesztettük a dokumentációt, hogy több útmutatást is tartalmazzon, így a rendszergazdák létrehozhatnak olyan összes felhasználói csoportot, amely tartalmazza vagy kizárják a vendég felhasználókat.
+Annak érdekében, hogy az ügyfelek rugalmasabban hozzanak létre olyan, címtárra kiterjedő csoportokat, amelyek megfelelnek az igényeiknek **, a csoport** **Groups**  >  **általános** beállításai közül a Azure Portal, a [dinamikus csoportokra vonatkozó dokumentációra](../enterprise-users/groups-dynamic-membership.md)mutató hivatkozást váltottunk ki. Továbbfejlesztettük a dokumentációt, hogy több útmutatást is tartalmazzon, így a rendszergazdák létrehozhatnak olyan összes felhasználói csoportot, amely tartalmazza vagy kizárják a vendég felhasználókat.
 
 ---
 
@@ -739,7 +739,7 @@ További információ: [frissítés a havi aktív felhasználói számlázási m
 
 A 2019-es verzióban az alábbi 35 új alkalmazásokat bővítettük az App Gallery összevonási támogatásával:
 
-[Válság esetén – mobil](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno Journey](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [tapintat](https://tact.ai/assistant/), [OpusCapita cash Management](http://cm1.opuscapita.com/tenantname), [Salestim](https://prd.salestim.io/forms), [Learnster](../saas-apps/learnster-tutorial.md), [Dynatrace](../saas-apps/dynatrace-tutorial.md), HunchBuzz, [Freshworks](https://login.hunchbuzz.com/integrations/azure/process), [eCornell](../saas-apps/freshworks-tutorial.md), [eCornell](../saas-apps/ecornell-tutorial.md) [SHIPHAZMAT](../saas-apps/shiphazmat-tutorial.md), [Netskope Cloud Security](../saas-apps/netskope-cloud-security-tutorial.md), [tartalom](../saas-apps/contentful-tutorial.md), [Bindtuning](https://bindtuning.com/login), [HireVue koordináta – Európa](https://www.hirevue.com/), [HireVue koordináta-USOnly](https://www.hirevue.com/), [HIREVUE koordináta-USA](https://www.hirevue.com/), [WittyParrot Knowledge Box](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), [Cloudmore](../saas-apps/cloudmore-tutorial.md), [Visit.org](../saas-apps/visitorg-tutorial.md), [Cambium Xirrus EasyPass portál](https://login.xirrus.com/azure-signup), [paylocityben](../saas-apps/paylocity-tutorial.md), [mail LUCK!](../saas-apps/mail-luck-tutorial.md), [teamer](https://theteamie.com/), [a csapatok sebessége](https://velocity.peakup.org/teams/login), [signl4 használatával](https://account.signl4.com/manage), [Emődi Navigálás IMPL](../saas-apps/eab-navigate-impl-tutorial.md), [ScreenMeet](https://console.screenmeet.com/), [Omega pont](https://pi.ompnt.com/), [beszélő e-mail az Intune-hoz (iPhone)](https://speaking.email/FAQ/98/email-access-via-microsoft-intune), [beszéd e-mailek az Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct), [ExactCare egyszeri bejelentkezés](../saas-apps/exactcare-sso-tutorial.md) [,](https://qubie.azurewebsites.net/static/adminTab/authorize.html) [iHealthHome](https://ihealthnav.com/account/signin)
+[Válság esetén – mobil](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno Journey](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [tapintat](https://tact.ai/assistant/), [OpusCapita cash Management](http://cm1.opuscapita.com/tenantname), [Salestim](https://www.salestim.com/), [Learnster](../saas-apps/learnster-tutorial.md), [Dynatrace](../saas-apps/dynatrace-tutorial.md), HunchBuzz, [Freshworks](https://login.hunchbuzz.com/integrations/azure/process), [eCornell](../saas-apps/freshworks-tutorial.md), [eCornell](../saas-apps/ecornell-tutorial.md) [SHIPHAZMAT](../saas-apps/shiphazmat-tutorial.md), [Netskope Cloud Security](../saas-apps/netskope-cloud-security-tutorial.md), [tartalom](../saas-apps/contentful-tutorial.md), [Bindtuning](https://bindtuning.com/login), [HireVue koordináta – Európa](https://www.hirevue.com/), [HireVue koordináta-USOnly](https://www.hirevue.com/), [HIREVUE koordináta-USA](https://www.hirevue.com/), [WittyParrot Knowledge Box](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), [Cloudmore](../saas-apps/cloudmore-tutorial.md), [Visit.org](../saas-apps/visitorg-tutorial.md), [Cambium Xirrus EasyPass portál](https://login.xirrus.com/azure-signup), [paylocityben](../saas-apps/paylocity-tutorial.md), [mail LUCK!](../saas-apps/mail-luck-tutorial.md), [teamer](https://theteamie.com/), [a csapatok sebessége](https://velocity.peakup.org/teams/login), [signl4 használatával](https://account.signl4.com/manage), [Emődi Navigálás IMPL](../saas-apps/eab-navigate-impl-tutorial.md), [ScreenMeet](https://console.screenmeet.com/), [Omega pont](https://pi.ompnt.com/), [beszélő e-mail az Intune-hoz (iPhone)](https://speaking.email/FAQ/98/email-access-via-microsoft-intune), [beszéd e-mailek az Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct), [ExactCare egyszeri bejelentkezés](../saas-apps/exactcare-sso-tutorial.md) [,](https://qubie.azurewebsites.net/static/adminTab/authorize.html) [iHealthHome](https://ihealthnav.com/account/signin)
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
 
@@ -774,7 +774,7 @@ Az Office 365-csoportok elévülési szabályzata a tagjai által aktívan haszn
 
 Ez a fejlesztés segít csökkenteni a csoport lejárati értesítéseit, és segít biztosítani, hogy az aktív csoportok továbbra is elérhetők legyenek. Ha már rendelkezik aktív lejárati házirenddel az Office 365-csoportok számára, akkor semmit nem kell tennie az új funkció bekapcsolásához.
 
-További információ: [az Office 365-csoportok elévülési szabályzatának konfigurálása](../users-groups-roles/groups-lifecycle.md).
+További információ: [az Office 365-csoportok elévülési szabályzatának konfigurálása](../enterprise-users/groups-lifecycle.md).
 
 ---
 
@@ -822,7 +822,7 @@ A saját profil (előzetes verzió) felülettel kapcsolatos további informáci�
 
 - A csoporttagok listájának letöltése egy adott csoportra vonatkozóan.
 
-További információ: [tömeges Hozzáadás](../users-groups-roles/groups-bulk-import-members.md), tagok tömeges [eltávolítása](../users-groups-roles/groups-bulk-remove-members.md), tagok [tömeges letöltése](../users-groups-roles/groups-bulk-download-members.md)és csoportos [letöltési csoportok listája](../users-groups-roles/groups-bulk-download.md).
+További információ: [tömeges Hozzáadás](../enterprise-users/groups-bulk-import-members.md), tagok tömeges [eltávolítása](../enterprise-users/groups-bulk-remove-members.md), tagok [tömeges letöltése](../enterprise-users/groups-bulk-download-members.md)és csoportos [letöltési csoportok listája](../enterprise-users/groups-bulk-download.md).
 
 ---
 
@@ -861,7 +861,7 @@ A globális olvasó szerepkör az új Microsoft 365 felügyeleti központtal, az
 >[!NOTE]
 > A nyilvános előzetes verzió elején a globális olvasó szerepkör nem fog működni a következővel: SharePoint, Privileged Access Management, Ügyfélszéf, érzékenységi címkék, csapatok életciklusa, csapatok jelentése & a Call Analytics, a Teams IP Phone-eszközök kezelése és a Teams app Catalog.
 
-További információ: [rendszergazdai szerepkör engedélyei Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+További információ: [rendszergazdai szerepkör engedélyei Azure Active Directory](../roles/permissions-reference.md).
 
 ---
 
@@ -941,7 +941,7 @@ További információ: [csoportok kezelése a Azure Portalban](./active-director
 
 **Írja be a következőt:** Új szolgáltatás **szolgáltatásának kategóriája:** Azure ad-szerepkörök a **termék képességei:** Access Control
 
-Az Azure AD P1 vagy P2 előfizetéssel elérhető egyéni szerepkörök mostantól részletes hozzáférést biztosíthatnak, ha a szerepkör-definíciókat meghatározott engedélyekkel hozza létre, majd hozzárendeli a szerepköröket adott erőforrásokhoz. Jelenleg egyéni szerepköröket hozhat létre az alkalmazások regisztrálásának kezeléséhez szükséges engedélyekkel, majd hozzárendelheti a szerepkört egy adott alkalmazáshoz. További információ az egyéni szerepkörökről: [Egyéni rendszergazdai szerepkörök Azure Active Directoryban (előzetes verzió)](../users-groups-roles/roles-custom-overview.md).
+Az Azure AD P1 vagy P2 előfizetéssel elérhető egyéni szerepkörök mostantól részletes hozzáférést biztosíthatnak, ha a szerepkör-definíciókat meghatározott engedélyekkel hozza létre, majd hozzárendeli a szerepköröket adott erőforrásokhoz. Jelenleg egyéni szerepköröket hozhat létre az alkalmazások regisztrálásának kezeléséhez szükséges engedélyekkel, majd hozzárendelheti a szerepkört egy adott alkalmazáshoz. További információ az egyéni szerepkörökről: [Egyéni rendszergazdai szerepkörök Azure Active Directoryban (előzetes verzió)](../roles/custom-overview.md).
 
 Ha további engedélyekre vagy erőforrásokra van szüksége, amelyek jelenleg nem láthatók, küldjön visszajelzést az [Azure feedback-webhelyre](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) , és felvesszük a kérést az Update Road-térképre.
 
@@ -1044,7 +1044,7 @@ A AzureAD és a AzureAD előzetes verziójának PowerShell-moduljainak új friss
 
 A Azure Portal elérhetővé tettük a dinamikus csoportházirend-szerkesztőt, amely megkönnyíti az új szabályok egyszerűbb beállítását, vagy a meglévő szabályok módosítását. Ez a kialakítás lehetővé teszi, hogy csak egy legfeljebb öt kifejezéssel hozzon létre szabályokat. Az eszköz tulajdonságainak listáját is frissítettük, hogy eltávolítsa az elavult eszköz tulajdonságait.
 
-További információ: a [dinamikus tagsági szabályok kezelése](../users-groups-roles/groups-dynamic-membership.md).
+További információ: a [dinamikus tagsági szabályok kezelése](../enterprise-users/groups-dynamic-membership.md).
 
 ---
 
@@ -1530,7 +1530,7 @@ Az Office 365-csoportok elnevezési házirendjét kétféleképpen állíthatja 
 
 - Feltöltheti a szervezete számára a tiltott szavak testreszabott készletét, amely nem engedélyezett a csoportok neveiben (például "VEZÉRIGAZGATÓ, bérszámfejtés, HR").
 
-További információ: az [Office 365-csoportok elnevezési szabályzatának érvényesítése](../users-groups-roles/groups-naming-policy.md).
+További információ: az [Office 365-csoportok elnevezési szabályzatának érvényesítése](../enterprise-users/groups-naming-policy.md).
 
 ---
 
@@ -1594,7 +1594,7 @@ Az Office 365-csoportok elnevezési házirendjét kétféleképpen állíthatja 
 
 - Feltöltheti a szervezete számára a tiltott szavak testreszabott készletét, amely nem engedélyezett a csoportok neveiben (például "VEZÉRIGAZGATÓ, bérszámfejtés, HR").
 
-További információ: az [Office 365-csoportok elnevezési szabályzatának érvényesítése](../users-groups-roles/groups-naming-policy.md).
+További információ: az [Office 365-csoportok elnevezési szabályzatának érvényesítése](../enterprise-users/groups-naming-policy.md).
 
 ---
 
@@ -1740,7 +1740,7 @@ Ha többet szeretne megtudni arról, hogyan védheti meg a szervezetét a felhas
 
 Most már megtekintheti és kezelheti a törölt Office 365-csoportokat az Azure AD-portálon. Ez a módosítás segít megtekinteni, hogy mely csoportok állíthatók vissza a visszaállításhoz, és hogy véglegesen törli azokat a csoportokat, amelyek nem szükségesek a szervezet számára.
 
-További információ: [lejárt vagy törölt csoportok visszaállítása](../users-groups-roles/groups-restore-deleted.md#view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore).
+További információ: [lejárt vagy törölt csoportok visszaállítása](../enterprise-users/groups-restore-deleted.md#view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore).
 
 ---
 
@@ -2097,7 +2097,7 @@ További információ a jelszavak alaphelyzetbe állítására szolgáló Micros
 
 A rendszergazdák a felhőalapú eszköz rendszergazdai feladatainak elvégzéséhez rendelhetnek felhasználókat az új felhőalapú eszköz rendszergazdai szerepkörhöz. A Cloud Device Administrators szerepkörrel rendelkező felhasználók engedélyezheti, letilthatja és törölheti az eszközöket az Azure AD-ben, valamint beolvashatja a Windows 10 BitLocker-kulcsokat (ha vannak) a Azure Portal.
 
-További információ a szerepkörökről és az engedélyekről: [rendszergazdai szerepkörök hozzárendelésének Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+További információ a szerepkörökről és az engedélyekről: [rendszergazdai szerepkörök hozzárendelésének Azure Active Directory](../roles/permissions-reference.md)
 
 ---
 
@@ -2226,7 +2226,7 @@ További információ: [Azure ad Domain Services értesítési beállításai](.
 
 Ezzel a módosítással gyorsabban törölheti az egyéni tartományneveket, ha a szervezet már nem használja a nevet, vagy ha a tartománynevet egy másik Azure AD-vel kell használnia.
 
-További információ: [Egyéni tartománynév törlése](../users-groups-roles/domains-manage.md#delete-a-custom-domain-name).
+További információ: [Egyéni tartománynév törlése](../enterprise-users/domains-manage.md#delete-a-custom-domain-name).
 
 ---
 
@@ -2246,7 +2246,7 @@ A szerepkörök a következők:
 
 - Felhasználói rendszergazda
 
-További információ: [dinamikus csoport létrehozása és állapotának ellenõrzése](../users-groups-roles/groups-create-rule.md)
+További információ: [dinamikus csoport létrehozása és állapotának ellenõrzése](../enterprise-users/groups-create-rule.md)
 
 ---
 
@@ -2303,7 +2303,7 @@ A Azure Portal **bejelentkezési** lapjának új **Hibaelhárítás és támogat
 
 Ezzel a frissítéssel mostantól az **Egyéni bővítmény tulajdonságainak beolvasása** hivatkozásra kattintva megtekintheti a dinamikus felhasználói csoport-szerkesztőt, megadhatja az egyedi alkalmazás azonosítóját, és megkaphatja a dinamikus tagsági szabály létrehozásakor használni kívánt egyéni bővítmény-tulajdonságok teljes listáját. Ez a lista az alkalmazás új egyéni bővítmény-tulajdonságainak beolvasására is frissíthető.
 
-A dinamikus tagsági szabályok egyéni bővítmény-tulajdonságainak használatával kapcsolatos további információkért lásd a [bővítmény tulajdonságai és az egyéni bővítmény tulajdonságai](../users-groups-roles/groups-dynamic-membership.md#extension-properties-and-custom-extension-properties) című témakört.
+A dinamikus tagsági szabályok egyéni bővítmény-tulajdonságainak használatával kapcsolatos további információkért lásd a [bővítmény tulajdonságai és az egyéni bővítmény tulajdonságai](../enterprise-users/groups-dynamic-membership.md#extension-properties-and-custom-extension-properties) című témakört.
 
 ---
 
@@ -2807,7 +2807,7 @@ A rendszergazdák mostantól a globális rendszergazdai szerepkör kiosztása n�
 
     - **Vállalati alkalmazás tulajdonosa.** Lehetővé teszi a vállalati alkalmazások számos aspektusának kezelését, beleértve az egyszeri bejelentkezési beállításokat, az alkalmazás-hozzárendeléseket és a belefoglalást (kivéve az Azure AD-erőforrásokat).
 
-A nyilvános előzetes verzióval kapcsolatos további információkért tekintse [meg az Azure ad delegált alkalmazás-felügyeleti szerepkörök nyilvános előzetesét.](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) blog. További információ a szerepkörökről és az engedélyekről: [rendszergazdai szerepkörök Kiosztása Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md).
+A nyilvános előzetes verzióval kapcsolatos további információkért tekintse [meg az Azure ad delegált alkalmazás-felügyeleti szerepkörök nyilvános előzetesét.](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) blog. További információ a szerepkörökről és az engedélyekről: [rendszergazdai szerepkörök Kiosztása Azure Active Directoryban](../roles/permissions-reference.md).
 
 ---
 
@@ -3254,7 +3254,7 @@ További információkért lásd: [a munkanap felhasználói attribútumai list�
 Megváltoztathatja, hogy a tagság hogyan legyen kezelve egy csoportban. Ez akkor hasznos, ha meg szeretné tartani a csoport nevét és AZONOSÍTÓját a rendszeren, így a csoportra vonatkozó meglévő hivatkozások továbbra is érvényesek; új csoport létrehozásához szükség lesz a hivatkozások frissítésére.
 Frissítettük az Azure AD felügyeleti központot a funkció támogatásához. Az ügyfelek mostantól a meglévő csoportokat a dinamikus tagságból a hozzárendelt tagságra válthatják, és fordítva. A meglévő PowerShell-parancsmagok továbbra is elérhetők.
 
-További információ: a [Azure Active Directory csoportok dinamikus tagsági szabályai](../users-groups-roles/groups-dynamic-membership.md)
+További információ: a [Azure Active Directory csoportok dinamikus tagsági szabályai](../enterprise-users/groups-dynamic-membership.md)
 
 ---
 
@@ -3940,7 +3940,7 @@ A Azure AD Privileged Identity Management segítségével a szervezeten belül f
 
 - Előfizetések
 - Erőforráscsoportok
-- Virtual machines (Virtuális gépek)
+- Virtuális gépek
 
 Az Azure RBAC funkciót használó Azure Portal összes erőforrása kihasználhatja a Azure AD Privileged Identity Management által kínált biztonsági és életciklus-kezelési képességek előnyeit.
 

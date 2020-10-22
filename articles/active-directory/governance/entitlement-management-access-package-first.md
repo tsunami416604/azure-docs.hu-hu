@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c578d9df8c008d73460801547e6b9361e60baa8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b4030dedfb0d7308bb5a0f7a86bc49ee168e6d0c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318003"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362807"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -67,7 +67,7 @@ Egy erőforrás-címtárhoz egy vagy több megosztani kívánt erőforrás tarto
 
 1. Hozza létre vagy konfigurálja a következő két felhasználót. Ezeket a neveket vagy más neveket is használhatja. A **Rendszergazda1** lehet az a felhasználó, aki jelenleg be van jelentkezve.
 
-    | Name | Címtárszerepkör |
+    | Név | Címtárszerepkör |
     | --- | --- |
     | **Rendszergazda1** | Globális rendszergazda<br/>-vagy-<br/>Felhasználói rendszergazda |
     | **Requestor1** | Felhasználó |
@@ -118,10 +118,10 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
 
     ![Új hozzáférési csomag – erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles.png)
     >[!IMPORTANT]
-    >A hozzáférési csomaghoz hozzáadott szerepkör-hozzárendelhető csoportok a **szerepkörökhöz hozzárendelhető**altípussal lesznek jelezve. Az Azure AD-szerepkörökhöz hozzárendelhető csoportokkal kapcsolatos további részletekért tekintse meg a [szerepkörhöz hozzárendelhető csoport létrehozása](../users-groups-roles/roles-groups-create-eligible.md) a Azure Active Directoryban című témakört. Ha nem jelenik meg a felvenni kívánt szerepkörrel rendelkező csoport, vagy ha nem tudja felvenni, győződjön meg arról, hogy rendelkezik a szükséges Azure AD-szerepkörrel és jogosultság-kezelési szerepkörrel a művelet végrehajtásához. Előfordulhat, hogy meg kell kérnie valakit, aki a szükséges szerepkörökkel hozzáadja az erőforrást a katalógushoz. További információ: a [szükséges szerepkörök az erőforrások katalógushoz való hozzáadásához](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
+    >A hozzáférési csomaghoz hozzáadott szerepkör-hozzárendelhető csoportok a **szerepkörökhöz hozzárendelhető**altípussal lesznek jelezve. Az Azure AD-szerepkörökhöz hozzárendelhető csoportokkal kapcsolatos további részletekért tekintse meg a [szerepkörhöz hozzárendelhető csoport létrehozása](../roles/groups-create-eligible.md) a Azure Active Directoryban című témakört. Ha nem jelenik meg a felvenni kívánt szerepkörrel rendelkező csoport, vagy ha nem tudja felvenni, győződjön meg arról, hogy rendelkezik a szükséges Azure AD-szerepkörrel és jogosultság-kezelési szerepkörrel a művelet végrehajtásához. Előfordulhat, hogy meg kell kérnie valakit, aki a szükséges szerepkörökkel hozzáadja az erőforrást a katalógushoz. További információ: a [szükséges szerepkörök az erőforrások katalógushoz való hozzáadásához](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
-    > [Dinamikus csoportok](../users-groups-roles/groups-create-rule.md) használatakor a tulajdonoson kívül más szerepkörök is nem érhetők el. Ez az elvárt működés.
+    > [Dinamikus csoportok](../enterprise-users/groups-create-rule.md) használatakor a tulajdonoson kívül más szerepkörök is nem érhetők el. Ez az elvárt működés.
     > ![A forgatókönyv áttekintése](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
     
 

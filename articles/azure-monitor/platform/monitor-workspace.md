@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: a4f578ca2e9fc448fb85b803cce46974a8c2e4dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d77b4b5824c4426f106d10ca246c5b0d5e76327a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326006"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372259"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület állapotának figyelése Azure Monitor
 A Log Analytics munkaterület teljesítményének és rendelkezésre állásának Azure Monitor-ban való fenntartásához képesnek kell lennie proaktív módon észlelni a felmerülő problémákat. Ez a cikk azt ismerteti, hogyan figyelheti a Log Analytics munkaterület állapotát a [műveleti](/azure-monitor/reference/tables/operation) tábla adatai alapján. Ez a táblázat minden Log Analytics-munkaterület része, és a munkaterületen előforduló hibákat és figyelmeztetéseket tartalmazza. Rendszeresen tekintse át ezeket az adatait, és hozzon létre riasztásokat, amelyekkel proaktívan értesítheti, ha vannak olyan fontos incidensek a munkaterületen.
@@ -55,19 +55,19 @@ A betöltési műveletek olyan problémák, amelyek az adatok betöltése során
 |:---|:---|:---|:---|
 | Egyéni napló | Hiba   | Az egyéni mezőkhöz tartozó oszlopok száma elérte a korlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
 | Egyéni napló | Hiba   | Az egyéni naplók betöltése sikertelen volt. | |
-| Egyéni napló | Hiba   | Metaadatok. | |
-| Adatok | Hiba   | Az rendszer eldobta az adatmennyiséget, mert a kérést a beállított napok száma előtt hozták létre. | [A használat és a költségek felügyelete Azure Monitor-naplókkal](manage-cost-storage.md#alert-when-daily-cap-reached)
+| Metaadatok. | Hiba | Konfigurációs hiba észlelhető. | |
+| Adatgyűjtés | Hiba   | Az rendszer eldobta az adatmennyiséget, mert a kérést a beállított napok száma előtt hozták létre. | [A használat és a költségek felügyelete Azure Monitor-naplókkal](manage-cost-storage.md#alert-when-daily-cap-reached)
 | Adatgyűjtés | Információ    | A rendszer a gyűjtemény számítógépének konfigurációját észlelte.| |
 | Adatgyűjtés | Információ    | Az adatgyűjtés új nap miatt megkezdődött. | [A használat és a költségek felügyelete Azure Monitor-naplókkal](/manage-cost-storage.md#alert-when-daily-cap-reached) |
 | Adatgyűjtés | Figyelmeztetés | Az adatgyűjtés a napi korlát miatt leállt.| [A használat és a költségek felügyelete Azure Monitor-naplókkal](/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Adatfeldolgozás | Hiba   | Érvénytelen JSON-formátum. | [Naplóbejegyzések küldése a Azure Monitornak a HTTP-adatgyűjtő API-val (nyilvános előzetes verzió)](data-collector-api.md#request-body) | 
+| Adatfeldolgozás | Figyelmeztetés | Az érték a megengedett maximális méretre van kimetszve. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
+| Adatfeldolgozás | Figyelmeztetés | A mező értéke elérte a méretkorlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) | 
 | Betöltési arány | Információ | A betöltési arány a 70%-ra közeledik. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
 | Betöltési arány | Figyelmeztetés | A betöltési arány elérte a korlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
 | Betöltési arány | Hiba   | Elérte a díjszabási korlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
-| JSON-elemzés | Hiba   | Érvénytelen JSON-formátum. | [Naplóbejegyzések küldése a Azure Monitornak a HTTP-adatgyűjtő API-val (nyilvános előzetes verzió)](data-collector-api.md#request-body) | 
-| JSON-elemzés | Figyelmeztetés | Az érték a megengedett maximális méretre van kimetszve. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
-| Oszlop maximális méretének korlátja | Figyelmeztetés | A mező értéke elérte a méretkorlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) | 
-| Storage | Hiba   | A Storage-fiók nem érhető el, mert a használt hitelesítő adatok érvénytelenek.  |
-| Tábla   | Hiba   | Elérte az egyéni mező maximális korlátját. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces)|
+| Tárolás | Hiba   | A Storage-fiók nem érhető el, mert a használt hitelesítő adatok érvénytelenek.  |
+
 
 
    
@@ -91,21 +91,32 @@ Egy adott művelethez tartozó riasztási szabály létrehozásához használjon
 
 A következő példa figyelmeztető riasztást hoz létre, ha a betöltési mennyiség elérte a korlát 80%-át.
 
-```kusto
-_LogsOperation
-| where Category == "Ingestion"
-| where Operation == "Ingestion rate"
-| where Level == "Warning"
-```
+- Cél: válassza ki a Log Analytics munkaterületet
+- Kritériumok
+  - Jel neve: egyéni naplók keresése
+  - Keresési lekérdezés: `_LogOperation | where Category == "Ingestion" | where Operation == "Ingestion rate" | where Level == "Warning"`
+  - A következő alapján: az eredmények száma
+  - Feltétel: nagyobb, mint
+  - Küszöbérték: 0
+  - Időszak: 5 (perc)
+  - Gyakoriság: 5 (perc)
+- Riasztási szabály neve: elérte a napi adatkorlátot
+- Súlyosság: figyelmeztetés (1. pont)
+
 
 Az alábbi példa figyelmeztető riasztást hoz létre, amikor az adatgyűjtés elérte a napi korlátot. 
-```kusto
-Operation 
-| where OperationCategory == "Ingestion" 
-|where OperationKey == "Data Collection" 
-| where OperationStatus == "Warning"
-```
 
+- Cél: válassza ki a Log Analytics munkaterületet
+- Kritériumok
+  - Jel neve: egyéni naplók keresése
+  - Keresési lekérdezés: `_LogOperation | where Category == "Ingestion" | where Operation == "Data Collection" | where Level == "Warning"`
+  - A következő alapján: az eredmények száma
+  - Feltétel: nagyobb, mint
+  - Küszöbérték: 0
+  - Időszak: 5 (perc)
+  - Gyakoriság: 5 (perc)
+- Riasztási szabály neve: elérte a napi adatkorlátot
+- Súlyosság: figyelmeztetés (1. pont)
 
 
 

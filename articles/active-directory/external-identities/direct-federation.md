@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b7350d793ea42a46d52d881f1399174a3bb5d0e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87909560"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362892"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 
@@ -45,7 +45,7 @@ A közvetlen összevonással a vendég felhasználók saját szervezeti fiókjá
 ## <a name="limitations"></a>Korlátozások
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS által ellenőrzött tartományok az Azure AD-ben
-A összevonása kívánt tartomány ***nem*** lehet DNS-ellenőrzés alatt állni az Azure ad-ben. Engedélyezheti a közvetlen összevonás felügyelet nélküli (e-mailben ellenőrzött vagy "vírusos") Azure AD-bérlők általi beállítását, mivel azok nem DNS-ellenőrzés alatt állnak.
+A összevonása kívánt tartomány ***nem**lehet DNS által ellenőrzött az Azure ad-ben. Engedélyezheti a közvetlen összevonás felügyelet nélküli (e-mailben ellenőrzött vagy "vírusos") Azure AD-bérlők általi beállítását, mivel azok nem DNS-ellenőrzés alatt állnak.
 
 ### <a name="authentication-url"></a>Hitelesítési URL-cím
 A közvetlen összevonás csak olyan házirendek esetében engedélyezett, amelyekben a hitelesítési URL tartománya megegyezik a céltartományban, vagy ha a hitelesítési URL-cím az egyik engedélyezett Identity Provider (ez a lista változhat):
@@ -60,7 +60,7 @@ A közvetlen összevonás csak olyan házirendek esetében engedélyezett, amely
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Ha például a **fabrikam.com**közvetlen összevonását állítja be, a hitelesítési URL-cím `https://fabrikam.com/adfs` továbbítja az ellenőrzést. Az azonos tartományba tartozó gazdagépek is átadhatják például a-t `https://sts.fabrikam.com/adfs` . Azonban a hitelesítési URL-cím `https://fabrikamconglomerate.com/adfs` vagy `https://fabrikam.com.uk/adfs` ugyanahhoz a tartományhoz nem lesz továbbítva.
+Ha például az _ * fabrikam. com * * közvetlen összevonását állítja be, a hitelesítési URL-cím `https://fabrikam.com/adfs` továbbítja az ellenőrzést. Az azonos tartományba tartozó gazdagépek is átadhatják például a-t `https://sts.fabrikam.com/adfs` . Azonban a hitelesítési URL-cím `https://fabrikamconglomerate.com/adfs` vagy `https://fabrikam.com.uk/adfs` ugyanahhoz a tartományhoz nem lesz továbbítva.
 
 ### <a name="signing-certificate-renewal"></a>Tanúsítvány megújításának aláírása
 Ha a metaadatok URL-címét a személyazonosság-szolgáltató beállításaiban adta meg, az Azure AD automatikusan megújítja az aláíró tanúsítványt, amikor lejár. Ha azonban a rendszer a lejárati idő előtt bármilyen okból elforgatja a tanúsítványt, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem tudja megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
@@ -73,7 +73,7 @@ Jelenleg nem támogatottak a közvetlen összevonás ugyanahhoz a bérlőhöz ta
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Beállíthat közvetlen összevonást olyan tartománnyal, amelyhez nem felügyelt (e-mailben ellenőrzött) bérlő létezik? 
-Igen. Ha a tartomány még nem lett ellenőrizve, és a bérlő nem ment át a [rendszergazdai átvételre](../users-groups-roles/domains-admin-takeover.md), beállíthatja, hogy a közvetlen összevonás legyen a tartománnyal. Nem felügyelt, vagy e-mailben ellenőrzött bérlők akkor jönnek létre, amikor egy felhasználó bevált egy B2B-meghívást, vagy önkiszolgáló regisztrációt hajt végre az Azure AD-ben olyan tartomány használatával, amely jelenleg nem létezik. Ezeket a tartományokat közvetlen összevonással is megadhatja. Ha a közvetlen összevonás DNS által ellenőrzött tartománnyal való beállítását kísérli meg a Azure Portal vagy a PowerShellen keresztül, akkor hibaüzenet jelenik meg.
+Igen. Ha a tartomány még nem lett ellenőrizve, és a bérlő nem ment át a [rendszergazdai átvételre](../enterprise-users/domains-admin-takeover.md), beállíthatja, hogy a közvetlen összevonás legyen a tartománnyal. Nem felügyelt, vagy e-mailben ellenőrzött bérlők akkor jönnek létre, amikor egy felhasználó bevált egy B2B-meghívást, vagy önkiszolgáló regisztrációt hajt végre az Azure AD-ben olyan tartomány használatával, amely jelenleg nem létezik. Ezeket a tartományokat közvetlen összevonással is megadhatja. Ha a közvetlen összevonás DNS által ellenőrzött tartománnyal való beállítását kísérli meg a Azure Portal vagy a PowerShellen keresztül, akkor hibaüzenet jelenik meg.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Ha a közvetlen összevonás és az egyszeri bejelentkezéses e-mail-hitelesítés egyaránt engedélyezve van, akkor melyik módszer elsőbbséget élvez?
 A közvetlen összevonás partner szervezettel való létrehozásakor elsőbbséget élvez az e-mailek egyszeri jelszavas hitelesítése az adott szervezet új vendég felhasználói számára. Ha a vendég felhasználó egyszeri jelszó-hitelesítéssel váltott ki egy meghívót a közvetlen összevonás beállítása előtt, akkor továbbra is egyszer használatos hitelesítő kódot használ. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Egy részlegesen szinkronizált bérlet miatt a közvetlen összevonási címek bejelentkezési problémái vannak?
@@ -163,7 +163,7 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
    > [!NOTE]
    > A metaadatok URL-címe nem kötelező, de erősen ajánlott. Ha megadja a metaadatok URL-címét, az Azure AD automatikusan megújíthatja az aláíró tanúsítványt, amikor lejár. Ha a tanúsítvány a lejárati idő előtt bármilyen okból forog, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem fogja tudni megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
 
-7. Kattintson a **Mentés** gombra. 
+7. Válassza a **Mentés** lehetőséget. 
 
 ### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>Közvetlen összevonás konfigurálása az Azure AD-ben a PowerShell használatával
 
@@ -197,7 +197,7 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
 3. **Az összes Identity Provider** kijelölése
 4. Az **SAML/ws-fed identitás-szolgáltatók**területen válassza ki a szolgáltatót.
 5. Az identitás-szolgáltató részletei ablaktáblán frissítse az értékeket.
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 
 ## <a name="how-do-i-remove-direct-federation"></a>Hogyan a közvetlen összevonás eltávolítása?

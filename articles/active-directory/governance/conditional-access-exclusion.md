@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783688"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362722"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok használata a feltételes hozzáférési házirendből kizárt felhasználók felügyeletéhez
 
@@ -38,7 +38,7 @@ Egy másik példa, hogy a feltételes hozzáférés [nevesített helyeinek](../c
 
 ![Nevesített helyszínek a feltételes hozzáférésben](./media/conditional-access-exclusion/named-locations.png)
 
-Sajnos előfordulhat, hogy egyes felhasználók továbbra is érvényes okból jelentkezhetnek be ezekből a letiltott országokból/régiókból. Előfordulhat például, hogy a felhasználók munkavégzésre és a vállalati erőforrásokhoz való hozzáférésre van szükségük. Ebben az esetben az ezen országokat/régiókat blokkoló feltételes hozzáférési szabályzat egy Felhőbeli biztonsági csoportot használhat a kizárt felhasználók számára a szabályzatból. Azok a felhasználók, akiknek utazás közben kell hozzáférni, hozzáadhatják magukat a csoporthoz az [Azure ad önkiszolgáló csoport kezelése](../users-groups-roles/groups-self-service-management.md)használatával.
+Sajnos előfordulhat, hogy egyes felhasználók továbbra is érvényes okból jelentkezhetnek be ezekből a letiltott országokból/régiókból. Előfordulhat például, hogy a felhasználók munkavégzésre és a vállalati erőforrásokhoz való hozzáférésre van szükségük. Ebben az esetben az ezen országokat/régiókat blokkoló feltételes hozzáférési szabályzat egy Felhőbeli biztonsági csoportot használhat a kizárt felhasználók számára a szabályzatból. Azok a felhasználók, akiknek utazás közben kell hozzáférni, hozzáadhatják magukat a csoporthoz az [Azure ad önkiszolgáló csoport kezelése](../enterprise-users/groups-self-service-management.md)használatával.
 
 Egy másik példa lehet arra, hogy egy feltételes hozzáférési szabályzat [blokkolja az örökölt hitelesítést a felhasználók túlnyomó többsége számára](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Ha azonban vannak olyan felhasználók, akik örökölt hitelesítési módszereket használnak az erőforrások Office 2010 vagy IMAP/SMTP/POP-alapú ügyfeleken keresztüli eléréséhez, akkor kizárhatja ezeket a felhasználókat a régi hitelesítési módszereket blokkoló szabályzatból.
 
@@ -63,7 +63,7 @@ Az alábbi lépéseket követve hozzon létre egy új Azure AD-csoportot és egy
 
 ### <a name="create-an-exclusion-group"></a>Kizárási csoport létrehozása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. A bal oldali navigációs sávon kattintson a **Azure Active Directory** , majd a **csoportok**elemre.
 
@@ -164,7 +164,7 @@ Most, hogy mindent megtesz a hely, a csoport, a feltételes hozzáférési szab�
 
 Rendszergazdaként biztos lehet abban, hogy a kizárási csoportok a szabályzatokhoz való kezelése időnként elkerülhetetlen. A csoportok karbantartásával azonban rendszeresen, a vállalat tulajdonosa vagy a felhasználók is megtekinthetik őket, és az Azure AD hozzáférési felülvizsgálatokkal könnyebben ellenőrizhetők a változások.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
 - [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

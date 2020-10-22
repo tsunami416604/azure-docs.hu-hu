@@ -15,12 +15,12 @@ ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87af4a08c5a796d96d853ca63e50e335b9731fb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602931"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362773"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférési felülvizsgálatának létrehozása az Azure AD hozzáférési felülvizsgálatokban
 
@@ -164,6 +164,7 @@ Ha a vendégek felülvizsgálók vannak hozzárendelve, és nem fogadták el a m
 |Automatikusan felülvizsgálva | A rendszer minden olyan felhasználó számára rögzíti a döntéseket, akiket nem vizsgáltak meg. A felülvizsgálat készen áll a **alkalmazásra** , ha engedélyezve van az automatikus alkalmazás. |
 |Alkalmazása | A jóváhagyott felhasználók hozzáférése nem változik. |
 |Alkalmazva | A megtagadott felhasználókat, ha vannak ilyenek, el lettek távolítva az erőforrásból vagy a címtárból. |
+|Sikertelen | Az ellenőrzés nem haladhat előre. Ez a hiba kapcsolódhat a bérlő törléséhez, a licencek változásához vagy a belső bérlő egyéb változásaihoz. |
 
 ## <a name="create-reviews-via-apis"></a>Felülvizsgálatok létrehozása API-kon keresztül
 

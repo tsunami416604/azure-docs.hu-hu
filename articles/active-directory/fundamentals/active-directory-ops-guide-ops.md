@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 74ebd25cb48276f76cdf379eaa596f4ec1f3a2b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312610"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370950"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Általános üzemeltetési útmutató Azure Active Directory
 
@@ -49,7 +49,7 @@ A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olya
 
 #### <a name="owners-recommended-reading"></a>Ajánlott olvasás a tulajdonosoknak
 
-- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md)
+- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../roles/permissions-reference.md)
 - [Irányítás az Azure-ban](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>Hibrid felügyelet
@@ -154,7 +154,7 @@ Az alábbi táblázatból megtudhatja, hogy milyen típusú értesítéseket kü
 
 ### <a name="ad-fs-lockdown"></a>Zárolás AD FS
 
-Szervezetek, amelyek az [Azure ad Smart zárolási](../authentication/concept-sspr-howitworks.md)szolgáltatásból közvetlenül az Azure ad-be való hitelesítéshez konfigurálják az alkalmazásokat. Ha AD FSt használ a Windows Server 2012 R2 rendszerben, implementálja AD FS [extranet zárolási védelmét](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Ha AD FSt használ a Windows Server 2016-es vagy újabb verziójára, implementálja az [extranetes intelligens zárolást](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Legalább azt javasoljuk, hogy engedélyezze az extranet zárolását a helyszíni Active Directory elleni találgatásos támadásokkal szemben. Ha azonban AD FS a Windows 2016-es vagy újabb verziójával, akkor engedélyeznie kell az extranetes intelligens zárolást is, amely segít enyhíteni a [jelszó-szórásos](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) támadásokat.
+Szervezetek, amelyek az [Azure ad Smart zárolási](../authentication/concept-sspr-howitworks.md)szolgáltatásból közvetlenül az Azure ad-be való hitelesítéshez konfigurálják az alkalmazásokat. Ha AD FSt használ a Windows Server 2012 R2 rendszerben, implementálja AD FS [extranet zárolási védelmét](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Ha AD FSt használ a Windows Server 2016-es vagy újabb verziójára, implementálja az [extranetes intelligens zárolást](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Legalább azt javasoljuk, hogy engedélyezze az extranet zárolását a helyszíni Active Directory elleni találgatásos támadásokkal szemben. Ha azonban AD FS a Windows 2016-es vagy újabb verziójával, akkor engedélyeznie kell az extranetes intelligens zárolást is, amely segít enyhíteni a [jelszó-szórásos](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) támadásokat.
 
 Ha AD FS csak az Azure AD-összevonás esetében használatos, néhány végpontot ki lehet kapcsolni a támadási felület minimalizálásához. Ha például AD FSt csak az Azure AD-hez használja, akkor a **usernamemixed** és a **windowstransport**számára engedélyezett végpontokon kívül le kell tiltania WS-Trust végpontokat.
 
@@ -166,9 +166,9 @@ A Active Directory felügyeleti réteg modellje úgy lett kialakítva, hogy a re
 
 A [réteg modell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) három szintből áll, és csak rendszergazdai fiókokat tartalmaz, nem általános jogú felhasználói fiókokat.
 
-- **0**   . szintű – A vállalati identitások közvetlen ellenőrzése a környezetben. A 0. réteg olyan fiókokat, csoportokat és más elemeket tartalmaz, amelyek közvetlen vagy közvetett ellenőrzéssel rendelkeznek az Active Directory-erdő, -tartomány vagy -tartományvezérlő, valamint a bennük található valamennyi erőforrás felett. A 0. rétegbeli erőforrások biztonsági érzékenysége egyenértékű, ugyanis gyakorlatilag egymás ellenőrzése alatt állnak.
-- **1**   . szintű – A vállalati kiszolgálók és alkalmazások vezérlése. Az 1. réteg erőforrásai közé a kiszolgálói operációs rendszerek, a felhőszolgáltatások és a vállalati alkalmazások tartoznak. Az 1. rétegbeli rendszergazdai fiókok az ezeken az erőforrásokon található jelentős mennyiségű üzleti érték felett gyakorolnak ellenőrzést. Általános példaként említhetjük erre a kiszolgálói rendszergazdák szerepkörét, akik ezeket az operációs rendszereket karbantartják, és az összes vállalati szolgáltatásra hatással lehetnek.
-- **2**   . szintű – A felhasználói munkaállomások és eszközök vezérlése. A 2. rétegbeli rendszergazdai fiókok a munkaállomásokon és eszközökön található jelentős mennyiségű üzleti érték felett gyakorolnak ellenőrzést. Példaként említhetők erre az ügyfélszolgálati és számítógép-támogatási rendszergazdák, hiszen ők szinte bármilyen felhasználói adat épségére hatással lehetnek.
+- **0. réteg** – A vállalati identitások közvetlen ellenőrzése a környezetben. A 0. réteg olyan fiókokat, csoportokat és más elemeket tartalmaz, amelyek közvetlen vagy közvetett ellenőrzéssel rendelkeznek az Active Directory-erdő, -tartomány vagy -tartományvezérlő, valamint a bennük található valamennyi erőforrás felett. A 0. rétegbeli erőforrások biztonsági érzékenysége egyenértékű, ugyanis gyakorlatilag egymás ellenőrzése alatt állnak.
+- **1. réteg** – A vállalati kiszolgálók és alkalmazások ellenőrzése. Az 1. réteg erőforrásai közé a kiszolgálói operációs rendszerek, a felhőszolgáltatások és a vállalati alkalmazások tartoznak. Az 1. rétegbeli rendszergazdai fiókok az ezeken az erőforrásokon található jelentős mennyiségű üzleti érték felett gyakorolnak ellenőrzést. Általános példaként említhetjük erre a kiszolgálói rendszergazdák szerepkörét, akik ezeket az operációs rendszereket karbantartják, és az összes vállalati szolgáltatásra hatással lehetnek.
+- **2. réteg** – A felhasználói munkaállomások és eszközök ellenőrzése. A 2. rétegbeli rendszergazdai fiókok a munkaállomásokon és eszközökön található jelentős mennyiségű üzleti érték felett gyakorolnak ellenőrzést. Példaként említhetők erre az ügyfélszolgálati és számítógép-támogatási rendszergazdák, hiszen ők szinte bármilyen felhasználói adat épségére hatással lehetnek.
 
 A tartományvezérlők esetében ugyanúgy zárja be a helyszíni identitás-összetevők, például a Azure AD Connect, a AD FS és az SQL-szolgáltatások elérését.
 

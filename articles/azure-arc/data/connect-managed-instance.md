@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: abd27e15ccf5b421e69e78b2b726d192ffdecacb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936094"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372361"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Kapcsolódás az Azure arc használatára képes SQL felügyelt példányhoz
 
@@ -49,7 +49,7 @@ Kapcsolat Azure Data Studio, SQL Server Management Studio vagy SQLCMD
 
 Nyissa meg Azure Data Studiot, és kapcsolódjon a példányhoz a fenti külső végpont IP-címével és portszámával. Ha Azure-beli virtuális gépet használ, szüksége lesz a _nyilvános_ IP-címére, amely azonosítható az [Azure-beli virtuális gépek üzembe helyezésével kapcsolatos speciális Megjegyzés](#special-note-about-azure-virtual-machine-deployments)használatával.
 
-Példa:
+Például:
 
 - Kiszolgáló: 52.229.9.30, 30913
 - Felhasználónév: SA
@@ -68,7 +68,7 @@ sqlcmd -S 52.229.9.30,30913 -U sa
 
 Ha Azure-beli virtuális gépet használ, akkor a végpont IP-címe nem fogja megjeleníteni a nyilvános IP-címet. A külső IP-cím megkereséséhez használja a következő parancsot:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -78,7 +78,7 @@ Előfordulhat, hogy az SQL-példány portját is fel kell tenni a hálózati biz
 
 Egy szabály beállításához ismernie kell a NSG nevét, amely az alábbi parancs használatával deríthető fel:
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -86,7 +86,7 @@ Ha megkapta a NSG nevét, a következő parancs használatával adhat hozzá tű
 
 Cserélje le az `--destination-port-ranges` alábbi paraméter értékét a `azdata sql instance list` fenti F parancsból kapott portszámra.
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30913 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 

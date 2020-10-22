@@ -14,12 +14,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534437"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372429"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Az Azure AD szerepköreinek felderítése és bepillantást nyerhet (korábban biztonsági varázsló)
 
@@ -29,7 +29,7 @@ Ha a Azure Active Directory (Azure AD) szervezeten belül Privileged Identity Ma
 
 A szervezet Privileged Identity Management használatának megkezdése előtt az összes szerepkör-hozzárendelés állandó. A felhasználók mindig a hozzárendelt szerepkörökhöz tartoznak, még akkor is, ha nincs rájuk szükségük. A korábbi biztonsági varázslót felváltó felderítési és észlelési funkciók (előzetes verzió) megjelenítik a Kiemelt szerepkörök listáját, valamint azt, hogy hány felhasználó van jelenleg ezekben a szerepkörökben. Kilistázhatja a szerepkörök hozzárendeléseit, ha többet szeretne megtudni a hozzárendelt felhasználókkal kapcsolatban, ha egy vagy több ismeretlen.
 
-: heavy_check_mark: a **Microsoft azt javasolja** , hogy tartsa meg a globális rendszergazdai szerepkörhöz véglegesen hozzárendelt két break Glass-fiókot. Győződjön meg arról, hogy ezek a fiókok nem igénylik ugyanazt a többtényezős hitelesítési mechanizmust, mint a normál rendszergazdai fiókok a bejelentkezéshez, a következő témakörben leírtak szerint: az [Azure ad-beli segélyhívó hozzáférési fiókok kezelése](../users-groups-roles/directory-emergency-access.md)
+: heavy_check_mark: a **Microsoft azt javasolja** , hogy tartsa meg a globális rendszergazdai szerepkörhöz véglegesen hozzárendelt két break Glass-fiókot. Győződjön meg arról, hogy ezek a fiókok nem igénylik ugyanazt a többtényezős hitelesítési mechanizmust, mint a normál rendszergazdai fiókok a bejelentkezéshez, a következő témakörben leírtak szerint: az [Azure ad-beli segélyhívó hozzáférési fiókok kezelése](../roles/security-emergency-access.md)
 
 Emellett a szerepkör-hozzárendelések állandók maradnak, ha a felhasználó Microsoft-fiók (azaz egy olyan fiók, amelyet a Microsoft-szolgáltatásokba, például a Skype-ba vagy a Outlook.com-be való bejelentkezéshez használnak). Ha a többtényezős hitelesítésre van szüksége egy Microsoft-fiók egy szerepkör-hozzárendelés aktiválásához, a rendszer kizárja a felhasználót.
 

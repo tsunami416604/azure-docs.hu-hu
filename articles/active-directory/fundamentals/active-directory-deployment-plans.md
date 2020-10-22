@@ -12,14 +12,14 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318427"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371885"
 ---
-# <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-telepítési csomagok
+# <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-üzembehelyezési tervek
 Az Azure Active Directory (Azure AD) képességeinek üzembe helyezésével kapcsolatos teljes körű útmutatást keres? Az Azure AD üzembehelyezési csomagjai végigvezetik a közös Azure AD-képességek sikeres üzembe helyezéséhez szükséges üzleti értékeken, tervezési szempontokon és üzemeltetési eljárásokon.
 
 A csomag bármelyik lapján a böngészőben a PDF-fájl nyomtatása lehetőséggel létrehozhat egy naprakész offline verziót a dokumentációban.
@@ -54,7 +54,7 @@ Egy próba lehetővé teszi egy kis csoport tesztelését, mielőtt mindenki sz�
 
 Az első hullámban célozza meg, a használhatóságot és az egyéb megfelelő felhasználókat, akik kipróbálhatják és elküldhetik a visszajelzést. Ezzel a visszajelzéssel tovább fejlesztheti a felhasználóknak küldött kommunikációt és útmutatást, és betekintést nyerhet a támogatási munkatársak által látható problémák típusaiba. 
 
-A bevezetést nagyobb felhasználói csoportokra kell kiterjeszteni a megcélzott csoport (ok) hatókörének növelésével. Ez a [dinamikus csoporttagság](../users-groups-roles/groups-dynamic-membership.md)használatával végezhető el, vagy manuálisan is hozzáadhatja a felhasználókat a megcélozott csoport (ok) hoz.
+A bevezetést nagyobb felhasználói csoportokra kell kiterjeszteni a megcélzott csoport (ok) hatókörének növelésével. Ez a [dinamikus csoporttagság](../enterprise-users/groups-dynamic-membership.md)használatával végezhető el, vagy manuálisan is hozzáadhatja a felhasználókat a megcélozott csoport (ok) hoz.
 
 
 ## <a name="deploy-authentication"></a>Hitelesítés telepítése

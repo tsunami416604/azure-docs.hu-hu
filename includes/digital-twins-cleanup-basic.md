@@ -1,16 +1,16 @@
 ---
 author: baanders
-description: fájl belefoglalása az alapszintű Azure Digital Twins-példányok és az alkalmazások regisztrálásának megtisztításához
+description: fájl belefoglalása egy alapszintű Azure Digital Twins-példány tisztításához
 ms.service: digital-twins
 ms.topic: include
 ms.date: 8/13/2020
 ms.author: baanders
-ms.openlocfilehash: e8f167555434338416381aaf8978a3d551686fb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e095a7b286a8860535d6b58fa93098735b30c87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606729"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372317"
 ---
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket.
 
@@ -23,10 +23,4 @@ Nyisson meg egy Azure Cloud Shell, és futtassa a következő parancsot az erőf
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-Ezután törölje az ügyfélalkalmazás számára a következő paranccsal létrehozott Azure Active Directory-alkalmazás regisztrációját:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```

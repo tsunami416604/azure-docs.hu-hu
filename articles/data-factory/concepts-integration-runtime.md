@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f3dd5898518a9788a7079ab903b6f88b9f82989
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827523"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371205"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban 
 
@@ -56,7 +56,7 @@ Az Azure Integration Runtime a következőket teheti:
 
 - Adatfolyamatok futtatása az Azure-ban 
 - Másolási tevékenység futtatása a felhőalapú adattárak között
-- A következő átalakítási tevékenységek elküldése a nyilvános hálózatban: Databricks notebook/jar/Python tevékenység, HDInsight-struktúra tevékenység, HDInsight Pig tevékenység, HDInsight MapReduce tevékenység, HDInsight Spark-tevékenység, HDInsight streaming Activity, Machine Learning kötegelt végrehajtási tevékenység, Machine Learning frissítési erőforrás tevékenység, tárolt eljárás tevékenység, Data Lake Analytics U-SQL tevékenység, .NET egyéni tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
+- A következő átalakítási tevékenységek küldése a nyilvános hálózatban: Databricks notebook/jar/Python tevékenység, HDInsight struktúra tevékenység, HDInsight Pig tevékenység, HDInsight MapReduce tevékenység, HDInsight Spark-tevékenység, HDInsight streaming Activity, Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység, Azure Machine Learning Studio (klasszikus) frissítési erőforrás-tevékenységek, tárolt eljárási tevékenység, Data Lake Analytics U
 
 ### <a name="azure-ir-network-environment"></a>Azure-beli integrációs modul hálózati környezete
 
@@ -79,7 +79,7 @@ Azure IR létrehozásával és konfigurálásával kapcsolatos információkért
 Egy saját üzemeltetésű IR a következőkre képes:
 
 - Másolási tevékenység futtatása felhőalapú adattárak és egy magánhálózaton lévő adattár között.
-- A következő átalakítási tevékenységek elküldése a helyszíni vagy az Azure Virtual Network számítási erőforrásaira: HDInsight-struktúra tevékenység (BYOC – saját fürt használata), HDInsight Pig tevékenység (BYOC), HDInsight MapReduce tevékenység (BYOC), HDInsight Spark-tevékenység (BYOC), HDInsight streaming Activity (BYOC), Machine Learning kötegelt végrehajtási tevékenység, Machine Learning frissítési erőforrás-tevékenységek, tárolt eljárási tevékenység, Data Lake Analytics U-SQL tevékenység, egyéni tevékenység (Azure Batch) , Keresési tevékenység és metaadatok beolvasása tevékenység.
+- A következő átalakítási tevékenységek elküldése a helyszíni vagy az Azure Virtual Network számítási erőforrásaira: HDInsight-struktúra tevékenység (BYOC-saját fürt), HDInsight Pig-tevékenység (BYOC), HDInsight MapReduce tevékenység (BYOC), HDInsight Spark-tevékenység (BYOC), HDInsight streaming Activity (BYOC), Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység, Azure Machine Learning Studio (klasszikus) frissítési erőforrás-tevékenységek, tárolt eljárási tevékenység, Data Lake Analytics U-SQL-tevékenység , Egyéni tevékenység (Azure Batchon fut), keresési tevékenység és metaadatok beolvasása tevékenység.
 
 > [!NOTE] 
 > A saját üzemeltetésű integrációs modult használva olyan adattárakat támogathat, amelyek a saját illesztőprogramot, például az SAP Hana-t vagy a MySQL-t igénylik.  További információ: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

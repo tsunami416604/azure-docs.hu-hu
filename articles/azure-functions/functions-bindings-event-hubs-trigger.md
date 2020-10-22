@@ -6,14 +6,14 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 72312df41a74ac8f2321b31287cbb3cd87d1a04b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffec1b0e5fd57a19c5b5c940ec921b43970387e8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87041744"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372140"
 ---
-# <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések Azure Functions
+# <a name="azure-event-hubs-trigger-for-azure-functions"></a>Azure Event Hubs trigger a Azure Functionshoz
 
 Ez a cikk azt ismerteti, hogyan használható az [Azure Event Hubs](../event-hubs/event-hubs-about.md) trigger a Azure Functionshoz. Azure Functions támogatja az aktiválási és [kimeneti kötéseket](functions-bindings-event-hubs-output.md) a Event Hubshoz.
 
@@ -21,6 +21,6 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 [!INCLUDE [functions-bindings-event-hubs-trigger](../../includes/functions-bindings-event-hubs-trigger.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Események írása egy esemény-adatfolyamba (kimeneti kötés)](./functions-bindings-storage-blob-output.md)
