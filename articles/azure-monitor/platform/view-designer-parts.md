@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92166590"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Útmutató a Designer vizualizációs részeinek megtekintéséhez Azure Monitor
@@ -202,7 +202,7 @@ A fejlécben statikus szöveg és opcionális hivatkozás látható. A lista egy
 | Új csoport |Válassza ezt a hivatkozást, ha új csoportot szeretne létrehozni a nézetben, az aktuális nézettől kezdődően. |
 | Szín |A fejléc háttérszíne |
 | **Fejléc** | |
-| Kép |A fejlécben megjelenő képfájl. |
+| Rendszerkép |A fejlécben megjelenő képfájl. |
 | Címke |A fejlécben megjelenített szöveg |
 | **Fejléc** |**> hivatkozás** |
 | Címke |A hivatkozás szövege |
@@ -356,5 +356,5 @@ A következő táblázat a küszöbértékek beállításait ismerteti:
 | Küszöbérték |A küszöbérték értéke. Az egyes listaelemek állapotának színe az adott értéknél nagyobb legmagasabb küszöbérték színét adja meg. Ha nem lépi túl a küszöbértéket, a rendszer egy alapértelmezett színt használ. |
 | Szín |A küszöbértéket jelző szín |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a vizualizációs részekben található lekérdezések támogatásához használható [naplók lekérdezéséről](../log-query/log-query-overview.md) .
