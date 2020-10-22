@@ -1,5 +1,5 @@
 ---
-title: Mi az az automatizált ML/AutoML
+title: Mi az az automatizált ML? Auto ML
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan hozhatja ki a Azure Machine Learning automatikusan egy algoritmust, és létrehoz egy modellt, hogy időt takarítson meg az Ön által megadott paraméterek és feltételek használatával, hogy kiválassza a modellhez legmegfelelőbb algoritmust.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 4908f66dbc699a449b7b94febac8133bacc9f669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49c3e5602834576e8d3de86ac7d6683f9b6f7b89
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760969"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367516"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -33,7 +33,7 @@ Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automa
 + Az adatelemzési ajánlott eljárások kihasználása
 + Gyors problémamegoldás
 
-### <a name="classification"></a>Osztályozás
+### <a name="classification"></a>Besorolás
 
 A besorolás egy gyakori gépi tanulási feladat. A besorolás olyan felügyelt tanulás típusa, amelyben a modellek bemutatják a betanítási információkat, és ezeket a tanulmányokat az új adatra alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-configure-auto-features.md#featurization). 
 
@@ -158,15 +158,15 @@ Az automatizált ML webes felülete mindig távoli [számítási célt](concept-
 A számítási cél kiválasztásakor vegye figyelembe ezeket a tényezőket:
 
  * **Helyi számítás választása**: Ha a forgatókönyve a kis-és kisméretű adatokkal és rövid vonatok használatával (például másodperc vagy néhány perc múlva), akkor a helyi számítógép betanítása jobb választás lehet.  Nincs beállítási idő, az infrastruktúra erőforrásai (a számítógép vagy a virtuális gép) közvetlenül elérhetők.
- * **Válasszon egy távoli ml számítási fürtöt**: Ha nagyobb adatkészleteket szeretne betanítani, például olyan modelleket, amelyeken hosszabb vonatok szükségesek, a távoli számítás sokkal jobb végpontok közötti időt biztosít, mivel `AutoML` a a fürt csomópontjain integrálással a vonatok között. Távoli számítás esetén a belső infrastruktúra megkezdésének ideje 1,5 percet vesz igénybe gyermek futása után, valamint további perceket a fürt infrastruktúrája számára, ha a virtuális gépek még nem működnek.
+ * Hozzon létre **egy távoli ml számítási fürtöt**: Ha nagyobb adatkészleteket használ, például olyan modelleket, amelyeken hosszabb vonatok szükségesek, a távoli számítás sokkal jobb teljesítményt nyújt a végpontok közötti időszakban, mivel `AutoML` a a fürt csomópontjain integrálással a vonatok felé. Távoli számítás esetén a belső infrastruktúra indítási ideje 1,5 percet vesz igénybe gyermeki futás esetén, plusz percet a fürt infrastruktúrája számára, ha a virtuális gépek még nem működnek.
 
 ### <a name="pros-and-cons"></a>Előnyök és hátrányok
 Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli használatának kiválasztásakor.
 
 |  | Profik (előnyök)  |Hátrányok (hátrányok)  |
 |---------|---------|---------|---------|
-|**Helyi számítási cél** |  <li> Nincs környezet-indítási idő   | <li>  A szolgáltatások részhalmaza<li>  Nem integrálással a futtatások <li> Rosszabb a nagyméretű adatmennyiségek esetében. <li>Nincs adatfolyam a betanítás során <li>  Nincs DNN-alapú featurization <li> Csak Python SDK |
-|**Távoli ML számítási fürtök**|  <li> A funkciók teljes készlete <li> Integrálással gyermekek futtatása <li>   Nagy mennyiségű adattámogatás<li>  DNN-alapú featurization <li>  Igény szerinti számítási fürt dinamikus méretezhetősége <li> A kód nélküli felhasználói felület (webes kezelőfelület) is elérhető  |  <li> Fürt csomópontjainak indítási ideje <li> Kezdési idő az egyes alárendelt futtatásokhoz    |
+|**Helyi számítási cél** |  <li> Nincs környezet indítási ideje   | <li>  A szolgáltatások részhalmaza<li>  Nem integrálással a futtatások <li> Rosszabb a nagyméretű adatmennyiségek esetében. <li>Nincs adatfolyam a betanítás során <li>  Nincs DNN-alapú featurization <li> Csak Python SDK |
+|**Távoli ML számítási fürtök**|  <li> A funkciók teljes készlete <li> Integrálással gyermekek futtatása <li>   Nagy mennyiségű adattámogatás<li>  DNN-alapú featurization <li>  Igény szerinti számítási fürt dinamikus méretezhetősége <li> A kód nélküli felhasználói felület (webes kezelőfelület) is elérhető  |  <li> Fürtcsomópontok indítási ideje <li> Az egyes alárendelt futtatások indítási ideje    |
 
 ### <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása 
 
@@ -219,7 +219,7 @@ A következő beállítások lehetővé teszik az automatikus ML-kísérlet konf
 |**Adat felosztása a betanítási/ellenőrzési készletekbe**| ✓|✓
 |**A ML-feladatok támogatása: besorolás, regresszió és előrejelzés**| ✓| ✓
 |**Optimalizálás az elsődleges metrika alapján**| ✓| ✓
-|**A pénzmosás-számítást számítási célként támogatja** | ✓|✓
+|**Az Azure ML-számítást számítási célként támogatja** | ✓|✓
 |**Az előrejelzési horizont konfigurálása, a cél késleltetése & gördülő ablak**|✓|✓
 |**Kilépési feltételek beállítása** |✓|✓ 
 |**Egyidejű ismétlések beállítása**| ✓|✓

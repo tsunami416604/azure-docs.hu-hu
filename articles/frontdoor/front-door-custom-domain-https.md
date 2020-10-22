@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 6db01531a34e936c59e5aa01a5c37f3a2ccf7345
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277713"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368332"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Front Door egyéni tartományon
 
@@ -134,6 +134,11 @@ Adja meg az Azure-előfizetési engedélyt a Azure Key Vault fiókban találhat�
     - Az előfizetés azonosítójához tartozó Key Vault-fiókok. 
     - A kiválasztott Key Vaultban található tanúsítványok (titkos kódok). 
     - A tanúsítvány elérhető verziói. 
+
+> [!NOTE]
+> Ha üresen hagyja a tanúsítvány verzióját, a következőhöz vezetne:
+> - A tanúsítvány legújabb verziója kiválasztva.
+> - A tanúsítványok a legújabb verzióra való automatikus elforgatása, amikor a tanúsítvány egy újabb verziója érhető el a Key Vault.
  
 5. Saját tanúsítvány használatakor nem szükséges tartományérvényesítés. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez.
 

@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 050874b301628348b513b8b5b0c2b878a1dcecaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1922ea9afd69366e534049f5a7a350cf39e52dee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84760201"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371579"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Az oldalon található hivatkozások nem működnek alkalmazásproxy-alkalmazásokban
 
@@ -37,7 +37,7 @@ A probléma három módon oldható meg. Az alábbi lehetőségek a növekvő kom
     Ha módosítja a belső URL-címet, de nem szeretné módosítani a felhasználók kezdőlapját, módosítsa a Kezdőlap URL-címét a korábban közzétett belső URL-címre. Ezt a "Azure Active Directory" – alkalmazás-regisztrációk lehetőséggel teheti meg – &gt; &gt; válassza ki az Application- &gt; branding elemet. A branding (védjegyezés) szakaszban megjelenik a "Kezdőlap URL-címe" mező, amelyet a kívánt kezdőlapra lehet beállítani. Ha továbbra is használja az örökölt Alkalmazásregisztrációk élményt, a Tulajdonságok lap a "Kezdőlap URL-címe" részleteit jeleníti meg. 
     
     > [!IMPORTANT]
-    > A fenti módosítások elvégzéséhez az alkalmazás-objektumok az Azure AD-ben való módosításához jogosultság szükséges. A felhasználónak hozzá kell rendelnie egy [alkalmazás-rendszergazdai](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) szerepkört, amely az Azure ad-ben engedélyezi az alkalmazás modificaion jogosultságait a felhasználónak.
+    > A fenti módosítások elvégzéséhez az alkalmazás-objektumok az Azure AD-ben való módosításához jogosultság szükséges. A felhasználónak hozzá kell rendelnie egy [alkalmazás-rendszergazdai](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles) szerepkört, amely az Azure ad-ben engedélyezi az alkalmazás modificaion jogosultságait a felhasználónak.
     >
 
 2.  Ha az alkalmazásai teljes tartományneveket (FQDN) használnak, [Egyéni tartományokat](application-proxy-configure-custom-domain.md) használhat az alkalmazások közzétételéhez. Ez a funkció lehetővé teszi, hogy ugyanazt az URL-címet belsőleg és külsőleg is használni lehessen.
@@ -46,6 +46,6 @@ A probléma három módon oldható meg. Az alábbi lehetőségek a növekvő kom
 
 3.  Ha ezek közül egyik lehetőség sem valósítható meg, több lehetőség is van a beágyazott hivatkozások fordításának engedélyezésére. Ezek a lehetőségek közé tartoznak a Intune Managed Browser, a saját alkalmazások bővítmény vagy az alkalmazáson keresztüli fordítási beállítás használata. Ha többet szeretne megtudni ezekről a lehetőségekről és azok engedélyezéséről, tekintse meg az [Azure ad Application proxy közzétett alkalmazásokra mutató hardcoded-hivatkozások átirányítása](application-proxy-configure-hard-coded-link-translation.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)
 

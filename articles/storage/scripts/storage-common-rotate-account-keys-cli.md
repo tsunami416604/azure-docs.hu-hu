@@ -7,15 +7,15 @@ ms.service: storage
 ms.subservice: blobs
 ms.devlang: cli
 ms.topic: sample
-ms.date: 06/22/2017
+ms.date: 10/20/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bfda6c5315e11a4a924b82dc3eacdf692357827b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08e1b3837863b197f8463a0d969e78afab2b9858
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503684"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370406"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Tárfiók létrehozása és a hozzáférési kulcsainak rotálása
 
@@ -48,7 +48,7 @@ A szkript a következő parancsokat használja a tárfiók létrehozásához, il
 | [az storage account keys list](/cli/azure/storage/account/keys) | Megjeleníti a megadott tárfiók hozzáférési kulcsait. |
 | [az storage account keys renew](/cli/azure/storage/account/keys) | Újra létrehozza a tárfiók elsődleges vagy másodlagos hozzáférési kulcsát. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

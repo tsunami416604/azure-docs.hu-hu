@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0903828b04922104a9dd93ac79459bf73644f35c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419818"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365833"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -39,7 +39,7 @@ Az Azure AD az Azure AD-eszköz rendszergazdai szerepkörét is hozzáadja a hel
 
 A globális rendszergazdai szerepkör tagságának megtekintéséhez és frissítéséhez tekintse meg a következőt:
 
-- [Rendszergazdai szerepkör összes tagjának megtekintése Azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)
+- [Rendszergazdai szerepkör összes tagjának megtekintése Azure Active Directory](../roles/manage-roles-portal.md)
 - [Felhasználó hozzárendelése rendszergazdai szerepkörökhöz az Azure Active Directory-ban](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
@@ -108,7 +108,7 @@ Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhö
 
 Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer visszavonja a jogosultságot a következő bejelentkezéskor, amikor új elsődleges frissítési jogkivonatot állít ki. Ez a visszavonás a jogosultság megemeléséhez hasonlóan akár 4 órát is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).
 - Ha többet szeretne megtudni az eszközökön alapuló feltételes hozzáférésről, tekintse meg [Azure Active Directory eszközön alapuló feltételes hozzáférési szabályzatok konfigurálása](../conditional-access/require-managed-devices.md)című témakört.

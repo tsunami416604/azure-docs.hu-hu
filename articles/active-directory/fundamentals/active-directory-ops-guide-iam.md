@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601306"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371001"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory identitás-és hozzáférés-kezelési műveletek útmutatója
 
@@ -37,7 +37,7 @@ A Azure Active Directory kezeléséhez olyan kulcsfontosságú működési felad
 | Annak eldöntése, hogy ki kap Enterprise Mobility + Security licenceket | IAM Operations csapat |
 | Annak eldöntése, hogy ki kap Microsoft 365 licenceket | Termelékenységi csapat |
 | Döntse el, hogy ki kap más licenceket, például a Dynamics, a Visual Studio Codespaces | Alkalmazás tulajdonosa |
-| Licencek hozzárendelése | IAM Operations csapat |
+| Licencek kiosztása | IAM Operations csapat |
 | Licenc-hozzárendelési hibák elhárítása és szervizelése | IAM Operations csapat |
 | Identitások kiépítése az alkalmazásokban az Azure AD-ben | IAM Operations csapat |
 
@@ -45,7 +45,7 @@ A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olya
 
 #### <a name="assigning-owners-recommended-reading"></a>A tulajdonos javasolt olvasásának kiosztása
 
-- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md)
+- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../roles/permissions-reference.md)
 - [Irányítás az Azure-ban](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>Helyszíni identitások szinkronizálása
@@ -157,13 +157,13 @@ A következő irányelvek segítségével határozhatja meg a felhasználóknak 
 - Szükség esetén egy attribútum is meghatározható a felhasználók csomagjainak tárolására.
 
 > [!IMPORTANT]
-> Az Azure AD-beli csoportos licencelés bevezeti a licencelési hiba állapotában lévő felhasználók fogalmát. Ha bármilyen licencelési hibát észlel, azonnal [azonosítania kell és fel kell oldania](../users-groups-roles/licensing-groups-resolve-problems.md) a licenc-hozzárendelési problémákat.
+> Az Azure AD-beli csoportos licencelés bevezeti a licencelési hiba állapotában lévő felhasználók fogalmát. Ha bármilyen licencelési hibát észlel, azonnal [azonosítania kell és fel kell oldania](../enterprise-users/licensing-groups-resolve-problems.md) a licenc-hozzárendelési problémákat.
 
 ![A számítógép képernyőjének leírását tartalmazó képernyőkép automatikusan létrejön](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>Életciklus-kezelés
 
-Ha jelenleg olyan eszközt használ, mint például a [Microsoft Identity Manager](/microsoft-identity-manager/) vagy a harmadik féltől származó rendszer, amely egy helyszíni infrastruktúrára támaszkodik, javasoljuk, hogy a hozzárendelést kiszervezje a meglévő eszközről, hozzon létre csoportos licencelést, és definiáljon csoportokon alapuló csoportos életciklus- [kezelést.](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups) Hasonlóképpen, ha a meglévő folyamat nem veszi figyelembe a szervezeten kívüli új alkalmazottakat vagy alkalmazottakat, akkor a csoport alapú licencelést dinamikus csoportok alapján kell telepítenie, és meg kell határoznia a csoporttagság életciklusát. Végül, ha a csoportos licencelés olyan helyszíni csoportokra van telepítve, amelyek nem rendelkeznek életciklus-felügyelettel, érdemes lehet felhőalapú csoportokat használni olyan képességek engedélyezéséhez, mint például a delegált tulajdonjog vagy az attribútum-alapú dinamikus tagság.
+Ha jelenleg olyan eszközt használ, mint például a [Microsoft Identity Manager](/microsoft-identity-manager/) vagy a harmadik féltől származó rendszer, amely egy helyszíni infrastruktúrára támaszkodik, javasoljuk, hogy a hozzárendelést kiszervezje a meglévő eszközről, hozzon létre csoportos licencelést, és definiáljon csoportokon alapuló csoportos életciklus- [kezelést.](../enterprise-users/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups) Hasonlóképpen, ha a meglévő folyamat nem veszi figyelembe a szervezeten kívüli új alkalmazottakat vagy alkalmazottakat, akkor a csoport alapú licencelést dinamikus csoportok alapján kell telepítenie, és meg kell határoznia a csoporttagság életciklusát. Végül, ha a csoportos licencelés olyan helyszíni csoportokra van telepítve, amelyek nem rendelkeznek életciklus-felügyelettel, érdemes lehet felhőalapú csoportokat használni olyan képességek engedélyezéséhez, mint például a delegált tulajdonjog vagy az attribútum-alapú dinamikus tagság.
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>Alkalmazások hozzárendelése a "minden felhasználó" csoporttal
 
@@ -191,7 +191,7 @@ Az [alapértelmezett különbözeti szinkronizálás](../hybrid/how-to-connect-s
 - [Címtár attribútumainak előkészítése a Microsoft 365sal való szinkronizáláshoz a IdFix eszköz használatával](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect: hibák elhárítása szinkronizálás közben](../hybrid/tshoot-connect-sync-errors.md)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A biztonságos identitás-infrastruktúrának öt aspektusa van. Ebben a listában gyorsan megtalálhatja és megteheti a szükséges műveleteket az identitások és jogosultságok életciklusának védelméhez és kezeléséhez a szervezetében.
 

@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c31897e5dc50815d692be83af5d03ffe58c216c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c3cd91fb2a878567dc4b09fbddfcf448ec95edd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87505938"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368536"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>A Kiemelt jogosultságú hozzáférési csoport beállításainak konfigurálása (előzetes verzió) a Privileged Identity Management
 
@@ -30,7 +30,7 @@ A szerepkör-beállítások az alapértelmezett beállítások, amelyeket a rend
 
 Az alábbi lépéseket követve megnyithatja az Azure privilegizált hozzáférési csoport szerepkör beállításait.
 
-1. Jelentkezzen be [Azure Portalra](https://portal.azure.com/) a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörrel rendelkező felhasználóval.
+1. Jelentkezzen be [Azure Portalra](https://portal.azure.com/) a [Kiemelt szerepkörű rendszergazda](../roles/permissions-reference.md#privileged-role-administrator) szerepkörrel rendelkező felhasználóval.
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
@@ -132,6 +132,6 @@ Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az a
 
 1. Miután megadta az összes szerepkör-beállítást, válassza a **frissítés** lehetőséget a módosítások mentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Emelt szintű hozzáférési csoporttagság vagy tulajdonjog kiosztása a PIM-ben](groups-assign-member-owner.md)

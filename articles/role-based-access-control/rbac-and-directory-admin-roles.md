@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cc4f775c3cf4c016173c485d57f203b4665c6393
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91397725"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370644"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure AD-szerepkörök
 
@@ -40,7 +40,7 @@ A következő ábra a klasszikus előfizetés-rendszergazdai szerepkörök, az A
 
 ## <a name="classic-subscription-administrator-roles"></a>A hagyományos előfizetés-rendszergazdai szerepkörök
 
-Az Azure három hagyományos előfizetés-rendszergazdai szerepköre a fiókadminisztrátor, a szolgáltatás-rendszergazda és a társadminisztrátor. A hagyományos előfizetés-rendszergazdák teljes körű hozzáféréssel rendelkeznek az Azure-előfizetéshez. Az Azure Portal, Azure Resource Manager API-k és a klasszikus üzemi modell segítségével végzik az erőforrások felügyeletét. Az Azure-beli regisztrációhoz használt fiók lesz automatikusan a fiókadminisztrátor és a szolgáltatás-rendszergazda. Ezután további társadminisztrátorok is hozzáadhatók. A szolgáltatás-rendszergazda és a társ-rendszergazdák egyenértékű hozzáféréssel rendelkeznek azon felhasználókhoz, akik a tulajdonosi szerepkörhöz (Azure-szerepkör) vannak rendelve az előfizetés hatókörében. Az alábbi tábla a három hagyományos előfizetés-rendszergazdai szerepkör közötti különbségeket ismerteti.
+Az Azure három hagyományos előfizetés-rendszergazdai szerepköre a fiókadminisztrátor, a szolgáltatás-rendszergazda és a társadminisztrátor. A hagyományos előfizetés-rendszergazdák teljes körű hozzáféréssel rendelkeznek az Azure-előfizetéshez. Az Azure Portal, Azure Resource Manager API-k és a klasszikus üzemi modell segítségével végzik az erőforrások felügyeletét. Az Azure-beli regisztrációhoz használt fiók lesz automatikusan a fiókadminisztrátor és a szolgáltatás-rendszergazda. Ezután további társadminisztrátorok is hozzáadhatók. A szolgáltatás-rendszergazda és a Co-Administrators egyenértékű jogosultsággal rendelkeznek azon felhasználók számára, akik a tulajdonosi szerepkört (Azure-szerepkört) társították az előfizetés hatókörében. Az alábbi tábla a három hagyományos előfizetés-rendszergazdai szerepkör közötti különbségeket ismerteti.
 
 | Hagyományos előfizetés-adminisztrátor | Korlát | Engedélyek | Jegyzetek |
 | --- | --- | --- | --- |
@@ -48,7 +48,7 @@ Az Azure három hagyományos előfizetés-rendszergazdai szerepköre a fiókadmi
 | Szolgáltatás-rendszergazda | Azure-előfizetésenként 1 | <ul><li>Kezelheti a szolgáltatásokat az [Azure Portalon](https://portal.azure.com).</li><li>Előfizetés megszakítása</li><li>Felhasználókat rendelhet hozzá a társadminisztrátor szerepkörhöz.</li></ul> | Alapértelmezés szerint új előfizetések esetén a fiókadminisztrátor a szolgáltatás-rendszergazda is egyben.<br>A szolgáltatás-rendszergazda ugyanolyan szintű hozzáféréssel rendelkezik az előfizetés hatókörében, mint a Tulajdonos szerepkörrel rendelkező felhasználók.<br>A szolgáltatásadminisztrátor teljes hozzáféréssel rendelkezik az Azure Portalhoz. |
 | Társadminisztrátor | Előfizetésenként 200 | <ul><li>Ugyanazokkal a hozzáférési jogosultságokkal rendelkezik, mint a szolgáltatás-rendszergazda, de nem módosíthatja az előfizetések és az Azure-címtárak közötti társítást.</li><li>Felhasználókat rendelhet hozzá a társadminisztrátori szerepkörhöz, de nem változathatja meg a szolgáltatás-rendszergazda személyét.</li></ul> | A társadminisztrátor ugyanolyan szintű hozzáféréssel rendelkezik az előfizetés hatókörében, mint a Tulajdonos szerepkörrel rendelkező felhasználók. |
 
-A Azure Portal a rendszergazdák kezelhetik a rendszergazdákat vagy megtekinthetik a szolgáltatás-rendszergazdát a **klasszikus rendszergazdák** lapon.
+A Azure Portal a **klasszikus rendszergazdák** lapon kezelheti Co-Administrators vagy megtekintheti a szolgáltatás-rendszergazdát.
 
 ![A klasszikus Azure-előfizetés rendszergazdái a Azure Portal](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
 
@@ -91,7 +91,7 @@ Amikor a **szerepkörök** lapra kattint, megjelenik a beépített és az egyén
 
 ![Beépített szerepkörök az Azure Portalon](./media/rbac-and-directory-admin-roles/roles-list.png)
 
-További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md).
+További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md).
 
 ## <a name="azure-ad-roles"></a>Azure AD-szerepkörök
 
@@ -99,11 +99,11 @@ Az Azure AD-szerepkörök használatával kezelhetők az Azure AD-erőforrások 
 
 | Azure AD-szerepkör | Engedélyek | Jegyzetek |
 | --- | --- | --- |
-| [Globális rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Kezeli az Azure Active Directory összes rendszergazdai funkciójához való hozzáférést, valamint az Azure Active Directoryban összevont szolgáltatásokat.</li><li>Rendszergazdai szerepköröket rendelhet másokhoz.</li><li>Bármely felhasználó és az összes többi rendszergazda jelszavát visszaállíthatja.</li></ul> | Az Azure Active Directory-bérlőre regisztráló személy lesz a globális rendszergazda. |
-| [Felhasználói rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>A felhasználók és csoportok minden összetevőjét létrehozhatja és kezelheti.</li><li>Támogatási jegyek kezelése</li><li>Monitorozhatja a szolgáltatás állapotát.</li><li>Módosíthatja a felhasználók, az ügyfélszolgálati rendszergazdák és egyéb felhasználói rendszergazdák jelszavát.</li></ul> |  |
-| [Számlázási rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Vásárlásokat hajthat végre.</li><li>Előfizetések kezelése</li><li>Támogatási jegyek kezelése</li><li>Monitorozhatja a szolgáltatás állapotát.</li></ul> |  |
+| [Globális rendszergazda](../active-directory/roles/permissions-reference.md#company-administrator-permissions) | <ul><li>Kezeli az Azure Active Directory összes rendszergazdai funkciójához való hozzáférést, valamint az Azure Active Directoryban összevont szolgáltatásokat.</li><li>Rendszergazdai szerepköröket rendelhet másokhoz.</li><li>Bármely felhasználó és az összes többi rendszergazda jelszavát visszaállíthatja.</li></ul> | Az Azure Active Directory-bérlőre regisztráló személy lesz a globális rendszergazda. |
+| [Felhasználói rendszergazda](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>A felhasználók és csoportok minden összetevőjét létrehozhatja és kezelheti.</li><li>Támogatási jegyek kezelése</li><li>Monitorozhatja a szolgáltatás állapotát.</li><li>Módosíthatja a felhasználók, az ügyfélszolgálati rendszergazdák és egyéb felhasználói rendszergazdák jelszavát.</li></ul> |  |
+| [Számlázási rendszergazda](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>Vásárlásokat hajthat végre.</li><li>Előfizetések kezelése</li><li>Támogatási jegyek kezelése</li><li>Monitorozhatja a szolgáltatás állapotát.</li></ul> |  |
 
-A Azure Portal az Azure AD-szerepkörök listáját láthatja a **szerepkörök és rendszergazdák** panelen. Az összes Azure AD-szerepkör listáját lásd: [rendszergazdai szerepkör engedélyei Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+A Azure Portal az Azure AD-szerepkörök listáját láthatja a **szerepkörök és rendszergazdák** panelen. Az összes Azure AD-szerepkör listáját lásd: [rendszergazdai szerepkör engedélyei Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ![Azure AD-szerepkörök a Azure Portal](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
@@ -129,5 +129,5 @@ Számos Azure AD-szerepkör az Azure AD-t és Microsoft 365-t, például a glob�
 ## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](overview.md)
-- [Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](../active-directory/roles/permissions-reference.md)
 - [Klasszikus Azure-előfizetés rendszergazdái](classic-administrators.md)

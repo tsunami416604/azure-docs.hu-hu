@@ -3,17 +3,17 @@ title: Azure Storage-minták JavaScript használatával | Microsoft Docs
 description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A JavaScript/Node.js Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépéseket bemutató mintáit.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/19/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-js
-ms.openlocfilehash: 208e06e9bd8fcf26674a11f79d2bd6878ca4f633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21c92d6595d2db3f9fb01ee5ddc3669a0564bab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331556"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359747"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage-minták a V12-es JavaScript ügyféloldali kódtárak használatával
 
@@ -421,11 +421,12 @@ A következő útmutatókból megtudhatja, hogyan telepítheti az Azure Storage 
 * [Első lépések az Azure üzenetsor-kezelési szolgáltatással a JavaScriptben](../queues/storage-quickstart-queues-nodejs.md)
 * [Első lépések az Azure Table Service-szel a JavaScriptben](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a mintákról más nyelveken:
 
 * .NET: [Azure Storage-minták .NET használatával](storage-samples-dotnet.md)
 * Java: [Azure Storage-minták Java használatával](storage-samples-java.md)
 * Python: [Azure Storage-minták a Python használatával](storage-samples-python.md)
+* C++: [Azure Storage-minták c++ használatával](storage-samples-c-plus-plus.md)
 * Minden más nyelv: [Azure Storage-minták](storage-samples.md)

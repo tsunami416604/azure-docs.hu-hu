@@ -1,18 +1,18 @@
 ---
 title: Az Azure Defender használata a Container-nyilvántartásokhoz
-description: Tudnivalók az Azure Defender for Container-beállításjegyzékek használatáról a beállításjegyzékben található rendszerképek vizsgálatához
+description: Ismerje meg, hogyan használhatja az Azure Defendert a Container nyilvántartó rendszerekben linuxos lemezképek vizsgálatához a Linux által üzemeltetett beállításjegyzékekben
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 57e8b6f47c4166c4f8b9f5de0f3e03a7d757e100
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342076"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370542"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>A biztonsági rések vizsgálatához használja az Azure Defender for Container nyilvántartót
 
@@ -28,22 +28,21 @@ Ha a képolvasó Security Center biztonsági réseket, Security Center a megáll
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Az **Azure Defender for Container** -beállításjegyzékek számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
-|Támogatott nyilvántartások és lemezképek:|![Igen, ](./media/icons/yes-icon.png) a nyilvános internetről elérhető és a rendszerhéj elérését biztosító, a Linux által üzemeltetett ACR-nyilvántartások.<br>![Nem található a ](./media/icons/no-icon.png) Windows által üzemeltetett ACR-jegyzék.<br>![Nincsenek ](./media/icons/no-icon.png) "privát" beállításjegyzékek – Security Center megköveteli, hogy a kibocsátásiegység-forgalmi jegyzékek elérhetők legyenek a nyilvános internetről. Security Center jelenleg nem tud csatlakozni a szolgáltatáshoz, vagy beolvasni azokat a beállításjegyzékeket, amelyekhez hozzáférés van korlátozva tűzfallal, szolgáltatási végponttal vagy privát végpontokkal, például az Azure Private-hivatkozással.<br>![Nincsenek olyan ](./media/icons/no-icon.png) Super minimalista képek, mint például a [Docker](https://hub.docker.com/_/scratch/) -lemezképek, vagy a "eltérítetlen" lemezképek, amelyek csak egy alkalmazást és annak futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül.|
+|Támogatott nyilvántartások és lemezképek:|A nyilvános internetről a rendszerhéj-hozzáféréssel elérhető Linux-rendszerképek az ACR-jegyzékekben|
+|Nem támogatott kibocsátásiegység-forgalmi jegyzékek és lemezképek:|Windows-rendszerképek<br>"Privát" nyilvántartások<br>Tűzfal, szolgáltatási végpont vagy privát végpontok, például Azure Private-kapcsolattal korlátozott hozzáférésű kibocsátásiegység-forgalmi jegyzékek<br>A Super-minimalista képek, például a [Docker](https://hub.docker.com/_/scratch/) -rendszerképek, vagy a "eltérítetlen" lemezképek, amelyek csak egy alkalmazást és annak futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági olvasó** és [Azure Container Registry olvasó szerepkör](../container-registry/container-registry-roles.md)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Biztonsági rések azonosítása az Azure Container nyilvántartóban található lemezképekben 
 
-1. A Azure Resource Manager-alapú Azure Container Registry tárolt rendszerképek sebezhetőségi vizsgálatának engedélyezése:
+A Azure Resource Manager-alapú Azure Container Registry tárolt rendszerképek sebezhetőségi vizsgálatának engedélyezése:
 
-    1. Engedélyezze az **Azure Defender számára** az előfizetéséhez tartozó tároló-beállításjegyzéket.
+1. Engedélyezze az **Azure Defender számára** az előfizetéséhez tartozó tároló-beállításjegyzéket. A Security Center most már készen áll a beállításjegyzékben található rendszerképek vizsgálatára.
 
-        A Security Center most már készen áll a beállításjegyzékben található rendszerképek vizsgálatára.
-
-        >[!NOTE]
-        > Ez a funkció rendszerkép alapján van felszámítva.
+    >[!NOTE]
+    > Ez a funkció rendszerkép alapján van felszámítva.
 
 1. A rendszer minden leküldéses vagy importálási képvizsgálatot aktivál, és ha a rendszerkép az elmúlt 30 napban lett kihúzva. 
 

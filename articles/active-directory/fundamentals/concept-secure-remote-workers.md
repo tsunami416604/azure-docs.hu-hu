@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b883cac7b970488a30116bc06efc8663766629
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705367"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370202"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Az Azure AD-vel gyorsan reagálhat a biztonságos identitásokra
 
@@ -38,7 +38,7 @@ Ez az ellenőrzőlista segítséget nyújt a kritikus fontosságú ajánlott mű
 
 Ez az útmutató azt feltételezi, hogy a felhőben csak a hibrid identitások lettek létrehozva az Azure AD-ben. Az azonosító típus kiválasztásával kapcsolatos segítségért tekintse meg a [megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](../hybrid/choose-ad-authn.md) . 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez a ellenőrzőlista egy biztonságos és biztonságos identitás-infrastruktúrára koncentrál, amely lehetővé teszi a felhasználók számára a távoli munkát. Az identitás védelme csak a biztonsági történet részét képezi, az adatok, az alkalmazások és az eszközök védelmét is figyelembe kell venni.
 
@@ -61,7 +61,7 @@ Számos javaslattal rendelkezik, amelyekkel az ingyenes Azure AD, az Office 365 
 | [A felhasználók üzembe helyezésének és megszüntetésének automatizálása SaaS-alkalmazásokból](../app-provisioning/user-provisioning.md) (ha vannak ilyenek) | Automatikusan létrehozhat olyan felhasználói identitásokat és szerepköröket a felhőalapú (SaaS) alkalmazásokban, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés magában foglalja a felhasználói identitások karbantartását és eltávolítását az állapot vagy a szerepkörök változása mellett, a szervezet biztonságának növelésével. |
 | [Biztonságos hibrid hozzáférés engedélyezése: meglévő app Delivery controllerekkel és hálózatokkal biztosíthatja a régi alkalmazásokat](../manage-apps/secure-hybrid-access.md) (ha vannak ilyenek) | A helyszíni és a Felhőbeli örökölt hitelesítési alkalmazások közzétételére és védelemre való csatlakoztatását az Azure AD-hez a meglévő Application Delivery Controller vagy Network használatával csatlakoztathatja. |
 | Önkiszolgáló [jelszó-visszaállítás engedélyezése](../authentication/tutorial-enable-sspr.md) (csak Felhőbeli fiókokra érvényes) | Ez a funkció csökkenti az ügyfélszolgálati hívásokat és a termelékenység elvesztését, ha a felhasználó nem tud bejelentkezni az eszközére vagy alkalmazására. |
-| [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../users-groups-roles/directory-assign-admin-roles.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. |
+| [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../roles/permissions-reference.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. |
 | [A Microsoft jelszavas útmutatásának engedélyezése](https://www.microsoft.com/research/publication/password-guidance/) | Állítsa le, hogy a felhasználóknak ne kelljen módosítaniuk a jelszavukat a beállított időpontokban, le kell tiltaniuk a bonyolultsági követelményeket, és a felhasználók jobban feltehetik a jelszavukat, és így biztonságban tarthatják őket. |
 
 
@@ -90,8 +90,8 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 | [A felhasználók üzembe helyezésének és megszüntetésének automatizálása SaaS-alkalmazásokból](../app-provisioning/user-provisioning.md) (ha vannak ilyenek) | Automatikusan létrehozhat olyan felhasználói identitásokat és szerepköröket a felhőalapú (SaaS) alkalmazásokban, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés magában foglalja a felhasználói identitások karbantartását és eltávolítását az állapot vagy a szerepkörök változása mellett, a szervezet biztonságának növelésével. |
 | [Feltételes hozzáférés engedélyezése – eszköz alapú](../conditional-access/require-managed-devices.md) | A biztonság és a felhasználói élmény fokozása az eszközökön alapuló feltételes hozzáféréssel. Ez a lépés biztosítja, hogy a felhasználók csak a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről férhessenek hozzá. Ezeket az eszközöket felügyelt eszközöknek is nevezzük. A felügyelt eszközök lehetnek Intune-kompatibilis vagy hibrid Azure AD-hez csatlakoztatott eszközök. |
 | [Jelszavas védelem engedélyezése](../authentication/howto-password-ban-bad-on-premises-deploy.md) | A felhasználók számára a gyenge és könnyen megfejthető jelszavak használata. |
-| [Egynél több globális rendszergazda kijelölése](../users-groups-roles/directory-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. A break Glass-fiókok biztosítják, hogy vészhelyzetben is hozzáférjen a szolgáltatáshoz. |
-| [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../users-groups-roles/directory-assign-admin-roles.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. |
+| [Egynél több globális rendszergazda kijelölése](../roles/security-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. A break Glass-fiókok biztosítják, hogy vészhelyzetben is hozzáférjen a szolgáltatáshoz. |
+| [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../roles/permissions-reference.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. |
 | [A Microsoft jelszavas útmutatásának engedélyezése](https://www.microsoft.com/research/publication/password-guidance/) | Állítsa le, hogy a felhasználóknak ne kelljen módosítaniuk a jelszavukat a beállított időpontokban, le kell tiltaniuk a bonyolultsági követelményeket, és a felhasználók jobban feltehetik a jelszavukat, és így biztonságban tarthatják őket. |
 | [Csomag létrehozása a vendég felhasználói hozzáféréshez](../external-identities/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. |
 
@@ -122,8 +122,8 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 | [A felhasználók üzembe helyezésének és megszüntetésének automatizálása SaaS-alkalmazásokból](../app-provisioning/user-provisioning.md) (ha vannak ilyenek) | Automatikusan létrehozhat olyan felhasználói identitásokat és szerepköröket a felhőalapú (SaaS) alkalmazásokban, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés magában foglalja a felhasználói identitások karbantartását és eltávolítását az állapot vagy a szerepkörök változása mellett, a szervezet biztonságának növelésével. |
 | [Feltételes hozzáférés engedélyezése – eszköz alapú](../conditional-access/require-managed-devices.md) | A biztonság és a felhasználói élmény fokozása az eszközökön alapuló feltételes hozzáféréssel. Ez a lépés biztosítja, hogy a felhasználók csak a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről férhessenek hozzá. Ezeket az eszközöket felügyelt eszközöknek is nevezzük. A felügyelt eszközök lehetnek Intune-kompatibilis vagy hibrid Azure AD-hez csatlakoztatott eszközök. |
 | [Jelszavas védelem engedélyezése](../authentication/howto-password-ban-bad-on-premises-deploy.md) | A felhasználók számára a gyenge és könnyen megfejthető jelszavak használata. |
-| [Egynél több globális rendszergazda kijelölése](../users-groups-roles/directory-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. A break Glass-fiókok biztosítják, hogy vészhelyzetben is hozzáférjen a szolgáltatáshoz. |
-| [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../users-groups-roles/directory-assign-admin-roles.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. |
+| [Egynél több globális rendszergazda kijelölése](../roles/security-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. A break Glass-fiókok biztosítják, hogy vészhelyzetben is hozzáférjen a szolgáltatáshoz. |
+| [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../roles/permissions-reference.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. |
 | [A Microsoft jelszavas útmutatásának engedélyezése](https://www.microsoft.com/research/publication/password-guidance/) | Állítsa le, hogy a felhasználóknak ne kelljen módosítaniuk a jelszavukat a beállított időpontokban, le kell tiltaniuk a bonyolultsági követelményeket, és a felhasználók jobban feltehetik a jelszavukat, és így biztonságban tarthatják őket. |
 | [Csomag létrehozása a vendég felhasználói hozzáféréshez](../external-identities/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. |
 | [Privileged Identity Management engedélyezése](../privileged-identity-management/pim-configure.md) | Lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés felügyeletét, vezérlését és figyelését, valamint a rendszergazdák hozzáférését csak szükség esetén és jóváhagyással |

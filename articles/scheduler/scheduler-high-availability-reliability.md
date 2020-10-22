@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98a6672af7e74fdd0732f3ba03264d2f674eb44f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78898566"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368145"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Magas rendelkezésre állás és megbízhatóság az Azure Schedulerben
 
@@ -22,7 +22,7 @@ ms.locfileid: "78898566"
 >
 > Az ütemező már nem érhető el a Azure Portalban, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg is elérhetők maradnak, így a feladatok és a feladatok gyűjteményei kezelhetők.
 
-Az Azure Scheduler [magas rendelkezésre állást](https://docs.microsoft.com/azure/architecture/framework/#resiliency) és megbízhatóságot biztosít a feladatokhoz. További információ: [a Feladatütemező SLA](https://azure.microsoft.com/support/legal/sla/scheduler)-ja.
+Az Azure Scheduler [magas rendelkezésre állást](/azure/architecture/framework/#resiliency) és megbízhatóságot biztosít a feladatokhoz. További információ: [a Feladatütemező SLA](https://azure.microsoft.com/support/legal/sla/scheduler)-ja.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
@@ -71,7 +71,7 @@ Az alternatív művelet Művelettípus eltérhet az eredeti művelettől. Ha pé
 
 A másodlagos végpontok beállításával kapcsolatos további információkért lásd: [errorAction](scheduler-concepts-terms.md#error-action).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alapfogalmak, terminológia és entitáshierarchia](scheduler-concepts-terms.md)
 * [Az Azure Scheduler REST API-jának leírása](/rest/api/scheduler)

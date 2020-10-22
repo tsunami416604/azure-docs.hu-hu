@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 68671a98c7703514af11de2f8c505110129fe713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398646"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367992"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute Azure Site Recovery
 
@@ -37,7 +37,7 @@ Győződjön meg arról, hogy a konfigurációs kiszolgáló [hálózati követe
 
 Ha a helyszíni proxyt használja, és a ExpressRoute-t szeretné használni a replikálási forgalomhoz, konfigurálnia kell a proxy-megkerülési listát a konfigurációs kiszolgálón és a kiszolgálókon. Kövesse az alábbi lépéseket:
 
-- Töltse [le a PsExec eszközt innen a](https://aka.ms/PsExec) rendszer felhasználói környezetének eléréséhez.
+- Töltse [le a PsExec eszközt innen a](/sysinternals/downloads/psexec) rendszer felhasználói környezetének eléréséhez.
 - Nyissa meg az Internet Explorert a rendszerfelhasználó környezetben a következő parancssori PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" parancs futtatásával
 - Proxybeállítások megadása az IE-ben
 - A Mellőzés listából adja hozzá az Azure Storage URL *. blob.core.windows.net

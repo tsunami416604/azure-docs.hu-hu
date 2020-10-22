@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310921"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372293"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Az Azure arc-adatkezelő létrehozása
 
@@ -39,7 +39,7 @@ Jelenleg a Kubernetes-szolgáltatások és-disztribúciók támogatott listája 
 > * A Kubernetes minimális támogatott verziója: v 1.14.
 > * A [kapcsolati követelményekből](connectivity.md) megtudhatja, milyen kapcsolatra van szükség a környezet és az Azure között.
 > * Tekintse meg a [tárolási konfigurációs útmutatót](storage-configuration.md) , amelyből megtudhatja, hogyan konfigurálhatja az állandó tárterületet.
-> * Ha az Azure Kubernetes szolgáltatást használja, a fürt feldolgozói csomópontjának virtuálisgép-méretének legalább **Standard_D8s_v3nak** kell lennie, és **prémium szintű lemezeket** kell használnia. 
+> * Ha az Azure Kubernetes szolgáltatást használja, a fürt feldolgozói csomópontjának virtuálisgép-méretének legalább **Standard_D8s_v3nak** kell lennie, és **prémium szintű lemezeket** kell használnia. A fürt nem terjedhet több rendelkezésre állási zónára. 
 > * Ha más Kubernetes-eloszlást vagy-szolgáltatást használ, győződjön meg arról, hogy a csomópont minimális mérete 8 GB RAM és 4 mag, valamint az összes Kubernetes-csomóponton elérhető teljes 32 GB RAM-kapacitás. Előfordulhat például, hogy 1 csomóponttal rendelkezik 32 GB RAM-mal és 4 maggal, vagy 2 csomóponttal rendelkezik, amelyekhez 16GB RAM és 4 mag tartozik.
 
 > [!NOTE]

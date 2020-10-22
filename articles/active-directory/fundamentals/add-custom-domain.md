@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321174"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370865"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával
 
@@ -104,9 +104,9 @@ Ha az Azure AD nem tudja ellenőrizni az egyéni tartománynevet, próbálkozzon
 
   Ha nem tudja frissíteni a rekordot a regisztrátor webhelyén, ossza meg a bejegyzést olyan személlyel, aki jogosult a bejegyzés hozzáadására, és ellenőrizze, hogy helyes-e.
 
-- **Győződjön meg arról, hogy a tartománynév még nincs használatban egy másik címtárban.** A tartománynév csak egy címtárban ellenőrizhető. Ha a tartománynevet egy másik címtárban ellenőrzi, az nem ellenőrizhető az új könyvtárban is. Az ismétlődési probléma megoldásához törölnie kell a tartománynevet a régi címtárból. További információ a tartománynevek törléséről: [Egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
+- **Győződjön meg arról, hogy a tartománynév még nincs használatban egy másik címtárban.** A tartománynév csak egy címtárban ellenőrizhető. Ha a tartománynevet egy másik címtárban ellenőrzi, az nem ellenőrizhető az új könyvtárban is. Az ismétlődési probléma megoldásához törölnie kell a tartománynevet a régi címtárból. További információ a tartománynevek törléséről: [Egyéni tartománynevek kezelése](../enterprise-users/domains-manage.md).
 
-- **Győződjön meg arról, hogy nem rendelkezik nem felügyelt Power BI Bérlővel.** Ha a felhasználók aktiválták Power BI az önkiszolgáló regisztráción keresztül, és létrehoztak egy nem felügyelt bérlőt a szervezet számára, akkor a PowerShell használatával belső vagy külső rendszergazdaként kell átvennie a felügyeletet. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../users-groups-roles/domains-admin-takeover.md) ismertető cikket.
+- **Győződjön meg arról, hogy nem rendelkezik nem felügyelt Power BI Bérlővel.** Ha a felhasználók aktiválták Power BI az önkiszolgáló regisztráción keresztül, és létrehoztak egy nem felügyelt bérlőt a szervezet számára, akkor a PowerShell használatával belső vagy külső rendszergazdaként kell átvennie a felügyeletet. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../enterprise-users/domains-admin-takeover.md) ismertető cikket.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -114,6 +114,6 @@ Ha az Azure AD nem tudja ellenőrizni az egyéni tartománynevet, próbálkozzon
 
 - Felhasználók hozzáadása a tartományhoz. További információ: [felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md).
 
-- A tartománynév-információk kezelése az Azure AD-ben. További információ: [Egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
+- A tartománynév-információk kezelése az Azure AD-ben. További információ: [Egyéni tartománynevek kezelése](../enterprise-users/domains-manage.md).
 
 - Ha a Windows Server azon helyszíni verzióit használja, amelyeket a Azure Active Directory mellett szeretne használni, tekintse [meg a helyszíni címtárak integrálása Azure Active Directory](../hybrid/whatis-hybrid-identity.md)használatával című témakört.

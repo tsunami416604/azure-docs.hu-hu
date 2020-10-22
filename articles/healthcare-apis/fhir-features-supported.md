@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: ea9a47676b8294b2541c27d361b0dc2fa1ae3627
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 609bd01e8dcb0e9202d1d9dbe1d1fc1a01cac550
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339508"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368281"
 ---
 # <a name="features"></a>Funkciók
 
@@ -39,7 +39,7 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 | Törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
 | előzmények                        | Igen       | Igen       | Igen       |                                                     |
 | létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
-| létrehozás (feltételes)           | Igen       | Igen       | Igen       |                                                     |
+| létrehozás (feltételes)           | Igen       | Igen       | Igen       | Probléma [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | keresés                         | Részleges   | Részleges   | Részleges   | Lásd lent                                           |
 | láncolt keresés                 | Nem        | Igen       | Nem        |                                           |
 | fordított láncolt keresés         | Nem        | Nem        | Nem        |                                            |

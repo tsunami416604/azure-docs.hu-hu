@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287740"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359815"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -42,7 +42,7 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
     - Ellenőrizze, hogy az alkalmazás fejlesztői szerepköre hozzá van-e rendelve a felhasználóhoz. Ha nem, használja ezt az engedélyt használó felhasználót, vagy forduljon [a rendszergazdához, és engedélyezze az engedélyt](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Ha az alkalmazás fejlesztői szerepköre nem rendelhető hozzá, győződjön meg arról, hogy a **felhasználók regisztrálhatják az alkalmazások** jelölőjét **true (igaz** ) értékre állítva, ha a felhasználó identitást hoz létre. Az engedélyek engedélyezése:
-    - Jelentkezzen be az Azure portálra.
+    - Jelentkezzen be az Azure Portalra.
     - Lépjen **Azure Active Directory**  >  **felhasználói beállítások menüpontra**.
     - A **Alkalmazásregisztrációk**alatt a **felhasználók regisztrálhatják az alkalmazásokat**. Válassza az **Igen**lehetőséget.
 
@@ -111,7 +111,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 ### <a name="configure-settings"></a>Beállítások konfigurálása
 
-1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása**lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken. Ezután válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló használ az Azure-hoz való kapcsolódáshoz. Kattintson a **Mentés** gombra. Ez a beállítás a konfigurálás után nem módosítható. Ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, hogy a konfigurációs kiszolgálóhoz rendelt IP-cím statikus IP-cím, nem DHCP-IP-cím.
+1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása**lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken. Ezután válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló használ az Azure-hoz való kapcsolódáshoz. Válassza a **Mentés** lehetőséget. Ez a beállítás a konfigurálás után nem módosítható. Ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, hogy a konfigurációs kiszolgálóhoz rendelt IP-cím statikus IP-cím, nem DHCP-IP-cím.
 2. A **Recovery Services**-tároló kiválasztása lapon jelentkezzen be a Microsoft Azure a [konfigurációs kiszolgáló regisztrálása a Azure site Recovery Services szolgáltatással](#register-the-configuration-server-with-azure-site-recovery-services)című 6. lépésében használt hitelesítő adatokkal.
 3. Bejelentkezés után válassza ki az Azure-előfizetését, valamint a megfelelő erőforráscsoportot és tárolót.
 
@@ -121,7 +121,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 4. **Külső gyártótól származó szoftverek telepítése**:
 
-    |Forgatókönyv   |Követendő lépések  |
+    |Használati eset   |Követendő lépések  |
     |---------|---------|
     |Letölthetem és telepíthetem a MySQL-t manuálisan?     |  Igen. Töltse le a MySQL-alkalmazást, helyezze azt a **C:\Temp\ASRSetup**mappába, majd telepítse manuálisan. A feltételek elfogadása és a **letöltés és telepítés**kiválasztása után a portál *már telepítve van*. Folytassa a következő lépéssel.       |
     |El tudom kerülni a MySQL online letöltését?     |   Igen. Helyezze a MySQL Installer-alkalmazást a **C:\Temp\ASRSetup**mappába. Fogadja el a feltételeket, válassza a **letöltés és telepítés**lehetőséget, és a portál az alkalmazás telepítéséhez hozzáadott telepítőt használja. A telepítés befejeződése után folytassa a következő lépéssel.    |
@@ -166,7 +166,7 @@ Az üzembe helyezési & kapcsolódási problémák megoldásához tekintse meg a
     Ha többet szeretne megtudni a konfigurációs kiszolgálóról és annak működéséről, olvassa el a [VMware – Azure replikálási architektúra](vmware-azure-architecture.md)című témakört.
 * Hol találhatom meg a konfigurációs kiszolgáló legújabb verzióját?
 
-    A konfigurációs kiszolgáló portálon keresztüli frissítésének lépéseiért lásd: [a konfigurációs kiszolgáló frissítése](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Az összes Site Recovery-összetevő frissítésével kapcsolatos utasításokért tekintse meg a [site Recovery szolgáltatás frissítései](https://aka.ms/asr_how_to_upgrade)című témakört.
+    A konfigurációs kiszolgáló portálon keresztüli frissítésének lépéseiért lásd: [a konfigurációs kiszolgáló frissítése](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Az összes Site Recovery-összetevő frissítésével kapcsolatos utasításokért tekintse meg a [site Recovery szolgáltatás frissítései](./service-updates-how-to.md)című témakört.
 * Honnan tölthetők le a konfigurációs kiszolgáló jelszava?
 
     A jelszó letöltéséhez lásd: [a konfigurációs kiszolgáló kezelése a VMWare virtuális gép vész-helyreállítási szolgáltatásához](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).
@@ -193,6 +193,6 @@ Az üzembe helyezési & kapcsolódási problémák megoldásához tekintse meg a
 
 További gyakori kérdések a konfigurációs kiszolgálókról: [konfigurációs kiszolgáló gyakori kérdései](vmware-azure-common-questions.md#configuration-server).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Állítsa be a [VMWare virtuális gépek](vmware-azure-tutorial.md) vész-helyreállítását az Azure-ba.

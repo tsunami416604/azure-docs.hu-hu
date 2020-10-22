@@ -14,12 +14,12 @@ ms.date: 08/27/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c9ba7217dfc167a06a1fea389cfc40a5e1251ca
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050199"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367805"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -58,7 +58,7 @@ Ez a szakasz áttekintést nyújt a Privileged Identity Management folyamat megf
 
 ## <a name="roles-that-can-be-managed-by-pim"></a>A PIM által felügyelhető szerepkörök
 
-Az **Azure ad-szerepkörök** mindegyike Azure Active Directory (például globális rendszergazda, Exchange-rendszergazda és biztonsági rendszergazda). A szerepkörökről és azok funkcióival kapcsolatos további információkért tekintse meg [Azure Active Directory a rendszergazdai szerepkör engedélyei](../users-groups-roles/directory-assign-admin-roles.md)című részt. A rendszergazdák által hozzárendelt szerepkörök meghatározásával kapcsolatos segítségért tekintse meg a [legkevésbé Kiemelt szerepkörök feladat szerint feladatot](../users-groups-roles/roles-delegate-by-task.md).
+Az **Azure ad-szerepkörök** mindegyike Azure Active Directory (például globális rendszergazda, Exchange-rendszergazda és biztonsági rendszergazda). A szerepkörökről és azok funkcióival kapcsolatos további információkért tekintse meg [Azure Active Directory a rendszergazdai szerepkör engedélyei](../roles/permissions-reference.md)című részt. A rendszergazdák által hozzárendelt szerepkörök meghatározásával kapcsolatos segítségért tekintse meg a [legkevésbé Kiemelt szerepkörök feladat szerint feladatot](../roles/delegate-by-task.md).
 
 Az **Azure-szerepkörök** olyan szerepkörök, amelyek egy Azure-erőforráshoz, erőforráscsoporthoz, előfizetéshez vagy felügyeleti csoportjához vannak társítva. A PIM használatával igény szerinti hozzáférést biztosíthat a beépített Azure-szerepkörökhöz, például a tulajdonoshoz, a felhasználói hozzáférés-adminisztrátorhoz és a Közreműködőhöz, valamint az [egyéni szerepkörökhöz](../../role-based-access-control/custom-roles.md)is. Az Azure-szerepkörökkel kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md).
 
@@ -78,7 +78,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Érintett felek: Privileged Identity Management Azure AD-szerepkörökhöz
 
-| Name (Név) | Szerepkör | Művelet |
+| Név | Role | Művelet |
 | --- | --- | --- |
 | Név és e-mail | **Identity Architect vagy Azure globális rendszergazda**<br/>Az Identity Management csapat képviselője, amely meghatározza, hogyan igazíthatja ezt a változást a szervezeten belüli alapvető Identity Management-infrastruktúrával. | SO/R/I |
 | Név és e-mail | **Szolgáltatás tulajdonosa/soros kezelő**<br/>Egy szolgáltatás vagy szolgáltatási csoport informatikai tulajdonosai. Ezek kulcsfontosságúak a döntések meghozatalában és a csapatuk Privileged Identity Managementának bevezetésében. | SO/R/I |
@@ -88,7 +88,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-roles"></a>Érdekelt felek: Privileged Identity Management Azure-szerepkörökhöz
 
-| Name (Név) | Szerepkör | Művelet |
+| Név | Role | Művelet |
 | --- | --- | --- |
 | Név és e-mail | **Előfizetés/erőforrás tulajdonosa**<br/>Az egyes előfizetések vagy erőforrások tulajdonosának a Privileged Identity Management központilag telepíteni kívánó képviselője | SO/R/I |
 | Név és e-mail | **Biztonsági tulajdonos**<br/>A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek. | SO/R |
@@ -111,7 +111,7 @@ Az Azure AD-szerepkörök esetében gyakori, hogy a szervezetek számos rendszer
 
 Az alábbi lépéseket követve implementálhatja az Azure AD-szerepkörökhöz tartozó legalacsonyabb jogosultsági szint elvét.
 
-1. A szerepkörök részletességének megismeréséhez olvassa el és ismerkedjen meg az [elérhető Azure ad-rendszergazdai szerepkörökkel](../users-groups-roles/directory-assign-admin-roles.md#available-roles). Az Azure AD-ben Ön és csapata is hivatkozhat a [rendszergazdai szerepkörökre az Azure ad-ben](../users-groups-roles/roles-delegate-by-task.md), amely ismerteti a legkevésbé Kiemelt szerepkört az adott feladatokhoz.
+1. A szerepkörök részletességének megismeréséhez olvassa el és ismerkedjen meg az [elérhető Azure ad-rendszergazdai szerepkörökkel](../roles/permissions-reference.md#available-roles). Az Azure AD-ben Ön és csapata is hivatkozhat a [rendszergazdai szerepkörökre az Azure ad-ben](../roles/delegate-by-task.md), amely ismerteti a legkevésbé Kiemelt szerepkört az adott feladatokhoz.
 
 1. A szervezete Kiemelt szerepkörrel rendelkező szerepköreinek listázása. A Privileged Identity Management [felderítés és az észlelés (előzetes verzió)](pim-security-wizard.md) segítségével csökkentheti a kitettséget.
 
@@ -200,11 +200,11 @@ Azt határozza meg, hogy egy szerepkört az egyes felhasználók helyett egy cso
 
 #### <a name="many-users-are-assigned-to-a-role"></a>Számos felhasználó van hozzárendelve egy szerepkörhöz
 
-Nyomon követheti, hogy ki rendel hozzá egy szerepkörhöz, és hogyan kezelheti a hozzárendeléseket attól függően, hogy mire van szükségük, amikor manuálisan végzi a munkát. Egy csoport szerepkörhöz való hozzárendeléséhez először [hozzon létre egy szerepkörhöz hozzárendelhető csoportot](../users-groups-roles/roles-groups-create-eligible.md) , majd rendelje hozzá a csoportot egy szerepkörhöz. Ez a művelet a csoportba tartozó mindenki számára ugyanazokat az aktiválási folyamatot, mint az egyes felhasználók számára, akik jogosultak a szerepkörre való jogosultságszint-emelésre. A csoporttagok a Privileged Identity Management aktiválási kérelem és a jóváhagyási folyamat segítségével egyénileg aktiválják a hozzárendeléseket a csoportnak. A csoport nincs aktiválva, csak a felhasználó csoporttagság.
+Nyomon követheti, hogy ki rendel hozzá egy szerepkörhöz, és hogyan kezelheti a hozzárendeléseket attól függően, hogy mire van szükségük, amikor manuálisan végzi a munkát. Egy csoport szerepkörhöz való hozzárendeléséhez először [hozzon létre egy szerepkörhöz hozzárendelhető csoportot](../roles/groups-create-eligible.md) , majd rendelje hozzá a csoportot egy szerepkörhöz. Ez a művelet a csoportba tartozó mindenki számára ugyanazokat az aktiválási folyamatot, mint az egyes felhasználók számára, akik jogosultak a szerepkörre való jogosultságszint-emelésre. A csoporttagok a Privileged Identity Management aktiválási kérelem és a jóváhagyási folyamat segítségével egyénileg aktiválják a hozzárendeléseket a csoportnak. A csoport nincs aktiválva, csak a felhasználó csoporttagság.
 
 #### <a name="you-want-to-delegate-assigning-the-role"></a>Delegálni kívánja a szerepkör hozzárendelését
 
-A csoport tulajdonosai kezelhetik a csoportok tagságát. Az Azure AD szerepkörhöz hozzárendelhető csoportok esetében csak az emelt szintű szerepkörű rendszergazda, a globális rendszergazda és a csoport tulajdonosai kezelhetik a csoporttagság kezelését. Ha új tagokat vesz fel a csoportba, a tag hozzáfér azokhoz a szerepkörökhöz, amelyekhez a csoport hozzá van rendelve, hogy a hozzárendelés jogosult vagy aktív-e. A csoport tulajdonosai segítségével delegálhatja a csoporttagság kezelését egy hozzárendelt szerepkörhöz, hogy csökkentse a szükséges jogosultságok szélességét. A tulajdonosnak a csoport létrehozásakor való hozzárendelésével kapcsolatos további információkért lásd: [szerepkörhöz hozzárendelhető csoport létrehozása az Azure ad-ben](../users-groups-roles/roles-groups-create-eligible.md).
+A csoport tulajdonosai kezelhetik a csoportok tagságát. Az Azure AD szerepkörhöz hozzárendelhető csoportok esetében csak az emelt szintű szerepkörű rendszergazda, a globális rendszergazda és a csoport tulajdonosai kezelhetik a csoporttagság kezelését. Ha új tagokat vesz fel a csoportba, a tag hozzáfér azokhoz a szerepkörökhöz, amelyekhez a csoport hozzá van rendelve, hogy a hozzárendelés jogosult vagy aktív-e. A csoport tulajdonosai segítségével delegálhatja a csoporttagság kezelését egy hozzárendelt szerepkörhöz, hogy csökkentse a szükséges jogosultságok szélességét. A tulajdonosnak a csoport létrehozásakor való hozzárendelésével kapcsolatos további információkért lásd: [szerepkörhöz hozzárendelhető csoport létrehozása az Azure ad-ben](../roles/groups-create-eligible.md).
 
 > [!TIP]
 > : heavy_check_mark: a **Microsoft azt javasolja** , hogy az Azure ad szerepkörrel rendelkező csoportokat Privileged Identity Management alapján a felügyelet alá vonja. Ha egy szerepkörhöz hozzárendelhető csoportot a PIM felügyelete alá hoztak, akkor ezt Kiemelt jogosultságú hozzáférési csoportnak nevezzük. A PIM használatával megkövetelheti, hogy a csoport tulajdonosai a tulajdonos szerepkör-hozzárendelést a csoporttagság kezelése előtt aktiválja. További információ a csoportok PIM-felügyelet alatti létrehozásáról: emelt [szintű hozzáférési csoportok (előzetes verzió) Privileged Identity Managementba való beszerzése](groups-discover-groups.md).
@@ -214,7 +214,7 @@ A csoport tulajdonosai kezelhetik a csoportok tagságát. Az Azure AD szerepkör
 Ha úgy döntött, hogy Privileged Identity Management által felügyelni kívánt szerepkörök listáját választotta, el kell döntenie, hogy mely felhasználók kapják meg a jogosult szerepkört és a véglegesen aktív szerepkört. A tartósan aktív szerepkörök a Azure Active Directory és az Azure-erőforrások által hozzárendelt normál szerepkörök, míg a jogosult szerepkörök csak Privileged Identity Management társíthatók.
 
 > [!TIP]
-> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az Azure ad-szerepkörökhöz és az Azure-szerepkörökhöz egyaránt nulla végleges aktív hozzárendelések legyenek, amelyek nem az ajánlott két, az egész világra kiterjedő, globális rendszergazdai szerepkörrel rendelkező [break-Glass sürgősségi hozzáférési fiók](../users-groups-roles/directory-emergency-access.md)
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az Azure ad-szerepkörökhöz és az Azure-szerepkörökhöz egyaránt nulla végleges aktív hozzárendelések legyenek, amelyek nem az ajánlott két, az egész világra kiterjedő, globális rendszergazdai szerepkörrel rendelkező [break-Glass sürgősségi hozzáférési fiók](../roles/security-emergency-access.md)
 
 Habár a nulla állandó rendszergazda használatát javasoljuk, időnként nehéz lehet a szervezetek számára ezt azonnal elérni. Az alábbi szempontokat érdemes figyelembe venni a döntés végrehajtásakor:
 
@@ -230,7 +230,7 @@ A Privileged Identity Management-megoldás implementálása előtt érdemes a sz
 
 #### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Azure AD-szerepkörök Privileged Identity Management beállításainak megadása
 
-| Szerepkör | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Állandó rendszergazda |
+| Role | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Állandó rendszergazda |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globális rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Egyéb globális rendszergazdák | 1 óra | Vészhelyzeti hozzáférési fiókok |
 | Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | x | x | Nincs | 2 óra | Nincs |
@@ -238,7 +238,7 @@ A Privileged Identity Management-megoldás implementálása előtt érdemes a sz
 
 #### <a name="privileged-identity-management-settings-for-azure-roles"></a>Azure-szerepkörök Privileged Identity Management beállításainak megadása
 
-| Szerepkör | MFA megkövetelése | Értesítés | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Aktív rendszergazda | Aktív lejárat | Jogosult lejárat |
+| Role | MFA megkövetelése | Értesítés | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Aktív rendszergazda | Aktív lejárat | Jogosult lejárat |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | Nincs | n/a | 3 hónap |
 | Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | Nincs | 1 óra | Nincs | n/a | 3 hónap |
@@ -248,7 +248,7 @@ Az alábbi táblázat az egyes beállításokat ismerteti.
 
 | Beállítás | Leírás |
 | --- | --- |
-| Szerepkör | Annak a szerepkörnek a neve, amelynek a beállításait definiálja. |
+| Role | Annak a szerepkörnek a neve, amelynek a beállításait definiálja. |
 | MFA megkövetelése | Azt határozza meg, hogy a jogosult felhasználónak az MFA-t kell-e elvégeznie a szerepkör aktiválása előtt.<br/><br/> : heavy_check_mark: a **Microsoft azt javasolja** , hogy minden rendszergazdai szerepkör esetében érvényesítse az MFA-t, különösen akkor, ha a szerepkörök vendég felhasználókkal rendelkeznek. |
 | Értesítés | Ha igaz értékre van állítva, a globális rendszergazda, a Kiemelt szerepkörű rendszergazda és a szervezet biztonsági rendszergazdája e-mailben értesítést fog kapni, ha egy jogosult felhasználó aktiválja a szerepkört.<br/><br/>**Megjegyzés:** Egyes szervezetek nem rendelkeznek e-mail-címmel, amely a rendszergazdai fiókjához van kötve, az e-mail-értesítések beszerzéséhez be kell állítania egy alternatív e-mail címet, hogy a rendszergazdák megkapják ezeket az e-maileket. |
 | Incidens jegy | Azt határozza meg, hogy a jogosult felhasználónak rögzítenie kell-e az incidens jegy számát a szerepkör aktiválása során. Ez a beállítás segít a szervezetnek az egyes aktiválások belső incidensek számával történő azonosításában a nemkívánatos aktiválások enyhítése érdekében.<br/><br/> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az incidensek jegyei száma alapján a belső rendszerébe kösse a Privileged Identity Management. Ez a módszer olyan jóváhagyók esetében lehet hasznos, akiknek az aktiváláshoz környezetre van szükségük. |
@@ -308,7 +308,7 @@ Most, hogy azonosította a felhasználók tesztelését, ezzel a lépéssel konf
 
 Ezt a szakaszt kell használnia annak ellenőrzéséhez, hogy a szerepkörökhöz beállított összes konfiguráció megfelelően működik-e. A tesztek dokumentálása a következő táblázattal végezhető el. Az érintett felhasználókkal folytatott kommunikáció optimalizálásához ezt a szakaszt is érdemes használni.
 
-| Szerepkör | Az aktiválás során várt viselkedés | Tényleges eredmények |
+| Role | Az aktiválás során várt viselkedés | Tényleges eredmények |
 | --- | --- | --- |
 | Globális rendszergazda | (1) MFA megkövetelése<br/>(2) jóváhagyás szükséges<br/>(3) a jóváhagyó értesítést kap, és jóváhagyhatja<br/>(4) a szerepkör az előre beállított idő után lejár |  |
 | Az előfizetés *X* tulajdonosa | (1) MFA megkövetelése<br/>(2) a jogosult hozzárendelés a beállított időszak után lejár |  |

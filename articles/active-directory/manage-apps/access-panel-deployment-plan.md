@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146623"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372480"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése
 
@@ -97,7 +97,7 @@ A saját alkalmazások funkcióit fokozatosan lehet engedélyezni. A következő
 1. Saját alkalmazások
    * App Launcher
    * Önkiszolgáló alkalmazások kezelése
-   * Microsoft 365 integráció
+   * Microsoft 365-integráció
 
 1. Önkiszolgáló alkalmazások felderítése
    * Új jelszó önkiszolgáló kérése
@@ -225,7 +225,7 @@ A jóváhagyási munkafolyamatok az alkalmazások eléréséhez használhatók e
 
 Lehetővé teheti a felhasználók számára, hogy saját biztonsági csoportokat vagy Microsoft 365 csoportokat hozzanak létre és kezeljenek az Azure AD-ben. A csoport tulajdonosa jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Az önkiszolgáló csoport felügyeleti funkciói nem érhetők el levelezési biztonsági csoportokhoz vagy terjesztési listához.
 
-Az önkiszolgáló csoporttagság megtervezéséhez döntse el, hogy engedélyezi-e a szervezet összes felhasználója számára, hogy csoportokat hozzon létre és kezeljen, vagy csak a felhasználók egy részhalmazát. Ha engedélyezi a felhasználók egy részhalmazát, be kell állítania egy csoportot, amelyhez hozzá kívánja adni a felhasználókat. A forgatókönyvek engedélyezésével kapcsolatban lásd: [az önkiszolgáló csoport felügyeletének beállítása a Azure Active Directoryban](../users-groups-roles/groups-self-service-management.md) .
+Az önkiszolgáló csoporttagság megtervezéséhez döntse el, hogy engedélyezi-e a szervezet összes felhasználója számára, hogy csoportokat hozzon létre és kezeljen, vagy csak a felhasználók egy részhalmazát. Ha engedélyezi a felhasználók egy részhalmazát, be kell állítania egy csoportot, amelyhez hozzá kívánja adni a felhasználókat. A forgatókönyvek engedélyezésével kapcsolatban lásd: [az önkiszolgáló csoport felügyeletének beállítása a Azure Active Directoryban](../enterprise-users/groups-self-service-management.md) .
 
 ## <a name="plan-reporting-and-auditing"></a>Jelentéskészítés és naplózás tervezése
 
@@ -299,7 +299,7 @@ Fontos megtervezni, hogy mi a teendő, ha a központi telepítés nem a tervezet
 
 ## <a name="manage-your-implementation"></a>A megvalósítás kezelése
 
-A legkevesebb Kiemelt szerepkörrel hajtson végre egy szükséges feladatot a Azure Active Directoryon belül. [Tekintse át az elérhető különböző szerepköröket](../users-groups-roles/directory-assign-admin-roles.md) , és válassza ki a megfelelőt az alkalmazáshoz tartozó egyes personák igényeinek megoldásához. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
+A legkevesebb Kiemelt szerepkörrel hajtson végre egy szükséges feladatot a Azure Active Directoryon belül. [Tekintse át az elérhető különböző szerepköröket](../roles/permissions-reference.md) , és válassza ki a megfelelőt az alkalmazáshoz tartozó egyes personák igényeinek megoldásához. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
 
 | Szerepek| Szerepkörök| Azure AD-szerepkör  |
 | - | -| -|

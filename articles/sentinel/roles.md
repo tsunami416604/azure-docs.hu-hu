@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b680dbaead6e94aa955ebc0e0e720281a40389d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88565842"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369896"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Az Azure Sentinel engedélyei
 
-Az Azure Sentinel az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) használatával biztosítja az Azure-beli felhasználókhoz, csoportokhoz és szolgáltatásokhoz hozzárendelhető [beépített szerepköröket](../role-based-access-control/built-in-roles.md)   .
+Az Azure Sentinel az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) használatával biztosítja az Azure-beli felhasználókhoz, csoportokhoz és szolgáltatásokhoz hozzárendelhető [beépített szerepköröket](../role-based-access-control/built-in-roles.md) .
 
 A RBAC segítségével szerepköröket hozhat létre és rendelhet hozzá a biztonsági operatív csapatához, hogy megfelelő hozzáférést biztosítson az Azure Sentinelhez. A különböző szerepkörök részletesen szabályozzák, hogy az Azure Sentinel mely felhasználóinak láthatják és tudják megtekinteni. Az Azure-szerepkörök közvetlenül az Azure Sentinel-munkaterülethez rendelhetők (lásd az alábbi megjegyzést), vagy egy olyan előfizetésben vagy erőforráscsoporthoz, amelyhez a munkaterület tartozik, amelyet az Azure Sentinel örököl.
 
@@ -62,7 +62,7 @@ Előfordulhat, hogy az adott feladatra vonatkozó követelményekkel rendelkező
 
 - Vendég felhasználói incidensek kiosztása
 
-    Ha a vendégnek incidenseket kell tudnia hozzárendelni, az Azure Sentinel válaszadó szerepkörön kívül a felhasználónak is hozzá kell rendelnie a [címtár-olvasó](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)szerepkört. Vegye figyelembe, hogy ez a szerepkör *nem* Azure RBAC szerepkör, hanem egy **Azure Active Directory** szerepkör, és a normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint hozzá van rendelve. 
+    Ha a vendégnek incidenseket kell tudnia hozzárendelni, az Azure Sentinel válaszadó szerepkörön kívül a felhasználónak is hozzá kell rendelnie a [címtár-olvasó](../active-directory/roles/permissions-reference.md#directory-readers)szerepkört. Vegye figyelembe, hogy ez a szerepkör *nem* Azure RBAC szerepkör, hanem egy **Azure Active Directory** szerepkör, és a normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint hozzá van rendelve. 
 
 A párhuzamos összehasonlításhoz tekintse meg az [alábbi táblázatot](#roles-and-allowed-actions).
 
@@ -80,7 +80,7 @@ Ha például az Azure Sentinel **olvasó** szerepkörhöz hozzárendelt felhaszn
 
 Az alábbi táblázat a szerepköröket és az Azure Sentinelben engedélyezett műveleteket foglalja össze. 
 
-| Szerepkör | Forgatókönyvek létrehozása és futtatása| Munkafüzetek elemzési szabályok és más Azure Sentinel-erőforrások létrehozása | Incidensek kezelése (elutasítás, hozzárendelés stb.) | Információk, incidensek, munkafüzetek és egyéb Azure Sentinel-erőforrások megtekintése |
+| Role | Forgatókönyvek létrehozása és futtatása| Munkafüzetek elemzési szabályok és más Azure Sentinel-erőforrások létrehozása | Incidensek kezelése (elutasítás, hozzárendelés stb.) | Információk, incidensek, munkafüzetek és egyéb Azure Sentinel-erőforrások megtekintése |
 |---|---|---|---|---|
 | Azure Sentinel Reader | -- | -- | -- | &#10003; |
 | Azure Sentinel Responder | -- | -- | &#10003; | &#10003; |
@@ -91,7 +91,7 @@ Az alábbi táblázat a szerepköröket és az Azure Sentinelben engedélyezett 
 
 - Az Azure beépített szerepköreinek használatával vagy ahelyett, hogy az Azure Sentinelhez egyéni Azure-szerepköröket is létrehozhat. Az Azure Sentinel Azure-beli egyéni szerepkörei ugyanúgy jönnek létre, mint a többi [Egyéni Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -szerepkört az Azure Sentinel és az [Azure log Analytics erőforrásaira](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights) [adott engedélyek](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) alapján.
 
-- Az Azure Sentinel-munkaterületen található összes adathoz használhatja a Log Analytics speciális szerepköralapú hozzáférés-vezérlést. Ebbe beletartozik az adattípuson alapuló RBAC és az erőforrás-központú RBAC is. Log Analytics szerepkörökkel kapcsolatos további információkért lásd: [a naplózási adatok és munkaterületek kezelése a Azure monitorban](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+- Az Azure Sentinel-munkaterületen található összes adathoz használhatja a Log Analytics speciális szerepköralapú hozzáférés-vezérlést. Ebbe beletartozik az adattípuson alapuló RBAC és az erőforrás-központú RBAC is. Log Analytics szerepkörökkel kapcsolatos további információkért lásd: [a naplózási adatok és munkaterületek kezelése a Azure monitorban](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Következő lépések
 
