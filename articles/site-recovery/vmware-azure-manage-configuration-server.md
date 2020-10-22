@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcd232a3242b0341bfc81fa9785f76b0d3bd90cb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361483"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369454"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware virtuális gép/fizikai kiszolgáló vészhelyreállítási konfigurációs kiszolgálójának kezelése
 
@@ -164,17 +164,17 @@ Ha szükséges, a konfigurációs kiszolgáló újraregisztrálása ugyanabban a
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
-A kumulatív frissítések futtatásával frissítheti a konfigurációs kiszolgálót. A frissítések akár N-4 verzióra is alkalmazhatók. Példa:
+A kumulatív frissítések futtatásával frissítheti a konfigurációs kiszolgálót. A frissítések akár N-4 verzióra is alkalmazhatók. Például:
 
 - Ha 9,7, 9,8, 9,9 vagy 9,10-et futtat, közvetlenül is frissítheti a 9,11-es verzióra.
 - Ha a 9,6-es vagy korábbi verzióját futtatja, és a 9,11-re szeretne frissíteni, először frissítenie kell az 9,7-es verzióra. 9,11 előtt.
 
-A Azure Site Recovery Components támogatási nyilatkozatával kapcsolatos részletes útmutatást [itt](https://aka.ms/asr_support_statement)találja.
-A kumulatív frissítésekre mutató hivatkozások a konfigurációs kiszolgáló összes verziójának frissítéséhez érhetők el [itt](https://aka.ms/asr_update_rollups).
+A Azure Site Recovery Components támogatási nyilatkozatával kapcsolatos részletes útmutatást [itt](./service-updates-how-to.md#support-statement-for-azure-site-recovery)találja.
+A kumulatív frissítésekre mutató hivatkozások a konfigurációs kiszolgáló összes verziójának frissítéséhez érhetők el [itt](./service-updates-how-to.md#links-to-currently-supported-update-rollups).
 
 > [!IMPORTANT]
 > Az Azure Site Recovery összes új, "N" verziójának kiadása után az "N-4" alá tartozó összes verzió támogatásnak minősül. Mindig ajánlott a legújabb verzióra frissíteni.</br>
-> A Azure Site Recovery Components támogatási nyilatkozatával kapcsolatos részletes útmutatást [itt](https://aka.ms/asr_support_statement)találja.
+> A Azure Site Recovery Components támogatási nyilatkozatával kapcsolatos részletes útmutatást [itt](./service-updates-how-to.md#support-statement-for-azure-site-recovery)találja.
 
 A kiszolgálót a következőképpen frissítheti:
 
@@ -192,7 +192,7 @@ A kiszolgálót a következőképpen frissítheti:
     ![Frissítés](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. A telepítő bezárásához kattintson a **Befejezés** gombra.
-8. A Site Recovery-összetevők további verziójának frissítéséhez tekintse meg a [frissítési útmutatót](https://aka.ms/asr_vmware_upgrades).
+8. A Site Recovery-összetevők további verziójának frissítéséhez tekintse meg a [frissítési útmutatót](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>Konfigurációs kiszolgáló/folyamat kiszolgálójának frissítése a parancssorból
 

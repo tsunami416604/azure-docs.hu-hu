@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311221"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362399"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory jelentéskészítés és figyelés üzembe helyezésének megtervezése
 
@@ -99,7 +99,7 @@ A jelentéskészítés és a monitorozás az üzleti igények kielégítésére 
 * Örülök, hogy meg kell felelnie az üzleti igényeknek
 * Nem értelmezhető
 
-|Terület |Description |
+|Terület |Leírás |
 |-|-|
 |Megőrzés| **30 napnál hosszabb napló megőrzése**. Jogi vagy üzleti követelmények miatt a naplókat és az Azure AD bejelentkezési naplóit 30 napnál hosszabb ideig kell tárolni. |
 |Elemzés| **A naplóknak kereshetőnek kell lenniük**. A tárolt naplóknak analitikai eszközökkel kell kereshetőnek lennie. |
@@ -151,7 +151,7 @@ Az Azure AD-jelentések a következő szerepkörökből olvashatók be:
 
 * Jelentésolvasó
 
-További információ az [Azure ad rendszergazdai szerepköreiről](../users-groups-roles/directory-assign-admin-roles.md).
+További információ az [Azure ad rendszergazdai szerepköreiről](../roles/permissions-reference.md).
 
 *Mindig alkalmazza a legalacsonyabb jogosultsági szintű koncepciót, hogy csökkentse a fiókok biztonságának kockázatát*. A szervezet további biztonságossá tételéhez vegye fontolóra [Privileged Identity Management](../privileged-identity-management/pim-configure.md) megvalósítását.
 

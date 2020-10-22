@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8776ad915ff215eef143f62aaa9e242ff0354f3e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83736500"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368791"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection-szabályzatok
 
-A Azure Active Directory Identity Protection három alapértelmezett szabályzatot tartalmaz, amelyeket a rendszergazdák engedélyeznek. Ezek a szabályzatok korlátozott testreszabást tartalmaznak, de a legtöbb szervezetre alkalmazhatók. Az összes házirend lehetővé teszi a felhasználók kizárását, például a [vészhelyzeti vagy a break-Glass rendszergazdai fiókjait](../users-groups-roles/directory-emergency-access.md).
+A Azure Active Directory Identity Protection három alapértelmezett szabályzatot tartalmaz, amelyeket a rendszergazdák engedélyeznek. Ezek a szabályzatok korlátozott testreszabást tartalmaznak, de a legtöbb szervezetre alkalmazhatók. Az összes házirend lehetővé teszi a felhasználók kizárását, például a [vészhelyzeti vagy a break-Glass rendszergazdai fiókjait](../roles/security-emergency-access.md).
 
 ![Identity Protection-szabályzatok](./media/concept-identity-protection-policies/identity-protection-policies.png)
 
@@ -54,7 +54,7 @@ Ha a rendszer veszélyezteti a kockázatot, a felhasználók önkiszolgáló jel
 > [!NOTE] 
 > A felhasználói kockázati házirend elindítása előtt a felhasználóknak előzőleg regisztrálniuk kell magukat az önkiszolgáló jelszó-visszaállításhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure AD önkiszolgáló jelszó-visszaállítás engedélyezése](../authentication/howto-sspr-deployment.md)
 

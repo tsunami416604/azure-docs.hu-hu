@@ -3,12 +3,12 @@ title: A funkciók áttekintése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk részletesen ismerteti az Azure Event Hubs funkcióit és terminológiáját.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ebf4e928cadfc87f52fc10b27f9c8419d11a8f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936231"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369641"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Az Azure Event Hubs funkciói és terminológiája
 
@@ -33,7 +33,9 @@ Bármely entitás, amely adatokat küld az Event hub-nak, esemény-előállító
 
 ### <a name="publishing-an-event"></a>Esemény közzététele
 
-A AMQP 1,0, Kafka 1,0 (és újabb) vagy HTTPS protokollon keresztül tehet közzé eseményt. A Event Hubs [ügyféloldali kódtárakat és osztályokat](./event-hubs-dotnet-framework-getstarted-send.md) biztosít a .net-ügyfelek eseményeinek közzétételéhez. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](https://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Egyetlen kiadvány (Event adatpéldány) legfeljebb 1 MB méretű lehet, függetlenül attól, hogy egyetlen eseményről vagy kötegről van szó. A küszöbértéket meghaladó közzétételi események hibát eredményeznek. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
+A AMQP 1,0, Kafka 1,0 (és újabb) vagy HTTPS protokollon keresztül tehet közzé eseményt. A Event Hubs szolgáltatás a [REST API](https://docs.microsoft.com/rest/api/eventhub/) és a [.net](event-hubs-dotnet-standard-getstarted-send.md), a [Java](event-hubs-java-get-started-send.md), a [Python](event-hubs-python-get-started-send.md), a [JavaScript](event-hubs-node-get-started-send.md)és a [Go](event-hubs-go-get-started-send.md) ügyféloldali kódtárainak használatával teszi közzé az eseményeket az Event hub-ban. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](https://qpid.apache.org/). 
+
+Az eseményeket közzéteheti egyenként vagy kötegelve is. Egyetlen kiadvány (Event adatpéldány) legfeljebb 1 MB méretű lehet, függetlenül attól, hogy egyetlen eseményről vagy kötegről van szó. A küszöbértéket meghaladó közzétételi események hibát eredményeznek. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
 
 Az AMQP vagy HTTPS használata a használati forgatókönyvtől függ. Az AMQP használatához ki kell alakítani egy állandó kétirányú szoftvercsatornát az TLS vagy SSL/TLS mellett. A AMQP magasabb hálózati költségekkel rendelkezik a munkamenet inicializálásakor, azonban a HTTPS minden kérelem esetében további TLS-terhelést igényel. Gyakori közzététel esetén az AMQP nagyobb teljesítményt biztosít.
 

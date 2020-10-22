@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88483b29c8951f8e3f38f7cdc5bbdfb80eeca2b1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278022"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370134"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Oktatóanyag: címtár-olvasók szerepkör hozzárendelése Azure AD-csoporthoz és szerepkör-hozzárendelések kezelése
 
@@ -23,9 +23,9 @@ ms.locfileid: "91278022"
 > [!NOTE]
 > A jelen cikk egy csoportjának a **címtár-olvasói** szerepkörhöz való hozzárendelése **nyilvános előzetes**verzióban érhető el. 
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre csoportot a Azure Active Directoryban (Azure AD), és hogyan rendelheti hozzá a csoportot a [**címtár-olvasók**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkörhöz. A Directory-olvasók engedélyei lehetővé teszik, hogy a csoport tulajdonosa további tagokat vegyen fel a csoportba, például a [Azure SQL Database](sql-database-paas-overview.md) [felügyelt identitását](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) , az [Azure SQL felügyelt példányát](../managed-instance/sql-managed-instance-paas-overview.md)és az [Azure szinapszis Analytics szolgáltatást](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Ezzel a lépéssel megkerülheti, hogy [globális rendszergazda](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) vagy [Kiemelt szerepkörű rendszergazda](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rendelje hozzá a címtár-olvasók szerepkört közvetlenül a bérlő összes Azure SQL logikai kiszolgálójának identitásához.
+Ebből a cikkből megtudhatja, hogyan hozhat létre csoportot a Azure Active Directoryban (Azure AD), és hogyan rendelheti hozzá a csoportot a [**címtár-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) szerepkörhöz. A Directory-olvasók engedélyei lehetővé teszik, hogy a csoport tulajdonosa további tagokat vegyen fel a csoportba, például a [Azure SQL Database](sql-database-paas-overview.md) [felügyelt identitását](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) , az [Azure SQL felügyelt példányát](../managed-instance/sql-managed-instance-paas-overview.md)és az [Azure szinapszis Analytics szolgáltatást](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Ezzel a lépéssel megkerülheti, hogy [globális rendszergazda](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) vagy [Kiemelt szerepkörű rendszergazda](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) rendelje hozzá a címtár-olvasók szerepkört közvetlenül a bérlő összes Azure SQL logikai kiszolgálójának identitásához.
 
-Ez az oktatóanyag a [felhőalapú csoportok használata a szerepkör-hozzárendelések Azure Active Directory (előzetes verzió) szolgáltatásban való kezeléséhez című részben](../../active-directory/users-groups-roles/roles-groups-concept.md)ismertetett szolgáltatást használja. 
+Ez az oktatóanyag a [felhőalapú csoportok használata a szerepkör-hozzárendelések Azure Active Directory (előzetes verzió) szolgáltatásban való kezeléséhez című részben](../../active-directory/roles/groups-concept.md)ismertetett szolgáltatást használja. 
 
 Az Azure SQL-hez készült Azure AD-csoport címtár-olvasók szerepkörének kiosztásával kapcsolatos további információkért lásd: az [Azure sql Azure Active Directory Directory-olvasói szerepköre](authentication-aad-directory-readers-role.md).
 
@@ -38,7 +38,7 @@ Az Azure SQL-hez készült Azure AD-csoport címtár-olvasók szerepkörének ki
 
 ### <a name="create-a-new-group-and-assign-owners-and-role"></a>Új csoport létrehozása és tulajdonosok és szerepkör társítása
 
-1. Ehhez a kezdeti beállításhoz [globális rendszergazdai](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) vagy [Kiemelt szerepkörű rendszergazdai](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) jogosultsággal rendelkező felhasználó szükséges.
+1. Ehhez a kezdeti beállításhoz [globális rendszergazdai](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) vagy [Kiemelt szerepkörű rendszergazdai](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) jogosultsággal rendelkező felhasználó szükséges.
 1. A rendszerjogosultságú felhasználó bejelentkezik a [Azure Portalba](https://portal.azure.com).
 1. Lépjen a **Azure Active Directory** erőforráshoz. A **felügyelt**területen válassza a **csoportok**lehetőséget. Új csoport létrehozásához válassza az **új csoport** lehetőséget.
 1. Válassza a **Biztonság** lehetőséget a csoport típusaként, és töltse ki a többi mezőt. Győződjön meg arról, hogy az **Azure ad-szerepkörök beállítása a csoporthoz (előzetes verzió)** az **Igen**értékre van állítva. Ezután rendelje hozzá az Azure AD **Directory-olvasók** szerepkört a csoporthoz.
@@ -94,7 +94,7 @@ A címtár- **olvasók** szerepkörnek a kiszolgáló identitáshoz való hozzá
 ## <a name="directory-readers-role-assignment-using-powershell"></a>Directory-olvasók szerepkör-hozzárendelés a PowerShell használatával
 
 > [!IMPORTANT]
-> A [globális rendszergazda](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) vagy a [Kiemelt szerepkörű rendszergazdának](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) futtatnia kell ezeket a kezdeti lépéseket. A PowerShell mellett az Azure AD Microsoft Graph API-t is kínál, amely [szerepkörökhöz hozzárendelhető csoportot hoz létre az Azure ad-ben](../../active-directory/users-groups-roles/roles-groups-create-eligible.md#using-microsoft-graph-api).
+> A [globális rendszergazda](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) vagy a [Kiemelt szerepkörű rendszergazdának](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) futtatnia kell ezeket a kezdeti lépéseket. A PowerShell mellett az Azure AD Microsoft Graph API-t is kínál, amely [szerepkörökhöz hozzárendelhető csoportot hoz létre az Azure ad-ben](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api).
 
 1. Töltse le az Azure AD előzetes verzió PowerShell-modulját az alábbi parancsokkal. Lehet, hogy rendszergazdaként kell futtatnia a PowerShellt.
 
@@ -186,7 +186,7 @@ A további lépések végrehajtásához a globális rendszergazda vagy a Kiemelt
     Add-AzureADGroupMember -ObjectId $group.ID -RefObjectId $miIdentity.ObjectId
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure SQL Azure Active Directory Directory-olvasói szerepköre](authentication-aad-directory-readers-role.md)
 - [Oktatóanyag: Azure AD-felhasználók létrehozása az Azure AD-alkalmazásokkal](authentication-aad-service-principal-tutorial.md)

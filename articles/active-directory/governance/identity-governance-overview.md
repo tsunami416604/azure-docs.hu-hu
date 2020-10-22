@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91306463"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362450"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identity Governance?
 
@@ -58,7 +58,7 @@ A szervezeteknek olyan folyamatra van szükségük, amely túllépi az adott fel
 
 Ez általában a hozzáférés-jóváhagyási döntéseket delegálja az üzleti döntéshozóknak.  Emellett maguk is bejárhatják a felhasználókat.  A vállalati marketing alkalmazásban található bizalmas ügyféladatokat használó felhasználóknak például ismerniük kell a vállalat szabályzatait. Előfordulhat, hogy a vendég felhasználói nem tudnak az olyan szervezeten belüli adatkezelési követelményekkel kapcsolatban, amelyeknek meghívásra kerültek.
 
-A szervezetek az olyan technológiákon keresztül automatizálják a hozzáférési életciklus folyamatát, mint a [dinamikus csoportok](../users-groups-roles/groups-dynamic-membership.md), valamint a scim integrált [SaaS-alkalmazásokhoz](../saas-apps/tutorial-list.md) vagy [alkalmazásokhoz](../app-provisioning/use-scim-to-provision-users-and-groups.md)való felhasználói kiépítés.  A szervezetek azt is megadhatják [, hogy mely vendég felhasználók férhetnek hozzá a helyszíni alkalmazásokhoz](../external-identities/hybrid-cloud-to-on-premises.md).  Ezek a hozzáférési jogosultságok rendszeresen áttekinthetők az ismétlődő [Azure ad hozzáférési felülvizsgálatok](access-reviews-overview.md)használatával.   Az [Azure ad-jogosultságok kezelése](entitlement-management-overview.md) lehetővé teszi annak meghatározását is, hogy a felhasználók hogyan kérnek hozzáférést a csoport-és csoporttagság, az alkalmazási szerepkörök és a SharePoint Online szerepköreinek csomagjaihoz.
+A szervezetek az olyan technológiákon keresztül automatizálják a hozzáférési életciklus folyamatát, mint a [dinamikus csoportok](../enterprise-users/groups-dynamic-membership.md), valamint a scim integrált [SaaS-alkalmazásokhoz](../saas-apps/tutorial-list.md) vagy [alkalmazásokhoz](../app-provisioning/use-scim-to-provision-users-and-groups.md)való felhasználói kiépítés.  A szervezetek azt is megadhatják [, hogy mely vendég felhasználók férhetnek hozzá a helyszíni alkalmazásokhoz](../external-identities/hybrid-cloud-to-on-premises.md).  Ezek a hozzáférési jogosultságok rendszeresen áttekinthetők az ismétlődő [Azure ad hozzáférési felülvizsgálatok](access-reviews-overview.md)használatával.   Az [Azure ad-jogosultságok kezelése](entitlement-management-overview.md) lehetővé teszi annak meghatározását is, hogy a felhasználók hogyan kérnek hozzáférést a csoport-és csoporttagság, az alkalmazási szerepkörök és a SharePoint Online szerepköreinek csomagjaihoz.
 
 Amikor egy felhasználó megpróbál hozzáférni az alkalmazásokhoz, az Azure AD kikényszeríti a [feltételes hozzáférési](../conditional-access/index.yml) szabályzatokat. A feltételes hozzáférési szabályzatok tartalmazhatják például a használati [feltételek](../conditional-access/terms-of-use.md) megjelenítését, és biztosítják, hogy a felhasználó az alkalmazáshoz való hozzáférés megkezdése előtt [jóváhagyja ezeket a feltételeket](../conditional-access/require-tou.md) .
 
@@ -100,7 +100,7 @@ Ha visszajelzést szeretne küldeni a személyazonosság-irányítási funkciók
 Habár nincs tökéletes megoldás vagy javaslat minden ügyfélhez, a következő konfigurációs útmutatók biztosítják a Microsoft által a biztonságosabb és produktív munkaerő biztosításához javasolt alapelveket.
 
 - [Identitás- és eszköz-hozzáférési konfigurációk](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Emelt szintű hozzáférés biztonsága](../users-groups-roles/directory-admin-roles-secure.md)
+- [Emelt szintű hozzáférés biztonsága](../roles/security-planning.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>Függelék – az identitás-irányítási funkciókban való felügyelethez szükséges legkevésbé Kiemelt szerepkörök
 
@@ -113,7 +113,7 @@ Ajánlott eljárás a legkevésbé Kiemelt szerepkör használata a rendszergazd
 |Privileged Identity Management | Kiemelt szerepkörű rendszergazda |
 | Használati feltételek | Biztonsági rendszergazda vagy feltételes hozzáférésű rendszergazda |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure AD-jogosultságkezelés?](entitlement-management-overview.md)
 - [Mik azok az Azure AD-hozzáférési felülvizsgálatok?](access-reviews-overview.md)

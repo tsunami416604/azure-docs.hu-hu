@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24e514208683d540f08818020238090583a1bc42
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91597382"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362467"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -77,9 +77,9 @@ A jogosultságok kezelése az Azure AD-be egy *hozzáférési csomag*fogalmát m
 
 Az Azure AD biztonsági csoportjaira vagy Microsoft 365 csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Például:
 
-- Az Azure AD biztonsági csoporttal rendelkező felhasználók számára engedélyezheti Microsoft 365 számára a felhasználói licenceket egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
+- Az Azure AD biztonsági csoporttal rendelkező felhasználók számára engedélyezheti Microsoft 365 számára a felhasználói licenceket egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../enterprise-users/licensing-groups-assign.md) .
 - Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD-beli biztonsági csoport használatával, valamint az adott csoport Azure-beli [szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával.
-- Hozzáférést biztosíthat a felhasználóknak az Azure ad-szerepkörök kezeléséhez egy hozzáférési csomagban lévő Azure AD-szerepkörökhöz hozzárendelhető csoportok használatával, valamint [egy Azure ad-szerepkör hozzárendelésével az adott csoporthoz](../users-groups-roles/roles-groups-assign-role.md).
+- Hozzáférést biztosíthat a felhasználóknak az Azure ad-szerepkörök kezeléséhez egy hozzáférési csomagban lévő Azure AD-szerepkörökhöz hozzárendelhető csoportok használatával, valamint [egy Azure ad-szerepkör hozzárendelésével az adott csoporthoz](../roles/groups-assign-role.md).
 
 ## <a name="how-do-i-control-who-gets-access"></a>Hogyan a hozzáférés-vezérlést?
 
@@ -119,7 +119,7 @@ A hozzáférési csomagok nem helyettesítik más mechanizmusokat a hozzáféré
 
 A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez tekintse át a következő feltételek listáját.
 
-| Kifejezés | Leírás |
+| Időszak | Leírás |
 | --- | --- |
 | hozzáférési csomag | Egy csoport vagy projekt által igényelt erőforrás-csomag, amely szabályzatokkal van szabályozva. Egy hozzáférési csomag mindig szerepel a katalógusban. Hozzon létre egy új hozzáférési csomagot egy olyan forgatókönyvhöz, amelyben a felhasználóknak hozzáférést kell kérniük.  |
 | hozzáférési kérelem | Egy hozzáférési csomag erőforrásaihoz való hozzáférésre vonatkozó kérelem. A kérések általában egy jóváhagyási munkafolyamaton keresztül mennek keresztül.  Ha jóváhagyják, a kérelmező felhasználó hozzáférési csomagbeli hozzárendelést kap. |
@@ -167,7 +167,7 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. 150 az alkalmazottak a hozzáférési csomagokat kérik. | 2 000 **olyan** alkalmazottak, akik igényelhetik a hozzáférési csomagokat | 2000 |
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. Egy másik házirend azt határozza meg, hogy a partner contoso (vendég) **felhasználóinak** néhány felhasználója a jóváhagyás alá eső hozzáférési csomagokat is kérheti. A contoso 30 000 felhasználóval rendelkezik. 150 az alkalmazottak a contoso-kérések hozzáférési csomagjait és 10 500 felhasználóit kérik. | 2 000 Employees + 500 vendég a Contosotól, amely meghaladja a 1:5 arányt (10 500-(2 000 * 5)) | 2500 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
 - [Gyakori helyzetek](entitlement-management-scenarios.md)

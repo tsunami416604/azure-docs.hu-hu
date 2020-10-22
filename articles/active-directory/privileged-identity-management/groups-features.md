@@ -16,16 +16,16 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6709d7589ebf4c82ec25c6b7a79fa31a305839
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 30724edafdee0c04f0c8b004ce335072b4ce0fd4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87506945"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367448"
 ---
 # <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>A Privileged Access Azure AD-csoportok felügyeleti képességei (előzetes verzió)
 
-Privileged Identity Management (PIM) mostantól jogosultságot rendelhet az emelt szintű hozzáférési csoportok tagságához vagy tulajdonosához. Ettől az előzetes verziótól kezdődően Azure Active Directory (Azure AD) beépített szerepköröket rendelhet a felhőalapú csoportokhoz, és a PIM használatával kezelheti a csoporttagokat és a tulajdonosi jogosultságokat és az aktiválást. További információ a szerepkör-hozzárendelésre használható csoportokról Az Azure AD-ben: [felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)](../users-groups-roles/roles-groups-concept.md).
+Privileged Identity Management (PIM) mostantól jogosultságot rendelhet az emelt szintű hozzáférési csoportok tagságához vagy tulajdonosához. Ettől az előzetes verziótól kezdődően Azure Active Directory (Azure AD) beépített szerepköröket rendelhet a felhőalapú csoportokhoz, és a PIM használatával kezelheti a csoporttagokat és a tulajdonosi jogosultságokat és az aktiválást. További információ a szerepkör-hozzárendelésre használható csoportokról Az Azure AD-ben: [felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)](../roles/groups-concept.md).
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>Különböző szabályzatok megkövetelése az egyes szerepkörökhöz hozzárendelhető csoportok számára
 
@@ -44,7 +44,7 @@ Az időhöz kötött tulajdonosi vagy tagsági hozzárendelések beállítása u
 
 A felhasználó által kezdeményezett műveletekhez a globális rendszergazda vagy a Kiemelt szerepkörű rendszergazda jóváhagyása szükséges. A rendszergazdáknak többé nem kell megadniuk a lejáratok kezelésének üzleti tevékenységét. Csak megvárhatják a kiterjesztési vagy megújítási kérelmeket, és jóváhagyják őket, ha a kérelem érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Emelt szintű hozzáférési csoport tulajdonosának vagy tagjának kiosztása](groups-assign-member-owner.md)
 - [Jogosultsági szintű hozzáférési csoport tagjainak és tulajdonosainak szóló aktiválási kérelmek jóváhagyása vagy elutasítása](groups-approval-workflow.md)

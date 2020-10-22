@@ -1,6 +1,6 @@
 ---
 title: Adatok átalakítása
-description: Az adatátalakítást vagy az adatfeldolgozást Azure Data Factory Hadoop, Machine Learning vagy Azure Data Lake Analytics használatával.
+description: Az adatátalakítást vagy az adatfeldolgozást Azure Data Factory Hadoop, Azure Machine Learning Studio (klasszikus) vagy Azure Data Lake Analytics használatával.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039afdafdccbefe03b5b366a89256409fda482e9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442785"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368859"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factoryben
 
@@ -26,7 +26,7 @@ ms.locfileid: "89442785"
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
 > * [HDInsight streaming](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
-> * [Machine Learning](transform-data-using-machine-learning.md) 
+> * [Azure Machine Learning Studio (klasszikus)](transform-data-using-machine-learning.md) 
 > * [Tárolt eljárás](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
 > * [Databricks notebook](transform-data-databricks-notebook.md)
@@ -70,12 +70,12 @@ A Data Factory-folyamat HDInsight adatfolyam-továbbítási tevékenysége a saj
 ### <a name="hdinsight-spark-activity"></a>HDInsight Spark-tevékenység
 A Data Factory folyamat HDInsight Spark-tevékenysége Spark-programokat hajt végre a saját HDInsight-fürtön. Részletekért lásd: [Spark-programok Meghívása Azure Data Factoryról](transform-data-using-spark.md). 
 
-### <a name="machine-learning-activities"></a>Machine Learning tevékenységek
-Azure Data Factory lehetővé teszi, hogy könnyedén hozzon létre olyan folyamatokat, amelyek közzétett Azure Machine Learning webszolgáltatást használnak a prediktív elemzésekhez. A [Batch végrehajtási tevékenység](transform-data-using-machine-learning.md) Azure Data Factory folyamatokban való használatával meghívhat egy Machine learning webszolgáltatást, hogy előrejelzéseket készítsen a Batch-ben lévő adatairól.
+### <a name="azure-machine-learning-studio-classic-activities"></a>Azure Machine Learning Studio (klasszikus) tevékenységek
+A Azure Data Factory lehetővé teszi, hogy könnyedén hozzon létre egy közzétett Azure Machine Learning Studio (klasszikus) webszolgáltatást használó folyamatokat a prediktív elemzésekhez. A [Batch-végrehajtási tevékenység](transform-data-using-machine-learning.md) egy Azure Data Factory folyamat során meghívja a Studio (klasszikus) webszolgáltatás használatát, hogy előrejelzéseket készítsen a Batch-ben lévő adatairól.
 
-Idővel a Machine Learning pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Miután végzett az újraképzéssel, frissítenie kell a pontozási webszolgáltatást az áttelepített Machine Learning modellel. Az [erőforrás frissítése tevékenységgel](update-machine-learning-models.md) frissítheti az újonnan betanított modellt használó webszolgáltatást.  
+Az idő múlásával a Studio (klasszikus) pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Miután végzett az újraképzéssel, frissítenie kell a pontozási webszolgáltatást az áttelepített gépi tanulási modellel. Az [erőforrás frissítése tevékenységgel](update-machine-learning-models.md) frissítheti az újonnan betanított modellt használó webszolgáltatást.  
 
-A Machine Learning tevékenységekkel kapcsolatos részletekért tekintse meg [Machine learning tevékenységek használata](transform-data-using-machine-learning.md) című témakört. 
+A Studio (klasszikus) tevékenységek részletes ismertetését lásd: [Azure Machine learning Studio (klasszikus) tevékenységek használata](transform-data-using-machine-learning.md) . 
 
 ### <a name="stored-procedure-activity"></a>Tárolt eljárási tevékenység
 A Data Factory folyamat SQL Server tárolt eljárása tevékenységgel egy tárolt eljárást hívhat meg a következő adattárak egyikében: Azure SQL Database, Azure szinapszis Analytics (korábban SQL Data Warehouse), SQL Server adatbázis a vállalatban vagy egy Azure-beli virtuális gépen. Részletekért lásd a [tárolt eljárási tevékenységről](transform-data-using-stored-procedure.md) szóló cikket.  

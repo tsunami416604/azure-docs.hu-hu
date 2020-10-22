@@ -3,16 +3,16 @@ title: Oktatóanyag – NSX-T hálózati szegmens létrehozása az Azure VMware-
 description: Ismerje meg, hogyan hozhatja létre a virtuális gépekhez használt NSX-T hálózati szegmenseket a vCenter-ben
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 780cac15efc043b9ae44b77af1234adca3fec5a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f88f186d2af10bcc114d64920a3ac489ef7be54f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254533"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367669"
 ---
 # <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution"></a>Oktatóanyag: NSX-T hálózati szegmens létrehozása az Azure VMware-megoldásban
 
-A NSX-T kezelőjében létrehozott hálózati szegmensek a vCenter virtuális gépei (VM-EK) hálózatként használatosak. A vCenter-ben létrehozott virtuális gépek a NSX-T-ben létrehozott hálózati szegmensekre kerülnek, és a vCenter láthatók.
+A vCenter-ben létrehozott virtuális gépek (VM-EK) az NSX-T-ben létrehozott hálózati szegmensekre kerülnek, és a vCenter láthatók.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -23,7 +23,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a vCenter és a NSX-T kezelő felügyeleti felületek elérését biztosító Azure VMware-megoldás saját felhője szükséges. További információ: a [hálózatkezelés konfigurálása a VMware Private Cloud-hoz az Azure-](tutorial-configure-networking.md) oktatóanyagban.
+Rendelkeznie kell egy, a vCenter és a NSX-T kezelő felügyeleti felületek elérését biztosító Azure VMware-megoldás saját felhővel. További információt a [hálózatkezelés konfigurálása](tutorial-configure-networking.md) oktatóanyagban talál.
 
 ## <a name="provision-a-network-segment-in-nsx-t"></a>Hálózati szegmens kiépítése a NSX-T-ben
 
@@ -69,9 +69,9 @@ Az oktatóanyag elvégzéséhez a vCenter és a NSX-T kezelő felügyeleti felü
 
    :::image type="content" source="media/nsxt/vcenter-with-ls01-2.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozta a virtuális gépekhez használt NSX-T hálózati szegmenseket a vCenter-ben. Mostantól [létrehozhat egy tartalomkezelőt a virtuális gépek Azure VMware-megoldásban való üzembe helyezéséhez](deploy-vm-content-library.md) , és a virtuális gép kiépítése az oktatóanyagban létrehozott hálózaton.
+Ebben az oktatóanyagban létrehozta a virtuális gépekhez használt NSX-T hálózati szegmenseket a vCenter-ben. Mostantól [létrehozhat egy tartalomkezelőt a virtuális gépek Azure VMware-megoldásban való üzembe helyezéséhez](deploy-vm-content-library.md). Az oktatóanyagban létrehozott hálózaton is üzembe helyezhet egy virtuális gépet.
 
 Ha nem, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre ExpressRoute-Global Reach a privát felhőhöz egy Azure VMware-megoldásban.
 

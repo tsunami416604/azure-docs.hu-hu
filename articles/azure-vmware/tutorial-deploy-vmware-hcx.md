@@ -3,12 +3,12 @@ title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 607ff3cb04002883b49b4c5bc37d312cbb83c8e5
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: c78eae11497702054bb54b5980228fd0a3962577
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173629"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367771"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -64,7 +64,9 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
 
 * Konfigurálja az [Azure ExpressRoute Global REACH](tutorial-expressroute-global-reach-private-cloud.md) a helyszíni és az Azure VMware megoldás SDDC ExpressRoute-áramkörök között.
 
-* Minden szükséges portnak nyitva kell lennie a helyszíni összetevők és az Azure VMware megoldás SDDC közötti kommunikációhoz. További információt a [VMware HCX dokumentációjában](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)talál.
+* [Minden szükséges portnak](https://ports.vmware.com/home/VMware-HCX) nyitva kell lennie a helyszíni összetevők és az Azure VMware megoldás SDDC közötti kommunikációhoz.
+
+További információt a [VMware HCX dokumentációjában](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)talál.
 
 
 ### <a name="ip-addresses"></a>IP-címek
@@ -73,13 +75,13 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
    
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>A VMware HCX-összekötő PETESEJTJEInek üzembe helyezése a helyszínen
 
->[!NOTE]
->Mielőtt telepítené a virtuális berendezést a helyszíni vCenter, le kell töltenie a VMware HCX-összekötő PETESEJTJEIt. 
+> [!NOTE]
+> Mielőtt telepítené a virtuális berendezést a helyszíni vCenter, le kell töltenie a VMware HCX-összekötő PETESEJTJEIt. 
 
 1. Nyisson meg egy böngészőablakot, és jelentkezzen be az Azure VMware Solution HCX Managerbe a `https://x.x.x.9` 443-es porton a **cloudadmin** felhasználói hitelesítő adataival, majd lépjen a **support (támogatás**) elemre.
 
-   >[!TIP]
-   >Jegyezze fel a HCX Cloud Manager IP-címét az Azure VMware megoldásban. Az IP-cím azonosításához az Azure VMware-megoldás panelen lépjen a kapcsolat **kezelése**,  >  **Connectivity** majd a **HCX** lapra. 
+   > [!TIP]
+   > Jegyezze fel a HCX Cloud Manager IP-címét az Azure VMware megoldásban. Az IP-cím azonosításához az Azure VMware-megoldás panelen lépjen a kapcsolat **kezelése**,  >  **Connectivity** majd a **HCX** lapra. 
    >
    >A vCenter jelszava a saját felhő beállításakor lett meghatározva.
 
@@ -102,8 +104,8 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
 
 1. Kattintson a **tovább**gombra, ellenőrizze a konfigurációt, majd válassza a **Befejezés** lehetőséget az HCX-összekötő petesejtjeinek telepítéséhez.
      
-   >[!NOTE]
-   >A jelenleg üzembe helyezett VMware HCX-összekötőt általában a fürt felügyeleti hálózatára telepíti a rendszer.  
+   > [!NOTE]
+   > A jelenleg üzembe helyezett VMware HCX-összekötőt általában a fürt felügyeleti hálózatára telepíti a rendszer.  
    
    > [!IMPORTANT]
    > Előfordulhat, hogy manuálisan kell bekapcsolnia a virtuális berendezést.  Ha ez a helyzet, várjon 10-15 percet, mielőtt továbblép a következő lépésre.
@@ -171,7 +173,7 @@ A VMware HCX Cloud Managert az adatközpont VMware HCX-összekötője segítség
 1. Adja meg a korábban feljegyzett távoli HCX URL-címet vagy IP-címet, az Azure VMware-megoldás cloudadmin@vsphere.local felhasználónevét és jelszavát. Ezután válassza a **Csatlakozás** lehetőséget.
 
    > [!NOTE]
-   > A távoli HCX URL-cím az Azure VMware-megoldás saját felhő HCX Cloud Manager IP-címe, amely a felügyeleti hálózat ". 9" címe. Ha például a vCenter 192.168.4.2, akkor a HCX URL-címe 192.168.4.9 lesz.
+   > Ha sikeresen létre szeretne hozni egy helyet, a HCX-összekötőnek képesnek kell lennie arra, hogy a 443-as porton keresztül irányítsa a HCX Cloud Manager IP-címét
    >
    > A jelszó ugyanaz a jelszó, amelyet a vCenter való bejelentkezéshez használt. Ezt a jelszót a kezdeti üzembe helyezési képernyőn határozta meg.
 
@@ -272,6 +274,13 @@ Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megol
 
 Itt az ideje, hogy konfiguráljon egy Service meshot a helyszíni és az Azure VMware megoldás SDDC között.
 
+   > [!NOTE]
+   > A Service Mesh Azure VMware-megoldással való sikeres létrehozásához:
+   >
+   > Az 500/4500-as UDP-portok nyitva vannak a helyszíni HCX-összekötő által meghatározott "kimenő" hálózati profil címei és az Azure VMware-megoldás HCX Cloud "kimenő" hálózati profiljának címei között.
+   >
+   > Ügyeljen arra, hogy ellenőrizze a [HCX szükséges portokat](https://ports.vmware.com/home/VMware-HCX).
+
 1. Az **infrastruktúra**területen válassza az **összekötő**  >  **szolgáltatás háló**  >  **Létrehozás szolgáltatás háló létrehozása**lehetőséget.    
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-service-mesh.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/create-service-mesh.png":::
@@ -351,3 +360,4 @@ A HCX használatával kapcsolatos további információkért látogasson el a VM
 
 * [A VMware HCX dokumentációja](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [Virtual Machines migrálása VMware-HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* [HCX szükséges portok](https://ports.vmware.com/home/VMware-HCX)

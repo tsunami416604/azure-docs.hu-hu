@@ -3,12 +3,12 @@ title: Gyakori kérdések a VMware vész-helyreállítással kapcsolatban Azure 
 description: Választ kaphat a helyszíni VMware virtuális gépek Azure-ba való vész-helyreállításával kapcsolatos gyakori kérdésekre Azure Site Recovery használatával.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89054971"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359798"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
@@ -75,7 +75,7 @@ A Site Recovery ISO 27001:2013 és 27018, HIPAA és DPA minősítéssel rendelke
 
 A [díjszabási számológép](https://aka.ms/asr_pricing_calculator) használatával megbecsülheti a költségeket site Recovery használata közben.
 
-A költségek részletes becsléséhez futtassa a Deployment Planner eszközt a [VMware](https://aka.ms/siterecovery_deployment_planner) -hez, és használja a [Cost becslése jelentést](https://aka.ms/asr_DP_costreport).
+A költségek részletes becsléséhez futtassa a Deployment Planner eszközt a [VMware](./site-recovery-deployment-planner.md) -hez, és használja a [Cost becslése jelentést](./site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Van különbség a tárterületre való replikálás és a felügyelt lemezekre való közvetlen váltás között?
 
@@ -114,7 +114,7 @@ Site Recovery a helyszíni VMware virtuális gépeket és fizikai kiszolgálóka
 
 Nem. A Azure Portal március 2019-én kezdődően csak az Azure Managed Disks szolgáltatásban lehet replikálni.
 
-Az új virtuális gépek egy Storage-fiókba való replikálása csak a PowerShell ([az. recoveryservices szolgáltatónál modul verziója 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) vagy a REST API (2018-01-10-es vagy 2016-08-10-os verzió) használatával érhető el. [Megtudhatja, hogyan](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) telepítheti a replikációt a PowerShell-parancsok használatával.
+Az új virtuális gépek egy Storage-fiókba való replikálása csak a PowerShell ([az. recoveryservices szolgáltatónál modul verziója 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) vagy a REST API (2018-01-10-es vagy 2016-08-10-os verzió) használatával érhető el. [Megtudhatja, hogyan](./vmware-azure-disaster-recovery-powershell.md) telepítheti a replikációt a PowerShell-parancsok használatával.
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Milyen előnyökkel jár a felügyelt lemezekre való replikálás?
 
@@ -190,7 +190,7 @@ A Site Recovery 5 percenként generál összeomlás-konzisztens helyreállítás
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>A mobilitási szolgáltatások ügynökének vagy a konfigurációs kiszolgálónak a saját verziója elavult, és a frissítés nem sikerült. Mit tegyek?
 
-Site Recovery az N-4 támogatási modellt követi. [További](https://aka.ms/asr_support_statement) információ a nagyon régi verziókról való frissítésről.
+Site Recovery az N-4 támogatási modellt követi. [További](./service-updates-how-to.md#support-statement-for-azure-site-recovery) információ a nagyon régi verziókról való frissítésről.
 
 ### <a name="where-can-i-find-the-release-notes-and-update-rollups-for-azure-site-recovery"></a>Hol találhatók a Azure Site Recovery kibocsátási megjegyzései és kumulatív frissítései?
 
@@ -198,11 +198,11 @@ Site Recovery az N-4 támogatási modellt követi. [További](https://aka.ms/asr
 
 ### <a name="where-can-i-find-upgrade-information-for-disaster-recovery-to-azure"></a>Hol találhatok frissítési információt az Azure-ba való vész-helyreállításhoz?
 
-[További információ a frissítésről](https://aka.ms/asr_vmware_upgrades).
+[További információ a frissítésről](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Szükség van-e az egyes verziófrissítésekhez szükséges forrásoldali gépek újraindítására?
 
-Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információk](https://aka.ms/asr_vmware_upgrades).
+Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információk](./service-updates-how-to.md#reboot-after-mobility-service-upgrade).
 
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
@@ -246,7 +246,7 @@ Bár lehetséges, a konfigurációs kiszolgálót futtató Azure-beli virtuális
 
 - A legújabb frissítési információkat az [Azure Updates lapon](https://azure.microsoft.com/updates/?product=site-recovery)találja.
 - A legújabb verziót a portálról töltheti le. A konfigurációs kiszolgáló legújabb verzióját közvetlenül a [Microsoft letöltőközpontból](https://aka.ms/asrconfigurationserver)is letöltheti.
-- Ha a verziószáma meghaladja az aktuális verziónál régebbi négy verziót, tekintse meg a frissítési útmutatót a [támogatási utasításban](https://aka.ms/asr_support_statement) .
+- Ha a verziószáma meghaladja az aktuális verziónál régebbi négy verziót, tekintse meg a frissítési útmutatót a [támogatási utasításban](./service-updates-how-to.md#support-statement-for-azure-site-recovery) .
 
 ### <a name="should-i-back-up-the-configuration-server"></a>Biztonsági mentést kell készíteni a konfigurációs kiszolgálóról?
 
