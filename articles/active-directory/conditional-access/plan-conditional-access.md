@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145283"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366326"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -220,7 +220,7 @@ Az egyes alkalmazásokra vonatkozó szabályzatok létrehozása nem hatékony, �
 
 ### <a name="set-up-emergency-access-accounts"></a>Vészhelyzeti hozzáférési fiókok beállítása
 
-Ha helytelenül konfigurált egy házirendet, akkor az a Azure Portalon kívülről is zárolhatja a szervezeteket. A szervezeten belül két vagy több [vészhelyzeti hozzáférési fiók](../users-groups-roles/directory-emergency-access.md) létrehozásával csökkentheti a véletlen rendszergazdai zárolás hatását.
+Ha helytelenül konfigurált egy házirendet, akkor az a Azure Portalon kívülről is zárolhatja a szervezeteket. A szervezeten belül két vagy több [vészhelyzeti hozzáférési fiók](../roles/security-emergency-access.md) létrehozásával csökkentheti a véletlen rendszergazdai zárolás hatását.
 
 * Hozzon létre egy házirend-felügyeleti célra dedikált felhasználói fiókot, és zárja ki az összes szabályzatot.
 

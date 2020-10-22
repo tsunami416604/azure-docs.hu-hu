@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: f8eb87909ffdf9ce15108d78bed425bf6c142262
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb64fb3c9e25e629a0bcb36fe60fd5ae2d7fc906
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249467"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368604"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Apache Spark feladatok (előzetes verzió) optimalizálása az Azure szinapszis Analytics szolgáltatásban
 
@@ -52,7 +52,7 @@ A korábbi Spark-verziók a RDD és az absztrakt adatokat, a Spark 1,3-es és a 
 
 A Spark számos formátumot támogat, például a CSV-t, a JSON-t, az XML-t, a parketta, az ork és a Avro. A Spark bővíthető a külső adatforrásokkal rendelkező több formátum támogatásához – további információ: [Apache Spark csomagok](https://spark-packages.org).
 
-A teljesítmény legjobb formátuma a Parquet és a *Snappy Compression*, amely az alapértelmezett a Spark 2. x verzióban. A Parquet oszlopos formátumban tárolja az adatok, és a Spark-ban is nagyon optimalizált. Emellett a *Snappy Compression* is nagyobb fájlokat eredményezhet, mint a gzip-tömörítést. Ezeknek a fájloknak a felosztható jellegéből adódóan a kibontása gyorsabb lesz]
+A teljesítmény legjobb formátuma a Parquet és a *Snappy Compression*, amely az alapértelmezett a Spark 2. x verzióban. A Parquet oszlopos formátumban tárolja az adatok, és a Spark-ban is nagyon optimalizált. Emellett a *Snappy Compression* is nagyobb fájlokat eredményezhet, mint a gzip-tömörítést. A fájlok felosztható jellege miatt a rendszer gyorsabban kibontja a kibontást.
 
 ## <a name="use-the-cache"></a>Gyorsítótár használata
 
@@ -77,7 +77,7 @@ Apache Spark az Azure Szinapszisban FONALat [Apache HADOOP fonalat](https://hado
 A "memórián kívüli" üzenetek megoldásához próbálkozzon a következővel:
 
 * Tekintse át a DAG felügyeletének véletlenszerű működését. Csökkentse a leképezési és a partíciós (vagy bucketize) adatforrások közötti adatmennyiséget, maximalizálja az egyetlen véletlenszerű sorrendet, és csökkentse a továbbított adatmennyiséget.
-* Inkább a `ReduceByKey` rögzített memória korlátja `GroupByKey` , amely az összesítéseket, az ablakokat és más funkciókat tartalmaz, de Ann nem kötött memória korlátja van.
+* Inkább a `ReduceByKey` rögzített memória korlátja `GroupByKey` , amely az összesítéseket, az ablakokat és más függvényeket tartalmaz, de a memória korlátja korlátozott.
 * A rendszer inkább a `TreeReduce` végrehajtók vagy a partíciók több munkáját hajtja végre a (z `Reduce` ) rendszeren, amely az illesztőprogramon végzett összes munkát végzi.
 * Az alsó szintű RDD-objektumok helyett használja a DataFrames.
 * Hozzon létre olyan ComplexTypes, amelyek műveleteket (például "Top N"), különböző összesítéseket vagy ablakkezelő műveleteket ágyaznak be.
@@ -176,8 +176,8 @@ Ha például nem megváltoztathatatlan típust ( `string` ) használ az összes�
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Hangolás Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
+- [Hangolás Apache Spark](https://spark.apache.org/docs/2.4.5/tuning.html)
 - [A Apache Spark-feladatok tényleges finomhangolása](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 - [Kryo szerializálás](https://github.com/EsotericSoftware/kryo)

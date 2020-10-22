@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 5b82dba923db16e96cc0884b629723c4e8496c3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccc9f709348d961e49bced00946658a6997837c0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080913"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368111"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>PowerShell-parancsmagok referenciája az Azure Scheduler szolgáltatáshoz
 
@@ -22,7 +22,7 @@ ms.locfileid: "87080913"
 >
 > Az ütemező már nem érhető el a Azure Portalban, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg is elérhetők maradnak, így a feladatok és a feladatok gyűjteményei kezelhetők.
 
-A Scheduler-feladatok és-webhelycsoportok létrehozására és kezelésére szolgáló parancsfájlok létrehozásához PowerShell-parancsmagokat használhat. Ez a cikk az Azure Scheduler fő PowerShell-parancsmagait sorolja fel a hivatkozási cikkeire mutató hivatkozásokkal. Az Azure-előfizetéshez Azure PowerShell telepítéséhez tekintse meg a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/)című témakört. [Azure Resource Manager parancsmagokkal](/powershell/azure/)kapcsolatos további információkért lásd: [Azure PowerShell használata a Azure Resource Manager használatával](../powershell-azure-resource-manager.md).
+A Scheduler-feladatok és-webhelycsoportok létrehozására és kezelésére szolgáló parancsfájlok létrehozásához PowerShell-parancsmagokat használhat. Ez a cikk az Azure Scheduler fő PowerShell-parancsmagait sorolja fel a hivatkozási cikkeire mutató hivatkozásokkal. Az Azure-előfizetéshez Azure PowerShell telepítéséhez tekintse meg a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/)című témakört. [Azure Resource Manager parancsmagokkal](/powershell/azure/)kapcsolatos további információkért lásd: [Azure PowerShell használata a Azure Resource Manager használatával](../azure-resource-manager/management/manage-resources-powershell.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -55,7 +55,7 @@ Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája](scheduler-concepts-terms.md)
 * [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)

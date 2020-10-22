@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 1574810de5b1a2df1b82ea9cc19c88be5c72fec6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342144"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368085"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -42,10 +42,10 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Kiadás állapota:                  | Általánosan elérhető (GA)                                                                                                                                                                                                                                                                                      |
 | Árképzési                        | [Az Azure Defender for Servers](security-center-pricing.md) használatát igényli                                                                                                                                                                                                                                             |
-| Támogatott platformok:            | ![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure-gépek<br>![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure arc-gépek|
+| Támogatott platformok:            | ![Igen](./media/icons/yes-icon.png) Windows rendszerű Azure-gépek<br>![Igen](./media/icons/yes-icon.png) Windows rendszerű Azure arc-gépek|
 | A Windows támogatott verziói:  | Az Endpoint védője a Windows 10 1703 (és újabb) és a Windows Server 2019 rendszerbe van építve.<br>A Security Center támogatja az észlelést a Windows Server 2016, 2012 R2 és 2008 R2 SP1 rendszeren.<br>A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára. |
 | Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa**vagy **előfizetéshez tartozó közreműködő**                         |
-| Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők.<br>![No](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov                                                        |
+| Felhők                         | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők.<br>![Nem](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -85,7 +85,7 @@ A hely konfigurálása után nem módosítható. Ha át kell helyeznie az adatai
 1. A Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
 1. Válassza ki a módosítani kívánt előfizetést.
 1. Válassza a **veszélyforrások észlelése**lehetőséget.
-1. Válassza **a Windows DEFENDER ATP engedélyezése lehetőséget az adataim eléréséhez**, majd válassza a **Mentés**lehetőséget.
+1. Jelölje be **az adathozzáférés engedélyezése a Microsoft Defender számára a végpont számára**lehetőséget, majd válassza a **Mentés**lehetőséget.
 
     :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="A Microsoft Defender a végpont saját Security Center":::
 

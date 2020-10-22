@@ -9,12 +9,12 @@ ms.date: 08/05/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34750bcc2e9913b23daa3682d4fdea736f9c7a9a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205585"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367431"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Az Azure Portal beállításainak kezelése
 
@@ -96,7 +96,7 @@ Ha a rendszergazda engedélyezte a tétlenségi időtúllépési szabályzatot, 
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>A könyvtár időtúllépési beállításának módosítása (rendszergazda)
 
-A [globális rendszergazdai szerepkör rendszergazdái](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) a munkamenet kijelentkezése előtt a maximális üresjárati időt is kikényszerítik. Az inaktivitás időtúllépési beállítása a könyvtár szintjén érvényes. A beállítás érvénybe lép az új munkamenetek esetében. Azonnal nem lesz érvényes a már bejelentkezett felhasználókra. További információ a címtárakról: [Active Directory tartományi szolgáltatások Overview (áttekintés](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
+A [globális rendszergazdai szerepkör rendszergazdái](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) a munkamenet kijelentkezése előtt a maximális üresjárati időt is kikényszerítik. Az inaktivitás időtúllépési beállítása a könyvtár szintjén érvényes. A beállítás érvénybe lép az új munkamenetek esetében. Azonnal nem lesz érvényes a már bejelentkezett felhasználókra. További információ a címtárakról: [Active Directory tartományi szolgáltatások Overview (áttekintés](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
 
 Ha Ön globális rendszergazda, és a Azure Portal összes felhasználójának üresjárati időtúllépési beállítását szeretné kényszeríteni, kövesse az alábbi lépéseket:
 

@@ -3,12 +3,12 @@ title: Kubernetes-figyelés a Azure Monitor for containers szolgáltatással | M
 description: Ez a cikk azt ismerteti, hogyan tekintheti meg és elemezheti a Kubernetes-fürtök teljesítményét a tárolók Azure Monitorával.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: de61e8e5b2716a3ca212a0a830a4d48b8bd2c3ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994765"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368757"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>A Kubernetes-fürt teljesítményének figyelése a Azure Monitor for containers szolgáltatással
 
@@ -75,7 +75,7 @@ A következő táblázat a megfigyelt fürt állapotának a többfürtes nézete
 | |Ismeretlen |Ha nem jelentett az elmúlt 30 percben |
 |**System Pod**| | |
 | |Kifogástalan |100% |
-| |Figyelmeztetés |N.A. |
+| |Figyelmeztetés |N/A |
 | |Kritikus |<100% |
 | |Ismeretlen |Ha nem jelentett az elmúlt 30 percben |
 |**Csomópont** | | |
@@ -93,7 +93,7 @@ A tárolók Azure monitorhoz való hozzáférése közvetlenül egy AK-fürtből
 - Fürt
 - Csomópontok
 - Vezérlők
-- Tárolók
+- Containers
 
 >[!NOTE]
 >A cikk további részében ismertetett tapasztalatok a Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök teljesítményének és állapotának megtekintésére is érvényesek, ha a több fürtből álló nézetből van kiválasztva.
@@ -195,7 +195,7 @@ A **csomópontok** lap megtekintésekor megjelenő információkat az alábbi t�
 | Állapot | A csomópont állapotának Kubernetes. |
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;%  | A csomópontok átlagos százalékos aránya a megadott időtartamon belül a percentilis alapján. |
 | Min, AVG, 50, 90, 95., Max | A csomópontok átlagos tényleges értéke a percentilis alapján a megadott időtartam alatt. Az átlagos értéket a rendszer a csomópont processzor-/memória-korlátja alapján méri. A hüvelyek és a tárolók esetében ez a gazdagép által jelentett átlagos érték. |
-| Tárolók | Tárolók száma. |
+| Containers | Tárolók száma. |
 | Üzemidő | A csomópont elindítása vagy újraindítása óta eltelt időt jelöli. |
 | Tartományvezérlő | Csak a tárolók és a hüvelyek esetében. Azt mutatja, hogy melyik vezérlő található a ben. Nem minden hüvely van vezérlőben, ezért előfordulhat, hogy egyesek **N/a**-t jelenítenek meg. |
 | Trend min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | A oszlopdiagram trendje a vezérlő átlagos százalékos értékének százalékos arányát jelöli. |
@@ -238,7 +238,7 @@ A vezérlők megtekintésekor megjelenő információkat az alábbi táblázat i
 | Állapot | A tárolók összesítési állapota, miután befejezte az állapotot, például *az OK*, a leállítva *, a* *sikertelen*, a *leállított*vagy a *szüneteltetve*állapotot. Ha a tároló fut, de az állapot nem volt megfelelően megjelenítve, vagy nem az ügynök vette át, és 30 percnél nem válaszolt, az állapot *ismeretlen*. Az állapotjelző ikon további részleteit a következő táblázat tartalmazza.|
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;%| Az egyes entitások átlagos százalékának összesítési átlaga a kiválasztott metrika és a percentilis esetében. |
 | Min, AVG, 50, 90, 95., Max  | A kiválasztott százalékos értékhez tartozó tároló átlagos CPU-millicore vagy memória-teljesítményének összesítése. Az átlagos értéket a hüvely processzor-/memória-korlátja határozza meg. |
-| Tárolók | A vezérlő vagy a pod tárolók teljes száma. |
+| Containers | A vezérlő vagy a pod tárolók teljes száma. |
 | Újraindítja | A tárolók újraindítási számának összesítése. |
 | Üzemidő | A tároló elindítása óta eltelt időt jelöli. |
 | Csomópont | Csak a tárolók és a hüvelyek esetében. Azt mutatja, hogy melyik vezérlő található a ben. |
@@ -290,6 +290,10 @@ Az állapot mezőben látható ikonok a hüvelyek online állapotát jelzik, az 
 | ![Legutóbbi jelentett Futási állapot ikon](./media/container-insights-analyze/containers-grey-icon.png) | Legutóbbi jelentett Futtatás, de 30 percen belül nem válaszolt|
 | ![Leállított állapot ikon](./media/container-insights-analyze/containers-terminated-icon.png) | Sikerült leállítani vagy leállítani|
 | ![Sikertelen állapot ikonja](./media/container-insights-analyze/containers-failed-icon.png) | Sikertelen állapot |
+
+## <a name="monitor-and-visualize-network-configurations"></a>Hálózati konfigurációk figyelése és megjelenítése
+Az Azure Network Policy Manager olyan tájékoztató Prometheus-metrikákat tartalmaz, amelyek lehetővé teszik a hálózati konfigurációk figyelését és jobb megismerését. Beépített vizualizációkat biztosít a Azure Portal vagy a Grafana Labs szolgáltatásban. Részletekért lásd: [hálózati konfigurációk figyelése és megjelenítése az Azure NPM](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm).
+
 
 ## <a name="workbooks"></a>Munkafüzetek
 

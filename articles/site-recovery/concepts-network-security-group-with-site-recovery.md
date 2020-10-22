@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
-ms.openlocfilehash: 904bc63ed2a135cdcadad75e96acd6fe3ca39039
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069679"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367973"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Hálózati biztonsági csoportok Site Recoveryvel
 
-A hálózati biztonsági csoportok a virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalom korlátozására szolgálnak. A [hálózati biztonsági csoport (NSG)](../virtual-network/security-overview.md#network-security-groups) olyan biztonsági szabályok listáját tartalmazza, amelyek engedélyezik vagy megtagadják a bejövő vagy kimenő hálózati forgalmat a forrás vagy a cél IP-címe, portja és protokollja alapján.
+A hálózati biztonsági csoportok a virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalom korlátozására szolgálnak. A [hálózati biztonsági csoport (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) olyan biztonsági szabályok listáját tartalmazza, amelyek engedélyezik vagy megtagadják a bejövő vagy kimenő hálózati forgalmat a forrás vagy a cél IP-címe, portja és protokollja alapján.
 
 A Resource Manager-alapú üzemi modellben a NSG alhálózatokhoz vagy egyedi hálózati adapterekhez is társítható. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra. A forgalom tovább korlátozható úgy, hogy egy olyan alhálózaton belül társít egy NSG az egyes hálózati adapterekhez, amely már rendelkezik társított NSG.
 
@@ -37,7 +37,7 @@ Ebben a példában a bejövő forgalom esetében először az alhálózat NSG le
 
 Ez lehetővé teszi a részletes biztonsági szabály alkalmazását. Előfordulhat például, hogy engedélyezni szeretné a bejövő internet-hozzáférést néhány alkalmazás virtuális géphez (például a felületi virtuális gépekhez) egy alhálózat alatt, de korlátozza a bejövő internet-hozzáférést más virtuális gépekhez (például adatbázishoz és más háttérbeli virtuális gépekhez). Ebben az esetben a virtuálisgép-NSG való hozzáférés megtagadásával enyhébb szabályokkal rendelkezhet az alhálózat NSG, engedélyezheti az internetes forgalmat, és korlátozhatja az egyes virtuális gépekhez való hozzáférést. Ugyanez alkalmazható a kimenő forgalomra is.
 
-Az ilyen NSG-konfigurációk beállításakor győződjön meg arról, hogy a megfelelő prioritások érvényesek a [biztonsági szabályokra](../virtual-network/security-overview.md#security-rules). A szabályok feldolgozása prioritási sorrendben történik. Az alacsonyabb sorszámúak feldolgozása a magasabb sorszámúak előtt történik, mivel az alacsonyabb sorszámok magasabb prioritást jelölnek. Ha az adatforgalom megfelel valamelyik szabálynak, a feldolgozás leáll. Ennek eredményeképp az olyan alacsonyabb prioritású (magasabb számú) szabályokat, amelyek attribútumai megegyeznek a magasabb prioritású szabályokéival, a rendszer nem dolgozza fel.
+Az ilyen NSG-konfigurációk beállításakor győződjön meg arról, hogy a megfelelő prioritások érvényesek a [biztonsági szabályokra](../virtual-network/network-security-groups-overview.md#security-rules). A szabályok feldolgozása prioritási sorrendben történik. Az alacsonyabb sorszámúak feldolgozása a magasabb sorszámúak előtt történik, mivel az alacsonyabb sorszámok magasabb prioritást jelölnek. Ha az adatforgalom megfelel valamelyik szabálynak, a feldolgozás leáll. Ennek eredményeképp az olyan alacsonyabb prioritású (magasabb számú) szabályokat, amelyek attribútumai megegyeznek a magasabb prioritású szabályokéival, a rendszer nem dolgozza fel.
 
 Nem biztos, hogy minden esetben tisztában lesz vele, ha a hálózati adapterrel és az azt tartalmazó alhálózattal is társítva van hálózati biztonsági csoport. A hálózati adapterre alkalmazott összesített szabályok ellenőrzéséhez tekintse meg a hálózati adapter [érvényes biztonsági szabályait](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) . Az [IP flow ellenőrzési](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) funkcióját az [Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) is használhatja annak megállapítására, hogy a kommunikáció engedélyezett-e a hálózati adapterről vagy a hálózatról. Az eszköz megmutatja, hogy a kommunikáció engedélyezett-e, valamint azt is, hogy melyik hálózati biztonsági szabály engedélyezi vagy blokkolja a forgalmat.
 
@@ -72,7 +72,7 @@ A korábban ismertetett [példa példáját](concepts-network-security-group-wit
 A NSG létrehozása és konfigurálása után javasoljuk, hogy futtasson egy [feladatátvételi tesztet](azure-to-azure-tutorial-dr-drill.md) a megírt NSG-társítások és a feladatátvétel utáni Virtuálisgép-kapcsolat ellenőrzéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
--    További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md#network-security-groups).
--    További információ a NSG [biztonsági szabályairól](../virtual-network/security-overview.md#security-rules).
+-    További információ a [hálózati biztonsági csoportokról](../virtual-network/network-security-groups-overview.md#network-security-groups).
+-    További információ a NSG [biztonsági szabályairól](../virtual-network/network-security-groups-overview.md#security-rules).
 -    További információ az NSG [érvényes biztonsági szabályairól](../virtual-network/diagnose-network-traffic-filter-problem.md) .
 -    További információ az alkalmazások feladatátvételének automatizálására szolgáló [helyreállítási tervekről](site-recovery-create-recovery-plans.md) .

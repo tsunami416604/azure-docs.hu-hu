@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 869513d5a668544b2aa8afb13bb56e8293788b06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570641"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368723"
 ---
 # <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Az adatműveletekhez való felhasználói hozzáférés korlátozása Azure Cosmos DB
 
 Azure Cosmos DB két módon hitelesítheti az interakciókat az adatbázis-szolgáltatással:
 
 - a Azure Active Directory identitás használata a Azure Portal való interakció során
-- Azure Cosmos DB [kulcsok](secure-access-to-data.md#primary-keys) vagy [erőforrás-tokenek](secure-access-to-data.md#resource-tokens) használata az API-k és SDK-k által kezdeményezett hívások kibocsátásakor.
+- Azure Cosmos DB [kulcsok](database-security.md#primary-keys) vagy [erőforrás-tokenek](secure-access-to-data.md#resource-tokens) használata az API-k és SDK-k által kezdeményezett hívások kibocsátásakor.
 
 Az egyes hitelesítési módszerek különböző műveletekhez biztosítanak hozzáférést, néhány átfedéssel:
 

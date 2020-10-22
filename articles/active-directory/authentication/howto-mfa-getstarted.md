@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2cbb9876d9e28b2cab8efb9ccdb2aa543fcc4b4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d3d03f46e3948d1134c442f93af2e8f274dcd256
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964468"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366479"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication üzemelő példány megtervezése
 
@@ -35,7 +35,7 @@ Az Azure Multi-Factor Authentication működés közbeni gyors megjelenítéséh
 
 Az Azure Multi-Factor Authentication üzembe helyezésének megkezdése előtt meg kell fontolnia az előfeltételként szükséges elemeket.
 
-| Forgatókönyv | Előfeltétel |
+| Használati eset | Előfeltétel |
 | --- | --- |
 | **Csak felhőalapú** identitás-környezet modern hitelesítéssel | **Nincsenek további előfeltétel-feladatok** |
 | **Hibrid** identitási forgatókönyvek | [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) települ, és a felhasználói identitások szinkronizálása vagy összevonása a helyszíni Active Directory tartományi szolgáltatások a Azure Active Directory. |
@@ -226,7 +226,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 A feltételes hozzáférési házirend stratégiájának megtervezéséhez, amely meghatározza, hogy az MFA-t és más vezérlőket is meg kell határoznia, lásd: [általános feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md).
 
-Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A nem megfelelő rendszergazdai hozzáférés következményeinek enyhítése érdekében [hozzon létre két vagy több vészhelyzeti hozzáférési fiókot a bérlőn](../users-groups-roles/directory-emergency-access.md) , és zárja ki őket a feltételes hozzáférési szabályzatból.
+Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A nem megfelelő rendszergazdai hozzáférés következményeinek enyhítése érdekében [hozzon létre két vagy több vészhelyzeti hozzáférési fiókot a bérlőn](../roles/security-emergency-access.md) , és zárja ki őket a feltételes hozzáférési szabályzatból.
 
 ### <a name="create-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -247,7 +247,7 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
    * OPCIONÁLISan: ha megbízható telephelyeket vagy elnevezett helyeket konfigurált, megadhatja, hogy a rendszer belefoglalja vagy kizárja ezeket a helyeket a szabályzatból.
 1. Győződjön meg **arról, hogy**a **hozzáférés** engedélyezése választógomb be van jelölve.
     * Jelölje be a **többtényezős hitelesítés megkövetelése**jelölőnégyzetet.
-    * Kattintson a **Kiválasztás** elemre.
+    * Válassza a **Kiválasztás** lehetőséget.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
 1. Kattintson a **Létrehozás** gombra.
@@ -357,7 +357,7 @@ Jelentések az Azure MFA-hoz
 
 Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon keresztül:
 
-| Jelentés | Hely | Description |
+| Jelentés | Hely | Leírás |
 | --- | --- | --- |
 | Használati és csalási riasztások | Azure AD > bejelentkezések | Információt nyújt a teljes használatról, a felhasználói összesítésekről és a felhasználói adatokról; valamint a megadott dátumtartomány szerint elküldött csalási riasztások előzményei. |
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b71c6b834a6217007134b3be961a0ffa103e2706
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397963"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368043"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-ból Azure-ba történő virtuálisgép-replikációval kapcsolatos hibák elhárítása
 
@@ -202,7 +202,7 @@ Nem lehet csatlakozni a hitelesítéshez és az Identity IP4-végpontok Microsof
 #### <a name="fix-the-problem"></a>A probléma javítása
 
 Azure Site Recovery szükséges hozzáférés Microsoft 365 IP-tartományokhoz a hitelesítéshez.
-Ha az Azure hálózati biztonsági csoport (NSG) szabályai/tűzfal proxyja segítségével vezérli a kimenő hálózati kapcsolatot a virtuális gépen, ügyeljen arra, hogy [Azure Active Directory (HRE)](../virtual-network/security-overview.md#service-tags) NSG-szabályt használjon a HRE való hozzáférés engedélyezéséhez. Az IP-cím alapú NSG-szabályok már nem támogatottak.
+Ha az Azure hálózati biztonsági csoport (NSG) szabályai/tűzfal proxyja segítségével vezérli a kimenő hálózati kapcsolatot a virtuális gépen, ügyeljen arra, hogy [Azure Active Directory (HRE)](../virtual-network/network-security-groups-overview.md#service-tags) NSG-szabályt használjon a HRE való hozzáférés engedélyezéséhez. Az IP-cím alapú NSG-szabályok már nem támogatottak.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3. probléma: Site Recovery konfiguráció nem sikerült (151197)
 
@@ -475,7 +475,7 @@ Az alábbi példák olyan GRUB-fájlokból származó sorok, amelyekben az eszk�
 
 Cserélje le az egyes eszközök nevét a megfelelő UUID-ra:
 
-1. A parancs végrehajtásával keresse meg az eszköz UUID-azonosítóját `blkid <device name>` . Példa:
+1. A parancs végrehajtásával keresse meg az eszköz UUID-azonosítóját `blkid <device name>` . Például:
 
    ```shell
    blkid /dev/sda1

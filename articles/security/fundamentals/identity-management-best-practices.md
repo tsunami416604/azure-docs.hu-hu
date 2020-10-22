@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 69aac7dff80b7c85212602f1c03957a117628737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54fb11598dc794248c1aae81734b548341c0eee6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400332"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369471"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 
@@ -102,7 +102,7 @@ Azok a szervezetek, amelyek nem integrálják a helyszíni identitást a Felhőb
 > Ki kell választania, hogy mely címtárakban kritikus fiókok fognak megjelenni, és hogy a használt rendszergazdai munkaállomást az új Cloud Services vagy a meglévő folyamatok felügyelik-e. A meglévő felügyeleti és identitás-kiépítési folyamatok használata csökkentheti a kockázatokat, de a támadók kockázatát is veszélyeztethetik a helyszíni fiókok és a felhőbe való belátások. Érdemes lehet más stratégiát használni a különböző szerepkörökhöz (például rendszergazdák és üzleti egység adminisztrátorai). Itt két lehetősége van. Az első lehetőség olyan Azure AD-fiókok létrehozása, amelyek nincsenek szinkronizálva a helyszíni Active Directory-példánnyal. Csatlakoztassa a felügyeleti munkaállomást az Azure AD-hez, amelyet Microsoft Intune használatával kezelhet és javíthat. A második lehetőség a meglévő rendszergazdai fiókok használata a helyszíni Active Directory-példányra való szinkronizálással. A Active Directory tartományban meglévő munkaállomásokat kezelheti felügyeletre és biztonságra.
 
 ## <a name="manage-connected-tenants"></a>Csatlakoztatott bérlők kezelése
-A biztonsági szervezetnek meg kell vizsgálnia a kockázat felmérését, és meg kell határoznia, hogy a szervezet szabályzatait és az összes szabályozási követelményt követi-e a rendszer. Győződjön meg arról, hogy a biztonsági szervezet az éles környezethez és a hálózathoz (az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) vagy [a helyek közötti VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)-en keresztül) kapcsolódó összes előfizetéshez betekintést kapott. Az Azure AD [globális rendszergazdája/vállalati rendszergazdája](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) hozzáférhet a [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepköréhez, és megtekintheti a környezethez csatlakoztatott összes előfizetést és felügyelt csoportot.
+A biztonsági szervezetnek meg kell vizsgálnia a kockázat felmérését, és meg kell határoznia, hogy a szervezet szabályzatait és az összes szabályozási követelményt követi-e a rendszer. Győződjön meg arról, hogy a biztonsági szervezet az éles környezethez és a hálózathoz (az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) vagy [a helyek közötti VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)-en keresztül) kapcsolódó összes előfizetéshez betekintést kapott. Az Azure AD [globális rendszergazdája/vállalati rendszergazdája](../../active-directory/roles/permissions-reference.md#company-administrator-permissions) hozzáférhet a [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepköréhez, és megtekintheti a környezethez csatlakoztatott összes előfizetést és felügyelt csoportot.
 
 Lásd: [jogosultságszint-emelési hozzáférés az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez](../../role-based-access-control/elevate-access-global-admin.md) , hogy Ön és biztonsági csoportja megtekintse a környezetéhez kapcsolódó összes előfizetést vagy felügyeleti csoportot. A kockázatok felmérése után távolítsa el ezt a emelt szintű hozzáférést.
 

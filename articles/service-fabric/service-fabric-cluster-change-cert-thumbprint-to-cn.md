@@ -1,126 +1,66 @@
 ---
 title: Fürt frissítése a tanúsítvány köznapi nevének használatára
-description: Megtudhatja, hogyan válthat egy Service Fabric-fürtöt a tanúsítvány ujjlenyomatai megfelelnek a tanúsítvány köznapi nevének használatával.
+description: Megtudhatja, hogyan alakíthat át egy Service Fabric-fürtöt az ujjlenyomat-alapú deklarációból a köznapi nevekre.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: a90290430616302dbbe9ab9cf717510070936529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 224798565921593d3c91dfcc187efa71a71b1fdd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247914"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368060"
 ---
-# <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Fürt módosítása tanúsítvány-ujjlenyomatról köznapi névre
-Két tanúsítvány nem rendelkezhet ugyanazzal az ujjlenyomattal, ami lehetővé teszi a fürt tanúsítványainak átváltását vagy felügyeletét. Több tanúsítvány, azonban ugyanaz a köznapi név vagy a tárgy lehet.  Ha egy telepített fürtöt a tanúsítvány ujjlenyomatai megfelelnek használ a tanúsítványok köznapi nevének használatára, a Tanúsítványkezelő sokkal egyszerűbbé válik. Ez a cikk azt ismerteti, hogyan lehet frissíteni egy futó Service Fabric fürtöt, hogy a Tanúsítvány ujjlenyomata helyett a tanúsítvány köznapi nevét használja.
-
->[!NOTE]
-> Ha két ujjlenyomata van deklarálva a sablonban, két üzemelő példányt kell végrehajtania.  Az első üzembe helyezés a cikk lépéseinek követése előtt történik.  Az első telepítés beállítja a sablon **ujjlenyomat** tulajdonságát a használt tanúsítványra, és eltávolítja a **thumbprintSecondary** tulajdonságot.  A második központi telepítéshez kövesse a cikk lépéseit.
- 
+# <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Fürtözött tanúsítványok konvertálása az ujjlenyomat-alapú deklarációk és köznapi nevek között
+A tanúsítvány aláírása (az "ujjlenyomat" néven ismert) egyedi, ami azt jelenti, hogy az ujjlenyomattal deklarált fürtcsomópont a tanúsítvány egy adott példányára hivatkozik. Ez lehetővé teszi a tanúsítványok átváltását és kezelését, általánosságban nehéz és explicit módon: minden változáshoz a fürt és a mögöttes számítástechnikai gazdagépek frissítésének előkészítésére van szükség. A Service Fabric-fürt tanúsítvány-deklarációinak ujjlenyomat alapján történő átalakítása a tanúsítvány tulajdonosának köznapi neve alapján leegyszerűsíti a felügyeletet – különösen, ha a tanúsítvány a továbbiakban nem szükséges a fürt frissítéséhez. Ez a cikk azt ismerteti, hogyan alakíthat át egy meglévő fürtöt általános név alapú deklarációra állásidő nélkül.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-a-certificate"></a>Tanúsítvány beszerzése
-Először kérje le a tanúsítványt egy [hitelesítésszolgáltatótól (CA)](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi nevének a saját egyéni tartományának kell lennie, és egy tartományregisztráló alapján kell megvásárolnia. Például: "azureservicefabricbestpractices.com"; azok, akik nem Microsoft-alkalmazottak, nem tudnak kiépíteni tanúsítványokat az MS-tartományokhoz, így nem használhatja az LB vagy a Traffic Manager DNS-neveit a tanúsítvány általános neveként, és létre kell hoznia egy [Azure DNS zónát](../dns/dns-delegate-domain-azure-dns.md) , ha az egyéni tartomány feloldható az Azure-ban. Ha azt szeretné, hogy a portál tükrözze a fürt egyéni tartományának aliasát, azt is be kell jelentenie, hogy a fürt "z".
+## <a name="moving-to-certificate-authority-ca-signed-certificates"></a>Áthelyezés a hitelesítésszolgáltatótól (CA) – aláírt tanúsítványok
+Annak a fürtnek a biztonsága, amelynek a tanúsítványa ujjlenyomattal van ellátva, az a tény, hogy lehetetlen, vagy a számítási módon nem valósítható meg egy olyan tanúsítvány hamisítása, amely ugyanazzal az aláírással rendelkezik, mint egy másik. Ebben az esetben a tanúsítvány bebizonyította kevésbé fontos, ezért az önaláírt tanúsítványok megfelelőek. Ezzel szemben a közös név által deklarált tanúsítványokkal rendelkező fürtök biztonsága a tanúsítványt kiállító nyilvános kulcsú infrastruktúra szolgáltatástól (PKI) származik, és olyan szempontokat is magában foglal, mint például a tanúsítási eljárások, függetlenül attól, hogy az operatív biztonságot naplózzák-e, és sok más. Emiatt a PKI megválasztása fontos, a kiállítók (hitelesítésszolgáltató vagy CA) meghitt ismerete szükséges, és az önaláírt tanúsítványok alapvetően értéktelenek. A köznapi név (CN) által deklarált tanúsítvány általában akkor minősül érvényesnek, ha a lánca sikeresen felépíthető, a tulajdonosnak a várt CN-elemet kell használnia, és a kiállító (a lánc közvetlen vagy magasabb szintjének) megbízhatónak tekinti az ellenőrzést végző ügynök. Service Fabric támogatja a tanúsítványoknak a CN által "implicit" kiállítóval való deklarálása (a láncnak egy megbízhatósági kapcsolati horgonyban kell végződnie), vagy az ujjlenyomattal deklarált kibocsátók ("kiállítói rögzítés"); További részletekért tekintse meg ezt a  [cikket](cluster-security-certificates.md#common-name-based-certificate-validation-declarations) . Ha a fürtöt egy olyan önaláírt tanúsítvánnyal szeretné átalakítani, amely az ujjlenyomatot a köznapi név értékre állította be, akkor a cél, a CA által aláírt tanúsítványt először ujjlenyomattal kell bevezetni a fürtbe. csak ezután lehetséges a TP-ből a CN-re való átalakítás.
 
-Tesztelési célból a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítványt egy ingyenes vagy nyitott hitelesítésszolgáltatótól szerezheti be.
-
-> [!NOTE]
-> Az önaláírt tanúsítványok, beleértve azokat is, amelyek akkor jönnek létre, amikor egy Service Fabric fürtöt telepítenek a Azure Portal, nem támogatottak. 
+Tesztelési célból az önaláírt tanúsítványokat a CN deklarálhatja, a kibocsátót a saját ujjlenyomatára rögzítheti. biztonsági szempontból ez közel azonos a tanúsítvány TP-vel való deklarálása esetén. Vegye figyelembe azonban, hogy az ilyen jellegű sikeres átalakítás nem garantálja a TP-ről a CN-re való sikeres átalakítást a CA által aláírt tanúsítvánnyal. Ezért javasoljuk, hogy tesztelje a konverziót egy megfelelő, HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvánnyal (az ingyenes lehetőségek léteznek).
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Töltse fel a tanúsítványt, és telepítse a méretezési csoportba
-Az Azure-ban egy Service Fabric-fürt üzembe helyezése egy virtuálisgép-méretezési csoporton történik.  Töltse fel a tanúsítványt egy kulcstartóba, majd telepítse azt a virtuálisgép-méretezési csoportba, amelyen a fürt fut.
+Az Azure-ban a tanúsítványok beszerzéséhez és üzembe helyezéséhez ajánlott módszer a Azure Key Vault szolgáltatás és annak eszközei. A fürtbe tartozó virtuálisgép-méretezési csoportok minden csomópontja számára ki kell építeni a tanúsítványnak megfelelő tanúsítványt. További részletekért tekintse [meg a virtuális gépek méretezési csoportjain található titkokat](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm) . Fontos, hogy a fürt összes csomópont-típusának módosítása előtt a jelenlegi és a célként megadott fürtcsomópontok is telepítve legyenek a virtuális gépeken. A tanúsítvány kiállításának a Service Fabric-csomópontra való kiépítési menetét [itt](cluster-security-certificate-management.md#the-journey-of-a-certificate)részletesen tárgyaljuk.
 
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+## <a name="bring-cluster-to-an-optimal-starting-state"></a>Fürt optimális indítási állapotba hozása
+Tanúsítvány-nyilatkozat konvertálása ujjlenyomat alapján a köznapi név alapú hatásokra:
 
-$SubscriptionId  =  "<subscription ID>"
+- A fürt minden csomópontja megkeresi és megjeleníti a hitelesítő adatait más csomópontok számára
+- Hogyan érvényesíti az egyes csomópontok hitelesítő adatait biztonságos kapcsolat létesítése után  
 
-# Sign in to your Azure account and select your subscription
-Login-AzAccount -SubscriptionId $SubscriptionId
+A folytatás előtt tekintse át [mindkét konfiguráció megjelenítési és ellenőrzési szabályait](cluster-security-certificates.md#certificate-configuration-rules) . Az ujjlenyomatok köznapi nevének átalakításakor a legfontosabb szempont, hogy a frissített és még nem frissített csomópontok (azaz a különböző frissítési tartományokhoz tartozó csomópontok) a frissítés során bármikor képesek legyenek sikeres kölcsönös hitelesítés végrehajtására. Ennek eléréséhez ajánlott a cél/cél tanúsítvány ujjlenyomattal való deklarálása egy kezdeti frissítés során, és egy későbbi, a köznapi névre való áttérés befejezése. Ha a fürt már egy javasolt indítási állapotban van, akkor ez a szakasz kihagyható.
 
-$region = "southcentralus"
-$KeyVaultResourceGroupName  = "mykeyvaultgroup"
-$VaultName = "mykeyvault"
-$certFilename = "C:\users\sfuser\myclustercert.pfx"
-$certname = "myclustercert"
-$Password  = "P@ssw0rd!123"
-$VmssResourceGroupName     = "myclustergroup"
-$VmssName                  = "prnninnxj"
+Egy átalakításhoz több érvényes indítási állapot van; a Invariant az, hogy a fürt már használja a cél tanúsítványt (az ujjlenyomattal deklarálva) a frissítés elején a köznapi névre. A `GoalCert` következőket vesszük `OldCert1` figyelembe `OldCert2` :
 
-# Create new Resource Group 
-New-AzResourceGroup -Name $KeyVaultResourceGroupName -Location $region
+#### <a name="valid-starting-states"></a>Érvényes indítási állapotok
+- `Thumbprint: GoalCert, ThumbprintSecondary: None`
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, ahol `GoalCert` a későbbi, `NotAfter` mint `OldCert1`
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, ahol `GoalCert` a későbbi, `NotAfter` mint `OldCert1`
 
-# Create the new key vault
-$newKeyVault = New-AzKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName `
-    -Location $region -EnabledForDeployment 
-$resourceId = $newKeyVault.ResourceId 
+Ha a fürt nem szerepel a fent ismertetett érvényes állapotok valamelyikében, tekintse meg a jelen cikk végén található, az állam megvalósításáról szóló függeléket.
 
-# Add the certificate to the key vault.
-$PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName `
-    -FilePath $certFilename -Password $PasswordSec
+## <a name="select-the-desired-common-name-based-certificate-validation-scheme"></a>Válassza ki a kívánt common-name-alapú tanúsítvány-ellenőrzési sémát
+Az előzőekben leírtak szerint a Service Fabric támogatja a tanúsítványok deklarálása a CN-ban implicit megbízhatósági kapcsolattal vagy explicit módon a kiállítói ujjlenyomatai megfelelnek. További részletekért tekintse meg [ezt a cikket](cluster-security-certificates.md#common-name-based-certificate-validation-declarations) , és győződjön meg arról, hogy jól ismeri a különbségeket, és hogy milyen következményekkel jár a mechanizmus kiválasztása. Ennek a különbségnek/döntésnek a meghatározása a következő paraméter értéke alapján történik: az üres érték a `certificateIssuerThumbprintList` megbízható legfelső szintű hitelesítésszolgáltatóra (megbízhatósági kapcsolatra) támaszkodik, míg a ujjlenyomatai megfelelnek-készlet korlátozza a fürtözött tanúsítványok engedélyezett közvetlen kibocsátóit.
 
-$CertificateThumbprint = $KVSecret.Thumbprint
-$CertificateURL = $KVSecret.SecretId
-$SourceVault = $resourceId
-$CommName    = $KVSecret.Certificate.SubjectName.Name
+   > [!NOTE]
+   > A "certificateIssuerThumbprint" mező lehetővé teszi a tulajdonos köznapi neve által deklarált tanúsítványok várt közvetlen kiállítók megadását. Az elfogadható értékek egy vagy több vesszővel tagolt SHA1-ujjlenyomatai megfelelnek. Vegye figyelembe, hogy ez a tanúsítvány érvényesítésének megerősítése – ha nincsenek megadva a kiállítók, vagy a lista üres, akkor a rendszer a tanúsítványt akkor fogadja el hitelesítésre, ha a lánca felépíthető, és a validator által megbízhatónak tartott legfelső szinttel végződik. Ha meg van adva egy vagy több kiállító ujjlenyomatai megfelelnek, a rendszer elfogadja a tanúsítványt, ha a közvetlen kiállítójának a láncból kinyert ujjlenyomata megegyezik az ebben a mezőben megadott értékekkel, függetlenül attól, hogy a gyökér megbízható-e. Vegye figyelembe, hogy a nyilvános kulcsokra épülő infrastruktúra a tanúsítványoknak egy adott tárgyhoz való aláírására különböző hitelesítésszolgáltatók ("kiállítók") is használhatók, ezért fontos, hogy az adott tárgyhoz tartozó összes várható kiállítói ujjlenyomatai megfelelnek meg lehessen adni. Más szóval a tanúsítvány megújítása nem garantált, hogy ugyanazt a kiállítót írja alá, mint a megújított tanúsítvány.
+   >
+   > A kibocsátó meghatározása ajánlott eljárásnak minősül; Ha kihagyja, továbbra is működni fog – a megbízható legfelső szintű tanúsítványok esetében – ez a viselkedés korlátozásokkal jár, és a közeljövőben fokozatosan elvégezhető. Azt is vegye figyelembe, hogy az Azure-ban üzembe helyezett fürtök, valamint a privát PKI által kiadott és a tulajdonos által deklarált X509-tanúsítványokkal védettek, az Azure Service Fabric szolgáltatás nem tudja érvényesíteni (a fürtök közötti kommunikációhoz), ha a PKI tanúsítvány-házirendje nem felderíthető, elérhető és hozzáférhető. 
 
-Write-Host "CertificateThumbprint    :"  $CertificateThumbprint
-Write-Host "CertificateURL           :"  $CertificateURL
-Write-Host "SourceVault              :"  $SourceVault
-Write-Host "Common Name              :"  $CommName    
+## <a name="update-the-clusters-azure-resource-management-arm-template-and-deploy"></a>A fürt Azure Resource Management-(ARM-) sablonjának frissítése és üzembe helyezése
+Az Azure Service Fabric-fürtök ARM-sablonokkal való kezelése ajánlott. a JSON-összetevőket is használó alternatíva a [Azure erőforrás-kezelő (előzetes verzió)](https://resources.azure.com). Jelenleg nem érhető el megfelelő felület a Azure Portal. Ha egy meglévő fürthöz tartozó eredeti sablon nem érhető el, akkor a Azure Portal a fürtöt tartalmazó erőforráscsoporthoz való navigálással egyenértékű sablont lehet beolvasni, majd kiválasztja a **sablon exportálása** lehetőséget az **Automation** bal oldali menüjéből, majd a kívánt erőforrások kiválasztásával. a virtuálisgép-méretezési csoportnak és a fürt erőforrásainak legalább a exportálását el kell vinni. A létrehozott sablon is letölthető. Megjegyzés: Ez a sablon a teljes üzembe helyezése előtt változhat, és előfordulhat, hogy nem felel meg pontosan az eredetinek – a fürterőforrás aktuális állapotát tükrözi.
 
-Set-StrictMode -Version 3
-$ErrorActionPreference = "Stop"
+A szükséges módosítások a következők:
+    - a Service Fabric csomópont-bővítmény definíciójának frissítése (a virtuális gép erőforrása alatt); Ha a fürt több csomópont-típust határoz meg, akkor frissítenie kell a megfelelő virtuálisgép-méretezési csoport definícióját.
+    - a fürterőforrás-definíció frissítése
 
-$certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -CertificateStore "My"
+A részletes példák alább találhatók.
 
-# Get current VM scale set 
-$vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
-
-# Add new secret to the VM scale set.
-$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault `
-    -VaultCertificate $certConfig
-
-# Update the VM scale set 
-Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
-    -Name $VmssName -VirtualMachineScaleSet $vmss 
-```
-
->[!NOTE]
-> A méretezési csoport titka nem támogatja ugyanazt az erőforrás-azonosítót két külön titok esetében, mivel mindegyik titkos kód egy verzióval ellátott, egyedi erőforrás. 
-
-## <a name="download-and-update-the-template-from-the-portal"></a>A sablon letöltése és frissítése a portálról
-A tanúsítvány telepítve van a mögöttes méretezési csoporton, de frissítenie kell a Service Fabric-fürtöt a tanúsítvány és a köznapi neve használatára is.  Most töltse le a fürt üzembe helyezéséhez tartozó sablont.  Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a fürtöt tároló erőforráscsoporthoz.  A **Beállítások**területen válassza a **központi telepítések**lehetőséget.  Válassza ki a legutóbbi telepítést, és kattintson a **sablon megtekintése**elemre.
-
-![Sablonok megtekintése][image1]
-
-Töltse le a sablon és a paraméterek JSON-fájljait a helyi számítógépre.
-
-Először nyissa meg a parameters (paraméterek) fájlt egy szövegszerkesztőben, és adja hozzá a következő paraméter értékét:
+### <a name="updating-the-virtual-machine-scale-set-resources"></a>A virtuálisgép-méretezési csoport erőforrás (ok) frissítése
+Forrás
 ```json
-"certificateCommonName": {
-    "value": "myclustername.southcentralus.cloudapp.azure.com"
-},
-```
-
-Ezután nyissa meg a sablonfájlt egy szövegszerkesztőben, és három frissítést készítsen a tanúsítvány köznapi nevének támogatásához.
-
-1. A **Parameters (paraméterek** ) szakaszban adjon hozzá egy *certificateCommonName* paramétert:
-    ```json
-    "certificateCommonName": {
-        "type": "string",
-        "metadata": {
-            "description": "Certificate Commonname"
-        }
-    },
-    ```
-
-    Vegye fontolóra a *certificateThumbprint*eltávolítását is, ezért előfordulhat, hogy a Resource Manager-sablon nem hivatkozik rá.
-
-2. A **Microsoft. számítási/virtualMachineScaleSets** erőforrásban frissítse a virtuálisgép-bővítményt, hogy az ujjlenyomat helyett az általános nevet használja a tanúsítvány beállításainál.  A **virtualMachineProfile** -> **extensionProfile**- -> **bővítmények** -> **Tulajdonságok** -> **beállításai** -> **tanúsítvány**, Hozzáadás `"commonNames": ["[parameters('certificateCommonName')]"],` és eltávolítás `"thumbprint": "[parameters('certificateThumbprint')]",` elemre.
-    ```json
-        "virtualMachineProfile": {
+"virtualMachineProfile": {
         "extensionProfile": {
             "extensions": [
                 {
@@ -129,17 +69,36 @@ Ezután nyissa meg a sablonfájlt egy szövegszerkesztőben, és három frissít
                         "type": "ServiceFabricNode",
                         "autoUpgradeMinorVersion": true,
                         "protectedSettings": {
-                            "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
-                            "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                            ...
                         },
                         "publisher": "Microsoft.Azure.ServiceFabric",
                         "settings": {
-                            "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                            "nodeTypeRef": "[variables('vmNodeType0Name')]",
-                            "dataPath": "D:\\SvcFab",
-                            "durabilityLevel": "Bronze",
-                            "enableParallelJobs": true,
-                            "nicPrefixOverride": "[variables('subnet0Prefix')]",
+                            ...
+                            "certificate": {
+                                "thumbprint": "[parameters('certificateThumbprint')]",
+                                "x509StoreName": "[parameters('certificateStoreValue')]"
+                            }
+                        },
+                        ...
+                    }
+                },
+```
+Művelet
+```json
+"virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
+                    "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
+                    "properties": {
+                        "type": "ServiceFabricNode",
+                        "autoUpgradeMinorVersion": true,
+                        "protectedSettings": {
+                            ...
+                        },
+                        "publisher": "Microsoft.Azure.ServiceFabric",
+                        "settings": {
+                            ...
                             "certificate": {
                                 "commonNames": [
                                     "[parameters('certificateCommonName')]"
@@ -147,39 +106,61 @@ Ezután nyissa meg a sablonfájlt egy szövegszerkesztőben, és három frissít
                                 "x509StoreName": "[parameters('certificateStoreValue')]"
                             }
                         },
-                        "typeHandlerVersion": "1.0"
+                        ...
                     }
                 },
-    ```
+```
 
-3.  A **Microsoft. ServiceFabric/Clusters** erőforrásban frissítse az API verzióját "2018-02-01"-re.  Vegyen fel egy **certificateCommonNames** -beállítást egy **commonNames** tulajdonsággal, és távolítsa el a **tanúsítvány** beállítását (az ujjlenyomat tulajdonsággal), ahogy az alábbi példában is látható:
-    ```json
+### <a name="updating-the-cluster-resource"></a>A fürterőforrás frissítése
+A **Microsoft. ServiceFabric/Clusters** erőforrásban adjon hozzá egy **certificateCommonNames** tulajdonságot egy **commonNames** -beállítással, és távolítsa el a **tanúsítvány** tulajdonságot (az összes beállítását):
+
+Forrás
+```json
     {
         "apiVersion": "2018-02-01",
         "type": "Microsoft.ServiceFabric/clusters",
         "name": "[parameters('clusterName')]",
         "location": "[parameters('clusterLocation')]",
         "dependsOn": [
-            "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+            ...
         ],
         "properties": {
             "addonFeatures": [
-                "DnsService",
-                "RepairManager"
+                ...
+            ],
+            "certificate": {
+              "thumbprint": "[parameters('certificateThumbprint')]",
+              "x509StoreName": "[parameters('certificateStoreValue')]"
+            },
+        ...
+```
+Művelet
+```json
+    {
+        "apiVersion": "2018-02-01",
+        "type": "Microsoft.ServiceFabric/clusters",
+        "name": "[parameters('clusterName')]",
+        "location": "[parameters('clusterLocation')]",
+        "dependsOn": [
+            ...
+        ],
+        "properties": {
+            "addonFeatures": [
+                ...
             ],
             "certificateCommonNames": {
                 "commonNames": [
                     {
                         "certificateCommonName": "[parameters('certificateCommonName')]",
-                        "certificateIssuerThumbprint": ""
+                        "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprintList')]"
                     }
                 ],
                 "x509StoreName": "[parameters('certificateStoreValue')]"
             },
         ...
-    ```
+```
 
-További információ: [Service Fabric-fürt üzembe helyezése, amely az ujjlenyomat helyett a tanúsítvány köznapi nevét használja.](./service-fabric-create-cluster-using-cert-cn.md)
+További információ: Service Fabric- [fürt üzembe helyezése, amely az ujjlenyomat helyett a tanúsítvány köznapi nevét használja.](./service-fabric-create-cluster-using-cert-cn.md)
 
 ## <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
 A módosítások végrehajtása után telepítse újra a frissített sablont.
@@ -191,9 +172,22 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
     -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="appendix-achieve-a-valid-starting-state-for-converting-a-cluster-to-cn-based-certificate-declarations"></a>Függelék: a fürtnek a CN-alapú tanúsítványok deklarációjában való átalakításához szükséges érvényes indítási állapot elérése
+
+| Indítás állapota | 1. frissítés | 2. frissítés |
+| :--- | :--- | :--- |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` és `GoalCert` egy későbbi `NotAfter` dátummal rendelkezik, mint `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` és `OldCert1` egy későbbi `NotAfter` dátummal rendelkezik, mint `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, ahol `OldCert1` egy későbbi `NotAfter` dátummal rendelkezik, mint `GoalCert` | Frissítés erre `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, ahol `OldCert1` egy későbbi `NotAfter` dátummal rendelkezik, mint `GoalCert` | Frissítés erre `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | Az egyik `OldCert1` vagy az `OldCert2` állapot eltávolítása `Thumbprint: OldCertx, ThumbprintSecondary: None` | Folytatás az új kezdő állapotból |
+
+A frissítések bármelyikének végrehajtásával kapcsolatos útmutatásért tekintse meg [ezt a dokumentumot](service-fabric-cluster-security-update-certs-azure.md).
+
+
+## <a name="next-steps"></a>Következő lépések
 * További információ a [fürt biztonságáról](service-fabric-cluster-security.md).
-* Tudnivalók a [fürt tanúsítványainak átváltásáról](service-fabric-cluster-rollover-cert-cn.md)
-* [Fürt tanúsítványainak frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)
+* Megtudhatja, hogyan válthat át [egy fürtözött tanúsítványt köznapi név szerint](service-fabric-cluster-rollover-cert-cn.md)
+* Megtudhatja, hogyan [konfigurálhat egy fürtöt az érintéses autorolloverhez](cluster-security-certificate-management.md)
 
 [image1]: ./media/service-fabric-cluster-change-cert-thumbprint-to-cn/PortalViewTemplates.png

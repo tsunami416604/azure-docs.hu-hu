@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "89401197"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Helyek közötti kapcsolat hozzáadása egy meglévő VPN Gateway-kapcsolattal rendelkező VNet
@@ -62,7 +62,7 @@ Ellenőrizze a következő elemeket:
      ![A kapcsolatok hozzáadása lap](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "A kapcsolatok hozzáadása lap")<br>
 
 ## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>2. rész – helyi hálózati átjáró hozzáadása
-1. Kattintson a **helyi hálózati átjáró** elemre, és ***válassza ki a helyi hálózati átjárót***. Ekkor megnyílik a **helyi hálózati átjáró kiválasztása** lap.
+1. Kattintson a **helyi hálózati átjáró** elemre, és ** _válassza ki a helyi hálózati átjáró_*_ elemet. Ekkor megnyílik a _* helyi hálózati átjáró kiválasztása** lap.
    
     ![Helyi hálózati átjáró kiválasztása](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Helyi hálózati átjáró kiválasztása")<br>
 2. Kattintson az **új létrehozása** elemre a **helyi hálózati átjáró létrehozása** lap megnyitásához.
