@@ -14,26 +14,26 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69da6aa0253f92f9242a988c6b46de873df0677e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797203"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370899"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Felhasználói jelszó visszaállítása az Azure Active Directoryval
 
 Rendszergazdaként alaphelyzetbe állíthatja a felhasználó jelszavát, ha a jelszót elfelejtik, ha a felhasználó ki van zárva egy eszközről, vagy ha a felhasználó nem kapott jelszót.
 
 >[!Note]
->Ha az Azure AD-bérlő nem a felhasználó kezdőkönyvtárának, akkor nem fogja tudni visszaállítani a jelszavát. Ez azt jelenti, hogy ha a felhasználó egy másik szervezettől, egy Microsoft-fiók vagy egy Google-fióktól származó fiókkal jelentkezik be a szervezetbe, nem fogja tudni visszaállítani a jelszavát.<br><br>Ha a felhasználó rendelkezik Windows Server Active Directory-szolgáltatói forrással, akkor csak akkor tudja visszaállítani a jelszót, ha bekapcsolta a visszaírási.<br><br>Ha a felhasználó rendelkezik külső Azure AD-szolgáltatói forrással, nem fogja tudni visszaállítani a jelszót. Csak a felhasználó vagy egy külső Azure AD-beli rendszergazda állíthatja alaphelyzetbe a jelszót.
+>Ha az Azure AD-bérlő nem a felhasználó kezdőkönyvtárának, akkor nem fogja tudni visszaállítani a jelszavát. Ez azt jelenti, hogy ha a felhasználó egy másik szervezettől, egy Microsoft-fiók vagy egy Google-fióktól származó fiókkal jelentkezik be a szervezetbe, nem fogja tudni visszaállítani a jelszavát.<br><br>Ha a felhasználó rendelkezik Windows Server Active Directory-szolgáltatói forrással, akkor csak akkor tudja visszaállítani a jelszót, ha bekapcsolta a visszaírási.<br><br>Ha a felhasználó rendelkezik külső Azure AD-szolgáltatói forrással, nem fogja tudni visszaállítani a jelszót. A jelszót csak a felhasználó vagy a külső Azure AD rendszergazdája állíthatja alaphelyzetbe.
 
 >[!Note]
 >Ha Ön nem rendszergazda, és ehelyett a saját munkahelyi vagy iskolai jelszavának alaphelyzetbe állítására vonatkozó utasításokat keres, tekintse [meg a munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](../user-help/active-directory-passwords-update-your-own-password.md)című témakört.
 
 ## <a name="to-reset-a-password"></a>Jelszó alaphelyzetbe állítása
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) felhasználói rendszergazdaként vagy jelszó-rendszergazdaként. További információ az elérhető szerepkörökről: [rendszergazdai szerepkörök hozzárendelésének Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) felhasználói rendszergazdaként vagy jelszó-rendszergazdaként. További információ az elérhető szerepkörökről: [rendszergazdai szerepkörök hozzárendelésének Azure Active Directory](../roles/permissions-reference.md#available-roles)
 
 2. Válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**lehetőséget, keresse meg és válassza ki az alaphelyzetbe állítani kívánt felhasználót, majd válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
 
@@ -63,4 +63,4 @@ A felhasználó jelszavának alaphelyzetbe állítása után a következő alapv
 
 - [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
-Vagy összetettebb felhasználói forgatókönyveket is végrehajthat, például delegálásokat rendelhet hozzá, házirendeket használhat, és megoszthatja a felhasználói fiókokat. További információ az egyéb elérhető műveletekről: [Azure Active Directory felhasználói kezelés dokumentációja](../users-groups-roles/index.yml).
+Vagy összetettebb felhasználói forgatókönyveket is végrehajthat, például delegálásokat rendelhet hozzá, házirendeket használhat, és megoszthatja a felhasználói fiókokat. További információ az egyéb elérhető műveletekről: [Azure Active Directory felhasználói kezelés dokumentációja](../enterprise-users/index.yml).

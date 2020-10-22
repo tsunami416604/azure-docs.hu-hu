@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332042"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370440"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Tudnivalók az Azure-beli virtuális gépek vész-helyreállításáról
 
@@ -62,9 +62,9 @@ login.microsoftonline.com | Az engedélyezéshez és a hitelesítéshez szüksé
 A kimenő kapcsolatok vezérléséhez a NSG használatakor engedélyezni kell a szolgáltatás címkéit.
 
 - A forrás régióban lévő Storage-fiókok esetében:
-    - Hozzon létre egy [tárolási szolgáltatás címkén](../virtual-network/security-overview.md#service-tags) ALAPULó NSG-szabályt a forrás régióhoz.
+    - Hozzon létre egy [tárolási szolgáltatás címkén](../virtual-network/network-security-groups-overview.md#service-tags) ALAPULó NSG-szabályt a forrás régióhoz.
     - Engedélyezze ezeket a címeket úgy, hogy az adatok a virtuális gépről a gyorsítótárbeli Storage-fiókba legyenek írva.
-- Hozzon létre egy [Azure Active Directory (HRE) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi a HRE-hoz tartozó összes IP-cím elérését
+- Hozzon létre egy [Azure Active Directory (HRE) Service tag](../virtual-network/network-security-groups-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi a HRE-hoz tartozó összes IP-cím elérését
 - Hozzon létre egy EventsHub-alapú NSG-szabályt a célként megadott régióhoz, és engedélyezze a hozzáférést Site Recovery figyeléshez.
 - Hozzon létre egy AzureSiteRecovery-alapú NSG-szabályt, amellyel bármely régióban engedélyezheti a hozzáférést Site Recovery szolgáltatáshoz.
 - Hozzon létre egy AzureKeyVault-alapú NSG-szabályt. Ez csak az ADE-kompatibilis virtuális gépek portálon keresztüli replikálásának engedélyezéséhez szükséges.
@@ -125,7 +125,7 @@ Létrehozhat egy hálózati szolgáltatási végpontot a virtuális hálózatban
 
 Az Azure alapértelmezett rendszerútvonalát felülbírálhatja a 0.0.0.0/0 címek előtagja számára egy [Egyéni útvonallal](../virtual-network/virtual-networks-udr-overview.md#custom-routes) , és átirányíthatja a virtuális gépek forgalmát egy helyszíni hálózati virtuális készülékre (NVA), de ez a konfiguráció nem ajánlott site Recovery replikáláshoz. Ha egyéni útvonalakat használ, [hozzon létre egy virtuális hálózati szolgáltatási végpontot](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) a "Storage" virtuális hálózatában, hogy a replikálási forgalom ne hagyja el az Azure-határt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az Azure-beli [virtuális gépek replikálásával](./azure-to-azure-quickstart.md)megkezdheti a számítási feladatok védelmét.
 - További információ az Azure-beli virtuális gépek feladatátvételének [IP-címének megőrzéséről](site-recovery-retain-ip-azure-vm-failover.md) .
 - További információ az Azure-beli [virtuális gépek ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md)-mel való vész-helyreállításáról.

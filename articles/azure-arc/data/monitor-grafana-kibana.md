@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d876862d8f41ab8df646bef051629fd45c4d4601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3693c30a34601512770f5d9071f5d786410fb00e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90939624"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360377"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Naplók és metrikák megtekintése a Kibana és a Grafana használatával
 
@@ -30,7 +30,7 @@ Az irányítópultok eléréséhez le kell kérnie a fürt IP-címét. A helyes 
 
 A nyilvános IP-címet a következő paranccsal kérheti le:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -66,7 +66,7 @@ Az alábbi lépések kiemelik, hogyan hozhat létre NSG-szabályt a Kibana és a
 
 ### <a name="find-the-name-of-the-nsg"></a>Az NSG-név megkeresése
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -74,7 +74,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 
 Ha megvan a NSG neve, hozzáadhat egy szabályt a következő parancs használatával:
 
-```console
+```azurecli
 az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 600 -g azurearcvm-rg --access Allow --description 'Allow Kibana and Grafana ports' --destination-address-prefixes '*' --destination-port-ranges 30777 --direction Inbound --protocol Tcp --source-address-prefixes '*' --source-port-ranges '*'
 ```
 

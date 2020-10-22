@@ -3,12 +3,12 @@ title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 344bd2c801cb21932b35bcdfdcc38cc3fa73783b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f1f74ff12d007553c0c0c9b16f56a27371618bbb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102982"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370168"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -122,17 +122,17 @@ Azure PowerShell:
 
 ```azurepowershell-interactive
 Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
 Azure CLI:
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 Az erőforrás-szolgáltatókat a Azure Portal is regisztrálhatja a [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)szakaszban leírt lépéseket követve.
@@ -203,7 +203,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * Az ügynök eltávolítása során a rendszer nem távolítja el a következő összetevőket.
 
-    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
+    * *%ProgramData%\AzureConnectedMachineAgent\Log
     * %ProgramData%\AzureConnectedMachineAgent és alkönyvtárak
     * %ProgramData%\GuestConfig
 
@@ -255,7 +255,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure arc-kompatibilis kiszolgálók kiértékelésének megkezdéséhez kövesse a [hibrid gépek az Azure-ba való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).
 

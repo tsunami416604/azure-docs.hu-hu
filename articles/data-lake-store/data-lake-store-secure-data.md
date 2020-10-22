@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149269"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370695"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1-ben tárolt adatok védelme
 A Azure Data Lake Storage Gen1ban lévő adatvédelme egy három lépésből álló megközelítés.  Az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a hozzáférés-vezérlési listákat (ACL-eket) úgy kell beállítani, hogy teljes mértékben engedélyezze a felhasználók és biztonsági csoportok számára az adathozzáférést.
@@ -39,7 +39,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 Az Azure AD biztonsági csoportok létrehozásával és a felhasználók csoportba való felvételével kapcsolatos útmutatásért lásd: [biztonsági csoportok kezelése Azure Active Directoryban](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 > [!NOTE] 
-> Az Azure AD-ben a Azure Portal használatával is hozzáadhat felhasználókat és más csoportokat egy csoporthoz. Ahhoz azonban, hogy egy egyszerű szolgáltatásnevet hozzá lehessen adni egy csoporthoz, használja az [Azure ad PowerShell-modulját](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+> Az Azure AD-ben a Azure Portal használatával is hozzáadhat felhasználókat és más csoportokat egy csoporthoz. Ahhoz azonban, hogy egy egyszerű szolgáltatásnevet hozzá lehessen adni egy csoporthoz, használja az [Azure ad PowerShell-modulját](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md).
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs

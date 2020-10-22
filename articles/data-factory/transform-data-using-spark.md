@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: bc8fd73b18e197c42e4750612320c1b15a6db020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4a7eabe35e501aa840693f6fad3803b73160a25
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83849212"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368893"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatátalakítás a Spark-tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -109,7 +109,7 @@ SparkJob2
         script2.py
     logs
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
@@ -119,5 +119,5 @@ A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adat�
 * [Hadoop streaming-tevékenység](transform-data-using-hadoop-streaming.md)
 * [Spark-tevékenység](transform-data-using-spark.md)
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
-* [Batch-végrehajtási tevékenység Machine Learning](transform-data-using-machine-learning.md)
+* [Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

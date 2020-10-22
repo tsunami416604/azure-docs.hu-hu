@@ -2,13 +2,13 @@
 title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385755"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371443"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
@@ -26,7 +26,7 @@ A Batch szolgáltatásban működő számítási csomópontok emellett a követk
 
 - Szabványos [mappastruktúra](files-and-directories.md), valamint az ehhez tartozó [környezeti változók](jobs-and-tasks.md), amelyekre a tevékenységek hivatkozni tudnak.
 - A hozzáférés vezérléséhez konfigurált **tűzfalbeállítások**.
-- [Távelérés](error-handling.md#connect-to-compute-nodes) a windowsos (RDP-) és a linuxos (SSH-) csomópontokhoz.
+- [Távelérés](error-handling.md#connect-to-compute-nodes) a Windows (RDP protokoll (RDP) és a Linux (Secure Shell)-csomópontokhoz (kivéve, ha [a készletet a távoli hozzáférés letiltásával hozza létre](pool-endpoint-configuration.md)).
 
 Alapértelmezés szerint a csomópontok képesek kommunikálni egymással, de nem tudnak kommunikálni olyan virtuális gépekkel, amelyek nem azonos készlet részét képezik. Ahhoz, hogy a csomópontok biztonságosan kommunikáljanak más virtuális gépekkel vagy helyszíni hálózattal, a készletet egy [Azure-beli virtuális hálózat (VNet) alhálózatában](batch-virtual-network.md)is kiépítheti. Ha így tesz, a csomópontok nyilvános IP-címeken keresztül is elérhetők. Ezeket a nyilvános IP-címeket a Batch hozza létre, és a készlet élettartamára változhat. Létrehozhat egy Ön által vezérelt [statikus nyilvános IP-címmel rendelkező készletet](create-pool-public-ip.md) is, amely biztosítja, hogy a rendszer váratlanul ne változzon meg.
 
@@ -195,6 +195,6 @@ Amikor egy tanúsítvány egy készlethez van társítva, a Batch szolgáltatás
 
 Ha meglévő készlethez ad hozzá tanúsítványt, újra kell indítania a számítási csomópontokat ahhoz, hogy a tanúsítványt alkalmazni lehessen a csomópontokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [feladatok és a feladatok](jobs-and-tasks.md)megismerése.

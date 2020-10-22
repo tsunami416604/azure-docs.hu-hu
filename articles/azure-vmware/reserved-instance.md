@@ -3,52 +3,53 @@ title: Költségek megtakarítása az Azure VMware-megoldás fenntartott példá
 description: Megtudhatja, hogyan vásárolhat fenntartott példányt az Azure VMware-megoldáshoz.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bac2497c637a301c7ce8cbc44fc6945c3ef43b06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951417"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370678"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Költségek megtakarítása Azure VMware-megoldással
 
-Ha az Azure VMware-megoldás fenntartott példányát véglegesíti, pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a fenntartási hatókörrel és attribútumokkal megegyező Azure VMware-megoldási gazdagépek számára. A kedvezmények beszerzéséhez nem szükséges foglalást hozzárendelni egy dedikált gazdagéphez. A fenntartott példányok vásárlása csak a használat számítási részét fedi le, és a licencelési költségeket is magában foglalja. Tekintse át az [Azure VMware-megoldás áttekintését](introduction.md).
+Ha az [Azure VMware-megoldás](introduction.md)fenntartott példányára véglegesít, pénzt takarít meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a lefoglalási hatókörnek és attribútumoknak megfelelő Azure VMware megoldás-gazdagépekre. A kedvezmények beszerzéséhez nem szükséges foglalást hozzárendelni egy dedikált gazdagéphez. A fenntartott példányok vásárlása csak a használat számítási részét fedi le, és magában foglalja a licencelési költségeket is. 
+
 
 ## <a name="purchase-restriction-considerations"></a>Vásárlási korlátozási megfontolások
 
 A fenntartott példányok bizonyos kivételekkel érhetők el.
 
--   **Felhők**   – A foglalások csak az [elérhető termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) lapon felsorolt régiókban érhetők el.
+-   **Felhők** – a foglalások csak az [elérhető termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) lapon felsorolt régiókban érhetők el.
 
--   Nem **elegendő kvóta**   – Az egyetlen/megosztott előfizetésre vonatkozó foglalásnak az új fenntartott példányra vonatkozó előfizetésben elérhetőnek kell lennie a gazdagépek számára. A probléma megoldásához [kvóta-növelési kérelmet hozhat létre](enable-azure-vmware-solution.md) .
+-   Nem **elegendő kvóta** – az egyetlen/megosztott előfizetéshez tartozó foglalási kvótának az új fenntartott példány előfizetésében elérhetőnek kell lennie a gazdagépek számára. A probléma megoldásához [kvóta-növelési kérelmet hozhat létre](enable-azure-vmware-solution.md) .
 
--   **Ajánlati jogosultság**– szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](../cost-management-billing/manage/ea-portal-agreements.md)   a Microsofttal.
+-   **Ajánlati jogosultság**– szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
 
--   **Kapacitás korlátozásai**   – Ritka körülmények között az Azure korlátozza az Azure VMware Solution Host SKU-ra vonatkozó új foglalások megvásárlását, mivel a régió alacsony kapacitású.
+-   **Kapacitás korlátozásai** – ritka körülmények között az Azure korlátozza az Azure VMware-megoldás gazdagépének új foglalásának megvásárlását az adott régió alacsony kapacitása miatt.
 
 ## <a name="buy-a-reservation"></a>Foglalás vásárlása
 
-Megvásárolhatja az Azure VMware Solution Host-példány fenntartott példányát a [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D).
+Megvásárolhatja az Azure VMware Solution Host-példány fenntartott példányát a [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D).
 
-A foglalást [elöl vagy havi fizetéssel](../cost-management-billing/reservations/prepare-buy-reservation.md)kell fizetni.
+A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/prepare-buy-reservation.md).
 
 Ezek a követelmények a fenntartott dedikált gazdagép-példány megvásárlására vonatkoznak:
 
 -   Legalább egy EA-előfizetéshez vagy egy utólagos elszámolású előfizetéshez tartozó tulajdonosi szerepkörrel kell rendelkeznie.
 
--   Az EA-előfizetések esetében engedélyezni kell a **fenntartott példányok hozzáadása**   beállítást az [EA portálon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor Önnek az előfizetés EA-rendszergazdájának kell lennie.
+-   Az EA-előfizetések esetében engedélyezni kell a **fenntartott példányok hozzáadása** beállítást az [EA portálon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor Önnek az előfizetés EA-rendszergazdájának kell lennie.
 
 Példány vásárlása:
 
-1. Jelentkezzen be az  [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza **a minden szolgáltatás**   >  **foglalás**lehetőséget.
+2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 
-3.  **Add**   Új foglalás megvásárlásához válassza a Hozzáadás lehetőséget, majd válassza az **Azure VMware-megoldás**elemet.
+3. Új foglalás megvásárlásához válassza a **Hozzáadás** lehetőséget, majd válassza az **Azure VMware-megoldás**elemet.
 
-4. Töltse ki a kötelező mezőket. Az Azure VMware megoldás azon gazdagépek futtatása, amelyek megfelelnek a kiválasztott attribútumoknak, a foglalási kedvezmény beszerzéséhez válassza a minősítés lehetőséget. Az Azure VMware megoldás azon gazdagépek tényleges száma, amelyek a kedvezményt kapják, a kiválasztott hatókörtől és mennyiségtől függenek.
+4. Adja meg a kötelező mezőket. Ha az Azure VMware megoldás azon gazdagépeit futtatja, amelyek megfelelnek az attribútumoknak, válassza a minősítés lehetőséget a foglalási kedvezmény beszerzéséhez. Az Azure VMware-megoldás azon gazdagépek tényleges száma, amelyek a kiválasztott hatókörtől és mennyiségtől függően kedvezményt kapnak.
 
-   Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozzáadásához használhatja a **továbbiak hozzáadása lehetőséget**is   . A beállítás más előfizetési típusok esetében nem érhető el.
+   Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozzáadásához használhatja a **továbbiak hozzáadása lehetőséget** is. A beállítás más előfizetési típusok esetében nem érhető el.
 
    | Mező        |  Leírás |
    | ------------ | ------------ |
@@ -59,11 +60,14 @@ Példány vásárlása:
    | Időszak         | Egy vagy három év.  |
    | Mennyiség     | A foglalás keretében megvásárolt példányok száma. A mennyiség azon Azure VMware-megoldási gazdagépek száma, amelyek beszerezhetik a számlázási kedvezményt.    |
 
-## <a name="usage-data-and-reservation-utilization"></a>Használati adatok és foglalás kihasználtsága
+## <a name="usage-data-and-reservation-usage"></a>Használati adatok és foglalások használata
 
-A használati adatok ára nulla azon használat esetében, amelyre érvényes a foglalási kedvezmény. Láthatja, hogy melyik Azure VMware Solution-példány fogadta el az egyes foglalások foglalási kedvezményét.
+A foglalási kedvezményt lefoglaló használat nulla értékű. Láthatja, hogy melyik Azure VMware Solution-példány fogadta el az egyes foglalások foglalási kedvezményét.
 
-További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatokban, és Ön [nagyvállalati ügyfél, az Azure foglalás használatának megismerése a vállalati beléptetéshez](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)című témakörben talál további információt. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése](../cost-management-billing/reservations/understand-reserved-instance-usage.md)az utólagos elszámolású előfizetéshez című témakört.
+További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatokban:
+
+- Nagyvállalati szerződéssel rendelkező ügyfelek esetében lásd: az [Azure foglalás használatának ismertetése a vállalati regisztrációhoz](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+- Egyéni előfizetések esetén lásd: az [Azure foglalás használatának ismertetése](../cost-management-billing/reservations/understand-reserved-instance-usage.md) az utólagos elszámolású előfizetéshez
 
 ## <a name="change-a-reservation-after-purchase"></a>Foglalás módosítása a vásárlás után
 
@@ -81,12 +85,12 @@ A foglalásokat kisebb adattömbökre vagy egyesítési foglalásokra is kioszth
 >A foglalás megvásárlása után a következő típusú módosításokat nem végezheti el közvetlenül:
 >
 > - Egy meglévő foglalás régiója
-> - SKU
+> - Termékváltozat
 > - Mennyiség
 > - Időtartam
 >
->Ha szeretné módosítani a módosításokat, lehetősége van a foglalások *cseréjére*   .
+>Ha szeretné módosítani a módosításokat, lehetősége van a foglalások *cseréjére* .
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információ: [önkiszolgáló cserék és visszatérítések Azure Reservations számára](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).

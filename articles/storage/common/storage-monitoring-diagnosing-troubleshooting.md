@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854557"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370474"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -217,7 +217,7 @@ A .NET-hez készült Storage ügyféloldali kódtára lehetővé teszi az alkalm
 Az ügyfél és a kiszolgáló közötti forgalmat rögzítheti az ügyfél és a kiszolgáló közötti adatcsere és a mögöttes hálózati feltételek részletes adatainak biztosításához. Hasznos hálózati naplózási eszközök a következők:
 
 * A [Hegedűs](https://www.telerik.com/fiddler) egy ingyenes webes hibakeresési proxy, amely lehetővé teszi a http-és HTTPS-kérések és-válaszüzenetek fejlécének és hasznos adatainak vizsgálatát. További információ: [1. függelék: a Hegedűs használata a http-és HTTPS-forgalom rögzítéséhez](#appendix-1).
-* A [Microsoft Hálózatfigyelő (netmon)](https://cnet-downloads.com/network-monitor) és a [Wireshark](https://www.wireshark.org/) olyan ingyenes hálózati protokoll-elemzők, amelyek lehetővé teszik a hálózati protokollok széles körének részletes csomagjainak megtekintését. A Wireshark kapcsolatos további információkért lásd a "[2. függelék: a hálózati forgalom rögzítése a Wireshark használatával](#appendix-2)" című szakaszt.
+* A [Microsoft Hálózatfigyelő (netmon)](https://download.cnet.com/s/network-monitor/) és a [Wireshark](https://www.wireshark.org/) olyan ingyenes hálózati protokoll-elemzők, amelyek lehetővé teszik a hálózati protokollok széles körének részletes csomagjainak megtekintését. A Wireshark kapcsolatos további információkért lásd a "[2. függelék: a hálózati forgalom rögzítése a Wireshark használatával](#appendix-2)" című szakaszt.
 * Ha alapszintű kapcsolati tesztet szeretne végezni annak ellenőrzéséhez, hogy az ügyfélszámítógép képes-e csatlakozni az Azure Storage szolgáltatáshoz a hálózaton keresztül, ezt a standard **ping** eszközzel nem végezheti el az ügyfélen. A [ **tcping** eszközzel](https://www.elifulkerson.com/projects/tcping.php) azonban ellenőrizheti a kapcsolatot.
 
 Sok esetben a tárolási adatok naplózása és a Storage ügyféloldali kódtára elegendő lesz a probléma diagnosztizálásához, de bizonyos helyzetekben szükség lehet a hálózati naplózási eszközök által biztosított részletesebb információkra. A Hegedűs a HTTP-és HTTPS-üzenetek megtekintéséhez például lehetővé teszi, hogy megtekintse a tárolási szolgáltatásokban küldött fejléc-és hasznos adatokat, ami lehetővé teszi annak vizsgálatát, hogy az ügyfélalkalmazás hogyan próbálkozzon újra a tárolási műveletekkel. A protokollok elemzői, például a Wireshark a csomagok szintjén működnek, lehetővé téve a TCP-adatok megtekintését, ami lehetővé teszi az elveszett csomagok és csatlakozási problémák elhárítását. 
@@ -567,7 +567,7 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Name (Név) | Érték |
+| Név | Érték |
 | --- | --- |
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697 Z |
 | Művelettípus     | GetBlobProperties            |

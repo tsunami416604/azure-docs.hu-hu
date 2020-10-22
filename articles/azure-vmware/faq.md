@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bdc0bdb5966445fe98b2f65bce552fe6dca493ea
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078935"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368978"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -45,7 +45,7 @@ Bizonyos integrációk és használati esetek eseti alapon is kiértékelhető.
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>Áttelepíthetem a vSphere virtuális gépeket a helyszíni környezetből az Azure VMware-megoldás privát felhőkbe?
 
-Igen. A VM-Migrálás és a vMotion segítségével a virtuális gépek áthelyezhetők a privát felhőbe, ha a standard szintű vCenter [vMotion](https://kb.vmware.com/s/article/210695) teljesülnek.
+Igen. A VM-Migrálás és a vMotion segítségével a virtuális gépek áthelyezhetők a privát felhőbe, ha a standard szintű vCenter [vMotion](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) teljesülnek.
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>A vSphere adott verziója szükséges a helyszíni környezetekben?
 
@@ -277,7 +277,7 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jeg
    Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
 
 <!-- LINKS - external -->
-[kb2106952]: https://kb.vmware.com/s/article/2106952
+[kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522
 
 <!-- LINKS - internal -->
 [Access and Identity Concepts]: concepts-identity.md

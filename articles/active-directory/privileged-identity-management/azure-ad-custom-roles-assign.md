@@ -16,18 +16,18 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14023065005977334a9f399a61acfde3b6ba9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75e004980ada23a616b57e3c7eb1afb241e09598
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87413153"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371647"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkör kiosztása Privileged Identity Management
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Privileged Identity Management (PIM) alkalmazást az alkalmazások kezeléséhez létrehozott egyéni szerepkörökhöz az Azure Active Directory (Azure AD) felügyeleti felhasználói felületén.
 
-- További információ az Azure AD-ben az alkalmazások felügyeletének delegálására szolgáló egyéni szerepkörök létrehozásáról: [Azure Active Directory (előzetes verzió) – egyéni rendszergazdai szerepkörök](../users-groups-roles/roles-custom-overview.md).
+- További információ az Azure AD-ben az alkalmazások felügyeletének delegálására szolgáló egyéni szerepkörök létrehozásáról: [Azure Active Directory (előzetes verzió) – egyéni rendszergazdai szerepkörök](../roles/custom-overview.md).
 - Ha még nem használta Privileged Identity Management, további információt a [Privileged Identity Management használatának első](pim-getting-started.md)lépéseiben olvashat.
 - További információ a Privileged Identity Management kezeléséhez szükséges további rendszergazdai hozzáférésről: [hozzáférés biztosítása más rendszergazdák számára a Privileged Identity Management kezeléséhez](pim-how-to-give-access-to-pim.md).
 
@@ -78,9 +78,9 @@ A szerepkör-hozzárendelés ellenőrzéséhez nyisson meg egy nyitott szerepkö
 
  ![Ellenőrizze, hogy a szerepkör-hozzárendelés jogosultként vagy aktívként jelenik-e meg](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni Azure AD-szerepkör aktiválása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés konfigurálása](azure-ad-custom-roles-configure.md)
-- [Szerepkör-definíciók az Azure AD-ben](../users-groups-roles/directory-assign-admin-roles.md)
+- [Szerepkör-definíciók az Azure AD-ben](../roles/permissions-reference.md)

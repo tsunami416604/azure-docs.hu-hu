@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3e00c3832f243ec0190023116bbfdeaaad86c94
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825419"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370423"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -130,7 +130,7 @@ Ha a virtuális gépek kimenő hozzáférése URL-címekkel van vezérelve, enge
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
 | Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
@@ -167,11 +167,11 @@ HTTPS-kimenő engedélyezése: 443-es port | Azure Automation vezérlőnek megfe
 
 #### <a name="control-access-with-nsg-rules"></a>Hozzáférés szabályozása NSG-szabályokkal
 
-Ha a virtuális gép kapcsolatát úgy szabályozza, hogy az Azure-hálózatokra/alhálózatokra irányuló hálózati forgalmat [NSG-szabályok](../virtual-network/security-overview.md)használatával szűri, vegye figyelembe a következő követelményeket:
+Ha a virtuális gép kapcsolatát úgy szabályozza, hogy az Azure-hálózatokra/alhálózatokra irányuló hálózati forgalmat [NSG-szabályok](../virtual-network/network-security-groups-overview.md)használatával szűri, vegye figyelembe a következő követelményeket:
 
 - A forrásként szolgáló Azure-régió NSG-szabályainak engedélyezniük kell a kimenő hozzáférést a replikálási forgalom számára.
 - Javasoljuk, hogy hozzon létre szabályokat tesztkörnyezetben, mielőtt éles környezetbe helyezné őket.
-- Az egyes IP-címek engedélyezése helyett használja a [szolgáltatás címkéit](../virtual-network/security-overview.md#service-tags) .
+- Az egyes IP-címek engedélyezése helyett használja a [szolgáltatás címkéit](../virtual-network/network-security-groups-overview.md#service-tags) .
     - A szolgáltatás címkéi az IP-címek egy csoportját alkotják, amelyek a biztonsági szabályok létrehozásakor a bonyolultságuk csökkentése érdekében vannak összegyűjtve.
     - A Microsoft az idő múlásával automatikusan frissíti a szolgáltatás címkéit. 
  

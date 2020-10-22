@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e57e495d34a265b5e0691106996206029656c5a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799332"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371120"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Hozzáférési jogosultságszint emelése az összes Azure-előfizetés és felügyeleti csoport kezeléséhez
 
@@ -33,7 +33,7 @@ Ha Ön globális rendszergazda, előfordulhat, hogy a következő műveletek elv
 
 ## <a name="how-does-elevated-access-work"></a>Hogyan működik a emelt szintű hozzáférés?
 
-Az Azure AD és az Azure-erőforrások egymástól függetlenül biztonságosak. Az Azure AD szerepkör-hozzárendelések nem biztosítanak hozzáférést az Azure-erőforrásokhoz, és az Azure-szerepkör-hozzárendelések nem biztosítanak hozzáférést az Azure AD-hoz. Ha azonban Ön [globális rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) az Azure ad-ben, saját maga is kioszthatja az összes Azure-előfizetést és felügyeleti csoportot a címtárában. Akkor használja ezt a funkciót, ha nem rendelkezik hozzáféréssel az Azure-előfizetési erőforrásokhoz, például a virtuális gépekhez vagy a Storage-fiókokhoz, és a globális rendszergazdai jogosultságot szeretné használni az erőforrásokhoz való hozzáféréshez.
+Az Azure AD és az Azure-erőforrások egymástól függetlenül biztonságosak. Az Azure AD szerepkör-hozzárendelések nem biztosítanak hozzáférést az Azure-erőforrásokhoz, és az Azure-szerepkör-hozzárendelések nem biztosítanak hozzáférést az Azure AD-hoz. Ha azonban Ön [globális rendszergazda](../active-directory/roles/permissions-reference.md#company-administrator-permissions) az Azure ad-ben, saját maga is kioszthatja az összes Azure-előfizetést és felügyeleti csoportot a címtárában. Akkor használja ezt a funkciót, ha nem rendelkezik hozzáféréssel az Azure-előfizetési erőforrásokhoz, például a virtuális gépekhez vagy a Storage-fiókokhoz, és a globális rendszergazdai jogosultságot szeretné használni az erőforrásokhoz való hozzáféréshez.
 
 Ha emeli a hozzáférést, a [felhasználói hozzáférés rendszergazdai](built-in-roles.md#user-access-administrator) szerepköre lesz hozzárendelve az Azure-ban a root scope ( `/` ) elemnél.Ez lehetővé teszi az összes erőforrás megtekintését és a hozzáférés hozzárendelését bármely előfizetésben vagy felügyeleti csoportban a címtárban. A felhasználói hozzáférés rendszergazdai szerepkör-hozzárendelései a Azure PowerShell, az Azure CLI vagy a REST API használatával távolíthatók el.
 
@@ -327,7 +327,7 @@ A hívásakor `elevateAccess` létre kell hoznia egy szerepkör-hozzárendelést
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A különböző szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)

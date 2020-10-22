@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cf7a3ff478100c892e59e98c91e9605c88bdc667
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f584ba1021e9cc66454e3aebd7f51b34e72885f5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438823"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369182"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory 1-es verzió által támogatott számítási környezetek
 > [!NOTE]
@@ -30,7 +30,7 @@ Az alábbi táblázat felsorolja a Data Factory által támogatott számítási 
 | ---------------------------------------- | ---------------------------------------- |
 | [Igény szerinti Azure HDInsight-fürt](#azure-hdinsight-on-demand-linked-service) vagy [saját HDInsight-fürt](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md), [kaptár](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-tevékenységek: kötegelt végrehajtás és az erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning Studio (klasszikus)](#azure-machine-learning-studio-classic-linked-service) | [Studio (klasszikus) tevékenységek: kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service), [Azure szinapszis Analytics](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md) |
 
@@ -230,7 +230,7 @@ Az ilyen típusú konfiguráció a következő számítási környezetekben tám
 
 * Azure HDInsight
 * Azure Batch
-* Azure Machine Learning
+* Azure Machine Learning Studio (klasszikus)
 * Azure Data Lake Analytics
 * Azure SQL Database, Azure szinapszis Analytics (korábban SQL Data Warehouse), SQL Server
 
@@ -289,13 +289,13 @@ Ha új a Batch szolgáltatás használatához:
 }
 ```
 
-A **accountName** tulajdonsághoz fűzze a következőt: **. \<region name\> ** a Batch-fiók nevével. Példa:
+A **accountName** tulajdonsághoz fűzze a következőt: **. \<region name\> ** a Batch-fiók nevével. Például:
 
 ```json
 "accountName": "mybatchaccount.eastus"
 ```
 
-Egy másik lehetőség, hogy megadja a **batchUri** -végpontot. Példa:
+Egy másik lehetőség, hogy megadja a **batchUri** -végpontot. Például:
 
 ```json
 "accountName": "adfteam",
@@ -311,8 +311,8 @@ Egy másik lehetőség, hogy megadja a **batchUri** -végpontot. Példa:
 | poolName          | A virtuális gépek készletének neve.    | Igen      |
 | linkedServiceName | Az ehhez a kötegelt társított szolgáltatáshoz társított Storage társított szolgáltatás neve. Ez a társított szolgáltatás a tevékenység futtatásához szükséges átmeneti fájlokra, valamint a tevékenység-végrehajtási naplók tárolására szolgál. | Igen      |
 
-## <a name="azure-machine-learning-linked-service"></a>Társított szolgáltatás Azure Machine Learning
-Machine Learning társított szolgáltatás létrehozásával regisztrálhat egy Machine Learning batch-pontozási végpontot egy adatgyárba.
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (klasszikus) társított szolgáltatás
+Létrehozhat egy Azure Machine Learning Studio (klasszikus) társított szolgáltatást a Studio (klasszikus) batch pontozási végpontjának egy adatgyárba való regisztrálásához.
 
 ### <a name="example"></a>Példa
 

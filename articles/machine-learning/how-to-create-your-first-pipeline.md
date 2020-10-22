@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 8/14/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 9bfec8c1da0581fa7f17dd671358218f22c877c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6cbda4067e98c16ea26f3436b5f65e696549462
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708475"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370304"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 
@@ -30,7 +30,7 @@ A létrehozott ML-folyamatok a Azure Machine Learning [munkaterület](how-to-man
 
 A (z) ML-folyamatok számítási célokon futnak (lásd: [Mik a számítási célok a Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)). A folyamatok a támogatott [Azure Storage](https://docs.microsoft.com/azure/storage/) -helyekről származó és onnan származó adatok olvasására és írására használhatók.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -251,6 +251,18 @@ from azureml.pipeline.core import Pipeline
 pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 ```
 
+### <a name="how-python-environments-work-with-pipeline-parameters"></a>A Python-környezetek működése a folyamat paramétereivel
+
+Ahogy korábban már említettük, [a betanítási Futtatás környezetének konfigurálásakor a](#configure-the-training-runs-environment)környezeti állapot és a Python-függvénytár függőségei egy objektum használatával vannak megadva `Environment` . Általában megadhat egy meglévőt, amely `Environment` hivatkozik a nevére, és opcionálisan egy verziót is:
+
+```python
+aml_run_config = RunConfiguration()
+aml_run_config.environment.name = 'MyEnvironment'
+aml_run_config.environment.version = '1.0'
+```
+
+Ha azonban úgy dönt, hogy az `PipelineParameter` objektumok használatával dinamikusan állítja be a változókat a folyamat lépésein, akkor nem használhatja a meglévőre hivatkozó módszert `Environment` . Ehelyett, ha objektumokat szeretne használni `PipelineParameter` , be kell állítania a `environment` mező értékét `RunConfiguration` egy `Environment` objektumra. Az Ön felelőssége annak biztosítása, hogy az ilyen `Environment` függőségek a külső Python-csomagokhoz megfelelően legyenek beállítva.
+
 ### <a name="use-a-dataset"></a>Adatkészlet használata 
 
 Az Azure Blob Storage-ból, Azure Filesból, Azure Data Lake Storage Gen1ból, Azure Data Lake Storage Gen2ból, Azure SQL Databaseból és Azure Database for PostgreSQLból létrehozott adatkészletek a folyamat bármely lépéséhez bemenetként is használhatók. Kimenetet írhat egy [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py&preserve-view=true), [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py&preserve-view=true), vagy ha adatokat szeretne írni egy adott adattárhoz, használja a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true). 
@@ -337,6 +349,8 @@ A folyamat első futtatásakor Azure Machine Learning:
 ![Kísérlet folyamatként való futtatásának ábrája](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
 További információ: [kísérlet osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) referenciája.
+
+## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>A viszonyítási időpontnál megjelenő argumentumok esetén használja a folyamat paramétereit
 
 ## <a name="view-results-of-a-pipeline"></a>Folyamat eredményeinek megtekintése
 

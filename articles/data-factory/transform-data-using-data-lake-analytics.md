@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: f99bc5b07f3749fac28f60d28b040a7e0682971b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab5a76a9734ca879e468a1921554f91680be8339
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522414"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370661"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Az adatfeldolgozást U-SQL-parancsfájlok futtatásával Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -189,7 +189,7 @@ Ehelyett dinamikus paramétereket lehet használni. Például:
 
 Ebben az esetben a bemeneti fájlok továbbra is a/datalake/input mappából lesznek kiválasztva, és a kimeneti fájlok a/datalake/output mappában jönnek létre. A fájlnevek dinamikusak a folyamat indításakor bekövetkező indítási idő alapján.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [Struktúra tevékenysége](transform-data-using-hadoop-hive.md)
@@ -198,5 +198,5 @@ A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adat�
 * [Hadoop streaming-tevékenység](transform-data-using-hadoop-streaming.md)
 * [Spark-tevékenység](transform-data-using-spark.md)
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
-* [Batch-végrehajtási tevékenység Machine Learning](transform-data-using-machine-learning.md)
+* [Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

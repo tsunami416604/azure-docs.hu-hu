@@ -3,12 +3,12 @@ title: Azure Stack virtuális gépek replikálása az Azure-ba Azure Site Recove
 description: Ismerje meg, hogyan állíthatja be a vész-helyreállítást az Azure-ba Azure Stack virtuális gépekre a Azure Site Recovery szolgáltatással.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448976"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370525"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack rendszerű virtuális gépek replikálása az Azure-ba
 
@@ -153,7 +153,7 @@ Keresse meg az IP-címet az összes replikálni kívánt gépen:
 2. Az **Első lépések** területen válassza ki a Site Recovery elemet. Ezután válassza **Az infrastruktúra előkészítése** lehetőséget.
 3. A **védelmi cél**  >  ,**ahol a gépek találhatók**, válassza **a**helyszíni lehetőséget.
 4. A **Hová szeretné replikálni a gépeket?** területen válassza **Az Azure-ba** lehetőséget.
-5. A-ben **a gépek virtualizáltak**, válassza a **nem virtualizált/egyéb**lehetőséget. Ezután válassza az **OK** gombot.
+5. A-ben **a gépek virtualizáltak**, válassza a **nem virtualizált/egyéb**lehetőséget. Ez után válassza az **OK** gombot.
 
     ![Védelmi cél](./media/azure-stack-site-recovery/protection-goal.png)
 
@@ -186,7 +186,7 @@ Most telepítse a konfigurációs kiszolgálót:
 > [!NOTE]
 > A konfigurációs kiszolgáló a parancssorból is telepíthető. [További információk](physical-manage-configuration-server.md#install-from-the-command-line).
 >
-> Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez válassza a **konfigurációs kiszolgálók**  >  ***kiszolgáló neve***  >  **frissítési kiszolgáló**elemet.
+> Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez válassza a **konfigurációs kiszolgálók**  >  **_kiszolgáló neve_*_ > _* frissítési kiszolgáló**elemet.
 
 ## <a name="step-4-set-up-the-target-environment"></a>4. lépés: a célként megadott környezet beállítása
 
@@ -314,7 +314,7 @@ Ezután futtassa a feladatátvételt az alábbiak szerint:
 
 ### <a name="fail-back-to-azure-stack"></a>Feladat-visszavétel Azure Stack
 
-Ha az elsődleges hely újra működik, az Azure-ból Azure Stackra is visszatérhet. Ehhez kövesse az [itt](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)ismertetett lépéseket.
+Ha az elsődleges hely újra működik, az Azure-ból Azure Stackra is visszatérhet. Ehhez kövesse az [itt](/azure-stack/operator/site-recovery-failback?view=azs-2005)ismertetett lépéseket.
 
 ## <a name="conclusion"></a>Összegzés
 
@@ -323,4 +323,3 @@ Ebben a cikkben Azure Stack virtuális gépeket replikált az Azure-ba. A replik
 ## <a name="next-steps"></a>Következő lépések
 
 A feladat-visszavételt követően újra védetté teheti a virtuális gépet, és megkezdheti az Azure-ba való replikálást. ehhez ismételje meg a jelen cikkben ismertetett lépéseket.
-

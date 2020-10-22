@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az Azure arc-kompatibilis fürtkonfiguráció GitOps használata (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714187"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371256"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
@@ -96,19 +96,18 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Itt láthatók a--adattár-URL paraméter értékeként támogatott forgatókönyvek.
 
-| Forgatókönyv | Formátum | Leírás |
+| Használati eset | Formátum | Leírás |
 | ------------- | ------------- | ------------- |
-| Privát GitHub-tárház – SSH | git@github.com:username/repo | A Flux által generált SSH-kulcspár.  A felhasználónak hozzá kell adnia a nyilvános kulcsot a GitHub-fiókhoz üzembe helyezési kulcsként. |
-| Nyilvános GitHub-tárház | `http://github.com/username/repo` vagy git://github.com/username/repo   | Nyilvános git-tárház  |
+| Nyilvános git-tárház | http [s]://Server/repo.git vagy git://server/repo.git   | Nyilvános git-tárház  |
+| Privát git-tárház – SSH – fluxus által létrehozott kulcsok | SSH://[user@] Server/repo. git vagy [user@] Server: repo. git | A Flux által generált nyilvános kulcsot hozzá kell adni a git-szolgáltató felhasználói fiókjához vagy tárházához. További részleteket [itt](#apply-configuration-from-a-private-git-repository) talál. |
 
-Ezeket a forgatókönyveket a Flux támogatja, de még nem sourceControlConfiguration. 
+Ezeket a forgatókönyveket a Flux támogatja, de a sourceControlConfiguration még nem.
 
-| Forgatókönyv | Formátum | Leírás |
+| Használati eset | Formátum | Leírás |
 | ------------- | ------------- | ------------- |
-| Privát GitHub-adattár – HTTPS | `https://github.com/username/repo` | A Flux nem állít elő SSH-kulcspárt.  [Utasítások](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
-| Privát git-gazdagép | user@githost:path/to/repo | [Utasítások](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
-| Privát GitHub-tárház – SSH (saját kulcs használata) | git@github.com:username/repo | [Saját SSH-kulcspár használata](https://docs.fluxcd.io/en/1.17.0/guides/provide-own-ssh-key.html) |
-
+| Privát git-tárház – HTTPS | https://server/repo.git | Hamarosan (támogatni fogja a felhasználónevet/jelszót, a felhasználónevet/jogkivonatot, a tanúsítványt) |
+| Privát git-tárház – SSH – felhasználó által megadott kulcsok | SSH://[user@] Server/repo. git vagy [user@] Server: repo. git | Hamarosan elérhető |
+| Privát git-gazdagép – SSH – egyéni known_hosts | SSH://[user@] Server/repo. git vagy [user@] Server: repo. git | Hamarosan elérhető |
 
 #### <a name="additional-parameters"></a>További paraméterek
 
@@ -225,7 +224,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 **A nyilvános kulcs hozzáadása üzembe helyezési kulcsként a git-tárházhoz**
 
-1. Nyissa meg a GitHubot, navigáljon az elágazásához, a **beállításokhoz**, majd a **kulcsok üzembe helyezéséhez**
+1. Nyissa meg a GitHubot, navigáljon a tárházhoz, és válassza a beállítások, majd a **kulcsok telepítése** **lehetőséget**.
 2. Kattintson a **központi telepítés kulcsának hozzáadása** elemre.
 3. Adja meg a címet
 4. **Írási hozzáférés engedélyezése**

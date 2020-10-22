@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d816b3d44a6fadd8dd462a14e62de4cdac2a00
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447454"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370610"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>A megoldás-gyorsító üzembe helyezése a azureiotsolutions.com webhely használatával
 
@@ -38,7 +38,7 @@ A megoldás-gyorsító üzembe helyezése előtt be kell jelentkeznie a AzureIoT
 
 A megoldás-gyorsítók üzembe helyezéséhez, a felhasználók kezeléséhez és az Azure-szolgáltatások kezeléséhez szükséges engedélyek a kiválasztott könyvtár szerepköreitől függenek. A megoldás-gyorssegédekhez társított általános Azure AD-szerepkörök a következők:
 
-* **Globális rendszergazda**: az Azure ad-bérlőn számos [globális rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md) lehet:
+* **Globális rendszergazda**: az Azure ad-bérlőn számos [globális rendszergazda](../active-directory/roles/permissions-reference.md) lehet:
 
   * Amikor létrehoz egy Azure AD-bérlőt, alapértelmezés szerint a bérlő globális rendszergazdája lesz.
   * A globális rendszergazda telepítheti az alapszintű és a standard megoldás-gyorssegédeket.
@@ -62,7 +62,7 @@ A katalógus felsorolja a több száz tanúsított IoT hardvereszközöket, amel
 
 Ha Ön hardver gyártója, kattintson a partnerré **válás** lehetőségre a Microsofttal való partneri együttműködés megismeréséhez a Certified for IoT programban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az IoT-megoldásgyorsítók valamelyikének kipróbálásához tekintse meg a következő rövid útmutatókat:
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565464"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371800"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Csoport hozzáadása vagy eltávolítása egy másik csoportból a Azure Active Directory használatával
 Ebből a cikkből megtudhatja, hogyan adhat hozzá és távolíthat el egy csoportot egy másik csoportból Azure Active Directory használatával.
@@ -78,6 +78,6 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 - [A csoport beállításainak szerkesztése](active-directory-groups-settings-azure-portal.md)
 
-- [Csoport használata SaaS-alkalmazásokhoz való hozzáférés kezelésére](../users-groups-roles/groups-saasapps.md)
+- [Csoport használata SaaS-alkalmazásokhoz való hozzáférés kezelésére](../enterprise-users/groups-saasapps.md)
 
-- [Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)
+- [Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory](../enterprise-users/licensing-group-advanced.md#limitations-and-known-issues)

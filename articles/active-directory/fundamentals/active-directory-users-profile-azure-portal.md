@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797237"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370916"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Felhasználói profil adatainak hozzáadása vagy frissítése az Azure Active Directory használatával
 Adja hozzá a felhasználói profil adatait, beleértve a profil képét, a feladatra vonatkozó információkat, valamint néhány beállítást Azure Active Directory (Azure AD) használatával. További információ az új felhasználók hozzáadásáról: [felhasználók hozzáadása vagy törlése Azure Active Directoryban](add-users-azure-active-directory.md).
@@ -50,7 +50,7 @@ Ahogy látja, a felhasználó profiljában további információk érhetők el, 
 
     - **Hitelesítési kapcsolattartási adatok.** Ellenőrizze ezeket az adatokat, és győződjön meg arról, hogy a felhasználó számára aktív telefonszám és e-mail-cím található. Ezeket az információkat a Azure Active Directory használja annak biztosítására, hogy a felhasználó valóban a felhasználó legyen a bejelentkezés során. A hitelesítési kapcsolattartási adatokat csak globális rendszergazda frissítheti.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
     A rendszer minden módosítást elment a felhasználó számára.
 
@@ -66,4 +66,4 @@ A felhasználói profilok frissítése után a következő alapvető folyamatoka
 
 - [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
-Más felhasználói felügyeleti feladatokat is elvégezhet, például a delegált hozzárendelését, a szabályzatok használatát és a felhasználói fiókok megosztását. További információ az egyéb elérhető műveletekről: [Azure Active Directory felhasználói kezelés dokumentációja](../users-groups-roles/index.yml).
+Más felhasználói felügyeleti feladatokat is elvégezhet, például a delegált hozzárendelését, a szabályzatok használatát és a felhasználói fiókok megosztását. További információ az egyéb elérhető műveletekről: [Azure Active Directory felhasználói kezelés dokumentációja](../enterprise-users/index.yml).

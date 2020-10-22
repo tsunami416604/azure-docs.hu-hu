@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: e71325246b69f501ec8af91c59cb4f042180542c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: fe8f4229a2bc967f1368e263d2c055b153c3717d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999656"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369964"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Az Azure privát végpont DNS-konfigurációja
 
@@ -40,7 +40,7 @@ Az alkalmazásoknak nem kell módosítaniuk a kapcsolódási URL-címet. Ha nyil
 Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az alábbi táblázatban leírtak szerint:
 
 | Privát kapcsolat erőforrástípus/alerőforrása |saját DNS zóna neve | Nyilvános DNS-zónák továbbítói |
-|---|---|---|---|
+|---|---|---|
 | Azure Automation/(Microsoft. Automation/automationAccounts)/webhook, DSCAndHybridWorker | privatelink.azure-automation.net | azure-automation.net |
 | Azure SQL Database (Microsoft. SQL/Servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
 | Azure szinapszis Analytics (Microsoft. SQL/Servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
@@ -77,6 +77,8 @@ Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az al
 | Azure Monitor (Microsoft. bepillantások/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
 | Cognitive Services (Microsoft. CognitiveServices/accounts)/fiók | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure File Sync (Microsoft. StorageSync/storageSyncServices)/AFS |  privatelink.afs.azure.net  |  afs.azure.net  |
+| Azure Data Factory (Microsoft. DataFactory/gyárak)/dataFactory |  privatelink.datafactory.azure.net  |  datafactory.azure.net  |
+| Azure Data Factory (Microsoft. DataFactory/gyárak)/portál |  privatelink.azure.com  |  azure.com  |
 
  
 ## <a name="dns-configuration-scenarios"></a>DNS-konfigurációs forgatókönyvek
@@ -130,38 +132,37 @@ Ha a helyszíni számítási feladatokhoz egy privát végpont teljes tartomány
 Az alábbi forgatókönyv olyan helyszíni hálózat számára megfelelő, amely az Azure-ban DNS-továbbítót tartalmaz, amely az összes DNS-lekérdezés feloldását végzi a kiszolgálói szintű továbbítóval az Azure által biztosított DNS- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md). 
 
 > [!NOTE]
-> Ez a forgatókönyv a Azure SQL Database javasolt magánhálózati DNS-zónát használja.Más szolgáltatások esetében a modellt a következő hivatkozással módosíthatja: [Azure-szolgáltatások DNS-zóna konfigurációja](#azure-services-dns-zone-configuration).
+> Ez a forgatókönyv a Azure SQL Database javasolt magánhálózati DNS-zónát használja. Más szolgáltatások esetében a modellt a következő hivatkozással módosíthatja: [Azure-szolgáltatások DNS-zóna konfigurációja](#azure-services-dns-zone-configuration).
 
 A megfelelő konfigurálásához a következő erőforrásokra van szükség:
 
 - Helyszíni hálózat
-- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
-- DNS-továbbító üzembe helyezése az Azure-ban 
-- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)    [type A record](../dns/dns-zones-records.md#record-types)
+- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- DNS-továbbító üzembe helyezése az Azure-ban 
+- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [type A record](../dns/dns-zones-records.md#record-types)
 - Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
 
 Az alábbi ábrán egy olyan helyszíni hálózat DNS-feloldási sorozata látható, amely az Azure-ban üzembe helyezett DNS-továbbítót használja, ahol a felbontást egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md)privát DNS-zóna végzi el:
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Egyetlen virtuális hálózat és az Azure által biztosított DNS":::
 
-Ez a konfiguráció bővíthető olyan helyszíni hálózatra, amely már rendelkezik DNS-megoldással. 
-A helyszíni DNS-megoldást úgy kell konfigurálni, hogy az Azure-ban üzembe helyezett DNS-továbbítóra hivatkozó [feltételes továbbító](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) használatával továbbítsa a DNS-forgalmat Azure DNS.
+Ez a konfiguráció bővíthető olyan helyszíni hálózatra, amely már rendelkezik DNS-megoldással. A helyszíni DNS-megoldást úgy kell konfigurálni, hogy az Azure-ban üzembe helyezett DNS-továbbítóra hivatkozó [feltételes továbbító](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) használatával továbbítsa a DNS-forgalmat Azure DNS.
 
 > [!NOTE]
-> Ez a forgatókönyv a Azure SQL Database javasolt magánhálózati DNS-zónát használja. Más szolgáltatások esetében a modellt a következő hivatkozással módosíthatja: [Azure-szolgáltatások DNS-zóna konfigurációja](#azure-services-dns-zone-configuration)
+> Ez a forgatókönyv a Azure SQL Database javasolt magánhálózati DNS-zónát használja. Más szolgáltatások esetében a modellt a következő hivatkozással módosíthatja: [Azure-szolgáltatások DNS-zóna konfigurációja](#azure-services-dns-zone-configuration)
 
 A megfelelő konfigurálásához a következő erőforrásokra van szükség:
 
-- Helyi hálózat egyéni DNS-megoldással 
-- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- Helyi hálózat egyéni DNS-megoldással 
+- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
 - DNS-továbbító üzembe helyezése az Azure-ban
-- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)     [type A record](../dns/dns-zones-records.md#record-types)
+- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [type A record](../dns/dns-zones-records.md#record-types)
 - Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
 
-A következő ábra a DNS-feloldási sorozatot mutatja be egy helyszíni hálózatról, amely feltételesen továbbítja a DNS-forgalmat az Azure-ba, ahol a megoldás egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md)magánhálózati DNS-zónából áll.
+A következő ábra a DNS-feloldási sorozatot mutatja be egy helyszíni hálózatról, amely feltételesen továbbítja a DNS-forgalmat az Azure-ba, ahol a megoldás egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md)magánhálózati DNS-zónából áll.
 
 > [!IMPORTANT]
-> A feltételes továbbítást az ajánlott [nyilvános DNS-zónák továbbítójának](#azure-services-dns-zone-configuration)kell végrehajtania.Például:  `database.windows.net`   a **privatelink**. database.Windows.net helyett.
+> A feltételes továbbítást az ajánlott [nyilvános DNS-zónák továbbítójának](#azure-services-dns-zone-configuration)kell végrehajtania. Például: `database.windows.net` a **privatelink**. database.Windows.net helyett.
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Egyetlen virtuális hálózat és az Azure által biztosított DNS":::
 
@@ -177,18 +178,18 @@ A DNS-továbbító feladata az összes DNS-lekérdezés feloldása egy kiszolgá
 > Ehhez a konfigurációhoz egyetlen privát DNS-zónára van szükség. A helyszíni és a [társ virtuális hálózatokból](../virtual-network/virtual-network-peering-overview.md) végrehajtott összes ügyfélkapcsolatnak ugyanazt a magánhálózati DNS-zónát kell használnia.
 
 > [!NOTE]
-> Ez a forgatókönyv a Azure SQL Database javasolt magánhálózati DNS-zónát használja. Más szolgáltatások esetében a modellt a következő hivatkozással módosíthatja: [Azure-szolgáltatások DNS-zóna konfigurációja](#azure-services-dns-zone-configuration).
+> Ez a forgatókönyv a Azure SQL Database javasolt magánhálózati DNS-zónát használja. Más szolgáltatások esetében a modellt a következő hivatkozással módosíthatja: [Azure-szolgáltatások DNS-zóna konfigurációja](#azure-services-dns-zone-configuration).
 
 A megfelelő konfigurálásához a következő erőforrásokra van szükség:
 
 - Helyszíni hálózat
-- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
-- [Egyenrangú virtuális hálózat](../virtual-network/virtual-network-peering-overview.md) 
+- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- [Egyenrangú virtuális hálózat](../virtual-network/virtual-network-peering-overview.md) 
 - DNS-továbbító üzembe helyezése az Azure-ban
-- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)     [type A record](../dns/dns-zones-records.md#record-types)
+- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [type A record](../dns/dns-zones-records.md#record-types)
 - Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
 
-A következő ábra a DNS-feloldási sorozatot mutatja be egy olyan helyszíni és virtuális hálózatról, amely az Azure-ban üzembe helyezett DNS-továbbítót használja, ahol a felbontást egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md)privát DNS-zóna végzi el:
+A következő ábra a DNS-feloldási sorozatot mutatja be egy olyan helyszíni és virtuális hálózatról, amely az Azure-ban üzembe helyezett DNS-továbbítót használja, ahol a felbontást egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md)privát DNS-zóna végzi el:
 
 :::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Egyetlen virtuális hálózat és az Azure által biztosított DNS":::
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: b1b93110c3dba38dadf7079fc24ba12e81793c02
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a960150d68cf2f939e206321a20d98b0e4080313
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329849"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371494"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
 
@@ -70,7 +70,7 @@ Hozzon létre egy Automation-fiókot futtató engedéllyel. Útmutatásért lás
 
 ### <a name="2-assign-the-run-as-account-a-role"></a><a name="about"></a>2. szerepkör társítása a futtató fiókhoz
 
-Alapértelmezés szerint a **közreműködői** szerepkör hozzá van rendelve a **futtató** fiók által használt egyszerű szolgáltatáshoz. Megtarthatja az egyszerű szolgáltatáshoz rendelt alapértelmezett szerepkört, vagy korlátozhatja az engedélyeket egy [beépített szerepkör](../role-based-access-control/built-in-roles.md) (például olvasó) vagy egy [Egyéni szerepkör](../active-directory/users-groups-roles/roles-create-custom.md)hozzárendelésével.
+Alapértelmezés szerint a **közreműködői** szerepkör hozzá van rendelve a **futtató** fiók által használt egyszerű szolgáltatáshoz. Megtarthatja az egyszerű szolgáltatáshoz rendelt alapértelmezett szerepkört, vagy korlátozhatja az engedélyeket egy [beépített szerepkör](../role-based-access-control/built-in-roles.md) (például olvasó) vagy egy [Egyéni szerepkör](../active-directory/roles/custom-create.md)hozzárendelésével.
 
  A következő lépések végrehajtásával határozhatja meg a futtató fiók által használt egyszerű szolgáltatáshoz hozzárendelt szerepkört:
 
@@ -453,6 +453,6 @@ Az utolsó lépés a munkafolyamat-ellenőrzés. Az **Logic apps áttekintése**
 
 :::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="Automation-fiók hozzáadása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a munkafolyamat testreszabásáról: [Azure Logic apps](../logic-apps/logic-apps-overview.md).

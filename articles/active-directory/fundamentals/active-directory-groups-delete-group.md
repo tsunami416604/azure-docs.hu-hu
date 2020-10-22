@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9aed5f282ff7b5d573a6f8511f2fc4dbfd27135d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565507"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371817"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Csoport törlése Azure Active Directory használatával
 A Azure Active Directory (Azure AD) csoport tetszőleges számú okból törölhető, de általában az alábbiak miatt lesz lehetséges:
@@ -48,4 +48,4 @@ A Azure Active Directory (Azure AD) csoport tetszőleges számú okból törölh
 
 - Ha véletlenül töröl egy csoportot, azt újra létrehozhatja. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása](active-directory-groups-create-azure-portal.md).
 
-- Ha véletlenül töröl egy Microsoft 365 csoportot, lehetséges, hogy vissza tudja állítani. További információ: [törölt Office 365-csoport visszaállítása](../users-groups-roles/groups-restore-deleted.md).
+- Ha véletlenül töröl egy Microsoft 365 csoportot, lehetséges, hogy vissza tudja állítani. További információ: [törölt Office 365-csoport visszaállítása](../enterprise-users/groups-restore-deleted.md).

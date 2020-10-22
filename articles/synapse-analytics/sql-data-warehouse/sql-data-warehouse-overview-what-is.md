@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 27311270c1383a54192d072d0e152c7cf1a58225
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ec5b5a5ee5c29893f47560d57e78c281825453e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85200953"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370389"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Mi az Azure szinapszis Analytics (korábban SQL DW)?
 
-> [!NOTE] 
+> [!NOTE]
 >Ismerje meg az [Azure szinapszis (munkaterületek előzetes verzió) dokumentációját](../overview-what-is.md).
 >
 
@@ -54,7 +54,7 @@ A szinapszis SQL Pool oszlopos tárolással rendelkező kapcsolódó táblákban
 
 Az elemzések eredményei globális jelentéskészítési adatbázisokba vagy alkalmazásokba küldhetőek. Az üzleti elemzők így az ezekből nyerhető betekintések révén tájékozott üzleti döntéseket hozhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [Azure szinapszis architektúrájának](massively-parallel-processing-mpp-architecture.md) megismerése
 - [SQL-készlet gyors létrehozása](create-data-warehouse-portal.md)

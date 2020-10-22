@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d794716fe1f4717acbabfd90643b72c682e475bc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400689"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370593"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben
 
@@ -166,11 +166,11 @@ Felhasználók hozzáadása a partner Center-fiókhoz, amely már szerepel a vá
 * Ha egynél több felhasználót választ ki a partner Center-fiókhoz való hozzáadáshoz, akkor ugyanazt a szerepkört vagy egyéni engedélyeket kell rendelnie. Ha több felhasználót szeretne hozzáadni különböző szerepkörökhöz vagy engedélyekhez, ismételje meg ezeket a lépéseket az egyes szerepkörökhöz vagy egyéni engedélyek készletéhez.
 3. Ha végzett a felhasználók kiválasztásával, válassza a **kijelölt hozzáadása**elemet.
 4. A **szerepkörök** szakaszban határozza meg a kiválasztott felhasználó (k) szerepkörét vagy testreszabott engedélyeit.
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-new-users"></a>Új felhasználók létrehozása
 
-Új felhasználói fiókok létrehozásához [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie.
+Új felhasználói fiókok létrehozásához [**globális rendszergazdai**](../../active-directory/roles/permissions-reference.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie.
 
 1. Nyissa meg a **felhasználók** (a **Fiókbeállítások**szakaszban), válassza a **felhasználók hozzáadása**, majd az **új felhasználók létrehozása**lehetőséget.
 1. Adja meg az összes új felhasználó utónevét, vezetéknevét és felhasználónevét. 
@@ -178,18 +178,18 @@ Felhasználók hozzáadása a partner Center-fiókhoz, amely már szerepel a vá
 1. Ha bejelölte a jelölőnégyzetet, hogy a **felhasználó globális rendszergazda legyen**, **Jelszó-helyreállítási e-mailt** kell megadnia a felhasználónak, ha szükséges.
 1. A **csoporttagság** szakaszban válassza ki azokat a csoportokat, amelyekhez az új felhasználót be szeretné állítani.
 1. A **szerepkörök** szakaszban határozza meg a felhasználó szerepkör (eke) t vagy a testreszabott engedélyeket.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Ha új felhasználót hoz létre a partner Centerben, az adott felhasználóhoz tartozó fiókot is létrehoz a munkahelyi fiókban (Azure AD-bérlőben), amelyhez be van jelentkezve. Ha módosítja egy felhasználó nevét a partner Centerben, ugyanazokat a módosításokat fogja végezni a szervezet munkahelyi fiókjában (Azure AD-bérlő).
 
 ### <a name="invite-new-users-by-email"></a>Új felhasználók meghívása e-mailben
 
-Ha olyan felhasználókat szeretne meghívni, akik jelenleg nem részei a munkahelyi munkahelyi fióknak (Azure AD-bérlőnek) e-mailben, [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie.
+Ha olyan felhasználókat szeretne meghívni, akik jelenleg nem részei a munkahelyi munkahelyi fióknak (Azure AD-bérlőnek) e-mailben, [**globális rendszergazdai**](../../active-directory/roles/permissions-reference.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie.
 
 1. Nyissa meg a **felhasználók** (a **Fiókbeállítások**szakaszban), válassza a **felhasználók hozzáadása**lehetőséget, majd válassza **a felhasználók meghívása e-mailben**lehetőséget.
 2. Írjon be egy vagy több e-mail-címet (legfeljebb 10), vesszővel vagy pontosvesszővel elválasztva.
 3. A **szerepkörök** szakaszban határozza meg a felhasználó szerepkör (eke) t vagy a testreszabott engedélyeket.
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 A meghívott felhasználók e-mailben meghívót kapnak a partner Center-fiókhoz való csatlakozáshoz. A rendszer létrehoz egy új vendég-felhasználói fiókot a munkahelyi fiókjában (Azure AD-bérlő). Minden felhasználónak el kell fogadnia a meghívót, mielőtt hozzáférhessen a fiókjához.
 
@@ -204,7 +204,7 @@ Ha el szeretne távolítani egy felhasználót a munkahelyi fiókjából (Azure 
 
 ### <a name="change-a-user-password"></a>Felhasználói jelszó módosítása
 
-Ha az egyik felhasználónak módosítania kell a jelszavát, akkor megteheti, ha **Jelszó-helyreállítási e-mailt** adott a felhasználói fiók létrehozásakor. A felhasználó jelszavát az alábbi lépések végrehajtásával is frissítheti. Ha módosítani szeretné egy felhasználó jelszavát a munkahelyi munkahelyi fiókjában (Azure AD-bérlő), [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókba kell bejelentkeznie. Ez megváltoztatja a felhasználó jelszavát az Azure AD-bérlőben, valamint a partner Center eléréséhez használt jelszót.
+Ha az egyik felhasználónak módosítania kell a jelszavát, akkor megteheti, ha **Jelszó-helyreállítási e-mailt** adott a felhasználói fiók létrehozásakor. A felhasználó jelszavát az alábbi lépések végrehajtásával is frissítheti. Ha módosítani szeretné egy felhasználó jelszavát a munkahelyi munkahelyi fiókjában (Azure AD-bérlő), [**globális rendszergazdai**](../../active-directory/roles/permissions-reference.md) jogosultságokkal rendelkező fiókba kell bejelentkeznie. Ez megváltoztatja a felhasználó jelszavát az Azure AD-bérlőben, valamint a partner Center eléréséhez használt jelszót.
 
 1. A **felhasználók** lapon ( **Fiókbeállítások**alatt) válassza ki a szerkeszteni kívánt felhasználói fiók nevét.
 2. A lap alján kattintson a **jelszó alaphelyzetbe állítása** gombra.
@@ -223,7 +223,7 @@ A szervezet munkahelyi fiókjában (Azure AD-bérlőben) már meglévő csoport 
 Ha egynél több csoportot választ ki a partner Center-fiókhoz való hozzáadáshoz, akkor ugyanazt a szerepkört vagy egyéni engedélyeket kell rendelnie. Ha több csoportot szeretne hozzáadni különböző szerepkörökhöz vagy engedélyekhez, ismételje meg ezeket a lépéseket az egyes szerepkörökhöz vagy egyéni engedélyek készletéhez.
 3. Ha végzett a csoportok kiválasztásával, válassza a **kijelölt hozzáadása**elemet.
 4. A **szerepkörök** szakaszban határozza meg a kijelölt csoport (ok) szerepkör (oka) t vagy a testreszabott engedélyeket. A csoport minden tagja hozzáférhet a partner Center-fiókjához a csoportra vonatkozó engedélyekkel, az egyes fiókokhoz tartozó szerepköröktől és engedélyektől függetlenül.
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 Ha hozzáad egy meglévő csoportot, akkor minden felhasználó, aki tagja ennek a csoportnak, hozzáférhet a partner Center-fiókjához a csoport hozzárendelt szerepköréhez tartozó engedélyekkel.
 
@@ -237,7 +237,7 @@ Ha hozzáad egy meglévő csoportot, akkor minden felhasználó, aki tagja ennek
 4. Határozza meg a csoport szerepkör (eke) t vagy a testreszabott engedélyeket. A csoport minden tagja hozzáférhet a partner Center-fiókjához az itt megadott engedélyekkel függetlenül az egyes fiókokhoz tartozó szerepköröktől/engedélyektől.
 5. Válassza ki a felhasználó (ka) t az új csoport számára a megjelenő listából. A keresőmező segítségével megkeresheti az adott felhasználókat.
 6. Ha végzett a felhasználók kiválasztásával, válassza a **kijelölt hozzáadása** elemet az új csoportba való felvételhez.
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 Ez az új csoport a szervezet munkahelyi fiókjában (Azure AD-bérlő) is létrejön, nem csupán a partner Center-fiókban.
 
@@ -257,7 +257,7 @@ A vállalat Azure Active Directory már meglévő alkalmazások hozzáadásához
 2. Válasszon ki egy vagy több Azure AD-alkalmazást a megjelenő listából. A keresőmező segítségével megkeresheti az adott Azure AD-alkalmazásokat. Ha egynél több Azure AD-alkalmazást választ ki a partner Center-fiókhoz való hozzáadáshoz, akkor ugyanazt a szerepkört vagy egyéni engedélyeket kell rendelnie. Ha több Azure AD-alkalmazást szeretne hozzáadni különböző szerepkörökhöz vagy engedélyekhez, ismételje meg ezeket a lépéseket az egyes szerepkörökhöz vagy egyéni engedélyek készletéhez.
 3. Ha végzett az Azure AD-alkalmazások kiválasztásával, válassza a **kijelölt hozzáadása**elemet.
 4. A **szerepkörök** szakaszban határozza meg a kijelölt Azure ad-alkalmazás (ok) szerepkörét vagy testreszabott engedélyeit.
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-new-azure-ad-applications"></a>Új Azure AD-alkalmazások hozzáadása
 
@@ -268,7 +268,7 @@ Ha egy új Azure AD-alkalmazáshoz szeretne hozzáférést adni a partneri Közp
 3. Adja meg az új Azure AD **-alkalmazás válaszának URL-címét** . Ez az URL-cím, ahol a felhasználók bejelentkezhetnek és használhatják az Azure AD-alkalmazást (más néven az alkalmazás URL-címe vagy Sign-On URL-cím). A **Válasz URL-címe** nem lehet hosszabb 256 karakternél, és a címtárban egyedinek kell lennie.
 4. Adja meg az új Azure AD-alkalmazáshoz tartozó **alkalmazás-azonosító URI** -t. Ez az Azure AD-alkalmazáshoz tartozó logikai azonosító, amely akkor jelenik meg, ha egy egyszeri bejelentkezésre vonatkozó kérést küld az Azure AD-nek. Az **alkalmazás-azonosító URI** azonosítójának egyedinek kell lennie minden egyes Azure ad-alkalmazáshoz a címtárban. Ez az azonosító nem lehet hosszabb 256 karakternél. Az alkalmazás-azonosító URI-val kapcsolatos további információkért lásd: [alkalmazások integrálása a Azure Active Directorytel](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)).
 5. A **szerepkörök** szakaszban megadhatja az Azure ad-alkalmazáshoz tartozó szerepkör (eke) t vagy testreszabott engedélyeket.
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 Az Azure AD-alkalmazás hozzáadása vagy létrehozása után visszatérhet a **felhasználók** szakaszhoz, és kiválaszthatja az alkalmazás nevét az alkalmazás beállításainak áttekintéséhez, beleértve a bérlő azonosítóját, az ügyfél-azonosítót, a válasz URL-címét és az alkalmazás-azonosító URI-t.
 

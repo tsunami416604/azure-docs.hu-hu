@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341262"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371069"
 ---
 # <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
 
@@ -56,7 +56,7 @@ A Security Center identitás-és hozzáférés-védelmének bizonyos korlátai v
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Multi-Factor Authentication (MFA) és Azure Active Directory 
 
-Az MFA engedélyezéséhez [Azure Active Directory (ad) bérlői engedélyek](../active-directory/users-groups-roles/directory-assign-admin-roles.md)szükségesek.
+Az MFA engedélyezéséhez [Azure Active Directory (ad) bérlői engedélyek](../active-directory/roles/permissions-reference.md)szükségesek.
 
 - Ha prémium szintű AD-kiadással rendelkezik, a [feltételes hozzáférés](../active-directory/conditional-access/concept-conditional-access-policy-common.md)használatával engedélyezze az MFA-t.
 - Ha az AD ingyenes kiadást használja, engedélyezze a **biztonsági alapértelmezéseket** a [Azure Active Directory dokumentációjában](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)leírtak szerint.

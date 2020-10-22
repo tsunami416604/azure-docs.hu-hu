@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55df425367cc8295ef6a3899e2edb47669fe57b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bba8a0898c11cf1af150f4824d9bef5e9e03576e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91741176"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370882"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Nemrég törölt felhasználó visszaállítása vagy eltávolítása a Azure Active Directory használatával
 A felhasználó törlése után a fiók 30 napig felfüggesztett állapotban marad. A 30 napos időszak alatt a felhasználói fiók visszaállítható az összes tulajdonságával együtt. A 30 napos időszak után a rendszer automatikusan és véglegesen törli a felhasználót.
@@ -90,4 +90,4 @@ Miután visszaállította vagy törölte a felhasználókat, a következő alapv
 
 - [Vendég felhasználók hozzáadása egy másik szervezethez](../external-identities/what-is-b2b.md)
 
-További információ az [Azure ad](../users-groups-roles/index.yml)-beli felhasználói felügyeleti feladatokról.
+További információ az [Azure ad](../enterprise-users/index.yml)-beli felhasználói felügyeleti feladatokról.

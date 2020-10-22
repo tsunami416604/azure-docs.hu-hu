@@ -2,13 +2,13 @@
 title: Alkalmazás hitelesítése az Azure Event Hubs-erőforrások eléréséhez
 description: Ez a cikk a Azure Active Directory Azure Event Hubs-erőforrások eléréséhez való hitelesítésével kapcsolatos információkat tartalmaz.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 50c697e5c430b72f8d5da393e90f1db7ff6d48a1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.date: 10/21/2020
+ms.openlocfilehash: 6eac2ef362705ecb68212166f8b691ac969a40ff
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332484"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359934"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Alkalmazás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
 A Microsoft Azure Azure Active Directory (Azure AD) alapján integrált hozzáférés-vezérlési felügyeletet biztosít az erőforrásokhoz és alkalmazásokhoz. Az Azure AD és az Azure Event Hubs használatának egyik legfőbb előnye, hogy a hitelesítő adatait többé nem kell a kódban tárolnia. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformon. A jogkivonatot kérő erőforrás neve `https://eventhubs.azure.net/` (a Kafka-ügyfelek esetében a jogkivonat igénylésére szolgáló erőforrás `https://<namespace>.servicebus.windows.net` ). Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti az Azure Event Hubs-erőforrásokra vonatkozó kéréseket.
@@ -29,34 +29,6 @@ A séma-beállításjegyzék beépített szerepköreivel kapcsolatban lásd: [s�
 
 > [!IMPORTANT]
 > Előzetes kiadásunk a tulajdonosi vagy közreműködői szerepkörhöz Event Hubs adathozzáférési jogosultságok hozzáadását támogatja. Azonban a tulajdonosi és a közreműködő szerepkörre vonatkozó adathozzáférési jogosultságok már nem teljesülnek. Ha a tulajdonos vagy közreműködő szerepkört használja, váltson át az Azure Event Hubs adat-tulajdonosi szerepkör használatára.
-
-## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-szerepkörök kiosztása a Azure Portal használatával  
-Ha többet szeretne megtudni az Azure-erőforrásokhoz való hozzáférés kezeléséről az Azure RBAC és a Azure Portal használatával, tekintse meg [ezt a cikket](..//role-based-access-control/role-assignments-portal.md). 
-
-Miután meghatározta a szerepkör-hozzárendelés megfelelő hatókörét, navigáljon az adott erőforráshoz a Azure Portal. Jelenítse meg az erőforrás hozzáférés-vezérlési (IAM) beállításait, és kövesse az alábbi utasításokat a szerepkör-hozzárendelések kezeléséhez:
-
-> [!NOTE]
-> Az alábbi lépések az Event Hubs névterek alatt hozzárendelnek egy szerepkört az Event hub-hoz, de ugyanezen lépések végrehajtásával hozzárendelhet egy szerepkört egy Event Hubs erőforráshoz.
-
-1. A [Azure Portal](https://portal.azure.com/)navigáljon a Event Hubs-névtérhez.
-2. Az **Áttekintés** lapon válassza ki azt az Event hubot, amelyhez szerepkört szeretne hozzárendelni.
-
-    ![Válassza ki az Event hub-t](./media/authenticate-application/select-event-hub.png)
-1. Válassza a **Access Control (iam)** lehetőséget az Event hub hozzáférés-vezérlési beállításainak megjelenítéséhez. 
-1. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez. Kattintson a **Hozzáadás** gombra az eszköztáron, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet. 
-
-    ![Hozzáadás gomb az eszköztáron](./media/authenticate-application/role-assignments-add-button.png)
-1. A **szerepkör-hozzárendelés hozzáadása** oldalon hajtsa végre a következő lépéseket:
-    1. Válassza ki a hozzárendelni kívánt **Event Hubs szerepkört** . 
-    1. Keresse meg a **rendszerbiztonsági tag** (felhasználó, csoport, egyszerű szolgáltatásnév) megkeresését, amelyhez hozzá szeretné rendelni a szerepkört.
-    1. A szerepkör-hozzárendelés mentéséhez válassza a **Mentés** lehetőséget. 
-
-        ![Szerepkör társítása egy felhasználóhoz](./media/authenticate-application/assign-role-to-user.png)
-    4. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy az Azure-felhasználók az Azure Event Hubs adattulajdonosi szerepkörben vannak. 
-        
-        ![A listában szereplő felhasználó](./media/authenticate-application/user-in-list.png)
-
-A hasonló lépéseket követve rendelhet hozzá egy szerepkörhöz hatókört Event Hubs névtérhez, erőforráscsoporthoz vagy előfizetéshez. Miután definiálta a szerepkört és a hatókörét, tesztelheti ezt a [GitHub-helyen található](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)mintákkal.
 
 
 ## <a name="authenticate-from-an-application"></a>Hitelesítés egy alkalmazásból
@@ -95,6 +67,30 @@ Az alkalmazásnak szüksége van egy ügyfél titkos kulcsára, hogy igazolja az
     ![Titkos ügyfélkulcs](./media/authenticate-application/client-secret.png)
 
 
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-szerepkörök kiosztása a Azure Portal használatával  
+Az alkalmazás regisztrálását követően az alkalmazás egyszerű Event Hubs Azure AD-szerepkörhöz rendelhető hozzá, amely az Azure-beli [Build-in roles for Event Hubs](#built-in-roles-for-azure-event-hubs) című szakaszban olvasható. 
+
+1. A [Azure Portal](https://portal.azure.com/)navigáljon a Event Hubs-névtérhez.
+2. Az **Áttekintés** lapon válassza ki azt az Event hubot, amelyhez szerepkört szeretne hozzárendelni.
+
+    ![Válassza ki az Event hub-t](./media/authenticate-application/select-event-hub.png)
+1. Válassza a **Access Control (iam)** lehetőséget az Event hub hozzáférés-vezérlési beállításainak megjelenítéséhez. 
+1. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez. Kattintson a **Hozzáadás** gombra az eszköztáron, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet. 
+
+    ![Hozzáadás gomb az eszköztáron](./media/authenticate-application/role-assignments-add-button.png)
+1. A **szerepkör-hozzárendelés hozzáadása** oldalon hajtsa végre a következő lépéseket:
+    1. Válassza ki a hozzárendelni kívánt **Event Hubs szerepkört** . 
+    1. Keresse meg a **rendszerbiztonsági tag** (felhasználó, csoport, egyszerű szolgáltatásnév) megkeresését, amelyhez hozzá szeretné rendelni a szerepkört. Válassza ki a **regisztrált alkalmazást** a listából. 
+    1. A szerepkör-hozzárendelés mentéséhez válassza a **Mentés** lehetőséget. 
+
+        ![Szerepkör társítása egy felhasználóhoz](./media/authenticate-application/assign-role-to-user.png)
+    4. Váltson a **szerepkör-hozzárendelések** lapra, és erősítse meg a szerepkör-hozzárendelést. Az alábbi képen például látható, hogy a **mywebapp** az **Azure Event Hubs adatfeladói** szerepkörben van. 
+        
+        ![A listában szereplő felhasználó](./media/authenticate-application/user-in-list.png)
+
+A hasonló lépéseket követve rendelhet hozzá egy szerepkörhöz hatókört Event Hubs névtérhez, erőforráscsoporthoz vagy előfizetéshez. Miután definiálta a szerepkört és a hatókörét, tesztelheti ezt a [GitHub-helyen található](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)mintákkal. Ha többet szeretne megtudni az Azure-erőforrásokhoz való hozzáférés kezeléséről az Azure RBAC és a Azure Portal használatával, tekintse meg [ezt a cikket](..//role-based-access-control/role-assignments-portal.md). 
+
+
 ### <a name="client-libraries-for-token-acquisition"></a>Az ügyfél kódtárai a tokenek beszerzéséhez  
 Miután regisztrálta az alkalmazást, és engedélyt kapott az Azure Event Hubsban tárolt adatai küldésére/fogadására, hozzáadhat programkódot az alkalmazáshoz egy rendszerbiztonsági tag hitelesítéséhez és a OAuth 2,0 token beszerzéséhez. A jogkivonat hitelesítéséhez és beszerzéséhez használhatja a [Microsoft Identity platform hitelesítési kódtárainak](../active-directory/develop/reference-v2-libraries.md) egyikét vagy egy olyan nyílt forráskódú függvénytárat, amely támogatja az OpenID vagy a Connect 1,0-et. Az alkalmazás ezután a hozzáférési token használatával engedélyezheti a kérést az Azure Event Hubs.
 
@@ -108,7 +104,7 @@ A jogkivonatok beszerzését támogató forgatókönyvek listáját a [Microsoft
 
     Ez a minta frissítve lett a legújabb **Azure. Messaging. EventHubs** könyvtár használatára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az Azure RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)?
 - Az Azure-beli szerepkör-hozzárendelések Azure PowerShell, az Azure CLI vagy a REST API használatával történő hozzárendeléséről és kezeléséről a következő cikkekben talál további információt:
     - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)  

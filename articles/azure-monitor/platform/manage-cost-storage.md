@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 3783c3dea67ebb9a77486d18bf80e67b85292744
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6a14ef6f75d5939501c6bd8ca84620a7a5619a54
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144175"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369063"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -243,7 +243,7 @@ A kezdéshez itt láthatók az ajánlott beállítások a táblában a függvén
 - Cél: válassza ki a Log Analytics erőforrást
 - Kritériumok 
    - Jel neve: egyéni naplók keresése
-   - Keresési lekérdezés: `_LogOperation | where Detail has 'OverQuota'`
+   - Keresési lekérdezés: `_LogOperation | where Category == "Ingestion" | where Operation == "Ingestion rate" | where Level == "Warning"`
    - A következő alapján: az eredmények száma
    - Feltétel: nagyobb, mint
    - Küszöbérték: 0
@@ -600,9 +600,9 @@ Ha riasztást szeretne kapni, ha az elmúlt 24 órában betöltött számlázhat
 - A **riasztási feltétel megadásával** határozza meg a célerőforrásként használt Log Analytics-munkaterületet.
 - A **Riasztási feltételek** résznél az alábbiakat adja meg:
    - A **Jel neve** legyen **Egyéni naplókeresés**
-   - **Lekérdezés keresése** a következőre: `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Ha differetn szeretne 
+   - **Lekérdezés keresése** a következőre: `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Ha másikat szeretne 
    - A **Riasztási logika****alapja legyen az ** *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték **: *0*
-   - A *1440* perc **és a** **riasztások gyakorisága** naponta egyszer fut minden *1440* minutesto.
+   - *1440* perces **időtartam** , a **riasztások gyakorisága** minden *1440* percre, naponta egyszer fut.
 - **Határozza meg a riasztás részleteit** az alábbiak megadásával:
    - Az *50 GB-nál nagyobb számlázható adatmennyiség 24 órán belüli* **neve**
    - A **Súlyosság** legyen *Figyelmeztetés*
