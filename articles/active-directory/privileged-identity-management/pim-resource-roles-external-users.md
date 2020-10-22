@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88782736"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365527"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Vendég felhasználók meghívása és Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
 
@@ -67,7 +67,7 @@ Győződjön meg arról, hogy meg tudja hívni a vendégeket a szervezetbe, elle
 
 A Privileged Identity Management használatával meghívhat egy vendéget, és jogosult lehet egy Azure-erőforrás szerepkörre.
 
-1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) vagy a [felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) szerepkörnek.
+1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../roles/permissions-reference.md#privileged-role-administrator) vagy a [felhasználói rendszergazda](../roles/permissions-reference.md#user-administrator) szerepkörnek.
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
@@ -163,7 +163,7 @@ A naplókat megtekintve nyomon követheti, hogy a vendégek mit csinálnak.
 
     ![Címtár-naplózási naplók listázási dátuma, cél, kezdeményező és tevékenység](./media/pim-resource-roles-external-users/audit-directory.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-beli rendszergazdai szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
 - [Mi a vendég felhasználói hozzáférés az Azure AD B2B együttműködésben?](../external-identities/what-is-b2b.md)

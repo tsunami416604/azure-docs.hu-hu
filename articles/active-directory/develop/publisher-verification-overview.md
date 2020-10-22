@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258149"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363419"
 ---
 # <a name="publisher-verification"></a>Közzétevő ellenőrzése
 
@@ -49,7 +49,7 @@ A kiadói ellenőrzéshez néhány előfeltétel van, amelyek némelyikét már 
 
 -  Az ellenőrzést végző felhasználó számára engedélyezni kell, hogy az Azure AD-ben és az MPN-fiókban is módosíthassa az alkalmazások regisztrációját. 
 
-    -  Az Azure AD-ben ehhez a felhasználóhoz a következő [szerepkörök](../users-groups-roles/directory-assign-admin-roles.md)egyikének kell tartoznia: Application admin, Cloud Application admin vagy globális rendszergazda. 
+    -  Az Azure AD-ben ehhez a felhasználóhoz a következő [szerepkörök](../roles/permissions-reference.md)egyikének kell tartoznia: Application admin, Cloud Application admin vagy globális rendszergazda. 
 
     -  A partner Centerben ennek a felhasználónak a következő [szerepkörökkel](/partner-center/permissions-overview)kell rendelkeznie: MPN-rendszergazda, fiókok rendszergazdája vagy globális rendszergazda (ez az Azure ad-ben elsajátított megosztott szerepkör).
     

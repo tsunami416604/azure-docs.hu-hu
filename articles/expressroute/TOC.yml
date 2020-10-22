@@ -95,6 +95,10 @@
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Hálózatok közötti kapcsolatok
       href: cross-network-connectivity.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Biztonsági attribútumok
       href: expressroute-security-controls.md
     - name: BFD ExpressRoute-on keresztül
@@ -269,5 +273,3 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: Nyilvános társviszony létrehozása és módosítása
           href: about-public-peering.md
-    - name: Biztonsági alapkonfiguráció
-      href: security-baseline.md

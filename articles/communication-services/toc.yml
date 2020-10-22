@@ -93,7 +93,7 @@
 - name: Hivatkozások
   items:
     - name: REST API – dokumentáció
-      href: 'https://docs.microsoft.com/rest/api/azure/'
+      href: 'https://docs.microsoft.com/rest/api/communication/'
     - name: Hívási kódtár (Android/Java)
       href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
     - name: Hívási kódtár (JS)

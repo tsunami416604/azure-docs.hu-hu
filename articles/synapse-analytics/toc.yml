@@ -44,8 +44,6 @@
       href: quickstart-create-workspace-powershell.md
     - name: Üzembe helyezés sablon használatával
       href: quickstart-deployment-template-workspaces.md
-    - name: A Synapse Studio használata
-      href: quickstart-synapse-studio.md
     - name: Power BI-munkaterület csatolása
       href: quickstart-power-bi.md
     - name: Készletek létrehozása

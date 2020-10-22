@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721e09c2bc0562ba833115361cf33c3daaef380b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426122"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364031"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>A Hyper-V-ről az Azure-ba végzett replikáció és feladatátvétel hibaelhárítása
 
@@ -29,7 +29,7 @@ Ha problémákat tapasztal a Hyper-V virtuális gépek védelmének engedélyez�
 4. Keressen olyan problémákat, amelyek megjelennek a Hyper-V-VMMS\Admin a virtuális gépre való bejelentkezéskor. Ez a napló az **alkalmazások és szolgáltatások naplójában**található a  >  **Microsoft**  >  **Windowsban**.
 5. A vendég virtuális gépen ellenőrizze, hogy a WMI engedélyezve van-e és elérhető-e.
    - [Ismerje meg az](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) alapszintű WMI-tesztelést.
-   - [Hibakeresés](https://aka.ms/WMiTshooting) WMI.
+   - [Hibakeresés](/windows/win32/wmisdk/wmi-troubleshooting) WMI.
    - WMI-parancsfájlokkal és-szolgáltatásokkal kapcsolatos problémák [elhárítása](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) .
 6. A vendég virtuális gépen ellenőrizze, hogy az integrációs szolgáltatások legújabb verziója fut-e.
     - [Győződjön meg arról,](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) hogy a legújabb verzióval rendelkezik.

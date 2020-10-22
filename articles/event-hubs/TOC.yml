@@ -115,8 +115,6 @@
               href: authenticate-shared-access-signature.md
         - name: Hálózati biztonság
           href: network-security.md
-        - name: Beépített biztonsági vezérlők
-          href: event-hubs-security-controls.md
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

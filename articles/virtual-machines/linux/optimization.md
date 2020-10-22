@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654191"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370236"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linux rendszerű virtuális gép optimalizálása az Azure-ban
 A linuxos virtuális gép (VM) létrehozása a parancssorból vagy a portálról egyszerű. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a teljesítményét a Microsoft Azure platform teljesítményének optimalizálása érdekében. Ez a témakör egy Ubuntu Server-alapú virtuális gépet használ, de [a saját rendszerképeit sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használva is létrehozhatja.  
@@ -47,7 +47,38 @@ Alapértelmezés szerint a virtuális gépek létrehozásakor az Azure egy oper�
 ## <a name="linux-swap-partition"></a>Linux-swap partíció
 Ha az Azure-beli virtuális gép Ubuntu-vagy CoreOS-rendszerképből származik, a CustomData használatával felhő-konfigurációt küldhet a Cloud-init számára. Ha [olyan egyéni Linux-rendszerképet töltött](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) fel, amely a Cloud-init szolgáltatást használja, a Cloud-init használatával is konfigurálhatja a swap-partíciókat.
 
-Ubuntu Cloud images esetén a Cloud-init használatával kell konfigurálnia a swap partíciót. További információ: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
+A **/etc/waagent.conf** -fájl nem használható a Cloud-init által kiépített és támogatott lemezképek cseréjeinak kezelésére. A rendszerképek teljes listájáért lásd: a [Cloud-init használata](using-cloud-init.md). 
+
+Az alábbi lépések elvégzéséhez a legkönnyebben kezelhetők a rendszerképek cseréje:
+
+1. A **/var/lib/Cloud/Scripts/per-boot** mappában hozzon létre egy **create_swapfile. sh**nevű fájlt:
+
+   **$ sudo Touch/var/lib/Cloud/Scripts/per-boot/create_swapfile. sh**
+
+1. Adja hozzá a következő sorokat a fájlhoz:
+
+   **$ sudo VI/var/lib/Cloud/Scripts/per-boot/create_swapfile. sh**
+
+   ```
+   #!/bin/sh
+   if [ ! -f '/mnt/swapfile' ]; then
+   fallocate --length 2GiB /mnt/swapfile
+   chmod 600 /mnt/swapfile
+   mkswap /mnt/swapfile
+   swapon /mnt/swapfile
+   swapon -a ; fi
+   ```
+
+   > [!NOTE]
+   > Az értéket igény szerint módosíthatja, és az erőforrás-lemez szabad területe alapján változhat, amely a használt virtuálisgép-mérettől függ.
+
+1. A fájl végrehajtható fájljának elkészítése:
+
+   **$ sudo chmod + x/var/lib/Cloud/Scripts/per-boot/create_swapfile. sh**
+
+1. A swapfile létrehozásához közvetlenül az utolsó lépés után futtassa a szkriptet:
+
+   **$ sudo/var/lib/Cloud/Scripts/per-boot/./create_swapfile. sh**
 
 A Cloud-init támogatás nélküli rendszerképeknél az Azure piactéren üzembe helyezett virtuálisgép-lemezképek rendelkeznek egy, az operációs rendszerhez integrált virtuálisgép-Linux-ügynökkel. Ez az ügynök lehetővé teszi a virtuális gép számára a különböző Azure-szolgáltatásokkal való interakciót. Feltételezve, hogy az Azure Marketplace-ről standard rendszerképet helyezett üzembe, a következő lépéseket kell elvégeznie a Linux-swap fájl beállításainak megfelelő konfigurálásához:
 

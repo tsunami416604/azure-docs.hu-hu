@@ -148,8 +148,6 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric-fürtök biztonsága
           href: service-fabric-cluster-security.md
-        - name: Beépített biztonsági vezérlők
-          href: service-fabric-security-controls.md
         - name: Tanúsítványalapú hitelesítés a Service Fabricben
           href: cluster-security-certificates.md
         - name: Tanúsítványkezelés a Service Fabricben

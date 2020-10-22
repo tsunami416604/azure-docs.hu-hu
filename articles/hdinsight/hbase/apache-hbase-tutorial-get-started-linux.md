@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: 114a0d6f97149baad0c9e76fb359c52996820575
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7ce183595ed8e20c4b5cf4afe9ac1174882dc392
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207155"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370321"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: az Apache HBase használata az Azure HDInsight
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Apache HBase-fürtöt az Azure HDInsight, hogyan hozhat létre HBase-táblákat és lekérdezési táblákat Apache Hive használatával.  A HBase-re vonatkozó általános információért lásd: [HDInsight HBase overview](./apache-hbase-overview.md) (A HDInsight HBase áttekintése).
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Apache HBase-fürt létrehozása
@@ -227,6 +227,31 @@ A HBase az ESP-kompatibilis HBase használatával is lekérdezhető a kaptárbó
 ## <a name="use-hbase-rest-apis-using-curl"></a>HBase REST API-k használata Curl használatával
 
 A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgálónak.
+
+1. A HBase REST API-k a HDInsight-fürtön való engedélyezéséhez adja hozzá a következő Egyéni indítási parancsfájlt a **parancsfájl-művelet** szakaszhoz. Az indítási parancsfájlt a fürt létrehozásakor vagy a fürt létrehozása után is hozzáadhatja. A **csomópont típusa**beállításnál válassza a **régió kiszolgálók** lehetőséget, hogy a parancsfájl csak a HBase-régió kiszolgálóin legyen végrehajtva.
+
+
+    ```bash
+    #! /bin/bash
+
+    THIS_MACHINE=`hostname`
+
+    if [[ $THIS_MACHINE != wn* ]]
+    then
+        printf 'Script to be executed only on worker nodes'
+        exit 0
+    fi
+
+    RESULT=`pgrep -f RESTServer`
+    if [[ -z $RESULT ]]
+    then
+        echo "Applying mitigation; starting REST Server"
+        sudo python /usr/lib/python2.7/dist-packages/hdinsight_hbrest/HbaseRestAgent.py
+    else
+        echo "Rest server already running"
+        exit 0
+    fi
+    ```
 
 1. Az egyszerű használat érdekében állítsa be a környezeti változót. Szerkessze az alábbi parancsokat úgy, hogy lecseréli `MYPASSWORD` a fürt bejelentkezési jelszavát. Cserélje le a `MYCLUSTERNAME` nevet a HBase-fürt nevére. Ezután adja meg a parancsokat.
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888e2287c869200434e198204881d5bd5014f87d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387677"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363861"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure AD B2C egyéni házirendek kezelése a Azure PowerShell
 
@@ -29,7 +29,7 @@ A Azure PowerShell számos parancsmagot biztosít a parancssori és parancsfájl
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure ad B2C bérlő](tutorial-create-tenant.md)és a címtárbeli felhasználó hitelesítő adatai a [B2C IEF házirend-rendszergazdai](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) szerepkörrel
+* [Azure ad B2C bérlő](tutorial-create-tenant.md)és a címtárbeli felhasználó hitelesítő adatai a [B2C IEF házirend-rendszergazdai](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) szerepkörrel
 * A bérlőre feltöltött [Egyéni szabályzatok](custom-policy-get-started.md)
 * [Azure AD PowerShell a Graph **Preview modulhoz**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
@@ -37,7 +37,7 @@ A Azure PowerShell számos parancsmagot biztosít a parancssori és parancsfájl
 
 Ha egyéni szabályzatokkal szeretne dolgozni a Azure AD B2C-bérlőben, először össze kell kapcsolni a PowerShell-munkamenetet a bérlőhöz a [AzureAD][Connect-AzureAD] parancs használatával.
 
-Hajtsa végre a következő parancsot a `{b2c-tenant-name}` Azure ad B2C bérlő nevével való helyettesítéssel. Jelentkezzen be egy olyan fiókkal, amely a [B2C IEF házirend-rendszergazdai](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) szerepkörhöz van rendelve a címtárban.
+Hajtsa végre a következő parancsot a `{b2c-tenant-name}` Azure ad B2C bérlő nevével való helyettesítéssel. Jelentkezzen be egy olyan fiókkal, amely a [B2C IEF házirend-rendszergazdai](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) szerepkörhöz van rendelve a címtárban.
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
@@ -193,7 +193,7 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 
 További információ az egyéni házirendek hibaelhárításáról: [Azure ad B2C egyéni szabályzatok és az identitások felhasználói felületének](active-directory-b2c-guide-troubleshooting-custom.md)hibaelhárítása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan használható a PowerShell az egyéni házirendek folyamatos integrációs/folyamatos teljesítési (CI/CD) folyamat részeként történő telepítéséhez: [Egyéni szabályzatok telepítése Azure DevOps-folyamatból](deploy-custom-policies-devops.md).
 
