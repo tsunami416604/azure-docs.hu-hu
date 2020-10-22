@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: d5016dbff30eb054e413acc66b1b2dfee62a5873
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 448106b1c514762c101991f5f944d521f7ea6f75
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070673"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368519"
 ---
 # <a name="configure-permission-classifications"></a>Engedélyosztályozások konfigurálása
 
@@ -33,7 +33,7 @@ Jelenleg csak az "alacsony hatású" engedélyek besorolása támogatott. Csak a
 
 Az alábbi lépéseket követve osztályozhatja az engedélyeket a Azure Portal használatával:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [alkalmazás-rendszergazdaként](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)vagy [Felhőbeli alkalmazás-rendszergazdaként](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator), [alkalmazás-rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [Felhőbeli alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator)
 1. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **hozzájárulása és engedélyek**  >  **besorolása**lehetőséget.
 1. Válassza az **engedélyek hozzáadása** lehetőséget, hogy egy másik engedélyt "alacsony hatásként" minősítse.
 1. Válassza ki az API-t, majd válassza ki a delegált engedélyeket (ka) t.

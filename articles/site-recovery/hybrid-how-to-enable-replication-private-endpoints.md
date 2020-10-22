@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 3d15f4039da85dfa926e7bc9ab96b2c48965d5f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f23efa8d0439422fef685480ed270dce6e78a204
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658801"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366853"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Helyszíni gépek replikálása privát végpontok használatával
 
@@ -123,7 +123,7 @@ Egy privát végpontot használhat az Azure Storage-hoz. A privát végpontok t�
 > [!NOTE]
 > A tárolóhoz tartozó magánhálózati végpontok csak általános célú v2 Storage-fiókokon hozhatók létre. A díjszabással kapcsolatos információkért lásd: az [Azure Page Blobs díjszabása](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
-A [privát tárolók létrehozásával kapcsolatos útmutatást](../private-link/create-private-endpoint-storage-portal.md#create-your-private-endpoint) követve hozzon létre egy privát végponttal rendelkező Storage-fiókot. Ügyeljen arra, hogy az **Igen** lehetőséget válassza a **saját DNS-zóna integrálása**területen. Válasszon ki egy meglévő DNS-zónát, vagy hozzon létre egy újat.
+A [privát tárolók létrehozásával kapcsolatos útmutatást](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint) követve hozzon létre egy privát végponttal rendelkező Storage-fiókot. Ügyeljen arra, hogy az **Igen** lehetőséget válassza a **saját DNS-zóna integrálása**területen. Válasszon ki egy meglévő DNS-zónát, vagy hozzon létre egy újat.
 
 ### <a name="grant-required-permissions-to-the-vault"></a>Szükséges engedélyek megadása a tárolóhoz
 
@@ -188,7 +188,7 @@ Hozzon létre egy privát DNS-zónát, amely engedélyezi a Site Recovery szolg�
 
    Most létre kell hoznia a megkerülő módon létrehozott magánhálózati DNS-zónát.
 
-   1. Nyissa meg az előző lépésben létrehozott privát DNS-zónát, majd a bal oldali ablaktáblán lépjen a **virtuális hálózati kapcsolatok** elemre. Válassza a **Hozzáadás** lehetőséget.
+   1. Nyissa meg az előző lépésben létrehozott privát DNS-zónát, majd a bal oldali ablaktáblán lépjen a **virtuális hálózati kapcsolatok** elemre. Válassza a **Hozzáadás** elemet.
 
    1. Adja meg a szükséges adatokat. Az **előfizetés** és a **virtuális hálózat** listában válassza a Mellőzés hálózatnak megfelelő részleteket. A többi mezőben hagyja meg az alapértelmezett értékeket.
 

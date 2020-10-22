@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b990fc7282cd986b0903fb1f33114a164be1c191
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801800"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366683"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -65,15 +65,15 @@ Az Azure AD-ből egy SaaS-alkalmazásba való kimenő kiépítés esetén a felh
 
 * **Csoportok.** A prémium szintű Azure AD-licenccel a csoportok használatával rendelhet hozzá hozzáférést egy SaaS-alkalmazáshoz. Ezt követően, ha a kiépítési hatókör **csak a hozzárendelt felhasználók és csoportok szinkronizálására**van beállítva, az Azure ad-kiépítési szolgáltatás a felhasználókat attól függően fogja kiépíteni vagy kiépíteni, hogy az alkalmazáshoz rendelt csoport tagjai-e. Maga a csoport objektum sincs kiépítve, kivéve, ha az alkalmazás támogatja a csoportok objektumait. Győződjön meg arról, hogy az alkalmazáshoz rendelt csoportok "SecurityEnabled" tulajdonsága "true" (igaz) értékre van állítva.
 
-* **Dinamikus csoportok.** Az Azure AD-beli felhasználó-kiépítési szolgáltatás a [dinamikus csoportokba](../users-groups-roles/groups-create-rule.md)tartozó felhasználókat tudja olvasni és kiépíteni. Tartsa szem előtt ezeket a figyelmeztetéseket és javaslatokat:
+* **Dinamikus csoportok.** Az Azure AD-beli felhasználó-kiépítési szolgáltatás a [dinamikus csoportokba](../enterprise-users/groups-create-rule.md)tartozó felhasználókat tudja olvasni és kiépíteni. Tartsa szem előtt ezeket a figyelmeztetéseket és javaslatokat:
 
   * A dinamikus csoportok befolyásolhatják a végpontok közötti kiépítés teljesítményét az Azure AD-ből az SaaS-alkalmazásokba.
 
-  * A dinamikus csoportokban lévő felhasználók egy SaaS-alkalmazásban való kiépítésének vagy kiépítésének gyorsasága attól függ, hogy a dinamikus csoport milyen gyorsan tudja kiértékelni a tagsági változásokat. További információ a dinamikus csoportok feldolgozási állapotának vizsgálatáról: [tagsági szabály feldolgozási állapotának](../users-groups-roles/groups-create-rule.md)megtekintése.
+  * A dinamikus csoportokban lévő felhasználók egy SaaS-alkalmazásban való kiépítésének vagy kiépítésének gyorsasága attól függ, hogy a dinamikus csoport milyen gyorsan tudja kiértékelni a tagsági változásokat. További információ a dinamikus csoportok feldolgozási állapotának vizsgálatáról: [tagsági szabály feldolgozási állapotának](../enterprise-users/groups-create-rule.md)megtekintése.
 
   * Ha a felhasználó elveszti a dinamikus csoport tagságát, akkor az egy kiépítési eseménynek számít. Vegye figyelembe ezt a forgatókönyvet a dinamikus csoportok szabályainak létrehozásakor.
 
-* **Beágyazott csoportok.** Az Azure AD-beli felhasználói kiépítési szolgáltatás nem tudja beolvasni vagy kiépíteni a felhasználókat a beágyazott csoportokban. A szolgáltatás csak olyan felhasználókat tud olvasni és kiépíteni, akik közvetlenül tagjai egy explicit módon hozzárendelt csoportnak. Ez a "csoportos hozzárendelések alkalmazások számára" korlátozás az egyszeri bejelentkezést is befolyásolja (lásd: [csoport használata az SaaS-alkalmazásokhoz való hozzáférés kezeléséhez](../users-groups-roles/groups-saasapps.md)). Ehelyett közvetlenül a kiépíteni kívánt felhasználókat tartalmazó csoportokban vagy más [hatókörben](define-conditional-rules-for-provisioning-user-accounts.md) kell kiosztania.
+* **Beágyazott csoportok.** Az Azure AD-beli felhasználói kiépítési szolgáltatás nem tudja beolvasni vagy kiépíteni a felhasználókat a beágyazott csoportokban. A szolgáltatás csak olyan felhasználókat tud olvasni és kiépíteni, akik közvetlenül tagjai egy explicit módon hozzárendelt csoportnak. Ez a "csoportos hozzárendelések alkalmazások számára" korlátozás az egyszeri bejelentkezést is befolyásolja (lásd: [csoport használata az SaaS-alkalmazásokhoz való hozzáférés kezeléséhez](../enterprise-users/groups-saasapps.md)). Ehelyett közvetlenül a kiépíteni kívánt felhasználókat tartalmazó csoportokban vagy más [hatókörben](define-conditional-rules-for-provisioning-user-accounts.md) kell kiosztania.
 
 ### <a name="attribute-based-scoping"></a>Attribútum-alapú hatókör 
 
@@ -184,12 +184,12 @@ Győződjön meg arról, hogy rendelkezik az alkalmazáshoz tartozó *aktív* le
 
 A következő forgatókönyvek letiltást vagy törlést indítanak el: 
 * A rendszer az Azure AD-ben törli a felhasználót (a Lomtár/AccountEnabled tulajdonság értéke false (hamis) értékre van állítva).
-    30 nappal azután, hogy egy felhasználó törölve lett az Azure AD-ben, véglegesen törölve lesznek a bérlőről. Ezen a ponton a kiépítési szolgáltatás elküld egy TÖRLÉSi kérelmet, amely véglegesen törli a felhasználót az alkalmazásban. A 30 napos időszak alatt bármikor [manuálisan törölheti a felhasználót](../fundamentals/active-directory-users-restore.md), amely törlési kérelmet küld az alkalmazásnak.
+    30 nappal azután, hogy egy felhasználó törölve lett az Azure AD-ben, véglegesen törölve lesznek a bérlőről. Ezen a ponton a kiépítési szolgáltatás elküld egy TÖRLÉSi kérelmet, amely véglegesen törli a felhasználót az alkalmazásban. A 30 napos időszak alatt bármikor [manuálisan törölheti a felhasználót](../fundamentals/active-directory-users-restore.md), amely törlési kérelmet küld az alkalmazásnak.
 * A rendszer véglegesen törli vagy eltávolítja a felhasználót az Azure AD-beli Lomtárból.
 * Egy felhasználó nem rendelhető hozzá egy alkalmazáshoz.
 * A felhasználó hatókörből kívülre kerül a hatókörből (nem haladja meg a hatókör-szűrőt).
     
-Alapértelmezés szerint az Azure AD-kiépítési szolgáltatás nem törli vagy letiltja a hatókörön kívüli felhasználókat. Ha szeretné felülbírálni ezt az alapértelmezett viselkedést, beállíthatja a jelölőt a [hatókörbeli törlés kihagyásához.](skip-out-of-scope-deletions.md)
+Alapértelmezés szerint az Azure AD-kiépítési szolgáltatás nem törli vagy letiltja a hatókörön kívüli felhasználókat. Ha szeretné felülbírálni ezt az alapértelmezett viselkedést, beállíthatja a jelölőt a [hatókörbeli törlés kihagyásához.](skip-out-of-scope-deletions.md)
 
 Ha a fenti négy esemény egyike következik be, és a célalkalmazás nem támogatja a Soft deletes szolgáltatást, a kiépítési szolgáltatás egy TÖRLÉSi kérelmet küld, amely véglegesen törli a felhasználót az alkalmazásból.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758370"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367482"
 ---
 # <a name="security-control-v2-privileged-access"></a>Security Control v2: emelt szintű hozzáférés
 
@@ -34,11 +34,11 @@ Megjegyzés: Előfordulhat, hogy más kritikus szerepkörökre is szükség van,
 
 Az Azure-erőforrásokhoz és az Azure AD-hez az Azure AD Privileged Identity Management (PIM) használatával engedélyezheti az igény szerinti (JIT) jogosultságú hozzáférést. A JIT ideiglenes engedélyeket biztosít a Kiemelt feladatok végrehajtásához, ha a felhasználóknak szükségük van rá. A PIM biztonsági riasztásokat is létrehozhat, ha az Azure AD-szervezetben gyanús vagy nem biztonságos tevékenység van.
 
-- [Rendszergazdai szerepkör engedélyei az Azure AD-ben](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Rendszergazdai szerepkör engedélyei az Azure AD-ben](../../active-directory/roles/permissions-reference.md)
 
 - [Azure Privileged Identity Management biztonsági riasztások használata](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-- [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)
+- [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../../active-directory/roles/security-planning.md)
 
 **Felelősség**: ügyfél
 
@@ -114,7 +114,7 @@ Megjegyzés: egyes Azure-szolgáltatások támogatják a helyi felhasználókat 
 Ha nem szeretné megakadályozni, hogy véletlenül kizárja az Azure AD-szervezetét, állítson be egy vészhelyzeti hozzáférési fiókot a hozzáféréshez, ha a normál rendszergazdai fiókok nem használhatók. A vészhelyzeti hozzáférési fiókok általában magas jogosultsággal rendelkeznek, és nem rendelhetők hozzá konkrét személyekhez. A vészhelyzeti hozzáférési fiókok olyan vészhelyzeti vagy "break Glass" forgatókönyvekre korlátozódnak, amelyekben nem használhatók normál rendszergazdai fiókok.
 Győződjön meg arról, hogy a vészhelyzeti hozzáférési fiókokhoz tartozó hitelesítő adatok (például jelszó, tanúsítvány vagy intelligens kártya) biztonságosak és ismertek, csak azokra a személyekre, akik jogosultak arra, hogy csak vészhelyzetben használják őket.
 
-- [Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben](../../active-directory/users-groups-roles/directory-emergency-access.md)
+- [Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben](../../active-directory/roles/security-emergency-access.md)
 
 **Felelősség**: ügyfél
 

@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "89565854"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Arculat hozzáadása a szervezet Azure Active Directory bejelentkezési lapjához
@@ -113,7 +113,7 @@ Az egyéni védjegyezés létrehozása után visszaléphet, és módosíthatja a
 
 3. A **vállalati védjegyezés konfigurálása** lapon a jelen cikk az [Azure ad bejelentkezési oldalának testreszabása](#customize-your-azure-ad-sign-in-page) lapján található leírások alapján adja hozzá, távolítsa el vagy módosítsa a szükséges információkat.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
    A bejelentkezési oldal arculatán alkalmazott módosítások megjelenítése akár egy órát is igénybe vehet.
 
@@ -130,7 +130,7 @@ Az eredeti konfiguráció nyelvét nem módosíthatja az alapértelmezett nyelvr
 
 3. A **vállalati védjegyezés konfigurálása** lapon válassza ki a nyelvet (például francia), majd adja hozzá a lefordított adatokat a jelen cikk [Azure ad bejelentkezési oldalának testreszabása lapján](#customize-your-azure-ad-sign-in-page) található leírások alapján.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
     A **contoso – vállalati védjegyezési** oldal frissítései az új francia konfiguráció megjelenítéséhez.
 

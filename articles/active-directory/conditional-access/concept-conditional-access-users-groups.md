@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145409"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366360"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
 
@@ -30,7 +30,7 @@ A felhasználók ezen listája általában a feltételes hozzáférési szabály
 
 A feltételes hozzáférési szabályzat létrehozásakor a következő beállítások érhetők el.
 
-- Nincsenek
+- Nincs
    - Nincs kijelölt felhasználó
 - Minden felhasználó
    - Minden olyan felhasználó, aki szerepel a címtárban, beleértve a B2B vendégeket is.
@@ -46,13 +46,13 @@ A feltételes hozzáférési szabályzat létrehozásakor a következő beállí
 > Ha a felhasználók vagy csoportok tagjai több mint 2048 csoportnak, a hozzáférésük blokkolva lehet. Ez a korlátozás a közvetlen és a beágyazott csoporttagság is vonatkozik.
 
 > [!WARNING]
-> A feltételes hozzáférési szabályzatok nem támogatják azokat a felhasználókat, akik egy [felügyeleti egységre](../users-groups-roles/roles-admin-units-assign-roles.md) vagy címtár-szerepkörre hatókörrel rendelkező, közvetlenül az adott objektumra (például [Egyéni szerepkörökre](../users-groups-roles/roles-create-custom.md)) kiterjedő címtár-szerepkört rendeltek.
+> A feltételes hozzáférési szabályzatok nem támogatják azokat a felhasználókat, akik egy [felügyeleti egységre](../roles/admin-units-assign-roles.md) vagy címtár-szerepkörre hatókörrel rendelkező, közvetlenül az adott objektumra (például [Egyéni szerepkörökre](../roles/custom-create.md)) kiterjedő címtár-szerepkört rendeltek.
 
 ## <a name="exclude-users"></a>Felhasználók kizárása
 
 Ha a szervezetek egyaránt tartalmaznak és kizárnak egy felhasználót vagy csoportot, amelyet a felhasználó vagy csoport kizár a szabályzatból, a kizárási művelet felülbírál egy belefoglalást a házirendbe. A kizárásokat gyakran használják vészhelyzeti hozzáféréshez vagy bomlási fiókokhoz. További információ a segélyhívó fiókokról és azok fontos okairól a következő cikkekben talál további információt: 
 
-* [Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)
+* [Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben](../roles/security-emergency-access.md)
 * [Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 A feltételes hozzáférési szabályzat létrehozásakor a következő beállítások választhatók ki.

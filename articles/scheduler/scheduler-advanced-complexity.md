@@ -9,12 +9,12 @@ ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a74240e3f116121c0aaddd11c186e6e674ea26a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78898589"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368179"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Speciális ütemezések és ismétlődések létrehozása a feladatokhoz az Azure Schedulerben
 
@@ -54,11 +54,11 @@ Ez a cikk később részletesen ismerteti ezeket a forgatókönyveket.
 
 Ha alapszintű ütemezést szeretne létrehozni az [Azure Scheduler REST API](/rest/api/scheduler), kövesse az alábbi lépéseket:
 
-1. Regisztrálja Azure-előfizetését egy erőforrás-szolgáltatónál a [regisztrálási művelet – erőforrás-kezelő REST API](https://docs.microsoft.com/rest/api/resources/providers)használatával. Az Azure Scheduler szolgáltatás szolgáltatójának neve a **Microsoft. Scheduler**. 
+1. Regisztrálja Azure-előfizetését egy erőforrás-szolgáltatónál a [regisztrálási művelet – erőforrás-kezelő REST API](/rest/api/resources/providers)használatával. Az Azure Scheduler szolgáltatás szolgáltatójának neve a **Microsoft. Scheduler**. 
 
-1. Hozzon létre egy feladattípust a Feladatütemező REST API [Létrehozás vagy frissítés műveletének](https://docs.microsoft.com/rest/api/scheduler/jobcollections) használatával. 
+1. Hozzon létre egy feladattípust a Feladatütemező REST API [Létrehozás vagy frissítés műveletének](/rest/api/scheduler/jobcollections) használatával. 
 
-1. Hozzon létre egy feladatot a [feladatok létrehozása vagy frissítése művelet](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate)használatával. 
+1. Hozzon létre egy feladatot a [feladatok létrehozása vagy frissítése művelet](/rest/api/scheduler/jobs/createorupdate)használatával. 
 
 ## <a name="job-schema-elements"></a>A feladatok sémájának elemei
 
@@ -208,7 +208,7 @@ Ezek az ütemtervek azt feltételezik, hogy az **intervallum** értéke 1\. A p�
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |Minden hónap utolsó péntekjén, 15 percenként fut le. |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |Minden hónap harmadik szerdáján, 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája](scheduler-concepts-terms.md)
 * [Az Azure Scheduler REST API-jának leírása](/rest/api/scheduler)

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6c2255fcba12b19f375e694a0494011aa09b0e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 019501eef0857c9dc7cd7f63a656eccf61608f1b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101862"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367822"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Melyek a Azure Active Directory alapértelmezett felhasználói engedélyei?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusától, a [szerepkörük hozzárendeléseitől](active-directory-users-assign-role-azure-portal.md), valamint az egyes objektumok tulajdonosainak. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait. Az alapértelmezett felhasználói engedélyeket csak az Azure AD felhasználói beállításaiban lehet módosítani.
@@ -48,19 +48,18 @@ A tagok felhasználói számára a következő módokon lehet korlátozni az ala
 Engedély | Magyarázat beállítása
 ---------- | ------------
 A felhasználók regisztrálhatják az alkalmazást | Ha ezt a beállítást állítja be, a nem megakadályozza, hogy a felhasználók alkalmazás-regisztrációt hozzanak létre. Az alkalmazás fejlesztői szerepkörhöz való hozzáadásával lehetősége lesz visszaadni az adott személyeknek.
-Munkahelyi vagy iskolai fióknak a LinkedIn használatával való összekapcsolásának engedélyezése a felhasználók számára | Ha ezt a beállítást választja, a nem akadályozza meg, hogy a felhasználók a saját LinkedIn-fiókjával csatlakozzanak a munkahelyi vagy iskolai fiókjához. További információ: a [LinkedIn-fiókok kapcsolatainak megosztása és beleegyezett](../users-groups-roles/linkedin-user-consent.md).
-Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és a felhasználói rendszergazdák továbbra is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
-Lehetőség Microsoft 365 csoportok létrehozására | Ha ezt a beállítást választja, nem akadályozza meg, hogy a felhasználók Microsoft 365 csoportokat hozzanak létre. Ha ezt a beállítást választja, a kiválasztott felhasználók közül választhat Microsoft 365 csoportok létrehozásához. A globális rendszergazdák és a felhasználói rendszergazdák továbbra is létrehozhatnak Microsoft 365 csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
+Munkahelyi vagy iskolai fióknak a LinkedIn használatával való összekapcsolásának engedélyezése a felhasználók számára | Ha ezt a beállítást választja, a nem akadályozza meg, hogy a felhasználók a saját LinkedIn-fiókjával csatlakozzanak a munkahelyi vagy iskolai fiókjához. További információ: a [LinkedIn-fiókok kapcsolatainak megosztása és beleegyezett](../enterprise-users/linkedin-user-consent.md).
+Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és a felhasználói rendszergazdák továbbra is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../enterprise-users/groups-settings-cmdlets.md).
+Lehetőség Microsoft 365 csoportok létrehozására | Ha ezt a beállítást választja, nem akadályozza meg, hogy a felhasználók Microsoft 365 csoportokat hozzanak létre. Ha ezt a beállítást választja, a kiválasztott felhasználók közül választhat Microsoft 365 csoportok létrehozásához. A globális rendszergazdák és a felhasználói rendszergazdák továbbra is létrehozhatnak Microsoft 365 csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../enterprise-users/groups-settings-cmdlets.md).
 Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ha ezt a beállítást nem teszi lehetővé, a nem rendszergazdák az Azure ad felügyeleti portálon keresztül olvashatják és kezelhetik az Azure AD-erőforrásokat. Igen – korlátozza, hogy az összes nem rendszergazda hozzáférjen az összes Azure AD-adatokhoz a felügyeleti portálon.<p>**Megjegyzés**: Ez a beállítás nem korlátozza az Azure ad-adatokhoz való hozzáférést a PowerShell vagy más ügyfelek (például a Visual Studio) használatával. Ha az Igen értékre van állítva, egy adott nem rendszergazda felhasználó számára az Azure ad felügyeleti portált olyan rendszergazdai szerepkörök hozzárendelésére használhatja, mint például a címtár-olvasók szerepkör.<p>Ez a szerepkör lehetővé teszi az alapszintű címtáradatok olvasását, amelyekhez a felhasználók alapértelmezés szerint rendelkeznek (a vendégek és az egyszerű szolgáltatások nem).
 Egyéb felhasználók olvasásának képessége | Ez a beállítás csak a PowerShellben érhető el. Ha ezt a jelzőt úgy állítja be, hogy $false megakadályozza, hogy minden nem rendszergazda beolvassa a felhasználói adatokat a címtárból. Ez a jelző nem akadályozza meg a felhasználói adatok olvasását más Microsoft-szolgáltatásokban, például az Exchange Online-ban. Ez a beállítás különleges körülményeket jelent, és a jelzőt nem ajánlott $falsere beállítani.
-
 
 ## <a name="restrict-guest-users-default-permissions"></a>A vendég felhasználói alapértelmezett engedélyeinek korlátozása
 
 A vendég felhasználók alapértelmezett engedélyei a következő módokon korlátozhatók:
 
->[!NOTE] 
->A **vendég felhasználói hozzáférés korlátozásai** beállítás lecserélte a vendég **felhasználók engedélyeinek** korlátozása beállítást. A szolgáltatás használatával kapcsolatos útmutatásért lásd: [a vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+>[!NOTE]
+>A vendég felhasználói hozzáférés korlátozásai beállítás lecserélte a vendég **felhasználók engedélyeinek** korlátozása beállítást. A szolgáltatás használatával kapcsolatos útmutatásért lásd: [a vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 
 Engedély | Magyarázat beállítása
 ---------- | ------------
@@ -141,9 +140,9 @@ A felhasználók a következő műveleteket hajthatják végre a tulajdonos csop
 | Microsoft. Directory/csoportok/visszaállítás | Csoportok visszaállítása a Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/beállítások/frissítés | A groups. Settings tulajdonság frissítése Azure Active Directoryban. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni a vendég felhasználói hozzáférési korlátozásokról, tekintse meg a következő témakört: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+* Ha többet szeretne megtudni a vendég felhasználói hozzáférési korlátozásokról, tekintse meg a következő témakört: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 * További információ az Azure AD-rendszergazdai szerepkörök hozzárendeléséről: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * További információk az Azure Active Directory és az Azure-előfizetés kapcsolatáról: [Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directoryhoz?](active-directory-how-subscriptions-associated-directory.md)

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1873e21db1c586453dc9e9fe890268d8797303a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843107"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367006"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Oktatóanyag: incidensek vizsgálata az Azure Sentineltel
 
 > [!IMPORTANT]
 > A vizsgálati gráf jelenleg nyilvános előzetes verzióban érhető el.
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 Ez az oktatóanyag segítséget nyújt az incidensek vizsgálatához az Azure Sentinel használatával. Miután csatlakoztatta az adatforrásokat az Azure Sentinel szolgáltatáshoz, értesítést szeretne kapni, ha valamilyen gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel lehetővé teszi, hogy speciális riasztási szabályokat hozzon létre, amelyek a hozzárendelhető és kivizsgálható incidenseket eredményeznek.
@@ -42,7 +42,7 @@ Egy incidens több riasztást is tartalmazhat. Ez egy adott vizsgálatra vonatko
 ## <a name="prerequisites"></a>Előfeltételek
 - Az incidens kivizsgálása csak akkor lehetséges, ha az entitás-hozzárendelési mezőket használta az elemzési szabály beállításakor. A vizsgálati gráf megköveteli, hogy az eredeti incidens entitásokat tartalmazzon.
 
-- Ha van olyan vendég felhasználója, akinek incidenseket kell hozzárendelnie, a felhasználónak hozzá kell rendelnie az Azure AD-bérlő [címtár-olvasó](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkörét. A normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint van hozzárendelve.
+- Ha van olyan vendég felhasználója, akinek incidenseket kell hozzárendelnie, a felhasználónak hozzá kell rendelnie az Azure AD-bérlő [címtár-olvasó](../active-directory/roles/permissions-reference.md#directory-readers) szerepkörét. A normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint van hozzárendelve.
 
 ## <a name="how-to-investigate-incidents"></a>Incidensek vizsgálata
 

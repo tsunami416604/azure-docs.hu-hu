@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 453821e99f53a90a076ff13f010f2031a055cbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444179"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367720"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Oktatóanyag: Azure AD-felhasználók létrehozása az Azure AD-alkalmazásokkal
 
@@ -65,7 +65,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     További információ: [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) parancs.
 
     > [!IMPORTANT]
-    > Ha Azure AD-identitás van beállítva az Azure SQL logikai kiszolgálóhoz, a címtár- [**olvasók**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) engedélyt meg kell adni az identitásnak. Ezt a lépést a következő szakaszban fogjuk átjárni. Ne hagyja ki ezt a lépést, mert az Azure AD-hitelesítés **nem** fog működni.
+    > Ha Azure AD-identitás van beállítva az Azure SQL logikai kiszolgálóhoz, a címtár- [**olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) engedélyt meg kell adni az identitásnak. Ezt a lépést a következő szakaszban fogjuk átjárni. Ne hagyja ki ezt a lépést, mert az Azure AD-hitelesítés **nem** fog működni.
 
     - Ha a [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) parancsot használta `AssignIdentity` egy új SQL Server-létrehozási paraméterrel a múltban, akkor a [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) parancsot később külön parancsként kell végrehajtania, hogy engedélyezze ezt a tulajdonságot az Azure-hálóban.
 
@@ -287,14 +287,14 @@ Miután létrehozta a szolgáltatásnevet az Azure AD-ben, hozza létre a felhas
     GO
     ```
 
-    A következőhöz hasonló kimenetnek kell megjelennie:
+    Az alábbihoz hasonló kimenetnek kell megjelennie:
 
     ```output
     name    type    type_desc   appId
     myapp   E   EXTERNAL_USER   6d228f48-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Active Directory egyszerű szolgáltatásnév az Azure SQL-sel](authentication-aad-service-principal.md)
 - [Mik azok az Azure-erőforrások felügyelt identitásai?](../../active-directory/managed-identities-azure-resources/overview.md)

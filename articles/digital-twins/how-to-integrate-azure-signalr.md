@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cba67e571370d48a04a4e95198462953acdd4d59
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: dfa8227f319a818efee20f26c1f2bebf72ad7cf9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131547"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367652"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
 
@@ -244,12 +244,6 @@ Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőf
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-Ha törli az Azure Digital Twins-példányt, akkor az alábbi paranccsal törölheti a teljes körű oktatóanyagban létrehozott Azure AD-alkalmazás regisztrációját:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```
 
 Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (*Azure_Digital_Twins_end_to_end_samples.zip* és *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
