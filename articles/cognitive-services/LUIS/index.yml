@@ -12,12 +12,12 @@ metadata:
   title: A Language Understanding (LUIS) dokumentációja
   titleSuffix: Azure Cognitive Services
   description: A Language Understanding (LUIS) szolgáltatás lehetővé teszi az alkalmazás számára, hogy megértse egy személy saját szavakkal megfogalmazott utasításait. A LUIS gépi tanulást használ, lehetővé téve a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek képesek a felhasználók természetes nyelvi bevitelét fogadni és megérteni.
-  ms.openlocfilehash: 6e34c5e39118565e14a40765443583b0b9ed237b
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3bae2e6e0a79dbc0106dc71a9510aa4dc318650c
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89322483"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92364184"
 landingContent:
 - title: A Language Understanding (LUIS) bemutatása
   linkLists:
@@ -137,9 +137,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: Támogatási és súgólehetőségek
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - text: Hibaelhárítás
       url: troubleshooting.md
-    - text: Tegye fel kérdéseit a Stack Overflow-val kapcsolatban
-      url: https://stackoverflow.com/questions/tagged/LUIS
-    - text: Az Influence szolgáltatás és a UserVoice
-      url: https://cognitive.uservoice.com/forums/551524-luis

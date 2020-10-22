@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 5d8bf69d456bca2a88b8aa2031d5ef0ba20f7c30
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 42551443fb5af1bd3f783c33f708b231eea68907
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979120"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364167"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -278,7 +278,7 @@ Ha egy, a [felügyelt identitással](../aks/use-managed-identity.md) és a [Pod 
 
 Az Azure dev Spaces szolgáltatásban futó szolgáltatások a fürt felügyelt identitásával kommunikálnak az Azure dev Spaces háttér-szolgáltatásaival a fürtön kívül. A pod felügyelt identitás telepítésekor a rendszer a fürt csomópontjain konfigurálja a hálózati szabályokat, hogy átirányítsa a felügyelt identitás hitelesítő adatainak összes hívását egy, [a fürtön telepített, csomópont által felügyelt identitás (NMI) daemonset elemet](https://github.com/Azure/aad-pod-identity#node-managed-identity). Ez a NMI Daemonset elemet azonosítja a hívó Pod-t, és gondoskodik arról, hogy a pod megfelelően legyen megjelölve a kért felügyelt identitás eléréséhez. Az Azure dev Spaces nem tudja észlelni, hogy a fürt rendelkezik-e a pod Managed Identity szolgáltatással, és nem tudja végrehajtani a szükséges konfigurációt, hogy az Azure dev Spaces Services hozzáférhessen a fürt felügyelt identitásához. Mivel az Azure dev Spaces szolgáltatás nem lett konfigurálva a fürt felügyelt identitásának elérésére, a NMI Daemonset elemet nem teszi lehetővé, hogy az Azure AD-tokent beszerezzék a felügyelt identitáshoz, és nem tudnak kommunikálni az Azure dev Spaces háttér-szolgáltatásaival.
 
-A probléma megoldásához alkalmazzon egy [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) a *azds-injektor-webhookhoz* , és frissítse a hüvelyeket az Azure dev Spaces által a felügyelt identitás eléréséhez.
+A probléma megoldásához alkalmazzon egy [AzurePodIdentityException](https://azure.github.io/aad-pod-identity/docs/configure/application_exception) a *azds-injektor-webhookhoz* , és frissítse a hüvelyeket az Azure dev Spaces által a felügyelt identitás eléréséhez.
 
 Hozzon létre egy *webhookException. YAML* nevű fájlt, és másolja a következő YAML-definíciót:
 
