@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: c64c40e96c0ff5864e5b9c9d34bad896c0b03d91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55c884375372b3fea2ff3153aa936893cf668903
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441697"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359985"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -26,8 +26,8 @@ ms.locfileid: "89441697"
 > * [MapReduce tevékenység](data-factory-map-reduce.md)
 > * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 > * [Spark-tevékenység](data-factory-spark.md)
-> * [Machine Learning kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning Update-erőforrástevékenység](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység](data-factory-azure-ml-update-resource-activity.md)
 > * [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-tevékenység](data-factory-usql-activity.md)
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)

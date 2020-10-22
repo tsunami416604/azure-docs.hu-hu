@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97e2be64818888040b7e6ac3bc8861da24ebdbbd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82185591"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359951"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Spark-programok meghívása Azure Data Factory folyamatokból
 
@@ -26,8 +26,8 @@ ms.locfileid: "82185591"
 > * [MapReduce tevékenység](data-factory-map-reduce.md)
 > * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 > * [Spark-tevékenység](data-factory-spark.md)
-> * [Batch-végrehajtási tevékenység Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> * [Erőforrás-frissítési tevékenység Machine Learning](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység](data-factory-azure-ml-update-resource-activity.md)
 > * [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
 > * [U-SQL-Data Lake Analytics tevékenység](data-factory-usql-activity.md)
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
@@ -78,7 +78,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 
 1. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    > [!IMPORTANT]
    > Data Factory példányok létrehozásához a [Data Factory közreműködő](../../role-based-access-control/built-in-roles.md#data-factory-contributor) szerepkör tagjának kell lennie az előfizetés/erőforráscsoport szintjén.

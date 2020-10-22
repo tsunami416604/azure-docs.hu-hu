@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd17e446766514fa90f8beaaab104bbbd2f389f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 239e49d287ebf6ad98d1a155219f0d59f6469292
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965029"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366513"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licencelési követelmények Azure Active Directory önkiszolgáló jelszó-visszaállításhoz
 
@@ -44,12 +44,12 @@ További licencelési információkért, beleértve a költségeket, tekintse me
 * [Díjszabás Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Szolgáltatások és képességek Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
-* [Microsoft 365 Nagyvállalati verzió](https://www.microsoft.com/microsoft-365/enterprise)
-* [Microsoft 365 Vállalati verzió](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
+* [Microsoft 365 Vállalati](https://www.microsoft.com/microsoft-365/enterprise)
+* [Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Csoport-vagy felhasználó-alapú licencelés engedélyezése
 
-Az Azure AD támogatja a csoport alapú licencelést. A rendszergazdák tömegesen rendelhetnek hozzá licenceket egy adott felhasználói csoporthoz ahelyett, hogy egyszerre rendelnek hozzájuk egyet. További információ: [a licencekkel kapcsolatos problémák kiosztása, ellenőrzése és megoldása](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Az Azure AD támogatja a csoport alapú licencelést. A rendszergazdák tömegesen rendelhetnek hozzá licenceket egy adott felhasználói csoporthoz ahelyett, hogy egyszerre rendelnek hozzájuk egyet. További információ: [a licencekkel kapcsolatos problémák kiosztása, ellenőrzése és megoldása](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
 Néhány Microsoft-szolgáltatás nem érhető el minden helyen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a **használat helye** tulajdonságot a felhasználónál. A licencek hozzárendelése a Azure Portal **felhasználói**  >  **profil**  >  **beállításai** szakaszában végezhető el. *Ha a csoport licenc-hozzárendelését használja, a megadott használati hely nélküli felhasználók öröklik a címtár helyét.*
 

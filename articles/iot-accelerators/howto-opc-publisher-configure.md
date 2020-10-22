@@ -9,12 +9,12 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b004bb4fbca768d782863f73d83ec5443bc66ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 405fa04a3b6af7f0c87888aa48aba9bdffeaf282
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320609"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366955"
 ---
 # <a name="configure-opc-publisher"></a>Az OPC Publisher konfigurálása
 
@@ -144,7 +144,7 @@ Az OPC-közzétevő a következő IoT Hub közvetlen metódus-hívásokat valós
 - ExitApplication
 - GetInfo
 
-A metódus-kérelem és a válaszok JSON-tartalmának formátuma a [opcpublisher/HubMethodModel. cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs)fájlban van definiálva.
+A metódus-kérelem és a válaszok JSON-tartalmának formátuma a [opcpublisher/HubMethodModel. cs](https://github.com/Azure/iot-edge-opc-publisher/tree/master/opcpublisher)fájlban van definiálva.
 
 Ha ismeretlen metódust hív meg a modulban, az egy olyan karakterlánccal válaszol, amely szerint a metódus nincs implementálva. Ismeretlen metódust hívhat meg a modul pingelésének módjaként.
 

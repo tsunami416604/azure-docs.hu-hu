@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614156"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92358998"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Oktatóanyag: osztályozás, vizsgálat és válaszadás a biztonsági riasztásokra
-A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. A riasztásokat más biztonsági termékekből és szolgáltatásokból is integrálhatja Security Centerba, és létrehozhat egyéni riasztásokat saját mutatók vagy intelligencia-források alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. 
+Security Center folyamatosan elemzi a hibrid Felhőbeli számítási feladatokat a fejlett Analitika és a fenyegetések felderítése révén, hogy figyelmeztessen a Felhőbeli erőforrásaiban esetlegesen rosszindulatú tevékenységekre. A riasztásokat más biztonsági termékekből és szolgáltatásokból is integrálhatja Security Centerba. A riasztások beadását követően gyors beavatkozásra van szükség a lehetséges biztonsági problémák kivizsgálásához és szervizeléséhez. 
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 
@@ -93,8 +93,8 @@ Miután kivizsgálta a riasztást, és megértette a hatókörét, választ kaph
 
     Ezzel eltávolítja a riasztást a fő riasztások listájáról. A riasztások listája lapon található szűrő használatával megtekintheti az összes **elhagyott** állapottal rendelkező riasztást.
 
-1.  Megadhatja a Microsoftnak szóló riasztást:
-    1. A riasztás **hasznosként** vagy **nem hasznosként** való megjelölése
+1.  Javasoljuk, hogy visszajelzést nyújtson a Microsoftnak a riasztásról:
+    1. A riasztás **hasznosként** vagy **nem hasznosként**való megjelölése.
     1. Válasszon ki egy okot, és adjon hozzá egy megjegyzést.
 
         :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Biztonsági riasztások listája lap":::
@@ -112,15 +112,15 @@ Ha nem folytatja a folytatást, vagy le szeretné tiltani valamelyik funkciót:
 1. Válassza ki az adott előfizetést.
 1. A visszalépéshez válassza az **Azure Defender kikapcsolva**lehetőséget.
 1. Az automatikus kiépítés letiltásához nyissa meg az **adatgyűjtés** lapot, és állítsa be az **automatikus kiépítés** **beállítást.**
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 >[!NOTE]
 > Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt olyan Azure-beli virtuális gépekről, amelyek már rendelkeznek ügynökkel. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből az oktatóanyagból megtudhatta, hogyan használhatók a biztonsági riasztásokra reagáló Security Center funkciók. Kapcsolódó anyagok esetében lásd:
 
 - [Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra](defender-for-key-vault-usage.md)
-- [Biztonsági riasztások – útmutató](alerts-reference.md)
+- [Biztonsági riasztások - – referencia-útmutató](alerts-reference.md)
 - [Az Azure Defender bemutatása](azure-defender.md)

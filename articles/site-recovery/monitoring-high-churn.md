@@ -6,12 +6,12 @@ manager: gaggupta
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
-ms.openlocfilehash: 51f45b5c0b8a2729f64eb376e06875719474cbfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeb89a9d18e4550fa1d6162920d60507fd50c208
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89664184"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359866"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>A virtuális gépek adatforgalmi mintáinak figyelése
 
@@ -21,7 +21,7 @@ Ez a cikk áttekintést nyújt a virtuális gépek adatváltozási mintáinak fi
 
 Ha a gép az Azure-ban üzemel, és felügyelt vagy nem felügyelt lemezt használ a tároláshoz, a lemez metrikáinak nyomon követésével könnyedén nyomon követheti a teljesítményt. Ez lehetővé teszi, hogy az alkalmazás használati mintájának megfelelően gondosan figyelje és kiválassza a megfelelő lemezt. Azt is felhasználhatja, hogy riasztásokat, diagnosztikai és automatizálási felépítést hozzon létre. [További információk](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-Ha a gépeket a Azure Site Recovery segítségével védi, a gépeket Azure Monitor naplók és Log Analytics használatával figyelheti. [További információk](https://docs.microsoft.com/azure/site-recovery/monitor-log-analytics).
+Ha a gépeket a Azure Site Recovery segítségével védi, a gépeket Azure Monitor naplók és Log Analytics használatával figyelheti. [További információk](./monitor-log-analytics.md).
 
 Vannak olyan operációs rendszerre vonatkozó eszközök is, amelyeket használhat.
 
@@ -62,7 +62,7 @@ A Teljesítményfigyelő különböző tevékenységeket **figyel** a számító
 
     ![Teljesítményfigyelő 3. lépés](./media/monitoring-high-churn/perfmon-step3.png)
 
-További tudnivalók a Teljesítményfigyelőről [itt](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data)talál további információt.
+További tudnivalók a Teljesítményfigyelőről [itt](/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data)talál további információt.
 
 ## <a name="for-linux-machines"></a>Linuxos gépek esetén
 
