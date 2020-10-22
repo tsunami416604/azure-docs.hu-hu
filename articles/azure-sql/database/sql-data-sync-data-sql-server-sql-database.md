@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: d888266ae13b500abc5b03fa6a699c9f34b782a6
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: bc0286dc509acd4afba7f1660b65e49b25378496
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173571"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371751"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -81,7 +81,7 @@ Az adatszinkronizálás nem az előnyben részesített megoldás a következő e
 | | Adatszinkronizálás | Tranzakciós replikáció |
 |---|---|---|
 | **Előnyök** | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után <br/>– Az Azure SQL felügyelt példányának támogatása |
-| **Hátrányok** | – 5 perc vagy több késés<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
+| **Hátrányok** | – 5 perces minimális gyakoriság a szinkronizálások között<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
 
 ## <a name="get-started"></a>Bevezetés 
 
@@ -135,9 +135,9 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 - Az elsődleges kulcs nem rendelkezhet a következő adattípusokkal: sql_variant, Binary, varbinary, képet, XML.
 - Legyen óvatos, ha a következő adattípusokat használja elsődleges kulcsként, mert a támogatott pontosság csak a második: Time, datetime, datetime2, DateTimeOffset.
 - Az objektumok (adatbázisok, táblák és oszlopok) nevei nem tartalmazhatják a nyomtatható karaktereket (.), a bal oldali szögletes zárójelet ([) vagy a jobb oldali szögletes zárójelet (]).
+- A tábla neve nem tartalmazhat nyomtatható karaktereket:! " # $ % ' ( ) * + -
 - Azure Active Directory hitelesítés nem támogatott.
 - Ha vannak olyan táblák, amelyeknek ugyanaz a neve, de a különböző sémák (például dbo. Customers és Sales. Customers), csak az egyik tábla lehet a szinkronizálásban.
-- A táblanév nem rendelkezhet olyan karakterekkel, amelyek kisebb vagy egyenlő értékű ASCII-értékkel rendelkeznek.
 - User-Defined adattípusú oszlopok nem támogatottak
 - A kiszolgálók különböző előfizetések közötti áthelyezése nem támogatott. 
 
@@ -166,7 +166,7 @@ Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rends
 | Szinkronizálási csoport táblái                                          | 500                    | Több szinkronizálási csoport létrehozása |
 | Egy szinkronizálási csoportba tartozó tábla oszlopai                              | 1000                   |                             |
 | Tábla adatsorainak mérete                                        | 24 MB                  |                             |
-| Minimális szinkronizálási időköz                                           | 5 perc              |                             |
+| Szinkronizálás minimális gyakorisági időköze                                 | 5 perc              |                             |
 
 > [!NOTE]
 > Egyetlen szinkronizálási csoportban akár 30 végpont is lehet, ha csak egy szinkronizálási csoport van. Ha több szinkronizálási csoport is van, akkor az összes szinkronizálási csoporton belüli végpontok száma nem haladhatja meg a 30-at. Ha egy adatbázis több szinkronizálási csoporthoz tartozik, a rendszer több végpontnak számít, nem egy.

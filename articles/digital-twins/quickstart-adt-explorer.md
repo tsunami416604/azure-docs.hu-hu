@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 09d5ece0afdd5abe3da5ebdeb6a7ae290e1ccf3d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331566"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372318"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
@@ -320,9 +320,15 @@ Ha azt tervezi, hogy folytatja az Azure digitális Twins-oktatóanyagokat, az eb
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
+Ezután törölje az ügyfélalkalmazás számára a következő paranccsal létrehozott Azure Active Directory-alkalmazás regisztrációját:
+
+```azurecli
+az ad app delete --id <your-application-ID>
+```
+
 Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**Azure_Digital_Twins__ADT__explorer**_ és _**Azure_Digital_Twins_end_to_end_samples**_). Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

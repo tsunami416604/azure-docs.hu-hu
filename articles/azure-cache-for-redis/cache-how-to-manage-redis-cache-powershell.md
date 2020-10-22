@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 327505dfbaf5f6f35b065f4f3941053c5114aa33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 478b53b78fb72a01ad028c7fb6b7683b34cbca14
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019215"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370797"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Az Azure cache kezelése a Redis Azure PowerShell
 > [!div class="op_single_selector"]
@@ -141,12 +141,12 @@ A következő táblázat a gyakran használt paraméterek tulajdonságait és le
 
 | Paraméter | Leírás | Alapértelmezett |
 | --- | --- | --- |
-| Name (Név) |A gyorsítótár neve | |
+| Név |A gyorsítótár neve | |
 | Hely |A gyorsítótár helye | |
 | ResourceGroupName |Az erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat | |
 | Méret |A gyorsítótár mérete Érvényes értékek: P1, P2, P3, P4, c0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1 GB |
 | ShardCount |Azon szegmensek száma, amelyeket létre kell hozni a prémium szintű gyorsítótár létrehozásakor, ha a fürtözés engedélyezve van. Az érvényes értékek: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
-| SKU |A gyorsítótár SKU-jának meghatározása. Az érvényes értékek a következők: alapszintű, standard, prémium |Standard |
+| Termékváltozat |A gyorsítótár SKU-jának meghatározása. Az érvényes értékek a következők: alapszintű, standard, prémium |Standard |
 | RedisConfiguration |Meghatározza a Redis konfigurációs beállításait. Az egyes beállításokkal kapcsolatos részletekért tekintse meg a következő [RedisConfiguration-tulajdonságok](#redisconfiguration-properties) táblázatot. | |
 | EnableNonSslPort |Azt jelzi, hogy engedélyezve van-e a nem SSL-port. |Hamis |
 | MaxMemoryPolicy |Ez a paraméter elavult – használja helyette a RedisConfiguration. | |
@@ -853,5 +853,5 @@ Ha többet szeretne megtudni a Windows PowerShell és az Azure használatával k
 * [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/templates/deploy-portal.md): megtudhatja, hogyan hozhat létre és kezelhet erőforráscsoportokat a Azure Portalban.
 * [Azure blog](https://azure.microsoft.com/blog/): Ismerkedjen meg az Azure új szolgáltatásaival.
 * [Windows PowerShell blog](https://devblogs.microsoft.com/powershell/): Ismerkedjen meg a Windows PowerShell új szolgáltatásaival.
-* ["Hey, Scripting Guy!" Blog](https://blogs.technet.microsoft.com/heyscriptingguy/author/the-scripting-guys/): valós tippeket és trükköket szerezhet be a Windows PowerShell Közösségből.
+* ["Hey, Scripting Guy!" Blog](https://devblogs.microsoft.com/scripting/tag/hey-scripting-guy/): valós tippeket és trükköket szerezhet be a Windows PowerShell Közösségből.
 

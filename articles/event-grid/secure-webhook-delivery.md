@@ -3,12 +3,12 @@ title: Biztonságos webhook-kézbesítés az Azure AD-vel Azure Event Grid
 description: Ismerteti, hogyan lehet eseményeket kézbesíteni a Azure Active Directory által védett HTTPS-végpontoknak Azure Event Grid használatával
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.openlocfilehash: 0320e78e6b436f6ba1c0a6ca1bfec81eb974e106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd898fadf718509504d44df36572ac75050b02d6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812199"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371664"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Események közzététele az Azure Active Directory által védett végpontokon
 
@@ -26,7 +26,7 @@ Először hozzon létre egy Azure AD-alkalmazást a védett végpont számára. 
 Ez a szakasz bemutatja, hogyan engedélyezheti Event Grid az Azure AD-alkalmazás használatát. 
 
 > [!NOTE]
-> A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) tagjának kell lennie.
+> A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](../active-directory/roles/permissions-reference.md#available-roles) tagjának kell lennie.
 
 ### <a name="connect-to-your-azure-tenant"></a>Kapcsolódás az Azure-bérlőhöz
 Először kapcsolódjon az Azure-bérlőhöz a `Connect-AzureAD` parancs használatával. 

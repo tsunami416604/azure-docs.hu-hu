@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760869"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371732"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 
@@ -20,7 +20,7 @@ Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.mi
 
 Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
 
-|Kulcs típusa|További források|
+|Kulcs típusa|Erőforrások|
 |---|---|
 |[Elsődleges kulcsok](#primary-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
@@ -29,20 +29,7 @@ Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez �
 
 ## <a name="primary-keys"></a>Elsődleges kulcsok
 
-Az elsődleges kulcsok hozzáférést biztosítanak az adatbázis-fiókhoz tartozó összes felügyeleti erőforráshoz. Elsődleges kulcsok:
-
-- Hozzáférés biztosítása a fiókokhoz, adatbázisokhoz, felhasználókhoz és engedélyekhez. 
-- Nem használható a tárolók és a dokumentumok részletes hozzáférésének biztosítására.
-- A fiók létrehozása során jönnek létre.
-- Bármikor újra létrehozhatók.
-
-Minden fiók két elsődleges kulcsot tartalmaz: egy elsődleges és egy másodlagos kulcsot. A kettős kulcsok célja, hogy újragenerálja vagy leállítsa a kulcsokat, és folyamatos hozzáférést biztosítson fiókjához és adataihoz.
-
-A Cosmos DB fiók két elsődleges kulcsa mellett két írásvédett kulcs is van. Ezek a csak olvasási jogosultsággal rendelkező kulcsok csak olvasási műveleteket engedélyeznek a fiókon. A csak olvasási jogosultsággal rendelkező kulcsok nem biztosítanak hozzáférést az olvasási engedélyek erőforrásaihoz.
-
-Az elsődleges, a másodlagos, az írásvédett és az írható-olvasható elsődleges kulcsok lekérhető és újragenerálható a Azure Portal használatával. Útmutatásért lásd: [hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#regenerate-account-key).
-
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása":::
+Az elsődleges kulcsok hozzáférést biztosítanak az adatbázis-fiókhoz tartozó összes felügyeleti erőforráshoz. Minden fiók két elsődleges kulcsot tartalmaz: egy elsődleges és egy másodlagos kulcsot. A kettős kulcsok célja, hogy újragenerálja vagy leállítsa a kulcsokat, és folyamatos hozzáférést biztosítson fiókjához és adataihoz. Az elsődleges kulcsokkal kapcsolatos további tudnivalókért tekintse meg az [adatbázis biztonsági](database-security.md#primary-keys) cikkét.
 
 ### <a name="key-rotation"></a>Kulcs elforgatása<a id="key-rotation"></a>
 
@@ -54,7 +41,7 @@ Az elsődleges kulcs elforgatásának folyamata egyszerű.
 4. Ellenőrzi, hogy az új elsődleges kulcs az összes erőforráson működik-e. A kulcsfontosságú rotációs folyamat a Cosmos DB fiók méretétől függően akár egy perctől akár órákig is elvégezhető.
 5. Cserélje le a másodlagos kulcsot az új elsődleges kulcsra.
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Elsődleges kulcs rotációja a Azure Portal – a NoSQL-adatbázis biztonságának bemutatása" border="false":::
 
 ### <a name="code-sample-to-use-a-primary-key"></a>Mintakód elsődleges kulcs használatára
 
@@ -102,9 +89,9 @@ Cosmos DB erőforrás-tokenek olyan biztonságos alternatívát biztosítanak, a
 7. A telefonos alkalmazás továbbra is használhatja az erőforrás-jogkivonatot, hogy közvetlenül hozzáférhessen Cosmos DB erőforrásokhoz az erőforrás-jogkivonat által meghatározott engedélyekkel és az erőforrás-jogkivonat által engedélyezett intervallummal.
 8. Az erőforrás-jogkivonat lejárata után a további kérések 401 jogosulatlan kivételt kapnak.  Ezen a ponton a telefonos alkalmazás újból létrehozza az identitást, és új erőforrás-tokent kér.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Elsődleges kulcs rotációja a Azure Portal – a NoSQL-adatbázis biztonságának bemutatása" border="false":::
 
-Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB ügyféloldali kódtárak kezelik; Ha azonban a REST-t használja, a kérelem/hitelesítés fejléceket kell létrehoznia. A REST-alapú hitelesítési fejlécek létrehozásával kapcsolatos további információkért lásd: [Access Control Cosmos db erőforrásokon](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy a [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) -hoz vagy a [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)-hoz tartozó forráskódhoz.
+Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB ügyféloldali kódtárak kezelik. Ha azonban a REST-t használja, a kérelem/hitelesítés fejléceket kell létrehoznia. A REST-alapú hitelesítési fejlécek létrehozásával kapcsolatos további információkért lásd: [Access Control Cosmos db erőforrásokon](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy a [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) -hoz vagy a [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)-hoz tartozó forráskódhoz.
 
 Az erőforrás-tokenek létrehozásához vagy közvetítéséhez használt középső rétegű szolgáltatásra például a [ResourceTokenBroker alkalmazásban](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)talál példát.
 
