@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070384"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363657"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -73,7 +73,7 @@ A HR-alapú IT-kiépítés ezen funkciója a következő jelentős üzleti előn
 - **Címek megfelelősége és szabályozása:** Az Azure AD támogatja a natív naplókat a forrás-és a célként megadott alkalmazások által végrehajtott felhasználói kiépítési kérelmek esetében. A naplózás segítségével nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 - **Kezelés díja:** Az automatikus kiépítés csökkenti a költségeket, és elkerüli a manuális kiépítés során felmerülő eredménytelenség és emberi hibák elkerülését. Ez csökkenti a régi és elavult platformok használatával az idő múlásával létrehozott, egyéni fejlesztésű felhasználói megoldások igényét.
 
-### <a name="licensing"></a>Licencelés
+### <a name="licensing"></a>Licencek
 
 Ha a Cloud HR-alkalmazást az Azure AD-beli felhasználók kiépítéséhez szeretné konfigurálni, érvényes [prémium szintű Azure ad licencre](https://azure.microsoft.com/pricing/details/active-directory/) és licencre van szükség a Cloud HR-alkalmazáshoz, például a munkanapokhoz vagy a SuccessFactors.
 
@@ -81,8 +81,8 @@ Emellett érvényes prémium szintű Azure AD P1 vagy magasabb szintű előfizet
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Azure AD [Hybrid Identity Administrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  az Azure ad Connect létesítési ügynök konfigurálásához.
-- Az Azure AD- [alkalmazás rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) szerepköre a kiépítési alkalmazás konfigurálásához a Azure Portal
+- Azure AD [Hybrid Identity Administrator](../roles/permissions-reference.md#hybrid-identity-administrator)  az Azure ad Connect létesítési ügynök konfigurálásához.
+- Az Azure AD- [alkalmazás rendszergazdai](../roles/permissions-reference.md#application-administrator) szerepköre a kiépítési alkalmazás konfigurálásához a Azure Portal
 - A Cloud HR-alkalmazás tesztelési és éles példánya.
 - Rendszergazdai jogosultságok a Cloud HR alkalmazásban egy rendszerintegrációs felhasználó létrehozásához, valamint a tesztelési célú alkalmazottak ellenőrzésének megváltoztatásához.
 - A Active Directory való felhasználói üzembe helyezéshez egy Windows Server 2012 vagy újabb rendszert futtató kiszolgáló szükséges a .NET 4.7.1 + Runtime futtatásához a Azure AD Connect kiépítési ügynök üzemeltetéséhez.
@@ -110,7 +110,7 @@ Az alábbi példa bemutatja a teljes körű felhasználó kiépítési megoldás
 
 #### <a name="description-of-workflow"></a>A munkafolyamat leírása
 
-A következő fő lépések szerepelnek a diagramon:  
+A következő fő lépések szerepelnek a diagramon:  
 
 1. **HR-csapat** végzi el a tranzakciókat a Cloud HR-alkalmazás bérlője számára.
 2. Az **Azure ad-kiépítési szolgáltatás** futtatja az ütemezett ciklusokat a Cloud HR-alkalmazás bérlőn, és azonosítja azokat a módosításokat, amelyeket a Active Directory való szinkronizáláshoz fel kell dolgozni.

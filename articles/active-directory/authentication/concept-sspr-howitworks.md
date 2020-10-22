@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a4e540ff6a81be8afa769d93b0649e0fce49882
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965097"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363674"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
 
@@ -135,7 +135,7 @@ Ha mobil alkalmazást használ a jelszó-visszaállítási módszerként, péld�
 
 | Az alaphelyzetbe állításhoz szükséges módszerek száma | Eggyel | Kettővel |
 | :---: | :---: | :---: |
-| Elérhető a Mobile App szolgáltatásai | Code | Kód vagy értesítés |
+| Elérhető a Mobile App szolgáltatásai | Kód | Kód vagy értesítés |
 
 A felhasználók nem regisztrálhatják a mobileszköz regisztrációját az önkiszolgáló jelszó-visszaállításhoz való regisztráció során [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . A felhasználók a következő címen regisztrálhatják a mobil alkalmazást: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) vagy a kombinált biztonsági adatok regisztrációjában [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
@@ -227,7 +227,7 @@ A SSPR elvégzi a rendszergazda által kezdeményezett jelszó-visszaállítás 
 A jelszó alaphelyzetbe állítása és módosítása teljes mértékben támogatott az összes vállalatközi (B2B) konfigurációban. A B2B felhasználói jelszó alaphelyzetbe állítása a következő három esetben támogatott:
 
 * **Meglévő Azure ad-Bérlővel rendelkező partnerszervezet felhasználói**: Ha az a szervezet, amelyen a partner, rendelkezik egy meglévő Azure ad-Bérlővel, a jelszó-visszaállítási házirendeket a bérlőn is be kell tartani. A jelszó-visszaállítás működéséhez a partner szervezetnek csak meg kell győződnie arról, hogy az Azure AD SSPR engedélyezve van. Microsoft 365 ügyfelek esetében nem számítunk fel további díjat.
-* Önkiszolgáló regisztráción **keresztül regisztrációt végző felhasználók** : Ha a szervezet, amellyel az önkiszolgáló [bejelentkezési](../users-groups-roles/directory-self-service-signup.md) funkciót használta a bérlőhöz való belépéshez, a jelszó alaphelyzetbe állításával visszaállíthatja a regisztrált e-mail-címet.
+* Önkiszolgáló regisztráción **keresztül regisztrációt végző felhasználók** : Ha a szervezet, amellyel az önkiszolgáló [bejelentkezési](../enterprise-users/directory-self-service-signup.md) funkciót használta a bérlőhöz való belépéshez, a jelszó alaphelyzetbe állításával visszaállíthatja a regisztrált e-mail-címet.
 * **B2B-felhasználók**: az új [Azure ad B2B-funkciók](../external-identities/what-is-b2b.md) használatával létrehozott összes új B2B-felhasználó is visszaállíthatja a jelszavukat a Meghívási folyamat során regisztrált e-mail-címre.
 
 A forgatókönyv teszteléséhez lépjen a https://passwordreset.microsoftonline.com következő partner-felhasználók egyikével. Ha egy másodlagos e-mail-vagy hitelesítési e-mail-cím van megadva, a jelszó-visszaállítás a várt módon működik.

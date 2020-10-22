@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107810"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364116"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -135,7 +135,7 @@ A [Azure ad Privileged Identity Management (PIM)](../../active-directory/privile
 
 Engedélyezze az Azure AD PIM-t, majd tekintse meg a rendszergazdai szerepkörökhöz rendelt felhasználókat, és távolítsa el a szerepkörök szükségtelen fiókjait. A többi emelt szintű jogosultsággal rendelkező felhasználó számára az állandóról jogosultra helyezheti át őket. Végül hozza létre a megfelelő szabályzatokat annak biztosításához, hogy mikor van szükségük ahhoz, hogy hozzáférést kapjanak ezekhez a Kiemelt szerepkörökhöz, biztonságosan, a szükséges módosítás-ellenőrzéssel.
 
-A rendszerjogosultságú fiók üzembe helyezésének részeként az ajánlott eljárás [szerint hozzon létre legalább két vészhelyzeti fiókot](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) annak érdekében, hogy továbbra is hozzáférhessen az Azure ad-hez, ha zárolja magát.
+A rendszerjogosultságú fiók üzembe helyezésének részeként az ajánlott eljárás [szerint hozzon létre legalább két vészhelyzeti fiókot](../../active-directory/roles/security-planning.md) annak érdekében, hogy továbbra is hozzáférhessen az Azure ad-hez, ha zárolja magát.
 
 ## <a name="step-3---automate-threat-response"></a>3. lépés – a veszélyforrások megválaszolásának automatizálása
 
@@ -193,13 +193,13 @@ Az Azure AD önkiszolgáló [jelszó-visszaállítási szolgáltatása (SSPR)](.
 
 ### <a name="implement-self-service-group-and-application-access"></a>Önkiszolgáló csoport és alkalmazás-hozzáférés megvalósítása
 
-Az Azure AD lehetővé teszi a nem rendszergazdák számára az erőforrásokhoz való hozzáférés kezelését, a biztonsági csoportok, Microsoft 365 csoportok, az alkalmazás szerepkörei és a hozzáférési csomagok katalógusának használatát.  Az [önkiszolgáló csoportok felügyelete](../../active-directory/users-groups-roles/groups-self-service-management.md) lehetővé teszi, hogy a csoport tulajdonosai a saját Csoportjaikat kezelhesse, anélkül, hogy rendszergazdai szerepkört kellene hozzárendelni. A felhasználók Microsoft 365 csoportokat is létrehozhatnak és kezelhetnek anélkül, hogy a rendszergazdákra támaszkodnia kellene a kéréseik kezelésére, és a nem használt csoportok automatikusan lejárnak.  Az [Azure ad-jogosultságok kezelése](../../active-directory/governance/entitlement-management-overview.md) lehetővé teszi a delegálást és a láthatóságot, átfogó hozzáférési kérelmek munkafolyamataival és automatikus lejáratával.  A nem rendszergazdai jogosultsággal rendelkező felhasználók a saját hozzáférési csomagjaikat a saját csoportjaihoz, csoportjaihoz, alkalmazásaihoz és a saját SharePoint Online-webhelyekhez is konfigurálhatják, a hozzáférés jóváhagyásához szükséges egyéni szabályzatokkal, többek között az alkalmazottak felettesei és az üzleti partneri szponzorok konfigurálása jóváhagyóként.
+Az Azure AD lehetővé teszi a nem rendszergazdák számára az erőforrásokhoz való hozzáférés kezelését, a biztonsági csoportok, Microsoft 365 csoportok, az alkalmazás szerepkörei és a hozzáférési csomagok katalógusának használatát.  Az [önkiszolgáló csoportok felügyelete](../../active-directory/enterprise-users/groups-self-service-management.md) lehetővé teszi, hogy a csoport tulajdonosai a saját Csoportjaikat kezelhesse, anélkül, hogy rendszergazdai szerepkört kellene hozzárendelni. A felhasználók Microsoft 365 csoportokat is létrehozhatnak és kezelhetnek anélkül, hogy a rendszergazdákra támaszkodnia kellene a kéréseik kezelésére, és a nem használt csoportok automatikusan lejárnak.  Az [Azure ad-jogosultságok kezelése](../../active-directory/governance/entitlement-management-overview.md) lehetővé teszi a delegálást és a láthatóságot, átfogó hozzáférési kérelmek munkafolyamataival és automatikus lejáratával.  A nem rendszergazdai jogosultsággal rendelkező felhasználók a saját hozzáférési csomagjaikat a saját csoportjaihoz, csoportjaihoz, alkalmazásaihoz és a saját SharePoint Online-webhelyekhez is konfigurálhatják, a hozzáférés jóváhagyásához szükséges egyéni szabályzatokkal, többek között az alkalmazottak felettesei és az üzleti partneri szponzorok konfigurálása jóváhagyóként.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD hozzáférési felülvizsgálatok megvalósítása
 
 Az [Azure ad hozzáférési felülvizsgálatok](../../active-directory/governance/access-reviews-overview.md)segítségével kezelheti a hozzáférési csomagokat és a csoporttagságok, a vállalati alkalmazásokhoz való hozzáférést és a Kiemelt szerepkör-hozzárendeléseket, így biztosítva a biztonsági szabványok fenntartását.  A felhasználók saját maguk, az erőforrás-tulajdonosok és az egyéb felülvizsgálók rendszeres felügyelete biztosítja, hogy a felhasználók ne tartsanak meg hosszabb ideig a hozzáférést, amikor már nincs rá szükségük.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az öt lépésből álló ellenőrzőlista segítséget nyújt a biztonságosabb és biztonságos identitás-infrastruktúra gyors megvalósításához:
 
@@ -211,7 +211,7 @@ A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az ö
 
 Nagyra értékeljük, hogy milyen komolyan vesszük a személyazonossági biztonságot, és reméljük, hogy ez a dokumentum hasznos útiterv a szervezete számára biztonságosabb testhelyzethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha segítségre van szüksége a javaslatok megtervezéséhez és üzembe helyezéséhez, tekintse meg az [Azure ad projekt üzembe helyezési terveit](https://aka.ms/deploymentplans) .
 

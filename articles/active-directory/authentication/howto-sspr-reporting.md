@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92b9d3c51a9240b7dfc0f8e815735f0e1ecd4dd3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c6aa31d0b8c68f38d2b4fc41a6bbaaeab8a3ffac
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968310"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363606"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Az Azure AD-jelszókezelés jelentéskészítési lehetőségei
 
@@ -27,7 +27,7 @@ Az üzembe helyezést követően számos szervezet szeretné tudni, hogy az önk
 A következő kérdéseket választhatja ki a [Azure Portalban](https://portal.azure.com/)található jelentések:
 
 > [!NOTE]
-> [Globális rendszergazdának](../users-groups-roles/directory-assign-admin-roles.md)kell lennie, és az adatoknak a szervezet nevében való összegyűjtéséhez be kell jelentkeznie. A bekapcsolásához legalább egyszer fel kell keresnie a **jelentéskészítés** lapot vagy a naplókat. Addig nem történik meg az adatok gyűjtése a szervezet számára.
+> [Globális rendszergazdának](../roles/permissions-reference.md)kell lennie, és az adatoknak a szervezet nevében való összegyűjtéséhez be kell jelentkeznie. A bekapcsolásához legalább egyszer fel kell keresnie a **jelentéskészítés** lapot vagy a naplókat. Addig nem történik meg az adatok gyűjtése a szervezet számára.
 >
 
 * Hány felhasználó regisztrált a jelszó-visszaállításra?

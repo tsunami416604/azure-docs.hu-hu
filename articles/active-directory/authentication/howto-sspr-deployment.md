@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657214"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363725"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás központi telepítésének megtervezése
 
@@ -73,7 +73,7 @@ További információ a díjszabásról: [Azure Active Directory díjszabása](h
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| További források| Hivatkozás és leírás |
+| Erőforrások| Hivatkozás és leírás |
 | - | - |
 | Videók| [Hatékonyabb informatikai skálázhatóság a felhasználók számára](https://youtu.be/g9RpRnylxS8) 
 | |[Mit jelent az önkiszolgáló jelszóátállítás?](https://youtu.be/hc97Yx5PJiM)|
@@ -313,7 +313,7 @@ Az Azure AD további információkat biztosít a SSPR teljesítményéről a nap
 A SSPR teljesítményének méréséhez a Azure Portalon előre elkészített jelentéseket is használhat. Ha megfelelő licenccel rendelkezik, egyéni lekérdezéseket is létrehozhat. További információ: [jelentéskészítési beállítások az Azure ad jelszavas kezeléséhez](./howto-sspr-reporting.md)
 
 > [!NOTE]
->  [Globális rendszergazdának](../users-groups-roles/directory-assign-admin-roles.md)kell lennie, és be kell jelentkeznie a szervezete számára az adatok gyűjtéséhez. A bekapcsolásához legalább egyszer fel kell keresnie a jelentéskészítés lapot vagy a naplókat az Azure Portalon. Addig nem történik meg az adatok gyűjtése a szervezet számára.
+>  [Globális rendszergazdának](../roles/permissions-reference.md)kell lennie, és be kell jelentkeznie a szervezete számára az adatok gyűjtéséhez. A bekapcsolásához legalább egyszer fel kell keresnie a jelentéskészítés lapot vagy a naplókat az Azure Portalon. Addig nem történik meg az adatok gyűjtése a szervezet számára.
 
 A regisztrációs és a jelszó-visszaállítási naplók 30 napig érhetők el. Ha a vállalaton belüli biztonsági naplózás nagyobb adatmegőrzést igényel, a naplókat olyan SIEM-eszközbe kell exportálni és felvenni, mint például az [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), a splunk vagy a ArcSight.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070367"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363691"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -42,7 +42,7 @@ Az automatikus felhasználó-kiépítés engedélyezésének fő előnyei a köv
 
 * **Csökkentse a költségeket**. Az automatikus felhasználó-kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonyságot és az emberi hibát a manuális kiépítés során. Ez csökkenti az egyéni fejlesztésű felhasználói megoldások, parancsfájlok és naplók igényét.
 
-### <a name="licensing"></a>Licencelés
+### <a name="licensing"></a>Licencek
 
 Az Azure AD bármely alkalmazás önkiszolgáló integrálását teszi lehetővé az alkalmazás-katalógus menüjében található sablonok használatával. A licencekre vonatkozó követelmények teljes listáját az [Azure ad licencelési lapján](https://azure.microsoft.com/pricing/details/active-directory/)tekintheti meg.
 
@@ -66,7 +66,7 @@ Ez a cikk a következő kifejezéseket használja:
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| További források| Hivatkozás és leírás |
+| Erőforrások| Hivatkozás és leírás |
 | - | - |
 | Igény szerinti webináriumok| [Vállalati alkalmazások kezelése az Azure AD-vel](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Ismerje meg, hogyan segítheti az Azure AD az egyszeri bejelentkezést a vállalati SaaS-alkalmazásokhoz és a hozzáférés szabályozására vonatkozó ajánlott eljárásokhoz. |
 | Videók| [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) <br> [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) <br> [A Salesforce integrálása az Azure AD-vel: a felhasználók üzembe helyezésének automatizálása](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
@@ -139,13 +139,13 @@ A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus
 
 Javasoljuk, hogy az automatikus felhasználó-kiépítés kezdeti konfigurációjának tesztelési környezetben legyen a felhasználók kis részhalmaza, mielőtt az összes éles üzemben lévő felhasználónak méreteznie kellene. Lásd: [ajánlott eljárások](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) a próbaüzem futtatásához.
 
-#### <a name="best-practices-for-a-pilot"></a>Ajánlott eljárások a pilóták számára  
+#### <a name="best-practices-for-a-pilot"></a>Ajánlott eljárások a pilóták számára  
 
 Egy próba lehetővé teszi egy kis csoport tesztelését, mielőtt mindenki számára elérhetővé tenné a funkciót. Győződjön meg arról, hogy a tesztelés részeként a szervezeten belül minden használati esetet alaposan teszteltek.
 
 Az első hullámban célozza meg, a használhatóságot és az egyéb megfelelő felhasználókat, akik kipróbálhatják és elküldhetik a visszajelzést. Ezzel a visszajelzéssel tovább fejlesztheti a felhasználók számára elküldött kommunikációt és útmutatást, és betekintést nyerhet a támogatási munkatársak által látható problémák típusaiba.
 
-Bővítse a bevezetést a felhasználók nagyobb csoportjaira a megcélzott csoport (ok) hatókörének növelésével. Ez a [dinamikus csoporttagság](../users-groups-roles/groups-dynamic-membership.md)használatával végezhető el, vagy manuálisan is hozzáadhatja a felhasználókat a megcélozott csoport (ok) hoz.
+Bővítse a bevezetést a felhasználók nagyobb csoportjaira a megcélzott csoport (ok) hatókörének növelésével. Ez a [dinamikus csoporttagság](../enterprise-users/groups-dynamic-membership.md)használatával végezhető el, vagy manuálisan is hozzáadhatja a felhasználókat a megcélozott csoport (ok) hoz.
 
 ## <a name="plan-application-connections-and-administration"></a>Az alkalmazások kapcsolatainak és felügyeletének megtervezése
 
@@ -316,7 +316,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Erőforrások
 
 * [Termékkel kapcsolatos visszajelzés küldése](https://feedback.azure.com/forums/169401-azure-active-directory)
 

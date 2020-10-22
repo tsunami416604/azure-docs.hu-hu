@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4023f8584e7b901a19906235d98982abbbfbaaf8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79499745"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364140"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Gyors útmutató: felhasználók meghívása Video Indexer
 
@@ -27,10 +27,9 @@ A munkatársakkal való együttműködéshez meghívhatja őket a Video Indexer-
 ## <a name="invite-new-users"></a>Új felhasználók meghívása
 
 1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyre. Győződjön meg arról, hogy rendszergazdai fiókkal csatlakozik.
-1. A felső menüben kattintson a **mások meghívása** gombra:
+1. Ha Ön a rendszergazda, megjelenik a **fiók megosztása** gomb a jobb felső sarokban. Kattintson a gombra, és meghívhatja a felhasználókat. 
 
-   ![Új felhasználók meghívása](./media/invite-users/invite-users.png)
-
+   ![Új felhasználók meghívása](./media/invite-users/share-account.png)
 1. Adja meg azoknak a személyeknek az e-mail címeit, akiket hozzá szeretne adni a Video Indexer fiókjához:
 
     ![Felhasználók meghívása erre a fiókra](./media/invite-users/invite-to-account.png)
@@ -51,7 +50,7 @@ Ha el szeretné távolítani a fiókjához hozzáférő felhasználókat, kattin
 
 A felhasználók nem kapnak értesítést az eltávolítás után. Az eltávolítást követően a felhasználók nem kapnak engedélyt a bejelentkezésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már használhatja a [video Indexer webhelyet](video-indexer-view-edit.md) , vagy [video Indexer fejlesztői portálon](video-indexer-use-apis.md) megtekintheti a videó információit.
 

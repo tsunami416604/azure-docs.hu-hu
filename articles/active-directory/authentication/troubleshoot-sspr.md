@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef46cf0947f1ea31c74a6d189b5bdf00fea44fc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9e661bd24acbb15ced9f5bb0a0fba7eec51eae06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963822"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363538"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Az önkiszolgáló jelszó-visszaállítás hibáinak megoldása Azure Active Directory
 
@@ -32,7 +32,7 @@ Ha problémák merülnek fel a Azure Portal SSPR-beállításainak megtekintés�
 
 Ha nem rendelkezik olyan Azure AD-licenccel, amely a műveletet végző rendszergazdához tartozik, nem jelenik meg a **jelszó-visszaállítási** menü.
 
-Ha a szóban forgó rendszergazdai fiókhoz szeretne licencet rendelni, kövesse a [licencekkel kapcsolatos problémák hozzárendelésének, ellenőrzésének és megoldásának](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)lépéseit.
+Ha a szóban forgó rendszergazdai fiókhoz szeretne licencet rendelni, kövesse a [licencekkel kapcsolatos problémák hozzárendelésének, ellenőrzésének és megoldásának](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)lépéseit.
 
 ### <a name="i-dont-see-a-particular-configuration-option"></a>Nem látok egy adott konfigurációs beállítást.
 
@@ -52,7 +52,7 @@ Ha a Azure Portal SSPR-jelentéskészítési problémái vannak, tekintse át a 
 
 Ez akkor fordulhat elő, ha nem rendelkezik a műveletet végző rendszergazdához rendelt Azure AD-licenccel.
 
-Ha a szóban forgó rendszergazdai fiókhoz szeretne licencet rendelni, kövesse a [licencekkel kapcsolatos problémák hozzárendelésének, ellenőrzésének és megoldásának](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)lépéseit.
+Ha a szóban forgó rendszergazdai fiókhoz szeretne licencet rendelni, kövesse a [licencekkel kapcsolatos problémák hozzárendelésének, ellenőrzésének és megoldásának](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)lépéseit.
 
 ### <a name="user-registrations-show-multiple-times"></a>A felhasználói regisztráció többször is megjelenik.
 
@@ -74,7 +74,7 @@ A Azure Portalban módosítsa az **önkiszolgáló jelszó-visszaállítás enge
 
 Jelenleg csak egy Azure AD-csoport engedélyezhető a SSPR a Azure Portal használatával. A SSPR szélesebb körű üzembe helyezésének részeként beágyazott csoportok is támogatottak. Győződjön meg arról, hogy a kiválasztott csoport (ok) hoz tartozó felhasználók rendelkeznek a megfelelő licencekkel. Tekintse át az előző hibaelhárítási lépést, hogy szükség esetén engedélyezze a SSPR.
 
-Tekintse át a hibaelhárítási lépéseket is, hogy megbizonyosodjon róla, hogy a konfigurációs beállításokat végrehajtó rendszergazda hozzárendelt licenccel rendelkezik. Ha a szóban forgó rendszergazdai fiókhoz szeretne licencet rendelni, kövesse a [licencekkel kapcsolatos problémák hozzárendelésének, ellenőrzésének és megoldásának](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)lépéseit.
+Tekintse át a hibaelhárítási lépéseket is, hogy megbizonyosodjon róla, hogy a konfigurációs beállításokat végrehajtó rendszergazda hozzárendelt licenccel rendelkezik. Ha a szóban forgó rendszergazdai fiókhoz szeretne licencet rendelni, kövesse a [licencekkel kapcsolatos problémák hozzárendelésének, ellenőrzésének és megoldásának](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)lépéseit.
 
 ### <a name="theres-an-error-processing-the-request"></a>Hiba történt a kérelem feldolgozásakor.
 
@@ -87,7 +87,7 @@ Ha Ön vagy a felhasználók problémákat tapasztalnak a SSPR használatával, 
 | Hiba | Megoldás |
 | --- | --- |
 | A könyvtár nincs engedélyezve a jelszó-visszaállításhoz. | A Azure Portalban módosítsa az **önkiszolgáló jelszó-visszaállítás engedélyezett** konfigurációját a *kiválasztott* vagy *az összes* értékre, majd válassza a **Mentés**lehetőséget. |
-| A felhasználónak nincs hozzárendelt Azure AD-licence. | Ez akkor fordulhat elő, ha nem rendelkezik a kívánt felhasználóhoz hozzárendelt Azure AD-licenccel. Ha a szóban forgó rendszergazdai fiókhoz szeretne licencet rendelni, kövesse a [licencekkel kapcsolatos problémák hozzárendelésének, ellenőrzésének és megoldásának](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)lépéseit. |
+| A felhasználónak nincs hozzárendelt Azure AD-licence. | Ez akkor fordulhat elő, ha nem rendelkezik a kívánt felhasználóhoz hozzárendelt Azure AD-licenccel. Ha a szóban forgó rendszergazdai fiókhoz szeretne licencet rendelni, kövesse a [licencekkel kapcsolatos problémák hozzárendelésének, ellenőrzésének és megoldásának](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)lépéseit. |
 | A könyvtár engedélyezve van a jelszó-visszaállításhoz, de a felhasználó hiányzó vagy helytelenül formázott hitelesítési adatokat tartalmaz. | Győződjön meg arról, hogy a felhasználó a címtárban megfelelően alakította ki a kapcsolattartási adatfájlokat. További információ: az [Azure ad önkiszolgáló jelszó-visszaállítási szolgáltatás által használt adatok](howto-sspr-authenticationdata.md). |
 | A könyvtár engedélyezve van a jelszó-visszaállításhoz, de a felhasználónak csak egy adatkapcsolati adata van a fájlon, ha a házirend úgy van beállítva, hogy két ellenőrzési módszert igényeljen. | Győződjön meg arról, hogy a felhasználó legalább két megfelelően konfigurált kapcsolattartási módszerrel rendelkezik. Ilyen például a mobiltelefon *-szám és* az Office-telefonszám is. |
 | A könyvtár engedélyezve van a jelszó-visszaállításhoz, és a felhasználó megfelelően van konfigurálva, de a felhasználó nem tud kapcsolatba lépni vele. | Ez lehet egy ideiglenes szolgáltatási hiba eredménye, vagy ha helytelen a kapcsolattartási adatmennyiség, amelyet nem tudunk megfelelően észlelni. <br> <br> Ha a felhasználó 10 másodpercet vár, megjelenik egy hivatkozás, amely "próbálkozzon újra" és "a rendszergazda segítségére" üzenet jelenik meg. Ha a felhasználó az "próbálja újra" lehetőséget választja, az újrapróbálkozik a hívással. Ha a felhasználó a "Kapcsolatfelvétel a rendszergazdával" lehetőséget választja, a rendszer e-mailt küld a rendszergazdáknak, amely az adott felhasználói fiók jelszavának visszaállítását kéri. |

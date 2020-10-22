@@ -51,8 +51,6 @@
               href: ./database/security-controls-policy.md
             - name: Biztonsági alapkonfiguráció
               href: database/security-baseline.md
-            - name: Biztonsági attribútumok
-              href: database/security-controls.md
             - name: Azure Defender SQL-hez
               href: database/azure-defender-for-sql.md
             - name: Fejlett fenyegetésvédelem
