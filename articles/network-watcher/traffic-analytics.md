@@ -13,12 +13,12 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7a5157c955a51215a9e62711ebb7838b61fda496
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951570"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424274"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -164,9 +164,9 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 
 ### <a name="user-access-requirements"></a>Felhasználói hozzáférési követelmények
 
-A fiókjának a következő Azure [beépített szerepkörök](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)egyikének kell lennie:
+A fiókjának a következő [Azure beépített szerepkörök](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)egyikének kell lennie:
 
-|Üzembehelyezési modell   | Szerepkör                   |
+|Üzembehelyezési modell   | Role                   |
 |---------          |---------               |
 |Resource Manager   | Tulajdonos                  |
 |                   | Közreműködő            |
@@ -237,7 +237,7 @@ Válassza ki a következő beállításokat a képen látható módon:
 > [!NOTE]
 >A Traffic Analytics-megoldást üzemeltető log Analytics-munkaterületnek és a NSG nem kell ugyanabban a régióban lennie. Előfordulhat például, hogy a Traffic Analytics egy olyan munkaterületen található a Nyugat-európai régióban, amely NSG az USA keleti régiójában és az USA nyugati régiójában. Több NSG is konfigurálható ugyanabban a munkaterületen.
 
-8. Kattintson a **Mentés** gombra.
+8. Válassza a **Mentés** lehetőséget.
 
     ![A Storage-fiók kiválasztása, a Log Analytics munkaterület és a Traffic Analytics engedélyezése](./media/traffic-analytics/ta-customprocessinginterval.png)
 

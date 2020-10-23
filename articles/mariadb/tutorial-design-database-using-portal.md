@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e6cac09ff304e02e24b482dc834d8199329c1c0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80063782"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424874"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Oktatóanyag: Azure Database for MariaDB-adatbázis tervezése az Azure Portalon
 
@@ -37,7 +37,7 @@ Nyissa meg a böngészőjében az [Azure Portalt](https://portal.azure.com/). Ad
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Azure Database for MariaDB-kiszolgáló létrehozása
 
-Az Azure Database for MariaDB-kiszolgálót [számítási és tárolási erőforrások](concepts-pricing-tiers.md) egy meghatározott készletével együtt fogja létrehozni. A kiszolgáló egy [Azure-erőforráscsoporton](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) belül jön létre.
+Az Azure Database for MariaDB-kiszolgálót [számítási és tárolási erőforrások](concepts-pricing-tiers.md) egy meghatározott készletével együtt fogja létrehozni. A kiszolgáló egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül jön létre.
 
 1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
@@ -194,4 +194,4 @@ Ebben az oktatóanyagban a következők elvégzését sajátította el az Azure 
 > * Adatok visszaállítása
 
 > [!div class="nextstepaction"]
-> [Alkalmazások csatlakoztatása az Azure Database for MariaDB-hez](./howto-connection-string.md)
+> [Alkalmazások csatlakoztatása az Azure Database for MariaDB-hez](howto-connection-string.md)

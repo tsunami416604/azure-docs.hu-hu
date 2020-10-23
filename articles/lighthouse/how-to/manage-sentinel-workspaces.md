@@ -3,12 +3,12 @@ title: Azure Sentinel-munkaterületek kezelése nagy méretekben
 description: Ismerje meg, hogyan kezelheti hatékonyan az Azure Sentinelt a delegált felhasználói erőforrásokon.
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596945"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424097"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-munkaterületek kezelése nagy méretekben
 
@@ -39,7 +39,7 @@ Ez a központi telepítési modell a következő előnyökkel jár:
 > [!NOTE]
 > A különböző [régiókban](../../availability-zones/az-overview.md#regions)található delegált erőforrásokat is kezelheti. Azonban az előfizetések delegálása egy [nemzeti felhőben](../../active-directory/develop/authentication-national-cloud.md) és az Azure nyilvános felhőben, vagy két külön nemzeti felhők között nem támogatott.
 
-## <a name="granular-role-based-access-control-rbac"></a>Részletes szerepköralapú hozzáférés-vezérlés (RBAC)
+## <a name="granular-azure-role-based-access-control-azure-rbac"></a>Részletes Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 
 Minden ügyfél-előfizetést, amelyet egy MSSP fog kezelni, be kell készíteni [Az Azure világítótoronyba](onboard-customer.md). Ez lehetővé teszi a bérlők számára, hogy az ügyfél-bérlők számára üzembe helyezett Azure Sentinel-munkaterületeken felügyeleti műveleteket férhessenek hozzá és végezzenek el.
 
@@ -88,7 +88,7 @@ A [Microsoft Cloud app Security (MCAS) összekötőt](../../sentinel/connect-clo
 
 Az Office 365-adatösszekötők beállítása után használhatja a több-bérlős Azure Sentinel-funkciókat, például a munkafüzetek adatainak megtekintését és elemzését, a lekérdezések használatával egyéni riasztásokat hozhat létre, és konfigurálhat forgatókönyveket a fenyegetésekre való reagáláshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure sentinelről](../../sentinel/overview.md).
 - Tekintse át az [Azure Sentinel díjszabási oldalát](https://azure.microsoft.com/pricing/details/azure-sentinel/).

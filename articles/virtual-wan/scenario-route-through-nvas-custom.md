@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 031cbb48a7e0c572866dc591d26fb1e6b6b12dba
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267499"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424724"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Forgatókönyv: forgalom irányítása NVA – egyéni (előzetes verzió)
 
@@ -24,25 +24,24 @@ A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehet�
 
 Ebben az esetben az elnevezési konvenciót fogjuk használni:
 
-* "Service VNet" olyan virtuális hálózatok esetében, amelyekben a felhasználók az **1. ábrán**szereplő NVA (VNet 4) telepítették a nem internetes forgalom vizsgálatához.
+* A virtuális hubhoz (VNet 1, VNet 2 és VNet 3 az **1. ábrán**) csatlakozó virtuális hálózatok esetében "küllők".
+* A "Service VNet" olyan virtuális hálózatok esetében, amelyekben a felhasználók az **1. ábrán**szereplő NVA (VNet 4. ábra) ellenőrzik a nem internetes forgalom vizsgálatát, és esetleg a küllők által elért közös szolgáltatásokkal.
 * A "DMZ VNet" olyan virtuális hálózatok esetében, amelyekben a felhasználók telepítettek egy NVA az internetes forgalom vizsgálatához (VNet 5 az **1. ábrán**).
-* "NVA küllők" a NVA VNet (VNet 1, VNet 2 és VNet 3 az **1. ábrán**) csatlakoztatott virtuális hálózatok esetében.
 * "Hubok" a Microsoft által felügyelt virtuális WAN-hubokhoz.
 
 A következő kapcsolati mátrix összefoglalja az ebben a forgatókönyvben támogatott folyamatokat:
 
 **Kapcsolati mátrix**
 
-| Forrás          | Címzett:|*NVA küllők*|*Szolgáltatás VNet*|*DMZ VNet*|*Ág statikus*|
-|---|---|---|---|---|---|
-| **NVA küllők**| &#8594;|      X |            X |   Társviszony-létesítés |    Statikus    |
-| **Szolgáltatás VNet**| &#8594;|    X |            X |      X    |      X       |
-| **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
-| **Ágak** | &#8594;|  Statikus |            X |      X    |      X       |
+| Forrás          | Címzett:|*Küllők*|*Szolgáltatás VNet*|*Ágak*|*Internet*|
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **Küllők**| &#8594;| Közvetlenül |Közvetlenül | A Service VNet |DMZ-VNet |
+| **Szolgáltatás VNet**| &#8594;| Közvetlenül |n/a| Közvetlenül | |
+| **Ágak** | &#8594;| A Service VNet |Közvetlenül| Közvetlenül |  |
 
-A kapcsolati mátrix minden cellája azt írja le, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) megtanulja-e a cél előtagot (a folyamat "to" oldalát, a dőlt betűs oszlop fejléceit) egy adott forgalmi folyamat esetében. Az "X" azt jelenti, hogy a kapcsolat a virtuális WAN által natív módon van megadva, a "statikus" pedig azt jelenti, hogy a virtuális WAN a statikus útvonalak használatával biztosít kapcsolatot. Lássuk részletesen a különböző sorokban:
+A kapcsolati mátrix minden cellája azt írja le, hogy a kapcsolatok közvetlenül a virtuális WAN-on vagy egy virtuális hálózatok egy NVA-kapcsolaton keresztül áramlanak-e. Lássuk részletesen a különböző sorokban:
 
-* NVA küllők:
+* Küllők
   * A küllők más küllőket érnek el közvetlenül a virtuális WAN-hubokon.
   * A küllők a szolgáltatás VNet mutató statikus útvonalon keresztül kapnak kapcsolatot az ágakkal. Nem kell megtanulniuk az ágak adott előtagjait (ellenkező esetben ez lenne konkrétabb, és felülbírálja az összegzést).
   * A küllők internetes forgalmat küldenek a DMZ-VNet közvetlen VNet-közvetítéssel.
@@ -51,12 +50,12 @@ A kapcsolati mátrix minden cellája azt írja le, hogy egy virtuális WAN-kapcs
 * A szolgáltatás VNet hasonló lesz egy megosztott szolgáltatások VNet, amelynek minden VNet és ág esetében elérhetőnek kell lennie.
 * A DMZ-VNet nem kell a virtuális WAN-kapcsolaton keresztül csatlakoznia, mivel az egyetlen támogatott forgalom a közvetlen VNet-társításokat veszi át. Ugyanakkor ugyanazt a csatlakozási modellt fogjuk használni, mint a DMZ VNet a konfiguráció egyszerűsítése érdekében.
 
-Így a kapcsolati mátrix három különböző csatlakozási mintát biztosít, amelyek három útválasztási táblázatra fordíthatók le. A különböző virtuális hálózatok tartozó társítások a következők lesznek:
+A kapcsolati mátrix három különböző csatlakozási mintát biztosít, amelyek három útválasztási táblázatra fordíthatók le. A különböző virtuális hálózatok tartozó társítások a következők lesznek:
 
-* NVA küllők:
+* Küllők
   * Társított útválasztási táblázat: **RT_V2B**
   * Propagálás az útválasztási táblákba: **RT_V2B** és **RT_SHARED**
-* NVA virtuális hálózatok (belső és internetes):
+* NVA virtuális hálózatok (Service VNet és DMZ VNet):
   * Társított útválasztási táblázat: **RT_SHARED**
   * Propagálás az útválasztási táblákba: **RT_SHARED**
 * Ágak
@@ -131,7 +130,7 @@ Az Útválasztás NVA-n keresztüli beállításához a következő lépéseket 
 
 :::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="1. ábra" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

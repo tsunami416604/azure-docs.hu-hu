@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f725932b30fad062123d6c752f2d563b84f98b2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267635"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424740"
 ---
 # <a name="scenario-isolating-vnets"></a>Forgatókönyv: a virtuális hálózatok elkülönítése
 
@@ -26,10 +26,10 @@ Ebben az esetben egy adott VNet belüli munkaterhelés elkülönített marad, é
 
 | Forrás |   Művelet |  *Virtuális hálózatok* | *Ágak* |
 | -------------- | -------- | ---------- | ---|
-| Virtuális hálózatok     | &#8594;|           |     X    |
-| Ágak   | &#8594;|    X     |     X    |
+| Virtuális hálózatok     | &#8594;| Direct |   Direct    |
+| Ágak   | &#8594;|  Direct  |   Direct    |
 
-Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) megtanulja-e a cél előtagot (a folyamat "to" oldalát, a dőlt betűs oszlop fejléceit) egy adott forgalmi folyamathoz, ahol az "X" azt jelenti, hogy a kapcsolatot a virtuális WAN nyújtja.
+Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) a cél előtaggal kommunikál-e (a folyamat "–" oldalára, a dőlt betűs oszlopok fejlécére). Ebben a forgatókönyvben nincsenek tűzfalak vagy hálózati virtuális berendezések, így a kommunikáció közvetlenül a virtuális WAN-kapcsolaton keresztül történik (ezért a táblázatban a "Direct" szó látható).
 
 Ez a kapcsolati mátrix két különböző sor mintázatot biztosít, amelyek két útválasztási táblázatra fordíthatók le. A virtuális WAN már rendelkezik alapértelmezett útválasztási táblázattal, ezért szükség lesz egy másik útválasztási táblázatra. Ebben a példában az útválasztási táblázatot **RT_VNET**nevet adja.
 
@@ -58,7 +58,7 @@ Ennek a forgatókönyvnek a konfigurálásához a következő lépéseket kell f
 
 :::image type="content" source="./media/routing-scenarios/isolated/isolated-vnets.png" alt-text="Elkülönített virtuális hálózatok":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

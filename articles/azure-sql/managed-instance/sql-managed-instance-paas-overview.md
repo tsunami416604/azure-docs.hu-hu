@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e515df0ff8c7cd3794efb4db567ef7146ccb7a03
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618134"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424234"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -96,7 +96,7 @@ Az alábbi lista ismerteti a általános célú szolgáltatási szintje főbb je
 
 - Az üzleti alkalmazások többségét jellemző teljesítménybeli követelményekkel tervezték
 - Nagy teljesítményű Azure Blob Storage (8 TB)
-- Beépített [magas rendelkezésre állás](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) a megbízható Azure Blob Storage és az [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) alapján
+- Beépített [magas rendelkezésre állás](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) a megbízható Azure Blob Storage és az [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) alapján
 
 További információ: [tárolási réteg a általános célú rétegben és a](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) [tárolási teljesítményre vonatkozó ajánlott eljárások és szempontok az SQL felügyelt példányaihoz (általános célú)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
@@ -110,7 +110,7 @@ Az alábbi lista a üzletileg kritikus szolgáltatási szintje főbb jellemzőit
 
 - A legnagyobb teljesítménnyel és HA követelményekkel rendelkező üzleti alkalmazásokhoz tervezve
 - A szolgáltatás villámgyors helyi SSD-tárolóval (1 TB-ig Gen4 és akár 4 TB-ig Gen5) is rendelkezik
-- Beépített [magas rendelkezésre](../database/high-availability-sla.md#premium-and-business-critical-service-tier-availability) állás az [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és az [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) alapján
+- Beépített [magas rendelkezésre](../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) állás az [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és az [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) alapján
 - Beépített további [írásvédett adatbázis-replikák](../database/read-scale-out.md) , amelyek jelentéskészítésre és más írásvédett számítási feladatokra is használhatók
 - [Memóriabeli OLTP](../in-memory-oltp-overview.md) , amely nagy teljesítményű követelményekkel használható munkaterheléshez  
 
@@ -237,7 +237,7 @@ A következő táblázat több, a Transact-SQL szolgáltatáson keresztül elér
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban: `<instanceName>` . `<dnsPrefix>` . a database.windows.net, ahol az az `<instanceName>` ügyfél által megadott név, míg a `<dnsPrefix>` neve automatikusan létrejön a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98"), például:.|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](instance-create-quickstart.md).
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).

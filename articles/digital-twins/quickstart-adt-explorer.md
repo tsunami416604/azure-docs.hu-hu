@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 09d5ece0afdd5abe3da5ebdeb6a7ae290e1ccf3d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bec4e831b3f7af0ef551617ba8a8253925226e05
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372318"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461838"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
@@ -37,9 +37,7 @@ A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha
 
 A gépen **Node.js** is szüksége lesz. A legújabb verziót a következő hivatkozásra kattintva érheti el: [Node.js](https://nodejs.org/).
 
-Végül le kell töltenie két mintát is a gyors üzembe helyezés során:
-* A **ADT Explorer** minta alkalmazás. Ez a minta a rövid útmutatóban használt fő alkalmazást tartalmazza egy Azure digitális Twins-forgatókönyv betöltéséhez és megismeréséhez. Az alkalmazás beszerzéséhez navigáljon ide: [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins__ADT__explorer.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
-* **Példa Azure digitális Twins-forgatókönyvre**. Ez egy előre elkészített Azure digitális Twins-gráfot tartalmaz, amelyet a ADT Explorerbe fog betölteni, hogy működjön a-mel. A forgatókönyv beszerzéséhez navigáljon ide: [Azure digitális ikrek végpontok közötti minták](/samples/azure-samples/digital-twins-samples/digital-twins-samples). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins_end_to_end_samples.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
+Végül le kell töltenie azt a mintát, amelyet a rövid útmutatóban is használni fog: a **ADT Explorer** -minta alkalmazás. Ez a minta tartalmazza a rövid útmutatóban használt alkalmazást, amely egy Azure digitális Twins-forgatókönyv betöltésére és vizsgálatára, valamint a minta forgatókönyvek fájljaira vonatkozik. A minta beszerzéséhez navigáljon ide: [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins__ADT__explorer.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Az Azure digitális Twins és a ADT Explorer beállítása
 
@@ -115,9 +113,7 @@ Ha megjelenik a Microsoft előugró ablakát *kérő engedély* , adja meg az al
 
 ## <a name="add-the-sample-data"></a>A mintaadatok hozzáadása
 
-Ezután importálni fogja a minta forgatókönyvet és a Graphot a ADT Explorerben.
-
-A minta forgatókönyv a letöltött és kibontott  _**Azure_Digital_Twins_end_to_end_samples**_ mappában található, ezért most navigáljon a mappához.
+Ezután importálni fogja a minta forgatókönyvet és a Graphot a ADT Explorerben. A minta forgatókönyv a korábban letöltött **Azure_Digital_Twins__ADT__explorer** mappában is található.
 
 ### <a name="models"></a>Modellek
 
@@ -140,8 +136,8 @@ A *modell nézet* mezőben nyomja meg a *modell feltöltése* ikont.
 
 :::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
-1. A megjelenő fájl kiválasztása mezőben navigáljon a letöltött adattár *Azure_Digital_Twins_end_to_end_samples/adtsampleapp/sampleclientapp/models* mappájába.
-2. Válassza a *Room.js* be és *Floor.js*be lehetőséget, majd kattintson az OK gombra. (Ha szeretné, feltöltheti a többi modellt is, de ebben a rövid útmutatóban nem használható.)
+1. A megjelenő fájl kiválasztása mezőben navigáljon a letöltött adattár *Azure_Digital_Twins__ADT__explorer/Client/examples* mappájába.
+2. Válassza a *Room.js* be és *Floor.js*be lehetőséget, majd kattintson az OK gombra. (Ha szeretné, további modelleket is feltölthet, de ez a rövid útmutatóban nem használható.)
 3. Az Azure-fiókba való bejelentkezéshez kattintson a felugró ablakra.
 
 >[!NOTE]
@@ -178,7 +174,7 @@ A *gráf nézet* mezőben kattintson a *diagram importálása* ikonra.
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-A fájl kiválasztása mezőben navigáljon a *Azure_Digital_Twins_end_to_end_samples/adtsampleapp/sampleclientapp* mappára, és válassza ki a _**buildingScenario.xlsx**_ számolótábla-fájlt. Ez a fájl tartalmazza a minta gráf leírását. Nyomja meg az OK gombot.
+A fájl kiválasztása mezőben navigáljon a*Azure_Digital_Twins__ADT__explorer/Client/examples* mappára, és válassza ki a _**buildingScenario.xlsx**_ számolótábla-fájlt. Ez a fájl tartalmazza a minta gráf leírását. Nyomja meg az OK gombot.
 
 Néhány másodperc elteltével a ADT Explorer megnyílik egy *importálási* nézet, amely megjeleníti a betöltendő gráf előnézetét.
 
@@ -326,9 +322,9 @@ Ezután törölje az ügyfélalkalmazás számára a következő paranccsal lét
 az ad app delete --id <your-application-ID>
 ```
 
-Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**Azure_Digital_Twins__ADT__explorer**_ és _**Azure_Digital_Twins_end_to_end_samples**_). Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
+Végezetül törölje a helyi gépre (_**Azure_Digital_Twins__ADT__explorer**_) letöltött Project Sample mappát. Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

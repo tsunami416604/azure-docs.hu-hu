@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: contperfq2
+ms.openlocfilehash: 38bff38ebe44d9018299444b89d7743c4cc92b72
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104563"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424204"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -48,7 +49,7 @@ Nem, ez a forgatókönyv nem támogatott. Az alapértelmezett beállítások a k
 
 Nem, jelenleg ez nem lehetséges. A regisztrációs kísérlet mindig a felhasználó otthoni bérlője számára történik.
 
-### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>A háttérben futó alkalmazás több webkiszolgálón üzemel, és felhasználói munkamenetek megőrzését igényli. Hogyan lehet elérni a munkamenetek megőrzését? 
+### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>A háttérben futó alkalmazás több webkiszolgálón üzemel, és felhasználói munkamenetek megőrzését igényli. Hogyan lehet elérni a munkamenetek megőrzését? 
 
 Javaslatokért lásd: [az alkalmazásproxy-összekötők és-alkalmazások magas rendelkezésre állása és](application-proxy-high-availability-load-balancing.md)terheléselosztása.
 

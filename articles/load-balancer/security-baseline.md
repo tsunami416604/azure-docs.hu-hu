@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6d03f0057e657933f4b0f38c48f2a2cdbe1ba2a4
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 2786a45ef779b9c66edda4c765a1cf2140f1bf9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940327"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425293"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure Load Balancer Azure biztonsági alapterve
 
@@ -104,7 +104,7 @@ A Security Center adaptív hálózatának megerősítése funkció segítségév
 
 - [Fenyegetésvédelem az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/threat-protection)
 
-- [A felügyeleti portok védelme az igény szerinti hozzáféréssel](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [Felügyeleti portok védelme igény szerinti hozzáféréssel](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 
 - [Adaptív hálózati megerősítés Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
 
@@ -402,7 +402,7 @@ Az Azure CLI, Azure PowerShell vagy a Azure Portal eszközökkel előre definiá
 
 **Útmutató**: az Azure RBAC segítségével szabályozhatja a Load Balancer erőforrásaihoz való hozzáférést.
 
-- [A RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure Security Center figyelés**: igen
 
@@ -544,7 +544,7 @@ A Security Center ajánlásainak megvalósítása az Azure-erőforrások biztons
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
 
-- [Biztonsági javaslatok – útmutató](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Biztonsági javaslatok – gyorsútmutató](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -616,7 +616,7 @@ Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-er
 
 - [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
-- [Címkék használata az erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: igen
 
@@ -664,7 +664,7 @@ Használja a Security Center adatösszekötőt a riasztások Azure Sentinelbe va
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

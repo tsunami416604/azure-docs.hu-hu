@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b28d75e6526f27fd0076244ec32848dbf20e91e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596569"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424777"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics kimenet Azure Cosmos DB  
-A Azure Stream Analytics a JSON-kimenethez [Azure Cosmos db](https://azure.microsoft.com/services/documentdb/) , így lehetővé teszi az adatarchiválást és az alacsony késésű lekérdezéseket a strukturálatlan JSON-adatokat illetően. Ez a dokumentum a konfiguráció megvalósításának ajánlott eljárásait ismerteti.
+A Azure Stream Analytics a JSON-kimenethez [Azure Cosmos db](https://azure.microsoft.com/services/documentdb/) , így lehetővé teszi az adatarchiválást és az alacsony késésű lekérdezéseket a strukturálatlan JSON-adatokat illetően. Ez a dokumentum a konfiguráció megvalósításának ajánlott eljárásait ismerteti. Javasoljuk, hogy a 1,2-as kompatibilitási szintre állítsa be a feladatot, ha kimenetként Azure Cosmos DB használ.
 
 Ha nem ismeri a Azure Cosmos DBt, az első lépésekhez tekintse meg a [Azure Cosmos db dokumentációját](https://docs.microsoft.com/azure/cosmos-db/) . 
 
@@ -137,3 +137,17 @@ Ha egy átmeneti hiba, a szolgáltatás nem érhető el, vagy a szabályozás ne
 - NotFound (HTTP-hibakód: 404)
 - Tiltott (403-es HTTP-hibakód)
 - BadRequest (HTTP-hibakód: 400)
+
+## <a name="common-issues"></a>Gyakori problémák
+
+1. A rendszer egyedi index-korlátozást ad hozzá a gyűjteményhez, és a kimeneti adatok Stream Analytics sértik ezt a korlátozást. Győződjön meg arról, hogy Stream Analytics kimeneti adatok nem sértik az egyedi korlátozásokat, vagy távolítsa el a korlátozásokat. További információ: [Azure Cosmos db egyedi kulcsokra vonatkozó megkötései](../cosmos-db/unique-keys.md).
+
+2. Az `PartitionKey` oszlop nem létezik.
+
+3. Az `Id` oszlop nem létezik.
+
+## <a name="next-steps"></a>További lépések
+
+* [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md) 
+* [Azure Stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md)
+* [Egyéni blob kimeneti particionálás Azure Stream Analytics](stream-analytics-custom-path-patterns-blob-storage-output.md)

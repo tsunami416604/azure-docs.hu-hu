@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe5feed4bb6f9b84a3f161692310922f7a6d2f00
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135771"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424794"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek replikálása másik Azure-régióba
 
@@ -36,10 +36,10 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
    - **Forrás-előfizetés**: az előfizetés, amelybe a forrás virtuális gépek tartoznak. Ez bármelyik előfizetés lehet azon Azure Active Directory-bérlőn belül, ahol a már meglévő Recovery Services-tárolója van.
    - **Erőforráscsoport**: az erőforráscsoport, amelyhez a forrás virtuális gépek tartoznak. A következő lépésben a kiválasztott erőforráscsoport alatti virtuális gépek jelennek meg a védelemhez.
 
-     ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
+     ![Képernyőfelvétel: a replikáció konfigurálásához szükséges mezők kiemelése.](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
 3. A **Virtual Machines > válassza a virtuális gépek lehetőséget**, majd kattintson és válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson az **OK** gombra.
-    ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
+    ![Képernyőkép, amely kiemeli a virtuális gépek kiválasztásának helyét.](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 4. A **Beállítások**lehetőségnél beállíthatja a célhely beállításait:
 
@@ -101,7 +101,7 @@ A Site Recovery által használt alapértelmezett cél beállításokat módosí
     - A **rendelkezésre állási csoport**lehetőséget ad a rendelkezésre állási csoport beállításainak hozzáadására a virtuális géphez, ha azok egy rendelkezésre állási csoport részét képezik a forrás régióban.
     - A **cél Storage-fiókok**területen válassza ki a használni kívánt fiókot.
 
-        ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
+        ![A cél-előfizetési beállítások testreszabását bemutató képernyőkép.](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 3. A replikációs beállítások módosításához kattintson a **Testreszabás** elemre.
 4. A **több virtuális gépre kiterjedő konzisztencia**területen válassza ki azokat a virtuális gépeket, amelyeket együtt szeretne replikálni.
     - A feladatátvételkor a replikációs csoportba tartozó összes gép megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokkal rendelkezik majd.
@@ -111,7 +111,7 @@ A Site Recovery által használt alapértelmezett cél beállításokat módosí
     - Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replikációs csoportban található gépek a 20004-es porton kommunikálnak egymással.
     - Győződjön meg arról, hogy nincs olyan tűzfalszabály, amely blokkolja a virtuális gépek közötti belső kommunikációt a 20004-as porton keresztül.
     - Ha azt szeretné, hogy a Linux rendszerű virtuális gépek egy replikációs csoport részévé legyenek, győződjön meg arról, hogy az 20004-as porton a kimenő forgalom manuálisan nyílik meg az adott Linux-verzió útmutatása szerint.
-![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
+![A több virtuális gépre kiterjedő konzisztencia-beállításokat bemutató képernyőkép.](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
 5. Kattintson a **cél erőforrás létrehozása**  >  **replikáció engedélyezése**lehetőségre.
 6. Miután a virtuális gépek engedélyezve vannak a replikáláshoz, a virtuális gép állapotának állapotát a **replikált elemek** területen tekintheti meg

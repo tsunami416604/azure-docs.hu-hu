@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: fe4f0cdcdb863582560b0eba3a22e95b93ff858b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150934"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425109"
 ---
 # <a name="disclosure-design-patterns"></a>Közzététel-tervezési minták
 Most, hogy&#39;ve meghatározta a szintetikus hangalapú felhasználói felület megfelelő [szintű közzétételét](concepts-disclosure-guidelines.md#disclosure-assessment) , jó időt&#39;s a lehetséges tervezési minták megismerésére.
@@ -184,7 +184,7 @@ A következő típusú útmutatók beépítésekor vegye figyelembe a tapasztala
 
 A közzététel implicit módon megvalósítható azáltal, hogy pontos elvárásokat biztosít a digitális asszisztens számára. Adjon meg olyan példákat, amelyekkel a felhasználók megismerhetik a digitális segéd használatát, és a kontextus súgójában további információkat találhat a szintetikus hangról a felhasználói élmény korai szakaszában.
 
-![Vizuális útmutatók és visszajelzés](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![Példa arra, hogy milyen alapértelmezett válaszokat lehet készíteni egy olyan beszélgetésre, amelyet a Craft.](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>Társalgási átláthatóság
 
@@ -252,6 +252,6 @@ A közzétételi lehetőség használata a zökkenőmentes működés érdekébe
 * [A kapuzás áttekintése](concepts-gating-overview.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)

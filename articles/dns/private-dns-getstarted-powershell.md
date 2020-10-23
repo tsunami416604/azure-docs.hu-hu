@@ -1,18 +1,18 @@
 ---
 title: Rövid útmutató – Azure privát DNS-zóna létrehozása Azure PowerShell használatával
-description: Ebben a cikkben egy privát DNS-zónát és-rekordot hoz létre és tesztel a Azure DNSban. Ez egy lépésenkénti útmutató, amellyel az Azure PowerShell használatával létrehozhatja és kezelheti az első saját DNS-zónáját és -rekordját.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre és kezelheti az első saját DNS-zónáját és-rekordját Azure PowerShell használatával.
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: fd795c9e251a7c4c0c8cbea5ce6c48cec3535484
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ee6dde6b34cccd415f9bf2052f65dcbe940715c1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311756"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424379"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Rövid útmutató: Azure Private DNS-zóna létrehozása Azure PowerShell használatával
 
@@ -199,7 +199,7 @@ Ha már nincs rá szükség, törölje a **MyAzureResourceGroup** erőforráscso
 Remove-AzResourceGroup -Name MyAzureResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure DNS Private Zones forgatókönyvek](private-dns-scenarios.md)

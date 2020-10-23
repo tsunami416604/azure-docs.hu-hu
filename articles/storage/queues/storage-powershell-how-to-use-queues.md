@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f45a4de2e13f936556f8dd99aa107110edc6e91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1f758390a270f072bc08e13d1d542e08e4df553
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077925"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425545"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-műveletek végrehajtása az Azure PowerShell-lel
 
@@ -104,7 +104,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>Üzenet hozzáadása egy várólistához
 
-Az üzenetsor tényleges üzeneteit befolyásoló műveletek a .NET Storage ügyféloldali kódtárat használják a PowerShellben elérhetőként. Ha üzenetet szeretne hozzáadni egy várólistához, hozzon létre egy új példányt a [Microsoft. Azure. Storage. üzenetsor. CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) osztályhoz. Ezután hívja meg az [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) módszert. A CloudQueueMessage egy sztringből (UTF-8 formátumban) vagy egy bájttömbből hozható létre.
+Az üzenetsor tényleges üzeneteit befolyásoló műveletek a .NET Storage ügyféloldali kódtárat használják a PowerShellben elérhetőként. Ha üzenetet szeretne hozzáadni egy várólistához, hozzon létre egy új példányt a [Microsoft. Azure. Storage. üzenetsor. CloudQueueMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) osztályhoz. Ezután hívja meg az [AddMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) módszert. A CloudQueueMessage egy sztringből (UTF-8 formátumban) vagy egy bájttömbből hozható létre.
 
 Az alábbi példa bemutatja, hogyan adhat hozzá egy üzenetet a várólistához.
 
@@ -179,7 +179,7 @@ Az ebben a gyakorlatban létrehozott összes eszköz eltávolításához távol�
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a útmutatóban megtanulta az alapszintű üzenetsor-tárolás kezelését a PowerShell használatával, beleértve a következőket:
 

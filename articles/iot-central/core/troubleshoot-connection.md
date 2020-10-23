@@ -7,12 +7,13 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 34a9350f830171a137ca3a63ecae2203edec92b2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.custom: device-developer
+ms.openlocfilehash: 6438b938dc007e8d157f6549b3ed164cd2a723e8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127369"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424465"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Centralban hiba elhárítása
 
@@ -131,7 +132,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | Eszköz kiépítési állapota | Leírás | Lehetséges enyhítés |
 | - | - | - |
-| Kiépítve | Nincs azonnal felismerhető probléma. | N.A. |
+| Kiépítve | Nincs azonnal felismerhető probléma. | N/A |
 | Regisztrálva | Az eszköz még nem csatlakozott IoT Centralhoz. | A kapcsolódási problémák ellenőrzése az eszköz naplófájljaiban. |
 | Blokkolva | Az eszköz nem csatlakozik IoT Centralhoz. | Az eszköz le van tiltva a IoT Central alkalmazáshoz való csatlakozáskor. Oldja fel az eszköz zárolását IoT Central, majd próbálkozzon újra. További információ: [eszközök letiltása](concepts-get-connected.md#device-status-values). |
 | Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nincs jóváhagyva a IoT Central alkalmazáshoz való kapcsolódáshoz. Hagyja jóvá IoT Central az eszközt, és próbálkozzon újra. További információ: [eszközök jóváhagyása](concepts-get-connected.md#connect-without-registering-devices) |
@@ -209,7 +210,7 @@ Ha észlelte a problémát, lehet, hogy frissítenie kell az eszköz belső vez�
 
 Ha úgy döntött, hogy olyan új sablont hoz létre, amely helyesen modellezi az adatmodelleket, telepítse át az eszközöket a régi sablonból az új sablonba. További információ: [eszközök kezelése az Azure IoT Central alkalmazásban](howto-manage-devices.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokon](https://azure.microsoft.com/support/community/)is. Másik lehetőségként egy Azure- [támogatási jegyet](https://portal.azure.com/#create/Microsoft.Support)is megadhat.
 

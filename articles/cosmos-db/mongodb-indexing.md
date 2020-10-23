@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282375"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425033"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
 
@@ -40,7 +40,10 @@ Az egyik lekérdezés több egymezős indexet használ, ahol elérhető. Egy tá
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Összetett indexek (MongoDB-kiszolgáló 3,6-es verzió)
 
-A MongoDB Azure Cosmos DB API-ját a 3,6-os átviteli protokollt használó fiókok összetett indexeit támogatja. Akár nyolc mezőt is hozzáadhat egy összetett indexben. **A MongoDB eltérően csak akkor érdemes összetett indexet létrehozni, ha a lekérdezésnek egyszerre több mezőn kell rendeznie.** Több olyan szűrővel rendelkező lekérdezések esetén, amelyek nem szükségesek a rendezéshez, egyetlen összetett index helyett hozzon létre több egymezős indexet.
+A MongoDB Azure Cosmos DB API-ját a 3,6-os átviteli protokollt használó fiókok összetett indexeit támogatja. Akár nyolc mezőt is hozzáadhat egy összetett indexben. A MongoDB eltérően csak akkor érdemes összetett indexet létrehozni, ha a lekérdezésnek egyszerre több mezőn kell rendeznie. Több olyan szűrővel rendelkező lekérdezések esetén, amelyek nem szükségesek a rendezéshez, egyetlen összetett index helyett hozzon létre több egymezős indexet. 
+
+> [!NOTE]
+> Beágyazott tulajdonságokon vagy tömbökön nem hozhatók létre összetett indexek.
 
 A következő parancs létrehoz egy összetett indexet a mezőkön `name` , és `age` :
 
@@ -59,7 +62,7 @@ Az összetett indexben lévő elérési utak sorrendjének azonban pontosan egye
 `db.coll.find().sort({age:1,name:1})`
 
 > [!NOTE]
-> Beágyazott tulajdonságokon vagy tömbökön nem hozhatók létre összetett indexek.
+> Az összetett indexeket csak az eredmények rendezésére szolgáló lekérdezésekben használják. Olyan lekérdezéseknél, amelyeknek nem kell rendezniük a több szűrőt, hozzon létre Soklábú egyetlen mező indexeket.
 
 ### <a name="multikey-indexes"></a>Multikey indexek
 
@@ -75,7 +78,7 @@ Az alábbi példa egy térinformatikai index létrehozását szemlélteti a `loc
 
 ### <a name="text-indexes"></a>Szöveges indexek
 
-Azure Cosmos DB API-MongoDB jelenleg nem támogatja a szöveges indexeket. A karakterláncokra vonatkozó szöveges keresési lekérdezésekhez az [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) integrációját kell használnia Azure Cosmos DBokkal.
+Azure Cosmos DB API-MongoDB jelenleg nem támogatja a szöveges indexeket. A karakterláncokra vonatkozó szöveges keresési lekérdezésekhez az [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) integrációját kell használnia Azure Cosmos DBokkal. 
 
 ## <a name="wildcard-indexes"></a>Helyettesítő karakterek indexei
 
@@ -131,7 +134,10 @@ A következő módon hozhat létre helyettesítő karaktert az összes mezőhöz
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
-A fejlesztés megkezdése során hasznos lehet a helyettesítő karakteres index létrehozása az összes mezőben. Ahogy a dokumentumban további tulajdonságok vannak indexelve, a rendszer megnöveli a dokumentum írására és frissítésére vonatkozó kérési egység (RU) díját. Ezért ha nagy írási szintű számítási feladattal rendelkezik, a helyettesítő karakteres indexek helyett egyéni indexeket kell választania.
+> [!NOTE]
+> Ha most kezdi a fejlesztést, **javasoljuk,** hogy az összes mezőhöz egy helyettesítő karakteres indexszel kezdjen. Ez egyszerűbbé teheti a fejlesztést, és egyszerűbbé teszi a lekérdezések optimalizálását.
+
+A sok mezővel rendelkező dokumentumok esetében az írási és a frissítési műveletek esetében magas kérési egység (RU) díjat számítunk fel. Ezért ha nagy írási szintű számítási feladattal rendelkezik, a helyettesítő karakteres indexek helyett egyéni indexeket kell választania.
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -335,7 +341,7 @@ Jelenleg csak akkor hozhat létre egyedi indexeket, ha a gyűjtemény nem tartal
 
 ## <a name="indexing-for-mongodb-version-32"></a>Az MongoDB 3,2-es verziójának indexelése
 
-Az elérhető indexelési funkciók és alapértékek eltérnek az Azure Cosmos-fiókoknál, amelyek kompatibilisek az MongoDB-os 3,2-es verziójával. Megtekintheti [a fiókja verzióját](mongodb-feature-support-36.md#protocol-support). A 3,6-es verzióra való frissítéshez egy [támogatási kérést](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kell benyújtani.
+Az elérhető indexelési funkciók és alapértékek eltérnek az Azure Cosmos-fiókoknál, amelyek kompatibilisek az MongoDB-os 3,2-es verziójával. Megtekintheti [a fiókja verzióját](mongodb-feature-support-36.md#protocol-support) , és [frissítheti a 3,6-es verzióra](mongodb-version-upgrade.md).
 
 Ha az 3,2-es verziót használja, ez a szakasz az 3,6-es verzió főbb különbségeit ismerteti.
 
@@ -352,13 +358,13 @@ Az alapértelmezett indexek eldobása után további indexeket adhat hozzá, aho
 
 ### <a name="compound-indexes-version-32"></a>Összetett indexek (3,2-es verzió)
 
-Az összetett indexek egy dokumentum több mezőjére vonatkozó hivatkozásokat tartalmaznak. Ha összetett indexet szeretne létrehozni, frissítsen a 3,6-es verzióra egy [támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével.
+Az összetett indexek egy dokumentum több mezőjére vonatkozó hivatkozásokat tartalmaznak. Ha összetett indexet szeretne létrehozni, [frissítsen az 3,6-es verzióra](mongodb-version-upgrade.md).
 
 ### <a name="wildcard-indexes-version-32"></a>Helyettesítő karakterek indexei (3,2-es verzió)
 
-Ha helyettesítő karaktert szeretne létrehozni, frissítsen a 3,6-es verzióra egy [támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével.
+Ha helyettesítő karaktert szeretne létrehozni, [frissítsen az 3,6-es verzióra](mongodb-version-upgrade.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Indexelés az Azure Cosmos DB-ben](../cosmos-db/index-policy.md)
 * [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)

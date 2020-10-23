@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: d8c4eea10b0c2230e50b5ded710b3455539f6493
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206033"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461804"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mi figyeli a Azure Monitor?
 Ez a cikk a Azure Monitor által figyelt különböző alkalmazásokat és szolgáltatásokat ismerteti. 
@@ -61,7 +61,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Active Directory B2C | Nem | Nem | Nem |  |
 |Active Directory Domain Services | Nem | Igen | Nem |  |
 |Tevékenységnapló | Nem | Igen | Nem | |
-|Fejlett fenyegetésvédelem | Nem | Nem | Nem |  |
+|Advanced Threat Protection | Nem | Nem | Nem |  |
 |Advisor | Nem | Nem | Nem |  |
 |AI Builder | Nem | Nem | Nem |  |
 |Analysis Services | Igen | Igen | Nem |  |
@@ -77,13 +77,13 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Bastion | Nem | Nem | Nem |  |
 |Batch | Igen | Igen | Nem |  |
 |Batch AI | Nem | Nem | Nem |  |
-|Blockchain Service | Nem | Igen | Nem |  |
-|Tervek | Nem | Nem | Nem |  |
-|Bot Service | Nem | Nem | Nem |  |
+|Blockchain szolgáltatás | Nem | Igen | Nem |  |
+|Blueprints | Nem | Nem | Nem |  |
+|Robotszolgáltatás | Nem | Nem | Nem |  |
 |Cloud Services | Igen | Igen | Nem | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök.  |
 |Cloud Shell | Nem | Nem | Nem |  |
 |Cognitive Services | Igen | Igen | Nem |  |
-|Tárolópéldányok | Igen | Nem | Nem |  |
+|Container Instances | Igen | Nem | Nem |  |
 |Container Registry | Igen | Igen | Nem |  |
 |Content Delivery Network (CDN) | Nem | Igen | Nem |  |
 |Cosmos DB | Igen | Igen | [Igen](insights/cosmosdb-insights-overview.md) |  |
@@ -109,14 +109,14 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Event Grid | Igen | Nem | Nem |  |
 |Event Hubs | Igen | Igen | Nem |  |
 |ExpressRoute | Igen | Igen | Nem |  |
-|Tűzfal | Igen | Igen | Nem |  |
+|Firewall | Igen | Igen | Nem |  |
 |Front Door | Igen | Igen | Nem |  |
 |Functions | Igen | Igen | Nem |  |
 |HDInsight | Nem | Igen | Nem |  |
 |HPC Cache | Nem | Nem | Nem |  |
 |Information Protection | Nem | Igen | Nem |  |
 |Intune | Nem | Igen | Nem |  |
-|IoT-központ | Nem | Nem | Nem |  |
+|IoT Central | Nem | Nem | Nem |  |
 |IoT Hub | Igen | Igen | Nem |  |
 |Key Vault | Igen | Igen | [Igen](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes Service (AKS) | Nem | Nem | [Igen](insights/container-insights-overview.md)  |  |
@@ -131,18 +131,18 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Microsoft PowerApps | Nem | Nem | Nem |  |
 |Microsoft Social Engagement | Nem | Nem | Nem |  |
 |Microsoft Stream | Igen | Igen | Nem |  |
-|Migrate (Áttelepítés) | Nem | Nem | Nem |  |
+|Migrate | Nem | Nem | Nem |  |
 |Multi-Factor Authentication | Nem | Igen | Nem |  |
 |Network Watcher | Igen | Igen | Nem |  |
 |Notification Hubs | Igen | Nem | Nem |  |
-|Nyílt adathalmazok | Nem | Nem | Nem |  |
+|Open Datasets | Nem | Nem | Nem |  |
 |Szabályzat | Nem | Nem | Nem |  |
 |Power BI Embedded | Igen | Igen | Nem |  |
-|Privát kapcsolat | Nem | Nem | Nem |  |
+|Private Link | Nem | Nem | Nem |  |
 |Projekt-várólista kommunikációs platformja | Nem | Nem | Nem |  |
 |Red Hat OpenShift | Nem | Nem | Nem |  |
 |Redis Cache | Igen | Igen | [Igen](insights/redis-cache-insights-overview.md) | |
-|Erőforrás-diagram | Nem | Nem | Nem |  |
+|Resource Graph | Nem | Nem | Nem |  |
 |Resource Manager | Nem | Nem | Nem |  |
 |Kiskereskedelmi keresés – Bing alapján | Nem | Nem | Nem |  |
 |Keresés | Igen | Igen | Nem |  |
@@ -155,7 +155,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |SQL Database | Igen | Igen | Nem |  |
 |SQL Server Stretch Database | Igen | Igen | Nem |  |
 |Verem | Nem | Nem | Nem |  |
-|Storage | Igen | Nem | [Igen](insights/storage-insights-overview.md) |  |
+|Tárolás | Igen | Nem | [Igen](insights/storage-insights-overview.md) |  |
 |Tárolási gyorsítótár | Nem | Nem | Nem |  |
 |Storage Sync Services | Nem | Nem | Nem |  |
 |Stream Analytics | Igen | Igen | Nem |  |
@@ -164,11 +164,24 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Traffic Manager | Igen | Igen | Nem |  |
 |Univerzális nyomtatás | Nem | Nem | Nem |  |
 |Virtual Machine Scale Sets | Nem | Igen | [Igen](insights/vminsights-overview.md) | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök. |
-|Virtuális gépek | Igen | Igen | [Igen](insights/vminsights-overview.md) | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök. |
+|Virtual Machines | Igen | Igen | [Igen](insights/vminsights-overview.md) | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök. |
 |Virtual Network | Igen | Igen | [Igen](insights/network-insights-overview.md) |  |
 |Virtual Network – NSG folyamatok naplói | Nem | Igen | Nem |  |
 |VPN Gateway | Igen | Igen | Nem |  |
 |Windows virtuális asztal | Nem | Nem | Nem |  |
+
+## <a name="virtual-machine-agents"></a>Virtuális gépek ügynökei
+A következő táblázat felsorolja azokat az ügynököket, amelyek adatokat gyűjthetnek a virtuális gépek vendég operációs rendszeréről, és adatokat küldhetnek a figyelőnek. Minden ügynök különböző adatokat gyűjthet, és elküldheti azt a Azure Monitor-ban lévő metrikák vagy naplók számára. 
+
+Az egyes ügynökök által gyűjtött adatokra vonatkozó részletekért tekintse meg a [Azure monitor-ügynökök áttekintését](platform/agents-overview.md) .
+
+| Ügynök |  Mérőszámok | Naplók |
+|:---|:---|:---|:---|
+| [Azure Monitor-ügynök (előzetes verzió)](platform/azure-monitor-agent-overview.md) | Igen | Igen |
+| [Log Analytics-ügynök](platform/log-analytics-agent.md) | Nem | Igen|
+| [Diagnosztikai bővítmény](platform/diagnostics-extension-overview.md) | Igen | Nem |
+| [A Grafi ügynök](platform/collect-custom-metrics-linux-telegraf.md) | Igen | Nem |
+| [Függőségi ügynök](insights/vminsights-enable-overview.md) | Nem | Igen |
 
 
 ## <a name="product-integrations"></a>Termék-integrációk
@@ -220,12 +233,12 @@ A Azure Monitor az Azure-on kívüli erőforrásokból is gyűjthet adatokat az 
 | Erőforrás | Metódus |
 |:---|:---|
 | Alkalmazások | Webalkalmazások monitorozása az Azure-on kívül Application Insights használatával. Lásd: [Mi az Application Insights?](./app/app-insights-overview.md) |
-| Virtual machines (Virtuális gépek) | Az ügynökök használatával adatokat gyűjthet a virtuális gépek vendég operációs rendszeréről más felhőalapú környezetekben vagy helyszíni környezetben. Lásd: [Azure monitor ügynökök áttekintése](platform/agents-overview.md). |
+| Virtuális gépek | Az ügynökök használatával adatokat gyűjthet a virtuális gépek vendég operációs rendszeréről más felhőalapú környezetekben vagy helyszíni környezetben. Lásd: [Azure monitor ügynökök áttekintése](platform/agents-overview.md). |
 | Ügyfél REST API | A különböző API-k képesek adatokat írni Azure Monitor naplókba és metrikába bármilyen REST API ügyfélről. Lásd: [naplófájlok küldésének Azure monitor a http](platform/data-collector-api.md) -adatgyűjtő API-val a naplókhoz, és [Egyéni metrikák küldése egy Azure-erőforrásnak a Azure monitor metrika-tárolóba](platform/metrics-store-custom-rest-api.md) a metrikák REST API használatával. |
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudjon meg többet a [Azure monitor adatplatformról, amely az elemzések és megoldások által gyűjtött naplókat és mérőszámokat tárolja](platform/data-platform.md).
 - Az [Azure-erőforrások figyelésével kapcsolatos oktatóanyag](learn/tutorial-resource-logs.md)elvégzése.

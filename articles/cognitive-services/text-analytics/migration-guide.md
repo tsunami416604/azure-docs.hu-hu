@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/25/2020
+ms.date: 10/19/2020
 ms.author: aahi
-ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 172e684c6edbab4d7d47c8cf78e35ae38de3a0af
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85412583"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461787"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrálás a Text Analytics API 3. x verziójára
 
@@ -23,7 +23,7 @@ ms.locfileid: "85412583"
 
 Ha a Text Analytics API 2,1-es verzióját használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez a 3. x verzió használatára. Az 3,0-es verzió általánosan elérhető, és olyan új funkciókat vezet be, mint az [elnevezett entitás-felismerés](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) és a [modell verziószámozása](concepts/model-versioning.md). A v 3.1 (v 3.1-preview. x) előzetes verziója is elérhető, amely olyan funkciókat is tartalmaz, mint a [vélemény bányászata](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features). A v2-ben használt modellek nem kapják meg a jövőbeli frissítéseket. 
 
-#### <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment-analysis)
+#### <a name="sentiment-analysis"></a>[Hangulat elemzése](#tab/sentiment-analysis)
 
 ## <a name="feature-changes"></a>Szolgáltatások módosításai 
 
@@ -33,7 +33,12 @@ Az 2,1-es verzióban található Hangulatelemzés az API-nak elküldett minden d
 
 ### <a name="rest-api"></a>REST API
 
-Ha az alkalmazás a REST API használja, frissítse a kérelem végpontját a v3-végpontra az érzelmek elemzéséhez. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` . Emellett frissítenie kell az alkalmazást a [JSON-válaszban](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)visszaadott hangulati címkék használatára. 
+Ha az alkalmazás a REST API használja, frissítse a kérelem végpontját a v3-végpontra az érzelmek elemzéséhez. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` . Emellett frissítenie kell az alkalmazást az [API válaszában](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)visszaadott hangulati címkék használatára. 
+
+A JSON-válaszra vonatkozó példák a dokumentációban találhatók.
+* [2,1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+* [3,0-es verzió](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment) 
+* [3,1-es verzió – előzetes verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
 
 ### <a name="client-libraries"></a>Ügyfélkódtárak
 
@@ -60,7 +65,12 @@ Entitáskapcsolás
 NER
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
-Emellett frissítenie kell az alkalmazást a [JSON-válaszban](how-tos/text-analytics-how-to-entity-linking.md#view-results)visszaadott [entitás-kategóriák](named-entity-types.md) használatára.
+Emellett frissítenie kell az alkalmazást az [API-válaszban](how-tos/text-analytics-how-to-entity-linking.md#view-results)visszaadott [entitás-kategóriák](named-entity-types.md) használatára.
+
+A JSON-válaszra vonatkozó példák a dokumentációban találhatók.
+* [2,1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+* [3,0-es verzió](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral) 
+* [3,1-es verzió – előzetes verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/EntitiesRecognitionGeneral)
 
 ### <a name="client-libraries"></a>Ügyfélkódtárak
 
@@ -77,14 +87,19 @@ A nyelvi észlelési funkció nem módosult a v3 verzión kívül, de a JSON-vá
 
 ### <a name="rest-api"></a>REST API
 
-Ha az alkalmazás a REST API használja, frissítse a kérelem végpontját a v3 végpontra a nyelvfelismerés érdekében. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` . Emellett frissítenie kell a `ConfidenceScore` `score` [JSON-válasz](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)helyett használni kívánt alkalmazást. 
+Ha az alkalmazás a REST API használja, frissítse a kérelem végpontját a v3 végpontra a nyelvfelismerés érdekében. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` . Emellett frissítenie kell az alkalmazást, hogy az az `ConfidenceScore` `score` [API válasza](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)helyett használni fogja. 
+
+A JSON-válaszra vonatkozó példák a dokumentációban találhatók.
+* [2,1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
+* [3,0-es verzió](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) 
+* [3,1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
 
 ### <a name="client-libraries"></a>Ügyfélkódtárak
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
 
-#### <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Kulcskifejezések kinyerése](#tab/key-phrase-extraction)
 
 ## <a name="feature-changes"></a>Szolgáltatások módosításai 
 
@@ -96,6 +111,11 @@ A Key kifejezés kibontása szolgáltatás nem módosult a v3 verzión kívül.
 
 Ha az alkalmazás a REST API használja, frissítse a kérelem végpontját a v3 végpontra a fő kifejezés kinyeréséhez. Például: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
 
+A JSON-válaszra vonatkozó példák a dokumentációban találhatók.
+* [2,1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
+* [3,0-es verzió](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) 
+* [3,1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/KeyPhrases)
+
 ### <a name="client-libraries"></a>Ügyfélkódtárak
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
@@ -105,7 +125,6 @@ Ha az alkalmazás a REST API használja, frissítse a kérelem végpontját a v3
 
 ## <a name="see-also"></a>Lásd még
 
-* [Text Analytics API v2 – dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/)
 * [Mi a Text Analytics API](overview.md)
 * [Nyelvi támogatás](language-support.md)
 * [Modell verziószámozása](concepts/model-versioning.md)

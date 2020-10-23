@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: 486f026f0d9b325f8e17a040c69f9d3e1da9b359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d89def944529235a0141d7e700049f15d1d0a7
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729032"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424974"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 
@@ -28,7 +28,7 @@ Megtudhatja, hogyan végezhet hitelesítést a Azure Machine Learning munkaterü
 * __Interaktív__: a fiókját a Azure Active Directory közvetlenül a hitelesítéshez, vagy a hitelesítéshez használt token beszerzéséhez használja. Az interaktív hitelesítés a kísérletezés és az ismétlődő fejlesztés során használatos. Vagy az erőforrásokhoz (például webszolgáltatásokhoz) való hozzáférés szabályozása felhasználónkénti alapon.
 * __Egyszerű szolgáltatásnév__: egyszerű szolgáltatásnév-fiókot hoz létre a Azure Active Directoryban, és a hitelesítéshez vagy a jogkivonat lekéréséhez használja azt. Az egyszerű szolgáltatásnév akkor használatos, ha automatikus folyamatra van szükség a szolgáltatásban való hitelesítéshez anélkül, hogy felhasználói beavatkozásra lenne szükség. Például egy folyamatos integrációs és üzembe helyezési parancsfájl, amely a modell minden egyes változásakor betanítja és teszteli a modellt. Egy egyszerű szolgáltatás használatával is lekérheti a tokent egy webszolgáltatáshoz való hitelesítéshez, ha nem szeretné, hogy a szolgáltatás végfelhasználója hitelesítse magát. Vagy ha a végfelhasználói hitelesítés nem közvetlenül a Azure Active Directory használatával történik.
 
-A használt hitelesítési típustól függetlenül a szerepköralapú hozzáférés-vezérlés (RBAC) az erőforrásokhoz engedélyezett hozzáférés szintjének hatókörére szolgál. Egy telepített modell hozzáférési jogkivonatának beolvasására használt fióknak például olvasási hozzáféréssel kell rendelkeznie a munkaterülethez. További információ a RBAC: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
+A használt hitelesítési típustól függetlenül az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az erőforrásokhoz engedélyezett hozzáférés szintjének hatókörére szolgál. Egy telepített modell hozzáférési jogkivonatának beolvasására használt fióknak például olvasási hozzáféréssel kell rendelkeznie a munkaterülethez. További információ az Azure RBAC: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -381,7 +381,7 @@ print(token)
 >
 > Továbbá minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Rendszerkép-besorolási modell betanítása és üzembe helyezése](tutorial-train-models-with-aml.md).

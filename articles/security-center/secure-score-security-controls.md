@@ -11,49 +11,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 24e10dad6a4b9a6232ce74b5365d9a9df7860079
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339934"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425338"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Biztonsági pontszám az Azure Security Centerben
 
 ## <a name="introduction-to-secure-score"></a>A biztonságos pontszám bemutatása
 
-Azure Security Center két fő célja van: az aktuális biztonsági helyzet megértéséhez, valamint a biztonság hatékony és hatékony fejlesztéséhez. A Security Center központi aspektusa, amely lehetővé teszi a célok elérését biztonságos pontszámként.
+Azure Security Center két fő célja van: 
+
+- az aktuális biztonsági helyzet megismerése érdekében
+- a biztonság hatékonyságának és hatékony javításának elősegítése érdekében
+
+A Security Center központi funkciója, amely lehetővé teszi a célok elérését **biztonságos pontszámként**.
 
 Security Center folyamatosan felméri az erőforrásokat, az előfizetéseket és a szervezetet a biztonsági problémákra. Ezután összesíti az összes megállapítást egyetlen pontszámba, így eldöntheti, hogy az aktuális biztonsági helyzet: minél magasabb a pontszám, annál alacsonyabb az azonosított kockázati szint.
 
-A Security Center biztonságos pontszám lapja az alábbiakat tartalmazza:
+A biztonságos pontszám a Azure Portal oldalakon százalékos értékként jelenik meg, de a mögöttes értékeket is világosan mutatja:
 
-- **A pontszám** – a biztonságos pontszám százalékos értékként jelenik meg, de a mögöttes értékek is egyértelműek:
+:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="Általános biztonsági pontszám a portálon látható módon":::
 
-    [![Az alapul szolgáló számok százalékos értékeként megjelenített biztonságos pontszám](media/secure-score-security-controls/secure-score-with-percentage.png)](media/secure-score-security-controls/secure-score-with-percentage.png#lightbox)
+A biztonság növelése érdekében tekintse át a Security Center ajánlásainak lapját a pontszám növeléséhez szükséges kiemelkedő műveletekhez. Minden javaslat útmutatást tartalmaz az adott probléma megoldásához.
 
-- **Biztonsági vezérlők** – az egyes vezérlők a kapcsolódó biztonsági javaslatok logikai csoportjai, és a sebezhető támadási felületeket tükrözik. A vezérlők a biztonsági javaslatok összessége, amelyek útmutatást nyújtanak a javaslatok megvalósításához. A pontszám csak akkor javul, ha egy vezérlőelemen belül egy adott erőforráshoz tartozó *összes* javaslatot szervizeli.
+A javaslatok **biztonsági vezérlőkbe**vannak csoportosítva. Az egyes vezérlők a kapcsolódó biztonsági javaslatok logikai csoportjai, és a sebezhető támadási felületeket tükrözik. A pontszám csak akkor javul, ha egy vezérlőelemen belül egy adott erőforráshoz tartozó *összes* javaslatot szervizeli. Ha szeretné megtudni, hogy a szervezet milyen jól védi az egyes támadási felületeket, tekintse át az egyes biztonsági vezérlők pontszámait.
 
-    Ha szeretné azonnal megtekinteni, hogy a szervezet milyen jól védi az egyes támadási felületet, tekintse át az egyes biztonsági vezérlők pontszámait.
-
-    További információ: [a biztonságos pontszám kiszámítása](secure-score-security-controls.md#how-your-secure-score-is-calculated) alább. 
-
-
->[!TIP]
-> Security Center odaítélt pontok korábbi verziói az ajánlási szinten: Ha egy adott erőforrásra vonatkozó javaslatot szervizelt, a biztonságos pontszám javult. Napjainkban a pontszám csak akkor javul, ha a vezérlőn belül egy adott erőforráshoz tartozó *összes* javaslatot szervizeli. Így a pontszám csak akkor javul, ha javította az erőforrás biztonságát.
+További információ: [a biztonságos pontszám kiszámítása](secure-score-security-controls.md#how-your-secure-score-is-calculated) alább. 
 
 
 ## <a name="access-your-secure-score"></a>Hozzáférés a biztonságos pontszámhoz
 
-A teljes biztonsági pontszám, valamint a pontszám/előfizetés alapján a Azure Portal vagy a programozott módon a Azure Security Center REST API.
+Az alábbi szakaszokban leírtak szerint megtalálhatja a teljes biztonsági pontszámot, valamint a pontszám/előfizetés alapján a Azure Portal vagy a programozott módon:
+
+- [A portál biztonságos pontszámának beolvasása](#get-your-secure-score-from-the-portal)
+- [Szerezze be biztonságos pontszámát a REST API](#get-your-secure-score-from-the-rest-api)
+- [Az Azure Resource Graph (ARG) biztonságos pontszámának beolvasása](#get-your-secure-score-from-azure-resource-graph-arg)
 
 ### <a name="get-your-secure-score-from-the-portal"></a>A portál biztonságos pontszámának beolvasása
 
-Security Center a pontszám kiemelten jelenik meg a portálon: ez az első dolog, ami az Áttekintés oldalon látható. Ha a a dedikált biztonságos pontszám oldalra kattint, a pontszám az előfizetés alapján lebontva jelenik meg. Kattintson egy előfizetésre, és tekintse meg a rangsorolt javaslatok részletes listáját, valamint azt, hogy milyen hatással lehet a szervizelését az előfizetés pontszámára.
+Security Center a pontszám kiemelten jelenik meg a portálon: ez az első fő csempe az Security Center áttekintés oldalon. A csempe kiválasztásával a dedikált biztonságos pontszám oldalra kerül, ahol a pontszám az előfizetés alapján lebontva jelenik meg. Válasszon ki egy előfizetést, és tekintse meg a rangsorolt javaslatok részletes listáját, valamint azt, hogy milyen hatással lehet a szervizelését rájuk az előfizetés pontszáma.
 
-![Általános biztonsági pontszám a portálon látható módon](media/secure-score-security-controls/single-secure-score-via-ui.png)
+Az emlékeztetőhöz a biztonságos pontszám a Security Center portáljának oldalain a következő helyekről jelenik meg.
+
+- Security Center **áttekintésében** lévő csempén (fő irányítópult):
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Általános biztonsági pontszám a portálon látható módon":::
+
+- A dedikált **biztonságos pontszám** oldalon:
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Általános biztonsági pontszám a portálon látható módon":::
+
+- A **javaslatok** lap tetején:
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Általános biztonsági pontszám a portálon látható módon":::
+
+
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Szerezze be biztonságos pontszámát a REST API
 
@@ -62,6 +79,40 @@ A pontszámot a biztonságos pontszám API-n keresztül érheti el (jelenleg el�
 ![Egyetlen biztonságos pontszám beolvasása az API-n keresztül](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 A biztonságos pontszám API-ra épülő eszközökre vonatkozó példákért tekintse meg [a GitHub-Közösség biztonságos pontszám területét](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
+
+
+
+### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Az Azure Resource Graph (ARG) biztonságos pontszámának beolvasása
+
+Az Azure Resource Graph azonnali hozzáférést biztosít az erőforrás-információkhoz a felhőalapú környezetekben, robusztus szűrési, csoportosítási és rendezési képességekkel. Az Azure-előfizetések programozott vagy a Azure Portalon keresztüli lekérdezésének gyors és hatékony módja. [További információ az Azure Resource Graph-ról](https://docs.microsoft.com/azure/governance/resource-graph/).
+
+Az ARG-sel rendelkező több előfizetés biztonságos pontszámának elérése:
+
+1. A Azure Portal nyissa meg az **Azure Resource Graph Explorert**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Általános biztonsági pontszám a portálon látható módon" :::
+
+1. Adja meg a Kusto-lekérdezést (az alábbi példák használatával útmutatást talál).
+
+    - Ez a lekérdezés visszaadja az előfizetés-azonosítót, az aktuális pontszámot a pontokban és százalékban, valamint az előfizetés maximális pontszámát. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores' 
+        | extend current = properties.score.current, max = todouble(properties.score.max)
+        | project subscriptionId, current, max, percentage = ((current / max)*100)
+        ```
+
+    - Ez a lekérdezés az összes biztonsági vezérlő állapotát adja vissza. Az egyes vezérlőknél a nem megfelelő állapotú erőforrások számát, az aktuális pontszámot és a maximális pontszámot kell megszereznie. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores/securescorecontrols'
+        | extend SecureControl = properties.displayName, unhealthy = properties.unhealthyResourceCount, currentscore = properties.score.current, maxscore = properties.score.max
+        | project SecureControl , unhealthy, currentscore, maxscore
+        ```
+
+1. Válassza a **lekérdezés futtatása**lehetőséget.
 
 ## <a name="how-your-secure-score-is-calculated"></a>A biztonságos pontszám kiszámításának módja 
 
@@ -99,7 +150,7 @@ Az **előzetesként** megjelölt javaslatok nem szerepelnek a biztonságos ponts
 
 Példa az előzetes verziójú javaslatra:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Javaslat az előnézet jelölővel":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Általános biztonsági pontszám a portálon látható módon":::
 
 ## <a name="improve-your-secure-score"></a>Biztonsági pontszám javítása
 
@@ -206,7 +257,7 @@ Igen. Javasoljuk, hogy tiltsa le a javaslatokat, ha azok nem alkalmazhatók a k�
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>Ha egy biztonsági vezérlő nulla pontot biztosít a biztonságos pontszám felé, figyelmen kívül hagyhatom?
 Bizonyos esetekben a vezérlőelem maximális pontszáma nullánál nagyobb lesz, de a hatás nulla. Ha az erőforrások kijavításának növekményes pontszáma elhanyagolható, a rendszer nulla értékűre kerekíti. Ne hagyja figyelmen kívül ezeket az ajánlásokat, mivel azok továbbra is biztonsági javítást tesznek lehetővé. Az egyetlen kivétel a "további ajánlott eljárás" vezérlő. Szervizelését ezekkel az ajánlásokkal nem növeli a pontszámát, de a teljes biztonságot is növeli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a biztonságos pontszámot és az általa bevezetett biztonsági ellenőrzéseket ismerteti. A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 

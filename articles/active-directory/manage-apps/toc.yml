@@ -220,6 +220,8 @@
           href: troubleshoot-password-based-sso.md
         - name: Az SAML-alapú egyszeri bejelentkezés hibaelhárítása
           href: troubleshoot-saml-based-sso.md
+        - name: SAML-alapú egyszeri bejelentkezés hibakeresése
+          href: debug-saml-sso-issues.md
         - name: Felhasználói bejelentkezés hibaelhárítása
           items:
             - name: Váratlan hozzájárulási kérés

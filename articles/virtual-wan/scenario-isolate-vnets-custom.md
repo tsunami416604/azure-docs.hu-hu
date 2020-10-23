@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 12bc99d24472780f87a6b2a83befdbbf12944860
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267720"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461821"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Forgatókönyv: a virtuális hálózatok egyéni elkülönítése
 
@@ -25,11 +25,11 @@ Ha szeretné kideríteni, hogy hány útválasztási táblázatra van szükség,
 
 | Forrás | Címzett:| *Kék virtuális hálózatok* | *Piros virtuális hálózatok* | *Ágak*|
 |---|---|---|---|---|
-| **Kék virtuális hálózatok** |   &#8594;|      X        |               |       X      |
-| **Piros virtuális hálózatok**  |   &#8594;|              |       X       |       X      |
-| **Ágak**   |   &#8594;|     X        |       X       |       X      |
+| **Kék virtuális hálózatok** |   &#8594;|   Direct     |           |  Direct |
+| **Piros virtuális hálózatok**  |   &#8594;|              |   Direct  |  Direct |
+| **Ágak**   |   &#8594;|   Direct     |   Direct  |  Direct |
 
-Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a tábla sorai) megtanulja-e a cél előtagot (a folyamat "to" oldalát, a tábla oszlopainak fejlécét) egy adott forgalmi folyamathoz, ahol az "X" azt jelenti, hogy a kapcsolatot a virtuális WAN nyújtja.
+Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) kommunikál-e egy célhoz (a folyamat "to" oldalára, a dőlt betűs oszlopokra). Ebben a forgatókönyvben nincsenek tűzfalak vagy hálózati virtuális berendezések, így a kommunikáció közvetlenül a virtuális WAN-kapcsolaton keresztül történik (ezért a táblázatban a "Direct" szó látható).
 
 A különböző sorokban szereplő minták száma az ebben a forgatókönyvben szükséges útválasztási táblák száma lesz. Ebben az esetben három útvonal-útválasztási táblázat **RT_BLUE** és **RT_RED** a virtuális hálózatokhoz, és az ágak **alapértelmezett értéke** . Ne feledje, hogy az ágakat mindig az alapértelmezett útválasztási táblázathoz kell társítani.
 
@@ -74,7 +74,7 @@ Ez azt eredményezi, hogy az útválasztási konfiguráció megváltozik az alá
 
 :::image type="content" source="./media/routing-scenarios/custom-isolation/custom.png" alt-text="1. ábra":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

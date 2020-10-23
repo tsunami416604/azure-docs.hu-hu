@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: df7c27fb0aca6a9b903d29ea4414832fb677b3eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 086f680a0674d5d79d9d039d9ad47e542856ac5d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91705262"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92420071"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -27,7 +27,7 @@ Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](https://do
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-Az az [login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal. 
+Az az [login](/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal. 
 
 ```azurecli-interactive
 az login
@@ -39,11 +39,11 @@ Válassza ki az adott előfizetés-azonosítót a fiókja alatt az az  [Account 
 az account set --subscription <subscription id>
 ```
 
-Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)lehetőséget.
+Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](/cli/azure/account#az-account-list)lehetőséget.
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 
-Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az az [Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal, majd hozza létre a PostgreSQL-kiszolgálót az erőforráscsoport belsejében. Egyedi nevet adjon meg. A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az az [Group Create](/cli/azure/group#az-group-create) paranccsal, majd hozza létre a PostgreSQL-kiszolgálót az erőforráscsoport belsejében. Egyedi nevet adjon meg. A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -58,7 +58,7 @@ Az előző argumentumok részletei:
 
 **Beállítás** | **Mintaérték** | **Leírás**
 ---|---|---
-name | mydemoserver | A Azure Database for PostgreSQL-kiszolgálót azonosító egyedi név. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia.
+name | mydemoserver | A Azure Database for PostgreSQL-kiszolgálót azonosító egyedi név. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia. További információ: [Azure Database for PostgreSQL elnevezési szabályok](/azure/azure-resource-manager/management/resource-name-rules#microsoftdbforpostgresql).
 resource-group | myResourceGroup | Az Azure-erőforráscsoport neve.
 location | westus | A kiszolgáló Azure-beli helye.
 admin-user | myadmin | A rendszergazdai bejelentkezéshez használt Felhasználónév. Nem lehet **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest**vagy **Public**.
@@ -67,7 +67,7 @@ sku-name|GP_Gen5_2| A díjszabási csomag és a számítási konfiguráció neve
 
 >[!IMPORTANT] 
 >- Az alapértelmezett PostgreSQL-verzió a kiszolgálón 9,6. Az összes támogatott verzió megtekintéséhez lásd: [támogatott PostgreSQL főverziók](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
->- Az **az postgres Server Create** parancs összes argumentumának megtekintéséhez tekintse meg [ezt a hivatkozási dokumentumot](https://docs.microsoft.com/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create).
+>- Az **az postgres Server Create** parancs összes argumentumának megtekintéséhez tekintse meg [ezt a hivatkozási dokumentumot](/cli/azure/postgres/server#az-postgres-server-create).
 >- Az SSL alapértelmezés szerint engedélyezve van a kiszolgálón. További információ az SSL-ről: az [SSL-kapcsolat konfigurálása](./concepts-ssl-connection-security.md).
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása 
