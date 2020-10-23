@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 73028c10c7e7308ee16bd8fb27ca6c3a6661c411
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c41ffcd552cddf981c2ed54d1d78c7cb2e8698c5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145943"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440832"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
 
@@ -39,11 +39,11 @@ Ennek a folyamatnak az eredménye egy gráfon (a kapcsolatokon) keresztül össz
 
 ## <a name="create-with-the-apis"></a>Létrehozás az API-kkal
 
-Ez a szakasz azt mutatja be, hogyan hozhat létre digitális ikreket és kapcsolatokat egy ügyfélalkalmazás használatával. Olyan .NET-kód példákat tartalmaz, amelyek a [DigitalTwins API-kat](how-to-use-apis-sdks.md)használják, hogy további kontextust biztosítson az egyes fogalmakon belül.
+Ez a szakasz azt mutatja be, hogyan hozhat létre digitális ikreket és kapcsolatokat egy ügyfélalkalmazás használatával. Olyan .NET-kód példákat tartalmaz, amelyek a [DigitalTwins API-kat](/rest/api/digital-twins/dataplane/twins)használják, hogy további kontextust biztosítson az egyes fogalmakon belül.
 
 ### <a name="create-digital-twins"></a>Digitális ikrek létrehozása
 
-Az alábbi kódrészlet a [DigitalTwins API](how-to-use-apis-sdks.md) -kat használja egy Twin típusú *szoba*létrehozásához.
+Az alábbi kódrészlet a [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) -kat használja egy Twin típusú *szoba*létrehozásához.
 
 Az Azure Digital Twins aktuális előnézetében a Twin tulajdonságot a Twin létrehozása előtt inicializálni kell. Ezt egy JSON-dokumentum létrehozásával teheti meg, amely megadja a szükséges inicializálási értékeket.
 
@@ -53,7 +53,7 @@ Használhat egy nevű segítő osztályt is `BasicDigitalTwin` , amely egy "Twin
 
 ### <a name="create-relationships"></a>Kapcsolatok létrehozása
 
-Íme néhány példa arra, hogy a [DigitalTwins API](how-to-use-apis-sdks.md) *-kat*használó ügyfél létrehozza a kapcsolatot *egy, a* *földszintes*és egy *Cafe*típusú digitális Twin.
+Íme néhány példa arra, hogy a [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) *-kat*használó ügyfél létrehozza a kapcsolatot *egy, a* *földszintes*és egy *Cafe*típusú digitális Twin.
 
 ```csharp
 // Create Twins, using functions similar to the previous sample
@@ -81,7 +81,7 @@ A digitális Twin-és a kapcsolati adatfájlok egyaránt JSON formátumban vanna
 
 Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$dtId` | A digitális Twin AZONOSÍTÓját jelölő, felhasználó által megadott karakterlánc |
 | `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |
@@ -148,7 +148,7 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
 
 Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$relationshipId` | Egy felhasználó által megadott karakterlánc, amely a kapcsolat AZONOSÍTÓját jelöli. Ez a karakterlánc egyedi a forrásként szolgáló digitális Twin környezetben, ami azt is jelenti, hogy az `sourceId`  +  `relationshipId` Azure Digital Twins-példány kontextusában egyedi. |
 | `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |
@@ -170,7 +170,7 @@ Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő me
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: gráf-elemek kezelése az Azure Digital Twin API-kkal:
 * [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)

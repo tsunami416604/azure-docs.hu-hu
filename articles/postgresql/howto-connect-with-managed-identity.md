@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1b9603e43541ec1a364e4653caeeafc751f7e4f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d801499360bd05cee4c01aefd873337303017f3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012092"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427519"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Csatlakozás felügyelt identitással az Azure Database for PostgreSQL-hez
 
@@ -27,7 +27,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha még nem ismeri az Azure-erőforrások felügyelt identitására vonatkozó funkciót, tekintse meg ezt az [áttekintést](../../articles/active-directory/managed-identities-azure-resources/overview.md). Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- A szükséges erőforrás-létrehozási és szerepkör-kezelés végrehajtásához a fióknak a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) a tulajdonos engedélyekkel kell rendelkeznie. Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../../articles/role-based-access-control/role-assignments-portal.md) részben leírtakat.
+- A szükséges erőforrás-létrehozási és szerepkör-kezelés végrehajtásához a fióknak a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) a tulajdonos engedélyekkel kell rendelkeznie. Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg az Azure- [alapú hozzáférés-vezérlés (Azure RBAC) használata az Azure-előfizetési erőforrások elérésének kezeléséhez](../../articles/role-based-access-control/role-assignments-portal.md)című témakört.
 - Szüksége lesz egy Azure-beli virtuális gépre (például a Ubuntu Linux), amelyet az adatbázis felügyelt identitással való eléréséhez szeretne használni.
 - Szüksége van egy Azure Database for PostgreSQL adatbázis-kiszolgálóra, amelyen konfigurálva van az [Azure ad-hitelesítés](howto-configure-sign-in-aad-authentication.md)
 - A C# példájának követéséhez először végezze el a [Kapcsolódás a c#](connect-csharp.md) használatával című útmutatót.
@@ -197,6 +197,6 @@ Connected!
 Postgres version: PostgreSQL 11.6, compiled by Visual C++ build 1800, 64-bit
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [Azure Active Directory hitelesítéssel](concepts-aad-authentication.md) kapcsolatos általános fogalmakat Azure Database for PostgreSQL

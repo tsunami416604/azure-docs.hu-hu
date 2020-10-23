@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 51ad28319a372cd791575b5a3e67cc0fd6934be2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981652"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454694"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a DocuSign
 
@@ -44,9 +44,9 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A DocuSign támogatja **az igény** szerinti felhasználói üzembe helyezést.
 
-* A DocuSign támogatja az [automatikus felhasználó-kiépítés](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)használatát.
+* A DocuSign támogatja az [automatikus felhasználó-kiépítés](./docusign-provisioning-tutorial.md)használatát.
 
-* A DocuSign konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* A DocuSign konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>DocuSign hozzáadása a gyűjteményből
 
@@ -119,7 +119,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. A képernyő felső részén válassza az **új felhasználó**lehetőséget.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
-   1. A **Felhasználónév** mezőbe írja be a nevet `<username>@<companydomain>.<extension>` . Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a nevet `<username>@<companydomain>.<extension>` . Például így: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -235,12 +235,12 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 2. Lépjen közvetlenül a DocuSign bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-3. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a DocuSign csempére kattint, automatikusan be kell jelentkeznie arra a DocuSign, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a DocuSign csempére kattint, automatikusan be kell jelentkeznie arra a DocuSign, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A DocuSign konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+A DocuSign konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 <!--Image references-->
 

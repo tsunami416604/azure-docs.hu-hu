@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 516989e37e8c9eb0c4ab35ea6add4f5b6526ee6d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.custom: contperfq2
+ms.openlocfilehash: 59e00d2bb47826bb4bfa381c42db551f44d84b71
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893458"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427596"
 ---
 # <a name="manage-app-consent-policies"></a>Alkalmazás-hozzájárulási szabályzatok kezelése
 
@@ -140,7 +141,7 @@ Az alábbi táblázat az alkalmazás-engedélyezési házirendek támogatott fel
 | ClientApplicationPublisherIds | Az ügyfélalkalmazás [ellenőrzött közzétevői](../develop/publisher-verification-overview.md) számára készült Microsoft Partner Network (MPN) azonosítók listája, vagy egyetlen "all" értékű lista, amely az ügyfélalkalmazások bármelyik közzétevőtől való egyeztetésére használható. Az alapértelmezett érték az "all". |
 | ClientApplicationsFromVerifiedPublisherOnly | A beállítás értéke `$true` csak az [ellenőrzött közzétevővel](../develop/publisher-verification-overview.md)rendelkező ügyfélalkalmazások egyeztetése. Úgy állítsa be, `$false` hogy minden ügyfélalkalmazás egyezzen, még akkor is, ha nem rendelkezik ellenőrzött közzétevővel. Az alapértelmezett szint a `$false`. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók:
 

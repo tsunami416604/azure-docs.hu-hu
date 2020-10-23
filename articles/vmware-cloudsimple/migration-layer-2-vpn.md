@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f524bf6af66d44bc13b7c0957de7977968cbef28
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83651031"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427256"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Számítási feladatok migrálása a 2. rétegbeli kiterjesztett hálózatok használatával
 
@@ -118,7 +118,7 @@ A következő lépések bemutatják, hogyan lehet beolvasni a Tier0 DR logikai �
 
 3. Nyisson meg egy SSH-munkamenetet a peremhálózati virtuális gép felügyeleti IP-címével. Futtassa a ```get logical-router``` parancsot a Felhasználónév- **rendszergazda** és a jelszó **CloudSimple 123!**.
 
-    ![logikai útválasztó kimenetének beolvasása](media/l2vpn-fetch03.png)
+    ![A megnyitott SSH-munkamenetet bemutató képernyőkép.](media/l2vpn-fetch03.png)
 
 4. Ha nem látja a "DR-Provider-LR" bejegyzést, hajtsa végre az alábbi lépéseket.
 
@@ -132,7 +132,7 @@ A következő lépések bemutatják, hogyan lehet beolvasni a Tier0 DR logikai �
 
 7. Futtassa `get logical-router` újra a parancsot a peremhálózati virtuális gép SSH-munkamenetén. Megjelenik a "DR-Provider-LR" logikai útválasztó UUID azonosítója. Jegyezze fel az UUID-t, amely a L2VPN konfigurálásakor szükséges.
 
-    ![logikai útválasztó kimenetének beolvasása](media/l2vpn-fetch06.png)
+    ![A logikai útválasztó UUID-azonosítóját bemutató képernyőkép.](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>A L2VPN számára szükséges logikai kapcsoló AZONOSÍTÓjának beolvasása
 
@@ -430,7 +430,7 @@ A telepítés előtt ellenőrizze, hogy a helyszíni tűzfalszabályok engedély
 
 2. Nyissa meg a mappát az összes kibontott fájllal. Válassza ki az összes VMDK (NSX-l2t-Client-Large. MF és NSX-l2t-client-large. OVF nagyméretű berendezés méretéhez vagy NSX-l2t-Client-XLarge. MF és NSX-l2t-client-Xlarge. OVF a nagy méretű készülék méretéhez). Kattintson a **Tovább** gombra.
 
-    ![Sablon kijelölése sablon ](media/l2vpn-deploy-client02.png) ![ kiválasztása](media/l2vpn-deploy-client03.png)
+    ![Válassza ki ](media/l2vpn-deploy-client02.png) ![ a sablon képernyőképét, amely a kiválasztott VMDK-fájlokat jeleníti meg.](media/l2vpn-deploy-client03.png)
 
 3. Adja meg a NSX-T önálló ügyfél nevét, és kattintson a **tovább**gombra.
 

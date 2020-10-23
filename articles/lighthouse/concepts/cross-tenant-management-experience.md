@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 10/20/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9b47dd720271fe782ce9562d2216eca881756ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424155"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460665"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -81,6 +81,10 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 [Azure Kubernetes szolgáltatás (ak)](../../aks/index.yml):
 
 - Üzemeltetett Kubernetes-környezetek kezelése, tárolón belüli alkalmazások üzembe helyezése és kezelése az ügyfelek bérlői között
+
+[Azure Migrate](../../migrate/index.yml):
+
+- Áttelepítési projektek létrehozása az ügyfél-bérlőben és a virtuális gépek áttelepítése
 
 [Azure monitor](../../azure-monitor/index.yml):
 

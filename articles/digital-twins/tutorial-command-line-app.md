@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048491"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460784"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
 
@@ -234,7 +234,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
     :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
     >[!NOTE]
-    >A minta projektben a parancs a `Query` további argumentumok nélkül is megegyezik `Query SELECT * FROM DIGITALTWINS` . Ha a példányban lévő összes ikreket le szeretné kérdezni a [lekérdezési API](how-to-use-apis-sdks.md) -k vagy a [CLI-parancsok](how-to-use-cli.md)használatával, használja a hosszú (teljes) lekérdezést.
+    >A minta projektben a parancs a `Query` további argumentumok nélkül is megegyezik `Query SELECT * FROM DIGITALTWINS` . Ha a példányban lévő összes ikreket le szeretné kérdezni a [lekérdezési API](/rest/api/digital-twins/dataplane/query) -k vagy a [CLI-parancsok](how-to-use-cli.md)használatával, használja a hosszú (teljes) lekérdezést.
 
 * **Mik azok a szobák a saját környezetben?** (lekérdezés modell alapján)
 
@@ -285,7 +285,7 @@ Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolg�
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Ebben az oktatóanyagban megkezdte az Azure Digital Twins használatát egy példány és egy ügyfélalkalmazás beállításával a példánnyal való interakcióhoz. Az ügyfélalkalmazás felhasználta az Azure digitális ikrek felfedezését, a modellek, a digitális ikrek és a kapcsolatok létrehozását. Néhány lekérdezést is futtatott a megoldással kapcsolatban, hogy megtudja, milyen kérdésekre ad választ az Azure Digital Twins a környezetről.
 

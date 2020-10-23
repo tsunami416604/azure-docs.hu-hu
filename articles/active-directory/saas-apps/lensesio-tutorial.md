@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 48a1e50d451abb429e9bc33308909b368283644f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661452"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458608"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Lenses.io DataOps-portálon
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a [Lenses.IO](http
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a lencsékre az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure ad-vel](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A Lenses.io támogatja a szolgáltató (SP) által kezdeményezett egyszeri bejelentkezést.
 
-* A munkamenet-vezérlést a Lenses.io konfigurálása után kényszerítheti ki. A munkamenet-vezérlő valós időben védi a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A munkamenet-vezérlést a Lenses.io konfigurálása után kényszerítheti ki. A munkamenet-vezérlő valós időben védi a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-lensesio-from-the-gallery"></a>Lenses.io hozzáadása a gyűjteményből
 
@@ -128,7 +128,7 @@ Azt is megtudhatja, hogyan használja a lencsék csoporttagság-leképezést a [
 1. Válassza a **csoportok**lehetőséget.
 1. A képernyő felső részén válassza a **tagság hozzáadása**elemet.
 1. Keresse meg és válassza ki a **LensesUsers**.
-1. Kattintson a **Kiválasztás** elemre.
+1. Válassza a **Kiválasztás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -164,20 +164,20 @@ További információ: [Azure-objektívek csoport leképezése](https://docs.len
 
 Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési panel használatával tesztelheti.
 
-Amikor kiválasztja a Lenses.io csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Lenses.io-portálra. További információkért lásd: [Bevezetés a Hozzáférési panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Lenses.io csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Lenses.io-portálra. További információkért lásd: [Bevezetés a Hozzáférési panel használatába](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
 - [Egyszeri bejelentkezés beállítása a Lenses.io-példányban](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
-- [Az SaaS-alkalmazások Azure AD-vel való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure AD-vel való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure AD-vel?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure AD-vel?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés az Azure AD-ben?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure AD-ben?](../conditional-access/overview.md)
 
 - [A Lenses.io kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A Lenses.io és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Lenses.io és a speciális láthatóság és vezérlők elleni védelem](/cloud-app-security/proxy-intro-aad)

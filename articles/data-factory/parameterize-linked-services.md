@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 1bb523c1b5aa595a714930962bbbe4e7e04de517
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e6c00a0d2b6ff8bbb4ba9e51110e995e93d6b558
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131394"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426974"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizálja társított szolgáltatások Azure Data Factory
 
@@ -32,16 +32,18 @@ A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a 
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
-## <a name="supported-data-stores"></a>Támogatott adattárak
+## <a name="supported-linked-service-types"></a>Támogatott társított szolgáltatások típusai
 
 Bármilyen típusú társított szolgáltatást parametrizálja.
-A társított szolgáltatás felhasználói felületen való létrehozásakor Data Factory a következő típusú összekötők számára biztosít beépített paraméterezés élményt. A társított szolgáltatás létrehozása/szerkesztése panelen megtalálhatja az új paraméterek beállításait, és hozzáadhat dinamikus tartalmakat is.
+A társított szolgáltatás felhasználói felületen való létrehozásakor Data Factory a következő típusú társított szolgáltatások beépített paraméterezés-élményét biztosítja. A társított szolgáltatás létrehozása/szerkesztése panelen megtalálhatja az új paraméterek beállításait, és hozzáadhat dinamikus tartalmakat is.
 
 - Amazon Redshift
 - Amazon S3
 - Azure Cosmos DB (SQL API)
 - Azure Database for MySQL
+- Azure Databricks
 - Azure SQL Database
+- Felügyelt Azure SQL-példány
 - Azure Synapse Analytics (korábban SQL DW)
 - MySQL
 - Oracle
@@ -49,7 +51,7 @@ A társított szolgáltatás felhasználói felületen való létrehozásakor Da
 - Általános HTTP
 - Általános REST
 
-Más típusok esetén a parametrizálja a JSON szerkesztésével a felhasználói felületen:
+A fenti listában nem szereplő egyéb társított szolgáltatások esetében a parametrizálja a JSON-t a felhasználói felületen:
 
 - A társított szolgáltatás létrehozása/szerkesztése panelen – > bontsa ki a "Advanced" (speciális) lehetőséget az alul-> jelölje be a "dinamikus tartalom JSON formátumban" jelölőnégyzetet – > határozza meg a társított szolgáltatás JSON-adattartalmát. 
 - Vagy a társított szolgáltatás paraméterezés nélküli létrehozása után a [felügyeleti központ](author-visually.md#management-hub) – > társított szolgáltatások – > keresse meg az adott társított szolgáltatást – > kattintson a "code" (gomb " {} ") gombra a JSON szerkesztéséhez. 

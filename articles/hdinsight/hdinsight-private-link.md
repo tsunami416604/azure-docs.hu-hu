@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147916"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426397"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-fürtök biztonságossá tétele és elkülönítése privát kapcsolattal (előzetes verzió)
 
@@ -60,6 +60,8 @@ A standard Load balancerek nem biztosítják automatikusan a [nyilvános kimenő
 
 ### <a name="prepare-your-environment"></a>A környezet előkészítése
 
+A privát successgfull létrehozásához explicit módon [le kell tiltania a magánhálózati kapcsolati szolgáltatáshoz tartozó hálózati házirendeket](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy).
+
 A következő ábrán egy példa látható a fürt létrehozása előtt szükséges hálózati konfigurációra. Ebben a példában az összes kimenő forgalom Azure Firewall UDR használatával van [kényszerítve](../firewall/forced-tunneling.md) , és a szükséges kimenő függőségeknek "engedélyezett"nek kell lenniük a tűzfalon a fürt létrehozása előtt. Enterprise Security Package-fürtök esetében a VNet-társítással a Azure Active Directory Domain Services hálózati kapcsolata is elérhető.
 
 :::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="HDInsight-architektúra diagramja kimenő erőforrás-szolgáltatói kapcsolatok használatával":::
@@ -97,7 +99,7 @@ networkProperties: {
 
 A HDInsight nagyvállalati biztonsági funkcióival, beleértve a privát hivatkozásokat is, a [HDInsight Enterprise biztonsági sablon](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)című témakörben talál teljes sablont.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Enterprise Security Package az Azure HDInsight](enterprise-security-package.md)
 * [A vállalati biztonsági általános információk és irányelvek az Azure HDInsight](./domain-joined/general-guidelines.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: a9c1eb8816246c66803eca71677bc6ee835a9b29
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 246eba24f42baacf264c1c6d39ea63a51c62c51f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425598"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457435"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Oktatóanyag: Azure Active Directory integráció Amazon Web Services (AWS) (örökölt oktatóanyag)
 
@@ -31,7 +31,7 @@ Az Amazon Web Services (AWS) és az Azure AD integrálásával a következő el�
 ![Amazon Web Services (AWS) az eredmények listájában](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> Vegye figyelembe, hogy egyetlen AWS-alkalmazás csatlakoztatása az összes AWS-fiókhoz nem az ajánlott módszer. Ehelyett azt javasoljuk, hogy [ezt](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) a módszert használva több AWS-fiók több példányát konfigurálja az Azure ad-ben az AWS-alkalmazások több példányára. Ezt a módszert csak akkor érdemes használni, ha kevés AWS-fiókja és szerepköre van benne, ez a modell nem méretezhető, mivel a fiókokban az AWS-fiókok és-szerepkörök növekednek. Ez a megközelítés nem használja az AWS szerepkör-importálási funkciót az Azure AD-felhasználók kiosztásával, ezért manuálisan kell hozzáadnia/frissítenie/törölnie a szerepköröket. Az ehhez a megközelítéshez kapcsolódó egyéb korlátozásokért tekintse meg az alábbi részleteket.
+> Vegye figyelembe, hogy egyetlen AWS-alkalmazás csatlakoztatása az összes AWS-fiókhoz nem az ajánlott módszer. Ehelyett azt javasoljuk, hogy [ezt](./amazon-web-service-tutorial.md) a módszert használva több AWS-fiók több példányát konfigurálja az Azure ad-ben az AWS-alkalmazások több példányára. Ezt a módszert csak akkor érdemes használni, ha kevés AWS-fiókja és szerepköre van benne, ez a modell nem méretezhető, mivel a fiókokban az AWS-fiókok és-szerepkörök növekednek. Ez a megközelítés nem használja az AWS szerepkör-importálási funkciót az Azure AD-felhasználók kiosztásával, ezért manuálisan kell hozzáadnia/frissítenie/törölnie a szerepköröket. Az ehhez a megközelítéshez kapcsolódó egyéb korlátozásokért tekintse meg az alábbi részleteket.
 
 **Vegye figyelembe, hogy a következő okok miatt nem ajánlott ezt a módszert használni:**
 
@@ -363,11 +363,11 @@ Azt is ellenőrizheti, hogy az SAML-válasz a jogcímek szerint átadott szerepk
 
 ![Egyszeri bejelentkezéses On2 tesztelése](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
-További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../active-directory-saas-access-panel-introduction.md).
+További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Miután konfigurálta Amazon Web Services (AWS), kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+Miután konfigurálta Amazon Web Services (AWS), kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 <!--Image references-->
 

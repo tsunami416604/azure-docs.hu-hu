@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.openlocfilehash: 6bcc4ac5561a8bdb721018aa05bf2376579b627b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/22/2020
+ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079657"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440450"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Felügyelt identitások használata Azure Machine Learning (előzetes verzió)
 
@@ -29,7 +29,6 @@ Ebből a cikkből megtudhatja, hogyan használhatja a felügyelt identitásokat 
 
  * Konfigurálja és használja az ACR-t az Azure Machine Learning munkaterülethez anélkül, hogy engedélyeznie kellene a rendszergazdai felhasználói hozzáférést az ACR-hez.
  * A saját munkaterületén kívüli privát ACR-t is elérheti, hogy lekérje az alapképek betanítását vagy következtetését.
- * A betanításhoz a tárolási hozzáférési kulcsok helyett felügyelt identitások használatával férhet hozzá az adatkészletekhez.
 
 > [!IMPORTANT]
 > A felügyelt identitások használatával szabályozhatja az erőforrásokhoz való hozzáférést Azure Machine Learning jelenleg előzetes verzióban érhető el. Az előzetes verzió funkcióit a rendszer a támogatás és a szolgáltatói szerződés garanciája nélkül biztosítja. További információkért tekintse meg a [Microsoft Azure előzetesek használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -223,31 +222,6 @@ env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
 
-## <a name="access-training-data"></a>Betanítási információ
-
-Miután létrehozott egy gépi tanulási számítási fürtöt a korábban leírtak szerint felügyelt identitással, ezt az identitást használhatja a betanítási adatok eléréséhez a Storage-fiók kulcsainak használata nélkül. Ehhez a forgatókönyvhöz rendszer vagy felhasználó által hozzárendelt felügyelt identitást is használhat.
-
-### <a name="grant-compute-managed-identity-access-to-storage-account"></a>A számítási felügyelt identitás elérésének biztosítása a Storage-fiókhoz
-
-[Adja meg a felügyelt identitás olvasó szerepkörét](https://docs.microsoft.com/azure/storage/common/storage-auth-aad#assign-azure-roles-for-access-rights) azon a Storage-fiókon, amelyben a betanítási adatait tárolja.
-
-### <a name="register-data-store-with-workspace"></a>Adattár regisztrálása munkaterülettel
-
-A felügyelt identitás hozzárendelése után létrehozhat egy adattárat anélkül, hogy meg kellene adnia a tárolási hitelesítő adatokat.
-
-```python
-from azureml.core import Datastore
-
-blob_dstore = Datastore.register_azure_blob_container(workspace=workspace,
-                                                      datastore_name='my-datastore',
-                                                      container_name='my-container',
-                                                      account_name='my-storage-account')
-```
-
-### <a name="submit-training-run"></a>Betanítási futtatás elküldése
-
-Amikor beküld egy képzést az adattárból, a Machine learning-számítás a felügyelt identitás használatával fér hozzá az adatokhoz.
-
 ## <a name="use-docker-images-for-inference"></a>Docker-rendszerképek használata a következtetéshez
 
 Miután konfigurálta az ACR-t a korábban leírtaknak megfelelően a rendszergazda felhasználó nélkül, az Azure Kubernetes szolgáltatásban (ak) rendszergazdai kulcsok nélkül érheti el a Docker-rendszerképeket. Ha AK-t hoz létre vagy csatol a munkaterülethez, a rendszer automatikusan hozzárendeli a fürt egyszerű ACRPull hozzáférését a munkaterület ACR-hez.
@@ -255,6 +229,6 @@ Miután konfigurálta az ACR-t a korábban leírtaknak megfelelően a rendszerga
 > [!NOTE]
 > Ha saját AK-fürtöt használ, a fürtnek a felügyelt identitás helyett engedélyeznie kell az egyszerű szolgáltatásnevet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [Azure Machine learning vállalati biztonságáról](concept-enterprise-security.md).

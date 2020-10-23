@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: 3deffe6f1dbffcaae5676b8ddf3c0fc2dc934401
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cb6e4b2b10b6b44a544416ad5d57808c7ad4d83f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149086"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427851"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -170,7 +170,7 @@ A megbízható Microsoft első féltől származó szolgáltatások kivételi fu
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>Kimenő kapcsolatok a Storage-fiókok végpontjai számára az útválasztáshoz
 
-A IoT Hub az üzeneteket az ügyfél által birtokolt Storage-fiókba irányíthatja. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Storage-fiókhoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub [felügyelt identitással](#turn-on-managed-identity-for-iot-hub)kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
+A IoT Hub az üzeneteket az ügyfél által birtokolt Storage-fiókba irányíthatja. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Storage-fiókhoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub [felügyelt identitással](#turn-on-managed-identity-for-iot-hub)kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy az Azure RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
 
 1. A Azure Portal nyissa meg a Storage-fiók **hozzáférés-vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
@@ -188,7 +188,7 @@ Most, hogy az egyéni tárolási végpont a hub rendszerhez rendelt identitásá
 
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>Kimenő kapcsolat az Event hub-végpontokkal az útválasztáshoz
 
-A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél által birtokolt Event hub-névtérnek. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Event hubok-erőforráshoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub felügyelt identitással kell rendelkeznie. Miután létrehozta a felügyelt identitást, kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásának az Event hubok eléréséhez.
+A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél által birtokolt Event hub-névtérnek. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Event hubok-erőforráshoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub felügyelt identitással kell rendelkeznie. Miután létrehozta a felügyelt identitást, kövesse az alábbi lépéseket, hogy az Azure RBAC engedélyt adjon a hub erőforrás-identitásának az esemény-hubok eléréséhez.
 
 1. A Azure Portal navigáljon az Event hub- **hozzáférés-vezérlés (iam)** lapra, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
@@ -206,7 +206,7 @@ Most az egyéni Event hub-végpont úgy van beállítva, hogy a hub rendszerhez 
 
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>Kimenő kapcsolatok a Service Bus-végpontokhoz útválasztáshoz
 
-A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél által birtokolt Service Bus-névtérhez. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Service Bus-erőforráshoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Service Bus eléréséhez.
+A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél által birtokolt Service Bus-névtérhez. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Service Bus-erőforráshoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy az Azure RBAC engedélyt nyújtson a hub erőforrás-identitásához a Service Bus eléréséhez.
 
 1. A Azure Portal nyissa meg a Service Bus hozzáférés- **vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
@@ -224,7 +224,7 @@ Most az egyéni Service Bus-végpont úgy van beállítva, hogy a hub rendszerhe
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>A fájlok feltöltésekor használt Storage-fiókokhoz való kimenő kapcsolatok
 
-IoT Hub fájlfeltöltés funkciója lehetővé teszi, hogy az eszközök fájlokat töltsenek fel egy ügyfél tulajdonú Storage-fiókjába. Ha engedélyezni szeretné a fájl feltöltését, mindkét eszköznek és a IoT Hubnak kapcsolódnia kell a Storage-fiókhoz. Ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, az eszköznek a támogatott Storage-fiók mechanizmusát (beleértve a [magánhálózati végpontokat](../private-link/tutorial-private-endpoint-storage-portal.md), a [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)vagy a [közvetlen tűzfal-konfigurációt](../storage/common/storage-network-security.md)) kell használnia a kapcsolat eléréséhez. Hasonlóképpen, ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, IoT Hub konfigurálnia kell a tárolási erőforrás elérését a megbízható Microsoft Services-kivétel használatával. Erre a célra a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
+IoT Hub fájlfeltöltés funkciója lehetővé teszi, hogy az eszközök fájlokat töltsenek fel egy ügyfél tulajdonú Storage-fiókjába. Ha engedélyezni szeretné a fájl feltöltését, mindkét eszköznek és a IoT Hubnak kapcsolódnia kell a Storage-fiókhoz. Ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, az eszköznek a támogatott Storage-fiók mechanizmusát (beleértve a [magánhálózati végpontokat](../private-link/tutorial-private-endpoint-storage-portal.md), a [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)vagy a [közvetlen tűzfal-konfigurációt](../storage/common/storage-network-security.md)) kell használnia a kapcsolat eléréséhez. Hasonlóképpen, ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, IoT Hub konfigurálnia kell a tárolási erőforrás elérését a megbízható Microsoft Services-kivétel használatával. Erre a célra a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy az Azure RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -244,7 +244,7 @@ A file upload tárolási végpontja most úgy van beállítva, hogy a hub rendsz
 
 A IoT Hub támogatja az eszközök tömeges [importálására/exportálására](./iot-hub-bulk-identity-mgmt.md) vonatkozó adatokat az ügyfél által megadott Storage-blobba/-ból. Ha engedélyezni szeretné a tömeges importálási/exportálási funkciót, mindkét eszköznek és a IoT Hubnak kapcsolódnia kell a Storage-fiókhoz.
 
-Ehhez a funkcióhoz IoT Hub kapcsolat szükséges a Storage-fiókhoz. Ha tűzfal-korlátozásokkal szeretné elérni a Service Bus-erőforrást, a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Service Bus eléréséhez.
+Ehhez a funkcióhoz IoT Hub kapcsolat szükséges a Storage-fiókhoz. Ha tűzfal-korlátozásokkal szeretné elérni a Service Bus-erőforrást, a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy az Azure RBAC engedélyt nyújtson a hub erőforrás-identitásához a Service Bus eléréséhez.
 
 1. A Azure Portal nyissa meg a Storage-fiók **hozzáférés-vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
@@ -289,7 +289,7 @@ A Python esetében töltse le a korlátozott verziót a GitHubról.
     > pip install./azure_iot_hub-2.2.0_limited-py2. py3-none-any. WHL
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozásokra kattintva további információt találhat IoT Hub szolgáltatásairól:
 

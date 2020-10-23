@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 119e27d381ff40a21ca03b5f3ccd8d1fcb68b5f7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425072"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461158"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Oktatóanyag: VPN-átjáró létrehozása és kezelése a PowerShell-lel
 
@@ -187,4 +187,4 @@ Ebben az oktatóanyagban a VPN-átjárók létrehozásának és kezelésének al
 Ezután folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> * [Kapcsolat létrehozása](vpn-gateway-tutorial-vpnconnection-powershell.md)
+> * [S2S-kapcsolatok létrehozása](vpn-gateway-create-site-to-site-rm-powershell.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e87331cb2bbfb11a9d49888462b8be3b55e18118
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531190"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460869"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -23,7 +23,37 @@ Ha a fenti lépések egyike sem működik, a következő támogatási csatornák
 * Az Azure-támogatási szerződéssel rendelkező ügyfelek támogatási kérelmet is megnyithatnak [a Azure Portal](https://manage.windowsazure.com/?getsupport=true).
 * A kisegítő problémák diagnosztizálásával kapcsolatos [hibaelhárítási útmutatót](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md).
 * Fájl [GitHub-probléma](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
-* Látogasson el a Log Analytics visszajelzési oldalra, és tekintse át az elküldött ötleteket és hibákat, [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) vagy egy újat.  
+* Látogasson el a Log Analytics visszajelzési oldalra, és tekintse át az elküldött ötleteket és hibákat, [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) vagy egy újat. 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics hibaelhárítási eszköz
+
+A Log Analytics Agent Linux hibaelhárítási eszköze egy olyan parancsfájl, amely a Log Analytics-ügynökkel kapcsolatos problémák keresésében és diagnosztizálásában segít. A telepítéskor a rendszer automatikusan tartalmazza az ügynököt. Az eszköz futtatása a probléma diagnosztizálásának első lépése.
+
+### <a name="how-to-use"></a>Használat
+A hibaelhárítási eszköz futtatásához illessze be a következő parancsot egy terminál ablakába egy olyan gépen, amelyen a Log Analytics ügynök található: `sudo /opt/microsoft/omsagent/bin/troubleshooter`
+
+### <a name="manual-installation"></a>Manuális telepítés
+A hibaelhárítási eszköz automatikusan belekerül a Log Analytics ügynök telepítésére. Ha azonban a telepítés bármilyen módon meghiúsul, az alábbi lépéseket követve manuálisan is telepítheti azt.
+
+1. Másolja a hibakereső csomagot a gépre: `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+2. Csomagolja ki a csomagot: `tar -xzvf omsagent_tst.tar.gz`
+3. A manuális telepítés futtatása: `sudo ./install_tst`
+
+### <a name="scenarios-covered"></a>Érintett forgatókönyvek
+Alább látható a hibaelhárítási eszköz által ellenőrzött forgatókönyvek listája:
+
+1. Az ügynök állapota nem kifogástalan, a szívverés nem működik megfelelően
+2. Az ügynök nem indul el, nem tud kapcsolódni a log analitikus szolgáltatásokhoz
+3. Az ügynök syslog nem működik
+4. Az ügynök magas CPU-/memóriahasználat
+5. Telepítési problémákkal rendelkező ügynök
+6. Az ügynök egyéni naplói nem működnek
+7. Ügynökök naplóinak gyűjtése
+
+További részletekért tekintse meg a [GitHub dokumentációját](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md).
+
+ >[!NOTE]
+ >Ha probléma merül fel, futtassa a log Collector eszközt. A naplók kezdetben nagy mértékben segítik a támogatási csapatot a probléma gyorsabb megoldásában.
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>Fontos naplózási helyszínek és a log Collector eszköz
 

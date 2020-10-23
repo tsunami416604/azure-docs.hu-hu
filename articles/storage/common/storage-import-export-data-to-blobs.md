@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3be13dade9cae45994b5f7a9d6f7479e2de6256
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514215"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460733"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure import/export szolgáltatás használata az Azure-ba való adatimportálásra Blob Storage
 
@@ -95,6 +95,8 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 
 ## <a name="step-2-create-an-import-job"></a>2. lépés: importálási feladatok létrehozása
 
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
 Az alábbi lépések végrehajtásával hozzon létre egy importálási feladatot a Azure Portal.
 
 1. Jelentkezzen be a következőre: https://portal.azure.com/ .
@@ -142,6 +144,85 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
    * Az importálási feladatok létrehozásához kattintson **az OK** gombra.
 
      ![Importálási feladatok létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az alábbi lépések végrehajtásával hozhat létre importálási feladatot az Azure CLI-ben.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>Feladat létrehozása
+
+1. Az az [import-export](/cli/azure/ext/import-export/import-export) bővítmény hozzáadásához használja az az [Extension Add](/cli/azure/extension#az_extension_add) parancsot:
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. Használhat meglévő erőforráscsoportot, vagy létrehozhat egyet. Erőforráscsoport létrehozásához futtassa az az [Group Create](/cli/azure/group#az_group_create) parancsot:
+
+    ```azurecli
+    az group create --name myierg --location "West US"
+    ```
+
+1. Használhat meglévő Storage-fiókot, vagy létrehozhat egyet. A Storage-fiók létrehozásához futtassa az az [Storage Account Create](/cli/azure/storage/account#az_storage_account_create) parancsot:
+
+    ```azurecli
+    az storage account create --resource-group myierg --name myssdocsstorage --https-only
+    ```
+
+1. A lemezek szállítására szolgáló helyek listájának lekéréséhez használja az az [import-export Location List](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) parancsot:
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. A régió helyeinek lekéréséhez használja az az [import-export Location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) parancsot:
+
+    ```azurecli
+    az import-export location show --location "West US"
+    ```
+
+1. Importálási feladatok létrehozásához futtassa a következőt az [import-export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) paranccsal:
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name MyIEjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --drive-list bit-locker-key=439675-460165-128202-905124-487224-524332-851649-442187 \
+            drive-header-hash= drive-id=AZ31BGB1 manifest-file=\\DriveManifest.xml \
+            manifest-hash=69512026C1E8D4401816A2E5B8D7420D \
+        --type Import \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --return-shipping carrier-name=FedEx carrier-account-number=123456789 \
+        --storage-account myssdocsstorage
+    ```
+
+   > [!TIP]
+   > E-mail-cím egyetlen felhasználóhoz való megadása helyett adjon meg egy csoportos e-mailt. Ez biztosítja, hogy értesítést kapjon, még akkor is, ha a rendszergazda elhagyja.
+
+1. A myierg erőforráscsoport összes feladatának megtekintéséhez használja az az [import-export List](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) parancsot:
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. A feladat frissítéséhez vagy a feladat megszakításához futtassa az az [import-export Update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) parancsot:
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 ## <a name="step-3-optional-configure-customer-managed-key"></a>3. lépés (nem kötelező): az ügyfél által felügyelt kulcs konfigurálása
 

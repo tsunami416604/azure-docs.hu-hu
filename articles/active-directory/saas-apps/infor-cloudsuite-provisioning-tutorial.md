@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 171a96f37d4c1e740e23cc766566d3c1756b6d08
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850877"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460185"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az infor-CloudSuite konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -103,7 +103,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt az Azure ad-b
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy CloudSuite alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést az infor-CloudSuite, az [infor CloudSuite egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést az infor-CloudSuite, az [infor CloudSuite egyszeri bejelentkezés oktatóanyagában](./infor-cloud-suite-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 > [!NOTE]
 > Ha többet szeretne megtudni az infor CloudSuite SCIM-végpontról, olvassa el [ezt a témakört](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#).

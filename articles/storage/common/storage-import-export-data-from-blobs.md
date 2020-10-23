@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfbef5ce3ba7675aff88df654a5ba6572c38adbe
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441860"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440730"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
 
@@ -36,6 +36,8 @@ A következőket kell tennie:
     - [Hozzon létre egy DHL-fiókot](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>1. lépés: exportálási feladatok létrehozása
+
+### <a name="portal"></a>[Portál](#tab/azure-portal)
 
 Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladatot a Azure Portal.
 
@@ -99,6 +101,83 @@ Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladato
         > Mindig küldje el a lemezeket az adatközpontba a Azure Portal feltüntetve. Ha a lemezeket nem megfelelő adatközpontba szállítják, a rendszer nem dolgozza fel a feladatot.
 
     - Az exportálási feladatok létrehozásának befejezéséhez kattintson **az OK** gombra.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az alábbi lépések végrehajtásával hozhat létre exportálási feladatot a Azure Portal.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>Feladat létrehozása
+
+1. Az az [import-export](/cli/azure/ext/import-export/import-export) bővítmény hozzáadásához használja az az [Extension Add](/cli/azure/extension#az_extension_add) parancsot:
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. A lemezeket fogadó helyek listájának lekéréséhez használja az az [import-export Location List](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) parancsot:
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. A meglévő Storage-fiókot használó exportálási feladatok létrehozásához futtassa a következőt az [import-export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) paranccsal:
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name Myexportjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --export blob-path=/ \
+        --type Export \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --storage-account myssdocsstorage
+    ```
+
+    > [!TIP]
+    > E-mail-cím egyetlen felhasználóhoz való megadása helyett adjon meg egy csoportos e-mailt. Ez biztosítja, hogy értesítést kapjon, még akkor is, ha a rendszergazda elhagyja.
+
+   Ez a művelet a Storage-fiókban lévő összes blobot exportálja. Az exportáláshoz megadhat egy blobot, ha a **--export**értékre váltja ezt az értéket:
+
+    ```azurecli
+    --export blob-path=$root/logo.bmp
+    ```
+
+   Ez a paraméterérték a *logo.bmp* nevű blobot exportálja a gyökér tárolóban.
+
+   Lehetőség van arra is, hogy a tárolóban lévő összes blobot egy előtag használatával válassza ki. Cserélje le ezt az értéket a **--export**értékre:
+
+    ```azurecli
+    blob-path-prefix=/myiecontainer
+    ```
+
+   További információ: [az érvényes blob-elérési utakra vonatkozó példák](#examples-of-valid-blob-paths).
+
+   > [!NOTE]
+   > Ha az exportálandó blob az adatok másolása során használatban van, az Azure import/export szolgáltatás pillanatképet készít a blobról, és átmásolja a pillanatképet.
+
+1. Az az [import-export List](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) paranccsal tekintheti meg az erőforráscsoport myierg összes feladatát:
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. A feladat frissítéséhez vagy a feladat megszakításához futtassa az az [import-export Update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) parancsot:
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 <!--## (Optional) Step 2: -->
 
@@ -217,7 +296,7 @@ A következő táblázat példákat mutat be a Blobok érvényes elérési útja
    | Egyenlő |$root/logo.bmp |A blob **logo.bmp** exportálása a gyökér tárolóba |
    | Egyenlő |videók/story.mp4 |BLOB- **story.mp4** exportálása a tároló- **videókban** |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 - [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

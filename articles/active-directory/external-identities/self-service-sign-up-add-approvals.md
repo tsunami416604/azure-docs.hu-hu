@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d2ff176d7569f6f67c8f0dd37e0073314a07289
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165240"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441623"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan integrálható egy jóváhagyási rendszerrel. Ebben
 
 ## <a name="register-an-application-for-your-approval-system"></a>Alkalmazás regisztrálása a jóváhagyási rendszerhez
 
-Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-bérlőben, hogy az képes legyen hitelesíteni az Azure AD-vel, és jogosult legyen a felhasználók létrehozására. További információ a [Microsoft Graph hitelesítési és engedélyezési alapjairól](https://docs.microsoft.com/graph/auth/auth-concepts).
+Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-bérlőben, hogy az képes legyen hitelesíteni az Azure AD-vel, és jogosult legyen a felhasználók létrehozására. További információ a [Microsoft Graph hitelesítési és engedélyezési alapjairól](/graph/auth/auth-concepts).
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként.
 2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
@@ -86,7 +86,7 @@ Most adja hozzá az API-összekötőket önkiszolgáló bejelentkezési felhaszn
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>A regisztrációs folyamat kezelése API-válaszokkal
 
@@ -263,14 +263,14 @@ A `userMessage` válaszban látható a felhasználó számára, például:
 
 ## <a name="user-account-creation-after-manual-approval"></a>Felhasználói fiók létrehozása manuális jóváhagyás után
 
-A manuális jóváhagyás beszerzését követően az egyéni jóváhagyási rendszer létrehoz egy [felhasználói](https://docs.microsoft.com/graph/azuread-users-concept-overview) fiókot [Microsoft Graph](https://docs.microsoft.com/graph/use-the-api)használatával. A jóváhagyási rendszernek a felhasználói fiókra vonatkozó kiépítésének módja a felhasználó által használt identitás-szolgáltatótól függ.
+A manuális jóváhagyás beszerzését követően az egyéni jóváhagyási rendszer létrehoz egy [felhasználói](/graph/azuread-users-concept-overview) fiókot [Microsoft Graph](/graph/use-the-api)használatával. A jóváhagyási rendszernek a felhasználói fiókra vonatkozó kiépítésének módja a felhasználó által használt identitás-szolgáltatótól függ.
 
 ### <a name="for-a-federated-google-or-facebook-user"></a>Összevont Google-vagy Facebook-felhasználó esetén
 
 > [!IMPORTANT]
 > A jóváhagyási rendszernek explicit módon ellenőriznie kell, hogy létezik-e, és a `identities` `identities[0]` `identities[0].issuer` `identities[0].issuer` "Facebook" vagy a "Google" értékkel egyenlő a metódus használatára.
 
-Ha a felhasználó Google-vagy Facebook-fiókkal jelentkezett be, használhatja a [felhasználói létrehozási API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)-t.
+Ha a felhasználó Google-vagy Facebook-fiókkal jelentkezett be, használhatja a [felhasználói létrehozási API](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0)-t.
 
 1. A jóváhagyási rendszer a felhasználói folyamattól fogadja a HTTP-kérést.
 
@@ -330,7 +330,7 @@ Content-type: application/json
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Összevont Azure Active Directory-felhasználó esetén
 
-Ha egy felhasználó összevont Azure Active Directory-fiókkal jelentkezik be, a [meghívót használó API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0) -val létre kell hoznia a felhasználót, majd opcionálisan a [felhasználó frissítési API](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0) -ját, hogy további attribútumokat rendeljen a felhasználóhoz.
+Ha egy felhasználó összevont Azure Active Directory-fiókkal jelentkezik be, a [meghívót használó API](/graph/api/invitation-post?view=graph-rest-1.0) -val létre kell hoznia a felhasználót, majd opcionálisan a [felhasználó frissítési API](/graph/api/user-update?view=graph-rest-1.0) -ját, hogy további attribútumokat rendeljen a felhasználóhoz.
 
 1. A jóváhagyási rendszer a HTTP-kérést a felhasználói folyamattól kapja meg.
 
@@ -386,7 +386,7 @@ Content-type: application/json
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg az [Azure Function](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)gyors üzembe helyezési mintákkal.
-- Az [önkiszolgáló regisztrációt a vendég felhasználók manuális jóváhagyási mintával regisztrálhatják](code-samples-self-service-sign-up.md#custom-approval-workflows). 
+- Az [önkiszolgáló regisztrációt a vendég felhasználók manuális jóváhagyási mintával regisztrálhatják](code-samples-self-service-sign-up.md#custom-approval-workflows).
