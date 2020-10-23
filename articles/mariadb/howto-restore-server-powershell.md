@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984a5d52dfdd45190cbded5e900d3fcfe2f9ad43
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87833249"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424512"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Azure Database for MariaDB-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával
 
@@ -23,14 +23,14 @@ A visszaállítási funkciók engedélyezéséhez a rendszer rendszeresen bizton
 
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
-- Az az [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) helyileg vagy [Azure Cloud Shell](https://shell.azure.com/) telepítve a böngészőben
+- Az az [PowerShell-modul](/powershell/azure/install-az-ps) helyileg vagy [Azure Cloud Shell](https://shell.azure.com/) telepítve a böngészőben
 - Egy [Azure Database for MariaDB-kiszolgáló](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Az az. MariaDb PowerShell-modul előzetes verzióban érhető el, és a következő paranccsal külön kell telepítenie az az PowerShell-modulból: `Install-Module -Name Az.MariaDb -AllowPrerelease` .
 > Amint az az. MariaDb PowerShell-modul általánosan elérhetővé válik, az a PowerShell modul kiadásainak része lesz, és natív módon elérhető a Azure Cloud Shellon belülről.
 
-Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjához a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmag használatával.
+Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -75,10 +75,10 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 A parancsmag **PointInTimeRestore** paraméterének `Restore-AzMariaDbServer` a következő paramétereket kell megadnia:
 
-| Beállítás | Ajánlott érték | Leírás  |
+| Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| Name (Név) | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| ResourceGroupName |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
+| Name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | RestorePointInTime | 2020 – 03-13T13:59:00Z | Válasszon ki egy időpontot a visszaállításhoz. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Használja a ISO8601 dátum és idő formátumát. Használhatja például a saját helyi időzónáját, például **2020-03-13T05:59:00-08:00**. Használhatja az UTC Zulu formátumot is, például **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | A visszaállításhoz használja az időponthoz tartozó módot. |
 
@@ -117,10 +117,10 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 A parancsmag **GeoRestore** paraméterének `Restore-AzMariaDbServer` a következő paramétereket kell megadnia:
 
-| Beállítás | Ajánlott érték | Leírás  |
+| Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | Azon erőforráscsoport neve, amelyhez az új kiszolgáló tartozik.|
-|Name (Név) | mydemoserver – georestored | Az új kiszolgáló neve. |
+|Name | mydemoserver – georestored | Az új kiszolgáló neve. |
 |Hely | eastus | Az új kiszolgáló helye. |
 |UseGeoRestore | `<SwitchParameter>` | A visszaállításhoz használja a Geo üzemmódot. |
 
@@ -130,7 +130,7 @@ A visszaállítási folyamat befejeződése után keresse meg az új kiszolgál�
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MariaDB kapcsolódási karakterlánc létrehozása a PowerShell-lel](howto-connection-string-powershell.md)

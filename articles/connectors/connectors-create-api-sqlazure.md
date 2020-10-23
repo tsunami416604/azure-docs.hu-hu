@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 534b9fedc6649d3174ea65caf51b28004de7bda2
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169387"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426617"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Az SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
@@ -77,7 +77,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
    | Hitelesítés | Leírás |
    |----------------|-------------|
    | [**Azure AD-integráció**](../azure-sql/database/authentication-aad-overview.md) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázishoz hozzáféréssel rendelkező Azure Active Directory (Azure AD) érvényes identitást igényel. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – Azure AD – integrált hitelesítés](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server hitelesítés**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázisban létrehozott és tárolt érvényes felhasználónevet és erős jelszót kell megadnia. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server-hitelesítés**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázisban létrehozott és tárolt érvényes felhasználónevet és erős jelszót kell megadnia. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    Ez a példa az **Azure ad**-vel való integrációt folytatja:
@@ -91,8 +91,8 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Kiszolgáló neve** | Igen | Az SQL-kiszolgáló címe, például: `Fabrikam-Azure-SQL.database.windows.net` |
-   | **Adatbázis neve** | Yes | Az SQL-adatbázis neve, például: `Fabrikam-Azure-SQL-DB` |
-   | **Tábla neve** | Yes | A használni kívánt tábla, például: `SalesLT.Customer` |
+   | **Adatbázis neve** | Igen | Az SQL-adatbázis neve, például: `Fabrikam-Azure-SQL-DB` |
+   | **Tábla neve** | Igen | A használni kívánt tábla, például: `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -121,7 +121,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
    | Hitelesítés | Leírás |
    |----------------|-------------|
    | [**Windows-hitelesítés**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Csak a nem ISE SQL Server összekötőt támogatja, amelyhez a kapcsolathoz korábban az Azure-ban létrehozott adatátjáró-erőforrás szükséges, függetlenül attól, hogy több-bérlős Azure-t vagy ISE-t használ. <p><p>– Érvényes Windows-felhasználónevet és-jelszót kell megadnia az identitás Windows-fiókon keresztüli megerősítéséhez. <p>További információ: Windows- [hitelesítés](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
-   | [**SQL Server hitelesítés**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– A SQL Server létrehozott és tárolt érvényes felhasználónevet és erős jelszót igényel. <p>További információ: [SQL Server hitelesítés](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
+   | [**SQL Server-hitelesítés**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– A SQL Server létrehozott és tárolt érvényes felhasználónevet és erős jelszót igényel. <p>További információ: [SQL Server hitelesítés](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
    |||
 
    Ez a példa a **Windows-hitelesítéssel**folytatódik:
@@ -132,10 +132,10 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **SQL-kiszolgáló neve** | Yes | Az SQL-kiszolgáló címe, például: `Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL-adatbázis neve** | Yes | A SQL Server-adatbázis neve, például: `Fabrikam-Azure-SQL-DB` |
-   | **Felhasználónév** | Yes | Az SQL Server és az adatbázis felhasználóneve |
-   | **Jelszó** | Yes | Az SQL Server és az adatbázis jelszava |
+   | **SQL-kiszolgáló neve** | Igen | Az SQL-kiszolgáló címe, például: `Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL-adatbázis neve** | Igen | A SQL Server-adatbázis neve, például: `Fabrikam-Azure-SQL-DB` |
+   | **Felhasználónév** | Igen | Az SQL Server és az adatbázis felhasználóneve |
+   | **Jelszó** | Igen | Az SQL Server és az adatbázis jelszava |
    | **Előfizetés** |  Igen, Windows-hitelesítéshez | A korábban az Azure-ban létrehozott adatátjáró-erőforráshoz tartozó Azure-előfizetés |
    | **Összekötő átjáró** | Igen, Windows-hitelesítéshez | Az Azure-ban korábban létrehozott adatátjáró-erőforrás neve <p><p>**Tipp**: Ha az átjáró nem jelenik meg a listában, ellenőrizze, hogy megfelelően [állította-e be az átjárót](../logic-apps/logic-apps-gateway-connection.md). |
    |||
@@ -214,19 +214,16 @@ Ebben a példában a logikai alkalmazás az [ismétlődési eseményindítóval]
 
 Időnként úgy kell dolgoznia az eredményhalmazt, hogy az összekötő ne adja vissza az összes eredményt egyszerre, vagy az eredményhalmaz méretének és szerkezetének jobb szabályozását szeretné. A következő módszerekkel kezelheti az ilyen nagy eredményeket:
 
-* Az eredmények kisebb készletekként való kezeléséhez kapcsolja be a *tördelést*. További információ: [tömeges adatok, rekordok és elemek beolvasása a tördelés használatával](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md).
+* Az eredmények kisebb készletekként való kezeléséhez kapcsolja be a *tördelést*. További információ: [tömeges adatok, rekordok és elemek beolvasása a tördelés használatával](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). További információ: [az SQL-Lapozás a tömeges adatátvitelhez a Logic apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
 
-* Hozzon létre egy tárolt eljárást, amely a kívánt módon rendezi az eredményeket.
+* Hozzon létre egy [*tárolt eljárást*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , amely a kívánt módon rendezi az eredményeket. Az SQL-összekötő számos háttérbeli funkciót biztosít, amelyeket Azure Logic Apps használatával érhet el, így könnyebben automatizálhatja az SQL Database-táblákkal működő üzleti feladatokat.
 
   Több sor beolvasása vagy beillesztése esetén a logikai [alkalmazás ezen](../logic-apps/logic-apps-limits-and-config.md)sorokon keresztül is megismételheti [*ezeket a sorokat*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) . Ha azonban a logikai alkalmazásnak a rekordhalmazokkal együtt kell működnie, például több ezer vagy több millió sorból, akkor az adatbázis felé irányuló hívások költségeinek minimalizálására van szükség.
 
-  Az eredmények a kívánt módon történő rendezéséhez létrehozhat egy [*tárolt eljárást*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , amely az SQL-példányban fut, és a **Select-Order by** utasítást használja. Ez a megoldás az eredmények méretének és szerkezetének nagyobb mértékű szabályozását teszi lehetővé. A logikai alkalmazás meghívja a tárolt eljárást az SQL Server-összekötő által **tárolt eljárás végrehajtása** művelettel.
+  Az eredmények a kívánt módon történő rendezéséhez létrehozhat egy tárolt eljárást, amely az SQL-példányban fut, és a **Select-Order by** utasítást használja. Ez a megoldás az eredmények méretének és szerkezetének nagyobb mértékű szabályozását teszi lehetővé. A logikai alkalmazás meghívja a tárolt eljárást az SQL Server-összekötő által **tárolt eljárás végrehajtása** művelettel. További információ: [Select-ORDER BY záradék](/sql/t-sql/queries/select-order-by-clause-transact-sql).
 
-  További megoldási részletekért tekintse meg a következő cikkeket:
-
-  * [SQL-tördelés a tömeges adatátvitel Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
-
-  * [SELECT-ORDER BY záradék](/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  > [!NOTE]
+  > Ezzel az összekötővel a tárolt eljárások végrehajtása [kevesebb, mint 2 perces](/connectors/sql/#known-issues-and-limitations)időkorlátot jelent. Egyes tárolt eljárások hosszabb időt vehetnek igénybe, mint amennyire ez a korlát feldolgozható, és a folyamat teljesen leáll, ami `504 TIMEOUT` hibát generál. Valójában bizonyos hosszan futó folyamatok explicit módon vannak kódolva tárolt eljárásként erre a célra. Ezeknek az eljárásoknak a meghívása Azure Logic Apps az időtúllépési korlát miatt problémákat okozhat. Bár az SQL-összekötő nem támogatja natív módon az aszinkron módot, szimulálhatja ezt a módot egy SQL-befejezési trigger, egy natív SQL-áteresztő lekérdezés, egy állapotadatok és egy kiszolgálóoldali feladat használatával az [Azure rugalmas feladat ügynökének](../azure-sql/database/elastic-jobs-overview.md)használatával.
 
 ### <a name="handle-dynamic-bulk-data"></a>Dinamikus tömeges adatmennyiség kezelése
 
@@ -253,13 +250,13 @@ Ha tárolt eljárást hív meg az SQL Server-összekötő használatával, a vis
 
 ## <a name="troubleshoot-problems"></a>Problémák elhárítása
 
-A kapcsolódási problémák általában megtörténhetnek, így a hibák elhárításához és megoldásához tekintse át [a kapcsolódási hibák megoldását SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Néhány példa:
+* A kapcsolódási problémák általában megtörténhetnek, így a hibák elhárításához és megoldásához tekintse át [a kapcsolódási hibák megoldását SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Néhány példa:
 
-* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
 
-* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
 
-* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 

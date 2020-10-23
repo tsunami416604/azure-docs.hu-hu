@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c4489e22344d2807b22bf4752add9c336215bec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d1f4c04bf4a26e67a905679db23e303c2762d90c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369699"
+ms.locfileid: "92426414"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Frissítések központi telepítése és eredmények áttekintése
 
@@ -111,7 +111,7 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
     > [!NOTE]
     > Amikor befejezte a központi telepítési ütemterv konfigurálását egy kiválasztott ív-kompatibilis kiszolgálón, válassza a **felülvizsgálat + létrehozás**lehetőséget.
 
-15. Ekkor visszalép az állapot-irányítópultra. Válassza a **központi telepítési ütemtervek** lehetőséget a létrehozott központi telepítési ütemterv megjelenítéséhez. Legfeljebb 500 ütemterv szerepel a felsorolásban. Ha több mint 500 ütemterve van, és szeretné áttekinteni a teljes listát, tekintse meg a [szoftverfrissítési konfigurációk – lista](/rest/api/automation/softwareupdateconfigurations/list) REST API a 2019-06-01-es vagy újabb verziót használó metódust.
+15. Ekkor visszalép az állapot-irányítópultra. Válassza a **központi telepítési ütemtervek** lehetőséget a létrehozott központi telepítési ütemterv megjelenítéséhez. Legfeljebb 500 ütemterv szerepel a felsorolásban. Ha több mint 500 ütemterve van, és szeretné áttekinteni a teljes listát, tekintse meg a [szoftverfrissítési konfigurációk – lista](/rest/api/automation/softwareupdateconfigurations/list) REST API metódust. Az API 2019-06-01-es vagy újabb verzióját kell megadni.
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>Frissítési üzembe helyezés programozott módon történő beütemezett
 
@@ -144,6 +144,6 @@ Válassza a **kimenet** lehetőséget, hogy megtekintse a runbook a cél virtuá
 
 A telepítés közben felmerülő hibák részletes információinak megtekintéséhez válassza a **Hibák** elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha meg szeretné tudni, hogyan hozhat létre riasztásokat a telepítési eredmények frissítésével kapcsolatban, tekintse meg [a riasztások létrehozása a Update Managementhoz](configure-alerts.md)című témakört.

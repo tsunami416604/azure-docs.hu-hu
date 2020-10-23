@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ca9a74763715c5c68526ff3213a14d2148f5ad30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3637eb5e9f6f70d0f53d7b1cb97bd348c114bc
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83834305"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424427"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>A profil lekérdezési teljesítményének ismertetése a Azure Database for MariaDB
 A **magyarázat** egy praktikus eszköz a lekérdezések optimalizálásához. A magyarázó utasítás használatával információkat kaphat az SQL-utasítások végrehajtásáról. A következő kimenet egy példát mutat be a magyarázó utasítások végrehajtásához.
@@ -54,10 +54,10 @@ possible_keys: id
 ```
 
 Az új magyarázat azt mutatja, hogy a MariaDB mostantól index használatával korlátozza a sorok számát az 1 értékre, ami jelentősen lerövidíti a keresési időt.
- 
+ 
 ## <a name="covering-index"></a>Borító indexe
 A lefedési index az indexben található lekérdezés összes oszlopát tartalmazza az adattáblákból való lekérések csökkentése érdekében. Íme egy illusztráció a következő **Group By** utasításban.
- 
+ 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -76,10 +76,10 @@ possible_keys: NULL
 ```
 
 Ahogy a kimenet is látható, a MariaDB nem használ indexeket, mert nem állnak rendelkezésre megfelelő indexek. Emellett *az ideiglenes használatot is mutatja; Ha a file sort használja*, ami azt jelenti, hogy a MariaDB létrehoz egy ideiglenes táblázatot, amely kielégíti a **Group By** záradékot.
- 
+ 
 A **C2** -es oszlop indexének létrehozása önmagában nem tesz különbséget, és a MariaDB továbbra is létre kell hoznia egy ideiglenes táblát:
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -99,7 +99,7 @@ possible_keys: NULL
 
 Ebben az esetben a **C1** -es és a **C2** -es kezelt **index** is létrehozható, amelynek során a rendszer a **C2**-es értéket közvetlenül az indexben adja hozzá a további adatkeresések eltávolításához.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -120,7 +120,7 @@ possible_keys: covered
 Ahogy a fenti magyarázat mutatja, a MariaDB mostantól a kezelt indexet használja, és nem hoz létre ideiglenes táblát. 
 
 ## <a name="combined-index"></a>Kombinált index
-A kombinált index több oszlopból álló értékeket tartalmaz, és az Indexelt oszlopok értékeinek összefűzésével rendezhető sorok tömbje lehet.Ez a metódus a **Group By** utasításban lehet hasznos.
+A kombinált index több oszlopból álló értékeket tartalmaz, és az Indexelt oszlopok értékeinek összefűzésével rendezhető sorok tömbje lehet. Ez a metódus a **Group By** utasításban lehet hasznos.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -141,7 +141,7 @@ possible_keys: NULL
 
 A MariaDB olyan *rendezési* műveletet hajt végre, amely meglehetősen lassú, különösen, ha sok sort kell rendeznie. A lekérdezés optimalizálásához összevont index hozható létre mindkét sorba rendezett oszlopon.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -160,10 +160,10 @@ possible_keys: NULL
 ```
 
 A magyarázat azt mutatja, hogy a MariaDB képes a kombinált index használatára, hogy elkerülje a további rendezést, mivel az index már rendezve van.
- 
+ 
 ## <a name="conclusion"></a>Összegzés
- 
+ 
 A magyarázat és a különböző típusú indexek használata jelentősen növelheti a teljesítményt. A tábla indexe nem feltétlenül jelenti azt, hogy a MariaDB használni tudná a lekérdezésekhez. Az indexek használatával mindig érvényesítse a feltételezéseket a lekérdezések MAGYARÁZATával és optimalizálásával.
 
 ## <a name="next-steps"></a>További lépések
-- Ha szeretné megkeresni a leginkább érintett kérdésekre adott társi válaszokat, vagy új kérdést/választ szeretne küldeni, látogasson el [a Microsoft Q&egy kérdés oldalra](https://docs.microsoft.com/answers/topics/azure-database-mariadb.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).
+- Ha szeretné megkeresni a leginkább érintett kérdésekre adott társi válaszokat, vagy új kérdést/választ szeretne küldeni, látogasson el [a Microsoft Q&egy kérdés oldalra](/answers/topics/azure-database-mariadb.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

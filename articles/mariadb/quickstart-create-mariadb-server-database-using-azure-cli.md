@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7fe68e7b1a56c22e8c0d9638408982518105888e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 198a8eee38da2738552bc5e2a2ba52e13a890122
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88185145"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424493"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -33,7 +33,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) az [az group create](/cli/azure/group#az-group-create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az [az group create](/cli/azure/group#az-group-create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen:
 
@@ -240,4 +240,4 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [MariaDB-adatbázis tervezése az Azure CLI-vel](./tutorial-design-database-cli.md)
+> [MariaDB-adatbázis tervezése az Azure CLI-vel](tutorial-design-database-cli.md)

@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f0dfa137e42d60246ce8f5281f002d5ca567c2ae
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207087"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427538"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning számítási példány létrehozása és kezelése
 
@@ -111,7 +111,7 @@ Rendszergazdaként létrehozhat egy számítási példányt egy adattudós nevé
 * [Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  A sablonban szükséges TenantID és ObjectID megkeresésével kapcsolatos részletekért lásd a [hitelesítési konfiguráció azonosító objektum-azonosítóinak megkeresése](../healthcare-apis/find-identity-object-ids.md)című témakört.  Ezeket az értékeket a Azure Active Directory portálon is megtalálhatja.
 * REST API
 
-A számítási példányt a következő [Azure szerepköralapú hozzáférés-vezérlési (RBAC)](../role-based-access-control/overview.md) engedélyekkel kell létrehoznia: 
+A számítási példányt a következő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../role-based-access-control/overview.md) engedélyekkel kell létrehoznia: 
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/indítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
@@ -226,9 +226,9 @@ A munkaterületen létrehozott minden számítási példányhoz (vagy az Ön sz�
 
 ---
 
-A [RBAC](/azure/role-based-access-control/overview) lehetővé teszi annak szabályozását, hogy a munkaterület mely felhasználói hozhatnak létre, törölhetnek, indíthatnak le, állíthatnak le vagy indíthatnak újra egy számítási példányt. A munkaterület közreműködői és tulajdonosi szerepkörben lévő összes felhasználó létrehozhatja, törölheti, elindíthatja, leállíthatja és újraindíthatja a számítási példányokat a munkaterületen. Azonban csak egy adott számítási példány létrehozója, vagy a felhasználó nevében létrejött, a Jupyter, a JupyterLab és a RStudio hozzáférése engedélyezett a számítási példányon. A számítási példányok egyetlen, rendszergazdai hozzáféréssel rendelkező felhasználóhoz vannak hozzárendelve, és a Jupyter/JupyterLab/RStudio-en keresztül is csatlakozhatnak. A számítási példánynak egyfelhasználós bejelentkezéssel kell rendelkeznie, és az összes művelet a felhasználó identitását fogja használni a RBAC és a kísérlet futtatásához. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül vezérelhető.
+Az [Azure RBAC](/azure/role-based-access-control/overview) lehetővé teszi annak szabályozását, hogy a munkaterület mely felhasználói hozhatnak létre, törölhetnek, indíthatnak le, állíthatnak le, indíthatnak újra egy számítási példányt. A munkaterület közreműködői és tulajdonosi szerepkörben lévő összes felhasználó létrehozhatja, törölheti, elindíthatja, leállíthatja és újraindíthatja a számítási példányokat a munkaterületen. Azonban csak egy adott számítási példány létrehozója, vagy a felhasználó nevében létrejött, a Jupyter, a JupyterLab és a RStudio hozzáférése engedélyezett a számítási példányon. A számítási példányok egyetlen, rendszergazdai hozzáféréssel rendelkező felhasználóhoz vannak hozzárendelve, és a Jupyter/JupyterLab/RStudio-en keresztül is csatlakozhatnak. A számítási példánynak egyfelhasználós bejelentkezéssel kell rendelkeznie, és minden művelet a felhasználó identitását fogja használni az Azure RBAC és a kísérlet futtatásához. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül vezérelhető.
 
-Ezeket a műveleteket a RBAC is vezérelheti:
+Ezeket a műveleteket az Azure RBAC is szabályozhatja:
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/olvasás*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/írás*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/törlés*
@@ -290,6 +290,6 @@ A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wi
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Betanítási Futtatás beküldése](how-to-set-up-training-targets.md) 

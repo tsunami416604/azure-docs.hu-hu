@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 292305c3f899ac4156fd84e8edcb0d6e9a3c0b34
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b23e9a1e344bb0db1399a4f04712815557b8139e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280866"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427994"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrálás a Logic Apps használatával egyéni összekötővel
 
@@ -66,7 +66,7 @@ Most ellenőrizze, hogy az ügyfél titka látható-e a _tanúsítványok & titk
 
 Ez a cikk a Logic Apps használatával frissíti a Twin-et az Azure Digital Twins-példányban. A folytatáshoz vegyen fel legalább egy Twin-példányt a példányba. 
 
-Az ikreket a [DigitalTwins API](how-to-use-apis-sdks.md)-k, a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával veheti fel. Az ikrek a következő módszerekkel történő létrehozásával kapcsolatos részletes útmutatásért lásd [*: útmutató: digitális ikrek kezelése*](how-to-manage-twin.md).
+Az ikreket a [DigitalTwins API](how-to-use-apis-sdks.md)-k, a [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával veheti fel. Az ikrek a következő módszerekkel történő létrehozásával kapcsolatos részletes útmutatásért lásd [*: útmutató: digitális ikrek kezelése*](how-to-manage-twin.md).
 
 Az Ön által létrehozott példányban szüksége lesz egy Twin **_dupla azonosítóra_** .
 
@@ -207,7 +207,7 @@ Lekérdezheti a Twin metódust a választott módszer (például [Egyéni ügyf�
 
 Ha többet szeretne megtudni az Azure Digital Twins-példány lekérdezéséről, olvassa el [*az útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy olyan logikai alkalmazást hozott létre, amely rendszeresen frissít egy Twin-et az Azure Digital Twins-példányban egy megadott javítással. Kipróbálhatja a többi API-t az egyéni összekötőn, hogy Logic Apps hozzon létre különböző műveletekhez a példányon.
 

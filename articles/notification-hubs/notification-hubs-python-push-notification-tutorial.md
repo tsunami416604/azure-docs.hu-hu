@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 3b6a38087aee7f33861f980cb6d245024f8d51ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f81614005a1b0374dc249187c4ff3c920b7c97e9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852327"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424847"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>A Notification Hubs használata a Pythonból
 
@@ -414,7 +414,7 @@ Figyelje meg a címkék HTTP-fejlécet, amelyet a rendszer a HTTP-kérelemhez ad
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![Képernyőkép a-konzolról, amelyen a H T T P-kérelem és a Service Bus értesítési formátum, Service Bus az értesítési címkék és az X W N S Type értékek piros színnel jelennek meg.][3]
+![Képernyőkép a-konzolról, amelyen a H T T P-kérelem és a Service Bus értesítési formátum, a Service Bus értesítési címke és az X W N S Type értékek piros színnel jelennek meg.][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Értesítés küldése több címke megadásával
 
@@ -425,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![Képernyőkép a-konzolról, amelyen a H T T P-kérelem és a Service Bus értesítési formátum, Service Bus az értesítési címkék és az X W N S Type értékek piros színnel jelennek meg.][4]
+![Képernyőkép a-konzolról, amelyen a H T T P-kérelem és a Service Bus értesítési formátum, több Service Bus értesítési címke, valamint X W N S Type érték szerepel piros színnel.][4]
 
 ### <a name="templated-notification"></a>Sablonban szereplő értesítés
 

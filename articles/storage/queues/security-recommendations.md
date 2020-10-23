@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 44dac73f4e51214dbc41e8663dd44550dc9549f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97f5bd1718c7612ce330ee27ee64f9ad885591b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715393"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425824"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Biztonsági javaslatok a várólista-tároláshoz
 
@@ -45,7 +45,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Visszavonási tervvel kell rendelkeznie minden olyan SAS számára, amelyet az ügyfelek számára ad ki | Ha egy SAS biztonsága sérül, a lehető leghamarabb vissza kell vonnia az SAS-t. Ha vissza szeretne vonni egy felhasználói delegálási SAS-t, vonja vissza a felhasználói delegálási kulcsot, hogy gyorsan érvénytelenítse a kulcshoz társított összes aláírást. Egy tárolt hozzáférési szabályzattal társított szolgáltatási SAS visszavonásához törölheti a tárolt hozzáférési szabályzatot, átnevezheti a szabályzatot, vagy módosíthatja annak lejárati idejét egy múltbeli időpontra. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md).  | - |
 | Ha egy szolgáltatás SAS-je nem egy tárolt hozzáférési szabályzathoz van társítva, akkor a lejárati időt állítsa egy órára vagy kevesebbre. | Nem lehet visszavonni egy olyan szolgáltatáshoz tartozó SAS-t, amely nincs hozzárendelve egy tárolt hozzáférési szabályzathoz. Emiatt a lejárati időt úgy kell korlátozni, hogy az SAS egy órán vagy kevesebb ideig érvényes legyen. | - |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
@@ -63,7 +63,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 |-|----|--|
 | A kérések engedélyezésének nyomon követése | Az Azure Storage naplózásának engedélyezése az Azure Storage-ba irányuló kérelmek engedélyezésének nyomon követésére. A naplók azt jelzik, hogy egy kérelem névtelenül történt-e egy OAuth 2,0-token használatával, megosztott kulcs használatával vagy közös hozzáférésű aláírás (SAS) használatával. További információ: az [Azure Storage Analytics naplózása](../common/storage-analytics-logging.md). | - |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Az Azure biztonsági dokumentációja](https://docs.microsoft.com//azure/security/)
-- [Biztonságos fejlesztői dokumentáció](https://docs.microsoft.com/azure/security/develop/).
+- [Az Azure biztonsági dokumentációja](/azure/security/)
+- [Biztonságos fejlesztői dokumentáció](/azure/security/develop/).

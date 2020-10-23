@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9f4947fe379f19593d06ba9efb6bfc43c397e9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333443"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424409"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Oktatóanyag: nagyítás konfigurálása automatikus felhasználó-kiépítési művelethez
 
@@ -152,6 +152,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
 ## <a name="change-log"></a>Változási napló
 * 05/14/2020 – az e-mailekhez hozzáadott frissítési műveletek támogatása [type EQ "work"] attribútum.
+* 10/20/2020 – a "Pro" és a "Corp" meglévő szerepköreinek cseréjéhez hozzáadta a következő két új szerepkört: "licencelt" és "on-Prem". A "Pro" és a "Corp" szerepkör támogatása a jövőben el lesz távolítva.
 
 ## <a name="additional-resources"></a>További források
 

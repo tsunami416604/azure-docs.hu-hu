@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449031"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428108"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS-fiókok összekötése Azure Security Center
 
@@ -118,9 +118,12 @@ Az AWS Systems Manager szükséges a feladatok AWS-erőforrásokon keresztüli a
 - [Az SSM-ügynök telepítése és konfigurálása az Amazon EC2 Linux-példányokon](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-agent.html)
 
 
-### <a name="step-4-create-a-service-principal-for-onboarding-at-scale"></a>4. lépés: Egyszerű szolgáltatás létrehozása a méretezéshez
+### <a name="step-4-complete-azure-arc-prerequisites"></a>4. lépés: Az Azure-ív előfeltételeinek befejezése
+1. Győződjön meg arról, hogy a megfelelő [Azure-erőforrás-szolgáltatók](../azure-arc/servers/agent-overview.md#register-azure-resource-providers) vannak regisztrálva:
+    - Microsoft. HybridCompute
+    - Microsoft. GuestConfiguration
 
-A bevezetéshez használni kívánt előfizetés **tulajdonosaként** hozzon létre egy egyszerű szolgáltatásnevet az Azure arc bevezetéséhez az [egyszerű szolgáltatásnév létrehozása az üzembe helyezéshez](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) című témakörben leírtak szerint.
+1. Hozzon létre egy egyszerű szolgáltatást a méretezéshez. A bevezetéshez használni kívánt előfizetés **tulajdonosaként** hozzon létre egy egyszerű szolgáltatásnevet az Azure arc bevezetéséhez az [egyszerű szolgáltatásnév létrehozása az üzembe helyezéshez](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)című témakörben leírtak szerint.
 
 
 ### <a name="step-5-connect-aws-to-security-center"></a>5. lépés Az AWS összekötése Security Center
@@ -132,9 +135,10 @@ A bevezetéshez használni kívánt előfizetés **tulajdonosaként** hozzon lé
     1. Adja meg az összekötő **megjelenítendő nevét** .
     1. Győződjön meg arról, hogy az előfizetés helyes. Ez az előfizetés tartalmazza az összekötő és az AWS Security hub javaslatait.
     1. A 2. lépésben kiválasztott hitelesítési lehetőségtől függően [. Security Center hitelesítésének beállítása AWS-ben](#step-2-set-up-authentication-for-security-center-in-aws):
-        - Válassza a **szerepkör** bekapcsolása lehetőséget, és illessze be az ARN-t [egy iam szerepkör létrehozása az](#create-an-iam-role-for-security-center) :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján"::: létrehozásához Security Center.
+        - Válassza a  **szerepkör** bejelölése és az ARN beillesztése a [következőre: iam szerepkör létrehozása a Security Centerhoz](#create-an-iam-role-for-security-center)lehetőséget.
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján":::
 
-            VAGY
+            OR
 
         - Válassza ki a **hitelesítő adatokat** , majd illessze be a **hozzáférési kulcsot** és a **titkos kulcsot** az [AWS-felhasználó létrehozása a Security Centerhoz](#create-an-aws-user-for-security-center)című. csv fájlból.
 1. Kattintson a **Tovább** gombra.
@@ -143,7 +147,7 @@ A bevezetéshez használni kívánt előfizetés **tulajdonosaként** hozzon lé
     Security Center felveszi a csatlakoztatott AWS-fiókban lévő EC2-példányokat, és az SSM-t használja az Azure-ív bevezetéséhez. 
 
     > [!TIP]
-    > A támogatott operációs rendszerek listája az alábbi gyakori kérdések között található.
+    > A támogatott operációs rendszerek listájáért lásd: [milyen operációs rendszerek támogatottak a EC2-példányok esetében?](#what-operating-systems-for-my-ec2-instances-are-supported) a gyakori kérdések között.
 
     1. Válassza ki azt az **erőforráscsoportot** és **Azure-régiót** , amelyet a felderített AWS-EC2s a kijelölt előfizetésbe fog bevezetni.
     1. Adja meg az Azure-ív egyszerű szolgáltatás- **azonosítóját** és az **egyszerű szolgáltatás ügyfél-titkos kulcsát** , az itt leírtak szerint [: egyszerű szolgáltatás létrehozása a méretezéshez](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
@@ -191,7 +195,7 @@ Támogatott operációs rendszer automatikus bevezetéshez az Azure arc for AWS-
 - Red Hat Enterprise Linux (RHEL) 7 (x64) – az SSM-et manuálisan kell telepíteni vagy külön előkészíteni
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az AWS-fiók csatlakoztatása a Azure Security Centerban elérhető többfelhős élmény része. A kapcsolódó információk a következő oldalon találhatók:
 

@@ -1,29 +1,25 @@
 ---
-title: Egyszeri bejelentkezés az Application proxyval | Microsoft Docs
-description: Bemutatja, hogyan biztosíthat egyszeri bejelentkezést az Azure AD Application Proxy használatával.
+title: Kerberos-alapú egyszeri bejelentkezés (SSO) a Azure Active Directory alkalmazás-proxyval
+description: Ismerteti, hogyan lehet egyszeri bejelentkezést biztosítani a Azure Active Directory Application Proxy használatával.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq2
+ms.openlocfilehash: 860d29d3fff2187e770a5ff00b7145fc188a497c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299748"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426489"
 ---
-# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos általi korlátozott delegálás alkalmazásproxyval történő, egyszeri alkalmazásbejelentkezéshez
+# <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás egyszeri bejelentkezéshez (SSO) az alkalmazásokhoz az Application proxy használatával
 
 Az alkalmazás-proxyn keresztül közzétett helyszíni alkalmazásokhoz egyszeri bejelentkezést is biztosíthat, amely integrált Windows-hitelesítéssel védett. Ezeknek az alkalmazásoknak Kerberos-jegyre van szükségük a hozzáféréshez. Az alkalmazásproxy a Kerberos által korlátozott delegálást (KCD) használja az alkalmazások támogatásához. 
 
@@ -153,7 +149,7 @@ Ha a bejelentkezési identitáshoz a helyszíni **SAM-fiók neve** van használa
 Ha az egyszeri bejelentkezés folyamata során hiba lép fel, az az összekötő számítógép eseménynaplójában jelenik meg, a [Hibaelhárítás](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)során.
 Bizonyos esetekben azonban a rendszer sikeresen elküldte a kérést a háttérbeli alkalmazásnak, miközben az alkalmazás különböző más HTTP-válaszokban válaszol. Ezeknek az eseteknek a hibaelhárításához a 24029-as számú eseményt kell megvizsgálni az alkalmazásproxy munkamenet-eseménynaplójában. A delegáláshoz használt felhasználói identitás megjelenik a "felhasználó" mezőben az esemény részletei között. A munkamenet-napló bekapcsolásához válassza az **elemzési és hibakeresési naplók megjelenítése** lehetőséget az Eseménynapló Nézet menüjében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazásproxy-alkalmazás konfigurálása a Kerberos által korlátozott delegálás használatára](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Az alkalmazásproxyval kapcsolatos problémák hibaelhárítása](application-proxy-troubleshoot.md)

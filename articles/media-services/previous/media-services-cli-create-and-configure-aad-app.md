@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: ceb01c97ec50f4e2a7aa146448c3da662d4314ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d6beac446f8a15a41daf0dfe8ca1783c95c775
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258350"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427218"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure AD-alkalmazás létrehozása és konfigurálása a Media Services API eléréséhez az Azure CLI használatával
 
@@ -67,8 +67,8 @@ Például a következő szintek egyike lehet:
 
 További információ: Azure- [szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli)
 
-Lásd még: [Role-Based Access Control kezelése az Azure parancssori felülettel](../../role-based-access-control/role-assignments-cli.md). 
+Lásd még: [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI-](../../role-based-access-control/role-assignments-cli.md)vel. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a [fájlok feltöltésével a fiókjába](media-services-portal-upload-files.md).

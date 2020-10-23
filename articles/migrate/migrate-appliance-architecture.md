@@ -3,12 +3,12 @@ title: Az Azure Migrate-berendezés architektúrája
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a01932a9e4f72d7ce6747214b53f124d54942894
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d38796d4c4a1149d096f5bb06f7a11bc71b33cc5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312911"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428163"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Az Azure Migrate-berendezés architektúrája
 
@@ -51,8 +51,8 @@ A készülék telepítése során regisztrálja a készüléket Azure Migrate, �
 **Művelet** | **Részletek** | **Engedélyek**
 --- | --- | ---
 **Forrásoldali szolgáltatók regisztrálása** | Ezek az erőforrás-szolgáltatók regisztrálva vannak a készülék beállítása során kiválasztott előfizetésben: Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó.<br/><br/> Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. | Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.
-**Azure AD-alkalmazás létrehozása – kommunikáció** | A Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást a készüléken futó ügynökök és az Azure-on futó megfelelő szolgáltatások közötti kommunikációhoz (hitelesítéshez és engedélyezéshez).<br/><br/> Az alkalmazásnak nincs jogosultsága Azure Resource Manager hívásokat kezdeményezni, vagy RBAC hozzáférést bármilyen erőforráshoz. | A Azure Migrate az alkalmazás létrehozásához szükséges [engedélyekkel](./tutorial-discover-vmware.md#prepare-an-azure-user-account) kell rendelkeznie.
-**Azure AD-alkalmazások létrehozása – Key Vault** | Ez az alkalmazás csak a VMware virtuális gépeknek az Azure-ba irányuló ügynök nélküli áttelepítéséhez jön létre.<br/><br/> Kizárólag az ügynök nélküli áttelepítés felhasználói előfizetésében létrehozott kulcstartó elérésére szolgál.<br/><br/> A RBAC hozzáférése az Azure Key vaultban (az ügyfél bérlője alapján jött létre), ha a felderítést kezdeményezik a készülékről. | A Azure Migrate az alkalmazás létrehozásához szükséges [engedélyekkel](./tutorial-discover-vmware.md#prepare-an-azure-user-account) kell rendelkeznie.
+**Azure AD-alkalmazás létrehozása – kommunikáció** | A Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást a készüléken futó ügynökök és az Azure-on futó megfelelő szolgáltatások közötti kommunikációhoz (hitelesítéshez és engedélyezéshez).<br/><br/> Az alkalmazásnak nincs jogosultsága Azure Resource Manager-hívások vagy az Azure RBAC-hozzáférés bármely erőforráson való elvégzésére. | A Azure Migrate az alkalmazás létrehozásához szükséges [engedélyekkel](./tutorial-discover-vmware.md#prepare-an-azure-user-account) kell rendelkeznie.
+**Azure AD-alkalmazások létrehozása – Key Vault** | Ez az alkalmazás csak a VMware virtuális gépeknek az Azure-ba irányuló ügynök nélküli áttelepítéséhez jön létre.<br/><br/> Kizárólag az ügynök nélküli áttelepítés felhasználói előfizetésében létrehozott kulcstartó elérésére szolgál.<br/><br/> Azure RBAC-hozzáféréssel rendelkezik az Azure Key vaultban (az ügyfél bérlője alapján létrehozva), ha a felderítést kezdeményezik a készülékről. | A Azure Migrate az alkalmazás létrehozásához szükséges [engedélyekkel](./tutorial-discover-vmware.md#prepare-an-azure-user-account) kell rendelkeznie.
 
 
 
@@ -88,6 +88,6 @@ A készülék frissítve lett, mivel a készüléken futó Azure Migrate-ügynö
 Ha kikapcsolja az automatikus frissítést a beállításjegyzékben, állítsa a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" kulcsot 0-ra (DWORD).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tekintse át](migrate-appliance.md) a készülék támogatási mátrixát.

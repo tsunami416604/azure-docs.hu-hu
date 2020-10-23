@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: c210096c1765015378f12f8c5e01fc9f8f97e10b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 02bcbf0b4f6f6021c157a8ba3c5d2783fc94f1aa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327680"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425323"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Gyors útmutató: csevegési helyiség létrehozása Azure Functions és a Signaler szolgáltatással a JavaScript használatával
 
@@ -58,7 +58,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 1. Válassza ki és másolja a vágólapra az elsődleges kapcsolati sztring értékét.
 
-    ![SignalR szolgáltatás létrehozása](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ![Képernyőkép, amely kiemeli az elsődleges kapcsolatok sztringjét.](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
 1. A Kódszerkesztő alkalmazásban nyissa meg a *src/chat/JavaScript* mappát a klónozott tárházban.
 

@@ -3,12 +3,12 @@ title: Bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatók�
 description: Megismerheti Azure Active Directory bérlők, a felhasználók és a szerepkörök fogalmait, valamint azt, hogy miként használhatók az Azure Lighthouse-forgatókönyvekben.
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: c409b45d18504d071ffed3185de20ec5e1147bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dae09ddd7760af1663e0329eb646c8956dff3ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399244"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424118"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben
 
@@ -22,7 +22,7 @@ Bármelyik bevezetési módszert választja, meg kell adnia az *engedélyeket*. 
 
 ## <a name="role-support-for-azure-lighthouse"></a>Szerepkör-támogatás az Azure Lighthouse-hoz
 
-Az engedélyezés meghatározásakor minden felhasználói fiókhoz hozzá kell rendelni a [szerepköralapú hozzáférés-vezérlés (RBAC) beépített szerepköreinek](../../role-based-access-control/built-in-roles.md)egyikét. Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
+Az engedélyezés meghatározásakor minden felhasználói fiókhoz hozzá kell rendelni az [Azure beépített szerepköreinek](../../role-based-access-control/built-in-roles.md)egyikét. Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
 
 Az Azure Lighthouse jelenleg minden [beépített szerepkört](../../role-based-access-control/built-in-roles.md) támogat, a következő kivételekkel:
 
@@ -45,7 +45,7 @@ Az engedélyek létrehozásakor javasoljuk a következő ajánlott eljárásokat
 > [!IMPORTANT]
 > Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusát** **biztonsági**értékre kell állítani. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [Az Azure Lighthouse ajánlott biztonsági eljárásait](recommended-security-practices.md).
 - Az ügyfeleket az Azure világítótoronyba [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.

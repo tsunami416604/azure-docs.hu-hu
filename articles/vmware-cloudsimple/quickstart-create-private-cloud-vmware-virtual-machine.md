@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140853"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427771"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>VMware virtuális gépek létrehozása a saját felhőben
 
@@ -58,37 +58,37 @@ A vCenter eléréséhez Kezdje a CloudSimple portálról. A Kezdőlap **Általá
 1. A vCenter-ben kattintson a **gazdagépek és fürtök** ikonra.
 
 2. Kattintson a jobb gombbal a **munkaterhelés** elemre, és válassza az **új virtuális gép**lehetőséget.
-    ![Új virtuális gép](media/vcvm01.png)
+    ![Képernyőkép, amely kiemeli az új virtuális gép menüpontot.](media/vcvm01.png)
 
 3. Válassza az **új virtuális gép létrehozása** lehetőséget, majd kattintson a **tovább**gombra.
-    ![Új virtuális gép](media/vcvm02.png)
+    ![Képernyőkép, amely kiemeli az új virtuális gép létrehozása lehetőséget.](media/vcvm02.png)
 
 4. Nevezze el a gépet, válassza ki a számítási **feladatok virtuális** gépe helyét, majd kattintson a **tovább**gombra.
-    ![Új virtuális gép](media/vcvm03.png)
+    ![Képernyőfelvétel: a számítási feladatok virtuális gépei lehetőség.](media/vcvm03.png)
 
 5. Válassza ki a **munkaterhelés** számítási erőforrását, és kattintson a **tovább**gombra.
-    ![Új virtuális gép](media/vcvm04.png)
+    ![Képernyőkép, amely kiemeli a számítási feladatok számítási erőforrását.](media/vcvm04.png)
 
 6. Válassza a **vsanDatastore** lehetőséget, majd kattintson a **tovább**gombra.
-    ![Új virtuális gép](media/vcvm05.png)
+    ![Képernyőkép, amely kiemeli a vsanDatastore beállítást.](media/vcvm05.png)
 
 7. Tartsa meg az alapértelmezett ESXi 6,5 kompatibilitási beállítást, majd kattintson a **tovább**gombra.
-    ![Új virtuális gép](media/vcvm06.png)
+    ![A kiválasztott ESXi 6,5 kompatibilitási beállítást bemutató képernyőkép.](media/vcvm06.png)
 
 8. Válassza ki az ISO-t a létrehozandó virtuális géphez tartozó vendég operációs rendszernek, és kattintson a **tovább**gombra.
-    ![Új virtuális gép](media/vcvm07.png)
+    ![Képernyőkép, amely bemutatja, hogyan választhatja ki a virtuális gép ISO-guese operációs rendszerét.](media/vcvm07.png)
 
 9. Válassza a merevlemez és hálózati beállítások lehetőséget. Új CD/DVD-meghajtó esetén válassza az **ADATTÁR ISO-fájlja**lehetőséget.  Ha engedélyezni szeretné a nyilvános IP-címről érkező forgalmat erre a virtuális gépre, válassza a hálózatot **VM-1-** ként.
-    ![Új virtuális gép](media/vcvm08.png)
+    ![Képernyőkép, amely kiemeli az adattár ISO-fájljának kiválasztását.](media/vcvm08.png)
 
 10. Megnyílik egy kiválasztási ablak. Válassza ki az ISO-fájlok és Sablonok mappába korábban feltöltött fájlt, majd kattintson **az OK**gombra.
     ![Új virtuális gép](media/vcvm10.png)
 
 11. Tekintse át a beállításokat, majd kattintson az **OK** gombra a virtuális gép létrehozásához.
-    ![Új virtuális gép](media/vcvm11.png)
+    ![A beállítások áttekintését bemutató képernyőkép.](media/vcvm11.png)
 
 A virtuális gép most már hozzá van adva a munkaterhelés számítási erőforrásaihoz, és készen áll a használatra. 
-![Új virtuális gép](media/vcvm12.png)
+![Képernyőkép, amely megjeleníti a számítási feladathoz tartozó számítási erőforrásokhoz hozzáadott virtuális gépet.](media/vcvm12.png)
 
 Az alapszintű telepítés már befejeződött. A saját Felhőjét ugyanúgy használhatja, mint a helyszíni virtuálisgép-infrastruktúrát.
 
@@ -223,7 +223,7 @@ A saját felhőalapú vCenter-környezete teljes körű kihasználása érdekéb
 
 Megoldás telepítéséhez további jogosultságokat kell megadnia korlátozott időtartamra. Lásd: a [jogosultságok kiterjesztésének](escalate-private-cloud-privileges.md)megtalálása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](on-premises-connection.md)

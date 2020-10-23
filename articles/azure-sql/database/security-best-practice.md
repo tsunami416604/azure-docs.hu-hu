@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1ebbbfed3b3a39e43986a385be87d65d70b175
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885172"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427277"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -791,13 +791,15 @@ A legtöbb biztonsági szabvány a működés folytonossága szempontjából az 
 
 - Az Azure beépített magas rendelkezésre állást kínál: [magas rendelkezésre állás SQL Database és SQL felügyelt példánnyal](high-availability-sla.md)
 
-- A üzletileg kritikus szint feladatátvételi csoportokat, több rendelkezésre állási zónákat, a teljes és differenciált biztonsági másolatokat, valamint az alapértelmezés szerint az időponthoz tartozó visszaállítási biztonsági mentéseket is lehetővé teszi:  
-  - [Magas rendelkezésre állás – zóna redundáns konfigurációja](high-availability-sla.md#zone-redundant-configuration)
+- A üzletileg kritikus szinten a feladatátvételi csoportok, a teljes és a különbözeti naplók biztonsági mentései, valamint az alapértelmezés szerint engedélyezett időponthoz tartozó biztonsági másolatok találhatók:  
   - [Automatikus biztonsági mentések](automated-backups-overview.md)
   - [Adatbázis helyreállítása automatikus adatbázis-biztonsági mentéssel – időponthoz való visszaállítás](recovery-using-backups.md#point-in-time-restore)
 
-- További üzletmenet-folytonossági funkciók, például automatikus feladatátvételi csoportok a különböző Azure-térségek az itt leírtak szerint konfigurálhatók: [az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- További üzletmenet-folytonossági funkciók, mint például a zóna redundáns konfigurációja és az automatikus feladatátvételi csoportok különböző Azure-térségek konfigurálható: 
+    - [Magas rendelkezésre állású zóna redundáns konfigurációja prémium & üzletileg kritikus szolgáltatási szintekhez](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
+    - [Magas rendelkezésre állás – zóna redundáns konfigurációja általános célú szolgáltatási réteghez](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
+    - [Az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át [a Azure SQL Database biztonsági funkcióinak áttekintését](security-overview.md)

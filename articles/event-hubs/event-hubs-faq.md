@@ -3,12 +3,12 @@ title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 94ddfbf0803ea7ab53b1b42b977a9ebdd2354bc5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2c58f67fed880b8aad60ff1a46a587dcf514102e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369607"
+ms.locfileid: "92424176"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -203,10 +203,10 @@ Az eredményekből megtalálhatja, hogy mit lehet megvalósítani egy dedikált 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Hogyan hozzon létre egy dedikált Event Hubs-fürtöt?
 Egy Event Hubs dedikált fürtöt úgy hozhat létre, hogy egy [kvótával bővíti a támogatási kérést](https://portal.azure.com/#create/Microsoft.Support) , vagy kapcsolatba lép a [Event Hubs csapatával](mailto:askeventhubs@microsoft.com). Általában két hetet vesz igénybe, hogy a fürt üzembe helyezése és átadása az Ön általi használatra megtörténjen. Ez a folyamat ideiglenes, amíg a Azure Portalon keresztül elérhetővé nem válik a teljes körű kiszolgálás.
 
-## <a name="best-practices"></a>Ajánlott eljárások
+## <a name="best-practices"></a>Bevált gyakorlatok
 
 ### <a name="how-many-partitions-do-i-need"></a>Hány partícióra van szükségem?
-A partíciók száma az eseményközpont létrehozásakor határozható meg, és 2 és 32 közé eshet. A partíciók száma nem módosítható, ezért érdemes megfontolni a hosszú távú méretezést a partíciók számának beállításakor. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. További információ a partíciókon: [partíciók](event-hubs-features.md#partitions).
+A partíciók száma a létrehozáskor van megadva, és 1 és 32 között kell lennie. A partíciók száma nem módosítható, ezért érdemes megfontolni a hosszú távú méretezést a partíciók számának beállításakor. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. További információ a partíciókon: [partíciók](event-hubs-features.md#partitions).
 
 A létrehozás időpontjában érdemes lehet beállítani a lehető legmagasabb értéket, amely a 32. Ne feledje, hogy több partíció használata esetén a rendszer több partícióba küldi az eseményeket anélkül, hogy megtartja a sorrendet, kivéve, ha a küldőket úgy konfigurálja, hogy csak egyetlen, a 32-es partíción kívülről küldje el a fennmaradó 31 partíciót. Az előző esetben az összes 32-partíción el kell olvasnia az eseményeket. Az utóbbi esetben az Event Processor Host-on kívül az extra konfigurációtól eltekintve nincs nyilvánvaló további díj.
 
@@ -285,7 +285,7 @@ A következő példákban megtudhatja, hogyan célozhat meg egy adott tárolási
 - Python – [szinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [aszinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) és [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 

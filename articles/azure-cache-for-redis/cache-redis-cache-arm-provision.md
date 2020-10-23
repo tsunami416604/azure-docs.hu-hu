@@ -1,22 +1,22 @@
 ---
 title: Az Azure cache üzembe helyezése a Redis Azure Resource Manager sablon használatával
-description: Megtudhatja, hogyan helyezhet üzembe egy Azure cache-t a Redis-erőforráshoz Azure Resource Manager sablonnal. A sablonok a gyakori forgatókönyvek esetében érhetők el.
+description: Megtudhatja, hogyan használhat egy Azure Resource Manager sablont (ARM-sablon) egy Azure cache Redis-erőforráshoz való üzembe helyezéséhez. A sablonok a gyakori forgatókönyvek esetében érhetők el.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0445aeaea6f99754469d5c0e46972aef2ed667aa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461238"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424214"
 ---
-# <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Azure cache létrehozása Redis Resource Manager-sablon használatával
+# <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>Azure cache létrehozása Redis ARM-sablon használatával
 
-Megtudhatja, hogyan hozhat létre olyan Azure Resource Manager-sablont, amely üzembe helyez egy Azure-gyorsítótárat a Redis. A gyorsítótárat meglévő Storage-fiókkal is használhatja a diagnosztikai adatkezelés érdekében. Azt is megtudhatja, hogyan határozhatja meg, hogy mely erőforrások legyenek telepítve, és hogyan határozhatja meg a központi telepítés végrehajtásakor megadott paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. Jelenleg a diagnosztikai beállítások az adott régióban lévő összes gyorsítótárhoz meg vannak osztva egy előfizetéshez. A régió egyik gyorsítótárának frissítése hatással van a régió összes többi gyorsítótárára.
+Megtudhatja, hogyan hozhat létre olyan Azure Resource Manager-sablont (ARM-sablon), amely üzembe helyez egy Azure-gyorsítótárat a Redis. A gyorsítótárat meglévő Storage-fiókkal is használhatja a diagnosztikai adatkezelés érdekében. Azt is megtudhatja, hogyan határozhatja meg, hogy mely erőforrások legyenek telepítve, és hogyan határozhatja meg a központi telepítés végrehajtásakor megadott paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. Jelenleg a diagnosztikai beállítások az adott régióban lévő összes gyorsítótárhoz meg vannak osztva egy előfizetéshez. A régió egyik gyorsítótárának frissítése hatással van a régió összes többi gyorsítótárára.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -46,7 +46,7 @@ Az új [prémium szintű](cache-overview.md#service-tiers) Resource Manager-sabl
 * [Prémium szintű Azure cache létrehozása a Redis adatmegőrzési szolgáltatásával](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [Virtual Network üzembe helyezett prémium szintű Redis Cache létrehozása](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-A legújabb sablonok kereséséhez tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/documentation/templates/) , és keressen rá `Azure Cache for Redis` .
+A legújabb sablonok kereséséhez tekintse meg az Azure rövid útmutató [sablonjait](https://azure.microsoft.com/documentation/templates/) , és keressen rá az _Azure cache Redis_.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -59,7 +59,7 @@ A legújabb sablonok kereséséhez tekintse meg az [Azure Gyorsindítás sablonj
     * **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához vagy egy meglévő erőforráscsoport kiválasztásához.
     * **Hely**: válasszon egy helyet az erőforráscsoportnak. A Storage-fióknak és a Redis-gyorsítótárnak ugyanabban a régióban kell lennie. Alapértelmezés szerint a Redis gyorsítótár ugyanazt a helyet használja, mint az erőforráscsoport. Ezért a Storage-fiókkal megegyező helyet kell megadnia.
     * **Redis cache neve**: adja meg a Redis-gyorsítótár nevét.
-    * **Meglévő diagnosztikai Storage-fiók**: adja meg a Storage-fiók erőforrás-azonosítóját. A szintaxis: **/Subscriptions/ &lt; előfizetés-azonosító>/RESOURCEGROUPS/ &lt; erőforráscsoport neve>/Providers/Microsoft.Storage/STORAGEACCOUNTS/ &lt; Storage-fiók neve>**.
+    * **Meglévő diagnosztikai Storage-fiók**: adja meg a Storage-fiók erőforrás-azonosítóját. A szintaxis a következő: `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
 
     Használja az alapértelmezett értéket a többi beállításhoz.
 1. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**, valamint a **vásárlás**lehetőséget.
@@ -79,6 +79,6 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure Resource Manager-sablont, amely üzembe helyez egy Azure-gyorsítótárat a Redis. Ha meg szeretné tudni, hogyan hozhat létre olyan Azure Resource Manager-sablont, amely egy Azure-webalkalmazást telepít az Azure cache for Redis szolgáltatásban, tekintse meg [a webalkalmazások és az Azure cache létrehozása a Redis sablon használatával](./cache-web-app-arm-with-redis-cache-provision.md)című témakört.

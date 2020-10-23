@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996339"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426654"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -60,7 +60,7 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
       ![Service Bus névtérbeli kapcsolatok karakterláncának másolása](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a paraméterhez tartozó kapcsolódási karakterláncot `EntityPath`   . Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
+   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a paraméterhez tartozó kapcsolódási karakterláncot `EntityPath` . Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus trigger hozzáadása
 
@@ -68,18 +68,22 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
-1. A keresőmezőbe írja be szűrőként az "Azure Service Bus" kifejezést. Az eseményindítók listából válassza ki a kívánt eseményindítót.
+1. A portál keresési mezőjébe írja be a kifejezést `azure service bus` . A megjelenő eseményindítók listából válassza ki a kívánt eseményindítót.
 
    Például a logikai alkalmazás aktiválásához, amikor új elem érkezik egy Service Bus várólistára, jelölje be az **üzenet fogadása egy várólistában (automatikus Befejezés)** triggert.
 
    ![Service Bus trigger kiválasztása](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   Az összes Service Bus eseményindító *hosszú lekérdezési* eseményindítók. Ez a Leírás azt jelenti, hogy az eseményindító indításakor az eseményindító feldolgozza az összes üzenetet, majd 30 másodpercet vár, hogy további üzenetek jelenjenek meg a várólista vagy a témakör előfizetésében. Ha 30 másodpercen belül nem jelenik meg üzenet, a rendszer kihagyja a trigger futtatását. Ellenkező esetben az trigger folytatja az üzenetek olvasását, amíg a várólista vagy a témakör-előfizetés üres. A következő eseményindító-lekérdezés az eseményindító tulajdonságaiban megadott ismétlődési intervallumon alapul.
+   Az alábbiakban néhány megfontolandó szempontot talál Service Bus Triggerek használata esetén:
 
-   Egyes eseményindítók, például **Ha egy vagy több üzenet érkezik egy várólistába (automatikusan befejeződött)** , egy vagy több üzenetet adhat vissza. Ha ezek az eseményindítók tüzet adnak vissza, a rendszer az eseményindítók **maximális** száma tulajdonsága által megadott számú üzenetet adja vissza.
+   * Az összes Service Bus eseményindító *hosszú lekérdezési* eseményindítók. Ez a Leírás azt jelenti, hogy az eseményindító indításakor az eseményindító feldolgozza az összes üzenetet, majd 30 másodpercet vár, hogy további üzenetek jelenjenek meg a várólista vagy a témakör előfizetésében. Ha 30 másodpercen belül nem jelenik meg üzenet, a rendszer kihagyja a trigger futtatását. Ellenkező esetben az trigger folytatja az üzenetek olvasását, amíg a várólista vagy a témakör-előfizetés üres. A következő eseményindító-lekérdezés az eseményindító tulajdonságaiban megadott ismétlődési intervallumon alapul.
 
-    > [!NOTE]
-    > Az automatikus kiegészítési trigger automatikusan végrehajt egy üzenetet, de a Befejezés csak a Service Bus következő hívásakor történik. Ez a viselkedés hatással lehet a logikai alkalmazás kialakítására. Ne módosítsa például a párhuzamosságot az automatikus kiegészítési triggerre, mert ez a változás duplikált üzeneteket eredményezhet, ha a logikai alkalmazás szabályozott állapotba kerül. A Egyidejűség vezérlőelem módosítása a következő feltételeket hozza létre: a rendszer kihagyja a szabályozott eseményindítókat a `WorkflowRunInProgress` kóddal, a befejezési művelet nem fog történni, és a következő eseményindító futtatása a lekérdezési időköz után következik be. A Service Bus zárolási időtartamát olyan értékre kell beállítani, amely hosszabb a lekérdezési időköznél. Azonban a beállítás ellenére előfordulhat, hogy az üzenet még nem fejeződött be, ha a logikai alkalmazás a következő lekérdezési időszakban is szabályozott állapotban marad.
+   * Egyes eseményindítók, például **Ha egy vagy több üzenet érkezik egy várólistába (automatikusan befejeződött)** , egy vagy több üzenetet adhat vissza. Ha ezek az eseményindítók tüzet adnak vissza, a rendszer az eseményindítók **maximális** száma tulajdonsága által megadott számú üzenetet adja vissza.
+
+     > [!NOTE]
+     > Az automatikus kiegészítési trigger automatikusan végrehajt egy üzenetet, de a Befejezés csak a Service Bus következő hívásakor történik. Ez a viselkedés hatással lehet a logikai alkalmazás kialakítására. Ne módosítsa például a párhuzamosságot az automatikus kiegészítési triggerre, mert ez a változás duplikált üzeneteket eredményezhet, ha a logikai alkalmazás szabályozott állapotba kerül. A Egyidejűség vezérlőelem módosítása a következő feltételeket hozza létre: a rendszer kihagyja a szabályozott eseményindítókat a `WorkflowRunInProgress` kóddal, a befejezési művelet nem fog történni, és a következő eseményindító futtatása a lekérdezési időköz után következik be. A Service Bus zárolási időtartamát olyan értékre kell beállítani, amely hosszabb a lekérdezési időköznél. Azonban a beállítás ellenére előfordulhat, hogy az üzenet még nem fejeződött be, ha a logikai alkalmazás a következő lekérdezési időszakban is szabályozott állapotban marad.
+
+   * Ha bekapcsolja egy Service Bus-trigger [egyidejűségi beállítását](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) , a tulajdonság alapértelmezett értéke `maximumWaitingRuns` 10. Az Service Bus entitás zárolási időtartamának beállítása és a logikai alkalmazás futtatási időtartama alapján ez az alapértelmezett érték túl nagy lehet, és az elveszett zárolási kivételt okozhatja. A forgatókönyv optimális értékének megkereséséhez 1 vagy 2 értékű tesztelést kell kezdenie a `maximumWaitingRuns` tulajdonsághoz. A várakozó futtatások maximális értékének módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)című témakört.
 
 1. Ha az trigger első alkalommal csatlakozik a Service Bus-névtérhez, kövesse az alábbi lépéseket, amikor a Logic app Designer kéri a kapcsolódási adatok megadását.
 
@@ -113,13 +117,13 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben.
+1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
 1. Válassza ki azt a lépést, amelyben a műveletet hozzá szeretné adni, majd kattintson az **új lépés**gombra.
 
    Vagy a lépések közötti művelet hozzáadásához vigye a mutatót a fenti lépések között látható nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként az "Azure Service Bus" kifejezést. A műveletek listából válassza ki a kívánt műveletet. 
+1. A **válasszon műveletet**területen a keresőmezőbe írja be a kifejezést `azure service bus` . A megjelenő műveletek listából válassza ki a kívánt műveletet. 
 
    Ebben a példában válassza az **üzenet küldése** műveletet.
 
@@ -175,6 +179,6 @@ A Service Bus szolgáltatásban az Service Bus-összekötő akár 1 500 egyedi m
 
 Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb technikai részletekért, amelyeket az összekötő hencegő leírása ismertet, tekintse át az [összekötő-hivatkozás lapot](/connectors/servicebus/). További információ a Azure Service Bus üzenetkezelésről: [Mi az Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94ad0a05dafe2c405b1b9cb62242675aa54c4432
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976227"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424309"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Tudnivalók a VPN Gateway konfigurációs beállításairól
 
@@ -53,11 +53,11 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>Átjáró SKU konfigurálása
 
-#### <a name="azure-portal"></a>Azure Portal
+**Azure Portal**
 
 Ha a Azure Portal használatával hoz létre Resource Manager virtuális hálózati átjárót, akkor a legördülő listából kiválaszthatja az átjáró SKU-t. A megjelenített beállítások az átjáró típusa és a választott VPN-típus szerint jelennek meg.
 
-#### <a name="powershell"></a>PowerShell
+**PowerShell**
 
 A következő PowerShell-példa az `-GatewaySku` as VpnGw1 adja meg. Ha a PowerShell-lel átjárót hoz létre, először létre kell hoznia az IP-konfigurációt, majd egy változót kell használnia. Ebben a példában a konfigurációs változó $gwipconfig.
 
@@ -67,7 +67,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 ```azurecli
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
@@ -82,6 +82,12 @@ Ha VPN-átjáróval rendelkezik, és egy másik átjáró-SKU-t szeretne haszná
 3. Az alapszintű/standard/HighPerformance SKU-ról VpnGw SKU-ra **nem** lehet átméretezni. Ehelyett az új SKU-ra kell [váltania](#change) .
 
 #### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>Átjáró átméretezése
+
+**Azure Portal**
+
+[!INCLUDE [Resize a SKU - portal](../../includes/vpn-gateway-resize-gw-portal-include.md)]
+
+**PowerShell**
 
 [!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
 
@@ -173,6 +179,6 @@ A REST API-k, a PowerShell-parancsmagok vagy az Azure CLI VPN Gateway konfigurá
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | Nem támogatott | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az elérhető kapcsolatok konfigurációjáról: [Tudnivalók a VPN Gatewayról](vpn-gateway-about-vpngateways.md).

@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b990fc7282cd986b0903fb1f33114a164be1c191
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: contperfq2
+ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366683"
+ms.locfileid: "92424619"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -179,6 +180,8 @@ Győződjön meg arról, hogy a frissítések jelölőnégyzet be van jelölve.
 
 Győződjön meg arról, hogy rendelkezik az alkalmazáshoz tartozó *aktív* leképezéssel. Ha egy alkalmazást használ az alkalmazás-katalógusból, a leképezés némileg eltérő lehet. Győződjön meg arról, hogy a katalógusbeli alkalmazások esetében a Box-leképezés alapértelmezett/kijelentkezését használja.
 
+:::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="Felhasználó letiltása" lightbox="./media/how-provisioning-works/disable-user.png":::
+
 
 **Az alkalmazás konfigurálása felhasználó törlésére**
 
@@ -188,7 +191,9 @@ A következő forgatókönyvek letiltást vagy törlést indítanak el:
 * A rendszer véglegesen törli vagy eltávolítja a felhasználót az Azure AD-beli Lomtárból.
 * Egy felhasználó nem rendelhető hozzá egy alkalmazáshoz.
 * A felhasználó hatókörből kívülre kerül a hatókörből (nem haladja meg a hatókör-szűrőt).
-    
+
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Felhasználó letiltása" lightbox="./media/how-provisioning-works/delete-user.png":::
+
 Alapértelmezés szerint az Azure AD-kiépítési szolgáltatás nem törli vagy letiltja a hatókörön kívüli felhasználókat. Ha szeretné felülbírálni ezt az alapértelmezett viselkedést, beállíthatja a jelölőt a [hatókörbeli törlés kihagyásához.](skip-out-of-scope-deletions.md)
 
 Ha a fenti négy esemény egyike következik be, és a célalkalmazás nem támogatja a Soft deletes szolgáltatást, a kiépítési szolgáltatás egy TÖRLÉSi kérelmet küld, amely véglegesen törli a felhasználót az alkalmazásból.

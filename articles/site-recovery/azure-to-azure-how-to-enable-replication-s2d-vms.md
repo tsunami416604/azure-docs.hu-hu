@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135759"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424822"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Közvetlen tárolóhelyek-t futtató Azure-beli virtuális gépek replikálása egy másik régióba
 
@@ -49,12 +49,12 @@ Az alábbi ábra egy két csomópontos Azure VM feladatátvevő fürtöt mutat b
 1. Válassza ki a replikációs házirendet az alkalmazás konzisztenciája lehetőséggel * (csak összeomlási konzisztencia-támogatás érhető el)
 1. Replikáció engedélyezése
 
-   ![storagespacesdirect-védelem](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![A replikációs beállítások konfigurálásának helyét bemutató képernyőkép.](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
 2. Nyissa meg a replikált elemeket, és láthatja a virtuális gép állapotát is.
 3. A virtuális gépek védelme is megtörténik, és a több virtuális GÉPRE kiterjedő konzisztencia-csoport részeként is megjelenik.
 
-   ![storagespacesdirect-védelem](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![A virtuális gépeket bemutató képernyőkép, amely egy több virtuális GÉPRE kiterjedő konzisztencia-csoport részét képezi.](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
 ## <a name="creating-a-recovery-plan"></a>Helyreállítási terv létrehozása
 A helyreállítási terv a feladatátvétel során a többrétegű alkalmazások különböző szintjeinek sorrendjét támogatja. Az előkészítés segíti az alkalmazások konzisztenciájának fenntartását. Ha többrétegű webalkalmazáshoz hoz létre helyreállítási tervet, hajtsa végre a [helyreállítási terv létrehozása a site Recovery használatával](site-recovery-create-recovery-plans.md)című témakörben ismertetett lépéseket.

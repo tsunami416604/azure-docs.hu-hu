@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77087125"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424669"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>VPN-kapcsolat konfigurálása saját CloudSimple-felhőhöz
 
@@ -63,7 +63,7 @@ Az alábbi példa azt mutatja be, hogyan importálhatók a kapcsolatok a **viszk
 
 4. Válassza ki a használni kívánt protokollhoz tartozó OpenVPN konfigurációs fájlt (. ovpn), majd kattintson a **Megnyitás**gombra.
 
-    ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![Képernyőkép a kiválasztható OpenVPN konfigurációs fájlokra.](media/import-p2s-vpn-config-choose-ovpn.png)
 
 A kapcsolatok most a viszkozitás menüben jelennek meg.
 
@@ -71,7 +71,7 @@ A kapcsolatok most a viszkozitás menüben jelennek meg.
 
 Ha a VPN-kapcsolathoz a viszkozitási OpenVPN-ügyféllel szeretne csatlakozni, válassza ki a kapcsolatot a menüből. A menü ikonja azt jelzi, hogy a kapcsolódás létrejött.
 
-![VPN](media/vis03.png)
+![A CloudSimple VPN-kapcsolat állapotát bemutató képernyőkép.](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>Csatlakozás több privát Felhőkhöz
 

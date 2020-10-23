@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 3ea413c3879f61f735290717d06a132048169971
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939202"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426692"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a .NET-hez
 
@@ -34,12 +34,12 @@ További források:
 * [API-referenciadokumentáció](/dotnet/api/azure.storage.queues)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Példák](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-fiók – [Storage-fiók létrehozása](/azure/storage/common/storage-quickstart-create-account)
 * Az operációs rendszer jelenlegi [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Győződjön meg arról, hogy az SDK-t és nem a futtatókörnyezetet kapja meg.
 
 ## <a name="setting-up"></a>Beállítás
@@ -77,7 +77,7 @@ A projekt könyvtárából:
 1. Nyissa meg a *program.cs* fájlt a szerkesztőben
 1. Az `Console.WriteLine("Hello World!");` utasítás eltávolítása
 1. `using`Irányelvek hozzáadása
-1. A `Main` metódus deklarációjának frissítése az [aszinkron kód támogatásához](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main)
+1. A `Main` metódus deklarációjának frissítése az [aszinkron kód támogatásához](/dotnet/csharp/whats-new/csharp-7#async-main)
 
 
 
@@ -327,14 +327,14 @@ Ha az alkalmazás szünetelteti az üzenetek fogadását, akkor a [Azure Portalb
 
 Nyomja le az **ENTER** billentyűt az üzenetek fogadásához és törléséhez. Ha a rendszer kéri, nyomja meg ismét az **ENTER** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre üzenetsor-t, és hogyan adhat hozzá üzeneteket az aszinkron .NET-kód használatával. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 
 Oktatóanyagok, minták, gyors indítás és egyéb dokumentáció:
 
 > [!div class="nextstepaction"]
-> [Azure .NET- és .NET Core-fejlesztőknek](https://docs.microsoft.com/dotnet/azure/)
+> [Azure .NET- és .NET Core-fejlesztőknek](/dotnet/azure/)
 
 * További információt a [.net-hez készült Azure Storage kódtárak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage)című témakörben talál.
 * További Azure üzenetsor-tárolási minta alkalmazások megjelenítéséhez folytassa az [Azure üzenetsor Storage v12 .net Ügyféloldali függvénytárának mintáit](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples).

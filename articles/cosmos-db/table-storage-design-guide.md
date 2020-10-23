@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc140553cbca2347678c376cc9420cfddef22b07
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002176"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428060"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Az Azure Table Storage táblatervezési útmutatója: Skálázható és hatékony táblák
 
@@ -100,7 +100,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 </td>
 </tr>
 <tr>
-<td>Értékesítés</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -204,10 +204,10 @@ Az alábbi példák azt feltételezik, hogy a Table Storage az alábbi struktúr
 
 Íme néhány általános útmutató a Table Storage-lekérdezések tervezéséhez. A következő példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
-* Az adott *pont lekérdezése* a leghatékonyabb keresés, amelyet a legalacsonyabb késleltetést igénylő nagy mennyiségű keresésekhez vagy keresésekhez ajánlott használni. Egy ilyen lekérdezés az indexeket használva hatékonyan megkeresheti az egyes entitásokat a és az értékek megadásával `PartitionKey` `RowKey` . Például: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
-* A második legjobb a *tartomány lekérdezése*. A és a (z `PartitionKey` ) és a szűrők használatával `RowKey` több entitást ad vissza. Az `PartitionKey` érték azonosítja az adott partíciót, és az `RowKey` értékek a partícióban található entitások egy részhalmazát azonosítják. Például: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
-* A harmadik legjobb a *partíciós vizsgálat*. A és a `PartitionKey` szűrőket használja egy másik nem kulcsfontosságú tulajdonsághoz, és több entitást is visszaadhat. Az `PartitionKey` érték azonosítja az adott partíciót, és a tulajdonságértékek a partícióban lévő entitások egy részhalmaza számára kiválasztva. Például: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
-* A *tábla vizsgálata* nem tartalmazza a (z) `PartitionKey` , és nem hatékony, mert megkeresi az összes olyan partíciót, amelyik felkészíti a táblázatot a megfelelő entitásokra. Egy táblázatos vizsgálatot végez, függetlenül attól, hogy a szűrő a-t használja-e `RowKey` . Például: `$filter=LastName eq 'Jones'`.  
+* Az adott *pont lekérdezése* a leghatékonyabb keresés, amelyet a legalacsonyabb késleltetést igénylő nagy mennyiségű keresésekhez vagy keresésekhez ajánlott használni. Egy ilyen lekérdezés az indexeket használva hatékonyan megkeresheti az egyes entitásokat a és az értékek megadásával `PartitionKey` `RowKey` . Például így: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
+* A második legjobb a *tartomány lekérdezése*. A és a (z `PartitionKey` ) és a szűrők használatával `RowKey` több entitást ad vissza. Az `PartitionKey` érték azonosítja az adott partíciót, és az `RowKey` értékek a partícióban található entitások egy részhalmazát azonosítják. Például így: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
+* A harmadik legjobb a *partíciós vizsgálat*. A és a `PartitionKey` szűrőket használja egy másik nem kulcsfontosságú tulajdonsághoz, és több entitást is visszaadhat. Az `PartitionKey` érték azonosítja az adott partíciót, és a tulajdonságértékek a partícióban lévő entitások egy részhalmaza számára kiválasztva. Például így: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
+* A *tábla vizsgálata* nem tartalmazza a (z) `PartitionKey` , és nem hatékony, mert megkeresi az összes olyan partíciót, amelyik felkészíti a táblázatot a megfelelő entitásokra. Egy táblázatos vizsgálatot végez, függetlenül attól, hogy a szűrő a-t használja-e `RowKey` . Például így: `$filter=LastName eq 'Jones'`.  
 * Az Azure Table Storage-lekérdezések, amelyek több entitást adnak vissza, `PartitionKey` és sorrendbe rendezik azokat `RowKey` . Ha nem szeretné, hogy az entitások ne legyenek az ügyfélben, válassza a leggyakoribb `RowKey` rendezési sorrendet definiáló elemet. A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table storage Table API közötti különbségek](table-api-faq.md#table-api-vs-table-storage)című részben tekintheti meg.
 
 A "**vagy**" használatával egy szűrő megadásával határozhatja meg az értékek alapján egy `RowKey` partíció vizsgálatát, és nem kezelhető tartomány-lekérdezésként. Ezért Kerülje a szűrőket használó lekérdezéseket, például a következőt: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
@@ -476,7 +476,7 @@ Több példányban tárolhatja az egyes entitásokat különböző `RowKey` ért
 #### <a name="context-and-problem"></a>Kontextus és probléma
 A Table Storage automatikusan indexeli az entitásokat a `PartitionKey` és `RowKey` értékek használatával. Ez lehetővé teszi, hogy az ügyfélalkalmazás hatékonyan lekérje az entitásokat ezeknek az értékeknek a használatával. Például a következő táblázat struktúrájának használatával az ügyfélalkalmazás egy pont lekérdezéssel kérheti le az egyes alkalmazotti entitásokat a részleg neve és az alkalmazott azonosítója (a `PartitionKey` és `RowKey` értékek) használatával. Az ügyfelek az egyes részlegeken belül az alkalmazotti azonosító szerint rendezett entitásokat is lekérhetik.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Részleg entitást és alkalmazotti entitást bemutató ábra":::[9]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Részleg entitást és alkalmazotti entitást bemutató ábra"::: 9
 
 Ha egy másik tulajdonság (például az e-mail-cím) alapján szeretné megkeresni az alkalmazotti entitást, akkor kevésbé hatékony partíciós vizsgálatot kell használnia, hogy megtalálja a megfelelőt. Ennek az az oka, hogy a Table Storage nem biztosít másodlagos indexeket. Emellett nincs lehetőség arra, hogy az alkalmazottak listáját a sorrend szerint eltérő sorrendbe sorolja `RowKey` .  
 
@@ -648,7 +648,7 @@ A viszonyítási adatbázisban általában az adatok normalizálása történik,
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="Részleg entitást és alkalmazotti entitást bemutató ábra":::
 
 #### <a name="solution"></a>Megoldás
-Ahelyett, hogy két különálló entitásban tárolja az adatokat, denormalizálja az adatokat, és megtartja a felettes adatainak másolatát a részleg entitásban. Például:  
+Ahelyett, hogy két különálló entitásban tárolja az adatokat, denormalizálja az adatokat, és megtartja a felettes adatainak másolatát a részleg entitásban. Példa:  
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="Részleg entitást és alkalmazotti entitást bemutató ábra":::
 

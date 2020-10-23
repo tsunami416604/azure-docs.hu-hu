@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c6c0ee775ec1405fa76424e6b0ad57436d2d233e
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 775b2da1b3f07897a566b6e82fa3f6b0de10bd22
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340104"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428255"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -20,7 +20,7 @@ ms.locfileid: "92340104"
 
 Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz vagy a csatlakoztatott számítási erőforrásokhoz. Ezt úgy teheti meg, hogy először beállítja az eseményeket fogadó **végpontokat** . Ezután létrehozhat olyan  [**esemény-útvonalakat**](concepts-route-events.md) , amelyekkel megadhatja, hogy az Azure Digital Twins mely eseményeit adja meg a végpontok.
 
-A végpontokat és útvonalakat a [EventRoutes API](how-to-use-apis-sdks.md)-kkal, a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-val vagy az [Azure Digital Twins CLI](how-to-use-cli.md)-vel lehet felügyelni. Ez a cikk végigvezeti a végpontok és útvonalak ezen mechanizmusok használatával történő létrehozásának folyamatán.
+A végpontokat és útvonalakat a [EventRoutes API](how-to-use-apis-sdks.md)-kkal, a [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)-val vagy az [Azure Digital Twins CLI](how-to-use-cli.md)-vel lehet felügyelni. Ez a cikk végigvezeti a végpontok és útvonalak ezen mechanizmusok használatával történő létrehozásának folyamatán.
 
 A [Azure Portal](https://portal.azure.com)is kezelhetők. A jelen cikk a portált használó verziója esetén olvassa el a következő témakört [*: útmutató: végpontok és útvonalak kezelése (portál)*](how-to-manage-routes-portal.md).
 
@@ -247,7 +247,7 @@ A végpontok és útvonalak az Azure Digital Twins CLI használatával is kezelh
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)

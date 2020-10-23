@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 48a2f7f6587d22c34e240fb3e784eb980c81b6b3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094007"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419850"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -106,7 +106,7 @@ A Spring Cloud diagnosztikai beállításait az Azure CLI használatával törö
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>A Java Runtime mely verzióit támogatja az Azure Spring Cloud?
 
-Az Azure Spring Cloud a legújabb buildekkel támogatja a Java LTS-verziókat, amely jelenleg június 2020, a Java 8 build 252 és a Java 11 Build 7 támogatott. Lásd: [Az Azure-hoz készült JDK telepítése és Azure stack](/azure/developer/java/fundamentals/java-jdk-install)
+Az Azure Spring Cloud a legújabb buildekkel támogatja a Java LTS-verziókat, amely jelenleg június 2020, a Java 8 és a Java 11 támogatott. Lásd: [Az Azure-hoz készült JDK telepítése és Azure stack](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>Kik építették ezeket a Java-futtatókörnyezeteket?
 
@@ -206,6 +206,6 @@ Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és
 Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további kérdései vannak, tekintse meg az [Azure Spring Cloud hibaelhárítási útmutatóját](spring-cloud-troubleshoot.md).

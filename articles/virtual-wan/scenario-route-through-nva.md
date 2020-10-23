@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976263"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424754"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: forgalom irányítása NVA keresztül
 
@@ -41,16 +41,16 @@ A következő kapcsolati mátrix összegzi az ebben a forgatókönyvben támogat
 
 | Forrás             | Címzett:|   *NVA küllők*|*NVA virtuális hálózatok*|*Nem NVA virtuális hálózatok*|*Ágak*|
 |---|---|---|---|---|---|
-| **NVA küllők**   | &#8594; | 0/0 UDR  |  Társviszony-létesítés |   0/0 UDR    |  0/0 UDR  |
-| **NVA virtuális hálózatok**    | &#8594; |   Statikus |      X   |        X     |      X    |
-| **Nem NVA virtuális hálózatok**| &#8594; |   Statikus |      X   |        X     |      X    |
-| **Ágak**     | &#8594; |   Statikus |      X   |        X     |      X    |
+| **NVA küllők**   | &#8594; | Több mint NVA VNet | Társviszony-létesítés | Több mint NVA VNet | Több mint NVA VNet |
+| **NVA virtuális hálózatok**    | &#8594; | Társviszony-létesítés | Direct | Direct | Direct |
+| **Nem NVA virtuális hálózatok**| &#8594; | Több mint NVA VNet | Direct | Direct | Direct |
+| **Ágak**     | &#8594; | Több mint NVA VNet | Direct | Direct | Direct |
 
-A kapcsolati mátrix minden cellája azt írja le, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a tábla sorainak fejléce) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a táblázat oszlopainak fejlécét) egy adott forgalmi folyamat esetében. Az "X" azt jelenti, hogy a kapcsolat a virtuális WAN által natív módon van megadva, a "statikus" pedig azt jelenti, hogy a virtuális WAN a statikus útvonalak használatával biztosít kapcsolatot. A következőket ajánljuk figyelmébe:
+A kapcsolati mátrix minden cellája azt ismerteti, hogy egy VNet vagy ág (a folyamat "feladó" oldala, a tábla sorainak fejléce) a cél VNet vagy elágazásával kommunikáljon (a folyamat "–" oldalára, a táblázat oszlopainak fejlécei). A "Direct" érték azt jelenti, hogy a kapcsolat a virtuális WAN általi natív módon van megadva, a "társítás" azt jelenti, hogy a kapcsolat egy User-Defined útvonalon érhető el a VNet, "over NVA VNet" azt jelenti, hogy a kapcsolat áthalad a NVA VNet telepített NVA. A következőket ajánljuk figyelmébe:
 
 * A NVA Küllőit nem a virtuális WAN kezeli. Ennek eredményeképpen azokat a mechanizmusokat, amelyekkel más virtuális hálózatok vagy ágakkal kommunikálni fognak, a felhasználó tartja karban. A NVA-VNet való kapcsolódást egy VNet-társítás biztosítja, és a következő ugrás során a 0.0.0.0/0-ra mutató alapértelmezett útvonal a NVA való kapcsolódásra, az internetre, más küllőre és ágakra mutat
 * A NVA virtuális hálózatok a saját NVA beszél, de nem arról, hogy a NVA más NVA-virtuális hálózatok csatlakozik. Az 1. táblázatban például a VNet 2 az 5. és a VNet 6 VNet ismeri, de nem más küllők, például a VNet 7 és a VNet 8 között. A más küllők előtagjainak NVA-virtuális hálózatok való beadásához statikus útvonal szükséges.
-* Hasonlóképpen, az ágak és a nem NVA virtuális hálózatok nem ismernek semmilyen NVA, mert a NVA küllők nincsenek csatlakoztatva a VWAN hubokhoz. Ennek eredményeképpen a statikus útvonalakra is szükség lesz.
+* Hasonlóképpen, az ágak és a nem NVA virtuális hálózatok nem fognak tudni semmilyen NVA, mert a NVA küllők nem csatlakoznak a virtuális WAN-központokhoz. Ennek eredményeképpen a statikus útvonalakra is szükség lesz.
 
 Vegye figyelembe, hogy a NVA küllőit nem a virtuális WAN felügyeli, minden más sor ugyanazt a csatlakozási mintát jeleníti meg. Ennek eredményeképpen egyetlen útválasztási tábla (az alapértelmezett érték) a következő lesz:
 
@@ -131,7 +131,7 @@ Ez az útválasztási konfiguráció változását eredményezi, ahogy az a **3.
 
    :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="1. ábra" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

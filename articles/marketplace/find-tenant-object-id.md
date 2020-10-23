@@ -6,12 +6,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
-ms.openlocfilehash: c35e42aaf5e4bd31a54f807969c3671ecc5668ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db09943085cb7934bca5d7f2dc24ba692613ee19
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91814448"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426903"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>Bérlői azonosító, objektumazonosító és partneri társítás részleteinek megkeresése
 
@@ -98,6 +98,6 @@ Ez a szakasz azt ismerteti, hogyan keresheti meg a bérlő, az objektum és a pa
 >[!NOTE]
 >Ha több előfizetéshez is szükség van egy képernyőképre, ezzel a paranccsal válthat az előfizetések között:<br>`az account set --subscription "My Demos"`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Támogatott országok és régiók](sell-from-countries.md)

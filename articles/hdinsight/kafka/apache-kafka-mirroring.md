@@ -8,16 +8,19 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4a2be6719fdaaa9dc859df21cc030478e474210
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087362"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428239"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata Apache Kafka-témakörök replikálására a Kafka on HDInsight esetében
 
 Ismerje meg, hogyan replikálhatja a témaköröket egy másodlagos fürtre a Apache Kafka tükrözési funkciójával. A tükrözést folyamatos folyamatként lehet futtatni, vagy időszakosan használhatja az adatok egyik fürtről a másikra való áttelepítésének módját.
+
+> [!NOTE]
+> Ez a cikk az *engedélyezési*feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 Ebben a példában a tükrözés két HDInsight-fürt közötti replikálásra szolgál. Mindkét fürt különböző virtuális hálózatokban található, különböző adatközpontokban.
 
@@ -81,7 +84,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 1. Hozzon létre virtuális hálózati társításokat. Ez a lépés két társítást hoz létre: egyet a **Kafka-Primary-vnet** és a **Kafka-másodlagos-vnet** , valamint a Kafka- **másodlagos-vnet** és a **Kafka-Primary-vnet**között.
     1. Válassza ki a **Kafka-Primary-vnet** virtuális hálózatot.
     1. Válassza **a** **Beállítások**területen a társítások lehetőséget.
-    1. Válassza a **Hozzáadás** lehetőséget.
+    1. Válassza a **Hozzáadás** elemet.
     1. A társ-kezelés **hozzáadása** képernyőn adja meg a részleteket az alábbi képernyőképen látható módon.
 
         ![HDInsight Kafka vnet-társítás hozzáadása](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -92,7 +95,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 
 1. Nyissa meg az elsődleges fürt Ambari-irányítópultját: `https://PRIMARYCLUSTERNAME.azurehdinsight.net` .
 1. Válassza a **szolgáltatások**  >  **Kafka**lehetőséget. CliSelectck a **konfigurációk** lapon.
-1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Kattintson a **Mentés** gombra.
+1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Válassza a **Mentés** lehetőséget.
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -112,7 +115,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>A Kafka beállítása az összes hálózati adapter figyelésére.
     
 1. Maradjon a **konfigurációk** lapon a Kafka- **szolgáltatások**területen  >  **Kafka**. A **Kafka-átvitelszervező** szakaszban állítsa be a **figyelők** tulajdonságot a következőre: `PLAINTEXT://0.0.0.0:9092` .
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 1. Válassza az **Újraindítás**lehetőséget, és **erősítse meg az összes újraindítását**.
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>A Broker IP-címeinek és Zookeeper címeinek rögzítése az elsődleges fürthöz.

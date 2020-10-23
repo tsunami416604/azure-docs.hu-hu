@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41aabeeeb151a6e2cf3c52dbfa2075c55f86989f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613764"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427306"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
 
@@ -106,6 +106,11 @@ Miután elő a ITSM-eszközöket, kövesse az alábbi lépéseket a kapcsolatok 
 ## <a name="using-the-solution"></a>A megoldás használata
    Az ITSM-csatoló megoldás használatával munkaelemeket hozhat létre az Azure-riasztásokból, Log Analytics a riasztásokat és a Log Analyticsi rekordokat.
 
+## <a name="template-definitions"></a>Sablon-definíciók
+   Vannak olyan típusú **munkaelemek** , amelyek a ITSM eszköz által definiált sablonokat használhatják.
+A sablonok segítségével az ügyfél meghatározhatja azokat a mezőket, amelyeket a rendszer a műveleti csoport részeként definiált rögzített értékek alapján automatikusan feltölt. Ez a definíció a ITSM eszközben történik.
+Ezekben az esetekben az "egyéni sablon használata" jelölőnégyzet bejelölésével engedélyezheti, hogy az ügyfél kikerüljön az automatikusan kitöltendő mezőkből a műveleti csoport részeként definiált rögzített értékek alapján.
+   
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>ITSM-munkaelemek létrehozása az Azure-riasztásokból
 
 Miután létrejött a ITSM-kapcsolat, létrehozhat munkaelemeket a ITSM-eszközön az Azure-riasztások alapján, a **műveleti csoportok** **ITSM műveletének** használatával.
@@ -133,8 +138,10 @@ Kövesse az alábbi eljárást:
     ![ITSM művelet részletei](media/itsmc-overview/itsm-action-details.png)
 
 6. Válassza ki a **munkaelem** típusát a legördülő menüből.
-   Válasszon egy meglévő sablont, vagy töltse ki a ITSM termék által megkövetelt mezőket.
-7. Kattintson az **OK** gombra.
+
+7. Válasszon egy meglévő sablont, vagy használja a közös sablont, és töltse ki a ITSM-termék által megkövetelt mezőket.
+
+8. Kattintson az **OK** gombra.
 
 Azure-riasztási szabály létrehozásakor/szerkesztésekor használjon egy ITSM műveletet tartalmazó műveleti csoportot. A riasztás indításakor a rendszer létrehozza/frissíti a munkaelemet a ITSM eszközben.
 
@@ -186,7 +193,7 @@ ServiceDeskWorkItemType_s = "incidens"
 
 - ServiceDeskConnectionName
 - Ügyfélszolgálat azonosítója
-- Állam
+- Állapot
 - Sürgősség
 - Hatás
 - Prioritás
@@ -220,7 +227,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Cím
 - Típus
 - Kategória
-- Állam
+- Állapot
 - Eszkalálás
 - Ütközési állapot
 - Sürgősség
@@ -244,7 +251,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Log Analytics mező | ServiceNow mező |
 |:--- |:--- |
 | ServiceDeskId_s| Szám |
-| IncidentState_s | Állam |
+| IncidentState_s | Állapot |
 | Urgency_s |Sürgősség |
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
@@ -272,7 +279,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Title_s|  Rövid leírás |
 | Type_s|  Típus |
 | Category_s|  Kategória |
-| CRState_s|  Állam|
+| CRState_s|  Állapot|
 | Urgency_s|  Sürgősség |
 | Priority_s| Prioritás|
 | Risk_s| Kockázat|
@@ -310,6 +317,6 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 
 A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezésért és Visszajelzésért lépjen kapcsolatba velünk a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [ITSM-termékek/-szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md).
 

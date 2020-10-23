@@ -7,22 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 26c7029e710479b8785e06b1d65ff7b5270aeab0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4d0405df1863ee47374242ba4fba5b845711d3a1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102931"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424523"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatások
 
 Az analitikai összetevők optimális rendelkezésre állásának biztosítása érdekében a HDInsight egy egyedi architektúrával lett kifejlesztve, amely biztosítja a kritikus szolgáltatások magas rendelkezésre állását (HA). Az architektúra egyes összetevőit a Microsoft fejlesztette ki automatikus feladatátvétel biztosításához. A többi összetevő a szabványos Apache-összetevők, amelyek az adott szolgáltatások támogatására lettek telepítve. Ez a cikk ismerteti az IF Service-modell architektúráját a HDInsight-ben, hogy a HDInsight hogyan támogatja a feladatátvételt a HA szolgáltatások esetében, valamint az ajánlott eljárásokat a más szolgáltatásokból való helyreállításhoz.
- 
+
 > [!NOTE]
-> Elfogultság – ingyenes kommunikáció
->
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
->
+> Ez a cikk a *Slave*kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="high-availability-infrastructure"></a>Magas rendelkezésre állású infrastruktúra
 

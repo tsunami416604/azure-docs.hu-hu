@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3edf6248d42878bb79115fad925ef38e3353c979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ffbacd9167f6c73fb2815f76f56bfe2ae08eca9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502271"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425952"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése az Azure CLI használatával
 A kiszolgálói szintű tűzfalszabályok használatával felügyelhető egy adott IP-címről vagy IP-címről érkező Azure Database for MariaDB kiszolgálóhoz való hozzáférés. A kényelmes Azure CLI-parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet tűzfalszabályok a kiszolgáló kezeléséhez. Azure Database for MariaDB tűzfalak áttekintését lásd: [Azure Database for MariaDB Server Firewall Rules](./concepts-firewall-rules.md).
@@ -21,7 +21,7 @@ A kiszolgálói szintű tűzfalszabályok használatával felügyelhető egy ado
 A Virtual Network-(VNet-) szabályok a kiszolgálóhoz való hozzáférés biztonságossá tételére is alkalmasak. További információ [Virtual Network szolgáltatási végpontok és szabályok létrehozásáról és kezeléséről az Azure CLI használatával](howto-manage-vnet-cli.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)-t.
+* [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
 * Egy [Azure Database for MariaDB-kiszolgáló és-adatbázis](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
 ## <a name="firewall-rule-commands"></a>Tűzfalszabály parancsai:

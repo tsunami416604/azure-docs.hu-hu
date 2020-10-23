@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb403e2d1b11391ca3917478955dc282a174ae88
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204333"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426305"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning Azure biztonsági alapterve
 
@@ -303,13 +303,13 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató**: a Azure Portal erőforrásának identitás-és hozzáférés-kezelési lapján konfigurálhatja a szerepköralapú hozzáférés-vezérlést (RBAC), és a leltárt Azure Machine learning erőforrásokon is megtarthatja. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat.
+**Útmutató**: a Azure Portal erőforrásának identitás-és hozzáférés-kezelési lapján konfigurálhatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), és megtarthatja a leltárt Azure Machine learning erőforrásokon. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat.
 
-A Azure Machine Learning beépített RBAC biztosít a gyakori felügyeleti forgatókönyvekhez Azure Machine Learningban. A Azure Active Directory (Azure AD) profillal rendelkező személy ezeket a RBAC szerepköröket hozzárendelheti a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz, így biztosíthatja vagy megtagadhatja a hozzáférést az erőforrásokhoz és műveletekhez Azure Machine Learning erőforrásokon.
+A Azure Machine Learning beépített szerepköröket biztosít a Azure Machine Learning gyakori felügyeleti eseteihez. A Azure Active Directory (Azure AD) profillal rendelkező személy hozzárendelheti ezeket a szerepköröket a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz, így biztosíthatja vagy megtagadhatja a hozzáférést az erőforrásokhoz és műveletekhez Azure Machine Learning erőforrásokon.
 
 Az Azure AD PowerShell-modullal is elvégezheti az alkalmi lekérdezéseket a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-- [A szerepköralapú hozzáférés-vezérlés ismertetése Azure Machine Learning](how-to-assign-roles.md)
+- [Az Azure szerepköralapú hozzáférés-vezérlésének megismerése Azure Machine Learning](how-to-assign-roles.md)
 
 - [Címtárbeli szerepkör beszerzése Azure Active Directory a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -902,13 +902,13 @@ Azure Machine Learning teljes mértékben támogatja a git-Tárházak használat
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutató**: a Azure Machine learning különböző számítási erőforrásokon és akár saját számítási erőforrásoknál is különböző támogatást nyújt. A szervezete tulajdonában lévő számítási erőforrások esetében az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá az egyéni lemezképekhez. Az Azure megosztott képtárat használva a képeket megoszthatja a szervezeten belüli különböző felhasználókkal, szolgáltatásokkal vagy Azure AD-csoportokkal. Tárolja a Azure Container Registry tároló lemezképeit, és a RBAC használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá.
+**Útmutató**: a Azure Machine learning különböző számítási erőforrásokon és akár saját számítási erőforrásoknál is különböző támogatást nyújt. A szervezete tulajdonában lévő számítási erőforrások esetében az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá az egyéni lemezképekhez. Az Azure megosztott képtárat használva a képeket megoszthatja a szervezeten belüli különböző felhasználókkal, szolgáltatásokkal vagy Azure AD-csoportokkal. Tárolja a Azure Container Registry tároló lemezképeit, és az Azure RBAC használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá.
 
-- [A RBAC megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Az Azure RBAC ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-- [A Container Registry RBAC ismertetése](../container-registry/container-registry-roles.md)
+- [Az Azure-RBAC megismerése Container Registry](../container-registry/container-registry-roles.md)
 
-- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 - [Megosztott képgyűjtemény – áttekintés](../virtual-machines/windows/shared-image-galleries.md)
 
@@ -1088,7 +1088,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: a helyszíni biztonsági mentéshez a rendszer a inaktív adatok titkosítását az Azure-ba történő biztonsági mentéshez megadott hozzáférési kód használatával biztosítja. Szerepköralapú hozzáférés-vezérlés használata a biztonsági másolatok és az ügyfél által felügyelt kulcsok elleni védelemhez. 
+**Útmutató**: a helyszíni biztonsági mentéshez a rendszer a inaktív adatok titkosítását az Azure-ba történő biztonsági mentéshez megadott hozzáférési kód használatával biztosítja. Az Azure szerepköralapú hozzáférés-vezérlés használatával gondoskodhat a biztonsági másolatok és az ügyfél által felügyelt kulcsok biztonságáról. 
 
 A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze a Key Vault a védelem lágy törlését és kiürítését. Ha az Azure Storage-t használja a biztonsági másolatok tárolásához, a Soft delete lehetővé teszi az adatok mentését és helyreállítását a Blobok vagy blob-Pillanatképek törlésekor.
  
@@ -1193,7 +1193,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

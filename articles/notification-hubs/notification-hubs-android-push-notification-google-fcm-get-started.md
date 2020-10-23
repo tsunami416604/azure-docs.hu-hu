@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 7e68e93e8a103ccf92c949df779d929ac4095d92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268825"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428379"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre a Firebase SDK 0,6-es verziójának használatával
 
@@ -411,7 +411,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     android:id="@+id/text_hello"
     ```
 
-    ![Azure Notification Hubs – küldés tesztelése](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
+    ![A TextView vezérlőelemre alkalmazott Android: id = "@ + id/text_hello" azonosítót megjelenítő képernyőkép.](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
 10. Ezután felvesz egy alosztályt a AndroidManifest.xmlban definiált fogadóhoz. Adjon hozzá a projekthez egy másik új, `FirebaseService` nevű osztályt.
 

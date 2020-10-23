@@ -10,23 +10,23 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 14e4cd141094763d37a1309572bb4da4efb3f7ce
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376200"
+ms.locfileid: "92428018"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
-Üdvözli a Azure Active Directory Application Management dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek.
+Üdvözli a Azure Active Directory Application Management dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. Az Application Management szolgáltatással kapcsolatos újdonságok megismeréséhez tekintse [meg a Azure Active Directory újdonságait](../fundamentals/whats-new.md)ismertető témakört.
 
 ## <a name="september-2020"></a>2020. szeptember
 
 ### <a name="new-articles"></a>Új cikkek
 - [Gyors útmutató: OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben](add-application-portal-setup-oidc-sso.md)
 - [Gyors útmutató: felhasználók kiosztása az Azure AD-t használó alkalmazásokhoz identitás-szolgáltatóként](add-application-portal-assign-users.md)
-- [Mi újság?](whats-new-docs.md)
+- [A docs újdonságai](whats-new-docs.md)
 
 
 ### <a name="updated-articles"></a>Frissített cikkek

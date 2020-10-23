@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70101263"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424255"
 ---
 # <a name="disaster-recovery-principles"></a>Vész-helyreállítási alapelvek
 
@@ -68,7 +68,7 @@ A következő lépés a második SAP HANA példány telepítése a DR Azure-rég
 - Állítsa le az újonnan telepített SAP HANA példányt a HANA nagyméretű példány-egységen a DR Azure-régióban.
 - Válassza le ezeket a PRD-köteteket, és lépjen kapcsolatba SAP HANA az Azure Service Management szolgáltatásban. A kötetek nem maradhatnak csatlakoztatva az egységhez, mert nem tudnak hozzáférni a tárolási replikálási célként való működéshez.  
 
-![DR telepítési lépés a replikáció létrehozása előtt](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Az éles környezetbeli Azure-régióban található PRD-kötetek és a DR Azure-régió PRD kötetei közötti replikációs kapcsolatot bemutató diagram.](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 Az operatív csapat létrehozza a replikálási kapcsolatot az üzemi Azure-régióban található PRD-kötetek és a DR Azure-régióban található PRD-kötetek között.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 980ba86a9916e13dd2ac7639bd06d3ab8546d2f1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507670"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424699"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizálja CloudSimple saját Felhőjét az Oracle RAC telepítéséhez
 
@@ -79,7 +79,7 @@ Minden Oracle-virtuális gép több lemezzel van konfigurálva a gazda operáci�
 * A megosztás beállítása **nem megosztás**.
 * A redundancia a vSAN szabályzatok használatával van definiálva a tárolón.  
 
-![Az Oracle RAC adatlemez-csoportjának konfigurációja](media/oracle-vm-os-disks.png)
+![Az Oracle RAC operációsrendszer-lemez fizikai konfigurációját bemutató diagram.](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>Adatlemez-konfiguráció
 
@@ -148,7 +148,7 @@ A gyors helyreállítási területet (FRA) az Oracle ASM-lemez csoport által ke
 * A lemezeket ASM-lemez csoportként kell konfigurálni.  
 * Az ASM-redundancia **külső** redundanciára van beállítva.
 
-![Oracle-RAC szavazó lemez csoportjának konfigurációja](media/oracle-vm-fra-disks.png)
+![Az Oracle RAC szavazási lemez csoportjának konfigurációját bemutató diagram.](media/oracle-vm-fra-disks.png)
 
 ## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>A CloudSimple Private Cloud vSphere-fürt üzembe helyezése
 
@@ -220,7 +220,7 @@ Az Oracle megosztott lemezt használ az adatfájlok, a naplók és a naplófájl
 9. A megosztáshoz válassza a **többszörös író**.
 10. A virtuális eszköz csomópontnál válassza ki a 2. lépésben létrehozott új SCSI-vezérlőt.
 
-    ![Lemezek létrehozása az első virtuális gépen](media/oracle-rac-new-hard-disk.png)
+    ![Képernyőfelvétel: a lemezek első virtuális gépen való létrehozásához szükséges mezők kiemelése.](media/oracle-rac-new-hard-disk.png)
 
 Ismételje meg a 2 – 10. lépést az Oracle-adatfájlokhoz,-naplókhoz és-naplófájlokhoz szükséges összes új lemez esetében.
 
@@ -259,7 +259,7 @@ A virtuális gépek közötti affinitási szabályok biztosítják, hogy a virtu
 13. Válassza ki a létrehozott gazda csoportot.
 14. A szabály létrehozásához kattintson az **OK** gombra.
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
 * [Tudnivalók a vSAN-szabályzatokról](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [VMware multi-Writer attribútum megosztott VMDK](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

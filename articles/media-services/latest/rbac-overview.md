@@ -1,6 +1,6 @@
 ---
-title: Szerepköralapú hozzáférés-vezérlés Media Services-fiókokhoz – Azure | Microsoft Docs
-description: Ez a cikk a Azure Media Services fiókokhoz tartozó szerepköralapú hozzáférés-vezérlést (RBAC) ismerteti.
+title: Azure szerepköralapú hozzáférés-vezérlés Media Services-fiókokhoz – Azure | Microsoft Docs
+description: Ez a cikk az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) ismerteti Azure Media Services fiókokhoz.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d6bc37a8aaddfb48e6d06eb46d9c1648e815b5ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fba3db14c2a950dd230a4721841b4baa9f64636
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289239"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426791"
 ---
-# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) Media Services fiókokhoz
+# <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Services fiókokhoz
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -27,7 +27,7 @@ A Azure Media Services jelenleg nem határoz meg a szolgáltatásra vonatkozó e
 
 ## <a name="design-principles"></a>Tervezési alapelvek
 
-A v3 API egyik fő tervezési alapelve az API biztonságosabbá tétele. a V3 API-k nem adnak vissza titkokat vagy hitelesítő adatokat a **Get** vagy a **List** műveletekhez. A kulcsok mindig null értékűek, üresek vagy törölve vannak a válaszból. A felhasználónak külön műveleti módszert kell meghívnia a titkok és a hitelesítő adatok beszerzéséhez. Az **olvasó** szerepkör nem hívhat meg olyan műveleteket, mint például az Asset. ListContainerSas, a StreamingLocator. ListContentKeys, a ContentKeyPolicies. GetPolicyPropertiesWithSecrets. A különálló műveletek lehetővé teszik, hogy szükség esetén részletesebb RBAC biztonsági engedélyeket állítson be egy egyéni szerepkörben.
+A v3 API egyik fő tervezési alapelve az API biztonságosabbá tétele. a V3 API-k nem adnak vissza titkokat vagy hitelesítő adatokat a **Get** vagy a **List** műveletekhez. A kulcsok mindig null értékűek, üresek vagy törölve vannak a válaszból. A felhasználónak külön műveleti módszert kell meghívnia a titkok és a hitelesítő adatok beszerzéséhez. Az **olvasó** szerepkör nem hívhat meg olyan műveleteket, mint például az Asset. ListContainerSas, a StreamingLocator. ListContentKeys, a ContentKeyPolicies. GetPolicyPropertiesWithSecrets. A különálló műveletek lehetővé teszik, hogy szükség esetén részletesebb Azure RBAC biztonsági engedélyeket állítson be egy egyéni szerepkörben.
 
 Az Media Services által támogatott műveletek listázásához tegye a következőket:
 
@@ -42,12 +42,12 @@ A [beépített szerepkör-definíciók](../../role-based-access-control/built-in
 
 További információt a következő cikkekben talál:
 
-- [A klasszikus előfizetés-rendszergazdai szerepkörök, az Azure-szerepkörök és az Azure AD rendszergazdai szerepkörei](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure AD-szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 - [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md)
-- [A RBAC használata a hozzáférés kezeléséhez](../../role-based-access-control/role-assignments-rest.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](../../role-based-access-control/role-assignments-rest.md)
 - [Erőforrás-szolgáltatói műveletek Media Services](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Fejlesztés Media Services V3 API-kkal](media-services-apis-overview.md)
 - [Tartalom-kulcs házirend beszerzése Media Services .NET használatával](get-content-key-policy-dotnet-howto.md)

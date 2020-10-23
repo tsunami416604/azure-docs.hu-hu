@@ -3,12 +3,12 @@ title: Azure Lab Services – rendszergazdai útmutató | Microsoft Docs
 description: Ez az útmutató segít a rendszergazdáknak, hogy Azure Lab Services használatával hozzanak létre és kezeljenek labor-fiókokat.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 380676b22fc27b5f62c40112457c42a04b4bf955
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371409"
+ms.locfileid: "92425295"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – rendszergazdai útmutató
 Az Egyetem Felhőbeli erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskolájuk laboratóriumi fiókjának beállításához. A labor-fiók beállítása után a rendszergazdák vagy a pedagógusok létrehozzák a labor-fiókban található tantermi laborokat. Ez a cikk átfogó áttekintést nyújt az érintett Azure-erőforrásokról és a létrehozásához szükséges útmutatóról.
@@ -178,7 +178,7 @@ Amikor a rendszergazdák vagy a labor készítői létrehoznak egy tantermi labo
 
 ## <a name="manage-identity"></a>Identitás kezelése
 
-Az [Azure szerepköralapú hozzáférés-vezérlésének](https://docs.microsoft.com/azure/role-based-access-control/overview)használatával a következő szerepkörök rendelhetők hozzá a labor-fiókokhoz és a tanterem Labs-hoz:
+Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)használatával a következő szerepkörök rendelhetők hozzá a labor-fiókokhoz és a tanterem Labs-hoz:
 
 - **Tesztkörnyezetfiók tulajdonosa**
 
@@ -264,6 +264,6 @@ Fontos, hogy a labor-fiók rendszergazdája a katalógusból rendszeresen törö
 
 A költségek csökkentése érdekében ne törölje a replikálást meghatározott régiókba (ez a lehetőség a megosztott képtárban található). Előfordulhat, hogy a replikációs módosítások kedvezőtlen hatással lehetnek az Azure Lab szolgáltatásban a megosztott képtárban mentett rendszerképekből származó virtuális gépek közzétételének képességére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A labor-fiókok és laborok létrehozásával kapcsolatos részletes útmutatásért lásd: [útmutató beállítása](tutorial-setup-lab-account.md)

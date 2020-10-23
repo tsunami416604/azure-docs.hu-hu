@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044071"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425692"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység a Azure Data Factory
 
@@ -58,8 +58,8 @@ A keresési tevékenység legfeljebb 5000 sort tud visszaadni; Ha az eredményha
 
 Név | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
-adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Yes
-source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Yes
+adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Igen
+source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Igen
 firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja-e visszaadni. | Logikai | Nem. A mező alapértelmezett értéke: `true`.
 
 > [!NOTE]
@@ -72,7 +72,7 @@ firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja
 
 A keresési eredmény a `output` tevékenység futtatási eredményének szakaszában lesz visszaadva.
 
-* **Ha a `firstRowOnly` értéke `true` (alapértelmezett)**, a kimeneti formátum a következő kódban látható. A keresési eredmény egy rögzített kulcs alatt található `firstRow` . Ha a következő tevékenység eredményét szeretné használni, használja a mintázatát  `@{activity('LookupActivity').output.firstRow.table` .
+* **Ha a `firstRowOnly` értéke `true` (alapértelmezett)**, a kimeneti formátum a következő kódban látható. A keresési eredmény egy rögzített kulcs alatt található `firstRow` . Ha a következő tevékenység eredményét szeretné használni, használja a mintázatát  `@{activity('LookupActivity').output.firstRow.table}` .
 
     ```json
     {
@@ -389,7 +389,7 @@ A következő két típusú formátumot használhatja a **sourcetable.js** fájl
 | A keresési tevékenység legfeljebb 5 000 sort tartalmaz, és legfeljebb 2 MB méretű. | Tervezzen olyan kétszintű folyamatot, amelyben a külső folyamat egy belső folyamaton keresztül történik, amely nem haladja meg a maximálisan megengedett sorokat vagy méretet. |
 | | |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

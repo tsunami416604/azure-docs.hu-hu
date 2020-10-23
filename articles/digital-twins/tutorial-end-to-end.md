@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 5ac3d76d8c80947b820d195b9727d1fe50d32899
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f76d6a5c4c891abf92b67cc51ffffab5f2a81d6b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372344"
+ms.locfileid: "92427703"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -48,7 +48,7 @@ A forgatókönyvben való működéshez a korábban letöltött, előre megírt 
 
 Az alábbi, az építési forgatókönyv *AdtSampleApp* minta alkalmazás által megvalósított összetevők:
 * Eszköz hitelesítése 
-* A [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) használati példái (a *CommandLoop.cs*-ben találhatók)
+* A [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core) használati példái (a *CommandLoop.cs*-ben találhatók)
 * Konzol kezelőfelülete az Azure Digital Twins API meghívásához
 * *SampleClientApp* – egy minta Azure digitális Twins-megoldás
 * *SampleFunctionsApp* – egy Azure functions alkalmazás, amely a IoT hub és az Azure digitális Twins eseményeiből származó telemetria eredményeképpen frissíti az Azure digitális Twins-diagramot
@@ -449,7 +449,7 @@ az group delete --name <your-resource-group>
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 

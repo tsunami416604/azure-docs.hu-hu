@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21a0aaaa9e10a7c3e445145eb178b50b446ba6ae
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598199"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426004"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
 
@@ -56,7 +56,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
 2. Győződjön meg arról, hogy a forráskiszolgáló engedélyezi a bejövő és a kimenő forgalmat is a 3306-es porton, valamint arról, hogy a forráskiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN). 
    
-   Tesztelje a kapcsolatot a forráskiszolgálóról egy olyan eszközről való csatlakozásra tett kísérlettel, amely egy másik gépen vagy a Azure Portal elérhető [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
+   Tesztelje a kapcsolatot a forráskiszolgálóról egy olyan eszközről való csatlakozásra tett kísérlettel, amely egy másik gépen vagy a Azure Portal elérhető [Azure Cloud Shell](../cloud-shell/overview.md) .
 
    Ha a szervezete szigorú biztonsági házirendekkel rendelkezik, és nem engedélyezi az összes IP-címet a forráskiszolgálón az Azure-ból a forráskiszolgálóról való kommunikáció engedélyezéséhez, akkor az alábbi parancs segítségével meghatározhatja a Azure Database for MariaDB-kiszolgáló IP-címét.
     
@@ -212,7 +212,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
 1. Állítsa be a forráskiszolgáló-kiszolgálót.
 
-   Az összes felhőbe irányuló replikálás függvényt tárolt eljárások hajtják végre. Az összes eljárást [felhőbe irányuló replikálás tárolt eljárásokban](reference-data-in-stored-procedures.md)találja. A tárolt eljárások a MySQL-rendszerhéjban vagy a MySQL Workbenchben is futtathatók.
+   Az összes felhőbe irányuló replikálás függvényt tárolt eljárások hajtják végre. Az összes eljárást [felhőbe irányuló replikálás tárolt eljárásokban](reference-stored-procedures.md)találja. A tárolt eljárások a MySQL-rendszerhéjban vagy a MySQL Workbenchben is futtathatók.
 
    Két kiszolgáló összekapcsolásához és a replikáció megkezdéséhez jelentkezzen be a cél másodpéldány-kiszolgálóra az Azure DB for MariaDB szolgáltatásban. Ezután állítsa a külső példányt forráskiszolgálóként a `mysql.az_replication_change_master` vagy `mysql.az_replication_change_master_with_gtid` tárolt eljárás használatával a MariaDB-kiszolgálóhoz készült Azure-adatbázison.
 
@@ -312,5 +312,5 @@ A replikálási hibák kihagyásához és a replikáció engedélyezéséhez has
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a Azure Database for MariaDB [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

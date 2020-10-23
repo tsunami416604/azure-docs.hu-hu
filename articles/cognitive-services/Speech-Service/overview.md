@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: b15a034a73882287e70afcbcaa9c72ee931c9f78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 29289166dca2ee87055c8bcd4e453fc02966c0e5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630202"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427170"
 ---
 # <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
 
 A beszédfelismerési szolgáltatás a beszéd-szöveg, a szöveg és a beszéd egyesítése, valamint a beszédfelismerés egyetlen Azure-előfizetésbe való fordítása. A Speech [parancssori](spx-overview.md)felülettel, a Speech [SDK](speech-sdk-reference.md)-val, a Speech [Device SDK](https://aka.ms/sdsdk-quickstart)-val, a [Speech Studióval](https://speech.microsoft.com/)és a [REST API](rest-apis.md)-kkal egyszerűen elvégezheti az alkalmazások, eszközök és eszközök használatát.
 
 > [!IMPORTANT]
-> A Speech szolgáltatás leváltotta Bing Speech API és Translator Speech. Tekintse át az áttelepítési utasítások _> áttelepítési_ útmutatókat.
+> A Speech szolgáltatás leváltotta Bing Speech API és Translator Speech. Az áttelepítési utasításokért tekintse meg az _áttelepítési_ szakaszt.
 
 A következő funkciók a Speech Service részét képezik. A táblázatban található hivatkozásokat követve további információkat tudhat meg az egyes szolgáltatásokhoz tartozó általános használati esetekről, vagy böngészhet az API-referenciában.
 

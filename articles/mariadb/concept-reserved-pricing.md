@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 47ddad70b4764fedefb50b93de2b7f078cf9fd27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b91ccb9f11740599ecf060c98f9fcc7a26d5b363
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82732903"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427806"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for MariaDB számítási erőforrások számára fenntartott kapacitással
 
@@ -19,13 +19,13 @@ A Azure Database for MariaDB mostantól segít pénzt megtakarítani a számít�
 
 A foglalást nem kell hozzárendelni adott Azure Database for MariaDB kiszolgálókhoz. Egy már futó Azure Database for MariaDB vagy újonnan üzembe helyezett szolgáltatás automatikusan megkapja a fenntartott díjszabás előnyeit. A foglalás megvásárlásával előre fizet a számítási költségekre egy vagy három év alatt. A foglalás megvásárlása után az Azure Database for MariaDB számítási díjait a foglalási attribútumoknak megfelelően már nem számítjuk fel az utólagos elszámolású díjszabás szerint. A foglalások nem fedik le a MariaDB adatbázis-kiszolgálóhoz kapcsolódó szoftver-, hálózatkezelési és tárolási díjakat. A foglalási időszak végén a számlázási juttatás lejár, a Azure Database for MariaDB pedig az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem automatikus megújítást végeznek. A díjszabással kapcsolatos információkért tekintse meg a [Azure Database for MariaDB fenntartott kapacitás ajánlatát](https://azure.microsoft.com/pricing/details/mariadb/). </br>
 
-A [Azure Portal](https://portal.azure.com/)Azure Database for MariaDB fenntartott kapacitást is vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/monthly-payments-reservations.md). A fenntartott kapacitás megvásárlása:
+A [Azure Portal](https://portal.azure.com/)Azure Database for MariaDB fenntartott kapacitást is vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/prepare-buy-reservation.md). A fenntartott kapacitás megvásárlása:
 
 * Legalább egy Nagyvállalati vagy egyéni előfizetéshez tulajdonosi szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.
 * Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
 * A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg Azure Database for MariaDB fenntartott kapacitást. </br>
 
-Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglalások beszerzése után: az [Azure foglalási szolgáltatás használatának megismerése a nagyvállalati beléptetéshez](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) , valamint az [Azure-foglalás használatának](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)ismertetése az utólagos elszámolású előfizetéshez.
+Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglalások beszerzése után: az [Azure foglalási szolgáltatás használatának megismerése a nagyvállalati beléptetéshez](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) , valamint az [Azure-foglalás használatának](../cost-management-billing/reservations/understand-reserved-instance-usage.md)ismertetése az utólagos elszámolású előfizetéshez.
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>A kiszolgáló megfelelő méretének meghatározása a vásárlás előtt
@@ -60,7 +60,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="vcore-size-flexibility"></a>Virtuális mag méretének rugalmassága
 
@@ -77,9 +77,9 @@ A Azure Database for MariaDB fenntartott kapacitás kezelésével kapcsolatos in
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Mi a Azure Reservations](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
-* [Az Azure Reservations kezelése](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [Az Azure Reservations-kedvezmény ismertetése](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mariadb)
-* [A foglalási kihasználtság ismertetése vállalati regisztrációnál](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Mi a Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md)?
+* [Az Azure Reservations kezelése](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Az Azure Reservations-kedvezmény ismertetése](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../cost-management-billing/reservations/understand-reservation-charges-mariadb.md)
+* [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](/partner-center/azure-reservations)

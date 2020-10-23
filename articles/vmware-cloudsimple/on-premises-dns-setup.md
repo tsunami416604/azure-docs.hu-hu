@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79246109"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424704"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS konfigurálása névfeloldáshoz a saját Felhőbeli vCenter való hozzáféréshez a helyszíni munkaállomásokról
 
@@ -58,19 +58,19 @@ zone "az.cloudsimple.io"
 
 1. Kattintson a jobb gombbal a DNS-kiszolgálóra, és válassza az **új zóna**lehetőséget. 
   
-    ![Új zóna](media/DNS01.png)
+    ![Képernyőkép, amely kiemeli az új zóna menüpontot.](media/DNS01.png)
 2. Válassza ki a **helyettes zónát** , és kattintson a **tovább**gombra.
 
-    ![Új zóna](media/DNS02.png)
+    ![Képernyőkép, amely kiemeli a helyettes zóna beállítást.](media/DNS02.png)
 3. A környezettől függően válassza ki a megfelelő beállítást, majd kattintson a **tovább**gombra.
 
-    ![Új zóna](media/DNS03.png)
+    ![A zóna adatreplikálási beállításait megjelenítő képernyőkép.](media/DNS03.png)
 4. Válassza a **címkeresési zóna** lehetőséget, majd kattintson a **tovább**gombra.
 
-    ![Új zóna](media/DNS01.png)
+    ![A Címkeresési zóna beállítását kiemelő képernyőkép.](media/DNS01.png)
 5. Adja meg a zóna nevét, és kattintson a **tovább**gombra.
 
-    ![Új zóna](media/DNS05.png)
+    ![A zóna nevének megadását bemutató képernyőkép.](media/DNS05.png)
 6. Adja meg azon DNS-kiszolgálók IP-címeit, amelyeket a CloudSimple-portálról beszerzett saját felhőhöz.
 
     ![Új zóna](media/DNS06.png)

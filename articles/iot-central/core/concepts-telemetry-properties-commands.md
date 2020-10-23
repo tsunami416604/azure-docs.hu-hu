@@ -7,12 +7,13 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: device-developer
+ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291619"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427876"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
 
@@ -770,7 +771,7 @@ IoT Central az eszköztől az írható tulajdonságok frissítéseire választ v
 
 | Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
-| `'ac': 200` | Befejezve | A tulajdonság-módosítási művelet sikeresen befejeződött. |
+| `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202`  vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
 | `'ac': 4xx` | Hiba | A kért tulajdonság módosítása érvénytelen volt, vagy hiba történt. |
 | `'ac': 5xx` | Hiba | Az eszköz váratlan hibát észlelt a kért módosítás feldolgozása során. |

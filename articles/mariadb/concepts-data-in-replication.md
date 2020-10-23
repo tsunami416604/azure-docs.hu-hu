@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 66e280f20109967f029a14e368fdb0aeea269aad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db85892115f345039353cd90eeedbe809eb6ae67
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536613"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425583"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Az adatreplikálás Azure Database for MariaDBba
 
@@ -34,13 +34,13 @@ A forráskiszolgáló [*MySQL rendszeradatbázisa*](https://mariadb.com/kb/en/li
 - Minden táblának rendelkeznie kell egy elsődleges kulccsal.
 - A forráskiszolgálón a InnoDB motort kell használnia.
 - A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a forráskiszolgálón.
-- Ha a forráskiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mariadb.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
-- Győződjön meg arról, hogy a forráskiszolgáló IP-címe hozzá lett adva az Azure Database for MariaDB-replika kiszolgálói tűzfalszabályok számára. A tűzfalszabályokat az [Azure Portallal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) vagy az [Azure CLI-vel](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) frissítheti.
+- Ha a forráskiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mariadb.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
+- Győződjön meg arról, hogy a forráskiszolgáló IP-címe hozzá lett adva az Azure Database for MariaDB-replika kiszolgálói tűzfalszabályok számára. A tűzfalszabályokat az [Azure Portallal](howto-manage-firewall-portal.md) vagy az [Azure CLI-vel](howto-manage-firewall-cli.md) frissítheti.
 - Győződjön meg arról, hogy a forráskiszolgáló üzemeltetése lehetővé teszi a bejövő és a kimenő forgalmat is a 3306-es porton.
 - Győződjön meg arról, hogy a forráskiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).
 
 ### <a name="other"></a>Egyéb
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md).

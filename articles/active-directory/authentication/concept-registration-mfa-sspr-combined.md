@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71900bc3741c25299402e31057ea2237cd0a4637
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 79a5d306643fa9597b30f6941c420c403695c22e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965148"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424565"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Összevont biztonsági információk regisztrálása Azure Active Directory – áttekintés
 
@@ -34,7 +34,7 @@ Ez a cikk a kombinált biztonsági regisztrációt ismerteti. A kombinált bizto
 
 Az új felület engedélyezése előtt tekintse át ezt a rendszergazda által irányított dokumentációt és a felhasználó által irányított dokumentációt, hogy megértse a funkció funkcióit és hatását. A [felhasználói dokumentáció](../user-help/security-info-setup-signin.md) alapján felkészítheti a felhasználókat az új élményre, és segítheti a sikeres bevezetést.
 
-Az Azure AD kombinált biztonsági információinak regisztrációja jelenleg nem érhető el olyan nemzeti felhők számára, mint az Azure US government, az Azure Germany vagy az Azure China 21Vianet.
+Az Azure AD kombinált biztonsági információinak regisztrációja jelenleg nem érhető el olyan nemzeti felhők számára, mint az Azure Germany vagy az Azure China 21Vianet. Az Azure USA kormányzati szervei számára érhető el.
 
 > [!IMPORTANT]
 > Azok a felhasználók, akik számára engedélyezve van az eredeti előzetes verzió és a bővített kombinált regisztrációs élmény, az új viselkedést láthatják. Azok a felhasználók, akik mindkét élmény esetében engedélyezve vannak, csak az új saját profilt látják. Az új *saját profil* a közös regisztráció megjelenésével és működésével igazodik, és zökkenőmentes felhasználói élményt nyújt a felhasználóknak. A felhasználók a következő címen érhetik el a profilt: [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
@@ -140,7 +140,7 @@ Az a felhasználó, aki korábban beállított legalább egy metódust, navigál
 
 Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication használhat a alkalmazásban [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépésként tekintse meg az oktatóanyagokat az [önkiszolgáló jelszó-visszaállítás engedélyezéséhez](tutorial-enable-sspr.md) és az [Azure-multi-Factor Authentication engedélyezéséhez](tutorial-enable-azure-mfa.md).
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8e4c0174e9f5e1a15fe85d5744ddcb6ee21c4a86
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 119e27d381ff40a21ca03b5f3ccd8d1fcb68b5f7
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048270"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425072"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Oktatóanyag: VPN-átjáró létrehozása és kezelése a PowerShell-lel
 
@@ -26,7 +26,7 @@ Az Azure VPN-átjárók helyszínek közötti kapcsolatot biztosítanak az ügyf
 
 Az alábbi diagram az oktatóanyag keretében létrehozott virtuális hálózatot és VPN-átjárót mutatja.
 
-![VNet és VPN-átjáró](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
+:::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/gateway-diagram.png" alt-text="VNet és VPN Gateway diagram":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -72,7 +72,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Először az erőforráscsoportot kell létrehozni. A következő példában egy *TestRG1* nevű erőforráscsoportot hozunk létre az *USA keleti régiójában*:
 
@@ -174,7 +174,7 @@ Ha azonban az átjáró egy prototípus, tesztelés vagy próba-koncepciós tele
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a VPN-átjárók létrehozásának és kezelésének alapvető műveleteivel ismerkedett meg, például:
 
