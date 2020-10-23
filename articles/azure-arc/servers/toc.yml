@@ -37,6 +37,8 @@
           href: onboard-service-principal.md
         - name: Gépek csatlakoztatása az Azure Archoz a PowerShell DSC használatával
           href: onboard-dsc.md
+        - name: Gépek csatlakoztatása az Azure Archoz a PowerShell-lel
+          href: onboard-powershell.md
     - name: Kezelés
       items:
         - name: Azure-beli virtuálisgép-bővítmények kezelése és használata

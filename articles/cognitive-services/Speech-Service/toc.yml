@@ -401,6 +401,8 @@
                       href: how-to-custom-commands-send-activity-to-client.md
                     - name: Webes végpontok beállítása
                       href: how-to-custom-commands-setup-web-endpoints.md
+                    - name: Custom Commands-alkalmazás exportálása készségként
+                      href: how-to-custom-commands-integrate-remote-skills.md
                 - name: Üzembe helyezés
                   items:
                     - name: Folyamatos üzembe helyezés az Azure DevOps használatával

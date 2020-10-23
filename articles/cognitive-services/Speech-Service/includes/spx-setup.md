@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 203ba2988d817e3e396fd8aec3db00eba9832041
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92324951"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470944"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -107,7 +107,8 @@ Windows rendszeren például a következő parancs állítja be a kulcsot:
 
 ## <a name="create-subscription-config"></a>Előfizetés konfigurációjának létrehozása
 
-A beszédfelismerési parancssori felület használatának megkezdéséhez először meg kell adnia a beszédfelismerési előfizetési kulcs és a régió adatait. A régió azonosítójának megkereséséhez tekintse meg a [régiók támogatása](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) lapot. Miután megtörtént az előfizetési kulcs és a régió azonosítója (pl. `eastus`, `westus` ) futtassa a következő parancsokat.
+A beszédfelismerési parancssori felület használatának megkezdéséhez meg kell adnia a beszédfelismerési előfizetési kulcsot és a régió azonosítóját. Szerezze be ezeket a hitelesítő adatokat a [beszédfelismerési szolgáltatás ingyenes kipróbálásához](../overview.md#try-the-speech-service-for-free)szükséges lépések követésével.
+Miután megtörtént az előfizetési kulcs és a régió azonosítója (pl. `eastus`, `westus` ) futtassa a következő parancsokat.
 
 ```shell
 spx config @key --set SUBSCRIPTION-KEY

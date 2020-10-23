@@ -90,6 +90,8 @@
       href: samples/calling-hero-sample.md
     - name: Csoportos csevegés kiemelt mintája
       href: samples/chat-hero-sample.md
+    - name: Webes hívás mintája
+      href: samples/web-calling-sample.md
 - name: Hivatkozások
   items:
     - name: REST API – dokumentáció

@@ -66,8 +66,16 @@
       items:
         - name: Monitorozás a Grafana és a Kibana használatával
           href: monitor-grafana-kibana.md
-        - name: Metrikák és naplók feltöltése
-          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: Feltöltés az Azure Monitorba
+          items:
+            - name: Előfeltételek feltöltése
+              href: upload-metrics-and-logs-to-azure-monitor.md
+            - name: Naplók feltöltése
+              href: upload-logs.md
+            - name: Metrikák feltöltése
+              href: upload-metrics.md
+            - name: Használati adatok feltöltése
+              href: upload-usage-data.md
         - name: Adatbázispéldányok leltárazása
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: Adatkezelő felhasználónevének és jelszavának lekérése

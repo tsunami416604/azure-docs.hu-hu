@@ -1,35 +1,37 @@
 ### YamlMime:Landing
-title: Az Azure DevOps Starter dokumentációja
-summary: Az Azure DevOps Starterrel a meglévő kódok és a Git-adattár segítségével, vagy valamelyik mintaalkalmazásból egyszerűen hozhat létre egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatot az Azure-ban.
+title: A DevOps Starter dokumentációja az Azure-ban történő üzembe helyezéshez
+summary: A DevOps Starterrel a meglévő kódok és a Git-adattár segítségével, vagy valamelyik mintaalkalmazásból egyszerűen hozhat létre folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatokat vagy munkafolyamatokat az Azure-ban. A DevOps Starter mostantól támogatja a GitHub Actions-munkafolyamatok létrehozását.
 metadata:
-  title: Az Azure DevOps Starter dokumentációja
+  title: A DevOps Starter dokumentációja
   description: Használja meglévő kódját és Git-adattárát, vagy válasszon ki egy mintaalkalmazást egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamat létrehozásához az Azure-ban.
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
   ms.date: 03/24/2020
-  ms.openlocfilehash: 62e95192f25487be60ed0334054f200447fc64cb
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 7521a5a57b6dd1c090fbc880033fc5fc0707419b
+  ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91855939"
+  ms.lasthandoff: 10/21/2020
+  ms.locfileid: "92330682"
 landingContent:
-- title: Az Azure DevOps Starter ismertetése
+- title: A DevOps Starter ismertetése
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az az Azure DevOps Starter?
+    - text: Mi az a DevOps Starter?
       url: overview.md
   - linkListType: video
     links:
-    - text: CI/CD létrehozása a DevOps Starter használatával – Videó (8:53)
+    - text: CI/CD létrehozása a DevOps Starterrel az Azure DevOps használatával (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
-- title: CI/CD-folyamat létrehozása
+- title: A CI/CD konfigurálása
   linkLists:
   - linkListType: quickstart
     links:
+    - text: GitHub-műveleteket használó Node.js
+      url: /azure/devops-project/devops-starter-gh-nodejs
     - text: .NET
       url: ./azure-devops-project-aspnet-core.md
     - text: Node.js
@@ -44,10 +46,12 @@ landingContent:
       url: ./azure-devops-project-ruby.md
     - text: Indítás
       url: ./azure-devops-project-go.md
-- title: Kibocsátási folyamatok létrehozása
+- title: Üzembe helyezés az Azure-ban
   linkLists:
   - linkListType: tutorial
     links:
+    - text: Az alkalmazás üzembe helyezése az Azure Web Appban GitHub-műveletekkel
+      url: devops-starter-gh-web-app.md
     - text: Saját kód használata a GitHubbal
       url: azure-devops-project-vms.md
     - text: ASP.NET-alkalmazás üzembe helyezése az Azure Virtual Machinesben

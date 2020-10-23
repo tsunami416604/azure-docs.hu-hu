@@ -49,7 +49,7 @@
       href: tutorial-use-mqtt.md
     - name: MXChip-eszközök kezelése (minta)
       href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
-    - name: Eszköz migrálása modulba
+    - name: Eszközmodul csatlakoztatása
       href: tutorial-migrate-device-to-module.md
 - name: Alapelvek
   items:
@@ -85,8 +85,6 @@
       href: concepts-model-discovery.md
     - name: Modellelemző
       href: concepts-model-parser.md
-    - name: Korlátok és kvóták
-      href: concepts-limits-quotas.md
     - name: Szószedet
       href: iot-plug-and-play-glossary.md
 - name: Útmutatók

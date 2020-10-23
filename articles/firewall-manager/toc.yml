@@ -14,6 +14,8 @@
   items:
     - name: A virtuális központ biztonságossá tétele – portál
       href: secure-cloud-network.md
+    - name: A virtuális központ biztonságossá tétele – PowerShell
+      href: secure-cloud-network-powershell.md
     - name: Központi virtuális hálózat biztonságossá tétele – portál
       href: secure-hybrid-network.md
 - name: Alapelvek

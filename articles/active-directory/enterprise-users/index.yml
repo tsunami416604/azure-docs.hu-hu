@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Vállalati felhasználókezelési dokumentáció – Azure AD
+summary: Az Azure AD felhasználókezelési szolgáltatásokat biztosít, például csoportokat és licenceket, amelyek segítségével gyorsabban hajthatja végre a gyakori felhasználókezelési feladatokat. Licenceket vagy alkalmazás-hozzáférést rendelhet csoportokhoz vagy felhasználókhoz, valamint tartományneveket adhat hozzá vagy kezelhet.
+metadata:
+  title: Az Azure Active Directory felhasználóinak, csoportjainak, licenceinek és tartományainak dokumentációja
+  description: Megtudhatja, hogyan használhatja a csoportokat, a tartományneveket és a licenceket a felhasználói hitelesítés kezeléséhez az Azure AD-szervezetben.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: enterprise-users
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 3918c28d9657b077eefd5226be656ab6ad5a7dbf
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372730"
+landingContent:
+- title: A vállalati felhasználókezelés ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Felhasználók, csoportok, tartományok és licencek
+      url: directory-overview-user-model.md
+    - text: Egyéni szerepkörök áttekintése
+      url: ../roles/custom-overview.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+  - linkListType: concept
+    links:
+    - text: Az Azure AD szervezeti függetlensége
+      url: licensing-directory-independence.md
+    - text: Hozzáférés kezelése csoportokkal
+      url: ../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Felhasználó hozzáadása
+      url: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Elévülési szabályzatok beállítása csoportok esetében
+      url: groups-quickstart-expiration.md
+    - text: Licencek hozzárendelése felhasználókhoz
+      url: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: Azure AD-tartománynevek kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni tartománynév hozzáadása
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Egyéni tartománynevek kezelése
+      url: domains-manage.md
+- title: Csoportok kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dinamikus csoport létrehozása
+      url: groups-create-rule.md
+    - text: Csoportbeállítások a PowerShellben
+      url: groups-settings-v2-cmdlets.md
+    - text: Elnevezési szabályzatok beállítása csoportok esetében
+      url: groups-naming-policy.md
+- title: Tartományok hozzáadása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni tartománynév hozzáadása
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Egyéni tartománynevek kezelése
+      url: domains-manage.md

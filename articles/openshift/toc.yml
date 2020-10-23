@@ -18,6 +18,8 @@
   items:
     - name: Privát Azure Red Hat OpenShift 4-fürt létrehozása
       href: howto-create-private-cluster-4x.md
+    - name: Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4-ben
+      href: howto-create-a-storageclass.md
     - name: Lekérési kulcs frissítése egy Azure Red Hat OpenShift 4-fürthöz
       href: howto-add-update-pull-secret.md
     - name: DNS-továbbítás konfigurálása Azure Red Hat OpenShift 4-fürthöz

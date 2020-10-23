@@ -248,13 +248,13 @@
           href: move-partner-namespaces-across-regions.md
     - name: Biztonságos
       items:
-        - name: Privát végpontok konfigurálása
+        - name: Események biztonságos közzététele privát kapcsolaton keresztül
           href: configure-private-endpoints.md
         - name: IP-tűzfal konfigurálása
           href: configure-firewall.md
         - name: Biztonságos webhook az Azure Active Directoryval
           href: secure-webhook-delivery.md
-        - name: Esemény kézbesítése felügyelt identitással
+        - name: 'Eseménykézbesítés, felügyelt identitás és privát kapcsolat'
           href: managed-service-identity.md
     - name: Hibaelhárítás
       items:

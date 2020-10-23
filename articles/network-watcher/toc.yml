@@ -45,7 +45,7 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: Hálózati biztonsági csoport nézet
       href: network-watcher-security-group-view-overview.md
-    - name: Szerepköralapú hozzáférés-vezérlési engedélyek
+    - name: Szerepköralapú hozzáférés-vezérlési engedélyek az Azure-ban
       href: required-rbac-permissions.md
     - name: Biztonság
       items:
