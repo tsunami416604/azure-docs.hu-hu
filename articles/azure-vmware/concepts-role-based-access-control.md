@@ -3,22 +3,28 @@ title: Fogalmak – szerepköralapú hozzáférés-vezérlés (RBAC)
 description: Ismerje meg az Azure VMware-megoldás szerepköralapú hozzáférés-vezérlésének főbb képességeit
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: a863f44dd5fdd485f8d5ebfcfbacee994e6b63a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fbda24ec6a8c1d08570d7f64270a954eb3d8a35
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580229"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440943"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure VMware-megoldáshoz
 
-A vCenter és az ESXi helyszíni üzembe helyezése során a rendszergazda hozzáférhet a vCenter administrator@vsphere.local -fiókhoz, és rendelkezhet további Active Directory (ad) felhasználókkal vagy csoportokkal. Egy Azure VMware-megoldás üzembe helyezése esetén azonban a rendszergazda nem fér hozzá a rendszergazdai felhasználói fiókhoz, de AD-felhasználókat és-csoportokat rendelhet a CloudAdmin szerepkörhöz a vCenter.  Emellett az Azure VMware-megoldás saját felhőalapú felhasználója nem jogosult a Microsoft által támogatott és felügyelt felügyeleti összetevők, például fürtök, gazdagépek, adattárolók és elosztott virtuális kapcsolók elérésére vagy konfigurálására.
-
-
-Az Azure VMware megoldásban a vCenter beépített helyi felhasználó nevű cloudadmin, amely a beépített CloudAdmin szerepkörhöz van rendelve. A helyi cloudadmin-felhasználó további felhasználók beállítására szolgál az AD-ben. A CloudAdmin szerepkör általában a saját Felhőbeli munkaterhelések (virtuális gépek, erőforrás-készletek, adattárolók és hálózatok) létrehozásához és kezeléséhez szükséges jogosultsággal rendelkezik. Az Azure VMware-megoldás CloudAdmin szerepköre olyan vCenter-jogosultságokkal rendelkezik, amelyek eltérnek a többi VMware Cloud-megoldástól.   
+Az Azure VMware megoldásban a vCenter beépített helyi felhasználó nevű cloudadmin, és a beépített CloudAdmin szerepkörhöz van rendelve. A helyi cloudadmin-felhasználó a felhasználók beállítására szolgál az AD-ben. Általánosságban elmondható, hogy a CloudAdmin szerepkör a saját felhőben hozza létre és kezeli a munkaterheléseket. Az Azure VMware megoldásban a CloudAdmin szerepkör olyan vCenter-jogosultságokkal rendelkezik, amelyek eltérnek a többi VMware Cloud-megoldástól.     
 
 > [!NOTE]
 > Az Azure VMware-megoldás jelenleg nem biztosít egyéni szerepköröket a vCenter vagy az Azure VMware Solution Portalon. 
+
+A vCenter és az ESXi helyszíni üzembe helyezése során a rendszergazda hozzáférhet a vCenter- administrator@vsphere.local fiókhoz. Emellett további Active Directory (AD) felhasználókhoz vagy csoportokhoz is hozzárendelhetők. 
+
+Egy Azure VMware-megoldás üzembe helyezése esetén a rendszergazdának nincs hozzáférése a rendszergazdai felhasználói fiókhoz. Az AD-felhasználók és-csoportok azonban hozzárendelhetők a CloudAdmin szerepkörhöz a vCenter.  
+
+A saját felhőalapú felhasználó nem férhet hozzá a Microsoft által támogatott és kezelt felügyeleti összetevőkhöz. Például fürtök, gazdagépek, adattárolók és elosztott virtuális kapcsolók.
+
+
+
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>Azure VMware-megoldás CloudAdmin-szerepkör a vCenter
 
@@ -55,7 +61,7 @@ Az Azure VMware-megoldás CloudAdmin szerepköre a következő jogosultságokkal
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az egyes jogosultságok részletes ismertetését a [VMware termékdokumentációban](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) találja.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f76d6a5c4c891abf92b67cc51ffffab5f2a81d6b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f0d28a71e2bd6fc2006bda81fba7d7e6336c5b1c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427703"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460835"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -48,7 +48,7 @@ A forgatókönyvben való működéshez a korábban letöltött, előre megírt 
 
 Az alábbi, az építési forgatókönyv *AdtSampleApp* minta alkalmazás által megvalósított összetevők:
 * Eszköz hitelesítése 
-* A [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core) használati példái (a *CommandLoop.cs*-ben találhatók)
+* A [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) használati példái (a *CommandLoop.cs*-ben találhatók)
 * Konzol kezelőfelülete az Azure Digital Twins API meghívásához
 * *SampleClientApp* – egy minta Azure digitális Twins-megoldás
 * *SampleFunctionsApp* – egy Azure functions alkalmazás, amely a IoT hub és az Azure digitális Twins eseményeiből származó telemetria eredményeképpen frissíti az Azure digitális Twins-diagramot
@@ -87,7 +87,7 @@ Query
 ```
 
 >[!TIP]
-> Ez az egyszerűsített módszer a _**AdtE2ESample**_ projekt részeként van megadva. A mintakód kontextusán kívül bármikor, a [lekérdezési API](how-to-use-apis-sdks.md) -k vagy a [CLI-parancsok](how-to-use-cli.md)használatával lekérdezheti a példányban lévő összes ikreket.
+> Ez az egyszerűsített módszer a _**AdtE2ESample**_ projekt részeként van megadva. A mintakód kontextusán kívül bármikor, a [lekérdezési API](/rest/api/digital-twins/dataplane/query) -k vagy a [CLI-parancsok](how-to-use-cli.md)használatával lekérdezheti a példányban lévő összes ikreket.
 >
 > Itt látható a teljes lekérdezési törzs az összes digitális ikrek számára a példányban:
 > 

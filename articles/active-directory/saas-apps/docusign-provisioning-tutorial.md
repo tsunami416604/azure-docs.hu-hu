@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0a69784be3b03b030ef599037b57c2c20ea2c6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317429"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454677"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés DocuSign konfigurálása
 
@@ -35,7 +35,7 @@ Azure Active Directory a "hozzárendelések" nevű fogalom használatával hatá
 
 A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a DocuSign alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a DocuSign-alkalmazáshoz:
 
-[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>Fontos Tippek a felhasználók DocuSign való hozzárendeléséhez
 
@@ -93,6 +93,12 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 Elindítja a felhasználók és csoportok szakaszban DocuSign rendelt felhasználók kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a DocuSign alkalmazásban végrehajtott összes műveletet.
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+
+## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
+* A Docusign felhasználó szerepkör-vagy engedélyezési profiljának kiépítéséhez használhatja az attribútum-hozzárendelések kifejezését a [switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) és a [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) függvények használatával. Az alábbi kifejezés például a "8032066" azonosítót fogja kiépíteni, ha egy felhasználónál az Azure AD-ben hozzá van rendelve a "DS-rendszergazda" szerepkör. Ha a felhasználó nincs hozzárendelve szerepkör az Azure AD-oldalhoz, nem fog semmilyen jogosultsági profilt kiépíteni. Az azonosító a DocuSign- [portálról](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)kérhető le.
+
+Switch (SingleAppRoleAssignment ([appRoleAssignments]), "", "8032066", "DS-rendszergazda")
+
 
 ## <a name="additional-resources"></a>További források
 

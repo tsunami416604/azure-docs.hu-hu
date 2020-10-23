@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319979"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457962"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. A Microsoft 365 számítási feladatokat, például az Exchange Online-t és a Skype vállalati verziókat használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
@@ -127,7 +127,7 @@ A tartományi szűrő beállításához hajtsa végre a következő lépéseket:
 3.  Válassza a **szinkronizálási beállítások testreszabása lehetőséget** , majd kattintson a **tovább**gombra.
 4.  Adja meg Azure AD hitelesítő adatait
 5.  A **csatlakoztatott könyvtárak** képernyőn kattintson a **tovább**gombra.
-6.  A **tartomány és szervezeti egység szűrése lapon** kattintson a **frissítés**gombra.  Az új tartományok rosszul jelennek meg, a törölt tartományok pedig megszűnnek.
+6.  A **tartomány és szervezeti egység szűrése lapon** kattintson a **frissítés**gombra.  Ekkor megjelennek az új tartományok, és a törölt tartományok el fognak tűnni.
    ![Partíciók](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>A futtatási profilok frissítése
@@ -299,9 +299,9 @@ Hajtsa végre a következő lépéseket:
 A szinkronizálás után a rendszer az összes módosítást exportálja. Mielőtt megkezdené a módosításokat az Azure AD-ben, ellenőrizni kívánja, hogy a módosítások helyesek-e.
 
 1. Indítson el egy parancssort, és nyissa meg a következőt: `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. A `csexport "Name of Connector" %temp%\export.xml /f:x` parancs futtatása.  
+2. Futtassa a `csexport "Name of Connector" %temp%\export.xml /f:x` parancsot.  
    Az összekötő neve a szinkronizációs szolgáltatásban található. Az Azure AD esetében az "contoso.com – Azure AD" kifejezéshez hasonló név szerepel.
-3. A `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancs futtatása.
+3. Futtassa a `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancsot.
 4. Most már van egy fájlja a (z)% Temp% megnevezett export.csvban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
 5. Végezze el a szükséges módosításokat az adatokon vagy a konfiguráción, majd futtassa újra ezeket a lépéseket (importálás, szinkronizálás és ellenőrzés), amíg az exportálandó módosítások elvártak lesznek.
 
@@ -328,6 +328,6 @@ Több AD-erdő szinkronizálásakor a csoport-alapú szűrést egy másik csopor
 * Az egyik erdőben van egy olyan felhasználó, amely egy másik erdőben található e-mail-kapcsolattal rendelkezik. Továbbá úgy konfigurálta Azure AD Connect, hogy összekapcsolja a felhasználót a levelezési kapcsolattal. Mindkét objektumnak Group-alapú szűrési hatókörön belül kell lennie. Ellenkező esetben a felhasználó nem lesz szinkronizálva az Azure AD-vel.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 - További információ a helyszíni [identitások Azure ad-vel való integrálásáról](whatis-hybrid-identity.md).

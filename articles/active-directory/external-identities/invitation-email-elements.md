@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340609"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441878"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei
 
@@ -63,7 +63,7 @@ Az e-mail következő szakasza információt tartalmaz arról, hogy a meghívás
 
 ### <a name="footer-section"></a>Lábléc szakasz
 
-A lábléc további információkat tartalmaz az elküldött meghívóról. Mindig lehetőség van a meghívásra, hogy letiltsa a jövőbeli meghívókat. Ha a szervezet [adatvédelmi nyilatkozatot állított be](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), itt jelennek meg az utasításra mutató hivatkozás.  Ellenkező esetben egy megjegyzés azt jelzi, hogy a szervezet nem állított be adatvédelmi nyilatkozatot.
+A lábléc további információkat tartalmaz az elküldött meghívóról. Mindig lehetőség van a meghívásra, hogy letiltsa a jövőbeli meghívókat. Ha a szervezet [adatvédelmi nyilatkozatot állított be](../fundamentals/active-directory-properties-area.md), itt jelennek meg az utasításra mutató hivatkozás.  Ellenkező esetben egy megjegyzés azt jelzi, hogy a szervezet nem állított be adatvédelmi nyilatkozatot.
 
 ![Az e-mail lábléc szakaszának képe](media/invitation-email-elements/footer-section.png)
 
@@ -85,14 +85,14 @@ A vendég felhasználó a következő lépésekkel tekintheti meg vagy exportál
 
 A meghívó e-mailben a vendég felhasználó számára megadott nyelvet a következő beállítások határozzák meg. Ezek a Beállítások elsőbbségi sorrendben vannak felsorolva. Ha a beállítás nincs konfigurálva, a listában a következő beállítás határozza meg a nyelvet.
 
-- A [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) objektum **messageLanguage** tulajdonsága, ha a Create meghívás API használatban van
--   A vendég [felhasználói objektumában](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) megadott **preferredLanguage** tulajdonság
+- A [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) objektum **messageLanguage** tulajdonsága, ha a Create meghívás API használatban van
+-   A vendég [felhasználói objektumában](/graph/api/resources/user?view=graph-rest-1.0) megadott **preferredLanguage** tulajdonság
 -   A vendég felhasználó otthoni bérlője (csak az Azure AD-bérlők) tulajdonságaiban beállított **értesítési nyelv**
 -   Az erőforrás-bérlő tulajdonságaiban beállított **értesítési nyelv**
 
 Ha a beállítások egyike sincs konfigurálva, a nyelv alapértelmezett értéke az angol (US).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65db3bcbad905626a47b617c3c34935ec5cd0e88
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317446"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455420"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés megadásának beállítása
 
@@ -35,7 +35,7 @@ Azure Active Directory a "hozzárendelések" nevű fogalom használatával hatá
 
 A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-beli felhasználók és/vagy csoportok milyen felhasználók számára férhetnek hozzá a saját belefoglalt alkalmazásához. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a saját belefoglalt alkalmazásához:
 
-[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-concur"></a>Fontos Tippek a felhasználók az összevonáshoz való hozzárendeléséhez
 
@@ -121,4 +121,3 @@ Most már létrehozhat egy teszt fiókot is. Várjon akár 20 percet, és ellen�
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](concur-tutorial.md)
-

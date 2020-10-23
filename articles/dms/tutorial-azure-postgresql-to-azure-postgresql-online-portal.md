@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 0513b12c7ec9174c9a458400cd5682904d9ffb3b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 85b42c6a3c3c59bd8c22bcdc8954b8dd3399c454
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313148"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460971"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Oktatóanyag: az Azure DB for PostgreSQL átmigrálása – egyetlen kiszolgáló az Azure DB for PostgreSQL-hez – egyetlen kiszolgáló online a DMS használatával a Azure Portal
+# <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure DB for PostgreSQL-hez – egyetlen kiszolgáló online a DMS használatával a Azure Portal
 
 A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat egy [Azure Database for PostgreSQL-egykiszolgálós](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) példányról az Azure Database for PostgreSQL-egykiszolgálós példány vagy a Azure Database for PostgreSQL rugalmas kiszolgáló különböző verziójára minimális állásidővel. Ebben az oktatóanyagban áttelepíti a **DVD-kölcsönzési** minta adatbázisát egy Azure Database for PostgreSQL v10-ből Azure Database for PostgreSQL egyetlen kiszolgálóra a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
 
@@ -47,7 +47,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * A [Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotának](https://docs.microsoft.com/azure/dms/resource-scenario-status) ellenőrzéséhez a támogatott áttelepítési és verzió-kombinációk esetében. 
-* Egy meglévő [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) 10-es vagy újabb verzió a DVD- **kölcsönzési** adatbázissal. A Azure Database Migration Service nem támogatja az Azure DB-ről a PostgreSQL 9,5 vagy 9,6-re való áttelepítést.
+* Egy meglévő [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) 10-es vagy újabb verzió a DVD- **kölcsönzési** adatbázissal. 
 
     Azt is vegye figyelembe, hogy a cél Azure Database for PostgreSQL verziószámának vagy annál későbbinek kell lennie, mint a helyszíni PostgreSQL-verziónak. Például a PostgreSQL 10 áttelepíthető Azure Database for PostgreSQL 10 vagy 11 rendszerre, de nem Azure Database for PostgreSQL 9,6.
 
@@ -100,7 +100,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Például:
+    Példa:
 
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
@@ -301,7 +301,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 > [!NOTE]
 > A Azure Database Migration Service a Azure Database for PostgreSQL-egyetlen kiszolgálón a csökkentett állásidővel rendelkező főverziók frissítésére használható. Először konfigurálnia kell egy céladatbázis-t a kívánt magasabb PostgreSQL-verzióval, a hálózati beállításokkal és paraméterekkel. Ezután kezdeményezheti az áttelepítést a célként megadott adatbázisokra a fent ismertetett eljárás használatával. A cél adatbázis-kiszolgálóra való átváltás követően frissítheti az alkalmazás-kapcsolódási karakterláncot, hogy az a cél adatbázis-kiszolgálóra mutasson. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

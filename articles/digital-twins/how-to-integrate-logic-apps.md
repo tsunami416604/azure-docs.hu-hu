@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: b23e9a1e344bb0db1399a4f04712815557b8139e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 54a96d1f3227cd4a66e344b63b2ecb337df31aba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427994"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461073"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrálás a Logic Apps használatával egyéni összekötővel
 
@@ -43,7 +43,7 @@ Ha egy Azure digitális Twins-példányt szeretne összekapcsolással Logic Apps
 Először **állítson be egy Azure digitális Twins-példányt** és a szükséges hitelesítést ahhoz, hogy működjön vele. Ehhez kövesse az útmutató [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md)című témakör útmutatását. Az előnyben részesített felhasználói élménytől függően a telepítési cikk a [Azure Portal](how-to-set-up-instance-portal.md), a [CLI](how-to-set-up-instance-cli.md)vagy az [automatizált Cloud Shell üzembe helyezési parancsfájl-minta](how-to-set-up-instance-scripted.md)számára elérhető. Az utasítások összes verziója olyan lépéseket is tartalmaz, amelyekkel ellenőrizheti, hogy sikeresen elvégezte-e az egyes lépéseket, és készen áll az új példány használatára való áttérésre.
 * Az Azure Digital Twins-példány beállítása után szüksége lesz a példány **_állomásneve_** (keresse meg a[Azure Portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
-A ADT Explorer alkalmazás hitelesítéséhez egy **alkalmazás regisztrálását**is be kell állítania. Ennek beállításához kövesse az útmutató [*: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md) című témakör utasításait. 
+Az összekötő hitelesítéséhez be kell állítania egy **alkalmazás regisztrációját**is. Ennek beállításához kövesse az útmutató [*: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md) című témakör utasításait. 
 * Ha már rendelkezik az alkalmazás regisztrálásával, szüksége lesz a regisztrációs **_alkalmazás (ügyfél) azonosítójának_** és **_könyvtárának (BÉRLŐi) azonosítójának_** ([Keresse meg a Azure Portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
 
 ### <a name="get-app-registration-client-secret"></a>Az alkalmazás regisztrációs ügyfelének titkának beolvasása
@@ -66,7 +66,7 @@ Most ellenőrizze, hogy az ügyfél titka látható-e a _tanúsítványok & titk
 
 Ez a cikk a Logic Apps használatával frissíti a Twin-et az Azure Digital Twins-példányban. A folytatáshoz vegyen fel legalább egy Twin-példányt a példányba. 
 
-Az ikreket a [DigitalTwins API](how-to-use-apis-sdks.md)-k, a [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával veheti fel. Az ikrek a következő módszerekkel történő létrehozásával kapcsolatos részletes útmutatásért lásd [*: útmutató: digitális ikrek kezelése*](how-to-manage-twin.md).
+Az ikreket a [DigitalTwins API](/rest/api/digital-twins/dataplane/twins)-k, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával veheti fel. Az ikrek a következő módszerekkel történő létrehozásával kapcsolatos részletes útmutatásért lásd [*: útmutató: digitális ikrek kezelése*](how-to-manage-twin.md).
 
 Az Ön által létrehozott példányban szüksége lesz egy Twin **_dupla azonosítóra_** .
 

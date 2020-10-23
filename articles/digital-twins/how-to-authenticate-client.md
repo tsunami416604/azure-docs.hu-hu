@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d71a7535c40d240b6c9bf53cff906f12b4b8b5df
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d4e150eddee947aa4ed6f88c122c0fa6d01a0bae
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204299"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460648"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
@@ -20,7 +20,7 @@ Miután [beállított egy Azure digitális Twins-példányt és-hitelesítést](
 
 Az Azure Digital Twins az [Azure ad biztonsági jogkivonatok használatával végzi a hitelesítést az OAUTH 2,0 alapján](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims). Az SDK hitelesítéséhez be kell szereznie egy tulajdonosi jogkivonatot a megfelelő engedélyekkel az Azure digitális Twins-hoz, és át kell adnia az API-hívásokkal együtt. 
 
-Ez a cikk bemutatja, hogyan szerezhet be hitelesítő adatokat az `Azure.Identity` ügyféloldali kódtár használatával. Ez a cikk a C#-ban található példákat mutatja be, például a [.net (c#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)-hoz írt változatot, `Azure.Identity` függetlenül attól, hogy milyen SDK-t használ (az Azure Digital Twins-hoz elérhető SDK-kkal kapcsolatos további információkért lásd [*: útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)).
+Ez a cikk bemutatja, hogyan szerezhet be hitelesítő adatokat az `Azure.Identity` ügyféloldali kódtár használatával. Ez a cikk a C#-ban található példákat mutatja be, például a [.net (c#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)-hoz írt változatot, `Azure.Identity` függetlenül attól, hogy milyen SDK-t használ (az Azure Digital Twins-hoz elérhető SDK-kkal kapcsolatos további információkért lásd [*: útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -150,7 +150,7 @@ Továbbá a függvények hitelesítésének használatához ne felejtse el a kö
 
 Ha a fenti, Kiemelt hitelesítési forgatókönyvek nem fedik le az alkalmazás igényeit, megismerheti a [**Microsoft Identity platformon**](../active-directory/develop/v2-overview.md#getting-started)kínált egyéb hitelesítési módokat is. A platform dokumentációja a további hitelesítési forgatókönyvekre vonatkozik, az alkalmazás típusa szerint rendezve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogyan működik a biztonság az Azure digitális Twinsban:
 * [*Fogalmak: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md)

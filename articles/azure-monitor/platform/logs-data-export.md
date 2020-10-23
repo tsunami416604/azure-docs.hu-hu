@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7183a9c75c78a973b53a9c8c065d62c592b13151
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055936"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441108"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -36,7 +36,7 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 - A konfigurációt jelenleg csak parancssori felület vagy REST-kérelmek használatával lehet elvégezni. A Azure Portal vagy a PowerShell nem használható.
-- A támogatott táblázatok jelenleg csak az alábbi (#supported-Angela) szakaszban meghatározottak. Ha az adatexportálási szabály nem támogatott táblát tartalmaz, akkor a művelet sikeres lesz, de a rendszer nem exportálja az adott táblára vonatkozó adatvesztést. Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, akkor a hiba a * <tableName> munkaterületen nem létezik.*
+- A támogatott táblázatok jelenleg csak a [támogatott táblák](#supported-tables) szakaszban vannak korlátozva. Ha az adatexportálási szabály nem támogatott táblát tartalmaz, akkor a művelet sikeres lesz, de a rendszer nem exportálja az adott táblára vonatkozó adatvesztést. Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, a hiba miatt sikertelen lesz. ```Table <tableName> does not exist in the workspace.```
 - A Log Analytics munkaterület a következők kivételével bármely régióban lehet:
   - Észak-Svájc
   - Nyugat-Svájc
@@ -57,7 +57,7 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 ## <a name="data-completeness"></a>Az adatteljesség
 Az adatexportálás továbbra is újra próbálkozik az adatok küldésével akár 30 percig, ha a cél nem érhető el. Ha a 30 perc elteltével sem érhető el, akkor a rendszer elveti az adatvesztést, amíg a célhely elérhetővé nem válik.
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 Az adatexportálási szolgáltatáshoz jelenleg nem számítunk fel további díjakat. Az adatexportálás díjszabása a jövőben lesz bejelentve, és a számlázás megkezdése előtt megjelenő értesítés. Ha úgy dönt, hogy az adatexportálást a felmondási időszak után is használja, akkor a díjszabást a vonatkozó díjak alapján számítjuk fel.
 
 ## <a name="export-destinations"></a>Célhelyek exportálása
@@ -239,14 +239,14 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>Nem támogatott táblák
 Ha az adatexportálási szabály nem támogatott táblát tartalmaz, akkor a konfiguráció sikeres lesz, de a rendszer nem exportálja az adott táblára vonatkozó adatvesztést. Ha a tábla később támogatott, akkor a rendszer az adott időpontban exportálja az adatforrásokat.
 
-Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, akkor a hiba a * <tableName> munkaterületen nem létezik*.
+Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, a hiba miatt sikertelen lesz. ```Table <tableName> does not exist in the workspace.```
 
 
 ## <a name="supported-tables"></a>Támogatott táblák
 A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódnak. A rendszer minden, a táblából származó adattal exportál, hacsak nincsenek korlátozások megadva. A rendszer frissíti a listát a további táblázatok támogatásával.
 
 
-| Táblázat | Korlátozások |
+| Tábla | Korlátozások |
 |:---|:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |
@@ -423,6 +423,6 @@ A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódn
 | WVDManagement | |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az exportált adatok lekérdezése az Azure Adatkezelőból](azure-data-explorer-query-storage.md).

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cfb6a7ba10c388cadb19268ee1431fe523a0cfa4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e6cbf840fa27755fa43eb2a81e752415562ce41f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126326"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461141"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Ismerkedés a csoport meghívása Hero-mintával
 
@@ -25,12 +25,12 @@ ms.locfileid: "92126326"
 > Add links to our Hero Sample repo when the sample is publicly available.
 ---->
 
+> [!IMPORTANT]
+> [Ez a minta a GitHubon érhető el.](https://github.com/Azure-Samples/communication-services-web-calling-hero)
+
 Az Azure kommunikációs szolgáltatások **csoportos hívása a Hero minta** azt mutatja be, hogy a kommunikációs szolgáltatások hogyan hívhatják meg a webes ügyféloldali kódtárat csoportos hívási élmény létrehozásához.
 
 Ebből a rövid útmutatóból megtudhatja, hogyan működik a minta a minta helyi gépen való futtatása előtt. Ezután üzembe helyezzük a mintát az Azure-ban a saját Azure kommunikációs szolgáltatások erőforrásaival.
-
-> [!IMPORTANT]
-> [A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -98,7 +98,7 @@ A mintát helyileg tesztelheti úgy, hogy több böngészős munkamenetet nyit m
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-calling-hero)
@@ -106,7 +106,6 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 További információért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
-- Tudnivalók az [ügyféloldali kódtár képességeinek meghívásáról](../quickstarts/voice-video-calling/calling-client-samples.md)
 - További információ a [hívás működéséről](../concepts/voice-video-calling/about-call-types.md)
 
 ## <a name="additional-reading"></a>További információ

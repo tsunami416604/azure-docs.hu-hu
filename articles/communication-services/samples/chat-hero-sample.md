@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9be94183fc34c2dbee3503d21e2e643d5296a82b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124585"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461124"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Ismerkedés a Group chat Hero-mintával
 
@@ -25,12 +25,14 @@ ms.locfileid: "92124585"
 > links to our Hero Sample repo need to be updated when the sample is publicly available.
 ---->
 
+> [!IMPORTANT]
+> [Ez a minta a GitHubon érhető el.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+
+
 Az Azure kommunikációs szolgáltatások **csoport csevegési hőse minta** azt mutatja be, hogyan használható a kommunikációs szolgáltatások csevegési webügyfél-függvénytára csoportos hívási élmény létrehozására.
 
 Ebből a rövid útmutatóból megtudhatja, hogyan működik a minta a minta helyi gépen való futtatása előtt. Ezután üzembe helyezzük a mintát az Azure-ban a saját Azure kommunikációs szolgáltatások erőforrásaival.
 
-> [!IMPORTANT]
-> [A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -104,7 +106,7 @@ A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyi
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-chat-hero)

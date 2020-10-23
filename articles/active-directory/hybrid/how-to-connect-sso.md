@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658363"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457991"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Közvetlen egyszeri bejelentkezés az Azure Active Directoryba
 
@@ -63,24 +63,26 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N.A.
-|Windows 8.1|igen\*|N.A.|Igen|Igen\*\*\*|N.A.
-|Windows 8|igen\*|N.A.|Igen|Igen\*\*\*|N.A.
-|Windows 7|igen\*|N.A.|Igen|Igen\*\*\*|N.A.
-|Windows Server 2012 R2 vagy újabb|igen\*\*|N.A.|Igen|Igen\*\*\*|N.A.
+|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N/A
+|Windows 8.1|Igen\*|Igen\*\*\*|Igen|Igen\*\*\*|N/A
+|Windows 8|Igen\*|N/A|Igen|Igen\*\*\*|N/A
+|Windows 7|Igen\*|N/A|Igen|Igen\*\*\*|N/A
+|Windows Server 2012 R2 vagy újabb|igen\*\*|N/A|Igen|Igen\*\*\*|N/A
 |Mac OS X|N.A.|N.A.|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
 
 
-\*Az Internet Explorer 10-es vagy újabb verzióját igényli
+\*Az Internet Explorer 10-es vagy újabb verzióját igényli.
 
-\*\*Az Internet Explorer 10-es vagy újabb verzióját igényli. Fokozottan védett üzemmód letiltása
+\*\*Az Internet Explorer 10-es vagy újabb verzióját igényli. Fokozottan védett üzemmód letiltása.
 
-\*\*\*[További konfigurálást](how-to-connect-sso-quick-start.md#browser-considerations) igényel
+\*\*\*[További konfigurálást](how-to-connect-sso-quick-start.md#browser-considerations)igényel.
+
+\*\*\*\*A Microsoft Edge 77-es vagy újabb verziójára van szükség.
 
 >[!NOTE]
 >A Windows 10 esetében ajánlott az Azure [ad JOIN](../devices/concept-azure-ad-join.md) használata az Azure ad-vel való optimális egyszeri bejelentkezéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [**Gyorskonfigurálás**](how-to-connect-sso-quick-start.md) – az Azure ad zökkenőmentes egyszeri bejelentkezésének megkezdése és futtatása.
 - [**Üzembe helyezési terv**](https://aka.ms/deploymentplans/sso) – lépésenkénti üzembe helyezési terv.

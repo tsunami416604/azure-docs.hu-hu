@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea12b3eb72ce05f2672f6ca0912cc67345413c3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078476"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461277"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
-Ez a cikk példákat és részletesebb információkat tartalmaz az [Azure digitális Twins lekérdezési nyelvének](concepts-query-language.md) használatáról, hogy lekérdezze a [Twin gráfot](concepts-twins-graph.md) . A Graph-lekérdezéseket az Azure Digital Twins [**lekérdezési API**](how-to-use-apis-sdks.md)-k használatával futtathatja.
+Ez a cikk példákat és részletesebb információkat tartalmaz az [Azure digitális Twins lekérdezési nyelvének](concepts-query-language.md) használatáról, hogy lekérdezze a [Twin gráfot](concepts-twins-graph.md) . A Graph-lekérdezéseket az Azure Digital Twins [**lekérdezési API**](/rest/api/digital-twins/dataplane/query)-k használatával futtathatja.
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
@@ -288,7 +288,7 @@ A következő operátorok támogatottak:
 | Összehasonlítás |=,! =, <, >, <=, >= |
 | Contains | , NIN |
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 
 A következő típusú ellenőrzési és öntési függvények támogatottak:
 
@@ -386,6 +386,6 @@ Az alábbiakban néhány tippet talál az Azure digitális Twins lekérdezéséh
         ```
 * A tulajdonságok nevei és értékei megkülönböztetik a kis-és nagybetűket, ezért ügyeljen a modellekben definiált pontos nevek használatára. Ha a tulajdonságok neve hibásan van megadva vagy helytelenül van megadva, az eredményhalmaz üres, és nem ad vissza hibát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet az [Azure Digital Twins API-król és SDK](how-to-use-apis-sdks.md)-król, beleértve a LEKÉRDEZÉSi API-t, amely a jelen cikkben található lekérdezések futtatására szolgál.

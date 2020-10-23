@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b7350d793ea42a46d52d881f1399174a3bb5d0e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362892"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442082"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 
@@ -66,7 +66,7 @@ Ha például az _ * fabrikam. com * * közvetlen összevonását állítja be, a
 Ha a metaadatok URL-címét a személyazonosság-szolgáltató beállításaiban adta meg, az Azure AD automatikusan megújítja az aláíró tanúsítványt, amikor lejár. Ha azonban a rendszer a lejárati idő előtt bármilyen okból elforgatja a tanúsítványt, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem tudja megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
 
 ### <a name="limit-on-federation-relationships"></a>Összevonási kapcsolatok korlátozása
-Jelenleg legfeljebb 1 000 összevonási kapcsolat támogatott. Ez a korlát magában foglalja a [belső szövetségeket](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) és a közvetlen szövetségeket is.
+Jelenleg legfeljebb 1 000 összevonási kapcsolat támogatott. Ez a korlát magában foglalja a [belső szövetségeket](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) és a közvetlen szövetségeket is.
 
 ### <a name="limit-on-multiple-domains"></a>Korlátozás több tartományra
 Jelenleg nem támogatottak a közvetlen összevonás ugyanahhoz a bérlőhöz tartozó több tartománnyal.
@@ -87,7 +87,7 @@ Először is a partnervállalat a szükséges jogcímekhez és a függő entitá
 
 ### <a name="saml-20-configuration"></a>SAML 2,0 konfiguráció
 
-Az Azure AD B2B konfigurálható úgy, hogy az SAML protokollt használó összevonása az alább felsorolt konkrét követelményekkel. Az SAML-identitás szolgáltatója és az Azure AD közötti megbízhatóság beállításával kapcsolatos további információkért lásd:  [SAML 2,0 Identity Provider (identitásszolgáltató) használata egyszeri bejelentkezéshez](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
+Az Azure AD B2B konfigurálható úgy, hogy az SAML protokollt használó összevonása az alább felsorolt konkrét követelményekkel. Az SAML-identitás szolgáltatója és az Azure AD közötti megbízhatóság beállításával kapcsolatos további információkért lásd:  [SAML 2,0 Identity Provider (identitásszolgáltató) használata egyszeri bejelentkezéshez](../hybrid/how-to-connect-fed-saml-idp.md).  
 
 > [!NOTE]
 > A közvetlen összevonás céljának tartománya nem lehet DNS-ellenőrzés alatt állni az Azure AD-ben. A hitelesítési URL-tartománynak meg kell egyeznie a céltartományban, vagy egy engedélyezett identitás-szolgáltató tartományának kell lennie. A részletekért tekintse meg a [korlátozásokat](#limitations) ismertető szakaszt. 
@@ -221,6 +221,6 @@ Az identitás-szolgáltatóval való közvetlen összevonás eltávolítása a P
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [meghívás beváltási élményéről](redemption-experience.md) , ha a külső felhasználók különböző identitás-szolgáltatókkal jelentkeznek be.

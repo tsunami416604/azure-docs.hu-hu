@@ -1,20 +1,23 @@
 ---
-title: IIS-naplók a Azure Monitorban | Microsoft Docs
+title: Az IIS-naplók összegyűjtése Log Analytics ügynökkel Azure Monitor
 description: A Internet Information Services (IIS) a Azure Monitor által összegyűjthető naplófájlokban tárolja a felhasználói tevékenységeket.  Ez a cikk bemutatja, hogyan konfigurálhatja az IIS-naplók gyűjteményét és a Azure Monitorban létrehozott rekordok részleteit.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87008183"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461192"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>IIS-naplók összegyűjtése Azure Monitor
-A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket Azure Monitor tárolhat, és [naplózó adatként](data-platform.md)tárolhatja őket.
+# <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Az IIS-naplók összegyűjtése Log Analytics ügynökkel Azure Monitor
+A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket az Log Analytics ügynök gyűjthet, és [Azure monitor naplókban](data-platform.md)tárol.
+
+> [!IMPORTANT]
+> Ez a cikk ismerteti az IIS-naplók összegyűjtését az [log Analytics ügynökkel](log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](agents-overview.md) .
 
 ![IIS-naplók](media/data-sources-iis-logs/overview.png)
 
@@ -23,7 +26,7 @@ A Azure Monitor az IIS által létrehozott naplófájlokból gyűjt bejegyzések
 
 Azure Monitor csak a W3C formátumban tárolt IIS-naplófájlokat támogatja, és nem támogatja az egyéni mezőket vagy az IIS speciális naplózását. Az NCSA vagy az IIS natív formátumában nem gyűjt naplókat.
 
-Konfigurálja az IIS-naplókat Azure Monitor a [Speciális beállítások menüből](agent-data-sources.md#configuring-data-sources).  A **W3C-formátumú IIS-naplófájlok gyűjtésének**kiválasztásához nincs szükség konfigurációra.
+Konfigurálja az IIS-naplókat a Azure Monitor a Log Analytics ügynök [Speciális beállítások menüjében](agent-data-sources.md#configuring-data-sources) .  A **W3C-formátumú IIS-naplófájlok gyűjtésének**kiválasztásához nincs szükség konfigurációra.
 
 
 ## <a name="data-collection"></a>Adatgyűjtés

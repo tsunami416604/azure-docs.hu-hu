@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 41aabeeeb151a6e2cf3c52dbfa2075c55f86989f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c163b7325cb4e039ddcfee95a39b82b4cb258b3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427306"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461294"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
 
@@ -107,10 +107,9 @@ Miután elő a ITSM-eszközöket, kövesse az alábbi lépéseket a kapcsolatok 
    Az ITSM-csatoló megoldás használatával munkaelemeket hozhat létre az Azure-riasztásokból, Log Analytics a riasztásokat és a Log Analyticsi rekordokat.
 
 ## <a name="template-definitions"></a>Sablon-definíciók
-   Vannak olyan típusú **munkaelemek** , amelyek a ITSM eszköz által definiált sablonokat használhatják.
-A sablonok segítségével az ügyfél meghatározhatja azokat a mezőket, amelyeket a rendszer a műveleti csoport részeként definiált rögzített értékek alapján automatikusan feltölt. Ez a definíció a ITSM eszközben történik.
-Ezekben az esetekben az "egyéni sablon használata" jelölőnégyzet bejelölésével engedélyezheti, hogy az ügyfél kikerüljön az automatikusan kitöltendő mezőkből a műveleti csoport részeként definiált rögzített értékek alapján.
-   
+   Vannak olyan típusú munkaelemek, amelyek a ITSM eszköz által definiált sablonokat használhatják.
+A sablonok segítségével az ügyfél meghatározhatja azokat a mezőket, amelyeket a rendszer a műveleti csoport részeként definiált rögzített értékek alapján automatikusan feltölt. A sablonok meghatározása a ITSM eszközben történik.
+      
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>ITSM-munkaelemek létrehozása az Azure-riasztásokból
 
 Miután létrejött a ITSM-kapcsolat, létrehozhat munkaelemeket a ITSM-eszközön az Azure-riasztások alapján, a **műveleti csoportok** **ITSM műveletének** használatával.
@@ -139,7 +138,7 @@ Kövesse az alábbi eljárást:
 
 6. Válassza ki a **munkaelem** típusát a legördülő menüből.
 
-7. Válasszon egy meglévő sablont, vagy használja a közös sablont, és töltse ki a ITSM-termék által megkövetelt mezőket.
+7. Ha a mező kitöltését rögzített értékekkel szeretné kitölteni, jelölje be az "egyéni sablon használata" jelölőnégyzetet, máskülönben válasszon egy meglévő [sablont](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a legördülő listából, és töltse ki a sablon mezőket rögzített értékekkel.
 
 8. Kattintson az **OK** gombra.
 

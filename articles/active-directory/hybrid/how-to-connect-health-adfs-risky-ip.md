@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad03942a2200c57475cf8a81d0fb08d475ec6964
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306395"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458032"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP-jelentés (nyilvános előzetes verzió)
 AD FS ügyfelek jelszavas hitelesítési végpontokat tehetnek elérhetővé az interneten, hogy hitelesítési szolgáltatásokat nyújtsanak a végfelhasználók számára az SaaS-alkalmazások, például a Microsoft 365 eléréséhez. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />
@@ -35,7 +35,7 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 
 > [!NOTE]
 > A jelentés használatához győződjön meg róla, hogy az AD FS-naplózás engedélyezve van. További információkért tekintse meg az [AD FS-naplózás engedélyezését](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
-> Az előzetes verzió eléréséhez globális rendszergazda vagy [biztonsági olvasó](../../role-based-access-control/built-in-roles.md#security-reader) szerepkörű felhasználói engedély szükséges.  
+> Az előzetes verzió eléréséhez globális rendszergazda vagy [biztonsági olvasó](../../role-based-access-control/built-in-roles.md#security-reader) szerepkörű felhasználói engedély szükséges.  
 > 
 
 ## <a name="what-is-in-the-report"></a>Mi a jelentés?
@@ -79,16 +79,16 @@ A **letöltési** funkcióval az összes kockázatos IP-cím listája exportálh
 A jelentés rendszergazdai elérhetőségi adatait az **értesítési beállításokban** lehet frissíteni. Alapértelmezés szerint a kockázatos IP-címekkel kapcsolatos e-mail-értesítés küldése ki van kapcsolva. Az értesítés bekapcsolásához át kell állítani az „E-mail-értesítés küldése, ha egy IP-cím túllépi a sikertelen tevékenységek figyelmeztetési küszöbértékét” beállítás kapcsológombját. A Connect Health általános értesítéseihez hasonlóan itt állíthatja be, hogy kik kapják meg az értesítési jelentést a kockázatos IP-címekről. A módosításról értesíthet minden globális rendszergazdát. 
 
 ## <a name="configure-threshold-settings"></a>Küszöbérték-beállítások konfigurálása
-A figyelmeztetési küszöbérték küszöbérték-beállításokban módosítható. A rendszerben be van állítva egy alapértelmezett küszöbérték. A kockázatos IP-címek esetében négy küszöbérték-beállítási kategória közül választhat:
+A figyelmeztetési küszöbérték küszöbérték-beállításokban módosítható. A rendszerben be van állítva egy alapértelmezett küszöbérték. Az alapértelmezett értékek az alábbiakban láthatók. A kockázatos IP-címek esetében négy küszöbérték-beállítási kategória közül választhat:
 
 ![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4d.png)
 
 | Küszöbértékelem | Leírás |
 | --- | --- |
-| (Helytelen felhasználónév/jelszó + extranet zárolás) naponta  | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **napi** száma meghaladja az értéket. |
-| (Helytelen felhasználónév/jelszó + extranet zárolás) óránként | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **óránkénti** száma meghaladja az értéket. |
-| Extranet zárolások naponta | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha az extranet zárolások **napi** száma meghaladja az értéket. |
-| Extranet zárolások óránként| A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha az extranet zárolások **óránkénti** száma meghaladja az értéket. |
+| (Helytelen felhasználónév/jelszó + extranet zárolás) naponta  | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **napi** száma meghaladja az értéket. Az alapértelmezett érték a 100.|
+| (Helytelen felhasználónév/jelszó + extranet zárolás) óránként | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **óránkénti** száma meghaladja az értéket. Az alapértelmezett érték a 50.|
+| Extranet zárolások naponta | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha az extranet zárolások **napi** száma meghaladja az értéket. Az alapértelmezett érték 50.|
+| Extranet zárolások óránként| A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha az extranet zárolások **óránkénti** száma meghaladja az értéket. Az alapértelmezett érték 25|
 
 > [!NOTE]
 > - A jelentési küszöbérték változása egy órával a beállítás módosítása után lép érvénybe. 
@@ -116,6 +116,6 @@ Az azonosított kártevő IP-címeket érdemes hozzáadni a tűzfalhoz vagy blok
 Globális rendszergazda vagy [biztonsági olvasó](../../role-based-access-control/built-in-roles.md#security-reader) szerepkörű felhasználói engedély szükséges. Hozzáférésért forduljon a globális rendszergazdához.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)

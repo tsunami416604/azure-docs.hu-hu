@@ -2,14 +2,14 @@
 title: Az Azure arc használatára képes kiszolgálók áttekintése
 description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolgálókat az Azure-on kívül üzemeltetett kiszolgálók (például Azure-erőforrások) kezelésére.
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.topic: overview
-ms.openlocfilehash: b2875cfdeb80aa17b19cee462dc35eaa7a3de665
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 01de579d2e1ea84c0e9da4ceafbd33dbad4c6e27
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92200967"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460852"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Mi azok az Azure Arc-kompatibilis kiszolgálók?
 
@@ -29,7 +29,7 @@ Ha a gépet az Azure arc-kompatibilis kiszolgálókhoz kapcsolja, lehetővé tes
 
 - Egyszerűsítse az üzembe helyezést más Azure-szolgáltatásokkal, például az Azure Automation [állapot-konfigurációval](../../automation/automation-dsc-overview.md) és Azure monitor log Analytics munkaterülettel a nem Azure-beli Windows-vagy Linux-alapú Azure virtuálisgép- [bővítmények](manage-vm-extensions.md) használatával. Ez magában foglalja az üzembe helyezés utáni konfiguráció vagy a Szoftvertelepítés egyéni parancsfájl-bővítmény használatával végzett telepítését is.
 
-- Windows-és Linux-kiszolgálók operációs rendszerének frissítéseinek kezeléséhez használja a Azure Automation [Update Management](../../automation/update-management/update-mgmt-overview.md) . Először telepítse a [hibrid Runbook-feldolgozói](../../automation/automation-hybrid-runbook-worker.md) szerepkört, majd kövesse a lépéseket, hogy [engedélyezze Update Management](../../automation/update-management/update-mgmt-enable-portal.md) a nem Azure-beli Windows-vagy Linux-gépen.
+- Windows-és Linux-kiszolgálók operációs rendszerének frissítéseinek kezeléséhez használja a Azure Automation [Update Management](../../automation/update-management/update-mgmt-overview.md) .
 
 - Vegye fel a nem Azure-kiszolgálókat a fenyegetések észlelésére, és proaktívan figyelje az esetleges biztonsági fenyegetéseket a [Azure Security Center](../../security-center/security-center-introduction.md)használatával.
 
@@ -47,6 +47,6 @@ A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott he
 
 A csatlakoztatott gépi ügynök egy normál szívverésű üzenetet küld a szolgáltatásnak 5 percenként. Ha a szolgáltatás nem tudja fogadni ezeket a szívverési üzeneteket a gépről, a gép offline állapotba kerül, és a rendszer 15 – 30 percen belül automatikusan **megszakítja a kapcsolatot** a portálon. Amikor egy későbbi szívverési üzenetet kap a csatlakoztatott számítógép ügynökéről, az állapota automatikusan **csatlakoztatva**lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az arc-kompatibilis kiszolgálók több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények megismeréséhez, az ügynök műszaki részleteihez és a telepítési módszerekhez.

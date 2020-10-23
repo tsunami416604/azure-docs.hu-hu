@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 9459d13e8943f7e9177d2ad493873257f46f6649
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d236b9910e2eda8e574d020544d625a68aefb81
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544383"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455312"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása a ContractSafe egy saml2 SSO-val
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a ContractSafe egy
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a ContractSafe egy saml2 SSO-ba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 1. Az alapértelmezett attribútumok mellett a ContractSafe egy saml2 SSO-alkalmazás néhány további attribútumot vár az SAML-válaszban való visszatéréshez. Ezek az attribútumok előre ki vannak töltve, de a követelmények szerint áttekinthetők. Az alábbi listában a további attribútumok láthatók.
 
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ---------------| --------------- |
     | EmailName | User. userPrincipalName |
     | e-mail | User. onpremisesuserprincipalname |
@@ -142,14 +142,14 @@ Hozzon létre egy B. Simon nevű felhasználót a ContractSafe egy saml2 SSO-ban
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Tesztelje Azure AD SSO-konfigurációját a hozzáférési panel használatával. Amikor kiválasztja a ContractSafe egy saml2 SSO csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a ContractSafe egy saml2 SSO-ba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Tesztelje Azure AD SSO-konfigurációját a hozzáférési panel használatával. Amikor kiválasztja a ContractSafe egy saml2 SSO csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a ContractSafe egy saml2 SSO-ba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
 - [Próbálja ki a ContractSafe egy saml2 SSO-t az Azure AD-vel](https://aad.portal.azure.com/)

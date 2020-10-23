@@ -1,25 +1,28 @@
 ---
-title: Az ügynök adatforrásainak konfigurálása a Azure Monitorban | Microsoft Docs
+title: Log Analytics Agent adatforrások a Azure Monitor
 description: Az adatforrások határozzák meg azokat a naplózási adatokat, amelyeket a Azure Monitor ügynökökből és más csatlakoztatott forrásokból gyűjt.  Ez a cikk a Azure Monitor adatforrások felhasználásának fogalmát ismerteti, ismerteti a konfigurálásának részleteit, és összefoglalja a különböző elérhető adatforrásokat.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a52f10c7081875113a0ad22bd687776e71d238e2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073683"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460801"
 ---
-# <a name="agent-data-sources-in-azure-monitor"></a>Ügynök-adatforrások a Azure Monitorban
-Az ügynököktől Azure Monitor gyűjtött adatokat a konfigurált adatforrások határozzák meg.  Az ügynököktől származó adatokat a rendszer egy rekordhalmazsal rendelkező [naplófájlként](data-platform-logs.md) tárolja.  Minden adatforrás egy adott típusú rekordokat hoz létre, amelyek mindegyike rendelkezik saját tulajdonságokkal.
+# <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics Agent adatforrások a Azure Monitor
+Az [log Analytics](log-analytics-agent.md) ügynököt használó virtuális gépekről Azure monitor gyűjtött adatokat az [log Analytics munkaterületen](data-platform-logs.md)konfigurált adatforrások határozzák meg.   Minden adatforrás egy adott típusú rekordokat hoz létre, amelyek mindegyike rendelkezik saját tulajdonságokkal.
+
+> [!IMPORTANT]
+> Ez a cikk az [log Analytics-ügynök](log-analytics-agent.md) adatforrásait ismerteti, amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](agents-overview.md) .
 
 ![Naplózási adatgyűjtés](media/agent-data-sources/overview.png)
 
 ## <a name="summary-of-data-sources"></a>Adatforrások összefoglalása
-A következő táblázat felsorolja a Azure Monitor jelenleg elérhető ügynök-adatforrásokat.  Mindegyiknek van egy külön cikkre mutató hivatkozása, amely részletesen ismerteti az adatforrás részleteit.   Emellett a metódussal és a gyűjtemények gyakoriságával kapcsolatos információkat is tartalmaz. 
+A következő táblázat felsorolja a Log Analytics ügynökkel jelenleg elérhető ügynök-adatforrásokat.  Mindegyiknek van egy külön cikkre mutató hivatkozása, amely részletesen ismerteti az adatforrás részleteit.   Emellett a metódussal és a gyűjtemények gyakoriságával kapcsolatos információkat is tartalmaz. 
 
 
 | Adatforrás | Platform | Log Analytics-ügynök | Operations Manager-ügynök | Azure Storage tárterület | Operations Manager kötelező? | A felügyeleti csoporton keresztül elküldett Operations Manager ügynöki adatkezelés | A gyűjtés gyakorisága |
@@ -34,14 +37,12 @@ A következő táblázat felsorolja a Azure Monitor jelenleg elérhető ügynök
 
 
 ## <a name="configuring-data-sources"></a>Adatforrások konfigurálása
-Az adatforrásokat a munkaterület **speciális beállításainak** **adatok** menüjéből konfigurálhatja.  A rendszer bármilyen konfigurációt továbbít a munkaterület összes csatlakoztatott forrásához.  Jelenleg nem zárható ki ügynökök ebből a konfigurációból.
+Log Analytics-ügynökök adatforrásainak konfigurálásához lépjen a Azure Portal **log Analytics munkaterületek** menüjére, és válasszon ki egy munkaterületet. Kattintson a **Speciális beállítások** , majd **az**adatelemre. Válassza ki a konfigurálni kívánt adatforrást. A fenti táblázatban található hivatkozásokat követve az egyes adatforrások dokumentációját és a konfigurációjuk részleteit is megtekintheti.
+
+Minden konfiguráció az adott munkaterülethez csatlakozó összes ügynök számára elérhető.  A csatlakoztatott ügynökök nem zárhatók ki ebből a konfigurációból.
 
 ![Windows-események konfigurálása](media/agent-data-sources/configure-events.png)
 
-1. A Azure Portal válassza a **log Analytics munkaterületek** > a munkaterület > **Speciális beállítások**lehetőséget.
-2. Válassza **az**adatelemet.
-3. Kattintson a konfigurálni kívánt adatforrásra.
-4. A konfigurációval kapcsolatos részletekért kövesse a fenti táblázatban található egyes adatforrásokhoz tartozó dokumentációra mutató hivatkozást.
 
 
 ## <a name="data-collection"></a>Adatgyűjtés

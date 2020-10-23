@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b89b8cc58cb48770b9b42036f8b834cc1bf11b8b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602669"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441130"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által kezelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ A Azure SQL Database és az Azure szinapszis Analytics esetében a TDE-védő a 
 > Azok a szolgáltatás által felügyelt TDE használó felhasználók, akik az ügyfél által felügyelt TDE szeretnék használni, az adatváltási folyamat során titkosítva maradnak, és az adatbázisfájlok nem lesznek újra titkosítva. Ha egy szolgáltatás által felügyelt kulcsról egy ügyfél által felügyelt kulcsra vált át, csak a ADATTITKOSÍTÁSI kulcsot újratitkosítására van szükség, amely gyors és online művelet.
 
 > [!NOTE]
-> A platform által felügyelt kulcsokkal rendelkező Azure SQL-ügyfelek számára az inaktív adatok titkosításának két rétegét, az infrastruktúra-titkosítást (AES-256 titkosítási algoritmus használatával) végezheti el. Ez egy kiegészítő titkosítási réteget is tartalmaz, amely a TDE és az ügyfél által felügyelt kulcsokkal együtt már elérhető. Ekkor az ügyfeleknek hozzáférést kell kérniük ehhez a képességhez. Ha érdekli ezt a funkciót, forduljon a következőhöz: AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
+> A platform által felügyelt kulcsokkal rendelkező Azure SQL-ügyfelek számára az inaktív adatok titkosításának két rétegét, az infrastruktúra-titkosítást (AES-256 titkosítási algoritmus használatával) végezheti el. Ez egy kiegészítő titkosítási réteget is tartalmaz, amely a TDE és az ügyfél által felügyelt kulcsokkal együtt már elérhető. Azure SQL Database és felügyelt példány esetében az infrastruktúra-titkosítás bekapcsolásakor a rendszer az összes adatbázist, beleértve a főadatbázist és az egyéb rendszeradatbázisokat is titkosítja. Ekkor az ügyfeleknek hozzáférést kell kérniük ehhez a képességhez. Ha érdekli ezt a funkciót, forduljon a következőhöz: AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Az ügyfél által felügyelt TDE előnyei
 
@@ -209,7 +209,7 @@ Ha el szeretné kerülni, hogy a kulcsfontosságú anyagok hiányában a Geo-rep
 
 A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md)című témakör lépéseit. A feladatátvételi tesztet rendszeresen kell elvégezni annak ellenőrzéséhez, hogy a SQL Database megőrizte-e a Key vaultok hozzáférési engedélyét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél által felügyelt TDE tartozó általános műveletekhez:
 
