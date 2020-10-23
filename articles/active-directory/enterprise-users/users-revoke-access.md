@@ -14,10 +14,10 @@ ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16577c3509c9d3d9b02ead5e69832bacc7d083bb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 10/23/2020
 ms.locfileid: "92375323"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Felhasználói hozzáférés visszavonása Azure Active Directory
@@ -117,7 +117,7 @@ Miután a rendszergazdák elvégezték a fenti lépéseket, a felhasználó nem 
 
 - A **munkamenet-jogkivonatokat használó alkalmazások**esetében a meglévő munkamenetek a jogkivonat lejárta után azonnal véget tartanak. Ha a felhasználó letiltott állapota szinkronizálva van az alkalmazással, akkor az alkalmazás automatikusan visszavonhatja a felhasználó meglévő munkameneteit, ha erre van konfigurálva.  A szükséges idő az alkalmazás és az Azure AD közötti szinkronizálás gyakoriságának függvénye.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Biztonságos hozzáférési eljárások az Azure AD-rendszergazdák számára](../roles/security-planning.md)
 - [Felhasználói profil adatainak hozzáadása vagy frissítése](../fundamentals/active-directory-users-profile-azure-portal.md)

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 972e4bcfc0eb20903dafc598bad812d0afe98afb
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617230"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428316"
 ---
 # <a name="what-is-azure-sql-database"></a>Mi az Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Az Azure SQL Database használatával magas rendelkezésre állású és nagy te
 
 A Azure SQL Database az [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)legújabb stabil verziójára épül. Használhatja a speciális lekérdezés-feldolgozási funkciókat, például [a nagy teljesítményű memóriában lévő technológiákat és az](../in-memory-oltp-overview.md) [intelligens lekérdezések feldolgozását](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Az SQL Server legújabb funkciói először az SQL Database-ben jelennek meg, és csak ezután válnak elérhetővé magában az SQL Serverben. Az SQL Server legújabb funkciói a karbantartás és frissítés terhei nélkül állnak az Ön rendelkezésére úgy, hogy már több millió adatbázison tesztelték őket. 
 
-A SQL Database lehetővé teszi a teljesítmény egyszerű meghatározását és méretezését két különböző beszerzési modellen belül: egy [virtuális mag-alapú vásárlási modellt](service-tiers-vcore.md) és egy [DTU-alapú vásárlási modellt](service-tiers-dtu.md). Az SQL Database egy teljeskörűen felügyelt szolgáltatás, amely beépített magas rendelkezésre állással, biztonsági mentésekkel és egyéb gyakori karbantartási műveletekkel rendelkezik. A Microsoft az SQL és az operációs rendszer kódjának összes javítását és frissítését kezeli. Nem kell kezelnie a mögöttes infrastruktúrát.
+A SQL Database lehetővé teszi a teljesítmény egyszerű meghatározását és méretezését két különböző beszerzési modellen belül: egy [virtuális mag-alapú vásárlási modellt](service-tiers-vcore.md) és egy [DTU-alapú vásárlási modellt](service-tiers-dtu.md). Az SQL Database egy teljeskörűen felügyelt szolgáltatás, amely beépített magas rendelkezésre állással, biztonsági mentésekkel és egyéb gyakori karbantartási műveletekkel rendelkezik. A Microsoft az SQL és az operációs rendszer kódjának összes javítását és frissítését kezeli. A mögöttes infrastruktúrát Önnek nem kell kezelnie.
 
 Ha még nem ismeri a Azure SQL Database, tekintse meg a részletes [Azure SQL-videó sorozatának](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) *Azure SQL Database áttekintő* videóját:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
@@ -108,7 +108,7 @@ Azure SQL Database lehetővé teszi a vállalat számára, hogy a megszakításo
 
 A vész-helyreállítás azt feltételezi, hogy egy katasztrofális esemény földrajzilag honosítva van ahhoz, hogy egy másik géppel vagy géppel rendelkezzen az adatai egy példányával. A SQL Server az aszinkron módban futó always on rendelkezésre állási csoportokat használhatja a funkció beszerzéséhez. A felhasználók gyakran nem szeretnének várni, amíg a replikáció el nem kerül a tranzakció véglegesítése előtt, így lehetséges, hogy adatvesztés történik, ha nem tervezett feladatátvételt végez.
 
-A prémium szintű és a üzletileg kritikus szolgáltatási szinten lévő adatbázisok már a rendelkezésre állási csoport szinkronizálásához [hasonlóak](high-availability-sla.md#premium-and-business-critical-service-tier-availability) . Az alacsonyabb szolgáltatási szinten lévő adatbázisok egy [másik, de egyenértékű mechanizmus](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability)használatával biztosítják a redundanciát a tárterületen. A beépített logika egyetlen gép meghibásodása elleni védelmet nyújt. Az aktív geo-replikációs szolgáltatás lehetővé teszi, hogy védelmet nyújtson a katasztrófák ellen, amikor az egész régió megsemmisül.
+A prémium szintű és a üzletileg kritikus szolgáltatási szinten lévő adatbázisok már a rendelkezésre állási csoport szinkronizálásához [hasonlóak](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) . Az alacsonyabb szolgáltatási szinten lévő adatbázisok egy [másik, de egyenértékű mechanizmus](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability)használatával biztosítják a redundanciát a tárterületen. A beépített logika egyetlen gép meghibásodása elleni védelmet nyújt. Az aktív geo-replikációs szolgáltatás lehetővé teszi, hogy védelmet nyújtson a katasztrófák ellen, amikor az egész régió megsemmisül.
 
 A Azure Availability Zones egy adott régión belül egy adatközpont-kialakítás KIMARADÁSÁVAL szembeni védelmet próbál meg védeni. Segít megvédeni az energia vagy a hálózat elvesztését egy épületben. SQL Database a különböző replikákat a különböző rendelkezésre állási zónákba helyezi (a különböző épületek és a hatékony).
 
@@ -198,7 +198,7 @@ Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létreho
 |:---|:---|
 |[Az Azure Portal](https://portal.azure.com/)|Webalapú alkalmazás az összes Azure-szolgáltatás kezeléséhez.|
 |[Azure Data Studio](/sql/azure-data-studio/)|Platformfüggetlen adatbázis-eszköz, amely Windows, macOS és Linux rendszeren fut.|
-|[Az SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.|
+|[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.|
 |[SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Ingyenes, letölthető ügyfélalkalmazás SQL Server a kapcsolódó adatbázisok, adatbázisok Azure SQL Database, integrációs szolgáltatások csomagjai, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és az Azure Azure szinapszis Analytics (korábban SQL Data Warehouse) lekérdezéséhez.|
 
@@ -222,7 +222,7 @@ Nem. A javítások hatása általában nem észlelhető, ha az alkalmazásban [�
 - [Visszajelzés](https://aka.ms/sqlfeedback): hibák jelentése és funkciók kérése.
 - [Reddit](https://www.reddit.com/r/SQLServer/): beszéljen SQL Server.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/sql-database/) , amely az önálló adatbázisokra és a rugalmas készletekre vonatkozó költség-összehasonlításokat és számológépeket tartalmazza.
 - Az első lépésekhez tekintse meg ezeket a rövid útmutatókat:

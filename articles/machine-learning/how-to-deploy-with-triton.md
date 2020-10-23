@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 9a6e2de07921d05e123154f604c3d1b369b3b89d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3a3600c4065d331ca1cfc129cd55dd56add21424
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998754"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92428353"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton inferenc Serverrel (előzetes verzió) 
 
@@ -30,7 +30,7 @@ A Triton egy *következtetésre optimalizált*keretrendszer. A GPU-k jobb kihasz
 > A Triton használata a Azure Machine Learning szolgáltatásból való üzembe helyezéshez jelenleg __előzetes__verzióban érhető el. Előfordulhat, hogy az előzetes verzió funkcióit nem fedi le az ügyfélszolgálat. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 > [!TIP]
-> A dokumentumban szereplő kódrészletek szemléltető célokat szolgálnak, és nem mutatnak teljes megoldást. A következő példában a [Triton végpontok közötti mintáit Azure Machine Learningban](https://aka.ms/aml-triton-sample)tekintheti meg.
+> A dokumentumban szereplő kódrészletek szemléltető célokat szolgálnak, és nem mutatnak teljes megoldást. A következő példában a [Triton végpontok közötti mintáit Azure Machine Learningban](https://github.com/Azure/azureml-examples/tree/main/tutorials)tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -287,7 +287,7 @@ Az üzembe helyezés befejezése után megjelenik a pontozási URI. Ebben a hely
 
 További információ arról, hogyan hozhat létre olyan ügyfelet, amely a pontozási URI-ra vonatkozó következtetéseket küld: [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy továbbra is használja a Azure Machine Learning munkaterületet, de szeretné megszabadulni a telepített szolgáltatástól, használja az alábbi lehetőségek egyikét:
 
@@ -305,7 +305,7 @@ az ml service delete -n triton-densenet-onnx
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Lásd: a Triton végpontok közötti mintái Azure Machine Learning](https://aka.ms/aml-triton-sample)
 * Ismerje meg a [Triton-ügyfelek példáit](https://github.com/triton-inference-server/server/tree/master/src/clients/python/examples)
