@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9d5988f25b833480c4809ba116c48022566b7a0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758139"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458183"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés integrálása a Maverics Identity Orchestrator SAML-összekötővel
 
@@ -158,14 +158,14 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 
 **Az Azure Portal használata**
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. [Hozzon létre egy új kulcstartót](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault).
-1. [Adja hozzá a titkos kulcsokat a kulcstartóhoz](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
-1. [Alkalmazás regisztrálása az Azure ad](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)-ben.
-1. [Engedélyezze az alkalmazás számára a titkos kód használatát](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
+1. [Hozzon létre egy új kulcstartót](../../key-vault/secrets/quick-create-portal.md#create-a-vault).
+1. [Adja hozzá a titkos kulcsokat a kulcstartóhoz](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
+1. [Alkalmazás regisztrálása az Azure ad](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)-ben.
+1. [Engedélyezze az alkalmazás számára a titkos kód használatát](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 
 **Az Azure CLI használata**
 
-1. Nyissa meg az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t, majd írja be a következő parancsot:
+1. Nyissa meg az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t, majd írja be a következő parancsot:
 
     ```shell
     az login
@@ -217,7 +217,7 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 
 1. Adja meg a **bejelentkezési URL-címet** a következő formátumban: `https://<AZURE-COMPANY.COM>/<MY_APP>/<LOGIN PAGE>` . 
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. Az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** gombot az **alkalmazás-összevonás metaadat-URL-címének**másolásához, majd mentse azt a számítógépre.
 

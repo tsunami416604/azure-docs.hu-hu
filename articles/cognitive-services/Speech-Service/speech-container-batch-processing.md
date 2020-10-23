@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319078"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425788"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch Processing Kit a Speech containers szolgáltatáshoz
 
@@ -75,9 +75,8 @@ A Batch-ügyfél képes dinamikusan megállapítani, hogy egy végpont elérhete
 > [!NOTE] 
 > * Ez a példa ugyanazt a könyvtárat ( `/my_nfs` ) használja a konfigurációs fájlhoz, valamint a bemenetek, a kimenetek és a naplók könyvtáraihoz. Ezekhez a mappákhoz üzemeltetett vagy NFS-hez csatlakoztatott címtárakat is használhat.
 > * Ha a-ügyfelet futtatja, a a `–h` elérhető parancssori paramétereket és azok alapértelmezett értékeit fogja listázni. 
+> * A batch-feldolgozó tároló csak Linux rendszeren támogatott.
 
-
-#### <a name="linux"></a>[Linux](#tab/linux)
 A `run` tároló elindításához használja a Docker parancsot. Ez egy interaktív felületet indít el a tárolón belül.
 
 ```Docker
@@ -95,17 +94,6 @@ A Batch-ügyfél és-tároló futtatása egyetlen paranccsal:
 ```Docker
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-A Batch-ügyfél és-tároló futtatása egyetlen paranccsal:
-
-```Docker
-docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
-
-```
-
----
 
 
 Az ügyfél elindul. Ha egy hangfájl már egy korábbi futtatás során lett lemásolva, az ügyfél automatikusan kihagyja a fájlt. A rendszer automatikusan újrapróbálkozik a fájlok küldésével, ha átmeneti hibák történnek, és megkülönböztetheti egymástól, hogy az ügyfél milyen hibákat próbálkozzon újra. Átírási hiba esetén az ügyfél továbbra is átírást folytat, és a folyamat elvesztése nélkül újra próbálkozik.  
@@ -172,6 +160,6 @@ Az ügyfél létrehoz egy *Run. log* fájlt a `-log_folder` Docker parancs argum
 
 A által megadott kimeneti könyvtár `-output_folder` tartalmaz egy *run_summary.jst a*   fájlon, amely minden esetben 30 másodpercenként újraírható, vagy ha az új átírások befejeződtek. Ezt a fájlt használhatja a folyamat előrehaladásának ellenőrzéséhez. Emellett az összes fájl végleges futtatási statisztikáit és végső állapotát is tartalmazza a köteg befejezésekor. A köteg akkor fejeződik be, amikor a folyamat tiszta kijárattal rendelkezik. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tárolók telepítése és futtatása](speech-container-howto.md)

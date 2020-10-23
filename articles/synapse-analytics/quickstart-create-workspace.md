@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9780a2adb60c690abda6880157252aaa0c562f18
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d06d1b0553161523708f4bb142f1c715a77eb2dd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171777"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461107"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
 Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munkaterületet a Azure Portal használatával.
@@ -23,13 +23,8 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munk
 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com), és a legfelső szintű keresés a **szinapszisban**.
 1. A keresési eredmények között, a **szolgáltatások**területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
-1. Válassza a **Hozzáadás** lehetőséget a munkaterület létrehozásához a következő beállítások használatával:
-
-    |Tab|Beállítás | Ajánlott érték | Leírás |
-    |---|---|---|---|
-    |Alapvető beállítások|**Munkaterület neve**|Bármilyen nevet megadhat.| Ebben a dokumentumban a **sajátmunkaterület**-t fogjuk használni.|
-    |Alapvető beállítások|**Régió**|A Storage-fiók régiójának egyeztetése.|
-
+1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
+1. Az **alapvető beállítások** lapon adjon meg egy egyedi nevet a munkaterületnek. Ebben a dokumentumban a **mysworkspace** -t fogjuk használni
 1. Munkaterület létrehozásához ADLSGEN2-fiókra van szükség. A legegyszerűbb választás egy új létrehozása. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
 1. 1. lehetőség új ADLSGEN2-fiók létrehozása 
     1. A **2. generációs Data Lake Storage kiválasztása**területen kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
@@ -68,7 +63,7 @@ Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt ide
 
 1. Válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [SQL-készlet létrehozása](quickstart-create-sql-pool-studio.md) 
 * [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool-portal.md)

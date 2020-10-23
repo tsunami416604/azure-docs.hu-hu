@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 33433587f0617382cc5f05550577594d7e3f9f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb04b17db94a2abf0ab11d9b9baff65e764e472a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322019"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457044"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Oktatóanyag: a Blink konfigurálása automatikus felhasználó-kiépítés esetén
 
@@ -81,7 +81,7 @@ Mielőtt a Blink-t konfigurálja az Azure AD-vel való automatikus felhasználó
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján hozza létre, frissítse és tiltsa le a felhasználók villogását.
 
 > [!TIP]
-> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a Blink-hez, a [Blink egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial)szereplő utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
+> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a Blink-hez, a [Blink egyszeri bejelentkezés oktatóanyagában](./blink-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
 
 ### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>A felhasználók automatikus üzembe helyezésének beállítása a Blink-hez az Azure AD-ben:
 
@@ -145,4 +145,3 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
-

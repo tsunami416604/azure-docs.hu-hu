@@ -8,22 +8,25 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2069d56b6bc0507478714eda575ab38fec41b8a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: edcdce25cf49a96fa1581c87781bf21f8ac72bc5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92207618"
+ms.locfileid: "92425767"
 ---
-1. A [Azure Portal](https://portal.azure.com) menüben válassza az **erőforrás létrehozása**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)a **Search Resources, Services és docs (G +/)** Type * Virtual Network Gateway * *. Keresse meg a **virtuális hálózati átjárót** a keresési eredmények között, és jelölje ki.
 
-   ![Erőforrás létrehozása az Azure Portalon](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
-1. A **Keresés a piactéren** mezőbe írja be a "Virtual Network Gateway" kifejezést. Keresse meg a **virtuális hálózati átjárót** a keresési visszáruban, és válassza ki a bejegyzést. A **virtuális hálózati átjáró** lapon válassza a **Létrehozás**lehetőséget. Ez megnyitja a **Virtuális hálózati átjáró létrehozása** lapot.
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/search.png" alt-text="Keresőmező" lightbox="./media/vpn-gateway-add-gw-rm-portal-include/search-expand.png":::
+
+1. A **virtuális hálózati átjáró** lapon válassza a **+ Hozzáadás**lehetőséget. Ez megnyitja a **Virtuális hálózati átjáró létrehozása** lapot.
+
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/add.png" alt-text="Keresőmező":::
 1. Az **alapvető beállítások** lapon adja meg a virtuális hálózati átjáró értékeit.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="Átjáró mezői":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="Keresőmező":::
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="Átjáró mezői":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="Keresőmező":::
 
    **Projekt részletei**
 
@@ -48,10 +51,8 @@ ms.locfileid: "92207618"
      * **Nyilvános IP-cím**: hagyja a **Create New (új** ) elemet.
      * **Nyilvános IP-cím neve**: a szövegmezőbe írja be a nyilvános IP-cím példányának nevét.
      * **Hozzárendelés**: a VPN-átjáró csak dinamikus használatát támogatja.
-
-   **Aktív-aktív mód**: csak akkor válassza az **aktív-aktív mód engedélyezése** lehetőséget, ha aktív-aktív átjáró-konfigurációt hoz létre. Ellenkező esetben hagyja **Letiltva**ezt a beállítást.
-
-   Hagyja **Letiltva**a **BGP ASN konfigurálását** , kivéve, ha a konfiguráció kifejezetten megköveteli ezt a beállítást. Ha szükség van a beállításra, az ASN alapértelmezett értéke 65515 lesz, de ez módosítható.
+     * **Aktív-aktív üzemmód engedélyezése**: csak akkor válassza az aktív **-aktív mód engedélyezése** lehetőséget, ha aktív-aktív átjáró-konfigurációt hoz létre. Ellenkező esetben hagyja **Letiltva**ezt a beállítást.
+     * Hagyja **Letiltva**a **BGP konfigurálását** , kivéve, ha a konfiguráció kifejezetten ehhez a beállításhoz szükséges. Ha szükség van a beállításra, az ASN alapértelmezett értéke 65515 lesz, de ez módosítható.
 1. Válassza az **ellenőrzés + létrehozás** lehetőséget az érvényesítés futtatásához.
 1. Az érvényesítést követően a **Létrehozás** gombra kattintva telepítheti a VPN-átjárót. Az átjárók teljes létrehozása és üzembe helyezése akár 45 percet is igénybe vehet. A telepítési állapotot az átjáró áttekintés lapján tekintheti meg.
 

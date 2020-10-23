@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c0d3ece75d15ae07091f613348389f845ec74ef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dae3b1adc1f7fecf6a34fc51d2a35bf4c98ea65
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262515"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425922"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Az Azure Media Services API hozzáférése Azure AD-hitelesítéssel 
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262515"
 
 A Azure Media Services API egy REST API. A használatával REST API vagy az elérhető ügyféloldali SDK-k használatával végezhet műveleteket a média erőforrásain. A Azure Media Services Media Services ügyféloldali SDK-t kínál Microsoft .NEThoz. A Media Services-erőforrások és a Media Services API eléréséhez először hitelesítenie kell magát. 
 
-Media Services támogatja a [Azure Active Directory (Azure ad)-alapú hitelesítést](../../active-directory/fundamentals/active-directory-whatis.md). Az Azure Media REST szolgáltatáshoz az szükséges, hogy a REST API kérelmeket használó felhasználó vagy alkalmazás vagy a **közreműködő** vagy a **tulajdonos** szerepkörrel rendelkezzen az erőforrásokhoz való hozzáféréshez. További információ: [az Role-Based Access Control első lépései a Azure Portal](../../role-based-access-control/overview.md).  
+Media Services támogatja a [Azure Active Directory (Azure ad)-alapú hitelesítést](../../active-directory/fundamentals/active-directory-whatis.md). Az Azure Media REST szolgáltatáshoz az szükséges, hogy a REST API kérelmeket használó felhasználó vagy alkalmazás vagy a **közreműködő** vagy a **tulajdonos** szerepkörrel rendelkezzen az erőforrásokhoz való hozzáféréshez. További információ: [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).  
 
 Ez a dokumentum áttekintést nyújt arról, hogyan érheti el a Media Services API-t REST vagy .NET API-k használatával.
 
@@ -153,9 +153,9 @@ A következő cikkek az Azure AD-hitelesítési fogalmak áttekintését ismerte
 
 - [Az Azure AD által kezelt hitelesítési forgatókönyvek](../../active-directory/develop/authentication-vs-authorization.md)
 - [Alkalmazás hozzáadása, frissítése vagy eltávolítása az Azure AD-ben](../../active-directory/develop/quickstart-register-app.md)
-- [Role-Based Access Control konfigurálása és kezelése a PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Portal használatával [férhet hozzá az Azure ad-hitelesítéshez Azure Media Services API](media-services-portal-get-started-with-aad.md)felhasználásához.
 * Az Azure AD-hitelesítés használatával [férhet hozzá Azure Media Services API-hoz a .net](media-services-dotnet-get-started-with-aad.md)-tel.

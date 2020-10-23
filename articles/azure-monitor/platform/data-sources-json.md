@@ -1,17 +1,17 @@
 ---
-title: Egyéni JSON-adatok gyűjtése a Azure Monitorban | Microsoft Docs
+title: Egyéni JSON-adatforrások gyűjtése a Linux rendszerhez készült Log Analytics-ügynökkel Azure Monitor
 description: Az egyéni JSON-adatforrások begyűjthetők Azure Monitorba a Linux-alapú Log Analytics-ügynök használatával.  Ezek az egyéni adatforrások olyan egyszerű parancsfájlok lehetnek, mint például a curl, vagy az egyik a több mint 300 + beépülő modul. Ez a cikk az adatgyűjtés szükséges konfigurációját ismerteti.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 407257dbe9fbfa560153d5044263fc4c947cb05c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce83efea9337992209f9ade1f10ebad08edd57e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86111932"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461175"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Egyéni JSON-adatforrások gyűjtése a Linux rendszerhez készült Log Analytics-ügynökkel Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]

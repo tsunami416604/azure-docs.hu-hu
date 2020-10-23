@@ -3,12 +3,12 @@ title: Hozzon létre egyéni Azure Resource Manager szerepkört, és rendelje ho
 description: Ez a cikk bemutatja, hogyan hozhat létre egyéni Azure Resource Manager szerepkört, és hogyan rendelhető hozzá az élő video Analytics szolgáltatáshoz az Azure CLI használatával IoT Edge.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526578"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425721"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Egyéni Azure Resource Manager szerepkör létrehozása és hozzárendelés az egyszerű szolgáltatáshoz
 
@@ -230,7 +230,7 @@ Keresse meg a "roleDefinitionName" kifejezést, és figyelje meg, hogy az érté
 
 Ezzel megerősíti, hogy az egyéni felhasználói szerepkört az alkalmazáshoz használt egyszerű szolgáltatáshoz csatoltuk.
 
-### <a name="test-the-service-principal-rbac"></a>A szolgáltatás egyszerű RBAC tesztelése  
+### <a name="test-the-service-principal-access-control"></a>Egyszerű szolgáltatásnév hozzáférés-vezérlésének tesztelése
 
 1. Jelentkezzen be az egyszerű szolgáltatásnév használatával. Ehhez 3 információra van szükségünk ahhoz, hogy a Azure Active Directory megadjon nekünk a megfelelő hozzáférési jogkivonatot, amelyet az [egyszerű szolgáltatás létrehozása](#create-service-principal) lépés kimenetéről kaphatunk:
     1. AadClientID 
@@ -253,7 +253,7 @@ Ezzel megerősíti, hogy az egyéni felhasználói szerepkört az alkalmazáshoz
     The client '<AadClientId>' with object id '<AadClientId>' does not have authorization to perform action 'Microsoft.Resources/subscriptions/resourcegroups/write' over scope '/subscriptions/<yourSubscriptionId>/resourcegroups/testresourcegroup' or the scope is invalid. If access was recently granted, please refresh your credentials.
     ```
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 Jegyezze fel a cikk következő értékeit. Ezek az értékek szükségesek ahhoz, hogy konfigurálni tudja az élő videó Analytics IoT Edge moduljának Twin tulajdonságait, lásd: [modul Twin JSON-séma](module-twin-configuration-schema.md).
 

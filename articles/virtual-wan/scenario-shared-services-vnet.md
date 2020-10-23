@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8cc59b805cd757edce79a14d124ea244b4652a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c71664769f1518ba80d36867c71ef35b2ca026
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267482"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461464"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Forgatókönyv: útvonal a megosztott szolgáltatások virtuális hálózatok
 
@@ -24,15 +24,17 @@ További információ a virtuális központ útválasztásáról: [Tudnivalók a
 
 ## <a name="design"></a><a name="design"></a>Tervezés
 
-A forgatókönyv követelményeinek összefoglalásához használhatunk egy kapcsolati mátrixot. A mátrixban minden cella azt írja le, hogy egy virtuális WAN-kapcsolat (a folyamat "from" oldaláról, a tábla sorainak fejléce) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a táblázat oszlopainak fejléceit) egy adott forgalmi folyamat esetében. Az "X" azt jelenti, hogy a kapcsolatot a virtuális WAN biztosítja:
+A forgatókönyv követelményeinek összefoglalásához használhatunk egy kapcsolati mátrixot:
 
 **Kapcsolati mátrix**
 
 | Forrás             | Címzett:   |*Elkülönített virtuális hálózatok*|*Megosztott VNet*|*Ágak*|
 |---|---|---|---|---|
-|**Elkülönített virtuális hálózatok**|&#8594;|                |        X        |       X      |
-|**Megosztott virtuális hálózatok**  |&#8594;|       X        |        X        |       X      |
-|**Ágak**      |&#8594;|       X        |        X        |       X      |
+|**Elkülönített virtuális hálózatok**|&#8594;|        | Direct | Direct |
+|**Megosztott virtuális hálózatok**  |&#8594;| Direct | Direct | Direct |
+|**Ágak**      |&#8594;| Direct | Direct | Direct |
+
+Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) kommunikál-e egy célhoz (a folyamat "to" oldalára, a dőlt betűs oszlopokra). Ebben a forgatókönyvben nincsenek tűzfalak vagy hálózati virtuális berendezések, így a kommunikáció közvetlenül a virtuális WAN-kapcsolaton keresztül történik (ezért a táblázatban a "Direct" szó látható).
 
 Az [elkülönített VNet-forgatókönyvhöz](scenario-isolate-vnets.md)hasonlóan ez a kapcsolati mátrix két különböző sor mintázatot biztosít, amelyek két útválasztási táblára fordíthatók (a megosztott szolgáltatások virtuális hálózatok és az ágak ugyanazzal a kapcsolati követelményekkel rendelkeznek). A virtuális WAN már rendelkezik alapértelmezett útválasztási táblázattal, ezért egy másik egyéni útválasztási táblázatra van szükségünk, amelyet a példában **RT_SHARED** fogunk hívni.
 
@@ -73,7 +75,7 @@ Ez az alábbi ábrán látható útválasztási konfigurációt eredményezi:
 
    :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="Megosztott szolgáltatások VNet" lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

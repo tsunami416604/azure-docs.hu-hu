@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6e90e9c2ebbc6ba05e5778f618a5c3de02adf3ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b622372c881997fd77a83feb8f6c393504900b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542359"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428290"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a PowerShell használatával
 
@@ -26,14 +26,14 @@ Az olvasási replikákat a PowerShell használatával hozhatja létre és kezelh
 
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
-- Az az [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) helyileg vagy [Azure Cloud Shell](https://shell.azure.com/) telepítve a böngészőben
+- Az az [PowerShell-modul](/powershell/azure/install-az-ps) helyileg vagy [Azure Cloud Shell](https://shell.azure.com/) telepítve a böngészőben
 - Egy [Azure Database for MariaDB-kiszolgáló](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Az az. MariaDb PowerShell-modul előzetes verzióban érhető el, és a következő paranccsal külön kell telepítenie az az PowerShell-modulból: `Install-Module -Name Az.MariaDb -AllowPrerelease` .
 > Amint az az. MariaDb PowerShell-modul általánosan elérhetővé válik, az a PowerShell modul kiadásainak része lesz, és natív módon elérhető a Azure Cloud Shellon belülről.
 
-Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjához a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmag használatával.
+Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -54,10 +54,10 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 A `New-AzMariaDbServerReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létrejön.  |
-| Name (Név) | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
+| ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létrejön.  |
+| Name | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
 
 Egy több régióból származó olvasási replika létrehozásához használja a **Location** paramétert. Az alábbi példa egy replikát hoz létre az **USA nyugati** régiójában.
 
@@ -83,9 +83,9 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 A `Get-AzMariaDReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
-| ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
+| ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | ServerName | mydemoserver | A forráskiszolgáló neve vagy azonosítója. |
 
 ### <a name="delete-a-replica-server"></a>Replika-kiszolgáló törlése
@@ -107,7 +107,7 @@ A forráskiszolgáló törléséhez futtathatja a `Remove-AzMariaDbServer` paran
 Remove-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MariaDB kiszolgáló újraindítása a PowerShell-lel](howto-restart-server-powershell.md)

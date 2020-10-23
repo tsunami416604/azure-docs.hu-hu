@@ -1,25 +1,28 @@
 ---
-title: Windows-eseménynaplók összegyűjtése és elemzése a Azure Monitorban | Microsoft Docs
+title: Windows Eseménynapló-adatforrások összegyűjtése Log Analytics ügynökkel Azure Monitor
 description: Ismerteti, hogyan konfigurálható a Windows-eseménynaplók gyűjteménye Azure Monitor és a létrehozott rekordok részleteivel.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87075248"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440603"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások a Azure Monitor-ban
-A Windows-eseménynaplók a leggyakoribb [adatforrások](agent-data-sources.md) , amelyek a Windows-ügynökökkel való adatgyűjtéshez használják, mivel számos alkalmazás ír a Windows-eseménynaplóba.  Az eseményeket összegyűjtheti a szabványos naplókból, például a rendszerből és az alkalmazásból is, és megadhatja a figyelni kívánt alkalmazások által létrehozott egyéni naplókat.
+# <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Windows-Eseménynapló adatforrásainak összegyűjtése Log Analytics ügynökkel
+A Windows-eseménynaplók az egyik leggyakoribb [adatforrások](agent-data-sources.md) a Windows rendszerű virtuális gépeken található log Analytics ügynökök számára, mivel számos alkalmazás a Windows-eseménynaplóba ír.  Az eseményeket összegyűjtheti a szabványos naplókból, például a rendszerből és az alkalmazásból is, és megadhatja a figyelni kívánt alkalmazások által létrehozott egyéni naplókat.
+
+> [!IMPORTANT]
+> Ez a cikk a Windows-események összegyűjtését ismerteti a [log Analytics ügynökkel](log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](agents-overview.md) .
 
 ![Windows-események](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Windows-eseménynaplók konfigurálása
-Konfigurálja a Windows-eseménynaplókat a [Speciális beállítások adatok menüjéből](agent-data-sources.md#configuring-data-sources).
+Konfigurálja a Windows-eseménynaplókat az Log Analytics munkaterület [speciális beállításainak adatok menüjéből](agent-data-sources.md#configuring-data-sources) .
 
 Azure Monitor csak a beállításokban megadott Windows-eseménynaplókban lévő eseményeket gyűjti.  Eseménynapló hozzáadásához írja be a napló nevét, majd kattintson a elemre **+** .  Minden napló esetében csak a kijelölt megszakításokkal rendelkező események lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt naplóhoz tartozó megszakításokat.  Az események szűréséhez nem adhat meg további feltételeket.
 

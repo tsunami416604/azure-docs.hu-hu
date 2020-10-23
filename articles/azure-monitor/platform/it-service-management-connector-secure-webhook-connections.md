@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 447b781ec83a01a58e6af9e9e43f75b3fc56b10f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370780"
+ms.locfileid: "92427332"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Az Azure és a ITSM-eszközök összekapcsolhatók a biztonságos exportálás használatával
 
@@ -57,7 +57,10 @@ Kezdje el használni a ITSM-csatoló eszközt a következő lépésekkel:
 
 1. Az alkalmazás regisztrálása az Azure AD-ben.
 2. Hozzon létre egy biztonságos webhook-műveleti csoportot.
-3. Konfigurálja a partneri környezetet. Jelenleg egy BMC Helix-beli gyártót támogatunk.
+3. Konfigurálja a partneri környezetet. 
+
+A biztonságos exportálás a következő ITSM eszközökkel támogatja a kapcsolatokat:
+* [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Regisztrálás Azure Active Directory
 
@@ -86,18 +89,18 @@ Webhook egy művelethez való hozzáadásához kövesse az alábbi utasításoka
 5. Válassza a **biztonságos webhook**lehetőséget.
 6. Válassza ki az alábbi adatokat:
    1. Válassza ki a regisztrált Azure Active Directory példány objektumazonosítóát.
-   2. Az URI esetében illessze be a szállítói környezetből másolt webhook URL-címét.
+   2. Az URI esetében illessze be a [ITSM eszköz-környezetből](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#configure-the-partner-environment)másolt webhook URL-címét.
    3. Állítsa be **az általános riasztási séma engedélyezése** **beállítást igen**értékre. 
 
    Az alábbi képen egy minta biztonságos webhook-művelet konfigurációja látható:
 
    ![A biztonságos webhook műveletet bemutató képernyőkép.](media/it-service-management-connector-secure-webhook-connections/secure-webhook.png)
 
-## <a name="configure-the-partner-environment"></a>A partneri környezet konfigurálása
+## <a name="configure-the-itsm-tool-environment"></a>A ITSM eszköz környezetének konfigurálása
 
 A konfiguráció 2 lépést tartalmaz:
 1. Szerezze be a biztonságos exportálás definíciójának URI azonosítóját.
-2. A definíciók a szállító folyamata szerint jelennek meg.
+2. Definíciók a ITSM eszköz folyamata alapján.
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>A BMC Helix összekapcsolása Azure Monitor
 
@@ -142,6 +145,6 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
 
 ![A BMC-konfigurációt megjelenítő képernyőkép.](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md)

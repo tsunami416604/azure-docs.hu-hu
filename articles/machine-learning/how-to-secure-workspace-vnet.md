@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: ef1e3c886cfd30db4c6a550d0ecabe7d41fab55c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3001b8829660f2891cb051269026bf7100a8f938
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424994"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460995"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Azure Machine Learning munkaterület biztonságossá tétele virtuális hálózatokkal
 
@@ -281,6 +281,13 @@ A követelmények teljesítése után a következő lépésekkel engedélyezheti
     ]
     }
     ```
+
+    Ez a sablon létrehoz egy _magánhálózati végpontot_ a munkaterületről az ACR-be való hálózati hozzáféréshez. Az alábbi képernyőképen egy példa látható a privát végpontra.
+
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="Azure Container Registry a munkaterülethez":::
+
+    > [!IMPORTANT]
+    > Ne törölje ezt a végpontot! Ha véletlenül törli, újra alkalmazhatja a sablont ebben a lépésben, hogy újat hozzon létre.
 
 ## <a name="next-steps"></a>További lépések
 

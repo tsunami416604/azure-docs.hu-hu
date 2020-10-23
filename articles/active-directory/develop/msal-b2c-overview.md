@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119790"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442252"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>A JavaScript használata a Microsoft Authentication Library használatával Azure AD B2C
 
@@ -56,16 +56,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>3. lépés: a hitelesítés konfigurálása
 
-1. Nyissa meg a `config.js` fájlt a mintában.
+1. Nyissa meg a `config.json` fájlt a mintában.
 
-2. Konfigurálja a mintát az alkalmazás regisztrálásakor korábban beszerzett hitelesítő adatokkal. Módosítsa az alábbi kódrészleteket úgy, hogy lecseréli az értékeket a clientID, a gazdagépre, a tenantId és a házirend nevére.
+2. Konfigurálja a mintát az alkalmazás regisztrálásakor korábban beszerzett hitelesítő adatokkal. Módosítsa a kód következő sorait úgy, hogy lecseréli az értékeket a bérlő nevére, az ügyfél-AZONOSÍTÓra és a házirend nevére.
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
 További információkért tekintse meg ezt a [Node.js B2C webes API-mintát](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
 
@@ -205,7 +211,7 @@ Ha a felhasználó **elfelejtette a jelszót**, az alkalmazás olyan hibát jele
 
     További információ a hibakódokról és a kezelési kivételekről: [MSAL hiba és kivételek kódjai](msal-handling-exceptions.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ ezekről a Azure AD B2C fogalmakról:
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5be746b73cef37826be36b13c6f491b8ef6ad809
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0fe56a8173a4cfe8836a078a62c7bc9015c83324
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359016"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461260"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -42,10 +42,10 @@ A vezérlési sík API-kat a [Azure Portal](https://portal.azure.com) és a [CLI
 ## <a name="overview-data-plane-apis"></a>Áttekintés: adatsík API-k
 
 Az adatsík API-k az Azure Digital Twins-példányban található elemek kezelésére szolgáló Azure digitális Twins API-k. Olyan műveleteket tartalmaznak, mint például útvonalak létrehozása, modellek feltöltése, kapcsolatok létrehozása és az ikrek kezelése. A következő kategóriákba sorolhatók:
-* **DigitalTwinsModels** – a DigitalTwinsModels kategória API-kat tartalmaz az Azure Digital Twins-példány [modelljeinek](concepts-models.md) kezeléséhez. A felügyeleti tevékenységek közé tartozik a DTDL-ben létrehozott modellek feltöltése, ellenőrzése, beolvasása és törlése.
+* **DigitalTwinModels** – a DigitalTwinModels kategória API-kat tartalmaz az Azure Digital Twins-példány [modelljeinek](concepts-models.md) kezeléséhez. A felügyeleti tevékenységek közé tartozik a DTDL-ben létrehozott modellek feltöltése, ellenőrzése, beolvasása és törlése.
 * **DigitalTwins** – a DigitalTwins kategória tartalmazza azokat az API-kat, amelyek segítségével a fejlesztők [digitális ikreket](concepts-twins-graph.md) és kapcsolataikat hozhatnak létre, módosíthatnak és törölhetnek egy Azure digitális Twins-példányban.
 * **Lekérdezés** – a lekérdezési kategória lehetővé teszi a fejlesztők számára [, hogy a kettős gráfban a kapcsolatok között megtalálják a digitális ikrek készleteit](how-to-query-graph.md) .
-* **EventRoutes** – a EventRoutes kategória olyan API-kat tartalmaz, amelyek az [adattovábbítást](concepts-route-events.md)a rendszeren és az alsóbb rétegbeli szolgáltatásokon keresztül irányítják.
+* **Esemény-útvonalak** – az Event Routes kategória API-kat tartalmaz az [adattovábbításhoz](concepts-route-events.md)a rendszeren és az alárendelt szolgáltatásokon keresztül.
 
 A nyilvános előzetes verzióhoz tartozó legfrissebb adatsík API-verzió a _**2020-10-31**_.
 
@@ -56,7 +56,7 @@ Az adatsík API-k használata:
 * Használhatja a **.net (C#) SDK-** t. A .NET SDK használata...
    - a csomagot a NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)fájlból tekintheti meg és adhatja hozzá. 
    - megtalálhatja az SDK-forrást, beleértve a példákat tartalmazó mappát is a GitHubban: az [Azure IoT Digital Twins ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - megtekintheti az [SDK-referenciák dokumentációját](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview).
+   - megtekintheti az [SDK-referenciák dokumentációját](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview).
    - a részletes információkat és használati példákat a jelen cikk [.net (C#) SDK (adatsíkja)](#net-c-sdk-data-plane) című szakaszában tekintheti meg.
 * Használhatja a **Java** SDK-t. A Java SDK használata...
    - a csomagot a Mavenből tekintheti meg és telepítheti: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
@@ -297,7 +297,7 @@ A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adj
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan használható az API-k egy Azure digitális Twins-példány és-hitelesítés beállításához:
 * [*Útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md)

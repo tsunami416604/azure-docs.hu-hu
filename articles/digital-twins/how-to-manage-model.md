@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 06c4ac3be0e9d1021e64cf1a34bda94ed02c9982
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dbe1c368a730fcd09cf5e5f6435ca247150b5c3c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102493"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426184"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
-A [**DigitalTwinsModels API**](how-to-use-apis-sdks.md)-k, a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával felügyelheti a [modelleket](concepts-models.md) , amelyeket az Azure digitális Twins-példánya tud. 
+A [**DigitalTwinsModels API**](how-to-use-apis-sdks.md)-k, a [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával felügyelheti a [modelleket](concepts-models.md) , amelyeket az Azure digitális Twins-példánya tud. 
 
 A kezelési műveletek közé tartozik a modellek feltöltése, ellenőrzése, beolvasása és törlése. 
 

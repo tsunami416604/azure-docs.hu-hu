@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08623e6d69ac4db1790c1e9b46089f0c72c0526d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf57e60fc05d579365d459e4a5d5288c2ca52bb0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87906062"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442150"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Mik a külső identitások a Azure Active Directoryban?
 
@@ -31,7 +31,7 @@ Az Azure AD külső identitások kevesebbet mutatnak a felhasználó és a szerv
 
 - **Más Azure ad-bérlőknek szánt alkalmazások fejlesztése (egybérlős vagy több-bérlős)**. Az Azure AD-alkalmazások fejlesztésekor megcélozhatja a felhasználókat egyetlen szervezetből (egyetlen bérlőből), vagy bármely olyan szervezet felhasználóitól, amely már rendelkezik Azure AD-Bérlővel (több-bérlős alkalmazásokkal). Ezeket a több-bérlős alkalmazásokat a saját Azure AD-ben saját maga regisztrálja, de bármely szervezet bármelyik felhasználója felhasználhatja az Ön részéről további munka nélkül.
 
-- **A felhasználók és az ügyfelek számára készült, fehér címkével ellátott alkalmazások fejlesztése (Azure ad B2C)**. Ha Ön üzleti vagy fejlesztői ügyfélre irányuló alkalmazást hoz létre, akkor Azure AD B2C segítségével méretezheti a felhasználókat, az ügyfeleket és a polgárokat. A fejlesztők az Azure ad-t teljes funkcionalitású identitásrendszer használhatják az alkalmazáshoz, miközben az ügyfelek a már létrehozott identitással jelentkeznek be (például a Facebook vagy a Gmail szolgáltatásban). A Azure AD B2C segítségével teljes mértékben testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat az alkalmazások használatakor. További információ: [Azure ad B2C dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/).
+- **A felhasználók és az ügyfelek számára készült, fehér címkével ellátott alkalmazások fejlesztése (Azure ad B2C)**. Ha Ön üzleti vagy fejlesztői ügyfélre irányuló alkalmazást hoz létre, akkor Azure AD B2C segítségével méretezheti a felhasználókat, az ügyfeleket és a polgárokat. A fejlesztők az Azure ad-t teljes funkcionalitású identitásrendszer használhatják az alkalmazáshoz, miközben az ügyfelek a már létrehozott identitással jelentkeznek be (például a Facebook vagy a Gmail szolgáltatásban). A Azure AD B2C segítségével teljes mértékben testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat az alkalmazások használatakor. További információ: [Azure ad B2C dokumentáció](../../active-directory-b2c/index.yml).
 
 ## <a name="compare-external-identities-solutions"></a>External Identities-megoldások összehasonlítása
 
@@ -45,13 +45,13 @@ Az alábbi táblázat részletesen összehasonlítja a különböző forgatókö
 | A külső felhasználók felügyelete a saját címtárban történik, amely az alkalmazás regisztrálásának helyétől elkülönített könyvtárból van elkülönítve.    | A külső felhasználók kezelése az alkalmazottakkal megegyező könyvtárban történik, de kifejezetten megjegyzésekkel ellátva. Az alkalmazottakkal megegyező módon kezelhetők, de hozzáadhatók ugyanahhoz a csoporthoz, és így tovább.    | A külső felhasználókat az alkalmazás könyvtára kezeli. Ezeket külön kezelik a szervezet alkalmazotti és partneri könyvtára (ha van ilyen).  |
 | Egyszeri bejelentkezés: az egyszeri bejelentkezés minden Azure AD-hez csatlakoztatott alkalmazáshoz támogatott.          | Egyszeri bejelentkezés: az egyszeri bejelentkezés minden Azure AD-hez csatlakoztatott alkalmazáshoz támogatott. Hozzáférést biztosíthat például Microsoft 365 vagy helyszíni alkalmazásokhoz, valamint más SaaS-alkalmazásokhoz, például Salesforce vagy munkanapokhoz.    | Egyszeri bejelentkezés: az Azure AD B2C bérlőn belül az ügyfél tulajdonában lévő alkalmazásokhoz való egyszeri bejelentkezés támogatott. Az egyszeri bejelentkezés Microsoft 365 vagy más Microsoft SaaS-alkalmazásokhoz nem támogatott.    |
 | Ügyfél-életciklus: a felhasználó otthoni szervezete felügyeli.      | Partner életciklus: A vendéglátó/meghívó szervezet felügyeli.    | Ügyféléletciklus: Önkiszolgáló vagy az alkalmazás felügyeli.      |
-| Biztonsági házirend és megfelelőség: a gazdagép/meghívó szervezet (például [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)) által felügyelt.           | Biztonsági házirend és megfelelőség: a gazdagép/meghívó szervezet (például [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)) által felügyelt. | Biztonsági házirend és megfelelőség: Az alkalmazás kezeli.        |
+| Biztonsági házirend és megfelelőség: a gazdagép/meghívó szervezet (például [feltételes hozzáférési szabályzatok](./conditional-access.md)) által felügyelt.           | Biztonsági házirend és megfelelőség: a gazdagép/meghívó szervezet (például [feltételes hozzáférési szabályzatok](./conditional-access.md)) által felügyelt. | Biztonsági házirend és megfelelőség: Az alkalmazás kezeli.        |
 | Branding: a gazdagép és a meghívó szervezet márkája használatban van.   | Branding: a gazdagép és a meghívó szervezet márkája használatban van.    | Védjegyek: Az alkalmazás kezeli. Általában termékek márkái láthatók, a szervezet inkább háttérbe szorul.   |
-| További információ: [Identitások kezelése több-bérlős alkalmazásokban](https://docs.microsoft.com/azure/architecture/multitenant-identity/), [útmutató](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant) | További információk: [Blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [Dokumentáció](what-is-b2b.md)                   | További információk: [Termék oldala](https://azure.microsoft.com/services/active-directory-b2c/), [Dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/)       |
+| További információ: [Identitások kezelése több-bérlős alkalmazásokban](/azure/architecture/multitenant-identity/), [útmutató](../develop/howto-convert-app-to-be-multi-tenant.md) | További információk: [Blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [Dokumentáció](what-is-b2b.md)                   | További információk: [Termék oldala](https://azure.microsoft.com/services/active-directory-b2c/), [Dokumentáció](../../active-directory-b2c/index.yml)       |
 
 Az Azure AD külső identitásokkal biztonságossá teheti és kezelheti a szervezet határain túli ügyfeleket és partnereket.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-- [Tudnivalók az Azure AD B2C-ről](https://docs.microsoft.com/azure/active-directory-b2c/overview)
+- [Tudnivalók az Azure AD B2C-ről](../../active-directory-b2c/overview.md)

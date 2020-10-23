@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 10728a5500d8ad36c006bac9176422c6afb9bf1a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 878fa9f576e50fb53e648d3bf39f98558d6e880a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945991"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441096"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transzparens adattitkosítás a SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics számára
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ A Azure SQL Database és az Azure szinapszis esetében a TDE-védő a [kiszolgá
 > A SQL Database összes újonnan létrehozott adatbázisa alapértelmezés szerint titkosítva van a szolgáltatás által felügyelt transzparens adattitkosítás használatával. A 2017-as és a Restore, Geo-replikáció és adatbázis-másolat használatával létrehozott meglévő SQL Database-adatbázisok nincsenek titkosítva alapértelmezés szerint. A 2019 februárjában létrehozott meglévő SQL felügyelt példány-adatbázisok alapértelmezés szerint nincsenek titkosítva. A visszaállítással létrehozott SQL felügyelt példány-adatbázisok a forrástól öröklik a titkosítási állapotot.
 
 > [!NOTE]
-> A TDE nem használható a **főadatbázis titkosítására a Azure SQL Database** és az Azure SQL felügyelt példányain. A **főadatbázis olyan** objektumokat tartalmaz, amelyek szükségesek a TDE műveletek végrehajtásához a felhasználói adatbázisokon.
+> A TDE nem használható a rendszeradatbázisok, például a **főadatbázis Azure SQL Database** és az Azure SQL felügyelt példányának titkosítására. A **főadatbázis olyan** objektumokat tartalmaz, amelyek szükségesek a TDE műveletek végrehajtásához a felhasználói adatbázisokon.
 
 ## <a name="service-managed-transparent-data-encryption"></a>Szolgáltatás által kezelt transzparens adattitkosítás
 

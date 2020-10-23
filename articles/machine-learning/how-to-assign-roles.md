@@ -1,7 +1,7 @@
 ---
 title: Szerepkörök kezelése a munkaterületen
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan férhet hozzá egy Azure Machine Learning munkaterülethez szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+description: Megtudhatja, hogyan férhet hozzá egy Azure Machine Learning munkaterülethez az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e15092ee767e6840f190027b0a35af3ce07e8ba9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966406"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425646"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 
@@ -26,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkat
 
 Az Azure Machine Learning-munkaterület egy Azure-erőforrás. A többi Azure-erőforráshoz hasonlóan az új Azure Machine Learning-munkaterületek is három alapértelmezett szerepkörrel rendelkeznek a létrehozásukkor. Felhasználókat adhat hozzá a munkaterülethez, és hozzárendelheti őket a beépített szerepkörök valamelyikéhez.
 
-| Szerepkör | Hozzáférési szint |
+| Role | Hozzáférési szint |
 | --- | --- |
 | **Olvasó** | Csak olvasási műveletek a munkaterületen. Az olvasók listázhatja és megtekintheti az eszközöket, beleértve az [adattár](how-to-access-data.md) hitelesítő adatait is egy munkaterületen. Az olvasók nem tudják létrehozni vagy frissíteni ezeket az eszközöket. |
 | **Közreműködő** | Munkaterületen lévő eszközök megtekintése, létrehozása, szerkesztése vagy törlése (ha van ilyen). A közreműködők például létrehozhatnak egy kísérletet, létrehozhatnak vagy csatolhatnak egy számítási fürtöt, futtatást végezhetnek és webszolgáltatásokat helyezhetnek üzembe. |
@@ -34,9 +34,9 @@ Az Azure Machine Learning-munkaterület egy Azure-erőforrás. A többi Azure-er
 | **Egyéni szerepkör** | Lehetővé teszi a munkaterületen belüli adott vezérlési vagy adatsík-műveletekhez való hozzáférés testreszabását. Például elküldheti egy futtatást, létrehozhat egy számítási modellt, üzembe helyezheti a modelleket, vagy regisztrálhat egy adatkészletet. |
 
 > [!IMPORTANT]
-> A szerepkör-hozzáférés az Azure több szintjére is kiterjed. Előfordulhat például, hogy valaki tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, és nem rendelkezik tulajdonosi hozzáféréssel a munkaterületet tartalmazó erőforráscsoporthoz. További információ: [how RBAC Works](/azure/role-based-access-control/overview#how-rbac-works).
+> A szerepkör-hozzáférés az Azure több szintjére is kiterjed. Előfordulhat például, hogy valaki tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, és nem rendelkezik tulajdonosi hozzáféréssel a munkaterületet tartalmazó erőforráscsoporthoz. További információt az [Azure RBAC működéséről](/azure/role-based-access-control/overview#how-azure-rbac-works)szóló témakörben talál.
 
-Az adott beépített szerepkörökkel kapcsolatos további információkért lásd: [beépített szerepkörök az Azure-](/azure/role-based-access-control/built-in-roles)hoz.
+Az adott beépített szerepkörökkel kapcsolatos további információkért lásd: [Az Azure beépített szerepkörei](/azure/role-based-access-control/built-in-roles).
 
 ## <a name="manage-workspace-access"></a>Munkaterület-hozzáférés kezelése
 
@@ -432,13 +432,13 @@ Ezek az [erőforrás-szolgáltatói műveletek](/azure/role-based-access-control
     - "Microsoft. Network/virtualNetworks/JOIN/Action" a VNet-erőforráson.
     - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
     
-    A hálózatkezeléssel való RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](/azure/role-based-access-control/built-in-roles#networking).
+    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](/azure/role-based-access-control/built-in-roles#networking).
 
 - Időnként akár 1 óráig is eltarthat, amíg az új szerepkör-hozzárendelések érvénybe lépnek a gyorsítótárban tárolt engedélyekkel szemben a veremben.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>K. Milyen engedélyek szükségesek egy felhasználó által hozzárendelt felügyelt identitás használatához a Amlcompute-fürtökkel?
 
-Ahhoz, hogy egy felhasználóhoz hozzárendelt identitást rendeljen a Amlcompute-fürtökhöz, az egyiknek írási engedéllyel kell rendelkeznie a számítási és [felügyelt identitás-kezelői szerepkör](/azure/role-based-access-control/built-in-roles#managed-identity-operator)létrehozásához. A felügyelt identitásokkal történő RBAC kapcsolatos további információkért olvassa el a [felhasználóhoz rendelt identitás kezelése](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) című témakört.
+Ahhoz, hogy egy felhasználóhoz hozzárendelt identitást rendeljen a Amlcompute-fürtökhöz, az egyiknek írási engedéllyel kell rendelkeznie a számítási és [felügyelt identitás-kezelői szerepkör](/azure/role-based-access-control/built-in-roles#managed-identity-operator)létrehozásához. A felügyelt identitásokkal rendelkező Azure RBAC kapcsolatos további információkért olvassa el a [felhasználó által hozzárendelt identitás kezelése](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) című témakört.
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>K. Támogatjuk a szerepköralapú hozzáférés-vezérlést a Studio portálon?
@@ -475,7 +475,7 @@ Az új szerepkör-definíció teljes hatókörére vonatkozó engedélyekkel kel
 Az előfizetési szintű engedélyekre van szükség a munkaterületen található kvóta-alapú műveletek elvégzéséhez. Ez azt jelenti, hogy az előfizetési szint kvótájának vagy a munkaterületnek a felügyelt számítási erőforrásokra vonatkozó kvótájának beállítása csak akkor fordulhat elő, ha az előfizetés hatókörében írási engedélyekkel rendelkezik. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Vállalati biztonság áttekintése](concept-enterprise-security.md)
 - [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)

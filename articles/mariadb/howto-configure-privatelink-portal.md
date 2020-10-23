@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da54917d21d468f96b8e72ac362e030570fabaee
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836479"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426023"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Azure Database for MariaDB privát hivatkozás létrehozása és kezelése a portál használatával
 
@@ -37,7 +37,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *MyVirtualNetwork*. |
+    | Név | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.1.0.0/16*értéket. |
     | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
@@ -62,7 +62,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
     | Virtuális gép neve | Adja meg a *myVm*. |
     | Régió | Válassza a **Nyugat-Európa** régiót. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Kép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
+    | Rendszerkép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
     | **RENDSZERGAZDAFIÓK** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
@@ -117,7 +117,7 @@ Ebben a szakaszban egy Azure Database for MariaDB-kiszolgálót fog létrehozni 
     | Számítás és tárolás| Válassza ki a kiszolgálón a munkaterhelés alapján szükséges díjszabási szintet. |
     |||
 
-7. Kattintson az **OK** gombra. 
+7. Válassza az **OK** lehetőséget. 
 8. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
 9. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a **Létrehozás**lehetőséget. 
 10. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a létrehozás lehetőséget. 
@@ -249,9 +249,9 @@ Ha elkészült a privát végponttal, a MariaDB-kiszolgálóval és a virtuális
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for MariaDBt és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a MariaDB-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for MariaDBt és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a MariaDB-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](../private-link/private-endpoint-overview.md).
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

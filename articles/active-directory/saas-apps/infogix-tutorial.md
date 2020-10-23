@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f4874a16e12c5c9e7e5a0fd9858d3e42f2bb1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b59a764510b93daf358e00a4d75bcefd31d2980f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821276"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460229"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Oktatóanyag: Azure Active Directory integráció a Infogix Data3Sixty szabályozásával
 
@@ -27,7 +27,7 @@ Az Infogix Data3Sixty az Azure AD-vel való integrálásával a következő elő
 * Engedélyezheti, hogy a felhasználók automatikusan bejelentkezzenek a Infogix Data3Sixty (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -121,7 +121,7 @@ Ha az Azure AD egyszeri bejelentkezést az Infogix Data3Sixty szabályozza, a k�
 
 7. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | -----------| -------------- |
     | FirstName  | User. givenName |
     | LastName   | felhasználó. vezetéknév |
@@ -186,7 +186,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -219,19 +219,18 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Infogix Data3Sixty-szabályozásban. A Infogix Data3Sixty-szabályozása támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Infogix Data3Sixty-szabályozásban, a rendszer egy újat hoz létre a hitelesítés után.
 
 > [!Note]
-> Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [Infogix Data3Sixty a támogatási csapathoz](mailto:data3sixtysupport@infogix.com).
+> Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [Infogix Data3Sixty a támogatási csapathoz](mailto:data3sixtysupport@infogix.com).
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a Infogix Data3Sixty szabályozása csempére kattint, automatikusan be kell jelentkeznie arra a Infogix-Data3Sixty, amelyhez be van állítva az egyszeri bejelentkezés. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Infogix Data3Sixty szabályozása csempére kattint, automatikusan be kell jelentkeznie arra a Infogix-Data3Sixty, amelyhez be van állítva az egyszeri bejelentkezés. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d73f225f0e6f230509c856af0d15bc02e80fcd98
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011463"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425875"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rövid útmutató: a .NET-hez készült Azure Storage SDK v11 használatával kezelheti a várólistákat
 
@@ -34,7 +34,7 @@ Ezután töltse le és telepítse a .NET Core 2.0 az operációs rendszernek meg
 - A [.NET Core for Windows](https://www.microsoft.com/net/download/windows) vagy a [.NET-keretrendszer](https://www.microsoft.com/net/download/windows) telepítése (a Windows rendszerhez készült Visual Studio része)
 - Telepítse [a Windowshoz készült Visual Studio programot](https://www.visualstudio.com/). Ha .NET Core keretrendszert használ, a Visual Studio telepítése nem kötelező.  
 
-A .NET Core és a .NET-keretrendszer közötti választással kapcsolatos további információért lásd a [.NET Core és a .NET-keretrendszer közötti, kiszolgálóalkalmazások esetén való választásról](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) szóló részt.
+A .NET Core és a .NET-keretrendszer közötti választással kapcsolatos további információért lásd a [.NET Core és a .NET-keretrendszer közötti, kiszolgálóalkalmazások esetén való választásról](/dotnet/standard/choosing-core-framework-server) szóló részt.
 
 ### <a name="linux"></a>Linux
 
@@ -266,14 +266,14 @@ Tekintse meg ezeket a további forrásokat a .NET-fejlesztéshez az Azure Queues
 
 ### <a name="binaries-and-source-code"></a>Bináris fájlok és forráskód
 
-- A .NET-hez készült [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet) legújabb verziójához tartozó NuGet-csomagok letöltése
+- A .NET-hez készült [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage) legújabb verziójához tartozó NuGet-csomagok letöltése
     - [Közös](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Üzenetsorok](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - A [.NET ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-net) a GitHubon tekintheti meg.
 
 ### <a name="client-library-reference-and-samples"></a>Ügyféloldali kódtár – referencia és minták
 
-- A .NET ügyféloldali kódtárral kapcsolatos további információért lásd a [.NET API-referenciáját](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
+- A .NET ügyféloldali kódtárral kapcsolatos további információért lásd a [.NET API-referenciáját](/dotnet/api/overview/azure/storage).
 - A .NET ügyféloldali kódtár használatával írt [üzenetsor-tárolási minták](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) megismerése.
 
 ## <a name="next-steps"></a>További lépések
@@ -281,6 +281,6 @@ Tekintse meg ezeket a további forrásokat a .NET-fejlesztéshez az Azure Queues
 Ebből a rövid útmutatóból megtudhatta, hogyan adhat hozzá üzeneteket egy várólistához, hogyan szúrhat be üzeneteket egy várólistából, és hogyan dolgozza fel az üzeneteket a .NET használatával. 
 
 > [!div class="nextstepaction"]
-> [Alkalmazások közötti kommunikáció az Azure Queue Storage használatával](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Alkalmazások közötti kommunikáció az Azure Queue Storage használatával](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://www.microsoft.com/net/learn/get-started/) ismertető szakaszt.
