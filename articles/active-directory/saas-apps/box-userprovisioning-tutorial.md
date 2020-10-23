@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dde22fe9997e41d6d17fba94e6b9523d82c7b910
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312906"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456823"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
 
@@ -48,7 +48,7 @@ Azure Active Directory a "hozzárendelések" nevű fogalom használatával hatá
 
 A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a Box-alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a Box-alkalmazáshoz:
 
-[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="assign-users-and-groups"></a>Felhasználók és csoportok társítása
 > a Azure Portal **felhasználók és csoportok** lapján megadhatja, hogy mely felhasználók és csoportok számára legyen elérhető a Box. Egy felhasználó vagy csoport hozzárendelése a következő okok miatt fordul elő:

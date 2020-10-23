@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60090dec56a177fac6ddad946d97142b484355af
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212260"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425739"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
 
@@ -61,9 +61,9 @@ A Active Directory tartományának beállításakor használja az alábbi tábl�
 | **Tartománynév** | A tartomány teljes tartományneve, például example.com. Ne adjon meg IP-címet ebben a szövegmezőben. |
 | **Tartomány aliasa** | A tartomány NetBIOS-neve. Adja hozzá a Active Directory tartomány NetBIOS-nevét az Identity forrás aliasként, ha az SSPI-hitelesítést használja. |
 | **A csoportok alapszintű megkülönböztető neve** | A csoportok alapszintű megkülönböztető neve. |
-| **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>A formátumot használja  `ldap://hostname:port`    `ldaps://hostname:port` . A port általában a 389 LDAP-kapcsolatokhoz és 636 for LDAPs-kapcsolatokhoz. Active Directory többtartományos tartományvezérlő üzembe helyezése esetén a port általában az LDAP-hez és a 3269-hoz 3268.<br><br>Az  `ldaps://`   elsődleges vagy másodlagos LDAP URL-cím használata esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
+| **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>A formátumot használja `ldap://hostname:port` `ldaps://hostname:port` . A port általában a 389 LDAP-kapcsolatokhoz és 636 for LDAPs-kapcsolatokhoz. Active Directory többtartományos tartományvezérlő üzembe helyezése esetén a port általában az LDAP-hez és a 3269-hoz 3268.<br><br>Az `ldaps://` elsődleges vagy másodlagos LDAP URL-cím használata esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
 | **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlői LDAP-kiszolgáló címe. |
-| **Tanúsítvány kiválasztása** | Ha LDAPs-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor  `ldaps://`   az URL-cím szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
+| **Tanúsítvány kiválasztása** | Ha LDAPs-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor `ldaps://` az URL-cím szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
 | **Felhasználónév** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
 | **Jelszó** | A Felhasználónév által megadott felhasználó jelszava. |
 
@@ -127,7 +127,7 @@ A hálózati kapcsolatok létrejötte után kövesse a helyszíni [Active Direct
 
 6. Válassza ki a **Active Directory LDAP-kiszolgálóként** , majd kattintson a **tovább**gombra.
 
-    ![Active Directory](media/OnPremAD04.png)
+    ![Képernyőfelvétel: a Active Directory LDAP-kiszolgálóként való kiemelése.](media/OnPremAD04.png)
 
 7. Adja meg a környezet Identity Source paramétereit, majd kattintson a **tovább**gombra.
 

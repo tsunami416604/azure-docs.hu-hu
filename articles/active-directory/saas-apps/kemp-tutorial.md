@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 37b21a5e9e2839fba24b3dcc861fc7c42bdb4547
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 7ac50acbf9b1b4371ac17f997828f9b8818e53b0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945209"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459116"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Oktatóanyag: Azure Active Directory SSO-integráció a Kemp LoadMaster Azure AD-integrációval
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Kemp LoadMaster 
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Kemp LoadMaster Azure AD-integrációba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A Kemp LoadMaster Azure AD-integrációja támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
-* Miután konfigurálta a Kemp LoadMaster az Azure AD-integrációt, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Miután konfigurálta a Kemp LoadMaster az Azure AD-integrációt, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>Kemp-LoadMaster hozzáadása az Azure AD-integrációhoz a katalógusból
 
@@ -113,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -378,18 +378,18 @@ Ebben a szakaszban létrehoz egy B. Simon nevű felhasználót a Kemp LoadMaster
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a Kemp LoadMaster Azure AD-integráció csempére kattint, automatikusan be kell jelentkeznie a Kemp LoadMaster Azure AD-integrációba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Kemp LoadMaster Azure AD-integráció csempére kattint, automatikusan be kell jelentkeznie a Kemp LoadMaster Azure AD-integrációba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
 - [A Kemp LoadMaster Azure AD-integrációjának kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A Kemp LoadMaster Azure AD-integrációjának a speciális láthatósággal és ellenőrzésekkel való ellátása](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Kemp LoadMaster Azure AD-integrációjának a speciális láthatósággal és ellenőrzésekkel való ellátása](/cloud-app-security/proxy-intro-aad)

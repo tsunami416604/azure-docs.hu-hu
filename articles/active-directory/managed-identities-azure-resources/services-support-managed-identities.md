@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: d0b9e2301a8bb9990f88db8d4d55ef7f97946174
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7e971b4afe0719d74c8aa32c5f5103c4be971d9b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072169"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426444"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
 
@@ -41,6 +41,16 @@ Tekintse át az alábbi listát az Azure API Management felügyelt identitásán
 
 - [Azure Resource Manager-sablon](../../api-management/api-management-howto-use-managed-service-identity.md)
 
+### <a name="azure-app-configuration"></a>Azure App Configuration
+
+| Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | Nem érhető el |
+| Felhasználó által hozzárendelt | ![Elérhető][check] | ![Elérhető][check]  | Nem érhető el  | Nem érhető el |
+
+Tekintse át az alábbi listát az Azure-alkalmazások konfigurációjának felügyelt identitásának konfigurálásához (az elérhető régiókban):
+
+- [Azure CLI](../../azure-app-configuration/overview-managed-identity.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
 

@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 9320abb46c45b4bd151839eda40b03b445a2675f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7e63f770763d1960148dfdfa184d0b4e2b76754c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152013"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427088"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Oktatóanyag: Java Spring boot-Webalkalmazás létrehozása Azure App Service Linux és Azure Cosmos DB rendszeren
 
@@ -20,7 +20,7 @@ Ez az oktatóanyag végigvezeti a Java-webalkalmazások Azure-ban való létreho
 
 ![A Spring boot Application az adattárolást Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Cosmos DB adatbázist.
@@ -238,7 +238,7 @@ Nyissa meg a `pom.xml` fájlt a `initial/spring-boot-todo` címtárban, és adja
 
 ## <a name="deploy-to-app-service-on-linux"></a>Üzembe helyezés a Linuxon App Service
 
-A `azure-webapp:deploy` Maven céljával telepítse a ToDo alkalmazást a linuxon Azure app Service.
+A `mvn azure-webapp:deploy` Maven céljával telepítse a ToDo alkalmazást a linuxon Azure app Service.
 
 ```bash
 
@@ -275,7 +275,7 @@ bash-3.2$ mvn azure-webapp:deploy
 A kimenet tartalmazza a telepített alkalmazás URL-címét (ebben a példában `https://spring-todo-app.azurewebsites.net` ). Másolja az URL-címet a webböngészőjébe, vagy futtassa a következő parancsot a terminál ablakban az alkalmazás betöltéséhez.
 
 ```bash
-open https://spring-todo-app.azurewebsites.net
+curl https://spring-todo-app.azurewebsites.net
 ```
 
 A címsorban a távoli URL-címmel futó alkalmazást kell látnia:
@@ -299,15 +299,15 @@ az appservice plan update --number-of-workers 2 \
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha ezekre az erőforrásokra már nincs szüksége más oktatóanyagokhoz (lásd a [következő lépéseket](#next)), az alábbi parancs a Cloud Shellben való futtatásával törölheti azokat: 
-  
+Ha ezekre az erőforrásokra már nincs szüksége más oktatóanyagokhoz (lásd a [következő lépéseket](#next)), az alábbi parancs a Cloud Shellben való futtatásával törölheti azokat: 
+  
 ```bash
 az group delete --name <your-azure-group-name>
 ```
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure Java-fejlesztőknek](/java/azure/) 
  [Spring boot](https://spring.io/projects/spring-boot), Cosmos DB, [Azure Cosmos db](../cosmos-db/introduction.md) és [app Service Linux](overview.md) [Spring-adatvédelme](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable).

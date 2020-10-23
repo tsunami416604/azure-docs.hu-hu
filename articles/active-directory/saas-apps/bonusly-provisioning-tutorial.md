@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1db1ef3a8fa7de557444c25650410b4e84422be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33329fc30d1c20b4e20901d06a061accb2aeceb0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849286"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456899"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Oktatóanyag: prémium konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -64,7 +64,7 @@ Azure Active Directory a "hozzárendelések" nevű fogalom használatával hatá
 
 Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-beli felhasználóknak és/vagy csoportoknak milyen jogosultságokkal kell rendelkezniük a bónuszok eléréséhez. A döntés megkezdése után a felhasználókat és/vagy csoportokat a következő utasítások követésével lehet bónuszhoz rendelni:
 
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-bonusly"></a>Fontos Tippek a felhasználók bónuszok hozzárendeléséhez
 

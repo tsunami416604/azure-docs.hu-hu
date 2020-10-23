@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 17c9672663cae4df7eacb72779e6caf6476e3d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550482"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Oktatóanyag: Azure Active Directory integráció a InsideView
 
@@ -27,7 +27,7 @@ Ez az integráció az alábbi előnyöket biztosítja:
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a InsideView (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -147,7 +147,7 @@ Az Azure AD egyszeri bejelentkezés InsideView való konfigurálásához hajtsa 
 
     1. A **CRM-LastName leképezése** mezőbe írja be a értéket **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .  
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -212,12 +212,12 @@ Ha felhasználókat vagy névjegyeket szeretne létrehozni a InsideView-ben, for
 
 Most az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával kell tesztelni.
 
-Amikor kiválasztja a InsideView csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a InsideView-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a InsideView csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a InsideView-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [alkalmazások elérése és használata a saját alkalmazások portálon](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

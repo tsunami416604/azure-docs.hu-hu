@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8b10dd2d87ab7d4cf41a0bf860798f27651294d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fe1363ffc714754c1de333a77d36595ce4223e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258999"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442337"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: Node.js webes API-hoz való hozzáférés biztosítása egy egyoldalas alkalmazásból Azure AD B2C
 
@@ -74,14 +74,20 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="configure-the-web-api"></a>A webes API konfigurálása
 
-1. Nyissa meg a *config.js* fájlt a Kódszerkesztőben.
+1. Nyissa meg a *config.js* fájlt a Kódszerkesztő alkalmazásban.
 1. Módosítsa a változó értékeit úgy, hogy azok megfeleljenek a korábban létrehozott alkalmazás-regisztrációnak. Frissítse a-t az `policyName` Előfeltételek részeként létrehozott felhasználói folyamattal is. Például *B2C_1_signupsignin1*.
-
-    ```javascript
-    const clientID = "<your-webapi-application-ID>"; // Application (client) ID
-    const b2cDomainHost = "<your-tenant-name>.b2clogin.com";
-    const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (a GUID)
-    const policyName = "B2C_1_signupsignin1";
+    
+    ```json
+    "credentials": {
+        "tenantName": "<your-tenant-name>",
+        "clientID": "<your-webapi-application-ID>"
+    },
+    "policies": {
+        "policyName": "B2C_1_signupsignin1"
+    },
+    "resource": {
+        "scope": ["demo.read"] 
+    },
     ```
 
 #### <a name="enable-cors"></a>CORS engedélyezése
@@ -131,7 +137,7 @@ Bár mindkét alkalmazás helyileg fut, amikor ezt az oktatóanyagot követi, ú
 
 ### <a name="run-the-nodejs-web-api"></a>A Node.js webes API futtatása
 
-1. Nyisson meg egy konzolablak ablakot, és váltson át a Node.js webes API-mintát tartalmazó könyvtárra. Például:
+1. Nyisson meg egy konzolablak ablakot, és váltson át a Node.js webes API-mintát tartalmazó könyvtárra. Példa:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -152,7 +158,7 @@ Bár mindkét alkalmazás helyileg fut, amikor ezt az oktatóanyagot követi, ú
 
 ### <a name="run-the-single-page-app"></a>Egy egyoldalas alkalmazás futtatása
 
-1. Nyisson meg egy másik konzolablak ablakát, és váltson át a JavaScript SPA-mintát tartalmazó könyvtárba. Például:
+1. Nyisson meg egy másik konzolablak ablakát, és váltson át a JavaScript SPA-mintát tartalmazó könyvtárba. Példa:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp

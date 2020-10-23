@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 58ee064d4946442bff70e97d56a68080333e2197
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ede358cdbe533a32ff99fbd736e171463472e45c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426133"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461318"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
-A környezetben található entitásokat a [digitális ikrek](concepts-twins-graph.md)jelölik. A digitális ikrek kezelése magában foglalhatja a létrehozását, módosítását és eltávolítását. Ezeknek a műveleteknek a végrehajtásához használhatja a [**DigitalTwins API-kat**](how-to-use-apis-sdks.md), a [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)-t vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületét.
+A környezetben található entitásokat a [digitális ikrek](concepts-twins-graph.md)jelölik. A digitális ikrek kezelése magában foglalhatja a létrehozását, módosítását és eltávolítását. Ezeknek a műveleteknek a végrehajtásához használhatja a [**DigitalTwins API-kat**](/rest/api/digital-twins/dataplane/twins), a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)-t vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületét.
 
 Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a [Twin gráfmal](concepts-twins-graph.md) szeretne dolgozni, tekintse meg [*az útmutató: a Twin gráf kezelése a kapcsolatokkal*](how-to-manage-graph.md)című témakört.
 
@@ -383,7 +383,16 @@ Az alábbi futtatható-mintakód használatával hozzon létre egy IKeret, friss
 
 A kódrészlet a modell definíciójában szereplő [Room.js](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) használja az [*oktatóanyag: az Azure Digital Twins megismerése egy minta ügyfélalkalmazás*](tutorial-command-line-app.md)használatával. Ezzel a hivatkozással közvetlenül a fájlra léphet, vagy letöltheti a teljes végpontok közötti [minta projekt](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)részeként.
 
-Cserélje le a helyőrzőt az `<your-instance-hostname>` Azure Digital Twins-példány részleteire, és futtassa a mintát.
+A minta futtatása előtt tegye a következőket:
+1. Töltse le a modell fájlját, helyezze el a projektbe, és cserélje le a `<path-to>` helyőrzőt az alábbi kódban, hogy a program hol találja meg.
+2. Cserélje le a helyőrzőt az `<your-instance-hostname>` Azure Digital ikrek példányának állomásnévre.
+3. Adja hozzá ezeket a csomagokat a projekthez:
+    ```cmd/sh
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
+    dotnet add package Azure.identity
+    ```
+
+Ezután futtassa a mintát.
 
 ```csharp
 using System;
@@ -401,22 +410,29 @@ namespace minimal
     class Program
     {
 
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            //Create the Azure Digital Twins client for API calls
             string adtInstanceUrl = "https://<your-instance-hostname>";
             var credentials = new DefaultAzureCredential();
-            Console.WriteLine();
-            Console.WriteLine($"Upload a model");
-            BasicDigitalTwin twin = new BasicDigitalTwin();
-            var typeList = new List<string>();
-            string twin_Id = "myRoomId";
-            string dtdl = File.ReadAllText("Room.json");
-            typeList.Add(dtdl);
-            // Upload the model to the service
             DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
             Console.WriteLine($"Service client created – ready to go");
+            Console.WriteLine();
+
+            //Upload models
+            Console.WriteLine($"Upload a model");
+            Console.WriteLine();
+            string dtdl = File.ReadAllText("<path-to>/Room.json");
+            var typeList = new List<string>();
+            typeList.Add(dtdl);
+            // Upload the model to the service
             await client.CreateModelsAsync(typeList);
+
+            //Create new digital twin
+            BasicDigitalTwin twin = new BasicDigitalTwin();
+            string twin_Id = "myRoomId";
             twin.Metadata = new DigitalTwinMetadata();
             twin.Metadata.ModelId = "dtmi:example:Room;1";
             // Initialize properties
@@ -426,7 +442,15 @@ namespace minimal
             twin.CustomProperties = props;
             await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
             Console.WriteLine("Twin created successfully");
+            Console.WriteLine();
+
+            //Print twin
+            Console.WriteLine("--- Printing twin details:");
             twin = FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Update twin data
             List<object> twinData = new List<object>();
             twinData.Add(new Dictionary<string, object>() 
             {
@@ -434,10 +458,17 @@ namespace minimal
                 { "path", "/Temperature"},
                 { "value", 25.0}
             });
-
             await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
-            Console.WriteLine("Updated Twin Properties");
+            Console.WriteLine("Twin properties updated");
+            Console.WriteLine();
+
+            //Print twin again
+            Console.WriteLine("--- Printing twin details (after update):");
             FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Delete twin
             await DeleteTwin(client, twin_Id);
         }
 
@@ -455,7 +486,7 @@ namespace minimal
 
             return twin;
         }
-        static async Task DeleteTwin(DigitalTwinsClient client, string id)
+        private static async Task DeleteTwin(DigitalTwinsClient client, string id)
         {
             await FindAndDeleteOutgoingRelationshipsAsync(client, id);
             await FindAndDeleteIncomingRelationshipsAsync(client, id);
@@ -463,7 +494,6 @@ namespace minimal
             {
                 await client.DeleteDigitalTwinAsync(id);
                 Console.WriteLine("Twin deleted successfully");
-                FetchAndPrintTwin(id, client);
             }
             catch (RequestFailedException exc)
             {
@@ -471,7 +501,7 @@ namespace minimal
             }
         }
 
-        public static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        private static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
         {
             // Find the relationships for the twin
 
@@ -493,7 +523,7 @@ namespace minimal
             }
         }
 
-       static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+       private static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
         {
             // Find the relationships for the twin
 
@@ -530,7 +560,7 @@ Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok 
 
 ## <a name="view-all-digital-twins"></a>Az összes digitális ikrek megtekintése
 
-A példányban lévő összes digitális ikrek megtekintéséhez használjon [lekérdezést](how-to-query-graph.md). Futtathat egy lekérdezést a [lekérdezési API](how-to-use-apis-sdks.md) -kkal vagy a [CLI-parancsokkal](how-to-use-cli.md).
+A példányban lévő összes digitális ikrek megtekintéséhez használjon [lekérdezést](how-to-query-graph.md). Futtathat egy lekérdezést a [lekérdezési API](/rest/api/digital-twins/dataplane/query) -kkal vagy a [CLI-parancsokkal](how-to-use-cli.md).
 
 Itt látható az alapszintű lekérdezés törzse, amely a példányban található összes digitális ikrek listáját fogja visszaadni:
 

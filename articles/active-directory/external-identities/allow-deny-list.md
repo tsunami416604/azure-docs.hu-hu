@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87650f364f8ccfd3a531d710bfbdc4715f0ac5a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87909730"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442184"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Adott szervezetek B2B-felhasználók felé irányuló meghívásainak engedélyezése vagy letiltása
 
@@ -126,7 +126,7 @@ Ha a modul nincs telepítve, vagy nem rendelkezik a szükséges verzióval, hajt
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>A szabályzat konfigurálásához használja a AzureADPolicy-parancsmagokat.
 
-Engedélyezési vagy megtagadási lista létrehozásához használja a [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Az alábbi példa bemutatja, hogyan állíthat be egy megtagadási listát, amely letiltja a "live.com" tartományt.
+Engedélyezési vagy megtagadási lista létrehozásához használja a [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Az alábbi példa bemutatja, hogyan állíthat be egy megtagadási listát, amely letiltja a "live.com" tartományt.
 
 ```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -140,28 +140,25 @@ A következő példában ugyanaz a példa látható, de a házirend-definíció 
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-Az engedélyezési vagy letiltási lista házirend beállításához használja a [set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
+Az engedélyezési vagy letiltási lista házirend beállításához használja a [set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-A szabályzat beszerzéséhez használja a [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
+A szabályzat beszerzéséhez használja a [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
 
 ```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-A szabályzat eltávolításához használja a [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
+A szabályzat eltávolításához használja a [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure AD B2B áttekintése: [Mi az az Azure ad B2B Collaboration?](what-is-b2b.md)
 - További információ a feltételes hozzáférésről és a B2B együttműködésről: [feltételes hozzáférés a B2B együttműködés felhasználói](conditional-access.md)számára.
-
-
-

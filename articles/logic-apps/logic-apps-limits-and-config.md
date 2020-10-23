@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/09/2020
-ms.openlocfilehash: 16dab7897fc41a97a8607df5a03281582377e1e4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 05881791d495770167b271e20de173e6679f39d9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424084"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440654"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -48,7 +48,7 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 | Name | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
 |------|--------------------|---------------------------------------|-------|
 | Futtatás időtartama | 90 nap | 366 nap | A futtatási időtartamot a Futtatás kezdő időpontja alapján számítja ki a rendszer. |
-| Futtatási Előzmények megőrzése a tárolóban | 90 nap | 366 nap | Futás befejezése vagy időkorlátja esetén a futtatási Előzmények megőrzése mindig a Futtatás kezdési idejével és a munkafolyamat-beállítás *aktuális időpontjában* megadott korláttal történik, a [**futtatási Előzmények megőrzése napokban**](#change-retention). Ha módosítja ezt a beállítást, a rendszer mindig az *aktuális* korlátot használja a megőrzés kiszámításához, az előző korláttól függetlenül. Ha a Futtatás időtartama meghaladja a jelenlegi korlátot, a rendszer eltávolítja a futtatást a futtatott előzményekből. <p><p>Tegyük fel például, hogy 90 nap és 30 nap között csökkenti az adatmegőrzési korlátot. A rendszer az 60 napos futtatást távolítja el a futtatott előzményekből. Ha a megőrzési időtartamot 30 nap és 60 nap között emeli, egy 20 napos Futtatás egy másik 40 nap alatt marad a futtatási előzményekben. <p><p>Ha módosítani szeretné az alapértelmezett korlátot (90 nap), tekintse meg a [futtatási előzmények megőrzésének módosítása a tárolóban](#change-retention)című témakört. |
+| Futtatási Előzmények megőrzése a tárolóban | 90 nap | 366 nap | Ha a Futtatás időtartama meghaladja a jelenlegi futtatási előzmények megőrzési korlátját, a rendszer eltávolítja a futtatást a tárolóban lévő futtatási előzményekből. Függetlenül attól, hogy fut-e a Futtatás vagy időtúllépés, a futtatási Előzmények megőrzése mindig a Futtatás kezdő időpontját és a munkafolyamat-beállításban megadott aktuális korlátot használja, a [**futtatási Előzmények megőrzése napokban**](#change-retention). Az előző korláttól függetlenül a rendszer mindig az aktuális korlátot használja a megőrzés kiszámításához. <p><p>Az alapértelmezett korlát módosításához és további információért lásd: a [futtatási előzmények megőrzésének módosítása a Storage-ban](#change-retention). A maximális korlát növeléséhez [vegye fel a kapcsolatot az Logic apps csapatával](mailto://logicappsemail@microsoft.com) a követelményekkel kapcsolatos segítségért. |
 | Minimális ismétlődési időköz | 1 másodperc | 1 másodperc ||
 | Maximális ismétlődési időköz | 500 nap | 500 nap ||
 |||||
@@ -57,11 +57,17 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 
 ### <a name="change-run-history-retention-in-storage"></a>Futtatási előzmények megőrzésének módosítása a tárolóban
 
-Ha módosítani szeretné a futtatási előzmények megőrzésének alapértelmezett korlátját a tárolóban, kövesse az alábbi lépéseket. A maximális korlát növeléséhez [vegye fel a kapcsolatot az Logic apps csapatával](mailto://logicappsemail@microsoft.com) a követelményekkel kapcsolatos segítségért.
+Ha módosítani szeretné a futtatási előzmények megőrzésének alapértelmezett korlátját a tárolóban, kövesse az alábbi lépéseket.
 
-> [!NOTE]
-> A több-bérlős Azure-beli Logic apps esetében a 90 napos alapértelmezett korlát megegyezik a maximális korláttal. Ezt az értéket csak csökkenteni lehet.
-> Az integrációs szolgáltatási környezetben lévő Logic apps esetében csökkentheti vagy növelheti a 90 napos alapértelmezett korlátot.
+* A több-bérlős Azure-beli Logic apps esetében a 90 napos alapértelmezett korlát megegyezik a maximális korláttal. Ezt az értéket csak csökkenteni lehet.
+
+* Az integrációs szolgáltatási környezetben lévő Logic apps esetében csökkentheti vagy növelheti a 90 napos alapértelmezett korlátot.
+
+Tegyük fel például, hogy 90 nap és 30 nap között csökkenti az adatmegőrzési korlátot. A rendszer az 60 napos futtatást távolítja el a futtatott előzményekből. Ha a megőrzési időtartamot 30 nap és 60 nap között emeli, egy 20 napos Futtatás egy másik 40 nap alatt marad a futtatási előzményekben. 
+
+
+> [!IMPORTANT]
+> A futtatási előzmények elvesztésének elkerülése érdekében győződjön meg arról, hogy a megőrzési korlát *mindig* meghaladja a Futtatás leghosszabb lehetséges időtartamát. Ellenkező esetben a futtatási előzmények elvesznek.
 
 1. A [Azure Portal](https://portal.azure.com) keresési mezőben keresse meg és válassza ki a **Logic apps**lehetőséget.
 

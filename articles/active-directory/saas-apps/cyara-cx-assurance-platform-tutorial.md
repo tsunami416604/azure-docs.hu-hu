@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: ab62ed396be4832f09d5eb26e3d732a01bdb905d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18a0037f2af221101b4202883e5c145471af1183
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542649"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455051"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cyara-cx-assurance-platform"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Cyara CX Assurance platformmal
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Cyara CX Assuran
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Cyara CX Assurance platformba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A Cyara CX Assurance platform támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
-* A Cyara CX megbízhatósági platform konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A Cyara CX megbízhatósági platform konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-cyara-cx-assurance-platform-from-the-gallery"></a>A Cyara CX Assurance platform hozzáadása a katalógusból
 
@@ -107,7 +107,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -133,24 +133,24 @@ Ha az egyszeri bejelentkezést a **CYARA CX Assurance platformon** szeretné be�
 
 ### <a name="create-cyara-cx-assurance-platform-test-user"></a>Cyara CX garancia platform tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Cyara CX Assurance platformon. Együttműködik a [CYARA CX Assurance platform támogatási csapatával](mailto:support@cyara.com) , hogy hozzáadja a felhasználókat a Cyara CX Assurance platform platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Cyara CX Assurance platformon. Együttműködik a [CYARA CX Assurance platform támogatási csapatával](mailto:support@cyara.com) , hogy hozzáadja a felhasználókat a Cyara CX Assurance platform platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a Cyara CX-megbízhatósági platform csempére kattint, automatikusan be kell jelentkeznie a Cyara CX megbízhatósági platformba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Cyara CX-megbízhatósági platform csempére kattint, automatikusan be kell jelentkeznie a Cyara CX megbízhatósági platformba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
 - [Próbálja ki a Cyara CX Assurance platformot az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A Cyara CX-megbízhatósági platform és a speciális láthatóság és vezérlés biztosítása](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Cyara CX-megbízhatósági platform és a speciális láthatóság és vezérlés biztosítása](/cloud-app-security/proxy-intro-aad)

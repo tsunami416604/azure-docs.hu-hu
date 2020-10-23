@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585933"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440518"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault biztonsági mentés
 
@@ -30,6 +30,9 @@ Key Vault megtartja a rendelkezésre állást a katasztrófa-forgatókönyvekben
 Ha a titkos kódok véletlen vagy rosszindulatú törlésével szembeni védelmet szeretne védeni, konfigurálja a Key vaulton a helyreállítható törlési és kiürítő védelmi funkciókat. További információ: [Azure Key Vault Soft-delete áttekintése](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
 
 ## <a name="limitations"></a>Korlátozások
+
+> [!IMPORTANT]
+> A Key Vault nem támogatja a kulcs-, titkos vagy tanúsítvány-objektum 500-nál több korábbi verziójának biztonsági mentését. A kulcsok, titkos kód vagy tanúsítvány objektum biztonsági mentésére tett kísérlet hibát okozhat. A kulcsok, titkos kódok vagy tanúsítványok korábbi verzióit nem lehet törölni.
 
 Key Vault jelenleg nem biztosít egy teljes kulcstartó biztonsági mentését egyetlen művelettel. A jelen dokumentumban felsorolt parancsok a Key Vault automatikus biztonsági mentésére tett kísérletek hibát okozhatnak, és nem támogatják a Microsoft vagy a Azure Key Vault csapata. 
 

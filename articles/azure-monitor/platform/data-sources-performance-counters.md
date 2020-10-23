@@ -1,31 +1,34 @@
 ---
-title: Teljesítményszámlálók összegyűjtése és elemzése a Azure Monitorban | Microsoft Docs
+title: Windows-és Linux-teljesítményű adatforrások összegyűjtése Log Analytics ügynökkel Azure Monitor
 description: A teljesítményszámlálókat a Azure Monitor gyűjti a Windows-és Linux-ügynökök teljesítményének elemzéséhez.  Ez a cikk bemutatja, hogyan konfigurálhatja a teljesítményszámlálók gyűjteményét Windows-és Linux-ügynökökhöz, a munkaterületen tárolt adatokat, valamint azt, hogyan elemezheti őket a Azure Portalban.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/21/2020
+ms.openlocfilehash: 71fc3f457338796289c2f6ac54f3bc713a91cc29
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131190"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461362"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
-A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítményadatok a hosszú távú elemzéshez és jelentéskészítéshez való közel valós idejű (vizsgálja) elemzéshez is összegyűjthetők.
+# <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Windows-és Linux-teljesítményű adatforrások gyűjtése Log Analytics-ügynökkel
+A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítmény-és a hosszú távú elemzéshez és jelentéskészítéshez kapcsolódóan rendszeres időközönként gyűjthetik be a Log Analytics ügynököktől származó teljesítményszámlálókat a közel valós idejű (vizsgálja) elemzéshez.
+
+> [!IMPORTANT]
+> Ez a cikk a teljesítményadatok összegyűjtését ismerteti [log Analytics ügynökkel](log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](agents-overview.md) .
 
 ![Teljesítményszámlálók](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Teljesítményszámlálók konfigurálása
-Teljesítményszámlálók konfigurálása a [Speciális beállítások adatok menüjében](agent-data-sources.md#configuring-data-sources).
+A teljesítményszámlálók konfigurálása a Log Analytics munkaterület [speciális beállításaiban található adatok menüből](agent-data-sources.md#configuring-data-sources) .
 
 Amikor először konfigurálja a Windows-vagy Linux-teljesítményszámlálókat egy új munkaterülethez, lehetősége van számos gyakori számláló gyors létrehozására.  Ezek mindegyike mellett egy jelölőnégyzet található.  Győződjön meg arról, hogy a kezdetben létrehozni kívánt számlálók be vannak jelölve, majd kattintson **a kijelölt teljesítményszámlálók hozzáadása**lehetőségre.
 
 A Windows-teljesítményszámlálók esetében kiválaszthatja az egyes teljesítményszámlálók egy adott példányát. A Linux-teljesítményszámlálók esetében az egyes kiválasztott számlálók a szülő számláló összes alárendelt számlálóján érvényesek. A következő táblázat a Linux és a Windows teljesítményszámlálói számára elérhető általános példányokat mutatja be.
 
-| Példány neve | Description |
+| Példány neve | Leírás |
 | --- | --- |
 | \_Összesen |Összes példány összesen |
 | \* |Minden példány |
@@ -75,7 +78,7 @@ A gyűjteni kívánt teljesítmény-mérőszámok minden objektumát vagy kateg�
 
 Az ebben az elemben található paramétereket a következő táblázat ismerteti.
 
-| Paraméterek | Description |
+| Paraméterek | Leírás |
 |:--|:--|
 | objektum \_ neve | A gyűjtemény objektumának neve. |
 | példányok \_ regexje |  Egy *reguláris kifejezés* , amely meghatározza, hogy mely példányokat kell gyűjteni. Az érték: az `.*` összes példányt megadja. Ha csak az összes példány processzor-metrikáit szeretné összegyűjteni \_ , megadhatja a következőt: `_Total` . Ha csak a crond vagy sshd példányok feldolgozási metrikáit szeretné összegyűjteni, megadhatja a következőt: `(crond\|sshd)` . |
@@ -203,7 +206,7 @@ A teljesítményadatokat a teljesítmény **típusa és a** következő tábláz
 ## <a name="log-queries-with-performance-records"></a>Lekérdezések naplózása a teljesítménnyel kapcsolatos rekordokkal
 Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatokat lekérő lekérdezések naplózására.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:--- |:--- |
 | Teljesítmény |Minden teljesítményadatok |
 | Teljesítményfigyelő &#124;, ahol a számítógép = = "Sajátgép" |Egy adott számítógépről származó összes teljesítményadatok |
@@ -220,7 +223,7 @@ Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatoka
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Teljesítményszámlálók gyűjtése Linux-alkalmazásokból](data-sources-linux-applications.md) , beleértve a MySQL-t és az Apache HTTP-kiszolgálót.
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .  
 * Az összegyűjtött adatok [Power BIba](powerbi.md) való exportálása további vizualizációk és elemzések céljából.

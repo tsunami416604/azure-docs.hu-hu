@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee8c7cf2b34d5923f84bf9b9ba3cf5b10034e3e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652069"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458051"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat-szinkronizálás implementálása Azure AD Connect-szinkronizálással
 Ez a cikk azokat az információkat tartalmazza, amelyekkel szinkronizálhatja a felhasználói jelszavakat egy helyszíni Active Directory-példányról egy felhőalapú Azure Active Directory-(Azure AD-) példányra.
@@ -109,7 +109,7 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-Ha engedélyezve van, az Azure AD nem minden szinkronizált felhasználóhoz csatlakozik, hogy eltávolítsa az `DisablePasswordExpiration` értéket a PasswordPolicies attribútumból. Ehelyett az érték az `None` egyes felhasználók következő jelszavas szinkronizálására van beállítva, amikor legközelebb megváltoztatják a jelszavukat a helyszíni ad-ben.  
+Ha engedélyezve van, az Azure AD nem minden szinkronizált felhasználóhoz csatlakozik, hogy eltávolítsa az `DisablePasswordExpiration` értéket a PasswordPolicies attribútumból. Ehelyett a `DisablePasswordExpiration` rendszer eltávolítja az értéket a PasswordPolicies az egyes felhasználók következő jelszavas kivonatának szinkronizálásakor, a helyi ad-ben a következő jelszó megváltozása után.
 
 Javasoljuk, hogy engedélyezze a EnforceCloudPasswordPolicyForPasswordSyncedUsers a jelszó-kivonat szinkronizálásának engedélyezése előtt, hogy a jelszó-kivonatok kezdeti szinkronizálása ne adja hozzá az `DisablePasswordExpiration` értéket a felhasználók PasswordPolicies attribútumához.
 
@@ -231,7 +231,7 @@ A biztonsággal és az FIPS-vel kapcsolatos további információkért lásd: az
 ## <a name="troubleshoot-password-hash-synchronization"></a>Jelszó-kivonatolási szinkronizálás hibáinak megoldása
 Ha problémái vannak a jelszó kivonatának szinkronizálásával kapcsolatban, olvassa el a [jelszó-kivonat szinkronizálásának hibaelhárítása](tshoot-connect-password-hash-synchronization.md)című témakört
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure AD Connect Sync: szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 * [Lépésenkénti üzembe helyezési terv az ADFS-ből a jelszó-kivonatolási szinkronizálásba való áttelepítéshez](https://aka.ms/authenticationDeploymentPlan)

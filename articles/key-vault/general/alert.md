@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 6b179dd2662bf6fa545ea44b723671f1499b9e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589010"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427016"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Figyelés és riasztás a Azure Key Vault
 
@@ -53,7 +53,7 @@ Tár **telítettsége** – a Key Vault által kiszolgálható kérelmek másodp
 3. **Metrikák** kiválasztása a **figyelés** alatt 
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-1.png)
+> ![Képernyőfelvétel: a figyelés szakasz mérőszámok lehetőségének kiemelése.](../media/alert-1.png)
 
 4. Frissítse a diagram címét, hogy mit szeretne látni az irányítópulton. 
 5. Válassza ki a hatókört. Ebben a példában egyetlen kulcstartót fogunk kiválasztani. 
@@ -61,7 +61,7 @@ Tár **telítettsége** – a Key Vault által kiszolgálható kérelmek másodp
 7. Frissítse az időtartományt az elmúlt 24 órában, és frissítse az idő részletességét 1 percre. 
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-2.png)
+> ![Képernyőkép, amely a tár teljes Availablility metrikáját mutatja.](../media/alert-2.png)
 
 8. Ismételje meg a fenti lépéseket a tár telítettségéhez és a szolgáltatás API-késési metrikáinak használatához. Válassza a **rögzítés az irányítópulton** lehetőséget a metrikák irányítópultra való mentéséhez. 
 
@@ -71,19 +71,19 @@ Tár **telítettsége** – a Key Vault által kiszolgálható kérelmek másodp
 9. A Key Vault összes típusú műveletének figyeléséhez használja a **teljes szolgáltatás API találati** metrikáját, és válassza a **felosztás a tevékenység típusa szerint** lehetőséget.
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-3.png)
+> ![Képernyőkép: a felosztás alkalmazása gomb megjelenítése.](../media/alert-3.png)
 
 10. A Key Vault-hibakódok figyeléséhez használja a **teljes szolgáltatás API eredmények** metrikáját, és válassza a **felosztás a tevékenység típusa szerint** lehetőséget.
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-4.png)
+> ![A kiválasztott teljes szolgáltatás API-eredmények mérőszámát megjelenítő képernyőkép.](../media/alert-4.png)
 
 Most egy irányítópult jelenik meg, amely így néz ki. Az egyes csempék jobb felső sarkában található 3 pontra kattintva átrendezheti és átméretezheti a csempéket a szükséges módon. 
 
 Miután mentette és közzétette az irányítópultot, egy új erőforrást fog létrehozni az Azure-előfizetésében. A "megosztott irányítópult" kifejezésre keresve bármikor megtekintheti. 
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-5.png)
+> ![A közzétett irányítópultot bemutató képernyőkép.](../media/alert-5.png)
 
 ## <a name="how-to-configure-alerts-on-your-key-vault"></a>Riasztások konfigurálása a Key Vault 
 
@@ -101,20 +101,20 @@ A műveleti csoport az értesítések és a tulajdonságok konfigurálható list
 3. **Kezelési műveletek** kiválasztása
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-6.png)
+> ![Képernyőkép, amely kiemeli a műveletek kezelése gombot.](../media/alert-6.png)
 
 4. Válassza a **+ műveleti csoport hozzáadása** lehetőséget
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-7.png)
+> ![Képernyőfelvétel: a + művelet csoport hozzáadása gomb.](../media/alert-7.png)
 
 5. Válassza ki a műveleti csoport **Művelettípus típusát** . Ebben a példában egy e-mail-riasztást fogunk létrehozni.
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-8.png)
+> ![Képernyőfelvétel: a műveleti csoport hozzáadásához szükséges mezők kiemelése.](../media/alert-8.png)
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-9.png)
+> ![Képernyőfelvétel: az e-mail vagy SMS-üzenet riasztásának hozzáadásához szükséges tudnivalók.](../media/alert-9.png)
 
 6. Kattintson az **OK** gombra a lap alján. Sikeresen létrehozott egy műveleti csoportot. 
 
@@ -125,12 +125,12 @@ Most, hogy beállított egy műveleti csoportot, konfigurálni fogjuk a Key Vaul
 1. Válassza ki a Key Vault-erőforrást a Azure Portalban, és válassza a **figyelés** alatt a **riasztások** elemet.
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-10.png)
+> ![A figyelés szakasz riasztások menüpontját megjelenítő képernyőkép.](../media/alert-10.png)
 
 2. **Új riasztási szabály** kiválasztása
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-11.png)
+> ![Képernyőfelvétel: az + új riasztási szabály gomb megjelenítése.](../media/alert-11.png)
 
 3. Válassza ki a riasztási szabály hatókörét. Kiválaszthat egy vagy több tárat is. 
 
@@ -138,7 +138,7 @@ Most, hogy beállított egy műveleti csoportot, konfigurálni fogjuk a Key Vaul
 > Vegye figyelembe, hogy ha több tárolót választ ki a riasztások hatóköréhez, az összes kiválasztott tárolónak ugyanabban a régióban kell lennie. Külön riasztási szabályokat kell konfigurálnia a különböző régiókban lévő tárakhoz. 
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-12.png)
+> ![Képernyőkép, amely bemutatja, hogyan választhat ki egy tárolót.](../media/alert-12.png)
 
 4. Válassza ki a riasztások feltételeit. Az alábbi jelek bármelyikét kiválaszthatja, és meghatározhatja a riasztások logikáját. A Key Vault csapat az alábbi riasztási küszöbértékek konfigurálását javasolja. 
 
@@ -149,13 +149,13 @@ Most, hogy beállított egy műveleti csoportot, konfigurálni fogjuk a Key Vaul
     + Az átlagnál nagyobb hibakódok összesen (dinamikus küszöbérték) 
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-13.png)
+> ![Képernyőkép, amely megjeleníti a riasztási feltételek kiválasztásának helyét.](../media/alert-13.png)
 
 ### <a name="example-1-configuring-a-static-alert-threshold-for-latency"></a>1. példa: statikus riasztási küszöbérték konfigurálása késéshez
 
 A **szolgáltatás teljes API-késésének** kiválasztása a jel neveként
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-14.png)
+> ![Képernyőkép, amely a szolgáltatás API-késésének teljes nevét mutatja.](../media/alert-14.png)
 
 Tekintse meg a következő konfigurációs paramétereket.
 
@@ -168,14 +168,14 @@ Tekintse meg a következő konfigurációs paramétereket.
 + Válassza a **kész** lehetőséget  
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-15.png)
+> ![Képernyőkép, amely kiemeli a beállított riasztási logikát.](../media/alert-15.png)
 
 ### <a name="example-2-configuring-a-dynamic-alert-threshold-for-vault-saturation"></a>2. példa: dinamikus riasztási küszöbérték konfigurálása a tár telítettségéhez 
 
 Dinamikus riasztás használatakor megtekintheti a kiválasztott kulcstartó korábbi információit. A kék terület a kulcstartó átlagos használatát jelöli. A vörös felület olyan tüskéket mutat be, amelyek riasztást váltottak ki, ha a riasztás konfigurációjában más feltételek teljesülnek. A piros pontok olyan megsértési példányokat mutatnak be, amelyekben a riasztás feltételei teljesültek az összesített időszak során. Beállíthatja, hogy a riasztások bizonyos számú megsértést követően beállíthatók legyenek a megadott időn belül. Ha nem szeretné belefoglalni a múltbeli adatszolgáltatásokat, a speciális beállításokban az alábbi régi adatelemek is kizárhatók. 
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-16.png)
+> ![Képernyőkép, amely a tár teljes telítettségének gráfját mutatja.](../media/alert-16.png)
 
 Tekintse meg a következő konfigurációs paramétereket.
 
@@ -194,12 +194,12 @@ Tekintse meg a következő konfigurációs paramétereket.
 5. Adja hozzá a konfigurált műveleti csoportot
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-18.png)
+> ![A műveleti csoport hozzáadását bemutató képernyőkép.](../media/alert-18.png)
 
 6. A riasztás engedélyezése és a súlyosság kiosztása
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-19.png)
+> ![Képernyőfelvétel: a riasztás engedélyezésének és súlyosságának megadása.](../media/alert-19.png)
 
 7. A riasztás létrehozása 
 
@@ -211,4 +211,4 @@ Gratulálunk, sikeresen létrehozott egy figyelési irányítópultot és konfig
 ### <a name="example-email-alert"></a>Példa e-mail riasztásra 
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Azure Portalról](../media/alert-20.png)
+> ![Képernyőfelvétel: az e-mail-riasztások konfigurálásához szükséges információk kiemelése.](../media/alert-20.png)

@@ -1,5 +1,5 @@
 ---
-title: Dedupe sorok és null értékek keresése adatfolyam-kódrészletek használatával
+title: Sorok kihagyása és a null értékek keresése adatfolyam-kódrészletek használatával
 description: Megtudhatja, hogyan lehet egyszerűen dedupe sorokat használni, és nullát keresni a kódrészletek használatával az adatfolyamatokban
 services: data-factory
 author: kromerm
@@ -8,61 +8,63 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: makromer
-ms.openlocfilehash: 841484a647d2737d621c75ebe63f65f2de829a26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c630cdd66fa4f8e609524feb9c3f0bcad9711a0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666500"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458166"
 ---
-# <a name="dedupe-rows-and-find-nulls-using-data-flow-snippets"></a>Dedupe sorok és null értékek keresése adatfolyam-kódrészletek használatával
+# <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>Sorok kihagyása és a null értékek keresése adatfolyam-kódrészletek használatával
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE [appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ha kódrészleteket használ a leképezési adatforgalomban, egyszerűen végezhet olyan gyakori feladatokat, mint például az adatok deduplikálása és a null szűrés. Ez a útmutató ismerteti, hogyan adhatja hozzá ezeket a függvényeket a folyamatokhoz az adatfolyam-parancsfájlok használatával.
-
+Ha kódrészleteket használ a leképezési folyamatokban, egyszerűen végrehajthat olyan gyakori feladatokat, mint például az adatok deduplikálása és a null szűrés. Ez a cikk azt ismerteti, hogyan lehet egyszerűen hozzáadni ezeket a függvényeket a folyamatokhoz az adatfolyam-parancsfájlok használatával.
+<br>
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4GnhH]
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-1. Új folyamat létrehozásához válassza az **+ új folyamat** elemet.
+1. Válassza a **New pipeline** (Új folyamat) lehetőséget.
 
-2. Adjon hozzá egy adatfolyam-tevékenységet.
+1. Adjon hozzá egy adatfolyam-tevékenységet.
 
-3. Forrás-átalakítás hozzáadása és csatlakoztatása egy adatkészlethez
+1. Válassza ki a **forrás beállításai** lapot, adjon hozzá egy forrás-átalakítást, majd kapcsolja össze az adatkészletek egyikével.
 
-    ![2. forrás](media/data-flow/snippet-adf-2.png)
+    ![Képernyőkép a "forrásoldali beállítások" panelről, amely a forrás típusát adja meg.](media/data-flow/snippet-adf-2.png)
 
-4. A dedupe és NULL ellenőrzési kódrészlet olyan általános mintákat használ, amelyek kihasználják az adatfolyam-sémák eltolódását, hogy az adatkészletből származó összes sémával működjenek, vagy olyan adatkészletekkel, amelyek nem rendelkeznek előre definiált sémával.
+    A dedupe és null ellenőrzési kódrészlet olyan általános mintákat használ, amelyek kihasználják az adatfolyam-séma eltolódását. A kódrészletek az adatkészlet bármely sémájával vagy olyan adatkészletekkel működnek, amelyek nem rendelkeznek előre definiált sémával.
 
-5. [Lépjen az adatfolyam-parancsfájl dokumentációs oldalára, és másolja a kódrészletet a különböző sorokhoz.](https://docs.microsoft.com/azure/data-factory/data-flow-script#distinct-row-using-all-columns)
+1. Az [adatáramlási parancsfájl (DFS)](https://docs.microsoft.com/azure/data-factory/data-flow-script#distinct-row-using-all-columns)"az összes oszlop használata" szakasza alapján másolja a DistinctRows kódrészletét.
 
-6. Az adatfolyam-tervező felhasználói felületén kattintson a jobb felső sarokban található script (szkript) gombra, és nyissa meg a parancsfájl-szerkesztőt az adatáramlási gráf mögött.
+1. Az adatfolyam-tervező felhasználói felületén kattintson a jobb felső sarokban található **parancsfájl** gombra, és nyissa meg a parancsfájl-szerkesztőt az adatáramlási gráf mögött.
 
-    ![3. forrás](media/data-flow/snippet-adf-3.png)
+    ![Képernyőfelvétel a forrás részleteiről.](media/data-flow/snippet-adf-3.png)
 
-7. Miután a parancsfájlban definiálta a definícióját ```source1``` , nyomja meg az ENTER billentyűt, majd illessze be a kódrészletbe.
+1. A parancsfájlban a definíciója után `source1` nyomja meg az ENTER billentyűt, majd illessze be a kódrészletbe.
 
-8. Ehhez a beillesztett kódrészletet a gráfban létrehozott korábbi forrás-átalakításhoz kell kapcsolni, a beillesztett kód elé írja be a "source1" kifejezést.
+1. A következő lehetőségek közül választhat:
 
-9. Azt is megteheti, hogy az új transzformációt a tervezőben a gráf új transzformációs csomópontjának bejövő stream elemére kattintva kapcsolja össze.
+   * Kapcsolja össze ezt a beillesztett kódrészletet a gráfban korábban létrehozott forrás-átalakításhoz, és írja be a **source1** szöveget a beillesztett kód elé.
 
-    ![4. forrás](media/data-flow/snippet-adf-4.png)
+   * Azt is megteheti, hogy az új transzformációt a tervezőben a gráf új transzformációs csomópontjának bejövő stream elemére kattintva kapcsolja össze.
 
-10. Most, hogy az adatfolyam el fogja távolítani az ismétlődő sorokat a forrásból az összes sor által az összes oszlop értékeit használó összesített átalakítással.
+     ![Képernyőkép a "feltételes felosztás beállításai" panelről.](media/data-flow/snippet-adf-4.png)
+
+   Most, hogy az adatfolyam el fogja távolítani az ismétlődő sorokat a forrásból az összesített átalakítás használatával, amely az összes sor szerint csoportosítja az összes oszlop értékét.
     
-11. Ezután hozzáadunk egy kódrészletet az adatai egy olyan adatfolyamba való felosztásához, amely NULLával rendelkező sorokat és egy olyan streamet tartalmaz, amely nem rendelkezik NULLával.
+1. Adjon hozzá egy kódrészletet az adatai egyetlen streambe való felosztásához, amely NULL értékkel rendelkező sorokat és egy másik, Null érték nélküli streamet tartalmaz. Ehhez tegye a következőket:
 
-12. [Térjen vissza a kódrészlet-könyvtárhoz, és ezúttal másolja a NULL ellenőrzések kódját.](https://docs.microsoft.com/azure/data-factory/data-flow-script#check-for-nulls-in-all-columns)
+   a. Térjen vissza a [kódrészlet-könyvtárhoz](https://docs.microsoft.com/azure/data-factory/data-flow-script#check-for-nulls-in-all-columns), és másolja a null értékű ellenőrzésekhez tartozó kódot.
 
-13. Az adatfolyam-tervezőben ismét kattintson a parancsfájl elemre, és illessze be az új átalakítási kódot az aljára, és csatlakoztassa az előző átalakításhoz úgy, hogy beírja az átalakítás nevét a beillesztett kódrészlet elé.
+   b. Az adatfolyam-tervezőben válassza újra a **parancsfájlt** , majd illessze be az új átalakítási kódot az aljára. Ez a művelet összekapcsolja a szkriptet az előző átalakításhoz, ha az átalakítás nevét a beillesztett kódrészlet elé helyezi.
 
-14. Az adatfolyam-gráfnak ekkor a következőhöz hasonlóan kell kinéznie:
+   Az adatfolyam-gráfnak ekkor a következőhöz hasonlóan kell kinéznie:
 
-    ![1. forrás](media/data-flow/snippet-adf-1.png)
+    ![Képernyőfelvétel az adatfolyam gráfról.](media/data-flow/snippet-adf-1.png)
 
-  Az általános deduping és NULL ellenőrzésekkel rendelkező munkafolyamatok mostantól a meglévő kódrészletek az adatfolyam-parancsfájl könyvtárából való hozzáadásával és a meglévő tervbe való felvételével rendelkeznek.
+  Ezzel létrehozott egy működő adatfolyamatot általános deduping és null ellenőrzésekkel azáltal, hogy a meglévő kódrészleteket az adatfolyam parancsfájl-könyvtárából helyezi, és hozzáadja őket a meglévő tervhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Hozza létre a többi adatáramlási logikát az adatforgalom- [átalakítások](concepts-data-flow-overview.md)leképezése használatával.

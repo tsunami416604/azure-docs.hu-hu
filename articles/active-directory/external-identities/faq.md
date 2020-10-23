@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ceb1a299fe09afd0551bdade5526a4aeefebaba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274044"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441844"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -51,7 +51,7 @@ Ez a funkció jelenleg nem támogatott. Ha a szervezet erőforrásaihoz való ho
 Előfordulhat, hogy egy szervezet VÁLLALATKÖZI együttműködéssel rendelkező felhasználókat kíván hozzáadni, szükség szerint kiépíti őket az alkalmazásokhoz, majd elküldi a meghívókat. A B2B Collaboration Meghívási API segítségével testre szabhatja a bevezetési munkafolyamatot.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Elérhetővé tehetem vendég felhasználókat az Exchange globális címlistában?
-Igen. A vendég objektumok alapértelmezés szerint nem láthatók a szervezet globális címlistában (GAL), de a Azure Active Directory PowerShell használatával láthatóvá teheti őket. Lásd: [a vendég objektumokat láthatóvá tehetem a globális címlistában?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
+Igen. A vendég objektumok alapértelmezés szerint nem láthatók a szervezet globális címlistában (GAL), de a Azure Active Directory PowerShell használatával láthatóvá teheti őket. Lásd: [a vendég objektumokat láthatóvá tehetem a globális címlistában?](/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Használhatok-e egy vendég felhasználót korlátozott rendszergazdaként?
 Természetesen. További információ: [vendég felhasználók hozzáadása szerepkörhöz](add-guest-to-role.md).
@@ -80,16 +80,16 @@ Igen! Létrehozhat egy feltételes hozzáférési szabályzatot, amely letiltja 
 Igen. A multi-Factor Authentication és a fogyasztói e-mail-fiókok egyaránt támogatottak az Azure AD B2B együttműködésben.
 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Támogatja az Azure AD B2B együttműködési felhasználók jelszavának visszaállítását?
-Ha az Azure AD-bérlő a felhasználó saját könyvtára, [alaphelyzetbe állíthatja a felhasználó jelszavát](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) a Azure Portal. Azonban nem lehet közvetlenül alaphelyzetbe állítani egy olyan vendég felhasználó jelszavát, aki egy másik Azure AD-címtár vagy külső identitás-szolgáltató által felügyelt fiókkal jelentkezik be. A jelszót csak a vendég felhasználó vagy a felhasználó kezdőkönyvtárának rendszergazdája állíthatja alaphelyzetbe. Íme néhány példa arra, hogyan működik a jelszó-visszaállítás a vendég felhasználói számára:
+Ha az Azure AD-bérlő a felhasználó saját könyvtára, [alaphelyzetbe állíthatja a felhasználó jelszavát](../fundamentals/active-directory-users-reset-password-azure-portal.md) a Azure Portal. Azonban nem lehet közvetlenül alaphelyzetbe állítani egy olyan vendég felhasználó jelszavát, aki egy másik Azure AD-címtár vagy külső identitás-szolgáltató által felügyelt fiókkal jelentkezik be. A jelszót csak a vendég felhasználó vagy a felhasználó kezdőkönyvtárának rendszergazdája állíthatja alaphelyzetbe. Íme néhány példa arra, hogyan működik a jelszó-visszaállítás a vendég felhasználói számára:
  
 * Azok a vendég felhasználók, akik Microsoft-fiókkal jelentkeznek be (például guestuser@live.com ), visszaállíthatják saját jelszavukat Microsoft-fiók önkiszolgáló jelszó-visszaállítás (SSPR) használatával. Lásd: [a Microsoft-fiók jelszavának alaphelyzetbe állítása](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Azok a vendégek, akik Google-fiókkal vagy más külső identitás-szolgáltatóval jelentkeznek be, visszaállíthatják saját jelszavukat a személyazonosság-szolgáltató SSPR metódusának használatával. A Google-fiókkal rendelkező vendég felhasználó például a guestuser@gmail.com [jelszó módosítása vagy alaphelyzetbe állítása](https://support.google.com/accounts/answer/41078)című részben leírtak szerint állíthatja vissza a jelszavát.
-* Ha az identitás bérlője egy igény szerinti (JIT) vagy "vírusos" bérlő (azaz egy különálló, nem felügyelt Azure-bérlő), csak a vendég felhasználó állíthatja alaphelyzetbe a jelszavát. Néha a szervezet [átveszi az olyan vírusos bérlők felügyeletét](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , amelyek akkor jönnek létre, amikor az alkalmazottak a munkahelyi e-mail-címeiket használják a szolgáltatások regisztrálására. Miután a szervezet átvesz egy vírusos bérlőt, csak az adott szervezet rendszergazdája állíthatja alaphelyzetbe a felhasználó jelszavát, vagy engedélyezheti a SSPR. Ha szükséges, a meghívó szervezetnél távolítsa el a vendég felhasználói fiókot a címtárból, és küldje el újra a meghívót.
+* Ha az identitás bérlője egy igény szerinti (JIT) vagy "vírusos" bérlő (azaz egy különálló, nem felügyelt Azure-bérlő), csak a vendég felhasználó állíthatja alaphelyzetbe a jelszavát. Néha a szervezet [átveszi az olyan vírusos bérlők felügyeletét](../users-groups-roles/domains-admin-takeover.md) , amelyek akkor jönnek létre, amikor az alkalmazottak a munkahelyi e-mail-címeiket használják a szolgáltatások regisztrálására. Miután a szervezet átvesz egy vírusos bérlőt, csak az adott szervezet rendszergazdája állíthatja alaphelyzetbe a felhasználó jelszavát, vagy engedélyezheti a SSPR. Ha szükséges, a meghívó szervezetnél távolítsa el a vendég felhasználói fiókot a címtárból, és küldje el újra a meghívót.
 
 * Ha a vendég felhasználói kezdőkönyvtár az Azure AD-bérlő, alaphelyzetbe állíthatja a felhasználó jelszavát. Előfordulhat például, hogy létrehozott egy felhasználót, vagy szinkronizált egy felhasználót a helyszíni Active Directory, és beállította a UserType a vendégnek. Mivel ez a felhasználó a címtárban található, alaphelyzetbe állíthatja a jelszót a Azure Portal.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>A Microsoft Dynamics 365 online támogatást biztosít az Azure AD B2B együttműködéshez?
-Igen, a Dynamics 365 (online) támogatja az Azure AD B2B-együttműködést. További információ: a Dynamics 365 cikke a [felhasználók meghívása az Azure ad B2B együttműködéssel](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
+Igen, a Dynamics 365 (online) támogatja az Azure AD B2B-együttműködést. További információ: a Dynamics 365 cikke a [felhasználók meghívása az Azure ad B2B együttműködéssel](/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Milyen élettartammal rendelkezik egy újonnan létrehozott B2B csoportmunka-felhasználó kezdeti jelszava?
 Az Azure AD egy rögzített karakter-, jelszó-és fiókzárolási követelményekkel rendelkezik, amelyek egyformán érvényesek az összes Azure AD Cloud felhasználói fiókra. A felhőalapú felhasználói fiókok olyan fiókok, amelyek nem összevontak más identitás-szolgáltatóval, például 
@@ -132,7 +132,6 @@ Igen. Az Azure AD B2B együttműködés támogatja az engedélyezési és a leti
 ### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Milyen licencekre van szükségünk az Azure AD B2B használatához?
 További információ a szervezet által az Azure AD B2B használatához szükséges licencekről: [Azure Active Directory B2B együttműködés licencelési útmutatója](licensing-guidance.md).
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-

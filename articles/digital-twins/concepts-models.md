@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c71a7d4737ad34c43df1aa302d9517c61ed400b2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019018"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440790"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
 
@@ -228,9 +228,9 @@ A kiterjesztési felület nem változtathatja meg a szülő felületek definíci
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinsModels API-kkal:
+Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinModels API-kkal:
 * [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)
 
 Vagy Ismerje meg, hogyan hozhatók létre a digitális ikrek a modellek alapján:

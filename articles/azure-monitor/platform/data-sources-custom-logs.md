@@ -1,21 +1,24 @@
 ---
-title: Egyéni naplók gyűjtése a Azure Monitorban | Microsoft Docs
+title: Egyéni naplók gyűjtése Log Analytics ügynökkel Azure Monitor
 description: A Azure Monitor a Windows és Linux rendszerű számítógépeken is gyűjthet eseményeket a szöveges fájlokból.  Ez a cikk azt ismerteti, hogyan határozható meg az új egyéni napló és a Azure Monitorban létrehozott rekordok részletei.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/26/2019
-ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269488"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461566"
 ---
-# <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók az Azure Monitorban
+# <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Egyéni naplók gyűjtése Log Analytics ügynökkel Azure Monitor
 
-Az egyéni naplók adatforrása Azure Monitor lehetővé teszi, hogy a Windows és Linux rendszerű számítógépeken lévő szövegfájlokból is gyűjtsön eseményeket. Számos alkalmazás a szabványos naplózási szolgáltatások, például a Windows-Eseménynapló vagy a syslog helyett szöveges fájlokba naplóz adatokat. Az adatgyűjtés után elemezheti az adatokat a lekérdezések egyes mezőibe, vagy kinyerheti az adatokat a gyűjteménybe az egyes mezőkbe.
+A Azure Monitor Log Analytics ügynökének egyéni naplói adatforrása lehetővé teszi, hogy a Windows és a Linux rendszerű számítógépeken is gyűjtsön eseményeket a szöveges fájlokból. Számos alkalmazás a szabványos naplózási szolgáltatások, például a Windows-Eseménynapló vagy a syslog helyett szöveges fájlokba naplóz adatokat. Az adatgyűjtés után elemezheti az adatokat a lekérdezések egyes mezőibe, vagy kinyerheti az adatokat a gyűjteménybe az egyes mezőkbe.
+
+> [!IMPORTANT]
+> Ez a cikk az egyéni naplók összegyűjtését ismerteti a [log Analytics ügynökkel](log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](agents-overview.md) .
 
 ![Egyéni naplók gyűjtése](media/data-sources-custom-logs/overview.png)
 
@@ -169,6 +172,6 @@ A következő alternatív stratégiákat kell figyelembe venni abban az esetben,
 - Egyéni parancsfájl vagy más módszer használatával adatokat írhat a Windows- [eseményekre](data-sources-windows-events.md) vagy a [syslog](data-sources-syslog.md) -re, amelyeket a Azure monitor gyűjt. 
 - Az adatküldés közvetlenül a Azure Monitor a http-adatgyűjtő [API](data-collector-api.md)használatával. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .

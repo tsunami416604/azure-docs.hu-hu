@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 9eac64eff8c87046fd1ce76ee71475fda79ac6f7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 42419247de537f9a166c3cdca2fd5a832ade6a5f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329253"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461430"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -235,7 +235,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Monitor-portál használatának, például a Application Insights és a Log Analytics használatához engedélyeznie kell a Azure Portal és a Azure Monitor bővítmények számára a magánhálózatok elérését. Adja hozzá a **AzureActiveDirectory**, a **AzureResourceManager**, a **AzureFrontDoor. FirstParty**és a **AzureFrontDoor. frontend** [szolgáltatás címkéit](../../firewall/service-tags.md) a tűzfalhoz.
+A Azure Monitor-portál használatának, például a Application Insights és a Log Analytics használatához engedélyeznie kell a Azure Portal és a Azure Monitor bővítmények számára a magánhálózatok elérését. Vegye fel a **AzureActiveDirectory**, a **AzureResourceManager**, a **AzureFrontDoor. FirstParty**és a **AzureFrontDoor. frontend** [szolgáltatás címkéit](../../firewall/service-tags.md) a hálózati biztonsági csoportba.
 
 ### <a name="programmatic-access"></a>Szoftveres hozzáférés
 

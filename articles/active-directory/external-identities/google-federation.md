@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dba592417ca07d1858a7942b162b4dfa6a85680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8c07a6a67e97deafa2f611b297574a801aa356d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273993"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441946"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára
 
@@ -70,7 +70,7 @@ Először hozzon létre egy új projektet a Google Developers konzolon egy ügyf
 
    ![A jogosultsággal rendelkező tartományok szakaszt bemutató képernyőkép](media/google-federation/google-oauth-authorized-domains.PNG)
 
-9. Kattintson a **Mentés** gombra.
+9. Válassza a **Mentés** lehetőséget.
 
 10. Adja meg a **hitelesítő adatokat**. A **hitelesítő adatok létrehozása** menüben válassza a **OAUTH ügyfél-azonosító**elemet.
 
@@ -96,7 +96,7 @@ Most be kell állítania a Google ügyfél-azonosítót és az ügyfél titkát,
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza a **külső identitások**lehetőséget.
 3. Válassza a **minden identitás szolgáltató**lehetőséget, majd kattintson a **Google** gombra.
-4. Ezután adja meg a korábban beszerzett ügyfél-azonosítót és az ügyfél-titkot. Kattintson a **Mentés** gombra. 
+4. Ezután adja meg a korábban beszerzett ügyfél-azonosítót és az ügyfél-titkot. Válassza a **Mentés** lehetőséget. 
 
    ![Képernyőfelvétel a Google Identity Provider hozzáadása oldalról](media/google-federation/google-identity-provider.png)
 
@@ -109,7 +109,7 @@ Most be kell állítania a Google ügyfél-azonosítót és az ügyfél titkát,
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Használja az ügyfél-azonosítót és az ügyfél titkos kulcsát az "1. lépés: Google fejlesztői projekt konfigurálása" című témakörben létrehozott alkalmazásból. További információt a [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) című cikkben talál. 
+   > Használja az ügyfél-azonosítót és az ügyfél titkos kulcsát az "1. lépés: Google fejlesztői projekt konfigurálása" című témakörben létrehozott alkalmazásból. További információt a [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) című cikkben talál. 
  
 ## <a name="how-do-i-remove-google-federation"></a>Hogyan eltávolítja a Google Federation szolgáltatást?
 A Google összevonási telepítőt törölheti. Ha így tesz, a Google vendég felhasználóinak, akik már beváltották a meghívót, nem tudnak majd bejelentkezni, de ismét hozzáférhetnek az erőforrásokhoz úgy, hogy törlik őket a címtárból, és újra meghívja őket. 
@@ -126,11 +126,11 @@ A Google összevonási telepítőt törölheti. Ha így tesz, a Google vendég f
 
 ### <a name="to-delete-google-federation-by-using-powershell"></a>Google-összevonás törlése a PowerShell használatával: 
 1. Telepítse az Azure AD PowerShell for Graph modul ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)) legújabb verzióját.
-2. A `Connect-AzureAD` parancs futtatása.  
+2. Futtassa a `Connect-AzureAD` parancsot.  
 4. A bejelentkezési üzenetben jelentkezzen be a felügyelt globális rendszergazdai fiókkal.  
 5. Írja be a következő parancsot:
 
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 
    > [!NOTE]
-   > További információ: [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > További információ: [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview).

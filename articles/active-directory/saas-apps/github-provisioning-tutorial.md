@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5f48cd0056d40ed7dc5c99c4260621533c1f71f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b9b7a82d611743f2ba76e20f47670771e2e38904
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369080"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448962"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: a GitHub konfigurálása automatikus felhasználói üzembe helyezéshez
 
@@ -28,7 +28,7 @@ Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már re
 * Azure Active Directory-bérlő
 * GitHub [vállalati felhőben](https://help.github.com/articles/github-s-products/#github-enterprise)létrehozott GitHub-szervezet, amelyhez a [GitHub Enterprise számlázási csomag](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) szükséges
 * Felhasználói fiók a GitHubban rendszergazdai engedélyekkel a szervezethez
-* [SAML-konfiguráció a GitHub Enterprise Cloud organizationhoz](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
+* [SAML-konfiguráció a GitHub Enterprise Cloud organizationhoz](./github-tutorial.md)
 * Győződjön meg arról, hogy az [itt](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) leírtak szerint a OAuth hozzáférése meg lett biztosítva a szervezet számára
 * Az SCIM-kiépítés egyetlen szervezet számára csak akkor támogatott, ha a szervezeti szinten engedélyezve van az egyszeri bejelentkezés.
 

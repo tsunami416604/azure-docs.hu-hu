@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 715e99f07d0fcbc77fd1769e5da1cae6b46ac97e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dc4087d1a10b4c4af7477a02f397c5a2bc547c2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850734"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Oktatóanyag: Azure Active Directory integráció a Jobscience
 
@@ -304,7 +304,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen a Jobscience csempére kattint, a rendszer automatikusan bejelentkezett a Jobscience alkalmazásba.
-További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/active-directory-saas-access-panel-introduction.md).
+További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
@@ -324,4 +324,3 @@ További információ a hozzáférési panelről: [Bevezetés a hozzáférési p
 [201]: ./media/jobscience-tutorial/tutorial_general_201.png
 [202]: ./media/jobscience-tutorial/tutorial_general_202.png
 [203]: ./media/jobscience-tutorial/tutorial_general_203.png
-

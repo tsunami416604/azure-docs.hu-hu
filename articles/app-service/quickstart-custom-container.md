@@ -3,16 +3,16 @@ title: 'Gyors útmutató: egyéni tároló futtatása App Serviceon'
 description: Ismerkedjen meg Azure App Service tárolókkal az első egyéni tároló üzembe helyezésével.
 author: msangapu-msft
 ms.author: msangapu
-ms.date: 08/28/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 3191552421091bc0a2c4e6855c0271c142af1882
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1411491906e763a52ee1b6a66df1dea183b91973
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152375"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425867"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Egyéni tároló futtatása az Azure-ban
 
@@ -169,7 +169,7 @@ A streamelt naplók a következőképpen néznek ki:
 
 ![Frissített webalkalmazás az Azure-ban](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Áttelepítés az Azure-ban található Windows-tárolókba](tutorial-custom-container.md)
@@ -242,7 +242,7 @@ A rendszer az üzembe helyezés során megnyílik a **kimeneti** panel, hogy jel
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

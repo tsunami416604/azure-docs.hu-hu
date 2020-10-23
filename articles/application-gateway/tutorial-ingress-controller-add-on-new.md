@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a93ef47d4a7ecc136f66cf54a08f7ed23bec2cc0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285587"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427970"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő bővítmény (előzetes verzió) engedélyezése
 
@@ -87,7 +87,7 @@ A következő példában egy *myCluster* nevű új AK-fürtöt fog üzembe helye
 Ha egy meglévő Application Gateway-példány megadása nélkül telepít egy új AK-fürtöt a AGIC-bővítménysel, akkor a rendszer egy Standard_v2 SKU Application Gateway példány automatikus létrehozását fogja jelenteni. Így megadhatja a Application Gateway példány nevét és alhálózatának címterület-területét is. Az Application Gateway-példány neve *myApplicationGateway*lesz, és az alhálózati címtartomány a jelenleg használt 10.2.0.0/16. Győződjön meg arról, hogy az ebben az oktatóanyagban az AK-előzetes bővítményt adta hozzá vagy frissítette. 
 
 ```azurecli-interactive
-az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" 
+az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
 A parancs további paramétereinek konfigurálásához `az aks create` tekintse meg [ezeket a hivatkozásokat](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
