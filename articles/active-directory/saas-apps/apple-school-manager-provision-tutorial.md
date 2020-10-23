@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fed376eae1c3dadb17f5ecf8e7f1c3422e07b9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757452"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426430"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Oktatóanyag: az Apple School Manager konfigurálása automatikus felhasználók kiosztásához
 
@@ -160,7 +160,6 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * [SCIM-tevékenység megtekintése az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
 * [Meglévő SCIM-jogkivonat és-kapcsolatok kezelése az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
 * [Az SCIM-kapcsolat leválasztása az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [Meglévő SCIM-jogkivonat és-kapcsolatok kezelése az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
 * [Az SCIM-kapcsolatok hibaelhárítása az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>További lépések

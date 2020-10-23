@@ -7,19 +7,19 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d3d1c6bb14db3eb2ca499069934a628d2f7fea
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292923"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425786"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud Partner Portal API-referencia
 
 > [!NOTE]
 > A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a jelen dokumentumban felsorolt [CPP API-k módosításait](#changes-to-cpp-apis-after-the-migration-to-partner-center) , hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
 
-A Cloud Partner Portal REST API-k lehetővé teszik a számítási feladatok, ajánlatok és kiadói profilok programozott lekérését és kezelését. Az API-k szerepköralapú hozzáférés-vezérlés (RBAC) használatával kényszerítik ki a megfelelő engedélyeket a feldolgozási idő során.
+A Cloud Partner Portal REST API-k lehetővé teszik a számítási feladatok, ajánlatok és kiadói profilok programozott lekérését és kezelését. Az API-k az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával kényszerítik ki a megfelelő engedélyeket a feldolgozási időben.
 
 Ez a hivatkozás a Cloud Partner Portal REST API-k technikai részleteit ismerteti. A dokumentumban szereplő hasznos adatok csak referenciául szolgálnak, és új funkciók hozzáadásakor változhatnak.
 

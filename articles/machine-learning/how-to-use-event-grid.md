@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d2f600a651f44abddf4a77f2a01486fa0259f2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362516"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428439"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Alkalmazások, folyamatok vagy CI/CD-munkafolyamatok elindítása Azure Machine Learning események alapján (előzetes verzió)
 
@@ -62,7 +62,7 @@ Ezek az események Azure Event Gridon keresztül jelennek meg. A Azure Portal, a
 
 Az események beállításakor szűrőket alkalmazhat, hogy csak adott esemény adatain aktiválja az eseményindítót. Az alábbi példában a Futtatás állapotának megváltozása események esetében a futtatási típusok alapján szűrhet. Az esemény csak akkor aktiválódik, ha a feltételek teljesülnek. Tekintse át az [Azure Machine learning Event Grid-sémát](/azure/event-grid/event-schema-machine-learning) , ahol megismerheti azokat az események adatait, amelyeket szűrni tud. 
 
-A Azure Machine Learning eseményekre vonatkozó előfizetéseket szerepköralapú hozzáférés-vezérlés (RBAC) védi. A munkaterületek csak [közreműködői vagy tulajdonosai](how-to-assign-roles.md#default-roles) hozhatnak létre, frissíthetnek és törölhetnek esemény-előfizetéseket.  A szűrők az esemény-előfizetés [létrehozásakor](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) vagy egy későbbi időpontban is alkalmazhatók az események előfizetésére. 
+Az Azure Machine Learning eseményekre vonatkozó előfizetéseket az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) védi. A munkaterületek csak [közreműködői vagy tulajdonosai](how-to-assign-roles.md#default-roles) hozhatnak létre, frissíthetnek és törölhetnek esemény-előfizetéseket.  A szűrők az esemény-előfizetés [létrehozásakor](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) vagy egy későbbi időpontban is alkalmazhatók az események előfizetésére. 
 
 
 1. Nyissa meg a Azure Portal, válasszon ki egy új előfizetést, vagy egy meglévőt. 
@@ -244,7 +244,7 @@ Az Azure Machine Learning Model objektum olyan paramétereket tartalmaz, amelyek
 
 Példaként tekintse meg a [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) tárházat, és kövesse a **readme** fájlban található lépéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Event Gridről és a Azure Machine Learning események megadásáról:
 

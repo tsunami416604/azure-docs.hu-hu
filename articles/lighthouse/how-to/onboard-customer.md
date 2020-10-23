@@ -3,12 +3,12 @@ title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 926e9bc5302403063d536e31fe304d837bca8ec5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b5a6d60d10b2cee7f26ae405ed95b980f423b42e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109068"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426335"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -62,7 +62,7 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Szerepkörök és engedélyek definiálása
 
-Szolgáltatóként több feladatot is el lehet végezni egyetlen ügyfél számára, eltérő hozzáférésre van szükség a különböző hatókörökhöz. A megfelelő [szerepköralapú hozzáférés-vezérlés (RBAC) beépített szerepköreinek](../../role-based-access-control/built-in-roles.md) a bérlőben lévő felhasználókhoz való hozzárendeléséhez tetszőleges számú engedélyt adhat meg.
+Szolgáltatóként több feladatot is el lehet végezni egyetlen ügyfél számára, eltérő hozzáférésre van szükség a különböző hatókörökhöz. A megfelelő [Azure beépített szerepköröknek](../../role-based-access-control/built-in-roles.md) a bérlőben lévő felhasználókhoz való hozzárendeléséhez tetszőleges számú engedélyt adhat meg.
 
 A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói csoportok használata az egyes szerepkörökhöz. Ez rugalmasságot biztosít az egyes felhasználók hozzáadásához vagy eltávolításához a hozzáféréssel rendelkező csoport számára, így nem kell megismételni a bevezetési folyamatot a felhasználói módosítások elvégzéséhez. A szerepköröket hozzárendelhet egy egyszerű szolgáltatáshoz, ami automatizálási forgatókönyvekhez hasznos lehet.
 

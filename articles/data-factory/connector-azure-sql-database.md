@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7072adfcfd276d6420d8ffd7331c59ead7edd288
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: fa994525285ffe363f734e9b706252105b05ff26
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952046"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428442"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure SQL Database adatmásolása és átalakítása a Azure Data Factory használatával
 
@@ -112,12 +112,12 @@ Különböző hitelesítési típusok esetén tekintse át az előfeltételek é
         "typeProperties": {
             "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
             "password": {
-                "type": "AzureKeyVaultSecret",
+                "type": "AzureKeyVaultSecret",
                 "store": {
-                    "referenceName": "<Azure Key Vault linked service name>",
-                    "type": "LinkedServiceReference"
+                    "referenceName": "<Azure Key Vault linked service name>",
+                    "type": "LinkedServiceReference"
                 },
-                "secretName": "<secretName>"
+                "secretName": "<secretName>"
             }
         },
         "connectVia": {
@@ -228,7 +228,7 @@ Azure SQL Database adatkészlet esetében a következő tulajdonságok támogato
 |:--- |:--- |:--- |
 | típus | Az adatkészlet **Type** tulajdonságát **tulajdonsága azuresqltable**értékre kell állítani. | Igen |
 | schema | A séma neve. |Nem, forrás, igen, fogadó  |
-| tábla | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
+| table | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
 | tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a és a elemet `schema` `table` . | Nem, forrás, igen, fogadó |
 
 ### <a name="dataset-properties-example"></a>Adatkészlet tulajdonságai – példa
@@ -272,8 +272,8 @@ Az adatok Azure SQL Databaseból történő másolásához a másolási tevéken
 | isolationLevel | Meghatározza az SQL-forrás tranzakció-zárolási viselkedését. Az engedélyezett értékek a következők: **ReadCommitted**, **ReadUncommitted**, **RepeatableRead**, **szerializálható**, **Pillanatkép**. Ha nincs megadva, a rendszer az adatbázis alapértelmezett elkülönítési szintjét használja. További részletekért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) . | Nem |
 | partitionOptions | Meghatározza az adatok Azure SQL Databaseból való betöltéséhez használt adatparticionálási beállításokat. <br>Az engedélyezett értékek a következők: **none** (alapértelmezett), **PhysicalPartitionsOfTable**és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None` ), a párhuzamosság mértékét az adatok egy Azure SQL Databaseból való párhuzamos betöltéséhez a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállításai vezérlik. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a partíció lehetőség nem `None` . | Nem |
-| ***Alatt `partitionSettings` :*** | | |
-| partitionColumnName | Adja meg a forrás oszlop nevét **Integer vagy Date/datetime típusú** értékben, amelyet a rendszer a párhuzamos másolási tartomány particionálásakor fog használni. Ha nincs megadva, a rendszer automatikusan észleli a tábla indexét vagy elsődleges kulcsát, és a partíció oszlopként használja.<br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához,  `?AdfDynamicRangePartitionCondition ` a WHERE záradékban lévő hookot. Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-sql-database) szakaszát. | Nem |
+| **_Alatt `partitionSettings` :_*_ | | |
+| partitionColumnName | Adja meg annak a forrás oszlopnak a nevét, amely az*egész szám vagy dátum/idő típusú*, valamint a párhuzamos másolási tartomány particionálásakor használandó. Ha nincs megadva, a rendszer automatikusan észleli a tábla indexét vagy elsődleges kulcsát, és a partíció oszlopként használja.<br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához,  `?AdfDynamicRangePartitionCondition ` a WHERE záradékban lévő hookot. Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-sql-database) szakaszát. | Nem |
 | partitionUpperBound | A particionálási tartomány felosztásának partíciós oszlopának maximális értéke. Ezzel az értékkel lehet eldönteni, hogy a partíció Stride-e, nem pedig a táblázat sorainak szűrésére. A program a tábla vagy a lekérdezés eredményének összes sorát particionálja és másolja. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értéket.  <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-sql-database) szakaszát. | Nem |
 | partitionLowerBound | A particionálási tartomány felosztásához szükséges partíciós oszlop minimális értéke. Ezzel az értékkel lehet eldönteni, hogy a partíció Stride-e, nem pedig a táblázat sorainak szűrésére. A program a tábla vagy a lekérdezés eredményének összes sorát particionálja és másolja. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értéket.<br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-sql-database) szakaszát. | Nem |
 
@@ -472,7 +472,7 @@ A particionált másolás engedélyezésekor a másolási tevékenység párhuza
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatparticionálással, különösen akkor, ha nagy mennyiségű adattal tölt be a Azure SQL Database. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása esetén ajánlott több fájlként írni egy mappába (csak a mappa nevét adja meg), ebben az esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
-| Forgatókönyv                                                     | Javasolt beállítások                                           |
+| Használati eset                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Teljes terhelés nagyméretű táblából, fizikai partíciókkal.        | **Partíciós beállítás**: a tábla fizikai partíciói. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a fizikai partíciókat, és az Adatmásolást partíciók szerint. <br><br/>Ha szeretné megnézni, hogy a tábla rendelkezik-e fizikai partícióval, tekintse át [ezt a lekérdezést](#sample-query-to-check-physical-partition). |
 | Teljes terhelés a nagyméretű táblából fizikai partíciók nélkül, egész számmal vagy datetime oszloppal az adatok particionálásához. | **Partíciós beállítások**: dinamikus tartományú partíció.<br>**Partíciós oszlop** (nem kötelező): az adatparticionáláshoz használt oszlop megadása. Ha nincs megadva, a rendszer az indexet vagy az elsődleges kulcs oszlopot használja.<br/>**Partíció felső határa** és a **partíció alsó határa** (nem kötelező): adja meg, hogy meg szeretné-e állapítani a partíciós lépéseket. Ez nem a tábla sorainak szűrésére szolgál, a tábla összes sorát particionálja és másolja a rendszer. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értékeket.<br><br>Ha például az "ID" partíciós oszlop értéke 1 és 100 között van, és az alsó határ 20-ra van állítva, a felső határ pedig 80, és a párhuzamos másolás 4 Data Factory, akkor az adatok 4 partíció-azonosítóval vannak lekérdezve a következő tartományban: <= 20, [21, 50], [51, 80] és >= 81. |
@@ -671,6 +671,8 @@ A Azure SQL Database vonatkozó beállítások a fogadó átalakítás **Beáll�
 
 Az ADF a következő frissítés, upsert, törlés részeként használt oszlop nevét fogja használni. Ezért ki kell választania egy oszlopot, amely szerepel a fogadó leképezésében. Ha nem szeretné írni az értéket a kulcs oszlopba, kattintson a "kulcs oszlopainak kihagyása" elemre.
 
+Az itt használt parametrizálja a cél Azure SQL Database tábla frissítéséhez használhatja. Ha több oszlopa van egy összetett kulcshoz, a kattintson az "egyéni kifejezés" elemre, és dinamikus tartalmat adhat hozzá az ADF adatáramlás kifejezésének nyelvével, amely tartalmazhat egy összetett kulcshoz tartozó oszlopnevek tömbjét.
+
 **Tábla művelete:** Meghatározza, hogy a rendszer az összes sort újra létrehozza vagy eltávolítja a célhelyről az írás előtt.
 
 - Nincs: a rendszer nem hajt végre műveletet a táblán.
@@ -693,7 +695,7 @@ Az adatoknak a vagy a Azure SQL Databaseba való másolásakor a rendszer a köv
 | binary |Bájt [] |
 | bit |Logikai |
 | char |Karakterlánc, char [] |
-| date |DateTime |
+| dátum |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |

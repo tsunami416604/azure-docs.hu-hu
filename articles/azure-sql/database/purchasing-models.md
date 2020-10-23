@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5760d3daaa13a5ed16230e1ffb7fe3691455e09
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319452"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427032"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Választás a virtuális mag és a DTU beszerzési modelljei közül – Azure SQL Database és az SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ A tárolási díjszabással kapcsolatos további információkért tekintse meg 
 
 A virtuális mag (virtuális mag) a logikai CPU-t jelöli, és lehetőséget nyújt a hardver és a hardver fizikai jellemzőinek (például a magok, a memória és a tárterület méretének) a kiválasztására. A virtuális mag-alapú vásárlási modell rugalmasságot, irányítást, átláthatóságot biztosít az egyes erőforrások fogyasztása terén, és egy egyszerű módszert kínál a helyszíni munkaterhelés-követelmények felhőbe való lefordítására. Ez a modell lehetővé teszi a számítási, a memória-és a tárolási erőforrások kiválasztását a munkaterhelés igényei alapján.
 
-A virtuális mag-alapú vásárlási modellben az SQL Database és az SQL felügyelt példányának [általános célú](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) és [üzletileg kritikus](high-availability-sla.md#premium-and-business-critical-service-tier-availability) szolgáltatási szintjei közül választhat.  Önálló adatbázisok esetén a [nagy kapacitású szolgáltatási szintet](service-tier-hyperscale.md)is kiválaszthatja.
+A virtuális mag-alapú vásárlási modellben az SQL Database és az SQL felügyelt példányának [általános célú](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) és [üzletileg kritikus](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) szolgáltatási szintjei közül választhat.  Önálló adatbázisok esetén a [nagy kapacitású szolgáltatási szintet](service-tier-hyperscale.md)is kiválaszthatja.
 
 A virtuális mag-alapú vásárlási modell lehetővé teszi a számítási és tárolási erőforrások egymástól független kiválasztását, a helyszíni teljesítmény egyeztetését és az árak optimalizálását. A virtuális mag-alapú vásárlási modellben a következőket kell fizetnie:
 
@@ -168,7 +168,7 @@ Nem. Nem kell offline állapotba hoznia az alkalmazást. Az új szolgáltatási 
 
 Igen, a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával könnyedén átalakíthatja az adatbázist bármely támogatott teljesítménybeli célkitűzésre. Lásd: [önálló adatbázisok kezelése](single-database-scale.md) és [rugalmas készletek kezelése](elastic-pool-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A virtuális mag-alapú vásárlási modellel kapcsolatos további információkért lásd: [virtuális mag-alapú vásárlási modell](service-tiers-vcore.md).
 - A DTU-alapú vásárlási modellel kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](service-tiers-dtu.md).

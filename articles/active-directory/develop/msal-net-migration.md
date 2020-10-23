@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21f29135cc3b94e5b8c2dfc99b0f7be26b37d123
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166108"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425269"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
@@ -176,8 +176,8 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 Ha a Microsoft Graph API-val szeretné olvasni és írni a MSAL.NET Azure Active Directory használatával (a https://graph.microsoft.com/) hatókörök listáját a következő kódrészlethez hasonlóan kell létrehoznia:
 
 ```csharp
-ResourceId = "https://graph.microsoft.com/";
-var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
+string ResourceId = "https://graph.microsoft.com/"; 
+string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write" }
 ```
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Figyelmeztetés: Ha egy v 1.0 webes API-nak megfelelő hatókörben egy vagy két perjel van
@@ -264,6 +264,6 @@ Ekkor megjelenik egy hozzáférési jogkivonat és egy azonosító jogkivonat, a
 
 Ezt a módszert olyan különböző integrációs forgatókönyvek esetében is használhatja, amelyeken elérhető frissítési jogkivonat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hatókörökkel [, engedélyekkel és a Microsoft Identity platform végpontjában](v2-permissions-and-consent.md) található hatókörökkel kapcsolatos további információk

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bd43f89ff6e341756c1706eb96d07510c6fb1a4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710719"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428208"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -202,7 +202,7 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 3. Hasznos hivatkozások
 4. Képernyőképek
 
-#### <a name="name"></a>Name (Név)
+#### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -328,16 +328,16 @@ A **terv áttekintésében** elérhető **műveletek** a csomag aktuális állap
 
 ### <a name="create-new-plan"></a>Új csomag létrehozása
 
-***Csomag azonosítója*** – hozzon létre egy egyedi díjcsomag-azonosítót az ajánlat egyes terveihez. Ez az azonosító a termék URL-címében szereplő ügyfelek számára jelenik meg.  Csak kisbetűket, alfanumerikus karaktereket, kötőjeleket vagy aláhúzást használjon. Ehhez a csomag-AZONOSÍTÓhoz legfeljebb 50 karakter adható meg. Ez az azonosító nem módosítható a létrehozás kiválasztása után.
+**_Terv azonosítója_*_ – hozzon létre egy egyedi díjcsomag-azonosítót az ajánlat egyes terveihez. Ez az azonosító a termék URL-címében szereplő ügyfelek számára jelenik meg.  Csak kisbetűket, alfanumerikus karaktereket, kötőjeleket vagy aláhúzást használjon. Ehhez a csomag-AZONOSÍTÓhoz legfeljebb 50 karakter adható meg. Ez az azonosító nem módosítható a létrehozás kiválasztása után.
 
-***Csomag neve*** – az ügyfelek ezt a nevet fogják látni, amikor azt döntik el, hogy melyik csomagot kell kiválasztani az ajánlaton belül. Hozzon létre egyedi nevet az ajánlat minden csomagjának. A terv neve az adott ajánlat részét képező szoftvercsomagok megkülönböztetésére szolgál (például az ajánlat neve: Windows Server; csomagok: Windows Server 2016, Windows Server 2019).
+_*_Csomag neve_*_ – az ügyfelek ezt a nevet fogják látni, amikor azt döntik el, hogy melyik csomagot kell kiválasztani az ajánlaton belül. Hozzon létre egyedi nevet az ajánlat minden csomagjának. A terv neve az adott ajánlat részét képező szoftvercsomagok megkülönböztetésére szolgál (például az ajánlat neve: Windows Server; csomagok: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Csomag beállítása
 
 Ezen a lapon beállíthatja a csomag típusának magas szintű konfigurációját, hogy az újrahasznosítsa-e a csomagokat egy másik csomagból, és milyen felhők legyenek elérhetők a tervben. Az ezen a lapon megjelenő válaszok hatással lesznek arra, hogy mely mezők jelenjenek meg ugyanazon csomag más lapjain.
 
 #### <a name="plan-type"></a>Csomag típusa
-Válassza ki az ajánlathoz tartozó csomag típusát. A **megoldás sablonjait** teljes mértékben az ügyfél kezeli. A **felügyelt alkalmazási** csomag lehetővé teszi, hogy a kiadók az alkalmazást az ügyfél nevében kezeljék. Részletekért lásd: [Az Azure-alkalmazási csomagok típusai](#types-of-azure-application-plans).
+Válassza ki az ajánlathoz tartozó csomag típusát. Az _*megoldás-sablon** csomagot teljes egészében az ügyfél kezeli. A **felügyelt alkalmazási** csomag lehetővé teszi, hogy a kiadók az alkalmazást az ügyfél nevében kezeljék. Részletekért lásd: [Az Azure-alkalmazási csomagok típusai](#types-of-azure-application-plans).
 
 #### <a name="re-use-technical-configuration"></a>Technikai konfiguráció újbóli használata
 
@@ -508,7 +508,7 @@ Adjon meg egy HTTPS-webhook-végpontot, hogy értesítést kapjon a csomag felü
 
 Ezzel a beállítással adhatja meg, hogy az ügyfelek milyen műveleteket hajthatnak végre a felügyelt erőforrásokon a " `*/read` " alapértelmezés szerint elérhető műveletek mellett.
 
-Sorolja fel azokat a további műveleteket, amelyeknek lehetővé szeretné tenni az ügyfél számára, hogy itt hajtsa végre ezt a műveletet pontosvesszővel elválasztva.  További információ: [Az Azure-erőforrások megtagadási hozzárendeléseinek ismertetése](../../role-based-access-control/deny-assignments.md). Az elérhető műveletekért lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md). Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását, adja hozzá `Microsoft.Compute/virtualMachines/restart/action` az engedélyezett műveleteket.
+Sorolja fel azokat a további műveleteket, amelyeknek lehetővé szeretné tenni az ügyfél számára, hogy itt hajtsa végre ezt a műveletet pontosvesszővel elválasztva.  További információ: [Az Azure-erőforrások megtagadási hozzárendeléseinek ismertetése](../../role-based-access-control/deny-assignments.md). Az elérhető műveletekért tekintse meg az [Azure erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md)című témakört. Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását, adja hozzá `Microsoft.Compute/virtualMachines/restart/action` az engedélyezett műveleteket.
 
 #### <a name="global-azure--azure-government-cloud"></a>Globális Azure/Azure Government felhő
 
@@ -518,7 +518,7 @@ Adja meg, hogy ki kell-e kezelni a felügyelt alkalmazáshoz tartozó felügyele
 
 **Engedélyek** – adja meg annak a felhasználónak, csoportnak vagy alkalmazásnak az Azure Active Directory-objektumazonosítóát, amelyhez engedélyeket szeretne adni a felügyelt erőforráscsoport számára. Azonosítsa a felhasználót a résztvevő azonosítója alapján, amely a [Azure Portal Azure Active Directory felhasználók](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)paneljén található.
 
-Minden egyes rendszerbiztonsági tag esetében válassza ki az egyik Azure AD beépített szerepkört a listából (tulajdonos vagy közreműködő). A kiválasztott szerepkör leírja, hogy a rendszerbiztonsági tag milyen engedélyeket fog tartalmazni az ügyfél-előfizetés erőforrásaiban. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md). A szerepköralapú hozzáférés-vezérléssel (RBAC) kapcsolatos további információkért lásd: Ismerkedés a [RBAC szolgáltatással a Azure Portalban](../../role-based-access-control/overview.md).
+Minden egyes rendszerbiztonsági tag esetében válassza ki az egyik Azure AD beépített szerepkört a listából (tulajdonos vagy közreműködő). A kiválasztott szerepkör leírja, hogy a rendszerbiztonsági tag milyen engedélyeket fog tartalmazni az ügyfél-előfizetés erőforrásaiban. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md). Az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) kapcsolatos további információkért lásd: [Mi az az Azure RBAC](../../role-based-access-control/overview.md).
 
 >[!Note]
 >Bár a felhőben legfeljebb 100 engedélyezést adhat hozzá, általában könnyebb létrehozni egy Active Directory felhasználói csoportot, és megadhatja annak AZONOSÍTÓját a "résztvevő azonosítója" értékkel. Ez lehetővé teszi, hogy a csomag telepítése után további felhasználókat vegyen fel a felügyeleti csoportba, és csökkentse a terv frissítésének szükségességét, hogy további engedélyeket adjon hozzá.
@@ -600,6 +600,6 @@ A közzétételi folyamat **manuális érvényesítési** lépése az ajánlat �
 
 Ha a közzétételi lépések közül egy vagy több hibát tartalmaz, javítsa ki azokat az ajánlat ismételt közzététele előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

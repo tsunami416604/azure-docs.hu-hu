@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 59a87e7c91266dd1ec2d7263df7149d07f6e7ce8
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 67c52728b72f0941ae3c9b39552ca398c12c67a2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342297"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425143"
 ---
 # <a name="feature-coverage-for-machines"></a>Szolgáltatások lefedettsége gépekhez
 
@@ -30,48 +30,48 @@ Az alábbi két lap a Windows és Linux rendszerű virtuális gépekhez és kisz
 
 |**Szolgáltatás**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure arc-kompatibilis gépek**|**Azure Defender szükséges**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP-integráció](security-center-wdatp.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Yes|
-|[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](alerts-reference.md)|✔|✔|✔|Yes|
-|[Nem biztonságos biztonsági riasztások](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
-|[Hálózati biztonsági riasztások](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
-|[Virtuális gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Yes|
-|[Natív sebezhetőségi felmérés](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
-|[Fájlintegritás monitorozása](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
-|[Adaptív alkalmazásvezérlők](security-center-adaptive-application.md)|✔|-|✔|Yes|
-|[Hálózati Térkép](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
-|[Adaptív hálózat-megerősítés](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
-|[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
-|Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|-|-|-|Yes|
+|[Microsoft Defender az Endpoint Integration szolgáltatáshoz](security-center-wdatp.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Igen|
+|[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](alerts-reference.md)|✔|✔|✔|Igen|
+|[Nem biztonságos biztonsági riasztások](alerts-reference.md#alerts-windows)|✔|✔|✔|Igen|
+|[Hálózati biztonsági riasztások](other-threat-protections.md#network-layer)|✔|✔|-|Igen|
+|[Virtuális gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Igen|
+|[Natív sebezhetőségi felmérés](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Igen|
+|[Fájlintegritás monitorozása](security-center-file-integrity-monitoring.md)|✔|✔|✔|Igen|
+|[Adaptív alkalmazásvezérlők](security-center-adaptive-application.md)|✔|-|✔|Igen|
+|[Hálózati Térkép](security-center-network-recommendations.md#network-map)|✔|✔|-|Igen|
+|[Adaptív hálózat-megerősítés](security-center-adaptive-network-hardening.md)|✔|-|-|Igen|
+|[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Igen|
+|Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|-|-|-|Igen|
 |Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
 |Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
 |[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
-|Lemez titkosításának felmérése|✔</br>( [támogatott forgatókönyvek](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)esetén)|✔|-|No|
-|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|No|
-|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|No|
+|Lemez titkosításának felmérése|✔</br>( [támogatott forgatókönyvek](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)esetén)|✔|-|Nem|
+|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Nem|
+|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Nem|
 
 
 ### <a name="linux-machines"></a>[**Linux rendszerű gépek**](#tab/features-linux)
 
 |**Szolgáltatás**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure arc-kompatibilis gépek**|**Azure Defender szükséges**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP-integráció](security-center-wdatp.md)|-|-|-|Yes|
-|[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](./azure-defender.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Yes|
-|[Nem biztonságos biztonsági riasztások](alerts-reference.md#alerts-windows)|-|-|-|Yes|
-|[Hálózati biztonsági riasztások](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
-|[Virtuális gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Yes|
-|[Natív sebezhetőségi felmérés](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
-|[Fájlintegritás monitorozása](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
-|[Adaptív alkalmazásvezérlők](security-center-adaptive-application.md)|✔|-|✔|Yes|
-|[Hálózati Térkép](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
-|[Adaptív hálózat-megerősítés](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
-|[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
-|Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|✔|✔|✔|Yes|
+|[Microsoft Defender az Endpoint Integration szolgáltatáshoz](security-center-wdatp.md)|-|-|-|Igen|
+|[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](./azure-defender.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Igen|
+|[Nem biztonságos biztonsági riasztások](alerts-reference.md#alerts-windows)|-|-|-|Igen|
+|[Hálózati biztonsági riasztások](other-threat-protections.md#network-layer)|✔|✔|-|Igen|
+|[Virtuális gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Igen|
+|[Natív sebezhetőségi felmérés](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Igen|
+|[Fájlintegritás monitorozása](security-center-file-integrity-monitoring.md)|✔|✔|✔|Igen|
+|[Adaptív alkalmazásvezérlők](security-center-adaptive-application.md)|✔|-|✔|Igen|
+|[Hálózati Térkép](security-center-network-recommendations.md#network-map)|✔|✔|-|Igen|
+|[Adaptív hálózat-megerősítés](security-center-adaptive-network-hardening.md)|✔|-|-|Igen|
+|[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Igen|
+|Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|✔|✔|✔|Igen|
 |Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
 |Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Azure: nem<br><br>Arc-kompatibilis: igen|
-|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
-|Lemez titkosításának felmérése|✔</br>( [támogatott forgatókönyvek](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)esetén)|✔|-|No|
-|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|No|
-|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|No|
+|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Nem|
+|Lemez titkosításának felmérése|✔</br>( [támogatott forgatókönyvek](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)esetén)|✔|-|Nem|
+|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Nem|
+|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Nem|
 
 --- 
 
@@ -91,13 +91,13 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 
 | Endpoint Protection| Platformok | Security Center telepítése | Security Center felderítése |
 |------|------|-----|-----|
-| Microsoft Defender víruskereső| Windows Server 2016 vagy újabb| Nincs, az operációs rendszerbe van beépítve| Yes |
-| System Center Endpoint Protection (Microsoft-kártevőirtó) | Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Yes |
+| Microsoft Defender víruskereső| Windows Server 2016 vagy újabb| Nincs, az operációs rendszerbe van beépítve| Igen |
+| System Center Endpoint Protection (Microsoft-kártevőirtó) | Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Igen |
 | Trend Micro – Deep Security | Windows Server termékcsalád  | Nem | Igen |
 | Symantec v12.1.1100+| Windows Server termékcsalád  | Nem | Igen |
 | McAfee v10+ | Windows Server termékcsalád  | Nem | Igen |
-| McAfee v10+ | Linux Server termékcsalád  | No | Igen * *\** _ |
-| Sophos v9 +| Linux Server termékcsalád  | No | igen  _*\**_  |
+| McAfee v10+ | Linux Server termékcsalád  | Nem | Igen * *\** _ |
+| Sophos v9 +| Linux Server termékcsalád  | Nem | igen  _*\**_  |
 
  _ *\** * A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított log Analytics munkaterületen érhető el. Ez nem jelenik meg a Azure Security Center-portálon.
 
@@ -105,7 +105,7 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 > A System Center Endpoint Protection (SCEP) észlelése Windows Server 2008 R2 rendszerű virtuális gépen a PowerShell (v 3.0 vagy újabb) után telepíteni kell a SCEP-t.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogy [a Security Center hogyan gyűjt adatokat az log Analytics ügynökkel](security-center-enable-data-collection.md).
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).

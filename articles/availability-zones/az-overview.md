@@ -1,5 +1,5 @@
 ---
-title: Régiók és rendelkezésre állási zónák az Azure-ban
+title: Régiók és Availability Zones az Azure-ban
 description: Ismerje meg az Azure-beli régiókat és Availability Zoneseket, hogy megfeleljenek a technikai és szabályozási követelményeinek.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 5178bf6955203c6a5625b941dd0102f2f4458abc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 771635baa3c49c07d0d796cf6ef3be7b870de3e1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078374"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425444"
 ---
-# <a name="regions-and-availability-zones-in-azure"></a>Régiók és rendelkezésre állási zónák az Azure-ban
+# <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
 
 Microsoft Azure szolgáltatások globálisan elérhetők a Felhőbeli műveletek optimális szinten történő elvégzéséhez. Az igényeinek legmegfelelőbb régiót a technikai és szabályozási megfontolások alapján választhatja ki: a szolgáltatás funkcióit, az adattárolást, a megfelelőségi követelményeket és a késést.
 
@@ -79,7 +79,7 @@ Ha egy szolgáltatási ajánlat nem érhető el egy adott régióban, a Microsof
 | Régió típusa | Nem regionális | Alapító | Mainstream | Specializált | Rendelkezésre állási zónák | Adattárolási hely |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ajánlott | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | :heavy_check_mark: | :heavy_check_mark: |
-| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N.A. | :heavy_check_mark: |
+| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N/A | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Szolgáltatások kategóriánként
 
@@ -170,10 +170,10 @@ A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem k
 - [Virtuális gép létrehozása](../virtual-machines/windows/create-portal-availability-zone.md)
 - [Felügyelt lemez hozzáadása a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Zónában redundáns virtuálisgép-méretezési csoport létrehozása](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Virtuális gépek terheléselosztása zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Virtuális gépek terheléselosztása zónán belül egy standard Load Balancer és egy zóna-előtérbeli felület használatával](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Zónaredundáns tárolás](../storage/common/storage-redundancy.md)
-- [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
+- [Virtuális gépek terheléselosztása zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Virtuális gépek terheléselosztása zónán belül egy standard Load Balancer és egy zóna-előtérbeli felület használatával](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md)
+- [Általános célú SQL Database](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [Event Hubs georeplikációs vészhelyreállítás](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus georeplikációs vészhelyreállítás](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Zónaredundáns virtuális hálózati átjáró létrehozása](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
@@ -182,7 +182,7 @@ A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem k
 - [Azure Active Directory Domain Services-példány létrehozása](../active-directory-domain-services/tutorial-create-instance.md)
 - [Availability Zonest használó Azure Kubernetes-szolgáltatásbeli (ak-beli) fürt létrehozása](../aks/availability-zones.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-Availability Zones támogató régiók](az-region.md)
 - [Gyorssablonok](https://aka.ms/azqs)

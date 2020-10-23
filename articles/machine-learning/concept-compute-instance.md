@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f32783b18b5454164567910aa369739d025b8be0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d840fe5b6fde72149893a15ab9096d3880c1c8ea
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826901"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425676"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -43,7 +43,7 @@ A számítási példány egy teljes körűen felügyelt felhőalapú munkaállom
 
 > [!IMPORTANT]
 > Az ebben a cikkben megjelölt elemek (előzetes verzió) jelenleg nyilvános előzetes verzióban érhetők el.
-> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Azure Machine Learning számítási példány lehetővé teszi, hogy a munkaterületen teljes mértékben integrált jegyzetfüzet-felülettel készítse el a modelleket, betanítsa és üzembe helyezzen.
 
@@ -118,9 +118,9 @@ A munkaterületen minden olyan számítási példány esetében, amelyet haszná
 * Az SSH-t a számítási példányba. Az SSH-hozzáférés alapértelmezés szerint le van tiltva, de a számítási példány létrehozási idején is engedélyezhető. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül történik. A lapon megadhatja az SSH-kapcsolat adatait, például az IP-címet, a felhasználónevet és a portszámot.
 * Egy adott számítási példány, például az IP-cím és a régió részletes adatainak beolvasása.
 
-A [RBAC](/azure/role-based-access-control/overview) lehetővé teszi annak szabályozását, hogy a munkaterület mely felhasználói hozhatnak létre, törölhetnek, indíthatnak le, állíthatnak le vagy indíthatnak újra egy számítási példányt. A munkaterület közreműködői és tulajdonosi szerepkörben lévő összes felhasználó létrehozhatja, törölheti, elindíthatja, leállíthatja és újraindíthatja a számítási példányokat a munkaterületen. Azonban csak egy adott számítási példány létrehozója, vagy a felhasználó nevében létrejött, a Jupyter, a JupyterLab és a RStudio hozzáférése engedélyezett a számítási példányon. A számítási példányok egyetlen, rendszergazdai hozzáféréssel rendelkező felhasználóhoz vannak hozzárendelve, és a Jupyter/JupyterLab/RStudio-en keresztül is csatlakozhatnak. A számítási példánynak egyfelhasználós bejelentkezéssel kell rendelkeznie, és az összes művelet a felhasználó identitását fogja használni a RBAC és a kísérlet futtatásához. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül vezérelhető.
+Az [Azure RBAC](/azure/role-based-access-control/overview) lehetővé teszi annak szabályozását, hogy a munkaterület mely felhasználói hozhatnak létre, törölhetnek, indíthatnak le, állíthatnak le, indíthatnak újra egy számítási példányt. A munkaterület közreműködői és tulajdonosi szerepkörben lévő összes felhasználó létrehozhatja, törölheti, elindíthatja, leállíthatja és újraindíthatja a számítási példányokat a munkaterületen. Azonban csak egy adott számítási példány létrehozója, vagy a felhasználó nevében létrejött, a Jupyter, a JupyterLab és a RStudio hozzáférése engedélyezett a számítási példányon. A számítási példányok egyetlen, rendszergazdai hozzáféréssel rendelkező felhasználóhoz vannak hozzárendelve, és a Jupyter/JupyterLab/RStudio-en keresztül is csatlakozhatnak. A számítási példánynak egyfelhasználós bejelentkezéssel kell rendelkeznie, és minden művelet a felhasználó identitását fogja használni az Azure RBAC és a kísérlet futtatásához. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül vezérelhető.
 
-Ezeket a műveleteket a RBAC is vezérelheti:
+Ezeket a műveleteket az Azure RBAC is szabályozhatja:
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/olvasás*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/írás*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/törlés*
@@ -148,7 +148,7 @@ Rendszergazdaként létrehozhat egy számítási példányt egy adattudós nevé
 * [Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  A sablonban szükséges TenantID és ObjectID megkeresésével kapcsolatos részletekért lásd a [hitelesítési konfiguráció azonosító objektum-azonosítóinak megkeresése](../healthcare-apis/find-identity-object-ids.md)című témakört.  Ezeket az értékeket a Azure Active Directory portálon is megtalálhatja.
 * REST API
 
-A számítási példányt létrehozó adattudósnak a következő RBAC engedélyekkel kell rendelkeznie: 
+A számítási példányt a következő Azure RBAC-engedélyekkel hozza létre: 
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/indítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
@@ -182,7 +182,7 @@ A munkaterület-fájlmegosztás és a munkaterület-adattárakban tárolt adatok
 Nem hozhatók létre új virtuális gépek a notebookon. Azonban továbbra is elérheti és használhatja a létrehozott notebook-alapú virtuális gépeket a teljes funkcionalitással. A számítási példányok a meglévő notebook virtuális gépekkel megegyező munkaterületen hozhatók létre.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Számítási példány létrehozása és kezelése](how-to-create-manage-compute-instance.md)
 * [Oktatóanyag: az első ml-modell betanítása](tutorial-1st-experiment-sdk-train.md) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.

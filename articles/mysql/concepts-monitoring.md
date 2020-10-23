@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 8/13/2020
-ms.openlocfilehash: 9e1bd3f555873503aa1f6ed9c804aced3620fb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 4589687593abbe5667aa4b21b1361b68e4bed07f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627516"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428119"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés Azure Database for MySQL
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MySQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.
@@ -42,7 +42,7 @@ Ezek a metrikák a Azure Database for MySQL számára érhetők el:
 |backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tár mennyisége. Ez a metrika a teljes adatbázis biztonsági mentése, a különbözeti biztonsági másolatok és a naplózott biztonsági mentések által felhasznált tárterület összegét jelöli, amelyet a kiszolgáló számára beállított biztonsági másolatok megőrzési időtartama alapján tartanak fenn. A biztonsági mentések gyakorisága a szolgáltatás által felügyelt és a [fogalmakat ismertető cikkben](concepts-backup.md)olvasható. A földrajzilag redundáns tároláshoz a biztonsági mentési tárterület a helyileg redundáns tárolásnál kétszer szerepel.|
 
 ## <a name="server-logs"></a>Kiszolgálói naplók
-Engedélyezheti a lassú lekérdezést és a naplózást a kiszolgálón. Ezek a naplók Azure Monitor naplók, Event Hubs és Storage-fiók Azure diagnosztikai naplóiban is elérhetők. Ha többet szeretne megtudni a naplózásról, látogasson el a [naplók](concepts-audit-logs.md) és a [lassú lekérdezések naplóinak](concepts-server-logs.md) cikkeibe.
+Engedélyezheti a lassú lekérdezést és a naplózást a kiszolgálón. Ezek a naplók Azure Monitor naplók, Event Hubs és Storage-fiók Azure diagnosztikai naplóiban is elérhetők. Ha többet szeretne megtudni a naplózásról, látogasson el a [naplók](concepts-audit-logs.md) és a [lassú lekérdezések naplóinak](concepts-server-logs.md) cikkeibe.
 
 ## <a name="query-store"></a>Lekérdezéstár
 A [lekérdezési tároló](concepts-query-store.md) egy olyan szolgáltatás, amely nyomon követi a lekérdezési teljesítményt az idő múlásával, beleértve a lekérdezési futtatókörnyezet statisztikáit és a várakozási eseményeket. A szolgáltatás megtartja a lekérdezés futásidejű teljesítményére vonatkozó információkat a **MySQL** -sémában. Az adatgyűjtést és-tárolást különböző konfigurációs gombokon keresztül szabályozhatja.
@@ -55,30 +55,12 @@ A [teljesítményre vonatkozó javaslatok](concepts-performance-recommendations.
 
 ## <a name="planned-maintenance-notification"></a>Tervezett karbantartási értesítés
 
-A **tervezett karbantartási értesítések** lehetővé teszik, hogy riasztásokat kapjon a Azure Database for MySQL közelgő tervezett karbantartásáról. Ezek az értesítések a [Service Health](../service-health/overview.md) tervezett karbantartásával vannak integrálva, és lehetővé teszik az előfizetések összes ütemezett karbantartásának megtekintését egy helyen. Emellett segít az értesítések méretezésében a megfelelő célközönségek számára a különböző erőforráscsoportok esetében, mivel előfordulhat, hogy a különböző kapcsolattartók különböző erőforrásokért felelősek. A közelgő karbantartási 72 órával az esemény előtt értesítést fog kapni.
+A [tervezett karbantartási értesítések](./concepts-planned-maintenance-notification.md) lehetővé teszik, hogy riasztásokat kapjon a Azure Database for MySQL közelgő tervezett karbantartásáról. Ezek az értesítések a [Service Health](../service-health/overview.md) tervezett karbantartásával vannak integrálva, és lehetővé teszik az előfizetések összes ütemezett karbantartásának megtekintését egy helyen. Emellett segít az értesítések méretezésében a megfelelő célközönségek számára a különböző erőforráscsoportok esetében, mivel előfordulhat, hogy a különböző kapcsolattartók különböző erőforrásokért felelősek. A közelgő karbantartási 72 órával az esemény előtt értesítést fog kapni.
 
-A tervezett karbantartás során várható, hogy a kiszolgáló újraindul, és [átmeneti hibák](concepts-connectivity.md#transient-errors) léphetnek fel. Az események többségét a rendszer automatikusan csökkenti a 60 másodpercnél kisebb mértékben.
+További információ az értesítések beállításáról a [tervezett karbantartási értesítések](./concepts-planned-maintenance-notification.md) dokumentumban.
 
-> [!IMPORTANT]
-> A tervezett karbantartási értesítések jelenleg nyilvános előzetes verzióban érhetők el minden régióban, **kivéve** az USA nyugati középső régióját
-
-### <a name="to-receive-planned-maintenance-notification"></a>Tervezett karbantartási értesítés fogadása
-
-1. A [portálon](https://portal.azure.com)válassza a **Service Health**lehetőséget.
-2. A **riasztások** szakaszban válassza az **állapot riasztások**lehetőséget.
-3. Válassza a **+ szolgáltatás állapotára vonatkozó riasztás hozzáadása** lehetőséget, és töltse ki a mezőket.
-4. Töltse ki a kötelező mezőket. 
-5. Válassza ki az **esemény típusát**, válassza a **tervezett karbantartás** lehetőséget, vagy **válassza az összes lehetőséget** .
-6. A **műveleti csoportok** azt határozzák meg, hogyan szeretné fogadni a riasztást (e-mail küldése, logikai alkalmazás elindítása stb.)  
-7. Győződjön meg arról, hogy az engedélyezés szabály a létrehozáskor Igen értékre van állítva.
-8. Válassza a riasztási **szabály létrehozása** lehetőséget a riasztás befejezéséhez
-
-A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
-
-> [!Note]
-> Minden eseményről minden kísérletet megteszünk a **tervezett karbantartási értesítés** 72 óra megadására. A kritikus vagy biztonsági javítások esetében azonban előfordulhat, hogy az értesítések közelebb kerülnek az eseményhez, vagy kimaradnak.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.
 - A metrikák Azure Portal, REST API vagy parancssori felülettel való eléréséről és exportálásáról további információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
 - A [kiszolgáló figyelésére vonatkozó ajánlott eljárásokért](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)olvassa el a blogot.
+- További információ a [tervezett karbantartási értesítésekről](./concepts-planned-maintenance-notification.md) Azure Database for MySQL – egyetlen kiszolgálón

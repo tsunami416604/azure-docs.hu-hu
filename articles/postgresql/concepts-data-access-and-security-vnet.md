@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 170d5eaa4c14c6de54825bc08f3aef0fd0dfa0c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37b2414252a7011444617ecc08c9dd7d081b7441
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707999"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425511"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Virtual Network szolgáltatási végpontok és szabályok használata Azure Database for PostgreSQL – egyetlen kiszolgáló esetén
 
@@ -82,7 +82,7 @@ A biztonsági szerepkörök elkülönítése Virtual Network szolgáltatási vé
 - **Hálózati rendszergazda:** &nbsp; Kapcsolja be a végpontot.
 - **Adatbázis-rendszergazda:** &nbsp; Frissítse a hozzáférés-vezérlési listát (ACL), hogy hozzáadja a megadott alhálózatot a Azure Database for PostgreSQL-kiszolgálóhoz.
 
-*RBAC alternatíva:*
+*Azure RBAC alternatíva:*
 
 A hálózati rendszergazda és az adatbázis-rendszergazda szerepkörének több funkciója van, mint amennyi a virtuális hálózati szabályok kezeléséhez szükséges. A képességeinek csak egy részhalmazára van szükség.
 
@@ -132,7 +132,7 @@ A **IgnoreMissingServiceEndpoint** jelzőt az Azure CLI vagy a portál használa
 - [Azure-beli virtuális hálózatok][vm-virtual-network-overview]
 - [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A VNet-szabályok létrehozásával kapcsolatos cikkekért lásd:
 - [Azure Database for PostgreSQL VNet-szabályok létrehozása és kezelése a Azure Portal használatával](howto-manage-vnet-using-portal.md)
 - [Azure Database for PostgreSQL VNet-szabályok létrehozása és kezelése az Azure CLI használatával](howto-manage-vnet-using-cli.md)
@@ -147,7 +147,7 @@ A VNet-szabályok létrehozásával kapcsolatos cikkekért lásd:
 
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]: ../role-based-access-control/overview.md
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 

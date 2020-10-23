@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb6c49ce779fe8b1e764471c31b392e31d6572ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd6fc3ee88d63c1d933d3405437ec1bf49e0432e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631205"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426354"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 
@@ -76,7 +76,7 @@ A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra va
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje le az `<resource-group-name>` -t az erőforráscsoporthoz használni kívánt névre. Cserélje le `<location>` az az Azure-régiót az erőforráscsoport használatára:
 
@@ -359,7 +359,7 @@ Ha egy munkaterületet egy másik felhasználóval szeretne megosztani az előfi
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-A szerepköralapú hozzáférés-vezérléssel (RBAC Azure Machine Learning) kapcsolatos további információkért lásd: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
+További információ az Azure szerepköralapú hozzáférés-vezérléséről (Azure RBAC) a Azure Machine Learningával: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
 További információ: az [ml Workspace Share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share) dokumentáció.
 
@@ -411,6 +411,6 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gépi tanuláshoz készült Azure CLI bővítménnyel kapcsolatos további információkért tekintse meg az az [ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest&preserve-view=true) dokumentációt.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ec23252883f928cfa6c1651afbfe88e413d55571
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: a2164afef3807a345819a18274eb01f2116de9fd
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339594"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427960"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Végpontok és útvonalak kezelése az Azure Digital Twins-ban (portál)
 
@@ -22,7 +22,7 @@ Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értes�
 
 Ez a cikk végigvezeti a végpontok és útvonalak létrehozásának folyamatán a [Azure Portal](https://portal.azure.com)használatával.
 
-A végpontokat és útvonalakat a [EventRoutes API](how-to-use-apis-sdks.md)-kkal, a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-val vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületével is kezelheti. A jelen cikk a portál helyett ezeket a mechanizmusokat használó verziója [*: útmutató: végpontok és útvonalak kezelése (API-k és parancssori felület)*](how-to-manage-routes-apis-cli.md).
+A végpontokat és útvonalakat a [EventRoutes API](how-to-use-apis-sdks.md)-kkal, a [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)-val vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületével is kezelheti. A jelen cikk a portál helyett ezeket a mechanizmusokat használó verziója [*: útmutató: végpontok és útvonalak kezelése (API-k és parancssori felület)*](how-to-manage-routes-apis-cli.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -218,7 +218,7 @@ Itt láthatók a támogatott útválasztási szűrők. A *szűrési szöveg sém
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)

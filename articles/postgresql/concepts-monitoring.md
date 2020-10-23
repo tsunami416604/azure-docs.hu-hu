@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 4fd16e9dcf9f0b75b48311adf3e9282adbce2a25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 9424a56eeda5750afc00dd996be957e67850c30c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708713"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426683"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL figyelése és finomhangolása – egyetlen kiszolgáló
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. Azure Database for PostgreSQL különböző figyelési lehetőségeket biztosít a kiszolgáló működésének áttekintéséhez.
@@ -55,28 +55,12 @@ A [teljesítményre vonatkozó javaslatok](concepts-performance-recommendations.
 
 ## <a name="planned-maintenance-notification"></a>Tervezett karbantartási értesítés
 
-A **tervezett karbantartási értesítések** lehetővé teszik, hogy riasztásokat kapjon a közelgő tervezett karbantartásról a Azure Database for PostgreSQL-egyetlen kiszolgálóra. Ezek az értesítések a [Service Health](../service-health/overview.md) tervezett karbantartásával vannak integrálva, és lehetővé teszik az előfizetések összes ütemezett karbantartásának megtekintését egy helyen. Emellett segít az értesítések méretezésében a megfelelő célközönségek számára a különböző erőforráscsoportok esetében, mivel előfordulhat, hogy a különböző kapcsolattartók különböző erőforrásokért felelősek. A közelgő karbantartási 72 órával az esemény előtt értesítést fog kapni.
+A [tervezett karbantartási értesítések](./concepts-planned-maintenance-notification.md) lehetővé teszik, hogy riasztásokat kapjon a közelgő tervezett karbantartásról a Azure Database for PostgreSQL-egyetlen kiszolgálóra. Ezek az értesítések a [Service Health](../service-health/overview.md) tervezett karbantartásával vannak integrálva, és lehetővé teszik az előfizetések összes ütemezett karbantartásának megtekintését egy helyen. Emellett segít az értesítések méretezésében a megfelelő célközönségek számára a különböző erőforráscsoportok esetében, mivel előfordulhat, hogy a különböző kapcsolattartók különböző erőforrásokért felelősek. A közelgő karbantartási 72 órával az esemény előtt értesítést fog kapni.
 
-> [!Note]
-> Minden eseményről minden kísérletet megteszünk a **tervezett karbantartási értesítés** 72 óra megadására. A kritikus vagy biztonsági javítások esetében azonban előfordulhat, hogy az értesítések közelebb kerülnek az eseményhez, vagy kimaradnak.
+További információ az értesítések beállításáról a [tervezett karbantartási értesítések](./concepts-planned-maintenance-notification.md) dokumentumban.
 
-### <a name="to-receive-planned-maintenance-notification"></a>Tervezett karbantartási értesítés fogadása
-
-1. A [portálon](https://portal.azure.com)válassza a **Service Health**lehetőséget.
-2. A **riasztások** szakaszban válassza az **állapot riasztások**lehetőséget.
-3. Válassza a **+ szolgáltatás állapotára vonatkozó riasztás hozzáadása** lehetőséget, és töltse ki a mezőket.
-4. Töltse ki a kötelező mezőket. 
-5. Válassza ki az **esemény típusát**, válassza a **tervezett karbantartás** lehetőséget, vagy **válassza az összes lehetőséget** .
-6. A **műveleti csoportok** azt határozzák meg, hogyan szeretné fogadni a riasztást (e-mail küldése, logikai alkalmazás elindítása stb.)  
-7. Győződjön meg arról, hogy az engedélyezés szabály a létrehozáskor Igen értékre van állítva.
-8. Válassza a riasztási **szabály létrehozása** lehetőséget a riasztás befejezéséhez
-
-A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
-
-> [!IMPORTANT]
-> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el minden régióban, **kivéve** az USA nyugati középső régióját
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.
-- A metrikák Azure Portal, REST API vagy parancssori felülettel való eléréséről és exportálásáról további információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
+- A metrikák Azure Portal, REST API vagy parancssori felülettel való eléréséről és exportálásáról további információt az [Azure-metrikák áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md) című témakörben talál.
 - A [kiszolgáló figyelésére vonatkozó ajánlott eljárásokért](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/)olvassa el a blogot.
+- További információ a [tervezett karbantartási értesítésekről](./concepts-planned-maintenance-notification.md) Azure Database for PostgreSQL-egyetlen kiszolgálón.

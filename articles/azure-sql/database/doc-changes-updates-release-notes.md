@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 027a816e846996aa7c61a1747327128f9a0feed0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 01126a1ca8590d02d0cd0aa1c8554b34161dbac5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079207"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426275"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 |**Azure SQL Database**|*Önálló adatbázis* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza. |
 |**Azure SQL Database**|*Rugalmas készlet* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza.  |
 |**Azure SQL Database** |Azure SQL Database | Bár a kifejezés változatlan marad, az már csak az önálló adatbázisra és a rugalmas készletekre vonatkozik, és nem tartalmazza a felügyelt példányt. |
-| **Azure SQL**| N.A. | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
+| **Azure SQL**| N/A | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
 
 ## <a name="features-in-public-preview"></a>A nyilvános előzetes verzióban elérhető funkciók
 
@@ -100,7 +100,7 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 |---------|---------|---------|---------|
 |[Az elosztott tranzakciók a felügyelt példány kiszolgálói megbízhatósági csoportból való eltávolítása után hajthatók végre.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|TOT 2020|Megkerülő megoldás||
 |[Az elosztott tranzakciók nem hajthatók végre a felügyelt példány skálázási művelete után](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|TOT 2020|Megkerülő megoldás||
-|[Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) az Azure SQL-ben és `BACKUP` / `RESTORE` a felügyelt példányban lévő utasításban nem használható az Azure ad-kezelő identitása az Azure Storage-beli hitelesítéshez|Sep 2020|Megkerülő megoldás||
+|[bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) / [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) Az Azure SQL-ben és `BACKUP` / `RESTORE` a felügyelt példányban található OpenRowset nem használhatja az Azure ad-beli felügyelet identitását az Azure Storage-ban való hitelesítéshez|Sep 2020|Megkerülő megoldás||
 |[Az egyszerű szolgáltatásnév nem fér hozzá az Azure AD-hez és a AKV](#service-principal-cannot-access-azure-ad-and-akv)|Augusztus 2020|Megkerülő megoldás||
 |[A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet](#restoring-manual-backup-without-checksum-might-fail)|2020. május|Feloldva|2020. június|
 |[Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020. május|Feloldva|2020. június|
@@ -139,7 +139,7 @@ A szolgáltatási réteg vagy virtuális mag módosítását tartalmazó felügy
 
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>A BULK INSERT és a BACKUP/Restore utasítások nem használhatnak felügyelt identitást az Azure Storage eléréséhez
 
-A tömeges beszúrási utasítás nem használható `DATABASE SCOPED CREDENTIAL` felügyelt identitással az Azure Storage-ban való hitelesítéshez. Áthidaló megoldásként váltson át a közös HOZZÁFÉRÉSű aláírás-hitelesítésre. Az alábbi példa nem fog működni az Azure SQL-ben (az adatbázis és a felügyelt példány esetében is):
+A tömeges beszúrási, biztonsági mentési és VISSZAÁLLÍTÁSi utasítások, valamint a OPENROWSET függvény nem használható `DATABASE SCOPED CREDENTIAL` felügyelt identitással az Azure Storage-ban való hitelesítéshez. Áthidaló megoldásként váltson át a közös HOZZÁFÉRÉSű aláírás-hitelesítésre. Az alábbi példa nem fog működni az Azure SQL-ben (az adatbázis és a felügyelt példány esetében is):
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';

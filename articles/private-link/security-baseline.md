@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 654fc453f0b4167ae91afcab811de321925c6bf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9e4fd2f7f55f916743074b57f89788c0d32f7d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89614655"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427503"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure biztonsági alapkonfiguráció az Azure Private linkhez
 
@@ -268,7 +268,7 @@ További vizsgálat céljából betöltheti az Azure Sentinelbe.
 
 Az üzleti követelmények alapján korlátozhatja az Azure-erőforrásokhoz való hozzáférés szintjét az alkalmazásokkal és a vállalati környezetekkel. 
 
-Az Azure-erőforrásokhoz való hozzáférés szabályozása Azure Active Directory szerepköralapú hozzáférés-vezérlés használatával.
+Azure-erőforrásokhoz való hozzáférés szabályozása az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 
 - [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
 
@@ -292,7 +292,7 @@ Kövesse Security Center a inaktív adatok titkosítására és az átvitel köz
 
 **Felelősség**: megosztott
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata az adat-és erőforrásokhoz való hozzáférés szabályozására, máskülönben a szolgáltatás-specifikus hozzáférés-vezérlési módszerek használata.
 
@@ -456,7 +456,7 @@ A Security Center ajánlásainak megvalósítása az Azure-erőforrások biztons
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Biztonsági javaslatok – útmutató](../security-center/recommendations-reference.md)
+- [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -634,7 +634,7 @@ Az ügyfél feladata, hogy rangsorolja a riasztások szervizelését az Azure-er
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-- [Címkék használata az erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: igen
 
@@ -704,7 +704,7 @@ A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatások
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

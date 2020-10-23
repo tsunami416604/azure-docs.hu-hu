@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: 0fe9d59e97ebbc9aba17fea14aed43756300d56e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8b87d9d487257504a438cf13a5b94e3ca4f9233d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90528592"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426378"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Gyors útmutató: Python-eszköz kiépítése szimmetrikus kulcsokkal
 
-Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy Windows-fejlesztő gépet eszközként egy IoT hub-ban a Python használatával. Ez az eszköz egy szimmetrikus kulcsot használ a hitelesítéshez egy Device kiépítési szolgáltatás (DPS) példánnyal, hogy hozzá lehessen rendelni egy IoT hubhoz. A (z) DPS a hitelesített eszközt egy egyéni regisztráció és egy IoT hub számára hozzárendelve fogja felismerni. Az eszköz kiépítéséhez az [Azure IoT PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python) -ból származó mintakód lesz használva. 
+Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy Windows-fejlesztő gépet eszközként egy IoT hub-ban a Python használatával. Ez az eszköz egy szimmetrikus kulcsot és egy egyéni regisztrációt használ egy eszköz-kiépítési szolgáltatás (DPS) példányának hitelesítéséhez ahhoz, hogy IoT hubhoz rendeljen hozzá. Az eszköz kiépítéséhez az [Azure IoT PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python) -ból származó mintakód lesz használva. 
 
 Bár ez a cikk azt mutatja be, hogy a kiépítés egyedi regisztrációval történt, a beléptetési csoportokat is használhatja. A regisztrációs csoportok használata néhány eltérést is igénybe vehet. Például egy származtatott eszköz kulcsát kell használnia az eszköz egyedi regisztrációs azonosítójával. Bár a szimmetrikus kulcsot használó regisztrációs csoportok nem csak örökölt eszközök esetében használhatóak, a [Szimmetrikus kulcsok használata örökölt eszközök kiépítéséhez](how-to-legacy-device-symm-key.md) című cikk példája jól szemlélteti a regisztrációs csoportok használatát. További információért lásd: [Csoportos beléptetés használata szimmetrikus kulcsú igazolásnál](concepts-symmetric-key-attestation.md#group-enrollments)
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: 'Lásd: egyéni ikrek és kapcsolatok lekérése, frissítése és törlése.'
 author: baanders
 ms.author: baanders
-ms.date: 4/10/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c522ac9e1aedbcdfdb4564d17b506b1b490da0c3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 58ee064d4946442bff70e97d56a68080333e2197
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150400"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426133"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
-A környezetben található entitásokat a [digitális ikrek](concepts-twins-graph.md)jelölik. A digitális ikrek kezelése magában foglalhatja a létrehozását, módosítását és eltávolítását. Ezeknek a műveleteknek a végrehajtásához használhatja a [**DigitalTwins API-kat**](how-to-use-apis-sdks.md), a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-t vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületét.
+A környezetben található entitásokat a [digitális ikrek](concepts-twins-graph.md)jelölik. A digitális ikrek kezelése magában foglalhatja a létrehozását, módosítását és eltávolítását. Ezeknek a műveleteknek a végrehajtásához használhatja a [**DigitalTwins API-kat**](how-to-use-apis-sdks.md), a [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)-t vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületét.
 
 Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a [Twin gráfmal](concepts-twins-graph.md) szeretne dolgozni, tekintse meg [*az útmutató: a Twin gráf kezelése a kapcsolatokkal*](how-to-manage-graph.md)című témakört.
 
@@ -25,32 +25,35 @@ Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a
 
 ## <a name="create-a-digital-twin"></a>Digitális Twin létrehozása
 
-A kettős létrehozásához használja a `CreateDigitalTwin` metódust a szolgáltatás ügyfélen, például:
+A kettős létrehozásához használja a `CreateDigitalTwin()` metódust a szolgáltatás ügyfélen, például:
 
 ```csharp
-await client.CreateDigitalTwinAsync("myNewTwinID", initData);
+await client.CreateDigitalTwinAsync("myTwinId", initData);
 ```
 
 Digitális dupla létrehozásához a következőket kell megadnia:
 * A digitális iker kívánt azonosítója
-* A használni kívánt [modell](concepts-models.md) 
+* A használni kívánt [modell](concepts-models.md)
 
 Opcionálisan megadhatja a digitális iker összes tulajdonságának kezdeti értékeit. 
 
 A modell és a kezdeti tulajdonságértékek a paraméteren keresztül érhetők el `initData` , amely egy JSON-karakterlánc, amely tartalmazza a megfelelő adatokat. Az objektum strukturálásával kapcsolatos további információkért folytassa a következő szakasszal.
 
 > [!TIP]
-> A Twin létrehozása vagy frissítése után akár 10 másodperces késés is lehet, mielőtt a módosítások megjelennek a [lekérdezésekben](how-to-query-graph.md). Az `GetDigitalTwin` API (a [cikk későbbi részében](#get-data-for-a-digital-twin)leírtak szerint) nem tapasztalja ezt a késést, ezért a lekérdezés helyett használja az API-hívást az újonnan létrehozott ikrek megjelenítéséhez, ha azonnali válaszra van szüksége. 
+> A Twin létrehozása vagy frissítése után akár 10 másodperces késés is lehet, mielőtt a módosítások megjelennek a [lekérdezésekben](how-to-query-graph.md). Az `GetDigitalTwin` API (a [cikk későbbi részében](#get-data-for-a-digital-twin)leírtak szerint) nem tapasztalja ezt a késleltetést, ezért ha azonnali válaszra van szüksége, használja a lekérdezés helyett az API-hívást az újonnan létrehozott ikrek megtekintéséhez. 
 
 ### <a name="initialize-model-and-properties"></a>Modell és tulajdonságok inicializálása
 
 A Twin-létrehozási API egy olyan objektumot fogad el, amely a Twin tulajdonságok érvényes JSON-leírására van szerializálva. Lásd a következő [*fogalmakat: digitális ikrek és a Twin gráf*](concepts-twins-graph.md) a Twin-fájl JSON-formátumának leírásához. 
 
-Először létre kell hoznia egy adatobjektumot, amely a Twin és a tulajdonságának értékeit jelöli. Ezután a paranccsal `JsonSerializer` átadhatja ennek szerializált verzióját a paraméter API-hívásához `initdata` .
+Először létrehozhat egy adatobjektumot, amely a Twin és a tulajdonságának értékeit jelöli. Ezután a paranccsal `JsonSerializer` átadhatja ennek az objektumnak a szerializált verzióját a paraméter API-hívásához, például a `initdata` következőhöz:
 
+```csharp
+await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+```
 A paramétereket manuálisan vagy egy megadott segítő osztály használatával is létrehozhatja. Íme egy példa.
 
-#### <a name="create-twins-using-manually-created-data"></a>Ikrek létrehozása manuálisan létrehozott adatai alapján
+#### <a name="create-twins-using-manually-created-data"></a>Ikrek létrehozása manuálisan létrehozott adatértékek használatával
 
 Az egyéni segítő osztályok használata nélkül egy Twin tulajdonságot is megadhat a-ben `Dictionary<string, object>` , ahol a a tulajdonság neve, a pedig a `string` `object` tulajdonságot és annak értékét jelképező objektum.
 
@@ -58,7 +61,7 @@ Az egyéni segítő osztályok használata nélkül egy Twin tulajdonságot is m
 
 #### <a name="create-twins-with-the-helper-class"></a>Ikrek létrehozása a segítő osztállyal
 
-A segítő osztály `BasicDigitalTwin` lehetővé teszi, hogy a tulajdonságokat tartalmazó mezőket közvetlenül egy "Twin" objektumban tárolja. Előfordulhat, hogy továbbra is szeretné felépíteni a tulajdonságok listáját a használatával `Dictionary<string, object>` , amelyet aztán közvetlenül a Twin objektumhoz lehet hozzáadni `CustomProperties` .
+A segítő osztály `BasicDigitalTwin` lehetővé teszi, hogy közvetlenül egy "Twin" objektumban tárolja a tulajdonságokat. Előfordulhat, hogy továbbra is szeretné felépíteni a tulajdonságok listáját a használatával `Dictionary<string, object>` , amelyet aztán közvetlenül a Twin objektumhoz lehet hozzáadni `CustomProperties` .
 
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
@@ -70,27 +73,37 @@ props.Add("Temperature", 25.0);
 props.Add("Humidity", 50.0);
 twin.CustomProperties = props;
 
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+client.CreateDigitalTwinAsync("myRoomId", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateDigitalTwin` . A fenti példában ez a következőképpen néz ki:
+> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateDigitalTwin()` . Példa:
 >
 >```csharp
->twin.Id = "myNewRoomID";
+>twin.Id = "myRoomId";
 >```
 
 ## <a name="get-data-for-a-digital-twin"></a>Digitális Twin-adatlekérdezés
 
-Bármely digitális Twin teljes adatát elérheti az alábbiak meghívásával:
+A következőhöz hasonló módon érheti el bármelyik digitális Twin adatait `GetDigitalTwin()` :
 
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
+Ez a hívás a Twin-adatok JSON-karakterláncként való visszaadása. Íme egy példa arra, hogyan használhatja ezt a Twin részletek megtekintésére:
 
-Ez a hívás a Twin-adatok JSON-karakterláncként való visszaadása. 
-
-Csak a legalább egyszer beállított tulajdonságokat adja vissza a rendszer, amikor lekéri a két értéket `GetDigitalTwin` .
+```csharp
+Response<string> res = client.GetDigitalTwin("myRoomId");
+twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+foreach (string prop in twin.CustomProperties.Keys)
+{
+  if (twin.CustomProperties.TryGetValue(prop, out object value))
+  Console.WriteLine($"Property '{prop}': {value}");
+}
+```
+Csak a legalább egyszer beállított tulajdonságokat adja vissza a rendszer, amikor egy Twin metódust kér le `GetDigitalTwin()` .
 
 >[!TIP]
 >A `displayName` for a Twin a modell metaadatai részét képezi, így nem fog megjelenni, amikor a Twin példányhoz adatokat kap. Ha meg szeretné tekinteni ezt az értéket, [a modellből](how-to-manage-model.md#retrieve-models)kérheti le.
@@ -101,7 +114,7 @@ Vegye figyelembe a következő modellt (a [digitális Twins Definition Language 
 
 ```json
 {
-    "@id": " dtmi:com:contoso:Moon;1",
+    "@id": "dtmi:example:Moon;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2",
     "contents": [
@@ -120,8 +133,7 @@ Vegye figyelembe a következő modellt (a [digitális Twins Definition Language 
     ]
 }
 ```
-
-A `object result = await client.DigitalTwins.GetByIdAsync("my-moon");` *Hold*típusú dupla hívás eredménye a következőképpen néz ki:
+A `object result = await client.GetDigitalTwinAsync("my-moon");` *Hold*típusú dupla hívás eredménye a következőképpen néz ki:
 
 ```json
 {
@@ -130,7 +142,7 @@ A `object result = await client.DigitalTwins.GetByIdAsync("my-moon");` *Hold*tí
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
-    "$model": "dtmi:com:contoso:Moon;1",
+    "$model": "dtmi:example:Moon;1",
     "radius": {
       "desiredValue": 1737.1,
       "desiredVersion": 5,
@@ -151,7 +163,7 @@ A `object result = await client.DigitalTwins.GetByIdAsync("my-moon");` *Hold*tí
 
 A digitális iker definiált tulajdonságai a digitális iker felső szintű tulajdonságaiként lesznek visszaadva. A DTDL-definíciónak nem részét képező metaadatokat vagy rendszeradatokat előtaggal adja vissza a rendszer `$` . A metaadatok tulajdonságai a következők:
 * Az Azure Digital Twins-példányban lévő digitális iker azonosítója, mint `$dtId` .
-* `$etag`, a webkiszolgáló által hozzárendelt szabványos HTTP-mező
+* `$etag`, a webkiszolgáló által hozzárendelt szabványos HTTP-mező.
 * További tulajdonságok egy `$metadata` szakaszban. Ezek a következők:
     - A digitális iker modell DTMI.
     - Az egyes írható tulajdonságok szinkronizálási állapota. Ez a leghasznosabb az eszközök esetében, ahol lehetséges, hogy a szolgáltatás és az eszköz eltérő állapotú (például ha egy eszköz offline állapotban van). Ez a tulajdonság jelenleg csak IoT Hubhoz csatlakoztatott fizikai eszközökre vonatkozik. A metaadatok szakaszban található adatokkal megismerheti a tulajdonságok teljes állapotát, valamint az utolsó módosítás időbélyegét is. A szinkronizálási állapottal kapcsolatos további információkért tekintse meg [ezt az IoT hub oktatóanyagot](../iot-hub/tutorial-device-twins.md) az eszköz állapotának szinkronizálásához.
@@ -162,7 +174,7 @@ A visszaadott JSON-t elemezheti a Twin paranccsal egy tetszőleges JSON-elemzés
 Használhatja az SDK részét képező szerializálási segítő osztályt is `BasicDigitalTwin` , amely az alapszintű Twin metaadatokat és tulajdonságokat az előre elemzett űrlapon fogja visszaadni. Alább bemutatunk egy példát:
 
 ```csharp
-Response<string> res = client.GetDigitalTwin(twin_id);
+Response<string> res = client.GetDigitalTwin(twin_Id);
 BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
 foreach (string prop in twin.CustomProperties.Keys)
@@ -176,7 +188,7 @@ További információ a szerializálási segítő osztályokról [*: az Azure Di
 
 ## <a name="update-a-digital-twin"></a>Digitális iker frissítése
 
-A digitális Twin tulajdonságok frissítéséhez írja be a cserélni kívánt adatokat a [JSON-javítás](http://jsonpatch.com/) formátumában. Így egyszerre több tulajdonságot is lecserélhet. Ezután átadja a JSON-javítási dokumentumot a következő `Update` metódusnak:
+Egy digitális Twin tulajdonságainak frissítéséhez írja be a cserélni kívánt adatokat a [JSON-javítás](http://jsonpatch.com/) formátumában. Így egyszerre több tulajdonságot is lecserélhet. Ezután átadja a JSON-javítási dokumentumot a következő `UpdateDigitalTwin()` metódusnak:
 
 ```csharp
 await client.UpdateDigitalTwin(id, patch);
@@ -203,7 +215,6 @@ A javítási hívások a több tulajdonságot is frissíthetik egyetlen dupla é
   }
 ]
 ```
-
 Az [SDK](how-to-use-apis-sdks.md)-ban manuálisan is létrehozhatja a javításokat vagy a szerializálási segítő osztály használatával. Íme egy példa.
 
 #### <a name="create-patches-manually"></a>Javítások manuális létrehozása
@@ -216,7 +227,10 @@ twinData.Add(new Dictionary<string, object>() {
     { "value", 25.0}
 });
 
-await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData));
+await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+Console.WriteLine("Updated twin properties");
+FetchAndPrintTwin(twin_Id, client);
+}
 ```
 
 #### <a name="create-patches-using-the-helper-class"></a>Javítások létrehozása a segítő osztály használatával
@@ -224,14 +238,14 @@ await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData
 ```csharp
 UpdateOperationsUtility uou = new UpdateOperationsUtility();
 uou.AppendAddOp("/Temperature", 25.0);
-await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
+await client.UpdateDigitalTwinAsync(twin_Id, uou.Serialize());
 ```
 
 ### <a name="update-properties-in-digital-twin-components"></a>Tulajdonságok frissítése a digitális dupla összetevőkben
 
 Ne felejtse el, hogy egy modell tartalmazhat összetevőket, így más modellekből is készíthető. 
 
-A digitális Twin összetevőkben lévő tulajdonságok javításához elérésiút-szintaxist kell használni a JSON-javításban:
+A digitális Twin összetevőkben található elérési út szintaxisának megadásához használhatja a JSON-javítás Path szintaxisát:
 
 ```json
 [
@@ -245,7 +259,7 @@ A digitális Twin összetevőkben lévő tulajdonságok javításához elérési
 
 ### <a name="update-a-digital-twins-model"></a>Digitális Twin-modell frissítése
 
-A `Update` függvény a digitális Twin-et egy másik modellre is áttelepítheti. 
+A `UpdateDigitalTwin()` függvény a digitális Twin-et egy másik modellre is áttelepítheti. 
 
 Vegyük például a következő JSON-javítási dokumentumot, amely a digitális Twin metaadatok `$model` mezőjét helyettesíti:
 
@@ -254,7 +268,7 @@ Vegyük például a következő JSON-javítási dokumentumot, amely a digitális
   {
     "op": "replace",
     "path": "/$metadata/$model",
-    "value": "dtmi:com:contoso:foo;1"
+    "value": "dtmi:example:foo;1"
   }
 ]
 ```
@@ -273,7 +287,7 @@ Ennek a helyzetnek a javításához frissítenie kell a modellt és a Twin 's h�
   {
     "op": "replace",
     "path": "$metadata.$model",
-    "value": "dtmi:com:contoso:foo_new"
+    "value": "dtmi:example:foo_new"
   },
   {
     "op": "add",
@@ -298,9 +312,9 @@ A *Twin1* módosító két hívás egy másik után kerül végrehajtásra, és 
 
 ## <a name="delete-a-digital-twin"></a>Digitális Twin törlése
 
-Az ikreket a használatával törölheti `DeleteDigitalTwin(ID)` . Azonban csak akkor törölhet egy IKeret, ha nincs több kapcsolata. Először törölnie kell az összes kapcsolatot. 
+Az ikreket az metódus használatával törölheti `DeleteDigitalTwin()` . Azonban csak akkor törölhet egy IKeret, ha nincs több kapcsolata. Ezért először törölje a két bejövő és kimenő kapcsolatot.
 
-Íme egy példa erre a kódra:
+Az alábbi példa az ikrek és kapcsolataik törlésére szolgáló kódot szemlélteti:
 
 ```csharp
 static async Task DeleteTwin(string id)
@@ -334,7 +348,7 @@ public async Task FindAndDeleteOutgoingRelationshipsAsync(string dtId)
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
+        Log.Error($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
     }
 }
 
@@ -344,7 +358,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
     try
     {
-        // GetRelationshipssAsync will throw an error if a problem occurs
+        // GetRelationshipsAsync will throw an error if a problem occurs
         AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
 
         await foreach (IncomingRelationship incomingRel in incomingRels)
@@ -355,18 +369,162 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
+        Log.Error($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
     }
 }
 ```
-
 ### <a name="delete-all-digital-twins"></a>Az összes digitális ikrek törlése
 
-Az összes ikrek egyszerre történő törléséről például töltse le az oktatóanyagban használt minta alkalmazást [*: Fedezze fel az alapokat egy minta ügyfélalkalmazás*](tutorial-command-line-app.md)használatával. A *CommandLoop.cs* fájl ezt egy `CommandDeleteAllTwins` függvényben végzi el.
+Az összes ikrek egyszerre történő törléséről például töltse le a _Tutorialben használt minta alkalmazást [: Ismerkedjen meg az alapokkal egy példaként szolgáló ügyfélalkalmazás használatával *](tutorial-command-line-app.md). A *CommandLoop.cs* fájl ezt egy `CommandDeleteAllTwins()` függvényben végzi el.
+
+## <a name="manage-twins-using-runnable-code-sample"></a>Az ikrek kezelése futtatható-mintakód használatával
+
+Az alábbi futtatható-mintakód használatával hozzon létre egy IKeret, frissítse a részleteit, és törölje a Twin. 
+
+A kódrészlet a modell definíciójában szereplő [Room.js](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) használja az [*oktatóanyag: az Azure Digital Twins megismerése egy minta ügyfélalkalmazás*](tutorial-command-line-app.md)használatával. Ezzel a hivatkozással közvetlenül a fájlra léphet, vagy letöltheti a teljes végpontok közötti [minta projekt](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)részeként.
+
+Cserélje le a helyőrzőt az `<your-instance-hostname>` Azure Digital Twins-példány részleteire, és futtassa a mintát.
+
+```csharp
+using System;
+using Azure.DigitalTwins.Core;
+using Azure.Identity;
+using System.Threading.Tasks;
+using System.IO;
+using System.Collections.Generic;
+using Azure;
+using Azure.DigitalTwins.Core.Serialization;
+using System.Text.Json;
+
+namespace minimal
+{
+    class Program
+    {
+
+        static async Task Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+            string adtInstanceUrl = "https://<your-instance-hostname>";
+            var credentials = new DefaultAzureCredential();
+            Console.WriteLine();
+            Console.WriteLine($"Upload a model");
+            BasicDigitalTwin twin = new BasicDigitalTwin();
+            var typeList = new List<string>();
+            string twin_Id = "myRoomId";
+            string dtdl = File.ReadAllText("Room.json");
+            typeList.Add(dtdl);
+            // Upload the model to the service
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            Console.WriteLine($"Service client created – ready to go");
+            await client.CreateModelsAsync(typeList);
+            twin.Metadata = new DigitalTwinMetadata();
+            twin.Metadata.ModelId = "dtmi:example:Room;1";
+            // Initialize properties
+            Dictionary<string, object> props = new Dictionary<string, object>();
+            props.Add("Temperature", 35.0);
+            props.Add("Humidity", 55.0);
+            twin.CustomProperties = props;
+            await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+            Console.WriteLine("Twin created successfully");
+            twin = FetchAndPrintTwin(twin_Id, client);
+            List<object> twinData = new List<object>();
+            twinData.Add(new Dictionary<string, object>() 
+            {
+                { "op", "add"},
+                { "path", "/Temperature"},
+                { "value", 25.0}
+            });
+
+            await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+            Console.WriteLine("Updated Twin Properties");
+            FetchAndPrintTwin(twin_Id, client);
+            await DeleteTwin(client, twin_Id);
+        }
+
+        private static BasicDigitalTwin FetchAndPrintTwin(string twin_Id, DigitalTwinsClient client)
+        {
+            BasicDigitalTwin twin;
+            Response<string> res = client.GetDigitalTwin(twin_Id);
+            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+            foreach (string prop in twin.CustomProperties.Keys)
+            {
+                if (twin.CustomProperties.TryGetValue(prop, out object value))
+                    Console.WriteLine($"Property '{prop}': {value}");
+            }
+
+            return twin;
+        }
+        static async Task DeleteTwin(DigitalTwinsClient client, string id)
+        {
+            await FindAndDeleteOutgoingRelationshipsAsync(client, id);
+            await FindAndDeleteIncomingRelationshipsAsync(client, id);
+            try
+            {
+                await client.DeleteDigitalTwinAsync(id);
+                Console.WriteLine("Twin deleted successfully");
+                FetchAndPrintTwin(id, client);
+            }
+            catch (RequestFailedException exc)
+            {
+                Console.WriteLine($"*** Error:{exc.Message}");
+            }
+        }
+
+        public static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+
+                await foreach (string relJson in relsJson)
+                {
+                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
+                    await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted relationship {rel.Id} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+       static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
+
+                await foreach (IncomingRelationship incomingRel in incomingRels)
+                {
+                    await client.DeleteRelationshipAsync(incomingRel.SourceId, incomingRel.RelationshipId).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted incoming relationship {incomingRel.RelationshipId} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+    }
+}
+
+```
+Itt látható a fenti program konzoljának kimenete: 
+
+:::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Konzol kimenete, amely azt mutatja, hogy a Twin létrehozása, frissítése és törlése megtörtént" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
 ## <a name="manage-twins-with-cli"></a>Ikrek kezelése a CLI-vel
 
-Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
+Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a [_Howban találhatók: az Azure digitális Twins CLI * használatával](how-to-use-cli.md).
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
@@ -381,7 +539,7 @@ SELECT *
 FROM DIGITALTWINS
 ``` 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
 * [*Útmutató: a Twin gráf kezelése kapcsolatok használatával*](how-to-manage-graph.md)

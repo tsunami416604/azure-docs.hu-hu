@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: bc5bfb7c9cadea7aaa9cdedb2a17943014c6ef59
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 344d4e6b57082eb9ccfcd0642732d05216ad3978
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124758"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426326"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Active geo-Replication-Azure SQL Database létrehozása és használata
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -83,7 +83,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 > A napló újrajátszása késleltetve van a másodlagos adatbázisban, ha az elsődlegesen vannak séma-frissítések. Az utóbbihoz a másodlagos adatbázis sémájának zárolása szükséges.
 
 > [!IMPORTANT]
-> A Geo-replikálás használatával létrehozhat egy másodlagos adatbázist ugyanabban a régióban, ahol az elsődleges. Ezt a másodlagost használhatja a csak olvasási feladatok terheléselosztásához ugyanabban a régióban. Az ugyanabban a régióban található másodlagos adatbázisok azonban nem biztosítanak további hibatűrési rugalmasságot, ezért nem megfelelő feladatátvételi cél a vész-helyreállításhoz. Emellett a rendelkezésre állási zónák elkülönítését sem fogja garantálni. A rendelkezésre állási zónák elkülönítésének eléréséhez használja az üzleti szempontból kritikus vagy prémium szintű szolgáltatási szintet a [zóna redundáns konfigurációjával](high-availability-sla.md#zone-redundant-configuration) .
+> A Geo-replikálás használatával létrehozhat egy másodlagos adatbázist ugyanabban a régióban, ahol az elsődleges. Ezt a másodlagost használhatja a csak olvasási feladatok terheléselosztásához ugyanabban a régióban. Az ugyanabban a régióban található másodlagos adatbázisok azonban nem biztosítanak további hibatűrési rugalmasságot, ezért nem megfelelő feladatátvételi cél a vész-helyreállításhoz. Emellett a rendelkezésre állási zónák elkülönítését sem fogja garantálni. A rendelkezésre állási zónák elkülönítésének eléréséhez használja az üzleti szempontból kritikus vagy prémium szintű szolgáltatási szintet a [zóna redundáns konfigurációjával](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) vagy általános célú a szolgáltatási szint [zóna redundáns konfigurációját](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) .
 >
 
 - **Tervezett feladatátvétel**
@@ -293,7 +293,7 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 | [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Töröl egy adatbázis-replikációs hivatkozást. Feladatátvétel közben nem végezhető el. |
 |  | |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A minta parancsfájlokat lásd:
   - [Önálló adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/setup-geodr-and-failover-database-powershell.md)

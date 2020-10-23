@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 87d26e18ff97416ff8cb0eda08f7beb81005c627
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d18962e097358b8e80ac93b4d8419f7cd4f77ee0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015702"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426814"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -335,9 +335,9 @@ A következő fejlemények lettek bevezetve:
 
 Az új **átalakítási** objektum leegyszerűsíti a kódolási modellt. Az új objektum segítségével egyszerűen hozhat létre és oszthat meg Encoding Resource Manager-sablonokat és-készleteket. 
 
-#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory hitelesítés és RBAC
+#### <a name="azure-active-directory-authentication-and-azure-rbac"></a>Azure Active Directory hitelesítés és az Azure RBAC
 
-Az Azure AD-hitelesítés és a Role-Based-Access Control (RBAC) lehetővé teszik a biztonságos átalakításokat, LiveEvents, tartalmi kulcsokra vonatkozó házirendeket vagy eszközöket az Azure AD-ban lévő szerepkörök vagy felhasználók számára.
+Az Azure AD-hitelesítés és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a biztonságos átalakításokat, LiveEvents, tartalmi kulcsokra vonatkozó szabályzatokat vagy eszközöket az Azure AD-ban lévő szerepkörök vagy felhasználók számára.
 
 #### <a name="client-sdks"></a>Ügyfél-SDK-k  
 
@@ -407,7 +407,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 [Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v3 dokumentációjának frissítései](docs-release-notes.md)

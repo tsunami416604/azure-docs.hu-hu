@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d81d26c4cf975a20f31b4b4546c1477ed1a630e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: acbccd09fc8bc765083fea7b3a8d6ad749003ae9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048321"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428008"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions alkalmazások összekötése az adatfeldolgozáshoz
 
@@ -50,7 +50,7 @@ Miután létrehozta a Function alkalmazást, a Visual Studio automatikusan felt�
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Azure-függvény írása Event Grid triggerrel
 
-Az SDK-nak a Function alkalmazásba való felvételével írhat egy Azure-függvényt. A Function app a [.net-hez készült Azure IoT Digital Twin ügyféloldali kódtár (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)használatával kommunikál az Azure Digital Twins szolgáltatással. 
+Az SDK-nak a Function alkalmazásba való felvételével írhat egy Azure-függvényt. A Function app a [.net-hez készült Azure Digital Twins SDK (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core)használatával kommunikál az Azure Digital Twins szolgáltatással. 
 
 Az SDK használatához a következő csomagokat kell felvennie a projektbe. A csomagokat telepítheti a Visual Studio NuGet csomagkezelő használatával, vagy hozzáadhatja a csomagokat a `dotnet` parancssori eszköz használatával. Válassza ki az alábbi módszerek egyikét: 
 
@@ -287,7 +287,7 @@ Az Alkalmazásbeállítások az _értesítések_ ikon kiválasztásával tekinth
 
 :::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy Azure-függvény Azure-beli digitális Ikrekhez való használatához szükséges lépéseket követte. Ezután előfizethet az Azure-függvény Event Gridre, hogy figyelje a végpontot. A végpont a következő lehet:
 * Az Azure digitális Twins-hoz csatlakoztatott Event Grid végpontok az Azure digitális ikrektől érkező üzenetek feldolgozására (például a telemetria üzenetek, a [digitális ikrek](concepts-twins-graph.md) által generált üzenetek a Twin Graph-ban vagy a életciklus-üzenetek esetében)

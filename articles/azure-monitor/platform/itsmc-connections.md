@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 3cb335cb32ded68377b4eec0af3b1ebbc19e77d9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b9db20fd357a50a92384b3c3f483f8d75b67b3e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328301"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427353"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
@@ -214,6 +214,8 @@ A **ServiceNow-rendszergazdáknak a következőket kell tenniük a ServiceNow-p�
 > 3. Kattintson a hozzáférés visszavonása, majd a visszavonás lehetőségre.
 
 - Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+> [!NOTE]
+> A ITSMC csak a ServiceNow áruházból letöltött Microsoft Log Analytics integrációs szolgáltatáshoz használható hivatalos felhasználói alkalmazást támogatja. A ITSMC nem támogatja a kód betöltését a ServiceNow oldalon vagy a hivatalos ServiceNow-megoldás részét nem képező alkalmazásban. 
 - Integrációs felhasználói szerepkör létrehozása a telepített felhasználói alkalmazáshoz. Az integrációs felhasználói szerepkör létrehozásával kapcsolatos információkat [itt](#create-integration-user-role-in-servicenow-app)találja.
 
 ### <a name="connection-procedure"></a>**Csatlakoztatási eljárás**

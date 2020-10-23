@@ -11,12 +11,12 @@ ms.date: 08/04/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 981e23a2b021cc0eb8085aa943830f87352aee69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 141812e83653b458a2562bf73b70117c39bf7be0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87828523"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426569"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Gyors útmutató: Azure Notification hub létrehozása a Azure Portalban
 
@@ -52,10 +52,10 @@ Ebben a szakaszban egy meglévő névtérben hoz létre egy értesítési közpo
       ![Üzembe helyezési értesítés](./media/create-notification-hub-portal/deployment-notification.png)
 7. Frissítse az **értesítési központ névtereit** tartalmazó weblapot, és tekintse meg az új hubot a listában.
 
-      ![Azure Portal – Értesítések -> Erőforrás megnyitása](./media/create-notification-hub-portal/new-hub-in-list.png)
+      ![Képernyőfelvétel: az értesítési központ névtereit tartalmazó weblap, amely az új hubot tartalmazza a listában.](./media/create-notification-hub-portal/new-hub-in-list.png)
 8. Válassza ki az **értesítési** központot, és tekintse meg az értesítési központ kezdőlapját.
 
-      ![Azure Portal – Értesítések -> Erőforrás megnyitása](./media/create-notification-hub-portal/hub-home-page.png)
+      ![Képernyőkép, amely megjeleníti az értesítési központ kezdőlapját.](./media/create-notification-hub-portal/hub-home-page.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: a6f1a5b532ba3d8d5ce24d6f9856d86719d35c6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839537"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427207"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: végpontok közötti tartalomvédelem az Azure AD használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "91839537"
 
 Ebben az oktatóanyagban és a megadott Player-mintában a Azure Media Services (AMS) és a Azure Active Directory (HRE) teljes körű Media Content Protection-alrendszert állíthat be, hogy az összes AMS támogatott DRM/AES-128, Streaming Protocol, codec és Container formátummal továbbítsa a médiatartalmakat. A minta elég általános ahhoz, hogy biztonságos hozzáférést biztosítson a 2. OAuth által védett REST APIhoz a Code Exchange (PKCE) igazolási kulcsával. (Azure Media Services a licenc kézbesítési szolgáltatása csupán egyike.) Emellett Microsoft Graph API-val vagy bármely, a 2. OAuth-engedélyezési kóddal védett, egyéni fejlesztésű REST API is működik. Ez a [mintakód](https://github.com/Azure-Samples/media-services-content-protection-azure-ad)kísérő dokumentuma.
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
 >
@@ -173,7 +173,7 @@ Válasszon ki egy Azure AD-bérlőt, amelyet teljes mintaként használhat. Erre
 | Rendszergazdai engedély leírása * * | *DRM-licenc kézbesítési háttér erőforrás-hatóköre* | A hatókör részletes leírása, amely akkor jelenik meg, ha a bérlői rendszergazdák kibővítik a hatókört a beleegyezési képernyőn. |
 | Felhasználói jóváhagyás megjelenítendő neve | *DRM. Licenc. Delivery* | A hatókör a beleegyezési képernyőn lesz meghívva, amikor a felhasználók beleegyeznek ehhez a hatókörhöz. |
 | Felhasználói jóváhagyás leírása | *DRM-licenc kézbesítési háttér erőforrás-hatóköre* | Ez a hatókör részletes leírása, amely akkor jelenik meg, amikor a felhasználók kibontanak egy hatókört a beleegyezési képernyőn. |
-| Állam | *Engedélyezve* | Meghatározza, hogy a hatókör elérhető legyen-e az ügyfelek számára. Állítsa "Letiltva" értékre azon hatókörök esetében, amelyeket nem szeretne látni az ügyfelek számára. A rendszer csak a letiltott hatóköröket törölheti, és azt javasoljuk, hogy legalább egy hetet várjon a hatókör letiltását követően, hogy az ügyfelek ne használják tovább. |
+| Állapot | *Engedélyezve* | Meghatározza, hogy a hatókör elérhető legyen-e az ügyfelek számára. Állítsa "Letiltva" értékre azon hatókörök esetében, amelyeket nem szeretne látni az ügyfelek számára. A rendszer csak a letiltott hatóköröket törölheti, és azt javasoljuk, hogy legalább egy hetet várjon a hatókör letiltását követően, hogy az ügyfelek ne használják tovább. |
 
 ## <a name="register-the-client-app"></a>Az ügyfélalkalmazás regisztrálása
 
@@ -313,7 +313,7 @@ Ha egy másik IDE/webplatformot és/vagy egy webkiszolgálót, például a fejle
 
 Most, hogy elvégezte az oktatóanyagot, és rendelkezik egy működő alrendszerrel, a következő felhasználói forgatókönyvekhez is kipróbálhatja a módosítást:
 
-### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Role-Based Access Control (RBAC) az Azure AD-csoporttagság használatával történő licenc-kézbesítéshez
+### <a name="azure-role-based-access-control-azure-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az Azure AD-csoporttagság használatával történő licenc-továbbításhoz
 
 Eddig a rendszer lehetővé teszi minden olyan felhasználó számára, aki bejelentkezhet egy érvényes licenc beszerzéséhez és a védett tartalom lejátszásához.
 

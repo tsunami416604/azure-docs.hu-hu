@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 3a294368e82bcd00f98c26504b3141e8f39fe0c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e492ebf70f69c985691852a1c1f2351d1e09578e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261600"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425007"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Mi a Connected Factory IoT megoldás-gyorsító?
 
@@ -58,7 +58,7 @@ A csatlakoztatott gyár a következő funkciókat tartalmazza:
 
 ## <a name="end-to-end-security"></a>Végpontok közötti biztonság
 
-- A Role-Based Access Controlt (RBAC) használó felhasználók biztonsági engedélyeinek konfigurálása.
+- Konfigurálja a felhasználók biztonsági engedélyeit szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
 - A végpontok közötti titkosítás az OPC UA hitelesítéssel (X. 509 tanúsítványok használatával) és biztonsági jogkivonatokkal valósítható meg.
 
 ## <a name="customizability"></a>Testreszabhatóság
@@ -66,6 +66,6 @@ A csatlakoztatott gyár a következő funkciókat tartalmazza:
 - Testre szabhatja a megoldást, hogy megfeleljen az adott üzleti követelményeknek.
 - Teljes körű megoldás forrása – a GitHubon elérhető forráskód. Tekintse meg az [előre konfigurált csatlakoztatott gyár megoldás](https://github.com/Azure/azure-iot-connected-factory) -tárházat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a csatlakoztatott Factory megoldás-gyorssegédről, tekintse meg a gyors üzembe helyezési [kísérlet felhőalapú megoldását az ipari IoT-eszközök kezeléséhez](quickstart-connected-factory-deploy.md)című témakörben.

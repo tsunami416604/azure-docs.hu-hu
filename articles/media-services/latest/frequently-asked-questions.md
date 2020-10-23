@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa33319f146ac57ab4d253696c94308a43b5db2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019613"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426891"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
@@ -34,7 +34,7 @@ Ha a videó korábban fel lett töltve a Media Services-fiókba Media Services V
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Milyen Azure-szerepkörök végezhetnek műveleteket Azure Media Services erőforrásokon? 
 
-Lásd: [szerepköralapú hozzáférés-vezérlés (RBAC) Media Services fiókokhoz](rbac-overview.md).
+Lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Services fiókokhoz](rbac-overview.md).
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Hogyan streamet az Apple iOS-eszközökre?
 
@@ -269,6 +269,6 @@ A letöltési sebesség javítása kétféleképpen lehetséges:
   * Ügyfél által vezérelt: a lejátszó alkalmazás automatikusan kiválasztja, vagy a felhasználó kiválasztja a videó minőségi réteget és a letöltendő hangsávokat.
   * Felügyelt szolgáltatás: a Azure Media Services dinamikus jegyzékfájl funkciójának használatával létrehozhat egy (globális) szűrőt, amely korlátozza a HLS lejátszási lista vagy kötőjel MPD használatát egyetlen videó minőségi rétegre és kiválasztott hangsávokra. Ezután a felhasználók számára megjelenített letöltési URL-cím tartalmazza ezt a szűrőt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Media Services v3 – áttekintés](media-services-overview.md)

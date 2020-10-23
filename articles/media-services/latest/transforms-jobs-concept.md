@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: inhenkel
-ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297977"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426777"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Átalakítások és feladatok Media Services
 
@@ -62,7 +62,7 @@ A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen
 
 ### <a name="creating-transforms"></a>Átalakítások létrehozása
 
-Az átalakításokat a REST, a CLI vagy a közzétett SDK-k használatával is létrehozhatja. Az Media Services V3 API-t a Azure Resource Manager vezérli, így a Resource Manager-sablonokkal is létrehozhatja és telepítheti az átalakításokat a Media Services-fiókban. A szerepköralapú hozzáférés-vezérlés használatával zárolhatja az átalakításokhoz való hozzáférést.
+Az átalakításokat a REST, a CLI vagy a közzétett SDK-k használatával is létrehozhatja. Az Media Services V3 API-t a Azure Resource Manager vezérli, így a Resource Manager-sablonokkal is létrehozhatja és telepítheti az átalakításokat a Media Services-fiókban. Az Azure szerepköralapú hozzáférés-vezérlés használatával zárolhatja az átalakításokhoz való hozzáférést.
 
 ### <a name="updating-transforms"></a>Átalakítások frissítése
 
@@ -119,7 +119,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 * [Hibakódok](/rest/api/media/jobs/get#joberrorcode)
 * [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A fejlesztés megkezdése előtt tekintse át [az Media Services V3 API](media-services-apis-overview.md) -kkal való fejlesztést (az API-k elérésére vonatkozó információkat, elnevezési konvenciókat stb.).
 - Tekintse meg a következő oktatóanyagokat:

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c972bd3b770f42353d285d0c69aacef56d6e04d5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742842"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426121"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Az Azure Portal használatával riasztásokat állíthat be a metrikákkal kapcsolatban Azure Database for MariaDB
 
@@ -27,7 +27,7 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Monitor REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>Metrikához tartozó riasztási szabály létrehozása
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a figyelni kívánt Azure Database for MariaDB-kiszolgálót.
@@ -84,6 +84,6 @@ Miután létrehozta a riasztást, kiválaszthatja, és elvégezheti a következ�
 * **Tiltsa le** vagy **engedélyezze** a riasztást, ha átmenetileg le kívánja állítani vagy folytatni szeretné az értesítések fogadását.
 
 
-## <a name="next-steps"></a>Következő lépések
-* További információ a [webhookok riasztásokban való konfigurálásáról](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
-* [Tekintse át a metrikák gyűjteményét](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.
+## <a name="next-steps"></a>További lépések
+* További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md).
+* [Tekintse át a metrikák gyűjteményét](../azure-monitor/platform/data-platform.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

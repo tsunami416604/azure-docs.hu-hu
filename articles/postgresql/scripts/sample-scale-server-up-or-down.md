@@ -8,15 +8,18 @@ ms.devlang: azurecli
 ms.custom: mvc, devx-track-azurecli
 ms.topic: sample
 ms.date: 08/07/2019
-ms.openlocfilehash: d5f08e764ae44b11ab5838689e7f8a70c89b3122
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a848e14f854385ed1603918ab7e7a274667f2324
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708628"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427544"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Egyetlen PostgreSQL-kiszolgáló monitorozása és méretezése az Azure CLI-vel
 Ez a CLI-parancsfájl a metrikák lekérdezése után egy Azure Database for PostgreSQL kiszolgáló számítási és tárolási kapacitását méretezi. A számítás vertikális fel-vagy leskálázást végez. A tárterület csak vertikális felskálázásra használható. 
+
+> [!IMPORTANT] 
+> A tárterületet csak felfelé, nem lefelé lehet méretezni.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 

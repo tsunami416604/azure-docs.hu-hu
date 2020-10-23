@@ -7,23 +7,23 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 40484521ecdc32e2e279ddf1b68ddcd4b1d7bc9b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201348"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427575"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
-Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital Twins szolgáltatás példányaival együttműködve írhatnak be egy ügyfélalkalmazás-alkalmazást. Ez a fejlesztői témájú oktatóanyag bevezetést nyújt az Azure Digital Twins szolgáltatással való programozáshoz, amely az [Azure IoT Digital Twin ügyféloldali kódtárat használja a .net-hez (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Részletesen ismerteti a C#-konzol ügyfélalkalmazás lépésről lépésre történő írását.
+Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital Twins szolgáltatás példányaival együttműködve írhatnak be egy ügyfélalkalmazás-alkalmazást. Ez a fejlesztői témájú oktatóanyag bevezetést nyújt az Azure Digital Twins szolgáltatással való programozáshoz a [.net-hez készült Azure Digital Twins SDK (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core)használatával. Részletesen ismerteti a C#-konzol ügyfélalkalmazás lépésről lépésre történő írását.
 
 > [!div class="checklist"]
 > * Projekt beállítása
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
 > * Az erőforrások eltávolítása
-> * Következő lépések
+> * További lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,7 +58,7 @@ dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
-Az első függőség az [Azure IoT Digital Twin ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). A második függőség olyan eszközöket biztosít, amelyek segítenek az Azure-beli hitelesítésben.
+Az első függőség a .NET- [hez készült Azure digitális Twins SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core). A második függőség olyan eszközöket biztosít, amelyek segítenek az Azure-beli hitelesítésben.
 
 Tartsa megnyitva a parancssorablakot, ahogy az oktatóanyag során is használni fogja.
 
@@ -266,12 +266,18 @@ Ettől a ponttól kezdve az oktatóanyag a kipróbálási és a fogási kezelőb
 
 Most, hogy feltöltött egy modellt az Azure digitális Twins-ba, a modell definíciójában **digitális ikreket**hozhat létre. A [digitális ikrek](concepts-twins-graph.md) egy modell példányai, és az üzleti környezetben található entitásokat képviselik, például a farmon lévő érzékelők, a helyiségek egy épületben vagy egy autóban található fények. Ez a szakasz néhány digitális ikreket hoz létre a korábban feltöltött modell alapján.
 
-Vegyen fel egy új `using` utasítást a tetején, mivel szüksége lesz a beépített .net JSON-szerializáló elemre a következőben `System.Text.Json` :
+Adja hozzá ezeket `using` az új utasításokat felül, mivel ez a mintakód a beépített .net JSON-szerializáló használja a alkalmazásban `System.Text.Json` , valamint a `Serialization` névteret az [Azure Digital Twins SDK for .net (C#)](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) alkalmazásban [hivatkozás módosítva az előzetes verzióhoz]:
 
 ```csharp
 using System.Text.Json;
 using Azure.DigitalTwins.Core.Serialization;
 ```
+
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` nem szükséges a digitális ikrek és a kapcsolatok használatához; Ez egy opcionális névtér, amely segíthet a megfelelő formátumban beolvasni az adatgyűjtést. Néhány alternatíva a következők használatára:
+>* Karakterláncok összefűzése JSON-objektumok formájában
+>* Egy JSON-elemző használata `System.Text.Json` , mint egy JSON-objektum dinamikus létrehozása
+>* Egyéni típusok modellezése a C#-ban, a létrehozásuk és a karakterláncok szerializálása
 
 Ezután adja hozzá a következő kódot a metódus végéhez a `Main` modell alapján három digitális ikrek létrehozásához és inicializálásához.
 
@@ -301,17 +307,7 @@ Figyelje meg, hogy az ikrek létrehozásakor a második alkalommal nem fordul el
 
 Ezután létrehozhat **kapcsolatokat** a létrehozott ikrek között, és összekapcsolhatja őket egy **különálló gráfban**. A [két gráf](concepts-twins-graph.md) a teljes környezet ábrázolására szolgál.
 
-Ha segítségre van a kapcsolatok létrehozásában, ez a mintakód a `Azure.DigitalTwins.Core.Serialization` névteret használja. Ezt az utasítást korábban a projekthez adta hozzá `using` :
-
-```csharp
-using Azure.DigitalTwins.Core.Serialization;
-```
-
->[!NOTE]
->`Azure.DigitalTwins.Core.Serialization` nem szükséges a digitális ikrek és a kapcsolatok használatához; Ez egy opcionális névtér, amely segíthet a megfelelő formátumban beolvasni az adatgyűjtést. Néhány alternatíva a következők használatára:
->* Karakterláncok összefűzése JSON-objektumok formájában
->* Egy JSON-elemző használata `System.Text.Json` , mint egy JSON-objektum dinamikus létrehozása
->* Egyéni típusok modellezése a C#-ban, a létrehozásuk és a karakterláncok szerializálása
+Ha segítségre van a kapcsolatok létrehozásában, ez a mintakód a `Azure.DigitalTwins.Core.Serialization` névteret használja. Ezt a projektet a [*digitális Twins létrehozása*](#create-digital-twins) szakaszban korábban adta hozzá a projekthez.
 
 Adjon hozzá egy új statikus metódust a `Program` osztályhoz a `Main` metódus alá:
 
@@ -548,7 +544,7 @@ Az oktatóanyagban használt példány újra felhasználható a következő okta
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

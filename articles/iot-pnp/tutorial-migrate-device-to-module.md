@@ -1,5 +1,5 @@
 ---
-title: Általános IoT-Plug and Play általános moduljának összekötése | Microsoft Docs
+title: Általános IoT-Plug and Play modul összekötése | Microsoft Docs
 description: Használjon C# IoT Plug and Play az eszköz kódját egy általános modulban.
 author: ericmitt
 ms.author: ericmitt
@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 671809b9cdbe72c8f3091b0056897c2342a38b1f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d425152f83821e1d157065370bd02e2d990ec876
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089162"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426939"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Oktatóanyag: IoT Plug and Play modul összekötése (C#)
 
@@ -98,7 +98,7 @@ A minta projekt megnyitása és előkészítése:
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Név | Érték |
+    | Name | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | connectionString |
     | IOTHUB_MODULE_CONNECTION_STRING | A modul-összekapcsolási karakterlánc, amelyet korábban jegyzett készített |
@@ -173,7 +173,7 @@ A szolgáltatás SDK-k lehetővé teszik a csatlakoztatott IoT Plug and Play esz
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Név | Érték |
+    | Name | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | saját modul – eszköz |
     | IOTHUB_CONNECTION_STRING | Az érték, amelyet a [környezet beállításakor](set-up-environment.md) jegyzett készített |
@@ -233,7 +233,7 @@ Az Azure IoT Explorer eszköz használatával a következőket tekintheti meg:
 * IoT Edge modul Twin Property frissítései a IoT Plug and Play értesítéseket aktiválják.
 * A IoT Edge modul reagál a IoT Plug and Play parancsokra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hub-modulhoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

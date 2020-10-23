@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: ee5f70f40103a92ff26cfcabc6adf9e2b825b59b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c388bd22ba20dd681997064496a90a81dabb292f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074838"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426710"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrálás a Kubernetes üzembe helyezésével a Helm használatával
 
@@ -23,7 +23,7 @@ A kiadási folyamat során a Helm a megfelelő konfigurációval egyesíti a dia
 
 A *Values. YAML* tárolt értékek felülbírálása érdekében további YAML konfigurációs fájlok is megadhatók a parancssorban a Helm futtatásakor. Az Azure app Configuration támogatja a konfigurációs értékek exportálását a YAML-fájlokba. Az exportálási funkció integrálása az üzembe helyezésbe lehetővé teszi, hogy a Kubernetes-alkalmazások kihasználják az alkalmazás konfigurációjában tárolt konfigurációs értékeket.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Alkalmazások konfigurációjának használata az alkalmazás Kubernetes való telepítésekor a Helm használatával.
 > * Hozzon létre egy Kubernetes titkot egy Key Vault hivatkozás alapján az alkalmazás konfigurációjában.
@@ -231,13 +231,13 @@ A [Kubernetes irányítópultjának](../aks/kubernetes-dashboard.md)használatá
 
 Az alkalmazás konfigurációjában az Key Vault-referenciák egyik titka, **jelszava**, tárolása is hozzá lett adva a Kubernetes Secrets szolgáltatáshoz. 
 
-![Gyorsindítás alkalmazás elindítása helyi](./media/kubernetes-dashboard-secrets.png)
+![Képernyőkép, amely kiemeli a jelszót az adatszakaszban.](./media/kubernetes-dashboard-secrets.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure-alkalmazás konfigurációs beállításait exportálta egy Kubernetes-telepítésben a Helm használatával. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 

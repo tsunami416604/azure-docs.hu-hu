@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 3fe99543b821810b1479f1e504098d81fd20c534
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb3d29a339911b0ec05b543257974014a1bcbe22
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711286"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425485"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Az Azure üzenetsor-tároló figyelése
 
@@ -46,7 +46,7 @@ Az Azure üzenetsor-tároló ugyanolyan típusú figyelési adatokat gyűjt, min
 
 Tekintse meg az Azure üzenetsor- [tárolás figyelési adatait](monitor-queue-storage-reference.md) ismertető témakört, amely részletes információkat tartalmaz az Azure üzenetsor-tároló által létrehozott mérőszámokról és naplókról.
 
-A Azure Monitor metrikái és naplói csak Azure Resource Manager Storage-fiókokat támogatják. A Azure Monitor nem támogatja a klasszikus Storage-fiókokat. Ha metrikákat vagy naplókat szeretne használni egy klasszikus Storage-fiókon, át kell telepítenie egy Azure Resource Manager Storage-fiókba. Lásd: [áttelepítés Azure Resource Managerra](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
+A Azure Monitor metrikái és naplói csak Azure Resource Manager Storage-fiókokat támogatják. A Azure Monitor nem támogatja a klasszikus Storage-fiókokat. Ha metrikákat vagy naplókat szeretne használni egy klasszikus Storage-fiókon, át kell telepítenie egy Azure Resource Manager Storage-fiókba. Lásd: [áttelepítés Azure Resource Managerra](/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
 
 Ha szeretné, továbbra is használhatja a klasszikus metrikákat és naplókat. Valójában a klasszikus metrikák és naplók párhuzamosan érhetők el Azure Monitor metrikákkal és naplókkal. A támogatás addig marad érvényben, amíg az Azure Storage befejezi a szolgáltatást az örökölt metrikák és naplók esetében.
 
@@ -56,7 +56,7 @@ A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gy
 
 Diagnosztikai beállítás létrehozásához a Azure Portal, az Azure CLI vagy a PowerShell használatával tekintse meg a [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md)című témakört. 
 
-Diagnosztikai beállítást létrehozó Azure Resource Manager sablon megjelenítéséhez tekintse meg az [Azure Storage diagnosztikai beállításai](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)című témakört.
+Diagnosztikai beállítást létrehozó Azure Resource Manager sablon megjelenítéséhez tekintse meg az [Azure Storage diagnosztikai beállításai](/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)című témakört.
 
 Ha diagnosztikai beállítást hoz létre, válassza ki azt a tárterületet, amelyhez engedélyezni szeretné a naplókat, például blob, üzenetsor, tábla vagy fájl. A várólista-tároláshoz válassza a **várólista**lehetőséget. 
 
@@ -89,7 +89,7 @@ Az Azure üzenetsor-tárolás metrikái a következő névterekben találhatók:
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/queueServices
 
-Az Azure üzenetsor-tárolást magában foglaló összes Azure Monitor támogatási mérőszámok listáját lásd: [Azure monitor támogatott metrikák](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+Az Azure üzenetsor-tárolást magában foglaló összes Azure Monitor támogatási mérőszámok listáját lásd: [Azure monitor támogatott metrikák](/azure/azure-monitor/platform/metrics-supported).
 
 
 ### <a name="accessing-metrics"></a>Metrikák elérése
@@ -101,7 +101,7 @@ Az Azure üzenetsor-tárolást magában foglaló összes Azure Monitor támogat�
 
 #### <a name="list-the-metric-definition"></a>A metrika definíciójának listázása
 
-A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás metrikai definícióját is listázhatja. Használja a [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) parancsmagot.
+A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás metrikai definícióját is listázhatja. Használja a [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) parancsmagot.
 
 Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-fiók erőforrás-azonosítójával vagy a várólista tárolási szolgáltatásának erőforrás-azonosítójával.  Ezek az erőforrás-azonosítók a Storage-fiók **tulajdonságlapján** találhatók a Azure Portal.
 
@@ -112,7 +112,7 @@ Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-f
 
 #### <a name="reading-metric-values"></a>Metrika értékeinek olvasása
 
-A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás fiók szintű mérőszáma is olvasható. Használja a [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) parancsmagot.
+A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás fiók szintű mérőszáma is olvasható. Használja a [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) parancsmagot.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -123,7 +123,7 @@ A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás fiók szintű mérő
 
 #### <a name="list-the-account-level-metric-definition"></a>A fiók szintű metrika definíciójának listázása
 
-A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás metrikai definícióját is listázhatja. Használja az az [monitor Metrics List-fogalommeghatározások](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) parancsot.
+A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás metrikai definícióját is listázhatja. Használja az az [monitor Metrics List-fogalommeghatározások](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) parancsot.
  
 Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-fiók erőforrás-azonosítójával vagy a várólista tárolási szolgáltatásának erőforrás-azonosítójával. Ezek az erőforrás-azonosítók a Storage-fiók **tulajdonságlapján** találhatók a Azure Portal.
 
@@ -133,7 +133,7 @@ Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-f
 
 #### <a name="read-account-level-metric-values"></a>Fiók szintű metrika értékeinek olvasása
 
-Megtekintheti a Storage-fiók vagy a üzenetsor-tárolási szolgáltatás metrikai értékeit. Használja az az [monitor metrika List](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) parancsot.
+Megtekintheti a Storage-fiók vagy a üzenetsor-tárolási szolgáltatás metrikai értékeit. Használja az az [monitor metrika List](/cli/azure/monitor/metrics#az-monitor-metrics-list) parancsot.
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -320,7 +320,7 @@ A naplók úgy jelennek meg, mint a cél Storage-fiókban lévő tárolóban tá
 
 `https://<destination-storage-account>.blob.core.windows.net/insights-logs-<storage-operation>/resourceId=/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<source-storage-account>/queueServices/default/y=<year>/m=<month>/d=<day>/h=<hour>/m=<minute>/PT1H.json`
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
@@ -330,19 +330,19 @@ Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőriz
 
 ![Naplók](media/monitor-queue-storage/event-hub-log.png)
 
-A biztonsági információkkal és az események kezelésével és figyelési eszközeivel elérheti és beolvashatja az Event hub-nak elküldett naplózási adatokat. További információ: Mit tehetek [az Event hub-ba küldött figyelési adatokkal?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
+A biztonsági információkkal és az események kezelésével és figyelési eszközeivel elérheti és beolvashatja az Event hub-nak elküldett naplózási adatokat. További információ: Mit tehetek [az Event hub-ba küldött figyelési adatokkal?](/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Naplók elérése Log Analytics munkaterületen
 
 A Log Analytics munkaterületre küldött naplók Azure Monitor naplózási lekérdezések használatával érhetők el.
 
-További információ: [Bevezetés a log Analytics használatába Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+További információ: [Bevezetés a log Analytics használatába Azure monitor](/azure/azure-monitor/log-query/get-started-portal).
 
 Az adattárolást a **StorageQueueLogs** táblában tárolja a rendszer.  
 
 #### <a name="sample-kusto-queries"></a>Példa Kusto-lekérdezésekre
 
-Íme néhány lekérdezés, amely megadható a **log keresési** sávban a várólista-tároló figyeléséhez. Ezek a lekérdezések az [új nyelvvel](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)működnek.
+Íme néhány lekérdezés, amely megadható a **log keresési** sávban a várólista-tároló figyeléséhez. Ezek a lekérdezések az [új nyelvvel](/azure/azure-monitor/log-query/log-query-overview)működnek.
 
 > [!IMPORTANT]
 > Amikor kiválasztja a **naplók** elemet a Storage-fiók erőforráscsoport menüjében, log Analytics megnyílik a lekérdezés hatóköre beállítással az aktuális erőforráscsoporthoz. Ez azt jelenti, hogy a naplók lekérdezése csak az adott erőforráscsoport adatait fogja tartalmazni. Ha olyan lekérdezést szeretne futtatni, amely más erőforrásokból vagy más Azure-szolgáltatásoktól származó adatokból származó adatokkal is rendelkezik, válassza a **naplók** lehetőséget a **Azure monitor** menüből. Részletekért lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](/azure/azure-monitor/log-query/scope/) .
@@ -401,7 +401,7 @@ Az alábbi lekérdezések segítségével figyelheti az Azure Storage-fiókokat:
 
 Nem. Az Azure-beli számítási szolgáltatás támogatja a lemezek mérőszámait. További információ: [a felügyelt és nem felügyelt lemezek esetében a lemezre vonatkozó mérőszámok](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure üzenetsor-tároló által létrehozott naplók és metrikák hivatkozását az [Azure üzenetsor-tárolás figyelési adatokra vonatkozó dokumentációjában](monitor-queue-storage-reference.md)tekintheti meg.
 - Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md).

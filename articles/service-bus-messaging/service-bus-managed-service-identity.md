@@ -2,13 +2,13 @@
 title: Felügyelt identitások az Azure-erőforrásokhoz Service Bus
 description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások Azure Service Bus entitások (várólisták, témakörök és előfizetések) elérésére.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 1deb3bdf823f1554e302bb35baabe444223f9008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 1efcd3c48e7e4a431a0c72c4b3b84531b44e973e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88079858"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425517"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
 Az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) egy Azure-beli szolgáltatás, amely lehetővé teszi, hogy az alkalmazás kódjának futtatásához használt központi telepítéshez tartozó biztonságos identitást hozzon létre. Ezután társíthatja az identitást hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket biztosítanak az alkalmazás által igényelt egyes Azure-erőforrások eléréséhez.
@@ -45,7 +45,7 @@ Mielőtt Azure-szerepkört rendeljen egy rendszerbiztonsági tag számára, hat�
 
 Az alábbi lista azokat a szinteket ismerteti, amelyekkel a Service Bus erőforrásaihoz férhet hozzá, a legszűkebb hatókörtől kezdve:
 
-- **Üzenetsor**, **témakör**vagy **előfizetés**: a szerepkör-hozzárendelés az adott Service Bus entitásra vonatkozik. A Azure Portal jelenleg nem támogatja a felhasználók/csoportok/felügyelt identitások hozzárendelését az előfizetési szinten Service Bus Azure-szerepkörökhöz. Íme egy példa az Azure CLI-parancs használatára: [az-role-hozzárendelés-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) az identitás Service Bus Azure-szerepkörhöz való hozzárendeléséhez: 
+- **Üzenetsor**, **témakör**vagy **előfizetés**: a szerepkör-hozzárendelés az adott Service Bus entitásra vonatkozik. A Azure Portal jelenleg nem támogatja a felhasználók/csoportok/felügyelt identitások hozzárendelését az előfizetési szinten Service Bus Azure-szerepkörökhöz. Íme egy példa az Azure CLI-parancs használatára: [az-role-hozzárendelés-Create](/cli/azure/role/assignment?#az-role-assignment-create) az identitás Service Bus Azure-szerepkörhöz való hozzárendeléséhez: 
 
     ```azurecli
     az role assignment create \
@@ -91,6 +91,9 @@ Az alkalmazás létrehozása után kövesse az alábbi lépéseket:
 
 Ha engedélyezte ezt a beállítást, a rendszer létrehoz egy új szolgáltatás-identitást a Azure Active Directory (Azure AD), és az App Service gazdagépre van konfigurálva.
 
+> [!NOTE]
+> Felügyelt identitás használata esetén a kapcsolódási karakterlánc formátuma a (z): `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=Managed Identity` .
+
 Most rendeljen hozzá egy szerepkörhöz a szolgáltatás identitását a Service Bus erőforrásaihoz szükséges hatókörben.
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure-szerepkörök kiosztása a Azure Portal használatával
@@ -108,14 +111,16 @@ Ha egy szerepkört Service Bus névtérhez szeretne rendelni, akkor navigáljon 
 4.  A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a hozzárendelni kívánt Azure Service Bus-szerepköröket. Ezután keresse meg a szerepkör hozzárendeléséhez regisztrált szolgáltatás identitását.
     
     ![Szerepkör-hozzárendelési lap hozzáadása](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  Kattintson a **Mentés** gombra. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a szolgáltatás identitása Azure Service Bus adattulajdonost tartalmaz.
+5.  Válassza a **Mentés** lehetőséget. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a szolgáltatás identitása Azure Service Bus adattulajdonost tartalmaz.
     
     ![Szerepkörhöz rendelt identitás](./media/service-bus-managed-service-identity/role-assigned.png)
 
 Miután hozzárendelte a szerepkört, a webalkalmazás hozzáfér a megadott hatókörben lévő Service Bus entitásokhoz. 
 
-### <a name="run-the-app"></a>Az alkalmazás futtatása
 
+
+
+### <a name="run-the-app"></a>Az alkalmazás futtatása
 Most módosítsa a létrehozott ASP.NET-alkalmazás alapértelmezett oldalát. A webalkalmazás kódját a [GitHub-adattárból](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)is használhatja.  
 
 Az alapértelmezett. aspx lap a kezdőlapja. A kód a Default.aspx.cs fájlban található. Az eredmény egy minimális webalkalmazás, amely néhány beviteli mezővel rendelkezik, valamint a **küldési** és **fogadási** gombokkal, amelyek a Service Bushoz csatlakoznak a küldési és fogadási üzenetekhez.
@@ -134,7 +139,7 @@ A módosítások elvégzése után tegye közzé és futtassa az alkalmazást. A
 > 
 > - A felügyelt identitások jelenleg nem működnek App Service üzembe helyezési pontokkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 

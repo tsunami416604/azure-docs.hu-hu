@@ -2,13 +2,13 @@
 title: A Azure Site Recovery újdonságai
 description: A Azure Site Recovery szolgáltatás új szolgáltatásainak és legújabb frissítéseinek összefoglalása.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 1bf051afaeb61c80e3708a72a4a0605b68533977
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c35c8e041e47f02d53c680b5812b10d25d75a67
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90527343"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425705"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -22,14 +22,24 @@ Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legú
 
 **Frissítés** |  **Egyesített beállítás** | **Konfigurációs kiszolgáló petesejtjei** | **Mobilitási szolgáltatás ügynöke** | **Site Recovery szolgáltató** | **Recovery Services ügynök**
 --- | --- | --- | --- | --- | ---
+[51-es összesítés](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [50-es összesítés](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [49-es összesítés](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 [48-es összesítés](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
 [47-es összesítés](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV-gépek – 2.0.9183.0 <br> VMware-gépek – 2.0.9177.0
-[46-es összesítés](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 
 
 [További](service-updates-how-to.md) információ a frissítések telepítéséről és támogatásáról.
+
+
+### <a name="update-rollup-51"></a>51-es kumulatív frissítés
+
+A 51-es [kumulatív frissítés](https://support.microsoft.com/help/4590304/update-rollup-51-for-azure-site-recovery) a következő frissítéseket tartalmazza:
+
+**Frissítés** | **Részletek**
+--- | ---
+**Szolgáltatók és ügynökök** | A Site Recovery ügynökök és szolgáltatók frissítései a kumulatív módon részletezve.
+**Hibajavítások/javítások** | Számos, a kumulatív frissítéssel kapcsolatos javítás és javítás, beleértve a mobilitási szolgáltatás új Linux-támogatását is.
 
 ## <a name="update-september-2020"></a>Frissítés (2020. szeptember)
 
@@ -580,6 +590,6 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Naprakészen tarthatja frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?product=site-recovery) oldalon.

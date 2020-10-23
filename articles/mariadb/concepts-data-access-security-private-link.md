@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 20add4859b272b6d121666cde9c56296119d41e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80bc77de30073b2872412f907251b1aad7e334d3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836530"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425632"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privát hivatkozás a Azure Database for MariaDB
 
 A privát hivatkozás lehetővé teszi, hogy saját végpontokat hozzon létre a Azure Database for MariaDBhoz, és így az Azure-szolgáltatásokat a saját Virtual Network (VNet) belül hozza létre. A privát végpont egy magánhálózati IP-címet tesz elérhetővé, amely a VNet bármely más erőforrásához hasonlóan a Azure Database for MariaDB adatbázis-kiszolgálóhoz való kapcsolódáshoz használható.
 
-A privát kapcsolati funkciót támogató Pásti-szolgáltatások listáját a privát hivatkozás [dokumentációjában](https://docs.microsoft.com/azure/private-link/index)tekintheti meg. A privát végpont egy adott [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) és alhálózaton belüli magánhálózati IP-cím.
+A privát kapcsolati funkciót támogató Pásti-szolgáltatások listáját a privát hivatkozás [dokumentációjában](../private-link/index.yml)tekintheti meg. A privát végpont egy adott [VNet](../virtual-network/virtual-networks-overview.md) és alhálózaton belüli magánhálózati IP-cím.
 
 > [!NOTE]
 > A privát hivatkozás funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MariaDB-kiszolgálókon érhető el. Győződjön meg arról, hogy az adatbázis-kiszolgáló ezen díjszabási szintek egyikében található.
@@ -28,7 +28,7 @@ Az adatok Azure Database for MariaDBban való szűrése akkor történik meg, am
 
 Vegye fontolóra egy olyan forgatókönyvet, amely egy MariaDB Workbench alkalmazást futtató felhasználón belül egy Azure Database for MariaDB-példányhoz csatlakozó Azure-beli virtuális gépen fut. Ez a MariaDB-példány az USA nyugati régiójának adatközpontjában található. Az alábbi példa bemutatja, hogyan korlátozható a hozzáférés nyilvános végpontokkal a Azure Database for MariaDB hálózati hozzáférés-vezérlés használatával.
 
-* Tiltsa le a nyilvános végponton keresztül Azure Database for MariaDB összes Azure-szolgáltatás forgalmát az Azure-szolgáltatások kikapcsolásának engedélyezése beállítással. Győződjön meg arról, hogy az IP-címek vagy tartományok nem férhetnek hozzá a kiszolgálóhoz a [Tűzfalszabályok](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) vagy a [virtuális hálózati szolgáltatás végpontján](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)keresztül.
+* Tiltsa le a nyilvános végponton keresztül Azure Database for MariaDB összes Azure-szolgáltatás forgalmát az Azure-szolgáltatások kikapcsolásának engedélyezése beállítással. Győződjön meg arról, hogy az IP-címek vagy tartományok nem férhetnek hozzá a kiszolgálóhoz a [Tűzfalszabályok](concepts-firewall-rules.md) vagy a [virtuális hálózati szolgáltatás végpontján](concepts-data-access-security-vnet.md)keresztül.
 
 * Csak a virtuális gép magánhálózati IP-címének használatával engedélyezze a Azure Database for MariaDB forgalmat. További információt a [szolgáltatás-végpont](concepts-data-access-security-vnet.md) és a [VNet-tűzfalszabályok](howto-manage-vnet-portal.md)című cikkben talál.
 
@@ -45,7 +45,7 @@ A privát hivatkozással mostantól olyan hálózati hozzáférés-vezérlőket 
 
 Amikor a helyi gépekről csatlakozik a nyilvános végponthoz, az IP-címet egy kiszolgálói szintű tűzfalszabály használatával kell hozzáadnia az IP-alapú tűzfalhoz. Habár ez a modell jól működik, hogy lehetővé tegye az egyes gépekhez való hozzáférést a fejlesztési vagy tesztelési feladatokhoz, nehéz felügyelni éles környezetben.
 
-Privát hivatkozással engedélyezheti a létesítmények közötti hozzáférést a privát végponthoz [Express Route](https://azure.microsoft.com/services/expressroute/) (er), privát vagy [VPN-alagút](https://docs.microsoft.com/azure/vpn-gateway/)használatával. Ezt követően a nyilvános végponton keresztül is letilthatják az összes hozzáférést, és nem használják az IP-alapú tűzfalat.
+Privát hivatkozással engedélyezheti a létesítmények közötti hozzáférést a privát végponthoz [Express Route](https://azure.microsoft.com/services/expressroute/) (er), privát vagy [VPN-alagút](../vpn-gateway/index.yml)használatával. Ezt követően a nyilvános végponton keresztül is letilthatják az összes hozzáférést, és nem használják az IP-alapú tűzfalat.
 
 > [!NOTE]
 > Bizonyos esetekben a Azure Database for MariaDB és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
@@ -57,8 +57,8 @@ Privát hivatkozással engedélyezheti a létesítmények közötti hozzáféré
 
 Privát végpontok szükségesek a privát kapcsolat engedélyezéséhez. Ezt a következő útmutatók segítségével végezheti el.
 
-* [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
-* [Parancssori felület](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
+* [Azure Portal](howto-configure-privatelink-portal.md)
+* [Parancssori felület](howto-configure-privatelink-cli.md)
 
 ### <a name="approval-process"></a>Jóváhagyási folyamat
 
@@ -90,17 +90,17 @@ Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, egymássa
 ![Válassza ki a privát végpont áttekintését](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Csatlakozás egy Azure-beli virtuális gépről a Virtual Network (VNet)
-Konfigurálja a [VNet](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) -társítást úgy, hogy az Azure-beli virtuális gép Azure Database for MariaDB kapcsolatot hozzon létre egy egyenrangú VNet.
+Konfigurálja a [VNet](../virtual-network/tutorial-connect-virtual-networks-powershell.md) -társítást úgy, hogy az Azure-beli virtuális gép Azure Database for MariaDB kapcsolatot hozzon létre egy egyenrangú VNet.
 
 ### <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Csatlakozás egy Azure-beli virtuális gépről a VNet-VNet-környezetben
-A [VNet-to-VNET VPN Gateway-kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) konfigurálása egy másik régióban vagy előfizetésben lévő Azure-beli virtuális gépről létesített Azure Database for MariaDB kapcsolat létesítéséhez.
+A [VNet-to-VNET VPN Gateway-kapcsolat](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) konfigurálása egy másik régióban vagy előfizetésben lévő Azure-beli virtuális gépről létesített Azure Database for MariaDB kapcsolat létesítéséhez.
 
 ### <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Csatlakozás helyszíni környezetből VPN-kapcsolaton keresztül
 A helyszíni környezet és a Azure Database for MariaDB közötti kapcsolat létesítéséhez válassza ki és implementálja a következő lehetőségek egyikét:
 
-* [Pont – hely kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
-* [Helyek közötti VPN-kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
-* [ExpressRoute áramkör](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
+* [Pont – hely kapcsolat](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Helyek közötti VPN-kapcsolat](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [ExpressRoute áramkör](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Privát hivatkozás a tűzfalszabályok együttes használatával
 
@@ -125,15 +125,15 @@ Ha ezt a beállítást az *Igen*értékre állítja, csak a magánhálózati vé
 
 Ha meg szeretné tudni, hogyan állíthatja be a Azure Database for MariaDB számára a **nyilvános hálózati hozzáférés Megtagadását** Azure Portal, tekintse meg a [nyilvános hálózati hozzáférés megtagadásának konfigurálása](howto-deny-public-network-access.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Database for MariaDB biztonsági funkcióival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* Ha Azure Database for MariaDB tűzfalat szeretne konfigurálni, tekintse meg a [tűzfal támogatása](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules)című témakört.
+* Ha Azure Database for MariaDB tűzfalat szeretne konfigurálni, tekintse meg a [tűzfal támogatása](concepts-firewall-rules.md)című témakört.
 
-* Ha meg szeretné tudni, hogyan konfigurálhatja a virtuális hálózati szolgáltatás végpontját a Azure Database for MariaDB számára, tekintse meg a [virtuális hálózatok elérésének konfigurálása](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)című témakört.
+* Ha meg szeretné tudni, hogyan konfigurálhatja a virtuális hálózati szolgáltatás végpontját a Azure Database for MariaDB számára, tekintse meg a [virtuális hálózatok elérésének konfigurálása](concepts-data-access-security-vnet.md)című témakört.
 
-* A Azure Database for MariaDB kapcsolatok áttekintését lásd: [Azure Database for MariaDB kapcsolati architektúra](https://docs.microsoft.com/azure/MariaDB/concepts-connectivity-architecture)
+* A Azure Database for MariaDB kapcsolatok áttekintését lásd: [Azure Database for MariaDB kapcsolati architektúra](concepts-connectivity-architecture.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

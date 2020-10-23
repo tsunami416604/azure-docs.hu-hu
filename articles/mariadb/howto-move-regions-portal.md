@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75fabeeb7fa879a0f2843538d34f85e5ccec40e4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542427"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425904"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Azure Database for MariaDB-kiszolgáló áthelyezése másik régióba a Azure Portal használatával
 
@@ -21,7 +21,7 @@ A meglévő Azure Database for MariaDB-kiszolgálók egyik régióból a másikb
 Egy Azure Database for MariaDB régiók [közötti olvasási replikát](concepts-read-replicas.md#cross-region-replication) használhat a másik régióba való áttérés befejezéséhez. Ehhez először létre kell hoznia egy olvasási replikát a célhelyen. Ezután állítsa le a replikálást az olvasási replika kiszolgálójára, hogy egy önálló kiszolgáló legyen, amely az olvasási és írási forgalmat is elfogadja. 
 
 > [!NOTE]
-> Ez a cikk arra összpontosít, hogy a kiszolgálót egy másik régióba helyezze át. Ha át szeretné helyezni a kiszolgálót egy másik erőforráscsoporthoz vagy előfizetésbe, tekintse meg az [áthelyezéssel](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) foglalkozó cikket. 
+> Ez a cikk arra összpontosít, hogy a kiszolgálót egy másik régióba helyezze át. Ha át szeretné helyezni a kiszolgálót egy másik erőforráscsoporthoz vagy előfizetésbe, tekintse meg az [áthelyezéssel](../azure-resource-manager/management/move-resource-group-and-subscription.md) foglalkozó cikket. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: da8dc11212d33627a165dc5e11acc64087fb6c43
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: df45068ff14d8ac08a17719e4e0338308b504cac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131819"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426104"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -89,7 +89,7 @@ Azure Machine Learning adattárolókat [használ a Storage-](concept-data.md#dat
 1. Az adattár beállításainál válassza az __Igen__ lehetőséget a  __Azure Machine learning szolgáltatás számára a munkaterület által felügyelt identitás használatával való elérésének engedélyezéséhez__.
 
 
-Ezek a lépések hozzáadja a munkaterület által felügyelt identitást __olvasóként__ a Storage szolgáltatáshoz az Azure erőforrás-alapú hozzáférés-vezérlés (RBAC) használatával. Az __olvasói__ hozzáférés lehetővé teszi, hogy a munkaterület beolvassa a tűzfal beállításait, és gondoskodjon arról, hogy a virtuális hálózat ne maradjon meg
+Ezek a lépések hozzáadja a munkaterület által felügyelt identitást __olvasóként__ a Storage szolgáltatáshoz az Azure erőforrás-alapú hozzáférés-vezérlés (Azure RBAC) használatával. Az __olvasói__ hozzáférés lehetővé teszi, hogy a munkaterület beolvassa a tűzfal beállításait, és gondoskodjon arról, hogy a virtuális hálózat ne maradjon meg
 
 > [!NOTE]
 > A módosítások érvénybe léptetése akár 10 percet is igénybe vehet.
@@ -104,9 +104,9 @@ Az __Azure Blob Storage__esetében a munkaterület által felügyelt identitást
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 hozzáférés-vezérlés
 
-A RBAC és a POSIX stílusú hozzáférés-vezérlési listákat (ACL-eket) is használhatja a virtuális hálózaton belüli adatelérés szabályozására.
+Az Azure RBAC és a POSIX stílusú hozzáférés-vezérlési listákat (ACL-eket) is használhatja a virtuális hálózaton belüli adatelérés szabályozására.
 
-A RBAC használatához adja hozzá a munkaterület által felügyelt identitást a [blob-Adatolvasó](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) szerepkörhöz. További információ: [Azure szerepköralapú hozzáférés-vezérlés](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
+Az Azure RBAC használatához adja hozzá a munkaterület által felügyelt identitást a [blob-Adatolvasó](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) szerepkörhöz. További információ: [Azure szerepköralapú hozzáférés-vezérlés](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
 Az ACL-ek használatához a munkaterület által felügyelt identitás ugyanúgy rendelhető hozzá, mint bármely más biztonsági elv. További információ: hozzáférés- [vezérlési listák a fájlokon és könyvtárakon](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
@@ -138,7 +138,7 @@ Az alapértelmezett adattárat is felülbírálhatja egy modul alapján. Ez lehe
 1. Válassza a **kimeneti beállítások megadása**lehetőséget.
 1. Új adattárt kell megadnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat választható részét képezi. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

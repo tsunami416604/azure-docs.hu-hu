@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86525041"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419939"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Munkaterhelési virtuális gépek biztonsági mentése a CloudSimple privát felhőben a Veeam B&R használatával
 
@@ -56,7 +56,7 @@ A 30 TB-nál kevesebb környezet esetén a CloudSimple a következő konfigurác
 * Egy Linux-alapú elsődleges biztonsági mentési tárház az Azure-ban, amely a biztonsági mentési feladatok céljaként van konfigurálva.
 * `azcopy` az elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba másolt adatok másolására szolgál.
 
-![Alapszintű üzembe helyezési forgatókönyvek](media/veeam-basicdeployment.png)
+![A Veeam alapszintű központi telepítési forgatókönyveit bemutató diagram.](media/veeam-basicdeployment.png)
 
 **Speciális üzembe helyezés**
 
@@ -260,7 +260,7 @@ Hozzon létre egy tűzfalszabály használatával, amely lehetővé teszi, hogy 
 
 A jogosultságok megszüntetéséhez tekintse meg a [jogosultságok dekiterjesztését](escalate-private-cloud-privileges.md#de-escalate-privileges)ismertető témakört.
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
 ### <a name="cloudsimple-references"></a>CloudSimple-referenciák
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd6a907ce855fbb7c1ef96236766beef9b25b2ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400466"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428360"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>A Key Vault Azure-os biztonsági alapkonfigurációja
 
@@ -566,7 +566,9 @@ Azure Key Vault naplózás: https://docs.microsoft.com/azure/key-vault/key-vault
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
-**Útmutató**: a hitelesítéshez, a felügyelethez és az adatsíkon való hozzáféréshez Azure Key Vault összes forgalom titkosítva van, és HTTPS-en keresztül megy át: 443-as port. (A CRL esetében azonban esetenként a HTTP [port 80] forgalom lesz látható.) 
+**Útmutató**: a hitelesítéshez, a felügyelethez és az adatsíkon való hozzáféréshez Azure Key Vault összes forgalom titkosítva van, és HTTPS-en keresztül megy át: 443-as port. (A CRL esetében azonban esetenként a HTTP [port 80] forgalom lesz látható.) Azure Key Vault továbbra is engedélyezi a TLS 1,1-és TLS 1,0-adatmennyiséget. Az adat a TLS 1,2-ra korlátozódik az ügyféloldali konfiguráción keresztül.
+
+
 
 Hozzáférés Azure Key Vault tűzfal mögött: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
 
@@ -1301,7 +1303,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 5e3b9b841c8e6ff17a29ac9c6a5e746ed6b687b9
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f99a3110880626b3a809e6bab5edc02398094547
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128487"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426224"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge blob Storage-követelmények
 
@@ -21,16 +21,14 @@ Ez a cikk felsorolja az Azure API-k, az Azure-ügyféloldali kódtárak és az A
 
 Javasoljuk, hogy figyelmesen tekintse át az információkat, mielőtt az Azure Stack Edge blob Storage-hoz csatlakozik, majd szükség szerint tekintse át újra.
 
-
 ## <a name="storage-differences"></a>Tárolási különbségek
 
 |     Szolgáltatás                                             |     Azure Storage                                     |     Azure Stack Edge blob Storage |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
 |    Azure File Storage                                   |    Felhőalapú SMB-fájlmegosztás támogatott              |    Nem támogatott      |
-|    Szolgáltatás titkosítása inaktív adatok esetén                  |    256 bites AES-titkosítás                             |    256 bites AES-titkosítás |
 |    Tárfiók típusa                                 |    Általános célú és Azure Blob Storage-fiókok    |    Csak általános célú v1|
 |    A blob neve                                            |    1 024 karakter (2 048 bájt)                     |    880 karakter (1 760 bájt)|
-|    BLOB maximális méretének letiltása                              |    4,75 TB (100 MB X 50 000 blokk)                   |    4,75 TB (100 MB x 50 000 blokk) Azure Stack Edge v 2.1.1377.2170|
+|    BLOB maximális méretének letiltása                              |    4,75 TB (100 MB X 50 000 blokk)                   |    4,75 TB (100 MB x 50 000 blokk) Azure Stack Edge-hez|
 |    Oldal blobjának maximális mérete                               |    8 TB                                               |    1 TB                   |
 |    Oldal blob-oldalának mérete                                  |    512 bájt                                          |    4 KB                   |
 
@@ -44,7 +42,7 @@ Az Azure Storage Service API-k következő verziói támogatottak Azure Stack Ed
 
 ## <a name="supported-azure-client-libraries"></a>Támogatott Azure-ügyféloldali kódtárak
 
-A Azure Stack Edge blob Storage esetében bizonyos ügyféloldali kódtárak és meghatározott végponti utótagok szükségesek. Az Azure Stack Edge blob Storage-végpontok nem rendelkeznek teljes paritással az Azure Blob Storage REST API legújabb verziójával. Tekintse [meg a Azure stack Edge-2.1.1377.2170 támogatott API-verzióit](#supported-api-versions). A Storage ügyféloldali kódtárai esetében tisztában kell lennie azzal a verzióval, amely kompatibilis a REST APIával.
+A Azure Stack Edge blob Storage esetében bizonyos ügyféloldali kódtárak és meghatározott végponti utótagok szükségesek. Az Azure Stack Edge blob Storage-végpontok nem rendelkeznek teljes paritással az Azure Blob Storage REST API legújabb verziójával. Tekintse [meg az Azure stack Edge által támogatott API-verziókat](#supported-api-versions). A Storage ügyféloldali kódtárai esetében tisztában kell lennie azzal a verzióval, amely kompatibilis a REST APIával.
 
 ### <a name="azure-stack-edge-2113772170-onwards"></a>Azure Stack Edge 2.1.1377.2170-től
 
@@ -52,10 +50,11 @@ A következő Azure ügyféloldali függvénytár-verziók támogatottak Azure S
 
 [!INCLUDE [data-box-rest-supported-azure-client-libraries](../../includes/data-box-rest-supported-azure-client-libraries.md)]
 
-### <a name="install-php-client-via-composer---current"></a>PHP-ügyfél telepítése a Zeneszerzőn keresztül – aktuális
+### <a name="install-the-php-client-via-composer---current"></a>A PHP-ügyfél telepítése a zeneszerző-current használatával
 
-A következőn keresztül történő telepítéshez: (blob készítése példaként).
-1. Hozzon létre egy composer.jsnevű fájlt a projekt gyökérkönyvtárában a következő kóddal:
+A PHP-ügyfél telepítése a zeneszerző használatával:
+
+1. Hozzon létre egy composer.jsnevű fájlt a projekt gyökérkönyvtárában a következő kóddal (például Azure Storage Blob szolgáltatás használatával).
 
     ```
     {
@@ -68,10 +67,12 @@ A következőn keresztül történő telepítéshez: (blob készítése példak�
 
 3. Futtatás: php zeneszerző. farmakovigilancia-telepítés.
 
-### <a name="endpoint-declaration"></a>Végpont deklarációja
+
+## <a name="endpoint-declaration"></a>Végpont deklarációja
 
 Az Azure Stack Edge blob Storage SDK-ban a végpont utótagja – a `<device serial number>.microsoftdatabox.com` Azure stack Edge-tartományt azonosítja. A blob Service-végponttal kapcsolatos további információkért nyissa meg az [adatok átvitele a Storage-fiókokkal Azure stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-storage-accounts.md)használatával című témakört.
- 
+
+
 ## <a name="examples"></a>Példák
 
 ### <a name="net"></a>.NET
@@ -107,7 +108,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 ### <a name="c"></a>C++
 
-Azure Stack Edge blob Storage esetén a végpont utótagját a rendszer a kapcsolatok karakterláncának beállításában adja meg:
+A Azure Stack Edge blob Storage esetében a végpont utótagját a rendszer a kapcsolatok karakterláncának beállításában adja meg:
 
 ```
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
@@ -118,7 +119,7 @@ EndpointSuffix=<serial no. of the device>.microsoftdatabox.com "));
 
 ### <a name="php"></a>PHP
 
-Azure Stack Edge blob Storage esetén a végpont utótagját a rendszer a kapcsolatok karakterláncának beállításában adja meg:
+A Azure Stack Edge blob Storage esetében a végpont utótagját a rendszer a kapcsolatok karakterláncának beállításában adja meg:
 
 ```
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.<serial no. of the device>.microsoftdatabox.com /;
@@ -137,7 +138,7 @@ endpoint_suffix=’<serial no. of the device>.microsoftdatabox.com’)
 
 ### <a name="ruby"></a>Ruby
 
-Azure Stack Edge blob Storage esetén a végpont utótagját a rendszer a kapcsolatok karakterláncának beállításában adja meg:
+A Azure Stack Edge blob Storage esetében a végpont utótagját a rendszer a kapcsolatok karakterláncának beállításában adja meg:
 
 ```
 set
@@ -147,6 +148,6 @@ AccountKey=mykey;
 EndpointSuffix=<serial no. of the device>.microsoftdatabox.com
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Felkészülés a Azure Stack Edge Pro GPU-val való üzembe helyezésére](azure-stack-edge-gpu-deploy-prep.md)

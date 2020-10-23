@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e8c836a796a46cbf5a45c6ad4440e4b80d476d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629726"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425102"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -42,12 +42,12 @@ Ebből a cikkből megtudhatja, hogyan védheti meg a virtuális hálózatok köv
 
 + Meglévő virtuális hálózat és alhálózat a számítási erőforrásokkal való használatra.
 
-+ Ha erőforrásokat szeretne telepíteni egy virtuális hálózatba vagy alhálózatba, a felhasználói fióknak rendelkeznie kell a következő műveletekhez szükséges engedélyekkel az Azure szerepköralapú hozzáférés-vezérlés (RBAC) szolgáltatásban:
++ Ha erőforrásokat szeretne telepíteni egy virtuális hálózatba vagy alhálózatba, a felhasználói fióknak engedéllyel kell rendelkeznie a következő műveletekhez az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) szolgáltatásban:
 
     - "Microsoft. Network/virtualNetworks/JOIN/Action" a virtuális hálózati erőforráson.
     - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
 
-    A hálózatkezeléssel való RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepkörei](/azure/role-based-access-control/built-in-roles#networking) című témakört.
+    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](/azure/role-based-access-control/built-in-roles#networking) .
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Számítási fürtök & példányok 
@@ -276,7 +276,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a virtuális gépet vagy 
 
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>A virtuális gép vagy a HDInsight-fürt létrehozása
 
-Hozzon létre egy virtuális GÉPET vagy HDInsight-fürtöt a Azure Portal vagy az Azure CLI használatával, és helyezze üzembe a fürtöt egy Azure-beli virtuális hálózaton. További információkért tekintse át a következő cikkeket:
+Hozzon létre egy virtuális GÉPET vagy HDInsight-fürtöt a Azure Portal vagy az Azure CLI használatával, és helyezze üzembe a fürtöt egy Azure-beli virtuális hálózaton. További információért tekintse át a következő cikkeket:
 * [Azure Virtual Networks létrehozása és kezelése Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
 * [HDInsight kiterjesztése Azure Virtual Network használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
@@ -309,7 +309,7 @@ Ha nem szeretné használni az alapértelmezett kimenő szabályokat, és szeret
 
 Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat harmadik része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

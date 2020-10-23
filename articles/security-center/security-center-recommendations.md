@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0efb2c26a63418835dd2b7561a1fb9d3a9d5fee8
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: f3fb31dc7db4808db83f33abdf14179265d147f9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945557"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425178"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok az Azure Security Centerben 
 Ez a témakör azt ismerteti, hogyan lehet megtekinteni és értelmezni a Azure Security Centerban található javaslatokat az Azure-erőforrások védelmének elősegítése érdekében.
@@ -75,7 +75,10 @@ Példa az előzetes verziójú javaslatra:
  
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban a Security Center biztonsági javaslataira került sor. További információ a javaslatok megoldásáról:
+Ebben a dokumentumban a Security Center biztonsági javaslataira került sor. Kapcsolódó információk:
 
 - [Javaslatok szervizelése](security-center-remediate-recommendations.md) – Ismerje meg, hogyan konfigurálhatja az Azure-előfizetések és-erőforráscsoportok biztonsági szabályzatait.
 - [A helytelen konfiguráció tiltása a kényszerítő/megtagadási javaslatokkal](prevent-misconfigurations.md).
+- [Javaslatokra adott válaszok automatizálása](workflow-automation.md)
+- [Erőforrás kivonása egy javaslatból](exempt-resource.md)
+- [Biztonsági javaslatok – gyorsútmutató](recommendations-reference.md)

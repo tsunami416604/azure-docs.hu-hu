@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400417"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428398"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
@@ -46,7 +46,7 @@ A lehetséges okok a következők:
 
 #### <a name="resolution"></a>Feloldás
 
-Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a ***. Azure-Automation.net** a 443-es porton.
+Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a ** \* . azure-automation.net** a 443-es porton.
 
 A hibrid Runbook-feldolgozót futtató számítógépeknek meg kell felelniük a minimális hardverkövetelmények, mielőtt a feldolgozó konfigurálva lenne a szolgáltatás üzemeltetésére. A runbookok és az általuk használt háttérrendszer okozhatja, hogy a rendszer túlhasználatba kerül, és a runbook-feladatok késését vagy időtúllépését okozza.
 
@@ -226,7 +226,7 @@ Az **Application and Services Logs\Operations-kezelő** eseménynaplójában a 4
 
 #### <a name="cause"></a>Ok
 
-Ezt a problémát az okozhatja, hogy a proxy vagy a hálózati tűzfal blokkolja a Microsoft Azure felé irányuló kommunikációt. Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a ***. Azure-Automation.net** a 443-es porton.
+Ezt a problémát az okozhatja, hogy a proxy vagy a hálózati tűzfal blokkolja a Microsoft Azure felé irányuló kommunikációt. Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a ** \* . azure-automation.net** a 443-es porton.
 
 #### <a name="resolution"></a>Feloldás
 
@@ -293,7 +293,7 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="scenario-you-cant-add-a-hybrid-runbook-worker"></a><a name="already-registered"></a>Forgatókönyv: nem adhat hozzá hibrid Runbook-feldolgozót
+### <a name="scenario-you-cant-add-a-windows-hybrid-runbook-worker"></a><a name="already-registered"></a>Forgatókönyv: nem adható hozzá Windows Hybrid Runbook Worker
 
 #### <a name="issue"></a>Probléma
 
@@ -313,7 +313,47 @@ A probléma megoldásához távolítsa el a következő beállításkulcsot, ind
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="scenario-you-cant-add-a-linux-hybrid-runbook-worker"></a><a name="already-registered"></a>Forgatókönyv: nem adhat hozzá linuxos hibrid Runbook-feldolgozót
+
+#### <a name="issue"></a>Probléma
+
+A következő üzenet jelenik meg, ha hibrid Runbook-feldolgozót próbál hozzáadni a `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` Python-parancsfájl használatával:
+
+```error
+Unable to register, an existing worker was found. Please deregister any existing worker and try again.
+```
+
+Emellett kísérlet történt a hibrid Runbook-feldolgozók deregisztrálására a `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` Python-szkript használatával:
+
+```error
+Failed to deregister worker. [response_status=404]
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a probléma akkor fordulhat elő, ha a gép már regisztrálva van egy másik Automation-fiókkal, ha az Azure Hybrid Worker-csoport törölve lett, vagy ha megpróbálta újból hozzáadni a hibrid Runbook-feldolgozót a számítógépről való eltávolítása után.
+
+#### <a name="resolution"></a>Feloldás
+
+A probléma megoldása:
+
+1. Távolítsa el az ügynököt `sudo sh onboard_agent.sh --purge` .
+
+1. Futtassa a következő parancsokat:
+
+   ```
+   sudo mv -f /home/nxautomation/state/worker.conf /home/nxautomation/state/worker.conf_old
+   sudo mv -f /home/nxautomation/state/worker_diy.crt /home/nxautomation/state/worker_diy.crt_old
+   sudo mv -f /home/nxautomation/state/worker_diy.key /home/nxautomation/state/worker_diy.key_old
+   ```
+
+1. Készítse elő újra az ügynököt `sudo sh onboard_agent.sh -w <workspace id> -s <workspace key> -d opinsights.azure.com` .
+
+1. Várjon, amíg a mappa `/opt/microsoft/omsconfig/modules/nxOMSAutomationWorker` fel nem töltődik.
+
+1. Próbálja megismételni a `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` Python-szkriptet.
+
+## <a name="next-steps"></a>További lépések
 
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 

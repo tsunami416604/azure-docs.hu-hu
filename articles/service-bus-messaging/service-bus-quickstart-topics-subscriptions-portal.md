@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: d3dc63106e1ca5d9db2b14392ca1fb97e3a68289
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9085ccd272c6634e4be518872cb7e279da6b803c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88191538"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425404"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Service Bus-témakör és -előfizetések létrehozása a témakörhöz az Azure Portal használatával
 Ebben a rövid útmutatóban a Azure Portal használatával hozhat létre egy Service Bus témakört, majd előfizetéseket hozhat létre ehhez a témakörhöz. 
@@ -32,7 +32,11 @@ Service Bus témakörök és előfizetések lehetővé teszik nagy mennyiségű 
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
 ## <a name="next-steps"></a>További lépések
-Az alábbi cikkből megtudhatja, hogyan küldhet üzeneteket egy témakörbe, és hogyan fogadhat üzeneteket az előfizetésen keresztül: válassza ki a programozási nyelvet a TARTALOMJEGYZÉKben. 
+Ebben a cikkben létrehozott egy Service Bus névteret, egy témakört a névtérben, és három előfizetést a témakörbe. Ha szeretné megtudni, hogyan tehet közzé üzeneteket a témakörben, és hogyan fizethet elő az előfizetésből érkező üzenetekre, tekintse meg az alábbi rövid útmutatók egyikét a **Közzététel és az előfizetés üzenetekben** című részben. 
 
-> [!div class="nextstepaction"]
-> [Üzenetek közzététele és feliratkozás rájuk](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Java](service-bus-java-how-to-use-topics-subscriptions.md)
+- [JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
+- [Python](service-bus-python-how-to-use-topics-subscriptions.md)
+- [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
+- [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71d9af57ab85d694cc08f30c19f6ac87796b2c4e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613924"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425565"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználói üzembe helyezéshez a tabló online beállítása
 
@@ -98,7 +98,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
    * A **tartomány** mezőbe írja be az altartományt a 6. lépés alapján.
 
-   * A **rendszergazda felhasználóneve** mezőben adja meg a Clarizen-bérlő rendszergazdai fiókjának felhasználónevét. Például: admin@contoso.com.
+   * A **rendszergazda felhasználóneve** mezőben adja meg a tabló online bérlője rendszergazdai fiókjának felhasználónevét. Például: admin@contoso.com.
 
    * A **rendszergazdai jelszó** mezőbe írja be a rendszergazdai felhasználónévnek megfelelő rendszergazdai fiók jelszavát.
 
@@ -125,7 +125,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Tabló online értesítő E-mail](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-9. Kattintson a **Mentés** gombra.
+9. Válassza a **Mentés** lehetőséget.
 
 10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók a tablóhoz**lehetőséget.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5d57a6705973fbd5ee39042404015347d75b49b3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b01208c67610ff220df1654d10211472e0eed61f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019783"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426858"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-kkal
 
@@ -35,7 +35,7 @@ A Media Services-erőforrások és a Media Services API eléréséhez először 
 * **Szolgáltatásnév-hitelesítés**: Szolgáltatások (például: webalkalmazások, függvényalkalmazások, logikai alkalmazások, API-k és mikroszolgáltatások) hitelesítésére szolgál. Ezt a hitelesítési módszert általában a démonszolgáltatásokat, közepes szintű szolgáltatásokat vagy ütemezett feladatokat futtató alkalmazások használják. A webalkalmazások esetében például mindig olyan közepes rétegnek kell lennie, amely a Media Serviceshoz kapcsolódik egy egyszerű szolgáltatással.
 * **Felhasználóhitelesítés**: Olyan személyek hitelesítésére szolgál, akik a Media Services-erőforrásokkal való interakcióhoz használják az alkalmazást. Az interaktív alkalmazásnak először fel kell kérnie a felhasználót a hitelesítési adatainak a megadására. Ilyen alkalmazás lehet például egy olyan felügyeletikonzol-alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő streamelés monitorozására használnak.
 
-A Media Services API megköveteli, hogy a REST API-kéréseket kezdeményező felhasználó vagy alkalmazás hozzáféréssel rendelkezzen a Media Services-fiókerőforráshoz, és **Közreműködő** vagy **Tulajdonos** szerepkört használjon. Az API elérhető az **Olvasó** szerepkörrel, de ekkor csak a **lekérési** vagy a **listázási** művelet érhető el.További információért tekintse meg a [Media Services-fiókok szerepköralapú hozzáférés-vezérlésével](rbac-overview.md) foglalkozó cikket.
+A Media Services API megköveteli, hogy a REST API-kéréseket kezdeményező felhasználó vagy alkalmazás hozzáféréssel rendelkezzen a Media Services-fiókerőforráshoz, és **Közreműködő** vagy **Tulajdonos** szerepkört használjon. Az API elérhető az **Olvasó** szerepkörrel, de ekkor csak a **lekérési** vagy a **listázási** művelet érhető el. További információ: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Services fiókokhoz](rbac-overview.md).
 
 Szolgáltatásnév létrehozása helyett érdemes lehet az Azure-erőforrások felügyelt identitásait használni a Media Services API Azure Resource Managerrel történő eléréséhez. Az Azure-erőforrások felügyelt identitásairól az [Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md) ismertető cikkben tájékozódhat bővebben.
 
@@ -152,7 +152,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](./access-api-howto.md)-hoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kapcsolódás Media Services Javával](configure-connect-java-howto.md)
 * [Kapcsolódás Media Services a .NET-tel](configure-connect-dotnet-howto.md)

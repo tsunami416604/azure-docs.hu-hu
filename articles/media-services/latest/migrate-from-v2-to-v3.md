@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0cdf4699f5dc00087845ee6ca0d24ad6493c320b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017743"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426869"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
 
@@ -59,7 +59,7 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 * Az élő kimenet használata egyszerűbb, mint a program entitás a v2 API-kon. 
 * Továbbfejlesztett RTMP-támogatás (nagyobb stabilitás és több forrás-kódoló támogatása).
 * A RTMP biztonságos betöltést biztosít.<br/>Élő esemény létrehozásakor 4 betöltési URL-címet kap. A 4 betöltési URL-cím majdnem azonos, ugyanazzal a folyamatos átviteli jogkivonattal (AppId) rendelkezik, csak a portszám rész különbözik. A két URL-cím elsődleges és biztonsági másolat az RTMP-hez.   
-* Szerepköralapú hozzáférés-vezérléssel (RBAC) rendelkezik az entitások felett. 
+* Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) rendelkezik az entitások felett. 
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -83,6 +83,6 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET](stream-files-dotnet-quickstart.md)

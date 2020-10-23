@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbde77de0ad8698ff82b80b440ae1d4bdcae1f36
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319426"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426997"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Írásvédett replikák használata írásvédett lekérdezési feladatok kiszervezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-A [magas rendelkezésre állású architektúrák](high-availability-sla.md#premium-and-business-critical-service-tier-availability)részeként a prémium szintű és a üzletileg kritikus szolgáltatási rétegben található minden egyes adatbázis, rugalmas készlet-adatbázis és felügyelt példány automatikusan egy elsődleges írható-olvasható replikával és számos másodlagos írásvédett replikával van kiépítve. A másodlagos replikákat ugyanazzal a számítási mérettel kell kiépíteni, mint az elsődleges replikát. Az *olvasási Felskálázási* funkció lehetővé teszi a csak olvasási feladatok kiosztását az írásvédett replikák egyikének számítási kapacitása alapján, ahelyett, hogy az írható-olvasható replikán fusson. Így bizonyos írásvédett munkaterhelések elkülöníthetők az írási és olvasási munkaterheléstől, és nem befolyásolják a teljesítményüket. A szolgáltatás olyan alkalmazások számára készült, amelyek logikailag elkülönített, csak olvasható számítási feladatokat tartalmaznak, például az elemzést. A prémium és üzletileg kritikus szolgáltatási szinten az alkalmazások a további kapacitás nélkül vehetik igénybe a teljesítmény előnyeit.
+A [magas rendelkezésre állású architektúrák](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)részeként a prémium szintű és a üzletileg kritikus szolgáltatási rétegben található minden egyes adatbázis, rugalmas készlet-adatbázis és felügyelt példány automatikusan egy elsődleges írható-olvasható replikával és számos másodlagos írásvédett replikával van kiépítve. A másodlagos replikákat ugyanazzal a számítási mérettel kell kiépíteni, mint az elsődleges replikát. Az *olvasási Felskálázási* funkció lehetővé teszi a csak olvasási feladatok kiosztását az írásvédett replikák egyikének számítási kapacitása alapján, ahelyett, hogy az írható-olvasható replikán fusson. Így bizonyos írásvédett munkaterhelések elkülöníthetők az írási és olvasási munkaterheléstől, és nem befolyásolják a teljesítményüket. A szolgáltatás olyan alkalmazások számára készült, amelyek logikailag elkülönített, csak olvasható számítási feladatokat tartalmaznak, például az elemzést. A prémium és üzletileg kritikus szolgáltatási szinten az alkalmazások a további kapacitás nélkül vehetik igénybe a teljesítmény előnyeit.
 
 Az *olvasási kibővítő* funkció a nagy kapacitású szolgáltatási rétegében is elérhető, ha legalább egy másodlagos replika létrejön. Több másodlagos replikát is használhat a csak olvasási feladatok terheléselosztásához, amelyek több erőforrást igényelnek, mint amennyi az egyik másodlagos replikán elérhető.
 
@@ -85,7 +85,7 @@ Ha írásvédett replikához csatlakozik, a dinamikus felügyeleti nézetek (DMV
 
 A gyakran használt nézetek a következők:
 
-| Name (Név) | Cél |
+| Name | Cél |
 |:---|:---|
 |[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Erőforrás-kihasználtsági metrikákat biztosít az elmúlt órában, beleértve a CPU-t, az adatio-t és a naplózási írási kihasználtságot a szolgáltatási célkitűzések korlátaihoz képest.|
 |[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Az adatbázismotor-példány összesített várakozási statisztikáját biztosítja. |
@@ -195,6 +195,6 @@ Ebben a formában a Geo-replika létrehozása két további írásvédett replik
 > [!NOTE]
 > Nincs automatikus ciklikus multiplexelés vagy más terheléselosztási útvonal a földrajzilag replikált másodlagos adatbázis replikái között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a SQL Database nagy kapacitású-ajánlatról: [nagy kapacitású szolgáltatási szintje](service-tier-hyperscale.md).

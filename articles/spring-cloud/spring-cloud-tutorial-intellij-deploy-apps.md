@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6aa56eeab59dee3f080895d5f15285a2b2d41591
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 91edbbda43365b17b8276572804ba788dbee9f13
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088771"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426736"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ használata az Azure Spring Cloud-alkalmazások üzembe helyezéséhez
 
@@ -25,10 +25,10 @@ A példa futtatása előtt próbálja ki az [alapszintű](spring-cloud-quickstar
 ## <a name="prerequisites"></a>Előfeltételek
 * [JDK 8 Azul Zulu](/java/azure/jdk/java-jdk-install?preserve-view=true&view=azure-java-stable)
 * [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
-* [IntelliJ IDEA, Community/Ultimate Edition, verzió 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
+* [IntelliJ IDEA, Community/Ultimate Edition, verzió 2020.1/2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>A beépülő modul telepítése
-Az Azure Toolkit for IntelliJ IDEA 3.35.0 az IntelliJ **plugins** felhasználói felületéről adhatja hozzá.
+Az Azure Toolkit for IntelliJ IDEA 3.43.0 az IntelliJ **plugins** felhasználói felületéről adhatja hozzá.
 
 1. Indítsa el a IntelliJ.  Ha korábban már megnyitott egy projektet, a projekt bezárásával jelenítheti meg az üdvözlő párbeszédpanelt. Válassza a **Konfigurálás** a jobb alsó sarokban lehetőséget, majd kattintson a **plugins** gombra a beépülő modul konfigurálása párbeszédpanel megnyitásához, majd válassza a **plugins telepítése lemezről**lehetőséget.
 
@@ -103,6 +103,6 @@ A naplók beszerzése:
 
     ![Adatfolyam-napló kimenete](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Spring-alkalmazás előkészítése az Azure Spring Cloud-hoz](./spring-cloud-tutorial-prepare-app-deployment.md)
 * [További információ a Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/)

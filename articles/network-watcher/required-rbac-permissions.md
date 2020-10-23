@@ -1,5 +1,5 @@
 ---
-title: A képességek használatához szükséges RBAC engedélyek
+title: A képességek használatához szükséges Azure RBAC-engedélyek
 titleSuffix: Azure Network Watcher
 description: Megtudhatja, hogy mely Azure szerepköralapú hozzáférés-vezérlési engedélyekre van szükség a Network Watcher képességekkel való együttműködéshez.
 services: network-watcher
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e048729aa1d37a63678451525f8f37612c8c464
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497307"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426753"
 ---
-# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>A Network Watcher képességek használatához szükséges szerepköralapú hozzáférés-vezérlési engedélyek
+# <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Az Azure szerepköralapú hozzáférés-vezérlési engedélyei a Network Watcher képességek használatához
 
 Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi, hogy csak a szervezet azon tagjai számára rendeljen hozzá konkrét műveleteket, amelyekre a hozzárendelt feladatok elvégzéséhez szükségük van. Network Watcher képességek használatához az Azure-ba bejelentkezett fiókot hozzá kell rendelni a [tulajdonoshoz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), a [közreműködőhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)vagy a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) beépített szerepköreihez, vagy hozzá kell rendelni egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) , amely az alábbi szakaszokban felsorolt, az egyes Network Watcher képességekhez tartozó műveletekhez van rendelve. Ha többet szeretne megtudni a Network Watcher képességeiről, tekintse meg a [Mi az a Network Watcher?](network-watcher-monitoring-overview.md)című témakört.
 
