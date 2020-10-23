@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f8cafc0ec94e9254d42bf6718e796a256d128d4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305633"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445681"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználói kiépítés automatikus kihasználásának beállítása
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Active Directory 
 > [!NOTE]
 > Ez a cikk az Azure AD-felhasználó kiépítési szolgáltatására épülő összekötőt ismerteti. A szolgáltatással kapcsolatos fontos információkért és a gyakori kérdésekre adott válaszokért lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg előzetes verzióban érhető el. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg előzetes verzióban érhető el. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -99,7 +99,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt az Azure AD-a
 Ez a szakasz végigvezeti az Azure AD üzembe helyezési szolgáltatás konfigurálásának lépésein az Azure AD-ben felhasználói vagy csoportos hozzárendeléseken alapuló felhasználók vagy csoportok létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP]
-> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a hám számára a [hám egyszeri bejelentkezés oktatóanyagának](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)utasításait követve. Az egyszeri bejelentkezést az automatikus felhasználó-létesítéstől függetlenül is konfigurálhatja, bár ez a két szolgáltatás kiegészíti egymást.
+> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a hám számára a [hám egyszeri bejelentkezés oktatóanyagának](./harness-tutorial.md)utasításait követve. Az egyszeri bejelentkezést az automatikus felhasználó-létesítéstől függetlenül is konfigurálhatja, bár ez a két szolgáltatás kiegészíti egymást.
 
 > [!NOTE]
 > Ha többet szeretne megtudni a hám SCIM-végpontról, tekintse meg a hám [API-kulcsok](https://docs.harness.io/article/smloyragsm-api-keys) című cikket.
@@ -134,7 +134,7 @@ Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához teg
 
     ![Az "értesítő E-mail" mező](common/provisioning-notification-email.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A **leképezések**területen válassza **a szinkronizálás Azure Active Directory felhasználók**számára lehetőséget.
 

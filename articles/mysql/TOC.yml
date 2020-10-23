@@ -155,6 +155,8 @@
               href: concepts-infrastructure-double-encryption.md
             - name: Biztonsági alapkonfiguráció
               href: security-baseline.md
+        - name: Tervezett karbantartás
+          href: concepts-planned-maintenance-notification.md
         - name: Az üzletmenet folytonossága
           items:
             - name: Az üzletmenet folytonossága – bevezetés

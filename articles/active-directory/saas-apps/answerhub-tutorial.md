@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713590"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Azure Active Directory integráció a AnswerHub
 
@@ -27,7 +27,7 @@ A AnswerHub az Azure AD-vel való integrálása a következő előnyöket biztos
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a AnswerHub az Azure AD-fiókjával (egyszeri bejelentkezéssel).
 * A fiókokat egy központi helyről kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](../manage-apps/what-is-single-sign-on.md)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -156,7 +156,7 @@ Ebben a szakaszban a AnswerHub való egyszeri bejelentkezést állíthatja be.
 
     a. Nyissa meg a Jegyzettömbben a Azure Portal letöltött Base64 kódolású tanúsítványt, másolja a tartalmát, majd illessze be a tartalmat a **identitásszolgáltató nyilvános kulcs (X509 formátum)** mezőbe.
   
-    b. Kattintson a **Mentés** gombra.
+    b. Válassza a **Mentés** lehetőséget.
 
 6. A **identitásszolgáltató-konfiguráció** lapon válassza a **Mentés** újra lehetőséget.
 
@@ -242,13 +242,12 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a An
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor kiválasztja a AnswerHub csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a AnswerHub, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a AnswerHub csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a AnswerHub, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Oktatóanyagok az SaaS-alkalmazások integrálásához Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Oktatóanyagok az SaaS-alkalmazások integrálásához Azure Active Directory](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

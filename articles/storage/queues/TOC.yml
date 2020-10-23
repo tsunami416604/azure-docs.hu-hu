@@ -267,7 +267,7 @@
         - name: Storage Explorer – kisegítő lehetőségek
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Queue Storage a Microsoft Q&A oldalán
-      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
+      href: /answers/topics/azure-queue-storage.html
     - name: Queue Storage a Stack Overflow-n
       href: 'https://stackoverflow.com/questions/tagged/azure-queues'
     - name: A Queue Storage díjszabása
@@ -309,7 +309,7 @@
             - name: Azure Storage-ügyfélkódtár 12.x verzió
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
             - name: 'Blobok, üzenetsorok és fájlok (8-as verzió)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+              href: /java/api/overview/azure/storage?view=azure-java-legacy
             - name: Azure Storage-ügyfélkódtár 8.x és korábbi verziók
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js

@@ -65,7 +65,6 @@
       href: load-balancer-multivip-overview.md
     - name: Kimenő proxy
       href: load-balancer-outbound-connections.md
-    - name: A TCP alaphelyzetbe állítása és a TCP üresjárati időtúllépése
     - name: Kimenő szabályok
       href: outbound-rules.md
     - name: A TCP visszaállítása üresjárati időtúllépés esetén

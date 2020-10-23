@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8485907eba75f80c8f0ed4fd0cc7368c6147b9fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad35c36e497e4719729c00a90eb8919b75ef0fd
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79532178"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425653"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>Azure Database for MariaDB komplex veszélyforrások elleni védelem
 
@@ -42,6 +42,6 @@ A Azure Database for MariaDB komplex veszélyforrások elleni védelme olyan ren
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* További információ a [Azure Security Center](../security-center/security-center-introduction.md)
 * A díjszabással kapcsolatos további információkért tekintse meg a [Azure Database for MariaDB díjszabási oldalát](https://azure.microsoft.com/pricing/details/mariadb/) . 
-* [Azure Database for MariaDB komplex veszélyforrások elleni védelem](howto-database-threat-protection-portal.md) konfigurálása a Azure Portal használatával  
+* [Azure Database for MariaDB komplex veszélyforrások elleni védelem](howto-database-threat-protection-portal.md) konfigurálása a Azure Portal használatával

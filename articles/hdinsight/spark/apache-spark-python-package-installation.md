@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b29e4411a104bbcd1d6d5b3320df47a742e2ca84
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978071"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461243"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -46,8 +46,8 @@ A HDInsight Spark-fürt az anaconda telepítésével jön létre. Két Python-te
 |Beállítás |Python 2,7|Python 3,5|
 |----|----|----|
 |Elérési út|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark-verzió|Alapértelmezett érték 2,7|N.A.|
-|Livy verziója|Alapértelmezett érték 2,7|N.A.|
+|Spark-verzió|Alapértelmezett érték 2,7|A konfigurációt 3,5-ra módosíthatja|
+|Livy verziója|Alapértelmezett érték 2,7|A konfigurációt 3,5-ra módosíthatja|
 |Jupyter|PySpark kernel|PySpark3 kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Külső Python-csomagok biztonságos telepítése
@@ -146,7 +146,7 @@ Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12
 
 A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, és futtathatja a parancsot `/usr/bin/anaconda/bin/conda --v` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Külső csomagok Jupyter notebookokkal Apache Spark](apache-spark-jupyter-notebook-use-external-packages.md)

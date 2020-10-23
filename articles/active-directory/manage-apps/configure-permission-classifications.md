@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 448106b1c514762c101991f5f944d521f7ea6f75
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: contperfq2
+ms.openlocfilehash: d23ef7b78f5e97ee8a82f46794f37f3baf05ca49
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368519"
+ms.locfileid: "92427660"
 ---
 # <a name="configure-permission-classifications"></a>Engedélyosztályozások konfigurálása
 
@@ -114,7 +115,7 @@ Az engedélyek besorolásához használhatja a legújabb Azure AD PowerShell el�
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók:
 

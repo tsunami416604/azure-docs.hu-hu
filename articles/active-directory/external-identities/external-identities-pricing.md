@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d281b0ecd38ebbb76e093fd4f85213da4fc7d713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265789"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442065"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Számlázási modell az Azure AD külső identitásokhoz
 
-Azure Active Directory (Azure AD) külső identitások díjszabása havi aktív felhasználók (MAU) alapján történik, amely a naptári hónapon belül a hitelesítési tevékenységgel rendelkező egyedi felhasználók száma. Ez a számlázási modell az Azure AD vendég felhasználói együttműködésre (B2B) és [Azure ad B2C bérlőre](https://docs.microsoft.com/azure/active-directory-b2c/billing)is vonatkozik. A MAU számlázási szolgáltatással csökkentheti a költségeket, és az ingyenes szintet, valamint a rugalmas és kiszámítható díjszabást kínál. Ebben a cikkben megismerheti a MAU-számlázást és az Azure AD-bérlők előfizetéshez való összekapcsolását.
+Azure Active Directory (Azure AD) külső identitások díjszabása havi aktív felhasználók (MAU) alapján történik, amely a naptári hónapon belül a hitelesítési tevékenységgel rendelkező egyedi felhasználók száma. Ez a számlázási modell az Azure AD vendég felhasználói együttműködésre (B2B) és [Azure ad B2C bérlőre](../../active-directory-b2c/billing.md)is vonatkozik. A MAU számlázási szolgáltatással csökkentheti a költségeket, és az ingyenes szintet, valamint a rugalmas és kiszámítható díjszabást kínál. Ebben a cikkben megismerheti a MAU-számlázást és az Azure AD-bérlők előfizetéshez való összekapcsolását.
 
 > [!IMPORTANT]
 > Ez a cikk nem tartalmazza a díjszabás részleteit. A használati számlázással és a díjszabással kapcsolatos legfrissebb információkért tekintse meg a [Azure Active Directory díjszabását](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -45,7 +45,7 @@ A vendég felhasználóinak díjszabási szintje az Azure AD-bérlőhöz rendelt
 
 Egy Azure AD-bérlőt egy Azure-előfizetéshez kell kapcsolni a megfelelő számlázáshoz és a funkciókhoz való hozzáféréshez. Ha a címtár még nem rendelkezik olyan előfizetéssel, amelyhez csatolva van, lehetősége lesz hozzáadni egyet a folyamat során.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) egy olyan Azure-fiókkal, amely legalább a [közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) szerepkörhöz van rendelve az előfizetésben vagy az előfizetésben található erőforráscsoporthoz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) egy olyan Azure-fiókkal, amely legalább a [közreműködő](../../role-based-access-control/built-in-roles.md) szerepkörhöz van rendelve az előfizetésben vagy az előfizetésben található erőforráscsoporthoz.
 
 2. Válassza ki a csatolni kívánt könyvtárat: a Azure Portal eszköztáron válassza ki a **címtár + előfizetés** ikont, majd válassza ki a könyvtárat.
 
@@ -70,6 +70,6 @@ Egy Azure AD-bérlőt egy Azure-előfizetéshez kell kapcsolni a megfelelő szá
 
 A lépések elvégzése után az Azure-előfizetését az Azure Direct vagy a Nagyvállalati Szerződés részletei alapján számítjuk fel, ha van ilyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A legfrissebb díjszabási információkért lásd: [Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/).

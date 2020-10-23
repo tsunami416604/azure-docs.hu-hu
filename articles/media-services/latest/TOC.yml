@@ -215,7 +215,7 @@
           displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 'Lapozás, szűrés, entitások rendezése'
           href: entities-overview.md
-        - name: RBAC
+        - name: Azure RBAC-vel
           href: rbac-overview.md
         - name: Hibakódok
           items:

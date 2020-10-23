@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4c50e881fd6b7dda5c609a4ac6492d77fff1b537
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: contperfq2
+ms.openlocfilehash: fcf06c280a93489b2e958b9baff2e132da37c005
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208005"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426461"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -121,7 +122,7 @@ Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezési listája konfig
 Ha a teljes tartománynév nem engedélyezhető, és az IP-címtartományok megadására van szükség, használja a következő beállításokat:
 
 * Az összekötő kimenő hozzáférésének engedélyezése az összes célhelyre.
-* Az összekötő kimenő hozzáférésének engedélyezése az összes Azure Datacenter IP-tartományhoz. Az Azure Datacenter IP-címtartományok listájának használatával kapcsolatos kihívás az, hogy hetente frissül. Egy olyan folyamatot kell létrehoznia, amely biztosítja, hogy a hozzáférési szabályok megfelelően frissüljenek. A konfigurációt csak az IP-címek egy részhalmaza használatával lehet megszakítani. A legújabb Azure-adatközpont IP-címtartományok letöltéséhez navigáljon az [https://download.microsoft.com](https://download.microsoft.com) "Azure IP-címtartományok és szolgáltatás-címkék" kifejezésre. Ügyeljen arra, hogy a megfelelő felhőt válassza ki. A nyilvános Felhőbeli IP-címtartományok például az "Azure IP-címtartományok és a szolgáltatás-címkék – nyilvános felhő" című részben találhatók. Az USA kormányzati-felhőjét az "Azure IP-címtartományok és szolgáltatás-címkék – US kormányzati Cloud" kifejezésre keresve találja meg.
+* Az összekötő kimenő hozzáférésének engedélyezése az összes Azure Datacenter IP-tartományhoz. Az Azure Datacenter IP-címtartományok listájának használatával kapcsolatos kihívás az, hogy hetente frissül. Egy olyan folyamatot kell létrehoznia, amely biztosítja, hogy a hozzáférési szabályok megfelelően frissüljenek. A konfigurációt csak az IP-címek egy részhalmaza használatával lehet megszakítani. A legújabb Azure-adatközpont IP-címtartományok letöltéséhez navigáljon az [https://download.microsoft.com](https://download.microsoft.com) "Azure IP-címtartományok és szolgáltatás-címkék" kifejezésre. Ügyeljen arra, hogy a megfelelő felhőt válassza ki. A nyilvános Felhőbeli IP-címtartományok például az "Azure IP-címtartományok és a szolgáltatás-címkék – nyilvános felhő" című részben találhatók. Az Egyesült Államok kormányzati felhője az "Azure IP-címtartományok és szolgáltatás-címkék – USA kormányzati felhő" kifejezésre való kereséssel érhető el.
 
 #### <a name="proxy-authentication"></a>Proxy hitelesítése
 
@@ -203,7 +204,7 @@ Az előző szűrő csak a HTTPs-kérelmeket és a proxy portra küldött válasz
 
 Ha más válasz kódokat (például 407 vagy 502) lát, ez azt jelenti, hogy a proxy hitelesítést igényel, vagy más okból nem engedélyezi a forgalmat. Ezen a ponton a proxykiszolgálót támogató csapatot kell felvennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 * Ha problémája van az összekötők kapcsolódási problémáinak megoldásával, kérdezze meg a [Microsoft Q&a kérdéses oldalt Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) vagy hozzon létre egy jegyet a támogatási csapatával.

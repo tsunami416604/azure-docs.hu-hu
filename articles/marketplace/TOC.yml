@@ -163,14 +163,14 @@
                   href: dynamics-365-finance-operations-functional-validation.md
             - name: Microsoft Dynamics 365 Business Central-ajánlat létrehozása
               href: partner-center-portal/create-new-business-central-offer.md
-        - name: IoT Edge-modulajánlat
-          items:
-            - name: IoT Edge-modulajánlat megtervezése
-              href: iot-edge-module.md
-            - name: IoT Edge-modulajánlat létrehozása
-              href: partner-center-portal/azure-iot-edge-module-creation.md
-            - name: IoT Edge-modulok technikai eszközeinek előkészítése
-              href: partner-center-portal/create-iot-edge-module-asset.md
+    - name: IoT Edge-modulajánlat
+      items:
+        - name: IoT Edge-modulajánlat megtervezése
+          href: iot-edge-module.md
+        - name: IoT Edge-modulajánlat létrehozása
+          href: partner-center-portal/azure-iot-edge-module-creation.md
+        - name: IoT Edge-modulok technikai eszközeinek előkészítése
+          href: partner-center-portal/create-iot-edge-module-asset.md
     - name: Felügyelt szolgáltatásra vonatkozó ajánlatok
       items:
         - name: Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása

@@ -4,18 +4,18 @@ description: A cikk a Azure SQL Database átjáró IP-címeinek áttelepítésé
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.custom: sqldbrb=1 
+ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fadbecc2c00a739afb2f94dd1d049805915cfa5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004272"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427107"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Az ügyfelek értesítést kapnak e-mailben, valamint a Azure Portal az egyes r�
 ## <a name="status-updates"></a>Állapot-frissítések
 
 # <a name="in-progress"></a>[Folyamatban](#tab/in-progress-ip)
-### <a name="october-2020"></a>Október 2020
+### <a name="october-2020"></a>2020. október
 
 Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
 
@@ -70,7 +70,7 @@ Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva. Ezek
 A meglévő SQL Gateway-átjárók a következő régiókban kezdik el a forgalom fogadását. Ezek az SQL-átjárók a **2020 szeptember 1-jén** kezdik el az ügyfelek forgalmának elfogadását:
 - Kelet-Japán: 40.79.184.8, 40.79.192.5
 
-# <a name="completed"></a>[Befejezve](#tab/completed-ip)
+# <a name="completed"></a>[Befejeződött](#tab/completed-ip)
 
 A következő átjárók áttelepítése befejeződött: 
 
@@ -108,7 +108,8 @@ A következőket lehet befolyásolni:
 
 - A helyszíni tűzfal adott átjárójának IP-címe nem kódolt
 - Minden olyan alhálózattal rendelkezik, amely a Microsoft. SQL szolgáltatást használja szolgáltatási végpontként, de nem tud kommunikálni az átjáró IP-címeivel
-- A [zóna redundáns konfigurációjának](high-availability-sla.md#zone-redundant-configuration) használata az adatbázishoz
+- Az [általános célú zóna redundáns konfigurációjának](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) használata
+- A [zóna redundáns konfigurációjának használata a prémium szintű & üzleti szempontból kritikus szinteken](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
 
 A következőket nem érinti a rendszer:
  
@@ -124,6 +125,6 @@ Az alkalmazásból a 4,0-es verziónál régebbi Microsoft JDBC illesztőprogram
 
 Ha a fenti megoldás nem működik, a következő URL-cím használatával kérjen SQL Database vagy SQL felügyelt példányra vonatkozó támogatási kérelmet: https://aka.ms/getazuresupport
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure SQL kapcsolati architektúráról](connectivity-architecture.md)

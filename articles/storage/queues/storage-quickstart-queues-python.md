@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 12c2652b4dcef46c5affde2c3fb9ef9288176eb9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 057b20d9c14b9a25a1e713d25796e1f0ac93daaa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87852259"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428037"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Pythonhoz
 
@@ -31,15 +31,15 @@ Használja a Pythonhoz készült Azure üzenetsor Storage ügyféloldali kódtá
 
 További források:
 
-* [API-referenciadokumentáció](https://docs.microsoft.com/python/api/azure-storage-queue/index)
+* [API-referenciadokumentáció](/python/api/azure-storage-queue/index)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
 * [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-queue/)
-* [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Példák](/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-fiók – [Storage-fiók létrehozása](/azure/storage/common/storage-quickstart-create-account)
 * [Python](https://www.python.org/downloads/) az operációs rendszerhez – 2,7, 3,5 vagy újabb
 
 ## <a name="setting-up"></a>Beállítás
@@ -111,9 +111,9 @@ Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
 A következő Python-osztályok használata az alábbi erőforrásokkal való interakcióhoz:
 
-* [QueueServiceClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): a `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
-* [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
-* [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): az `QueueMessage` osztály a várólista [receive_messagesának](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) meghívásakor visszaadott egyedi objektumokat jelöli.
+* [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): a `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
+* [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
+* [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage): az `QueueMessage` osztály a várólista [receive_messagesának](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) meghívásakor visszaadott egyedi objektumokat jelöli.
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -149,9 +149,9 @@ Adja hozzá ezt a kódot a `try` blokkon belül:
 Döntse el az új üzenetsor nevét. Az alábbi kód egy UUID értéket fűz hozzá a várólista neveként, hogy az egyedi legyen.
 
 > [!IMPORTANT]
-> A várólisták nevei csak kisbetűket, számokat és kötőjeleket tartalmazhatnak, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt és után csak nem kötőjel karakter állhat. A névnek 3 – 63 karakter hosszúnak kell lennie. További információ a várólisták elnevezéséről: [várólisták és metaadatok elnevezése](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata).
+> A várólisták nevei csak kisbetűket, számokat és kötőjeleket tartalmazhatnak, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt és után csak nem kötőjel karakter állhat. A névnek 3 – 63 karakter hosszúnak kell lennie. További információ a várólisták elnevezéséről: [várólisták és metaadatok elnevezése](/rest/api/storageservices/naming-queues-and-metadata).
 
-Hozza létre a [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient) osztály egy példányát. Ezután hívja meg a [create_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) metódust az üzenetsor létrehozásához a Storage-fiókban.
+Hozza létre a [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient) osztály egy példányát. Ezután hívja meg a [create_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) metódust az üzenetsor létrehozásához a Storage-fiókban.
 
 Adja hozzá ezt a kódot a blokk végéhez `try` :
 
@@ -171,7 +171,7 @@ Adja hozzá ezt a kódot a blokk végéhez `try` :
 
 ### <a name="add-messages-to-a-queue"></a>Üzenetek hozzáadása egy várólistához
 
-A következő kódrészlet üzeneteket hoz létre a várólistához a [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) metódus meghívásával. Emellett menti a harmadik hívásból visszaadott [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) is `send_message` . A az `saved_message` üzenet tartalmának későbbi, a programban való frissítésére szolgál.
+A következő kódrészlet üzeneteket hoz létre a várólistához a [send_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) metódus meghívásával. Emellett menti a harmadik hívásból visszaadott [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage) is `send_message` . A az `saved_message` üzenet tartalmának későbbi, a programban való frissítésére szolgál.
 
 Adja hozzá ezt a kódot a blokk végéhez `try` :
 
@@ -186,7 +186,7 @@ Adja hozzá ezt a kódot a blokk végéhez `try` :
 
 ### <a name="peek-at-messages-in-a-queue"></a>Üzenetek betekintése egy várólistába
 
-Betekintés a várólista üzeneteibe a [peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) metódus meghívásával. A `peek_messages` metódus egy vagy több üzenetet kérdez le a várólista elejéről, de nem módosítja az üzenet láthatóságát.
+Betekintés a várólista üzeneteibe a [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) metódus meghívásával. A `peek_messages` metódus egy vagy több üzenetet kérdez le a várólista elejéről, de nem módosítja az üzenet láthatóságát.
 
 Adja hozzá ezt a kódot a blokk végéhez `try` :
 
@@ -203,7 +203,7 @@ Adja hozzá ezt a kódot a blokk végéhez `try` :
 
 ### <a name="update-a-message-in-a-queue"></a>Üzenetsor frissítése
 
-Az üzenet tartalmának frissítéséhez hívja meg a [update_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) metódust. A `update_message` metódus módosíthatja az üzenet láthatósági időtúllépését és tartalmát. Az üzenet tartalmának UTF-8 kódolású karakterláncnak kell lennie, amely akár 64 KB méretű is lehet. Az új tartalommal együtt adja át a kódban korábban mentett üzenet értékeit. Az `saved_message` értékek határozzák meg, hogy melyik üzenetet kell frissíteni.
+Az üzenet tartalmának frissítéséhez hívja meg a [update_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) metódust. A `update_message` metódus módosíthatja az üzenet láthatósági időtúllépését és tartalmát. Az üzenet tartalmának UTF-8 kódolású karakterláncnak kell lennie, amely akár 64 KB méretű is lehet. Az új tartalommal együtt adja át a kódban korábban mentett üzenet értékeit. Az `saved_message` értékek határozzák meg, hogy melyik üzenetet kell frissíteni.
 
 ```python
     print("\nUpdating the third message in the queue...")
@@ -215,7 +215,7 @@ Az üzenet tartalmának frissítéséhez hívja meg a [update_message](https://d
 
 ### <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
 
-A korábban hozzáadott üzenetek letöltése a [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) metódus meghívásával.
+A korábban hozzáadott üzenetek letöltése a [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) metódus meghívásával.
 
 Adja hozzá ezt a kódot a blokk végéhez `try` :
 
@@ -249,7 +249,7 @@ Adja hozzá ezt a kódot a blokk végéhez `try` :
 
 ### <a name="delete-a-queue"></a>Üzenetsor törlése
 
-A következő kód megtisztítja az alkalmazás által létrehozott erőforrásokat a várólista törlésével a [delete_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) metódus használatával.
+A következő kód megtisztítja az alkalmazás által létrehozott erőforrásokat a várólista törlésével a [delete_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) metódus használatával.
 
 Adja hozzá ezt a kódot a blokk végéhez `try` , és mentse a fájlt:
 
@@ -314,7 +314,7 @@ Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre üzenetsor-t, és 
 Oktatóanyagok, minták, gyors indítás és egyéb dokumentáció:
 
 > [!div class="nextstepaction"]
-> [Azure Python-fejlesztőknek](https://docs.microsoft.com/azure/python/)
+> [Azure Python-fejlesztőknek](/azure/python/)
 
 * További információ: az [Azure Storage kódtárai a Pythonhoz](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage).
 * További Azure üzenetsor-tárolási minta alkalmazások megjelenítéséhez folytassa az [Azure üzenetsor Storage V12 Python ügyféloldali kódtár-mintákkal](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples).

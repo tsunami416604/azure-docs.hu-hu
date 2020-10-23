@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 547b455dc776b7304e413b3b6f1330e7cedcf2a2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87909490"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441997"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook hozzáadása identitás-szolgáltatóként külső identitásokhoz
 
@@ -68,7 +68,7 @@ Most be kell állítania a Facebook ügyfél-azonosítót és az ügyfél titká
 
    ![A közösségi identitás-szolgáltató hozzáadása lapot ábrázoló képernyőfelvétel](media/facebook-federation/add-social-identity-provider-page.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 ### <a name="to-configure-facebook-federation-by-using-powershell"></a>A Facebook-összevonás konfigurálása a PowerShell használatával
 1. Telepítse az Azure AD PowerShell for Graph modul ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)) legújabb verzióját.
 2. Futtassa a következő parancsot: `Connect-AzureAD` .
@@ -78,7 +78,7 @@ Most be kell állítania a Facebook ügyfél-azonosítót és az ügyfél titká
    `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Használja az ügyfél-azonosítót és az ügyfél titkos kulcsát a fentiekben létrehozott alkalmazásból a Facebook Fejlesztői konzolon. További információt a [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) című cikkben talál. 
+   > Használja az ügyfél-azonosítót és az ügyfél titkos kulcsát a fentiekben létrehozott alkalmazásból a Facebook Fejlesztői konzolon. További információt a [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) című cikkben talál. 
 
 ## <a name="how-do-i-remove-facebook-federation"></a>Hogyan eltávolítja a Facebook-összevonást?
 A Facebook-összevonási telepítőt törölheti. Ha így tesz, a felhasználói folyamatokon keresztül regisztrált felhasználók Facebook-fiókjai többé nem fognak tudni bejelentkezni. 
@@ -92,15 +92,15 @@ A Facebook-összevonási telepítőt törölheti. Ha így tesz, a felhasználói
 
 ### <a name="to-delete-facebook-federation-by-using-powershell"></a>Facebook-összevonás törlése a PowerShell használatával: 
 1. Telepítse az Azure AD PowerShell for Graph modul ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)) legújabb verzióját.
-2. A `Connect-AzureAD` parancs futtatása.  
+2. Futtassa a `Connect-AzureAD` parancsot.  
 4. A bejelentkezési kérésben jelentkezzen be a felügyelt globális rendszergazdai fiókkal.  
 5. Írja be a következő parancsot:
 
     `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
 
    > [!NOTE]
-   > További információ: [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > További információ: [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Önkiszolgáló regisztráció hozzáadása egy alkalmazáshoz](self-service-sign-up-user-flow.md)

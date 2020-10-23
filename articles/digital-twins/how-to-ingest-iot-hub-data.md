@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 0123a89c4ec1c2c70326de1a2f685b08278333ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131496"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461549"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
 Az Azure digitális Twins a IoT-eszközökről és más forrásokból származó adatokon alapul. Az Azure Digital Twins szolgáltatásban használható eszköz-adatforrások közös forrása [IoT hub](../iot-hub/about-iot-hub.md).
 
-Az adatok Azure digitális Ikrekbe való betöltésének folyamata egy külső számítási erőforrás, például egy [Azure-függvény](../azure-functions/functions-overview.md)beállítása, amely fogadja az adatok fogadását, és a [DigitalTwins API](how-to-use-apis-sdks.md) -kkal állítja be a Tulajdonságok vagy a telemetria események [digitális ikrekre](concepts-twins-graph.md) való beállítását. 
+Az adatok Azure digitális Ikrekbe való betöltésének folyamata egy külső számítási erőforrás, például egy [Azure-függvény](../azure-functions/functions-overview.md)beállítása, amely fogadja az adatok fogadását, és a [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) -kkal állítja be a Tulajdonságok vagy a telemetria események [digitális ikrekre](concepts-twins-graph.md) való beállítását. 
 
 Ez a dokumentum végigvezeti egy olyan Azure-függvény írására szolgáló folyamaton, amely képes a telemetria betöltésére IoT Hub.
 
@@ -284,7 +284,7 @@ A kimenetnek az alábbihoz hasonló hőmérsékleti értéket kell tartalmaznia:
 
 Az érték változásának megtekintéséhez futtassa többször a fenti lekérdezési parancsot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Digital Twins szolgáltatással való bejövő és kimenő adatforgalomról:
 * [*Fogalmak: integráció más szolgáltatásokkal*](concepts-integration.md)

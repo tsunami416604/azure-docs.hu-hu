@@ -131,10 +131,6 @@
           href: security-center-monitoring.md
         - name: Javaslatok hivatkozási listája
           href: recommendations-reference.md
-        - name: Hálózati erőforrások védelme
-          href: security-center-network-recommendations.md
-        - name: Identitás és hozzáférés védelme
-          href: security-center-identity-access.md
         - name: Biztonsági javaslatok kezelése
           items:
             - name: Javaslatokra adott válaszok automatizálása
@@ -142,6 +138,10 @@
               href: workflow-automation.md
             - name: Erőforrás kivonása egy javaslatból
               href: exempt-resource.md
+        - name: Hálózati erőforrások védelme
+          href: security-center-network-recommendations.md
+        - name: Identitás és hozzáférés védelme
+          href: security-center-identity-access.md
     - name: Azure Defender-riasztások
       items:
         - name: Azure Defender-riasztások áttekintése
@@ -170,7 +170,7 @@
         - name: Biztonsági rések vizsgálata
           items:
             - name: Integrált biztonságirés-felmérési vizsgálat gépekhez
-              displayName: 'qualys, vulnerability, arc'
+              displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: A virtuális gépek vizsgálata BYOL sebezhetőség-felmérési megoldással
               displayName: 'qualys, rapid7, vulnerability'
@@ -179,7 +179,7 @@
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
             - name: Meghatározott sebezhetőségi eredmények letiltása
-              displayName: 'qualys, rapid7, vulnerability'
+              displayName: 'qualys, rapid7'
               href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Felügyeleti portok biztosítása a virtuális gépek igény szerinti elérésével
           items:
@@ -187,20 +187,24 @@
               displayName: 'jit, management'
               href: just-in-time-explained.md
             - name: Igény szerinti hozzáférés kezelése
-              displayName: 'jit, management'
+              displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: Végponthoz készült Microsoft Defender-licenc használata
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
         - name: Adaptív alkalmazásvezérlők kezelése
+          displayName: 'aac, whitelist, allowlist, reviewgroup'
           href: security-center-adaptive-application.md
         - name: Fájlintegritási monitorozás használata
           items:
             - name: A fájlintegritási monitorozás áttekintése
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring.md
             - name: Alapértékek összehasonlítása fájlintegritási monitorozással
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
         - name: Adaptív hálózatmegerősítés kezelése
+          displayName: anh
           href: security-center-adaptive-network-hardening.md
         - name: A Docker-gazdagépek megerősítése
           displayName: containers

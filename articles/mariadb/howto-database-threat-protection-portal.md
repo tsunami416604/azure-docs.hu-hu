@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 0283688ca2de4e7978da69753d08dd4763d30a75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b5a16a014892764ee26b524489a82744fe6ca82
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532307"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425964"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Komplex veszélyforrások elleni védelem Azure Database for MariaDB
 
@@ -60,7 +60,7 @@ Kattintson a **veszélyforrások észlelése riasztásra** a Azure Security Cent
    ![Veszélyforrások észlelésének riasztása](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* A díjszabással kapcsolatos további információkért tekintse meg a [Azure Database for MariaDB díjszabási oldalát](https://azure.microsoft.com/pricing/details/mariadb/) .  
+* További információ a [Azure Security Center](../security-center/security-center-introduction.md)
+* A díjszabással kapcsolatos további információkért tekintse meg a [Azure Database for MariaDB díjszabási oldalát](https://azure.microsoft.com/pricing/details/mariadb/) .

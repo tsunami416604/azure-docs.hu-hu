@@ -81,6 +81,8 @@
           href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+    - name: Tervezett karbantartás
+      href: concepts-planned-maintenance-notification.md
     - name: Az üzletmenet folytonossága
       items:
         - name: Az üzletmenet folytonossága – bevezetés
@@ -260,7 +262,7 @@
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-mariadb.html'
+      href: /answers/topics/azure-database-mariadb.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: Szolgáltatás igénylése
