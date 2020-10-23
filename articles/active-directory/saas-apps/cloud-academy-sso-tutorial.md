@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 37ed9bb09b6b15af0c32f489cbc3c02ec27c2827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461952"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455807"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Cloud Academy-vel – SSO
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Cloud Academy-SS
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Cloud Academy-SSO-ba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az egyszeri bejelentkezés?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az egyszeri bejelentkezés?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 A Cloud Academy – SSO támogatja az SP által kezdeményezett egyszeri bejelentkezést.
 
-A Cloud Academy-SSO konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+A Cloud Academy-SSO konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-cloud-academy---sso-from-the-gallery"></a>Cloud Academy-SSO hozzáadása a katalógusból
 
@@ -138,7 +138,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     d. A **név azonosítójának formátuma** mezőben tartsa meg az alapértelmezett értéket: `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` .
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
     > A Cloud Academy-SSO konfigurálásával kapcsolatos további információkért lásd: az [egyszeri bejelentkezés beállítása](https://support.cloudacademy.com/hc/articles/360043908452-Setting-Up-Single-Sign-On).
@@ -163,18 +163,18 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 Most tesztelheti az Azure AD SSO-konfigurációját a hozzáférési panel használatával.
 
-Amikor kiválasztja a Cloud Academy-SSO csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Cloud Academy-SSO-példányba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Cloud Academy-SSO csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Cloud Academy-SSO-példányba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ: [Bevezetés a hozzáférési panelbe](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
 
 - [Próbálja ki a Cloud Academy-SSO-t az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A Cloud Academy – SSO védelem speciális láthatóság és vezérlők használatával](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Cloud Academy – SSO védelem speciális láthatóság és vezérlők használatával](/cloud-app-security/proxy-intro-aad)

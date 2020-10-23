@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba9a227956e7879a7c0f49e0534146fa01a49759
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87909741"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442218"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hogyan hívhatják meg a felhasználók a vendégeket egy alkalmazásba
 
@@ -28,7 +28,7 @@ Miután hozzáadta a vendég felhasználóját a címtárhoz az Azure AD-ben, az
  - Az alkalmazás konfigurálása önkiszolgáló használatra és a csoport társítása az alkalmazáshoz
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan állíthat be önkiszolgáló felügyeletet az Azure AD-bérlőhöz hozzáadott katalógushoz és SAML-alapú alkalmazásokhoz. [Beállíthat önkiszolgáló Microsoft 365 csoportokat](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) is, így a felhasználók kezelhetik a saját Microsoft 365 csoportjaihoz való hozzáférést. A felhasználók az Office-fájlok és-alkalmazások megoszthatók a vendég felhasználókkal, a [vendég hozzáférés Microsoft 365 csoportokban](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) és a [SharePoint-fájlok és-mappák megosztása](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)című témakörben talál további lehetőségeket.
+> Ez a cikk bemutatja, hogyan állíthat be önkiszolgáló felügyeletet az Azure AD-bérlőhöz hozzáadott katalógushoz és SAML-alapú alkalmazásokhoz. [Beállíthat önkiszolgáló Microsoft 365 csoportokat](../users-groups-roles/groups-self-service-management.md) is, így a felhasználók kezelhetik a saját Microsoft 365 csoportjaihoz való hozzáférést. A felhasználók az Office-fájlok és-alkalmazások megoszthatók a vendég felhasználókkal, a [vendég hozzáférés Microsoft 365 csoportokban](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) és a [SharePoint-fájlok és-mappák megosztása](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)című témakörben talál további lehetőségeket.
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Vendég felhasználó meghívása egy alkalmazásra a hozzáférési panelen
 
@@ -75,7 +75,7 @@ Ha egy alkalmazás önkiszolgáló használatára van konfigurálva, az alkalmaz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és az Azure AD-rendszergazda által igényelt kezdeti beállítás szükséges. A telepítő részeként konfigurálja az alkalmazást az önkiszolgáló szolgáltatáshoz, és hozzárendel egy csoportot az alkalmazáshoz, amelyet az alkalmazás tulajdonosa kezelhet. A csoportot úgy is beállíthatja, hogy bárki megkérje a tagságot, de a csoport tulajdonosának jóváhagyása szükséges. (További információ az [önkiszolgáló csoport kezeléséről](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management).) 
+Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és az Azure AD-rendszergazda által igényelt kezdeti beállítás szükséges. A telepítő részeként konfigurálja az alkalmazást az önkiszolgáló szolgáltatáshoz, és hozzárendel egy csoportot az alkalmazáshoz, amelyet az alkalmazás tulajdonosa kezelhet. A csoportot úgy is beállíthatja, hogy bárki megkérje a tagságot, de a csoport tulajdonosának jóváhagyása szükséges. (További információ az [önkiszolgáló csoport kezeléséről](../users-groups-roles/groups-self-service-management.md).) 
 
 > [!NOTE]
 > Nem vehet fel vendég felhasználókat dinamikus csoportba vagy olyan csoportba, amely szinkronizálva van a helyszíni Active Directoryával.
@@ -86,7 +86,7 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 3. Válassza a **csoportok**lehetőséget.
 4. A **Beállítások**területen válassza az **általános**lehetőséget.
 5. Az **önkiszolgáló csoport felügyelete**alatt **a tulajdonosok lehetőség mellett a hozzáférési panelen is kezelhet csoporttagság-kérelmeket**, és válassza az **Igen**lehetőséget.
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Hozzon létre egy csoportot, amelyet hozzá szeretne rendelni az alkalmazáshoz, és tegye a felhasználót a tulajdonosnak
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként vagy globális rendszergazdaként.
@@ -105,15 +105,15 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 3. A **kezelés**területen válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 4. Az alkalmazás listában keresse meg és nyissa meg az alkalmazást.
-5. A **kezelés**területen válassza az **egyszeri bejelentkezés**lehetőséget, és konfigurálja az alkalmazást az egyszeri bejelentkezéshez. (Részletekért lásd: [egyszeri bejelentkezés kezelése vállalati alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).)
-6. A **kezelés**területen válassza az **önkiszolgáló**lehetőséget, és állítsa be az önkiszolgáló alkalmazás-hozzáférést. (Részletekért lásd: az önkiszolgáló [alkalmazás-hozzáférés használata](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
+5. A **kezelés**területen válassza az **egyszeri bejelentkezés**lehetőséget, és konfigurálja az alkalmazást az egyszeri bejelentkezéshez. (Részletekért lásd: [egyszeri bejelentkezés kezelése vállalati alkalmazásokhoz](../manage-apps/view-applications-portal.md).)
+6. A **kezelés**területen válassza az **önkiszolgáló**lehetőséget, és állítsa be az önkiszolgáló alkalmazás-hozzáférést. (Részletekért lásd: az önkiszolgáló [alkalmazás-hozzáférés használata](../manage-apps/access-panel-manage-self-service-access.md).) 
 
     > [!NOTE]
     > Ahhoz a beállításhoz, **amelyhez hozzá** kívánja adni a felhasználókat, adja hozzá az előző szakaszban létrehozott csoportot.
 7. A **kezelés**területen válassza a **felhasználók és csoportok**lehetőséget, majd ellenőrizze, hogy az Ön által létrehozott önkiszolgáló csoport megjelenik-e a listában.
 8. Ha hozzá szeretné adni az alkalmazást a csoport tulajdonosának hozzáférési paneljéhez, válassza a **felhasználói**  >  **felhasználók és csoportok**hozzáadása lehetőséget. Keresse meg a csoport tulajdonosát, és válassza ki a felhasználót, kattintson a **kiválasztás**elemre, majd kattintson a **hozzárendelés** gombra a felhasználó az alkalmazáshoz való hozzáadásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

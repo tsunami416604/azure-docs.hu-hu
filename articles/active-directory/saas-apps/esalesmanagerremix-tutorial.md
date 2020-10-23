@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df993aae4e6c572c8f99688fd0053bdd07aefd56
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826755"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453928"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integrálása az E Sales Manager remixekkel
 
@@ -127,7 +127,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
 
 1. A **rövid útmutató** szakaszban másolja ki a kijelentkezési URL-címet és az SAML egyszeri bejelentkezési szolgáltatás URL-címét.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     ![A Mentés gomb](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
@@ -263,7 +263,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor kiválasztja az E Sales Manager Remix csempét a hozzáférési panelen, automatikusan be kell jelentkeznie az E Sales Manager Remix alkalmazásba.
 
-További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/active-directory-saas-access-panel-introduction.md). 
+További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md). 
 
 ## <a name="additional-resources"></a>További források
 
@@ -283,4 +283,3 @@ További információ a hozzáférési panelről: [Bevezetés a hozzáférési p
 [201]: ./media/esalesmanagerremix-tutorial/tutorial_general_201.png
 [202]: ./media/esalesmanagerremix-tutorial/tutorial_general_202.png
 [203]: ./media/esalesmanagerremix-tutorial/tutorial_general_203.png
-

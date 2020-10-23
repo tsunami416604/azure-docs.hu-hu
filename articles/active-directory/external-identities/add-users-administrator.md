@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969294f264e6744e893322864eed85e02c615126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b503c7494d1b5e1821718fab5577bca88be65169
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87909780"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442286"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal
 
@@ -25,7 +25,7 @@ A korlátozott rendszergazdai címtárbeli szerepkörökhöz hozzárendelt felha
 Miután hozzáadta a vendég felhasználót a címtárhoz, elküldheti a vendég felhasználó közvetlen hivatkozását egy megosztott alkalmazásra, vagy a vendég felhasználó a meghívót tartalmazó e-mailben a beváltási URL-címre is kattinthat. További információ a beváltási folyamatról: [vállalatközi együttműködés meghívásának beváltása](redemption-experience.md).
 
 > [!IMPORTANT]
-> A szervezete adatvédelmi nyilatkozatának URL-címének hozzáadásához kövesse a következő témakörben ismertetett lépéseket [: útmutató: a szervezet adatvédelmi adatainak hozzáadása a Azure Active Directory](https://aka.ms/adprivacystatement) . A meghívó első beváltási folyamatának részeként a meghívott felhasználónak el kell fogadnia az adatvédelmi feltételeit a folytatáshoz. 
+> A szervezete adatvédelmi nyilatkozatának URL-címének hozzáadásához kövesse a következő témakörben ismertetett lépéseket [: útmutató: a szervezet adatvédelmi adatainak hozzáadása a Azure Active Directory](../fundamentals/active-directory-properties-area.md) . A meghívó első beváltási folyamatának részeként a meghívott felhasználónak el kell fogadnia az adatvédelmi feltételeit a folytatáshoz. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -101,7 +101,7 @@ Ha VÁLLALATKÖZI együttműködéssel rendelkező felhasználókat szeretne fel
 9. A vendég felhasználó megjelenik az alkalmazás **felhasználók és csoportok** listájában az **alapértelmezett hozzáférés**hozzárendelt szerepkörével. Ha módosítani szeretné a szerepkört, tegye a következőket:
    - Válassza ki a vendég felhasználót, majd válassza a **Szerkesztés**lehetőséget. 
    - A **hozzárendelés szerkesztése**alatt kattintson a **szerepkör kiválasztása**elemre, és válassza ki a kiválasztott felhasználóhoz hozzárendelni kívánt szerepkört.
-   - Kattintson a **Kiválasztás** elemre.
+   - Válassza a **Kiválasztás** lehetőséget.
    - Kattintson a **Hozzárendelés** gombra.
  
 ## <a name="resend-invitations-to-guest-users"></a>Meghívók újraküldése a vendégfelhasználóknak
@@ -120,8 +120,7 @@ Ha a vendég felhasználó még nem váltotta be a meghívót, akkor újra elkü
 > [!NOTE]
 > Ha olyan meghívót küld újra, amely eredetileg a felhasználót egy adott alkalmazáshoz irányította, akkor az új meghívóban található hivatkozás helyett a legfelső szintű hozzáférési panelre kerül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Annak megismeréséhez, hogy a nem Azure AD-rendszergazdák hogyan vehetik fel a B2B vendég felhasználókat, tekintse meg az [információkkal dolgozó szakemberek a B2B Collaboration-felhasználókat?](add-users-information-worker.md)
 - A meghívó e-mail-címével kapcsolatos információkért tekintse meg a [B2B együttműködés meghívójának e-mail-címét](invitation-email-elements.md).
-

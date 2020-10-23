@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 646bd2b6a8e22698e6fbcb44d2442e921c7850a5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354972"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441504"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -93,11 +93,11 @@ A vendég fiókkal rendelkező felhasználók nem jelentkezhetnek be, és a köv
 
 A felhasználó rendelkezik Azure-beli felhasználói fiókkal, és olyan vírusos bérlő, aki el lett hagyva vagy nem felügyelt. Emellett a bérlő nem rendelkezik globális vagy vállalati rendszergazdákkal.
 
-A probléma megoldásához át kell vennie az elhagyott bérlőt. Tekintse át a nem  [felügyelt címtár átvétele rendszergazdaként Azure Active Directory-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)című témakört. Az internetre irányuló DNS-t a szóban forgó tartományi utótaghoz is el kell érni ahhoz, hogy közvetlen bizonyítékot szolgáltasson a névtér irányításához. Ha a bérlőt visszaküldi a felügyelt állapotba, beszéljen az ügyféllel, hogy a felhasználók és az ellenőrzött tartománynév a legjobb megoldás-e a szervezet számára.
+A probléma megoldásához át kell vennie az elhagyott bérlőt. Tekintse át a nem  [felügyelt címtár átvétele rendszergazdaként Azure Active Directory-ben](../users-groups-roles/domains-admin-takeover.md)című témakört. Az internetre irányuló DNS-t a szóban forgó tartományi utótaghoz is el kell érni ahhoz, hogy közvetlen bizonyítékot szolgáltasson a névtér irányításához. Ha a bérlőt visszaküldi a felügyelt állapotba, beszéljen az ügyféllel, hogy a felhasználók és az ellenőrzött tartománynév a legjobb megoldás-e a szervezet számára.
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Egy igény szerinti vagy "vírusos" Bérlővel rendelkező vendég felhasználó nem tudja alaphelyzetbe állítani a jelszavát
 
-Ha az identitás bérlője egy igény szerinti (JIT) vagy vírusos bérlő (azaz egy különálló, nem felügyelt Azure-bérlő), csak a vendég felhasználó állíthatja alaphelyzetbe a jelszavát. Néha a szervezet [átveszi az olyan vírusos bérlők felügyeletét](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , amelyek akkor jönnek létre, amikor az alkalmazottak a munkahelyi e-mail-címeiket használják a szolgáltatások regisztrálására. Miután a szervezet átvesz egy vírusos bérlőt, csak az adott szervezet rendszergazdája állíthatja alaphelyzetbe a felhasználó jelszavát, vagy engedélyezheti a SSPR. Ha szükséges, a meghívó szervezetnél távolítsa el a vendég felhasználói fiókot a címtárból, és küldje el újra a meghívót.
+Ha az identitás bérlője egy igény szerinti (JIT) vagy vírusos bérlő (azaz egy különálló, nem felügyelt Azure-bérlő), csak a vendég felhasználó állíthatja alaphelyzetbe a jelszavát. Néha a szervezet [átveszi az olyan vírusos bérlők felügyeletét](../users-groups-roles/domains-admin-takeover.md) , amelyek akkor jönnek létre, amikor az alkalmazottak a munkahelyi e-mail-címeiket használják a szolgáltatások regisztrálására. Miután a szervezet átvesz egy vírusos bérlőt, csak az adott szervezet rendszergazdája állíthatja alaphelyzetbe a felhasználó jelszavát, vagy engedélyezheti a SSPR. Ha szükséges, a meghívó szervezetnél távolítsa el a vendég felhasználói fiókot a címtárból, és küldje el újra a meghívót.
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>A vendég felhasználó nem tudja használni a AzureAD PowerShell v1-modult
 
@@ -105,7 +105,7 @@ November 18-án 2019-én a címtárban található vendég felhasználók a Azur
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>Egy Azure-beli Egyesült államokbeli kormányzati bérlő nem hívhat meg VÁLLALATKÖZI együttműködési vendég felhasználót
 
-Az Amerikai Egyesült Államok kormányzati felhője keretében a B2B-együttműködés jelenleg csak az USA-beli kormányzati felhőben és a B2B-együttműködés támogatását támogató bérlők között támogatott. Ha olyan bérlőn hívja meg a felhasználót, amely nem része az Azure US government-felhőnek, vagy amely még nem támogatja a B2B-együttműködést, hibaüzenetet kap. A részleteket és a korlátozásokat lásd: [prémium szintű Azure Active Directory P1 és P2 változatok](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+Az Amerikai Egyesült Államok kormányzati felhője keretében a B2B-együttműködés jelenleg csak az USA-beli kormányzati felhőben és a B2B-együttműködés támogatását támogató bérlők között támogatott. Ha olyan bérlőn hívja meg a felhasználót, amely nem része az Azure US government-felhőnek, vagy amely még nem támogatja a B2B-együttműködést, hibaüzenetet kap. A részleteket és a korlátozásokat lásd: [prémium szintű Azure Active Directory P1 és P2 változatok](../../azure-government/compare-azure-government-global-azure.md#azure-active-directory-premium-p1-and-p2).
 
 ## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>Azt a hibaüzenetet kapom, hogy az Azure AD nem találja a HRE-Extensions-app a saját bérlőben
 
@@ -121,6 +121,6 @@ Ha véletlenül törölte a `aad-extensions-app` -et, 30 napja van a helyreáll�
 
 Ekkor látnia kell a visszaállított alkalmazást a Azure Portalban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Támogatás kérése B2B-együttműködéshez](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto)
+[Támogatás kérése B2B-együttműködéshez](../fundamentals/active-directory-troubleshooting-support-howto.md)

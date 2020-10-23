@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acb08d5430f13ad9a339b2cdd072fce9c196d05f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331114"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92451483"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a FortiGate SSL VPN-lel
 
@@ -30,7 +30,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a FortiGate SSL VP
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az SSL VPN FortiGate az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 A FortiGate SSL VPN támogatja az SP által kezdeményezett egyszeri bejelentkezést.
 
-A FortiGate SSL VPN konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+A FortiGate SSL VPN konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-fortigate-ssl-vpn-from-the-gallery"></a>FortiGate SSL VPN hozzáadása a katalógusból
 
@@ -100,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 1. A FortiGate SSL VPN által igényelt két további jogcím az alábbi táblázatban látható. A jogcímek nevének meg kell egyeznie az oktatóanyag **végrehajtás FortiGate parancssori konfiguráció** szakaszában használt nevekkel. 
 
-   | Name (Név) |  Forrás attribútum|
+   | Name |  Forrás attribútum|
    | ------------ | --------- |
    | username | User. userPrincipalName |
    | csoport | User. groups |
@@ -111,12 +111,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
    1. Válassza az **új jogcím hozzáadása**lehetőséget.
    1. A **név**mezőben adja meg a **username**nevet.
    1. A **forrás attribútumnál**válassza a **User. userPrincipalName**elemet.
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
    1. Válassza **a csoport hozzáadása**lehetőséget.
    1. Válassza a **Minden csoport** lehetőséget.
    1. Seect a **csoport nevének testreszabása** jelölőnégyzetet.
    1. A **név**mezőbe írja be a következőt: **Group**.
-   1. Kattintson a **Mentés** gombra.   
+   1. Válassza a **Mentés** lehetőséget.   
 
 1. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **Letöltés** hivatkozást a tanúsítvány letöltéséhez és a számítógépen való mentéséhez:
 
@@ -254,24 +254,24 @@ A lépések elvégzéséhez szüksége lesz az oktatóanyag korábbi részében 
 
 Ebben a szakaszban egy FortiGate VPN-portált és tűzfal-házirendet fog konfigurálni, amely hozzáférést biztosít az oktatóanyagban korábban létrehozott FortiGateAccess biztonsági csoporthoz.
 
-A [FortiGate támogatási csapatával](mailto:tac_amer@fortinet.com) vegye fel a VPN-portálokat és a tűzfal-házirendet a FortiGate VPN-platformra. Az egyszeri bejelentkezés használata előtt el kell végeznie ezt a lépést.
+A [FortiGate támogatási csapatával](mailto:tac_amer@fortinet.com) vegye fel a VPN-portálokat és a tűzfal-házirendet a FortiGate VPN-platformra. Az egyszeri bejelentkezés használata előtt el kell végeznie ezt a lépést.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával tesztelheti.
 
-Amikor kiválasztja a FortiGate SSL VPN-csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a FortiGate SSL VPN-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a FortiGate SSL VPN-csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a FortiGate SSL VPN-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelbe](../user-help/my-apps-portal-end-user-access.md).
 
 A Microsoft és a FortiGate javasolja, hogy a Fortinet VPN-ügyfelet, a FortiClient-t használja a legjobb végfelhasználói élmény érdekében.
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
 
 - [Próbálja ki a FortiGate SSL VPN-t az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ff7f6468b5556b56c5c2aeaba6107cac48d1ed4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88530307"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456449"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Catchpoint
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Catchpoint a Azu
 * Engedélyezze az automatikus Catchpoint-bejelentkezést az Azure AD-fiókkal rendelkező felhasználók számára.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A Catchpoint támogatja az SP által kezdeményezett és a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést.
 * A Catchpoint támogatja az igény szerinti (JIT) felhasználók üzembe helyezését.
-* A Catchpoint konfigurálása után kényszerítheti a munkamenet-vezérlést. Ez a figyelmeztetés védelmet nyújt a szervezete bizalmas adatainak valós idejű kiszűrése és beszivárgása ellen. A munkamenet-vezérlő a feltételes hozzáférés kiterjesztése. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A Catchpoint konfigurálása után kényszerítheti a munkamenet-vezérlést. Ez a figyelmeztetés védelmet nyújt a szervezete bizalmas adatainak valós idejű kiszűrése és beszivárgása ellen. A munkamenet-vezérlő a feltételes hozzáférés kiterjesztése. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-catchpoint-from-the-gallery"></a>Catchpoint hozzáadása a gyűjteményből
 
@@ -87,24 +87,24 @@ Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 
 1. A Catchpoint alkalmazás megadott formátumban várja az SAML-kijelentéseket. Egyéni attribútum-hozzárendelések hozzáadása az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi táblázat az alapértelmezett attribútumok listáját tartalmazza:
 
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ------------ | --------- |
     | GivenName | User. givenneame |
     | vezetéknév; | felhasználó. vezetéknév |
     | EmailAddress | User. mail |
-    | Név | User. userPrincipalName |
+    | Name | User. userPrincipalName |
     | Egyedi felhasználói azonosító | User. userPrincipalName |
 
     ![Felhasználói attribútumok & jogcímek listája képernyőkép](common/default-attributes.png)
 
 1. Emellett a Catchpoint alkalmazás egy másik attribútumot vár, amelyet egy SAML-válaszban kell átadni. Lásd az alábbi táblázatot. Ez az attribútum előre fel van töltve, de a követelményeinek megfelelően áttekintheti és frissítheti azt.
 
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ------------ | --------- |
     | névtér | User. assignedrole |
 
     > [!NOTE]
-    > A `namespace` jogcímet a fiók nevével kell leképezni. Ennek a fióknak a nevét az Azure AD-ben az SAML-válaszban visszaadott szerepkörrel kell beállítani. Az Azure AD szerepköreivel kapcsolatos további információkért lásd: a [vállalati alkalmazások SAML-jogkivonatában kiadott szerepkör-jogcím konfigurálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+    > A `namespace` jogcímet a fiók nevével kell leképezni. Ennek a fióknak a nevét az Azure AD-ben az SAML-válaszban visszaadott szerepkörrel kell beállítani. Az Azure AD szerepköreivel kapcsolatos további információkért lásd: a [vállalati alkalmazások SAML-jogkivonatában kiadott szerepkör-jogcím konfigurálása](../develop/active-directory-enterprise-app-role-management.md).
 
 1. Nyissa **meg az egyszeri Sign-On beállítása SAML** -oldallal című lapot. Az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** szakaszt. A **Letöltés** gombra kattintva mentse a tanúsítványt a számítógépre.
 
@@ -165,7 +165,7 @@ Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentk
 
    Az **összevonás metaadatait tartalmazó XML-fájlt** is feltöltheti a **metaadatok feltöltése** lehetőség kiválasztásával.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-a-catchpoint-test-user"></a>Catchpoint-teszt felhasználó létrehozása
 
@@ -175,7 +175,7 @@ A Catchpoint támogatja az igény szerinti felhasználói üzembe helyezést, am
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a saját alkalmazások portál használatával.
 
-Amikor kiválasztja a Catchpoint csempét a saját alkalmazások portálján, automatikusan be kell jelentkeznie a Catchpoint alkalmazásba az SSO-val konfigurálva. További információ a saját alkalmazások portálról: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Amikor kiválasztja a Catchpoint csempét a saját alkalmazások portálján, automatikusan be kell jelentkeznie a Catchpoint alkalmazásba az SSO-val konfigurálva. További információ a saját alkalmazások portálról: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](../user-help/my-apps-portal-end-user-access.md).
 
 > [!NOTE]
 > Amikor bejelentkezett a Catchpoint alkalmazásba a bejelentkezési oldalon keresztül, a **Catchpoint hitelesítő adatainak**megadása után adja meg az érvényes **névtér** értékét a **vállalati hitelesítő adatok (SSO)** mezőben, és válassza a **Bejelentkezés**lehetőséget.
@@ -184,12 +184,12 @@ Amikor kiválasztja a Catchpoint csempét a saját alkalmazások portálján, au
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
 - [A Catchpoint kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)

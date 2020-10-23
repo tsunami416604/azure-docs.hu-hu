@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8557c830aec2dd30de0a99a19d7950928d36e894
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544604"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456020"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Citrix NetScaler (Kerberos-alapú hitelesítés)
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Citrix NetScaler
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Citrix NetScaler-ba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)használatával című témakört.
+Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](../manage-apps/what-is-single-sign-on.md)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,7 +47,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * [Fejléc-alapú hitelesítés Citrix NetScaler](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
-* A Citrix NetScaler konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A Citrix NetScaler konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>Citrix NetScaler hozzáadása a katalógusból
 
@@ -171,13 +171,13 @@ Virtuális kiszolgáló létrehozása:
 
 1. Válassza a **Traffic Management**  >  **terheléselosztási**  >  **szolgáltatások**lehetőséget.
     
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
     ![Citrix NetScaler Configuration-Services ablaktábla](./media/citrix-netscaler-tutorial/web01.png)
 
 1. Állítsa be az alábbi értékeket az alkalmazásokat futtató webkiszolgálóra:
 
-   * **Szolgáltatásnév**
+   * **Szolgáltatás neve**
    * **Kiszolgáló IP-címe/meglévő kiszolgáló**
    * **Protokoll**
    * **Port**
@@ -188,7 +188,7 @@ A terheléselosztó konfigurálása:
 
 1. Nyissa meg a **Traffic Management**  >  **terheléselosztási**  >  **virtuális kiszolgálókat**.
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 1. Állítsa be az alábbi értékeket a következő képernyőképen leírtak szerint:
 
@@ -235,7 +235,7 @@ Hitelesítési házirend létrehozása:
 
 1. Válassza a **Biztonság**  >  **AAA – alkalmazás forgalmi**  >  **szabályzatok**  >  **hitelesítési**  >  **hitelesítési szabályzatok**lehetőséget.
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 1. A **hitelesítési házirend létrehozása** panelen adja meg vagy válassza ki a következő értékeket:
 
@@ -372,7 +372,7 @@ A Citrix forgalmi házirend és a forgalmi profil konfigurálása:
 
 1.  Válassza a **forgalmi profilok**lehetőséget.
 
-1.  Válassza a **Hozzáadás** lehetőséget.
+1.  Válassza a **Hozzáadás** elemet.
 
 1.  A forgalmi profil konfigurálásához adja meg vagy válassza ki a következő értékeket.
 
@@ -388,7 +388,7 @@ A Citrix forgalmi házirend és a forgalmi profil konfigurálása:
  
 1.  Válassza a **forgalmi szabályzat**lehetőséget.
 
-1.  Válassza a **Hozzáadás** lehetőséget.
+1.  Válassza a **Hozzáadás** elemet.
 
 1.  A forgalmi szabályzatok konfigurálásához adja meg vagy válassza ki a következő értékeket:
 
@@ -447,20 +447,20 @@ Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Citrix NetScal
 
 Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési panel használatával teszteli.
 
-Amikor kiválasztja a Citrix NetScaler csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Citrix NetScaler, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Citrix NetScaler csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Citrix NetScaler, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
 - [A Citrix NetScaler kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
 - [A Citrix NetScaler egyszeri bejelentkezés konfigurálása a fejléc-alapú hitelesítéshez](header-citrix-netscaler-tutorial.md)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A Citrix NetScaler és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Citrix NetScaler és a speciális láthatóság és vezérlők elleni védelem](/cloud-app-security/proxy-intro-aad)

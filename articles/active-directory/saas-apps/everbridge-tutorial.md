@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 1da2fd879dbeac1836469d46567566769f6163a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555399"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Oktatóanyag: Azure Active Directory integráció a Everbridge
 
@@ -26,7 +26,7 @@ Ha integrálja az Everbridge-t az Azure AD-vel, a következőket teheti:
 * A Everbridge-hez hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezzenek a Everbridge az Azure AD-fiókjával. A hozzáférés-vezérlés neve egyszeri bejelentkezés (SSO).
 * A fiókokat egy központi helyen kezelheti a Azure Portal használatával.
-További információ az Azure AD-vel való szolgáltatott szoftver-(SaaS-) alkalmazások integrálásáról: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+További információ az Azure AD-vel való szolgáltatott szoftver-(SaaS-) alkalmazások integrálásáról: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -164,7 +164,7 @@ Ha az egyszeri bejelentkezést a **Everbridge** **Everbridge Manager portál** a
    
      f. A **szolgáltató által kezdeményezett kérelem kötése**beállításnál válassza a **http-átirányítás**lehetőséget.
 
-     : Kattintson a **Mentés** gombra.
+     : Válassza a **Mentés** lehetőséget.
 
 ### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Everbridge konfigurálása Everbridge-tag portál egyszeri bejelentkezéshez
 
@@ -228,11 +228,10 @@ Ebben a szakaszban a Britta Simon Everbridge-ben hozza létre a test user. Ha fe
 
 Tesztelje az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával.
 
-Amikor kiválasztja a Everbridge csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Everbridge-fiókba, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Everbridge csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Everbridge-fiókba, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

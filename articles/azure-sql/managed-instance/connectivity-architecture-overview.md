@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
-ms.date: 03/17/2020
-ms.openlocfilehash: 81d0731f6ea77325b3f33f91bf8d5d1386dab2fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 88849e6b915128394546c01698ecee34d6206043
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283377"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461719"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány kapcsolati architektúrája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -111,7 +111,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával
 
-| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Művelet|
+| Name       |Port                        |Protokoll|Forrás           |Cél|Művelet|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezés |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezés |
@@ -121,14 +121,14 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával
 
-| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Művelet|
+| Name       |Port          |Protokoll|Forrás           |Cél|Művelet|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>A felhasználó által megadott útvonalak a szolgáltatással segített alhálózat konfigurációjával
 
-|Name (Név)|Címelőtag|Következő ugrás|
+|Name|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |alhálózat – vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -312,7 +312,7 @@ Ha a virtuális hálózat egyéni DNS-t tartalmaz, az egyéni DNS-kiszolgálóna
 A következő virtuális hálózati szolgáltatások jelenleg nem támogatottak a felügyelt SQL-példányok esetében:
 
 - **Microsoft-partneri**kapcsolat: a [Microsoft-partneri](../../expressroute/expressroute-faqs.md#microsoft-peering) kapcsolatok engedélyezése a ExpressRoute-áramkörökhöz közvetlenül vagy tranzitívnak olyan virtuális hálózattal, amelyben az SQL felügyelt példánya a virtuális hálózatban található SQL felügyelt példány-összetevők, valamint a rendelkezésre állási problémák okozta szolgáltatások közötti forgalmat érinti. Az SQL felügyelt példányok virtuális hálózatra való központi telepítése már engedélyezve van a Microsoft társközi szolgáltatásával.
-- **Globális virtuális hálózati**társítás: az Azure-régiók közötti [virtuális hálózati](../../virtual-network/virtual-network-peering-overview.md) társítási kapcsolat nem működik az SQL felügyelt példánya esetében, mert [dokumentált](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)terheléselosztó-korlátozások vannak érvényben.
+- **Globális virtuális hálózati**társítás: az Azure-régiók közötti [virtuális hálózati](../../virtual-network/virtual-network-peering-overview.md) társítási kapcsolat nem működik a 9/22/2020 előtti alhálózatokban létrehozott SQL felügyelt példányok esetében.
 - **AzurePlatformDNS**: a AzurePlatformDNS [szolgáltatás címkéjének](../../virtual-network/service-tags-overview.md) használata a platform DNS-feloldásának letiltásához az SQL felügyelt példánya nem érhető el. Bár az SQL felügyelt példánya támogatja az ügyfél által meghatározott DNS-feloldást a motoron belül, a platformon futó DNS-függőség függ a platform működéséhez.
 - **NAT-átjáró**: az [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) használata az adott nyilvános IP-címmel rendelkező kimenő kapcsolatok vezérléséhez az SQL felügyelt példánya nem érhető el. A felügyelt SQL-példány szolgáltatás jelenleg olyan alapszintű terheléselosztó használatára korlátozódik, amely nem biztosítja a bejövő és kimenő folyamatok egyidejű használatát Virtual Network NAT-ban.
 
@@ -331,7 +331,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Művelet|
+| Name       |Port                        |Protokoll|Forrás           |Cél|Művelet|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 |mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -339,7 +339,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Művelet|
+| Name       |Port          |Protokoll|Forrás           |Cél|Művelet|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -357,7 +357,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
 
-|Name (Név)|Címelőtag|Következő ugrás|
+|Name|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -528,7 +528,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 |Mi-204-79-180-24-nexthop-Internet|204.79.180.0/24|Internet|
 ||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Ismerje meg, hogyan [állíthat be egy új Azure-beli virtuális hálózatot](virtual-network-subnet-create-arm-template.md) vagy egy [meglévő Azure-beli virtuális hálózatot](vnet-existing-add-subnet.md) , ahol telepítheti az SQL felügyelt példányát.

@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047692"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461759"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure digitális Twins-ügyfél adatkérési funkciói
 
@@ -25,7 +25,7 @@ Az Azure Digital Twins *digitális Twins* nevű digitális képviselete valós k
 
 Az Azure Digital Twins számos digitális kisvárosa nem képviseli közvetlenül a személyes entitásokat – a tipikusan reprezentált objektumok lehetnek Office-értekezletek, vagy a gyári padlók. Előfordulhat azonban, hogy a felhasználók bizonyos entitásokat személyesen azonosíthatók, és saját belátásuk szerint saját eszközeiket vagy leltározási követési módszereket tartanak fenn a digitális ikrek egyéni felhasználók számára. Az Azure digitális Twins a digitális Twins-hoz kapcsolódó összes adattal kezeli és tárolja a személyes adataikat.
 
-Az adattulajdonosi kérelemben hivatkozott személyes adatok megtekintéséhez, exportálásához és törléséhez az Azure digitális Twins rendszergazdája használhatja a [**Azure Portal**](https://portal.azure.com/) a felhasználók és szerepkörök számára, illetve a digitális ikrekhez készült [**Azure Digital Twins REST API-kat**](how-to-use-apis-sdks.md) . A Azure Portal és a REST API-k különböző módszereket biztosítanak a felhasználók számára az ilyen adattulajdonosi kérelmek kiszolgálásához.
+Az adattulajdonosi kérelemben hivatkozott személyes adatok megtekintéséhez, exportálásához és törléséhez az Azure digitális Twins rendszergazdája használhatja a [**Azure Portal**](https://portal.azure.com/) a felhasználók és szerepkörök számára, illetve a digitális ikrekhez készült [**Azure Digital Twins REST API-kat**](/rest/api/azure-digitaltwins/) . A Azure Portal és a REST API-k különböző módszereket biztosítanak a felhasználók számára az ilyen adattulajdonosi kérelmek kiszolgálásához.
 
 ## <a name="identifying-customer-data"></a>Ügyféladatok azonosítása
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6115ca375c3e5bf2be3335fe2231628ec7bf309f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09dddad24794491b53a11f7b0e4347f43f11598b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267737"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440484"
 ---
 # <a name="scenario-any-to-any"></a>Forgatókönyv: bármilyen
 
@@ -22,14 +22,14 @@ A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehet�
 
 ## <a name="design"></a><a name="design"></a>Tervezés
 
-Ha szeretné megtudni, hogy hány útválasztási táblázatra van szükség egy virtuális WAN-forgatókönyvben, létrehozhat egy kapcsolati mátrixot, ahol minden cella azt jelöli, hogy egy forrás (sor) tud-e kommunikálni a célhoz (oszlophoz). Ebben a forgatókönyvben a kapcsolati mátrix triviális, de a többi forgatókönyvvel való összhang érdekében belefoglaljuk.
+Ha szeretné megtudni, hogy hány útválasztási táblázatra van szükség egy virtuális WAN-forgatókönyvben, létrehozhat egy kapcsolati mátrixot, ahol minden cella azt jelöli, hogy egy forrás (sor) tud-e kommunikálni a célhoz (oszlophoz).
 
 | Forrás |   Művelet |  *Virtuális hálózatok* | *Ágak* |
 | -------------- | -------- | ---------- | ---|
-| Virtuális hálózatok     | &#8594;|      X     |     X    |
-| Ágak   | &#8594;|    X     |     X    |
+| Virtuális hálózatok     | &#8594;| Direct | Direct |
+| Ágak   | &#8594;| Direct  | Direct |
 
-Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a tábla sorai) megtanulja-e a cél előtagot (a folyamat "to" oldalát, a tábla oszlopainak fejlécét) egy adott forgalmi folyamathoz, ahol az "X" azt jelenti, hogy a kapcsolatot a virtuális WAN nyújtja.
+Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) a cél előtaggal kommunikál-e (a folyamat "–" oldalára, a dőlt betűs oszlopok fejlécére). Ebben a forgatókönyvben nincsenek tűzfalak vagy hálózati virtuális berendezések, így a kommunikáció közvetlenül a virtuális WAN-kapcsolaton keresztül történik (ezért a táblázatban a "Direct" szó látható).
 
 Mivel a virtuális hálózatok és az ágak (VPN, ExpressRoute és felhasználói VPN) összes kapcsolata ugyanazokkal a kapcsolati követelményekkel rendelkezik, egyetlen útválasztási táblára van szükség. Ennek eredményeképpen minden kapcsolat társítva lesz, és a rendszer az alapértelmezett útválasztási táblázatba továbbítja az útválasztási táblázatot:
 
@@ -60,7 +60,7 @@ Ezek a kapcsolatok (alapértelmezés szerint a létrehozáskor) az alapértelmez
 
 Ez a forgatókönyv alapértelmezés szerint engedélyezve van a standard szintű virtuális WAN esetében. Ha a ág – ág beállítás le van tiltva a WAN-konfigurációban, ez letiltja a fiókirodák közötti kapcsolatot. A VPN/ExpressRoute/User VPN a virtuális WAN ág-küllői.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

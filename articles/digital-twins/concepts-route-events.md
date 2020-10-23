@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282260"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440807"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -73,7 +73,7 @@ A vezérlési síkon elérhető Endpoint API-k a következők:
  
 Eseményvezérelt útvonal létrehozásához használhatja az Azure Digital Twins [**adatsík API-kat**](how-to-manage-routes-apis-cli.md#create-an-event-route), a [**CLI-parancsokat**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)vagy a [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route). 
 
-Íme egy példa arra, hogyan hozhat létre egy esemény-útvonalat az ügyfélalkalmazások között a `CreateEventRoute` [.net (C#) SDK](how-to-use-apis-sdks.md) -hívás használatával: 
+Íme egy példa arra, hogyan hozhat létre egy esemény-útvonalat az ügyfélalkalmazások között a `CreateEventRoute` [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview) -hívás használatával: 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");
@@ -113,7 +113,7 @@ A IoT Hub és az Azure Digital Twins különböző típusú eseményei különb�
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: események útvonalának beállítása és kezelése:
 * [*Útmutató: végpontok és útvonalak kezelése*](how-to-manage-routes-apis-cli.md)
