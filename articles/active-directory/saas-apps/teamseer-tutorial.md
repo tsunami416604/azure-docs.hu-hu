@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 815c738f1680c12f94aa97e91cd123237bf1b4f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac050a9b90272203a899a9a15a51df022e4b0d0e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542496"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Oktatóanyag: Azure Active Directory integráció a TeamSeer
 
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés TeamSeer való konfigurálásához hajtsa v�
 
 1. Ugrás a **HR-rendszergazdára**.
 
-    ![HR-rendszergazda](./media/teamseer-tutorial/ic789634.png "HR-rendszergazda")
+    ![A képernyőképen a TeamSeer ablakban kiválasztott H R rendszergazda látható.](./media/teamseer-tutorial/ic789634.png "HR-rendszergazda")
 
 1. Kattintson a **telepítés**elemre.
 
@@ -134,11 +134,11 @@ Az Azure AD egyszeri bejelentkezés TeamSeer való konfigurálásához hajtsa v�
 
 1. Kattintson az **SAML-szolgáltató adatainak beállítása**elemre.
 
-    ![SAML-beállítások](./media/teamseer-tutorial/ic789636.png "SAML-beállítások")
+    ![A képernyőfelvételen az SAML-szolgáltató beállításának beállítása látható.](./media/teamseer-tutorial/ic789636.png "SAML-beállítások")
 
 1. Az SAML-szolgáltató részletei szakaszban hajtsa végre a következő lépéseket:
 
-    ![SAML-beállítások](./media/teamseer-tutorial/ic789637.png "SAML-beállítások")
+    ![A képernyőfelvételen az SAML-szolgáltató adatai láthatók, ahol megadhatja a leírt értékeket.](./media/teamseer-tutorial/ic789637.png "SAML-beállítások")
 
     a. Az **URL** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
 
@@ -146,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés TeamSeer való konfigurálásához hajtsa v�
 
 1. Az SAML-szolgáltató konfigurációjának befejezéséhez hajtsa végre a következő lépéseket:
 
-    ![SAML-beállítások](./media/teamseer-tutorial/ic789638.png "SAML-beállítások")
+    ![A képernyőfelvételen a SAML-szolgáltató konfigurációja látható, ahol megadhatja a leírt értékeket.](./media/teamseer-tutorial/ic789638.png "SAML-beállítások")
 
     a. A **teszt e-mail**-címe mezőbe írja be a felhasználó e-mail-címét.
   
@@ -177,7 +177,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -215,7 +215,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Te
 
 1. Lépjen a **HR rendszergazda \> felhasználók** elemre, majd kattintson **az új felhasználó varázsló futtatása**lehetőségre.
 
-    ![HR-rendszergazda](./media/teamseer-tutorial/ic789640.png "HR-rendszergazda")
+    ![Képernyőfelvétel: a H R admin lap, amelyen kiválaszthatja a futtatni kívánt varázslót.](./media/teamseer-tutorial/ic789640.png "HR-rendszergazda")
 
 1. A **felhasználó adatai** szakaszban hajtsa végre a következő lépéseket:
 

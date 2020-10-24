@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d784e8bfb0841570f63d8433fa74059eb9e22758
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569822"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487738"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
 
@@ -22,25 +22,25 @@ ms.locfileid: "91569822"
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring-adatv2](sql-api-sdk-java-spring-v2.md)
-> * [Spring-adatforrások v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-összekötő](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK letöltése**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-dokumentáció**|[Python API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
+|**API-dokumentáció**|[Python API-referenciák dokumentációja](/python/api/azure-cosmos/?preserve-view=true&view=azure-python)|
 |**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Első lépések**|[Ismerkedés a Python SDK-val](create-sql-api-python.md)|
 |**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) és [Python 3.5.3 +](https://www.python.org/downloads/)|
@@ -316,7 +316,7 @@ A B1-es verzió a 4.0.0 első előzetes verziója, amely a Python nyelvi ajánlo
 
 ## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
 
-A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Új szolgáltatásokkal, funkciókkal és optimalizálásokkal csak az aktuális SDK bővül, ezért azt javasoljuk, hogy a mindig lehető leghamarabb frissítsen a legújabb SDK-verzióra.
 
 > [!WARNING]
 > A 2022. augusztus 31-ig a Azure Cosmos DB többé nem javít hibajavításokat, új funkciókat adhat hozzá, és támogatást biztosít az SQL API-hoz készült Azure Cosmos DB Python SDK 1. x vagy 2. x verziójához. Ha nem szeretné, hogy a rendszer ne frissítse az SDK 1. x és 2. x verziójában küldött kérelmeket, továbbra is a Azure Cosmos DB szolgáltatás fogja kiszolgálni.
@@ -327,7 +327,7 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 | [3.0.2](#302) |November 15., 2018 |--- |
 | [3.0.1](#301) |Oct 04, 2018 |--- |
 | [2.3.3](#233) |Szeptember 08., 2018 |2020. augusztus 30-ig |
-| [2.3.2](#232) |08. május 2018 |2020. augusztus 30-ig |
+| [2.3.2](#232) |2018. május 8. |2020. augusztus 30-ig |
 | [2.3.1](#231) |December 21., 2017 |2020. augusztus 30-ig |
 | [2.3.0](#230) |November 10., 2017 |2020. augusztus 30-ig |
 | [2.2.1](#221) |Szeptember 29., 2017 |2020. augusztus 30-ig |
@@ -359,4 +359,4 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 
+A Cosmos DB-ről a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás oldalán tekinthet meg további információt.

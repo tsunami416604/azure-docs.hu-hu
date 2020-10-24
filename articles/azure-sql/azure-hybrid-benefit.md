@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: f43d03f722617e88e7a00e71798351c88ce10e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 186721fbb52ae153bd51076a9fe3a7413f29d1b4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327595"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479119"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid Benefit – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -96,5 +96,5 @@ SQL Database az ügyfelek a következő jogokkal rendelkeznek a SQL Server Azure
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha segítségre van szükség az Azure SQL-alapú üzembe helyezési lehetőség kiválasztásához, tekintse meg [a megfelelő üzembe helyezési lehetőséget az Azure SQL-ben](azure-sql-iaas-vs-paas-what-is-overview.md).
+- Az Azure SQL-alapú üzembe helyezési lehetőség kiválasztásával kapcsolatos segítségért lásd: [a megfelelő üzembe helyezési lehetőség kiválasztása az Azure SQL-ben](azure-sql-iaas-vs-paas-what-is-overview.md).
 - A SQL Database és az SQL felügyelt példány funkcióinak összehasonlítását lásd: [SQL Database & SQL felügyelt példányának funkciói](database/features-comparison.md).

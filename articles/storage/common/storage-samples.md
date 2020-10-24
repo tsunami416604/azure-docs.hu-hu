@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2cf1b643caef515411842d6aaf668708e873e96d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d537ba74dad55ea1cb980ea04d20fd0c8494ed0b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367890"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479442"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage-minták
 
@@ -67,8 +67,8 @@ Az Azure CLI-minták megismeréséhez először [telepítse az Azure CLI](/cli/a
 
 | Nyelv | API-referencia | Forráskód |
 |----------|---------------|-------------|
-| .NET | [.NET ügyféloldali kódtár – dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [A .NET Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-net) |
-| Java | [Java ügyféloldali kódtár – dokumentáció](https://docs.microsoft.com/java/api/overview/azure/storage) | [A Java Storage ügyféloldali kódtár forráskódja](https://github.com/azure/azure-storage-java) |
+| .NET | [.NET ügyféloldali kódtár – dokumentáció](/dotnet/api/overview/azure/storage) | [A .NET Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-net) |
+| Java | [Java ügyféloldali kódtár – dokumentáció](/java/api/overview/azure/storage) | [A Java Storage ügyféloldali kódtár forráskódja](https://github.com/azure/azure-storage-java) |
 | Python | [Python ügyféloldali kódtár – dokumentáció](https://azure-storage.readthedocs.io/) | [Forráskód a Python Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-python) |
 | Node.js | [Node.js ügyféloldali kódtár referenciája](https://azure.github.io/azure-storage-node) | [A Node.js Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ ügyféloldali kódtár – dokumentáció](https://azure.github.io/azure-sdk-for-cpp/) | [Forráskód a C++ Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)|

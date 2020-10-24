@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746deae725e9e1ca4274b2132f7c09e2548a6629
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715159"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488877"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
 Az Azure Storage-hoz készült Azure biztonsági alapkonfiguráció olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
+További információ: [Azure Security](/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](/azure/security/benchmarks/security-control-network-security).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: az erőforrások védelme hálózati biztonsági csoportokkal vagy Azure Firewall a Virtual Network
 
@@ -32,9 +32,9 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 Megjegyzés: a klasszikus Storage-fiókok nem támogatják a tűzfalakat és a virtuális hálózatokat.
 
-- [Az Azure Storage-tűzfal konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#change-the-default-network-access-rule)
+- [Az Azure Storage-tűzfal konfigurálása](/azure/storage/common/storage-network-security#change-the-default-network-access-rule)
 
-- [Privát végpontok konfigurálása az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-private-endpoints)
+- [Privát végpontok konfigurálása az Azure Storage-hoz](/azure/storage/common/storage-private-endpoints)
 
 **Azure Security Center figyelés**: igen
 
@@ -46,13 +46,13 @@ Megjegyzés: a klasszikus Storage-fiókok nem támogatják a tűzfalakat és a v
 
 Vegye figyelembe, hogy ha a Storage-fiókjához privát végpontok vannak csatlakoztatva, akkor nem konfigurálhatja az alhálózatok hálózati biztonsági csoport (NSG) szabályait. 
 
-- [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](/azure/storage/common/storage-network-security)
 
-- [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [A NSG folyamat naplófájljainak engedélyezése](/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
-- [A Azure Security Center által biztosított hálózati biztonság ismertetése](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [A Azure Security Center által biztosított hálózati biztonság ismertetése](/azure/security-center/security-center-network-recommendations)
 
-- [Privát végpontok megismerése az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-private-endpoints#known-issues)
+- [Privát végpontok megismerése az Azure Storage-ban](/azure/storage/common/storage-private-endpoints#known-issues)
 
 **Azure Security Center figyelés**: igen
 
@@ -70,9 +70,9 @@ Vegye figyelembe, hogy ha a Storage-fiókjához privát végpontok vannak csatla
 
 **Útmutató**: a komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-fiókhoz. Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Azure Security Center integrált riasztások olyan tevékenységeken alapulnak, amelyekhez a hálózati kommunikáció sikeresen megoldott IP-címmel van társítva, függetlenül attól, hogy az IP-cím egy ismert kockázatos IP-cím (például ismert cryptominer) vagy egy olyan IP-cím, amelyet korábban nem ismer fel kockázatos. A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. 
 
-- [A komplex veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [A komplex veszélyforrások elleni védelem engedélyezése](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
-- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](/azure/security-center/security-center-alerts-service-layer)
 
 **Azure Security Center figyelés**: igen
 
@@ -82,7 +82,7 @@ Vegye figyelembe, hogy ha a Storage-fiókjához privát végpontok vannak csatla
 
 **Útmutató**: Network Watcher a csomagok rögzítése lehetővé teszi rögzítési munkamenetek létrehozását a Storage-fiók és a virtuális gép közötti forgalom nyomon követéséhez. A rögzítési munkamenethez szűrőket biztosít, hogy csak a kívánt forgalmat rögzítsen. A csomagok rögzítése segít az újraaktív és proaktív hálózati rendellenességek diagnosztizálásában. Más felhasználások közé tartozik a hálózati statisztikák összegyűjtése, a hálózati behatolásokkal kapcsolatos információk beszerzése, az ügyfél-kiszolgáló kommunikáció hibakeresése és sok más. A csomagok rögzítésének távoli elindítása lehetővé teszi, hogy a csomagok rögzítése manuálisan fusson a kívánt virtuális gépen, ami értékes időt takarít meg. 
 
-- [A csomagok rögzítésének kezelése az Azure Network Watcher a portál használatával](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
+- [A csomagok rögzítésének kezelése az Azure Network Watcher a portál használatával](/azure/network-watcher/network-watcher-packet-capture-manage-portal)
 
 **Azure Security Center figyelés**: igen
 
@@ -92,7 +92,7 @@ Vegye figyelembe, hogy ha a Storage-fiókjához privát végpontok vannak csatla
 
 **Útmutató**: az Azure Storage komplex veszélyforrások elleni védelme további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak Azure Security Centerekkel, és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt. 
 
-- [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](/azure/storage/common/storage-advanced-threat-protection)
 
 **Azure Security Center figyelés**: igen
 
@@ -112,9 +112,9 @@ Vegye figyelembe, hogy ha a Storage-fiókjához privát végpontok vannak csatla
 
 Ha a hálózati hozzáférés hatókörét meghatározott tárolási fiókokra kell korlátozni, használja a Virtual Network szolgáltatás-végponti házirendeket.
 
-- [További információ a szolgáltatási címkék használatáról](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [További információ a szolgáltatási címkék használatáról](/azure/virtual-network/service-tags-overview)
 
-- [További információ az Azure Storage-hoz készült Virtual Network szolgáltatás végpont-házirendjeiről](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [További információ az Azure Storage-hoz készült Virtual Network szolgáltatás végpont-házirendjeiről](/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -126,13 +126,13 @@ Ha a hálózati hozzáférés hatókörét meghatározott tárolási fiókokra k
 
 A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is használhatja, például: a Storage-fiókoknak virtuális hálózati szolgáltatási végpontot kell használniuk. 
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Azure Policy minták a Storage-hoz](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#storage)
+- [Azure Policy minták a Storage-hoz](/azure/governance/policy/samples/built-in-policies#storage)
 
-- [A hálózat Azure Policy mintái](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [A hálózat Azure Policy mintái](/azure/governance/policy/samples/built-in-policies#network)
 
-- [Azure Blueprint létrehozása](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Azure Blueprint létrehozása](/azure/governance/blueprints/create-blueprint-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -142,11 +142,11 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: használja a hálózati biztonsági csoportokhoz (NSG) és a hálózati biztonsággal és a forgalommal kapcsolatos egyéb erőforrásokhoz tartozó címkéket. Az egyes NSG-szabályok esetében a "Leírás" mezővel adhatja meg az üzleti igényeket és/vagy időtartamot (stb.) minden olyan szabályhoz, amely engedélyezi a hálózatra irányuló adatforgalmat. A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyikét használhatja, például a "címke és az érték megkövetelése" beállítást, hogy az összes erőforrás címkével legyen létrehozva, és értesítse a meglévő címkézetlen erőforrásokról. A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon. 
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Virtual Network létrehozása](/azure/virtual-network/quick-create-portal)
 
-- [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [NSG létrehozása biztonsági konfigurációval](/azure/virtual-network/tutorial-filter-network-traffic)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -156,9 +156,9 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: a Azure Policy használatával naplózhatja a hálózati erőforrások konfigurációs változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják 
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Riasztások létrehozása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Azure Security Center figyelés**: igen
 
@@ -166,7 +166,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 ## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
-*További információ [: Security Control: naplózás és figyelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](/azure/security/benchmarks/security-control-logging-monitoring).*
 
 ### <a name="21-use-approved-time-synchronization-resource"></a>2,1: a jóváhagyott időszinkronizálási erőforrás használata
 
@@ -180,7 +180,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: naplók beolvasása Azure monitor használatával a végpontok eszközei, hálózati erőforrásai és más biztonsági rendszerek által generált biztonsági adatokat összesítve. A Azure Monitoron belül Log Analytics munkaterület (ek) használatával kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat a hosszú távú/archiválási tároláshoz, opcionálisan olyan biztonsági funkciókkal, mint például a megváltoztathatatlan tárolás és a kényszerített megőrzés.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -190,7 +190,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: a Azure Storage Analytics a Blobok, várólisták és táblák naplóit biztosítja. A Azure Portal segítségével beállíthatja, hogy mely naplók legyenek rögzítve a fiókjához. 
 
-- [Az Azure Storage-fiók figyelésének konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-monitoring-for-a-storage-account)
+- [Az Azure Storage-fiók figyelésének konfigurálása](/azure/storage/common/storage-monitor-storage-account#configure-monitoring-for-a-storage-account)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -208,9 +208,9 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: Ha a biztonsági eseménynaplókat az Azure Storage-fiókban vagy log Analytics munkaterületen tárolja, az adatmegőrzési házirendet a szervezet követelményeinek megfelelően állíthatja be. 
 
-- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](/azure/storage/common/storage-monitor-storage-account#configure-logging)
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Az adatmegőrzési időszak módosítása Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -222,9 +222,9 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Storage-fiókhoz. Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak Azure Security Centerekkel, és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt. 
 
-- [Az adatnapló és-áttekintés](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#how-logs-are-stored)
+- [Az adatnapló és-áttekintés](/azure/storage/common/storage-analytics-logging#how-logs-are-stored)
 
-- [A komplex veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [A komplex veszélyforrások elleni védelem engedélyezése](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -234,13 +234,13 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 **Útmutató**: a Azure Security Center a komplex veszélyforrások elleni védelem engedélyezése a Storage-fiókhoz. Engedélyezze a Storage-fiók diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics munkaterületre. A Log Analytics-munkaterületet az Azure Sentinelbe irányíthatja, mivel ez egy biztonsági előkészítési automatizált választ (felszárnyaló) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák megoldására való felhasználását. 
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](/azure/sentinel/quickstart-onboard)
 
-- [Riasztások kezelése Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Riasztások kezelése Azure Security Centerban](/azure/security-center/security-center-managing-and-responding-alerts)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](/azure/azure-monitor/learn/tutorial-response)
 
-- [Azure Storage Analytics-naplózás](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Storage Analytics-naplózás](/azure/storage/common/storage-analytics-logging)
 
 **Azure Security Center figyelés**: igen
 
@@ -250,7 +250,7 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 **Útmutató**: az Azure Security Center használata és a veszélyforrások elleni védelem engedélyezése az Azure Storage-hoz az Azure Storage-ba való kártevő-feltöltések észleléséhez a kivonatoló hírnevének elemzése és a gyanús hozzáférés egy aktív Tor-kilépési csomópontból (anonimizálásával-proxy) 
 
-- [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -260,7 +260,7 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 **Útmutató**: Azure DNS Analytics (előzetes verzió) megoldás Azure monitor a DNS-infrastruktúrával kapcsolatos elemzéseket gyűjt a biztonság, a teljesítmény és a műveletek terén. Ez jelenleg nem támogatja az Azure Storage-fiókokat, azonban külső DNS-naplózási megoldást is használhat. 
 
-- [A DNS-infrastruktúrával kapcsolatos információk gyűjtése a DNS Analytics előzetes verziójának megoldásával](https://docs.microsoft.com/azure/azure-monitor/insights/dns-analytics)
+- [A DNS-infrastruktúrával kapcsolatos információk gyűjtése a DNS Analytics előzetes verziójának megoldásával](/azure/azure-monitor/insights/dns-analytics)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -276,15 +276,15 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információ [: Security Control (identitás és Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)).*
+*További információ [: Security Control (identitás és Access Control](/azure/security/benchmarks/security-control-identity-access-control)).*
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3,1: a rendszergazdai fiókok leltárának fenntartása
 
 **Útmutató**: az Azure ad olyan beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez. 
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -294,9 +294,9 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 **Útmutató**: az Azure Storage-fiókok és a Azure Active Directory az alapértelmezett vagy az üres jelszavak fogalmával rendelkeznek. Az Azure Storage egy hozzáférés-vezérlési modellt valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), valamint a megosztott kulcsokat és a közös hozzáférésű aláírásokat (SAS). A megosztott kulcs és az SAS hitelesítés jellemzője, hogy a hívó nem társít identitást, ezért nem hajtható végre a rendszerbiztonsági tag engedély-alapú engedélyezése. 
 
-- [Az Azure Storage-beli adathozzáférés engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Az Azure Storage-beli adathozzáférés engedélyezése](/azure/storage/common/storage-auth)
 
-- [A rendszerbiztonsági tag és az Azure Storage-fiók hozzáférés-vezérlésének ismertetése](https://docs.microsoft.com/azure/storage/common/storage-introduction)
+- [A rendszerbiztonsági tag és az Azure Storage-fiók hozzáférés-vezérlésének ismertetése](/azure/storage/common/storage-introduction)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -308,9 +308,9 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identity Management Kiemelt szerepkörökkel is engedélyezheti az igény szerinti hozzáférést. 
 
-- [Azure Security Center identitás és hozzáférés ismertetése](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Azure Security Center identitás és hozzáférés ismertetése](/azure/security-center/security-center-identity-access)
 
-- [Privileged Identity Management áttekintése](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management áttekintése](/azure/active-directory/privileged-identity-management/)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -320,11 +320,11 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 **Útmutató**: ha lehetséges, használja a Azure Active Directory SSO-t ahelyett, hogy egyéni, különálló hitelesítő adatokat konfiguráljon a szolgáltatáson kívül. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata. 
 
-- [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Az Azure Storage-beli adathozzáférés engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Az Azure Storage-beli adathozzáférés engedélyezése](/azure/storage/common/storage-auth)
 
-- [Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)
+- [Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával](/azure/storage/common/storage-auth-aad)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -334,9 +334,9 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 **Útmutató**: engedélyezze Azure Active Directory többtényezős hitelesítést, és kövesse Azure Security Center identitás-és hozzáférés-kezelési ajánlásokat a Storage-fiók erőforrásainak védelméhez. 
 
-- [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Az MFA engedélyezése az Azure-ban](/azure/active-directory/authentication/howto-mfa-getstarted)
 
-- [Identitás és hozzáférés figyelése Azure Security Centeron belül](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Identitás és hozzáférés figyelése Azure Security Centeron belül](/azure/security-center/security-center-identity-access)
 
 **Azure Security Center figyelés**: igen
 
@@ -346,9 +346,9 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 **Útmutató**: a Storage-fiók erőforrásainak bejelentkezéséhez és konfigurálásához használja a mancsok (emelt szintű hozzáférésű munkaállomások) használatát az MFA használatára. 
 
-- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Az MFA engedélyezése az Azure-ban](/azure/active-directory/authentication/howto-mfa-getstarted)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -358,11 +358,11 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 **Útmutatás**: Azure Security Center kockázatkezelési riasztások küldése Azure monitor és egyéni riasztások/értesítések konfigurálása a műveleti csoportokkal. Engedélyezze a komplex veszélyforrások elleni védelmet az Azure Storage-fiók számára a gyanús tevékenységekre vonatkozó riasztások létrehozásához. Emellett az Azure AD kockázati Észlelésekkel is megtekintheti a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket. 
 
-- [Komplex veszélyforrások elleni védelem beállítása az Azure Storage-fiókhoz](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [Komplex veszélyforrások elleni védelem beállítása az Azure Storage-fiókhoz](/azure/storage/common/storage-advanced-threat-protection)
 
-- [Az Azure AD kockázati észlelések ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Az Azure AD kockázati észlelések ismertetése](/azure/active-directory/reports-monitoring/concept-risk-events)
 
-- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](/azure/azure-monitor/platform/action-groups)
 
 **Azure Security Center figyelés**: igen
 
@@ -372,7 +372,7 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 **Útmutató**: a feltételes hozzáférés elnevezett helyeivel engedélyezheti, hogy a hozzáférés csak az IP-címtartományok vagy országok/régiók adott logikai csoportjaihoz legyen elérhető. 
 
-- [Elnevezett helyszínek konfigurálása az Azure-ban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Elnevezett helyszínek konfigurálása az Azure-ban](/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -382,15 +382,15 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 **Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosít, amely részletesen szabályozza az ügyfelek hozzáférését egy Storage-fiók erőforrásaihoz.  Az Azure AD-hitelesítő adatok használata, ha lehetséges, biztonsági szempontból ajánlott a fiók kulcsa helyett, ami könnyebben sérülhet. Ha az alkalmazás kialakításához közös hozzáférésű aláírásokra van szükség a blob Storage-hoz való hozzáféréshez, az Azure AD hitelesítő adataival hozzon létre egy felhasználói delegálási közös hozzáférési aláírást (SAS), amikor lehetséges a kiváló biztonság.
 
-- [Azure AD-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Azure AD-példány létrehozása és konfigurálása](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
-- [Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
+- [Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez](/azure/storage/common/authorization-resource-provider)
 
-- [Az Azure Blob-és üzenetsor-információhoz való hozzáférés konfigurálása az Azure RBAC Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Az Azure Blob-és üzenetsor-információhoz való hozzáférés konfigurálása az Azure RBAC Azure Portal](/azure/storage/common/storage-auth-aad-rbac-portal)
 
-- [Az Azure Storage-beli adathozzáférés engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Az Azure Storage-beli adathozzáférés engedélyezése](/azure/storage/common/storage-auth)
 
-- [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+- [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](/azure/storage/common/storage-sas-overview)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -406,17 +406,17 @@ Tekintse át a névtelen olvasási hozzáférés tárolók és Blobok számára 
 
 A felhasználók számára biztosított hozzáférés időtartamának korlátozására az egyik leghatékonyabb módszer a nem gyanús felhasználói fiókok hozzáférésének kockázata. Az időkorlátos SAS URI-k egy hatékony módszer egy Storage-fiókhoz való felhasználói hozzáférés automatikus lejáratára. Emellett a Storage-fiókok kulcsai gyakoriak, így biztosítható, hogy a Storage-fiókok kulcsain keresztül történő váratlan hozzáférés korlátozott időtartamú legyen.
 
-- [Az Azure AD jelentéskészítés ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
 
-- [Hozzáférés megtekintése és módosítása az Azure Storage-fiók szintjén](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Hozzáférés megtekintése és módosítása az Azure Storage-fiók szintjén](/azure/storage/common/storage-auth-aad-rbac-portal)
 
-- [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+- [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](/azure/storage/common/storage-sas-overview)
 
-- [Tárolók és blobok névtelen olvasási hozzáférésének kezelése](https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources)
+- [Tárolók és blobok névtelen olvasási hozzáférésének kezelése](/azure/storage/blobs/storage-manage-access-to-resources)
 
-- [Tárfiók monitorozása az Azure Portalon](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
+- [Tárfiók monitorozása az Azure Portalon](/azure/storage/common/storage-monitor-storage-account)
 
-- [A Storage-fiók hozzáférési kulcsainak kezelése](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [A Storage-fiók hozzáférési kulcsainak kezelése](/azure/storage/common/storage-account-keys-manage)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -428,11 +428,11 @@ A felhasználók számára biztosított hozzáférés időtartamának korlátoz�
 
 Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói fiókok számára, a naplók és a bejelentkezési naplók elküldése egy Log Analytics-munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat. Az Azure Storage-fiókokkal kapcsolatos hitelesítési hibák figyeléséhez riasztásokat hozhat létre, amelyekkel értesítheti, ha bizonyos küszöbértékek el lettek-e érni a tárolási erőforrások metrikái esetében. Emellett az Azure Monitor használatával a névtelen hitelesítési feltételt használó Storage-fiókok névtelen hozzáférésére vonatkozó riasztást is használhat.
 
-- [Azure Storage Analytics-naplózás](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Storage Analytics-naplózás](/azure/storage/common/storage-analytics-logging)
 
-- [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-- [Metrikai riasztások konfigurálása az Azure Storage-fiókokhoz](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
+- [Metrikai riasztások konfigurálása az Azure Storage-fiókokhoz](/azure/storage/common/storage-monitor-storage-account)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -442,11 +442,11 @@ Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói
 
 **Útmutató**: a Azure Active Directory kockázatkezelési és identitás-védelmi funkcióinak használatával konfigurálhatja a tárolási fiók erőforrásaival kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához engedélyeznie kell az automatikus válaszokat az Azure Sentinel használatával. 
 
-- [Az Azure AD kockázatos bejelentkezések megtekintése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezések megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-- [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](/azure/sentinel/quickstart-onboard)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -456,7 +456,7 @@ Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói
 
 **Útmutató**: azon forgatókönyvek esetében, amelyekben a Microsoftnak hozzá kell férnie az ügyféladatok eléréséhez, Ügyfélszéf (a Storage-fiók előzetes verziója) olyan felületet biztosít az ügyfeleknek, amely áttekinti és jóváhagyja az ügyféladatok-hozzáférési kérelmeket. A Microsoft nem követeli meg, és nem kér hozzáférést a szervezetnek a Storage-fiókban tárolt titkos kulcsaihoz.
 
-- [A Ügyfélszéf megismerése](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [A Ügyfélszéf megismerése](/azure/security/fundamentals/customer-lockbox-overview)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -464,13 +464,13 @@ Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
+*További információkért lásd [: biztonsági ellenőrzés:](/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
 **Útmutató**: a címkék használatával segítséget nyújthat a bizalmas adatokat tároló vagy feldolgozó tárolási fiók erőforrásainak nyomon követésében. 
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -480,15 +480,15 @@ Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói
 
 **Útmutató**: az elkülönítés megvalósítása különálló előfizetések, felügyeleti csoportok és Storage-fiókok használatával az egyes biztonsági tartományok, például a környezet, az adatérzékenység érdekében.  A Storage-fiók korlátozásával szabályozhatja, hogy az alkalmazások és a vállalati környezetek milyen mértékben férhetnek hozzá az alkalmazásokhoz és a vállalati környezetekhez, a használt hálózatok típusa és részhalmaza alapján. A hálózati szabályok konfigurálásakor csak a megadott hálózatokon adatokat kérő alkalmazások férhetnek hozzá egy Storage-fiókhoz. Az Azure Storage szolgáltatáshoz való hozzáférést az Azure RBAC keresztül szabályozhatja. A magánhálózati végpontokat úgy is konfigurálhatja, hogy a virtuális hálózat és a szolgáltatás közötti adatforgalom biztonságosabbá tételét a Microsoft gerinc hálózatán keresztül végezze el, így nem kell a nyilvános internetről bejárni. 
 
-- [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
 
-- [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Management Groups létrehozása](/azure/governance/management-groups/create)
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](/azure/storage/common/storage-network-security)
 
-- [Virtual Network szolgáltatási végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [Virtual Network szolgáltatási végpontok](/azure/virtual-network/virtual-network-service-endpoints-overview)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -500,11 +500,11 @@ Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói
 
 Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szűrheti a kimenő virtuális hálózati forgalmat az Azure Storage-fiókokhoz a szolgáltatási végponton keresztül, és lehetővé teszi, hogy az adatok csak bizonyos Azure Storage-fiókokra kiszűrése.
 
-- [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
-- [Virtuális hálózati szolgáltatásvégpont-szabályzatok létrehozása az Azure Storage-hez](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
+- [Virtuális hálózati szolgáltatásvégpont-szabályzatok létrehozása az Azure Storage-hez](/azure/private-link/create-private-endpoint-storage-portal)
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](/azure/security/fundamentals/protection-customer-data)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -514,9 +514,9 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: a https használatát a Storage-fiókhoz szükséges biztonságos átvitel engedélyezésével kényszerítheti ki. A HTTP-t használó kapcsolatok ez követően el lesznek utasítva. Emellett Azure Security Center és Azure Policy használatával kényszerítheti ki a Storage-fiók biztonságos átvitelét.
 
-- [Biztonságos átvitel megkövetelése az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)
+- [Biztonságos átvitel megkövetelése az Azure Storage-ban](/azure/storage/common/storage-require-secure-transfer)
 
-- [Security Center által figyelt Azure biztonsági szabályzatok](https://docs.microsoft.com/azure/security-center/security-center-policy-definitions)
+- [Security Center által figyelt Azure biztonsági szabályzatok](/azure/security-center/security-center-policy-definitions)
 
 **Azure Security Center figyelés**: igen
 
@@ -526,7 +526,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: az adatazonosítási funkciók még nem érhetők el az Azure Storage-fiókhoz és a kapcsolódó erőforrásokhoz. Külső gyártótól származó megoldás implementálása, ha az szükséges a megfelelőség szempontjából. 
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](/azure/security/fundamentals/protection-customer-data)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -536,15 +536,15 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: a Azure Active Directory (Azure ad) az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage egy beépített Azure-beli szerepkört határoz meg, amely magában foglalja a blob-vagy üzenetsor-adateléréshez használt engedélyek közös készleteit. 
 
-- [Azure-szerepkörök kiosztása Azure Storage-fiókhoz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
+- [Azure-szerepkörök kiosztása Azure Storage-fiókhoz](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
-- [Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
+- [Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez](/azure/storage/common/authorization-resource-provider)
 
-- [Az Azure Blob-és üzenetsor-információhoz való hozzáférés konfigurálása az Azure RBAC Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Az Azure Blob-és üzenetsor-információhoz való hozzáférés konfigurálása az Azure RBAC Azure Portal](/azure/storage/common/storage-auth-aad-rbac-portal)
 
-- [HRE-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [HRE-példány létrehozása és konfigurálása](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
-- [Az Azure Storage-beli adathozzáférés engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Az Azure Storage-beli adathozzáférés engedélyezése](/azure/storage/common/storage-auth)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -562,7 +562,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: az Azure Storage-titkosítás minden Storage-fiók esetében engedélyezve van, és nem tiltható le. Az Azure Storage automatikusan titkosítja az adatait, amikor a felhőben is megmarad. Amikor beolvassa az Azure Storage adatait, azok titkosítását az Azure Storage oldja fel. Az Azure Storage-titkosítás lehetővé teszi, hogy az inaktív adatok védelme programkód módosítása nélkül történjen, vagy programkódot adjon hozzá bármely alkalmazáshoz. 
 
-- [Az Azure Storage titkosításának megismerése a nyugalmi állapotban](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Az Azure Storage titkosításának megismerése a nyugalmi állapotban](/azure/storage/common/storage-service-encryption)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -572,11 +572,11 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Storage-fiók erőforrásaira vonatkoznak. Az Azure Storage naplózását is engedélyezheti az Azure Storage-ba irányuló kérelmek engedélyezésének nyomon követése érdekében. A naplók azt jelzik, hogy egy kérelem névtelenül történt-e egy OAuth 2,0-token használatával, megosztott kulcs használatával vagy közös hozzáférésű aláírás (SAS) használatával. Emellett az Azure Monitor használatával a névtelen hitelesítési feltételt használó Storage-fiókok névtelen hozzáférésére vonatkozó riasztást is használhat.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Azure Storage Analytics-naplózás](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Storage Analytics-naplózás](/azure/storage/common/storage-analytics-logging)
 
-- [Metrikai riasztások konfigurálása az Azure Storage-fiókokhoz](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
+- [Metrikai riasztások konfigurálása az Azure Storage-fiókokhoz](/azure/storage/common/storage-monitor-storage-account)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -584,13 +584,13 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*További információ [: Security Control: sebezhetőségi kezelés](/azure/security/benchmarks/security-control-vulnerability-management).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
 **Útmutató**: a Azure Security Center ajánlásainak követése a Storage-fiókok konfigurációjának folyamatos auditálásához és figyeléséhez. 
 
-- [Biztonsági javaslatok – útmutató](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Biztonsági javaslatok – gyorsútmutató](/azure/security-center/recommendations-reference)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -624,7 +624,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: a Azure Security Center által biztosított alapértelmezett kockázati minősítések (biztonságos pontszám) használata. 
 
-- [A Azure Security Center biztonsági pontszámának megismerése](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+- [A Azure Security Center biztonsági pontszámának megismerése](/azure/security-center/security-center-secure-score)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -632,17 +632,17 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 ## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](/azure/security/benchmarks/security-control-inventory-asset-management).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: az Azure Asset Discovery használata
 
 **Útmutató**: az Azure Resource Graph használatával lekérdezheti és felderítheti az összes erőforrást (beleértve a Storage-fiókokat) az előfizetés (ok) n belül. Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat. 
 
-- [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Lekérdezések létrehozása az Azure Graph használatával](/azure/governance/resource-graph/first-query-portal)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription)
 
-- [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Az Azure RBAC ismertetése](/azure/role-based-access-control/overview)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -652,7 +652,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: címkék alkalmazása a Storage-fiók erőforrásaihoz, amelyekkel a metaadatok logikailag rendezhetők a besorolásba. 
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -664,13 +664,13 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 Emellett az Azure Storage komplex veszélyforrások elleni védelmének használatával észlelheti a jogosulatlan Azure-erőforrásokat. 
 
-- [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
 
-- [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Management Groups létrehozása](/azure/governance/management-groups/create)
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -694,9 +694,9 @@ Emellett az Azure Storage komplex veszélyforrások elleni védelmének használ
 
 Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat. Ez magas biztonsági alapú környezetekben, például a Storage-fiókokkal is segít. 
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Lekérdezések létrehozása az Azure Graph használatával](/azure/governance/resource-graph/first-query-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -714,7 +714,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: az ügyfél meggátolhatja az erőforrások létrehozását és használatát Azure Policy az ügyfél céges szabályzata által megkövetelt módon. 
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](/azure/governance/policy/tutorials/create-and-manage)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -735,9 +735,9 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 - Nem engedélyezett erőforrástípusok 
 - Engedélyezett erőforrástípusok 
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -755,7 +755,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek a Azure Resource Manager interakcióra az "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával. Ez megakadályozhatja az erőforrások létrehozását és módosítását a magas biztonsági környezetben, például a Storage-fiókokkal. 
 
-- [Feltételes hozzáférés konfigurálása az ARM-hozzáférés blokkolásához](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Feltételes hozzáférés konfigurálása az ARM-hozzáférés blokkolásához](/azure/role-based-access-control/conditional-access-azure-management)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -779,7 +779,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](/azure/security/benchmarks/security-control-secure-configuration).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
@@ -792,9 +792,9 @@ Engedélyezni kell a tárfiókokba történő biztonságos átvitelt
 
 A Azure Security Center javaslatainak használata biztonságos alapkonfigurációként a Storage-fiókok számára. 
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](/azure/governance/policy/tutorials/create-and-manage)
 
 **Azure Security Center figyelés**: igen
 
@@ -812,9 +812,9 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: használja a Azure Policy [megtagadás] és a [telepítés, ha nem létezik] lehetőséget a Storage-fiók erőforrásaiban található biztonságos beállítások betartatásához. 
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Azure Policy effektusok ismertetése](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy effektusok ismertetése](/azure/governance/policy/concepts/effects)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -832,9 +832,9 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódokat, például az egyéni Azure-szabályzatokat, Azure Resource Manager sablonokat, a kívánt állapot-konfigurációs parancsfájlokat stb. Az Azure DevOps felügyelt erőforrásainak eléréséhez engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára, ha az integrálva van az Azure DevOps, vagy Active Directory, ha a TFS integrálva van.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Engedélyek és csoportok az Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -852,7 +852,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: a Azure Policy kihasználása riasztásra, naplózásra és a Storage-fiók rendszerkonfigurációinak betartatására. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez. 
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](/azure/governance/policy/tutorials/create-and-manage)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -870,7 +870,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: a Azure Security Center kihasználása az Azure Storage-fiók erőforrásaihoz tartozó alapkonfiguráció-ellenőrzések végrehajtásához. 
 
-- [Javaslatok szervizelése Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+- [Javaslatok szervizelése Azure Security Center](/azure/security-center/security-center-remediate-recommendations)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -890,9 +890,9 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 Emellett a Storage-fiók kulcsainak gyakori elforgatásával korlátozhatja a Storage-fiókok kulcsainak elvesztését vagy közzétételét.
 
-- [Inaktív adatok Azure Storage-titkosítása](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Inaktív adatok Azure Storage-titkosítása](/azure/storage/common/storage-service-encryption)
 
-- [A Storage-fiók hozzáférési kulcsainak kezelése](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [A Storage-fiók hozzáférési kulcsainak kezelése](/azure/storage/common/storage-account-keys-manage)
 
 **Azure Security Center figyelés**: igen
 
@@ -902,7 +902,7 @@ Emellett a Storage-fiók kulcsainak gyakori elforgatásával korlátozhatja a St
 
 **Útmutató**: az Azure Storage-fiókokban lévő blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory és felügyelt identitásokkal. Az Azure Blob és a üzenetsor-tároló támogatja a Azure Active Directory (Azure AD) hitelesítést az Azure-erőforrások felügyelt identitásával. Az Azure-erőforrások felügyelt identitásai engedélyezhetik a blob-és üzenetsor-adatokhoz való hozzáférést az Azure-beli virtuális gépeken (VM-ben) futó alkalmazások Azure AD-beli hitelesítő adataival, a Function apps, a virtuálisgép-méretezési csoportokkal és más szolgáltatásokkal. Ha felügyelt identitásokat használ az Azure-erőforrásokhoz az Azure AD-hitelesítéssel együtt, elkerülheti a hitelesítő adatok tárolását a felhőben futó alkalmazásaival. 
 
-- [Azure Blob-és üzenetsor-adatok hozzáférésének engedélyezése felügyelt identitás használatával](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Azure Blob-és üzenetsor-adatok hozzáférésének engedélyezése felügyelt identitás használatával](/azure/storage/common/storage-auth-aad-rbac-portal)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -920,7 +920,7 @@ Emellett a Storage-fiók kulcsainak gyakori elforgatásával korlátozhatja a St
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](/azure/security/benchmarks/security-control-malware-defense).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
@@ -936,7 +936,7 @@ Emellett a Storage-fiók kulcsainak gyakori elforgatásával korlátozhatja a St
 
 A kártevő szoftverek előzetes vizsgálatát is megteheti, mielőtt a nem számítási Azure-erőforrásokra, például a App Servicere, Data Lake Storage, Blob Storagere vagy a szervezet követelményeinek kielégítésére.
 
-- [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -952,7 +952,7 @@ A kártevő szoftverek előzetes vizsgálatát is megteheti, mielőtt a nem szá
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](/azure/security/benchmarks/security-control-data-recovery).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
@@ -960,11 +960,11 @@ A kártevő szoftverek előzetes vizsgálatát is megteheti, mielőtt a nem szá
 
 Az Azure Automation szolgáltatással is engedélyezheti a Blobok rendszeres pillanatképeit.
 
-- [Az Azure Storage-redundancia és a Service-Level-szerződések ismertetése](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Az Azure Storage-redundancia és a Service-Level-szerződések ismertetése](/azure/storage/common/storage-redundancy)
 
-- [BLOB pillanatképének létrehozása](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)
+- [BLOB pillanatképének létrehozása](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 
-- [Azure Automation áttekintése](https://docs.microsoft.com/azure/automation/automation-intro)
+- [Azure Automation áttekintése](/azure/automation/automation-intro)
 
 **Azure Security Center figyelés**: igen
 
@@ -974,13 +974,13 @@ Az Azure Automation szolgáltatással is engedélyezheti a Blobok rendszeres pil
 
 **Útmutató**: a Storage-fiók által támogatott szolgáltatásokból származó adatok biztonsági mentéséhez több módszer is rendelkezésre áll, például a azcopy vagy a külső gyártótól származó eszközök használatával. Az Azure Blob Storage nem módosítható tárolója lehetővé teszi, hogy a felhasználók üzleti szempontból kritikus fontosságú adatobjektumokat tároljanak egy FÉREGben (egyszer írható, olvasható) állapot. Ez az állapot a felhasználó által megadott intervallumban nem törölhető és nem módosítható adatvesztést tesz lehetővé.
 
-- [Bevezetés az AzCopy használatába](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [Bevezetés az AzCopy használatába](/azure/storage/common/storage-use-azcopy-v10)
 
-- [BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage?tabs=azure-portal)
+- [BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése](/azure/storage/blobs/storage-blob-immutability-policies-manage?tabs=azure-portal)
 
 Az ügyfél által felügyelt/biztosított kulcsok Azure Key Vault az Azure CLI vagy a PowerShell használatával is készíthetők. 
 
-- [Key Vault-kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center figyelés**: igen
 
@@ -992,15 +992,15 @@ Az ügyfél által felügyelt/biztosított kulcsok Azure Key Vault az Azure CLI 
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret 
 
-- [Key Vault tanúsítványok visszaállítása](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+- [Key Vault tanúsítványok visszaállítása](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
 
-- [Key Vault kulcsok visszaállítása](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault kulcsok visszaállítása](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
-- [Key Vault felügyelt Storage-fiókok visszaállítása](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
+- [Key Vault felügyelt Storage-fiókok visszaállítása](/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
 
-- [Key Vault titkos kódok visszaállítása](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0)
+- [Key Vault titkos kódok visszaállítása](/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret)
 
-- [A AzCopy egy parancssori segédprogram, amellyel blobokat, fájlokat és táblákat másolhat a Storage-fiókba, illetve onnan átmásolhatja azokat.](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [A AzCopy egy parancssori segédprogram, amellyel blobokat, fájlokat és táblákat másolhat a Storage-fiókba, illetve onnan átmásolhatja azokat.](/azure/storage/common/storage-use-azcopy-v10)
 
 Megjegyzés: Ha át szeretné másolni az adatait az Azure Table Storage szolgáltatásba, és onnan másolja, telepítse az AzCopy 7,3-es verzióját.
 
@@ -1013,11 +1013,11 @@ Megjegyzés: Ha át szeretné másolni az adatait az Azure Table Storage szolgá
 
 **Útmutató**: Ha az ügyfél által felügyelt kulcsokat egy Storage-fiókban szeretné engedélyezni, Azure Key Vault kell használnia a kulcsok tárolásához. Engedélyeznie kell a Soft delete és a No Purge tulajdonságot a Key vaulton. Key Vault Soft delete funkciója lehetővé teszi a törölt tárolók és tároló objektumok, például kulcsok, titkok és tanúsítványok helyreállítását. Ha a Storage-fiókadatok Azure Storage-blobokra történő biztonsági mentését engedélyezi, a Soft delete lehetővé teszi az adatok mentését és helyreállítását a Blobok vagy blob-Pillanatképek törlésekor. A biztonsági mentéseket bizalmas adatokként kell kezelni, és az alapkonfiguráció részeként alkalmazni kell a megfelelő hozzáférési és adatvédelmi vezérlőket. Emellett a jobb védelem érdekében az üzleti szempontból kritikus fontosságú adatobjektumokat egy féreg (egyszer írható, olvasás) állapotba is tárolhatja.
 
-- [A Azure Key Vault Soft delete használata](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+- [A Azure Key Vault Soft delete használata](/azure/key-vault/key-vault-soft-delete-powershell)
 
-- [Az Azure Storage-blobok helyreállítható törlése](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Az Azure Storage-blobok helyreállítható törlése](/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
-- [Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+- [Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](/azure/storage/blobs/storage-blob-immutable-storage)
 
 **Azure Security Center figyelés**: igen
 
@@ -1025,7 +1025,7 @@ Megjegyzés: Ha át szeretné másolni az adatait az Azure Table Storage szolgá
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](/azure/security/benchmarks/security-control-incident-response).*
 
 ### <a name="101-create-incident-response-guide"></a>10,1: incidens-válasz létrehozási útmutatója
 
@@ -1047,9 +1047,9 @@ Megjegyzés: Ha át szeretné másolni az adatait az Azure Table Storage szolgá
 
 Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
-- [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Biztonsági riasztások az Azure Security Centerben](/azure/security-center/security-center-alerts-overview)
 
-- [Címkék használata az erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: igen
 
@@ -1069,7 +1069,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-- [A Azure Security Center biztonsági kapcsolattartó beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [A Azure Security Center biztonsági kapcsolattartó beállítása](/azure/security-center/security-center-provide-security-contact-details)
 
 **Azure Security Center figyelés**: igen
 
@@ -1079,9 +1079,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: az Azure Security Center-riasztások és javaslatok exportálása a folyamatos exportálás funkcióval az Azure-erőforrásokkal kapcsolatos kockázatok azonosítása érdekében. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 
-- [Folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [Folyamatos exportálás konfigurálása](/azure/security-center/continuous-export)
 
-- [Riasztások továbbítása az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Riasztások továbbítása az Azure Sentinelbe](/azure/sentinel/connect-azure-security-center)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1091,7 +1091,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan elindíthatja a válaszokat az "Logic apps" használatával a biztonsági riasztások és az Azure-erőforrások védelme érdekében javasolt javaslatok alapján.
 
-- [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](/azure/security-center/workflow-automation)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1099,7 +1099,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése
 
@@ -1115,5 +1115,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
+- További információ az [Azure biztonsági Alaptervekről](/azure/security/benchmarks/security-baselines-overview)

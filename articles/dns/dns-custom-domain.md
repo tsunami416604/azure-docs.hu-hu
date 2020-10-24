@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84693112"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487398"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Az Azure-szolgáltatás egyéni tartományi beállításainak megadása a Azure DNS használatával
 
@@ -40,7 +40,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name (Név)     | myfunctionapp        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Név     | myfunctionapp        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával.        |
 |TTL     | 1        | 1 óra használatos        |
 |TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
@@ -65,7 +65,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name (Név)     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Név     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | A        | Használjon egy rekordot, mert az erőforrás egy IP-cím.        |
 |TTL     | 1        | 1 óra használatos        |
 |TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
@@ -92,7 +92,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name (Név)     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Név     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával. Ha az erőforrás IP-címet használt, a rendszer egy rekordot fog használni.        |
 |TTL     | 1        | 1 óra használatos        |
 |TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
@@ -103,7 +103,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 
 Váltson vissza az egyéni tartománynévhez konfigurált app Service-be. Kattintson az **Egyéni tartományok**, majd az **állomásnevek**elemre. A létrehozott CNAME rekord hozzáadásához kattintson a **+ állomásnév hozzáadása**lehetőségre.
 
-![1. ábra](./media/dns-custom-domain/figure1.png)
+![Képernyőfelvétel: a + állomásnév hozzáadása gomb.](./media/dns-custom-domain/figure1.png)
 
 A folyamat befejezése után futtassa az **nslookup** parancsot a névfeloldás ellenőrzéséhez.
 
@@ -128,7 +128,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name (Név)     | asverify. mystorageaccount        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Név     | asverify. mystorageaccount        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával.        |
 |TTL     | 1        | 1 óra használatos        |
 |TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
@@ -136,7 +136,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 
 A Storage-fiókok elemre **kattintva térjen**vissza a Storage-fiókra  >  **Storage Accounts**, válassza ki a Storage-fiókját, és kattintson az **egyéni tartomány**lehetőségre. Írja be a asverify előtag nélkül létrehozott aliast a szövegmezőbe, jelölje be a **közvetett CNAME ellenőrzés használata**jelölőnégyzetet, majd kattintson a **Mentés**gombra. Ha ez a lépés elkészült, térjen vissza a DNS-zónához, és hozzon létre egy CNAME-rekordot a asverify előtag nélkül.  Ezután nyugodtan törölheti a CNAME-rekordot a cdnverify előtaggal.
 
-![BLOB Storage – egyéni tartomány](./media/dns-custom-domain/indirectvalidate.png)
+![Képernyőkép, amely az egyéni tartomány lapot mutatja.](./media/dns-custom-domain/indirectvalidate.png)
 
 DNS-feloldás ellenőrzése futtatásával `nslookup`
 
@@ -156,7 +156,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name (Név)     | cdnverify. mycdnendpoint        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Név     | cdnverify. mycdnendpoint        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával.        |
 |TTL     | 1        | 1 óra használatos        |
 |TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
@@ -166,6 +166,6 @@ Váltson vissza a CDN-végpontra a **hálózati**  >  **CDN-profilok**elemre kat
 
 Ha ez a lépés elkészült, térjen vissza a DNS-zónához, és hozzon létre egy CNAME-rekordot a cdnverify előtag nélkül.  Ezután nyugodtan törölheti a CNAME-rekordot a cdnverify előtaggal. A CDN-ről és az egyéni tartománynak a közbenső regisztrációs lépés nélküli konfigurálásával kapcsolatos további információkért tekintse meg a [Azure CDN tartalmat egy egyéni tartományra](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [konfigurálhat fordított DNS-t az Azure-ban üzemeltetett szolgáltatásokhoz](dns-reverse-dns-for-azure-services.md).

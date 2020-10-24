@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 6708fcbe6f756a92984ee8aa48c181e1103f2046
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c6e09405fbc2fec6da516cabc7f509de712c45d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532883"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487211"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Oktatóanyag: Azure Active Directory integráció a UserEcho
 
@@ -128,19 +128,19 @@ Az Azure AD egyszeri bejelentkezés UserEcho való konfigurálásához hajtsa v�
 
 2. A felső eszköztáron kattintson a felhasználónevére a menü kibontásához, majd kattintson a **telepítés**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/userecho-tutorial/tutorial_userecho_06.png) 
+    ![Képernyőfelvétel: a UserEcho helyről kiválasztott beállítás.](./media/userecho-tutorial/tutorial_userecho_06.png) 
 
 3. Kattintson az **integrációk**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/userecho-tutorial/tutorial_userecho_07.png) 
+    ![A képernyőfelvételen a beállítások menüből kiválasztott integrációk láthatók.](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
 4. Kattintson a **webhely**elemre, majd az **egyszeri bejelentkezés (egy saml2)** elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/userecho-tutorial/tutorial_userecho_08.png) 
+    ![A képernyőképen az egyszeri bejelentkezés egy SAML2 van kiválasztva az integrációk menüből.](./media/userecho-tutorial/tutorial_userecho_08.png) 
 
 5. Az **egyszeri bejelentkezés (SAML)** oldalon hajtsa végre a következő lépéseket:
    
-    ![Egyetlen Sign-On konfigurálása](./media/userecho-tutorial/tutorial_userecho_09.png)
+    ![A képernyőképen az egyszeri bejelentkezési SAML-oldal látható, ahol megadhatja a leírt értékeket.](./media/userecho-tutorial/tutorial_userecho_09.png)
     
     a. Ha **SAML-kompatibilis**, válassza az **Igen**lehetőséget.
     
@@ -174,7 +174,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -212,23 +212,23 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
 2. A felső eszköztáron kattintson a felhasználónevére a menü kibontásához, majd kattintson a **telepítés**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/userecho-tutorial/tutorial_userecho_06.png)
+    ![Képernyőfelvétel: a UserEcho helyről kiválasztott beállítás.](./media/userecho-tutorial/tutorial_userecho_06.png)
 
 3. A **felhasználók** szakasz kibontásához kattintson a **felhasználók**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/userecho-tutorial/tutorial_userecho_10.png)
+    ![A képernyőfelvételen a beállítások menüből kiválasztott felhasználók láthatók.](./media/userecho-tutorial/tutorial_userecho_10.png)
 
 4. Kattintson a **felhasználók**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/userecho-tutorial/tutorial_userecho_11.png)
+    ![Képernyőfelvétel: a kiválasztott felhasználók.](./media/userecho-tutorial/tutorial_userecho_11.png)
 
 5. Kattintson **az új felhasználó meghívása**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/userecho-tutorial/tutorial_userecho_12.png)
+    ![A képernyőképen az új felhasználói vezérlő meghívása látható.](./media/userecho-tutorial/tutorial_userecho_12.png)
 
 6. Az **új felhasználó meghívása** párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![Egyetlen Sign-On konfigurálása](./media/userecho-tutorial/tutorial_userecho_13.png)
+    ![Képernyőfelvétel: az új felhasználó meghívása párbeszédpanel, amelyen megadhatja a felhasználói adatokat.](./media/userecho-tutorial/tutorial_userecho_13.png)
 
     a. A **név** szövegmezőbe írja be a felhasználó nevét, például a Britta Simon nevet.
     

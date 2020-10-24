@@ -7,33 +7,33 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: a5ce99927ce4cd2b04b5dd5cb865299b4be84ecb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f662d7e51c49006b191778ef70740ef79173828c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86519796"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487942"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---hyperscale-citus-compute-resources-with-reserved-capacity"></a>Előre fizetés a Azure Database for PostgreSQL-nagy kapacitású (Citus) számítási erőforrások számára fenntartott kapacitással
 
 Azure Database for PostgreSQL – nagy kapacitású (Citus) mostantól lehetővé teszi a pénz megtakarítását a számítási erőforrások előre fizetett költségeivel, az utólagos elszámolású árakhoz képest. A nagy kapacitású (Citus) fenntartott kapacitással egy-vagy hároméves időszakra vonatkozó előzetes kötelezettségvállalást hozhat a nagy kapacitású-(Citus-) kiszolgálócsoport számára, hogy jelentős kedvezményt kapjon a számítási költségekkel kapcsolatban. A nagy kapacitású (Citus) számára fenntartott kapacitás megvásárlásához meg kell adnia az Azure-régiót, a foglalási időszakot és a számlázási gyakoriságot.
 
 > [!IMPORTANT]
-> Ez a cikk a Azure Database for PostgreSQL – nagy kapacitású (Citus) számára fenntartott kapacitásról szól. Az Azure Database for PostgreSQL – egyetlen kiszolgáló számára fenntartott kapacitással kapcsolatos információkért lásd: [előre fizetés a Azure Database for PostgreSQL – egykiszolgálós számítási erőforrások számára fenntartott kapacitással](/azure/postgresql/concept-reserved-pricing).
+> Ez a cikk a Azure Database for PostgreSQL – nagy kapacitású (Citus) számára fenntartott kapacitásról szól. Az Azure Database for PostgreSQL – egyetlen kiszolgáló számára fenntartott kapacitással kapcsolatos információkért lásd: [előre fizetés a Azure Database for PostgreSQL – egykiszolgálós számítási erőforrások számára fenntartott kapacitással](./concept-reserved-pricing.md).
 
 A foglalást nem kell hozzárendelni adott nagy kapacitású-(Citus-) kiszolgálócsoportokhöz. Egy már futó nagy kapacitású-(Citus-) kiszolgálócsoport vagy újonnan üzembe helyezett szolgáltatás automatikusan megkapja a fenntartott díjszabás előnyeit. A foglalás megvásárlásával egy vagy három évre előre fizet a számítási költségekért. A foglalás megvásárlása után a foglalási attribútumoknak megfelelő nagy kapacitású-(Citus-) számítási díjakra az utólagos elszámolású díjszabásban már nem számítunk fel díjat. 
 
 A foglalások nem fedik le a nagy kapacitású-(Citus-) kiszolgálócsoportokhöz kapcsolódó szoftver-, hálózatkezelési és tárolási díjakat. A foglalási időszak végén a számlázási juttatás lejár, és a nagy kapacitású (Citus) kiszolgálói csoportok díjait az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem újítják meg az előfizetést. A díjszabással kapcsolatos információkért tekintse meg a [Azure Database for PostgreSQL – nagy kapacitású (Citus) fenntartott kapacitás ajánlatát](https://azure.microsoft.com/pricing/details/postgresql/hyperscale-citus/).
 
-A [Azure Portal](https://portal.azure.com/)foglalt nagy kapacitású (Citus) fenntartott kapacitást is megvásárolhatja. A foglalásért fizethet [előre vagy havi részletekben](https://docs.microsoft.com/azure/cost-management-billing/reservations/monthly-payments-reservations). A fenntartott kapacitás megvásárlása:
+A [Azure Portal](https://portal.azure.com/)foglalt nagy kapacitású (Citus) fenntartott kapacitást is megvásárolhatja. A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/prepare-buy-reservation.md). A fenntartott kapacitás megvásárlása:
 
 * Legalább egy Nagyvállalati Szerződés (EA) vagy egyéni előfizetéshez tartozó tulajdonosi szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.
 * Nagyvállalati Szerződés-előfizetések esetében engedélyezni kell a **fenntartott példányok hozzáadását** az [EA portálon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor az előfizetésben Nagyvállalati Szerződés rendszergazdának kell lennie.
 * A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg a nagy kapacitású (Citus) fenntartott kapacitást.
 
 További információ arról, Nagyvállalati Szerződés hogy az ügyfelek és az utólagos elszámolású ügyfelek hogyan számítanak fel díjat a foglalás megvásárlásakor:
-- [Az Azure foglalás használatának ismertetése a Nagyvállalati Szerződés-regisztrációhoz](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-- [Az Azure foglalás használatának ismertetése az utólagos elszámolású előfizetéshez](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [Az Azure foglalás használatának ismertetése a Nagyvállalati Szerződés-regisztrációhoz](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+- [Az Azure foglalás használatának ismertetése az utólagos elszámolású előfizetéshez](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
 ## <a name="determine-the-right-server-group-size-before-purchase"></a>A kiszolgáló csoport megfelelő méretének meghatározása a vásárlás előtt
 
@@ -50,7 +50,7 @@ Ebben az esetben vásároljon egy éves foglalást a következőhöz:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
-1. Válassza a **Hozzáadás** lehetőséget. A **vásárlási foglalások** ablaktáblán válassza a **Azure Database for PostgreSQL** lehetőséget a PostgreSQL-adatbázisok új foglalásának megvásárlásához.
+1. Válassza a **Hozzáadás** elemet. A **vásárlási foglalások** ablaktáblán válassza a **Azure Database for PostgreSQL** lehetőséget a PostgreSQL-adatbázisok új foglalásának megvásárlásához.
 1. Válassza ki a megvásárolni kívánt **nagy kapacitású (Citus) számítási** típust, majd kattintson a **kiválasztás**elemre.
 1. Tekintse át a kiválasztott számítási típus mennyiségét a **Products (termékek** ) lapon.
 1. A vásárlás befejezéséhez folytassa a vásárlás **+ Áttekintés** lapon.
@@ -69,7 +69,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információ: [önkiszolgáló cserék és visszatérítések az Azure-foglalásokhoz](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információ: [önkiszolgáló cserék és visszatérítések az Azure-foglalásokhoz](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="vcore-size-flexibility"></a>Virtuális mag méretének rugalmassága
 
@@ -85,9 +85,9 @@ A virtuális mag foglalási kedvezményt a rendszer automatikusan alkalmazza azo
 
 Az Azure-beli foglalásokról az alábbi cikkek nyújtanak további tudnivalókat:
 
-* [Mik az Azure-beli foglalások?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-* [Azure-beli foglalások kezelése](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [Az Azure foglalási kedvezmény ismertetése](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [Az utólagos elszámolású előfizetés foglalási használatának ismertetése](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)
-* [A Nagyvállalati Szerződés-regisztráció foglalási használatának ismertetése](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [Azure-foglalások a partner Center felhőalapú megoldás-szolgáltató programjában](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Mik az Azure-beli foglalások?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Azure-beli foglalások kezelése](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Az Azure foglalási kedvezmény ismertetése](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [Az utólagos elszámolású előfizetés foglalási használatának ismertetése](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)
+* [A Nagyvállalati Szerződés-regisztráció foglalási használatának ismertetése](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [Azure-foglalások a partner Center felhőalapú megoldás-szolgáltató programjában](/partner-center/azure-reservations)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 3bb03444062a5652e4e0aad24560b90acd2ce2d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 234ef7e3cec3bfa78bc2f2aac2670efc1e3c0499
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544816"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483471"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Syxsense
 
@@ -92,7 +92,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a Syxsense alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ------------ | --------- |
     | E-mail | User. e-mail |
 
@@ -110,7 +110,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -136,11 +136,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **Beállítások ikonra**.
 
-    ![Syxsense-konfiguráció](./media/syxsense-tutorial/configure1.png)
+    ![Képernyőfelvétel a beállítások ikont jeleníti meg.](./media/syxsense-tutorial/configure1.png)
 
 1. Kattintson a **külső hitelesítésre** , és adja meg az **alkalmazás-összevonási metaadatok URL-címét** a **SAML 2.0 metaadatok** szövegmezőben, majd kattintson a **Mentés**gombra.
 
-    ![Syxsense-konfiguráció](./media/syxsense-tutorial/configure2.png)
+    ![Képernyőfelvétel: külső hitelesítés oldal, amelyen megadhatja az alkalmazás összevonási metaadatait U R L értékként.](./media/syxsense-tutorial/configure2.png)
 
 ### <a name="create-syxsense-test-user"></a>Syxsense-tesztelési felhasználó létrehozása
 
@@ -148,15 +148,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A bal oldali navigációs panelen kattintson a **felhasználói fiókok** elemre.
 
-    ![Syxsense-konfiguráció](./media/syxsense-tutorial/user1.png)
+    ![A képernyőkép a navigációs panelen kiválasztott felhasználói fiókokat jeleníti meg.](./media/syxsense-tutorial/user1.png)
 
 1. Kattintson a **Hozzáadás** parancsra.
 
-    ![Syxsense-konfiguráció](./media/syxsense-tutorial/user2.png)
+    ![Képernyőfelvétel: a felhasználói fiókok ablaktábla, ahol a Hozzáadás lehetőséget választhatja.](./media/syxsense-tutorial/user2.png)
 
 1. Adja meg a felhasználó adatait a szervezet követelményeinek megfelelően, majd kattintson a **Mentés**gombra.
 
-    ![Syxsense-konfiguráció](./media/syxsense-tutorial/user3.png)
+    ![Képernyőfelvétel: oldal, amelyen megadhatja az adatokat.](./media/syxsense-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

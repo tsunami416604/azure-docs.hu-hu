@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 19f0027b506b78ef81f9acc25a94ef9ab74643e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f56da93d0ea0f346e73b34990d8ec4c222bb8813
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985756"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488571"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Inaktív adatok Azure Storage-titkosítása
 
@@ -30,7 +30,7 @@ A Storage-fiókban lévő adatok titkosítása a teljesítmény szintjétől (st
 
 Az Azure Storage-ba az 2017. október 20. után írt összes blokk blob, blob hozzáfűzése vagy Page blob titkosítva van. Az ezen dátum előtt létrehozott blobokat a háttérben futó folyamat továbbra is titkosítja. A 2017. október 20. előtt létrehozott blob titkosításának kényszerítéséhez újra lehet írni a blobot. A Blobok titkosítási állapotának vizsgálatával kapcsolatban lásd [a Blobok titkosítási állapotának ellenőrzését](../blobs/storage-blob-encryption-status.md)ismertető témakört.
 
-További információ az Azure Storage-titkosítás alapjául szolgáló kriptográfiai modulokról [: a kriptográfiai API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
+További információ az Azure Storage-titkosítás alapjául szolgáló kriptográfiai modulokról [: a kriptográfiai API: Next Generation](/windows/desktop/seccng/cng-portal).
 
 Az Azure Managed Disks titkosításával és kulcskezelő szolgáltatásával kapcsolatos információkért lásd: az [Azure Managed Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/windows/disk-encryption.md) Windows rendszerű virtuális gépekhez, illetve az [Azure Managed Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/linux/disk-encryption.md) Linux rendszerű virtuális gépekhez.
 
@@ -46,7 +46,7 @@ Az alábbi táblázat összehasonlítja az Azure Storage-titkosítás legfontosa
 | Kulcskezelő paraméter | Microsoft által felügyelt kulcsok | Felhasználó által kezelt kulcsok | Ügyfél által biztosított kulcsok |
 |--|--|--|--|
 | Titkosítási/visszafejtési műveletek | Azure | Azure | Azure |
-| Az Azure Storage szolgáltatásai támogatottak | Mind | BLOB Storage, Azure Files<sup>1, 2</sup> | Blob Storage |
+| Az Azure Storage szolgáltatásai támogatottak | Az összes | BLOB Storage, Azure Files<sup>1, 2</sup> | Blob Storage |
 | Kulcstároló | Microsoft Key Store | Azure Key Vault vagy Key Vault HSM | Ügyfél saját kulcstárolója |
 | Kulcs rotációs felelőssége | Microsoft | Ügyfél | Ügyfél |
 | Kulcs vezérlő | Microsoft | Ügyfél | Ügyfél |

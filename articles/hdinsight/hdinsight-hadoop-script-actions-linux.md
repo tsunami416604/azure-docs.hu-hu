@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa0ae0137064cc14d6d8f2adfe085ca255da73af
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082250"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486310"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight
 
@@ -161,13 +161,13 @@ A HDInsight az STDOUT-ra és a STDERR-re írt parancsfájl-kimenetet naplózza. 
 > [!NOTE]  
 > Az Apache Ambari csak akkor érhető el, ha a fürt létrehozása sikeres volt. Ha parancsfájl-műveletet használ a fürt létrehozása során, és a létrehozás meghiúsul, tekintse meg a [parancsfájl-műveletek hibakeresése](./troubleshoot-script-action.md) a naplózott adatok elérésének egyéb módjaihoz című témakört.
 
-A legtöbb segédprogram és telepítési csomag már adatokat ír az STDOUT-ba és a STDERR-be, azonban érdemes lehet további naplózást hozzáadni. Ha szöveget szeretne a STDOUT-ba küldeni, használja a következőt: `echo` . Például:
+A legtöbb segédprogram és telepítési csomag már adatokat ír az STDOUT-ba és a STDERR-be, azonban érdemes lehet további naplózást hozzáadni. Ha szöveget szeretne a STDOUT-ba küldeni, használja a következőt: `echo` . Példa:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Alapértelmezés szerint `echo` a karakterláncot a következőre küldi: StdOut. A STDERR való közvetlen hozzáadáshoz adja hozzá a következőt: `>&2` `echo` . Például:
+Alapértelmezés szerint `echo` a karakterláncot a következőre küldi: StdOut. A STDERR való közvetlen hozzáadáshoz adja hozzá a következőt: `>&2` `echo` . Példa:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -362,8 +362,8 @@ awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
 Cserélje le az helyére az `INFILE` anyagjegyzéket tartalmazó fájlt. `OUTFILE` egy új fájlnévnek kell lennie, amely az AJ nélkül tartalmazza a parancsfájlt.
 
-## <a name="next-steps"></a><a name="seeAlso"></a>További lépések
+## <a name="next-steps"></a><a name="seeAlso"></a>Következő lépések
 
 * Megtudhatja, hogyan [szabhatja testre a HDInsight-fürtöket parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md)
-* A [HDInsight .net SDK-referenciával](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) többet tudhat meg a HDInsight-t kezelő .NET-alkalmazások létrehozásáról
+* A [HDInsight .net SDK-referenciával](/dotnet/api/overview/azure/hdinsight) többet tudhat meg a HDInsight-t kezelő .NET-alkalmazások létrehozásáról
 * A [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) segítségével megtudhatja, hogyan használható a REST a felügyeleti műveletek végrehajtásához a HDInsight-fürtökön.

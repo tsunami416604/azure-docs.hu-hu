@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceb2b8812b52b1ca2030a0fd0006c9388630c05e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85114775"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487483"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Adatok titkosítása az Azure Cosmos DB-ben 
 
@@ -46,7 +46,7 @@ A: a kulcsokat a Microsoft felügyeli.
 A: a Microsoft a titkosítási kulcs elforgatására vonatkozó belső irányelveket tartalmaz, amelyek Cosmos DB következnek. Az adott irányelvek nincsenek közzétéve. A Microsoft közzéteszi a [biztonsági fejlesztési életciklust (SDL)](https://www.microsoft.com/sdl/default.aspx), amelyet a belső útmutatások egy részhalmazának tekintenek, és hasznos gyakorlati tanácsokat tartalmaz a fejlesztők számára.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>K: használhatom a saját titkosítási kulcsokat?
-A: igen, ez a funkció mostantól elérhető az új Azure Cosmos DB fiókokhoz, és ezt a fiók létrehozásakor kell elvégezni. További információért olvassa el az [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) című dokumentumot.
+A: igen, ez a funkció mostantól elérhető az új Azure Cosmos DB fiókokhoz, és ezt a fiók létrehozásakor kell elvégezni. További információért olvassa el az [ügyfél által felügyelt kulcsok](./how-to-setup-cmk.md) című dokumentumot.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>K: mely régiókban van engedélyezve a titkosítás?
 A: minden Azure Cosmos DB régióban van a titkosítás bekapcsolva az összes felhasználói adattal.
@@ -57,7 +57,7 @@ A: a teljesítmény SLA-ban nem befolyásolja a teljesítményt, és nem változ
 ### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>K: a helyi emulátor támogatja a titkosítást a REST-ben?
 A: az emulátor egy önálló fejlesztési/tesztelési eszköz, és nem használja a felügyelt Cosmos DB szolgáltatás által használt kulcskezelő szolgáltatásokat. Javasoljuk, hogy engedélyezze a BitLockert olyan meghajtókon, amelyeken érzékeny Emulator-tesztelési adatokat tárol. Az [emulátor támogatja az alapértelmezett adatkönyvtár módosítását](local-emulator.md) , valamint egy jól ismert hely használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Kiválaszthatja, hogy egy második titkosítási réteget is hozzáadhat a saját kulcsaihoz, és további információt az [ügyfél által felügyelt kulcsok](how-to-setup-cmk.md) című cikkben talál.
 * A Cosmos DB biztonság és a legújabb Újdonságok áttekintését lásd: az [Azure Cosmos Database biztonsága](database-security.md).

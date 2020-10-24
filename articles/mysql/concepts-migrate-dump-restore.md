@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905895"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484593"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával
 
@@ -30,11 +30,15 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 > [!TIP]
 > Ha 1 TBs-nál több adatbázis-mérettel rendelkező nagyméretű adatbázisokat szeretne áttelepíteni, érdemes lehet olyan közösségi eszközöket használni, mint például a **mydumper/myloader** , amely támogatja a párhuzamos exportálást és importálást. Megtudhatja [, hogyan telepíthet át nagyméretű MySQL-adatbázisokat](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).
 
-## <a name="common-use-cases-for-dump-and-restore"></a>Gyakori használati esetek a memóriaképhez és a visszaállításhoz
-A MySQL-segédprogramok, például a **mysqldump** és a **mysqlpump** használatával számos gyakori forgatókönyvben elvégezheti az adatbázisok kiírását és betöltését egy Azure MySQL-adatbázisba. Más helyzetekben az [importálási és exportálási](concepts-migrate-import-export.md) módszert is használhatja helyette.
 
-- **Az adatbázis-memóriaképek használata a teljes adatbázis áttelepítésekor**. Ez a javaslat a nagy mennyiségű MySQL-adatbázis áthelyezésekor, illetve az élő webhelyeken vagy alkalmazásokban a szolgáltatás megszakadásának minimálisra csökkentése érdekében áll fenn.
--  Az **adatbázis-memóriakép használata, ha az adatbázisban lévő összes tábla a InnoDB Storage motort használja**. A Azure Database for MySQL csak a InnoDB tároló motort támogatja, ezért nem támogatja az alternatív tárolóeszközöket. Ha a táblák más tárolási motorokkal vannak konfigurálva, a Azure Database for MySQLba való áttelepítés előtt alakítsa át őket a InnoDB-motor formátumba.
+## <a name="common-use-cases-for-dump-and-restore"></a>Gyakori használati esetek a memóriaképhez és a visszaállításhoz
+
+A leggyakoribb használati esetek a következők:
+
+- **Más felügyelt** szolgáltatótól való áthelyezés – a legtöbb felügyelt szolgáltató nem biztosít hozzáférést a fizikai tárolási fájlhoz biztonsági okokból, így a logikai biztonsági mentés és visszaállítás az egyetlen lehetőség az áttelepítésre.
+- **Migrálás a helyszíni környezetből vagy virtuális gépről** – Azure Database for MySQL nem támogatja a fizikai biztonsági másolatok visszaállítását, ami a logikai biztonsági mentést és visszaállítást teszi lehetővé az egyetlen módszerként.
+- **A biztonsági mentési tár helyileg redundánsból a Geo-redundáns tárolóba való áthelyezése** – Azure Database for MySQL lehetővé teszi a helyileg redundáns vagy geo-redundáns tárolás konfigurálását a biztonsági mentéshez, csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően nem módosítható a biztonsági mentési tár redundáns beállítása. Ahhoz, hogy a biztonsági mentési tárolót helyileg redundáns tárterületről a Geo-redundáns tárolóra helyezze át, a dump és a Restore az egyetlen lehetőség. 
+-  Az **alternatív tárolóeszközökről a InnoDB-Azure Database for MySQLra való Migrálás** csak a InnoDB-tárolókat támogatja, és így nem támogatja az alternatív tárolóeszközöket. Ha a táblák más tárolási motorokkal vannak konfigurálva, a Azure Database for MySQLba való áttelepítés előtt alakítsa át őket a InnoDB-motor formátumba.
 
     Ha például egy WordPress vagy WebApp a MyISAM táblázatokat használja, először alakítsa át ezeket a táblákat úgy, hogy a Azure Database for MySQLra való visszaállítás előtt áttelepíti őket a InnoDB formátumba. Használja a záradékot `ENGINE=InnoDB` az új tábla létrehozásakor használt motor beállításához, majd a visszaállítás előtt vigye át az adatok a kompatibilis táblába.
 
@@ -165,3 +169,4 @@ Az ismert problémákkal, tippekkel és trükkökkel kapcsolatban javasoljuk, ho
 ## <a name="next-steps"></a>Következő lépések
 - [Alkalmazások Összekötése Azure Database for MySQLhoz](./howto-connection-string.md).
 - Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration).
+- Ha 1 TBs-nál több adatbázis-mérettel rendelkező nagyméretű adatbázisokat szeretne áttelepíteni, érdemes lehet olyan közösségi eszközöket használni, mint például a **mydumper/myloader** , amely támogatja a párhuzamos exportálást és importálást. Megtudhatja [, hogyan telepíthet át nagyméretű MySQL-adatbázisokat](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).

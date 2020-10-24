@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e74a36d7b353d0713a7bf17f7a6341558f0739
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167589"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485001"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Table APIról Azure Cosmos DB
 
@@ -97,7 +97,7 @@ A Azure Portal használatával böngészheti az adatfájlokat. Használhatja a k
 
 ### <a name="which-tools-work-with-the-table-api"></a>Mely eszközök működnek a Table API?
 
-Használhatja a [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+Használhatja a [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Azok az eszközök, amelyeknek a rugalmassága a korábban megadott formátumban a kapcsolódási karakterlánc elvégzésére szolgál, támogathatja az új Table API. A tábla eszközeinek listáját az [Azure Storage-ügyfél eszközei](../storage/common/storage-explorers.md) oldalon található.
 
@@ -115,7 +115,7 @@ Igen, csatlakozhat a CloudTableClient két különálló példányának létreho
 
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>Hogyan migrálni egy meglévő Azure Table Storage-alkalmazást erre az ajánlatra?
 
-A [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) és a [Azure Cosmos db adatáttelepítési eszköz](import-data.md) egyaránt támogatott.
+A [AzCopy](../storage/common/storage-use-azcopy-v10.md) és a [Azure Cosmos db adatáttelepítési eszköz](import-data.md) egyaránt támogatott.
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Hogyan történik a szolgáltatás tárolási méretének bővítése, ha például egy *n* GB adattal kezdek, és az adataim az idő múlásával 1 TB-ra növekednek?
 
@@ -231,7 +231,7 @@ A .NET SDK-ból a app.config fájlban is elküldhető:
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Úgy tűnik, hogy a platform számos képességgel rendelkezik, mint például a rendezés, az összesítések, a hierarchia és az egyéb funkciók. Azure Cosmos DB Felveszi ezeket a képességeket a Table API?
 
-A Table API ugyanazokat a lekérdezési funkciókat biztosítja, mint az Azure Table Storage. Az Azure Cosmos DB a rendezést, az összesítéseket, a földrajzi lekérdezéseket, a hierarchiát és számos különféle beépített funkciót is támogat. További információ: SQL- [lekérdezések](how-to-sql-query.md).
+A Table API ugyanazokat a lekérdezési funkciókat biztosítja, mint az Azure Table Storage. Az Azure Cosmos DB a rendezést, az összesítéseket, a földrajzi lekérdezéseket, a hierarchiát és számos különféle beépített funkciót is támogat. További információ: SQL- [lekérdezések](./sql-query-getting-started.md).
 
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Mikor kell módosítani a Table API TableThroughput?
 
@@ -293,7 +293,7 @@ Azure Cosmos DB egy SLA-alapú rendszer, amely késést, teljesítményt, rendel
 A következő módokon megoszthatja a visszajelzéseit:
 
 * [Felhasználói vélemény](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&egy kérdés oldal](/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A Stack Overflow a programozási kérdésekre legmegfelelőbb. Győződjön meg arról, hogy a kérdés [a témában](https://stackoverflow.com/help/on-topic) van, és a [lehető legtöbb részletet biztosít, így a kérdés egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 ## <a name="next-steps"></a>Következő lépések

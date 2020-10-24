@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 27e346dd97824918d859ea6819e3c2b43f4c02aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed7bda2875fa68254fb3842dac8b713a0bbddfd4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551940"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Oktatóanyag: a Azure Active Directory integrációja EGYESÍTve
 
@@ -130,15 +130,15 @@ Az Azure AD-alapú egyszeri bejelentkezés EGYSÉGESÍTett konfigurálásához h
 
 2. Kattintson a **felhasználók**elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/unifi-tutorial/app1.png)
+    ![A képernyőfelvételen a EGYSÉGESÍTett helyről kiválasztott felhasználók láthatók.](./media/unifi-tutorial/app1.png)
 
 3. Kattintson az **új identitás-szolgáltató hozzáadása**lehetőségre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/unifi-tutorial/app2.png)
+    ![A képernyőképen a kiválasztott ad új identitás-szolgáltató látható.](./media/unifi-tutorial/app2.png)
 
 4. Az **identitás-szolgáltató hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/unifi-tutorial/app3.png) 
+    ![A képernyőképen az Identity Provider hozzáadása látható, ahol megadhatja a leírt értékeket.](./media/unifi-tutorial/app3.png) 
 
     a. A **szolgáltató neve** szövegmezőbe írja be a személyazonosság-szolgáltató nevét.
 
@@ -171,7 +171,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

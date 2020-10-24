@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716077"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486389"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítési beállítások áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -104,7 +104,7 @@ Helyszíni AD DS hitelesítéshez be kell állítania az AD-tartományvezérlők
 
 Az alábbi ábra a helyszíni AD DS hitelesítését ábrázolja az Azure-fájlmegosztás SMB-kapcsolaton keresztüli használatával. A helyszíni AD DS az Azure AD-be kell szinkronizálni Azure AD Connect Sync használatával. Csak a helyszíni AD DS és az Azure AD-ben található hibrid felhasználók hitelesíthetők és jogosultak az Azure file share-hozzáférésre. Ennek az az oka, hogy a megosztási szint engedély az Azure AD-ben jelölt identitásra van konfigurálva, ahol a könyvtár/fájl szintű engedély kényszerítve van a AD DS. Győződjön meg arról, hogy megfelelően konfigurálja az engedélyeket ugyanahhoz a hibrid felhasználóhoz.
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Ábra":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="A helyszíni AD DS az Azure-fájlmegosztás SMB-kapcsolaton keresztüli hitelesítését ábrázoló diagram.":::
 
 ### <a name="azure-ad-ds"></a>Azure AD DS
 
@@ -116,7 +116,7 @@ Az alábbi ábra az Azure-AD DS az SMB-en keresztüli Azure-fájlmegosztás hite
 
 - Másodszor, az Azure AD-ben meglévő összes felhasználó hitelesíthető és engedélyezett. A felhasználó csak Felhőbeli vagy hibrid lehet. Az Azure AD-ből az Azure AD DS-ra való szinkronizálást a platform felügyeli anélkül, hogy felhasználói konfigurációra lenne szükség. Az ügyfélnek azonban tartományhoz kell tartoznia az Azure AD DShoz, nem lehet az Azure AD-hez csatlakoztatva vagy regisztrálni. 
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Ábra":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="A helyszíni AD DS az Azure-fájlmegosztás SMB-kapcsolaton keresztüli hitelesítését ábrázoló diagram.":::
 
 ### <a name="enable-identity-based-authentication"></a>Identitás-alapú hitelesítés engedélyezése
 

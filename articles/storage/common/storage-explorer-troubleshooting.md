@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83b71d46c3d6b1612728b2bd81c6acede6d0559b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714456"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488622"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -23,7 +23,7 @@ Ez az útmutató a Storage Explorer gyakran előforduló problémák megoldásai
 
 ## <a name="azure-rbac-permissions-issues"></a>Az Azure RBAC engedélyeivel kapcsolatos problémák
 
-Az Azure szerepköralapú hozzáférés-vezérlést biztosító [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) lehetővé teszi az Azure-erőforrások nagy részletességű hozzáférés-kezelését azáltal, hogy az engedélyek csoportját a _szerepkörökbe_ötvözi. Íme néhány stratégia az Azure RBAC optimális működéséhez Storage Explorerban.
+Az Azure szerepköralapú hozzáférés-vezérlést biztosító [Azure RBAC](/azure/role-based-access-control/overview) lehetővé teszi az Azure-erőforrások nagy részletességű hozzáférés-kezelését azáltal, hogy az engedélyek csoportját a _szerepkörökbe_ötvözi. Íme néhány stratégia az Azure RBAC optimális működéséhez Storage Explorerban.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Hogyan hozzáférni a Storage Explorer erőforrásaihoz?
 
@@ -65,7 +65,7 @@ Ha blob-tárolókat vagy-várólistákat szeretne elérni, az Azure-beli hiteles
 3. Válassza ki azt a felhasználói fiókot és bérlőt, amelyhez hozzá kívánja rendelni az erőforrást. Kattintson a Tovább gombra.
 4. Válassza ki az erőforrás típusát, adja meg az erőforrás URL-címét, és adjon meg egy egyedi megjelenítendő nevet a kapcsolódáshoz. Kattintson a Tovább gombra. Kattintson a Csatlakozás gombra.
 
-Más erőforrástípusok esetében jelenleg nem áll rendelkezésre Azure RBAC kapcsolatos megoldás. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+Más erőforrástípusok esetében jelenleg nem áll rendelkezésre Azure RBAC kapcsolatos megoldás. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Ajánlott Azure beépített szerepkörök
 
@@ -100,7 +100,7 @@ Ha nem biztos abban, hogy honnan származik a tanúsítvány, kövesse az alább
 2. Futtassa az OpenSSL-t.
     * Windows: Nyissa meg a telepítési könyvtárat, válassza a **/bin/** lehetőséget, majd kattintson duplán a **openssl.exe**elemre.
     * Mac és Linux: Futtatás `openssl` terminálról.
-3. A `s_client -showcerts -connect microsoft.com:443` parancs futtatása.
+3. Futtassa a `s_client -showcerts -connect microsoft.com:443` parancsot.
 4. Keresse meg az önaláírt tanúsítványokat. Ha nem biztos abban, hogy mely tanúsítványok önaláírtak, jegyezze fel a tárgyat és a `("s:")` kiállítót bárhol `("i:")` .
 5. Ha önaláírt tanúsítványokat talál, mindegyikhez másolja ki és illessze be a (és a (többek között) `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` új. cer kiterjesztésű fájlba.
 6. Nyissa meg Storage Explorer, és **kattintson az**  >  **SSL-tanúsítványok**  >  **importálása tanúsítványok importálása**gombra. Ezután a file Picker használatával megkeresheti, kiválaszthatja és megnyithatja a létrehozott. cer fájlokat.
@@ -195,7 +195,7 @@ Először ellenőrizze, hogy helyesek-e a megadott adatok:
 > [!NOTE]
 > A Storage Explorer nem támogatja a proxy automatikus konfigurációs fájljait a proxybeállítások konfigurálásához.
 
-### <a name="common-solutions"></a>Gyakori megoldások
+### <a name="common-solutions"></a>Gyakran használt megoldások
 
 Ha továbbra is problémákat tapasztal, próbálkozzon az alábbi hibaelhárítási módszerekkel:
 
@@ -332,7 +332,7 @@ Storage Explorer szükséges, hogy a .NET Core telepítve legyen a rendszeren. J
 # <a name="ubuntu-2004"></a>[Ubuntu 20,04](#tab/2004)
 
 1. Töltse le a Storage Explorer. tar. gz fájlt.
-2. Telepítse a [.net Core-futtatókörnyezetet](https://docs.microsoft.com/dotnet/core/install/linux):
+2. Telepítse a [.net Core-futtatókörnyezetet](/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -345,7 +345,7 @@ Storage Explorer szükséges, hogy a .NET Core telepítve legyen a rendszeren. J
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Töltse le a Storage Explorer. tar. gz fájlt.
-2. Telepítse a [.net Core-futtatókörnyezetet](https://docs.microsoft.com/dotnet/core/install/linux):
+2. Telepítse a [.net Core-futtatókörnyezetet](/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -358,7 +358,7 @@ Storage Explorer szükséges, hogy a .NET Core telepítve legyen a rendszeren. J
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Töltse le a Storage Explorer. tar. gz fájlt.
-2. Telepítse a [.net Core-futtatókörnyezetet](https://docs.microsoft.com/dotnet/core/install/linux):
+2. Telepítse a [.net Core-futtatókörnyezetet](/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \

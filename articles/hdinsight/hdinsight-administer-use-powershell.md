@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 1839cfe0f7295af583b7bd5397957a223e888d3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fbafd81fac1982f624adae9286000fb61db62c5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086506"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474920"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben Azure PowerShell használatával
 
@@ -21,7 +21,7 @@ ms.locfileid: "87086506"
 
 A Azure PowerShell az Azure-beli számítási feladatok üzembe helyezésének és kezelésének vezérlésére és automatizálására használható. Ebből a cikkből megtudhatja, hogyan kezelheti [Apache Hadoop](https://hadoop.apache.org/) -fürtöket az Azure HDInsight az Azure PowerShell az modul használatával. A HDInsight PowerShell-parancsmagok listájáért lásd az az [. HDInsight referenciát](https://docs.microsoft.com/powershell/module/az.hdinsight).
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -146,7 +146,7 @@ Lásd: [Adatok feltöltése a HDInsightba](hdinsight-upload-data.md).
 
 ## <a name="see-also"></a>Lásd még:
 
-* [Az az. HDInsight parancsmagok](https://docs.microsoft.com/powershell/module/az.hdinsight/?view=azps-3.1.0#hdinsight)
+* [Az az. HDInsight parancsmagok](https://docs.microsoft.com/powershell/module/az.hdinsight/#hdinsight)
 * [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md)
 * [HDInsight felügyelete parancssori felületen keresztül](hdinsight-administer-use-command-line.md)
 * [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)

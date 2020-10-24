@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325385"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479085"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database és az Azure szinapszis Analytics kapcsolati architektúrája
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,7 +31,7 @@ Ez a cikk ismerteti a különböző összetevők architektúráját, amelyek kö
 
 A következő ábra a kapcsolati architektúra magas szintű áttekintését tartalmazza.
 
-![architektúra – áttekintés](./media/connectivity-architecture/connectivity-overview.png)
+![A kapcsolati architektúra magas szintű áttekintését bemutató diagram.](./media/connectivity-architecture/connectivity-overview.png)
 
 A következő lépések azt írják le, hogyan történik a kapcsolatok létrehozása a Azure SQL Database:
 
@@ -63,7 +63,7 @@ Ha az Azure-on belülről csatlakozik, a kapcsolatokhoz alapértelmezés szerint
 
 Ha az Azure-on kívülről csatlakozik, a kapcsolatok alapértelmezés szerint csatlakozási házirendtel rendelkeznek `Proxy` . A szabályzat `Proxy` azt jelenti, hogy a TCP-munkamenet a Azure SQL Database átjárón és az összes további, az átjárón keresztüli adatcsomagon keresztül jön. A következő ábra szemlélteti ezt a forgalmat.
 
-![architektúra – áttekintés](./media/connectivity-architecture/connectivity-onprem.png)
+![Diagram, amely bemutatja, hogyan történik a TCP-munkamenet létrehozása a Azure SQL Database átjárón és az összes további csomagon az átjárón keresztül.](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
 > Emellett a 1434-es és a 14000-14999-as TCP-porton is megnyitható a [DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)

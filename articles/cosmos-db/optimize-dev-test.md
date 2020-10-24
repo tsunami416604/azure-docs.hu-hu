@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c2194476dc6e640f9c4b93d564728478de41ef7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606253"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475532"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Fejlesztési és tesztelési költségek optimalizálása az Azure Cosmos DB-ben
 
@@ -28,7 +28,7 @@ A Azure Cosmos DB ingyenes szintje megkönnyíti az alkalmazások megkezdését,
 > [!NOTE]
 > Az ingyenes szinten csak a kiépített átviteli sebesség módban érhető el.
 
-Az ingyenes szinten határozatlan ideig tart a fiók élettartama, és a rendszeres Azure Cosmos DB fiók összes [előnyét és funkcióját](introduction.md#key-benefits) tartalmazza, beleértve a korlátlan tárterületet és átviteli SEBESSÉGET (ru/s), SLA-kat, magas rendelkezésre állást, kulcsrakész globális elosztást az összes Azure-régióban, és így tovább. Az Azure-előfizetések esetében akár egy ingyenes szintű fiókot is beállíthat, és a fiók létrehozásakor be kell jelentkeznie. Első lépésként [hozzon létre egy új fiókot Azure Portal az ingyenes szintet engedélyezve](create-cosmosdb-resources-portal.md) , vagy használjon [ARM-sablont](manage-sql-with-resource-manager.md#free-tier). További részleteket a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/) talál.
+Az ingyenes szinten határozatlan ideig tart a fiók élettartama, és a rendszeres Azure Cosmos DB fiók összes [előnyét és funkcióját](introduction.md#key-benefits) tartalmazza, beleértve a korlátlan tárterületet és átviteli SEBESSÉGET (ru/s), SLA-kat, magas rendelkezésre állást, kulcsrakész globális elosztást az összes Azure-régióban, és így tovább. Az Azure-előfizetések esetében akár egy ingyenes szintű fiókot is beállíthat, és a fiók létrehozásakor be kell jelentkeznie. Első lépésként [hozzon létre egy új fiókot Azure Portal az ingyenes szintet engedélyezve](create-cosmosdb-resources-portal.md) , vagy használjon [ARM-sablont](./manage-with-templates.md#free-tier). További részleteket a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/) talál.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Az Azure Cosmos DB ingyenes kipróbálása
 
@@ -48,7 +48,7 @@ Egy [megosztott átviteli sebességű adatbázisban](set-throughput.md#set-throu
 
 Tegyük fel például, hogy a fejlesztési vagy tesztelési fiók négy tárolóval rendelkezik. Ha négy tárolót hoz létre dedikált átviteli sebességgel (legalább 400 RU/s), akkor a teljes RU/s a 1600 RU/s lesz. Ezzel szemben, ha létrehoz egy megosztott átviteli sebességű adatbázist (minimum 400 RU/s), és elhelyezi a tárolókat, a teljes RU/s csak 400 RU/s lesz. Általánosságban elmondható, hogy a megosztott átviteli sebességű adatbázisok kiválóan alkalmasak olyan forgatókönyvek esetén, amelyeknél nincs szükség a garantált átviteli sebességre minden egyes tárolón  További információ a [megosztott átviteli sebességű adatbázisokról.](set-throughput.md#set-throughput-on-a-database)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az emulátor vagy az ingyenes Azure Cosmos DB fiókok használatának első lépései a következő cikkekkel szerezhetők be:
 
@@ -57,5 +57,5 @@ Az emulátor vagy az ingyenes Azure Cosmos DB fiókok használatának első lép
 * További információ az [átviteli sebesség optimalizálásáról](optimize-cost-throughput.md)
 * További információ a [tárolási díjak optimalizálásáról](optimize-cost-storage.md)
 * További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)
-* További információ [a lekérdezések díjszabásának optimalizálásáról](optimize-cost-queries.md)
+* További információ [a lekérdezések díjszabásának optimalizálásáról](./optimize-cost-reads-writes.md)
 * További információ [a több régióból álló Azure Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)

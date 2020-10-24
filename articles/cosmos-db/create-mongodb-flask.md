@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0545ea61879b30349403e019ead69ba14f75cb9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87873041"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486497"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Python-alkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val
 
@@ -27,7 +27,7 @@ ms.locfileid: "87873041"
 > * [Golang](create-mongodb-go.md)
 >  
 
-Ebben a rövid útmutatóban egy Azure Cosmos DBt használ a Mongo DB API-fiókhoz vagy a Azure Cosmos DB emulátorhoz, amellyel a GitHubról klónozott Python-lombikot futtathat webalkalmazásként. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban egy Azure Cosmos DBt használ a Mongo DB API-fiókhoz vagy a Azure Cosmos DB emulátorhoz egy Python-lombiknak a GitHubról klónozott To-Do webalkalmazás futtatásához. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban egy Azure Cosmos DBt használ a Mongo DB API-fiókh
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most hozzon létre egy MongoDB alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa. Ilyen egyszerű az adatokkal programozott módon dolgozni.
+Most hozzon létre egy Flask-MongoDB alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa. Ilyen egyszerű az adatokkal programozott módon dolgozni.
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
@@ -127,7 +127,7 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 ## <a name="deploy-to-azure"></a>Üzembe helyezés az Azure-ban
 
-Az alkalmazás üzembe helyezéséhez létrehozhat egy új webalkalmazást az Azure-ban, és engedélyezheti a folyamatos üzembe helyezést a GitHub-tárház villájának használatával. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) követve folyamatos üzembe helyezést állíthat be a GitHub használatával az Azure-ban.
+Az alkalmazás üzembe helyezéséhez létrehozhat egy új webalkalmazást az Azure-ban, és engedélyezheti a folyamatos üzembe helyezést a GitHub-tárház villájának használatával. Ezt az [oktatóanyagot](../app-service/deploy-continuous-deployment.md) követve folyamatos üzembe helyezést állíthat be a GitHub használatával az Azure-ban.
 
 Amikor az Azure-ba végez üzembe helyezést, el kell távolítania az alkalmazáskulcsokat, és ellenőriznie kell, hogy az alábbi szakasz ne megjegyzésként szerepeljen:
 
@@ -137,7 +137,7 @@ Amikor az Azure-ba végez üzembe helyezést, el kell távolítania az alkalmaz�
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-Ezután hozzá kell adnia a MONGOURL, MONGO_PASSWORD és MONGO_USERNAME elemeket az alkalmazásbeállításokhoz. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) követve további információkat tudhat meg az Azure-webalkalmazások alkalmazásbeállításairól.
+Ezután hozzá kell adnia a MONGOURL, MONGO_PASSWORD és MONGO_USERNAME elemeket az alkalmazásbeállításokhoz. Ezt az [oktatóanyagot](../app-service/configure-common.md#configure-app-settings) követve további információkat tudhat meg az Azure-webalkalmazások alkalmazásbeállításairól.
 
 Ha nem szeretne elágazást létrehozni ebből a tárházból, válassza az alábbi **üzembe helyezés az Azure-** ban gombot. Ezután be kell lépnie az Azure-ba, és be kell állítania az Alkalmazásbeállítások beállításait a Azure Cosmos DB fiókjának adataival.
 
@@ -156,9 +156,9 @@ Ha nem szeretne elágazást létrehozni ebből a tárházból, válassza az alá
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB a Mongo DB API-fiókhoz, és hogyan futtathat egy Python-lombikot Azure Cosmos DB a GitHubról klónozott webalkalmazáshoz. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Cosmos DB a Mongo DB API-fiókhoz, és hogyan futtathat egy Python-lombikot To-Do webalkalmazást Azure Cosmos DB a GitHubról. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
-> [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)
+> [MongoDB adatok importálása az Azure Cosmos DB-be](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

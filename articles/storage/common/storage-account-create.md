@@ -10,18 +10,18 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1cdd04be4b5774944f70e551221a08261aef22d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333579"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488894"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: blobokat, fájlokat, várólistákat, táblákat és lemezeket. A Storage-fiók egy egyedi névteret biztosít az Azure Storage-adatok számára, amely a világon bárhonnan elérhető HTTP-vagy HTTPS-kapcsolaton keresztül. Az Azure Storage-fiókban tárolt adatai tartósak, a biztonságos és a nagy mértékben méretezhetők.
 
-Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy Storage-fiókot a [Azure Portal](https://portal.azure.com/), a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/), az [Azure CLI](https://docs.microsoft.com/cli/azure)vagy egy [Azure Resource Manager sablon](../../azure-resource-manager/management/overview.md)használatával.  
+Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy Storage-fiókot a [Azure Portal](https://portal.azure.com/), a [Azure PowerShell](/powershell/azure/), az [Azure CLI](/cli/azure)vagy egy [Azure Resource Manager sablon](../../azure-resource-manager/management/overview.md)használatával.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

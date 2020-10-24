@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0ec5b5a5ee5c29893f47560d57e78c281825453e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce4efe0250ea1b85e2e2d77b7ee69bdf3dbcab26
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370389"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480395"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Mi az Azure szinapszis Analytics (korábban SQL DW)?
 
@@ -40,7 +40,7 @@ A szinapszis SQL-készlet az Azure Szinapszisban általánosan elérhető válla
 
 Az SQL-készlet a szinapszis SQL használatakor kiépített analitikus erőforrások gyűjteményét jelöli. Az SQL-készlet méretét az adattárház-egységek (DWU-EK) határozzák meg.
 
-Importálja big data egyszerű, [alapszintű](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-lekérdezésekkel, majd használja az MPP erejét a nagy teljesítményű elemzések futtatásához. Az integráció és az elemzés során a szinapszis SQL-készlet lesz az igazság egyetlen verziója, amelyet az üzleti vállalkozása a gyorsabb és megbízhatóbb adatelemzéshez is felhasználhat.  
+Importálja big data egyszerű, [alapszintű](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-lekérdezésekkel, majd használja az elosztott lekérdezési motor erejét a nagy teljesítményű elemzések futtatásához. Az adatintegrálás és-elemzés során a szinapszis SQL az igazság egyetlen verzióját fogja kiszámítani, amellyel a vállalat gyorsabban és megbízhatóbban elemezheti az elemzéseket. 
 
 ## <a name="key-component-of-a-big-data-solution"></a>Egy big data-megoldás fő összetevője
 

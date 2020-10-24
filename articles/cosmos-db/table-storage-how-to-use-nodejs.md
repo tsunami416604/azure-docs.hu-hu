@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
-ms.openlocfilehash: 6ce4354faec73f8fe42a936e677bee473796701d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ac175e2c1caa39bfe88a7c1a5f42318db343fb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318772"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477283"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 
@@ -81,7 +81,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
 
-Azure Cosmos DB-kapcsolatok hozzáadásához hozzon létre egy `TableService` objektumot, és adja meg a fiók nevét, az elsődleges kulcsot és a végpontot. Ezeket az értékeket a **Settings**  >  Cosmos db-fiókjához tartozó Azure Portalban lévő beállítások**közötti kapcsolatok sztringből** másolhatja. Például:
+Azure Cosmos DB-kapcsolatok hozzáadásához hozzon létre egy `TableService` objektumot, és adja meg a fiók nevét, az elsődleges kulcsot és a végpontot. Ezeket az értékeket a **Settings**  >  Cosmos db-fiókjához tartozó Azure Portalban lévő beállítások**közötti kapcsolatok sztringből** másolhatja. Példa:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -137,7 +137,7 @@ Entitás hozzáadásához először hozzon létre egy objektumot, amely meghatá
 * **PartitionKey** – Meghatározza, hogy melyik partíció tárolja az entitást.
 * **RowKey** – Egyedileg azonosítja az entitást a partíción belül.
 
-A **PartitionKey** és a **RowKey** értéknek is sztringértéknek kell lennie. További információt a [Table Service adatmodelljét ismertető](https://msdn.microsoft.com/library/azure/dd179338.aspx) témakörben talál.
+A **PartitionKey** és a **RowKey** értéknek is sztringértéknek kell lennie. További információt a [Table Service adatmodelljét ismertető](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) témakörben talál.
 
 Az alábbi egy entitás meghatározására szolgál példaként. A **dueDate** típusként van definiálva `Edm.DateTime` . A típus meghatározása nem kötelező, és a rendszer kikövetkezteti a nem meghatározott típusokat.
 
@@ -211,7 +211,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Alapértelmezés szerint az entitások frissítésének folyamata nem ellenőrzi, hogy a frissített adatok módosultak-e egy korábbi folyamat során. Egyidejű frissítések támogatásához:
 >
 > 1. Kérje le a frissíteni kívánt objektum ETagjét. A rendszer ezt az entitásokhoz kapcsolódó műveletekre adott `response` részeként adja vissza, és a következőn keresztül kérhető le: `response['.metadata'].etag`.
-> 2. Amikor frissíti az entitásokat, adja hozzá a korábban lekért ETag-információt az új entitáshoz. Például:
+> 2. Amikor frissíti az entitásokat, adja hozzá a korábban lekért ETag-információt az új entitáshoz. Példa:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Hajtsa végre a frissítést. Ha az entitás módosult az ETag értékének lekérése óta (például az alkalmazás egy másik példányáról van szó), egy `error` elem jelenik meg, amely szerint a kérésben meghatározott frissítési feltétel nem teljesült.
@@ -477,12 +477,12 @@ Miután beállította az ACL-t, létrehozzon egy SAS-t egy szabályzat azonosít
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következő forrásanyagokat.
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) adattár a GitHubon.
-* [Azure for Node.js-fejlesztők](https://docs.microsoft.com/azure/developer/javascript/)
+* [Azure for Node.js-fejlesztők](/azure/developer/javascript/)
 * [Node.js-webalkalmazás létrehozása az Azure-ban](../app-service/quickstart-nodejs.md)
 * [Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (a Windows PowerShell használatával)

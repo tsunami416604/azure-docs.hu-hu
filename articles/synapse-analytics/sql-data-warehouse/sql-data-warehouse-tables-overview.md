@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7973c85c7ca8051cae2ab7155dda94bec43ebd59
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460547"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486939"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Tervezési táblázatok a szinapszis SQL-készletben
 
@@ -46,7 +46,7 @@ Az SQL-készletben lévő táblák szervezetének megjelenítéséhez használha
 
 | Wideworldimportersdw adattárházat táblázat  | Tábla típusa | SQL-készlet |
 |:-----|:-----|:------|:-----|
-| City | Méret | WWI. DimCity |
+| City | Dimenzió | WWI. DimCity |
 | Rendelés | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Tábla megőrzése
@@ -79,7 +79,7 @@ Az SQL-készlet a leggyakrabban használt adattípusokat támogatja. A támogato
 
 ## <a name="distributed-tables"></a>Elosztott táblák
 
-Az SQL Pool alapvető funkciója az, hogy hogyan tárolhatók és használhatók a táblázatok között a [disztribúciókban](massively-parallel-processing-mpp-architecture.md#distributions).  Az SQL-készlet három módszert támogat az adatterjesztéshez: ciklikus multiplexelés (alapértelmezett), kivonat és replikált.
+A szinapszis SQL alapszintű funkciója, hogy képes a táblázatok tárolására és üzemeltetésére a különböző [disztribúciókban](massively-parallel-processing-mpp-architecture.md#distributions). A szinapszis SQL három módszert támogat az adatterjesztéshez: ciklikus multiplexelés (alapértelmezett), kivonat és replikálás.
 
 ### <a name="hash-distributed-tables"></a>Kivonat alapján elosztott táblák
 
@@ -106,7 +106,7 @@ A tábla kategóriája általában meghatározza, hogy melyik lehetőséget kell
 | Táblázat kategóriája | Ajánlott terjesztési lehetőség |
 |:---------------|:--------------------|
 | Fact           | Használjon kivonatoló eloszlást a fürtözött oszlopcentrikus index használatával. A teljesítmény akkor javul, ha két kivonatoló tábla ugyanahhoz a terjesztési oszlophoz van csatlakoztatva. |
-| Méret      | Kisebb táblák esetében replikált használata. Ha a táblák túl nagyok az egyes számítási csomópontokon való tároláshoz, használja a kivonatoló eloszlást. |
+| Dimenzió      | Kisebb táblák esetében replikált használata. Ha a táblák túl nagyok az egyes számítási csomópontokon való tároláshoz, használja a kivonatoló eloszlást. |
 | Előkészítés        | Ciklikus multiplexelés használata az előkészítési táblához. A CTAS terhelése gyors. Ha az adatgyűjtés az előkészítési táblában található, használja az INSERT... Ezzel a beállítással áthelyezheti az adatlemezeket az éles táblákba. |
 
 ## <a name="table-partitions"></a>Tábla partíciói

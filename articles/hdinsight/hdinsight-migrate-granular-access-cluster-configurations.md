@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 23811f379f8738e3fe9f162e23627d0c3c457621
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8ae16e6799d1253b8b070d59414beaee3c7ff332
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367499"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479782"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -112,11 +112,11 @@ Frissítse a .NET-hez készült HDInsight SDK [verziójának 2.1.0](https://www.
 
 Frissítsen a .NET-hez készült HDInsight SDK 5.0.0 vagy újabb [verziójára](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) . Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
 
-- [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet) a **többé nem ad vissza bizalmas paramétereket** , például a tárolási kulcsokat (Core-site) vagy a http hitelesítő adatokat (Gateway).
-    - Az összes konfiguráció beolvasásához, beleértve a bizalmas paramétereket is, használja a jövőt [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) .Vegye figyelembe, hogy az "olvasó" szerepkörrel rendelkező felhasználók nem fogják tudni használni ezt a metódust. Ez lehetővé teszi, hogy részletesen szabályozható legyen, hogy mely felhasználók férhetnek hozzá a fürt bizalmas adataihoz. 
-    - Csak a HTTP-átjáró hitelesítő adatainak lekéréséhez használja a következőt: [`ClusterOperationsExtensions.GetGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet) . 
-- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet) a már elavult, és lecserélte [`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet) . 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet) és [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) már elavultak. A HTTP mostantól mindig engedélyezve van, így ezek a metódusok már nem szükségesek.
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) a **többé nem ad vissza bizalmas paramétereket** , például a tárolási kulcsokat (Core-site) vagy a http hitelesítő adatokat (Gateway).
+    - Az összes konfiguráció beolvasásához, beleértve a bizalmas paramétereket is, használja a jövőt [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true) .Vegye figyelembe, hogy az "olvasó" szerepkörrel rendelkező felhasználók nem fogják tudni használni ezt a metódust. Ez lehetővé teszi, hogy részletesen szabályozható legyen, hogy mely felhasználók férhetnek hozzá a fürt bizalmas adataihoz. 
+    - Csak a HTTP-átjáró hitelesítő adatainak lekéréséhez használja a következőt: [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true) . 
+- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) a már elavult, és lecserélte [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) . 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet&preserve-view=true) és [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet&preserve-view=true) már elavultak. A HTTP mostantól mindig engedélyezve van, így ezek a metódusok már nem szükségesek.
 
 ### <a name="sdk-for-python"></a>Pythonhoz készült SDK
 
@@ -193,7 +193,7 @@ A fürt konfigurációi mostantól a részletes szerepköralapú hozzáférés-v
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Miért tekintheti meg a "nincs elegendő jogosultság a művelet végrehajtásához" kifejezést, ha az Azure CLI-parancs futtatásával rendeli hozzá a HDInsight-kezelő szerepkört egy másik felhasználóhoz vagy egyszerű szolgáltatáshoz?
 
-A tulajdonosi szerepkör mellett a parancsot végrehajtó felhasználónak vagy szolgáltatásnak elegendő Azure AD-engedéllyel kell rendelkeznie ahhoz, hogy megkeresse a megbízott objektum-azonosítóit. Ez az üzenet nem megfelelő Azure AD-engedélyeket jelez. Próbálja meg lecserélni az argumentumot a (z) értékre, `-–assignee` `–assignee-object-id` és adja meg a hozzárendelt objektum azonosítóját paraméterként a név helyett (vagy egy felügyelt identitás esetén a résztvevő azonosítóját). További információért tekintse meg az az [role hozzárendelés Create dokumentációjának](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) választható paraméterek szakaszát.
+A tulajdonosi szerepkör mellett a parancsot végrehajtó felhasználónak vagy szolgáltatásnak elegendő Azure AD-engedéllyel kell rendelkeznie ahhoz, hogy megkeresse a megbízott objektum-azonosítóit. Ez az üzenet nem megfelelő Azure AD-engedélyeket jelez. Próbálja meg lecserélni az argumentumot a (z) értékre, `-–assignee` `–assignee-object-id` és adja meg a hozzárendelt objektum azonosítóját paraméterként a név helyett (vagy egy felügyelt identitás esetén a résztvevő azonosítóját). További információért tekintse meg az az [role hozzárendelés Create dokumentációjának](/cli/azure/role/assignment#az-role-assignment-create) választható paraméterek szakaszát.
 
 Ha ez továbbra sem működik, kérje meg az Azure AD-rendszergazdát, hogy szerezze be a megfelelő engedélyeket.
 

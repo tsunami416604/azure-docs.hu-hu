@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 1157ca31a66e5df92ff28f5d7190993e51d7dd65
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6e77746d21d63cf1460b9e460e470a3bd12ce656
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367635"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480037"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet használata a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással (előzetes verzió) 
 
@@ -141,5 +141,7 @@ Miután kiválasztotta ezeket a beállításokat, az alábbi képernyőképhez h
 :::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
 
 ## <a name="next-steps"></a>Következő lépések
+
+[Azure Cosmos DB-adatlekérdezés a T-SQL használatával az Azure szinapszis hivatkozás használatával](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 
 A kiszolgáló nélküli szinapszis SQL-készlet használata az [Azure Open-adatkészletek elemzésére és az eredmények megjelenítésére az Azure szinapszis Studióban](../synapse-analytics/sql/tutorial-data-analyst.md)

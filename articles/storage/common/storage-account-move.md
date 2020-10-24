@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c372dafdbfa5e9cafb208673128038dc23b30f5a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515010"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488826"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure Storage-fiók áthelyezése másik régióba
 
@@ -67,7 +67,7 @@ Sablon exportálása az Azure Portallal:
 
 Sablon exportálása a PowerShell használatával:
 
-1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
+1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -167,7 +167,7 @@ A sablon üzembe helyezése a PowerShell használatával:
          }]          
     ```
 
-    A [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) parancs futtatásával lekérheti a régiókódokat.
+    A [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancs futtatásával lekérheti a régiókódokat.
 
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
@@ -196,7 +196,7 @@ A sablon üzembe helyezésével új tárfiókot hozhat létre a célrégióban.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Szerezze be azt az előfizetés-azonosítót, amelyben a cél nyilvános IP-címet a [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)használatával szeretné telepíteni:
+1. Szerezze be azt az előfizetés-azonosítót, amelyben a cél nyilvános IP-címet a [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)használatával szeretné telepíteni:
 
    ```azurepowershell-interactive
    Get-AzSubscription
@@ -232,14 +232,14 @@ Az alábbi táblázat ezeket a funkciókat sorolja fel, és útmutatást nyújt 
 
 ### <a name="move-data-to-the-new-storage-account"></a>Adatok áthelyezése az új tárfiókba
 
-Az AzCopy az előnyben részesített eszköz, amellyel áthelyezheti az adatait. Kiváló teljesítményre lett optimalizálva.  Ez egy gyorsabb módszer, mert az adatok másolása közvetlenül a Storage-kiszolgálók között történik, így az AzCopy nem használja a számítógép hálózati sávszélességét. Az AzCopyt a parancssorban vagy egy egyéni szkript részeként használhatja. Lásd: Ismerkedés [a AzCopy szolgáltatással](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Az AzCopy az előnyben részesített eszköz, amellyel áthelyezheti az adatait. Kiváló teljesítményre lett optimalizálva.  Ez egy gyorsabb módszer, mert az adatok másolása közvetlenül a Storage-kiszolgálók között történik, így az AzCopy nem használja a számítógép hálózati sávszélességét. Az AzCopyt a parancssorban vagy egy egyéni szkript részeként használhatja. Lásd: Ismerkedés [a AzCopy szolgáltatással](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 A Azure Data Factory használatával is áthelyezheti az adatait. Intuitív felhasználói felületet biztosít. A Azure Data Factory használatához tekintse meg a következő hivatkozások bármelyikét:. 
 
-  - [Adatok másolása az Azure Blob Storage-be vagy onnan máshová az Azure Data Factoryvel](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Adatok másolása az Azure Data Lake Storage Gen2-be vagy onnan máshová az Azure Data Factoryvel](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Adatok másolása az Azure File Storage-ba vagy onnan máshová az Azure Data Factoryvel](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Adatok másolása az Azure Table Storage-be vagy onnan máshová az Azure Data Factoryvel](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Adatok másolása az Azure Blob Storage-be vagy onnan máshová az Azure Data Factoryvel](/azure/data-factory/connector-azure-blob-storage)
+  - [Adatok másolása az Azure Data Lake Storage Gen2-be vagy onnan máshová az Azure Data Factoryvel](/azure/data-factory/connector-azure-data-lake-storage)
+  - [Adatok másolása az Azure File Storage-ba vagy onnan máshová az Azure Data Factoryvel](/azure/data-factory/connector-azure-file-storage)
+  - [Adatok másolása az Azure Table Storage-be vagy onnan máshová az Azure Data Factoryvel](/azure/data-factory/connector-azure-table-storage)
 
 ---
 
@@ -268,10 +268,10 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Storage-fiókot helyezett át egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
 
 
-- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure-beli virtuális gépek áthelyezése egy másik régióba](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](/azure/azure-resource-manager/resource-group-move-resources)
+- [Azure-beli virtuális gépek áthelyezése egy másik régióba](/azure/site-recovery/azure-to-azure-tutorial-migrate)

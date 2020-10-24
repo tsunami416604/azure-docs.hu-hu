@@ -1,5 +1,5 @@
 ---
-title: A Storage-fiók replikálási módjának módosítása
+title: Tárfiók replikálási módjának megváltoztatása
 titleSuffix: Azure Storage
 description: Megtudhatja, hogyan replikálhatja a meglévő Storage-fiókokban lévő információkat.
 services: storage
@@ -11,14 +11,14 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a16199891c00e2b8133aebebd1eaa6488423896c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827304"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487891"
 ---
-# <a name="change-how-a-storage-account-is-replicated"></a>A Storage-fiók replikálási módjának módosítása
+# <a name="change-how-a-storage-account-is-replicated"></a>Tárfiók replikálási módjának megváltoztatása
 
 Az Azure Storage mindig több példányban tárolja az adatait, így védve van a tervezett és nem tervezett eseményektől, beleértve az átmeneti hardver meghibásodását, a hálózati vagy áramkimaradást, valamint a súlyos természeti katasztrófákat. A redundancia biztosítja, hogy a Storage-fiókja a meghibásodások előtt is teljesítse az [Azure Storage szolgáltatói szerződését (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) .
 
@@ -39,8 +39,8 @@ Az alábbi táblázat áttekintést nyújt az egyes replikálási típusokról a
 
 | Váltás | ... LRS | ... GRS/RA-GRS | ... ZRS | ... GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... LRS</b> | N.A. | Módosítsa az<sup>1</sup> . replikációs beállítást a Azure Portal, a PowerShell vagy a CLI használatával | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Élő áttelepítés kérése | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a GRS/RA-GRS, majd igényeljen élő áttelepítést<sup>1</sup> |
-| <b>... GRS/RA-GRS</b> | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N.A. | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a LRS, majd kérjen élő áttelepítést | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Élő áttelepítés kérése |
+| <b>... LRS</b> | N.A. | Módosítsa az<sup>1</sup> . replikációs beállítást a Azure Portal, a PowerShell vagy a CLI használatával | Manuális áttelepítés végrehajtása <br /><br /> OR <br /><br /> Élő áttelepítés kérése | Manuális áttelepítés végrehajtása <br /><br /> OR <br /><br /> Először váltson a GRS/RA-GRS, majd igényeljen élő áttelepítést<sup>1</sup> |
+| <b>... GRS/RA-GRS</b> | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N.A. | Manuális áttelepítés végrehajtása <br /><br /> OR <br /><br /> Először váltson a LRS, majd kérjen élő áttelepítést | Manuális áttelepítés végrehajtása <br /><br /> OR <br /><br /> Élő áttelepítés kérése |
 | <b>... ZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | N.A. | A Azure Portal, a PowerShell vagy a CLI használatával módosítsa a replikálási beállítást<sup>1, 2</sup> |
 | <b>... GZRS/RA-GZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N.A. |
 
@@ -144,9 +144,9 @@ A támogatási személy felveszi Önnel a kapcsolatot, és segítséget nyújt a
 > [!NOTE]
 > A prémium szintű fájlmegosztás jelenleg nem támogatja az élő áttelepítést. Az adatok manuális másolása és áthelyezése jelenleg nem támogatott.
 >
-> A GZRS-tárolási fiókok jelenleg nem támogatják az archiválási szintet. További részletekért tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintet](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
+> A GZRS-tárolási fiókok jelenleg nem támogatják az archiválási szintet. További részletekért tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintet](/azure/storage/blobs/storage-blob-storage-tiers) .
 >
-> A felügyelt lemezek csak a LRS számára érhetők el, és nem telepíthetők át a ZRS. A standard szintű SSD-meghajtókon pillanatképeket és lemezképeket tárolhat szabványos HDD-tárolón, és [választhat a LRS és a ZRS lehetőségek közül](https://azure.microsoft.com/pricing/details/managed-disks/). További információ a rendelkezésre állási csoportokkal való integrációról: [Bevezetés az Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)szolgáltatásba.
+> A felügyelt lemezek csak a LRS számára érhetők el, és nem telepíthetők át a ZRS. A standard szintű SSD-meghajtókon pillanatképeket és lemezképeket tárolhat szabványos HDD-tárolón, és [választhat a LRS és a ZRS lehetőségek közül](https://azure.microsoft.com/pricing/details/managed-disks/). További információ a rendelkezésre állási csoportokkal való integrációról: [Bevezetés az Azure Managed Disks](/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)szolgáltatásba.
 
 ## <a name="switch-from-zrs-classic"></a>Váltás a klasszikus ZRS
 
@@ -200,6 +200,6 @@ Ha a Storage-fiókot a GRS-ből a LRS-be telepíti át, akkor nem jár további 
 
 ## <a name="see-also"></a>Lásd még
 
-- [Azure Storage-redundancia](storage-redundancy.md)
+- [Redundancia az Azure Storage szolgáltatásban](storage-redundancy.md)
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
 - [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](geo-redundant-design.md)

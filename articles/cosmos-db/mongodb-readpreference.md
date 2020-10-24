@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: a0bc2118c1a7e719c5ac45cb4d253a0708acefdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e86c48695c732b27f5032c1e3780cc24c8d3dc39
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292338"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482264"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Olvasási műveletek globális elosztása a Azure Cosmos DB API-MongoDB
 
@@ -43,7 +43,7 @@ Az alábbi parancsok futtatásával klónozza a mintatárházat. A saját platfo
 git clone <sample repo url>
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A használt platformtól függően telepítse a szükséges csomagokat, és indítsa el az alkalmazást. A függőségek telepítéséhez kövesse a minta alkalmazás-tárházban található README fájlt. A NodeJS minta alkalmazásban például a következő parancsokkal telepítheti a szükséges csomagokat, és elindíthatja az alkalmazást.
 
@@ -171,6 +171,6 @@ Ha nem folytatja az alkalmazás használatát, törölje a jelen cikk által lé
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)
+* [MongoDB adatok importálása az Azure Cosmos DB-be](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
 * [Globálisan elosztott adatbázis beállítása Azure Cosmos DB API-MongoDB](tutorial-global-distribution-mongodb.md)
 * [Helyi fejlesztés a Azure Cosmos DB emulátorral](local-emulator.md)

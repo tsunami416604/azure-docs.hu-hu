@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 98a3b8d30bcb358a0aaa0f7b124b8399a286d6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85214009"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487007"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Útmutatás elosztott táblák Synapse SQL-készletben történő tervezéséhez
 
 Javaslatok kivonatoláshoz elosztott és ciklikusan elosztott táblázatok kialakításához a szinapszis SQL-készletekben.
 
-Ez a cikk feltételezi, hogy ismeri a szinapszis SQL-készlet adateloszlási és adatáthelyezési fogalmait.További információ: az [Azure szinapszis Analytics nagymértékben párhuzamos feldolgozási (MPP) architektúrája](massively-parallel-processing-mpp-architecture.md).
+Ez a cikk azt feltételezi, hogy már ismeri az adateloszlást és az adatáthelyezési fogalmakat a szinapszis SQL-ben.  További információ: [Azure szinapszis Analytics-architektúra](massively-parallel-processing-mpp-architecture.md).
 
 ## <a name="what-is-a-distributed-table"></a>Mi az elosztott tábla?
 
@@ -32,7 +32,7 @@ Egy elosztott tábla egyetlen táblázatként jelenik meg, de a sorok tényleges
 
 Egy másik tábla tárolási lehetőség egy kis tábla replikálása az összes számítási csomóponton. További információ: [tervezési útmutató a replikált táblákhoz](design-guidance-for-replicated-tables.md). A három lehetőség közül a gyors választáshoz tekintse meg az elosztott táblák című részt a [táblázatok áttekintésében](sql-data-warehouse-tables-overview.md).
 
-A tábla kialakításának részeként a lehető legnagyobb mértékben megismerheti az adatait és az adatlekérdezés módját.Vegyük például a következő kérdéseket:
+A tábla kialakításának részeként a lehető legnagyobb mértékben megismerheti az adatait és az adatlekérdezés módját.  Vegyük például a következő kérdéseket:
 
 - Mekkora a táblázat?
 - Milyen gyakran frissül a tábla?
@@ -221,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Elosztott tábla létrehozásához használja az alábbi utasítások egyikét:
 

@@ -1,17 +1,18 @@
 ---
-title: Titkosított logikai kötet felügyeleti lemezek átméretezése Azure Disk Encryption használatával
+title: A Azure Disk Encryption használatával titkosított lemezek átméretezése
 description: Ez a cikk útmutatást nyújt az ADE titkosított lemezek logikai kötetek kezelése használatával történő átméretezéséhez.
 author: jofrance
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: 8e32e4960776084669c8f2f7743b66b9d0f9a6ae
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ddd6097fffbc02c9b7b027bcb712e20cc47f2f96
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978475"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487959"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>A Azure Disk Encryptiont használó logikai kötet-felügyeleti eszközök átméretezése
 

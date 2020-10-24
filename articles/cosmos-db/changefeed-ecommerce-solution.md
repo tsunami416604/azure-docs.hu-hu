@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a39ade902bd22d67e9b3a7d40b392bfd83dfd3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356366"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475915"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>A valós idejű adatelemzések megjelenítéséhez használja a Azure Cosmos DB módosítási csatornát
 
@@ -50,7 +50,7 @@ A következő ábra a megoldásban részt vevő adatfolyamot és összetevőket 
 
 5. **Event hub:** Az Azure Event hub tárolja ezeket az eseményeket, és elküldi azokat [Azure stream Analyticsba](../stream-analytics/stream-analytics-introduction.md) további elemzések elvégzéséhez.  
 
-6. **Azure stream Analytics:** Azure Stream Analytics az események feldolgozására és valós idejű adatelemzésre szolgáló lekérdezéseket definiál. Ezt követően a rendszer elküldi ezeket az adatfájlokat a [Microsoft Power BInak](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Azure stream Analytics:** Azure Stream Analytics az események feldolgozására és valós idejű adatelemzésre szolgáló lekérdezéseket definiál. Ezt követően a rendszer elküldi ezeket az adatfájlokat a [Microsoft Power BInak](/power-bi/desktop-what-is-desktop).  
 
 7. **Power bi:** A Power BI a Azure Stream Analytics által elküldett adatmegjelenítéshez használatos. Létrehozhat egy irányítópultot, amelyből megtudhatja, hogyan változnak a metrikák valós időben.  
 
@@ -382,4 +382,4 @@ A laborban létrehozott erőforrások törléséhez keresse meg [Azure Portal](h
 
 ## <a name="next-steps"></a>Következő lépések 
   
-* Ha többet szeretne megtudni a hírcsatornák változásáról, tekintse meg a [Azure Cosmos db](change-feed.md) 
+* Ha többet szeretne megtudni a hírcsatornák változásáról, tekintse meg a [Azure Cosmos db](change-feed.md)

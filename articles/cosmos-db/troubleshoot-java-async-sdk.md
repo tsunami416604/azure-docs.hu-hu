@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 60d73f8b3eae21ab399853e8d05b67b7b431ee5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3bb6925e11579deff914a930116d8ef464e39f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321054"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476892"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>A Azure Cosmos DB aszinkron Java SDK v2 és az SQL API-fiókok használata esetén felmerülő problémák elhárítása
 
@@ -63,13 +63,13 @@ A "nincs fájl" néven azonosított maximálisan engedélyezett megnyitott fájl
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Az Azure SNAT (PAT) portjának kimerülése
 
-Ha az alkalmazás nyilvános IP-cím nélküli Azure-Virtual Machines van telepítve, alapértelmezés szerint az [Azure SNAT-portok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)korlátozza.
+Ha az alkalmazás nyilvános IP-cím nélküli Azure-Virtual Machines van telepítve, alapértelmezés szerint az [Azure SNAT-portok](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)korlátozza.
 
  Az Azure SNAT-portok használata csak akkor történik meg, ha a virtuális gép magánhálózati IP-címmel rendelkezik, és a virtuális gép egy folyamata megpróbál csatlakozni egy nyilvános IP-címhez. Az Azure SNAT-korlátozás elkerülése érdekében két Áthidaló megoldás létezik:
 
-* Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
+    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](/previous-versions/azure/virtual-network/virtual-networks-acl)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
 * Rendeljen hozzá egy nyilvános IP-címet az Azure-beli virtuális géphez.
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Nem érhető el a szolgáltatás – tűzfal
@@ -276,5 +276,3 @@ Az Azure Cosmos DB végponttal létesített kapcsolatok lehetnek az `CLOSE_WAIT`
 [Enable client SDK logging]: #enable-client-sice-logging
 [A gazdagépre vonatkozó kapcsolatonként]: #connection-limit-on-host
 [Az Azure SNAT (PAT) portjának kimerülése]: #snat
-
-

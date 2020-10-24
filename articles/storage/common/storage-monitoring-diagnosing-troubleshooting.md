@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43c8f3dc0df41d9322edbe2e0c763de12b787ed6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370474"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479799"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -131,7 +131,7 @@ A tárolási metrikák csak a blob szolgáltatás kapacitás-metrikáit tárolj�
 >
 >
 
-A különböző tárolási objektumok, például a Blobok méretének becsléséhez tekintse meg az [Azure Storage számlázási szolgáltatás – sávszélesség, tranzakciók és kapacitás – ismertetését](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)ismertető blogbejegyzést.
+A különböző tárolási objektumok, például a Blobok méretének becsléséhez tekintse meg az [Azure Storage számlázási szolgáltatás – sávszélesség, tranzakciók és kapacitás – ismertetését](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)ismertető blogbejegyzést.
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>A rendelkezésre állás monitorozása
 Figyelje meg a Storage-fiók tárolási szolgáltatásainak rendelkezésre állását úgy, hogy a **rendelkezésre állási** oszlopban lévő értéket figyeli az óránkénti vagy perc mérőszámok táblázatában: **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. A **rendelkezésre állási** oszlop olyan százalékos értéket tartalmaz, amely jelzi a szolgáltatás rendelkezésre állását vagy a sor által jelzett API-műveletet (a **RowKey** azt jelzi, hogy a sor tartalmaz-e metrikákat a szolgáltatás egészére vagy egy adott API-műveletre vonatkozóan).
@@ -362,7 +362,7 @@ A Storage szolgáltatás csak a sikeres kérések metrikai **AverageE2ELatency**
 #### <a name="investigating-client-performance-issues"></a>Az ügyfél teljesítményével kapcsolatos problémák kivizsgálása
 Az ügyfélnek a lassú válaszadás lehetséges okai a következők lehetnek: korlátozott számú elérhető kapcsolat vagy szál, illetve kevés erőforrás, például CPU-, memória-vagy hálózati sávszélesség. Előfordulhat, hogy a probléma megoldásához módosítania kell az ügyfél kódját, hogy hatékonyabb legyen (például aszinkron hívásokat használ a tárolási szolgáltatáshoz), vagy egy nagyobb virtuális gép (több maggal és több memóriával) használatával.
 
-A tábla-és üzenetsor-szolgáltatások esetében a Nyéki algoritmus magas **AverageE2ELatency** eredményezhet a **averageserverlatency értéket mutatnak**képest: további információért lásd a [nyár utáni algoritmust, amely nem csupán a kis kérések elérésére szolgál](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). A **System.net** -névtér **ServicePointManager** osztályának használatával letilthatja a Nyéki algoritmust a kódban. Ezt csak akkor hajtsa végre, ha az alkalmazásban meghívja a Table vagy a üzenetsor-szolgáltatást, mivel ez nem befolyásolja a már megnyitott kapcsolatokat. A következő példa egy feldolgozói szerepkör **Application_Start** metódusára mutat.
+A tábla-és üzenetsor-szolgáltatások esetében a Nyéki algoritmus magas **AverageE2ELatency** eredményezhet a **averageserverlatency értéket mutatnak**képest: további információért lásd a [nyár utáni algoritmust, amely nem csupán a kis kérések elérésére szolgál](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). A **System.net** -névtér **ServicePointManager** osztályának használatával letilthatja a Nyéki algoritmust a kódban. Ezt csak akkor hajtsa végre, ha az alkalmazásban meghívja a Table vagy a üzenetsor-szolgáltatást, mivel ez nem befolyásolja a már megnyitott kapcsolatokat. A következő példa egy feldolgozói szerepkör **Application_Start** metódusára mutat.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
@@ -567,7 +567,7 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Név | Érték |
+| Name | Érték |
 | --- | --- |
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697 Z |
 | Művelettípus     | GetBlobProperties            |

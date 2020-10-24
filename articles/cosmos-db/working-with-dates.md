@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a524d34fcf8e629914d4fbc4669caada210866b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a876c5ba9c289f0edbbfdf8727e9957e7937b781
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019188"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476246"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Dátumok használata Azure Cosmos DB
 
@@ -66,7 +66,7 @@ Ezt a dokumentumot a Azure Cosmos DB a következőképpen tárolja:
     }
 ```  
 
-Azt is megteheti, hogy a dátum/idő karakterláncot UNIX-időbélyegként tárolja, azaz az eltelt másodpercek számát jelölő számként, amely a 1970. január 1. A Azure Cosmos DB belső timestamp ( `_ts` ) tulajdonsága ezt a megközelítést követi. A [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) osztály használatával számként szerializálhatja a dátum és idő értéket.
+Azt is megteheti, hogy a dátum/idő karakterláncot UNIX-időbélyegként tárolja, azaz az eltelt másodpercek számát jelölő számként, amely a 1970. január 1. A Azure Cosmos DB belső timestamp ( `_ts` ) tulajdonsága ezt a megközelítést követi. A [UnixDateTimeConverter](/dotnet/api/microsoft.azure.documents.unixdatetimeconverter) osztály használatával számként szerializálhatja a dátum és idő értéket.
 
 ## <a name="querying-datetimes-in-linq"></a>Dátum és idő lekérdezése a LINQ-ben
 

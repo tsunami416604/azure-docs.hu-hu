@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: f9765f4ce47e6e698daf1680aecf059241c58382
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d2a6954ffdb9f992ada7fc24dbcc161658b21d23
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993583"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480428"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -72,7 +72,7 @@ A Oracle Database 12,2-es vagy újabb verziójának használatával több megfig
 
 A következő ábra egy ajánlott architektúra az Oracle-adatvédelem az Azure-ban rendelkezésre állási zónák használatával történő használatához. Ez az architektúra lehetővé teszi, hogy a virtuális gép 99,99%-os ÜZEMIDŐt biztosítson.
 
-![Oracle Database a rendelkezésre állási zónák használatával a adatőr-közvetítővel – FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
+![Az Azure-beli Oracle-adatvédelmet és rendelkezésre állási zónákat használó ajánlott architektúrát bemutató ábra.](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
 Az előző ábrán az ügyfélrendszer az Oracle-háttérrel rendelkező egyéni alkalmazást a weben keresztül éri el. A webes felület egy terheléselosztó-ben van konfigurálva. A webes frontend kezdeményezi a megfelelő alkalmazáskiszolgáló számára a munka kezelését. Az alkalmazáskiszolgáló lekérdezi az elsődleges Oracle-adatbázist. Az Oracle-adatbázis egy hiperszálas [memória-optimalizált virtuális géppel](../../sizes-memory.md) lett konfigurálva, amelynek [korlátozott alapszintű vCPU](../../../virtual-machines/constrained-vcpu.md) a licencelési költségek mentése és a teljesítmény maximalizálása. A teljesítmény és a magas rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatos.
 

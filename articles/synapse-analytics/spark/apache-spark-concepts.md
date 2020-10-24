@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb5c7e082dc4a35183190f5d2d6a4b305b907f4f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260138"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480479"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark az Azure szinapszis Analytics alapvető fogalmakkal
 
@@ -60,7 +60,40 @@ Ha egy második feladatot küld el, ha van kapacitás a készletben, akkor a meg
 - Egy másik felhasználó, a U2, a J3, amely 10 csomópontot használ, egy új Spark-példányt hoz létre a SI2, amely feldolgozza a feladatot.
 - Most elküld egy másik feladatot, a J2, amely 10 csomópontot használ, mivel a készletben továbbra is rendelkezésre áll a kapacitása, a J2 pedig a SI1 dolgozza fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="quotas-and-resource-constraints-in-apache-spark-for-azure-synapse"></a>Az Azure szinapszis Apache Spark kvótái és erőforrás-korlátozásai
+
+### <a name="workspace-level"></a>Munkaterület szintje
+
+Minden Azure szinapszis-munkaterület tartalmaz egy alapértelmezett virtuális mag-kvótát, amelyet a Spark használhat. A kvóta felosztása a felhasználói kvóta és a adatfolyam kvóta között történik, így a használati minta sem használja fel a munkaterület összes virtuális mag. A kvóta az előfizetés típusától függően eltérő, de a felhasználó-és adatfolyam között szimmetrikus. Ha azonban több virtuális mag igényel, mint amennyi a munkaterületen marad, akkor a következő hibaüzenetet kapja:
+
+```console
+Failed to start session: [User] MAXIMUM_WORKSPACE_CAPACITY_EXCEEDED
+Your Spark job requested 480 vcores.
+However, the workspace only has xxx vcores available out of quota of yyy vcores.
+Try reducing the numbers of vcores requested or increasing your vcore quota. Click here for more information - https://go.microsoft.com/fwlink/?linkid=213499
+```
+
+Az üzenetben szereplő hivatkozás erre a cikkre mutat.
+
+A következő cikk azt ismerteti, hogyan lehet a munkaterület virtuális mag-kvótájának növekedését kérni.
+
+- A szolgáltatás típusaként válassza az "Azure szinapszis Analytics" lehetőséget.
+- A kvóta részletei ablakban válassza ki a Apache Spark (virtuális mag) munkaterületen
+
+[Kapacitás növelésének kérése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests#request-a-standard-quota-increase-from-help--support)
+
+### <a name="spark-pool-level"></a>Spark-készlet szintje
+
+Ha megad egy Spark-készletet, akkor az adott készlethez felhasználónként kell meghatároznia a kvótát, ha több jegyzetfüzetet vagy feladatot futtat, vagy a 2 kombinációja is lehetséges, hogy kimeríti a készlet kvótáját. Ha így tesz, a következőhöz hasonló hibaüzenet jelenik meg:
+
+```console
+Failed to start session: Your Spark job requested xx vcores.
+However, the pool is consuming yy vcores out of available zz vcores.Try ending the running job(s) in the pool, reducing the numbers of vcores requested, increasing the pool maximum size or using another pool
+```
+
+Ennek a problémának a megoldásához csökkentenie kell a készlet erőforrásainak használatát, mielőtt egy jegyzetfüzetet vagy feladatot futtasson egy új erőforrás-kérelem elküldése előtt.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Apache Spark dokumentáció](https://spark.apache.org/docs/2.4.4/)
+- [Apache Spark dokumentáció](https://spark.apache.org/docs/2.4.5/)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f0d28a71e2bd6fc2006bda81fba7d7e6336c5b1c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a765bf547924cbba1c4cff36a97df4ae88df1787
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460835"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495936"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -160,24 +160,26 @@ A Visual Studio fő ablakában megnyíló *Közzététel* ablaktáblán győződ
 
 ### <a name="assign-permissions-to-the-function-app"></a>Engedélyek kiosztása a Function alkalmazáshoz
 
-Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elérését, a következő lépés egy Alkalmazásbeállítások konfigurálása, az alkalmazás a rendszer által felügyelt Azure AD-identitás kiosztása, és az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkör megadása az Azure Digital Twins-példányban. Ez a szerepkör minden olyan felhasználóhoz vagy függvényhez szükséges, amely sok adatsík-tevékenységet szeretne végrehajtani a példányon. A biztonsággal és a szerepkör-hozzárendelésekkel kapcsolatos további információkért tekintse meg a [*következő fogalmakat: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md).
+Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elérését, a következő lépés az alkalmazás beállításainak konfigurálása, a rendszer által felügyelt Azure AD-identitás kiosztása, és az Azure digitális Twins- *adattulajdonosi* szerepkör megadása az Azure Digital Twins-példányban. Ez a szerepkör minden olyan felhasználóhoz vagy függvényhez szükséges, amely sok adatsík-tevékenységet szeretne végrehajtani a példányon. A biztonsággal és a szerepkör-hozzárendelésekkel kapcsolatos további információkért tekintse meg a [*következő fogalmakat: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md).
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Azure Cloud Shell a következő parancs használatával állítson be egy olyan alkalmazás-beállítást, amelyet a Function alkalmazás az Azure Digital Twins-példányra való hivatkozáshoz fog használni.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 A rendszerfelügyelt identitás létrehozásához használja a következő parancsot. Jegyezze fel a kimenet *principalId* mezőjét.
 
-```azurecli
+```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Használja az alábbi parancs kimenetében található *principalId* értéket, hogy a Function alkalmazás identitását az Azure Digital *Twins tulajdonos (előzetes verzió)* szerepkörhöz rendelje az Azure Digital Twins-példányhoz:
+Használja az alábbi parancs kimenetében található *principalId* értéket, hogy a Function alkalmazás identitását az Azure Digital Twins-beli *adattulajdonosi* szerepkörhöz rendelje az Azure digitális Twins-példányhoz:
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
 
 Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel kapcsolatos információ. A Function app mostantól rendelkezik az Azure Digital Twins-példány eléréséhez szükséges engedélyekkel.
@@ -205,7 +207,7 @@ Az Azure Digital Twins úgy lett kialakítva, hogy [IoT hub](../iot-hub/about-io
 
 Azure Cloud Shell a paranccsal hozzon létre egy új IoT hubot:
 
-```azurecli
+```azurecli-interactive
 az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
 ```
 
@@ -244,7 +246,7 @@ Ez a szakasz létrehoz egy eszközt a IoT Hub a *THERMOSTAT67*azonosítóval. A 
 
 A Azure Cloud Shellban hozzon létre egy eszközt a IoT Hubban a következő paranccsal:
 
-```azurecli
+```azurecli-interactive
 az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
 ```
 
@@ -256,13 +258,13 @@ Ezután konfigurálja az eszköz-szimulátort, hogy az adatküldés a IoT Hub-p�
 
 Először az *IoT hub-kapcsolatok karakterláncának* beszerzése ezzel a paranccsal:
 
-```azurecli
+```azurecli-interactive
 az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
 Ezután szerezze be az *eszköz-kapcsolatok karakterláncát* a következő paranccsal:
 
-```azurecli
+```azurecli-interactive
 az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>
 ```
 
@@ -332,13 +334,13 @@ Ebben a szakaszban létrehoz egy Event Grid-témakört, majd létrehoz egy végp
 
 Azure Cloud Shell a következő parancs futtatásával hozzon létre egy Event Grid-témakört:
 
-```azurecli
+```azurecli-interactive
 az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
 ```
 
 > [!TIP]
 > Futtassa a következő parancsot az Azure-régiók azon neveinek listájához, amelyek átadhatók az Azure CLI parancsaihoz:
-> ```azurecli
+> ```azurecli-interactive
 > az account list-locations -o table
 > ```
 
@@ -346,7 +348,7 @@ A parancs kimenete az Ön által létrehozott Event Grid-témakörre vonatkozó 
 
 Következő lépésként hozzon létre egy Azure digitális Twins-végpontot, amely az Event Grid-témakörre mutat. Használja az alábbi parancsot, és szükség szerint töltse ki a helyőrző mezőket:
 
-```azurecli
+```azurecli-interactive
 az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --eventgrid-resource-group <your-resource-group> --eventgrid-topic <your-event-grid-topic> --endpoint-name <name-for-your-Azure-Digital-Twins-endpoint>
 ```
 
@@ -354,7 +356,7 @@ A parancs kimenete a létrehozott végpontra vonatkozó információkat jelenít
 
 Azt is ellenőrizheti, hogy a végpont létrehozása sikeres volt-e a következő parancs futtatásával, hogy lekérdezze az Azure Digital Twins-példányt ehhez a végponthoz:
 
-```azurecli
+```azurecli-interactive
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
@@ -368,9 +370,7 @@ Mentse az Event Grid-témakörbe és az Azure Digital Twins-végpontba kapott ne
 
 Következő lépésként hozzon létre egy Azure digitális Twins-útvonalat, amely az imént létrehozott Azure digitális Twins-végpontnak küld eseményeket.
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
-```azurecli
+```azurecli-interactive
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
 
@@ -443,13 +443,13 @@ A [Azure Cloud Shell](https://shell.azure.com)használatával törölheti az er�
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 
