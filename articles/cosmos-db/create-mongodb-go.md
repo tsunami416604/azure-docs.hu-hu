@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: 0c03c4f163ef36335dacdc3c28340164dcd23fba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b3d01445eb5624addb5edec3ccb9cd8e4a9b6d9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85299194"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476025"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: go-alkalmazás összekötése Azure Cosmos DB API-MongoDB
 
@@ -28,7 +28,7 @@ ms.locfileid: "85299194"
 
 A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel. Ebben a rövid útmutatóban egy Azure Cosmos DB fiókot hoz létre és kezel a Azure Cloud Shell használatával, klónozott egy meglévő minta alkalmazást a GitHubról, és úgy konfigurálja, hogy működjön a Azure Cosmos DBsal. 
 
-A minta alkalmazás a `todo` Go-ban írt parancssori felügyeleti eszköz. A MongoDB Azure Cosmos DB API-je [kompatibilis a MongoDB Wire protokollal](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility), így bármely MongoDB-ügyfél illesztőprogramja csatlakozhat hozzá. Ez az alkalmazás a [Go-illesztőprogramot a MongoDB](https://github.com/mongodb/mongo-go-driver) olyan módon használja, amely átlátható az alkalmazás számára, amelyet az adott Azure Cosmos db-adatbázisban tárolnak.
+A minta alkalmazás a `todo` Go-ban írt parancssori felügyeleti eszköz. A MongoDB Azure Cosmos DB API-je [kompatibilis a MongoDB Wire protokollal](./mongodb-introduction.md#wire-protocol-compatibility), így bármely MongoDB-ügyfél illesztőprogramja csatlakozhat hozzá. Ez az alkalmazás a [Go-illesztőprogramot a MongoDB](https://github.com/mongodb/mongo-go-driver) olyan módon használja, amely átlátható az alkalmazás számára, amelyet az adott Azure Cosmos db-adatbázisban tárolnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a kapcsolatok karakterláncával `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
@@ -279,7 +279,7 @@ A `--kind MongoDB` paraméter lehetővé teszi a MongoDB-ügyfélkapcsolatok has
 Az Azure Cosmos DB-fiók létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. 
 
 > [!NOTE]
-> Ez a példa az alapértelmezett JSON formátumot használja az Azure CLI kimeneti formátumaként. Más kimeneti formátum használatához lásd: [Az Azure CLI-parancsok kimeneti formátumai](https://docs.microsoft.com/cli/azure/format-output-azure-cli).
+> Ez a példa az alapértelmezett JSON formátumot használja az Azure CLI kimeneti formátumaként. Más kimeneti formátum használatához lásd: [Az Azure CLI-parancsok kimeneti formátumai](/cli/azure/format-output-azure-cli).
 
 ```json
 {
@@ -452,9 +452,9 @@ Az `todo` imént törölt érték nem lehet jelen
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB MongoDB API-fiókot a Azure Cloud Shell használatával, és hogyan hozhat létre és futtathat egy go parancssori alkalmazást az s-k kezeléséhez `todo` . Így már további adatokat importálhat az Azure Cosmos DB-fiókba.
 
 > [!div class="nextstepaction"]
-> [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)
+> [MongoDB adatok importálása az Azure Cosmos DB-be](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

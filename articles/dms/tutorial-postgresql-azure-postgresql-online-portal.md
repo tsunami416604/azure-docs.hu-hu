@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 4e424d41a7b4c1d9394e789c60b60a6fa86a69c5
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: c451c49555e9c4c9214780bd936c17e9a30df776
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893781"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495532"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Oktatóanyag: a PostgreSQL migrálása az Azure DB for PostgreSQL online-ba a DMS használatával a Azure Portalon keresztül
 
@@ -211,7 +211,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 2. Az **Azure Database Migration Services** képernyőn keresse meg a létrehozott Azure Database Migration Service példány nevét, válassza ki a példányt, majd válassza az + **új áttelepítési projekt**lehetőséget.
 
-3. Az **új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **forráskiszolgáló típusa** szövegmezőben válassza a **PostgresSQL**lehetőséget, a **célkiszolgáló típusa** szövegmezőben válassza a **Azure Database for PostgreSQL**lehetőséget.
+3. Az **új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **forráskiszolgáló típusa** szövegmezőben válassza a **PostgreSQL**lehetőséget a **célkiszolgáló típusa** szövegmezőben, majd válassza a **Azure Database for PostgreSQL**lehetőséget.
 
 4. A **tevékenység típusának** kiválasztása szakaszban válassza az **online adatáttelepítés**lehetőséget.
 
@@ -228,7 +228,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
     ![A Forrás adatainak hozzáadása képernyő](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-add-source-details.png)
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 

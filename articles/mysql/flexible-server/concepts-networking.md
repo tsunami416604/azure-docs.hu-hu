@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: 48265856e5e745e05f6625766f9cd0c9b15c90a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eaccd0559439ce228325205f5845151f0e76bcae
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708662"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484525"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Kapcsolati és hálózatkezelési fogalmak a Azure Database for MySQL rugalmas kiszolgálóhoz (előzetes verzió)
 
@@ -73,6 +73,8 @@ Az alábbiakban néhány, a MySQL-hez rugalmas kiszolgálókkal rendelkező virt
 
 Ismerje meg, hogyan engedélyezheti a privát hozzáférést (vnet-integráció) a [Azure Portal](how-to-manage-virtual-network-portal.md) vagy az [Azure CLI](how-to-manage-virtual-network-cli.md)használatával.
 
+> [!NOTE]
+> Ha az egyéni DNS-kiszolgálót használja, akkor a DNS-továbbítót kell használnia a Azure Database for MySQL-rugalmas kiszolgáló teljes tartománynevének feloldásához. További információért tekintse meg a névfeloldást [, amely a saját DNS-kiszolgálóját használja](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) .
 
 ## <a name="public-access-allowed-ip-addresses"></a>Nyilvános hozzáférés (engedélyezett IP-címek)
 A nyilvános hozzáférési módszer jellemzői a következők:

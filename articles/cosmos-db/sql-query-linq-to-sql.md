@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: f2a7570b7ebed26a06e1bd075c2904bc29061c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498854"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485103"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL fordítás
 
-A Azure Cosmos DB lekérdezési szolgáltató a LINQ-lekérdezésből származó legjobb műveletet hajtja végre egy Cosmos DB SQL-lekérdezésben. Ha a LINQ-ből lefordított SQL-lekérdezést szeretné beszerezni, használja a `ToString()` metódust a generált `IQueryable` objektumon. A következő leírás feltételezi, hogy a [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)alapvető ismerete.
+A Azure Cosmos DB lekérdezési szolgáltató a LINQ-lekérdezésből származó legjobb műveletet hajtja végre egy Cosmos DB SQL-lekérdezésben. Ha a LINQ-ből lefordított SQL-lekérdezést szeretné beszerezni, használja a `ToString()` metódust a generált `IQueryable` objektumon. A következő leírás feltételezi, hogy a [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)alapvető ismerete.
 
 A lekérdezés-szolgáltató típusa a rendszeren csak a JSON egyszerű típusokat támogatja: numerikus, logikai, karakterlánc és null.
 
@@ -23,7 +23,7 @@ A lekérdezési szolgáltató a következő skaláris kifejezéseket támogatja:
 
 - Állandó értékek, beleértve a primitív adattípusok állandó értékeit a lekérdezés kiértékelési idején.
   
-- Tulajdonság/tömb index kifejezés, amely egy objektum vagy egy tömb elem tulajdonságára hivatkozik. Például:
+- Tulajdonság/tömb index kifejezés, amely egy objektum vagy egy tömb elem tulajdonságára hivatkozik. Példa:
   
   ```
     family.Id;
@@ -342,7 +342,7 @@ Egy beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tárol�
       WHERE c.familyName = f.parents[0].familyName
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentumadatok modellezése](modeling-data.md)

@@ -2,17 +2,17 @@
 title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: 2c58f67fed880b8aad60ff1a46a587dcf514102e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.date: 10/23/2020
+ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424176"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495227"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-an-event-hubs-namespace"></a>Mi az Event Hubs névtér?
 A névtér az Event hub/Kafka témakörök hatóköri tárolója. Egyedi [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)-t biztosít. A névtér olyan alkalmazás-tárolóként szolgál, amely több Event hub-vagy Kafka-témakört is képes elhelyezni. 
@@ -181,29 +181,14 @@ Több-bérlős ajánlat esetében az átviteli egységek akár 40-ig is növeked
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>Mik azok a dedikált Event Hubs-fürtök?
 Dedikált Event Hubs-fürtök egybérlős üzemelő példányokat biztosítanak a legigényesebb követelményeknek megfelelő ügyfelek számára. Ez az ajánlat olyan kapacitás-alapú fürtöt hoz létre, amely nem az átviteli egységekhez van kötve. Ez azt jelenti, hogy a fürtöt használhatja a fürt CPU-és memóriahasználat által diktált adatok betöltésére és továbbítására. További információ: dedikált Event Hubs- [fürtök](event-hubs-dedicated-overview.md).
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Mire elegendő egyetlen kapacitásegység?
-Egy dedikált fürt esetében a betöltés és az adatfolyam mennyisége a különböző tényezőktől, például a termelőktől, a fogyasztóktól, a betöltés és a feldolgozástól, valamint sok más tényezőtől függ. 
-
-A következő táblázat a tesztelés során elért teljesítménytesztek eredményeit mutatja be:
-
-| Hasznos adat alakzat | Fogadók | Bejövő sávszélesség| Bejövő üzenetek | Kimenő sávszélesség | Kimenő üzenetek | Teljes TUs | TUs/CU |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB kötegek | 2 | 400 MB/s | 400k üzenetek/mp | 800 MB/s | 800k üzenetek/mp | 400 TUs | 100 TUs | 
-| 10x10KB kötegek | 2 | 666 MB/s | 66.6 üzenet/mp | 1,33 GB/s | 133k üzenetek/mp | 666 TUs | 166 TUs |
-| 6x32KB kötegek | 1 | 1,05 GB/s | 34k üzenetek/mp | 1,05 GB/s | 34k üzenetek/mp | 1000 TUs | 250 TUs |
-
-A tesztelés során a rendszer a következő feltételeket használta:
-
-- Egy dedikált Event Hubs fürt négy kapacitású egységgel (ke) volt használva. 
-- A betöltéshez használt Event hub 200 partíciót tartalmazott. 
-- A betöltött adatok az összes partíciótól kapott két fogadó alkalmazástól érkeztek.
-
-Az eredményekből megtalálhatja, hogy mit lehet megvalósítani egy dedikált Event Hubs-fürttel. Emellett a dedikált fürt a mikro-és hosszú távú adatmegőrzési forgatókönyvekhez engedélyezett Event Hubs rögzítéssel is rendelkezik.
-
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Hogyan hozzon létre egy dedikált Event Hubs-fürtöt?
-Egy Event Hubs dedikált fürtöt úgy hozhat létre, hogy egy [kvótával bővíti a támogatási kérést](https://portal.azure.com/#create/Microsoft.Support) , vagy kapcsolatba lép a [Event Hubs csapatával](mailto:askeventhubs@microsoft.com). Általában két hetet vesz igénybe, hogy a fürt üzembe helyezése és átadása az Ön általi használatra megtörténjen. Ez a folyamat ideiglenes, amíg a Azure Portalon keresztül elérhetővé nem válik a teljes körű kiszolgálás.
+A Event Hubs dedikált fürt beállításával kapcsolatos részletes utasításokért tekintse meg a rövid útmutató [: dedikált Event Hubs-fürt létrehozása Azure Portal használatával](event-hubs-dedicated-cluster-create-portal.md)című témakört. 
 
-## <a name="best-practices"></a>Bevált gyakorlatok
+
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
+
+
+## <a name="best-practices"></a>Ajánlott eljárások
 
 ### <a name="how-many-partitions-do-i-need"></a>Hány partícióra van szükségem?
 A partíciók száma a létrehozáskor van megadva, és 1 és 32 között kell lennie. A partíciók száma nem módosítható, ezért érdemes megfontolni a hosszú távú méretezést a partíciók számának beállításakor. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. További információ a partíciókon: [partíciók](event-hubs-features.md#partitions).
@@ -285,7 +270,7 @@ A következő példákban megtudhatja, hogyan célozhat meg egy adott tárolási
 - Python – [szinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [aszinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) és [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 

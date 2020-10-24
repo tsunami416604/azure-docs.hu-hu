@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85850693"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478150"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi Azure Cosmos DB
 
@@ -216,9 +216,9 @@ Mivel Azure Cosmos DB használ, a keresőmotort könnyedén megvalósíthatja az
 
 Miért ilyen egyszerű a folyamat?
 
-Az Azure Cognitive Search implementálja az [Indexelő](https://msdn.microsoft.com/library/azure/dn946891.aspx), a háttérben futó folyamatokat, amelyek az adattárakat csatlakoztatják, és automatikusan felveszik, frissítik vagy eltávolítják az objektumokat az indexekben. Támogatják a [Azure SQL Database indexelő](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), az [Azure-Blobok indexelő](../search/search-howto-indexing-azure-blob-storage.md) és a szerencsére [Azure Cosmos db indexelő](../search/search-howto-index-documentdb.md)használatát. Az adatok Cosmos DBból az Cognitive Search Azure-ba való átállása egyszerű. Mindkét technológia JSON formátumban tárolja az adatokat, ezért csak [létre kell hoznia az indexet](../search/search-create-index-portal.md) , és le kell képeznie az indexelni kívánt dokumentumok attribútumait. Készen is van. Az adatai méretétől függően az összes tartalom elérhető lesz a Felhőbeli infrastruktúrában a legjobb keresési megoldás, amelyet perceken belül megkeres.
+Az Azure Cognitive Search implementálja az [Indexelő](/rest/api/searchservice/Indexer-operations), a háttérben futó folyamatokat, amelyek az adattárakat csatlakoztatják, és automatikusan felveszik, frissítik vagy eltávolítják az objektumokat az indexekben. Támogatják a [Azure SQL Database indexelő](/archive/blogs/kaevans/indexing-azure-sql-database-with-azure-search), az [Azure-Blobok indexelő](../search/search-howto-indexing-azure-blob-storage.md) és a szerencsére [Azure Cosmos db indexelő](../search/search-howto-index-cosmosdb.md)használatát. Az adatok Cosmos DBból az Cognitive Search Azure-ba való átállása egyszerű. Mindkét technológia JSON formátumban tárolja az adatokat, ezért csak [létre kell hoznia az indexet](../search/search-what-is-an-index.md) , és le kell képeznie az indexelni kívánt dokumentumok attribútumait. Készen is van. Az adatai méretétől függően az összes tartalom elérhető lesz a Felhőbeli infrastruktúrában a legjobb keresési megoldás, amelyet perceken belül megkeres.
 
-Az Azure Cognitive Search-ról további információt talál a [Stoppoló útmutatójában](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/).
+Az Azure Cognitive Search-ról további információt talál a [Stoppoló útmutatójában](/archive/blogs/mvpawardprogram/a-hitchhikers-guide-to-search).
 
 ## <a name="the-underlying-knowledge"></a>A mögöttes tudás
 
@@ -268,6 +268,6 @@ Ez a cikk néhány fényt mutat be a közösségi hálózatok teljes körű lét
 
 Az igazság az, hogy az ilyen forgatókönyvek esetében nincs ilyen típusú ezüst-felsorolásjel. Ez a nagyszerű szolgáltatások kombinációja által létrehozott szinergia, amely lehetővé teszi számunkra, hogy nagyszerű tapasztalatokat építsünk ki: a Azure Cosmos DB gyorsasága és szabadsága, hogy kiváló közösségi alkalmazást, az intelligenciát egy olyan első osztályú keresési megoldás mögött, mint az Azure Cognitive Search, a rugalmasság az Azure-App Services, hogy még a nem egyenletes nyelvezetű alkalmazásokat, de hatékony háttér-folyamatokat, valamint a bővíthető Azure Storage-t és Azure SQL Database nagy mennyiségű adat tárolásához és az Azure Machine analitikai teljesítményének biztosításához. Tanuljon olyan tudást és intelligenciát létrehozni, amely visszajelzést tud adni a folyamatokról, és segít a megfelelő tartalomnak a megfelelő felhasználók számára történő továbbításában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Cosmos DB használatáról, tekintse meg az [általános Cosmos db használati esetek](use-cases.md)című témakört.

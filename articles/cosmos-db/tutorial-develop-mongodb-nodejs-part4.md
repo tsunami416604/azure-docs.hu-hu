@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: c3026ac25d8da0e21c72ffa2d36f90e44a691aea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 490d4bc0cad6a927237de85ded17362074837e0d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330502"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476875"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – Cosmos-fiók létrehozása
 
@@ -35,7 +35,7 @@ Az oktatóanyag 4. része a [3. részre](tutorial-develop-mongodb-nodejs-part3.m
 
 Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [3. részében](tutorial-develop-mongodb-nodejs-part3.md) ismertetett lépéseket. 
 
-Az oktatóanyag ezen szakaszában az Azure Cloud Shellt (a webböngészőben) vagy a helyileg telepített [Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli) eszközt használhatja.
+Az oktatóanyag ezen szakaszában az Azure Cloud Shellt (a webböngészőben) vagy a helyileg telepített [Azure CLI-t](/cli/azure/install-azure-cli) eszközt használhatja.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -70,7 +70,7 @@ Amint az Azure Cosmos DB-fiók létrejött:
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Új Azure Cosmos DB-fiók az Azure Portalon":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

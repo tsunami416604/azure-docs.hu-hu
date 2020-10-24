@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61321af538ee117828914a209523a1138e74c20
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88999614"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483454"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tabló-kiszolgálóval
 
@@ -105,7 +105,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -131,11 +131,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 2. A **konfiguráció** lapon válassza a **felhasználói identitás & hozzáférés**lehetőséget, majd válassza a **hitelesítési** módszer lapot.
 
-    ![Egyetlen Sign-On konfigurálása](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Képernyőfelvétel: a felhasználói identitásból kiválasztott hitelesítés & hozzáférés.](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
 
 3. A **konfiguráció** lapon hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Képernyőfelvétel: a konfigurációs oldal, ahol megadhatja a leírt értékeket.](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
 
     a. A **hitelesítési módszer**beállításnál válassza az SAML lehetőséget.
 
@@ -151,7 +151,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     : Adja meg azoknak az attribútumoknak a nevét, amelyeket a identitásszolgáltató a felhasználónevek, a megjelenítendő nevek és az e-mail-címek tárolására használ.
 
-    h. Kattintson a **Mentés** gombra.
+    h. Kattintson a **Mentés** gombra
 
     > [!NOTE]
     > Az ügyfélnek fel kell töltenie egy. CRT kiterjesztésű és egy olyan RSA-vagy DSA titkos kulcsfájl-fájlt, amely a. Key kiterjesztéssel rendelkezik, mint a tanúsítvány-kulcsfájl. A tanúsítványfájl és a tanúsítvány kulcsfájl részletes ismertetését [ebben](https://help.tableau.com/current/server/en-us/saml_requ.htm) a dokumentumban találja. Ha segítségre van szüksége az SAML a tabló-kiszolgálón való konfigurálásához, tekintse meg ezt a cikket a [Server Wide SAML konfigurálása](https://help.tableau.com/current/server/en-us/config_saml.htm)című cikkben.

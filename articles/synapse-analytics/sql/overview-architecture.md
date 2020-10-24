@@ -1,6 +1,6 @@
 ---
 title: A Synapse SQL architektúrája
-description: Ismerje meg, hogy az Azure szinapszis SQL hogyan ötvözi a nagymértékben párhuzamos feldolgozást (MPP) az Azure Storage szolgáltatással a nagy teljesítmény és méretezhetőség érdekében.
+description: Ismerje meg, hogy az Azure szinapszis SQL hogyan ötvözi az elosztott lekérdezés-feldolgozási képességeket az Azure Storage szolgáltatással a nagy teljesítmény és méretezhetőség érdekében.
 services: synapse-analytics
 author: mlee3gsd
 manager: rothja
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3b54ca72c92722dffa370b0b8be1ca2c490f97
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046863"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476008"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure szinapszis SQL-architektúra 
 
@@ -35,7 +35,7 @@ A kiszolgáló nélküli SQL igény esetén a méretezés automatikusan történ
 
 A szinapszis SQL egy node-alapú architektúrát használ. Az alkalmazások a T-SQL-parancsokat egy vezérlő csomóponthoz csatlakoznak, amely a szinapszis SQL beléptetésének egyetlen pontja. 
 
-Az SQL-készlet vezérlő csomópontja MPP-motort használ a párhuzamos feldolgozásra irányuló lekérdezések optimalizálásához, majd a műveleteket a számítási csomópontok számára a párhuzamosan végzett munkához továbbítja. 
+Az Azure szinapszis SQL-vezérlő csomópontja elosztott lekérdezési motort használ a párhuzamos feldolgozásra irányuló lekérdezések optimalizálásához, majd a műveleteket a számítási csomópontok számára továbbítja a munkájukat párhuzamosan. 
 
 Az igény szerinti SQL-vezérlési csomópont elosztott lekérdezés-feldolgozási (DQP) motort használ a felhasználói lekérdezések elosztott végrehajtásának optimalizálására és összehangolására azáltal, hogy a számítási csomópontokon végrehajtandó kisebb lekérdezésekre bontja azt. A rendszer minden kis lekérdezést feladatnak nevez, és elosztott végrehajtási egységet jelöl. Beolvassa a fájl (oka) t a tárolóból, a más feladatokból beolvasott más feladatokból, csoportokból vagy rendelésekből származó adatokat is összekapcsol. 
 
@@ -61,7 +61,7 @@ Az SQL on-demand lehetővé teszi, hogy az adattárban lévő fájlokat csak olv
 
 A vezérlő csomópont az architektúra agya. Ez az az előtérbeli rendszer, amely az összes alkalmazással és kapcsolattal együttműködik. 
 
-Az SQL-készletben az MPP-motor a vezérlő csomóponton fut a párhuzamos lekérdezések optimalizálása és koordinálása érdekében. Ha T-SQL-lekérdezést küld az SQL-készletnek, a vezérlési csomópont átalakítja azokat a lekérdezéseket, amelyek párhuzamosan futnak az egyes eloszlásokon.
+A szinapszis SQL-ben az elosztott lekérdezési motor a vezérlő csomóponton fut a párhuzamos lekérdezések optimalizálása és koordinálása érdekében. Ha T-SQL-lekérdezést küld az SQL-készletnek, a vezérlési csomópont átalakítja azokat a lekérdezéseket, amelyek párhuzamosan futnak az egyes eloszlásokon.
 
 Az SQL on-demand szolgáltatásban a DQP motor a vezérlési csomóponton futtatja a felhasználói lekérdezések elosztott végrehajtásának optimalizálását és koordinálását úgy, hogy a számítási csomópontokon végrehajtandó kisebb lekérdezésekre osztja fel azokat. Emellett az egyes csomópontok által feldolgozandó fájlok készleteit is hozzárendeli.
 
@@ -69,7 +69,7 @@ Az SQL on-demand szolgáltatásban a DQP motor a vezérlési csomóponton futtat
 
 A számítási csomópontok biztosítják a számítási teljesítményt. 
 
-Az SQL-készletben a disztribúciók a számítási csomópontokat dolgozzák fel feldolgozásra. A további számítási erőforrásokért a készlet újraképezi a disztribúciókat a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1-től 60-ig terjed, és az SQL-készlet szolgáltatási szintje határozza meg. Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek nevei a sys.pdw_nodeskal kezdődnek. A rendszernézetek listáját a következő témakörben tekintheti meg: [MPP rendszernézetek](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+Az SQL-készletben a disztribúciók a számítási csomópontokat dolgozzák fel feldolgozásra. A további számítási erőforrásokért a készlet újraképezi a disztribúciókat a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1-től 60-ig terjed, és az SQL-készlet szolgáltatási szintje határozza meg. Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek nevei a sys.pdw_nodeskal kezdődnek. A rendszernézetek listáját a következő témakörben tekintheti meg: [SZINAPSZIS SQL rendszer nézetei](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
 
 Az SQL on-demand szolgáltatásban minden számítási csomóponthoz hozzá kell rendelni egy feladatot, valamint a feladat végrehajtásához szükséges fájlokat. A feladat elosztott lekérdezés-végrehajtási egység, amely ténylegesen a lekérdezés felhasználója számára van elküldve. Az automatikus skálázás érvényes annak biztosítására, hogy elegendő számítási csomópont legyen kihasználva a felhasználói lekérdezés végrehajtásához.
 
@@ -115,6 +115,6 @@ Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszl�
 
 ![Replikált tábla](media/overview-architecture/replicated-table.png "Replikált tábla") 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a szinapszis SQL-t, ismerkedjen meg az [SQL-készlet gyors létrehozásával](../quickstart-create-sql-pool-portal.md) és a [mintaadatok betöltésével](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Vagy megkezdheti az [SQL igény szerinti használatát](../quickstart-sql-on-demand.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. 

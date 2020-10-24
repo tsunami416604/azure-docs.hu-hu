@@ -8,25 +8,25 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: girobins
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 71ebc90834083def5b82e16dc387a6e61943206d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d47bd90f7704cd3c55f9e5d64fe6b58946d4568
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021748"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475090"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>SQL-lekérdezés végrehajtási metrikáinak lekérése és a lekérdezési teljesítmény elemzése a .NET SDK használatával
 
-Ez a cikk bemutatja, hogyan lehet profilt felvenni az SQL-lekérdezés teljesítményére Azure Cosmos DBon. Ez `QueryMetrics` a profilkészítés a .net SDK-ból beolvasott használatával végezhető el, és részletesen itt olvasható. A [QueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx) egy erősen begépelt objektum, amely információkat nyújt a háttérbeli lekérdezés végrehajtásáról. Ezeket a metrikákat a [lekérdezési teljesítmény finomhangolása](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) című cikkben részletesebben dokumentáljuk.
+Ez a cikk bemutatja, hogyan lehet profilt felvenni az SQL-lekérdezés teljesítményére Azure Cosmos DBon. Ez `QueryMetrics` a profilkészítés a .net SDK-ból beolvasott használatával végezhető el, és részletesen itt olvasható. A [QueryMetrics](/dotnet/api/microsoft.azure.documents.querymetrics) egy erősen begépelt objektum, amely információkat nyújt a háttérbeli lekérdezés végrehajtásáról. Ezeket a metrikákat a [lekérdezési teljesítmény finomhangolása](./sql-api-query-metrics.md) című cikkben részletesebben dokumentáljuk.
 
 ## <a name="set-the-feedoptions-parameter"></a>A FeedOptions paraméter beállítása
 
-A [DocumentClient. CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) összes túlterhelése egy opcionális [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) paramétert is igénybe veheti. Ez a beállítás lehetővé teszi, hogy a lekérdezés-végrehajtás beállítható és paraméteres legyen. 
+A [DocumentClient. CreateDocumentQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentquery) összes túlterhelése egy opcionális [FeedOptions](/dotnet/api/microsoft.azure.documents.client.feedoptions) paramétert is igénybe veheti. Ez a beállítás lehetővé teszi, hogy a lekérdezés-végrehajtás beállítható és paraméteres legyen. 
 
-Az SQL-lekérdezés végrehajtási metrikáinak összegyűjtéséhez be kell állítania a [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) paramétert [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) a FeedOptions `true` . A True értékre állításával `PopulateQueryMetrics` a rendszer a `FeedResponse` megfelelőt fogja tartalmazni `QueryMetrics` . 
+Az SQL-lekérdezés végrehajtási metrikáinak összegyűjtéséhez be kell állítania a [PopulateQueryMetrics](/dotnet/api/microsoft.azure.documents.client.feedoptions.populatequerymetrics#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) paramétert [FeedOptions](/dotnet/api/microsoft.azure.documents.client.feedoptions) a FeedOptions `true` . A True értékre állításával `PopulateQueryMetrics` a rendszer a `FeedResponse` megfelelőt fogja tartalmazni `QueryMetrics` . 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>Lekérdezési metrikák beolvasása a AsDocumentQuery ()
-Az alábbi mintakód bemutatja, hogyan kérhet le mérőszámokat a [AsDocumentQuery ()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) metódus használatakor:
+Az alábbi mintakód bemutatja, hogyan kérhet le mérőszámokat a [AsDocumentQuery ()](/dotnet/api/microsoft.azure.documents.linq.documentqueryable.asdocumentquery) metódus használatakor:
 
 ```csharp
 // Initialize this DocumentClient and Collection
@@ -63,7 +63,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>QueryMetrics összesítése
 
-Az előző szakaszban figyelje meg, hogy a [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) metódusnak több hívása is volt. Minden hívás egy olyan `FeedResponse` objektumot adott vissza, amely a `QueryMetrics` lekérdezés minden folytatásához tartalmaz egy-egy szótárt. Az alábbi példa bemutatja, hogyan összesítheti ezeket a `QueryMetrics` LINQ használatával:
+Az előző szakaszban figyelje meg, hogy a [ExecuteNextAsync](/dotnet/api/microsoft.azure.documents.linq.idocumentquery-1.executenextasync) metódusnak több hívása is volt. Minden hívás egy olyan `FeedResponse` objektumot adott vissza, amely a `QueryMetrics` lekérdezés minden folytatásához tartalmaz egy-egy szótárt. Az alábbi példa bemutatja, hogyan összesítheti ezeket a `QueryMetrics` LINQ használatával:
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -130,7 +130,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>Költséges lekérdezések
 
-Az egyes lekérdezések által felhasznált kérelmek mennyiségét rögzítheti a nagy átviteli sebességet használó költséges lekérdezések vagy lekérdezések vizsgálatához. A kérések díját a [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) tulajdonsággal kérheti le `FeedResponse` . Ha többet szeretne megtudni arról, hogyan kérheti le a kérelmek díját a Azure Portal és a különböző SDK-k használatával, tekintse meg [a kérelem egységének megkeresése](find-request-unit-charge.md) című cikket.
+Az egyes lekérdezések által felhasznált kérelmek mennyiségét rögzítheti a nagy átviteli sebességet használó költséges lekérdezések vagy lekérdezések vizsgálatához. A kérések díját a [RequestCharge](/dotnet/api/microsoft.azure.documents.client.feedresponse-1.requestcharge) tulajdonsággal kérheti le `FeedResponse` . Ha többet szeretne megtudni arról, hogyan kérheti le a kérelmek díját a Azure Portal és a különböző SDK-k használatával, tekintse meg [a kérelem egységének megkeresése](find-request-unit-charge.md) című cikket.
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -232,11 +232,11 @@ WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, 
 
 Ez a lekérdezés mostantól elérhető az indexből.
 
-A lekérdezési teljesítmény finomhangolásával kapcsolatos további tudnivalókért tekintse meg a [lekérdezési teljesítmény finomhangolása](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) című cikket.
+A lekérdezési teljesítmény finomhangolásával kapcsolatos további tudnivalókért tekintse meg a [lekérdezési teljesítmény finomhangolása](./sql-api-query-metrics.md) című cikket.
 
-## <a name="references"></a><a id="References"></a>Hivatkozások
+## <a name="references"></a><a id="References"></a>Referencia
 
-- [Azure Cosmos DB SQL-specifikáció](https://go.microsoft.com/fwlink/p/?LinkID=510612)
+- [Azure Cosmos DB SQL-specifikáció](./sql-query-getting-started.md)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 - [JSON](https://json.org/)
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 

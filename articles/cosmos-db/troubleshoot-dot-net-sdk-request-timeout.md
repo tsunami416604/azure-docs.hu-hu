@@ -8,12 +8,12 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0c760a3a2f6300108c1739f18ef9fa97a40dd833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211121e21502e9cd4929169053a8ad58a9d7b21b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021935"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476926"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>A .NET SDK-kérelmek időtúllépési kivételeinek diagnosztizálása és megoldása Azure Cosmos DB
 A HTTP 408 hiba akkor fordul elő, ha az SDK nem tudta befejezni a kérelmet az időkorlát lejárta előtt.
@@ -28,7 +28,7 @@ Az `CosmosClientOptions.RequestTimeout` (vagy `ConnectionPolicy.RequestTimeout` 
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-Az SDK-ban az összes aszinkron művelethez választható CancellationToken paraméter tartozik. Ez a [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) paraméter a teljes műveletben, az összes hálózati kérelemben használatos. A hálózati kérelmek között előfordulhat, hogy a lemondási jogkivonat be van jelölve, és egy művelet meg lett szakítva, ha a kapcsolódó jogkivonat lejárt. A lemondási tokent a művelet hatókörében várhatóan várt időkorlát meghatározására kell használni.
+Az SDK-ban az összes aszinkron művelethez választható CancellationToken paraméter tartozik. Ez a [CancellationToken](/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) paraméter a teljes műveletben, az összes hálózati kérelemben használatos. A hálózati kérelmek között előfordulhat, hogy a lemondási jogkivonat be van jelölve, és egy művelet meg lett szakítva, ha a kapcsolódó jogkivonat lejárt. A lemondási tokent a művelet hatókörében várhatóan várt időkorlát meghatározására kell használni.
 
 > [!NOTE]
 > A `CancellationToken` paraméter egy olyan mechanizmus, amelyben a könyvtár a megszakítást fogja ellenőriznie, ha [nem okoz érvénytelen állapotot](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/). Előfordulhat, hogy a művelet nem szakítja meg pontosan, ha a megszakítás során megadott idő fel van állítva. Ehelyett az idő letelte után megszakítja a biztonsági mentést.

@@ -9,30 +9,30 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 686c1e37e093a358bb5122fbfeccdfd98eb301ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2632d5c4fe637222cb6248d35671057430d935e7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804231"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477317"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring-adatv2](sql-api-sdk-java-spring-v2.md)
-> * [Spring-adatforrások v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-összekötő](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -43,7 +43,7 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 >
 > Íme három lépés a gyors kezdéshez!
 > 1. Telepítse a [minimális támogatott Java-futtatókörnyezetet, a JDK 8-as verzióját,](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) hogy használhassa az SDK-t.
-> 2. A [Azure Cosmos db Java SDK v4-hez készült gyors útmutatóban](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) megismerheti a Maven-összetevők elérését, és végigvezeti az alapszintű Azure Cosmos db kérelmeken.
+> 2. A [Azure Cosmos db Java SDK v4-hez készült gyors útmutatóban](./create-sql-api-java.md) megismerheti a Maven-összetevők elérését, és végigvezeti az alapszintű Azure Cosmos db kérelmeken.
 > 3. Az alkalmazáshoz tartozó SDK optimalizálásához olvassa el a Azure Cosmos DB Java SDK v4 [teljesítményével kapcsolatos tippeket](performance-tips-java-sdk-v4-sql.md) és [hibaelhárítási](troubleshoot-java-sdk-v4-sql.md) útmutatókat.
 >
 > A [Azure Cosmos db Workshops és Labs](https://aka.ms/cosmosworkshop) egy másik nagyszerű erőforrás a Azure Cosmos db Java SDK v4 használatának megismeréséhez.
@@ -54,9 +54,9 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 | Tartalom | Hivatkozás |
 |---|---|
 |**SDK letöltése**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API-dokumentáció** | [Java API-referenciák dokumentációja](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable&preserve-view=true) |
+|**API-dokumentáció** | [Java API-referenciák dokumentációja](/java/api/overview/azure/cosmosdb/client?preserve-view=true&view=azure-java-stable) |
 |**Közreműködés az SDK-val** | [Azure SDK a Java központi tárházhoz a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
-|**Első lépések** | [Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-beli adatkezeléshez](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [GitHub-tárház a gyors üzembe helyezési kóddal](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**Első lépések** | [Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-beli adatkezeléshez](./create-sql-api-java.md) <br> [GitHub-tárház a gyors üzembe helyezési kóddal](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**Alapszintű kódok** | [Azure Cosmos DB: Java-példák az SQL API-hoz](sql-api-java-sdk-samples.md) <br> [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Konzolos alkalmazás változási hírcsatornával**| [Az adatcsatorna módosítása – Java SDK v4 minta](create-sql-api-java-changefeed.md) <br> [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Webalkalmazás mintája**| [Webalkalmazás létrehozása Java SDK v4 használatával](sql-api-java-application.md) <br> [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
@@ -72,4 +72,4 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)] 
 
 ## <a name="next-steps"></a>Következő lépések
-További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.
+A Cosmos DB-ről a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás oldalán tekinthet meg további információt.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78addb76e2ce7a2679358e241650cc5cc827791f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461617"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495927"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions alkalmazások összekötése az adatfeldolgozáshoz
 
@@ -186,26 +186,28 @@ A következő lehetőségek egyikével állíthatja be az Azure Function alkalma
 
 A korábbi példákból származó Azure Function csontváz megköveteli, hogy egy tulajdonosi jogkivonatot továbbítson az Azure Digital Twins szolgáltatással való hitelesítéshez. A tulajdonosi jogkivonat átadásának biztosítása érdekében be kell állítania [Managed Service Identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md) funkciót a Function alkalmazáshoz. Ezt csak egyszer kell elvégezni az egyes functions-alkalmazásokhoz.
 
-Létrehozhatja a rendszer által felügyelt identitást, és hozzárendelheti a Function alkalmazás identitását az Azure Digital _Twins tulajdonos (előzetes verzió)_ szerepkörhöz az Azure Digital Twins-példányhoz. Ezzel a művelettel a példányban az adatsík-tevékenységek elvégzéséhez a függvény alkalmazás engedélyének kell megadnia. Ezután az Azure Digital Twins-példány URL-címét elérhetővé teheti a függvény számára egy környezeti változó beállításával.
+Létrehozhatja a rendszer által felügyelt identitást, és hozzárendelheti a Function alkalmazás identitását az Azure Digital _**Twins-adattulajdonosi**_ szerepkörhöz az Azure Digital Twins-példányhoz. Ezzel a művelettel a példányban az adatsík-tevékenységek elvégzéséhez a függvény alkalmazás engedélyének kell megadnia. Ezután az Azure Digital Twins-példány URL-címét elérhetővé teheti a függvény számára egy környezeti változó beállításával.
 
- A parancsok futtatásához használja a [Azure Cloud Shell](https://shell.azure.com) .
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
+
+A parancsok futtatásához használja a [Azure Cloud Shell](https://shell.azure.com) .
 
 A rendszerfelügyelt identitás létrehozásához használja a következő parancsot. Jegyezze fel a kimenet _principalId_ mezőjét.
 
-```azurecli 
+```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-Az alábbi parancs _principalId_ értékének használatával rendelje hozzá a Function alkalmazás identitását az Azure Digital _Twins tulajdonos (előzetes verzió)_ szerepkörhöz az Azure Digital Twins-példányhoz.
+A következő parancs _principalId_ értékének használatával rendelje hozzá a Function alkalmazás identitását az Azure Digital _Twins-adattulajdonosi_ szerepkörhöz az Azure Digital Twins-példányhoz.
 
-```azurecli 
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive 
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
 Végül elérhetővé teheti az Azure Digital Twins-példány URL-címét a függvény számára egy környezeti változó beállításával. A környezeti változók beállításával kapcsolatos további információkért lásd: [*környezeti változók*](/sandbox/functions-recipes/environment-variables). 
 
 > [!TIP]
 > Az Azure digitális Twins-példány URL-címe az Azure digitális Twins-példány *állomásneve* *https://* hozzáadásával történik. Az állomásnév, valamint a példány összes tulajdonságának megtekintéséhez futtathatja a parancsot `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
 
-```azurecli 
+```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 ### <a name="option-2-set-up-security-access-for-the-azure-function-app-using-azure-portal"></a>2. lehetőség: biztonsági hozzáférés beállítása az Azure Function alkalmazáshoz Azure Portal használatával
@@ -241,7 +243,7 @@ A megnyíló _szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ lapon
 * _Hatókör_: Erőforráscsoport
 * _Előfizetés_: válassza ki az Azure-előfizetését
 * _Erőforráscsoport_: válassza ki az erőforráscsoportot a legördülő listából
-* _Szerepkör_: válassza az _Azure Digital Twins-tulajdonos (előzetes verzió)_ lehetőséget a legördülő listából
+* _Szerepkör_: válassza ki a legördülő listából az _Azure digitális Twins-adatok tulajdonosát_
 
 Ezután mentse a részleteket a _Save (Mentés_ ) gomb megnyomásával.
 
@@ -287,7 +289,7 @@ Az Alkalmazásbeállítások az _értesítések_ ikon kiválasztásával tekinth
 
 :::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy Azure-függvény Azure-beli digitális Ikrekhez való használatához szükséges lépéseket követte. Ezután előfizethet az Azure-függvény Event Gridre, hogy figyelje a végpontot. A végpont a következő lehet:
 * Az Azure digitális Twins-hoz csatlakoztatott Event Grid végpontok az Azure digitális ikrektől érkező üzenetek feldolgozására (például a telemetria üzenetek, a [digitális ikrek](concepts-twins-graph.md) által generált üzenetek a Twin Graph-ban vagy a életciklus-üzenetek esetében)

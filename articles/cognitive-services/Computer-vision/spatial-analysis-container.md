@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277291"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496128"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 1.0.8 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
+Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 1.0.9 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
 
 Ubuntu Server 18,04:
 ```bash
@@ -286,10 +286,10 @@ Frissítse a csomagok listáját az eszközön.
 sudo apt-get update
 ```
 
-A 1.0.8 kiadásának telepítése:
+A 1.0.9 kiadásának telepítése:
 
 ```bash
-sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
 ```
 
 A következő lépésként regisztrálja a gazdagépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)használatával.
@@ -314,7 +314,7 @@ Az alábbi lépések segítségével helyezheti üzembe a tárolót az Azure CLI
 
 ### <a name="iot-deployment-manifest"></a>IoT üzembe helyezési jegyzéke
 
-Ha több gazdagépen szeretné egyszerűsíteni a tárolók telepítését, létrehozhat egy üzembe helyezési jegyzékfájlt a tároló-létrehozási beállítások és a környezeti változók megadásához. A GitHubon megtalálhatja az [üzembe helyezési jegyzék](https://go.microsoft.com/fwlink/?linkid=2142179)egy példáját.
+Ha több gazdagépen szeretné egyszerűsíteni a tárolók telepítését, létrehozhat egy üzembe helyezési jegyzékfájlt a tároló-létrehozási beállítások és a környezeti változók megadásához. Az [Azure stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) és  [más asztali gépek](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) githubon való üzembe helyezésére vonatkozó példa a telepítési jegyzékre mutat.
 
 A következő táblázat a IoT Edge modul által használt különféle környezeti változókat mutatja be. Ezeket a fent hivatkozott telepítési jegyzékfájlban is megadhatja a (z) `env` attribútumának használatával `spatialanalysis` :
 
@@ -335,17 +335,16 @@ A következő táblázat a IoT Edge modul által használt különféle környez
 > [!IMPORTANT]
 > A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
 
-Ha a minta [DeploymentManifest.jsa](https://go.microsoft.com/fwlink/?linkid=2142179) saját beállításaival és a műveletek kiválasztásával frissítette a fájlt, az alábbi [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) -paranccsal telepítheti a tárolót a gazdagépen IoT Edge modulként.
+Miután frissítette az [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179) vagy [egy asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) üzembe helyezési jegyzékét a saját beállításaival és a műveletek kiválasztásával, az alábbi [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) -paranccsal telepítheti a tárolót a gazdagépen IoT Edge modulként.
 
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |Paraméter  |Leírás  |
 |---------|---------|
-| `--deployment-id` | A központi telepítés új neve. |
 | `--hub-name` | Az Azure-IoT Hub neve. |
 | `--content` | A telepítési fájl neve. |
 | `--target-condition` | A gazdagéphez tartozó IoT Edge eszköz neve. |
@@ -386,7 +385,7 @@ Navigáljon a **tároló** szakaszhoz, vagy hozzon létre egy új tárolót, vag
 
 Kattintson a **sas-jogkivonat és URL-cím előállítása** elemre, és másolja a blob sas URL-címét. Cserélje le a `https` - `http` t, és tesztelje az URL-címet egy olyan böngészőben, amely támogatja a videolejátszás használatát.
 
-Cserélje le az `VIDEO_URL` [üzembe helyezési jegyzékben](https://go.microsoft.com/fwlink/?linkid=2142179) a létrehozott URL-címet az összes gráfhoz. Állítsa `VIDEO_IS_LIVE` be `false` , majd telepítse újra a térbeli elemzési tárolót a frissített jegyzékfájl használatával. Lásd az alábbi példát.
+Cserélje le a kifejezést `VIDEO_URL` a [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy egy másik, a létrehozott URL-címmel rendelkező [asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) üzembe helyezési jegyzékfájljában az összes gráfhoz. Állítsa `VIDEO_IS_LIVE` be `false` , majd telepítse újra a térbeli elemzési tárolót a frissített jegyzékfájl használatával. Lásd az alábbi példát.
 
 A térbeli elemzési modul elkezdi a videofájl felhasználását, és folyamatosan automatikusan újrajátszható.
 
@@ -419,7 +418,7 @@ A térbeli elemzési tároló számlázási adatokat küld az Azure-nak az Azure
 Az Azure Cognitive Services-tárolók nem rendelkeznek licenccel a mérési/számlázási végponthoz való csatlakozás nélkül. Engedélyeznie kell a tárolókat, hogy mindig a számlázási végponttal kommunikáljanak a számlázási adatokkal. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett videót vagy képet a Microsoftnak.
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 

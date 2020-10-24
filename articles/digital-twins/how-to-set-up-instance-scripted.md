@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10d4d07a61bc4ebec789d53e4271a3bcdc7ba76b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205548"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495015"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
 
@@ -43,7 +43,7 @@ Ez a cikk egy Azure digitális Twins-kód minta használatával helyez üzembe e
 
 Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépései.
 1. Nyissa meg a böngésző [Azure Cloud Shell](https://shell.azure.com/) ablakát. Jelentkezzen be a következő parancs használatával:
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
     Ha a parancssori felület megnyithatja az alapértelmezett böngészőt, akkor az egy Azure-beli bejelentkezési oldal betöltésével végezhető el. Ellenkező esetben nyisson meg egy böngészőt, *https://aka.ms/devicelogin* és adja meg a terminálon megjelenő engedélyezési kódot.
@@ -60,11 +60,11 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
 
 4. Futtassa a szkriptet a Cloud Shell ablakban a parancs elküldésével `./deploy.ps1` . Az alábbi parancsot másolhatja (emlékeztetheti rá, hogy beilleszti Cloud Shellba, a **CTRL + SHIFT + v billentyűkombinációt** használhatja Windows és Linux rendszeren, vagy a **cmd + SHIFT + v** MacOS rendszeren. Használhatja a helyi menüt is).
 
-    ```azurecli
+    ```azurecli-interactive
     ./deploy.ps1
     ```
 
-    A szkript létrehoz egy Azure Digital Twins-példányt, és hozzárendeli az Azure-felhasználót az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkörhöz a példányon.
+    A szkript létrehoz egy Azure Digital Twins-példányt, és hozzárendeli az Azure-felhasználót az *Azure Digital Twins adattulajdonosi* szerepköréhez a példányon.
 
     Ahogy a parancsfájl az automatikus telepítés lépésein fut, a rendszer a következő értékek megadását kéri:
     * A példány: a használni kívánt Azure-előfizetés *előfizetés-azonosítója*
@@ -81,10 +81,10 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
 Ha a parancsfájl sikeresen befejeződik, a rendszer a végső kinyomatot fogja mondani `Deployment completed successfully` . Ellenkező esetben oldja meg a hibaüzenetet, és futtassa újra a parancsfájlt. A művelet megkerüli a már elvégzett lépéseket, és ismét megkezdi a bevitelt arra a pontra, ahol abbahagyta a műveletet.
 
 > [!NOTE]
-> A parancsfájl jelenleg a szükséges felügyeleti szerepkört rendeli hozzá az Azure Digital Twins-ben (*Azure Digital Twins-tulajdonos (előzetes verzió)*) ugyanahhoz a felhasználóhoz, amely a parancsfájlt a Cloud Shellról futtatja. Ha ezt a szerepkört a példányt kezelő másnak szeretné hozzárendelni, ezt most a Azure Portal ([utasítások](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) vagy a CLI ([utasítások](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) segítségével teheti meg.
+> A parancsfájl jelenleg a szükséges felügyeleti szerepkört rendeli hozzá az Azure Digital Twins-ben (*Azure digitális Twins-adattulajdonos*) ugyanahhoz a felhasználóhoz, amely a szkriptet futtatja Cloud Shellról. Ha ezt a szerepkört a példányt kezelő másnak szeretné hozzárendelni, ezt most a Azure Portal ([utasítások](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) vagy a CLI ([utasítások](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) segítségével teheti meg.
 
 >[!NOTE]
->Jelenleg létezik egy **ismert probléma** a parancsfájlokkal rendelkező telepítővel, amelyben egyes felhasználók (különösen a személyes [Microsoft-fiókok (MSAs)](https://account.microsoft.com/account)felhasználói) megtalálják az ** _Azure Digital Twins tulajdonosának (előzetes verzió)_ szerepkör-hozzárendelését**.
+>Jelenleg létezik egy **ismert probléma** a parancsfájlokkal ellátott telepítővel, amelyben egyes felhasználók (különösen a személyes [Microsoft-fiókokkal (MSAs)](https://account.microsoft.com/account)rendelkező felhasználók) **nem hozták létre a szerepkör-hozzárendelést az _Azure Digital Twins-beli adattulajdonoshoz_ **.
 >
 >A szerepkör-hozzárendelést a jelen cikk későbbi, [*felhasználói szerepkör-hozzárendelés ellenőrzése*](#verify-user-role-assignment) szakaszában ellenőrizheti, és – szükség esetén – a szerepkör-hozzárendelés manuális beállítása a [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) vagy a [parancssori](how-to-set-up-instance-cli.md#set-up-user-access-permissions)felület használatával.
 >

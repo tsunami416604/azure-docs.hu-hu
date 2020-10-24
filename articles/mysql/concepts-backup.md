@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 51c177af10713dfb35857097b267638156f0cc5d
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 9514d0fb6c9cbc95b82f13ffb576703893f303f2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057535"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484559"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL
 
@@ -38,7 +38,7 @@ A tranzakciós naplók biztonsági mentése öt percenként történik.
 Az általános célú tárolás a háttérbeli tároló, amely a [általános célú](concepts-pricing-tiers.md) és a [memóriára optimalizált platform](concepts-pricing-tiers.md) -kiszolgálót támogatja. A 4 TB-os általános célú tárolóval rendelkező kiszolgálók esetében a teljes biztonsági mentés hetente egyszer történik. A különbözeti biztonsági mentések naponta kétszer történnek. A tranzakciós napló biztonsági mentései öt percenként történnek. Az általános célú, 4 TB-os tárterületre vonatkozó biztonsági másolatok nem pillanatkép-alapúak, és az i/o-sávszélességet használják a biztonsági mentés időpontjában. A 4 TB-os tárhelyen lévő nagyméretű adatbázisok (> 1TB) esetében javasoljuk, hogy vegye figyelembe a következőt: 
 
 - További IOPs kiépítés a Backup IOs vagy a
-- Azt is megteheti, hogy olyan általános célú tárhelyre telepít át, amely akár 16 TB-nyi tárhelyet is támogat, ha a mögöttes tárolási infrastruktúra elérhető az Ön által választott [Azure-régiókban](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) A legfeljebb 16 TB-nyi tárterületet támogató általános célú tárterületre nem vonatkozik további díj. A 16 TB-os tárhelyre való áttelepítéssel kapcsolatos segítségért nyisson meg egy támogatási jegyet Azure Portalról. 
+- Azt is megteheti, hogy olyan általános célú tárhelyre telepít át, amely akár 16 TB-nyi tárhelyet is támogat, ha a mögöttes tároló-infrastruktúra elérhető az Ön által preferált [Azure](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)- A legfeljebb 16 TB-nyi tárterületet támogató általános célú tárterületre nem vonatkozik további díj. A 16 TB-os tárhelyre való áttelepítéssel kapcsolatos segítségért nyisson meg egy támogatási jegyet Azure Portalról. 
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Általános célú Storage-kiszolgálók legfeljebb 16 TB tárhellyel
 Az [Azure-régiók](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)egy részhalmazában az újonnan kiosztott kiszolgálók az általános célú tárolást akár 16 TB tárhellyel is támogathatják. Ez azt jelenti, hogy a tárterület akár 16 TB tárhellyel is az alapértelmezett általános célú tárterület az összes olyan [régió](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) esetében, ahol ez támogatott. A 16 TB-os tárolási kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek későbbi biztonsági mentései csak különbségi biztonsági mentések lesznek. 
@@ -55,12 +55,16 @@ A biztonsági másolatok megőrzési időszaka azt szabályozza, hogy az adott i
 - A legfeljebb 4 TB-os tárterülettel rendelkező kiszolgálók legfeljebb 2 teljes adatbázis-biztonsági mentést, az összes különbözeti biztonsági mentést és a tranzakciónapló biztonsági másolatait a legkorábbi teljes adatbázis biztonsági mentése óta hajtják végre.
 -   A legfeljebb 16 TB tárhellyel rendelkező kiszolgálók megőrzik a teljes adatbázis-pillanatképet, a különbözeti pillanatképeket és a tranzakciónapló biztonsági mentését az elmúlt 8 napban.
 
+#### <a name="long-term-retention"></a>Hosszú távú megőrzés
+A biztonsági másolatok hosszú távú megőrzése a 35 napnál hosszabb ideig még nem támogatott a szolgáltatás általi natív módon. Lehetősége van arra, hogy a mysqldump használatával készítsen biztonsági másolatokat, és tárolja őket a hosszú távú megőrzés érdekében. A támogatási csapatunk [részletesen](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) ismerteti, hogy miként lehet elérni. 
+
+
 ### <a name="backup-redundancy-options"></a>A Backup redundancia beállításai
 
 Azure Database for MySQL rugalmasságot biztosít a helyileg redundáns vagy geo-redundáns biztonsági mentési tárolók közötti választáshoz a általános célú és a memóriára optimalizált rétegekben. Ha a biztonsági mentések a földrajzilag redundáns biztonsági mentési tárolóban tárolódnak, azok nem csak abban a régióban vannak tárolva, amelyben a kiszolgáló üzemeltetve van, de egy [párosított adatközpontba](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)is replikálódnak. Ez jobb védelmet nyújt, és lehetővé teszi a kiszolgáló egy másik régióban való visszaállítását vészhelyzet esetén. Az alapszintű csomag csak a helyileg redundáns biztonsági mentési tárhelyet kínálja.
 
-> [!IMPORTANT]
-> A helyileg redundáns vagy geo-redundáns tárterület a biztonsági mentéshez való konfigurálása csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően nem módosítható a biztonsági mentési tár redundáns beállítása.
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Áthelyezés helyileg redundáns biztonsági mentési tárolóba
+A helyileg redundáns vagy geo-redundáns tárterület a biztonsági mentéshez való konfigurálása csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően nem módosítható a biztonsági mentési tár redundáns beállítása. Ahhoz, hogy a biztonsági mentési tárhelyet a helyileg redundáns tárolóból a Geo-redundáns tárolóba helyezze át, egy új kiszolgáló létrehozása és az adatok a [dump és a Restore](concepts-migrate-dump-restore.md) használatával történő áttelepítése az egyetlen támogatott lehetőség.
 
 ### <a name="backup-storage-cost"></a>Biztonsági mentési tárolási díj
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0dfc93987fb2ca25b9e397e4aa91adcaaafd8a38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205488"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478845"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
 
@@ -75,7 +75,7 @@ Először nyissa meg az Azure Digital Twins-példány oldalát a Azure Portal. A
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Az alábbi *szerepkör-hozzárendelés hozzáadása* lapon adja meg az értékeket (az Azure-előfizetéshez [megfelelő engedélyekkel](#prerequisites-permission-requirements) rendelkező felhasználónak kell elvégeznie):
-* **Szerepkör**: válassza az *Azure Digital Twins-tulajdonos (előzetes verzió)* lehetőséget a legördülő menüből
+* **Szerepkör**: válassza ki a legördülő menüből az *Azure digitális Twins-adatok tulajdonosa* lehetőséget
 * **Hozzáférés kiosztása**: válassza ki az *Azure ad-felhasználó,-csoport vagy-szolgáltatásnév* elemet a legördülő menüből
 * **Válassza**a következőt: keresse meg a hozzárendelni kívánt felhasználó nevét vagy e-mail-címét. Az eredmény kiválasztásakor a felhasználó megjelenik a *kiválasztott tagok* szakaszban.
 
@@ -91,7 +91,7 @@ Ha végzett a részletek beírásával, nyomja meg a *Save (Mentés* ) gombot.
 
 ### <a name="verify-success"></a>Sikeres ellenőrzés
 
-Megtekintheti a *hozzáférés-vezérlés (iam) > szerepkör-* hozzárendelések alatt beállított szerepkör-hozzárendelést. A felhasználónak az *Azure Digital Twins-tulajdonos (előzetes verzió)* szerepkörrel kell megjelennie a listában. 
+Megtekintheti a *hozzáférés-vezérlés (iam) > szerepkör-* hozzárendelések alatt beállított szerepkör-hozzárendelést. A felhasználónak az *Azure digitális Twins-adattulajdonosi*szerepkörrel kell megjelennie a listában. 
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 

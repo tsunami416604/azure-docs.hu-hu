@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bd6c504970d4991ee7d5c44b091a5d91c9d0a166
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ce922e3ce39bc3df9f4c242558644922e5713300
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461396"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494814"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -48,19 +48,19 @@ Az alábbi példa bemutatja, hogyan hozhat létre Event Grid típusú végpontot
 
 Először hozzon létre egy Event Grid-témakört. Használhatja az alábbi parancsot, vagy további részletekben tekintse meg a lépéseket. Ehhez látogasson el a Event Grid *Egyéni események* rövid útmutatójának [ *Egyéni témakör létrehozása* szakaszára](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) .
 
-```azurecli
+```azurecli-interactive
 az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
 ```
 
 > [!TIP]
 > Futtassa a következő parancsot az Azure-régiók azon neveinek listájához, amelyek átadhatók az Azure CLI parancsaihoz:
-> ```azurecli
+> ```azurecli-interactive
 > az account list-locations -o table
 > ```
 
 Miután létrehozta a témakört, összekapcsolhatja azt az Azure Digital Twins-val a következő [Azure digitális Twins CLI-paranccsal](how-to-use-cli.md):
 
-```azurecli
+```azurecli-interactive
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
@@ -77,12 +77,12 @@ Először hozza létre a végpontként használni kívánt erőforrásokat. A k�
 Ezután használja a következő parancsokat a végpontok létrehozásához az Azure Digital Twinsban: 
 
 * Service Bus témakör végpontjának hozzáadása (egy előre létrehozott Service Bus erőforrást igényel)
-```azurecli 
+```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
 * Event Hubs végpont hozzáadása (előre létrehozott Event Hubs erőforrást igényel)
-```azurecli
+```azurecli-interactive
 az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
@@ -243,11 +243,9 @@ Itt láthatók a támogatott útválasztási szűrők. A *szűrő szöveg sémá
 
 A végpontok és útvonalak az Azure Digital Twins CLI használatával is kezelhetők. További információ a parancssori felület használatáról és a rendelkezésre álló parancsokról [*: útmutató: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)

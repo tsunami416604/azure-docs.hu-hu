@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 469235957ebe26dd44cc6ce464a68167629099ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947233"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476144"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Egyetlen kiszolgáló Azure Database for PostgreSQL
 
@@ -81,8 +81,8 @@ Az egykiszolgálós szolgáltatás beépített teljesítmény-figyelési és ria
 
 A szolgáltatás a PostgreSQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a PostgreSQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 
-- **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközök használatával, mint a Pg_dump és az Pg_restore a leggyorsabb áttelepítési módot biztosítanak. A részletekért lásd: az [áttelepítés a dump és a Restore használatával](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore) .
-- **Azure Database Migration Service** – az egykiszolgálós, minimális állásidővel rendelkező, zökkenőmentes és egyszerűsített áttelepítéshez Azure Database Migration Service is kihasználható. Lásd a DMS-t a [portálon](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) és a DMS-n [keresztül a parancssori](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)felületen
+- **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközök használatával, mint a Pg_dump és az Pg_restore a leggyorsabb áttelepítési módot biztosítanak. A részletekért lásd: az [áttelepítés a dump és a Restore használatával](./howto-migrate-using-dump-and-restore.md) .
+- **Azure Database Migration Service** – az egykiszolgálós, minimális állásidővel rendelkező, zökkenőmentes és egyszerűsített áttelepítéshez Azure Database Migration Service is kihasználható. Lásd a DMS-t a [portálon](../dms/tutorial-postgresql-azure-postgresql-online-portal.md) és a DMS-n [keresztül a parancssori](../dms/tutorial-postgresql-azure-postgresql-online.md)felületen
 
 ## <a name="contacts"></a>Kapcsolattartók
 
@@ -94,8 +94,7 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy elolvasta Azure Database for PostgreSQL egykiszolgálós üzembe helyezési mód bevezetését, készen áll a következőre:
 - Hozza létre az első kiszolgálót.
-  

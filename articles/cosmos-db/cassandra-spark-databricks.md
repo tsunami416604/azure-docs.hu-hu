@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 30bd3187973de204f27a3be3862351550d6a56f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 861e3994ad9aa0d7c6fd4dee68631f78418c8a64
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260474"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482570"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Cosmos DB Cassandra API adatok elérése a Azure Databricks
 
-Ez a cikk részletesen ismerteti, hogyan workwith Azure Cosmos DB Cassandra API a Sparkból a [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks).
+Ez a cikk részletesen ismerteti, hogyan workwith Azure Cosmos DB Cassandra API a Sparkból a [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,7 +25,7 @@ Ez a cikk részletesen ismerteti, hogyan workwith Azure Cosmos DB Cassandra API 
 
 * [Tekintse át Azure Cosmos DB Cassandra APIhoz való csatlakozás alapjait](cassandra-spark-generic.md)
 
-* [Azure Databricks-fürt kiépítése](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
+* [Azure Databricks-fürt kiépítése](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)
 
 * [Tekintse át a Cassandra API használatáról szóló kód mintáit](cassandra-spark-generic.md#next-steps)
 
@@ -64,6 +64,6 @@ Az alábbi hivatkozások segítséget nyújtanak a Spark Scala-programok a Azure
 * [Spark Scala-program futtatása automatizált feladatokként Azure Databricks](https://docs.azuredatabricks.net/user-guide/jobs.html)
 * [A Cassandra API használatához használható mintakód-minták teljes listája](cassandra-spark-generic.md#next-steps)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg [Cassandra API fiók, adatbázis és egy Java-alkalmazás használatával létrehozott táblázat létrehozásával](create-cassandra-api-account-java.md) .

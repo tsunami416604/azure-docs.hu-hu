@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254074"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496108"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetria és hibaelhárítás
 
@@ -23,9 +23,9 @@ A térbeli elemzés olyan funkciókat tartalmaz, amelyekkel monitorozható a ren
 
 ## <a name="enable-visualizations"></a>Vizualizációk engedélyezése
 
-Ha engedélyezni szeretné az AI-elemzések eseményeinek vizualizációját egy videó keretén belül, a `.debug` [térbeli elemzési művelet](spatial-analysis-operations.md)verzióját kell használnia. Négy hibakeresési művelet érhető el.
+Ha engedélyezni szeretné az AI-elemzések eseményeinek vizualizációját egy videó keretén belül, egy asztali gépen kell használnia `.debug` egy [térbeli elemzési művelet](spatial-analysis-operations.md) verzióját. A vizualizáció Azure Stack peremhálózati eszközökön nem lehetséges. Négy hibakeresési művelet érhető el.
 
-Szerkessze az [üzembe helyezési jegyzéket](https://go.microsoft.com/fwlink/?linkid=2142179) , hogy a megfelelő értéket használja a `DISPLAY` környezeti változóhoz. Meg kell egyeznie a `$DISPLAY` gazdaszámítógépen lévő változóval. Az üzembe helyezési jegyzék frissítése után telepítse újra a tárolót.
+Ha az eszköz nem Azure Stack peremhálózati eszköz, szerkessze az [asztali gépek](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) telepítési jegyzékfájlját, hogy a megfelelő értéket használja a `DISPLAY` környezeti változóhoz. Meg kell egyeznie a `$DISPLAY` gazdaszámítógépen lévő változóval. Az üzembe helyezési jegyzék frissítése után telepítse újra a tárolót.
 
 Előfordulhat, hogy az üzembe helyezés befejezése után át kell másolnia a `.Xauthority` fájlt a gazdagépről a tárolóba, majd újra kell indítania. Az alábbi példában a a `peopleanalytics` gazdaszámítógépen lévő tároló neve.
 
@@ -39,7 +39,7 @@ xhost +
 
 ## <a name="collect-system-health-telemetry"></a>Rendszerállapot-telemetria gyűjtése
 
-A My Graf egy nyílt forráskódú rendszerkép, amely térbeli analízissel működik, és a Microsoft Container Registryban érhető el. A következő bemeneteket veszi át, és elküldi őket a Azure Monitornak. A Graf modul a kívánt egyéni bemenetekkel és kimenetekkel is felépíthető. A a térbeli elemzésben szereplő, a [központi telepítési jegyzékfájl](https://go.microsoft.com/fwlink/?linkid=2142179)részét képező Graf-modul konfigurációja. Ez a modul nem kötelező, és eltávolítható a jegyzékfájlból, ha nincs rá szükség. 
+A My Graf egy nyílt forráskódú rendszerkép, amely térbeli analízissel működik, és a Microsoft Container Registryban érhető el. A következő bemeneteket veszi át, és elküldi őket a Azure Monitornak. A Graf modul a kívánt egyéni bemenetekkel és kimenetekkel is felépíthető. A a térbeli elemzésben a (fent hivatkozott) üzembe helyezési jegyzékfájl része. Ez a modul nem kötelező, és eltávolítható a jegyzékfájlból, ha nincs rá szükség. 
 
 Bemenetek 
 1. Térbeli elemzési mérőszámok
@@ -51,7 +51,7 @@ Bemenetek
 Kimenetek
 1. Azure Monitor
 
-A megadott térbeli analízis-kezelő modul a térbeli elemzési tároló által kibocsátott összes telemetria-adatmennyiséget Azure Monitor teszi közzé. Az Azure monitor előfizetéshez való hozzáadásával kapcsolatos információkért tekintse meg a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) .
+A megadott térbeli analízis-kezelő modul a térbeli elemzési tároló által kibocsátott összes telemetria-adatmennyiséget Azure Monitor teszi közzé. Az előfizetéshez Azure Monitor hozzáadásával kapcsolatos információkért tekintse meg a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) .
 
 A Azure Monitor beállítása után létre kell hoznia a hitelesítő adatokat, amelyek lehetővé teszik a modul számára a telemetria küldését. A Azure Portal használatával létrehozhat egy új szolgáltatásnevet, vagy az alábbi Azure CLI-paranccsal hozhat létre egyet.
 
@@ -68,14 +68,14 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-Az [üzembe helyezési jegyzékben](https://go.microsoft.com/fwlink/?linkid=2142179)keresse meg *a következő* értékeket, majd az előző lépésben adja meg az egyszerű szolgáltatásnév adatait, és végezze el az újbóli üzembe helyezést.
+Az [Azure stack Edge eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)üzembe helyezési jegyzékfájljában keresse *meg a következő* értékeket, és cserélje le az alábbi értékeket az előző lépésben megadott egyszerű szolgáltatásnév adataira, majd telepítse újra.
 
 ```json
 
 "telegraf": { 
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
 },
 "type": "docker",
 "env": {
@@ -105,19 +105,19 @@ Miután telepítette a Service Graf modult, a jelentett metrikák a Azure Monito
 
 | Esemény neve | Leírás|
 |------|---------|
-|archon_exit    |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva*állapotra módosítja.  |
-|archon_error   |A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.  |
-|InputRate  |Az a sebesség, amellyel a gráf feldolgozza a videó bemenetét. 5 percenként jelentett jelentést. | 
-|OutputRate     |Az a sebesség, amellyel a gráf kiadja az AI-bepillantást. 5 percenként jelentett jelentést. |
-|archon_allGraphsStarted | Elküldése, ha az összes gráf befejeződik. |
-|archon_configchange    | Egy gráf konfigurációjának módosításakor lett elküldve. |
-|archon_graphCreationFailed     |A rendszer akkor továbbítja, ha a jelentett gráf `graphId` nem indul el. |
-|archon_graphCreationSuccess    |Akkor lett elindítva, amikor a jelentett gráf `graphId` sikeresen elindul. |
-|archon_graphCleanup    | Akkor lett elküldve, amikor a jelentésben a jelentés `graphId` megtisztítása megtörtént, és kilép. |
-|archon_graphHeartbeat  |A szívverés minden percben elküldésre kerül a szaktudás minden gráfa esetében. |
+|archon_exit    |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva*állapotra módosítja.  |
+|archon_error   |A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.  |
+|InputRate  |Az a sebesség, amellyel a gráf feldolgozza a videó bemenetét. 5 percenként jelentett jelentést. | 
+|OutputRate     |Az a sebesség, amellyel a gráf kiadja az AI-bepillantást. 5 percenként jelentett jelentést. |
+|archon_allGraphsStarted | Elküldése, ha az összes gráf befejeződik. |
+|archon_configchange    | Egy gráf konfigurációjának módosításakor lett elküldve. |
+|archon_graphCreationFailed     |A rendszer akkor továbbítja, ha a jelentett gráf `graphId` nem indul el. |
+|archon_graphCreationSuccess    |Akkor lett elindítva, amikor a jelentett gráf `graphId` sikeresen elindul. |
+|archon_graphCleanup    | Akkor lett elküldve, amikor a jelentésben a jelentés `graphId` megtisztítása megtörtént, és kilép. |
+|archon_graphHeartbeat  |A szívverés minden percben elküldésre kerül a szaktudás minden gráfa esetében. |
 |archon_apiKeyAuthFail |Akkor küldi el a rendszer, ha a Computer Vision erőforrás-kulcs 24 óránál hosszabb ideig nem tudja hitelesíteni a tárolót, a következő okok miatt: nem kvóta, érvénytelen, offline. |
-|VideoIngesterHeartbeat     |Minden órában elküldjük, jelezve, hogy a videó stream a videó forrása, és az adott órában előforduló hibák száma. Minden gráf esetében jelenteni kell. |
-|VideoIngesterState | A jelentések *leálltak* vagy *megkezdődött* a video streaming szolgáltatásban.Minden gráf esetében jelenteni kell. |
+|VideoIngesterHeartbeat     |Minden órában elküldjük, jelezve, hogy a videó stream a videó forrása, és az adott órában előforduló hibák száma. Minden gráf esetében jelenteni kell. |
+|VideoIngesterState | A jelentések *leálltak* vagy *megkezdődött* a video streaming szolgáltatásban. Minden gráf esetében jelenteni kell. |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge eszköz hibaelhárítása
 
@@ -129,22 +129,17 @@ A `iotedge` futó modulok állapotát és naplóit a parancssori eszközzel is m
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>Naplófájlok gyűjtése a diagnosztikai tárolóval
 
-A térbeli elemzés olyan Docker-hibakeresési naplókat hoz létre, amelyeket a futásidejű problémák diagnosztizálásához, vagy a támogatási jegyek belefoglalásához használhat. A térbeli elemzési diagnosztikai modul elérhető a Microsoft Container Registryban a letöltéshez. A [minta üzembe helyezési jegyzékfájlban](https://go.microsoft.com/fwlink/?linkid=2142179)keresse meg a *diagnosztikai* modult.
+A térbeli elemzés olyan Docker-hibakeresési naplókat hoz létre, amelyeket a futásidejű problémák diagnosztizálásához, vagy a támogatási jegyek belefoglalásához használhat. A térbeli elemzési diagnosztikai modul elérhető a Microsoft Container Registryban a letöltéshez. A [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali számítógép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)jegyzékfájl-telepítési fájljában keresse meg a *diagnosztikai* modult.
 
 Az "env" szakaszban adja hozzá a következő konfigurációt:
 
 ```json
-"diagnostics": {  
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
-  }
+"diagnostics": {  
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
+  }
 ```    
-
->[!NOTE]
-> Ha nem egy Kubernetes-környezetben fut, cserélje le a naplózási modul tároló létrehozási beállításait a következőre:
->
->`"createOptions": "{\"HostConfig\": {\"Binds\": [\"/var/run/docker.sock:/var/run/docker.sock\",\"/usr/bin/docker:/usr/bin/docker\"],\"LogConfig\": {\"Config\": {\"max-size\": \"500m\"}}}}"`
 
 Ha egy távoli végpontra (például Azure Blob Storage) feltöltött naplókat szeretne optimalizálni, javasoljuk, hogy kis méretű fájlméretet tartson fenn. Tekintse meg az alábbi példát az ajánlott Docker-naplók konfigurálásához.
 
@@ -193,13 +188,13 @@ Azt is megteheti, hogy az IoT Edge modul Twin dokumentumán keresztül globális
 > A `diagnostics` modul nem befolyásolja a naplózási tartalmat, csak a meglévő naplók összegyűjtését, szűrését és feltöltését segíti.
 > A modul használatához a Docker API 1,40-es vagy újabb verziójára van szükség.
 
-A [minta telepítési jegyzékfájlja](https://go.microsoft.com/fwlink/?linkid=2142179) tartalmaz egy nevű modult `diagnostics` , amely összegyűjti és feltölti a naplókat. Ez a modul alapértelmezés szerint le van tiltva, és a naplókhoz való hozzáféréshez a IoT Edge modul konfigurációján keresztül kell engedélyezni. 
+Az [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali számítógép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)  minta-telepítési jegyzékfájlja tartalmaz egy nevű modult `diagnostics` , amely összegyűjti és feltölti a naplókat. Ez a modul alapértelmezés szerint le van tiltva, és a naplókhoz való hozzáféréshez a IoT Edge modul konfigurációján keresztül kell engedélyezni. 
 
 A `diagnostics` gyűjtemény igény szerint felügyelhető, és egy IoT Edge Direct metódussal vezérelhető, és naplókat küldhet egy Azure-Blob Storageba.
 
 ### <a name="configure-diagnostics-upload-targets"></a>Diagnosztika-feltöltési célok konfigurálása
 
-A IoT Edge portálon válassza ki az eszközt, majd a **diagnosztikai** modult. A [*DeploymentManifest.jsa*](https://go.microsoft.com/fwlink/?linkid=2142179)(z) területen keresse meg a diagnosztika nevű **környezeti változók** szakaszt, és adja hozzá a következő információkat:
+A IoT Edge portálon válassza ki az eszközt, majd a **diagnosztikai** modult. Az [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)telepítési jegyzékfájljában keresse meg a **környezeti változók** szakaszt a diagnosztika nevű szakaszban `env` , és adja hozzá a következő információkat:
 
 **Az Azure-ba való feltöltés konfigurálása Blob Storage**
 
@@ -221,9 +216,9 @@ A naplók feltöltése igény szerint történik a `getRTCVLogs` IoT Edge metód
 
 
 1. Lépjen a IoT Hub-portál lapra, válassza az **Edge-eszközök**lehetőséget, majd válassza ki az eszközt és a diagnosztikai modult. 
-2. Lépjen a modul részletek lapjára, és kattintson a ***közvetlen metódus*** fülre.
+2. Nyissa meg a modul részletek lapját, és kattintson a **_közvetlen metódus_*_ lapra.
 3. Írja be `getRTCVLogs` a metódus nevét, és egy JSON formátumú karakterláncot a hasznos adatok között. Megadhatja `{}` , amely üres adattartalom. 
-4. Állítsa be a kapcsolat és a metódus időtúllépését, és kattintson a **metódus meghívása**elemre.
+4. Állítsa be a kapcsolat és a metódus időtúllépését, majd kattintson az _ * metódus meghívása * * elemre.
 5. Válassza ki a tárolót, és hozzon létre egy hasznos adattartalom JSON-karakterláncot a **naplózási szintaxis** szakaszban leírt paraméterek használatával. A kérelem végrehajtásához kattintson a **metódus meghívása** elemre.
 
 >[!NOTE]
@@ -250,7 +245,7 @@ A következő táblázat a lekérdezési válasz attribútumait sorolja fel.
 
 | Kulcsszó | Leírás|
 |--|--|
-|DoPost| *Igaz* vagy *hamis*. Azt jelzi, hogy a naplók feltöltése megtörtént-e. Ha úgy dönt, hogy nem tölt fel naplókat, az API ***szinkron***módon adja vissza az adatokat. Ha a naplók feltöltését választja, az API a 200 értéket adja vissza, ha a kérelem érvényes, és a naplók ***aszinkron***feltöltését indítja el.|
+|DoPost| *Igaz* vagy *hamis*. Azt jelzi, hogy a naplók feltöltése megtörtént-e. Ha úgy dönt, hogy nem tölt fel naplókat, az API a ***szinkron**_ adatokat adja vissza. Ha a naplók feltöltését választja, az API a 200 értéket adja vissza, ha a kérelem érvényes, és a naplók _*_aszinkron_*_ feltöltését indítja el.|
 |TimeFilter| A naplókra alkalmazott Időszűrő.|
 |ValueFilters| A naplókra alkalmazott kulcsszavak szűrői. |
 |Időbélyeg| Metódus végrehajtásának kezdési ideje. |
@@ -303,7 +298,7 @@ A következő táblázat a lekérdezési válasz attribútumait sorolja fel.
 }
 ```
 
-A beolvasási napló sorainak, idejének és méretének beolvasása, ha ezek a beállítások kitűnnek a ***DoPost*** értékre, `true` és a rendszer leküldi a naplókat ugyanazzal a szűrőkkel a célhelyekre. 
+A beolvasási napló sorainak, idejének és méretének beolvasása, ha ezek a beállítások kitűnnek a _*_DoPost_*_ értékre, `true` és a rendszer leküldi a naplókat ugyanazzal a szűrőkkel a célhelyekre. 
 
 Hibaelhárítási problémák esetén a naplókat az Azure Blob Storage is exportálhatja. 
 
@@ -319,9 +314,9 @@ További információ: [a kérelem jóváhagyása a tároló futtatásához](spa
 
 A következő szakasz segítséget nyújt az Azure Stack Edge-eszköz állapotának hibakereséséhez és ellenőrzéséhez.
 
-### <a name="access-the-kubernetes-api-endpoint"></a>Hozzáférés a Kubernetes API-végponthoz. 
+### <a name="access-the-kubernetes-api-endpoint"></a>Hozzáférés a Kubernetes API-végponthoz. 
 
-1. Az eszköz helyi felhasználói felületén nyissa meg az **eszközök** lapot. 
+1. Az eszköz helyi felhasználói felületén nyissa meg az _*eszközök** lapot. 
 2. Másolja a Kubernetes API szolgáltatás végpontját az **eszközök végpontjai**területen. Ez a végpont egy karakterlánc a következő formátumban: `https://compute..[device-IP-address]` .
 3. Mentse a végponti karakterláncot. Ezt később fogja használni `kubectl` , amikor a Kubernetes-fürthöz való hozzáférést konfigurálja.
 

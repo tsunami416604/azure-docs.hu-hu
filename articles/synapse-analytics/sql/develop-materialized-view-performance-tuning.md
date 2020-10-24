@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289038"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474767"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-finomhangolás tényleges táblán alapuló nézetekkel
 
@@ -38,7 +38,7 @@ A szabványos nézetre vonatkozó követelmények többsége továbbra is érvé
 |Adatfrissítés                    | Mindig frissítve                               | Mindig frissítve
 |Az összetett lekérdezések adatainak megtekintési sebessége     | Lassú                                         | Gyors  
 |Extra tárterület                   | Nem                                           | Igen
-|Syntax                          | NÉZET LÉTREHOZÁSA                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
+|Syntax                          | CREATE VIEW                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
 
 ## <a name="benefits-of-materialized-views"></a>A lényeges nézetek előnyei
 
@@ -79,7 +79,9 @@ A más hangolási lehetőségekkel, például a skálázással és a statisztika
 
 **A lekérdezési teljesítmény gyorsabb elvégzéséhez eltérő adatelosztási stratégia szükséges**
 
-Az Azure-adattárház elosztott és masszívan párhuzamos feldolgozási (MPP) rendszer.   Az adatraktár-táblában lévő adatokat a rendszer a három [terjesztési stratégia](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (kivonat, round_robin vagy replikált) egyikével osztja el a 60 csomópontok között.  
+Az Azure-adattárház elosztott és masszívan párhuzamos feldolgozási (MPP) rendszer.  
+
+A szinapszis SQL egy elosztott lekérdezési rendszer, amely lehetővé teszi, hogy a vállalatok adattárház-és adatvirtualizációs forgatókönyveket alkalmazzanak az adatmérnökök számára ismerős standard T-SQL-élmények használatával. Emellett kibővíti az SQL képességeit a streaming és a gépi tanulási forgatókönyvek kezeléséhez. Az adatraktár-táblában lévő adatokat a rendszer a három [terjesztési stratégia](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (kivonat, round_robin vagy replikált) egyikével osztja el a 60 csomópontok között.  
 
 Az adateloszlás a tábla létrehozási idején van megadva, és a tábla eldobása előtt változatlan marad. A lemezes virtuális tábla a kivonatoló és az round_robin adateloszlást is támogatja.  A felhasználók kiválaszthatnak egy adateloszlást, amely eltér az alaptábláktól, de optimális a nézeteket gyakran használó lekérdezések teljesítményéhez.  
 

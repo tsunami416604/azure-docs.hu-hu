@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 355e300ec9f3671cf29ccc763e211a9bb3806f64
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289021"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474784"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Igény szerinti SQL-OPENROWSET használata (előzetes verzió)
 
@@ -192,9 +192,9 @@ Megadja azt a karaktert, amely a CSV-fájlban idézőjelként lesz használva. H
 
 DATA_COMPRESSION = "data_compression_method"
 
-Meghatározza a tömörítési módszert. A következő tömörítési módszer támogatott:
+Meghatározza a tömörítési módszert. Csak PARSER_VERSION = "1.0" esetén támogatott. A következő tömörítési módszer támogatott:
 
-- org. Apache. Hadoop. IO. compress. GzipCodec
+- GZIP
 
 PARSER_VERSION = "parser_version"
 
@@ -241,6 +241,6 @@ FROM
     ) AS [r]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

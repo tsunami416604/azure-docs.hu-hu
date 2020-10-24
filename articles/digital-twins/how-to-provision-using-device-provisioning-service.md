@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f9dd69c147dff1bf0bd10ca070e023bb6f7692a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6dbcaf317efb8589a92275527f992029b7eb8a6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368434"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494749"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Eszközök automatikus felügyelete az Azure Digital Twins-ben a Device kiépítési szolgáltatás (DPS) használatával
 
@@ -71,7 +71,7 @@ Hozzon létre egy eszköz-kiépítési szolgáltatási példányt, amely a IoT-e
 
 A következő Azure CLI-parancs létrehoz egy eszköz-kiépítési szolgáltatást. Meg kell adnia egy nevet, egy erőforráscsoportot és egy régiót. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
-```azurecli
+```azurecli-interactive
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
@@ -237,7 +237,7 @@ A következő lépésben környezeti változókat kell beállítania a Function 
 
 Adja hozzá a beállítást az alábbi Azure CLI-paranccsal:
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -246,7 +246,7 @@ Győződjön meg arról, hogy az engedélyek és a felügyelt identitás szerepk
 <!-- 
 * Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
 ``` -->
 
@@ -293,7 +293,7 @@ Látnia kell az eszközt, amely regisztrálva van, és csatlakoztatva van IoT Hu
 
 A cikkben beállított folyamat eredményeképpen az eszköz automatikusan regisztrálva lesz az Azure digitális Twins-ban. A következő [Azure digitális Twins CLI](how-to-use-cli.md) -paranccsal megkeresheti az eszköz két részét a létrehozott Azure digitális Twins-példányban.
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -449,13 +449,13 @@ A következő lépésben környezeti változókat kell beállítania a Function 
 
 Adja hozzá a beállítást az Azure CLI-paranccsal. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 Ezután konfigurálnia kell a Function környezeti változót az újonnan létrehozott Event hubhoz való csatlakozáshoz.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -486,7 +486,7 @@ Az eszköz automatikusan el lesz távolítva az Azure digitális Twins-ból.
 
 A következő [Azure digitális Twins CLI](how-to-use-cli.md) -paranccsal ellenőrizheti, hogy az eszköz két példánya az Azure Digital Twins-példánnyal lett-e törölve.
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -502,7 +502,7 @@ Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőf
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 

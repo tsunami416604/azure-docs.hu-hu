@@ -2,13 +2,13 @@
 title: A dedikált Event hubok áttekintése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk áttekintést nyújt a dedikált Azure Event Hubsről, amely az Event hub egybérlős üzembe helyezését kínálja.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/23/2020
+ms.openlocfilehash: e6208a8d50e21766969dbe9d9739d5003958126a
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322439"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495081"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>A dedikált Event Hubs áttekintése
 
@@ -53,43 +53,16 @@ Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással t
 
 ## <a name="how-to-onboard"></a>Útmutató a bevezetéshez
 
-A [Event Hubs-fürt](event-hubs-dedicated-cluster-create-portal.md) [Azure Portalon](https://aka.ms/eventhubsclusterquickstart) keresztüli létrehozásának önkiszolgáló felülete mostantól előzetes verzióban érhető el. Ha bármilyen kérdése van, vagy segítségre van szüksége a dedikált Event Hubs bevezetéséhez, forduljon a [Event Hubs csapatához](mailto:askeventhubs@microsoft.com).
+A [Event Hubs-fürtnek](event-hubs-dedicated-cluster-create-portal.md) a [Azure Portal](https://aka.ms/eventhubsclusterquickstart) használatával történő létrehozásának önkiszolgáló élménye már előzetes verzióban érhető el. Ha bármilyen kérdése van, vagy segítségre van szüksége a dedikált Event Hubs bevezetéséhez, forduljon a [Event Hubs csapatához](mailto:askeventhubs@microsoft.com).
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-#### <a name="what-can-i-achieve-with-a-cluster"></a>Mit lehet elérni egy fürttel?
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
-Egy Event Hubs-fürt esetében a betöltés és az adatfolyam mennyisége a különböző tényezőktől, például a termelőktől, a fogyasztóktól, a betöltés és a feldolgozástól, valamint sok más tényezőtől függ. 
-
-A következő táblázat a tesztelés során elért teljesítménytesztek eredményeit mutatja be:
-
-| Hasznos adat alakzat | Fogadók | Bejövő sávszélesség| Bejövő üzenetek | Kimenő sávszélesség | Kimenő üzenetek | Teljes TUs | TUs/CU |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB kötegek | 2 | 400 MB/s | 400k üzenetek/mp | 800 MB/s | 800k üzenetek/mp | 400 TUs | 100 TUs | 
-| 10x10KB kötegek | 2 | 666 MB/s | 66.6 üzenet/mp | 1,33 GB/s | 133k üzenetek/mp | 666 TUs | 166 TUs |
-| 6x32KB kötegek | 1 | 1,05 GB/s | 34k üzenetek/mp | 1,05 GB/s | 34k üzenetek/mp | 1000 TUs | 250 TUs |
-
-A tesztelés során a rendszer a következő feltételeket használta:
-
-- A dedikált rétegbeli Event Hubs-fürt négy kapacitású egységgel (ke) lett használva. 
-- A betöltéshez használt Event hub 200 partíciót tartalmazott. 
-- A betöltött adatok az összes partíciótól kapott két fogadó alkalmazástól érkeztek.
-
-#### <a name="can-i-scale-updown-my-cluster"></a>Felskálázás a fürtön?
-
-A létrehozást követően a fürtök számlázása legalább 4 órányi használat után történik. Az önkiszolgáló élmény előzetes kiadásában egy [támogatási kérést](https://ms.portal.azure.com/#create/Microsoft.Support) küldhet a Event Hubs csapatnak a *technikai > kvóta > kérelem a dedikált fürt vertikális felskálázásához vagy* méretezéséhez a fürt fel-vagy leskálázásához. Akár 7 napig is eltarthat a fürt skálázására irányuló kérelem teljesítése. 
-
-#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Hogyan működik majd a Geo-DR a fürttel?
-
-Egy dedikált rétegbeli fürthöz tartozó névteret egy dedikált rétegbeli fürt egy másik névterével is megadhat. Nem javasoljuk, hogy egy dedikált szintű névteret a standard ajánlatban található névtérrel párosítson, mivel az átviteli sebesség korlátja inkompatibilis lesz, ami hibákat eredményezhet. 
-
-#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Áttelepíthetem a standard névtereket, hogy egy dedikált rétegbeli fürthöz tartozzanak?
-Jelenleg nem támogatunk egy automatizált áttelepítési folyamatot, amely az Event hub-adatok standard névtérből egy Dedikáltra történő áttelepítését végzi. 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A dedikált Event Hubs további részleteiért forduljon a Microsoft értékesítési képviselőjéhez vagy a Microsoft ügyfélszolgálatahoz. Létrehozhat egy fürtöt is, vagy további információkat kaphat Event Hubs díjszabási szintjeiről az alábbi hivatkozásokra kattintva:
 
-- [Event Hubs-fürt létrehozása az Azure Portalon](https://aka.ms/eventhubsclusterquickstart) 
+- [Event Hubs-fürt létrehozása a Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
 - [Dedikált Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/). Felveheti a kapcsolatot a Microsoft értékesítési képviselőjével vagy Microsoft ügyfélszolgálata a dedikált Event Hubs kapacitás további részleteinek megismeréséhez.
 - A [Event HUBS GYIK](event-hubs-faq.md) tartalmazza a díjszabási információkat, és válaszokat ad a Event Hubsekkel kapcsolatos gyakori kérdésekre.

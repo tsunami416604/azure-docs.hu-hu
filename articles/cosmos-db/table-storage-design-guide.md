@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: dc140553cbca2347678c376cc9420cfddef22b07
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 94aa699d8daab7e5e7ff4ae82e5d09ab1475c07e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428060"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477589"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Az Azure Table Storage táblatervezési útmutatója: Skálázható és hatékony táblák
 
@@ -24,7 +24,7 @@ A méretezhető és nagy teljesítményű táblák tervezésénél rengeteg szem
 A Table Storage úgy van kialakítva, hogy támogassa a felhőalapú alkalmazásokat, amelyek több milliárd entitást ("sorok") tartalmazhatnak a kapcsolódó adatbázis-terminológiában, illetve olyan adatkészleteket, amelyeknek támogatniuk kell a nagy tranzakciós köteteket. Ezért másképp kell gondolkodnia az adatai tárolásával kapcsolatban, és megismerheti a Table Storage működését. A jól megtervezett NoSQL-adattárak lehetővé teszik, hogy a megoldás sokkal tovább méretezhető legyen (és alacsonyabb költségeket is), mint a viszonyítási adatbázist használó megoldás. Ez az útmutató segítséget nyújt ezekről a témakörökről.  
 
 ## <a name="about-azure-table-storage"></a>Tudnivalók az Azure Table Storage szolgáltatásról
-Ez a szakasz a Table Storage egyes főbb funkcióit mutatja be, amelyek különösen a teljesítmény és a méretezhetőség tervezéséhez szükségesek. Ha még nem ismeri az Azure Storage-t és a Table Storage-t, tekintse meg a jelen cikk további részének beolvasása című témakör [Microsoft Azure Storage](../storage/common/storage-introduction.md) és az [Azure Table Storage használatának első lépéseit](table-storage-how-to-use-dotnet.md) ismertető cikket. Bár ez az útmutató a Table Storage-ra koncentrál, az Azure üzenetsor-tárolással és az Azure Blob Storage-mel kapcsolatos néhány vitát tartalmaz, valamint azt, hogy miként használhatja őket a megoldásban a Table Storage szolgáltatással együtt.  
+Ez a szakasz a Table Storage egyes főbb funkcióit mutatja be, amelyek különösen a teljesítmény és a méretezhetőség tervezéséhez szükségesek. Ha még nem ismeri az Azure Storage-t és a Table Storage-t, tekintse meg a jelen cikk további részének beolvasása című témakör [Microsoft Azure Storage](../storage/common/storage-introduction.md) és az [Azure Table Storage használatának első lépéseit](./tutorial-develop-table-dotnet.md) ismertető cikket. Bár ez az útmutató a Table Storage-ra koncentrál, az Azure üzenetsor-tárolással és az Azure Blob Storage-mel kapcsolatos néhány vitát tartalmaz, valamint azt, hogy miként használhatja őket a megoldásban a Table Storage szolgáltatással együtt.  
 
 A Table Storage táblázatos formátumban tárolja az adatokat. A standard terminológiában a tábla minden sora egy entitást jelöl, és az oszlopok az entitás különböző tulajdonságait tárolják. Minden entitás rendelkezik egy pár kulccsal az egyedi azonosításhoz, valamint egy időbélyeg-oszlophoz, amelyet a Table Storage használ az entitás utolsó frissítésének nyomon követésére. Az időbélyeg mező automatikusan hozzáadódik, és nem lehet manuálisan felülírni az időbélyeget tetszőleges értékkel. A Table Storage ezt a legutóbb módosított időbélyeget (LMT) használja az optimista Egyidejűség kezelésére.  
 
@@ -123,7 +123,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 </table>
 
 
-Eddig ez a kialakítás a kapcsolódó adatbázisban lévő táblákhoz hasonlóan néz ki. A legfontosabb különbségek a kötelező oszlopok, és több entitás típusának lehetősége ugyanabban a táblában. Emellett a felhasználó által definiált tulajdonságok (például a **FirstName** vagy a **Age**) adattípusa (például Integer vagy string) egy, a rokon adatbázisban lévő oszlophoz hasonlóan. A relációs adatbázistól eltérően azonban a Table Storage séma nélküli jellege azt jelenti, hogy egy tulajdonságnak nem kell ugyanazzal az adattípussal rendelkeznie az egyes entitásokon. Az összetett adattípusok egyetlen tulajdonságba való tárolásához szerializált formátumot kell használni, például JSON vagy XML. További információ: a [Table Storage adatmodell ismertetése](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Eddig ez a kialakítás a kapcsolódó adatbázisban lévő táblákhoz hasonlóan néz ki. A legfontosabb különbségek a kötelező oszlopok, és több entitás típusának lehetősége ugyanabban a táblában. Emellett a felhasználó által definiált tulajdonságok (például a **FirstName** vagy a **Age**) adattípusa (például Integer vagy string) egy, a rokon adatbázisban lévő oszlophoz hasonlóan. A relációs adatbázistól eltérően azonban a Table Storage séma nélküli jellege azt jelenti, hogy egy tulajdonságnak nem kell ugyanazzal az adattípussal rendelkeznie az egyes entitásokon. Az összetett adattípusok egyetlen tulajdonságba való tárolásához szerializált formátumot kell használni, például JSON vagy XML. További információ: a [Table Storage adatmodell ismertetése](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 Ön dönti el, `PartitionKey` és `RowKey` alapvető fontosságú a jó tábla kialakításához. A táblában tárolt összes entitásnak a és a egyedi kombinációjával kell `PartitionKey` rendelkeznie `RowKey` . A kapcsolati adatbázistábla kulcsaihoz hasonlóan a (z) `PartitionKey` és az `RowKey` értékek indexelve lettek egy fürtözött index létrehozásához, amely lehetővé teszi a gyors kereséseket. A Table Storage azonban nem hoz létre másodlagos indexeket, így ezek az egyetlen két indexelt tulajdonság (a később bemutatott minták némelyike azt mutatja be, hogyan lehet megkerülni a látszólagos korlátozást).  
 
@@ -134,7 +134,7 @@ A fiók neve, a tábla neve és `PartitionKey` együttesen a Storage szolgáltat
 
 A Table Storage szolgáltatásban az egyes csomópontok egy vagy több teljes partíciót, a szolgáltatás pedig a csomópontok közötti dinamikusan terheléselosztást végez. Ha egy csomópont terhelés alatt van, a Table Storage feloszthatja az adott csomópont által kiszolgált partíciók tartományát különböző csomópontokra. Ha a forgalom alá esik, a Table Storage képes egyesíteni a partíciók tartományait a csendes csomópontokból egyetlen csomópontra.  
 
-További információ a Table Storage belső részleteiről és különösen a partíciók kezeléséről: [Microsoft Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)mellett.  
+További információ a Table Storage belső részleteiről és különösen a partíciók kezeléséről: [Microsoft Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)mellett.  
 
 ### <a name="entity-group-transactions"></a>Entitás-csoport tranzakciói
 A Table Storage szolgáltatásban az Entity Transactions (EGTs) az egyetlen beépített mechanizmus, amellyel több entitáson végezheti el az Atomic-frissítéseket. A EGTs más néven batch- *tranzakciónak*is nevezzük. A EGTs csak ugyanabban a partícióban tárolt entitásokban működhet (egy adott tábla azonos partíciójának megosztásával), így bármikor szükség van az atomi tranzakciós viselkedésre több entitás között, hogy az entitások ugyanabban a partícióban legyenek. Ez gyakran indokolja, hogy több entitást is tartson ugyanabban a táblában (és partícióban), és ne használjon több táblát a különböző típusú entitásokhoz. Egyetlen EGT legfeljebb 100 entitáson működhet.  Ha több párhuzamos EGTs küld a feldolgozáshoz, fontos, hogy ezek a EGTs ne működjenek olyan entitásokon, amelyek a EGTs-ben közösek. Ellenkező esetben a feldolgozás késleltetését kockáztatja.
@@ -156,7 +156,7 @@ A következő táblázat néhány kulcsfontosságú értéket tartalmaz, amelyek
 | A `RowKey` |Legfeljebb 1 KB méretű sztring. |
 | Entitás-csoport tranzakciójának mérete |Egy tranzakció legfeljebb 100 entitást tartalmazhat, és a hasznos adatnak 4 MB-nál kisebbnek kell lennie. Egy EGT csak egyszer tud frissíteni egy entitást. |
 
-További információ: [a Table Service adatmodell ismertetése](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
+További információ: [a Table Service adatmodell ismertetése](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).  
 
 ### <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
 A Table Storage szolgáltatás viszonylag olcsó, azonban a kapacitás kihasználtsága és a tranzakciók mennyisége a Table Storage szolgáltatást használó bármely megoldás kiértékelésének részeként is szerepelnie kell. Számos forgatókönyv esetében azonban a denormalizált vagy ismétlődő adatok tárolása a megoldás teljesítményének és méretezhetőségének javítása érdekében érvényes megközelítés. A díjszabással kapcsolatos további információkért lásd: az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).  
@@ -202,7 +202,7 @@ Az alábbi példák azt feltételezik, hogy a Table Storage az alábbi struktúr
 | `Age` |Egész szám |
 | `EmailAddress` |Sztring |
 
-Íme néhány általános útmutató a Table Storage-lekérdezések tervezéséhez. A következő példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Íme néhány általános útmutató a Table Storage-lekérdezések tervezéséhez. A következő példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](/rest/api/storageservices/Query-Entities).  
 
 * Az adott *pont lekérdezése* a leghatékonyabb keresés, amelyet a legalacsonyabb késleltetést igénylő nagy mennyiségű keresésekhez vagy keresésekhez ajánlott használni. Egy ilyen lekérdezés az indexeket használva hatékonyan megkeresheti az egyes entitásokat a és az értékek megadásával `PartitionKey` `RowKey` . Például így: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
 * A második legjobb a *tartomány lekérdezése*. A és a (z `PartitionKey` ) és a szűrők használatával `RowKey` több entitást ad vissza. Az `PartitionKey` érték azonosítja az adott partíciót, és az `RowKey` értékek a partícióban található entitások egy részhalmazát azonosítják. Például így: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
@@ -410,7 +410,7 @@ Az előző szakaszban megtanulta, hogyan optimalizálhatja a tábla kialakítás
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="Részleg entitást és alkalmazotti entitást bemutató ábra":::
 
-A minta Térkép kiemeli az útmutatóban ismertetett minták (kék) és a (narancssárga) mintázatok közötti kapcsolatokat. Természetesen számos más mintát érdemes figyelembe venni. A Table Storage egyik fő forgatókönyve például az, hogy a [parancs lekérdezési felelősségének elkülönítési](https://msdn.microsoft.com/library/azure/jj554200.aspx) mintája alapján az [anyagilag megadott nézet mintát](https://msdn.microsoft.com/library/azure/dn589782.aspx) használja.  
+A minta Térkép kiemeli az útmutatóban ismertetett minták (kék) és a (narancssárga) mintázatok közötti kapcsolatokat. Természetesen számos más mintát érdemes figyelembe venni. A Table Storage egyik fő forgatókönyve például az, hogy a [parancs lekérdezési felelősségének elkülönítési](/previous-versions/msp-n-p/jj554200(v=pandp.10)) mintája alapján az [anyagilag megadott nézet mintát](/previous-versions/msp-n-p/dn589782(v=pandp.10)) használja.  
 
 ### <a name="intra-partition-secondary-index-pattern"></a>Partíción belüli másodlagos index minta
 Az egyes entitások több példányának tárolása különböző `RowKey` értékek használatával (ugyanabban a partícióban). Ez lehetővé teszi a gyors és hatékony kereséseket, valamint az alternatív rendezési sorrendeket különböző `RowKey` értékek használatával. A másolatok közötti frissítések konzisztensek lehetnek a EGTs használatával.  
@@ -437,7 +437,7 @@ Ha az alkalmazotti entitások egy tartományát kérdezi le, megadhatja az alkal
 * Az értékesítési részleg összes alkalmazottjának a 000100 – 000199 tartományba tartozó alkalmazotti AZONOSÍTÓjának megkereséséhez használja a következőt: $filter = (PartitionKey EQ ' Sales ') és (RowKey GE ' empid_000100 ') és (RowKey le ' empid_000199 ')  
 * Az értékesítési részleg összes alkalmazottjának az "a" betűvel kezdődő e-mail-címmel történő megkereséséhez használja a következőt: $filter = (PartitionKey EQ "Sales") és (RowKey GE "email_a") és (RowKey lt "email_b")  
   
-Az előző példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Az előző példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](/rest/api/storageservices/Query-Entities).  
 
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -497,7 +497,7 @@ Ha az alkalmazotti entitások egy tartományát kérdezi le, megadhatja az alkal
 * Az értékesítési részleg összes alkalmazottjának a **000100** – **000199**tartományba tartozó alkalmazotti azonosítójának megkereséséhez, az alkalmazotti azonosító sorrendbe rendezéséhez használja a következőt: $Filter = (PartitionKey EQ "empid_Sales") és (RowKey GE "000100") és (RowKey le "000199")  
 * Az értékesítési részleg összes alkalmazottja számára egy e-mail-címmel ellátott e-mail-cím megkeresése, amely az e-mail-címek sorrendjét használja: $filter = (PartitionKey EQ "email_Sales") és (RowKey GE "a") és (RowKey lt "b")  
 
-Vegye figyelembe, hogy az előző példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Vegye figyelembe, hogy az előző példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](/rest/api/storageservices/Query-Entities).  
 
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -557,7 +557,7 @@ Ebben a példában a diagram 4. lépése beszúrja az alkalmazottat az **archív
 #### <a name="recover-from-failures"></a>Helyreállítás hibákból
 Fontos, hogy a diagram 4-5-es lépéseiben szereplő műveletek *idempotens* abban az esetben, ha a feldolgozói szerepkörnek újra kell indítania az archiválási műveletet. Ha Table Storage-t használ, a 4. lépésnél használjon "INSERT vagy replace" műveletet; az 5. lépésben a használt ügyfél-függvénytár "Törlés, ha létezik" műveletét kell használnia. Ha más tárolási rendszereket használ, a megfelelő idempotens műveletet kell használnia.  
 
-Ha a feldolgozói szerepkör soha nem fejezi be a 6. lépést a diagramon, akkor időtúllépés után az üzenet újból megjelenik a feldolgozói szerepkörben az újrafeldolgozásra váró várólistán. A feldolgozói szerepkör megtekintheti, hogy a várólistán lévő üzenetek hányszor lettek elolvasva, és ha szükséges, akkor a vizsgálathoz egy külön várólistára küldje el a "méreg" üzenetet. A várólista-üzenetek olvasásával és a sorok számának ellenőrzésével kapcsolatos további információkért lásd: [üzenetek](https://msdn.microsoft.com/library/azure/dd179474.aspx)beolvasása.  
+Ha a feldolgozói szerepkör soha nem fejezi be a 6. lépést a diagramon, akkor időtúllépés után az üzenet újból megjelenik a feldolgozói szerepkörben az újrafeldolgozásra váró várólistán. A feldolgozói szerepkör megtekintheti, hogy a várólistán lévő üzenetek hányszor lettek elolvasva, és ha szükséges, akkor a vizsgálathoz egy külön várólistára küldje el a "méreg" üzenetet. A várólista-üzenetek olvasásával és a sorok számának ellenőrzésével kapcsolatos további információkért lásd: [üzenetek](/rest/api/storageservices/Get-Messages)beolvasása.  
 
 A Table Storage és a üzenetsor-tároló bizonyos hibái átmeneti hibák, és az ügyfélalkalmazás megfelelő újrapróbálkozási logikát is tartalmaz a kezeléséhez.  
 
@@ -1009,7 +1009,7 @@ A Table Storage-vel való lekérdezés egyszerre legfeljebb 1 000 entitást tud 
 - A lekérdezés öt másodpercen belül nem fejeződött be.
 - A lekérdezés átlépi a partíció határát. 
 
-A folytatási tokenek működésével kapcsolatos további információkért lásd: [lekérdezési időkorlát és tördelés](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
+A folytatási tokenek működésével kapcsolatos további információkért lásd: [lekérdezési időkorlát és tördelés](/rest/api/storageservices/Query-Timeout-and-Pagination).  
 
 Ha a Storage ügyféloldali kódtárat használja, akkor automatikusan képes kezelni a folytatási tokeneket, mert az entitásokat a Table Storage-ból adja vissza. A következő C# kód például automatikusan kezeli a folytatási jogkivonatokat, ha a Table Storage visszaadja őket a válaszban:  
 
@@ -1415,7 +1415,7 @@ A megosztott hozzáférés-aláírási (SAS-) tokenekkel engedélyezheti az ügy
 * A webes és feldolgozói szerepkörök egy részét kiszervezheti az entitások kezelése során. Kiszervezheti az ügyfelek eszközeit, például a végfelhasználói számítógépeket és a mobil eszközöket.  
 * Korlátozott és időkorlátos engedélyeket rendelhet egy ügyfélhez (például engedélyezheti a csak olvasási hozzáférést adott erőforrásokhoz).  
 
-További információ az SAS-tokenek Table Storage használatával történő használatáról: [közös hozzáférésű aláírások (SAS) használata](../storage/common/storage-dotnet-shared-access-signature-part-1.md).  
+További információ az SAS-tokenek Table Storage használatával történő használatáról: [közös hozzáférésű aláírások (SAS) használata](../storage/common/storage-sas-overview.md).  
 
 Azonban továbbra is olyan SAS-jogkivonatokat kell megadnia, amelyek az ügyfélalkalmazások számára engedélyezik a Table Storage-beli entitásokat. Ezt olyan környezetben tegye meg, amely biztonságos hozzáférést biztosít a Storage-fiók kulcsaihoz. Általában webes vagy feldolgozói szerepkört használ az SAS-jogkivonatok létrehozásához, és azokat olyan ügyfélalkalmazások számára kézbesíteni, amelyeknek hozzá kell férniük az entitásokhoz. Mivel továbbra is az SAS-tokenek ügyfeleknek való létrehozásával és megvalósításával kapcsolatos költségek merülnek fel, érdemes megfontolni, hogy a lehető leghatékonyabban csökkentse a terhelést, különösen nagy mennyiségű forgatókönyv esetén.  
 
@@ -1512,5 +1512,4 @@ Ebben az aszinkron példában a szinkron verzió következő változásai látha
 * A metódus aláírása mostantól tartalmazza a `async` módosítót, és visszaad egy `Task` példányt.  
 * Ahelyett, hogy meghívja a metódust az `Execute` entitás frissítésére, a metódus most meghívja a `ExecuteAsync` metódust. A metódus a `await` módosító használatával aszinkron módon kéri le az eredményeket.  
 
-Az ügyfélalkalmazás több aszinkron metódust is meghívhat, így az egyes metódusok külön szálon futnak.  
-
+Az ügyfélalkalmazás több aszinkron metódust is meghívhat, így az egyes metódusok külön szálon futnak.

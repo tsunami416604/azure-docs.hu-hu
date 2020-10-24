@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: a14235cb4fc20147accc8eb8a0e421cbc4df90f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c604a3edcee0c34df2817c7bbebf0f3ad4fada67
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533616"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SumoLogic
 
@@ -107,7 +107,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a SumoLogic alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    |  Név | Forrás attribútum |
+    |  Name | Forrás attribútum |
     | ---------------| --------------- |
     | FirstName | User. givenName |
     | LastName | felhasználó. vezetéknév |
@@ -134,7 +134,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -168,11 +168,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A **válasszon ki egy konfigurációt, vagy hozzon létre egy újat** listából válassza az **Azure ad**lehetőséget, majd kattintson a **Konfigurálás**elemre.
 
-    ![SAML 2,0 konfigurálása](./media/sumologic-tutorial/ic778558.png "SAML 2,0 konfigurálása")
+    ![Képernyőfelvétel: az SAML 2,0 konfigurálása, ahol kiválaszthatja az Azure A D-t.](./media/sumologic-tutorial/ic778558.png "SAML 2,0 konfigurálása")
 
 1. Az **SAML 2,0 konfigurálása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![SAML 2,0 konfigurálása](./media/sumologic-tutorial/ic778559.png "SAML 2,0 konfigurálása")
+    ![Képernyőfelvétel: az SAML 2,0 konfigurálása párbeszédpanel, ahol megadhatja a leírt értékeket.](./media/sumologic-tutorial/ic778559.png "SAML 2,0 konfigurálása")
 
     a. A **konfiguráció neve** szövegmezőbe írja be az **Azure ad**nevet.
 
@@ -200,11 +200,11 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a SumoLogic, a SumoLogic
 
 1. Lépjen a ** \> felhasználók kezelése**gombra.
 
-    ![Felhasználók](./media/sumologic-tutorial/ic778561.png "Felhasználók")
+    ![A képernyőfelvételen a kezelés menüből kiválasztott felhasználók láthatók.](./media/sumologic-tutorial/ic778561.png "Felhasználók")
 
 1. Kattintson a **Hozzáadás** parancsra.
 
-    ![Felhasználók](./media/sumologic-tutorial/ic778562.png "Felhasználók")
+    ![Képernyőfelvétel: a Hozzáadás gomb a felhasználók számára.](./media/sumologic-tutorial/ic778562.png "Felhasználók")
 
 1. Az **új felhasználó** párbeszédpanelen hajtsa végre a következő lépéseket:
 

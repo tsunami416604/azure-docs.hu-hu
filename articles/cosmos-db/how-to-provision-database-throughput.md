@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: a67a062c06950294ec9e49e2ec69552edc4ee77a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 347da75d8e3f58d3875b02000d74533b36a9b18c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278621"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486106"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Standard (manuális) átviteli sebesség kiépítése egy adatbázison Azure Cosmos DB-SQL API-ban
 
@@ -72,7 +72,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 Az alábbi cikkekből megtudhatja, hogyan lehet kiépíteni az átviteli sebességet Azure Cosmos DBban:
 
-* [Kiosztott átviteli sebesség globális skálázása](scaling-throughput.md)
+* [Kiosztott átviteli sebesség globális skálázása](./request-units.md)
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md)
 * [A standard (manuális) átviteli sebesség kiépítése egy tárolóhoz](how-to-provision-container-throughput.md)
 * [Az autoscale átviteli sebességének kiépítése egy tárolóra](how-to-provision-autoscale-throughput.md)

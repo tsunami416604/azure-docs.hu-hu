@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 47b3706d1fb46ab7e115d79c2f06f6264c8b423e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9001d9982a26875f814b635533bebd7579339fa5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666513"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476722"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Bevezetés az Azure Cosmos DB Table API és az Azure Table Storage a .NET SDK-val való használatába
 
@@ -98,7 +98,7 @@ A NuGet csomag beszerzéséhez kövesse az alábbi lépéseket:
 
 ## <a name="create-a-table"></a>Tábla létrehozása 
 
-A [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) osztály segítségével lekérheti a Table Storage-ban tárolt táblákat és entitásokat. Mivel nem található táblázat a Cosmos DB Table API-fiókban, vegyük fel a `CreateTableAsync` metódust a **Common.cs** osztályba egy tábla létrehozásához:
+A [CloudTableClient](/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) osztály segítségével lekérheti a Table Storage-ban tárolt táblákat és entitásokat. Mivel nem található táblázat a Cosmos DB Table API-fiókban, vegyük fel a `CreateTableAsync` metódust a **Common.cs** osztályba egy tábla létrehozásához:
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
 
@@ -110,17 +110,17 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ## <a name="define-the-entity"></a>Az entitás definiálása 
 
-Az entitások C#-objektumokhoz rendelnek egy egyéni, a [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity)származtatott osztály használatával. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait.
+Az entitások C#-objektumokhoz rendelnek egy egyéni, a [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity)származtatott osztály használatával. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait.
 
 Kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzáadás**, **új mappa** lehetőséget, és nevezze el **modellként**. A Model mappában adjon hozzá egy **CustomerEntity.cs** nevű osztályt, és adja hozzá a következő kódot.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
-Ez a kód olyan Entity osztályt határoz meg, amely az ügyfél utónevét használja, és a vezetéknevet adja meg a partíció kulcsaként. Egy adott entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblában. Az ugyanazzal a partíciós kulccsal rendelkező entitások gyorsabban lekérdezhető, mint a különböző partíciós kulcsokkal rendelkező entitások, de a különféle partíciós kulcsok használata lehetővé teszi a párhuzamos műveletek nagyobb méretezhetőségét. A táblákban tárolni kívánt entitásoknak támogatott típusúnak, például a [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) osztályból származtatottnak kell lenniük. A táblában tárolni kívánt entitástulajdonságoknak publikusnak kell lenniük, és támogatniuk kell az értékek beolvasását és beállítását is. Az entitástípusnak emellett elérhetővé kell tennie egy paraméter nélküli konstruktort is.
+Ez a kód olyan Entity osztályt határoz meg, amely az ügyfél utónevét használja, és a vezetéknevet adja meg a partíció kulcsaként. Egy adott entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblában. Az ugyanazzal a partíciós kulccsal rendelkező entitások gyorsabban lekérdezhető, mint a különböző partíciós kulcsokkal rendelkező entitások, de a különféle partíciós kulcsok használata lehetővé teszi a párhuzamos műveletek nagyobb méretezhetőségét. A táblákban tárolni kívánt entitásoknak támogatott típusúnak, például a [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity) osztályból származtatottnak kell lenniük. A táblában tárolni kívánt entitástulajdonságoknak publikusnak kell lenniük, és támogatniuk kell az értékek beolvasását és beállítását is. Az entitástípusnak emellett elérhetővé kell tennie egy paraméter nélküli konstruktort is.
 
 ## <a name="insert-or-merge-an-entity"></a>Entitás beszúrása vagy egyesítése
 
-A következő mintakód létrehoz egy entitás objektumot, és hozzáadja azt a táblához. Az entitások beszúrásához vagy egyesítéséhez a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztályon belüli InsertOrMerge metódus használható. A művelet végrehajtásához a [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet&preserve-view=true) metódust kell meghívni. 
+A következő mintakód létrehoz egy entitás objektumot, és hozzáadja azt a táblához. Az entitások beszúrásához vagy egyesítéséhez a [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztályon belüli InsertOrMerge metódus használható. A művelet végrehajtásához a [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?preserve-view=true&view=azure-dotnet) metódust kell meghívni. 
 
 Kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzáadás**, **új elem elemet** , és adjon hozzá egy **SamplesUtils.cs**nevű osztályt. Ez az osztály tárolja az entitásokon a SZIFILISZi műveletek végrehajtásához szükséges összes kódot. 
 
@@ -128,7 +128,7 @@ Kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzá
 
 ## <a name="get-an-entity-from-a-partition"></a>Entitás beolvasása egy partícióból
 
-Az entitásokat a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztály lekérési metódusának használatával szerezheti be a partícióból. A következő kódrészlet a partíciós kulcs sorát, e-mail-címét és telefonszámát kéri le. Ez a példa az entitás lekérdezéséhez felhasznált kérelmek egységeit is kiírja. Az entitások lekérdezéséhez fűzze hozzá a következő kódot a **SamplesUtils.cs** fájlhoz:
+Az entitásokat a [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztály lekérési metódusának használatával szerezheti be a partícióból. A következő kódrészlet a partíciós kulcs sorát, e-mail-címét és telefonszámát kéri le. Ez a példa az entitás lekérdezéséhez felhasznált kérelmek egységeit is kiírja. Az entitások lekérdezéséhez fűzze hozzá a következő kódot a **SamplesUtils.cs** fájlhoz:
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 
@@ -173,7 +173,7 @@ Most jelentkezzen be a Azure Portalba, és ellenőrizze, hogy az adatkészletek 
 
 :::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="Tekintse meg és másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most folytassa a következő oktatóanyaggal, és megtudhatja, hogyan telepítheti át az információkat Azure Cosmos DB Table API-fiókba. 
 

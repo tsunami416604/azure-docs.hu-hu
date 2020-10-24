@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05fe22ed0dc7d03148f66fd02aa648e1b63ab319
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277305"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475328"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -39,7 +39,7 @@ Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll n
 
 Az itt felsorolt négy alkalmazás típusa alapértelmezés szerint a 32 bites gazdagép-feldolgozást használja. Ha módosítani szeretné a gazdagép feldolgozását az alkalmazás típusának 64 bites feldolgozására, tegye a következőket:
 
-- **Végrehajtható alkalmazások esetén**: a **Projekt tulajdonságai** ablak **Build** ablaktábláján állítsa a [platform célt](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) az **x64**értékre.
+- **Végrehajtható alkalmazások esetén**: a **Projekt tulajdonságai** ablak **Build** ablaktábláján állítsa a [platform célt](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) az **x64**értékre.
 
 - **VSTest-alapú tesztelési projektek esetén**: a Visual Studio **test** menüben válassza a **Test**teszt  >  **beállításainak**tesztelése lehetőséget, majd állítsa az **alapértelmezett processzor-architektúra** értéket az **x64**értékre.
 
@@ -53,7 +53,7 @@ Az itt felsorolt négy alkalmazás típusa alapértelmezés szerint a 32 bites g
     
 **Kiszolgálóoldali Garbage-gyűjtemény bekapcsolása**
 
-Bizonyos esetekben a Garbage-gyűjtemények gyakoriságának csökkentése is segíthet. A .NET-ben állítsa be a [gcServer](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) a következőre: `true` .
+Bizonyos esetekben a Garbage-gyűjtemények gyakoriságának csökkentése is segíthet. A .NET-ben állítsa be a [gcServer](/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) a következőre: `true` .
 
 **Az ügyfél számítási felskálázása**
 
@@ -62,7 +62,7 @@ Ha magas átviteli sebességet használ, vagy a másodpercenként 50 000-nál na
 > [!NOTE] 
 > A magas CPU-használat nagyobb késést és kérelem időtúllépési kivételt okozhat.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 <a id="direct-connection"></a>
 
 **Csatlakoztatási házirend: közvetlen kapcsolási mód használata**
@@ -86,8 +86,8 @@ Ha a TCP protokollon fut, az ügyfél a hosszú élettartamú kapcsolatok haszn�
 
 Olyan helyzetekben, ahol ritka hozzáférése van, és ha az átjáró mód eléréséhez képest nagyobb számú kapcsolatra van szüksége, a következőket teheti:
 
-* Konfigurálja a [CosmosClientOptions. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) tulajdonságot a `PrivatePortPool` (a keretrendszer 4.6.1-es és újabb verzióival, valamint a .net Core 2,0-es és újabb verziókkal). Ez a tulajdonság lehetővé teszi, hogy az SDK a különböző Azure Cosmos DB cél végpontokhoz tartozó ideiglenes portok kis készletét használja.
-* Állítsa be a [CosmosClientOptions. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) tulajdonságot 10 percnél nagyobb vagy azzal egyenlő értékre. Az ajánlott értékek 20 perctől 24 óráig tartanak.
+* Konfigurálja a [CosmosClientOptions. PortReuseMode](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) tulajdonságot a `PrivatePortPool` (a keretrendszer 4.6.1-es és újabb verzióival, valamint a .net Core 2,0-es és újabb verziókkal). Ez a tulajdonság lehetővé teszi, hogy az SDK a különböző Azure Cosmos DB cél végpontokhoz tartozó ideiglenes portok kis készletét használja.
+* Állítsa be a [CosmosClientOptions. IdleConnectionTimeout](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) tulajdonságot 10 percnél nagyobb vagy azzal egyenlő értékre. Az ajánlott értékek 20 perctől 24 óráig tartanak.
 
 <a id="same-region"></a>
 
@@ -103,7 +103,7 @@ A lehető legkevesebb késést úgy érheti el, hogy a hívó alkalmazás ugyana
 
 **A szálak/feladatok számának növelésével**
 
-Mivel a Azure Cosmos DB kezdeményez a hálózaton keresztül, előfordulhat, hogy módosítania kell a kérések párhuzamossági fokát, hogy az ügyfélalkalmazás minimális ideig várjon a kérések között. Ha például a .NET- [feladatok párhuzamos könyvtárát](https://msdn.microsoft.com//library/dd460717.aspx)használja, akkor hozzon létre több száz feladatot a Azure Cosmos db olvasására vagy írására.
+Mivel a Azure Cosmos DB kezdeményez a hálózaton keresztül, előfordulhat, hogy módosítania kell a kérések párhuzamossági fokát, hogy az ügyfélalkalmazás minimális ideig várjon a kérések között. Ha például a .NET- [feladatok párhuzamos könyvtárát](/dotnet/standard/parallel-programming/task-parallel-library-tpl)használja, akkor hozzon létre több száz feladatot a Azure Cosmos db olvasására vagy írására.
 
 **Gyorsított hálózatkezelés engedélyezése**
  
@@ -146,7 +146,7 @@ itemResponse.Resource
 
 **System.Net-MaxConnections növelésének engedélyezése gazdagépen az átjáró mód használatakor**
 
-Azure Cosmos DB kérések HTTPS/REST protokollon keresztül történnek, amikor átjáró üzemmódot használ. Az alapértelmezett kapcsolódási korlát az állomásnév vagy az IP-cím alapján történik. Előfordulhat, hogy magasabb értéket kell beállítania `MaxConnections` (100 – 1 000), hogy az ügyféloldali kódtár több egyidejű kapcsolatot is használhat Azure Cosmos DBhoz. A .NET SDK 1.8.0 és újabb verzióiban a [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) alapértelmezett értéke 50. Az érték módosításához [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) magasabb értéket adhat meg.
+Azure Cosmos DB kérések HTTPS/REST protokollon keresztül történnek, amikor átjáró üzemmódot használ. Az alapértelmezett kapcsolódási korlát az állomásnév vagy az IP-cím alapján történik. Előfordulhat, hogy magasabb értéket kell beállítania `MaxConnections` (100 – 1 000), hogy az ügyféloldali kódtár több egyidejű kapcsolatot is használhat Azure Cosmos DBhoz. A .NET SDK 1.8.0 és újabb verzióiban a [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) alapértelmezett értéke 50. Az érték módosításához [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) magasabb értéket adhat meg.
 
 **A particionált gyűjtemények párhuzamos lekérdezésének hangolása**
 
@@ -170,7 +170,7 @@ A párhuzamos lekérdezések két paramétert biztosítanak, amelyeket az igény
 
 A teljesítmény tesztelése során növelje a terhelést, amíg a rendszer kis mennyiségű kérést nem szabályoz. Ha a kérelmek szabályozása megtörténik, az ügyfélalkalmazás a kiszolgáló által megadott újrapróbálkozási időköz szabályozásának visszavonását hajtja végre. A leállítási tiszteletben tartásával biztosítható, hogy az újrapróbálkozások között minimálisan megtörténjen az idő várakozása. 
 
-További információ: [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+További információ: [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Létezik egy mechanizmus a további diagnosztikai információk naplózására és a késéssel kapcsolatos hibák elhárítására, ahogy az az alábbi példában is látható. Naplózhatja a diagnosztikai karakterláncot olyan kérelmek esetében, amelyek nagyobb olvasási késéssel rendelkeznek. A rögzített diagnosztikai karakterlánc segít megérteni, hogy hányszor kapott egy adott kéréshez *429* hibát.
 

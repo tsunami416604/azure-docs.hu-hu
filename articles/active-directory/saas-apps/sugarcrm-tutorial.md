@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cd1be43bd8984df8fef690e595ec99f4b112c3c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ddcbfd9c069fa3d50cf694087600bfc3030b1c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533662"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484151"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Sugar-CRM-sel
 
@@ -112,7 +112,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -142,11 +142,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Az **Adminisztráció** szakaszban kattintson a **jelszó-kezelés**elemre.
 
-    ![Felügyelet](./media/sugarcrm-tutorial/ic795889.png "Felügyelet")
+    ![Képernyőfelvétel: az adminisztráció szakasz, ahol kiválaszthatja a jelszavas kezelés lehetőséget.](./media/sugarcrm-tutorial/ic795889.png "Felügyelet")
 
 1. Válassza az **SAML-hitelesítés engedélyezése**lehetőséget.
 
-    ![Felügyelet](./media/sugarcrm-tutorial/ic795890.png "Felügyelet")
+    ![A képernyőfelvételen az SAML-hitelesítés kiválasztására szolgáló lehetőség látható.](./media/sugarcrm-tutorial/ic795890.png "Felügyelet")
 
 1. Az **SAML hitelesítés** szakaszban hajtsa végre a következő lépéseket:
 
@@ -174,7 +174,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Sugar CRM-be, ki kell 
 
 1. Az **Adminisztráció** szakaszban kattintson a **felhasználói kezelés**elemre.
 
-    ![Felügyelet](./media/sugarcrm-tutorial/ic795893.png "Felügyelet")
+    ![Képernyőfelvétel: az adminisztráció szakasz, ahol kiválaszthatja a felhasználók kezelése lehetőséget.](./media/sugarcrm-tutorial/ic795893.png "Felügyelet")
 
 1. Lépjen a **felhasználók \> új felhasználó létrehozása**gombra.
 
@@ -182,7 +182,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Sugar CRM-be, ki kell 
 
 1. A **felhasználói profil** lapon hajtsa végre a következő lépéseket:
 
-    ![Új felhasználó](./media/sugarcrm-tutorial/ic795895.png "Új felhasználó")
+    ![Képernyőfelvétel: a felhasználói profil lap, ahol megadhatja a leírt értékeket.](./media/sugarcrm-tutorial/ic795895.png "Új felhasználó")
 
     * Írja be egy érvényes Azure Active Directory felhasználó **felhasználónevét**, **vezetéknevét**és **e-mail-címét** a kapcsolódó szövegmezőbe.
   
@@ -190,7 +190,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Sugar CRM-be, ki kell 
 
 1. A Password (jelszó) lapon hajtsa végre a következő lépéseket:
 
-    ![Új felhasználó](./media/sugarcrm-tutorial/ic795896.png "Új felhasználó")
+    ![Képernyőfelvétel: a Password (jelszó) lap, amelyen megadhatja a leírt értékeket.](./media/sugarcrm-tutorial/ic795896.png "Új felhasználó")
 
     a. Írja be a jelszót a kapcsolódó szövegmezőbe.
 

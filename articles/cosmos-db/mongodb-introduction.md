@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 9fc7ecd633e92c22c8d2a65e4bf45371dab9697a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c3101b69b7ebf55367dbb52d0c2fd6d265cf33f5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282406"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475634"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 
@@ -52,7 +52,7 @@ Kövesse a gyors útmutatókat, és hozzon létre egy Azure Cosmos-fiókot, és 
 
 * Kövesse a [MongoDB-alkalmazás csatlakoztatása Azure Cosmos db](connect-mongodb-account.md) oktatóanyagot, amelyből megtudhatja, hogyan kérheti le a fiók kapcsolati karakterláncának adatait.
 * Kövesse a [Studio 3T használata Azure Cosmos db](mongodb-mongochef.md) oktatóanyagot, amelyből megtudhatja, hogyan hozhat létre kapcsolatot a Cosmos-adatbázis és a MongoDB-alkalmazás között a Studio 3T.
-* Kövesse az [MongoDB-adatimportálás Azure Cosmos db](mongodb-migrate.md) oktatóanyagba című témakört, amely az adatait egy Cosmos-adatbázisba importálja.
+* Kövesse az [MongoDB-adatimportálás Azure Cosmos db](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) oktatóanyagba című témakört, amely az adatait egy Cosmos-adatbázisba importálja.
 * Kapcsolódjon egy Cosmos-fiókhoz a [Robo 3T](mongodb-robomongo.md)használatával.
 * Ismerje meg, hogyan [konfigurálhatja a globálisan elosztott alkalmazások olvasási beállításait](../cosmos-db/tutorial-global-distribution-mongodb.md).
 * Keresse meg a [hibaelhárítási útmutatóban](mongodb-troubleshoot.md) gyakran előforduló hibákat a megoldásokat

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13d2633576454ea6445deb4d2b0b11c2bbb1514e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869439"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478371"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -129,7 +129,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 > [!NOTE]
 > Ha a belefoglalási/kizárási jelzők együtt vannak használatban, csak a belefoglalási mintáknak megfelelő fájlok fognak megjelenni, a kizárási mintáknak megfelelők azonban mindig figyelmen kívül lesznek hagyva.
 
-## <a name="options"></a>Lehetőségek
+## <a name="options"></a>Beállítások
 
 **--Block-Size-MB** lebegőpontos használata esetén ez a blokk mérete (a MIB-ben van megadva) az Azure Storage-ba való feltöltéskor vagy az Azure Storage-ból való letöltéskor. A rendszer automatikusan kiszámítja az alapértelmezett értéket a fájlméret alapján. A tizedes törtek engedélyezettek (például: `0.25` ).
 
@@ -151,15 +151,15 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **– a naplózási szintű** karakterlánc meghatározza a naplófájl részletességét, a rendelkezésre álló szinteket: `INFO` (az összes kérelem és válasz), `WARNING` (lassú válasz), `ERROR` (csak sikertelen kérelmek) és `NONE` (nincs kimeneti napló). (alapértelmezett `INFO` ). 
 
-**--az SMB-info megőrzése**     Alapértelmezés szerint hamis.A megőrzi az SMB-tulajdonságok adatait (az utolsó írási időt, a létrehozási időt, az attribútum-biteket) az SMB-kompatibilis erőforrások (Windows és Azure Files) között.Ez a jelző mind a fájlokra, mind a mappákra vonatkozik, kivéve, ha meg van adva egy csak fájlhoz tartozó szűrő (például: include-Pattern).A mappákhoz továbbított adatok ugyanazok, mint a fájlok esetében, kivéve az utolsó írási időt, amelyet a mappák nem őrzik meg.
+**--az SMB-info megőrzése**   Alapértelmezés szerint hamis. A megőrzi az SMB-tulajdonságok adatait (az utolsó írási időt, a létrehozási időt, az attribútum-biteket) az SMB-kompatibilis erőforrások (Windows és Azure Files) között. Ez a jelző mind a fájlokra, mind a mappákra vonatkozik, kivéve, ha meg van adva egy csak fájlhoz tartozó szűrő (például: include-Pattern). A mappákhoz továbbított adatok ugyanazok, mint a fájlok esetében, kivéve az utolsó írási időt, amelyet a mappák nem őrzik meg.
 
-**--megőrzése-SMB-engedélyek**     Alapértelmezés szerint hamis.Az SMB ACL-ek megőrzése az adatforrások (Windows és Azure Files) között.Ez a jelző a fájlokra és a mappákra is vonatkozik, kivéve, ha meg van adva egy csak fájl szűrő (például  `include-pattern` ).
+**--megőrzése-SMB-engedélyek**   Alapértelmezés szerint hamis. Az SMB ACL-ek megőrzése az adatforrások (Windows és Azure Files) között. Ez a jelző a fájlokra és a mappákra is vonatkozik, kivéve, ha meg van adva egy csak fájl szűrő (például `include-pattern` ).
 
 **--put-MD5**     Hozzon létre egy MD5-kivonatot minden fájlhoz, és mentse a kivonatot a cél blob vagy fájl tartalom-MD5 tulajdonságának megfelelően. (Alapértelmezés szerint a rendszer nem hozza létre a kivonatot.) Csak feltöltéskor érhető el.
 
 **– rekurzív** `True` Alapértelmezés szerint a címtárak közötti szinkronizáláskor a rendszer rekurzív módon vizsgálja az alkönyvtárakat.     (alapértelmezett `True` ). 
 
-**--S2S-megőrzés – hozzáférési réteg**  A hozzáférési szintek megőrzése a szolgáltatás és a szolgáltatás közötti másolás során. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési rétegeket](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) , hogy a cél Storage-fiók támogassa a hozzáférési szint beállítását. Abban az esetben, ha a hozzáférési szintet nem támogatja, használja a s2sPreserveAccessTier = false kapcsolót a hozzáférési szintek másolásának mellőzéséhez. (alapértelmezett `true` ). 
+**--S2S-megőrzés – hozzáférési réteg**  A hozzáférési szintek megőrzése a szolgáltatás és a szolgáltatás közötti másolás során. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési rétegeket](/azure/storage/blobs/storage-blob-storage-tiers) , hogy a cél Storage-fiók támogassa a hozzáférési szint beállítását. Abban az esetben, ha a hozzáférési szintet nem támogatja, használja a s2sPreserveAccessTier = false kapcsolót a hozzáférési szintek másolásának mellőzéséhez. (alapértelmezett `true` ). 
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 

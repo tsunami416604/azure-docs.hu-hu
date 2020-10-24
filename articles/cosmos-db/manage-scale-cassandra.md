@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277685"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482519"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API fiók rugalmas skálázása
 
 Számos lehetőség áll rendelkezésre a Cassandra Azure Cosmos DB API rugalmas jellegének megismerésére. A Azure Cosmos DB hatékony méretezésének megismeréséhez fontos tisztában lennie azzal, hogyan kell kiépíteni a megfelelő mennyiségű (RU/s) kérést a rendszer teljesítményére vonatkozó igényeknek megfelelően. Ha többet szeretne megtudni a kérelmekkel kapcsolatos egységekről, tekintse meg a [kérelmek egységeit](request-units.md) ismertető cikket. 
 
-A Cassandra API esetében a [.net-és Java SDK-](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api)k használatával kérheti le a kérések egységét az egyes lekérdezésekhez. Ez hasznos lehet a szolgáltatásban kiépíthető RU/s mennyiségének meghatározásához.
+A Cassandra API esetében a [.net-és Java SDK-](./find-request-unit-charge-cassandra.md)k használatával kérheti le a kérések egységét az egyes lekérdezésekhez. Ez hasznos lehet a szolgáltatásban kiépíthető RU/s mennyiségének meghatározásához.
 
 :::image type="content" source="./media/request-units/request-units.png" alt-text="Adatbázis-műveletek felhasználásának kérelmezési egységei" border="false":::
 
@@ -38,7 +38,7 @@ Ha csökkentenie kell a késést, számos lehetőség áll rendelkezésre a mér
 
 A következő szakaszokban az egyes megközelítések előnyeit és hátrányait ismertetjük. Ezután eldöntheti, hogy a legmegfelelőbb stratégia a rendszer skálázási igényeinek, a megoldás általános költségeit és hatékonysági igényeit is kiegyensúlyozza.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>A Azure Portal használata
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Az Azure Portal használata
 
 A Azure Portal használatával méretezheti Azure Cosmos DB Cassandra API fiók erőforrásait. További információ: az [átviteli sebesség kiépítése a tárolók és adatbázisok](set-throughput.md)számára. Ez a cikk az átviteli sebességnek a Azure Portal [adatbázisban](set-throughput.md#set-throughput-on-a-database) vagy [tároló](set-throughput.md#set-throughput-on-a-container) szintjén való beállításának relatív előnyeit ismerteti. Az ezekben a cikkekben említett "adatbázis" és "tároló" kifejezések a Cassandra API a "space" és a "Table" kifejezéssel jelennek meg.
 
@@ -46,7 +46,7 @@ Ennek a módszernek az az előnye, hogy ez egy egyszerű kulcsrakész módszer a
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>A vezérlési sík használata
 
-A Cassandra Azure Cosmos DB API-ját lehetővé teszi az átviteli sebesség programozott módon történő módosítását a különböző vezérlő-sík funkciók használatával. Útmutatásért és példákért tekintse meg a [Azure Resource Manager](manage-cassandra-with-resource-manager.md), a [PowerShell](powershell-samples.md)és az [Azure CLI](cli-samples.md) -cikkeket.
+A Cassandra Azure Cosmos DB API-ját lehetővé teszi az átviteli sebesség programozott módon történő módosítását a különböző vezérlő-sík funkciók használatával. Útmutatásért és példákért tekintse meg a [Azure Resource Manager](./templates-samples-cassandra.md), a [PowerShell](powershell-samples.md)és az [Azure CLI](cli-samples.md) -cikkeket.
 
 Ennek a módszernek az az előnye, hogy automatizálhatja az erőforrások vertikális fel-vagy leskálázását egy időzítő alapján a csúcsérték-tevékenységhez vagy az alacsony aktivitású időszakokhoz. Tekintse meg [a mintát a Azure functions és a PowerShell](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) használatával.
 

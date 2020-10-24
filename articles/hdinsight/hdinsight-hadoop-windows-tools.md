@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a663eb65bcd85a1b2e91e6f2ad90dc64b61273ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75933930"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484763"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Munka Apache Hadoop ökoszisztémán a HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL
 
@@ -58,7 +58,7 @@ Példák a Visual Studióval és a Visual Studióval Data Lake eszközökkel elv
 A Visual Studio és a .NET SDK segítségével kezelheti a fürtöket, és big data alkalmazásokat fejleszthet. A következő feladatokhoz más ide-ket is használhat, de a Visual Studióban példák láthatók.
 
 Példák a Visual Studióban a .NET SDK-val elvégezhető feladatokra:
-* [Azure HDINSIGHT SDK a .net-hez](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+* [Azure HDINSIGHT SDK a .net-hez](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true).
 * [Apache Hive lekérdezések futtatása a .net SDK használatával](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [A felhasználó által definiált C#-függvények használata Apache Hive és Apache Pig streaming használatával Apache Hadoopon](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
@@ -90,9 +90,9 @@ Ha olyan helyzetbe kerül, ahol olyan eszközt vagy technológiát kell használ
 
 ## <a name="cross-platform-tools"></a>Platformfüggetlen eszközök
 
-Az Azure parancssori felülete (CLI) a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.  További információ: [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+Az Azure parancssori felülete (CLI) a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.  További információ: [Azure Command-Line Interface (CLI)](/cli/azure/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha most ismerkedik a Linux-alapú fürtökkel, tekintse meg a következő cikkeket:
 * [Apache Hadoop, Apache Kafka, Apache Spark vagy más fürtök beállítása](hdinsight-hadoop-provision-linux-clusters.md)

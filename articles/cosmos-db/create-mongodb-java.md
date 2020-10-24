@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 301bedc75d243f427120c955bda539508ff43200
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a831921ec3b3fa755496c08c02665b1c0fe99557
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87323638"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475957"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Gyors útmutató: konzolos alkalmazás létrehozása Javával és a MongoDB API-val Azure Cosmos DB
 
@@ -131,9 +131,9 @@ Mostantól a [Robomongo](mongodb-robomongo.md)  /  [Studio 3T](mongodb-mongochef
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB API-t a Mongo DB-fiókhoz, hogyan adhat hozzá egy adatbázist és egy tárolót a Adatkezelő használatával, és hogyan adhat hozzá egy Java-konzol alkalmazás használatával. Mostantól további adatait is importálhatja a Cosmos-adatbázisba. 
 
 > [!div class="nextstepaction"]
-> [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)
+> [MongoDB adatok importálása az Azure Cosmos DB-be](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

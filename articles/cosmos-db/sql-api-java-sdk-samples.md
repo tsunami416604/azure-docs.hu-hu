@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: ead5ab6f914db951027406e43437ac30a4f85247
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: afc9633c32174cbe1d94535d68e4c8f85f3d137b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279250"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478066"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: Java SDK v4 példák
 
@@ -124,7 +124,7 @@ A [gyűjteményi szifilisz mintáinak](https://github.com/Azure/azure-documentdb
 
 ## <a name="autoscale-collection-examples"></a>Példák az autoscale-gyűjtésre
 
-Ha többet szeretne megtudni a minták futtatása előtt, tekintse meg ezeket az utasításokat, amelyekkel engedélyezheti az autoskálázást a [fiókjában](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/) , valamint az [adatbázisaiban és a tárolókban](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autoscale).
+Ha többet szeretne megtudni a minták futtatása előtt, tekintse meg ezeket az utasításokat, amelyekkel engedélyezheti az autoskálázást a [fiókjában](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/) , valamint az [adatbázisaiban és a tárolókban](./provision-throughput-autoscale.md).
 
 Az [autoscale Database szifilisz Samples](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java) fájl az alábbi feladatok végrehajtását mutatja be.
 
@@ -163,7 +163,7 @@ A [Document szifilisz Samples](https://github.com/Azure/azure-documentdb-java/bl
 | [Dokumentum olvasása csak a dokumentum módosítása esetén](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L266-L300) | AccessCondition. setType<br>AccessCondition.setCondition |
 
 ## <a name="indexing-examples"></a>Indexelési példák
-A [gyűjteményi szifilisz mintáinak](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) fájlja a következő feladatok elvégzését mutatja be. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-types.md)és az [indexelési útvonalak](index-paths.md) fogalmi cikkei. 
+A [gyűjteményi szifilisz mintáinak](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) fájlja a következő feladatok elvégzését mutatja be. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-overview.md#index-kinds)és az [indexelési útvonalak](index-policy.md#include-exclude-paths) fogalmi cikkei. 
 
 | Feladat | API-referencia |
 | --- | --- |
@@ -180,7 +180,7 @@ A [gyűjteményi szifilisz mintáinak](https://github.com/Azure/azure-documentdb
 További információ az indexelésről: [Azure Cosmos DB indexelési szabályzat](index-policy.md).
 
 ## <a name="query-examples"></a>Lekérdezéspéldák
-A [lekérdezési minták](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) fájl a következő feladatokat mutatja be az SQL-lekérdezési nyelvtan használatával. Ha többet szeretne megtudni a Azure Cosmos DB SQL-lekérdezési referenciáról az alábbi minták futtatása előtt, tekintse meg a [Azure Cosmos db SQL-lekérdezési példákat](how-to-sql-query.md). 
+A [lekérdezési minták](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) fájl a következő feladatokat mutatja be az SQL-lekérdezési nyelvtan használatával. Ha többet szeretne megtudni a Azure Cosmos DB SQL-lekérdezési referenciáról az alábbi minták futtatása előtt, tekintse meg a [Azure Cosmos db SQL-lekérdezési példákat](./sql-query-getting-started.md). 
 
 | Feladat | API-referencia |
 | --- | --- |

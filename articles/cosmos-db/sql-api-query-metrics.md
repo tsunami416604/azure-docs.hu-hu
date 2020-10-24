@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 38f21ec32d14261c7f1bb5e285180d9721b9dca7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280524"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477827"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel
 
-A Azure Cosmos DB SQL API-t biztosít [az adatlekérdezéshez](how-to-sql-query.md), séma vagy másodlagos indexek megkövetelése nélkül. Ez a cikk a következő információkat tartalmazza a fejlesztőknek:
+A Azure Cosmos DB SQL API-t biztosít [az adatlekérdezéshez](./sql-query-getting-started.md), séma vagy másodlagos indexek megkövetelése nélkül. Ez a cikk a következő információkat tartalmazza a fejlesztőknek:
 
 * A Azure Cosmos DB SQL-lekérdezés végrehajtásának működésével kapcsolatos magas szintű információk
 * A lekérdezési kérelem és a válasz fejlécének részletei, valamint az ügyfél-SDK beállításai
@@ -238,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Egység | Description | 
+| Metrika | Egység | Leírás | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | ezredmásodperc | Lekérdezés végrehajtási ideje | 
 | `queryCompileTimeInMs` | ezredmásodperc | Lekérdezés fordítási ideje  | 
@@ -260,7 +260,7 @@ Az ügyfél SDK-k belsőleg több lekérdezési műveletet végezhetnek el a lek
 
 Íme néhány példa a lekérdezésekre, és hogyan kell értelmezni a lekérdezés-végrehajtásból visszaadott metrikákat: 
 
-| Lekérdezés | Minta metrika | Description | 
+| Lekérdezés | Minta metrika | Leírás | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | A beolvasott dokumentumok száma 100 + 1 a TOP záradéknak megfelelően. A lekérdezési időt többnyire a és a vizsgálat során kell kitölteni `WriteOutputTime` `DocumentLoadTime` . | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | A RetrievedDocumentCount mostantól magasabb (500 + 1 a TOP záradéknak megfelelően). | 
@@ -275,6 +275,4 @@ Az ügyfél SDK-k belsőleg több lekérdezési műveletet végezhetnek el a lek
 ## <a name="next-steps"></a>Következő lépések
 * További információ a támogatott SQL-lekérdezési operátorokról és-kulcsszavakról: [SQL-lekérdezés](sql-query-getting-started.md). 
 * A kérelmek egységeit a [kérelmek egységei](request-units.md)című témakörben tekintheti meg.
-* Az indexelési szabályzattal kapcsolatos további tudnivalókért lásd: [indexelési házirend](index-policy.md) 
-
-
+* Az indexelési szabályzattal kapcsolatos további tudnivalókért lásd: [indexelési házirend](index-policy.md)

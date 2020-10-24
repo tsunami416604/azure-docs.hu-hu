@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0ca022d91a43a4edc7619cdd860ee6283dc3b520
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: a3081b90fb715b55af394c9c5f8c73316233a1c3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284481"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477164"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával
 
@@ -51,7 +51,7 @@ Ez a sablon két régióban hoz létre egy Azure Cosmos-fiókot, amely a konzisz
 
 Néhány további információforrás:
 
-* [Az Azure Resource Manager dokumentációja](/azure/azure-resource-manager/)
+* [Az Azure Resource Manager dokumentációja](../azure-resource-manager/index.yml)
 * [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
 * [Azure Cosmos DB gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 * [Gyakori Azure Resource Manager telepítési hibák elhárítása](../azure-resource-manager/templates/common-deployment-errors.md)

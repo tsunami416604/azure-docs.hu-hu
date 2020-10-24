@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: fef41a177f653dc67835897a48d734400a37a0d0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207937"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496007"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -183,6 +183,7 @@ Ha saját (felhasználó által felügyelt) kulcsokat kíván használni a Azure
 A munkaterületek meglévő Azure Container Registry használatával történő létrehozásának példáját a következő cikkekben találja:
 
 * [Hozzon létre egy munkaterületet Azure Machine learning az Azure CLI-vel](how-to-manage-workspace-cli.md).
+* [Hozzon létre egy munkaterületet a PYTHON SDK-val](how-to-manage-workspace.md?tabs=python#create-a-workspace).
 * [Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával](how-to-create-workspace-template.md)
 
 #### <a name="azure-container-instance"></a>Azure Container Instance

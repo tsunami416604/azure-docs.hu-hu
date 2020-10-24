@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 081eb10166ff681990af15110829030176efa3fa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207767"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494969"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure digitális Twins-példány és-hitelesítés beállítása (CLI)
 
@@ -36,7 +36,7 @@ A cikk jelen verziója ezeket a lépéseket manuálisan, egyenként, a parancsso
 
 Ebben a szakaszban az **Azure Digital Twins új példányát fogja létrehozni** a Cloud Shell parancs használatával. A következőket kell megadnia:
 * Egy erőforráscsoport, amelybe a üzembe helyezése megtörténjen. Ha még nem rendelkezik már meglévő erőforráscsoporthoz, létrehozhat egyet ezzel a paranccsal:
-    ```azurecli
+    ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * Egy régió az üzemelő példányhoz. Ha szeretné megtekinteni, hogy mely régiók támogatják az Azure Digital Twins-t, látogasson el az [*Azure-termékek területre*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
@@ -44,7 +44,7 @@ Ebben a szakaszban az **Azure Digital Twins új példányát fogja létrehozni**
 
 A példány létrehozásához használja ezeket az értékeket a következő parancsban:
 
-```azurecli
+```azurecli-interactive
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
@@ -67,8 +67,8 @@ Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a
 
 A következő parancs használatával rendelje hozzá a szerepkört (az Azure-előfizetéshez [megfelelő engedélyekkel](#prerequisites-permission-requirements) rendelkező felhasználónak kell futtatnia). A parancshoz a szerepkörhöz hozzárendelni kívánt felhasználó Azure AD-fiókjához tartozó *egyszerű* felhasználónevet kell átadnia. A legtöbb esetben ez megegyezik a felhasználó e-mail-címével az Azure AD-fiókban.
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Data Owner"
 ```
 
 Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel kapcsolatos információ.

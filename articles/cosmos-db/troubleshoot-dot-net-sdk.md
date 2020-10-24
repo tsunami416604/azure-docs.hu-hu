@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 581c8fcad62c40555a90b7455a260259f3a09212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e941c941c7b406be8d6931fd7af4108137220d56
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802413"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476909"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 
@@ -34,8 +34,8 @@ Mielőtt éles környezetben áthelyezi az alkalmazást, vegye figyelembe a köv
 *    Használja a legújabb [SDK](sql-api-sdk-dotnet-standard.md)-t. Az előzetes verziójú SDK-kat nem ajánlott éles környezetben használni. Ez megakadályozza a már kijavított ismert problémák elkerülését.
 *    Tekintse át a [teljesítménnyel kapcsolatos tippeket](performance-tips.md), és kövesse a javasolt eljárásokat. Ez segít megakadályozni a skálázást, a késést és az egyéb teljesítménnyel kapcsolatos problémákat.
 *    A probléma megoldásához engedélyezze az SDK-naplózást. A naplózás engedélyezése hatással lehet a teljesítményre, így csak hibaelhárítási problémák esetén ajánlott engedélyezni. A következő naplók engedélyezhetők:
-*    A [metrikák naplózása](monitor-accounts.md) a Azure Portal használatával. A portál metrikái a Azure Cosmos DB telemetria mutatják be, ami hasznos lehet annak megállapítására, hogy a probléma megfelel-e a Azure Cosmos DBnak, vagy az ügyfél oldaláról származik-e.
-*    Naplózza a [diagnosztikai karakterláncot](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) a v2 SDK-ban vagy [DIAGNOSZTIKÁT](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) a v3 SDK-ban a pont műveleti válaszai közül.
+*    A [metrikák naplózása](./monitor-cosmos-db.md) a Azure Portal használatával. A portál metrikái a Azure Cosmos DB telemetria mutatják be, ami hasznos lehet annak megállapítására, hogy a probléma megfelel-e a Azure Cosmos DBnak, vagy az ügyfél oldaláról származik-e.
+*    Naplózza a [diagnosztikai karakterláncot](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) a v2 SDK-ban vagy [DIAGNOSZTIKÁT](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) a v3 SDK-ban a pont műveleti válaszai közül.
 *    Az [SQL-lekérdezési metrikák](sql-api-query-metrics.md) naplózása az összes lekérdezési válaszból 
 *    Az [SDK-naplózás]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) beállításának követése
 
@@ -51,7 +51,7 @@ Ellenőrizze, hogy aktív-e a [GitHub-problémák szakasza](https://github.com/A
 * Az ügyfélszámítógépen lévő erőforrások hiánya miatt előfordulhat, hogy kapcsolati vagy rendelkezésre állási problémákba ütközik. Javasoljuk, hogy a CPU-kihasználtságot a Azure Cosmos DB-ügyfelet futtató csomópontokon figyelje, és ha nagy terhelésen futnak, fel kell skálázást.
 
 ### <a name="check-the-portal-metrics"></a>A portál metrikáinak megtekintése
-A [portál metrikáinak](monitor-accounts.md) ellenőrzése segít meghatározni, hogy az ügyféloldali probléma-e, vagy hogy van-e probléma a szolgáltatással. Ha például a mérőszámok nagy arányban korlátozott kérelmeket tartalmaznak (a 429-as HTTP-állapotkód), ami azt jelenti, hogy a kérést a rendszer lekéri, akkor ellenőrizze, hogy a [kérelem sebessége túl nagy](troubleshoot-request-rate-too-large.md) . 
+A [portál metrikáinak](./monitor-cosmos-db.md) ellenőrzése segít meghatározni, hogy az ügyféloldali probléma-e, vagy hogy van-e probléma a szolgáltatással. Ha például a mérőszámok nagy arányban korlátozott kérelmeket tartalmaznak (a 429-as HTTP-állapotkód), ami azt jelenti, hogy a kérést a rendszer lekéri, akkor ellenőrizze, hogy a [kérelem sebessége túl nagy](troubleshoot-request-rate-too-large.md) . 
 
 ## <a name="common-error-status-codes"></a>Gyakori hibák állapotkódok <a id="error-codes"></a>
 
@@ -78,11 +78,11 @@ Ha az alkalmazás [nyilvános IP-cím nélküli Azure-Virtual Machines](../load-
 
 * Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](../virtual-network/virtual-networks-acl.md)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
+    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](/previous-versions/azure/virtual-network/virtual-networks-acl)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
 * Rendeljen hozzá egy [nyilvános IP-címet az Azure-beli virtuális géphez](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Nagy hálózati késés
-A hálózati késést a v2 SDK- [ban vagy a](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v3 SDK-ban lévő diagnosztika [diagnosztikai karakterláncának](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet&preserve-view=true) használatával lehet azonosítani.
+A hálózati késést a v2 SDK- [ban vagy a](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v3 SDK-ban lévő diagnosztika [diagnosztikai karakterláncának](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet) használatával lehet azonosítani.
 
 Ha nincsenek [időtúllépések](troubleshoot-dot-net-sdk-request-timeout.md) , és a diagnosztika egyetlen kérést mutat be, ahol a nagy késés nyilvánvaló a és a közötti különbségnél `ResponseTime` `RequestStartTime` (>300 ezredmásodperc ebben a példában):
 
@@ -94,11 +94,11 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 Ennek a késésnek több oka lehet:
 
 * Az alkalmazás nem ugyanabban a régióban fut, mint a Azure Cosmos DB fiókja.
-* A [PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) vagy a [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) konfigurációja helytelen, és megpróbál csatlakozni egy másik régióhoz, ahol az alkalmazás jelenleg fut.
+* A [PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) vagy a [ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) konfigurációja helytelen, és megpróbál csatlakozni egy másik régióhoz, ahol az alkalmazás jelenleg fut.
 * A nagy adatforgalom miatt a hálózati adapter szűk keresztmetszetet jelenthet. Ha az alkalmazás az Azure Virtual Machineson fut, lehetséges a megkerülő megoldások:
     * A [gyorsított hálózatkezelést használó virtuális gépeket](../virtual-network/create-vm-accelerated-networking-powershell.md)érdemes lehet használni.
     * [Gyorsított hálózatkezelés engedélyezése egy meglévő virtuális gépen](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
-    * Érdemes lehet [magasabb végpontú virtuális gépet](../virtual-machines/windows/sizes.md)használni.
+    * Érdemes lehet [magasabb végpontú virtuális gépet](../virtual-machines/sizes.md)használni.
 
 ### <a name="common-query-issues"></a>Gyakori lekérdezési problémák
 

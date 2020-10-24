@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: dccdbcb99b32a922d76b29e5896cdf99290758d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302451"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495713"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
 
@@ -47,7 +47,7 @@ A munkaterületet a következő módokon használhatja:
 
 > [!IMPORTANT]
 > Az alábbi megjelölésű eszközök (előzetes verzió) jelenleg nyilvános előzetes verzióban érhetők el.
-> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 + A weben:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
@@ -88,8 +88,8 @@ A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
 
 Több módon is létrehozhat egy munkaterületet:  
 
-* A pont-és kattintási felület [Azure Portal](how-to-manage-workspace.md) az egyes lépések lépésein végezhető el.
-* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace) használatával létrehozhat egy munkaterületet a Python-parancsfájlok vagy a Jupiter-jegyzetfüzetek segítségével
+* A pont-és kattintási felület [Azure Portal](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) az egyes lépések lépésein végezhető el.
+* A [Pythonhoz készült Azure Machine learning SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace) használatával létrehozhat egy munkaterületet a Python-parancsfájlok vagy a Jupiter-jegyzetfüzetek segítségével
 * Ha automatizálni vagy testre szeretné szabni a vállalati biztonsági szabványokkal való létrehozást, használjon [Azure Resource Manager sablont](how-to-create-workspace-template.md) vagy a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md) -t.
 * Ha a Visual Studio Code-ban dolgozik, használja a [vs Code bővítményt](how-to-manage-resources-vscode.md#create-a-workspace).
 
@@ -114,7 +114,7 @@ Amikor új munkaterületet hoz létre, az automatikusan létrehoz több Azure-er
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): a számítási célok és a munkaterület által igényelt egyéb bizalmas információk által használt titkokat tárolja.
 
 > [!NOTE]
-> Az új verziók létrehozása mellett használhatja a meglévő Azure-szolgáltatásokat is.
+> Ehelyett használhatja a meglévő Azure-beli erőforrás-példányokat, amikor az [ARM-sablonnal](how-to-create-workspace-template.md)létrehozza a munkaterületet a [Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace), az [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html)vagy a Azure Machine learning CLI használatával.
 
 <a name="wheres-enterprise"></a>
 
@@ -131,9 +131,9 @@ Mindkét kiadásban az ügyfelek felelősek a felhasznált Azure-erőforrások k
 A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 
 + [Azure Machine Learning áttekintése](overview-what-is-azure-ml.md)
-+ [Munkaterület létrehozása](how-to-manage-workspace.md)
-+ [Munkaterületek kezelése](how-to-manage-workspace.md)
-+ [Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val](tutorial-1st-experiment-sdk-setup.md)
++ [Munkaterület létrehozása és kezelése](how-to-manage-workspace.md)
++ [Oktatóanyag: a Azure Machine Learning első lépései a fejlesztési környezetben](tutorial-1st-experiment-sdk-setup-local.md)
++ [Oktatóanyag: az első ML-kísérlet létrehozása számítási példányon](tutorial-1st-experiment-sdk-setup.md)
 + [Oktatóanyag: az Azure Machine Learning első lépései az R SDK-val](tutorial-1st-r-experiment.md)
 + [Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással](tutorial-first-experiment-automated-ml.md) 
 + [Oktatóanyag: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)

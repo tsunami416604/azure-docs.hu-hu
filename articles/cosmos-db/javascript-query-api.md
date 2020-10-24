@@ -8,16 +8,16 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f16498f0661ba918acd42b7964b649d0bbdf5841
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334395"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495884"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript lekérdezési API a Azure Cosmos DB
 
-A Azure Cosmos DBban található SQL API-val végzett lekérdezések mellett a [Cosmos db KISZOLGÁLÓOLDALI SDK JavaScript-](https://azure.github.io/azure-cosmosdb-js-server/) felületet biztosít az optimalizált lekérdezések végrehajtásához Cosmos db tárolt eljárások és eseményindítók esetében. Ennek a JavaScript-felületnek a használatához nem kell tisztában lennie az SQL-nyelvvel. A JavaScript lekérdezési API lehetővé teszi, hogy programozott módon hozza létre a lekérdezéseket úgy, hogy a predikátum függvényeit átadja a függvények sorrendjének, és egy olyan szintaxist, amely ismerős a ECMAScript5's Array beépített és népszerű JavaScript-kódtárak, például a Lodash használatával. A lekérdezéseket a JavaScript futtatókörnyezet elemzi, és a Azure Cosmos DB indexek használatával hatékonyan hajtja végre.
+A Azure Cosmos DBban található SQL API-val végzett lekérdezések mellett a [Cosmos db KISZOLGÁLÓOLDALI SDK JavaScript-](https://github.com/Azure/azure-cosmosdb-js-server/) felületet biztosít az optimalizált lekérdezések végrehajtásához Cosmos db tárolt eljárások és eseményindítók esetében. Ennek a JavaScript-felületnek a használatához nem kell tisztában lennie az SQL-nyelvvel. A JavaScript lekérdezési API lehetővé teszi, hogy programozott módon hozza létre a lekérdezéseket úgy, hogy a predikátum függvényeit átadja a függvények sorrendjének, és egy olyan szintaxist, amely ismerős a ECMAScript5's Array beépített és népszerű JavaScript-kódtárak, például a Lodash használatával. A lekérdezéseket a JavaScript futtatókörnyezet elemzi, és a Azure Cosmos DB indexek használatával hatékonyan hajtja végre.
 
 ## <a name="supported-javascript-functions"></a>Támogatott JavaScript-függvények
 
@@ -43,7 +43,7 @@ A következő JavaScript-szerkezetek nem optimalizáltak Azure Cosmos DB indexek
 - Vezérlési folyamat (például, ha,, míg)
 - Függvények hívásai
 
-További információ: [Cosmos db kiszolgálóoldali JavaScript-dokumentáció](https://azure.github.io/azure-cosmosdb-js-server/).
+További információ: [Cosmos db kiszolgálóoldali JavaScript-dokumentáció](https://github.com/Azure/azure-cosmosdb-js-server/).
 
 ## <a name="sql-to-javascript-cheat-sheet"></a>SQL – JavaScript Cheat Sheet
 

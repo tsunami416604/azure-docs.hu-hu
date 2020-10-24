@@ -3,16 +3,16 @@ title: Azure VMware-megoldás virtuális gépek biztonsági mentése Azure Backu
 description: Konfigurálja az Azure VMware-megoldási környezetét a virtuális gépek biztonsági mentésére Azure Backup Server használatával.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: d4273980a134fbdaabe64215aaf0b66a53253788
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893016"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495692"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure VMware-megoldás virtuális gépek biztonsági mentése Azure Backup Server
 
-Ebben a cikkben áttekintjük a VMWare virtuális gépek (VM-EK) Azure VMware-megoldáson futó biztonsági mentésének eljárásait Azure Backup Server használatával. Mielőtt elkezdené, győződjön meg róla, hogy alaposan átugorja [Microsoft Azure Backup-kiszolgáló beállítása az Azure VMware megoldáshoz](set-up-backup-server-for-azure-vmware-solution.md).
+Ebben a cikkben a VMWare virtuális gépek (VM-EK) biztonsági mentését fogjuk futtatni az Azure VMware-megoldáson Azure Backup Serverokkal. Első lépésként [a Microsoft Azure Backup-kiszolgáló beállítása az Azure VMware megoldáshoz](set-up-backup-server-for-azure-vmware-solution.md)című rész részletesen elérhetővé válik.
 
 Ezután az összes szükséges eljárást bemutatjuk:
 
@@ -162,7 +162,11 @@ A VMware 6,7-es verziójában a TLS engedélyezve volt a kommunikációs protoko
 
    ![Befejezés lap](../backup/media/backup-azure-backup-server-vmware/summary-screen.png)
 
-   Az **üzemi kiszolgáló** területen látható vCenter-kiszolgálót a **VMware-kiszolgálóként** **és az** **ügynök állapotaként** kell megtekinteni. Ha az **ügynök állapota** **ismeretlenként**jelenik meg, válassza a **frissítés**lehetőséget.
+   A vCenter-kiszolgáló az **üzemi kiszolgáló** területen jelenik meg a következővel:
+   - Típus **VMware-kiszolgálóként** 
+   - Az ügynök állapota **OK** 
+   
+      Ha az **ügynök állapota** **ismeretlenként**jelenik meg, válassza a **frissítés**lehetőséget.
 
 ## <a name="configure-a-protection-group"></a>Védelmi csoport konfigurálása
 
@@ -202,7 +206,7 @@ A védelmi csoportok több virtuális gépet gyűjtenek, és ugyanazokat az adat
 
    - Az ajánlott lemez-foglalások a megadott megőrzési időtartamon, a munkaterhelés típusától és a védett adatok méretén alapulnak. Végezze el a szükséges módosításokat, majd kattintson a **tovább**gombra.
    - **Adatméret:** A védelmi csoportban lévő adatméret.
-   - **Lemezterület:** A védelmi csoport számára javasolt lemezterület. Ha módosítani kívánja ezt a beállítást, akkor az egyes adatforrások által becsült mennyiségnél valamivel nagyobb teljes terület foglalása.
+   - **Lemezterület:** A védelmi csoport számára javasolt lemezterület. Ha módosítani kívánja ezt a beállítást, válassza az egyes adatforrások által becsült mennyiségnél világosabb térközt.
    - **Storage-készlet részletei:** Megjeleníti a tárolási készlet állapotát, amely tartalmazza a teljes és a fennmaradó lemez méretét.
 
    :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="vSphere webes ügyfél":::
@@ -229,14 +233,14 @@ A védelmi csoportok több virtuális gépet gyűjtenek, és ugyanazokat az adat
 
    ![Online védelmi adatértékek meghatározása](../backup/media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
-1. Az **online biztonsági mentés** időpontjának megadása lapon jelezze, hogy milyen gyakran szeretne biztonsági másolatot készíteni a helyi tárolóból az Azure-ba, majd válassza a **tovább**lehetőséget. 
+1. Az **online biztonsági mentés** időpontjának megadása lapon jelezze, hogy milyen gyakran szeretne biztonsági másolatot készíteni a helyi tárolóból az Azure-ba. 
 
    - A Felhőbeli helyreállítási pontok, amelyeket a rendszer az ütemterv alapján hoz létre. 
    - A helyreállítási pont létrehozása után a rendszer átviszi a Recovery Services-tárolóba az Azure-ban.
 
    ![Online biztonsági mentési ütemterv megadása](../backup/media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. Az **online adatmegőrzési szabály megadása** lapon adja meg, hogy mennyi ideig szeretné megőrizni a napi, heti, havi vagy éves biztonsági mentésből az Azure-ba létrehozott helyreállítási pontokat, majd válassza a **tovább**lehetőséget.
+1. Az **online adatmegőrzési szabály meghatározása** lapon adja meg, hogy mennyi ideig szeretné megőrizni a biztonsági másolatokból az Azure-ba létrehozott helyreállítási pontokat.
 
    - Nincs időkorlát arra vonatkozóan, hogy mennyi ideig tarthat az Azure-beli adatmegőrzés.
    - Az egyetlen korlát, hogy a védett példányok esetében nem lehet több, mint 9 999 helyreállítási pont. Ebben a példában a védett példány a VMware-kiszolgáló.
@@ -251,8 +255,9 @@ A védelmi csoportok több virtuális gépet gyűjtenek, és ugyanazokat az adat
 
 Miután konfigurálta a védelmi csoportot az Azure VMware-megoldás virtuális gépei biztonsági mentéséhez, a Azure Backup Server-konzol használatával figyelheti a biztonsági mentési feladatok és riasztások állapotát. Itt láthatja a figyelést.
 
-- A **figyelés** ablaktábla **riasztások** lapján nyomon követheti a védelmi csoportok hibáit, figyelmeztetéseit és általános információit egy adott védett számítógép vagy az üzenet súlyossága alapján. Megtekintheti az aktív és az inaktív riasztásokat, és beállíthatja az e-mailes értesítéseket.
-- A **figyelés** ablaktábla **feladatok** lapján megtekintheti a Azure Backup Server által kezdeményezett feladatokat egy adott védett adatforrás vagy védelmi csoport számára. Nyomon követheti a feladat előrehaladását, vagy megtekintheti a feladatok által felhasznált erőforrásokat.
+- A **figyelési** feladat területén:
+   - A **riasztások**területen a hibák, a figyelmeztetések és az általános információk figyelésére van lehetőség.  Megtekintheti az aktív és az inaktív riasztásokat, és beállíthatja az e-mailes értesítéseket.
+   - A **feladatok**területen megtekintheti Azure Backup Server által elindított feladatokat egy adott védett adatforrás vagy védelmi csoport számára. Nyomon követheti a feladat előrehaladását, vagy megtekintheti a feladatok által felhasznált erőforrásokat.
 - A **védelem** munkaterületen megtekintheti a kötetek és megosztások állapotát a védelmi csoportban. A konfigurációs beállításokat, például a helyreállítási beállításokat, a lemez kiosztását és a biztonsági mentési ütemtervet is megtekintheti.
 - A **felügyelet** munkaterületen megtekintheti a **lemezek, online**és **ügynökök** lapokat a tárolóban lévő lemezek állapotának ellenőrzéséhez, az Azure-ba való regisztráláshoz és a DPM-ügynök állapotának üzembe helyezéséhez.
 
@@ -263,18 +268,18 @@ Miután konfigurálta a védelmi csoportot az Azure VMware-megoldás virtuális 
 A Azure Backup Server felügyeleti konzol két módon lehet helyreállítani az adatgyűjtést. Kereshet vagy böngészhet. Az adatok helyreállításakor előfordulhat, hogy nem szeretné visszaállítani az adatokat vagy egy virtuális gépet ugyanarra a helyre. Emiatt a Azure Backup Server három helyreállítási lehetőséget támogat a VMware virtuális gépek biztonsági másolatainak:
 
 - **Eredeti hely helyreállítása (OLR)**: a védett virtuális gép eredeti helyükre történő visszaállításához használja a OLR-t. A virtuális gépeket csak akkor állíthatja vissza az eredeti helyükre, ha a biztonsági mentés óta nincs lemez hozzáadva vagy törölve. Ha lemezek lettek hozzáadva vagy törölve, akkor másik helyre történő helyreállítást kell használnia.
-- **Másik helyre történő helyreállítás (ALR)**: Ha az eredeti virtuális gép hiányzik, vagy nem szeretné megzavarni az eredeti virtuális gépet, állítsa helyre a virtuális gépet egy másik helyre. Egy virtuális gép másik helyre történő helyreállításához meg kell adnia egy ESXi-gazdagép, erőforráskészlet, mappa, valamint a tároló adattárát és elérési útját. A visszaállított virtuális gép az eredeti virtuális gépről való megkülönböztetéséhez Azure Backup Server a "helyreállított" elemet a virtuális gép nevéhez.
+- **Másodlagos hely helyreállítása (ALR)**: akkor használja, ha az eredeti virtuális gép hiányzik, vagy nem szeretné megzavarni az eredeti virtuális gépet. Adja meg az ESXi-gazdagép, az erőforráskészlet, a mappa, valamint a tárolási adattár és elérési út helyét. A visszaállított virtuális gép az eredeti virtuális gépről való megkülönböztetéséhez Azure Backup Server a *"helyreállított"* elemet a virtuális gép nevéhez.
 - **Különálló fájl helye-helyreállítás (ILR)**: Ha a védett virtuális gép egy Windows Server rendszerű virtuális gép, a virtuális gépen található egyes fájlok vagy mappák a Azure Backup Server ILR funkciójával állíthatók helyre. Az egyes fájlok helyreállításához tekintse meg a jelen cikk későbbi részében ismertetett eljárást. Egy különálló fájl virtuális gépről való visszaállítása csak a Windows rendszerű virtuális gépek és a lemezes helyreállítási pontok esetében érhető el.
 
 ### <a name="restore-a-recovery-point"></a>Helyreállítási pont visszaállítása
 
 1. A Azure Backup Server felügyeleti konzol válassza ki a **helyreállítás** nézetet. 
 
-1. A **Tallózás** panelen tallózással vagy szűréssel keresse meg a helyreállítani kívánt virtuális gépet. Miután kiválasztott egy virtuális gépet vagy mappát, a **helyreállítási pontok** ablaktáblán megjelennek a rendelkezésre álló helyreállítási pontok.
+1. A **Tallózás** panelen tallózással vagy szűréssel keresse meg a helyreállítani kívánt virtuális gépet. Miután kiválasztott egy virtuális gépet vagy mappát, a * * helyreállítási pontok panel megjeleníti az elérhető helyreállítási pontokat.
 
    ![Rendelkezésre álló helyreállítási pontok](../backup/media/restore-azure-backup-server-vmware/recovery-points.png)
 
-1. A **helyreállítási pontok** ablaktáblán a naptár és legördülő menük segítségével Válasszon ki egy dátumot a helyreállítási pont létrehozásakor. A félkövérrel szedett naptári dátumok rendelkeznek elérhető helyreállítási pontokkal. Másik lehetőségként kattintson a jobb gombbal a virtuális gépre, és válassza az **összes helyreállítási pont megjelenítése** lehetőséget, majd a listából válassza ki a helyreállítási pontot.
+1. A **helyreállítási pontok** ablaktáblán válassza ki azt a dátumot, amikor egy helyreállítási pontot készített. A félkövérrel szedett naptári dátumok rendelkeznek elérhető helyreállítási pontokkal. Másik lehetőségként kattintson a jobb gombbal a virtuális gépre, és válassza az **összes helyreállítási pont megjelenítése** lehetőséget, majd a listából válassza ki a helyreállítási pontot.
 
    > [!NOTE] 
    > A rövid távú védelem érdekében válasszon egy lemezes helyreállítási pontot a gyorsabb helyreállítás érdekében. A rövid távú helyreállítási pontok lejárta után csak az **online** helyreállítási pontok jelennek meg a helyreállításhoz.
@@ -292,7 +297,7 @@ A Azure Backup Server felügyeleti konzol két módon lehet helyreállítani az 
    > [!NOTE]
    > A VMware-alapú munkaterhelések nem támogatják a hálózati sávszélesség szabályozásának engedélyezését.
 
-1. A **helyreállítási típus kiválasztása** lapon válassza ki, hogy a helyreállítást az eredeti példányra vagy egy új helyre kívánja-e visszaállítani, majd válassza a **tovább**lehetőséget.
+1. A **helyreállítási típus kiválasztása** lapon állítsa helyre a helyreállítást az eredeti példányra vagy egy új helyre.
 
    - Ha a **helyreállítás az eredeti példányra**lehetőséget választja, nem kell további döntéseket hoznia a varázslóban. A rendszer az eredeti példányra vonatkozó adatgyűjtést használja.
    - Ha **bármelyik gazdagépen a helyreállítás virtuális géphez**lehetőséget választja, akkor a **célhely megadása** képernyőn adja meg az **ESXi-gazdagép**, az **erőforráskészlet**, a **mappa**és az **elérési út**adatait.
@@ -312,11 +317,11 @@ A védett virtuális gépek helyreállítási pontjairól is visszaállíthatja 
 
 1. A Azure Backup Server felügyeleti konzol válassza ki a **helyreállítás** nézetet.
 
-1. A **Tallózás** panelen tallózással vagy szűréssel keresse meg a helyreállítani kívánt virtuális gépet. Miután kiválasztott egy virtuális gépet vagy mappát, a **helyreállítási pontok** ablaktáblán megjelennek a rendelkezésre álló helyreállítási pontok.
+1. A **Tallózás** panelen tallózással vagy szűréssel keresse meg a helyreállítani kívánt virtuális gépet. Miután kiválasztott egy virtuális gépet vagy mappát, a * * helyreállítási pontok panel megjeleníti az elérhető helyreállítási pontokat.
 
    ![Elérhető helyreállítási pontok](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
-1. A **helyreállítási pontok** ablaktáblán a naptár használatával válassza ki a kívánt helyreállítási pontokat tartalmazó dátumot. A biztonsági mentési házirend konfigurálásának módjától függően a dátumok több helyreállítási ponttal is rendelkezhetnek. 
+1. A **következőhöz tartozó helyreállítási pontok** ablaktáblán a naptár használatával válassza ki a kívánt helyreállítási pontokat tartalmazó dátumot. A biztonsági mentési házirend konfigurálásának módjától függően a dátumok több helyreállítási ponttal is rendelkezhetnek. 
 
 1. Miután kiválasztotta a helyreállítási pont készítésének napját, győződjön meg arról, hogy a megfelelő **helyreállítási időt**választja. 
 
@@ -334,14 +339,14 @@ A védett virtuális gépek helyreállítási pontjairól is visszaállíthatja 
 
 1. Ha kiválasztotta a helyreállításhoz szükséges elemeket, a felügyeleti konzol eszköz menüszalagján **kattintson a helyreállítás** elemre a **helyreállítási varázsló**megnyitásához. A **helyreállítási varázslóban**a helyreállítási beállítások **áttekintése** képernyő megjeleníti a helyreállítandó kijelölt elemeket.
 
-1. A **helyreállítási beállítások megadása** képernyőn hajtsa végre az alábbi műveletek egyikét:
+1. A **helyreállítási beállítások megadása** képernyőn hajtsa végre az alábbi lépések egyikét:
 
    - Válassza a **módosítás** lehetőséget a hálózati sávszélesség szabályozásának engedélyezéséhez. A **szabályozás** párbeszédpanelen jelölje be a **hálózati sávszélesség-használat szabályozásának engedélyezése** jelölőnégyzetet a beállítás bekapcsolásához. Ha engedélyezve van, konfigurálja a **beállításokat** és a **munkatervet**.
    - Kattintson a **tovább** gombra a hálózati sávszélesség-szabályozás letiltásához.
 
 1. A **helyreállítási típus kiválasztása** képernyőn válassza a **tovább**lehetőséget. A fájlokat és mappákat csak hálózati mappába állíthatja helyre.
 
-1. A **célhely megadása** képernyőn válassza a **Tallózás** lehetőséget a fájlok vagy mappák hálózati helyének megkereséséhez. Azure Backup Server létrehoz egy mappát, ahol az összes helyreállított elem másolása történik. A Mappanév MABS_day – hónap év előtaggal rendelkezik. Ha kijelöl egy helyet a helyreállított fájlokhoz vagy mappához, a rendszer a hely részleteit, például a **célhelyet**, a **célhely elérési útját**és a **rendelkezésre álló területet**adja meg.
+1. A **célhely megadása** képernyőn válassza a **Tallózás** lehetőséget a fájlok vagy mappák hálózati helyének megkereséséhez. Azure Backup Server létrehoz egy mappát, ahol az összes helyreállított elem másolása történik. A Mappanév MABS_day – hónap év előtaggal rendelkezik. Ha kijelöl egy helyet a helyreállított fájlokhoz vagy mappához, a rendszer megadja a hely részleteit.
 
    ![A fájlok visszaállítási helyének meghatározása](../backup/media/restore-azure-backup-server-vmware/specify-destination.png)
 

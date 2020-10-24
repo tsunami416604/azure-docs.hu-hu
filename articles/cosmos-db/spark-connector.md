@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50884a45e60826f09fffcc9f86992563e473424d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603050"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478048"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel big data elemzést az Azure Cosmos DB Connector Apache Spark használatával
 
@@ -31,10 +31,10 @@ Az összekötőt használhatja [Azure Databricks](https://azure.microsoft.com/se
 > Cosmos DB Cassandra API esetén használja a [Cassandra Spark-összekötőt](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Gyorsútmutató
+## <a name="quickstart"></a>Első lépések
 
-* Kövesse az Ismerkedés a [Java SDK-val](sql-api-async-java-get-started.md) című témakör lépéseit Cosmos db fiók beállításához és adatok feltöltéséhez.
-* Azure Databricks munkaterület és fürt beállításához kövesse [Azure Databricks első](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) lépések című szakasz lépéseit.
+* Kövesse az Ismerkedés a [Java SDK-val](./create-sql-api-java.md) című témakör lépéseit Cosmos db fiók beállításához és adatok feltöltéséhez.
+* Azure Databricks munkaterület és fürt beállításához kövesse [Azure Databricks első](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) lépések című szakasz lépéseit.
 * Most már létrehozhat új jegyzetfüzeteket, és importálhatja az Cosmos DB-összekötő függvénytárát. A munkaterület beállításával kapcsolatos részletekért ugorjon [a Cosmos db-összekötővel való együttműködésre](#bk_working_with_connector) .
 * A következő szakasz a-összekötő használatával történő olvasás és írás részleteit tartalmazza.
 

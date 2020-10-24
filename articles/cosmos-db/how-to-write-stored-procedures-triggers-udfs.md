@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: bc7bc677fb44600721b580ac9efc42feea4d98da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d33308932ecd7c523c6fbe287648d4afc21ef0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252952"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485800"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása Azure Cosmos DB
 
@@ -23,7 +23,7 @@ A tárolt eljárások, triggerek és felhasználó által definiált függvénye
 > [!NOTE]
 > Particionált tárolók esetén a tárolt eljárás végrehajtásakor meg kell adni egy partíciós kulcs értékét a kérés beállításai között. A tárolt eljárásokat a rendszer mindig a partíciós kulcsra szűkíti. A másik partíciós kulcs értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárásban. Ez is a triggerekre is vonatkozik.
 > [!Tip]
-> A Cosmos támogatja a tárolók üzembe helyezését tárolt eljárásokkal, eseményindítókkal és felhasználó által definiált függvényekkel. További információ: [Azure Cosmos db tároló létrehozása kiszolgálóoldali funkciókkal.](manage-sql-with-resource-manager.md#create-sproc)
+> A Cosmos támogatja a tárolók üzembe helyezését tárolt eljárásokkal, eseményindítókkal és felhasználó által definiált függvényekkel. További információ: [Azure Cosmos db tároló létrehozása kiszolgálóoldali funkciókkal.](./manage-with-templates.md#create-sproc)
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Tárolt eljárások írása
 

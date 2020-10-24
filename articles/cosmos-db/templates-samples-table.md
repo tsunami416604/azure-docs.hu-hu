@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: c77c917cf6063b787dc2972f5ee7db3329e0e743
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ef7749a2fa9c7a45cc4e2854e2eb4fcdc9792425
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284474"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477028"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Table API erőforrások kezelése Azure Resource Manager sablonok használatával
 
 Ebből a cikkből megtudhatja, hogyan telepítheti és kezelheti a Azure Cosmos DB-fiókjait, adatbázisait és tárolóit Azure Resource Manager sablonok használatával.
 
-Ez a cikk csak Table API fiókokra mutat példákat más API-típusú fiókokra vonatkozó példák megkereséséhez lásd: Azure Resource Manager-sablonok használata a Azure Cosmos DB API-jával a [Cassandra](manage-cassandra-with-resource-manager.md), a [Gremlin](manage-gremlin-with-resource-manager.md), a [MongoDB](manage-mongodb-with-resource-manager.md)és az [SQL](manage-sql-with-resource-manager.md) -cikkek számára.
+Ez a cikk csak Table API fiókokra mutat példákat más API-típusú fiókokra vonatkozó példák megkereséséhez lásd: Azure Resource Manager-sablonok használata a Azure Cosmos DB API-jával a [Cassandra](./templates-samples-cassandra.md), a [Gremlin](./templates-samples-gremlin.md), a [MongoDB](./templates-samples-mongodb.md)és az [SQL](./manage-with-templates.md) -cikkek számára.
 
 > [!IMPORTANT]
 >
@@ -54,7 +54,7 @@ Ez a sablon egy Azure Cosmos-fiókot hoz létre a Table APIhoz, és egy tábláz
 
 Néhány további információforrás:
 
-* [Az Azure Resource Manager dokumentációja](/azure/azure-resource-manager/)
+* [Az Azure Resource Manager dokumentációja](../azure-resource-manager/index.yml)
 * [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
 * [Azure Cosmos DB gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 * [Gyakori Azure Resource Manager telepítési hibák elhárítása](../azure-resource-manager/templates/common-deployment-errors.md)

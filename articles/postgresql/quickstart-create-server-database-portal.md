@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 6e43d00722dd86934c8f95e06a3b8b590b263d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2c340f9e7d2c44082adc67eeb816276449602035
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91705160"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484491"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Gyors útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása a Azure Portal használatával
 
@@ -68,7 +68,7 @@ Azure Database for PostgreSQL kiszolgáló létrehozása:
 A rendszer létrehoz egy üres adatbázist, a **postgres**. Emellett olyan **azure_maintenance** -adatbázist is talál, amely a felügyelt szolgáltatás folyamatainak elkülönítésére szolgál a felhasználói műveletekben. A **azure_maintenance** adatbázis nem érhető el.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
-Alapértelmezés szerint a létrehozott kiszolgáló nem érhető el nyilvánosan. Engedélyeket kell adnia az IP-címéhez. Nyissa meg a kiszolgálói erőforrást a Azure Portalban, és válassza a **kapcsolatbiztonsági** lehetőséget a kiszolgáló erőforrásának bal oldali menüjében. Ha nem tudja, hogyan találja meg az erőforrását, tekintse [meg az erőforrások megnyitása](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)című témakört.
+Alapértelmezés szerint a létrehozott kiszolgáló nem érhető el nyilvánosan. Engedélyeket kell adnia az IP-címéhez. Nyissa meg a kiszolgálói erőforrást a Azure Portalban, és válassza a **kapcsolatbiztonsági** lehetőséget a kiszolgáló erőforrásának bal oldali menüjében. Ha nem tudja, hogyan találja meg az erőforrását, tekintse [meg az erőforrások megnyitása](../azure-resource-manager/management/manage-resources-portal.md#open-resources)című témakört.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Képernyőkép, amely a menü Azure Database for PostgreSQLeit jeleníti meg.":::
@@ -80,7 +80,7 @@ Válassza az **aktuális ügyfél IP-címének hozzáadása**lehetőséget, majd
 
 ## <a name="connect-to-azure-database-for-postgresql-server-by-using-psql"></a>Kapcsolódás Azure Database for PostgreSQL kiszolgálóhoz a psql használatával
 
-Használhatja a [psql](http://postgresguide.com/utilities/psql.html) vagy a [pgAdmin](https://www.pgadmin.org/docs/pgadmin4/latest/connecting.html), amelyek népszerű PostgreSQL-ügyfelek. Ebben a rövid útmutatóban a Azure Portalon belüli [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) psql használatával fogunk kapcsolatot létesíteni.
+Használhatja a [psql](http://postgresguide.com/utilities/psql.html) vagy a [pgAdmin](https://www.pgadmin.org/docs/pgadmin4/latest/connecting.html), amelyek népszerű PostgreSQL-ügyfelek. Ebben a rövid útmutatóban a Azure Portalon belüli [Azure Cloud Shell](../cloud-shell/overview.md) psql használatával fogunk kapcsolatot létesíteni.
 
 1. Jegyezze fel a kiszolgáló nevét, a kiszolgáló-rendszergazdai bejelentkezési nevet, a jelszót és az újonnan létrehozott kiszolgáló előfizetés-AZONOSÍTÓját a kiszolgáló **Áttekintés** szakaszában.
 
@@ -145,6 +145,6 @@ A kiszolgáló törléséhez kattintson a **Törlés** gombra a kiszolgáló **�
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Képernyőkép, amely a menü Azure Database for PostgreSQLeit jeleníti meg.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálás és importálás használatával](./howto-migrate-using-export-and-import.md)

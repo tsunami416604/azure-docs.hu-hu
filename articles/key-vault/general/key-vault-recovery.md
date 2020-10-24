@@ -8,14 +8,14 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: bea4a5d92309710645dd63e611cd0a5e3b742c34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0fe5c2af42e8d8095963e29149e1338cc064c90
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604281"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495182"
 ---
-# <a name="azure-key-vault-recovery-overview"></a>A Azure Key Vault Recovery áttekintése
+# <a name="how-to-enable-soft-delete-and-purge-protection"></a>A Soft delete és a Purge Protection engedélyezése
 
 Ez a cikk a Azure Key Vault két helyreállítási funkcióját ismerteti, a Soft delete és a Purge Protection szolgáltatást. Ez a dokumentum áttekintést nyújt ezekről a funkciókról, és bemutatja, hogyan felügyelheti őket a Azure Portal, az Azure CLI és a Azure PowerShell használatával.
 

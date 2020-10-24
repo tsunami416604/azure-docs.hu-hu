@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e3d6771f841d3a1d403c1c825da3b504b6896d9e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0fb783a6ad65ce17bff14b72e8d94d284769779f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277224"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475158"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v2-höz
 
@@ -42,7 +42,7 @@ Megjelent a [.net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) . Ha 
 
 A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop.dll a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop.dll csak a Windows x64 platformon támogatott. Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez. A következő típusú alkalmazások alapértelmezés szerint 32 bites gazdagép-feldolgozást használnak. Ha módosítani szeretné a gazdagép feldolgozását 64 bites feldolgozásra, kövesse az alábbi lépéseket az alkalmazás típusa alapján:
 
-- A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) **x64**  értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
+- A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) **x64**  értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
 
 - A VSTest-alapú tesztelési projektek esetében **Test**  >  **Test Settings**  >  a Visual Studio **test** menüben válassza a tesztelési beállítások**alapértelmezett processzor-architektúra x64-ként** lehetőséget.
 
@@ -56,7 +56,7 @@ A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feld
     
 **Kiszolgálóoldali Garbage-gyűjtemény bekapcsolása (GC)**
 
-Bizonyos esetekben a Garbage-gyűjtemények gyakoriságának csökkentése is segíthet. A .NET-ben állítsa be a [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) a következőre: `true` .
+Bizonyos esetekben a Garbage-gyűjtemények gyakoriságának csökkentése is segíthet. A .NET-ben állítsa be a [gcServer](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element) a következőre: `true` .
 
 **Az ügyfél számítási felskálázása**
 
@@ -90,8 +90,8 @@ Ha a TCP protokollon fut, az ügyfél a hosszú élettartamú kapcsolatok és a 
 
 Olyan helyzetekben, ahol ritka hozzáférése van, és ha az átjáró mód eléréséhez képest nagyobb számú kapcsolatra van szüksége, a következőket teheti:
 
-* Konfigurálja a [ConnectionPolicy. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) tulajdonságot a `PrivatePortPool` következőre: (a keretrendszer verziószáma>= 4.6.1 és a .net Core verziója >= 2,0): Ez a tulajdonság lehetővé teszi, hogy az SDK a különböző Azure Cosmos db végpontokhoz tartozó ideiglenes portok kis készletét használja.
-* A [ConnectionPolicy. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) tulajdonság konfigurálásának 10 percnél nagyobbnak vagy azzal egyenlőnek kell lennie. Az ajánlott értékek 20 perc és 24 óra között vannak.
+* Konfigurálja a [ConnectionPolicy. PortReuseMode](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) tulajdonságot a `PrivatePortPool` következőre: (a keretrendszer verziószáma>= 4.6.1 és a .net Core verziója >= 2,0): Ez a tulajdonság lehetővé teszi, hogy az SDK a különböző Azure Cosmos db végpontokhoz tartozó ideiglenes portok kis készletét használja.
+* A [ConnectionPolicy. IdleConnectionTimeout](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) tulajdonság konfigurálásának 10 percnél nagyobbnak vagy azzal egyenlőnek kell lennie. Az ajánlott értékek 20 perc és 24 óra között vannak.
 
 **OpenAsync meghívása az első kérés indítási késésének elkerülése érdekében**
 
@@ -109,7 +109,7 @@ Ha lehetséges, helyezzen olyan alkalmazásokat, amelyek a Azure Cosmos DB-adatb
 **A szálak/feladatok számának növelésével**
 <a id="increase-threads"></a>
 
-Mivel a hálózatra irányuló Azure Cosmos DB hívások a hálózaton keresztül történnek, lehetséges, hogy módosítania kell a kérések párhuzamossági fokát, hogy az ügyfélalkalmazás a kérelmek közötti minimális várakozási időt töltsön. Ha például a .NET- [feladatok párhuzamos könyvtárát](https://msdn.microsoft.com//library/dd460717.aspx)használja, akkor hozzon létre több száz feladatot a Azure Cosmos db olvasására vagy írására.
+Mivel a hálózatra irányuló Azure Cosmos DB hívások a hálózaton keresztül történnek, lehetséges, hogy módosítania kell a kérések párhuzamossági fokát, hogy az ügyfélalkalmazás a kérelmek közötti minimális várakozási időt töltsön. Ha például a .NET- [feladatok párhuzamos könyvtárát](/dotnet/standard/parallel-programming/task-parallel-library-tpl)használja, akkor hozzon létre több száz feladatot a Azure Cosmos db olvasására vagy írására.
 
 **Gyorsított hálózatkezelés engedélyezése**
  
@@ -127,7 +127,7 @@ A Azure Cosmos DB SDK-kat folyamatosan fejlesztjük a legjobb teljesítmény ér
 
 **System.Net-MaxConnections növelésének engedélyezése gazdagépen az átjáró mód használatakor**
 
-Azure Cosmos DB kérések HTTPS/REST protokollon keresztül történnek, amikor átjáró üzemmódot használ. A rendszer az alapértelmezett kapcsolódási korlátot az állomásnév vagy az IP-cím alapján végzi. Előfordulhat, hogy `MaxConnections` magasabb értékre kell állítani (100 – 1 000), hogy az ügyféloldali kódtár több egyidejű kapcsolatot is használhat Azure Cosmos DBhoz. A .NET SDK 1.8.0 és újabb verzióiban a [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) alapértelmezett értéke 50. Az érték módosításához beállíthatja a [Documents. Client. ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) értéket magasabb értékre.
+Azure Cosmos DB kérések HTTPS/REST protokollon keresztül történnek, amikor átjáró üzemmódot használ. A rendszer az alapértelmezett kapcsolódási korlátot az állomásnév vagy az IP-cím alapján végzi. Előfordulhat, hogy `MaxConnections` magasabb értékre kell állítani (100 – 1 000), hogy az ügyféloldali kódtár több egyidejű kapcsolatot is használhat Azure Cosmos DBhoz. A .NET SDK 1.8.0 és újabb verzióiban a [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) alapértelmezett értéke 50. Az érték módosításához beállíthatja a [Documents. Client. ConnectionPolicy. MaxConnectionLimit](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) értéket magasabb értékre.
 
 **A particionált gyűjtemények párhuzamos lekérdezésének hangolása**
 
@@ -135,19 +135,19 @@ Az SQL .NET SDK 1.9.0 és újabb verziói támogatják a párhuzamos lekérdezé
 - `MaxDegreeOfParallelism` a párhuzamosan lekérdezhető partíciók maximális számát szabályozza. 
 - `MaxBufferedItemCount` az előre lehívott eredmények számát szabályozza.
 
-***A párhuzamossági fok finomhangolása***
+**_A párhuzamosság foka_*_
 
 A párhuzamos lekérdezés több partíció párhuzamos lekérdezésével működik. Az egyes partíciók adatait azonban a lekérdezésre vonatkozó sorosan kell beolvasni. Az `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) és a partíciók számának beállítása a legjobb lehetőség a legtöbb teljesítményű lekérdezés megvalósítására, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, megadhatja a párhuzamosság mértékét magas számra. A rendszer kijelöli a minimális (partíciók számát, a felhasználó által megadott bemenetet) a párhuzamosság foka alapján.
 
 A párhuzamos lekérdezések a legnagyobb haszonnal járnak, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény particionálva van, és a lekérdezés által visszaadott összes adat egy része néhány partícióra koncentrál (az egyik partíció a legrosszabb ESET), akkor ezek a partíciók a lekérdezés teljesítményét szűk keresztmetszetbe helyezik.
 
-***MaxBufferedItemCount finomhangolása***
+_*_MaxBufferedItemCount finomhangolása_*_
     
 A párhuzamos lekérdezés úgy lett kialakítva, hogy előzetesen beolvassa az eredményeket, miközben az ügyfél az aktuális eredményt dolgozza fel. Ez az előzetes lehívás a lekérdezés teljes késésének javítására nyújt segítséget. A `MaxBufferedItemCount` paraméter korlátozza az előre lehívott eredmények számát. Állítsa be a `MaxBufferedItemCount` visszaadott eredmények várt számát (vagy egy magasabb számot), hogy a lekérdezés a lehető legtöbbet fogadja az előzetes lekéréstől.
 
 Az előzetes lekérés ugyanúgy működik, függetlenül a párhuzamosság mértékétől, és egyetlen puffer van az összes partícióból származó adatokhoz.  
 
-**Leállítási megvalósítása RetryAfter időközönként**
+_*A leállítási megvalósítása RetryAfter időközönként**
 
 A teljesítmény tesztelése során növelje a terhelést, amíg a rendszer kis mennyiségű kérést nem szabályoz. Ha a kérelmek szabályozása megtörténik, az ügyfélalkalmazás a kiszolgáló által megadott újrapróbálkozási időközre vonatkozó biztonsági mentést hajt végre a szabályozásban. A leállítási tiszteletben tartásával biztosíthatja, hogy az újrapróbálkozások között minimálisan mennyi időt kell várnia. 
 
@@ -156,7 +156,7 @@ Az újrapróbálkozási szabályzat támogatása a következő SDK-k részét k�
 - A [Node.js SDK for SQL](sql-api-sdk-node.md) és a [PYTHON SDK for SQL](sql-api-sdk-python.md) 1.9.0 verziója
 - A [.net Core](sql-api-sdk-dotnet-core.md) SDK-k összes támogatott verziója 
 
-További információ: [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
+További információ: [RetryAfter](/dotnet/api/microsoft.azure.documents.documentclientexception.retryafter).
     
 A .NET SDK 1,19-es és újabb verzióiban van egy mechanizmus a további diagnosztikai információk naplózására és a késéssel kapcsolatos hibák elhárítására, ahogy az az alábbi példában is látható. Naplózhatja a diagnosztikai karakterláncot olyan kérésekhez, amelyek nagyobb olvasási késéssel rendelkeznek. A rögzített diagnosztikai karakterlánc segít megérteni, hogy hányszor kapott 429 hibát egy adott kérelemnél.
 
@@ -178,7 +178,7 @@ Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szüks
 > [!NOTE] 
 > A `maxItemCount` tulajdonságot nem szabad csak a tördeléshez használni. Fő felhasználási célja a lekérdezések teljesítményének javítása azáltal, hogy csökkenti az egyetlen oldalon visszaadott elemek maximális számát.  
 
-Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) tulajdonsága `FeedOptions` lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi az optimális értéket a dokumentum méretétől függően. Például:
+Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) tulajdonsága `FeedOptions` lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi az optimális értéket a dokumentum méretétől függően. Példa:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

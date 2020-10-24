@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 1b2e94bfe1bef9ecdeaa4b2b84224967bb1c7741
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 16110c8f48330d60d4d0b6a2affb870ffa5e349c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281591"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482672"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>A Azure Cosmos DB API-hoz tartozó hírcsatorna módosítása a Cassandra-hoz
 
 A "Cassandra" Azure Cosmos DB API-n keresztüli [adatcsatorna](change-feed.md) -támogatás módosítása a Cassandra Query Language (CQL) lekérdezési predikátumán keresztül érhető el. Ezen predikátum-feltételek használatával lekérdezheti a Change feed API-t. Az alkalmazások az elsődleges kulcs (más néven partíciós kulcs) használatával is beszerezhetik a tábla módosításait, ahogy az a CQL-ben szükséges. Ezután az eredmények alapján további műveleteket hajthat végre. A tábla sorainak módosításait a rendszer a módosítási idő sorrendjében rögzíti, a rendezési sorrendet pedig partíciós kulcsként.
 
-Az alábbi példa azt mutatja be, hogyan kérhető le egy módosítási hírcsatorna a Cassandra APIi tábla összes sorában a .NET használatával. Az predikátum COSMOS_CHANGEFEED_START_TIME () közvetlenül a CQL-n belül használható a változási csatornán lévő elemek lekérdezésére a megadott kezdési időpontból (ebben az esetben az aktuális datetime értéknél). A teljes minta letölthető [a C# nyelvhez itt és](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) a Javához [itt](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java).
+Az alábbi példa azt mutatja be, hogyan kérhető le egy módosítási hírcsatorna a Cassandra APIi tábla összes sorában a .NET használatával. Az predikátum COSMOS_CHANGEFEED_START_TIME () közvetlenül a CQL-n belül használható a változási csatornán lévő elemek lekérdezésére a megadott kezdési időpontból (ebben az esetben az aktuális datetime értéknél). A teljes minta letölthető [a C# nyelvhez itt és](/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) a Javához [itt](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java).
 
 Az egyes iterációkban a lekérdezés az utolsó pont módosításainál folytatódik, a lapozási állapot használatával. A tábla új változásainak folyamatos streamjét láthatjuk. Ekkor megjelenik a beszúrt vagy frissített sorok változásai. A Cassandra API változási csatornán keresztüli törlési műveletek figyelése jelenleg nem támogatott.
 
@@ -146,4 +146,4 @@ A következő hibakódok és üzenetek támogatottak a Cassandra API változási
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával](manage-cassandra-with-resource-manager.md)
+* [Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával](./templates-samples-cassandra.md)

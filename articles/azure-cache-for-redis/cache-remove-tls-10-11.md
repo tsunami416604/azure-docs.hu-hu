@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7be987b99c60185647ab976691d42b72236c6364
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84423921"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496061"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
 
@@ -19,10 +19,14 @@ A Transport Layer Security (TLS) 1,2-es vagy újabb verziójának kizárólagos 
 
 Ennek a tevékenységnek a részeként a következő módosításokat hajtjuk végre az Azure cache Redis:
 
-* **1. fázis:** Az újonnan létrehozott gyorsítótár-példányok esetében az alapértelmezett minimális TLS-verziót 1,2-re (korábban TLS 1,0) konfiguráljuk.  Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok. Ha szükséges, [megváltoztathatja a TLS minimális verzióját](cache-configure.md#access-ports) 1,0-re vagy 1,1-ra a visszamenőleges kompatibilitás érdekében. Ezt a változást a Azure Portal vagy más felügyeleti API-k segítségével teheti meg.
-* **2. fázis:** A TLS 1,0-es és 1,1-es verziójának támogatása nem áll le. A módosítás után az alkalmazás a TLS 1,2-es vagy újabb verzióját fogja használni a gyorsítótárral való kommunikációhoz.
+* **1. fázis:** Az újonnan létrehozott gyorsítótár-példányok esetében a 1,2-as alapértelmezett minimális TLS-verziót fogjuk konfigurálni (korábban TLS 1,0 volt). Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok. Továbbra is használhatja a Azure Portal vagy más felügyeleti API-kat, hogy [a minimális TLS-verziót](cache-configure.md#access-ports) 1,0-re vagy 1,1-re módosítsa a visszamenőleges kompatibilitás érdekében, ha szükséges.
+* **2. fázis:** Leállítjuk a TLS 1,1 és a TLS 1,0 támogatását. A módosítás után az alkalmazásnak a TLS 1,2-es vagy újabb verzióját kell használnia a gyorsítótárral való kommunikációhoz. A Redis szolgáltatás Azure cache-je várhatóan elérhető lesz, amíg csak a TLS 1,2-es vagy újabb verziójának támogatására telepítik.
 
-Emellett a változás részeként eltávolítja a régebbi, nem biztonságos Cypher-csomagok támogatását.  A támogatott Cypher-csomagok a következőre lesznek korlátozva, ha a gyorsítótár a 1,2-es minimális TLS-verzióval van konfigurálva.
+  > [!NOTE]
+  > A 2. fázis előreláthatólag nem korábbi, mint 2020. december 31-ig kezdődik. Azt javasoljuk azonban, hogy kezdje el most megtervezni ezt a módosítást, és proaktív módon frissítse az ügyfeleket a TLS 1,2-es vagy újabb verzióinak támogatásához. 
+  >
+
+Ennek a változásnak a részeként a régebbi, nem biztonságos Cypher-csomagok támogatását is eltávolítja. A támogatott Cypher-csomagok a következő csomagokra lesznek korlátozva, ha a gyorsítótár legalább TLS 1,2-mel van konfigurálva:
 
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
@@ -33,12 +37,14 @@ A módosítások érvénybe léptetésének dátuma:
 
 | Felhőbeli                | 1. fázis kezdési dátuma | 2. fázis kezdő dátuma         |
 |----------------------|--------------------|----------------------------|
-| Azure (globális)       |  2020. január 13.  | A COVID 19 miatt elhalasztották  |
-| Azure Government     |  Március 13., 2020    | A COVID 19 miatt elhalasztották  |
-| Azure Germany        |  Március 13., 2020    | A COVID 19 miatt elhalasztották  |
-| Azure China 21Vianet |  Március 13., 2020    | A COVID 19 miatt elhalasztották  |
+| Azure (globális)       |  2020. január 13.  | Elhalasztott COVID-19 miatt  |
+| Azure Government     |  Március 13., 2020    | Elhalasztott COVID-19 miatt  |
+| Azure Germany        |  Március 13., 2020    | Elhalasztott COVID-19 miatt  |
+| Azure China 21Vianet |  Március 13., 2020    | Elhalasztott COVID-19 miatt  |
 
-Megjegyzés: a 2. fázis új dátuma még nincs meghatározva
+> [!NOTE]
+> A 2. fázis előreláthatólag nem korábbi, mint 2020. december 31-ig kezdődik. Ez a cikk akkor frissül, ha meghatározott dátumok vannak beállítva.
+>
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Annak ellenőrzését, hogy az alkalmazás már megfelelő-e
 

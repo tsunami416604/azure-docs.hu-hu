@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7e5443869efd7f37153b47e4d9c3eaa39f9c41d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570839"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475277"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok vizualizációja a Power BI-összekötő használatával
 
@@ -32,7 +32,7 @@ Az Power BI oktatóanyag utasításait követve ellenőrizze, hogy rendelkezik-e
 
 * Töltse le a [minta vulkán adatait](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) a githubról.
 
-* [Hozzon létre egy Azure Cosmos Database-fiókot](https://azure.microsoft.com/documentation/articles/create-account/) , és importálja a vulkáni adataikat a [Azure Cosmos db adatáttelepítési eszköz](import-data.md)használatával. Az adatimportálás során vegye figyelembe az alábbi beállításokat a forrás és a célhelyek számára az adatáttelepítési eszközben:
+* [Hozzon létre egy Azure Cosmos Database-fiókot](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) , és importálja a vulkáni adataikat a [Azure Cosmos db adatáttelepítési eszköz](import-data.md)használatával. Az adatimportálás során vegye figyelembe az alábbi beállításokat a forrás és a célhelyek számára az adatáttelepítési eszközben:
 
    * **Forrás paramétereinek** 
 
@@ -135,7 +135,7 @@ A vulkáni adatok beolvasása a Azure Cosmos DB-fiókból, és az adatok megjele
 
 1. Ezután adja meg az új oszlop egyéni képletét.  Példánkban a szélességi és a hosszúsági értékeket egy vesszővel elválasztva fogjuk összefűzve, az alábbi képlettel: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Kattintson az **OK** gombra.
    
-   Az adatelemzési kifejezésekkel (DAX) kapcsolatos további információkért, beleértve a DAX-függvényeket is, tekintse meg a [DAX alapjai Power bi Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
+   Az adatelemzési kifejezésekkel (DAX) kapcsolatos további információkért, beleértve a DAX-függvényeket is, tekintse meg a [DAX alapjai Power bi Desktop](/power-bi/desktop-quickstart-learn-dax-basics).
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
@@ -226,4 +226,3 @@ For a scheduled refresh, do the following.
 ## <a name="next-steps"></a>Következő lépések
 * További információ a Power BIről: a [Power bi első lépései](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 * Ha többet szeretne megtudni a Azure Cosmos DBről, tekintse meg a [Azure Cosmos db dokumentáció kezdőlapját](https://azure.microsoft.com/documentation/services/cosmos-db/).
-

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8079fb3ab04d5f613566816735491203d7df951a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95337f88133c9493250e9197654288dc0af59ed1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570668"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486140"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Többrégiós írások konfigurálása a Azure Cosmos DBt használó alkalmazásokban
 
@@ -129,8 +129,8 @@ Olvassa el a következő cikkeket:
 * [Ütközési típusok és megoldási szabályzatok a Azure Cosmos DBban](conflict-resolution-policies.md)
 * [Magas rendelkezésre állás a Azure Cosmos DBban](high-availability.md)
 * [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md)
-* [Válassza ki a megfelelő konzisztencia-szintet Azure Cosmos DB](consistency-levels-choosing.md)
-* [A konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok Azure Cosmos DB](consistency-levels-tradeoffs.md)
-* [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](consistency-levels-tradeoffs.md)
-* [Kiosztott átviteli sebesség globális méretezése](scaling-throughput.md)
+* [Válassza ki a megfelelő konzisztencia-szintet Azure Cosmos DB](./consistency-levels.md)
+* [A konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok Azure Cosmos DB](./consistency-levels.md)
+* [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](./consistency-levels.md)
+* [Kiosztott átviteli sebesség globális méretezése](./request-units.md)
 * [Globális terjesztés: a motorháztető alatt](global-dist-under-the-hood.md)
