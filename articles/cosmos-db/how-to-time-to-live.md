@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 56cf360dd8d015d797b4974aab667bb89edcce4b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951927"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486004"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
 
 A Azure Cosmos DBban beállíthatja, hogy az élettartam (TTL) a tároló szintjén legyen beállítva, vagy egy elem szintjén felülbírálhatja a tároló beállítása után. A tárolók ÉLETTARTAMát Azure Portal vagy a nyelvfüggő SDK-k használatával konfigurálhatja. Az elemszintű TTL-felülbírálások az SDK-k használatával konfigurálhatók.
 
-> Ez a tartalom Azure Cosmos DB tranzakciós tároló TTL-értékével kapcsolatos. Ha a analitycal Store TTL-t keresi, amely lehetővé teszi a NoETL HTAP-forgatókönyvek használatát az [Azure szinapszis hivatkozásán](https://docs.microsoft.com/azure/cosmos-db/synapse-link)keresztül, kattintson [ide](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl).
+> Ez a tartalom Azure Cosmos DB tranzakciós tároló TTL-értékével kapcsolatos. Ha a analitycal Store TTL-t keresi, amely lehetővé teszi a NoETL HTAP-forgatókönyvek használatát az [Azure szinapszis hivatkozásán](./synapse-link.md)keresztül, kattintson [ide](./analytical-store-introduction.md#analytical-ttl).
 
 ## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Az Azure Portal-t használó tárolón való élő idő engedélyezése
 
@@ -558,7 +558,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a következő cikkben található idő megadásáról:
 

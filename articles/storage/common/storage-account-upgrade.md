@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0054b6e9bb73ef2918a8e5c52c59a272bae5da26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34b486dc4ccfb116b49cf57217c5b7e5aedbd992
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612506"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488843"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2-tárfiókra
 
@@ -40,7 +40,7 @@ Az általános célú, v1-es vagy blob Storage-fiókokból származó általáno
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ha egy általános célú v1-fiókot szeretne egy általános célú v2-fiókra frissíteni a PowerShell használatával, először frissítse a PowerShellt, hogy az az **. Storage** modul legújabb verzióját használja. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
+Ha egy általános célú v1-fiókot szeretne egy általános célú v2-fiókra frissíteni a PowerShell használatával, először frissítse a PowerShellt, hogy az az **. Storage** modul legújabb verzióját használja. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikket.
 
 Ezután hívja meg a következő parancsot a fiók frissítéséhez, az erőforráscsoport nevének, a Storage-fiók nevének és a kívánt fiók hozzáférési szintjének a behelyettesítéséhez.
 
@@ -49,7 +49,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 ```
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha egy általános célú v1-fiókot az Azure CLI használatával szeretne általános célú v2-fiókra frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli) ismertető szakaszt.
+Ha egy általános célú v1-fiókot az Azure CLI használatával szeretne általános célú v2-fiókra frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](/cli/azure/install-azure-cli) ismertető szakaszt.
 
 Ezután hívja meg a következő parancsot a fiók frissítéséhez, az erőforráscsoport nevének, a Storage-fiók nevének és a kívánt fiók hozzáférési szintjének a behelyettesítéséhez.
 

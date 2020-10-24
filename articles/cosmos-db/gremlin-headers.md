@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: f39b93058f3f96d37683ec1f3ae3de0f8c1cb786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409527"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490577"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin-kiszolgáló válaszának fejlécei
 Ez a cikk azokat a fejléceket ismerteti, amelyeket a Cosmos DB Gremlin-kiszolgáló visszaküld a hívónak a kérelmek végrehajtásakor. Ezek a fejlécek segítenek a kérelmek teljesítményének hibaelhárításában, a Cosmos DB szolgáltatással natív módon integrálható alkalmazások létrehozásában és az ügyfélszolgálat egyszerűsítésében.
@@ -29,14 +29,14 @@ Ne feledje, hogy ezen fejlécek függőségének figyelembevételével korlátoz
 | **x-MS-Total-Server-Time-MS** | double | 130,512 | Sikeres és sikertelen művelet-végrehajtási trendek | Az Cosmos DB Gremlin-kiszolgáló teljes bejárási ideje összesen ezredmásodpercben. Ez a fejléc minden részleges választ tartalmaz. A kérelem kezdete óta halmozott végrehajtási időt jelképezi. Az utolsó válasz a végrehajtás teljes idejét jelzi. Ez a fejléc hasznos lehet az ügyfél és a kiszolgáló közötti különbségtételhez a késés forrásaként. Összehasonlíthatja a bejárás végrehajtási idejét az ügyfélen a fejléc értékével. |
 | **x-ms-status-code** | hosszú | 200 | Sikeres és sikertelen művelet-végrehajtási trendek | A fejléc a kérelem befejezésének vagy megszüntetésének belső okát jelzi. Az alkalmazásnak javasoljuk, hogy tekintse meg a fejléc értékét, és végezze el a megfelelő lépéseket. |
 | **x-MS-alállapot-kód** | hosszú | 1003 | Csak hiba | Az Cosmos DB egy többmodelles adatbázis, amely egységes tárolási rétegre épül. Ez a fejléc további információkat tartalmaz a hibák okairól, ha a magas rendelkezésre állású verem alsóbb rétegeiben hiba történik. Az alkalmazás a fejléc tárolásához és a Cosmos DB ügyfélszolgálathoz való kapcsolódáskor javasolt. A fejléc értéke hasznos Cosmos DB mérnök számára a gyors hibaelhárításhoz. |
-| **x-ms-retry-after-ms** | karakterlánc (TimeSpan) | "00:00:03.9500000" | Csak hiba | Ez a fejléc egy .NET- [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan) típusának karakterláncos ábrázolása. Ez az érték csak olyan kérésekben szerepel, amelyeken a kiépített átviteli sebesség kimerítése miatt sikertelen volt. Az alkalmazásnak újra el kell küldenie a bejárást a megadott időtartam elteltével. |
+| **x-ms-retry-after-ms** | karakterlánc (TimeSpan) | "00:00:03.9500000" | Csak hiba | Ez a fejléc egy .NET- [TimeSpan](/dotnet/api/system.timespan) típusának karakterláncos ábrázolása. Ez az érték csak olyan kérésekben szerepel, amelyeken a kiépített átviteli sebesség kimerítése miatt sikertelen volt. Az alkalmazásnak újra el kell küldenie a bejárást a megadott időtartam elteltével. |
 | **x-ms-activity-id** | karakterlánc (GUID) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Sikeres és sikertelen művelet-végrehajtási trendek | A fejléc a kérelmek egyedi, kiszolgálóoldali azonosítóját tartalmazza. Minden kéréshez a kiszolgáló egyedi azonosítót rendel hozzá követési célokra. Az alkalmazásoknak a kiszolgáló által visszaadott tevékenység-azonosítókat kell naplóznia azon kérések esetén, amelyekre az ügyfélnek szüksége lehet az ügyfélszolgálattal kapcsolatos kapcsolatfelvételhez. Cosmos DB támogatási személyzet a Cosmos DB Service telemetria ezen azonosítói alapján adott kérelmeket talál. |
 
 ## <a name="status-codes"></a>Állapotkódok
 
 A kiszolgáló által visszaadott leggyakoribb állapotkódok alább láthatók.
 
-| status | Magyarázat |
+| Állapot | Magyarázat |
 | --- | --- |
 | **401** | Hibaüzenet jelenik meg `"Unauthorized: Invalid credentials provided"` , ha a hitelesítési jelszó nem egyezik Cosmos db a fiók kulcsával. Navigáljon a Azure Portal Cosmos DB Gremlin-fiókjához, és győződjön meg arról, hogy a kulcs helyes.|
 | **404** | Egyidejű műveletek, amelyek egyazon Edge vagy csúcspont törlését és frissítését kísérli meg egyszerre. Az `"Owner resource does not exist"` (Tulajdonos-erőforrás nem létezik) hibaüzenet azt jelzi, hogy a kapcsolati paraméterekben `/dbs/<database name>/colls/<collection or graph name>` formátumban megadott adatbázis vagy gyűjtemény helytelen.|

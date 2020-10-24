@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 44951fc19f36bb6652caf79ded96484bcc4b38f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49419853f193336e39ff8f729472342bb137fd39
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503140"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490220"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Oktatóanyag: Apache Kafka REST proxyval rendelkező fürt létrehozása a HDInsight-ben az Azure CLI használatával
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag a következőket ismerteti:
 > * A Kafka REST proxy előfeltételei
 > * Apache Kafka-fürt létrehozása az Azure CLI használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 * Egy Azure AD-beli biztonsági csoport, amely tagja a regisztrált alkalmazásnak. Ezzel a biztonsági csoporttal szabályozhatja, hogy mely alkalmazások használhatják a REST-proxyt. Az Azure AD-csoportok létrehozásával kapcsolatos további információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* Azure CLI. Győződjön meg arról, hogy legalább a 2.0.79 verziója van telepítve. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI. Győződjön meg arról, hogy legalább a 2.0.79 verziója van telepítve. Lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-fürt létrehozása
 
@@ -85,7 +85,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     export componentVersion=kafka=2.1
     ```
 
-1. [Hozza létre az erőforráscsoportot](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) az alábbi parancs beírásával:
+1. [Hozza létre az erőforráscsoportot](/cli/azure/group#az-group-create) az alábbi parancs beírásával:
 
     ```azurecli
      az group create \
@@ -93,7 +93,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
         --name $resourceGroupName
     ```
 
-1. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) az alábbi parancs beírásával:
+1. [Hozzon létre egy Azure Storage-fiókot](/cli/azure/storage/account#az-storage-account-create) az alábbi parancs beírásával:
 
     ```azurecli
     # Note: kind BlobStorage is not available as the default storage account.
@@ -106,7 +106,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
         --sku Standard_LRS
     ```
 
-1. [Bontsa ki az elsődleges kulcsot](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) az Azure Storage-fiókból, és tárolja egy változóban az alábbi parancs beírásával:
+1. [Bontsa ki az elsődleges kulcsot](/cli/azure/storage/account/keys#az-storage-account-keys-list) az Azure Storage-fiókból, és tárolja egy változóban az alábbi parancs beírásával:
 
     ```azurecli
     export storageAccountKey=$(az storage account keys list \
@@ -115,7 +115,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
         --query [0].value -o tsv)
     ```
 
-1. [Hozzon létre egy Azure Storage-tárolót](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) az alábbi parancs beírásával:
+1. [Hozzon létre egy Azure Storage-tárolót](/cli/azure/storage/container#az-storage-container-create) az alábbi parancs beírásával:
 
     ```azurecli
     az storage container create \
@@ -124,7 +124,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
         --account-name $storageAccount
     ```
 
-1. [Hozza létre a HDInsight-fürtöt](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create). A parancs megadása előtt jegyezze fel a következő paramétereket:
+1. [Hozza létre a HDInsight-fürtöt](/cli/azure/hdinsight#az-hdinsight-create). A parancs megadása előtt jegyezze fel a következő paramétereket:
 
     1. A Kafka-fürtökhöz szükséges paraméterek:
 
@@ -200,7 +200,7 @@ az group delete \
     --name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy sikeresen létrehozott egy Apache Kafka REST proxyval rendelkező fürtöt az Azure HDInsight az Azure CLI használatával, használja a Python-kódot a REST-proxyval való interakcióhoz:
 

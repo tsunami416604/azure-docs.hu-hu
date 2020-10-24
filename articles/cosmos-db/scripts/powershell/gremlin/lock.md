@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 6e119fe2cc54ce38dcb8ac2d0c711056dc7d77ce
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 02729b1a73cb66d9b72e9cbca7ed866725e07b83
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280635"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489149"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-gremlin-api-database-and-graph-using-azure-powershell"></a>Erőforrás-zárolás létrehozása az Azure Cosmos Gremlin API-adatbázishoz és gráfhoz Azure PowerShell használatával
 
@@ -42,11 +42,11 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Jegyzetek |
 |---|---|
 |**Azure-erőforrás**| |
-| [Új – AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) | Erőforrás-zárolást hoz létre. |
-| [Get-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcelock) | Lekérdezi egy erőforrás zárolását, vagy listázza az erőforrás-zárolásokat. |
-| [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) | Eltávolít egy erőforrás-zárolást. |
+| [Új – AzResourceLock](/powershell/module/az.resources/new-azresourcelock) | Erőforrás-zárolást hoz létre. |
+| [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock) | Lekérdezi egy erőforrás zárolását, vagy listázza az erőforrás-zárolásokat. |
+| [Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock) | Eltávolít egy erőforrás-zárolást. |
 |||
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](https://docs.microsoft.com/powershell/).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/).

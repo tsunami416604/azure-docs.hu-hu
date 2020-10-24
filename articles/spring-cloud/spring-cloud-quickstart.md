@@ -4,16 +4,16 @@ description: Ebben a rövid útmutatóban egy Spring Cloud-alkalmazást helyezü
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/18/2020
+ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2ec79c9c1fc3b461037b2005da7198f81cbbab34
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: a060528d3140203541f6a13064659651c7a4f67d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170362"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488953"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -96,7 +96,7 @@ A Visual Studióban hozzon létre egy "Hello-World" nevű ASP.NET Core webalkalm
    cd hello-world
    ```
 
-1. A fájl *appSettings.js*szerkesztésével   adja hozzá a következő beállításokat:
+1. A fájl *appSettings.js* szerkesztésével adja hozzá a következő beállításokat:
 
    ```json
    "spring": {
@@ -345,9 +345,9 @@ Az oktatóanyag elvégzéséhez:
 
 ## <a name="generate-a-spring-cloud-project"></a>Spring Cloud-projekt létrehozása
 
-Kezdje a [Spring inicializáló](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin) használatával egy olyan minta projekt létrehozásához, amely az Azure Spring Cloud ajánlott függőségeivel rendelkezik. Az alábbi képen a projekt inicializálási beállítása látható.
+Kezdje a [Spring inicializáló](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) használatával egy olyan minta projekt létrehozásához, amely az Azure Spring Cloud ajánlott függőségeivel rendelkezik. Az alábbi képen a projekt inicializálási beállítása látható.
 ```url
-https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
 
   ![Inicializálás lap](media/spring-cloud-quickstart-java/initializr-page.png)

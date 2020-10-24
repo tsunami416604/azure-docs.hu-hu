@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: d1fe28e4339cb4585deeeef1c44e3614fd693943
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6b1e2d6e9d5d06410596a40f16869d7c1a0f094e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284433"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490696"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>A MongoDB Azure Cosmos DB API-ban végrehajtott műveletek igénylési egységének megkeresése
 
@@ -91,4 +91,4 @@ Az RU-felhasználás optimalizálásával kapcsolatos további tudnivalókért t
 
 * [Kérelemegységek és átviteli sebesség az Azure Cosmos DB-ben](request-units.md)
 * [A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben](optimize-cost-throughput.md)
-* [A lekérdezési költségek optimalizálása az Azure Cosmos DB-ben](optimize-cost-queries.md)
+* [A lekérdezési költségek optimalizálása az Azure Cosmos DB-ben](./optimize-cost-reads-writes.md)

@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f969c30033604cb4b331b5ed86d992af371f9c75
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716083"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490815"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Oktatóanyag: helyszíni adatáttelepítés a felhőalapú tárolóba a AzCopy használatával
 
@@ -46,7 +46,7 @@ Kövesse az alábbi lépéseket a tároló létrehozásához:
 1. A főoldalon kattintson a **Tárfiókok** gombra, majd válassza ki a létrehozott tárfiókot.
 2. A **Szolgáltatások** területen kattintson a **Blobok** elemre, majd válassza a **Tároló** lehetőséget.
 
-   ![Tároló létrehozása](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
+   ![A tárolók létrehozását bemutató képernyőkép](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
 A tárolók nevének betűvel vagy számmal kell kezdődnie. A név csak betűkből, számokból és kötőjel (-) karakterből állhat. A blobok és tárolók elnevezésével kapcsolatos szabályok teljes listáját lásd a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
 
@@ -62,7 +62,7 @@ Helyezze a AzCopy-fájlt bárhol a számítógépre. Adja hozzá a fájl helyét
 
 ## <a name="authenticate-with-azure-ad"></a>Hitelesítés az Azure AD-vel
 
-Először rendelje hozzá a [Storage blob adatközreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) szerepkört az identitásához. Lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-információk eléréséhez](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
+Először rendelje hozzá a [Storage blob adatközreműködői](/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) szerepkört az identitásához. Lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-információk eléréséhez](/azure/storage/common/storage-auth-aad-rbac-portal).
 
 Ezután nyisson meg egy parancssort, írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
 
@@ -72,13 +72,13 @@ azcopy login
 
 Ez a parancs egy hitelesítő kódot és egy webhely URL-címét adja vissza. Nyissa meg a webhelyet, adja meg a kódot, majd válassza a **tovább** gombot.
 
-![Tároló létrehozása](media/storage-use-azcopy-v10/azcopy-login.png)
+![A bejelentkezési kérést ábrázoló képernyőfelvétel](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Ekkor megjelenik egy bejelentkezési ablak. Ebben az ablakban jelentkezzen be az Azure-fiókjába az Azure-fiókja hitelesítő adataival. Miután sikeresen bejelentkezett, lezárhatja a böngészőablakot, és megkezdheti a AzCopy használatát.
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Egy mappa tartalmának feltöltése a Blob Storage-ba
 
-Az AzCopyval feltöltheti egy mappa összes fájlját a Blob Storage-ba [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) vagy [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) rendszeren. Egy mappa összes blobjának feltöltéséhez írja be a következő AzCopy-parancsot:
+Az AzCopyval feltöltheti egy mappa összes fájlját a Blob Storage-ba [Windows](/azure/storage/common/storage-use-azcopy) vagy [Linux](/azure/storage/common/storage-use-azcopy-linux) rendszeren. Egy mappa összes blobjának feltöltéséhez írja be a következő AzCopy-parancsot:
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -172,11 +172,11 @@ További információk az ütemezett feladatok létrehozásáról Windows rendsz
 
 Ha ellenőrizni szeretné, hogy az ütemezett/cron feladat megfelelően fut-e, hozzon létre új fájlokat a `myFolder` könyvtárban. Várjon öt percet, és győződjön meg arról, hogy az új fájlok feltöltődtek a tárfiókjába. Navigáljon a naplókönyvtárhoz, és tekintse meg az ütemezett vagy a cron feladat kimeneti naplóit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A helyszíni adatok Azure Storage-ba, vagy a Storage-adatok helyszíni tárolóba történő áthelyezésével kapcsolatos további információkért kövesse az alábbi hivatkozást:
 
-* [Adatok áthelyezése az Azure Storage-ba és az-ból](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
+* [Adatok áthelyezése az Azure Storage-ba és az-ból](/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
 
 A AzCopy kapcsolatos további információkért tekintse meg a következő cikkeket:
 

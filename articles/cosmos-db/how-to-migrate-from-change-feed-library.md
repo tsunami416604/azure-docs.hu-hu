@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 7a15e5135cd89d7360a1357e3518b1253e80ee65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1c54c2e486f935b3c3ba1b13207caaa67099459
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019521"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490985"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3 SDK-ra
 
@@ -23,7 +23,7 @@ Ez a cikk azokat a szükséges lépéseket ismerteti, amelyekkel áttelepítheti
 A .NET v3 SDK több feltörési változást is tartalmaz, az alábbi lépésekkel telepítheti át az alkalmazást:
 
 1. Alakítsa át a `DocumentCollectionInfo` példányokat `Container` a figyelt és a bérleti tárolók hivatkozásaira.
-1. A használatban lévő testreszabásokat a `WithProcessorOptions` használat `WithLeaseConfiguration` és `WithPollInterval` az intervallumok, a `WithStartTime` [Kezdési idő](how-to-configure-change-feed-start-time.md)és `WithMaxItems` a maximális elemek számának meghatározására kell frissíteni.
+1. A használatban lévő testreszabásokat a `WithProcessorOptions` használat `WithLeaseConfiguration` és `WithPollInterval` az intervallumok, a `WithStartTime` [Kezdési idő](./change-feed-processor.md#starting-time)és `WithMaxItems` a maximális elemek számának meghatározására kell frissíteni.
 1. A on érték megadásával `processorName` `GetChangeFeedProcessorBuilder` egyeztetheti a `ChangeFeedProcessorOptions.LeasePrefix` vagy `string.Empty` más módon konfigurált értéket.
 1. A módosítások már nem kerülnek be a rendszerbe, hanem az a `IReadOnlyList<Document>` `IReadOnlyCollection<T>` hely, ahol meg `T` kell határozni a kívánt típust, már nincs alapelem osztálya.
 1. A módosítások kezeléséhez már nincs szükség megvalósításra, hanem meg kell [adnia egy delegált](change-feed-processor.md#implementing-the-change-feed-processor). A delegált lehet statikus függvény, vagy ha meg kell őriznie az állapotot a végrehajtások között, létrehozhat egy saját osztályt, és delegált néven is átadhat egy példány-metódust.
@@ -60,4 +60,4 @@ A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgoz
 
 * [A hírcsatorna-feldolgozó változásának áttekintése](change-feed-processor.md)
 * [A változáscsatorna-becslő használata](how-to-use-change-feed-estimator.md)
-* [Változáscsatorna-feldolgozó indításának időpontja](how-to-configure-change-feed-start-time.md)
+* [Változáscsatorna-feldolgozó indításának időpontja](./change-feed-processor.md#starting-time)

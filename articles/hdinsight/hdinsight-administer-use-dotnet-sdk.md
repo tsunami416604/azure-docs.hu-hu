@@ -8,18 +8,18 @@ ms.custom: hdinsightactive, devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: dd0d7a3a05c108f0d7e95719356079633a0e2276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367b47e8dbe0e1ee56fea620d97109631ba87a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016087"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484882"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Apache Hadoop-fürtök kezelése a HDInsight rendszerében a .NET SDK segítségével
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Ismerje meg, hogyan kezelheti a HDInsight-fürtöket a [HDINSIGHT.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)-val.
+Ismerje meg, hogyan kezelheti a HDInsight-fürtöket a [HDINSIGHT.net SDK](/dotnet/api/overview/azure/hdinsight)-val.
 
 **Előfeltételek**
 
@@ -268,7 +268,7 @@ Lásd: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Lásd még:
 
-* [A HDInsight .NET SDK dokumentációja](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [A HDInsight .NET SDK dokumentációja](/dotnet/api/overview/azure/hdinsight)
 * [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md)
 * [HDInsight felügyelete parancssori felületen keresztül][hdinsight-admin-cli]
 * [HDInsight-fürtök létrehozása][hdinsight-provision]

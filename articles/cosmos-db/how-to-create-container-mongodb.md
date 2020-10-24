@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 1a8d375519ed4c7d252afe60d71aad4c5244cd1c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0fa7f122c5a9957db0800d2ccf4e5c1f8effd574
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284144"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491172"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>Tároló létrehozása a MongoDB Azure Cosmos DB API-ban
 
@@ -62,12 +62,11 @@ Ha a gyűjtemény létrehozásakor időtúllépési kivételt tapasztal, végezz
 
 ## <a name="create-a-container-using-azure-resource-manager-templates"></a>Tároló létrehozása Azure Resource Manager sablonok használatával
 
-[Hozzon létre egy gyűjteményt Azure Cosmos db for MONGODB API-hoz Resource Manager-sablonnal](manage-sql-with-resource-manager.md#azure-cosmos-account-with-standard-provisioned-throughput).
+[Hozzon létre egy gyűjteményt Azure Cosmos db for MONGODB API-hoz Resource Manager-sablonnal](./manage-with-templates.md#azure-cosmos-account-with-standard-provisioned-throughput).
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md)
-* [Azure Cosmos-fiók használata](account-overview.md)
-
+* [Azure Cosmos-fiók használata](./account-databases-containers-items.md)

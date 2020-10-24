@@ -1,18 +1,18 @@
 ---
 title: 'Rövid útmutató: Azure Signaler szolgáltatás-ARM-sablon létrehozása'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure Signal Service-szolgáltatást egy Azure Resource Manager sablon használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Signal Service-szolgáltatást egy Azure Resource Manager sablonnal (ARM-sablon).
 author: mgblythe
 ms.service: signalr
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/02/2020
-ms.openlocfilehash: 04d0a98863dded93216f5fc669b8148f710f5f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f38bd6ed91788343c028ec5834ba28f4bad3ba43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858853"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487823"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Gyors útmutató: ARM-sablon használata az Azure Signaler szolgáltatás üzembe helyezéséhez
 
@@ -100,7 +100,7 @@ Az alábbi kód használatával helyezheti üzembe az Azure Signaler szolgáltat
 * A kapcsolatok vagy üzenetküldési naplók engedélyezése (**igaz** vagy **hamis**)
 
 ```azurepowershell-interactive
-$serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR service"
+$serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
 $serviceLocation = Read-Host -Prompt "Enter an Azure region (for example, westus2) for the service"
 $resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group to contain the service"
 $resourceGroupRegion = Read-Host -Prompt "Enter an Azure region (for example, centralus) for the resource group"
@@ -124,7 +124,7 @@ $paramObjHashTable = @{
     enableMessagingLogs = $enableMessageLogs
 }
 
-Write-Verbose "Run New-AzResourceGroupDeployment to create an Azure SignalR service using an ARM template" -Verbose
+Write-Verbose "Run New-AzResourceGroupDeployment to create an Azure SignalR Service using an ARM template" -Verbose
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
     -TemplateParameterObject $paramObjHashTable `
     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-signalr/azuredeploy.json
@@ -145,7 +145,7 @@ Az alábbi kód használatával helyezheti üzembe az Azure Signaler szolgáltat
 * A kapcsolatok vagy üzenetküldési naplók engedélyezése (**igaz** vagy **hamis**)
 
 ```azurecli-interactive
-read -p "Enter a name for the new Azure SignalR service: " serviceName &&
+read -p "Enter a name for the new Azure SignalR Service: " serviceName &&
 read -p "Enter an Azure region (for example, westus2) for the service: " serviceLocation &&
 read -p "Enter a name for the new resource group to contain the service: " resourceGroupName &&
 read -p "Enter an Azure region (for example, centralus) for the resource group: " resourceGroupRegion &&
@@ -157,7 +157,7 @@ read -p "Specify whether to enable messaging logs (true or false): " enableMessa
 params='name='$serviceName' location='$serviceLocation' pricingTier='$priceTier' capacity='$unitCapacity' serviceMode='$servicingMode' enableConnectivityLogs='$enableConnectionLogs' enableMessagingLogs='$enableMessageLogs &&
 echo "CREATE RESOURCE GROUP:  az group create --name $resourceGroupName --location $resourceGroupRegion" &&
 az group create --name $resourceGroupName --location $resourceGroupRegion &&
-echo "RUN az deployment group create, which creates an Azure SignalR service using an ARM template" &&
+echo "RUN az deployment group create, which creates an Azure SignalR Service using an ARM template" &&
 az deployment group create --resource-group $resourceGroupName --parameters $params --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-signalr/azuredeploy.json &&
 read -p "Press [ENTER] to continue: "
 ```
@@ -182,7 +182,7 @@ Az alábbi lépéseket követve megtekintheti az új Azure Signaler szolgáltat�
 A következő interaktív kód futtatásával tekintheti meg az Azure Signaler szolgáltatás részleteit. Meg kell adnia az új szolgáltatás nevét és az erőforráscsoportot.
 
 ```azurepowershell-interactive
-$serviceName = Read-Host -Prompt "Enter the name of your Azure SignalR service"
+$serviceName = Read-Host -Prompt "Enter the name of your Azure SignalR Service"
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
 Write-Verbose "Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $serviceName" -Verbose
 Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $serviceName
@@ -194,7 +194,7 @@ Read-Host "Press [ENTER] to continue"
 A következő interaktív kód futtatásával tekintheti meg az Azure Signaler szolgáltatás részleteit. Meg kell adnia az új szolgáltatás nevét és az erőforráscsoportot.
 
 ```azurecli-interactive
-read -p "Enter the name of your Azure SignalR service: " serviceName &&
+read -p "Enter the name of your Azure SignalR Service: " serviceName &&
 read -p "Enter the resource group name: " resourceGroupName &&
 echo "SHOW SERVICE DETAILS:  az signalr show --resource-group $resourceGroupName --name $serviceName" &&
 az signalr show --resource-group $resourceGroupName --name $serviceName &&
@@ -237,7 +237,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
 

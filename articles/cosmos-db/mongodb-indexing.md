@@ -9,12 +9,12 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425033"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487381"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
 
@@ -78,7 +78,7 @@ Az alábbi példa egy térinformatikai index létrehozását szemlélteti a `loc
 
 ### <a name="text-indexes"></a>Szöveges indexek
 
-Azure Cosmos DB API-MongoDB jelenleg nem támogatja a szöveges indexeket. A karakterláncokra vonatkozó szöveges keresési lekérdezésekhez az [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) integrációját kell használnia Azure Cosmos DBokkal. 
+Azure Cosmos DB API-MongoDB jelenleg nem támogatja a szöveges indexeket. A karakterláncokra vonatkozó szöveges keresési lekérdezésekhez az [Azure Cognitive Search](../search/search-howto-index-cosmosdb.md) integrációját kell használnia Azure Cosmos DBokkal. 
 
 ## <a name="wildcard-indexes"></a>Helyettesítő karakterek indexei
 
@@ -364,7 +364,7 @@ Az összetett indexek egy dokumentum több mezőjére vonatkozó hivatkozásokat
 
 Ha helyettesítő karaktert szeretne létrehozni, [frissítsen az 3,6-es verzióra](mongodb-version-upgrade.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Indexelés az Azure Cosmos DB-ben](../cosmos-db/index-policy.md)
 * [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)

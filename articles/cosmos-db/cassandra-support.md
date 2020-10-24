@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f9d472b94b5490d00eac6d160af40c61d547534b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 89e8a6a2abfc38c497be646bd70910895f92588f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107487"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489319"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -49,7 +49,7 @@ Az Azure Cosmos DB Cassandra API a következő CQL-adattípusokat támogatja:
 | blob  | Igen |
 | boolean  | Igen |
 | számláló  | Igen |
-| date  | Igen |
+| dátum  | Igen |
 | tizedes tört  | Igen |
 | double  | Igen |
 | float  | Igen |
@@ -141,7 +141,7 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 | ÖSSZESÍTÉS LÉTREHOZÁSA | Nem | 
 | EGYÉNI INDEX LÉTREHOZÁSA (SASI) | Nem |
 | CREATE INDEX | Igen (az [index nevének megadása](cassandra-secondary-index.md)és a fürtözési kulcsok indexelése nélkül, vagy a teljes fagyasztott gyűjtemény nem támogatott) |
-| FÜGGVÉNY LÉTREHOZÁSA | Nem |
+| CREATE FUNCTION | Nem |
 | SZÓKÖZ létrehozása (replikációs beállítások figyelmen kívül hagyva) | Igen |
 | ANYAGELSZÁMOLÁSÚ NÉZET LÉTREHOZÁSA | Nem |
 | CREATE TABLE | Igen |
@@ -153,12 +153,12 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 | Törlés (az IF feltétellel rendelkező könnyű tranzakciók)| Igen |
 | DISTINCT | Nem |
 | ÖSSZESÍTÉS ELDOBÁSA | Nem |
-| DROP FÜGGVÉNY | Nem |
+| DROP FUNCTION | Nem |
 | DROP INDEX | Igen |
 | SZÓKÖZ ELDOBÁSA | Igen |
 | ANYAGOS NÉZET ELDOBÁSA | Nem |
 | SZEREPKÖR ELDOBÁSA | Nem |
-| TÁBLÁZAT ELDOBÁSA | Igen |
+| DROP TABLE | Igen |
 | TRIGGER ELDOBÁSA | Nem | 
 | DROP TYPE | Igen |
 | FELHASZNÁLÓ eldobása (elavult, natív Apache Cassandra) | Nem |
@@ -168,7 +168,7 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 | ENGEDÉLYEK LISTÁZÁSA | Nem |
 | SZEREPKÖRÖK LISTÁZÁSA | Nem |
 | FELHASZNÁLÓK LISTÁZÁSa (a natív Apache Cassandra-ban elavult) | Nem |
-| VISSZAVONJA | Nem |
+| REVOKE | Nem |
 | SELECT | Igen |
 | SELECT (könnyűsúlyú tranzakciók IF feltétellel)| Nem |
 | UPDATE | Igen |
@@ -208,7 +208,7 @@ A helyi gépre telepített CQLSH használatával a Azure Cosmos DB Cassandra API
 
 **Windows**
 
-Ha Windows rendszert használ, javasoljuk, hogy engedélyezze a [Linux rendszerhez készült Windows-fájlrendszert](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux). Ezután követheti az alábbi Linux-parancsokat.
+Ha Windows rendszert használ, javasoljuk, hogy engedélyezze a [Linux rendszerhez készült Windows-fájlrendszert](/windows/wsl/install-win10#install-the-windows-subsystem-for-linux). Ezután követheti az alábbi Linux-parancsokat.
 
 **Unix/Linux/Mac:**
 
@@ -255,7 +255,7 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Konzisztencialeképezés 
 
-Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál az olvasási műveletekhez.  [Itt](consistency-levels-across-apis.md#cassandra-mapping)részletesen ismertetjük a konzisztencia-hozzárendelést.
+Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál az olvasási műveletekhez.  [Itt](./cassandra-consistency.md#mapping-consistency-levels)részletesen ismertetjük a konzisztencia-hozzárendelést.
 
 ## <a name="permission-and-role-management"></a>Engedély- és szerepkörkezelés
 
@@ -283,6 +283,6 @@ A Cassandra API támogatja a másodlagos indexeket minden adattípuson, kivéve 
 
 A Azure Cosmos DB erőforrás-szabályozású rendszer. Ez azt jelenti, hogy egy adott másodpercben bizonyos számú műveletet végrehajthat a műveletek által felhasznált kérelmek egységei alapján. Ha egy alkalmazás túllépi ezt a korlátot egy adott másodpercben, a kérések száma korlátozott, és a rendszer a kivételeket is eldönti. A Azure Cosmos DB Cassandra API lefordítja ezeket a kivételeket a Cassandra Native protokollon túlterhelt hibák esetén. Annak biztosítása érdekében, hogy az alkalmazás képes legyen feltartóztatni és újrapróbálkozni a kérelmeket a díjszabás korlátozása esetén, a [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) és a [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) -bővítmények is elérhetők. Lásd még: Java-kódrészletek a [3](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) . és [4-es verziójú](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4) Datastax-illesztőprogramok esetén, amikor a Cassandra APIhoz csatlakozik Azure Cosmos DBban. Ha más SDK-kat használ a Azure Cosmos DB Cassandra APIhoz való hozzáféréshez, hozzon létre egy kapcsolati szabályzatot, amely újrapróbálkozik ezekkel a kivételekkel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedés a [Cassandra API-fiókok, -adatbázisok és -táblák létrehozásával](create-cassandra-api-account-java.md) Java-alkalmazás használatával

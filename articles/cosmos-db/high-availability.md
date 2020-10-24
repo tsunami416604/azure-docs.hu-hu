@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 85f358d205a4a14874e520efdace5345de837588
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0bbb0da0ce39aab9fba843dda99b45ea59881ce2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276275"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490543"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hogyan biztosítja a Azure Cosmos DB magas rendelkezésre állást
 
@@ -58,7 +58,7 @@ Globálisan elosztott adatbázisként Azure Cosmos DB átfogó SLA-kat biztosít
 
 A regionális leállás ritka eseteiben Azure Cosmos DB biztosítja, hogy az adatbázis mindig rendelkezésre álljon. Az alábbi részletek az Azure Cosmos-fiók konfigurációjától függően a leállás során Azure Cosmos DB viselkedést rögzítik:
 
-* Ha Azure Cosmos DB, az írási művelet elfogadását megelőzően az ügyfél számára az adatok tartósan a régióban lévő replikák kvóruma végzi el, amely elfogadja az írási műveleteket. További részletek: [konzisztencia-szintek és átviteli sebesség](consistency-levels-tradeoffs.md#consistency-levels-and-throughput)
+* Ha Azure Cosmos DB, az írási művelet elfogadását megelőzően az ügyfél számára az adatok tartósan a régióban lévő replikák kvóruma végzi el, amely elfogadja az írási műveleteket. További részletek: [konzisztencia-szintek és átviteli sebesség](./consistency-levels.md#consistency-levels-and-throughput)
 
 * A több írható régióval konfigurált többrégiós fiókok esetében az írások és olvasások egyaránt nagyon elérhetők lesznek. A rendszer a regionális feladatátvételeket észleli és kezeli a Azure Cosmos DB-ügyfélen. Emellett azonnali, és nem igényelnek semmilyen változást az alkalmazásban.
 
@@ -89,7 +89,7 @@ A regionális leállás ritka eseteiben Azure Cosmos DB biztosítja, hogy az ada
 
 * A további olvasásokat a szolgáltatás a helyreállt régiókhoz irányítja át anélkül, hogy módosítania kellene az alkalmazáskódot. Egy korábban sikertelen régió feladatátvétele és újracsatlakozása során a konzisztencia-garanciák továbbra is tiszteletben maradnak Azure Cosmos DB.
 
-* Még egy ritka és szerencsétlen eseményen is, amikor az Azure-régió véglegesen behajthatatlan, nincs adatvesztés, ha a többrégiós Azure Cosmos-fiók *erős* konzisztencia-konfigurációval van konfigurálva. Ha tartósan letiltott írási régiót használ, egy többrégiós Azure Cosmos-fiók, amely a határértékek konzisztenciájával van konfigurálva, a lehetséges adatvesztési időszak az elavult (*k* vagy *T*) értékre van korlátozva, ahol k = 100000 frissítés és T = 5 perc. A munkamenet, a konzisztens előtag és a végleges konzisztencia-szintek esetében a lehetséges adatvesztési időszak legfeljebb 15 percet vesz igénybe. További információ a Azure Cosmos DB RTO és RPO céljairól: a [konzisztencia szintjei és az adatok tartóssága](consistency-levels-tradeoffs.md#rto)
+* Még egy ritka és szerencsétlen eseményen is, amikor az Azure-régió véglegesen behajthatatlan, nincs adatvesztés, ha a többrégiós Azure Cosmos-fiók *erős* konzisztencia-konfigurációval van konfigurálva. Ha tartósan letiltott írási régiót használ, egy többrégiós Azure Cosmos-fiók, amely a határértékek konzisztenciájával van konfigurálva, a lehetséges adatvesztési időszak az elavult (*k* vagy *T*) értékre van korlátozva, ahol k = 100000 frissítés és T = 5 perc. A munkamenet, a konzisztens előtag és a végleges konzisztencia-szintek esetében a lehetséges adatvesztési időszak legfeljebb 15 percet vesz igénybe. További információ a Azure Cosmos DB RTO és RPO céljairól: a [konzisztencia szintjei és az adatok tartóssága](./consistency-levels.md#rto)
 
 ## <a name="availability-zone-support"></a>Rendelkezésre állási zóna támogatása
 
@@ -131,7 +131,7 @@ Availability Zones a használatával engedélyezhető:
 
 * [Azure CLI](manage-with-cli.md#add-or-remove-regions)
 
-* [Azure Resource Manager-sablonok](manage-sql-with-resource-manager.md)
+* [Azure Resource Manager-sablonok](./manage-with-templates.md)
 
 ## <a name="building-highly-available-applications"></a>Magasan elérhető alkalmazások fejlesztése
 
@@ -143,15 +143,15 @@ Availability Zones a használatával engedélyezhető:
 
 * Még ha az Azure Cosmos-fiókja is nagyon elérhető, előfordulhat, hogy az alkalmazás nem megfelelően van kialakítva, hogy továbbra is elérhető legyen. Az alkalmazás végpontok közötti magas rendelkezésre állásának teszteléséhez az alkalmazás tesztelési vagy vész-helyreállítási (DR) gyakorlatának részeként átmenetileg tiltsa le a fiók automatikus feladatátvételét, a [PowerShell, az Azure CLI vagy a Azure Portal használatával indítsa el a manuális feladatátvételt](how-to-manage-database-account.md#manual-failover), majd figyelje az alkalmazás feladatátvételét. Ha elkészült, visszatérhet az elsődleges régióhoz, és visszaállíthatja a fiók automatikus feladatátvételét.
 
-* Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a helyreállítási időre vonatkozó célkitűzés (RTO). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. Az adatfrissítés-vesztés megengedhető időkorlátja a helyreállítási időkorlát (RPO). A Azure Cosmos DB RPO és RTO lásd: a [konzisztencia szintjei és az adattartósság](consistency-levels-tradeoffs.md#rto)
+* Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a helyreállítási időre vonatkozó célkitűzés (RTO). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. Az adatfrissítés-vesztés megengedhető időkorlátja a helyreállítási időkorlát (RPO). A Azure Cosmos DB RPO és RTO lásd: a [konzisztencia szintjei és az adattartósság](./consistency-levels.md#rto)
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ezután olvassa el a következő cikkeket:
 
-* [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](consistency-levels-tradeoffs.md)
+* [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](./consistency-levels.md)
 
-* [Kiosztott átviteli sebesség globális méretezése](scaling-throughput.md)
+* [Kiosztott átviteli sebesség globális méretezése](./request-units.md)
 
 * [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
 

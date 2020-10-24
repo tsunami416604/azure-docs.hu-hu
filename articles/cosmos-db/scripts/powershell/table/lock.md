@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 0d2d7b0e8d4a67b2ff67a780a71ea46ec54df1de
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f8b7cfd79188ca742ee163a02c2b6c3b8f36e6c2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280013"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481720"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-table-api-table-using-azure-powershell"></a>Erőforrás-zárolás létrehozása az Azure Cosmos Table API Table Azure PowerShell használatával
 
@@ -42,11 +42,11 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Jegyzetek |
 |---|---|
 |**Azure-erőforrás**| |
-| [Új – AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/new-azresourcelock) | Erőforrás-zárolást hoz létre. |
-| [Get-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/get-azresourcelock) | Lekérdezi egy erőforrás zárolását, vagy listázza az erőforrás-zárolásokat. |
-| [Remove-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/remove-azresourcelock) | Eltávolít egy erőforrás-zárolást. |
+| [Új – AzResourceLock](/PowerShell/module/az.resources/new-azresourcelock) | Erőforrás-zárolást hoz létre. |
+| [Get-AzResourceLock](/PowerShell/module/az.resources/get-azresourcelock) | Lekérdezi egy erőforrás zárolását, vagy listázza az erőforrás-zárolásokat. |
+| [Remove-AzResourceLock](/PowerShell/module/az.resources/remove-azresourcelock) | Eltávolít egy erőforrás-zárolást. |
 |||
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](https://docs.microsoft.com/PowerShell/).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/PowerShell/).

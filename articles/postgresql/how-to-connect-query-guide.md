@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 924dbadc07f57e5928ecc63a24bf5e57d6213670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c6d6a51887d2912da8d6b4e357a1036596d63d5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935861"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490016"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>A PostgreSQL-hez készült Azure Database-hez készült kapcsolat és lekérdezés áttekintése – egyetlen kiszolgáló
 
@@ -20,10 +20,10 @@ Az alábbi dokumentum olyan példákra mutató hivatkozásokat tartalmaz, amelye
 
 ## <a name="quickstarts"></a>Rövid útmutatók
 
-| Gyorsútmutató | Leírás |
+| Első lépések | Leírás |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|A pgAdmin használatával csatlakozhat a kiszolgálóhoz, és leegyszerűsíti az adatbázis-objektumok létrehozását, karbantartását és használatát.|
-|[psql Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Ez a cikk bemutatja, hogyan futtathat [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) -t a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) a kiszolgálóhoz való kapcsolódáshoz, majd az utasítások futtatásához az adatbázisban lévő adatokat lekérdezni, beszúrni, frissíteni és törölni. A **psql** futtatható, ha telepítve van a fejlesztési környezetében|
+|[psql Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Ez a cikk bemutatja, hogyan futtathat [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) -t a [Azure Cloud Shell](../cloud-shell/overview.md) a kiszolgálóhoz való kapcsolódáshoz, majd az utasítások futtatásához az adatbázisban lévő adatokat lekérdezni, beszúrni, frissíteni és törölni. A **psql** futtatható, ha telepítve van a fejlesztési környezetében|
 |[PostgreSQL és VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)|A VS Code-hoz készült Azure Databases bővítmény (előzetes verzió) lehetővé teszi a PostgreSQL-kiszolgáló helyi és Felhőbeli tallózását és lekérdezését a gazdag IntelliSense-mel rendelkező scrapbooks használatával. |
 |[PHP](connect-php.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a PHP egy olyan program létrehozásához, amely egy adatbázishoz csatlakozik, és használja az adatbázis-objektumokkal végzett munkát az adatlekérdezéshez.|
 |[Java](connect-java.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Java egy adatbázishoz való kapcsolódáshoz, és hogyan lehet az adatbázis-objektumokkal dolgozni az adatlekérdezéshez.|
@@ -42,10 +42,10 @@ A Transport Layer Security (TLS) a Microsoft által szolgáltatott és a Azure D
 ## <a name="postgresql-extensions"></a>PostgreSQL-bővítmények
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot kötegelnek egyetlen csomaggá, amely egyetlen paranccsal betölthető vagy eltávolítható az adatbázisból. Az adatbázisba való betöltés után a bővítmények ugyanúgy működnek, mint a beépített funkciók.
 
-- [Postgres 11 bővítmény](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-11-extensions)
-- [Postgres 10 bővítmény](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-10-extensions)
-- [Postgres 9,6-bővítmények](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-96-extensions)
-- [Postgres 9,5-bővítmények](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-95-extensions)
+- [Postgres 11 bővítmény](./concepts-extensions.md#postgres-11-extensions)
+- [Postgres 10 bővítmény](./concepts-extensions.md#postgres-10-extensions)
+- [Postgres 9,6-bővítmények](./concepts-extensions.md#postgres-96-extensions)
+- [Postgres 9,5-bővítmények](./concepts-extensions.md#postgres-95-extensions)
 
 További részletek: a [PostgreSQL-bővítmények használata egyetlen kiszolgálón](concepts-extensions.md).
 

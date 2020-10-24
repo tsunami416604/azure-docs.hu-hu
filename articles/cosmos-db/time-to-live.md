@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 52885f874f877d9a2fd256d0212ba8693067ea8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2700b18797db3805a081b549605369e73889867b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802930"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476977"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Élettartam (TTL) az Azure Cosmos DB-ben
 
@@ -20,7 +20,7 @@ Az **élettartam vagy a** TTL esetében a Azure Cosmos db lehetővé teszi, hogy
 
 A lejárt elemek törlése olyan háttérbeli feladat, amely felhasználja a [kérelmeket, és](request-units.md)ez olyan kérelmeket foglal magába, amelyeket a felhasználói kérések nem használnak fel. Még az élettartam lejárta után is, ha a tároló túlterhelt a kérelmekkel, és ha nincs elegendő RU elérhető, az adattörlés késleltetve van. Az adatok törlődnek, ha elegendő RUs áll rendelkezésre a törlési művelet végrehajtásához. Bár az adattörlés késleltetve van, az élettartam lejárta után bármely lekérdezés (bármely API által) nem adja vissza az adatmennyiséget.
 
-> Ez a tartalom Azure Cosmos DB tranzakciós tároló TTL-értékével kapcsolatos. Ha a analitycal Store TTL-t keresi, amely lehetővé teszi a NoETL HTAP-forgatókönyvek használatát az [Azure szinapszis hivatkozásán](https://docs.microsoft.com/azure/cosmos-db/synapse-link)keresztül, kattintson [ide](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl).
+> Ez a tartalom Azure Cosmos DB tranzakciós tároló TTL-értékével kapcsolatos. Ha a analitycal Store TTL-t keresi, amely lehetővé teszi a NoETL HTAP-forgatókönyvek használatát az [Azure szinapszis hivatkozásán](./synapse-link.md)keresztül, kattintson [ide](./analytical-store-introduction.md#analytical-ttl).
 
 ## <a name="time-to-live-for-containers-and-items"></a>A tárolók és elemek élettartama
 

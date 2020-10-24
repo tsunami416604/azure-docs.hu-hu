@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a37729849bc9702fb6823c11d4534cf35df72abf
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006432"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489523"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Oktatóanyag: végpontok közötti adatfolyamat létrehozása az értékesítési elemzések létrehozásához az Azure HDInsight
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure CLI – legalább a 2.2.0-as verzió. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI – legalább a 2.2.0-as verzió. Lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 * jQ, parancssori JSON-processzor.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
@@ -93,7 +93,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    Ha nem biztos abban, hogy melyik régiót kell megadnia, lekérheti az előfizetéséhez tartozó támogatott régiók listáját az az [Account List-Locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) paranccsal.
+    Ha nem biztos abban, hogy melyik régiót kell megadnia, lekérheti az előfizetéséhez tartozó támogatott régiók listáját az az [Account List-Locations](/cli/azure/account#az-account-list-locations) paranccsal.
 
     A parancs a következő erőforrásokat fogja telepíteni:
 
@@ -254,7 +254,7 @@ Az HDInsight használatával történő adatátalakítás egyéb módjairól [eb
 
 1. A menüből válassza az **adatok lekérése**  >  **továbbiak...**  >  lehetőséget. **Azure**  >  **HDInsight interaktív lekérdezés**.
 
-1. Kattintson a **Csatlakozás** gombra.
+1. Válassza a **Kapcsolódás** lehetőséget.
 
 1. A **HDInsight interaktív lekérdezés** párbeszédpanelen:
     1. A **kiszolgáló** szövegmezőbe írja be a LLAP-fürt nevét a formátuma mezőbe `https://LLAPCLUSTERNAME.azurehdinsight.net` .
@@ -264,7 +264,7 @@ Az HDInsight használatával történő adatátalakítás egyéb módjairól [eb
 1. A **AzureHive** párbeszédpanelen:
     1. A **Felhasználónév** szövegmezőbe írja be a nevet `admin` .
     1. A **jelszó** szövegmezőbe írja be a értéket `Thisisapassword1` .
-    1. Kattintson a **Csatlakozás** gombra.
+    1. Válassza a **Kapcsolódás** lehetőséget.
 
 1. A **Navigátorból**válassza ki `sales` és/vagy `sales_raw` az adatok előnézetét. Az adatgyűjtés után kísérletezhet a létrehozni kívánt irányítópulttal. A Power BI-irányítópultok megismeréséhez tekintse meg az alábbi hivatkozásokat:
 
@@ -288,7 +288,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi parancs használatáva
     az ad sp delete --id $servicePrincipal
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kinyerés, átalakítás és betöltés (ETL) skálán](./hadoop/apache-hadoop-etl-at-scale.md)

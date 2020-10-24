@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5ae5948c8baf1573393c73026c84d0f62e8693e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74084395"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480105"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Oktatóanyag: Azure Resource Manager-sablon használata IoT Hub üzenet-útválasztás konfigurálásához
 
@@ -358,7 +358,7 @@ Ha a sablont az Azure-ba szeretné telepíteni, töltse fel a sablont és a para
 
 A fájlok feltöltéséhez válassza a menüsávon a **fájlok feltöltése/letöltése** ikont, majd válassza a feltöltés lehetőséget.
 
-![Cloud Shell menüsáv a Kiemelt fájlok feltöltésével és letöltésével](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
+![A fájlok feltöltése/letöltése ikonra kiemelő képernyőkép.](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
 A fájlkezelővel megkeresheti a helyi lemezen található fájlokat, majd kiválaszthatja azokat, majd a **Megnyitás**lehetőséget választva.
 
@@ -416,7 +416,7 @@ Ha parancsfájl-hibák léptek fel, a parancsfájlt helyileg szerkesztheti, újr
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy rendelkezik az összes beállított erőforrással, és az üzenetek útvonalai konfigurálva vannak, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan dolgozza fel és jelenítse meg az átirányított üzenetekkel kapcsolatos információkat.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 9781369e862c74afe5a8a94cafafff7ef35e68e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5524c7625678d3bacc5fdbe3c295d8392da2280f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078350"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491002"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-naplók használata HDInsight-fürtök monitorozásához
 
@@ -42,7 +42,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 * Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/). Győződjön meg arról, hogy a legújabb verzióval rendelkezik. Ha szükséges, futtassa a parancsot `Update-Module -Name Az` .
 
-* Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+* Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
 > [!NOTE]  
 > A jobb teljesítmény érdekében ajánlott a HDInsight-fürtöt és a Log Analytics munkaterületet ugyanabba a régióba helyezni. Azure Monitor naplók nem érhetők el az összes Azure-régióban.
@@ -59,7 +59,7 @@ Ebben a szakaszban egy meglévő HDInsight-Hadoop-fürtöt konfigurál egy Azure
 
 1. A **munkaterület kiválasztása** legördülő listából válasszon ki egy meglévő log Analytics munkaterületet.
 
-1. Kattintson a **Mentés** gombra.  A beállítás mentése néhány percet vesz igénybe.
+1. Válassza a **Mentés** lehetőséget.  A beállítás mentése néhány percet vesz igénybe.
 
     ![HDInsight-fürtök figyelésének engedélyezése](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "HDInsight-fürtök figyelésének engedélyezése")
 
@@ -105,7 +105,7 @@ Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 
 ## <a name="enable-azure-monitor-using-azure-cli"></a>Azure Monitor engedélyezése az Azure CLI-vel
 
-Azure Monitor naplók az Azure CLI használatával is engedélyezhetők `[az hdinsight monitor enable` ] ( https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-enable) parancs.
+A Azure Monitor naplók az Azure CLI használatával is engedélyezhetők `[az hdinsight monitor enable` ] (/CLI/Azure/hdinsight/monitor # az-hdinsight-monitor-Enable) paranccsal.
 
 ```azurecli
 # set variables
@@ -120,7 +120,7 @@ az hdinsight monitor enable --name $cluster --resource-group $resourceGroup --wo
 az hdinsight monitor show --name $cluster --resource-group $resourceGroup
 ```
 
-A letiltásához használja a [`az hdinsight monitor disable`](https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-disable) parancsot.
+A letiltásához használja a [`az hdinsight monitor disable`](/cli/azure/hdinsight/monitor#az-hdinsight-monitor-disable) parancsot.
 
 ```azurecli
 az hdinsight monitor disable --name $cluster --resource-group $resourceGroup

@@ -7,14 +7,14 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3ea7930f41fe89538a817da032e993e534db9cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90903762"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491325"
 ---
-# <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
+# <a name="what-is-azure-database-for-postgresql"></a>Mi az az Azure Database for PostgreSQL?
 
 A Azure Database for PostgreSQL egy, a Microsoft felhőben található, a [PostgreSQL közösségi kiadásán](https://www.postgresql.org/) alapuló, a GPLv2-licencben elérhető adatbázis-kezelője. Az Azure Database for PostgreSQL a következőket nyújtja:
 
@@ -29,7 +29,7 @@ A Azure Database for PostgreSQL egy, a Microsoft felhőben található, a [Postg
 
  :::image type="content" source="./media/overview/overview-what-is-azure-postgres.png" alt-text="Azure Database for PostgreSQL":::
 
-Ezek a képességek szinte nem igényelnek felügyeletet, és minden további díj nélkül elérhető. Lehetővé teszik, hogy az alkalmazások gyors fejlesztésére koncentráljon, és a virtuális gépek és az infrastruktúra kezeléséhez szükséges értékes idő és erőforrások kiosztása helyett a piacra kerülési időt kell fordítania. Ezen kívül folytathatja az alkalmazás fejlesztését a kívánt nyílt forráskódú eszközökkel és platformmal, és ezeket az üzletvitel által igényelt sebességgel és hatékonysággal készítheti el, új készségek elsajátításának szükségessége nélkül.
+Ezek a képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Lehetővé teszik, hogy az alkalmazások gyors fejlesztésére koncentráljon, és a virtuális gépek és az infrastruktúra kezeléséhez szükséges értékes idő és erőforrások kiosztása helyett a piacra kerülési időt kell fordítania. Ezen kívül folytathatja az alkalmazás fejlesztését a kívánt nyílt forráskódú eszközökkel és platformmal, és ezeket az üzletvitel által igényelt sebességgel és hatékonysággal készítheti el, új készségek elsajátításának szükségessége nélkül.
 
 ## <a name="deployment-models"></a>Üzembe helyezési modellek
 
@@ -43,7 +43,7 @@ A PostgreSQL Community Edition által működtetett Azure Database for PostgreSQ
 
 Azure Database for PostgreSQL egyetlen kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely minimális követelményeket támaszt az adatbázis testreszabásához. Az egykiszolgálós platform úgy lett kialakítva, hogy az adatbázis-kezelési funkciók, például a javítások, a biztonsági mentések, a magas rendelkezésre állás, a biztonság minimális felhasználói konfigurációval és vezérléssel kezelhető legyen. Az architektúra beépített, magas rendelkezésre állású, 99,99%-os rendelkezésre állást biztosít egyetlen rendelkezésre állási zónában. A PostgreSQL 9,5, 9, 6, 10 és 11 közösségi verzióját támogatja. A szolgáltatás ma már széles körben elérhető az [Azure számos régiójában](https://azure.microsoft.com/global-infrastructure/services/).
 
-Az egykiszolgálós üzembehelyezési lehetőség három tarifacsomagot kínál: Alapszintű, Általános célú és Memóriaoptimalizált. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [tarifacsomagok](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) leírása tartalmazza.
+Az egykiszolgálós üzembehelyezési lehetőség három tarifacsomagot kínál: Alapszintű, Általános célú és Memóriaoptimalizált. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [tarifacsomagok](./concepts-pricing-tiers.md) leírása tartalmazza.
 
 Az egyetlen kiszolgáló a legjobb megoldás a Felhőbeli natív alkalmazásokhoz, amelyek az automatikus javítás kezelésére szolgálnak anélkül, hogy a javítási ütemterv és az egyéni PostgreSQL konfigurációs beállítások részletes szabályozására lenne szükség.
 
@@ -72,9 +72,9 @@ A rugalmas skálázási (Citus) üzembehelyezési lehetőség a következőket n
 - A lekérdezések párhuzamosítása a kiszolgálókon a nagy méretű adathalmazokról adott gyors válaszokhoz
 - Kiváló támogatás a több-bérlős alkalmazások, a valós idejű működési elemzések és a nagy teljesítményű tranzakciós számítási feladatok számára
   
-A PostgreSQL-re épülő alkalmazások [a standard szintű](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries) nagy kapacitású (Citus) elosztott lekérdezéseket futtathatnak, és minimális módosításokat hajtanak végre.
+A PostgreSQL-re épülő alkalmazások [a standard szintű](./concepts-connection-libraries.md) nagy kapacitású (Citus) elosztott lekérdezéseket futtathatnak, és minimális módosításokat hajtanak végre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Database for PostgreSQL három üzembe helyezési módjáról, valamint az igényeinek megfelelő beállítások kiválasztásáról.
 

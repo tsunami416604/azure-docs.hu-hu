@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5ce805fb302264a0c3907c006983f9d939a2908e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e190c9f06dc2c662760421b7240eafdf22986b0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262072"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491308"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Az adatáttelepítés Azure Cosmos DB SQL API-fiókba a Striim használatával
  
@@ -22,13 +22,13 @@ Ez a cikk bemutatja, hogyan telepítheti át az Striim egy **Oracle-adatbázisb�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure- [előfizetéssel](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+* Ha nem rendelkezik Azure- [előfizetéssel](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
 * A helyszínen futó Oracle-adatbázis, amely valamilyen adattal rendelkezik.
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>A Striim Marketplace-megoldás üzembe helyezése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 
 1. Válassza az **erőforrás létrehozása** lehetőséget, és keresse meg a **Striim** az Azure Marketplace-en. Válassza ki az első lehetőséget, és **hozzon létre**.
 
@@ -187,7 +187,7 @@ Ebben a szakaszban a Azure Cosmos DB SQL API-fiókot fogja konfigurálni az adat
 
 Az Azure-beli Striim megoldás használatával folyamatosan áttelepítheti az adatok Azure Cosmos DB különböző forrásokból, például Oracle, Cassandra, MongoDB és másoktól, hogy Azure Cosmos DB. Ha többet szeretne megtudni, látogasson el a [Striim webhelyére](https://www.striim.com/), [töltse le a Striim 30 napos ingyenes próbaverzióját](https://go2.striim.com/download-free-trial), és az áttelepítési útvonal a Striim-vel való beállításakor vegye fel a [támogatási kérelmet.](https://go2.striim.com/request-support-striim)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha Azure Cosmos DB SQL API-ra végez áttelepítést, olvassa el az [adatáttelepítés Cassandra API-fiókba az Striim használatával](cosmosdb-cassandra-api-migrate-data-striim.md) című témakört.
 

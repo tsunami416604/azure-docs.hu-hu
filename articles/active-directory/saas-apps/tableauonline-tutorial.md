@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 175934c3e80e1271d6d17aa04327b58887427ea5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542517"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483692"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tabló online-nal
 
@@ -133,7 +133,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -165,15 +165,15 @@ Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatár
 
 1. Egy másik böngészőablakban jelentkezzen be a tabló online alkalmazásba. Lépjen a beállítások, majd a **hitelesítés** **menüpontra** .
 
-    ![Egyetlen Sign-On konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![A képernyőképen a beállítások menüből kiválasztott hitelesítés látható.](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
 
 2. Az SAML engedélyezéséhez a **hitelesítési típusok** szakaszban. Jelölje be **a további hitelesítési módszer engedélyezése** jelölőnégyzetet, majd jelölje be az **SAML** jelölőnégyzetet.
 
-    ![Egyetlen Sign-On konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![Képernyőfelvétel: a hitelesítési típusok szakasz, ahol kiválaszthatja az értékeket.](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
 3. Görgessen le a **Metaadatok importálása a tabló online** szakaszba.  Kattintson a Tallózás gombra, és importálja a metaadat-fájlt, amelyet az Azure AD-ből töltött le. Ezután kattintson az **alkalmaz**gombra.
 
-   ![Egyetlen Sign-On konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![Képernyőfelvétel: az a szakasz, ahol importálhatja a metaadat-fájlt.](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
 4. Az **egyeztetési érvényesítések** szakaszban szúrja be a megfelelő identitás-szolgáltatói **jogcímet az e-mail-cím**, a **keresztnév**és a **vezetéknév**mezőbe. Az információk lekérése az Azure AD-ből: 
   
@@ -181,17 +181,17 @@ Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatár
 
     b. A **felhasználói attribútumok & jogcímek** szakaszban kattintson a Szerkesztés ikonra.
 
-   ![Egyetlen Sign-On konfigurálása](./media/tableauonline-tutorial/attributesection.png)
+   ![Képernyőfelvétel: a felhasználói attribútumok & jogcímek szakasz, ahol kiválaszthatja a Szerkesztés ikont.](./media/tableauonline-tutorial/attributesection.png)
 
     c. Másolja a névtér értékét ezekhez az attribútumokhoz: givenName, e-mail-cím és vezetéknév a következő lépések segítségével:
 
-   ![Azure AD – egyetlen Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![A képernyőképen a givenName, a vezetéknév és az EmailAddress attribútum látható.](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
 
     d. Kattintson a **User. givenName** értékre
 
     e. Másolja az értéket a **névtér** szövegmezőből.
 
-    ![Egyetlen Sign-On konfigurálása](./media/tableauonline-tutorial/attributesection2.png)
+    ![Képernyőfelvétel: a felhasználói jogcímek kezelése szakasz, ahol megadhatja a névteret.](./media/tableauonline-tutorial/attributesection2.png)
 
     f. Az e-mailek és a vezetéknév névteri értékeinek másolásához ismételje meg a fenti lépéseket.
 
@@ -203,7 +203,7 @@ Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatár
 
     * **Vezetéknév** : név
 
-    ![Egyetlen Sign-On konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+    ![Képernyőfelvétel: a Match attribútumok szakasz, ahol megadhatja az értékeket.](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 ### <a name="create-tableau-online-test-user"></a>Tabló online tesztelési felhasználó létrehozása
 
@@ -211,11 +211,11 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a tabló onl
 
 1. A **tabló online**oldalon kattintson a **Beállítások** , majd a **hitelesítés** szakaszra. Görgessen le a **felhasználók kezelése** szakaszhoz. Kattintson a **felhasználók hozzáadása** elemre, majd az **e-mail-címek megadása**lehetőségre.
   
-    ![Azure AD-tesztkörnyezet létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
+    ![Képernyőfelvétel: a felhasználók kezelése szakasz, ahol a felhasználók hozzáadása lehetőséget választhatja.](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
 2. Válassza **a felhasználók hozzáadása (SAML) hitelesítés**lehetőséget. Az **e-mail címek megadása** szövegmezőben adja hozzá a Britta. Simon \@ contoso.com
   
-    ![Azure AD-tesztkörnyezet létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
+    ![Képernyőfelvétel: a felhasználók hozzáadása lap, ahol megadhat egy e-mail-címet.](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 
 3. Kattintson a **felhasználók hozzáadása**elemre.
 

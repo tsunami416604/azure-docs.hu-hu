@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 23f32b6d09e36a98c68f5cb8f73ae1125c0543dd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e44fe44285a6693583c1b16645ad0d023428c72b
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460750"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494640"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -23,7 +23,7 @@ Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital 
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
 > * Az erőforrások eltávolítása
-> * További lépések
+> * Következő lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,6 +34,8 @@ A kezdéshez szükséges lépések:
 * **.Net Core 3,1** a fejlesztői gépen. A .NET Core SDK ezen verzióját több platformra is letöltheti a [.net Core 3,1 letöltésével](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 
 [!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
+
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
 
 ## <a name="set-up-project"></a>Projekt beállítása
 
@@ -116,9 +118,6 @@ Console.WriteLine($"Service client created – ready to go");
 ```
 
 Mentse a fájlt. 
-
->[!NOTE]
-> Ez a példa a `DefaultAzureCredential` hitelesítést használja. Más típusú hitelesítő adatokkal kapcsolatos információkért tekintse meg a [Microsoft Identity platform hitelesítési kódtárainak](../active-directory/develop/reference-v2-libraries.md)dokumentációját, illetve az [ügyfélalkalmazások hitelesítésével](how-to-authenticate-client.md)kapcsolatos Azure digitális Twins-cikket.
 
 A következő paranccsal futtassa a kódot a parancsablakban: 
 
@@ -544,7 +543,7 @@ Az oktatóanyagban használt példány újra felhasználható a következő okta
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

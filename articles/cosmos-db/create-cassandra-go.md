@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87f3ea2d1ce8d3d9f2f584db379618fc6c4a4a67
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86535790"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491240"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Gyors útmutató: go-alkalmazás létrehozása az `gocql` ügyféllel a Azure Cosmos DB Cassandra API-alapú adatkezeléshez
 
@@ -85,7 +85,7 @@ func GetSession(cosmosCassandraContactPoint, cosmosCassandraPort, cosmosCassandr
 }
 ```
 
-A rendszer átadja a Azure Cosmos DB Cassandra-gazdagépet a [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) (z) függvénynek, [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) amely a Felhasználónév, a jelszó, a port és a megfelelő TLS-verzió ([https/SSL/TLS titkosítási biztonsági követelmény](https://docs.microsoft.com/azure/cosmos-db/database-security?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)) használatára van konfigurálva.
+A rendszer átadja a Azure Cosmos DB Cassandra-gazdagépet a [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) (z) függvénynek, [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) amely a Felhasználónév, a jelszó, a port és a megfelelő TLS-verzió ([https/SSL/TLS titkosítási biztonsági követelmény](./database-security.md?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)) használatára van konfigurálva.
 
 A `GetSession` függvényt a `main` függvény () hívja meg `main.go` .
 
@@ -238,7 +238,7 @@ set COSMOSDB_CASSANDRA_USER=<value for "USERNAME">
 set COSMOSDB_CASSANDRA_PASSWORD=<value for "PRIMARY PASSWORD">
 ```
 
-A terminál ablakban váltson a megfelelő mappára. Például:
+A terminál ablakban váltson a megfelelő mappára. Példa:
 
 ```shell
 cd "C:\git-samples\azure-cosmosdb-cassandra-go-getting-started"
@@ -264,7 +264,7 @@ go run main.go
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot Cassandra API használatával, és hogyan futtathat egy go-adatbázist és egy tárolót. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
 

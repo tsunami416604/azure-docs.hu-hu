@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 5ea5ee2dfe89b36fce78c369100224718eb5864f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ddb6bc297a32be856172707a220fe1dfaefb9f6d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278769"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487449"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Globális adatterjesztés az Azure Cosmos DB-vel
 
@@ -55,7 +55,6 @@ A globális terjesztésről a következő cikkekben olvashat bővebben:
 * [Régiók hozzáadása vagy eltávolítása a Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Egyéni ütközés-feloldási szabályzat létrehozása SQL API-fiókokhoz](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 * [Programozható konzisztencia-modellek Cosmos DB](consistency-levels.md)
-* [Az alkalmazás megfelelő konzisztencia-szintjének kiválasztása](consistency-levels-choosing.md)
-* [Konzisztencia szintjei Azure Cosmos DB API-k között](consistency-levels-across-apis.md)
-* [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](consistency-levels-tradeoffs.md)
-
+* [Az alkalmazás megfelelő konzisztencia-szintjének kiválasztása](./consistency-levels.md)
+* [Konzisztencia szintjei Azure Cosmos DB API-k között](./consistency-levels.md)
+* [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](./consistency-levels.md)

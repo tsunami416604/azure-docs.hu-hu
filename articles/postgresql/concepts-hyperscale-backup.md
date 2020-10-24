@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314930"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485375"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -39,7 +39,7 @@ Azure Database for PostgreSQL egy nagy kapacitású-(Citus-) fürt visszaállít
 
 
 > [!IMPORTANT]
-> A törölt nagy kapacitású-(Citus-) fürtök nem állíthatók vissza. Ha törli a fürtöt, a fürthöz tartozó összes csomópont törölve lesz, és nem állítható helyre. A fürt erőforrásainak védelmét, az üzembe helyezést követően a véletlen törlés vagy a váratlan módosítások miatt a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](/azure/azure-resource-manager/management/lock-resources).
+> A törölt nagy kapacitású-(Citus-) fürtök nem állíthatók vissza. Ha törli a fürtöt, a fürthöz tartozó összes csomópont törölve lesz, és nem állítható helyre. A fürt erőforrásainak védelmét, az üzembe helyezést követően a véletlen törlés vagy a váratlan módosítások miatt a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="point-in-time-restore-pitr"></a>Időponthoz tartozó visszaállítás (PITR)
 
@@ -65,5 +65,5 @@ A helyreállítási mechanizmusból való visszaállítás után a következőke
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg az [Azure rendelkezésre állási zónáit](/azure/availability-zones/az-overview).
-* A [javasolt riasztások](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts) beállítása nagy kapacitású-(Citus-) kiszolgálócsoportok esetén.
+* Ismerje meg az [Azure rendelkezésre állási zónáit](../availability-zones/az-overview.md).
+* A [javasolt riasztások](./howto-hyperscale-alert-on-metric.md#suggested-alerts) beállítása nagy kapacitású-(Citus-) kiszolgálócsoportok esetén.

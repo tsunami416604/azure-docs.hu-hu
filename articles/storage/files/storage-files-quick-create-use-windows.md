@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0cbbcc822765097f83fcd1a52ce775c69faba9fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836428"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489574"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rövid útmutató: Azure Files megosztás létrehozása és kezelése Windows rendszerű virtuális gépekkel
 
@@ -98,7 +98,7 @@ Ezen a ponton már létrehozta az új virtuális gépet és csatolt egy adatleme
 1. A Azure Portal navigáljon a *qsfileshare* fájlmegosztás, és válassza a **Kapcsolódás**lehetőséget.
 1. Másolja a második mező tartalmát, és illessze be a **Jegyzettömbben**.
 
-   ![Az UNC-útvonal az Azure Files Csatlakozás oldaláról](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
+   ![Képernyőkép, amely a Jegyzettömbbe másolható és beilleszthető másodpercek mező tartalmát jeleníti meg.](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
 1. A virtuális gépen nyissa meg a **fájlkezelőt** , és válassza ki **ezt a számítógépet** az ablakban. Ez a kijelölés megváltoztatja a menüszalagon elérhető menüket. A **számítógép** menüben válassza a **hálózati meghajtó csatlakoztatása**lehetőséget.
 1. Válassza ki a meghajtó betűjelét, és írja be az UNC-útvonalat. Ha követte az ebben a rövid útmutatóban szereplő elnevezési javaslatokat, másolja a * \\ qsstorageacct. file. Core. Windows. net\qsfileshare fájlt* a **Jegyzettömbből**.
@@ -179,7 +179,7 @@ A helyszíni VSS-pillanatképekhez hasonlóan a csatlakoztatott Azure-fájlmegos
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure-fájlmegosztás használata a Windows rendszeren](storage-how-to-use-files-windows.md)

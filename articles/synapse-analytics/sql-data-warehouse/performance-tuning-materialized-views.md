@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984112"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478320"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Teljesítmény-Finomhangolás az anyagbeli nézetekkel
 
@@ -38,7 +38,7 @@ A standard nézetekre vonatkozó követelmények többsége továbbra is érvén
 |Adatfrissítés                    | Mindig frissítve                               | Mindig frissítve
 |Az összetett lekérdezések adatainak megtekintési sebessége     | Lassú                                         | Gyors  
 |Extra tárterület                   | Nem                                           | Igen
-|Syntax                          | NÉZET LÉTREHOZÁSA                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
+|Syntax                          | CREATE VIEW                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
 
 ## <a name="benefits-of-using-materialized-views"></a>A lényeges nézetek használatának előnyei
 
@@ -79,7 +79,7 @@ A más hangolási lehetőségekkel, például a skálázással és a statisztika
 
 **A lekérdezési teljesítmény gyorsabb elvégzéséhez eltérő adatelosztási stratégia szükséges**
 
-Az SQL Pool egy elosztott, nagymértékben párhuzamos feldolgozási (MPP) rendszer.   Az SQL-készletekben tárolt adatokat 60-csomópontok között osztják szét a három [terjesztési stratégia](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (kivonat, round_robin vagy replikált) egyikével.  
+A szinapszis SQL egy elosztott lekérdezés-feldolgozó rendszer.  Az SQL-táblákban lévő adatokat 60-csomópontok osztják szét a három [terjesztési stratégia](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (kivonat, round_robin vagy replikált) egyikének használatával.   
 
 Az adateloszlás a tábla létrehozási idején van megadva, és a tábla eldobása előtt változatlan marad. A lemezes virtuális tábla a kivonatoló és az round_robin adateloszlást is támogatja.  A felhasználók kiválaszthatnak egy adateloszlást, amely eltér az alaptábláktól, de optimális a nézeteket használó lekérdezések teljesítményéhez.  
 

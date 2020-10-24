@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: jasonh
-ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6733e0f6447d055da8d349940bc7c7665e003e33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409697"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475600"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés utáni optimalizálási lépések Azure Cosmos DB API-MongoDB való használatakor
 
@@ -53,12 +53,12 @@ Az adattovábbítás globális elosztása érdekében tekintse [meg az Adatterje
 
 ## <a name="set-consistency-level"></a>Konzisztencia szintjének beállítása
 
-Azure Cosmos DB 5 jól meghatározott konzisztencia- [szintet](consistency-levels.md)kínál. A MongoDB és a Azure Cosmos DB konzisztencia-szintek közötti leképezésről a [konzisztencia-szintek és a Azure Cosmos db API](consistency-levels-across-apis.md)-k című cikkből tájékozódhat. Az alapértelmezett konzisztencia-szint a munkamenet konzisztenciáji szintje. A konzisztencia szintjének módosítása nem kötelező, és optimalizálható az alkalmazáshoz. A konzisztencia szintjének módosítása Azure Portal használatával:
+Azure Cosmos DB 5 jól meghatározott konzisztencia- [szintet](consistency-levels.md)kínál. A MongoDB és a Azure Cosmos DB konzisztencia-szintek közötti leképezésről a [konzisztencia-szintek és a Azure Cosmos db API](./consistency-levels.md)-k című cikkből tájékozódhat. Az alapértelmezett konzisztencia-szint a munkamenet konzisztenciáji szintje. A konzisztencia szintjének módosítása nem kötelező, és optimalizálható az alkalmazáshoz. A konzisztencia szintjének módosítása Azure Portal használatával:
 
 1. Lépjen az **alapértelmezett konzisztencia** panelre a beállítások területen.
 2. A [konzisztencia szintjének](consistency-levels.md) kiválasztása
 
-A legtöbb felhasználó a konzisztencia szintjét az alapértelmezett munkamenet-konzisztencia beállításnál hagyja. Vannak azonban [rendelkezésre állási és teljesítménybeli kompromisszumok a különböző konzisztencia-szintekhez](consistency-levels-tradeoffs.md).
+A legtöbb felhasználó a konzisztencia szintjét az alapértelmezett munkamenet-konzisztencia beállításnál hagyja. Vannak azonban [rendelkezésre állási és teljesítménybeli kompromisszumok a különböző konzisztencia-szintekhez](./consistency-levels.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

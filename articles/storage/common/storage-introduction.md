@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 337a4c1ba3e355c2ba1dd7ea6e34645112d1c7b1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 73b48f8bcb4ec6facfebfc62d03ee5cd8237f504
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091304"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490798"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Az alapszintű Azure Storage szolgáltatás bemutatása
 
@@ -46,7 +46,7 @@ A következő táblázat összehasonlítja a fájlokat, a blobokat, a lemezeket,
 | **Azure Files** |A teljes körűen felügyelt felhőalapú fájlmegosztást biztosít, amely bárhonnan elérhető az iparági szabványnak megfelelő SMB protokollon keresztül.<br><br>Azure-fájlmegosztást csatlakoztathat a felhőből vagy a helyszíni Windows, Linux és macOS rendszerű környezetekről. | Olyan alkalmazást szeretne átemelni és átállítani a felhőbe, amely már a natív fájlrendszer API-kat használja az Azure-ban futó más alkalmazások közötti adatmegosztáshoz.<br/><br/>Szeretné cserélni vagy kiegészíteni a helyszíni fájlkiszolgálók vagy NAS-eszközöket.<br><br> Olyan fejlesztési és hibakeresési eszközöket szeretne tárolni, amelyeknek számos virtuális gépről kell elérniük. |
 | **Azure Blobs** | Lehetővé teszi a strukturálatlan adatmennyiségek tárolását és elérését a blokkos Blobok nagy méretekben.<br/><br/>A [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) is támogatja a vállalati Big Data elemzési megoldásokhoz. | Azt szeretné, hogy az alkalmazás támogassa a folyamatos átvitelt és a véletlenszerű hozzáférési forgatókönyveket.<br/><br/>Bárhonnan elérhetővé szeretné tenni az alkalmazásadatok elérését.<br/><br/>Az Azure-ban szeretne létrehozni egy vállalati adattavat, és big data elemzést hajt végre. |
 | **Azure Disks** | Lehetővé teszi az adatok tartós tárolását és elérését egy csatlakoztatott virtuális merevlemezről. | A natív fájlrendszerű API-kat használó alkalmazások "átemelése" és "eltolása" szükséges az állandó lemezekre való olvasáshoz és az adatíráshoz.<br/><br/>Olyan adatok tárolására van szükség, amelyek nem szükségesek azon a virtuális gépen kívülről való hozzáféréshez, amelyhez a lemez csatlakoztatva van. |
-| **Azure-üzenetsorok** | Lehetővé teszi az alkalmazások összetevői közötti aszinkron üzenetsor-kezelést. | El szeretné választani az alkalmazás-összetevőket, és aszinkron üzenetküldést használ a közöttük való kommunikációhoz.<br><br>A Queue Storage és a Service Bus Queues használata esetén a következő témakörben talál útmutatást: [Storage Queues and Service Bus Queues – összehasonlítás és kontrasztos](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted). |
+| **Azure-üzenetsorok** | Lehetővé teszi az alkalmazások összetevői közötti aszinkron üzenetsor-kezelést. | El szeretné választani az alkalmazás-összetevőket, és aszinkron üzenetküldést használ a közöttük való kommunikációhoz.<br><br>A Queue Storage és a Service Bus Queues használata esetén a következő témakörben talál útmutatást: [Storage Queues and Service Bus Queues – összehasonlítás és kontrasztos](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted). |
 | **Azure-táblák** | Lehetővé teszi a strukturált NoSQL-alapú adattárolást a felhőben, amely egy kulcs/attribútum-tárolót biztosít a séma nélküli kialakításhoz. | Rugalmas adatkészleteket szeretne tárolni, például a webalkalmazásokhoz, a címjegyzékekhez, az eszköz adataihoz vagy a szolgáltatás által igényelt más típusú metaadatokhoz tartozó felhasználói adatokat. <br/><br/>Ha a Table Storage és a Azure Cosmos DB Table API használatát ismerteti, tekintse meg a [fejlesztés a Azure Cosmos DB Table API és az Azure Table Storage](../../cosmos-db/table-support.md)szolgáltatással című témakört. |
 
 ## <a name="blob-storage"></a>Blob Storage
@@ -61,7 +61,7 @@ A Blob Storage a következőkhöz ideális:
 - Adattárolás biztonsági mentésekhez és helyreállításhoz, vészhelyreállításhoz és archiváláshoz.
 - Adattárolás helyszíni vagy az Azure-ban üzemeltetett szolgáltatásban való elemzéshez.
 
-A Blob Storage tárolóban lévő objektumok a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül. A felhasználók vagy ügyfélalkalmazások URL-eken, az [Azure Storage REST API-n](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), az [Azure PowerShellen](https://docs.microsoft.com/powershell/module/azure.storage), az [Azure CLI-n](https://docs.microsoft.com/cli/azure/storage) vagy Azure Storage-ügyfélkódtárakon keresztül érhetik el a blobokat. A tároló ügyfélkódtárai több nyelven érhetők el, beleértve a [.NET](/dotnet/api/overview/azure/storage), [Java](https://docs.microsoft.com/java/api/overview/azure/storage), [Node.js](https://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/), [PHP](https://azure.github.io/azure-storage-php/) és [Ruby](https://azure.github.io/azure-storage-ruby) nyelveket.
+A Blob Storage tárolóban lévő objektumok a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül. A felhasználók vagy ügyfélalkalmazások URL-eken, az [Azure Storage REST API-n](/rest/api/storageservices/blob-service-rest-api), az [Azure PowerShellen](/powershell/module/azure.storage), az [Azure CLI-n](/cli/azure/storage) vagy Azure Storage-ügyfélkódtárakon keresztül érhetik el a blobokat. A tároló ügyfélkódtárai több nyelven érhetők el, beleértve a [.NET](/dotnet/api/overview/azure/storage), [Java](/java/api/overview/azure/storage), [Node.js](https://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/), [PHP](https://azure.github.io/azure-storage-php/) és [Ruby](https://azure.github.io/azure-storage-ruby) nyelveket.
 
 További információ a blob Storage-ról: [Bevezetés a blob Storage](../blobs/storage-blobs-introduction.md)-ba.
 
@@ -113,7 +113,7 @@ Minden Azure Storage-kérelemnek engedélyezve kell lennie. Az Azure Storage a k
 
 - **Azure Active Directory (Azure AD) integráció a blob-és üzenetsor-adatkezeléshez.** Az Azure Storage támogatja az Azure AD-vel való hitelesítést és engedélyezést a blob-és üzenetsor-szolgáltatásokhoz az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával. A kérések Azure AD-vel való engedélyezése ajánlott a kiváló biztonság és a könnyű használat érdekében. További információ: az [Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával](storage-auth-aad.md).
 - **Azure AD-hitelesítés az Azure Files SMB-en keresztül.** Azure Files támogatja az SMB-(Server Message Block) identitás-alapú hitelesítést Azure Active Directory Domain Services (Azure AD DS) vagy helyszíni Active Directory tartományi szolgáltatások (előzetes verzió) használatával. A tartományhoz csatlakoztatott Windows rendszerű virtuális gépek Azure AD-beli hitelesítő adatokkal érhetik el az Azure-fájlmegosztást. További információ: [Azure Files identitás-alapú hitelesítés támogatásának áttekintése az SMB-hozzáféréshez](../files/storage-files-active-directory-overview.md) és a [Azure Files központi telepítésének megtervezéséhez](../files/storage-files-planning.md#identity).
-- **Hitelesítés megosztott kulccsal.** A Azure Storage Blob, fájlok, üzenetsor és Table Services támogatja a megosztott kulccsal való hitelesítést. A megosztott kulcsos hitelesítést használó ügyfelek minden, a Storage-fiók elérési kulcsával aláírt kérelemmel továbbítanak egy fejlécet. További információ: [Engedélyezés megosztott kulccsal](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
+- **Hitelesítés megosztott kulccsal.** A Azure Storage Blob, fájlok, üzenetsor és Table Services támogatja a megosztott kulccsal való hitelesítést. A megosztott kulcsos hitelesítést használó ügyfelek minden, a Storage-fiók elérési kulcsával aláírt kérelemmel továbbítanak egy fejlécet. További információ: [Engedélyezés megosztott kulccsal](/rest/api/storageservices/authorize-with-shared-key).
 - **Hitelesítés közös hozzáférésű aláírásokkal (SAS).** A közös hozzáférésű aláírás (SAS) egy olyan karakterlánc, amely egy olyan biztonsági jogkivonatot tartalmaz, amely egy tárolási erőforrás URI azonosítójának hozzáfűzésére használható. A biztonsági jogkivonat olyan korlátozásokat ágyaz be, mint az engedélyek és a hozzáférés intervalluma. További információ: [Shared Access Signatures (SAS) használata](storage-sas-overview.md).
 - **A tárolók és Blobok névtelen hozzáférése.** Előfordulhat, hogy a tároló és a Blobok nyilvánosan elérhetők. Ha megadja, hogy a tároló vagy a blob nyilvános, akkor bárki névtelenül olvashatja. nincs szükség hitelesítésre. További információ: [Névtelen olvasási hozzáférés tárolók és Blobok kezelésére](../blobs/storage-manage-access-to-resources.md).
 
@@ -147,10 +147,10 @@ A Storage-fiókokban lévő erőforrásokat bármilyen, HTTP/HTTPS-kérelmeket e
 
 ### <a name="azure-storage-data-api-and-library-references"></a>Az Azure Storage adat API-ja és kódtárhivatkozásai
 
-- [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/)
-- [Azure Storage ügyféloldali kódtára a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-- [Azure Storage ügyféloldali kódtár Java/Android rendszerhez](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage ügyféloldali kódtár a Node.jshoz ](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
+- [Azure Storage REST API](/rest/api/storageservices/)
+- [Azure Storage ügyféloldali kódtára a .NET-hez](/dotnet/api/overview/azure/storage)
+- [Azure Storage ügyféloldali kódtár Java/Android rendszerhez](/java/api/overview/azure/storage)
+- [Azure Storage ügyféloldali kódtár a Node.jshoz ](/javascript/api/overview/azure/storage-overview)
 - [Az Azure Storage ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-storage-python)
 - [Az Azure Storage ügyféloldali kódtára a PHP-hez](https://github.com/Azure/azure-storage-php)
 - [Azure Storage ügyféloldali kódtár a Rubyhoz](https://github.com/Azure/azure-storage-ruby)
@@ -158,19 +158,19 @@ A Storage-fiókokban lévő erőforrásokat bármilyen, HTTP/HTTPS-kérelmeket e
 
 ### <a name="azure-storage-management-api-and-library-references"></a>Az Azure Storage felügyeleti API-ja és kódtárhivatkozásai
 
-- [A Storage erőforrás-szolgáltató REST API-ja](https://docs.microsoft.com/rest/api/storagerp/)
-- [Storage erőforrás-szolgáltató ügyfél a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/storage/management)
+- [A Storage erőforrás-szolgáltató REST API-ja](/rest/api/storagerp/)
+- [Storage erőforrás-szolgáltató ügyfél a .NET-hez](/dotnet/api/overview/azure/storage/management)
 - [A Storage szolgáltatásfelügyelet REST API-ja](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-api-and-library-references"></a>Az Azure Storage adatátviteli API-ja és kódtárhivatkozásai
 
-- [A Storage Import/Export szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/storageimportexport/)
+- [A Storage Import/Export szolgáltatás REST API-ja](/rest/api/storageimportexport/)
 - [A Storage adatátviteli ügyféloldali kódtára a .NET-hez](/dotnet/api/microsoft.azure.storage.datamovement)
 
 ### <a name="tools-and-utilities"></a>Eszközök és segédprogramok
 
-- [Azure PowerShell-parancsmagok a Storage-hoz](https://docs.microsoft.com/powershell/module/az.storage)
-- [Azure CLI-parancsmagok a Storage-hoz](https://docs.microsoft.com/cli/azure/storage)
+- [Azure PowerShell-parancsmagok a Storage-hoz](/powershell/module/az.storage)
+- [Azure CLI-parancsmagok a Storage-hoz](/cli/azure/storage)
 - [AzCopy Command-Line segédprogram](https://aka.ms/downloadazcopy)
 - Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a Microsoft ingyenes, önálló alkalmazása, amellyel vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 - [Azure Storage-sablonok Azure Resource Manager](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)

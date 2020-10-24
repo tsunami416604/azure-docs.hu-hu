@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263544"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480921"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be 
 
@@ -38,7 +38,7 @@ A korlátozások nagy része az Azure-beli adatáttelepítési szolgáltatásokh
 
 ## <a name="custom-tool-with-bulk-executor-library"></a>Egyéni eszköz tömeges végrehajtó könyvtárral 
 
-A fentiekben ismertetett kihívások megoldhatók egy olyan egyéni eszköz használatával, amely könnyen méretezhető több példányon, és rugalmas az átmeneti hibákkal szemben. Emellett az egyéni eszköz szüneteltetheti és folytathatja az áttelepítés különböző ellenőrzőpontokon való futtatását. Azure Cosmos DB már a [tömeges végrehajtó függvénytárat](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) is tartalmazza, amely tartalmazza ezeket a funkciókat. A tömeges végrehajtó függvénytár például már rendelkezik az átmeneti hibák kezeléséhez szükséges funkciókkal, és a szálakat egyetlen csomóponton is kibővítheti, hogy a rendszer a csomópontok 500 K/s RUs-t használja. A tömeges végrehajtó függvénytár a forrás-adatkészletet az ellenőrzőpont-kezelés formájában egymástól függetlenül működő mikro-kötegekre is particionálja.  
+A fentiekben ismertetett kihívások megoldhatók egy olyan egyéni eszköz használatával, amely könnyen méretezhető több példányon, és rugalmas az átmeneti hibákkal szemben. Emellett az egyéni eszköz szüneteltetheti és folytathatja az áttelepítés különböző ellenőrzőpontokon való futtatását. Azure Cosmos DB már a [tömeges végrehajtó függvénytárat](./bulk-executor-overview.md) is tartalmazza, amely tartalmazza ezeket a funkciókat. A tömeges végrehajtó függvénytár például már rendelkezik az átmeneti hibák kezeléséhez szükséges funkciókkal, és a szálakat egyetlen csomóponton is kibővítheti, hogy a rendszer a csomópontok 500 K/s RUs-t használja. A tömeges végrehajtó függvénytár a forrás-adatkészletet az ellenőrzőpont-kezelés formájában egymástól függetlenül működő mikro-kötegekre is particionálja.  
 
 Az egyéni eszköz a tömeges végrehajtó függvénytárat használja, és támogatja a több ügyfél közötti skálázást és a hibák követését a betöltési folyamat során. Az eszköz használatához a forrásadatokat Azure Data Lake Storage (ADLS) különálló fájlokba kell particionálni, hogy a különböző áttelepítési munkatársak minden fájlt felvegyenek, és betöltsék azokat a Azure Cosmos DBba. Az egyéni eszköz egy különálló gyűjteményt használ, amely metaadatokat tárol a ADLS lévő egyes forrásfájlok áttelepítési folyamatával kapcsolatban, és nyomon követi a velük kapcsolatos hibákat.  
 
@@ -148,8 +148,8 @@ Bár a nagy méretű adathalmazok sikeres áttelepítésére a nagyméretű adat
 :::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Áttelepítési eszköz beállítása":::
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ: a [.net](bulk-executor-dot-net.md) és a [Java](bulk-executor-java.md)szolgáltatásban a tömeges végrehajtó függvénytárat használó minta alkalmazások kipróbálása. 
 * A tömeges végrehajtó függvénytár integrálva van a Cosmos DB Spark-összekötőbe, és további információt a [Azure Cosmos db Spark-összekötő](spark-connector.md) című cikkben talál.  
-* A nagyméretű áttelepítéssel kapcsolatos további segítségért lépjen kapcsolatba a Azure Cosmos DB termék csapatával, és nyisson meg egy támogatási jegyet az "általános tanácsadó" probléma típusa és a "nagy (TB +) Migrálás" problémás altípusban. 
+* A nagyméretű áttelepítéssel kapcsolatos további segítségért lépjen kapcsolatba a Azure Cosmos DB termék csapatával, és nyisson meg egy támogatási jegyet az "általános tanácsadó" probléma típusa és a "nagy (TB +) Migrálás" problémás altípusban.

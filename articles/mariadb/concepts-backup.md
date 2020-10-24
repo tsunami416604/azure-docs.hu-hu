@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 5c82c7a3fbe931042c1ae817d2f5b6c9ae6989ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d452070619a8e6284b976ff202d2a86f1ff9312b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427744"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480734"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Biztonsági mentés és visszaállítás Azure Database for MariaDB
 
@@ -44,12 +44,15 @@ A biztonsági másolatok megőrzési időszaka azt szabályozza, hogy az adott i
 - A legfeljebb 4 TB-os tárterülettel rendelkező kiszolgálók legfeljebb 2 teljes adatbázis-biztonsági mentést, az összes különbözeti biztonsági mentést és a tranzakciónapló biztonsági másolatait a legkorábbi teljes adatbázis biztonsági mentése óta hajtják végre.
 -   A legfeljebb 16 TB tárhellyel rendelkező kiszolgálók megőrzik a teljes adatbázis-pillanatképet, a különbözeti pillanatképeket és a tranzakciónapló biztonsági mentését az elmúlt 8 napban.
 
+#### <a name="long-term-retention-of-backups"></a>Biztonsági másolatok hosszú távú megőrzése
+A biztonsági másolatok hosszú távú megőrzése a 35 napnál hosszabb ideig még nem támogatott a szolgáltatás általi natív módon. Lehetősége van arra, hogy a mysqldump használatával készítsen biztonsági másolatokat, és tárolja őket a hosszú távú megőrzés érdekében. A támogatási csapatunk [részletesen](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) ismerteti, hogy miként lehet elérni. 
+
 ### <a name="backup-redundancy-options"></a>A Backup redundancia beállításai
 
 Azure Database for MariaDB rugalmasságot biztosít a helyileg redundáns vagy geo-redundáns biztonsági mentési tárolók közötti választáshoz a általános célú és a memóriára optimalizált rétegekben. Ha a biztonsági mentések a földrajzilag redundáns biztonsági mentési tárolóban tárolódnak, azok nem csak abban a régióban vannak tárolva, amelyben a kiszolgáló üzemeltetve van, de egy [párosított adatközpontba](../best-practices-availability-paired-regions.md)is replikálódnak. Ez jobb védelmet nyújt, és lehetővé teszi a kiszolgáló egy másik régióban való visszaállítását vészhelyzet esetén. Az alapszintű csomag csak a helyileg redundáns biztonsági mentési tárhelyet kínálja.
 
-> [!IMPORTANT]
-> A helyileg redundáns vagy geo-redundáns tárterület a biztonsági mentéshez való konfigurálása csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően nem módosítható a biztonsági mentési tár redundáns beállítása.
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Áthelyezés helyileg redundáns biztonsági mentési tárolóba
+A helyileg redundáns vagy geo-redundáns tárterület a biztonsági mentéshez való konfigurálása csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően nem módosítható a biztonsági mentési tár redundáns beállítása. Ahhoz, hogy a biztonsági mentési tárhelyet a helyileg redundáns tárolóból a Geo-redundáns tárolóba helyezze át, egy új kiszolgáló létrehozása és az adatok a [dump és a Restore](howto-migrate-dump-restore.md) használatával történő áttelepítése az egyetlen támogatott lehetőség.
 
 ### <a name="backup-storage-cost"></a>Biztonsági mentési tárolási díj
 
@@ -98,7 +101,7 @@ A helyreállítási mechanizmusból való visszaállítás után a következő f
 - Győződjön meg arról, hogy a megfelelő bejelentkezések és az adatbázis-szintű engedélyek vannak érvényben
 - Konfigurálja a riasztásokat, ha szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az üzletmenet folytonosságával kapcsolatos további tudnivalókért tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md)című témakört.
 - Ha a Azure Portal használatával szeretne visszaállítani egy időpontra, tekintse meg [a kiszolgáló visszaállítása a Azure Portal használatával](howto-restore-server-portal.md)című témakört.

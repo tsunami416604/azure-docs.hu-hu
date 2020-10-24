@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 886e8cb1c5d86c1a61e65fa8cbd54c022f6c1c6b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074758"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484814"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz
 
@@ -28,7 +28,7 @@ A cikkben szereplő kódok végrehajtása előtt a TCP/IP hálózatkezelés megi
 A cikkben szereplő minták egyéb előfeltételei közé tartoznak a következő elemek:
 
 * Ha a PowerShellt használja, telepítenie kell az az [modult](https://docs.microsoft.com/powershell/azure/).
-* Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+* Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
 > [!IMPORTANT]  
 > Ha a HDInsight a helyszíni hálózathoz Azure Virtual Network használatával történő csatlakoztatására vonatkozó útmutatót keresi, tekintse meg a [HDInsight csatlakoztatása](connect-on-premises-network.md) a helyszíni hálózati dokumentumhoz című témakört.
@@ -370,7 +370,7 @@ Ez a példa a következő feltételezéseket biztosítja:
 
 A lépések elvégzése után a virtuális hálózat erőforrásaihoz teljes tartománynevek (FQDN) használatával kapcsolódhat. Most már telepítheti a HDInsight-t a virtuális hálózatba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A helyszíni hálózathoz való kapcsolódás HDInsight konfigurálásának teljes példáját lásd: [a HDInsight összekapcsolása egy helyszíni hálózattal](./connect-on-premises-network.md).
 * Az Apache HBase-fürtök Azure-beli virtuális hálózatokban való konfigurálásával kapcsolatban lásd: [Apache HBase-fürtök létrehozása a HDInsight-ben az azure Virtual Network](hbase/apache-hbase-provision-vnet.md).

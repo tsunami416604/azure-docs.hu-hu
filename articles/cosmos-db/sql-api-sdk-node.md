@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: c3834b1890cb20b717462c4cb8ed1f779570c675
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 29001b02cb62fc28c94c7b404bd35b22e263f9de
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275208"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487755"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -32,14 +32,14 @@ ms.locfileid: "92275208"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 |Erőforrás  |Hivatkozás  |
 |---------|---------|
 |SDK letöltése  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|API-dokumentáció  |  [A JavaScript SDK dokumentációja](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest&preserve-view=true)
+|API-dokumentáció  |  [A JavaScript SDK dokumentációja](/javascript/api/%40azure/cosmos/?preserve-view=true&view=azure-node-latest)
 |SDK telepítési utasítások  |  [Telepítési utasítások](https://github.com/Azure/azure-sdk-for-js)
 |Közreműködés az SDK-val | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | Példák | [Node.js kód mintái](sql-api-nodejs-samples.md)
@@ -476,4 +476,3 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 ## <a name="see-also"></a>Lásd még
 A Cosmos DB-ről a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás oldalán tekinthet meg további információt.
-

@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311690"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489013"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -34,7 +34,7 @@ Azt is megteheti, hogy megnyithatja a Cloud Shell ablaktáblát a Azure Portalba
 
 :::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="A &quot;Cloud Shell&quot; ikonnal jelölt Azure Portal megjelenítése, valamint a portál ablakának alján megjelenő Cloud Shell":::
 
-Végül egy másik megoldás, ha [telepíti az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t a gépére, így helyileg is futtathatja az Azure CLI-parancsokat. A helyi CLI nem tapasztalja ezt a problémát.
+Végül egy másik megoldás, ha [telepíti az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t a gépére, így helyileg is futtathatja az Azure CLI-parancsokat. A helyi CLI nem tapasztalja ezt a problémát.
 
 ### <a name="possible-causes"></a>Lehetséges okok
 
@@ -46,7 +46,9 @@ Ez nem befolyásolja az Azure Digital Twins parancsait a `az dt` vagy a `az dt e
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>A szerepkör-hozzárendelés hiányzik a parancsfájlból történő telepítés után
 
-Egyes felhasználók problémákat tapasztalhatnak a szerepkör-hozzárendelési részével kapcsolatban [*: példány és hitelesítés beállítása (parancsfájlba*](how-to-set-up-instance-scripted.md)foglalt). A parancsfájl nem jelez hibát, de az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkör nem lett sikeresen hozzárendelve a felhasználóhoz, és ez a probléma hatással lehet más erőforrások létrehozására az úton.
+Egyes felhasználók problémákat tapasztalhatnak a szerepkör-hozzárendelési részével kapcsolatban [*: példány és hitelesítés beállítása (parancsfájlba*](how-to-set-up-instance-scripted.md)foglalt). A parancsfájl nem jelzi a hibát, de az *Azure Digital Twins-beli adattulajdonosi* szerepkört nem sikerült hozzárendelni a felhasználóhoz, és ez a probléma hatással lehet más erőforrások létrehozására is az úton.
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Annak megállapításához, hogy a szerepkör-hozzárendelés sikeresen be lett-e állítva a parancsfájl futtatása után, kövesse a telepítési cikk [*felhasználói szerepkör-hozzárendelés ellenőrzése*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) szakaszának utasításait. Ha a felhasználó nem jelenik meg ezzel a szerepkörrel, ez a probléma hatással van.
 
@@ -64,7 +66,7 @@ A személyes [Microsoft-fiók (MSA)](https://account.microsoft.com/account)szolg
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Probléma az interaktív böngésző-hitelesítéssel
 
-Az Azure-beli digitális Twins-alkalmazásokban az ** [Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) metódussal.
+Az Azure-beli digitális Twins-alkalmazásokban az ** [Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) metódussal.
 
 Ez nem a könyvtár legújabb verziója. A legújabb verzió az **1.2.2**.
 

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: fcbce9e7a5b24cbbe695b2ad664137875464b705
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 32ff5a73494bac2cabcb9488f946673435173dd0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107929"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489438"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. A [platform metrikáit](data-platform-metrics.md) a rendszer alapértelmezés szerint gyűjti, és általában a Azure monitor metrikai adatbázisban tárolja. Ez a cikk a diagnosztikai beállítások létrehozásával és konfigurálásával kapcsolatos részletes információkat tartalmaz a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez.
@@ -63,6 +63,8 @@ A diagnosztikai beállítások létrehozása előtt létre kell hozni a diagnosz
 > [!NOTE]
 > Az Azure Data Lake Storage Gen2-fiókok jelenleg nem támogatottak a diagnosztikai beállítások célhelyeként, még akkor sem, ha az Azure Portalon esetleg érvényes lehetőségként vannak felsorolva.
 
+> [!NOTE]
+> Azure Monitor (diagnosztikai beállítások) nem férhetnek hozzá Event Hubs erőforrásokhoz, ha a virtuális hálózatok engedélyezve vannak. Engedélyeznie kell a megbízható Microsoft-szolgáltatások számára, hogy megkerüljék ezt a tűzfal-beállítást az Event hub-ban, így Azure Monitor (diagnosztikai beállítások) szolgáltatás hozzáférést kap a Event Hubs erőforrásaihoz. 
 
 
 ## <a name="create-in-azure-portal"></a>Létrehozás az Azure Portalon
@@ -175,6 +177,6 @@ A diagnosztikai beállítások a [Azure Monitor REST API](/rest/api/monitor/)has
 Mivel minden egyes Azure-erőforráshoz létre kell hozni egy diagnosztikai beállítást, Azure Policy használatával automatikusan létrehozhat egy diagnosztikai beállítást, mivel minden erőforrás létrejön. A részletekért lásd: [Azure monitor üzembe helyezése méretezéssel Azure Policy](../deploy-scale.md) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az Azure platform naplóiról](platform-logs-overview.md)

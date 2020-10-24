@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 913bc4373785d9341064e505ddce84fe43f727b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74a4178cc6b9645f3cb22bf3d1c7c0ee942c3f5f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801596"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485290"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával
 
@@ -22,7 +22,7 @@ ms.locfileid: "91801596"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -197,7 +197,7 @@ Az Azure Websites megkönnyíti a Java-alkalmazások telepítését. Nincs más 
    * A Destination (Cél) mezőben válassza ki, hova szeretné menteni a WAR-fájlt.
    * Kattintson a **Finish** (Befejezés) gombra.
 
-1. Most, hogy megvan a WAR-fájl, egyszerűen töltse fel az Azure Websites **webapps** könyvtárába. A fájl feltöltésével kapcsolatos további információkért lásd a [Java-alkalmazások az Azure App Service Web Appshoz való hozzáadását](../app-service/web-sites-java-add-app.md) ismertető cikket. Miután feltöltötte a WAR-fájlt a webapps könyvtárba, a futásidejű környezet felismeri azt, és automatikusan betöltődik.
+1. Most, hogy megvan a WAR-fájl, egyszerűen töltse fel az Azure Websites **webapps** könyvtárába. A fájl feltöltésével kapcsolatos további információkért lásd a [Java-alkalmazások az Azure App Service Web Appshoz való hozzáadását](../app-service/quickstart-java.md) ismertető cikket. Miután feltöltötte a WAR-fájlt a webapps könyvtárba, a futásidejű környezet felismeri azt, és automatikusan betöltődik.
 
 1. A kész termék megtekintéséhez lépjen a `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` webhelyre, és kezdje meg a feladatok hozzáadását.
 
@@ -249,7 +249,7 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 1. A projekt Azure-webhelyre történő üzembe helyezéséhez lásd: [6. lépés. Az alkalmazás üzembe helyezése az Azure webhelyek szolgáltatásban](#Deploy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hozzon létre egy node.js alkalmazást Azure Cosmos DB](sql-api-nodejs-application.md)

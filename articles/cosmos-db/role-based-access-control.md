@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 10713b264429b5588826421231e45194ebed33f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9a29a34b25b6834c2c343bd568f3dd3548ceff3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569185"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474937"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Szerepköralapú hozzáférés-vezérlés az Azure Cosmos DB-ben
 
@@ -67,7 +67,7 @@ Ezzel a beállítással megakadályozható, hogy bármely Cosmos-erőforrás bá
 
 - Tárolt eljárások, eseményindítók vagy felhasználó által definiált függvények módosítása.
 
-Ha az alkalmazások (vagy Azure Portalon keresztüli felhasználók) végrehajtják ezeket a műveleteket, azokat át kell telepíteni az ARM- [sablonok](manage-sql-with-resource-manager.md), a [PowerShell](manage-with-powershell.md), az [Azure CLI](manage-with-cli.md), a REST vagy az [Azure felügyeleti könyvtár](https://github.com/Azure-Samples/cosmos-management-net)használatával. Vegye figyelembe, hogy az Azure-felügyelet [több nyelven](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)is elérhető.
+Ha az alkalmazások (vagy Azure Portalon keresztüli felhasználók) végrehajtják ezeket a műveleteket, azokat át kell telepíteni az ARM- [sablonok](./manage-with-templates.md), a [PowerShell](manage-with-powershell.md), az [Azure CLI](manage-with-cli.md), a REST vagy az [Azure felügyeleti könyvtár](https://github.com/Azure-Samples/cosmos-management-net)használatával. Vegye figyelembe, hogy az Azure-felügyelet [több nyelven](/azure/?product=featured#languages-and-tools)is elérhető.
 
 ### <a name="set-via-arm-template"></a>Beállítás ARM-sablonnal
 

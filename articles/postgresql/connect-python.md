@@ -8,19 +8,19 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ecf5c540c3fce7a60ebf256d871993400a731ed
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91707897"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481193"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Python használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
 Ebben a rövid útmutatóban egy Azure Database for PostgreSQL használhat a Python használatával macOS, Ubuntu Linux vagy Windows rendszeren. A rövid útmutató bemutatja, hogyan csatlakozhat az adatbázishoz, és hogyan lehet SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni. A cikk feltételezi, hogy már ismeri a Pythont, de a Azure Database for PostgreSQL használatának új módszere.
 
 > [!TIP]
-> Ha Django-alkalmazást szeretne felépíteni a PostgreSQL-sel, akkor adja ki az oktatóanyagot, [és telepítsen egy Django-webalkalmazást a PostgreSQL](../app-service/containers/tutorial-python-postgresql-app.md) oktatóanyaggal.
+> Ha Django-alkalmazást szeretne felépíteni a PostgreSQL-sel, akkor adja ki az oktatóanyagot, [és telepítsen egy Django-webalkalmazást a PostgreSQL](../app-service/tutorial-python-postgresql-app.md) oktatóanyaggal.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -201,6 +201,6 @@ cursor.close()
 conn.close()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

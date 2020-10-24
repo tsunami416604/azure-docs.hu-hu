@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331573"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490781"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>A Azurite Emulator használata a helyi Azure Storage-fejlesztéshez
 
@@ -282,7 +282,7 @@ azurite --version
 
 ### <a name="certificate-configuration-https"></a>Tanúsítvány konfigurációja (HTTPS)
 
-**Opcionális** – alapértelmezés szerint a AZURITE a HTTP protokollt használja. Engedélyezze a HTTPS-módot egy Privacy Enhanced Mail (. PEM) vagy [személyes információcsere (. pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) tanúsítványfájl elérési útjának megadásával a `--cert` kapcsolóhoz.
+**Opcionális** – alapértelmezés szerint a AZURITE a HTTP protokollt használja. Engedélyezze a HTTPS-módot egy Privacy Enhanced Mail (. PEM) vagy [személyes információcsere (. pfx)](/windows-hardware/drivers/install/personal-information-exchange---pfx--files) tanúsítványfájl elérési útjának megadásával a `--cert` kapcsolóhoz.
 
 Ha `--cert` egy PEM-fájlhoz van megadva, meg kell adnia egy megfelelő `--key` kapcsolót.
 
@@ -418,7 +418,7 @@ Ha az [Azure SDK](https://aka.ms/azsdk)-k használatával szeretné használni a
 azurite --oauth basic --cert certname.pem --key certname-key.pem
 ```
 
-#### <a name="azure-blob-storage"></a>Azure Blob Storage
+#### <a name="azure-blob-storage"></a>Azure Blob-tároló
 
 Ezután BlobContainerClient, BlobServiceClient vagy BlobClient hozhat létre.
 

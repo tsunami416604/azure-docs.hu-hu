@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578036"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490747"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -34,7 +34,7 @@ Ebben a példában cserélje le az `<RESOURCE_GROUP>` erőforráscsoportot és a
 
 A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. A teljes Azure CLI-szkriptre vonatkozó példát a [Function app létrehozása prémium](scripts/functions-cli-create-premium-plan.md)szintű csomagban talál.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A következő szolgáltatások használhatók a prémium csomagba telepített alkalmazások működéséhez.
 
@@ -104,7 +104,7 @@ A csomag méretének és Azure Portal maximális értékének konfigurálásáho
 Az Azure CLI maximális burst korlátját is megnövelheti:
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --max-burst <desired_max_burst>
 ```
 
 Minden csomag minimuma legalább egy példány lesz.  A példányok tényleges minimális száma automatikusan konfigurálva lesz az Ön számára a csomagban lévő alkalmazások által kért mindig kész példányok alapján.  Például ha az alkalmazás egy öt mindig kész példányt kér, és a B alkalmazás két mindig kész példányt kér ugyanabban a csomagban, a minimális terv mérete öt lesz.  Az A alkalmazás mind az 5-öt futtatja, a B alkalmazás pedig csak 2 lesz.
@@ -117,14 +117,14 @@ A legtöbb esetben ez az autoszámított minimális értéknek elegendőnek kell
 Az Azure CLI használatával megnövelhető egy csomag kiszámított minimuma.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-instances <desired_min_instances>
 ```
 
 ### <a name="available-instance-skus"></a>Rendelkezésre álló példányok SKU-ban
 
 A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  Az egyes példányok kiosztása után a rendszer a másodpercenként kiosztott magok és memóriák teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|SKU|Cores|Memória|Storage|
+|Termékváltozat|Cores|Memória|Storage|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7GB|250GB|

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7f9573769beb5bf1f6ebe47e6e0a277185ac42b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87084823"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488418"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Kapcsolódás Azure Cosmos DB BI Analytics-eszközökkel az ODBC-illesztővel
 
@@ -134,7 +134,7 @@ A SQL Server Management Studio (SSMS) Azure Cosmos DB lekérdezhető egy csatolt
 
 1. Hozzon létre egy rendszeradatforrást a [2. lépés](#connect), például a neve című témakörben leírtak szerint `SDS Name` .
 
-1. [Telepítse a SQL Server Management Studiot](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) , és kapcsolódjon a kiszolgálóhoz. 
+1. [Telepítse a SQL Server Management Studiot](/sql/ssms/download-sql-server-management-studio-ssms) , és kapcsolódjon a kiszolgálóhoz. 
 
 1. A SSMS lekérdezési szerkesztőjében hozzon létre egy csatolt kiszolgáló objektumot az `DEMOCOSMOS` adatforráshoz az alábbi parancsokkal. Cserélje le a `DEMOCOSMOS` nevet a csatolt kiszolgáló nevére, a helyére pedig a `SDS Name` rendszeradatforrás nevét.
 
@@ -192,7 +192,7 @@ Ezután a **definíciók megtekintése** ablakban tegye a következőket:
 
 1. Kattintson az **új**elemre, adja meg a nézet nevét, például EmployeesfromSeattleView, majd kattintson **az OK**gombra.
 
-1. A **nézet szerkesztése** ablakban adjon meg egy Azure Cosmos db lekérdezést. Ennek egy [Azure Cosmos db SQL-lekérdezésnek](how-to-sql-query.md)kell lennie, például `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` , majd kattintson **az OK**gombra.
+1. A **nézet szerkesztése** ablakban adjon meg egy Azure Cosmos db lekérdezést. Ennek egy [Azure Cosmos db SQL-lekérdezésnek](./sql-query-getting-started.md)kell lennie, például `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` , majd kattintson **az OK**gombra.
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="Azure Cosmos DB ODBC-adatforrás rendszergazdája":::
 
@@ -238,6 +238,6 @@ Ha a következő hibaüzenetet kapja, győződjön meg arról, hogy a [2. lépé
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Cosmos DB-ről: [Üdvözli az Azure Cosmos DB](introduction.md).

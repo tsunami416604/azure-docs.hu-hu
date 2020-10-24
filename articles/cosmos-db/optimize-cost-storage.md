@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dca046df68b10853752b0de65c48c2b8f83afb31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5af62cd8c110e38ffd2a72ef2441a8e548e1ece
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020898"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475481"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>A tárolási díj optimalizálása Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Azure Cosmos DB korlátlan tárterületet és átviteli sebességet biztosít. A
 
 ## <a name="storage-cost"></a>Tárolási költség
 
-A tárterületet a GB-os egységgel számoljuk el. A helyi SSD által támogatott tárterületet az adatai és az indexelése használja. A felhasznált teljes tárterület megegyezik az összes olyan régióban használt adattárolási és indexekkel, amelyeket Azure Cosmos DB használ. Ha globálisan replikál egy Azure Cosmos-fiókot három régióban, akkor a teljes tárolási díjat a három régióban kell fizetnie. A tárolási követelmények becsléséhez tekintse meg a [Capacity Planner](https://www.documentdb.com/capacityplanner) eszköz című témakört. A Azure Cosmos DB tárterületének díja $0,25 GB/hó, a legújabb frissítések [díjszabási oldalán](https://azure.microsoft.com/pricing/details/cosmos-db/) talál. Beállíthatja a riasztásokat az Azure Cosmos-tároló által használt tárterület meghatározásához, a tárhely figyeléséhez lásd: [Azure Cosmos db figyelése](monitor-accounts.md)).
+A tárterületet a GB-os egységgel számoljuk el. A helyi SSD által támogatott tárterületet az adatai és az indexelése használja. A felhasznált teljes tárterület megegyezik az összes olyan régióban használt adattárolási és indexekkel, amelyeket Azure Cosmos DB használ. Ha globálisan replikál egy Azure Cosmos-fiókot három régióban, akkor a teljes tárolási díjat a három régióban kell fizetnie. A tárolási követelmények becsléséhez tekintse meg a [Capacity Planner](https://www.documentdb.com/capacityplanner) eszköz című témakört. A Azure Cosmos DB tárterületének díja $0,25 GB/hó, a legújabb frissítések [díjszabási oldalán](https://azure.microsoft.com/pricing/details/cosmos-db/) talál. Beállíthatja a riasztásokat az Azure Cosmos-tároló által használt tárterület meghatározásához, a tárhely figyeléséhez lásd: [Azure Cosmos db figyelése](./monitor-cosmos-db.md)).
 
 ## <a name="optimize-cost-with-item-size"></a>A Cost optimalizálása az elemek méretével
 
@@ -28,7 +28,7 @@ Az optimális teljesítmény és a költséghatékonyság érdekében a Azure Co
 
 ## <a name="optimize-cost-with-indexing"></a>A Cost optimalizálása az indexeléssel
 
-Alapértelmezés szerint a rendszer automatikusan indexeli az adatmennyiséget, ami növelheti a felhasznált teljes tárterületet. Azonban egyéni index-házirendeket is alkalmazhat a terhelés csökkentése érdekében. A szabályzattal nem hangolt Automatikus indexelés az elem méretének 10-20%-a. Az indexelési szabályzatok eltávolításával vagy testreszabásával nem számítunk fel extra díjat az írásokhoz, és nem igényelnek további átviteli kapacitást. Az egyéni indexelési házirendek konfigurálásához lásd: [Azure Cosmos DB indexelése](indexing-policies.md) . Ha korábban már használta a kapcsolatok adatbázisait, úgy gondolhatja, hogy az "index mindent" kifejezés azt jelenti, hogy megduplázta a tárterületet vagy magasabbra. A medián esetben azonban a Azure Cosmos DB sokkal alacsonyabb. A Azure Cosmos DBban az index tárolási terhelése általában alacsony (10-20%) még az automatikus indexeléssel is, mivel az alacsony tárolási helyigényhez lett tervezve. Az indexelési szabályzat kezelésével részletesebben szabályozhatja az index-lábnyom és a lekérdezési teljesítmény kompromisszumát.
+Alapértelmezés szerint a rendszer automatikusan indexeli az adatmennyiséget, ami növelheti a felhasznált teljes tárterületet. Azonban egyéni index-házirendeket is alkalmazhat a terhelés csökkentése érdekében. A szabályzattal nem hangolt Automatikus indexelés az elem méretének 10-20%-a. Az indexelési szabályzatok eltávolításával vagy testreszabásával nem számítunk fel extra díjat az írásokhoz, és nem igényelnek további átviteli kapacitást. Az egyéni indexelési házirendek konfigurálásához lásd: [Azure Cosmos DB indexelése](index-policy.md) . Ha korábban már használta a kapcsolatok adatbázisait, úgy gondolhatja, hogy az "index mindent" kifejezés azt jelenti, hogy megduplázta a tárterületet vagy magasabbra. A medián esetben azonban a Azure Cosmos DB sokkal alacsonyabb. A Azure Cosmos DBban az index tárolási terhelése általában alacsony (10-20%) még az automatikus indexeléssel is, mivel az alacsony tárolási helyigényhez lett tervezve. Az indexelési szabályzat kezelésével részletesebben szabályozhatja az index-lábnyom és a lekérdezési teljesítmény kompromisszumát.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizálja a költségeket az élettartam és a váltás során
 
@@ -40,7 +40,7 @@ Ha olyan multimédiás típusokat szeretne tárolni, mint például a videók, a
 
 ## <a name="check-storage-consumed"></a>A felhasznált tároló keresése
 
-Egy Azure Cosmos-tároló tárolási felhasználásának ellenőrzéséhez futtathat egy HEAD vagy GET kérelmet a tárolón, és megvizsgálhatja a `x-ms-request-quota` és a `x-ms-request-usage` fejléceket is. Ha a .NET SDK-val dolgozik, használhatja a [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))és a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságot is a felhasznált tárterület beszerzéséhez.
+Egy Azure Cosmos-tároló tárolási felhasználásának ellenőrzéséhez futtathat egy HEAD vagy GET kérelmet a tárolón, és megvizsgálhatja a `x-ms-request-quota` és a `x-ms-request-usage` fejléceket is. Ha a .NET SDK-val dolgozik, használhatja a [DocumentSizeQuota](/previous-versions/azure/dn850325(v%3Dazure.100))és a [DocumentSizeUsage](/previous-versions/azure/dn850324(v=azure.100)) tulajdonságot is a felhasznált tárterület beszerzéséhez.
 
 ## <a name="using-sdk"></a>Az SDK használata
 
@@ -59,6 +59,5 @@ A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost o
 * További információ [a Azure Cosmos db-számla megismeréséről](understand-your-bill.md)
 * További információ az [átviteli sebesség optimalizálásáról](optimize-cost-throughput.md)
 * További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)
-* További információ [a lekérdezések díjszabásának optimalizálásáról](optimize-cost-queries.md)
+* További információ [a lekérdezések díjszabásának optimalizálásáról](./optimize-cost-reads-writes.md)
 * További információ [a több régióból álló Azure Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)
-

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: allensu
-ms.openlocfilehash: 26c4c01aaf6abe6b9c9ac6daf6836d7b660ba21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b507fbad4d9089d918ae7a85c07f30efcb118476
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649830"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487245"
 ---
 # <a name="configure-tcp-idle-timeout-for-azure-load-balancer"></a>A TCP Üresjárati időkorlát konfigurálása Azure Load Balancerhoz
 
@@ -28,7 +28,11 @@ ms.locfileid: "91649830"
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
-A Azure Load Balancer 4 perces Üresjárati időkorlát 120 percre van beállítva. Alapértelmezés szerint 4 percre van beállítva. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nem garantálható, hogy a TCP-vagy HTTP-munkamenet az ügyfél és a felhőalapú szolgáltatás között marad. További információ a [TCP tétlen időtúllépésről](load-balancer-tcp-reset.md).
+A Azure Load Balancer a következő Üresjárati időkorlát-tartománnyal rendelkezik:
+
+4 perc – 100 perc a kimenő szabályokhoz 4 perc – 30 perc Load Balancer szabályok és bejövő NAT-szabályok esetén
+
+Alapértelmezés szerint 4 percre van beállítva. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nem garantálható, hogy a TCP-vagy HTTP-munkamenet az ügyfél és a felhőalapú szolgáltatás között marad. További információ a [TCP tétlen időtúllépésről](load-balancer-tcp-reset.md).
 
 A következő szakaszok azt ismertetik, hogyan változtathatók meg a nyilvános IP-címek és a terheléselosztó erőforrásainak üresjárati időtúllépési beállításai.
 
@@ -41,7 +45,7 @@ $publicIP.IdleTimeoutInMinutes = "15"
 Set-AzPublicIpAddress -PublicIpAddress $publicIP
 ```
 
-A(z) `IdleTimeoutInMinutes` nem kötelező. Ha nincs beállítva, az alapértelmezett időtúllépés 4 perc. Az elfogadható időtúllépési tartomány 4 – 120 perc.
+A(z) `IdleTimeoutInMinutes` nem kötelező. Ha nincs beállítva, az alapértelmezett időtúllépés 4 perc. 
 
 ## <a name="set-the-tcp-idle-timeout-on-rules"></a>A TCP Üresjárati időkorlát beállítása a szabályoknál
 

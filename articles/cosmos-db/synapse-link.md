@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 731e23c99a92d8f7d3558ea111d19f179db61da4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ae99f5fc1cd6f27c46f7a4444bc75b8c773b4f74
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367618"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480003"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
 
@@ -104,7 +104,7 @@ További információ az Azure szinapszis Analytics futtatókörnyezet Azure Cos
 
 A szinapszis hivatkozását a következő esetekben javasoljuk:
 
-* Ha Ön Azure Cosmos DB ügyfél, és az operatív adatain át szeretné futtatni az elemzést, a BI-t és a gépi tanulást. Ilyen esetekben a szinapszis-hivatkozás egy integráltabb elemzési élményt biztosít anélkül, hogy ez befolyásolná a tranzakciós tár kiosztott átviteli sebességét. Például:
+* Ha Ön Azure Cosmos DB ügyfél, és az operatív adatain át szeretné futtatni az elemzést, a BI-t és a gépi tanulást. Ilyen esetekben a szinapszis-hivatkozás egy integráltabb elemzési élményt biztosít anélkül, hogy ez befolyásolná a tranzakciós tár kiosztott átviteli sebességét. Példa:
 
   * Ha elemzést vagy BI-t futtat Azure Cosmos DB operatív adatait közvetlenül a különálló összekötők használatával, vagy
 
@@ -120,7 +120,7 @@ A szinapszis-hivatkozás nem ajánlott, ha olyan hagyományos adattárház-köve
 
 * Az analitikai tároló jelenleg csak új tárolók esetében engedélyezhető. Ha a meglévő tárolók esetében az analitikai tárolót szeretné használni, [Azure Cosmos db áttelepítési eszközökkel](cosmosdb-migrationchoices.md)áttelepítheti a meglévő tárolók adatait az új tárolókra. A szinapszis hivatkozását engedélyezheti az új és a meglévő Azure Cosmos DB fiókokon.
 
-* Az analitikai tárolóval rendelkező tárolók esetében a rendszer jelenleg nem támogatja az automatikus biztonsági mentést és visszaállítást az analitikus tárolóban. Ha a szinapszis-hivatkozás engedélyezve van egy adatbázis-fiókon, Azure Cosmos DB továbbra is automatikusan [biztonsági másolatot](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) készít az adatairól a tranzakciós tárolóban (csak) a tárolók ütemezett biztonsági mentési időintervallumában, ahogy mindig. Fontos megjegyezni, hogy ha az analitikai tárolót bekapcsoló tároló egy új fiókra van visszaállítva, a tároló csak tranzakciós tárolóval lesz visszaállítva, és nincs engedélyezve az analitikus tároló. 
+* Az analitikai tárolóval rendelkező tárolók esetében a rendszer jelenleg nem támogatja az automatikus biztonsági mentést és visszaállítást az analitikus tárolóban. Ha a szinapszis-hivatkozás engedélyezve van egy adatbázis-fiókon, Azure Cosmos DB továbbra is automatikusan [biztonsági másolatot](./online-backup-and-restore.md) készít az adatairól a tranzakciós tárolóban (csak) a tárolók ütemezett biztonsági mentési időintervallumában, ahogy mindig. Fontos megjegyezni, hogy ha az analitikai tárolót bekapcsoló tároló egy új fiókra van visszaállítva, a tároló csak tranzakciós tárolóval lesz visszaállítva, és nincs engedélyezve az analitikus tároló. 
 
 * Jelenleg nem érhető el a Azure Cosmos DB Analytics-tároló elérése a szinapszis SQL kiépített állapotával.
 

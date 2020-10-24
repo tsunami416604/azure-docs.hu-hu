@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 48524bec352d2fa9c169a1345e52ad4c789e59d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 232d138488d061c638073b51198e5f2ea4c6b53f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552118"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481278"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SuccessFactors
 
@@ -132,7 +132,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
     1. A **Név** mezőbe írja a következőt: `B.Simon`.  
     1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-    1. Kattintson a **Létrehozás** elemre.
+    1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -160,14 +160,14 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Helyezzen be bármilyen értéket az **alaphelyzetbe állítási tokenbe** , és kattintson a **jogkivonat mentése** lehetőségre az SAML SSO engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán][11]
+    ![Képernyőfelvétel: az alkalmazások biztonsága lap az egyszeri bejelentkezés funkcióinak kinevezett funkciója, ahol megadhatja a tokent.][11]
 
     > [!NOTE]
     > Ezt az értéket használja be-és kikapcsoló kapcsolóként. Ha a rendszer bármilyen értéket ment, az SAML egyszeri bejelentkezés be van kapcsolva. Ha a rendszer üres értéket ment, az SAML SSO ki van kapcsolva.
 
 4. A lenti képernyőre, és hajtsa végre a következő műveleteket:
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán][12]
+    ![A képernyőfelvétel megjeleníti az SAML-alapú S S O-panelt, ahol megadhatja a leírt értékeket.][12]
   
     a. Válassza ki az **SAML v2 SSO** választógombot
   
@@ -192,7 +192,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 5. Navigáljon az SAML v2-re, majd hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán][13]
+    ![A képernyőfelvételen látható az SAML v2 S P által kezdeményezett kijelentkezési panel, ahol megadhatja a leírt értékeket.][13]
 
     a. Válassza az **Igen** lehetőséget az **SP által kezdeményezett globális kijelentkezés támogatásához**.
 

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1cd6b4b52db224db5febcec1eff79b01379a5956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d04c670010e3595d8f30c7ffcd34d99e27374cb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262820"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488452"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB Key Value Store-ban – Cost Overview
 
-A Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amellyel könnyen készíthetők magas rendelkezésre állású, nagy méretű alkalmazások. Alapértelmezés szerint a Azure Cosmos DB automatikusan és hatékonyan indexeli az összes betöltött adatot. Ez gyors és konzisztens [SQL](how-to-sql-query.md) -(és [JavaScript](stored-procedures-triggers-udfs.md)-) lekérdezéseket tesz lehetővé az adatkezeléshez. 
+A Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amellyel könnyen készíthetők magas rendelkezésre állású, nagy méretű alkalmazások. Alapértelmezés szerint a Azure Cosmos DB automatikusan és hatékonyan indexeli az összes betöltött adatot. Ez gyors és konzisztens [SQL](./sql-query-getting-started.md) -(és [JavaScript](stored-procedures-triggers-udfs.md)-) lekérdezéseket tesz lehetővé az adatkezeléshez. 
 
 Ez a cikk az egyszerű írási és olvasási műveletek Azure Cosmos DB költségeit ismerteti, ha kulcs/érték tárolóként van használatban. Az írási műveletek közé tartoznak az adatelemek beszúrása, cseréje, törlése és upsert. A többrégiós fiókok esetében a 99,999%-os rendelkezésre állási SLA garantálása mellett Azure Cosmos DB a esetek 99% percentilis esetében garantált <10 – MS késést biztosít az olvasási és a (indexelt) írásokhoz. 
 
@@ -45,7 +45,6 @@ Ha 1 000 RU/s-t hoz létre, ez a 3 600 000 RU/óra értékre vonatkozik, és az 
 
 Az alapszintű Blobok vagy objektumok többsége a $0,40/millió olvasási tranzakció és a $5/millió írási tranzakció díjait tárolja. Optimális használat esetén Cosmos DB akár 98%-kal olcsóbb lehet, mint a többi megoldásnál (1 KB-os tranzakció esetén).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [ru-kalkulátor](https://cosmos.azure.com/capacitycalculator/) használatával becsülheti meg a számítási feladatok átviteli sebességét.
-

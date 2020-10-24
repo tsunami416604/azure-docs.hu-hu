@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5683fb64c9b5df027ff8b0f50cec49e9bce5808
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85117981"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475124"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB lekérdezési Cheat Sheets
 
@@ -30,9 +30,9 @@ Töltse le az [Azure Cosmos db a3 méretű lekérdezési Cheat-lapokat](https://
 
 :::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB lekérdezési Cheat Sheets – Letter méretű, SQL API, JavaScript, MongoDB, Gremlin és Table API lekérdezések és függvények" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További segítséget a lekérdezések írásához a következő cikkekben talál:
-* SQL API-lekérdezések esetén lásd: [lekérdezés az SQL API](tutorial-query-sql-api.md)-val, a [Azure Cosmos db SQL-lekérdezésekkel](how-to-sql-query.md)és az [SQL-szintaxissal kapcsolatos hivatkozás](sql-api-query-reference.md)
+* SQL API-lekérdezések esetén lásd: [lekérdezés az SQL API](tutorial-query-sql-api.md)-val, a [Azure Cosmos db SQL-lekérdezésekkel](./sql-query-getting-started.md)és az [SQL-szintaxissal kapcsolatos hivatkozás](./sql-query-getting-started.md)
 * A MongoDB lekérdezések esetében lásd: [lekérdezés Azure Cosmos db API-val a MongoDB](tutorial-query-mongodb.md) és a [Azure Cosmos db API-val a MongoDB szolgáltatás támogatása és szintaxisa](mongodb-feature-support.md) alapján
 * A Gremlin API-lekérdezések esetében lásd: [lekérdezés a GREMLIN API használatával és a](tutorial-query-graph.md) [Azure Cosmos db Gremlin Graph támogatása](gremlin-support.md)
 * Table API lekérdezések esetében lásd: [lekérdezés a Table API használatával](tutorial-query-table.md)

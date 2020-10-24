@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: a0d61488fe5e7e91d025c7d3b8d3aa862b9cd9bd
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1ed2929dc5dc79c30f2a9583966e32d81b63ba2e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428864"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487908"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Tervezett karbantartási értesítések Azure Database for PostgreSQL – egyetlen kiszolgálón
 
@@ -61,9 +61,9 @@ Megtekintheti a tervezett karbantartási értesítést Azure Portal vagy konfigu
 7. Győződjön meg arról, hogy az engedélyezés szabály a létrehozáskor Igen értékre van állítva.
 8. Válassza a riasztási **szabály létrehozása** lehetőséget a riasztás befejezéséhez
 
-A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
+A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications-portal.md).
 
-## <a name="can-i-control-or-change-planned-maintenance-for-my-servers-after-i-receive-a-notification-event"></a>Megadhatom vagy módosíthatom a kiszolgálók tervezett karbantartását, miután értesítést kaptam egy értesítési eseményről?
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Törölhetem vagy elhalasztom a tervezett karbantartást?
 
 A kiszolgáló biztonságos, stabil és naprakészen tartásához karbantartásra van szükség. A tervezett karbantartási eseményt nem lehet megszakítani vagy elhalasztani. Az értesítésnek az adott Azure-régióba való küldése után a javítási ütemezés módosításai nem hajthatók végre az adott régióban található egyes kiszolgálókon. A javítás a teljes régióra vonatkozóan egyszerre van bevezetve. Azure Database for PostgreSQL – az egykiszolgálós szolgáltatás olyan felhőalapú natív alkalmazásokhoz készült, amely nem igényli a szolgáltatás részletes szabályozását vagy testreszabását. Ha szeretné, hogy a kiszolgálók karbantartását ütemezni tudja, javasoljuk, hogy [rugalmas kiszolgálókat](./flexible-server/overview.md)vegyen fontolóra.
 
@@ -76,7 +76,7 @@ Nem, az összes Azure-régió javítás alatt áll a telepítési Wise-ablak id�
 Egy átmeneti hiba (más néven átmeneti hiba) egy olyan hiba, amely magát a megoldást fogja megoldani. [Átmeneti hibák](./concepts-connectivity.md#transient-errors) merülhetnek fel a karbantartás során. Az események többségét a rendszer automatikusan csökkenti a 60 másodpercnél kisebb mértékben. Az átmeneti hibákat az [újrapróbálkozási logikával](./concepts-connectivity.md#handling-transient-errors)kell kezelni.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha bármilyen kérdése vagy javaslata van a Azure Database for PostgreSQL használatáról, küldjön e-mailt a Azure Database for PostgreSQL csapatának a következő címen: *AskAzureDBforMySQL@service.microsoft.com* .
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.

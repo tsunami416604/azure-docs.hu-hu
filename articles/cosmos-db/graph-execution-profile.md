@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: jasonh
-ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408232"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490594"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin-lekérdezések kiértékelése a végrehajtási profil lépés segítségével
 
@@ -220,8 +220,8 @@ Tegyük fel, hogy a következő végrehajtási profilt választ egy **particion�
 
 A következő következtetések hozhatók létre belőle:
 - A lekérdezés egyetlen AZONOSÍTÓval való keresés, mivel a Gremlin utasítás a mintát követi `g.V('id')` .
-- A metrika megítélése `time` szerint a lekérdezés késése úgy tűnik, hogy magas, mert [több mint 10ms egyetlen pont – olvasási művelethez](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- Ha megnézzük az `storeOps` objektumot, láthatjuk, hogy az `fanoutFactor` az `5` , ami azt jelenti, hogy ez a művelet [5 partíciót](https://docs.microsoft.com/azure/cosmos-db/partition-data) használt.
+- A metrika megítélése `time` szerint a lekérdezés késése úgy tűnik, hogy magas, mert [több mint 10ms egyetlen pont – olvasási művelethez](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide).
+- Ha megnézzük az `storeOps` objektumot, láthatjuk, hogy az `fanoutFactor` az `5` , ami azt jelenti, hogy ez a művelet [5 partíciót](./partitioning-overview.md) használt.
 
 Az elemzés befejezésekor meghatározhatjuk, hogy az első lekérdezés a szükségesnél több partíciót is elér. Ez a következő lehet: a lekérdezésben szereplő particionáló kulcs megadásával predikátumként. Ez kevesebb késést és lekéréses költségeket eredményez. További információ a [Graph particionálásról](graph-partitioning.md). Az optimális lekérdezés lenne `g.V('tt0093640').has('partitionKey', 't1001')` .
 

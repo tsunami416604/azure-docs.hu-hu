@@ -1,19 +1,19 @@
 ---
 title: Az Azure-beli virtuális gépen futó SQL Server Azure Backup
 description: Ebből a cikkből megtudhatja, hogyan regisztrálhat Azure Backup az Azure-beli virtuális gépeken futó SQL Serverokban.
-services: backup
 author: dcurwin
 manager: carmonm
-ms.service: backup
+ms.service: virtual-machines
+ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511177"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490730"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Az Azure-beli virtuális gépen futó SQL Server Azure Backup
 
@@ -85,7 +85,7 @@ A következő JSON a WorkloadBackup-bővítmény sémáját jeleníti meg.
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-Name (Név) | Érték/példa | Adattípus
+Name | Érték/példa | Adattípus
  --- | --- | ---
 területi beállítás | hu-hu  |  sztring
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | sztring
@@ -111,7 +111,7 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 
 A parancs visszaküldi az erőforrás **biztonsági mentési tárolóját** , és a rendszer **regisztrálja**az állapotot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További](../../backup/backup-sql-server-azure-troubleshoot.md) információ az Azure SQL Server VM Backup hibaelhárítási irányelveiről
 - [Gyakori kérdések](../../backup/faq-backup-sql-server.md) az Azure Virtual Machines szolgáltatásban (VM) futó SQL Server adatbázisok biztonsági mentéséről és azokról, amelyek az Azure Backup szolgáltatást használják.
