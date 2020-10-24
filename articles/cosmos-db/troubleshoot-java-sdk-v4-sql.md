@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: f90160ba58983414b5421542c6292f4570f1e10a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 708a7139aec7b8d3fe9e5f08df2c5e93b99d0668
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142838"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476790"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>A Azure Cosmos DB Java SDK v4 SQL API-fiókokkal való használatakor felmerülő problémák elhárítása
 
@@ -46,7 +46,7 @@ Kezdje a következő listával:
 A legjobb teljesítmény érdekében:
 * Győződjön meg arról, hogy az alkalmazás ugyanazon a régión fut, mint a Azure Cosmos DB-fiókja. 
 * Keresse meg a CPU-használatot azon a gazdagépen, amelyen az alkalmazás fut. Ha a CPU-használat 50 százalék vagy több, akkor futtassa az alkalmazást egy magasabb konfigurációval rendelkező gazdagépen. Vagy több gépen is terjesztheti a terhelést.
-    * Ha az alkalmazást az Azure Kubernetes szolgáltatáson futtatja, akkor a [Azure monitor segítségével figyelheti a CPU-kihasználtságot](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze).
+    * Ha az alkalmazást az Azure Kubernetes szolgáltatáson futtatja, akkor a [Azure monitor segítségével figyelheti a CPU-kihasználtságot](../azure-monitor/insights/container-insights-analyze.md).
 
 #### <a name="connection-throttling"></a>Kapcsolatok szabályozása
 A kapcsolatok szabályozása akkor fordulhat elő, ha a gazdagép vagy az [Azure SNAT (Pat) portjának kimerülése]vagy a [Csatlakozás korlátja] .
@@ -62,13 +62,13 @@ A "nincs fájl" néven azonosított maximálisan engedélyezett megnyitott fájl
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Az Azure SNAT (PAT) portjának kimerülése
 
-Ha az alkalmazás nyilvános IP-cím nélküli Azure-Virtual Machines van telepítve, alapértelmezés szerint az [Azure SNAT-portok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)korlátozza.
+Ha az alkalmazás nyilvános IP-cím nélküli Azure-Virtual Machines van telepítve, alapértelmezés szerint az [Azure SNAT-portok](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)korlátozza.
 
  Az Azure SNAT-portok használata csak akkor történik meg, ha a virtuális gép magánhálózati IP-címmel rendelkezik, és a virtuális gép egy folyamata megpróbál csatlakozni egy nyilvános IP-címhez. Az Azure SNAT-korlátozás elkerülése érdekében két Áthidaló megoldás létezik:
 
-* Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
+    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](/previous-versions/azure/virtual-network/virtual-networks-acl)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
 * Rendeljen hozzá egy nyilvános IP-címet az Azure-beli virtuális géphez.
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Nem érhető el a szolgáltatás – tűzfal
@@ -217,5 +217,3 @@ Az Azure Cosmos DB végponttal létesített kapcsolatok lehetnek az `CLOSE_WAIT`
 [Enable client SDK logging]: #enable-client-sice-logging
 [A gazdagépre vonatkozó kapcsolatonként]: #connection-limit-on-host
 [Az Azure SNAT (PAT) portjának kimerülése]: #snat
-
-

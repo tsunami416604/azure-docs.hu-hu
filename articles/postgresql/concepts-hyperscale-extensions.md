@@ -7,20 +7,20 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2e4a09ba07a5fa5eb3a5af7aa88e092feb3e7efc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996445"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487976"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-bővítmények Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
-A PostgreSQL lehetővé teszi az adatbázis funkcióinak bővítését bővítmények használatával. A bővítmények lehetővé teszik több kapcsolódó SQL-objektum összefoglalását egyetlen csomagban, amelyet egyetlen paranccsal lehet betölteni vagy eltávolítani az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működhetnek. A PostgreSQL-bővítményekkel kapcsolatos további információkért lásd: [kapcsolódó objektumok kicsomagolása bővítménybe](https://www.postgresql.org/docs/current/static/extend-extensions.html).
+A PostgreSQL lehetővé teszi az adatbázis funkcióinak bővítését bővítmények használatával. A bővítmények lehetővé teszik több kapcsolódó SQL-objektum összefoglalását egyetlen csomagban, amelyet egyetlen paranccsal lehet betölteni vagy eltávolítani az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működhetnek. A PostgreSQL-bővítményekkel kapcsolatos további információkért lásd: [kapcsolódó objektumok kicsomagolása bővítménybe](https://www.postgresql.org/docs/current/static/extend-extensions.html).
 
 ## <a name="use-postgresql-extensions"></a>PostgreSQL-bővítmények használata
 
-A PostgreSQL-bővítményeket a használatuk előtt telepíteni kell az adatbázisba. Egy adott bővítmény telepítéséhez futtassa a [bővítmény létrehozása](https://www.postgresql.org/docs/current/static/sql-createextension.html)   parancsot a psql eszközből a csomagolt objektumok adatbázisba való betöltéséhez.
+A PostgreSQL-bővítményeket a használatuk előtt telepíteni kell az adatbázisba. Egy adott bővítmény telepítéséhez futtassa a [bővítmény létrehozása](https://www.postgresql.org/docs/current/static/sql-createextension.html) parancsot a psql eszközből a csomagolt objektumok adatbázisba való betöltéséhez.
 
 A Azure Database for PostgreSQL-nagy kapacitású (Citus) jelenleg az itt felsorolt kulcs-kiterjesztések egy részhalmazát támogatja. A felsorolt bővítmények nem támogatottak. A Azure Database for PostgreSQL nem hozhat létre saját bővítményt.
 
@@ -140,7 +140,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 A [PG \_ stat \_ utasítások bővítmény](https://www.postgresql.org/docs/current/pgstatstatements.html) minden Azure Database for PostgreSQL kiszolgálón előre be van töltve, így biztosítva az SQL-utasítások végrehajtási statisztikáinak nyomon követését.
 
-A beállítás határozza meg, hogy `pg_stat_statements.track` a bővítmény milyen utasításokat számoljon. Alapértelmezés szerint az `top` , ami azt jelenti, hogy az ügyfelek által közvetlenül kiadott összes utasítás nyomon van követve. A két másik követési szint a `none` és a `all` . Ez a beállítás kiszolgálói paraméterként konfigurálható a [Azure Portalon](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)-n keresztül.
+A beállítás határozza meg, hogy `pg_stat_statements.track` a bővítmény milyen utasításokat számoljon. Alapértelmezés szerint az `top` , ami azt jelenti, hogy az ügyfelek által közvetlenül kiadott összes utasítás nyomon van követve. A két másik követési szint a `none` és a `all` . Ez a beállítás kiszolgálói paraméterként konfigurálható a [Azure Portalon](./howto-configure-server-parameters-using-portal.md) vagy az [Azure CLI](./howto-configure-server-parameters-using-cli.md)-n keresztül.
 
 A lekérdezés végrehajtási információi pg_stat_statements biztosít, valamint a kiszolgáló teljesítményére gyakorolt hatás, ahogy az egyes SQL-utasítások bejelentkezik. Ha nem használja aktívan a pg_stat_statements bővítményt, javasoljuk, hogy állítsa a következőre: `pg_stat_statements.track` `none` . Előfordulhat, hogy egyes harmadik féltől származó figyelési szolgáltatások a lekérdezési teljesítmény megállapítására támaszkodnak pg_stat_statements, ezért ellenőrizze, hogy ez a helyzet-e az Ön számára.
 

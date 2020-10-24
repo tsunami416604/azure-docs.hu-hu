@@ -7,30 +7,30 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cef787cbf8ae38b5b80b63594710fcc21e124c5a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318126"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481074"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure biztonsági alapkonfiguráció Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
 A Azure Database for PostgreSQL-nagy kapacitású (Citus) Azure biztonsági alapterve olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
+További információ: [Azure Security](../security/benchmarks/security-baselines-overview.md)alapkonfigurációk áttekintése.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](/azure/security/benchmarks/security-control-network-security).*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
 **Útmutató**: Azure Database for PostgreSQL kiszolgáló tűzfala megakadályozza a nagy kapacitású (Citus) koordinátor-csomóponthoz való hozzáférést, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal az egyes kérések származó IP-címe alapján engedélyezi a hozzáférést a kiszolgálóhoz. A tűzfal konfigurálásakor olyan tűzfalszabályokat adhat meg, amelyek meghatározzák az elfogadható IP-címtartományokat. A tűzfalszabályok a kiszolgáló szintjén hozhatók létre.
 
-- [Tűzfalszabályok konfigurálása a Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-firewall-rules)
+- [Tűzfalszabályok konfigurálása a Azure Database for PostgreSQL-nagy kapacitású (Citus)](./concepts-hyperscale-firewall-rules.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -40,11 +40,11 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 **Útmutató**: szabványos biztonsági konfigurációk definiálása és implementálása a Azure Database for PostgreSQL-példányokhoz társított hálózati beállításokhoz és hálózati erőforrásokhoz Azure Policy. Használjon Azure Policy aliasokat a "Microsoft. Network" névtérben egyéni szabályzatok létrehozásához a Azure Database for PostgreSQL példányok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez.
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy minták a hálózatkezeléshez](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+- [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network)
 
-- [Azure Blueprint létrehozása](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -52,7 +52,7 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-*További információ [: Security Control: naplózás és figyelés](/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
@@ -60,11 +60,11 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 A nagy kapacitású (Citus) által generált biztonsági adatokat összesítve az Azure Monitor segítségével is betöltheti a naplókat. A Azure Monitoron belül Log Analytics munkaterülettel kérdezheti le és végezheti el az elemzéseket, és használhat tárolási fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események felügyeletét (SIEM). 
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
 
-- [Metrikák a nagy kapacitású-ben (Citus)](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-monitoring)
+- [Metrikák a nagy kapacitású-ben (Citus)](./concepts-hyperscale-monitoring.md)
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -78,11 +78,11 @@ A vezérlési sík naplózásához engedélyezze az Azure-műveletnapló diagnos
 
 A nagy kapacitású (Citus) által generált biztonsági adatokat összesítve az Azure Monitor segítségével is betöltheti a naplókat. A Azure Monitoron belül Log Analytics munkaterülettel kérdezheti le és végezheti el az elemzéseket, és használhat tárolási fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események felügyeletét (SIEM). 
 
-- [Metrikák a nagy kapacitású-ben (Citus)](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-monitoring)
+- [Metrikák a nagy kapacitású-ben (Citus)](./concepts-hyperscale-monitoring.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -92,9 +92,9 @@ A nagy kapacitású (Citus) által generált biztonsági adatokat összesítve a
 
 **Útmutató**: Azure monitor belül, a nagy kapacitású-(Citus-) naplók tárolására szolgáló log Analytics munkaterület esetében állítsa be a megőrzési időszakot a szervezet megfelelőségi szabályainak megfelelően. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Erőforrás-naplók tárolása Azure Storage-fiókban](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage)
+- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -104,11 +104,11 @@ A nagy kapacitású (Citus) által generált biztonsági adatokat összesítve a
 
 **Útmutató**: a rendellenes viselkedést a nagy kapacitású-(Citus-) példányok naplófájljainak elemzése és figyelése. A naplók áttekintéséhez és a naplózási adatok lekérdezéséhez használja a Azure Monitor Log Analytics. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [További információ a Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [További információ a Log Analytics](../azure-monitor/log-query/get-started-portal.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -120,11 +120,11 @@ A nagy kapacitású (Citus) által generált biztonsági adatokat összesítve a
 
 A Log Analytics-munkaterületet az Azure Sentinelbe irányíthatja, mivel ez egy biztonsági előkészítési automatizált választ (felszárnyaló) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák megoldására való felhasználását.
 
-- [Metrikák a nagy kapacitású-ben (Citus)](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-alert-on-metric)
+- [Metrikák a nagy kapacitású-ben (Citus)](./howto-hyperscale-alert-on-metric.md)
 
-- [Az Azure-tevékenység naplójának diagnosztikai beállításainak konfigurálása](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Az Azure-tevékenység naplójának diagnosztikai beállításainak konfigurálása](../azure-monitor/platform/activity-log.md)
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -132,7 +132,7 @@ A Log Analytics-munkaterületet az Azure Sentinelbe irányíthatja, mivel ez egy
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](/azure/security/benchmarks/security-control-identity-access-control).*
+*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
@@ -142,15 +142,15 @@ A nagy kapacitású (Citus) nem támogatja a beépített szerepköralapú hozzá
 
 Emellett a PostgreSQL-motor szerepköröket használ az adatbázis-objektumokhoz való hozzáférés szabályozására, az újonnan létrehozott nagy kapacitású-(Citus-) kiszolgálócsoport pedig előre definiált számos szerepkört tartalmaz. A felhasználói jogosultságok módosításához használja a standard PostgreSQL-parancsokat egy olyan eszköz használatával, mint például a PgAdmin vagy a psql.
 
-- [Az Azure-előfizetés egyéni szerepköreinek megismerése](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) 
+- [Az Azure-előfizetés egyéni szerepköreinek megismerése](../role-based-access-control/custom-roles.md) 
 
-- [Azure Database for PostgreSQL erőforrás-szolgáltatói műveletek ismertetése](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql) 
+- [Azure Database for PostgreSQL erőforrás-szolgáltatói műveletek ismertetése](../role-based-access-control/resource-provider-operations.md#microsoftdbforpostgresql) 
 
-- [A Azure Database for PostgreSQL hozzáférés-kezelésének megismerése](https://docs.microsoft.com/azure/postgresql/concepts-security#access-management])
+- [A Azure Database for PostgreSQL hozzáférés-kezelésének megismerése](./concepts-security.md#access-management)
 
-- [Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)](./howto-hyperscale-create-users.md)
 
-- [Kapcsolódás a PostgreSQL-nagy kapacitású (Citus) szolgáltatáshoz a psql használatával](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal#connect-to-the-database-using-psql)
+- [Kapcsolódás a PostgreSQL-nagy kapacitású (Citus) szolgáltatáshoz a psql használatával](./quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql)
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -169,9 +169,9 @@ Emellett a PostgreSQL-motor szerepköröket használ az adatbázis-objektumokhoz
 
 **Útmutató**: szabványos működési eljárások létrehozása a nagy kapacitású-(Citus-) példányokhoz való hozzáféréshez használt dedikált rendszergazdai fiókok használatával. Az Azure-erőforrás kezeléséhez szükséges rendszergazdai fiókok Azure Active Directoryhoz vannak kötve, léteznek helyi kiszolgálói rendszergazdai fiókok is, amelyek az adatbázis-hozzáférési engedélyek kezelésére szolgáló nagy kapacitású-(Citus-) kiszolgálócsoport-csoporton belül találhatók. Azure Security Center identitás-és hozzáférés-kezelési szolgáltatással figyelheti a Azure Active Directoryon belüli rendszergazdai fiókok számát.
 
-- [Azure Security Center identitás és hozzáférés ismertetése](https://docs.microsoft.com/azure/security-center/security-center-identity-access) 
+- [Azure Security Center identitás és hozzáférés ismertetése](../security-center/security-center-identity-access.md) 
 
-- [Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)](./howto-hyperscale-create-users.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -181,9 +181,9 @@ Emellett a PostgreSQL-motor szerepköröket használ az adatbázis-objektumokhoz
 
 **Útmutató**: a Azure Portal való hozzáféréshez engedélyezze Azure Active Directory multi-Factor Authentication (MFA), és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait.
 
-- [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Identitás és hozzáférés figyelése Azure Security Centeron belül](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
 
 **Azure Security Center figyelés**: igen
@@ -194,9 +194,9 @@ Emellett a PostgreSQL-motor szerepköröket használ az adatbázis-objektumokhoz
 
 **Útmutató**: az Azure-erőforrások bevezetésére és konfigurálására konfigurált, multi-Factor Authentication (MFA) rendszerjogosultságú hozzáférési munkaállomások használata.
 
-- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -209,9 +209,9 @@ Emellett a PostgreSQL-motor szerepköröket használ az adatbázis-objektumokhoz
 
 Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket tekinthet meg.
 
-- [Privileged Identity Management (PIM) üzembe helyezése](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Privileged Identity Management (PIM) üzembe helyezése](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Az Azure AD kockázati észlelések ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Az Azure AD kockázati észlelések ismertetése](../active-directory/identity-protection/overview-identity-protection.md)
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -222,7 +222,7 @@ Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói
 
 **Útmutató**: a feltételes hozzáférés elnevezett helyeivel lehetővé teheti a portál és Azure Resource Manager hozzáférését az IP-címtartományok vagy országok/régiók adott logikai csoportjaiból.
 
-- [Elnevezett helyszínek konfigurálása az Azure-ban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -234,9 +234,9 @@ Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói
 
 A nagy kapacitású-(Citus-) kiszolgáló csoportba tartozó felhasználók nem köthetők közvetlenül Azure Active Directory fiókokhoz. Az adatbázis-objektumra vonatkozó felhasználói jogosultságok módosításához használja a standard PostgreSQL-parancsokat olyan eszközökkel, mint például a PgAdmin vagy a psql.
 
-- [Jogosultságok módosítása felhasználói szerepkörökhöz](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users#how-to-modify-privileges-for-user-role)
+- [Jogosultságok módosítása felhasználói szerepkörökhöz](./howto-hyperscale-create-users.md#how-to-modify-privileges-for-user-role)
 
-- [HRE-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [HRE-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 
 
@@ -252,9 +252,9 @@ Az adatbázis Azure-erőforrások kezeléséhez hozzáféréssel rendelkező fel
 
 - [A PostgreSQL-felhasználók és a hozzárendelt szerepkörök áttekintése](https://www.postgresql.org/docs/current/database-roles.html)
 
-- [Az Azure AD jelentéskészítés ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
-- [Az Azure Identity hozzáférési felülvizsgálatok használata](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -266,7 +266,7 @@ Az adatbázis Azure-erőforrások kezeléséhez hozzáféréssel rendelkező fel
 
 Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiókok diagnosztikai beállításainak létrehozásával, valamint a naplók és a bejelentkezési naplók Log Analytics munkaterületre való elküldésével. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat. 
 
-- [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -279,11 +279,11 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
-- [A Azure AD Identity Protection áttekintése](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
+- [A Azure AD Identity Protection áttekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Az Azure AD kockázatos bejelentkezések megtekintése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -293,7 +293,7 @@ További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
 **Útmutató**: jelenleg nem érhető el; A Ügyfélszéf még nem támogatott a nagy kapacitású (Citus) esetében.
 
-- [Ügyfélszéf támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Ügyfélszéf támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -301,13 +301,13 @@ További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
+*További információkért lásd [: biztonsági ellenőrzés:](../security/benchmarks/security-control-data-protection.md)adatvédelem.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
 **Útmutató**: a címkék használatával segítséget nyújthat a nagy kapacitású-(Citus-) példányok és a bizalmas adatokat tároló vagy feldolgozó kapcsolódó erőforrások nyomon követésében.
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -317,13 +317,13 @@ További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. A rendszergazdai szerepkörök és tűzfalszabályok együttes használatával elkülönítheti és korlátozhatja a Azure Database for PostgreSQL-példányok hálózati hozzáférését.
 
-- [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [A Tűzfalszabályok ismertetése a Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-firewall-rules)
+- [A Tűzfalszabályok ismertetése a Azure Database for PostgreSQL-nagy kapacitású (Citus)](./concepts-hyperscale-firewall-rules.md)
 
-- [A nagy kapacitású szerepköreinek megismerése (Citus)](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [A nagy kapacitású szerepköreinek megismerése (Citus)](./howto-hyperscale-create-users.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -337,9 +337,9 @@ A Azure Portal által kiépített összes Azure Database for PostgreSQL-kiszolg�
 
 Bizonyos esetekben a harmadik féltől származó alkalmazásoknak egy megbízható hitelesítésszolgáltatói (CA) tanúsítványfájl (. cer) alapján létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz.
 
-- [A TLS konfigurálása Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-ssl-connection-security)
+- [A TLS konfigurálása Azure Database for PostgreSQL-nagy kapacitású (Citus)](./concepts-hyperscale-ssl-connection-security.md)
 
-- [A TLS-kapcsolat tanúsítvány-ellenőrzését igénylő alkalmazások](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-ssl-connection-security)
+- [A TLS-kapcsolat tanúsítvány-ellenőrzését igénylő alkalmazások](./concepts-hyperscale-ssl-connection-security.md)
 
 
 
@@ -353,9 +353,9 @@ Bizonyos esetekben a harmadik féltől származó alkalmazásoknak egy megbízha
 
 Ha az adatbázis szintjén szeretné módosítani a felhasználói jogosultságokat, használja a standard PostgreSQL-parancsokat egy olyan eszköz használatával, mint például a PgAdmin vagy a psql.
 
-- [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
-- [A felhasználói hozzáférés konfigurálása az SQL-sel Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [A felhasználói hozzáférés konfigurálása az SQL-sel Azure Database for PostgreSQL](./howto-hyperscale-create-users.md)
 
 
 **Azure Security Center figyelés**: igen
@@ -367,7 +367,7 @@ Ha az adatbázis szintjén szeretné módosítani a felhasználói jogosultságo
 **Útmutató**:  
 Naponta legalább egyszer Azure Database for PostgreSQL nagy kapacitású (Citus) az adatfájlokról és az adatbázis-tranzakciós naplóról készít pillanatkép-biztonsági másolatokat. A biztonsági mentések lehetővé teszik a kiszolgálók bármely időpontra történő visszaállítását a megőrzési időtartamon belül. (A megőrzési időtartam jelenleg 35 nap az összes fürthöz.) Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik. A PostgreSQL nagy kapacitású-(Citus-) ajánlat a Microsoft által felügyelt kulcsokat használja a titkosításhoz.
 
-- [Az Azure PostgreSQL-nagy kapacitású (Citus) biztonsági mentések titkosításának ismertetése](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Az Azure PostgreSQL-nagy kapacitású (Citus) biztonsági mentések titkosításának ismertetése](./concepts-hyperscale-backup.md)
 
 
 
@@ -379,7 +379,7 @@ Naponta legalább egyszer Azure Database for PostgreSQL nagy kapacitású (Citus
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a nagy kapacitású (Citus) és más kritikus vagy kapcsolódó erőforrások éles példányaira vonatkoznak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -387,13 +387,13 @@ Naponta legalább egyszer Azure Database for PostgreSQL nagy kapacitású (Citus
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](/azure/security/benchmarks/security-control-vulnerability-management).*
+*További információ [: Security Control: sebezhetőségi kezelés](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
 **Útmutató**: jelenleg nem érhető el; A Azure Security Center még nem támogatja a Azure Database for PostgreSQL-nagy kapacitású (Citus) sebezhetőségi felmérését.
 
-- [Az Azure Pásti szolgáltatásainak lefedettsége Azure Security Center](https://docs.microsoft.com/azure/security-center/features-paas)
+- [Az Azure Pásti szolgáltatásainak lefedettsége Azure Security Center](../security-center/features-paas.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -401,17 +401,17 @@ Naponta legalább egyszer Azure Database for PostgreSQL nagy kapacitású (Citus
 
 ## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
 **Útmutató**: az Azure Resource Graph használatával lekérdezheti és felderítheti az összes erőforrást (beleértve a nagy kapacitású-(Citus-) példányokat) az előfizetésében. Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat.
 
-- [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -421,7 +421,7 @@ Naponta legalább egyszer Azure Database for PostgreSQL nagy kapacitású (Citus
 
 **Útmutató**: címkéket alkalmazhat a nagy kapacitású (Citus) példányokra és az egyéb kapcsolódó erőforrásokra, amelyek lehetővé teszik a metaadatok logikai rendszerezését a rendszertanban.
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -431,11 +431,11 @@ Naponta legalább egyszer Azure Database for PostgreSQL nagy kapacitású (Citus
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és a különálló előfizetések használata, ahol szükséges, a nagy kapacitású-(Citus-) példányok és a kapcsolódó erőforrások rendszerezése és nyomon követése. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-- [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -451,9 +451,9 @@ Naponta legalább egyszer Azure Database for PostgreSQL nagy kapacitású (Citus
 
 Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat.
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -469,9 +469,9 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat.
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -484,9 +484,9 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -496,7 +496,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek a Azure Resource Manager interakcióra az "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával. Ez megakadályozhatja az erőforrások létrehozását és módosítását a magas biztonsági környezetben, például a nagy kapacitású (Citus) olyan példányain, amelyek bizalmas információkat tartalmaznak.
 
-- [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -504,7 +504,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](/azure/security/benchmarks/security-control-secure-configuration).*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
@@ -512,11 +512,11 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaScript Object Notation (JSON), amelyet át kell tekinteni, hogy a konfigurációk megfeleljenek/túllépik a szervezete biztonsági követelményeit. 
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Egy-és többerőforrásos exportálás Azure Portal sablonba](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal) 
+- [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md) 
 
 
 
@@ -528,11 +528,11 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 **Útmutató**: az Azure Policy [megtagadás] és a [telepítés, ha nem létezik] az Azure-erőforrások biztonságos beállításainak betartatására használható.  Emellett Azure Resource Manager-sablonok használatával is megőrizheti a szervezete által igényelt Azure-erőforrások biztonsági konfigurációját. 
 
-- [Azure Policy effektusok ismertetése](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
-- [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Resource Manager sablonok áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Azure Resource Manager sablonok áttekintése](../azure-resource-manager/templates/overview.md)
 
 
 
@@ -544,9 +544,9 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 **Útmutató**: Ha egyéni Azure-szabályzat-definíciókat használ a nagy kapacitású-(Citus-) példányokhoz és a kapcsolódó erőforrásokhoz, az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -556,11 +556,11 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 **Útmutató**: az Azure Policy [megtagadás] és a [telepítés, ha nem létezik] az Azure-erőforrások biztonságos beállításainak betartatására használható.  Emellett Azure Resource Manager-sablonok használatával is megőrizheti a szervezete által igényelt Azure-erőforrások biztonsági konfigurációját. 
 
-- [Azure Policy effektusok ismertetése](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
-- [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Resource Manager sablonok áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Azure Resource Manager sablonok áttekintése](../azure-resource-manager/templates/overview.md)
 
 
 
@@ -572,7 +572,7 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. DBforPostgreSQL" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. A Azure Database for PostgreSQL példányok és a kapcsolódó erőforrások konfigurációjának automatikus érvényesítéséhez használja az Azure Policy [audit], [megtagadás] és [üzembe helyezés ha nem létezik] beállítást.
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -582,9 +582,9 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 **Útmutató**: a Azure Database for PostgreSQL-nagy kapacitású (Citus) jelenleg nem támogatja közvetlenül a felügyelt identitásokat. A Azure Database for PostgreSQL-kiszolgáló létrehozásakor meg kell adnia egy rendszergazdai felhasználó hitelesítő adatait. A Azure Portal felületen további felhasználói szerepköröket is létrehozhat.
 
-- [Azure Database for PostgreSQL-nagy kapacitású létrehozása (Citus)](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal#create-an-azure-database-for-postgresql---hyperscale-citus)
+- [Azure Database for PostgreSQL-nagy kapacitású létrehozása (Citus)](./quickstart-create-hyperscale-portal.md#create-an-azure-database-for-postgresql---hyperscale-citus)
 
-- [További felhasználói szerepkörök létrehozása](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users#how-to-create-additional-user-roles)
+- [További felhasználói szerepkörök létrehozása](./howto-hyperscale-create-users.md#how-to-create-additional-user-roles)
 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
@@ -603,7 +603,7 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: a nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata
 
@@ -617,13 +617,13 @@ A nem számítási Azure-erőforrásokra feltöltött tartalom előzetes vizsgá
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
 **Útmutató**: Azure Database for PostgreSQL – a nagy kapacitású (Citus) automatikusan létrehozza az egyes csomópontok biztonsági másolatait, és helyileg redundáns tárolóban tárolja őket. A biztonsági mentések segítségével visszaállíthatja a nagy kapacitású-(Citus-) fürtöt egy adott időpontra.
 
-- [Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)](./concepts-hyperscale-backup.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -635,7 +635,7 @@ A nem számítási Azure-erőforrásokra feltöltött tartalom előzetes vizsgá
 
 A rendelkezésre állási zónákat támogató Azure-régiókban a biztonsági mentési Pillanatképek három rendelkezésre állási zónában tárolódnak. Amíg legalább egy rendelkezésre állási zóna online állapotú, a nagy kapacitású (Citus) fürt visszaállítható.
 
-- [Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)](./concepts-hyperscale-backup.md)
 
 
 **Azure Security Center figyelés**: igen
@@ -648,7 +648,7 @@ A rendelkezésre állási zónákat támogató Azure-régiókban a biztonsági m
 
 A tűzfalbeállítások és a PostgreSQL-kiszolgáló paraméterei nem őrződnek meg az eredeti kiszolgáló csoportjából. az alapértelmezett értékekre állnak vissza. A tűzfal megakadályozza az összes kapcsolatot. A visszaállítás után manuálisan kell módosítania ezeket a beállításokat.
 
-- [Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)](./concepts-hyperscale-backup.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -658,7 +658,7 @@ A tűzfalbeállítások és a PostgreSQL-kiszolgáló paraméterei nem őrződne
 
 **Útmutató**: a törölt nagy kapacitású (Citus) fürtök nem állíthatók vissza. Ha törli a fürtöt, a fürthöz tartozó összes csomópont törölve lesz, és nem állítható helyre. A fürt erőforrásainak a véletlen törlésből vagy váratlan változásokból történő üzembe helyezése után a rendszergazdák kihasználhatják a felügyeleti zárolásokat.
 
-- [Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)](./concepts-hyperscale-backup.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -666,13 +666,13 @@ A tűzfalbeállítások és a PostgreSQL-kiszolgáló paraméterei nem őrződne
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
 **Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig. 
 
-- [Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide) 
+- [Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül](../security-center/security-center-planning-and-operations-guide.md) 
 
 - [Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/) 
 
@@ -708,7 +708,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az ügyfél adatait egy törvénytelen vagy jogosulatlan fél is hozzáférte.  A problémák megoldása érdekében tekintse át az incidenseket a tény után. 
 
-- [A Azure Security Center biztonsági kapcsolattartó beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -718,9 +718,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: az Azure Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Használhatja a Azure Security Center adatösszekötőt a riasztások Sentinel továbbításához. 
 
-- [Folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export) 
+- [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md) 
 
-- [Riasztások továbbítása az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Riasztások továbbítása az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -730,7 +730,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan aktiválhatja a válaszokat a "Logic apps" használatával a biztonsági riasztások és javaslatok esetében. 
 
-- [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -738,7 +738,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
@@ -752,5 +752,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ede358cdbe533a32ff99fbd736e171463472e45c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461318"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494774"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -381,6 +381,8 @@ Az összes ikrek egyszerre történő törléséről például töltse le a _Tut
 
 Az alábbi futtatható-mintakód használatával hozzon létre egy IKeret, frissítse a részleteit, és törölje a Twin. 
 
+### <a name="set-up-the-runnable-sample"></a>A futtatható minta beállítása
+
 A kódrészlet a modell definíciójában szereplő [Room.js](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) használja az [*oktatóanyag: az Azure Digital Twins megismerése egy minta ügyfélalkalmazás*](tutorial-command-line-app.md)használatával. Ezzel a hivatkozással közvetlenül a fájlra léphet, vagy letöltheti a teljes végpontok közötti [minta projekt](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)részeként.
 
 A minta futtatása előtt tegye a következőket:
@@ -392,7 +394,12 @@ A minta futtatása előtt tegye a következőket:
     dotnet add package Azure.identity
     ```
 
-Ezután futtassa a mintát.
+Ha közvetlenül szeretné futtatni a mintát, helyi hitelesítő adatokat is be kell állítania. A következő szakasz végigvezeti a lépéseken.
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>Minta futtatása
+
+A fenti lépések elvégzése után közvetlenül futtathatja a következő mintakód-kódot.
 
 ```csharp
 using System;
@@ -556,8 +563,6 @@ Itt látható a fenti program konzoljának kimenete:
 
 Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a [_Howban találhatók: az Azure digitális Twins CLI * használatával](how-to-use-cli.md).
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
 ## <a name="view-all-digital-twins"></a>Az összes digitális ikrek megtekintése
 
 A példányban lévő összes digitális ikrek megtekintéséhez használjon [lekérdezést](how-to-query-graph.md). Futtathat egy lekérdezést a [lekérdezési API](/rest/api/digital-twins/dataplane/query) -kkal vagy a [CLI-parancsokkal](how-to-use-cli.md).
@@ -569,7 +574,7 @@ SELECT *
 FROM DIGITALTWINS
 ``` 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
 * [*Útmutató: a Twin gráf kezelése kapcsolatok használatával*](how-to-manage-graph.md)

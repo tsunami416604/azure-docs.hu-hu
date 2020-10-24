@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a3c37143154a6e701c4308903c46f4e68ac1b604
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b8dafd6d2347cf7cca4100f577476b8dfdf6c81
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458105"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495769"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
@@ -221,6 +221,8 @@ await DeleteRelationship(client, srcId, relId);
 
 A következő futtatható a jelen cikk kapcsolati műveleteivel létrehoz egy dupla gráfot a digitális ikrekből és a kapcsolatokból.
 
+### <a name="set-up-the-runnable-sample"></a>A futtatható minta beállítása
+
 A kódrészlet a [*Room.json*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) és a [*Floor.js*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) modell-definíciókat használja az [*oktatóanyag: az Azure Digital Twins és egy minta ügyfélalkalmazás megismerése*](tutorial-command-line-app.md). Ezekkel a hivatkozásokkal közvetlenül megtekintheti a fájlokat, vagy letöltheti őket a teljes végpontok közötti [minta projekt](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)részeként. 
 
 A minta futtatása előtt tegye a következőket:
@@ -232,7 +234,12 @@ A minta futtatása előtt tegye a következőket:
     dotnet add package Azure.identity
     ```
 
-Ezután futtassa a mintát.
+Ha közvetlenül szeretné futtatni a mintát, helyi hitelesítő adatokat is be kell állítania. A következő szakasz végigvezeti a lépéseken.
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>Minta futtatása
+
+A fenti lépések elvégzése után közvetlenül futtathatja a következő mintakód-kódot.
 
 ```csharp 
 using System;
@@ -508,7 +515,7 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 
 Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [*Fogalmak: lekérdezési nyelv*](concepts-query-language.md)

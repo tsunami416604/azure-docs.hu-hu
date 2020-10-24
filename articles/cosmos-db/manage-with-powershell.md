@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: b4147b9a3a5f0a249366431a4e43f924e89f9075
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c56f3b561dbced9f00bb2616f5709a51fa02fbcb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281491"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481006"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Azure Cosmos DB Core (SQL) API-erőforrások kezelése a PowerShell használatával
 
@@ -21,7 +21,7 @@ Az alábbi útmutató ismerteti, hogyan használható a PowerShell a Azure Cosmo
 > [!NOTE]
 > A cikkben szereplő minták az [az. CosmosDB](/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. A legújabb változásokért tekintse meg az az [. CosmosDB](/powershell/module/az.cosmosdb) API-referenciát ismertető oldalt.
 
-A Azure Cosmos DB platformfüggetlen felügyeletéhez használhatja a `Az` és a `Az.CosmosDB` parancsmagot a [platformfüggetlen PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)-lel, valamint az [Azure CLI](manage-with-cli.md)-vel, a [Rest APIval][rp-rest-api]vagy a [Azure Portalsal](create-sql-api-dotnet.md#create-account).
+A Azure Cosmos DB platformfüggetlen felügyeletéhez használhatja a `Az` és a `Az.CosmosDB` parancsmagot a [platformfüggetlen PowerShell](/powershell/scripting/install/installing-powershell)-lel, valamint az [Azure CLI](manage-with-cli.md)-vel, a [Rest APIval][rp-rest-api]vagy a [Azure Portalsal](create-sql-api-dotnet.md#create-account).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -830,9 +830,9 @@ Remove-AzResourceLock `
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-[powershell-install-configure]: https://docs.microsoft.com/azure/powershell-install-configure
+[powershell-install-configure]: /powershell/azure/
 [scaling-globally]: distribute-data-globally.md#EnableGlobalDistribution
 [distribute-data-globally]: distribute-data-globally.md
-[azure-resource-groups]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups
-[azure-resource-tags]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+[azure-resource-groups]: ../azure-resource-manager/management/overview.md#resource-groups
+[azure-resource-tags]: ../azure-resource-manager/management/tag-resources.md
 [rp-rest-api]: /rest/api/cosmos-db-resource-provider/

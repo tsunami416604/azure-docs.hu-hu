@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709198"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489676"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>DNS-névkeresési zónák üzemeltetése Azure DNS
 
@@ -48,7 +48,7 @@ Az IPv4 névkeresési zónák neve az általa reprezentált IP-tartományon alap
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy Azure DNS nevű C. osztályú fordított DNS-zónát `2.0.192.in-addr.arpa` a Azure Portal használatával:
 
- !["DNS-zóna létrehozása" panel, betöltött mezőkkel](./media/dns-reverse-dns-hosting/figure2.png)
+ ![Képernyőkép, amely bemutatja, hogyan hozhat létre egy 2.0.192.in-addr. arpa nevű C osztályú fordított DNS-zónát Azure DNS a Azure Portal használatával.](./media/dns-reverse-dns-hosting/figure2.png)
 
 Az **erőforráscsoport helye** határozza meg az erőforráscsoport helyét. Nincs hatással a DNS-zónára. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
@@ -117,7 +117,7 @@ Az alábbi példa végigvezeti egy PTR-rekordnak a Azure DNS fordított DNS-zón
 
 1. A **DNS-zóna** ablaktábla felső részén válassza a **+ rekord beállítása** elemet a **rekord hozzáadása** ablaktábla megnyitásához.
 
-   ![Rekord létrehozására szolgáló gomb](./media/dns-reverse-dns-hosting/figure4.png)
+   ![Képernyőfelvétel a DNS-zóna panelről egy nyílra a + rekord beállítása gombon.](./media/dns-reverse-dns-hosting/figure4.png)
 
 1. A PTR rekordhoz tartozó rekord nevének a többi IPv4-címnek kell lennie fordított sorrendben. 
 
@@ -162,7 +162,7 @@ Az alábbi példa végigvezeti az új PTR-rekord létrehozásának folyamatán. 
 4. A **tartománynév**mezőben adja meg az IP-címet használó erőforrás teljes tartománynevét.
 5. A DNS-rekord létrehozásához kattintson az **OK gombra** a panel alján.
 
-!["Rekordazonosító hozzáadása" panel, betöltött mezőkkel](./media/dns-reverse-dns-hosting/figure7.png)
+![Képernyőkép, amely megjeleníti a "rekordazonosító hozzáadása" ablaktáblát, és egy nyilat mutat a Type (típus) mezőben található értékre.](./media/dns-reverse-dns-hosting/figure7.png)
 
 A következő példák bemutatják, hogyan hajthatja végre ezt a feladatot a PowerShell vagy az Azure CLI használatával.
 
@@ -262,7 +262,7 @@ Igen. Az Azure CLI-vel meglévő DNS-zónákat importálhat Azure DNSba. Ez a me
 
 További információ: [DNS-zónafájl importálása és exportálása az Azure CLI használatával](dns-import-export.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fordított DNS-sel kapcsolatos további információkért lásd: [fordított DNS-keresés a wikipedia-ben](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>

@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a95361dda74c145e435a7e122339fb5945fed0f6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504304"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491223"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Kis méretű adathalmazok átvitele kis vagy közepes hálózati sávszélességen
  
@@ -61,8 +61,8 @@ A következő táblázat összefoglalja a főbb képességek különbségeit.
 | Engedélyezett üzenetsor-tárolás | Kezelés | Nem  |Nem | Igen, testreszabható|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan [viheti át az adatátvitelt Azure Storage Explorer](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer)használatával.
-- [Adatok áthelyezése az AzCopyval](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- Megtudhatja, hogyan [viheti át az adatátvitelt Azure Storage Explorer](/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer)használatával.
+- [Adatok áthelyezése az AzCopyval](/azure/storage/common/storage-use-azcopy-v10)
 

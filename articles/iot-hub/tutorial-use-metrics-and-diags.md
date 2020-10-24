@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 47cca5019277b2f4d0025ccb6743589a21dfaafa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149187"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480122"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és diagnosztikai naplók beállítása és használata IoT hub használatával
 
@@ -40,7 +40,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 - A [Visual Studio](https://www.visualstudio.com/) telepítése. 
 
@@ -138,7 +138,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 2. Keresse meg a **figyelés** szakaszt a IoT hub panelen. Kattintson a **Diagnosztikai beállítások** elemre. 
 
-   ![A IoT Hub panel diagnosztikai beállítások részét ábrázoló képernyőkép.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
+   ![Képernyőfelvétel: a figyelés szakasz diagnosztikai beállításainak kiemelése.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
 3. Győződjön meg arról, hogy az előfizetés és az erőforráscsoport helyes. Az **Erőforrás típusa**területen törölje az **összes kijelölése elemet**, majd keresse meg és jelölje be a **IoT hub**. (A jelölőnégyzet *bejelölésével jelölje ki az összes lehetőséget* , csak hagyja figyelmen kívül.) Az **erőforrás**területen válassza ki a hub nevét. A képernyőnek a következő képhez hasonlóan kell kinéznie: 
@@ -182,7 +182,7 @@ Most állítson be néhány mérőszámot, amelyből megnézheti, hogy mikor kü
 
    Mostantól a képernyőn látható az *elküldött telemetria-üzenetek*kisméretű mérőszáma, valamint a *felhasznált üzenetek teljes számának*új mérőszáma.
 
-   ![Az elküldött telemetria-üzenetek metrikájának hozzáadását bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+   ![Képernyőkép, amely kiemeli a rögzítés az irányítópulton gombot.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
 
    Kattintson **a rögzítés az irányítópulton**elemre. A rendszer a Azure Portal irányítópultján rögzíti, hogy újra hozzá lehessen férni. Ha nem rögzíti az irányítópulton, a beállítások nem őrződnek meg.
 

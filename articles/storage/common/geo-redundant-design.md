@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a6aed0630acf6ee6624c72831a2cdc88e6c0a91d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013061"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480683"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához
 
@@ -146,7 +146,7 @@ Egy másik szempont, hogyan kezelhető egy alkalmazás több példánya, és mi 
 
 Három fő lehetősége van az újrapróbálkozások gyakoriságának figyelésére az elsődleges régióban, hogy meghatározza, mikor kell átváltani a másodlagos régióba, és hogy az alkalmazás csak olvasható módban fusson.
 
-* Adjon hozzá egy kezelőt az [**újrapróbálkozási**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) eseményhez a Storage-kérelmeknek átadott [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) objektumban – ez a jelen cikkben és a kísérő mintában használt metódus. Ezek az események akkor következnek be, amikor az ügyfél újrapróbálkozik egy kéréssel, így nyomon követheti, hogy az ügyfél milyen gyakran találkozik az újrapróbálkozást lehetővé tevő hibákkal egy elsődleges végponton.
+* Adjon hozzá egy kezelőt az [**újrapróbálkozási**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) eseményhez a Storage-kérelmeknek átadott [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) objektumban – ez a jelen cikkben és a kísérő mintában használt metódus. Ezek az események akkor következnek be, amikor az ügyfél újrapróbálkozik egy kéréssel, így nyomon követheti, hogy az ügyfél milyen gyakran találkozik az újrapróbálkozást lehetővé tevő hibákkal egy elsődleges végponton.
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -157,7 +157,7 @@ Három fő lehetősége van az újrapróbálkozások gyakoriságának figyelés�
     };
     ```
 
-* Az egyéni újrapróbálkozási szabályzat [**kiértékelési**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) metódusában egyéni kódokat futtathat, amikor újra megtörténik az újrapróbálkozások. Az újrapróbálkozások bekövetkezésekor a rögzítés mellett lehetősége van az újrapróbálkozási viselkedés módosítására is.
+* Az egyéni újrapróbálkozási szabályzat [**kiértékelési**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) metódusában egyéni kódokat futtathat, amikor újra megtörténik az újrapróbálkozások. Az újrapróbálkozások bekövetkezésekor a rögzítés mellett lehetősége van az újrapróbálkozási viselkedés módosítására is.
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,

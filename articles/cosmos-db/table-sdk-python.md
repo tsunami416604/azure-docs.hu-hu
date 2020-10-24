@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 5832214b5b0a98249f951915e867db8542c28a71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23e70d8ed17846100d82a5545e9215bce4eee30f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803959"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491342"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK for Python: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "91803959"
 |   |   |
 |---|---|
 |**SDK letöltése**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**API-dokumentáció**|[Python API-referenciák dokumentációja](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python&preserve-view=true)|
+|**API-dokumentáció**|[Python API-referenciák dokumentációja](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)|
 |**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) vagy [python 3,3, 3,4, 3,5 vagy 3,6](https://www.python.org/downloads/)|
@@ -45,7 +45,7 @@ ms.locfileid: "91803959"
 * Előzetes kiadású SDK
 
 ## <a name="release-and-retirement-dates"></a>Kiadási és nyugdíjazási dátumok
-A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
+A Microsoft legalább **12 hónappal** előre biztosít értesítést az SDK-k kivonásáról az újabb vagy támogatott verzióra való zökkenőmentes váltás érdekében.
 
 Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
@@ -61,5 +61,4 @@ Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adó
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 
-
+A Cosmos DB-ről a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás oldalán tekinthet meg további információt.

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 8f573a3e851fe428c66066e36a913d6580cabd51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62a31750fe0c058624c4f69848abb56e7b5095b4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022479"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491019"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrálás a tömeges végrehajtó könyvtárából a Azure Cosmos DB .NET v3 SDK tömeges támogatásához
 
@@ -20,13 +20,13 @@ Ez a cikk azokat a szükséges lépéseket ismerteti, amelyekkel áttelepíthet 
 
 ## <a name="enable-bulk-support"></a>Tömeges támogatás engedélyezése
 
-Tömeges támogatás engedélyezése a `CosmosClient` példányon a [AllowBulkExecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) -konfiguráción keresztül:
+Tömeges támogatás engedélyezése a `CosmosClient` példányon a [AllowBulkExecution](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) -konfiguráción keresztül:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Initialization":::
 
 ## <a name="create-tasks-for-each-operation"></a>Feladatok létrehozása az egyes műveletekhez
 
-A .NET SDK tömeges támogatása úgy működik, hogy kihasználja a [párhuzamos függvénytárat](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl) és csoportosítási műveleteket, amelyek párhuzamosan történnek. 
+A .NET SDK tömeges támogatása úgy működik, hogy kihasználja a [párhuzamos függvénytárat](/dotnet/standard/parallel-programming/task-parallel-library-tpl) és csoportosítási műveleteket, amelyek párhuzamosan történnek. 
 
 Az SDK-ban nincs olyan egyetlen metódus, amely a dokumentumok vagy műveletek bemeneti paraméterként való megadását végzi, ehelyett létre kell hoznia egy feladatot minden olyan művelethez, amelyet tömegesen kíván végrehajtani, majd egyszerűen várjon, amíg befejeződik.
 
@@ -34,15 +34,15 @@ Ha például a kezdeti bemenet azon elemek listája, amelyekben az egyes elemek 
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Ha tömeges importálást szeretne végezni (hasonlóan a BulkExecutor. BulkImportAsync-hoz), akkor egyidejű hívásokkal kell rendelkeznie `CreateItemAsync` . Például:
+Ha tömeges importálást szeretne végezni (hasonlóan a BulkExecutor. BulkImportAsync-hoz), akkor egyidejű hívásokkal kell rendelkeznie `CreateItemAsync` . Példa:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-Ha a tömeges *frissítést* szeretné elvégezni (a [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)-hez hasonlóan), `ReplaceItemAsync` az elem értékének frissítése után egyidejű hívásokkal kell rendelkeznie a metódushoz. Például:
+Ha a tömeges *frissítést* szeretné elvégezni (a [BulkExecutor. BulkUpdateAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)-hez hasonlóan), `ReplaceItemAsync` az elem értékének frissítése után egyidejű hívásokkal kell rendelkeznie a metódushoz. Példa:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-Ha pedig tömeges *törlést* szeretne végezni (hasonlóan a [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)-hoz), `DeleteItemAsync` az `id` egyes elemek és partíciós kulcsával párhuzamos hívásokat kell megadnia a szolgáltatáshoz. Például:
+Ha pedig tömeges *törlést* szeretne végezni (hasonlóan a [BulkExecutor. BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)-hoz), `DeleteItemAsync` az `id` egyes elemek és partíciós kulcsával párhuzamos hívásokat kell megadnia a szolgáltatáshoz. Példa:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
@@ -68,7 +68,7 @@ A `ExecuteAsync` metódus megvárja, amíg az összes művelet be nem fejeződik
 
 ## <a name="capture-statistics"></a>Statisztikák rögzítése
 
-Az előző kód vár, amíg az összes művelet be nem fejeződik, és kiszámítja a szükséges statisztikát. Ezek a statisztikák hasonlóak a tömeges végrehajtó könyvtár [BulkImportResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse).
+Az előző kód vár, amíg az összes művelet be nem fejeződik, és kiszámítja a szükséges statisztikát. Ezek a statisztikák hasonlóak a tömeges végrehajtó könyvtár [BulkImportResponse](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse).
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="ResponseType":::
 
@@ -81,9 +81,9 @@ A `BulkOperationResponse` tartalmazza a következőket:
 
 ## <a name="retry-configuration"></a>Újrapróbálkozási konfiguráció
 
-A tömeges végrehajtó függvénytár [útmutatása](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) szerint megemlítette, hogy az `MaxRetryWaitTimeInSeconds` és `MaxRetryAttemptsOnThrottledRequests` a [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) a `0` vezérlés delegálására a könyvtárba.
+A tömeges végrehajtó függvénytár [útmutatása](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) szerint megemlítette, hogy az `MaxRetryWaitTimeInSeconds` és `MaxRetryAttemptsOnThrottledRequests` a [RetryOptions](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) a `0` vezérlés delegálására a könyvtárba.
 
-A .NET SDK tömeges támogatásához nincs rejtett viselkedés. Az újrapróbálkozási beállításokat közvetlenül a [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) és a [CosmosClientOptions. MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)használatával konfigurálhatja.
+A .NET SDK tömeges támogatásához nincs rejtett viselkedés. Az újrapróbálkozási beállításokat közvetlenül a [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) és a [CosmosClientOptions. MaxRetryWaitTimeOnRateLimitedRequests](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)használatával konfigurálhatja.
 
 > [!NOTE]
 > Azokban az esetekben, amikor a kiépített kérelmek mennyisége sokkal alacsonyabb, mint a várt mennyiségű adatmennyiség, érdemes lehet ezeket magas értékekre beállítani. A tömeges művelet hosszabb időt vesz igénybe, de nagyobb a valószínűsége annak, hogy a nagyobb próbálkozások miatt teljes sikerrel jár.

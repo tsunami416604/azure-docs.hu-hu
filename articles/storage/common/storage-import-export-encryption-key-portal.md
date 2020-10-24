@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345fd486788cfbb69454be488d771d9b4ea394ab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83195253"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488639"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz
 
@@ -101,9 +101,9 @@ Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhár
 |----------------|------------|-----------------|
 | CmkErrorAccessRevoked | A rendszer visszavonja az ügyfél által felügyelt kulcs elérését.                                                       | Igen, ellenőrizze, hogy: <ol><li>A Key Vault továbbra is az MSI szerepel a hozzáférési házirendben.</li><li>A hozzáférési házirendben engedélyezve van a Get, a wrap és a unwrap engedély.</li><li>Ha a Key Vault a tűzfal mögötti VNet van, ellenőrizze, hogy engedélyezve van-e a **Microsoft megbízható szolgáltatásainak engedélyezése** lehetőség.</li><li>Ellenőrizze, hogy a feladattípus MSI-je alaphelyzetbe lett-e állítva API-k `None` használatára.<br>Ha igen, állítsa vissza az értéket a következőre: `Identity = SystemAssigned` . Ezzel újra létrehozza a feladatok erőforrásának identitását.<br>Miután létrehozta az új identitást, engedélyezte, `Get` `Wrap` és engedélyt kapott az `Unwrap` új identitásra a Key Vault hozzáférési házirendjében</li></ol>                                                                                            |
 | CmkErrorKeyDisabled      | Az ügyfél által felügyelt kulcs le van tiltva.                                         | Igen, a kulcs verziójának engedélyezésével     |
-| CmkErrorKeyNotFound      | Nem található az ügyfél által felügyelt kulcs. | Igen, ha a kulcsot törölték, de még mindig a kiürítés időtartama alatt van, a Key [Vault-kulcs eltávolításának visszavonása](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)funkcióval.<br>Más <ol><li>Igen, ha az ügyfél rendelkezik a kulcs biztonsági mentésével, és visszaállítja azt.</li><li>Nem, ellenkező esetben.</li></ol>
-| CmkErrorVaultNotFound |Nem található az ügyfél által felügyelt kulcs kulcstartója. |   Ha a Key Vault törölve lett:<ol><li>Igen, ha a kiürítés-védelem időtartama alatt van, a [Key Vault helyreállításának](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)lépéseit követve.</li><li>Nem, ha meghaladja a kiürítési-védelmi időtartamot.</li></ol><br>Ha a kulcstartó másik bérlőre lett áttelepítve, igen, az alábbi lépések egyikével állítható helyre:<ol><li>A Key Vault visszaállítása a régi bérlőre.</li><li>Állítsa be `Identity = None` , majd állítsa vissza az értéket `Identity = SystemAssigned` . Ezzel törli és újból létrehozza az identitást az új identitás létrehozása után. A `Get` `Wrap` `Unwrap` Key Vault hozzáférési házirendjében engedélyezze az új identitás engedélyezését és engedélyeit.</li></ol>|
+| CmkErrorKeyNotFound      | Nem található az ügyfél által felügyelt kulcs. | Igen, ha a kulcsot törölték, de még mindig a kiürítés időtartama alatt van, a Key [Vault-kulcs eltávolításának visszavonása](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)funkcióval.<br>Más <ol><li>Igen, ha az ügyfél rendelkezik a kulcs biztonsági mentésével, és visszaállítja azt.</li><li>Nem, ellenkező esetben.</li></ol>
+| CmkErrorVaultNotFound |Nem található az ügyfél által felügyelt kulcs kulcstartója. |   Ha a Key Vault törölve lett:<ol><li>Igen, ha a kiürítés-védelem időtartama alatt van, a [Key Vault helyreállításának](/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)lépéseit követve.</li><li>Nem, ha meghaladja a kiürítési-védelmi időtartamot.</li></ol><br>Ha a kulcstartó másik bérlőre lett áttelepítve, igen, az alábbi lépések egyikével állítható helyre:<ol><li>A Key Vault visszaállítása a régi bérlőre.</li><li>Állítsa be `Identity = None` , majd állítsa vissza az értéket `Identity = SystemAssigned` . Ezzel törli és újból létrehozza az identitást az új identitás létrehozása után. A `Get` `Wrap` `Unwrap` Key Vault hozzáférési házirendjében engedélyezze az új identitás engedélyezését és engedélyeit.</li></ol>|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+- [Mi az Azure Key Vault](/azure/key-vault/key-vault-overview)?

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 1b49ac357fd021b23272112a24ae9371d12bc042
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 18e32a0387119d235294d1126d869186ae28d2b2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331583"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488979"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -92,7 +92,6 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtó
 - Konfigurálja az IP-hozzáférés a háttérrendszer számára, hogy fogadja a forgalmat az Azure bejárati ajtó háttérbeli IP-címe és az Azure infrastruktúra-szolgáltatásai között. Tekintse át az alábbi IP-hozzáférés a háttérrendszer:
  
     - Tekintse át az [Azure IP-címtartományok és szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) *AzureFrontDoor. backend* szakaszát az első ajtó IPv4-háttér IP-címéhez, vagy használhatja a *AzureFrontDoor. backend* szolgáltatási címkét is a [hálózati biztonsági csoportokban](../virtual-network/network-security-groups-overview.md#security-rules).
-    - Az Azure-beli **IPv6** -háttér IP-területe a szolgáltatás címkéjén látható, nem szerepel az Azure IP-címtartományok JSON-fájljában. Ha explicit IPv6-címtartományt keres, a rendszer jelenleg csak a következőre korlátozódik: `2a01:111:2050::/44`
     - Az Azure [alapszintű infrastruktúra-szolgáltatásai](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) virtualizált gazdagép IP-címein keresztül: `168.63.129.16` és `169.254.169.254`
 
     > [!WARNING]
@@ -275,7 +274,7 @@ A naplók elérhetők az Azure-előtérben. A portálon kattintson a **tevékeny
 
 Igen, az Azure bejárati ajtó támogatja a riasztásokat. A riasztások a metrikák használatára vannak konfigurálva. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

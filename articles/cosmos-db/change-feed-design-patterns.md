@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebd1c4f71d71ca70f6d10763d538b1877b0c3539
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85118950"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489353"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>A hírcsatorna kialakítási mintáinak módosítása Azure Cosmos DB
 
@@ -52,7 +52,7 @@ A Cosmos-tároló változási csatornájának olvasásán kívül SQL-lekérdez�
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás
 
-A Azure Cosmos DB akár 99,999%-os olvasási és írási rendelkezésre állást kínál. A sok üzenetsor miatt a Azure Cosmos DBi az adatmennyiséget egyszerűen globálisan eloszthatja és konfigurálhatja a [RTO (helyreállítási idő célkitűzés)](consistency-levels-tradeoffs.md#rto) nulla értékkel.
+A Azure Cosmos DB akár 99,999%-os olvasási és írási rendelkezésre állást kínál. A sok üzenetsor miatt a Azure Cosmos DBi az adatmennyiséget egyszerűen globálisan eloszthatja és konfigurálhatja a [RTO (helyreállítási idő célkitűzés)](./consistency-levels.md#rto) nulla értékkel.
 
 A változási hírcsatorna elemeinek feldolgozása után létrehozhat egy jelentős nézetet, és visszaállíthatja az összesített értékeket Azure Cosmos DB. Ha Azure Cosmos DBt használ egy játék létrehozásához, például a változási hírcsatorna használatával valós idejű ranglistákat hozhat létre a befejezett játékok eredményei alapján.
 
@@ -73,7 +73,7 @@ Ha a [partíciók és tárolók közötti adatok denormalizálása](how-to-model
 
 ## <a name="event-sourcing"></a>Esemény-beszerzés
 
-Az [esemény-beszerzési minta](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) egy csak Hozzáfűzéses tároló használatával rögzíti az adatokon végzett műveletek teljes sorozatát. A Azure Cosmos DB változási csatornája az események beszerzési architektúráinak központi adattára, ahol az összes adatfeldolgozás az írásoknak megfelelően van modellezve (nincs frissítés vagy törlés). Ebben az esetben minden Azure Cosmos DB egy "esemény", amely a változási hírcsatornában található múltbeli eseményekről tartalmaz teljes rekordot. A központi esemény-áruház által közzétett események tipikus felhasználási módjai a jelentős nézetek fenntartása vagy a külső rendszerekkel való integráció. Mivel a változási hírcsatornában nincs időkorlát a megőrzéshez, az összes korábbi eseményt visszajátszhatja a Cosmos-tároló változási csatornájának elejéről.
+Az [esemény-beszerzési minta](/azure/architecture/patterns/event-sourcing) egy csak Hozzáfűzéses tároló használatával rögzíti az adatokon végzett műveletek teljes sorozatát. A Azure Cosmos DB változási csatornája az események beszerzési architektúráinak központi adattára, ahol az összes adatfeldolgozás az írásoknak megfelelően van modellezve (nincs frissítés vagy törlés). Ebben az esetben minden Azure Cosmos DB egy "esemény", amely a változási hírcsatornában található múltbeli eseményekről tartalmaz teljes rekordot. A központi esemény-áruház által közzétett események tipikus felhasználási módjai a jelentős nézetek fenntartása vagy a külső rendszerekkel való integráció. Mivel a változási hírcsatornában nincs időkorlát a megőrzéshez, az összes korábbi eseményt visszajátszhatja a Cosmos-tároló változási csatornájának elejéről.
 
 [Több módosítási hírcsatorna-felhasználó is előfizethet ugyanarra a tároló változási csatornára](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers). A [címbérlet](change-feed-processor.md#components-of-the-change-feed-processor) kiépített átviteli sebességén kívül a változási csatornát nem kell használnia. A változási hírcsatorna minden tárolóban elérhető, függetlenül attól, hogy használatban van-e.
 
@@ -112,7 +112,7 @@ Minden ügyfél esetében az aktuális bevásárlókocsi tartalmának egy lénye
 - [IoT-használati eset a változási csatorna köré](https://github.com/AzureCosmosDB/scenario-based-labs)
 - [Kiskereskedelmi használati eset a változási hírcsatorna köré](https://github.com/AzureCosmosDB/scenario-based-labs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Változáscsatorna áttekintése](change-feed.md)
 * [Beállítások a változási csatorna olvasásához](read-change-feed.md)

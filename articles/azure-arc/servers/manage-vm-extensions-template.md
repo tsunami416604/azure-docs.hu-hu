@@ -1,14 +1,14 @@
 ---
 title: Virtuálisgép-bővítmény engedélyezése Azure Resource Manager sablon használatával
 description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítményeket hibrid felhőalapú környezetekben futó Azure arc-kompatibilis kiszolgálókra Azure Resource Manager sablon használatával.
-ms.date: 10/15/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 23cb1e85b9560b7033dc5bdce672ee8718ed326b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 935fa38fbb98622f2da7d2ce9e1d166b12a32e44
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462933"
+ms.locfileid: "92491206"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Azure virtuálisgép-bővítmények engedélyezése ARM-sablon használatával
 
@@ -543,7 +543,7 @@ A PowerShell DSC bővítmény használatához a következő minta a Windows és 
 }
 ```
 
-## <a name="deploy-the-dependency-agent"></a>A függőségi ügynök üzembe helyezése
+## <a name="deploy-the-dependency-agent-extension"></a>A függőségi ügynök bővítményének üzembe helyezése
 
 A Azure Monitor függőségi ügynök bővítményének használatához a következő minta a Windows és Linux rendszeren való futtatásra szolgál. Ha nem ismeri a függőségi ügynököt, tekintse meg [a Azure monitor ügynökök áttekintése](../../azure-monitor/platform/agents-overview.md#dependency-agent)című témakört.
 
@@ -623,7 +623,7 @@ A Azure Monitor függőségi ügynök bővítményének használatához a követ
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure CLI vagy a PowerShell használatával üzembe helyezhet és eltávolíthat egy bővítményt.
 

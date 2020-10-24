@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 938968599f1824416666818a46cc73a1d33c5341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b5886984d6e3830549e86a7c1ee46cd2483e4b4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987741"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480598"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Cosmos DB erőforrások kezelése Azure Storage Explorer használatával
 
@@ -20,7 +20,7 @@ Az Azure Storage Explorer használatával csatlakozhat Azure Cosmos DBhoz. Lehet
 
 Ugyanazzal az eszközzel kezelheti a különböző Azure-entitásokat egy helyen. Felügyelheti Azure Cosmos DB entitásokat, kezelheti az adatkezelést, frissítheti a tárolt eljárásokat és triggereket más Azure-entitásokkal, például a tárolási Blobokkal és a várólistákkal együtt.
 
-Azure Storage Explorer támogatja az SQL, a MongoDB, a Graph és a Table API-khoz konfigurált Cosmos-fiókokat. További információért látogasson el [Azure Storage Explorer Azure Cosmos DBra](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) .
+Azure Storage Explorer támogatja az SQL, a MongoDB, a Graph és a Table API-khoz konfigurált Cosmos-fiókokat. További információért látogasson el [Azure Storage Explorer Azure Cosmos DBra]() .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -74,7 +74,7 @@ Kapcsolati sztringet használhat egy Azure Cosmos DBhoz való kapcsolódáshoz. 
 
 A következő lépésekkel csatlakozhat egy Azure Cosmos DB emulátorral. Ez a metódus csak az SQL-fiókokat támogatja.
 
-1. Telepítse Cosmos DB emulátort, majd nyissa meg. Az emulátor telepítéséhez lásd: [Cosmos db Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
+1. Telepítse Cosmos DB emulátort, majd nyissa meg. Az emulátor telepítéséhez lásd: [Cosmos db Emulator](./local-emulator.md).
 
 1. Keresse meg a **helyi és csatolt** elemet a bal oldali fában, kattintson a jobb gombbal **Cosmos db fiókok**elemre, majd válassza a **Kapcsolódás Cosmos db emulátorhoz**lehetőséget.
 
@@ -173,7 +173,7 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 
 #### <a name="query-for-documents"></a>Dokumentumok lekérdezése
 
-* A dokumentum szűrő szerkesztéséhez írjon be egy [SQL-lekérdezést](how-to-sql-query.md), majd válassza az **alkalmaz**lehetőséget.
+* A dokumentum szűrő szerkesztéséhez írjon be egy [SQL-lekérdezést](./sql-query-getting-started.md), majd válassza az **alkalmaz**lehetőséget.
 
   :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
@@ -353,4 +353,4 @@ Próbálja ki ezeket a javaslatokat:
 ## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg ezt a videót, amelyből megtudhatja, hogyan használhatja a Azure Cosmos DB a Azure Storage Explorerban: [Azure Cosmos db használata a Azure Storage Explorerban](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
-* További információk a Storage Explorerrel és további szolgáltatások csatlakoztatásával kapcsolatban: [Ismerkedés a Storage Explorer alkalmazással](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* További információk a Storage Explorerrel és további szolgáltatások csatlakoztatásával kapcsolatban: [Ismerkedés a Storage Explorer alkalmazással](../vs-azure-tools-storage-manage-with-storage-explorer.md).

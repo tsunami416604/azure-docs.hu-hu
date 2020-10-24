@@ -1,22 +1,22 @@
 ---
 title: Megosztás a szervezeten kívül (ARM-sablon) – Azure-adatmegosztás – gyors üzembe helyezés
-description: Ebből a rövid útmutatóból megtudhatja, hogyan oszthat meg ügyfelekkel és partnerekkel az Azure adatmegosztási és Resource Manager-sablon segítségével.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan oszthat meg az ügyfelekkel és partnerekkel az Azure adatmegosztási szolgáltatással és egy Azure Resource Manager sablonnal (ARM-sablonnal) rendelkező információkat.
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146156"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487687"
 ---
-# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Gyors útmutató: adatmegosztás az Azure adatmegosztási és Resource Manager-sablonok használatával
+# <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>Gyors útmutató: adatmegosztás az Azure-adatmegosztás és az ARM-sablon használatával
 
-Megtudhatja, hogyan állíthat be új Azure-beli adatmegosztást egy Azure Storage-fiókból Azure Resource Manager sablon használatával, és megkezdheti az adatok megosztását az Azure-szervezeten kívüli ügyfelekkel és partnerekkel. A támogatott adattárak listáját lásd: [támogatott adattárak az Azure-beli adatmegosztásban](./supported-data-stores.md).
+Megtudhatja, hogyan állíthat be új Azure-beli adatmegosztást egy Azure Storage-fiókból egy Azure Resource Manager sablon (ARM-sablon) használatával. Emellett az Azure-szervezeten kívüli ügyfelekkel és partnerekkel is megoszthatja adatait. A támogatott adattárak listáját lásd: [támogatott adattárak az Azure-beli adatmegosztásban](./supported-data-stores.md).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,12 +38,12 @@ A következő erőforrások vannak definiálva a sablonban:
 
 * [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts):
 * [Microsoft. Storage/storageAccounts/blobServices/tárolók](/azure/templates/microsoft.storage/storageaccounts/blobservices/containers)
+* [Microsoft. DataShare/fiókok](/azure/templates/microsoft.datashare/accounts)
+* [Microsoft. DataShare/fiókok/megosztások](/azure/templates/microsoft.datashare/accounts/shares)
 * [Microsoft. Storage/storageAccounts/Providers/roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
-* [Microsoft. DataShare/fiókok](/rest/api/datashare/accounts/create)
-* [Microsoft. DataShare/fiókok/megosztások](/rest/api/datashare/shares/create)
-* [Microsoft. DataShare/fiókok/megosztások/adatkészletek](/rest/api/datashare/datasets/create)
-* [Microsoft. DataShare/fiókok/megosztások/meghívások](/rest/api/datashare/invitations/create)
-* [Microsoft. DataShare/fiókok/megosztások/synchronizationSettings](/rest/api/datashare/synchronizationsettings/create)
+* [Microsoft. DataShare/fiókok/megosztások/adatkészletek](/azure/templates/microsoft.datashare/accounts/shares/datasets)
+* [Microsoft. DataShare/fiókok/megosztások/meghívások](/azure/templates/microsoft.datashare/accounts/shares/invitations)
+* [Microsoft. DataShare/fiókok/megosztások/synchronizationSettings](/azure/templates/microsoft.datashare/accounts/shares/synchronizationsettings)
 
 A sablon a következő feladatokat hajtja végre:
 
@@ -56,11 +56,11 @@ A sablon a következő feladatokat hajtja végre:
 
 Ez a sablon tanulási célokra készült. A gyakorlatban általában valamilyen adattal rendelkezik egy meglévő Storage-fiókban. Az adatkészlet létrehozásához létre kell hoznia a szerepkör-hozzárendelést egy sablon vagy parancsfájl futtatása előtt. Időnként előfordulhat, hogy a következő hibaüzenet jelenik meg a sablon telepítésekor:
 
-```error message
+```plaintext
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-Ennek az az oka, hogy a központi telepítés megkísérli létrehozni az adatkészletet, mielőtt az Azure szerepkör-hozzárendelés véglegesítve lesz. A hibaüzenet ellenére a telepítés sikeres lehet.  Az [üzembe helyezett erőforrások áttekintése](#review-deployed-resources)továbbra is lehetséges.
+Ennek oka az, hogy a központi telepítés megkísérli létrehozni az adatkészletet, mielőtt az Azure szerepkör-hozzárendelés véglegesítve lesz. A hibaüzenet ellenére a telepítés sikeres lehet. Az [üzembe helyezett erőforrások áttekintése](#review-deployed-resources)továbbra is lehetséges.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 

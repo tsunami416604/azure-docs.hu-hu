@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 71b7217a1a3d79db67e1649ce33d441f0c2c2da2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86336ddb557613d42117480a5793e8b0ecbc7bae
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489404"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495841"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -283,7 +283,7 @@ Nem. A VNet társításának engedélyezéséhez a Címterület nem tartalmazhat
 Nem számítunk fel díjat a VNet-társi kapcsolatok létrehozásához. A rendszer felszámítja az adatátvitelt a partneri kapcsolatokon keresztül. [Lásd itt](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Titkosítva van-e a VNet-társítási forgalom?
-Ha a vnet az adatközpontok között mozognak – a nem a (z) (vagy a Microsoft-- [MACsec adatkapcsolati réteg titkosítása](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) ) által nem vezérelt fizikai határokon kívüli adatforgalmat a mögöttes hálózati hardveren használják.
+Ha az Azure-forgalom átkerül az adatközpontok között (a Microsoft vagy a Microsoft nevében nem szabályozott fizikai határokon kívül), a [MACsec adatkapcsolati rétegének titkosítása](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) a mögöttes hálózati hardveren alapul.  Ez a VNet-társítási forgalomra vonatkozik.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Miért van a társam kapcsolata *leválasztott* állapotban?
 A VNet-társítási kapcsolatok *leválasztott* állapotba kerülnek, ha töröl egy VNet-társítási hivatkozást. A sikeres társ-létesítési kapcsolat létrehozásához mindkét hivatkozást törölnie kell.

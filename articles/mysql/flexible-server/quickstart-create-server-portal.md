@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 9/29/2020
-ms.openlocfilehash: 70f2cf183a9bd93b6066516cb68e99ee21cdc1ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/22/2020
+ms.openlocfilehash: 646506eb347970dadd2a5b2fa6527e5d8bd879ec
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569631"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481387"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Gyors útmutató: Azure Database for MySQL rugalmas kiszolgáló létrehozásához használja a Azure Portal
 
@@ -32,19 +32,27 @@ Hozzon létre egy rugalmas kiszolgálót a [számítási és tárolási erőforr
 
 Egy rugalmas kiszolgáló létrehozásához kövesse az alábbi lépéseket:
 
-1. A portál bal felső sarkában válassza az **erőforrás létrehozása** (+) lehetőséget.
+1. Keresse meg a "Azure Database for MySQL" kifejezést a portálon a keresőmező használatával a szolgáltatás megtalálásához. 
+    
+    > :::image type="content" source="./media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="Azure Database for MySQL keresése&quot;:::
 
-2. Válassza az **adatbázisok**  >  **Azure Database for MySQL**elemet. Megadhatja a **MySQL** kifejezést is a keresőmezőbe a szolgáltatás megtalálásához.
+2. Válassza a **Hozzáadás** elemet. 
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/navigate-to-mysql.png" alt-text="Az Azure Database for MySQL menüpont":::
-
-3. Központi telepítési lehetőségként válassza a **rugalmas kiszolgáló** lehetőséget.
+3. A &quot;központi telepítési beállítás kiválasztása" lapon válassza a **rugalmas kiszolgáló** lehetőséget központi telepítési lehetőségként.
      
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Az Azure Database for MySQL menüpont":::    
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Azure Database for MySQL keresése&quot;:::
+
+2. Válassza a **Hozzáadás** elemet. 
+
+3. A &quot;központi telepítési beállítás kiválasztása":::    
 
 4. Töltse ki az **alapok** űrlapot a következő információkkal: 
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Az Azure Database for MySQL menüpont"::: 
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Azure Database for MySQL keresése&quot;:::
+
+2. Válassza a **Hozzáadás** elemet. 
+
+3. A &quot;központi telepítési beállítás kiválasztása"::: 
                                     
     |**Beállítás**|**Javasolt érték**|**Leírás**|
     |---|---|---|
@@ -53,11 +61,15 @@ Egy rugalmas kiszolgáló létrehozásához kövesse az alábbi lépéseket:
     Kiszolgálónév |*mydemoserver*|Egy egyedi név, amely a rugalmas kiszolgálót azonosítja. A rendszer hozzáfűzi a *MySQL.database.Azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgáló neve csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Legalább 3, és legfeljebb 63 karakterből állhat.|
     Rendszergazdai felhasználónév |*mydemouser*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest**vagy **Public**.|
     Jelszó |Az Ön jelszava| Egy új jelszó a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).|
-    Region|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.|
+    Régió|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.|
     Verzió|5.7| MySQL főverzió.|
     Számítás + tárolás | **Feltört**, **Standard_B1ms**, **10 GIB**, **7 nap** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása**lehetőséget. A **számítási szint**, a **számítási méret**, a **tárolás**és a **biztonsági másolatok megőrzési időszaka**alapértelmezett értékei a következők: *feltört*, *Standard_B1ms*, *10 GIB*és *7 nap* . Ezeket a csúszkákat meghagyhatja, vagy módosíthatja is azokat. A számítás és a tároló kiválasztásának mentéséhez válassza a **Mentés** lehetőséget a konfigurációk folytatásához. Az alábbi képernyőképen a számítási és tárolási lehetőségek láthatók.|
     
-    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Az Azure Database for MySQL menüpont":::
+    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Azure Database for MySQL keresése&quot;:::
+
+2. Válassza a **Hozzáadás** elemet. 
+
+3. A &quot;központi telepítési beállítás kiválasztása":::
 
 5. Hálózati beállítások konfigurálása
 
@@ -66,7 +78,11 @@ Egy rugalmas kiszolgáló létrehozásához kövesse az alábbi lépéseket:
     > [!NOTE]
     > A kapcsolódási módszer nem módosítható a kiszolgáló létrehozása után. Ha például a létrehozás során a *nyilvános hozzáférés (engedélyezett IP-címek)* lehetőséget választotta, akkor a létrehozás után nem lehet *privát hozzáférésre váltani (VNet-integráció)* . Javasoljuk, hogy hozzon létre egy olyan kiszolgálót, amely privát hozzáféréssel rendelkezik a kiszolgáló biztonságos eléréséhez a VNet-integráció használatával. További információ a privát hozzáférésről a [fogalmakat ismertető cikkben](./concepts-networking.md).
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Az Azure Database for MySQL menüpont":::  
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Azure Database for MySQL keresése&quot;:::
+
+2. Válassza a **Hozzáadás** elemet. 
+
+3. A &quot;központi telepítési beállítás kiválasztása":::  
 
 6. A rugalmas kiszolgáló konfigurációjának áttekintéséhez válassza a **felülvizsgálat + létrehozás** elemet.
 
@@ -103,9 +119,13 @@ Sikeresen létrehozott egy Azure Database for MySQL rugalmas kiszolgálót egy e
 A kiszolgáló törléséhez kattintson a kiszolgáló **Áttekintés** lapján található **delete (Törlés** ) gombra az alábbi ábrán látható módon:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Az Azure Database for MySQL menüpont":::
+> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Azure Database for MySQL keresése&quot;:::
 
-## <a name="next-steps"></a>További lépések
+2. Válassza a **Hozzáadás** elemet. 
+
+3. A &quot;központi telepítési beállítás kiválasztása":::
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [PHP-alapú (Laravel-) Webalkalmazás létrehozása MySQL-sel](tutorial-php-database-app.md)

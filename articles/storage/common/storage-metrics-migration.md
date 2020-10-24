@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1dc0c7f37dc848ecd361848934cbcc5640afc66
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802837"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490764"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Váltás a mérőszámokra Azure Monitor
 
-Az **2023-as augusztus 31-** én Storage Analytics metrikákat, más néven a *klasszikus metrikákat* is kivezetjük. További információ a [hivatalos közleményben](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)olvasható. Ha klasszikus metrikákat használ, ügyeljen arra, hogy az adott dátum előtt Azure Monitor metrikára térjen át. Ez a cikk segít az áttérésben. 
+Az **2023-as augusztus 31-** én Storage Analytics metrikákat, más néven a *klasszikus metrikákat* is kivezetjük. További információért tekintse meg a [hivatalos bejelentést](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/). Ha klasszikus metrikákat használ, a megadott dátum előtt gondoskodjon az Azure Monitor-metrikákra való áttérésről. Ez a cikk segítséget nyújt a váltásban. 
 
 ## <a name="steps-to-complete-the-transition"></a>Az áttérés befejezésének lépései
 
@@ -30,12 +30,12 @@ A Azure Monitor mérőszámokra való áttéréshez a következő módszert ajá
 
 3. Határozza meg, hogy a [Azure monitor mely mérőszámai](#metrics-mapping-between-old-metrics-and-new-metrics) rendelkeznek ugyanazokkal az adatokkal, mint a jelenleg használt mérőszámok. 
    
-4. [Diagramokat](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) és [irányítópultokat](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) hozhat létre a metrikai adatok megtekintéséhez.
+4. [Diagramokat](/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) és [irányítópultokat](/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) hozhat létre a metrikai adatok megtekintéséhez.
 
    > [!NOTE]
    > A Azure Monitor metrikái alapértelmezés szerint engedélyezve vannak, ezért a metrikák rögzítésének megkezdéséhez semmit nem kell tennie. A metrikák megtekintéséhez azonban diagramokat vagy irányítópultokat kell létrehoznia. 
  
-5. Ha olyan riasztási szabályokat hozott létre, amelyek klasszikus tárolási metrikán alapulnak, akkor hozzon létre Azure Monitor mérőszámokon alapuló [riasztási szabályokat](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) . 
+5. Ha olyan riasztási szabályokat hozott létre, amelyek klasszikus tárolási metrikán alapulnak, akkor hozzon létre Azure Monitor mérőszámokon alapuló [riasztási szabályokat](/azure/azure-monitor/platform/alerts-overview) . 
 
 6. Miután megtekintheti Azure Monitor összes mérőszámát, kikapcsolhatja a klasszikus naplózást. 
 
@@ -53,7 +53,7 @@ A metrikák támogatása érdekében a klasszikus metrikák csak az Azure Blob S
 
 Ha a fiókban lévő tevékenység nem indít el mérőszámot, a klasszikus metrikák a nulla (0) értéket jelenítik meg az adott metrika esetében. A Azure Monitor metrikái teljes mértékben kihagyják az adatokat, ami tisztább jelentésekhez vezet. Például klasszikus metrikákkal, ha nem jelentettek időtúllépési hibát a rendszer, akkor a `ServerTimeoutError` metrikák tábla értéke 0. A Azure Monitor nem ad vissza adatokat, ha a mérőszám értékét a `Transactions` dimenzióval megegyező értékkel kérdezi le `ResponseType` `ServerTimeoutError` . 
 
-Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](/azure/azure-monitor/platform/data-platform-metrics).
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 
@@ -72,7 +72,7 @@ Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse
 > [!NOTE]
 > Több új kapacitási mérőszám is létezik, amelyek klasszikus metrikák nem voltak elérhetők. A teljes lista megtekintéséhez lásd: [mérőszámok](../common/monitor-storage-reference.md#metrics).
 
-**Tranzakciómetrikák**
+**Tranzakciós metrikák**
 
 | Klasszikus metrika | Metrika Azure Monitor |
 | ------------------- | ----------------- |

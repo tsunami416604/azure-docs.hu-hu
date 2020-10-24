@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 900221bd27fe4020a927b3155c91aa8e494ca890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88da1c7fba5d7cb51863a580ae420eb6b3298a2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203837"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491274"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Nagy méretű adathalmazok átvitele közepes vagy nagy hálózati sávszélességen
  
@@ -93,19 +93,19 @@ Ha online adatátvitelt használ, használja a következő szakaszban találhat�
 |    **Felhasználó típusa**                    |    IT Pro vagy dev                                       |    Dev                                       |    IT-szakértő                                                |    IT-szakértő                                                             |
 |    **Díjszabás**                      |    Ingyenes, a kimenő adatforgalomra vonatkozó díjak érvényesek         |    Ingyenes, a kimenő adatforgalomra vonatkozó díjak érvényesek         |    [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Díjszabás](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megtudhatja, hogyan vihet át adatátvitelt importálási/exportálási szolgáltatással](/azure/storage/common/storage-import-export-data-to-blobs).
 - Ismerje meg, hogyan
 
-    - [Adatok átvitele Data Box Disksal](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
-    - [Adatok átvitele Data Boxsal](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
+    - [Adatok átvitele Data Box Disksal](/azure/databox/data-box-disk-quickstart-portal).
+    - [Adatok átvitele Data Boxsal](/azure/databox/data-box-quickstart-portal).
 - [Adatok átvitele a AzCopy](/azure/storage/common/storage-use-azcopy-v10).
 - Ismerje meg a következőket:
-    - [Adatok átvitele Data Box Gatewaysal](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
-    - [Adatok átalakítása Data Box Edge az Azure-ba való küldés előtt](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).
-- [Megtudhatja, hogyan viheti át az adatátvitelt Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal).
+    - [Adatok átvitele Data Box Gatewaysal](/azure/databox-online/data-box-gateway-deploy-add-shares).
+    - [Adatok átalakítása Data Box Edge az Azure-ba való küldés előtt](/azure/databox-online/data-box-edge-deploy-configure-compute).
+- [Megtudhatja, hogyan viheti át az adatátvitelt Azure Data Factory használatával](/azure/data-factory/quickstart-create-data-factory-portal).
 - Adatok átvitele a REST API-k használatával
 
-    - [A .NET-ben](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [A Javában](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [A .NET-ben](/dotnet/api/overview/azure/storage)
+    - [A Javában](/java/api/overview/azure/storage)

@@ -4,25 +4,27 @@ description: 'Oktatóanyag: a nyílt forráskódú Azure Cosmos db áttelepíté
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 16412e6949bd6bf3d9496b33a900a0331bd1e9fb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8613d3b02d396f16008ee771cdff25fe8b2e2f10
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278151"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490645"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Oktatóanyag: Adatok Azure Cosmos DB-be migrálása az adatmigrálási eszköz használatával
 
 Ez az oktatóanyag útmutatást nyújt az Azure Cosmos DB adatmigrálási eszközének használatával kapcsolatban, amellyel különböző forrásokból importálhat adatokat Azure Cosmos-tárolókba és -táblákba. Importálhat JSON- és CSV-fájlokat, SQL-, MongoDB-, Azure Table Storage- és Amazon DynamoDB-adatbázisokat, illetve akár Azure Cosmos DB SQL API-gyűjteményeket is. Az adatokat gyűjteményekbe és táblákba migrálja az Azure Cosmos DB-vel való használathoz. Az adatáttelepítési eszközzel emellett SQL API-beli egypartíciós gyűjteményt is telepíthet át többpartíciós gyűjteménybe.
 
-Melyik API-t szeretné használni az Azure Cosmos DB-vel?
+> [!NOTE]
+> A Azure Cosmos DB adat-áttelepítési eszköz egy nyílt forráskódú eszköz, amely kis áttelepítéshez készült. Nagyobb áttelepítésekhez tekintse meg az [útmutató az adatfeldolgozáshoz című útmutatót](cosmosdb-migrationchoices.md).
 
-* **[SQL API](documentdb-introduction.md)** – Az adatáttelepítési eszközben elérhető bármelyik forráslehetőséggel importálhat adatokat.
-* **[Table API](table-introduction.md)** – Az adatok importálásához használhatja az adatáttelepítési eszközt vagy az AzCopy segédprogramot. További információért olvassa el az [Adatok importálása az Azure Cosmos DB Table API-val való használathoz](table-import.md) című témakört.
-* **[Azure Cosmos db API-MongoDB](mongodb-introduction.md)** – az adatáttelepítési eszköz jelenleg nem támogatja Azure Cosmos db API-ját MongoDB vagy forrásként, illetve célként. Ha a Azure Cosmos DB gyűjteményekben lévő vagy azokon kívüli gyűjtemények adatait szeretné áttelepíteni, tekintse [meg a MongoDB-adatbázisok áttelepítését a Cosmos Database-ben Azure Cosmos db API](mongodb-migrate.md) -jával a MongoDB című témakört. Az adatáttelepítési eszközzel azonban exportálhat adatokat MongoDB-ből Azure Cosmos DB SQL API-gyűjteményekbe az SQL API-val való használathoz.
-* **[GREMLIN API](graph-introduction.md)** – az adatáttelepítési eszköz jelenleg nem támogatott importálási eszköz a Gremlin API-fiókokhoz.
+* **[SQL API](./introduction.md)** – az adatáttelepítési eszközben található bármelyik forrás-beállítást használhatja az adat kis léptékű importálásához. [Ismerje meg az Adatimportálási lehetőségeket nagy léptékben](cosmosdb-migrationchoices.md).
+* **[Table API](table-introduction.md)** – az adatáttelepítési eszköz vagy a [AzCopy](table-import.md#migrate-data-by-using-azcopy) használatával importálhat adatfájlokat. További információért olvassa el az [Adatok importálása az Azure Cosmos DB Table API-val való használathoz](table-import.md) című témakört.
+* **[Azure Cosmos db API-MongoDB](mongodb-introduction.md)** – az adatáttelepítési eszköz nem támogatja Azure Cosmos db API-ját MongoDB vagy forrásként, illetve célként. Ha Azure Cosmos DB gyűjteményekben lévő vagy azokon kívüli gyűjteményekbe szeretné áttelepíteni az adatait, tekintse át a [MongoDB-adatbázisok áttelepítését egy Cosmos-adatbázisba Azure Cosmos db API-val a MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) című témakört. Az adatáttelepítési eszközzel azonban exportálhat adatokat MongoDB-ből Azure Cosmos DB SQL API-gyűjteményekbe az SQL API-val való használathoz.
+* **[Cassandra API](graph-introduction.md)** – az adatáttelepítési eszköz nem támogatott importálási eszköz Cassandra API-fiókokhoz. [Tudnivalók az Adatimportálási lehetőségekről a Cassandra APIba](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
+* **[GREMLIN API](graph-introduction.md)** – az adatáttelepítési eszköz jelenleg nem támogatott importálási eszköz a Gremlin API-fiókokhoz. [Tudnivalók az áttelepítés Gremlin API-ba történő importálási lehetőségeiről](cosmosdb-migrationchoices.md#other-apis) 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -42,7 +44,7 @@ A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy
 * **Azure Cosmos DB-erőforrások létrehozása:** Az adatok migrálásának indítása előtt hozza létre előre az összes gyűjteményt az Azure Portalról. Az adatbázis-szintű átviteli sebességű Azure Cosmos DB-fiókra való áttelepítéshez adjon meg egy partíciós kulcsot az Azure Cosmos-tárolók létrehozásakor.
 
 > [!IMPORTANT]
-> Annak ellenőrzéséhez, hogy az adatáttelepítési eszköz az Azure Cosmos-fiókokhoz való csatlakozáskor Transport Layer Security (TLS) 1,2-et használ-e, használja a .NET-keretrendszer 4,7-es verzióját, vagy kövesse a [jelen cikkben](https://docs.microsoft.com/dotnet/framework/network-programming/tls)található utasításokat.
+> Annak ellenőrzéséhez, hogy az adatáttelepítési eszköz az Azure Cosmos-fiókokhoz való csatlakozáskor Transport Layer Security (TLS) 1,2-et használ-e, használja a .NET-keretrendszer 4,7-es verzióját, vagy kövesse a [jelen cikkben](/dotnet/framework/network-programming/tls)található utasításokat.
 
 ## <a name="overview"></a><a id="Overviewl"></a>Áttekintés
 
@@ -58,6 +60,9 @@ Az adatáttelepítési eszköz egy nyílt forráskódú megoldás, mellyel adato
 * Azure Cosmos-tárolók
 
 Az importálási eszköz tartalmaz egy grafikus felhasználói felületet (dtui.exe), de használhatja a parancssori verziót is (dt.exe). Valójában lehetőség van arra, hogy a kapcsolódó parancsot a felhasználói felületen keresztüli importálás beállítása után kiírja. A táblázatos forrásadatok, például a SQL Server-vagy CSV-fájlok átalakításával hierarchikus kapcsolatok (aldokumentumok) hozhatók létre az importálás során. Az alábbiakban többet is megtudhat a választható forrásokról, mintaparancsokat találhat az egyes forrástípusokból való importáláshoz, és áttekintheti az importálás eredményét.
+
+> [!NOTE]
+> A kis áttelepítéshez csak a Azure Cosmos DB áttelepítési eszközt kell használnia. Nagyméretű áttelepítésekhez tekintse meg az [útmutató az adatfeldolgozáshoz című útmutatót](cosmosdb-migrationchoices.md).
 
 ## <a name="installation"></a><a id="Install"></a>Telepítés
 
@@ -124,7 +129,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>Importálás MongoDB-ből
 
 > [!IMPORTANT]
-> Ha a MongoDB-hez Azure Cosmos DB API-val konfigurált Cosmos-fiókba importálja, kövesse az alábbi [utasításokat](mongodb-migrate.md).
+> Ha a MongoDB-hez Azure Cosmos DB API-val konfigurált Cosmos-fiókba importálja, kövesse az alábbi [utasításokat](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json).
 
 A MongoDB forrás-importáló lehetőséggel egyetlen MongoDB-gyűjteményből importálhatja, opcionálisan szűrheti a dokumentumokat egy lekérdezés használatával, és kivetítéssel módosíthatja a dokumentum struktúráját.  
 
@@ -152,7 +157,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>MongoDB-exportfájlok importálása
 
 > [!IMPORTANT]
-> Ha a MongoDB-t támogató Azure Cosmos DB-fiókba importál, kövesse az alábbi [utasításokat](mongodb-migrate.md).
+> Ha a MongoDB-t támogató Azure Cosmos DB-fiókba importál, kövesse az alábbi [utasításokat](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json).
 
 Forrásként MongoDB-exportálási JSON-fájlokat választva importálhat egy vagy több olyan JSON-fájlt, amelyet a mongoexport segédprogrammal hozott létre.  
 
@@ -237,7 +242,7 @@ Az Azure Table Storage kapcsolati sztringjének formátuma a következő:
 > [!NOTE]
 > Ellenőrizze a Verify paranccsal, hogy elérhető-e a kapcsolati sztringben megadott Azure Table Storage-példány.
 
-Adja meg annak az Azure-táblának a nevét, amelyből importálni kíván. Igény esetén adhat meg egy [szűrőt](../vs-azure-tools-table-designer-construct-filter-strings.md) is.
+Adja meg annak az Azure-táblának a nevét, amelyből importálni kíván. Igény esetén adhat meg egy [szűrőt](/visualstudio/azure/vs-azure-tools-table-designer-construct-filter-strings) is.
 
 Az Azure Table Storage importálási forráshoz a következő további beállításokat adhatja meg:
 
@@ -292,7 +297,7 @@ Az Azure Cosmos DB kapcsolati sztringjének formátuma a következő:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-A Azure Cosmos DB fiók kapcsolódási karakterláncát a Azure Portal kulcsok lapjáról kérheti le, a következő témakörben leírtak szerint: [Azure Cosmos db fiók kezelése](manage-account.md). Az adatbázis nevét azonban a következő formátumban kell hozzáfűzni a kapcsolódási karakterlánchoz:
+A Azure Cosmos DB fiók kapcsolódási karakterláncát a Azure Portal kulcsok lapjáról kérheti le, a következő témakörben leírtak szerint: [Azure Cosmos db fiók kezelése](./how-to-manage-database-account.md). Az adatbázis nevét azonban a következő formátumban kell hozzáfűzni a kapcsolódási karakterlánchoz:
 
 `Database=<CosmosDB Database>;`
 
@@ -363,7 +368,7 @@ Az Azure Cosmos DB kapcsolati sztringjének formátuma a következő:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-Az Azure Cosmos DB-fiók kapcsolati sztringjét beszerezheti az Azure Portal Kulcsok lapjáról az [Azure Cosmos DB-fiók kezelése](manage-account.md) című cikkben ismertetett módon, az adatbázis nevét azonban hozzá kell fűznie a kapcsolati sztringhez a következő formátumot követve:
+Az Azure Cosmos DB-fiók kapcsolati sztringjét beszerezheti az Azure Portal Kulcsok lapjáról az [Azure Cosmos DB-fiók kezelése](./how-to-manage-database-account.md) című cikkben ismertetett módon, az adatbázis nevét azonban hozzá kell fűznie a kapcsolati sztringhez a következő formátumot követve:
 
 `Database=<CosmosDB Database>;`
 
@@ -422,7 +427,7 @@ Az Azure Cosmos DB kapcsolati sztringjének formátuma a következő:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-A Azure Cosmos DB fiókhoz tartozó kapcsolódási karakterláncot a Azure Portal kulcsok lapjáról kérheti le, a következő témakörben leírtak szerint: [Azure Cosmos db fiók kezelése](manage-account.md). Az adatbázis nevét azonban a következő formátumban kell hozzáfűzni a kapcsolódási karakterlánchoz:
+A Azure Cosmos DB fiókhoz tartozó kapcsolódási karakterláncot a Azure Portal kulcsok lapjáról kérheti le, a következő témakörben leírtak szerint: [Azure Cosmos db fiók kezelése](./how-to-manage-database-account.md). Az adatbázis nevét azonban a következő formátumban kell hozzáfűzni a kapcsolódási karakterlánchoz:
 
 `Database=<Azure Cosmos database>;`
 
