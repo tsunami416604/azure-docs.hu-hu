@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e22252ea3e132aee39075d986d7f5a979e14c0a3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541288"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520234"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -311,7 +311,7 @@ Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a mu
 A helyszíni Active Directory létrehozásához a kiépítési ügynököt olyan kiszolgálóra kell telepíteni, amely .NET 4.7.1 + keretrendszert és hálózati hozzáférést biztosít a kívánt Active Directory tartomány (ok) hoz.
 
 > [!TIP]
-> A .NET-keretrendszer verzióját a kiszolgálón tekintheti meg az [itt](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)megadott utasítások alapján.
+> A .NET-keretrendszer verzióját a kiszolgálón tekintheti meg az [itt](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)megadott utasítások alapján.
 > Ha a kiszolgáló nem rendelkezik .NET 4.7.1 vagy újabb verzióval, letöltheti [innen.](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)  
 
 Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és kövesse az alábbi lépéseket az ügynök konfigurációjának befejezéséhez.
@@ -410,7 +410,7 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
    * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
 
      > [!NOTE]
-     > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) állapotba kerülnek.
+     > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](../app-provisioning/application-provisioning-quarantine-status.md) állapotba kerülnek.
 
    * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a munkanapokhoz tartozó hitelesítő adatok és az ügynök telepítésére konfigurált AD hitelesítő adatok érvényesek-e.
 
@@ -594,7 +594,7 @@ Nem, a megoldás nem tart fenn felhasználói profilok gyorsítótárát. Az Azu
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>Támogatja a megoldás a helyszíni AD-csoportok a felhasználóhoz való hozzárendelését?
 
-Ez a funkció jelenleg nem támogatott. Ajánlott megkerülő megoldásként olyan PowerShell-parancsfájlt helyezzen üzembe, amely lekérdezi a Microsoft Graph API-végpontot a [naplózási adatokhoz](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) , és ezzel olyan forgatókönyveket indít el, mint a csoport hozzárendelése Ez a PowerShell-parancsfájl csatolható egy Feladatütemezőhöz, és a kiépítési ügynököt futtató ugyanazon a gépen is üzembe helyezhető.  
+Ez a funkció jelenleg nem támogatott. Ajánlott megkerülő megoldásként olyan PowerShell-parancsfájlt helyezzen üzembe, amely lekérdezi a Microsoft Graph API-végpontot a [naplózási adatokhoz](/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) , és ezzel olyan forgatókönyveket indít el, mint a csoport hozzárendelése Ez a PowerShell-parancsfájl csatolható egy Feladatütemezőhöz, és a kiépítési ügynököt futtató ugyanazon a gépen is üzembe helyezhető.  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Milyen munkanap API-kat használ a megoldás a munkanap-munkavégző profilok lekérdezéséhez és frissítéséhez?
 
@@ -679,7 +679,7 @@ Cserélje le a [proxy-server] és [proxy-port] változókat a proxykiszolgálój
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Hogyan gondoskodjon arról, hogy a kiépítési ügynök képes legyen kommunikálni az Azure AD-Bérlővel, és egyetlen tűzfal sem blokkolja az ügynök által igényelt portokat?
 
-Azt is megtekintheti, hogy az összes [szükséges port](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports) nyitva van-e.
+Azt is megtekintheti, hogy az összes [szükséges port](../manage-apps/application-proxy-add-on-premises-application.md#open-ports) nyitva van-e.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>A kiépítési ügynökök több AD-tartomány kiépítésére is konfigurálhatók?
 
@@ -1049,7 +1049,7 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 8.    Kattintson a kis **Konfigurálás** hivatkozásra a kérelem/válasz ablaktáblán a munkanap hitelesítő adatainak megadásához. Győződjön meg a **hitelesítésről**, majd adja meg a munkanap-integrációs rendszer fiókjához tartozó felhasználónevet és jelszót. Ügyeljen arra, hogy a felhasználónevet \@ bérlőként formázza, és hagyja kiválasztva a **WS-Security UsernameToken** beállítást.
    ![Képernyőfelvétel: a "username" és a "password" beírt "Security" (biztonság) lap van kijelölve, és "WS-Security username token".](./media/workday-inbound-tutorial/wdstudio2.png)
 
-9. Kattintson az **OK** gombra.
+9. Válassza az **OK** lehetőséget.
 
 10. A **kérelem** ablaktáblában illessze be az alábbi XML-fájlt. **Employee_ID** beállítása egy valós felhasználó ALKALMAZOTTi azonosítójára a munkahelyen belüli bérlőben. Állítsa be a **WD: Version verziót** a használni kívánt WWS-verzióra. Válasszon ki egy olyan felhasználót, aki rendelkezik a kinyerni kívánt attribútummal.
 
@@ -1157,4 +1157,4 @@ Az adatmegőrzés tekintetében az Azure AD-létesítési szolgáltatás nem hoz
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
-* [Ismerje meg, hogyan használhatja a Microsoft Graph API-kat a kiépítési konfigurációk kezeléséhez](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Ismerje meg, hogyan használhatja a Microsoft Graph API-kat a kiépítési konfigurációk kezeléséhez](/graph/api/resources/synchronization-overview)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 59101e05345e9284b71b44d24732a45f3c53e629
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "88526540"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Oktatóanyag: Azure Active Directory integráció a Workspot-vezérlővel
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Workspot-vezérl
 * Lehetővé teheti a felhasználók számára, hogy az Azure AD-fiókjaik használatával automatikusan bejelentkezzenek a Workspot vezérlőbe (egyszeri bejelentkezés [SSO]).
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Az Azure AD-vel való SaaS-alkalmazások integrálásával kapcsolatos további információkért lásd: [egyszeri bejelentkezés az Azure ad-alkalmazásokba](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Az Azure AD-vel való SaaS-alkalmazások integrálásával kapcsolatos további információkért lásd: [egyszeri bejelentkezés az Azure ad-alkalmazásokba](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -176,7 +176,7 @@ Ebben a szakaszban egy teszt felhasználót hoz létre a Azure Portal.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Ezután jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
-    1. Válassza a **Létrehozás** lehetőséget.
+    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -236,12 +236,12 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Wo
 
 Ebben a szakaszban a *hozzáférési panelen*teszteljük az Azure ad egyszeri bejelentkezési konfigurációját.
 
-Ha a hozzáférési panelen a **Workspot vezérlő** csempére kattint, automatikusan be kell jelentkeznie arra a Workspot-vezérlőre, amelyhez be kell ÁLLÍTANIA az SSO-t. További információkért lásd: [Bevezetés a Hozzáférési panel használatába](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Ha a hozzáférési panelen a **Workspot vezérlő** csempére kattint, automatikusan be kell jelentkeznie arra a Workspot-vezérlőre, amelyhez be kell ÁLLÍTANIA az SSO-t. További információkért lásd: [Bevezetés a Hozzáférési panel használatába](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](./tutorial-list.md)
 
-- [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

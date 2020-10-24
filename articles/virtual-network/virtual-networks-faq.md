@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 86336ddb557613d42117480a5793e8b0ecbc7bae
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: e4b85c609c53c46cfab71f37b8427eb1cee29f1a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495841"
+ms.locfileid: "92518007"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -326,7 +326,7 @@ Az Azure-szolgáltatások erőforrásait két lépésben kell biztonságossá te
 1. Kapcsolja be a szolgáltatási végpontokat az Azure szolgáltatáshoz.
 2. VNet ACL-ek beállítása az Azure szolgáltatásban.
 
-Az első lépés egy hálózati oldali művelet, a második lépés pedig egy szolgáltatás-erőforrás oldali művelet. Mindkét lépést elvégezheti ugyanazon rendszergazda vagy különböző rendszergazdák, a rendszergazdai szerepkörhöz megadott RBAC engedélyek alapján. Javasoljuk, hogy a VNet ACL-ek beállítása előtt először kapcsolja be a virtuális hálózat szolgáltatási végpontját. Ezért a lépéseket a fent felsorolt sorrendben kell végrehajtani a VNet szolgáltatás-végpontok beállításához.
+Az első lépés egy hálózati oldali művelet, a második lépés pedig egy szolgáltatás-erőforrás oldali művelet. Mindkét lépést elvégezheti ugyanazzal a rendszergazdával vagy a különböző rendszergazdákkal a rendszergazdai szerepkörhöz megadott Azure RBAC engedélyek alapján. Javasoljuk, hogy a VNet ACL-ek beállítása előtt először kapcsolja be a virtuális hálózat szolgáltatási végpontját. Ezért a lépéseket a fent felsorolt sorrendben kell végrehajtani a VNet szolgáltatás-végpontok beállításához.
 
 >[!NOTE]
 > A fent ismertetett műveleteket is el kell végeznie ahhoz, hogy korlátozni lehessen az Azure-szolgáltatás hozzáférését az engedélyezett VNet és alhálózathoz. Csak a hálózati oldalon lévő Azure-szolgáltatáshoz tartozó végpontok bekapcsolása nem biztosítja a korlátozott hozzáférést. Emellett a VNet ACL-eket is be kell állítania az Azure-szolgáltatási oldalon.

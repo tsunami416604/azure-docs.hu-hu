@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168477"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517259"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-illesztőprogramok telepítése a Linuxon futó N sorozatú virtuális gépeken
 
@@ -161,6 +161,23 @@ Telepítsen RDMA-kompatibilis N sorozatú virtuális gépeket az Azure Marketpla
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
 * A **CentOS-alapú 7,4 HPC** -RDMA illesztőprogramok és az Intel MPI 5,1 telepítve vannak a virtuális gépen.
+
+* **CentOS-alapú HPC** -CentOS-HPC 7,6 és újabb (olyan SKU-ra, ahol a INFINIBAND támogatott SR-IOV-en keresztül). Ezek a lemezképek előre telepített Mellanox-OFED és MPI-könyvtárakkal rendelkeznek.
+
+> [!NOTE]
+> CX3-Pro kártyákat csak a Mellanox OFED LTS-verziói támogatják. ConnectX3-Pro kártyával rendelkező N sorozatú virtuális gépeken használja az LTS Mellanox OFED verzióját (4.9-0.1.7.0). További információ: Linux- [illesztőprogramok](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
+>
+> Emellett a legújabb Azure Marketplace HPC-lemezképek a Mellanox OFED 5,1-as és újabb verzióival rendelkeznek, amelyek nem támogatják ConnectX3-Pro kártyákat. A ConnectX3-Pro kártyával rendelkező virtuális gépeken való használat előtt keresse meg a HPC-rendszerkép Mellanox-OFED verzióját.
+>
+> Az alábbi képek a ConnectX3-Pro kártyákat támogató legújabb CentOS-HPC-rendszerképek:
+>
+> - OpenLogic: CentOS-HPC: 7.6:7.6.2020062900
+> - OpenLogic: CentOS-HPC: 7_6gen2:7.6.2020062901
+> - OpenLogic: CentOS-HPC: 7.7:7.7.2020062600
+> - OpenLogic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+> - OpenLogic: CentOS-HPC: 8_1:8.1.2020062400
+> - OpenLogic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+>
 
 ## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>GRID-illesztőprogramok telepítése NV-vagy NVv3-sorozatú virtuális gépeken
 
@@ -357,6 +374,6 @@ Ezután hozzon létre egy bejegyzést a frissítési parancsfájlhoz, `/etc/rc.d
 * Az adatmegőrzési módot úgy állíthatja be, hogy a `nvidia-smi` parancs kimenete gyorsabb legyen, ha kártyákat kell lekérdezni. Az adatmegőrzési mód beállításához futtassa a következőt: `nvidia-smi -pm 1` . Vegye figyelembe, hogy ha a virtuális gép újraindul, a Mode (mód) beállítás eltűnik. A mód beállítását bármikor végrehajthatja indításkor.
 * Ha a legújabb verzióra frissítette az NVIDIA CUDA-illesztőprogramokat, és megkeresi az RDMA-kapcsolatot, akkor [a kapcsolat újbóli létrehozásához telepítse újra a RDMA-illesztőprogramokat](#rdma-network-connectivity) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Linux rendszerű virtuálisgép-lemezképnek a telepített NVIDIA-illesztőprogramokkal való rögzítéséről lásd: [Linux rendszerű virtuális gép általánosítása és rögzítése](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -1024,8 +1024,6 @@
               href: disks-benchmarks.md
             - name: Teljesítmény optimalizálása
               href: optimization.md
-            - name: Szoftveres RAID konfigurálása
-              href: configure-raid.md
             - name: LVM konfigurálása
               href: configure-lvm.md
         - name: Nem csatlakoztatott lemezek keresése – parancssori felület

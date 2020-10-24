@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de4f52dae236502a087116aa72424641220c628
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758982"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517080"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszerben egyéni tárolóval
 
@@ -95,7 +95,10 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-A `-DjavaVersion` paraméter közli a functions futtatókörnyezettel, hogy a Java melyik verzióját használja. `-DjavaVersion=11`Ha szeretné, hogy a függvények a Java 11 rendszeren fussanak, az előzetes verzióban érhető el. Ha nem ad meg értéket `-DjavaVersion` , a Maven alapértelmezett értéke a Java 8. További információ: Java- [verziók](functions-reference-java.md#java-versions).
+A `-DjavaVersion` paraméter közli a functions futtatókörnyezettel, hogy a Java melyik verzióját használja. Akkor használja `-DjavaVersion=11` , ha azt szeretné, hogy a függvények Java 11 rendszeren fussanak. Ha nem ad meg értéket `-DjavaVersion` , a Maven alapértelmezett értéke a Java 8. További információ: Java- [verziók](functions-reference-java.md#java-versions).
+
+> [!IMPORTANT]
+> A `JAVA_HOME` környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani a cikk elvégzéséhez.
 
 A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse.   
 Ha a rendszer kéri, adja meg a következő értékeket:
@@ -517,7 +520,7 @@ A folyamatos költségek elkerülése érdekében törölje az `AzureFunctionsCo
 az group delete --name AzureFunctionsContainer-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Figyelési függvények](functions-monitoring.md)
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)

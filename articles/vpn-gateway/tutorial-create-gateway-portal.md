@@ -5,13 +5,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 10/21/2020
-ms.openlocfilehash: 41bb69d675f3aa45061dab3236eae5c869bc346b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 10/23/2020
+ms.openlocfilehash: 74000322372652b90e0d0db07d687f8e57c4f88e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460767"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518245"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Oktatóanyag: VPN Gateway létrehozása és kezelése Azure Portal használatával
 
@@ -98,9 +98,12 @@ Ha nem folytatja az alkalmazás használatát, vagy folytassa a következő okta
 
 1. Adja meg az erőforráscsoport **nevét, írja be az erőforráscsoport nevét** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A következő cikkből megtudhatja, hogyan végezheti el a következőket:
+Ha a VPN-átjáróval rendelkezik, megadhatja a kapcsolatokat. Az alábbi cikkek segítséget nyújtanak a leggyakoribb konfigurációk létrehozásához:
 
 > [!div class="nextstepaction"]
-> [Helyek közötti VPN-kapcsolatok létrehozása és kezelése](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> [Helyek közötti VPN-kapcsolatok](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+
+> [!div class="nextstepaction"]
+> [Pont – hely típusú VPN-kapcsolatok](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

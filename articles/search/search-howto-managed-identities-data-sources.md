@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 787c7d7df5f013dd4477e466c02a2b323b4b59df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f1c4bf9b599da8285ac69e299549e5aa73c2f9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275098"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519588"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása egy adatforráshoz felügyelt identitás használatával
 
@@ -31,7 +31,7 @@ A probléma megoldásához felügyelt identitás használatával kell beállíta
 
 ## <a name="using-managed-identities"></a>Felügyelt identitások használata
 
-A [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) szolgáltatás egy automatikusan felügyelt identitással rendelkező Azure-szolgáltatásokat biztosít Azure Active Directory (Azure ad). Ezt a funkciót az Azure Cognitive Searchban olyan adatforrás-objektum létrehozására használhatja, amely nem tartalmaz hitelesítő adatokat. Ehelyett a keresési szolgáltatás szerepköralapú hozzáférés-vezérléssel (RBAC) lesz elérhető az adatforráshoz.
+A [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) szolgáltatás egy automatikusan felügyelt identitással rendelkező Azure-szolgáltatásokat biztosít Azure Active Directory (Azure ad). Ezt a funkciót az Azure Cognitive Searchban olyan adatforrás-objektum létrehozására használhatja, amely nem tartalmaz hitelesítő adatokat. Ehelyett a keresési szolgáltatás az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával fogja biztosítani az adatforráshoz való hozzáférést.
 
 Ha felügyelt identitással állítja be az adatforrást, módosíthatja az adatforrás hitelesítő adatait, és az indexelő továbbra is csatlakozhatnak az adatforráshoz. Az adatforrás-objektumokat a kódban is létrehozhatja anélkül, hogy hozzá kellene adnia egy fiókot, vagy a Key Vaultt kell használnia a fiók kulcsainak lekéréséhez.
 

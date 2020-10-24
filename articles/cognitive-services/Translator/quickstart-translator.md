@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator Service, szöveg lefordítása, átbetűzés-szöveg, nyelvfelismerés
-ms.openlocfilehash: e5b0bc17e8df1d82fb23a098f857be4fea13b982
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ca86ce1dc015c8d7ee3bc83a6d7e3279a146f195
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318840"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517038"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Gyors útmutató: a fordító használatának első lépései
 
@@ -58,7 +58,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Translator sz
 
 # <a name="java"></a>[Java](#tab/java)
 
-* Hozzon létre egy munkakönyvtárat a projekthez. Például: `mkdir sample-project`.
+* Hozzon létre egy munkakönyvtárat a projekthez. Például így: `mkdir sample-project`.
 * A projekt inicializálása a Gradle: `gradle init --type basic` . Amikor a rendszer rákérdez a **DSL**kiválasztására, válassza a **Kotlin**lehetőséget.
 * Frissítés `build.gradle.kts` . Ne feledje, hogy a mintától függően frissítenie kell a-t `mainClassName` .
   ```java
@@ -85,14 +85,14 @@ Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Translator sz
 * Hozzon létre egy új projektet a kedvenc IDE vagy szerkesztőben.
 * Másolja a kódot az egyik mintából a projektbe.
 * Állítsa be az előfizetési kulcsot.
-* Futtassa a programot. Például: `node Translate.js`.
+* Futtassa a programot. Például így: `node Translate.js`.
 
 # <a name="python"></a>[Python](#tab/python)
 
 * Hozzon létre egy új projektet a kedvenc IDE vagy szerkesztőben.
 * Másolja a kódot az egyik mintából a projektbe.
 * Állítsa be az előfizetési kulcsot.
-* Futtassa a programot. Például: `python translate.py`.
+* Futtassa a programot. Például így: `python translate.py`.
 
 ---
 
@@ -2441,7 +2441,13 @@ Sikeres hívás után a következő választ kell látnia. További információ
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="java-users"></a>Java-felhasználók
+
+Ha kapcsolati problémákat tapasztal, előfordulhat, hogy az SSL-tanúsítványa lejárt. A probléma megoldásához telepítse a [DigiCertGlobalRootG2. CRT](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) -t a privát áruházba. 
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg, hogy az API hogyan számolja a karaktereket](character-counts.md)
 * [A fordítás testreszabása és javítása](customization.md)

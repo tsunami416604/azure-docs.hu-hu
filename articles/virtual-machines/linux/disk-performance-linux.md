@@ -7,21 +7,21 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 3b849640bc7adb38fe51c3c7a9dda2d1d14f35fa
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 092368bb66784a00d5116da0b6be6513f8ebb261
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017250"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518065"
 ---
 # <a name="virtual-machine-and-disk-performance"></a>Virtuálisgép- és lemezteljesítmény
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance.md)]
 
 ## <a name="virtual-machine-uncached-vs-cached-limits"></a>A virtuális gép nem gyorsítótárazott és gyorsítótárazott korlátai
-A Premium Storage-t és a Premium Storage-gyorsítótárazást engedélyező virtuális gépek esetében két különböző tárolási sávszélességre vonatkozó korlát van. Folytassa a Standard_D8s_v3 virtuális gép példájának megtekintésével. A [Dsv3-sorozat](../dv3-dsv3-series.md) dokumentációja és a Standard_D8s_v3:
+A Premium Storage-hoz és a Premium Storage-gyorsítótárazáshoz engedélyezett virtuális gépeknek két különböző tárolási sávszélessége van. Tekintsük át például a Standard_D8s_v3 virtuális gépet. A [Dsv3 sorozat](../dv3-dsv3-series.md) és a Standard_D8s_v3 dokumentációja:
 
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance-2.md)]
 
-Futtasson egy teljesítményteszt-tesztet ezen a virtuális gépen és a lemeznek az IO-tevékenység létrehozásához szükséges kombinációján [here](disks-benchmarks.md) A benchmarking eszközből láthatja, hogy a virtuális gép és a lemez kombinációja elérheti a 22 800 IOPS:
+Futtasson egy teljesítményteszt-tesztet ezen a virtuális gépen és az i/o-tevékenységet létrehozó lemez-kombináción. Ha szeretné megtudni, hogyan lehet az Azure-on alapuló adatforgalomra vonatkozó teljesítménytesztet megismerni, tekintse [meg az alkalmazás az Azure Disk Storage](disks-benchmarks.md) A benchmarking eszközből láthatja, hogy a virtuális gép és a lemez kombinációja elérheti a 22 800 IOPS:
 
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance-3.md)]

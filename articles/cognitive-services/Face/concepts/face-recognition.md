@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00dadf8a91b7ed01ab9f91933d296744305a95af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323022"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518806"
 ---
 # <a name="face-recognition-concepts"></a>Arcfelismerés – fogalmak
 
@@ -58,7 +58,7 @@ Az [azonosítási](https://westus.dev.cognitive.microsoft.com/docs/services/5638
 A következő tippek segítségével biztosíthatja, hogy a bemeneti képek a legpontosabb felismerési eredményeket adjanak:
 
 * A támogatott bemeneti képformátumok a következők: JPEG, PNG, GIF (az első keret), BMP.
-* A képfájl mérete nem lehet nagyobb 4 MB-nál.
+* A képfájl mérete nem lehet hosszabb 6 MB-nál.
 * Ha személy objektumokat hoz létre, különféle nézőpontokat és megvilágítást használó képeket használhat.
 * Előfordulhat, hogy néhány arc nem ismerhető fel technikai kihívások miatt, például:
   * Rendkívüli megvilágítás, például súlyos háttérvilágítású képek.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4e844904f236e9d81404a3481af9349ac8881085
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3604a2efb4d6f8c08a19d832c8523e44df352444
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310441"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518772"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Service Bus Azure biztonsági alapterve
 
@@ -227,7 +227,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi az Azure-erőforrásokhoz való hozzáférés kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. A Service Bushoz előre definiált beépített szerepkörök tartoznak, ezek a szerepkörök leltározott vagy lekérdezhető olyan eszközökkel, mint például az Azure CLI, a Azure PowerShell vagy a Azure Portal.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure-erőforrásokhoz való hozzáférés kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. A Service Bushoz előre definiált beépített szerepkörök tartoznak, ezek a szerepkörök leltározott vagy lekérdezhető olyan eszközökkel, mint például az Azure CLI, a Azure PowerShell vagy a Azure Portal.
 
 - [A Azure Service Bus beépített szerepkörei](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 

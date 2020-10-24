@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 10/02/2020
+ms.date: 10/23/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcef70d821c7148cb926bd9357bbe656ceae35fe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d0e2ce094b792d6f3f7e5f8fe1920d87a9cceea2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375704"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517175"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Felhasználói felügyeleti fejlesztések (előzetes verzió) Azure Active Directory
 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Active Directory (Azure AD
 Az előzetes verzió változásai a következők:
 
 - További látható felhasználói tulajdonságok, például az objektumazonosító, a címtár-szinkronizálás állapota, a létrehozás típusa és az identitás kiállítója
-- A keresés mostantól lehetővé teszi a nevek, e-mailek és objektumazonosítók együttes keresését
+- A keresés lehetővé teszi az alsztringek keresését és a nevek, e-mailek és objektumazonosítók keresését
 - Továbbfejlesztett szűrés felhasználói típus szerint (tag, vendég, nincs), címtár-szinkronizálási állapot, létrehozás típusa, cégnév és tartománynév
 - Új rendezési képességek olyan tulajdonságokhoz, mint a név és az egyszerű Felhasználónév
 - Új felhasználók száma, amelyek keresések vagy szűrők használatával frissülnek
@@ -59,7 +59,7 @@ A **minden felhasználó** lapon látható felhasználói tulajdonságok a köve
 
 - Name (név): a felhasználó megjelenített neve.
 - Egyszerű Felhasználónév: a felhasználó egyszerű felhasználóneve (UPN).
-- Felhasználó típusa: a felhasználó felhasználói típusa, vagy tag vagy vendég.
+- Felhasználó típusa: tag, vendég, nincs.
 - Könyvtár szinkronizálva: azt jelzi, hogy a felhasználó szinkronizálva van-e egy helyszíni címtárból.
 - Identity kiállító: a felhasználói fiókba való bejelentkezéshez használt identitás kibocsátói.
 - Objektum azonosítója: a felhasználó objektumazonosító.
@@ -67,6 +67,7 @@ A **minden felhasználó** lapon látható felhasználói tulajdonságok a köve
 - Cégnév: annak a vállalatnak a neve, amelyhez a felhasználó társítva van.
 - Meghívási állapot: a vendég felhasználó meghívásának állapota.
 - Mail: a felhasználó e-mail-címe.
+- Utolsó bejelentkezés: az a dátum, ameddig a felhasználó utoljára bejelentkezett. Ez a tulajdonság csak a naplók olvasására jogosult felhasználók számára látható (Reporting_ApplicationAuditLogs_Read)
 
 ![az összes felhasználó és a törölt felhasználók lapokon megjelenő új felhasználói tulajdonságok](./media/users-search-enhanced/user-properties.png)
 
@@ -75,7 +76,10 @@ A **minden felhasználó** lapon látható felhasználói tulajdonságok a köve
 A **törölt felhasználók** lap tartalmazza az összes **felhasználó** lapon elérhető összes oszlopot, valamint néhány további oszlopot, nevezetesen:
 
 - Törlés dátuma: az a dátum, amikor a felhasználót először törölték a szervezetből (a felhasználó helyreállítható).
-- Végleges törlés dátuma: az a dátum, ameddig a felhasználó véglegesen törölve lett a szervezetből.
+- Végleges törlés dátuma: az a dátum, amely után a rendszer automatikusan törli a felhasználót a szervezettől. 
+
+> [!NOTE]
+> A törlési dátumok az egyezményes világidő (UTC) szerint jelennek meg.
 
 A rendszer alapértelmezés szerint egyes oszlopokat jelenít meg. További oszlopok hozzáadásához jelölje ki az **oszlopok** elemet az oldalon, válassza ki a hozzáadni kívánt oszlopokat, majd kattintson **az OK** gombra a beállítások mentéséhez.
 
@@ -88,7 +92,7 @@ Válasszon egy bejegyzést az **Identity kiállító** oszlopban bármely felhas
 
 ## <a name="user-list-search"></a>Felhasználói lista keresése
 
-Ha keresési karakterláncot ad meg, a Keresés az "Indítás a következővel" kifejezést használja, amely a nevek, e-mail-EK vagy objektumazonosítók egyetlen kereséssel való egyezését teszi elérhetővé. Bármelyik attribútumot beírhatja a keresőmezőbe, és a keresés automatikusan megkeresi az összes tulajdonságot, hogy visszaadja a megfelelő eredményeket. Ugyanezt a keresést a **minden felhasználó** és a **törölt felhasználók** lapokon is elvégezheti.
+Ha keresési karakterláncot ad meg, a keresés mostantól a "Start with" és az alsztring keresés használatával egyezteti a neveket, e-maileket vagy objektumazonosítók egyetlen keresésben. Ezen attribútumok bármelyikét megadhatja a keresőmezőbe, és a keresés automatikusan megkeresi az összes tulajdonságot, hogy visszaadja a megfelelő eredményeket. Az alkarakterlánc-keresés csak egész szavakon hajtható végre. Ugyanezt a keresést a **minden felhasználó** és a **törölt felhasználók** lapokon is elvégezheti.
 
 ## <a name="user-list-filtering"></a>Felhasználói lista szűrése
 
@@ -133,10 +137,10 @@ A felhasználók teljes számát a **minden felhasználó** és a **törölt fel
 
 Kérdés | Válasz
 -------- | ------
+Miért jelenik meg a törölt felhasználó, ha az állandó törlési dátum át lett adva? | Az állandó törlés dátuma az UTC időzónában jelenik meg, így előfordulhat, hogy ez nem egyezik meg a jelenlegi időzónával. Emellett ez a dátum a legkorábbi dátum, amely után a felhasználó véglegesen törlődik a szervezetből, így továbbra is feldolgozható. A véglegesen törölt felhasználók automatikusan el lesznek távolítva a listából.
 Mi történik a felhasználók és a vendégek tömeges képességeivel? | A tömeges műveletek mind elérhetők a felhasználók és a vendégek számára, beleértve a tömeges létrehozását, a tömeges meghívást, a tömeges törlést és a felhasználók letöltését. Most egyesítjük őket egy **tömeges műveletek**nevű menübe. A **tömeges műveletek** beállításai a **minden felhasználó** lap tetején találhatók.
 Mi történt a forrás oszloppal? | A **forrás** oszlopot lecserélték más oszlopokra, amelyek hasonló információt biztosítanak, miközben lehetővé teszi az értékek egymástól független szűrését. Ilyenek például a **Létrehozás típusa**, a **címtárral szinkronizált** és az **identitás kiállítója**.
 Mi történt a Felhasználónév oszloppal? | A **Felhasználónév** oszlop még mindig létezik, de az **egyszerű felhasználónévre**lett átnevezve. Ez jobban megfelel az adott oszlopban található információknak. Azt is láthatja, hogy a teljes egyszerű felhasználónév mostantól megjelenik a B2B vendégek számára. Ez megegyezik azzal, amit az MS Graph-ban fog kapni.  
-Miért csak a "Start with" (indítás a következővel) keresési lehetőséggel végezhető a keresés? | Vannak olyan korlátozások, amelyek megakadályozzák, hogy a "tartalmaz" keresési műveletet engedélyezze. Hallottuk a visszajelzést, így maradunk.
 
 ## <a name="next-steps"></a>Következő lépések
 

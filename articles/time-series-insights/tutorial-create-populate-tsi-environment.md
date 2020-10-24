@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6037ece7f4cbe0edc9cf44bded3ee34815f76a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d504cbe9c2ac9046a34187d4a5576385b1f73bbe
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620205"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518109"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Oktatóanyag: Azure Time Series Insights Gen1-környezet létrehozása
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag végigvezeti egy olyan Azure Time Series Insights-környezet 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure bejelentkezési fiókjának az előfizetés **tulajdonosi** szerepkörének is tagja kell lennie. További információért olvassa el [a hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)című témakört.
+* Az Azure bejelentkezési fiókjának az előfizetés **tulajdonosi** szerepkörének is tagja kell lennie. További információért olvassa el [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával című részt](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="review-video"></a>Videó áttekintése
 

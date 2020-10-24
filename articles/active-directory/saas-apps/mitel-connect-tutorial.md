@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 044ee51fb7ff675af0fb97224313c388c4cbeac1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371341"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521339"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Oktatóanyag: Azure Active Directory integráció a Mitel MiCloud csatlakozással vagy a CloudLink platformmal
 
@@ -25,7 +25,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Mitel-összeköt�
 * A felhasználók hozzáférését a MiCloud és az Azure AD-ben a vállalati hitelesítő adataik használatával is CloudLink.
 * A fiókjában lévő felhasználók számára engedélyezheti, hogy a rendszer automatikusan bejelentkezzen a MiCloud csatlakozni vagy a CloudLink (egyszeri bejelentkezés) az Azure AD-fiókjával.
 
-Az Azure AD-vel való SaaS-alkalmazások integrálásával kapcsolatos részletekért lásd: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Az Azure AD-vel való SaaS-alkalmazások integrálásával kapcsolatos részletekért lásd: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) , mielőtt megkezdené az Azure ad-integrációt az Mitel MiCloud csatlakozás vagy a CloudLink platformmal.
 
@@ -41,7 +41,7 @@ Az Azure AD-integráció MiCloud-kapcsolaton keresztüli konfigurálásához a k
 Ebben az oktatóanyagban az Azure AD egyszeri bejelentkezést (SSO) konfigurálja és teszteli.
 
 * Az Mitel-összekötő támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-* A Mitel-kapcsolat konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós idejű védelmet biztosít a szervezet bizalmas adatai kiszűrése és beszivárgásának. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A Mitel-kapcsolat konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós idejű védelmet biztosít a szervezet bizalmas adatai kiszűrése és beszivárgásának. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-mitel-connect-from-the-gallery"></a>Mitel-kapcsolat hozzáadása a katalógusból
 
@@ -172,7 +172,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
-    1. Válassza a **Létrehozás** lehetőséget.
+    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -221,7 +221,7 @@ Hozzon létre egy felhasználót a MiCloud csatlakozási fiókjában a következ
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával tesztelheti.
 
-Amikor kiválasztja a Mitel csatlakozás csempét a hozzáférési panelen, a rendszer automatikusan átirányítja a bejelentkezési **URL-cím** mezőben az alapértelmezettként konfigurált MiCloud-csatlakozási alkalmazásba való bejelentkezéshez. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Mitel csatlakozás csempét a hozzáférési panelen, a rendszer automatikusan átirányítja a bejelentkezési **URL-cím** mezőben az alapértelmezettként konfigurált MiCloud-csatlakozási alkalmazásba való bejelentkezéshez. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="configure-and-test-azure-ad-sso-with-cloudlink-platform"></a>Azure AD SSO konfigurálása és tesztelése CloudLink platformmal
 
@@ -327,7 +327,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
-    1. Válassza a **Létrehozás** lehetőséget.
+    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -375,12 +375,12 @@ Hozzon létre egy felhasználót a CloudLink-fiókok portálján a következő r
 
 Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési panel használatával tesztelheti.
 
-Amikor kiválasztja a Mitel csatlakozás csempét a hozzáférési panelen, a rendszer automatikusan átirányítja a bejelentkezési **URL-cím** mezőben az alapértelmezettként konfigurált CloudLink-alkalmazásba való bejelentkezéshez. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Mitel csatlakozás csempét a hozzáférési panelen, a rendszer automatikusan átirányítja a bejelentkezési **URL-cím** mezőben az alapértelmezettként konfigurált CloudLink-alkalmazásba való bejelentkezéshez. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

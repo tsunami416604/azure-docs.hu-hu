@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207707"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520989"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
@@ -44,7 +44,7 @@ Az alábbi táblázat azokat a lépéseket és követelményeket sorolja fel, am
 
 |Lépés    |Csomag típusa    |Követelmények    |Közös értékesítés állapota    |
 |----    |-------------    |------------    |---------------   |
-|<ol start=1><li> Hozzon létre egy fiókot a partner Centerben, és tegye közzé ajánlatát a kereskedelmi piactéren.</li>|Mind|<li>Az ajánlat megfelel a kereskedelmi piactér közzétételi követelményeinek.</li><li>Rendelkezik egy teljes körű üzleti profillal a partner Centerben.</li>|Nem áll készen|
+|<ol start=1><li> Hozzon létre egy fiókot a partner Centerben, és tegye közzé ajánlatát a kereskedelmi piactéren.</li>|Az összes|<li>Az ajánlat megfelel a kereskedelmi piactér közzétételi követelményeinek.</li><li>Rendelkezik egy teljes körű üzleti profillal a partner Centerben.</li>|Nem áll készen|
 |<ol start=2><li>Kötelező közös értékesítésű anyagok beküldése.</li>|IP- *ajánlatok* [közös értékesítési lehetőséggel a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Szükséges anyagok feltöltése a partner Centerben](#how-to-submit-co-sell-materials-in-partner-center)|Közös értékesítés kész|
 ||IP- *without* ajánlatok [közös értékesítés nélkül lehetőség a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|<li>A kötelező közös értékesítéshez szükséges dokumentáció biztosítására irányuló kérelem a [Felhőbeli szakértőkkel](https://partner.microsoft.com/campaigns/ced-nomination-form/) való együttműködéshez.|Közös értékesítés kész|
 ||Tanácsadási szolgáltatások|<li>A kötelező közös értékesítéshez szükséges dokumentáció biztosítására irányuló kérelem a [Felhőbeli szakértőkkel](https://partner.microsoft.com/campaigns/ced-nomination-form/) való együttműködéshez.</li><li>Aktív arany kompetencia.</li>|Közös értékesítés kész|
@@ -75,11 +75,13 @@ Az alábbi lépéseket követve közvetlenül a partner Centerben kezdheti meg a
  
 1. Töltse fel az értékesítési kapcsolattartási adatokat a **névjegyek** szakaszban. Előfordulhat, hogy a Microsoft-értékesítők felhasználhatják ezeket a partnereket az ajánlatával kapcsolatos további információk igényléséhez. (*Kötelező: kapcsolat minden olyan földrajzi helyhez, ahol az ajánlat elérhetővé válik.*)
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon.":::
+    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon." legördülő menüben:
+<ul><ul>
 
-1. A folytatás előtt mentse a piszkozatot.
-1. Miután elvégezte az ajánlat összes szükséges részét, elküldheti azt véleményezésre és közzétételre. A jobb felső sarokban válassza a **felülvizsgálat és közzététel**lehetőséget. Tekintse át az ajánlat részleteit, majd válassza a **Közzététel**lehetőséget.
-1. Áttekintjük a feltöltött anyagokat, és eldöntjük, hogy az ajánlat megfelel-e a közös értékesítési programnak.
+:::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon.":::
+
+A folyamat elvégzéséhez a CED fogja elérni.
+</ul></ul>
 
 ## <a name="next-steps"></a>Következő lépések
 

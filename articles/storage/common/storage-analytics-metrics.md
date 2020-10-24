@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef38e36ce1d2c7968e3eb7079270626629523334
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021153"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518735"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics metrikák (klasszikus)
 
@@ -74,7 +74,7 @@ Az alábbi lépéseket követve engedélyezheti a metrikákat a [Azure Portalban
 1. Győződjön **meg**arról, hogy az **állapot** beállítása be értékre van állítva.
 1. Válassza ki a figyelni kívánt szolgáltatások mérőszámait.
 1. Adja meg az adatmegőrzési szabályzatot, amely azt jelzi, hogy meddig kell megőrizni a metrikákat és a naplózási adatokat.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 A [Azure Portal](https://portal.azure.com) jelenleg nem teszi lehetővé perc típusú metrikák konfigurálását a Storage-fiókban. A perc típusú metrikákat a PowerShell vagy programozott módon kell engedélyeznie.
 
@@ -176,7 +176,10 @@ Ez a mintaadatok egy percen belüli összes rekordot jeleníti meg (a 11-es napt
 >
 
 ## <a name="access-metrics-data-programmatically"></a>A metrikák adatai programozott módon érhetők el  
-Az alábbi lista a C#-kódot mutatja be, amely egy percen belül fér hozzá a perc mérőszámokhoz, és megjeleníti az eredményeket egy konzolablak-ablakban. A kód minta az Azure Storage ügyféloldali kódtára 4. x vagy újabb verzióját használja, amely a **CloudAnalyticsClient** osztályt is tartalmazza, amely leegyszerűsíti a tárolóban lévő metrikai táblák elérését.  
+Az alábbi lista a C#-kódot mutatja be, amely egy percen belül fér hozzá a perc mérőszámokhoz, és megjeleníti az eredményeket egy konzolablak-ablakban. A kód minta az Azure Storage ügyféloldali kódtára 4. x vagy újabb verzióját használja, amely a **CloudAnalyticsClient** osztályt is tartalmazza, amely leegyszerűsíti a tárolóban lévő metrikai táblák elérését. 
+
+> [!NOTE]
+> A **CloudAnalyticsClient** osztály nem szerepel a .net-hez készült Azure Blob Storage ügyféloldali kódtáraban. Az **2023-as augusztus 31-** én Storage Analytics metrikákat, más néven a *klasszikus metrikákat* is kivezetjük. További információért tekintse meg a [hivatalos bejelentést](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/). Ha klasszikus metrikákat használ, javasoljuk, hogy az adott dátum előtt Azure Monitor metrikára váltson. 
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)  

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58da5c73ea2674bbbd1536a163e163aa0ff31d96
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597668"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521288"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Oktatóanyag: Azure Time Series Insights Gen2-környezet beállítása
 
@@ -38,7 +38,7 @@ Ha még nem rendelkezik ilyennel, regisztráljon egy [ingyenes Azure-előfizeté
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Legalább a **közreműködő** szerepkörrel kell rendelkeznie az Azure-előfizetéshez. További információért olvassa el [a hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)című témakört.
+* Legalább a **közreműködő** szerepkörrel kell rendelkeznie az Azure-előfizetéshez. További információért olvassa el [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával című részt](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Eszközszimuláció létrehozása
 
@@ -91,8 +91,8 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
     | **Erőforráscsoport** | Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot a Azure Time Series Insights Gen2 környezeti erőforráshoz. Az erőforráscsoport az Azure-erőforrások tárolója. Az ajánlott eljárás az, hogy ugyanazt az erőforráscsoportot használja, mint az eszköz-szimulátor által létrehozott többi IoT-erőforrást. |
     | **Hely** | Válasszon ki egy adatközpont-régiót Azure Time Series Insights Gen2-környezetéhez. A további késés elkerülése érdekében érdemes létrehozni a Azure Time Series Insights Gen2-környezetét ugyanabban a régióban, mint az eszköz-szimulátor által létrehozott IoT hub. |
     | **Szint** |  Válassza a **Gen2 (L1)** lehetőséget. Ez a Azure Time Series Insights Gen2 termék SKU-jának. |
-    | **Idősorozat-azonosító tulajdonságának neve** | Adja meg az idősorozat-példányok egyedi azonosítására szolgáló értékeket tartalmazó tulajdonság nevét. A **tulajdonságnév** mezőben megadott érték idősorozat-azonosítóként való megadása később nem módosítható. Ebben az oktatóanyagban adja meg a ***iothub--kapcsolatok-Device-ID***értéket. Ha többet szeretne megtudni az idősorozat-AZONOSÍTÓról, beleértve az összetett idősorozat-azonosítót, olvassa el az [ajánlott eljárásokat az Idősorozat-azonosító kiválasztásához](./time-series-insights-update-how-to-id.md). |
-    | **Tárfiók neve** | Adjon meg egy globálisan egyedi nevet egy új Storage-fiókhoz.|
+    | **Idősorozat-azonosító tulajdonságának neve** | Adja meg az idősorozat-példányok egyedi azonosítására szolgáló értékeket tartalmazó tulajdonság nevét. A **tulajdonságnév** mezőben megadott érték idősorozat-azonosítóként való megadása később nem módosítható. Ebben az oktatóanyagban adja meg a **_iothub--kapcsolatok-Device-ID_*_ értéket. Ha többet szeretne megtudni az idősorozat-AZONOSÍTÓról, beleértve az összetett idősorozat-azonosítót, olvassa el az [ajánlott eljárásokat az Idősorozat-azonosító kiválasztásához](./time-series-insights-update-how-to-id.md). |
+    | _*Storage-fiók neve** | Adjon meg egy globálisan egyedi nevet egy új Storage-fiókhoz.|
     | **Storage-fiók típusa** | Válassza ki az új Storage-fiók tárolási típusát. Ajánlott StorageV2|
     | **Storage-fiók replikálása** | Válassza ki az új Storage-fiók tárolási típusát. A hely kiválasztása alapján a LRS, a GRS és a ZRS közül választhat. Ebben az oktatóanyagban választhat LRS|
     | **Hierarchikus névtér** |Ez a beállítás választható, ha kijelöli a StorageV2 Storage-típust. Alapértelmezés szerint le van tiltva. Ebben az oktatóanyagban meghagyhatja az alapértelmezett *letiltott* állapotban.|
@@ -255,7 +255,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
         [![Adja meg a típus változóit.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
     1. Kattintson az **Alkalmaz** gombra. 
-    1. Kattintson a **Mentés** gombra. A rendszer három változót hoz létre és jelenít meg.
+    1. Válassza a **Mentés** lehetőséget. A rendszer három változót hoz létre és jelenít meg.
 
         [![A típus hozzáadását követően tekintse át a modellt a modell nézetben.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
@@ -268,7 +268,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
         | **Név** | Adja meg a **hely hierarchiáját**. |
         |**Szintek**| Adja meg az **országot** az első szint neveként <br /> Válassza a **+ szint hozzáadása** lehetőséget <br /> Adja meg a második szint **városát** , majd válassza a **+ szint hozzáadása** elemet. <br /> A harmadik és utolsó szint neveként adja meg a **Building** nevet |
 
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
 
         [![Az új hierarchia megjelenítése a modell nézetben.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
@@ -287,11 +287,11 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
         | Paraméter | Művelet |
         | --- | --- |
         | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
-        | **Ország** | **USA** megadása |
+        | **Country** | **USA** megadása |
         | **City** | **Seattle** megadása |
         | **Létrehozása** | Adja meg a **térközt** |
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 1. Ismételje meg az előző lépést a másik két példánnyal a következő értékek használatakor:
 
@@ -303,7 +303,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
     | **Név** | **2. felvonó** megadása|
     | **Leírás** | **A 2. felvonóhoz tartozó példány** megadása |
     | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
-    | **Ország** | **USA** megadása |
+    | **Country** | **USA** megadása |
     | **City** | **Seattle** megadása |
     | **Létrehozása** | A **Pacific Science Center** megadása |
 
@@ -315,7 +315,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
     | **Név** | **3. felvonó** megadása|
     | **Leírás** | **A 3. felvonóhoz tartozó példány** megadása |
     | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
-    | **Ország** | **USA** megadása |
+    | **Country** | **USA** megadása |
     | **City** | Adja meg a **New York** -i |
     | **Létrehozása** | Adja meg a **Birodalom állapotának kiépítése** |
 

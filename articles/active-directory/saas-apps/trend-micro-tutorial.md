@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551896"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514537"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Trend Micro Web Security (TMWS) szolgáltatással
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Trend Micro Web 
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a TMWS az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ A kezdéshez a következők szükségesek:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tesztkörnyezetben végezheti el.
 
 * A TMWS támogatja az SP által kezdeményezett egyszeri bejelentkezést.
-* A TMWS konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. Ha meg szeretné tudni, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security használatával, tekintse meg a feltételes hozzáférést biztosító alkalmazás-vezérlő bevezetését [és az alkalmazások üzembe helyezését](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* A TMWS konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. Ha meg szeretné tudni, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security használatával, tekintse meg a feltételes hozzáférést biztosító alkalmazás-vezérlő bevezetését [és az alkalmazások üzembe helyezését](/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="add-tmws-from-the-gallery"></a>TMWS hozzáadása a gyűjteményből
 
@@ -95,7 +95,7 @@ A következő lépésekkel engedélyezheti az Azure AD SSO használatát a Azure
 
 1. Az előző képernyőképen lévő attribútumok mellett a TMWS két további attribútumot vár az SAML-válaszban. Ezek az attribútumok az alábbi táblázatban láthatók. Az attribútumok előre ki vannak töltve, de megváltoztathatók a követelmények teljesítése érdekében.
     
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | uPN | User. userPrincipalName |
@@ -116,7 +116,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **nevet** `B.Simon` .  
-   1. A Felhasználónév **mezőbe írja be a** ***username cégestartomány nevet *@* *.* bővítmény***. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a **_Felhasználónév_ @ *cégestartomány *.* bővítmény * * *. Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -206,7 +206,7 @@ A következő lépések végrehajtásával konfigurálhatja a TMWS SSO-t az alka
 
     e. Kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad szolgáltatás sikeresen csatlakoztatva van-e.
     
-    f. Kattintson a **Mentés** gombra.
+    f. Válassza a **Mentés** lehetőséget.
  
  > [!NOTE]
  > A TMWS Azure AD-vel való konfigurálásával kapcsolatos további információkért lásd: [Az Azure ad-beállítások konfigurálása a TMWS-on](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx).
@@ -230,15 +230,14 @@ Miután konfigurálta az Azure AD szolgáltatást, és megadta a felhasználói 
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
 
 - [A Trend Micro Web Security kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A Trend Micro Web Security védelme fejlett láthatósággal és ellenőrzésekkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [A Trend Micro Web Security védelme fejlett láthatósággal és ellenőrzésekkel](/cloud-app-security/proxy-intro-aad)

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5c106c1464ec6d77305b1985cc8dbd51e2b4db
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460641"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519477"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Felügyelt identitások használata Azure SQL Database Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)
 
@@ -60,7 +60,7 @@ A felügyelt identitás létrehozása után ki kell választania egy Active Dire
 
    ![Active Directory adminisztrátor hozzáadása](./media/sql-db-output-managed-identity/add-admin.png)
 
-   A Active Directory felügyeleti oldal megjeleníti a Active Directory összes tagját és csoportját. A nem kiválasztható felhasználók vagy csoportok nem választhatók ki, mert Azure Active Directory rendszergazdaként nem támogatottak. Tekintse meg a támogatott rendszergazdák listáját a **Azure Active Directory szolgáltatások és korlátozások**   című szakaszban [Azure Active Directory hitelesítés használata a SQL Database vagy az Azure szinapszis használatával történő hitelesítéshez](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). A szerepköralapú hozzáférés-vezérlés (RBAC) csak a portálra vonatkozik, és nincs propagálva a SQL Server. Emellett a kiválasztott felhasználó vagy csoport az a felhasználó, aki a következő szakaszban létre tudja hozni a **tárolt adatbázis-felhasználót** .
+   A Active Directory felügyeleti oldal megjeleníti a Active Directory összes tagját és csoportját. A nem kiválasztható felhasználók vagy csoportok nem választhatók ki, mert Azure Active Directory rendszergazdaként nem támogatottak. Tekintse meg a támogatott rendszergazdák listáját a **Azure Active Directory szolgáltatások és korlátozások**   című szakaszban [Azure Active Directory hitelesítés használata a SQL Database vagy az Azure szinapszis használatával történő hitelesítéshez](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) csak a portálra vonatkozik, és nem terjed ki SQL Serverra. Emellett a kiválasztott felhasználó vagy csoport az a felhasználó, aki a következő szakaszban létre tudja hozni a **tárolt adatbázis-felhasználót** .
 
 1. A **Active Directory felügyeleti** lapon válassza a **Mentés** lehetőséget. A rendszergazda módosításának folyamata néhány percet vesz igénybe.
 

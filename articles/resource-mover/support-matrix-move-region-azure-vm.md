@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945913"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521305"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közötti áthelyezésének támogatása
 
@@ -102,12 +102,12 @@ SUSE Linux Enterprise Server 15 és 15 SP1 |  A rendszer minden SUSE 15 és 15 k
 --- | --- | ---
 Méret | Bármely Azure-beli VM-méret legalább két CPU-mag és 1 GB RAM-mal | Ellenőrizze az Azure-beli [virtuális gépek méretét](../virtual-machines/sizes-general.md).
 Rendelkezésre állási csoportok | Egyelőre nem támogatott | Ha hozzáad egy Azure-beli virtuális gépet egy rendelkezésre állási csoporttal az alapértelmezett beállításokkal, az előkészítési folyamat sikertelen lesz. Dönthet úgy, hogy áthelyezi a virtuális gépet egy rendelkezésre állási zónába, vagy áthelyezi azt egyetlen példányú virtuális gépre. Ezeket a beállításokat a cél tulajdonságainak szerkesztése lapon módosíthatja.
-Rendelkezésre állási zónák | Támogatott | Támogatott, a célcsoportok támogatásának függvényében.
+Rendelkezésreállási zónák | Támogatott | Támogatott, a célcsoportok támogatásának függvényében.
 Azure Gallery-lemezképek (közzétette: Microsoft) | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Azure Gallery-lemezképek (harmadik fél által közzétett)  | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Egyéni lemezképek (harmadik fél által közzétett)| Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Site Recovery használó virtuális gépek | Nem támogatott | Az erőforrásokat a különböző régiók között helyezheti át a virtuális gépek között, a háttérbeli Site Recovery használatával. Ha már használja a Site Recovery, tiltsa le a replikációt, majd indítsa el az előkészítési folyamatot.
-RBAC szabályzatok | Nem támogatott | A virtuális gépeken a szerepköralapú hozzáférés-vezérlési (RBAC) házirendek nem másolódnak át a célként megadott régióban lévő virtuális gépre.
+Azure RBAC-szabályzatok | Nem támogatott | A virtuális gépeken futó Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) házirendek nem másolódnak át a célként megadott régióban lévő virtuális gépre.
 Bővítmények | Nem támogatott | A bővítmények nem másolódnak át a célként megadott régióban lévő virtuális gépre. Az áthelyezés befejezése után manuálisan telepítse őket.
 
 
@@ -188,6 +188,6 @@ Ha hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsola
 - Javasoljuk, hogy tesztelje a szabályokat nem éles környezetben. [Tekintse át a példákat](../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbáljon [egy Azure-beli virtuális gépet](tutorial-move-region-virtual-machines.md) egy másik régióba helyezni az erőforrás-mozgató használatával.

@@ -9,16 +9,32 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3e80ff90e47f45655761abd4c7e8fa9ed04b61ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874458"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518891"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Oktatóanyag – webszolgáltatás migrálása a Google Mapsből
 
 Az Azure és a Google Maps egyaránt hozzáférést biztosít a térbeli API-khoz a REST-alapú webszolgáltatásokon keresztül. Ezeknek a platformoknak a API-felületei hasonló funkciókat hajtanak végre. Azonban mindegyik különböző elnevezési konvenciókat és válasz objektumokat használ.
+
+Az oktatóanyag során a következőket fogja elsajátítani:
+
+> * Helymeghatározáshoz továbbítása és sztornírozása
+> * Hasznos helyek keresése
+> * Útvonalak és irányok kiszámítása
+> * Térkép rendszerképének beolvasása
+> * Távolsági mátrix kiszámítása
+> * Időzóna részleteinek beolvasása
+
+Emellett a következőket is megismerheti: 
+
+> [!div class="checklist"]
+> * Azure Maps REST szolgáltatás a Google Maps webszolgáltatásból való Migrálás során
+> * Tippek a Azure Maps-szolgáltatások legtöbbje számára
+> * Egyéb kapcsolódó Azure Maps-szolgáltatások betekintése
 
 A táblázat megjeleníti a Azure Maps Service API-kat, amelyek hasonló funkcióval rendelkeznek a felsorolt Google Maps Service API-khoz.
 
@@ -48,6 +64,12 @@ Azure Maps számos további REST-webszolgáltatással rendelkezik, amelyek érde
 
 - [Térbeli műveletek](https://docs.microsoft.com/rest/api/maps/spatial): összetett térbeli számítások és műveletek (például geokerítések) kiszervezése szolgáltatáshoz.
 - [Forgalom](https://docs.microsoft.com/rest/api/maps/traffic): a valós idejű forgalom és az incidensek adatforgalmának elérése.
+
+## <a name="prerequisites"></a>Előfeltételek 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 ## <a name="geocoding-addresses"></a>Helymeghatározáshoz-címek
 
@@ -94,7 +116,7 @@ Ez a táblázat a Google Maps API paramétereit a Azure Maps hasonló API-param�
 | `key`                       | `subscription-key` – Lásd még a [hitelesítés Azure Maps](azure-maps-authentication.md) a dokumentációt. |
 | `language`                  | `language` – Lásd a [támogatott nyelvek](supported-languages.md) dokumentációját.  |
 | `latlng`                    | `query`  |
-| `location_type`             | *N.A.*     |
+| `location_type`             | *N/A*     |
 | `result_type`               | `entityType`    |
 
 Tekintse át [az ajánlott eljárásokat a kereséshez](how-to-use-best-practices-for-search.md).
@@ -138,9 +160,9 @@ A táblázat a Google Maps API paramétereit a hasonló Azure Maps API-paraméte
 
 | Google Maps API-paraméter | Hasonló Azure Maps API-paraméter |
 |---------------------------|-------------------------------------|
-| `fields`                  | *N.A.*                               |
+| `fields`                  | *N/A*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *N.A.*                               |
+| `inputtype`               | *N/A*                               |
 | `key`                     | `subscription-key` – Lásd még a [hitelesítés Azure Maps](azure-maps-authentication.md) a dokumentációt. |
 | `language`                | `language` – Lásd a [támogatott nyelvek](supported-languages.md) dokumentációját.  |
 | `locationbias`            | `lat``lon`és`radius`<br/>`topLeft` és `btmRight`<br/>`countrySet`  |
@@ -157,13 +179,13 @@ A táblázat a Google Maps API paramétereit jeleníti meg az összehasonlíthat
 | `keyword`                   | `categorySet` és `brandSet`        |
 | `language`                  | `language` – Lásd a [támogatott nyelvek](supported-languages.md) dokumentációját.  |
 | `location`                  | `lat` és `lon`                     |
-| `maxprice`                  | *N.A.*                               |
-| `minprice`                  | *N.A.*                               |
+| `maxprice`                  | *N/A*                               |
+| `minprice`                  | *N/A*                               |
 | `name`                      | `categorySet` és `brandSet`        |
-| `opennow`                   | *N.A.*                               |
+| `opennow`                   | *N/A*                               |
 | `pagetoken`                 | `ofs` és `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *N.A.*                               |
+| `rankby`                    | *N/A*                               |
 | `type`                      | `categorySet –` Lásd a [támogatott keresési kategóriák](supported-search-categories.md) dokumentációját.   |
 
 ## <a name="calculate-routes-and-directions"></a>Útvonalak és irányok kiszámítása
@@ -243,10 +265,10 @@ A táblázat a Google Maps API paramétereit a Azure Maps hasonló API-paraméte
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *N/A* – ez egy helymeghatározáshoz-hez kapcsolódó szolgáltatás. Használja a `countrySet` paramétert, ha a Azure Maps HELYMEGHATÁROZÁSHOZ API-t használja.  |
-| `scale`                     | *N.A.*                              |
+| `scale`                     | *N/A*                              |
 | `size`                      | `width` és `height` – akár 8192x8192 is lehet. |
-| `style`                     | *N.A.*                              |
-| `visible`                   | *N.A.*                              |
+| `style`                     | *N/A*                              |
+| `visible`                   | *N/A*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -315,7 +337,7 @@ A `iconType` létrehozandó PIN-kód típusát adja meg. A következő értékek
 - `custom` – Meghatározza, hogy egyéni ikont kell használni. Az ikon képére mutató URL-címet a rendszer a `pins` PIN-kód helye információinak lejárta után is hozzáadhatja a paraméter végéhez.
 - `{udid}` – Egyedi Adatazonosító (UDID) a Azure Maps adattárolási platformon tárolt ikonhoz.
 
-Adja hozzá a PIN-kód stílusát a `optionNameValue` formátumhoz. Több stílust is elkülönít a pipe ( \| ) karakterekkel. Például: `iconType|optionName1Value1|optionName2Value2`. A beállítások nevei és értékei nincsenek elválasztva. A következő stílus-beállítási neveket használja a Style jelölőknek:
+Adja hozzá a PIN-kód stílusát a `optionNameValue` formátumhoz. Több stílust is elkülönít a pipe ( \| ) karakterekkel. Például így: `iconType|optionName1Value1|optionName2Value2`. A beállítások nevei és értékei nincsenek elválasztva. A következő stílus-beállítási neveket használja a Style jelölőknek:
 
 - `al` – A jelölő opacitását (alfa) adja meg. 0 és 1 közötti számot adjon meg.
 - `an` – Megadja a PIN-kód horgonyát. X és y képpont értékeket az "x y" formátumban kell megadni.
@@ -334,7 +356,6 @@ Vegyünk fel egy vörös ( `FF0000` ) alapértelmezett ikont, amely a "Space tű
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
-
 ![Azure Maps jelölő](media/migrate-google-maps-web-services/azure-maps-marker.png)
 
 Vegyen fel három PIN-értéket az "1", "2" és "3" címke értékkel:
@@ -342,8 +363,6 @@ Vegyen fel három PIN-értéket az "1", "2" és "3" címke értékkel:
 ```
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
-
-
 
 ![Több jelölő Azure Maps](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)
 
@@ -468,13 +487,24 @@ Ezek a nyílt forráskódú ügyféloldali kódtárak más programozási nyelvek
 
 - .NET Standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet csomag](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="additional-resources"></a>További források
+## <a name="next-steps"></a>Következő lépések
 
-Az alábbiakban a Azure Maps REST-szolgáltatásokkal kapcsolatos további dokumentációt és erőforrásokat talál.
+További információ a Azure Maps REST-szolgáltatásokról:
 
-- [Ajánlott keresési eljárások](how-to-use-best-practices-for-search.md)
-- [Cím keresése](how-to-search-for-address.md)
-- [Ajánlott eljárások az útválasztáshoz](how-to-use-best-practices-for-routing.md)
-- [Azure Maps REST Service API-referenciák dokumentációja](https://docs.microsoft.com/rest/api/maps/)
-- [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
-- [A Services modul (web SDK) használata](how-to-use-best-practices-for-routing.md)
+> [!div class="nextstepaction"]
+> [Ajánlott keresési eljárások](how-to-use-best-practices-for-search.md)
+
+> [!div class="nextstepaction"]
+> [Cím keresése](how-to-search-for-address.md)
+
+> [!div class="nextstepaction"]
+> [Ajánlott eljárások az útválasztáshoz](how-to-use-best-practices-for-routing.md)
+
+> [!div class="nextstepaction"]
+> [Azure Maps REST Service API-referenciák dokumentációja](https://docs.microsoft.com/rest/api/maps/)
+
+> [!div class="nextstepaction"]
+> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+> [!div class="nextstepaction"]
+> [A Services modul (web SDK) használata](how-to-use-best-practices-for-routing.md)

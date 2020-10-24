@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: Zhchia
-ms.openlocfilehash: 164b2915d3085ff765635b10e97f7552df1bf4c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 786e99cec4999eef0af92fe2be18bcf0e48ed379
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256358"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518993"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>Oktatóanyag: a Miro konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -79,7 +79,7 @@ Mielőtt a Mirot konfigurálja az Azure AD-vel való automatikus felhasználói 
 Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálásának lépésein az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján a Miron lévő felhasználók és/vagy csoportok létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Miro számára, a [Miro egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/miro-tutorial)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Miro számára, a [Miro egyszeri bejelentkezés oktatóanyagában](./miro-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 > [!NOTE]
 > A Miro SCIM-végpontjának megismeréséhez tekintse meg [ezt a témakört](https://help.miro.com/hc/en-us/articles/360036777814).
@@ -158,4 +158,3 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
-

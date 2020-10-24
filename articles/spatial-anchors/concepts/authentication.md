@@ -9,16 +9,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715e09eaf6ca379261d619fe02ad81a69a519d3e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5f59f626d9edbf30f61935c026ac965dbbe946f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328538"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516919"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
-Ebből a cikkből megtudhatja, hogyan végezhet hitelesítést az Azure térbeli Horgonyokban az alkalmazásból vagy webszolgáltatásból. Azt is megismerheti, hogyan használhatja a Azure Active Directory (Azure AD) szerepköralapú hozzáférés-vezérlését a térbeli horgonyok fiókjaihoz való hozzáférés szabályozásához.
+Ebből a cikkből megtudhatja, hogyan végezhet hitelesítést az Azure térbeli Horgonyokban az alkalmazásból vagy webszolgáltatásból. Azt is megismerheti, hogyan használhatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) a Azure Active Directory (Azure AD) a térbeli horgonyok fiókjaihoz való hozzáférés szabályozásához.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -94,7 +94,7 @@ Miután beállította ezt a tulajdonságot, az SDK kezeli a hozzáférési jogki
 
 A Azure Active Directory felhasználókat célzó alkalmazások esetében javasoljuk, hogy használjon Azure AD-jogkivonatot a felhasználóhoz. Ezt a tokent a [MSAL](../../active-directory/develop/msal-overview.md)használatával szerezheti be. Kövesse a rövid útmutató lépéseit [egy alkalmazás regisztrálásához](../../active-directory/develop/quickstart-register-app.md), amely a következőket tartalmazza:
 
-**Az Azure Portalon**
+**A Azure Portal**
 1.    Az alkalmazás regisztrálása az Azure AD-ben natív alkalmazásként. A regisztrálás részeként meg kell határoznia, hogy az alkalmazás több-bérlős-e. Emellett meg kell adnia az alkalmazáshoz engedélyezett átirányítási URL-címeket is.
 1.  Nyissa meg az **API-engedélyek** lapot.
 2.  Válassza **az engedély hozzáadása**lehetőséget.
@@ -108,7 +108,7 @@ A Azure Active Directory felhasználókat célzó alkalmazások esetében javaso
    1.    Lépjen a térbeli horgonyok erőforrásra a Azure Portal.
    2.    Lépjen a **hozzáférés-vezérlés (iam)** lapra.
    3.    Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
-   1.    [Válasszon egy szerepkört](#role-based-access-control).
+   1.    [Válasszon egy szerepkört](#azure-role-based-access-control).
    2.    A **kiválasztás** mezőbe írja be azoknak a felhasználóknak, csoportoknak és/vagy alkalmazásoknak a nevét, amelyekhez hozzáférést szeretne rendelni.
    3.    Válassza a **Mentés** lehetőséget.
 
@@ -172,7 +172,7 @@ Itt feltételezzük, hogy az alkalmazás a saját mechanizmusával hitelesíti a
 
 Az Azure AD hozzáférési jogkivonatot a [MSAL](../../active-directory/develop/msal-overview.md)keresztül kéri le a rendszer. Kövesse az [alkalmazás regisztrálása](../../active-directory/develop/quickstart-register-app.md)című útmutató lépéseit, amelyek a következőket tartalmazzák:
 
-**Az Azure Portalon**
+**A Azure Portal**
 1.    Az alkalmazás regisztrálása az Azure AD-ben:
         1.    A Azure Portal válassza a **Azure Active Directory**lehetőséget, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
         2.    Válassza az **új regisztráció**lehetőséget.
@@ -182,7 +182,7 @@ Az Azure AD hozzáférési jogkivonatot a [MSAL](../../active-directory/develop/
         1.    Lépjen a térbeli horgonyok erőforrásra a Azure Portal.
         2.    Lépjen a **hozzáférés-vezérlés (iam)** lapra.
         3.    Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
-        1.    [Válasszon egy szerepkört](#role-based-access-control).
+        1.    [Válasszon egy szerepkört](#azure-role-based-access-control).
         2.    A **Select (kiválasztás** ) mezőben adja meg azon alkalmazások nevét vagy nevét, amelyekhez hozzáférést szeretne hozzárendelni. Ha azt szeretné, hogy az alkalmazás felhasználói különböző szerepkörökkel rendelkezzenek a térbeli horgonyok fiókjában, regisztráljon több alkalmazást az Azure AD-ben, és rendeljen hozzá külön szerepkört. Ezután implementálja az engedélyezési logikát, hogy a megfelelő szerepkört használja a felhasználók számára.
         
               > [!NOTE] 
@@ -262,7 +262,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ---
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 
 A szolgáltatás alkalmazásaihoz, szolgáltatásaihoz vagy az Azure AD-felhasználókhoz nyújtott hozzáférés szintjének szabályozása érdekében a meglévő szerepköröket igény szerint hozzárendelheti az Azure térbeli horgonyok fiókjaihoz:
 
@@ -270,7 +270,7 @@ A szolgáltatás alkalmazásaihoz, szolgáltatásaihoz vagy az Azure AD-felhaszn
 - **Térbeli horgonyok fiók közreműködője**. A szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat és lekérdezéseket hozhatnak létre, de nem törölhetik őket.
 - **Térbeli horgonyok fiókjának olvasója**. Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók csak térbeli horgonyokat tudnak lekérdezni. Nem hozhatnak létre újakat, törölhetik a meglévőket, vagy frissíthetik a metaadatokat. Ez a szerepkör jellemzően olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, de mások csak a környezetbe helyezett horgonyokat tudják visszahívni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre első alkalmazását az Azure térbeli Horgonyokkal:
 
