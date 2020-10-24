@@ -9,19 +9,19 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289480"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503283"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
 
 Megtudhatja, hogyan kezelheti az Azure szinapszis Analytics-munkaterületen (előzetes verzió) lévő munkaterületekhez, adatszolgáltatásokhoz és folyamatokhoz való hozzáférés-vezérlést.
 
 > [!NOTE]
-> A GA esetében a RBAC a szinapszis-specifikus Azure-szerepkörök bevezetésével fejleszthető
+> A GA esetében az Azure RBAC a szinapszis-specifikus Azure-szerepkörök bevezetésével lesz kifejlesztve
 
 ## <a name="access-control-for-workspace"></a>Munkaterület Access Control
 
@@ -144,7 +144,7 @@ Ha teljes hozzáférést szeretne biztosítani egy felhasználónak az **összes
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="sql-pools"></a>SQL-készletek
@@ -198,6 +198,6 @@ REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
 DROP USER [<workspacename>];
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szinapszis munkaterület által felügyelt identitás áttekintését lásd: az [Azure szinapszis munkaterület felügyelt identitása](../security/synapse-workspace-managed-identity.md). További információ az adatbázis-rendszerbiztonsági tagekről: [rendszerbiztonsági tag](https://msdn.microsoft.com/library/ms181127.aspx). Az adatbázis-szerepkörökkel kapcsolatos további információkért tekintse meg az [adatbázis-szerepkörök](https://msdn.microsoft.com/library/ms189121.aspx) című cikket.

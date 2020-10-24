@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: cd1e9431d7125b405f31cb1ed329e6e264cd247e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 135b780f547ddd8e979899898b9971c4dcf89cee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285911"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514707"
 ---
 # <a name="tutorial-configure-spaceiq-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés SpaceIQ konfigurálása
 
@@ -95,7 +95,7 @@ Az Azure AD-vel való automatikus SpaceIQ konfigurálása előtt hozzá kell adn
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy SpaceIQ alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a SpaceIQ számára, az [SpaceIQ egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/spaceiq-tutorial)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a SpaceIQ számára, az [SpaceIQ egyszeri bejelentkezés oktatóanyagában](./spaceiq-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
 
 ### <a name="to-configure-automatic-user-provisioning-for-spaceiq-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a SpaceIQ az Azure AD-ben:
 

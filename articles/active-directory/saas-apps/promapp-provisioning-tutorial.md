@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: Zhchia
-ms.openlocfilehash: b3677b16921c6954f5f99e55af9afeae9c337cce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00adf8f1559d01d6ba17692e1166c93c93fcbf8f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255814"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516647"
 ---
 # <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Promapp konfigurálása
 
@@ -93,7 +93,7 @@ Az Azure AD-vel való automatikus Promapp konfigurálása előtt hozzá kell adn
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Promapp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> Dönthet úgy is, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a Promapp számára az [Promapp egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció kiegészíti egymást.
+> Dönthet úgy is, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a Promapp számára az [Promapp egyszeri bejelentkezés oktatóanyagában](./promapp-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció kiegészíti egymást.
 
 ### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Promapp az Azure AD-ben:
 
@@ -157,4 +157,3 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
-

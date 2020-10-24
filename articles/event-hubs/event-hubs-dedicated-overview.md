@@ -3,16 +3,16 @@ title: A dedikált Event hubok áttekintése – Azure Event Hubs | Microsoft Do
 description: Ez a cikk áttekintést nyújt a dedikált Azure Event Hubsről, amely az Event hub egybérlős üzembe helyezését kínálja.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: e6208a8d50e21766969dbe9d9739d5003958126a
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 20b153c9093c96e7357a8e439b6655f1db80bd46
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495081"
+ms.locfileid: "92516995"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>A dedikált Event Hubs áttekintése
 
-*Event Hubs-fürtök* egybérlős üzemelő példányokat biztosítanak a legigényesebb folyamatos átviteli igényű ügyfelek számára. Ez az egybérlős ajánlat garantált 99,99%-os garantált szolgáltatási szinttel rendelkezik, és csak a dedikált díjszabási szinten érhető el. Egy Event Hubs fürt másodpercenként több millió eseményt tud befogadni a garantált kapacitással és a másodperces késleltetéssel. A dedikált fürtön belül létrehozott névterek és az Event hubok tartalmazzák a standard ajánlat összes funkcióját, többek között a bejövő korlátok nélkül. Emellett a népszerű [Event Hubs Capture](event-hubs-capture-overview.md) szolgáltatást díjmentesen ingyenesen használhatja, így automatikusan kötegelt és naplózhatja az adatstreameket az Azure Storage-ba vagy Azure Data Lakeba. 
+*Event Hubs-fürtök* egybérlős üzemelő példányokat biztosítanak a legigényesebb folyamatos átviteli igényű ügyfelek számára. Ez az egybérlős ajánlat garantált 99,99%-os garantált szolgáltatási szinttel rendelkezik, és csak a dedikált díjszabási szinten érhető el. Egy Event Hubs fürt másodpercenként több millió eseményt tud befogadni a garantált kapacitással és a másodpercenkénti késéssel. A dedikált fürtön belül létrehozott névterek és az Event hubok tartalmazzák a standard ajánlat összes funkcióját, többek között a bejövő korlátok nélkül. Emellett a népszerű [Event Hubs Capture](event-hubs-capture-overview.md) szolgáltatást díjmentesen ingyenesen használhatja, így automatikusan kötegelt és naplózhatja az adatstreameket az Azure Storage-ba vagy Azure Data Lakeba. 
 
 A fürtök kiépítése és kiszámlázása **Kapacitási egységek (ke)** alapján történik, a processzor-és memória-erőforrások előre lefoglalt mennyisége. Minden fürthöz 1, 2, 4, 8, 12, 16 vagy 20 ke lehet vásárolni. A betöltés és az adatfolyam-továbbítás mennyisége számos tényezőtől függ, például a termelők és a felhasználók számától, a hasznos adatok méretétől, a kimenő forgalom szintjétől (további részletekért lásd az alábbi teljesítményteszt-eredményeket). 
 
@@ -25,13 +25,13 @@ A dedikált Event Hubs három vonzó előnyt kínál a nagyvállalati szintű ka
 
 #### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Az egybérlős kapacitás a jobb teljesítmény érdekében
 
-A dedikált fürt teljes skálán garantálja a kapacitást, és akár GB-ig terjedő adatfolyam-továbbítási adatokat tud biztosítani teljes mértékben tartós tárolással és almásodperces késéssel, hogy bármilyen adatforgalomban bejárható legyen. 
+A dedikált fürt teljes skálán garantálja a kapacitást, és akár GB-ig terjedő adatfolyam-továbbítási adatokat tud biztosítani teljes mértékben tartós tárolással és másodlagos késéssel, hogy bármilyen adatforgalomhoz jusson. 
 
 #### <a name="inclusive-and-exclusive-access-to-features"></a>A funkciókhoz tartozó és kizárólagos hozzáférés 
-A dedikált ajánlat olyan funkciókat tartalmaz, mint például a capture díjmentesen, valamint a következő funkciókhoz való kizárólagos hozzáférés (például Bring Your Own Key (BYOK)). A szolgáltatás a terheléselosztást, az operációs rendszer frissítéseit, a biztonsági javításokat és a particionálást is kezeli az ügyfél számára, így kevesebb időt kell fordítani az infrastruktúra karbantartására és az ügyféloldali funkciók kiépítésére.  
+A dedikált ajánlat olyan funkciókat tartalmaz, mint például a capture díjmentesen, és kizárólagos hozzáférés a közelgő funkciókhoz, például Bring Your Own Key (BYOK). A szolgáltatás a terheléselosztást, az operációs rendszer frissítéseit, a biztonsági javításokat és a particionálást is kezeli az ügyfél számára, így kevesebb időt kell fordítani az infrastruktúra karbantartására és az ügyféloldali funkciók kiépítésére.  
 
 #### <a name="cost-savings"></a>Költségmegtakarítás
-A magas beáramlású köteteken (>100 TUs) a fürt óradíja jelentősen kevesebb, mint a standard ajánlatban található hasonló mennyiségű átviteli egység megvásárlása.
+A magas beáramlású köteteknél (>100 átviteli egységekben) a fürt óránként jóval kevesebb költséggel jár, mint a standard ajánlatban található hasonló mennyiségű átviteli egység megvásárlása.
 
 
 ## <a name="event-hubs-dedicated-quotas-and-limits"></a>Kvóták és korlátozások dedikált Event Hubs
@@ -53,7 +53,7 @@ Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással t
 
 ## <a name="how-to-onboard"></a>Útmutató a bevezetéshez
 
-A [Event Hubs-fürtnek](event-hubs-dedicated-cluster-create-portal.md) a [Azure Portal](https://aka.ms/eventhubsclusterquickstart) használatával történő létrehozásának önkiszolgáló élménye már előzetes verzióban érhető el. Ha bármilyen kérdése van, vagy segítségre van szüksége a dedikált Event Hubs bevezetéséhez, forduljon a [Event Hubs csapatához](mailto:askeventhubs@microsoft.com).
+A [Event Hubs-fürtnek](event-hubs-dedicated-cluster-create-portal.md) a [Azure Portal](https://aka.ms/eventhubsclusterquickstart) használatával történő létrehozásának önkiszolgáló élménye már előzetes verzióban érhető el. Ha bármilyen kérdése van, vagy segítségre van szüksége a dedikált Event Hubs bevezetéséhez, lépjen kapcsolatba a [Event Hubs csapatával](mailto:askeventhubs@microsoft.com).
 
 ## <a name="faqs"></a>Gyakori kérdések
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2020
+ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: f0e34c8a331c475b103922789a9d1983f1c84cac
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492195"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514401"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Oktatóanyag: a globális továbbító identitás-szinkronizálásának konfigurálása a felhasználók automatikus kiépítéséhez
 
@@ -52,7 +52,7 @@ A bérlői URL-cím fogadásához forduljon a globális továbbító Identity Sy
 
 ## <a name="step-3-add-global-relay-identity-sync-from-the-azure-ad-application-gallery"></a>3. lépés Globális Relay Identity Sync hozzáadása az Azure AD Application Galleryből
 
-A globális Relay Identity Sync hozzáadásával megkezdheti az Azure AD alkalmazás-katalógusból való kiépítés kezelését. Ha korábban már beállította a globális továbbító identitás-szinkronizálását az egyszeri bejelentkezéshez, ugyanazt az alkalmazást használhatja. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet. 
+A globális Relay Identity Sync hozzáadásával megkezdheti az Azure AD alkalmazás-katalógusból való kiépítés kezelését. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
 
@@ -63,7 +63,7 @@ Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek ha
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-global-relay-identity-sync"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a globális továbbító identitás-szinkronizálásra 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálásának lépésein, hogy az Azure ad-ben felhasználói és/vagy csoportos hozzárendelések alapján hozzon létre, frissítsen és tiltsa le a globális továbbító identitás-szinkronizáló alkalmazásban lévő felhasználókat és/vagy csoportokat.
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>Az Azure AD-beli globális továbbító identitás-szinkronizálás automatikus felhasználó általi üzembe helyezésének konfigurálása:
 

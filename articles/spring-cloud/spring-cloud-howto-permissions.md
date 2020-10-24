@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 635f1e03596d55101b6158353ed8cdc278212ceb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92155454"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516188"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Engedélyek használata az Azure Spring Cloud-ban
-Ebből a cikkből megtudhatja, hogyan hozhat létre olyan egyéni szerepköröket, amelyek engedélyeket delegálnak az Azure Spring Cloud-erőforrásokhoz. Az egyéni szerepkörök kibővítik a [beépített Azure-szerepköröket](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) a különböző készlet-engedélyekkel.
+Ebből a cikkből megtudhatja, hogyan hozhat létre olyan egyéni szerepköröket, amelyek engedélyeket delegálnak az Azure Spring Cloud-erőforrásokhoz. Az egyéni szerepkörök az [Azure beépített szerepköreit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) különböző Stock-engedélyekkel bővítik.
 
 A következő egyéni szerepköröket fogjuk megvalósítani:
 
 * **Fejlesztői szerepkör**: 
     * Üzembe helyezés
-    * Teszt
+    * Tesztelés
     * Alkalmazások újraindítása
     * Alkalmazhatja és módosíthatja az alkalmazások konfigurációját a git-tárházban
     * Lekérheti a napló streamjét

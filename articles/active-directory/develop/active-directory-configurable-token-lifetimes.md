@@ -9,23 +9,45 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 1410af4d3c1fb9974818e5c4ebc469eee03a314c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4accae27dc092a4900e6092c62c7f4978a46668a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948623"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503776"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
 Megadhatja a Microsoft Identity platform által kiadott jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén. Jelenleg azonban a [felügyelt identitás-szolgáltatási rendszerbiztonsági tag](../managed-identities-azure-resources/overview.md)esetében nem támogatott a jogkivonat élettartamának konfigurálása.
 
 > [!IMPORTANT]
-> Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](../conditional-access/howto-conditional-access-session-lifetime.md) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. 2020. május 30-ig az új bérlők nem használhatnak konfigurálható jogkivonat-élettartamot a munkamenet-és frissítési tokenek konfigurálásához. Az elavultság több hónapon belül megtörténik, ami azt jelenti, hogy a meglévő munkamenetek tiszteletben tartását és a tokenek frissítési jogkivonatait is megszüntetjük. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.
+> 2021. január 30-ig a bérlők többé nem tudják konfigurálni a frissítési és a munkamenet-tokenek élettartamát, és Azure Active Directory a házirendek után leállítja a meglévő frissítési és munkamenet-jogkivonat konfigurációját. A hozzáférési jogkivonat élettartamát a nyugdíjazás után is konfigurálhatja.
+> Végrehajtotta [authentication session management capabilities](../conditional-access/howto-conditional-access-session-lifetime.md)   Az Azure ad feltételes hozzáférésének hitelesítési munkamenet-kezelési képességeit. Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. A feltételes hozzáférés egy prémium szintű Azure AD P1 szolgáltatás, és kiértékelheti, hogy a prémium szint a [prémium díjszabási oldalon](https://azure.microsoft.com/en-us/pricing/details/active-directory/)organzation-e. 
+> 
+> Azok a bérlők, amelyek nem használnak feltételes hozzáférést a hitelesítési munkamenetek kezeléséhez a lejárati dátum után, számíthatnak arra, hogy az Azure AD tiszteletben tartja a következő szakaszban ismertetett alapértelmezett konfigurációt.
+
+## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Konfigurálható jogkivonat élettartamának tulajdonságai a kivonulás után
+A frissítési és a munkamenet-jogkivonat konfigurációját a következő tulajdonságok és azok beállított értékei érintik. A frissítési és a munkamenet-jogkivonat konfigurációjának kivonása után az Azure AD csak az alább ismertetett alapértelmezett értéket fogja figyelembe venni, függetlenül attól, hogy a szabályzatok egyéni értékeit konfigurálta-e egyéni értékekkel.  
+
+|Tulajdonság   |Házirend tulajdonságának karakterlánca    |Befolyásolja |Alapértelmezett |
+|----------|-----------|------------|------------|
+|Frissítési jogkivonat maximális inaktív ideje |MaxInactiveTime  |Tokenek frissítése |90 nap  |
+|Single-Factor frissítési token Max Age  |MaxAgeSingleFactor  |Tokenek frissítése (bármely felhasználó esetében)  |Visszavonásig  |
+|Multi-Factor refresh token Max Age  |MaxAgeMultiFactor  |Tokenek frissítése (bármely felhasználó esetében) |180 nap  |
+|Single-Factor munkamenet-token maximális kora  |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó)  |Visszavonásig |
+|Többtényezős munkamenet-token maximális kora  |MaxAgeSessionMultiFactor  |Munkamenet-tokenek (állandó és nem állandó)  |180 nap |
+
+A [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) parancsmaggal azonosíthatja azokat a jogkivonat-élettartami szabályzatokat, amelyek tulajdonságai eltérnek az Azure ad alapértelmezett értékeitől.
+
+Ha szeretné jobban megismerni, hogyan használják a szabályzatokat a bérlőben, a [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) parancsmag segítségével azonosíthatja, hogy mely alkalmazások és szolgáltatások vannak társítva a szabályzatokhoz. 
+
+Ha a bérlő rendelkezik olyan házirendekkel, amelyek egyéni értékeket határoznak meg a frissítéshez és a munkamenet-jogkivonat konfigurációs tulajdonságaihoz, a Microsoft javasolja, hogy a hatókörben frissítse ezeket a szabályzatokat a fent ismertetett alapértelmezett értékeknek megfelelően. Ha nem végez módosítást, az Azure AD automatikusan tiszteletben tartja az alapértelmezett értékeket.  
+
+## <a name="overview"></a>Áttekintés
 
 Az Azure AD-ben a házirend-objektum az egyes alkalmazásokra vagy a szervezet összes alkalmazására kikényszerített szabályok halmazát jelöli. Minden egyes házirend-típushoz egyedi struktúra tartozik, amely a hozzájuk rendelt objektumokra érvényes tulajdonságokkal rendelkezik.
 
@@ -246,6 +268,6 @@ A szolgáltatás használatához prémium szintű Azure AD P1 licenc szükséges
 
 A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért olvassa el [a jogkivonat-élettartamok konfigurálásának példáit](configure-token-lifetimes.md).

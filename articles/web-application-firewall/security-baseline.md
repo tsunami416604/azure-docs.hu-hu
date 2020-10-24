@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: edb184fa286eb6212f714c18830540e105ea3305
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5ecfd5e5ff29b2eade4391976947062d6e8f186f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92021177"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516154"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure-alapú biztonsági alapkonfiguráció Azure webalkalmazási tűzfalhoz
 
@@ -355,7 +355,7 @@ Az Azure Active Directory (Azure AD) felhasználói fiókok diagnosztikai beáll
 
 **Útmutató**: az elkülönítés megvalósítása különálló előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezeti típushoz és az adatérzékenységi szinthez, például fejlesztési, tesztelési és éles környezetekhez. 
 
-Az Azure-erőforrásokhoz való hozzáférés szabályozása Azure Active Directory (Azure AD) szerepköralapú hozzáférés-vezérléssel (Azure RBAC).
+Azure-erőforrásokhoz való hozzáférés szabályozása Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC).
 
 - [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
 
@@ -379,10 +379,10 @@ Kövesse Security Center a inaktív adatok titkosítására és a titkosításra
 
 **Felelősség**: megosztott
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az Azure-erőforrásokhoz való hozzáférés szabályozása Azure Active Directory (Azure ad) szerepköralapú hozzáférés-vezérléssel (Azure RBAC).
-- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+**Útmutató**: az Azure-erőforrásokhoz való hozzáférés szabályozása az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC).
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

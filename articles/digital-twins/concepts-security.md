@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485749"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503317"
 ---
 # <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
@@ -20,7 +20,7 @@ A biztonság érdekében az Azure Digital Twins pontos hozzáférés-vezérlést
 
 Az Azure Digital Twins az inaktív adatok titkosítását is támogatja.
 
-## <a name="granting-permissions-with-azure-rbac"></a>Engedélyek megadása az Azure RBAC
+## <a name="roles-and-permissions-with-azure-rbac"></a>Szerepkörök és engedélyek az Azure RBAC
 
 Az Azure RBAC az Azure Digital Twins számára biztosítható [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) integrációja révén.
 
@@ -47,22 +47,32 @@ A felügyelt identitások esetében az Azure platform kezeli ezt a futásidejű 
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Engedélyezés: az Azure Digital Twins Azure-szerepkörei
 
-Az Azure az alábbi Azure beépített szerepköröket biztosítja az Azure digitális Twins-erőforrásokhoz való hozzáférés engedélyezéséhez:
-* *Azure digitális Twins-adattulajdonos* – ezzel a szerepkörrel teljes hozzáférést biztosíthat az Azure digitális Twins-erőforrásaihoz.
-* *Azure Digital Twins Adatolvasó* – ezzel a szerepkörrel csak olvasási hozzáférést biztosíthat az Azure Digital Twins-erőforrásokhoz.
+Az Azure **két beépített Azure-szerepkört** biztosít az Azure Digital Twins [adatsíkja API](how-to-use-apis-sdks.md#overview-data-plane-apis)-khoz való hozzáférés engedélyezéséhez. A szerepköröket név vagy azonosító alapján is megtekintheti:
+
+| Beépített szerepkör | Leírás | ID (Azonosító) | 
+| --- | --- | --- |
+| Azure digitális Twins-adattulajdonos | Teljes hozzáférést biztosít az Azure digitális Twins-erőforrásaihoz | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
+| Azure digitális Twins-Adatolvasó | Csak olvasási hozzáférést biztosít az Azure Digital Twins-erőforrásokhoz | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 >[!NOTE]
 > Ezeket a szerepköröket nemrég átnevezték a korábbi nevükről az előzetes verzióban:
 > * *Az Azure Digital Twins-adattulajdonos korábban az* *Azure digitális ikrek tulajdonosa (előzetes verzió)* volt.
 > * *Az Azure Digital Twins Adatolvasó* korábban *Azure digitális Twins-olvasó (előzetes verzió)* volt.
 
-A beépített szerepkörök meghatározásával kapcsolatos további információkért lásd: a szerepkör- [*definíciók megismerése*](../role-based-access-control/role-definitions.md) az Azure RBAC dokumentációjában. Az egyéni Azure-szerepkörök létrehozásával kapcsolatos információkért lásd: [*Azure egyéni szerepkörök*](../role-based-access-control/custom-roles.md).
-
 A szerepköröket kétféleképpen rendelheti hozzá:
 * Az Azure Digital Twins hozzáférés-vezérlés (IAM) paneljén a Azure Portalban (lásd: [*Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával*](../role-based-access-control/role-assignments-portal.md))
 * szerepkör hozzáadására vagy eltávolítására szolgáló CLI-parancsok használatával
 
 A részletes útmutatásért próbálja ki az Azure Digital Twins [*oktatóanyagban: teljes körű megoldás összekapcsolása*](tutorial-end-to-end.md).
+
+A beépített szerepkörök meghatározásával kapcsolatos további információkért lásd: a szerepkör- [*definíciók megismerése*](../role-based-access-control/role-definitions.md) az Azure RBAC dokumentációjában. Az egyéni Azure-szerepkörök létrehozásával kapcsolatos információkért lásd: [*Azure egyéni szerepkörök*](../role-based-access-control/custom-roles.md).
+
+##### <a name="automating-roles"></a>Szerepkörök automatizálása
+
+Ha automatikus forgatókönyvekben lévő szerepkörökre hivatkozik, azt javasoljuk, hogy a nevük helyett az **azonosítókat** használják. A nevek a kiadások között változhatnak, de az azonosítók nem lesznek elérhetők, így az automatizálás még stabilabb referenciát eredményez.
+
+> [!TIP]
+> Ha parancsmaggal `New-AzRoleAssignment` (például[referenciával](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)) assiging a szerepköröket, a (z) paramétert használhatja a (z) `-RoleDefinitionId` helyett, `-RoleDefinitionName` hogy a szerepkör neve helyett egy azonosítót adjon át.
 
 ### <a name="permission-scopes"></a>Engedélyek hatókörei
 

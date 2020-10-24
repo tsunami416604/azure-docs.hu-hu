@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: bc0286dc509acd4afba7f1660b65e49b25378496
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 194625ab43dbb161d2b04352d715a44a1328a888
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371751"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503334"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -83,7 +83,7 @@ Az adatszinkronizálás nem az előnyben részesített megoldás a következő e
 | **Előnyök** | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után <br/>– Az Azure SQL felügyelt példányának támogatása |
 | **Hátrányok** | – 5 perces minimális gyakoriság a szinkronizálások között<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
 
-## <a name="get-started"></a>Bevezetés 
+## <a name="get-started"></a>Első lépések 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Adatszinkronizálás beállítása a Azure Portal
 
@@ -135,7 +135,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 - Az elsődleges kulcs nem rendelkezhet a következő adattípusokkal: sql_variant, Binary, varbinary, képet, XML.
 - Legyen óvatos, ha a következő adattípusokat használja elsődleges kulcsként, mert a támogatott pontosság csak a második: Time, datetime, datetime2, DateTimeOffset.
 - Az objektumok (adatbázisok, táblák és oszlopok) nevei nem tartalmazhatják a nyomtatható karaktereket (.), a bal oldali szögletes zárójelet ([) vagy a jobb oldali szögletes zárójelet (]).
-- A tábla neve nem tartalmazhat nyomtatható karaktereket:! " # $ % ' ( ) * + -
+- A tábla neve nem tartalmazhat nyomtatható karaktereket:! "# $% ' () * +-szóköz
 - Azure Active Directory hitelesítés nem támogatott.
 - Ha vannak olyan táblák, amelyeknek ugyanaz a neve, de a különböző sémák (például dbo. Customers és Sales. Customers), csak az egyik tábla lehet a szinkronizálásban.
 - User-Defined adattípusú oszlopok nem támogatottak
@@ -150,7 +150,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 
 #### <a name="unsupported-column-types"></a>Nem támogatott oszlopok típusai
 
-Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rendszer által létrehozott oszlopokat. Például:
+Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rendszer által létrehozott oszlopokat. Példa:
 
 - Számított oszlopok.
 - Rendszer által generált oszlopok az ideiglenes táblákhoz.

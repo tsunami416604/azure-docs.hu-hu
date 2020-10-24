@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 72a2b24ad8e05943f975f0819d8b2a872b0ab829
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a7f27ff20a4770caea44e73d91001d9785c015
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229004"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517225"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics Azure biztonsági alapterve
 
@@ -248,7 +248,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutató**: a stream Analytics nem rendelkezik az alapértelmezett jelszavak fogalmával, mivel a hitelesítés a szolgáltatás felügyeletéhez Azure Active Directory és a szerepköralapú hozzáférés-vezérlés (RBAC) által védett. A befecskendező stream-szolgáltatásokból és a kimeneti szolgáltatásokból függően el kell forgatnia a feladatokban konfigurált hitelesítő adatokat.
+**Útmutató**: a stream Analytics nem rendelkezik az alapértelmezett jelszavak fogalmával, mivel a hitelesítéshez Azure Active Directory és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) biztosítja a szolgáltatás felügyeletét. A befecskendező stream-szolgáltatásokból és a kimeneti szolgáltatásokból függően el kell forgatnia a feladatokban konfigurált hitelesítő adatokat.
 
 * [Bejelentkezési hitelesítő adatok elforgatása egy Stream Analytics-feladathoz tartozó bemenetekhez és kimenetekhez](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -324,7 +324,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfelek Stream Analytics erőforrásokhoz való hozzáférésének részletes szabályozásához.
+**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosít az ügyfél Stream Analytics erőforrásokhoz való hozzáférésének részletes szabályozásához.
 
 * [Azure AD-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -932,7 +932,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
-* [Címkék használata az erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék használata az Azure-erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 2db64a950569e4a96a9a87bb86a5397a17b4f2ba
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: b52bfc14906d8e47c804ae15ee898f6ca00784af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214940"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503844"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-mintakódok
 
@@ -60,10 +60,23 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 
 Az alábbi táblázatok a felhasználói folyamatokban lévő webes API-k [API-összekötők](api-connectors-overview.md)használatával történő kihasználására szolgáló kódrészletekre mutató hivatkozásokat tartalmaznak.
 
-## <a name="api-connector-azure-function-quickstarts"></a>API-összekötő Azure-függvény rövid útmutatói
+### <a name="azure-function-quickstarts"></a>Az Azure Function rövid útmutatói
 
 | Sample                                                                                                                          | Leírás                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | Ez a .NET Core Azure Function minta azt mutatja be, hogyan lehet korlátozni a regisztrációt adott e-mail tartományokra, és érvényesíteni a felhasználó által megadott adatokat. |
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Ez a Node.js Azure Function minta azt mutatja be, hogyan lehet korlátozni a regisztrációt adott e-mail tartományokra, és érvényesíteni a felhasználó által megadott adatokat.  |
 | [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | Ez a Python Azure Function minta azt mutatja be, hogyan lehet korlátozni a regisztrációkat adott e-mail tartományokra, és érvényesíteni a felhasználó által megadott adatokat.    |
+
+### <a name="identity-verification-with-api-connectors"></a>Identitás-ellenőrzés API-összekötővel
+
+| Sample                                                                                                            | Leírás                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | Ez a minta bemutatja, hogyan ellenőrizhető egy felhasználói identitás az önkiszolgáló regisztráció részeként egy API-összekötővel a IDology-vel való integrációhoz. |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | Ez a minta bemutatja, hogyan ellenőrizhető egy felhasználói identitás az önkiszolgáló regisztráció részeként egy API-összekötővel a Experian-vel való integrációhoz. |
+
+### <a name="community-samples"></a>Közösségi minták
+
+| Sample                                                                                                            | Leírás                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [API-összekötő közösségi minták](https://github.com/azure-ad-b2c/api-connector-samples) | Ez a tárház az API-összekötők által engedélyezett forgatókönyvek Közösség által kezelt mintáit ismerteti.|

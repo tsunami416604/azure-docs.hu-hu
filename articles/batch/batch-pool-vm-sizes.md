@@ -2,14 +2,14 @@
 title: Válasszon virtuálisgép-méreteket a készletekhez
 description: Az elérhető virtuálisgép-méretek közül választhat a Azure Batch készletekben lévő számítási csomópontok számára
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/23/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6dc1b3cf708a6dbaacc87e6c9fc00ae6f0ff3440
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: fd093006a9eb0c9746a19cb5f91b280145ddfb7e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107504"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517055"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
@@ -31,17 +31,19 @@ A virtuálisgép-konfigurációban található batch-készletek szinte minden VM
 | Alapszintű A | Minden méret, *kivéve* a Basic_A0 (a0) |
 | A | Minden méret, *kivéve* Standard_A0 |
 | Av2 | Minden méret |
-| B | Nincs |
-| DC | Nincs |
+| B | Nem támogatott |
+| DC | Nem támogatott |
 | Dv2, DSv2 | Minden méret |
 | Dv3, Dsv3 | Minden méret |
 | <sup>1</sup> . Dav4 | Minden méret |
 | <sup>1</sup> . Dasv4 | Minden méret |
 | Ddv4, Ddsv4 |  Minden méret |
+| DV4, Dsv4 | Nem támogatott |
 | Ev3, Esv3 | Minden méret, kivéve a E64is_v3 |
 | <sup>1</sup> . Eav4 | Minden méret |
 | <sup>1</sup> . Easv4 | Minden méret |
 | Edv4, Edsv4 |  Minden méret |
+| Ev4, Esv4 | Nem támogatott |
 | F, FS | Minden méret |
 | Fsv2 | Minden méret |
 | G, GS | Minden méret |
@@ -56,12 +58,13 @@ A virtuálisgép-konfigurációban található batch-készletek szinte minden VM
 | NC | Minden méret |
 | <sup>1</sup> . NCv2 | Minden méret |
 | <sup>1</sup> . NCv3 | Minden méret |
+| NCasT4_v3 | Nincs – még nem érhető el |
 | <sup>1</sup> . nd | Minden méret |
 | <sup>1</sup> . NDv2 | Nincs – még nem érhető el |
 | NV | Minden méret |
 | <sup>1</sup> . NVv3 | Minden méret |
-| NVv4 | Nincs – még nem érhető el |
-| SAP HANA | Nincs |
+| <sup>1</sup> . NVv4 | Minden méret |
+| SAP HANA | Nem támogatott |
 
 <sup>1</sup> ezek a virtuálisgép-sorozatok lefoglalhatók a virtuális gépek konfigurációjában található batch-készletekben, de létre kell hoznia egy új batch-fiókot, és egy adott [kvóta növelését](batch-quota-limit.md#increase-a-quota)kell kérnie. Ez a korlátozás akkor törlődik, ha a virtuálisgép-sorozatok vCPU-kvótája teljes mértékben támogatott a Batch-fiókok esetében.
 
@@ -93,7 +96,7 @@ A Cloud Service-konfigurációban a Batch-készletek támogatják a Cloud Servic
 
 * **Készlet konfigurációja** – általánosságban több virtuálisgép-méretezési lehetőség is rendelkezésre áll, ha a virtuális gép konfigurációjában hoz létre készletet, a Cloud Service-konfigurációhoz képest.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 * További információ a számítási igényű virtuálisgép-méretek használatáról: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](batch-pool-compute-intensive-sizes.md).

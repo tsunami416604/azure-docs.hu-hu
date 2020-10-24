@@ -3,16 +3,16 @@ title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7914176174a38fef2336fc52eae7501780057452
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147981"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517361"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
-Ebben a cikkben az üzembe helyezés során használt adatok azonosításának és gyűjtésének tervezési folyamatát biztosítjuk. Az üzembe helyezés megtervezése során ügyeljen arra, hogy az üzembe helyezés során könnyen elérhető információkat jegyezze fel.
+Ez a cikk az üzembe helyezés során használt adatok azonosításának és gyűjtésének tervezési folyamatát ismerteti. Az üzembe helyezés megtervezése során ügyeljen arra, hogy az üzembe helyezés során könnyen elérhető információkat jegyezze fel.
 
 Ennek a rövid útmutatónak a folyamatai a virtuális gépek (VM-EK) és a Migrálás létrehozására szolgáló, éles használatra kész környezetet eredményeznek. 
 
@@ -73,7 +73,7 @@ További információ: [Network Planning ellenőrzőlista](tutorial-network-chec
 
 Azonosítson egy IP-szegmenst az első hálózat (NSX szegmens) létrehozásához a privát felhőben.  Más szóval egy hálózati szegmenst szeretne létrehozni az Azure VMware-megoldásban, hogy virtuális gépeket helyezzen üzembe az Azure VMware megoldásban.   
 
-Akkor is hozzon létre egy olyan hálózati szegmenst, amely hasznos lehet a környezet érvényesítéséhez, még akkor is, ha az L2 hálózatok kibővítését tervezi.
+Akkor is hozzon létre egy olyan hálózati szegmenst, amely ellenőrzi a környezetet, még akkor is, ha az L2 hálózatok kibővítését tervezi.
 
 Ne feledje, hogy a létrehozott IP-szegmenseknek egyedinek kell lenniük az Azure-ban és a helyszíni adatlábnyomban.  
 
@@ -92,7 +92,7 @@ Ne feledje, hogy:
 
 ## <a name="expressroute-global-reach-peering-network"></a>ExpressRoute Global Reach társ hálózat
 
-Azonosítson egy `/29` hálózati CIDR, amely szükséges a ExpressRoute Global REACH a társításhoz. Ne feledje, hogy a létrehozott IP-szegmenseknek egyedinek kell lenniük az Azure VMware-megoldásban és a helyszíni lábnyomban. Az ebben a szegmensben lévő IP-címeket a rendszer a ExpressRoute minden egyes végén használja Global Reach kapcsolattal az Azure VMware Solution ExpressRoute áramkört a helyszíni ExpressRoute-áramkörhöz csatlakoztatni. 
+Azonosítson egy `/29` CIDR, amely a ExpressRoute Global REACH a társításhoz szükséges. Ne feledje, hogy a létrehozott IP-szegmenseknek egyedinek kell lenniük az Azure VMware-megoldásban és a helyszíni lábnyomban. Az ebben a szegmensben lévő IP-címeket a rendszer a ExpressRoute minden egyes végén használja Global Reach kapcsolattal az Azure VMware Solution ExpressRoute áramkört a helyszíni ExpressRoute-áramkörhöz csatlakoztatni. 
 
 **Példa:** 10.1.0.0/29
 
@@ -128,7 +128,7 @@ A VMware HCX egy olyan technológia, amely az Azure VMware megoldással együtt 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy összegyűjtötte és dokumentálta a szükséges információkat, folytassa a következő szakasszal az Azure VMware-megoldás saját Felhőbeli létrehozásához.
+Most, hogy összegyűjtötte és dokumentálta a szükséges információkat, folytassa a következő szakasszal, hogy létrehozza az Azure VMware-megoldás saját felhőjét.
 
 > [!div class="nextstepaction"]
 > [Az Azure VMware Solution üzembe helyezése](deploy-azure-vmware-solution.md)

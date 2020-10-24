@@ -1,6 +1,6 @@
 ---
 title: Engedélyek az Azure Sentinelben | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan használja az Azure Sentinel a szerepköralapú hozzáférés-vezérlést a felhasználók engedélyeinek kiosztására, valamint az egyes szerepkörökre vonatkozó engedélyezett műveletek azonosítására.
+description: Ez a cikk azt ismerteti, hogy az Azure Sentinel hogyan használja az Azure-beli szerepköralapú hozzáférés-vezérlést a felhasználók engedélyeinek kiosztásához és az egyes szerepkörökhöz tartozó engedélyezett műveletek azonosításához.
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 3b680dbaead6e94aa955ebc0e0e720281a40389d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0704f076ef7c5d1a39af67d3ec6ec2baece1fda5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369896"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517301"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Az Azure Sentinel engedélyei
 
 Az Azure Sentinel az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) használatával biztosítja az Azure-beli felhasználókhoz, csoportokhoz és szolgáltatásokhoz hozzárendelhető [beépített szerepköröket](../role-based-access-control/built-in-roles.md) .
 
-A RBAC segítségével szerepköröket hozhat létre és rendelhet hozzá a biztonsági operatív csapatához, hogy megfelelő hozzáférést biztosítson az Azure Sentinelhez. A különböző szerepkörök részletesen szabályozzák, hogy az Azure Sentinel mely felhasználóinak láthatják és tudják megtekinteni. Az Azure-szerepkörök közvetlenül az Azure Sentinel-munkaterülethez rendelhetők (lásd az alábbi megjegyzést), vagy egy olyan előfizetésben vagy erőforráscsoporthoz, amelyhez a munkaterület tartozik, amelyet az Azure Sentinel örököl.
+Az Azure RBAC segítségével szerepköröket hozhat létre és rendelhet hozzá a biztonsági operatív csapatához az Azure Sentinel megfelelő hozzáférésének biztosításához. A különböző szerepkörök részletesen szabályozzák, hogy az Azure Sentinel mely felhasználóinak láthatják és tudják megtekinteni. Az Azure-szerepkörök közvetlenül az Azure Sentinel-munkaterülethez rendelhetők (lásd az alábbi megjegyzést), vagy egy olyan előfizetésben vagy erőforráscsoporthoz, amelyhez a munkaterület tartozik, amelyet az Azure Sentinel örököl.
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Az Azure Sentinel használatának szerepkörei
 
@@ -62,7 +62,7 @@ Előfordulhat, hogy az adott feladatra vonatkozó követelményekkel rendelkező
 
 - Vendég felhasználói incidensek kiosztása
 
-    Ha a vendégnek incidenseket kell tudnia hozzárendelni, az Azure Sentinel válaszadó szerepkörön kívül a felhasználónak is hozzá kell rendelnie a [címtár-olvasó](../active-directory/roles/permissions-reference.md#directory-readers)szerepkört. Vegye figyelembe, hogy ez a szerepkör *nem* Azure RBAC szerepkör, hanem egy **Azure Active Directory** szerepkör, és a normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint hozzá van rendelve. 
+    Ha a vendégnek incidenseket kell tudnia hozzárendelni, az Azure Sentinel válaszadó szerepkörön kívül a felhasználónak is hozzá kell rendelnie a [címtár-olvasó](../active-directory/roles/permissions-reference.md#directory-readers)szerepkört. Vegye figyelembe, hogy ez a szerepkör *nem* Azure-szerepkör, hanem egy **Azure Active Directory** szerepkör, és a normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint hozzá van rendelve. 
 
 A párhuzamos összehasonlításhoz tekintse meg az [alábbi táblázatot](#roles-and-allowed-actions).
 
@@ -87,11 +87,11 @@ Az alábbi táblázat a szerepköröket és az Azure Sentinelben engedélyezett 
 | Azure Sentinel Contributor | -- | &#10003; | &#10003; | &#10003; |
 | Azure Sentinel közreműködő + Logic app közreműködő | &#10003; | &#10003; | &#10003; | &#10003; |
 
-## <a name="custom-roles-and-advanced-rbac"></a>Egyéni szerepkörök és speciális RBAC
+## <a name="custom-roles-and-advanced-azure-rbac"></a>Egyéni szerepkörök és speciális Azure RBAC
 
-- Az Azure beépített szerepköreinek használatával vagy ahelyett, hogy az Azure Sentinelhez egyéni Azure-szerepköröket is létrehozhat. Az Azure Sentinel Azure-beli egyéni szerepkörei ugyanúgy jönnek létre, mint a többi [Egyéni Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -szerepkört az Azure Sentinel és az [Azure log Analytics erőforrásaira](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights) [adott engedélyek](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) alapján.
+- Az Azure beépített szerepköreinek használatával vagy ahelyett, hogy az Azure Sentinelhez egyéni Azure-szerepköröket is létrehozhat. Az Azure Sentinel Azure-beli egyéni szerepkörei ugyanúgy jönnek létre, mint más [Egyéni Azure-szerepköröket](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)az [Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) és az [Azure log Analytics erőforrásaira](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)adott engedélyek alapján.
 
-- Az Azure Sentinel-munkaterületen található összes adathoz használhatja a Log Analytics speciális szerepköralapú hozzáférés-vezérlést. Ebbe beletartozik az adattípuson alapuló RBAC és az erőforrás-központú RBAC is. Log Analytics szerepkörökkel kapcsolatos további információkért lásd: [a naplózási adatok és munkaterületek kezelése a Azure monitorban](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+- Az Azure Sentinel-munkaterületen található összes adathoz használhatja a Log Analytics speciális szerepköralapú hozzáférés-vezérlést. Ez magában foglalja az adattípuson alapuló Azure-RBAC és az erőforrás-központú Azure-RBAC is. Log Analytics szerepkörökkel kapcsolatos további információkért lásd: [a naplózási adatok és munkaterületek kezelése a Azure monitorban](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Következő lépések
 
