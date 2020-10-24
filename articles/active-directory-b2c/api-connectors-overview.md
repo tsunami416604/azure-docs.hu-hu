@@ -5,27 +5,30 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 195101a432d16c2236ea2d164416e75df33b12e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94d6b0192b014396f8751e58f5620aec5c132203
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828449"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503878"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>API-összekötők használata a regisztrációs felhasználói folyamatok testreszabásához és kiterjesztéséhez
 
-## <a name="overview"></a>Áttekintés 
-Fejlesztőként vagy rendszergazdaként az API-összekötők használatával integrálhatja a regisztrációs felhasználói folyamatokat a webes API-kkal a regisztrációs élmény testreszabásához. Az API-összekötők segítségével a következőket teheti:
+> [!IMPORTANT]
+> A regisztrációhoz használható API-összekötők a Azure AD B2C nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-- **Személyazonosság-ellenőrzés végrehajtása**. A személyazonosság-ellenőrző szolgáltatással további biztonsági szintet adhat hozzá a fiókok létrehozásával kapcsolatos döntésekhez.
+## <a name="overview"></a>Áttekintés 
+Fejlesztőként vagy rendszergazdaként az API-összekötők használatával integrálhatja a regisztrációs felhasználói folyamatokat a webes API-kkal a regisztrációs élmény testreszabásához. Az API-összekötők esetében például a következőket teheti:
+
 - **Felhasználói bemeneti adatok érvényesítése**. A helytelenül formázott vagy érvénytelen felhasználói adatértékek ellenőrzése. Ellenőrizheti például, hogy a felhasználó által megadott adatok egy külső adattáron vagy a megengedett értékek listáján lévő meglévő adatokon keresztül érvényesíthetők-e. Ha érvénytelen, megkérheti a felhasználót, hogy adjon meg érvényes adatmennyiséget, vagy tiltsa le a felhasználót a regisztrációs folyamat folytatásához.
 - **Integrálás egyéni jóváhagyási munkafolyamattal**. Kapcsolódás egyéni jóváhagyási rendszerhez a fiókok létrehozásának kezeléséhez és korlátozásához.
 - **Felhasználói attribútumok felülírása**. Formázza vagy rendeljen hozzá egy értéket a felhasználótól gyűjtött attribútumhoz. Ha például egy felhasználó az első nevet adja meg az összes kisbetűs vagy az összes nagybetűvel, a nevet csak az első nagybetűvel formázhatja. 
+- **Személyazonosság-ellenőrzés végrehajtása**. A személyazonosság-ellenőrző szolgáltatással további biztonsági szintet adhat hozzá a fiókok létrehozásával kapcsolatos döntésekhez.
 - **Egyéni üzleti logikát futtathat**. Leküldéses értesítések küldéséhez, a vállalati adatbázisok frissítéséhez, az engedélyek kezeléséhez, a naplózási adatbázisokhoz és egyéb egyéni műveletek elvégzéséhez aktiválhatja az alárendelt eseményeket a felhőalapú rendszerekben.
 
 Az API-összekötők Azure Active Directory biztosítanak az API meghívásához szükséges információkkal, beleértve a végpont URL-címét és a hitelesítést. Az API-összekötők konfigurálása után engedélyezheti azt egy adott lépéshez a felhasználói folyamatokban. Ha a felhasználó eléri ezt a lépést a regisztrációs folyamat során, az API-összekötőt meghívja, és HTTP POST-kérésként megvalósul az API-hoz, a felhasználói adatokat ("jogcímeket") pedig egy JSON-törzsben kulcs-érték párokként küldi el. Az API-válasz hatással lehet a felhasználói folyamat végrehajtására. Az API-válasz például blokkolhatja egy felhasználó regisztrációját, megkérheti a felhasználót, hogy írja be újra az adatokat, vagy írja felül a felhasználói attribútumok felülírását és hozzáfűzését.
@@ -42,7 +45,7 @@ A felhasználói folyamatoknak két helye van, ahol engedélyezheti az API-össz
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>Az identitás-szolgáltatóval való bejelentkezés után
 
-A regisztrálási folyamat ezen lépésében szereplő API-összekötőt azonnal meghívja a rendszer, miután a felhasználó hitelesítve lett az identitás-szolgáltatónál (például Google, Facebook, & Azure AD). Ez a lépés megelőzi az ***attribútum-gyűjtemény lapot***, amely a felhasználó számára a felhasználói attribútumok összegyűjtésére bemutatott űrlap. Ez a lépés nem kerül meghívásra, ha egy felhasználó helyi fiókkal van regisztrálva. Az alábbi példák az API-összekötők olyan forgatókönyveit ismertetik, amelyeket a következő lépésben engedélyezhet:
+A regisztrálási folyamat ezen lépésében szereplő API-összekötőt azonnal meghívja a rendszer, miután a felhasználó hitelesítve lett az identitás-szolgáltatónál (például Google, Facebook, & Azure AD). Ez a lépés megelőzi az **_attribútum-gyűjtemény lapot_**, amely a felhasználó számára a felhasználói attribútumok összegyűjtésére bemutatott űrlap. Ez a lépés nem kerül meghívásra, ha egy felhasználó helyi fiókkal van regisztrálva. Az alábbi példák az API-összekötők olyan forgatókönyveit ismertetik, amelyeket a következő lépésben engedélyezhet:
 
 - A felhasználó által megadott e-mail-vagy összevont identitás használatával kereshet jogcímeket egy meglévő rendszeren. Adja vissza ezeket a jogcímeket a meglévő rendszerből, töltse ki előre az attribútum-gyűjtemény lapot, és tegye elérhetővé őket a tokenben való visszatéréshez.
 - A közösségi identitáson alapuló engedélyezési vagy letiltási lista implementálása.
@@ -59,4 +62,5 @@ A regisztrációs folyamat ezen lépésében található API-összekötőt a ren
 
 ## <a name="next-steps"></a>Következő lépések
 - Útmutató [API-összekötők felhasználói folyamathoz való hozzáadásához](add-api-connector.md)
+- Ismerkedjen meg a [mintákkal](code-samples.md#api-connectors).
 <!-- - Learn how to [add a custom approval system to self-service sign-up](add-approvals.md) -->

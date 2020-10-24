@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8408dde86d1902cf5b4899c4783c9dd185449ee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067154"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515746"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Meglévő Java Message Service (JMS) 2,0-alkalmazások migrálása Apache ActiveMQ-ből Azure Service Bus
 
@@ -62,7 +62,7 @@ Az ügyfélalkalmazások áttelepítésének és módosításának részeként A
 
 #### <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 
-A Azure Active Directory által támogatott szerepköralapú hozzáférés-vezérlés (RBAC) a Service Bus előnyben részesített hitelesítési mechanizmusa. Mivel az Apache csontos JMS jelenleg nem támogatja az RBAC vagy a jogcím-alapú hitelesítést, az SAS-kulcsokat kell használnia a hitelesítéshez.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Azure Active Directory által támogatott hitelesítési mechanizmus a Service Bus számára. Mivel az Azure RBAC vagy a jogcím-alapú hitelesítés jelenleg nem támogatott az Apache csontos JMS, azonban SAS-kulcsokat kell használnia a hitelesítéshez.
 
 ## <a name="pre-migration"></a>A migrálás előtt
 

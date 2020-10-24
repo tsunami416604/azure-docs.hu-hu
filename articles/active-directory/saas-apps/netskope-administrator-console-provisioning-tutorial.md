@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 173ca296689bbdb8d574930ec2549e82839c47e9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5e71566ea7cd2e8953c84d58128e3380a782ba40
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428461"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516715"
 ---
 # <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Oktatóanyag: Netskope felhasználói hitelesítés konfigurálása automatikus felhasználó-kiépítés esetén
 
@@ -97,7 +97,7 @@ Az Azure AD-vel való automatikus Netskope felhasználói hitelesítés konfigur
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, amelyekkel felhasználókat és/vagy csoportokat hozhat létre, frissíthet és tilthatja le Netskope felhasználói hitelesítésre az Azure AD-ben a felhasználók és/vagy csoportok hozzárendelései alapján.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Netskope felhasználói hitelesítéshez az [Netskope felhasználói hitelesítés egyszeri bejelentkezési oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció kiegészíti egymást.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Netskope felhasználói hitelesítéshez az [Netskope felhasználói hitelesítés egyszeri bejelentkezési oktatóanyagában](./netskope-cloud-security-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció kiegészíti egymást.
 
 > [!NOTE]
 > A Netskope felhasználói hitelesítés SCIM végpontjának megismeréséhez tekintse meg [ezt](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)a témakört.
@@ -172,4 +172,3 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
-

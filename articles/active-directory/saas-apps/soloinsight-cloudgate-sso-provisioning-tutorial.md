@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: aa9ed0954cbfa2d83eeed1c70f40beedcf4f44cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab23183fa42b87dad68da1d7ef9b1a2f6145750
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285932"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514792"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>Oktatóanyag: Soloinsight-CloudGate SSO konfigurálása automatikus felhasználó-kiépítés esetén
 
@@ -89,7 +89,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt Soloinsight-C
 Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálásának lépésein, amelyekkel felhasználókat és/vagy csoportokat hozhat létre, frissíthet és tilt le Soloinsight-CloudGate SSO-ban az Azure AD-ben a felhasználók és/vagy csoportok hozzárendelései alapján.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést Soloinsight-CloudGate egyszeri bejelentkezéshez, a [Soloinsight-CLOUDGATE SSO egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-tutorial)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést Soloinsight-CloudGate egyszeri bejelentkezéshez, a [Soloinsight-CLOUDGATE SSO egyszeri bejelentkezés oktatóanyagában](./soloinsight-cloudgate-sso-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
 
 ### <a name="to-configure-automatic-user-provisioning-for-soloinsight-cloudgate-sso-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása Soloinsight-CloudGate egyszeri bejelentkezéshez az Azure AD-ben:
 
@@ -161,4 +161,3 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
-

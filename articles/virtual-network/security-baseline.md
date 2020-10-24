@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c34ace92fffee3c135cb05e07f06d885751bbce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36be61fd65db7ea02a3baec4b519a13231c420ec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629743"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514441"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>Virtual Network Azure biztonsági alapterve
 
@@ -118,7 +118,7 @@ Az alkalmazás biztonsági csoportjaival egyszerűsítheti az összetett biztons
 
 Tekintse meg a virtuális hálózatokkal kapcsolatos elérhető biztonsági javaslatokat tartalmazó Security Center alapértelmezett házirendjét.
 
-Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését a főbb környezeti összetevők, például a Azure Resource Manager sablonok, szerepköralapú hozzáférés-vezérlés (Azure RBAC)-hozzárendelések és házirendek használatával egyetlen terv definíciójában. A Azure Blueprint az új előfizetésekre alkalmazható a részletes vezérléshez és a verziószámozáshoz. 
+Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését a főbb környezeti összetevők, például a Azure Resource Manager sablonok, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) hozzárendelései és a szabályzatok egyetlen tervezet-definícióban való kicsomagolásával. A Azure Blueprint az új előfizetésekre alkalmazható a részletes vezérléshez és a verziószámozáshoz. 
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -408,13 +408,13 @@ Emellett az Azure-adatközpontok közötti, a MACsec (az adatkapcsolati rétegbe
 
 **Felelősség**: megosztott
 
-### <a name="46-use-role-based-access-control-to-manage-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés kezeléséhez 
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés kezelése az Azure RBAC 
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata az adat-és erőforrásokhoz való hozzáférés kezelésére. Ellenkező esetben használja a szolgáltatás-specifikus hozzáférés-vezérlési metódusokat. 
 
 Válasszon olyan beépített szerepköröket, mint a tulajdonos, a közreműködő vagy a hálózati közreműködő, és rendelje hozzá a szerepkört a megfelelő hatókörhöz. Például a virtuális hálózat képességeinek egy részhalmazát hozzárendelheti a virtuális hálózatokhoz szükséges konkrét engedélyekkel a szerepkörök bármelyikéhez. 
 
-- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
 - [Virtuális hálózatok tervezése](virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -562,7 +562,7 @@ A Security Center ajánlásainak megvalósítása az Azure-erőforrások biztons
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Biztonsági javaslatok – útmutató](../security-center/recommendations-reference.md)
+- [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -754,7 +754,7 @@ Egyértelműen megjelölheti az előfizetéseket (például éles vagy nem éles
 
 - [Biztonsági riasztások Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Címkék használata az erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: igen
 

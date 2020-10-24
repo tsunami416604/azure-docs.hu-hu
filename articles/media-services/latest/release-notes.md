@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d18962e097358b8e80ac93b4d8419f7cd4f77ee0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426814"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514486"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -37,6 +37,15 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 > A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md) és-feladatok megtekintésére, az API-k elérésére és a tartalmak titkosítására vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például az átalakítások és a feladatok kezeléséhez) használja a [REST API](/rest/api/media/accountfilters), a [CLI](/cli/azure/ams)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
 >
 > Részletekért lásd: [a Media Services v3 Azure Portal korlátozásai](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+## <a name="october-2020"></a>2020. október
+
+### <a name="basic-audio-analysis"></a>Alapszintű hang elemzése
+A hangelemzési beállításkészlet mostantól egy alapszintű mód díjszabási szintjét is tartalmazza. Az új alapszintű hangelemző mód alacsony díjszabású lehetőséget biztosít a beszédfelismerési átiratok kinyerésére, valamint a kimeneti feliratok és feliratok formázására. Ez a mód beszéd – szöveg típusú átírást és VTT alcím/képaláírás-fájl létrehozását végzi. A mód kimenete tartalmaz egy bepillantást nem tartalmazó JSON-fájlt, amely csak a kulcsszavakat, az átírást és az időzítési adatokat tartalmazza. Ez a mód nem tartalmazza az automatikus nyelvfelismerés és a hangszórók diarization. Tekintse meg a [támogatott nyelvek listáját.](analyzing-video-audio-files-concept.md#built-in-presets)
+
+Az indexelő v1 és az indexelő v2-et használó ügyfeleknek át kell térniük az alapszintű hangelemzési készletre.
+
+További információ az alapszintű audio Analyzer módból: [videó-és hangfájlok elemzése](analyzing-video-audio-files-concept.md).  Az alapszintű hangelemző mód és a REST API használatának megismeréséhez tekintse meg az [alapszintű hang átalakításának létrehozása](how-to-create-basic-audio-transform.md)című témakört.
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -407,7 +416,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 [Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v3 dokumentációjának frissítései](docs-release-notes.md)

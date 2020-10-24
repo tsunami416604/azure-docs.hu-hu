@@ -9,22 +9,35 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873880"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503555"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Oktatóanyag – Android-alkalmazás migrálása a Google Mapsből
 
-A Azure Maps Android SDK egy olyan API-felülettel rendelkezik, amely hasonló a web SDK-hoz. Ha ezekkel az SDK-k valamelyikével fejlesztett ki, akkor az egyes fogalmak, ajánlott eljárások és architektúrák közül sokat alkalmazunk.
+A Azure Maps Android SDK egy olyan API-felülettel rendelkezik, amely hasonló a web SDK-hoz. Ha ezekkel az SDK-k valamelyikével fejlesztett ki, akkor az egyes fogalmak, ajánlott eljárások és architektúrák közül sokat alkalmazunk. Az oktatóanyag során a következőket fogja elsajátítani:
+
+> [!div class="checklist"]
+> * Térkép betöltése
+> * Térkép honosítása
+> * Jelölők, vonalláncok és sokszögek hozzáadása.
+> * Csempe rétegének átfedése
+> * Forgalomadatok megjelenítése
 
 A Azure Maps Android SDK az API 21 minimális Android-verzióját támogatja: Android 5.0.0 (nyalóka).
 
 Az összes példa a javában van megadva. a Kotlin azonban a Azure Maps Android SDK-val is használhatja.
 
 Az Android SDK Azure Maps használatával történő fejlesztésével kapcsolatos további információkért tekintse meg a [Azure Maps Android SDK útmutatói](how-to-use-android-map-control-library.md)útmutatóit.
+
+## <a name="prerequisites"></a>Előfeltételek 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 ## <a name="load-a-map"></a>Térkép betöltése
 
@@ -745,6 +758,18 @@ mapControl.onReady(map -> {
 
 ![Azure Maps forgalom](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
-További információ a Azure Maps Android SDK-ról.
+## <a name="next-steps"></a>Következő lépések
 
-[Az Android Térkép vezérlőelem használata](how-to-use-android-map-control-library.md)
+További információ az Azure Maps Android SDK-ról:
+
+> [!div class="nextstepaction"]
+> [Az Android Térkép vezérlőelem használata](how-to-use-android-map-control-library.md)
+
+> [!div class="nextstepaction"]
+> [Szimbólum réteg hozzáadása Android-térképhez](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Alakzatok hozzáadása Android-térképhez](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+
+> [!div class="nextstepaction"]
+> [Térkép stílusainak módosítása Android-térképeken](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

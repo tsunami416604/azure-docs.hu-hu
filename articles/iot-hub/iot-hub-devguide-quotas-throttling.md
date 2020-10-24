@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f2ab3c55c5532b76c45a18054fd653dd8fe8137
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797802"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504074"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -59,7 +59,7 @@ A következő táblázat a kényszerített szabályozásokat mutatja be. Az ért
 | Egyidejű csatlakoztatott adatfolyamok maximális száma<sup>1</sup> | 50 | 50 | 50 |
 | Az eszköz adatfolyam-továbbításának maximális száma<sup>1</sup> (naponta összesített kötet) | 300 MB | 300 MB | 300 MB |
 
-<sup>1</sup> Ez a funkció nem érhető el az alapszintű IoT Hub. További információ: [How to Choo the right IoT hub](iot-hub-scaling.md). <br/><sup>2</sup> A szabályozási mérési méret 4 KB.
+<sup>1</sup> Ez a funkció nem érhető el az alapszintű IoT Hub. További információ: [How to Choo the right IoT hub](iot-hub-scaling.md). <br/><sup>2</sup> A szabályozási mérési méret 4 KB. A szabályozás csak a kérelmek hasznos mérete alapján történik.
 
 ### <a name="throttling-details"></a>Szabályozás részletei
 
@@ -132,7 +132,7 @@ Több IoT Hub egység is befolyásolja a szabályozást a korábban leírtak sze
 
 Ha a művelet késése váratlan növekedést lát, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 IoT Hub szabályozási viselkedés részletes ismertetését a következő blogbejegyzésben találja: [IoT hub szabályozás és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 

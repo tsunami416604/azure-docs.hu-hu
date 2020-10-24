@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: a38816f00c0e05c3bde1760e39ba00d745f12a44
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3aaa666ac6b7ddffcf5e0d2f5b62d26bd0f96004
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460954"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516205"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása Azure SQL Database
 
@@ -108,7 +108,7 @@ Jelentkezzen be a Master adatbázisba a kiszolgáló-rendszergazdai bejelentkez�
 
 Ez a parancs egy pool1 nevű rugalmas készletben másolja a Adatbázis1 egy Adatbázis2 nevű új adatbázisba. Az adatbázis méretétől függően a másolási művelet végrehajtása hosszabb időt is igénybe vehet.
 
-A Adatbázis1 lehet egyetlen vagy készletezett adatbázis is, de a pool1-nek a Adatbázis1 azonos szolgáltatási rétegnek kell lennie. 
+A Adatbázis1 lehet egyetlen vagy készletezett adatbázis is. A különböző rétegbeli készletek közötti másolás támogatott, de egyes többrétegű másolatok nem fognak sikerülni. Például egyetlen vagy rugalmas standard adatbázist másolhat egy általános célú készletbe, de nem másolhat standard rugalmas adatbázist egy prémium készletbe. 
 
    ```sql
    -- execute on the master database to start copying
@@ -208,7 +208,7 @@ A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban tö
 | 40570 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
 | 40571 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a bejelentkezésekről: a [bejelentkezések kezelése](logins-create-manage.md) és [a Azure SQL Database biztonság kezelése a vész-helyreállítás után](active-geo-replication-security-configure.md).
 * Az adatbázisok exportálásával kapcsolatban tekintse meg [az adatbázis exportálása BACPAC](database-export.md)című témakört.

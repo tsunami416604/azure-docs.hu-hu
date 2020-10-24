@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 303720cf50b5eabf22319e1eeae7423c4f1d94bb
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a9410215abeb6fdb413866cbff12cf5f826c0fee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201698"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504371"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure biztonsági alapkonfiguráció az Azure Kubernetes Service-hez
 
@@ -949,7 +949,7 @@ Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre az AK-bel
 
 A Kubernetes névtér implementálása logikai elkülönítési határ létrehozásához. Használjon Azure Policy aliasokat a "Microsoft. Tárolószolgáltatás" névtérben egyéni szabályzatok létrehozásához az Azure Kubernetes szolgáltatás (ak) példányainak konfigurálásához vagy érvényesítéséhez. 
 
-Tekintse át és implementálja az elkülönítésre és a több-bérlőre vonatkozó további Kubernetes-funkciókat, valamint a következő területeket: ütemezés, hálózatkezelés, hitelesítés/engedélyezés és tárolók. Külön előfizetéseket és/vagy felügyeleti csoportokat is használhat a fejlesztési, tesztelési és éles környezetekhez. Különálló AK-fürtöket virtuális hálózatokkal, a megfelelő címkével rendelkező alhálózatokkal és a webalkalmazási tűzfallal (WAF) védett alhálózatokkal.
+Tekintse át és implementálja az elkülönítésre és a több-bérlőre vonatkozó további Kubernetes funkciókat, amelyek az alábbiakat tartalmazzák: ütemezés, hálózatkezelés, hitelesítés/engedélyezés és tárolók. Külön előfizetéseket és/vagy felügyeleti csoportokat is használhat a fejlesztési, tesztelési és éles környezetekhez. Különálló AK-fürtöket virtuális hálózatokkal, a megfelelő címkével rendelkező alhálózatokkal és a webalkalmazási tűzfallal (WAF) védett alhálózatokkal.
 
 - [További információ a fürtök elkülönítésével kapcsolatos ajánlott eljárásokról az AK-ban](operator-best-practices-cluster-isolation.md)
 
@@ -1235,7 +1235,7 @@ A biztonsági mentés előtt távolítsa el az állapotokat az alkalmazásokból
 
 A PowerShell-parancsokkal a Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok rendszeres automatikus biztonsági mentését végezheti el. 
 
-Például:
+Példa:
 
 Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
@@ -1259,7 +1259,7 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 A PowerShell-parancsokkal rendszeres időközönként Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok adat-visszaállítását végzi. 
 
-Például:
+Példa:
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 

@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: df45068ff14d8ac08a17719e4e0338308b504cac
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b6d46dfc348cc518daf2e6af4d5b9677148c3911
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92426104"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503215"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -36,7 +36,7 @@ Tekintse meg a sorozat egyéb cikkeit:
 
 
 > [!IMPORTANT]
-> Habár a Studióban a legtöbb a virtuális hálózaton tárolt adattal működik, az integrált jegyzetfüzetek __nem__. Az integrált jegyzetfüzetek nem támogatják a virtuális hálózatban lévő tárolók használatát. Ehelyett Jupyter jegyzetfüzeteket használhat egy számítási példányból. További információkért tekintse meg a [hozzáférési adatokat egy számítási példányú jegyzetfüzet]() szakaszban.
+> Ha a munkaterület __szuverén felhőben__van, például Azure Government vagy az Azure China 21Vianet, az integrált jegyzetfüzetek _nem_ támogatják a virtuális hálózatban lévő tárolók használatát. Ehelyett Jupyter jegyzetfüzeteket használhat egy számítási példányból. További információkért tekintse meg a [hozzáférési adatokat egy számítási példányú jegyzetfüzet](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) szakaszban.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -138,7 +138,7 @@ Az alapértelmezett adattárat is felülbírálhatja egy modul alapján. Ez lehe
 1. Válassza a **kimeneti beállítások megadása**lehetőséget.
 1. Új adattárt kell megadnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat választható részét képezi. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

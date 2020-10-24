@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73743051"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504129"
 ---
 # <a name="face-detection-and-attributes"></a>Arcfelismerés és attribútumok
 
@@ -35,7 +35,7 @@ Az arc tereptárgyak könnyen megtalált pontok, például a tanulók és az orr
 
 A pontok koordinátáit képpontban adja vissza.
 
-## <a name="attributes"></a>Attribútumok
+## <a name="attributes"></a>Jellemzők
 
 Az attribútumok olyan funkciók összessége, amelyek a [Face-Detect API-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) val opcionálisan észlelhetők. A következő attribútumok észlelhetők:
 
@@ -47,7 +47,7 @@ Az attribútumok olyan funkciók összessége, amelyek a [Face-Detect API-](http
 * **Gender**Nem. Az adott arc becsült neme. A lehetséges értékek a következők: férfi, női és nemi.
 * **Szemüveg**. Azt jelzi, hogy a megadott arc szemüveggel rendelkezik-e. A lehetséges értékek: nem üvegek, ReadingGlasses, napszemüvegek és úszási szemüvegek.
 * **Haj**. Az arc szőrének típusa Ez az attribútum azt mutatja, hogy látható-e a haj, hogy a rendszer a kopaszodás észlelését és a haj színét észleli-e.
-* **Head**. Az arc tájolása 3D térben. Ezt az attribútumot a Pitch, a roll és a kitérés szögek írják le fokban. Az érték tartománya-90 fok, 90 fok,-180 fok és 180 fok, illetve – 90 fok – 90 fok. Tekintse meg a következő diagramot a szög-hozzárendelésekhez:
+* **Head**. Az arc tájolása 3D térben. Ezt az attribútumot a Pitch, a roll és a kitérés szögek írják le fokban. Az érték tartománya-90 fok, 90 fok,-90 fok és 90 fok, illetve – 90 fok – 90 fok. Tekintse meg a következő diagramot a szög-hozzárendelésekhez:
 
     ![A Pitch, a roll és a kitérés tengelysel jelölt fej](../Images/headpose.1.jpg)
 * **Smink**. Azt jelzi, hogy az arc rendelkezik-e sminktel. Ez az attribútum a eyeMakeup és a lipMakeup logikai értékét adja vissza.
@@ -63,7 +63,7 @@ Az attribútumok olyan funkciók összessége, amelyek a [Face-Detect API-](http
 A következő tippek segítségével győződjön meg arról, hogy a bemeneti képek a legpontosabb észlelési eredményeket adják meg:
 
 * A támogatott bemeneti képformátumok a következők: JPEG, PNG, GIF az első képkockához és a BMP-hez.
-* A képfájl mérete nem lehet nagyobb 4 MB-nál.
+* A képfájl mérete nem lehet hosszabb 6 MB-nál.
 * A észlelhető arc mérete 36 x 36 és 4096 x 4096 képpont közé esik. A tartományon kívüli arcok nem észlelhetők.
 * Előfordulhat, hogy a technikai kihívások miatt egyes arcok nem észlelhetők. A szélsőséges Face Angles (Head póz) vagy az arc elzáródás (objektumok, például napszemüvegek vagy az arc részét letiltó kezek) befolyásolhatják az észlelést. Az elülső és a közel-elülső arcok a legjobb eredményeket adják.
 
@@ -76,7 +76,7 @@ Ha egy videó-hírcsatornából észlel arcokat, akkor a videó kamerájának bi
     >[!NOTE]
     > Az alsó zársebességtel rendelkező kamera kevesebb fényt fog kapni az egyes keretekben, így a kép sötétebb lesz. Meg kell határoznia a használandó megfelelő szintet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri az Arcfelismerés fogalmait, megtudhatja, hogyan írhat olyan parancsfájlt, amely észleli az arcokat egy adott képen.
 

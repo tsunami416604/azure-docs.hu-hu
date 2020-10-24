@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0261c495ad08000f9041390658e0f19954b71669
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88003356"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517021"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Oktatóanyag: űrlap-feldolgozó alkalmazás létrehozása AI-szerkesztővel
 
@@ -93,7 +93,7 @@ A mező kiválasztása lapon válassza ki a kívánt mezőket:
     - **Mező értéke**: az észlelt mező értéke.
 
 > [!div class="mx-imgBorder"]
-> ![dokumentumok hozzáadása lap](./media/tutorial-ai-builder/select-fields-page.png)
+> ![címkézés lap](./media/tutorial-ai-builder/select-fields-page.png)
 
 ### <a name="label-undetected-fields"></a>Felderítetlen mezők felirata
 
@@ -104,7 +104,7 @@ Ha nem a modell automatikusan észlelte a címkézni kívánt mezőt, rajzoljon 
 1. A kiválasztott űrlapmezők ellenőrzéséhez válassza a **Tovább** lehetőséget. Ha minden rendben, válassza a **Betanítás** lehetőséget a modell betanításához.
 
     > [!div class="mx-imgBorder"]
-    > ![dokumentumok hozzáadása lap](./media/tutorial-ai-builder/summary-train-page.png)
+    > ![betanítás lap](./media/tutorial-ai-builder/summary-train-page.png)
 1. A betanítás után válassza a **Ugrás a Részletek lapra** lehetőséget a **betanítás végét jelző** képernyőn.
 ## <a name="quick-test-your-model"></a>A modell gyors tesztelése
 
@@ -127,11 +127,11 @@ Ha bizonyos mezőkhöz rossz eredményeket vagy alacsony megbízhatósági ponts
 Ha elégedett a modellel, válassza a **Közzététel**  lehetőséget a közzétételhez. A közzététel befejezésekor a rendszer **Közzétett** állapotúként jeleníti meg a modellt, amely innentől kezdve használatba vehető.
 
 > [!div class="mx-imgBorder"]
-> ![dokumentumok hozzáadása lap](./media/tutorial-ai-builder/model-page.png)
+> ![modell közzététele lap](./media/tutorial-ai-builder/model-page.png)
 
 Miután közzétette az űrlap-feldolgozási modellt, használhatja azt egy [Power apps vászon alkalmazásban](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps) vagy a [Power gyorsbüféban](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az űrlap-feldolgozási modell használatához kövesse a mesterséges intelligencia-szerkesztő dokumentációját.
 

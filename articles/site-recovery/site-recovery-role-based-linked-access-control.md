@@ -1,21 +1,21 @@
 ---
 title: Az Azure szerepköralapú hozzáférés-vezérlésének kezelése Azure Site Recovery
-description: Ez a cikk azt ismerteti, hogyan alkalmazhat szerepköralapú hozzáférés-vezérlést (RBAC) Azure Site Recovery hozzáférésének kezeléséhez.
+description: Ez a cikk bemutatja, hogyan alkalmazhatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) a Azure Site Recovery-hozzáférés kezelésére.
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3e1334f513e8ac587d639758d83ce080c5b4ab9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927164"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516902"
 ---
-# <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel (RBAC)
+# <a name="manage-site-recovery-access-with-azure-role-based-access-control-azure-rbac"></a>Site Recovery hozzáférés kezelése az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)
 
-Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a részletes hozzáférés-kezelést az Azure-hoz. A RBAC segítségével elkülönítheti a munkatársain belüli feladatokat, és adott feladatok elvégzéséhez szükség esetén csak konkrét hozzáférési engedélyeket biztosíthat a felhasználóknak.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a részletes hozzáférés-kezelést az Azure-hoz. Az Azure RBAC segítségével elkülönítheti a munkatársain belüli feladatokat, és adott feladatok elvégzéséhez szükség esetén csak konkrét hozzáférési engedélyeket biztosíthat a felhasználóknak.
 
 A Azure Site Recovery 3 beépített szerepkört biztosít Site Recovery felügyeleti műveletek vezérléséhez. További információ az [Azure beépített szerepköreiről](../role-based-access-control/built-in-roles.md)
 
@@ -53,7 +53,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 |  |  | Microsoft. ClassicCompute/virtualMachines/READ |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Write |
 |  |  | Microsoft. ClassicCompute/virtualMachines/delete |
-| Network (Hálózat) | Resource Manager | Microsoft. Network/networkInterfaces/READ |
+| Hálózat | Resource Manager | Microsoft. Network/networkInterfaces/READ |
 |  |  | Microsoft. Network/networkInterfaces/Write |
 |  |  | Microsoft. Network/networkInterfaces/delete |
 |  |  | Microsoft. Network/networkInterfaces/csatlakozás/művelet |
@@ -72,9 +72,9 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 Érdemes lehet a "Virtual Machine közreműködő" és a "klasszikus virtuálisgép-közreműködő" [beépített szerepköröket](../role-based-access-control/built-in-roles.md) használni a Resource Manager és a klasszikus üzemi modellekhez.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): első lépések a RBAC a Azure Portal.
+* [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Ismerkedés az Azure RBAC a Azure Portal.
 * Ismerje meg, hogyan kezelheti a hozzáférést a következővel:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Szerepköralapú Access Control hibaelhárítás](../role-based-access-control/troubleshooting.md): javaslatok a gyakori problémák elhárítására.
+* Az [Azure RBAC hibaelhárítása](../role-based-access-control/troubleshooting.md): javaslatokat kaphat a gyakori problémák megoldására.

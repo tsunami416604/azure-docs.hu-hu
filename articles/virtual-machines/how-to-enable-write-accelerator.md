@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: fd0f489bd6109a5dcd6625eb26286e0d40c50c63
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e4f6cefd56c12162b370c78b6df2cd29ece030f1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962326"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515712"
 ---
 # <a name="enable-write-accelerator"></a>írásgyorsító engedélyezése
 
@@ -57,7 +57,7 @@ A írásgyorsító által támogatott Azure Premium Storage virtuális merevleme
 | M16ms, M16s | 2 | 2500 |
 | M8ms | 1 | 1250 |
 
-A IOPS-korlátok száma virtuális gépenként és *nem* lemezenként történik. Minden írásgyorsító lemez ugyanazon a IOPS-korláton van, mint egy virtuális gépen.
+A IOPS-korlátok száma virtuális gépenként és *nem* lemezenként történik. Minden írásgyorsító lemez ugyanazon a IOPS-korláton van, mint egy virtuális gépen. A csatlakoztatott lemezek nem haladhatják meg a virtuális gép írási gyorsító IOPS korlátját. Ha például a csatlakoztatott lemezek 30 000 IOPS, akkor a rendszer nem teszi lehetővé, hogy a lemezek a M416ms_v2 20 000 IOPS felett legyenek.
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Írásgyorsító engedélyezése egy adott lemezen
 

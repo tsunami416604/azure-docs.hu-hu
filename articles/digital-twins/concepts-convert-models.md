@@ -1,5 +1,5 @@
 ---
-title: Iparági szabványnak megfelelő modellek átalakítása
+title: Iparági szabványoknak megfelelő modellek konvertálása
 titleSuffix: Azure Digital Twins
 description: Az iparági szabványnak megfelelő (RDF/bagoly) modellek DTDL alakítási mintázatának megismerése
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/28/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bf39bd0c787ed64d573cc2a257442b4d3bb8ab7d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 2d30410cf201475b69adce39eb6a66a7831cad8d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015114"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503249"
 ---
 # <a name="convert-industry-standard-models-to-dtdl-for-azure-digital-twins"></a>Iparági szabványnak megfelelő modellek átalakítása az Azure Digital Twins DTDL
 
@@ -32,7 +32,8 @@ Egyes gyakori iparági modellek a következők:
 | --- | --- | 
 | Épület/létesítmény kezelése | [RealEstateCore](https://www.realestatecore.io/)<br>[TÉGLA-séma](https://brickschema.org/ontology/1.1/)<br>[Felépítési topológia – ontológia (BOT)](https://w3c-lbd-cg.github.io/bot/)<br>[Szemantikai érzékelő hálózata](https://www.w3.org/TR/vocab-ssn/)<br>[buildingSmart Industry Foundation-osztályok (IFC)](https://technical.buildingsmart.org/standards/ifc/ifc-schema-specifications/) |
 | Intelligens városok | [ETSI NGSI – LD](https://www.etsi.org/deliver/etsi_gr/CIM/001_099/008/01.01.01_60/gr_CIM008v010101p.pdf)<br>[Intelligens alkalmazások referenciája (SAREF)](https://saref.etsi.org/)<br>[Fiware](https://www.fiware.org/)<br>[& agilis intelligens városok megnyitása (OASC)](https://oascities.org/) |
-| Energiaellátási rács | [CIM](https://cimug.ucaiug.org/) / [IEC 61968](https://en.wikipedia.org/wiki/IEC_61968)<br>[ADRM modellek](http://www.adrm.com/) az energia-és nyersanyagárak kereskedelméhez | 
+| Energiaellátási rács | [CIM](https://cimug.ucaiug.org/) / [IEC 61968](https://en.wikipedia.org/wiki/IEC_61968)<br>[ADRM modellek](http://www.adrm.com/) az energia-és nyersanyagárak kereskedelméhez |
+| Autóipar | [A jármű jelének specifikációja](https://github.com/GENIVI/vehicle_signal_specification/tree/master/spec) |
 
 Az igényektől függően a DTDL használatával testreszabhatja vagy kiterjesztheti az iparági modelleket, vagy akár saját egyéni modellt is fejleszthet. 
 
