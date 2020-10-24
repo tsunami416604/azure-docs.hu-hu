@@ -3,18 +3,18 @@ title: Hitelesítés és engedélyezés Azure Service Bus | Microsoft Docs
 description: Az alkalmazások hitelesítése megosztott hozzáférés-aláírási (SAS-) hitelesítéssel Service Bus.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88066861"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517280"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus-hitelesítés és -engedélyezés
 A Azure Service Bus-erőforrások hitelesítésének és engedélyezésének két módja van: az Azure Activity Directory (Azure AD) és a közös hozzáférésű aláírások (SAS). Ez a cikk részletesen ismerteti a két típusú biztonsági mechanizmus használatát. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-A Service Bus erőforrások Azure AD-integrációja szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfelek erőforrásaihoz való hozzáférés részletes szabályozásához. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket adhat egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A token használatával engedélyezhető egy Service Bus erőforrás elérésére irányuló kérés (Üzenetsor, témakör stb.).
+Az Azure AD-integráció a Service Bus erőforrásokhoz Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosít az ügyfelek erőforrásaihoz való hozzáférés részletes szabályozásához. Az Azure RBAC segítségével engedélyeket adhat egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A token használatával engedélyezhető egy Service Bus erőforrás elérésére irányuló kérés (Üzenetsor, témakör stb.).
 
 Az Azure AD-vel történő hitelesítéssel kapcsolatos további információkért tekintse meg a következő cikkeket:
 

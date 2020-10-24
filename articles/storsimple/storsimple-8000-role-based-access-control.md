@@ -1,5 +1,5 @@
 ---
-title: Szerepköralapú Access Control használata a StorSimple-hez | Microsoft Docs
+title: Azure szerepköralapú hozzáférés-vezérlés használata a StorSimple-hez | Microsoft Docs
 description: Ismerteti, hogyan használható az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) a StorSimple környezetében.
 services: storsimple
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87920415"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518976"
 ---
-# <a name="role-based-access-control-for-storsimple"></a>Szerepköralapú Access Control a StorSimple
+# <a name="azure-role-based-access-control-for-storsimple"></a>Azure szerepköralapú hozzáférés-vezérlés a StorSimple-hez
 
-Ez a cikk röviden ismerteti, hogyan használható az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) a StorSimple-eszközhöz. A RBAC részletes hozzáférés-vezérlést biztosít az Azure-hoz. A RBAC használatával csak a megfelelő mennyiségű hozzáférést biztosíthatja a StorSimple-felhasználók számára a feladatok elvégzéséhez ahelyett, hogy mindenki számára korlátlan hozzáférést adna. Az Azure-beli hozzáférés-kezelés alapjaival kapcsolatos további információkért lásd: [a Azure Portal a szerepköralapú Access Control használatának első lépései](../role-based-access-control/overview.md).
+Ez a cikk röviden ismerteti, hogyan használható az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) a StorSimple-eszközhöz. Az Azure RBAC részletes hozzáférés-vezérlést biztosít az Azure-hoz. Az Azure RBAC használatával biztosíthatja, hogy csak a megfelelő mennyiségű hozzáférés legyen elérhető a StorSimple-felhasználók számára a feladatok elvégzéséhez ahelyett, hogy mindenki számára korlátlan hozzáférést adna. További információ az Azure-beli hozzáférés-kezelés alapjairól: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md).
 
 Ez a cikk a 3,0-es vagy újabb verzióját futtató StorSimple 8000 sorozatú eszközökre vonatkozik a Azure Portal.
 
@@ -31,7 +31,7 @@ Ez a cikk a 3,0-es vagy újabb verzióját futtató StorSimple 8000 sorozatú es
 
 ## <a name="azure-roles-for-storsimple"></a>Azure-szerepkörök a StorSimple
 
-A RBAC a szerepkörök alapján rendelhetők hozzá. A szerepkörök bizonyos jogosultsági szinteket biztosítanak a környezetben elérhető erőforrások alapján. A StorSimple-felhasználók két típusú szerepkört választhatnak: beépített vagy egyéni.
+Az Azure RBAC a szerepkörök alapján rendelhető hozzá. A szerepkörök bizonyos jogosultsági szinteket biztosítanak a környezetben elérhető erőforrások alapján. A StorSimple-felhasználók két típusú szerepkört választhatnak: beépített vagy egyéni.
 
 * **Beépített szerepkörök** – a beépített szerepkörök tulajdonosa, közreműködője, olvasója vagy felhasználói hozzáférési rendszergazdája lehet. További információ: [beépített szerepkörök az Azure szerepköralapú Access Controlhoz](../role-based-access-control/built-in-roles.md).
 

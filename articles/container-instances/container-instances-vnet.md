@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan helyezhet üzembe egy tároló csoportot egy ú
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: e5a31742956c2ba9bd15026f7667c971c20694a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f61bc74f79c1712c3c662be66384c5ef689eb7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303008"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518126"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tárolópéldányok üzembe helyezése egy Azure virtuális hálózaton
 
@@ -40,7 +40,7 @@ Miután telepítette az első tároló csoportját ezzel a módszerrel, a virtu�
 
 ### <a name="example"></a>Példa
 
-Az alábbi az [Container Create][az-container-create] parancs egy új virtuális hálózat és alhálózat beállításait adja meg. Adja meg egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, amelyben a tároló csoport központi telepítései [elérhetők](container-instances-region-availability.md#availability---virtual-network-deployment)a virtuális hálózaton. Ez a parancs központilag telepíti a nyilvános Microsoft [ACI-HelloWorld][aci-helloworld] tárolót, amely egy statikus weblapot kiszolgáló kisméretű Node.js webkiszolgálót futtat. A következő szakaszban egy második tároló csoportot fog telepíteni ugyanahhoz az alhálózathoz, és tesztelni a két tároló példány közötti kommunikációt.
+Az alábbi az [Container Create][az-container-create] parancs egy új virtuális hálózat és alhálózat beállításait adja meg. Adja meg egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, amelyben a tároló csoport központi telepítései [elérhetők](container-instances-region-availability.md)a virtuális hálózaton. Ez a parancs központilag telepíti a nyilvános Microsoft [ACI-HelloWorld][aci-helloworld] tárolót, amely egy statikus weblapot kiszolgáló kisméretű Node.js webkiszolgálót futtat. A következő szakaszban egy második tároló csoportot fog telepíteni ugyanahhoz az alhálózathoz, és tesztelni a két tároló példány közötti kommunikációt.
 
 ```azurecli
 az container create \

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad5ebaf7eef5b404f7849b79694facf1efd01b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287321"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519439"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Profil tároló létrehozása Azure Files és AD DS
 
@@ -29,7 +29,7 @@ Először be kell állítania egy Azure Files Storage-fiókot.
 
 Storage-fiók beállítása:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Keresse meg a **Storage-fiókot** a keresősáv alatt.
 
@@ -86,7 +86,7 @@ A megosztási szint engedélyeinek konfigurálásához rendeljen hozzá minden f
 >[!NOTE]
 >Azokat a fiókokat vagy csoportokat, amelyekhez engedélyeket rendel, a tartományban kell létrehozni, és szinkronizálni kell az Azure AD-vel. Az Azure AD-ben létrehozott fiókok nem fognak működni.
 
-Szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek kiosztása:
+Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC-) engedélyek kiosztása:
 
 1. Nyissa meg az Azure Portalt.
 
@@ -102,11 +102,11 @@ Szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek kiosztása:
 
      Ha engedélyeket szeretne a felhasználókhoz rendelni az FSLogix-profiljukhoz kapcsolódóan, kövesse ugyanezeket a lépéseket. Ha azonban az 5. lépésre lép, válassza ki a **Storage file-adatsmb-megosztás közreműködője** helyet.
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Felhasználói engedélyek kiosztása az Azure-fájlmegosztás számára
 
-Miután RBAC-engedélyeket rendelt a felhasználókhoz, a következő teendő az NTFS-engedélyek konfigurálása.
+Miután hozzárendelte az Azure RBAC-engedélyeket a felhasználókhoz, a következő lépésben konfigurálnia kell az NTFS-engedélyeket.
 
 Első lépésként ismernie kell két dolgot a Azure Portal:
 

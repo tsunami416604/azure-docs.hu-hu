@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 9f2aaaa4138c483224bb3a98266e10b95b9381a4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b90f0c379310e8557f08f0f318ab6abe2c0be016
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425853"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520938"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közti vészhelyreállításának támogatási mátrixa
 
@@ -188,7 +188,7 @@ Azure Gallery-lemezképek – Microsoft published | Támogatott | Támogatott, h
 Azure Gallery-rendszerképek – harmadik féltől származó közzététel | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Egyéni rendszerképek – harmadik féltől származó közzététel | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Site Recovery használatával áttelepített virtuális gépek | Támogatott | Ha a VMware rendszerű virtuális gépet vagy fizikai gépet áttelepítette az Azure-ba a Site Recovery használatával, el kell távolítania a gépen futó mobilitási szolgáltatás régebbi verzióját, majd újra kell indítania a gépet egy másik Azure-régióba való replikálás előtt.
-RBAC szabályzatok | Nem támogatott | A virtuális gépek szerepköralapú hozzáférés-vezérlési (RBAC) házirendjei nem replikálódnak a célként megadott régióban található feladatátvételi virtuális gépre.
+Azure RBAC-szabályzatok | Nem támogatott | Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) virtuális gépekre vonatkozó házirendjei nem replikálódnak a célként megadott régióban található feladatátvételi virtuális gépre.
 Bővítmények | Nem támogatott | A bővítmények nem replikálódnak a célként megadott régióban található feladatátvételi virtuális gépre. A feladatátvételt követően kézzel kell telepíteni.
 Proximity elhelyezési csoportok | Támogatott | A közelségi elhelyezési csoportban található virtuális gépeket Site Recovery használatával lehet védeni.
 
@@ -298,7 +298,7 @@ Site Recovery szolgáltatáshoz való privát hivatkozás | Támogatott | [Tová
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](./azure-to-azure-about-networking.md)  .
 - A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](./azure-to-azure-quickstart.md).

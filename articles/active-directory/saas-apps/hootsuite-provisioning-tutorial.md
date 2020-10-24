@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 82cd39fdefef477e3761d8d7ab771301cea962e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b81dfec5e8ee828fba202f14967a4583bde32ed3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92443222"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503759"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés HootSuite konfigurálása
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a HootSuite és a A
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
-* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../users-groups-roles/directory-assign-admin-roles.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../users-groups-roles/directory-assign-admin-roles.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
 * Olyan [HootSuite](http://www.hootsuite.com/) rendelkező felhasználói fiók, amely a szervezeten belüli jogosultságokat **felügyeli** .
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
@@ -49,7 +49,7 @@ A dev.support@hootsuite.com későbbi lépésekben szükséges tartós titkos jo
 
 ## <a name="step-3-add-hootsuite-from-the-azure-ad-application-gallery"></a>3. lépés Hootsuite hozzáadása az Azure AD Application Galleryből
 
-Vegyen fel HootSuite az Azure AD-alkalmazás-katalógusból a HootSuite való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a HootSuite az SSO-hoz, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet. 
+Vegyen fel HootSuite az Azure AD-alkalmazás-katalógusból a HootSuite való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a HootSuite-t az egyszeri bejelentkezéshez, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
 
@@ -108,18 +108,30 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |displayName|Sztring|
    |preferredLanguage|Sztring|
    |timezone|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: HootSuite: 2.0: felhasználó: organizationIds|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: HootSuite: 2.0: felhasználó: teamIds|Sztring|
+   |name.givenName|Sztring|
+   |name.familyName|Sztring|
 
-10. Az Azure AD-kiépítési szolgáltatás HootSuite való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása**lehetőséget.
+
+11. Tekintse át az Azure AD-ből szinkronizált HootSuite az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a HootSuite tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+
+      |Attribútum|Típus|
+      |---|---|
+      |displayName|Sztring|
+      |externalId|Sztring|
+      |tagok|Referencia|
+
+12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+
+13. Az Azure AD-kiépítési szolgáltatás HootSuite való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
     ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
-11. Adja meg a HootSuite kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+14. Adja meg a HootSuite kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
     ![Átadási hatókör](common/provisioning-scope.png)
 
-12. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
+15. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
     ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
 
@@ -132,6 +144,10 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 * Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
 
+## <a name="change-log"></a>Változási napló
+
+* 10/22/2020 – a következő felhasználói attribútumok támogatása: "name. givenName" és "name. familyName". A felhasználók számára a "organizationIds" és a "teamIds" egyéni kiterjesztési attribútumok el lettek távolítva.
+A "displayName", "Members" és "externalId" csoportosítási attribútumok támogatása.
 
 ## <a name="additional-resources"></a>További források
 

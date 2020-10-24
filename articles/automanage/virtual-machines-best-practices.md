@@ -8,17 +8,17 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: dce076da08a7c31d7e2637dd5b8b29c9202ea10e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 2b8009d6d571a9daf7163d2126b6d52edfc4bfdd
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206407"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521084"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Azure-felügyelet a Virtual Machines szolgáltatásban – ajánlott eljárások
 
 
-Ezeket az Azure-szolgáltatásokat automatikusan előkészíti a rendszer, ha a virtuális gépek automatikus felügyeletét használja. Alapvető fontosságúak az ajánlott eljárásokról szóló tanulmány, amelyet a [felhőalapú bevezetési keretrendszerben](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management)talál.
+Ezeket az Azure-szolgáltatásokat automatikusan előkészíti a rendszer, ha a virtuális gépek automatikus felügyeletét használja. Alapvető fontosságúak az ajánlott eljárásokról szóló tanulmány, amelyet a [felhőalapú bevezetési keretrendszerben](/azure/cloud-adoption-framework/manage/azure-server-management)talál.
 
 Az összes szolgáltatás esetében automatikus bevezetést, automatikus konfigurálást, a drift figyelését, valamint a drift észlelését követően közvetítjük. A folyamattal kapcsolatos további információkért lásd: [Az Azure-beli automanage szolgáltatás virtuális gépeken](automanage-virtual-machines.md).
 
@@ -29,7 +29,7 @@ Az összes szolgáltatás esetében automatikus bevezetést, automatikus konfigu
 |-----------|---------------|----------------------|-------------------------|
 |A VM-alapú adatvizsgálatok figyelése    |Azure Monitor for VMs figyeli a virtuális gépek teljesítményét és állapotát, beleértve a futó folyamatokat és a más erőforrásokra vonatkozó függőségeket. [További](../azure-monitor/insights/vminsights-overview.md)információ.    |Azure-beli virtuális gépek – ajánlott eljárások – éles környezet    |Nem    |
 |Backup    |Az Azure Backup független és elkülönített biztonsági másolatokat biztosít, ezzel védelmet nyújtva a virtuális gépeken lévő adatok nem szándékos megsemmisítésével szemben. [További](../backup/backup-azure-vms-introduction.md)információ. A díjak a védett virtuális gépek számán és méretén alapulnak. [További](https://azure.microsoft.com/pricing/details/backup/)információ.    |Azure-beli virtuális gépek – ajánlott eljárások – éles környezet    |Igen    |
-|Azure Security Center    |Azure Security Center egy egységes infrastruktúra-alapú biztonsági felügyeleti rendszer, amely erősíti az adatközpontok biztonsági állapotát, és komplex veszélyforrások elleni védelmet biztosít a felhőben futó hibrid számítási feladatokhoz. [További](../security-center/security-center-intro.md)információ.  Az automanage Beállítja azt az előfizetést, amelyben a virtuális gép a Azure Security Center ingyenes szintű ajánlatában található. Ha az előfizetése már be van Azure Security Centerba, az automatikusan felügyelt nem konfigurálja újra.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |
+|Azure Security Center    |Azure Security Center egy egységes infrastruktúra-alapú biztonsági felügyeleti rendszer, amely erősíti az adatközpontok biztonsági állapotát, és komplex veszélyforrások elleni védelmet biztosít a felhőben futó hibrid számítási feladatokhoz. [További](../security-center/security-center-introduction.md)információ.  Az automanage Beállítja azt az előfizetést, amelyben a virtuális gép a Azure Security Center ingyenes szintű ajánlatában található. Ha az előfizetése már be van Azure Security Centerba, az automatikusan felügyelt nem konfigurálja újra.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |
 |Microsoft Antimalware    |Az Azure-hoz készült Microsoft antimalware egy ingyenes valós idejű védelem, amely segít a vírusok, kémprogramok és más kártevő szoftverek azonosításában és eltávolításában. Riasztásokat állít elő, amikor az ismert kártékony vagy nemkívánatos szoftverek megkísérlik telepíteni vagy futtatni magukat az Azure-rendszereken. [További](../security/fundamentals/antimalware.md)információ. |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Igen    |
 |Frissítéskezelés    |A virtuális gépek operációs rendszerének frissítéseinek kezeléséhez Azure Automation Update Management is használhatja. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát. [További](../automation/update-management/update-mgmt-overview.md)információ.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |
 |Change Tracking & leltár    |A Change Tracking és a leltár ötvözi a Change Tracking and Inventory függvényeket, így nyomon követheti a virtuális gépek és a kiszolgálói infrastruktúra változásait. A szolgáltatás támogatja a változások nyomon követését a környezetekben, a Daemon-szoftvereket, a beállításjegyzéket és az adott környezetben található fájlokat, így segít a nemkívánatos módosítások diagnosztizálásában és a riasztások felemelésében. A leltár-támogatás lehetővé teszi a vendég erőforrásainak lekérdezését a telepített alkalmazások és egyéb konfigurációs elemek láthatóságának érdekében.  [További](../automation/change-tracking/overview.md)információ.    |Azure-beli virtuális gépek – ajánlott eljárások – üzemi, Azure-beli virtuális gépek – ajánlott eljárások – fejlesztés/tesztelés    |Nem    |

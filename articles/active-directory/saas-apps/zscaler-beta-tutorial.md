@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: f342371ec065c4fb60c492c4354c6f8c717c9bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fec471e4047707f2b7cbaa55fdc7f2256bebe93
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546009"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler Betatal
 
@@ -27,7 +27,7 @@ A Zscaler Beta és az Azure AD integrálásával a következőket teheti:
 * Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezzenek a Zscaler Beta szolgáltatásba az Azure AD-fiókjával. A hozzáférés-vezérlés neve egyszeri bejelentkezés (SSO).
 * A fiókokat egy központi helyen kezelheti a Azure Portal használatával.
 
-További információ az Azure AD-vel való szolgáltatott szoftver-(SaaS-) alkalmazások integrálásáról: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+További információ az Azure AD-vel való szolgáltatott szoftver-(SaaS-) alkalmazások integrálásáról: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -113,7 +113,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
 6. A Zscaler Beta alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. Az alábbi táblázatban látható módon adja hozzá az SAML-jogkivonat attribútumot a felhasználói **jogcímek** szakaszban, a **felhasználói attribútumok** párbeszédpanelen.
     
-    | Név | Forrás attribútum | 
+    | Name | Forrás attribútum | 
     | ---------------| --------------- |
     | memberOf  | User. assignedroles |
 
@@ -133,10 +133,10 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     f. Válassza az **OK** lehetőséget.
 
-    : Kattintson a **Mentés** gombra.
+    : Válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
-    > A szerepkörök az Azure AD-ben való konfigurálásával kapcsolatos további információkért lásd: [a szerepkör-jogcím konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
+    > A szerepkörök az Azure AD-ben való konfigurálásával kapcsolatos további információkért lásd: [a szerepkör-jogcím konfigurálása](../develop/active-directory-enterprise-app-role-management.md).
 
 7. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** elemet a tanúsítvány letöltéséhez **(Base64)**. Mentse a számítógépére.
 
@@ -188,7 +188,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     : A részleg **neve attribútum** mezőben adja meg a **részleg** értéket, ha engedélyezni szeretné a részleg attribútumainak SAML-kiépítését.
 
-    h. Kattintson a **Mentés** gombra.
+    h. Válassza a **Mentés** lehetőséget.
 
 6. A **felhasználói hitelesítés konfigurálása** párbeszédpanelen kövesse az alábbi lépéseket:
 
@@ -296,11 +296,10 @@ Ebben a szakaszban a Simon Britta felhasználó a Zscaler Beta-ban jön létre. 
 
 Tesztelje az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával.
 
-Amikor kiválasztja a Zscaler Beta csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Zscaler Beta-ra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Zscaler Beta csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Zscaler Beta-ra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

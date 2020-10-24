@@ -8,142 +8,165 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: f5ac97812f973a20f6ee4c2dea34baaeb91203af
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 086ebf71e2da19a96433f32cfb1bae133e875400
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016471"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518064"
 ---
-![A Dsv3 dokumentációja](media/vm-disk-performance/dsv3-documentation.jpg)
+![A D s v 3 specifikációit bemutató diagram.](media/vm-disk-performance/dsv3-documentation.jpg)
 
-A nem **gyorsítótárazott** lemez maximális átviteli sebessége a virtuális gép által kezelhető alapértelmezett tárolási korlát. A **gyorsítótárazott** tárterület maximális átviteli sebessége a gazdagép gyorsítótárazásának engedélyezésekor külön korlát. A gazdagép gyorsítótárazása úgy működik, hogy a tárolót közelebb hozza a virtuális géphez, amely írható vagy olvasható. A virtuális gép számára a gazdagép gyorsítótárazásához elérhető tárterület a dokumentációban található. Láthatja például, hogy a Standard_D8s_v3 a gyorsítótár tárterületének 200 GiB.
+- A nem *gyorsítótárazott* lemez maximális átviteli sebessége a virtuális gép által kezelhető alapértelmezett tárolási korlát.
+- A *gyorsítótárazott* tárterület maximális átviteli sebessége a gazdagép gyorsítótárazásának engedélyezésekor külön korlát.
 
-A gazdagép-gyorsítótárazás engedélyezése a virtuális gép létrehozásakor és a lemezek csatlakoztatásakor végezhető el. Azt is megteheti, hogy be-és kikapcsolja az állomás gyorsítótárazza a lemezeket egy meglévő virtuális gépen.
+A gazdagép gyorsítótárazása úgy működik, hogy a tárolót közelebb hozza a virtuális géphez, amely írható vagy olvasható. A virtuális gép számára a gazdagép gyorsítótárazásához elérhető tárterület a dokumentációban található. Láthatja például, hogy a Standard_D8s_v3 a gyorsítótár tárterületének 200 GiB.
 
-![Gazdagép gyorsítótárazása](media/vm-disk-performance/host-caching.jpg)
+A gazdagépek gyorsítótárazását engedélyezheti a virtuális gép létrehozásakor és a lemezek csatlakoztatásakor. Az állomás-gyorsítótárazást egy meglévő virtuális gépen is be-és kikapcsolhatja a lemezeken.
 
-A gazdagép gyorsítótárazása beállítható úgy, hogy az megfeleljen az egyes lemezek munkaterhelési követelményeinek. Beállíthatja, hogy a gazdagép gyorsítótárazása csak olvasható legyen az olyan munkaterhelések esetében, amelyek csak olvasási műveleteket hajtanak végre, és olvasási/írási műveleteket végeznek az olvasási és írási műveletek egyenlegét biztosító munkaterhelések esetében. Ha a munkaterhelés egyike sem követi ezeket a mintákat, nem ajánlott a use Host cache használata. 
+![A gazdagép gyorsítótárazását bemutató képernyőkép.](media/vm-disk-performance/host-caching.jpg)
 
-Futtassunk néhány példát a gazdagép-gyorsítótár különböző beállításaira, és nézzük meg, hogyan gyakorolja az adatfolyamot és a teljesítményt. Ebben az első példában bemutatjuk, hogy mi történik az IO-kérelmekkel, ha a gazdagép gyorsítótárazási beállítása **csak olvasható**értékre van beállítva.
+A gazdagép gyorsítótárazását beállíthatja úgy, hogy az megfeleljen az egyes lemezek munkaterhelési követelményeinek. Beállíthatja, hogy a gazdagép gyorsítótárazása a következő legyen:
 
-Beállítás:
-- Standard_D8s_v3 
-    - Gyorsítótárazott IOPS: 16 000
-    - Nem gyorsítótárazott IOPS: 12 800
-- P30 adatlemez 
-    - IOPS: 5 000
-    - **Gazdagép gyorsítótárazása: csak olvasható** 
+- **Írásvédett**: csak olvasási műveleteket végző munkaterhelések esetén
+- **Olvasás/írás**: az olvasási és írási műveletek egyenlegét elvégző munkaterhelések esetén
 
-Ha egy olvasás történik, és a kívánt adatok elérhetők a gyorsítótárban, a gyorsítótár visszaadja a kért adatait, és nem kell beolvasnia a lemezről. Ez az olvasási érték a virtuális gép gyorsítótárazott korlátaihoz igazodik.
+Ha a munkaterhelés nem követi ezeket a mintákat, nem javasoljuk, hogy az állomás-gyorsítótárazást használja.
 
-![Olvasási gazdagép gyorsítótárazásának olvasási találata](media/vm-disk-performance/host-caching-read-hit.jpg)
+Futtassunk néhány példát a gazdagép-gyorsítótár különböző beállításaira, hogy meglássuk, hogyan befolyásolja az adatfolyamot és a teljesítményt. Ebben az első példában megvizsgáljuk, hogy mi történik az IO-kérelmekkel, ha a gazdagép gyorsítótárazási beállítása **csak olvasható**értékre van beállítva.
 
-Ha egy olvasás történik, és a kívánt információk **nem** érhetők el a gyorsítótárban, a rendszer továbbítja az olvasási kérést a lemezre, amely ezt követően a gyorsítótárba és a virtuális gépre is felfedi a felületet. Ez az olvasás a virtuális gép nem gyorsítótárazott korlátjának és a virtuális gép gyorsítótárazott korlátjának a része.
+**Telepítő**
 
-![Olvasási gazdagép gyorsítótárazásának olvasási kihagyása](media/vm-disk-performance/host-caching-read-miss.jpg)
+- Standard_D8s_v3
+  - Gyorsítótárazott IOPS: 16 000
+  - Nem gyorsítótárazott IOPS: 12 800
+- P30 adatlemez
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **csak olvasható**
+
+Ha egy olvasás történik, és a kívánt adatok elérhetők a gyorsítótárban, a gyorsítótár visszaadja a kért adattípust. Nem kell beolvasni a lemezről. Ez az olvasási érték a virtuális gép gyorsítótárazott korlátainak számít.
+
+![Az olvasási gazdagép gyorsítótárazásának olvasási találatát bemutató ábra.](media/vm-disk-performance/host-caching-read-hit.jpg)
+
+Ha egy olvasás történik, és a kívánt információk *nem* érhetők el a gyorsítótárban, a rendszer továbbítja az olvasási kérelmet a lemezre. Ezután a lemez felfedi a gyorsítótárat és a virtuális gépet is. Ez az olvasás a virtuális gép nem gyorsítótárazott korlátjának és a virtuális gép gyorsítótárazott korlátjának a része.
+
+![Az olvasási gazdagép gyorsítótárazásának olvasási lemaradó ábráját bemutató ábra.](media/vm-disk-performance/host-caching-read-miss.jpg)
 
 Írás elvégzése esetén az írást a gyorsítótárba és a lemezre is meg kell írni, mielőtt a rendszer befejeződik. Ez az írás a virtuális gép gyorsítótár nélküli korlátjának és a virtuális gép gyorsítótárazott korlátjának a része.
 
-![Gazdagép-gyorsítótárazás írásának olvasása](media/vm-disk-performance/host-caching-write.jpg)
+![Az olvasási gazdagép gyorsítótárazását ábrázoló diagram.](media/vm-disk-performance/host-caching-write.jpg)
 
-Ebben a következő példában vessünk egy pillantást arra, hogy mi történik az IO-kérelmekkel, ha a gazdagép-gyorsítótár beállítása **írási/olvasási**értékre van állítva.
+Ezután nézzük meg, mi történik az IO-kérelmekkel, ha a gazdagép-gyorsítótár beállítása **írási/olvasási**értékre van állítva.
 
-Beállítás:
-- Standard_D8s_v3 
-    - Gyorsítótárazott IOPS: 16 000
-    - Nem gyorsítótárazott IOPS: 12 800
-- P30 adatlemez 
-    - IOPS: 5 000
-    - **Gazdagép gyorsítótárazása: olvasás/írás** 
+**Telepítő**
 
-Az olvasások pontosan ugyanúgy kezelhetők, mint az írásvédett, az írások az egyetlen dolog, ami eltér az olvasási/írási gyorsítótárazástól. Ha írási/olvasási értékre állítja be a gazdagép-gyorsítótárazást, az írást csak a gazdagép gyorsítótárába kell írni, hogy az megfelelően legyen végrehajtva. Az írás ezután a háttérben a lemezre kerül. Ez azt jelenti, hogy az írásokat a rendszer a gyorsítótárazott IO-ra számítja, amikor a gyorsítótárba kerül, és amikor a lemezre írásra kerül, a gyorsítótárba kerülő IO-ra fog számítani.
+- Standard_D8s_v3
+  - Gyorsítótárazott IOPS: 16 000
+  - Nem gyorsítótárazott IOPS: 12 800
+- P30 adatlemez
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **olvasás/írás**
 
-![Írási/olvasási gazdagép gyorsítótárazásának írása](media/vm-disk-performance/host-caching-read-write.jpg)
+Az olvasás ugyanúgy történik, mint a csak olvasható. Az írás az egyetlen dolog, ami eltér az olvasási/írási gyorsítótárazástól. Ha a gazdagép-gyorsítótárazással való írást írási **/olvasási**értékre állítja, akkor a rendszer csak az írást írja be a gazdagép-gyorsítótárba, hogy az megfelelően legyen végrehajtva. Az írás ezután a háttérben a lemezre kerül. Ez azt jelenti, hogy a gyorsítótárba való íráskor a rendszer az írást a gyorsítótárazott IO irányába veszi számításba. Amikor a rendszer lustul írt a lemezre, a nem gyorsítótárazott IO irányába számít.
 
-Folytassa a Standard_D8s_v3 virtuális géppel folytatott példával. Ebben az esetben a gazdagépek gyorsítótárazását engedélyezjük a lemezeken, és most a virtuális gép IOPS korlátja 16 000 IOPS. A virtuális géphez csatolt három mögöttes P30-lemez, amely képes kezelni a 5 000 IOPS.
+![Az írási/olvasási gazdagépek gyorsítótárazását ábrázoló diagram.](media/vm-disk-performance/host-caching-read-write.jpg)
 
-Beállítás:
-- Standard_D8s_v3 
-    - Gyorsítótárazott IOPS: 16 000
-    - Nem gyorsítótárazott IOPS: 12 800
-- P30 operációsrendszer-lemez 
-    - IOPS: 5 000
-    - Gazdagép gyorsítótárazása: olvasás/írás 
-- 2 P30 adatlemez
-    - IOPS: 5 000
-    - Gazdagép gyorsítótárazása: olvasás/írás
+Folytassa a Standard_D8s_v3 virtuális géppel. Ebben az időszakban a gazdagépek gyorsítótárazását engedélyezzük a lemezeken. Emellett a virtuális gép IOPS korlátja 16 000 IOPS. A virtuális géphez csatolva három mögöttes P30-lemez van, amelyek mindegyike képes a 5 000 IOPS kezelésére.
 
-![Gazdagép gyorsítótárazási példája](media/vm-disk-performance/host-caching-example-without-remote.jpg)
+**Telepítő**
 
-Mostantól az ezt a Standard_D8s_v3 virtuális gépet használó alkalmazás a gyorsítótárazást engedélyező kérelem 15 000 IOPS. Ezeket a kérelmeket 5 000 IOPS kell bontani az egyes mögöttes lemezekhez, és nincs szükség a teljesítményre.
+- Standard_D8s_v3
+  - Gyorsítótárazott IOPS: 16 000
+  - Nem gyorsítótárazott IOPS: 12 800
+- P30 operációsrendszer-lemez
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **olvasás/írás**
+- Két P30 adatlemez × 2
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **olvasás/írás**
+
+![A gazdagép gyorsítótárazási példáját bemutató ábra.](media/vm-disk-performance/host-caching-example-without-remote.jpg)
+
+Az alkalmazás egy Standard_D8s_v3 virtuális gépet használ, amelyen engedélyezve van a gyorsítótárazás. 15 000 IOPS kérelmet tesz elérhetővé. A kérések 5 000 IOPS vannak lebontva minden mögöttes lemezhez csatlakoztatva. Nem történik teljesítmény-korlátozó művelet.
 
 ## <a name="combined-uncached-and-cached-limits"></a>Kombinált gyorsítótár nélküli és gyorsítótárazott korlátok
 
-A virtuális gép gyorsítótárazási korlátai eltérnek a gyorsítótárazatlan korlátoktól. Ez azt jelenti, hogy engedélyezheti a gazdagépek gyorsítótárazását a virtuális géphez csatlakoztatott lemezeken, miközben más lemezeken nem engedélyezi a gazdagépek gyorsítótárazását, így a virtuális gépek a gyorsítótárazott korlát és a gyorsítótár nélküli korlát teljes tárolási i/o-értékének megszerzését teszik lehetővé. Futtassunk egy példát erre, hogy megszilárdítsuk, hogyan működnek együtt a korlátok, és folytatjuk a Standard_D8s_v3 virtuális gép és a prémium szintű lemezek csatolt konfigurációját.
+A virtuális gép gyorsítótárazott korlátai eltérnek a nem gyorsítótárazott korlátaitól. Ez azt jelenti, hogy engedélyezheti a gazdagépek gyorsítótárazását a virtuális géphez csatlakoztatott lemezeken, ha nem engedélyezi az állomások gyorsítótárazását más lemezeken. Ez a konfiguráció lehetővé teszi, hogy a virtuális gépek teljes tárterületet kapjanak a gyorsítótárazott korláttal és a nem gyorsítótárazott korláttal együtt.
 
-Beállítás:
-- Standard_D8s_v3 
-    - Gyorsítótárazott IOPS: 16 000
-    - Nem gyorsítótárazott IOPS: 12 800
-- P30 operációsrendszer-lemez 
-    - IOPS: 5 000
-    - Gazdagép gyorsítótárazása: olvasás/írás
-- 2 P30 adatlemez X 2
-    - IOPS: 5 000
-    - Gazdagép gyorsítótárazása: olvasás/írás
-- 2 P30 adatlemez X 2
-    - IOPS: 5 000
-    - Gazdagép gyorsítótárazása: letiltva
+Lássunk egy példát, amely segít megérteni, hogy ezek a korlátok hogyan működnek együtt. Folytatjuk a Standard_D8s_v3 virtuális gép és a prémium szintű lemezek csatolt konfigurációját.
 
-![Gazdagép-gyorsítótárazási példa távoli tárolóval](media/vm-disk-performance/host-caching-example-with-remote.jpg)
+**Telepítő**
 
-A Standard_D8s_v3 virtuális gépen futó alkalmazás a 25 000 IOPS-ra vonatkozó kérelmet tesz elérhetővé. Ez a kérelem 5 000 IOPS-ként van lebontva az egyes mögöttes lemezekhez, ahol a lemezek 3-a gazdagép-gyorsítótárazást használ, és a lemezek közül 2 nem. Mivel a 3 a gazdagép-gyorsítótárazást használja a 16 000-es gyorsítótáras korláton belül, ezek a kérések sikeresen befejeződtek, és nem történik meg a tárolási teljesítmény korlátozása. Továbbá, mivel a 2 lemez nem használ gazdagép-gyorsítótárazást, a 12 800-as gyorsítótáras korláton belül vannak, ezek a kérések is sikeresen befejeződtek, és nem történik meg a maximális korlátozás.
+- Standard_D8s_v3
+  - Gyorsítótárazott IOPS: 16 000
+  - Nem gyorsítótárazott IOPS: 12 800
+- P30 operációsrendszer-lemez
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **olvasás/írás**
+- Két P30 adatlemez × 2
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **olvasás/írás**
+- Két P30 adatlemez × 2
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **Letiltva**
 
-## <a name="metrics-for-disk-performance"></a>A lemezek teljesítményének mérőszámai
-Az Azure-ban olyan mérőszámok találhatók, amelyek betekintést nyújtanak a virtuális gépek és lemezek teljesítményére. Ezek a metrikák a Azure Portal vizuálisan megtekinthetők, vagy egy API-hívással kérhetők le. A metrikák kiszámítása egyperces időközökkel történik. A következő mérőszámok érhetők el a virtuális gép és a lemez i/o-és átviteli teljesítményének megismeréséhez:
-- **Operációsrendszer-lemez várólistájának mélysége** – az operációsrendszer-lemezre való beolvasásra vagy írásra váró aktuálisan fennálló i/o-kérelmek száma.
-- **Operációsrendszer-lemez olvasási sebessége (bájt/s)** – az operációsrendszer-lemezről egy másodpercben olvasott bájtok száma.
-- **Operációsrendszer-lemez olvasási műveletei/mp** – az operációsrendszer-lemezről egy másodpercben beolvasott bemeneti műveletek száma.
-- **Operációsrendszer-lemez írási sebessége (bájt/s)** – az operációs rendszer lemezének másodpercében írt bájtok száma.
-- **Operációsrendszer-lemez írási műveletei/mp** – az operációsrendszer-lemez másodpercben írt kimeneti műveleteinek száma.
-- **Adatlemez-várólista mélysége** – az adatlemez (ek) re való beolvasásra vagy az azokba való írásra váró aktuálisan fennálló i/o-kérelmek száma.
-- **Adatlemez-olvasási sebesség (bájt/mp** ) – az adatlemez (ek) egy másodpercben olvasott bájtok száma.
-- **Adatlemez olvasási műveletei/mp** – a másodpercenként beolvasott bemeneti műveletek száma egy adatlemez (ek) ről.
-- **Adatlemez-írási sebesség (bájt/mp** ) – az adatlemez (ek) második részében írt bájtok száma.
-- **Adatlemez írási műveletei/mp** – az adatlemez (ek) másodpercben írt kimeneti műveleteinek száma.
-- **Lemez olvasási sebessége (bájt/s)** – a virtuális géphez csatolt összes lemezről beolvasott bájtok másodpercenkénti száma.
-- **Lemez olvasási műveletei/mp** – a virtuális géphez csatolt összes lemezről beolvasott bemeneti műveletek másodpercenkénti száma.
-- **Lemez írási sebessége (bájt/s)** – a virtuális géphez csatolt összes lemezről másodpercek alatt írt bájtok száma.
-- **Lemez írási műveletei/mp** – a virtuális géphez csatolt összes lemezről másodpercek alatt írt kimeneti műveletek száma.
+![Egy gazdagép-gyorsítótárazási példát mutató diagram, amely távoli tárterülettel rendelkezik.](media/vm-disk-performance/host-caching-example-with-remote.jpg)
+
+Ebben az esetben a Standard_D8s_v3 virtuális gépen futó alkalmazás 25 000 IOPS kérelmet tesz elérhetővé. A kérés az egyes csatlakoztatott lemezek 5 000-IOPS van lebontva. Három lemez használ gazdagép-gyorsítótárazást, és két lemez nem használ gazdagép-gyorsítótárazást.
+
+- Mivel a gazdagép-gyorsítótárazást használó három lemez a gyorsítótárazott 16 000-es korláton belül van, a kérelmek sikeresen befejeződtek. Nem történik meg a tárolási teljesítményre vonatkozó korlát.
+- Mivel az állomás-gyorsítótárazást nem használó két lemez a 12 800-as gyorsítótáras korláton belül van, ezek a kérések is sikeresen befejeződtek. Nincs korlát.
+
+## <a name="disk-performance-metrics"></a>Lemez teljesítményének mérőszámai
+
+Az Azure-ban olyan mérőszámok találhatók, amelyek betekintést nyújtanak a virtuális gépek és lemezek teljesítményére. Ezek a metrikák a Azure Portalon keresztül tekinthetők meg. Egy API-hívással is lekérhető. A metrikák kiszámítása egyperces időközökkel történik. A következő mérőszámok érhetők el a virtuális gép és a lemez i/o-forgalmának beolvasásához, valamint az átviteli teljesítményről is:
+
+- **Operációsrendszer-lemez várólistájának mélysége**: az operációsrendszer-lemezre való beolvasásra vagy írásra váró aktuális kimaradó i/o-kérelmek száma.
+- **Operációsrendszer-lemez olvasási sebessége (bájt/mp**): az operációsrendszer-lemezről másodpercenként olvasott bájtok száma.
+- **Operációsrendszer-lemez olvasási műveletei/mp**: az operációsrendszer-lemezről egy másodpercben beolvasott bemeneti műveletek száma.
+- **Operációsrendszer-lemez írási sebessége (bájt/mp**): az operációs rendszer lemezének másodpercében írt bájtok száma.
+- **Operációsrendszer-lemez írási műveletei/mp**: az operációsrendszer-lemez másodpercében írt kimeneti műveletek száma.
+- **Adatlemez-várólista mélysége**: az adatlemez (ek) re való beolvasásra vagy az azokba való írásra váró aktuális, függőben lévő i/o-kérelmek száma.
+- **Adatlemez-olvasási sebesség (bájt/mp**): az adatlemez (ek) egy másodpercében olvasott bájtok száma.
+- **Adatlemez olvasási műveletei/mp**: a másodpercenként beolvasott bemeneti műveletek száma az adatlemez (ek) ről.
+- **Adatlemez-írási sebesség (bájt/mp**): az adatlemez (ek) másodpercében írt bájtok száma.
+- **Adatlemez írási műveletei/mp**: az adatlemez (ek) másodpercében írt kimeneti műveletek száma.
+- **Lemez olvasási sebessége (bájt/mp**): a virtuális géphez csatolt összes lemezről beolvasott bájtok teljes száma.
+- **Lemez olvasási műveletei/mp**: a virtuális géphez csatolt összes lemezről beolvasott bemeneti műveletek másodpercenkénti száma.
+- **Lemez írási sebessége (bájt/mp**): a virtuális géphez csatolt összes lemezről a másodpercben írt bájtok száma.
+- **Lemez írási műveletei/mp**: a virtuális géphez csatolt összes lemezről másodpercek alatt írt kimeneti műveletek száma.
 
 ## <a name="storage-io-utilization-metrics"></a>Storage IO kihasználtsági metrikái
+
 A lemez i/o-korlátjának diagnosztizálását segítő mérőszámok:
-- **Adatlemez IOPS** kihasználtsága (%) – az ADATlemez IOPS kiszámított százalékos arány a kiépített adatlemez IOPS. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez IOPS-korlátja alapján lesz lekorlátozva.
-- **Adatlemez sávszélességének** kihasználtsága (%) – az adatlemez átviteli sebessége által kiszámított százalékos arány a kiépített adatlemez átviteli sebessége után. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez sávszélesség-korlátja alapján lesz lekorlátozva.
-- **Operációsrendszer-lemez IOPS felhasznált százaléka** – az operációsrendszer-lemez IOPS kiszámított százalék a kiépített operációsrendszer-lemez IOPS. Ha ez az érték 100%-os, akkor az alkalmazás futása az operációsrendszer-lemez IOPS-korlátja alapján lesz lekorlátozva.
-- **Operációsrendszer-lemez sávszélességének** kihasználtsága (százalék) – az operációsrendszer-lemez átviteli sebessége által kiszámított százalék a kiépített operációsrendszer-lemez átviteli sebessége után. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez sávszélesség-korlátja alapján lesz lekorlátozva.
+
+- **Adatlemez IOPS**kihasználtsága (%): az ADATlemez IOPS kiszámított százalékos arány a kiépített adatlemez IOPS. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez IOPS-korlátjának i/o-értéke.
+- **Adatlemez sávszélességének**kihasználtsága (%): az adatlemez átviteli sebessége által kiszámított százalékos arány a kiépített adatlemez átviteli sebessége alapján. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez sávszélesség-korlátján belül az i/o-érték.
+- **Operációsrendszer-lemez IOPS felhasznált százaléka**: az operációsrendszer-lemez IOPS kiszámított százalék a kiépített operációsrendszer-lemez IOPS befejeződött. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez IOPS korlátján belül az IO-ra van korlátozva.
+- **Operációsrendszer-lemez sávszélességének**kihasználtsága (%): az operációsrendszer-lemez átviteli sebessége által kiszámított százalékos érték a kiépített operációsrendszer-lemez átviteli sebességén. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez sávszélesség-korlátján kívül esik.
 
 A virtuális gépek IO-korlátjának diagnosztizálását segítő mérőszámok:
-- A virtuális **gép gyorsítótárazott IOPS** kihasználtsága (%) – a teljes IOPS által kiszámított százalékos arány a virtuális gépek maximálisan gyorsítótárazott IOPS korlátja alapján. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott IOPS-korlátja alapján lesz lekorlátozva.
-- A virtuális **gép gyorsítótárazott sávszélességének** kihasználtsága (%) – a teljes lemez átviteli sebessége által kiszámított százalék a maximálisan gyorsítótárazott virtuálisgép-átviteli sebességnél. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott sávszélesség-korlátja alapján lesz lekorlátozva.
-- A virtuális gép nem **gyorsítótárazott IOPS** kihasználtsága (%) – a virtuális gépen lévő összes IOPS által kiszámított százalék a nem gyorsítótárazott virtuális gép maximális IOPS-korlátja alapján lett végrehajtva. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott IOPS-korlátja alapján lesz lekorlátozva.
-- A virtuális gép nem **gyorsítótárazott sávszélességének** kihasználtsága (%) – a virtuális gépek teljes lemezének átviteli sebessége által kiszámított százalékos arány a virtuális gép maximálisan kiépített virtuálisgép-átviteli sebessége. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott sávszélesség-korlátja alapján lesz korlátozva.
+
+- A virtuális **gép gyorsítótárazott IOPS**kihasználtsága (%): az összes IOPS által kiszámított százalék, amely a maximálisan gyorsítótárazott virtuális gép IOPS korlátján fejeződött be. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott IOPS-korlátjának i/o-értéke.
+- A virtuális **gép gyorsítótárazott sávszélességének**kihasználtsága (%): a teljes lemez átviteli sebessége alapján kiszámított százalékos érték a maximálisan gyorsítótárazott virtuálisgép-átviteli sebességnél. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott sávszélesség-korlátjának i/o-határértéke.
+- A virtuális gép nem **gyorsítótárazott IOPS**kihasználtsága (%): a virtuális gépen lévő összes IOPS által kiszámított százalék a nem gyorsítótárazott virtuális gép maximális IOPS-korlátja alapján lett végrehajtva. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott IOPS korlátjának i/o-értéke.
+- A virtuális gép nem **gyorsítótárazott sávszélességének**kihasználtsága (%): a virtuális gépen lévő teljes lemez átviteli sebessége által kiszámított százalék a virtuális gép maximálisan kiépített átviteli sebességével fejeződött be. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott sávszélesség-korlátjának i/o-korlátja.
 
 ## <a name="storage-io-utilization-metrics-example"></a>Storage IO kihasználtsági mérőszámok – példa
-Futtassunk egy példát arra, hogyan használhatja ezeket az új Storage i/o-kihasználtsági mérőszámokat, hogy segítsen a rendszerünk szűk keresztmetszetének hibakeresésében. A rendszer beállítása pontosan azt jelenti, hogy mi volt az előző példában, de a csatlakoztatott operációsrendszer-lemez **nem** gyorsítótárazott.
 
-Beállítás:
-- Standard_D8s_v3 
-    - Gyorsítótárazott IOPS: 16 000
-    - Nem gyorsítótárazott IOPS: 12 800
-- P30 operációsrendszer-lemez 
-    - IOPS: 5 000
-    - Gazdagép gyorsítótárazása: letiltva
-- 2 P30 adatlemez X 2
-    - IOPS: 5 000
-    - Gazdagép gyorsítótárazása: olvasás/írás
-- 2 P30 adatlemez X 2
-    - IOPS: 5 000
-    - Gazdagép gyorsítótárazása: letiltva
+Futtassunk egy példát arra, hogyan használhatja ezeket az új Storage i/o-kihasználtsági mérőszámokat, hogy segítsen a rendszerünk szűk keresztmetszetének hibakeresésében. A rendszer telepítése megegyezik az előző példával, kivéve, ha a csatlakoztatott operációsrendszer-lemez *nincs gyorsítótárazva* .
 
+**Telepítő**
+
+- Standard_D8s_v3
+  - Gyorsítótárazott IOPS: 16 000
+  - Nem gyorsítótárazott IOPS: 12 800
+- P30 operációsrendszer-lemez
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **Letiltva**
+- Két P30 adatlemez × 2
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **olvasás/írás**
+- Két P30 adatlemez × 2
+  - IOPS: 5 000
+  - Gazdagép gyorsítótárazása: **Letiltva**

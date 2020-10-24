@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b147037a58e4af59c0c3ccd56b6f6b241d775308
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e33664501483280978c67b100cd56a714ef63a30
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553325"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Oktatóanyag: Azure Active Directory integráció a riskware
 
@@ -27,7 +27,7 @@ A riskware és az Azure AD integrálásával a következő előnyöket nyújtja:
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a riskware (egyszeri bejelentkezés) az Azure AD-fiókokkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -105,18 +105,18 @@ Az Azure AD egyszeri bejelentkezés riskware való konfigurálásához hajtsa v�
     
     | Környezet| URL-minta|
     |--|--|
-    | Felhasználói tesztelés|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
-    | ÉLES| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | BEMUTATÓ| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
+    | Felhasználói tesztelés|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
+    | ÉLES| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
+    | BEMUTATÓ| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:
     
     | Környezet| URL-minta|
     |--|--|
-    | Felhasználói tesztelés| `https://riskcloud.net/uat` |
-    | ÉLES| `https://riskcloud.net/prod` |
-    | BEMUTATÓ| `https://riskcloud.net/demo` |
+    | Felhasználói tesztelés| `https://riskcloud.net/uat` |
+    | ÉLES| `https://riskcloud.net/prod` |
+    | BEMUTATÓ| `https://riskcloud.net/demo` |
     |||
 
     > [!NOTE]
@@ -204,7 +204,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -284,12 +284,12 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ri
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a riskware csempére kattint, automatikusan be kell jelentkeznie arra a riskware, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a riskware csempére kattint, automatikusan be kell jelentkeznie arra a riskware, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

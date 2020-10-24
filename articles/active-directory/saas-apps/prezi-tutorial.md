@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658933"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515321"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Prezi
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Prezi a Azure Ac
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Prezi az Azure AD-fiókjával.
 * A fiókokat a Azure Portal kezelheti.
 
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A Prezi az SP és a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést is támogatja.
 * A Prezi támogatja az igény szerinti felhasználói üzembe helyezést.
-* A Prezi konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A Prezi konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
@@ -86,7 +86,7 @@ Az Azure AD SSO engedélyezése a Azure Portalban:
 
     A **bejelentkezési URL-cím** mezőbe írja be a következő URL-címet: `https://prezi.com/login/sso/` .
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A Prezi alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -94,7 +94,7 @@ Az Azure AD SSO engedélyezése a Azure Portalban:
 
 1. A Prezi alkalmazás Emellett néhány további attribútumot is vár az SAML-válaszban, ahogy az itt látható. Ezek az attribútumok előre fel vannak töltve, de a követelmények alapján áttekinthetők.
     
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ---------------| --------------- |
     | given_name | User. givenName |
     | family_name | felhasználó. vezetéknév |
@@ -159,7 +159,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure SSO használatát 
 
     1. Nyissa meg a letöltött **tanúsítványt (Base64)** a Azure Portal a Jegyzettömbben. Másolja a tanúsítvány tartalmát, és illessze be a tartalmat a **tanúsítványba (X. 509)** .
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-a-prezi-test-user"></a>Prezi-teszt felhasználó létrehozása
 
@@ -169,14 +169,13 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Prezi-ben.
 
 Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési panel használatával teszteli.
 
-Amikor kiválasztja a Prezi csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Prezi-fiókba, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Prezi csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Prezi-fiókba, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 - [A Prezi kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [A Prezi és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
+- [A Prezi és a speciális láthatóság és vezérlők elleni védelem](/cloud-app-security/proxy-intro-aad)

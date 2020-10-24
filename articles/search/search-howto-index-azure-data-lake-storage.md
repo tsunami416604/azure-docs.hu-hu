@@ -9,17 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: b1a88398d657e6bc242c7db12f3c0ddc1af828ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a585fa1c3c56d285859171e6b5673fe57beffb3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935857"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517321"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Dokumentumok indexelése Azure Data Lake Storage Gen2
 
 > [!IMPORTANT] 
-> A Azure Data Lake Storage Gen2 támogatás jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az előzetes verzióhoz való hozzáférést az [űrlap](https://aka.ms/azure-cognitive-search/indexer-preview)kitöltésével kérheti le. A [REST API 2020-06-30-es verziója – előzetes verzió](search-api-preview.md) és portál biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
+> A Azure Data Lake Storage Gen2 támogatás jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az előzetes verzióhoz való hozzáférést az [űrlap](https://aka.ms/azure-cognitive-search/indexer-preview)kitöltésével kérheti le. A [REST API 2020-06-30-es verziója – előzetes verzió](search-api-preview.md) és portál biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
 
 
 Azure Storage-fiók beállításakor lehetősége van a [hierarchikus névtér](../storage/blobs/data-lake-storage-namespace.md)engedélyezésére. Ez lehetővé teszi, hogy a fiókban lévő tartalmak gyűjteménye a címtárak és a beágyazott alkönyvtárak hierarchiájában legyen rendszerezve. A hierarchikus névtér engedélyezésével engedélyezheti a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
@@ -44,7 +44,7 @@ A Data Lake Storage Gen2 tartalmának indexelése azonos az Azure Blob Storage-b
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 
-Azure Data Lake Storage Gen2 olyan hozzáférés- [vezérlési modellt](../storage/blobs/data-lake-storage-access-control.md) valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a POSIX-hez hasonló hozzáférés-vezérlési listákat (ACL-eket). A Data Lake Storage Gen2ból származó tartalom indexelése során az Azure Cognitive Search nem fogja kibontani a RBAC és az ACL-információkat a tartalomból. Ennek eredményeképpen ezek az információk nem kerülnek bele az Azure Cognitive Search indexbe.
+Azure Data Lake Storage Gen2 olyan hozzáférés- [vezérlési modellt](../storage/blobs/data-lake-storage-access-control.md) valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a POSIX-hez hasonló hozzáférés-vezérlési listákat (ACL-eket). A Data Lake Storage Gen2 az Azure Cognitive Search nem nyeri ki az Azure-RBAC és az ACL-információkat a tartalomból. Ennek eredményeképpen ezek az információk nem kerülnek bele az Azure Cognitive Search indexbe.
 
 Ha a hozzáférés-vezérlést az index minden dokumentuma esetében fontos fenntartani, akkor az alkalmazás fejlesztője a [biztonsági körülvágás](./search-security-trimming-for-azure-search.md)megvalósítására szolgál.
 

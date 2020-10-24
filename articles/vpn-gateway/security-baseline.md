@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df3ae57652737acc2b23cda75ace361f0bb40340
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626258"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518185"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway Azure biztonsági alapterve
 
@@ -178,7 +178,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi az Azure-erőforrásokhoz való hozzáférés kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. Bizonyos erőforrásokhoz előre definiált beépített szerepkörök tartoznak, és ezeket a szerepköröket az Azure CLI-vel, a Azure PowerShellsal vagy a Azure Portal eszközzel leltározott vagy lekérdezheti.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure-erőforrásokhoz való hozzáférés kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. Bizonyos erőforrásokhoz előre definiált beépített szerepkörök tartoznak, és ezeket a szerepköröket az Azure CLI-vel, a Azure PowerShellsal vagy a Azure Portal eszközzel leltározott vagy lekérdezheti.
 
 - [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
@@ -310,7 +310,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
-**Útmutató**: a VPN-átjárók dedikált virtuálisgép-példányokkal rendelkeznek minden ügyfél virtuális hálózathoz. Az elkülönítés megvalósítása különálló virtuális hálózatok, előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést Azure Active Directory szerepköralapú hozzáférés-vezérlés segítségével szabályozhatja.
+**Útmutató**: a VPN-átjárók dedikált virtuálisgép-példányokkal rendelkeznek minden ügyfél virtuális hálózathoz. Az elkülönítés megvalósítása különálló virtuális hálózatok, előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével szabályozhatja.
 
 - [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
 
@@ -362,11 +362,11 @@ A virtuális hálózatban lévő megfelelő erőforrásokra vonatkozó ajánlás
 
 **Felelősség**: ügyfél
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az Azure ad RBAC használatával szabályozhatja az adathozzáférést és az erőforrásokat, máskülönben a szolgáltatás-specifikus hozzáférés-vezérlési módszereket is használhatja. Olyan beépített szerepköralapú hozzáférés-vezérlési szerepköröket használhat, mint például a tulajdonos, a közreműködő vagy a hálózati közreműködő, majd hozzárendelheti a szerepkört a megfelelő hatókörhöz. Rendeljen hozzá konkrét engedélyeket a virtuális hálózati képességek egy részhalmazához egyéni szerepkör létrehozásával és a virtuális hálózatok, alhálózatok, VPN-átjárók, hálózati adapterek, hálózati biztonsági csoportok és a szerepkör útválasztási tábláihoz szükséges konkrét engedélyek hozzárendelésével.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata az adat-és erőforrásokhoz való hozzáférés szabályozására, máskülönben a szolgáltatás-specifikus hozzáférés-vezérlési módszerek használata. Használjon olyan beépített szerepköröket, mint a tulajdonos, a közreműködő vagy a hálózati közreműködő, majd rendelje hozzá a szerepkört a megfelelő hatókörhöz. Rendeljen hozzá konkrét engedélyeket a virtuális hálózati képességek egy részhalmazához egyéni szerepkör létrehozásával és a virtuális hálózatok, alhálózatok, VPN-átjárók, hálózati adapterek, hálózati biztonsági csoportok és a szerepkör útválasztási tábláihoz szükséges konkrét engedélyek hozzárendelésével.
 
-- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
 - [Virtuális hálózatok tervezése](../virtual-network/virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -532,7 +532,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Biztonsági javaslatok – útmutató](../security-center/recommendations-reference.md)
+- [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -720,7 +720,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md) 
 
-- [Címkék használata az erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: igen
 

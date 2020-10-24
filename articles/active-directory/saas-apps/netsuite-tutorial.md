@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: c2f2e86a3080b0edfcb0a699ac9b3a78ee1b5a52
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940786"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519418"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a NetSuite-t a Azu
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a NetSuite-ba az Azure AD-fiókjával.
 * A fiókokat egy központi helyen, a Azure Portal kezelheti.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ A NetSuite a következőket támogatja:
 * IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezés.
 * JIT (igény szerinti) felhasználó kiépítés.
 * [Automatikus felhasználó-kiépítés](NetSuite-provisioning-tutorial.md).
-* A NetSuite konfigurálása után kikényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását teszi elérhetővé. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* A NetSuite konfigurálása után kikényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását teszi elérhetővé. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Mivel az alkalmazás azonosítója egy rögzített karakterlánc-érték, csak egy példány konfigurálható egyetlen bérlőn.
@@ -107,7 +107,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. A fentieken kívül a NetSuite alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum |
+    | Name | Forrás attribútum |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -222,7 +222,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![Képernyőfelvétel: a telepítéskezelő, ahol megadhatja a szerepkör nevét.](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. Kattintson a **Mentés** gombra.
+    e. Válassza a **Mentés** lehetőséget.
 
     f. A felső navigációs sávon válassza az **engedélyek**lehetőséget. Ezután válassza a **telepítés**lehetőséget.
 
@@ -230,7 +230,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     : Válassza az **SAML egyszeri bejelentkezés**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 
-    h. Kattintson a **Mentés** gombra.
+    h. Válassza a **Mentés** lehetőséget.
 
     i. A felső navigációs sávon válassza a **beállítás**, majd a **telepítéskezelő**lehetőséget.
 
@@ -248,7 +248,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![A képernyőképen az alkalmazottak közül kiválasztott rendszergazda látható.](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. Kattintson a **Mentés** gombra.
+    m. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-the-netsuite-test-user"></a>A NetSuite test felhasználó létrehozása
 
@@ -258,14 +258,14 @@ Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a NetSuite-ban. 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen kiválasztja a NetSuite csempét, akkor automatikusan be kell jelentkeznie arra a NetSuite-ra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen kiválasztja a NetSuite csempét, akkor automatikusan be kell jelentkeznie arra a NetSuite-ra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 - [A NetSuite kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A NetSuite védelem speciális láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A NetSuite védelem speciális láthatósággal és vezérlőkkel](/cloud-app-security/proxy-intro-aad)

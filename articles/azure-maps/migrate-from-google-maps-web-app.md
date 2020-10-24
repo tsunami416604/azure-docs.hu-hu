@@ -9,16 +9,34 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d7e6c5229fa6f8204ba363d9868ffa80d78ccba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fb99afef2d5e210b8aa166f016bd2b9ec409c2a2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876498"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518959"
 ---
-# <a name="migrate-a-web-app-from-google-maps"></a>Webalkalmazás migrálása a Google Maps szolgáltatásból
+# <a name="tutorial---migrate-a-web-app-from-google-maps"></a>Oktatóanyag – webalkalmazás migrálása a Google Maps szolgáltatásból
 
-A Google Maps-et használó webalkalmazások többsége a Google Maps v3 JavaScript SDK-t használja. A Azure Maps web SDK a megfelelő Azure-alapú SDK, amelybe migrálni lehet. A Azure Maps web SDK lehetővé teszi az interaktív térképek egyéni tartalommal és képekkel való testreszabását. Az alkalmazást webes vagy mobil alkalmazásokon is futtathatja. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. Fejlessze az SDK-t JavaScript vagy írógéppel használatával.
+A Google Maps-et használó webalkalmazások többsége a Google Maps v3 JavaScript SDK-t használja. A Azure Maps web SDK a megfelelő Azure-alapú SDK, amelybe migrálni lehet. A Azure Maps web SDK lehetővé teszi az interaktív térképek egyéni tartalommal és képekkel való testreszabását. Az alkalmazást webes vagy mobil alkalmazásokon is futtathatja. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. Fejlessze az SDK-t JavaScript vagy írógéppel használatával. Az oktatóanyag során a következőket fogja elsajátítani:
+
+> [!div class="checklist"]
+> * Térkép betöltése
+> * Térkép honosítása
+> * Jelölők, vonalláncok és sokszögek hozzáadása.
+> * Információk megjelenítése előugró vagy információs ablakban
+> * KML-és GeoJSON-információk betöltése és megjelenítése
+> * Fürt jelölői
+> * Csempe rétegének átfedése
+> * Forgalomadatok megjelenítése
+> * Vízszintes átfedés hozzáadása
+
+Emellett a következőket is megismerheti: 
+
+> [!div class="checklist"]
+> * Gyakori leképezési feladatok megvalósítása a Azure Maps web SDK használatával
+> * Ajánlott eljárások a teljesítmény és a felhasználói élmény javításához
+> * Tippek arról, hogyan teheti meg az alkalmazást a Azure Mapsban elérhető további előzetes funkciók használatával
 
 Ha egy meglévő webalkalmazást telepít át, ellenőrizze, hogy a nyílt forráskódú Térkép vezérlő függvénytárat használ-e. Példák a nyílt forráskódú Térkép vezérlőelem-függvénytárra: cézium, betegtájékoztató és OpenLayers. Az alkalmazást továbbra is áttelepítheti, még akkor is, ha nyílt forráskódú Térkép vezérlőelem-függvénytárat használ, és nem kívánja használni a Azure Maps web SDK-t. Ilyen esetben az alkalmazást a Azure Maps csempe-szolgáltatásokhoz (a[közúti csempék](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [műholdas csempéi](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) kapcsolja össze. A következő pontok részletesen ismertetik, hogyan használhatja a Azure Maps-t néhány gyakran használt nyílt forráskódú Térkép vezérlőelem-függvénytárban.
 
@@ -33,6 +51,11 @@ Ha JavaScript-keretrendszer használatával fejleszt, a következő nyílt forr�
 - [Azure Maps reagáló összetevő](https://github.com/WiredSolutions/react-azure-maps) – a Azure Maps vezérlőre reagáló burkoló.
 - [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – egy Azure Maps összetevő a Vue alkalmazáshoz.
 
+## <a name="prerequisites"></a>Előfeltételek 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 ## <a name="key-features-support"></a>A főbb funkciók támogatása
 
@@ -72,7 +95,6 @@ A következőkben a Google Maps és a Azure Maps web SDK-k közötti főbb kül�
 
 Ez a gyűjtemény az egyes platformokhoz tartalmaz kód-mintákat, és mindegyik minta általános használati esetet takar. Célja, hogy a webalkalmazást a Google Maps v3 JavaScript SDK-ból telepítse át a Azure Maps web SDK-ba. A webalkalmazásokhoz kapcsolódó kódok a JavaScriptben érhetők el. A Azure Maps azonban a [NPM-modulon](how-to-use-map-control.md)keresztül kiegészítő lehetőségként is biztosít írógéppel-definíciókat.
 
-
 **Témakörök**
 
 - [Térkép betöltése](#load-a-map)
@@ -90,7 +112,6 @@ Ez a gyűjtemény az egyes platformokhoz tartalmaz kód-mintákat, és mindegyik
 - [Forgalomadatok megjelenítése](#show-traffic-data)
 - [Vízszintes átfedés hozzáadása](#add-a-ground-overlay)
 - [KML-adatértékek hozzáadása a térképhez](#add-kml-data-to-the-map)
-
 
 ### <a name="load-a-map"></a>Térkép betöltése
 
@@ -1720,9 +1741,18 @@ A tárak további funkciókat is hozzáadhatnak a térképhez. Ezen könyvtárak
 | Geometriai könyvtár      | [Atlas. Math](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)   |
 | Vizualizációs könyvtár | [Heat Térkép réteg](map-add-heat-map-layer.md) |
 
-További információ a Google Maps áttelepítéséről:
+## <a name="next-steps"></a>Következő lépések
 
-* [a szolgáltatások modul használata](how-to-use-services-module.md) 
-* [a rajzolási eszközök modul használata](set-drawing-options.md)
-* [a szolgáltatások modul használata](how-to-use-services-module.md)
-* [a Térkép vezérlőelem használata](how-to-use-map-control.md)
+További információ a Azure Maps web SDK-ról:
+
+> [!div class="nextstepaction"]
+> [A Térkép vezérlőelem használata](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [A rajzolási eszközök modul használata](set-drawing-options.md)
+
+> [!div class="nextstepaction"]
+> [A szolgáltatások modul használata](how-to-use-services-module.md)
+
+> [!div class="nextstepaction"]
+> [A térbeli IO-modul használata](how-to-use-spatial-io-module.md)

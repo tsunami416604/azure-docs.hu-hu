@@ -3,12 +3,12 @@ title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495227"
+ms.locfileid: "92518024"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -42,13 +42,13 @@ A díjszabással kapcsolatos további információkért, beleértve a dedikált 
 
 Az Azure Event Hubs az összes támogatott Azure-régióban elérhető. A listában keresse fel az [Azure-régiók](https://azure.microsoft.com/regions/) lapot.  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Használhatok egyetlen AMQP-kapcsolattal több Event hub-ból való küldésre és fogadásra?
+### <a name="can-i-use-a-single-advanced-message-queuing-protocol-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Használhatok egyetlen Advanced Message Queueing Protocol (AMQP)-kapcsolattal több Event hub-ból való küldésre és fogadásra?
 
 Igen, ha az összes esemény-hubok ugyanabban a névtérben vannak.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Mi a maximális megőrzési időszak az eseményekhez?
 
-A standard szintű Event Hubs jelenleg legfeljebb hét napos megőrzési időtartamot támogat. Az Event hubok nem végleges adattárként szolgálnak. A 24 óránál hosszabb megőrzési időtartamok olyan forgatókönyvekhez készültek, amelyekben az esemény-adatfolyamok ugyanabba a rendszerbe való visszajátszására alkalmasak. például egy új gépi tanulási modell betanításához vagy ellenőrzéséhez a meglévő adattípusokon. Ha az üzenetek megőrzése hét nap elteltével is szükséges, a [Event Hubs rögzítésének](event-hubs-capture-overview.md) engedélyezése az Event hub-on az Event hub adatait az Ön által választott Storage-fiókba vagy Azure Data Lake-szolgáltatási fiókba kéri le. Ha engedélyezi a rögzítést, a megvásárolt átviteli egységek alapján kell fizetnie.
+A standard szintű Event Hubs jelenleg legfeljebb hét napos megőrzési időtartamot támogat. Az Event hubok nem végleges adattárként szolgálnak. A 24 óránál hosszabb megőrzési időtartamok olyan forgatókönyvekhez készültek, amelyekben az esemény-adatfolyamok ugyanabba a rendszerbe való visszajátszására alkalmasak. Például egy új gépi tanulási modell betanításához vagy ellenőrzéséhez a meglévő adattípusokon. Ha az üzenetek megőrzése hét nap elteltével is szükséges, a [Event Hubs rögzítésének](event-hubs-capture-overview.md) engedélyezése az Event hub-on az Event hub adatait az Ön által választott Storage-fiókba vagy Azure Data Lake-szolgáltatási fiókba kéri le. Ha engedélyezi a rögzítést, a megvásárolt átviteli egységek alapján kell fizetnie.
 
 A rögzített adatok megőrzési időtartamát beállíthatja a Storage-fiókban. Az Azure Storage **életciklus-kezelési** funkciója az általános célú v2-és blob Storage-fiókok gazdag, szabályon alapuló szabályzatát kínálja. A szabályzat segítségével átválthatja az adatait a megfelelő hozzáférési rétegekbe, vagy lejárhat az adatéletciklus végén. További információ: [Az Azure Blob Storage életciklusának kezelése](../storage/blobs/storage-lifecycle-management-concepts.md). 
 
@@ -56,12 +56,12 @@ A rögzített adatok megőrzési időtartamát beállíthatja a Storage-fiókban
 Event Hubs teljes mérőszámokat bocsát ki, amelyek a [Azure monitor](../azure-monitor/overview.md)erőforrásainak állapotát biztosítják. Emellett lehetővé teszik a Event Hubs szolgáltatás általános állapotának felmérését, nem csak a névtér szintjén, hanem az entitás szintjén is. Ismerje meg, hogy az [Azure Event Hubs](event-hubs-metrics-azure-monitor.md)milyen monitorozási lehetőségeket kínál.
 
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Hol tárolja az Azure Event Hubs az ügyféladatokat?
-Az Azure Event Hubs az ügyféladatokat tárolja. Ezeket az adategységeket a Event Hubs egyetlen régióban tárolja automatikusan, így ez a szolgáltatás automatikusan megfelel a régiókban tárolt adattárolási követelményeknek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
+Az Azure Event Hubs az ügyféladatokat tárolja. Ezeket az adategységeket a Event Hubs egyetlen régióban tárolja automatikusan, így ez a szolgáltatás automatikusan megfelel a régió adattárolási követelményeinek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
 Az üzenetek küldéséhez és fogadásához a következő protokollokat használhatja Azure Service Bus:
 
-- Advanced Message Queueing Protocol (AMQP)
+- AMQP
 - HTTP
 - Apache Kafka
 
@@ -128,12 +128,23 @@ A Event Hubs egy Kafka-végpontot biztosít, amelyet a meglévő Apache Kafka-al
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Milyen konfigurációs módosításokat kell végrehajtani a meglévő alkalmazáshoz, hogy Event Hubs beszéljen?
 Az Event hub-hoz való kapcsolódáshoz frissítenie kell a Kafka-ügyfél konfigurációit. Event Hubs névtér létrehozásával és a [kapcsolatok karakterláncának](event-hubs-get-connection-string.md)beszerzésével végezhető el. Módosítsa a bootstrap. Servert úgy, hogy a Event Hubs teljes tartománynevet és a portot 9093-re mutassa. Frissítse a sasl.jaas.configt, hogy a Kafka-ügyfelet a Event Hubs végpontra irányítsa (amely az Ön által beszerzett kapcsolódási karakterlánc), a megfelelő hitelesítéssel az alábbi ábrán látható módon:
 
-bootstrap. Servers = {a. EVENTHUBS. FQDN}: 9093 Request. timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanizmus = PLAIN sasl.jaas.config= org. Apache. Kafka. Common. Security. Plain. PlainLoginModule kötelező Felhasználónév = "$ConnectionString" password = "{a. EVENTHUBS. Kapcsolat. KARAKTERLÁNC} ";
+```properties
+bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+```
 
 Példa:
 
-bootstrap. Servers = dummynamespace. servicebus. Windows. net: 9093 Request. timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanizmus = PLAIN sasl.jaas.config= org. Apache. Kafka. Common. Security. Plain. PlainLoginModule szükséges username = "$ConnectionString" password = "Endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = XXXXXXXXXXXXXXXXXXXXX ";
-
+```properties
+bootstrap.servers=dummynamespace.servicebus.windows.net:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXX";
+```
 Megjegyzés: Ha sasl.jaas.config nem támogatott konfiguráció a keretrendszerben, keresse meg a SASL felhasználónevének és jelszavának beállításához használt konfigurációkat, és használja ezeket. Adja meg a felhasználónevet $ConnectionString és a jelszót a Event Hubs-kapcsolódási karakterlánchoz.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Mi a Event Hubs üzenet/esemény mérete?

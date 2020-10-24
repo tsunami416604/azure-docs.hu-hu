@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3412bfe95951a3fea035ffc6452719ede5e66d4d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102693"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519605"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása egy Cosmos DB-adatbázishoz felügyelt identitás használatával
 
@@ -29,7 +29,7 @@ Mielőtt többet szeretne megtudni a szolgáltatásról, javasoljuk, hogy Ismerj
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 – a rendszerhez rendelt felügyelt identitás bekapcsolása
 
-Ha egy rendszerhez rendelt felügyelt identitás engedélyezve van, az Azure létrehoz egy identitást a keresési szolgáltatáshoz, amely az ugyanazon a bérlőn és előfizetésen belüli más Azure-szolgáltatásokban való hitelesítéshez használható. Ezt az identitást használhatja olyan szerepköralapú hozzáférés-vezérlési (RBAC) hozzárendelésekben, amelyek lehetővé teszik az adatokhoz való hozzáférést az indexelés során.
+Ha egy rendszerhez rendelt felügyelt identitás engedélyezve van, az Azure létrehoz egy identitást a keresési szolgáltatáshoz, amely az ugyanazon a bérlőn és előfizetésen belüli más Azure-szolgáltatásokban való hitelesítéshez használható. Ezt az identitást használhatja az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) hozzárendeléseiben, amelyek lehetővé teszik az adatokhoz való hozzáférést az indexelés során.
 
 ![A rendszerhez rendelt felügyelt identitás bekapcsolása](./media/search-managed-identities/turn-on-system-assigned-identity.png "A rendszerhez rendelt felügyelt identitás bekapcsolása")
 
@@ -146,6 +146,6 @@ Ha azt tapasztalja, hogy nem tudja indexelni a Cosmos DB adatait, vegye figyelem
 
 1. Ellenőrizze, hogy a Cosmos DB-fiók hozzáférése korlátozott-e a hálózatok kiválasztásához. Ha igen, tekintse át az [Indexelő hozzáférését az Azure hálózati biztonsági funkciói által védett tartalmakhoz](search-indexer-securing-resources.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos DB-indexelő](search-howto-index-cosmosdb.md)

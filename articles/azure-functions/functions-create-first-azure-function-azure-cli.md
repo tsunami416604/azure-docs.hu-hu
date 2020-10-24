@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b299f0bb13bb25fbc192f3d117be11ca1ce26586
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89145552"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519673"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
@@ -82,7 +82,11 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)-ból való létrehozásához. Akkor használja, `-DjavaVersion=11` Ha a függvényeit Java 11 rendszeren szeretné futtatni. További információ: Java- [verziók](functions-reference-java.md#java-versions). 
+Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)-ból való létrehozásához. 
+
+> [!IMPORTANT]
+> + Akkor használja, `-DjavaVersion=11` Ha a függvényeit Java 11 rendszeren szeretné futtatni. További információ: Java- [verziók](functions-reference-java.md#java-versions). 
+> + A `JAVA_HOME` környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani a cikk elvégzéséhez.
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
@@ -158,8 +162,6 @@ Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállítása
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 Ezen beállítások módosításával szabályozhatja, hogy az erőforrások hogyan jöjjenek létre az Azure-ban, például a verzióról a verzióra való váltással a `runtime.os` `windows` `linux` kezdeti üzembe helyezés előtt. A Maven beépülő modul által támogatott beállítások teljes listájáért tekintse meg a [konfiguráció részleteit](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
-
-Ha Java 11-es verzió helyett a Function alkalmazást szeretné futtatni, a Java 11 értékekkel manuálisan kell frissítenie a pom.xml fájlt. További információ: Java- [verziók](functions-reference-java.md#java-versions). Ha Java 11 rendszeren fut, győződjön meg róla, hogy  
 
 #### <a name="functiontestjava"></a>FunctionTest. Java
 
@@ -422,7 +424,7 @@ az group delete --name java-functions-group
 A virtuális környezetből való kilépéshez futtassa a parancsot `deactivate` .
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md)

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c8e22373f4550b0c65f6ea5c0b62815e32dcbb58
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4e50f6b2770f9f787c92e7a9c66f72cdbb252a94
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105124"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519690"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: Függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
@@ -65,7 +65,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő kö
 - Mind a [.net core 3,1](https://www.microsoft.com/net/download) , mind a [.net Core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 ::: zone-end
 ::: zone pivot="programming-language-java"
-- A [Java fejlesztői csomag](/azure/developer/java/fundamentals/java-jdk-long-term-support)8-as verziója.
+- A [Java fejlesztői csomag](/azure/developer/java/fundamentals/java-jdk-long-term-support)8-as vagy 11-es verziója.
 
 - [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió.
 ::: zone-end
@@ -121,7 +121,7 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
     ::: zone pivot="programming-language-java"
     - **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `Java` .
 
-    - **Válassza ki a Java-verziót**: válassza a `Java 8` vagy elemet `Java 11 (preview)` , amelyen a függvények futnak az Azure-ban. Válassza ki a helyileg ellenőrzött Java-verziót.
+    - **Válassza ki a Java-verziót**: válassza a `Java 8` vagy elemet `Java 11` , amelyen a függvények futnak az Azure-ban. Válassza ki a helyileg ellenőrzött Java-verziót.
 
     - **Adja meg a csoport azonosítóját**: válassza a lehetőséget `com.function` .
 
@@ -192,7 +192,7 @@ Ellenkező esetben a következő lépésekkel törölheti a Function alkalmazás
 
 A functions-költségekkel kapcsolatos további tudnivalókért lásd: a [felhasználási terv költségeinek becslése](functions-consumption-costs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code segítéségével létrehozott egy egyszerű, HTTP-eseményindítóval aktivált függvényt tartalmazó függvényalkalmazást. A következő cikkben kibonthatja ezt a függvényt egy kimeneti kötés hozzáadásával. Ez a kötés a HTTP-kérelemből írja be a karakterláncot egy Azure Queue Storage-várólistában lévő üzenetbe. 
 

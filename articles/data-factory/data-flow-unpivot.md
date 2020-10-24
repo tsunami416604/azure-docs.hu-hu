@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 38986c3f93856981e903ae93ed7788ae01fc6d5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8881adf39a315df7746dbce14dedcbee18ccf6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823582"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521050"
 ---
 # <a name="unpivot-transformation-in-mapping-data-flow"></a>Az átalakítás kibontása a leképezési adatfolyamban
 
@@ -28,27 +28,27 @@ A nem normalizált adatkészletek egy normalizált verzióban való kibontásáh
 
 ![Az átalakítás unpivot](media/data-flow/unpivot5.png "Kibontási beállítások 2")
 
-Először állítsa be azokat az oszlopokat, amelyeket a kimutatás összesítéséhez szeretne csoportosítani. Állítson be egy vagy több oszlopot a csoportosítás kibontásához az oszlopok listája melletti + jelre.
+Először állítsa be azokat az oszlopokat, amelyeket meg szeretne határozni az unpivot összesítéshez. Állítson be egy vagy több oszlopot a csoportosítás kibontásához az oszlopok listája melletti + jelre.
 
 ## <a name="unpivot-key"></a>Kulcs elforgatása
 
 ![Az átalakítás unpivot](media/data-flow/unpivot6.png "Kibontási beállítások 3")
 
-A pivot kulcs az az oszlop, amelyet az ADF a sor és az oszlop között fog kimutatni. Alapértelmezés szerint a mezőhöz tartozó adatkészlet minden egyedi értéke egy oszlopra mutat. Azonban megadhatja az adatkészletből azokat az értékeket, amelyeket meg szeretne adni az oszlop értékeinek.
+A kibontási kulcs az az oszlop, amelyet az ADF az oszloptól a sorba fog mutatni. Alapértelmezés szerint a mezőhöz tartozó adatkészlet minden egyedi értéke egy sorra mutat. Azonban megadhatja az adatkészletből azokat az értékeket, amelyeket meg szeretne adni a sorok értékeinek.
 
 ## <a name="unpivoted-columns"></a>Nem csuklós oszlopok
 
 ![Az átalakítás unpivot](media/data-flow//unpivot7.png "Kibontási beállítások 4")
 
-Végül válassza ki a tagolt értékekhez használni kívánt összesítést, és azt, hogy az oszlopok hogyan jelenjenek meg a transzformáció új kimeneti vetületében.
+Végül válassza ki az oszlop nevét a sorokba átalakított, nem tagolt oszlopok értékeinek tárolásához.
 
-Választható Megadhat egy elnevezési mintát egy előtaggal, egy középtel és egy utótaggal, amelyet a rendszer minden új oszlopnév számára hozzáadhat a sorok értékeiből.
+Választható NULL értékű sorokat is elhelyezhet.
 
-Ha például a "Sales" (értékesítés) kifejezést a "régió" értékre szeretné kimutatni, egyszerűen csak új oszlop értékeket adhat meg az egyes értékesítési értékektől. Például: "25", "50", "1000",... Ha azonban a "Sales" előtag értékét állítja be, akkor az "értékesítés" érték az értékekre lesz feloldva.
+A SumCost például a fent megosztott példában kiválasztott oszlop neve.
 
 ![Az a kép, amely a PO, a szállító és a gyümölcs oszlopokat mutatja a unipivot átalakítás előtt és után, a Fruit (gyümölcs) oszlop használatával, unipivot kulcsként.](media/data-flow/unpivot3.png)
 
-Ha úgy állítja be az oszlop elrendezését a "NORMAL" értékre, hogy az összes elforgatott oszlopot összesítse. Ha az oszlopok elrendezése az "oldalirányú" értékre van állítva, akkor az oszlop és az érték között váltakozik.
+Ha az oszlop elrendezését a "NORMAL" értékre állítja, akkor az összes új, nem felmutatott oszlop egyetlen értékből lesz csoportosítva. Ha az oszlopok elrendezése az "oldalirányú" értékre van állítva, akkor a rendszer egy meglévő oszlopból generált új, nem felmutatott oszlopokat csoportosítja.
 
 ![Az átalakítás unpivot](media/data-flow//unpivot7.png "Kibontási beállítások 5")
 

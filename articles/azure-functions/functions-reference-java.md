@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 346dbb962e05519153537e3edb90763f5fd8da03
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2dfd00484e84f4b2c31e52392df43bb07a800f73
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996502"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519622"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -17,7 +17,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Ha a Azure Functions új, Java-fejlesztőként, vegye figyelembe a következő cikkek egyikét:
 
-| Első lépések | Fogalmak| 
+| Első lépések | Alapelvek| 
 | -- | -- |  
 | <ul><li>[Java-függvény a Visual Studio Code használatával](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Java/Maven függvény a Terminal/parancssor használatával](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Java-függvény a Gradle használatával](functions-create-first-java-gradle.md)</li><li>[Java-függvény az Eclipse használatával](functions-create-maven-eclipse.md)</li><li>[Java-függvény a IntelliJ IDEA használatával](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> |
 
@@ -134,8 +134,6 @@ Az `function.json` [Azure-functions-Maven-beépülő modul](https://mvnrepositor
 
 ## <a name="java-versions"></a>Java-verziók
 
-_A Java 11 támogatása jelenleg előzetes verzióban érhető el_
-
 A (z) pom.xml fájlban az Azure-ban futó functions alkalmazás létrehozásakor használt Java verziója van megadva. A Maven archetípus jelenleg a Java 8 pom.xml generál, amelyet a közzététel előtt módosíthat. A pom.xml Java-verziójának egyeznie kell azzal a verzióval, amelyen az alkalmazást helyileg fejlesztette és tesztelte. 
 
 ### <a name="supported-versions"></a>Támogatott verziók
@@ -144,14 +142,14 @@ Az alábbi táblázat a functions futtatókörnyezet minden egyes főverziójáh
 
 | Függvények verziója | Java-verziók (Windows) | Java-verziók (Linux) |
 | ----- | ----- | --- |
-| 3. x | 11 (előzetes verzió)<br/>8 | 11 (előzetes verzió)<br/>8 |
+| 3. x | 11 <br/>8 | 11 <br/>8 |
 | 2. x | 8 | n/a |
 
 Ha nem ad meg Java-verziót az üzemelő példányhoz, a Maven archetípus alapértelmezett értéke a Java 8 az Azure-ba való üzembe helyezés során.
 
 ### <a name="specify-the-deployment-version"></a>A központi telepítés verziójának meghatározása
 
-A (z) paraméter használatával szabályozhatja a Maven archetípus által megcélozott Java-verziót `-DjavaVersion` . A paraméter értéke lehet `8` vagy `11` . A Java 11-támogatás jelenleg előzetes verzióban érhető el. 
+A (z) paraméter használatával szabályozhatja a Maven archetípus által megcélozott Java-verziót `-DjavaVersion` . A paraméter értéke lehet `8` vagy `11` . 
 
 A Maven archetípus egy pom.xml hoz létre, amely a megadott Java-verziót célozza meg. A pom.xml következő elemei a használni kívánt Java-verziót jelölik:
 
@@ -431,7 +429,7 @@ Az előző példában a a `queryValue` `name` http-kérelem URL-címében a lek�
 > [!NOTE]
 > A jegyzetben megadott névnek egyeznie kell a metadata tulajdonsággal.
 
-## <a name="execution-context"></a>Végrehajtás környezete
+## <a name="execution-context"></a>Végrehajtási környezet
 
 `ExecutionContext`a ben definiált `azure-functions-java-library` , segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz. További információkért tekintse meg a [ExecutionContext-referenciát ismertető cikket](/java/api/com.microsoft.azure.functions.executioncontext).
 

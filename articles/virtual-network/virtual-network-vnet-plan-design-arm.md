@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ea65e94e97b69e24c6935328cc01c2295adc5a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045501"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518636"
 ---
 # <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
 
@@ -85,7 +85,7 @@ Az Azure több alapértelmezett útvonalat hoz létre a kimenő forgalomhoz egy 
 
 Ha egyéni útválasztást kell megvalósítani, javasoljuk, hogy ismerkedjen meg az [Azure-beli útválasztással](virtual-networks-udr-overview.md).
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 Az Azure VPN Gateway használatával virtuális hálózatokat is összekapcsolhat más virtuális hálózatokkal vagy a helyszíni hálózattal.
 
@@ -105,7 +105,7 @@ Az egyik virtuális hálózat erőforrásai nem tudják feloldani az Azure [beé
 
 ## <a name="permissions"></a>Engedélyek
 
-Az Azure [szerepkör-alapú hozzáférés-vezérlést](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) használ az erőforrásokhoz. Az engedélyek egy [hatókörhöz](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) vannak rendelve a következő hierarchiában: felügyeleti csoport, előfizetés, erőforráscsoport és egyedi erőforrás. A hierarchiával kapcsolatos további tudnivalókért tekintse meg az [erőforrások rendszerezését](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ismertető témakört. Az Azure-beli virtuális hálózatok és az azokhoz kapcsolódó képességek (például a társítás, a hálózati biztonsági csoportok, a szolgáltatási végpontok és az útválasztási táblák) kezeléséhez a szervezet tagjait hozzárendelheti a beépített [tulajdonosi](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)vagy [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörökhöz, majd hozzárendelheti a szerepkört a megfelelő hatókörhöz. Ha konkrét engedélyeket szeretne rendelni a virtuális hálózati képességek egy részhalmazához, hozzon létre egy [Egyéni szerepkört](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , és rendelje hozzá a [virtuális hálózatok](manage-virtual-network.md#permissions), [alhálózatok és szolgáltatási végpontok](virtual-network-manage-subnet.md#permissions), [hálózati adapterek](virtual-network-network-interface.md#permissions) [, társítási,](virtual-network-manage-peering.md#permissions) [hálózati és alkalmazás-biztonsági csoportok](manage-network-security-group.md#permissions)számára szükséges konkrét engedélyeket, vagy [útválasztási táblákat](manage-route-table.md#permissions) a szerepkörhöz.
+Az Azure [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) használ az erőforrásokhoz. Az engedélyek egy [hatókörhöz](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) vannak rendelve a következő hierarchiában: felügyeleti csoport, előfizetés, erőforráscsoport és egyedi erőforrás. A hierarchiával kapcsolatos további tudnivalókért tekintse meg az [erőforrások rendszerezését](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ismertető témakört. Az Azure-beli virtuális hálózatok és az azokhoz kapcsolódó képességek (például a társítás, a hálózati biztonsági csoportok, a szolgáltatási végpontok és az útválasztási táblák) kezeléséhez a szervezet tagjait hozzárendelheti a beépített [tulajdonosi](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)vagy [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörökhöz, majd hozzárendelheti a szerepkört a megfelelő hatókörhöz. Ha konkrét engedélyeket szeretne rendelni a virtuális hálózati képességek egy részhalmazához, hozzon létre egy [Egyéni szerepkört](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , és rendelje hozzá a [virtuális hálózatok](manage-virtual-network.md#permissions), [alhálózatok és szolgáltatási végpontok](virtual-network-manage-subnet.md#permissions), [hálózati adapterek](virtual-network-network-interface.md#permissions) [, társítási,](virtual-network-manage-peering.md#permissions) [hálózati és alkalmazás-biztonsági csoportok](manage-network-security-group.md#permissions)számára szükséges konkrét engedélyeket, vagy [útválasztási táblákat](manage-route-table.md#permissions) a szerepkörhöz.
 
 ## <a name="policy"></a>Szabályzat
 
@@ -113,6 +113,6 @@ Azure Policy lehetővé teszi a szabályzat-definíciók létrehozását, hozzá
 
 A házirendek a következő hierarchiára lesznek alkalmazva: felügyeleti csoport, előfizetés és erőforráscsoport. További információ a [Azure Policyről](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , illetve a virtuális hálózatok [Azure Policy-definícióinak](policy-samples.md)üzembe helyezéséről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a [virtuális hálózat](manage-virtual-network.md), az [alhálózat és a szolgáltatás végpontjának](virtual-network-manage-subnet.md), a [hálózati adapter](virtual-network-network-interface.md) [, a társítás, a](virtual-network-manage-peering.md)  [hálózat és az alkalmazás biztonsági csoportjának](manage-network-security-group.md), illetve az [útválasztási táblázatnak](manage-route-table.md)a feladatait, beállításait és lehetőségeit.

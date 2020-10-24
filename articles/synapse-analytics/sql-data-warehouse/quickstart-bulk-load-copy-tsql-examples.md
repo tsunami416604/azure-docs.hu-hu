@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569469"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503266"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
@@ -97,7 +97,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
     > [!IMPORTANT]
     > A **Storage** **blob** -adattulajdonos, közreműködő vagy olvasó Azure-szerepkör meghatározása. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől. 
 
-    ![RBAC engedélyek megadása a betöltéshez](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Azure RBAC-engedély betöltésének engedélyezése](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 4. Most már futtathatja a "felügyelt identitás" megadását megadó MÁSOLÁSi utasítást:
 
@@ -118,7 +118,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
     > [!IMPORTANT]
     > A **Storage** **blob** -adattulajdonos, közreműködő vagy olvasó Azure-szerepkör meghatározása. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől.
 
-    ![RBAC engedélyek megadása a betöltéshez](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Azure RBAC-engedély betöltésének engedélyezése](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. Konfigurálja az Azure AD-hitelesítést az alábbi [dokumentáción](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)keresztül. 
 
@@ -158,7 +158,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 >
 > - Az OAuth 2,0 token végpont **v1** -es verziójának használata
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) kapcsolatos cikket.
 - Az ajánlott eljárások betöltéséhez tekintse meg az [adatgyűjtés áttekintése című](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) cikket

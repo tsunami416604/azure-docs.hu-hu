@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fbc42864761360d252ed62cea1aef6f2937b599
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856823"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516069"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SignalFx
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SignalFx a Azure
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a SignalFx az Azure AD-fiókjával. és
 * A fiókokat egy helyen kezelheti (a Azure Portal).
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on)használatával című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](../manage-apps/what-is-single-sign-on.md)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A SignalFx támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 * A SignalFx **csak időben támogatja a** felhasználók kiépítési folyamatát
-* A SignalFx konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A SignalFx konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="step-1-add-the-signalfx-application-in-azure"></a>1. lépés: a SignalFx alkalmazás hozzáadása az Azure-ban
 
@@ -92,7 +92,7 @@ Ezekkel az utasításokkal engedélyezheti az Azure AD SSO használatát a Azure
     
 1. Tekintse át és ellenőrizze, hogy a következő jogcímek leképezik-e a Active Directoryban kitöltött forrás-attribútumokat. 
 
-    | Név |  Forrás attribútum|
+    | Name |  Forrás attribútum|
     | ------------------- | -------------------- |
     | Felhasználó. FirstName  | User. givenName |
     | User. e-mail  | User. mail |
@@ -118,7 +118,7 @@ Ezekkel az utasításokkal létrehozhat egy teszt felhasználót a **B. Simon**n
    1. A **Felhasználónév**mezőbe írja be a (z `username@companydomain.extension` ) nevet, például: `b.simon@contoso.com` .
    1. A **név**mezőben adja meg a nevet `B.Simon` .
    1. Jelölje be a **jelszó megjelenítése**jelölőnégyzetet, majd másolja a megjelenő értéket a **jelszó**mezőbe. Az integráció teszteléséhez szüksége lesz erre az információra a későbbi lépésben. 
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="step-5-assign-the-azure-ad-test-user"></a>5. lépés: az Azure AD-teszt felhasználójának kiosztása
 
@@ -156,7 +156,7 @@ Tekintse át az alábbi információkat az egyszeri bejelentkezés tesztelésév
 
 * Amikor első alkalommal jelentkezik be új tesztelési felhasználó, az Azure kényszeríti a jelszó módosítását. Ebben az esetben az SSO bejelentkezési folyamat nem lesz végrehajtva; a teszt felhasználó a Azure Portal lesz átirányítva. A hibakereséshez a felhasználónak meg kell változtatnia a jelszavát, majd navigáljon a SignalFx-bejelentkezési oldalra vagy a hozzáférési panelre, és próbálkozzon újra.
     * Ha a hozzáférési panelen a SignalFx csempére kattint, automatikusan be kell jelentkeznie a SignalFx. 
-        * További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+        * További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 * A SignalFx alkalmazás a hozzáférési panelen vagy a szervezethez rendelt egyéni bejelentkezési oldalon keresztül érhető el. A tesztelési felhasználónak ezen helytől kezdve kell tesztelni az integrációt.
     * A tesztelési felhasználó használhatja a folyamat során korábban létrehozott hitelesítő adatokat **b. simon \@ contoso.com**.
@@ -169,12 +169,12 @@ Tekintse át az alábbi információkat az egyszeri bejelentkezés tesztelésév
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
 - [A SignalFx kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000e43a7861bd155ebbd7175db96dd323731464b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829873"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518211"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Saját felhőalapú környezet biztonságossá tétele
 
 Szerepköralapú hozzáférés-vezérlés (RBAC) definiálása a CloudSimple szolgáltatáshoz, a CloudSimple-portálhoz és az Azure-beli privát felhőhöz.  A vCenter eléréséhez szükséges felhasználók, csoportok és szerepkörök a VMware SSO használatával vannak megadva.  
 
-## <a name="rbac-for-cloudsimple-service"></a>RBAC a CloudSimple szolgáltatáshoz
+## <a name="azure-rbac-for-cloudsimple-service"></a>Azure-RBAC a CloudSimple szolgáltatáshoz
 
 A CloudSimple szolgáltatás létrehozásához **tulajdonosi** vagy **közreműködői** szerepkörre van szükség az Azure-előfizetésben.  Alapértelmezés szerint minden tulajdonos és közreműködő létrehoz egy CloudSimple szolgáltatást, és hozzáfér a CloudSimple-portálhoz a privát felhők létrehozásához és kezeléséhez.  Régiónként csak egy CloudSimple szolgáltatás hozható létre.  Az adott rendszergazdák hozzáférésének korlátozásához kövesse az alábbi eljárást.
 
 1. CloudSimple-szolgáltatás létrehozása új **erőforráscsoport** Azure Portal
-2. RBAC megadása az erőforráscsoporthoz.
+2. Itt adhatja meg az erőforráscsoport Azure-RBAC.
 3. Csomópontok megvásárlása és ugyanazt az erőforráscsoportot használja, mint a CloudSimple szolgáltatás
 
 Csak azok a felhasználók láthatják a CloudSimple szolgáltatást, akik **tulajdonosi** vagy **közreműködői** jogosultsággal rendelkeznek az erőforráscsoport számára, és elindítják a CloudSimple-portált.

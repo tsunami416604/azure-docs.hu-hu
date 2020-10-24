@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: e969520e226999bc2b104fb4f757619832eaa165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ddceb2808874e531cfda81e5a9ce74be3a4fab4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944479"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517079"
 ---
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
@@ -42,11 +42,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 + A [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ A [Java fejlesztői csomag](https://aka.ms/azure-jdks)8-as verziója. 
-
-    > [!IMPORTANT]
-    > + A Java 11 funkcióinak támogatása jelenleg előzetes verzióban érhető el, a Maven archetípus pedig alapértelmezés szerint egy Java 8 központi telepítést hoz létre. Ha ehelyett Java 11 rendszeren szeretné futtatni a Function alkalmazást, manuálisan kell frissítenie az pom.xml fájlt Java 11 értékkel. További információ: Java- [verziók](../articles/azure-functions/functions-reference-java.md#java-versions). 
-    > + A rövid útmutató `JAVA_HOME` elvégzéséhez a környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani.
++ A [Java fejlesztői csomag](https://aka.ms/azure-jdks)8-as vagy 11-es verziója. 
 
 + [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió.
 

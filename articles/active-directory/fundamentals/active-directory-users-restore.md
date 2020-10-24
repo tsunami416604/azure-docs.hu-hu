@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 04/01/2018
+ms.date: 10/23/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bba8a0898c11cf1af150f4824d9bef5e9e03576e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd4d42e1cafa58aaf6a47188c9e86c24ac175047
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370882"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514389"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Nemrég törölt felhasználó visszaállítása vagy eltávolítása a Azure Active Directory használatával
-A felhasználó törlése után a fiók 30 napig felfüggesztett állapotban marad. A 30 napos időszak alatt a felhasználói fiók visszaállítható az összes tulajdonságával együtt. A 30 napos időszak után a rendszer automatikusan és véglegesen törli a felhasználót.
+A felhasználó törlése után a fiók 30 napig felfüggesztett állapotban marad. A 30 napos időszak alatt a felhasználói fiók visszaállítható az összes tulajdonságával együtt. A 30 napos időszak elteltével az állandó törlési folyamat automatikusan elindul.
 
 Megtekintheti a visszaállítható felhasználókat, visszaállíthat egy törölt felhasználót, vagy véglegesen törölhet egy felhasználót Azure Active Directory (Azure AD) használatával a Azure Portal.
 
@@ -80,7 +80,7 @@ Véglegesen törölheti a felhasználót a szervezetből anélkül, hogy az auto
     ![Felhasználók – törölt felhasználók lap, a felhasználó törlése lehetőség kiemelve](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Miután visszaállította vagy törölte a felhasználókat, a következő alapvető folyamatokat végezheti el:
+Miután visszaállította vagy törölte a felhasználókat, a következőket teheti:
 
 - [Felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md)
 

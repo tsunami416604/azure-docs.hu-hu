@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818488"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516970"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
@@ -61,7 +61,7 @@ Használja a legkisebb rendszerképet, amely megfelel a követelményeinek. A Li
 
 Ez valójában a számítási feladattól függ. Indítsa el a kis-és tesztelési teljesítményt a tárolók működésének megtekintéséhez. [Figyelje a CPU-és memória-erőforrások használatát](container-instances-monitor.md), majd vegyen fel magokat vagy memóriát a tárolóban üzembe helyezett folyamatok típusa alapján.
 
-Győződjön meg arról, hogy az [Erőforrás rendelkezésre állását](container-instances-region-availability.md#availability---general) is ellenőrizni kívánja-e azon régió esetében, amelynek a felső határait a CPU-magok és a rendelkezésre álló memória elérhetővé teszi. 
+Győződjön meg arról, hogy az [Erőforrás rendelkezésre állását](container-instances-region-availability.md) is ellenőrizni kívánja-e azon régió esetében, amelynek a felső határait a CPU-magok és a rendelkezésre álló memória elérhetővé teszi. 
 
 > [!NOTE]
 > A szolgáltatás alapjául szolgáló infrastruktúra egy kis mennyiségű tároló-csoport erőforrásait használja. A tárolók a csoport számára lefoglalt összes erőforráshoz hozzáférhetnek. Ebből kifolyólag tervezzen egy kisebb erőforrás-puffert a csoportban lévő tárolók erőforrásainak kérésekor.
@@ -80,7 +80,7 @@ Jelenleg nem. Jelenleg ezek a tároló csoportok maximális száma. Konkrét kö
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>Mikor lesz az ACI egy adott régióban?
 
-Az aktuális régió elérhetőségét [itt](container-instances-region-availability.md#availability---general)tesszük közzé. Ha egy adott régióra vonatkozó követelményt tartalmaz, forduljon az Azure ügyfélszolgálatához.
+Az aktuális régió elérhetőségét [itt](container-instances-region-availability.md)tesszük közzé. Ha egy adott régióra vonatkozó követelményt tartalmaz, forduljon az Azure ügyfélszolgálatához.
 
 ## <a name="features-and-scenarios"></a>Funkciók és forgatókönyvek
 

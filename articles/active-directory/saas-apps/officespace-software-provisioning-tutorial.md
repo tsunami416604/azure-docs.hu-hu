@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: Zhchia
-ms.openlocfilehash: 123f35154c3b87ff1ed479084f5e9dfa35043b9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe48cef0fb235d217f95012e81d7daf501928300
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287203"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518568"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>Oktatóanyag: OfficeSpace-szoftver konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -89,7 +89,7 @@ Mielőtt OfficeSpace szoftvert szeretne konfigurálni az Azure AD-vel való auto
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy OfficeSpace alapuló felhasználókat és/vagy csoportokat lehessen létrehozni, frissíteni és letiltani a szoftverben.
 
 > [!TIP]
-> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a OfficeSpace szoftverhez a [OfficeSpace szoftveres egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/officespace-tutorial)ismertetett utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két szolgáltatás kiegészíti egymást.
+> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a OfficeSpace szoftverhez a [OfficeSpace szoftveres egyszeri bejelentkezés oktatóanyagában](./officespace-tutorial.md)ismertetett utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két szolgáltatás kiegészíti egymást.
 
 ### <a name="to-configure-automatic-user-provisioning-for-officespace-software-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a OfficeSpace szoftverhez az Azure AD-ben:
 
@@ -153,4 +153,3 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
-

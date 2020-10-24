@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 2fb94faacc2bc7d6c3b1e166e617f3f675594cef
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101256"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503487"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>Indexelő hozzáférés az Azure hálózati biztonsági funkciói által védett tartalmakhoz (Azure Cognitive Search)
 
@@ -72,7 +72,7 @@ Ha az indexelő által elérni kívánt erőforrás csak az IP-címtartományok 
 
 Bizonyos adatforrások esetében maga a szolgáltatási címke közvetlenül is használható az IP-címtartományok listájának enumerálása helyett (a keresési szolgáltatás IP-címét explicit módon kell használni). Ezek az adatforrások korlátozzák a hozzáférést egy olyan [hálózati biztonsági csoport szabályának](../virtual-network/network-security-groups-overview.md)beállításával, amely natív módon támogatja a szolgáltatási címkék hozzáadását, az olyan IP-szabályoktól eltérően, mint az Azure Storage, az Cosmos db, az Azure SQL stb. Azok az adatforrások, amelyek támogatják a `AzureCognitiveSearch` szolgáltatás címkéjének közvetlen használatát a keresési szolgáltatás IP-címe mellett, a következők:
 
-- [Azure-beli virtuális gépen futó SQL Server](./search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md#restrict-access-to-the-azure-cognitive-search)
+- [SQL Server Azure-beli virtuális gépeken](./search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md#restrict-access-to-the-azure-cognitive-search)
 
 - [Felügyelt SQL-példányok](./search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md#verify-nsg-rules)
 
@@ -87,7 +87,7 @@ Ez a funkció csak a számlázható keresési szolgáltatásokban érhető el, a
 
 Az ügyfeleknek meg kell hívniuk a keresési kezelési műveletet, a [CREATEORUPDATE API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) -t egy **megosztott privát kapcsolati erőforráson**, hogy létre lehessen hozni egy privát végponti kapcsolatot a biztonságos erőforráshoz (például egy Storage-fiókhoz). Az erre a (kimenő) privát végponti kapcsolatra irányuló forgalom csak a keresési szolgáltatásban megadott "privát" indexelő végrehajtási környezetben található virtuális hálózatból származik.
 
-Az Azure Cognitive Search ellenőrzi, hogy az API hívói rendelkeznek-e RBAC engedéllyel a privát végpontok kapcsolódási kéréseinek a biztonságos erőforráshoz való jóváhagyásához. Ha például egy csak olvasási jogosultsággal rendelkező Storage-fiókhoz kér privát végponti kapcsolatokat, a rendszer a hívást elutasítja.
+Az Azure Cognitive Search ellenőrzi, hogy az API hívói rendelkeznek-e Azure RBAC engedéllyel a privát végpontok kapcsolódási kéréseinek a biztonságos erőforráshoz való jóváhagyásához. Ha például egy csak olvasási jogosultsággal rendelkező Storage-fiókhoz kér privát végponti kapcsolatokat, a rendszer a hívást elutasítja.
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>2. lépés: a magánhálózati végponti kapcsolatok jóváhagyása
 
@@ -129,7 +129,7 @@ A keresési szolgáltatás optimális teljesítményének és stabilitásának b
 
 Ezek a korlátok a [szolgáltatási korlátokban](search-limits-quotas-capacity.md)vannak dokumentálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Indexelő kapcsolatok IP-tűzfalakon keresztül](search-indexer-howto-access-ip-restricted.md)
 - [Indexelő kapcsolatok a megbízható szolgáltatással kapcsolatos kivétel használatával](search-indexer-howto-access-trusted-service-exception.md)

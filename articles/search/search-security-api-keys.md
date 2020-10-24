@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 60c5051b403d3072292a03c60d7cba95bd0cf1d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 918ba128eca8ebf8b452c0f1126e4b7e611542d8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740632"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514469"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése
 
@@ -95,6 +95,6 @@ A következő szerepkörök tagjai megtekinthetik és újragenerálják a kulcso
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Szerepköralapú hozzáférés-vezérlés az Azure-ban Cognitive Search](search-security-rbac.md)
++ [Azure szerepköralapú hozzáférés-vezérlés az Azure-ban Cognitive Search](search-security-rbac.md)
 + [Kezelés a PowerShell-lel](search-manage-powershell.md) 
 + [Teljesítmény-és optimalizálási cikk](search-performance-optimization.md)

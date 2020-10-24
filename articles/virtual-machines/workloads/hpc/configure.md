@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan konfigurálhatja és optimalizálja a InfiniBan
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 08/07/2020
+ms.date: 10/23/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ecfe1df273834ae38bd6bb94980444f5e34f786
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: a1bfb5988169ba79a6e3e8416804d7d4c896c758
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994809"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516850"
 ---
 # <a name="configure-and-optimize-vms"></a>Virtuális gépek konfigurálása és optimalizálása
 
@@ -36,11 +36,24 @@ A RDMA-kompatibilis [virtuális gépek](../../sizes-hpc.md#rdma-capable-instance
   Az SR-IOV-kompatibilis RDMA-kompatibilis [virtuális gépek](../../sizes-hpc.md#rdma-capable-instances), a [CentOS-HPC 7,6-es vagy újabb](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) verziójú virtuálisgép-lemezképek alkalmasak a piactéren. Ezek a virtuálisgép-rendszerképek optimalizáltak és előre betöltve vannak a OFED-illesztőprogramokkal a RDMA és a különböző gyakran használt MPI-kódtárak és tudományos számítástechnikai csomagok számára, és a legegyszerűbb módszer a kezdéshez.
 
   Példa a CentOS-HPC 7,6-es és újabb verziójú virtuálisgép-lemezképek létrehozásához használt parancsfájlokra a [azhpc-lemezképek](https://github.com/Azure/azhpc-images/tree/master/centos)tárházában.
+  
+  > [!NOTE] 
+  > A legújabb Azure HPC Marketplace-lemezképek Mellanox OFED 5,1-es vagy újabb verziójúak, amelyek nem támogatják ConnectX3-Pro InfiniBand kártyákat. Az SR-IOV által engedélyezett N sorozatú virtuálisgép-méretek a FDR InfiniBand (pl. NCv3) a következő CentOS-HPC VM-rendszerképeket vagy régebbi verziókat használhatják:
+  >- OpenLogic: CentOS-HPC: 7.6:7.6.2020062900
+  >- OpenLogic: CentOS-HPC: 7_6gen2:7.6.2020062901
+  >- OpenLogic: CentOS-HPC: 7.7:7.7.2020062600
+  >- OpenLogic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+  >- OpenLogic: CentOS-HPC: 8_1:8.1.2020062400
+  >- OpenLogic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+
 
 ### <a name="rhelcentos-vm-images"></a>RHEL/CentOS VM-lemezképek
 A piactéren a RHEL vagy CentOS-alapú, nem HPC-alapú virtuálisgép-lemezképek konfigurálhatók az SR-IOV-kompatibilis RDMA-kompatibilis [virtuális gépeken](../../sizes-hpc.md#rdma-capable-instances)való használatra. További információ a [InfiniBand engedélyezéséről](enable-infiniband.md) és az MPI-nek a virtuális gépeken való [beállításáról](setup-mpi.md) .
 
   Példa a CentOS-HPC 7,6-es és újabb verziójú virtuálisgép-lemezképek létrehozásához használt parancsfájlokra a [azhpc-lemezképek](https://github.com/Azure/azhpc-images/tree/master/centos)tárházában.
+  
+  > [!NOTE]
+  > A Mellanox OFED 5,1-es és újabb verziók nem ConnectX3-Pro támogatják az SR-IOV engedélyezett N sorozatú virtuálisgép-méreteket a FDR InfiniBand (például NCv3). Az N sorozatú virtuális gépek ConnectX3-Pro-kártyán az LTS Mellanox OFED 4.9-0.1.7.0 vagy régebbi verzióját használja. További részletek [itt](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)találhatók.
 
 ### <a name="ubuntu-vm-images"></a>Ubuntu VM-lemezképek
 Az Ubuntu Server 16,04 LTS, 18,04 LTS és 20,04 LTS virtuálisgép-lemezképek a piactéren az SR-IOV és a nem SR-IOV [RDMA-kompatibilis virtuális gépek](../../sizes-hpc.md#rdma-capable-instances)esetében is támogatottak. További információ a [InfiniBand engedélyezéséről](enable-infiniband.md) és az MPI-nek a virtuális gépeken való [beállításáról](setup-mpi.md) .

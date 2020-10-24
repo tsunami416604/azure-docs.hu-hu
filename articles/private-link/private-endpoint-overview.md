@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277512"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508029"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure privát végpont?
 
@@ -133,11 +133,11 @@ A következő táblázat tartalmazza a privát végpontok használatakor felisme
 
 
 ## <a name="next-steps"></a>Következő lépések
-- [Privát végpont létrehozása SQL Database a portál használatával ](create-private-endpoint-portal.md)
-- [Privát végpont létrehozása SQL Databasehoz a PowerShell használatával ](create-private-endpoint-powershell.md)
-- [Privát végpont létrehozása SQL Databasehoz a parancssori felület használatával ](create-private-endpoint-cli.md)
-- [Privát végpont létrehozása a Storage-fiókhoz a portál használatával ](create-private-endpoint-storage-portal.md)
-- [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával ](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Privát végpont létrehozása SQL Database a portál használatával](create-private-endpoint-portal.md)
+- [Privát végpont létrehozása SQL Databasehoz a PowerShell használatával](create-private-endpoint-powershell.md)
+- [Privát végpont létrehozása SQL Databasehoz a parancssori felület használatával](create-private-endpoint-cli.md)
+- [Privát végpont létrehozása a Storage-fiókhoz a portál használatával](create-private-endpoint-storage-portal.md)
+- [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Saját privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)
 - [Saját privát hivatkozás létrehozása Azure Database for PostgreSQL-egyetlen kiszolgálóhoz a portál használatával](../postgresql/howto-configure-privatelink-portal.md)
 - [Saját privát hivatkozás létrehozása Azure Database for PostgreSQL-egyetlen kiszolgálóhoz a parancssori felület használatával](../postgresql/howto-configure-privatelink-cli.md)
@@ -145,3 +145,4 @@ A következő táblázat tartalmazza a privát végpontok használatakor felisme
 - [Saját privát hivatkozás létrehozása Azure Database for MySQLhoz a CLI használatával](../mysql/howto-configure-privatelink-cli.md)
 - [Saját privát hivatkozás létrehozása Azure Database for MariaDBhoz a portál használatával](../mariadb/howto-configure-privatelink-portal.md)
 - [Saját privát hivatkozás létrehozása Azure Database for MariaDBhoz a CLI használatával](../mariadb/howto-configure-privatelink-cli.md)
+- [Saját privát hivatkozás létrehozása Azure Key Vaulthoz a portál és a parancssori felület használatával](../key-vault/general/private-link-service.md)

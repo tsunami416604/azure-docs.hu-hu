@@ -3,12 +3,12 @@ title: A virtuális gépek vész-helyreállításának befejezése
 description: Ez a cikk bemutatja, hogyan végezheti el a virtuális gépek vész-helyreállítását az Azure VMware-megoldás használatával
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 2ccb6546b9b01255e4a28aed79fd0d3ccbc4516c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3608243600eb5d00dcfe10db5bc6b907ecb9aee8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580184"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508434"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>A virtuális gépek vész-helyreállításának befejezése az Azure VMware-megoldás használatával
 
@@ -20,7 +20,7 @@ A VMware HCX különböző műveleteket biztosít, amelyek a replikációs házi
 
 - **Szüneteltetés** – szünetelteti a kiválasztott virtuális géphez társított aktuális replikációs házirendet.
 
-- **Folytatás** – szünetelteti a kiválasztott virtuális géphez társított aktuális replikációs házirendet.
+- **Folytatás** – folytassa a kiválasztott virtuális géppel társított aktuális replikációs házirendet.
 
 - **Eltávolítás** – távolítsa el a kiválasztott virtuális géphez társított aktuális replikációs házirendet.
 

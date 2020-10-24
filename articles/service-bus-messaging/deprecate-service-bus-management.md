@@ -3,18 +3,18 @@ title: Azure Messaging Services – Service Manager a Resource Managerhez
 description: Ez a cikk az elavult Azure Service Manager REST API & PowerShell-parancsmagok erőforrás-kezelő REST API & PowerShell-parancsmagokkal való leképezését ismerteti.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 84335d534c229f40381b913dfca54f42e2da250b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b82772b364bbc44a898197e7fafd11b33e2e6320
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761175"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518789"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Az Azure Service Manager Azure Service Bus, Relay és Event Hubs támogatásának elavulttá váltása
 
 A Resource Manager, a következő generációs felhőalapú infrastruktúra-verem teljes mértékben lecseréli a "klasszikus" Azure Service Management-modellt (klasszikus üzemi modell). Ennek eredményeképpen a klasszikus üzembe helyezési modell REST API-k és a Service Bus, a Relay és a Event Hubs támogatása 2021 november 1-jén megszűnik. Ezt az elavult szolgáltatást először bejelentettük egy [Microsoft Tech Community közleményben](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Deprecating-Service-Management-support-for-Azure-Service-Bus/ba-p/370909), de nemrég úgy döntöttünk, hogy az eredeti bejelentés időpontjától számított két éven belül meghosszabbítjuk az elavult időszakot. Az egyszerű azonosításhoz ezek az API `management.core.windows.net` -k szerepelnek az URI-ban. A következő táblázat tartalmazza az elavult API-k listáját, valamint a Azure Resource Manager API-verzióját, amelyet most használnia kell.
 
-A Service Bus, a továbbítás és a Event Hubs használatának folytatásához lépjen a Resource Managerre 2021. október 31-ig. Javasoljuk, hogy az összes olyan ügyfél számára, akik továbbra is a régi API-kat használják, hogy a váltás hamarosan kihasználhassa a Resource Manager további előnyeit, beleértve az erőforrás-csoportosítást, a címkéket, a zökkenőmentes üzembe helyezést és a felügyeleti folyamatot, és részletes hozzáférés-vezérlést használhat szerepköralapú hozzáférés-vezérléssel (RBAC).
+A Service Bus, a továbbítás és a Event Hubs használatának folytatásához lépjen a Resource Managerre 2021. október 31-ig. Javasoljuk, hogy az összes olyan ügyfél számára, akik továbbra is a régi API-kat használják, hogy a váltás hamarosan kihasználhassa a Resource Manager további előnyeit, például az erőforrások csoportosítását, a címkéket, az egyszerűsített üzembe helyezési és felügyeleti folyamatot, valamint a részletes hozzáférés-vezérlést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 
 További információ a Azure Resource Manager vs Azure Service Managerról: [TechNet blog](https://blogs.technet.microsoft.com/meamcs/2016/12/22/difference-between-azure-service-manager-and-azure-resource-manager/).
 

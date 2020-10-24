@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 14a25559b1eddd4adb58ae2106e8c9e92873ea48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eeddecbec31ec1bfa73cf956deb4c50809c50e7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751154"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521946"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához
 
@@ -25,7 +25,7 @@ A felhőalapú [szoftveres (SaaS)](https://azure.microsoft.com/overview/what-is-
 
 Az Azure AD-be előre integrált SaaS-alkalmazások listáját a [Active Directory piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)tekintheti meg.
 
-Az [Application Network portál](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) használatával igényeljen egy [scim](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) -kompatibilis alkalmazást a katalógusba az automatikus kiépítés vagy egy SAML-/OIDC-kompatibilis alkalmazás hozzáadásához a katalógusba az SSO-hoz.
+Az [Application Network portál](../azuread-dev/howto-app-gallery-listing.md) használatával igényeljen egy [scim](../app-provisioning/use-scim-to-provision-users-and-groups.md) -kompatibilis alkalmazást a katalógusba az automatikus kiépítés vagy egy SAML-/OIDC-kompatibilis alkalmazás hozzáadásához a katalógusba az SSO-hoz.
 
 ## <a name="quick-links"></a>Gyorshivatkozások
 
@@ -34,7 +34,7 @@ Az [Application Network portál](https://docs.microsoft.com/azure/active-directo
 | ![embléma – Atlassian felhő](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)| [Atlassian-felhő – felhasználó kiépítés](atlassian-cloud-provisioning-tutorial.md)|
 | ![embléma – ServiceNow](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow – felhasználó kiépítés](servicenow-provisioning-tutorial.md)|
 | ![embléma – Slack](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Slack – felhasználó kiépítés](slack-provisioning-tutorial.md)|
-| ![embléma – SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors – felhasználó kiépítés](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial) |
+| ![embléma – SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors – felhasználó kiépítés](./sap-successfactors-inbound-provisioning-tutorial.md) |
 | ![embléma – munkanap](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Workday](workday-tutorial.md)| [Munkanap – felhasználó kiépítés](workday-inbound-tutorial.md)|
 
 További oktatóanyagokat a bal oldali tartalomjegyzékben talál.
@@ -47,7 +47,7 @@ További oktatóanyagokat a bal oldali tartalomjegyzékben talál.
 | ![Logo-Alibaba Cloud Service (szerepkör-alapok SSO)](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud Service (szerepkör-alapok SSO)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![embléma – Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform – felhasználó kiépítés](google-apps-provisioning-tutorial.md) |
 | ![embléma – Salesforce](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce – felhasználó kiépítés](salesforce-provisioning-tutorial.md) |
-| ![embléma – SAP Cloud Identity platform](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud Identity platform](saphana-tutorial.md)|[SAP Cloud Identity platform – kiépítés](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial) |
+| ![embléma – SAP Cloud Identity platform](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud Identity platform](saphana-tutorial.md)|[SAP Cloud Identity platform – kiépítés](./sap-cloud-platform-identity-authentication-provisioning-tutorial.md) |
 
 ## <a name="oneclick-sso"></a>OneClick egyszeri bejelentkezés
 
@@ -119,6 +119,6 @@ További oktatóanyagokat a bal oldali tartalomjegyzékben talál.
 | ![embléma – két Zscaler](./media/tutorial-list/active-directory-saas-zscaler-two-tutorial.png)| [Zscaler Two](zscaler-two-tutorial.md)|  
 | ![embléma – Zscaler ZSCloud](./media/tutorial-list/active-directory-saas-zscaler-zscloud-tutorial.png)| [Zscaler ZSCloud](zscaler-zscloud-tutorial.md)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az alkalmazások kezeléséről: [Mi az az Application Management](../manage-apps/what-is-application-management.md).

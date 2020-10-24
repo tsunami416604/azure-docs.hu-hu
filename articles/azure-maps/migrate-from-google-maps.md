@@ -9,16 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3ece62e671caa0838bbf4713c0ad4a74f19fd6cb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876311"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518874"
 ---
 # <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>Oktatóanyag – áttelepítés a Google Mapsből a Azure Mapsba
 
-Ez a cikk azt ismerteti, hogyan telepíthet át webes, mobil-és kiszolgáló-alapú alkalmazásokat a Google Mapsből a Microsoft Azure Maps platformra. Ez az oktatóanyag a Azure Mapsre való áttelepítéshez szükséges összehasonlító kód-mintákat, áttelepítési javaslatokat és ajánlott eljárásokat tartalmazza.
+Ez a cikk azt ismerteti, hogyan telepíthet át webes, mobil-és kiszolgáló-alapú alkalmazásokat a Google Mapsből a Microsoft Azure Maps platformra. Ez az oktatóanyag a Azure Mapsre való áttelepítéshez szükséges összehasonlító kód-mintákat, áttelepítési javaslatokat és ajánlott eljárásokat tartalmazza. Az oktatóanyag során a következőket fogja elsajátítani:
+
+> [!div class="checklist"]
+> * A Azure Maps-ben elérhető, egyenértékű Google Maps-funkciók magas szintű összehasonlítása
+> * Milyen licencelési különbözeteket kell figyelembe venni
+> * Az áttelepítés megtervezése
+> * Hol találhat technikai erőforrásokat és támogatást.
+
+## <a name="prerequisites"></a>Előfeltételek 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps platform áttekintése
 
@@ -107,10 +119,15 @@ Az alábbi lista a Azure Maps hasznos technikai erőforrásait sorolja fel.
 
 A fejlesztők a [fórumok](https://aka.ms/AzureMapsForums) vagy a számos Azure-támogatási lehetőség közül választhatják a Migrálás támogatását: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-Megtudhatja, hogyan telepítheti át Google Maps-alkalmazását a következő használatával: 
+## <a name="next-steps"></a>Következő lépések
 
-[Androidos alkalmazás migrálása](migrate-from-google-maps-android-app.md) 
+Ismerje meg, hogyan telepítheti át Google Maps-alkalmazását a következő cikkekkel:
 
-[Webszolgáltatás migrálása](migrate-from-google-maps-web-services.md) 
+> [!div class="nextstepaction"]
+> [Webalkalmazás migrálása](migrate-from-google-maps-web-app.md)
 
-[Webalkalmazás migrálása](migrate-from-google-maps-web-app.md)
+> [!div class="nextstepaction"]
+> [Webszolgáltatás migrálása](migrate-from-google-maps-web-services.md) 
+
+> [!div class="nextstepaction"]
+> [Androidos alkalmazás migrálása](migrate-from-google-maps-android-app.md) 

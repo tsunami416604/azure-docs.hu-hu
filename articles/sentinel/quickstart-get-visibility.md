@@ -1,6 +1,6 @@
 ---
 title: 'Gyorsútmutató: Bevezetés az Azure Sentinel használatába'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan tekintheti meg és figyelheti meg, hogy mi történik a környezetében az Azure Sentinel használatával. 
+description: Ebből a rövid útmutatóból megtudhatja, hogyan tekintheti meg és figyelheti meg, hogy mi történik a környezetében az Azure Sentinel használatával.
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: bdd3f543c948ac2825b836fdbedd4c0f0d713b2c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: affefb302d602e9069a903fa5f6a0fbae78992b9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208226"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516953"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Gyorsútmutató: Bevezetés az Azure Sentinel használatába
 
@@ -80,10 +80,10 @@ Ha új csempét szeretne felvenni, hozzáadhatja egy meglévő munkafüzethez, v
 Létrehozhat egy új munkafüzetet a semmiből, vagy használhat egy beépített munkafüzetet az új munkafüzet alapjaként.
 
 1. Ha új munkafüzetet szeretne létrehozni a semmiből, válassza a **munkafüzetek** , majd az **+ Új munkafüzet**lehetőséget.
-2. Válassza ki azt az előfizetést, amelyben létrehozta a munkafüzetet, és adjon meg egy leíró nevet. Minden munkafüzet egy olyan Azure-erőforrás, mint bármely más, és hozzárendelheti az RBAC-szerepköröket, és korlátozhatja, hogy ki férhet hozzá. 
+2. Válassza ki azt az előfizetést, amelyben létrehozta a munkafüzetet, és adjon meg egy leíró nevet. Minden munkafüzet egy olyan Azure-erőforrás, mint bármely más, és hozzárendelheti az IT-szerepköröket (Azure RBAC) annak meghatározásához és korlátozásához, hogy ki férhet hozzá. 
 3. Annak lehetővé tétele, hogy megjelenjen a munkafüzetekben a vizualizációk rögzítéséhez, meg kell osztania azt. Kattintson a **megosztás** , majd a **felhasználók kezelése**lehetőségre. 
  
-1. A **hozzáférés** -és **szerepkör-hozzárendeléseket** a többi Azure-erőforráshoz hasonlóan használhatja. További információ: Azure- [munkafüzetek megosztása RBAC használatával](../azure-portal/azure-portal-dashboard-share-access.md).
+1. A **hozzáférés** -és **szerepkör-hozzárendeléseket** a többi Azure-erőforráshoz hasonlóan használhatja. További információ: Azure- [munkafüzetek megosztása az Azure RBAC használatával](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
 ## <a name="new-workbook-examples"></a>Új munkafüzetpéldák

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: Zhchia
-ms.openlocfilehash: e69b6aa5518f83dbbeba34d70b459c781b50dc9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a7c2634f4dc06e3c988a48c7ca15294160759e2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299984"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520727"
 ---
 # <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>Oktatóanyag: a Robin konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -89,7 +89,7 @@ Mielőtt a Robint konfigurálja az Azure AD-vel való automatikus felhasználói
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein az Azure AD-ben felhasználói és/vagy csoportos hozzárendeléseken alapuló felhasználók és/vagy csoportok létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Robin számára, a [Robin egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial)szereplő utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Robin számára, a [Robin egyszeri bejelentkezés oktatóanyagában](./robin-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
 
 ### <a name="to-configure-automatic-user-provisioning-for-robin-in-azure-ad"></a>Az automatikus felhasználó-kiépítés beállítása a Robinhoz az Azure AD-ben:
 
@@ -163,4 +163,3 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
-
