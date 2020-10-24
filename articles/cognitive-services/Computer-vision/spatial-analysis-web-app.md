@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bc03cf03f8a8e0f2a222ca1089618eaade9485d
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628194"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496067"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Útmutató: webes alkalmazások leltározása
 
@@ -63,14 +63,14 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>A tároló üzembe helyezése Azure IoT Edge számítógépen a gazdaszámítógépen
 
-Telepítse a térbeli elemzési tárolót IoT-modulként a gazdaszámítógépen az Azure CLI használatával. Az üzembe helyezési folyamathoz egy telepítési jegyzékfájl szükséges, amely az üzemelő példányhoz szükséges tárolókat, változókat és konfigurációkat ismerteti. A GitHubon talál egy minta [üzembe helyezési jegyzéket](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) , amely tartalmazza a *térbeli elemzési* tároló alapszintű telepítési konfigurációját. 
+Telepítse a térbeli elemzési tárolót IoT-modulként a gazdaszámítógépen az Azure CLI használatával. Az üzembe helyezési folyamathoz egy telepítési jegyzékfájl szükséges, amely az üzemelő példányhoz szükséges tárolókat, változókat és konfigurációkat ismerteti. Megtalálhatja a [Azure stack Edge-specifikus telepítési jegyzékfájlt](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) , valamint egy [nem Azure stack Edge-specifikus telepítési jegyzéket](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) a githubon, amely tartalmazza a *térbeli elemzési* tároló alapszintű üzembe helyezési konfigurációját. 
 
 > [!NOTE] 
-> A *térbeli analízis – a-Graf* és a *térbeli analízis – diagnosztikai* tárolók nem kötelezőek. Dönthet úgy, hogy eltávolítja őket a fájl *DeploymentManifest.js* . További információ: [telemetria és hibaelhárítási](./spatial-analysis-logging.md) cikk. Megtalálhatja a [githubon](https://go.microsoft.com/fwlink/?linkid=2142179) található fájlhoz *DeploymentManifest.js* mintát 
+> A *térbeli analízis – a-Graf* és a *térbeli analízis – diagnosztikai* tárolók nem kötelezőek. Dönthet úgy, hogy eltávolítja őket a fájl *DeploymentManifest.js* . További információ: [telemetria és hibaelhárítási](./spatial-analysis-logging.md) cikk. A githubon lévő fájlokra két minta *DeploymentManifest.js* található [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali gépek](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) számára
 
 ### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
-A IoT Edge modul **környezeti változóinak** többsége már be van állítva a minta *DeploymentManifest.jsa* fenti csatolt fájlban. A fájlban keresse meg az `BILLING_ENDPOINT` `API_KEY` alábbi ábrán látható és környezeti változókat. Cserélje le az értékeket a végpont URI-ja és a korábban létrehozott API-kulcs helyére. Győződjön meg arról, hogy a végfelhasználói licencszerződés értéke "elfogadás". 
+A IoT Edge modul **környezeti változóinak** többsége már be van állítva a minta *DeploymentManifest.jsa* fent hivatkozott fájlokban. A fájlban keresse meg az `BILLING_ENDPOINT` `API_KEY` alábbi ábrán látható és környezeti változókat. Cserélje le az értékeket a végpont URI-ja és a korábban létrehozott API-kulcs helyére. Győződjön meg arról, hogy a végfelhasználói licencszerződés értéke "elfogadás". 
 
 ```json
 "EULA": { 
@@ -89,7 +89,7 @@ A IoT Edge modul **környezeti változóinak** többsége már be van állítva 
 
 Most, hogy a *térbeli elemzési* tároló kezdeti konfigurációja befejeződött, a következő lépés az operatív paraméterek konfigurálása és a telepítéshez való hozzáadása. 
 
-Első lépésként frissítse a minta [üzembe helyezési jegyzékét](https://go.microsoft.com/fwlink/?linkid=2142179) , és konfigurálja a operationId az `cognitiveservices.vision.spatialanalysis-personcount` alábbiak szerint:
+Első lépésként frissítenie kell a fent hivatkozott minta üzembe helyezési jegyzékfájlt, és konfigurálnia kell a operationId az `cognitiveservices.vision.spatialanalysis-personcount` alábbiak szerint:
 
 
 ```json
@@ -107,7 +107,7 @@ Első lépésként frissítse a minta [üzembe helyezési jegyzékét](https://g
 },
 ```
 
-Az [üzembe helyezési jegyzék](https://go.microsoft.com/fwlink/?linkid=2142179) frissítése után kövesse a kamera gyártójának utasításait a kamera telepítéséhez, a kamera URL-címének konfigurálásához, valamint a Felhasználónév és a jelszó konfigurálásához. 
+Az üzembe helyezési jegyzék frissítése után kövesse a kamera gyártójának utasításait a kamera telepítéséhez, a kamera URL-címének konfigurálásához, valamint a Felhasználónév és a jelszó konfigurálásához. 
 
 Ezután állítsa a `VIDEO_URL` kamera RTSP URL-címét és a kamerához való kapcsolódáshoz szükséges hitelesítő adatokat.
 
@@ -122,7 +122,7 @@ Kiválaszthat egy megbízhatósági küszöbértéket is, ha a rendszer észleli
 
 ### <a name="execute-the-deployment"></a>Az üzembe helyezés végrehajtása
 
-Most, hogy befejeződött az [üzembe helyezési jegyzék](https://go.microsoft.com/fwlink/?linkid=2142179) , ezzel a paranccsal az Azure CLI-ben helyezheti üzembe a tárolót a gazdagépen IoT Edge modulként.
+Most, hogy befejeződött az üzembe helyezési jegyzék, ezzel a paranccsal az Azure CLI-ben helyezheti üzembe a tárolót a gazdagépen IoT Edge modulként.
 
 ```azurecli
 az login
@@ -145,7 +145,7 @@ Keresse meg a *futásidejű állapotot* a Azure Portal IoT hub példányának Io
 
 ![Példa a központi telepítés ellenőrzésére](./media/spatial-analysis/deployment-verification.png)
 
-Ezen a ponton a térbeli elemzési tároló futtatja a műveletet. AI-megállapításokat bocsát ki a `cognitiveservices.vision.spatialanalysis-personcount` művelethez, és az Azure IoT hub-példányának telemetria átirányítja ezeket az ismereteket. További fényképezőgépek konfigurálásához frissítse az [üzembe helyezési jegyzékfájlt](https://go.microsoft.com/fwlink/?linkid=2142179) , és futtassa újra a telepítést.
+Ezen a ponton a térbeli elemzési tároló futtatja a műveletet. AI-megállapításokat bocsát ki a `cognitiveservices.vision.spatialanalysis-personcount` művelethez, és az Azure IoT hub-példányának telemetria átirányítja ezeket az ismereteket. További fényképezőgépek konfigurálásához frissítse az üzembe helyezési jegyzékfájlt, és futtassa újra a telepítést.
 
 ## <a name="person-counting-web-application"></a>Személy számlálása webalkalmazás
 
@@ -156,7 +156,7 @@ Ez a személy a webalkalmazások számlálásával gyorsan konfigurálhat egy mi
 Az alkalmazás tároló űrlapja elérhető a Azure Container Registry. A letöltéshez használja a következő Docker pull-parancsot. Forduljon a Microsofthoz projectarchon@microsoft.com a hozzáférési jogkivonathoz.
 
 ```bash
-docker login rtvsofficial.azurecr.io -u <token name> -p <password>
+docker login rtvsofficial.azurecr.io -u <token name> -p <password>
 docker pull rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0
 ```
 

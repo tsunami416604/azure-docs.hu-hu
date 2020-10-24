@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: e4e680ea55988f7b3446bf72c8e800bcc51eb537
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 556b3915336d0ca9cec8ac67a34778cfb2523cbe
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282052"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475073"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB kérelemegységei
 
@@ -62,7 +62,7 @@ A számítási feladatok által felhasznált RUs számának becslése közben ve
 
   Ugyanezen az adatlekérdezésen ugyanazt a lekérdezést fogja megismételni az ismétlődő végrehajtások esetében is.
 
-- **Parancsfájlok használata**: a lekérdezésekhez hasonlóan a tárolt eljárások és eseményindítók a végrehajtott műveletek összetettsége alapján használják az RUs-ket. Az alkalmazás fejlesztése során vizsgálja meg a [kérelemdíj fejlécet](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query), hogy pontosabb képet kapjon arról, hány kérelemegységet fogyasztanak az egyes műveletek.
+- **Parancsfájlok használata**: a lekérdezésekhez hasonlóan a tárolt eljárások és eseményindítók a végrehajtott műveletek összetettsége alapján használják az RUs-ket. Az alkalmazás fejlesztése során vizsgálja meg a [kérelemdíj fejlécet](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request), hogy pontosabb képet kapjon arról, hány kérelemegységet fogyasztanak az egyes műveletek.
 
 ## <a name="request-units-and-multiple-regions"></a>Kérési egységek és több régió
 
@@ -76,12 +76,12 @@ Az Ön által választott [konzisztencia-modell](consistency-levels.md) az átvi
 
 - További információ az [átviteli sebesség Azure Cosmos-tárolók és-adatbázisok létesítéséről](set-throughput.md).
 - További információ a [Azure Cosmos db kiszolgáló](serverless.md)nélküli használatáról.
-- További információ a [logikai partíciókhoz](partition-data.md).
-- További információ a [kiépített átviteli sebesség globális skálázásáról](scaling-throughput.md).
+- További információ a [logikai partíciókhoz](./partitioning-overview.md).
+- További információ a [kiépített átviteli sebesség globális skálázásáról]().
 - Útmutató az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítéséhez.
 - Útmutató az [átviteli sebesség Azure Cosmos-adatbázison](how-to-provision-database-throughput.md)való kiépítéséhez.
 - Megtudhatja, hogyan [keresheti meg a műveletre vonatkozó kérési egység díját](find-request-unit-charge.md).
 - Ismerje meg, hogyan [optimalizálható a kiépített átviteli sebesség a Azure Cosmos DBban](optimize-cost-throughput.md).
 - Megtudhatja, hogyan [optimalizálhatja az olvasási és írási költségeket a Azure Cosmos DBban](optimize-cost-reads-writes.md).
-- Megtudhatja, hogyan [optimalizálhatja Azure Cosmos db lekérdezési költségeit](optimize-cost-queries.md).
+- Megtudhatja, hogyan [optimalizálhatja Azure Cosmos db lekérdezési költségeit](./optimize-cost-reads-writes.md).
 - Megtudhatja, hogyan [használhatja a mérőszámokat az átviteli sebesség figyelésére](use-metrics.md).

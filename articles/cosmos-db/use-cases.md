@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: af49a7bec68c30e4ded576a8d84eac850eb745f8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b8d74f9da62b0f5a596c811efa9f93b55c99f1d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331362"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476348"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Az Azure Cosmos DB gyakori használati helyzetei
 
@@ -24,11 +24,11 @@ A cikk elolvasása után a következő kérdésekre tud válaszolni:
 * Milyen előnyökkel jár a Azure Cosmos DB használata eszközök internetes hálózata (IoT) rendszerek adattárában?
 * Milyen előnyökkel jár a webes és mobil alkalmazások Azure Cosmos DB használata?
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 [Azure Cosmos db](../cosmos-db/introduction.md) a Microsoft gyors NoSQL-adatbázisa, amely bármilyen méretű nyitott API-val rendelkezik. A szolgáltatás úgy lett kialakítva, hogy az ügyfelek rugalmasan (és egymástól függetlenül) méretezhetik az átviteli sebességet és a tárterületet tetszőleges számú földrajzi régión belül. A Azure Cosmos DB az első globálisan elosztott adatbázis-szolgáltatás a piacon, amely átfogó [szolgáltatási szintű szerződéseket](https://azure.microsoft.com/support/legal/sla/cosmos-db/) kínál, beleértve az átviteli sebességet, a késést, a rendelkezésre állást és a konzisztenciát.
 
-A Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis, amely számos alkalmazás és használati eset esetében használatos. Célszerű bármely olyan [kiszolgáló](https://azure.com/serverless) nélküli alkalmazáshoz, amelynél alacsony az ezredmásodperces válaszidő, és gyorsan és globálisan kell méretezni. Több adatmodellt (kulcs-érték, dokumentumok, gráfok és oszlopos) és számos API-t támogat az adathozzáféréshez, beleértve a [Azure Cosmos db API-ját a MongoDB, az](mongodb-introduction.md) [SQL API](documentdb-introduction.md)-t, a [Gremlin API](graph-introduction.md)-t és a [Table API](table-introduction.md) -t natív módon, és bővíthető módon. 
+A Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis, amely számos alkalmazás és használati eset esetében használatos. Célszerű bármely olyan [kiszolgáló](https://azure.com/serverless) nélküli alkalmazáshoz, amelynél alacsony az ezredmásodperces válaszidő, és gyorsan és globálisan kell méretezni. Több adatmodellt (kulcs-érték, dokumentumok, gráfok és oszlopos) és számos API-t támogat az adathozzáféréshez, beleértve a [Azure Cosmos db API-ját a MongoDB, az](mongodb-introduction.md) [SQL API](./introduction.md)-t, a [Gremlin API](graph-introduction.md)-t és a [Table API](table-introduction.md) -t natív módon, és bővíthető módon. 
 
 Az alábbiakban néhány olyan Azure Cosmos DB attribútumot ismertetünk, amelyek kiválóan alkalmasak a globális ambícióval rendelkező nagy teljesítményű alkalmazásokhoz.
 
@@ -100,7 +100,7 @@ A JSON, a Cosmos DB által támogatott formátum érvényes formátum a felhaszn
 
 :::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Cosmos DB használatának megkezdéséhez kövesse a [gyors üzembe](create-sql-api-dotnet.md)helyezést, amely végigvezeti a fiók létrehozásán és a Cosmos db használatának első lépésein.
 

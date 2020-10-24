@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/12/2020
+ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 0eb4f8a7994e7c1d04013e9c9cf92e604ef6a1a7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: eb7439bc84eaa4bfba58be1059a19ddadfc6a93e
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424448"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496017"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Azure Machine Learning következtetési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -123,7 +123,7 @@ Az AK-fürt és a virtuális hálózat közötti forgalom elkülönítésére k�
 * __Belső AK-Load Balancer__: Ez a módszer konfigurálja a végpontot a központi telepítések számára, hogy a virtuális hálózaton belüli magánhálózati IP-címet használjanak.
 
 > [!WARNING]
-> **Használjon privát AK-t vagy belső terheléselosztó-t, de mindkettőt nem**.
+> A belső Load Balancer nem működik a kubenet-t használó AK-fürtökkel. Ha egy belső terheléselosztó és egy privát AK-fürt egyidejű használatát kívánja használni, konfigurálja a privát AK-fürtöt az Azure Container Network Interface (CNI) használatával. További információ: [Az Azure CNI hálózatkezelésének konfigurálása az Azure Kubernetes szolgáltatásban](../aks/configure-azure-cni.md).
 
 ### <a name="private-aks-cluster"></a>Privát AK-fürt
 
@@ -134,7 +134,7 @@ Miután létrehozta a privát AK-fürtöt, [csatolja a fürtöt a virtuális há
 > [!IMPORTANT]
 > Mielőtt egy magánhálózati kapcsolattal rendelkező AK-fürtöt Azure Machine Learning-mel használ, meg kell nyitnia egy támogatási eseményt a funkció engedélyezéséhez. További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
-## <a name="internal-aks-load-balancer"></a>Belső AK-Load Balancer
+### <a name="internal-aks-load-balancer"></a>Belső AK-Load Balancer
 
 Alapértelmezés szerint az AK-ban üzemelő példányok [nyilvános Load balancert](../aks/load-balancer-standard.md)használnak. Ebből a szakaszból megtudhatja, hogyan konfigurálhatja az AK-t belső terheléselosztó használatára. Egy belső (vagy privát) terheléselosztó akkor használatos, ha csak a magánhálózati IP-címek engedélyezettek a rendszerfelületként. A belső terheléselosztó a virtuális hálózaton belüli forgalom elosztására szolgál.
 
@@ -261,7 +261,7 @@ Ha egy virtuális hálózatban szeretné használni az ACI-t a munkaterületére
 2. Telepítse a modellt [AciWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true)használatával, használja a `vnet_name` és a `subnet_name` paramétereket. Állítsa be ezeket a paramétereket a virtuális hálózat nevére és az alhálózatra, ahol engedélyezte a delegálást.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat harmadik része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

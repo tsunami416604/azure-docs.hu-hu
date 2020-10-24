@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 99fcdd0232e2991acaceb6838bff0b00c6824dfb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122721"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474903"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Lekérdezés Azure Cosmos DB az Azure-beli kiszolgáló nélküli SQL-készlettel az Azure szinapszis-hivatkozás (előzetes verzió)
 
@@ -277,5 +277,6 @@ A javaslatok és a problémák jelentése az [Azure szinapszis visszajelzéseit 
 
 További információért tekintse át a következő cikkeket:
 
+- [Power BI és kiszolgáló nélküli szinapszis SQL-készlet használata az Azure szinapszis hivatkozásával](../../cosmos-db/synapse-link-power-bi.md)
 - [Hogyan hozhatók létre és használhatók nézetek az SQL igény szerinti használatával](create-use-views.md) 
 - [Oktatóanyag az SQL on-demand nézeteinek létrehozásához Azure Cosmos DB és a DirectQuery-on keresztüli Power BI modellekhez való csatlakoztatásához](./tutorial-data-analyst.md)

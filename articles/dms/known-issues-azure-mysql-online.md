@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893747"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494446"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Az online áttelepítéssel kapcsolatos problémák & a MySQL-hez készült Azure-ADATBÁZISra vonatkozó korlátozásokat Azure Database Migration Service
 
@@ -32,7 +32,7 @@ A MySQL-ről Azure Database for MySQLre való online áttelepítéssel kapcsolat
 - Azure Database for MySQL a következőket támogatja:
   - MySQL Community Edition
   - InnoDB motor
-- Azonos verziójú áttelepítés. A MySQL 5,6 áttelepítése Azure Database for MySQL 5,7-re nem támogatott.
+- Azonos verziójú áttelepítés. A MySQL 5,6 áttelepítése Azure Database for MySQL 5,7-re nem támogatott. A MySQL 8,0-ből vagy-ból való Migrálás nem támogatott.
 - Bináris naplózás engedélyezése my.ini (Windows) vagy My. cnf (UNIX) rendszeren
   - Server_id tetszőleges számú vagy egyenlő értékre állítja, például Server_id = 1 (csak MySQL 5,6 esetén)
   - Log-bin = \<path> (csak MySQL 5,6) beállítása

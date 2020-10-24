@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: 6d62c9aa7be1511cdac6404ac7c42200677e56fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62351f341d03873afc59ff7748fa03da0a202d35
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651610"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495574"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -99,6 +99,8 @@ Ismerkedjen meg a [Azure Machine learning legújabb architektúrával](concept-a
 A szolgáltatás áttekintéséhez olvassa el a [Mi az Azure Machine learning?](overview-what-is-azure-ml.md)című témakört.
 
 Hozza létre első kísérletét a kívánt módszerrel:
+
+  + [Saját környezet használata](tutorial-1st-experiment-sdk-setup-local.md)
   + [Python-jegyzetfüzetek használata](tutorial-1st-experiment-sdk-setup.md)
   + [R-Markdown használata](tutorial-1st-r-experiment.md) 
   + [Automatikus gépi tanulás használata](tutorial-designer-automobile-price-train-score.md) 

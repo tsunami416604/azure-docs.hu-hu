@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707931"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485443"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Magas rendelkezésre állás Azure Database for PostgreSQL – egyetlen kiszolgáló
 A Azure Database for PostgreSQL – az egykiszolgálós szolgáltatás garantált magas szintű rendelkezésre állást biztosít a pénzügyi felelősséggel vállalt szolgáltatói szerződéssel (SLA) [99,99%-os](https://azure.microsoft.com/support/legal/sla/postgresql) üzemidő mellett. Azure Database for PostgreSQL magas rendelkezésre állást biztosít a tervezett események (például a megkezdeni skálázási számítási művelet) során, valamint olyan nem tervezett események esetén is, mint például az alapul szolgáló hardver, szoftver vagy hálózati hiba. Azure Database for PostgreSQL gyorsan helyreállítható a legfontosabb körülmények között, így gyakorlatilag nincs alkalmazás-leállási idő a szolgáltatás használatakor.
@@ -40,8 +40,8 @@ Néhány tervezett karbantartási forgatókönyv:
 | ------------ | ----------- |
 | <b>Számítási felskálázás felfelé/lefelé | Ha a felhasználó számítási vertikális Felskálázási műveletet hajt végre, egy új adatbázis-kiszolgáló lesz kiépítve a méretezett számítási konfiguráció használatával. A régi adatbázis-kiszolgálóban az aktív ellenőrzőpontok befejeződik, az ügyfélkapcsolatok kiürülnek, a nem véglegesített tranzakciók megszakadnak, majd leállnak. A tárterület ezután le lesz választva a régi adatbázis-kiszolgálóról, és az új adatbázis-kiszolgálóhoz van csatolva. Amikor az ügyfélalkalmazás újrapróbálkozik a csatlakozással, vagy új csatlakozást próbál létrehozni, az átjáró a kapcsolódási kérelmet az új adatbázis-kiszolgálóra irányítja.|
 | <b>Tárterület skálázása | A tárterület skálázása online művelet, és nem szakítja meg az adatbázis-kiszolgálót.|
-| <b>Új szoftverek központi telepítése (Azure) | Új szolgáltatások bevezetése vagy hibajavítások automatikusan történnek a szolgáltatás tervezett karbantartásának részeként. További információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification), és tekintse meg a [portált](https://aka.ms/servicehealthpm)is.|
-| <b>Másodlagos verziók frissítése | Azure Database for PostgreSQL az adatbázis-kiszolgálókat az Azure által meghatározott alverzióra automatikusan kijavításra kerül. A szolgáltatás tervezett karbantartásának részeként történik. Ez rövid állásidőt von maga után másodpercben, és az adatbázis-kiszolgáló automatikusan újraindul az új alverzióval. További információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification), és tekintse meg a [portált](https://aka.ms/servicehealthpm)is.|
+| <b>Új szoftverek központi telepítése (Azure) | Új szolgáltatások bevezetése vagy hibajavítások automatikusan történnek a szolgáltatás tervezett karbantartásának részeként. További információkért tekintse meg a [dokumentációt](./concepts-monitoring.md#planned-maintenance-notification), és tekintse meg a [portált](https://aka.ms/servicehealthpm)is.|
+| <b>Másodlagos verziók frissítése | Azure Database for PostgreSQL az adatbázis-kiszolgálókat az Azure által meghatározott alverzióra automatikusan kijavításra kerül. A szolgáltatás tervezett karbantartásának részeként történik. Ez rövid állásidőt von maga után másodpercben, és az adatbázis-kiszolgáló automatikusan újraindul az új alverzióval. További információkért tekintse meg a [dokumentációt](./concepts-monitoring.md#planned-maintenance-notification), és tekintse meg a [portált](https://aka.ms/servicehealthpm)is.|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>Nem tervezett leállás-csökkentés
@@ -68,12 +68,12 @@ Az alábbiakban néhány olyan meghibásodási forgatókönyvet talál, amelyek 
 
 | **Forgatókönyv** | **Helyreállítási terv** |
 | ---------- | ---------- |
-| <b> Régió meghibásodása | A régió meghibásodása ritka esemény. Ha azonban egy régió meghibásodása elleni védelemre van szüksége, egy vagy több olvasási replikát is beállíthat más régiókban a vész-helyreállításhoz (DR). (A részletekért olvassa el [a következő cikket](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) : olvasási replikák létrehozása és kezelése. Régió szintű meghibásodás esetén manuálisan is előléptetheti a másik régióban konfigurált olvasási replikát az éles adatbázis-kiszolgálóként. |
-| <b> Logikai/felhasználói hibák | A felhasználói hibákból, például a véletlenül eldobott táblákból vagy a helytelenül frissített adatokból történő helyreállításhoz az adott [időponthoz tartozó helyreállítást](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) kell végrehajtania az adatok visszaállításával és helyreállításával egészen a hiba előtt.<br> <br>  Ha csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani az adatbázis-kiszolgáló összes adatbázisa helyett, akkor az adatbázis-kiszolgálót visszaállíthatja egy új példányban, majd exportálhatja a táblázat (oka) t [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html), majd a [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) használatával visszaállíthatja ezeket a táblákat az adatbázisba. |
+| <b> Régió meghibásodása | A régió meghibásodása ritka esemény. Ha azonban egy régió meghibásodása elleni védelemre van szüksége, egy vagy több olvasási replikát is beállíthat más régiókban a vész-helyreállításhoz (DR). (A részletekért olvassa el [a következő cikket](./howto-read-replicas-portal.md) : olvasási replikák létrehozása és kezelése. Régió szintű meghibásodás esetén manuálisan is előléptetheti a másik régióban konfigurált olvasási replikát az éles adatbázis-kiszolgálóként. |
+| <b> Logikai/felhasználói hibák | A felhasználói hibákból, például a véletlenül eldobott táblákból vagy a helytelenül frissített adatokból történő helyreállításhoz az adott [időponthoz tartozó helyreállítást](./concepts-backup.md) (PITR) kell végrehajtania az adatok visszaállításával és helyreállításával egészen a hiba előtt.<br> <br>  Ha csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani az adatbázis-kiszolgáló összes adatbázisa helyett, akkor az adatbázis-kiszolgálót visszaállíthatja egy új példányban, majd exportálhatja a táblázat (oka) t [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html), majd a [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) használatával visszaállíthatja ezeket a táblákat az adatbázisba. |
 
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A Azure Database for PostgreSQL gyors újraindítási képességet biztosít az adatbázis-kiszolgálók, a redundáns tárolók és a hatékony útválasztás számára az átjáróról. További adatvédelem esetén a biztonsági mentések földrajzilag replikálva konfigurálhatók, és egy vagy több olvasási replika is üzembe helyezhető más régiókban. A magas rendelkezésre állási képességekkel rendelkező Azure Database for PostgreSQL a leggyakoribb kimaradások miatt védi az adatbázisokat, és piacvezető, pénzügyi támogatású, [99,99%-os üzemidőt](https://azure.microsoft.com/support/legal/sla/postgresql)biztosít. Mindezek a rendelkezésre állási és megbízhatósági képességek lehetővé teszik az Azure számára, hogy ideális platformot biztosítson a kritikus fontosságú alkalmazások futtatásához.
 

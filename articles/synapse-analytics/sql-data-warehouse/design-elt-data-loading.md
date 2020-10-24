@@ -11,18 +11,18 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fecdd65ae0dbf9faeb0e74e6446a9deaf8273106
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2f3433075a1fddf116aae28666feb62473c6dbfb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075025"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476093"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Adatbetöltési stratégiák Synapse SQL-készlethez
 
-A hagyományos SMP SQL-készletek kinyerési, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. A szinapszis SQL Pool az Azure szinapszis Analyticsen belül egy nagymértékben párhuzamos feldolgozási (MPP) architektúrával rendelkezik, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát.
+A hagyományos SMP SQL-készletek kinyerési, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. A szinapszis SQL az Azure szinapszis Analyticsen belül elosztott lekérdezés-feldolgozási architektúrát használ, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát.
 
-A kinyerési, betöltési és átalakítási (ELT) folyamat használatával a rendszer eltávolítja az MPP-t, és kiküszöböli az adatok átalakításához szükséges erőforrásokat a betöltés előtt.
+A kinyerési, betöltési és átalakítási (ELT) folyamat a beépített elosztott lekérdezés-feldolgozási képességeket használja, és kiküszöböli az adatok átalakításához szükséges erőforrásokat a betöltés előtt.
 
 Míg az SQL-készlet számos betöltési módszert támogat, beleértve a népszerű SQL Server lehetőségeket, például a [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -t és a [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)-t, az adatok betöltésének leggyorsabb és leginkább méretezhető módja a albase külső táblák és a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
@@ -107,7 +107,7 @@ A következő SQL adattípus-leképezés használata a parketta-fájlok betölt�
 |                            INT32                             |            INT (8, hamis)            |     tinyint      |
 |                            INT32                             |            INT (16, hamis)             |       int        |
 |                            INT32                             |           INT (32, hamis)            |      bigint      |
-|                            INT32                             |                 DATE                  |       date       |
+|                            INT32                             |                 DATE                  |       dátum       |
 |                            INT32                             |                DECIMÁLIS                |     tizedes tört      |
 |                            INT32                             |            IDŐ (MILLIS)             |       time       |
 |                            INT64                             |            INT (64, true)            |      bigint      |

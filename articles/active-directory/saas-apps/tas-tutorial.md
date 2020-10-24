@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 4aaf4f059976635f32c1a4e6b7130f8835598f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f69c0460fe3e2d2570f79e842963f75bab792d9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552135"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Oktatóanyag: Azure Active Directory integráció a TAS-sel
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálás
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![A TAS tartomány és az URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://taseu.combtas.com/<DOMAIN>`
 
@@ -107,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálás
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![A TAS tartomány és az URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://taseu.combtas.com/<DOMAIN>`
 
@@ -134,11 +134,11 @@ Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálás
 
 2. A menü bal oldalán kattintson a **Beállítások** elemre, és keresse meg a **rendszergazdát** , majd kattintson az **egyszeri bejelentkezés kezelése**lehetőségre.
 
-    ![TAS-konfiguráció](./media/tas-tutorial/configure01.png)
+    ![A képernyőképen az egyszeri bejelentkezés kezelése beállítás látható.](./media/tas-tutorial/configure01.png)
 
 3. Az **egyszeri bejelentkezés kezelése** oldalon hajtsa végre a következő lépéseket:
 
-    ![TAS-konfiguráció](./media/tas-tutorial/configure02.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés kezelése oldal, ahol megadhatja a leírt értékeket.](./media/tas-tutorial/configure02.png)
 
     a. A **név** szövegmezőbe írja be a környezet nevét.
     
@@ -182,7 +182,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

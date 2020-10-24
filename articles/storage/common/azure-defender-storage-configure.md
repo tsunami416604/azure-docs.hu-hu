@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289769"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474852"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Az Azure Defender beállítása a Storage szolgáltatáshoz
 
@@ -37,7 +37,7 @@ Az alábbi lista összefoglalja az Azure Defender for Storage szolgáltatás el�
 
 - Kiadás állapota:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (általánosan elérhető)
-  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (általánosan elérhető)
+  - [Azure Files](/azure/storage/files/storage-files-introduction) (általánosan elérhető)
   - Azure Data Lake Storage Gen2 (általánosan elérhető)
 - Felhők<br>
     ✔ Kereskedelmi felhők<br>
@@ -98,16 +98,16 @@ Egy Azure Policy használatával engedélyezheti az Azure Defender számára a S
 
 Használjon REST API-parancsokat egy adott Storage-fiók Azure Defender-beállításának létrehozásához, frissítéséhez vagy beszerzéséhez.
 
-- [Komplex veszélyforrások elleni védelem – létrehozás](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-- [Komplex veszélyforrások elleni védelem – Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+- [Komplex veszélyforrások elleni védelem – létrehozás](/rest/api/securitycenter/advancedthreatprotection/create)
+- [Komplex veszélyforrások elleni védelem – Get](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Használja a következő PowerShell-parancsmagokat:
 
-- [Komplex veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [Komplex veszélyforrások elleni védelem](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [A komplex veszélyforrások elleni védelem letiltása](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+- [Komplex veszélyforrások elleni védelem engedélyezése](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+- [Komplex veszélyforrások elleni védelem](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+- [A komplex veszélyforrások elleni védelem letiltása](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ---
 

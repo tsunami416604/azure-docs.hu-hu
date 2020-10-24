@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df8e4c2728bd7487520164553d26dfd42e38b647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e9fd3b3d2d5bceb766651c2758f956b9ef105e0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841848"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494948"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Oktatóanyag: első lépések a Azure Machine Learning Jupyter-jegyzetfüzetekben
 
@@ -34,6 +34,8 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ing
 
 Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban.
 
+Ha már rendelkezik Azure Machine Learning munkaterülettel, ugorjon a [notebook klónozása mappába](#clone) .  
+
 A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal segítségével hozhatja létre.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
@@ -49,7 +51,7 @@ Azure Machine Learning tartalmaz egy felhőalapú notebook-kiszolgálót a munka
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
-### <a name="clone-a-notebook-folder"></a>Jegyzetfüzet-mappa klónozása
+### <a name="clone-a-notebook-folder"></a><a name="clone"></a> Jegyzetfüzet-mappa klónozása
 
 Hajtsa végre a következő kísérlet beállítását, és futtassa a lépéseket Azure Machine Learning Studióban. Ez az összevont felület olyan gépi tanulási eszközöket tartalmaz, amelyekkel adatelemzési forgatókönyvek végezhetők el az adatelemző szakemberek számára az összes képzettségi szinten.
 
@@ -103,7 +105,7 @@ Hajtsa végre a következő kísérlet beállítását, és futtassa a lépések
 
 Ha egyéni widgetekkel rendelkezik, vagy szívesebben szeretné használni a Jupyter vagy a JupyterLab, válassza a jobb szélen a **Jupyter** legördülő listát. Ezután válassza a **Jupyter** vagy a **JupyterLab**lehetőséget. Megnyílik az új böngészőablak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította a fejlesztési környezetet, folytassa a modell betanítását Jupyter Notebook.
 

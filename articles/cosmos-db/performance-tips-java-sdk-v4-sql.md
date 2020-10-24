@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8735bf721ec85dcd556582f7fd887dd82b55a35d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b14910bc37fc8f3d7f105f382de64ae52fd19a47
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369981"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475226"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v4-hez
 
@@ -33,7 +33,7 @@ A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőme
 
 Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témakört kérdezi le? vegye figyelembe a következő lehetőségeket:
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 * **Csatlakoztatási mód: közvetlen mód használata**
 <a id="direct-connection"></a>
@@ -85,13 +85,13 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
 * **Az alacsonyabb késés érdekében engedélyezze a gyorsított hálózatkezelést az Azure-beli virtuális gépen.**
 
-Azt javasoljuk, hogy a teljesítmény maximalizálása érdekében kövesse az utasításokat a gyorsított hálózatkezelés engedélyezéséhez a [Windowsban (kattintson az utasításokra)](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) vagy a [Linux (az utasításokért)](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) az Azure virtuális gép elemre.
+Azt javasoljuk, hogy a teljesítmény maximalizálása érdekében kövesse az utasításokat a gyorsított hálózatkezelés engedélyezéséhez a [Windowsban (kattintson az utasításokra)](../virtual-network/create-vm-accelerated-networking-powershell.md) vagy a [Linux (az utasításokért)](../virtual-network/create-vm-accelerated-networking-cli.md) az Azure virtuális gép elemre.
 
 A gyorsított hálózatkezelés nélkül az i/o-t, amely az Azure-beli virtuális gép és más Azure-erőforrások közötti áthaladást okozhatja, szükségtelenül irányítható a virtuális gép és a hálózati kártya között található gazdagépen és virtuális kapcsolón keresztül. Ha a gazdagép és a virtuális kapcsoló beágyazott a DataPath, nem csupán a késést és a jitter-t növeli a kommunikációs csatornán, akkor a virtuális gép CPU-ciklusait is ellopja. A gyorsított hálózatkezeléssel a VM-felületek közvetlenül a hálózati adapterrel rendelkeznek közvetítők nélkül; a gazdagép és a virtuális kapcsoló által kezelt hálózati házirend-részletek mostantól a hálózati adapter hardverén vannak kezelve. a gazdagép és a virtuális kapcsoló megkerülése megtörténik. Általában alacsonyabb késést és nagyobb átviteli sebességet várhat, valamint *konzisztens* késést és csökkent CPU-kihasználtságot a gyorsított hálózatkezelés engedélyezésekor.
 
 Korlátozások: a virtuális gép operációs rendszerének támogatnia kell a gyorsított hálózatkezelést, és csak akkor engedélyezhető, ha a virtuális gép le van állítva és fel van foglalva. A virtuális gép nem telepíthető Azure Resource Managerkal.
 
-További részletekért tekintse meg a Windows és a [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) [rendszerre](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) vonatkozó utasításokat.
+További részletekért tekintse meg a Windows és a [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) [rendszerre](../virtual-network/create-vm-accelerated-networking-powershell.md) vonatkozó utasításokat.
 
 ## <a name="sdk-usage"></a>SDK-használat
 * **A legújabb SDK telepítése**
@@ -311,7 +311,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
-    További információ: [Azure Cosmos db indexelési házirendek](indexing-policies.md).
+    További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
 ## <a name="throughput"></a>Átviteli sebesség
 <a id="measure-rus"></a>

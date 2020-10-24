@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: d1c3ad9aa034e6eace5323dd80c5275699a6e728
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d821d6dacc2620988c32e63439ec2e039819e0a5
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331498"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495907"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>A szolgáltatási kérelem sikertelen. Állapot: 403 (tiltott)
 
@@ -25,7 +25,9 @@ Ez a hiba számos, hitelesítést igénylő szolgáltatási kérelem esetében f
 
 ### <a name="cause-1"></a>Ok #1
 
-Ez a hiba általában azt jelzi, hogy az Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) engedélyei nincsenek megfelelően beállítva a szolgáltatáshoz. Az Azure Digital Twins-példányok számos művelete megköveteli, hogy a **felügyelni kívánt példányon**rendelkezzen az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkörrel. 
+Ez a hiba általában azt jelzi, hogy az Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) engedélyei nincsenek megfelelően beállítva a szolgáltatáshoz. Az Azure Digital Twins-példányok számos művelete megköveteli, hogy az *Azure Digital Twins adattulajdonosi* szerepköre legyen a **felügyelni kívánt példányon**. 
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 ### <a name="cause-2"></a>Ok #2
 
@@ -37,11 +39,12 @@ Az alkalmazás regisztrációjának az Azure Digital Twins API-khoz konfigurált
 
 ### <a name="solution-1"></a>Megoldás #1
 
-Az első megoldás annak ellenőrzése, hogy az Azure-felhasználó rendelkezik-e az _**Azure Digital Twins tulajdonos (előzetes verzió)**_ szerepkörrel a felügyelni kívánt példányon. Ha nem rendelkezik ezzel a szerepkörrel, állítsa be.
+Az első megoldás annak ellenőrzése, hogy az Azure-felhasználó rendelkezik-e az _**Azure Digital Twins adattulajdonosi**_ szerepkörrel a felügyelni kívánt példányon. Ha nem rendelkezik ezzel a szerepkörrel, állítsa be.
 
 Vegye figyelembe, hogy ez a szerepkör eltér a következőtől:...
-* a *tulajdonosi* szerepkör a teljes Azure-előfizetésben. Az *Azure Digital Twins tulajdonosa (előzetes verzió)* az Azure digitális ikrek egyik szerepköre, és az egyes Azure digitális Twins-példányokra is kiterjed.
-* a *tulajdonosi* szerepkör az Azure digitális ikrekben. Ez két különböző Azure digitális Twins-felügyeleti szerepkör, és az *Azure Digital Twins tulajdonosa (előzetes verzió)* az előzetes verzióban való felügyelethez használt szerepkör.
+* a szerepkör előző neve az előzetes verzióban, az *Azure digitális Twins tulajdonosa (előzetes verzió)* (a szerepkör ugyanaz, de a név megváltozott)
+* a *tulajdonosi* szerepkör a teljes Azure-előfizetésben. Az Azure Digital Twins- *adattulajdonos* az Azure digitális ikrek egyik szerepköre, és ezen egyedi Azure digitális Twins-példányra van korlátozva.
+* a *tulajdonosi* szerepkör az Azure digitális ikrekben. Ez két különböző Azure digitális Twins-felügyeleti szerepkör, és az *Azure Digital Twins-Adattulajdonos* az előzetes verzióban való felügyelethez használt szerepkör.
 
 #### <a name="check-current-setup"></a>Aktuális beállítás keresése
 
@@ -49,12 +52,12 @@ Vegye figyelembe, hogy ez a szerepkör eltér a következőtől:...
 
 #### <a name="fix-issues"></a>Hibák elhárítása 
 
-Ha nem rendelkezik ezzel a szerepkör-hozzárendeléssel, az **Azure-előfizetésben** lévő tulajdonosi szerepkörrel rendelkező személynek az alábbi paranccsal kell futtatnia az Azure Digital *Twins tulajdonos (előzetes verzió)* szerepkört az Azure **Digital Twins-példányon**. 
+Ha nem rendelkezik ezzel a szerepkör-hozzárendeléssel, az **Azure-előfizetésben** lévő tulajdonosi szerepkörrel rendelkező személynek az alábbi paranccsal kell futtatnia az Azure-beli *digitális Twins-adattulajdonosi* szerepkört az Azure **Digital Twins-példányon**. 
 
 Ha Ön az előfizetés tulajdonosa, saját maga is futtathatja ezt a parancsot. Ha nem, forduljon a tulajdonoshoz, és futtassa ezt a parancsot az Ön nevében.
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
 További információ erről a szerepkör-követelményről és a hozzárendelési folyamatról: a [ *felhasználó hozzáférési engedélyeinek beállítása* szakasz](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) , *útmutató: példány és hitelesítés beállítása (CLI vagy portál)*.
@@ -87,7 +90,7 @@ Ezután válassza az *API-engedélyek* lehetőséget a menüsávon annak ellenő
 
 Ha bármelyike másképp jelenik meg, mint a leírtak, kövesse az alkalmazás regisztrációjának beállítása című témakör útmutatását [*: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a telepítési lépéseket az új Azure Digital Twins-példány létrehozásához és hitelesítéséhez:
 * [*Útmutató: példány és hitelesítés beállítása (CLI)*](how-to-set-up-instance-cli.md)

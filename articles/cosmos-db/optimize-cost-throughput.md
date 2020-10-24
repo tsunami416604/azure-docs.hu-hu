@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281061"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475464"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
 
@@ -80,7 +80,7 @@ A natív SDK-k (.NET/.NET Core, Java, Node.js és Python) implicit módon elkapj
 
 Ha több ügyfél halmozottan működik, és a kérések aránya meghaladja a kérelmek arányát, akkor az újrapróbálkozások alapértelmezett száma, amely jelenleg 9, előfordulhat, hogy nem elegendő. Ilyen esetekben az ügyfél az `RequestRateTooLargeException` 429-as állapotkódot veti fel az alkalmazáshoz. Az újrapróbálkozások alapértelmezett száma módosítható a ConnectionPolicy-példányra való beállításával `RetryOptions` . Alapértelmezés szerint a `RequestRateTooLargeException` 429-as állapotkód a 30 másodperces kumulatív várakozási idő után tér vissza, ha a kérés továbbra is a kérelem arányán felül működik. Ez akkor is előfordul, ha a jelenlegi újrapróbálkozások száma kisebb, mint az újrapróbálkozások maximális száma, legyen az alapértelmezett 9-es vagy felhasználó által definiált érték. 
 
-A [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) értéke 3, tehát ebben az esetben ha egy kérési művelet a tároló számára fenntartott átviteli sebesség meghaladása miatt korlátozott, a kérési művelet háromszor újrapróbálkozik a kivételnek az alkalmazásba való eldobása előtt. A [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) értéke 60, tehát ebben az esetben, ha az első kérelemnél nagyobb az újrapróbálkozási várakozási idő másodpercben, mivel az első kérés meghaladja a 60 másodpercet, a kivételt a rendszer eldobta.
+A [MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) értéke 3, tehát ebben az esetben ha egy kérési művelet a tároló számára fenntartott átviteli sebesség meghaladása miatt korlátozott, a kérési művelet háromszor újrapróbálkozik a kivételnek az alkalmazásba való eldobása előtt. A [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) értéke 60, tehát ebben az esetben, ha az első kérelemnél nagyobb az újrapróbálkozási várakozási idő másodpercben, mivel az első kérés meghaladja a 60 másodpercet, a kivételt a rendszer eldobta.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -112,7 +112,7 @@ Emellett, ha Azure Cosmos DBt használ, és tudja, hogy nem bizonyos adatérték
 
 ## <a name="optimize-by-changing-indexing-policy"></a>Optimalizálás az indexelési szabályzat módosításával 
 
-Alapértelmezés szerint a Azure Cosmos DB automatikusan indexel minden rekord összes tulajdonságát. Ennek célja, hogy megkönnyítse a fejlesztést, és kiváló teljesítményt biztosítson számos különböző típusú ad hoc lekérdezésben. Ha nagy mennyiségű, több ezer tulajdonságú rekorddal rendelkezik, akkor nem lehet hasznos, ha az indexelési költségeket nem érdemes kifizetni, különösen akkor, ha csak 10 vagy 20 ilyen tulajdonságot szeretne lekérdezni. Ahogy közelebb kerül az adott számítási feladathoz, az útmutatónk szerint hangoljuk be az index-szabályzatot. Azure Cosmos DB indexelési szabályzat részletes adatai [itt](indexing-policies.md)találhatók. 
+Alapértelmezés szerint a Azure Cosmos DB automatikusan indexel minden rekord összes tulajdonságát. Ennek célja, hogy megkönnyítse a fejlesztést, és kiváló teljesítményt biztosítson számos különböző típusú ad hoc lekérdezésben. Ha nagy mennyiségű, több ezer tulajdonságú rekorddal rendelkezik, akkor nem lehet hasznos, ha az indexelési költségeket nem érdemes kifizetni, különösen akkor, ha csak 10 vagy 20 ilyen tulajdonságot szeretne lekérdezni. Ahogy közelebb kerül az adott számítási feladathoz, az útmutatónk szerint hangoljuk be az index-szabályzatot. Azure Cosmos DB indexelési szabályzat részletes adatai [itt](index-policy.md)találhatók. 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>Kiépített és felhasznált átviteli sebesség figyelése 
 
@@ -156,7 +156,7 @@ A következő lépések segítségével a megoldásait rugalmasan méretezhető 
 
 1. Ha jelentősen meghaladja a tárolók és adatbázisok kiépített átviteli sebességét, tekintse át az RUs által kiépített vs felhasznált RUs-t, és finomítsa a számítási feladatokat.  
 
-2. Az alkalmazás által igényelt fenntartott átviteli sebesség becslésének egyik módszere az, hogy rögzítse az alkalmazás által használt, jellemzően az Azure Cosmos-tárolón vagy-adatbázison alapuló, tipikus műveletekhez tartozó, a másodpercenkénti műveletek elvégzéséhez várhatóan elvégezhető műveletek számát. Ügyeljen arra, hogy a szokásos lekérdezéseket és azok használatát is mérje fel és vegye fel. Ha szeretné megtudni, hogyan becsülheti meg a lekérdezések RU-díjait programozott módon vagy a portál használatával, tekintse meg [a lekérdezési költségek optimalizálása](optimize-cost-queries.md)című témakört. 
+2. Az alkalmazás által igényelt fenntartott átviteli sebesség becslésének egyik módszere az, hogy rögzítse az alkalmazás által használt, jellemzően az Azure Cosmos-tárolón vagy-adatbázison alapuló, tipikus műveletekhez tartozó, a másodpercenkénti műveletek elvégzéséhez várhatóan elvégezhető műveletek számát. Ügyeljen arra, hogy a szokásos lekérdezéseket és azok használatát is mérje fel és vegye fel. Ha szeretné megtudni, hogyan becsülheti meg a lekérdezések RU-díjait programozott módon vagy a portál használatával, tekintse meg [a lekérdezési költségek optimalizálása](./optimize-cost-reads-writes.md)című témakört. 
 
 3. A műveletek és azok költségeinek egy másik módja, ha engedélyezi a Azure Monitor-naplókat, így a művelet/időtartam és a kérések díjszabása is elérhető. A Azure Cosmos DB minden művelethez megadja a kérelmek díját, így minden műveleti díj visszatárolható a válaszból, majd elemzésre használható. 
 
@@ -182,6 +182,5 @@ A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost o
 * További információ [a Azure Cosmos db-számla megismeréséről](understand-your-bill.md)
 * További információ a [tárolási díjak optimalizálásáról](optimize-cost-storage.md)
 * További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)
-* További információ [a lekérdezések díjszabásának optimalizálásáról](optimize-cost-queries.md)
+* További információ [a lekérdezések díjszabásának optimalizálásáról](./optimize-cost-reads-writes.md)
 * További információ [a több régióból álló Azure Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)
-

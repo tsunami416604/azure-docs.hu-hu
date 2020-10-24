@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276093"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485035"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Tördelés Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Ha a lekérdezés folytatási tokent ad vissza, akkor további lekérdezési ere
 
 Azure Cosmos DB REST API a folytatási tokeneket a `x-ms-continuation` fejléctel kezelheti. Mint a .NET vagy a Java SDK lekérdezésével, ha a `x-ms-continuation` Válasz fejléce nem üres, akkor a lekérdezés további eredményeket tartalmaz.
 
-Ha ugyanazt az SDK-verziót használja, a folytatási tokenek soha nem járnak le. Lehetősége van a [folytatási token méretének korlátozására](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)is. Az adatmennyiségtől vagy a tároló fizikai partícióinak számától függetlenül a lekérdezések egyetlen folytatási tokent adnak vissza.
+Ha ugyanazt az SDK-verziót használja, a folytatási tokenek soha nem járnak le. Lehetősége van a [folytatási token méretének korlátozására](/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)is. Az adatmennyiségtől vagy a tároló fizikai partícióinak számától függetlenül a lekérdezések egyetlen folytatási tokent adnak vissza.
 
 A folytatási tokenek nem használhatók a [Group By](sql-query-group-by.md) vagy [DISTINCT](sql-query-keywords.md#distinct) lekérdezésekhez, mert ezek a lekérdezések jelentős mennyiségű állapot tárolását igénylik. A alkalmazással végzett lekérdezésekhez használhatja `DISTINCT` a folytatási jogkivonatokat, ha hozzáadja `ORDER BY` a lekérdezéshez.
 

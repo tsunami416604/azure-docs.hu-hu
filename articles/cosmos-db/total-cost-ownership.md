@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a058e7a23c36dcaca16c3cce1be1ca826d472bc0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569499"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476994"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Teljes tulajdonlási költség (TCO) Azure Cosmos DB
 
@@ -40,7 +40,7 @@ A Azure Cosmos DB kiszolgáló nélküli kiépítési modellje kiküszöböli az
 
 * **Az óra után fizet:** A nagy méretű számítási feladatokhoz, amelyeknek bármely időpontban kell méreteznie, csak az óra után kell fizetni. Az alkalmazáson belüli munkaterhelések általában az év minden időpontjában változnak, a lekérdezett adatokkal. A Azure Cosmos DB segítségével igény szerint méretezheti, és csak azért kell fizetnie, amire szüksége van. A helyszíni vagy IaaS üzemeltetett rendszerekkel nem lehet megfelelni ennek a modellnek, mert a hardvert nem lehet óránként leszerelni. Ilyen esetekben előfordulhat, hogy a Azure Cosmos DB-vel átlagosan 10 – 14 alkalommal lehet megtakarítani.
 
-* **Számos funkciót kap ingyenesen:** Azure Cosmos DB az írási munkaterhelések lényegesen olcsóbbak az alternatív adatbázis-szolgáltatásokhoz képest. Emellett a Azure Cosmos DB olyan funkciókat is kínál, mint például az [Automatikus indexelés](indexing-policies.md), az élettartam [(TTL)](time-to-live.md), a [hírcsatornák módosítása](change-feed.md) és egyéb költségek nélkül, ami más adatbázis-szolgáltatások esetében általában díjköteles.
+* **Számos funkciót kap ingyenesen:** Azure Cosmos DB az írási munkaterhelések lényegesen olcsóbbak az alternatív adatbázis-szolgáltatásokhoz képest. Emellett a Azure Cosmos DB olyan funkciókat is kínál, mint például az [Automatikus indexelés](index-policy.md), az élettartam [(TTL)](time-to-live.md), a [hírcsatornák módosítása](change-feed.md) és egyéb költségek nélkül, ami más adatbázis-szolgáltatások esetében általában díjköteles.
 
 * **Az egységes pénznemet használ a különböző munkaterhelésekhez:** Az alternatív ajánlatoktól eltérően a Azure Cosmos DBban nem szükséges a számítási feladatok (például olvasások és írások) szegmentálása. Vagy az adatátviteli kapacitás kiépítése az olvasási sebesség és az írási átviteli sebesség alapján. Azure Cosmos DB a kiépített átviteli sebesség egy egységes és normalizált pénznem használatával van lefoglalva a kérési egységekben vagy az RU/mp-ben. a Azure Cosmos DB nem kényszeríti, hogy prioritást rendeljen a számítási feladatokhoz, hajtsa végre a kapacitás megtervezését, vagy a kapacitást külön kell fizetnie. Ez a módszer lehetővé teszi, hogy könnyedén átmásolja ugyanazokat az RU/s-ket a különböző műveletek és munkaterhelés-típusok között.
 
@@ -63,6 +63,6 @@ A Azure Cosmos DB kiszolgáló nélküli kiépítési modellje kiküszöböli az
 * További információ az [átviteli sebesség optimalizálásáról](optimize-cost-throughput.md)
 * További információ a [tárolási díjak optimalizálásáról](optimize-cost-storage.md)
 * További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)
-* További információ [a lekérdezések díjszabásának optimalizálásáról](optimize-cost-queries.md)
+* További információ [a lekérdezések díjszabásának optimalizálásáról](./optimize-cost-reads-writes.md)
 * További információ [a több régióból álló Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)
 * További információ [a NoSQL-adatbázis felhőalapú szolgáltatásának teljes (nem) tulajdonosi díjszabásáról](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)

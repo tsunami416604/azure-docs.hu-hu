@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277165"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476705"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
 
@@ -191,7 +191,7 @@ Frissített indexelési házirend:
 
 **Ru díj:** 2,98 RUs
 
-Az indexelési házirendhez bármikor hozzáadhat tulajdonságokat, és nincs hatással az írási vagy olvasási rendelkezésre állásra. [Nyomon követheti az index átalakításának folyamatát](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Az indexelési házirendhez bármikor hozzáadhat tulajdonságokat, és nincs hatással az írási vagy olvasási rendelkezésre állásra. [Nyomon követheti az index átalakításának folyamatát](./how-to-manage-indexing-policy.md#dotnet-sdk).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Az indexet használó rendszerfunkciók ismertetése
 
@@ -491,5 +491,5 @@ A lekérdezések az eredmények előzetes beolvasására lettek kialakítva, mik
 A következő cikkekből megtudhatja, hogyan méri a lekérdezéseket, és hogyan végezhet végrehajtási statisztikát a lekérdezések finomhangolásához, és így tovább:
 
 * [SQL-lekérdezés végrehajtási metrikáinak lekérése a .NET SDK használatával](profile-sql-api-query.md)
-* [A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel](sql-api-sql-query-metrics.md)
+* [A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel](./sql-api-query-metrics.md)
 * [Teljesítménnyel kapcsolatos tippek .NET SDK-hoz](performance-tips.md)

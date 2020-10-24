@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3d35940a445b73ecb9285355f36b141c3a151b8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80066544"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475056"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Az Elastic Stack telepítése egy Azure-beli virtuális gépen
 
@@ -228,13 +228,13 @@ az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 
 Nyissa meg a Kibana-konzolt, és a **Create** (Létrehozás) elemet választva hozzon létre egy alapértelmezett indexet az Elasticsearchbe korábban elküldött rendszernaplóadatok alapján. 
 
-![Rendszernapló-események tallózása a Kibanában](media/elasticsearch-install/kibana-index.png)
+![Képernyőkép, amely a Kibana-konzolt mutatja, és kiemeli a létrehozás gombot.](media/elasticsearch-install/kibana-index.png)
 
 A Kibana-konzolon a **Discover** (Felderítés) elemet választva kereshet és tallózhat a rendszernapló-események között, és szűrheti is őket.
 
 ![Rendszernapló-események tallózása a Kibanában](media/elasticsearch-install/kibana-search-filter.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban telepítette az Elastic Stacket egy fejlesztési célú virtuális gépre az Azure-ban. Megtanulta végrehajtani az alábbi műveleteket:
 

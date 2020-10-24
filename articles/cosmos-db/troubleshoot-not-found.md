@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83b28c562dca0c20b6f78058f1c7f7def60416ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802396"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496092"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB nem található kivételek diagnosztizálása és megoldása
 A 404-es HTTP-állapotkódot azt jelzi, hogy az erőforrás már nem létezik.
@@ -28,7 +28,7 @@ Több SDK-ügyfél példánya van, és az írás előtt történt az olvasás.
 
 #### <a name="solution"></a>Megoldás:
 1. Azure Cosmos DB esetén az alapértelmezett fiók konzisztenciája a munkamenet konzisztenciája. Egy elem létrehozásakor vagy frissítésekor a válasz egy munkamenet-tokent ad vissza, amely az SDK-példányok között átadható, így garantálható, hogy az olvasási kérelem egy adott módosítással rendelkező replikáról olvas.
-1. Módosítsa a [konzisztencia szintjét](consistency-levels-choosing.md) [erősebb szintre](consistency-levels-tradeoffs.md).
+1. Módosítsa a [konzisztencia szintjét](./consistency-levels.md) [erősebb szintre](./consistency-levels.md).
 
 ### <a name="invalid-partition-key-and-id-combination"></a>A partíciós kulcs és az azonosító kombinációja érvénytelen
 A partíciós kulcs és az azonosító kombinációja nem érvényes.
@@ -37,7 +37,7 @@ A partíciós kulcs és az azonosító kombinációja nem érvényes.
 Javítsa ki a helytelen kombinációt okozó alkalmazás-logikát. 
 
 ### <a name="invalid-character-in-an-item-id"></a>Érvénytelen karakter szerepel egy adott AZONOSÍTÓban
-A rendszer beszúr egy elemeket Azure Cosmos DBba, és az AZONOSÍTÓban [érvénytelen karakter](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks) szerepel.
+A rendszer beszúr egy elemeket Azure Cosmos DBba, és az AZONOSÍTÓban [érvénytelen karakter](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks) szerepel.
 
 #### <a name="solution"></a>Megoldás:
 Módosítsa az azonosítót egy másik értékre, amely nem tartalmaz speciális karaktereket. Ha az azonosító módosítása nem lehetséges, Base64-kódolással kódolhatja az azonosítót, hogy elkerülje a speciális karaktereket.
@@ -79,7 +79,7 @@ while (invalidItemsIterator.HasMoreResults)
 ```
 
 ### <a name="time-to-live-purge"></a>Élő kiürítés ideje
-Az objektum élettartama [(TTL)](https://docs.microsoft.com/azure/cosmos-db/time-to-live) tulajdonsága be lett állítva. Az objektum törölve lett, mert a TTL tulajdonság lejárt.
+Az objektum élettartama [(TTL)](./time-to-live.md) tulajdonsága be lett állítva. Az objektum törölve lett, mert a TTL tulajdonság lejárt.
 
 #### <a name="solution"></a>Megoldás:
 Módosítsa az élettartam tulajdonságot, hogy megakadályozza az elem kiürítését.
@@ -94,11 +94,11 @@ Várjon, amíg az indexelés felveszi vagy megváltoztatja az indexelési házir
 Az az adatbázis vagy tároló, amelyben az adott eleme található, törölve lett.
 
 #### <a name="solution"></a>Megoldás:
-1. [Állítsa vissza](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period) a szülő erőforrást, vagy hozza létre újra az erőforrásokat.
+1. [Állítsa vissza](./online-backup-and-restore.md#request-data-restore-from-a-backup) a szülő erőforrást, vagy hozza létre újra az erőforrásokat.
 1. Hozzon létre egy új erőforrást a törölt erőforrás cseréjéhez.
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7. a tárolók/gyűjtemények nevei megkülönböztetik a kis-és nagybetűket
-A tároló/gyűjtemény neve sesnsitive a Cosmos DB.
+A tárolók/gyűjtemények nevei megkülönböztetik a kis-és nagybetűket a Cosmos DBban.
 
 #### <a name="solution"></a>Megoldás:
 Ügyeljen arra, hogy a pontos nevet használja a Cosmos DBhoz való csatlakozáskor.

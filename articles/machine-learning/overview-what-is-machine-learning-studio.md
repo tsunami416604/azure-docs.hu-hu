@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667435"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495987"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 
@@ -95,10 +95,12 @@ Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Le
 | Adatcímkéző projektek | Nem támogatott | [Támogatott](how-to-create-labeling-projects.md) |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Látogasson el a [studióba](https://ml.azure.com), vagy Ismerje meg a különböző szerzői lehetőségeket a következő oktatóanyagokkal:  
-  + [Python-jegyzetfüzetek használata &-modellek üzembe helyezéséhez](tutorial-1st-experiment-sdk-setup.md)
+
+- + [Ismerkedés a saját fejlesztési környezetével](tutorial-1st-experiment-sdk-setup-local.md)
+  + [Jupyter notebookok használata számítási példányokon a & üzembe helyezési modelljeinek betanításához](tutorial-1st-experiment-sdk-setup.md)
   + [Az automatizált gépi tanulás használata a & üzembe helyezési modelljeinek betanításához](tutorial-first-experiment-automated-ml.md)  
   + [A Designer használata & üzembe helyezési modelljeinek betanításához](tutorial-designer-automobile-price-train-score.md)
 
