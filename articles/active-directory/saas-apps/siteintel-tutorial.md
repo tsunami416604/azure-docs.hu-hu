@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.openlocfilehash: f681dd2931300ec00fd6388b4636015c87f38170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525074"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92509998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SiteIntel
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SiteIntel a Azur
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a SiteIntel az Azure AD-fiókjával.
 * A fiókokat egy központi helyen, a Azure Portal kezelheti.
 
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A SiteIntel támogatja az SP által kezdeményezett és a identitásszolgáltató által kezdeményezett egyszeri bejelentkezést.
-* A SiteIntel konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A SiteIntel konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-siteintel-from-the-gallery"></a>SiteIntel hozzáadása a gyűjteményből
 
@@ -140,19 +140,19 @@ Ha az egyszeri bejelentkezést az SiteIntel oldalon szeretné konfigurálni, kü
 
 ### <a name="create-a-siteintel-test-user"></a>SiteIntel-teszt felhasználó létrehozása
 
-Ebben a szakaszban egy *Britta Simon* nevű felhasználót hoz létre a SiteIntel-ben. Együttműködik a [SiteIntel támogatási csapatával](mailto:support@intalytics.com) , hogy hozzáadja a felhasználókat a SiteIntel platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy *Britta Simon* nevű felhasználót hoz létre a SiteIntel-ben. Együttműködik a [SiteIntel támogatási csapatával](mailto:support@intalytics.com) , hogy hozzáadja a felhasználókat a SiteIntel platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor kiválasztja a **SiteIntel** csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a SiteIntel, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a **SiteIntel** csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a SiteIntel, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálását ismertető oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálását ismertető oktatóanyagok listája ](./tutorial-list.md)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 - [A SiteIntel kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [A SiteIntel és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
+- [A SiteIntel és a speciális láthatóság és vezérlők elleni védelem](/cloud-app-security/proxy-intro-aad)

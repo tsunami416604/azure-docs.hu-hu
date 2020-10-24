@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: b7b28c972dfb55bfdc4e5bb09c460fe71c92328e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 09641fb66d2f68054d23abbf8ee9f4324e19832f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489421"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521509"
 ---
 # <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
 
@@ -81,9 +81,21 @@ A Speech Service-erőforrások (ingyenes vagy fizetős szintek) hozzáadása az 
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
 -->
-Az új beszédfelismerési erőforrás üzembe helyezése néhány percet vesz igénybe. Az üzembe helyezés befejezése után válassza az **erőforráshoz való ugrás** lehetőséget, majd a bal oldali navigációs panelen válassza a **kulcsok és végpont** lehetőséget a beszédfelismerési szolgáltatás előfizetési kulcsai és a régió-azonosító megjelenítéséhez. Minden előfizetés két kulccsal rendelkezik; az alkalmazásban bármelyik kulcsot használhatja. Ha gyorsan szeretne másolni/beilleszteni egy kulcsot a Kódszerkesztő vagy más helyre, válassza az egyes kulcsok melletti másolás gombot, a Windowst a vágólap tartalmának a kívánt helyre való beillesztéséhez.
+Az új beszédfelismerési erőforrás üzembe helyezése néhány percet vesz igénybe. 
 
-Továbbá másolja ki az `LOCATION` értéket, amely a régió azonosítója (pl. `westus`, `westeurope` ) SDK-hívásokhoz.
+### <a name="find-keys-and-region"></a>Kulcsok és régió keresése
+
+A befejezett üzemelő példány kulcsai és régiójának megkereséséhez kövesse az alábbi lépéseket:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a Microsoft-fiókjával.
+
+2. Válassza a **minden erőforrás**lehetőséget, majd válassza ki a Cognitive Services erőforrás nevét.
+
+3. A bal oldali ablaktábla erőforrás- **kezelés**területén válassza a **kulcsok és végpont**lehetőséget.
+
+Minden előfizetés két kulccsal rendelkezik; az alkalmazásban bármelyik kulcsot használhatja. Ha egy kulcsot a Kódszerkesztő vagy más hely számára szeretne másolni/beilleszteni, válassza az egyes kulcsok melletti másolás gombot, kapcsolja be a Windowst, hogy beillessze a vágólap tartalmát a kívánt helyre.
+
+Emellett másolja az `LOCATION` értéket, amely a régió azonosítója (pl. `westus`, `westeurope` ) SDK-hívásokhoz.
 
 > [!IMPORTANT]
 > Ezek az előfizetési kulcsok hozzáférnek a kognitív szolgáltatás API-hoz. Ne ossza meg a kulcsokat. Biztonságos tárolás – például Azure Key Vault használatával. Javasoljuk továbbá, hogy rendszeresen újragenerálja ezeket a kulcsokat. API-hívások létrehozásához csak egy kulcs szükséges. Az első kulcs újragenerálásakor a második kulcsot használhatja a szolgáltatás folyamatos eléréséhez.

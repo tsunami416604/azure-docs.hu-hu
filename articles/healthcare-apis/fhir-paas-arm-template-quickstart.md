@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: az Azure API üzembe helyezése ARM-sablon használatával FHIR'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan helyezheti üzembe az Azure API-t a gyors egészségügyi együttműködési erőforrások (FHIR®) használatával Azure Resource Manager sablonnal.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan helyezheti üzembe az Azure API-t a gyors egészségügyi együttműködési erőforrások (FHIR®) számára egy Azure Resource Manager sablon (ARM-sablon) használatával.
 author: mgblythe
 ms.service: healthcare-apis
 ms.subservice: fhir
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/06/2020
-ms.openlocfilehash: 8e259dffe95b992003c2d8edb5d2a9eb3486631f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339339"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521441"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Gyors útmutató: ARM-sablon használata az Azure API FHIR való üzembe helyezéséhez
 

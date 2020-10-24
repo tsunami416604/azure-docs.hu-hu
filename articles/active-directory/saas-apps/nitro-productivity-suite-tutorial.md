@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: b67e280824c5e2336aa79e14d3e09d3a670118a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a4df1ff0561e180ca0a3fd36363ceff7da042df
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554331"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522427"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a nitro hatékonyságnövelő csomaggal
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a nitro Productivi
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a nitro hatékonyságnövelő csomagba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)használatával című témakört.
+Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](../manage-apps/what-is-single-sign-on.md)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A nitro hatékonyságnövelő csomag támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
 * A nitro Productivity Suite **csak időben támogatja a** felhasználók üzembe helyezését.
-* A nitro hatékonyságnövelő csomag konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A nitro hatékonyságnövelő csomag konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-nitro-productivity-suite-from-the-gallery"></a>A nitro hatékonyságnövelő csomag hozzáadása a katalógusból
 
@@ -107,7 +107,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://sso.gonitro.com/login`
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A nitro Productivity Suite-alkalmazás azt várja, hogy az SAML-állítások megadott formátumban legyenek, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -115,7 +115,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az előző attribútumok mellett a nitro Productivity Suite alkalmazás néhány további attribútumot vár, amelyeket vissza kell adni az SAML-válaszban. Ezek az attribútumok előre ki vannak töltve, de a követelmények szerint áttekinthetők.
     
-    | Név  |  Forrás attribútum|
+    | Name  |  Forrás attribútum|
     | ---------------| --------------- |
     | employeeNumber |  User. ObjectId |
 
@@ -162,19 +162,18 @@ A nitro hatékonyságnövelő csomag támogatja az igény szerinti felhasználó
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával tesztelheti.
 
-Amikor kiválasztja a nitro hatékonyságnövelő csomag csempét a hozzáférési panelen, automatikusan bejelentkezik a nitro hatékonyságnövelő csomagba, amelyhez be van állítva az egyszeri bejelentkezés. További információ: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a nitro hatékonyságnövelő csomag csempét a hozzáférési panelen, automatikusan bejelentkezik a nitro hatékonyságnövelő csomagba, amelyhez be van állítva az egyszeri bejelentkezés. További információ: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
 - [A nitro hatékonyságnövelő csomag kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A nitro hatékonyságnövelő csomag a fejlett láthatósággal és ellenőrzésekkel biztosítható](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [A nitro hatékonyságnövelő csomag a fejlett láthatósággal és ellenőrzésekkel biztosítható](/cloud-app-security/proxy-intro-aad)

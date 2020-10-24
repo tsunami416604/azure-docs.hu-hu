@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: be9f2163813d1dc52a593c110fa4cef9b561614e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 913ffc0670e40e749bd28382d492a16891fdc5c9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995415"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Oktatóanyag: Azure Active Directory integráció a átszivárog
 
@@ -28,7 +28,7 @@ Ez az integráció az alábbi előnyöket biztosítja:
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a átszivárog (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés átszivárog való konfigurálásához hajts
 
     1. Az **SSO automatikus kiépítés engedélyezése** listában válassza a **nem**lehetőséget.
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -222,12 +222,12 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
 Most az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával kell tesztelni.
 
-Amikor kiválasztja a átszivárog csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a átszivárog-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a átszivárog csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a átszivárog-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ: [alkalmazások elérése és használata a saját alkalmazások portálon](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

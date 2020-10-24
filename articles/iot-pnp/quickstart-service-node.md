@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b144d49daf9ab89a4553b93e3b36c9c2c8bef9ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946127"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521324"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Gyors útmutató: interakció a megoldáshoz csatlakoztatott IoT Plug and Play eszközzel (Node.js)
 
@@ -214,7 +214,7 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
     node twin.js
     ```
 
-1. A **szolgáltatás** -terminál kimenetében, a ¬ jelentett tulajdonságok szakaszban láthatja a frissített célként jelzett hőmérsékletet. Eltarthat egy ideig, amíg az eszköz befejezi a frissítést. Ismételje meg ezt a lépést, amíg az eszköz fel nem dolgozza a tulajdonság frissítését:
+1. A **szolgáltatás** -terminál kimenetében, a `reported` Tulajdonságok szakaszban láthatja a frissített célként jelzett hőmérsékletet. Eltarthat egy ideig, amíg az eszköz befejezi a frissítést. Ismételje meg ezt a lépést, amíg az eszköz fel nem dolgozza a tulajdonság frissítését:
 
     ```json
     "reported": {
@@ -264,7 +264,7 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
     Response to method 'getMaxMinReport' sent successfully.
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

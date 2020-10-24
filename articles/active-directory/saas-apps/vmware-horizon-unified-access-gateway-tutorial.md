@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 9e9d98e8b68b4e01d7e8f19e7c7d89a88d9bf69f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfdcc39966e58a845be0096474cb8a3366f3dd7a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500865"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503572"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a VMware Horizon-Unified Access Gateway használatával
 
@@ -105,7 +105,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -125,7 +125,7 @@ Ha egyszeri bejelentkezést szeretne konfigurálni a **VMware Horizon-Unified Ac
 
 ### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>VMware Horizon-Unified hozzáférési átjáró tesztelési felhasználójának létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a VMware Horizon-Unified Access Gateway-ben. A [VMware Horizon-Unified Access Gateway támogatási csapatának](mailto:support@vmware.com) használata a felhasználók hozzáadásához a VMware Horizon-Unified Access Gateway platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a VMware Horizon-Unified Access Gateway-ben. A [VMware Horizon-Unified Access Gateway támogatási csapatának](mailto:support@vmware.com) használata a felhasználók hozzáadásához a VMware Horizon-Unified Access Gateway platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -141,8 +141,8 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a VMware Horizon-Unified Access-átjáróra, amelyhez be szeretné állítani az egyszeri bejelentkezést 
 
-A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a VMware Horizon-Unified Access Gateway csempére kattint, automatikusan be kell jelentkeznie a VMware Horizon-Unified Access-átjáróra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a VMware Horizon-Unified Access Gateway csempére kattint, automatikusan be kell jelentkeznie a VMware Horizon-Unified Access-átjáróra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A VMware Horizon-Unified Access Gateway konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+A VMware Horizon-Unified Access Gateway konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
