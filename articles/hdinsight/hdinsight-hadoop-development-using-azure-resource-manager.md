@@ -8,12 +8,12 @@ ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: faf13f580f6600e761cdaa9927fee4efa2b5995f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f157cc7ac2331f948a562dc12e99acc60e979ada
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500180"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488163"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrálás Azure Resource Manager-alapú fejlesztői eszközökre HDInsight-fürtökhöz
 
@@ -232,7 +232,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
 * [Apache Sqoop-feladatok elküldése](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Áttelepítés az új HDInsight .NET SDK-ra
-Az Azure Service Management-based [(ASM) HDInsight .net SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) már elavult. Javasoljuk, hogy használja az Azure Resource Management-alapú [Resource Manager-alapú HDInsight .net SDK-](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)t. A következő ASM-alapú HDInsight-csomagok elavultak.
+Az Azure Service Management-based [(ASM) HDInsight .net SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) már elavult. Javasoljuk, hogy használja az Azure Resource Management-alapú [Resource Manager-alapú HDInsight .net SDK-](/dotnet/api/overview/azure/hdinsight)t. A következő ASM-alapú HDInsight-csomagok elavultak.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
@@ -241,7 +241,7 @@ Ez a szakasz a Resource Manager-alapú SDK-val való bizonyos feladatok végreha
 
 | kézikönyv... a Resource Manager-alapú HDInsight SDK használata | Hivatkozások |
 | --- | --- |
-| .NET-hez készült Azure HDInsight SDK|Lásd: [Az Azure HDINSIGHT SDK for .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
+| .NET-hez készült Azure HDInsight SDK|Lásd: [Az Azure HDINSIGHT SDK for .net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) |
 | Alkalmazások interaktív hitelesítése Azure Active Directory és a .NET SDK használatával |Lásd: [Apache Hive lekérdezések futtatása a .net SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)-val. A cikkben szereplő kódrészlet az interaktív hitelesítési módszert használja. |
 | Alkalmazások nem interaktív hitelesítése a .NET SDK-val való Azure Active Directory használatával |Lásd: [nem interaktív alkalmazások létrehozása a HDInsight-hez](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | Apache Hive-feladatok elküldése a .NET SDK-val |Lásd: [Apache Hive feladatok elküldése](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |

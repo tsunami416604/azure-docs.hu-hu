@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 5e32e269a36196d774bb1163a1c70c5d818ddcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000617"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488996"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Felhasználó által definiált C#-függvények használata Apache Hive és Apache Pig használatával a HDInsight-on Apache Hadoop
 
@@ -30,7 +30,7 @@ A kaptár és a Pig is továbbíthat az adatfeldolgozásra külső alkalmazások
 
     Tetszőleges IDE-t használhat. A [Visual studiót](https://www.visualstudio.com/vs) vagy a [Visual Studio Code](https://code.visualstudio.com/)-ot ajánljuk. A jelen dokumentumban ismertetett lépések a Visual Studio 2019-et használják.
 
-* Az. exe fájlok feltöltése a fürtbe, valamint a Pig és a kaptár feladatok futtatása. [A Visual Studio, a](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md) [Azure PowerShell](/powershell/azure)és az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)Data Lake eszközeinek használatát javasoljuk. A jelen dokumentumban szereplő lépések a Visual studióhoz készült Data Lake Tools használatával töltik fel a fájlokat, és futtatják a példa kaptár-lekérdezést.
+* Az. exe fájlok feltöltése a fürtbe, valamint a Pig és a kaptár feladatok futtatása. [A Visual Studio, a](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md) [Azure PowerShell](/powershell/azure)és az [Azure CLI](/cli/azure/install-azure-cli)Data Lake eszközeinek használatát javasoljuk. A jelen dokumentumban szereplő lépések a Visual studióhoz készült Data Lake Tools használatával töltik fel a fájlokat, és futtatják a példa kaptár-lekérdezést.
 
     A kaptár-lekérdezések futtatásának egyéb módjaival kapcsolatban lásd: [Mi az Apache Hive és a HiveQL az Azure HDInsight?](hdinsight-use-hive.md).
 

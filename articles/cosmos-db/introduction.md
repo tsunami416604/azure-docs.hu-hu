@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cd6bbe963f0cee89c188053d0770816fdabc1b93
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278423"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490390"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Az Azure-infrastruktúra és az [átlátszó többrégiós írási replikáció]
 
 ### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>Az átviteli sebesség és a tárterület rugalmas skálázhatósága világszerte
 
-A transzparens horizontális particionálással és a többrégiós írási replikációval tervezett Cosmos DB példátlanul rugalmas méretezhetőséget biztosít az írások és olvasások számára, szerte a világon. Akár több ezer, akár több, akár több millió kérés/másodperc közötti, egyetlen API-hívással is méretezhető, és csak a szükséges átviteli sebességért (és tárterületért) kell fizetnie. Ez a funkció segítséget nyújt a számítási feladatok váratlan tüskékkel való ellátásához anélkül, hogy a csúcsra kellene felépíteni. További információ: [particionálás Cosmos db](partitioning-overview.md), [kiépített átviteli sebesség a tárolók és adatbázisok](set-throughput.md)számára, valamint a [kiépített átviteli sebesség méretezése globálisan](scaling-throughput.md).
+A transzparens horizontális particionálással és a többrégiós írási replikációval tervezett Cosmos DB példátlanul rugalmas méretezhetőséget biztosít az írások és olvasások számára, szerte a világon. Akár több ezer, akár több, akár több millió kérés/másodperc közötti, egyetlen API-hívással is méretezhető, és csak a szükséges átviteli sebességért (és tárterületért) kell fizetnie. Ez a funkció segítséget nyújt a számítási feladatok váratlan tüskékkel való ellátásához anélkül, hogy a csúcsra kellene felépíteni. További információ: [particionálás Cosmos db](partitioning-overview.md), [kiépített átviteli sebesség a tárolók és adatbázisok](set-throughput.md)számára, valamint a [kiépített átviteli sebesség méretezése globálisan](./request-units.md).
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Garantált alacsony késés a esetek 99% percentilisnál, világszerte
 
@@ -48,7 +48,7 @@ A Cosmos DB használatával rendkívül rugalmas, bolygó-méretezési alkalmaz�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Pontosan meghatározott, több konzisztencia-választás
 
-Globálisan elosztott alkalmazások Cosmos DB-ben történő létrehozásakor a [konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség közötti rendkívüli kompromisszumok](consistency-levels-tradeoffs.md)nem szükségesek. Az Cosmos db többrégiós írási replikációs protokollját úgy tervezték, hogy [öt jól meghatározott konzisztencia-választási lehetőséget](consistency-levels.md)biztosítson  -  *erős*, *kötött*elavulás, *munkamenet*, *konzisztens előtag*és *végleges* esetén – egy intuitív programozási modellhez, amely alacsony késéssel és magas rendelkezésre állással rendelkezik a globálisan elosztott alkalmazások számára.
+Globálisan elosztott alkalmazások Cosmos DB-ben történő létrehozásakor a [konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség közötti rendkívüli kompromisszumok](./consistency-levels.md)nem szükségesek. Az Cosmos db többrégiós írási replikációs protokollját úgy tervezték, hogy [öt jól meghatározott konzisztencia-választási lehetőséget](consistency-levels.md)biztosítson  -  *erős*, *kötött*elavulás, *munkamenet*, *konzisztens előtag*és *végleges* esetén – egy intuitív programozási modellhez, amely alacsony késéssel és magas rendelkezésre állással rendelkezik a globálisan elosztott alkalmazások számára.
 
 ### <a name="no-schema-or-index-management"></a>Nincs séma-vagy indexelési felügyelet
 
@@ -56,7 +56,7 @@ Az adatbázis-séma és az indexek szinkronizálása az alkalmazás sémájával
 
 ### <a name="battle-tested-database-service"></a>A tesztelt adatbázis-szolgáltatás csata
 
-A Cosmos DB egy alapvető szolgáltatás az Azure-ban. Közel egy évtizednél Cosmos DBt számos Microsoft-termék felhasználta a kritikus fontosságú alkalmazások globális méretekben történő felhasználásához, többek között a Skype, az Xbox, a Microsoft 365, az Azure és sok más szolgáltatáshoz. Napjainkban Cosmos DB az egyik leggyorsabban bővülő szolgáltatás az Azure-ban, amelyet számos külső ügyfél és olyan kritikus fontosságú alkalmazás használ, amely rugalmas skálázást, kulcsrakész globális elosztást, többrégiós írási replikálást igényel az olvasási és írási műveletek alacsony késése és magas rendelkezésre állása érdekében.
+A Cosmos DB az Azure alapvető szolgáltatása. Közel egy évtizednél Cosmos DBt számos Microsoft-termék felhasználta a kritikus fontosságú alkalmazások globális méretekben történő felhasználásához, többek között a Skype, az Xbox, a Microsoft 365, az Azure és sok más szolgáltatáshoz. Napjainkban Cosmos DB az egyik leggyorsabban bővülő szolgáltatás az Azure-ban, amelyet számos külső ügyfél és olyan kritikus fontosságú alkalmazás használ, amely rugalmas skálázást, kulcsrakész globális elosztást, többrégiós írási replikálást igényel az olvasási és írási műveletek alacsony késése és magas rendelkezésre állása érdekében.
 
 ### <a name="ubiquitous-regional-presence"></a>Mindennapos regionális jelenlét
 
@@ -76,11 +76,11 @@ A Cosmos DB az első és egyetlen szolgáltatás, amely az [iparágban vezető �
 
 ### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>Globálisan elosztott operatív elemzés és AI natív módon beépített Apache Spark
 
-A [Sparkot](spark-connector.md) közvetlenül a Cosmos db tárolt adattárolón is futtathatja. Ez a funkció lehetővé teszi, hogy az alacsony késleltetésű, működés közbeni elemzéseket globális szinten hajtsa végre anélkül, hogy ez hatással lenne a közvetlenül a Cosmos DBon működő tranzakciós munkaterhelésekre További információ: [globálisan elosztott operatív elemzések](lambda-architecture.md).
+A [Sparkot](spark-connector.md) közvetlenül a Cosmos db tárolt adattárolón is futtathatja. Ez a funkció lehetővé teszi, hogy az alacsony késleltetésű, működés közbeni elemzéseket globális szinten hajtsa végre anélkül, hogy ez hatással lenne a közvetlenül a Cosmos DBon működő tranzakciós munkaterhelésekre További információ: [globálisan elosztott operatív elemzések](./synapse-link.md).
 
 ### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>Alkalmazások fejlesztése a Cosmos DB népszerű, nyílt forráskódú szoftverek (OSS) API-k használatával
 
-A Cosmos DB API-k közül választhat a Cosmos-adatbázisban tárolt adataival való munkához. Alapértelmezés szerint az [SQL](how-to-sql-query.md) (Core API) segítségével kérdezheti le a Cosmos-adatbázist. A Cosmos DB a [Cassandra](cassandra-introduction.md), a [MongoDB](mongodb-introduction.md), a [Gremlin](graph-introduction.md) és az [Azure Table Storage](table-introduction.md)API-jait is implementálja. A gyakran használt NoSQL (pl. MongoDB, Cassandra, Gremlin) az ügyfelek illesztőprogramjait (és eszközeit) közvetlenül a Cosmos-adatbázisba irányíthatja. A gyakran használt NoSQL API-k által támogatott vezetékes protokollok támogatásával a Cosmos DB a következőket teszi lehetővé:
+A Cosmos DB API-k közül választhat a Cosmos-adatbázisban tárolt adataival való munkához. Alapértelmezés szerint az [SQL](./sql-query-getting-started.md) (Core API) segítségével kérdezheti le a Cosmos-adatbázist. A Cosmos DB a [Cassandra](cassandra-introduction.md), a [MongoDB](mongodb-introduction.md), a [Gremlin](graph-introduction.md) és az [Azure Table Storage](table-introduction.md)API-jait is implementálja. A gyakran használt NoSQL (pl. MongoDB, Cassandra, Gremlin) az ügyfelek illesztőprogramjait (és eszközeit) közvetlenül a Cosmos-adatbázisba irányíthatja. A gyakran használt NoSQL API-k által támogatott vezetékes protokollok támogatásával a Cosmos DB a következőket teszi lehetővé:
 
 * Az alkalmazást egyszerűen áttelepítheti Cosmos DB az alkalmazás logikájának jelentős részeinek megőrzése mellett.
 * Tartsa hordozható alkalmazásait, és folytassa továbbra is a Cloud vendor-agnosztikusot.

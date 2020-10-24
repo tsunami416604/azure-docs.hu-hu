@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b322cc0c1a50df7f8946fa1047bdc58ea92d77
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207496"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488537"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Nagy méretű adathalmazok átvitele alacsony hálózati sávszélességen vagy sávszélesség nélkül
  
@@ -62,10 +62,10 @@ A következő táblázat összefoglalja a főbb képességek különbségeit.
 |    **Díjszabás**                      |    [Díjszabás](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan
 
-    - [Adatok átvitele Data Box Disksal](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
-    - [Adatok átvitele Data Boxsal](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
+    - [Adatok átvitele Data Box Disksal](/azure/databox/data-box-disk-quickstart-portal).
+    - [Adatok átvitele Data Boxsal](/azure/databox/data-box-quickstart-portal).
     - [Adatok átvitele importálással/exportálással](/azure/storage/common/storage-import-export-data-to-blobs).

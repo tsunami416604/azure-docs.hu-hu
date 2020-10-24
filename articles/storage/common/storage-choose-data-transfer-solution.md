@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e0bcde44ba28751761b7db3f6d6fcae8f7bd49c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08f677c23cce6eb840a1caee15dcddf6c8311517
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400544"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488690"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Azure-megoldás kiválasztása adatátvitelhez
 
@@ -71,15 +71,15 @@ Az Azure Storage-fiókját Azure Portalban is megtekintheti, és kiválaszthatja
 ## <a name="next-steps"></a>Következő lépések
 
 - [Ismerkedjen meg Azure Storage Explorerával](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [Olvassa el a AzCopy áttekintését](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
+- [Olvassa el a AzCopy áttekintését](/azure/storage/common/storage-use-azcopy-v10).
 - [Rövid útmutató: Blobok feltöltése, letöltése és listázása a PowerShell-lel](../blobs/storage-quickstart-blobs-powershell.md)
 - [Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel](../blobs/storage-quickstart-blobs-cli.md)
 - Ismerkedjen meg a következőkkel:
 
-    - [Az offline átvitelek Azure Data Box, Azure Data Box Disk és Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/).
-    - [Online átvitelek Azure Data Box Gateway és Azure stack Edge](https://docs.microsoft.com/azure/databox-online/).
-- [Ismerje meg, mi az Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
+    - [Az offline átvitelek Azure Data Box, Azure Data Box Disk és Azure Data Box Heavy](/azure/databox/).
+    - [Online átvitelek Azure Data Box Gateway és Azure stack Edge](/azure/databox-online/).
+- [Ismerje meg, mi az Azure Data Factory](/azure/data-factory/copy-activity-overview).
 - Adatok átvitele a REST API-k használatával
 
-    - [A .NET-ben](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [A Javában](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [A .NET-ben](/dotnet/api/overview/azure/storage)
+    - [A Javában](/java/api/overview/azure/storage)

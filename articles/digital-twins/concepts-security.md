@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331753"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485749"
 ---
 # <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
@@ -48,11 +48,13 @@ A felügyelt identitások esetében az Azure platform kezeli ezt a futásidejű 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Engedélyezés: az Azure Digital Twins Azure-szerepkörei
 
 Az Azure az alábbi Azure beépített szerepköröket biztosítja az Azure digitális Twins-erőforrásokhoz való hozzáférés engedélyezéséhez:
-* *Azure digitális ikrek tulajdonosa (előzetes verzió)* – ezt a szerepkört használva teljes hozzáférést biztosíthat az Azure digitális Twins-erőforrásaihoz.
-* *Azure digitális ikrek olvasója (előzetes verzió)* – ez a szerepkör csak olvasási hozzáférést biztosít az Azure digitális Twins erőforrásaihoz.
+* *Azure digitális Twins-adattulajdonos* – ezzel a szerepkörrel teljes hozzáférést biztosíthat az Azure digitális Twins-erőforrásaihoz.
+* *Azure Digital Twins Adatolvasó* – ezzel a szerepkörrel csak olvasási hozzáférést biztosíthat az Azure Digital Twins-erőforrásokhoz.
 
-> [!TIP]
-> Az *Azure digitális Twins-olvasó (előzetes verzió)* szerepkör mostantól támogatja a böngészési kapcsolatokat is.
+>[!NOTE]
+> Ezeket a szerepköröket nemrég átnevezték a korábbi nevükről az előzetes verzióban:
+> * *Az Azure Digital Twins-adattulajdonos korábban az* *Azure digitális ikrek tulajdonosa (előzetes verzió)* volt.
+> * *Az Azure Digital Twins Adatolvasó* korábban *Azure digitális Twins-olvasó (előzetes verzió)* volt.
 
 A beépített szerepkörök meghatározásával kapcsolatos további információkért lásd: a szerepkör- [*definíciók megismerése*](../role-based-access-control/role-definitions.md) az Azure RBAC dokumentációjában. Az egyéni Azure-szerepkörök létrehozásával kapcsolatos információkért lásd: [*Azure egyéni szerepkörök*](../role-based-access-control/custom-roles.md).
 
@@ -89,7 +91,7 @@ A hiba elhárításához a következők egyikét teheti:
 * A CORS fejlécének leszalaga `Access-Control-Allow-Origin` az üzenetből. Ez a fejléc azt jelzi, hogy a válasz megosztható-e. 
 * Alternatív megoldásként hozzon létre egy CORS-proxyt, és tegye elérhetővé az Azure digitális Twins REST API kérését. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg ezeket a fogalmakat működés közben [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md).
 

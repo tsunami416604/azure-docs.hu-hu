@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 6978855e9b32a3842e76d02ef543d86cf0673019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf841da85dc929366991d6aed8f3d400ab3b31cc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85206648"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489642"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Ajánlott eljárások a szinapszis SQL-készlethez az Azure szinapszis Analyticsben (korábban SQL DW)
 
@@ -64,7 +64,7 @@ Lásd még: [Insert](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synaps
 
 Az SQL-készlet támogatja az adatok betöltését és exportálását számos eszközön, többek között a Azure Data Factory, a Base és a BCP használatával.  Kis mennyiségű adat kezelése esetén, ahol a teljesítmény nem kulcsfontosságú tényező, bármelyik eszköz megfelelhet az igényeinek.  Amikor nagy mennyiségű adatot tölt be vagy exportál, vagy gyors teljesítményre van szükség, a PolyBase a legjobb választás.  
 
-A Base úgy lett kialakítva, hogy kihasználja a MPP (masszívan párhuzamos feldolgozási) architektúrát, és minden más eszköznél gyorsabban betöltse és exportálja az adatmennyiséget.  A PolyBase-betöltések a CTAS vagy az INSERT INTO paranccsal futtathatók.  
+A Base úgy lett kialakítva, hogy kihasználja a rendszer elosztott jellegét, és minden más eszköznél gyorsabban betöltse és exportálja az adatmennyiséget.  A PolyBase-betöltések a CTAS vagy az INSERT INTO paranccsal futtathatók.   
 
 > [!TIP]
 > A CTAS használata minimalizálja a tranzakciók naplózásának mértékét, és ez az adatok betöltésének leggyorsabb módja.

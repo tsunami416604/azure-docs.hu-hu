@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bcda410e678e44916a4128d7ef097883e148ed79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81d0a0df53ff18661582416d4d96fd5d5ee83192
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551860"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486905"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a uniFLOW online-nal
 
@@ -101,7 +101,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a uniFLOW online alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név |  Forrás attribútum|
+    | Name |  Forrás attribútum|
     | -----------| --------------- |
     | DisplayName | felhasználó. DisplayName |
     | Becenév | User. onpremisessamaccountname |
@@ -123,7 +123,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -152,20 +152,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A bal oldali navigációs panelen válassza a **felhasználó** fület.
 
-    ![uniFLOW online konfiguráció](./media/uniflow-online-tutorial/configure1.png)
+    ![A képernyőképen a UNIFLOW Online webhelyről kiválasztott felhasználó látható.](./media/uniflow-online-tutorial/configure1.png)
 
 1. Kattintson az **identitás-szolgáltatók**elemre.
 
-    ![uniFLOW online konfiguráció](./media/uniflow-online-tutorial/configure2.png)
+    ![A képernyőképen a kiválasztott identitás-szolgáltatók láthatók.](./media/uniflow-online-tutorial/configure2.png)
 
 1. Kattintson az **Identity Provider hozzáadása**elemre.
 
-    ![uniFLOW online konfiguráció](./media/uniflow-online-tutorial/configure3.png)
+    ![Képernyőfelvétel: a kiválasztott identitás-szolgáltató hozzáadása.](./media/uniflow-online-tutorial/configure3.png)
 
 1. Az **identitás-szolgáltató hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-
-    ![uniFLOW online konfiguráció](./media/uniflow-online-tutorial/configure4.png)
+    ![A képernyőképen az IDENTITY PROVIDER hozzáadása szakasz látható, ahol megadhatja a leírt értékeket.](./media/uniflow-online-tutorial/configure4.png)
 
     a. Adja meg a megjelenítendő nevet: *AZUREAD SSO*.
 
@@ -177,7 +176,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Az **általános** lapon hajtsa végre a következő lépéseket:
 
-    ![uniFLOW online konfiguráció](./media/uniflow-online-tutorial/configure5.png)
+    ![A képernyőképen az általános lap látható, ahol megadhatja a leírt értékeket.](./media/uniflow-online-tutorial/configure5.png)
 
     a. Adja meg a megjelenítendő nevet: *AZUREAD SSO*.
 

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3d691692553a8201b3e3eccfaead82a2cbb9ca0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645481"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479697"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -214,7 +214,7 @@ Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimból
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
-## <a name="options"></a>Lehetőségek
+## <a name="options"></a>Beállítások
 
 **– biztonsági mentés** Aktiválja a Windows SeBackupPrivilege a feltöltésekhez vagy SeRestorePrivilege a letöltésekhez, hogy lehetővé tegye a AzCopy számára az összes fájl megtekintését és olvasását, a fájlrendszer engedélyeitől függetlenül, valamint az összes engedély visszaállítását. Megköveteli, hogy a AzCopy-t futtató fiók már rendelkezik ezekkel az engedélyekkel (például rendszergazdai jogokkal rendelkezik, vagy a `Backup Operators` csoport tagja). Ez a jelző aktiválja azokat a jogosultságokat, amelyekkel a fiók már rendelkezik.
 
@@ -292,7 +292,7 @@ a **--Versions** karakterlánc egy olyan fájlt ad meg, amelyben minden verzióa
 
 **--S2S-Handle-érvénytelen – a metaadatok** karakterlánca megadja, hogy a rendszer hogyan kezelje az érvénytelen metaadat-kulcsokat. Elérhető lehetőségek: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (alapértelmezett `ExcludeIfInvalid` ). (alapértelmezett "ExcludeIfInvalid")
 
-**--S2S-megőrzés – hozzáférési réteg**   A hozzáférési szintek megőrzése a szolgáltatás és a szolgáltatás közötti másolás során. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési rétegeket](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) , hogy a cél Storage-fiók támogassa a hozzáférési szint beállítását. Abban az esetben, ha a hozzáférési szintet nem támogatja, a s2sPreserveAccessTier = FALSE értéket kell használni a hozzáférési szintek másolásának mellőzéséhez. (alapértelmezett `true` ).  (alapértelmezett érték: "true")
+**--S2S-megőrzés – hozzáférési réteg**   A hozzáférési szintek megőrzése a szolgáltatás és a szolgáltatás közötti másolás során. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési rétegeket](/azure/storage/blobs/storage-blob-storage-tiers) , hogy a cél Storage-fiók támogassa a hozzáférési szint beállítását. Abban az esetben, ha a hozzáférési szintet nem támogatja, a s2sPreserveAccessTier = FALSE értéket kell használni a hozzáférési szintek másolásának mellőzéséhez. (alapértelmezett `true` ).  (alapértelmezett érték: "true")
 
 **--S2S-megőrzése-Properties**   A szolgáltatás és a szolgáltatás közötti másolás során megőrzi a teljes tulajdonságokat. Az AWS S3 és az Azure file nem single file Source esetében a List művelet nem ad vissza objektumok és fájlok teljes tulajdonságait. A teljes tulajdonságok megőrzése érdekében a AzCopy egy további kérelmet kell küldenie egy objektumra vagy fájlra vonatkozóan. (alapértelmezett true)
 

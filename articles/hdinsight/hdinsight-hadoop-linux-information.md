@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b3c694b4d6134f30d04ba8bafee9a6ffabdd959
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856585"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488112"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -25,7 +25,7 @@ A jelen dokumentumban ismertetett lépések többsége a következő segédprogr
 
 * [curl](https://curl.haxx.se/) – a web-alapú szolgáltatásokkal való kommunikációra szolgál.
 * **jQ**, parancssori JSON-processzor.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) – az Azure-szolgáltatások távoli felügyeletére szolgál.
+* [Azure CLI](/cli/azure/install-azure-cli) – az Azure-szolgáltatások távoli felügyeletére szolgál.
 * **Egy SSH-ügyfél**. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Felhasználók
@@ -191,7 +191,7 @@ A HDInsight-fürtön kívül különböző módokon férhet hozzá az adatokhoz.
 
 Ha az __Azure Blob Storage__-t használja, tekintse meg a következő hivatkozásokat az adatai eléréséhez:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Command-Line felületi parancsok az Azure-ban való használathoz. A telepítését követően használja a `az storage` parancsot a tárolás vagy a `az storage blob` blob-specifikus parancsok használatához.
+* [Azure CLI](/cli/azure/install-az-cli2): Command-Line felületi parancsok az Azure-ban való használathoz. A telepítését követően használja a `az storage` parancsot a tárolás vagy a `az storage blob` blob-specifikus parancsok használatához.
 * [blobxfer.py](https://github.com/Azure/blobxfer): a Blobok Azure Storage-ban való használatához használható Python-szkript.
 * Különböző SDK-k:
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fd828baed5a03cbce5d5327248eb34045ffd6bc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707540"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489710"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Olvasási replikák létrehozása és kezelése az Azure CLI-ből, REST API
 
@@ -34,7 +34,7 @@ Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelh
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- [Az Azure CLI 2,0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Az Azure CLI 2,0 telepítése](/cli/azure/install-azure-cli)
 - Egy [Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-up-azure-cli.md) elsődleges kiszolgálóként.
 
 
@@ -60,7 +60,7 @@ Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelh
 
 ### <a name="create-a-read-replica"></a>Olvasási replika létrehozása
 
-Az az [postgres Server replika Create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) paranccsal a következő paramétereket kell megadni:
+Az az [postgres Server replika Create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) paranccsal a következő paramétereket kell megadni:
 
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
@@ -91,14 +91,14 @@ Ha nem állította be a `azure.replication_support` paramétert **REPLICA** egy 
 > Ahhoz, hogy egy elsődleges kiszolgáló beállítása új értékre frissüljön, frissítse a replika beállításait egy egyenlő vagy nagyobb értékre. Ez a művelet segíti a replikát a főkiszolgálón végrehajtott bármilyen módosítással.
 
 ### <a name="list-replicas"></a>Replikák listázása
-Az elsődleges kiszolgáló replikáinak listáját az [az postgres Server replika List](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) parancs használatával tekintheti meg.
+Az elsődleges kiszolgáló replikáinak listáját az [az postgres Server replika List](/cli/azure/postgres/server/replica#az-postgres-server-replica-list) parancs használatával tekintheti meg.
 
 ```azurecli-interactive
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>Replikálás megszakítása egy másodpéldány-kiszolgálón
-Az [az postgres Server replika leállítása](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) paranccsal leállíthatja az elsődleges kiszolgáló és az olvasási replika közötti replikációt.
+Az [az postgres Server replika leállítása](/cli/azure/postgres/server/replica#az-postgres-server-replica-stop) paranccsal leállíthatja az elsődleges kiszolgáló és az olvasási replika közötti replikációt.
 
 Miután leállította a replikálást egy elsődleges kiszolgálóra és egy olvasási replikára, nem vonható vissza. Az olvasási replika önálló kiszolgáló lesz, amely támogatja az olvasást és az írást is. Az önálló kiszolgáló nem hozható létre újra replikába.
 
@@ -107,7 +107,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ### <a name="delete-a-primary-or-replica-server"></a>Elsődleges vagy replika kiszolgáló törlése
-Az elsődleges vagy a replika kiszolgáló törléséhez használja az az [postgres Server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete) parancsot.
+Az elsődleges vagy a replika kiszolgáló törléséhez használja az az [postgres Server delete](/cli/azure/postgres/server#az-postgres-server-delete) parancsot.
 
 Elsődleges kiszolgáló törlésekor a rendszer leállítja az összes olvasási replikára való replikálást. Az olvasási replikák olyan önálló kiszolgálók lesznek, amelyek már támogatják az olvasást és az írást is.
 

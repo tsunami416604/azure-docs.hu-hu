@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 615bd423296fb9ed2ee28cab9e362873a30ee7b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7a34b4a3a0f9fe75b5e252f20a8b0924b0ce01d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284184"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488384"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>A MongoDB Azure Cosmos DB API-ját használó lekérdezési problémák elhárítása
 
@@ -116,7 +116,7 @@ A `$explain` parancs kimenete hosszadalmas, és részletes információkkal szol
 | `timeInclusiveMS` | Háttérbeli lekérdezés késése |
 | `pathsIndexed` | Megjeleníti a lekérdezés által használt indexeket | 
 | `pathsNotIndexed` | Megjeleníti a lekérdezés által használható indexeket, ha vannak ilyenek. | 
-| `shardInformation` | Egy adott [fizikai partíció](partition-data.md#physical-partitions) lekérdezési teljesítményének összefoglalása | 
+| `shardInformation` | Egy adott [fizikai partíció](./partitioning-overview.md#physical-partitions) lekérdezési teljesítményének összefoglalása | 
 | `retrievedDocumentCount` | A lekérdezési motor által betöltött dokumentumok száma | 
 | `outputDocumentCount` | A lekérdezés eredményeiben visszaadott dokumentumok száma | 
 | `estimatedDelayFromRateLimitingInMilliseconds` | Becsült további lekérdezési késés a ráta korlátozása miatt | 
@@ -256,7 +256,7 @@ A Azure Cosmos DB API-MongoDB tartozó ajánlott eljárások indexelése eltér 
 
 A [helyettesítő karakterek](mongodb-indexing.md#wildcard-indexes) indexelése egyszerűbbé teheti az indexelést. A MongoDB eltérően a helyettesítő karakterek több mezőt is támogatnak a lekérdezési predikátumokban. Ha egyetlen helyettesítő karaktert használ, nem lehet különbséget adni a lekérdezési teljesítményben, és nem kell külön indexet létrehoznia az egyes tulajdonságokhoz. Az összes tulajdonsághoz helyettesítő karakteres index hozzáadása az összes lekérdezés optimalizálásának legegyszerűbb módja.
 
-Bármikor hozzáadhat új indexeket, és nem befolyásolhatja az írási és olvasási rendelkezésre állást. [Nyomon követheti az index átalakításának folyamatát](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Bármikor hozzáadhat új indexeket, és nem befolyásolhatja az írási és olvasási rendelkezésre állást. [Nyomon követheti az index átalakításának folyamatát](./how-to-manage-indexing-policy.md#dotnet-sdk).
 
 ### <a name="understand-which-aggregation-operations-use-the-index"></a>Az indexet használó aggregációs műveletek ismertetése
 

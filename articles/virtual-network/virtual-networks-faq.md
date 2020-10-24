@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d676d891683cc11dd8c1999c26464373d17e97be
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 71b7217a1a3d79db67e1649ce33d441f0c2c2da2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932022"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489404"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -191,7 +191,7 @@ Igen. Egy VNet belül telepített összes virtuális gép és Cloud Services sze
 ## <a name="azure-services-that-connect-to-vnets"></a>Virtuális hálózatok-hez csatlakozó Azure-szolgáltatások
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Használhatok Azure App Service Web Apps VNet?
-Igen. Web Apps központilag telepítheti a VNet egy szolgáltató (App Service Environment) használatával, összekapcsolhatja az alkalmazásait a virtuális hálózatok a VNet-integrációval, és zárolhatja az alkalmazás felé irányuló bejövő forgalmat a szolgáltatási végpontokkal. További információkért tekintse át a következő cikkeket:
+Igen. Web Apps központilag telepítheti a VNet egy szolgáltató (App Service Environment) használatával, összekapcsolhatja az alkalmazásait a virtuális hálózatok a VNet-integrációval, és zárolhatja az alkalmazás felé irányuló bejövő forgalmat a szolgáltatási végpontokkal. További információért tekintse át a következő cikkeket:
 
 * [Hálózati szolgáltatások App Service](../app-service/networking-features.md)
 * [Web Apps létrehozása App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -283,7 +283,7 @@ Nem. A VNet társításának engedélyezéséhez a Címterület nem tartalmazhat
 Nem számítunk fel díjat a VNet-társi kapcsolatok létrehozásához. A rendszer felszámítja az adatátvitelt a partneri kapcsolatokon keresztül. [Lásd itt](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Titkosítva van-e a VNet-társítási forgalom?
-Nem. A védett virtuális hálózatok lévő erőforrások közötti forgalom magán-és elkülönített. Teljes mértékben a Microsoft gerincén marad.
+Ha a vnet az adatközpontok között mozognak – a nem a (z) (vagy a Microsoft-- [MACsec adatkapcsolati réteg titkosítása](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) ) által nem vezérelt fizikai határokon kívüli adatforgalmat a mögöttes hálózati hardveren használják.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Miért van a társam kapcsolata *leválasztott* állapotban?
 A VNet-társítási kapcsolatok *leválasztott* állapotba kerülnek, ha töröl egy VNet-társítási hivatkozást. A sikeres társ-létesítési kapcsolat létrehozásához mindkét hivatkozást törölnie kell.

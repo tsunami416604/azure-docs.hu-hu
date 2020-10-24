@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b016468d858162123e2796e0d76b83b0a1bbf33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568046"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480054"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB-hez készült Azure Synapse Link: Közel valós idejű elemzési használati esetek
 
@@ -118,7 +118,7 @@ Tegyük fel például, hogy egy e-kereskedelmi cég CompanyXYZ a 20 ország/rég
 
   * A kötegelt adatcsatornák nagy teljesítményű betöltése & adatfolyamok [valós idejű indexelésével](index-policy.md) a tranzakciós tárolóban.
 
-  * A Azure Cosmos DB tranzakciós áruház három további lehetőséget kínál, mint az erős és a végleges konzisztencia-szintek közül, hogy a [rendelkezésre állási és teljesítménybeli kompromisszumok](consistency-levels-tradeoffs.md) az üzleti igényekhez legközelebb álljanak.
+  * A Azure Cosmos DB tranzakciós áruház három további lehetőséget kínál, mint az erős és a végleges konzisztencia-szintek közül, hogy a [rendelkezésre állási és teljesítménybeli kompromisszumok](./consistency-levels.md) az üzleti igényekhez legközelebb álljanak.
 
 * A CompanyXYZ ellátási láncával foglalkozó partnerei nagy mértékben ingadoznak a forgalmi minták több száz és akár több millió kérelem/s között, így a leltár-kezelési platformnak a forgalom váratlan burstiness kell foglalkoznia.  A Azure Cosmos DB használatának előnyei:
 

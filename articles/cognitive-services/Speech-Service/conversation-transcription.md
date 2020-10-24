@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81402512"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487779"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Mi a beszélgetési átirat az értekezletekben (előzetes verzió)?
 
@@ -34,9 +34,11 @@ A beszélgetés átirata egy [beszéd-szöveg](speech-to-text.md) típusú megol
 > [!NOTE]
 > Bár a beszélgetés átirata nem korlátozza a beszélők számát a helyiségben, a 2-10 Beszélők száma munkamenetre van optimalizálva.
 
-## <a name="use-cases"></a>Használati esetek
+## <a name="get-started"></a>Első lépések
 
-### <a name="inclusive-meetings"></a>Befogadó értekezletek
+A kezdéshez tekintse [meg a](how-to-use-conversation-transcription.md) valós idejű beszélgetés átiratának rövid útmutatóját.
+
+## <a name="use-cases"></a>Használati esetek
 
 Ahhoz, hogy a találkozók mindenki számára elérhetők legyenek, például a siketek és nagyothallók számára, fontos, hogy valós időben átírást készítsenek. A valós idejű mód beszélgetési átírása a hangfelvételt végzi, és meghatározza, hogy ki a mi, ami lehetővé teszi, hogy az összes értekezlet résztvevője elkövesse az átiratot, és késedelem nélkül részt vehessen az értekezleten.
 
@@ -54,6 +56,10 @@ Ez magas szintű áttekintést nyújt a beszélgetések átírásának működé
 
 - **Többcsatornás hangstream** – a specifikáció és a kialakítás részleteiért lásd: [Microsoft Speech Device SDK mikrofon](https://aka.ms/cts/microphone). További információért vagy a fejlesztői csomag megvásárlásához lásd: [Microsoft Speech Device SDK](https://aka.ms/cts/getsdk)beszerzése.
 - **Felhasználói hangminták** – a beszélgetés átirata felhasználói profilokat igényel a beszélgetés előtt. Az egyes felhasználóktól származó hangfelvételeket kell összegyűjtenie, majd a hangfelvételeket az aláírás-létrehozási [szolgáltatásba](https://aka.ms/cts/signaturegenservice) kell küldenie, hogy érvényesítse a hangot, és létrehozza a felhasználói profilokat.
+
+> [!NOTE]
+> A felhasználói hangminták megadása nem kötelező. A bevitel nélkül az átírás a különböző előadókat jeleníti meg, de "Speaker1", "Speaker2" néven jelenik meg, és nem az előre regisztrált specifikus hangnévként.
+
 
 ## <a name="real-time-vs-asynchronous"></a>Valós idejű és aszinkron
 
@@ -73,9 +79,9 @@ A rendszer a hangadatokat élő módon dolgozza fel az előadói azonosító és
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-Jelenleg a beszélgetés átirata a következő régiókban támogatja az "en-US" és a "zh-CN" használatát: *CentralUS* és *eastasia*. Ha további területi támogatásra van szüksége, lépjen kapcsolatba a [beszélgetés átirata szolgáltatás legénységével](mailto:CTSFeatureCrew@microsoft.com).
+A társalgási átirat jelenleg a következő régiókban támogatja az [összes beszéd és szöveg nyelvét](language-support.md#speech-to-text) :,,  `centralus` `eastasia` `eastus` , `westeurope` . Ha további területi támogatásra van szüksége, lépjen kapcsolatba a [beszélgetés átirata szolgáltatás legénységével](mailto:CTSFeatureCrew@microsoft.com).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Beszélgetések valós idejű átírása](how-to-use-conversation-transcription-service.md)
+> [Beszélgetések valós idejű átírása](how-to-use-conversation-transcription.md)

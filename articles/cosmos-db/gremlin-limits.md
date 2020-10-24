@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
 ms.author: sngun
-ms.openlocfilehash: 4ac5222e735e0699e507ca1392dc5dd42fc77105
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a265f1ae6e925440e2804056348cb705b09da5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400468"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490560"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Az Azure Cosmos DB Gremlin korlátai
 Ez a cikk a Azure Cosmos DB Gremlin motor korlátairól beszél, és ismerteti, hogy miként befolyásolhatják az ügyfelek bejárásokat.
 
-Cosmos DB Gremlin Cosmos DB-infrastruktúrára épül. Ennek következtében a [Azure Cosmos db szolgáltatási korlátokban](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) ismertetett összes korlát továbbra is érvényes.
+Cosmos DB Gremlin Cosmos DB-infrastruktúrára épül. Ennek következtében a [Azure Cosmos db szolgáltatási korlátokban](./concepts-limits.md) ismertetett összes korlát továbbra is érvényes.
 
 ## <a name="limits"></a>Korlátok
 

@@ -1,32 +1,35 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 08/02/2019
+ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5149973fe63f867b49e55c970779c005e12536b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 48f33514510618abadf329a11a9ab71a020be0bd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "68780207"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479594"
 ---
-1. Nyissa meg a virtuális hálózati átjáró lapját. A panelt többféleképpen is megtalálhatja. Az átjáró eléréséhez nyissa meg az **VNet nevét – > áttekintése – > csatlakoztatott eszközök – > az átjáró nevét**.
-2. Az átjáró lapján kattintson a **kapcsolatok**elemre. A Kapcsolatok lapon kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** lap megnyitásához.
+1. Nyissa meg a virtuális hálózati átjáró lapját. Az átjáró eléréséhez nyissa meg az **VNet nevét – > áttekintés – > csatlakoztatott eszközök – az átjáró > nevét**, de több más módon is elvégezhető a mozgás.
+1. Az átjáró lapon válassza a **kapcsolatok**lehetőséget. A kapcsolatok lap tetején kattintson a **+ Hozzáadás** elemre a **kapcsolat hozzáadása** lap megnyitásához.
 
-   ![Helyek közötti kapcsolat létrehozása](./media/vpn-gateway-add-site-to-site-connection-portal-include/configure-site-to-site-connection.png)
-3. A **Kapcsolat hozzáadása** lapon állítsa be a kapcsolathoz tartozó értékeket.
+   :::image type="content" source="./media/vpn-gateway-add-site-to-site-connection-portal-include/connection.png" alt-text="Helyek közötti kapcsolat":::
+1. A **Kapcsolat hozzáadása** lapon állítsa be a kapcsolathoz tartozó értékeket.
 
-   - **Név:** Nevezze el a kapcsolatot.
-   - **Kapcsolat típusa:** Válassza a **Helyek közötti (IPSec)** típust.
-   - **Virtuális hálózati átjáró:** Az értéke rögzített, mivel erről az átjáróról csatlakozik.
-   - **Helyi hálózati átjáró:** Kattintson a **Helyi hálózati átjáró kiválasztása** elemre, és válassza ki a használni kívánt helyi hálózati átjárót.
-   - **Megosztott kulcs:** Az értékének egyeznie kell azzal az értékkel, amit a helyi helyszíni VPN-eszközhöz használ. A példában az abc123 értéket használtuk, de lehetséges (és javasolt) ennél összetettebb értéket használni. A legfontosabb, hogy az itt megadott értéknek egyeznie kell azzal az értékkel, amelyet a VPN-eszköz konfigurálásakor ad meg.
-   - A fennmaradó **Subscription** (Előfizetés), **Resource Group** (Erőforráscsoport) és **Location** (Hely) mezők értékei rögzítettek.
+   * **Név:** Nevezze el a kapcsolatot.
+   * **Kapcsolattípus:** Válassza **a helyek közötti (IPSec)** lehetőséget.
+   * **Virtuális hálózati átjáró:** Az értéke rögzített, mivel erről az átjáróról csatlakozik.
+   * **Helyi hálózati átjáró:** Válassza a **helyi hálózati átjáró** kiválasztása lehetőséget, majd válassza ki a használni kívánt helyi hálózati átjárót.
+   * **Megosztott kulcs:** Az értékének egyeznie kell azzal az értékkel, amit a helyi helyszíni VPN-eszközhöz használ. A példában az abc123 értéket használtuk, de lehetséges (és javasolt) ennél összetettebb értéket használni. A legfontosabb, hogy az itt megadott értéknek egyeznie kell azzal az értékkel, amelyet a VPN-eszköz konfigurálásakor ad meg.
+   * Hagyja bejelölés nélkül **Az Azure Private IP-címének használatát** .
+   * Hagyja üresen a **BGP engedélyezése** jelet.
+   * Válassza a **IKEv2**lehetőséget.
+   * A fennmaradó **Subscription** (Előfizetés), **Resource Group** (Erőforráscsoport) és **Location** (Hely) mezők értékei rögzítettek.
 
-4. A kapcsolat létrehozásához kattintson az **OK** gombra. A *Creating Connection* (Kapcsolat létrehozása) üzenet elkezd villogni a képernyőn.
-5. A kapcsolatot a virtuális hálózat átjárójának **Kapcsolatok** lapján tekintheti meg. Az Állapot *Ismeretlenről**Kapcsolódásra*, majd *Sikeresre* vált.
+1. A kapcsolódás létrehozásához kattintson **az OK gombra** . A *Creating Connection* (Kapcsolat létrehozása) üzenet elkezd villogni a képernyőn.
+1. A kapcsolatot a virtuális hálózat átjárójának **Kapcsolatok** lapján tekintheti meg. Az Állapot *Ismeretlenről**Kapcsolódásra*, majd *Sikeresre* vált.

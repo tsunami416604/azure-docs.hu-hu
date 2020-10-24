@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 30e1a9e4b82971180f375a006f4825832e6179e9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279833"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490611"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
 
@@ -32,7 +32,7 @@ A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a követk
 
 * **Rugalmasan méretezhető átviteli sebesség és tárterület**
 
-  A valós életben a gráfokat egyetlen kiszolgáló kapacitásán felül kell tudni méretezni. Azure Cosmos DB támogatja a horizontálisan méretezhető gráf-adatbázisokat, amelyek gyakorlatilag korlátlan méretűek lehetnek a tárolás és a kiosztott átviteli sebesség szempontjából. Ahogy a Graph-adatbázis mérete növekszik, az adatforgalom a [gráf particionálásával](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning)automatikusan el lesz terjesztve.
+  A valós életben a gráfokat egyetlen kiszolgáló kapacitásán felül kell tudni méretezni. Azure Cosmos DB támogatja a horizontálisan méretezhető gráf-adatbázisokat, amelyek gyakorlatilag korlátlan méretűek lehetnek a tárolás és a kiosztott átviteli sebesség szempontjából. Ahogy a Graph-adatbázis mérete növekszik, az adatforgalom a [gráf particionálásával](./graph-partitioning.md)automatikusan el lesz terjesztve.
 
 * **Többrégiós replikáció**
 
@@ -52,7 +52,7 @@ A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a követk
 
 * **Automatikus indexelés**
 
-  Alapértelmezés szerint a Azure Cosmos DB automatikusan indexeli a csomópontokon belüli összes tulajdonságot (más néven csúcspontokat) és a diagramon lévő éleket, és nem vár vagy igényel semmilyen sémát, és nem kell másodlagos indexeket létrehoznia. További információ a [Azure Cosmos db indexeléséről](https://docs.microsoft.com/azure/cosmos-db/index-overview).
+  Alapértelmezés szerint a Azure Cosmos DB automatikusan indexeli a csomópontokon belüli összes tulajdonságot (más néven csúcspontokat) és a diagramon lévő éleket, és nem vár vagy igényel semmilyen sémát, és nem kell másodlagos indexeket létrehoznia. További információ a [Azure Cosmos db indexeléséről](/azure/cosmos-db/index-overview).
 
 * **Kompatibilitás az Apache TinkerPoppal**
 

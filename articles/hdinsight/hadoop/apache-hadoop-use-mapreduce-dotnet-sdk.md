@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddb14c321962c65d09be420d8da15f1e547aa282
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020405"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489540"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce feladatok futtatása HDInsight .NET SDK segítségével
 
@@ -174,5 +174,5 @@ Ebben a cikkben megtanulta, hogyan hozhat létre HDInsight-fürtöt. További tu
 * A kaptár-feladatok elküldéséhez lásd: [Apache Hive lekérdezések futtatása a HDInsight .net SDK használatával](apache-hadoop-use-hive-dotnet-sdk.md).
 * A HDInsight-fürtök létrehozásával kapcsolatban lásd: [Linux-alapú Apache Hadoop-fürtök létrehozása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md).
 * A HDInsight-fürtök kezelésével kapcsolatban lásd: [Apache Hadoop-fürtök kezelése a HDInsight-ben](../hdinsight-administer-use-portal-linux.md).
-* A HDInsight .NET SDK megismeréséhez tekintse meg a [HDInsight .net SDK dokumentációját](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+* A HDInsight .NET SDK megismeréséhez tekintse meg a [HDInsight .net SDK dokumentációját](/dotnet/api/overview/azure/hdinsight).
 * Az Azure-ban nem interaktív hitelesítéssel kapcsolatban lásd: [nem interaktív hitelesítésű .net HDInsight-alkalmazások létrehozása](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).

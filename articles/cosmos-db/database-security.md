@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6236b34c76ccd9e4688b97e7844cbadf9f515213
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 35bfc45ffffac17a2eca40cb51c2db5d94c140a2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372242"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487466"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Biztonság az Azure Cosmos DB-ben – Áttekintés
 
@@ -69,7 +69,7 @@ Ismerkedjen meg minden részlettel.
 |Automatizált online biztonsági másolatok|Az Azure Cosmos-adatbázisok rendszeresen készülnek, és egy geo redundáns tárolóban tárolódnak. <br><br>További információ: [automatikus online biztonsági mentés és visszaállítás Azure Cosmos DBsal](online-backup-and-restore.md).|
 |Törölt adatértékek visszaállítása|Az automatizált online biztonsági másolatok segítségével helyreállíthatja az esetlegesen véletlenül törölt adatokat az eseményt követő 30 napon belül. <br><br>További információ: [automatikus online biztonsági mentés és visszaállítás Azure Cosmos db](online-backup-and-restore.md)|
 |Bizalmas adatok védelme és elkülönítése|Az Újdonságok listájában felsorolt régiók összes adatai mostantól titkosítva van.<br><br>A személyes adatok és az egyéb bizalmas adatok elkülöníthetők bizonyos tárolók és írási és olvasási hozzáférés esetén, vagy csak olvasási hozzáféréssel rendelkezhetnek bizonyos felhasználóknak.|
-|Támadások figyelése|A naplózási [és a tevékenységi naplók](logging.md)használatával figyelheti a fiókját a normál és rendellenes tevékenységekhez. Megtekintheti, hogy milyen műveleteket hajtottak végre az erőforrásokon, ki kezdeményezte a műveletet, a művelet bekövetkeztekor, a művelet állapotát, és sokkal többet, ahogy az a táblázatot követő képernyőképen is látható.|
+|Támadások figyelése|A naplózási [és a tevékenységi naplók](./monitor-cosmos-db.md)használatával figyelheti a fiókját a normál és rendellenes tevékenységekhez. Megtekintheti, hogy milyen műveleteket hajtottak végre az erőforrásokon, ki kezdeményezte a műveletet, a művelet bekövetkeztekor, a művelet állapotát, és sokkal többet, ahogy az a táblázatot követő képernyőképen is látható.|
 |Válaszadás a támadásokra|Miután felvette a kapcsolatot az Azure-támogatással, hogy jelentsen egy lehetséges támadást, egy 5 lépésből álló incidens-válasz indult el. Az 5 lépésből álló folyamat célja, hogy a probléma észlelése és a vizsgálat elindítása után a lehető leggyorsabban visszaállítsa a normál szolgáltatás biztonsági és üzemeltetési műveleteit.<br><br>További információ: [Microsoft Azure biztonsági válasz a felhőben](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
 |Földrajzi kerítés|Azure Cosmos DB biztosítja az adatkezelést a szuverén régiók számára (például Németország, Kína, US Gov).|
 |Védett létesítmények|A Azure Cosmos DBban tárolt adategységeket az Azure védett adatközpontjai SSD-k tárolják.<br><br>További információ a [Microsoft globális adatközpontokban](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
@@ -104,6 +104,6 @@ Az elsődleges, a másodlagos, az írásvédett és az írható-olvasható első
 
 További információ az elsődleges kulcsokról és az erőforrás-jogkivonatokról: a [Azure Cosmos db adatokhoz való hozzáférés biztonságossá tétele](secure-access-to-data.md).
 
-További információ a naplózásról: [Azure Cosmos db diagnosztikai naplózás](logging.md).
+További információ a naplózásról: [Azure Cosmos db diagnosztikai naplózás](./monitor-cosmos-db.md).
 
 További információ a Microsoft-tanúsítványokról: [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/).

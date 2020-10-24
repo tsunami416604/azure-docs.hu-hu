@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104104"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480071"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 
@@ -37,13 +37,13 @@ Az előzetes kiadásban, ha az Azure szinapszis-hivatkozás engedélyezve van eg
 
 Az analitikai tárolóval rendelkező tárolók esetében a rendszer jelenleg nem támogatja az automatikus biztonsági mentést és visszaállítást az analitikus tárolóban. 
 
-Ha a szinapszis-hivatkozás engedélyezve van egy adatbázis-fiókon, Azure Cosmos DB továbbra is automatikusan [biztonsági másolatot](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) készít az adatairól a tranzakciós tárolóban (csak) a tárolók ütemezett biztonsági mentési időintervallumában, ahogy mindig. Fontos megjegyezni, hogy ha az analitikai tárolót bekapcsoló tároló egy új fiókra van visszaállítva, a tároló csak tranzakciós tárolóval lesz visszaállítva, és nincs engedélyezve az analitikus tároló. 
+Ha a szinapszis-hivatkozás engedélyezve van egy adatbázis-fiókon, Azure Cosmos DB továbbra is automatikusan [biztonsági másolatot](./online-backup-and-restore.md) készít az adatairól a tranzakciós tárolóban (csak) a tárolók ütemezett biztonsági mentési időintervallumában, ahogy mindig. Fontos megjegyezni, hogy ha az analitikai tárolót bekapcsoló tároló egy új fiókra van visszaállítva, a tároló csak tranzakciós tárolóval lesz visszaállítva, és nincs engedélyezve az analitikus tároló. 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Letiltható az Azure szinapszis hivatkozás funkciója a Azure Cosmos DB fiókomhoz?
 
 Jelenleg nem tilthatja le a Synapse Link képességet, miután fiókszinten engedélyezte azt. Fontos tudni, hogy nem jár költséggel, ha a Synapse Link képesség engedélyezve van a fiók szintjén, és nem találhatók elemzésitár-kompatibilis tárolók. 
 
-Ha ki kell kapcsolnia a képességet, 2 lehetősége van. Az első egy új Azure Cosmos DB-fiók törlése és újbóli létrehozása, szükség esetén az adatáttelepítés. A második lehetőség egy támogatási jegy megnyitása, amely segítséget nyújt egy másik fiókba való áttelepítéshez.
+Ha ki kell kapcsolnia a képességet, kétféle lehetősége van. Az első lehetőség az, hogy törli, majd újból létrehozza az új Azure Cosmos DB-fiókot, ha szükséges, az adatok migrálásával. A második lehetőség a támogatási jegy nyitása, hogy segítséget kaphasson az adatok másik fiókba való migrálásához.
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB analitikus tároló
 
@@ -162,7 +162,7 @@ A rendszer a következő ikonnal fogja megjeleníteni a tranzakciós tároló t�
 
 Jelenleg Azure Cosmos DB hitelesítő adatokat a rendszer a társított szolgáltatásnak a Azure Cosmos DB adatbázisokhoz hozzáféréssel rendelkező felhasználó általi létrehozásakor adja át. A tárolóhoz való hozzáférés a munkaterülethez hozzáférő más felhasználók számára is elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg az [Azure szinapszis-hivatkozás előnyeit](synapse-link.md#synapse-link-benefits)
 

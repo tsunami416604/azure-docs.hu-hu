@@ -5,28 +5,30 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/19/2020
+ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe95481e977d2e35c2f652b6c99b9e69ae89e2f8
+ms.openlocfilehash: 6cb30b96f9c2094e6d690b565edf487d6508d520
 ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479575"
+ms.locfileid: "92487116"
 ---
 1. A [Azure Portal](https://portal.azure.com)a **Search Resources, Services és docs (G +/)** Type **Virtual Network Gateway**. Keresse meg a **virtuális hálózati átjárót** a keresési eredmények között, és jelölje ki.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/search.png" alt-text="Keresőmező" lightbox="./media/vpn-gateway-add-gw-rm-portal-include/search-expand.png":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/search.png" alt-text="Keresőmező" lightbox="./media/vpn-gateway-add-gw-rm-portal-empty/search-expand.png":::
 
 1. A **virtuális hálózati átjáró** lapon válassza a **+ Hozzáadás**lehetőséget. Ez megnyitja a **Virtuális hálózati átjáró létrehozása** lapot.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/add.png" alt-text="Keresőmező":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/add.png" alt-text="Keresőmező":::
 1. Az **alapvető beállítások** lapon adja meg a virtuális hálózati átjáró értékeit.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="Keresőmező":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway.png" alt-text="Keresőmező":::
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="Keresőmező":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway-vnet.png" alt-text="Keresőmező":::
+
+   **Projekt részletei**
 
    * **Előfizetés**: válassza ki a legördülő listából használni kívánt előfizetést.
    * **Erőforráscsoport**: ezt a beállítást a rendszer a virtuális hálózat ezen a lapon való kiválasztásakor kitölti.

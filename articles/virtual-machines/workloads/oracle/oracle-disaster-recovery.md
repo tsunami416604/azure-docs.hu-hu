@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9736c4d2b048aa18f283689247f5597d7526f1df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996181"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480360"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Oracle Database 12c-adatbázis vész-helyreállítása Azure-környezetben
 
@@ -42,7 +42,7 @@ Az Azure Setup összefoglalása:
 - Jumpbox, alkalmazás-szolgáltatás, adatbázis és VPN-átjáró külön alhálózatokon
 - NSG kényszerítve az alkalmazás-és adatbázis-alhálózatokon
 
-![A DR-topológia oldalának képernyőképe](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Az Azure-beli elsődleges és DR-helyeket bemutató diagram.](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>2. forgatókönyv: a helyszíni és DR. Azure-beli elsődleges hely
 
@@ -68,7 +68,7 @@ A következőkben az Azure-telepítés összegzése található:
 - Egy NSG házirend/szabály, amely engedélyezi a 1521 bejövő TCP-portot (vagy egy felhasználó által megadott portot)
 - Egy NSG házirend/szabály, amely kizárólag a helyszíni IP-címet vagy-címeket korlátozza a virtuális hálózat eléréséhez
 
-![A DR-topológia oldalának képernyőképe](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![A helyszíni és az Azure közötti közvetlen kapcsolatot bemutató diagram, amely a tűzfalon nyitott TCP-portokat igényel.](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>2. módszer: helyek közötti VPN
 A helyek közötti VPN jobb megközelítés. A VPN beállításával kapcsolatos további információkért lásd: [virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a CLI használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md).

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b403a960016be3795857ddd5645eb73e53e83bd6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714375"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488605"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer biztonsági útmutató
 
@@ -44,13 +44,13 @@ Ez a szakasz a tárolási erőforrások biztonságossá tételéhez használhat�
 
 #### <a name="azure-role-based-access-control-azure-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 
-Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) részletes hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Az Azure-szerepköröket és-engedélyeket a Azure Portal lehet felügyelni.
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview) részletes hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Az Azure-szerepköröket és-engedélyeket a Azure Portal lehet felügyelni.
 
 Storage Explorer támogatja az Azure RBAC hozzáférését a Storage-fiókokhoz, a Blobokhoz és a várólistákhoz. Ha hozzáférésre van szüksége a fájlmegosztás vagy a táblák számára, hozzá kell rendelnie az Azure-szerepköröket, amelyek engedélyeket adnak a Storage-fiók kulcsainak listázásához.
 
 #### <a name="access-control-lists-acls"></a>Hozzáférés-vezérlési lista (ACL-ek)
 
-A [hozzáférés-vezérlési listák (ACL-ek)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) lehetővé teszik a fájlok és mappák szintjének hozzáférését ADLS Gen2 blob-tárolókban. Az ACL-eket Storage Explorer használatával kezelheti.
+A [hozzáférés-vezérlési listák (ACL-ek)](/azure/storage/blobs/data-lake-storage-access-control) lehetővé teszik a fájlok és mappák szintjének hozzáférését ADLS Gen2 blob-tárolókban. Az ACL-eket Storage Explorer használatával kezelheti.
 
 ### <a name="shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS)
 
@@ -102,4 +102,4 @@ A blob-tárolók nyilvános hozzáférésének engedélyezésekor a következő 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Biztonsági javaslatok](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+- [Biztonsági javaslatok](/azure/storage/blobs/security-recommendations)

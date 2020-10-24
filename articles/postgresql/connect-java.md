@@ -8,24 +8,24 @@ ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 66a3b4919903f739ed5afef0a02b501f00ff248f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1cc9d8bf253a7282a5893af75b5e2ed71b3ab4b6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88545437"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490152"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>A Java és a JDBC használata Azure Database for PostgreSQL
 
-Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure Database for PostgreSQLban](https://docs.microsoft.com/azure/postgresql/)található információk tárolására és lekérésére.
+Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure Database for PostgreSQLban](./index.yml)található információk tárolására és lekérésére.
 
 A JDBC a szabványos Java API a hagyományos kapcsolati adatbázisokhoz való kapcsolódáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy Azure-fiók. Ha még nem rendelkezik ilyennel, [kérjen meg egy ingyenes próbaverziót](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) vagy az [Azure CLI](/cli/azure/install-azure-cli). Javasoljuk, hogy Azure Cloud Shell, hogy automatikusan bejelentkezzen, és hozzáférhessen minden szükséges eszközhöz.
-- Támogatott [Java Development Kit](https://aka.ms/azure-jdks), 8-as verzió (Azure Cloud Shell).
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) vagy az [Azure CLI](/cli/azure/install-azure-cli). Javasoljuk, hogy Azure Cloud Shell, hogy automatikusan bejelentkezzen, és hozzáférhessen minden szükséges eszközhöz.
+- Támogatott [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), 8-as verzió (Azure Cloud Shell).
 - Az [Apache Maven](https://maven.apache.org/) Build eszköz.
 
 ## <a name="prepare-the-working-environment"></a>A munkahelyi környezet előkészítése
@@ -67,7 +67,7 @@ az group create \
 A létrehozott első dolog egy felügyelt PostgreSQL-kiszolgáló.
 
 > [!NOTE]
-> A PostgreSQL-kiszolgálók létrehozásával kapcsolatos részletes információkat [a Azure Portal használatával Azure Database for PostgreSQL kiszolgáló létrehozása](/azure/postgresql/quickstart-create-server-database-portal)című témakörben olvashat.
+> A PostgreSQL-kiszolgálók létrehozásával kapcsolatos részletes információkat [a Azure Portal használatával Azure Database for PostgreSQL kiszolgáló létrehozása](./quickstart-create-server-database-portal.md)című témakörben olvashat.
 
 A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő parancsot:
 
@@ -497,6 +497,6 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

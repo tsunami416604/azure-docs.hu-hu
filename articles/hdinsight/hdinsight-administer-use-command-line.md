@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
-ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38bf49ba39420aa1edffa13540d61292e23d654b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84699362"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490373"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure HDInsight-fürtök kezelése az Azure CLI-vel
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Ismerje meg, hogyan kezelheti az Azure HDInsight-fürtöket az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) használatával. Az Azure parancssori felülete (CLI) a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.
+Ismerje meg, hogyan kezelheti az Azure HDInsight-fürtöket az [Azure CLI](/cli/azure/) használatával. Az Azure parancssori felülete (CLI) a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő témakört: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő témakört: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) .
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -42,7 +42,7 @@ az login
 
 ## <a name="list-clusters"></a>Fürtök listázása
 
-Fürtök listázása [az az hdinsight List](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) paranccsal. Szerkessze az alábbi parancsokat úgy, hogy lecseréli az `RESOURCE_GROUP_NAME` erőforráscsoport nevét, majd beírja a parancsokat:
+Fürtök listázása [az az hdinsight List](/cli/azure/hdinsight#az-hdinsight-list) paranccsal. Szerkessze az alábbi parancsokat úgy, hogy lecseréli az `RESOURCE_GROUP_NAME` erőforráscsoport nevét, majd beírja a parancsokat:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -60,7 +60,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>Fürt megjelenítése
 
-Az [az hdinsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) paranccsal jelenítheti meg egy adott fürt információit. Az alábbi parancs szerkesztésével cserélje le a parancsot a `RESOURCE_GROUP_NAME` `CLUSTER_NAME` megfelelő információkra, majd írja be a következő parancsot:
+Az [az hdinsight show](/cli/azure/hdinsight#az-hdinsight-show) paranccsal jelenítheti meg egy adott fürt információit. Az alábbi parancs szerkesztésével cserélje le a parancsot a `RESOURCE_GROUP_NAME` `CLUSTER_NAME` megfelelő információkra, majd írja be a következő parancsot:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,7 +68,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Fürtök törlése
 
-A megadott fürt törléséhez használja [az az hdinsight delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) paranccsal. Az alábbi parancs szerkesztésével cserélje le a parancsot a `RESOURCE_GROUP_NAME` `CLUSTER_NAME` megfelelő információkra, majd írja be a következő parancsot:
+A megadott fürt törléséhez használja [az az hdinsight delete](/cli/azure/hdinsight#az-hdinsight-delete) paranccsal. Az alábbi parancs szerkesztésével cserélje le a parancsot a `RESOURCE_GROUP_NAME` `CLUSTER_NAME` megfelelő információkra, majd írja be a következő parancsot:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -82,17 +82,17 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Fürtök méretezése
 
-Az [az hdinsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) paranccsal méretezze át a megadott hdinsight-fürtöt a megadott méretre. Szerkessze az alábbi parancsot a helyére `RESOURCE_GROUP_NAME` , és `CLUSTER_NAME` a megfelelő információkkal. Cserélje le a `WORKERNODE_COUNT` értéket a fürthöz tartozó munkavégző csomópontok kívánt számára. A fürtök méretezésével kapcsolatos további információkért lásd: [HDInsight-fürtök](./hdinsight-scaling-best-practices.md)méretezése. Adja meg a parancsot:
+Az [az hdinsight Resize](/cli/azure/hdinsight#az-hdinsight-resize) paranccsal méretezze át a megadott hdinsight-fürtöt a megadott méretre. Szerkessze az alábbi parancsot a helyére `RESOURCE_GROUP_NAME` , és `CLUSTER_NAME` a megfelelő információkkal. Cserélje le a `WORKERNODE_COUNT` értéket a fürthöz tartozó munkavégző csomópontok kívánt számára. A fürtök méretezésével kapcsolatos további információkért lásd: [HDInsight-fürtök](./hdinsight-scaling-best-practices.md)méretezése. Adja meg a parancsot:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a különböző HDInsight-fürtök felügyeleti feladatait. További tudnivalókért olvassa el a következő cikket:
 
 * [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md)
 * [HDInsight felügyelete Azure PowerShell használatával](hdinsight-administer-use-powershell.md)
 * [Ismerkedés az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Az Azure CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
+* [Az Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bd659ebd74b67a036c189cae763205e6b0371f7c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e1dd1e94bd9747bb0961c09ce2f281c433b4b4fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058165"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488214"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
 
@@ -22,7 +22,7 @@ ms.locfileid: "92058165"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
 Ez az oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure-ban üzemeltetett ASP.NET MVC-alkalmazás adatait a Azure Cosmos DB használatával. Ebben az oktatóanyagban a .NET SDK v3-t használja. Az alábbi képen látható, hogy milyen weboldalt fog létrehozni a cikkben szereplő minta használatával:
@@ -47,7 +47,7 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy rendelkezik a következő erőforrásokkal:
 
-* Aktív Azure-fiók. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -137,7 +137,7 @@ Ezután adja hozzá a következő nézeteket.
    * A **sablon**lapon válassza a **Létrehozás**lehetőséget.
    * A **modell osztályban**válassza az **elem (teendők) elemet. Modellek)**.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** lehetőséget.
+   * Válassza a **Hozzáadás** elemet.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
 
@@ -155,7 +155,7 @@ Ezután adja hozzá a következő nézeteket.
    * A **sablon** mezőben válassza a **Törlés**lehetőséget.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** lehetőséget.
+   * Válassza a **Hozzáadás** elemet.
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -186,7 +186,7 @@ Ezután adja hozzá a következő nézeteket.
    * A **Template** (Sablon) mezőben válassza az **Edit** (Szerkesztés) elemet.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** lehetőséget.
+   * Válassza a **Hozzáadás** elemet.
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -204,7 +204,7 @@ Végül pedig vegyen fel egy nézetet az összes elem beolvasásához a követke
    * A **Template** (Sablon) mezőben válassza a **List** (Lista) elemet.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** lehetőséget.
+   * Válassza a **Hozzáadás** elemet.
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -238,7 +238,7 @@ Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos 
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
 
-   Az ebben a lépésben szereplő kód a konfiguráció alapján inicializálja az ügyfelet egy egyedi példányként, amelyet a rendszer a [függőségek befecskendezésével ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
+   Az ebben a lépésben szereplő kód a konfiguráció alapján inicializálja az ügyfelet egy egyedi példányként, amelyet a rendszer a [függőségek befecskendezésével ASP.net Core](/aspnet/core/fundamentals/dependency-injection).
 
    Győződjön meg arról, hogy az alapértelmezett MVC-vezérlőt úgy módosítja, hogy az `Item` `Configure` azonos fájl metódusában lévő útvonalakat szerkeszti:
 
@@ -333,11 +333,11 @@ Néhány másodpercen belül a Visual Studio közzéteszi a webalkalmazást, és
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy ASP.NET Core MVC-webalkalmazást. Az alkalmazás elérheti Azure Cosmos DB tárolt adatait. Most már folytathatja ezeket az erőforrásokat:
 
 * [Particionálás az Azure Cosmos DB-ben](./partitioning-overview.md)
-* [Bevezetés az SQL-lekérdezések használatába](./how-to-sql-query.md)
+* [Bevezetés az SQL-lekérdezések használatába](./sql-query-getting-started.md)
 * [Adatok modellezése és particionálása az Azure Cosmos DB-ben való életből vett példa használatával](./how-to-model-partition-example.md)
 
 [Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: https://docs.microsoft.com/aspnet/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
-[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
+[Preventing Cross-Site Request Forgery]: /aspnet/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
+[Basic CRUD Operations in ASP.NET MVC]: /aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 [GitHub]: https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app

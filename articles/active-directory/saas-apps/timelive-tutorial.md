@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 217a049b589db98b6d28e7a0ef9b8ef64f635349
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e9328d25459985172d2a80915bb156d297371ae
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88541714"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Oktatóanyag: Azure Active Directory integráció a TimeLive
 
@@ -130,11 +130,11 @@ Az Azure AD egyszeri bejelentkezés TimeLive való konfigurálásához hajtsa v�
 
 2. Válassza a **Beállítások** lehetőséget a **rendszergazdai beállítások**alatt.
 
-    ![TimeLive-konfiguráció](./media/timelive-tutorial/configure1.png)
+    ![A képernyőképen a kiválasztott beállításokkal rendelkező rendszergazdai beállítások láthatók.](./media/timelive-tutorial/configure1.png)
 
 3. Az **alkalmazás-preferencia** szakaszban hajtsa végre a következő lépéseket:
     
-    ![TimeLive-konfiguráció](./media/timelive-tutorial/configure2.png)
+    ![A képernyőképen az alkalmazás-preferencia szakasz látható, ahol megadhatja a leírt értékeket.](./media/timelive-tutorial/configure2.png)
 
     a. Válassza a **Biztonság** fület.
 
@@ -172,7 +172,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

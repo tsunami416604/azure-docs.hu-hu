@@ -1,25 +1,25 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1626d6f86dcfefd094f325f1f10296d01d4bad93
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ea5e25473214ccc9090038430642232735aaaf61
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "73523004"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479641"
 ---
 Az Azure Portalon a kapcsolatra lépve tekintheti meg a Resource Manager VPN-átjárók kapcsolati állapotát. Az alábbi lépések a kapcsolat megkeresését és ellenőrzését mutatják be.
 
-1. A [Azure Portal](https://portal.azure.com) menüben válassza a **minden erőforrás** lehetőséget, vagy keresse meg és válassza ki az **összes erőforrás** elemet bármelyik oldalon. 
-2. Válassza ki a virtuális hálózati átjárót.
-3. A virtuális hálózati átjáró paneljén kattintson a **Kapcsolatok** lehetőségre. Láthatja az egyes kapcsolatok állapotát.
-4. Kattintson az ellenőrizni kívánt kapcsolat nevére az **Alapvető erőforrások** megnyitásához. Az Alapvető erőforrások panelen áttekintheti a kapcsolat további adatait. Az **Állapot** „Sikeres” vagy „Csatlakoztatva” értékű, ha a kapcsolat sikeresen létrejött.
+1. A [Azure Portal](https://portal.azure.com) menüben válassza a **minden erőforrás** lehetőséget, vagy keresse meg és válassza ki az **összes erőforrás** elemet bármelyik oldalon.
+1. Válassza ki a virtuális hálózati átjárót.
+1. A virtuális hálózati átjáró paneljén kattintson a **Kapcsolatok** lehetőségre. Láthatja az egyes kapcsolatok állapotát.
+1. Kattintson az ellenőrizni kívánt kapcsolat nevére az **Alapvető erőforrások** megnyitásához. Az Alapvető erőforrások panelen áttekintheti a kapcsolat további adatait. Az **Állapot** „Sikeres” vagy „Csatlakoztatva” értékű, ha a kapcsolat sikeresen létrejött.
 
-   ![VPN Gateway-kapcsolat ellenőrzése az Azure Portallal](./media/vpn-gateway-verify-connection-portal-include/connection-succeeded.png)
+   :::image type="content" source="./media/vpn-gateway-verify-connection-portal-include/status.png" alt-text="VPN Gateway-kapcsolat ellenőrzése az Azure Portallal":::

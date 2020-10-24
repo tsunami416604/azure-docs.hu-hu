@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: 04def98108bf996a8f8cabe0ad36c022011aa533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf292ccd185ad2c6a85cb6d2f097bb8a7fa9e173
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080703"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489659"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-fürtök létrehozása az Azure CLI használatával
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő témakört: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő témakört: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +42,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő té
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Környezeti változók beállítása A cikkben szereplő változók használata bash-alapú. Más környezetek esetében kisebb eltérésekre lesz szükség. A fürt létrehozásához szükséges paraméterek teljes listájáért tekintse meg az [az-hdinsight-Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) lehetőséget.
+2. Környezeti változók beállítása A cikkben szereplő változók használata bash-alapú. Más környezetek esetében kisebb eltérésekre lesz szükség. A fürt létrehozásához szükséges paraméterek teljes listájáért tekintse meg az [az-hdinsight-Create](/cli/azure/hdinsight#az-hdinsight-create) lehetőséget.
 
     |Paraméter | Leírás |
     |---|---|
@@ -68,7 +68,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő té
     export componentVersion=Hadoop=2.7
     ```
 
-3. [Hozza létre az erőforráscsoportot](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) az alábbi parancs beírásával:
+3. [Hozza létre az erőforráscsoportot](/cli/azure/group#az-group-create) az alábbi parancs beírásával:
 
     ```azurecli-interactive
     az group create \
@@ -78,7 +78,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő té
 
     Az érvényes helyszínek listájához használja a `az account list-locations` parancsot, majd használja az érték egyik helyét `name` .
 
-4. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) az alábbi parancs beírásával:
+4. [Hozzon létre egy Azure Storage-fiókot](/cli/azure/storage/account#az-storage-account-create) az alábbi parancs beírásával:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -91,7 +91,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő té
         --sku Standard_LRS
     ```
 
-5. [Bontsa ki az elsődleges kulcsot az Azure Storage-fiókból](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) , és tárolja egy változóban az alábbi parancs beírásával:
+5. [Bontsa ki az elsődleges kulcsot az Azure Storage-fiókból](/cli/azure/storage/account/keys#az-storage-account-keys-list) , és tárolja egy változóban az alábbi parancs beírásával:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -100,7 +100,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő té
         --query [0].value -o tsv)
     ```
 
-6. [Hozzon létre egy Azure Storage-tárolót](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) az alábbi parancs beírásával:
+6. [Hozzon létre egy Azure Storage-tárolót](/cli/azure/storage/container#az-storage-container-create) az alábbi parancs beírásával:
 
     ```azurecli-interactive
     az storage container create \
@@ -109,7 +109,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő té
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. [Hozza létre a HDInsight-fürtöt](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) a következő parancs beírásával:
+7. [Hozza létre a HDInsight-fürtöt](/cli/azure/hdinsight#az-hdinsight-create) a következő parancs beírásával:
 
     ```azurecli-interactive
     az hdinsight create \
@@ -165,7 +165,7 @@ az group delete \
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy sikeresen létrehozott egy HDInsight-fürtöt az Azure CLI használatával, a következő paranccsal megismerheti a fürttel való munkát:
 

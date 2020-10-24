@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/17/2020
+ms.date: 10/22/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a4fa1a690c6607b70774be67048fcad7db378b8b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f7d9389eb0a0118f2c1be8375531f58b6bed94b6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461600"
+ms.locfileid: "92488095"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -52,7 +52,7 @@ Nyilvános terheléselosztó létrehozásakor létre kell hoznia egy új nyilvá
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **myresourcegrouplb erőforráscsoportban** szöveget a szövegmezőbe.|
+    | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **CreatePubLBQS-RG** karakterláncot a szövegmezőbe.|
     | Name                   | **MyLoadBalancer** megadása                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
@@ -164,7 +164,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     |------------------|-----------------------------------------------------------------|
     | **Projekt részletei**  |                                                                 |
     | Előfizetés     | Válassza ki az Azure-előfizetését                                  |
-    | Erőforráscsoport   | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Erőforráscsoport   | **CreatePubLBQS kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
     | Régió           | **Nyugat-Európa** kiválasztása |
@@ -217,7 +217,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     |-----------------------|----------------------------------|
     | **Projekt részletei** |  |
     | Előfizetés | Válassza ki az Azure-előfizetését |
-    | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Erőforráscsoport | **CreatePubLBQS kiválasztása – RG** |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM1** megadása |
     | Régió | **Nyugat-Európa** kiválasztása |
@@ -333,7 +333,7 @@ Nyilvános terheléselosztó létrehozásakor létre kell hoznia egy új nyilvá
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a **myresourcegrouplb erőforráscsoportban** szöveget a szövegmezőbe.|
+    | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **CreatePubLBQS-RG** szöveget a szövegmezőbe.|
     | Name                   | **MyLoadBalancer** megadása                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
@@ -370,7 +370,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     |------------------|-----------------------------------------------------------------|
     | **Projekt részletei**  |                                                                 |
     | Előfizetés     | Válassza ki az Azure-előfizetését                                  |
-    | Erőforráscsoport   | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Erőforráscsoport   | **CreatePubLBQS kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
     | Régió           | **Nyugat-Európa** kiválasztása |
@@ -476,6 +476,7 @@ Ebben a szakaszban egy terheléselosztó-szabályt fog létrehozni:
     | Háttérport | Adja meg a **80**értéket. |
     | A háttérkészlet | Válassza a **myBackendPool**lehetőséget.|
     | Állapotadat-mintavétel | Válassza a **myHealthProbe**lehetőséget. |
+    | Üresjárati időkorlát (perc) | Mozgassa a csúszkát **15** percre. |
  
 4. Hagyja meg a többi alapértelmezett beállítást, majd kattintson az **OK gombra**.
 
@@ -503,7 +504,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     |-----------------------|----------------------------------|
     | **Projekt részletei** |  |
     | Előfizetés | Válassza ki az Azure-előfizetését |
-    | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Erőforráscsoport | **CreatePubLBQS kiválasztása – RG** |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM1** megadása |
     | Régió | **Nyugat-Európa** kiválasztása |
@@ -575,7 +576,7 @@ Az előző lépésekben létrehozott virtuális gépeket hozzá kell adni a **my
 
 ## <a name="install-iis"></a>Az IIS telepítése
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza ki a **myVM1** , amely a **myresourcegrouplb erőforráscsoportban** erőforráscsoporthoz található.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza ki a **myVM1** , amely a **CreateStdLBQS-RG** erőforráscsoporthoz található.
 
 2. Az **Áttekintés** lapon válassza a **kapcsolat**, majd a **Bastion**lehetőséget.
 
@@ -618,9 +619,9 @@ Ha meg szeretné tekinteni, hogy a terheléselosztó mindhárom virtuális gépe
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztó és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforrásokat tartalmazó erőforráscsoportot, majd válassza a **Törlés**lehetőséget a **myresourcegrouplb erőforráscsoportban** .
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztó és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforrásokat tartalmazó **CreatePubLBQS-RG** erőforráscsoportot, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 

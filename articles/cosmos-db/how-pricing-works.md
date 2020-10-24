@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: bb47dde8813f31f4a6acceb696a8b7c7eb0095be
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7d54dfe2efa82aaa650168c476da03d89fe4527
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281538"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490492"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Díjszabási modell az Azure Cosmos DB-ben
 
@@ -36,7 +36,7 @@ Ha az Egyesült államokbeli nem kormányzati régióba helyezi üzembe a Azure 
 
 A Azure Cosmos DB számos lehetőséget kínál a fejlesztők számára ingyenesen elérhetővé. Ezek a lehetőségek a következők:
 
-* **Azure Cosmos db ingyenes**szinten: a Azure Cosmos db ingyenes szintje megkönnyíti az alkalmazások megkezdését, fejlesztését és tesztelését, vagy akár kisebb éles számítási feladatokat is futtathat ingyenesen. Ha az ingyenes szintet engedélyezi egy fiókon, az első 400 RU/s és 5 GB tárterület ingyenesen elérhető a fiók élettartama alatt. Az Azure-előfizetések esetében akár egy ingyenes szintű fiókot is beállíthat, és a fiók létrehozásakor be kell jelentkeznie. Első lépésként [hozzon létre egy új fiókot Azure Portal az ingyenes szintet engedélyezve](create-cosmosdb-resources-portal.md) , vagy használjon [ARM-sablont](manage-sql-with-resource-manager.md#free-tier).
+* **Azure Cosmos db ingyenes**szinten: a Azure Cosmos db ingyenes szintje megkönnyíti az alkalmazások megkezdését, fejlesztését és tesztelését, vagy akár kisebb éles számítási feladatokat is futtathat ingyenesen. Ha az ingyenes szintet engedélyezi egy fiókon, az első 400 RU/s és 5 GB tárterület ingyenesen elérhető a fiók élettartama alatt. Az Azure-előfizetések esetében akár egy ingyenes szintű fiókot is beállíthat, és a fiók létrehozásakor be kell jelentkeznie. Első lépésként [hozzon létre egy új fiókot Azure Portal az ingyenes szintet engedélyezve](create-cosmosdb-resources-portal.md) , vagy használjon [ARM-sablont](./manage-with-templates.md#free-tier).
 
 * **Ingyenes Azure-fiók**: az Azure [ingyenes szintet](https://azure.microsoft.com/free/) kínál, amely az első 30 nap során $200 az Azure-kreditekben, és korlátozott mennyiségű ingyenes szolgáltatást biztosít 12 hónapig. További információkért lásd az [ingyenes Azure-fiókot](../cost-management-billing/manage/avoid-charges-free-account.md) ismertető cikket. Azure Cosmos DB az ingyenes Azure-fiók része. Különösen Azure Cosmos DB esetében ez az ingyenes fiók 5 GB tárhelyet és 400 RU/s-t biztosít az egész évre kiépített átviteli sebességhez.
 
@@ -59,7 +59,7 @@ A Azure Cosmos DB-erőforrások költségeinek optimalizálásáról a következ
 * További információ az [átviteli sebesség optimalizálásáról](optimize-cost-throughput.md)
 * További információ a [tárolási díjak optimalizálásáról](optimize-cost-storage.md)
 * További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)
-* További információ [a lekérdezések díjszabásának optimalizálásáról](optimize-cost-queries.md)
+* További információ [a lekérdezések díjszabásának optimalizálásáról](./optimize-cost-reads-writes.md)
 * További információ [a több régióból álló Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)
 * További információ a [Azure Cosmos db fenntartott kapacitásról](cosmos-db-reserved-capacity.md)
 * Tudnivalók a [Azure Cosmos db emulatorról](local-emulator.md)

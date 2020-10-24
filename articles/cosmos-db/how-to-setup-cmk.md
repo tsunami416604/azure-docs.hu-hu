@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a5106fcc7f1b55db22ee13ced34328cc38096d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836510"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486208"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurálja a felhasználó által kezelt kulcsokat az Azure Cosmos-fiókjához az Azure Key Vaulttal
 
@@ -277,7 +277,7 @@ Az ügyfél által felügyelt kulcsok használatakor az adatbázis-műveletek á
 
 Az Azure Cosmos-fiókban tárolt összes adat titkosítva van az ügyfél által felügyelt kulcsokkal, a következő metaadatok kivételével:
 
-- A Azure Cosmos DB [-fiókok,-adatbázisok és-tárolók](./account-overview.md#elements-in-an-azure-cosmos-account) neve
+- A Azure Cosmos DB [-fiókok,-adatbázisok és-tárolók](./account-databases-containers-items.md#elements-in-an-azure-cosmos-account) neve
 
 - A [tárolt eljárások](./stored-procedures-triggers-udfs.md) nevei
 

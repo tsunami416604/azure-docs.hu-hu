@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: baf350e23025342cc74b4d063d9a1604e8ad2ffd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab87f181f78158d2ea0dd6575a30e6087600f60c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087422"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485681"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Azure Kubernetes szolgáltatás használata a HDInsight-mel való Apache Kafka
 
@@ -26,7 +26,7 @@ Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure CLI](/cli/azure/install-azure-cli)
 * Azure-előfizetés
 
 Ez a dokumentum azt feltételezi, hogy már ismeri a következő Azure-szolgáltatások létrehozását és használatát:
@@ -223,7 +223,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
     > [!WARNING]  
     > Az üzenetek több példányban is megjelenhetnek. Ez a probléma általában akkor fordul elő, ha a böngészőt a csatlakozás után frissíti, vagy több böngészőbeli kapcsolatot nyit meg az alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 

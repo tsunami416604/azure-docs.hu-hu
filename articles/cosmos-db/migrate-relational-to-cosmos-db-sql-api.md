@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: aaff5adf358c31d99df7a51305c4e3554c3259c1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3aec6cf2fa515d71b93d84cf8c4fc901fc847162
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166250"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487432"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Egy-a-többhöz kapcsolódó adat migrálása Azure Cosmos DB SQL API-fiókba
 
@@ -333,6 +333,6 @@ A végén mindkét megközelítés esetében megfelelően mentett beágyazott Or
 
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit.":::
 
-## <a name="next-steps"></a>További lépések
-* Tudnivalók az [adatmodellezésről Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/modeling-data)
-* Megtudhatja [, hogyan modellezheti és particionálhatja az Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example)
+## <a name="next-steps"></a>Következő lépések
+* Tudnivalók az [adatmodellezésről Azure Cosmos db](./modeling-data.md)
+* Megtudhatja [, hogyan modellezheti és particionálhatja az Azure Cosmos db](./how-to-model-partition-example.md)

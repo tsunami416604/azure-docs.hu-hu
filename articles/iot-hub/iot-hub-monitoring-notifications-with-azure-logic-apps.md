@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146646"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490322"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT távoli figyelés és értesítések Azure Logic Apps az IoT hub és a postaláda csatlakoztatásával
 
@@ -112,7 +112,7 @@ Vegyen fel egy egyéni végpontot a Service Bus üzenetsor számára az IoT hubh
 
 1. Az **üzenetkezelés**területen válassza az **üzenet-útválasztás**elemet. Az **üzenet-útválasztás** ablaktáblán válassza az **Egyéni végpontok** fület, majd válassza a **+ Hozzáadás**lehetőséget. A legördülő listában válassza ki a **Service Bus-várólista**elemet.
 
-   ![Adjon hozzá egy végpontot az IoT hub-hoz a Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
+   ![Képernyőfelvétel: a Service Bus-üzenetsor kiemelése.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
 1. A **Service Bus-végpont hozzáadása** panelen adja meg a következő adatokat:
 
@@ -142,7 +142,7 @@ Vegyen fel egy egyéni végpontot a Service Bus üzenetsor számára az IoT hubh
 
    ![Útválasztási szabály hozzáadása a Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
-1. Kattintson a **Mentés** gombra. Lezárhatja az **üzenet-útválasztási** ablaktáblát.
+1. Válassza a **Mentés** lehetőséget. Lezárhatja az **üzenet-útválasztási** ablaktáblát.
 
 ## <a name="create-and-configure-a-logic-app"></a>Logikai alkalmazás létrehozása és konfigurálása
 
@@ -183,7 +183,7 @@ Az előző szakaszban beállíthatja, hogy az IoT hub hőmérséklet-riasztást 
 1. Hozzon létre egy Service Bus-kapcsolatokat.
    1. Adja meg a kapcsolatok nevét, és válassza ki a Service Bus névteret a listából. Megnyílik a következő képernyő.
 
-      ![Service Bus-kapcsolatok létrehozása a logikai alkalmazáshoz a Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
+      ![Képernyőkép, amely kiemeli, ha egy vagy több üzenet érkezik egy üzenetsor (automatikus Befejezés) beállítással.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
    1. Válassza ki a Service Bus-szabályzatot (RootManageSharedAccessKey). Ezután válassza a  **Létrehozás**lehetőséget.
 

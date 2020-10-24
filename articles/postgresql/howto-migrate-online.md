@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 1f1af53388f177dc348c5cb805ef8e6fbe9f9436
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27da5f1b731b2cdb0604f91f7f9e78b19ee2908b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710821"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489795"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>Minimális – állásidő áttelepítése Azure Database for PostgreSQL – egyetlen kiszolgálóra
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server-hyperscale.md)]
@@ -25,4 +25,4 @@ Az Azure DMS egy kezdeti terhelést hajt végre a helyszíni Azure Database for 
 
 ## <a name="next-steps"></a>Következő lépések
 - Tekintse meg a videós [alkalmazások modernizációját Microsoft Azure](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102)segítségével, amely egy bemutatót tartalmaz, amely bemutatja, hogyan telepítse át a PostgreSQL-alkalmazásokat a Azure Database for PostgreSQLba.
-- Tekintse [meg a PostgreSQL Áttelepítését Azure Database for PostgreSQL online-ba a DMS használatával](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)című oktatóanyagot.
+- Tekintse [meg a PostgreSQL Áttelepítését Azure Database for PostgreSQL online-ba a DMS használatával](../dms/tutorial-postgresql-azure-postgresql-online.md)című oktatóanyagot.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95472d53045e23741286188da004eb649570a965
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997557"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487228"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -42,7 +42,7 @@ A következő fürt adatai hasznosak lehetnek az információk gyűjtéséhez a 
 * A fürt állapota, beleértve az utolsó állapot változásának részleteit is
 * A Master, a Core és a Task csomópontokhoz megadott HDInsight-példányok típusa és száma
 
-A legfelső szintű információk többségét a Azure Portal használatával érheti el.  Azt is megteheti, hogy az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -vel is beolvassa a HDInsight-fürt (ek) adatait:
+A legfelső szintű információk többségét a Azure Portal használatával érheti el.  Azt is megteheti, hogy az [Azure CLI](/cli/azure/) -vel is beolvassa a HDInsight-fürt (ek) adatait:
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>

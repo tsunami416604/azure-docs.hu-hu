@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a601b7ec7e2615053203e23ea61fc6d2efc85bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09d661f29b2e262e5e67c471711a5e978abe79d8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533503"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Oktatóanyag: Azure Active Directory integráció a T&E Expressrel
 
@@ -128,11 +128,11 @@ Ha az Azure AD egyszeri bejelentkezést a T&E Express használatával szeretné 
 
 1. A **rendszergazda** lapon kattintson az SAML- **tartomány** elemre az SAML-beállítások lap megnyitásához.
 
-    ![Egyetlen Sign-On konfigurálása](./media/tyeexpress-tutorial/tye-SAML.png)
+    ![A képernyőképen a felügyeleti menüből kiválasztott SAML-tartomány látható.](./media/tyeexpress-tutorial/tye-SAML.png)
 
 1. Válassza az **Activar (aktiválás)** lehetőséget a **nem** értékről si-re **(igen)**. Az **Identitáskezelés metaadatainak** szövegmezőbe illessze be a metaadatokat tartalmazó XML-fájlt, amelyet a Azure Portal letöltött.
 
-    ![Egyetlen Sign-On konfigurálása](./media/tyeexpress-tutorial/tyeAdmin.png)
+    ![Képernyőfelvétel: a Dominio SAML-oldal, ahol megadhatja a metaadatokat.](./media/tyeexpress-tutorial/tyeAdmin.png)
 
 1. A beállítások mentéséhez kattintson a **Guarda (Mentés)** gombra.
 
@@ -159,7 +159,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -197,17 +197,17 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a T&E Express-be, a T&E 
 
 1. A rendszergazda címke alatt kattintson a felhasználók elemre a felhasználók főoldalának megnyitásához.
 
-    ![Alkalmazott hozzáadása](./media/tyeexpress-tutorial/tye-adminusers.png)
+    ![A képernyőképen a rendszergazda menüben kiválasztott felhasználók láthatók.](./media/tyeexpress-tutorial/tye-adminusers.png)
 
 1. A kezdőlapon kattintson a be gombra a **+** felhasználók hozzáadásához.
 
-    ![Alkalmazott hozzáadása](./media/tyeexpress-tutorial/tye-usershome.png)
+    ![A képernyőképen a plusz ikon látható a felhasználók hozzáadásához.](./media/tyeexpress-tutorial/tye-usershome.png)
 
 1. Adja meg az űrlapon megadottak szerint az összes kötelező részletet, majd kattintson a Save (Mentés) gombra a részletek mentéséhez.
 
-    ![Alkalmazott hozzáadása](./media/tyeexpress-tutorial/tye-usersadd.png)
+    ![Képernyőfelvétel: a felhasználói adatok szakasz, ahol megadhatja a megfelelő értékeket.](./media/tyeexpress-tutorial/tye-usersadd.png)
 
-    ![Alkalmazott hozzáadása](./media/tyeexpress-tutorial/tye-userssave.png)
+    ![Képernyőfelvétel: a jóváhagyók és a segédek részei, ahol megadhatja a megfelelő értékeket.](./media/tyeexpress-tutorial/tye-userssave.png)
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

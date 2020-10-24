@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26794f0d743bc701879a161f69e374340206e5d8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570361"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488469"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -70,7 +70,7 @@ Az [Azure Cosmos db Emulator](local-emulator.md) használatával az alkalmazást
 
 Ha technikai kérdést szeretne feltenni, tegye közzé a következő két kérdés-válasz fórum egyikét:
 
-* [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&egy kérdés oldal](/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A Stack Overflow a programozási kérdésekre legmegfelelőbb. Győződjön meg arról, hogy a kérdés [a témában](https://stackoverflow.com/help/on-topic) van, és a [lehető legtöbb részletet biztosít, így a kérdés egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 Új szolgáltatások igényléséhez hozzon létre egy új kérelmet a [felhasználói hangon](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -179,7 +179,7 @@ Az SQL API a nagy késleltetésű összesítést az összesítő függvények `C
 
 Az SQL API támogatja az optimista Egyidejűség-vezérlést (OCC) a HTTP-entitások címkéi vagy Etagek használatával. Minden SQL API-erőforrás rendelkezik egy ETag, és a ETag minden alkalommal be van állítva a kiszolgálón, amikor frissülnek a dokumentumok. A ETag fejléc és az aktuális érték szerepel az összes válaszüzenetben. A Etagek használható a If-Match fejléccel, hogy a kiszolgáló döntse el, hogy frissíteni kell-e egy erőforrást. A If-Match érték az a ETag érték, amelyet ellenőrizni kell. Ha a ETag értéke megegyezik a kiszolgáló ETag értékével, az erőforrás frissül. Ha a ETag már nem aktuális, a kiszolgáló elutasítja a műveletet "HTTP 412 előfeltételi hiba" hibakódtal. Az ügyfél ezután visszakéri az erőforrást az erőforrás aktuális ETag értékének beolvasásához. Emellett a Etagek is használható az If-None-Match fejléctel annak megállapításához, hogy szükség van-e egy erőforrás visszahívására.
 
-Ha optimista párhuzamosságot szeretne használni a .NET-ben, használja a [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) osztályt. .NET-minta esetén lásd: [program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) a DocumentManagement-mintában a githubon.
+Ha optimista párhuzamosságot szeretne használni a .NET-ben, használja a [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) osztályt. .NET-minta esetén lásd: [program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) a DocumentManagement-mintában a githubon.
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Hogyan végre tranzakciókat az SQL API-ban?
 
@@ -210,7 +210,7 @@ Ez a JavaScript korlátozása. A JavaScript dupla pontosságú lebegőpontos for
 Az engedélyek ResourceTokens használatával történő létrehozása a tároló szintjén és annak leszármazottai (például dokumentumok, mellékletek) esetében engedélyezett. Ez azt jelenti, hogy az adatbázis vagy a fiók szintjén jelenleg nem engedélyezett az engedély létrehozása.
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b99d5ea33693431fb3811af50385891684a366e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df256749a813fe81857aa250081411afd52ae35c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546457"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489557"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ThousandEyes
 
@@ -103,7 +103,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -129,11 +129,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. A felső menüben kattintson a **Beállítások**elemre.
 
-    ![Beállítások](./media/thousandeyes-tutorial/ic790066.png "Beállítások")
+    ![Képernyőfelvétel: a ThousandEyes webhely, amelyen a beállítások vannak kiválasztva.](./media/thousandeyes-tutorial/ic790066.png "Beállítások")
 
 3. Kattintson a **fiók** lehetőségre
 
-    ![Fiók](./media/thousandeyes-tutorial/ic790067.png "Fiók")
+    ![A képernyőképen a beállítások menüből kiválasztott fiók látható.](./media/thousandeyes-tutorial/ic790067.png "Fiók")
 
 4. Kattintson a **biztonság & hitelesítés** fülre.
 
@@ -165,11 +165,11 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
 2. Kattintson a **Beállítások** elemre.
 
-    ![Beállítások](./media/thousandeyes-tutorial/IC790066.png "Beállítások")
+    ![Képernyőfelvétel: a ThousandEyes webhely, amelyen a beállítások vannak kiválasztva.](./media/thousandeyes-tutorial/ic790066.png "Beállítások")
 
 3. Kattintson a **fiók**lehetőségre.
 
-    ![Fiók](./media/thousandeyes-tutorial/IC790067.png "Fiók")
+    ![A képernyőképen a beállítások menüből kiválasztott fiók látható.](./media/thousandeyes-tutorial/ic790067.png "Fiók")
 
 4. Kattintson a **fiókok & felhasználók** lapra.
 

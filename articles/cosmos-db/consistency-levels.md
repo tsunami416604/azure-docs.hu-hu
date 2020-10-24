@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 70077f8f0e7a951b6da8cf65c874b17eb98b416c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0f69b30f477f99e2a4cae10edc7443b0630175c9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276385"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487806"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konzisztenciaszintek az Azure Cosmos DB-ben
 
@@ -180,8 +180,8 @@ Ha többet szeretne megtudni a konzisztencia-fogalmakról, olvassa el a követke
 
 Ha többet szeretne megtudni a Azure Cosmos DB konzisztenciáji szintjeiről, olvassa el a következő cikkeket:
 
-- [Az alkalmazás megfelelő konzisztencia-szintjének kiválasztása](consistency-levels-choosing.md)
-- [Konzisztencia szintjei Azure Cosmos DB API-k között](consistency-levels-across-apis.md)
+- [Az alkalmazás megfelelő konzisztencia-szintjének kiválasztása]()
+- [Konzisztencia szintjei Azure Cosmos DB API-k között]()
 - [Az alapértelmezett konzisztenciaszint beállítása](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [Az alapértelmezett konzisztenciaszint felülírása](how-to-manage-consistency.md#override-the-default-consistency-level)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

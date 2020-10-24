@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 10/21/2020
+ms.openlocfilehash: a666acbcd2aed168bd1d871c0ef0fb8c3205fd05
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367720"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479143"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Oktatóanyag: Azure AD-felhasználók létrehozása az Azure AD-alkalmazásokkal
 
@@ -173,10 +173,20 @@ Az SQL felügyelt példányra vonatkozó **címtár** -olvasási engedélyek be�
     - **Alkalmazásazonosító**
     - **Bérlő azonosítója** – ennek a következőnek kell lennie:
 
-Ebben az oktatóanyagban a *AppSP* -t fogjuk használni a fő szolgáltatásnévként, és *SAJÁTPR* az Azure SQL-ben a *AppSP*által létrehozott második egyszerű szolgáltatásként. Létre kell hoznia két alkalmazást, a *AppSP* -t és a *SajátPr*-t.
+Ebben az oktatóanyagban a *AppSP* -t fogjuk használni a fő szolgáltatásnévként, és *SAJÁTPR* az Azure SQL-ben a *AppSP*által létrehozott második egyszerű szolgáltatásként. Létre kell hoznia két alkalmazást, a *AppSP* és a *SajátPr*.
 
 Az Azure AD-alkalmazások létrehozásával kapcsolatos további információkért tekintse meg a következő cikket [: útmutató: a portál használata az erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatásnév létrehozásához](../../active-directory/develop/howto-create-service-principal-portal.md).
 
+### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Az Azure AD-rendszergazda beállításához vagy törléséhez szükséges engedélyek
+
+Ahhoz, hogy az egyszerű szolgáltatás beállítsa vagy kiállítsa az Azure Active Directory-rendszergazdát az Azure SQL-hez, további API-engedélyre van szükség. A [Directory. Read. All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) Application API-engedélyt hozzá kell adni az alkalmazáshoz az Azure ad-ben.
+
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Object-ID":::
+
+Az egyszerű szolgáltatásnak szüksége lesz a [**SQL Server közreműködő**](../../role-based-access-control/built-in-roles.md#sql-server-contributor) szerepkörre is SQL Database vagy az SQL felügyelt [**példány közreműködői**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) szerepköre számára az SQL felügyelt példányához.
+
+> [!NOTE]
+> Bár az Azure AD Graph API elavult, a **Directory. Reader. az összes** engedély továbbra is érvényes erre az oktatóanyagra. A Microsoft Graph API nem vonatkozik erre az oktatóanyagra.
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>Egyszerű szolgáltatásnév-felhasználó létrehozása Azure SQL Databaseban
 

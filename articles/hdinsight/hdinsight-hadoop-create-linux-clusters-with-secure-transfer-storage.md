@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: 43abe6a827af668f2b756e5f00497fbfe1698413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c1ff1eebabd94c5e6b1241b33ca83960e8eedbb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083236"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490288"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Biztonságos átvitelű Storage-fiókkal rendelkező fürtök Apache Hadoop az Azure HDInsight
 
@@ -38,7 +38,7 @@ Egy meglévő Storage-fiók PowerShell-lel való frissítéséhez lásd: [bizton
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI-parancs az [Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create), győződjön meg róla, hogy a paraméter értéke `--https-only` `true` .
+Az Azure CLI-parancs az [Storage Account Create](/cli/azure/storage/account#az-storage-account-create), győződjön meg róla, hogy a paraméter értéke `--https-only` `true` .
 
 Meglévő Storage-fiók Azure CLI-vel való frissítéséhez lásd: [biztonságos átvitel megkövetelése az Azure CLI-vel](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
 
@@ -50,7 +50,7 @@ További, biztonságos átvitel használatára képes tárfiókok hozzáadásár
 * Egy fürt létrehozása az [Azure Portal](https://portal.azure.com) használatával és a kapcsolódó tárfiók megadása.
 * Szkriptműveleteket használata további, biztonságos átvitel használatára képes tárfiókok meglévő HDInsight-fürthöz történő hozzáadásához. További információkért lásd: [Add additional storage accounts to HDInsight](hdinsight-hadoop-add-storage.md) (További tárfiókok hozzáadása a HDInsighthoz).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Storage (WASB) használata [Apache HADOOP HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) helyett alapértelmezett adattárként
 * További információt az Azure Storage HDInsight általi használatáról [az Azure Storage és a HDInsight együttes használatát](hdinsight-hadoop-use-blob-storage.md) ismertető cikkben talál.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e8bf3d2407e2c3d0db4bb5d8591ba598aba68a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfad185718dcc4a1c06ba3a4ed22961615ccd37e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546440"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Oktatóanyag: Azure Active Directory integráció a Trisotech Digital Enterprise Serverrel
 
@@ -120,15 +120,15 @@ Az Azure AD egyszeri bejelentkezés az Trisotech Digital Enterprise Serverrel va
 
 2. Kattintson a **menü ikonra** , majd válassza az **Adminisztráció**lehetőséget.
 
-    ![Egyetlen Sign-On konfigurálása](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
+    ![A képernyőképen az adminisztráció ikon látható a Microsoft Digital Enterprise Serverben.](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
 3. Válassza a **felhasználói szolgáltató**lehetőséget.
 
-    ![Egyetlen Sign-On konfigurálása](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
+    ![A képernyőképen a menüből kiválasztott felhasználói szolgáltató látható.](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
 4. A **felhasználói szolgáltató konfigurációja** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
+    ![Képernyőfelvétel: a felhasználói szolgáltató konfigurációi, ahol megadhatja a leírt értékeket.](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
     a. A **hitelesítési módszer**legördülő menüjében válassza a **biztonságos érvényesítési nyelv 2 (SAML 2)** lehetőséget.
 
@@ -136,11 +136,11 @@ Az Azure AD egyszeri bejelentkezés az Trisotech Digital Enterprise Serverrel va
 
     c. Az **alkalmazás-azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.trisotech.com` .
 
-    d. Kattintson a **Mentés** gombra.
+    d. Kattintson a **Mentés** gombra
 
     e. Adja meg a tartománynevet az **engedélyezett tartományokban (üres érték: mindenki)** szövegmezőben, automatikusan hozzárendeli a licenceket az engedélyezett tartományoknak megfelelő felhasználók számára
 
-    f. Kattintson a **Mentés** gombra.
+    f. Kattintson a **Mentés** gombra
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -164,7 +164,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

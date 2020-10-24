@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: ba4382e03e6fc1acfd606a375a062c05581f712c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 10da2f3a84a4c1e6d761c86901f3249972cc0f5b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278231"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477844"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python-példák
 
@@ -38,7 +38,7 @@ Az [Azure-documentdb-Python](https://github.com/Azure/azure-documentdb-python) G
     * Azure aktív előfizetésen belül:
         * [Hozzon létre egy ingyenes Azure-fiókot](https://azure.microsoft.com/free) , vagy használja a meglévő előfizetését 
         * [Visual Studio havi kreditek](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Ingyenes Azure Cosmos DB szintű](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+        * [Ingyenes Azure Cosmos DB szintű](./optimize-dev-test.md#azure-cosmos-db-free-tier)
     * Azure aktív előfizetés nélkül:
         * [Próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/)ingyen, egy 30 napos tesztelési környezetet.
         * [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) 
@@ -90,7 +90,7 @@ A [item_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/s
 
 ## <a name="indexing-examples"></a>Indexelési példák
 
-A [index_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) a Python-minta bemutatja, hogyan végezheti el a következő feladatokat. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-types.md)és az [indexelési útvonalak](index-paths.md) fogalmi cikkei.
+A [index_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) a Python-minta bemutatja, hogyan végezheti el a következő feladatokat. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-overview.md#index-kinds)és az [indexelési útvonalak](index-policy.md#include-exclude-paths) fogalmi cikkei.
 
 | Feladat | API-referencia |
 | --- | --- |

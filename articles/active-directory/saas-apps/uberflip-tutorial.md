@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6aed014800be41ce5b9d1d86d137aefcf2585e98
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533146"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Oktatóanyag: Azure Active Directory integráció a Uberflip
 
@@ -96,7 +96,7 @@ Az Azure AD egyszeri bejelentkezés Uberflip való konfigurálásához hajtsa v�
 
 1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadhatja a válasz U R L-t.](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** ablaktáblán hajtsa végre a következő lépések egyikét attól függően, hogy melyik SSO-módot szeretné konfigurálni:
 
@@ -113,7 +113,7 @@ Az Azure AD egyszeri bejelentkezés Uberflip való konfigurálásához hajtsa v�
 
      `https://app.uberflip.com/users/login`
 
-     ![Uberflip tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
+     ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/both-signonurl.png)
 
 1. Az **egyszeri Sign-On beállítása az SAML** -panellel lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget, hogy letöltse az **összevonási metaadatok XML-** fájlját a megadott beállításokból, és mentse a számítógépre.
 

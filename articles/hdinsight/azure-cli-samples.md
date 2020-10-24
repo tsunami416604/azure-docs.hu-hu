@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d0d621728ac1956b2c036c9a45202c5d75ee9153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3181d4a0c605e0b1325f21de6b277e2b41f92d37
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499568"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487296"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-minták
 
@@ -26,13 +26,13 @@ Ez a cikk a gyakori feladatokhoz nyújt példákat. Mindegyik példához frissí
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure CLI. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) lépések.
+* Azure CLI. Lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) lépések.
 
 * Nem kötelező: bash. A cikkben szereplő példák a bash rendszerhéjt használják a Windows 10 rendszeren. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) rendszerhez.  A példák bizonyos kis módosításokkal egy Windows-parancssorból fognak működni.
 
 ## <a name="az-login"></a>az login
 
-[Jelentkezzen be az Azure-](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)ba.
+[Jelentkezzen be az Azure-](/cli/azure/reference-index#az-login)ba.
 
 ```azurecli
 az login
@@ -43,7 +43,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>az hdinsight Create
 
-[Létrehoz egy új fürtöt](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
+[Létrehoz egy új fürtöt](/cli/azure/hdinsight#az-hdinsight-create).
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>Fürt létrehozása meglévő Storage-fiókkal
 
@@ -176,7 +176,7 @@ az hdinsight create \
 
 ## <a name="az-hdinsight-application-create"></a>az hdinsight Application Create
 
-[Hozzon létre egy alkalmazást egy HDInsight-fürthöz](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create).
+[Hozzon létre egy alkalmazást egy HDInsight-fürthöz](/cli/azure/hdinsight/application#az-hdinsight-application-create).
 
 ### <a name="create-an-application-with-a-script-uri"></a>Alkalmazás létrehozása parancsfájl-URI-val
 
@@ -243,7 +243,7 @@ az hdinsight application create \
 
 ## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-Action Execute
 
-[Parancsfájl-műveletek végrehajtása a megadott HDInsight-fürtön](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).
+[Parancsfájl-műveletek végrehajtása a megadott HDInsight-fürtön](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute).
 
 ### <a name="execute-a-script-action-and-persist-on-success"></a>Parancsfájl-művelet végrehajtása és sikeres megtartása
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4a4af81c6a216119ae2e1b0221c06ddc349452f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115475"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478133"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése
 
@@ -65,13 +65,13 @@ A felhasználók a közös engedélyezési forgatókönyvekben láthatják a bel
     
     2. A felhasználók láthatják a hagyományos beleegyezés kérését.
 
-        ![Beleegyezés kérése 1b forgatókönyv esetén](./media/application-consent-experience/consent_prompt_1b.png)
+        ![A hagyományos beleegyezés kérdését bemutató képernyőkép.](./media/application-consent-experience/consent_prompt_1b.png)
 
 2. Olyan alkalmazásokhoz hozzáférő személyek, amelyek legalább egy olyan engedélyt igényelnek, amely a szolgáltatói hatókörén kívül esik.
     1. A rendszergazdák ugyanazt a kérést fogják látni, mint 1. a fentebb látható.
     2. A felhasználók nem kapnak engedélyt az alkalmazásnak, és megkérik a rendszergazdát, hogy hozzáférjenek az alkalmazáshoz. 
                 
-        ![Beleegyezés kérése 1b forgatókönyv esetén](./media/application-consent-experience/consent_prompt_2b.png)
+        ![Képernyőkép a jóváhagyásról, amely arra utasítja a felhasználót, hogy kérje meg a rendszergazdát, hogy hozzáférjen az alkalmazáshoz.](./media/application-consent-experience/consent_prompt_2b.png)
 
 3. Azok a személyek, akik navigálnak a rendszergazdai beleegyező folyamathoz, vagy átirányítják őket.
     1. A rendszergazda felhasználók láthatják a rendszergazdai jóváhagyást kérő üzenetet. Ebben a kérésben a cím és az engedély leírása módosult, a módosítások kiemelik azt a tényt, hogy a kérés elfogadásával az alkalmazás a teljes bérlő nevében hozzáférést biztosít a kért adathoz.
