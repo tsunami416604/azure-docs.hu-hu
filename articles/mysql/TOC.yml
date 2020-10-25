@@ -515,6 +515,14 @@
               items:
                 - name: Kapcsolódás TLS/SSL használatával
                   href: flexible-server/how-to-connect-tls-ssl.md
+        - name: Kiszolgáló paramétereinek konfigurálása
+          items:
+            - name: Azure Portal
+              href: flexible-server/how-to-configure-server-parameters-portal.md
+              displayName: server parameters
+            - name: Azure CLI
+              href: flexible-server/how-to-configure-server-parameters-cli.md
+              displayName: 'server parameters, cli'
         - name: Monitorozás és naplók
           items:
             - name: Riasztások létrehozása metrikákhoz

@@ -19,6 +19,7 @@
         - name: A parancssori felület használata
           href: fhir-paas-cli-quickstart.md
         - name: ARM-sablon használata
+          displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
     - name: Az FHIR-hez készült Azure IoT-összekötő üzembe helyezése (előzetes verzió) – portál
       href: iot-fhir-portal-quickstart.md
