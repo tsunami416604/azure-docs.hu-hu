@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 978fcb8c8cf9d2ffd929da5b76d7fd2ff109f420
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947064"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535858"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>Gyors útmutató: Azure Database for PostgreSQL rugalmas kiszolgáló létrehozása a Azure Portal
 
@@ -29,13 +29,13 @@ Nyissa meg a webböngészőjét, és lépjen a [portálra](https://portal.azure.
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 
-Az Azure Database for PostgreSQL-kiszolgáló a [számítási és tárolási erőforrások](./concepts-compute-storage.md) konfigurált készletével együtt jön létre. A kiszolgáló egy [Azure-erőforráscsoporton](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) belül jön létre.
+Az Azure Database for PostgreSQL-kiszolgáló a [számítási és tárolási erőforrások](./concepts-compute-storage.md) konfigurált készletével együtt jön létre. A kiszolgáló egy [Azure-erőforráscsoporton](../../azure-resource-manager/management/overview.md) belül jön létre.
 
 Azure Database for PostgreSQL-kiszolgáló létrehozásához kövesse az alábbi lépéseket:
 
 1. A portál bal felső sarkában válassza az **erőforrás létrehozása** (+) lehetőséget.
 
-2. Válassza az **adatbázisok**  >  **Azure Database for PostgreSQL**elemet.
+2. Válassza az **adatbázisok**  >  **Azure Database for PostgreSQL** elemet.
 
     :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
@@ -52,11 +52,11 @@ Azure Database for PostgreSQL-kiszolgáló létrehozásához kövesse az alábbi
     Előfizetés|Az Ön előfizetésének neve|A kiszolgálóhoz használni kívánt Azure-előfizetés. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyben az erőforrásért díjat kell fizetnie.
     Erőforráscsoport|*myresourcegroup*| Egy új erőforráscsoport neve vagy egy meglévő az előfizetéséből.
     Kiszolgálónév |*mydemoserver*|Egy egyedi név, amely az Azure Database for PostgreSQL-kiszolgálót azonosítja. A rendszer hozzáfűzi a *postgres.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgáló neve csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Legalább 3, és legfeljebb 63 karakterből állhat.
-    Rendszergazdai felhasználónév |*myadmin*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **azure_pg_admin**, **Admin**, **Administrator**, **root**, **Guest**vagy **Public**. Nem kezdődhet **pg_**.
+    Rendszergazdai felhasználónév |*myadmin*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser** , **azure_pg_admin** , **Admin** , **Administrator** , **root** , **Guest** vagy **Public** . Nem kezdődhet **pg_** .
     Jelszó |Az Ön jelszava| Egy új jelszó a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
     Hely|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.
     Verzió|A legújabb főverzió| A legújabb PostgreSQL-főverzió, hacsak nincsenek más konkrét követelmények.
-    Számítás + tárolás | **Általános célú**, **4 virtuális mag**, **512 GB**, **7 nap** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása**lehetőséget. *Általános célú*, *4 virtuális mag*, *512 GB*és *7 nap* a **számítási rétegek**, a **virtuális mag**, a **tárolók**és a **biztonsági másolatok megőrzési időszakának**alapértelmezett értékei. Ezeket a csúszkákat meghagyhatja, vagy módosíthatja is azokat. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
+    Számítás + tárolás | **Általános célú** , **4 virtuális mag** , **512 GB** , **7 nap** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása** lehetőséget. *Általános célú* , *4 virtuális mag* , *512 GB* és *7 nap* a **számítási rétegek** , a **virtuális mag** , a **tárolók** és a **biztonsági másolatok megőrzési időszakának** alapértelmezett értékei. Ezeket a csúszkákat meghagyhatja, vagy módosíthatja is azokat. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
 
     :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="A Azure Database for PostgreSQL a menüben":::
     
@@ -76,7 +76,7 @@ Azure Database for PostgreSQL-kiszolgáló létrehozásához kövesse az alábbi
 
     :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
-   Alapértelmezés szerint a **postgres** adatbázis a kiszolgáló alatt jön létre. A [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) adatbázis egy alapértelmezett adatbázis, amelyet a felhasználók, segédprogramok és külső féltől származó alkalmazások általi használatra szántak. (A másik alapértelmezett adatbázis az **azure_maintenance**. Az a feladata, hogy elkülönítse a felügyelt szolgáltatások folyamatait a felhasználói műveletektől. Ehhez az adatbázishoz nem lehet hozzáférni.)
+   Alapértelmezés szerint a **postgres** adatbázis a kiszolgáló alatt jön létre. A [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) adatbázis egy alapértelmezett adatbázis, amelyet a felhasználók, segédprogramok és külső féltől származó alkalmazások általi használatra szántak. (A másik alapértelmezett adatbázis az **azure_maintenance** . Az a feladata, hogy elkülönítse a felügyelt szolgáltatások folyamatait a felhasználói műveletektől. Ehhez az adatbázishoz nem lehet hozzáférni.)
 
     > [!NOTE]
     > A PostgreSQL-kiszolgálóhoz készült Azure-adatbázis kapcsolatai az 5432-es porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, lehetséges, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben addig nem tud csatlakozni a kiszolgálóhoz, amíg az informatikai részleg meg nem nyitja az 5432-es portot.
@@ -86,7 +86,7 @@ Azure Database for PostgreSQL-kiszolgáló létrehozásához kövesse az alábbi
 
 Az Azure Database for PostgreSQL-kiszolgáló létrehozásakor egy **postgres** nevű alapértelmezett adatbázis jön létre. Az adatbázis-kiszolgálóhoz való csatlakozáshoz a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra van szüksége. Ezeket a rövid útmutatóban korábban már feljegyezhette. Ha nem jegyezte fel, a kiszolgáló nevét és bejelentkezési adatait megtalálja a kiszolgáló **Áttekintés** lapján a portálon.
 
-Nyissa meg kiszolgáló **Áttekintés** lapját. Jegyezze fel a **kiszolgálónevet** és a **kiszolgáló-rendszergazdai bejelentkezési nevet**. Vigye az egérmutatót az egyes mezők fölé. Ekkor a szövegtől jobbra megjelenik a másolási szimbólum. Az értékek másolásához kattintson a másolási szimbólumra.
+Nyissa meg kiszolgáló **Áttekintés** lapját. Jegyezze fel a **kiszolgálónevet** és a **kiszolgáló-rendszergazdai bejelentkezési nevet** . Vigye az egérmutatót az egyes mezők fölé. Ekkor a szövegtől jobbra megjelenik a másolási szimbólum. Az értékek másolásához kattintson a másolási szimbólumra.
 
  :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
@@ -143,7 +143,7 @@ Számos különféle alkalmazással csatlakozhat a PostgreSQL-kiszolgálóhoz k�
 
 Ezzel csatlakozott az Azure Database for PostgreSQL-kiszolgálóhoz a psql-en keresztül, és létrehozott egy üres felhasználói adatbázist.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti az Azure-erőforráscsoportot, amely tartalmazza az erőforráscsoportban lévő összes erőforrást. Ha a többi erőforrást érintetlenül szeretné hagyni, csak a kiszolgálói erőforrást törölje.
 
@@ -152,9 +152,9 @@ Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforr�
 
 Ha az újonnan létrehozott kiszolgálót is magában foglaló teljes erőforráscsoportot törölni szeretné:
 
-1. Keresse meg az erőforráscsoportot a portálon. A bal oldali menüben válassza az **Erőforráscsoportok** lehetőséget. Válassza ki az erőforráscsoport nevét (ebben a példában **myresourcegroup**).
+1. Keresse meg az erőforráscsoportot a portálon. A bal oldali menüben válassza az **Erőforráscsoportok** lehetőséget. Válassza ki az erőforráscsoport nevét (ebben a példában **myresourcegroup** ).
 
-2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Adja meg az erőforráscsoport nevét, például a **myresourcegroup**, a szövegmezőben a törlés megerősítéséhez. Válassza a **Törlés** elemet.
+2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Adja meg az erőforráscsoport nevét, például a **myresourcegroup** , a szövegmezőben a törlés megerősítéséhez. Válassza a **Törlés** elemet.
 
 Csak az újonnan létrehozott kiszolgáló törlése:
 
@@ -164,7 +164,7 @@ Csak az újonnan létrehozott kiszolgáló törlése:
 
     :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
-3. Erősítse meg a törölni kívánt kiszolgáló nevét, és tekintse meg az érintett adatbázisokat. Adja meg a kiszolgáló nevét a szövegmezőben, például: **mydemoserver**. Válassza a **Törlés** elemet.
+3. Erősítse meg a törölni kívánt kiszolgáló nevét, és tekintse meg az érintett adatbázisokat. Adja meg a kiszolgáló nevét a szövegmezőben, például: **mydemoserver** . Válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]

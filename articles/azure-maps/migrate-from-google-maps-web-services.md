@@ -67,7 +67,7 @@ Azure Maps számos további REST-webszolgáltatással rendelkezik, amelyek érde
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
@@ -132,7 +132,7 @@ A Azure Maps fordított helymeghatározáshoz API további funkciókkal rendelke
 A helyek keresési API-ját a Google Maps szolgáltatásban keresheti meg. Ez az API három különböző módszert biztosít a fontos helyek kereséséhez:
 
 - **Hely keresése a következő szövegből:** Megkeresi az érdeklődési pontot a neve, címe vagy telefonszáma alapján.
-- **Közeli keresés**: megkeresi azokat az érdeklődési pontokat, amelyek egy adott távolságon belül vannak.
+- **Közeli keresés** : megkeresi azokat az érdeklődési pontokat, amelyek egy adott távolságon belül vannak.
 - **Szöveges keresés:** Megkeresi a helyeket egy szabad formátumú szöveggel, amely az érdeklődési pont és a hely adatait is tartalmazza. Például: "pizza a New York-ban" vagy "éttermek a Main St közelében".
 
 Azure Maps számos keresési API-t biztosít a hasznos helyek számára:
@@ -337,7 +337,7 @@ A `iconType` létrehozandó PIN-kód típusát adja meg. A következő értékek
 - `custom` – Meghatározza, hogy egyéni ikont kell használni. Az ikon képére mutató URL-címet a rendszer a `pins` PIN-kód helye információinak lejárta után is hozzáadhatja a paraméter végéhez.
 - `{udid}` – Egyedi Adatazonosító (UDID) a Azure Maps adattárolási platformon tárolt ikonhoz.
 
-Adja hozzá a PIN-kód stílusát a `optionNameValue` formátumhoz. Több stílust is elkülönít a pipe ( \| ) karakterekkel. Például így: `iconType|optionName1Value1|optionName2Value2`. A beállítások nevei és értékei nincsenek elválasztva. A következő stílus-beállítási neveket használja a Style jelölőknek:
+Adja hozzá a PIN-kód stílusát a `optionNameValue` formátumhoz. Több stílust is elkülönít a pipe ( \| ) karakterekkel. Például: `iconType|optionName1Value1|optionName2Value2`. A beállítások nevei és értékei nincsenek elválasztva. A következő stílus-beállítási neveket használja a Style jelölőknek:
 
 - `al` – A jelölő opacitását (alfa) adja meg. 0 és 1 közötti számot adjon meg.
 - `an` – Megadja a PIN-kód horgonyát. X és y képpont értékeket az "x y" formátumban kell megadni.
@@ -487,7 +487,7 @@ Ezek a nyílt forráskódú ügyféloldali kódtárak más programozási nyelvek
 
 - .NET Standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet csomag](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Maps REST-szolgáltatásokról:
 

@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66d09503f5db95811f807aa7faa83b92facca992
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74771088"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543695"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Oktatóanyag: Azure Database for MySQL-kiszolgáló kiépítése Azure Resource Manager sablon használatával
 
-A [Azure Database for MySQL REST API](https://docs.microsoft.com/rest/api/mysql/) lehetővé teszi, hogy a DevOps-mérnökök automatizálják és integrálják a felügyelt MySQL-kiszolgálók és adatbázisok üzembe helyezését, konfigurálását és működését az Azure-ban.  Az API lehetővé teszi a MySQL-kiszolgálók és-adatbázisok létrehozását, számbavételét, kezelését és törlését a Azure Database for MySQL szolgáltatásban.
+A [Azure Database for MySQL REST API](/rest/api/mysql/) lehetővé teszi, hogy a DevOps-mérnökök automatizálják és integrálják a felügyelt MySQL-kiszolgálók és adatbázisok üzembe helyezését, konfigurálását és működését az Azure-ban.  Az API lehetővé teszi a MySQL-kiszolgálók és-adatbázisok létrehozását, számbavételét, kezelését és törlését a Azure Database for MySQL szolgáltatásban.
 
-Azure Resource Manager kihasználja az alapul szolgáló REST APIt, hogy az üzembe helyezéshez szükséges Azure-erőforrásokat kinyilvánítsa és bemutasson, és az infrastruktúrát a kód koncepciójának megfelelően hangolja össze. A sablon felparaméterezi az Azure-erőforrás nevét, az SKU-t, a hálózatot, a tűzfal konfigurációját és a beállításokat, ami lehetővé teszi, hogy egyszerre legyen létrehozva, és többször is használható legyen.  Azure Resource Manager sablonok könnyen létrehozhatók [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) vagy [Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI)használatával. Lehetővé teszik az alkalmazások csomagolását, a szabványosítást és az üzembe helyezés automatizálását, amely integrálható az DevOps CI/CD-folyamatba.  Ha például gyorsan szeretne üzembe helyezni egy webalkalmazást Azure Database for MySQL háttérrel, akkor a GitHub-galériából elvégezheti a végpontok közötti telepítést a gyors üzembe helyezési [sablon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) használatával.
+Azure Resource Manager kihasználja az alapul szolgáló REST APIt, hogy az üzembe helyezéshez szükséges Azure-erőforrásokat kinyilvánítsa és bemutasson, és az infrastruktúrát a kód koncepciójának megfelelően hangolja össze. A sablon felparaméterezi az Azure-erőforrás nevét, az SKU-t, a hálózatot, a tűzfal konfigurációját és a beállításokat, ami lehetővé teszi, hogy egyszerre legyen létrehozva, és többször is használható legyen.  Azure Resource Manager sablonok könnyen létrehozhatók [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) vagy [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI)használatával. Lehetővé teszik az alkalmazások csomagolását, a szabványosítást és az üzembe helyezés automatizálását, amely integrálható az DevOps CI/CD-folyamatba.  Ha például gyorsan szeretne üzembe helyezni egy webalkalmazást Azure Database for MySQL háttérrel, akkor a GitHub-galériából elvégezheti a végpontok közötti telepítést a gyors üzembe helyezési [sablon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) használatával.
 
 Ebben az oktatóanyagban Azure Resource Manager sablonnal és más segédprogramokkal megismerheti a következőket:
 
@@ -115,7 +115,7 @@ A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és 
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualifiedDomainName** és **administratorLogin**.
+Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualifiedDomainName** és **administratorLogin** .
 ```json
 {
   "administratorLogin": "myadmin",
@@ -199,7 +199,7 @@ A sor az adatok lekérésekor megfelelően frissül.
 SELECT * FROM inventory;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag a következőket mutatta be:
 > [!div class="checklist"]
 > * Azure Database for MySQL kiszolgáló létrehozása a VNet szolgáltatás-végponttal Azure Resource Manager sablon használatával

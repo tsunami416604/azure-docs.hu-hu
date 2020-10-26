@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: bd2f91a697fffa1ef83f5173a394686245cf9826
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488911"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544834"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Tervezett karbantartási értesítések Azure Database for MySQL – egyetlen kiszolgálón
 
@@ -46,22 +46,22 @@ Megtekintheti a tervezett karbantartási értesítést Azure Portal vagy konfigu
 
 ### <a name="check-planned-maintenance-notification-from-azure-portal"></a>Az Azure Portal tervezett karbantartási értesítésének keresése
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **Service Health**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza a **Service Health** lehetőséget.
 2. **Tervezett karbantartás** lap kiválasztása
-3. Válassza ki az **előfizetést**, * * régiót és **szolgáltatást** , amelyre vonatkozóan meg szeretné adni a tervezett karbantartási értesítést. 
+3. Válassza ki az **előfizetést** , * * régiót és **szolgáltatást** , amelyre vonatkozóan meg szeretné adni a tervezett karbantartási értesítést. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Tervezett karbantartási értesítés fogadása
 
-1. A [portálon](https://portal.azure.com)válassza a **Service Health**lehetőséget.
-2. A **riasztások** szakaszban válassza az **állapot riasztások**lehetőséget.
+1. A [portálon](https://portal.azure.com)válassza a **Service Health** lehetőséget.
+2. A **riasztások** szakaszban válassza az **állapot riasztások** lehetőséget.
 3. Válassza a **+ szolgáltatás állapotára vonatkozó riasztás hozzáadása** lehetőséget, és töltse ki a mezőket.
 4. Töltse ki a kötelező mezőket. 
-5. Válassza ki az **esemény típusát**, válassza a **tervezett karbantartás** lehetőséget, vagy **válassza az összes lehetőséget** .
+5. Válassza ki az **esemény típusát** , válassza a **tervezett karbantartás** lehetőséget, vagy **válassza az összes lehetőséget** .
 6. A **műveleti csoportok** azt határozzák meg, hogyan szeretné fogadni a riasztást (e-mail küldése, logikai alkalmazás elindítása stb.)  
 7. Győződjön meg arról, hogy az engedélyezés szabály a létrehozáskor Igen értékre van állítva.
 8. Válassza a riasztási **szabály létrehozása** lehetőséget a riasztás befejezéséhez
 
-A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
+A **szolgáltatás állapotára vonatkozó riasztások** létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications-portal.md).
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Törölhetem vagy elhalasztom a tervezett karbantartást?
 

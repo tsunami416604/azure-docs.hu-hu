@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88211313"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544511"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure cache a Redis-fejlesztéssel kapcsolatos gyakori kérdések
 
@@ -55,8 +55,8 @@ A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyak
 
 * **Újrapróbálkozások**
   * A ConnectRetry és a ConnectTimeout esetében az általános útmutató fail fast, majd újra próbálkozik. Ez az útmutató a számítási feladatokon alapul, és mennyi időt vesz igénybe az ügyfél számára, hogy kiadjon egy Redis-parancsot, és választ kapjon.
-  * Hagyja, hogy a StackExchange. Redis automatikusan újracsatlakozik a kapcsolat állapotának ellenőrzése és az újbóli csatlakoztatása helyett. **Kerülje a ConnectionMultiplexer. IsConnected tulajdonság használatát**.
-  * Bevezetés – időnként előfordulhat, hogy az újrapróbálkozást és a hógolyó újrapróbálkozását, illetve a rendszer soha nem állítja vissza. Ha bekövetkezik a bevezetést, érdemes lehet egy exponenciális leállítási újrapróbálkozási algoritmust használni a Microsoft Patterns & Practices csoport által közzétett [általános útmutató](../best-practices-retry-general.md) című témakörben leírtak szerint.
+  * Hagyja, hogy a StackExchange. Redis automatikusan újracsatlakozik a kapcsolat állapotának ellenőrzése és az újbóli csatlakoztatása helyett. **Kerülje a ConnectionMultiplexer. IsConnected tulajdonság használatát** .
+  * Bevezetés – időnként előfordulhat, hogy az újrapróbálkozást és a hógolyó újrapróbálkozását, illetve a rendszer soha nem állítja vissza. Ha bekövetkezik a bevezetést, érdemes lehet egy exponenciális leállítási újrapróbálkozási algoritmust használni a Microsoft Patterns & Practices csoport által közzétett [általános útmutató](/azure/architecture/best-practices/transient-faults) című témakörben leírtak szerint.
   
 * **Időtúllépési értékek**
   * Vegye figyelembe a számítási feladatokat, és ennek megfelelően állítsa be az értékeket. Ha nagyméretű értékeket tárol, állítsa az időtúllépést magasabb értékre.
@@ -64,7 +64,7 @@ A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyak
   * Egyetlen ConnectionMultiplexer-példányt használjon az alkalmazáshoz. A LazyConnection használatával létrehozhat egyetlen, a kapcsolati tulajdonság által visszaadott példányt, ahogy az a [ConnectionMultiplexer osztály használatával a gyorsítótárhoz való kapcsolódással](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)is látható.
   * Állítsa a `ConnectionMultiplexer.ClientName` tulajdonságot az alkalmazás-példány egyedi nevére diagnosztikai célokra.
   * Több `ConnectionMultiplexer` példány használata az egyéni munkaterhelésekhez.
-      * Ezt a modellt követheti, ha eltérő terhelést használ az alkalmazásban. Példa:
+      * Ezt a modellt követheti, ha eltérő terhelést használ az alkalmazásban. Például:
       * A nagyméretű kulcsok kezeléséhez egy multiplexer is tartozhat.
       * A kis kulcsok kezeléséhez egy multiplexer is tartozhat.
       * Megadhat különböző értékeket a kapcsolati időtúllépésekhez, és újrapróbálkozhat a logikával minden egyes használt ConnectionMultiplexer.
@@ -109,7 +109,7 @@ A [Redis parancsokban](https://redis.io/commands#) felsorolt parancsok bármelyi
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> A Redis parancssori eszközei nem működnek a TLS-porttal, de használhatnak olyan segédprogramot, `stunnel` amely az eszközök TLS-porthoz való biztonságos csatlakoztatásához szükséges utasításokat követve a [Redis parancssori eszköz használata az Azure cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) című cikkben található útmutatást.
+> A Redis parancssori eszközei nem működnek a TLS-porttal, de használhatnak olyan segédprogramot, `stunnel` amely az eszközök TLS-porthoz való biztonságos csatlakoztatásához szükséges utasításokat követve a [Redis parancssori eszköz használata az Azure cache for Redis](./cache-how-to-redis-cli-tool.md) című cikkben található útmutatást.
 >
 >
 

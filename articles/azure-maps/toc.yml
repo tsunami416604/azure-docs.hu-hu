@@ -95,6 +95,8 @@
   items:
     - name: Maps-fiókok kezelése
       items:
+        - name: Fiók létrehozása ARM-sablon használatával
+          href: how-to-create-template.md
         - name: Fiókok kezelése
           href: how-to-manage-account-keys.md
         - name: Hitelesítés kezelése

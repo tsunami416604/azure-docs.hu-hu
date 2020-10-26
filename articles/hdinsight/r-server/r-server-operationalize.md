@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20159cf911670eb70fd5757991c07b63b3f1776b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087690"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536266"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Működővé tenni ML Services-fürt az Azure HDInsight
 
@@ -21,14 +21,14 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , majd a **ml-szolgáltatások** kiválasztása a **fürt típusához**.
+* Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , majd a **ml-szolgáltatások** kiválasztása a **fürt típusához** .
 
 * Secure Shell- (SSH-) ügyfél: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információ: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Működővé tenni ML Services-fürt egy beépített konfigurációval
 
 > [!NOTE]  
-> Az alábbi lépések a R Server 9,0 és a ML Server 9,1-es verzióra vonatkoznak. ML Server 9,3 esetében tekintse meg a [operacionalizálási-konfiguráció felügyeletét a felügyeleti eszköz használatával](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch)című témakört.
+> Az alábbi lépések a R Server 9,0 és a ML Server 9,1-es verzióra vonatkoznak. ML Server 9,3 esetében tekintse meg a [operacionalizálási-konfiguráció felügyeletét a felügyeleti eszköz használatával](/machine-learning-server/operationalize/configure-admin-cli-launch)című témakört.
 
 1. Jelentkezzen be SSH-n keresztül az élcsomópontba.
 
@@ -54,7 +54,7 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
         sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
         ```
 
-1. A választható lehetőségek közül választhat. Válassza az első lehetőséget, ahogyan az a következő képernyőképen is látható, a **operacionalizálási ml Server konfigurálásához**.
+1. A választható lehetőségek közül választhat. Válassza az első lehetőséget, ahogyan az a következő képernyőképen is látható, a **operacionalizálási ml Server konfigurálásához** .
 
     ![R Server felügyeleti segédprogram kiválasztása](./media/r-server-operationalize/admin-util-one-box-1.png)
 
@@ -74,7 +74,7 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
 
     ![R Server felügyeleti segédprogram diagnosztika](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
-    b. A diagnosztikai tesztek menüből válassza ki **a**következőt:. Ha a rendszer kéri, adja meg a helyi rendszergazda felhasználóhoz megadott jelszót.
+    b. A diagnosztikai tesztek menüből válassza ki **a** következőt:. Ha a rendszer kéri, adja meg a helyi rendszergazda felhasználóhoz megadott jelszót.
 
     ![R Server felügyeleti segédprogram tesztelése](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
@@ -103,7 +103,7 @@ chmod 777 /var/RevoShare/rserve2
 rxSparkConnect(reset = TRUE)
 ```
 
-Az operacionalizálás konfigurációja ezzel befejeződött. Most már használhatja a `mrsdeploy` csomagot a rclientben, hogy csatlakozhasson a operacionalizálási a peremhálózati csomóponton, és megkezdje az olyan funkciók használatát, mint a [távoli végrehajtás](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) és a [webes szolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). Attól függően, hogy fürt virtuális hálózaton van-e beállítva, szükség lehet porttovábbító bújtatás kialakítására SSH-bejelentkezésen keresztül. Az alábbi szakaszok ismertetik, hogyan állíthatja be ezt az alagutat.
+Az operacionalizálás konfigurációja ezzel befejeződött. Most már használhatja a `mrsdeploy` csomagot a rclientben, hogy csatlakozhasson a operacionalizálási a peremhálózati csomóponton, és megkezdje az olyan funkciók használatát, mint a [távoli végrehajtás](/machine-learning-server/r/how-to-execute-code-remotely) és a [webes szolgáltatások](/machine-learning-server/operationalize/concept-what-are-web-services). Attól függően, hogy fürt virtuális hálózaton van-e beállítva, szükség lehet porttovábbító bújtatás kialakítására SSH-bejelentkezésen keresztül. Az alábbi szakaszok ismertetik, hogyan állíthatja be ezt az alagutat.
 
 ### <a name="ml-services-cluster-on-virtual-network"></a>ML Services-fürt a virtuális hálózaton
 
@@ -155,17 +155,17 @@ A munkavégző csomópontok leszereléséhez kövesse az alábbi lépéseket:
 
 1. Válassza ki a munkavégző csomópontokat (leszerelni kívánt).
 
-1. Kattintson a **műveletek**  >  **kiválasztott gazdagépek**  >  **gazdagépek**  >  **karbantartási mód bekapcsolása**elemre. A következő képen például a wn3 és a wn4 pontokat választottuk ki leszerelésre.  
+1. Kattintson a **műveletek**  >  **kiválasztott gazdagépek**  >  **gazdagépek**  >  **karbantartási mód bekapcsolása** elemre. A következő képen például a wn3 és a wn4 pontokat választottuk ki leszerelésre.  
 
    ![Az Apache Ambari bekapcsolja a karbantartási módot](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **adatcsomópontok** > kattintson a **leszerelés**elemre.
-* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **csomópontkezelők** > kattintson a **leszerelés**elemre.
-* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **adatcsomópontok** > kattintson a **Leállítás**gombra.
-* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **csomópontkezelők** > kattintson a **Leállítás**gombra.
-* Válassza **Actions**  >  a**kijelölt gazdagépek**gazdagépek  >  **Hosts** > kattintson **az összes összetevő leállítása**elemre.
+* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **adatcsomópontok** > kattintson a **leszerelés** elemre.
+* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **csomópontkezelők** > kattintson a **leszerelés** elemre.
+* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **adatcsomópontok** > kattintson a **Leállítás** gombra.
+* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **csomópontkezelők** > kattintson a **Leállítás** gombra.
+* Válassza **Actions**  >  a **kijelölt gazdagépek** gazdagépek  >  **Hosts** > kattintson **az összes összetevő leállítása** elemre.
 * Szüntesse meg a feldolgozó csomópontok kijelölését, és jelölje ki az átjárócsomópontokat.
-* Válassza **Actions**  >  a**kijelölt gazdagépek** > "**gazdagépek**  >  **újraindítása az összes összetevőt**.
+* Válassza **Actions**  >  a **kijelölt gazdagépek** > " **gazdagépek**  >  **újraindítása az összes összetevőt** .
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2. lépés: a számítási csomópontok konfigurálása az összes leszerelt feldolgozó csomópont (ok) számára
 
@@ -177,7 +177,7 @@ A munkavégző csomópontok leszereléséhez kövesse az alábbi lépéseket:
     dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
     ```
 
-1. Adja meg az **1** értéket, és válassza **a operacionalizálási ml Server konfigurálása**lehetőséget.
+1. Adja meg az **1** értéket, és válassza **a operacionalizálási ml Server konfigurálása** lehetőséget.
 
 1. Adja meg a **C** értéket a lehetőség kiválasztásához `C. Compute node` . Ez konfigurálja a számítási csomópontot a feldolgozó csomóponton.
 
@@ -189,7 +189,7 @@ Miután az összes leszerelt feldolgozó csomópont konfigurálva van a számít
 
 1. Jelentkezzen be SSH-n keresztül az élcsomópontba.
 
-1. A `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` parancs futtatása.
+1. Futtassa a `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` parancsot.
 
 1. Keresse meg az "URI-k" szakaszt, és adja hozzá a feldolgozói csomópont IP-címét és portjának adatait.
 
@@ -202,7 +202,7 @@ Miután az összes leszerelt feldolgozó csomópont konfigurálva van a számít
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az ML-szolgáltatások fürtjének kezelése a HDInsighton](r-server-hdinsight-manage.md)
 * [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)

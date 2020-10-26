@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e48d14fae4f62b92b5a8d08f83fea6d2e2ed3fe
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c8bb8ad4baec4c59a78afd6a92d69e94240c056a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424940"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542624"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB az Azure CLI és a REST API használatával
 
@@ -23,7 +23,7 @@ Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelh
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- [Az Azure CLI 2,0 telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Az Azure CLI 2,0 telepítése](/cli/azure/install-azure-cli)
 - Egy [Azure Database for MariaDB kiszolgáló](quickstart-create-mariadb-server-database-using-azure-portal.md) , amely forráskiszolgálóként lesz felhasználva. 
 
 > [!IMPORTANT]
@@ -42,7 +42,7 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 
 A `az mariadb server replica create` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description (Leírás)  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | name | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
@@ -72,7 +72,7 @@ az mariadb server replica list --server-name mydemoserver --resource-group myres
 
 A `az mariadb server replica list` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description (Leírás)  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | server-name | mydemoserver | A forráskiszolgáló neve vagy azonosítója. |
@@ -90,7 +90,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 A `az mariadb server replica stop` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description (Leírás)  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a replika-kiszolgáló létezik.  |
 | name | mydemoreplicaserver | Annak a replika-kiszolgálónak a neve, amelyen a replikálást le kell állítani. |
@@ -179,6 +179,6 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [olvasási replikáról](concepts-read-replicas.md)

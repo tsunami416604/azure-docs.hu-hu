@@ -297,17 +297,15 @@
           href: index-conversation-scenarios.yml
         - name: Beszédátírás
           items:
-            - name: Áttekintés
-              items:
-                - name: Mi az a beszédátírás?
-                  href: conversation-transcription.md
+            - name: Beszédátírás – áttekintés
+              href: conversation-transcription.md
+            - name: Valós idejű beszédátírás – gyorsútmutató
+              href: how-to-use-conversation-transcription.md
             - name: Útmutatók
               items:
                 - name: Telefonos ügyfélszolgálati helyzetek kezelése
                   displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
                   href: call-center-transcription.md
-                - name: Valós idejű beszédátírás
-                  href: how-to-use-conversation-transcription.md
                 - name: Aszinkron beszédátírás
                   href: how-to-async-conversation-transcription.md
             - name: Referencia
@@ -341,14 +339,10 @@
                       href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
         - name: Több eszközös beszélgetés
           items:
-            - name: Áttekintés
-              items:
-                - name: Mi az a több eszközös beszélgetés?
-                  href: multi-device-conversation.md
-            - name: Első lépések
-              items:
-                - name: Beszélgetések indítása és az azokhoz való csatlakozás
-                  href: quickstarts/multi-device-conversation.md
+            - name: Több eszközös beszélgetés – áttekintés
+              href: multi-device-conversation.md
+            - name: Több eszközös beszélgetés – gyorsútmutató
+              href: quickstarts/multi-device-conversation.md
             - name: Referencia
               items:
                 - name: Beszéd SDK
@@ -363,12 +357,8 @@
       items:
         - name: A hangvezérelt asszisztensek dokumentációja
           href: index-voice-assistants.yml
-        - name: Áttekintés
-          items:
-            - name: Mi az a hangvezérelt asszisztens?
-              href: voice-assistants.md
-            - name: Hangvezérelt asszisztens mintái (GitHub)
-              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: A hangvezérelt asszisztensek áttekintése
+          href: voice-assistants.md
         - name: Custom Commands
           items:
             - name: Mik azok az egyéni parancsok?

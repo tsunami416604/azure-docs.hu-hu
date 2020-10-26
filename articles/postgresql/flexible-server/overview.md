@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91439970"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532662"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -90,11 +90,9 @@ A rugalmas kiszolgáló szolgáltatás beépített teljesítmény-figyelési és
 
 A szolgáltatás a PostgreSQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újraszámítási költségeket igényel a PostgreSQL-motoron kifejlesztett meglévő alkalmazások rugalmas kiszolgálóra történő áttelepítéséhez. 
 
-- **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközök használatával, mint a pg_dump és az pg_restore a leggyorsabb áttelepítési módot biztosítanak. A részletekért lásd: az [áttelepítés a dump és a Restore használatával](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore) .
-- **Azure Database Migration Service** – a rugalmas kiszolgáló zökkenőmentes és egyszerűbb áttelepítésének minimális állásidővel való kihasználása érdekében Azure Database Migration Service használható. Lásd a DMS-t a [portálon](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) és a DMS-n [keresztül a parancssori](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)felületen Áttelepítheti az Azure Database for PostgreSQL – egyetlen kiszolgálóról a rugalmas kiszolgálóra. További részletekért tekintse meg ezt a [DMS-cikket](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) .
+- **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközök használatával, mint a pg_dump és az pg_restore a leggyorsabb áttelepítési módot biztosítanak. A részletekért lásd: az [áttelepítés a dump és a Restore használatával](../howto-migrate-using-dump-and-restore.md) .
+- **Azure Database Migration Service** – a rugalmas kiszolgáló zökkenőmentes és egyszerűbb áttelepítésének minimális állásidővel való kihasználása érdekében Azure Database Migration Service használható. Lásd a DMS-t a [portálon](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) és a DMS-n [keresztül a parancssori](../../dms/tutorial-postgresql-azure-postgresql-online.md)felületen Áttelepítheti az Azure Database for PostgreSQL – egyetlen kiszolgálóról a rugalmas kiszolgálóra. További részletekért tekintse meg ezt a [DMS-cikket](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy elolvasta a Azure Database for PostgreSQL rugalmas kiszolgáló üzembe helyezési módjának bevezetését, készen áll az első kiszolgáló létrehozására: [hozzon létre egy Azure Database for PostgreSQL-rugalmas kiszolgálót a Azure Portal használatával](./quickstart-create-server-portal.md)
-
-

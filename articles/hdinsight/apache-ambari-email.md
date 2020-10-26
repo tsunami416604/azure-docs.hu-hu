@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdce735bdacbe7ff0752650c6949fdb361342c73
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541662"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542556"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Oktatóanyag: az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsight
 
@@ -26,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy SendGrid e-mail-fiók. Lásd: az [e-mailek küldése az SendGrid használatával az Azure-](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email) ban utasításokért.
+* Egy SendGrid e-mail-fiók. Lásd: az [e-mailek küldése az SendGrid használatával az Azure-](../sendgrid-dotnet-how-to-send-email.md) ban utasításokért.
 
 * An méretű HDInsight-fürt. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](./hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -34,15 +34,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a SendGrid-erőforráshoz.
 
-1. Az Áttekintés lapon válassza a **kezelés**lehetőséget, hogy a fiókja SendGrid weboldalát lépjen.
+1. Az Áttekintés lapon válassza a **kezelés** lehetőséget, hogy a fiókja SendGrid weboldalát lépjen.
 
     ![A SendGrid áttekintése az Azure Portalon](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
 
-1. A bal oldali menüben navigáljon a fiók nevére, majd adja meg a **fiók adatait**.
+1. A bal oldali menüben navigáljon a fiók nevére, majd adja meg a **fiók adatait** .
 
     ![SendGrid-irányítópult navigációja](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
 
-1. A **fiók részletei** lapon jegyezze fel a **felhasználónevet**.
+1. A **fiók részletei** lapon jegyezze fel a **felhasználónevet** .
 
     ![SendGrid-fiók részletei](./media/apache-ambari-email/sendgrid-account-details.png)
 
@@ -50,7 +50,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts` , ahol a a `CLUSTERNAME` fürt neve.
 
-1. A **műveletek** legördülő listában válassza az **értesítések kezelése**lehetőséget.
+1. A **műveletek** legördülő listában válassza az **értesítések kezelése** lehetőséget.
 
 1. A **Riasztási értesítések kezelése** ablakban válassza ki az **+** ikont.
 
@@ -60,11 +60,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     |Tulajdonság |Leírás |
     |---|---|
-    |Name (Név)|Adja meg az értesítés nevét.|
+    |Név|Adja meg az értesítés nevét.|
     |Csoportok|Konfigurálja a kívánt módon.|
     |Súlyosság|Konfigurálja a kívánt módon.|
-    |Leírás|Választható.|
-    |Metódus|Hagyjon **e-mailt**.|
+    |Description (Leírás)|Választható.|
+    |Módszer|Hagyjon **e-mailt** .|
     |E-mail cím|Adja meg az e-maileket az értesítések fogadásához, vesszővel elválasztva.|
     |SMTP-kiszolgáló|`smtp.sendgrid.net`|
     |SMTP-port|25 vagy 587 (titkosítatlan/TLS-kapcsolatokhoz).|
@@ -79,9 +79,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     Kattintson a **Mentés** gombra. Visszatér a **Riasztási értesítések kezelése** ablakra.
 
-1. A **Riasztási értesítések kezelése** ablakban válassza a **Bezárás**lehetőséget.
+1. A **Riasztási értesítések kezelése** ablakban válassza a **Bezárás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja az Apache Ambari e-mailes értesítéseit a SendGrid használatával. Az Apache Ambari használatával kapcsolatos további tudnivalókért tekintse meg a következőt:
 

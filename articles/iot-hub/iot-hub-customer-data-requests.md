@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 1fdff6e1c29b8484aaea3bb647e2f1738d1889c6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: df1d4f3a12c6e15e2954bb0e02454ef58b22cb73
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142241"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535790"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Az Azure IoT Hub-eszközök felhasználói adatkérési funkciói
 
@@ -30,7 +30,7 @@ Ha az Azure IoT Hub szolgáltatás útválasztási funkciójával továbbítja a
 
 Ha az Azure IoT Hub szolgáltatás Azure Event Grid integrációs szolgáltatását használja, akkor az egyes előfizetőknél az adatkéréseket a bérlői rendszergazdának kell elvégrehajtania. További információ: [IoT hub eseményekre való reagálás Event Grid használatával](iot-hub-event-grid.md).
 
-Ha az Azure IoT Hub szolgáltatás Azure Monitor integrációs funkciójával diagnosztikai naplókat hoz létre, akkor az adatkéréseket a bérlői rendszergazdának kell végrehajtania a tárolt naplókon. További információ: [Az Azure IoT hub állapotának monitorozása](iot-hub-monitor-resource-health.md).
+Ha az Azure IoT Hub szolgáltatás Azure Monitor integrációs funkciójával erőforrás-naplókat hoz létre, akkor az adatkéréseket a bérlői rendszergazdának kell végrehajtania a tárolt naplókon. További információ: [IoT hub figyelése](monitor-iot-hub.md).
 
 ## <a name="deleting-customer-data"></a>Ügyféladatok törlése
 

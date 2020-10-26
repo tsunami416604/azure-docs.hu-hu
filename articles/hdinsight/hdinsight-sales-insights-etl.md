@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: a37729849bc9702fb6823c11d4534cf35df72abf
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 17e4468785ff113a85265a17a8314a0174d5d360
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489523"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535382"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Oktatóanyag: végpontok közötti adatfolyamat létrehozása az értékesítési elemzések létrehozásához az Azure HDInsight
 
@@ -23,7 +23,7 @@ Ez az adatfolyamat a különböző áruházakból származó adatok összegyűjt
 
 ![ETL-architektúra](./media/hdinsight-sales-insights-etl/architecture.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 * Az [Azure beépített szerepkör-tulajdonosának](../role-based-access-control/built-in-roles.md)tagja.
 
-* Ha a PowerShell használatával indítja el a Data Factory folyamatot, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/).
+* Ha a PowerShell használatával indítja el a Data Factory folyamatot, szüksége lesz az az [modulra](/powershell/azure/).
 
 * [Power bi Desktop](https://aka.ms/pbiSingleInstaller) az oktatóanyag végén az üzleti eredmények megjelenítéséhez.
 
@@ -110,7 +110,7 @@ A fürtökhöz való SSH-hozzáférés alapértelmezett jelszava `Thisisapasswor
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Az üzembe helyezés ellenőrzése és az erőforrások adatainak összegyűjtése
 
-1. Ha szeretné megtekinteni az üzemelő példány állapotát, nyissa meg az erőforráscsoportot a Azure Portal. A **Beállítások**területen válassza a **központi telepítések**, majd a telepítés lehetőséget. Itt láthatja a sikeresen telepített erőforrásokat és a még folyamatban lévő erőforrásokat.
+1. Ha szeretné megtekinteni az üzemelő példány állapotát, nyissa meg az erőforráscsoportot a Azure Portal. A **Beállítások** területen válassza a **központi telepítések** , majd a telepítés lehetőséget. Itt láthatja a sikeresen telepített erőforrásokat és a még folyamatban lévő erőforrásokat.
 
 1. A fürtök neveinek megtekintéséhez írja be a következő parancsot:
 
@@ -214,7 +214,7 @@ A folyamat elindításához a következők közül választhat:
 
     Vagy
 
-* Nyissa meg az adatelőállítót, és válassza a **szerző & figyelő**elemet. A `IngestAndTransform` folyamat elindítása a portálról. A folyamatoknak a portálon keresztüli aktiválásával kapcsolatos további információkért lásd: [igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
+* Nyissa meg az adatelőállítót, és válassza a **szerző & figyelő** elemet. A `IngestAndTransform` folyamat elindítása a portálról. A folyamatoknak a portálon keresztüli aktiválásával kapcsolatos további információkért lásd: [igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
 
 A folyamat futtatásának ellenőrzéséhez hajtsa végre a következő lépések egyikét:
 
@@ -252,26 +252,26 @@ Az HDInsight használatával történő adatátalakítás egyéb módjairól [eb
 
 1. Nyissa meg a Power BI Desktopot.
 
-1. A menüből válassza az **adatok lekérése**  >  **továbbiak...**  >  lehetőséget. **Azure**  >  **HDInsight interaktív lekérdezés**.
+1. A menüből válassza az **adatok lekérése**  >  **továbbiak...**  >  lehetőséget. **Azure**  >  **HDInsight interaktív lekérdezés** .
 
 1. Válassza a **Kapcsolódás** lehetőséget.
 
 1. A **HDInsight interaktív lekérdezés** párbeszédpanelen:
     1. A **kiszolgáló** szövegmezőbe írja be a LLAP-fürt nevét a formátuma mezőbe `https://LLAPCLUSTERNAME.azurehdinsight.net` .
     1. Az **adatbázis** szövegmezőbe írja be a értéket `default` .
-    1. Válassza az **OK** lehetőséget.
+    1. Kattintson az **OK** gombra.
 
 1. A **AzureHive** párbeszédpanelen:
     1. A **Felhasználónév** szövegmezőbe írja be a nevet `admin` .
     1. A **jelszó** szövegmezőbe írja be a értéket `Thisisapassword1` .
     1. Válassza a **Kapcsolódás** lehetőséget.
 
-1. A **Navigátorból**válassza ki `sales` és/vagy `sales_raw` az adatok előnézetét. Az adatgyűjtés után kísérletezhet a létrehozni kívánt irányítópulttal. A Power BI-irányítópultok megismeréséhez tekintse meg az alábbi hivatkozásokat:
+1. A **Navigátorból** válassza ki `sales` és/vagy `sales_raw` az adatok előnézetét. Az adatgyűjtés után kísérletezhet a létrehozni kívánt irányítópulttal. A Power BI-irányítópultok megismeréséhez tekintse meg az alábbi hivatkozásokat:
 
 * [Irányítópultok bemutatása Power BI-tervezők számára](https://docs.microsoft.com/power-bi/service-dashboards)
 * [Oktatóanyag: Első lépések a Power BI szolgáltatással](https://docs.microsoft.com/power-bi/service-get-started)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, az alábbi parancs használatával törölje az összes erőforrást, hogy ne legyen rájuk felszámítva.
 

@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e00f7b97b923443cef3b97e0cdeda009ad5c9b03
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a2395eb5f5b40a7e3469292ec7faa68d8942dce9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490866"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535195"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Blob Storage közös hozzáférésű aláírásait használva korlátozza a HDInsight lévő adathozzáférést
 
 A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure Blob Storage-fiókok adataihoz. A blob-tárolón a közös hozzáférési aláírások használatával korlátozhatja az adathozzáférést. A közös hozzáférésű aláírások (SAS) az Azure Blob Storage-fiókok egyik funkciója, amely lehetővé teszi az adathozzáférés korlátozását. Például csak olvasási hozzáférést biztosít az adateléréshez.
 
 > [!IMPORTANT]  
-> Az Apache Rangert használó megoldások esetében érdemes lehet tartományhoz csatlakoztatott HDInsight használni. További információ: [tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-configure.md) -dokumentum konfigurálása.
+> Az Apache Rangert használó megoldások esetében érdemes lehet tartományhoz csatlakoztatott HDInsight használni. További információ: [tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) -dokumentum konfigurálása.
 
 > [!WARNING]  
 > A HDInsight teljes hozzáféréssel kell rendelkeznie a fürt alapértelmezett tárolóhoz.
@@ -31,7 +31,7 @@ A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure Bl
 
 * Egy meglévő [Storage-tároló](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/).
+* Ha a PowerShellt használja, szüksége lesz az az [modulra](/powershell/azure/).
 
 * Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
@@ -76,7 +76,7 @@ A két űrlap közötti különbség fontos az egyik kulcsfontosságú forgatók
 
 Javasoljuk, hogy mindig használjon tárolt hozzáférési házirendeket. Tárolt házirendek használatakor visszavonhatja az aláírásokat, vagy igény szerint kiterjesztheti a lejárati dátumot. A jelen dokumentumban szereplő lépések a tárolt hozzáférési szabályzatokat használják a SAS létrehozásához.
 
-A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd [az SAS-modell megismerése](../storage/common/storage-dotnet-shared-access-signature-part-1.md)című témakört.
+A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd [az SAS-modell megismerése](../storage/common/storage-sas-overview.md)című témakört.
 
 ## <a name="create-a-stored-policy-and-sas"></a>Tárolt szabályzat és SAS létrehozása
 
@@ -207,7 +207,7 @@ Előfordulhat, hogy végre kell hajtania, `pip install --upgrade azure-storage` 
 
 1. Nyissa meg a megoldást a Visual Studióban.
 
-2. Megoldáskezelő kattintson a jobb gombbal a **SASExample** projektre, és válassza a **Tulajdonságok**lehetőséget.
+2. Megoldáskezelő kattintson a jobb gombbal a **SASExample** projektre, és válassza a **Tulajdonságok** lehetőséget.
 
 3. Válassza a **Beállítások** lehetőséget, és adjon hozzá értékeket a következő bejegyzésekhez:
 
@@ -353,27 +353,27 @@ Ha meglévő fürttel rendelkezik, a következő lépésekkel adhatja hozzá az 
 
 1. Nyissa meg a Ambari webes felhasználói felületét a fürthöz. A lap címe: `https://YOURCLUSTERNAME.azurehdinsight.net` . Ha a rendszer kéri, végezzen hitelesítést a fürtön a fürt létrehozásakor használt rendszergazdai név (rendszergazda) és jelszó használatával.
 
-1. Navigáljon a **HDFS**  >  **konfigurációk**  >  **speciális**  >  **Egyéni Core-site**elemre.
+1. Navigáljon a **HDFS**  >  **konfigurációk**  >  **speciális**  >  **Egyéni Core-site** elemre.
 
-1. Bontsa ki az **Egyéni Core-site** szakaszt, görgessen a végéhez, majd válassza a **tulajdonság hozzáadása..**. lehetőséget. Használja a következő értékeket a **kulcshoz** és az **értékhez**:
+1. Bontsa ki az **Egyéni Core-site** szakaszt, görgessen a végéhez, majd válassza a **tulajdonság hozzáadása..** . lehetőséget. Használja a következő értékeket a **kulcshoz** és az **értékhez** :
 
-    * **Kulcs**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **Érték**: a korábban végrehajtott metódusok egyike által visszaadott sas.
+    * **Kulcs** : `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Érték** : a korábban végrehajtott metódusok egyike által visszaadott sas.
 
     Cserélje le a helyére a `CONTAINERNAME` C# vagy sas-alkalmazáshoz használt tároló nevét. Cserélje le `STORAGEACCOUNTNAME` a nevet a használt Storage-fiók nevére.
 
     A kulcs és az érték mentéséhez válassza a **Hozzáadás** lehetőséget.
 
-1. A konfigurációs módosítások mentéséhez kattintson a **Save (Mentés** ) gombra. Ha a rendszer kéri, adja meg a módosítás leírását (például "SAS-tároló elérésének hozzáadása"), majd válassza a **Mentés**lehetőséget.
+1. A konfigurációs módosítások mentéséhez kattintson a **Save (Mentés** ) gombra. Ha a rendszer kéri, adja meg a módosítás leírását (például "SAS-tároló elérésének hozzáadása"), majd válassza a **Mentés** lehetőséget.
 
     A módosítások befejeződése után kattintson **az OK gombra** .
 
    > [!IMPORTANT]  
    > A módosítás érvénybe léptetéséhez több szolgáltatást is újra kell indítania.
 
-1. Ekkor megjelenik egy **Újraindítási** legördülő lista. Válassza az **összes érintett újraindítása** elemet a legördülő listából, majd __erősítse meg az összes újraindítását__.
+1. Ekkor megjelenik egy **Újraindítási** legördülő lista. Válassza az **összes érintett újraindítása** elemet a legördülő listából, majd __erősítse meg az összes újraindítását__ .
 
-    Ismételje meg ezt a folyamatot a **MapReduce2** és a **fonal**esetében.
+    Ismételje meg ezt a folyamatot a **MapReduce2** és a **fonal** esetében.
 
 1. A szolgáltatások újraindítása után válassza ki mindegyiket, és tiltsa le a karbantartási módot a **szolgáltatási műveletek** legördülő listából.
 
@@ -411,7 +411,7 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    Ez a parancs letölti a fájlt egy **testfile.txt**nevű helyi fájlra.
+    Ez a parancs letölti a fájlt egy **testfile.txt** nevű helyi fájlra.
 
 5. A következő parancs használatával töltse fel a helyi fájlt egy **testupload.txt** nevű új fájlba az SAS-tárolón:
 

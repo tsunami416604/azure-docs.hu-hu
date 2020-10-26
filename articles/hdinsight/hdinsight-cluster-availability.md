@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cfc2abad828a3974c04074a4cde062a479f673f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086415"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533563"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>A fürt rendelkezésre állásának figyelése az Apache Ambari az Azure HDInsight
 
@@ -55,14 +55,13 @@ A riasztási definíciók és állapotuk megjelenítéséhez válassza a **riasz
 
 A Ambari számos előre meghatározott riasztást kínál a rendelkezésre állással kapcsolatban, beleértve a következőket:
 
-| Riasztás neve                        | Leírás   |
+| Riasztás neve                        | Description (Leírás)   |
 |---|---|
 | DataNode állapotának összegzése           | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha nem kifogástalan állapotú Adatcsomópontok van|
 | NameNode magas rendelkezésre állási állapota | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha az aktív NameNode vagy a készenléti NameNode nem fut.|
 | Rendelkezésre álló Naplócsomópontok százalékos aránya    | Ez a riasztás akkor aktiválódik, ha a fürtben lévő lefelé Naplócsomópontok száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a JournalNode folyamat-ellenőrzésének eredményeit. |
 | Rendelkezésre álló Adatcsomópontok százalékos aránya       | Ez a riasztás akkor aktiválódik, ha a fürtben lévő lefelé Adatcsomópontok száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a DataNode folyamat-ellenőrzésének eredményeit.|
 
-A Ambari-riasztások teljes listája [itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui)található, amelyek segítenek a fürt rendelkezésre állásának figyelésében.
 
 A riasztások részleteinek megtekintéséhez vagy a feltételek módosításához válassza ki a riasztás **nevét** . A **DataNode állapotának összegzése** példaként. Megtekintheti a riasztás leírását, valamint a "figyelmeztetés" vagy "kritikus" riasztást kiváltó konkrét feltételeket, valamint a feltételek ellenőrzési intervallumát is. A konfiguráció szerkesztéséhez kattintson a konfigurációs mező jobb felső sarkában található **Szerkesztés** gombra.
 
@@ -85,9 +84,9 @@ Ekkor megnyílik a riasztási értesítések kezelésére szolgáló párbeszéd
 > [!TIP]
 > A Ambari e-mail-értesítéseinek beállítása jó módszer lehet a riasztások egy helyen való fogadására sok HDInsight-fürt kezelésekor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](hdinsight-high-availability-linux.md)
+- [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](./hdinsight-business-continuity.md)
 - [Fürt rendelkezésre állása – Azure Monitor-naplók](./cluster-availability-monitor-logs.md)
 - [Azure Monitor naplók használata](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [Az Apache Ambari e-mail-értesítései](apache-ambari-email.md)

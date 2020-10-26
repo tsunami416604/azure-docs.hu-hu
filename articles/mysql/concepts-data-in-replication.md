@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537157"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544052"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Az adatreplikálás Azure Database for MySQLba
 
@@ -41,16 +41,16 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 - Minden táblának rendelkeznie kell egy elsődleges kulccsal.
 - A forráskiszolgálón a MySQL InnoDB motort kell használnia.
 - A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a forráskiszolgálón.
-- Ha a forráskiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mysql.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
-- Győződjön meg arról, hogy a forráskiszolgáló IP-címe hozzá lett adva az Azure Database for MySQL-replika kiszolgálói tűzfalszabályok számára. A tűzfalszabályokat az [Azure Portallal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) vagy az [Azure CLI-vel](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) frissítheti.
+- Ha a forráskiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mysql.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
+- Győződjön meg arról, hogy a forráskiszolgáló IP-címe hozzá lett adva az Azure Database for MySQL-replika kiszolgálói tűzfalszabályok számára. A tűzfalszabályokat az [Azure Portallal](./howto-manage-firewall-using-portal.md) vagy az [Azure CLI-vel](./howto-manage-firewall-using-cli.md) frissítheti.
 - Győződjön meg arról, hogy a forráskiszolgáló üzemeltetése lehetővé teszi a bejövő és a kimenő forgalmat is a 3306-es porton.
-- Győződjön meg arról, hogy a forráskiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).
+- Győződjön meg arról, hogy a forráskiszolgáló **nyilvános IP-címmel** rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).
 
 ### <a name="other"></a>Egyéb
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 - A globális tranzakciós azonosítók (GTID-EK) nem támogatottak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md)
 - Tudnivalók [Az Azure-beli replikálásról olvasási replikákkal](concepts-read-replicas.md)
 - Az [adatáttelepítés minimális állásidővel való áttelepítésének ismertetése a DMS használatával](howto-migrate-online.md)

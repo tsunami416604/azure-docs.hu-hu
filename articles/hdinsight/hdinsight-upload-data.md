@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 45170e9df7082e277c445a2dab6d617eb208cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47262e0dc7247e1d514eeb64512c21ff1ae527ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855633"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534821"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Adatok feltöltése Apache Hadoop feladatok számára a HDInsight-ben
 
@@ -88,7 +88,7 @@ Több alkalmazás is rendelkezésre áll, amelyek grafikus felületet biztosíta
 
 ## <a name="mount-azure-storage-as-local-drive"></a>Az Azure Storage csatlakoztatása helyi meghajtóként
 
-Lásd: [Az Azure Storage csatlakoztatása helyi meghajtóként](https://docs.microsoft.com/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive).
+Lásd: [Az Azure Storage csatlakoztatása helyi meghajtóként](/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive).
 
 ## <a name="upload-using-services"></a>Feltöltés a szolgáltatásokkal
 
@@ -99,7 +99,7 @@ A Azure Data Factory szolgáltatás egy teljes körűen felügyelt szolgáltatá
 |Tárolási típus|Dokumentáció|
 |----|----|
 |Azure Blob Storage|[Adatok másolása az Azure Blob Storage-be vagy onnan máshová az Azure Data Factoryvel](../data-factory/connector-azure-blob-storage.md)|
-|1. generációs Azure Data Lake Storage|[Adatok másolása Azure Data Lake Storage Gen1ba vagy onnan a Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md)|
+|Azure Data Lake Storage Gen1|[Adatok másolása Azure Data Lake Storage Gen1ba vagy onnan a Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md)|
 |2. generációs Azure Data Lake Storage |[Betöltés az Azure Data Lake Storage Gen2ba Azure Data Factory](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 ### <a name="apache-sqoop"></a>Apache Sqoop
@@ -121,7 +121,7 @@ Az Azure Storage egy Azure SDK-val is elérhető a következő programozási nye
 
 Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [Azure-letöltések](https://azure.microsoft.com/downloads/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megértette, hogyan szerezhet be információkat a HDInsight-ba, olvassa el a következő cikkeket az elemzés elsajátításához:
 

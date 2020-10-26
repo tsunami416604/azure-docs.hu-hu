@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 1a6aabe7ef3500a114525fe6c8bc993826295e36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afbf80810f45f616eac40de16889bbebb1cf4964
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275353"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544800"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>A kiszolgálói fogalmak a Azure Database for MySQL
 
@@ -32,7 +32,7 @@ Egy Azure Database for MySQL-kiszolgáló:
 - Az adatbázisokra vonatkozó felügyeleti házirendek hatókörét biztosítja: bejelentkezés, tűzfal, felhasználók, szerepkörök, konfigurációk stb.
 - Több verzióban is elérhető. További információ: [támogatott Azure Database for MySQL adatbázis-verziók](./concepts-supported-versions.md).
 
-A MySQL-kiszolgálóhoz létrehozott Azure-adatbázisban egy vagy több adatbázist is létrehozhat. Dönthet úgy is, hogy kiszolgálónként létrehoz egy adatbázist az összes erőforrás használatára, vagy több adatbázist hoz létre az erőforrások megosztásához. A díjszabás a kiszolgálón strukturálva, a díjszabási csomag, a virtuális mag és a tárterület (GB) konfigurációjától függően. További információ: [díjszabási szintek](./concepts-service-tiers.md).
+A MySQL-kiszolgálóhoz létrehozott Azure-adatbázisban egy vagy több adatbázist is létrehozhat. Dönthet úgy is, hogy kiszolgálónként létrehoz egy adatbázist az összes erőforrás használatára, vagy több adatbázist hoz létre az erőforrások megosztásához. A díjszabás a kiszolgálón strukturálva, a díjszabási csomag, a virtuális mag és a tárterület (GB) konfigurációjától függően. További információ: [díjszabási szintek](./concepts-pricing-tiers.md).
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Hogyan a kapcsolódást és a hitelesítést egy Azure Database for MySQL-kiszolgálón?
 
@@ -67,5 +67,5 @@ Azure Database for MySQL-kiszolgálókat a Azure Portal vagy az Azure CLI haszn�
 ## <a name="next-steps"></a>Következő lépések
 
 - A szolgáltatás áttekintését lásd: [Azure Database for MySQL áttekintése](./overview.md)
-- A **szolgáltatási szintek**alapján meghatározott erőforrás-kvótákkal és korlátozásokkal kapcsolatos információkért lásd: [szolgáltatási szintek](./concepts-service-tiers.md)
+- Az egyes **erőforrás-** kvótákkal és korlátozásokkal kapcsolatos információkért tekintse meg az [árképzési szintek](./concepts-pricing-tiers.md) című témakört.
 - További információ a szolgáltatáshoz való csatlakozásról: [Azure Database for MySQL kapcsolódási kódtárai](./concepts-connection-libraries.md).

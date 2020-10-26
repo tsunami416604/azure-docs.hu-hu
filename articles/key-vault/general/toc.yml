@@ -100,7 +100,9 @@
           href: rbac-migration.md
         - name: Hozzáférési problémák elhárítása
           href: troubleshooting-access-issues.md
-    - name: A naplózás engedélyezése
+    - name: Helyreállítható törlés és végleges törlés elleni védelem engedélyezése
+      href: key-vault-recovery.md
+    - name: Naplózás engedélyezése
       href: howto-logging.md
     - name: Fejlesztés
       items:
@@ -109,7 +111,7 @@
         - name: Az Azure Resource Manager használata a Key Vault üzembe helyezéséhez
           href: vault-create-template.md
         - name: Webalkalmazás titkos kulcsának mentése
-          href: vs-secure-secret-appsettings.md
+          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
         - name: Szolgáltatások közötti hitelesítés a .NET-tel
           href: service-to-service-authentication.md
         - name: A Key Vault csatlakoztatott szolgáltatásának használata
@@ -134,14 +136,6 @@
           href: private-link-service.md
         - name: Az Azure Key Vault elérése tűzfal mögött – Azure Key Vault
           href: access-behind-firewall.md
-    - name: Helyreállítható törlés
-      items:
-        - name: A Key Vault helyreállítása (Helyreállítható törlés és végleges törlés elleni védelem)
-          href: key-vault-recovery.md
-        - name: Helyreállítható törlés használata a CLI-n
-          href: soft-delete-cli.md
-        - name: Helyreállítható törlés használata PowerShellel
-          href: soft-delete-powershell.md
     - name: A Key Vault áthelyezése
       items:
         - name: Key Vault áthelyezése másik erőforráscsoportba

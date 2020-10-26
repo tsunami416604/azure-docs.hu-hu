@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 7a5bab13dbaa5715aa8dd34e41aba34ce62557a2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4be295ada476e4dc41a86d06908ef1d653a3bad8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91329528"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545021"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>Gyors útmutató: Azure Database for MySQL rugalmas kiszolgáló létrehozása az Azure CLI használatával
 
-Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -parancsokat a [Azure Cloud Shellban](https://shell.azure.com) egy Azure Database for MySQL rugalmas kiszolgáló öt perc alatt történő létrehozásához. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](/cli/azure/get-started-with-azure-cli) -parancsokat a [Azure Cloud Shellban](https://shell.azure.com) egy Azure Database for MySQL rugalmas kiszolgáló öt perc alatt történő létrehozásához. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 > [!IMPORTANT] 
 > Azure Database for MySQL rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el
@@ -28,17 +28,17 @@ A [Azure Cloud Shell](../../cloud-shell/overview.md) egy ingyenes interaktív fe
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngésző lapon is megnyithatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd válassza az **ENTER billentyűt** a futtatásához.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2,0-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2,0-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az az [login](https://docs.microsoft.com/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal.
+Az az [login](/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal.
 
 ```azurecli-interactive
 az login
 ```
 
-Válassza ki az adott előfizetést a fiókja alatt az [az Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](https://docs.microsoft.com/cli/azure/account#az-account-list)lehetőséget.
+Válassza ki az adott előfizetést a fiókja alatt az [az Account set](/cli/azure/account#az-account-set) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](/cli/azure/account#az-account-list)lehetőséget.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -46,13 +46,13 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-flexible-server"></a>Rugalmas kiszolgáló létrehozása
 
-Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) a `az group create` paranccsal, majd hozza létre a MySQL rugalmas kiszolgálót az erőforráscsoport belsejében. Egyedi nevet adjon meg. A következő példában létrehozunk egy `eastus2` nevű erőforráscsoportot a `myresourcegroup` helyen.
+Hozzon létre egy [Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md) a `az group create` paranccsal, majd hozza létre a MySQL rugalmas kiszolgálót az erőforráscsoport belsejében. Egyedi nevet adjon meg. A következő példában létrehozunk egy `eastus2` nevű erőforráscsoportot a `myresourcegroup` helyen.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location eastus2
 ```
 
-Hozzon létre egy rugalmas kiszolgálót a `az mysql flexible-server create` paranccsal. Egy kiszolgáló több adatbázist tartalmazhat. A következő parancs egy kiszolgálót hoz létre az Azure CLI [helyi környezetében](https://docs.microsoft.com/cli/azure/local-context)lévő szolgáltatás-alapértékek és-értékek használatával: 
+Hozzon létre egy rugalmas kiszolgálót a `az mysql flexible-server create` paranccsal. Egy kiszolgáló több adatbázist tartalmazhat. A következő parancs egy kiszolgálót hoz létre az Azure CLI [helyi környezetében](/cli/azure/local-context)lévő szolgáltatás-alapértékek és-értékek használatával: 
 
 ```azurecli
 az mysql flexible-server create
@@ -107,7 +107,7 @@ A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és 
 az mysql flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualifiedDomainName** és **administratorLogin**. Alább látható egy példa a JSON-kimenetre: 
+Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualifiedDomainName** és **administratorLogin** . Alább látható egy példa a JSON-kimenetre: 
 
 ```json
 {
@@ -152,7 +152,7 @@ A mysql.exe használatával kapcsolódjon az alábbi paranccsal. Cserélje le az
  mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha ezekre az erőforrásokra már nincs szüksége más gyorsútmutatókhoz/oktatóanyagokhoz, a következő paranccsal törölheti őket:
 

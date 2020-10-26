@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc08adb2f71c49fad3c8574e9cfd5315f13d7f44
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84700365"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532764"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Apache Storm az Azure HDInsight használatával – problémamegoldás
 
@@ -27,8 +27,8 @@ A Storm felhasználói felületének böngészőből való eléréséhez két le
 ### <a name="apache-ambari-ui"></a>Apache Ambari felhasználói felület
 
 1. Nyissa meg a Ambari irányítópultot.
-2. A szolgáltatások listájában válassza a **Storm**elemet.
-3. A **gyors hivatkozások** menüben válassza a **Storm UI**lehetőséget.
+2. A szolgáltatások listájában válassza a **Storm** elemet.
+3. A **gyors hivatkozások** menüben válassza a **Storm UI** lehetőséget.
 
 ### <a name="direct-link"></a>Közvetlen hivatkozás
 
@@ -95,7 +95,7 @@ Az aktuális HDP-verem Storm bináris fájljai a következőben találhatók: `/
 
 Több bináris fájl is lehet a/usr/HDP adott HDP-verzióihoz (például `/usr/hdp/2.5.0.1233/storm` ). A `/usr/hdp/current/storm-client` mappa a fürtön futó legújabb verzióra van összekapcsolva.
 
-További információ: [Kapcsolódás HDInsight-fürthöz SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Apache Storm](https://storm.apache.org/)használatával.
+További információ: [Kapcsolódás HDInsight-fürthöz SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) és [Apache Storm](https://storm.apache.org/)használatával.
 
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hogyan megállapítani egy Storm-fürt telepítési topológiáját?
 
@@ -141,7 +141,7 @@ A Storm Event hub kiöntő. jar fájloknak a topológiával való használatáva
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-alapú topológia (mono on HDInsight 3.4 + Linux Storm-fürtök)
 
-[Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (C#) használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (C#) használatával](./apache-storm-develop-csharp-event-hub-topology.md)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>A legújabb Apache Storm Event hub kiöntő bináris fájljai a HDInsight 3.5 + Linux Storm-fürtökhöz
 
@@ -178,7 +178,7 @@ A megoldáshoz előfordulhat, hogy a felhasználónak be kell állítania egy je
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
@@ -186,4 +186,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 - Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](../../azure-portal/supportability/how-to-create-azure-support-request.md)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: a9da6a592249aed727231b810a3fbb5f7b72e228
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 16f1e2a6b7a3c0e81b7ceb57359a48a84ee489d9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164193"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532730"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a .NET (C#) használatával csatlakozhat és lekérdezheti Azure Database for MySQL
 
@@ -46,13 +46,13 @@ dotnet add package MySqlConnector
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver** ).
 3. Kattintson a kiszolgálónévre.
-4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet** . Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  :::image type="content" source="./media/connect-csharp/1_server-overview-name-login.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
-A következő kóddal csatlakozhat, és betöltheti az adatokat a `CREATE TABLE` és az `INSERT INTO` SQL-utasítással. A kód a `MySqlConnection` osztályt használja az [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metódussal, hogy kapcsolatot létesítsen a MySQL-lel. A kód ezután a [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metódust az adatbázis-parancsok futtatásához. 
+A következő kóddal csatlakozhat, és betöltheti az adatokat a `CREATE TABLE` és az `INSERT INTO` SQL-utasítással. A kód a `MySqlConnection` osztályt használja az [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metódussal, hogy kapcsolatot létesítsen a MySQL-lel. A kód ezután a [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metódust az adatbázis-parancsok futtatásához. 
 
 Cserélje le a `Server`, `Database`, `UserID` és `Password` paramétert azokkal az értékekkel, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 
@@ -117,7 +117,7 @@ namespace AzureMySqlExample
 
 ## <a name="read-data"></a>Adatok olvasása
 
-A következő kóddal csatlakozhat, és beolvashatja az adatokat a `SELECT` SQL-utasítással. A kód a `MySqlConnection` osztályt használja az [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metódussal, hogy kapcsolatot létesítsen a MySQL-lel. A kód ezután a [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) és az [ExecuteReaderAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync) metódust használja az adatbázis-parancsok futtatásához. Ezután a kód a [ReadAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) metódust használja az eredményekben lévő rekordokra lépéshez. Ezután a kód a GetInt32 és a GetString metódussal elemzi a rekord értékeit.
+A következő kóddal csatlakozhat, és beolvashatja az adatokat a `SELECT` SQL-utasítással. A kód a `MySqlConnection` osztályt használja az [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metódussal, hogy kapcsolatot létesítsen a MySQL-lel. A kód ezután a [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) és az [ExecuteReaderAsync()](/dotnet/api/system.data.common.dbcommand.executereaderasync) metódust használja az adatbázis-parancsok futtatásához. Ezután a kód a [ReadAsync()](/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) metódust használja az eredményekben lévő rekordokra lépéshez. Ezután a kód a GetInt32 és a GetString metódussal elemzi a rekord értékeit.
 
 Cserélje le a `Server`, `Database`, `UserID` és `Password` paramétert azokkal az értékekkel, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 
@@ -174,7 +174,7 @@ namespace AzureMySqlExample
 ```
 
 ## <a name="update-data"></a>Adatok frissítése
-A következő kóddal csatlakozhat, és beolvashatja az adatokat az `UPDATE` SQL-utasítással. A kód a `MySqlConnection` osztályt használja az [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metódussal, hogy kapcsolatot létesítsen a MySQL-lel. A kód ezután a [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metódust az adatbázis-parancsok futtatásához. 
+A következő kóddal csatlakozhat, és beolvashatja az adatokat az `UPDATE` SQL-utasítással. A kód a `MySqlConnection` osztályt használja az [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metódussal, hogy kapcsolatot létesítsen a MySQL-lel. A kód ezután a [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metódust az adatbázis-parancsok futtatásához. 
 
 Cserélje le a `Server`, `Database`, `UserID` és `Password` paramétert azokkal az értékekkel, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 
@@ -226,7 +226,7 @@ namespace AzureMySqlExample
 ## <a name="delete-data"></a>Adat törlése
 A következő kóddal csatlakozhat, és törölheti az adatokat a `DELETE` SQL-utasítással. 
 
-A kód a `MySqlConnection` osztályt használja az [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metódussal, hogy kapcsolatot létesítsen a MySQL-lel. A kód ezután a [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metódust az adatbázis-parancsok futtatásához. 
+A kód a `MySqlConnection` osztályt használja az [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metódussal, hogy kapcsolatot létesítsen a MySQL-lel. A kód ezután a [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metódust az adatbázis-parancsok futtatásához. 
 
 Cserélje le a `Server`, `Database`, `UserID` és `Password` paramétert azokkal az értékekkel, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 
@@ -274,6 +274,6 @@ namespace AzureMySqlExample
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával](concepts-migrate-dump-restore.md)

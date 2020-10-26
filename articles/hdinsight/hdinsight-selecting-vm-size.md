@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73682212"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535314"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>A virtuális gép megfelelő méretének kiválasztása az Azure HDInsight-fürthöz
 
@@ -32,7 +32,7 @@ A virtuális gép méretét és típusát a CPU feldolgozási teljesítmény, a 
 
 - RAM: a virtuális gép mérete is a virtuális gépen elérhető RAM mennyiségét határozza meg. Olyan munkaterhelések esetében, amelyek a memóriában tárolt adatok feldolgozására, nem pedig a lemezről való olvasásra vonatkoznak, győződjön meg arról, hogy a feldolgozó csomópontok rendelkeznek elegendő memóriával az adatokhoz.
 
-- Hálózat: a legtöbb fürt típusa esetén a fürt által feldolgozott adattípusok nem helyi lemezen, hanem külső tárolási szolgáltatásban, például Data Lake Storage vagy az Azure Storage-ban találhatók. Vegye figyelembe a hálózati sávszélességet és az átviteli sebességet a csomópont virtuális gépe és a Storage szolgáltatás között. A virtuális gépek számára elérhető hálózati sávszélesség általában nagyobb méretekben nő. Részletekért lásd: virtuálisgép- [méretek áttekintése](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+- Hálózat: a legtöbb fürt típusa esetén a fürt által feldolgozott adattípusok nem helyi lemezen, hanem külső tárolási szolgáltatásban, például Data Lake Storage vagy az Azure Storage-ban találhatók. Vegye figyelembe a hálózati sávszélességet és az átviteli sebességet a csomópont virtuális gépe és a Storage szolgáltatás között. A virtuális gépek számára elérhető hálózati sávszélesség általában nagyobb méretekben nő. Részletekért lásd: virtuálisgép- [méretek áttekintése](../virtual-machines/sizes.md).
 
 ## <a name="understanding-vm-optimization"></a>A virtuális gépek optimalizálásának ismertetése
 
@@ -40,10 +40,10 @@ Az Azure-beli virtuálisgép-családok különböző használati esetekre vannak
 
 | Típus                     | Méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Belépési szint](../virtual-machines/linux/sizes-general.md)          | A, Av2  | A CPU-teljesítmény és a memória-konfigurációk a legmegfelelőbbek a belépési szintű munkaterhelésekhez, például a fejlesztéshez és a teszteléshez. Ezek gazdaságos, és alacsony díjszabású lehetőséget biztosítanak az Azure megkezdésére. |
-| [Általános célú](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Kiegyensúlyozott processzor-memória arány. Ideális választások a teszteléshez és a fejlesztéshez, a kicsi és közepes adatbázisokhoz, illetve az alacsony és közepes forgalmú webkiszolgálókhoz. |
-| [Számításoptimalizált](../virtual-machines/linux/sizes-compute.md)        | F           | Magas processzor-memória arány. Jó a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazáskiszolgáló számára.        |
-| [Memóriaoptimalizált](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Magas memória-processzor arány. Ideális választás a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez.                 |
+| [Belépési szint](../virtual-machines/sizes-general.md)          | A, Av2  | A CPU-teljesítmény és a memória-konfigurációk a legmegfelelőbbek a belépési szintű munkaterhelésekhez, például a fejlesztéshez és a teszteléshez. Ezek gazdaságos, és alacsony díjszabású lehetőséget biztosítanak az Azure megkezdésére. |
+| [Általános célú](../virtual-machines/sizes-general.md)          | D, DSv2, Dv2  | Kiegyensúlyozott processzor-memória arány. Ideális választások a teszteléshez és a fejlesztéshez, a kicsi és közepes adatbázisokhoz, illetve az alacsony és közepes forgalmú webkiszolgálókhoz. |
+| [Számításoptimalizált](../virtual-machines/sizes-compute.md)        | F           | Magas processzor-memória arány. Jó a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazáskiszolgáló számára.        |
+| [Memóriaoptimalizált](../virtual-machines/sizes-memory.md)         | Esv3, Ev3  | Magas memória-processzor arány. Ideális választás a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez.                 |
 
 - A HDInsight által támogatott régiókban elérhető virtuálisgép-példányok díjszabásával kapcsolatos információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -58,7 +58,7 @@ A következő táblázat a Fsv2-sorozatú virtuális gépekkel létrehozható f�
 | Spark | Mind | F4 és újabb verziók | nem | nem |
 | Hadoop | Mind | F4 és újabb verziók | nem | nem |
 | Kafka | Mind | F4 és újabb verziók | nem | nem |
-| A HBase | Mind | F4 és újabb verziók | nem | nem |
+| HBase | Mind | F4 és újabb verziók | nem | nem |
 | LLAP | tiltva | nem | nem | nem |
 | Storm | tiltva | nem | nem | nem |
 | ML szolgáltatás | CSAK A HDI 3,6 | F4 és újabb verziók | nem | nem |
@@ -71,7 +71,7 @@ A teljesítményértékelés a szimulált számítási feladatok különböző v
 
 A virtuális gépek és a fürtök méretének összehasonlításával kapcsolatos további információkért lásd: a [fürt kapacitásának megtervezése az Azure HDInsight-ben ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure HDInsight által támogatott csomópont-konfigurációk](hdinsight-supported-node-configuration.md)
-- [Linuxos virtuális gépek méretei az Azure-ban](../virtual-machines/linux/sizes.md)
+- [Linuxos virtuális gépek méretei az Azure-ban](../virtual-machines/sizes.md)

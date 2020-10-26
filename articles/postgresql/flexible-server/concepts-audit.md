@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 2fccf5431666990919faf7e6378b46c41d682437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf749f3aef10a0c67814722577f79906f447ffdb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934951"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532781"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---flexible-server"></a>Naplózás Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -57,7 +57,7 @@ Az egyes naplózási bejegyzéseket a rendszer a `AUDIT:` naplósor elejéhez k�
 A gyors kezdéshez állítsa a következőt: `pgaudit.log` `WRITE` , majd nyissa meg a kiszolgálói naplókat a kimenet áttekintéséhez. 
 
 ## <a name="viewing-audit-logs"></a>Naplók megtekintése
-A naplók elérésének módja attól függ, hogy melyik végpontot választja. Az Azure Storage szolgáltatással kapcsolatban lásd a [Storage-fiók naplózása](../../azure-monitor/platform/resource-logs-collect-storage.md) című cikket. Event Hubs esetében tekintse meg a [stream Azure-naplók](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) című cikket.
+A naplók elérésének módja attól függ, hogy melyik végpontot választja. Az Azure Storage szolgáltatással kapcsolatban lásd a [Storage-fiók naplózása](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) című cikket. Event Hubs esetében tekintse meg a [stream Azure-naplók](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) című cikket.
 
 Azure Monitor naplók esetében a naplók a kiválasztott munkaterületre kerülnek. A postgres-naplók a **AzureDiagnostics** -gyűjtési módot használják, így a AzureDiagnostics táblából is lekérdezhető. A táblázatban szereplő mezők a következőkben olvashatók. További információ a lekérdezésekről és a riasztásokról: [Azure monitor naplók lekérdezése](../../azure-monitor/log-query/log-query-overview.md) – áttekintés.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319191"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534583"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezés használatával
 
@@ -30,9 +30,9 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy interaktív lekérdezési fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza az **interaktív lekérdezés** a **fürt típusához**lehetőséget.
+* Egy interaktív lekérdezési fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza az **interaktív lekérdezés** a **fürt típusához** lehetőséget.
 
-* Egy adatbázis a Azure SQL Databaseban. Az adatbázist célként megadott adattárként használja. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Database a Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
+* Egy adatbázis a Azure SQL Databaseban. Az adatbázist célként megadott adattárként használja. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Database a Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
 * Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 2. A lapon törölje az összes mezőt, majd válassza ki a következő értékeket:
 
-   | Név | Érték |
+   | Name | Érték |
    | --- | --- |
    | Filter Year (Szűrési év) |2019 |
    | Filter Period (Szűrési időszak) |January |
@@ -97,7 +97,7 @@ Számos módon futtathat Hive-feladatokat egy HDInsight-fürtön. Ebben a szakas
 
 A Hive-feladat keretében importálja az adatokat a .csv fájlból egy **Delays** (Késések) nevű Hive-táblába.
 
-1. A HDInsight-fürthöz már megjelenő SSH-parancssorból használja az alábbi parancsot a **flightdelays. HQL**nevű új fájl létrehozásához és szerkesztéséhez:
+1. A HDInsight-fürthöz már megjelenő SSH-parancssorból használja az alábbi parancsot a **flightdelays. HQL** nevű új fájl létrehozásához és szerkesztéséhez:
 
     ```bash
     nano flightdelays.hql
@@ -165,7 +165,7 @@ A Hive-feladat keretében importálja az adatokat a .csv fájlból egy **Delays*
     FROM delays_raw;
     ```
 
-3. A fájl mentéséhez nyomja le a **CTRL + X**billentyűkombinációt, majd az **y**billentyűt, majd írja be a következőt:.
+3. A fájl mentéséhez nyomja le a **CTRL + X** billentyűkombinációt, majd az **y** billentyűt, majd írja be a következőt:.
 
 4. Indítsa el a Hive-ot, és futtassa a **flightdelays.hql** fájlt az alábbi paranccsal:
 
@@ -232,7 +232,7 @@ Számos módon csatlakozhat az SQL Database-hez, majd hozhat létre egy táblát
     GO
     ```
 
-    A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat. Ez az utasítás egy **késések**nevű táblát hoz létre fürtözött indexszel.
+    A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat. Ez az utasítás egy **késések** nevű táblát hoz létre fürtözött indexszel.
 
     Az alábbi lekérdezéssel ellenőrizheti, hogy a tábla létrejött-e:
 
@@ -287,13 +287,13 @@ Az előző szakaszok során átmásolta az átalakított adatokat a következő 
 
     A tsql eszközből való kilépéshez írja be az `exit` parancsot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 
 Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy nyers CSV-adatfájlt vett fel, egy HDInsight-fürtbe importálta, majd az Azure HDInsight interaktív lekérdezés használatával alakította át az adatelemzést.  Folytassa a következő oktatóanyaggal, amely a Apache Hive Warehouse-összekötő megismerését ismerteti.
 

@@ -63,13 +63,13 @@ A TimeLive Azure AD-be való integrálásának konfigurálásához hozzá kell a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **TimeLive**kifejezést, válassza a **TimeLive** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **TimeLive** kifejezést, válassza a **TimeLive** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![TimeLive az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az TimeLive-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az TimeLive-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a TimeLive kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés TimeLive való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés TimeLive való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **TimeLive** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **TimeLive** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -128,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés TimeLive való konfigurálásához hajtsa v�
 
 1. Egy másik böngészőablakban jelentkezzen be a TimeLive vállalati webhelyre rendszergazdaként.
 
-2. Válassza a **Beállítások** lehetőséget a **rendszergazdai beállítások**alatt.
+2. Válassza a **Beállítások** lehetőséget a **rendszergazdai beállítások** alatt.
 
     ![A képernyőképen a kiválasztott beállításokkal rendelkező rendszergazdai beállítások láthatók.](./media/timelive-tutorial/configure1.png)
 
@@ -140,11 +140,11 @@ Az Azure AD egyszeri bejelentkezés TimeLive való konfigurálásához hajtsa v�
 
     b. Jelölje be **az egyszeri bejelentkezés engedélyezése (SSO)** jelölőnégyzetet.
 
-    c. Válassza ki az **SAML** elemet a legördülő menüből, és **Jelentkezzen be egyetlen Sign-On (SSO) használatával**a következővel:.
+    c. Válassza ki az **SAML** elemet a legördülő menüből, és **Jelentkezzen be egyetlen Sign-On (SSO) használatával** a következővel:.
 
-    d. Az **SAML SSO URL-címében**illessze be a **bejelentkezési URL** -címet, amelyet másolt a Azure Portal.
+    d. Az **SAML SSO URL-címében** illessze be a **bejelentkezési URL** -címet, amelyet másolt a Azure Portal.
 
-    e. A **távoli kijelentkezési URL-címben**illessze be a **KIjelentkezési URL-címet** , amelyet másolt a Azure Portal.
+    e. A **távoli kijelentkezési URL-címben** illessze be a **KIjelentkezési URL-címet** , amelyet másolt a Azure Portal.
 
     f. Nyissa meg a letöltött **Base-64 kódolású tanúsítványt** Azure Portal a Jegyzettömbben, másolja ki a tartalmat, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
 
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés TimeLive való konfigurálásához hajtsa v�
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -172,21 +172,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a TimeLive hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **TimeLive**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **TimeLive** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **TimeLive**lehetőséget.
+2. Az alkalmazások listában válassza a **TimeLive** lehetőséget.
 
     ![Az TimeLive hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19466174faeef20b8ac29882b047d74ad2adc5ff
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504655"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535178"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása
 
-[Enterprise Security Package (ESP) HDInsight-fürtök](hdinsight-domain-joined-introduction.md) erős hitelesítést használhatnak Azure Active Directory (Azure ad) felhasználókkal, valamint az *Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)* házirendjeit. Amikor felhasználókat és csoportokat AD hozzá az Azure AD-hez, szinkronizálhatja azokat a felhasználókat, akiknek a fürthöz hozzáféréssel kell rendelkezniük.
+[Enterprise Security Package (ESP) HDInsight-fürtök](./domain-joined/hdinsight-security-overview.md) erős hitelesítést használhatnak Azure Active Directory (Azure ad) felhasználókkal, valamint az *Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)* házirendjeit. Amikor felhasználókat és csoportokat AD hozzá az Azure AD-hez, szinkronizálhatja azokat a felhasználókat, akiknek a fürthöz hozzáféréssel kell rendelkezniük.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem tette meg, [hozzon létre egy HDInsight-fürtöt Enterprise Security Package](hdinsight-domain-joined-configure.md).
+Ha még nem tette meg, [hozzon létre egy HDInsight-fürtöt Enterprise Security Package](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="add-new-azure-ad-users"></a>Új Azure AD-felhasználók hozzáadása
 
@@ -29,11 +29,11 @@ A gazdagépek megtekintéséhez nyissa meg a Ambari webes felhasználói felüle
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon az ESP-fürthöz társított Azure ad-címtárhoz.
 
-2. Válassza a **minden felhasználó** lehetőséget a bal oldali menüben, majd válassza az **új felhasználó**lehetőséget.
+2. Válassza a **minden felhasználó** lehetőséget a bal oldali menüben, majd válassza az **új felhasználó** lehetőséget.
 
     ![Az összes felhasználó és csoport Azure Portal](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
-3. Fejezze be az új felhasználói űrlapot. Válassza ki a fürtön alapuló engedélyek hozzárendeléséhez létrehozott csoportokat. Ebben a példában hozzon létre egy "HiveUsers" nevű csoportot, amelyhez új felhasználókat rendelhet hozzá. Az ESP-fürtök létrehozására [vonatkozó példa](hdinsight-domain-joined-configure.md) a következő két csoport hozzáadását tartalmazza: `HiveUsers` és `AAD DC Administrators` .
+3. Fejezze be az új felhasználói űrlapot. Válassza ki a fürtön alapuló engedélyek hozzárendeléséhez létrehozott csoportokat. Ebben a példában hozzon létre egy "HiveUsers" nevű csoportot, amelyhez új felhasználókat rendelhet hozzá. Az ESP-fürtök létrehozására [vonatkozó példa](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) a következő két csoport hozzáadását tartalmazza: `HiveUsers` és `AAD DC Administrators` .
 
     ![Azure Portal felhasználói ablaktábla csoportok kiválasztása](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
@@ -120,10 +120,10 @@ A következő metódus a POST és a Ambari REST API használja. További inform�
     }
     ```
 
-1. Ez az eredmény azt mutatja, hogy az állapot **elkészült**, egy új felhasználó lett létrehozva, és a felhasználó hozzá lett rendelve egy tagsághoz. Ebben a példában a felhasználó hozzá van rendelve az "HiveUsers" szinkronizált LDAP-csoporthoz, mivel a felhasználó hozzá lett adva ugyanahhoz a csoporthoz az Azure AD-ben.
+1. Ez az eredmény azt mutatja, hogy az állapot **elkészült** , egy új felhasználó lett létrehozva, és a felhasználó hozzá lett rendelve egy tagsághoz. Ebben a példában a felhasználó hozzá van rendelve az "HiveUsers" szinkronizált LDAP-csoporthoz, mivel a felhasználó hozzá lett adva ugyanahhoz a csoporthoz az Azure AD-ben.
 
     > [!NOTE]  
-    > Az előző metódus csak a tartományi beállítások **hozzáférés felhasználói csoport** tulajdonságában megadott Azure ad-csoportokat szinkronizálja a fürt létrehozásakor. További információt a HDInsight-  [fürt létrehozása](domain-joined/apache-domain-joined-configure.md)című témakörben talál.
+    > Az előző metódus csak a tartományi beállítások **hozzáférés felhasználói csoport** tulajdonságában megadott Azure ad-csoportokat szinkronizálja a fürt létrehozásakor. További információt a HDInsight-  [fürt létrehozása](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)című témakörben talál.
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Az újonnan hozzáadott Azure AD-felhasználó ellenőrzése
 
@@ -148,6 +148,6 @@ Az új példában szereplő felhasználó neve `hiveuser3@contoso.com` . A Ambar
 
 ## <a name="see-also"></a>Lásd még
 
-* [Apache Hive házirendek konfigurálása a HDInsight-ben ESP-vel](hdinsight-domain-joined-run-hive.md)
-* [HDInsight-fürtök az ESP-vel való kezelése](hdinsight-domain-joined-manage.md)
+* [Apache Hive házirendek konfigurálása a HDInsight-ben ESP-vel](./domain-joined/apache-domain-joined-run-hive.md)
+* [HDInsight-fürtök az ESP-vel való kezelése](./domain-joined/apache-domain-joined-manage.md)
 * [Felhasználók engedélyezése az Apache Ambari](hdinsight-authorize-users-to-ambari.md)

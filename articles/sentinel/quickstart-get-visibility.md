@@ -38,15 +38,15 @@ A környezettel kapcsolatos események megjelenítéséhez és elemzéséhez el�
 
 Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági állapotáról:
 
-- **Események és riasztások az idő múlásával**: felsorolja az események számát, valamint azt, hogy az események hány riasztást hoztak létre. Ha olyan tüske jelenik meg, amely szokatlan, akkor riasztásokat kell látnia – ha van valami szokatlan, hogy van-e olyan esemény, amely az események között van, de nem látja a riasztásokat, aggodalomra adhat okot.
+- **Események és riasztások az idő múlásával** : felsorolja az események számát, valamint azt, hogy az események hány riasztást hoztak létre. Ha olyan tüske jelenik meg, amely szokatlan, akkor riasztásokat kell látnia – ha van valami szokatlan, hogy van-e olyan esemény, amely az események között van, de nem látja a riasztásokat, aggodalomra adhat okot.
 
-- **Lehetséges kártékony események**: Ha a rendszer forgalmat észlel a kártékonyként ismert forrásokból, az Azure Sentinel riasztást küld a térképen. Ha a narancssárga látható, akkor bejövő forgalom: valaki megpróbál hozzáférni a szervezethez egy ismert kártékony IP-címről. Ha a kimenő (vörös) tevékenységet látja, az azt jelenti, hogy a hálózatról származó adatok a szervezetből egy ismert kártékony IP-címről áramlanak.
+- **Lehetséges kártékony események** : Ha a rendszer forgalmat észlel a kártékonyként ismert forrásokból, az Azure Sentinel riasztást küld a térképen. Ha a narancssárga látható, akkor bejövő forgalom: valaki megpróbál hozzáférni a szervezethez egy ismert kártékony IP-címről. Ha a kimenő (vörös) tevékenységet látja, az azt jelenti, hogy a hálózatról származó adatok a szervezetből egy ismert kártékony IP-címről áramlanak.
 
    ![Rosszindulatú forgalom térképe](./media/qs-get-visibility/map.png)
 
-- **Legutóbbi incidensek**: a legutóbbi incidensek, súlyosságuk és az incidenshez kapcsolódó riasztások számának megtekintése. Ha egy adott típusú riasztás hirtelen csúcsa jelenik meg, az azt jelentheti, hogy jelenleg fut aktív támadás. Ha például egy hirtelen 20 Pass-The-hash típusú eseményt használ a Microsoft Defender for Identity (korábbi nevén Azure ATP) számára, akkor lehetséges, hogy valaki jelenleg próbálkozik a támadással.
+- **Legutóbbi incidensek** : a legutóbbi incidensek, súlyosságuk és az incidenshez kapcsolódó riasztások számának megtekintése. Ha egy adott típusú riasztás hirtelen csúcsa jelenik meg, az azt jelentheti, hogy jelenleg fut aktív támadás. Ha például egy hirtelen 20 Pass-The-hash típusú eseményt használ a Microsoft Defender for Identity (korábbi nevén Azure ATP) számára, akkor lehetséges, hogy valaki jelenleg próbálkozik a támadással.
 
-- **Adatforrások rendellenességei**: a Microsoft adatelemzői olyan modelleket hoztak létre, amelyek folyamatosan keresik az adatforrásokból származó adatokkal kapcsolatos rendellenességeket. Ha nincs rendellenesség, semmi sem jelenik meg. Ha rendellenességek észlelhetők, érdemes részletesen bemutatni, hogy mi történt. Kattintson például az Azure-tevékenység csúcsára. A **diagramra** kattintva megtekintheti, hogy mikor történt a nyárs, majd szűrheti az adott időszakban bekövetkezett tevékenységeket, hogy megtudja, mi okozta a nyársat.
+- **Adatforrások rendellenességei** : a Microsoft adatelemzői olyan modelleket hoztak létre, amelyek folyamatosan keresik az adatforrásokból származó adatokkal kapcsolatos rendellenességeket. Ha nincs rendellenesség, semmi sem jelenik meg. Ha rendellenességek észlelhetők, érdemes részletesen bemutatni, hogy mi történt. Kattintson például az Azure-tevékenység csúcsára. A **diagramra** kattintva megtekintheti, hogy mikor történt a nyárs, majd szűrheti az adott időszakban bekövetkezett tevékenységeket, hogy megtudja, mi okozta a nyársat.
 
    ![Rendellenes adatforrások](./media/qs-get-visibility/anomolies.png)
 
@@ -54,10 +54,10 @@ Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági 
 
 A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott adatforrásokból, így részletesen megismerheti az ezekben a szolgáltatásokban létrehozott eseményeket. A beépített munkafüzetek közé tartoznak az Azure AD, az Azure-tevékenység eseményei és a helyszíni adatok, amelyek a kiszolgálókról származó Windows-eseményekről, az első féltől származó riasztásokból, bármely harmadik féltől, például a tűzfal forgalmi naplóitól, az Office 365-től és a Windows-események alapján nem biztonságos protokollokból származnak. A munkafüzetek Azure Monitor munkafüzeteken alapulnak, így jobb testreszabhatóság és rugalmasság biztosítható a saját munkafüzetek tervezésekor. További információ: [munkafüzetek](../azure-monitor/platform/workbooks-overview.md).
 
-1. A **Beállítások**területen válassza a **munkafüzetek**elemet. A **telepítés**alatt látható az összes telepített munkafüzet. Az **összes**lehetőségnél megtekintheti a telepítéshez elérhető beépített munkafüzetek teljes katalógusát. 
+1. A **Beállítások** területen válassza a **munkafüzetek** elemet. A **telepítés** alatt látható az összes telepített munkafüzet. Az **összes** lehetőségnél megtekintheti a telepítéshez elérhető beépített munkafüzetek teljes katalógusát. 
 2. Egy adott munkafüzet keresésével megtekintheti az egyes ajánlatok teljes listáját és leírását. 
 3. Feltételezve, hogy az Azure AD-t használja az Azure Sentinel használatának megkezdéséhez, javasoljuk, hogy legalább a következő munkafüzeteket telepítse:
-   - **Azure ad**: használja az alábbiak egyikét vagy mindkettőt:
+   - **Azure ad** : használja az alábbiak egyikét vagy mindkettőt:
        - Az **Azure ad-bejelentkezések** időben elemzik a bejelentkezéseket, hogy megjelenjenek-e anomáliák. Ez a munkafüzet sikertelen bejelentkezéseket biztosít az alkalmazásokhoz, eszközökhöz és helyekhez, így észreveszi, hogy valami szokatlan történik. Figyeljen a több sikertelen bejelentkezésre. 
        - Az **Azure ad-naplók** elemzik a rendszergazdai tevékenységeket, például a felhasználók változásait (Hozzáadás, eltávolítás stb.), a csoportok létrehozását és a módosításokat.  
 
@@ -66,7 +66,7 @@ A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott a
       ![Palo Alto-irányítópult](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-A munkafüzeteket testreszabhatja úgy, hogy szerkeszti a fő lekérdezési ![ lekérdezés szerkesztése gombot ](./media/qs-get-visibility/edit-query-button.png) . A gombra kattintva megnyithatja a ![ log Analytics gombot ](./media/qs-get-visibility/go-to-la-button.png) [log Analytics a lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a **csempe adatainak testreszabása**lehetőséget, amely lehetővé teszi a fő Időszűrő szerkesztését, vagy eltávolíthatja a munkafüzetből az adott csempéket.
+A munkafüzeteket testreszabhatja úgy, hogy szerkeszti a fő lekérdezési ![ lekérdezés szerkesztése gombot ](./media/qs-get-visibility/edit-query-button.png) . A gombra kattintva megnyithatja a ![ log Analytics gombot ](./media/qs-get-visibility/go-to-la-button.png) [log Analytics a lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a **csempe adatainak testreszabása** lehetőséget, amely lehetővé teszi a fő Időszűrő szerkesztését, vagy eltávolíthatja a munkafüzetből az adott csempéket.
 
 További információ a lekérdezések használatáról [: oktatóanyag: vizualizációs adatok log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -74,14 +74,14 @@ További információ a lekérdezések használatáról [: oktatóanyag: vizuali
 
 Ha új csempét szeretne felvenni, hozzáadhatja egy meglévő munkafüzethez, vagy létrehozhatja azt, vagy egy beépített Azure Sentinel-munkafüzetet. 
 1. A Log Analytics-ban hozzon létre egy csempét az [oktatóanyag: vizualizációs adatLog Analyticsokban](../azure-monitor/learn/tutorial-logs-dashboards.md)található útmutatások segítségével. 
-2. Miután létrehozta a csempét, a **PIN**elemnél válassza ki azt a munkafüzetet, amelyben a csempét meg szeretné jeleníteni.
+2. Miután létrehozta a csempét, a **PIN** elemnél válassza ki azt a munkafüzetet, amelyben a csempét meg szeretné jeleníteni.
 
 ## <a name="create-new-workbooks"></a>Új munkafüzetek létrehozása
 Létrehozhat egy új munkafüzetet a semmiből, vagy használhat egy beépített munkafüzetet az új munkafüzet alapjaként.
 
-1. Ha új munkafüzetet szeretne létrehozni a semmiből, válassza a **munkafüzetek** , majd az **+ Új munkafüzet**lehetőséget.
+1. Ha új munkafüzetet szeretne létrehozni a semmiből, válassza a **munkafüzetek** , majd az **+ Új munkafüzet** lehetőséget.
 2. Válassza ki azt az előfizetést, amelyben létrehozta a munkafüzetet, és adjon meg egy leíró nevet. Minden munkafüzet egy olyan Azure-erőforrás, mint bármely más, és hozzárendelheti az IT-szerepköröket (Azure RBAC) annak meghatározásához és korlátozásához, hogy ki férhet hozzá. 
-3. Annak lehetővé tétele, hogy megjelenjen a munkafüzetekben a vizualizációk rögzítéséhez, meg kell osztania azt. Kattintson a **megosztás** , majd a **felhasználók kezelése**lehetőségre. 
+3. Annak lehetővé tétele, hogy megjelenjen a munkafüzetekben a vizualizációk rögzítéséhez, meg kell osztania azt. Kattintson a **megosztás** , majd a **felhasználók kezelése** lehetőségre. 
  
 1. A **hozzáférés** -és **szerepkör-hozzárendeléseket** a többi Azure-erőforráshoz hasonlóan használhatja. További információ: Azure- [munkafüzetek megosztása az Azure RBAC használatával](../azure-portal/azure-portal-dashboard-share-access.md).
 
@@ -119,13 +119,13 @@ Az [Azure sentinelhez csatlakoztatott adatforrások](connect-data-sources.md) é
 
 Új észlelés létrehozásakor kihasználhatja a Microsoft biztonsági kutatói által készített beépített észleléseket, amelyek a csatlakoztatott adatforrásokhoz vannak igazítva.
 
-Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , majd a **szabály sablonok**elemre. Ezen a lapon az Azure Sentinel beépített szabályai láthatók.
+Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , majd a **szabály sablonok** elemre. Ezen a lapon az Azure Sentinel beépített szabályai láthatók.
 
    ![A fenyegetések felderítése az Azure Sentinel használatával beépített észlelésekkel](media/tutorial-detect-built-in/view-oob-detections.png)
 
 A beépített észlelésekkel kapcsolatos további információkért lásd az [oktatóanyag: beépített elemzések](tutorial-detect-threats-built-in.md)beszerzése című témakört.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban megtanulta, hogyan kezdheti el az Azure Sentinel használatát. Folytassa az Oktatóanyaggal a [fenyegetések észleléséhez](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
 > [Hozzon létre egyéni veszélyforrás-észlelési szabályokat](tutorial-detect-threats-custom.md) a fenyegetésekre adott válaszok automatizálására.

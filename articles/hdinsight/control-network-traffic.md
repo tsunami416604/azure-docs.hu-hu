@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 929956d6f439df2a2e7cb8d1b950f5e68cdeab68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631715"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543168"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Hálózati forgalom szabályozása az Azure HDInsight
 
 Az Azure-beli virtuális hálózatok hálózati forgalmát a következő módszerekkel lehet vezérelni:
 
-* A **hálózati biztonsági csoportok** (NSG) lehetővé teszik a bejövő és a kimenő forgalom szűrését a hálózatra. További információ: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) dokumentum.
+* A **hálózati biztonsági csoportok** (NSG) lehetővé teszik a bejövő és a kimenő forgalom szűrését a hálózatra. További információ: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/network-security-groups-overview.md) dokumentum.
 
 * A **hálózati virtuális berendezések** (NVA-EK) csak kimenő forgalom esetén használhatók. A NVA replikálja az eszközök, például a tűzfalak és az útválasztók működését. További információ: [hálózati berendezések](https://azure.microsoft.com/solutions/network-appliances) dokumentum.
 
@@ -40,9 +40,9 @@ Ha **hálózati biztonsági csoportokat** kíván használni a hálózati forgal
 
 3. Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et.
 
-    * __Hálózati biztonsági csoportok__: engedélyezze a __bejövő__ forgalmat az __443__ -as porton az IP-címekről. Ezzel biztosíthatja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt. A __KAFKA Rest proxyt__ használó fürtök esetében engedélyezze a __bejövő__ adatforgalmat is a __9400__ -as porton. Ez biztosítja, hogy a Kafka REST-proxykiszolgáló elérhető legyen.
+    * __Hálózati biztonsági csoportok__ : engedélyezze a __bejövő__ forgalmat az __443__ -as porton az IP-címekről. Ezzel biztosíthatja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt. A __KAFKA Rest proxyt__ használó fürtök esetében engedélyezze a __bejövő__ adatforgalmat is a __9400__ -as porton. Ez biztosítja, hogy a Kafka REST-proxykiszolgáló elérhető legyen.
 
-A hálózati biztonsági csoportokkal kapcsolatos további információkért tekintse meg a [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md)című témakört.
+A hálózati biztonsági csoportokkal kapcsolatos további információkért tekintse meg a [hálózati biztonsági csoportok áttekintése](../virtual-network/network-security-groups-overview.md)című témakört.
 
 ## <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>HDInsight-fürtök kimenő forgalmának szabályozása
 
@@ -69,6 +69,6 @@ A virtuális készülékekre vonatkozó tűzfalszabályok részletes ismertetés
 * Az Azure-beli virtuális hálózatok létrehozásával kapcsolatos Példákért lásd: [virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md).
 * A helyszíni hálózathoz való kapcsolódás HDInsight konfigurálásának teljes körű példáját lásd: [a HDInsight összekapcsolása egy helyszíni hálózattal](./connect-on-premises-network.md).
 * Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az [azure Virtual Network áttekintését](../virtual-network/virtual-networks-overview.md).
-* A hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
+* A hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md).
 * A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd: [felhasználó által definiált útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md).
 * További információ a virtuális hálózatokról: [virtuális hálózatok tervezése a HDInsight](./hdinsight-plan-virtual-network-deployment.md).

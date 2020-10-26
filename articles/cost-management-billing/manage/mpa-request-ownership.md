@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/19/2020
 ms.author: banders
-ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: aaa94f66f1b0441e025013369b3b674d799d4847
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371014"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203262"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához
 
@@ -21,15 +21,15 @@ A felügyelt szolgáltatások és az Azure-használat egyetlen, összevont szám
 
 Ez a szolgáltatás csak [Azure-beli szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) minősítésű közvetlen felhőszolgáltatói (Cloud Solution Provider) számlázási partnerek számára elérhető. A Microsoft szabályozása és szabályzatai hatálya alá tartozik, és bizonyos ügyfelek esetén felülvizsgálatot és jóváhagyást is igényelhet.
 
-A számlázási tulajdonjog kéréséhez rendelkeznie kell a **globális rendszergazda** vagy a **rendszergazdai ügynök** szerepkörrel. További információ: [Partnerközpont – Felhasználói szerepkörök és engedélyek hozzárendelése](https://docs.microsoft.com/partner-center/permissions-overview)
+A számlázási tulajdonjog kéréséhez rendelkeznie kell a **globális rendszergazda** vagy a **rendszergazdai ügynök** szerepkörrel. További információ: [Partnerközpont – Felhasználói szerepkörök és engedélyek hozzárendelése](/partner-center/permissions-overview)
 
 Ez a cikk a Microsoft-partnerszerződések számlázási fiókjaira vonatkozik. Ezek a fiókok a felhőszolgáltatói partnerek (CSP-k) számára készülnek az ügyfelek számláinak az új kereskedelmi felületen való kezeléséhez. Az új felület csak olyan partnerek számára érhető el, akik legalább egy olyan ügyféllel rendelkeznek, aki elfogadta a Microsoft-ügyfélszerződést (MCA), illetve rendelkezik Azure-csomaggal. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-partnerszerződéshez](#check-access-to-a-microsoft-partner-agreement).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Viszonteladói kapcsolat](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer) létesítése az ügyféllel. A [CSP regionális hitelesítés áttekintésének](https://docs.microsoft.com/partner-center/regional-authorization-overview) ellenőrzése annak megerősítésére, hogy az ügyfél és a partner bérlője is ugyanabban a hitelesített régióban van.
-1. [Annak megerősítése, hogy az ügyfél elfogadta a Microsoft-ügyfélszerződést](https://docs.microsoft.com/partner-center/confirm-customer-agreement)
-1. [Azure-csomag](https://docs.microsoft.com/partner-center/purchase-azure-plan) beállítása az ügyfélnek. Ha az ügyfél több viszonteladótól is vásárol, Önnek mindegyik ügyfél-viszonteladó pároshoz be kell állítania az Azure-csomagot.
+1. [Viszonteladói kapcsolat](/partner-center/request-a-relationship-with-a-customer) létesítése az ügyféllel. A [CSP regionális hitelesítés áttekintésének](/partner-center/regional-authorization-overview) ellenőrzése annak megerősítésére, hogy az ügyfél és a partner bérlője is ugyanabban a hitelesített régióban van.
+1. [Annak megerősítése, hogy az ügyfél elfogadta a Microsoft-ügyfélszerződést](/partner-center/confirm-customer-agreement)
+1. [Azure-csomag](/partner-center/purchase-azure-plan) beállítása az ügyfélnek. Ha az ügyfél több viszonteladótól is vásárol, Önnek mindegyik ügyfél-viszonteladó pároshoz be kell állítania az Azure-csomagot.
 
 ## <a name="request-billing-ownership"></a>Számlázási tulajdonjog kérése
 
@@ -115,7 +115,7 @@ Letiltott előfizetéseket nem lehet átadni. Csak az aktív állapotú előfize
 
 ### <a name="azure-resources-transfer"></a>Azure-erőforrások átadása
 
-Az előfizetésben található összes erőforrás, például virtuális gép, lemez és webhely átadódik az új fiókba.
+Az előfizetésben található összes erőforrás, például virtuális gép, lemez és webhely átadódik az új fiókba. Az átadáskor az előfizetés- és erőforrás-azonosítók megmaradnak. 
 
 ### <a name="azure-marketplace-products-transfer"></a>Azure Marketplace-termékek átadása
 
@@ -123,13 +123,13 @@ A felhőszolgáltatók (CSP-k) által kezelt előfizetésekhez elérhető Azure 
 
 ### <a name="azure-reservations-transfer"></a>Azure-foglalások átadása
 
-Az Azure-foglalásokat a rendszer nem helyezi át automatikusan. Megtarthatja a foglalását a Nagyvállalati Szerződésben egyéb előfizetésekhez, vagy [lemondhatja a foglalást](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations), amelyet egy partner újra megvásárolhat a CSP-ben.
+Az Azure-foglalásokat a rendszer nem helyezi át automatikusan. Megtarthatja a foglalását a Nagyvállalati Szerződésben egyéb előfizetésekhez, vagy [lemondhatja a foglalást](../reservations/exchange-and-refund-azure-reservations.md), amelyet egy partner újra megvásárolhat a CSP-ben.
 
 ### <a name="access-to-azure-services"></a>Hozzáférés az Azure-szolgáltatásokhoz
 
 A meglévő felhasználók, csoportok vagy szolgáltatásnevek hozzáféréseire, amelyek az [Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével lettek hozzárendelve, az átadás nincs hatással. A partner nem kap új Azure RBAC-hozzáférést az előfizetésekhez.
 
-A partnereknek együtt kell működniük az ügyféllel, hogy hozzáférjenek az előfizetésekhez. A partnereknek rendelkezniük kell [Megbízott felügyeleti – AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) vagy [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider)-hozzáféréssel a támogatási jegyek eléréséhez.
+A partnereknek együtt kell működniük az ügyféllel, hogy hozzáférjenek az előfizetésekhez. A partnereknek rendelkezniük kell [Megbízott felügyeleti – AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) vagy [Azure Lighthouse](../../lighthouse/concepts/cloud-solution-provider.md)-hozzáféréssel a támogatási jegyek eléréséhez.
 
 ### <a name="azure-support-plan"></a>Azure támogatási csomagot
 
@@ -145,7 +145,7 @@ Az átadási kérelem megszakítható, ha még nem lett jóváhagyva vagy elutas
 
 ### <a name="software-as-a-service-saas-transfer"></a>Szolgáltatott szoftver (SaaS) átadása
 
-A SaaS-termékek nem adhatók át az előfizetésekkel együtt. Kérje meg a felhasználót, hogy az SaaS-termékek számlázási tulajdonjogának átadásához [lépjen kapcsolatba az Azure ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). A számlázási tulajdonjoggal együtt a felhasználó az erőforrásai tulajdonjogát is átadhatja. Az erőforrás-tulajdonjoga lehetővé teszi felügyeleti műveletek elvégzését, például a termék adatainak törlését és megtekintését. A felhasználónak az SaaS-termékben erőforrás-tulajdonosnak kell lennie ahhoz, hogy átadhassa az erőforrás tulajdonjogát.
+A SaaS-termékek nem adhatók át az előfizetésekkel együtt. Kérje meg a felhasználót, hogy az SaaS-termékek számlázási tulajdonjogának átadásához [lépjen kapcsolatba az Azure ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). A számlázási tulajdonjoggal együtt a felhasználó az erőforrásai tulajdonjogát is átadhatja. Az erőforrás-tulajdonjog lehetővé teszi felügyeleti műveletek elvégzését, például a termék adatainak törlését és megtekintését. A felhasználónak az SaaS-termékben erőforrás-tulajdonosnak kell lennie ahhoz, hogy átadhassa az erőforrás tulajdonjogát.
 
 ### <a name="additional-approval-for-certain-customers"></a>További jóváhagyás bizonyos ügyfelek esetében
 
@@ -155,13 +155,13 @@ Néhány ügyfél átadási kérelme esetében a Microsoft által elvégzett tov
 
 Az átadott Azure-előfizetések címtárának meg kell egyeznie a CSP-kapcsolat létesítése során kiválasztott ügyfél címtárával.
 
-Ha a két címtár nem egyezik, az előfizetések átadása nem sikerült. Létesítenie kell egy új viszonteladói CSP-kapcsolatot az ügyféllel az Azure-előfizetések címtárának kiválasztásával, vagy módosítania kell az Azure-előfizetések címtárát, hogy az megfeleljen az ügyfél CSP-kapcsolati címtárának. További információ: [Meglévő előfizetés társítása az Azure AD-címtárral](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+Ha a két címtár nem egyezik, az előfizetések átadása nem sikerült. Létesítenie kell egy új viszonteladói CSP-kapcsolatot az ügyféllel az Azure-előfizetések címtárának kiválasztásával, vagy módosítania kell az Azure-előfizetések címtárát, hogy az megfeleljen az ügyfél CSP-kapcsolati címtárának. További információ: [Meglévő előfizetés társítása az Azure AD-címtárral](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory).
 
-### <a name="ea-subscription-in-the-non-orgnization-directory"></a>EA-előfizetés a nem szervezeti címtárban
+### <a name="ea-subscription-in-the-non-organization-directory"></a>EA-előfizetés a nem szervezeti címtárban
 
 A nem szervezeti címtárakból származó EA-előfizetések akkor vihetők át, ha a címtár viszonteladói kapcsolattal rendelkezik a CSP-vel. Ha a címtár nem rendelkezik viszonteladói kapcsolattal, a partnerkapcsolat elfogadására jogosult *globális rendszergazdaként* kell megadnia a szervezet felhasználóját a címtárban. A felhasználónév tartománynév részének a kezdeti alapértelmezett tartománynévnek ([tartománynév]. onmicrosoft.com), vagy egy ellenőrzött, nem összevont egyéni tartománynévnek kell lennie (pl. contoso.com).  
 
-Új felhasználó az AAD-címtárhoz hozzáadásával kapcsolatban lásd: [Rövid útmutató: Új felhasználók hozzáadása az Azure Active Directoryhoz](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+Új felhasználó az AAD-címtárhoz hozzáadásával kapcsolatban lásd: [Rövid útmutató: Új felhasználók hozzáadása az Azure Active Directoryhoz](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft-partnerszerződéshez való hozzáférés ellenőrzése
 
@@ -174,4 +174,4 @@ Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálatta
 ## <a name="next-steps"></a>További lépések
 
 * Az Azure-előfizetések számlázási tulajdonjoga átadódik az Önnek. Az ezen előfizetésekre vonatkozó díjak alakulását nyomon követheti az [Azure Portalon](https://portal.azure.com).
-* Működjön együtt az ügyféllel, hogy hozzáférjen az átvitt Azure-előfizetésekhez. [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+* Működjön együtt az ügyféllel, hogy hozzáférjen az átvitt Azure-előfizetésekhez. [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).

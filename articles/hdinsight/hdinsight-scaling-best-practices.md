@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 874cea2377d3c0a128894bb67278e8ec2cbe7edc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490968"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535399"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -32,8 +32,8 @@ A Microsoft a következő segédprogramokat biztosítja a fürtök méretezésé
 
 |Segédprogram | Leírás|
 |---|---|
-|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[PowerShell Az](/powershell/azure)|[`Set-AzHDInsightClusterSize`](/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[PowerShell AzureRM](/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](/cli/azure/) | [`az hdinsight resize`](/cli/azure/hdinsight#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure klasszikus parancssori felület](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure Portal](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
@@ -44,7 +44,7 @@ A módszerek bármelyikével akár percek alatt is méretezheti a HDInsight-für
 
 > [!IMPORTANT]  
 > * A klasszikus Azure CLI elavult, és csak a klasszikus üzembe helyezési modellel használható. Az összes többi központi telepítéshez használja az [Azure CLI](/cli/azure/)-t.
-> * A PowerShell-AzureRM modul elavult.  Ha lehetséges, használja az az [modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) .
+> * A PowerShell-AzureRM modul elavult.  Ha lehetséges, használja az az [modult](/powershell/azure/new-azureps-module-az) .
 
 ## <a name="impact-of-scaling-operations"></a>A skálázási műveletek hatása
 
@@ -125,12 +125,12 @@ Ha el szeretné kerülni, hogy a futó feladatok leskálázási művelet közben
 1. Manuálisan fejezze be a feladatokat.
 1. A skálázási művelet megkötése után küldje el újra a feladatokat.
 
-A függőben lévő és futó feladatok listájának megtekintéséhez a következő lépéseket követve használhatja a fonal **Resource Manager felhasználói felületét**:
+A függőben lévő és futó feladatok listájának megtekintéséhez a következő lépéseket követve használhatja a fonal **Resource Manager felhasználói felületét** :
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt.  A fürt megnyílik egy új portál oldalon.
-2. A fő nézetből navigáljon a **fürt irányítópultok**  >  **Ambari kezdőlapra**. Adja meg a fürt hitelesítő adatait.
+2. A fő nézetből navigáljon a **fürt irányítópultok**  >  **Ambari kezdőlapra** . Adja meg a fürt hitelesítő adatait.
 3. A Ambari felhasználói felületén válassza a **fonal** elemet a szolgáltatások listájában a bal oldali menüben.  
-4. A fonal lapon válassza a **gyors hivatkozások** lehetőséget, majd vigye az egérmutatót az aktív fő csomópont fölé, majd válassza a **Resource Manager felhasználói felület**lehetőséget.
+4. A fonal lapon válassza a **gyors hivatkozások** lehetőséget, majd vigye az egérmutatót az aktív fő csomópont fölé, majd válassza a **Resource Manager felhasználói felület** lehetőséget.
 
     ![Apache Ambari – a Resource Manager felhasználói felületének gyors hivatkozásai](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
@@ -146,7 +146,7 @@ Ha manuálisan szeretné megölni a futó alkalmazást, hajtsa végre a követke
 yarn application -kill <application_id>
 ```
 
-Példa:
+Például:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2cc60af26754eddbe8699019ae8d906a4c1e9e62
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f560f16c6437b219dd1e7017d70976ff4650c2c0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057688"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544358"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Modellek elemzése és ellenőrzése a DTDL Parser Library-vel
 
@@ -36,7 +36,7 @@ Miután létrehozott egy önálló csomagot, és hozzáadta a végrehajtható f�
 DTDLValidator
 ```
 
-Az alapértelmezett beállításokkal a minta az `*.json` aktuális könyvtárban és az összes alkönyvtárban található fájlokat fogja keresni. Azt is megteheti, hogy a következő lehetőséget is hozzáadja a minta kereséséhez a jelzett könyvtárban és a kiterjesztésű fájlok összes alkönyvtárában *. dtdl*:
+Az alapértelmezett beállításokkal a minta az `*.json` aktuális könyvtárban és az összes alkönyvtárban található fájlokat fogja keresni. Azt is megteheti, hogy a következő lehetőséget is hozzáadja a minta kereséséhez a jelzett könyvtárban és a kiterjesztésű fájlok összes alkönyvtárában *. dtdl* :
 
 ```cmd/sh
 DTDLValidator -d C:\Work\DTDL -e dtdl 
@@ -77,32 +77,50 @@ Az elemzési függvénytárat közvetlenül is használhatja olyan dolgokhoz, mi
 
 Az alábbi elemzési kód támogatásához vegye fontolóra az Azure Digital Twins-példányban definiált több modellt:
 
-> [!TIP] 
-> A `dtmi:com:contoso:coffeeMaker` modell a *képesség modell* szintaxisát használja, amely azt jelenti, hogy a szolgáltatásba való telepítése egy olyan PnP-eszköz csatlakoztatásával történik, amely kiteszi ezt a modellt.
-
 ```json
-{
-  "@id": " dtmi:com:contoso:coffeeMaker",
-  "@type": "CapabilityModel",
-  "implements": [
-        { "name": "coffeeMaker", "schema": " dtmi:com:contoso:coffeeMakerInterface" }
-  ]    
-}
-{
-  "@id": " dtmi:com:contoso:coffeeMakerInterface",
-  "@type": "Interface",
-  "contents": [
-      { "@type": "Property", "name": "waterTemp", "schema": "double" }  
-  ]
-}
-{
-  "@id": " dtmi:com:contoso:coffeeBar",
-  "@type": "Interface",
-  "contents": [
-        { "@type": "relationship", "contains": " dtmi:com:contoso:coffeeMaker" },
-        { "@type": "property", "name": "capacity", "schema": "integer" }
-  ]    
-}
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMaker;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Component",
+        "name": "coffeeMaker",
+        "schema": "dtmi:com:contoso:coffeeMakerInterface;1"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMakerInterface;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "waterTemp",
+        "schema": "double"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeBar;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Relationship",
+        "name": "foo",
+        "target": "dtmi:com:contoso:coffeeMaker;1"
+      },
+      {
+        "@type": "Property",
+        "name": "capacity",
+        "schema": "integer"
+      }
+    ]
+  }
+]
 ```
 
 Az alábbi kód bemutatja, hogyan használható az elemző függvénytár a következő definíciók megjelenítéséhez a C#-ban:
@@ -172,7 +190,7 @@ void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEnt
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha befejezte a modellek írását, tekintse meg az DigitalTwinsModels API-k használatával történő feltöltését ismertető témakört (és végezze el a többi felügyeleti műveletet):
 * [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)

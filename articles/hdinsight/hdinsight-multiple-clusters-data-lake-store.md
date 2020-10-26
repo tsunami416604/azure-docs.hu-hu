@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df28374d0f124ceb46d2f97d55218d428275deca
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083950"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533087"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata Azure Data Lake Storage fiókkal
 
 A HDInsight 3,5-es verziójától kezdve a Azure Data Lake Storage-fiókokkal rendelkező HDInsight-fürtöket alapértelmezett fájlrendszerként is létrehozhatja.
-Data Lake Storage támogatja a korlátlan tárhelyet, amely nem csak nagy mennyiségű adattárolást tesz lehetővé. Ugyanakkor több HDInsight-fürt üzemeltetéséhez, amelyek egyetlen Data Lake Storage-fiókkal osztoznak. A HDInsight-fürt Data Lake Storage tárolóként való létrehozásával kapcsolatos útmutatásért lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Data Lake Storage támogatja a korlátlan tárhelyet, amely nem csak nagy mennyiségű adattárolást tesz lehetővé. Ugyanakkor több HDInsight-fürt üzemeltetéséhez, amelyek egyetlen Data Lake Storage-fiókkal osztoznak. A HDInsight-fürt Data Lake Storage tárolóként való létrehozásával kapcsolatos útmutatásért lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](./hdinsight-hadoop-provision-linux-clusters.md).
 
 Ez a cikk ajánlásokat nyújt a Data Lake Storage rendszergazdának egy olyan önálló és megosztott Data Lake Storage-fiók beállításához, amely több **aktív** HDInsight-fürtön is felhasználható. Ezek az ajánlások több biztonságos és nem biztonságos Apache Hadoop-fürtök üzemeltetésére vonatkoznak egy megosztott Data Lake Storage-fiókon.
 
@@ -28,7 +28,7 @@ A cikk további része feltételezi, hogy jól ismeri a fájl-és mappa szintű 
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Több HDInsight-fürt Data Lake Storage beállítása
 
-Hozzon létre egy kétszintű mappa-hierarchiát, amely ismerteti a több HDInsight-fürt Data Lake Storage-fiókkal való használatának javaslatait. Vegye figyelembe, hogy rendelkezik egy Data Lake Storage-fiókkal a mappastruktúrát **/Clusters/Finance**. Ezzel a struktúrával a pénzügyi szervezet által igényelt összes fürt a/Clusters/Finance-t használhatja tárolási helyként. A jövőben, ha egy másik szervezet, a marketing, a HDInsight-fürtöket ugyanazzal a Data Lake Storage fiókkal szeretné létrehozni, létrehozhatnak/Clusters/marketing. Egyelőre csak használjuk a **/Clusters/Finance**-t.
+Hozzon létre egy kétszintű mappa-hierarchiát, amely ismerteti a több HDInsight-fürt Data Lake Storage-fiókkal való használatának javaslatait. Vegye figyelembe, hogy rendelkezik egy Data Lake Storage-fiókkal a mappastruktúrát **/Clusters/Finance** . Ezzel a struktúrával a pénzügyi szervezet által igényelt összes fürt a/Clusters/Finance-t használhatja tárolási helyként. A jövőben, ha egy másik szervezet, a marketing, a HDInsight-fürtöket ugyanazzal a Data Lake Storage fiókkal szeretné létrehozni, létrehozhatnak/Clusters/marketing. Egyelőre csak használjuk a **/Clusters/Finance** -t.
 
 Annak engedélyezéséhez, hogy a HDInsight-fürtök hatékonyan használják a mappastruktúrát, a Data Lake Storage rendszergazdának hozzá kell rendelnie a megfelelő engedélyeket a táblázatban leírtak szerint. A táblázatban megjelenő engedélyek hozzáférés-ACL-ek, és nem alapértelmezett ACL-ek.
 
@@ -48,10 +48,10 @@ A HRE-alkalmazások létrehozásával kapcsolatos utasításokért (amely egyben
 
 Néhány fontos szempontot figyelembe kell venni.
 
-- A fürthöz tartozó Storage-fiók használata **előtt** létre kell hozni és a megfelelő Data Lake Storage engedélyekkel kell kiépíteni a két szintű **/Clusters/Finance/**. Ez a struktúra nem jön létre automatikusan a fürtök létrehozása során.
+- A fürthöz tartozó Storage-fiók használata **előtt** létre kell hozni és a megfelelő Data Lake Storage engedélyekkel kell kiépíteni a két szintű **/Clusters/Finance/** . Ez a struktúra nem jön létre automatikusan a fürtök létrehozása során.
 - A fenti példa azt ajánlja, hogy a **/Clusters/Finance** tulajdonosi csoportját **FINGRP** -ként állítsa be, és az **r-x** hozzáférést a FINGRP-hoz a teljes mappa-hierarchiára a gyökértől kezdve. Ez biztosítja, hogy a FINGRP tagjai a root-től kezdődően navigálják a mappa szerkezetét.
-- Abban az esetben, ha a különböző HRE-szolgáltatások a **/Clusters/Finance**területen hozhatnak létre fürtöket, a Sticky-bit (ha a **pénzügyi** mappában van beállítva) biztosítja, hogy az egyik egyszerű szolgáltatásnév által létrehozott mappákat a másik ne törölje.
-- Ha a mappa szerkezete és engedélyei teljesülnek, a HDInsight-fürt létrehozási folyamata létrehoz egy fürtre vonatkozó tárolási helyet a **/Clusters/Finance/** területen. Például a fincluster01 nevű fürt tárterülete **/Clusters/Finance/fincluster01**lehet. A HDInsight-fürt által létrehozott mappák tulajdonjoga és engedélyei itt jelennek meg a táblázatban.
+- Abban az esetben, ha a különböző HRE-szolgáltatások a **/Clusters/Finance** területen hozhatnak létre fürtöket, a Sticky-bit (ha a **pénzügyi** mappában van beállítva) biztosítja, hogy az egyik egyszerű szolgáltatásnév által létrehozott mappákat a másik ne törölje.
+- Ha a mappa szerkezete és engedélyei teljesülnek, a HDInsight-fürt létrehozási folyamata létrehoz egy fürtre vonatkozó tárolási helyet a **/Clusters/Finance/** területen. Például a fincluster01 nevű fürt tárterülete **/Clusters/Finance/fincluster01** lehet. A HDInsight-fürt által létrehozott mappák tulajdonjoga és engedélyei itt jelennek meg a táblázatban.
 
     |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Megnevezett felhasználó | Elnevezett felhasználói engedélyek | Elnevezett csoport | Névvel ellátott csoport engedélyei |
     |---------|---------|---------|---------|---------|---------|---------|---------|
@@ -59,7 +59,7 @@ Néhány fontos szempontot figyelembe kell venni.
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>A feladatok bemeneti és kimeneti adataira vonatkozó javaslatok
 
-Javasoljuk, hogy a bemeneti adatokat egy adott feladathoz, a feladatból származó kimeneteket pedig a **/Clusters**-en kívüli mappában tárolja. Ez biztosítja, hogy akkor is, ha a fürtre vonatkozó mappa törölve lett egy tárolóhely visszaigényléséhez, a feladathoz tartozó bemenetek és kimenetek továbbra is elérhetők lesznek későbbi használatra. Ilyen esetben ügyeljen arra, hogy a feladathoz tartozó bemenetek és kimenetek tárolására szolgáló mappa-hierarchia megfelelő szintű hozzáférést biztosítson az egyszerű szolgáltatáshoz.
+Javasoljuk, hogy a bemeneti adatokat egy adott feladathoz, a feladatból származó kimeneteket pedig a **/Clusters** -en kívüli mappában tárolja. Ez biztosítja, hogy akkor is, ha a fürtre vonatkozó mappa törölve lett egy tárolóhely visszaigényléséhez, a feladathoz tartozó bemenetek és kimenetek továbbra is elérhetők lesznek későbbi használatra. Ilyen esetben ügyeljen arra, hogy a feladathoz tartozó bemenetek és kimenetek tárolására szolgáló mappa-hierarchia megfelelő szintű hozzáférést biztosítson az egyszerű szolgáltatáshoz.
 
 ## <a name="limit-on-clusters-sharing-a-single-storage-account"></a>Egyetlen Storage-fiókot megosztó fürtök korlátozása
 
@@ -91,5 +91,5 @@ Ahogy azt a korábban a JIRA csatolta, a nyilvános erőforrások honosítása k
 
 ## <a name="see-also"></a>Lásd még
 
-- [Rövid útmutató: Fürtök beállítása a HDInsightban](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Rövid útmutató: Fürtök beállítása a HDInsightban](./hdinsight-hadoop-provision-linux-clusters.md)
 - [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](hdinsight-hadoop-use-data-lake-storage-gen2.md)

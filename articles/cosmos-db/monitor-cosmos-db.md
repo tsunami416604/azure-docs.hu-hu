@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6bfedc7d14c234f88e8140281a01ffcc330ba532
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: af1419dfb47f9090fd3aa307c71f7e62206e3e93
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488367"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543355"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Figyelés Azure Cosmos DB
 
@@ -66,9 +66,9 @@ Az egyes Azure Cosmos-adatbázisokhoz tartozó Azure Portal **áttekintő** lapj
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> Metrikus adatok elemzése
 
-A Azure Cosmos DB a metrikák használatának egyéni élményét biztosítja. A jelen felület használatáról és a különböző Azure Cosmos DB forgatókönyvek elemzéséről lásd: [Azure Cosmos db metrikáinak monitorozása és hibakeresése Azure monitor]() .
+A Azure Cosmos DB a metrikák használatának egyéni élményét biztosítja.
 
-A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítségével elemezheti az Azure Cosmos db metrikáit más Azure-szolgáltatásoktól származó metrikákkal. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/platform/metrics-getting-started.md) . Az Azure Cosmos DB összes mérőszáma a névtérben **Cosmos dB standard mérőszámokban**szerepel. A következő dimenziókat használhatja ezekkel a metrikákkal, amikor szűrőt ad hozzá egy diagramhoz:
+A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítségével elemezheti az Azure Cosmos db metrikáit más Azure-szolgáltatásoktól származó metrikákkal. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/platform/metrics-getting-started.md) . Az Azure Cosmos DB összes mérőszáma a névtérben **Cosmos dB standard mérőszámokban** szerepel. A következő dimenziókat használhatja ezekkel a metrikákkal, amikor szűrőt ad hozzá egy diagramhoz:
 
 * CollectionName
 * DatabaseName
@@ -80,11 +80,11 @@ A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítség
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák**lehetőséget.
+1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák** lehetőséget.
 
    :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="A Azure Portalban elérhető figyelési lehetőségek":::
 
-1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget.
+1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést** és **erőforráscsoportot** . Az **erőforrástípus** mezőben válassza a **Azure Cosmos db fiókok** lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz** lehetőséget.
 
    :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="A Azure Portalban elérhető figyelési lehetőségek":::
 
@@ -96,7 +96,7 @@ A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítség
 
 ### <a name="add-filters-to-metrics"></a>Szűrők hozzáadása metrikához
 
-Az adott **CollectionName**, **databasename**, **OperationType**, **régió**és **statuscode**által megjelenített mérőszámokat és diagramokat is szűrheti. A metrikák szűréséhez válassza a **szűrő hozzáadása** lehetőséget, és válassza ki a szükséges tulajdonságot (például **OperationType** ), és válasszon egy értéket (például **lekérdezés**). A gráf ezután megjeleníti a kiválasztott időszakban a lekérdezési művelethez felhasznált kérelmek egységeit. A tárolt eljáráson keresztül végrehajtott műveletek nincsenek naplózva, így azok nem érhetők el az OperationType metrika alatt.
+Az adott **CollectionName** , **databasename** , **OperationType** , **régió** és **statuscode** által megjelenített mérőszámokat és diagramokat is szűrheti. A metrikák szűréséhez válassza a **szűrő hozzáadása** lehetőséget, és válassza ki a szükséges tulajdonságot (például **OperationType** ), és válasszon egy értéket (például **lekérdezés** ). A gráf ezután megjeleníti a kiválasztott időszakban a lekérdezési művelethez felhasznált kérelmek egységeit. A tárolt eljáráson keresztül végrehajtott műveletek nincsenek naplózva, így azok nem érhetők el az OperationType metrika alatt.
 
 :::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="A Azure Portalban elérhető figyelési lehetőségek":::
 
@@ -153,7 +153,7 @@ A portálon elérhető fiók szintű mérőszámok, mint például a fiók tárt
 
 * A REST API használatához [hajtsa végre a Get a gyűjteményt](/rest/api/cosmos-db/get-a-collection). A rendszer a gyűjteményre vonatkozó kvóta-és használati adatokat az x-MS-Resource-kvóta és az x-MS-Resource-használati fejlécekben adja vissza a válaszban.
 
-* A .NET SDK használatához használja a [DocumentClient. ReadDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) metódust, amely egy olyan [ResourceResponse](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) ad vissza, amely számos használati tulajdonságot tartalmaz, például **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**és sok más.
+* A .NET SDK használatához használja a [DocumentClient. ReadDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) metódust, amely egy olyan [ResourceResponse](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) ad vissza, amely számos használati tulajdonságot tartalmaz, például **CollectionSizeUsage** , **DatabaseUsage** , **DocumentUsage** és sok más.
 
 További metrikák eléréséhez használja a [Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights)-t. A rendelkezésre álló metrika-definíciókat a meghívásával kérheti le:
 

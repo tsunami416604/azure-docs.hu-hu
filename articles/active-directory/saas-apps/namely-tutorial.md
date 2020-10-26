@@ -67,7 +67,7 @@ A konkrétan az Azure AD-be való integráció konfigurálásához hozzá kell a
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli, a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli, a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés konfigurálásához a következő lépéseket kell végrehajtania:
 
-1. A [Azure Portal](https://portal.azure.com/) **az alkalmazás-** integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **az alkalmazás-** integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a következő lépéseke
 
 1. Egy másik böngészőablakban jelentkezzen be a vállalati webhelyre rendszergazdaként.
 
-2. A felső eszköztáron kattintson a **vállalat**elemre.
+2. A felső eszköztáron kattintson a **vállalat** elemre.
    
     ![Képernyőfelvétel: a kiválasztott vállalat értéke.](./media/namely-tutorial/tutorial_namely_06.png) 
 
@@ -134,7 +134,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a következő lépéseke
    
     ![Képernyőfelvétel: a vállalati beállítások lap van kiválasztva.](./media/namely-tutorial/tutorial_namely_07.png) 
 
-4. Kattintson az **SAML**elemre.
+4. Kattintson az **SAML** elemre.
    
     ![Képernyőfelvétel: SAML kiválasztva.](./media/namely-tutorial/tutorial_namely_08.png) 
 
@@ -142,9 +142,9 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a következő lépéseke
    
     ![Képernyőfelvétel: SAML-beállítások, ahol megadhatja a leírt értékeket.](./media/namely-tutorial/tutorial_namely_09.png)
  
-    a. Kattintson az **SAML engedélyezése**lehetőségre. 
+    a. Kattintson az **SAML engedélyezése** lehetőségre. 
 
-    b. Az **Identity Provider SSO URL** szövegmezőben illessze be a **bejelentkezési URL**-címet, amelyet a Azure Portalból másolt.
+    b. Az **Identity Provider SSO URL** szövegmezőben illessze be a **bejelentkezési URL** -címet, amelyet a Azure Portalból másolt.
     
     c. Nyissa meg a letöltött tanúsítványt a Jegyzettömbben, másolja a tartalmat, majd illessze be az **Identity Provider tanúsítvány** szövegmezőbe.
      
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a következő lépéseke
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -173,21 +173,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a következőhöz:.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **nevezetesen**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **nevezetesen** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **nevezetesen**lehetőséget.
+2. Az alkalmazások listában válassza a **nevezetesen** lehetőséget.
 
     ![Az alkalmazások listájában szereplő hivatkozás](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -209,7 +209,7 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót, azaz.
 
 1. Jelentkezzen be a vállalati webhelyre rendszergazdaként.
 
-2. A felső eszköztáron kattintson a **személyek**elemre.
+2. A felső eszköztáron kattintson a **személyek** elemre.
    
     ![A képernyőfelvételen a kiválasztott személyek érték látható.](./media/namely-tutorial/tutorial_namely_10.png) 
 
@@ -217,13 +217,13 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót, azaz.
    
     ![Képernyőfelvétel: a People (személyek) lap van kiválasztva.](./media/namely-tutorial/tutorial_namely_11.png) 
 
-4. Kattintson az **új személy hozzáadása**lehetőségre.
+4. Kattintson az **új személy hozzáadása** lehetőségre.
 
     ![A képernyőképen az új személy hozzáadása lehetőség látható.](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. Az **új személy hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    a. A **Utónév** szövegmezőbe írja be a következőt: **Britta**.
+    a. A **Utónév** szövegmezőbe írja be a következőt: **Britta** .
 
     b. A vezetéknév szövegmezőbe írja be a **Simon** **nevet** .
 

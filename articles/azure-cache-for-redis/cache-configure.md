@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089723"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544766"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -24,16 +24,16 @@ Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurác
 ## <a name="configure-azure-cache-for-redis-settings"></a>Az Azure cache konfigurálása a Redis beállításaihoz
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Az Azure cache for Redis beállításait az **erőforrás menü**használatával tekintheti meg és konfigurálhatja az **Azure cache for Redis** panelben.
+Az Azure cache for Redis beállításait az **erőforrás menü** használatával tekintheti meg és konfigurálhatja az **Azure cache for Redis** panelben.
 
 ![Azure cache a Redis beállításaihoz](./media/cache-configure/redis-cache-settings.png)
 
-A következő beállításokat tekintheti meg és konfigurálhatja az **erőforrás menüben**.
+A következő beállításokat tekintheti meg és konfigurálhatja az **erőforrás menüben** .
 
 * [Áttekintés](#overview)
 * [Tevékenységnapló](#activity-log)
 * [Hozzáférés-vezérlés (IAM)](#access-control-iam)
-* [Címkék](#tags)
+* [Címkéket](#tags)
 * [Problémák diagnosztizálása és megoldása](#diagnose-and-solve-problems)
 * [Beállítások](#settings)
     * [Elérési kulcs](#access-keys)
@@ -74,7 +74,7 @@ A gyorsítótárban végrehajtott műveletek megtekintéséhez kattintson a **m�
 
 A **hozzáférés-vezérlés (iam)** szakasz az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) támogatását biztosítja a Azure Portalban. Ez a konfiguráció segít a szervezeteknek egyszerűen és pontosan teljesíteni a hozzáférés-kezelési követelményeiket. További információ: [Azure szerepköralapú hozzáférés-vezérlés a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="tags"></a>Címkék
+### <a name="tags"></a>Címkéket
 
 A **címkék** szakasz segít az erőforrások rendszerezésében. További információkért lásd: [Az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/management/tag-resources.md) című cikket.
 
@@ -117,7 +117,7 @@ A **Speciális beállítások** panelen a következő beállítások konfigurál
 * [Lemezterület-értesítések (speciális beállítások)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Hozzáférési portok
-Alapértelmezés szerint a nem TLS/SSL-hozzáférés le van tiltva az új gyorsítótárak esetében. A nem TLS port engedélyezéséhez kattintson a **nem** lehetőségre a **hozzáférés engedélyezése csak SSL protokollon keresztül** a **Speciális beállítások** panelen, majd kattintson a **Mentés**gombra.
+Alapértelmezés szerint a nem TLS/SSL-hozzáférés le van tiltva az új gyorsítótárak esetében. A nem TLS port engedélyezéséhez kattintson a **nem** lehetőségre a **hozzáférés engedélyezése csak SSL protokollon keresztül** a **Speciális beállítások** panelen, majd kattintson a **Mentés** gombra.
 
 > [!NOTE]
 > A Redis-hez készült Azure cache TLS-hozzáférése jelenleg a TLS 1,0, 1,1 és 1,2 protokollt támogatja, de a 1,0 és az 1,1 verziók hamarosan megszűnnek.  További részletekért olvassa el a [TLS 1,0 és a 1,1 eltávolítása lapot](cache-remove-tls-10-11.md) .
@@ -126,7 +126,7 @@ Alapértelmezés szerint a nem TLS/SSL-hozzáférés le van tiltva az új gyors�
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>Memória-házirendek
-A **Speciális beállítások** panelen a **Maxmemory**szabályzat, a **Maxmemory**és a **maxfragmentationmemory számára fenntartott** beállítások konfigurálhatók a gyorsítótár számára.
+A **Speciális beállítások** panelen a **Maxmemory** szabályzat, a **Maxmemory** és a **maxfragmentationmemory számára fenntartott** beállítások konfigurálhatók a gyorsítótár számára.
 
 ![Azure cache a Redis Maxmemory házirendjéhez](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
@@ -145,7 +145,7 @@ A **maxmemory fenntartott** beállítás azt a memóriát konfigurálja, amely a
 
 A **maxfragmentationmemory fenntartott** beállítás azt a memóriát konfigurálja, amely a fürt MB-ban megadott mennyiségét tartalmazza, és amely a memória töredezettségének kielégítésére van fenntartva. Ennek az értéknek a beállítása lehetővé teszi, hogy konzisztens Redis-kiszolgáló élményt biztosítson, ha a gyorsítótár megtelt, vagy a teljes és a töredezettségi arány magas. Ha a memória le van foglalva az ilyen műveletekhez, nem érhető el a gyorsítótárazott adatok tárolása.
 
-Az új memória foglalási értékének (**maxmemory** vagy **maxfragmentationmemory**) kiválasztásakor figyelembe kell venni, hogy ez a változás milyen hatással lehet egy olyan gyorsítótárra, amely már fut nagy mennyiségű adattal. Ha például egy 53 GB-os gyorsítótárban 49 GB adat található, akkor a foglalás értékét 8 GB-ra kell módosítania, ez a módosítás a rendszer számára a maximális rendelkezésre álló memóriát is leállítja a 45 GB-ra. Ha a jelenlegi `used_memory` vagy az `used_memory_rss` értéke meghaladja az új 45 GB-os korlátot, akkor a rendszernek el kell zárnia az adatait, amíg mindkettő `used_memory` és `used_memory_rss` 45 GB alá nem kerül. A kizárás növelheti a kiszolgáló terhelését és a memória töredezettségét. A gyorsítótár-metrikákkal, például a-vel és a-vel kapcsolatos további információkért `used_memory` `used_memory_rss` lásd: [elérhető metrikák és jelentéskészítési időközök](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Az új memória foglalási értékének ( **maxmemory** vagy **maxfragmentationmemory** ) kiválasztásakor figyelembe kell venni, hogy ez a változás milyen hatással lehet egy olyan gyorsítótárra, amely már fut nagy mennyiségű adattal. Ha például egy 53 GB-os gyorsítótárban 49 GB adat található, akkor a foglalás értékét 8 GB-ra kell módosítania, ez a módosítás a rendszer számára a maximális rendelkezésre álló memóriát is leállítja a 45 GB-ra. Ha a jelenlegi `used_memory` vagy az `used_memory_rss` értéke meghaladja az új 45 GB-os korlátot, akkor a rendszernek el kell zárnia az adatait, amíg mindkettő `used_memory` és `used_memory_rss` 45 GB alá nem kerül. A kizárás növelheti a kiszolgáló terhelését és a memória töredezettségét. A gyorsítótár-metrikákkal, például a-vel és a-vel kapcsolatos további információkért `used_memory` `used_memory_rss` lásd: [elérhető metrikák és jelentéskészítési időközök](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > A **maxmemory fenntartott** és a **maxfragmentationmemory számára fenntartott** beállítások csak a standard és a prémium szintű gyorsítótárak esetében érhetők el.
@@ -234,7 +234,7 @@ A **frissítések ütemezett frissítése** panelen megadhatja a gyorsítótár 
 
 ![Frissítések ütemezése](./media/cache-configure/redis-schedule-updates.png)
 
-A karbantartási időszak megadásához tekintse meg a kívánt napokat, és minden nap esetében határozza meg a karbantartási időszak kezdő óráját, majd kattintson **az OK**gombra. A karbantartási időszak időpontja UTC.
+A karbantartási időszak megadásához tekintse meg a kívánt napokat, és minden nap esetében határozza meg a karbantartási időszak kezdő óráját, majd kattintson **az OK** gombra. A karbantartási időszak időpontja UTC.
 
 > [!IMPORTANT]
 > Az **ütemezett frissítések** funkció csak a prémium szintű gyorsítótárak esetében érhető el. További információkért és útmutatásért lásd: [Azure cache for Redis Administration – frissítések frissítése](cache-administration.md#schedule-updates).
@@ -316,7 +316,7 @@ Ha olyan prémium szintű gyorsítótárral rendelkezik, amelyen engedélyezve v
 
 ![Képernyőkép: Itt adhatja meg, hogy a gyorsítótár mely szegmensei legyenek újraindításra.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-A gyorsítótár egy vagy több csomópontjának újraindításához válassza ki a kívánt csomópontokat, majd kattintson az **Újraindítás**gombra. Ha olyan prémium szintű gyorsítótárral rendelkezik, amelyen engedélyezve van a fürtözés, válassza ki az újraindítani kívánt szegmens (eke) t, majd kattintson az **Újraindítás**gombra. Néhány perc elteltével a kiválasztott csomópont (ok) újraindul, és néhány perc múlva újra online állapotba kerül.
+A gyorsítótár egy vagy több csomópontjának újraindításához válassza ki a kívánt csomópontokat, majd kattintson az **Újraindítás** gombra. Ha olyan prémium szintű gyorsítótárral rendelkezik, amelyen engedélyezve van a fürtözés, válassza ki az újraindítani kívánt szegmens (eke) t, majd kattintson az **Újraindítás** gombra. Néhány perc elteltével a kiválasztott csomópont (ok) újraindul, és néhány perc múlva újra online állapotba kerül.
 
 > [!IMPORTANT]
 > Az újraindítás mostantól minden díjszabási szinten elérhető. További információkért és útmutatásért lásd: [Azure cache for Redis Administration – újraindítás](cache-administration.md#reboot).
@@ -360,7 +360,7 @@ A **támogatási és hibaelhárítási** szakaszban található beállítások l
 * [Új támogatási kérelem](#new-support-request)
 
 ### <a name="resource-health"></a>Erőforrás állapota
-A **Resource Health** figyeli az erőforrást, és jelzi, hogy a várt módon fut-e. Az Azure Resource Health szolgáltatással kapcsolatos további információkért lásd: az [Azure Resource Health áttekintése](../resource-health/resource-health-overview.md).
+A **Resource Health** figyeli az erőforrást, és jelzi, hogy a várt módon fut-e. Az Azure Resource Health szolgáltatással kapcsolatos további információkért lásd: az [Azure Resource Health áttekintése](../service-health/resource-health-overview.md).
 
 > [!NOTE]
 > A Resource Health jelenleg nem tud jelentést készíteni az Azure cache állapotáról a virtuális hálózatban üzemeltetett Redis-példányok esetében. További információ: az [összes gyorsítótár-funkció működése a GYORSÍTÓTÁR VNET való üzemeltetése során?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
@@ -382,7 +382,7 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> A konfigurálható értékek (például a **maximális memória-házirend**) a Azure Portal vagy parancssori felügyeleti eszközök, például az Azure CLI vagy a PowerShell használatával konfigurálhatók.
+> A konfigurálható értékek (például a **maximális memória-házirend** ) a Azure Portal vagy parancssori felügyeleti eszközök, például az Azure CLI vagy a PowerShell használatával konfigurálhatók.
 >
 >
 
@@ -464,7 +464,7 @@ a <sup>2</sup> az `maxclients` egyes Azure-gyorsítótárak esetében eltér a R
 További információ a Redis parancsokról: [https://redis.io/commands](https://redis.io/commands) .
 
 ## <a name="redis-console"></a>Redis-konzol
-A Redis-példányok számára a **Redis-konzol**segítségével biztonságosan adhat meg parancsokat az Azure cache-hez, amely az összes gyorsítótári szinten elérhető Azure Portal.
+A Redis-példányok számára a **Redis-konzol** segítségével biztonságosan adhat meg parancsokat az Azure cache-hez, amely az összes gyorsítótári szinten elérhető Azure Portal.
 
 > [!IMPORTANT]
 > - A Redis-konzol nem működik a [VNET](cache-how-to-premium-vnet.md). Ha a gyorsítótár egy VNET része, akkor csak a VNET lévő ügyfelek férhetnek hozzá a gyorsítótárhoz. Mivel a Redis-konzol a helyi böngészőben fut, amely a VNET kívül esik, nem tud csatlakozni a gyorsítótárhoz.
@@ -498,7 +498,7 @@ Az előző példában a szegmens 1 a kiválasztott szegmens, de a 0. szegmensben
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>A gyorsítótár áthelyezése egy új előfizetésre
-A gyorsítótárat áthelyezheti egy új előfizetésre az **Áthelyezés**gombra kattintva.
+A gyorsítótárat áthelyezheti egy új előfizetésre az **Áthelyezés** gombra kattintva.
 
 ![Az Azure cache áthelyezése a Redis](./media/cache-configure/redis-cache-move.png)
 

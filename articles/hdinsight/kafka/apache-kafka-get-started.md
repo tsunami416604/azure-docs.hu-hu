@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 6198475025ff5222edeeb14cf25634ad2d916a1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f0b3da7d225e4b2adca3f2d4b08cff9b56e2520
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88651437"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534600"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -25,7 +25,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Apache Kafka-f�
 
 Az Apache Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások számára érhető el. Ebben a rövid útmutatóban közvetlenül az SSH használatával fér hozzá a fürthöz. Ha más szolgáltatásokat, hálózatokat vagy virtuális gépeket szeretne csatlakoztatni az Apache Kafkához, először létre kell hoznia egy virtuális hálózatot, majd létre kell hoznia a hálózaton belüli erőforrásokat. További információt a [Csatlakozás az Apache Kafkához virtuális hálózattal](apache-kafka-connect-vpn-gateway.md) című dokumentumban találhat. A virtuális hálózatok HDInsight történő megtervezésével kapcsolatos általánosabb információkért lásd: [virtuális hálózat tervezése az Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A felső menüben válassza az **+ erőforrás létrehozása**lehetőséget.
+1. A felső menüben válassza az **+ erőforrás létrehozása** lehetőséget.
 
     ![Erőforrás-HDInsight Azure Portal létrehozása](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
@@ -50,18 +50,18 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
     |Előfizetés    |  A legördülő listában válassza ki a fürthöz használt Azure-előfizetést. |
     |Erőforráscsoport     | Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.  Az erőforráscsoport az Azure összetevőit tartalmazó tároló.  Ebben az esetben az erőforráscsoport a HDInsight-fürtöt és a függő Azure Storage-fiókot tartalmazza. |
     |Fürt neve   | Adjon meg egy globálisan egyedi nevet. A név legfeljebb 59 karaktert tartalmazhat, beleértve a betűket, számokat és kötőjeleket. A név első és utolsó karaktere nem lehet kötőjel. |
-    |Region    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A jobb teljesítmény érdekében válasszon régiót közelebbről. |
+    |Régió    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A jobb teljesítmény érdekében válasszon régiót közelebbről. |
     |Fürt típusa| A lista megnyitásához válassza a **fürt típusának kiválasztása** lehetőséget. A listából válassza a **Kafka** lehetőséget a fürt típusaként.|
     |Verzió|A fürt típusának alapértelmezett verziója lesz megadva. Ha más verziót szeretne megadni, válasszon a legördülő listából.|
-    |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" " \) . Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
-    |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser**.  SSH-felhasználónévként más nevet is megadhat. |
+    |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda** . A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" " \) . Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
+    |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser** .  SSH-felhasználónévként más nevet is megadhat. |
     |Fürt bejelentkezési jelszavának használata SSH-hoz| Jelölje be ezt a jelölőnégyzetet, ha ugyanazt a jelszót szeretné használni az SSH-felhasználó számára, mint a fürt bejelentkezési felhasználójának.|
 
    ![A fürt alapalapjainak Azure Portal létrehozása](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
 
     Minden egyes Azure-régió (hely) _tartalék tartományokat_ biztosít. A tartalék tartomány az alapul szolgáló hardver logikai csoportosítása egy Azure-adatközpontban. Mindegyik tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkezik. A HDInsight-fürtön belül a csomópontokat implementáló virtuális gépek és felügyelt lemezek ezek között a tartalék tartományok között vannak elosztva. Ez az architektúra csökkenti a fizikai hardverhibák lehetséges hatását.
 
-    Az adatok magas rendelkezésre állásának biztosításához válasszon egy olyan régiót (helyet), amely __három tartalék tartományt__ tartalmaz. Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
+    Az adatok magas rendelkezésre állásának biztosításához válasszon egy olyan régiót (helyet), amely __három tartalék tartományt__ tartalmaz. Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
 
     Kattintson a **következő: storage >>** fülre a tárolási beállítások megadásához.
 
@@ -69,9 +69,9 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
 
     |Tulajdonság  |Leírás  |
     |---------|---------|
-    |Elsődleges tároló típusa|Használja az alapértelmezett értéket az **Azure Storage**-ban.|
-    |Kiválasztási módszer|Használja az alapértelmezett értéket a **listából**.|
-    |Az elsődleges tárfiók|A legördülő listából válasszon ki egy meglévő Storage-fiókot, vagy válassza az **új létrehozása**lehetőséget. Új fiók létrehozásakor a névnek 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.|
+    |Elsődleges tároló típusa|Használja az alapértelmezett értéket az **Azure Storage** -ban.|
+    |Kiválasztási módszer|Használja az alapértelmezett értéket a **listából** .|
+    |Az elsődleges tárfiók|A legördülő listából válasszon ki egy meglévő Storage-fiókot, vagy válassza az **új létrehozása** lehetőséget. Új fiók létrehozásakor a névnek 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.|
     |Tároló|Használja az automatikusan feltöltött értéket.|
 
     ![HDInsight Linux – első lépések – a fürt tárolási értékeinek megadása](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "Tárolási értékek megadása HDInsight-fürt létrehozásához")
@@ -218,7 +218,7 @@ A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segéd
         
         * A három tartalék tartományt tartalmazó régiókban a 3-as replikációs tényező lehetővé teszi, hogy a replikákat el lehessen osztani a tartalék tartományok között. A két tartalék tartományt tartalmazó régiókban a négyes replikációs tényező egyenlően osztja el a replikákat a tartományok között.
         
-        * Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
+        * Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
 
         * Az Apache Kafka nem észleli a tartalék Azure-tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat.
 
@@ -285,7 +285,7 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
 
 Szoftveresen is létrehozhat előállítókat és fogyasztókat. Az API használatára példaként tekintse meg a [Apache Kafka producer és fogyasztói API HDInsight-](apache-kafka-producer-consumer-api.md) dokumentummal című témakört.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 A jelen rövid útmutató által létrehozott erőforrások törléséhez törölheti az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
@@ -298,7 +298,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 > [!WARNING]  
 > A HDInsight Apache Kafka-fürt törlése a Kafka-ben tárolt összes adathalmazt törli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Apache Spark használata a Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)
