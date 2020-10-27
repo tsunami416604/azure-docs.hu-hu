@@ -8,16 +8,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056855"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558567"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
-## <a name="azure-api-for-fhir"></a>Azure API for FHIR
+## <a name="azure-api-for-fhir-the-basics"></a>Azure API a FHIR-hez: az alapjai
 
 ### <a name="what-is-fhir"></a>Mi az a FHIR?
 A gyors egészségügyi együttműködési erőforrások (FHIR – ejtsd: "Fire") egy együttműködési szabvány, amely lehetővé teszi az egészségügyi információk különböző egészségügyi rendszerek közötti cseréjét. Ezt a standardot a HL7-szervezet fejlesztette ki, és az egészségügyi szervezetek az egész világon elfogadják. A FHIR legújabb verziója az R4 (4. kiadás). A FHIR készült Azure API támogatja az R4-et, és az előző verzió STU3 is támogatja (a standard próbaverziós használatra 3). A FHIR kapcsolatos további információkért látogasson el a [HL7.org](http://hl7.org/fhir/summary.html)webhelyre.
@@ -34,15 +34,25 @@ Jelenleg az identitás-szolgáltatóként támogatja a Microsoft Azure Active Di
 
 A 4.0.0 és az 3.0.1-es verziókat a FHIR (FHIR-kiszolgáló) Azure API-ra és az Azure-ra (nyílt forráskód) is támogatja.
 
-Részletekért lásd: [támogatott szolgáltatások](fhir-features-supported.md). Olvassa el, hogy mi változott a verziók között a [HL7 FHIR verziójának korábbi](https://hl7.org/fhir/R4/history.html)verzióiban.
+Részletekért lásd: [támogatott szolgáltatások](fhir-features-supported.md). Olvassa el, hogy mi változott a FHIR-verziók (azaz a STU3 – R4) között a [HL7 FHIR korábbi](https://hl7.org/fhir/R4/history.html)verzióiban.
 
-### <a name="whats-the-difference-between-the-open-source-microsoft-fhir-server-for-azure-and-the-azure-api-for-fhir"></a>Mi a különbség a nyílt forráskódú Microsoft FHIR Server for Azure és az Azure API for FHIR között?
+A FHIR készült Azure IoT-összekötő (előzetes verzió) jelenleg csak az R4-es FHIR-verziót támogatja, és csak az Azure API FHIR-hoz készült R4-példányain látható.
+
+### <a name="whats-the-difference-between-microsoft-fhir-server-for-azure-and-the-azure-api-for-fhir"></a>Mi a különbség a "Microsoft FHIR Server for Azure" és az "Azure API for FHIR" között?
 
 A FHIR készült Azure API az Azure-beli nyílt forráskódú Microsoft FHIR-kiszolgáló üzemeltetett és felügyelt verziója. A felügyelt szolgáltatásban a Microsoft biztosítja az összes karbantartást és frissítést. 
 
-Ha a FHIR-kiszolgálót az Azure-hoz futtatja, közvetlen hozzáférést biztosít a mögöttes szolgáltatásokhoz. Azonban Ön is felelős a kiszolgáló karbantartásához és frissítéséhez, valamint az összes szükséges megfelelőségi munkához, ha a PHI-adatokat tárolja.
+Ha futtatja az Azure-hoz készült FHIR-kiszolgálót, akkor közvetlen hozzáférést biztosít a mögöttes szolgáltatásokhoz, de felelős a kiszolgáló fenntartásáért és frissítésével, valamint az összes szükséges megfelelőségi munkával, ha a PHI-adatokat tárolja.
 
-Fejlesztési szempontból minden funkció üzembe kerül az Azure nyílt forráskódú Microsoft FHIR-kiszolgálója számára. A nyílt forráskódú hitelesítés után a rendszer felveszi a FHIR-megoldáshoz tartozó, a Pásti Azure API-ra. A nyílt forráskódú és a Pásti kiadás közötti idő a szolgáltatás összetettsége és az ütemterv egyéb prioritásaitól függ. 
+Fejlesztési szempontból minden olyan funkció, amely nem csak a felügyelt szolgáltatásra vonatkozik, először az Azure-hoz készült nyílt forráskódú Microsoft FHIR-kiszolgálóra telepíti. A nyílt forráskódú hitelesítés után a rendszer felveszi a FHIR-megoldáshoz tartozó, a Pásti Azure API-ra. A nyílt forráskódú és a Pásti kiadás közötti idő a szolgáltatás összetettsége és az ütemterv egyéb prioritásaitól függ. Ez ugyanaz a folyamat, mint az összes szolgáltatás, például az Azure IoT Connector for FHIR (előzetes verzió).
+
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Hol láthatom, hogy mi történik a FHIR készült Azure API-ban?
+
+Ha szeretné megtekinteni, hogy mi történik a FHIR készült Azure API-ban, tekintse meg a nyílt forráskódú FHIR-kiszolgáló [kiadását](https://github.com/microsoft/fhir-server/releases) . November 2020-től kezdődően az Azure-API-for-FHIR címkével ellátott elemeket címkézjük, ha a nyílt forráskódú elem a felügyelt szolgáltatásba kerül kiadásra. Ezek a funkciók általában két héttel a nyílt forráskódú kiadás oldalon jelennek meg. Emellett a Build [ide] tesztelésére vonatkozó utasításokat is tartalmaz ( https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) Ha saját környezetében szeretné tesztelni. A felügyelt szolgáltatások további frissítéseinek legjobb megosztását értékeljük.
+
+### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>Mely régiókban érhetők el az Azure API a FHIR számára?
+
+Jelenleg általánosan elérhető a nyilvános és a kormányzati szolgáltatás a [különböző földrajzi régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia). A Microsoft Government Cloud Services szolgáltatással kapcsolatos információkért tekintse meg az [Azure-szolgáltatásokat a FedRAMP](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope).
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Hol láthatom, hogy mi történik a FHIR készült Azure API-ban?
 
@@ -52,6 +62,8 @@ Ha szeretné megtekinteni, hogy mi történik a FHIR készült Azure API-ban, te
 
 Az intelligens (behelyettesíthető orvosi alkalmazások és újrafelhasználható technológia) a FHIR-ben olyan Nyílt specifikációk összessége, amelyek a FHIR-kiszolgálókkal és más egészségügyi informatikai rendszerekkel, például az elektronikus egészségügyi adatokkal és az állapotadatok cseréjével integrálják a partneri alkalmazásokat. Egy intelligens on FHIR alkalmazás létrehozásával gondoskodhat arról, hogy az alkalmazás elérhető legyen, és számos különböző rendszerből is kihasználható legyen.
 Hitelesítés és Azure API a FHIR-hez. Ha többet szeretne megtudni az intelligens szolgáltatásról, látogasson el az [intelligens állapotba](https://smarthealthit.org/).
+
+## <a name="fhir-implementations-and-specifications"></a>FHIR implementációk és specifikációk
 
 ### <a name="can-i-create-a-custom-fhir-resource"></a>Létrehozhatok egyéni FHIR-erőforrásokat?
 
@@ -63,7 +75,7 @@ Lehetővé tesszük, hogy bármilyen érvényes FHIR JSON-adatkészletet tölts�
 
 ### <a name="what-is-the-limit-on-_count"></a>Mi a korlát a _count?
 
-A jelenlegi korlát értéke 100.
+A _count jelenlegi korlátja 100. Ha a _count több mint 100-ra állítja be, akkor a kötegben figyelmeztetés jelenik meg, amely csak 100 rekordokat fog megjeleníteni.
 
 ### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>Vannak korlátozások a csoportos exportálási funkciókhoz?
 
@@ -83,49 +95,40 @@ Néhány példa erre:
 * Beteg//Observation beolvasása <id>
 * Beolvassa a beteg/ <id> /Observation? Code = 8302-2
 
+### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Mi az alapértelmezett rendezés, ha erőforrásokat keres az Azure API FHIR?
+
+A rendezést a legutóbb frissített dátum szerint támogatjuk: _sort = _lastUpdated. A támogatott keresési paraméterekkel kapcsolatos további információkért tekintse meg a [támogatott funkciók lapot](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search).
+
+### <a name="how-does-export-work"></a>Hogyan működik $export?
+
+$export a FHIR-specifikáció része: https://hl7.org/fhir/uv/bulkdata/export/index.html . Ha a FHIR szolgáltatás egy felügyelt identitással és egy Storage-fiókkal van konfigurálva, és ha a felügyelt identitás hozzáfér ehhez a Storage-fiókhoz, akkor egyszerűen hívja meg a $exportt a FHIR API-ban, és az összes FHIR-erőforrás exportálva lesz a Storage-fiókba. További információkért tekintse [meg a $exportról szóló cikket](https://docs.microsoft.com/azure/healthcare-apis/export-data).
+
+## <a name="using-azure-api-for-fhir"></a>Az Azure API használata a FHIR-hez
+
+### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>Hogyan engedélyezi a log Analytics szolgáltatást az Azure API-hoz a FHIR számára?
+
+Engedélyezjük a diagnosztikai naplózást, és lehetővé tesszük a lekérdezések lekérdezésének áttekintését. A naplók és a lekérdezési lekérdezések engedélyezésével kapcsolatos részletekért tekintse meg [ezt a szakaszt](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging). Ha további információkat szeretne felvenni a naplókba, tekintse meg az [egyéni HTTP-fejlécek használatát](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers)ismertető témakört.
+
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Hol láthatok néhány példát a FHIR készült Azure API használatára a munkafolyamaton belül?
 
 Az állapotfigyelő architektúrák gyűjteménye az [Health Architecture GitHub oldalán](https://github.com/microsoft/health-architectures)érhető el.
 
-## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT-összekötő a FHIR (előzetes verzió)
+### <a name="where-can-i-see-an-example-of-connecting-a-web-application-to-azure-api-for-fhir"></a>Hol láthatom a webalkalmazások Azure API-hoz való csatlakoztatásának példáját a FHIR-hoz?
 
-### <a name="what-is-iomt"></a>Mi az a IoMT?
-A IoMT az orvosi eszközök internetes hálózata, és az olyan IoT-eszközök kategóriája, amelyek az állapot-és wellness-szolgáltatásokat más egészségügyi informatikai rendszerekkel együtt, hálózaton keresztül rögzítik és cserélik. Néhány példa a IoMT-eszközökre: fitnesz és klinikai wearables, monitorozási érzékelők, tevékenység-követési funkciók, vagy akár egy intelligens pirula.
+Van egy, az [architektúrát használó GitHub-oldal](https://github.com/microsoft/health-architectures) , amely példákat és forgatókönyveket tartalmaz. Bemutatja, hogyan csatlakoztatható egy webalkalmazás az Azure API-hoz a FHIR-hez.  
 
-### <a name="how-many-azure-iot-connector-for-fhir-preview-do-i-need"></a>Hány Azure IoT-összekötőre van szükség a FHIR (előzetes verzió) számára?
-A FHIR * rendszerhez készült egyetlen Azure IoT-összekötő használatával nagy mennyiségű különböző típusú eszközről lehet adatot befogadni. A következő okokból is dönthet úgy, hogy különböző összekötőket használ:
-- **Skála**: a nyilvános előzetes verzióhoz az Azure IOT Connector FHIR erőforrás-kapacitásának javítása rögzített, és a várt érték körülbelül 200 üzenet másodpercenkénti átviteli sebessége. Ha nagyobb átviteli sebességre van szükség, hozzáadhat további Azure IoT-összekötőt a FHIR-hez.
-- **Eszköz típusa**: beállíthatja, hogy külön Azure IoT-összekötőt állítson be a FHIR-hez minden IoMT-eszközhöz.
+## <a name="azure-api-for-fhir-features-and-services"></a>Azure API a FHIR szolgáltatásaihoz és szolgáltatásaihoz 
 
-### <a name="is-there-a-limit-on-number-of-azure-iot-connector-for-fhir-preview-during-public-preview"></a>Van-e korlátozva a FHIR (előzetes verzió) Azure IoT-összekötője a nyilvános előzetes verzióban?
-Igen, csak két Azure IoT-összekötőt hozhat létre a FHIR előfizetésekhez, miközben a funkció nyilvános előzetes verzióban érhető el. Ez a korlát azért van, hogy megakadályozza a váratlan költségeket, mivel a funkció ingyenesen elérhető az előzetes verzióban. Kérelem esetén ez a korlát legfeljebb öt Azure IoT-összekötőt eredményezhet a FHIR számára.
+### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>Van mód arra, hogy az adataimat a személyes kulcsom alapján titkosítsa, nem alapértelmezett kulcs?
 
-### <a name="what-azure-regions-azure-iot-connector-for-fhir-preview-feature-is-available-during-public-preview"></a>Milyen Azure-régiók érhetők el az Azure IoT Connector for FHIR (előzetes verzió) szolgáltatáshoz a nyilvános előzetes verzióban?
-A FHIR készült Azure IoT-összekötő minden olyan Azure-régióban elérhető, ahol elérhető az Azure API a FHIR számára.
+Igen, az Azure API for FHIR lehetővé teszi az ügyfél által felügyelt kulcsok konfigurálását, a Cosmos DB támogatásának kihasználásával. Az adatok személyes kulccsal történő titkosításával kapcsolatos további információkért tekintse meg [ezt a szakaszt](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key).
+
+## <a name="azure-api-for-fhir-preview-features"></a>Azure API a FHIR-hez: előzetes funkciók
 
 ### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>Konfigurálható a méretezési kapacitás az Azure IoT Connectorhoz a FHIR (előzetes verzió) esetében?
+
 Mivel a FHIR készült Azure IoT-összekötő díjmentesen használható a nyilvános előzetes verzióban, a skálázási kapacitása rögzített és korlátozott. A nyilvános előzetes verzióban elérhető FHIR-konfiguráció Azure IoT-összekötője várhatóan körülbelül 200 üzenet másodpercenkénti átviteli sebességét biztosítja. Az erőforrás-kapacitás konfigurációjának valamilyen formája elérhetővé válik az általános elérhetőségen (GA).
 
-### <a name="what-fhir-version-does-azure-iot-connector-for-fhir-preview-support"></a>Milyen FHIR-verziót támogat az Azure IoT Connector a FHIR (előzetes verzió) szolgáltatáshoz?
-Az Azure IoT Connector for FHIR jelenleg csak az R4-es FHIR-verziót támogatja. Ezért ez a funkció csak az Azure API FHIR-hoz készült R4-példányain látható, a Microsoft azonban jelenleg nem tervezi a STU3 verziójának támogatását.
-
 ### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>Miért nem tudom telepíteni az Azure IoT Connectort a FHIR (előzetes verzió) szolgáltatásra, ha a privát hivatkozás engedélyezve van a FHIR készült Azure API-ban?
+
 A FHIR készült Azure IoT-összekötő jelenleg nem támogatja a privát kapcsolati funkciót. Ezért ha a FHIR-hez készült Azure API-ban engedélyezve van a privát hivatkozás, nem telepítheti az Azure IoT Connectort a FHIR-hez, és fordítva. Ez a korlátozás várhatóan megszűnik, ha a FHIR készült Azure IoT Connector általánosan elérhető (GA).
-
-### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-azure-iot-connector-for-fhir-preview-feature-of-azure-api-for-fhir-service"></a>Mi a különbség az Azure-hoz készült nyílt forráskódú IoMT FHIR-összekötő és az Azure IoT Connector for FHIR (előzetes verzió) szolgáltatásban az Azure API for FHIR szolgáltatás esetében?
-A FHIR készült Azure IoT Connector az Azure-hoz készült nyílt forráskódú IoMT FHIR-összekötő üzemeltetett és felügyelt verziója. A felügyelt szolgáltatásban a Microsoft biztosítja az összes karbantartást és frissítést.
-
-Ha a IoMT FHIR-összekötőt az Azure-hoz futtatja, közvetlen hozzáférést biztosít a mögöttes erőforrásokhoz. Azonban Ön is felelős a kiszolgáló karbantartásához és frissítéséhez, valamint az összes szükséges megfelelőségi munkához, ha a PHI-adatokat tárolja.
-
-Fejlesztési szempontból minden funkció üzembe kerül az Azure nyílt forráskódú IoMT FHIR-összekötője számára. A nyílt forráskódú hitelesítés után a rendszer az Azure API FHIR Service-hez készült FHIR funkciójának a Pásti Azure IoT-összekötője számára jelenik meg. A nyílt forráskódú és a Pásti kiadás közötti idő a szolgáltatás összetettségét és az egyéb közúti Térkép prioritásait határozza meg.
-
-## <a name="next-steps"></a>Következő lépések
-
-Ebben a cikkben elolvasta a FHIR készült Azure API-val kapcsolatos gyakori kérdéseket. További információ a FHIR Server for Azure támogatott szolgáltatásairól:
- 
->[!div class="nextstepaction"]
->[Támogatott FHIR funkciók](fhir-features-supported.md)
-
-* A Azure Portal a FHIR készült Azure IoT-összekötő a IoT-összekötő (előzetes verzió) néven ismert.
-
-Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.

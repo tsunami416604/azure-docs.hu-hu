@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462241"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540380"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Python-felhasználó által definiált függvények (UDF) használata Apache Hive és Apache Pig használatával a HDInsight-ben
 
@@ -27,11 +27,11 @@ A HDInsight a Jython is tartalmazza, amely egy Java-ban írt python-implementác
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Hadoop-fürt a HDInsight-on**. Lásd: Ismerkedés [a HDInsight Linux rendszeren](apache-hadoop-linux-tutorial-get-started.md).
-* **Egy SSH-ügyfél**. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Hadoop-fürt a HDInsight-on** . Lásd: Ismerkedés [a HDInsight Linux rendszeren](apache-hadoop-linux-tutorial-get-started.md).
+* **Egy SSH-ügyfél** . További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 * A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az `wasb://` Azure Storage esetében `abfs://` Azure Data Lake Storage Gen2 vagy adl://esetében Azure Data Lake Storage Gen1. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI wasbs://lesz.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 * **A tárolási konfiguráció lehetséges módosítása.**  A Storage-fiók használata esetén lásd: [tárolási konfiguráció](#storage-configuration) `BlobStorage` .
-* Választható.  Ha a PowerShell használatát tervezi, az az [modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) kell telepítenie.
+* Választható.  Ha a PowerShell használatát tervezi, az az [modult](/powershell/azure/new-azureps-module-az) kell telepítenie.
 
 > [!NOTE]  
 > A cikkben használt Storage-fiók az Azure Storage [szolgáltatás engedélyezve van, és](../../storage/common/storage-require-secure-transfer.md) így a `wasbs` cikk egészében használatos.
@@ -46,7 +46,7 @@ Nincs szükség beavatkozásra, ha a használt Storage-fiók típusa `Storage (g
 > * A Python-szkripteket a helyi fejlesztési környezetben hozza létre.
 > * A szkripteket feltöltheti a HDInsight a `scp` parancs vagy a megadott PowerShell-parancsfájl használatával.
 >
-> Ha a [Azure Cloud shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) használatával szeretné használni a HDInsight-t, akkor a következőket kell tennie:
+> Ha a [Azure Cloud shell (bash)](../../cloud-shell/overview.md) használatával szeretné használni a HDInsight-t, akkor a következőket kell tennie:
 >
 > * Hozza létre a parancsfájlokat a Cloud Shell-környezetben.
 > * A használatával `scp` feltöltheti a fájlokat a Cloud shellből a HDInsight-be.
@@ -300,8 +300,8 @@ Egy Python-szkript használható a Pig-ből származó UDF-ként az `GENERATE` u
 
 A Python-tolmács megadásához használja `register` a Python-szkriptre való hivatkozással. Az alábbi példákban a Pig-szkriptek regisztrálása `myfuncs` :
 
-* **A Jython használata**: `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **A C Python használata**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **A Jython használata** : `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **A C Python használata** : `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > A Jython használatakor a pig_jython-fájl elérési útja lehet helyi elérési út vagy WASBS://elérési út is. A C Python használatakor azonban hivatkoznia kell egy fájlra annak a csomópontnak a helyi fájlrendszerén, amelyet a Pig feladat elküldéséhez használ.
@@ -343,7 +343,7 @@ def create_structure(input):
 
 A Pig Latin példában a `LINE` bemenet chararray van definiálva, mert nincs konzisztens séma a bemenethez. A Python-szkript átalakítja az adatokat egy konzisztens sémára a kimenethez.
 
-1. Az `@outputSchema` utasítás a Pig számára visszaadott adatok formátumát határozza meg. Ebben az esetben ez egy **adattáska**, amely egy Pig-adattípus. A táska a következő mezőket tartalmazza, amelyek mindegyike chararray (karakterlánc):
+1. Az `@outputSchema` utasítás a Pig számára visszaadott adatok formátumát határozza meg. Ebben az esetben ez egy **adattáska** , amely egy Pig-adattípus. A táska a következő mezőket tartalmazza, amelyek mindegyike chararray (karakterlánc):
 
    * dátum – a naplóbejegyzés létrehozásának dátuma
    * idő – a naplóbejegyzés létrehozásának időpontja
@@ -423,7 +423,7 @@ Az alábbi parancsokban cserélje le a helyére `sshuser` a tényleges felhaszn�
     #from pig_util import outputSchema
     ```
 
-    Ez a sor módosítja a Python-szkriptet, hogy a C Python használatával működjön a Jython helyett. A módosítás megtörténte után a **CTRL + X** billentyűkombinációval lépjen ki a szerkesztőből. Válassza az **Y**lehetőséget, majd az **ENTER billentyűt** a módosítások mentéséhez.
+    Ez a sor módosítja a Python-szkriptet, hogy a C Python használatával működjön a Jython helyett. A módosítás megtörténte után a **CTRL + X** billentyűkombinációval lépjen ki a szerkesztőből. Válassza az **Y** lehetőséget, majd az **ENTER billentyűt** a módosítások mentéséhez.
 
 6. A `pig` parancs használatával indítsa újra a rendszerhéjat. Ha a rendszer `grunt>` kéri, a következő paranccsal futtassa a Python-szkriptet a C Python-értelmező használatával.
 
@@ -594,7 +594,7 @@ A rendszer a hiba adatait (STDERR) és a feladatok eredményét (STDOUT) is napl
 
 ## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
-Ha olyan Python-modulokat kell betölteni, amelyek alapértelmezés szerint nem találhatók meg, tekintse meg [a modul üzembe helyezése az Azure HDInsight](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight)című témakört.
+Ha olyan Python-modulokat kell betölteni, amelyek alapértelmezés szerint nem találhatók meg, tekintse meg [a modul üzembe helyezése az Azure HDInsight](/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight)című témakört.
 
 A Pig, a kaptár és a MapReduce használatával kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 

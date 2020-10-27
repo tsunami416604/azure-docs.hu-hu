@@ -8,24 +8,24 @@ ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: a54e950286a37c207d902090f015b3732e0ff10b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 793cab8b37872788da259e45148e314faa00ea15
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88517582"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545140"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>A Java és a JDBC használata Azure Database for MySQL
 
-Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure Database for MySQLban](https://docs.microsoft.com/azure/mysql/)található információk tárolására és lekérésére.
+Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure Database for MySQLban](./index.yml)található információk tárolására és lekérésére.
 
 A JDBC a szabványos Java API a hagyományos kapcsolati adatbázisokhoz való kapcsolódáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy Azure-fiók. Ha még nem rendelkezik ilyennel, [kérjen meg egy ingyenes próbaverziót](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) vagy az [Azure CLI](/cli/azure/install-azure-cli). Javasoljuk, hogy Azure Cloud Shell, hogy automatikusan bejelentkezzen, és hozzáférhessen minden szükséges eszközhöz.
-- Támogatott [Java Development Kit](https://aka.ms/azure-jdks), 8-as verzió (Azure Cloud Shell).
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) vagy az [Azure CLI](/cli/azure/install-azure-cli). Javasoljuk, hogy Azure Cloud Shell, hogy automatikusan bejelentkezzen, és hozzáférhessen minden szükséges eszközhöz.
+- Támogatott [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), 8-as verzió (Azure Cloud Shell).
 - Az [Apache Maven](https://maven.apache.org/) Build eszköz.
 
 ## <a name="prepare-the-working-environment"></a>A munkahelyi környezet előkészítése
@@ -68,7 +68,7 @@ az group create \
 Az első dolog, amit létrehozunk egy felügyelt MySQL-kiszolgáló.
 
 > [!NOTE]
-> A MySQL-kiszolgálók létrehozásával kapcsolatos részletes információkat [a Azure Portal használatával Azure Database for MySQL kiszolgáló létrehozása](/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)című témakörben olvashat.
+> A MySQL-kiszolgálók létrehozásával kapcsolatos részletes információkat [a Azure Portal használatával Azure Database for MySQL kiszolgáló létrehozása](./quickstart-create-mysql-server-database-using-azure-portal.md)című témakörben olvashat.
 
 A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő parancsfájlt:
 

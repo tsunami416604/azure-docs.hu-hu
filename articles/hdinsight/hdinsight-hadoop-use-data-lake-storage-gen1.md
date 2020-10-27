@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 7e05e89cae8688162c6ac6ded5ad56c85394dc8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858770"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539836"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel
 
@@ -48,7 +48,7 @@ Jelenleg csak néhány HDInsight-fürt típusa/verziója támogatja a Data Lake 
 | A HDInsight 3.4-es verziója | Nem | Igen | |
 | A HDInsight 3.3-as verziója | Nem | Nem | |
 | A HDInsight 3.2-es verziója | Nem | Igen | |
-| Vihar | | |A Storm-topológiából származó adatok írásához Data Lake Storage Gen1 használható. Data Lake Storage Gen1 is használhat olyan hivatkozási információkhoz, amelyeket aztán egy Storm-topológia tud olvasni.|
+| Storm | | |A Storm-topológiából származó adatok írásához Data Lake Storage Gen1 használható. Data Lake Storage Gen1 is használhat olyan hivatkozási információkhoz, amelyeket aztán egy Storm-topológia tud olvasni.|
 
 > [!WARNING]  
 > A HDInsight HBase nem támogatott a Azure Data Lake Storage Gen1
@@ -62,7 +62,7 @@ Ha a HDInsight Data Lake Storage Gen1 alapértelmezett tárolóként van telepí
 * Az 1. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster1storage`
 * A 2. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster2storage`
 
-Figyelje meg, hogy mindkét fürt ugyanazt a Data Lake Storage Gen1 fiókot használja **mydatalakestore**. Minden fürt hozzáfér a saját gyökérszintű fájlrendszeréhez Data Lake Storageban. A Azure Portal üzembe helyezési élménye arra kéri, hogy adjon meg egy mappanevet, például a **/Clusters/ \<clustername> ** a gyökér elérési útjához.
+Figyelje meg, hogy mindkét fürt ugyanazt a Data Lake Storage Gen1 fiókot használja **mydatalakestore** . Minden fürt hozzáfér a saját gyökérszintű fájlrendszeréhez Data Lake Storageban. A Azure Portal üzembe helyezési élménye arra kéri, hogy adjon meg egy mappanevet, például a **/Clusters/ \<clustername>** a gyökér elérési útjához.
 
 A Data Lake Storage Gen1 alapértelmezett tárolóként való használatához meg kell adnia az egyszerű szolgáltatás elérését a következő elérési utakhoz:
 
@@ -108,13 +108,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>Data Lake Storage Gen1 használata kiegészítő tárolóként
 
-A Data Lake Storage Gen1 a fürt további tárterületként is használható. Ilyen esetekben a fürt alapértelmezett tárolója lehet Azure Blob Storage vagy Azure Data Lake Storage Gen1-fiók. Ha HDInsight-feladatokat futtat a Azure Data Lake Storage Gen1ban tárolt adatokon további tárolóként, használja a teljesen minősített elérési utat. Példa:
+A Data Lake Storage Gen1 a fürt további tárterületként is használható. Ilyen esetekben a fürt alapértelmezett tárolója lehet Azure Blob Storage vagy Azure Data Lake Storage Gen1-fiók. Ha HDInsight-feladatokat futtat a Azure Data Lake Storage Gen1ban tárolt adatokon további tárolóként, használja a teljesen minősített elérési utat. Például:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 Jelenleg nincs **cluster_root_path** az URL-címben. Ennek az az oka, hogy Data Lake Storage ebben az esetben nem alapértelmezett tároló. Ezért mindössze annyit kell tennie, hogy megadja a fájlok elérési útját.
 
-Ha Data Lake Storage Gen1 kiegészítő tárolóként szeretné használni, adja meg a szolgáltatás egyszerű hozzáférését azokhoz az elérési utakhoz, ahol a fájlok tárolódnak.  Példa:
+Ha Data Lake Storage Gen1 kiegészítő tárolóként szeretné használni, adja meg a szolgáltatás egyszerű hozzáférését azokhoz az elérési utakhoz, ahol a fájlok tárolódnak.  Például:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
@@ -126,7 +126,7 @@ Data Lake Storage fiók hozzáadása továbbiként, és több Data Lake Storage-
 
 ## <a name="configure-data-lake-storage-gen1-access"></a>Data Lake Storage Gen1 hozzáférés konfigurálása
 
-Ha Azure Data Lake Storage Gen1 hozzáférést szeretne konfigurálni a HDInsight-fürtről, rendelkeznie kell egy Azure Active Directory-(Azure AD-) egyszerű szolgáltatással. Kizárólag Azure AD-rendszergazdák hozhatnak létre szolgáltatásnevet. A szolgáltatásnevet egy tanúsítvánnyal kell létrehozni. További információkért lásd a [fürtök HDInsightban történő beállításának rövid útmutatóját](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) és a [Szolgáltatásnév létrehozása önaláírt tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate) témakört.
+Ha Azure Data Lake Storage Gen1 hozzáférést szeretne konfigurálni a HDInsight-fürtről, rendelkeznie kell egy Azure Active Directory-(Azure AD-) egyszerű szolgáltatással. Kizárólag Azure AD-rendszergazdák hozhatnak létre szolgáltatásnevet. A szolgáltatásnevet egy tanúsítvánnyal kell létrehozni. További információkért lásd a [fürtök HDInsightban történő beállításának rövid útmutatóját](./hdinsight-hadoop-provision-linux-clusters.md) és a [Szolgáltatásnév létrehozása önaláírt tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate) témakört.
 
 > [!NOTE]  
 > Ha a HDInsight-fürt számára további tárterületként kívánja használni a Azure Data Lake Storage Gen1, javasoljuk, hogy ezt a cikket a jelen cikkben ismertetett módon hozza létre a fürt létrehozásakor. Azure Data Lake Storage Gen1 hozzáadása egy meglévő HDInsight-fürthöz kiegészítő tárolóként nem támogatott forgatókönyv.
@@ -137,19 +137,19 @@ A hozzáférés-vezérlési modellel kapcsolatos további információkért lás
 
 Több módon is hozzáférhet a Data Lake Storage lévő fájlokhoz egy HDInsight-fürtről.
 
-* **A teljes név használatával**. Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
+* **A teljes név használatával** . Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
 
     ```
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **A rövidített elérésiút-formátum használatával**. Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
+* **A rövidített elérésiút-formátum használatával** . Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
 
     ```
     adl:///<file path>
     ```
 
-* **A relatív elérési út használatával**. Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
+* **A relatív elérési út használatával** . Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
 
     ```
     /<file.path>/
@@ -214,13 +214,13 @@ LOCATION '/example/data/';
 
 ## <a name="identify-storage-path-from-ambari"></a>Tároló elérési útjának azonosítása a Ambari
 
-A konfigurált alapértelmezett tároló teljes elérési útjának azonosításához lépjen a **HDFS**-konfigurációk elemre,  >  **Configs** és adja meg `fs.defaultFS` a szűrő beviteli mezőjét.
+A konfigurált alapértelmezett tároló teljes elérési útjának azonosításához lépjen a **HDFS** -konfigurációk elemre,  >  **Configs** és adja meg `fs.defaultFS` a szűrő beviteli mezőjét.
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1hoz hozzáféréssel rendelkező HDInsight-fürtök létrehozása
 
 Az alábbi hivatkozásokra kattintva részletesen megtudhatja, hogyan hozhat létre HDInsight-fürtöket Data Lake Storage Gen1hoz való hozzáféréssel.
 
-* [A portál használata](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [A portál használata](./hdinsight-hadoop-provision-linux-clusters.md)
 * [A PowerShell használata (Data Lake Storage Gen1 alapértelmezett tárolóként)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [A PowerShell használata (Data Lake Storage Gen1 kiegészítő tárolóként)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Azure-sablonok használata](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -305,7 +305,7 @@ Ebben a cikkben megtanulta, hogyan használhatja a HDFS-kompatibilis Azure Data 
 
 További információkért lásd:
 
-* [Rövid útmutató: Fürtök beállítása a HDInsightban](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Rövid útmutató: Fürtök beállítása a HDInsightban](./hdinsight-hadoop-provision-linux-clusters.md)
 * [Hozzon létre egy HDInsight-fürtöt, amelyet a Data Lake Storage Gen1 használ a Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Adatok feltöltése a HDInsightba](hdinsight-upload-data.md)
 * [Az Azure Blob Storage közös hozzáférésű aláírásait használva korlátozza az adathozzáférést a HDInsight](hdinsight-storage-sharedaccesssignature-permissions.md)

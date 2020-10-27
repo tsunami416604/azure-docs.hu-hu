@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 759436477563065d9b03bffa314a4a843ec694b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df7bad806fb5af198d0484af93e9fb79cb75e2d5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435949"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540898"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Helyek közötti VPN-kapcsolattal rendelkező virtuális hálózat létrehozása a PowerShell használatával
 
@@ -52,19 +52,19 @@ A cikkben szereplő példák a következő értékeket használják. Ezekkel az 
 
 VnetName                = VNet1
 ResourceGroup           = TestRG1
-Location                = East US 
-AddressSpace            = 10.1.0.0/16 
-SubnetName              = Frontend 
-Subnet                  = 10.1.0.0/24 
+Location                = East US 
+AddressSpace            = 10.1.0.0/16 
+SubnetName              = Frontend 
+Subnet                  = 10.1.0.0/24 
 GatewaySubnet           = 10.1.255.0/27
 LocalNetworkGatewayName = Site1
-LNG Public IP           = <On-premises VPN device IP address> 
+LNG Public IP           = <On-premises VPN device IP address> 
 Local Address Prefixes  = 10.101.0.0/24, 10.101.1.0/24
 Gateway Name            = VNet1GW
 PublicIP                = VNet1GWPIP
-Gateway IP Config       = gwipconfig1 
-VPNType                 = RouteBased 
-GatewayType             = Vpn 
+Gateway IP Config       = gwipconfig1 
+VPNType                 = RouteBased 
+GatewayType             = Vpn 
 ConnectionName          = VNet1toSite1
 
 ```
@@ -136,7 +136,7 @@ A helyi hálózati átjáró (LNG) általában a helyszíni helyre vonatkozik. N
 Használja a következő értékeket:
 
 * A *GatewayIPAddress* a helyszíni VPN-eszköz IP-címe.
-* A helyszíni címtér az *AddressPrefix*.
+* A helyszíni címtér az *AddressPrefix* .
 
 Helyi hálózati átjáró hozzáadása egyetlen címelőtaggal:
 
@@ -184,7 +184,7 @@ Hozza létre a virtuális hálózat VPN-átjáróját.
 
 Használja a következő értékeket:
 
-* A helyek közötti konfiguráció *GatewayType* *VPN*. Az átjáró típusa mindig a kiépítendő konfigurációra jellemző. Más átjáró-konfigurációk például -GatewayType ExpressRoute típus alkalmazását igényelhetik.
+* A helyek közötti konfiguráció *GatewayType* *VPN* . Az átjáró típusa mindig a kiépítendő konfigurációra jellemző. Más átjáró-konfigurációk például -GatewayType ExpressRoute típus alkalmazását igényelhetik.
 * A *-VpnType* típus a következők valamelyike lehet: *RouteBased* (egyes dokumentumokban Dinamikus átjáró néven szerepel) vagy *PolicyBased* (egyes dokumentumokban Statikus átjáró néven szerepel). További információk a VPN-átjárótípusokról: [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).
 * Válassza ki az átjáró használni kívánt termékváltozatát. Egyes termékváltozatok konfigurációs korlátokkal rendelkeznek. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Ha hibaüzenetet kap a -GatewaySku paraméterrel kapcsolatban a VPN-átjáró létrehozásakor, győződjön meg arról, hogy telepítette a PowerShell-parancsmagok legújabb verzióját.
 
@@ -212,7 +212,7 @@ A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-es
 
 ## <a name="7-create-the-vpn-connection"></a><a name="CreateConnection"></a>7. a VPN-kapcsolat létrehozása
 
-Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. A megosztott kulcsnak meg kell egyeznie a VPN-eszköze konfigurálásakor használt értékkel. Vegye figyelembe, hogy helyek közötti kapcsolat esetében a „-ConnectionType” értéke: **IPsec**.
+Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. A megosztott kulcsnak meg kell egyeznie a VPN-eszköze konfigurálásakor használt értékkel. Vegye figyelembe, hogy helyek közötti kapcsolat esetében a „-ConnectionType” értéke: **IPsec** .
 
 1. Állítsa be a változókat.
    ```azurepowershell-interactive
@@ -237,7 +237,7 @@ A VPN-kapcsolat ellenőrzése többféleképpen is történhet.
 
 ## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>Csatlakozás virtuális géphez
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm.md)]
 
 
 ## <a name="to-modify-ip-address-prefixes-for-a-local-network-gateway"></a><a name="modify"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása

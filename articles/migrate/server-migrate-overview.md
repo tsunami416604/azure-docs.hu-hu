@@ -3,12 +3,12 @@ title: VMware áttelepítési lehetőség kiválasztása Azure Migrate kiszolgá
 description: Áttekintést nyújt a VMware virtuális gépek Azure-ba való áttelepítésének lehetőségeiről Azure Migrate Server áttelepítéssel
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: e62b9cea80f1ed7f672135b93e52ba606a717a6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac08075212d885a1aca755f94906b50754e23b9d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950221"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534107"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware áttelepítési lehetőség kiválasztása
 
@@ -29,9 +29,9 @@ A kiválasztott összehasonlítások segítségével eldöntheti, hogy melyik m�
 **Berendezések üzembe helyezése** | A [Azure Migrate berendezést](migrate-appliance.md) a helyszínen helyezik üzembe. | A [Azure Migrate replikációs berendezést](migrate-replication-appliance.md) a helyszínen helyezik üzembe.
 **Site Recovery kompatibilitás** | Kompatibilis. | Nem lehet replikálni Azure Migrate-kiszolgáló áttelepítésével, ha Site Recovery használatával beállította egy gép replikálását.
 **Céllemez** | Felügyelt lemezek | Felügyelt lemezek
-**Lemezterület-korlátok** | OPERÁCIÓSRENDSZER-lemez: 2 TB<br/><br/> Adatlemez: 8 TB<br/><br/> Maximális lemezek: 60 | OPERÁCIÓSRENDSZER-lemez: 2 TB<br/><br/> Adatlemez: 8 TB<br/><br/> Maximális lemezek: 63
+**Lemezterület-korlátok** | OPERÁCIÓSRENDSZER-lemez: 2 TB<br/><br/> Adatlemez: 32 TB<br/><br/> Maximális lemezek: 60 | OPERÁCIÓSRENDSZER-lemez: 2 TB<br/><br/> Adatlemez: 8 TB<br/><br/> Maximális lemezek: 63
 **Továbbító lemezek** | Nem támogatott | Támogatott
-**UEFI-rendszerindítás** | Nem támogatott | Az Azure-ban áttelepített virtuális gép automatikusan BIOS rendszerindító virtuális gépre lesz konvertálva.<br/><br/> Az operációsrendszer-lemez legfeljebb négy partíciót tartalmazhat, és a köteteket NTFS fájlrendszerrel kell formázni.
+**UEFI-rendszerindítás** | Támogatott. | Támogatott.
 
 ## <a name="compare-deployment-steps"></a>Telepítési lépések összehasonlítása
 
@@ -45,13 +45,13 @@ A korlátozások áttekintése után megismerheti, hogy az egyes megoldások üz
 **A VMware előkészítése áttelepítésre** | Konfigurálja a beállításokat a VMware-kiszolgálókon és a virtuális gépeken. | Kötelező | Kötelező
 **A mobilitási szolgáltatás telepítése virtuális gépeken** | A mobilitási szolgáltatás minden olyan virtuális gépen fut, amelyet replikálni szeretne | Nem szükséges | Kötelező
 **A replikációs berendezés üzembe helyezése** | A [replikációs berendezés](migrate-replication-appliance.md) ügynök-alapú áttelepítéshez használatos. A virtuális gépeken futó mobilitási szolgáltatás és a kiszolgáló áttelepítése között csatlakozik. | Nem szükséges | Kötelező
-**Virtuális gépek replikálása**. Engedélyezze a virtuális gép replikálását. | Replikációs beállítások konfigurálása és a replikálni kívánt virtuális gépek kiválasztása | Kötelező | Kötelező
+**Virtuális gépek replikálása** . Engedélyezze a virtuális gép replikálását. | Replikációs beállítások konfigurálása és a replikálni kívánt virtuális gépek kiválasztása | Kötelező | Kötelező
 **Migrálási teszt futtatása** | Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e. | Kötelező | Kötelező
 **Teljes áttelepítés futtatása** | Telepítse át a virtuális gépeket. | Kötelező | Kötelező
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [VMWare virtuális gépek migrálása](tutorial-migrate-vmware.md) ügynök nélküli áttelepítéssel.
 

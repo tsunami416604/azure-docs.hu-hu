@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91564782"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543814"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Önálló Azure Database for MySQL-kiszolgáló
 
@@ -55,7 +55,7 @@ Az egykiszolgálós szolgáltatás automatikusan létrehozza a kiszolgáló bizt
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
 
-Az egykiszolgálós szolgáltatás három SKU-szinten érhető el: alapszintű, általános célú és memória optimalizálva. Az alapszintű csomag a legjobb megoldás az alacsony költséghatékonyságú fejlesztéshez és az alacsony párhuzamosságú munkaterhelésekhez. Az optimalizált általános célú és memória jobban alkalmazkodik a magas párhuzamosságot, méretezést és kiszámítható teljesítményt igénylő éles munkaterhelésekhez. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A tárolási skálázás online állapotban van, és támogatja a tárterület automatikus növekedését. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak a felhasznált erőforrásokért kell fizetnie. A részletekért tekintse meg a [díjszabási szintet](concepts-service-tiers.md) .
+Az egykiszolgálós szolgáltatás három SKU-szinten érhető el: alapszintű, általános célú és memória optimalizálva. Az alapszintű csomag a legjobb megoldás az alacsony költséghatékonyságú fejlesztéshez és az alacsony párhuzamosságú munkaterhelésekhez. Az optimalizált általános célú és memória jobban alkalmazkodik a magas párhuzamosságot, méretezést és kiszámítható teljesítményt igénylő éles munkaterhelésekhez. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A tárolási skálázás online állapotban van, és támogatja a tárterület automatikus növekedését. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak a felhasznált erőforrásokért kell fizetnie. A részleteket a [tarifacsomagok](./concepts-pricing-tiers.md) leírása tartalmazza.
 
 ## <a name="enterprise-grade-security-compliance-and-governance"></a>Nagyvállalati szintű biztonság, megfelelőség és irányítás
 
@@ -63,7 +63,7 @@ Az egykiszolgálós szolgáltatás az FIPS 140-2 ellenőrzött titkosítási mod
 
 A szolgáltatás lehetővé teszi, hogy privát [kapcsolaton](concepts-data-access-security-private-link.md) keresztül hozzáférjenek a kiszolgálókhoz, és [fejlett veszélyforrások elleni védelmet](concepts-data-access-and-security-threat-protection.md) biztosítanak. A komplex veszélyforrások elleni védelem olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
 
-A natív hitelesítésen kívül az egyetlen kiszolgáló szolgáltatás támogatja a  [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) hitelesítést. Az Azure AD-hitelesítés olyan mechanizmus, amellyel a MySQL-kiszolgálókhoz kapcsolódhat az Azure AD-ben meghatározott és felügyelt identitások használatával. Az Azure AD-hitelesítéssel egy központi helyen kezelheti az adatbázis-felhasználói identitásokat és más Azure-szolgáltatásokat, ami leegyszerűsíti és központosítja a hozzáférés-vezérlést.
+A natív hitelesítésen kívül az egyetlen kiszolgáló szolgáltatás támogatja a  [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) hitelesítést. Az Azure AD-hitelesítés olyan mechanizmus, amellyel a MySQL-kiszolgálókhoz kapcsolódhat az Azure AD-ben meghatározott és felügyelt identitások használatával. Az Azure AD-hitelesítéssel egy központi helyen kezelheti az adatbázis-felhasználói identitásokat és más Azure-szolgáltatásokat, ami leegyszerűsíti és központosítja a hozzáférés-vezérlést.
 
 [A naplózás az összes](concepts-audit-logs.md) adatbázis-szintű tevékenység nyomon követésére használható. 
 
@@ -80,7 +80,7 @@ Az egykiszolgálós szolgáltatás beépített teljesítmény-figyelési és ria
 A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a MySQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 
 - **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközökkel, mint a mysqldump/mydumper, a lehető leggyorsabb módon telepíthetik az áttelepítést. A részletekért lásd: az [áttelepítés a dump és a Restore használatával](concepts-migrate-dump-restore.md) . 
-- **Azure Database Migration Service** – az egykiszolgálós, minimális állásidővel rendelkező, zökkenőmentes és egyszerűsített áttelepítéshez [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) is kihasználható. 
+- **Azure Database Migration Service** – az egykiszolgálós, minimális állásidővel rendelkező, zökkenőmentes és egyszerűsített áttelepítéshez [Azure Database Migration Service](../dms/tutorial-mysql-azure-mysql-online.md) is kihasználható. 
 - **Adatreplikáció** – a minimális állásidő-áttelepítéshez, a BinLog-alapú replikációra támaszkodó, adatreplikálást is igénybe vehet. Az adatreplikálási szolgáltatás olyan gyakorlati szakértők által ajánlott minimális állásidő-áttelepítéseket részesíti előnyben, amelyek a Migrálás nagyobb mértékű felügyeletét keresik. Részletekért lásd: az [adatok replikálása](concepts-data-in-replication.md) .
 
 ## <a name="contacts"></a>Kapcsolattartók
@@ -92,7 +92,7 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy elolvasta Azure Database for MySQL egykiszolgálós üzembe helyezési mód bevezetését, készen áll a következőre:
 
 - Hozza létre az első kiszolgálót. 
@@ -108,4 +108,3 @@ Most, hogy elolvasta Azure Database for MySQL egykiszolgálós üzembe helyezés
   - [PHP](./connect-php.md)
   - [.NET (C#)](./connect-csharp.md)
   - [Ugrás](./connect-go.md)
-  

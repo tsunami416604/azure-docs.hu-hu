@@ -10,18 +10,18 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: e30daa3f81ed5dcae1323e721bf85cfed8fa9614
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147807"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545395"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>IoT-eszközök és -modulok automatikus felügyelete az Azure Portal használatával
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Az Azure-IoT Hub automatikus eszközkezelés számos olyan ismétlődő és összetett feladatot automatizál, amely nagy méretű eszköz-flották felügyeletét végzi. Az automatikus eszközkezelés lehetővé teszi, hogy a tulajdonságok alapján csoportosítsa az eszközöket, Definiáljon egy kívánt konfigurációt, majd hagyja IoT Hub frissíteni az eszközöket, amikor azok hatókörbe kerülnek. Ezt a frissítést _automatikus eszköz-konfigurációval_ vagy _automatikus modul-konfigurációval_végezheti el, így összefoglalhatja a befejezést és a megfelelőséget, kezelheti az egyesítést és az ütközéseket, valamint a konfigurációkat egy szakaszos megközelítésben.
+Az Azure-IoT Hub automatikus eszközkezelés számos olyan ismétlődő és összetett feladatot automatizál, amely nagy méretű eszköz-flották felügyeletét végzi. Az automatikus eszközkezelés lehetővé teszi, hogy a tulajdonságok alapján csoportosítsa az eszközöket, Definiáljon egy kívánt konfigurációt, majd hagyja IoT Hub frissíteni az eszközöket, amikor azok hatókörbe kerülnek. Ezt a frissítést _automatikus eszköz-konfigurációval_ vagy _automatikus modul-konfigurációval_ végezheti el, így összefoglalhatja a befejezést és a megfelelőséget, kezelheti az egyesítést és az ütközéseket, valamint a konfigurációkat egy szakaszos megközelítésben.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -31,7 +31,7 @@ Az automatikus eszközkezelés úgy működik, hogy az ikrek vagy a modul-modulo
 
 * A **célként megadott tartalom** határozza meg a kívánt tulajdonságokat, amelyeket hozzá kell adni, vagy frissíteni kell a megcélzott eszköz ikrek vagy moduljában. A tartalom a módosítani kívánt tulajdonságok szakaszának elérési útját tartalmazza.
 
-* A **metrikák** határozzák meg a különböző konfigurációs állapotok, például a **sikeres**, **folyamatban lévő**és **hiba**összegzésének számát. Egyéni metrikák vannak megadva lekérdezésként a Twin jelentett tulajdonságainál.  A rendszermetrikák az alapértelmezett mérőszámok, amelyek a kettős frissítési állapotot mérik, például a megcélozott ikrek számát és a sikeresen frissített ikrek számát.
+* A **metrikák** határozzák meg a különböző konfigurációs állapotok, például a **sikeres** , **folyamatban lévő** és **hiba** összegzésének számát. Egyéni metrikák vannak megadva lekérdezésként a Twin jelentett tulajdonságainál.  A rendszermetrikák az alapértelmezett mérőszámok, amelyek a kettős frissítési állapotot mérik, például a megcélozott ikrek számát és a sikeresen frissített ikrek számát.
 
 Az automatikus konfigurációk az első alkalommal futnak a konfiguráció létrehozása után, majd öt percenként. A metrikák lekérdezései minden alkalommal futnak, amikor az automatikus konfiguráció fut.
 
@@ -58,9 +58,9 @@ A konfiguráció létrehozása előtt meg kell adnia, hogy mely eszközöket vag
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az IoT hubot. 
 
-2. Válassza az **IoT**lehetőséget.
+2. Válassza az **IoT** lehetőséget.
 
-3. Válassza az **eszköz konfigurációjának hozzáadása** vagy a **modul konfigurációjának hozzáadása**lehetőséget.
+3. Válassza az **eszköz konfigurációjának hozzáadása** vagy a **modul konfigurációjának hozzáadása** lehetőséget.
 
    ![Eszköz konfigurációjának vagy modul-konfigurációjának hozzáadása](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
@@ -70,7 +70,7 @@ A konfiguráció létrehozásához öt lépés szükséges. A következő szakas
 
 1. Adjon egy egyedi nevet a konfigurációnak, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /` .
 
-2. Címkék hozzáadása a konfigurációk nyomon követése érdekében. A címkék **név**, **érték** párok, amelyek leírják a konfigurációt. Például `HostPlatform, Linux` vagy `Version, 3.0.1`.
+2. Címkék hozzáadása a konfigurációk nyomon követése érdekében. A címkék **név** , **érték** párok, amelyek leírják a konfigurációt. Például `HostPlatform, Linux` vagy `Version, 3.0.1`.
 
 3. A **tovább** gombra kattintva lépjen a következő lépésre. 
 
@@ -96,7 +96,7 @@ Ha két vagy több konfiguráció ugyanazt a különálló elérési utat céloz
 
 Ha el szeretne távolítani egy meglévő tulajdonságot, a tulajdonság értékét állítsa be `null` .
 
-További beállításokat adhat hozzá, ha az **eszköz hozzáadása** vagy a **modul különálló**beállítása lehetőséget választja.
+További beállításokat adhat hozzá, ha az **eszköz hozzáadása** vagy a **modul különálló** beállítása lehetőséget választja.
 
 ### <a name="specify-metrics-optional"></a>Metrikák megadása (nem kötelező)
 
@@ -104,11 +104,11 @@ A metrikák a konfigurációs tartalom alkalmazása után egy eszköz vagy modul
 
 Mindegyik konfiguráció legfeljebb öt egyéni metrikával rendelkezhet. 
 
-1. Adja meg a **metrika nevének**nevét.
+1. Adja meg a **metrika nevének** nevét.
 
-2. Adja meg a **mérőszám feltételeinek**lekérdezését.  A lekérdezés az eszköz Twin jelentett tulajdonságain alapul.  A metrika a lekérdezés által visszaadott sorok számát jelöli.
+2. Adja meg a **mérőszám feltételeinek** lekérdezését.  A lekérdezés az eszköz Twin jelentett tulajdonságain alapul.  A metrika a lekérdezés által visszaadott sorok számát jelöli.
 
-Példa:
+Például:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -123,7 +123,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Ha mérőszámot épít be a konfigurált modulok jelentésére, válassza `moduleId` a from elemet `devices.modules` . Példa:
+Ha mérőszámot épít be a konfigurált modulok jelentésére, válassza `moduleId` a from elemet `devices.modules` . Például:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -138,7 +138,7 @@ Az automatikus eszköz-konfigurációk csak az eszköz kettős címkéit célozz
 
 Mivel több konfiguráció is megcélozhatja ugyanazt az eszközt vagy modult, minden konfigurációnak prioritási számra van szüksége. Ütközés esetén a legmagasabb prioritású WINS-konfigurációt. 
 
-1. Adjon meg egy pozitív egész számot a konfigurációs **prioritáshoz**. A legmagasabb numerikus érték a legmagasabb prioritást veszi figyelembe. Ha két konfigurációban ugyanaz a prioritási szám, akkor a legutóbb létrehozott WINS. 
+1. Adjon meg egy pozitív egész számot a konfigurációs **prioritáshoz** . A legmagasabb numerikus érték a legmagasabb prioritást veszi figyelembe. Ha két konfigurációban ugyanaz a prioritási szám, akkor a legutóbb létrehozott WINS. 
 
 2. Adja meg a **cél feltételt** annak meghatározásához, hogy mely eszközök vagy modulok lesznek megcélozva ezzel a konfigurációval. A feltétel a kettős címkék vagy a Twin jelentett tulajdonságok alapján történik, és egyeznie kell a kifejezés formátumával. 
 
@@ -150,7 +150,7 @@ Mivel több konfiguráció is megcélozhatja ugyanazt az eszközt vagy modult, m
 
 ### <a name="review-configuration"></a>Konfiguráció áttekintése
 
-Tekintse át a konfigurációs információkat, majd kattintson a **Submit (Küldés**) gombra.
+Tekintse át a konfigurációs információkat, majd kattintson a **Submit (Küldés** ) gombra.
 
 ## <a name="monitor-a-configuration"></a>Konfiguráció figyelése
 
@@ -158,7 +158,7 @@ A konfiguráció részleteinek megtekintéséhez és az azt futtató eszközök 
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az IoT hubot. 
 
-2. Válassza az **IoT**lehetőséget.
+2. Válassza az **IoT** lehetőséget.
 
 3. Ellenőrizze a konfigurációs listát. Az egyes konfigurációk esetében az alábbi adatokat tekintheti meg:
 
@@ -180,7 +180,7 @@ A konfiguráció részleteinek megtekintéséhez és az azt futtató eszközök 
 
    * **Cél feltétel** – a célként megadott feltételnek megfelelő eszközök vagy modulok. 
 
-   * **Metrikák** – a rendszermetrikák és az egyéni metrikák listája.  Megtekintheti az egyes mérőszámokhoz tartozó eszközök vagy modulok listáját, ha kiválasztja a metrikát a legördülő menüből, majd kiválasztja az **eszközök megtekintése** vagy a **modulok megtekintése**lehetőséget.
+   * **Metrikák** – a rendszermetrikák és az egyéni metrikák listája.  Megtekintheti az egyes mérőszámokhoz tartozó eszközök vagy modulok listáját, ha kiválasztja a metrikát a legördülő menüből, majd kiválasztja az **eszközök megtekintése** vagy a **modulok megtekintése** lehetőséget.
 
    * **Device Twin beállítások** vagy **modul Twin beállítások** – a konfiguráció által beállított Twin beállítások. 
 
@@ -202,7 +202,7 @@ A konfiguráció módosításához kövesse az alábbi lépéseket:
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az IoT hubot. 
 
-2. Válassza az **IoT**lehetőséget. 
+2. Válassza az **IoT** lehetőséget. 
 
 3. Válassza ki a módosítani kívánt konfigurációt. 
 
@@ -223,7 +223,7 @@ Ha töröl egy konfigurációt, minden eszköz-ikrek a következő legmagasabb p
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az IoT hubot. 
 
-2. Válassza az **IoT**lehetőséget. 
+2. Válassza az **IoT** lehetőséget. 
 
 3. A jelölőnégyzet használatával válassza ki a törölni kívánt konfigurációt. 
 
@@ -236,8 +236,7 @@ Ha töröl egy konfigurációt, minden eszköz-ikrek a következő legmagasabb p
 Ebben a cikkben megtanulta, hogyan konfigurálhatja és figyelheti a IoT-eszközök méretét. Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 
 * [IoT Hub-eszközidentitások csoportos kezelése](iot-hub-bulk-identity-mgmt.md)
-* [IoT Hub metrikák](iot-hub-metrics.md)
-* [Műveletek figyelése](iot-hub-operations-monitoring.md)
+* [Az IoT hub figyelése](monitor-iot-hub.md)
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 

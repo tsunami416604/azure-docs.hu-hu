@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: e8bce1ca10e9175b699bd548d9241b78bce3b5cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17c3f07fe553e363d1eb2a997287feb77296a621
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504859"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540312"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Az Apache HBase készült .NET SDK használata
 
@@ -38,13 +38,13 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-Cserélje le a CLUSTERNAME-t a HDInsight HBase, valamint a Felhasználónév és a jelszó helyére a fürt létrehozásához megadott Apache Hadoop hitelesítő adatokat. Az alapértelmezett Hadoop-Felhasználónév a **rendszergazda**.
+Cserélje le a CLUSTERNAME-t a HDInsight HBase, valamint a Felhasználónév és a jelszó helyére a fürt létrehozásához megadott Apache Hadoop hitelesítő adatokat. Az alapértelmezett Hadoop-Felhasználónév a **rendszergazda** .
 
 ## <a name="create-a-new-table"></a>Új tábla létrehozása
 
-A HBase táblákban tárolja az adattárakat. A tábla egy *Rowkey*, egy elsődleges kulcsból és egy vagy több *oszlopból*álló csoportból áll. Az egyes táblákban lévő összes adathalmazt vízszintesen osztják el egy Rowkey-tartományból *régiókba*. Minden régió rendelkezik kezdési és befejezési kulccsal. Egy tábla egy vagy több régióval rendelkezhet. Ahogy a tábla adatai növekednek, a HBase a nagyméretű régiókat kisebb régiókra osztja fel. A régiók tárolása a *régió-kiszolgálókon*történik, ahol az egyik régió-kiszolgáló több régiót is tárolhat.
+A HBase táblákban tárolja az adattárakat. A tábla egy *Rowkey* , egy elsődleges kulcsból és egy vagy több *oszlopból* álló csoportból áll. Az egyes táblákban lévő összes adathalmazt vízszintesen osztják el egy Rowkey-tartományból *régiókba* . Minden régió rendelkezik kezdési és befejezési kulccsal. Egy tábla egy vagy több régióval rendelkezhet. Ahogy a tábla adatai növekednek, a HBase a nagyméretű régiókat kisebb régiókra osztja fel. A régiók tárolása a *régió-kiszolgálókon* történik, ahol az egyik régió-kiszolgáló több régiót is tárolhat.
 
-Az adattárolást fizikailag a *HFiles*tárolja. Egyetlen HFile egy tábla, egy régió és egy oszlop családja számára tartalmaz adattípust. A HFile lévő sorok tárolása a Rowkey szerint történik. Minden HFile rendelkezik egy *B + Tree* indextel a sorok gyors lekéréséhez.
+Az adattárolást fizikailag a *HFiles* tárolja. Egyetlen HFile egy tábla, egy régió és egy oszlop családja számára tartalmaz adattípust. A HFile lévő sorok tárolása a Rowkey szerint történik. Minden HFile rendelkezik egy *B + Tree* indextel a sorok gyors lekéréséhez.
 
 Új tábla létrehozásához meg kell adnia a `TableSchema` és az oszlopot. A következő kód ellenőrzi, hogy a (z) "RestSDKTable" tábla már létezik-e – ha nem, a tábla jön létre.
 
@@ -190,4 +190,4 @@ finally
 ## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a HDInsight egy Apache HBase-példájába](apache-hbase-tutorial-get-started-linux.md)
-* Hozzon létre egy teljes körű alkalmazást az [Apache HBase valós idejű Twitter-hangulatának elemzésével](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* Hozzon létre egy teljes körű alkalmazást az [Apache HBase valós idejű Twitter-hangulatának elemzésével](./apache-hbase-tutorial-get-started-linux.md)

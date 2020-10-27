@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 3095e398d7e5cfe59085144d5bb4e8dc33618064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f12a6982886eeaa375151c5b8a73acc573aab9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76960697"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545361"
 ---
 # <a name="429001-throttlingexception"></a>429001 ThrottlingException
 
@@ -21,7 +21,7 @@ Ez a cikk a **429001 ThrottlingException** -hibák okait és megoldásait ismert
 
 ## <a name="symptoms"></a>Hibajelenségek
 
-A IoT Hub-kérések sikertelenek lesznek a 429001-es **ThrottlingException**hiba esetén.
+A IoT Hub-kérések sikertelenek lesznek a 429001-es **ThrottlingException** hiba esetén.
 
 ## <a name="cause"></a>Ok
 
@@ -29,10 +29,10 @@ Túllépte a kért művelet IoT Hub [szabályozási korlátait](./iot-hub-devgui
 
 ## <a name="solution"></a>Megoldás
 
-Győződjön meg arról, hogy a sávszélesség-szabályozási korlátot a *telemetria üzenet küldési kísérletek* metrikájának a fent megadott korlátokkal való összehasonlításával éri el. Azt is megtekintheti, hogy a *sávszélesség-szabályozás hány* mérőszámot tartalmaz. További információ ezekről és a IoT Hubhoz elérhető egyéb mérőszámokról: [IoT hub mérőszámok és azok használata](./iot-hub-metrics.md#iot-hub-metrics-and-how-to-use-them).
+Győződjön meg arról, hogy a sávszélesség-szabályozási korlátot a *telemetria üzenet küldési kísérletek* metrikájának a fent megadott korlátokkal való összehasonlításával éri el. Azt is megtekintheti, hogy a *sávszélesség-szabályozás hány* mérőszámot tartalmaz. További információ ezekről a metrikákkal kapcsolatban: [Device telemetria mérőszámok](monitor-iot-hub-reference.md#device-telemetry-metrics). További információ arról, hogyan használhatók a metrikák az IoT hub figyeléséhez: [IoT hub figyelése](monitor-iot-hub.md).
 
 A IoT Hub a 429 ThrottlingException csak akkor adja vissza, ha a határérték túl hosszú ideig megsértette a korlátot. Erre azért van szükség, hogy az üzenetek ne legyenek elvetve, ha az IoT hub burst forgalmat kap. Eközben az IoT Hub a művelet sávszélesség-szabályozási értékén dolgozza fel az üzeneteket, ami lassú lehet, ha túl nagy a forgalom a várólistán. További tudnivalókért lásd [az IoT Hub adatforgalom-alakításával kapcsolatos részt](./iot-hub-devguide-quotas-throttling.md#traffic-shaping).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kvóta-vagy sávszélesség-korlátozást használ, vegye fontolóra [a IoT hub skálázását](./iot-hub-scaling.md) .

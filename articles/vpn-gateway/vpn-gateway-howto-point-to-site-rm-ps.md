@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2b7522e4c1074c3c52e62453e815cce859a86148
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbadc3262ee6baa383d3b572c021beaa58993f3f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435762"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541230"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Pont – hely VPN-kapcsolat konfigurálása VNet natív Azure tanúsítványalapú hitelesítéssel: PowerShell
 
@@ -58,7 +58,7 @@ A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a seg
 * **Előfizetés:** Ha több előfizetése is van, ellenőrizze, hogy a megfelelőt használja-e.
 * **Erőforráscsoport: TestRG**
 * **Hely: USA keleti régiója**
-* DNS-kiszolgáló: Annak a DNS-kiszolgálónak az **IP-címe**, amelyet névfeloldásra kíván használni. (nem kötelező)
+* DNS-kiszolgáló: Annak a DNS-kiszolgálónak az **IP-címe** , amelyet névfeloldásra kíván használni. (nem kötelező)
 * **Átjáró neve: Vnet1GW**
 * **Nyilvános IP-név: VNet1GWPIP**
 * **VpnType: Útvonalalapú** 
@@ -100,7 +100,7 @@ Deklarálja a használni kívánt változókat. Használja a következő példá
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG -Location $Location
    ```
-2. Hozza létre a virtuális hálózat alhálózatainak konfigurációit, névként a következő értékeket adja meg: *FrontEnd*, *BackEnd*, illetve *GatewaySubnet*. Ezek az előtagok a deklarált virtuális hálózati címtér részei kell, hogy legyenek.
+2. Hozza létre a virtuális hálózat alhálózatainak konfigurációit, névként a következő értékeket adja meg: *FrontEnd* , *BackEnd* , illetve *GatewaySubnet* . Ezek az előtagok a deklarált virtuális hálózati címtér részei kell, hogy legyenek.
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
@@ -134,7 +134,7 @@ Deklarálja a használni kívánt változókat. Használja a következő példá
 Konfigurálja és hozza létre a virtuális hálózati átjárót a virtuális hálózat számára.
 
 * A -GatewayType csak **Vpn** lehet, a -VpnType pedig csak **RouteBased** lehet.
-* A -VpnClientProtocol paraméterrel adhatja meg az engedélyezni kívánt alagutak típusát. Az alagút beállításai az **OpenVPN, az SSTP** és a **IKEv2**. Dönthet úgy, hogy engedélyezi az egyiket vagy bármely támogatott kombinációt. Ha több típust szeretne engedélyezni, adja meg a neveket vesszővel elválasztva. Az OpenVPN és az SSTP együttes használata nem engedélyezhető. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re. Az OpenVPN-ügyfél használatával kapcsolódhat az OpenVPN-alagút típusához.
+* A -VpnClientProtocol paraméterrel adhatja meg az engedélyezni kívánt alagutak típusát. Az alagút beállításai az **OpenVPN, az SSTP** és a **IKEv2** . Dönthet úgy, hogy engedélyezi az egyiket vagy bármely támogatott kombinációt. Ha több típust szeretne engedélyezni, adja meg a neveket vesszővel elválasztva. Az OpenVPN és az SSTP együttes használata nem engedélyezhető. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re. Az OpenVPN-ügyfél használatával kapcsolódhat az OpenVPN-alagút típusához.
 * A Virtual Network Gateway "Basic" SKU nem támogatja a IKEv2, az OpenVPN vagy a RADIUS-hitelesítést. Ha azt tervezi, hogy a Mac-ügyfelek csatlakoznak a virtuális hálózathoz, ne használja az alapszintű SKU-t.
 * Egy VPN-átjáró létrehozása akár 45 percet is igénybe vehet a kiválasztott [átjáró termékváltozatától](vpn-gateway-about-vpn-gateway-settings.md) függően. Ez a példa az IKEv2-t használja.
 
@@ -259,7 +259,11 @@ Ezek az utasítások Windows-ügyfelekre érvényesek.
 
 Ezek az utasítások Windows-ügyfelekre érvényesek.
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm.md)]
+
+* Ellenőrizze, hogy létrejött-e a VPN-ügyfél konfigurációs csomagja azután, hogy a DNS-kiszolgáló IP-címei meg lettek adva a virtuális hálózathoz. Ha frissítette a DNS-kiszolgáló IP-címeit, hozzon létre és telepítsen egy új VPN-ügyfélkonfigurációs csomagot.
+
+* Az „ipconfig” használatával ellenőrizze annak a számítógépnek az Ethernet-adapteréhez hozzárendelt IPv4-címet, amelyről a kapcsolatot létesíti. Ha az IP-cím azon virtuális hálózat tartományában található, amelyhez csatlakozni kíván, vagy a VPN-ügyfél címkészletének címtartományában, akkor átfedő címtérről beszélünk. Ilyen átfedés esetén a hálózati forgalom nem éri el az Azure-t, és a helyi hálózaton marad.
 
 ## <a name="to-add-or-remove-a-root-certificate"></a><a name="addremovecert"></a>Főtanúsítvány hozzáadása vagy eltávolítása
 

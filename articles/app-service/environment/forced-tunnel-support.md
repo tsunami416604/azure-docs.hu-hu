@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6dc002b0ed9e68ea15eaa58c226249837c7df32d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8a4b6998d1471a79dd789ed6528e22b07f2015c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830859"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540975"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Az App Service-környezet konfigurálása kényszerített bújtatással
 
@@ -73,7 +73,7 @@ Ha az Azure SQL és az Azure Storage felé irányuló forgalmon kívül az ASE �
 
 2. Engedélyezze a szolgáltatásvégpontokat az Azure SQL-hez és az Azure Storage-hoz az ASE-alhálózattal.  Miután ezt a lépést elvégezte, konfigurálhatja virtuális hálózatát kényszerített bújtatással.
 
-Ha ASE-t olyan virtuális hálózaton szeretné létrehozni, amely már konfigurálva lett arra, hogy minden forgalmat irányítson a helyszínen, az ASE-t Resource Manager-sablon használatával kell létrehozni.  ASE nem hozható létre a portállal egy már meglévő alhálózatban.  Amikor üzembe helyezi az ASE-t egy olyan virtuális hálózatban, amely már konfigurálva lett a kimenő forgalom irányítására a helyszínen, az ASE-t egy Resource Manager-sablon használatával kell létrehozni, ami lehetővé teszi egy meglévő alhálózat megadását. A bevezetési sablon használatával történő telepítésével kapcsolatos részletekért olvassa el a [app Service Environment sablon][template]alapján történő létrehozását ismertető cikkből.
+A bevezetési sablon használatával történő telepítésével kapcsolatos részletekért olvassa el a [app Service Environment sablon][template]alapján történő létrehozását ismertető cikkből.
 
 A szolgáltatásvégpontokkal Azure-beli virtuális hálózatok és alhálózatok készletére korlátozhatja a több-bérlős szolgáltatásokhoz való hozzáférést. A szolgáltatásvégpontokról bővebben a [virtuális hálózatok szolgáltatásvégpontjaival][serviceendpoints] kapcsolatos dokumentációban olvashat. 
 
@@ -103,7 +103,7 @@ Ha az Azure Storage felé irányuló forgalmon kívül bújtatni szeretné az AS
 
    A lap tetején kattintson a **PUT** elemre. Ez a lehetőség aktivál egy méretezési műveletet az App Service-környezetben, és beállítja a tűzfalat.
 
-_Az ASE létrehozása a kimenő forgalmi címekkel_: Kövesse az [App Service-környezet sablonnal történő létrehozását][template] ismertető cikk utasításait, és kérje le a megfelelő sablont.  Szerkessze az azuredeploy.json fájl „resources” (erőforrások) szakaszát, de a „properties” (tulajdonságok) blokkot ne, és a **userWhitelistedIpRanges** értékhez adjon hozzá egy sort a saját értékeivel.
+_Az ASE létrehozása a kimenő forgalmi címekkel_ : Kövesse az [App Service-környezet sablonnal történő létrehozását][template] ismertető cikk utasításait, és kérje le a megfelelő sablont.  Szerkessze az azuredeploy.json fájl „resources” (erőforrások) szakaszát, de a „properties” (tulajdonságok) blokkot ne, és a **userWhitelistedIpRanges** értékhez adjon hozzá egy sort a saját értékeivel.
 
 ```json
 "resources": [

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: f157cc7ac2331f948a562dc12e99acc60e979ada
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: deaf98077e0652dac8bb327839ffa2bf34007c9f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488163"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546211"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrálás Azure Resource Manager-alapú fejlesztői eszközökre HDInsight-fürtökhöz
 
@@ -54,7 +54,7 @@ Ha a `azure hdinsight job` parancsokkal feladatokat küld a HDInsight-fürthöz,
 * [Apache Hive-lekérdezések futtatása a HDInsight Apache Hadoop a cURL használatával](hadoop/apache-hadoop-use-hive-curl.md)
 
 
-Az Apache Hadoop MapReduce, Apache Hive és Apache Pig interaktív módon történő futtatásának egyéb módjaival kapcsolatban lásd: a [MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)-on, a Hadoop használata a-on Apache Hive, a HDInsight-on való [Apache Hadoop](hadoop/hdinsight-use-hive.md)használata, valamint az [Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)-ben Apache Hadoop.
+Az Apache Hadoop MapReduce, Apache Hive és Apache Pig interaktív módon történő futtatásának egyéb módjaival kapcsolatban lásd: a [MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)-on, a Hadoop használata a-on Apache Hive, a HDInsight-on való [Apache Hadoop](hadoop/hdinsight-use-hive.md)használata, valamint az [Apache Pig használata a HDInsight](./index.yml)-ben Apache Hadoop.
 
 ### <a name="examples"></a>Példák
 **Fürt létrehozása**
@@ -81,14 +81,14 @@ Az Apache Hadoop MapReduce, Apache Hive és Apache Pig interaktív módon tört�
 * Új parancs – `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell migrálása a Azure Resource Managerba
-A Azure Resource Manager módban Azure PowerShell általános információi a [Azure PowerShell Azure Resource Manager használatával](../powershell-azure-resource-manager.md)találhatók.
+A Azure Resource Manager módban Azure PowerShell általános információi a [Azure PowerShell Azure Resource Manager használatával](../azure-resource-manager/management/manage-resources-powershell.md)találhatók.
 
-A Azure PowerShell Resource Manager-parancsmagok az ASM-parancsmagokkal egymás mellett telepíthetők. A két mód parancsmagja megkülönböztethető a nevük alapján.  Az erőforrás-kezelő mód az ASM-módban a *AzureHDInsight* összehasonlított parancsmagok neveiben *AzHDInsight* .  Például: *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster*. A paraméterek és kapcsolók tartalmazhatnak híreket, és a Resource Manager használatakor számos új paraméter érhető el.  Például számos parancsmaghoz szükség van egy *ResourceGroupName*nevű új kapcsolóra. 
+A Azure PowerShell Resource Manager-parancsmagok az ASM-parancsmagokkal egymás mellett telepíthetők. A két mód parancsmagja megkülönböztethető a nevük alapján.  Az erőforrás-kezelő mód az ASM-módban a *AzureHDInsight* összehasonlított parancsmagok neveiben *AzHDInsight* .  Például: *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . A paraméterek és kapcsolók tartalmazhatnak híreket, és a Resource Manager használatakor számos új paraméter érhető el.  Például számos parancsmaghoz szükség van egy *ResourceGroupName* nevű új kapcsolóra. 
 
 A HDInsight-parancsmagok használata előtt csatlakoznia kell az Azure-fiókjához, és létre kell hoznia egy új erőforráscsoportot:
 
 * [Kapcsolat – AzAccount](/powershell/module/az.accounts/connect-azaccount)
-* [New-AzResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
+* [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)
 
 ### <a name="renamed-cmdlets"></a>Átnevezett parancsmagok
 A HDInsight ASM-parancsmagok listázása a Windows PowerShell-konzolon:
@@ -101,50 +101,50 @@ A következő táblázat az ASM-parancsmagokat és azok nevét tartalmazza Resou
 
 | ASM-parancsmagok | Resource Manager-parancsmagok |
 | --- | --- |
-| Add-AzureHDInsightConfigValue |[Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) |
-| Add-AzureHDInsightMetastore |[Add-AzHDInsightMetastore](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightmetastore) |
-| Add-AzureHDInsightScriptAction |[Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) |
-| Add-AzureHDInsightStorage |[Add-AzHDInsightStorage](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightstorage) |
-| Get-AzureHDInsightCluster |[Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) |
-| Get-AzureHDInsightJob |[Get-AzHDInsightJob](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjob) |
-| Get-AzureHDInsightJobOutput |[Get-AzHDInsightJobOutput](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjoboutput) |
-| Get-AzureHDInsightProperty |[Get-AzHDInsightProperty](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightproperty) |
-| Grant-AzureHDInsightHttpServicesAccess |[Grant-AzureRmHDInsightHttpServicesAccess](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/grant-azurermhdinsighthttpservicesaccess) |
-| Grant-AzureHdinsightRdpAccess |[Grant-AzHDInsightRdpServicesAccess](https://docs.microsoft.com/powershell/module/az.hdinsight/grant-azhdinsightrdpservicesaccess) |
-| Invoke-AzureHDInsightHiveJob |[Meghívás – AzHDInsightHiveJob](https://docs.microsoft.com/powershell/module/az.hdinsight/invoke-azhdinsighthivejob) |
-| New-AzureHDInsightCluster |[Új – AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) |
-| New-AzureHDInsightClusterConfig |[Új – AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) |
-| New-AzureHDInsightHiveJobDefinition |[Új – AzHDInsightHiveJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsighthivejobdefinition) |
-| New-AzureHDInsightMapReduceJobDefinition |[Új – AzHDInsightMapReduceJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightmapreducejobdefinition) |
-| New-AzureHDInsightPigJobDefinition |[Új – AzHDInsightPigJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightpigjobdefinition) |
-| New-AzureHDInsightSqoopJobDefinition |[Új – AzHDInsightSqoopJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightsqoopjobdefinition) |
-| New-AzureHDInsightStreamingMapReduceJobDefinition |[Új – AzHDInsightStreamingMapReduceJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightstreamingmapreducejobdefinition) |
-| Remove-AzureHDInsightCluster |[Remove-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/remove-azhdinsightcluster) |
-| Revoke-AzureHDInsightHttpServicesAccess |[Revoke-AzHDInsightHttpServicesAccess](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/revoke-azurermhdinsighthttpservicesaccess) |
-| Revoke-AzureHdinsightRdpAccess |[Revoke-AzHDInsightRdpServicesAccess](https://docs.microsoft.com/powershell/module/az.hdinsight/revoke-azhdinsightrdpservicesaccess) |
-| Set-AzureHDInsightClusterSize |[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) |
-| Set-AzureHDInsightDefaultStorage |[Set-AzHDInsightDefaultStorage](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightdefaultstorage) |
-| Start-AzureHDInsightJob |[Start – AzHDInsightJob](https://docs.microsoft.com/powershell/module/az.hdinsight/start-azhdinsightjob) |
-| Stop-AzureHDInsightJob |[Leállítás – AzHDInsightJob](https://docs.microsoft.com/powershell/module/az.hdinsight/stop-azhdinsightjob) |
-| Use-AzureHDInsightCluster |[Use-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/use-azhdinsightcluster) |
-| Wait-AzureHDInsightJob |[Várakozás – AzHDInsightJob](https://docs.microsoft.com/powershell/module/az.hdinsight/wait-azhdinsightjob) |
+| Add-AzureHDInsightConfigValue |[Add-AzHDInsightConfigValue](/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) |
+| Add-AzureHDInsightMetastore |[Add-AzHDInsightMetastore](/powershell/module/az.hdinsight/add-azhdinsightmetastore) |
+| Add-AzureHDInsightScriptAction |[Add-AzHDInsightScriptAction](/powershell/module/az.hdinsight/add-azhdinsightscriptaction) |
+| Add-AzureHDInsightStorage |[Add-AzHDInsightStorage](/powershell/module/az.hdinsight/add-azhdinsightstorage) |
+| Get-AzureHDInsightCluster |[Get-AzHDInsightCluster](/powershell/module/az.hdinsight/get-azhdinsightcluster) |
+| Get-AzureHDInsightJob |[Get-AzHDInsightJob](/powershell/module/az.hdinsight/get-azhdinsightjob) |
+| Get-AzureHDInsightJobOutput |[Get-AzHDInsightJobOutput](/powershell/module/az.hdinsight/get-azhdinsightjoboutput) |
+| Get-AzureHDInsightProperty |[Get-AzHDInsightProperty](/powershell/module/az.hdinsight/get-azhdinsightproperty) |
+| Grant-AzureHDInsightHttpServicesAccess |[Grant-AzureRmHDInsightHttpServicesAccess](/powershell/module/azurerm.hdinsight/grant-azurermhdinsighthttpservicesaccess) |
+| Grant-AzureHdinsightRdpAccess |[Grant-AzHDInsightRdpServicesAccess](/powershell/module/az.hdinsight/grant-azhdinsightrdpservicesaccess) |
+| Invoke-AzureHDInsightHiveJob |[Meghívás – AzHDInsightHiveJob](/powershell/module/az.hdinsight/invoke-azhdinsighthivejob) |
+| New-AzureHDInsightCluster |[Új – AzHDInsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) |
+| New-AzureHDInsightClusterConfig |[Új – AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) |
+| New-AzureHDInsightHiveJobDefinition |[Új – AzHDInsightHiveJobDefinition](/powershell/module/az.hdinsight/new-azhdinsighthivejobdefinition) |
+| New-AzureHDInsightMapReduceJobDefinition |[Új – AzHDInsightMapReduceJobDefinition](/powershell/module/az.hdinsight/new-azhdinsightmapreducejobdefinition) |
+| New-AzureHDInsightPigJobDefinition |[Új – AzHDInsightPigJobDefinition](/powershell/module/az.hdinsight/new-azhdinsightpigjobdefinition) |
+| New-AzureHDInsightSqoopJobDefinition |[Új – AzHDInsightSqoopJobDefinition](/powershell/module/az.hdinsight/new-azhdinsightsqoopjobdefinition) |
+| New-AzureHDInsightStreamingMapReduceJobDefinition |[Új – AzHDInsightStreamingMapReduceJobDefinition](/powershell/module/az.hdinsight/new-azhdinsightstreamingmapreducejobdefinition) |
+| Remove-AzureHDInsightCluster |[Remove-AzHDInsightCluster](/powershell/module/az.hdinsight/remove-azhdinsightcluster) |
+| Revoke-AzureHDInsightHttpServicesAccess |[Revoke-AzHDInsightHttpServicesAccess](/powershell/module/azurerm.hdinsight/revoke-azurermhdinsighthttpservicesaccess) |
+| Revoke-AzureHdinsightRdpAccess |[Revoke-AzHDInsightRdpServicesAccess](/powershell/module/az.hdinsight/revoke-azhdinsightrdpservicesaccess) |
+| Set-AzureHDInsightClusterSize |[Set-AzHDInsightClusterSize](/powershell/module/az.hdinsight/set-azhdinsightclustersize) |
+| Set-AzureHDInsightDefaultStorage |[Set-AzHDInsightDefaultStorage](/powershell/module/az.hdinsight/set-azhdinsightdefaultstorage) |
+| Start-AzureHDInsightJob |[Start – AzHDInsightJob](/powershell/module/az.hdinsight/start-azhdinsightjob) |
+| Stop-AzureHDInsightJob |[Leállítás – AzHDInsightJob](/powershell/module/az.hdinsight/stop-azhdinsightjob) |
+| Use-AzureHDInsightCluster |[Use-AzHDInsightCluster](/powershell/module/az.hdinsight/use-azhdinsightcluster) |
+| Wait-AzureHDInsightJob |[Várakozás – AzHDInsightJob](/powershell/module/az.hdinsight/wait-azhdinsightjob) |
 
 ### <a name="new-cmdlets"></a>Új parancsmagok
 A következő új parancsmagok csak Resource Manager módban érhetők el. 
 
 **Parancsfájl-művelettel kapcsolatos parancsmagok:**
 
-* **Get-AzHDInsightPersistedScriptAction: lekérdezi**a fürt megőrzött parancsfájl-műveleteit, és időrendi sorrendben sorolja fel őket, vagy lekéri a megadott megőrzött parancsfájl részleteit. 
-* **Get-AzHDInsightScriptActionHistory**: lekéri egy fürt parancsfájl-műveleti előzményeit, és fordított időrendi sorrendben listázza azt, vagy lekéri egy korábban végrehajtott parancsfájl-művelet részleteit. 
-* **Remove-AzHDInsightPersistedScriptAction**: eltávolít egy megőrzött parancsfájl-műveletet egy HDInsight-fürtből.
-* **Set-AzHDInsightPersistedScriptAction**: egy korábban végrehajtott parancsfájl-művelet beállítása megőrzött parancsfájl-műveletnek.
-* **Submit-AzHDInsightScriptAction**: új parancsfájl-műveletet küld egy Azure HDInsight-fürtnek. 
+* **Get-AzHDInsightPersistedScriptAction: lekérdezi** a fürt megőrzött parancsfájl-műveleteit, és időrendi sorrendben sorolja fel őket, vagy lekéri a megadott megőrzött parancsfájl részleteit. 
+* **Get-AzHDInsightScriptActionHistory** : lekéri egy fürt parancsfájl-műveleti előzményeit, és fordított időrendi sorrendben listázza azt, vagy lekéri egy korábban végrehajtott parancsfájl-művelet részleteit. 
+* **Remove-AzHDInsightPersistedScriptAction** : eltávolít egy megőrzött parancsfájl-műveletet egy HDInsight-fürtből.
+* **Set-AzHDInsightPersistedScriptAction** : egy korábban végrehajtott parancsfájl-művelet beállítása megőrzött parancsfájl-műveletnek.
+* **Submit-AzHDInsightScriptAction** : új parancsfájl-műveletet küld egy Azure HDInsight-fürtnek. 
 
 További használati információk: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md).
 
 **A fürt identitásával kapcsolatos parancsmagok:**
 
-* **Add-AzHDInsightClusterIdentity**: fürt identitását hozzáadja egy fürtkonfiguráció-objektumhoz, hogy a HDInsight-fürt hozzáférhessen Azure Data Lake Storagehoz. Lásd: [HDInsight-fürt létrehozása a Data Lake Storage Azure PowerShell használatával](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Add-AzHDInsightClusterIdentity** : fürt identitását hozzáadja egy fürtkonfiguráció-objektumhoz, hogy a HDInsight-fürt hozzáférhessen Azure Data Lake Storagehoz. Lásd: [HDInsight-fürt létrehozása a Data Lake Storage Azure PowerShell használatával](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Példák
 **Fürt létrehozása**
@@ -232,7 +232,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
 * [Apache Sqoop-feladatok elküldése](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Áttelepítés az új HDInsight .NET SDK-ra
-Az Azure Service Management-based [(ASM) HDInsight .net SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) már elavult. Javasoljuk, hogy használja az Azure Resource Management-alapú [Resource Manager-alapú HDInsight .net SDK-](/dotnet/api/overview/azure/hdinsight)t. A következő ASM-alapú HDInsight-csomagok elavultak.
+Az Azure Service Management-based [(ASM) HDInsight .net SDK](/previous-versions/azure/reference/mt416619(v=azure.100)) már elavult. Javasoljuk, hogy használja az Azure Resource Management-alapú [Resource Manager-alapú HDInsight .net SDK-](/dotnet/api/overview/azure/hdinsight)t. A következő ASM-alapú HDInsight-csomagok elavultak.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`

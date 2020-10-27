@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 999be38e413288d2eb2f6342874e692972f300ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93c07b47e03bde20d494feb1c86179cd9a24ba26
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409714"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539411"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Kvóta-növelés az Azure HDInsight
 
@@ -30,7 +30,7 @@ Ha olyan hibaüzenetet kapott, amely azt jelzi, hogy elérte a kvóta korlátjá
 
     1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
     1. Navigáljon a HDInsight-fürt **áttekintő** oldalára.
-    1. A bal oldali menüben válassza a **kvóta korlátai**lehetőséget. Az oldal megjeleníti a használatban lévő magok számát, az elérhető magok számát és a magok teljes számát.
+    1. A bal oldali menüben válassza a **kvóta korlátai** lehetőséget. Az oldal megjeleníti a használatban lévő magok számát, az elérhető magok számát és a magok teljes számát.
 
 A kvóta növeléséhez hajtsa végre a következő lépéseket:
 
@@ -42,13 +42,13 @@ A kvóta növeléséhez hajtsa végre a következő lépéseket:
 1. Válassza az **Új támogatási kérelem** lehetőséget.
 1. Az **Alapvető beállítások** lapon található **Új támogatási kérelem** oldalon válassza ki a következő beállításokat:
 
-   - **Probléma típusa**: **szolgáltatás-és előfizetési korlátok (kvóták)**
-   - **Előfizetés**: a módosítani kívánt előfizetés
-   - **Kvóta típusa**: **HDInsight**
+   - **Probléma típusa** : **szolgáltatás-és előfizetési korlátok (kvóták)**
+   - **Előfizetés** : a módosítani kívánt előfizetés
+   - **Kvóta típusa** : **HDInsight**
 
      ![Támogatási kérelem létrehozása az HDInsight Core-kvóta növeléséhez](./media/quota-increase-request/hdinsight-quota-support-request.png)
 
-1. Válassza a **tovább lehetőséget: megoldások >>**.
+1. Válassza a **tovább lehetőséget: megoldások >>** .
 1. A **részletek** lapon adja meg a probléma leírását, válassza ki a probléma súlyosságát, az előnyben részesített kapcsolattartási módszert és az egyéb kötelező mezőket. Az alább felsorolt sablonnal biztosíthatja a szükséges információk megadását. A kvóta-növelési kérelmeket az Azure Capacity csapat értékeli ki, nem pedig a HDInsight termék csapata. Minél több teljes információt ad meg, annál valószínűbb, hogy a kérést jóvá fogja hagyni.
 
     ```
@@ -61,15 +61,15 @@ A kvóta növeléséhez hajtsa végre a következő lépéseket:
 
     ![probléma részletei](./media/quota-increase-request/problem-details.png)
 
-1. Válassza a **Tovább: Áttekintés + >>létrehozása **elemet.
-1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.
+1. Válassza a **Tovább: Áttekintés + >>létrehozása** elemet.
+1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget.
 
 > [!NOTE]  
 > Ha a HDInsight alapszintű kvótát egy privát régióban szeretné megemelni, [küldjön be egy jóváhagyott lista-kérelmet](https://aka.ms/canaryintwhitelist).
 
-[Az ügyfélszolgálattól kérheti a kvóta növelését](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+[Az ügyfélszolgálattól kérheti a kvóta növelését](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
-Vannak rögzített kvóták. Például egyetlen Azure-előfizetés legfeljebb 10 000 magot tartalmazhat. A korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Vannak rögzített kvóták. Például egyetlen Azure-előfizetés legfeljebb 10 000 magot tartalmazhat. A korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

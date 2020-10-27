@@ -8,12 +8,12 @@ keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893645"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546942"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Az Azure HDInsight üzletmenet folytonossága
 
@@ -39,7 +39,7 @@ Ez a szakasz az üzletmenet folytonosságának megtervezése során felmerülő 
 
 * Az Azure monitoring Tools on HDInsight segítségével azonosíthatja a fürt rendellenes viselkedését, és beállíthatja a megfelelő riasztási értesítéseket. Üzembe helyezheti az előre konfigurált HDInsight-fürthöz tartozó felügyeleti megoldásokat, amelyek az adott típusú fürt fontos teljesítménymutatóit gyűjtik össze. További információ: Azure- [figyelés HDInsight](./hdinsight-hadoop-oms-log-analytics-tutorial.md).  
 
-* Fizessen elő az Azure Health-riasztásokra, hogy értesítést kapjon a szolgáltatással kapcsolatos problémákról, a tervezett karbantartásról, az előfizetés, szolgáltatás vagy régió állapotáról és biztonsági tanácsadóinak. A probléma okát és a határozott ETA-t tartalmazó állapot-értesítések segítenek a feladatátvétel és a failbacks jobb végrehajtásában. További információ: [Azure Service Health dokumentáció](/azure/service-health/).
+* Fizessen elő az Azure Health-riasztásokra, hogy értesítést kapjon a szolgáltatással kapcsolatos problémákról, a tervezett karbantartásról, az előfizetés, szolgáltatás vagy régió állapotáról és biztonsági tanácsadóinak. A probléma okát és a határozott ETA-t tartalmazó állapot-értesítések segítenek a feladatátvétel és a failbacks jobb végrehajtásában. További információ: [Azure Service Health dokumentáció](../service-health/index.yml).
 
 ## <a name="single-region-availability"></a>Önálló régió elérhetősége
 
@@ -122,9 +122,9 @@ Az üzletmenet folytonosságának javítása a régiók közötti magas rendelke
 |Írási minták olvasása |Az elsődleges és a másodlagos olvasási és írási műveletek engedélyezésének megkövetelése |A másodlagos csak olvashatóként való kialakításának megtervezése|
 |Nulla RPO & RTO |Nulla adatvesztés megkövetelése (RPO = 0) és nulla állásidő (RTO = 0) |Tervezze meg a RPO és a RTO, hogy csökkentse a feladatátvételt igénylő összetevők számát.|
 |Üzleti funkciók |Az elsődleges másodlagos üzleti funkciók teljes körű működésének megkövetelése |Értékelje ki, hogy futtatható-e a másodlagos üzleti funkciók minimális kritikus részhalmazával.|
-|Kapcsolat |Az összes felsőbb rétegbeli és alsóbb rétegbeli rendszer megkövetelése az elsődlegestől a másodlagoshoz való kapcsolódáshoz|Korlátozza a másodlagos kapcsolatot egy nem megfelelő minimális kritikus részhalmazra.|
+|Kapcsolatok |Az összes felsőbb rétegbeli és alsóbb rétegbeli rendszer megkövetelése az elsődlegestől a másodlagoshoz való kapcsolódáshoz|Korlátozza a másodlagos kapcsolatot egy nem megfelelő minimális kritikus részhalmazra.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 

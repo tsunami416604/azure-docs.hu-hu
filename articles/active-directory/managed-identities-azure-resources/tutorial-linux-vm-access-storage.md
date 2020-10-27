@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 10/23/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b61d3ed21d053fc7166b47c94a9ec61e355d199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c093dcff46676dc5f8a25974c3c38c74ae7666b7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263161"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546687"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Hozzáférés az Azure Storage-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
@@ -51,11 +51,11 @@ A jelen oktatóanyagban a parancssori példaszkriptek futtatása kétféleképpe
 Ebben a szakaszban egy új tárfiókot fog létrehozni. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** gombra.
-2. Kattintson a **Storage**, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőségre.
+2. Kattintson a **Storage** , majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőségre.
 3. A **Név** mezőben adja meg a tárfiók nevét.  
-4. A **Telepítési modell** mezőben a **Resource Manager**, a **Fiók típusa** mezőben a **Storage (általános célú v1)** beállítást kell megadni. 
+4. A **Telepítési modell** mezőben a **Resource Manager** , a **Fiók típusa** mezőben a **Storage (általános célú v1)** beállítást kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Létrehozás** elemre.
+6. Kattintson a **Létrehozás** gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -64,7 +64,7 @@ Ebben a szakaszban egy új tárfiókot fog létrehozni.
 A fájlok tárolásához blobtároló szükséges, ezért létre kell hoznia egyet, amelyben a fájlt tárolhatja. Ezután fel fog tölteni egy fájlt az új tárfiókon lévő blobtárolóba.
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.
-2. A **blob szolgáltatás**alatt kattintson a **tárolók**elemre.
+2. A **blob szolgáltatás** alatt kattintson a **tárolók** elemre.
 3. Kattintson a **+ Tároló** gombra a lap tetején.
 4. Az **Új tároló** területen írja be a tároló nevét, és a **Nyilvános hozzáférés szintje** területen tartsa meg az alapértelmezett értéket.
 
@@ -79,12 +79,15 @@ A fájlok tárolásához blobtároló szükséges, ezért létre kell hoznia egy
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure Storage-tárolóhoz 
 
-A VM felügyelt identitásával lekérheti az Azure-tárolóblob adatait.   
+A VM felügyelt identitásával lekérheti az Azure-tárolóblob adatait.
+
+>[!NOTE]
+> További információ a tárolók engedélyeinek megadásához használható különböző szerepkörökről: a [blobok és a várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.  
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
 3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre a lap tetején egy új szerepkör-hozzárendelés hozzáadásához a virtuális géphez.
-4. A **szerepkör**alatt a legördülő listából válassza a **Storage blob-Adatolvasó**lehetőséget. 
+4. A **szerepkör** alatt a legördülő listából válassza a **Storage blob-Adatolvasó** lehetőséget. 
 5. A következő legördülő menüben, a **Hozzáférés hozzárendelése** területen válassza ki a **Virtuális gép** elemet.  
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a **Minden erőforráscsoport** értékre.  
 7. A **Kiválasztás** mezőben válassza ki a virtuális gépet, majd kattintson a **Mentés** gombra.
@@ -116,7 +119,7 @@ Az alábbi lépések elvégzéséhez a korábban létrehozott virtuális géprő
    Hello world! :)
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan gondoskodhat róla, hogy egy Linux rendszerű virtuális gép rendszer által hozzárendelt felügyelt identitása hozzá tudjon férni az Azure Storage-hoz.  További információ az Azure Storage-ról:
 

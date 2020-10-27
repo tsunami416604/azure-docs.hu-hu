@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 77e4e2e1548beaa840f46953ef5bb4e94345416f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc6b069e3c7686ec6964dab890e503aa193cf6fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947079"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545106"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Rövid útmutató: a PHP használatával csatlakozhat, és lekérdezheti az Azure Database for MySQL-rugalmas kiszolgálókon tárolt adatlekérdezéseket
 
@@ -34,7 +34,7 @@ A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforr
 
 ### <a name="install-php"></a>A PHP telepítése
 
-Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó Azure-[webalkalmazást](https://docs.microsoft.com/azure/app-service/overview).  A Tűzfalszabályok létrehozásával [és kezelésével](./how-to-manage-firewall-portal.md) kapcsolatos információkért lásd: tűzfalszabályok létrehozása és kezelése.
+Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó Azure-[webalkalmazást](../../app-service/overview.md).  A Tűzfalszabályok létrehozásával [és kezelésével](./how-to-manage-firewall-portal.md) kapcsolatos információkért lásd: tűzfalszabályok létrehozása és kezelése.
 
 #### <a name="macos"></a>macOS
 
@@ -56,9 +56,9 @@ Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó
 Szerezze be a Azure Database for MySQL rugalmas kiszolgálóhoz való kapcsolódáshoz szükséges kapcsolati adatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
+2. Azure Portal bal oldali menüjében válassza a **minden erőforrás** elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver** ).
 3. Válassza ki a kiszolgálónevet.
-4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet** . Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  <!---:::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL Flexible Server name":::--->
 
 ## <a name="connecting-to-flexible-server-using-tlsssl-in-php"></a>Csatlakozás rugalmas kiszolgálóhoz TLS/SSL használatával PHP-ben
@@ -257,7 +257,7 @@ mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Titkosított kapcsolat Transport Layer Security (TLS 1,2) használatával Azure Database for MySQL-rugalmas kiszolgálón](./how-to-connect-tls-ssl.md).
 - További információ a [Azure Database for MySQL rugalmas kiszolgáló hálózatkezeléséről](./concepts-networking.md).
 - [Azure Database for MySQL rugalmas kiszolgálói tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./how-to-manage-firewall-portal.md).

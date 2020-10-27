@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: 8c1ff1eebabd94c5e6b1241b33ca83960e8eedbb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 69844a392aa03dc962f8af456996ab51f1adf561
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490288"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547469"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Biztonságos átvitelű Storage-fiókkal rendelkező fürtök Apache Hadoop az Azure HDInsight
 
@@ -32,7 +32,7 @@ Ha Azure Portal használatával szeretne frissíteni egy meglévő Storage-fiók
 
 ### <a name="powershell"></a>PowerShell
 
-A [New-AzStorageAccount PowerShell-](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)parancsmag esetén győződjön meg arról, hogy a paraméter értéke `-EnableHttpsTrafficOnly` `1` .
+A [New-AzStorageAccount PowerShell-](/powershell/module/az.storage/new-azstorageaccount)parancsmag esetén győződjön meg arról, hogy a paraméter értéke `-EnableHttpsTrafficOnly` `1` .
 
 Egy meglévő Storage-fiók PowerShell-lel való frissítéséhez lásd: [biztonságos átvitel megkövetelése a PowerShell](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)-lel.
 

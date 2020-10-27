@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34c6fe58873a614ee8502e052c2af5aaed898cd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016036"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547945"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Külső gyártótól származó Apache Hadoop alkalmazások telepítése az Azure HDInsight
 
@@ -52,9 +52,9 @@ Az alábbi eljárásból megtudhatja, hogyan telepíthet HDInsight-alkalmazások
 **HDInsight-alkalmazás telepítése**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben navigáljon az **összes szolgáltatás**  >  **Analytics**  >  **HDInsight-fürthöz**.
+2. A bal oldali menüben navigáljon az **összes szolgáltatás**  >  **Analytics**  >  **HDInsight-fürthöz** .
 3. Válasszon ki egy HDInsight-fürtöt a listából.  Ha még nincs ilyen fürtje, hozzon létre egyet most.  Lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-4. A **Beállítások** kategóriában válassza az **alkalmazások**lehetőséget. A fő ablakban megtekintheti a telepített alkalmazások listáját. 
+4. A **Beállítások** kategóriában válassza az **alkalmazások** lehetőséget. A fő ablakban megtekintheti a telepített alkalmazások listáját. 
    
     ![HDInsight-alkalmazások menü a portálon](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Válassza a **+ Hozzáadás** lehetőséget a menüből. Megtekintheti az elérhető alkalmazások listáját.  Ha a **+ Hozzáadás** szürkén jelenik meg, az azt jelenti, hogy a HDInsight-fürt ezen verziójához nem tartoznak alkalmazások.
@@ -66,7 +66,7 @@ A telepítési állapotot a portál értesítései között tekintheti meg (a po
 
 ## <a name="install-applications-during-cluster-creation"></a>Alkalmazások telepítése fürtlétrehozás során
 
-HDInsight-alkalmazásokat fürt létrehozása közben is telepíthet. A HDInsight-alkalmazásokat azt követően telepíti a rendszer, hogy a fürt létrejött, és futó állapotba került. Ha az alkalmazásokat a Azure Portal használatával szeretné telepíteni a fürt létrehozása során, a **konfiguráció + díjszabás** lapon válassza az **+ alkalmazás hozzáadása**lehetőséget.
+HDInsight-alkalmazásokat fürt létrehozása közben is telepíthet. A HDInsight-alkalmazásokat azt követően telepíti a rendszer, hogy a fürt létrejött, és futó állapotba került. Ha az alkalmazásokat a Azure Portal használatával szeretné telepíteni a fürt létrehozása során, a **konfiguráció + díjszabás** lapon válassza az **+ alkalmazás hozzáadása** lehetőséget.
 
 ![Fürtözött konfigurációs alkalmazások Azure Portal](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
 
@@ -76,9 +76,9 @@ A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásoka
 **HDInsight-alkalmazás és-megjelenítési tulajdonságok listázása**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben navigáljon az **összes szolgáltatás**  >  **Analytics**  >  **HDInsight-fürthöz**.
+2. A bal oldali menüben navigáljon az **összes szolgáltatás**  >  **Analytics**  >  **HDInsight-fürthöz** .
 3. Válasszon ki egy HDInsight-fürtöt a listából.
-4. A **Beállítások** kategóriában válassza az **alkalmazások**lehetőséget. A fő ablakban megtekintheti a telepített alkalmazások listáját. 
+4. A **Beállítások** kategóriában válassza az **alkalmazások** lehetőséget. A fő ablakban megtekintheti a telepített alkalmazások listáját. 
    
     ![HDInsight-alkalmazások, telepített alkalmazások](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. Válassza ki az egyik telepített alkalmazást a tulajdonság megjelenítéséhez. A tulajdonságok listája:
@@ -101,11 +101,10 @@ A HTTP végpont hitelesítő adatai ugyanazok, mint amelyeket a HDInsight-fürth
 ## <a name="troubleshoot"></a>Hibaelhárítás
 Lásd: [A telepítési folyamat hibaelhárítása](hdinsight-apps-install-custom-applications.md#troubleshoot-the-installation).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): megtudhatja, hogyan helyezhet üzembe egy közzé nem tett HDInsight alkalmazást a HDInsight.
 * [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
-* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
+* [MSDN: Install an HDInsight application](/rest/api/hdinsight/hdinsight-application) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
 * [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md) (Linux-alapú HDInsight-fürtök testreszabása parancsfájlműveletek segítségével): megtudhatja, hogyan telepíthet további alkalmazásokat parancsfájlműveletek használatával.
 * [Linux-alapú Apache Hadoop-fürtök létrehozása a HDInsight Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md): megtudhatja, hogyan hívhat Resource Manager-sablonokat HDInsight-fürtök létrehozásához.
 * [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md) (Üres élcsomópontok használata a HDInsightban): a cikk bemutatja, hogyan lehet üres élcsomópontot használni egy HDInsight-fürt elérésére, HDInsight-alkalmazások tesztelésére és HDInsight-alkalmazások üzemeltetésére.
-

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: c82f6eb37d542f80b6cb79ffb1fae6fe0cf0c233
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bd016fcfe377dc610d5918ad8128fff4f6473fe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144270"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538459"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Egy adott megoldáshoz leginkább megfelelő IoT Hub-szint kiválasztása
 
@@ -47,12 +47,12 @@ Egy adott rétegen belül csak egy [kiadást](https://azure.microsoft.com/pricin
 | [Üzenetek útválasztása](iot-hub-devguide-messages-read-custom.md), [üzenetek gazdagítása](iot-hub-message-enrichments-overview.md)és [Event Grid integráció](iot-hub-event-grid.md) | Igen | Igen |
 | [HTTP-, AMQP-és MQTT-protokollok](iot-hub-devguide-protocols.md) | Igen | Igen |
 | [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Igen | Igen |
-| [Monitorozás és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
-| [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Yes |
-| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Yes |
-| [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Yes |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
-| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
+| [Monitorozás és diagnosztika](monitor-iot-hub.md) | Igen | Igen |
+| [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
+| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
+| [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Igen |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Igen |
+| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Igen |
 
 A IoT Hub ingyenes szintet is biztosít teszteléshez és értékeléshez. Rendelkezik a standard csomag összes képességével, de korlátozott üzenetküldési támogatással. Az ingyenes szintről nem lehet alapszintű vagy standard szintűre frissíteni.
 
@@ -91,23 +91,23 @@ Az alapszintű és a standard szintű IoT Hub által támogatott képességek k�
 | [Eszköz eseményének küldése](/rest/api/iothub/device/senddeviceevent) | Igen | Igen |
 | Modul küldése esemény | Csak AMQP és MQTT | Csak AMQP és MQTT |
 | [Fájlfeltöltés állapotának frissítése](/rest/api/iothub/device/updatefileuploadstatus) | Igen | Igen |
-| [Tömeges eszköz művelete](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Igen, a IoT Edge képességek kivételével | Yes |
+| [Tömeges eszköz művelete](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Igen, a IoT Edge képességek kivételével | Igen |
 | [Importálási exportálási feladat megszakítása](/rest/api/iothub/service/jobs/cancelimportexportjob) | Igen | Igen |
 | [Importálási exportálási feladatok létrehozása](/rest/api/iothub/service/jobs/createimportexportjob) | Igen | Igen |
 | [Importálási exportálási feladatok beolvasása](/rest/api/iothub/service/jobs/getimportexportjob) | Igen | Igen |
 | [Importálási exportálási feladatok beolvasása](/rest/api/iothub/service/jobs/getimportexportjobs) | Igen | Igen |
-| [Parancssori várólista kiürítése](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Yes |
-| [Eszköz dupla beolvasása](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Yes |
-| [Dupla modul beolvasása](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Yes |
-| [Eszköz metódusának meghívása](./iot-hub-devguide-direct-methods.md) |   | Yes |
-| [Eszköz dupla frissítése](./iot-hub-devguide-device-twins.md) |   | Yes |
-| [Modul frissítése – Twin](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Yes |
-| [Eszköz kötött értesítésének elhagyása](/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
-| [Eszköz kötött értesítésének befejezése](/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
-| [Feladat megszakítása](/rest/api/media/jobs/canceljob) |   | Yes |
-| [Feladat létrehozása](/rest/api/media/jobs/create) |   | Yes |
-| [Feladatok beolvasása](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Yes |
-| [Lekérdezési feladatok](/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Yes |
+| [Parancssori várólista kiürítése](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Igen |
+| [Eszköz dupla beolvasása](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Igen |
+| [Dupla modul beolvasása](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Igen |
+| [Eszköz metódusának meghívása](./iot-hub-devguide-direct-methods.md) |   | Igen |
+| [Eszköz dupla frissítése](./iot-hub-devguide-device-twins.md) |   | Igen |
+| [Modul frissítése – Twin](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Igen |
+| [Eszköz kötött értesítésének elhagyása](/rest/api/iothub/device/abandondeviceboundnotification) |   | Igen |
+| [Eszköz kötött értesítésének befejezése](/rest/api/iothub/device/completedeviceboundnotification) |   | Igen |
+| [Feladat megszakítása](/rest/api/media/jobs/canceljob) |   | Igen |
+| [Feladat létrehozása](/rest/api/media/jobs/create) |   | Igen |
+| [Feladatok beolvasása](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Igen |
+| [Lekérdezési feladatok](/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Igen |
 
 ## <a name="message-throughput"></a>Üzenet átviteli sebessége
 

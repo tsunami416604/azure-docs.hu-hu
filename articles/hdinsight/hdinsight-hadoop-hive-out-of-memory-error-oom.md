@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: 71f9bc75bc2b84708af54ba89918cd874099a2d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d91da1aa6f7079069541ac955fce8331591a3bc6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85961897"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546177"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive memóriájában észlelt hiba elhárítása
 
@@ -91,7 +91,7 @@ Támogatási és mérnöki csapatunk közösen talált egy olyan problémát, am
 
 "A kaptár. Auto. convert. JOIN. noconditionaltask = true, ellenőrizze a noconditionaltask. size értéket, és ha a térképhez való csatlakozásnál a táblázatok mérete nem haladja meg a noconditionaltask. a terv mérete miatt a csomaghoz való csatlakozást eredményező probléma az, hogy a számítás nem veszi figyelembe a különböző szórótábla megvalósításával járó terhelést, ha a bemeneti méretek összege kisebb, mint a kisméretű lekérdezések noconditionaltask mérete."
 
-Az hive-site.xml fájlban a **kaptár. Auto. convert. JOIN. noconditionaltask** értéke **true (igaz**):
+Az hive-site.xml fájlban a **kaptár. Auto. convert. JOIN. noconditionaltask** értéke **true (igaz** ):
 
 ```xml
 <property>
@@ -105,14 +105,14 @@ Az hive-site.xml fájlban a **kaptár. Auto. convert. JOIN. noconditionaltask** 
 </property>
 ```
 
-Valószínű, hogy a csatlakoztatási folyamat miatt a Java-tárterület kifogyott a memóriában. Ahogy az a HDInsight-ben, a [Hadoop fonal-memóriájának beállításai](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)című blogbejegyzésben leírtak szerint, a TEZ-végrehajtó motor használatakor a ténylegesen felhasznált halom terület a TEZ-tárolóhoz tartozik. Tekintse meg a TEZ tároló memóriáját ismertető következő képet.
+Valószínű, hogy a csatlakoztatási folyamat miatt a Java-tárterület kifogyott a memóriában. Ahogy az a HDInsight-ben, a [Hadoop fonal-memóriájának beállításai](/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)című blogbejegyzésben leírtak szerint, a TEZ-végrehajtó motor használatakor a ténylegesen felhasznált halom terület a TEZ-tárolóhoz tartozik. Tekintse meg a TEZ tároló memóriáját ismertető következő képet.
 
 ![Tez-tároló memória diagramja: a hiba a memóriában](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Ahogy a blogbejegyzés is sugallja, a következő két memória-beállítás határozza meg a halom tárolójának memóriáját: **kaptár. TEZ. Container. size** és **kaptár. TEZ. Java. eldönti**. Tapasztalataink szerint a memórián kívüli kivétel nem azt jelenti, hogy a tároló mérete túl kicsi. Ez azt jelenti, hogy a Java halom mérete (kaptár. TEZ. Java. döntve) túl kicsi. Tehát amikor megjelenik a memória, megpróbálkozhat a **kaptár. TEZ. Java.** kiemeléssel. Szükség esetén előfordulhat, hogy a **kaptár. TEZ. Container. size**értékre kell emelkednie. A **Java.** kikapcsolási beállításnak a **container. size**80%-ának kell lennie.
+Ahogy a blogbejegyzés is sugallja, a következő két memória-beállítás határozza meg a halom tárolójának memóriáját: **kaptár. TEZ. Container. size** és **kaptár. TEZ. Java. eldönti** . Tapasztalataink szerint a memórián kívüli kivétel nem azt jelenti, hogy a tároló mérete túl kicsi. Ez azt jelenti, hogy a Java halom mérete (kaptár. TEZ. Java. döntve) túl kicsi. Tehát amikor megjelenik a memória, megpróbálkozhat a **kaptár. TEZ. Java.** kiemeléssel. Szükség esetén előfordulhat, hogy a **kaptár. TEZ. Container. size** értékre kell emelkednie. A **Java.** kikapcsolási beállításnak a **container. size** 80%-ának kell lennie.
 
 > [!NOTE]  
-> A **kaptár. TEZ. Java. döntő** beállításnak mindig kisebbnek kell lennie, mint a **kaptár. TEZ. Container. size**.
+> A **kaptár. TEZ. Java. döntő** beállításnak mindig kisebbnek kell lennie, mint a **kaptár. TEZ. Container. size** .
 
 Mivel a D12-gép 28 GB memóriával rendelkezik, úgy döntöttünk, hogy 10 GB-nyi (10240 MB) méretű tárolót használ, és az 80%-ot a Javához rendeli.
 
@@ -123,6 +123,6 @@ SET hive.tez.java.opts=-Xmx8192m
 
 Az új beállításokkal a lekérdezés 10 percen belül sikeresen futott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A bácsi-hiba beszerzése nem feltétlenül jelenti azt, hogy a tároló mérete túl kicsi. Ehelyett konfigurálnia kell a memória beállításait úgy, hogy a halom mérete megnövekszik, és a tárolói memória méretének legalább 80%-a. A kaptár-lekérdezések optimalizálásával kapcsolatban lásd: [Apache Hive lekérdezések optimalizálása a HDInsight Apache Hadoophoz](hdinsight-hadoop-optimize-hive-query.md).

@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 34e4781d1437b34607a6d9e4f99ec5bd2ef9b46d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: eb70e7cfec4e6f3e7e55fa74bbdd6cee43493576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999972"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537881"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. A VNet a felhőben található magánhálózat. Ha egy Azure cache for Redis-példány VNet van konfigurálva, nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el. Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális hálózatok támogatását egy prémium szintű Azure cache-hez a Redis-példányhoz.
@@ -28,11 +28,11 @@ Az [azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-n
 ## <a name="virtual-network-support"></a>Virtuális hálózatok támogatása
 A Virtual Network (VNet) támogatása a gyorsítótár létrehozásakor a **Redis panel új Azure-gyorsítótárában** van konfigurálva. 
 
-1. Prémium gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása**lehetőséget. Vegye figyelembe, hogy a Azure Portal gyorsítótárak létrehozása mellett a Resource Manager-sablonok, a PowerShell vagy az Azure CLI használatával is létrehozhatja őket. A Redis készült Azure cache létrehozásával kapcsolatos további információkért lásd: [gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+1. Prémium gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget. Vegye figyelembe, hogy a Azure Portal gyorsítótárak létrehozása mellett a Resource Manager-sablonok, a PowerShell vagy az Azure CLI használatával is létrehozhatja őket. A Redis készült Azure cache létrehozásával kapcsolatos további információkért lásd: [gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Erőforrás létrehozása.":::
    
-2. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
+2. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára** .
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Erőforrás létrehozása.":::
 
@@ -40,7 +40,7 @@ A Virtual Network (VNet) támogatása a gyorsítótár létrehozásakor a **Redi
    
    | Beállítás      | Ajánlott érték  | Leírás |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a * \<DNS name> . Redis.cache.Windows.net*lesz. | 
+   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a *\<DNS name> . Redis.cache.Windows.net* lesz. | 
    | **Előfizetés** | Legördülő menüből válassza ki az előfizetését. | Az előfizetés, amely alatt létre kell hoznia ezt az új Azure cache-t a Redis-példányhoz. | 
    | **Erőforráscsoport** | Legördülő listából válassza ki az erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet. | Azon erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat és az egyéb erőforrásokat. Az összes alkalmazás-erőforrás egy erőforráscsoporthoz való elhelyezésével könnyedén kezelheti és törölheti azokat. | 
    | **Hely** | Legördülő menüből válassza ki a kívánt helyet. | Válasszon ki egy [régiót](https://azure.microsoft.com/regions/) a többi olyan szolgáltatás közelében, amely a gyorsítótárat fogja használni. |
@@ -48,7 +48,7 @@ A Virtual Network (VNet) támogatása a gyorsítótár létrehozásakor a **Redi
 
 4. Válassza a **hálózatkezelés** fület, vagy kattintson a lap alján található **hálózatkezelés** gombra.
 
-5. A **hálózatkezelés** lapon válassza a **virtuális hálózatok** lehetőséget a kapcsolati módszerként. Ha új virtuális hálózatot szeretne használni, először hozza létre a [virtuális hálózat létrehozása a Azure Portal használatával](../virtual-network/manage-virtual-network.md#create-a-virtual-network) vagy a [virtuális hálózat létrehozása (klasszikus)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) című cikkben ismertetett lépéseket a Azure Portal használatával, majd térjen vissza a **Redis panel új Azure cache** -re a prémium gyorsítótár létrehozásához és konfigurálásához.
+5. A **hálózatkezelés** lapon válassza a **virtuális hálózatok** lehetőséget a kapcsolati módszerként. Ha új virtuális hálózatot szeretne használni, először hozza létre a [virtuális hálózat létrehozása a Azure Portal használatával](../virtual-network/manage-virtual-network.md#create-a-virtual-network) vagy a [virtuális hálózat létrehozása (klasszikus)](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) című cikkben ismertetett lépéseket a Azure Portal használatával, majd térjen vissza a **Redis panel új Azure cache** -re a prémium gyorsítótár létrehozásához és konfigurálásához.
 
 > [!IMPORTANT]
 > Ha Azure-gyorsítótárat telepít a Redis egy Resource Manager-VNet, a gyorsítótárnak olyan dedikált alhálózaton kell lennie, amely nem tartalmaz más erőforrásokat, kivéve a Redis-példányok Azure gyorsítótárát. Ha kísérlet történt egy Azure cache üzembe helyezésére a Redis egy Resource Manager-VNet egy olyan alhálózatra, amely más erőforrásokat is tartalmaz, a telepítés meghiúsul.
@@ -76,11 +76,11 @@ A Virtual Network (VNet) támogatása a gyorsítótár létrehozásakor a **Redi
 
 9. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné. 
 
-10. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
+10. Válassza az **Áttekintés + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
 
-11. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás**lehetőséget.
+11. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás** lehetőséget.
 
-Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés**   oldalon. Ha az **állapot**    **futásra**mutat, a gyorsítótár készen áll a használatra. A gyorsítótár létrehozása után megtekintheti a VNet konfigurációját, ha az **erőforrás menüben**a **Virtual Network** lehetőségre kattint.
+Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra** mutat, a gyorsítótár készen áll a használatra. A gyorsítótár létrehozása után megtekintheti a VNet konfigurációját, ha az **erőforrás menüben** a **Virtual Network** lehetőségre kattint.
 
 ![Virtuális hálózat][redis-cache-vnet-info]
 
@@ -171,8 +171,8 @@ Nyolc bejövő porttartomány-követelmény van. Az ezekben a tartományokban l�
 
 Az Azure cache hálózati kapcsolati követelményei olyan Redis esetében fordulnak elő, amelyek esetleg nem feltétlenül teljesülnek egy virtuális hálózaton. A Redis készült Azure cache használatához a következő elemek megfelelő működéséhez szükség van a virtuális hálózaton belüli használathoz.
 
-* A kimenő hálózati kapcsolat az Azure Storage-végpontokkal világszerte. Ide tartoznak a Redis-példányhoz tartozó Azure cache-vel azonos régióban található végpontok, valamint **más** Azure-régiókban található tárolási végpontok. Az Azure Storage-végpontok a következő DNS-tartományok alatt oldhatók fel: *table.Core.Windows.net*, *blob.Core.Windows.net*, *Queue.Core.Windows.net*és *file.Core.Windows.net*. 
-* Kimenő hálózati kapcsolat a *OCSP.msocsp.com*, a *mscrl.microsoft.com*és a *CRL.microsoft.com*. Ez a kapcsolat szükséges a TLS/SSL-funkciók támogatásához.
+* A kimenő hálózati kapcsolat az Azure Storage-végpontokkal világszerte. Ide tartoznak a Redis-példányhoz tartozó Azure cache-vel azonos régióban található végpontok, valamint **más** Azure-régiókban található tárolási végpontok. Az Azure Storage-végpontok a következő DNS-tartományok alatt oldhatók fel: *table.Core.Windows.net* , *blob.Core.Windows.net* , *Queue.Core.Windows.net* és *file.Core.Windows.net* . 
+* Kimenő hálózati kapcsolat a *OCSP.msocsp.com* , a *mscrl.microsoft.com* és a *CRL.microsoft.com* . Ez a kapcsolat szükséges a TLS/SSL-funkciók támogatásához.
 * A virtuális hálózat DNS-konfigurációjának képesnek kell lennie a korábbi pontokban említett összes végpont és tartomány feloldására. Ezek a DNS-követelmények teljesíthetők az érvényes DNS-infrastruktúra konfigurálásának és karbantartásának biztosításával a virtuális hálózat számára.
 * Kimenő hálózati kapcsolat a következő DNS-tartományokban megoldott Azure monitoring-végpontokkal: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
@@ -256,14 +256,14 @@ A ExpressRoute-t használó helyszíni alkalmazásokból származó Redis-péld�
 >A UDR meghatározott útvonalaknak elég **egyedinek kell lenniük** ahhoz, hogy elsőbbséget élvezzenek a ExpressRoute-konfiguráció által meghirdetett útvonalakkal szemben. Az alábbi példa a széles 0.0.0.0/0 címtartományt használja, ezért a hirdetmények az útválasztási hirdetmények használatával véletlenül felülbírálják a több megadott címtartományt.
 
 >[!WARNING]  
->Az Redis-hez készült Azure cache nem támogatott olyan ExpressRoute-konfigurációk esetén, amelyek nem tesznek közzé olyan **útvonalakat, amelyek a nyilvános társ-létrehozási útvonalról a privát társítási útvonalra**kerülnek. A nyilvános ExpressRoute-konfigurációval rendelkező konfigurációk a Microsofttól érkező útválasztási hirdetményeket kapnak Microsoft Azure IP-címtartományok nagy készlete számára. Ha ezek a címtartományok helytelenül vannak kihirdetve a privát társítási útvonalon, akkor az eredmény az, hogy a Redis-példány alhálózatának Azure cache-ről érkező összes kimenő hálózati csomag helytelenül van kényszerítve az ügyfél helyszíni hálózati infrastruktúrája számára. Ez a hálózati folyamat megszakítja az Azure cache-t a Redis. A probléma megoldásának célja, hogy leállítsa az útvonalakat a nyilvános társítási útvonalról a privát társ-létrehozási útvonalra.
+>Az Redis-hez készült Azure cache nem támogatott olyan ExpressRoute-konfigurációk esetén, amelyek nem tesznek közzé olyan **útvonalakat, amelyek a nyilvános társ-létrehozási útvonalról a privát társítási útvonalra** kerülnek. A nyilvános ExpressRoute-konfigurációval rendelkező konfigurációk a Microsofttól érkező útválasztási hirdetményeket kapnak Microsoft Azure IP-címtartományok nagy készlete számára. Ha ezek a címtartományok helytelenül vannak kihirdetve a privát társítási útvonalon, akkor az eredmény az, hogy a Redis-példány alhálózatának Azure cache-ről érkező összes kimenő hálózati csomag helytelenül van kényszerítve az ügyfél helyszíni hálózati infrastruktúrája számára. Ez a hálózati folyamat megszakítja az Azure cache-t a Redis. A probléma megoldásának célja, hogy leállítsa az útvonalakat a nyilvános társítási útvonalról a privát társ-létrehozási útvonalra.
 
 
 A felhasználó által megadott útvonalakon található háttér-információk ebben az [áttekintésben](../virtual-network/virtual-networks-udr-overview.md)érhetők el.
 
 További információ a ExpressRoute: a [ExpressRoute technikai áttekintése](../expressroute/expressroute-introduction.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az Azure cache Redis szolgáltatásairól.
 
 * [Azure cache a Redis prémium szintű szolgáltatási szintjeihez](cache-overview.md#service-tiers)

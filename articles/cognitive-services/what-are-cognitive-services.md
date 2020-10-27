@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2cc0ef4ed0e7a63a822efc34e223cbec20815dd9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 82531466c80917087ca007900ca79b3485f38a21
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521475"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546262"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mi az Azure Cognitive Services?
 
@@ -93,7 +93,18 @@ A cikk következő fejezetei az öt pillér részét képező szolgáltatások l
 |[Bing Local Business Search](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Bing Local Business Search")| A Bing local Business Search API lehetővé teszi az alkalmazások számára, hogy a keresési lekérdezések alapján megtalálják a helyi vállalkozások kapcsolattartási és tartózkodási információit.|
 |[Bing – Helyesírás-ellenőrzés](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing – Helyesírás-ellenőrzés")|Bing Spell Check lehetővé teszi a kontextusos nyelvtan és a helyesírás-ellenőrzés végrehajtását.|
 
-## <a name="get-started-with-cognitive-services"></a>Ismerkedés a Cognitive Services szolgáltatással
+## <a name="development-options"></a>Fejlesztési lehetőségek 
+
+Az Azure és a Cognitive Services számos fejlesztési lehetőséghez férhet hozzá, például:
+
+* Automatizálási és integrációs eszközök, mint például a Logic Apps és a Power automatizálása.
+* Az üzembe helyezési lehetőségek, például a Azure Functions és a App Service. 
+* Cognitive Services Docker-tárolókat a biztonságos hozzáféréshez.
+* Olyan eszközök, mint például a Apache Spark, a Azure Databricks, az Azure szinapszis Analytics és az Azure Kubernetes szolgáltatás Big-adatokhoz. 
+
+További információ: [Cognitive Services fejlesztői beállítások](./cognitive-services-development-options.md).
+
+## <a name="learn-with-the-quickstarts"></a>Ismerkedjen meg a gyors útmutatókkal
 
 Először hozzon létre egy Cognitive Services-erőforrást gyakorlati útmutatókkal a következő módszerek használatával:
 

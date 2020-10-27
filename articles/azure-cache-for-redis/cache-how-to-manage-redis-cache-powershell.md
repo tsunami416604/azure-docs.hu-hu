@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 478b53b78fb72a01ad028c7fb6b7683b34cbca14
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 88e433dbfa87d8ea483789b1fd838c62a6a481c0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370797"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536759"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Az Azure cache kezelése a Redis Azure PowerShell
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "92370797"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ebből a témakörből megtudhatja, hogyan hajthat végre olyan gyakori műveleteket, mint például az Azure cache létrehozása, frissítése és skálázása Redis-példányokhoz, hozzáférési kulcsok újragenerálása, valamint a gyorsítótárral kapcsolatos információk megtekintése. Az Azure cache Redis PowerShell-parancsmagok teljes listájáért lásd: [Azure cache for Redis parancsmagok](https://docs.microsoft.com/powershell/module/az.rediscache).
+Ebből a témakörből megtudhatja, hogyan hajthat végre olyan gyakori műveleteket, mint például az Azure cache létrehozása, frissítése és skálázása Redis-példányokhoz, hozzáférési kulcsok újragenerálása, valamint a gyorsítótárral kapcsolatos információk megtekintése. Az Azure cache Redis PowerShell-parancsmagok teljes listájáért lásd: [Azure cache for Redis parancsmagok](/powershell/module/az.rediscache).
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -94,7 +94,7 @@ Ha gyorsítótárat szeretne létrehozni a Azure Government-felhőben, használj
 * USGov Virginia
 * USGov Iowa
 
-További információ a Azure Government felhőről: [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) és [Microsoft Azure Government fejlesztői útmutató](../azure-government-developer-guide.md).
+További információ a Azure Government felhőről: [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) és [Microsoft Azure Government fejlesztői útmutató](../azure-government/documentation-government-developer-guide.md).
 
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Kapcsolódás az Azure-beli kínai felhőhöz
 Az Azure China-felhőhöz való kapcsolódáshoz használja a következő parancsok egyikét.
@@ -141,7 +141,7 @@ A következő táblázat a gyakran használt paraméterek tulajdonságait és le
 
 | Paraméter | Leírás | Alapértelmezett |
 | --- | --- | --- |
-| Név |A gyorsítótár neve | |
+| Name |A gyorsítótár neve | |
 | Hely |A gyorsítótár helye | |
 | ResourceGroupName |Az erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat | |
 | Méret |A gyorsítótár mérete Érvényes értékek: P1, P2, P3, P4, c0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1 GB |
@@ -172,7 +172,7 @@ A következő táblázat a gyakran használt paraméterek tulajdonságait és le
 | adatbázisokban |Az adatbázisok számának beállítása. Ezt a tulajdonságot csak a gyorsítótár létrehozásakor lehet konfigurálni. |Standard és prémium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Azure cache létrehozása a Redis-hez
-A [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) parancsmaggal hozhatók létre új Azure cache a Redis-példányokhoz.
+A [New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache) parancsmaggal hozhatók létre új Azure cache a Redis-példányokhoz.
 
 > [!IMPORTANT]
 > Amikor először hoz létre egy Azure-gyorsítótárat a Redis egy előfizetésben a Azure Portal használatával, a portál regisztrálja az `Microsoft.Cache` adott előfizetés névterét. Ha egy előfizetésben a PowerShell használatával próbálja meg létrehozni az első Azure cache-Redis, először regisztrálnia kell a névteret a következő parancs használatával. egyéb parancsmagok, például `New-AzRedisCache` és `Get-AzRedisCache` sikertelenek.
@@ -280,16 +280,16 @@ A paraméter értékének megadásához az értékeket a következőhöz `RedisC
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>Az adatbázisok beállítása a gyorsítótár létrehozásakor
-A `databases` beállítás csak a gyorsítótár létrehozásakor konfigurálható. A következő példa egy prémium P3 (26 GB) gyorsítótárat hoz létre a 48-adatbázisokkal a [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) parancsmag használatával.
+A `databases` beállítás csak a gyorsítótár létrehozásakor konfigurálható. A következő példa egy prémium P3 (26 GB) gyorsítótárat hoz létre a 48-adatbázisokkal a [New-AzRedisCache](/powershell/module/az.rediscache/New-azRedisCache) parancsmag használatával.
 
 ```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 ```
 
-További információ a `databases` tulajdonságról: [alapértelmezett Azure cache a Redis Server Configuration](cache-configure.md#default-redis-server-configuration). A gyorsítótár a [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) parancsmaggal történő létrehozásával kapcsolatos további információkért tekintse meg a következőt: Azure cache létrehozása Redis szakasz.
+További információ a `databases` tulajdonságról: [alapértelmezett Azure cache a Redis Server Configuration](cache-configure.md#default-redis-server-configuration). A gyorsítótár a [New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache) parancsmaggal történő létrehozásával kapcsolatos további információkért tekintse meg a következőt: Azure cache létrehozása Redis szakasz.
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>Azure cache frissítése a Redis-hez
-A Redis példányok Azure gyorsítótára a [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/Set-azRedisCache) parancsmag használatával frissül.
+A Redis példányok Azure gyorsítótára a [set-AzRedisCache](/powershell/module/az.rediscache/Set-azRedisCache) parancsmag használatával frissül.
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Set-AzRedisCache` futtassa a következő parancsot.
 
@@ -418,7 +418,7 @@ A skálázási művelet befejezésekor a `ProvisioningState` módosítások a k�
 ```
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>A Redis Azure-gyorsítótárával kapcsolatos információk beolvasása
-A gyorsítótárra vonatkozó információkat a [Get-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscache) parancsmag használatával kérheti le.
+A gyorsítótárra vonatkozó információkat a [Get-AzRedisCache](/powershell/module/az.rediscache/get-azrediscache) parancsmag használatával kérheti le.
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Get-AzRedisCache` futtassa a következő parancsot.
 
@@ -502,7 +502,7 @@ Egy adott gyorsítótárra vonatkozó információk visszaadásához futtassa a 
 ```
 
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>Azure cache elérési kulcsainak beolvasása a Redis
-A gyorsítótárhoz tartozó hozzáférési kulcsok lekéréséhez használhatja a [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-azRedisCacheKey) parancsmagot.
+A gyorsítótárhoz tartozó hozzáférési kulcsok lekéréséhez használhatja a [Get-AzRedisCacheKey](/powershell/module/az.rediscache/Get-azRedisCacheKey) parancsmagot.
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Get-AzRedisCacheKey` futtassa a következő parancsot.
 
@@ -546,7 +546,7 @@ A gyorsítótár kulcsainak lekéréséhez hívja meg a `Get-AzRedisCacheKey` pa
 ```
 
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>Az Azure cache elérési kulcsainak újragenerálása a Redis
-A gyorsítótár elérési kulcsainak újragenerálása érdekében használhatja a [New-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCacheKey) parancsmagot.
+A gyorsítótár elérési kulcsainak újragenerálása érdekében használhatja a [New-AzRedisCacheKey](/powershell/module/az.rediscache/New-azRedisCacheKey) parancsmagot.
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `New-AzRedisCacheKey` futtassa a következő parancsot.
 
@@ -600,7 +600,7 @@ A gyorsítótár elsődleges vagy másodlagos kulcsának újragenerálása érde
 ```
 
 ## <a name="to-delete-an-azure-cache-for-redis"></a>Azure cache törlése a Redis-hez
-Ha törölni szeretne egy Azure-gyorsítótárat a Redis, használja a [Remove-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscache) parancsmagot.
+Ha törölni szeretne egy Azure-gyorsítótárat a Redis, használja a [Remove-AzRedisCache](/powershell/module/az.rediscache/remove-azrediscache) parancsmagot.
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Remove-AzRedisCache` futtassa a következő parancsot.
 
@@ -848,10 +848,9 @@ A következő parancs újraindítja a megadott gyorsítótár mindkét csomópon
 ## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Windows PowerShell és az Azure használatával kapcsolatban, tekintse meg a következő forrásokat:
 
-* [Az Azure cache for Redis parancsmag dokumentációja az MSDN-ben](https://docs.microsoft.com/powershell/module/az.rediscache)
-* [Azure Resource Manager parancsmagok](https://go.microsoft.com/fwlink/?LinkID=394765): megtudhatja, hogyan használhatja a parancsmagokat a Azure Resource Manager modulban.
+* [Az Azure cache for Redis parancsmag dokumentációja az MSDN-ben](/powershell/module/az.rediscache)
+* [Azure Resource Manager parancsmagok](/powershell/module/): megtudhatja, hogyan használhatja a parancsmagokat a Azure Resource Manager modulban.
 * [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/templates/deploy-portal.md): megtudhatja, hogyan hozhat létre és kezelhet erőforráscsoportokat a Azure Portalban.
 * [Azure blog](https://azure.microsoft.com/blog/): Ismerkedjen meg az Azure új szolgáltatásaival.
 * [Windows PowerShell blog](https://devblogs.microsoft.com/powershell/): Ismerkedjen meg a Windows PowerShell új szolgáltatásaival.
 * ["Hey, Scripting Guy!" Blog](https://devblogs.microsoft.com/scripting/tag/hey-scripting-guy/): valós tippeket és trükköket szerezhet be a Windows PowerShell Közösségből.
-

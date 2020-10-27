@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d37f1c52157d2038d216873150b1d68e669e3392
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487313"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548030"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Az Azure HDInsight kettős titkosítást biztosít a nyugalmi állapotban lévő adatokhoz
 
@@ -23,7 +23,7 @@ Ez a dokumentum nem foglalkozik az Azure Storage-fiókban tárolt adataival. El�
 
 ## <a name="introduction"></a>Bevezetés
 
-Az Azure-ban három fő felügyelt lemez szerepkör található: az adatlemez, az operációsrendszer-lemez és az ideiglenes lemez. A felügyelt lemezek különböző típusaival kapcsolatos további információkért lásd: [Bevezetés az Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)szolgáltatásba. 
+Az Azure-ban három fő felügyelt lemez szerepkör található: az adatlemez, az operációsrendszer-lemez és az ideiglenes lemez. A felügyelt lemezek különböző típusaival kapcsolatos további információkért lásd: [Bevezetés az Azure Managed Disks](../virtual-machines/managed-disks-overview.md)szolgáltatásba. 
 
 A HDInsight többféle titkosítási típust támogat két különböző rétegben:
 
@@ -35,8 +35,8 @@ Ezeket a típusokat a következő táblázat foglalja össze.
 
 |Fürt típusa |OPERÁCIÓSRENDSZER-lemez (felügyelt lemez) |Adatlemez (felügyelt lemez) |Ideiglenes adatlemez (helyi SSD) |
 |---|---|---|---|
-|Kafka, HBase gyorsított írásokkal|Layer1: az [SSE titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) alapértelmezés szerint|Layer1: [SSE titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) alapértelmezés szerint, Layer2: opcionális TITKOSÍTÁS a CMK-ben a REST-tel|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
-|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|Layer1: az [SSE titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) alapértelmezés szerint|N.A.|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
+|Kafka, HBase gyorsított írásokkal|Layer1: az [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint|Layer1: [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint, Layer2: opcionális TITKOSÍTÁS a CMK-ben a REST-tel|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
+|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|Layer1: az [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint|N/A|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával
 
@@ -73,15 +73,15 @@ Lásd: [felhasználó által hozzárendelt felügyelt identitás létrehozása](
 
 Kulcstartó létrehozása. Lásd: [Azure Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md) adott lépésekhez.
 
-A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstartóval, a kulcsokat a Azure Key Vaultba importálhatja. Ne feledje, hogy a kulcstartónak engedélyezve kell lennie az **ideiglenes törlésnek** . A meglévő kulcsok importálásával kapcsolatos további információkért tekintse meg [a kulcsok, titkok és tanúsítványok](../key-vault/about-keys-secrets-and-certificates.md)című témakört.
+A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstartóval, a kulcsokat a Azure Key Vaultba importálhatja. Ne feledje, hogy a kulcstartónak engedélyezve kell lennie az **ideiglenes törlésnek** . A meglévő kulcsok importálásával kapcsolatos további információkért tekintse meg [a kulcsok, titkok és tanúsítványok](../key-vault/general/about-keys-secrets-certificates.md)című témakört.
 
 ### <a name="create-key"></a>Kulcs létrehozása
 
-1. Az új kulcstartóban navigáljon a **Beállítások**  >  **kulcsok**  >  **+ Létrehozás/importálás**elemre.
+1. Az új kulcstartóban navigáljon a **Beállítások**  >  **kulcsok**  >  **+ Létrehozás/importálás** elemre.
 
     ![Új kulcs létrehozása a Azure Key Vaultban](./media/disk-encryption/create-new-key.png "Új kulcs létrehozása a Azure Key Vaultban")
 
-1. Adjon meg egy nevet, majd válassza a **Létrehozás**lehetőséget. Őrizze meg az **RSA**alapértelmezett **kulcs típusát** .
+1. Adjon meg egy nevet, majd válassza a **Létrehozás** lehetőséget. Őrizze meg az **RSA** alapértelmezett **kulcs típusát** .
 
     ![kulcs nevének generálása](./media/disk-encryption/create-key.png "Kulcs nevének előállítása")
 
@@ -95,7 +95,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 ### <a name="create-access-policy"></a>Hozzáférési szabályzat létrehozása
 
-1. Az új kulcstartóban navigáljon a **Beállítások**  >  **hozzáférési szabályzatok**  >  **+ hozzáférési házirend hozzáadása**elemre.
+1. Az új kulcstartóban navigáljon a **Beállítások**  >  **hozzáférési szabályzatok**  >  **+ hozzáférési házirend hozzáadása** elemre.
 
     ![Új Azure Key Vault hozzáférési szabályzat létrehozása](./media/disk-encryption/key-vault-access-policy.png)
 
@@ -103,8 +103,8 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
     |Tulajdonság |Leírás|
     |---|---|
-    |Kulcs engedélyei|Válassza a **lekérés**, a **kicsomagolási kulcs**és a **becsomagolási kulcs**lehetőséget.|
-    |Titkos engedélyek|Válassza a **beolvasás**, **beállítás**és **Törlés**lehetőséget.|
+    |Kulcs engedélyei|Válassza a **lekérés** , a **kicsomagolási kulcs** és a **becsomagolási kulcs** lehetőséget.|
+    |Titkos engedélyek|Válassza a **beolvasás** , **beállítás** és **Törlés** lehetőséget.|
     |Rendszerbiztonsági tag kiválasztása|Válassza ki a korábban létrehozott felhasználó által hozzárendelt felügyelt identitást.|
 
     ![A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez](./media/disk-encryption/azure-portal-add-access-policy.png)
@@ -121,7 +121,7 @@ Most már készen áll egy új HDInsight-fürt létrehozására. Az ügyfél ál
 
 #### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-A fürt létrehozása során adja meg a teljes **kulcs azonosítóját**, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT.
+A fürt létrehozása során adja meg a teljes **kulcs azonosítóját** , beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT.
 
 ![Új fürt létrehozása](./media/disk-encryption/create-cluster-portal.png)
 
@@ -141,7 +141,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata
 
-Az alábbi példa bemutatja, hogyan használható egy Azure Resource Manager sablon egy új Apache Spark-fürt létrehozásához, amelyen engedélyezve van a lemezes titkosítás. További információ: [Mi az ARM-sablonok?](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+Az alábbi példa bemutatja, hogyan használható egy Azure Resource Manager sablon egy új Apache Spark-fürt létrehozásához, amelyen engedélyezve van a lemezes titkosítás. További információ: [Mi az ARM-sablonok?](../azure-resource-manager/templates/overview.md).
 
 Ez a példa a PowerShellt használja a sablon meghívásához.
 
@@ -359,7 +359,7 @@ Előfordulhat, hogy előfordulhat, hogy a HDInsight-fürt által létrehozott ti
 
 #### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-A kulcs elforgatásához szüksége lesz az alapkulcs tárolójának URI-ra. Ha ezt megtette, nyissa meg a HDInsight-fürt tulajdonságai szakaszt a portálon, majd kattintson a **kulcs módosítása** elemre a **lemez titkosítási kulcsának URL-címe**alatt. Adja meg az új kulcs URL-címét, és küldje el a kulcs elforgatásához.
+A kulcs elforgatásához szüksége lesz az alapkulcs tárolójának URI-ra. Ha ezt megtette, nyissa meg a HDInsight-fürt tulajdonságai szakaszt a portálon, majd kattintson a **kulcs módosítása** elemre a **lemez titkosítási kulcsának URL-címe** alatt. Adja meg az új kulcs URL-címét, és küldje el a kulcs elforgatásához.
 
 ![lemez titkosítási kulcsának elforgatása](./media/disk-encryption/change-key.png)
 
@@ -420,7 +420,7 @@ A gazdagépen lévő titkosítás a Azure Portalban engedélyezhető a fürt lé
 
 :::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="Engedélyezze a titkosítást a gazdagépen.":::
 
-Ez a beállítás engedélyezi a [titkosítást a gazdagépen](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) a HDInsight virtuális gépek Temp adatlemezei számára a páros főkulcs használatával. A gazdagépen történő titkosítás csak [bizonyos, korlátozott régiókban lévő virtuális](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) gépeken támogatott, a HDInsight pedig a [következő csomópont-konfigurációt és SKU](./hdinsight-supported-node-configuration.md)-t támogatja.
+Ez a beállítás engedélyezi a [titkosítást a gazdagépen](../virtual-machines/disks-enable-host-based-encryption-portal.md) a HDInsight virtuális gépek Temp adatlemezei számára a páros főkulcs használatával. A gazdagépen történő titkosítás csak [bizonyos, korlátozott régiókban lévő virtuális](../virtual-machines/disks-enable-host-based-encryption-portal.md) gépeken támogatott, a HDInsight pedig a [következő csomópont-konfigurációt és SKU](./hdinsight-supported-node-configuration.md)-t támogatja.
 
 A HDInsight-fürt megfelelő virtuálisgép-méretének megismeréséhez tekintse [meg az Azure HDInsight-fürt megfelelő virtuálisgép-méretének kiválasztását](hdinsight-selecting-vm-size.md). A Zookeeper csomóponthoz tartozó alapértelmezett virtuálisgép-SKU a gazdagépen való titkosítás engedélyezése esetén DS2V2 lesz.
 
@@ -467,7 +467,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
 --storage-account MyStorageAccount --encryption-at-host true
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a Azure Key Vaultről: [Mi az Azure Key Vault](../key-vault/general/overview.md).
 * [A vállalati biztonság áttekintése az Azure HDInsight-ben](./domain-joined/hdinsight-security-overview.md).

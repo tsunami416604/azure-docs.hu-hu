@@ -8,17 +8,17 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553647"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558533"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) leképezési sablonjai
 Ez a cikk részletesen ismerteti, hogyan konfigurálhatja az Azure IoT Connectort a FHIR * szolgáltatáshoz a leképezési sablonok használatával.
 
-A FHIR készült Azure IoT-összekötőhöz két típusú JSON-alapú leképezési sablon szükséges. Az első típus, az **eszköz-hozzárendelés**feladata az `devicedata` Azure Event hub-végpontnak eljuttatott eszköz-adattartalom megfeleltetése. Kibontja a típusokat, az eszközök azonosítóit, a mérési dátum időpontját és a mérési értéket. A második típus, a **FHIR leképezése**SZABÁLYOZZA a FHIR-erőforrás leképezését. Lehetővé teszi a megfigyelési időszak hosszának, az értékek tárolására szolgáló FHIR és a terminológiai kódoknak a konfigurálását. 
+A FHIR készült Azure IoT-összekötőhöz két típusú JSON-alapú leképezési sablon szükséges. Az első típus, az **eszköz-hozzárendelés** feladata az `devicedata` Azure Event hub-végpontnak eljuttatott eszköz-adattartalom megfeleltetése. Kibontja a típusokat, az eszközök azonosítóit, a mérési dátum időpontját és a mérési értéket. A második típus, a **FHIR leképezése** SZABÁLYOZZA a FHIR-erőforrás leképezését. Lehetővé teszi a megfigyelési időszak hosszának, az értékek tárolására szolgáló FHIR és a terminológiai kódoknak a konfigurálását. 
 
 A leképezési sablonok a típusuk alapján JSON-dokumentumba állnak. Ezek a JSON-dokumentumok ezután a Azure Portalon keresztül hozzáadódnak az Azure IoT-összekötőhöz a FHIR. Az eszköz-hozzárendelési dokumentum az **eszköz-hozzárendelés konfigurálása** oldalon és a FHIR-leképezési dokumentumon keresztül vehető fel a **FHIR-leképezés konfigurálása** lapon.
 
@@ -71,8 +71,8 @@ A JsonPathContentTemplate lehetővé teszi, hogy az Event hub-üzenetből a JSON
 |**TypeMatchExpression**|A JSON-elérésiút-kifejezés, amelyet a rendszer kiértékel az Event hub adattartalommal. Ha a rendszer megfelelő JToken talál, a sablon egyezésnek minősül. Az összes további kifejezés kiértékelése a kibontott JToken történik.|`$..[?(@heartRate)]`
 |**TimestampExpression**|A JSON-útvonal kifejezése a mérték OccurenceTimeUtc tartozó időbélyeg értékének kinyeréséhez.|`$.endDate`
 |**DeviceIdExpression**|A JSON-útvonal kifejezése az eszköz azonosítójának kinyeréséhez.|`$.deviceId`
-|**PatientIdExpression**|Nem *kötelező*: a JSON-elérési út kifejezése a beteg azonosítójának kinyeréséhez.|`$.patientId`
-|**EncounterIdExpression**|Nem *kötelező*: a JSON-elérési út kifejezése a találkozási azonosító kinyeréséhez.|`$.encounterId`
+|**PatientIdExpression**|Nem *kötelező* : a JSON-elérési út kifejezése a beteg azonosítójának kinyeréséhez.|`$.patientId`
+|**EncounterIdExpression**|Nem *kötelező* : a JSON-elérési út kifejezése a találkozási azonosító kinyeréséhez.|`$.encounterId`
 |**Értékek []. ValueName**|A következő kifejezés által kinyert értékkel társítandó név. A szükséges érték/összetevő kötésére szolgál a FHIR-leképezési sablonban. |`hr`
 |**Értékek []. ValueExpression**|A JSON-útvonal kifejezése a szükséges érték kinyeréséhez.|`$.heartRate`
 |**Értékek []. Szükséges**|Megköveteli, hogy az érték a hasznos adatokban legyen jelen.  Ha nem található, a rendszer nem hoz létre mérést, és egy InvalidOperationException fog dobni.|`true`
@@ -560,12 +560,12 @@ A [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept) FHIR ada
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a FHIR (előzetes verzió) Azure IoT-összekötővel kapcsolatos gyakori kérdéseket.
 
 >[!div class="nextstepaction"]
->[Azure IoT-összekötő FHIR – gyakori kérdések](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Azure IoT-összekötő FHIR – gyakori kérdések](fhir-faq.md)
 
 * A Azure Portal a FHIR készült Azure IoT-összekötő a IoT-összekötő (előzetes verzió) néven ismert.
 

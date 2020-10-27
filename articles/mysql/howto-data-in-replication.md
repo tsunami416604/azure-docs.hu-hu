@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: c3a6f9b5831d4fed377d3f8702dbc0af0663b3a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596491"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544035"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan állíthatja be a Azure Database for MySQL [felh
 > [!NOTE]
 > Elfogultság – ingyenes kommunikáció
 >
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
 >
 
 Ahhoz, hogy replikát hozzon létre a Azure Database for MySQL szolgáltatásban, [felhőbe irányuló replikálás](concepts-data-in-replication.md)  szinkronizálja az adatokat egy helyszíni MySQL-kiszolgálóról, a virtuális gépekről vagy a Felhőbeli adatbázis-szolgáltatásokból. A beérkező adatokra épülő replikáció a MySQL natív bináris naplójának (binlog) fájlpozíció-alapú replikációján alapul. A BinLog-replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL BinLog-replikáció áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)című témakört.
@@ -51,9 +51,9 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
 1. A továbblépés előtt tekintse át a [fő kiszolgálóra vonatkozó követelményeket](concepts-data-in-replication.md#requirements) . 
 
-2. Győződjön meg arról, hogy a forráskiszolgáló engedélyezi a bejövő és a kimenő forgalmat is a 3306-es porton, valamint arról, hogy a forráskiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN). 
+2. Győződjön meg arról, hogy a forráskiszolgáló engedélyezi a bejövő és a kimenő forgalmat is a 3306-es porton, valamint arról, hogy a forráskiszolgáló **nyilvános IP-címmel** rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN). 
    
-   Tesztelje a kapcsolatot a forráskiszolgálóról egy olyan eszközről való csatlakozásra tett kísérlettel, amely egy másik gépen vagy a Azure Portal elérhető [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
+   Tesztelje a kapcsolatot a forráskiszolgálóról egy olyan eszközről való csatlakozásra tett kísérlettel, amely egy másik gépen vagy a Azure Portal elérhető [Azure Cloud Shell](../cloud-shell/overview.md) .
 
    Ha a szervezete szigorú biztonsági házirendekkel rendelkezik, és nem engedélyezi az összes IP-címet a forráskiszolgálón az Azure-ból a forráskiszolgálóról való kommunikáció engedélyezéséhez, akkor az alábbi parancs segítségével meghatározhatja a MySQL-kiszolgáló IP-címét.
 
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
       ```bash
       ping <output of step 2b>
       ``` 
-      Példa: 
+      Például: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -134,7 +134,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
    **MySQL Workbench**
 
-   A MySQL Workbench replikációs szerepkörének létrehozásához nyissa meg a **felhasználók és jogosultságok** panelt a **felügyeleti** panelen. Ezután kattintson a **fiók hozzáadása**lehetőségre. 
+   A MySQL Workbench replikációs szerepkörének létrehozásához nyissa meg a **felhasználók és jogosultságok** panelt a **felügyeleti** panelen. Ezután kattintson a **fiók hozzáadása** lehetőségre. 
  
    :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="Felhasználók és jogosultságok":::
 
@@ -142,7 +142,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
    :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Felhasználók és jogosultságok":::
  
-   Kattintson a **felügyeleti szerepkörök** panelre, majd válassza ki a **replikálás Slave** elemet a **globális jogosultságok**listájáról. Ezután kattintson az **Apply (alkalmaz** ) gombra a replikációs szerepkör létrehozásához.
+   Kattintson a **felügyeleti szerepkörök** panelre, majd válassza ki a **replikálás Slave** elemet a **globális jogosultságok** listájáról. Ezután kattintson az **Apply (alkalmaz** ) gombra a replikációs szerepkör létrehozásához.
 
    :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Felhasználók és jogosultságok":::
 
@@ -189,7 +189,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
 1. Forráskiszolgáló beállítása
 
-   Az összes felhőbe irányuló replikálás függvényt tárolt eljárások hajtják végre. Az összes eljárást [felhőbe irányuló replikálás tárolt eljárásokban](reference-data-in-stored-procedures.md)találja. A tárolt eljárások a MySQL-rendszerhéjban vagy a MySQL Workbenchben is futtathatók. 
+   Az összes felhőbe irányuló replikálás függvényt tárolt eljárások hajtják végre. Az összes eljárást [felhőbe irányuló replikálás tárolt eljárásokban](./reference-stored-procedures.md)találja. A tárolt eljárások a MySQL-rendszerhéjban vagy a MySQL Workbenchben is futtathatók. 
 
    Két kiszolgáló összekapcsolásához és a replikáció megkezdéséhez jelentkezzen be a cél replikát futtató kiszolgálóra az Azure DB for MySQL szolgáltatásban, és állítsa be a külső példányt forráskiszolgálóként. Ezt a `mysql.az_replication_change_master` tárolt eljárással teheti meg a MySQL-kiszolgálóhoz készült Azure-adatbázison.
 
@@ -285,5 +285,5 @@ A replikálási hibák kihagyásához és a replikálás folytatásához haszná
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>Következő lépések
-- További információ a Azure Database for MySQL [felhőbe irányuló replikálásról](concepts-data-in-replication.md) . 
+## <a name="next-steps"></a>További lépések
+- További információ a Azure Database for MySQL [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

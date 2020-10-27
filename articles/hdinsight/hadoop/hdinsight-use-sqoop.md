@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076878"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545225"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop használata a Hadooppal a HDInsightban
 
@@ -97,7 +97,7 @@ A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül j�
 
     A [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) neve lesz  `<ClusterName>dbserver` . Az adatbázis neve lesz `<ClusterName>db` . A Storage-fiók alapértelmezett neve lesz `e6qhezrh2pdqu` .
 
-3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**.
+3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket** .
 
 4. Válassza a **Vásárlás** lehetőséget. Egy új csempe jelenik meg, amely a központi telepítés elküldését Template deployment. A fürt és az SQL-adatbázis létrehozása nagyjából 20 percet vesz igénybe.
 
@@ -116,10 +116,10 @@ A HDInsight számos módszer használatával futtathat Sqoop-feladatokat. A köv
 * Tömeges exportálás – a Linux-alapú HDInsight a Sqoop-összekötő, amellyel az adatexportálás Microsoft SQL Server vagy SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
 * Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a `-batch` kapcsolót a lapkák végrehajtásakor használja, a Sqoop több beszúrást hajt végre a beszúrási műveletek kötegelt feldolgozása helyett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már megtanulta, hogyan használhatja a Sqoop-t. További információ:
 
-* [Apache Hive használata a HDInsight](../hdinsight-use-hive.md)
+* [Apache Hive használata a HDInsight](./hdinsight-use-hive.md)
 * [Adatok feltöltése a HDInsight-be](../hdinsight-upload-data.md): további módszerek az adatok HDInsight/Azure Blob Storage-ba való feltöltéséhez.
 * [Adatok importálása és exportálása az Apache Sqoop használatával a HDInsight-alapú Apache Hadoop és az SQL Database között](./apache-hadoop-use-sqoop-mac-linux.md)
