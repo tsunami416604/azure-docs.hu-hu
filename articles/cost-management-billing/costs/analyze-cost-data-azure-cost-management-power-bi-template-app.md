@@ -3,17 +3,17 @@ title: Az Azure költségeinek elemzése a Power BI-alkalmazással
 description: Ez a cikk ismerteti az Azure Cost Management Power BI-alkalmazás telepítését és használatát.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/14/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7282ef9269c1168214fe57d3faa5488e531af8da
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447660"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131122"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Az Azure költségeinek elemzése a Nagyvállalati Szerződésekhez (EA) készült Azure Cost Management Power BI-alkalmazással
 
@@ -28,8 +28,8 @@ Az Azure Cost Management Power BI-alkalmazás jelenleg csak a [Nagyvállalati Sz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Power BI Pro-licenc](/power-bi/service-self-service-signup-for-power-bi) az alkalmazás letöltéséhez és használatához
-- Az adatokhoz való kapcsolódáshoz [vállalati rendszergazdai](../manage/understand-ea-roles.md) fiókot kell használnia
+- [Power BI Pro-licenc](/power-bi/service-self-service-signup-for-power-bi) szükséges az alkalmazás letöltéséhez és használatához.
+- Az adatokhoz való kapcsolódáshoz [vállalati rendszergazdai](../manage/understand-ea-roles.md) fiókot kell használnia. A Vállalati rendszergazda (csak olvasási) szerepkör támogatott.
 
 ## <a name="installation-steps"></a>A telepítés lépései
 
@@ -46,7 +46,7 @@ Az alkalmazás telepítése:
   ![Bevezetés az új alkalmazás használatába – Csatlakozás](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
 9. A megjelenő párbeszédablakban adja meg EA regisztrációs számát a **BillingProfileIdOrEnrollmentNumber** értékeként. Adja meg, hogy hány hónapnyi adatot kíván lekérni. Hagyja meg a **Regisztrációs szám** alapértelmezett **Hatókör** értékét, majd válassza a **Következő** lehetőséget.  
   ![EA regisztrációs adatok megadása](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. A következő párbeszédablak csatlakozik az Azure-hoz, és beolvassa a fenntartott példányokra vonatkozó javaslatokhoz szükséges adatokat. *Hagyja meg az alapértelmezett értékek konfigurációját*, majd válassza a **Bejelentkezés** lehetőséget.  
+10. A következő párbeszédablak csatlakozik az Azure-hoz, és beolvassa a fenntartott példányokra vonatkozó javaslatokhoz szükséges adatokat. *Hagyja meg az alapértelmezett értékek konfigurációját* , majd válassza a **Bejelentkezés** lehetőséget.  
   ![Képernyőkép a Csatlakozás az Azure Cost Managementhez alkalmazás párbeszédablakáról, az alapértelmezett értékekkel.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. A telepítés utolsó lépésében csatlakozni kell az EA-regisztrációhoz, amihez [vállalati rendszergazdai](../manage/understand-ea-roles.md) fiók szükséges. Válassza a **Bejelentkezés** elemet az EA-regisztrációval való hitelesítéshez. Ez a lépés egy adatfrissítési műveletet is elindít a Power BI-ban.  
   ![Csatlakozás EA-regisztrációhoz](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -80,7 +80,7 @@ Az alkalmazásban az alábbi jelentések érhetők el.
 
 ![Azure Hybrid Benefit – Teljes jelentés](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 
-A jelentés azokat a Windows rendszerű virtuális gépeket is azonosítja, amelyeken a Hybrid Benefit **engedélyezett**, de _kevesebb, mint_ 8 vCPU-val rendelkeznek. Azt is megmutatja, ha a Hybrid Benefit **nincs engedélyezve**, de 8 _vagy több_ vCPU van. Ez az információ segíti a Hybrid Benefit teljes kihasználását. Használja az előnyt a legdrágább virtuális gépén, hogy maximalizálhassa a potenciális megtakarítást.
+A jelentés azokat a Windows rendszerű virtuális gépeket is azonosítja, amelyeken a Hybrid Benefit **engedélyezett** , de _kevesebb, mint_ 8 vCPU-val rendelkeznek. Azt is megmutatja, ha a Hybrid Benefit **nincs engedélyezve** , de 8 _vagy több_ vCPU van. Ez az információ segíti a Hybrid Benefit teljes kihasználását. Használja az előnyt a legdrágább virtuális gépén, hogy maximalizálhassa a potenciális megtakarítást.
 
 ![Azure Hybrid Benefits – Kevesebb, mint 8 vCPU, és a vCPU-k nincsenek engedélyezve](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
 
@@ -88,7 +88,7 @@ A jelentés azokat a Windows rendszerű virtuális gépeket is azonosítja, amel
 
 Alkalmazhat szűrőt a _chargetype_ elemre az RI alacsony kihasználtságra vonatkozó adatainak megtekintéséhez.
 
-Az amortizált adatokkal kapcsolatos további információkért tekintse meg a [Nagyvállalati Szerződés foglalási költségeinek és kihasználtságának lekérését](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) ismertető szakaszt.
+Az amortizált adatokkal kapcsolatos további információkért tekintse meg a [Nagyvállalati Szerződés foglalási költségeinek és kihasználtságának lekérését](../reservations/understand-reserved-instance-usage-ea.md) ismertető szakaszt.
 
 **RI – Megtakarítások** – A jelentés bemutatja az előfizetéshez, erőforráscsoporthoz és erőforrásszinthez kapcsolódó foglalások révén keletkezett megtakarításokat. A következőket jeleníti meg:
 
@@ -204,8 +204,8 @@ Az alábbi információk az alkalmazáson keresztül elérhető adatokat foglalj
 | [**Költségvetések**](/rest/api/consumption/budgets/get#definitions) | A költségvetés részletei a tényleges költségek és használat a meglévő költségvetéshez viszonyított megtekintéséhez. |
 | [**Árlisták**](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet#see-also) | Vonatkozó fogyasztási díjak a megadott számlázási profilhoz vagy EA-regisztrációhoz. |
 | [**RI-díjak**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges#response) | A fenntartott példányaihoz társított díjak az utolsó 24 hónap tekintetében. |
-| [**RI-javaslatok (megosztott)** ](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Az elmúlt 7, 30 vagy 60 nap összes előfizetés-használati trendjén alapuló javaslatok a fenntartott példányok vásárlására vonatkozóan. |
-| [**RI-javaslatok (egy előfizetéshez)** ](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Az elmúlt 7, 30 vagy 60 nap egyetlen előfizetésre vonatkozó használati trendjén alapuló javaslatok a fenntartott példányok vásárlásához. |
+| [**RI-javaslatok (megosztott)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Az elmúlt 7, 30 vagy 60 nap összes előfizetés-használati trendjén alapuló javaslatok a fenntartott példányok vásárlására vonatkozóan. |
+| [**RI-javaslatok (egy előfizetéshez)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Az elmúlt 7, 30 vagy 60 nap egyetlen előfizetésre vonatkozó használati trendjén alapuló javaslatok a fenntartott példányok vásárlásához. |
 | [**RI-használati adatok**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#response) | Az elmúlt hónap felhasználási adatai a meglévő fenntartott példányokra vonatkozóan. |
 | [**RI-használat összegzése**](/rest/api/consumption/reservationssummaries/list) | Az Azure-beli foglalások napi használatának százalékos aránya. |
 | [**Használati adatok**](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#usage-details-field-definitions) | A felhasznált mennyiségek és a becsült költségek részletezése az EA-regisztráció adott számlázási profiljához. |

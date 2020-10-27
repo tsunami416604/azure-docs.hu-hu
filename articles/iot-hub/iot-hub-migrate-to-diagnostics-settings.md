@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c90142330b0530f1127beae1624ff27d7eb6ca
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75750691"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541485"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>IoT Hub migrálása az Operations monitoringból a diagnosztikai beállításokba
 
 Azok az ügyfelek, akik az [Operations monitoring](iot-hub-operations-monitoring.md) használatával követik a IoT hub műveleteit, áttelepíthetik ezt a munkafolyamatot az [Azure Diagnostics-beállításokba](../azure-monitor/platform/platform-logs-overview.md), a Azure monitor egy szolgáltatására. A diagnosztikai beállítások számos Azure-szolgáltatás erőforrás-szintű diagnosztikai információit biztosítják.
 
-**A IoT hub Operations monitoring funkciója elavult**, és el lett távolítva a portálról. Ez a cikk azokat a lépéseket ismerteti, amelyekkel áthelyezheti a számítási feladatokat az operatív figyelésből a diagnosztikai beállításokba. Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)című témakörben talál.
+**A IoT hub Operations monitoring funkciója elavult** , és el lett távolítva a portálról. Ez a cikk azokat a lépéseket ismerteti, amelyekkel áthelyezheti a számítási feladatokat az operatív figyelésből a diagnosztikai beállításokba. Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)című témakörben talál.
 
 ## <a name="update-iot-hub"></a>IoT Hub frissítése
 
@@ -34,9 +34,9 @@ A Azure Portal IoT Hub frissítéséhez először kapcsolja be a diagnosztikai b
 
 Ha teszteli az új diagnosztikai beállításokat a munkafolyamatban, kikapcsolhatja az Operations monitoring funkciót. 
 
-1. A IoT Hub menüben válassza az **Operations monitoring**elemet.
+1. A IoT Hub menüben válassza az **Operations monitoring** elemet.
 
-2. Az egyes figyelési kategóriák területen válassza a **nincs**lehetőséget.
+2. Az egyes figyelési kategóriák területen válassza a **nincs** lehetőséget.
 
 3. Mentse az Operations monitoring módosításait.
 
@@ -52,12 +52,12 @@ Emellett a diagnosztikai beállítások öt új kategóriát biztosítanak a nyo
 * Feladatműveletek
 * Közvetlen metódusok
 
-Az adott séma-struktúrákkal kapcsolatban lásd: [a diagnosztikai beállításokhoz tartozó séma megismerése](iot-hub-monitor-resource-health.md#understand-the-logs).
+Az adott séma-struktúrákkal kapcsolatban lásd: [erőforrás-naplók](monitor-iot-hub-reference.md#resource-logs).
 
 ## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Az eszközök csatlakoztatásának figyelése és az események leválasztása alacsony késéssel
 
 Ha figyelni szeretné az eszköz csatlakoztatását, és leválasztja az eseményeket az éles üzemben, javasoljuk, hogy a riasztások beszerzéséhez és az eszköz kapcsolati állapotának figyeléséhez az eszközön [ **leválasztott** Event Grid eseményt](iot-hub-event-grid.md#event-types) . Ebből az [oktatóanyagból](iot-hub-how-to-order-connection-state-events.md) megtudhatja, hogyan integrálhatja a csatlakoztatott eszközök és az eszközök kapcsolatait a IoT-megoldás IoT hub.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az Azure IoT Hub állapotának monitorozása és a problémák gyorsan diagnosztizálása](iot-hub-monitor-resource-health.md)
+[Figyelő IoT Hub](monitor-iot-hub.md)

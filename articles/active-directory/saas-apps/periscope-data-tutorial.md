@@ -61,13 +61,13 @@ A periszkóp-adatok Azure AD-be való integrálásának konfigurálásához hozz
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **periszkóp adatok**kifejezést, válassza a **periszkóp adatok** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **periszkóp adatok** kifejezést, válassza a **periszkóp adatok** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Periszkóp az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a periszkóp-val a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a periszkóp-val a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti periszkóp-adatkapcsolatra van szükség.
 
 Az Azure AD egyszeri bejelentkezés periszkóp-alapú használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **periszkóp** adatalkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **periszkóp** adatalkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -127,7 +127,7 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
     a. Másolja az **alkalmazás-összevonás metaadat-URL-címét** #5 **SAML-aláíró tanúsítvány** lépéséről, és nyissa meg egy böngészőben. Ekkor megnyílik egy XML-dokumentum.
 
-    b. Az **egyszeri bejelentkezés** szövegmezőben válassza a **Azure Active Directory**lehetőséget.
+    b. Az **egyszeri bejelentkezés** szövegmezőben válassza a **Azure Active Directory** lehetőséget.
 
     c. Keresse meg a címke **SingleSignOnService** , és illessze be a **Location** értéket az **SSO URL-** szövegmezőbe.
 
@@ -137,11 +137,11 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
     f. Keresse meg az XML-fájl első címkéjét, másolja ki a **entityID** értékét, és illessze be a **kiállító** szövegmezőbe.
 
-    : Keresse meg az SAML protokollt használó **IDPSSODescriptor** címkét. A szakaszon belül keresse meg a címke- **leírót** a **use = aláírással**. másolja a **x509** értékét, és illessze be a **tanúsítvány** szövegmezőbe.
+    : Keresse meg az SAML protokollt használó **IDPSSODescriptor** címkét. A szakaszon belül keresse meg a címke- **leírót** a **use = aláírással** . másolja a **x509** értékét, és illessze be a **tanúsítvány** szövegmezőbe.
 
     h. A több szóközzel rendelkező helyek kiválaszthatják az alapértelmezett helyet az **alapértelmezett szóköz** legördülő listából. Ez lesz az a hely, amelyet új felhasználók adnak hozzá, amikor első alkalommal jelentkeznek be a periszkóp-ba, és a Active Directory egyszeri bejelentkezéssel vannak kiépítve.
 
-    i. Végül kattintson a **Mentés** gombra, és **erősítse meg** az egyszeri bejelentkezési beállítások módosítását a **kijelentkezés**beírásával.
+    i. Végül kattintson a **Mentés** gombra, és **erősítse meg** az egyszeri bejelentkezési beállítások módosítását a **kijelentkezés** beírásával.
 
     ![A "kijelentkezés" nevű, "kijelentkezés" és a "megerősítés" gomb kiválasztásakor megjelenő képernyőkép.](./media/periscope-data-tutorial/configure02.png)
 
@@ -149,7 +149,7 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -168,21 +168,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a periszkóp-adathoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **periszkóp**-adatelemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **periszkóp** -adatelemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza ki a **periszkóp**-adatelemet.
+2. Az alkalmazások listában válassza ki a **periszkóp** -adatelemet.
 
     ![A periszkóp-adatkapcsolat az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -204,7 +204,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a pe
 
 1. Jelentkezzen be a periszkóp-be rendszergazdaként.
 
-2. Kattintson a menü bal alsó részén található **Beállítások** ikonra, és navigáljon az **engedélyek**elemre.
+2. Kattintson a menü bal alsó részén található **Beállítások** ikonra, és navigáljon az **engedélyek** elemre.
 
     ![Képernyőkép, amely a "beállítások" menüt jeleníti meg az "engedélyek" lehetőség kiválasztásával.](./media/periscope-data-tutorial/configure03.png)
 
@@ -212,13 +212,13 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a pe
 
       ![Periszkóp adatok konfigurálása](./media/periscope-data-tutorial/configure04.png)
 
-    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
+    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta** nevet.
 
-    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
+    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
-    c. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com**-e-mail-címét.
+    c. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com** -e-mail-címét.
 
-    d. Kattintson a **Hozzáadás**gombra.
+    d. Kattintson a **Hozzáadás** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

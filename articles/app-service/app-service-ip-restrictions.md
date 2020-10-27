@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f1a94ae070419c38efb481e8f3967aec6a212d0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168222"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533954"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Hozzáférési korlátozások Azure App Service
 
@@ -61,7 +61,8 @@ A szolgáltatási végpontok nem használhatók a App Service Environmenton fut�
 A szolgáltatás-végpontokkal konfigurálhatja az alkalmazást Application Gateway vagy más WAF-eszközök használatával. A többrétegű alkalmazásokat is konfigurálhatja biztonságos háttérrendszer használatával. Az egyes lehetőségekkel kapcsolatos további részletekért olvassa el a [hálózatkezelési szolgáltatások és a app Service](networking-features.md) és [Application Gateway a szolgáltatás-végpontokkal való integráció](networking/app-gateway-with-service-endpoints.md)című részben.
 
 > [!NOTE]
-> A szolgáltatási végpontok jelenleg nem támogatottak IP SSL virtuális IP-címet (VIP) használó webalkalmazások esetén. 
+> - A szolgáltatási végpontok jelenleg nem támogatottak IP SSL virtuális IP-címet (VIP) használó webalkalmazások esetén.
+> - Az IP-címek és a szolgáltatási végpontok korlátozásai legfeljebb 512 sor. Ha az 512-nál nagyobb mennyiségű korlátozásra van szüksége, javasoljuk, hogy egy önálló biztonsági termékbe nézzen bele, például az Azure bejárati ajtó, az Azure app Gateway vagy egy webalkalmazási tűzfal (WAF) használatával.
 >
 
 ## <a name="managing-access-restriction-rules"></a>Hozzáférés-korlátozási szabályok kezelése
@@ -74,7 +75,7 @@ Egy szabály szerkesztésekor a típus nem módosítható egy IP-cím szabály �
 
 ![A Virtual Network szabály beállításait megjelenítő Azure Portal az IP-korlátozás szerkesztése párbeszédpanel képernyőképe.](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-Egy szabály törléséhez kattintson a **...** elemre a szabályon, majd kattintson az **Eltávolítás**gombra.
+Egy szabály törléséhez kattintson a **...** elemre a szabályon, majd kattintson az **Eltávolítás** gombra.
 
 ![hozzáférés-korlátozási szabály törlése](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
@@ -111,7 +112,7 @@ Az értékek manuálisan is megadhatók [Azure REST API](/rest/api/azure/) Put m
 
 Az információ helye a Resource Managerben:
 
-management.azure.com/subscriptions/**előfizetés**-azonosító **/resourceGroups//Providers/Microsoft.Web/Sites/****webalkalmazás neve**/config/web? API-Version = 2018-02-01
+management.azure.com/subscriptions/ **előfizetés** -azonosító **/resourceGroups//Providers/Microsoft.Web/Sites/****webalkalmazás neve** /config/web? API-Version = 2018-02-01
 
 A korábbi példa JSON-szintaxisa a következő:
 ```json
@@ -133,7 +134,7 @@ A korábbi példa JSON-szintaxisa a következő:
 
 A hozzáférési korlátozások a App Service csomagokkal megegyező funkciókkal rendelkező Function apps-alkalmazásokhoz is elérhetők. A hozzáférési korlátozások engedélyezése letiltja a portál Kódszerkesztő használatát a nem engedélyezett IP-címekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Azure Functions hozzáférési korlátozásai](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [Application Gateway integráció a szolgáltatási végpontokkal](networking/app-gateway-with-service-endpoints.md)

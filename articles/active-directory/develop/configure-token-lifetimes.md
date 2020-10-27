@@ -88,7 +88,7 @@ Ebben a példában olyan házirendet hoz létre, amely lehetővé teszi, hogy a 
         Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
         ```
 
-    1. Az új szabályzat megtekintéséhez és a szabályzat **ObjectId**beszerzéséhez futtassa a következő parancsot:
+    1. Az új szabályzat megtekintéséhez és a szabályzat **ObjectId** beszerzéséhez futtassa a következő parancsot:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
@@ -116,7 +116,7 @@ Ebben a példában olyan házirendet hoz létre, amely megköveteli, hogy a felh
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    1. Az új szabályzat megtekintéséhez és a szabályzat **ObjectId**lekéréséhez futtassa a [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) parancsmagot:
+    1. Az új szabályzat megtekintéséhez és a szabályzat **ObjectId** lekéréséhez futtassa a [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) parancsmagot:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
@@ -153,7 +153,7 @@ Ebben a példában olyan házirendet hoz létre, amely megköveteli, hogy a felh
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-1. Rendelje hozzá a szabályzatot a webes API-hoz. Emellett le kell kérnie az alkalmazás **ObjectId** is. Használja a [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) parancsmagot az alkalmazás **ObjectId**megkereséséhez, vagy használja a [Azure Portal](https://portal.azure.com/).
+1. Rendelje hozzá a szabályzatot a webes API-hoz. Emellett le kell kérnie az alkalmazás **ObjectId** is. Használja a [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) parancsmagot az alkalmazás **ObjectId** megkereséséhez, vagy használja a [Azure Portal](https://portal.azure.com/).
 
     Szerezze be az alkalmazás **ObjectId** , és rendelje hozzá a szabályzatot:
 
@@ -212,5 +212,5 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
 
     Most már rendelkezik a szolgáltatáshoz tartozó eredeti házirenddel, és az új szabályzat beállítása a szervezet alapértelmezett házirendje. Fontos megjegyezni, hogy az egyszerű szolgáltatásokra alkalmazott szabályzatok elsőbbséget élveznek a szervezet alapértelmezett házirendjeivel szemben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerje meg az Azure AD feltételes hozzáférésének [hitelesítési munkamenet-kezelési képességeit](../conditional-access/howto-conditional-access-session-lifetime.md) .

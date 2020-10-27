@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan telepíthet át webes, mobil-és kiszolgáló-al
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
@@ -50,19 +50,19 @@ A táblázat a Google Maps szolgáltatásainak megfelelő Azure Maps-funkciók m
 | Távolsági mátrix             | ✓                                      |
 | Jogosultságszint                   | Tervezve                                |
 | Helymeghatározáshoz (előre/hátra) | ✓                                      |
-| Földrajzi hely                 | N.A.                                    |
+| Földrajzi hely                 | N/A                                    |
 | Legközelebbi utak               | ✓                                      |
 | Helyek keresése               | ✓                                      |
 | Helyek részletei              | N/A – A webhely & telefonszáma elérhető |
-| Fényképek elhelyezése               | N.A.                                    |
+| Fényképek elhelyezése               | N/A                                    |
 | Automatikus kiegészítés          | ✓                                      |
 | Elérési út                | ✓                                      |
 | Sebességkorlátozások                | ✓                                      |
 | Statikus térképek                 | ✓                                      |
-| Statikus utcai nézet          | N.A.                                    |
+| Statikus utcai nézet          | N/A                                    |
 | Időzóna                   | ✓                                      |
-| Maps Embedded API           | N.A.                                    |
-| Térkép URL-címei                    | N.A.                                    |
+| Maps Embedded API           | N/A                                    |
+| Térkép URL-címei                    | N/A                                    |
 
 A Google Maps alapszintű kulcs-alapú hitelesítést biztosít. Azure Maps az alapszintű kulcs-alapú hitelesítés és a Azure Active Directory hitelesítés is rendelkezésre áll. Azure Active Directory hitelesítés nagyobb biztonsági funkciókat biztosít, mint az alapszintű kulcs-alapú hitelesítés.
 
@@ -96,7 +96,7 @@ A következő egy magas szintű áttelepítési terv.
 
 Azure Maps fiók létrehozásához és a Azure Maps platform eléréséhez kövesse az alábbi lépéseket:
 
-1. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+1. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 3. Hozzon létre egy [Azure Maps fiókot](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
 4. [Szerezze be a Azure Maps előfizetési kulcsát](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) , vagy beállíthatja Azure Active Directory hitelesítését a fokozott biztonság eléréséhez.
@@ -119,7 +119,7 @@ Az alábbi lista a Azure Maps hasznos technikai erőforrásait sorolja fel.
 
 A fejlesztők a [fórumok](https://aka.ms/AzureMapsForums) vagy a számos Azure-támogatási lehetőség közül választhatják a Migrálás támogatását: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan telepítheti át Google Maps-alkalmazását a következő cikkekkel:
 

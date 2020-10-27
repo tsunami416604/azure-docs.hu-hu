@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76da267ae14a1f58ee2cadbf48f4b2ec419312b4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093017"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543525"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Előre fizetés az Azure cache számára a fenntartott kapacitású számítási erőforrások Redis
 
@@ -25,7 +25,7 @@ Az Azure cache Redis fenntartott kapacitást is vásárolhat a [Azure Portalban]
 * Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
 * A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg az Azure cache-t a Redis fenntartott kapacitáshoz.
 
-Annak részleteiről, hogy a nagyvállalati ügyfelek és az utólagos elszámolású ügyfelek hogyan számítanak fel díjat a foglalások beszerzéséhez, tekintse meg az [Azure foglalás használatának ismertetése a nagyvállalati beléptetéssel](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) és [Az Azure-foglalás használatának megismerése](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)az utólagos elszámolású előfizetések esetében.
+Annak részleteiről, hogy a nagyvállalati ügyfelek és az utólagos elszámolású ügyfelek hogyan számítanak fel díjat a foglalások beszerzéséhez, tekintse meg az [Azure foglalás használatának ismertetése a nagyvállalati beléptetéssel](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) és [Az Azure-foglalás használatának megismerése](../cost-management-billing/reservations/understand-reserved-instance-usage.md)az utólagos elszámolású előfizetések esetében.
 
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>A gyorsítótár megfelelő méretének meghatározása a vásárlás előtt
@@ -51,7 +51,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 | Mező | Leírás |
 | :------------ | :------- |
 | Előfizetés   | A Redis számára fenntartott kapacitás foglalásához az Azure cache-re való fizetéshez használt előfizetés. Az előfizetéshez tartozó fizetési módot az Azure cache Redis fenntartott kapacitás foglalásának előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), vagy az utólagos elszámolású díjszabással rendelkező egyéni szerződés (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.
-| Hatókör | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: </br></br> **Megosztva**a foglalási kedvezményt a rendszer az Azure cache-re alkalmazza a számlázási környezetben lévő előfizetésekben futó Redis-példányok esetében. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egy előfizetés**esetén a foglalási kedvezmény az Azure cache-re érvényes az előfizetéshez tartozó Redis-példányok esetében. </br></br> **Egy erőforráscsoport**, a foglalási kedvezményt a rendszer az Azure cache-re alkalmazza a kijelölt előfizetésben található Redis-példányok esetében, valamint az adott előfizetéshez tartozó kiválasztott erőforráscsoportot.
+| Hatókör | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: </br></br> **Megosztva** a foglalási kedvezményt a rendszer az Azure cache-re alkalmazza a számlázási környezetben lévő előfizetésekben futó Redis-példányok esetében. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egy előfizetés** esetén a foglalási kedvezmény az Azure cache-re érvényes az előfizetéshez tartozó Redis-példányok esetében. </br></br> **Egy erőforráscsoport** , a foglalási kedvezményt a rendszer az Azure cache-re alkalmazza a kijelölt előfizetésben található Redis-példányok esetében, valamint az adott előfizetéshez tartozó kiválasztott erőforráscsoportot.
 | Régió | A Redis fenntartott kapacitás foglalásához az Azure cache által érintett Azure-régió.
 | Tarifacsomag | A Redis-kiszolgálók Azure gyorsítótárának szolgáltatási szintje.
 | Időszak | Egy vagy három év
@@ -59,7 +59,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="cache-size-flexibility"></a>Gyorsítótár méretének rugalmassága
 
@@ -77,10 +77,9 @@ A foglalási kedvezményt a rendszer automatikusan alkalmazza az Azure gyorsít�
 
 * Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-    * [Mi az az Azure Reservations?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-    * [Az Azure Reservations kezelése](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-    * [Az Azure Reservations-kedvezmény ismertetése](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-    * [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)
-    * [A foglalási kihasználtság ismertetése vállalati regisztrációnál](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-    * [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)
-
+    * [Mi az az Azure Reservations?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+    * [Az Azure Reservations kezelése](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    * [Az Azure Reservations-kedvezmény ismertetése](../cost-management-billing/reservations/understand-reservation-charges.md)
+    * [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../cost-management-billing/reservations/understand-reservation-charges-mysql.md)
+    * [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    * [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](/partner-center/azure-reservations)

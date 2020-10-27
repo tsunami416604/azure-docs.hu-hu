@@ -5,19 +5,21 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/20/2020
 ms.author: banders
-ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 7e930ca938b2531fb001c327132f79f703b2ea74
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371796"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316414"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Számlázási fiók beállítása Microsoft-ügyfélszerződéshez
 
-Ha a Nagyvállalati Szerződéséhez kapcsolódó regisztrációja lejárt vagy hamarosan lejár, egy Microsoft-ügyfélszerződéssel megújíthatja a regisztrációját. Ez a cikk ismerteti, hogyan változik a meglévő számlázása a beállítás elvégzése után, és végigvezeti az új számlázási fiókja beállítási lépésein. A megújítás a következő lépéseket tartalmazza:
+Ha a közvetlen Nagyvállalati Szerződéséhez kapcsolódó regisztrációja lejárt vagy hamarosan lejár, egy Microsoft Ügyfélszerződéssel megújíthatja a regisztrációját. Ez a cikk ismerteti, hogyan változik a meglévő számlázása a beállítás elvégzése után, és végigvezeti az új számlázási fiókja beállítási lépésein. A lejáró közvetett Nagyvállalati Szerződések jelenleg nem újíthatók meg Microsoft Ügyfélszerződéssel.
+
+A megújítás a következő lépéseket tartalmazza:
 
 1. Fogadja el az új Microsoft-ügyfélszerződést. A Microsoft helyszíni munkatársa segítségével ismerje meg az új szerződés részleteit, majd fogadja el őket.
 2. Állítsa be az új számlázási fiókot, amely az új Microsoft-ügyfélszerződéshez lett létrehozva.
@@ -28,7 +30,7 @@ A számlázási fiók beállításához át kell irányítania az Azure-előfize
 - A díjakról havonta digitális számlát fog kapni. A számlát az Azure Költségkezelés + számlázás oldalon tekintheti meg és elemezheti.
 - Az Nagyvállalati Szerződés regisztrációjában szereplő részlegek és fiók helyett az új fiók számlázási struktúráját és hatóköreit fogja használni a számlázás kezeléséhez és rendszerezéséhez.
 
-A beállítás megkezdése előtt érdemes elvégeznie az alábbi lépéseket:
+A beállítás megkezdése előtt érdemes elvégeznie az alábbi műveleteket:
 
 - **Az új számlázási fiók megismerése**
   - Az új fiókja leegyszerűsíti a szervezet számlázását. [Az új számlázási fiókjának rövid áttekintése](../understand/mca-overview.md)
@@ -100,7 +102,7 @@ A Microsoft-ügyfélszerződés elfogadásakor egy Azure Active Directory-bérl�
 
 Az új fiókja csak a Microsoft-ügyfélszerződés aláírása során kiválasztott bérlő felhasználóit támogatja. Ha a Nagyvállalati Szerződésében adminisztratív jogosultsággal rendelkező felhasználók részei a bérlőnek, hozzáférést kapnak az új számlázási fiókhoz a beállítás során. Ha nem részei a bérlőnek, csak akkor férhetnek hozzá az új számlázási fiókhoz, ha Ön meghívja őket.
 
-A felhasználók meghívásával vendégként adja őket hozzá a bérlőhöz, így hozzáférést kapnak a számlázási fiókhoz. A felhasználók meghívásához a vendéghozzáférésnek bekapcsolva kell lennie a bérlőn. További információért tekintse meg az [Azure Active Directory vendéghozzáféréseinek kezelését](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory) ismertető részt. Ha a vendéghozzáférés ki van kapcsolva, forduljon a bérlő globális rendszergazdájához, és kérje meg, hogy kapcsolja be. <!-- Todo - How can they find their global administrator -->
+A felhasználók meghívásával vendégként adja őket hozzá a bérlőhöz, így hozzáférést kapnak a számlázási fiókhoz. A felhasználók meghívásához a vendéghozzáférésnek bekapcsolva kell lennie a bérlőn. További információért tekintse meg az [Azure Active Directory vendéghozzáféréseinek kezelését](/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory) ismertető részt. Ha a vendéghozzáférés ki van kapcsolva, forduljon a bérlő globális rendszergazdájához, és kérje meg, hogy kapcsolja be. <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-replaced-features"></a>Leváltott szolgáltatások megtekintése
 
@@ -164,7 +166,7 @@ Az átváltás nem fordítható vissza. Ha Azure-előfizetései számlázását 
 
 ### <a name="closing-your-browser-during-setup"></a>Böngésző bezárása a beállítás során
 
-Mielőtt az **átváltás indítására** szolgáló lehetőségre kattint, bezárhatja a böngészőt. Az e-mailben kapott hivatkozás használatával visszatérhet a beállításhoz, és megkezdheti az átváltást. Ha bezárja a böngészőt az átváltás elindítása után, az átváltási folyamat továbbra is futni fog. Az átváltás állapotát az átváltás állapotát jelző oldalra visszatérve később is ellenőrizheti. E-mailt fog kapni arról, ha az átváltás befejeződött.
+Mielőtt az **átváltás indítására** szolgáló lehetőséget választja, bezárhatja a böngészőt. Az e-mailben kapott hivatkozás használatával visszatérhet a beállításhoz, és megkezdheti az átváltást. Ha bezárja a böngészőt az átváltás elindítása után, az átváltási folyamat továbbra is futni fog. Az átváltás állapotát az átváltás állapotát jelző oldalra visszatérve később is ellenőrizheti. E-mailt fog kapni arról, ha az átváltás befejeződött.
 
 ## <a name="complete-the-setup-in-the-azure-portal"></a>A beállítás befejezése az Azure Portalon
 
@@ -182,8 +184,8 @@ A beállítás befejezéséhez hozzá kell férnie az új számlázási fiókhoz
 
     - A Nagyvállalati Szerződés hierarchiának megfelelő számlázási hierarchia jön létre az új számlázási fiókban. További információért lásd: [A számlázási hierarchia változásainak megismerése](#understand-changes-to-your-billing-hierarchy).
     - A nagyvállalati szerződéses regisztráció rendszergazdái hozzáférést kapnak az új számlázási fiókhoz, így továbbra is kezelhetik a szervezet számlázását.
-    - Az Azure-előfizetései számlázása az új fiókon történik. **A váltás folyamata nem lesz hatással az Azure-szolgáltatásaira. Továbbra is problémamentesen fognak futni**.
-    - Ha rendelkezik Azure Reserved VM Instances-példányokkal, akkor az új számlázási fiókra kerülnek ugyanazzal a kedvezménnyel és időtartammal.
+    - Az Azure-előfizetései számlázása az új fiókon történik. **A váltás folyamata nem lesz hatással az Azure-szolgáltatásaira. Továbbra is problémamentesen fognak futni** .
+    - Ha rendelkezik Azure Reserved Virtual Machine Instances-példányokkal, a rendszer áthelyezi őket az új számlázási fiókba ugyanazzal a kedvezménnyel és időtartammal.
 
 4. Az **átváltás állapotát** jelző lapon figyelheti az átváltás állapotát.
 
@@ -211,7 +213,7 @@ Azok az Azure-előfizetések, amelyek a nagyvállalati szerződéses regisztrác
 
 ### <a name="azure-reservations"></a>Azure Reserved Virtual Machine Instances
 
-A Nagyvállalati Szerződés regisztrációjába foglalt Azure Reserved Virtual Machine Instances-példányok is át lesznek helyezve az új számlázási fiókba ugyanazzal a kedvezménnyel és időtartammal. Az átadás előtti tranzakciók nem fognak megjelenni az új számlázási fiókban. Ha felkeresi az [Azure Reserved Virtual Machine Instances oldalát](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade), ellenőrizheti, hogy a példányok kedvezményeit alkalmazza-e a rendszer az előfizetéseire.
+A Nagyvállalati Szerződés regisztrációjába foglalt Azure Reserved Virtual Machine Instances-példányok is át lesznek helyezve az új számlázási fiókba ugyanazzal a kedvezménnyel és időtartammal. A váltás előtt befejeződött tranzakciók nem fognak megjelenni az új számlázási fiókban. Ha felkeresi az [Azure Reserved Virtual Machine Instances oldalát](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade), ellenőrizheti, hogy a példányok kedvezményeit alkalmazza-e a rendszer az előfizetéseire.
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-account"></a>A vállalati rendszergazdák hozzáférése a számlázási fiókban
 
@@ -253,7 +255,7 @@ A vállalati rendszergazdák számlázásiprofil-tulajdonosokként vannak felsor
 
    ![Képernyőkép az Azure Portal keresőmezőjéről](./media/mca-setup-account/search-cmb.png).
 
-3. Válasszon ki egy számlázási szakaszt. A számlaszakaszoknak ugyanaz a neve, mint a hozzájuk tartozó nagyvállalati szerződéses regisztrációban lévő részlegeknek. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. A számlázási fiókon belül válassza ki a **Számlázási profilok**, majd a **Számlaszakaszok** lehetőséget. A számlaszakaszok listájából válasszon ki egy számlaszakaszt.
+3. Válasszon ki egy számlázási szakaszt. A számlaszakaszoknak ugyanaz a neve, mint a hozzájuk tartozó nagyvállalati szerződéses regisztrációban lévő részlegeknek. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. A számlázási fiókon belül válassza ki a **Számlázási profilok** , majd a **Számlaszakaszok** lehetőséget. A számlaszakaszok listájából válasszon ki egy számlaszakaszt.
 
    ![Képernyőkép a számlaszakaszok listájáról az átváltás után](./media/mca-setup-account/mca-invoice-sections-post-transition.png)
 

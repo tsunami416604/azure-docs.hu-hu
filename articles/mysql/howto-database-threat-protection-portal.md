@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 43b85ba58ed7163a896054ab9e77ddf82e3461a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f6993f92192a1149e3b243c68fdf5fe96fdc66
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902799"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541451"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Komplex veszélyforrások elleni védelem Azure Database for MySQL
 
@@ -32,7 +32,7 @@ A komplex veszélyforrások elleni védelem a fejlett adatbiztonsági ajánlat r
 3. A **speciális veszélyforrások elleni védelem (előzetes verzió)** konfigurációs lapján:
 
    - Az összetett veszélyforrások elleni védelem engedélyezése a kiszolgálón.
-   - Az **összetett veszélyforrások elleni védelem beállításaiban**a **riasztások küldése** a szövegmezőbe mezőbe írja be azoknak az e-maileknek a listáját, amelyek biztonsági riasztásokat kapnak a rendellenes adatbázis-tevékenységek észlelése után.
+   - Az **összetett veszélyforrások elleni védelem beállításaiban** a **riasztások küldése** a szövegmezőbe mezőbe írja be azoknak az e-maileknek a listáját, amelyek biztonsági riasztásokat kapnak a rendellenes adatbázis-tevékenységek észlelése után.
   
    :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="Fenyegetés észlelésének beállítása":::
 
@@ -63,5 +63,5 @@ Kattintson a **veszélyforrások észlelése riasztásra** a Azure Security Cent
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* A díjszabással kapcsolatos további információkért tekintse meg a [Azure Database for MySQL díjszabási oldalát](https://azure.microsoft.com/pricing/details/mysql/) .  
+* További információ a [Azure Security Center](../security-center/security-center-introduction.md)
+* A díjszabással kapcsolatos további információkért tekintse meg a [Azure Database for MySQL díjszabási oldalát](https://azure.microsoft.com/pricing/details/mysql/) .

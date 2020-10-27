@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használható a fürt automatikus méretezése,
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 7368745d3b6bf9731f987d6f4fc36b81d354fed8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103866"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542641"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus skálázása az alkalmazás igényeinek kielégítéséhez az Azure Kubernetes Service-ben (AKS)
 
@@ -47,7 +47,7 @@ A fürt és a horizontális Pod automéretezők együtt is működhetnek, és a 
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>AK-fürt létrehozása és a fürt autoskálázásának engedélyezése
 
-Ha AK-fürtöt kell létrehoznia, használja az az [AK Create][az-aks-create] parancsot. A fürthöz tartozó, a fürthöz tartozó autoskálázás engedélyezéséhez és konfigurálásához használja a *--enable-cluster-autoskálázási* paramétert, és adja meg a csomópont *--min-Count* és a *--Max-Count*értékét.
+Ha AK-fürtöt kell létrehoznia, használja az az [AK Create][az-aks-create] parancsot. A fürthöz tartozó, a fürthöz tartozó autoskálázás engedélyezéséhez és konfigurálásához használja a `--enable-cluster-autoscaler` paramétert, és adja meg a csomópontot és a-t `--min-count` `--max-count` .
 
 > [!IMPORTANT]
 > A fürt automéretezője egy Kubernetes-összetevő. Bár az AK-fürt egy virtuálisgép-méretezési készletet használ a csomópontokhoz, ne manuálisan engedélyezzen vagy szerkessze a méretezési csoport autoskálázásának beállításait a Azure Portal vagy az Azure CLI használatával. Lehetővé teszi, hogy a Kubernetes-fürt autoskálázása felügyelje a szükséges méretezési beállításokat. További információ: [módosíthatom a csomópont-ERŐFORRÁSCSOPORT AK-erőforrásait?][aks-faq-node-resource-group]
@@ -74,7 +74,7 @@ A fürt létrehozása és a fürt autoskálázási beállításainak konfigurál
 
 ## <a name="update-an-existing-aks-cluster-to-enable-the-cluster-autoscaler"></a>Meglévő AK-fürt frissítése a fürt autoskálázásának engedélyezéséhez
 
-Az az [AK Update][az-aks-update] paranccsal engedélyezheti és konfigurálhatja a fürt automéretezőjét a meglévő fürthöz tartozó csomópont-készleten. Használja az *--enable-cluster-autoskálázási* paramétert, és határozza meg a Node *--min-Count* és a *--Max-Count*értékét.
+Az az [AK Update][az-aks-update] paranccsal engedélyezheti és konfigurálhatja a fürt automéretezőjét a meglévő fürthöz tartozó csomópont-készleten. Használja a `--enable-cluster-autoscaler` paramétert, és határozzon meg egy csomópontot `--min-count` és `--max-count` .
 
 > [!IMPORTANT]
 > A fürt automéretezője egy Kubernetes-összetevő. Bár az AK-fürt egy virtuálisgép-méretezési készletet használ a csomópontokhoz, ne manuálisan engedélyezzen vagy szerkessze a méretezési csoport autoskálázásának beállításait a Azure Portal vagy az Azure CLI használatával. Lehetővé teszi, hogy a Kubernetes-fürt autoskálázása felügyelje a szükséges méretezési beállításokat. További információ: [módosíthatom a csomópont-ERŐFORRÁSCSOPORT AK-erőforrásait?][aks-faq-node-resource-group]
@@ -97,7 +97,7 @@ A fürt frissítése néhány percet vesz igénybe, és konfigurálja a fürt au
 > [!IMPORTANT]
 > Ha több Node-készlettel rendelkezik az AK-fürtben, ugorjon az [autoskálázás több ügynök-készlettel szakaszra](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). A több ügynököt tartalmazó fürtökhöz a `az aks nodepool` parancs használatával kell beállítani a csomópont-készletre vonatkozó tulajdonságok módosítása helyett `az aks` .
 
-Az előző lépésben egy AK-fürt létrehozásához vagy egy meglévő csomópont-készlet frissítéséhez a fürthöz tartozó minimális csomópontok számának értéke *1*, a csomópontok maximális száma pedig *3*. Az alkalmazás követelményeinek változása esetén előfordulhat, hogy módosítania kell a fürt automatikusan méretezhető csomópontjának darabszámát.
+Az előző lépésben egy AK-fürt létrehozásához vagy egy meglévő csomópont-készlet frissítéséhez a fürthöz tartozó minimális csomópontok számának értéke *1* , a csomópontok maximális száma pedig *3* . Az alkalmazás követelményeinek változása esetén előfordulhat, hogy módosítania kell a fürt automatikusan méretezhető csomópontjának darabszámát.
 
 A csomópontok számának módosításához használja az az [AK Update][az-aks-update] parancsot.
 
@@ -131,7 +131,14 @@ A fürt autoskálázásának részletesebb adatait úgy is konfigurálhatja, hog
 | leskálázás – nem olvasható idő          | Mennyi ideig kell szükségtelen egy olvashatatlan csomópontot megállapítani ahhoz, hogy a leskálázásra jogosult legyen         | 20 perc    |
 | méretezés lefelé-kihasználtsága – küszöbérték | A csomópont kihasználtsági szintje, amely a kért erőforrások összegeként van meghatározva a kapacitás alapján elosztva | 0,5 |
 | maximális – kecses megszakítás – mp     | Maximális időtartam másodpercben, ameddig a fürt autoskálázása a csomópontok skálázására tett kísérlet során megvárja a pod-megszakítást. | 600 másodperc   |
-| egyenleg – hasonló csomópont-csoportok | Hasonló csomópont-készletek észlelése és a közöttük lévő csomópontok számának kiegyensúlyozása | hamis |
+| egyenleg – hasonló csomópont-csoportok      | Észleli a hasonló csomópont-készleteket, és kiegyenlíti a közöttük lévő csomópontok számát                 | hamis         |
+| bővítő                         | A vertikális felskálázáshoz használandó Node Pool [Expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) típusa Lehetséges értékek: `most-pods` , `random` , `least-waste` | véletlenszerű | 
+| Kihagyás – csomópontok – helyi tároló    | Ha az igaz fürt automéretezője soha nem törli a helyi tárolóval rendelkező, a hüvelyekkel rendelkező csomópontokat, például EmptyDir vagy HostPath | true |
+| Kihagyás – csomópontok – a-System-hüvelyek      | Ha az igaz fürt automéretezője soha nem törli a Kube-rendszerből származó (kivéve a Daemonset elemet vagy a Mirror hüvelyeket) csomópontokat. | true | 
+| maximális – üres – tömeges törlés            | Az egy időben törölhető üres csomópontok maximális száma.                      | 10 csomópont      |
+| új – Pod – vertikális felskálázás           | Olyan forgatókönyvek esetében, mint például a burst/batch skálázás, ahol nem szeretné, hogy a CA a kubernetes ütemező az összes hüvelyt ütemezheti, a HITELESÍTÉSSZOLGÁLTATÓtól a nem ütemezett hüvelyek figyelmen kívül hagyása előtt is eldöntheti,                                                                                                                | 10 másodperc    |
+| Max-Total – nem olvasott – százalék     | A fürtben lévő nem olvasott csomópontok maximális százalékos aránya. A százalékos arány túllépése után a CA leállítja a műveleteket | 45% | 
+| ok – összesen – nem olvasott – darabszám           | Az engedélyezett nem olvasott csomópontok száma, a maximális összegtől függetlenül – nem olvasott – százalék            | 3 csomópont       |
 
 > [!IMPORTANT]
 > A fürt autoskálázási profilja hatással van az összes olyan csomópontra, amely a fürt automéretezőjét használja. Node-készletben nem állítható be egy autoskálázási profil.
@@ -149,7 +156,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Ha a fürtben lévő csomópont-készleteken engedélyezi a fürt autoskálázását, akkor ezek a fürtök a fürt automatikusan méretezhető profilját is használják. Példa:
+Ha a fürtben lévő csomópont-készleteken engedélyezi a fürt autoskálázását, akkor ezek a fürtök a fürt automatikusan méretezhető profilját is használják. Például:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -166,7 +173,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>A fürt autoskálázási profiljának beállítása AK-fürt létrehozásakor
 
-A fürt létrehozásakor a *fürt-autoskálázási profil* paramétert is használhatja. Példa:
+A fürt létrehozásakor a *fürt-autoskálázási profil* paramétert is használhatja. Például:
 
 ```azurecli-interactive
 az aks create \
@@ -194,7 +201,7 @@ az aks update \
 
 ## <a name="disable-the-cluster-autoscaler"></a>A fürt autoskálázásának letiltása
 
-Ha már nem kívánja használni a fürt automéretezőjét, letilthatja az az [AK Update][az-aks-update-preview] paranccsal, és megadhatja a *--Letiltás-cluster-autoskálázási* paramétert. A csomópontok nem törlődnek, ha a fürt autoskálázása le van tiltva.
+Ha már nem kívánja használni a fürt automéretezőjét, letilthatja az az [AK Update][az-aks-update-preview] paranccsal, és megadhatja a `--disable-cluster-autoscaler` paramétert. A csomópontok nem törlődnek, ha a fürt autoskálázása le van tiltva.
 
 ```azurecli-interactive
 az aks update \
@@ -207,18 +214,18 @@ A fürt automéretezőjét az az [AK Scale][az-aks-scale] paranccsal manuálisan
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Letiltott fürt autoskálázásának újbóli engedélyezése
 
-Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK Update][az-aks-update-preview] paranccsal, amely megadja az *--enable-cluster-automéretező*, *--min-Count*és *--Max-Count* paramétereket.
+Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK Update][az-aks-update-preview] paranccsal, amely megadja a `--enable-cluster-autoscaler` , a és a `--min-count` `--max-count` paramétereket.
 
 ## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>Fürthöz tartozó autoskálázási naplók és állapot beolvasása
 
 Az autoskálázási események diagnosztizálásához és hibakereséséhez a naplók és az állapot lekérhető az automatikusan méretezhető bővítményből.
 
-Az AK kezeli a fürt automéretezőjét az Ön nevében, és futtatja a felügyelt vezérlési síkon. A főcsomópont-naplókat úgy kell konfigurálni, hogy ennek eredményeként legyenek megtekintve.
+Az AK kezeli a fürt automéretezőjét az Ön nevében, és futtatja a felügyelt vezérlési síkon. Engedélyezheti a vezérlési sík csomópontot, hogy megtekintse a HITELESÍTÉSSZOLGÁLTATÓI naplókat és műveleteket.
 
 Az alábbi lépésekkel konfigurálhatja a naplóknak a fürt autoskálázási szolgáltatásból Log Analyticsba való leküldését.
 
 1. Szabály beállítása az erőforrás-naplókhoz a fürt leküldéséhez – az autoskálázási naplók Log Analytics. Az [utasításokat itt][aks-view-master-logs]találja, és ellenőrizze, hogy be van-e jelölve a `cluster-autoscaler` "naplók" beállításainak kiválasztásakor.
-1. Kattintson a "naplók" szakaszra a fürtön a Azure Portalon keresztül.
+1. Válassza a "naplók" szakaszt a fürtön a Azure Portal használatával.
 1. Adja meg a következő példában szereplő lekérdezést Log Analyticsba:
 
 ```
@@ -230,7 +237,7 @@ Az alábbi példához hasonló naplóknak kell megjelennie, amíg vannak naplók
 
 ![Naplók Log Analytics](media/autoscaler/autoscaler-logs.png)
 
-A fürt autoskálázása egy nevű configmap is kiírja az állapotot `cluster-autoscaler-status` . A naplók beolvasásához hajtsa végre a következő `kubectl` parancsot. A rendszer minden, a fürt autoskálázásával konfigurált csomópont-készletre vonatkozó állapotot fog jelenteni.
+A fürt autoskálázása egy elnevezett állapotba is kiírja az állapotot `configmap` `cluster-autoscaler-status` . A naplók beolvasásához hajtsa végre a következő `kubectl` parancsot. A rendszer minden, a fürt autoskálázásával konfigurált csomópont-készletre vonatkozó állapotot fog jelenteni.
 
 ```
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
@@ -242,7 +249,7 @@ Ha többet szeretne megtudni arról, hogy mi történik az autoskálázással, o
 
 A fürt autoskálázása egyszerre [több Node-készlettel][aks-multiple-node-pools] is használható. Ezt a dokumentumot követve megtudhatja, hogyan engedélyezheti több csomópontos készletet, és hogyan adhat hozzá további csomópont-készleteket egy meglévő fürthöz. Mindkét funkció együttes használatakor engedélyezheti a fürt automatikus méretezését a fürt minden egyes csomópontján, és egyedi automatikus skálázási szabályokat adhat át mindegyiknek.
 
-Az alábbi parancs feltételezi, hogy követte a jelen dokumentum korábbi részében ismertetett [kezdeti útmutatást](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) , és frissíteni szeretné egy meglévő csomópont-készlet maximális darabszámát *3* és *5*között. A meglévő Node-készlet beállításainak frissítéséhez használja az az [AK nodepool Update][az-aks-nodepool-update] parancsot.
+Az alábbi parancs feltételezi, hogy követte a jelen dokumentum korábbi részében ismertetett [kezdeti útmutatást](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) , és frissíteni szeretné egy meglévő csomópont-készlet maximális darabszámát *3* és *5* között. A meglévő Node-készlet beállításainak frissítéséhez használja az az [AK nodepool Update][az-aks-nodepool-update] parancsot.
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -264,7 +271,7 @@ az aks nodepool update \
   --disable-cluster-autoscaler
 ```
 
-Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK nodepool Update][az-aks-nodepool-update] paranccsal, amely a *--enable-cluster-automéretező*, *--min-Count*és *--Max-Count* paramétereket határozza meg.
+Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK nodepool Update][az-aks-nodepool-update] paranccsal, amely megadja a `--enable-cluster-autoscaler` , a és a `--min-count` `--max-count` paramétereket.
 
 ## <a name="next-steps"></a>További lépések
 

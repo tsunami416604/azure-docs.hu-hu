@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 3fd1ae82450c6203833a1e7b9947d516950c0330
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146582"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541519"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Üzenetek bővítése az eszközről a felhőbe IoT Hub üzenetekhez
 
@@ -35,9 +35,9 @@ Az **érték** az alábbi példák bármelyike lehet:
 
 * Bármilyen statikus karakterlánc. A dinamikus értékek, például a feltételek, a logika, a műveletek és a függvények nem engedélyezettek. Ha például olyan SaaS-alkalmazást fejleszt ki, amelyet számos ügyfél használ, hozzárendelhet egy azonosítót az egyes ügyfelekhez, és elérhetővé teheti az azonosítót az alkalmazásban. Az alkalmazás futtatásakor a IoT Hub lepecsételi az eszköz telemetria az ügyfél azonosítójával, így az egyes ügyfeleknél különbözőképpen dolgozhat fel az üzeneteket.
 
-* Az üzenetet küldő IoT hub neve. Ez az érték *$iothubname*.
+* Az üzenetet küldő IoT hub neve. Ez az érték *$iothubname* .
 
-* Az eszköz különálló információi, például annak elérési útja. Ilyenek például a következők: *$Twin. Tags. Field* és *$Twin. Tags. Latitude*.
+* Az eszköz különálló információi, például annak elérési útja. Ilyenek például a következők: *$Twin. Tags. Field* és *$Twin. Tags. Latitude* .
 
    > [!NOTE]
    > Jelenleg csak a $iothubname, a $twin. Tags, a $twin. properties. desired és a $twin. properties. jelentett változók az üzenetek dúsításának támogatott változói.
@@ -60,10 +60,10 @@ A dúsítások egy végponton vannak alkalmazva. Ha öt dúsítást ad meg egy a
 
 A dúsítást a következő módszerekkel lehet konfigurálni:
 
-| **Metódus** | **Parancs** |
+| **Módszer** | **Parancs** |
 | ----- | -----| 
 | Portál | [Azure Portal](https://portal.azure.com) | Lásd az [üzenet gazdagítása oktatóanyagot](tutorial-message-enrichments.md) | 
-| Azure CLI   | [az IOT hub Message-gazdagodás](/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure CLI   | [az IOT hub Message-gazdagodás](/cli/azure/iot/hub/message-enrichment) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 Az üzenet-bővítések hozzáadása nem jár késéssel az üzenet-útválasztáshoz.
@@ -84,7 +84,7 @@ Az üzenetek dúsításának kipróbálásához tekintse meg az [üzenet gazdag�
 
 * A két eszköz frissítései akár öt percet is igénybe vehetnek a megfelelő alkoholtartalom-növelési értékben.
 
-* Az üzenetek teljes mérete, beleértve a dúsítást, nem lépheti túl a 256 KB-ot. Ha az üzenet mérete meghaladja az 256 KB-ot, akkor a IoT Hub el fogja dobni az üzenetet. Az üzenetek eldobásakor a [IoT hub metrikák](iot-hub-metrics.md) használatával azonosíthatók és hibakeresési hibák jelentkezhetnek. Megfigyelheti például a D2C. telemetria. kimenő. érvénytelen.
+* Az üzenetek teljes mérete, beleértve a dúsítást, nem lépheti túl a 256 KB-ot. Ha az üzenet mérete meghaladja az 256 KB-ot, akkor a IoT Hub el fogja dobni az üzenetet. Az üzenetek eldobásakor a [IoT hub metrikák](monitor-iot-hub-reference.md#metrics) használatával azonosíthatók és hibakeresési hibák jelentkezhetnek. Figyelheti például, hogy a *telemetria üzenetei inkompatibilisek* ( *D2C. telemetria. kimenő. érvénytelen* ) metrika az [útválasztási mérőszámokban](monitor-iot-hub-reference.md#routing-metrics). További információért lásd: [IoT hub figyelése](monitor-iot-hub.md).
 
 * Az üzenet-gazdagítás nem vonatkozik a digitális kettős változási eseményekre.
 

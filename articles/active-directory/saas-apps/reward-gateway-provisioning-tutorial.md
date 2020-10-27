@@ -51,15 +51,15 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 ## <a name="setup-reward-gateway--for-provisioning"></a>A kiépítés beállítása a jutalmazási átjáró számára
 Mielőtt beállítja a jutalmazási átjárót az Azure AD-vel való automatikus felhasználó-kiépítés során, engedélyeznie kell a SCIM-létesítést a jutalmazási átjárón.
 
-1. Jelentkezzen be a [jutalmazási átjáró felügyeleti konzolján](https://rewardgateway.photoshelter.com/login/). Kattintson az **integrációk**elemre.
+1. Jelentkezzen be a [jutalmazási átjáró felügyeleti konzolján](https://rewardgateway.photoshelter.com/login/). Kattintson az **integrációk** elemre.
 
     ![Képernyőkép a jutalmazási átjáró felügyeleti konzolján az integrációk lehetőség kiválasztásával.](media/reward-gateway-provisioning-tutorial/image00.png)
 
-2.  Válassza **a saját integráció**lehetőséget.
+2.  Válassza **a saját integráció** lehetőséget.
 
     ![Képernyőkép a két integrációs lehetőségről a saját integrációk lehetőséggel.](media/reward-gateway-provisioning-tutorial/image001.png)
 
-3.  Másolja a **scim URL-cím (v2)** és a **OAuth tulajdonosi jogkivonat**értékeit. Ezeket az értékeket a rendszer a jutalmazási átjáró alkalmazás létesítés lapjának bérlő URL-címe és titkos jogkivonat mezőjébe írja be a Azure Portal.
+3.  Másolja a **scim URL-cím (v2)** és a **OAuth tulajdonosi jogkivonat** értékeit. Ezeket az értékeket a rendszer a jutalmazási átjáró alkalmazás létesítés lapjának bérlő URL-címe és titkos jogkivonat mezőjébe írja be a Azure Portal.
 
     ![Képernyőkép a saját integrációk panelről, a OAuth tulajdonosi jogkivonat szövegmezőben.](media/reward-gateway-provisioning-tutorial/image03.png)
 
@@ -69,11 +69,11 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés jutalmazási átjár
 
 **A jutalmazási átjáró az Azure AD alkalmazás-katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -81,7 +81,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés jutalmazási átjár
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **jutalmazási átjáró**kifejezést, válassza a **jutalom** átjáró lehetőséget az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **jutalmazási átjáró** kifejezést, válassza a **jutalom** átjáró lehetőséget az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![A jutalmazási átjáró az eredmények listájában](common/search-new-app.png)
 
@@ -98,7 +98,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **jutalmazási átjáró**elemet.
+2. Az alkalmazások listában válassza a **jutalmazási átjáró** elemet.
 
     ![A jutalmazási átjáró hivatkozása az alkalmazások listájában](common/all-applications.png)
 
@@ -114,13 +114,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza az **Azure Active Directory-felhasználók szinkronizálása az átjáró jutalmazásához**lehetőséget.
+8. A **leképezések** szakaszban válassza az **Azure Active Directory-felhasználók szinkronizálása az átjáró jutalmazásához** lehetőséget.
 
     ![A leképezések szakasz képernyőképe a Azure Active Directory felhasználók szinkronizálása az átjáró jutalmazására lehetőséggel.](media/reward-gateway-provisioning-tutorial/user-mappings.png)
 

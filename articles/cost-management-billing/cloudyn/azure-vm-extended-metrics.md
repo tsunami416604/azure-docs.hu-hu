@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89084f0631b52631708db68a11595cb24d1b9fee
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 14ea98ecc4d9682353038088a124802d60a5dd5d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690119"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131445"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Kiterjesztett metrikák hozzáadása Azure-beli virtuális gépekhez
 
@@ -46,11 +46,11 @@ Az előző példában a gazdagépek számára korlátozott számú szabványos m
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Kiterjesztett metrikák engedélyezése az Azure Portalon
 
-A standard metrikák a gazdagépek metrikái. A _Százalékos processzorhasználat_ metrika egy példa erre. A vendég virtuális gépekhez is tartoznak alapvető metrikák, és ezeket is kiterjesztett metrikáknak nevezik. A kiterjesztett metrikák közé tartozik a _\Memória\% Előjegyzett memória kihasználtsága_ és a _\Memória\Elérhető bájtok_.
+A standard metrikák a gazdagépek metrikái. A _Százalékos processzorhasználat_ metrika egy példa erre. A vendég virtuális gépekhez is tartoznak alapvető metrikák, és ezeket is kiterjesztett metrikáknak nevezik. A kiterjesztett metrikák közé tartozik a _\Memória\% Előjegyzett memória kihasználtsága_ és a _\Memória\Elérhető bájtok_ .
 
 A kiterjesztett metrikák egyszerűen engedélyezhetők. Mindegyik virtuális géphez engedélyezze a vendégszintű monitorozást. A vendégszintű monitorozás engedélyezésekor a rendszer az Azure Diagnostics-ügynököt is telepíti a virtuális gépre. Alapértelmezés szerint a rendszer kiterjesztett metrikák egy alapszintű készletét is hozzáadja. A következő folyamat azonos a klasszikus és általános, illetve a Windows és Linux rendszerű virtuális gépek esetében.
 
-Ne feledje, hogy az Azure- és a Linux-beli vendégszintű monitorozáshoz is tárfiók szükséges. Ha nem választ ki meglévő tárfiókot a vendégszintű monitorozás engedélyezésekor, a rendszer létrehoz egyet.
+Ne feledje, hogy a Windows- és a Linux-beli vendégszintű monitorozáshoz is tárfiók szükséges. Ha nem választ ki meglévő tárfiókot a vendégszintű monitorozás engedélyezésekor, a rendszer létrehoz egyet.
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Vendégszintű monitorozás engedélyezése meglévő virtuális gépeken
 
@@ -66,7 +66,7 @@ Ne feledje, hogy az Azure- és a Linux-beli vendégszintű monitorozáshoz is t�
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>Vendégszintű monitorozás engedélyezése új virtuális gépeken
 
-Új virtuális gépek létrehozásakor a Kezelés lapon állítsa **Be** értékre a **Vendég operációs rendszer diagnosztikáját**.
+Új virtuális gépek létrehozásakor a Kezelés lapon állítsa **Be** értékre a **Vendég operációs rendszer diagnosztikáját** .
 
 ![a vendég operációs rendszer diagnosztikájának bekapcsolása](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
@@ -74,7 +74,7 @@ További információ az Azure-beli virtuális gépek kiterjesztett metrikáinak
 
 ## <a name="resource-manager-credentials"></a>A Resource Manager hitelesítő adatai
 
-A kiterjesztett metrikák engedélyezése után győződjön meg arról, hogy a Cloudyn hozzáférhet a [Resource Manager hitelesítő adataihoz](../../cost-management/activate-subs-accounts.md). Ahhoz, hogy a Cloudyn összegyűjthesse és megjeleníthesse a virtuális gépek teljesítményadatait, szükség van a hitelesítő adatokra. Ezek a költségoptimalizálási javaslatok létrehozásához is szükségesek. A Cloudynnek egy példány legalább három napnyi teljesítményadataira van szüksége ahhoz, hogy megállapíthassa, a példány esetében javasolt-e a méret csökkentése.
+A kiterjesztett metrikák engedélyezése után győződjön meg arról, hogy a Cloudyn hozzáférhet a [Resource Manager hitelesítő adataihoz](./activate-subs-accounts.md). Ahhoz, hogy a Cloudyn összegyűjthesse és megjeleníthesse a virtuális gépek teljesítményadatait, szükség van a hitelesítő adatokra. Ezek a költségoptimalizálási javaslatok létrehozásához is szükségesek. A Cloudynnek egy példány legalább három napnyi teljesítményadataira van szüksége ahhoz, hogy megállapíthassa, a példány esetében javasolt-e a méret csökkentése.
 
 ## <a name="enable-vm-metrics-with-a-script"></a>Virtuálisgép-metrikák engedélyezése szkripttel
 
@@ -88,4 +88,4 @@ Az Azure-példányok teljesítménymetrikáinak a Cloudyn portálján való megt
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha még nem engedélyezte az Azure Resource Manager API-hozzáférést a fiókokhoz, lépjen tovább az [Azure-előfizetések és -fiókok aktiválása](../../cost-management/activate-subs-accounts.md) részre.
+- Ha még nem engedélyezte az Azure Resource Manager API-hozzáférést a fiókokhoz, lépjen tovább az [Azure-előfizetések és -fiókok aktiválása](./activate-subs-accounts.md) részre.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: cbd1303417f008da476356a274dde30d7d02d36f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505505"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541944"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architektúra a HDInsightban
 
@@ -37,7 +37,7 @@ Amikor egy MapReduce-alkalmazás egy fürtön fut, a erőforráskezelő biztosí
 
 A erőforráskezelő egy webkiszolgáló-folyamatot is futtat, amely webes felhasználói felületet biztosít az alkalmazások állapotának figyeléséhez.
 
-Amikor egy felhasználó elküld egy MapReduce alkalmazást a fürtön való futtatásra, az alkalmazás a erőforráskezelő lesz elküldve. A erőforráskezelő pedig kioszt egy tárolót az elérhető NodeManager-csomópontokon. A NodeManager-csomópontok, ahol az alkalmazás ténylegesen fut. Az első lefoglalt tároló egy ApplicationMaster nevű speciális alkalmazást futtat. Ennek a ApplicationMaster az a feladata, hogy az elküldött alkalmazás futtatásához szükséges további tárolók formájában beszerezze az erőforrásokat. A ApplicationMaster megvizsgálja az alkalmazás szakaszait, például a térképi fázist és a szakasz csökkentését, valamint azt, hogy mekkora mennyiségű adatok feldolgozása szükséges. A ApplicationMaster ezután megkéri (*egyezteti*) az erőforrásokat a erőforráskezelő az alkalmazás nevében. A erőforráskezelő a fürt Csomópontkezelők származó erőforrásokat biztosít ahhoz a ApplicationMaster, amelyet az alkalmazás végrehajtásához kíván használni.
+Amikor egy felhasználó elküld egy MapReduce alkalmazást a fürtön való futtatásra, az alkalmazás a erőforráskezelő lesz elküldve. A erőforráskezelő pedig kioszt egy tárolót az elérhető NodeManager-csomópontokon. A NodeManager-csomópontok, ahol az alkalmazás ténylegesen fut. Az első lefoglalt tároló egy ApplicationMaster nevű speciális alkalmazást futtat. Ennek a ApplicationMaster az a feladata, hogy az elküldött alkalmazás futtatásához szükséges további tárolók formájában beszerezze az erőforrásokat. A ApplicationMaster megvizsgálja az alkalmazás szakaszait, például a térképi fázist és a szakasz csökkentését, valamint azt, hogy mekkora mennyiségű adatok feldolgozása szükséges. A ApplicationMaster ezután megkéri ( *egyezteti* ) az erőforrásokat a erőforráskezelő az alkalmazás nevében. A erőforráskezelő a fürt Csomópontkezelők származó erőforrásokat biztosít ahhoz a ApplicationMaster, amelyet az alkalmazás végrehajtásához kíván használni.
 
 A Csomópontkezelők futtatják az alkalmazást alkotó feladatokat, majd jelentést készítenek az előrehaladásról és az állapotról a ApplicationMaster. A ApplicationMaster visszaküldi az alkalmazás állapotát a erőforráskezelő. A erőforráskezelő bármilyen eredményt ad vissza az ügyfélnek.
 
@@ -53,12 +53,12 @@ Ha törölni szeretne egy fájlt a Storage-fiókból, tekintse meg a következő
 
 ### <a name="azure-storage"></a>Azure Storage
 
-* [Az Azure Storage-blobok helyreállítható törlése](../storage/blobs/storage-blob-soft-delete.md)
-* [BLOB törlésének visszavonása](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+* [Az Azure Storage-blobok helyreállítható törlése](../storage/blobs/soft-delete-blob-overview.md)
+* [BLOB törlésének visszavonása](/rest/api/storageservices/undelete-blob)
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
-[Visszaállítás – AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+[Visszaállítás – AzDataLakeStoreDeletedItem](/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
 

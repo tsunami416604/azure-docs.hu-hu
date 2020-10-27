@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 2a6b324c4caf9619566ba335ab2e5a318ab68bb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e85226e7a2544cda01f40a1c1be6be32f11d9dfc
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079428"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542794"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Az Apache Zeppelin használatával Apache Phoenix lekérdezéseket futtathat az Apache HBase az Azure HDInsight
 
@@ -31,7 +31,7 @@ Egy Apache HBase-fürt a HDInsight-on. Lásd: [az Apache HBase első lépései](
 
 1. Cserélje le a `CLUSTERNAME` nevet a fürt nevére a következő URL-címben `https://CLUSTERNAME.azurehdinsight.net/zeppelin` . Ezután írja be az URL-címet egy böngészőben. Adja meg a fürt bejelentkezési felhasználónevét és jelszavát.
 
-1. A Zeppelin lapon válassza az **új Megjegyzés létrehozása**lehetőséget.
+1. A Zeppelin lapon válassza az **új Megjegyzés létrehozása** lehetőséget.
 
     ![HDInsight interaktív lekérdezés Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
 
@@ -40,13 +40,13 @@ Egy Apache HBase-fürt a HDInsight-on. Lásd: [az Apache HBase első lépései](
     - Megjegyzés neve: adja meg a jegyzet nevét.
     - Alapértelmezett értelmező: válassza a **JDBC** elemet a legördülő listából.
 
-    Ezután válassza a **Megjegyzés létrehozása**lehetőséget.
+    Ezután válassza a **Megjegyzés létrehozása** lehetőséget.
 
 1. Győződjön meg arról, hogy a jegyzetfüzet fejléce csatlakoztatott állapotot mutat. Ezt a jobb felső sarokban található zöld pont jelöli.
 
     ![Zeppelin notebook állapota](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin notebook állapota")
 
-1. Hozzon létre egy HBase táblát. Adja meg a következő parancsot, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt:
+1. Hozzon létre egy HBase táblát. Adja meg a következő parancsot, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt:
 
     ```sql
     %jdbc(phoenix)
@@ -96,7 +96,7 @@ Egy Apache HBase-fürt a HDInsight-on. Lásd: [az Apache HBase első lépései](
     DROP TABLE dbo.Company;
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A Apache Phoenix mostantól támogatja a Zeppelin használatát az Azure HDInsight](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/)
+- [A Apache Phoenix mostantól támogatja a Zeppelin használatát az Azure HDInsight](/archive/blogs/ashish/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight)
 - [Apache Phoenix nyelvtan](https://phoenix.apache.org/language/index.html)

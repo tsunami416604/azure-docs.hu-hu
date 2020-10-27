@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 524c888bb132405f03af44f9c28198be0ac89370
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 956406ec5ac99be5973f1928bbb89db10e68b339
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489591"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533767"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive-lekérdezések futtatása a HDInsight Apache Hadoop a REST használatával
 
@@ -25,13 +25,13 @@ Megtudhatja, hogyan futtathat Apache Hive-lekérdezéseket az Azure HDInsight-f�
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
-* REST-ügyfél. Ez a dokumentum a Windows PowerShellben [és a](https://curl.haxx.se/) [bash](https://docs.microsoft.com/windows/wsl/install-win10)-on futó [-webkérést](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja.
+* REST-ügyfél. Ez a dokumentum a Windows PowerShellben [és a](https://curl.haxx.se/) [bash](/windows/wsl/install-win10)-on futó [-webkérést](/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja.
 
 * Ha bash-et használ, a parancssori JSON-processzort is jQ kell.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
 ## <a name="base-uri-for-rest-api"></a>Alapszintű URI a REST API-hoz
 
-A HDInsight lévő REST API alapszintű Uniform Resource Identifier (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , ahol a a `CLUSTERNAME` fürt neve.  Az URI-k fürtjének nevei **megkülönböztetik a kis-és nagybetűket**.  Míg a fürt neve az URI () teljes tartományneve (FQDN) része, a kis-és nagybetűk megkülönböztetése `CLUSTERNAME.azurehdinsight.net` , az URI-n belüli más előfordulások megkülönböztetik a kis-és nagybetűket.
+A HDInsight lévő REST API alapszintű Uniform Resource Identifier (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , ahol a a `CLUSTERNAME` fürt neve.  Az URI-k fürtjének nevei **megkülönböztetik a kis-és nagybetűket** .  Míg a fürt neve az URI () teljes tartományneve (FQDN) része, a kis-és nagybetűk megkülönböztetése `CLUSTERNAME.azurehdinsight.net` , az URI-n belüli más előfordulások megkülönböztetik a kis-és nagybetűket.
 
 ## <a name="authentication"></a>Hitelesítés
 
@@ -120,7 +120,7 @@ $clusterName
     {"module":"hive","version":"1.2.1000.2.6.5.3008-11"}
     ```
 
-1. A **log4jLogs**nevű tábla létrehozásához használja a következőt:
+1. A **log4jLogs** nevű tábla létrehozásához használja a következőt:
 
     ```bash
     jobid=$(curl -s -u admin:$password -d user.name=admin -d execute="DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$clusterName.azurehdinsight.net/templeton/v1/hive | jq -r .id)
@@ -181,11 +181,11 @@ $clusterName
     (ConvertFrom-Json $fixDup).status.state
     ```
 
-    Ha a feladatot befejezte, az állapot **sikeres**lesz.
+    Ha a feladatot befejezte, az állapot **sikeres** lesz.
 
-1. Ha a művelet állapota **sikeresen**módosult, az Azure Blob Storage-ból kérheti le a feladatok eredményeit. A `statusdir` lekérdezéssel átadott paraméter tartalmazza a kimeneti fájl helyét; ebben az esetben: `/example/rest` . Ez a címe tárolja a könyvtárban lévő kimenetet a `example/curl` fürtök alapértelmezett tárolójában.
+1. Ha a művelet állapota **sikeresen** módosult, az Azure Blob Storage-ból kérheti le a feladatok eredményeit. A `statusdir` lekérdezéssel átadott paraméter tartalmazza a kimeneti fájl helyét; ebben az esetben: `/example/rest` . Ez a címe tárolja a könyvtárban lévő kimenetet a `example/curl` fürtök alapértelmezett tárolójában.
 
-    Ezeket a fájlokat az [Azure CLI](/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. Az Azure CLI és az Azure Storage használatával kapcsolatos további információkért lásd az Azure [CLI használata](https://docs.microsoft.com/azure/storage/storage-azure-cli) az Azure Storage-ban című dokumentumot.
+    Ezeket a fájlokat az [Azure CLI](/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. Az Azure CLI és az Azure Storage használatával kapcsolatos további információkért lásd az Azure [CLI használata](../../storage/blobs/storage-quickstart-blobs-cli.md) az Azure Storage-ban című dokumentumot.
 
 ## <a name="next-steps"></a>Következő lépések
 

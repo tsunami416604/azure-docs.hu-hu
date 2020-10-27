@@ -235,7 +235,7 @@
           displayName: policy
     - name: Munkaterületek létrehozása és kezelése
       items:
-        - name: Az Azure Portal használata
+        - name: Az Azure Portal vagy a Python SDK használata
           href: how-to-manage-workspace.md
         - name: Az Azure parancssori felület használatával
           href: how-to-manage-workspace-cli.md

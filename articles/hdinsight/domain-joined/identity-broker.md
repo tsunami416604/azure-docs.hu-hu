@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 6d4539e5dbc7182386a60317a9ee45a986ffd61f
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999939"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543151"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (előzetes verzió)
 
@@ -43,7 +43,7 @@ Ebben a diagramban az ügyfélnek (azaz egy böngészőnek vagy alkalmazásnak) 
 
 A rendszer továbbra is sok olyan örökölt alkalmazást támogat, amelyek csak az alapszintű hitelesítést támogatják (azaz a felhasználónevet és a jelszót). Ilyen esetekben továbbra is használhatja a HTTP alapszintű hitelesítést a fürt átjáróinak való kapcsolódáshoz. Ebben a telepítőben biztosítania kell, hogy az átjáró-csomópontok hálózati kapcsolata legyen a Active Directory összevonási szolgáltatások (AD FS) (AD FS) végponttal, hogy az átjáró-csomópontok közvetlen vonalát biztosítsa.
 
-Az alábbi ábrán az összevont felhasználók alapszintű hitelesítési folyamata látható. Először az átjáró megkísérli végrehajtani a hitelesítést a [ROPC flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)használatával. Ha az Azure AD-ben nincsenek szinkronizálva a jelszó-kivonatok, az AD FS végpont felfedéséhez, és a AD FS végponthoz való hozzáféréssel végrehajtja a hitelesítést.
+Az alábbi ábrán az összevont felhasználók alapszintű hitelesítési folyamata látható. Először az átjáró megkísérli végrehajtani a hitelesítést a [ROPC flow](../../active-directory/develop/v2-oauth-ropc.md)használatával. Ha az Azure AD-ben nincsenek szinkronizálva a jelszó-kivonatok, az AD FS végpont felfedéséhez, és a AD FS végponthoz való hozzáféréssel végrehajtja a hitelesítést.
 
 :::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="A HDInsight ID Broker hitelesítési folyamatát ábrázoló diagram.":::
 
@@ -54,7 +54,7 @@ Enterprise Security Package-fürt létrehozása a HDInsight ID Broker engedélye
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Enterprise Security Package-fürt alapvető létrehozási lépéseinek követése. További információ: HDInsight- [fürt létrehozása Enterprise Security Packagesal](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
-1. Válassza a **HDInsight-azonosító-átvitelszervező engedélyezése**lehetőséget.
+1. Válassza a **HDInsight-azonosító-átvitelszervező engedélyezése** lehetőséget.
 
 A HDInsight ID Broker szolgáltatás egy további virtuális gépet helyez el a fürthöz. Ez a virtuális gép a HDInsight ID Broker csomópont, és a hitelesítést támogató kiszolgálói összetevőket tartalmaz. A HDInsight ID Broker csomópont tartományhoz van csatlakoztatva az Azure AD DS tartományhoz.
 
@@ -103,7 +103,7 @@ Ha új szerepkört ad hozzá a `idbrokernode` következő attribútumokkal a sab
 
 ## <a name="tool-integration"></a>Eszköz-integráció
 
-A HDInsight-eszközök natív módon támogatják a OAuth. Ezeket az eszközöket modern, OAuth-alapú hozzáféréshez használhatja a fürtökhöz. A HDInsight [IntelliJ beépülő modult](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) Java-alapú alkalmazásokhoz, például a scalahez is használhatja. A [Spark és a kaptár eszközei a Visual Studio Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) -hoz PySpark és kaptári feladatokhoz is használhatók. Az eszközök a Batch és az interaktív feladatok használatát is támogatják.
+A HDInsight-eszközök natív módon támogatják a OAuth. Ezeket az eszközöket modern, OAuth-alapú hozzáféréshez használhatja a fürtökhöz. A HDInsight [IntelliJ beépülő modult](../spark/apache-spark-intellij-tool-plugin.md#integrate-with-hdinsight-identity-broker-hib) Java-alapú alkalmazásokhoz, például a scalahez is használhatja. A [Spark és a kaptár eszközei a Visual Studio Code](../hdinsight-for-vscode.md) -hoz PySpark és kaptári feladatokhoz is használhatók. Az eszközök a Batch és az interaktív feladatok használatát is támogatják.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-hozzáférés jelszó-kivonat nélkül az Azure-ban AD DS
 
@@ -117,11 +117,11 @@ Ha az SSH-t egy tartományhoz csatlakoztatott virtuális gépre vagy a parancs f
 
 Ha a szervezet nem szinkronizálja a jelszó-kivonatokat az Azure AD DSba, ajánlott eljárásként hozzon létre egy csak felhőalapú felhasználót az Azure AD-ben. Ezután rendelje hozzá a fürtöt rendszergazdaként a fürt létrehozásakor, és használja azt felügyeleti célokra. A használatával SSH-n keresztül érheti el a virtuális gépek gyökerét.
 
-A hitelesítési problémák elhárításához tekintse meg [ezt az útmutatót](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues).
+A hitelesítési problémák elhárításához tekintse meg [ezt az útmutatót](./domain-joined-authentication-issues.md).
 
 ## <a name="clients-using-oauth-to-connect-to-an-hdinsight-gateway-with-hdinsight-id-broker"></a>A OAuth-t használó ügyfelek HDInsight-átjáróhoz való kapcsolódáshoz a HDInsight ID Broker használatával
 
-A HDInsight ID Broker beállításban az átjáróhoz csatlakozó egyéni alkalmazások és ügyfelek frissíthetők a szükséges OAuth-token beszerzéséhez. Kövesse a [jelen dokumentumban](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) ismertetett lépéseket a jogkivonat megszerzéséhez a következő információkkal:
+A HDInsight ID Broker beállításban az átjáróhoz csatlakozó egyéni alkalmazások és ügyfelek frissíthetők a szükséges OAuth-token beszerzéséhez. Kövesse a [jelen dokumentumban](../../storage/common/storage-auth-aad-app.md) ismertetett lépéseket a jogkivonat megszerzéséhez a következő információkkal:
 
 *   OAuth erőforrás URI-ja: `https://hib.azurehdinsight.net` 
 *   AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a

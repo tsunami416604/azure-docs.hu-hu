@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc8162f3a7ca8744a94aba039996275b5f13c727
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532562"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533410"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Forgatókönyv: a lemez titkosításával rendelkező Azure HDInsight-fürtök elvesztik Key Vault hozzáférését
 
@@ -26,7 +26,7 @@ A Resource Health központ (RHC) riasztása `The HDInsight cluster is unable to 
 
 A riasztás biztosítja, hogy a KV elérhető legyen a fürtcsomópontok között, így biztosítva a hálózati kapcsolat, a KV Health és a hozzáférési szabályzatot a felhasználóhoz rendelt felügyelt identitáshoz. Ez a riasztás csak a közelgő, a csomópontok újraindítására vonatkozó figyelmeztetést jeleníti meg, a fürt továbbra is működni fog, amíg a csomópontok újraindulnak.
 
-Keresse meg az Apache Ambari felhasználói felületét, ahol további információkat talál a **lemezes titkosítási Key Vault állapotáról**. Ez a riasztás részletesen ismerteti az ellenőrzési hibák okát.
+Keresse meg az Apache Ambari felhasználói felületét, ahol további információkat talál a **lemezes titkosítási Key Vault állapotáról** . Ez a riasztás részletesen ismerteti az ellenőrzési hibák okát.
 
 ## <a name="resolution"></a>Feloldás
 
@@ -36,7 +36,7 @@ További részletekért tekintse meg a [Azure Key Vault rendelkezésre állási 
 
 ### <a name="kv-accidental-deletion"></a>KV véletlen törlés
 
-* Állítsa vissza a Deleted Key on KV-ot az automatikus helyreállításhoz. További információ: [Recover Deleted Key](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey).
+* Állítsa vissza a Deleted Key on KV-ot az automatikus helyreállításhoz. További információ: [Recover Deleted Key](/rest/api/keyvault/recoverdeletedkey).
 * Érje el a KV-csapatot a véletlen törlésből való helyreállításhoz.
 
 ### <a name="kv-access-policy-changed"></a>A KV hozzáférési szabályzat megváltozott
@@ -88,4 +88,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 * Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](../../azure-portal/supportability/how-to-create-azure-support-request.md)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 11/20/2019
-ms.openlocfilehash: 15a86fd191eefc5882150fb276228d18efd6ff5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e0c16ee7aa66847cc6f3f4618b8090b7ce86663
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323791"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533784"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Java UDF használata Apache Hive HDInsight
 
@@ -22,7 +22,7 @@ Megtudhatja, hogyan hozhat létre olyan Java-alapú, felhasználó által defini
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
-* [Java Developer Kit (JDK) 8-as verzió](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) 8-as verzió](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 * A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure Storage-hoz készült wasb://, a Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 vagy adl://esetében abfs://. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő lesz: `wasbs://` .  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
@@ -269,7 +269,7 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 [IO.File]::WriteAllText($original_file, $text)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A struktúra használatának egyéb módjaival kapcsolatban lásd: [Apache Hive használata a HDInsight](hdinsight-use-hive.md).
 

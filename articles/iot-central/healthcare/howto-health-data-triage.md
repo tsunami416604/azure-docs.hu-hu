@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 5175575bcd968ab9d9bb9db7e284eb332bc7f675
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127080"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542420"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Oktatóanyag: Power BI-szolgáltató irányítópultjának összeállítása
 
@@ -29,7 +29,7 @@ Az alapszintű architektúra a következő struktúrát fogja követni:
 >[!div class="mx-imgBorder"] 
 >![Szolgáltató osztályozása irányítópult](media/dashboard-architecture.png)
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Adatok exportálása az Azure IoT Centralból az Azure-ba Event Hubs
@@ -81,7 +81,7 @@ A logikai alkalmazás Azure Event Hubshoz való összekapcsolásához kövesse a
 |---|---|
 |Tartalomtípus|application/json|
 |Időköz|3|
-|Frequency|Second|
+|Gyakoriság|Second|
 
 Ennek a lépésnek a végén a Logic app designernek így kell kinéznie:
 
@@ -139,7 +139,7 @@ A következő lépés az, hogy elemezze az Event hub-ról érkező adatokat a ko
 }
 ```
 
-2. Most, hogy megtekintette a JSON-adattartalmakat, térjen vissza a Logic app Designerre, és válassza az **+ új lépés**lehetőséget. A következő lépésként keresse meg és adja hozzá az **inicializálás változót** , és adja meg a következő paramétereket:
+2. Most, hogy megtekintette a JSON-adattartalmakat, térjen vissza a Logic app Designerre, és válassza az **+ új lépés** lehetőséget. A következő lépésként keresse meg és adja hozzá az **inicializálás változót** , és adja meg a következő paramétereket:
 
     |Paraméter|Érték|
     |---|---|
@@ -148,12 +148,12 @@ A következő lépés az, hogy elemezze az Event hub-ról érkező adatokat a ko
 
     Kattintson a **Mentés** gombra. 
 
-3. Adjon hozzá egy " **Body** " nevű másik változót **karakterláncként**. A logikai alkalmazás a következő műveleteket fogja hozzáadni:
+3. Adjon hozzá egy " **Body** " nevű másik változót **karakterláncként** . A logikai alkalmazás a következő műveleteket fogja hozzáadni:
 
     >[!div class="mx-imgBorder"]
     >![Változók inicializálása](media/initialize-string-variables.png)
     
-4. Válassza az **+ új lépés** lehetőséget, és adjon hozzá egy **elemzési JSON** -műveletet. Nevezze át ezt az **elemzési tulajdonságokra**. A tartalomhoz válassza az Event hub-ból származó **Tulajdonságok** elemet. Válassza a minta hasznos adatok használata lehetőséget a séma alján **való létrehozásához** , majd illessze be a minta adattartalmat a fenti tulajdonságok szakaszból.
+4. Válassza az **+ új lépés** lehetőséget, és adjon hozzá egy **elemzési JSON** -műveletet. Nevezze át ezt az **elemzési tulajdonságokra** . A tartalomhoz válassza az Event hub-ból származó **Tulajdonságok** elemet. Válassza a minta hasznos adatok használata lehetőséget a séma alján **való létrehozásához** , majd illessze be a minta adattartalmat a fenti tulajdonságok szakaszból.
 
 5. Ezután válassza a **változó beállítása** műveletet, és frissítse a **csatoló neve** változót a **iothub-Interface-Name** elemre az elemzett JSON-tulajdonságok közül.
 
@@ -168,14 +168,14 @@ A következő lépés az, hogy elemezze az Event hub-ról érkező adatokat a ko
 
 9. Adjon hozzá egy **set változót** , és frissítse a **Body** változót az elemzett JSON **törzsével** a 7. lépésben.
 
-10. Vegyen fel egy **feltétel** vezérlőelemet a következő műveletként, és állítsa be a feltételt a **törzs**, a **tartalmaz**, a **HeartRate**. Ezzel a beállítással megadhatja, hogy az intelligens létfontosságú javításokból származó adatok megfelelő készlete legyen az Power BI adatkészlet feltöltése előtt. A 7-9. lépés a következőképpen fog kinézni:
+10. Vegyen fel egy **feltétel** vezérlőelemet a következő műveletként, és állítsa be a feltételt a **törzs** , a **tartalmaz** , a **HeartRate** . Ezzel a beállítással megadhatja, hogy az intelligens létfontosságú javításokból származó adatok megfelelő készlete legyen az Power BI adatkészlet feltöltése előtt. A 7-9. lépés a következőképpen fog kinézni:
 
     >[!div class="mx-imgBorder"] 
     >![Intelligens Vitals – feltétel hozzáadása](media/smart-vitals-pbi.png)
 
 11. A feltétel **valódi** esetéhez adjon hozzá egy műveletet, amely meghívja a **sorok hozzáadása egy adatkészlethez** Power bi funkciót. Ehhez be kell jelentkeznie Power BI. A **hamis** eset újra használhatja a **megszakítási** vezérlőt.
 
-12. Válassza ki a megfelelő **munkaterületet**, **adatkészletet**és **táblát**. Képezze le a Power BI adatfolyam-adatkészletének létrehozásakor megadott paramétereket az Event hub-ból származó elemzett JSON-értékekre. A kitöltött műveleteknek így kell kinéznie:
+12. Válassza ki a megfelelő **munkaterületet** , **adatkészletet** és **táblát** . Képezze le a Power BI adatfolyam-adatkészletének létrehozásakor megadott paramétereket az Event hub-ból származó elemzett JSON-értékekre. A kitöltött műveleteknek így kell kinéznie:
 
     >[!div class="mx-imgBorder"] 
     >![Sorok hozzáadása a Power BIhoz](media/add-rows-yesenia.png)
@@ -183,27 +183,27 @@ A következő lépés az, hogy elemezze az Event hub-ról érkező adatokat a ko
 13. Az **intelligens térd zárójeles** kapcsoló esetében adjon hozzá egy **elemzési JSON** -műveletet a tartalom elemzéséhez, hasonlóan a 7. lépéshez. Ezután **sorokat adhat hozzá egy adatkészlethez** , hogy frissítse a Teddy Silvers-adatkészletet a Power BIban.
 
     >[!div class="mx-imgBorder"] 
-    >![Intelligens Vitals – feltétel hozzáadása](media/knee-brace-pbi.png)
+    >![Képernyőkép, amely bemutatja, hogyan adhat hozzá sorokat egy adatkészlethez.](media/knee-brace-pbi.png)
 
 14. Kattintson a **Save (Mentés** ) gombra, majd futtassa a logikai alkalmazást.
 
 ## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>Valós idejű irányítópult létrehozása a páciensek számára – létfontosságú
-Most lépjen vissza a Power BIra, és válassza a **+ Létrehozás** lehetőséget egy új **irányítópult**létrehozásához. Adja meg az irányítópult nevét, és kattintson a **create (létrehozás**).
+Most lépjen vissza a Power BIra, és válassza a **+ Létrehozás** lehetőséget egy új **irányítópult** létrehozásához. Adja meg az irányítópult nevét, és kattintson a **create (létrehozás** ).
 
-Válassza ki a három pontot a felső navigációs sávon, majd válassza a **+ csempe hozzáadása**lehetőséget.
+Válassza ki a három pontot a felső navigációs sávon, majd válassza a **+ csempe hozzáadása** lehetőséget.
 
 >[!div class="mx-imgBorder"] 
 >![Csempe hozzáadása az irányítópulthoz](media/add-tile.png)
 
 Válassza ki, hogy milyen típusú csempét szeretne felvenni, és testreszabni szeretné az alkalmazást.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a következő lépésekkel:
 
 1. A Azure Portal törölheti az Event hub-t és Logic Apps a létrehozott erőforrásokat.
 
-2. IoT Central alkalmazásához lépjen az adminisztráció lapra, és válassza a **Törlés**lehetőséget.
+2. IoT Central alkalmazásához lépjen az adminisztráció lapra, és válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

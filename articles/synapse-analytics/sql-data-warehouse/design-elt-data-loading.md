@@ -168,6 +168,6 @@ Az ETL-folyamat tervezésekor próbálja meg futtatni a folyamatot egy kis teszt
 
 Számos partnerünk betöltési megoldásokkal rendelkezik. További információért tekintse meg a [megoldás partnereink](sql-data-warehouse-partner-business-intelligence.md)listáját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Útmutatás a betöltéshez: [Útmutató az adatok betöltéséhez](guidance-for-loading-data.md).

@@ -164,7 +164,7 @@
       href: recovery-plan-overview.md
     - name: Tudnivalók az Azure-ba történő migrálásról
       href: migrate-overview.md
-    - name: Információk a Site Recoveryvel végzett szerepköralapú hozzáférés-vezérlésről
+    - name: Információk a Site Recoveryvel végzett Azure-beli szerepköralapú hozzáférés-vezérlésről
       href: site-recovery-role-based-linked-access-control.md
     - name: Tudnivalók másodlagos helyszíni helyre történő vészhelyreállításról
       items:

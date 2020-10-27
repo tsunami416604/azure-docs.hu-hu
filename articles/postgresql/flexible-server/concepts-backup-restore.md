@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: bed196d1be101ffa75affc389d390ec0fa764b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934933"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532645"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>Biztonsági mentés és visszaállítás Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -28,7 +28,7 @@ Ha az adatbázis magas rendelkezésre állással van konfigurálva, a rendszer a
 > [!IMPORTANT]
 >A leállított kiszolgálókon nem végeznek biztonsági mentést. A biztonsági mentések azonban akkor is folytatódnak, ha az adatbázist 7 nap vagy a felhasználó indítja el.
 
-A biztonsági másolatok csak a rugalmas kiszolgálón belüli visszaállítási műveletekhez használhatók. Ha szeretné exportálni vagy importálni az adatfájlokat a rugalmas kiszolgálóra, használja a [dump és a Restore](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   módszert.
+A biztonsági másolatok csak a rugalmas kiszolgálón belüli visszaállítási műveletekhez használhatók. Ha szeretné exportálni vagy importálni az adatfájlokat a rugalmas kiszolgálóra, használja a [dump és a Restore](../howto-migrate-using-dump-and-restore.md) módszert.
 
 
 ### <a name="backup-retention"></a>Biztonsági mentés megőrzése
@@ -40,9 +40,9 @@ A biztonsági másolatok megőrzési időszaka azt szabályozza, hogy az adott i
 
 ### <a name="backup-storage-cost"></a>Biztonsági mentési tárolási díj
 
-A rugalmas kiszolgáló a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Minden további felhasznált biztonsági mentési tárterületért GB/hó díjat számítunk fel. Ha például létrehozta a 250 GiB tárterülettel rendelkező kiszolgálót, akkor a biztonsági mentési tárterület 250 GiB-t külön díj nélkül kiépítheti. Ha a napi biztonsági mentés 25 GiB, akkor akár 10 napos ingyenes biztonsági mentési tárterületet is használhat. A biztonsági mentési tárterület 250 GiB-nál nagyobb mennyiségét a [díjszabási modellnek](https://azure.microsoft.com/pricing/details/postgresql/)megfelelően számítjuk fel.
+A rugalmas kiszolgáló a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Minden további felhasznált biztonsági mentési tárterületért GB/hó díjat számítunk fel. Ha például létrehozta a 250 GiB tárterülettel rendelkező kiszolgálót, akkor a biztonsági mentési tárterület 250 GiB-t külön díj nélkül kiépítheti. Ha a napi biztonsági mentés 25 GiB, akkor akár 10 napos ingyenes biztonsági mentési tárterületet is használhat. A biztonsági mentési tárterület 250 GiB-nál nagyobb mennyiségét a [díjszabási modellnek](https://azure.microsoft.com/pricing/details/postgresql/)megfelelően számítjuk fel.
 
-A Azure Portal [használt biztonságimásolat-tároló](https://docs.microsoft.com/azure/postgresql/concepts-monitoring)   metrikájának használatával figyelheti a kiszolgáló által felhasznált biztonsági mentési tárolót. A Használt biztonsági mentési tárhely metrika az adatbázisok biztonsági mentései és a naplók biztonsági mentései által felhasznált összes tárterület összegét adja meg a biztonsági mentések kiszolgálóhoz beállított megőrzési időszaka alapján.  A kiszolgáló magas szintű tranzakciós tevékenysége miatt a biztonsági másolatok tárolási kihasználtsága a teljes adatbázis méretétől függetlenül növekedhet.
+A kiszolgáló által felhasznált biztonsági mentési tárterület monitorozásához használhatja az Azure Portal [Használt biztonsági mentési tárhely](../concepts-monitoring.md) metrikáját. A Használt biztonsági mentési tárhely metrika az adatbázisok biztonsági mentései és a naplók biztonsági mentései által felhasznált összes tárterület összegét adja meg a biztonsági mentések kiszolgálóhoz beállított megőrzési időszaka alapján.  A kiszolgáló magas szintű tranzakciós tevékenysége miatt a biztonsági másolatok tárolási kihasználtsága a teljes adatbázis méretétől függetlenül növekedhet.
 
 A biztonsági mentési tárolási költségek szabályozásának elsődleges módja a biztonsági mentési megőrzési időtartam beállítása, valamint a megfelelő biztonsági mentési redundancia-beállítások kiválasztása a kívánt helyreállítási célok eléréséhez.
 
@@ -71,15 +71,15 @@ Az időponthoz való visszaállítás több esetben is hasznos lehet. Ha példá
 
 A legkorábbi visszaállítási pont és az egyéni visszaállítási pont közül választhat.
 
--   **Legkorábbi visszaállítási pont**: a megőrzési időszaktól függően ez lesz a legkorábbi időpont, ameddig vissza lehet állítani. A legrégebbi biztonsági mentési idő automatikusan ki lesz választva, és megjelenik a portálon. Ez akkor lehet hasznos, ha meg szeretné vizsgálni, vagy végre kell hajtania egy tesztelési időszakot.
+-   **Legkorábbi visszaállítási pont** : a megőrzési időszaktól függően ez lesz a legkorábbi időpont, ameddig vissza lehet állítani. A legrégebbi biztonsági mentési idő automatikusan ki lesz választva, és megjelenik a portálon. Ez akkor lehet hasznos, ha meg szeretné vizsgálni, vagy végre kell hajtania egy tesztelési időszakot.
 
--   **Egyéni visszaállítási pont**: Ez a beállítás lehetővé teszi, hogy bármilyen időpontot válasszon a rugalmas kiszolgáló számára meghatározott megőrzési időtartamon belül. Alapértelmezés szerint az UTC legkésőbbi időpontja automatikusan be van jelölve, és hasznos, ha vissza szeretné állítani az utolsó véglegesített tranzakciót a tesztelési célokra. Igény szerint más napokat és időpontokat is választhat. 
+-   **Egyéni visszaállítási pont** : Ez a beállítás lehetővé teszi, hogy bármilyen időpontot válasszon a rugalmas kiszolgáló számára meghatározott megőrzési időtartamon belül. Alapértelmezés szerint az UTC legkésőbbi időpontja automatikusan be van jelölve, és hasznos, ha vissza szeretné állítani az utolsó véglegesített tranzakciót a tesztelési célokra. Igény szerint más napokat és időpontokat is választhat. 
 
 A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázis méretétől, a feldolgozandó tranzakciós naplók mennyiségétől, a hálózati sávszélességtől és az azonos régióban található adatbázisok teljes számától. A teljes helyreállítási idő általában néhány perctől akár néhány óráig is eltarthat.
 
 
 > [!IMPORTANT]
-> A törölt kiszolgálók **nem**állíthatók   vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. A kiszolgálói erőforrások, a telepítés után a véletlen törlés vagy a váratlan módosítások elleni védelem érdekében a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
+> A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. A kiszolgálói erőforrások, a telepítés után a véletlen törlés vagy a váratlan módosítások elleni védelem érdekében a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="perform-post-restore-tasks"></a>Visszaállítás utáni feladatok végrehajtása
 
@@ -98,9 +98,8 @@ Az adatbázis visszaállítása után a következő feladatokat végezheti el a 
 -  Ha a magas rendelkezésre állással konfigurálta az adatbázist, és ha a visszaállított kiszolgálót magas rendelkezésre állással szeretné konfigurálni, kövesse [a lépéseket](./how-to-manage-high-availability-portal.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 -   Az [üzletmenet folytonosságának](./concepts-business-continuity.md) megismerése
--   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
+-   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
 -   Útmutató [a visszaállításhoz](./how-to-restore-server-portal.md)
-

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083100"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542301"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
 
@@ -27,7 +27,7 @@ A HDInsight-fürt kapacitásának megtervezéséhez szükséges legfontosabb leh
 Az Azure-régió meghatározza, hogy a fürt hol van fizikailag kiépítve. Az olvasási és írási késés csökkentése érdekében a fürtnek ugyanabban a régióban kell lennie, mint az adatokat.
 
 **Tárolási hely és méret**  
-Az alapértelmezett tárolónak ugyanabban a régióban kell lennie, mint a fürtnek.48 csomópontos fürt esetén ajánlott 4 – 8 Storage-fiók használata. Bár lehetséges, hogy a teljes tárterület már elegendő, az egyes Storage-fiókok további hálózati sávszélességet biztosítanak a számítási csomópontok számára. Ha több Storage-fiók van, akkor minden egyes Storage-fiókhoz használjon véletlenszerű nevet, előtag nélkül. A véletlenszerű elnevezések célja, hogy csökkentse a tárolási torlódások (szabályozás) és az összes fiók általános módú meghibásodásának esélyét. A jobb teljesítmény érdekében csak egy tárolót használjon Storage-fiókkal.
+Az alapértelmezett tárolónak ugyanabban a régióban kell lennie, mint a fürtnek. 48 csomópontos fürt esetén ajánlott 4 – 8 Storage-fiók használata. Bár lehetséges, hogy a teljes tárterület már elegendő, az egyes Storage-fiókok további hálózati sávszélességet biztosítanak a számítási csomópontok számára. Ha több Storage-fiók van, akkor minden egyes Storage-fiókhoz használjon véletlenszerű nevet, előtag nélkül. A véletlenszerű elnevezések célja, hogy csökkentse a tárolási torlódások (szabályozás) és az összes fiók általános módú meghibásodásának esélyét. A jobb teljesítmény érdekében csak egy tárolót használjon Storage-fiókkal.
 
 **VM-méret és-típus (mostantól támogatja a G sorozatot)**  
 Minden egyes fürt típusa csomópont típusú, és mindegyik csomópont típusa speciális beállításokkal rendelkezik a virtuálisgép-mérethez és-típushoz. A virtuális gép méretét és típusát a CPU feldolgozási teljesítmény, a RAM mérete és a hálózati késés határozza meg. A virtuális gépek optimális méretének és típusának meghatározásához szimulált számítási feladatok használhatók.
@@ -52,35 +52,35 @@ A helyszíni fürtökben elérhető, de nem a HDInsight-fürtök részét képez
 |**Alkalmazás**|**Integráció**
 |---|---|
 |Légáramlás|IaaS vagy HDInsight Edge-csomópont
-|Alluxio|IaaS  
-|Arcadia|IaaS 
+|Alluxio|IaaS  
+|Arcadia|IaaS 
 |Atlaszi|Nincs (csak HDP)
 |Datameer|HDInsight Edge-csomópont
 |Datastax (Cassandra)|IaaS (alternatív CosmosDB az Azure-on)
-|DataTorrent|IaaS 
-|Drill|IaaS 
+|DataTorrent|IaaS 
+|Drill|IaaS 
 |Ignite|IaaS
-|Jethro|IaaS 
-|Mapador|IaaS 
+|Jethro|IaaS 
+|Mapador|IaaS 
 |Mongo|IaaS (alternatív CosmosDB az Azure-on)
-|NiFi|IaaS 
+|NiFi|IaaS 
 |Presto|IaaS vagy HDInsight Edge-csomópont
-|Python 2|PaaS 
-|Python 3|PaaS 
-|R|PaaS 
-|SAS|IaaS 
+|Python 2|PaaS 
+|Python 3|PaaS 
+|R|PaaS 
+|SAS|IaaS 
 |Vertica|IaaS (alternatív SQLDW az Azure-on)
-|Tableau|IaaS 
+|Tableau|IaaS 
 |Vízvonal|HDInsight Edge-csomópont
-|StreamSets|HDInsight Edge 
-|Palantír|IaaS 
-|Sailpoint|IaaS 
+|StreamSets|HDInsight Edge 
+|Palantír|IaaS 
+|Sailpoint|IaaS 
 
 További információ: [Apache Hadoop különböző HDInsight-verziókban elérhető összetevők](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) .
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>HDInsight-fürtök testreszabása parancsfájl-műveletek használatával
 
-A HDInsight egy **parancsfájl-műveletnek**nevezett fürtkonfiguráció-metódust biztosít. A parancsfájl művelet olyan bash-parancsfájl, amely egy HDInsight-fürt csomópontjain fut, és további összetevők telepítéséhez és a konfigurációs beállítások módosításához használható.
+A HDInsight egy **parancsfájl-műveletnek** nevezett fürtkonfiguráció-metódust biztosít. A parancsfájl művelet olyan bash-parancsfájl, amely egy HDInsight-fürt csomópontjain fut, és további összetevők telepítéséhez és a konfigurációs beállítások módosításához használható.
 
 A parancsfájl-műveleteket olyan URI-n kell tárolni, amely elérhető a HDInsight-fürtből. A fürtök létrehozása során vagy után is használhatók, és csak bizonyos csomópontok esetében korlátozhatók.
 
@@ -101,7 +101,7 @@ A HDInsight előre megírt parancsfájlokat biztosít a következő összetevők
 
 A parancsfájlok műveletei az Azure Marketplace-en is HDInsight-alkalmazásként közzétehetők.
 
-További információkért tekintse át a következő cikkeket:
+További információkat az következő cikkekben talál:
 
 - [Külső gyártótól származó Apache Hadoop alkalmazások telepítése a HDInsight-on](../hdinsight-apps-install-applications.md)
 - [HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](../hdinsight-hadoop-customize-cluster-linux.md)
@@ -109,7 +109,7 @@ További információkért tekintse át a következő cikkeket:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>HDInsight-konfigurációk testreszabása a bootstrap használatával
 
-A konfigurációs fájlokban lévő konfigurációk módosításai, például a `core-site.xml` , `hive-site.xml` és a `oozie-env.xml` bootstrap használatával hozhatók létre. A következő szkript egy példa a PowerShell az [Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) parancsmag [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)használatával:
+A konfigurációs fájlokban lévő konfigurációk módosításai, például a `core-site.xml` , `hive-site.xml` és a `oozie-env.xml` bootstrap használatával hozhatók létre. A következő szkript egy példa a PowerShell az [Module](/powershell/azure/new-azureps-module-az) parancsmag [New-AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster)használatával:
 
 ```powershell
 # hive-site.xml configuration
@@ -172,7 +172,7 @@ A HDInsight új vagy meglévő Azure-Virtual Networkhoz is hozzáadhatók. Ha a 
 > [!Note]  
 > A HDInsight jelenleg nem támogatja a kényszerített bújtatást. A kényszerített bújtatás egy olyan alhálózat-beállítás, amely az eszközre irányuló kimenő internetes forgalmat ellenőrzés és naplózás céljából kényszeríti. Távolítsa el a kényszerített bújtatást, mielőtt telepítené a HDInsight egy alhálózatba, vagy hozzon létre egy új alhálózatot a HDInsight. A HDInsight emellett nem támogatja a kimenő hálózati kapcsolatok korlátozását.
 
-További információkért tekintse át a következő cikkeket:
+További információkat az következő cikkekben talál:
 
 - [Azure Virtual-Networks – áttekintés](../../virtual-network/virtual-networks-overview.md)
 - [Azure HDInsight kiterjesztése Azure virtuális hálózat használatával](../hdinsight-plan-virtual-network-deployment.md)
@@ -181,7 +181,7 @@ További információkért tekintse át a következő cikkeket:
 
 A HDInsight támogatja a [virtuális hálózati szolgáltatás-végpontokat](../../virtual-network/virtual-network-service-endpoints-overview.md), amelyek lehetővé teszik az Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos db és SQL-adatbázisokhoz való biztonságos kapcsolódást. A szolgáltatás-végpont Azure HDInsight való engedélyezésével a forgalom a biztonságos útvonalon halad át az Azure-adatközponton belül. Ezzel a fokozott biztonsággal a hálózati rétegben zárolhatja big data Storage-fiókjait a megadott virtuális hálózatokra (virtuális hálózatok), és továbbra is zökkenőmentesen használhatja a HDInsight-fürtöket az adateléréshez és a feldolgozáshoz.
 
-További információkért tekintse át a következő cikkeket:
+További információkat az következő cikkekben talál:
 
 - [Virtuális hálózati szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)
 - [A HDInsight biztonság növelése a szolgáltatási végpontokkal](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
@@ -196,6 +196,6 @@ A HDInsight Azure-beli virtuális hálózatok és VPN-átjáró használatával 
 
 További információ: a [HDInsight összekapcsolása a helyszíni hálózattal](../connect-on-premises-network.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikket ebben a sorozatban: [a helyszíni tárolásra vonatkozó ajánlott eljárásokat a Azure HDInsight Hadoop áttelepítéshez](apache-hadoop-on-premises-migration-best-practices-storage.md).

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 8031e917d998b877e6c3a5830d69abf81c9bdebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086721"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533291"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Twitter-adataik elemzése Apache Hive és Apache Hadoop használatával a HDInsight-on
 
@@ -30,31 +30,31 @@ A Twitter lehetővé teszi az egyes tweetek JavaScript Object Notation (JSON) do
 
 1. Egy webböngészőből jelentkezzen be a következőbe: [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) . Ha nem rendelkezik Twitter-fiókkal, válassza a **regisztráció most** hivatkozást.
 
-2. Válassza az **új alkalmazás létrehozása**lehetőséget.
+2. Válassza az **új alkalmazás létrehozása** lehetőséget.
 
-3. Adja meg a **nevet**, a **leírást**, a **webhelyet**. Létrehozhat egy URL-címet a **webhely** mezőhöz. A következő táblázat a használandó példákat tartalmazza:
+3. Adja meg a **nevet** , a **leírást** , a **webhelyet** . Létrehozhat egy URL-címet a **webhely** mezőhöz. A következő táblázat a használandó példákat tartalmazza:
 
    | Mező | Érték |
    |--- |--- |
-   | Name (Név) |MyHDInsightApp |
+   | Név |MyHDInsightApp |
    | Leírás |MyHDInsightApp |
    | Webhely |`https://www.myhdinsightapp.com` |
 
-4. Válassza az **Igen, elfogadom**lehetőséget, majd válassza **a Twitter-alkalmazás létrehozása**lehetőséget.
+4. Válassza az **Igen, elfogadom** lehetőséget, majd válassza **a Twitter-alkalmazás létrehozása** lehetőséget.
 
-5. Válassza az **engedélyek** fület. Az alapértelmezett engedély **csak olvasható**.
+5. Válassza az **engedélyek** fület. Az alapértelmezett engedély **csak olvasható** .
 
 6. Válassza a **kulcsok és hozzáférési tokenek** fület.
 
-7. Válassza **a saját hozzáférési jogkivonat létrehozása**lehetőséget.
+7. Válassza **a saját hozzáférési jogkivonat létrehozása** lehetőséget.
 
 8. A lap jobb felső sarkában válassza a **teszt OAuth** elemet.
 
-9. Jegyezze fel a fogyasztói kulcsot, a **fogyasztói titkos**kulcsot, a **hozzáférési tokent**és a **hozzáférési jogkivonat titkos** **kulcsát**.
+9. Jegyezze fel a fogyasztói kulcsot, a **fogyasztói titkos** kulcsot, a **hozzáférési tokent** és a **hozzáférési jogkivonat titkos** **kulcsát** .
 
 ### <a name="download-tweets"></a>Tweetek letöltése
 
-A következő Python-kód letölti az 10 000 tweeteket a Twitterről, és menti azokat egy **tweets.txt**nevű fájlba.
+A következő Python-kód letölti az 10 000 tweeteket a Twitterről, és menti azokat egy **tweets.txt** nevű fájlba.
 
 > [!NOTE]  
 > A HDInsight-fürtön a következő lépések végezhetők el, mivel a Python már telepítve van.
@@ -78,7 +78,7 @@ A következő Python-kód letölti az 10 000 tweeteket a Twitterről, és menti 
    pip install tweepy progressbar pyOpenSSL requests[security]
    ```
 
-1. A következő parancs használatával hozzon létre egy **gettweets.py**nevű fájlt:
+1. A következő parancs használatával hozzon létre egy **gettweets.py** nevű fájlt:
 
    ```bash
    nano gettweets.py
@@ -143,7 +143,7 @@ A következő Python-kód letölti az 10 000 tweeteket a Twitterről, és menti 
     > [!TIP]  
     > Módosítsa a témakörök szűrőt az utolsó sorban a népszerű kulcsszavak nyomon követéséhez. A parancsfájl futtatásának időpontjában népszerű kulcsszavakat használva gyorsabb adatrögzítést tesz lehetővé.
 
-1. A fájl mentéséhez használja a **CTRL + X billentyűkombinációt**, majd az **Y** billentyűt.
+1. A fájl mentéséhez használja a **CTRL + X billentyűkombinációt** , majd az **Y** billentyűt.
 
 1. Futtassa a következő parancsot a fájl futtatásához és a tweetek letöltéséhez:
 
@@ -283,7 +283,7 @@ Ezek a parancsok olyan helyen tárolják az adattárakat, amelyet a fürt össze
    WHERE (length(json_response) > 500);
    ```
 
-1. Nyomja le a **CTRL + X**billentyűkombinációt, majd nyomja le az **Y** billentyűt a fájl mentéséhez.
+1. Nyomja le a **CTRL + X** billentyűkombinációt, majd nyomja le az **Y** billentyűt a fájl mentéséhez.
 
 1. A következő parancs használatával futtassa a fájlban található HiveQL:
 
@@ -308,9 +308,9 @@ Ezek a parancsok olyan helyen tárolják az adattárakat, amelyet a fürt össze
     > [!NOTE]  
     > Ha módosította a szűrőt a `gettweets.py` parancsfájlban, cserélje le az **Azure** -t a használt szűrők egyikére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan alakíthat át strukturálatlan JSON-adatkészletet egy strukturált [Apache Hive](https://hive.apache.org/) táblázatba. Ha többet szeretne megtudni a HDInsight-beli Kaptárról, tekintse meg a következő dokumentumokat:
 
 * [Ismerkedés a HDInsight szolgáltatással](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Repülési késleltetési idő elemzése az HDInsight használatával](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Repülési késleltetési idő elemzése az HDInsight használatával](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

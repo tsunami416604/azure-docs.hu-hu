@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fbfb2aef838dbef6e7403e635f5bce42bf9ec901
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487262"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542318"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight-fürt kezelése – ajánlott eljárások
 
@@ -26,12 +26,12 @@ Ismerje meg a HDInsight-fürtök kezelésének ajánlott eljárásait.
 | Azure Data Factory | [Igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával](./hdinsight-hadoop-create-linux-clusters-adf.md) |
 | Egyéni Resource Manager-sablon | [Apache Hadoop-fürtök létrehozása a HDInsight-ben Resource Manager-sablonok használatával](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | Gyorssablonok | [HDInsight gyors üzembe helyezési sablonok](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
-| Azure-minták | [HDInsight Azure-minták](https://docs.microsoft.com/samples/browse/?products=azure-hdinsight) |
+| Azure-minták | [HDInsight Azure-minták](/samples/browse/?products=azure-hdinsight) |
 | Azure Portal | [Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [HDInsight-fürtök létrehozása az Azure CLI használatával](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Linux-alapú fürtök létrehozása a HDInsight-ben a Azure PowerShell használatával](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Apache Hadoop-fürtök létrehozása az Azure REST API használatával](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| SDK-k (.NET, Python, Java) | [.Net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python&preserve-view=true), [Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable&preserve-view=true), [Go](https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview) |
+| SDK-k (.NET, Python, Java) | [.Net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight?preserve-view=true&view=azure-java-stable), [Go](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > Ha egy korábban létrehozott fürtből hoz létre fürtöt, és újból felhasználja a fürtöt, várjon, amíg a fürt létrehozása előtt a fürt korábbi törlése be nem fejeződik.
@@ -62,7 +62,7 @@ Ismerje meg a HDInsight-fürtök kezelésének ajánlott eljárásait.
 | Manuális skálázás | [Azure HDInsight-fürtök méretezése](./hdinsight-scaling-best-practices.md) |
 | Figyelés a Ambari| [A fürt teljesítményének figyelése az Azure HDInsight](./hdinsight-key-scenarios-to-monitor.md) |
 | Figyelés Azure Monitor naplókkal | [Azure Monitor-naplók használata HDInsight-fürtök monitorozásához](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |
-| Szolgáltatási problémák, tervezett karbantartás, Health & biztonsági tanácsadók | [Előfizetés-specifikus szolgáltatás állapotára vonatkozó riasztások](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal) |
+| Szolgáltatási problémák, tervezett karbantartás, Health & biztonsági tanácsadók | [Előfizetés-specifikus szolgáltatás állapotára vonatkozó riasztások](../service-health/alerts-activity-log-service-notifications-portal.md) |
 
 
 ## <a name="how-do-i-check-on-deleted-hdinsight-clusters"></a>Hogyan a törölt HDInsight-fürtök ellenőrzését?

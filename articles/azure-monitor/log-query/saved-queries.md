@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: 462358ab967d4ba26a265d7b5f401b995223815e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d712aab6dcb52f64af340b3110e475c8da2b10
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85959842"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542607"
 ---
 # <a name="saved-queries-in-azure-monitor-log-analytics"></a>Mentett lekérdezések Azure Monitor Log Analytics
 
@@ -38,7 +38,7 @@ A lekérdezéseket két különböző helyről is elérheti.
 
 ### <a name="example-query-dialog"></a>Példa lekérdezési párbeszédpanelre
 
-Amikor először megadja a Log Analytics élményt, a *lekérdezési példa* automatikusan megjelenik.  A képernyő jobb felső részén található **lekérdezésekre**kattintva is elérhető.
+Amikor először megadja a Log Analytics élményt, a *lekérdezési példa* automatikusan megjelenik.  A képernyő jobb felső részén található **lekérdezésekre** kattintva is elérhető.
 
 ![Oldalsáv](media/saved-queries/sidebar-2.png)
 
@@ -54,7 +54,7 @@ Az egyes példák lekérdezéseit egy kártya jelöli. A lekérdezéseket gyorsa
 
 A párbeszédpanel teljes funkcionalitása a Log Analytics bal oldali oldalsávjának lekérdezések paneljéről érhető el. A lekérdezési Leírás és a további funkciók megjelenítéséhez vigye a kurzort a lekérdezés nevére.
 
-![Oldalsáv](media/saved-queries/sidebar-3.png)
+![A lekérdezések ablaktáblát megjelenítő képernyőkép.](media/saved-queries/sidebar-3.png)
 
 ## <a name="finding-and-filtering-queries"></a>Lekérdezések keresése és szűrése
 
@@ -80,13 +80,13 @@ Módosítsa a lekérdezések csoportosítását úgy, hogy rákattint a *Csoport
 A párbeszédpanel támogatja a csoportosítást:
 
 - **Erőforrástípus** – az Azure-ban definiált erőforrás, például egy virtuális gép. A Azure Monitor naplók/Log Analytics táblák erőforrás-típusra való teljes leképezéséhez tekintse meg a [Azure monitor Table referenciát](/azure/azure-monitor/reference/tables/tables-resourcetype) .  
-- **Kategória** – olyan típusú információk, mint például a *Biztonság* vagy a *naplózás*. A kategóriák azonosak a táblák oldalsó ablaktábláján definiált kategóriákkal. A kategóriák teljes listájáért tekintse meg a [Azure monitor Table referenciát](/azure/azure-monitor/reference/tables/tables-category) .  
+- **Kategória** – olyan típusú információk, mint például a *Biztonság* vagy a *naplózás* . A kategóriák azonosak a táblák oldalsó ablaktábláján definiált kategóriákkal. A kategóriák teljes listájáért tekintse meg a [Azure monitor Table referenciát](/azure/azure-monitor/reference/tables/tables-category) .  
 - **Megoldás** – a lekérdezésekhez társított Azure monitor megoldás
-- **Témakör** – a példa lekérdezésének témája, például a *tevékenység naplói* vagy az *alkalmazás naplói*. A témakör tulajdonság egyedi a lekérdezésekhez, és az adott erőforrástípus alapján eltérő lehet.
+- **Témakör** – a példa lekérdezésének témája, például a *tevékenység naplói* vagy az *alkalmazás naplói* . A témakör tulajdonság egyedi a lekérdezésekhez, és az adott erőforrástípus alapján eltérő lehet.
 
 A csoportosítási értékek szintén aktív tartalomjegyzékként működnek. Ha a képernyő bal oldalán lévő értékekre kattint, a lekérdezések nézet jobbra görgeti a rákattintott elemre.
 
-### <a name="filter"></a>Szűrő
+### <a name="filter"></a>Szűrés
 
 A lekérdezéseket a korábban említett groupby-értékek alapján szűrheti is. A példában a lekérdezés párbeszédpanelen a szűrők felül találhatók.
 
@@ -108,7 +108,7 @@ A minta lekérdezés előugró felületét mindig elérheti a Log Analytics fels
 
 A felhasználó által generált lekérdezések mentésére és megosztására szolgáló Query Explorer felhasználói felülete változatlan marad.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerkedés a KQL-lekérdezésekkel](get-started-queries.md)
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9564e149055dcabf205694b3cf6c3ddc03163037
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77539110"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533835"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Forgatókönyv: az Apache Ambari elavult riasztások az Azure HDInsight
 
@@ -46,17 +46,17 @@ Az egyéni riasztási időköz értékét a fürt válaszideje és a terhelés a
 
 1. Az Apache Ambari felhasználói felületén válassza a **riasztások** fület.
 1. Válassza ki a kívánt riasztási definíció nevét.
-1. A definícióban válassza a **Szerkesztés**lehetőséget.
-1. Növelje az **ellenőrzési időköz** értékét, majd kattintson a **Mentés**gombra.
+1. A definícióban válassza a **Szerkesztés** lehetőséget.
+1. Növelje az **ellenőrzési időköz** értékét, majd kattintson a **Mentés** gombra.
 
 ### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Ambari-kiszolgálói riasztások riasztási időközének megnövelt időtartama
 
 1. Az Apache Ambari felhasználói felületén válassza a **riasztások** fület.
-1. A **csoportok** legördülő listában válassza a **AMBARI alapértelmezett**lehetőséget.
+1. A **csoportok** legördülő listában válassza a **AMBARI alapértelmezett** lehetőséget.
 1. Válassza ki a **Ambari-kiszolgáló riasztásai** riasztást.
-1. A definícióban válassza a **Szerkesztés**lehetőséget.
+1. A definícióban válassza a **Szerkesztés** lehetőséget.
 1. Növelje az **ellenőrzési intervallum** értékét.
-1. Növelje az **intervallum szorzó** értékét, majd kattintson a **Mentés**gombra.
+1. Növelje az **intervallum szorzó** értékét, majd kattintson a **Mentés** gombra.
 
 ### <a name="disable-and-reenable-the-alert"></a>A riasztás letiltása és újraengedélyezése
 
@@ -65,10 +65,10 @@ Az elavult riasztások elvetéséhez tiltsa le, majd engedélyezze újra a köve
 1. Az Apache Ambari felhasználói felületén válassza a **riasztások** fület.
 1. Válassza ki a kívánt riasztási definíció nevét.
 1. A definícióban válassza az **engedélyezve** lehetőséget a felhasználói felület jobb szélen lévő részén.
-1. A **megerősítő** előugró ablakban válassza a **Letiltás megerősítése**lehetőséget.
+1. A **megerősítő** előugró ablakban válassza a **Letiltás megerősítése** lehetőséget.
 1. Várjon néhány másodpercet az oldalon látható összes riasztási "példány" törléséhez.
 1. A definícióban válassza a **Letiltva** lehetőséget a felhasználói felület jobb szélen lévő részén.
-1. A **megerősítő** előugró ablakban válassza az **Engedélyezés megerősítése**lehetőséget.
+1. A **megerősítő** előugró ablakban válassza az **Engedélyezés megerősítése** lehetőséget.
 
 ### <a name="increase-the-alert-grace-period"></a>A riasztási türelmi időszak javítása
 
@@ -76,7 +76,7 @@ Van egy türelmi időszak, mielőtt egy Ambari-ügynök jelentést készít arr�
 
 Az alapértelmezett `alert_grace_period` érték 5 másodperc. Ezt a beállítást a/etc/ambari-Agent/conf/ambari-agent.ini is konfigurálhatja. Azokon a gazdagépeken, amelyeken az elavult riasztások rendszeres időközönként történnek, próbálja meg növelni az értéket 10-re. Ezután indítsa újra a Ambari-ügynököt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a probléma nem szerepel itt, vagy nem tudja megoldani a problémát, látogasson el a következő csatornák egyikére, további támogatásért:
 
@@ -84,6 +84,6 @@ Ha a probléma nem szerepel itt, vagy nem tudja megoldani a problémát, látoga
 
 * Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a Twitteren. Ez a hivatalos Microsoft Azure fiók a felhasználói élmény javításához. Összekapcsolja az Azure-Közösséget a megfelelő erőforrásokkal: válaszokkal, támogatással és szakértőkkel.
 
-* Ha további segítségre van szüksége, nyújtson be egy támogatási kérést a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Ide kattintva válassza a Súgó (**?**) lehetőséget a portál menüjében, vagy nyissa meg a **Súgó + támogatás** ablaktáblát. További információ: [Azure-támogatási kérelem létrehozása](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
+* Ha további segítségre van szüksége, nyújtson be egy támogatási kérést a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Ide kattintva válassza a Súgó ( **?** ) lehetőséget a portál menüjében, vagy nyissa meg a **Súgó + támogatás** ablaktáblát. További információ: [Azure-támogatási kérelem létrehozása](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
   Az előfizetés-kezelés és a számlázás támogatását a Microsoft Azure-előfizetés tartalmazza. A technikai támogatás az Azure- [támogatási csomagokon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
