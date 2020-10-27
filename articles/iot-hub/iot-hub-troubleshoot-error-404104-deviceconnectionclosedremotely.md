@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 673a76417739fa59a91979cca7c6807a584868f0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81758728"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538255"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
@@ -24,25 +24,25 @@ Ez a cikk a **404104 DeviceConnectionClosedRemotely** -hibák okait és megoldá
 
 ### <a name="symptom-1"></a>1. tünet
 
-Az eszközök rendszeres időközönként (65 percenként) leválasztják az eszközöket, és a **404104 DeviceConnectionClosedRemotely** IoT hub diagnosztikai naplókban láthatja. Időnként a **401003 IoTHubUnauthorized** és a sikeres eszköz-kapcsolati esemény is látható, amely kevesebb, mint egy perc múlva.
+Az eszközök rendszeres időközönként (65 percenként) leválasztják a leválasztást, és a **404104 DeviceConnectionClosedRemotely** IoT hub erőforrás-naplókban láthatja. Időnként a **401003 IoTHubUnauthorized** és a sikeres eszköz-kapcsolati esemény is látható, amely kevesebb, mint egy perc múlva.
 
 ### <a name="symptom-2"></a>2. tünet
 
-Az eszközök véletlenszerűen bontja a kapcsolatot, és a IoT Hub diagnosztikai naplókban a **404104 DeviceConnectionClosedRemotely** látható.
+Az eszközök véletlenszerűen bontja a kapcsolatot, és a IoT Hub erőforrás-naplókban a **404104 DeviceConnectionClosedRemotely** látható.
 
 ### <a name="symptom-3"></a>3. tünet
 
-Számos eszköz egyszerre bontja a kapcsolatot, a [csatlakoztatott eszközök metrikája](iot-hub-metrics.md)látható, és a szokásosnál több **404104 DeviceConnectionClosedRemotely** és [500xxx belső hiba](iot-hub-troubleshoot-error-500xxx-internal-errors.md) történt a diagnosztikai naplókban.
+Számos eszköz bontja a kapcsolatot egyszerre, a [csatlakoztatott eszközök (connectedDeviceCount) metrikájában](monitor-iot-hub-reference.md)egy dip látható, és a szokásosnál több **404104 DeviceConnectionClosedRemotely** és [500xxx belső Azure monitor hiba](iot-hub-troubleshoot-error-500xxx-internal-errors.md) történik.
 
 ## <a name="causes"></a>Okok
 
-### <a name="cause-1"></a>1. ok
+### <a name="cause-1"></a>1\. ok
 
 A IoT Hub lejártához való [csatlakozáshoz használt sas-jogkivonat](iot-hub-devguide-security.md#security-tokens) , amely IoT hub az eszköz leválasztását okozza. A kapcsolat újra létrejön, amikor az eszköz frissíti a tokent. Például [az SAS-jogkivonat minden órában lejár, alapértelmezés szerint a C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication)-hoz, ami rendszeres leválasztást eredményezhet.
 
 További információ: [401003 IoTHubUnauthorized ok](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#cause-1).
 
-### <a name="cause-2"></a>2. ok
+### <a name="cause-2"></a>2\. ok
 
 Néhány lehetőség a következőkre terjed ki:
 

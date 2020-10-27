@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087605"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536334"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz
 
@@ -23,14 +23,14 @@ A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz val
 
 ## <a name="ml-services-on-azure-hdinsight"></a>ML szolgáltatások az Azure HDInsight
 
-Az [Azure HDInsight ml-szolgáltatásai](r-server-overview.md) az R-alapú elemzések legújabb képességeit biztosítják. Az [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") Storage-fiók, a Data Lake Store vagy a helyi Linux fájlrendszer Apache Hadoop HDFS tárolt adatait is használhatja. Mivel a ML-szolgáltatások nyílt forráskódú R-re épülnek, az Ön által létrehozott R-alapú alkalmazások a 8000-es és a nyílt forráskódú R-csomagok bármelyikét alkalmazhatják. Emellett a [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a Microsoft Big Data Analytics-csomagjában található rutinokat is használhatják, amelyek a ml-szolgáltatások részét képezik.  
+Az [Azure HDInsight ml-szolgáltatásai](r-server-overview.md) az R-alapú elemzések legújabb képességeit biztosítják. Az [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") Storage-fiók, a Data Lake Store vagy a helyi Linux fájlrendszer Apache Hadoop HDFS tárolt adatait is használhatja. Mivel a ML-szolgáltatások nyílt forráskódú R-re épülnek, az Ön által létrehozott R-alapú alkalmazások a 8000-es és a nyílt forráskódú R-csomagok bármelyikét alkalmazhatják. Emellett a [RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler), a Microsoft Big Data Analytics-csomagjában található rutinokat is használhatják, amelyek a ml-szolgáltatások részét képezik.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Az Edge-csomópont számítási környezete
 
 Általánosságban elmondható, hogy egy, az Edge-csomóponton található ML Services-fürtön futó R-szkript az adott csomóponton az R-tolmácson belül fut. A kivételek a RevoScaleR függvényt meghívó lépések. A RevoScaleR-hívások olyan számítási környezetben futnak, amelyet a RevoScaleR számítási környezetének beállítása határoz meg.  Ha az R-szkriptet egy peremhálózati csomópontról futtatja, a számítási környezet lehetséges értékei a következők:
 
-- helyi szekvenciális (*helyi*)
-- helyi párhuzamos (*localpar*)
+- helyi szekvenciális ( *helyi* )
+- helyi párhuzamos ( *localpar* )
 - Leképezés csökkentése
 - Spark
 
@@ -38,7 +38,7 @@ A *helyi* és a *localpar* beállítások csak a **rxExec** -hívások végrehaj
 
 A következő táblázat összefoglalja a különböző számítási környezeti beállításokat a hívások végrehajtásának beállításához:
 
-| Számítási környezet  | A beállítás módja                      | Végrehajtás környezete                        |
+| Számítási környezet  | A beállítás módja                      | Végrehajtási környezet                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
 | Helyi szekvenciális | rxSetComputeContext ("local")    | Párhuzamos végrehajtás a peremhálózati csomópont-kiszolgáló magjai között, a rxExec-hívások kivételével, amelyeket a rendszer a sorosan hajt végre. |
 | Helyi párhuzamos   | rxSetComputeContext('localpar') | Párhuzamos végrehajtás a peremhálózati csomópont-kiszolgáló magjai között |
@@ -59,12 +59,12 @@ Ezen alapelvek alapján a következő szakaszokban a számítási környezet kiv
 
 ### <a name="local"></a>Helyi
 
-- Ha az elemezni kívánt adat mennyisége kicsi, és nem igényel ismétlődő elemzést, akkor közvetlenül az elemzési rutinba továbbítja a *helyi* vagy *localpar*használatával.
-- Ha az elemzett adat mennyisége kis vagy közepes méretű, és ismétlődő elemzést igényel, akkor másolja a helyi fájlrendszerbe, importálja a XDF, és elemezze a *helyi* vagy *localpar*keresztül.
+- Ha az elemezni kívánt adat mennyisége kicsi, és nem igényel ismétlődő elemzést, akkor közvetlenül az elemzési rutinba továbbítja a *helyi* vagy *localpar* használatával.
+- Ha az elemzett adat mennyisége kis vagy közepes méretű, és ismétlődő elemzést igényel, akkor másolja a helyi fájlrendszerbe, importálja a XDF, és elemezze a *helyi* vagy *localpar* keresztül.
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Ha az elemezni kívánt adatok mennyisége nagy, akkor importálja azt egy Spark-DataFrame **RxHiveData** vagy **RxParquetData**használatával, vagy XDF a HDFS-ben (kivéve, ha a tár problémát jelent), és elemezni szeretné a Spark számítási környezet használatával.
+- Ha az elemezni kívánt adatok mennyisége nagy, akkor importálja azt egy Spark-DataFrame **RxHiveData** vagy **RxParquetData** használatával, vagy XDF a HDFS-ben (kivéve, ha a tár problémát jelent), és elemezni szeretné a Spark számítási környezet használatával.
 
 ### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Térkép csökkentése
 
@@ -77,9 +77,9 @@ További információ és példák a RevoScaleR számítási környezetekre: a r
 > ?rxSetComputeContext
 ```
 
-A [Machine learning Server dokumentációjának](https://docs.microsoft.com/machine-learning-server/) [elosztott számítástechnikai áttekintését](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) is megtekintheti.
+A [Machine learning Server dokumentációjának](/machine-learning-server/) [elosztott számítástechnikai áttekintését](/machine-learning-server/r/how-to-revoscaler-distributed-computing) is megtekintheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogy milyen lehetőségek állnak rendelkezésre annak megadásához, hogy a végrehajtás hogyan és hogyan legyen párhuzamos a peremhálózati csomópont vagy a HDInsight-fürt magjai között. Ha többet szeretne megtudni a HDInsight-fürtökkel rendelkező ML-szolgáltatások használatáról, tekintse meg a következő témaköröket:
 

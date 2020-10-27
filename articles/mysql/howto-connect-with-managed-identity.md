@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b656ff670d4ab4d50f4b6dfbd1c60bfe3db22dd
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 63a9a0acc7a3cb7f5b5a5d451ab6199ec5f1390f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425253"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546738"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Csatlakozás felügyelt identitással az Azure Database for MySQL-hez
 
@@ -38,13 +38,13 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>Felhasználóhoz rendelt felügyelt identitás létrehozása a virtuális géphez
 
-Hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amelyben a virtuális gép fut, vagy egy másik.
+Hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identity#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amelyben a virtuális gép fut, vagy egy másik.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-Az identitásnak az alábbi lépésekben való konfigurálásához használja az az [Identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) parancsot az identitás erőforrás-azonosítójának és ügyfél-azonosítójának a változókban való tárolásához.
+Az identitásnak az alábbi lépésekben való konfigurálásához használja az az [Identity show](/cli/azure/identity#az-identity-show) parancsot az identitás erőforrás-azonosítójának és ügyfél-azonosítójának a változókban való tárolásához.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -54,7 +54,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-Most már hozzárendelheti a felhasználó által hozzárendelt identitást a virtuális géphez az az [VM Identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) paranccsal:
+Most már hozzárendelheti a felhasználó által hozzárendelt identitást a virtuális géphez az az [VM Identity assign](/cli/azure/vm/identity#az-vm-identity-assign) paranccsal:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID

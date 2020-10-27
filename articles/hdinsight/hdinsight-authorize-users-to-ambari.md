@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: fc10d385df1dffed07e771d622d9bf9d8bedee39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1cd6d93ff45d7fb40ae7ca1874343486bd0b8cb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086534"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547928"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése felhasználók számára
 
@@ -24,7 +24,7 @@ Active Directory felhasználók tartományi hitelesítő adataikkal jelentkezhet
 > [!WARNING]  
 > Ne változtassa meg a Ambari watchdog (hdinsightwatchdog) jelszavát a Linux-alapú HDInsight-fürtön. A jelszó módosítása megszakítja a parancsfájl-műveletek használatát, vagy skálázási műveleteket hajt végre a fürtön.
 
-Ha még nem tette meg, kövesse az [alábbi utasításokat](./domain-joined/apache-domain-joined-configure.md) egy új ESP-fürt kiépítéséhez.
+Ha még nem tette meg, kövesse az [alábbi utasításokat](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) egy új ESP-fürt kiépítéséhez.
 
 ## <a name="access-the-ambari-management-page"></a>A Ambari-kezelés lap elérése
 
@@ -36,13 +36,13 @@ Az [Apache Ambari webes felületén](hdinsight-hadoop-manage-ambari.md)találhat
 
 ### <a name="add-users-through-the-portal"></a>Felhasználók hozzáadása a portálon keresztül
 
-1. A felügyelet lapon válassza a **felhasználók**lehetőséget.
+1. A felügyelet lapon válassza a **felhasználók** lehetőséget.
 
     ![Apache Ambari-kezelési oldal felhasználói](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
 
-1. Válassza a **+ helyi felhasználó létrehozása**lehetőséget.
+1. Válassza a **+ helyi felhasználó létrehozása** lehetőséget.
 
-1. Adja meg a **felhasználónevet** és a **jelszót**. Válassza a **Mentés**lehetőséget.
+1. Adja meg a **felhasználónevet** és a **jelszót** . Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-users-through-powershell"></a>Felhasználók hozzáadása a PowerShell-lel
 
@@ -167,7 +167,7 @@ curl -k -u $user:$userPassword -H "X-Requested-By: ambari" \
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Engedélyek megadása Apache Hive nézetekhez
 
-A Ambari többek között a [Apache Hive](https://hive.apache.org/) és az [Apache TEZ](https://tez.apache.org/)megtekintésére szolgáló példányokat tartalmaz. A kaptárak egy vagy több példányához való hozzáférés megadásához nyissa meg a **Ambari-kezelés lapot**.
+A Ambari többek között a [Apache Hive](https://hive.apache.org/) és az [Apache TEZ](https://tez.apache.org/)megtekintésére szolgáló példányokat tartalmaz. A kaptárak egy vagy több példányához való hozzáférés megadásához nyissa meg a **Ambari-kezelés lapot** .
 
 1. A felügyelet lapon válassza ki a **nézetek** hivatkozást a bal oldali **nézetek** menüpont alatt.
 
@@ -191,14 +191,14 @@ A Ambari többek között a [Apache Hive](https://hive.apache.org/) és az [Apac
 
    * Válassza ki vagy fejezze be a beírást, a felhasználónevet. Ha új felhasználóként szeretné felvenni ezt a felhasználónevet, kattintson az **új** gombra.
 
-   * A módosítások mentéséhez jelölje be a **kék jelölőnégyzetet**.
+   * A módosítások mentéséhez jelölje be a **kék jelölőnégyzetet** .
 
      ![Apache Ambari felhasználói engedélyek megadása](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. Csoport hozzáadásához kattintson a **Csoport hozzáadása** gombra.
 
    * Kezdje el beírni a csoport nevét. A meglévő csoportnév kiválasztásának vagy új csoport hozzáadásának folyamata megegyezik a felhasználók hozzáadásával.
-   * A módosítások mentéséhez jelölje be a **kék jelölőnégyzetet**.
+   * A módosítások mentéséhez jelölje be a **kék jelölőnégyzetet** .
 
      ![Apache Ambari-engedélyek megadása](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
@@ -224,7 +224,7 @@ A felhasználók és csoportok öt biztonsági szerepkörrel rendelkeznek, amely
 * Szolgáltatás operátora
 * Fürt felhasználója
 
-A szerepkörök kezeléséhez nyissa meg a **Ambari-kezelés lapot**, majd válassza ki a **szerepkörök** hivatkozást a *fürtök* menü bal oldali csoportjában.
+A szerepkörök kezeléséhez nyissa meg a **Ambari-kezelés lapot** , majd válassza ki a **szerepkörök** hivatkozást a *fürtök* menü bal oldali csoportjában.
 
 ![Apache Ambari-szerepkörök menü hivatkozásai](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 
@@ -266,7 +266,7 @@ Az Azure AD-tartományhoz tartozó "hiveuser2" felhasználót hozzárendelte a *
 
 ![Apache Ambari-irányítópult megjelenítése](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Hive házirendek konfigurálása a HDInsight-ben ESP-vel](./domain-joined/apache-domain-joined-run-hive.md)
 * [ESP HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-manage.md)

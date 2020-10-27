@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362265"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541281"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Teljesítmény-finomhangolás eredményhalmaz gyorsítótárazásával
 
@@ -36,11 +36,15 @@ Ha az eredményhalmaz gyorsítótárazása engedélyezve van, a szinapszis SQL a
 
 Ha az eredményhalmaz gyorsítótárazása be van kapcsolva egy adatbázishoz, a rendszer az összes lekérdezés esetében gyorsítótárazza az eredményeket, amíg a gyorsítótár megtelt, kivéve a következő lekérdezéseket:
 
-- Nem determinisztikus függvények, például DateTime. Now () használatával történő lekérdezések
+- Olyan beépített függvényekkel vagy futásidejű kifejezésekkel rendelkező lekérdezések, amelyek nem determinisztikus, még akkor is, ha az alaptáblák adatai vagy lekérdezése nem változik. Például: DateTime. Now (), GetDate ().
 - Felhasználó által definiált függvényeket használó lekérdezések
 - A sor szintű biztonsági vagy az oszlop szintű biztonsággal rendelkező táblákat használó lekérdezések
 - Az 64 kb nagyobb sorszámú adatvisszaadó lekérdezések
 - Nagyméretű adatmennyiséget (>10 GB-ot) visszaadó lekérdezések 
+>[!NOTE]
+> - Egyes nem determinisztikus függvények és futtatókörnyezeti kifejezések is determinisztikus az azonos adatokkal való ismétlődő lekérdezésekhez. Például ROW_NUMBER ().  
+> - Használja a SORRENDet a lekérdezésben, ha a lekérdezési eredményhalmaz sorainak sorrendje és sorrendje fontos az alkalmazás logikája számára.
+> - Ha az ORDER BY oszlopokban lévő adatok nem egyediek, az ORDER BY Columns utasításban nem szerepelnek garanteed sorok, függetlenül attól, hogy az eredményhalmaz gyorsítótárazása engedélyezve van vagy le van tiltva.
 
 > [!IMPORTANT]
 > Az eredményhalmaz gyorsítótárának létrehozásához és az adatok a gyorsítótárból való lekéréséhez szükséges műveletek a szinapszis SQL Pool-példány vezérlés csomópontján történnek.

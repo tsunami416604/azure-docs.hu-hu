@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 7d703c63ebdc5b70987ead3ed2ccbe5f4843a06f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93ac9a0b8766da70a55ac04f864fe48106fe8774
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004857"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536742"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Az Azure Cache for Redis monitorozása
 
@@ -34,13 +34,13 @@ Az **Áttekintés** panelen a következő előre konfigurált figyelési diagram
 
 ### <a name="monitoring-charts"></a>Figyelési diagramok
 
-Az **Áttekintés** panel **figyelés** szakasza a **találatok és a kimaradás**, a lekérések **, a** **kapcsolatok**és az **összes parancs** diagramot tartalmazza.
+Az **Áttekintés** panel **figyelés** szakasza a **találatok és a kimaradás** , a lekérések **, a** **kapcsolatok** és az **összes parancs** diagramot tartalmazza.
 
 ![Figyelési diagramok](./media/cache-how-to-monitor/redis-cache-monitoring-part.png)
 
 ### <a name="usage-charts"></a>Használati diagramok
 
-Az **Áttekintés** panel **használat** szakasza a **Redis-kiszolgáló terhelését**, a **memóriahasználat**, a **hálózati sávszélesség**és a **CPU-használat** diagramokat tartalmazza, valamint megjeleníti a gyorsítótár-példány **díjszabási szintjét** is.
+Az **Áttekintés** panel **használat** szakasza a **Redis-kiszolgáló terhelését** , a **memóriahasználat** , a **hálózati sávszélesség** és a **CPU-használat** diagramokat tartalmazza, valamint megjeleníti a gyorsítótár-példány **díjszabási szintjét** is.
 
 ![Használati diagramok](./media/cache-how-to-monitor/redis-cache-usage-part.png)
 
@@ -48,26 +48,26 @@ A **díjszabási** csomag megjeleníti a gyorsítótár díjszabási szintjét, 
 
 ## <a name="view-metrics-with-azure-monitor"></a>Metrikák megtekintése az Azure monitorral
 
-Az Redis-metrikák megtekintéséhez és az egyéni diagramok létrehozásához Azure Monitor használatával kattintson a **metrikák** elemre az **erőforrás menüben**, és szabja testre a diagramot a kívánt metrikák, jelentési időköz, diagramtípus és egyéb elemek használatával.
+Az Redis-metrikák megtekintéséhez és az egyéni diagramok létrehozásához Azure Monitor használatával kattintson a **metrikák** elemre az **erőforrás menüben** , és szabja testre a diagramot a kívánt metrikák, jelentési időköz, diagramtípus és egyéb elemek használatával.
 
 ![Redis metrikák](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-A metrikák Azure Monitor használatával történő használatáról a [Microsoft Azure metrikáinak áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál további információt.
+A metrikák Azure Monitor használatával történő használatáról a [Microsoft Azure metrikáinak áttekintése](../azure-monitor/platform/data-platform.md)című témakörben talál további információt.
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Gyorsítótár-metrikák exportálása
 
-Alapértelmezés szerint a Azure Monitor gyorsítótár-metrikái [30 napig tárolódnak](../azure-monitor/platform/data-platform-metrics.md) , majd törlődnek. Ha 30 napnál hosszabb ideig szeretné megőrizni a gyorsítótár-metrikákat, [kijelölheti a Storage-fiókot](../azure-monitor/platform/archive-diagnostic-logs.md) , és megadhatja a gyorsítótár metrikáinak **megőrzési (nap)** szabályzatát. 
+Alapértelmezés szerint a Azure Monitor gyorsítótár-metrikái [30 napig tárolódnak](../azure-monitor/platform/data-platform-metrics.md) , majd törlődnek. Ha 30 napnál hosszabb ideig szeretné megőrizni a gyorsítótár-metrikákat, [kijelölheti a Storage-fiókot](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) , és megadhatja a gyorsítótár metrikáinak **megőrzési (nap)** szabályzatát. 
 
 Storage-fiók konfigurálása a gyorsítótár metrikái számára:
 
-1. Az **Azure cache for Redis** oldalon, a **figyelés** fejléc alatt válassza a **diagnosztika**lehetőséget.
-2. Válassza a **+ diagnosztikai beállítások hozzáadása**elemet.
+1. Az **Azure cache for Redis** oldalon, a **figyelés** fejléc alatt válassza a **diagnosztika** lehetőséget.
+2. Válassza a **+ diagnosztikai beállítások hozzáadása** elemet.
 3. Nevezze el a beállításokat.
-4. Keresse **meg az archívumot egy Storage-fiókban**. A tárolásért és a tranzakciókért a normál adatforgalmi díjat kell fizetnie, amikor diagnosztikát küld egy Storage-fiókba.
+4. Keresse **meg az archívumot egy Storage-fiókban** . A tárolásért és a tranzakciókért a normál adatforgalmi díjat kell fizetnie, amikor diagnosztikát küld egy Storage-fiókba.
 4. Válassza a **Konfigurálás** lehetőséget, hogy kiválassza azt a Storage-fiókot, amelyben tárolni szeretné a gyorsítótár metrikáit.
-5. A táblázat fejlécének **mérőszáma**alatt jelölje be a tárolni kívánt sorok melletti jelölőnégyzetet (például **AllMetrics**). **Adatmegőrzési (nap)** szabályzatot kell megadni. A maximális napok megőrzésének megadható értéke **365 nap**. Ha azonban örökre meg szeretné őrizni a metrikák adatait, állítsa a **megőrzés (nap)** **értéket 0-ra**.
+5. A táblázat fejlécének **mérőszáma** alatt jelölje be a tárolni kívánt sorok melletti jelölőnégyzetet (például **AllMetrics** ). **Adatmegőrzési (nap)** szabályzatot kell megadni. A maximális napok megőrzésének megadható értéke **365 nap** . Ha azonban örökre meg szeretné őrizni a metrikák adatait, állítsa a **megőrzés (nap)** **értéket 0-ra** .
 6. Kattintson a **Mentés** gombra.
 
 
@@ -85,7 +85,7 @@ A metrikák eléréséhez tekintse meg azokat a Azure Portal a jelen cikkben ism
 
 ## <a name="available-metrics-and-reporting-intervals"></a>Elérhető metrikák és jelentéskészítési időközök
 
-A gyorsítótár metrikáit számos jelentési intervallum, például az **elmúlt óra**, a **mai**, a **múlt hét**és az **Egyéni**használatával kell jelenteni. Az egyes metrikák diagram **metrika** paneljén a diagram egyes mérőszámai átlagos, minimális és maximális értékei láthatók, és egyes mérőszámok a jelentési időköz összegét jelenítik meg. 
+A gyorsítótár metrikáit számos jelentési intervallum, például az **elmúlt óra** , a **mai** , a **múlt hét** és az **Egyéni** használatával kell jelenteni. Az egyes metrikák diagram **metrika** paneljén a diagram egyes mérőszámai átlagos, minimális és maximális értékei láthatók, és egyes mérőszámok a jelentési időköz összegét jelenítik meg. 
 
 Minden metrika két verziót tartalmaz. Az egyik mérőszám a teljes gyorsítótárra, valamint a [fürtözést](cache-how-to-premium-clustering.md)használó gyorsítótárak teljesítményére vonatkozóan a metrika egy második, a név részét képező változata a `(Shard 0-9)` gyorsítótárban lévő egyetlen szegmens esetében a teljesítményt is méri. Ha például egy gyorsítótár négy szegmensből `Cache Hits` áll, a teljes gyorsítótárban lévő találatok száma, és `Cache Hits (Shard 3)` csak a gyorsítótárban lévő szegmensek találatai.
 
@@ -125,11 +125,11 @@ A mérőszámok és tevékenységnaplók alapján beállíthatja, hogy milyen ri
 * Webhook meghívása
 * Egy Azure Logic App-alkalmazás meghívása
 
-A gyorsítótár riasztási szabályainak konfigurálásához kattintson a **riasztási szabályok** elemre az **erőforrás menüben**.
+A gyorsítótár riasztási szabályainak konfigurálásához kattintson a **riasztási szabályok** elemre az **erőforrás menüben** .
 
 ![Figyelés](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-A riasztások konfigurálásával és használatával kapcsolatos további információkért lásd: [a riasztások áttekintése](../monitoring-and-diagnostics/insights-alerts-portal.md).
+A riasztások konfigurálásával és használatával kapcsolatos további információkért lásd: [a riasztások áttekintése](../azure-monitor/platform/alerts-classic-portal.md).
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 A Tevékenységnaplók betekintést nyújtanak a Redis-példányok Azure-gyorsítótárában végrehajtott műveletekre. Korábban "naplók" vagy "operatív naplók" néven ismert. A Tevékenységnaplók használatával meghatározhatja a "mi, ki és mikor" minden olyan írási műveletet (PUT, POST, DELETE), amelyet az Azure cache-ben a Redis-példányok számára készített. 

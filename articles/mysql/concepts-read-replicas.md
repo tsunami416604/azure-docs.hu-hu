@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151183"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537966"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -24,7 +24,7 @@ Ha többet szeretne megtudni a MySQL-replikációs funkciókról és problémák
 > [!NOTE]
 > Elfogultság – ingyenes kommunikáció
 >
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Mikor használjon olvasási replikát
@@ -38,7 +38,7 @@ Mivel a replikák csak olvashatók, nem csökkentik közvetlenül az írási kap
 Az olvasási replika funkció MySQL aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A forrás és a replika között mérhető késleltetés történik. A replikán lévő adatok végül konzisztensek maradnak a főkiszolgálón lévő adatokkal. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
 
 > [!IMPORTANT]
-> Az Azure Database for MySQL **SOR**alapú bináris naplózást használ. Ha a táblázatból hiányzik egy elsődleges kulcs, akkor a rendszer a táblázat összes sorában ellenőrzi a DML-műveleteket. Ez megnövekedett replikációs késést okoz. Ahhoz, hogy a replika képes legyen lépést tartani a forrás változásaival, általában azt javasoljuk, hogy adjon hozzá egy elsődleges kulcsot a forráskiszolgálón lévő táblázatokhoz, mielőtt replikakiszolgálót hozna létre, vagy mielőtt újból létrehozná a replikakiszolgálót, ha már van.
+> Az Azure Database for MySQL **SOR** alapú bináris naplózást használ. Ha a táblázatból hiányzik egy elsődleges kulcs, akkor a rendszer a táblázat összes sorában ellenőrzi a DML-műveleteket. Ez megnövekedett replikációs késést okoz. Ahhoz, hogy a replika képes legyen lépést tartani a forrás változásaival, általában azt javasoljuk, hogy adjon hozzá egy elsődleges kulcsot a forráskiszolgálón lévő táblázatokhoz, mielőtt replikakiszolgálót hozna létre, vagy mielőtt újból létrehozná a replikakiszolgálót, ha már van.
 
 ## <a name="cross-region-replication"></a>Régiók közötti replikáció
 A forráskiszolgáló egy másik régióban is létrehozhat egy olvasási replikát. A régiók közötti replikáció hasznos lehet olyan forgatókönyvek esetén, mint például a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
@@ -71,7 +71,7 @@ Azonban a következő szempontokat kell figyelembe venni:
 
 Ha a forráskiszolgáló nem rendelkezik meglévő replika-kiszolgálókkal, a forrás először a replikálás előkészítéséhez újra fog indulni.
 
-A replika létrehozása munkafolyamat indításakor létrejön egy üres Azure Database for MySQL-kiszolgáló. Az új kiszolgáló a forráskiszolgálón lévő adattal van feltöltve. A létrehozási idő a forrásban lévő adatok mennyiségétől és az utolsó heti teljes biztonsági mentés óta eltelt idővel függ. Az idő néhány perctől akár több órára is terjedhet. A replika-kiszolgáló mindig ugyanabban az erőforráscsoportban és előfizetésben jön létre, mint a forráskiszolgálón. Ha egy másik erőforráscsoporthoz vagy egy másik előfizetéshez szeretne replikát létrehozni, akkor [a replika-kiszolgálót a létrehozás után helyezheti át](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) .
+A replika létrehozása munkafolyamat indításakor létrejön egy üres Azure Database for MySQL-kiszolgáló. Az új kiszolgáló a forráskiszolgálón lévő adattal van feltöltve. A létrehozási idő a forrásban lévő adatok mennyiségétől és az utolsó heti teljes biztonsági mentés óta eltelt idővel függ. Az idő néhány perctől akár több órára is terjedhet. A replika-kiszolgáló mindig ugyanabban az erőforráscsoportban és előfizetésben jön létre, mint a forráskiszolgálón. Ha egy másik erőforráscsoporthoz vagy egy másik előfizetéshez szeretne replikát létrehozni, akkor [a replika-kiszolgálót a létrehozás után helyezheti át](../azure-resource-manager/management/move-resource-group-and-subscription.md) .
 
 Minden replika engedélyezve van a tárterület [automatikus növelésére](concepts-pricing-tiers.md#storage-auto-grow). Az automatikus növekedés funkció lehetővé teszi, hogy a replika megőrizze az általa replikált adatmennyiséget, és megakadályozza a tárolási hibák miatti megszakítást a replikálásban.
 
@@ -83,7 +83,7 @@ A létrehozáskor a replika örökli a forráskiszolgáló tűzfalszabályok sza
 
 A replika örökli a rendszergazdai fiókot a forráskiszolgálóról. A forráskiszolgáló összes felhasználói fiókja replikálódik az olvasási replikára. Csak olvasási replikához csatlakozhat a forráskiszolgálón elérhető felhasználói fiókok használatával.
 
-A replikához a hostname és egy érvényes felhasználói fiók használatával kapcsolódhat, ahogy azt egy normál Azure Database for MySQL-kiszolgálón tenné. Ahhoz, hogy egy **myreplica** nevű kiszolgáló rendszergazdai felhasználónevét **myadmin**, a MySQL CLI használatával kapcsolódhat a replikához:
+A replikához a hostname és egy érvényes felhasználói fiók használatával kapcsolódhat, ahogy azt egy normál Azure Database for MySQL-kiszolgálón tenné. Ahhoz, hogy egy **myreplica** nevű kiszolgáló rendszergazdai felhasználónevét **myadmin** , a MySQL CLI használatával kapcsolódhat a replikához:
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
@@ -113,7 +113,7 @@ Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-
 
 Nincs automatikus feladatátvétel a forrás-és a replika-kiszolgálók között. 
 
-Mivel a replikáció aszinkron, a forrás és a replika között késés van. A késés mértékét számos tényező befolyásolja, például a forráskiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késés. A legtöbb esetben a replika késése pár másodperc vagy pár perc. A tényleges replikációs késést a metrikai *replika késésének*használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
+Mivel a replikáció aszinkron, a forrás és a replika között késés van. A késés mértékét számos tényező befolyásolja, például a forráskiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késés. A legtöbb esetben a replika késése pár másodperc vagy pár perc. A tényleges replikációs késést a metrikai *replika késésének* használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
 
 > [!Tip]
 > Ha feladatátvételt végez a replikára, a forrástól a replika leválasztásakor a késés azt jelzi, hogy mekkora adatvesztés történik.
@@ -150,7 +150,7 @@ Ha a GTID engedélyezve van a forráskiszolgálón ( `gtid_mode` = on), az újon
 
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
-### <a name="pricing-tiers"></a>Árképzési szintek
+### <a name="pricing-tiers"></a>Tarifacsomagok
 
 Az olvasási replikák jelenleg csak a általános célú és a memória optimalizált díjszabási szintjein érhetők el.
 
@@ -215,7 +215,7 @@ Ha a GTID engedélyezve van a forráskiszolgálón, az újonnan létrehozott rep
 - Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.
 - A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) található MySQL-replikálási korlátozások teljes listájának áttekintése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

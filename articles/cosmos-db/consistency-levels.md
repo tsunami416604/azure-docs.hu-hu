@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 0f69b30f477f99e2a4cae10edc7443b0630175c9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487806"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547078"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konzisztenciaszintek az Azure Cosmos DB-ben
 
@@ -49,7 +49,7 @@ Azure Cosmos DB garantálja, hogy az olvasási kérelmek 100%-ában megfelel a k
 
 Az öt konzisztencia-szint szemantikai leírása itt található:
 
-- **Erős**: az erős konzisztencia linearizability garanciát nyújt. A Linearizability a kérelmek egyidejű kiszolgálására hivatkozik. Az olvasások garantáltan egy adott tétel legújabb véglegesített verzióját adják vissza. Az ügyfél nem látja a nem véglegesített vagy részleges írást. A felhasználók mindig garantáltan olvasni a legutóbb véglegesített írást.
+- **Erős** : az erős konzisztencia linearizability garanciát nyújt. A Linearizability a kérelmek egyidejű kiszolgálására hivatkozik. Az olvasások garantáltan egy adott tétel legújabb véglegesített verzióját adják vissza. Az ügyfél nem látja a nem véglegesített vagy részleges írást. A felhasználók mindig garantáltan olvasni a legutóbb véglegesített írást.
 
   Az alábbi ábrán a hangjegyzetekkel való erős konzisztencia látható. Miután az adatok az "USA nyugati régiója 2" régiójába kerülnek, a többi régióból származó adatok beolvasása után a legfrissebb értéket kapja:
 
@@ -77,7 +77,7 @@ A munkamenet-végrehajtón kívüli ügyfelek a következő garanciákat fogják
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Konzisztencia spektrumként":::
 
-- **Konzisztens előtag**: a visszaadott frissítések az összes frissítés néhány előtagját tartalmazzák, és nincsenek rések. Konzisztens előtag-konzisztenciai szint biztosítja, hogy az olvasások soha ne lássák a megrendelésen kívüli írásokat.
+- **Konzisztens előtag** : a visszaadott frissítések az összes frissítés néhány előtagját tartalmazzák, és nincsenek rések. Konzisztens előtag-konzisztenciai szint biztosítja, hogy az olvasások soha ne lássák a megrendelésen kívüli írásokat.
 
 Ha az írások sorrendben lettek elvégezve, akkor az ügyfél a következőt látja:, `A, B, C` `A` `A,B` vagy `A,B,C` `A,C` `B,A,C` Az konzisztens előtag a végleges konzisztencia miatti írási késleltetést, rendelkezésre állást és olvasási átviteli sebességet biztosít, ugyanakkor biztosítja az olyan forgatókönyvek igényeit is, amelyek a sorrend szempontjából fontosak.
 
@@ -92,7 +92,7 @@ A következő ábra a konzisztencia-előtagot ábrázolja a zenei megjegyzésekk
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Konzisztencia spektrumként":::
 
-- **Végleges**: nem áll rendelkezésre rendelési garancia a beolvasáshoz. Ha nincsenek további írások, a replikák végül konvergálnak.  
+- **Végleges** : nem áll rendelkezésre rendelési garancia a beolvasáshoz. Ha nincsenek további írások, a replikák végül konvergálnak.  
 A végleges konzisztencia a konzisztencia leggyengébb formája, mivel előfordulhat, hogy az ügyfél elolvashatja azokat az értékeket, amelyek régebbiek, mint a korábban olvasottak. A végleges konzisztencia ideális, ha az alkalmazás nem igényel rendelési garanciát. Ilyenek például a retweets, a Like vagy a nem többszálú megjegyzések száma. Az alábbi ábrán a zenei megjegyzésekkel való végleges konzisztencia látható.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Konzisztencia spektrumként":::
@@ -101,7 +101,7 @@ A végleges konzisztencia a konzisztencia leggyengébb formája, mivel előfordu
 
 A gyakorlatban gyakran nagyobb konzisztencia-garanciákat érhet el. Az olvasási művelet konzisztencia-garanciái megfelelnek a kért adatbázis-állapot frissességének és rendezésének. Az olvasás-konzisztencia az írási/frissítési műveletek sorrendjéhez és propagálásához van kötve.  
 
-Ha az adatbázis nem rendelkezik írási művelettel, a rendszer a **végleges**, a **munkamenetet**vagy az **állandó előtagot** tartalmazó olvasási műveletet valószínűleg ugyanazt az eredményt fogja eredményezni, mint egy erős konzisztencia-szintű olvasási művelet.
+Ha az adatbázis nem rendelkezik írási művelettel, a rendszer a **végleges** , a **munkamenetet** vagy az **állandó előtagot** tartalmazó olvasási műveletet valószínűleg ugyanazt az eredményt fogja eredményezni, mint egy erős konzisztencia-szintű olvasási művelet.
 
 Ha az Azure Cosmos-fiókja nem az erős konzisztencia mellett van konfigurálva, akkor megtudhatja, hogy az ügyfelek erős és konzisztens olvasási feladatokat szereznek a számítási feladatokhoz a *Probabilistically határos* elavulás (PBS) metrikájának megtekintésével. Ez a mérőszám a Azure Portalban érhető el. További információért lásd: a [Probabilistically kötött elévülés (PBS) mérőszámának figyelése](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
@@ -141,7 +141,7 @@ A pontos RTT késés a fénysebességi távolság és az Azure hálózati topol�
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>A konzisztencia szintjei és az adattartósság
 
-Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a **helyreállítási időre vonatkozó célkitűzés** (**RTO**). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. A frissítések elvesztésének időpontját a **helyreállítási pont célkitűzésének** (**RPO**) nevezzük.
+Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a **helyreállítási időre vonatkozó célkitűzés** ( **RTO** ). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. A frissítések elvesztésének időpontját a **helyreállítási pont célkitűzésének** ( **RPO** ) nevezzük.
 
 Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti kapcsolatot határozza meg egy régióra kiterjedő leállás jelenlétében. Fontos megjegyezni, hogy egy elosztott rendszeren, még erős konzisztencia esetén is lehetséges, hogy a [Cap-tétel](https://en.wikipedia.org/wiki/CAP_theorem)miatt nem lehet RPO és nulla RTO rendelkező elosztott adatbázis.
 
@@ -176,12 +176,10 @@ Ha többet szeretne megtudni a konzisztencia-fogalmakról, olvassa el a követke
 - [Valószínűségi határos elavulás (PBS) a gyakorlati részleges Kvórumokhoz](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Végül konzisztens – felülvizsgálat](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Azure Cosmos DB konzisztenciáji szintjeiről, olvassa el a következő cikkeket:
 
-- [Az alkalmazás megfelelő konzisztencia-szintjének kiválasztása]()
-- [Konzisztencia szintjei Azure Cosmos DB API-k között]()
 - [Az alapértelmezett konzisztenciaszint beállítása](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [Az alapértelmezett konzisztenciaszint felülírása](how-to-manage-consistency.md#override-the-default-consistency-level)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

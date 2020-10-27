@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 013eb8215064173e002aea23043bc2e9ba92b525
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081049"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545242"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Apache Hive lekérdezések futtatása a PowerShell használatával
 
@@ -28,7 +28,7 @@ Ebből a dokumentumból megmutatjuk, hogyan használhatja a Azure PowerShellt Ap
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
-* A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/) telepítve van.
+* A PowerShell az [modul](/powershell/azure/) telepítve van.
 
 ## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
@@ -84,7 +84,7 @@ A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagoka
    >
    > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
-   > További információ az **itt-sztringekről**: a <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">Windows PowerShell használata itt – karakterláncok</a>.
+   > További információ az **itt-sztringekről** : [itt – karakterláncok](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

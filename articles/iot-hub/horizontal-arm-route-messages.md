@@ -1,6 +1,6 @@
 ---
-title: ARM-sablon használata a IoT Hub, a Storage-fiók és az útválasztási üzenetek közzétételéhez
-description: ARM-sablon használata a IoT Hub, a Storage-fiók és az útválasztási üzenetek közzétételéhez
+title: ARM-sablon használata az Azure IoT Hub, a Storage-fiók és az útválasztási üzenetek közzétételéhez
+description: ARM-sablon használata az Azure IoT Hub, a Storage-fiók és az útválasztási üzenetek közzétételéhez
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,18 +8,22 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 7c53d720aef029d79d95cacd558c3bf9d35b4af6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1b9c576ce03d808fe6a4d0cac5196dfcd1b73eab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148922"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545480"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Gyors útmutató: Azure IoT Hub és Storage-fiók üzembe helyezése ARM-sablon használatával
 
 Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy olyan IoT Hub létrehozására, amely üzeneteket továbbít az Azure Storage-ba, valamint egy Storage-fiókot az üzenetek tárolásához. Miután manuálisan hozzáadta a virtuális IoT-eszközt a központhoz az üzenetek elküldéséhez, a kapcsolati információkat egy  *ARM-Read-Write* nevű alkalmazásban konfigurálja, hogy üzeneteket küldjön az eszközről a központba. A hub úgy van konfigurálva, hogy az adott hubhoz küldött üzenetek automatikusan a Storage-fiókhoz legyenek irányítva. A rövid útmutató végén megnyithatja a Storage-fiókot, és megtekintheti az elküldött üzeneteket.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+[![Üzembe helyezés az Azure-ban](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,9 +35,10 @@ Az ebben a rövid útmutatóban használt sablont `101-iothub-auto-route-message
 
 :::code language="json" source="~/quickstart-templates/101-iothub-auto-route-messages/azuredeploy.json":::
 
-Két Azure-erőforrás van definiálva a sablonban: 
-* [Microsoft. Devices/Iothubs](/azure/templates/microsoft.devices/iothubs)
-* [Microsoft. Storage/](/azure/templates/microsoft.storage/allversions)
+Két Azure-erőforrás van definiálva a sablonban:
+
+- [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+- [Microsoft. Devices/IotHubs](/azure/templates/microsoft.devices/iothubs)
 
 ## <a name="deploy-the-template-and-run-the-sample-app"></a>A sablon üzembe helyezése és a minta alkalmazás futtatása
 
@@ -48,7 +53,7 @@ Ez a szakasz a sablon üzembe helyezésének lépéseit, a virtuális eszközök
 
 1. Töltse le és csomagolja ki a [IoT C#-mintákat](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/).
 
-1. Nyisson meg egy parancssorablakot, és keresse meg azt a mappát, ahová a IoT C#-mintákat kibonthatja. Keresse meg az ARM-Read-Write. csproj fájlt tartalmazó mappát. Ebben a parancsablakban hozza létre a környezeti változókat. A kulcsok lekéréséhez jelentkezzen be a [Azure Portal] ( https://portal.azure.com ]-ba. Válassza az **erőforráscsoportok** lehetőséget, majd válassza ki az ehhez a rövid útmutatóhoz használt erőforráscsoportot.
+1. Nyisson meg egy parancssorablakot, és keresse meg azt a mappát, ahová a IoT C#-mintákat kibonthatja. Keresse meg az ARM-Read-Write. csproj fájlt tartalmazó mappát. Ebben a parancsablakban hozza létre a környezeti változókat. A kulcsok lekéréséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com) . Válassza az **erőforráscsoportok** lehetőséget, majd válassza ki az ehhez a rövid útmutatóhoz használt erőforráscsoportot.
 
    ![Válassza ki az erőforráscsoportot](./media/horizontal-arm-route-messages/01-select-resource-group.png)
 
@@ -56,12 +61,12 @@ Ez a szakasz a sablon üzembe helyezésének lépéseit, a virtuális eszközök
 
    ![Az erőforráscsoport erőforrásainak megtekintése](./media/horizontal-arm-route-messages/02-view-resources-in-group.png)
 
-1. A **hub neve**szükséges. Válassza ki a hubot az erőforrások listájában. Másolja a hub nevét a IoT Hub szakasz elejéről a Windows vágólapra. 
- 
+1. A **hub neve** szükséges. Válassza ki a hubot az erőforrások listájában. Másolja a hub nevét a IoT Hub szakasz elejéről a Windows vágólapra.
+
    ![A hub nevének másolása](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
 
     Helyettesítse be a hub nevét ebben a parancsban, ahol fel van tüntetve, és hajtsa végre ezt a parancsot a parancsablakban:
-   
+
     ```cmd
     SET IOT_HUB_URI=<hub name goes here>.azure-devices-net;
     ```
@@ -72,22 +77,22 @@ Ez a szakasz a sablon üzembe helyezésének lépéseit, a virtuális eszközök
    SET IOT_HUB_URI=ContosoTestHubdlxlud5h.azure-devices-net;
    ```
 
-1. A következő környezeti változó a IoT eszköz kulcsa. Vegyen fel egy új eszközt a központba úgy, hogy kijelöli az **IOT eszközöket** a hub IoT hub menüjéből. 
+1. A következő környezeti változó a IoT eszköz kulcsa. Vegyen fel egy új eszközt a központba úgy, hogy kijelöli az **IOT eszközöket** a hub IoT hub menüjéből.
 
    ![IoT-eszközök kiválasztása](./media/horizontal-arm-route-messages/04-select-iot-devices.png)
 
-1. Új eszköz hozzáadásához a képernyő jobb oldalán válassza az **+ új** lehetőséget. 
+1. Új eszköz hozzáadásához a képernyő jobb oldalán válassza az **+ új** lehetőséget.
 
-   Adja meg az új eszköznév nevét. Ez a rövid útmutató a **contoso-test-Device**kezdetű nevet használja. Mentse az eszközt, majd nyissa meg újra a képernyőt az eszköz kulcsának lekéréséhez. (A rendszer létrehoz egy kulcsot a panel bezárásához.) Válassza ki az elsődleges vagy a másodlagos kulcsot, és másolja a Windows vágólapra. A parancsablakban állítsa be a parancsot a végrehajtáshoz, majd nyomja le az **ENTER**billentyűt. A parancsnak a következőhöz hasonlóan kell kinéznie:
+   Adja meg az új eszköznév nevét. Ez a rövid útmutató a **contoso-test-Device** kezdetű nevet használja. Mentse az eszközt, majd nyissa meg újra a képernyőt az eszköz kulcsának lekéréséhez. (A rendszer létrehoz egy kulcsot a panel bezárásához.) Válassza ki az elsődleges vagy a másodlagos kulcsot, és másolja a Windows vágólapra. A parancsablakban állítsa be a parancsot a végrehajtáshoz, majd nyomja le az **ENTER** billentyűt. A parancsnak a következőhöz hasonlóan kell kinéznie:
 
    ```cmd
    SET IOT_DEVICE_KEY=<device-key-goes-here>
    ```
 
-1. Az utolsó környezeti változó az **eszköz azonosítója**. A parancssorablakban állítsa be a parancsot, és hajtsa végre. 
-   
+1. Az utolsó környezeti változó az **eszköz azonosítója** . A parancssorablakban állítsa be a parancsot, és hajtsa végre.
+
    ```cms
-   SET IOT_DEVICE_ID=<device-id-goes-here> 
+   SET IOT_DEVICE_ID=<device-id-goes-here>
    ```
 
    Ez a következő példához hasonlóan fog kinézni:
@@ -96,17 +101,17 @@ Ez a szakasz a sablon üzembe helyezésének lépéseit, a virtuális eszközök
    SET IOT_DEVICE_ID=Contoso-Test-Device
    ```
 
-1. Ha meg szeretné tekinteni a definiált környezeti változókat, írja be a SET parancsot a parancssorba, majd nyomja le az **ENTER**billentyűt, és keresse meg a **IoT**kezdődően.
+1. Ha meg szeretné tekinteni a definiált környezeti változókat, írja be a SET parancsot a parancssorba, majd nyomja le az **ENTER** billentyűt, és keresse meg a **IoT** kezdődően.
 
    ![Lásd: környezeti változók](./media/horizontal-arm-route-messages/06-environment-variables.png)
 
-Most a környezeti változók vannak beállítva, futtassa az alkalmazást ugyanabból a parancsablakban. Mivel ugyanezt az ablakot használja, a változók a memóriában lesznek elérhetők az alkalmazás futtatásakor.
+    Most a környezeti változók vannak beállítva, futtassa az alkalmazást ugyanabból a parancsablakban. Mivel ugyanezt az ablakot használja, a változók a memóriában lesznek elérhetők az alkalmazás futtatásakor.
 
-1. Az alkalmazás futtatásához írja be a következő parancsot a parancssorba, majd nyomja le az **ENTER**billentyűt.
+1. Az alkalmazás futtatásához írja be a következő parancsot a parancssorba, majd nyomja le az **ENTER** billentyűt.
 
     `dotnet run arm-read-write`
 
-   Az alkalmazás az üzeneteket a konzolon hozza létre és jeleníti meg, mivel az egyes üzeneteket az IoT hub számára küldi el. A hub az ARM-sablonban úgy lett konfigurálva, hogy automatikus útválasztást legyen. A "Level = Storage" szöveget tartalmazó üzeneteket a rendszer automatikusan átirányítja a Storage-fiókba. Hagyja, hogy az alkalmazás 10 – 15 percig fusson, majd nyomja le az **ENTER billentyűt** egyszer vagy kétszer, amíg nem fut.
+   Az alkalmazás az üzeneteket a konzolon hozza létre és jeleníti meg, mivel az egyes üzeneteket az IoT hub számára küldi el. A hub az ARM-sablonban úgy lett konfigurálva, hogy automatikus útválasztást legyen. A szöveget tartalmazó üzeneteket `level = storage` a rendszer automatikusan átirányítja a Storage-fiókba. Hagyja, hogy az alkalmazás 10 – 15 percig fusson, majd nyomja le az **ENTER billentyűt** egyszer vagy kétszer, amíg nem fut.
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
@@ -116,7 +121,7 @@ Most a környezeti változók vannak beállítva, futtassa az alkalmazást ugyan
 
    ![Tekintse meg a Storage-fiók fájljait](./media/horizontal-arm-route-messages/07-see-storage.png)
 
-1. Válassza ki az egyik fájlt, és válassza a **Letöltés** lehetőséget, majd töltse le a fájlt egy olyan helyre, ahol később talál. A név numerikus, például 47. Adja hozzá a ". txt" fájlt a végéhez, majd kattintson duplán a fájlra a megnyitásához.
+1. Válassza ki az egyik fájlt, és válassza a **Letöltés** lehetőséget, majd töltse le a fájlt egy olyan helyre, ahol később talál. A név numerikus, például 47. Adja hozzá a _. txt_ fájlt a végéhez, majd kattintson duplán a fájlra a megnyitásához.
 
 1. A fájl megnyitásakor minden sor egy másik üzenetre mutat. az egyes üzenetek törzse is titkosítva van. Ahhoz, hogy az üzenet törzsén lekérdezéseket végezzen, meg kell adni.
 
@@ -127,11 +132,11 @@ Most a környezeti változók vannak beállítva, futtassa az alkalmazást ugyan
 
 Üzembe helyezett egy ARM-sablont egy IoT Hub és egy Storage-fiók létrehozásához, és futtatott egy programot, amely üzeneteket küld a hubhoz. Az üzeneteket a rendszer automatikusan tárolja a Storage-fiókban, ahol megtekinthetők.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-A rövid útmutató során hozzáadott erőforrások eltávolításához jelentkezzen be a [Azure Portalba](https://portal.azure.com). Válassza ki az **erőforráscsoportok**elemet, majd keresse meg az ehhez a rövid útmutatóhoz használt erőforráscsoportot. Válassza ki az erőforráscsoportot, majd válassza a *Törlés*lehetőséget. A csoport összes erőforrását törli.
+A rövid útmutató során hozzáadott erőforrások eltávolításához jelentkezzen be a [Azure Portalba](https://portal.azure.com). Válassza ki az **erőforráscsoportok** elemet, majd keresse meg az ehhez a rövid útmutatóhoz használt erőforráscsoportot. Válassza ki az erőforráscsoportot, majd válassza a *Törlés* lehetőséget. A csoport összes erőforrását törli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

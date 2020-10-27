@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d53e0cb92ead0d60ae335e95903cd69ae2700140
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142815"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536079"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub-eszközidentitások tömeges importálása vagy exportálása
 
 Minden IoT hub rendelkezik egy azonosító beállításjegyzékkel, amellyel eszközönkénti erőforrásokat hozhat létre a szolgáltatásban. Az Identity Registry Emellett lehetővé teszi az eszközre irányuló végpontokhoz való hozzáférés szabályozását. Ez a cikk azt ismerteti, hogyan importálhat és exportálhat eszköz-identitásokat egy identitás-beállításjegyzékből és-ból. Ha meg szeretne tekinteni egy működő mintát a C#-ban, és megtudhatja, hogyan használhatja ezt a képességet, amikor egy másik régióba klónozást végez, tekintse meg [az IoT hub klónozásával](iot-hub-how-to-clone.md)foglalkozó témakört.
 
 > [!NOTE]
-> IoT Hub a közelmúltban több régióban adta hozzá a virtuális hálózatok támogatását. Ez a szolgáltatás biztosítja az importálási és exportálási műveleteket, és nem szükséges kulcsokat továbbítani a hitelesítéshez.  Kezdetben a virtuális hálózatok támogatása csak a következő régiókban érhető el: *WestUS2*, *EastUS*és *SouthCentralUS*. Ha többet szeretne megtudni a virtuális hálózatok támogatásáról és a megvalósításához szükséges API-hívásokról, tekintse meg a [virtuális hálózatok IoT hub támogatását](virtual-network-support.md)ismertető témakört.
+> IoT Hub a közelmúltban több régióban adta hozzá a virtuális hálózatok támogatását. Ez a szolgáltatás biztosítja az importálási és exportálási műveleteket, és nem szükséges kulcsokat továbbítani a hitelesítéshez.  Kezdetben a virtuális hálózatok támogatása csak a következő régiókban érhető el: *WestUS2* , *EastUS* és *SouthCentralUS* . Ha többet szeretne megtudni a virtuális hálózatok támogatásáról és a megvalósításához szükséges API-hívásokról, tekintse meg a [virtuális hálózatok IoT hub támogatását](virtual-network-support.md)ismertető témakört.
 
 Az importálási és exportálási műveletek olyan *feladatok* kontextusában lépnek életbe, amelyek lehetővé teszik a tömeges szolgáltatási műveletek végrehajtását egy IoT hubhoz.
 
@@ -61,7 +61,7 @@ Az IoT hub kapcsolódási karakterláncának megkereséséhez a Azure Portalban:
 
 - Keresse meg az IoT-központot.
 
-- Válassza a **megosztott hozzáférési szabályzatok**lehetőséget.
+- Válassza a **megosztott hozzáférési szabályzatok** lehetőséget.
 
 - Válasszon ki egy házirendet, és vegye figyelembe a szükséges engedélyeket.
 
@@ -109,7 +109,7 @@ A **ExportDevicesAsync** metódushoz két paraméter szükséges:
      | SharedAccessBlobPermissions.Delete
    ```
 
-* Egy *logikai* érték, amely azt jelzi, hogy ki szeretné-e zárni a hitelesítési kulcsokat az exportálási adatokból. **Hamis érték**esetén a hitelesítési kulcsok szerepelnek az exportálási kimenetben. Ellenkező esetben a kulcsok **Null értékként**lesznek exportálva.
+* Egy *logikai* érték, amely azt jelzi, hogy ki szeretné-e zárni a hitelesítési kulcsokat az exportálási adatokból. **Hamis érték** esetén a hitelesítési kulcsok szerepelnek az exportálási kimenetben. Ellenkező esetben a kulcsok **Null értékként** lesznek exportálva.
 
 A következő C# kódrészlet bemutatja, hogyan indíthat el egy olyan exportálási feladatot, amely tartalmazza az eszköz hitelesítési kulcsait az adatok exportálásakor, majd a lekérdezés befejezését:
 
@@ -134,7 +134,7 @@ while(true)
 }
 ```
 
-A művelet a megadott blob-tárolóban lévő kimenetét a **devices.txt**nevű blokk-blobként tárolja. A kimeneti adatokat JSON-szerializált eszköz tartalmazza, és soronként egy eszköz van.
+A művelet a megadott blob-tárolóban lévő kimenetét a **devices.txt** nevű blokk-blobként tárolja. A kimeneti adatokat JSON-szerializált eszköz tartalmazza, és soronként egy eszköz van.
 
 A következő példa a kimeneti adatokat mutatja be:
 
@@ -226,7 +226,7 @@ A **ImportDevicesAsync** metódus két paramétert vesz igénybe:
    SharedAccessBlobPermissions.Read
    ```
 
-* Egy olyan *karakterlánc* , amely egy [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) blob-tároló URI-ját tartalmazza, amelyet a feladatokból *kimenetként* kíván használni. A művelet egy blokk-blobot hoz létre ebben a tárolóban a befejezett importálási **feladattal**kapcsolatos hibák tárolására. Az SAS-tokennek tartalmaznia kell a következő engedélyeket:
+* Egy olyan *karakterlánc* , amely egy [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) blob-tároló URI-ját tartalmazza, amelyet a feladatokból *kimenetként* kíván használni. A művelet egy blokk-blobot hoz létre ebben a tárolóban a befejezett importálási **feladattal** kapcsolatos hibák tárolására. Az SAS-tokennek tartalmaznia kell a következő engedélyeket:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
@@ -262,15 +262,15 @@ Ha az importálási fájl kettős metaadatokat tartalmaz, akkor ez a metaadatok 
 
 Az eszközök importálási folyamatának vezérléséhez használja az összes eszköz szerializálási adatkészletének opcionális **importMode** tulajdonságát. A **importMode** tulajdonság a következő beállításokkal rendelkezik:
 
-| importMode | Description |
+| importMode | Leírás |
 | --- | --- |
-| **createOrUpdate** |Ha egy eszköz nem létezik a megadott **azonosítóval**, az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer felülírja a meglévő adatokat a megadott bemeneti adatokkal anélkül, hogy a **ETAG** értéket kellene megadnia. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
-| **létrehozása** |Ha egy eszköz nem létezik a megadott **azonosítóval**, az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer hibát ír a naplófájlba. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
-| **frissítése** |Ha egy eszköz már létezik a megadott **azonosítóval**, a rendszer felülírja a meglévő adatokat a megadott bemeneti adatokkal anélkül, hogy a **ETAG** értéket kellene megadnia. <br/>Ha az eszköz nem létezik, a rendszer hibát ír a naplófájlba. |
-| **updateIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosítóval**, a rendszer csak akkor írja felül a meglévő adatokat, ha van **ETAG** egyezés. <br/>Ha az eszköz nem létezik, a rendszer hibát ír a naplófájlba. <br/>Ha a **ETAG** nem egyezik, a rendszer hibát ír a naplófájlba. |
-| **createOrUpdateIfMatchETag** |Ha egy eszköz nem létezik a megadott **azonosítóval**, az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer a meglévő adatokat csak akkor írja felül a megadott bemeneti adatokkal, ha van **ETAG** egyezés. <br/>Ha a **ETAG** nem egyezik, a rendszer hibát ír a naplófájlba. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
-| **törlése** |Ha egy eszköz már létezik a megadott **azonosítóval**, a rendszer törli a **ETAG** érték figyelmen kívül hagyásával. <br/>Ha az eszköz nem létezik, a rendszer hibát ír a naplófájlba. |
-| **deleteIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosítóval**, a rendszer csak akkor törli, ha van **ETAG** egyezés. Ha az eszköz nem létezik, a rendszer hibát ír a naplófájlba. <br/>Ha a ETag nem egyezik, a rendszer hibát ír a naplófájlba. |
+| **createOrUpdate** |Ha egy eszköz nem létezik a megadott **azonosítóval** , az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer felülírja a meglévő adatokat a megadott bemeneti adatokkal anélkül, hogy a **ETAG** értéket kellene megadnia. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
+| **létrehozása** |Ha egy eszköz nem létezik a megadott **azonosítóval** , az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer hibát ír a naplófájlba. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
+| **frissítése** |Ha egy eszköz már létezik a megadott **azonosítóval** , a rendszer felülírja a meglévő adatokat a megadott bemeneti adatokkal anélkül, hogy a **ETAG** értéket kellene megadnia. <br/>Ha az eszköz nem létezik, a rendszer hibát ír a naplófájlba. |
+| **updateIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosítóval** , a rendszer csak akkor írja felül a meglévő adatokat, ha van **ETAG** egyezés. <br/>Ha az eszköz nem létezik, a rendszer hibát ír a naplófájlba. <br/>Ha a **ETAG** nem egyezik, a rendszer hibát ír a naplófájlba. |
+| **createOrUpdateIfMatchETag** |Ha egy eszköz nem létezik a megadott **azonosítóval** , az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer a meglévő adatokat csak akkor írja felül a megadott bemeneti adatokkal, ha van **ETAG** egyezés. <br/>Ha a **ETAG** nem egyezik, a rendszer hibát ír a naplófájlba. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
+| **delete** |Ha egy eszköz már létezik a megadott **azonosítóval** , a rendszer törli a **ETAG** érték figyelmen kívül hagyásával. <br/>Ha az eszköz nem létezik, a rendszer hibát ír a naplófájlba. |
+| **deleteIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosítóval** , a rendszer csak akkor törli, ha van **ETAG** egyezés. Ha az eszköz nem létezik, a rendszer hibát ír a naplófájlba. <br/>Ha a ETag nem egyezik, a rendszer hibát ír a naplófájlba. |
 
 > [!NOTE]
 > Ha a szerializálási adathalmaz explicit módon nem határoz meg **importMode** jelzőt az eszközhöz, az alapértelmezett érték a **createOrUpdate** az importálási művelet során.
@@ -424,7 +424,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan végezheti el a tömeges műveleteket egy IoT hub azonosító-beállításjegyzékében. Számos művelet, többek között az eszközök egyik központból a másikba való áthelyezésének módja, a [IoT hub-ban regisztrált eszközökön található, a IoT hub klónozásának módja](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub). 
 
@@ -432,8 +432,7 @@ A klónozási cikknek van egy működő mintája, amely a IoT C#-mintákban tal�
 
 Az Azure IoT Hub kezelésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* [IoT Hub metrikák](iot-hub-metrics.md)
-* [Naplók IoT Hub](iot-hub-monitor-resource-health.md)
+* [Figyelő IoT Hub](monitor-iot-hub.md)
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 

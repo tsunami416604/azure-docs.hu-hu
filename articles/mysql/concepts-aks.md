@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc40903de09ebfe04858c631eee0233561784418
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86519864"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546908"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Az Azure Kubernetes szolgáltatás és a Azure Database for MySQL csatlakoztatása
 
@@ -26,7 +26,7 @@ Az AK november 2018-én támogatja a gyorsított hálózatkezelést a támogatot
 Megerősítheti, hogy az AK-fürt felgyorsult hálózattal rendelkezik-e:
 1. Nyissa meg a Azure Portal, és válassza ki az AK-fürtöt.
 2. Válassza a Properties (Tulajdonságok) lapot.
-3. Másolja az **infrastruktúra-erőforráscsoport**nevét.
+3. Másolja az **infrastruktúra-erőforráscsoport** nevét.
 4. Az infrastruktúra-erőforráscsoport megkereséséhez és megnyitásához használja a portál keresési sávját.
 5. Válasszon ki egy virtuális gépet az adott erőforráscsoporthoz.
 6. Nyissa meg a virtuális gép **hálózatkezelés** lapját.
@@ -42,6 +42,6 @@ az network nic list --resource-group nodeResourceGroup -o table
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure Kubernetes Service-fürt létrehozása](../aks/kubernetes-walkthrough.md)
-- Ismerje meg, hogyan [telepítheti a WordPresst egy Helm-diagramon a OSBA és a Azure Database for MySQL használatával](../aks/integrate-azure.md)
+- Ismerje meg, hogyan [telepítheti a WordPresst egy Helm-diagramon a OSBA és a Azure Database for MySQL használatával](../aks/index.yml)

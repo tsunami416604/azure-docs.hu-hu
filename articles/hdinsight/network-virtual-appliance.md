@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: c0f5d8cdc7dda72f21fc1cf372e3796b26a3054a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c831e099eca3cd6e6da20f55ad19980ae8e9ddc5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127420"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545922"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Hálózati virtuális berendezés konfigurálása az Azure HDInsight
 
 > [!Important]
-> A következő információkra **csak** akkor van szükség, ha nem [Azure Firewall](https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic)hálózati virtuális berendezést (NVA) szeretne konfigurálni.
+> A következő információkra **csak** akkor van szükség, ha nem [Azure Firewall](./hdinsight-restrict-outbound-traffic.md)hálózati virtuális berendezést (NVA) szeretne konfigurálni.
 
 Azure Firewall FQDN címkét a rendszer automatikusan úgy konfigurálja, hogy a nagy számú fontos teljes tartománynév esetében engedélyezze a forgalmat. Egy másik hálózati virtuális készülék használata több további funkció konfigurálását is megköveteli. A hálózati virtuális berendezés konfigurálása során tartsa szem előtt a következő tényezőket:
 
 * A szolgáltatás-végponttal kompatibilis szolgáltatások olyan szolgáltatási végpontokkal konfigurálhatók, amelyek megkerülik a NVA, általában a költségeket vagy a teljesítménnyel kapcsolatos megfontolásokat.
-* Ha a ResourceProviderConnection a *kimenő*értékre van állítva, használhat privát végpontokat a metaadattárak tárolóhoz és az SQL-kiszolgálókhoz, és nem kell őket hozzáadnia a NVA.
+* Ha a ResourceProviderConnection a *kimenő* értékre van állítva, használhat privát végpontokat a metaadattárak tárolóhoz és az SQL-kiszolgálókhoz, és nem kell őket hozzáadnia a NVA.
 * Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom).
 * Az FQDN HTTP/HTTPS-végpontok jóváhagyható a NVA-eszközön.
 * Rendelje hozzá a HDInsight-alhálózathoz létrehozott útválasztási táblázatot.
@@ -41,7 +41,7 @@ A következő szolgáltatási végpontok közül egyet vagy többet is engedély
 
 | **Végpont** | **Részletek** |
 |---|---|
-| [Itt](hdinsight-management-ip-addresses.md) közzétett IP-címek | Ezek az IP-címek a HDInsight erőforrás-szolgáltatóhoz tartoznak, és a UDR kell szerepelniük az aszimmetrikus útválasztás elkerüléséhez. Ez a szabály csak akkor szükséges, ha a ResourceProviderConnection *bejövő*értékre van beállítva. Ha a ResourceProviderConnection *kimenő* értékre van állítva, akkor ezek az IP-címek nem szükségesek a UDR.  |
+| [Itt](hdinsight-management-ip-addresses.md) közzétett IP-címek | Ezek az IP-címek a HDInsight erőforrás-szolgáltatóhoz tartoznak, és a UDR kell szerepelniük az aszimmetrikus útválasztás elkerüléséhez. Ez a szabály csak akkor szükséges, ha a ResourceProviderConnection *bejövő* értékre van beállítva. Ha a ResourceProviderConnection *kimenő* értékre van állítva, akkor ezek az IP-címek nem szükségesek a UDR.  |
 | HRE – DS magánhálózati IP-címek | Csak ESP-fürtök esetén szükséges, ha a virtuális hálózatok nincsenek összevonásban.|
 
 

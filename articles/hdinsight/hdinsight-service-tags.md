@@ -7,16 +7,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89399956"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535246"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Az Azure HDInsight NSG szolgáltatásának címkéi
 
-Az Azure HDInsight Service-címkék hálózati biztonsági csoportokhoz (NSG) IP-címek csoportjai az állapot-és felügyeleti szolgáltatásokhoz. Ezek a csoportok segítenek a biztonsági szabályok létrehozásának összetettségének minimalizálásában. A [szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) lehetővé teszik a megadott IP-címekről érkező bejövő adatforgalmat anélkül, hogy a NSG minden [felügyeleti IP-címét](hdinsight-management-ip-addresses.md) be kellene írni.
+Az Azure HDInsight Service-címkék hálózati biztonsági csoportokhoz (NSG) IP-címek csoportjai az állapot-és felügyeleti szolgáltatásokhoz. Ezek a csoportok segítenek a biztonsági szabályok létrehozásának összetettségének minimalizálásában. A [szolgáltatás címkéi](../virtual-network/network-security-groups-overview.md#service-tags) lehetővé teszik a megadott IP-címekről érkező bejövő adatforgalmat anélkül, hogy a NSG minden [felügyeleti IP-címét](hdinsight-management-ip-addresses.md) be kellene írni.
 
 A HDInsight szolgáltatás kezeli ezeket a szolgáltatási címkéket. Nem hozhat létre saját szolgáltatási címkét, vagy nem módosíthat meglévő címkét. A Microsoft kezeli a szolgáltatási címkének megfelelő címet, és automatikusan frissíti a szolgáltatási címkét a címek módosításaként.
 
@@ -26,9 +26,9 @@ Ha egy adott régiót szeretne használni, és a szolgáltatás címkéje még n
 
 A hálózati biztonsági csoportokban két lehetőség van a szolgáltatási címkék használatára:
 
-- **Egyetlen globális HDInsight szolgáltatás használata**: ezzel a beállítással megnyithatja a virtuális hálózatot minden olyan IP-címre, amelyet a HDInsight szolgáltatás használ a fürtök összes régión belüli figyelésére. Ez a legegyszerűbb módszer, de előfordulhat, hogy nem megfelelő, ha korlátozó biztonsági követelményekkel rendelkezik.
+- **Egyetlen globális HDInsight szolgáltatás használata** : ezzel a beállítással megnyithatja a virtuális hálózatot minden olyan IP-címre, amelyet a HDInsight szolgáltatás használ a fürtök összes régión belüli figyelésére. Ez a legegyszerűbb módszer, de előfordulhat, hogy nem megfelelő, ha korlátozó biztonsági követelményekkel rendelkezik.
 
-- **Több regionális szolgáltatási címke használata**: ezzel a beállítással megnyithatja a virtuális hálózatot, hogy csak az adott régióban használt IP-címek HDInsight. Ha azonban több régiót használ, több szolgáltatási címkét is hozzá kell adnia a virtuális hálózathoz.
+- **Több regionális szolgáltatási címke használata** : ezzel a beállítással megnyithatja a virtuális hálózatot, hogy csak az adott régióban használt IP-címek HDInsight. Ha azonban több régiót használ, több szolgáltatási címkét is hozzá kell adnia a virtuális hálózathoz.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Egyetlen globális HDInsight szolgáltatási címke használata
 
@@ -36,11 +36,11 @@ A HDInsight-fürthöz tartozó szolgáltatás-címkék használatának legegysze
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a hálózati biztonsági csoportot.
 
-1. A **Beállítások**területen válassza a **bejövő biztonsági szabályok**elemet, majd válassza a **+ Hozzáadás**lehetőséget.
+1. A **Beállítások** területen válassza a **bejövő biztonsági szabályok** elemet, majd válassza a **+ Hozzáadás** lehetőséget.
 
-1. A **forrás** legördülő listából válassza ki a **szolgáltatás címkéje**elemet.
+1. A **forrás** legördülő listából válassza ki a **szolgáltatás címkéje** elemet.
 
-1. A **forrás szolgáltatás címkéje** legördülő listában válassza a **HDInsight**lehetőséget.
+1. A **forrás szolgáltatás címkéje** legördülő listában válassza a **HDInsight** lehetőséget.
 
     ![Adja hozzá a szolgáltatás címkéjét a Azure Portal](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
@@ -125,5 +125,5 @@ A *németországi Közép* -és *Kelet-Németország* régiójában lévő fürt
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hálózati biztonsági csoportok: szolgáltatás címkéi](../virtual-network/security-overview.md#security-rules)
+- [Hálózati biztonsági csoportok: szolgáltatás címkéi](../virtual-network/network-security-groups-overview.md#security-rules)
 - [Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md)

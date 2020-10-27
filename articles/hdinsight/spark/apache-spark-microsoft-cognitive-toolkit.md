@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 659e44ddc13cf093d7e571e904e177136ed21127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94a4858b4c4fa99a09acc2bec88f94a64686c2d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084494"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539139"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit Deep learning-modell használata Azure HDInsight Spark-fürttel
 
 Ebben a cikkben a következő lépéseket hajtja végre.
 
-1. Futtasson egyéni parancsfájlt [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/) telepítéséhez Azure HDInsight Spark-fürtön.
+1. Futtasson egyéni parancsfájlt [Microsoft Cognitive Toolkit](/cognitive-toolkit/) telepítéséhez Azure HDInsight Spark-fürtön.
 
 2. Töltsön fel egy [Jupyter Notebookt](https://jupyter.org/) a [Apache Spark](https://spark.apache.org/) -fürtbe, és Ismerje meg, hogyan alkalmazhat egy betanított Microsoft Cognitive Toolkit mély tanulási modellt egy Azure Blob Storage-fiókban lévő fájlokra a [Spark Python API (PySpark) használatával.](https://spark.apache.org/docs/latest/api/python/index.html)
 

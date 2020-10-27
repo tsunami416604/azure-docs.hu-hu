@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90862a74e5fb6521a95292d50fc5cc11bd0082b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530063"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547656"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a VMware virtuális gépek és a fizikai kiszolgálók mobilitási szolgáltatásáról
 
@@ -52,7 +52,7 @@ A mobilitási szolgáltatás leküldéses telepítése során a következő lép
    - Ha minden előfeltétel teljesül, a telepítés megkezdődik.
    - A telepítés sikertelen lesz, ha egy vagy több [előfeltétel](vmware-physical-azure-support-matrix.md) nem teljesül.
 1. Az ügynök telepítésének részeként telepítve van a Azure Site Recovery Kötet árnyékmásolata szolgáltatás (VSS) szolgáltatója. A VSS-szolgáltató az alkalmazás-konzisztens helyreállítási pontok előállítására szolgál. Ha a VSS-szolgáltató telepítése nem sikerül, a rendszer kihagyja ezt a lépést, és folytatja az ügynök telepítését.
-1. Ha az ügynök telepítése sikeres, de a VSS-szolgáltató telepítése meghiúsul, akkor a feladatok állapota **figyelmeztetésként**van megjelölve. Ez nem befolyásolja az összeomlás-konzisztens helyreállítási pontok létrehozását.
+1. Ha az ügynök telepítése sikeres, de a VSS-szolgáltató telepítése meghiúsul, akkor a feladatok állapota **figyelmeztetésként** van megjelölve. Ez nem befolyásolja az összeomlás-konzisztens helyreállítási pontok létrehozását.
 
     - Az alkalmazással konzisztens helyreállítási pontok létrehozásához tekintse meg a Site Recovery VSS-szolgáltató manuális telepítésének befejezésére vonatkozó [útmutatást](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) .
     - Ha nem szeretné, hogy az alkalmazással konzisztens helyreállítási pontok legyenek létrehozva, [módosítsa a replikációs házirendet](vmware-azure-set-up-replication.md#create-a-policy) az alkalmazás-konzisztens helyreállítási pontok kikapcsolásához.
@@ -78,16 +78,16 @@ A mobilitási szolgáltatás leküldéses telepítése során a következő lép
 > Ne használja a felhasználói felület telepítési módszerét, ha egy Azure-beli infrastruktúra-szolgáltatás (IaaS) virtuális gépet replikál egy Azure-régióból egy másikba. Használja a [parancssor](#install-the-mobility-service-using-command-prompt) telepítését.
 
 1. Másolja a telepítési fájlt a gépre, és futtassa.
-1. A **telepítés lehetőségnél**válassza a **mobilitási szolgáltatás telepítése**lehetőséget.
-1. Válassza ki a telepítési helyet, és válassza a **telepítés**lehetőséget.
+1. A **telepítés lehetőségnél** válassza a **mobilitási szolgáltatás telepítése** lehetőséget.
+1. Válassza ki a telepítési helyet, és válassza a **telepítés** lehetőséget.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility1.png" alt-text="Mobilitási szolgáltatás telepítési lehetőség lapja.":::
 
-1. A telepítés figyelése a **telepítési folyamatban**. A telepítés befejezése után válassza a **Folytatás a konfigurációval** lehetőséget a szolgáltatás konfigurációs kiszolgálóval való regisztrálásához.
+1. A telepítés figyelése a **telepítési folyamatban** . A telepítés befejezése után válassza a **Folytatás a konfigurációval** lehetőséget a szolgáltatás konfigurációs kiszolgálóval való regisztrálásához.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Mobilitási szolgáltatás telepítési lehetőség lapja.":::
 
-1. A **konfigurációs kiszolgáló részletei**területen válassza ki a konfigurált IP-címet és jelszót.
+1. A **konfigurációs kiszolgáló részletei** területen válassza ki a konfigurált IP-címet és jelszót.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Mobilitási szolgáltatás telepítési lehetőség lapja.":::
 
@@ -104,7 +104,7 @@ A mobilitási szolgáltatás leküldéses telepítése során a következő lép
 
 ### <a name="windows-machine"></a>Windows rendszerű gép
 
-- A parancssorból futtassa a következő parancsokat a telepítő helyi mappába (például _C:\Temp_) való másolásához a védelemmel ellátni kívánt kiszolgálón. Cserélje le a telepítő fájlnevét a tényleges fájl nevére.
+- A parancssorból futtassa a következő parancsokat a telepítő helyi mappába (például _C:\Temp_ ) való másolásához a védelemmel ellátni kívánt kiszolgálón. Cserélje le a telepítő fájlnevét a tényleges fájl nevére.
 
   ```cmd
   cd C:\Temp
@@ -134,7 +134,7 @@ Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /
 Telepítési naplók | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Kötelező telepítési paraméter. Megadja, hogy kell-e telepíteni a mobilitási szolgáltatást (MS) vagy a fő célt (MT).
 `/InstallLocation`| Nem kötelező megadni. Megadja a mobilitási szolgáltatás telepítési helyét (bármely mappa).
-`/Platform` | Kötelező. Megadja azt a platformot, amelyen a mobilitási szolgáltatás telepítve van: <br/> **VMware** VMWare virtuális gépekhez/fizikai kiszolgálókhoz. <br/> **Azure** Azure-beli virtuális gépekhez.<br/><br/> Ha fizikai gépekként kezeli az Azure-beli virtuális gépeket, a **VMware**-et kell megadnia.
+`/Platform` | Kötelező. Megadja azt a platformot, amelyen a mobilitási szolgáltatás telepítve van: <br/> **VMware** VMWare virtuális gépekhez/fizikai kiszolgálókhoz. <br/> **Azure** Azure-beli virtuális gépekhez.<br/><br/> Ha fizikai gépekként kezeli az Azure-beli virtuális gépeket, a **VMware** -et kell megadnia.
 `/Silent`| Választható. Megadja, hogy a telepítőt csendes módban kell-e futtatni.
 
 #### <a name="registration-settings"></a>Regisztrációs beállítások
@@ -187,12 +187,12 @@ Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CS
 
 ## <a name="azure-virtual-machine-agent"></a>Azure-beli virtuálisgép-ügynök
 
-- **Windows rendszerű virtuális gépek**: a mobilitási szolgáltatás telepítője az Azure virtuálisgép- [ügynököt](../virtual-machines/extensions/features-windows.md#azure-vm-agent) a mobilitási szolgáltatás 9.7.0.0 telepíti. Ez biztosítja, hogy amikor a gép feladatátvételt hajt végre az Azure-ba, az Azure-beli virtuális gép megfelel a virtuálisgép-bővítmények használatára vonatkozó előfeltételnek.
-- **Linux rendszerű virtuális gépek**: a  [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) manuálisan kell telepíteni az Azure-beli virtuális gépen a feladatátvételt követően.
+- **Windows rendszerű virtuális gépek** : a mobilitási szolgáltatás telepítője az Azure virtuálisgép- [ügynököt](../virtual-machines/extensions/features-windows.md#azure-vm-agent) a mobilitási szolgáltatás 9.7.0.0 telepíti. Ez biztosítja, hogy amikor a gép feladatátvételt hajt végre az Azure-ba, az Azure-beli virtuális gép megfelel a virtuálisgép-bővítmények használatára vonatkozó előfeltételnek.
+- **Linux rendszerű virtuális gépek** : a  [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) manuálisan kell telepíteni az Azure-beli virtuális gépen a feladatátvételt követően.
 
 ## <a name="locate-installer-files"></a>Telepítőfájlok megkeresése
 
-A konfigurációs kiszolgálón lépjen a _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_mappába. Győződjön meg arról, hogy melyik telepítőre van szükség az operációs rendszer alapján. A következő táblázat összefoglalja az egyes VMware-alapú virtuális gépek és a fizikai kiszolgálói operációs rendszerek telepítési fájljait. Mielőtt elkezdené, tekintse át a [támogatott operációs rendszereket](vmware-physical-azure-support-matrix.md#replicated-machines).
+A konfigurációs kiszolgálón lépjen a _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_ mappába. Győződjön meg arról, hogy melyik telepítőre van szükség az operációs rendszer alapján. A következő táblázat összefoglalja az egyes VMware-alapú virtuális gépek és a fizikai kiszolgálói operációs rendszerek telepítési fájljait. Mielőtt elkezdené, tekintse át a [támogatott operációs rendszereket](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 > [!NOTE]
 > A fájlnevek a következő táblázatban látható szintaxist használják a valós _version_ értékekhez _date_ tartozó helyőrzőként. A tényleges fájlnevek az alábbi példákhoz hasonlóan néznek ki:
@@ -232,7 +232,7 @@ Az 9,36-es verziótól kezdődően **SUSE Linux Enterprise Server 11 SP3 rendsze
 3. Navigáljon a konfigurációs kiszolgálóhoz, másolja a SUSE Linux Enterprise Server 11 SP3-ügynök telepítőjét a Path-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. A legújabb telepítő másolását követően indítsa újra az inmage PushInstall szolgáltatást. 
 1. Most navigáljon a társított kibővíthető folyamat-kiszolgálókhoz, ismételje meg a 3. lépést és a 4. lépést.
-1. Ha **például**a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
+1. Ha **például** a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
     1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
 
 ### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 vagy CentOS 5 kiszolgáló
@@ -244,7 +244,7 @@ A **RHEL 5 gép frissítésének vagy** a 9,36-es verziótól való védeleméne
 3. Navigáljon a konfigurációs kiszolgálóhoz, másolja a RHEL 5 vagy CentOS 5 Agent telepítőjét az elérési útra – INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. A legújabb telepítő másolását követően indítsa újra az inmage PushInstall szolgáltatást. 
 1. Most navigáljon a társított kibővíthető folyamat-kiszolgálókhoz, ismételje meg a 3. lépést és a 4. lépést.
-1. Ha **például**a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
+1. Ha **például** a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
     1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="debian-7-server"></a>Debian 7 Server
@@ -256,9 +256,9 @@ A **Debian 7 rendszerű gépek frissítésének vagy védelemének előfeltétel
 3. Navigáljon a konfigurációs kiszolgálóhoz, másolja a Debian 7 Agent telepítőjét az elérési útra – INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. A legújabb telepítő másolását követően indítsa újra az inmage PushInstall szolgáltatást. 
 1. Most navigáljon a társított kibővíthető folyamat-kiszolgálókhoz, ismételje meg a 3. lépést és a 4. lépést.
-1. Ha **például**a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
+1. Ha **például** a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
     1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A mobilitási szolgáltatás leküldéses telepítésének beállítása](vmware-azure-install-mobility-service.md).

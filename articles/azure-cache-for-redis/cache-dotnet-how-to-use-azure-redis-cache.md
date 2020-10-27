@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: b64fd82ab6050d6f4a9f0f91c2b8336ce03ab1d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3c18fcc0f4ff21eaaea2cbaf664e87d0ff33d60
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88211363"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537065"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Gyors útmutató: az Azure cache használata a Redis .NET-keretrendszerbeli alkalmazással
 
@@ -30,7 +30,7 @@ Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis-ba egy .NET-kere
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Hozzon létre egy *CacheSecrets.config* nevű fájlt a számítógépen, majd mentse egy olyan helyre, ahonnan a mintaalkalmazás forráskódja nem fogja beolvasni. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config*.
+Hozzon létre egy *CacheSecrets.config* nevű fájlt a számítógépen, majd mentse egy olyan helyre, ahonnan a mintaalkalmazás forráskódja nem fogja beolvasni. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config* .
 
 Módosítsa a *CacheSecrets.config* fájlt, és adja hozzá az alábbi tartalmakat:
 
@@ -47,7 +47,7 @@ Az `<access-key>` karakterláncot cserélje le a gyorsítótár elsődleges kulc
 
 ## <a name="create-a-console-app"></a>Konzolalkalmazás létrehozása
 
-A Visual Studióban kattintson a **fájl**  >  **új**  >  **projekt**elemre.
+A Visual Studióban kattintson a **fájl**  >  **új**  >  **projekt** elemre.
 
 Válassza a **konzolos alkalmazás (.NET-keretrendszer)** lehetőséget, és az alkalmazás konfigurálásához kattintson a **következő** elemre. Adja meg a **projekt nevét** , majd kattintson a **Létrehozás** gombra egy új konzol alkalmazás létrehozásához.
 
@@ -57,7 +57,7 @@ Válassza a **konzolos alkalmazás (.NET-keretrendszer)** lehetőséget, és az 
 
 Ebben a szakaszban konfigurálja a konzolalkalmazást a .NET [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) ügyfél használatára.
 
-A Visual Studióban kattintson a **Tools**  >  **NuGet**Package Manager  >  **csomagkezelő konzol**elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
+A Visual Studióban kattintson a **Tools**  >  **NuGet** Package Manager  >  **csomagkezelő konzol** elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -92,7 +92,7 @@ using System.Configuration;
 
 A Redis készült Azure cache-hez való kapcsolódást a `ConnectionMultiplexer` osztály kezeli. Ezt az osztályt kell megosztani és újrafelhasználni az ügyfélalkalmazásban. Ne hozzon létre új kapcsolatot minden művelethez. 
 
-Soha ne tároljon hitelesítő adatokat a forráskódban. Annak érdekében, hogy a minta egyszerű maradjon, csak egy külső titkos kódokat tartalmazó konfigurációs fájlt használok. Ennél még jobb megoldás lenne a [tanúsítványokkal rendelkező Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios) használata.
+Soha ne tároljon hitelesítő adatokat a forráskódban. Annak érdekében, hogy a minta egyszerű maradjon, csak egy külső titkos kódokat tartalmazó konfigurációs fájlt használok. Ennél még jobb megoldás lenne a [tanúsítványokkal rendelkező Azure Key Vault](/rest/api/keyvault/certificate-scenarios) használata.
 
 A *Program.cs* fájlban adja hozzá a következő tagokat a konzolalkalmazás `Program` osztályához:
 
@@ -186,7 +186,7 @@ A Redis-hez készült Azure cache gyorsítótárba helyezheti a .NET-objektumoka
 
 Az objektumok szerializálásának egy egyszerű módja, ha a [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) kódtárban található `JsonConvert` szerializálási metódusokat használja a JSON formátumból és a JSON formátumba szerializálásra. Ebben a szakaszban egy .NET-objektumot fog hozzáadni a gyorsítótárhoz.
 
-A Visual Studióban kattintson a **Tools**  >  **NuGet**Package Manager  >  **csomagkezelő konzol**elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
+A Visual Studióban kattintson a **Tools**  >  **NuGet** Package Manager  >  **csomagkezelő konzol** elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -237,7 +237,7 @@ A .NET-objektumok szerializálásának teszteléséhez buildelje és futtassa a 
 ![Kész konzolalkalmazás](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -261,7 +261,7 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne
 
 <a name="next-steps"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t egy .NET-alkalmazásból származó Redis. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 
@@ -271,4 +271,4 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t e
 Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
 > [!div class="nextstepaction"]
-> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [A költségek elemzésének megkezdése a Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

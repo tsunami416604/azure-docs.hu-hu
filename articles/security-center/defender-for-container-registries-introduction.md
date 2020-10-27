@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0c504ebdec524390d9deb22088979199f80e4f13
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275960"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558635"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Bevezetés az Azure Defender for Container-jegyzékbe
 
@@ -72,8 +72,14 @@ Az Azure Defender által a Container nyilvántartók számára támogatott táro
 
 Ha nem támogatott beállításjegyzéket csatlakozik az Azure-előfizetéséhez, a rendszer nem ellenőrzi őket, és nem lesz rájuk kiszámlázva.
 
+### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>Testreszabhatók a sebezhetőségi képolvasóból származó eredmények?
+Igen. Ha a szervezetnek figyelmen kívül kell hagynia egy megállapítást, és nem javítja azt, akkor letilthatja. A letiltott eredmények nem befolyásolják a biztonságos pontszámot, vagy nem eredményeznek nemkívánatos zajt.
 
-## <a name="next-steps"></a>Következő lépések
+[Ismerje meg, hogyan hozhat létre szabályokat az eredményeknek a beépített sebezhetőségi felmérési eszközből való letiltásához](defender-for-container-registries-usage.md#disable-specific-findings-preview).
+
+
+
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74aa0bf84c19b9d663b92d529604c08bf5800c45
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902772"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544851"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>A sys_schema használata a teljesítmény finomhangolásához és az adatbázis-karbantartáshoz a Azure Database for MySQL
 
@@ -29,7 +29,7 @@ A sys_schemaban 52 nézet található, és mindegyik nézet a következő előta
 - Felhasználó: a felhasználók által felhasznált és csoportosított erőforrások. Ilyenek például a fájlok I/o-, a kapcsolatok és a memória.
 - Várakozás: Várjon, amíg az események gazdagép vagy felhasználó szerint vannak csoportosítva.
 
-Most nézzük meg a sys_schema gyakori használati mintáit. Első lépésként csoportosítjuk a használati mintákat két kategóriába: a **teljesítmény finomhangolását** és az **adatbázis-karbantartást**.
+Most nézzük meg a sys_schema gyakori használati mintáit. Első lépésként csoportosítjuk a használati mintákat két kategóriába: a **teljesítmény finomhangolását** és az **adatbázis-karbantartást** .
 
 ## <a name="performance-tuning"></a>Teljesítmény-finomhangolás
 
@@ -83,4 +83,4 @@ Az indexek nagyszerű eszközöket biztosítanak az olvasási teljesítmény jav
 Összefoglalva, a sys_schema kiváló eszköz a teljesítmény finomhangolásához és az adatbázis-karbantartáshoz. Győződjön meg arról, hogy kihasználja ezt a funkciót a Azure Database for MySQL. 
 
 ## <a name="next-steps"></a>Következő lépések
-- Ha szeretné megkeresni a leginkább érintett kérdésekre adott társi válaszokat, vagy új kérdést/választ szeretne küldeni, látogasson el [a Microsoft Q&egy kérdés oldalra](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Ha szeretné megkeresni a leginkább érintett kérdésekre adott társi válaszokat, vagy új kérdést/választ szeretne küldeni, látogasson el [a Microsoft Q&egy kérdés oldalra](/answers/topics/azure-database-mysql.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 98e062b159b2df639923cb3cd3aac286f6051016
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490900"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535093"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Egy HDInsight-fürt lassú vagy meghibásodott feladatának hibaelhárítása
 
@@ -90,8 +90,8 @@ A HDInsight számos Azure-szolgáltatásra támaszkodik. Virtuális kiszolgáló
 
 #### <a name="check-azure-service-usage-limits"></a>Az Azure-szolgáltatások használati korlátainak keresése
 
-Ha nagyméretű fürtöt indít, vagy egyszerre sok fürtöt indított el, a fürt meghiúsulhat, ha túllépte az Azure-szolgáltatási korlátot. A szolgáltatás korlátai az Azure-előfizetéstől függően változnak. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-Kérheti, hogy a Microsoft növelje a rendelkezésre álló HDInsight-erőforrások (például a virtuálisgép-magok és a virtuálisgép-példányok) számát a [Resource Manager Core kvóta növelésére vonatkozó kéréssel](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Ha nagyméretű fürtöt indít, vagy egyszerre sok fürtöt indított el, a fürt meghiúsulhat, ha túllépte az Azure-szolgáltatási korlátot. A szolgáltatás korlátai az Azure-előfizetéstől függően változnak. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Kérheti, hogy a Microsoft növelje a rendelkezésre álló HDInsight-erőforrások (például a virtuálisgép-magok és a virtuálisgép-példányok) számát a [Resource Manager Core kvóta növelésére vonatkozó kéréssel](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 #### <a name="check-the-release-version"></a>A kiadás verziójának keresése
 
@@ -115,7 +115,7 @@ A [Ambari felhasználói felület irányítópultja](#view-cluster-configuration
 
 ### <a name="check-your-webhcat-service"></a>A Webhcaten szolgáltatás ellenõrzése
 
-A Apache Hive, Apache Pig vagy Apache Sqoop feladatok egyik gyakori forgatókönyve, hogy a hiba a [webhcaten](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (vagy *Templeton*) szolgáltatás meghibásodása. A Webhcaten egy REST-felület a távoli feladatok végrehajtásához, mint például a kaptár, a Pig, a SCOOP és a MapReduce. A Webhcaten lefordítja a beküldési kérelmeket Apache Hadoop fonal-alkalmazásokba, és visszaadja a fonal alkalmazás állapotból származtatott állapotot.  A következő szakaszok az általános Webhcaten HTTP-állapotkódok leírását ismertetik.
+A Apache Hive, Apache Pig vagy Apache Sqoop feladatok egyik gyakori forgatókönyve, hogy a hiba a [webhcaten](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (vagy *Templeton* ) szolgáltatás meghibásodása. A Webhcaten egy REST-felület a távoli feladatok végrehajtásához, mint például a kaptár, a Pig, a SCOOP és a MapReduce. A Webhcaten lefordítja a beküldési kérelmeket Apache Hadoop fonal-alkalmazásokba, és visszaadja a fonal alkalmazás állapotból származtatott állapotot.  A következő szakaszok az általános Webhcaten HTTP-állapotkódok leírását ismertetik.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 állapotkód)
 
@@ -172,7 +172,7 @@ A fonal szintjén két típusú időkorlát létezik:
 
     Ha megnyitja a `/var/log/webhcat/webhcat.log` naplófájlt, és megkeresi a "várólistán lévő feladatokhoz" kifejezést, több olyan bejegyzést is láthat, ahol a végrehajtási idő túl hosszú (>2000 MS), és a várakozási idő növelését jelző bejegyzéseket jelenít meg.
 
-    Az üzenetsor-kezelési feladatok továbbra is növekednek, mert az új feladatok elküldésének sebessége meghaladja a régi feladatok befejezési sebességét. Ha a szál memóriája 100%-ban használatban van, a *joblauncher-várólista* már nem tud az *alapértelmezett várólistából*felvenni a kapacitást. Ezért nem lehet több új feladatot fogadni a joblauncher-várólistába. Ez a viselkedés azt okozhatja, hogy a várakozási idő hosszabb és hosszabb lesz, ami időtúllépési hibát okoz, amelyet általában sok más is követ.
+    Az üzenetsor-kezelési feladatok továbbra is növekednek, mert az új feladatok elküldésének sebessége meghaladja a régi feladatok befejezési sebességét. Ha a szál memóriája 100%-ban használatban van, a *joblauncher-várólista* már nem tud az *alapértelmezett várólistából* felvenni a kapacitást. Ezért nem lehet több új feladatot fogadni a joblauncher-várólistába. Ez a viselkedés azt okozhatja, hogy a várakozási idő hosszabb és hosszabb lesz, ami időtúllépési hibát okoz, amelyet általában sok más is követ.
 
     Az alábbi képen a joblauncher-várólista a 714,4%-os túlhasználatú helyen látható. Ez akkor fogadható el, ha az alapértelmezett várólistában továbbra is szabad kapacitás áll rendelkezésre a kölcsönzéshez. Ha azonban a fürt teljes mértékben használatban van, és a szál memóriája 100%-os kapacitású, az új feladatoknak várniuk kell, ami végül időtúllépéseket okoz.
 
@@ -206,7 +206,7 @@ A problémák diagnosztizálásához:
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>4. lépés: a környezeti verem és a verziók áttekintése
 
-A Ambari felhasználói felületi **verem és verziója** lapon információkat biztosít a fürtszolgáltatás-konfigurációról és a szolgáltatás korábbi verzióiról.  A Hadoop nem megfelelő verziója lehet a fürt meghibásodásának oka.  A Ambari felhasználói felületén válassza a **rendszergazda** menüt, majd a  **Stacks és a Versions**elemet.  A szolgáltatás verziószámával kapcsolatos információk megtekintéséhez válassza a **verziók** fület a lapon:
+A Ambari felhasználói felületi **verem és verziója** lapon információkat biztosít a fürtszolgáltatás-konfigurációról és a szolgáltatás korábbi verzióiról.  A Hadoop nem megfelelő verziója lehet a fürt meghibásodásának oka.  A Ambari felhasználói felületén válassza a **rendszergazda** menüt, majd a  **Stacks és a Versions** elemet.  A szolgáltatás verziószámával kapcsolatos információk megtekintéséhez válassza a **verziók** fület a lapon:
 
 ![Apache Ambari stack és verziók](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
@@ -262,7 +262,7 @@ A fürtlemez forrásának diagnosztizálásához indítson el egy új fürtöt u
 ## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes felületével](hdinsight-hadoop-manage-ambari.md)
-* [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)
+* [HDInsight-naplók elemzése](./hdinsight-troubleshoot-guide.md)
 * [Hozzáférési Apache Hadoop a FONALas alkalmazások bejelentkezéséhez Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Ismert problémák a Apache Spark-fürtön a HDInsight-on](hdinsight-apache-spark-known-issues.md)
+* [Ismert problémák a Apache Spark-fürtön a HDInsight-on](./spark/apache-spark-known-issues.md)
