@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 0d886fc6797011ff3a0adeb69f50358ece9c5f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf1c558474cfde85dd2c9ba8c85dc553fe5d9b56
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252170"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547503"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
 
@@ -62,7 +62,7 @@ Töltse le a Node.js eszközszimulátor mintaprojektjét a https://github.com/Az
 
 Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 Ha egy korábbi rövid útmutató vagy oktatóanyag során létrehozott egy ingyenes vagy standard szintű IoT Hubot, kihagyhatja ezt a lépést.
 
@@ -80,7 +80,7 @@ Jelentkezzen be a portálra, és keresse meg az IoT Hubot. Ezt követően nyissa
 
 ![Új eszköz hozzáadása](media/tutorial-connectivity/add-device.png)
 
-A **MyTestDevice** kapcsolati sztringjének lekéréséhez kattintson rá az eszközlistán, majd másolja a **Kapcsolati sztring – elsődleges kulcs** értékét. A kapcsolati sztring tartalmazza az eszköz *megosztott hozzáférési kulcsát*.
+A **MyTestDevice** kapcsolati sztringjének lekéréséhez kattintson rá az eszközlistán, majd másolja a **Kapcsolati sztring – elsődleges kulcs** értékét. A kapcsolati sztring tartalmazza az eszköz *megosztott hozzáférési kulcsát* .
 
 ![Az eszköz kapcsolati sztringjének lekérése](media/tutorial-connectivity/copy-connection-string.png)
 
@@ -232,7 +232,7 @@ Ha a szimulált eszköz sikeresen fogadja a közvetlenmetódus-hívást, nyugtá
 
 ## <a name="check-twin-synchronization"></a>Ikerszinkronizálás ellenőrzése
 
-Az eszközök ikreket használnak, hogy szinkronizálják az eszköz és a hub állapotát. Ebben a szakaszban parancssori felületi parancsok használatával küld _kívánt tulajdonságokat_ egy eszközre, és elolvassa az eszköz által küldött _jelentett tulajdonságokat_.
+Az eszközök ikreket használnak, hogy szinkronizálják az eszköz és a hub állapotát. Ebben a szakaszban parancssori felületi parancsok használatával küld _kívánt tulajdonságokat_ egy eszközre, és elolvassa az eszköz által küldött _jelentett tulajdonságokat_ .
 
 A szakaszban használt szimulált eszköz minden indításkor elküldi a jelentett tulajdonságokat a hubnak, és a kívánt tulajdonságokat a fogadáskor minden alkalommal megjeleníti a konzolon.
 
@@ -264,13 +264,13 @@ A szimulált eszköz minden alkalommal megjelenít egy üzenetet, amikor egy kí
 
 Amellett, hogy folyamatosan fogadja a kívánt tulajdonságok módosításait, a szimulált eszköz indításakor automatikusan ellenőrzi a kívánt tulajdonságokat is.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szüksége az IoT Hubra, az erőforráscsoporttal együtt törölje a Portalon. Ehhez válassza ki az IoT Hubot tartalmazó **tutorials-iot-hub-rg** erőforráscsoportot, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan ellenőrizhet eszközkulcsokat, az eszközről a felhőbe irányuló kapcsolatot, a felhőből az eszközre irányuló kapcsolatot, valamint az ikereszköz-szinkronizálást. Az IoT hub monitorozásával kapcsolatos további információkért tekintse meg az IoT Hub monitorozását ismertető útmutatót.
 
 > [!div class="nextstepaction"]
-> [Monitorozás a diagnosztikával](iot-hub-monitor-resource-health.md)
+> [Figyelő IoT Hub](monitor-iot-hub.md)

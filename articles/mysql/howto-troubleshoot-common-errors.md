@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ebe9f936e3d0dfafec23842fcdbfd225995d546b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ac42407945196bd60c5ef466497ea6a86b5816c4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88720250"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547299"
 ---
 # <a name="common-errors"></a>Gyakori hibák
 
@@ -36,13 +36,13 @@ BEGIN
 END;
 ```
 
-**Megoldás**: a hiba elhárításához állítsa a portálon a log_bin_trust_function_creators [server parameters](howto-server-parameters.md) 1 értékre, majd a kívánt objektumok létrehozásához HAJTsa végre a DDL-utasításokat, vagy importálja a sémát, hogy létrehozza a kívánt objektumokat, majd visszaállítja a log_bin_trust_function_creators paramétert az előző értékre a létrehozás után.
+**Megoldás** : a hiba elhárításához állítsa a portálon a log_bin_trust_function_creators [server parameters](howto-server-parameters.md) 1 értékre, majd a kívánt objektumok létrehozásához HAJTsa végre a DDL-utasításokat, vagy importálja a sémát, hogy létrehozza a kívánt objektumokat, majd visszaállítja a log_bin_trust_function_creators paramétert az előző értékre a létrehozás után.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>1227-es hiba (42000) a következő 101 sorban: hozzáférés megtagadva; Ehhez a művelethez szükség van a SUPER jogosultság (ok) ra (legalább az egyikre). A művelet nem sikerült az 1. ExitCode
 
 A fenti hiba akkor fordulhat elő, amikor egy memóriaképfájl importálása vagy a [definomabb](https://dev.mysql.com/doc/refman/5.7/en/create-procedure.html)eljárásokat tartalmazó eljárás létrehozása történik. 
 
-**Megoldás**: a hiba megoldásához a rendszergazda felhasználó jogosultságokat adhat az eljárások létrehozásához vagy végrehajtásához az alábbi példáknak megfelelően:
+**Megoldás** : a hiba megoldásához a rendszergazda felhasználó jogosultságokat adhat az eljárások létrehozásához vagy végrehajtásához az alábbi példáknak megfelelően:
 
 ```sql
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
@@ -64,7 +64,7 @@ DELIMITER ;
 
 ## <a name="next-steps"></a>Következő lépések
 Ha nem találta meg a keresett választ, vegye figyelembe a következőket:
-- Tegye fel kérdéseit a [Microsoft Q&a kérdéses oldalra](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) vagy [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Tegye fel kérdéseit a [Microsoft Q&a kérdéses oldalra](/answers/topics/azure-database-mysql.html) vagy [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).
 - Küldjön e-mailt a MySQL-hez készült Azure Database for MySQL Team [ @Ask Azure db](mailto:AskAzureDBforMySQL@service.microsoft.com)-nek. Ez az e-mail-cím nem technikai támogatási alias.
 - Vegye fel a kapcsolatot az Azure támogatási szolgálatával, és kérjen [jegyet a Azure Portalból](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).

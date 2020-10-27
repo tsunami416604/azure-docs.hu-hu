@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 13ba529dd3067ae16167f0d9c14c8f72b982f52c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 398b567e173691068e6dd932e075d6598dcfe601
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010840"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537405"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Azure cache a Redis-tervezéssel kapcsolatos gyakori kérdések
 
@@ -84,7 +84,7 @@ Igen, a Redis-hez készült Azure cache Azure Government felhőben, az Azure Chi
 
 Az Azure cache más Felhőkkel való Redis való használatának szempontjaival kapcsolatos további információkért tekintse meg a következő hivatkozásokat.
 
-- [Azure Government-adatbázisok – Azure cache a Redis-hez](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
+- [Azure Government-adatbázisok – Azure cache a Redis-hez](../azure-government/compare-azure-government-global-azure.md)
 - [Azure China 21Vianet-felhő – Azure cache a Redis-hoz](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 

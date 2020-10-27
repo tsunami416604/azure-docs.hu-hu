@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71121940"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545905"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Oktatóanyag: az R használata Spark számítási környezetben az Azure HDInsight
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure HDInsight Machine Learning Services-fürt. A Azure Portal és a **fürt típusa**beállításnál válassza a **ml szolgáltatások**lehetőséget [a Apache Hadoop-fürtök létrehozásához](../hdinsight-hadoop-create-linux-clusters-portal.md) .
+* Egy Azure HDInsight Machine Learning Services-fürt. A Azure Portal és a **fürt típusa** beállításnál válassza a **ml szolgáltatások** lehetőséget [a Apache Hadoop-fürtök létrehozásához](../hdinsight-hadoop-create-linux-clusters-portal.md) .
 
 ## <a name="connect-to-rstudio-server"></a>Csatlakozás az RStudio Serverhez
 
@@ -43,7 +43,7 @@ A RStudio-kiszolgáló a fürt peremhálózati csomópontján fut. Lépjen a kö
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Amikor először jelentkezik be, a hitelesítés kétszer történik meg. Az első hitelesítési kérésnél adja meg a fürt rendszergazdai felhasználónevét és jelszavát (az alapértelmezett érték a *rendszergazda*). A második hitelesítési kérésnél adja meg az SSH-felhasználónevet és a jelszót (az alapértelmezett érték a *sshuser*). A későbbi bejelentkezések csak az SSH hitelesítő adatokat igénylik.
+Amikor először jelentkezik be, a hitelesítés kétszer történik meg. Az első hitelesítési kérésnél adja meg a fürt rendszergazdai felhasználónevét és jelszavát (az alapértelmezett érték a *rendszergazda* ). A második hitelesítési kérésnél adja meg az SSH-felhasználónevet és a jelszót (az alapértelmezett érték a *sshuser* ). A későbbi bejelentkezések csak az SSH hitelesítő adatokat igénylik.
 
 ## <a name="download-the-sample-data-to-local-storage"></a>A mintaadatok letöltése a helyi tárterületre
 
@@ -57,7 +57,7 @@ A *légitársaság 2012-alapú adatkészlete* 12 vesszővel elválasztott fájlb
     remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012" # location of data
     ```
 
-1. A jobb oldali ablaktáblában válassza a **környezet** lapot. A változók az **értékek**területen jelennek meg.
+1. A jobb oldali ablaktáblában válassza a **környezet** lapot. A változók az **értékek** területen jelennek meg.
 
     ![HDInsight R Studio webkonzol](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
 
@@ -168,7 +168,7 @@ Spark számítási környezetben a következő függvények használatával hozh
 |`RxParquetData` | Egy Parquet adatforrás-objektumot hoz létre.|
 |`RxOrcData` | Egy ork adatforrás-objektumot hoz létre.|
 
-Hozzon létre egy [RxTextData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata) OBJEKTUMOT a HDFS-be másolt fájlok használatával. A RStudio mezőbe írja be a következő kódot:
+Hozzon létre egy [RxTextData](/machine-learning-server/r-reference/revoscaler/rxtextdata) OBJEKTUMOT a HDFS-be másolt fájlok használatával. A RStudio mezőbe írja be a következő kódot:
 
 ```R
 airDS <- RxTextData( airDataDir,
@@ -179,7 +179,7 @@ airDS <- RxTextData( airDataDir,
 
 ## <a name="create-a-compute-context-for-spark"></a>Számítási környezet létrehozása a Sparkhoz
 
-Az adatok betöltéséhez és elemzések futtatásához a munkavégző csomópontokon a parancsfájlban állítsa be a számítási környezetet a [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark). Ebben a kontextusban az R functions automatikusan elosztja a munkaterhelést az összes munkavégző csomóponton, és nincs beépített követelmény a feladatok vagy a várólista kezeléséhez. A Spark számítási környezet a `RxSpark` vagy a használatával jön `rxSparkConnect()` létre a Spark számítási környezet létrehozásához, és a használatával `rxSparkDisconnect()` visszatérhet a helyi számítási környezetbe. A RStudio mezőbe írja be a következő kódot:
+Az adatok betöltéséhez és elemzések futtatásához a munkavégző csomópontokon a parancsfájlban állítsa be a számítási környezetet a [RxSpark](/machine-learning-server/r-reference/revoscaler/rxspark). Ebben a kontextusban az R functions automatikusan elosztja a munkaterhelést az összes munkavégző csomóponton, és nincs beépített követelmény a feladatok vagy a várólista kezeléséhez. A Spark számítási környezet a `RxSpark` vagy a használatával jön `rxSparkConnect()` létre a Spark számítási környezet létrehozásához, és a használatával `rxSparkDisconnect()` visszatérhet a helyi számítási környezetbe. A RStudio mezőbe írja be a következő kódot:
 
 ```R
 # Define the Spark compute context
@@ -191,7 +191,7 @@ rxSetComputeContext(mySparkCluster)
 
 ## <a name="fit-a-linear-model"></a>Lineáris modell igazítása
 
-1. Az adatforrást használó lineáris modellhez a [rxLinMod](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod) függvényt használhatja `airDS` . A RStudio mezőbe írja be a következő kódot:
+1. Az adatforrást használó lineáris modellhez a [rxLinMod](/machine-learning-server/r-reference/revoscaler/rxlinmod) függvényt használhatja `airDS` . A RStudio mezőbe írja be a következő kódot:
 
     ```R
     system.time(
@@ -225,14 +225,14 @@ rxSetComputeContext(mySparkCluster)
     Coefficients:
                    Estimate Std. Error t value Pr(>|t|)     | Counts
     DayOfWeek=Mon   3.54210    0.03736   94.80 2.22e-16 *** | 901592
-    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 *** | 855805
-    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 *** | 868505
-    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 *** | 891674
-    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 *** | 896495
-    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 *** | 732944
-    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 *** | 858366
+    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 **_ | 855805
+    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 _*_ | 868505
+    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 _*_ | 891674
+    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 _*_ | 896495
+    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 _*_ | 732944
+    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 _*_ | 858366
     ---
-    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    Signif. codes:  0 ‘_*_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
     Residual standard error: 35.48 on 6005374 degrees of freedom
     Multiple R-squared: 0.001827 (as if intercept included)
@@ -247,7 +247,7 @@ rxSetComputeContext(mySparkCluster)
 
 Ahogy láttuk, a CSV-fájlokat közvetlenül is elemezheti az R használatával a Hadoop. Az elemzést azonban gyorsabban elvégezheti, ha az adattárolást hatékonyabb formában tárolja. Az R XDF fájlformátuma hatékony, de a HDFS némileg módosult, így az egyes fájlok egyetlen HDFS-blokkon belül maradnak. (A HDFS blokk mérete eltér a telepítéstől a telepítésig, de általában 64 MB vagy 128 MB.) 
 
-Ha a [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) használatával összetett XDF-fájlokat hoz létre, akkor olyan adatforrást kell megadnia, mint például az in, `RxTextData` `AirDS` és egy `RxXdfData` fájlrendszerrel rendelkező adatforrást, amely a Hadoop argumentumként egy HDFS-fájlrendszerre van beállítva. Ezután használhatja az objektumot a `RxXdfData` következő R-elemzések adatargumentumaként.
+Ha a [rxImport](/machine-learning-server/r-reference/revoscaler/rximport) használatával összetett XDF-fájlokat hoz létre, akkor olyan adatforrást kell megadnia, mint például az in, `RxTextData` `AirDS` és egy `RxXdfData` fájlrendszerrel rendelkező adatforrást, amely a Hadoop argumentumként egy HDFS-fájlrendszerre van beállítva. Ezután használhatja az objektumot a `RxXdfData` következő R-elemzések adatargumentumaként.
 
 1. Definiáljon egy `RxXdfData` objektumot. A RStudio mezőbe írja be a következő kódot:
 
@@ -298,7 +298,7 @@ Ha a [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/r
 
 ### <a name="in-a-spark-context"></a>Spark-környezetben
 
-Ha a CSV-fájlokat XDF fájlformátumba konvertálta az elemzések futtatásakor, de most szeretné visszaalakítani az adatait a CSV-be, ezt a [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep)használatával teheti meg.
+Ha a CSV-fájlokat XDF fájlformátumba konvertálta az elemzések futtatásakor, de most szeretné visszaalakítani az adatait a CSV-be, ezt a [rxDataStep](/machine-learning-server/r-reference/revoscaler/rxdatastep)használatával teheti meg.
 
 CSV-fájlok mappájának létrehozásához először hozzon létre egy `RxTextData` objektumot a könyvtár nevével a fájl argumentumként. Ez az objektum azt a mappát jelöli, amelyben létre kívánja hozni a CSV-fájlokat. Ez a könyvtár a futtatásakor jön létre `rxDataStep` . Ezután mutasson erre az `RxTextData` objektumra a következő `outFile` argumentumában: `rxDataStep` . Minden létrehozott CSV-fájl neve a könyvtárnév alapján történik, és egy számot követ.
 
@@ -355,7 +355,7 @@ Számítási környezet használatakor `RxSpark` `createFileSet` az alapértelme
     quit()
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az oktatóanyag befejezése után érdemes lehet törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, gazdasági szempontból érdemes törölni a fürtöket, amikor nincsenek használatban.
 
@@ -363,7 +363,7 @@ Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja az R functions szolgáltatást egy HDInsight Machine Learning Services-fürtön futó Apache Spark. További információkért tekintse át a következő cikkeket:
+Ebben az oktatóanyagban megtanulta, hogyan használhatja az R functions szolgáltatást egy HDInsight Machine Learning Services-fürtön futó Apache Spark. További információkat az következő cikkekben talál:
 
 * [Számítási környezeti beállítások Azure HDInsight Machine Learning Services-fürthöz](r-server-compute-contexts.md)
-* [R functions for Spark on Hadoop](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)
+* [R functions for Spark on Hadoop](/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150813"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537269"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -21,7 +21,7 @@ Az Azure HDInsight számos módszert kínál a nagyvállalati biztonsági igény
 
 Ez a cikk a biztonsági megoldásokat úgy tekinti meg, hogy a biztonsági megoldásokat négy hagyományos biztonsági pillérre osztja: biztonsági, hitelesítési, engedélyezési és titkosítási szinten.
 
-A cikk emellett bemutatja az **Azure HDInsight Enterprise Security Package (ESP)**, amely Active Directory-alapú hitelesítést, többfelhasználós támogatást és szerepköralapú hozzáférés-vezérlést biztosít a HDInsight-fürtökhöz.
+A cikk emellett bemutatja az **Azure HDInsight Enterprise Security Package (ESP)** , amely Active Directory-alapú hitelesítést, többfelhasználós támogatást és szerepköralapú hozzáférés-vezérlést biztosít a HDInsight-fürtökhöz.
 
 ## <a name="enterprise-security-pillars"></a>Vállalati biztonsági oszlopok
 
@@ -78,10 +78,10 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 | Adathozzáférés biztonsága | Hozzáférés-vezérlési listák konfigurálása a Azure Data Lake Storage Gen1 és a Gen2 [hozzáférés-vezérlési listáihoz](../../storage/blobs/data-lake-storage-access-control.md)  | Ügyfél |
 |  | Engedélyezze a ["biztonságos átvitel szükséges"](../../storage/common/storage-require-secure-transfer.md) tulajdonságot a Storage-fiókokon. | Ügyfél |
 |  | [Azure Storage-tűzfalak](../../storage/common/storage-network-security.md) és virtuális hálózatok konfigurálása | Ügyfél |
-|  | [Azure Virtual Network szolgáltatásbeli végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) konfigurálása a Cosmos db és az [Azure SQL db](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) -hez | Ügyfél |
+|  | [Azure Virtual Network szolgáltatásbeli végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) konfigurálása a Cosmos db és az [Azure SQL db](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) -hez | Ügyfél |
 |  | Győződjön meg arról, hogy a [titkosítás az átvitelben](./encryption-in-transit.md) funkció engedélyezve van a TLS és az IPSec használatára a fürtön belüli kommunikációhoz. | Ügyfél |
-|  | [Ügyfél által felügyelt kulcsok](../../storage/common/storage-encryption-keys-portal.md) konfigurálása az Azure Storage encryption szolgáltatáshoz | Ügyfél |
-|  | Az Azure-támogatás által az adataihoz való hozzáférés vezérlése az [ügyfél kulcstárolójának](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) használatával | Ügyfél |
+|  | [Ügyfél által felügyelt kulcsok](../../storage/common/customer-managed-keys-configure-key-vault.md) konfigurálása az Azure Storage encryption szolgáltatáshoz | Ügyfél |
+|  | Az Azure-támogatás által az adataihoz való hozzáférés vezérlése az [ügyfél kulcstárolójának](../../security/fundamentals/customer-lockbox-overview.md) használatával | Ügyfél |
 | Alkalmazás-és middleware-biztonság | Integráció a HRE-DS-sel és az [ESP konfigurálása](apache-domain-joined-configure-using-azure-adds.md) vagy [a hib használata a OAuth-hitelesítéshez](identity-broker.md)| Ügyfél |
 |  | [Apache Ranger-engedélyezési](apache-domain-joined-run-hive.md) házirendek konfigurálása | Ügyfél |
 |  | [Azure monitor naplók](../hdinsight-hadoop-oms-log-analytics-tutorial.md) használata | Ügyfél |
@@ -92,11 +92,11 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 |  | A [bejövő hálózati biztonsági csoport (NSG) szabályainak](../control-network-traffic.md) vagy [privát hivatkozásának](../hdinsight-private-link.md) konfigurálása | Ügyfél |
 |  | A [kimenő forgalom korlátozásának](../hdinsight-restrict-outbound-traffic.md) konfigurálása a tűzfallal | Ügyfél |
 |  | [Az IPSec-titkosítás konfigurálása a fürtcsomópontok közötti átvitelben](encryption-in-transit.md) | Ügyfél |
-| Virtualizált infrastruktúra | N.A. | HDInsight (felhőalapú szolgáltató) |
-| Fizikai infrastruktúra biztonsága | N.A. | HDInsight (felhőalapú szolgáltató) |
+| Virtualizált infrastruktúra | N/A | HDInsight (felhőalapú szolgáltató) |
+| Fizikai infrastruktúra biztonsága | N/A | HDInsight (felhőalapú szolgáltató) |
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Az ESP-vel rendelkező HDInsight-fürtök tervezése](apache-domain-joined-architecture.md)
-* [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md)
+* [HDInsight-fürtök beállítása az ESP-vel](./apache-domain-joined-configure-using-azure-adds.md)
 * [HDInsight-fürtök az ESP-vel való kezelése](apache-domain-joined-manage.md)

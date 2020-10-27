@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: c1890ab9f99999c88e28eb9a76d6270fa08fb87c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c480de6da0427b8eda212e02e08c7b3f5426941c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996670"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534141"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen 
 
@@ -24,7 +24,7 @@ A kezdés előtt győződjön meg arról, hogy az Azure CLI telepítve van. Tov�
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
-Az Oracle Golden Gate telepítésének elvégzéséhez két Azure-beli virtuális gépet kell létrehoznia ugyanazon rendelkezésre állási csoporton belül. A virtuális gépek létrehozásához használt Piactéri lemezkép **Oracle: Oracle-Database-EE: 12.1.0.2: Latest**.
+Az Oracle Golden Gate telepítésének elvégzéséhez két Azure-beli virtuális gépet kell létrehoznia ugyanazon rendelkezésre állási csoporton belül. A virtuális gépek létrehozásához használt Piactéri lemezkép **Oracle: Oracle-Database-EE: 12.1.0.2: Latest** .
 
 Emellett ismernie kell a UNIX-szerkesztő VI-t, és alapvető ismeretekkel kell rendelkeznie az X11-ről (X Windows).
 
@@ -49,7 +49,7 @@ Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index
 az login
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi az Azure-erőforrásokat, és amelyekről felügyelhető. 
 
@@ -347,7 +347,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>A Golden Gate szoftver letöltése
 Az Oracle Golden Gate szoftver letöltéséhez és előkészítéséhez végezze el a következő lépéseket:
 
-1. Töltse le a **fbo_ggs_Linux_x64_shiphome.zip** fájlt az [Oracle Golden Gate letöltési oldaláról](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési cím **Oracle GoldenGate 12. x. x. x Oracle Linux x86-64-es verziójában**a letölteni kívánt. zip-fájlok készletének kell lennie.
+1. Töltse le a **fbo_ggs_Linux_x64_shiphome.zip** fájlt az [Oracle Golden Gate letöltési oldaláról](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési cím **Oracle GoldenGate 12. x. x. x Oracle Linux x86-64-es verziójában** a letölteni kívánt. zip-fájlok készletének kell lennie.
 
 2. Miután letöltötte a. zip-fájlokat az ügyfélszámítógépre, a biztonságos másolási protokoll (SCP) használatával másolja a fájlokat a virtuális gépre:
 
@@ -389,9 +389,9 @@ Ez egy választható lépés. Ezt a lépést kihagyhatja, ha Linux-ügyfelet has
 3. A PuTTY Key Generatorban:
 
    - Kulcs létrehozásához kattintson a **Létrehozás** gombra.
-   - Másolja a kulcs tartalmát (**CTRL + c**).
+   - Másolja a kulcs tartalmát ( **CTRL + c** ).
    - Kattintson a **titkos kulcs mentése** gombra.
-   - Hagyja figyelmen kívül a megjelenő figyelmeztetést, majd kattintson **az OK gombra**.
+   - Hagyja figyelmen kívül a megjelenő figyelmeztetést, majd kattintson **az OK gombra** .
 
    ![A PuTTY Key Generator oldalának képernyőképe](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -403,21 +403,21 @@ Ez egy választható lépés. Ezt a lépést kihagyhatja, ha Linux-ügyfelet has
    $ cd .ssh
    ```
 
-5. Hozzon létre egy **authorized_keys**nevű fájlt. Illessze be a kulcs tartalmát a fájlban, majd mentse a fájlt.
+5. Hozzon létre egy **authorized_keys** nevű fájlt. Illessze be a kulcs tartalmát a fájlban, majd mentse a fájlt.
 
    > [!NOTE]
    > A kulcsnak tartalmaznia kell a karakterláncot `ssh-rsa` . Emellett a kulcs tartalmának egysoros szövegnek kell lennie.
    >  
 
-6. Indítsa el a PuTTY alkalmazást. A **Kategória** ablaktáblán válassza a **kapcsolatok**  >  **SSH**-  >  **hitelesítés**lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
+6. Indítsa el a PuTTY alkalmazást. A **Kategória** ablaktáblán válassza a **kapcsolatok**  >  **SSH** -  >  **hitelesítés** lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
 
    ![A titkos kulcs beállítása lap képernyőképe](./media/oracle-golden-gate/setprivatekey.png)
 
-7. A **Kategória** ablaktáblán válassza a **kapcsolatok**  >  **SSH**  >  **X11**elemet. Ezután jelölje be az **X11 továbbításának engedélyezése** jelölőnégyzetet.
+7. A **Kategória** ablaktáblán válassza a **kapcsolatok**  >  **SSH**  >  **X11** elemet. Ezután jelölje be az **X11 továbbításának engedélyezése** jelölőnégyzetet.
 
    ![Az X11 engedélyezése lap képernyőképe](./media/oracle-golden-gate/enablex11.png)
 
-8. A **Kategória** ablaktáblán lépjen a **munkamenet**elemre. Adja meg a gazdagép adatait, majd kattintson a **Megnyitás**gombra.
+8. A **Kategória** ablaktáblán lépjen a **munkamenet** elemre. Adja meg a gazdagép adatait, majd kattintson a **Megnyitás** gombra.
 
    ![A munkamenet oldalának képernyőképe](./media/oracle-golden-gate/puttysession.png)
 
@@ -442,19 +442,19 @@ Az Oracle Golden Gate telepítéséhez hajtsa végre a következő lépéseket:
 
 4. Módosítsa a leltári könyvtárat, majd a folytatáshoz kattintson a **tovább** gombra.
 
-   ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![Képernyőkép a telepítési könyvtárat megjelenítő telepítés kiválasztása lapról.](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. Az **Összefoglalás** képernyőn kattintson a **telepítés** gombra a folytatáshoz.
 
-   ![A telepítő képernyőképe – a telepítés kiválasztása lap](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![A telepítés kiválasztása lapot és a telepítés gombot megjelenítő képernyőkép.](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. Előfordulhat, hogy a rendszer a "root" parancsfájl futtatására kéri. Ha igen, nyisson meg egy különálló munkamenetet, SSH-t a virtuális gépre, majd a sudo-t a root-ra, majd futtassa a szkriptet. Kattintson **az OK tovább gombra** .
 
-   ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![A parancsfájl helyét és a konfigurációs parancsfájl végrehajtásának módját bemutató képernyőkép.](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. A telepítés befejezését követően a **Bezárás** gombra kattintva fejezze be a folyamatot.
 
-   ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![Képernyőkép a telepítés kiválasztása lapról, amely a Bezárás gombot jeleníti meg.](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Szolgáltatás beállítása a myVM1 (elsődleges)
 

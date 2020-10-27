@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 9794dd47949dc7dea891893dbcf261808ab335fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a2c734b256ad934b7a17d7cefd1783b406e766
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521377"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537184"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight – az adatáttelepítés ajánlott eljárásai
 
@@ -24,19 +24,19 @@ Ez a cikk ajánlásokat nyújt az Azure HDInsight való adatáttelepítés sorá
 Két fő lehetőség áll rendelkezésre a helyszíni adatok Azure-környezetbe történő átköltöztetésére:
 
 * Adatok átvitele hálózaton keresztül TLS használatával
-    * Interneten keresztül – az adatok az Azure Storage-ba normál internetkapcsolaton keresztül, többek között a következők egyikével vihetők át: Azure Storage Explorer, AzCopy, Azure PowerShell és Azure CLI. További információkért lásd: [adatok áthelyezése az Azure Storage szolgáltatásba és onnan](../../storage/common/storage-moving-data.md).
+    * Interneten keresztül – az adatok az Azure Storage-ba normál internetkapcsolaton keresztül, többek között a következők egyikével vihetők át: Azure Storage Explorer, AzCopy, Azure PowerShell és Azure CLI. További információkért lásd: [adatok áthelyezése az Azure Storage szolgáltatásba és onnan](../../storage/common/storage-choose-data-transfer-solution.md).
 
     * Az Express Route-ExpressRoute egy Azure-szolgáltatás, amellyel privát kapcsolatokat hozhat létre a Microsoft-adatközpontok és a helyszíni vagy egy közös elhelyezési létesítményben lévő infrastruktúra között. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, és nagyobb biztonságot, megbízhatóságot és sebességet biztosítanak, mint a szokásos kapcsolatok az interneten. További információ: [ExpressRoute-kör létrehozása és módosítása](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
 
-    * Data Box online adatátvitel – a Data Box Edge és a Data Box Gateway olyan online adatátviteli termékek, amelyek hálózati tároló átjáróként működnek a hely és az Azure közötti adatkezelés érdekében. Data Box Edge, egy helyszíni hálózati eszköz, amely az Azure-ba irányuló és onnan érkező adatok átvitelét végzi, és mesterséges intelligenciát (AI) használó Edge-számítást alkalmaz az adatok feldolgozásához. Data Box Gateway a Storage Gateway-képességekkel rendelkező virtuális készülék. További információ: [Azure Data Box dokumentáció – online átvitel](https://docs.microsoft.com/azure/databox-online/).
+    * Data Box online adatátvitel – a Data Box Edge és a Data Box Gateway olyan online adatátviteli termékek, amelyek hálózati tároló átjáróként működnek a hely és az Azure közötti adatkezelés érdekében. Data Box Edge, egy helyszíni hálózati eszköz, amely az Azure-ba irányuló és onnan érkező adatok átvitelét végzi, és mesterséges intelligenciát (AI) használó Edge-számítást alkalmaz az adatok feldolgozásához. Data Box Gateway a Storage Gateway-képességekkel rendelkező virtuális készülék. További információ: [Azure Data Box dokumentáció – online átvitel](../../databox-online/index.yml).
 
 * Adatszállítás kapcsolat nélküli üzemmódban
 
-    Data Box offline adatátvitel – a Data Box, a Data Box Disk és az Data Box Heavy eszközök segítségével nagy mennyiségű adatok vihetők át az Azure-ba, ha a hálózat nem választható. Ezeket az offline adatátviteli eszközöket a szervezet és az Azure-adatközpont között szállítjuk. AES-titkosítást használnak az adatok átvitel közbeni védelmére, és egy alapos feltöltés utáni tisztítási folyamatba esnek, amely az adatok törlését az eszközről. További információ a Data Box offline átvitelű eszközökről: [Azure Data Box dokumentáció – offline átvitel](https://docs.microsoft.com/azure/databox/). A Hadoop-fürtök áttelepítésével kapcsolatos további információkért tekintse [meg a helyszíni HDFS-tárolóból az Azure Storage-ba való migrálás Azure Data Box használatát](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)ismertető témakört.
+    Data Box offline adatátvitel – a Data Box, a Data Box Disk és az Data Box Heavy eszközök segítségével nagy mennyiségű adatok vihetők át az Azure-ba, ha a hálózat nem választható. Ezeket az offline adatátviteli eszközöket a szervezet és az Azure-adatközpont között szállítjuk. AES-titkosítást használnak az adatok átvitel közbeni védelmére, és egy alapos feltöltés utáni tisztítási folyamatba esnek, amely az adatok törlését az eszközről. További információ a Data Box offline átvitelű eszközökről: [Azure Data Box dokumentáció – offline átvitel](../../databox/index.yml). A Hadoop-fürtök áttelepítésével kapcsolatos további információkért tekintse [meg a helyszíni HDFS-tárolóból az Azure Storage-ba való migrálás Azure Data Box használatát](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)ismertető témakört.
 
 Az alábbi táblázat az adatmennyiség és a hálózati sávszélesség alapján közelíti meg az adatátviteli időtartamot. Adatmező használata, ha az adatáttelepítés várhatóan három hétig is eltarthat.
 
-|Adatmennyiség | Hálózati sávszélesség<br>/<br>**45 Mbps (T3)**|Hálózati sávszélesség<br>/<br>**100 Mbps**|Hálózati sávszélesség<br>/<br>**1 Gbps**|Hálózati sávszélesség<br>/<br>**10 Gbps**|
+|Adatmennyiség | Hálózati sávszélesség<br>/<br>**45 Mbps (T3)**|Hálózati sávszélesség<br>/<br>**100 Mbit/s**|Hálózati sávszélesség<br>/<br>**1 Gbit/s**|Hálózati sávszélesség<br>/<br>**10 Gbit/s**|
 |---|:---:|:---:|:---:|:---:|
 |1 TB|2 nap|1 nap| 2 óra|14 perc|
 |10 TB|22 nap|10 nap|1 nap|2 óra|
@@ -114,7 +114,7 @@ A struktúra metaadattár áttelepíthetők a parancsfájlok használatával vag
 - Alakítsa át a helyszíni HDFS-alapú útvonalakat a WASB/ADLS-ra egy olyan eszköz használatával, mint az XSLT.
 - Importálja a szabályzatokat a HDInsight-on futó Rangerre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikket a sorozatban:
 

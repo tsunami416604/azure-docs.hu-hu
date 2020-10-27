@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 886e8cb1c5d86c1a61e65fa8cbd54c022f6c1c6b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d4fcf7830250e5e6d2e4255ddb88867023606d0e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484814"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547554"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz
 
@@ -27,7 +27,7 @@ A cikkben szereplő kódok végrehajtása előtt a TCP/IP hálózatkezelés megi
 
 A cikkben szereplő minták egyéb előfeltételei közé tartoznak a következő elemek:
 
-* Ha a PowerShellt használja, telepítenie kell az az [modult](https://docs.microsoft.com/powershell/azure/).
+* Ha a PowerShellt használja, telepítenie kell az az [modult](/powershell/azure/).
 * Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
 > [!IMPORTANT]  
@@ -370,13 +370,13 @@ Ez a példa a következő feltételezéseket biztosítja:
 
 A lépések elvégzése után a virtuális hálózat erőforrásaihoz teljes tartománynevek (FQDN) használatával kapcsolódhat. Most már telepítheti a HDInsight-t a virtuális hálózatba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A helyszíni hálózathoz való kapcsolódás HDInsight konfigurálásának teljes példáját lásd: [a HDInsight összekapcsolása egy helyszíni hálózattal](./connect-on-premises-network.md).
 * Az Apache HBase-fürtök Azure-beli virtuális hálózatokban való konfigurálásával kapcsolatban lásd: [Apache HBase-fürtök létrehozása a HDInsight-ben az azure Virtual Network](hbase/apache-hbase-provision-vnet.md).
 * Az Apache HBase geo-replikáció konfigurálásával kapcsolatban lásd: [Apache HBase-fürtök replikálásának beállítása az Azure Virtual Networks](hbase/apache-hbase-replication.md)szolgáltatásban.
 * Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az [azure Virtual Network áttekintését](../virtual-network/virtual-networks-overview.md).
 
-* A hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
+* A hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md).
 
 * A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd: [felhasználó által definiált útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md).

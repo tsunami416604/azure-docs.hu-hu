@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb1c2d8daa74d1224ad07ef7a2fb5a74f4773338
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dac56059455a75f4d64a698c416dc22793432bc8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000311"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545599"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (C#) használatával
 
@@ -43,10 +43,10 @@ A Microsoft olyan Java-összetevőket biztosít, amelyek használatával a Storm
 
 Ebben a példában a következő összetevőket használjuk:
 
-* __EventHubSpout__: adatokat olvas Event Hubsból.
-* __EventHubBolt__: adatot ír Event Hubsba.
-* __EventHubSpoutConfig__: a EventHubSpout konfigurálására szolgál.
-* __EventHubBoltConfig__: a EventHubBolt konfigurálására szolgál.
+* __EventHubSpout__ : adatokat olvas Event Hubsból.
+* __EventHubBolt__ : adatot ír Event Hubsba.
+* __EventHubSpoutConfig__ : a EventHubSpout konfigurálására szolgál.
+* __EventHubBoltConfig__ : a EventHubBolt konfigurálására szolgál.
 
 ### <a name="example-spout-usage"></a>Példa a kiöntő használatra
 
@@ -64,11 +64,11 @@ A SCP.NET metódusokat biztosít a EventHubSpout a topológiához való hozzáad
     eventHubPartitions);
 ```
 
-Az előző példa létrehoz egy __EventHubSpout__nevű új kiöntő összetevőt, és úgy konfigurálja, hogy az egy Event hub használatával kommunikáljon. Az összetevő párhuzamossági mutatójának értéke az Event hub partícióinak száma. Ez a beállítás lehetővé teszi, hogy a Storm létrehozza az összetevő egy példányát az egyes partíciók esetében.
+Az előző példa létrehoz egy __EventHubSpout__ nevű új kiöntő összetevőt, és úgy konfigurálja, hogy az egy Event hub használatával kommunikáljon. Az összetevő párhuzamossági mutatójának értéke az Event hub partícióinak száma. Ez a beállítás lehetővé teszi, hogy a Storm létrehozza az összetevő egy példányát az egyes partíciók esetében.
 
 ### <a name="example-bolt-usage"></a>Példa a bolt használatára
 
-A **JavaComponmentConstructor** metódus használatával hozza létre a bolt egy példányát. Az alábbi példa bemutatja, hogyan hozhat létre és konfigurálhat egy új példányt a **EventHubBolt**:
+A **JavaComponmentConstructor** metódus használatával hozza létre a bolt egy példányát. Az alábbi példa bemutatja, hogyan hozhat létre és konfigurálhat egy új példányt a **EventHubBolt** :
 
 ```csharp
 // Java construcvtor for the Event Hub Bolt
@@ -91,7 +91,7 @@ topologyBuilder.SetJavaBolt(
 ```
 
 > [!NOTE]  
-> Ez a példa egy karakterláncként átadott Clojure-kifejezést használ ahelyett, hogy a **JavaComponentConstructor** -t használja a **EventHubBoltConfig**létrehozásához, mert a kiöntő példa volt. Bármelyik módszer működik. Használja az Ön számára legmegfelelőbb módszert.
+> Ez a példa egy karakterláncként átadott Clojure-kifejezést használ ahelyett, hogy a **JavaComponentConstructor** -t használja a **EventHubBoltConfig** létrehozásához, mert a kiöntő példa volt. Bármelyik módszer működik. Használja az Ön számára legmegfelelőbb módszert.
 
 ## <a name="download-the-completed-project"></a>A befejezett projekt letöltése
 
@@ -99,7 +99,7 @@ Az ebben a cikkben létrehozott projekt teljes verzióját letöltheti a [github
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa**lehetőséget.
+* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa** lehetőséget.
 
 * Egy [Azure Event hub](../../event-hubs/event-hubs-create.md).
 
@@ -107,7 +107,7 @@ Az ebben a cikkben létrehozott projekt teljes verzióját letöltheti a [github
 
 * A [Visual studióhoz készült HDInsight Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-* Java JDK 1,8 vagy újabb verzió a fejlesztői környezetben. A JDK letöltése elérhető az [Oracle](https://aka.ms/azure-jdks)-ből.
+* Java JDK 1,8 vagy újabb verzió a fejlesztői környezetben. A JDK letöltése elérhető az [Oracle](/azure/developer/java/fundamentals/java-jdk-long-term-support)-ből.
 
   * A **JAVA_HOME** környezeti változónak a Java-t tartalmazó könyvtárra kell mutatnia.
   * A **(z)% JAVA_HOME%/bin** könyvtárnak az elérési útnak kell lennie.
@@ -122,7 +122,7 @@ Hozzon létre egy nevű könyvtárat `eventhubspout` , és mentse a fájlt a kö
 
 Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](../../event-hubs/event-hubs-create.md)"az Event hub létrehozása" című szakaszának információit.
 
-1. Az Event hub létrehozása után tekintse meg a **EventHub** beállításait a Azure Portalban, és válassza a **megosztott hozzáférési házirendek**elemet. Válassza a **+ Hozzáadás** lehetőséget a következő szabályzatok létrehozásához:
+1. Az Event hub létrehozása után tekintse meg a **EventHub** beállításait a Azure Portalban, és válassza a **megosztott hozzáférési házirendek** elemet. Válassza a **+ Hozzáadás** lehetőséget a következő szabályzatok létrehozásához:
 
    | Name (Név) | Engedélyek |
    | --- | --- |
@@ -139,7 +139,7 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 2. Töltse le a megoldást a [eventhub-Storm-Hybrid-](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)ból.
 
-3. Nyissa meg a **EventHubExample. SLN**. A **EventHubWriter** projektben nyissa meg a **App.config** fájlt. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
+3. Nyissa meg a **EventHubExample. SLN** . A **EventHubWriter** projektben nyissa meg a **App.config** fájlt. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
 
    | Kulcs | Érték |
    | --- | --- |
@@ -169,11 +169,11 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 ## <a name="deploy-the-topologies"></a>A topológiák üzembe helyezése
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a **EventHubReader** projektre, és válassza a **Küldés a Storm on HDInsight**lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a **EventHubReader** projektre, és válassza a **Küldés a Storm on HDInsight** lehetőséget.
 
     ![Képernyőkép a Megoldáskezelőről, a Beküldés a Storm on HDInsight kiemelve](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
-2. A **topológia küldése** párbeszédpanelen válassza ki a **Storm-fürtöt**. Bontsa ki a **további konfigurációk**elemet, válassza a **Java-fájlelérési utak**lehetőséget, majd válassza a **...** lehetőséget, majd válassza ki azt a KÖNYVTÁRAT, amely a korábban letöltött jar-fájlt tartalmazza. Végül kattintson a **Submit (elküldés**) gombra.
+2. A **topológia küldése** párbeszédpanelen válassza ki a **Storm-fürtöt** . Bontsa ki a **további konfigurációk** elemet, válassza a **Java-fájlelérési utak** lehetőséget, majd válassza a **...** lehetőséget, majd válassza ki azt a KÖNYVTÁRAT, amely a korábban letöltött jar-fájlt tartalmazza. Végül kattintson a **Submit (elküldés** ) gombra.
 
     ![A topológia elküldése párbeszédpanel képernyőképe](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
@@ -181,13 +181,13 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
     ![Képernyőkép a Storm-topológiák megjelenítőről](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
-4. **Megoldáskezelő**kattintson a jobb gombbal a **EventHubWriter** projektre, és válassza a **Küldés a Storm on HDInsight**lehetőséget.
+4. **Megoldáskezelő** kattintson a jobb gombbal a **EventHubWriter** projektre, és válassza a **Küldés a Storm on HDInsight** lehetőséget.
 
-5. A **topológia küldése** párbeszédpanelen válassza ki a **Storm-fürtöt**. Bontsa ki a **további konfigurációk**elemet, válassza a **Java-fájlelérési utak**lehetőséget, válassza a **...** lehetőséget, majd válassza ki azt a KÖNYVTÁRAT, amely a korábban letöltött jar-fájlt tartalmazza. Végül kattintson a **Submit (elküldés**) gombra.
+5. A **topológia küldése** párbeszédpanelen válassza ki a **Storm-fürtöt** . Bontsa ki a **további konfigurációk** elemet, válassza a **Java-fájlelérési utak** lehetőséget, válassza a **...** lehetőséget, majd válassza ki azt a KÖNYVTÁRAT, amely a korábban letöltött jar-fájlt tartalmazza. Végül kattintson a **Submit (elküldés** ) gombra.
 
 6. A topológia elküldése után frissítse a topológia listáját a **Storm-topológiák megjelenítőben** annak ellenőrzéséhez, hogy mindkét topológia fut-e a fürtön.
 
-7. A **Storm-topológiák megjelenítőben**válassza ki a **EventHubReader** -topológiát.
+7. A **Storm-topológiák megjelenítőben** válassza ki a **EventHubReader** -topológiát.
 
 8. A bolt összetevő-összegzésének megnyitásához kattintson duplán a **LogBolt** összetevőre a diagramon.
 
@@ -201,7 +201,7 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 ## <a name="stop-the-topologies"></a>A topológiák leállítása
 
-A topológiák leállításához jelölje ki az egyes topológiákat a **Storm topológia-megjelenítőben**, majd kattintson a **kill (Kill**) elemre.
+A topológiák leállításához jelölje ki az egyes topológiákat a **Storm topológia-megjelenítőben** , majd kattintson a **kill (Kill** ) elemre.
 
 ![Képernyőkép a Storm topológia-megjelenítőről, a kill gomb kiemelésével](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
 
@@ -209,7 +209,7 @@ A topológiák leállításához jelölje ki az egyes topológiákat a **Storm t
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan használhatja a Java Event Hubs kiöntőt és a boltokat egy C#-topológiából az Azure Event Hubs-ban tárolt adatokkal való munkához. A C#-topológiák létrehozásával kapcsolatos további tudnivalókért tekintse meg a következőket:
 

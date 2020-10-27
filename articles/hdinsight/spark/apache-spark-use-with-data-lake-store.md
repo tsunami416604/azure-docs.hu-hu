@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 583a5bcac71265596127c7860c0509963f76b2fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080941"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534328"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Az HDInsight Spark-fürt használata Data Lake Storage Gen1ban lévő adatelemzéshez
 
@@ -23,7 +23,7 @@ Ebben a cikkben a HDInsight Spark-fürtökkel elérhető [Jupyter Notebookeket](
 
 * Azure Data Lake Storage Gen1 fiók. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](../../data-lake-store/data-lake-store-get-started-portal.md)című témakör utasításait.
 
-* Azure HDInsight Spark a fürtöt Data Lake Storage Gen1 tárolóként. Kövesse a rövid útmutató [: fürtök beállítása a HDInsight-ben](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)című témakör utasításait.
+* Azure HDInsight Spark a fürtöt Data Lake Storage Gen1 tárolóként. Kövesse a rövid útmutató [: fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md)című témakör utasításait.
 
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
@@ -58,11 +58,11 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
     Copy Completed. 1 file copied.
     ```
 
-    Az adatfájl (**HVAC.csv**) a Data Lake Storage-fiók **/HVAC** mappájában lesz átmásolva.
+    Az adatfájl ( **HVAC.csv** ) a Data Lake Storage-fiók **/HVAC** mappájában lesz átmásolva.
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>HDInsight Spark-fürt használata Data Lake Storage Gen1
 
-1. A [Azure Portal](https://portal.azure.com/)a kezdőpulton kattintson a Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a **Tallózás az összes**HDInsight-fürt területen is megnyithatja  >  **HDInsight Clusters**.
+1. A [Azure Portal](https://portal.azure.com/)a kezdőpulton kattintson a Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a **Tallózás az összes** HDInsight-fürt területen is megnyithatja  >  **HDInsight Clusters** .
 
 2. A Spark-fürt panelén kattintson a **Quick Links** (Gyorshivatkozások) lehetőségre, majd a **Cluster Dashboard** (Fürt irányítópultja) panelen a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
@@ -105,7 +105,7 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
         adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
         ```
 
-     Illessze be a következő kódot egy üres cellába, és cserélje le az **MYDATALAKESTORE** -t a Data Lake Storage fiók nevére, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt. Ez a kódpélda az adatokat a **hvac** nevű ideiglenes táblába regisztrálja.
+     Illessze be a következő kódot egy üres cellába, és cserélje le az **MYDATALAKESTORE** -t a Data Lake Storage fiók nevére, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt. Ez a kódpélda az adatokat a **hvac** nevű ideiglenes táblába regisztrálja.
 
       ```scala
       # Load the data. The path below assumes Data Lake Storage is   default storage for the Spark cluster
@@ -141,7 +141,7 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
 8. Az alkalmazás futtatását követően állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Önálló Scala-alkalmazás létrehozása Apache Spark fürtön való futtatáshoz](apache-spark-create-standalone-application.md)
 * [HDInsight-eszközök használata a Azure Toolkit for IntelliJban Apache Spark alkalmazások létrehozásához a HDInsight Spark Linux-fürthöz](apache-spark-intellij-tool-plugin.md)

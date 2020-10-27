@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328564"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546670"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure-beli privát hivatkozás Azure Data Factory
 
@@ -53,10 +53,10 @@ A Azure Data Factory szolgáltatással folytatott kommunikáció a privát kapcs
 ![Azure Data Factory architektúrához tartozó privát hivatkozás ábrája.](./media/data-factory-private-link/private-link-architecture.png)
 
 A Private link Service minden korábbi kommunikációs csatornán való engedélyezése a következő funkciókat kínálja:
-- **Támogatott**:
+- **Támogatott** :
    - A virtuális hálózatban megadhatja és figyelheti az adatokat előállítót, még akkor is, ha letiltja az összes kimenő kommunikációt.
    - A saját üzemeltetésű integrációs modul és a Azure Data Factory szolgáltatás közötti kommunikáció biztonságos, magánhálózati környezetben is elvégezhető. A saját üzemeltetésű integrációs modul és a Azure Data Factory szolgáltatás közötti forgalom privát kapcsolaton keresztül halad. 
-- **Jelenleg nem támogatott**:
+- **Jelenleg nem támogatott** :
    - A saját üzemeltetésű integrációs modult használó interaktív szerzői műveletek, például a kapcsolat tesztelése, a mappák listájának és a táblák listájának lekérése, a séma beolvasása és az előnézeti adatmegjelenítés.
    - Ha engedélyezi az automatikus frissítést, a saját üzemeltetésű integrációs modul új verziója automatikusan letölthető a Microsoft letöltőközpontból.
 
@@ -67,7 +67,7 @@ A Private link Service minden korábbi kommunikációs csatornán való engedél
 > Társított szolgáltatás létrehozásakor győződjön meg arról, hogy a hitelesítő adatai egy Azure Key vaultban vannak tárolva. Ellenkező esetben a hitelesítő adatok nem fognak működni, ha engedélyezi a Azure Data Factoryban található privát hivatkozást.
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Privát hivatkozás beállítása Azure Data Factoryhoz
-Saját végpontokat [a Azure Portal, a](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)PowerShell vagy az Azure CLI használatával hozhat létre.
+[A Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)használatával saját végpontokat is létrehozhat.
 
 Az Azure-beli adatgyárat a Azure Portalban is megtekintheti, és létrehozhat egy privát végpontot, ahogy az itt látható:
 

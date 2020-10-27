@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5128ac7608dfce08471f7a7f97ed28a7971e62b2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087401"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534447"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight-naplók elemzése
 
@@ -25,7 +25,7 @@ Megtudhatja, hogyan használhatja a Azure Monitor naplókat a HDInsight Apache K
 
 A fürt Apache Kafka naplófájljai a következő helyen találhatók: `/var/log/kafka` . A kafka-naplók nem tárolódnak és nem maradnak meg a fürt életciklusa között, függetlenül attól, hogy a rendszer felügyelt lemezeket használ-e. A következő táblázat az elérhető naplókat mutatja be.
 
-|Napló |Leírás |
+|Napló |Description (Leírás) |
 |---|---|
 |Kafka. out|a Kafka-folyamat stdout és stderr. Ebben a fájlban megtalálja a Kafka indítási és leállítási naplóit.|
 |Server. log|A Kafka-kiszolgáló fő naplója. A Kafka-átvitelszervező összes naplója itt fejeződik be.|
@@ -50,7 +50,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki log Analytics munkaterületét.
 
-2. A bal oldali menü **általános**területén válassza a **naplók**lehetőséget. Itt kereshet a Kafkaből gyűjtött adatok között. Adjon meg egy lekérdezést a lekérdezési ablakban, majd válassza a **Futtatás**lehetőséget. Az alábbiakban néhány példát keresünk:
+2. A bal oldali menü **általános** területén válassza a **naplók** lehetőséget. Itt kereshet a Kafkaből gyűjtött adatok között. Adjon meg egy lekérdezést a lekérdezési ablakban, majd válassza a **Futtatás** lehetőséget. Az alábbiakban néhány példát keresünk:
 
 * Lemezhasználat:
 
@@ -94,7 +94,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
 
     Megadhatja `*` az összes naplózott típus keresését is. Jelenleg a következő naplók érhetők el a lekérdezésekhez:
 
-    | Napló típusa | Leírás |
+    | Napló típusa | Description (Leírás) |
     | ---- | ---- |
     | log \_ kafkaserver \_ CL | Kafka Broker Server. log |
     | log \_ kafkacontroller \_ CL | Kafka Broker Controller. log |
@@ -102,9 +102,9 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
 
     ![Apache Kafka log Analytics CPU-használat](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a Azure Monitorről: [Azure monitor áttekintés](../../log-analytics/log-analytics-get-started.md)és [Azure monitor naplók lekérdezése a HDInsight-fürtök figyeléséhez](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
+További információ a Azure Monitorről: [Azure monitor áttekintés](../../azure-monitor/overview.md)és [Azure monitor naplók lekérdezése a HDInsight-fürtök figyeléséhez](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
 A Apache Kafka használatáról az alábbi dokumentumokban talál további információt:
 

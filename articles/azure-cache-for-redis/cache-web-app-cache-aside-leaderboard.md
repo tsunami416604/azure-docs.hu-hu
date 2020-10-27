@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 71f1e2b50daf333e19bc11bce119f37cec28d146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90e60044e227ea1a18ea032d302b29abda1ea2e8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209192"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536844"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
 
-Ebben az oktatóanyagban frissíteni fogja a *ContosoTeamStats* ASP.net-webalkalmazást, amely az [Azure cache](cache-web-app-howto.md)-hez készült ASP.net-útmutatóban jön létre a Redis-hez, hogy tartalmazzon egy olyan Leaderboard-t, amely az Azure cache-t használó [gyorsítótár-](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) feltöltési mintát használja Redis A minta alkalmazás megjeleníti a csapat statisztikáit egy adatbázisból, és bemutatja, hogyan használhatja az Azure cache-t a Redis tárolt adatok tárolására és lekérésére a teljesítmény javítása érdekében. Az oktatóanyag elvégzése után egy futó webalkalmazás rendelkezik, amely egy adatbázisba olvas és ír, amely az Azure cache-vel és az Azure-ban üzemeltetett Redis van optimalizálva.
+Ebben az oktatóanyagban frissíteni fogja a *ContosoTeamStats* ASP.net-webalkalmazást, amely az [Azure cache](cache-web-app-howto.md)-hez készült ASP.net-útmutatóban jön létre a Redis-hez, hogy tartalmazzon egy olyan Leaderboard-t, amely az Azure cache-t használó [gyorsítótár-](/azure/architecture/patterns/cache-aside) feltöltési mintát használja Redis A minta alkalmazás megjeleníti a csapat statisztikáit egy adatbázisból, és bemutatja, hogyan használhatja az Azure cache-t a Redis tárolt adatok tárolására és lekérésére a teljesítmény javítása érdekében. Az oktatóanyag elvégzése után egy futó webalkalmazás rendelkezik, amely egy adatbázisba olvas és ír, amely az Azure cache-vel és az Azure-ban üzemeltetett Redis van optimalizálva.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -216,7 +216,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
 ### <a name="configure-the-layout-view"></a>Az Elrendezés nézet konfigurálása
 
-1. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Views**(Nézetek), majd a **Shared** (Közös) mappát, és kattintson duplán a **_Layout.cshtml** fájlra. 
+1. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Views** (Nézetek), majd a **Shared** (Közös) mappát, és kattintson duplán a **_Layout.cshtml** fájlra. 
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -226,7 +226,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. A `body` szakaszban adja hozzá az alábbi új `Html.ActionLink` utasítást a contoso- *csapat statisztikáit* közvetlenül az *Azure cache Redis-teszthez való*hivatkozás alatt.
+1. A `body` szakaszban adja hozzá az alábbi új `Html.ActionLink` utasítást a contoso- *csapat statisztikáit* közvetlenül az *Azure cache Redis-teszthez való* hivatkozás alatt.
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -234,7 +234,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
     ![Kódmódosítások](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. Az alkalmazás fordításához és futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt. Az alkalmazás ezen verziója az eredményeket közvetlenül az adatbázisból olvassa ki. Figyelje meg, hogy az **Új létrehozása**, a **Szerkesztés**, a **Részletek**és a **Törlés** parancsok az **MVC 5 Controller with views, using Entity Framework** (MVC 5 vezérlő nézetekkel, az Entity Framework használatával) szerkezettel automatikusan bekerültek az alkalmazásba. Az oktatóanyag következő szakaszában hozzáadja az Azure cache-t a Redis-hez az adathozzáférés optimalizálása érdekében, és további funkciókat biztosít az alkalmazás számára.
+1. Az alkalmazás fordításához és futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt. Az alkalmazás ezen verziója az eredményeket közvetlenül az adatbázisból olvassa ki. Figyelje meg, hogy az **Új létrehozása** , a **Szerkesztés** , a **Részletek** és a **Törlés** parancsok az **MVC 5 Controller with views, using Entity Framework** (MVC 5 vezérlő nézetekkel, az Entity Framework használatával) szerkezettel automatikusan bekerültek az alkalmazásba. Az oktatóanyag következő szakaszában hozzáadja az Azure cache-t a Redis-hez az adathozzáférés optimalizálása érdekében, és további funkciókat biztosít az alkalmazás számára.
 
     ![Kezdő szintű alkalmazás](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
@@ -244,13 +244,13 @@ Az oktatóanyag ezen szakaszában úgy konfigurálja a minta alkalmazást, hogy 
 
 ### <a name="add-a-cache-connection-to-the-teams-controller"></a>Gyorsítótár-kapcsolat hozzáadása a Teams Controllerhez
 
-A gyors útmutató során már telepítette a *StackExchange.Redis* ügyféloldali kódtárcsomagját. Emellett már konfigurálta a *CacheConnection* alkalmazásbeállítást a helyi, illetve a közzétett App Service-szel való használatra. Használja ugyanazon ügyféloldali kódtár és *CacheConnection* információit a *TeamsControllerben*.
+A gyors útmutató során már telepítette a *StackExchange.Redis* ügyféloldali kódtárcsomagját. Emellett már konfigurálta a *CacheConnection* alkalmazásbeállítást a helyi, illetve a közzétett App Service-szel való használatra. Használja ugyanazon ügyféloldali kódtár és *CacheConnection* információit a *TeamsControllerben* .
 
 1. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Controllers** (Vezérlők) mappát, majd kattintson duplán a **TeamsController.cs** fájlra annak megnyitásához.
 
     ![Csoportvezérlő](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Adja hozzá a következő két `using` utasítást a **TeamsController.cs**:
+1. Adja hozzá a következő két `using` utasítást a **TeamsController.cs** :
 
     ```csharp
     using System.Configuration;
@@ -654,7 +654,7 @@ Ebben a szakaszban egy új adatbázist fog kiépíteni a SQL Databaseban, hogy a
 
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Adatbázis neve** | *ContosoTeamsDatabase* | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
+   | **Adatbázis neve** | *ContosoTeamsDatabase* | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
    | **Előfizetés** | *Az előfizetése*  | Válassza ki ugyanazt az előfizetést, amelyet a gyorsítótár létrehozásához és az App Service futtatásához használt. |
    | **Erőforráscsoport**  | *TestResourceGroup* | Kattintson a **Meglévő használata** elemre, és használja ugyanazt az erőforráscsoportot, amelyen a gyorsítótárat és az App Service-t elhelyezte. |
    | **Forrás kiválasztása** | **Üres adatbázis** | Kezdje egy üres adatbázissal. |
@@ -664,7 +664,7 @@ Ebben a szakaszban egy új adatbázist fog kiépíteni a SQL Databaseban, hogy a
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Kiszolgáló neve** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-   | **Kiszolgáló rendszergazdájának felhasználóneve** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
+   | **Kiszolgáló rendszergazdájának felhasználóneve** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
    | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább 8 karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
    | **Hely** | *USA keleti régiója* | Válassza ki ugyanazt a régiót, amelyben a gyorsítótárat és az App Service-t létrehozta. |
 
@@ -674,7 +674,7 @@ Ebben a szakaszban egy új adatbázist fog kiépíteni a SQL Databaseban, hogy a
 
     ![Kapcsolati sztringek megjelenítése](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. Az Azure Portalon navigáljon az App Service-hez, és kattintson az **Alkalmazásbeállítások**, majd az **Új kapcsolati sztring hozzáadása** elemre a Kapcsolati sztringek szakaszban.
+1. Az Azure Portalon navigáljon az App Service-hez, és kattintson az **Alkalmazásbeállítások** , majd az **Új kapcsolati sztring hozzáadása** elemre a Kapcsolati sztringek szakaszban.
 
 1. Adjon hozzá egy *TeamContext* nevű kapcsolati sztringet, amely megegyezik az Entity Framework-adatbáziskörnyezet osztályának nevével. Illessze be az új adatbázis kapcsolati sztringjét az értékként. Cserélje le az alábbi helyőrzőket a kapcsolati sztringben, majd kattintson a **Mentés** elemre:
 
@@ -715,7 +715,7 @@ Az oktatóanyag ezen lépésében közzéteszi az alkalmazás frissítéseit az 
 
 Kattintson néhány műveletre, és kísérletezzen az adatok különböző forrásokból történő lekérdezésével. Figyelje meg az adatbázisból és a gyorsítótárból történő adatlekérdezés különböző módjainak végrehajtásához szükséges időbeli eltéréseket.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- és erőforrás-takarékosság érdekében törölheti az ott használt Azure-erőforrásokat. Minden erőforrásnak azonos erőforráscsoportban kell szerepelnie, és az erőforráscsoport törlésével egy művelettel, együttesen is törölheti őket. Ebben a témakörben a *TestResources* nevű erőforráscsoportot használtuk.
 
@@ -733,7 +733,7 @@ Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- �
 
     A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure cache méretezése a Redis](./cache-how-to-scale.md)

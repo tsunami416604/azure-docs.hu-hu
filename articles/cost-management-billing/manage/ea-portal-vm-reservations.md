@@ -3,17 +3,17 @@ title: Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példány
 description: Ez a cikk azt foglalja össze, hogyan takaríthat meg pénzt a vállalati regisztrációjában az Azure Reserved VM Instances szolgáltatás segítségével.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4970852634039bddfb14be579db5dd355fff9740
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442445"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132533"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
 
@@ -22,6 +22,12 @@ Ez a cikk azt foglalja össze, hogyan takaríthat meg pénzt a vállalati regisz
 ## <a name="reservation-exchanges-and-refunds"></a>Foglalások cseréje és visszatérítése
 
 A foglalásokat le tudja cserélni azonos típusú foglalásokra. Kérheti egy foglalás díjának visszatérítését is 50 000 USD/év összegig, ha már nincs rá szüksége. Az Azure Portalon cserélheti le a foglalásokat vagy kérheti a díjaik visszatérítését. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../reservations/exchange-and-refund-azure-reservations.md).
+
+### <a name="partial-refunds"></a>Részleges visszatérítések
+
+Részleges visszatérítést akkor biztosítunk, amikor egy EA-ügyfél kerettúllépéssel, nem pénzügyi kötelezettségvállalás keretében vásárolt foglalást ad vissza.
+
+Az EA Portalon a visszatérítés az előző hónapban negatív, az aktuális hónapban pedig pozitív helyesbítésként látható. A foglalások cseréjéhez hasonlóan jelenik meg. A jóváírási emlékeztető az eredeti számlaszámra hivatkozik, ezért az eredeti vásárlás és a jóváírási emlékeztető egyeztetéséhez az eredeti számlaszámot használja.
 
 ## <a name="reservation-costs-and-usage"></a>Foglalási költségek és használati adatok
 
@@ -59,7 +65,7 @@ A fenntartott példányok a használatalapú fizetéshez képest akár 72 száza
 
 Egy Azure-beli fenntartott virtuálisgép-példány megvásárlásához a nagyvállalati Azure regisztrációs rendszergazdájának engedélyeznie kell a _Fenntartott példány_ vásárlási lehetőséget. Ez a lehetőség az [Azure EA Portal](https://ea.azure.com/)_Regisztráció_ lapjának _Regisztráció részletei_ szakaszában található.
 
-Ha az EA-regisztrációhoz engedélyezett a fenntartott példányok hozzáadása, akkor az EA-regisztrációval társított aktív előfizetéssel rendelkező bármely fióktulajdonos vásárolhat fenntartott virtuálisgép-példányt az [Azure Portalon](https://aka.ms/reservations). További információkért lásd: [Előre fizetés virtuális gépekért és költségmegtakarítás fenntartott virtuálisgép-példányokkal](https://go.microsoft.com/fwlink/?linkid=861721).
+Ha az EA-regisztrációhoz engedélyezett a fenntartott példányok hozzáadása, akkor az EA-regisztrációval társított aktív előfizetéssel rendelkező bármely fióktulajdonos vásárolhat fenntartott virtuálisgép-példányt az [Azure Portalon](https://aka.ms/reservations). További információkért lásd: [Előre fizetés virtuális gépekért és költségmegtakarítás fenntartott virtuálisgép-példányokkal](../../virtual-machines/windows/prepay-reserved-vm-instances.md).
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>A fenntartott példányok vásárlásával kapcsolatos részletek megtekintése
 

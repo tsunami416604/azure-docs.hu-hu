@@ -8,12 +8,12 @@ keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207580"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547027"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Az Azure HDInsight üzletmenet-folytonossági architektúrái
 
@@ -54,11 +54,11 @@ Az *igény szerinti másodlagos* architektúrával rendelkező aktív elsődlege
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>Elsődleges struktúra aktív, készenléti másodlagos állapottal
 
-Egy *aktív, készenléti másodlagos állapotú aktív elsődlegesben*az alkalmazások az aktív elsődleges régióba írhatók, míg a normál működés során a (csak olvasási módban lévő) másodlagos fürtöt lefoglaló készenléti üzemmód fut. A normál műveletek során dönthet úgy, hogy kiszervezi a régió specifikus olvasási műveleteit a másodlagosra.
+Egy *aktív, készenléti másodlagos állapotú aktív elsődlegesben* az alkalmazások az aktív elsődleges régióba írhatók, míg a normál működés során a (csak olvasási módban lévő) másodlagos fürtöt lefoglaló készenléti üzemmód fut. A normál műveletek során dönthet úgy, hogy kiszervezi a régió specifikus olvasási műveleteit a másodlagosra.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
 
-A kaptár-replikációval és-kódokkal kapcsolatos további információkért tekintse meg [Apache Hive replikációt az Azure HDInsight-fürtökben](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication)
+A kaptár-replikációval és-kódokkal kapcsolatos további információkért tekintse meg [Apache Hive replikációt az Azure HDInsight-fürtökben](./interactive-query/apache-hive-replication.md)
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -97,7 +97,7 @@ Az alkalmazások az elsődleges régióban található Spark-és kaptár-fürtö
 
 A HBase exportálási és HBase replikációja a HDInsight HBase-fürtök közötti üzletmenet-folytonosságot lehetővé tévő gyakori módszer.
 
-A HBase exportálás egy batch-replikációs folyamat, amely a HBase-exportálási segédprogramot használja az elsődleges HBase-fürtből származó táblák exportálásához az alapul szolgáló Azure Data Lake Storage 2. generációs tárolóba. Az exportált adatok ezután a másodlagos HBase-fürtből érhetők el, és olyan táblákba importálhatók, amelyeknek léteznie kell a másodlagosban. Míg a HBase-exportálás a tábla szintjének részletességét kínálja, növekményes frissítési helyzetekben az Automation-motor az egyes futtatásokban szerepeltetni kívánt növekményes sorok tartományát vezérli. További információ: [HDInsight HBase biztonsági mentés és replikálás](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#export-then-import).
+A HBase exportálás egy batch-replikációs folyamat, amely a HBase-exportálási segédprogramot használja az elsődleges HBase-fürtből származó táblák exportálásához az alapul szolgáló Azure Data Lake Storage 2. generációs tárolóba. Az exportált adatok ezután a másodlagos HBase-fürtből érhetők el, és olyan táblákba importálhatók, amelyeknek léteznie kell a másodlagosban. Míg a HBase-exportálás a tábla szintjének részletességét kínálja, növekményes frissítési helyzetekben az Automation-motor az egyes futtatásokban szerepeltetni kívánt növekményes sorok tartományát vezérli. További információ: [HDInsight HBase biztonsági mentés és replikálás](./hbase/apache-hbase-backup-replication.md#export-then-import).
 
 A HBase-replikáció közel valós idejű replikációt használ a HBase-fürtök között teljesen automatizált módon. A replikáció a tábla szintjén történik. A replikáláshoz az összes tábla vagy adott táblázat is megcélozható. A HBase-replikáció végül konzisztens, ami azt jelenti, hogy az elsődleges régióban lévő táblák legutóbbi módosításait nem lehet azonnal elérhetővé tennie az összes formátumú másodlagos zónák számára. A formátumú másodlagos zónák garantáltan konzisztensek lesznek az elsődlegesekkel. A HBase replikáció két vagy több HDInsight HBase-fürt között állítható be, ha:
 
@@ -105,9 +105,9 @@ A HBase-replikáció közel valós idejű replikációt használ a HBase-fürtö
 * Az elsődleges és a másodlagos a különböző, azonos régióban található virtuális hálózatok.
 * Az elsődleges és a másodlagos a különböző régiókban található különböző virtuális hálózatok.
 
-További információ: [az Apache HBase-fürt replikálásának beállítása az Azure Virtual Networks](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-replication)szolgáltatásban.
+További információ: [az Apache HBase-fürt replikálásának beállítása az Azure Virtual Networks](./hbase/apache-hbase-replication.md)szolgáltatásban.
 
-A HBase-fürtök (például [a HBase mappa másolása, a](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-the-hbase-folder)táblák és a [Pillanatképek](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#snapshots) [másolása](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-tables) ) több más módon is elvégezheti a biztonsági mentéseket.
+A HBase-fürtök (például [a HBase mappa másolása, a](./hbase/apache-hbase-backup-replication.md#copy-the-hbase-folder)táblák és a [Pillanatképek](./hbase/apache-hbase-backup-replication.md#snapshots) [másolása](./hbase/apache-hbase-backup-replication.md#copy-tables) ) több más módon is elvégezheti a biztonsági mentéseket.
 
 ### <a name="hbase-rpo--rto"></a>HBase RPO & RTO
 
@@ -147,7 +147,7 @@ A többrégiós/ciklikus replikációs modell a HBase-replikáció kiterjesztés
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-A régiók közötti rendelkezésre állás engedélyezéséhez a 4,0 támogatja a Kafka-MirrorMaker, amely az elsődleges Kafka-fürt másodlagos replikájának egy másik régióban való fenntartására használható HDInsight. A MirrorMaker magas szintű fogyasztói termelő párokként működik, és az elsődleges fürt egy adott témakörét használja fel, és egy azonos nevű témakörbe állítja a másodlagosban. A MirrorMaker szolgáltatással történő magas rendelkezésre állású vész-helyreállítás több fürtön történő replikálása feltételezi, hogy a termelőknek és a felhasználóknak feladatátvételt kell végezniük a replika fürtön További információ: a [MirrorMaker használata a HDInsight-beli Kafka-vel való Apache Kafka replikálásához](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-mirroring)
+A régiók közötti rendelkezésre állás engedélyezéséhez a 4,0 támogatja a Kafka-MirrorMaker, amely az elsődleges Kafka-fürt másodlagos replikájának egy másik régióban való fenntartására használható HDInsight. A MirrorMaker magas szintű fogyasztói termelő párokként működik, és az elsődleges fürt egy adott témakörét használja fel, és egy azonos nevű témakörbe állítja a másodlagosban. A MirrorMaker szolgáltatással történő magas rendelkezésre állású vész-helyreállítás több fürtön történő replikálása feltételezi, hogy a termelőknek és a felhasználóknak feladatátvételt kell végezniük a replika fürtön További információ: a [MirrorMaker használata a HDInsight-beli Kafka-vel való Apache Kafka replikálásához](./kafka/apache-kafka-mirroring.md)
 
 Attól függően, hogy milyen élettartamot indít el a replikáció, a MirrorMaker témakör replikációja különböző eltolásokat eredményezhet a forrás-és a replika témakörök között. A HDInsight Kafka-fürtök támogatják a partíciók replikálását is, amely az egyes fürtök szintjén magas rendelkezésre állású szolgáltatás.
 
@@ -192,7 +192,7 @@ Hátrányok:
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight Enterprise Security Package
 
-Ezzel a beállítással engedélyezheti a többfelhasználós funkciókat mind az elsődleges, mind a másodlagos, mind az [Azure AD DS-replikák](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-replica-set) számára, így biztosítva, hogy a felhasználók mindkét fürtön hitelesíteni tudják magukat. A normál működés során a Ranger-házirendeket a másodlagos szolgáltatásban kell beállítani, hogy a felhasználók csak olvasási műveletekre legyenek korlátozva. Az alábbi architektúra azt ismerteti, hogyan lehet az ESP-t használó, aktív, elsődleges – készenléti másodlagos készletet beállítani.
+Ezzel a beállítással engedélyezheti a többfelhasználós funkciókat mind az elsődleges, mind a másodlagos, mind az [Azure AD DS-replikák](../active-directory-domain-services/tutorial-create-replica-set.md) számára, így biztosítva, hogy a felhasználók mindkét fürtön hitelesíteni tudják magukat. A normál működés során a Ranger-házirendeket a másodlagos szolgáltatásban kell beállítani, hogy a felhasználók csak olvasási műveletekre legyenek korlátozva. Az alábbi architektúra azt ismerteti, hogyan lehet az ESP-t használó, aktív, elsődleges – készenléti másodlagos készletet beállítani.
 
 Ranger-Metaadattár replikációja:
 
@@ -204,7 +204,7 @@ Az elsődleges és a másodlagos Ranger-házirendek replikálásával a másodla
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 

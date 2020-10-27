@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2af536b2b6c6a4b220a877337ade9a74ad75bb8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82190680"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534991"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Az Apache Hadoop HDFS hibaelhárítása az Azure HDInsighttal
 
@@ -115,7 +115,7 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 Az `fs.azure.write.request.size` Apache Ambari használatával globálisan is növelheti az értékét. Az alábbi lépéseket követve módosíthatja a Ambari webes felhasználói felületének értékét:
 
 1. A böngészőben nyissa meg a Ambari webes felhasználói felületét a fürthöz. Az URL-cím a (z `https://CLUSTERNAME.azurehdinsight.net` ), ahol a a `CLUSTERNAME` fürt neve. Ha a rendszer kéri, adja meg a fürthöz tartozó rendszergazdai nevet és jelszót.
-2. A képernyő bal oldalán válassza a **HDFS**lehetőséget, majd válassza a **konfigurációk** fület.
+2. A képernyő bal oldalán válassza a **HDFS** lehetőséget, majd válassza a **konfigurációk** fület.
 3. A **szűrő...** mezőbe írja be a értéket `fs.azure.write.request.size` .
 4. Módosítsa a 262144 (256 KB) értéket az új értékre. Például 4194304 (4 MB).
 
@@ -147,7 +147,7 @@ Példa:
 hdfs dfs -rm hdfs://mycluster/tmp/testfile
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
@@ -155,4 +155,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 * Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](../azure-portal/supportability/how-to-create-azure-support-request.md)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

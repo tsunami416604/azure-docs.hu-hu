@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be33c968499052b2b254754f37e5163012bcadd0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754956"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547588"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Kapcsolódás az Apache beelinhez a HDInsight-on vagy helyi telepítése
 
@@ -104,7 +104,7 @@ Ha közvetlenül a fürt fő csomópontja vagy egy, a HDInsight-fürttel azonos 
 
 ## <a name="install-beeline-client"></a>A Beeline-ügyfél telepítése
 
-Bár a Beeline szerepel a fő csomópontokon, érdemes helyileg telepítenie.  A helyi gépek telepítési lépései a [Linux Windows alrendszerén](https://docs.microsoft.com/windows/wsl/install-win10)alapulnak.
+Bár a Beeline szerepel a fő csomópontokon, érdemes helyileg telepítenie.  A helyi gépek telepítési lépései a [Linux Windows alrendszerén](/windows/wsl/install-win10)alapulnak.
 
 1. Frissítési csomagok listája. Adja meg a következő parancsot a bash-rendszerhéjban:
 
@@ -128,7 +128,7 @@ Bár a Beeline szerepel a fő csomópontokon, érdemes helyileg telepítenie.  A
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
         ```
 
-        Ezután nyomja le a **CTRL + X**billentyűkombinációt, majd az **Y**, majd a ENTER billentyűt.
+        Ezután nyomja le a **CTRL + X** billentyűkombinációt, majd az **Y** , majd a ENTER billentyűt.
 
 1. Töltse le a Hadoop és a Beeline archívumokat, és írja be a következő parancsokat:
 
@@ -144,7 +144,7 @@ Bár a Beeline szerepel a fő csomópontokon, érdemes helyileg telepítenie.  A
     tar -xvzf apache-hive-1.2.1-bin.tar.gz
     ```
 
-1. Módosítsa a bashrc-fájlt. Meg kell határoznia azt az elérési utat, ahová az archívumok kicsomagolása megtörtént. Ha a [Linux Windows alrendszerét](https://docs.microsoft.com/windows/wsl/install-win10)használja, és pontosan követte a lépéseket, az elérési út az `/mnt/c/Users/user/` , ahol a a `user` Felhasználónév.
+1. Módosítsa a bashrc-fájlt. Meg kell határoznia azt az elérési utat, ahová az archívumok kicsomagolása megtörtént. Ha a [Linux Windows alrendszerét](/windows/wsl/install-win10)használja, és pontosan követte a lépéseket, az elérési út az `/mnt/c/Users/user/` , ahol a a `user` Felhasználónév.
 
     1. Nyissa meg a fájlt: `nano ~/.bashrc`
 
@@ -156,7 +156,7 @@ Bár a Beeline szerepel a fő csomópontokon, érdemes helyileg telepítenie.  A
         PATH=$PATH:$HIVE_HOME/bin
         ```
 
-    1. Ezután nyomja le a **CTRL + X**billentyűkombinációt, majd az **Y**, majd a ENTER billentyűt.
+    1. Ezután nyomja le a **CTRL + X** billentyűkombinációt, majd az **Y** , majd a ENTER billentyűt.
 
 1. Zárjuk be, majd nyissa meg újra a bash-munkamenetet.
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 646506eb347970dadd2a5b2fa6527e5d8bd879ec
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0c082c797c75ba912bafead15d24ea3941cfc25e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481387"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534192"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Gyors útmutató: Azure Database for MySQL rugalmas kiszolgáló létrehozásához használja a Azure Portal
 
@@ -28,7 +28,7 @@ Nyissa meg a webböngészőjét, és keresse fel az [Azure Portalt](https://port
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL rugalmas kiszolgáló létrehozása
 
-Hozzon létre egy rugalmas kiszolgálót a [számítási és tárolási erőforrások](./concepts-compute-storage.md)egy meghatározott készletével. A kiszolgálót egy [Azure-erőforráscsoporton](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) belül hozza létre.
+Hozzon létre egy rugalmas kiszolgálót a [számítási és tárolási erőforrások](./concepts-compute-storage.md)egy meghatározott készletével. A kiszolgálót egy [Azure-erőforráscsoporton](../../azure-resource-manager/management/overview.md) belül hozza létre.
 
 Egy rugalmas kiszolgáló létrehozásához kövesse az alábbi lépéseket:
 
@@ -59,11 +59,11 @@ Egy rugalmas kiszolgáló létrehozásához kövesse az alábbi lépéseket:
     Előfizetés|Az Ön előfizetésének neve|A kiszolgálóhoz használni kívánt Azure-előfizetés. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyben az erőforrásért díjat kell fizetnie.|
     Erőforráscsoport|*myresourcegroup*| Egy új erőforráscsoport neve vagy egy meglévő az előfizetéséből.|
     Kiszolgálónév |*mydemoserver*|Egy egyedi név, amely a rugalmas kiszolgálót azonosítja. A rendszer hozzáfűzi a *MySQL.database.Azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgáló neve csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Legalább 3, és legfeljebb 63 karakterből állhat.|
-    Rendszergazdai felhasználónév |*mydemouser*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest**vagy **Public**.|
+    Rendszergazdai felhasználónév |*mydemouser*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser** , **Admin** , **Administrator** , **root** , **Guest** vagy **Public** .|
     Jelszó |Az Ön jelszava| Egy új jelszó a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).|
     Régió|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.|
     Verzió|5.7| MySQL főverzió.|
-    Számítás + tárolás | **Feltört**, **Standard_B1ms**, **10 GIB**, **7 nap** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása**lehetőséget. A **számítási szint**, a **számítási méret**, a **tárolás**és a **biztonsági másolatok megőrzési időszaka**alapértelmezett értékei a következők: *feltört*, *Standard_B1ms*, *10 GIB*és *7 nap* . Ezeket a csúszkákat meghagyhatja, vagy módosíthatja is azokat. A számítás és a tároló kiválasztásának mentéséhez válassza a **Mentés** lehetőséget a konfigurációk folytatásához. Az alábbi képernyőképen a számítási és tárolási lehetőségek láthatók.|
+    Számítás + tárolás | **Feltört** , **Standard_B1ms** , **10 GIB** , **7 nap** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása** lehetőséget. A **számítási szint** , a **számítási méret** , a **tárolás** és a **biztonsági másolatok megőrzési időszaka** alapértelmezett értékei a következők: *feltört* , *Standard_B1ms* , *10 GIB* és *7 nap* . Ezeket a csúszkákat meghagyhatja, vagy módosíthatja is azokat. A számítás és a tároló kiválasztásának mentéséhez válassza a **Mentés** lehetőséget a konfigurációk folytatásához. Az alábbi képernyőképen a számítási és tárolási lehetőségek láthatók.|
     
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Azure Database for MySQL keresése&quot;:::
 
@@ -88,9 +88,9 @@ Egy rugalmas kiszolgáló létrehozásához kövesse az alábbi lépéseket:
 
 7. A kiszolgáló üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. A kiépítés néhány percet is igénybe vehet.
 
-8. Az eszköztáron válassza az **Értesítések** elemet (a harang ikont) az üzembehelyezési folyamat nyomon követéséhez. Az üzembe helyezés után kiválaszthatja a **rögzítés az irányítópulton**lehetőséget, amely létrehoz egy csempét a Azure Portal irányítópultján a kiszolgáló **Áttekintés** lapjára mutató hivatkozásként. Az **Erőforrás megnyitása** lehetőség kiválasztásával megnyitja a kiszolgáló **Áttekintés** oldalát.
+8. Az eszköztáron válassza az **Értesítések** elemet (a harang ikont) az üzembehelyezési folyamat nyomon követéséhez. Az üzembe helyezés után kiválaszthatja a **rögzítés az irányítópulton** lehetőséget, amely létrehoz egy csempét a Azure Portal irányítópultján a kiszolgáló **Áttekintés** lapjára mutató hivatkozásként. Az **Erőforrás megnyitása** lehetőség kiválasztásával megnyitja a kiszolgáló **Áttekintés** oldalát.
 
-Alapértelmezés szerint a következő adatbázisok jönnek létre a kiszolgáló alatt: **information_schema**, **mysql**, **performance_schema** és **sys**.
+Alapértelmezés szerint a következő adatbázisok jönnek létre a kiszolgáló alatt: **information_schema** , **mysql** , **performance_schema** és **sys** .
 
 > [!NOTE]
 > Ellenőrizze, hogy a hálózat engedélyezi-e a kimenő forgalmat az 3306-as porton keresztül, amelyet a Azure Database for MySQL rugalmas kiszolgáló használ a kapcsolódási problémák elkerüléséhez.  
@@ -108,13 +108,13 @@ A mysql.exe használatával kapcsolódjon az alábbi paranccsal. Cserélje le az
 ```bash
  mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p
 ```
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 Sikeresen létrehozott egy Azure Database for MySQL rugalmas kiszolgálót egy erőforráscsoporthoz.  Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölheti őket az erőforráscsoport törlésével vagy csak a MySQL-kiszolgáló törlésével. Az erőforráscsoport törléséhez kövesse az alábbi lépéseket:
 
-1. A Azure Portal keresse meg és válassza ki az **erőforráscsoportok**elemet.
+1. A Azure Portal keresse meg és válassza ki az **erőforráscsoportok** elemet.
 1. Az erőforráscsoport listán válassza ki az erőforráscsoport nevét.
-1. Az erőforráscsoport áttekintés lapján válassza az **erőforráscsoport törlése**elemet.
-1. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+1. Az erőforráscsoport áttekintés lapján válassza az **erőforráscsoport törlése** elemet.
+1. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 A kiszolgáló törléséhez kattintson a kiszolgáló **Áttekintés** lapján található **delete (Törlés** ) gombra az alábbi ábrán látható módon:
 

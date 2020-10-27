@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73241213"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545446"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Oktatóanyag: írás Apache Hadoop HDFS az Azure HDInsight Apache Stormból
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java Developer Kit (JDK) 8-as verzió](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) 8-as verzió](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
@@ -160,7 +160,7 @@ További információ a parancsfájlnak a fürthöz való használatáról: [HDI
     hdfs.url: wasbs:///
     ```
 
-    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__, majd az __Y__billentyűt, és végül __írja be__a következőt:. A fájl értékei a tárolási URL-címet és annak a könyvtárnak a nevét írják be, amelybe az adatok bekerülnek.
+    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__ , majd az __Y__ billentyűt, és végül __írja be__ a következőt:. A fájl értékei a tárolási URL-címet és annak a könyvtárnak a nevét írják be, amelybe az adatok bekerülnek.
 
 1. A topológia elindításához használja a következő parancsot:
 
@@ -199,7 +199,7 @@ A Storm-topológiák Leállításig futnak, vagy a fürt törlődik. A topológi
 storm kill hdfswriter
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 

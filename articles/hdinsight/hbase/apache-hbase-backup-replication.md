@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdd43a017e584a07d61d41e1af06d30db2f30ac7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505029"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542777"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>A biztonsági mentés és a replikálás beállítása az Apache HBase és a Apache Phoenix on HDInsight
 
@@ -52,7 +52,7 @@ A fürt törlése után meghagyhatja az adott helyet, vagy átmásolhatja az új
 
 * Hozzon létre egy új HDInsight-példányt, amely az aktuális tárolási helyre mutat. Az új példány az összes meglévő adattal együtt jön létre.
 
-* Másolja a `hbase` mappát egy másik Azure Storage blob-tárolóba vagy Data Lake Storage helyre, majd indítson el egy új fürtöt az adott adattal. Az Azure Storage esetében használja az [AzCopy](../../storage/common/storage-use-azcopy.md)-t, és Data Lake Storage használja a [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)-t.
+* Másolja a `hbase` mappát egy másik Azure Storage blob-tárolóba vagy Data Lake Storage helyre, majd indítson el egy új fürtöt az adott adattal. Az Azure Storage esetében használja az [AzCopy](../../storage/common/storage-use-azcopy-v10.md)-t, és Data Lake Storage használja a [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)-t.
 
 ## <a name="export-then-import"></a>Exportálás, importálás
 
@@ -173,7 +173,7 @@ A jelen példában:
 
 ## <a name="snapshots"></a>Pillanatképek
 
-A [Pillanatképek](https://hbase.apache.org/book.html#ops.snapshots) lehetővé teszik a HBase adattárban lévő adatbiztonsági másolat készítését. A pillanatképek minimális terheléssel rendelkeznek, és másodpercek alatt elvégezhető, mert egy pillanatkép-művelet gyakorlatilag egy metaadat-művelet, amely az adott pillanatban tárolja a tárolóban lévő összes fájl nevét. A pillanatképek időpontjában nem másolhatók tényleges adatok. A pillanatképek a HDFS tárolt adatok nem módosítható természetétől függenek, ahol a frissítések, a törlések és a beszúrások mind új adatokként jelennek meg. A pillanatképeket visszaállíthatja ugyanazon a fürtön, vagy exportálhatja a pillanatképet egy másik fürtre.*clone*
+A [Pillanatképek](https://hbase.apache.org/book.html#ops.snapshots) lehetővé teszik a HBase adattárban lévő adatbiztonsági másolat készítését. A pillanatképek minimális terheléssel rendelkeznek, és másodpercek alatt elvégezhető, mert egy pillanatkép-művelet gyakorlatilag egy metaadat-művelet, amely az adott pillanatban tárolja a tárolóban lévő összes fájl nevét. A pillanatképek időpontjában nem másolhatók tényleges adatok. A pillanatképek a HDFS tárolt adatok nem módosítható természetétől függenek, ahol a frissítések, a törlések és a beszúrások mind új adatokként jelennek meg. A pillanatképeket visszaállíthatja ugyanazon a fürtön, vagy exportálhatja a pillanatképet egy másik fürtre. *clone*
 
 Pillanatkép létrehozásához SSH-t a HDInsight HBase-fürt fő csomópontjára, és indítsa el a `hbase` rendszerhéjat:
 
@@ -245,4 +245,4 @@ A HDInsight replikálásának engedélyezéséhez alkalmazzon parancsfájl-műve
 ## <a name="next-steps"></a>Következő lépések
 
 * [Apache HBase-replikáció konfigurálása](apache-hbase-replication.md)
-* [A HBase importálási és exportálási segédprogramjának használata](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [A HBase importálási és exportálási segédprogramjának használata](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

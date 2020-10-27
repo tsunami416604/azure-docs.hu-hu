@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 725b616fec9c2bc4a0540a7941098377e01732e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91928979"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546466"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>Virtuális gépek újraindítása HDInsight-fürtökhöz
 
@@ -38,13 +38,13 @@ A csomópontok újraindításakor előfordulhat, hogy a fürt nem megfelelő ál
 
 Két lépés szükséges a csomópont-újraindítási művelet használatához: csomópontok listázása és csomópontok újraindítása.
 
-1. Csomópontok listázása. A fürt csomópontjainak listáját a [Get-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsighthost)címen érheti el.
+1. Csomópontok listázása. A fürt csomópontjainak listáját a [Get-AzHDInsightHost](/powershell/module/az.hdinsight/get-azhdinsighthost)címen érheti el.
 
       ```
       Get-AzHDInsightHost -ClusterName myclustername
       ```
 
-1. Indítsa újra a gazdagépeket. Miután megszerezte az újraindítani kívánt csomópontok nevét, indítsa újra a csomópontokat a [restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost)használatával.
+1. Indítsa újra a gazdagépeket. Miután megszerezte az újraindítani kívánt csomópontok nevét, indítsa újra a csomópontokat a [restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)használatával.
 
       ```
       Restart-AzHDInsightHost -ClusterName myclustername -Name wn0-myclus, wn1-myclus
@@ -54,13 +54,13 @@ Két lépés szükséges a csomópont-újraindítási művelet használatához: 
 
 A HDInsight kérések küldéséhez használhatja az API doc **kipróbálás** funkcióját. Két lépés szükséges a csomópont-újraindítási művelet használatához: csomópontok listázása és csomópontok újraindítása.
 
-1. Csomópontok listázása. A fürtcsomópontok listáját a REST API vagy a Ambari szerezheti be. További információ: HDInsight- [lista gazdagépek REST API művelet](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/listhosts).
+1. Csomópontok listázása. A fürtcsomópontok listáját a REST API vagy a Ambari szerezheti be. További információ: HDInsight- [lista gazdagépek REST API művelet](/rest/api/hdinsight/virtualmachines/listhosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. Indítsa újra a gazdagépeket. Miután megszerezte az újraindítani kívánt csomópontok nevét, indítsa újra a csomópontokat a REST API használatával a csomópontok újraindításához. A csomópont neve a *NodeType (lefelé/HN/ZK/GW)*  +  *x*a  +  *fürt nevének első hat karakterét*követi. További információ: HDInsight- [Újraindítási gazdagépek REST API művelet](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/restarthosts).
+1. Indítsa újra a gazdagépeket. Miután megszerezte az újraindítani kívánt csomópontok nevét, indítsa újra a csomópontokat a REST API használatával a csomópontok újraindításához. A csomópont neve a *NodeType (lefelé/HN/ZK/GW)*  +  *x* a  +  *fürt nevének első hat karakterét* követi. További információ: HDInsight- [Újraindítási gazdagépek REST API művelet](/rest/api/hdinsight/virtualmachines/restarthosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview
@@ -77,6 +77,6 @@ Az újraindítani kívánt csomópontok tényleges nevei a kérelem törzsében 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Újraindítás – AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost)
-* [HDInsight virtuális gépek REST API](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines)
-* [HDInsight REST API](https://docs.microsoft.com/rest/api/hdinsight/)
+* [Újraindítás – AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)
+* [HDInsight virtuális gépek REST API](/rest/api/hdinsight/virtualmachines)
+* [HDInsight REST API](/rest/api/hdinsight/)

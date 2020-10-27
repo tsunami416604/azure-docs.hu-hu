@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: b01e7ca9ff05b6eed51e1c454b8064ab28bda0d5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222913"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537473"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure cache a Redis hálózati elkülönítési lehetőségeihez 
 Ebből a cikkből megtudhatja, hogyan határozhatja meg az igényeinek legmegfelelőbb hálózati elkülönítési megoldást. Elsajátítjuk az Azure Private link, az Azure Virtual Network (VNet) injekciójának alapjait, és Azure Firewall szabályokat az előnyökkel és korlátozásokkal.  
@@ -21,7 +21,7 @@ Az Azure Private link privát kapcsolatot biztosít egy virtuális hálózatról
 
 ### <a name="advantages"></a>Előnyök
 * A Redis-példányok alapszintű, standard és prémium szintű Azure gyorsítótárában támogatott. 
-* Az [Azure Private link](/azure/private-link/private-link-overview)használatával egy privát végponton keresztül csatlakozhat egy Azure cache-példányhoz a virtuális hálózatból, amely egy magánhálózati IP-címet kap a virtuális hálózaton belüli alhálózatban. Ezzel a gyorsítótár-példányok mind a VNet, mind a nyilvánosan elérhetők.  
+* Az [Azure Private link](../private-link/private-link-overview.md)használatával egy privát végponton keresztül csatlakozhat egy Azure cache-példányhoz a virtuális hálózatból, amely egy magánhálózati IP-címet kap a virtuális hálózaton belüli alhálózatban. Ezzel a gyorsítótár-példányok mind a VNet, mind a nyilvánosan elérhetők.  
 * Miután létrehozta a privát végpontot, a nyilvános hálózathoz való hozzáférés a jelzőn keresztül korlátozható `publicNetworkAccess` . Ez a jelző alapértelmezés szerint be van állítva `Enabled` , így lehetővé teszi a nyilvános és a privát kapcsolat elérését a gyorsítótárhoz. Ha a értékre `Disabled` van állítva, akkor csak a privát kapcsolatok elérését engedélyezi. Az értéket megadhatja `Disabled` egy patch kéréssel. További információ: [Azure cache for Redis with Azure Private link (előzetes verzió)](cache-private-link.md). 
 * Az összes külső gyorsítótár-függőség nem befolyásolja a VNet NSG-szabályait.
 
@@ -51,7 +51,7 @@ A VNet az Azure-beli magánhálózat alapvető építőeleme. A VNet lehetővé 
 
 
 ## <a name="azure-firewall-rules"></a>Azure Firewall szabályok
-A [Azure Firewall](/azure/firewall/overview) felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely az Azure VNet-erőforrásait védi. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik. Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan.  
+A [Azure Firewall](../firewall/overview.md) felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely az Azure VNet-erőforrásait védi. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik. Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan.  
 
 ### <a name="advantages"></a>Előnyök
 * A tűzfalszabályok konfigurálásakor csak a megadott IP-címtartományok kapcsolatai kapcsolódhatnak a gyorsítótárhoz. Az Azure cache Redis-figyelő rendszerekhez való kapcsolatai mindig engedélyezve vannak, még akkor is, ha a tűzfalszabályok konfigurálva vannak. Az Ön által definiált NSG-szabályok szintén engedélyezettek.  
@@ -63,4 +63,4 @@ A [Azure Firewall](/azure/firewall/overview) felügyelt, felhőalapú hálózati
 ## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan konfigurálhat [VNet befecskendezett gyorsítótárat a prémium szintű Azure cache](cache-how-to-premium-vnet.md)-hez a Redis-példányhoz.  
 * Megtudhatja, hogyan konfigurálhat [tűzfalszabályokat az összes Azure cache-hez a Redis szintjein](cache-configure.md#firewall). 
-* Megtudhatja, hogyan [konfigurálhat privát végpontokat az összes Azure cache-hez a Redis szintjein](cache-private-link.md). 
+* Megtudhatja, hogyan [konfigurálhat privát végpontokat az összes Azure cache-hez a Redis szintjein](cache-private-link.md).

@@ -6,24 +6,24 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 33c346fa2e4572799ad6341bd5115cdd6e3b9ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f40c21fdd5144b325a8dd94eed2c9cbbe8c7877
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569981"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537762"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Zóna-redundancia engedélyezése az Azure cache számára a Redis (előzetes verzió)
 Ebből a cikkből megtudhatja, hogyan konfigurálhat egy zóna – redundáns Azure cache-példányt a Azure Portal használatával.
 
-A standard és a prémium szintű Azure cache beépített redundanciát biztosít a Redis két dedikált virtuális gépen (VM) való üzemeltetésével. Annak ellenére, hogy ezek a virtuális gépek külön Azure-beli [meghibásodási és frissítési tartományokban](/azure/virtual-machines/windows/manage-availability) találhatók, és magas rendelkezésre állású, az adatközponti szintű hibákra hajlamosak. Az Azure cache for Redis szintén támogatja a zóna-redundanciát a prémium szintű csomagban. Egy zóna – redundáns gyorsítótár fut a több [rendelkezésre állási zónán](/azure/virtual-machines/windows/manage-availability#use-availability-zones-to-protect-from-datacenter-level-failures)keresztül elosztott virtuális gépeken. Nagyobb rugalmasságot és rendelkezésre állást biztosít.
+A standard és a prémium szintű Azure cache beépített redundanciát biztosít a Redis két dedikált virtuális gépen (VM) való üzemeltetésével. Annak ellenére, hogy ezek a virtuális gépek külön Azure-beli [meghibásodási és frissítési tartományokban](../virtual-machines/manage-availability.md) találhatók, és magas rendelkezésre állású, az adatközponti szintű hibákra hajlamosak. Az Azure cache for Redis szintén támogatja a zóna-redundanciát a prémium szintű csomagban. Egy zóna – redundáns gyorsítótár fut a több [rendelkezésre állási zónán](../virtual-machines/manage-availability.md#use-availability-zones-to-protect-from-datacenter-level-failures)keresztül elosztott virtuális gépeken. Nagyobb rugalmasságot és rendelkezésre állást biztosít.
 
 > [!IMPORTANT]
 > Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 
 > [!NOTE]
 > Ez a funkció jelenleg előzetes verzióban érhető el – [lépjen kapcsolatba velünk](mailto:azurecache@microsoft.com) , ha érdeklik.
@@ -32,9 +32,9 @@ A standard és a prémium szintű Azure cache beépített redundanciát biztosí
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 Gyorsítótár létrehozásához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget.
   
-1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
+1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára** .
 
     :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Válassza ki az Azure cache-t a Redis.":::
    
@@ -44,15 +44,15 @@ Gyorsítótár létrehozásához kövesse az alábbi lépéseket:
     | ------------ |  ------- | -------------------------------------------------- |
     | **Előfizetés** | Válassza ki előfizetését. | Az előfizetés, amely alatt létre kell hoznia ezt az új Azure cache-t a Redis-példányhoz. | 
     | **Erőforráscsoport** | Válasszon ki egy erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet. | Azon erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat és az egyéb erőforrásokat. Az összes alkalmazás-erőforrás egy erőforráscsoporthoz való elhelyezésével könnyedén kezelheti és törölheti azokat. | 
-    | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a * \<DNS name> . Redis.cache.Windows.net*lesz. | 
+    | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a *\<DNS name> . Redis.cache.Windows.net* lesz. | 
     | **Hely** | Válasszon ki egy helyet. | Válasszon ki egy [régiót](https://azure.microsoft.com/regions/) a többi olyan szolgáltatás közelében, amely a gyorsítótárat fogja használni. |
     | **Gyorsítótár típusa** | Válassza ki a [prémium szintű](https://azure.microsoft.com/pricing/details/cache/) gyorsítótárat. |  A tarifacsomag határozza meg a gyorsítótár méretét, teljesítményét és elérhető funkcióit. További információ: [Azure cache for Redis – áttekintés](cache-overview.md). |
    
-1. A **speciális** lapon válassza a **replika száma**lehetőséget.
+1. A **speciális** lapon válassza a **replika száma** lehetőséget.
    
     :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Válassza ki az Azure cache-t a Redis.":::
 
-1. Válassza ki a **rendelkezésre állási zónákat**. 
+1. Válassza ki a **rendelkezésre állási zónákat** . 
    
     :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Válassza ki az Azure cache-t a Redis.":::
 
@@ -64,7 +64,7 @@ Gyorsítótár létrehozásához kövesse az alábbi lépéseket:
 
 1. Kattintson a **Létrehozás** lehetőségre. 
    
-    Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra**mutat, a gyorsítótár készen áll a használatra.
+    Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra** mutat, a gyorsítótár készen áll a használatra.
    
     > [!NOTE]
     > A rendelkezésre állási zónák a gyorsítótár létrehozása után nem módosíthatók.

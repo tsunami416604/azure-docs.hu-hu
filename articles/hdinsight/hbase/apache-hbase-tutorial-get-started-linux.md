@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: 7ce183595ed8e20c4b5cf4afe9ac1174882dc392
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d24c63e3a2989173e718cd27fa43cecc50181047
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370321"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533495"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: az Apache HBase használata az Azure HDInsight
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Bash. A cikkben szereplő példák a Windows 10-es bash rendszerhéját használják a curl-parancsokhoz. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) rendszerhez.  Más [UNIX-rendszerhéj](https://www.gnu.org/software/bash/) is működik.  A curl-példák néhány kisebb módosítással is működhetnek Windows-parancssorban.  Vagy használhatja a [Meghívási-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)Windows PowerShell-parancsmagot is.
+* Bash. A cikkben szereplő példák a Windows 10-es bash rendszerhéját használják a curl-parancsokhoz. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](/windows/wsl/install-win10) rendszerhez.  Más [UNIX-rendszerhéj](https://www.gnu.org/software/bash/) is működik.  A curl-példák néhány kisebb módosítással is működhetnek Windows-parancssorban.  Vagy használhatja a [Meghívási-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)Windows PowerShell-parancsmagot is.
 
 ## <a name="create-apache-hbase-cluster"></a>Apache HBase-fürt létrehozása
 
@@ -50,14 +50,14 @@ Az alábbi eljárás egy Azure Resource Manager sablont használ egy HBase-fürt
     |Erőforráscsoport|Hozzon létre egy Azure Resource Management-csoportot, vagy használjon egy meglévőt.|
     |Hely|Határozza meg az erőforráscsoport helyét. |
     |ClusterName|Adja meg a HBase-fürt nevét.|
-    |A fürt bejelentkezési neve és jelszava|Az alapértelmezett bejelentkezési név az **admin**.|
-    |SSH-felhasználónév és jelszó|Az alapértelmezett felhasználónév az **sshuser**.|
+    |A fürt bejelentkezési neve és jelszava|Az alapértelmezett bejelentkezési név az **admin** .|
+    |SSH-felhasználónév és jelszó|Az alapértelmezett felhasználónév az **sshuser** .|
 
     Más paraméterek opcionálisak.  
 
     Minden egyes fürt az Azure Storage-fióktól függ. A fürt törlése után az adattárolási fiókban maradnak. A fürt alapértelmezett tárfiókneve a fürt neve a „store” kifejezéssel kiegészítve. A sablon változói szakaszban található hardcoded.
 
-3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**, majd válassza a **vásárlás**lehetőséget. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
+3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket** , majd válassza a **vásárlás** lehetőséget. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
 A HBase-fürtök törlése után egy másik HBase-fürtöt hozhat létre ugyanazon alapértelmezett blobtárolóval. Az új fürt felveszi az eredeti fürtben létrehozott HBase-táblákat. Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat.
 
@@ -228,7 +228,7 @@ A HBase az ESP-kompatibilis HBase használatával is lekérdezhető a kaptárbó
 
 A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgálónak.
 
-1. A HBase REST API-k a HDInsight-fürtön való engedélyezéséhez adja hozzá a következő Egyéni indítási parancsfájlt a **parancsfájl-művelet** szakaszhoz. Az indítási parancsfájlt a fürt létrehozásakor vagy a fürt létrehozása után is hozzáadhatja. A **csomópont típusa**beállításnál válassza a **régió kiszolgálók** lehetőséget, hogy a parancsfájl csak a HBase-régió kiszolgálóin legyen végrehajtva.
+1. A HBase REST API-k a HDInsight-fürtön való engedélyezéséhez adja hozzá a következő Egyéni indítási parancsfájlt a **parancsfájl-művelet** szakaszhoz. Az indítási parancsfájlt a fürt létrehozásakor vagy a fürt létrehozása után is hozzáadhatja. A **csomópont típusa** beállításnál válassza a **régió kiszolgálók** lehetőséget, hogy a parancsfájl csak a HBase-régió kiszolgálóin legyen végrehajtva.
 
 
     ```bash
@@ -332,7 +332,7 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 
 1. A bal oldali menüben válassza a **HBase** lehetőséget.
 
-1. Válassza a **gyors hivatkozások** lehetőséget az oldal tetején, mutasson az aktív Zookeeper csomópontra, majd válassza ki **HBase Master felhasználói felületet**.  A felület egy új böngészőlapon nyílik meg:
+1. Válassza a **gyors hivatkozások** lehetőséget az oldal tetején, mutasson az aktív Zookeeper csomópontra, majd válassza ki **HBase Master felhasználói felületet** .  A felület egy új böngészőlapon nyílik meg:
 
    ![HDInsight Apache HBase HMaster felhasználói felülete](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -344,13 +344,13 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
    - feladatok
    - szoftverattribútumok
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat. Használhatja a HBase parancsot `disable 'Contacts'` . Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-fürtöt a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
-1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
+1. A felső **keresőmezőbe** írja be a **HDInsight** kifejezést.
+1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások** területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett.
 1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 

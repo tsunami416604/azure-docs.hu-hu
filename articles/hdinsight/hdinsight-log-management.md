@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 95472d53045e23741286188da004eb649570a965
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487228"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546024"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -77,11 +77,11 @@ Egy tipikus HDInsight-fürt számos szolgáltatást és nyílt forráskódú szo
 
 Az Apache Ambari egy webes felhasználói felületet és egy REST API biztosít a HDInsight-fürtök felügyeletéhez, konfigurálásához és figyeléséhez. A Ambari a Linux-alapú HDInsight-fürtökön található. A Azure Portal HDInsight lapon válassza ki a **fürt** irányítópultja ablaktáblát a **fürt irányítópultok** hivatkozás oldalának megnyitásához.  Ezután válassza a **HDInsight-fürt irányítópultja** panelt a Ambari felhasználói felületének megnyitásához.  A rendszer a fürt bejelentkezési hitelesítő adatainak megadását kéri.
 
-A szolgáltatási nézetek listájának megnyitásához válassza a **Ambari nézetek** panelt a HDInsight Azure Portal lapján.  Ez a lista attól függően változik, hogy milyen könyvtárakat telepített.  Például megtekintheti a FONALak üzenetsor-kezelőjét, a kaptár nézetet és a TEZ nézetet.  A konfigurálási és a szolgáltatási információk megtekintéséhez válassza a bármely szolgáltatás hivatkozását.  A Ambari felhasználói felületi **verem és verziója** lapon információk szerepelnek a fürtszolgáltatás konfigurációjának és a szolgáltatás verziójának előzményeiről. Ha a Ambari felhasználói felületének ezen szakaszára szeretne navigálni, válassza a **rendszergazda** menüt, majd a **Stacks és a Versions**elemet.  A **verziók** lapon tekintheti meg a szolgáltatás verziószámával kapcsolatos információkat.
+A szolgáltatási nézetek listájának megnyitásához válassza a **Ambari nézetek** panelt a HDInsight Azure Portal lapján.  Ez a lista attól függően változik, hogy milyen könyvtárakat telepített.  Például megtekintheti a FONALak üzenetsor-kezelőjét, a kaptár nézetet és a TEZ nézetet.  A konfigurálási és a szolgáltatási információk megtekintéséhez válassza a bármely szolgáltatás hivatkozását.  A Ambari felhasználói felületi **verem és verziója** lapon információk szerepelnek a fürtszolgáltatás konfigurációjának és a szolgáltatás verziójának előzményeiről. Ha a Ambari felhasználói felületének ezen szakaszára szeretne navigálni, válassza a **rendszergazda** menüt, majd a **Stacks és a Versions** elemet.  A **verziók** lapon tekintheti meg a szolgáltatás verziószámával kapcsolatos információkat.
 
 ![Apache Ambari-rendszergazdai verem és verziók](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-A Ambari felhasználói felületének használatával letöltheti a fürt egy adott gazdagépén (vagy csomópontján) futó bármely (vagy az összes) szolgáltatás konfigurációját.  Válassza a **gazdagépek** menüt, majd a kívánt gazdagépre mutató hivatkozást. A gazdagép lapján válassza a **gazdagép műveletek** gombot, majd **töltse le az ügyfél konfigurációit**.
+A Ambari felhasználói felületének használatával letöltheti a fürt egy adott gazdagépén (vagy csomópontján) futó bármely (vagy az összes) szolgáltatás konfigurációját.  Válassza a **gazdagépek** menüt, majd a kívánt gazdagépre mutató hivatkozást. A gazdagép lapján válassza a **gazdagép műveletek** gombot, majd **töltse le az ügyfél konfigurációit** .
 
 ![Apache Ambari letöltési gazdagép-ügyfél konfigurációja](./media/hdinsight-log-management/download-client-configs.png)
 
@@ -109,7 +109,7 @@ A következő lépés a feladatok végrehajtási naplófájljainak áttekintése
 
 ### <a name="access-the-hadoop-log-files"></a>A Hadoop naplófájlok elérése
 
-A HDInsight a fürt fájlrendszerében és az Azure Storage-ban is tárolja a naplófájlokat. Megvizsgálhatja a fürt naplófájljait úgy, hogy megnyit egy [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) -csatlakozást a fürthöz, és megkeresi a fájlrendszert, vagy a Hadoop fonal állapota portál használatával a távoli fő csomópont-kiszolgálón. Az Azure Storage-ban található naplófájlokat bármely olyan eszközzel megvizsgálhatja, amely hozzáférhet az Azure Storage-ból, és letöltheti azokat. Ilyenek például a [AzCopy](../storage/common/storage-use-azcopy.md), a [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)és a Visual Studio Server Explorer. A PowerShellt és az Azure Storage ügyféloldali kódtárait, illetve az Azure .NET SDK-kat is használhatja az Azure Blob Storage-ban tárolt adateléréshez.
+A HDInsight a fürt fájlrendszerében és az Azure Storage-ban is tárolja a naplófájlokat. Megvizsgálhatja a fürt naplófájljait úgy, hogy megnyit egy [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) -csatlakozást a fürthöz, és megkeresi a fájlrendszert, vagy a Hadoop fonal állapota portál használatával a távoli fő csomópont-kiszolgálón. Az Azure Storage-ban található naplófájlokat bármely olyan eszközzel megvizsgálhatja, amely hozzáférhet az Azure Storage-ból, és letöltheti azokat. Ilyenek például a [AzCopy](../storage/common/storage-use-azcopy-v10.md), a [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)és a Visual Studio Server Explorer. A PowerShellt és az Azure Storage ügyféloldali kódtárait, illetve az Azure .NET SDK-kat is használhatja az Azure Blob Storage-ban tárolt adateléréshez.
 
 A Hadoop *a feladatok munkáját* a fürt különböző csomópontjain futtatja. A HDInsight megkezdheti a spekulációs feladatok kísérleteit, és leállíthatja az összes olyan feladatot, amely nem fejeződött be először. Ez jelentős tevékenységet generál, amely a vezérlőre, a stderr és a syslog-naplófájlokra van naplózva menet közben. Emellett egyszerre több feladat-kísérlet is fut, de a naplófájl csak lineárisan jeleníti meg az eredményeket.
 
@@ -144,13 +144,13 @@ A fonal erőforráskezelő felhasználói felülete a fürt fő csomópontján f
 
 1. Egy webböngészőben nyissa meg a `https://CLUSTERNAME.azurehdinsight.net` címet. Cserélje le a CLUSTERNAME kifejezést a HDInsight-fürt nevére.
 2. A bal oldali szolgáltatások listájából válassza a fonal lehetőséget.
-3. A rövid hivatkozások legördülő listából válassza ki az egyik fürtcsomópont-csomópontot, majd válassza a **erőforráskezelő-naplók**lehetőséget. Megjelenik a FONALak naplóira mutató hivatkozások listája.
+3. A rövid hivatkozások legördülő listából válassza ki az egyik fürtcsomópont-csomópontot, majd válassza a **erőforráskezelő-naplók** lehetőséget. Megjelenik a FONALak naplóira mutató hivatkozások listája.
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>4. lépés: a naplózási kötetek tárolási méretének és költségeinek előrejelzése
 
 Az előző lépések elvégzése után meg kell ismernie a HDInsight-fürt (ek) által gyártott naplófájlok típusait és köteteit.
 
-Ezt követően elemezze a naplófájlok adatmennyiségét a kulcstároló tárolási helyein egy ideig. Például elemezheti a kötetet és a növekedést a 30-60-90 napos időszakokban.  Rögzítse ezeket az információkat egy táblázatba, vagy használjon más eszközöket, például a Visual studiót, az Azure Storage Explorer vagy az Excel Power Query. További információ: HDInsight- [naplók elemzése](hdinsight-debug-jobs.md).  
+Ezt követően elemezze a naplófájlok adatmennyiségét a kulcstároló tárolási helyein egy ideig. Például elemezheti a kötetet és a növekedést a 30-60-90 napos időszakokban.  Rögzítse ezeket az információkat egy táblázatba, vagy használjon más eszközöket, például a Visual studiót, az Azure Storage Explorer vagy az Excel Power Query. ```
 
 Most már elegendő információval rendelkezik a naplók felügyeleti stratégiájának létrehozásához.  A számolótábla (vagy a választott eszköz) használatával előre jelezheti a naplózási méret növekedését és a log Storage Azure-szolgáltatás költségeit.  Tekintse meg a naplókat, amelyeket meg szeretne vizsgálni.  Most már megadhatja a naplófájlok jövőbeli költségét, miután meghatározta, hogy mely naplófájlokat lehet törölni (ha vannak ilyenek), és hogy mely naplókat kell megőrizni és archiválni a kevésbé költséges Azure Storage-ba.
 
@@ -186,6 +186,6 @@ Ha a naplókat az összes csomópontról egy központi helyre szeretné gyűjten
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A HDInsight figyelési és naplózási gyakorlata](https://msdn.microsoft.com/library/dn749790.aspx)
+* [A HDInsight figyelési és naplózási gyakorlata](/previous-versions/msp-n-p/dn749790(v=pandp.10))
 * [A FONALas alkalmazások naplóihoz való hozzáférés Apache Hadoop Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [A naplófájlok méretének szabályozása a különböző Apache Hadoop-összetevőkhöz](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

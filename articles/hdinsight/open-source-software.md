@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f1e1518cce060374f14f1db7d5f4e594e3de8f85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe9ccc50d6196997863fbf228fbb76913a0d0330
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086262"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534379"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Nyílt forráskódú szoftverek támogatása az Azure HDInsight
 
@@ -40,7 +40,7 @@ A fürt felhasználója a munkaterheléshez bármilyen, a Közösségben elérhe
 > [!WARNING]  
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak. Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldása érdekében. Előfordulhat, hogy a Microsoft ügyfélszolgálata fel tudja oldani a problémát. Vagy kérheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat is igénybe vehet, amelyekben az adott technológia mélyreható szaktudása található. Számos közösségi webhely használható. Ilyenek például a [Microsoft Q&a HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) és a [stack overflow](https://stackoverflow.com)kérdéseit.
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldása érdekében. Előfordulhat, hogy a Microsoft ügyfélszolgálata fel tudja oldani a problémát. Vagy kérheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat is igénybe vehet, amelyekben az adott technológia mélyreható szaktudása található. Számos közösségi webhely használható. Ilyenek például a [Microsoft Q&a HDInsight](/answers/topics/azure-hdinsight.html) és a [stack overflow](https://stackoverflow.com)kérdéseit.
 >
 > Az Apache-projektek az [Apache webhelyén](https://apache.org)is rendelkeznek Project-webhelyekkel. Ilyen például a [Hadoop](https://hadoop.apache.org/).
 
@@ -48,13 +48,13 @@ A fürt felhasználója a munkaterheléshez bármilyen, a Közösségben elérhe
 
 A HDInsight szolgáltatás számos módszert kínál az egyéni összetevők használatára. Ugyanez a támogatási szint érvényes, függetlenül attól, hogy az összetevő hogyan használható vagy van telepítve a fürtön. Az alábbi táblázat az egyéni összetevők HDInsight-fürtökön használt leggyakoribb módszereit ismerteti:
 
-|Használat |Leírás |
+|Használat |Description (Leírás) |
 |---|---|
 |Feladatbeküldés|Az egyéni összetevőket végrehajtó vagy használó Hadoop vagy más típusú feladatok elküldhető a fürtbe.|
 |Fürt testreszabása|A fürt létrehozása során megadhat további beállításokat és a fürtcsomópontokon telepített egyéni összetevőket.|
 |Példák|A népszerű egyéni összetevők esetében a Microsoft és mások példákat is biztosítanak az összetevők HDInsight-fürtökön való használatára. Ezeket a mintákat támogatás nélkül biztosítjuk.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](./hdinsight-hadoop-customize-cluster-linux.md)
 * [Parancsfájl-műveleti parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)

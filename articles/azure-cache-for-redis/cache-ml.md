@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 54109d5889ae2c08f444a3a089386d413bf4262b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650187"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537575"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Gépi tanulási modell üzembe helyezése az Azure cache for Redis Azure Functions 
 
@@ -24,10 +24,10 @@ Az Azure cache for Redis rendkívül nagy teljesítményű és skálázható –
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
-* Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) című cikkben talál.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-vel.
-* A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a [képbesorolási oktatóanyagot: a betanítási modell](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml) betanítása és regisztrálása.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
+* Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](../machine-learning/how-to-manage-workspace.md) című cikkben talál.
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-vel.
+* A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a [képbesorolási oktatóanyagot: a betanítási modell](../machine-learning/tutorial-train-models-with-aml.md) betanítása és regisztrálása.
 
 > [!IMPORTANT]
 > A cikkben szereplő kódrészletek azt feltételezik, hogy a következő változókat állította be:
@@ -36,14 +36,14 @@ Az Azure cache for Redis rendkívül nagy teljesítményű és skálázható –
 > * `model` – A rendszerbe állított regisztrált modell.
 > * `inference_config` – A modellre vonatkozó következtetési konfiguráció.
 >
-> A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+> A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](../machine-learning/how-to-deploy-and-where.md).
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Azure cache létrehozása a Redis-példányhoz 
 Az alapszintű, standard vagy prémium szintű gyorsítótár-példánnyal Azure Functions gépi tanulási modellt telepíthet. Gyorsítótár-példány létrehozásához kövesse az alábbi lépéseket.  
 
-1. Lépjen a Azure Portal kezdőlapjára, vagy nyissa meg a Sidebar menüt, majd válassza az **erőforrás létrehozása**lehetőséget. 
+1. Lépjen a Azure Portal kezdőlapjára, vagy nyissa meg a Sidebar menüt, majd válassza az **erőforrás létrehozása** lehetőséget. 
    
-1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
+1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára** .
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Válassza ki az Azure cache-t a Redis.":::
    
@@ -51,7 +51,7 @@ Az alapszintű, standard vagy prémium szintű gyorsítótár-példánnyal Azure
    
    | Beállítás      | Ajánlott érték  | Leírás |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a * \<DNS name> . Redis.cache.Windows.net*lesz. | 
+   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a *\<DNS name> . Redis.cache.Windows.net* lesz. | 
    | **Előfizetés** | Legördülő menüből válassza ki az előfizetését. | Az előfizetés, amely alatt létre kell hoznia ezt az új Azure cache-t a Redis-példányhoz. | 
    | **Erőforráscsoport** | Legördülő listából válassza ki az erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet. | Azon erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat és az egyéb erőforrásokat. Az összes alkalmazás-erőforrás egy erőforráscsoporthoz való elhelyezésével könnyedén kezelheti és törölheti azokat. | 
    | **Hely** | Legördülő menüből válassza ki a helyet. | Válasszon ki egy [régiót](https://azure.microsoft.com/regions/) a többi olyan szolgáltatás közelében, amely a gyorsítótárat fogja használni. |
@@ -71,24 +71,24 @@ Az alapszintű, standard vagy prémium szintű gyorsítótár-példánnyal Azure
 
 1. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné. 
 
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
 
-1. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás**lehetőséget.
+1. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás** lehetőséget.
 
-Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés**   oldalon. Ha az **állapot**    **futásra**mutat, a gyorsítótár készen áll a használatra. 
+Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra** mutat, a gyorsítótár készen áll a használatra. 
 
 ## <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
 
 A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webszolgáltatásként való futtatásához. Az alábbi lista a központi telepítéshez szükséges alapvető elemeket ismerteti:
 
-* Egy __bejegyzési parancsfájl__. Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
+* Egy __bejegyzési parancsfájl__ . Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
 
     > [!IMPORTANT]
     > A bejegyzési parancsfájl a modellre jellemző. meg kell ismernie a bejövő kérelmek adatainak formátumát, a modell által várt adatformátumot, valamint az ügyfeleknek visszaadott adatformátumot.
     >
     > Ha a kérelem adatai olyan formátumban vannak, amely nem használható a modellben, a parancsfájl elfogadható formátumba alakíthatja át. A választ is át lehet alakítani, mielőtt visszaadná azt az ügyfélnek.
     >
-    > Alapértelmezés szerint a függvények csomagolásakor a rendszer a bemenetet szövegként kezeli. Ha érdekli a bemenet (például blob-eseményindítók) nyers bájtjainak használata, a [AMLRequest használatával fogadja el a nyers adatokat](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-advanced-entry-script#binary-data).
+    > Alapértelmezés szerint a függvények csomagolásakor a rendszer a bemenetet szövegként kezeli. Ha érdekli a bemenet (például blob-eseményindítók) nyers bájtjainak használata, a [AMLRequest használatával fogadja el a nyers adatokat](../machine-learning/how-to-deploy-advanced-entry-script.md#binary-data).
 
 A Run függvényhez ellenőrizze, hogy csatlakozik-e egy Redis-végponthoz.
 
@@ -106,12 +106,12 @@ def init():
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
     model = joblib.load(model_path)
 
-@input_schema('data', NumpyParameterType(input_sample))
+@input_schema('data', NumpyParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
-        input = azrediscache.get(data)
-        result = model.predict(input)
+        input = azrediscache.get(data)
+        result = model.predict(input)
         data = np.array(json.loads(data))
         result = model.predict(data)
         # You can return any data type, as long as it is JSON serializable.
@@ -121,14 +121,14 @@ def run(data):
         return error
 ```
 
-További információ a belépési parancsfájlról: [pontozási kód definiálása.](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-entry-script)
+További információ a belépési parancsfájlról: [pontozási kód definiálása.](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-entry-script)
 
-* **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
+* **Függőségek** , például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
 
-Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
+Ezek az entitások egy __következtetési konfigurációba__ vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
 > [!IMPORTANT]
-> Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
+> Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -144,12 +144,12 @@ Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A k
 > inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 > ```
 
-További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments).
+További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](../machine-learning/how-to-use-environments.md).
 
-További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-inference-configuration).
+További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-inference-configuration).
 
 > [!IMPORTANT]
-> A függvények telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__.
+> A függvények telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__ .
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>Az SDK előzetes csomagjának telepítése a függvények támogatásához
 
@@ -161,10 +161,10 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A Azure Functions rendszerbe állított Docker-rendszerkép létrehozásához használja a [azureml... a. functions. functions. package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) vagy az adott Package függvényt a használni kívánt triggerhez. A következő kódrészlet bemutatja, hogyan hozhat létre egy új csomagot HTTP-triggerrel a modellből és a következtetések konfigurálásával:
+A Azure Functions rendszerbe állított Docker-rendszerkép létrehozásához használja a [azureml... a. functions. functions. package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) vagy az adott Package függvényt a használni kívánt triggerhez. A következő kódrészlet bemutatja, hogyan hozhat létre egy új csomagot HTTP-triggerrel a modellből és a következtetések konfigurálásával:
 
 > [!NOTE]
-> A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+> A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](../machine-learning/how-to-deploy-and-where.md).
 
 ```python
 from azureml.contrib.functions import package
@@ -178,7 +178,7 @@ print(model_package.location)
 Ekkor `show_output=True` megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva. A rendszerkép felépítése után megjelenik a Azure Container Registry helye. A visszaadott hely formátuma `<acrinstance>.azurecr.io/package@sha256:<imagename>` .
 
 > [!NOTE]
-> A függvények csomagolása jelenleg támogatja a HTTP-eseményindítókat, a blob-eseményindítókat és a Service Bus-eseményindítókat. További információ az eseményindítókkal kapcsolatban: [Azure functions kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns).
+> A függvények csomagolása jelenleg támogatja a HTTP-eseményindítókat, a blob-eseményindítókat és a Service Bus-eseményindítókat. További információ az eseményindítókkal kapcsolatban: [Azure functions kötések](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns).
 
 > [!IMPORTANT]
 > Mentse a hely adatait, ahogy azt a lemezkép telepítésekor használják.
@@ -209,7 +209,7 @@ Ekkor `show_output=True` megjelenik a Docker-létrehozási folyamat kimenete. A 
     }
     ```
 
-    Mentse a __Felhasználónév__ és az egyik __jelszó__értékét.
+    Mentse a __Felhasználónév__ és az egyik __jelszó__ értékét.
 
 1. Ha még nem rendelkezik erőforráscsoport-vagy app Service-csomaggal a szolgáltatás telepítéséhez, a következő parancsok azt mutatják be, hogyan hozható létre egyszerre:
 
@@ -288,13 +288,13 @@ Ezen a ponton a Function alkalmazás elkezdi betölteni a rendszerképet.
 Ekkor futtatjuk és teszteljük az Azure Function HTTP-triggert.
 
 1. Nyissa meg az Azure Function alkalmazást a Azure Portal.
-1. A fejlesztő területen válassza a **Code + test**elemet. 
+1. A fejlesztő területen válassza a **Code + test** elemet. 
 1. A jobb oldalon válassza a **bevitel** lapot. 
 1. Kattintson a **Futtatás** gombra az Azure Function http-trigger teszteléséhez. 
 
 Sikeresen üzembe helyezett egy modellt az Azure Machine Learning-ból, amely a Redis-példányhoz tartozó Azure cache-t használó Function-alkalmazás. A Redis készült Azure cache-ről az alábbi szakaszban található hivatkozásokra kattintva tudhat meg többet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -307,16 +307,15 @@ Ellenkező esetben, ha elkészült a gyors üzembe helyezéssel, törölheti az 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-2. A **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. Az erőforráscsoport eredménylistájában válassza a **...**, majd az **Erőforráscsoport törlése** lehetőséget.
+2. A **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. Az erőforráscsoport eredménylistájában válassza a **...** , majd az **Erőforráscsoport törlése** lehetőséget.
 
-A rendszer az erőforráscsoport törlésének megerősítését kéri. A megerősítéshez írja be az erőforráscsoport nevét, és válassza a **Törlést**.
+A rendszer az erőforráscsoport törlésének megerősítését kéri. A megerősítéshez írja be az erőforráscsoport nevét, és válassza a **Törlést** .
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 
 ## <a name="next-steps"></a>Következő lépések 
 
-* További információ a [Redis készült Azure cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) -ről
-* Ismerje meg, hogyan konfigurálhatja a functions alkalmazást a [functions](/azure/azure-functions/functions-create-function-linux-custom-image) dokumentációjában.
-* [API-referencia](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) 
-* [Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-python-get-started)
-
+* További információ a [Redis készült Azure cache](./cache-overview.md) -ről
+* Ismerje meg, hogyan konfigurálhatja a functions alkalmazást a [functions](../azure-functions/functions-create-function-linux-custom-image.md) dokumentációjában.
+* [API-referencia](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
+* [Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez](./cache-python-get-started.md)

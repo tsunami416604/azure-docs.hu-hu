@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9cbcbeb9d9e216a0b686cba258288db8439e0a9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7b673dc8dfeb2ebf86aec5b7449df91c2ffd635
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90946577"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534056"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Oktatóanyag: Azure Database for MySQL rugalmas kiszolgáló (előzetes verzió) létrehozása App Services webalkalmazással a Virtual Network szolgáltatásban
 
 > [!IMPORTANT]
 > Azure Database for MySQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure App Service webalkalmazást a MySQL rugalmas kiszolgálóval (előzetes verzió) egy [virtuális hálózaton](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)belül.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure App Service webalkalmazást a MySQL rugalmas kiszolgálóval (előzetes verzió) egy [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md)belül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Az az [login](https://docs.microsoft.com/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel a megfelelő előfizetésnév parancskimenetéből az **id** tulajdonságot.
+Az az [login](/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel a megfelelő előfizetésnév parancskimenetéből az **id** tulajdonságot.
 
 ```azurecli
 az login
@@ -69,7 +69,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 
 > [!NOTE]
 > - A--Location argumentum esetében ugyanazt a helyet használja, mint az előző szakaszban található adatbázishoz.
-> - Cserélje le az _ &lt; app-Name>t_ egyedi névre az összes Azure-ban (a kiszolgálói végpont https:// \<app-name> . azurewebsites.net). <alkalmazás-neve> engedélyezett karakterek: A-Z, 0-9 és-. Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
+> - Cserélje le az _&lt; app-Name>t_ egyedi névre az összes Azure-ban (a kiszolgálói végpont https:// \<app-name> . azurewebsites.net). <alkalmazás-neve> engedélyezett karakterek: A-Z, 0-9 és-. Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
 
 Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány percig:
 
@@ -81,7 +81,7 @@ Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány pe
 
 ## <a name="add-the-web-app-to-the-virtual-network"></a>A webalkalmazás hozzáadása a virtuális hálózathoz
 
-Az **az WebApp vnet-Integration** paranccsal adhat hozzá regionális virtuális hálózati integrációt egy webapphoz. Cserélje le a _ &lt; vnet-Name>_ és az _ &lt; alhálózati név_ értékét a rugalmas kiszolgáló által használt virtuális hálózatra és alhálózatra.
+Az **az WebApp vnet-Integration** paranccsal adhat hozzá regionális virtuális hálózati integrációt egy webapphoz. Cserélje le a _&lt; vnet-Name>_ és az _&lt; alhálózati név_ értékét a rugalmas kiszolgáló által használt virtuális hálózatra és alhálózatra.
 
 ```azurecli
 az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
@@ -95,12 +95,12 @@ Ha a kód most már telepítve van a App Servicere, a következő lépés az alk
 az webapp config appsettings set --settings DBHOST="<mysql-server-name>.mysql.database.azure.com" DBNAME="flexibleserverdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
-- Cserélje le a _ &lt; MySQL-Server-Name>_, a _ &lt; username>_ és a _ &lt; Password>_ nevet az újonnan létrehozott rugalmas kiszolgálói parancshoz.
-- Cserélje le a _ &lt; Felhasználónév>_ és a _ &lt; jelszó>_ azokat a hitelesítő adatokat, amelyeket a parancs is generált.
+- Cserélje le a _&lt; MySQL-Server-Name>_ , a _&lt; username>_ és a _&lt; Password>_ nevet az újonnan létrehozott rugalmas kiszolgálói parancshoz.
+- Cserélje le a _&lt; Felhasználónév>_ és a _&lt; jelszó>_ azokat a hitelesítő adatokat, amelyeket a parancs is generált.
 - Az erőforráscsoport és az alkalmazás neve a. Azure/config fájl gyorsítótárazott értékeiből származik.
 - A parancs a DBHOST, a DBNAME, a DBUSER és a DBPASS nevű beállításokat hozza létre. Ha az alkalmazás kódja más nevet használ az adatbázis-adatokhoz, akkor ezeket a neveket használja a kódban említett beállítások alapján.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Törölje az oktatóanyagban létrehozott összes erőforrást az alábbi parancs használatával. Ez a parancs törli az erőforráscsoport összes erőforrását.
 
@@ -108,7 +108,7 @@ Törölje az oktatóanyagban létrehozott összes erőforrást az alábbi paranc
 az group delete -n myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név leképezése Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
+> [Meglévő egyéni DNS-név leképezése Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)

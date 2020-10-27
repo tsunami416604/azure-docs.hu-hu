@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 565e6fb2def64dd594e1b0018f3378ea09bc63cb
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fb3ed4e41125131538957addce5bf935b897b581
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426207"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537218"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Azure Database for MariaDB magánhálózati hivatkozás létrehozása és kezelése a parancssori felület használatával
 
@@ -40,7 +40,7 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Hozzon létre egy Virtual Network az [az Network vnet Create](/cli/azure/network/vnet)paranccsal. Ez a példa egy *myVirtualNetwork* nevű alapértelmezett Virtual Network hoz létre egy *mySubnet*nevű alhálózattal:
+Hozzon létre egy Virtual Network az [az Network vnet Create](/cli/azure/network/vnet)paranccsal. Ez a példa egy *myVirtualNetwork* nevű alapértelmezett Virtual Network hoz létre egy *mySubnet* nevű alhálózattal:
 
 ```azurecli-interactive
 az network vnet create \
@@ -50,7 +50,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Alhálózat magánhálózati végponti házirendjeinek letiltása 
-Az Azure üzembe helyezi az erőforrásokat egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia vagy frissítenie kell az alhálózatot a magánhálózati végpontok [hálózati házirendjeinek](../private-link/disable-private-endpoint-network-policy.md)letiltásához. Frissítsen egy *mySubnet* nevű alhálózati konfigurációt az [az Network vnet subnet Update paranccsal](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Az Azure üzembe helyezi az erőforrásokat egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia vagy frissítenie kell az alhálózatot a magánhálózati végpontok [hálózati házirendjeinek](../private-link/disable-private-endpoint-network-policy.md)letiltásához. Frissítsen egy *mySubnet* nevű alhálózati konfigurációt az [az Network vnet subnet Update paranccsal](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -60,7 +60,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>A virtuális gép létrehozása 
-Hozzon létre egy virtuális gépet az az VM Create paranccsal. Ha a rendszer kéri, adja meg a virtuális gép bejelentkezési hitelesítő adataiként használandó jelszót. Ez a példa egy *myVm*nevű virtuális gépet hoz létre: 
+Hozzon létre egy virtuális gépet az az VM Create paranccsal. Ha a rendszer kéri, adja meg a virtuális gép bejelentkezési hitelesítő adataiként használandó jelszót. Ez a példa egy *myVm* nevű virtuális gépet hoz létre: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -137,7 +137,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
-1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
+1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp* ) fájlt, és letölti a számítógépre.
 
 1. Nyissa meg a *letöltött. rdp* fájlt.
 
@@ -146,7 +146,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
+        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával** .
 
 1. Válassza az **OK** lehetőséget.
 
@@ -156,7 +156,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>A MariaDB-kiszolgáló magánhálózati elérése a virtuális gépről
 
-1. A *myVM*távoli asztal nyissa meg a PowerShellt.
+1. A *myVM* távoli asztal nyissa meg a PowerShellt.
 
 2. Írja be a következő szöveget:  `nslookup mydemoserver.privatelink.mariadb.database.azure.com`. 
 
@@ -171,7 +171,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 3. Tesztelje a MariaDB-kiszolgáló magánhálózati kapcsolati kapcsolatát bármely elérhető ügyfél használatával. Az alábbi példában a [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) használatával végeztem el a műveletet.
 
-4. Az **új kapcsolatok**területen adja meg vagy válassza ki az alábbi adatokat:
+4. Az **új kapcsolatok** területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -181,20 +181,20 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     | Jelszó | Adja meg a MariaDB-kiszolgáló létrehozásakor megadott jelszót. |
     ||
 
-5. Válassza a **kapcsolatok tesztelése** vagy **az OK gombot**.
+5. Válassza a **kapcsolatok tesztelése** vagy **az OK gombot** .
 
 6. Opcionálisan A bal oldali menüben lévő adatbázisok tallózása, valamint a MariaDB-adatbázisból származó információk létrehozása vagy lekérdezése
 
 8. A távoli asztali kapcsolat bezárásával myVm.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása 
 Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az erőforráscsoportot és a hozzá tartozó összes erőforrást: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [Azure Private Endpoint szolgáltatásról](../private-link/private-endpoint-overview.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->

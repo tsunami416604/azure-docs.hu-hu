@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: ff0c7001184af58432a7915b3a7df29f900bedec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5f5a9fb8ddd25f750b19044bac7253bbff2f98
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006602"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545208"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a PowerShell használatával
 
@@ -25,7 +25,7 @@ Ez a dokumentum egy példát mutat be a Azure PowerShell használatára egy MapR
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/) telepítve van.
+* A PowerShell az [modul](/powershell/azure/) telepítve van.
 
 ## <a name="run-a-mapreduce-job"></a>MapReduce-feladatok futtatása
 
@@ -43,7 +43,7 @@ A következő parancsmagok használhatók a MapReduce-feladatok távoli HDInsigh
 
 A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagokat feladatok futtatására a HDInsight-fürtben.
 
-1. Szerkesztő használatával mentse a következő kódot **mapreducejob.ps1ként **.
+1. Szerkesztő használatával mentse a következő kódot **mapreducejob.ps1ként** .
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
@@ -99,7 +99,7 @@ Get-AzHDInsightJobOutput `
 
 Ez a parancsmag a STDERR írt adatokat adja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Amint az látható, Azure PowerShell egyszerű módszert kínál a MapReduce-feladatok HDInsight-fürtön való futtatására, a feladat állapotának figyelésére, valamint a kimenet lekérésére. További információ a Hadoop a HDInsight-ben való használatával kapcsolatos egyéb módszerekről:
 

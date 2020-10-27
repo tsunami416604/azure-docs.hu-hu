@@ -63,6 +63,7 @@
           href: protect-with-drm.md
         - name: Tartalomvédelem az Azure AD-vel
           href: azure-ad-content-protection.md
+          displayName: 'AAD, Active Directory'
     - name: REST
       items:
         - name: Egy távoli fájl kódolása és streamelése REST használatával
@@ -129,8 +130,8 @@
         - name: Áttekintés
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Átalakítások és feladatok
-          href: transforms-jobs-concept.md
+    - name: Átalakítások és feladatok
+      href: transforms-jobs-concept.md
     - name: Live streaming (Élő adatfolyam)
       items:
         - name: Áttekintés
@@ -265,6 +266,8 @@
       items:
         - name: Átalakítások létrehozása
           href: cli-create-transform.md
+        - name: Alapszintű hangátalakítás létrehozása a REST használatával
+          href: how-to-create-basic-audio-transform.md
         - name: Feladatok létrehozása
           href: cli-create-jobs.md
         - name: Feladatbemenet létrehozása helyi fájllal és .NET-tel

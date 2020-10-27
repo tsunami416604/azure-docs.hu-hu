@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 156d3ce4b7f8b6eaa297f2cddd0d5a93f382f78e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709045"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547282"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Működése OutOfMemoryError-kivételek az Azure HDInsight Apache Spark
 
@@ -60,7 +60,7 @@ Ennek a kivételnek a legvalószínűbb oka az, hogy nem áll rendelkezésre el�
 
 1. Határozza meg a Spark-alkalmazás által kezelendő adatok maximális méretét. Becsülje meg a méretet a bemeneti adatok, a bemeneti adatok átalakításával előállított köztes adatok és a köztes adatok további átalakításával létrehozott kimeneti adatok maximális mérete alapján. Ha a kezdeti becslés nem elegendő, növelje a méretet kis mértékben, és ismételje meg a memória hibáit.
 
-1. Győződjön meg arról, hogy a használni kívánt HDInsight-fürtnek elegendő memória-erőforrás áll a rendelkezésére, és elegendő maggal rendelkezik a Spark-alkalmazás elhelyezéséhez. Ezt úgy határozhatja meg, hogy megtekinti a fürt fonal felhasználói felületének fürt metrikák szakaszát a **felhasznált memória** és a **virtuális mag** **, illetve** a **virtuális mag teljes**száma alapján.
+1. Győződjön meg arról, hogy a használni kívánt HDInsight-fürtnek elegendő memória-erőforrás áll a rendelkezésére, és elegendő maggal rendelkezik a Spark-alkalmazás elhelyezéséhez. Ezt úgy határozhatja meg, hogy megtekinti a fürt fonal felhasználói felületének fürt metrikák szakaszát a **felhasznált memória** és a **virtuális mag** **, illetve** a **virtuális mag teljes** száma alapján.
 
     ![a fonal alapmemóriájának nézete](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
@@ -243,16 +243,16 @@ Törölje az összes bejegyzést az alábbi lépésekkel.
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * A [Spark memória-kezelési áttekintése](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview).
 
-* [A Spark-alkalmazás hibakeresése a HDInsight-fürtökön](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
+* [A Spark-alkalmazás hibakeresése a HDInsight-fürtökön](/archive/blogs/azuredatalake/spark-debugging-101).
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
 * Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](../../azure-portal/supportability/how-to-create-azure-support-request.md)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426397"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547418"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-fürtök biztonságossá tétele és elkülönítése privát kapcsolattal (előzetes verzió)
 
@@ -25,7 +25,7 @@ Létrehozhat privát HDInsight-fürtöket egy Azure Resource Manager-(ARM-) sabl
 
 ## <a name="remove-public-ip-addresses"></a>Nyilvános IP-címek eltávolítása
 
-Alapértelmezés szerint a HDInsight RP a nyilvános IP-címek használatával *bejövő* kapcsolatokat használ a fürthöz. Ha a `resourceProviderConnection` Network tulajdonság *kimenő*értékre van állítva, megfordítja a kapcsolatot a HDInsight RP-vel, hogy a kapcsolatok mindig a fürtön BELÜLről a RP-re legyenek kezdeményezve. Bejövő kapcsolatok nélkül nem szükséges a bejövő szolgáltatáshoz tartozó címkék vagy nyilvános IP-címek használata.
+Alapértelmezés szerint a HDInsight RP a nyilvános IP-címek használatával *bejövő* kapcsolatokat használ a fürthöz. Ha a `resourceProviderConnection` Network tulajdonság *kimenő* értékre van állítva, megfordítja a kapcsolatot a HDInsight RP-vel, hogy a kapcsolatok mindig a fürtön BELÜLről a RP-re legyenek kezdeményezve. Bejövő kapcsolatok nélkül nem szükséges a bejövő szolgáltatáshoz tartozó címkék vagy nyilvános IP-címek használata.
 
 Az alapértelmezett virtuális hálózati architektúrában használt alapszintű terheléselosztó automatikusan nyilvános NAT-t (hálózati címfordítást) biztosít a szükséges kimenő függőségek, például a HDInsight RP eléréséhez. Ha korlátozni szeretné a nyilvános internetre irányuló kimenő kapcsolatot, beállíthatja [a tűzfalat](./hdinsight-restrict-outbound-traffic.md), de ez nem követelmény.
 
@@ -54,13 +54,13 @@ A fürt teljes tartománynevek használatával való eléréséhez használhatja
 
 A privát hivatkozás, amely alapértelmezés szerint le van tiltva, széles körű hálózatkezelési ismereteket igényel a felhasználó által megadott útvonalak (UDR) és a tűzfalszabályok megfelelő beállításához a fürt létrehozása előtt. A fürthöz való privát hivatkozás csak akkor érhető el, ha a `resourceProviderConnection` Network tulajdonság az előző szakaszban leírtak szerint a *kimenő* értékre van állítva.
 
-Ha `privateLink` az *engedélyezve*értékre van állítva, a rendszer belső [standard Load balancereket](../load-balancer/load-balancer-overview.md) (SLB-ket) hoz létre, és minden egyes SLB kiépít egy Azure Private link Service-t. A Private link Service lehetővé teszi, hogy a HDInsight-fürtöt privát végpontokból elérje.
+Ha `privateLink` az *engedélyezve* értékre van állítva, a rendszer belső [standard Load balancereket](../load-balancer/load-balancer-overview.md) (SLB-ket) hoz létre, és minden egyes SLB kiépít egy Azure Private link Service-t. A Private link Service lehetővé teszi, hogy a HDInsight-fürtöt privát végpontokból elérje.
 
-A standard Load balancerek nem biztosítják automatikusan a [nyilvános kimenő NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) -t, például az alapszintű Load balancert. A kimenő függőségekhez meg kell adnia a saját NAT-megoldását, például [Virtual Network NAT](../virtual-network/nat-overview.md) -t vagy [tűzfalat](./hdinsight-restrict-outbound-traffic.md). A HDInsight-fürtnek továbbra is hozzá kell férnie a kimenő függőségeihez. Ha ezek a kimenő függőségek nem engedélyezettek, a fürt létrehozása sikertelen lehet.
+A standard Load balancerek nem biztosítják automatikusan a [nyilvános kimenő NAT](../load-balancer/load-balancer-outbound-connections.md) -t, például az alapszintű Load balancert. A kimenő függőségekhez meg kell adnia a saját NAT-megoldását, például [Virtual Network NAT](../virtual-network/nat-overview.md) -t vagy [tűzfalat](./hdinsight-restrict-outbound-traffic.md). A HDInsight-fürtnek továbbra is hozzá kell férnie a kimenő függőségeihez. Ha ezek a kimenő függőségek nem engedélyezettek, a fürt létrehozása sikertelen lehet.
 
 ### <a name="prepare-your-environment"></a>A környezet előkészítése
 
-A privát successgfull létrehozásához explicit módon [le kell tiltania a magánhálózati kapcsolati szolgáltatáshoz tartozó hálózati házirendeket](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy).
+A privát successgfull létrehozásához explicit módon [le kell tiltania a magánhálózati kapcsolati szolgáltatáshoz tartozó hálózati házirendeket](../private-link/disable-private-link-service-network-policy.md).
 
 A következő ábrán egy példa látható a fürt létrehozása előtt szükséges hálózati konfigurációra. Ebben a példában az összes kimenő forgalom Azure Firewall UDR használatával van [kényszerítve](../firewall/forced-tunneling.md) , és a szükséges kimenő függőségeknek "engedélyezett"nek kell lenniük a tűzfalon a fürt létrehozása előtt. Enterprise Security Package-fürtök esetében a VNet-társítással a Azure Active Directory Domain Services hálózati kapcsolata is elérhető.
 
@@ -99,7 +99,7 @@ networkProperties: {
 
 A HDInsight nagyvállalati biztonsági funkcióival, beleértve a privát hivatkozásokat is, a [HDInsight Enterprise biztonsági sablon](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)című témakörben talál teljes sablont.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Enterprise Security Package az Azure HDInsight](enterprise-security-package.md)
 * [A vállalati biztonsági általános információk és irányelvek az Azure HDInsight](./domain-joined/general-guidelines.md)

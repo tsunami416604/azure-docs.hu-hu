@@ -3,12 +3,12 @@ title: Azure VMware-megoldás virtuális gépek életciklus-kezelése
 description: Ismerje meg, hogyan kezelheti az Azure VMware megoldás virtuális gépei életciklusának minden aspektusát Microsoft Azure natív eszközökkel.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 928a632a34dd31272c7c3bf92f6dc6dda97cb6cc
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5280d362c1e7b1bf33579d051c4cc11adb1b7e59
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216249"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545759"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware-megoldás virtuális gépek életciklus-kezelése
 
@@ -25,8 +25,8 @@ Microsoft Azure natív eszközök lehetővé teszik a virtuális gépek (VM-EK) 
     - Operációs rendszer javításának felmérése
     - Biztonsági konfigurációs beállítások értékelése
     - Endpoint Protection-Értékelés 
-- A Microsoft monitoring Agent (MMA) egyszerűen üzembe helyezhető az Azure ARC használatával az új virtuális gépekhez. 
-- A Azure Monitor Log Analytics munkaterülete lehetővé teszi a naplók gyűjtését és a teljesítményszámláló gyűjtését az MMA vagy a Extensions használatával. Adatok és naplók összegyűjtése egyetlen pontra, és ezek az adatok különböző Azure-beli natív szolgáltatásokban jelennek meg. 
+- Egyszerűen üzembe helyezheti a Log Analytics ügynököt az Azure arc-kompatibilis kiszolgálók virtuálisgép-bővítményének támogatásával az új és a meglévő virtuális gépekhez. 
+- A Azure Monitor Log Analytics munkaterülete lehetővé teszi a naplók gyűjtését és a teljesítményszámláló gyűjtését a Log Analytics ügynök vagy bővítmények használatával. Adatok és naplók összegyűjtése egyetlen pontra, és ezek az adatok különböző Azure-beli natív szolgáltatásokban jelennek meg. 
 - A Azure Monitor előnyei a következők: 
     - Zökkenőmentes monitorozás 
     - Jobb infrastruktúra láthatósága 
@@ -40,36 +40,73 @@ Az alábbi ábrán az Azure VMware-megoldás virtuális gépei integrált figyel
 
 ![Integrált Azure monitorozási architektúra](media/lifecycle-management-azure-vmware-solutions-virtual-machines/integrated-azure-monitoring-architecture.png)
 
+## <a name="before-you-start"></a>Előkészületek
+
+Ha még nem ismeri az Azure-t, vagy nem ismeri a korábban említett szolgáltatásokat, tekintse át a következő cikkeket:
+
+- [Az Automation-fiókok hitelesítésének áttekintése](../automation/automation-security-overview.md)
+- [A Azure monitor naplók üzembe helyezésének](../azure-monitor/platform/design-logs-deployment.md) és [Azure Monitorének](../azure-monitor/overview.md) megtervezése
+- [Tervezési](../security-center/security-center-planning-and-operations-guide.md) és [támogatott platformok](../security-center/security-center-os-coverage.md) Azure Security Center
+- [Azure Monitor for VMs-áttekintés engedélyezése](../azure-monitor/insights/vminsights-enable-overview.md)
+- [Mi az Azure arc-kompatibilis kiszolgálók?](../azure-arc/servers/overview.md) és [Mi az az Azure arc-kompatibilis Kubernetes?](../azure-arc/kubernetes/overview.md)
+- [A frissítéskezelés áttekintése](../automation/update-management/overview.md)
+
 ## <a name="integrating-and-deploying-azure-native-services"></a>Az Azure Native Services integrálása és üzembe helyezése
 
-Az **Azure arc** kiterjeszti az Azure-felügyeletet bármely infrastruktúrára, beleértve az Azure VMware-megoldást, a helyszíni vagy más felhőalapú platformokat. Az Azure ARC üzembe helyezhető egy Azure Kubernetes Service-(ak-) fürt telepítésével az Azure VMware-megoldás környezetében. További információ: [Azure arc-kompatibilis Kubernetes-fürt összekapcsolása](../azure-arc/kubernetes/connect-cluster.md).
+### <a name="enable-azure-update-management"></a>Azure-Update Management engedélyezése
 
-Az Azure VMware megoldás virtuális gépei az MMA-n keresztül figyelhetők (más néven Log Analytics ügynök vagy OMS Linux-ügynök). Az MMA-t automatikusan telepítheti, ha a virtuális gépek az ARC VM életciklus-munkafolyamatain keresztül vannak kiépítve. Az MMA telepíthető virtuális gépek sablonból történő telepítésekor is a vCenter-ben. újra, az ARC-munkafolyamatokon keresztül kiépített virtuális gépekkel. Az összes kiépített Azure VMware-megoldás virtuális gépe az MMA-ban telepíthető és naplókat küldhet az Azure Log Analytics-munkaterületre. További információ: [log Analytics Agent áttekintése](../azure-monitor/platform/log-analytics-agent.md).
+A Azure Automation Azure Update Management egy hibrid környezetben kezeli a Windows-és Linux-alapú gépek operációs rendszerének frissítéseit. Figyeli a megfelelőség javítását, és továbbítja a javítási szórási riasztásokat a szervizelés Azure Monitor. Az Azure Update Managementnak csatlakoznia kell a Log Analytics munkaterülethez a tárolt adatmennyiségek használatával a virtuális gépek frissítéseinek állapotának felmérése érdekében.
 
-**Log Analytics munkaterület** lehetővé teszi a naplók gyűjtését és a teljesítményszámláló gyűjtését az MMA vagy a Extensions használatával. Log Analytics munkaterület létrehozásához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/learn/quick-create-workspace.md)című témakört.
-- Windows rendszerű virtuális gépek a log Analytics-munkaterülethez való hozzáadásával kapcsolatban lásd: [log Analytics ügynök telepítése Windows rendszerű számítógépekre](../azure-monitor/platform/agent-windows.md).
-- Linux rendszerű virtuális gépek a log Analytics-munkaterülethez való hozzáadásával kapcsolatban lásd: [log Analytics ügynök telepítése Linux rendszerű számítógépekre](../azure-monitor/platform/agent-linux.md).
+1.  Log Analytics Azure Update Managementhoz való hozzáadásához először [létre kell hoznia egy Azure Automation-fiókot](../automation/automation-create-standalone-account.md). Ha sablon használatával szeretné létrehozni a fiókját, tekintse meg [az Automation-fiók létrehozása Azure Resource Manager sablonnal](../automation/quickstart-create-automation-account-template.md)című témakört.
 
-A Azure Automation **Azure Update Management** egy hibrid környezetben kezeli a Windows-és Linux-alapú gépek operációs rendszerének frissítéseit. Figyeli a megfelelőség javítását, és továbbítja a javítási szórási riasztásokat a szervizelés Azure Monitor. Az Azure Update Managementnak csatlakoznia kell a Log Analytics munkaterülethez a tárolt adatmennyiségek használatával a virtuális gépek frissítéseinek állapotának felmérése érdekében.
-- Log Analytics Azure Update Managementhoz való hozzáadásához először [létre kell hoznia egy Azure Automation-fiókot](../automation/automation-create-standalone-account.md).
-- Log Analytics munkaterület automatizálási fiókjával való összekapcsolásához tekintse meg a [log Analytics munkaterület és az Automation-fiók](../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)című témakört.
-- Az Azure-Update Management a virtuális gépek számára történő engedélyezéséről az [Automation-fiókból történő Update Management engedélyezése](../automation/update-management/enable-from-automation-account.md)című témakörben olvashat.
-- Miután hozzáadta a virtuális gépeket az Azure Update Managementhoz, [telepíthet frissítéseket a virtuális gépeken, és áttekintheti az eredményeket](../automation/update-management/deploy-updates.md). 
+2. **Log Analytics munkaterület** lehetővé teszi a naplók gyűjtését és a teljesítményszámláló gyűjtését az log Analytics ügynök vagy bővítmények használatával. Log Analytics munkaterület létrehozásához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/learn/quick-create-workspace.md)című témakört. Ha szeretné, létrehozhat egy munkaterületet a [parancssori](../azure-monitor/learn/quick-create-workspace-cli.md)felület, a [PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)vagy a [Azure Resource Manager sablon](../azure-monitor/samples/resource-manager-workspace.md)használatával is.
 
-A **Azure Security Center** komplex veszélyforrások elleni védelmet biztosít a felhőben és a helyszínen futó hibrid számítási feladatokhoz. Felméri az Azure VMware-alapú virtuális gépek biztonsági réseit, és szükség esetén riasztásokat hoz létre. Ezek a biztonsági riasztások továbbítható a Azure Monitor a megoldáshoz.
-- Azure Security Center nem igényel telepítést. További információkért tekintse meg a [virtuális gépek támogatott szolgáltatásainak](../security-center/security-center-services.md)listáját.
-- Ha Azure VMware-alapú virtuális gépeket és nem Azure-beli virtuális gépeket szeretne felvenni Azure Security Centerba, tekintse meg a következő témakört: [Windows rendszerű számítógépek előkészítése Azure Security Center](../security-center/quickstart-onboard-machines.md) és [Azure Security Center a Linux](../security-center/quickstart-onboard-machines.md)
-- A virtuális gépek hozzáadása után Azure Security Center elemzi az erőforrások biztonsági állapotát a lehetséges sebezhetőségek azonosítása érdekében. Emellett javaslatokat is biztosít az Áttekintés lapon. További információ: [biztonsági javaslatok a Azure Security Center](../security-center/security-center-recommendations.md).
-- A Azure Security Centerban biztonsági házirendeket is meghatározhat. A biztonsági szabályzatok konfigurálásával kapcsolatos információkért lásd: [a biztonsági házirendek használata](../security-center/tutorial-security-policy.md).
+3. Az Azure-Update Management a virtuális gépek számára történő engedélyezéséről az [Automation-fiókból történő Update Management engedélyezése](../automation/update-management/update-mgmt-enable-automation-account.md)című témakörben olvashat. A folyamat során összekapcsolja Log Analytics munkaterületét az Automation-fiókkal. 
+ 
+4. Miután hozzáadta a virtuális gépeket az Azure Update Managementhoz, [telepíthet frissítéseket a virtuális gépeken, és áttekintheti az eredményeket](../automation/update-management/deploy-updates.md). 
 
-A **Azure monitor** egy átfogó megoldás a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésének elvégzésére. Nem igényel telepítést.
+### <a name="enable-azure-security-center"></a>Azure Security Center engedélyezése
+
+A Azure Security Center komplex veszélyforrások elleni védelmet biztosít a felhőben és a helyszínen futó hibrid számítási feladatokhoz. Felméri az Azure VMware-alapú virtuális gépek biztonsági réseit, és szükség esetén riasztásokat hoz létre. Ezek a biztonsági riasztások továbbítható a Azure Monitor a megoldáshoz.
+
+Azure Security Center nem igényel telepítést. További információkért tekintse meg a [virtuális gépek támogatott szolgáltatásainak](../security-center/security-center-services.md)listáját.
+
+1. Ha Azure VMware-alapú virtuális gépeket és nem Azure-beli virtuális gépeket szeretne felvenni Security Centerba, tekintse meg a [gyors útmutató: Azure Security Center beállítása](../security-center/security-center-get-started.md) 
+
+2. Miután hozzáadta az Azure VMware-megoldást a virtuális gépekhez vagy virtuális gépekhez egy nem Azure-környezetből, engedélyezze Security Center az Azure Defendert. A Security Center felméri a virtuális gépeket a potenciális biztonsági problémákra. Emellett javaslatokat is biztosít az Áttekintés lapon. További információ: [biztonsági javaslatok a Azure Security Center](../security-center/security-center-recommendations.md).
+
+3. A Azure Security Centerban biztonsági házirendeket is meghatározhat. A biztonsági szabályzatok konfigurálásával kapcsolatos információkért lásd: [a biztonsági házirendek használata](../security-center/tutorial-security-policy.md).
+
+### <a name="onboard-vms-to-azure-arc-enabled-servers"></a>Virtuális gépek beléptetése az Azure arc-kompatibilis kiszolgálókra
+
+Az Azure arc kiterjeszti az Azure-felügyeletet bármely infrastruktúrára, beleértve az Azure VMware-megoldást, a helyszíni vagy más felhőalapú platformokat.
+
+- Lásd: [hibrid gépek összekapcsolása az Azure](../azure-arc/servers/onboard-service-principal.md) -ba az Azure arc-kompatibilis kiszolgálók több Windows-vagy Linux-alapú virtuális gép számára történő engedélyezéséhez.
+
+### <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Hibrid Kubernetes-fürtök előkészítése ív-kompatibilis Kubernetes
+
+Az Azure-beli VMware-megoldási környezetben üzemeltetett Kubernetes-fürtöket az Azure arc-kompatibilis Kubernetes használatával lehet csatlakoztatni. 
+
+- Lásd: [Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása](../azure-arc/kubernetes/create-onboarding-service-principal.md).
+
+### <a name="deploy-the-log-analytics-agent"></a>A Log Analytics-ügynök üzembe helyezése
+
+Az Azure VMware-megoldás virtuális gépei a Log Analytics ügynökön (más néven Microsoft monitoring Agent (MMA) vagy OMS Linux Agent) keresztül figyelhetők meg. Már létrehozott egy Log Analytics munkaterületet Azure Automation Update Management engedélyezése közben.
+
+- Telepítse a Log Analytics-ügynököt az [Azure arc-kompatibilis kiszolgálók virtuálisgép-bővítményének támogatásával](../azure-arc/servers/manage-vm-extensions.md).
+
+### <a name="enable-azure-monitor"></a>Azure Monitor engedélyezése
+
+A Azure Monitor egy átfogó megoldás a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésének elvégzésére. Nem igényel telepítést. A Azure Monitor segítségével figyelheti a vendég operációs rendszer teljesítményét, és felderítheti és leképezheti az alkalmazások függőségeit az Azure VMware-megoldás vagy a helyszíni virtuális gépek számára.
+
 - Azure Monitor lehetővé teszi a különböző forrásokból származó adatok figyelését és elemzését. További információ: [Azure monitor figyelési adatainak forrásai](../azure-monitor/platform/data-sources.md).
-- Különböző típusú adatokat is gyűjthet az elemzéshez, a vizualizációhoz és a riasztásokhoz. További információ: [Azure monitor adatplatform](../azure-monitor/platform/data-platform.md).
+
+- Különböző típusú adatokat gyűjthet az elemzéshez, a vizualizációhoz és a riasztásokhoz. További információ: [Azure monitor adatplatform](../azure-monitor/platform/data-platform.md).
+
 - Ha Azure Monitort szeretne konfigurálni a Log Analytics munkaterülettel, tekintse meg a [log Analytics munkaterület konfigurálása Azure monitor for VMshoz](../azure-monitor/insights/vminsights-configure-workspace.md)című témakört.
+
 - Riasztási szabályokat hozhat létre a környezetében felmerülő problémák azonosításához, például az erőforrások magas kihasználásához, a hiányzó javításokhoz, a kevés lemezterülethez és a virtuális gépek szívveréséhez. Az észlelt eseményekhez automatikus választ is beállíthat, ha riasztást küld az IT Service Management-(ITSM-) eszközökre. A riasztások észleléséről értesítő értesítés is elküldhető e-mailben. Ilyen szabályok létrehozásához tekintse meg a következőt:
     - [Metrikai riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-metric.md).
     - [Naplózási riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-log.md).
     - Az automatizált műveletek és értesítések beállítására szolgáló [műveleti szabályok](../azure-monitor/platform/alerts-action-rules.md) .
     - [Az Azure összekapcsolásával ITSM eszközöket it-szolgáltatásmenedzsmenti csatoló használatával](../azure-monitor/platform/itsmc-overview.md).
-
-Az **Azure platform Service (Pásti)** a Felhőbeli fejlesztési és üzembe helyezési környezet, amely lehetővé teszi a felhőalapú alkalmazások továbbítását. Például integrálhatja Azure SQL Databaseeit az Azure VMware-megoldás virtuális gépei segítségével. Az SQL-riasztások ezután összekapcsolhatók az Azure VMware megoldás VM-riasztásokkal. Tegyük fel például, hogy az alkalmazás SQL Database szakasza az Azure Pásti-n belül van, és ugyanazon alkalmazás webalkalmazási szintje fut az Azure VMware megoldás virtuális gépei között. Az adatbázis-riasztások így korrelálnak a webalkalmazási riasztásokkal. A hibaelhárítás az Azure, az Azure VMware megoldás és a helyszíni virtuális gépek egyetlen, integrált láthatóságával egyszerűsíthető.

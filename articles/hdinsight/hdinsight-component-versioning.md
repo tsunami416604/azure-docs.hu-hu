@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e2211be478a16238d35eeb5219cf6e785a6979
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394329"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547571"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
@@ -89,14 +89,14 @@ Ez a táblázat felsorolja a HDInsight azon verzióit, amelyek elérhetők a Azu
 | HDInsight 3,6 Spark             | 2,2               | Kivonulás június 30-ig, 2020          |                             |
 | HDInsight 3,6 Spark             | 2.1               | Kivonulás június 30-ig, 2020          |                             |
 | HDInsight 3,6 Kafka             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 Kafka             | 1.0               | 2020. június 30-án megszűnt.         |                             |
+| HDInsight 3,6 Kafka             | 1,0               | 2020. június 30-án megszűnt.         |                             |
 | HDInsight 3,6 HBase             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 interaktív lekérdezés | 2.1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 Storm             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 ML-szolgáltatások      | 9,3               | Dec. 31.2020                      | Dec. 31.2020                |
 
 > [!NOTE]
-> Ha a fürt verziójának támogatása lejár, előfordulhat, hogy a Azure Portal nem érhető el. Bizonyos esetekben a fürtcsomópontok továbbra is elérhetők a Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsában és a .net SDK-ban lévő **Version** paraméterrel, amíg meg nem történik a verzió kivonulási dátuma.
+> Ha a fürt verziójának támogatása lejár, előfordulhat, hogy a Azure Portal nem érhető el. Bizonyos esetekben a fürtcsomópontok továbbra is elérhetők a Windows PowerShell [New-AzHDInsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsában és a .net SDK-ban lévő **Version** paraméterrel, amíg meg nem történik a verzió kivonulási dátuma.
 
 ### <a name="retired-versions"></a>Kivont verziók
 
@@ -119,7 +119,7 @@ Ez a táblázat felsorolja azokat a HDInsight-verziókat, amelyek nem érhetők 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>A HDInsight-fürt verzióira vonatkozó szolgáltatási szintű szerződés
 
-A szolgáltatói szerződés _támogatási ablakként_van meghatározva. A támogatási időszak azt az időtartamot használja, ameddig a Microsoft ügyfélszolgálata és támogatása támogatja a HDInsight verzióját. Ha a verzió elérte a _támogatás lejárati dátumát_, a HDInsight-fürt a támogatási ablakon kívül esik. A HDInsight X verziójának támogatása (újabb X + 1 verzió után) a következő:
+A szolgáltatói szerződés _támogatási ablakként_ van meghatározva. A támogatási időszak azt az időtartamot használja, ameddig a Microsoft ügyfélszolgálata és támogatása támogatja a HDInsight verzióját. Ha a verzió elérte a _támogatás lejárati dátumát_ , a HDInsight-fürt a támogatási ablakon kívül esik. A HDInsight X verziójának támogatása (újabb X + 1 verzió után) a következő:
 
 - **1. képlet:** Adja hozzá a 180 napot a HDInsight-fürt X verziójának kiadási dátumához.
 - **2. képlet:** Adja hozzá a 90 nappal azt a dátumot, amikor a HDInsight-fürt X + 1 verziója elérhetővé válik a Azure Portal.

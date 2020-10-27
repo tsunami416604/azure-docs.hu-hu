@@ -1,17 +1,17 @@
 ---
-title: Az üzletmenet folytonosságának áttekintése Azure Database for MySQL rugalmas kiszolgálóval
+title: Az üzletmenet folytonosságának áttekintése – Azure Database for MySQL rugalmas kiszolgáló
 description: Ismerje meg az üzletmenet folytonosságával kapcsolatos fogalmakat Azure Database for MySQL rugalmas kiszolgálóval
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 0c1afaa7d2d7971b2570914aa7c69fa7c666ae46
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 833031a787f8571a8f8aea8e536410d4abcca298
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107844"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546415"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Az üzletmenet folytonosságának áttekintése Azure Database for MySQL rugalmas kiszolgálóval (előzetes verzió)
 
@@ -21,7 +21,6 @@ ms.locfileid: "92107844"
 Azure Database for MySQL rugalmas kiszolgáló lehetővé teszi az olyan üzletmenet-folytonossági képességek használatát, amelyek a tervezett és nem tervezett leállás esetén védik az adatbázisokat. Az automatizált biztonsági mentések és a magas rendelkezésre állási funkciók a különböző helyreállítási időpontok és adatvesztési kockázatok különböző szintjeivel rendelkeznek. Az alkalmazásnak a hibák elleni védelemhez való megtervezése során érdemes figyelembe vennie a helyreállítási idő célkitűzését (RTO) és a helyreállítási pont célkitűzését (RPO) minden egyes alkalmazáshoz. A RTO az állásidő tűréshatára, és a RPO az adatvesztési tolerancia az adatbázis-szolgáltatás megszakadását követően.
 
 Az alábbi táblázat a rugalmas kiszolgáló által kínált funkciókat mutatja be.
-
 
 | **Szolgáltatás** | **Leírás** | **Korlátozások** |
 | ---------- | ----------- | ------------ |
@@ -34,17 +33,18 @@ Az alábbi táblázat a rugalmas kiszolgáló által kínált funkciókat mutatj
 > Az előzetes verzió ideje alatt a RTO és a RPO SLA nem érhető el. Az ezen a lapon megadott adatok csak az Ön adatait és tervezési célját tartalmazzák.
 
 ## <a name="planned-downtime-mitigation"></a>Tervezett leállás-csökkentés
+
 Íme néhány, az állásidőt okozó tervezett karbantartási forgatókönyv:
 
 | **Forgatókönyv** | **Folyamat**|
 | :------------ | :----------- |
 | **Számítási skálázás (felhasználó)**| A számítási skálázási művelet végrehajtásakor a rendszer egy új rugalmas kiszolgálót épít ki a méretezett számítási konfiguráció használatával. A meglévő adatbázis-kiszolgálón engedélyezve van az aktív ellenőrzőpontok befejezése, az ügyfélkapcsolatok kiürítése, a nem véglegesített tranzakciók megszakítása, majd leállítása. Ezután az új kiszolgálóhoz csatolja a tárolót, és az adatbázis elindul, amely szükség esetén helyreállítást hajt végre, mielőtt elfogadná az ügyfélkapcsolatokat. |
 | **Új szoftverek központi telepítése (Azure)** | Az új szolgáltatások bevezetése vagy hibajavítások automatikusan megtörténnek a szolgáltatás tervezett karbantartásának részeként, és a tevékenységek megtervezése után is ütemezhetők. További információkért lásd a [dokumentációt](https://aka.ms/servicehealthpm), és ellenőrizze a [portált](https://aka.ms/servicehealthpm) is |
-| **Másodlagos verziófrissítések (Azure)** | Azure Database for MySQL az adatbázis-kiszolgálókat az Azure által meghatározott alverzióra automatikusan kijavításra kerül. A szolgáltatás tervezett karbantartásának részeként történik. Ez rövid állásidőt von maga után másodpercben, és az adatbázis-kiszolgáló automatikusan újraindul az új alverzióval. További információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/mysql/concepts-monitoring#planned-maintenance-notification), és ellenőrizze a [portált](https://aka.ms/servicehealthpm)is.|
+| **Másodlagos verziófrissítések (Azure)** | Azure Database for MySQL az adatbázis-kiszolgálókat az Azure által meghatározott alverzióra automatikusan kijavításra kerül. A szolgáltatás tervezett karbantartásának részeként történik. Ez rövid állásidőt von maga után másodpercben, és az adatbázis-kiszolgáló automatikusan újraindul az új alverzióval. További információkért tekintse meg a [dokumentációt](../concepts-monitoring.md#planned-maintenance-notification), és ellenőrizze a [portált](https://aka.ms/servicehealthpm)is.|
 
-Ha a rugalmas kiszolgáló a **zóna redundánsan magas rendelkezésre állásával**van konfigurálva, a rugalmas kiszolgáló először a készenléti kiszolgálón hajt végre műveleteket, majd az elsődleges kiszolgálón feladatátvétel nélkül. További részletekért tekintse meg a [fogalmakat – magas rendelkezésre állást](./concepts-high-availability.md) .
+Ha a rugalmas kiszolgáló a **zóna redundánsan magas rendelkezésre állásával** van konfigurálva, a rugalmas kiszolgáló először a készenléti kiszolgálón hajt végre műveleteket, majd az elsődleges kiszolgálón feladatátvétel nélkül. További részletekért tekintse meg a [fogalmakat – magas rendelkezésre állást](./concepts-high-availability.md) .
 
-##  <a name="unplanned-downtime-mitigation"></a>Nem tervezett leállás-csökkentés
+## <a name="unplanned-downtime-mitigation"></a>Nem tervezett leállás-csökkentés
 
 A nem tervezett leállások az előre nem látható hibák miatt előfordulhatnak, beleértve a mögöttes hardveres hibákat, a hálózati problémákat és a szoftver hibáit. Ha az adatbázis-kiszolgáló váratlanul leáll, ha magas rendelkezésre állású [HA] van konfigurálva, akkor a készenléti replika aktiválva lesz. Ha nem, akkor a rendszer automatikusan kiépít egy új adatbázis-kiszolgálót. A nem tervezett állásidőt nem lehet elkerülni, a rugalmas kiszolgáló csökkenti az állásidőt a helyreállítási műveletek automatikus végrehajtásával az adatbázis-kiszolgálón és a tárolási rétegeken anélkül, hogy emberi beavatkozásra lenne szükség.
 
@@ -60,12 +60,10 @@ A nem tervezett leállások az előre nem látható hibák miatt előfordulhatna
 | **Rendelkezésre állási zóna hibája** | Habár ritka eseményről van szó, ha egy zóna szintű meghibásodás miatt szeretné helyreállítani a helyreállítást, akkor a biztonsági mentéssel időponthoz tartozó helyreállítást hajthat végre, és az egyéni visszaállítási pontot választva a legfrissebb adatokhoz juthat. Egy új rugalmas kiszolgáló lesz üzembe helyezve egy másik zónában. A visszaállításhoz szükséges idő az előző biztonsági mentéstől és a visszaállítani kívánt tranzakciónaplók számától függ. | A rugalmas kiszolgáló automatikus feladatátvételt hajt végre a készenléti helyen. További részletekért tekintse meg a [Ha Concepts oldalt](./concepts-high-availability.md) . |
 | **Régió meghibásodása** | A régiók közötti replika és a Geo-visszaállítási funkciók még nem támogatottak az előzetes verzióban. | |
 
-
 > [!IMPORTANT]
-> A törölt kiszolgálók **nem**állíthatók   vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Az [Azure erőforrás-zárolás](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)segítségével   megakadályozhatja a kiszolgáló véletlen törlését.
-
+> A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Az [Azure erőforrás-zárolás](../../azure-resource-manager/management/lock-resources.md) segítségével megakadályozhatja a kiszolgáló véletlen törlését.
 
 ## <a name="next-steps"></a>További lépések
 
--   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
--   Tudnivalók a [biztonsági mentésről és a helyreállításról](./concepts-backup-restore.md)
+- További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
+- Tudnivalók a [biztonsági mentésről és a helyreállításról](./concepts-backup-restore.md)

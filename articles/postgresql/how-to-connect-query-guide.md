@@ -1,18 +1,18 @@
 ---
 title: Kapcsolat és lekérdezés – egyetlen kiszolgáló PostgreSQL
-description: Az Azure My SQL Database rövid útmutatókra mutató hivatkozások, amelyek bemutatják, hogyan csatlakozhat a kiszolgálóhoz, és hogyan futtathat lekérdezéseket.
+description: Hivatkozások a Azure Database for PostgreSQL egyetlen kiszolgálóhoz való csatlakozáshoz és a lekérdezések futtatásához.
 services: postgresql
 ms.service: postgresql
 ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 5c6d6a51887d2912da8d6b4e357a1036596d63d5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490016"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546551"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>A PostgreSQL-hez készült Azure Database-hez készült kapcsolat és lekérdezés áttekintése – egyetlen kiszolgáló
 
@@ -33,13 +33,12 @@ Az alábbi dokumentum olyan példákra mutató hivatkozásokat tartalmaz, amelye
 |[Python](connect-python.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Python egy adatbázishoz való kapcsolódáshoz, és hogyan lehet az adatbázis-objektumokkal dolgozni az adatlekérdezéshez. |
 |[Ruby](connect-ruby.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Ruby egy olyan program létrehozásához, amely egy adatbázishoz csatlakozik, és használja az adatbázis-objektumokkal végzett munkát az adatlekérdezéshez.|
 
-
 ## <a name="tls-considerations-for-database-connectivity"></a>TLS-megfontolások az adatbázis-kapcsolathoz
 
-A Transport Layer Security (TLS) a Microsoft által szolgáltatott és a Azure Database for PostgreSQL-adatbázisokhoz való csatlakozást támogató összes illesztőprogram által használható. Nincs szükség speciális konfigurációra, de a TLS 1,2-et az újonnan létrehozott kiszolgálókhoz kell kikényszeríteni. Javasoljuk, hogy a TLS 1,0-es és 1,1-es verzióját használja, majd frissítse a TLS-verziót a kiszolgálókon. Lásd: [ a TLS konfigurálása](howto-tls-configurations.md)
-
+A Transport Layer Security (TLS) a Microsoft által szolgáltatott és a Azure Database for PostgreSQL-adatbázisokhoz való csatlakozást támogató összes illesztőprogram által használható. Nincs szükség speciális konfigurációra, de a TLS 1,2-et az újonnan létrehozott kiszolgálókhoz kell kikényszeríteni. Javasoljuk, hogy a TLS 1,0-es és 1,1-es verzióját használja, majd frissítse a TLS-verziót a kiszolgálókon. Lásd: [a TLS konfigurálása](howto-tls-configurations.md)
 
 ## <a name="postgresql-extensions"></a>PostgreSQL-bővítmények
+
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot kötegelnek egyetlen csomaggá, amely egyetlen paranccsal betölthető vagy eltávolítható az adatbázisból. Az adatbázisba való betöltés után a bővítmények ugyanúgy működnek, mint a beépített funkciók.
 
 - [Postgres 11 bővítmény](./concepts-extensions.md#postgres-11-extensions)
@@ -49,7 +48,7 @@ A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a
 
 További részletek: a [PostgreSQL-bővítmények használata egyetlen kiszolgálón](concepts-extensions.md).
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések
 
 - [Az adatáttelepítés a memóriakép és a visszaállítás használatával](howto-migrate-using-dump-and-restore.md)
 - [Az adatáttelepítés importálással és exportálással](howto-migrate-using-export-and-import.md)

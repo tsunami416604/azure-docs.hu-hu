@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ba1d1e15b1dbb3efb24219b6c09a6827e701d46
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081066"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546075"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-fürtök kezelése az Apache Ambari REST API használatával
 
@@ -29,7 +29,7 @@ Az Apache Ambari megkönnyíti a Hadoop-fürtök felügyeletét és figyelését
 
 * Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* Bash on Ubuntu on Windows 10.  A cikkben szereplő példák a bash rendszerhéjt használják a Windows 10 rendszeren. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) rendszerhez.  Más [UNIX-rendszerhéj](https://www.gnu.org/software/bash/) is működik.  Néhány kis módosítással a Windows parancssorban is működhet.  Vagy használhatja a Windows PowerShellt is.
+* Bash on Ubuntu on Windows 10.  A cikkben szereplő példák a bash rendszerhéjt használják a Windows 10 rendszeren. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](/windows/wsl/install-win10) rendszerhez.  Más [UNIX-rendszerhéj](https://www.gnu.org/software/bash/) is működik.  Néhány kis módosítással a Windows parancssorban is működhet.  Vagy használhatja a Windows PowerShellt is.
 
 * jQ, parancssori JSON-processzor.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
@@ -37,11 +37,11 @@ Az Apache Ambari megkönnyíti a Hadoop-fürtök felügyeletét és figyelését
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Alapszintű Uniform Resource Identifier a Ambari REST API-hoz
 
- A HDInsight Ambari REST API alapszintű Uniform Resource Identifier (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , ahol a a `CLUSTERNAME` fürt neve.  Az URI-k fürtjének nevei **megkülönböztetik a kis-és nagybetűket**.  Míg a fürt neve az URI () teljes tartományneve (FQDN) része, a kis-és nagybetűk megkülönböztetése `CLUSTERNAME.azurehdinsight.net` , az URI-n belüli más előfordulások megkülönböztetik a kis-és nagybetűket.
+ A HDInsight Ambari REST API alapszintű Uniform Resource Identifier (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , ahol a a `CLUSTERNAME` fürt neve.  Az URI-k fürtjének nevei **megkülönböztetik a kis-és nagybetűket** .  Míg a fürt neve az URI () teljes tartományneve (FQDN) része, a kis-és nagybetűk megkülönböztetése `CLUSTERNAME.azurehdinsight.net` , az URI-n belüli más előfordulások megkülönböztetik a kis-és nagybetűket.
 
 ## <a name="authentication"></a>Hitelesítés
 
-A HDInsight Ambari-hez való csatlakozáshoz HTTPS szükséges. Használja a rendszergazdai fiók nevét (az alapértelmezett a **rendszergazda**) és a jelszót, amelyet a fürt létrehozásakor adott meg.
+A HDInsight Ambari-hez való csatlakozáshoz HTTPS szükséges. Használja a rendszergazdai fiók nevét (az alapértelmezett a **rendszergazda** ) és a jelszót, amelyet a fürt létrehozásakor adott meg.
 
 Enterprise Security Package-fürtök esetében a helyett `admin` használjon egy teljesen minősített felhasználónevet, például: `username@domain.onmicrosoft.com` .
 
@@ -87,7 +87,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>JSON-adatbázis elemzése
 
-A következő példa a [jQ](https://stedolan.github.io/jq/) vagy a [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) használatával értelmezi a JSON-válasz dokumentumát, és csak az eredményekből jeleníti meg az `health_report` adatokat.
+A következő példa a [jQ](https://stedolan.github.io/jq/) vagy a [ConvertFrom-JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json) használatával értelmezi a JSON-válasz dokumentumát, és csak az eredményekből jeleníti meg az `health_report` adatokat.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -253,7 +253,7 @@ A visszatérési érték az alábbi példák egyikéhez hasonló:
     A visszatérési érték hasonló a következőhöz: `/clusters/CLUSTERNAME/` . Ez az érték a Data Lake Storage fiókon belüli elérési út. Ez az elérési út a fürt HDFS-kompatibilis fájlrendszerének gyökere.  
 
 > [!NOTE]  
-> A [Azure PowerShell](/powershell/azure/) által megadott [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) parancsmag a fürt tárolási adatait is visszaadja.
+> A [Azure PowerShell](/powershell/azure/) által megadott [Get-AzHDInsightCluster](/powershell/module/az.hdinsight/get-azhdinsightcluster) parancsmag a fürt tárolási adatait is visszaadja.
 
 ### <a name="get-all-configurations"></a>Összes konfiguráció beolvasása
 

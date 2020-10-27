@@ -8,26 +8,26 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 0fbafd81fac1982f624adae9286000fb61db62c5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0b4a31b88c9a6fa8c2c6170fce38760c1a361f2e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474920"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533427"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben Azure PowerShell használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-A Azure PowerShell az Azure-beli számítási feladatok üzembe helyezésének és kezelésének vezérlésére és automatizálására használható. Ebből a cikkből megtudhatja, hogyan kezelheti [Apache Hadoop](https://hadoop.apache.org/) -fürtöket az Azure HDInsight az Azure PowerShell az modul használatával. A HDInsight PowerShell-parancsmagok listájáért lásd az az [. HDInsight referenciát](https://docs.microsoft.com/powershell/module/az.hdinsight).
+A Azure PowerShell az Azure-beli számítási feladatok üzembe helyezésének és kezelésének vezérlésére és automatizálására használható. Ebből a cikkből megtudhatja, hogyan kezelheti [Apache Hadoop](https://hadoop.apache.org/) -fürtöket az Azure HDInsight az Azure PowerShell az modul használatával. A HDInsight PowerShell-parancsmagok listájáért lásd az az [. HDInsight referenciát](/powershell/module/az.hdinsight).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/) telepítve van.
+A PowerShell az [modul](/powershell/azure/) telepítve van.
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 
@@ -75,7 +75,7 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
 ## <a name="update-http-user-credentials"></a>HTTP-felhasználói hitelesítő adatok frissítése
 
-A [set-AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) az Azure HDInsight-fürt ÁTJÁRÓjának http-hitelesítő adatait állítja be.
+A [set-AzHDInsightGatewayCredential](/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) az Azure HDInsight-fürt ÁTJÁRÓjának http-hitelesítő adatait állítja be.
 
 ```powershell
 $clusterName = "CLUSTERNAME"
@@ -146,7 +146,7 @@ Lásd: [Adatok feltöltése a HDInsightba](hdinsight-upload-data.md).
 
 ## <a name="see-also"></a>Lásd még:
 
-* [Az az. HDInsight parancsmagok](https://docs.microsoft.com/powershell/module/az.hdinsight/#hdinsight)
+* [Az az. HDInsight parancsmagok](/powershell/module/az.hdinsight/#hdinsight)
 * [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md)
 * [HDInsight felügyelete parancssori felületen keresztül](hdinsight-administer-use-command-line.md)
 * [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)

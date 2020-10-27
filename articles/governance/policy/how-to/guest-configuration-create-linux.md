@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfiguráci
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ecf798a18f28c490d95b28c6ea8f02c6f22eee8
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 9d80ae44e5cc34ec3b3378f8ed4a68cc02464216
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893237"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542896"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 
@@ -17,15 +17,13 @@ Az egyéni szabályzatok létrehozása előtt olvassa el a [Azure Policy vendég
  
 A Windows rendszerhez készült vendég-konfigurációs szabályzatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [Windows rendszerhez készült vendég-konfigurációs szabályzatok](./guest-configuration-create.md) létrehozásának oldalát.
 
-A Linux naplózásakor a Vendégkonfiguráció a [Chef InSpecet](https://www.inspec.io/) használja. Az InSpec-profil határozza meg a gép kívánt állapotát. Ha a konfiguráció kiértékelése meghiúsul, a rendszer elindítja a **auditIfNotExists** , és a gép **nem megfelelőnek**minősül.
+A Linux naplózásakor a Vendégkonfiguráció a [Chef InSpecet](https://www.inspec.io/) használja. Az InSpec-profil határozza meg a gép kívánt állapotát. Ha a konfiguráció kiértékelése meghiúsul, a rendszer elindítja a **auditIfNotExists** , és a gép **nem megfelelőnek** minősül.
 
 [Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) csak a gépeken belüli beállítások naplózására használható. A gépeken belüli beállítások szervizelése még nem érhető el.
 
 A következő műveletek végrehajtásával hozhatja létre saját konfigurációját egy Azure-beli vagy nem Azure-beli gép állapotának ellenőrzéséhez.
 
 > [!IMPORTANT]
-> A vendég-konfigurációval rendelkező egyéni házirendek előzetes verziójú funkciók.
->
 > A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre. Ha a bővítményt a Linux rendszerű gépek skáláján szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciót: `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
 
 ## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
@@ -157,10 +155,10 @@ A támogató fájlokat össze kell csomagolni. A kitöltött csomagot a vendég 
 
 A `New-GuestConfigurationPackage` parancsmag létrehozza a csomagot. A parancsmag paraméterei `New-GuestConfigurationPackage` Linux-tartalom létrehozásakor:
 
-- **Name**: vendég konfigurációs csomag neve.
-- **Konfiguráció**: a lefordított konfigurációs dokumentum teljes elérési útja.
-- **Elérési út**: kimeneti mappa elérési útja. Ezt a paramétert nem kötelező megadni. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
-- **ChefProfilePath**: az inspec-profil teljes elérési útja. Ez a paraméter csak akkor támogatott, ha tartalmat hoz létre a Linux rendszerű naplózáshoz.
+- **Name** : vendég konfigurációs csomag neve.
+- **Konfiguráció** : a lefordított konfigurációs dokumentum teljes elérési útja.
+- **Elérési út** : kimeneti mappa elérési útja. Ezt a paramétert nem kötelező megadni. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
+- **ChefProfilePath** : az inspec-profil teljes elérési útja. Ez a paraméter csak akkor támogatott, ha tartalmat hoz létre a Linux rendszerű naplózáshoz.
 
 A következő parancs futtatásával hozzon létre egy csomagot az előző lépésben megadott konfiguráció használatával:
 
@@ -177,9 +175,9 @@ Mivel az ügynök ténylegesen kiértékeli a helyi környezetet, a legtöbb ese
 
 A parancsmag paraméterei `Test-GuestConfigurationPackage` :
 
-- **Név**: a vendég konfigurációs szabályzatának neve.
-- **Paraméter**: szórótábla formátumban megadott házirend-paraméterek.
-- **Elérési út**: a vendég konfigurációs csomag teljes elérési útja.
+- **Név** : a vendég konfigurációs szabályzatának neve.
+- **Paraméter** : szórótábla formátumban megadott házirend-paraméterek.
+- **Elérési út** : a vendég konfigurációs csomag teljes elérési útja.
 
 Futtassa a következő parancsot az előző lépésben létrehozott csomag teszteléséhez:
 
@@ -194,73 +192,23 @@ A parancsmag a PowerShell-folyamatból is támogatja a bemenetet. A parancsmag k
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-A következő lépés a fájl közzététele az Azure Blob Storageban. Az alábbi szkript a feladat automatizálásához használható függvényt tartalmaz. A függvényben használt parancsokhoz a `publish` `Az.Storage` modul szükséges.
+A következő lépés a fájl közzététele az Azure Blob Storageban.  A parancshoz `Publish-GuestConfigurationPackage` a `Az.Storage` modul szükséges.
 
 ```azurepowershell-interactive
-function publish {
-    param(
-    [Parameter(Mandatory=$true)]
-    $resourceGroup,
-    [Parameter(Mandatory=$true)]
-    $storageAccountName,
-    [Parameter(Mandatory=$true)]
-    $storageContainerName,
-    [Parameter(Mandatory=$true)]
-    $filePath,
-    [Parameter(Mandatory=$true)]
-    $blobName
-    )
-
-    # Get Storage Context
-    $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-        -Name $storageAccountName | `
-        ForEach-Object { $_.Context }
-
-    # Upload file
-    $Blob = Set-AzStorageBlobContent -Context $Context `
-        -Container $storageContainerName `
-        -File $filePath `
-        -Blob $blobName `
-        -Force
-
-    # Get url with SAS token
-    $StartTime = (Get-Date)
-    $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-    $SAS = New-AzStorageBlobSASToken -Context $Context `
-        -Container $storageContainerName `
-        -Blob $blobName `
-        -StartTime $StartTime `
-        -ExpiryTime $ExpiryTime `
-        -Permission rl `
-        -FullUri
-
-    # Output
-    return $SAS
-}
-
-# replace the $storageAccountName value below, it must be globally unique
-$resourceGroup        = 'policyfiles'
-$storageAccountName   = 'youraccountname'
-$storageContainerName = 'artifacts'
-
-$uri = publish `
-  -resourceGroup $resourceGroup `
-  -storageAccountName $storageAccountName `
-  -storageContainerName $storageContainerName `
-  -filePath ./AuditFilePathExists.zip `
-  -blobName 'AuditFilePathExists'
+Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
 ```
+
 Miután létrehozta és feltöltötte a vendég konfigurációhoz tartozó egyéni házirend-csomagot, hozza létre a vendég-konfigurációs házirend definícióját. A `New-GuestConfigurationPolicy` parancsmag egy egyéni házirend-csomagot vesz fel, és létrehoz egy házirend-definíciót.
 
 A parancsmag paraméterei `New-GuestConfigurationPolicy` :
 
-- **ContentUri**: nyilvános http (s) URI a vendég konfigurációs tartalomkezelő csomaghoz.
-- **DisplayName**: házirend megjelenítendő neve.
-- **Leírás**: szabályzat leírása.
-- **Paraméter**: szórótábla formátumban megadott házirend-paraméterek.
-- **Verzió**: szabályzat verziója.
-- **Elérési út**: a célhely elérési útja, ahol a szabályzat-definíciók létrejönnek
-- **Platform**: cél platform (Windows/Linux) a vendég konfigurációs házirendhez és a tartalmi csomaghoz.
+- **ContentUri** : nyilvános http (s) URI a vendég konfigurációs tartalomkezelő csomaghoz.
+- **DisplayName** : házirend megjelenítendő neve.
+- **Leírás** : szabályzat leírása.
+- **Paraméter** : szórótábla formátumban megadott házirend-paraméterek.
+- **Verzió** : szabályzat verziója.
+- **Elérési út** : a célhely elérési útja, ahol a szabályzat-definíciók létrejönnek
+- **Platform** : cél platform (Windows/Linux) a vendég konfigurációs házirendhez és a tartalmi csomaghoz.
 - A **címke** egy vagy több címkét rendel hozzá a szabályzat-definícióhoz
 - **Kategória** – a szabályzat-definícióban a kategória metaadatainak mezőjének beállítása
 
@@ -280,14 +228,12 @@ New-GuestConfigurationPolicy `
 A következő fájlokat hozza létre `New-GuestConfigurationPolicy` :
 
 - **auditIfNotExists.jsbekapcsolva**
-- **deployIfNotExists.jsbekapcsolva**
-- **Initiative.jsbekapcsolva**
 
 A parancsmag kimenete egy olyan objektumot ad vissza, amely a házirend-fájlok kezdeményezésének megjelenítendő nevét és elérési útját tartalmazza.
 
 Végül tegye közzé a szabályzat-definíciókat a `Publish-GuestConfigurationPolicy` parancsmag használatával. A parancsmag csak a **path** paraméterrel rendelkezik, amely a által létrehozott JSON-fájlok helyére mutat `New-GuestConfigurationPolicy` .
 
-A közzétételi parancs futtatásához hozzá kell férnie a szabályzatok létrehozásához az Azure-ban. A konkrét engedélyezési követelmények dokumentálva vannak a [Azure Policy áttekintés](../overview.md) oldalon. A legjobb beépített szerepkör az erőforrás- **házirend közreműködője**.
+A közzétételi parancs futtatásához hozzá kell férnie a szabályzatok létrehozásához az Azure-ban. A konkrét engedélyezési követelmények dokumentálva vannak a [Azure Policy áttekintés](../overview.md) oldalon. A legjobb beépített szerepkör az erőforrás- **házirend közreműködője** .
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
@@ -305,25 +251,7 @@ Publish-GuestConfigurationPolicy `
  | Publish-GuestConfigurationPolicy
  ```
 
-Az Azure-ban létrehozott szabályzattal az utolsó lépés a kezdeményezés kiosztása. Lásd: a kezdeményezés társítása a [portál](../assign-policy-portal.md), az [Azure CLI](../assign-policy-azurecli.md)és a [Azure PowerShell](../assign-policy-powershell.md)használatával.
-
-> [!IMPORTANT]
-> A _AuditIfNotExists_ -és _DeployIfNotExists_ -házirendeket egyesítő kezdeményezéssel **mindig** hozzá kell rendelni a vendég-konfigurációs házirendeket. Ha csak a _AuditIfNotExists_ szabályzat van hozzárendelve, az előfeltételek nincsenek telepítve, és a házirend mindig azt mutatja, hogy a "0" kiszolgálók megfelelőek.
-
-Egy szabályzat-definíció _DeployIfNotExists_ -effektussal való hozzárendeléséhez további hozzáférési szint szükséges. A legalacsonyabb jogosultság megadásához létrehozhat egy egyéni szerepkör-definíciót, amely kibővíti az **erőforrás-házirend közreműködőjét**. Az alábbi példa létrehoz egy erőforrás- **házirend közreműködője** nevű szerepkört a _Microsoft. Authorization/roleAssignments/Write_további engedélyeivel.
-
-```azurepowershell-interactive
-$subscriptionid = '00000000-0000-0000-0000-000000000000'
-$role = Get-AzRoleDefinition "Resource Policy Contributor"
-$role.Id = $null
-$role.Name = "Resource Policy Contributor DINE"
-$role.Description = "Can assign Policies that require remediation."
-$role.Actions.Clear()
-$role.Actions.Add("Microsoft.Authorization/roleAssignments/write")
-$role.AssignableScopes.Clear()
-$role.AssignableScopes.Add("/subscriptions/$subscriptionid")
-New-AzRoleDefinition -Role $role
-```
+Az Azure-ban létrehozott szabályzattal az utolsó lépés a definíció társítása. Lásd: a definíció társítása a [portál](../assign-policy-portal.md), az [Azure CLI](../assign-policy-azurecli.md)és a [Azure PowerShell](../assign-policy-powershell.md)használatával.
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Paraméterek használata az egyéni vendég-konfigurációs házirendekben
 
@@ -341,7 +269,7 @@ describe file(attr_path) do
 end
 ```
 
-A parancsmagok `New-GuestConfigurationPolicy` `Test-GuestConfigurationPolicyPackage` tartalmazzák a **paraméter**nevű paramétert. Ez a paraméter egy szórótábla tartalmaz, amely tartalmazza az egyes paraméterek összes részletét, és automatikusan létrehozza az egyes Azure Policy-definíciók létrehozásához használt fájlok összes szükséges részét.
+A parancsmagok `New-GuestConfigurationPolicy` `Test-GuestConfigurationPolicyPackage` tartalmazzák a **paraméter** nevű paramétert. Ez a paraméter egy szórótábla tartalmaz, amely tartalmazza az egyes paraméterek összes részletét, és automatikusan létrehozza az egyes Azure Policy-definíciók létrehozásához használt fájlok összes szükséges részét.
 
 Az alábbi példa egy házirend-definíciót hoz létre egy fájl elérési útjának naplózásához, ahol a felhasználó a házirend-hozzárendelés időpontjában megadja az elérési utat.
 
@@ -391,8 +319,8 @@ Configuration AuditFilePathExists
 
 A házirend-definíció frissítésének kiadásához két, figyelmet igénylő mező szükséges.
 
-- **Verzió**: a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot. A tulajdonság frissíti a vendég konfiguráció-hozzárendelés verzióját, hogy az ügynök felismeri a frissített csomagot.
-- **contentHash**: ezt a tulajdonságot a parancsmag automatikusan frissíti `New-GuestConfigurationPolicy` . Ez a csomag által létrehozott kivonatoló érték `New-GuestConfigurationPackage` . A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, a bővítmény nem fogadja el a csomag tartalmát.
+- **Verzió** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot. A tulajdonság frissíti a vendég konfiguráció-hozzárendelés verzióját, hogy az ügynök felismeri a frissített csomagot.
+- **contentHash** : ezt a tulajdonságot a parancsmag automatikusan frissíti `New-GuestConfigurationPolicy` . Ez a csomag által létrehozott kivonatoló érték `New-GuestConfigurationPackage` . A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, a bővítmény nem fogadja el a csomag tartalmát.
 
 Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jelen cikkben ismertetett folyamatot, és megadja a verziószámot. Ez a folyamat garantálja az összes tulajdonság megfelelő frissítését.
 
@@ -436,8 +364,8 @@ Az aláírás-ellenőrzési funkció használatához futtassa a `Protect-GuestCo
 
 A parancsmag paraméterei `Protect-GuestConfigurationPackage` :
 
-- **Elérési út**: a vendég konfigurációs csomag teljes elérési útja.
-- **PublicGpgKeyPath**: nyilvános GPG-kulcs elérési útja. Ez a paraméter csak a Linux-tartalmak aláírása esetén támogatott.
+- **Elérési út** : a vendég konfigurációs csomag teljes elérési útja.
+- **PublicGpgKeyPath** : nyilvános GPG-kulcs elérési útja. Ez a paraméter csak a Linux-tartalmak aláírása esetén támogatott.
 
 A Linux rendszerű gépekhez használható GPG-kulcsok létrehozásának jó referenciája a GitHubon található cikk, [új GPG-kulcs](https://help.github.com/en/articles/generating-a-new-gpg-key)létrehozása.
 

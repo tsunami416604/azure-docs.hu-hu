@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: c3a3fae9150b6805e9bb1533f2bb585d8845b253
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f0b059a25cd9fc77a59dc0a78feb18c2c549057
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940440"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546857"
 ---
 # <a name="manage-an-azure-database-for-mysql-single-server-using-the-azure-cli"></a>Azure Database for MySQL egyetlen kiszolgáló kezelése az Azure CLI használatával
 
@@ -20,13 +20,13 @@ Ez a cikk bemutatja, hogyan kezelheti az Azure-ban üzembe helyezett önálló k
 ## <a name="prerequisites"></a>Előfeltételek
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot. Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Az az [login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal.
+Az az [login](/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal.
 
 ```azurecli-interactive
 az login
 ```
 
-Válassza ki az adott előfizetést a fiókja alatt az [az Account set](/cli/azure/account) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)lehetőséget.
+Válassza ki az adott előfizetést a fiókja alatt az [az Account set](/cli/azure/account) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](/cli/azure/account#az-account-list)lehetőséget.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -35,7 +35,7 @@ az account set --subscription <subscription id>
 Ha még nem hozott létre egy kiszolgálót [, a rövid](quickstart-create-mysql-server-database-using-azure-cli.md) útmutatóban hozhat létre egyet.
 
 ## <a name="scale-compute-and-storage"></a>Számítási és tárolási méretezés
-Az árképzési szintet, a számítási és a tárolási kapacitást egyszerűen méretezheti a következő parancs használatával. Láthatja az összes olyan kiszolgálói műveletet, amelyet végrehajthat az [az MySQL Server Overview](/cli/azure/mysql/server?view=azure-cli-latest)
+Az árképzési szintet, a számítási és a tárolási kapacitást egyszerűen méretezheti a következő parancs használatával. Láthatja az összes olyan kiszolgálói műveletet, amelyet végrehajthat az [az MySQL Server Overview](/cli/azure/mysql/server)
 
 ```azurecli-interactive
 az mysql server update --resource-group myresourcegroup --name mydemoserver --sku-name GP_Gen5_4 --storage-size 6144
@@ -47,7 +47,7 @@ A fenti argumentumok részletei:
 ---|---|---
 name | mydemoserver | Adjon meg egy egyedi nevet a Azure Database for MySQL-kiszolgálónak. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
 resource-group | myResourceGroup | Adja meg az Azure-erőforráscsoport nevét.
-sku-name|GP_Gen5_2|Adja meg az árképzési csomag és a számítási konfiguráció nevét. A {tarifacsomag}_{számítási generáció}_{virtuális magok} mintát követi rövidített módon. További információkért tekintse meg a [díjszabási szintet](./concepts-pricing-tiers.md) .
+sku-name|GP_Gen5_2|Adja meg az árképzési csomag és a számítási konfiguráció nevét. A {tarifacsomag} _{számítási generáció}_ {virtuális magok} mintát követi rövidített módon. További információkért tekintse meg a [díjszabási szintet](./concepts-pricing-tiers.md) .
 storage-size | 6144 | A kiszolgáló tárkapacitása (megabájtban megadva). A 5120 minimális és a 1024-os növekmények száma.
 
 > [!Important]

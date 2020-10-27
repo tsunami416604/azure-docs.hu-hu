@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308384"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534685"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -39,12 +39,12 @@ Hozzon létre egy új másolatot a külső metaadattár. Ha külső metaadattár
 ### <a name="3-upgrade-metastore-schema"></a>3. a metaadattár séma frissítése
 A metaadattár **másolásának** befejeződése után futtasson egy [séma-frissítési parancsfájlt a meglévő](../hdinsight-hadoop-customize-cluster-linux.md) HDInsight 3,6-fürtön az új metaadattár a kaptár 3 sémára való frissítéséhez. (Ehhez a lépéshez nem szükséges, hogy az új metaadattár csatlakozni lehessen egy fürthöz.) Ez lehetővé teszi, hogy az adatbázis HDInsight 4,0 metaadattár legyen csatolva.
 
-Használja az alábbi táblázatban szereplő értékeket. Cserélje le a `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` értéket a Hive-metaadattár **Másolás**megfelelő értékeire, szóközzel elválasztva. Ne adja meg a ". database.windows.net" kifejezést az SQL Server nevének megadásakor.
+Használja az alábbi táblázatban szereplő értékeket. Cserélje le a `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` értéket a Hive-metaadattár **Másolás** megfelelő értékeire, szóközzel elválasztva. Ne adja meg a ". database.windows.net" kifejezést az SQL Server nevének megadásakor.
 
 |Tulajdonság | Érték |
 |---|---|
 |Parancsfájl típusa|– Egyéni|
-|Name (Név)|Struktúra frissítése|
+|Name|Struktúra frissítése|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Csomópont típusa (i)|Head|
 |Paraméterek|SQLSERVERNAME DATABASENAME FELHASZNÁLÓNÉV JELSZAVA|
@@ -117,7 +117,7 @@ A HDInsight 3,6-es és 4,0-es fürtöknek ugyanazt a Storage-fiókot kell haszn�
 
 1. Kapcsolódjon a HDInsight 3,6-fürthöz egy [Secure Shell-(SSH-) ügyfél](../hdinsight-hadoop-linux-use-ssh-unix.md)használatával.
 
-1. Az Open SSH-munkamenetből töltse le a következő parancsfájlt egy **alltables. HQL**nevű fájl létrehozásához.
+1. Az Open SSH-munkamenetből töltse le a következő parancsfájlt egy **alltables. HQL** nevű fájl létrehozásához.
 
     ```bash
     wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
@@ -208,7 +208,7 @@ Miután meggyőződött arról, hogy a kiadás elkészült és teljes mértékbe
 
 ## <a name="query-execution-across-hdinsight-versions"></a>Lekérdezés végrehajtása HDInsight-verziókon keresztül
 
-A HDInsight 3,6-fürtön belül két módon hajtható végre a kaptár/LLAP lekérdezések. A HiveCLI parancssori felületet biztosít, a [TEZ nézet/struktúra nézet](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) pedig grafikus felhasználói felületen alapuló munkafolyamatot biztosít.
+A HDInsight 3,6-fürtön belül két módon hajtható végre a kaptár/LLAP lekérdezések. A HiveCLI parancssori felületet biztosít, a [TEZ nézet/struktúra nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md) pedig grafikus felhasználói felületen alapuló munkafolyamatot biztosít.
 
 A HDInsight 4,0-ben a HiveCLI lecserélte a Beeline elemre. A TEZ nézet/struktúra nézet egy GUI-alapú munkafolyamatot biztosít. A HiveCLI egy takarékossági ügyfél az 1. Hiveserver, a Beeline pedig egy JDBC-ügyfél, amely hozzáférést biztosít a 2. Hiveserver. A Beeline használatával bármely más JDBC-kompatibilis adatbázis-végponthoz csatlakozhat. A Beeline a 4,0-es HDInsight-on keresztül érhető el anélkül, hogy telepítésre lenne szükség.
 

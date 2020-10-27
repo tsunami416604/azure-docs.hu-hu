@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/11/2017
-ms.openlocfilehash: e780ef0b82240ac6771059f8bd239b90395135d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 332233873bfbcb2ae77f5a70b4aaa5a6102cecec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213335"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537847"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Az Azure cache méretezése a Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak kiválasztásában. A gyorsítótár létrehozása után méretezheti a gyorsítótár méretét és díjszabási szintjét, ha az alkalmazás követelményei megváltoznak. Ez a cikk bemutatja, hogyan méretezheti a gyorsítótárat a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
@@ -30,11 +30,11 @@ A következő mérőszámok figyelésével megállapíthatja, hogy szükség van
 Ha azt állapítja meg, hogy a gyorsítótár már nem felel meg az alkalmazás követelményeinek, egy nagyobb vagy kisebb gyorsítótár-díjszabási csomagra méretezheti, amely megfelelő az alkalmazásához. További információ a használandó gyorsítótár-díjszabási csomag meghatározásáról: [a megfelelő csomag kiválasztása](cache-overview.md#choosing-the-right-tier).
 
 ## <a name="scale-a-cache"></a>Gyorsítótár skálázása
-A gyorsítótár méretezéséhez keresse meg a [gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a [Azure Portal](https://portal.azure.com) , majd kattintson a **Méretezés** elemre az **erőforrás menüben**.
+A gyorsítótár méretezéséhez keresse meg a [gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a [Azure Portal](https://portal.azure.com) , majd kattintson a **Méretezés** elemre az **erőforrás menüben** .
 
 ![Méretezés](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-Válassza ki a kívánt díjszabási szintet a **Select díjszabási csomag kiválasztása** panelen, és kattintson a **kiválasztás**elemre.
+Válassza ki a kívánt díjszabási szintet a **Select díjszabási csomag kiválasztása** panelen, és kattintson a **kiválasztás** elemre.
 
 ![Tarifacsomag][redis-cache-pricing-tier-blade]
 
@@ -52,7 +52,7 @@ Míg a gyorsítótár az új díjszabási szinten méretezhető, a Redis panelhe
 
 ![Méretezés][redis-cache-scaling]
 
-A skálázás befejezése után az állapot a **méretezéstől** a **futtatásig**változik.
+A skálázás befejezése után az állapot a **méretezéstől** a **futtatásig** változik.
 
 ## <a name="how-to-automate-a-scaling-operation"></a>Skálázási művelet automatizálása
 A Azure Portal gyorsítótár-példányainak skálázása mellett a PowerShell-parancsmagok, az Azure CLI és a Microsoft Azure Management Library (MAML) használatával is méretezhető. 
@@ -65,7 +65,7 @@ A Azure Portal gyorsítótár-példányainak skálázása mellett a PowerShell-p
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A Redis-példányok Azure-gyorsítótárát a PowerShell-lel méretezheti a [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) parancsmag használatával `Size` , ha a, vagy a `Sku` `ShardCount` tulajdonság módosul. Az alábbi példa bemutatja, hogyan méretezheti át a gyorsítótárat `myCache` egy 2,5 GB-os gyorsítótárba. 
+A Redis-példányok Azure-gyorsítótárát a PowerShell-lel méretezheti a [set-AzRedisCache](/powershell/module/az.rediscache/set-azrediscache) parancsmag használatával `Size` , ha a, vagy a `Sku` `ShardCount` tulajdonság módosul. Az alábbi példa bemutatja, hogyan méretezheti át a gyorsítótárat `myCache` egy 2,5 GB-os gyorsítótárba. 
 
 ```powershell
    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
@@ -174,7 +174,7 @@ Ha a skálázási művelet meghiúsul, a szolgáltatás megkísérli visszaáll�
 A skálázási idő attól függ, hogy mennyi az adatok a gyorsítótárban, és nagyobb mennyiségű adattal hosszabb időt vesz igénybe. A skálázás körülbelül 20 percet vesz igénybe. A fürtözött gyorsítótárak esetében a skálázás körülbelül 20 percet vesz igénybe.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Honnan tudhatom meg, hogy mikor fejeződik be a skálázás?
-A Azure Portalban láthatja a skálázási műveletet. A skálázás befejeződése után a gyorsítótár állapota **fut**értékre változik.
+A Azure Portalban láthatja a skálázási műveletet. A skálázás befejeződése után a gyorsítótár állapota **fut** értékre változik.
 
 <!-- IMAGES -->
 

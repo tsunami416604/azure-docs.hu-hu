@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db55ac4ce868f2e6ce2afbfbf014aac67653ce4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500504"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537694"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure cache létrehozása és kezelése a Redis a klasszikus Azure CLI használatával
 > [!div class="op_single_selector"]
@@ -30,14 +30,14 @@ Az Azure-beli klasszikus CLI nagyszerű lehetőséget biztosít az Azure-infrast
 Az Azure cache Redis-példányok Azure-beli klasszikus CLI használatával történő létrehozásához és kezeléséhez az alábbi lépéseket kell végrehajtania.
 
 * Rendelkeznie kell egy Azure-fiókkal. Ha még nem rendelkezik ilyennel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
-* [Telepítse a klasszikus Azure CLI](../cli-install-nodejs.md)-t.
+* [Telepítse a klasszikus Azure CLI](/cli/azure/install-classic-cli)-t.
 * Az Azure CLI-telepítést személyes Azure-fiókkal, munkahelyi vagy iskolai Azure-fiókkal, valamint a parancs használatával jelentkezzen be a klasszikus CLI-vel `azure login` .
-* A következő parancsok bármelyikének futtatása előtt váltson át a klasszikus CLI-t Resource Manager módba a parancs futtatásával `azure config mode arm` . További információ: az Azure-beli [klasszikus CLI használata Azure-erőforrások és-erőforráscsoportok kezeléséhez](../xplat-cli-azure-resource-manager.md).
+* A következő parancsok bármelyikének futtatása előtt váltson át a klasszikus CLI-t Resource Manager módba a parancs futtatásával `azure config mode arm` . További információ: az Azure-beli [klasszikus CLI használata Azure-erőforrások és-erőforráscsoportok kezeléséhez](../azure-resource-manager/management/manage-resources-cli.md).
 
 ## <a name="azure-cache-for-redis-properties"></a>Azure cache a Redis tulajdonságaihoz
 Az Redis-példányok Azure gyorsítótárának létrehozásakor és frissítésekor a következő tulajdonságok használatosak.
 
-| Tulajdonság | Kapcsoló (switch) | Leírás |
+| Tulajdonság | Kapcsoló (switch) | Description (Leírás) |
 | --- | --- | --- |
 | name |-n,--név |A Redis tartozó Azure cache neve. |
 | erőforráscsoport |-g,--Resource-Group |Az erőforráscsoport neve. |

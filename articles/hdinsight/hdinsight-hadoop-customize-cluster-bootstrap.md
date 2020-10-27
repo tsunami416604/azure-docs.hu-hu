@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: cd81a15853f1c3b0eb1b1cdd40cc4c7ebf713308
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490305"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547486"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-fürtök testreszabása a bootstrap használatával
 
@@ -48,14 +48,14 @@ További információ a HDInsight-fürt további összetevőinek a létrehozás 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/).
+* Ha a PowerShellt használja, szüksége lesz az az [modulra](/powershell/azure/).
 
 ## <a name="use-azure-powershell"></a>Az Azure PowerShell használata
 
 A következő PowerShell-kód testreszab egy [Apache Hive](https://hive.apache.org/) konfigurációt:
 
 > [!IMPORTANT]  
-> Lehetséges, hogy a paramétert a `Spark2Defaults` [Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)használatával kell használni. Az alábbi kódrészletben látható üres értékeket adhat át a paraméternek.
+> Lehetséges, hogy a paramétert a `Spark2Defaults` [Add-AzHDInsightConfigValue](/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)használatával kell használni. Az alábbi kódrészletben látható üres értékeket adhat át a paraméternek.
 
 ```powershell
 # hive-site.xml configuration
@@ -86,9 +86,9 @@ A [függelékben](#appendix-powershell-sample)található egy teljes körűen m�
 **A módosítás ellenőrzése:**
 
 1. Navigáljon a helyére, ahol a a `https://CLUSTERNAME.azurehdinsight.net/` `CLUSTERNAME` fürt neve.
-1. A bal oldali menüben navigáljon a **struktúra**-  >  **konfigurációk**  >  **speciális**elemre.
-1. Bontsa ki a **speciális kaptár-site**elemet.
-1. Keresse meg a **kaptár. metaadattár. Client. socket. timeout** értéket, és erősítse meg, hogy az érték **90-es**.
+1. A bal oldali menüben navigáljon a **struktúra** -  >  **konfigurációk**  >  **speciális** elemre.
+1. Bontsa ki a **speciális kaptár-site** elemet.
+1. Keresse meg a **kaptár. metaadattár. Client. socket. timeout** értéket, és erősítse meg, hogy az érték **90-es** .
 
 Néhány példa más konfigurációs fájlok testreszabására:
 
@@ -143,7 +143,7 @@ Példa Resource Manager-sablonra a spark2 konfigurációjának váltásához –
 * [Apache Hadoop-fürtök létrehozása a HDInsight-ben](hdinsight-hadoop-provision-linux-clusters.md) útmutatást nyújt a HDInsight-fürtök más egyéni beállítások használatával történő létrehozásához.
 * [Parancsfájl-műveleti parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Apache Spark telepítése és használata HDInsight-fürtökön](spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [Apache Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
+* [Apache Giraph telepítése és használata HDInsight-fürtökön](./hdinsight-hadoop-hue-linux.md).
 
 ## <a name="appendix-powershell-sample"></a>Függelék: PowerShell-minta
 

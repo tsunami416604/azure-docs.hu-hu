@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca796b09f10127c68c5a22ff58f95c89cbda2610
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83681815"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534396"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
 
@@ -34,7 +34,7 @@ Az API-król további információkat az Apache dokumentációjának [Producer A
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Apache Kafka a HDInsight-fürtön. A fürt létrehozásával kapcsolatos további információkért tekintse [meg a Start with apache Kafka on HDInsight](apache-kafka-get-started.md)című témakört.
-* A [Java Developer Kit (JDK) 8-as verziója](https://aka.ms/azure-jdks) vagy azzal egyenértékű, például OpenJDK.
+* A [Java Developer Kit (JDK) 8-as verziója](/azure/developer/java/fundamentals/java-jdk-long-term-support) vagy azzal egyenértékű, például OpenJDK.
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 * Egy SSH-ügyfél, például a Putty. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -213,7 +213,7 @@ Az ugyanazon csoportban található ügyfelek általi felhasználás kezelése a
 > [!IMPORTANT]  
 > A fogyasztói csoportban található fogyasztói példányok száma nem haladhatja meg a partíciók számát. Ebben a példában egy fogyasztói csoport legfeljebb nyolc fogyasztót tartalmazhat, mivel a témakörben ennyi partíció található. Emellett lehet több, legfeljebb nyolc fogyasztóval rendelkező fogyasztói csoportja is.
 
-A Kafka-ben tárolt rekordok tárolása a partíción belül kapott sorrendben történik. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *egy partíción belül*, hozzon létre egy fogyasztói csoportot, amelyben a fogyasztói példányok száma egyezik a partíciók számával. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *a témakörön belül*, hozzon létre egy olyan fogyasztói csoportot, amely csak egyetlen fogyasztói példánnyal rendelkezik.
+A Kafka-ben tárolt rekordok tárolása a partíción belül kapott sorrendben történik. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *egy partíción belül* , hozzon létre egy fogyasztói csoportot, amelyben a fogyasztói példányok száma egyezik a partíciók számával. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *a témakörön belül* , hozzon létre egy olyan fogyasztói csoportot, amely csak egyetlen fogyasztói példánnyal rendelkezik.
 
 ## <a name="common-issues-faced"></a>Gyakori problémák
 
@@ -221,7 +221,7 @@ A Kafka-ben tárolt rekordok tárolása a partíción belül kapott sorrendben t
 
 2. **Az ESP-kompatibilis fürtökkel kapcsolatos** problémák Ha a termelés és a felhasználás művelet meghiúsul, és egy ESP-kompatibilis fürtöt használ, ellenőrizze, hogy a felhasználó szerepel `kafka` -e az összes Ranger-szabályzatban. Ha nincs jelen, adja hozzá az összes Ranger-szabályzathoz.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
@@ -231,7 +231,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan használhatja a Apache Kafka producer és fogyasztói API-t a Kafka on HDInsight. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
 

@@ -127,7 +127,7 @@ A VMware HCX egy olyan technológia, amely az Azure VMware megoldással együtt 
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy összegyűjtötte és dokumentálta a szükséges információkat, folytassa a következő szakasszal, hogy létrehozza az Azure VMware-megoldás saját felhőjét.
 
 > [!div class="nextstepaction"]

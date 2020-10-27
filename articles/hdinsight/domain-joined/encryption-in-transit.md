@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85382ecd627ec8afc63a85de0debd98f94a89849
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89668768"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544885"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-titkosítás az Azure HDInsight
 
@@ -27,7 +27,7 @@ Az Azure HDInsight különféle biztonsági funkciókat kínál a vállalati ada
 
 A REST-titkosítást az Azure Storage-fiókok kiszolgálóoldali titkosítása, valamint a HDInsight-fürt részét képező Azure-beli virtuális gépek lemezes titkosítása szabályozza.
 
-A HDInsight-on átvitt adatforgalom titkosítása [Transport Layer Security (TLS) protokollal](https://docs.microsoft.com/azure/hdinsight/transport-layer-security) történik a accssing és a fürt csomópontjai közötti [Internet Protocol biztonság (IPSec)](https://en.wikipedia.org/wiki/IPsec) érdekében. Az IPSec opcionálisan engedélyezhető a főcsomópontok, a feldolgozó csomópontok, a peremhálózati csomópontok és a Zookeeper csomópontok között. Nincs engedélyezve az átjáró vagy az [azonosító-átvitelszervező](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker) csomópontok közötti forgalom, amely a Windows-alapú virtuális gépek és a fürt más Linux-alapú csomópontjai között van.
+A HDInsight-on átvitt adatforgalom titkosítása [Transport Layer Security (TLS) protokollal](../transport-layer-security.md) történik a accssing és a fürt csomópontjai közötti [Internet Protocol biztonság (IPSec)](https://en.wikipedia.org/wiki/IPsec) érdekében. Az IPSec opcionálisan engedélyezhető a főcsomópontok, a feldolgozó csomópontok, a peremhálózati csomópontok és a Zookeeper csomópontok között. Nincs engedélyezve az átjáró vagy az [azonosító-átvitelszervező](./identity-broker.md) csomópontok közötti forgalom, amely a Windows-alapú virtuális gépek és a fürt más Linux-alapú csomópontjai között van.
 
 ## <a name="enable-encryption-in-transit"></a>Titkosítás engedélyezése az átvitelben
 
@@ -50,7 +50,7 @@ Az átvitel közbeni titkosítás engedélyezve van a `isEncryptionInTransitEnab
 
 [Letöltheti a minta sablon és a paraméter fájlját](https://github.com/Azure-Samples/hdinsight-enterprise-security). A sablon és az Azure CLI-kódrészlet használata előtt cserélje le a következő helyőrzőket a megfelelő értékekre:
 
-| Helyőrző | Leírás |
+| Helyőrző | Description (Leírás) |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Az Azure-előfizetés azonosítója |
 | `<RESOURCE_GROUP>` | Az az erőforráscsoport, amelyben létre szeretné hozni az új fürtöt és a Storage-fiókot. |

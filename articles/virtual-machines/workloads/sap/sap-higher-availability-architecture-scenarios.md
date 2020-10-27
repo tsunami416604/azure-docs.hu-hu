@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c112896e78c07fafa2d714b0533db1f58dd57ffd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361636"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535603"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Az Azure-infrastruktúra virtuális gépek újraindításának kihasználása egy SAP-rendszer "magasabb rendelkezésre állásának" eléréséhez
 
@@ -228,7 +228,7 @@ Az Azure Managed Disks szolgáltatás automatikusan a virtuális gép tartalék 
 
 Az Azure-infrastruktúrák magas rendelkezésre állását és a Storage-fiókokat használó SAP NetWeaver rendszer mintája a következőképpen néz ki:
 
-![Az Azure-infrastruktúra magas rendelkezésre állásának kihasználása az SAP-alkalmazások "magasabb rendelkezésre állásának" elérése érdekében][planning-guide-figure-2900]
+![Az Azure-infrastruktúrát magas rendelkezésre állást és Storage-fiókokat használó SAP NetWeaver rendszer architektúráját bemutató ábra.][planning-guide-figure-2900]
 
 Az Azure-infrastruktúrát magas rendelkezésre állást és felügyelt lemezeket használó SAP NetWeaver rendszer példája a következőképpen néz ki:
 

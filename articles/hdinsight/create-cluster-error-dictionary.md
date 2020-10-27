@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816456"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543100"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure-HDInsight: fürtök létrehozásával kapcsolatos hibák
 
@@ -24,7 +24,7 @@ Ez a cikk a fürtök létrehozásakor esetlegesen előforduló hibák megoldása
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: a (z) "CsmDocument_2_0" DeploymentDocument nem tudta végrehajtani az ellenőrzést.
 
-**Hiba**: "a parancsfájl műveleti helye nem érhető el URI: \<SCRIPT ACTION URL\> "
+**Hiba** : "a parancsfájl műveleti helye nem érhető el URI: \<SCRIPT ACTION URL\> "
 
 ### <a name="error-message-1"></a>1. hibaüzenet
 
@@ -141,7 +141,7 @@ A hálózati biztonsági csoporton (NSG) található tűzfalszabály blokkolja a
 Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom szabályozásához, a HDInsight telepítése előtt végezze el a következő műveleteket:
 
 - Azonosítsa az HDInsight használni kívánt Azure-régiót.
-- Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight kezelése – IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+- Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight kezelése – IP-címek](./hdinsight-management-ip-addresses.md).
   - Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et.
   - Hálózati biztonsági csoportok esetében engedélyezze a bejövő forgalmat az 443-as porton az IP-címekről. Ez a konfiguráció biztosítja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt.
 
@@ -172,7 +172,7 @@ További információ: az [Data Lake Storage Gen2 fiókban található felügyel
 
 ### <a name="error"></a>Hiba
 
-"A biztonsági szabályok a hálózati biztonsági csoport/Subscriptions/ \<SubscriptionID\> /resourceGroups/<az erőforráscsoport neve \> default/Providers/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> subnet/Subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-vnet-TomTom-default/Providers/Microsoft. Network/virtualNetworks//Subnets/ \<Virtual Network Name\> nem \<Subnet Name\> engedélyezik a szükséges bejövő és/vagy kimenő kapcsolatokat. További információért látogasson el [a virtuális hálózat megtervezése az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), vagy forduljon az ügyfélszolgálathoz. "
+"A biztonsági szabályok a hálózati biztonsági csoport/Subscriptions/ \<SubscriptionID\> /resourceGroups/<az erőforráscsoport neve \> default/Providers/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> subnet/Subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-vnet-TomTom-default/Providers/Microsoft. Network/virtualNetworks//Subnets/ \<Virtual Network Name\> nem \<Subnet Name\> engedélyezik a szükséges bejövő és/vagy kimenő kapcsolatokat. További információért látogasson el [a virtuális hálózat megtervezése az Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md), vagy forduljon az ügyfélszolgálathoz. "
 
 ### <a name="cause"></a>Ok
 
@@ -182,8 +182,8 @@ Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvo
 
 Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom szabályozásához, a HDInsight telepítése előtt végezze el a következő műveleteket:
 
-- Azonosítsa a HDInsight használni kívánt Azure-régiót, és hozzon létre egy biztonságos listát a régiója IP-címeiről. További információ [: állapot-és kezelési szolgáltatások: adott régiók](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions).
-- Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight-felügyeleti IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+- Azonosítsa a HDInsight használni kívánt Azure-régiót, és hozzon létre egy biztonságos listát a régiója IP-címeiről. További információ [: állapot-és kezelési szolgáltatások: adott régiók](./hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions).
+- Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight-felügyeleti IP-címek](./hdinsight-management-ip-addresses.md).
 - Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et. Hálózati biztonsági csoportok esetében engedélyezze a bejövő forgalmat az 443-as porton az IP-címekről. Ez a konfiguráció biztosítja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt.
 
 ---
@@ -216,7 +216,7 @@ A HDInsight szolgáltatás nem tud csatlakozni a fürthöz a fürt létrehozása
 
 ### <a name="resolution"></a>Feloldás
 
-Ha az egyéni VNet hálózati biztonsági csoportot (NSG) és a felhasználó által megadott útvonalakat (UDR) használja, győződjön meg arról, hogy a fürt képes kommunikálni a HDInsight felügyeleti szolgáltatásaival. További információ: [HDInsight-felügyeleti IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+Ha az egyéni VNet hálózati biztonsági csoportot (NSG) és a felhasználó által megadott útvonalakat (UDR) használja, győződjön meg arról, hogy a fürt képes kommunikálni a HDInsight felügyeleti szolgáltatásaival. További információ: [HDInsight-felügyeleti IP-címek](./hdinsight-management-ip-addresses.md).
 
 ---
 
@@ -240,4 +240,4 @@ Törölje vagy tiltsa le az előfizetés-alapú Azure Policy hozzárendelést a 
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a fürtök létrehozásával kapcsolatos hibák elhárításáról: [fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails).
+További információ a fürtök létrehozásával kapcsolatos hibák elhárításáról: [fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md).

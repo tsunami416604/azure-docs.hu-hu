@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: bc84c8ef27b86244a7f467109525bdcb14bd030b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92e94c911acb701b1ccf8e39636d152cc5bfb575
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087537"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534804"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Interaktív lekérdezési Apache Hive adatai megjelenítése a Microsoft Power BI használatával közvetlen lekérdezéssel a HDInsight-ben
 
@@ -21,13 +21,13 @@ Ez a cikk azt ismerteti, hogyan csatlakoztathatók a Microsoft Power BI az Azure
 
 ![HDInsight Power BI a leképezési jelentés](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-Az [Apache HIVE ODBC-illesztőt](../hadoop/apache-hadoop-connect-hive-power-bi.md) kihasználhatja a Power bi Desktop általános ODBC-összekötőn keresztül történő importáláshoz. Azonban nem ajánlott a BI-munkaterhelések esetében a kaptár-lekérdezési motor nem interaktív természetét figyelembe venni. A [HDInsight interaktív lekérdezés-összekötő](./apache-hadoop-connect-hive-power-bi-directquery.md) és a [HDInsight Apache Spark-összekötő](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jobb választás a teljesítményük szempontjából.
+Az [Apache HIVE ODBC-illesztőt](../hadoop/apache-hadoop-connect-hive-power-bi.md) kihasználhatja a Power bi Desktop általános ODBC-összekötőn keresztül történő importáláshoz. Azonban nem ajánlott a BI-munkaterhelések esetében a kaptár-lekérdezési motor nem interaktív természetét figyelembe venni. A [HDInsight interaktív lekérdezés-összekötő](./apache-hadoop-connect-hive-power-bi-directquery.md) és a [HDInsight Apache Spark-összekötő](/power-bi/spark-on-hdinsight-with-direct-connect) jobb választás a teljesítményük szempontjából.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A cikk végrehajtása előtt a következő elemeket kell megadnia:
 
-* **HDInsight-fürt**. A fürt lehet egy Apache Hive vagy egy újonnan kiadott interaktív lekérdezési fürttel rendelkező HDInsight-fürt. Fürtök létrehozásával kapcsolatban lásd: [fürt létrehozása](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* **[Microsoft Power bi Desktop](https://powerbi.microsoft.com/desktop/)**. A másolást a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=45331)töltheti le.
+* **HDInsight-fürt** . A fürt lehet egy Apache Hive vagy egy újonnan kiadott interaktív lekérdezési fürttel rendelkező HDInsight-fürt. Fürtök létrehozásával kapcsolatban lásd: [fürt létrehozása](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **[Microsoft Power bi Desktop](https://powerbi.microsoft.com/desktop/)** . A másolást a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=45331)töltheti le.
 
 ## <a name="load-data-from-hdinsight"></a>Adatok betöltése a HDInsight
 
@@ -41,23 +41,23 @@ A `hivesampletable` kaptár tábla minden HDInsight-fürtöt tartalmaz.
 
 3. Az **adatok lekérése** ablakban írja be a **hdinsight** kifejezést a keresőmezőbe.  
 
-4. A keresési eredmények közül válassza a **HDInsight interaktív lekérdezés**lehetőséget, majd válassza a **kapcsolat**lehetőséget.  Ha nem látja a **HDInsight interaktív lekérdezést**, frissítenie kell a Power bi Desktopt a legújabb verzióra.
+4. A keresési eredmények közül válassza a **HDInsight interaktív lekérdezés** lehetőséget, majd válassza a **kapcsolat** lehetőséget.  Ha nem látja a **HDInsight interaktív lekérdezést** , frissítenie kell a Power bi Desktopt a legújabb verzióra.
 
 5. A **Folytatás** gombra kattintva zárhatja be a **harmadik féltől származó szolgáltatáshoz való kapcsolódás** párbeszédpanelt.
 
-6. A **HDInsight interaktív lekérdezési** ablakban adja meg a következő információkat, majd kattintson **az OK gombra**:
+6. A **HDInsight interaktív lekérdezési** ablakban adja meg a következő információkat, majd kattintson **az OK gombra** :
 
     |Tulajdonság | Érték |
     |---|---|
-    |Kiszolgáló |Adja meg a fürt nevét, például *myiqcluster.azurehdinsight.net*.|
+    |Kiszolgáló |Adja meg a fürt nevét, például *myiqcluster.azurehdinsight.net* .|
     |Adatbázis |Adja meg az **alapértelmezett** értéket ehhez a cikkhez.|
     |Adatkapcsolati mód |Ehhez a cikkhez válassza a **DirectQuery** lehetőséget.|
 
     ![HDInsight interaktív lekérdezés Power BI DirectQuery-kapcsolat](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. Adja meg a HTTP hitelesítő adatokat, majd válassza a **kapcsolat**lehetőséget. Az alapértelmezett Felhasználónév a **rendszergazda**.
+7. Adja meg a HTTP hitelesítő adatokat, majd válassza a **kapcsolat** lehetőséget. Az alapértelmezett Felhasználónév a **rendszergazda** .
 
-8. A bal oldali ablaktábla **navigátor** ablakában válassza a **hivesampletale**lehetőséget.
+8. A bal oldali ablaktábla **navigátor** ablakában válassza a **hivesampletale** lehetőséget.
 
 9. Válassza a **Betöltés** lehetőséget a főablakban.
 
@@ -67,15 +67,15 @@ A `hivesampletable` kaptár tábla minden HDInsight-fürtöt tartalmaz.
 
 Folytassa az utolsó eljárással.
 
-1. A vizualizációk ablaktáblán válassza a **Térkép**, majd a földgömb ikont. Ekkor megjelenik egy általános Térkép a főablakban.
+1. A vizualizációk ablaktáblán válassza a **Térkép** , majd a földgömb ikont. Ekkor megjelenik egy általános Térkép a főablakban.
 
     ![HDInsight Power BI a jelentés testreszabása](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
 
-2. A mezők panelen válassza az **ország** és a **devicemake**lehetőséget. Az adatpontokkal rendelkező globális Térkép néhány pillanat múlva megjelenik a főablakban.
+2. A mezők panelen válassza az **ország** és a **devicemake** lehetőséget. Az adatpontokkal rendelkező globális Térkép néhány pillanat múlva megjelenik a főablakban.
 
 3. Bontsa ki a térképet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan jelenítheti meg a HDInsight adatait a Microsoft Power BI használatával.  Az adatvizualizációval kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * Az [Azure HDInsight használatával megjelenítheti a Microsoft Power BI Apache Hivei adataival](../hadoop/apache-hadoop-connect-hive-power-bi.md). 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 616e3e6c37faa3c085b8531173b557973e09fbf8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0c14e5537385b7518fd08d9d3599993bc6d82f88
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974566"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535501"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -32,11 +32,11 @@ Ez a kiadás a 3,6-es és a HDInsight 4,0-es HDInsight egyaránt érvényes. A H
 A HDInsight mostantól támogatja a nyilvános IP-címek nélküli fürtök létrehozását, valamint a fürtök előzetes verzióban való elérését. Az új speciális hálózatkezelési beállítások használatával egy teljesen elkülönített, nyilvános IP-címmel rendelkező fürtöt hozhat létre, és a saját privát végpontok használatával érheti el a fürtöt. 
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés Azure-beli virtuálisgép-méretezési csoportokra
-A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. Ettől a kiadástól kezdve a szolgáltatás fokozatosan migrálva lesz az [Azure virtuálisgép-méretezési csoportokra](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview). A teljes folyamat hónapokat is igénybe vehet. A régiók és az előfizetések migrálása után az újonnan létrehozott HDInsight-fürtök felhasználói műveletek nélkül futnak a virtuálisgép-méretezési csoportokban. A rendszer nem várt változást.
+A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. Ettől a kiadástól kezdve a szolgáltatás fokozatosan migrálva lesz az [Azure virtuálisgép-méretezési csoportokra](../virtual-machine-scale-sets/overview.md). A teljes folyamat hónapokat is igénybe vehet. A régiók és az előfizetések migrálása után az újonnan létrehozott HDInsight-fürtök felhasználói műveletek nélkül futnak a virtuálisgép-méretezési csoportokban. A rendszer nem várt változást.
 
 ## <a name="deprecation"></a>Elavulás
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>A HDInsight 3,6 ML Services-fürt elavult változata
-A HDInsight 3,6 ML Services-fürt típusa a DEC 31 2020-es támogatás végén lesz. Az ügyfelek ezt követően nem hoznak létre új 3,6 ML-es szolgáltatási fürtöket. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions).
+A HDInsight 3,6 ML Services-fürt típusa a DEC 31 2020-es támogatás végén lesz. Az ügyfelek ezt követően nem hoznak létre új 3,6 ML-es szolgáltatási fürtöket. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](./hdinsight-component-versioning.md#available-versions).
 
 ## <a name="behavior-changes"></a>Viselkedési változások
 Ebben a kiadásban nem változik a viselkedés.
@@ -51,4 +51,4 @@ A HDInsight jelenleg nem támogatja a Zookeeper-csomópontok méretének testres
 A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének növelését teszi elérhetővé. 
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
-Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)találja.
+Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](./hdinsight-component-versioning.md)találja.
