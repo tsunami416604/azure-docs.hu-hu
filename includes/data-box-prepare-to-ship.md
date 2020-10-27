@@ -16,7 +16,7 @@ Az utolsó lépés az eszköz szállításának előkészítése. Ebben a lépé
 > [!IMPORTANT]
 > El kell végezni a szállítás előkészítését, mert ez megjelöli az Azure elnevezési konvencióinak nem megfelelő adatokat. Ez a lépés megakadályozza a nem megfelelő adatok miatt fellépő adatfeltöltési hibákat.
 
-1. Lépjen a **Prepare to ship** (Szállításra való előkészítés) oldalra, majd kattintson a **Start preparation** (Előkészítés indítása) elemre. Alapértelmezés szerint az ellenőrzőösszegek kiszámítására az adatok másolása során kerül sor. A szállítás előkészítése kiszámítja az ellenőrzőösszegeket, és létrehozza a fájlok listáját ( *anyagjegyzékfájlok*). Az ellenőrzőösszeg kiszámítása az adatok mennyiségétől függően órákig vagy napokig is tarthat. 
+1. Lépjen a **Prepare to ship** (Szállításra való előkészítés) oldalra, majd kattintson a **Start preparation** (Előkészítés indítása) elemre. Alapértelmezés szerint az ellenőrzőösszegek kiszámítására az adatok másolása során kerül sor. A szállítás előkészítése kiszámítja az ellenőrzőösszegeket, és létrehozza a fájlok listáját ( *anyagjegyzékfájlok* ). Az ellenőrzőösszeg kiszámítása az adatok mennyiségétől függően órákig vagy napokig is tarthat. 
    
     ![A szállítás előkészítése 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
@@ -30,11 +30,11 @@ Az utolsó lépés az eszköz szállításának előkészítése. Ebben a lépé
 
     Ha több adatot szeretne átmásolni az eszközre, feloldhatja az eszköz zárolását, további adatokat másolhat, és ismét futtathatja a szállítás előkészítését.
 
-    Ha ebben a lépésben hibák léptek fel, az állapot a következőre frissül: *A vizsgálat hibákkal fejeződött be*. Oldja fel az eszköz zárolását, majd lépjen a **Csatlakozás és másolás** oldalra, töltse le a hibalistát, és hárítsa el a hibákat.
+    Ha ebben a lépésben hibák léptek fel, az állapot a következőre frissül: *A vizsgálat hibákkal fejeződött be* . Oldja fel az eszköz zárolását, majd lépjen a **Csatlakozás és másolás** oldalra, töltse le a hibalistát, és hárítsa el a hibákat.
 
     ![A szállítás előkészítése 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 
-    A hibák megoldása után futtassa **A szállítás előkészítését**.
+    A hibák megoldása után futtassa **A szállítás előkészítését** .
 
 4. A szállítás előkészítésének sikeres (hibák nélküli) befejezése után kövesse az alábbi lépéseket:
 
