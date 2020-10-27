@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49419853f193336e39ff8f729472342bb137fd39
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490220"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539479"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Oktatóanyag: Apache Kafka REST proxyval rendelkező fürt létrehozása a HDInsight-ben az Azure CLI használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Apache Kafka [Rest proxyt használó](./rest-proxy.md) fürtöt az Azure HDInsight az Azure parancssori felülettel (CLI). Az Azure HDInsight egy felügyelt, teljes körű, nyílt forráskódú elemzési szolgáltatás vállalatok részére. Az Apache Kafka egy nyílt forráskódú, elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. A Kafka REST proxy lehetővé teszi, hogy egy [REST API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) http-n keresztül kommunikáljon a Kafka-fürttel. Az Azure CLI a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Apache Kafka [Rest proxyt használó](./rest-proxy.md) fürtöt az Azure HDInsight az Azure parancssori felülettel (CLI). Az Azure HDInsight egy felügyelt, teljes körű, nyílt forráskódú elemzési szolgáltatás vállalatok részére. Az Apache Kafka egy nyílt forráskódú, elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. A Kafka REST proxy lehetővé teszi, hogy egy [REST API](/rest/api/hdinsight-kafka-rest-proxy/) http-n keresztül kommunikáljon a Kafka-fürttel. Az Azure CLI a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.
 
 Az Apache Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások számára érhető el. A fürtöt közvetlenül az SSH használatával érheti el. Ha más szolgáltatásokat, hálózatokat vagy virtuális gépeket szeretne csatlakoztatni az Apache Kafkához, először létre kell hoznia egy virtuális hálózatot, majd létre kell hoznia a hálózaton belüli erőforrásokat. További információ: [kapcsolódás Apache Kafka virtuális hálózat használatával](./apache-kafka-connect-vpn-gateway.md).
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag a következőket ismerteti:
 > * A Kafka REST proxy előfeltételei
 > * Apache Kafka-fürt létrehozása az Azure CLI használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,8 +56,8 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
     |location|Cserélje le a helyet egy olyan régióra, amelyben a fürt létre lesz hozva. Az érvényes helyszínek listáját a következő paranccsal használhatja: `az account list-locations`|
     |clusterName|Cserélje le a CLUSTERNAME-t az új fürthöz tartozó globálisan egyedi névre.|
     |storageAccount|Cserélje le a STORAGEACCOUNTNAME nevet az új Storage-fiók nevére.|
-    |httpPassword|Cserélje le a jelszót a fürt bejelentkezési azonosítójának jelszavára, **rendszergazdaként**.|
-    |sshPassword|Cserélje le a jelszót jelszóval a Secure Shell username, **sshuser**.|
+    |httpPassword|Cserélje le a jelszót a fürt bejelentkezési azonosítójának jelszavára, **rendszergazdaként** .|
+    |sshPassword|Cserélje le a jelszót jelszóval a Secure Shell username, **sshuser** .|
     |securityGroupName|Cserélje le a SECURITYGROUPNAME-t az ügyfél HRE biztonsági csoportjának nevére a Kafka Rest proxyhoz. A változó a `--kafka-client-group-name` (z) paraméteréhez lesz átadva `az-hdinsight-create` .|
     |securityGroupID|Cserélje le a SECURITYGROUPID-t az ügyfél HRE biztonsági csoportjának azonosítója a Kafka Rest proxyhoz. A változó a `--kafka-client-group-id` (z) paraméteréhez lesz átadva `az-hdinsight-create` .|
     |storageContainer|Ehhez az oktatóanyaghoz a fürt által használt Storage-tárolót kell hagyni. Ez a változó a fürt nevével lesz beállítva.|
@@ -130,18 +130,18 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
         |Paraméter | Leírás|
         |---|---|
-        |– típus|Az értéknek **Kafka**-nek kell lennie.|
-        |--workernode-adatlemezek/csomópont|A munkavégző csomópontok által használandó adatlemezek száma. A HDInsight Kafka csak adatlemezek esetén támogatott. Ez az oktatóanyag a **2**értéket használja.|
+        |– típus|Az értéknek **Kafka** -nek kell lennie.|
+        |--workernode-adatlemezek/csomópont|A munkavégző csomópontok által használandó adatlemezek száma. A HDInsight Kafka csak adatlemezek esetén támogatott. Ez az oktatóanyag a **2** értéket használja.|
 
     1. A Kafka REST proxyhoz szükséges paraméterek:
 
         |Paraméter | Leírás|
         |---|---|
-        |--Kafka-Management-node-size|A csomópont mérete Ez az oktatóanyag a **Standard_D4_v2**értéket használja.|
-        |--Kafka-ügyfél-csoport azonosítója|Az ügyfél HRE biztonsági csoport azonosítója a Kafka Rest proxyhoz. Az értéket a **$securityGroupID**változó adja át.|
-        |--Kafka-ügyfél-csoport neve|Az ügyfél HRE biztonsági csoportjának neve a Kafka Rest proxyhoz. Az értéket a **$securityGroupName**változó adja át.|
-        |--Version|A HDInsight-fürt verziószámának legalább 4,0-nek kell lennie. Az értéket a **$clusterVersion**változó adja át.|
-        |--összetevő-verzió|A Kafka verziójának legalább 2,1-nek kell lennie. Az értéket a **$componentVersion**változó adja át.|
+        |--Kafka-Management-node-size|A csomópont mérete Ez az oktatóanyag a **Standard_D4_v2** értéket használja.|
+        |--Kafka-ügyfél-csoport azonosítója|Az ügyfél HRE biztonsági csoport azonosítója a Kafka Rest proxyhoz. Az értéket a **$securityGroupID** változó adja át.|
+        |--Kafka-ügyfél-csoport neve|Az ügyfél HRE biztonsági csoportjának neve a Kafka Rest proxyhoz. Az értéket a **$securityGroupName** változó adja át.|
+        |--Version|A HDInsight-fürt verziószámának legalább 4,0-nek kell lennie. Az értéket a **$clusterVersion** változó adja át.|
+        |--összetevő-verzió|A Kafka verziójának legalább 2,1-nek kell lennie. Az értéket a **$componentVersion** változó adja át.|
     
         Ha a fürtöt REST proxy nélkül szeretné létrehozni, távolítsa el `--kafka-management-node-size` , `--kafka-client-group-id` és a `--kafka-client-group-name` `az hdinsight create` parancsból.
 
@@ -173,7 +173,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
     A fürt létrehozási folyamata több percet is igénybe vehet. Általában körülbelül 15.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 

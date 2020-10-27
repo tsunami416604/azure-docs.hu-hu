@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5842c5f3130b39f75b5339274b84feb2e0f283f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986368"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547095"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
 
@@ -64,11 +64,11 @@ A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse me
 
    -vagy-
 
-   Meglévő Logic apps esetén az utolsó lépésben, amelyhez Microsoft Graph biztonsági műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget.
+   Meglévő Logic apps esetén az utolsó lépésben, amelyhez Microsoft Graph biztonsági műveletet szeretne hozzáadni, válassza az **új lépés** lehetőséget.
 
    -vagy-
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (+), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (+), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be a "Microsoft Graph Security" kifejezést a szűrőként. A műveletek listából válassza ki a kívánt műveletet.
 
@@ -94,12 +94,12 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
    | Tulajdonság | Tulajdonság (JSON) | Kötelező | Típus | Leírás |
    |----------|-----------------|----------|------|-------------|
    | **Intervallum** | `interval` | Igen | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p><p>-Hónap: 1-16 hónap <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc <p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
-   | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét**vagy **hónap** |
+   | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc** , **perc** , **óra** , **nap** , **hét** vagy **hónap** |
    | **Időzóna** | `timeZone` | Nem | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. |
    | **Kezdési idő** | `startTime` | Nem | Sztring | Adja meg a kezdő dátumot és időpontot a következő formátumban: <p><p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ <p>-vagy- <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát <p>Ha például a 2017-es szeptember 18-án, 2:00 PM-nél szeretné, adja meg a "2017-09-18T14:00:00" parancsot, és válasszon ki egy időzónát, például a csendes-óceáni téli időpontot. Vagy a "2017-09-18T14:00:00Z" érték megadásával időzóna nélkül. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, a végén fel kell vennie a "Z" betűt szóközök nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. [*Milyen módon használhatom a kezdő dátumot és időt?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
-1.  Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1.  Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 1.  Most folytassa a logikai alkalmazáshoz egy vagy több művelet hozzáadását azokkal a feladatokkal, amelyeket el szeretne végezni az trigger eredményeivel.
 
@@ -142,26 +142,26 @@ A legutóbbi eredmények szűréséhez, rendezéséhez vagy beszerzéséhez *csa
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-Az ezzel az összekötővel használható lekérdezésekkel kapcsolatos további információkért tekintse meg [a "választható lekérdezési paraméterek" című részt a Microsoft Graph biztonsági fenyegetésekkel kapcsolatos intelligencia mutatójának dokumentációjában](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta). Az összekötővel folytatott továbbfejlesztett funkciók létrehozásával kapcsolatban további információt a [séma tulajdonságai által támogatott veszélyforrások felderítésére szolgáló kijelzőn](/graph/api/resources/tiindicator?view=graph-rest-beta) olvashat.
+Az ezzel az összekötővel használható lekérdezésekkel kapcsolatos további információkért tekintse meg [a "választható lekérdezési paraméterek" című részt a Microsoft Graph biztonsági fenyegetésekkel kapcsolatos intelligencia mutatójának dokumentációjában](/graph/api/tiindicators-list). Az összekötővel folytatott továbbfejlesztett funkciók létrehozásával kapcsolatban további információt a [séma tulajdonságai által támogatott veszélyforrások felderítésére szolgáló kijelzőn](/graph/api/resources/tiindicator) olvashat.
 
 | Művelet | Leírás |
 |--------|-------------|
-| **Veszélyforrások elleni intelligencia indikátorok beolvasása** | Egy vagy több [tiIndicator-tulajdonság](/graph/api/resources/tiindicator?view=graph-rest-beta)alapján szűrt tiIndicators beolvasása, például: `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Veszélyforrások elleni intelligencia indikátorok beolvasása** | Egy vagy több [tiIndicator-tulajdonság](/graph/api/resources/tiindicator)alapján szűrt tiIndicators beolvasása, például: `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Veszélyforrások elleni intelligencia-jelző beolvasása azonosító alapján** | Egy adott tiIndicator beszerzése a tiIndicator-azonosító alapján. | 
-| **Fenyegetési intelligencia kijelző létrehozása** | Hozzon létre egy új tiIndicator a tiIndicators gyűjteménybe való közzétételsel. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [tiIndicator létrehozásához szükséges tulajdonságokat](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta). |
-| **Több veszélyforrást érintő intelligencia-kijelző küldése** | Hozzon létre több új tiIndicators egy tiIndicators-gyűjtemény elküldésével. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [több tiIndicators elküldéséhez szükséges tulajdonságokat](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta). |
-| **Veszélyforrások elleni intelligencia-kijelző frissítése** | Egy adott tiIndicator frissítése a tiIndicator azonosítója alapján. A kérelemben szereplő kötelező és szerkeszthető tulajdonságok megadásához tekintse meg a [tiIndicator szerkeszthető tulajdonságait](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta). Ha például frissíteni szeretné az alkalmazandó műveletet, ha a kijelző a targetProduct biztonsági eszközön belül szerepel, akkor frissítheti a tiIndicator **művelet** tulajdonságát. |
-| **Több veszélyforrást érintő intelligencia-kijelző frissítése** | Több tiIndicators frissítése. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [több tiIndicators frissítéséhez szükséges tulajdonságokat](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta). |
+| **Fenyegetési intelligencia kijelző létrehozása** | Hozzon létre egy új tiIndicator a tiIndicators gyűjteménybe való közzétételsel. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [tiIndicator létrehozásához szükséges tulajdonságokat](/graph/api/tiindicators-post). |
+| **Több veszélyforrást érintő intelligencia-kijelző küldése** | Hozzon létre több új tiIndicators egy tiIndicators-gyűjtemény elküldésével. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [több tiIndicators elküldéséhez szükséges tulajdonságokat](/graph/api/tiindicator-submittiindicators). |
+| **Veszélyforrások elleni intelligencia-kijelző frissítése** | Egy adott tiIndicator frissítése a tiIndicator azonosítója alapján. A kérelemben szereplő kötelező és szerkeszthető tulajdonságok megadásához tekintse meg a [tiIndicator szerkeszthető tulajdonságait](/graph/api/tiindicator-update). Ha például frissíteni szeretné az alkalmazandó műveletet, ha a kijelző a targetProduct biztonsági eszközön belül szerepel, akkor frissítheti a tiIndicator **művelet** tulajdonságát. |
+| **Több veszélyforrást érintő intelligencia-kijelző frissítése** | Több tiIndicators frissítése. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [több tiIndicators frissítéséhez szükséges tulajdonságokat](/graph/api/tiindicator-updatetiindicators). |
 | **Veszélyforrások intelligencia-mutatójának törlése azonosító alapján** | Egy adott tiIndicator törlése a tiIndicator azonosítója alapján. |
-| **Több veszélyforrást érintő intelligencia-mutató törlése azonosító alapján** | Több tiIndicators törlése az azonosítóik alapján. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse meg a [szükséges tulajdonságokat a több TiIndicators azonosító alapján történő törléséhez](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta). |
-| **Több veszélyforrást érintő intelligencia-kijelző törlése külső azonosítók alapján** | Több tiIndicators törlése a külső azonosítók alapján. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse meg a [szükséges tulajdonságokat a külső azonosítók által használt több tiIndicators törléséhez](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta). |
+| **Több veszélyforrást érintő intelligencia-mutató törlése azonosító alapján** | Több tiIndicators törlése az azonosítóik alapján. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse meg a [szükséges tulajdonságokat a több TiIndicators azonosító alapján történő törléséhez](/graph/api/tiindicator-deletetiindicators). |
+| **Több veszélyforrást érintő intelligencia-kijelző törlése külső azonosítók alapján** | Több tiIndicators törlése a külső azonosítók alapján. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse meg a [szükséges tulajdonságokat a külső azonosítók által használt több tiIndicators törléséhez](/graph/api/tiindicator-deletetiindicatorsbyexternalid). |
 |||
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
 Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](https://aka.ms/graphsecurityconnectorreference).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
 

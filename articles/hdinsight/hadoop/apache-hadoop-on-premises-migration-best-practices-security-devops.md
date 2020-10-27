@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 7deaca67212146881754f785e6dceaa064bde6e7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 6fd59a346a36a304f699894c493d8ba9800489b2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329423"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545259"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – biztonsági és DevOps – ajánlott eljárások
 
@@ -51,7 +51,7 @@ A tartományhoz csatlakoztatott HDInsight-fürt üzembe helyezéséhez kövesse 
     |LDAPS URL-CÍM|például: `ldaps://contoso.onmicrosoft.com:636` .|
     |Felhasználói csoport elérése|Azok a biztonsági csoportok, amelyek felhasználóit szinkronizálni szeretné a fürttel, például: `HiveUsers` . Ha több felhasználói csoportot szeretne megadni, pontosvesszővel válassza el őket egymástól. Az ESP-fürt létrehozása előtt a csoport (ok) nak léteznie kell a címtárban.|
 
-További információért tekintse át a következő cikkeket:
+További információkat az következő cikkekben talál:
 
 - [Bevezetés a Apache Hadoop biztonságba a tartományhoz csatlakoztatott HDInsight-fürtökkel](../domain-joined/hdinsight-security-overview.md)
 - [Azure-tartományhoz csatlakoztatott Apache Hadoop-fürtök tervezése a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md)
@@ -81,10 +81,10 @@ A végpontok közötti vállalati biztonság a következő vezérlők használat
     - Transzparens Server-Side titkosítás a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal.
     - Az átvitel titkosítása Client-Side titkosítás, HTTPS és TLS használatával.
 
-További információért tekintse át a következő cikkeket:
+További információkat az következő cikkekben talál:
 
 - [Azure Virtual Networks – áttekintés](../../virtual-network/virtual-networks-overview.md)
-- [Azure hálózati biztonsági csoportok – áttekintés](../../virtual-network/security-overview.md)
+- [Azure hálózati biztonsági csoportok – áttekintés](../../virtual-network/network-security-groups-overview.md)
 - [Azure-beli virtuális hálózati társviszony](../../virtual-network/virtual-network-peering-overview.md)
 - [Azure Storage – biztonsági útmutató](../../storage/blobs/security-recommendations.md)
 - [Azure Storage Service Encryption a nyugalmi állapotban](../../storage/common/storage-service-encryption.md)
@@ -120,6 +120,6 @@ További információkért tekintse meg a [HDInsight operációsrendszer-javít�
 2. **Tesztek végrehajtása** – a iteratív funkcionális és teljesítményteszteket futtathat.
 3. **Optimalizálás** – javítsa ki a teljesítménnyel kapcsolatos problémákat a fenti tesztek eredményei alapján, majd ellenőrizze a teljesítmény fejlesztését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a [HDInsight 4,0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction)-ről.
+További információ a [HDInsight 4,0](./apache-hadoop-introduction.md)-ről.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: b928ea8b0d05b9e1eac3c9429ec4c0ce8f88bb22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322873"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545497"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Apache Storm topológia létrehozása javában
 
@@ -26,7 +26,7 @@ A dokumentum lépéseinek elvégzése után telepítheti a topológiát, hogy Ap
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java Developer Kit (JDK) 8-as verzió](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) 8-as verzió](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
@@ -43,7 +43,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Maven-projekt létrehozása
 
-Adja meg a következő parancsot egy **WordCount**nevű Maven-projekt létrehozásához:
+Adja meg a következő parancsot egy **WordCount** nevű Maven-projekt létrehozásához:
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -199,9 +199,9 @@ Ez a szakasz beépülő modulok, erőforrások és egyéb Build-konfigurációs 
 
     Egy másik hasznos beépülő modul a [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) , amely a fordítási beállítások módosítására szolgál. Módosítsa a Maven által az alkalmazás forrásához és céljához használt Java-verziót.
 
-  * A __3,4-es vagy korábbi__HDInsight esetében állítsa a forrás és a cél Java-verziót __1,7__-re.
+  * A __3,4-es vagy korábbi__ HDInsight esetében állítsa a forrás és a cél Java-verziót __1,7__ -re.
 
-  * A HDInsight __3,5__esetében állítsa a forrás és a cél Java-verziót __1,8__-re.
+  * A HDInsight __3,5__ esetében állítsa a forrás és a cél Java-verziót __1,8__ -re.
 
   Adja hozzá a következő szöveget a `<plugins>` fájl szakaszához `pom.xml` , hogy tartalmazza az Apache Maven Compiler beépülő modulját. Ez a példa a 1,8-as verziót adja meg, így a cél HDInsight verziója 3,5.
 
@@ -237,11 +237,11 @@ Ez a példa hozzáadja az erőforrások könyvtárat a projekt gyökérkönyvtá
 
 A Java-alapú Apache Storm topológia három olyan összetevőből áll, amelyeknek függőségként kell megadnia (vagy hivatkoznia kell).
 
-* **Kiöntő**: külső forrásokból származó adatok beolvasása és adatstreamek kibocsátása a topológiába.
+* **Kiöntő** : külső forrásokból származó adatok beolvasása és adatstreamek kibocsátása a topológiába.
 
-* **Csavarok**: kiöntő vagy más csavarok által kibocsátott adatfolyamok feldolgozását végzi, és egy vagy több streamet bocsát ki.
+* **Csavarok** : kiöntő vagy más csavarok által kibocsátott adatfolyamok feldolgozását végzi, és egy vagy több streamet bocsát ki.
 
-* **Topológia**: meghatározza a kiöntő és a csavarok elrendezését, és megadja a topológia belépési pontját.
+* **Topológia** : meghatározza a kiöntő és a csavarok elrendezését, és megadja a topológia belépési pontját.
 
 ### <a name="create-the-spout"></a>A kiöntő létrehozása
 
@@ -327,9 +327,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 A csavarok kezelik az adatfeldolgozást. A csavarok bármit, például számítást, adatmegőrzést vagy külső összetevőkkel való kommunikációt végezhetnek. Ez a topológia két csavart használ:
 
-* **SplitSentence**: a **RandomSentenceSpout** által kibocsátott mondatok kiosztása egyéni szavakkal.
+* **SplitSentence** : a **RandomSentenceSpout** által kibocsátott mondatok kiosztása egyéni szavakkal.
 
-* **WordCount**: megszámolja, hogy hányszor történtek az egyes szavak.
+* **WordCount** : megszámolja, hogy hányszor történtek az egyes szavak.
 
 #### <a name="splitsentence"></a>SplitSentence
 

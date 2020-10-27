@@ -7,22 +7,22 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 84be56ae372f8a902b12c06f9ce93c1f7210dc5b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 29127a9dff42c0f733e3721d1ea5fea7350e774e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150584"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547357"
 ---
 # <a name="troubleshooting-message-routing"></a>Üzenetek útválasztásának hibaelhárítása
 
-Ez a cikk a IoT Hub [üzenet-útválasztással](iot-hub-devguide-messages-d2c.md)kapcsolatos gyakori problémákkal és megoldásokkal kapcsolatos figyelési és hibaelhárítási útmutatást nyújt. 
+Ez a cikk a IoT Hub [üzenet-útválasztással](iot-hub-devguide-messages-d2c.md)kapcsolatos gyakori problémákkal és megoldásokkal kapcsolatos figyelési és hibaelhárítási útmutatást nyújt.
 
 ## <a name="monitoring-message-routing"></a>Figyelési üzenet útválasztása
 
-[IoT hub mérőszámok](iot-hub-metrics.md) felsorolja az összes olyan metrikát, amely alapértelmezés szerint engedélyezve van a IoT hub számára. Javasoljuk, hogy figyelje az üzenet-útválasztáshoz és a végpontokhoz kapcsolódó metrikákat, hogy áttekintést nyújtson az elküldött üzenetekről. Kapcsolja be a [diagnosztikai naplókat](iot-hub-monitor-resource-health.md) Azure monitor diagnosztikai beállításokban az **útvonalak**műveleteinek nyomon követéséhez. Ezeket a diagnosztikai naplókat Azure Monitor naplókba, Event Hubsba vagy az Azure Storage-ba is elküldhetik egyéni feldolgozásra. Megtudhatja, hogyan [állíthatja be és használhatja a metrikákat és a diagnosztikai naplókat egy IoT hub](tutorial-use-metrics-and-diags.md).
+Javasoljuk, hogy figyelje az [üzenet-útválasztáshoz és a végpontokhoz kapcsolódó IoT hub metrikákat](monitor-iot-hub-reference.md#routing-metrics) , hogy áttekintést nyújtson az elküldött üzenetekről. Létrehozhat egy diagnosztikai beállítást is, amellyel műveleteket küldhet a [IoT hub erőforrás-naplókban lévő **útvonalakra**](monitor-iot-hub-reference.md#routes) , hogy Azure Monitor naplókat, Event Hubs vagy Azure Storage-t az egyéni feldolgozáshoz. További információ a metrikák, az erőforrás-naplók és a diagnosztikai beállítások használatáról: [IoT hub figyelése](monitor-iot-hub.md). Oktatóanyag: [mérőszámok és erőforrás-naplók beállítása és használata IoT hub használatával](tutorial-use-metrics-and-diags.md).
 
-Javasoljuk továbbá a [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) engedélyezését is, ha olyan üzeneteket szeretne fenntartani, amelyek nem egyeznek a lekérdezéssel az útvonalak egyikén sem. Ezeket a [beépített végponton](iot-hub-devguide-messages-read-builtin.md) lehet megőrizni a beállított megőrzési napok mennyiségére vonatkozóan. 
+Javasoljuk továbbá a [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) engedélyezését is, ha olyan üzeneteket szeretne fenntartani, amelyek nem egyeznek a lekérdezéssel az útvonalak egyikén sem. Ezeket a [beépített végponton](iot-hub-devguide-messages-read-builtin.md) lehet megőrizni a beállított megőrzési napok mennyiségére vonatkozóan.
 
 ## <a name="top-issues"></a>Leggyakoribb problémák
 
@@ -36,12 +36,15 @@ Az üzenetek útválasztásával kapcsolatos leggyakoribb problémák a követke
 A probléma megoldásához elemezze a következőket.
 
 #### <a name="the-routing-metrics-for-this-endpoint"></a>A végpont útválasztási metrikái
-Az útválasztással kapcsolatos összes [IoT hub-metrika](iot-hub-devguide-endpoints.md) előre van meghatározva az *útválasztással*. Több mérőszámból is egyesítheti az információkat, így azonosíthatja a problémák alapvető okát. A metrikus **útválasztási kézbesítési kísérletekkel** például azonosíthatja, hogy hány üzenet lett kézbesítve egy végpontnak, vagy el lett dobva, ha nem felelnek meg a lekérdezéseknek valamelyik útvonalon és a tartalék útvonalon. Tekintse át az **útválasztási késés** metrikáját, és figyelje meg, hogy az üzenetek kézbesítésének késése állandó vagy növekvő. A növekvő késés egy adott végponttal kapcsolatos problémát jelezhet, és azt javasoljuk, hogy ellenőrizze [a végpont állapotát](#the-health-of-the-endpoint). Ezek az útválasztási mérőszámok olyan [dimenziókkal](iot-hub-metrics.md#dimensions) is rendelkeznek, amelyek részletezik a metrikát, például a végpont típusát, az adott végpont nevét és az üzenet kézbesítésének okát.
 
-#### <a name="the-diagnostic-logs-for-any-operational-issues"></a>Az esetleges működési problémák diagnosztikai naplói 
-Figyelje meg az **útvonalak** [diagnosztikai naplóit](iot-hub-monitor-resource-health.md#routes) , hogy további információkat kapjon az útválasztási és végponti [műveletekről](#operation-names) , vagy azonosítsa a hibákat és a vonatkozó [hibakódot](#common-error-codes) a probléma további megismeréséhez. A naplóban szereplő művelet neve például azt jelzi, hogy az útvonal nem értékelhető ki az **RouteEvaluationError** miatt. A probléma megoldásához használja az adott [művelet neveként](#operation-names) megadott tippeket. Ha egy esemény hibát jelez, a napló további információkat is tartalmaz arról, hogy miért nem sikerült a kiértékelés. Ha például a művelet neve **EndpointUnhealthy**, a 403004 [hibakód](#common-error-codes) azt jelzi, hogy a végpont elfogyott.
+Az [útválasztással kapcsolatos összes IoT hub-metrika](monitor-iot-hub-reference.md#routing-metrics) előre van meghatározva az *útválasztással* . Több mérőszámból is egyesítheti az információkat, így azonosíthatja a problémák alapvető okát. A metrikus **útválasztási kézbesítési kísérletekkel** például azonosíthatja, hogy hány üzenet lett kézbesítve egy végpontnak, vagy el lett dobva, ha nem felelnek meg a lekérdezéseknek valamelyik útvonalon és a tartalék útvonalon. Tekintse át az **útválasztási késés** metrikáját, és figyelje meg, hogy az üzenetek kézbesítésének késése állandó vagy növekvő. A növekvő késés egy adott végponttal kapcsolatos problémát jelezhet, és azt javasoljuk, hogy ellenőrizze [a végpont állapotát](#the-health-of-the-endpoint). Ezek az útválasztási mérőszámok olyan [dimenziókkal](monitor-iot-hub-reference.md#metric-dimensions) is rendelkeznek, amelyek részletezik a metrikát, például a végpont típusát, az adott végpont nevét és az üzenet kézbesítésének okát.
+
+#### <a name="the-resource-logs-for-any-operational-issues"></a>A működési problémákhoz tartozó erőforrás-naplók
+
+Figyelje meg az [ **útvonalak** erőforrás-naplóit](monitor-iot-hub-reference.md#routes) , hogy további információkat kapjon az útválasztási és végponti [műveletekről](#operation-names) , vagy azonosítsa a hibákat és a vonatkozó [hibakódot](#common-error-codes) a probléma további megismeréséhez. A naplóban szereplő művelet neve például azt jelzi, hogy az útvonal nem értékelhető ki az **RouteEvaluationError** miatt. A probléma megoldásához használja az adott [művelet neveként](#operation-names) megadott tippeket. Ha egy esemény hibát jelez, a napló további információkat is tartalmaz arról, hogy miért nem sikerült a kiértékelés. Ha például a művelet neve **EndpointUnhealthy** , a 403004 [hibakód](#common-error-codes) azt jelzi, hogy a végpont elfogyott.
 
 #### <a name="the-health-of-the-endpoint"></a>A végpont állapota
+
 A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. A *végponti állapot beolvasása* API emellett információt nyújt az üzenet sikeres elküldéséről a végpontra, a [legutóbbi ismert hibára](#last-known-errors-for-iot-hub-routing-endpoints), a legutóbbi ismert hibára és az utolsó alkalommal, amikor egy küldési kísérletet hajtottak végre ehhez a végponthoz. Használja a megadott [utolsó ismert hiba](#last-known-errors-for-iot-hub-routing-endpoints)lehetséges enyhítését.
 
 ### <a name="i-suddenly-stopped-getting-messages-at-the-built-in-endpoint"></a>Hirtelen leállt az üzenetek beolvasása a beépített végponton
@@ -49,9 +52,11 @@ A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custo
 A probléma megoldásához elemezze a következőket.
 
 #### <a name="was-a-new-route-created"></a>Új útvonal lett létrehozva?
+
 Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, hacsak nem jön létre útvonal a végponthoz. Annak biztosítása érdekében, hogy az üzenetek továbbra is a beépített végpontra haladjanak, ha új útvonalat adnak hozzá, konfigurálja az útvonalat az *események* végpontjának. 
 
 #### <a name="was-the-fallback-route-disabled"></a>Le lett tiltva a tartalék útvonal?
+
 A tartalék útvonal minden olyan üzenetet elküld, amely nem felel meg a lekérdezési feltételeknek a meglévő útvonalakon a [beépített Event Hubs](iot-hub-devguide-messages-read-builtin.md) (üzenetek/események) számára, amely kompatibilis a [Event Hubsokkal](../event-hubs/index.yml). Ha az üzenet-útválasztás be van kapcsolva, engedélyezheti a tartalék útvonal funkciót. Ha nincs elérhető útvonal a beépített végponthoz, és a tartalék útvonal engedélyezve van, csak az útvonalakon nem egyező üzeneteket küld a rendszer a beépített végpontnak. Továbbá, ha az összes meglévő útvonal törölve van, a tartalék útvonalnak engedélyezve kell lennie az összes, a beépített végponton tárolt érték fogadásához.
 
 Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal->üzenet-útválasztás panelen. A [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) Azure Resource Manager is használhat egyéni végpontot a tartalék útvonalhoz.
@@ -61,9 +66,9 @@ Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal->üzenet-
 <a id="last-known-errors"></a>
 [!INCLUDE [iot-hub-include-last-known-errors](../../includes/iot-hub-include-last-known-errors.md)]
 
-## <a name="routes-diagnostic-logs"></a>A diagnosztikai naplók útvonala
+## <a name="routes-resource-logs"></a>Erőforrás-naplók átirányítása
 
-A következő műveletek nevei és hibakódok vannak naplózva a [diagnosztikai naplókban](iot-hub-monitor-resource-health.md#routes).
+A következő műveletek nevei és hibakódok vannak naplózva az [útvonalak erőforrás-naplóiban](monitor-iot-hub-reference.md#routes).
 
 <a id="diagnostics-operation-names"></a>
 ### <a name="operation-names"></a>Műveletek nevei
@@ -77,4 +82,4 @@ A következő műveletek nevei és hibakódok vannak naplózva a [diagnosztikai 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure [-szakértőkkel az MSDN Azure-ban, és stack overflow fórumokon](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure [-szakértőkkel az MSDN Azure-ban, és stack overflow fórumokon](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.

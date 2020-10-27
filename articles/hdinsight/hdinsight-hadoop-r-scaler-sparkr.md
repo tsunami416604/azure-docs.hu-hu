@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082275"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546041"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>A Scaleer és a Spark kombinálása a HDInsight-ben
 
-Ebből a dokumentumból megtudhatja, hogyan jósolhatja meg a repülési beérkezés késéseit egy **skálázhatósági** logisztikai regressziós modell használatával. A példa repülési késést és időjárási adatátvitelt használ a **sparker**használatával.
+Ebből a dokumentumból megtudhatja, hogyan jósolhatja meg a repülési beérkezés késéseit egy **skálázhatósági** logisztikai regressziós modell használatával. A példa repülési késést és időjárási adatátvitelt használ a **sparker** használatával.
 
 Habár mindkét csomag a Apache Hadoop Spark-végrehajtó motorján fut, a memóriában tárolt adatok megosztása blokkolja őket, mivel Mindegyikhez saját Spark-munkamenet szükséges. Amíg ez a probléma nem kerül a ML Server következő verziójában, a megkerülő megoldás a nem átfedő Spark-munkamenetek fenntartása, valamint az adatcsere közbenső fájlokon keresztül. Ebben az útmutatóban látható, hogy ezek a követelmények egyszerűen elérhetők.
 
@@ -25,7 +25,7 @@ Ezt a példát eredetileg a 2016-as számú előadásban osztották meg Mario in
 
 A kód eredetileg az Azure-beli HDInsight-fürtön, a Sparkban futó ML Server lett írva. A Sparker és a méretező használatának koncepciója azonban egy parancsfájlban a helyszíni környezetek kontextusában is érvényes.
 
-A jelen dokumentumban ismertetett lépések feltételezik, hogy az R-nek van egy közbenső szintű ismerete, és a ML Server [skálázhatósági](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) könyvtára. Ezt a forgatókönyvet a [sparker](https://spark.apache.org/docs/2.1.0/sparkr.html) -ben vezették be.
+A jelen dokumentumban ismertetett lépések feltételezik, hogy az R-nek van egy közbenső szintű ismerete, és a ML Server [skálázhatósági](/machine-learning-server/r/concept-what-is-revoscaler) könyvtára. Ezt a forgatókönyvet a [sparker](https://spark.apache.org/docs/2.1.0/sparkr.html) -ben vezették be.
 
 ## <a name="the-airline-and-weather-datasets"></a>A légitársaság és az időjárási adatkészletek
 
@@ -535,7 +535,7 @@ Ebben a cikkben bemutatjuk, hogyan lehet kombinálni a Sparker használatát az 
 
 ## <a name="next-steps-and-more-information"></a>Következő lépések és további információk
 
-- A Apache Spark ML Server használatáról további információt az [első lépéseket ismertető útmutatóban](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)talál.
+- A Apache Spark ML Server használatáról további információt az [első lépéseket ismertető útmutatóban](/machine-learning-server/r/how-to-revoscaler-spark)talál.
 
 - A HDInsight ML-szolgáltatásaival kapcsolatos információkért lásd: a [HDINSIGHT ml szolgáltatásainak áttekintése](r-server/r-server-overview.md).
 
@@ -543,4 +543,4 @@ A Sparker használatáról további információt a következő témakörben tal
 
 - [Apache sparker-dokumentum](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
-- A [sparker áttekintése](https://docs.databricks.com/spark/latest/sparkr/overview.html) a Databricks.
+- [A sparker áttekintése](/azure/databricks/spark/latest/sparkr/overview)

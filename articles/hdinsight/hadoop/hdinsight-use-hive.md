@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462275"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540397"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi a Apache Hive és a HiveQL az Azure HDInsight?
 
@@ -72,14 +72,14 @@ A kaptár által támogatott fájlformátumokkal kapcsolatos további informáci
 
 A struktúra két típusú táblát hozhat létre:
 
-* __Belső__: a rendszer a struktúra adattárházában tárolja az adattárolási adatraktárat. Az adatraktár a `/hive/warehouse/` fürt alapértelmezett tárolójában található.
+* __Belső__ : a rendszer a struktúra adattárházában tárolja az adattárolási adatraktárat. Az adatraktár a `/hive/warehouse/` fürt alapértelmezett tárolójában található.
 
     Belső táblák használata, ha a következő feltételek valamelyike teljesül:
 
     * Az adatmennyiség ideiglenes.
     * Azt szeretné, hogy a struktúra kezelje a tábla és az adatmennyiség életciklusát.
 
-* __Külső__: a rendszer az adatraktáron kívül tárolja az adattárolást. Az adattárolás a fürt által elérhető bármely tárolóban lehetséges.
+* __Külső__ : a rendszer az adatraktáron kívül tárolja az adattárolást. Az adattárolás a fürt által elérhető bármely tárolóban lehetséges.
 
     Külső táblák használata, ha a következő feltételek valamelyike teljesül:
 
@@ -88,7 +88,7 @@ A struktúra két típusú táblát hozhat létre:
     * Egyéni helyre van szüksége, például egy nem alapértelmezett Storage-fiókra.
     * A kaptártól eltérő program kezeli az adatformátumot, a helyet és így tovább.
 
-További információért lásd a [belső és külső táblák](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) összeadását ismertető blogbejegyzést.
+További információért lásd a [belső és külső táblák](/archive/blogs/cindygross/hdinsight-hive-internal-and-external-tables-intro) összeadását ismertető blogbejegyzést.
 
 ## <a name="user-defined-functions-udf"></a>Felhasználó által definiált függvények (UDF)
 
@@ -100,7 +100,7 @@ A struktúra a **felhasználó által definiált függvények (UDF)** használat
 
 * [C# felhasználó által definiált függvény használata Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Egyéni Apache Hive felhasználó által definiált függvény hozzáadása a HDInsight-hez](https://docs.microsoft.com/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
+* [Egyéni Apache Hive felhasználó által definiált függvény hozzáadása a HDInsight-hez](/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
 * [Példa Apache Hive felhasználó által definiált függvényt a dátum-és időformátumok átalakításához a kaptár időbélyegére](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -133,7 +133,7 @@ Az előző példában a HiveQL utasítások a következő műveleteket hajtják 
 
 |Utasítás |Leírás |
 |---|---|
-|TÁBLÁZAT ELDOBÁSA|Ha a tábla már létezik, törölje.|
+|DROP TABLE|Ha a tábla már létezik, törölje.|
 |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy új **külső** táblát a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen és az eredeti formátumban marad.|
 |SOR FORMÁTUMA|Azt jelzi, hogyan történik az adat formázása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.|
 |TEXTFILE HELYEN TÁROLVA|Azt jelzi, hogy a struktúra hol tárolja az adattárolást (a `example/data` könyvtárat), és hogy a szövegként van tárolva. Az adatfájlok egy fájlban lehetnek, vagy a címtárban található több fájl között is elterjedhetnek.|
@@ -197,17 +197,17 @@ A Azure Data Factory lehetővé teszi a HDInsight használatát egy Data Factory
 
 A kaptár-feladatok futtatásához SQL Server Integration Services (SSIS) használható. A SSIS készült Azure Feature Pack a következő összetevőket nyújtja, amelyek a HDInsight-on található kaptár-feladatokkal működnek.
 
-* [Azure HDInsight-struktúra feladat](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Azure HDInsight-struktúra feladat](/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure-előfizetési kapcsolatkezelő](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Azure-előfizetési kapcsolatkezelő](/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-További információt az [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) dokumentációjában talál.
+További információt az [Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis) dokumentációjában talál.
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
 Az Apache Oozie egy munkafolyamat-és koordinációs rendszer, amely a Hadoop-feladatokat kezeli. A Oozie és a kaptár használatával kapcsolatos további információkért tekintse meg az [Apache Oozie használata munkafolyamat-dokumentum definiálásához és futtatásához](../hdinsight-use-oozie-linux-mac.md) című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogy mi a kaptár, és hogyan használható a Hadoop-ben a HDInsight-ben, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight szolgáltatással való munkavégzés más módszereit.
 

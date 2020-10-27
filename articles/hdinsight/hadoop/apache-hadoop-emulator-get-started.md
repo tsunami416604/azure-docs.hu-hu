@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207471"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547962"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedjen meg egy Apache Hadoop homokozóval, amely egy virtuális gépen futó emulátor
 
@@ -34,13 +34,13 @@ Megtudhatja, hogyan telepítheti a virtuális gépeken futó Hortonworks Apache 
 
 A sandbox beállításával kapcsolatos útmutatásért lásd: a [homokozó üzembe helyezése és telepítési útmutatója](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/).
 
-A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók**alatt található hivatkozásokat.
+A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók** alatt található hivatkozásokat.
 
 ## <a name="start-the-virtual-machine"></a>A virtuális gép elindítása
 
 1. Nyissa meg az Oracle VM VirtualBoxt.
-1. A **fájl** menüben kattintson a **berendezés importálása**elemre, majd adja meg a Hortonworks-homokozó rendszerképét.
-1. Válassza ki a Hortonworks Sandboxot, kattintson a **Start**gombra, majd a **normál indítás**elemre. Ha a virtuális gép befejezte a rendszerindítási folyamatot, a bejelentkezési utasításokat jeleníti meg.
+1. A **fájl** menüben kattintson a **berendezés importálása** elemre, majd adja meg a Hortonworks-homokozó rendszerképét.
+1. Válassza ki a Hortonworks Sandboxot, kattintson a **Start** gombra, majd a **normál indítás** elemre. Ha a virtuális gép befejezte a rendszerindítási folyamatot, a bejelentkezési utasításokat jeleníti meg.
 
     ![a VirtualBox Manager normál indítása](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
@@ -48,7 +48,7 @@ A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók**al
 
 ## <a name="set-sandbox-passwords"></a>A homokozó jelszavainak beállítása
 
-1. A Hortonworks-munkaterületének első **lépések** lépése lapon válassza a **Speciális beállítások megjelenítése**lehetőséget. Az oldalon található információk használatával jelentkezzen be a homokozóba az SSH használatával. Használja a megadott nevet és jelszót.
+1. A Hortonworks-munkaterületének első **lépések** lépése lapon válassza a **Speciális beállítások megjelenítése** lehetőséget. Az oldalon található információk használatával jelentkezzen be a homokozóba az SSH használatával. Használja a megadott nevet és jelszót.
 
    > [!NOTE]
    > Ha nem telepített SSH-ügyfelet, használhatja a virtuális gép által biztosított webalapú SSH-t **http://localhost:4200/** .
@@ -83,9 +83,9 @@ A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók**al
     select * from sample_07 limit 10;
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Ismerje meg, hogyan használhatja a Visual studiót a Hortonworks homokozóval](../hdinsight-hadoop-emulator-visual-studio.md)
+* [Ismerje meg, hogyan használhatja a Visual studiót a Hortonworks homokozóval](./apache-hadoop-visual-studio-tools-get-started.md)
 
 * [A Hortonworks-Homokozóhoz tartozó kötelek megismerése](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 

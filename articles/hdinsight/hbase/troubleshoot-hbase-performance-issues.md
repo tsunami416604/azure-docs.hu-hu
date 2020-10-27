@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887155"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547894"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Az Apache HBase teljesítményproblémáinak elhárítása az Azure HDInsightban
 
@@ -73,9 +73,9 @@ Az alábbiakban néhány, az általunk hangolt paraméterek közül néhányat i
 
 - Növelje `memstore` a méretet az alapértelmezett 128 MB és 256 MB között. Ez a beállítás általában nagy írási helyzetekben ajánlott.
 
-- Növelje a tömörítéshez dedikált szálak számát az alapértelmezett **1** és **4**közötti értékkel. Ez a beállítás akkor fontos, ha betartjuk a gyakori kisebb tömörítést.
+- Növelje a tömörítéshez dedikált szálak számát az alapértelmezett **1** és **4** közötti értékkel. Ez a beállítás akkor fontos, ha betartjuk a gyakori kisebb tömörítést.
 
-- Ne blokkolja `memstore` a kiürítést a tároló korlátja miatt. A puffer megadásához növelje a `Hbase.hstore.blockingStoreFiles` beállítást **100**-re.
+- Ne blokkolja `memstore` a kiürítést a tároló korlátja miatt. A puffer megadásához növelje a `Hbase.hstore.blockingStoreFiles` beállítást **100** -re.
 
 - A kiürítések szabályozásához használja az alábbi beállításokat:
 
@@ -104,19 +104,19 @@ Az alábbiakban néhány, az általunk hangolt paraméterek közül néhányat i
 - RPC-időtúllépések: **3 perc**
 
    - Az RPC-időtúllépések közé tartozik a HBase RPC-időtúllépés, a HBase-ügyfél képolvasó-időtúllépése és a Phoenix-lekérdezés időtúllépése. 
-   - Győződjön meg arról, hogy a `hbase.client.scanner.caching` paraméter ugyanarra az értékre van beállítva a kiszolgáló végén és az ügyfél végén is. Ha ezek nem azonosak, ez a beállítás a szolgáltatáshoz kapcsolódó ügyféloldali hibákhoz vezet `OutOfOrderScannerException` . Ezt a beállítást kis értékre kell állítani a nagyméretű keresések esetében. Ezt az értéket **100**-re állítjuk be.
+   - Győződjön meg arról, hogy a `hbase.client.scanner.caching` paraméter ugyanarra az értékre van beállítva a kiszolgáló végén és az ügyfél végén is. Ha ezek nem azonosak, ez a beállítás a szolgáltatáshoz kapcsolódó ügyféloldali hibákhoz vezet `OutOfOrderScannerException` . Ezt a beállítást kis értékre kell állítani a nagyméretű keresések esetében. Ezt az értéket **100** -re állítjuk be.
 
 ## <a name="other-considerations"></a>További szempontok
 
 A következő további paramétereket érdemes megfontolni a hangoláshoz:
 
-- `Hbase.rs.cacheblocksonwrite` – Alapértelmezés szerint a HDI esetében ez a beállítás **igaz**értékre van állítva.
+- `Hbase.rs.cacheblocksonwrite` – Alapértelmezés szerint a HDI esetében ez a beállítás **igaz** értékre van állítva.
 
 - Beállítások, amelyek lehetővé teszik a kisebb tömörítés késleltetését később.
 
 - A kísérleti beállítások, például az olvasási és írási kérelmek számára fenntartott várólisták százalékos arányának módosítása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a probléma továbbra is megoldatlan marad, további támogatásért látogasson el az alábbi csatornák egyikére:
 
@@ -124,4 +124,4 @@ Ha a probléma továbbra is megoldatlan marad, további támogatásért látogas
 
 - Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) . Ez a hivatalos Microsoft Azure fiók a felhasználói élmény javításához. Összekapcsolja az Azure-Közösséget a megfelelő erőforrásokkal: válaszokkal, támogatással és szakértőkkel.
 
-- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. A Microsoft Azure-előfizetés az előfizetés-kezeléshez és a számlázási támogatáshoz biztosít hozzáférést, a technikai támogatás pedig az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](../../azure-portal/supportability/how-to-create-azure-support-request.md)ismertető témakört. A Microsoft Azure-előfizetés az előfizetés-kezeléshez és a számlázási támogatáshoz biztosít hozzáférést, a technikai támogatás pedig az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4979405c7675b5eff9f6940cd34e0c974ebad217
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81759591"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538272"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -26,7 +26,7 @@ Ez a cikk a **401003 IoTHubUnauthorized** -hibák okait és megoldásait ismerte
 
 ### <a name="symptom-1"></a>1. tünet
 
-A diagnosztikai naplókban megtekintheti az **401003 IoTHubUnauthorized**és a **404104 DeviceConnectionClosedRemotely**, majd a röviddel később sikeresen összekapcsoló eszközök mintáját.
+A naplókban megtekintheti az **401003 IoTHubUnauthorized** -vel leválasztott eszközök mintáját, majd a **404104 DeviceConnectionClosedRemotely** , majd a röviddel később történő csatlakozást.
 
 ### <a name="symptom-2"></a>2. tünet
 
@@ -40,7 +40,7 @@ A következő hibaüzenetek egyikével sikertelen IoT Hub kérelmek:
 
 ## <a name="cause"></a>Ok
 
-### <a name="cause-1"></a>1. ok
+### <a name="cause-1"></a>1\. ok
 
 A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a leválasztást, amikor az SAS-token lejár a frissítéshez. Tehát: 
 
@@ -50,7 +50,7 @@ A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a lev
 1. A IoT SDK új SAS-jogkivonatot hoz létre
 1. Az eszköz újrakapcsolódik IoT Hub sikeresen
 
-### <a name="cause-2"></a>2. ok
+### <a name="cause-2"></a>2\. ok
 
 A IoT Hub nem tudta hitelesíteni az Auth fejlécét, szabályát vagy kulcsát.
 
@@ -70,6 +70,6 @@ Ha a hibák mennyisége aggodalomra ad okot, váltson a C SDK-ra, amely megújí
 - Az engedélyezési hitelesítő adat jól formázott a használt protokollhoz. További információ: [IoT hub hozzáférés-vezérlés](iot-hub-devguide-security.md).
 - A használt engedélyezési szabály jogosult a kért műveletre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ahhoz, hogy könnyebben IoT Hub a hitelesítés, javasoljuk, hogy az [Azure IoT SDK](iot-hub-devguide-sdks.md)-kat használja.

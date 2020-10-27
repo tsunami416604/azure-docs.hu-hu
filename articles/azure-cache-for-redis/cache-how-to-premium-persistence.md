@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 9927d4780ea015502151188b61c50ddbd2656819
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8ae76ca27c8c6f8fed5692b9a2376fff53a52bb6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339543"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536572"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja az adatmegőrzést egy prémium szintű Azure cache-ben a Redis-példányhoz a Azure Portalon keresztül. A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. 
@@ -28,15 +28,15 @@ Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-ad
 
 > [!NOTE]
 > 
-> Az Azure Storage automatikusan titkosítja az adataikat, amikor azok megmaradnak. A titkosításhoz saját kulcsokat is használhat. További információ: [ügyfél által felügyelt kulcsok Azure Key Vault használatával](/azure/storage/common/storage-service-encryption).
+> Az Azure Storage automatikusan titkosítja az adataikat, amikor azok megmaradnak. A titkosításhoz saját kulcsokat is használhat. További információ: [ügyfél által felügyelt kulcsok Azure Key Vault használatával](../storage/common/storage-service-encryption.md).
 > 
 > 
 
-1. Prémium gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása**lehetőséget. A gyorsítótárak létrehozására az Azure Portalon kívül a Resource Manager-sablonok, a PowerShell vagy az Azure parancssori felület is használható. A Redis készült Azure cache létrehozásával kapcsolatos további információkért lásd: [gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+1. Prémium gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget. A gyorsítótárak létrehozására az Azure Portalon kívül a Resource Manager-sablonok, a PowerShell vagy az Azure parancssori felület is használható. A Redis készült Azure cache létrehozásával kapcsolatos további információkért lásd: [gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Erőforrás létrehozása.":::
    
-2. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
+2. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára** .
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Erőforrás létrehozása.":::
 
@@ -44,7 +44,7 @@ Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-ad
    
    | Beállítás      | Ajánlott érték  | Leírás |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmazhat. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a * \<DNS name> . Redis.cache.Windows.net*lesz. | 
+   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmazhat. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a *\<DNS name> . Redis.cache.Windows.net* lesz. | 
    | **Előfizetés** | Legördülő menüből válassza ki az előfizetését. | Az előfizetés, amely alatt létre kell hoznia ezt az új Azure cache-t a Redis-példányhoz. | 
    | **Erőforráscsoport** | Legördülő listából válassza ki az erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet. | Azon erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat és az egyéb erőforrásokat. Az összes alkalmazás-erőforrás egy erőforráscsoporthoz való elhelyezésével könnyedén kezelheti és törölheti azokat. | 
    | **Hely** | Legördülő menüből válassza ki a kívánt helyet. | Válasszon ki egy [régiót](https://azure.microsoft.com/regions/) a többi olyan szolgáltatás közelében, amely a gyorsítótárat fogja használni. |
@@ -62,8 +62,8 @@ Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-ad
    
    | Beállítás      | Ajánlott érték  | Leírás |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Biztonsági mentés gyakorisága** | Legördülő menüből válassza ki a biztonsági mentés időközét, a választható lehetőségek közé **15 perc**, **30 perc**, **60 perc**, **6 óra**, **12 óra**és **24 óra**. | Ez az intervallum az előző biztonsági mentési művelet sikeres befejezését és az új biztonsági mentés eltelte után kezdődik. | 
-   | **Storage-fiók** | Legördülő menüből válassza ki a Storage-fiókját. | A Storage-fióknak ugyanabban a régióban és előfizetésben kell kiválasztania, mint a gyorsítótár, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik.  | 
+   | **Biztonsági mentés gyakorisága** | Legördülő menüből válassza ki a biztonsági mentés időközét, a választható lehetőségek közé **15 perc** , **30 perc** , **60 perc** , **6 óra** , **12 óra** és **24 óra** . | Ez az intervallum az előző biztonsági mentési művelet sikeres befejezését és az új biztonsági mentés eltelte után kezdődik. | 
+   | **Tárfiók** | Legördülő menüből válassza ki a Storage-fiókját. | A Storage-fióknak ugyanabban a régióban és előfizetésben kell kiválasztania, mint a gyorsítótár, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik.  | 
    | **Storage-kulcs** | Legördülő menüből válassza ki a használni kívánt **elsődleges kulcsot** vagy **másodlagos kulcsot** . | Ha az adatmegőrzési fiók tárolási kulcsa újragenerált, újra kell konfigurálnia a kívánt kulcsot a **tárolási kulcs** legördülő menüjéből. | 
 
     Az első biztonsági mentés a biztonsági mentés gyakorisági intervallumának eltelte után indul el.
@@ -85,9 +85,9 @@ Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-ad
 
 12. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
 
-13. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás**lehetőséget.
+13. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás** lehetőséget.
 
-Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra**mutat, a gyorsítótár készen áll a használatra. 
+Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra** mutat, a gyorsítótár készen áll a használatra. 
 
 ## <a name="persistence-faq"></a>Adatmegőrzés – gyakori kérdések
 Az alábbi lista az Azure cache Redis-megőrzési szolgáltatásával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
@@ -160,7 +160,7 @@ A AOF-megőrzés az átviteli sebességet körülbelül 15% – 20%-kal befolyá
 
 ### <a name="how-can-i-remove-the-second-storage-account"></a>Hogyan lehet eltávolítani a második Storage-fiókot?
 
-A AOF megőrzése másodlagos Storage-fiókot úgy távolíthatja el, hogy a második Storage-fiókot az első Storage-fiókkal megegyezőre állítja. Meglévő gyorsítótárak esetében az **adatmegőrzési** panel a gyorsítótár **erőforrás menüjéből** érhető el. A AOF megőrzésének letiltásához kattintson a **Letiltva**gombra.
+A AOF megőrzése másodlagos Storage-fiókot úgy távolíthatja el, hogy a második Storage-fiókot az első Storage-fiókkal megegyezőre állítja. Meglévő gyorsítótárak esetében az **adatmegőrzési** panel a gyorsítótár **erőforrás menüjéből** érhető el. A AOF megőrzésének letiltásához kattintson a **Letiltva** gombra.
 
 ### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Mi az az újraírás, és hogyan befolyásolja a gyorsítótárat?
 

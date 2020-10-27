@@ -8,16 +8,16 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 000971878e24c46892aaef1fa0c65237a4219883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e139954e6550e33edb75d01ab9dbec0bba543ea6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81678529"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548212"
 ---
 Miután a **Peering** társítási erőforrás üzembe helyezése sikeres volt, a következő lépésekkel tekintheti meg.
 
-1. Lépjen az **erőforráscsoportok**elemre, és válassza ki azt az erőforráscsoportot, amelyet a társítási **erőforrás** létrehozásakor kiválasztott. Ha túl sok erőforráscsoportot használ, használja a **szűrő** mezőt.
+1. Lépjen az **erőforráscsoportok** elemre, és válassza ki azt az erőforráscsoportot, amelyet a társítási **erőforrás** létrehozásakor kiválasztott. Ha túl sok erőforráscsoportot használ, használja a **szűrő** mezőt.
 
     > [!div class="mx-imgBorder"]
     > ![Erőforráscsoportok](../media/setup-direct-get-resourcegroup.png)
@@ -25,7 +25,7 @@ Miután a **Peering** társítási erőforrás üzembe helyezése sikeres volt, 
 1. Válassza ki a létrehozott **egyenrangú** erőforrást.
 
     > [!div class="mx-imgBorder"]
-    > ![Egyenrangú erőforrás nézet](../media/setup-direct-get-open.png)
+    > ![Képernyőkép, amely a létrehozott egyenrangú erőforrást jeleníti meg.](../media/setup-direct-get-open.png)
 
 1. Az **Áttekintés** oldalon az itt látható magas szintű információk láthatók.
 
@@ -37,14 +37,14 @@ Miután a **Peering** társítási erőforrás üzembe helyezése sikeres volt, 
     > [!div class="mx-imgBorder"]
     > ![Egyenrangú erőforrás ASN-információi](../media/setup-direct-get-asninfo.png)
 
-1. A bal oldalon válassza a **kapcsolatok**lehetőséget. A képernyő felső részén megjelenik az ASN és a Microsoft közötti kapcsolati kapcsolatok összefoglalása, a Metron belüli különböző létesítmények között. A kapcsolatok összegzését az **Áttekintés** lapról is elérheti a középső ablaktáblán látható **kapcsolatok** lehetőség kiválasztásával.
+1. A bal oldalon válassza a **kapcsolatok** lehetőséget. A képernyő felső részén megjelenik az ASN és a Microsoft közötti kapcsolati kapcsolatok összefoglalása, a Metron belüli különböző létesítmények között. A kapcsolatok összegzését az **Áttekintés** lapról is elérheti a középső ablaktáblán látható **kapcsolatok** lehetőség kiválasztásával.
 
     > [!div class="mx-imgBorder"]
     > ![Egyenrangú erőforrás-kapcsolatok](../media/setup-exchange-get-connectionssummary.png)
 
     * A **kapcsolódási állapot** megfelel a társ-összekapcsolási beállítás állapotának. Az ebben a mezőben megjelenített állapotok az Exchange-társítási [útmutatóban](../walkthrough-exchange-all.md)látható állapotjelző diagramot követik.
     * Az **IPv4-munkamenet állapota** és az **IPv6-munkamenet állapota** az IPv4-és IPv6 BGP-munkamenet-állapotoknak felel meg.  
-    * Amikor kiválaszt egy sort a képernyő felső részén, a lenti **kapcsolat** szakasz az egyes kapcsolatok részleteit jeleníti meg. A nyilak segítségével bontsa ki a **konfiguráció**, az **IPv4-cím**és az **IPv6-cím**elemet.
+    * Amikor kiválaszt egy sort a képernyő felső részén, a lenti **kapcsolat** szakasz az egyes kapcsolatok részleteit jeleníti meg. A nyilak segítségével bontsa ki a **konfiguráció** , az **IPv4-cím** és az **IPv6-cím** elemet.
 
     > [!div class="mx-imgBorder"]
-    > ![Egyenrangú erőforrás nézet](../media/setup-exchange-get-connectionsipv4.png)
+    > ![Képernyőkép, amely kiemel egy szakaszt kibontó nyilat.](../media/setup-exchange-get-connectionsipv4.png)

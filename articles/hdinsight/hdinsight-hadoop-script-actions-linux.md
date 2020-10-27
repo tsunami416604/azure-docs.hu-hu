@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: fa0ae0137064cc14d6d8f2adfe085ca255da73af
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c392ad7a098116a8f2224d6844d38dc40e01d753
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486310"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545990"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight
 
@@ -161,13 +161,13 @@ A HDInsight az STDOUT-ra és a STDERR-re írt parancsfájl-kimenetet naplózza. 
 > [!NOTE]  
 > Az Apache Ambari csak akkor érhető el, ha a fürt létrehozása sikeres volt. Ha parancsfájl-műveletet használ a fürt létrehozása során, és a létrehozás meghiúsul, tekintse meg a [parancsfájl-műveletek hibakeresése](./troubleshoot-script-action.md) a naplózott adatok elérésének egyéb módjaihoz című témakört.
 
-A legtöbb segédprogram és telepítési csomag már adatokat ír az STDOUT-ba és a STDERR-be, azonban érdemes lehet további naplózást hozzáadni. Ha szöveget szeretne a STDOUT-ba küldeni, használja a következőt: `echo` . Példa:
+A legtöbb segédprogram és telepítési csomag már adatokat ír az STDOUT-ba és a STDERR-be, azonban érdemes lehet további naplózást hozzáadni. Ha szöveget szeretne a STDOUT-ba küldeni, használja a következőt: `echo` . Például:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Alapértelmezés szerint `echo` a karakterláncot a következőre küldi: StdOut. A STDERR való közvetlen hozzáadáshoz adja hozzá a következőt: `>&2` `echo` . Példa:
+Alapértelmezés szerint `echo` a karakterláncot a következőre küldi: StdOut. A STDERR való közvetlen hozzáadáshoz adja hozzá a következőt: `>&2` `echo` . Például:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -256,7 +256,7 @@ Ez a szakasz útmutatást nyújt néhány olyan általános használati minta me
 
 Bizonyos esetekben előfordulhat, hogy a szkript paramétereket kér. Előfordulhat például, hogy a Ambari REST API használatakor szükség van a fürt rendszergazdai jelszavára.
 
-A parancsfájlnak átadott paraméterek *pozicionális paraméterekként*ismertek, és az `$1` első paraméterhez, a másodikhoz és a (z) rendszerhez vannak rendelve `$2` . `$0` a parancsfájl nevét tartalmazza.
+A parancsfájlnak átadott paraméterek *pozicionális paraméterekként* ismertek, és az `$1` első paraméterhez, a másodikhoz és a (z) rendszerhez vannak rendelve `$2` . `$0` a parancsfájl nevét tartalmazza.
 
 A parancsfájlnak átadott értékeket paraméterként aposztrófok (') közé kell foglalni. Így biztosítható, hogy az átadott érték literálként legyen kezelve.
 
@@ -290,9 +290,9 @@ A fürtök testreszabásához használt parancsfájlokat a következő helyekre 
 
 * A fürthöz társított __további Storage-fiók__ .
 
-* __Nyilvánosan olvasható URI__. Például egy URL-cím a OneDrive-on, a Dropboxban vagy más file hosting szolgáltatásban tárolt adatelérési ponthoz.
+* __Nyilvánosan olvasható URI__ . Például egy URL-cím a OneDrive-on, a Dropboxban vagy más file hosting szolgáltatásban tárolt adatelérési ponthoz.
 
-* Egy __Azure Data Lake Storage fiók__ , amely a HDInsight-fürthöz van társítva. A Azure Data Lake Storage és a HDInsight használatával kapcsolatos további információkért lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Egy __Azure Data Lake Storage fiók__ , amely a HDInsight-fürthöz van társítva. A Azure Data Lake Storage és a HDInsight használatával kapcsolatos további információkért lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](./hdinsight-hadoop-provision-linux-clusters.md).
 
     > [!NOTE]  
     > Az egyszerű szolgáltatásnak a HDInsight való Data Lake Storage eléréséhez olvasási hozzáféréssel kell rendelkeznie a parancsfájlhoz.
@@ -332,13 +332,13 @@ A Microsoft példákat biztosít a HDInsight-fürtön található összetevők t
 
 A fejlesztett parancsfájlok használatakor a következő hibák merülhetnek fel:
 
-**Hiba**: `$'\r': command not found` . Időnként ezt követi `syntax error: unexpected end of file` .
+**Hiba** : `$'\r': command not found` . Időnként ezt követi `syntax error: unexpected end of file` .
 
-*OK*: Ez a hiba akkor következik be, amikor egy parancsfájl SORAI a CRLF-sel végződik. A UNIX rendszerű rendszerek csak a TT-t várnak a sor végéig.
+*OK* : Ez a hiba akkor következik be, amikor egy parancsfájl SORAI a CRLF-sel végződik. A UNIX rendszerű rendszerek csak a TT-t várnak a sor végéig.
 
 Ez a probléma leggyakrabban akkor fordul elő, ha a parancsfájlt Windows-környezetben készíti el, mivel a CRLF egy, a Windows számos szövegszerkesztője számára végződő közös vonal.
 
-*Megoldás*: Ha a szövegszerkesztőben lehetőség van, válassza a Unix-formátum vagy a LF lehetőséget a sor befejezéséhez. A következő parancsokat is használhatja egy UNIX rendszeren a CRLF egy LF-re való módosításához:
+*Megoldás* : Ha a szövegszerkesztőben lehetőség van, válassza a Unix-formátum vagy a LF lehetőséget a sor befejezéséhez. A következő parancsokat is használhatja egy UNIX rendszeren a CRLF egy LF-re való módosításához:
 
 > [!NOTE]  
 > A következő parancsok nagyjából egyenértékűek, ha módosítani kell a CRLF sort a LF értékre. Válasszon egyet a rendszeren elérhető segédprogramok alapján.
@@ -350,11 +350,11 @@ Ez a probléma leggyakrabban akkor fordul elő, ha a parancsfájlt Windows-körn
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Közvetlenül módosítja a fájlt |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |A fájl egy olyan verziót tartalmaz, amely csak LF végződéssel rendelkezik. |
 
-**Hiba**: `line 1: #!/usr/bin/env: No such file or directory` .
+**Hiba** : `line 1: #!/usr/bin/env: No such file or directory` .
 
-*OK*: Ez a hiba akkor fordul elő, ha a parancsfájl UTF-8-as, bájtos rendelési JELLEL (BOM) lett mentve.
+*OK* : Ez a hiba akkor fordul elő, ha a parancsfájl UTF-8-as, bájtos rendelési JELLEL (BOM) lett mentve.
 
-*Megoldás*: mentse a fájlt ASCII-ként, vagy egy ANYAGJEGYZÉK nélküli UTF-8-ként. Az alábbi parancsot Linux vagy UNIX rendszerű rendszeren is használhatja az ANYAGJEGYZÉK nélküli fájl létrehozásához:
+*Megoldás* : mentse a fájlt ASCII-ként, vagy egy ANYAGJEGYZÉK nélküli UTF-8-ként. Az alábbi parancsot Linux vagy UNIX rendszerű rendszeren is használhatja az ANYAGJEGYZÉK nélküli fájl létrehozásához:
 
 ```bash
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
@@ -362,8 +362,8 @@ awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
 Cserélje le az helyére az `INFILE` anyagjegyzéket tartalmazó fájlt. `OUTFILE` egy új fájlnévnek kell lennie, amely az AJ nélkül tartalmazza a parancsfájlt.
 
-## <a name="next-steps"></a><a name="seeAlso"></a>Következő lépések
+## <a name="next-steps"></a><a name="seeAlso"></a>További lépések
 
 * Megtudhatja, hogyan [szabhatja testre a HDInsight-fürtöket parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md)
 * A [HDInsight .net SDK-referenciával](/dotnet/api/overview/azure/hdinsight) többet tudhat meg a HDInsight-t kezelő .NET-alkalmazások létrehozásáról
-* A [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) segítségével megtudhatja, hogyan használható a REST a felügyeleti műveletek végrehajtásához a HDInsight-fürtökön.
+* A [HDInsight REST API](/rest/api/hdinsight/) segítségével megtudhatja, hogyan használható a REST a felügyeleti műveletek végrehajtásához a HDInsight-fürtökön.

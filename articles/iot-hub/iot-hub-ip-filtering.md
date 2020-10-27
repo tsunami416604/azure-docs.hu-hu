@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: a9a95c0151ed6dd3a2ad4a9d548723cdff0bcfb8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 501b609d745e0a86bc1e00bccae54bb4f6e49376
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147077"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545276"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -39,7 +39,7 @@ Minden olyan IP-címről érkező kapcsolódási kísérlet, amely megfelel az I
 
 Alapértelmezés szerint a IoT hub-portálon található **IP-szűrő** rács üres. Ez az alapértelmezett beállítás azt jelenti, hogy a hub bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt.
 
-Az IP-szűrési beállítások lapon válassza a **hálózatkezelés**, a **nyilvános hozzáférés**, majd a **kijelölt IP-címtartományok**elemet:
+Az IP-szűrési beállítások lapon válassza a **hálózatkezelés** , a **nyilvános hozzáférés** , majd a **kijelölt IP-címtartományok** elemet:
 
 :::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="Alapértelmezett IP-szűrési beállítások IoT Hub":::
 
@@ -53,7 +53,7 @@ Az **IP-szűrési szabály hozzáadása** lehetőség kiválasztása után tölt
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Alapértelmezett IP-szűrési beállítások IoT Hub":::
 
-* Adjon **nevet** az IP-szűrési szabálynak. A névnek egyedi alfanumerikus sztringnek kell lennie, amely nem különbözteti meg a kis- és nagybetűket, és legfeljebb 128 karakterből áll. Csak az ASCII 7 bites alfanumerikus karakterei és a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` elfogadottak.
+* Adjon **nevet** az IP-szűrési szabálynak. A névnek egyedi alfanumerikus sztringnek kell lennie, amely nem különbözteti meg a kis- és nagybetűket, és legfeljebb 128 karakterből áll. Csak az ASCII 7 bites alfanumerikus karakterei és a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` elfogadottak.
 
 * Adjon meg egy egyedi IPv4-címet vagy egy IP-címblokkot CIDR-jelölésrendszer használatával. A CIDR-jelölés szerint például a 192.168.100.0/22 a 192.168.100.0 és a 192.168.103.255 közötti 1024 IPv4-címet jelöli.
 
@@ -75,7 +75,7 @@ IP-szűrési szabály törléséhez válassza az adott sorban található kuka i
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-szűrők beolvasása és frissítése az Azure CLI-vel
 
-A IoT Hub IP-szűrőinek lekérhető és frissíthető az [Azure CLI](/cli/azure/?view=azure-cli-latest)-n keresztül.
+A IoT Hub IP-szűrőinek lekérhető és frissíthető az [Azure CLI](/cli/azure/)-n keresztül.
 
 A IoT Hub aktuális IP-szűrőinek lekéréséhez futtassa a következőt:
 
@@ -163,8 +163,8 @@ Az IP-szűrési szabályok új sorrendjének mentéséhez kattintson a **Mentés
 
 :::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="Alapértelmezett IP-szűrési beállítások IoT Hub":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [IoT Hub metrikák](iot-hub-metrics.md)
+* [Figyelő IoT Hub](monitor-iot-hub.md)

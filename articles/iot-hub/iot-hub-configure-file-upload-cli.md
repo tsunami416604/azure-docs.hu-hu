@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: 830e72a8de047b0219cfa0be264fad2e1f83beb2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4dbda13ffe04e0a4214b24ccaca2b8103a39b9f2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142616"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536062"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>IoT Hub fájlfeltöltés konfigurálása az Azure CLI-vel
 
@@ -25,7 +25,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
+* [Azure CLI](/cli/azure/install-azure-cli)-vel.
 
 * Egy Azure IoT hub. Ha nem rendelkezik IoT-hubhoz, a [ `az iot hub create` paranccsal](/cli/azure/iot/hub#az-iot-hub-create) létrehozhat egyet, vagy [létrehozhat egy IoT hubot a portál használatával](iot-hub-create-through-portal.md).
 
@@ -35,7 +35,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
-1. A parancssorban futtassa a [login parancsot](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
+1. A parancssorban futtassa a [login parancsot](/cli/azure/get-started-with-azure-cli):
 
     ```azurecli
     az login
@@ -89,15 +89,15 @@ Mostantól konfigurálhatja az IoT hubot, hogy lehetővé tegye a [fájlok felt�
 
 A konfigurációhoz a következő értékek szükségesek:
 
-* **Storage Container**: egy Azure Storage-fiókban lévő blob-tároló az aktuális Azure-előfizetésben az IoT hub-hoz való hozzárendeléshez. Az előző szakaszban lekérte a szükséges Storage-fiók adatait. A IoT Hub automatikusan létrehoz egy írási engedéllyel rendelkező SAS URI-t a blob-tárolóhoz a fájlok feltöltésekor használandó eszközökhöz.
+* **Storage Container** : egy Azure Storage-fiókban lévő blob-tároló az aktuális Azure-előfizetésben az IoT hub-hoz való hozzárendeléshez. Az előző szakaszban lekérte a szükséges Storage-fiók adatait. A IoT Hub automatikusan létrehoz egy írási engedéllyel rendelkező SAS URI-t a blob-tárolóhoz a fájlok feltöltésekor használandó eszközökhöz.
 
-* **Értesítések fogadása a feltöltött fájlokról**: a fájlfeltöltés értesítéseinek engedélyezése vagy letiltása.
+* **Értesítések fogadása a feltöltött fájlokról** : a fájlfeltöltés értesítéseinek engedélyezése vagy letiltása.
 
-* **Sas TTL**: Ez a beállítás a IoT hub által az eszközre visszaadott sas URI-k élettartama. Alapértelmezés szerint egy órára van beállítva.
+* **Sas TTL** : Ez a beállítás a IoT hub által az eszközre visszaadott sas URI-k élettartama. Alapértelmezés szerint egy órára van beállítva.
 
-* **Fájl-értesítési beállítások alapértelmezett élettartama**: a fájl feltöltésével kapcsolatos értesítési idő a lejárta előtt. Alapértelmezés szerint egy napra van állítva.
+* **Fájl-értesítési beállítások alapértelmezett élettartama** : a fájl feltöltésével kapcsolatos értesítési idő a lejárta előtt. Alapértelmezés szerint egy napra van állítva.
 
-* **Fájl értesítéseinek maximális kézbesítési száma**: az a szám, ahányszor a IoT hub megpróbált kézbesíteni egy fájlfeltöltés-értesítést. Alapértelmezés szerint 10 értékre kell állítani.
+* **Fájl értesítéseinek maximális kézbesítési száma** : az a szám, ahányszor a IoT hub megpróbált kézbesíteni egy fájlfeltöltés-értesítést. Alapértelmezés szerint 10 értékre kell állítani.
 
 Az alábbi Azure CLI-parancsokkal konfigurálhatja a IoT hub fájlfeltöltés-beállításait:
 
@@ -138,8 +138,7 @@ További információ a IoT Hub fájl feltöltési képességeiről: [fájlok fe
 Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 
 * [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
-* [IoT Hub metrikák](iot-hub-metrics.md)
-* [Műveletek figyelése](iot-hub-operations-monitoring.md)
+* [Az IoT hub figyelése](monitor-iot-hub.md)
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 

@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 30ce2247207b34ab63df5b32b2a96f27256afdbb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147787"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547792"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub kifejezések glosszáriuma
 
@@ -60,7 +60,7 @@ Az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-
 
 ## <a name="azure-portal"></a>Azure Portal
 
-A [Microsoft Azure Portal](https://portal.azure.com) egy központi hely, ahol üzembe helyezheti és kezelheti Azure-erőforrásait. A tartalmat a _pengék_használatával rendezi.
+A [Microsoft Azure Portal](https://portal.azure.com) egy központi hely, ahol üzembe helyezheti és kezelheti Azure-erőforrásait. A tartalmat a _pengék_ használatával rendezi.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -218,7 +218,7 @@ A IoT Hub egy teljes körűen felügyelt Azure-szolgáltatás, amely megbízhat�
 
 ## <a name="iot-hub-metrics"></a>IoT Hub metrikák
 
-[IoT hub mérőszámok](iot-hub-metrics.md) adatokat biztosítanak az [Azure-előfizetésében](#subscription)lévő IoT-hubok állapotáról. IoT Hub mérőszámok lehetővé teszik a szolgáltatás általános állapotának és a hozzájuk kapcsolódó eszközök értékelését. IoT Hub mérőszámok segítségével megtekintheti, hogy mi történik az IoT-hubhoz, és hogyan vizsgálja meg a kiváltó problémákat anélkül, hogy kapcsolatba kellene lépnie az Azure ügyfélszolgálatával.
+[IoT hub mérőszámok](monitor-iot-hub-reference.md#metrics) adatokat biztosítanak az [Azure-előfizetésében](#subscription)lévő IoT-hubok állapotáról. IoT Hub mérőszámok lehetővé teszik a szolgáltatás általános állapotának és a hozzájuk kapcsolódó eszközök értékelését. IoT Hub mérőszámok segítségével megtekintheti, hogy mi történik az IoT-hubhoz, és hogyan vizsgálja meg a kiváltó problémákat anélkül, hogy kapcsolatba kellene lépnie az Azure ügyfélszolgálatával. További információért lásd: [IoT hub figyelése](monitor-iot-hub.md).
 
 ## <a name="iot-hub-query-language"></a>IoT Hub lekérdezés nyelve
 
@@ -329,7 +329,7 @@ Az Azure-előfizetések esetében a számlázás zajlik. Minden Ön által létr
 
 Egy [különálló eszköz](iot-hub-devguide-device-twins.md)kontextusában a Rendszertulajdonságok csak olvashatók, és információkat tartalmaznak az eszköz használatáról, például a legutóbbi tevékenység idejéről és a kapcsolatok állapotáról.
 
-## <a name="tags"></a>Címkék
+## <a name="tags"></a>Címkéket
 
 A [Twin eszközök](iot-hub-devguide-device-twins.md)kontextusában a címkék a megoldás által tárolt, és egy JSON-dokumentum formájában lekért eszköz-metaadatok. A címkék nem láthatók az eszközön futó alkalmazások számára.
 

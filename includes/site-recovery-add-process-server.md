@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31e61069c95be9bd1c7a684bb83ebcd93bcb14be
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67178824"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548266"
 ---
 1. Indítsa ez az Azure Site Recovery UnifiedSetup.exe fájlt
 2. Az **Előkészületek** területen válassza a **További folyamatkiszolgálók hozzáadása az üzembe helyezés horizontális felskálázásához** lehetőséget.
@@ -19,7 +19,7 @@ ms.locfileid: "67178824"
 3. A **Konfigurációs kiszolgáló részletei** területen adja meg a konfigurációs kiszolgáló IP-címét és a hozzáférési kódot.
 
    ![2. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-2.png)
-4. Az **Internetbeállítások**területen adja meg, hogy a konfigurációs kiszolgálón futó szolgáltató hogyan kapcsolódjon Azure site Recovery az interneten keresztül.
+4. Az **Internetbeállítások** területen adja meg, hogy a konfigurációs kiszolgálón futó szolgáltató hogyan kapcsolódjon Azure site Recovery az interneten keresztül.
 
    ![3. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-3.png)
 
@@ -30,7 +30,7 @@ ms.locfileid: "67178824"
      * Ha az egyéni proxy használatát választja, meg kell adnia a címet, a portot és a hitelesítő adatokat.
      * Ha proxyt használ, már engedélyezte a szolgáltatási URL-címekhez való hozzáférést.
 
-5. Az **Előfeltételek ellenőrzése** területen a telepítő ellenőrzi, hogy a telepítés végrehajtható-e. Ha megjelenik egy figyelmeztetés a **globális időszinkron ellenőrzéséről**, ellenőrizze, hogy a rendszeróra ideje (a **Dátum és idő** beállítások) megegyeznek-e az időzónával.
+5. Az **Előfeltételek ellenőrzése** területen a telepítő ellenőrzi, hogy a telepítés végrehajtható-e. Ha megjelenik egy figyelmeztetés a **globális időszinkron ellenőrzéséről** , ellenőrizze, hogy a rendszeróra ideje (a **Dátum és idő** beállítások) megegyeznek-e az időzónával.
 
      ![4. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-4.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "67178824"
      ![5. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-5.png)
 
 7. A **Telepítés helye** területen válassza ki, hová szeretné telepíteni a bináris fájlokat, és hol kívánja tárolni a gyorsítótárat. A kiválasztott meghajtón legalább 5 GB szabad lemezterületre van szükség, de javasoljuk, hogy a gyorsítótárazáshoz használt lemezen legyen legalább 600 GB szabad hely.
-     ![5. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-6.png)
+     ![A bináris fájlok és a gyorsítótár-tároló telepítési helyét bemutató képernyőkép.](./media/site-recovery-add-process-server/ps-page-6.png)
 
 8. A **Hálózat kiválasztása** területen adja meg a figyelőt (hálózati adaptert és SSL-portot), amelyen keresztül a konfigurációs kiszolgáló küldi és fogadja a replikált adatokat. A 9443-as port a replikációs forgalom küldésére és fogadására használt alapértelmezett port, ez azonban a környezeti követelményektől függően módosítható. A 9443-as port mellett a 443-as portot is megnyitjuk, amelyen keresztül egy webkiszolgáló a replikálási műveleteket vezényli. A replikációs forgalom küldésére és fogadására ne használja a 443-as portot.
 

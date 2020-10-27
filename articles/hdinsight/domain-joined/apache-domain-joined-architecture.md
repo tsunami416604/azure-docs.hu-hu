@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/11/2020
-ms.openlocfilehash: 452a3b04637126b40aca907178bebd6f74ec4481
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d951089e4247d9b959476c812b98e170d92bd8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79365779"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547979"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Enterprise Security Package használata a HDInsightban
 
@@ -57,7 +57,7 @@ További információ: HDInsight- [fürtök konfigurálása az ESP-vel az Azure 
 
 Ha helyszíni Active Directory-példánnyal vagy összetettebb Active Directory-beállítással rendelkezik a tartományhoz, a Azure AD Connect használatával szinkronizálhatja ezeket az identitásokat az Azure AD-be. Ezután engedélyezheti az Azure AD DSt a Active Directory bérlőn.
 
-Mivel a Kerberos a jelszó-kivonatokra támaszkodik, engedélyeznie kell [a jelszó-kivonatok szinkronizálását az Azure ad DSon](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
+Mivel a Kerberos a jelszó-kivonatokra támaszkodik, engedélyeznie kell [a jelszó-kivonatok szinkronizálását az Azure ad DSon](../../active-directory-domain-services/tutorial-create-instance.md).
 
 Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) összevonást használ, engedélyeznie kell a jelszó-kivonatolási szinkronizálást. (Az ajánlott beállításhoz tekintse meg [ezt a videót](https://youtu.be/qQruArbu2Ew).) A jelszó-kivonatolási szinkronizálás segít a vész-helyreállításban abban az esetben, ha a AD FS-infrastruktúra meghibásodik, és segít a kiszivárgott hitelesítő adatok védelmében is. További információ: jelszó- [kivonatoló szinkronizálás engedélyezése Azure ad Connect szinkronizálással](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
 
@@ -65,7 +65,7 @@ Az Azure AD és az Azure AD DS nélküli helyszíni Active Directory vagy Active
 
 Ha az összevonás használatban van, és a jelszó-kivonatok megfelelően vannak szinkronizálva, de hitelesítési hibák lépnek fel, ellenőrizze, hogy engedélyezve van-e a felhőalapú jelszó-hitelesítés a PowerShell egyszerű szolgáltatásnév számára. Ha nem, be kell állítania az Azure AD-bérlőhöz tartozó [HRD-házirendet](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) . A HRD házirend bejelölése és beállítása:
 
-1. Telepítse az előzetes verziójú [Azure ad PowerShell-modult](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
+1. Telepítse az előzetes verziójú [Azure ad PowerShell-modult](/powershell/azure/active-directory/install-adv2).
 
    ```powershell
    Install-Module AzureAD
@@ -111,7 +111,7 @@ Ha az összevonás használatban van, és a jelszó-kivonatok megfelelően vanna
         -refObjectID $policy.ID
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure-using-azure-adds.md)
 - [HDInsight-fürtök Apache Hive szabályzatának konfigurálása ESP-vel](apache-domain-joined-run-hive.md)

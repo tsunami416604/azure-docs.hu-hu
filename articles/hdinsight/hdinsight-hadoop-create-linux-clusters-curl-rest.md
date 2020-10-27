@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: f2b3810afab86b2f81a18bac442ef361404f2309
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b67ddd57c3a0787213763253cef5083f420cefe0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490356"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541672"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop-fürtök létrehozása az Azure REST API használatával
 
@@ -219,7 +219,7 @@ Kövesse az [Azure CLI használatának első](/cli/azure/get-started-with-az-cli
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
 > [!NOTE]  
-> Ezek a lépések a szolgáltatásnév létrehozása az Azure CLI- *vel* című részben olvashatók az egyszerű [szolgáltatásnév létrehozásához az erőforrások eléréséhez](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) . Ezek a lépések létrehoznak egy egyszerű szolgáltatásnevet, amely az Azure REST API való hitelesítéshez használatos.
+> Ezek a lépések a szolgáltatásnév létrehozása az Azure CLI- *vel* című részben olvashatók az egyszerű [szolgáltatásnév létrehozásához az erőforrások eléréséhez](/cli/azure/create-an-azure-service-principal-azure-cli) . Ezek a lépések létrehoznak egy egyszerű szolgáltatásnevet, amely az Azure REST API való hitelesítéshez használatos.
 
 1. A parancssorból használja az alábbi parancsot az Azure-előfizetések listázásához.
 
@@ -242,13 +242,13 @@ Kövesse az [Azure CLI használatának első](/cli/azure/get-started-with-az-cli
 
    A parancs által visszaadott érték az új alkalmazáshoz tartozó __alkalmazás azonosítója__ . Mentse ezt az értéket.
 
-3. Használja az alábbi parancsot egy egyszerű szolgáltatásnév létrehozásához az **alkalmazás-azonosító**használatával.
+3. Használja az alábbi parancsot egy egyszerű szolgáltatásnév létrehozásához az **alkalmazás-azonosító** használatával.
 
    ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     A parancs által visszaadott érték az __objektumazonosító__. Mentse ezt az értéket.
+     A parancs által visszaadott érték az __objektumazonosító__ . Mentse ezt az értéket.
 
 4. Rendelje hozzá a **tulajdonosi** szerepkört az egyszerű szolgáltatáshoz az **objektumazonosító** érték használatával. Használja a korábban beszerzett **előfizetés-azonosítót** .
 
@@ -274,7 +274,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 
 Ha ez a kérelem sikeres, egy 200 sorozatú választ kap, és a válasz törzse JSON-dokumentumot tartalmaz.
 
-A kérelem által visszaadott JSON-dokumentum egy **access_token**nevű elemet tartalmaz. **Access_token** értékét a rendszer a REST API felé irányuló kérelmek hitelesítésére használja.
+A kérelem által visszaadott JSON-dokumentum egy **access_token** nevű elemet tartalmaz. **Access_token** értékét a rendszer a REST API felé irányuló kérelmek hitelesítésére használja.
 
 ```json
 {

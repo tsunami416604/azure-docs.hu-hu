@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: 5c5c7a5adae9891f764f714d1700c6024376de02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15c7ed4ca9d04e4bb314eea8b92bef749d2369b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205395"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537660"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Azure cache a Redis-kezeléshez – gyakori kérdések
 Ez a cikk az Azure cache Redis való felügyeletével kapcsolatos gyakori kérdésekre ad választ.
@@ -63,7 +63,7 @@ A Redis-eszközök letöltésével kapcsolatos utasításokért tekintse meg a [
 * A teszteléshez használt ügyfél virtuális gépnek ugyanabban a régióban kell lennie, mint a Redis-példányhoz tartozó Azure cache-nek.
 * Azt javasoljuk, hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez használja, mivel azok jobb hardvert használnak, és a legjobb eredményt kell biztosítani.
 * Győződjön meg arról, hogy a kiválasztott ügyfél virtuális gépe legalább annyi számítási és sávszélességi képességgel rendelkezik, mint a tesztelt gyorsítótár.
-* Engedélyezze a VRSS az ügyfélszámítógépen, ha Windows rendszeren van. [Részletekért lásd itt](https://technet.microsoft.com/library/dn383582.aspx).
+* Engedélyezze a VRSS az ügyfélszámítógépen, ha Windows rendszeren van. [Részletekért lásd itt](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).
 * A prémium szintű Redis-példányok jobb hálózati késést és átviteli sebességet biztosítanak, mivel a processzor és a hálózat esetében is jobb hardveren futnak.
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Milyen szempontokat kell figyelembe venni a gyakori Redis parancsok használatakor?
@@ -127,7 +127,7 @@ Ezeknek az információknak az alapján határozottan azt javasoljuk, hogy az ü
 
 A beállítás konfigurálása:
 
-* Azt javasoljuk, hogy programozottan módosítsa ezt a beállítást a [szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódussal a alkalmazásban `global.asax.cs` . Példa:
+* Azt javasoljuk, hogy programozottan módosítsa ezt a beállítást a [szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódussal a alkalmazásban `global.asax.cs` . Például:
 
     ```csharp
     private readonly int minThreads = 200;
@@ -144,7 +144,7 @@ A beállítás konfigurálása:
     > [!NOTE]
     > A metódus által megadott érték globális beállítás, amely hatással van a teljes alkalmazástartomány. Ha például egy 4 magos géppel rendelkezik, és a *minWorkerThreads* és a *minIoThreads* processzort 50-ra szeretné beállítani, akkor a **szálkészlet munkaszála belépett. SetMinThreads (200, 200)** értéket kell használnia.
 
-* A szálak minimális beállítása a [ *minIoThreads* vagy a *minWorkerThreads* konfigurációs beállítással](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) is megadható a alkalmazásban `<processModel>` `Machine.config` , általában a következő helyen: `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **A szálak minimális számának beállítása így általában nem ajánlott, mert ez egy rendszerszintű beállítás.**
+* A szálak minimális beállítása a [ *minIoThreads* vagy a *minWorkerThreads* konfigurációs beállítással](/previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100)) is megadható a alkalmazásban `<processModel>` `Machine.config` , általában a következő helyen: `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **A szálak minimális számának beállítása így általában nem ajánlott, mert ez egy rendszerszintű beállítás.**
 
   > [!NOTE]
   > A konfigurációs elemben megadott érték egy *alapszintű* beállítás. Ha például egy 4 magos géppel rendelkezik, és szeretné, hogy a *minIoThreads* -beállítás értéke 200, akkor a következőt fogja használni: `<processModel minIoThreads="50"/>` .

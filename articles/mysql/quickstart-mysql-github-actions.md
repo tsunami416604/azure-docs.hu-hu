@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 7b4620c739b2f94cb6b96743280cd1decbbb746e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ce045da7d21c2af0dfde5ee896b4f7f343ce6545
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326187"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541264"
 ---
 # <a name="use-github-actions-to-connect-to-azure-mysql"></a>A GitHub-műveletek használata az Azure MySQL-hez való kapcsolódáshoz
 
@@ -39,7 +39,7 @@ A fájl két részből áll:
 
 ## <a name="generate-deployment-credentials"></a>Központi telepítési hitelesítő adatok előállítása
 
-Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
+Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
 
 Cserélje le a helyőrzőket az Azure-ban `server-name` üzemeltetett MySQL-kiszolgáló nevére. Cserélje le a és a értékét `subscription-id` `resource-group` a MySQL-kiszolgálóhoz csatlakoztatott előfizetés-azonosítóra és erőforrás-csoportra.  
 
@@ -66,7 +66,7 @@ A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő ada
 
 ## <a name="copy-the-mysql-connection-string"></a>A MySQL-kapcsolatok karakterláncának másolása 
 
-A Azure Portal lépjen a Azure Database for MySQL-kiszolgálóhoz, és nyissa meg a **Beállítások**  >  **kapcsolódási karakterláncokat**. Másolja az **ADO.NET** kapcsolati sztringet. Cserélje le a és a helyőrző értékét `your_database` `your_password` . A kapcsolódási karakterlánc ehhez hasonlóan fog kinézni. 
+A Azure Portal lépjen a Azure Database for MySQL-kiszolgálóhoz, és nyissa meg a **Beállítások**  >  **kapcsolódási karakterláncokat** . Másolja az **ADO.NET** kapcsolati sztringet. Cserélje le a és a helyőrző értékét `your_database` `your_password` . A kapcsolódási karakterlánc ehhez hasonlóan fog kinézni. 
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
@@ -77,7 +77,7 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
 
 1. A [githubon](https://github.com/)tallózzon a tárházban.
 
-1. Válassza a **beállítások > titkok > új titok**lehetőséget.
+1. Válassza a **beállítások > titkok > új titok** lehetőséget.
 
 1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adja meg a titkot a nevet `AZURE_CREDENTIALS` .
 
@@ -98,7 +98,7 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
 
 1. Nyissa meg a GitHub-tárház **műveleteit** . 
 
-2. Válassza **a saját munkafolyamat beállítása**lehetőséget. 
+2. Válassza **a saját munkafolyamat beállítása** lehetőséget. 
 
 2. Töröljön mindent a `on:` munkafolyamat-fájl szakasza után. Előfordulhat például, hogy a hátralévő munkafolyamat így néz ki. 
 
@@ -184,11 +184,11 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
  
     :::image type="content" source="media/quickstart-mysql-github-actions/github-actions-run-mysql.png" alt-text="A GitHub-műveletek futtatásának naplója":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha az Azure MySQL-adatbázisra és-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg az Azure-t és a GitHub-integrációt](https://docs.microsoft.com/azure/developer/github/)
+> [Ismerje meg az Azure-t és a GitHub-integrációt](/azure/developer/github/)

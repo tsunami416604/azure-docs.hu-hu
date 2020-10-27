@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87874027"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541706"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával
 
@@ -25,7 +25,7 @@ A Azure Portal egy webalapú felügyeleti eszköz a Microsoft Azure felhőben ü
 
 A Azure Portal a fürt legtöbb tulajdonságát elérhetővé teszi. Azure Resource Manager sablonok használatával számos részletet elolvashat. További információ: [Apache Hadoop-fürtök létrehozása a HDInsight-ben Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 
@@ -33,13 +33,13 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A felső menüben válassza az **+ erőforrás létrehozása**lehetőséget.
+1. A felső menüben válassza az **+ erőforrás létrehozása** lehetőséget.
 
     ![Új fürt létrehozása a Azure Portalban](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Új fürt létrehozása a Azure Portalban")
 
 1. Válassza az **Analytics**  >  **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
 
-## <a name="basics"></a>Alapvető beállítások
+## <a name="basics"></a>Alapbeállítások
 
 ![HDInsight létrehozása a fürt alapjaival](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Új fürt létrehozása a Azure Portalban")
 
@@ -48,12 +48,12 @@ Az **alapok** lapon adja meg a következő információkat:
 |Tulajdonság |Leírás |
 |---|---|
 |Előfizetés|A legördülő listában válassza ki a fürthöz használt Azure-előfizetést.|
-|Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget.|
+|Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget.|
 |Fürt neve|Adjon meg egy globálisan egyedi nevet.|
 |Régió|A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.|
 |Fürt típusa|A lista megnyitásához kattintson a **fürt típusának kiválasztása** elemre. Válassza ki a kívánt fürt típusát a listából. A HDInsight-fürtök különböző típusokból származnak. Azok a munkaterhelésnek vagy technológiának felelnek meg, amelyhez a fürt be van hangolva. Nincs támogatott módszer a több típust egyesítő fürt létrehozásához.|
-|Verzió|A legördülő listából válassza ki a kívánt **verziót**. Ha nem tudja, mit kell választania, használja az alapértelmezett verziót. További tájékoztatás a [HDInsight cluster versions](hdinsight-component-versioning.md) (A HDInsight-fürtök verziói) című cikkben olvasható.|
-|Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett érték a **rendszergazda**.|
+|Verzió|A legördülő listából válassza ki a kívánt **verziót** . Ha nem tudja, mit kell választania, használja az alapértelmezett verziót. További tájékoztatás a [HDInsight cluster versions](hdinsight-component-versioning.md) (A HDInsight-fürtök verziói) című cikkben olvasható.|
+|Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett érték a **rendszergazda** .|
 |Fürt bejelentkezési jelszava|Adja meg a jelszót.|
 |Fürt bejelentkezési jelszavának megerősítése|Írja be újra a jelszót|
 |Secure Shell- (SSH-) felhasználónév|Adja meg a felhasználónevet, az alapértelmezett érték a **sshuser** .|
@@ -61,22 +61,22 @@ Az **alapok** lapon adja meg a következő információkat:
 
 Válassza a **Tovább: Storage >>** a következő lapra való továbblépés előtt.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 > [!WARNING] 
-> Június 15-én kezdődően a 2020-es ügyfelek nem fognak tudni új szolgáltatásnevet létrehozni a HDInsight használatával. Lásd: [egyszerű szolgáltatásnév és tanúsítványok létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) Azure Active Directory használatával.
+> Június 15-én kezdődően a 2020-es ügyfelek nem fognak tudni új szolgáltatásnevet létrehozni a HDInsight használatával. Lásd: [egyszerű szolgáltatásnév és tanúsítványok létrehozása](../active-directory/develop/howto-create-service-principal-portal.md) Azure Active Directory használatával.
 
 ![HDInsight létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Új fürt létrehozása a Azure Portal-Storage-ban")
 
 ### <a name="primary-storage"></a>Elsődleges tárterület
 
-Az **elsődleges tároló típusa**legördülő listából válassza ki az alapértelmezett tárolási típust. A később betöltendő mezők a kiválasztás alapján változnak. **Azure Storage**esetén:
+Az **elsődleges tároló típusa** legördülő listából válassza ki az alapértelmezett tárolási típust. A később betöltendő mezők a kiválasztás alapján változnak. **Azure Storage** esetén:
 
-1. A **kiválasztási módszer**esetében válassza **a kiválasztás listából lehetőséget**, vagy **használja a hozzáférési kulcsot**.
-    * Válassza ki a **listából**az **elsődleges Storage-fiókot** a legördülő listából, vagy válassza az **új létrehozása**lehetőséget.
-    * A **hozzáférési kulcs használatához**adja meg a **Storage-fiók nevét**. Ezután adja meg a **hozzáférési kulcsot**.
+1. A **kiválasztási módszer** esetében válassza **a kiválasztás listából lehetőséget** , vagy **használja a hozzáférési kulcsot** .
+    * Válassza ki a **listából** az **elsődleges Storage-fiókot** a legördülő listából, vagy válassza az **új létrehozása** lehetőséget.
+    * A **hozzáférési kulcs használatához** adja meg a **Storage-fiók nevét** . Ezután adja meg a **hozzáférési kulcsot** .
 
-1. A **tároló**mezőben fogadja el az alapértelmezett értéket, vagy adjon meg egy újat.
+1. A **tároló** mezőben fogadja el az alapértelmezett értéket, vagy adjon meg egy újat.
 
 ### <a name="additional-azure-storage"></a>További Azure Storage
 
@@ -99,7 +99,7 @@ A **Biztonság és hálózat** lapon adja meg a következő információkat:
 
 |Tulajdonság |Leírás |
 |---|---|
-|Vállalati biztonsági csomag|Nem kötelező: jelölje be a jelölőnégyzetet a **Enterprise Security Package**használatához. További információ: HDInsight- [fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services használatával](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).|
+|Vállalati biztonsági csomag|Nem kötelező: jelölje be a jelölőnégyzetet a **Enterprise Security Package** használatához. További információ: HDInsight- [fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services használatával](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).|
 |TLS|Nem kötelező: válasszon ki egy TLS-verziót a legördülő listából. További információ: [Transport Layer Security](./transport-layer-security.md).|
 |Virtuális hálózat|Nem kötelező: válasszon ki egy meglévő virtuális hálózatot és alhálózatot a legördülő listából. További információ: [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight-fürtökhöz](hdinsight-plan-virtual-network-deployment.md). A cikk a virtuális hálózat konkrét konfigurációs követelményeit tartalmazza.|
 |Lemez titkosítási beállításai|Nem kötelező: jelölje be a jelölőnégyzetet a titkosítás használatához. További információ: [ügyfél által felügyelt kulcs lemezének titkosítása](./disk-encryption.md).|
@@ -122,7 +122,7 @@ A **konfiguráció + díjszabás** lapon adja meg a következő információkat:
 |Az autoskálázás engedélyezése|Nem kötelező: jelölje be a jelölőnégyzetet a funkció engedélyezéséhez. További információ: az [Azure HDInsight-fürtök automatikus méretezése](./hdinsight-autoscale-clusters.md).|
 |+ Parancsfájl hozzáadása művelet|Nem kötelező: Ez a beállítás akkor működik, ha egyéni parancsfájllal szeretné testre szabni a fürtöt, mivel a fürt létrehozása folyamatban van. További információ a parancsfájl-műveletekről: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](hdinsight-hadoop-customize-cluster-linux.md).|
 
-Válassza a **felülvizsgálat + >>létrehozása ** elemet a fürtkonfiguráció ellenőrzéséhez és a végső lapra való haladáshoz.
+Válassza a **felülvizsgálat + >>létrehozása** elemet a fürtkonfiguráció ellenőrzéséhez és a végső lapra való haladáshoz.
 
 ## <a name="review--create"></a>Ellenőrzés és létrehozás
 

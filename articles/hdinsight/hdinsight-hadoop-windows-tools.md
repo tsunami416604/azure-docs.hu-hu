@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: a663eb65bcd85a1b2e91e6f2ad90dc64b61273ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6482b2ec07a0473ddbea2098d37c5d67c8b68704
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484763"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539700"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Munka Apache Hadoop ökoszisztémán a HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL
 
@@ -31,17 +31,17 @@ Példák a PowerShell-lel elvégezhető feladatokra:
 * [Apache Hive lekérdezések futtatása a PowerShell használatával](hadoop/apache-hadoop-use-hive-powershell.md).
 * [Fürtök kezelése a PowerShell](hdinsight-administer-use-powershell.md)-lel.
 
-Kövesse az [Azure PowerShell telepítésének és konfigurálásának](https://docs.microsoft.com/powershell/azure/install-az-ps) lépéseit a legújabb verzió beszerzéséhez.
+Kövesse az [Azure PowerShell telepítésének és konfigurálásának](/powershell/azure/install-az-ps) lépéseit a legújabb verzió beszerzéséhez.
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>Böngészőben futtatható segédprogramok
 
 A következő segédprogramok egy böngészőben futtatott webes KEZELŐFELÜLETtel rendelkeznek:
-* A **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)** egy interaktív, parancssori rendszerhéj, amely a böngészőben és a Azure Portal belül fut.
+* A **[Azure Cloud Shell](../cloud-shell/overview.md)** egy interaktív, parancssori rendszerhéj, amely a böngészőben és a Azure Portal belül fut.
 
 * Az **[Apache Ambari webes felhasználói felülete](hdinsight-hadoop-manage-ambari.md)** a Azure Portalben elérhető felügyeleti és figyelési segédprogram, amely különböző típusú feladatok felügyeletére használható, például:
     * [Az Apache Ambari használata a REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Apache Hive nézet az Apache Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md)
-    * [Apache TEZ-nézet az Apache Ambari](hdinsight-debug-ambari-tez-view.md)
+    * [Apache TEZ-nézet az Apache Ambari](./index.yml)
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>A Visual studióhoz készült Data Lake-(Hadoop-) eszközök
 
@@ -84,7 +84,7 @@ A HDInsight Apache Spark-fürtök közé tartoznak az Apache Zeppelin jegyzetfü
 
 Ha olyan helyzetbe kerül, ahol olyan eszközt vagy technológiát kell használnia, amely csak Linux rendszeren érhető el, vegye figyelembe a következő lehetőségeket:
 
-* A **bash on Ubuntu on Windows 10** Linux alrendszert biztosít a Windows rendszeren. A bash lehetővé teszi a Linux-segédprogramok közvetlen futtatását anélkül, hogy egy dedikált Linux-telepítést kellene fenntartania. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) rendszerhez.  Más [UNIX-rendszerhéj](https://www.gnu.org/software/bash/) is működik.
+* A **bash on Ubuntu on Windows 10** Linux alrendszert biztosít a Windows rendszeren. A bash lehetővé teszi a Linux-segédprogramok közvetlen futtatását anélkül, hogy egy dedikált Linux-telepítést kellene fenntartania. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](/windows/wsl/install-win10) rendszerhez.  Más [UNIX-rendszerhéj](https://www.gnu.org/software/bash/) is működik.
 * A **Windows Docker** számos Linux-alapú eszközhöz biztosít hozzáférést, és közvetlenül a Windows rendszerből is futtatható. A Docker használatával például közvetlenül a Windowsból futtathatja a Beeline-ügyfelet a Kaptárhoz. Azt is megteheti, hogy a Docker használatával futtat egy helyi Jupyter notebookot, és távolról csatlakozik a Spark on HDInsight. [Ismerkedés a Windowshoz készült Docker szolgáltatással](https://docs.docker.com/docker-for-windows/)
 * A **[MobaXTerm](https://mobaxterm.mobatek.net/)** lehetővé teszi, hogy grafikusan tallózással keresse meg a fürt FÁJLRENDSZERét SSH-kapcsolaton keresztül.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b0d3ac4775ca057856c28ab42197bb734f149d6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085939"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534940"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Oozie használata az Apache Hadooppal a munkafolyamatok Linux-alapú Azure HDInsighton való meghatározásához és futtatásához
 
@@ -31,11 +31,11 @@ A Oozie segítségével a rendszerre vonatkozó feladatokat is ütemezhet, péld
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Hadoop-fürt a HDInsight-on**. Lásd: Ismerkedés [a HDInsight Linux rendszeren](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **Hadoop-fürt a HDInsight-on** . Lásd: Ismerkedés [a HDInsight Linux rendszeren](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* **Egy SSH-ügyfél**. Lásd: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Egy SSH-ügyfél** . Lásd: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **Egy Azure SQL Database**.  Lásd: [adatbázis létrehozása Azure SQL Databaseban a Azure Portalban](../sql-database/sql-database-get-started.md).  Ez a cikk egy **oozietest**nevű adatbázist használ.
+* **Egy Azure SQL Database** .  Lásd: [adatbázis létrehozása Azure SQL Databaseban a Azure Portalban](../azure-sql/database/single-database-create-quickstart.md).  Ez a cikk egy **oozietest** nevű adatbázist használ.
 
 * A fürtök elsődleges tárolójának URI-sémája. `wasb://` Azure Storage esetén `abfs://` Azure Data Lake Storage Gen2 vagy Azure Data Lake Storage Gen1 esetén `adl://` . Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő lesz: `wasbs://` . Lásd még: [biztonságos átvitel](../storage/common/storage-require-secure-transfer.md).
 
@@ -130,7 +130,7 @@ A következő lépésekkel hozhat létre egy, a-lekérdezést definiáló kaptá
 
      A munkafolyamat-definíciós fájl workflow.xml ebben a cikkben a futtatáskor továbbítja ezeket az értékeket erre a HiveQL-parancsfájlra.
 
-1. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**, írja be az **Y**értéket, majd válassza az **ENTER billentyűt**.  
+1. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt** , írja be az **Y** értéket, majd válassza az **ENTER billentyűt** .  
 
 1. A következő parancs használatával másolhatja `useooziewf.hql` `wasbs:///tutorials/useoozie/useooziewf.hql` :
 
@@ -215,7 +215,7 @@ A Oozie munkafolyamat-definíciókat Hadoop Process Definition Language (hPDL) n
 
      Jegyezze fel a `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` bejegyzést is a Sqoop szakaszban. Ez a bejegyzés arra utasítja a Oozie, hogy ezt az archívumot a Sqoop számára elérhetővé tegye a művelet futtatásakor.
 
-3. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**, írja be az **Y**értéket, majd válassza az **ENTER billentyűt**.  
+3. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt** , írja be az **Y** értéket, majd válassza az **ENTER billentyűt** .  
 
 4. A következő parancs használatával másolja a fájlt a következőre `workflow.xml` `/tutorials/useoozie/workflow.xml` :
 
@@ -382,7 +382,7 @@ A feladatdefiníció leírja, hol található a workflow.xml. Azt is leírja, ho
 
 4. A nano Editor megnyitása után illessze be a szerkesztett XML-fájlt a fájl tartalmába.
 
-5. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**, írja be az **Y**értéket, majd válassza az **ENTER billentyűt**.
+5. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt** , írja be az **Y** értéket, majd válassza az **ENTER billentyűt** .
 
 ## <a name="submit-and-manage-the-job"></a>A feladatok elküldése és kezelése
 
@@ -489,9 +489,9 @@ További információ a Oozie parancsról: [Apache Oozie parancssori eszköz](ht
 
 A Oozie REST API segítségével saját eszközöket hozhat létre, amelyek a Oozie használatával működnek. A következő HDInsight-specifikus információk a Oozie REST API használatával kapcsolatban:
 
-* **URI**: a REST API a fürtön kívülről is elérheti `https://CLUSTERNAME.azurehdinsight.net/oozie` .
+* **URI** : a REST API a fürtön kívülről is elérheti `https://CLUSTERNAME.azurehdinsight.net/oozie` .
 
-* **Hitelesítés**: a hitelesítéshez használja az API-t a fürt http-fiókjával (admin) és a jelszóval. Például:
+* **Hitelesítés** : a hitelesítéshez használja az API-t a fürt http-fiókjával (admin) és a jelszóval. Például:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
@@ -517,11 +517,11 @@ A Oozie webes felhasználói felületének eléréséhez hajtsa végre a követk
 
 2. Az alagút létrehozása után nyissa meg a Ambari webes felhasználói felületét a böngészőben az URI használatával `http://headnodehost:8080` .
 
-3. A lap bal oldalán válassza a **Oozie**  >  **Gyorshivatkozások**  >  **Oozie webes felhasználói felület**lehetőséget.
+3. A lap bal oldalán válassza a **Oozie**  >  **Gyorshivatkozások**  >  **Oozie webes felhasználói felület** lehetőséget.
 
     ![Apache Ambari oozie webes felhasználói felületének lépései](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
-4. A Oozie webes felhasználói felülete alapértelmezés szerint megjeleníti a futó munkafolyamat-feladatokat. A munkafolyamat összes feladatának megtekintéséhez válassza a **minden feladat**lehetőséget.
+4. A Oozie webes felhasználói felülete alapértelmezés szerint megjeleníti a futó munkafolyamat-feladatokat. A munkafolyamat összes feladatának megtekintéséhez válassza a **minden feladat** lehetőséget.
 
     ![Oozie web Console munkafolyamat-feladatok](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
@@ -529,13 +529,13 @@ A Oozie webes felhasználói felületének eléréséhez hajtsa végre a követk
 
     ![HDInsight Apache Oozie-feladatok adatai](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
-6. A feladat **adatai** lapon megtekintheti az alapszintű feladatok adatait és a feladaton belüli egyes műveleteket. A felül található lapfülek segítségével megtekintheti **a feladatdefiníció, a** **feladatok konfigurációja**, a **Projektnapló**hozzáférése vagy a feladathoz tartozó aciklikus gráf (Dag) megtekintését **.**
+6. A feladat **adatai** lapon megtekintheti az alapszintű feladatok adatait és a feladaton belüli egyes műveleteket. A felül található lapfülek segítségével megtekintheti **a feladatdefiníció, a** **feladatok konfigurációja** , a **Projektnapló** hozzáférése vagy a feladathoz tartozó aciklikus gráf (Dag) megtekintését **.**
 
-   * **Projektnapló**: válassza a **naplók beolvasása** gombot a feladatokhoz tartozó összes napló beolvasásához, vagy használja a **keresési szűrő megadása** mezőt a naplók szűréséhez.
+   * **Projektnapló** : válassza a **naplók beolvasása** gombot a feladatokhoz tartozó összes napló beolvasásához, vagy használja a **keresési szűrő megadása** mezőt a naplók szűréséhez.
 
        ![HDInsight Apache Oozie-feladatok naplója](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
-   * **Dr. feladata**: a Dag a munkafolyamaton keresztül végrehajtott adatelérési utak grafikus áttekintése.
+   * **Dr. feladata** : a Dag a munkafolyamaton keresztül végrehajtott adatelérési utak grafikus áttekintése.
 
        !["HDInsight Apache Oozie Job Dag"](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
@@ -543,13 +543,13 @@ A Oozie webes felhasználói felületének eléréséhez hajtsa végre a követk
 
     ![HDInsight oozie-feladatok adatai](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
-8. Láthatja a művelet részleteit, például a **konzol URL-címére**mutató hivatkozást. Ezzel a hivatkozással megtekintheti a feladathoz tartozó feladatok követési adatait.
+8. Láthatja a művelet részleteit, például a **konzol URL-címére** mutató hivatkozást. Ezzel a hivatkozással megtekintheti a feladathoz tartozó feladatok követési adatait.
 
 ## <a name="schedule-jobs"></a>Feladatok ütemezhetnek
 
 A koordinátor használatával megadhatja a feladatok kezdési, befejezési és előfordulási gyakoriságát. A munkafolyamat ütemtervének definiálásához hajtsa végre a következő lépéseket:
 
-1. A következő parancs használatával hozzon létre egy **coordinator.xml**nevű fájlt:
+1. A következő parancs használatával hozzon létre egy **coordinator.xml** nevű fájlt:
 
     ```bash
     nano coordinator.xml
@@ -576,7 +576,7 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
     > * `${coordTimezone}`: A koordinátori feladatok olyan rögzített időzónában vannak, amely nem rendelkezik a nyári időszámítás idejével, jellemzően UTC használatával. Ezt az időzónát a *Oozie feldolgozási időzónájának nevezzük.*
     > * `${wfPath}`: A workflow.xml elérési útja.
 
-2. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**, írja be az **Y**értéket, majd válassza az **ENTER billentyűt**.
+2. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt** , írja be az **Y** értéket, majd válassza az **ENTER billentyűt** .
 
 3. Ha a fájlt a feladatokhoz tartozó munkakönyvtárba szeretné másolni, használja a következő parancsot:
 
@@ -631,7 +631,7 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
 
        Ezek az értékek a kezdési időpontot 12:00 PM-re, 2018-ra, a befejezési időt pedig 2018-ra állítja. A feladatok futtatásának időköze napi értékre van állítva. A gyakoriság percben, tehát 24 óra x 60 perc = 1440 perc. Végül az időzóna az UTC értékre van állítva.
 
-5. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**, írja be az **Y**értéket, majd válassza az **ENTER billentyűt**.
+5. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt** , írja be az **Y** értéket, majd válassza az **ENTER billentyűt** .
 
 6. A művelet elküldéséhez és elindításához használja a következő parancsot:
 
@@ -654,7 +654,7 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
 
     ![A OOzie webkonzoljának Job info lapja](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan határozhat meg egy Oozie-munkafolyamatot, és hogyan futtathat egy Oozie-feladatot. Ha többet szeretne megtudni a HDInsight használatáról, tekintse meg a következő cikkeket:
 

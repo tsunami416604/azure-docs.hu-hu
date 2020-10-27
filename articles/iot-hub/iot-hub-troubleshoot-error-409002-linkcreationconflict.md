@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: amqp
-ms.openlocfilehash: 20d39b1f5a11f20eb5d12f34337787b382c820f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70b9be6fdb500d9f877659a12e6fdc0e206ea964
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81758734"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538221"
 ---
 # <a name="409002-linkcreationconflict"></a>409002 LinkCreationConflict
 
@@ -22,7 +22,7 @@ Ez a cikk a **409002 LinkCreationConflict** -hibák okait és megoldásait ismer
 
 ## <a name="symptoms"></a>Hibajelenségek
 
-A következő hiba jelenik meg: **409002 LinkCreationConflict** naplózva a diagnosztikai naplókban az eszköz leválasztása vagy a felhőből az eszközre irányuló üzenet meghibásodása esetén. 
+Az 409002-as hiba a naplók **LinkCreationConflict** , valamint az eszköz leválasztása vagy a felhőből az eszközre küldött üzenet meghibásodása esetén jelenik meg.
 
 <!-- When using AMQP? -->
 
@@ -30,11 +30,11 @@ A következő hiba jelenik meg: **409002 LinkCreationConflict** naplózva a diag
 
 Ez a hiba általában akkor fordul elő, ha IoT Hub észleli, hogy egy ügyfél több kapcsolatban áll. Abban az esetben, ha egy új kapcsolódási kérelem érkezik egy meglévő csatlakozással rendelkező eszközre, IoT Hub lezárja a meglévő kapcsolódást ezzel a hibával.
 
-### <a name="cause-1"></a>1. ok
+### <a name="cause-1"></a>1\. ok
 
 A leggyakoribb esetben a különálló probléma (például az [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)) az eszköz leválasztását okozza. Az eszköz azonnal megpróbálja újból létrehozni a kapcsolatot, de IoT Hub továbbra is a csatlakoztatott eszközt tekinti. IoT Hub bezárja az előző kapcsolatokat, és naplózza ezt a hibát.
 
-### <a name="cause-2"></a>2. ok
+### <a name="cause-2"></a>2\. ok
 
 A hibás eszköz-oldalsó logika hatására az eszköz létrehozza a kapcsolatot, ha az egyik már meg van nyitva.
 

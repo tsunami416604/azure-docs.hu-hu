@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 1de11a07bdbac153b6813915cfa52edfa6484aec
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876937"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546721"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>Eldobott Azure Database for MySQL kiszolgáló visszaállítása
 
@@ -36,7 +36,7 @@ Az eldobott Azure Database for MySQL kiszolgáló visszaállításához a követ
    
  3. Kattintson duplán a MySQL-kiszolgáló törlése eseményre, és kattintson a JSON fülre, és jegyezze fel a "resourceId" és a "submissionTimestamp" attribútumokat a JSON-kimenetben. A resourceId formátuma a következő:/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforMySQL/servers/deletedserver.
  
- 4. Lépjen a [kiszolgáló létrehozása REST API lapra](https://docs.microsoft.com/rest/api/mysql/servers/create) , és kattintson a "kipróbálás" fülre zöld színnel, és jelentkezzen be az Azure-fiókjával.
+ 4. Lépjen a [kiszolgáló létrehozása REST API lapra](/rest/api/mysql/servers/create) , és kattintson a "kipróbálás" fülre zöld színnel, és jelentkezzen be az Azure-fiókjával.
  
  5. Adja meg a 3. lépésben rögzített resourceGroupName, serverName (a kiszolgáló neve) subscriptionId, amely a resourceId attribútumból származik, az API-Version pedig előre ki van töltve, ahogy az a képen látható.
  

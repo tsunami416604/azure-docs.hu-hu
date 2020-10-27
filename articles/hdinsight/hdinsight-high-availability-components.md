@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 4d0405df1863ee47374242ba4fba5b845711d3a1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424523"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539717"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatások
 
 Az analitikai összetevők optimális rendelkezésre állásának biztosítása érdekében a HDInsight egy egyedi architektúrával lett kifejlesztve, amely biztosítja a kritikus szolgáltatások magas rendelkezésre állását (HA). Az architektúra egyes összetevőit a Microsoft fejlesztette ki automatikus feladatátvétel biztosításához. A többi összetevő a szabványos Apache-összetevők, amelyek az adott szolgáltatások támogatására lettek telepítve. Ez a cikk ismerteti az IF Service-modell architektúráját a HDInsight-ben, hogy a HDInsight hogyan támogatja a feladatátvételt a HA szolgáltatások esetében, valamint az ajánlott eljárásokat a más szolgáltatásokból való helyreállításhoz.
 
 > [!NOTE]
-> Ez a cikk a *Slave*kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+> Ez a cikk a *Slave* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="high-availability-infrastructure"></a>Magas rendelkezésre állású infrastruktúra
 
@@ -49,7 +49,7 @@ A következő szakaszokban részletesebben tájékozódhat arról, hogy ezek a s
 
 ## <a name="hdinsight-high-availability-services"></a>HDInsight magas rendelkezésre állású szolgáltatások
 
-A Microsoft támogatja a négy apache-szolgáltatást a következő táblázatban a HDInsight-fürtökben. Az Apache-összetevők által támogatott magas rendelkezésre állású szolgáltatásokból való különbségtételhez *HDINSIGHT ha-szolgáltatásoknak*nevezzük.
+A Microsoft támogatja a négy apache-szolgáltatást a következő táblázatban a HDInsight-fürtökben. Az Apache-összetevők által támogatott magas rendelkezésre állású szolgáltatásokból való különbségtételhez *HDINSIGHT ha-szolgáltatásoknak* nevezzük.
 
 | Szolgáltatás | Fürtcsomópontok | Fürtök típusai | Cél |
 |---|---|---|---|
@@ -65,7 +65,7 @@ A Microsoft támogatja a négy apache-szolgáltatást a következő táblázatba
 
 Mindegyik HDInsight-fürt két átjárócsomópontokkal rendelkezik aktív és készenléti módban. A HDInsight HA szolgáltatások csak a átjárócsomópontokkal futnak. Ezeknek a szolgáltatásoknak mindig az aktív átjárócsomóponthoz kell futniuk, és karbantartási módba kell állítaniuk a készenléti átjárócsomóponthoz.
 
-HA a Apache ZooKeeper HDInsight megfelelő állapotait szeretné fenntartani, és gyors feladatátvételt szeretne biztosítani, az aktív átjárócsomóponthoz-választást az elosztott alkalmazások koordinációs szolgáltatása biztosítja. A HDInsight Emellett néhány háttérben futó Java-folyamatot is kiépít, amelyek a HDInsight HEKTÁRos szolgáltatások feladatátvételi eljárását hangolják össze. Ezek a szolgáltatások a következők: a fő feladatátvevő vezérlő, a Slave feladatátvételi vezérlő, a *Master-ha-Service*és a *Slave-ha-Service*.
+HA a Apache ZooKeeper HDInsight megfelelő állapotait szeretné fenntartani, és gyors feladatátvételt szeretne biztosítani, az aktív átjárócsomóponthoz-választást az elosztott alkalmazások koordinációs szolgáltatása biztosítja. A HDInsight Emellett néhány háttérben futó Java-folyamatot is kiépít, amelyek a HDInsight HEKTÁRos szolgáltatások feladatátvételi eljárását hangolják össze. Ezek a szolgáltatások a következők: a fő feladatátvevő vezérlő, a Slave feladatátvételi vezérlő, a *Master-ha-Service* és a *Slave-ha-Service* .
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
@@ -134,7 +134,7 @@ A fonal erőforráskezelő magas rendelkezésre állása független a NameNode �
 
 A HDInsight HBase-fürtök támogatják HBase Master magas rendelkezésre állást. A átjárócsomópontokkal-on futó egyéb HA-szolgáltatásokkal ellentétben a HBase-főkiszolgálók a három Zookeeper csomóponton futnak, ahol az egyik az aktív főkiszolgáló, a másik kettő pedig készenléti. A NameNode-hez hasonlóan HBase Master az Apache Zookeeper-vel való koordinátákat a Leader-választásokhoz, és automatikus feladatátvételt hajt végre, ha a jelenlegi aktív főkiszolgáló problémába Egyszerre csak egy aktív HBase Master van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](hdinsight-high-availability-linux.md)
+- [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](./hdinsight-business-continuity.md)
 - [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)

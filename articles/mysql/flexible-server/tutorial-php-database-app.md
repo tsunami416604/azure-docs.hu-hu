@@ -8,19 +8,19 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90946599"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537932"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Oktatóanyag: PHP (Laravel) és MySQL rugalmas kiszolgálói (előzetes verzió) alkalmazás létrehozása Azure App Service
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
 
-A [Azure app Service](https://docs.microsoft.com/azure/app-service/overview) a Linux operációs rendszer használatával jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez az oktatóanyag bemutatja, hogyan hozhat létre PHP-alkalmazást az Azure-ban, és hogyan csatlakoztatható egy MySQL-adatbázishoz. Ha elkészült, a Linuxon Azure App Service fut egy [Laravel](https://laravel.com/) -alkalmazás.
+A [Azure app Service](../../app-service/overview.md) a Linux operációs rendszer használatával jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez az oktatóanyag bemutatja, hogyan hozhat létre PHP-alkalmazást az Azure-ban, és hogyan csatlakoztatható egy MySQL-adatbázishoz. Ha elkészült, a Linuxon Azure App Service fut egy [Laravel](https://laravel.com/) -alkalmazás.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az adatmodell frissítése és az alkalmazás ismételt üzembe helyezése
 > * Az alkalmazás kezelése az Azure Portalon
 
-Ha nem rendelkezik Azure- [előfizetéssel](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+Ha nem rendelkezik Azure- [előfizetéssel](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -96,7 +96,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL-kapcsolat konfigurálása
 
-Hozzon létre egy *.env* nevű fájlt az adattár gyökérkönyvtárjában. Másolja az alábbi változókat a *.env* fájlba. Cserélje le a _ &lt; root_password>_ helyőrzőt a MySQL root felhasználó jelszavára.
+Hozzon létre egy *.env* nevű fájlt az adattár gyökérkönyvtárjában. Másolja az alábbi változókat a *.env* fájlba. Cserélje le a _&lt; root_password>_ helyőrzőt a MySQL root felhasználó jelszavára.
 
 ```txt
 APP_ENV=local
@@ -139,7 +139,7 @@ Egy böngészőben nyissa meg a `http://localhost:8000` oldalt. Vegyen fel néh�
 A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>MySQL rugalmas kiszolgáló létrehozása (előzetes verzió)
-Ebben a lépésben egy MySQL-adatbázist hoz létre [Azure Database for MySQL rugalmas kiszolgálón](/azure/mysql) , amely nyilvános előzetes verzióban érhető el. Később konfigurálni fogja a PHP-alkalmazást az adatbázishoz való csatlakozásra. A [Azure Cloud shellben](https://docs.microsoft.com/azure/cloud-shell/overview)hozzon létre egy kiszolgálót a [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) paranccsal.
+Ebben a lépésben egy MySQL-adatbázist hoz létre [Azure Database for MySQL rugalmas kiszolgálón](../index.yml) , amely nyilvános előzetes verzióban érhető el. Később konfigurálni fogja a PHP-alkalmazást az adatbázishoz való csatlakozásra. A [Azure Cloud shellben](../../cloud-shell/overview.md)hozzon létre egy kiszolgálót a [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) paranccsal.
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
@@ -196,7 +196,7 @@ Ebben a lépésben csatlakoztatja a PHP-alkalmazást a MySQL-adatbázishoz, amel
 
 ### <a name="configure-the-database-connection"></a>Az adatbázis-kapcsolat konfigurálása
 
-Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a helyőrző _ &lt; MySQL-Server-name>_ *DB_HOST* és *DB_USERNAME*.
+Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a helyőrző _&lt; MySQL-Server-name>_ *DB_HOST* és *DB_USERNAME* .
 
 ```
 APP_ENV=production
@@ -280,7 +280,7 @@ Ebben a lépésben üzembe helyezi a MySQL-hez csatlakoztatott PHP-alkalmazást 
 
 Az FTP és a helyi git egy üzembe helyezési felhasználó használatával üzembe helyezhető egy Azure-webalkalmazásban. Miután konfigurálta az üzembe helyezési felhasználót, használhatja azt az összes Azure-környezetben. A fiók szintű központi telepítési felhasználóneve és jelszava eltér az Azure-előfizetés hitelesítő adataitól.
 
-Az üzembe helyezési felhasználó konfigurálásához futtassa az az [WebApp Deployment User set](https://docs.microsoft.com/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) parancsot a Azure Cloud shell. Cserélje le a _ &lt; Felhasználónév>_ és a _ &lt; jelszó>_ az üzembe helyezési felhasználói felhasználónevére és jelszavára.
+Az üzembe helyezési felhasználó konfigurálásához futtassa az az [WebApp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) parancsot a Azure Cloud shell. Cserélje le a _&lt; Felhasználónév>_ és a _&lt; jelszó>_ az üzembe helyezési felhasználói felhasználónevére és jelszavára.
 
 A felhasználónévnek egyedinek kell lennie az Azure-ban, a helyi git-leküldések esetében pedig nem tartalmazhatja a "@" szimbólumot.
 A jelszónak legalább nyolc karakterből kell állnia, és a következő három elem közül kettőnek kell lennie: betűk, számok és szimbólumok.
@@ -293,7 +293,7 @@ A JSON-kimenet null értékként jeleníti meg a jelszót. Ha a "Conflict" hiba�
 
 ### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
-A Cloud Shell hozzon létre egy App Service tervet az erőforráscsoporthoz az az [appservice Plan Create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) paranccsal. Az alábbi példa egy myAppServicePlan nevű App Service tervet hoz létre az ingyenes díjszabási szinten (--SKU F1) és egy Linux-tárolóban (--is-Linux).
+A Cloud Shell hozzon létre egy App Service tervet az erőforráscsoporthoz az az [appservice Plan Create](/cli/azure/appservice/plan#az-appservice-plan-create) paranccsal. Az alábbi példa egy myAppServicePlan nevű App Service tervet hoz létre az ingyenes díjszabási szinten (--SKU F1) és egy Linux-tárolóban (--is-Linux).
 
 az appservice Plan Create--Name myAppServicePlan--Resource-Group myResourceGroup--SKU F1--is-Linux
 
@@ -301,9 +301,9 @@ az appservice Plan Create--Name myAppServicePlan--Resource-Group myResourceGroup
 
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Hozzon létre egy [webalkalmazást](https://docs.microsoft.com/azure/app-service/overview#app-service-on-linux) a myAppServicePlan app Service tervben.
+Hozzon létre egy [webalkalmazást](../../app-service/overview.md#app-service-on-linux) a myAppServicePlan app Service tervben.
 
-A Cloud Shell az az [WebApp Create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) parancsot használhatja. Az alábbi példában cserélje le az _ &lt; app-Name>t_ egy globálisan egyedi alkalmazás nevére (érvényes karakterek:, `a-z` `0-9` és `-` ). A futtatókörnyezet beállítása `PHP|7.0` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa [az az WebApp List-Runtimes--Linux](https://docs.microsoft.com/cli/azure/webapp#az-webapp-list-runtimes)parancsot.
+A Cloud Shell az az [WebApp Create](/cli/azure/webapp#az-webapp-create) parancsot használhatja. Az alábbi példában cserélje le az _&lt; app-Name>t_ egy globálisan egyedi alkalmazás nevére (érvényes karakterek:, `a-z` `0-9` és `-` ). A futtatókörnyezet beállítása `PHP|7.0` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa [az az WebApp List-Runtimes--Linux](/cli/azure/webapp#az-webapp-list-runtimes)parancsot.
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -336,7 +336,7 @@ Ezzel létrehozott egy üres, új webalkalmazást, engedélyezett Git üzemelő 
 
 Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adhatja meg az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) paranccsal.
 
-Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a helyőrzők _ &lt; alkalmazás neve>_ és a _ &lt; mysql-Server-Name>_.
+Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a helyőrzők _&lt; alkalmazás neve>_ és a _&lt; mysql-Server-Name>_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -365,7 +365,7 @@ A helyi terminálablakban használja a `php artisan` parancsot egy új alkalmaz�
 php artisan key:generate --show
 ```
 
-A Cloud Shell a parancs használatával állítsa be az alkalmazás kulcsát a App Service alkalmazásban [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) . Cserélje le a helyőrzők _ &lt; alkalmazás neve>_ és a _ &lt; outputofphpartisankey:>készítése _elemre.
+A Cloud Shell a parancs használatával állítsa be az alkalmazás kulcsát a App Service alkalmazásban [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) . Cserélje le a helyőrzők _&lt; alkalmazás neve>_ és a _&lt; outputofphpartisankey:>készítése_ elemre.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -377,17 +377,17 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 A [Laravel alkalmazás életciklusa](https://laravel.com/docs/5.4/lifecycle) az alkalmazás gyökérkönyvtára helyett a _nyilvános_ könyvtárban kezdődik. Az App Service alapértelmezett PHP Docker-rendszerképe az Apache rendszert használja, és nem engedélyezi a `DocumentRoot` testreszabását a Laravel számára. A `.htaccess` használatával azonban újraírhatja az összes kérést úgy, hogy azok a _/public_ könyvtárra mutassanak a gyökérkönyvtár helyett. Az adattár gyökérkönyvtárában egy `.htaccess` már hozzá lett adva erre a célra. Ennek segítségével a Laravel-alkalmazás készen áll az üzembe helyezésre.
 
-További információt a [hely gyökerének módosítása](https://docs.microsoft.com/azure/app-service/configure-language-php?pivots=platform-linux#change-site-root)című témakörben talál.
+További információt a [hely gyökerének módosítása](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root)című témakörben talál.
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
-A helyi terminálablakba visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le a _ &lt; deploymentLocalGitUrl-from-Create-Step>_ elemet annak a git-távoli URL-címére, amelyet a [create a Web App (Webalkalmazás létrehozása](#create-a-web-app)) mentett.
+A helyi terminálablakba visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le a _&lt; deploymentLocalGitUrl-from-Create-Step>_ elemet annak a git-távoli URL-címére, amelyet a [create a Web App (Webalkalmazás létrehozása](#create-a-web-app)) mentett.
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Ha a git Hitelesítőadat-kezelő kéri a hitelesítő adatok megadását, akkor győződjön meg arról, hogy megadja az **üzembe helyezési felhasználó konfigurálása**során létrehozott hitelesítő adatokat, nem pedig a Azure Portalba való bejelentkezéshez használt hitelesítő adatokat.
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Ha a git Hitelesítőadat-kezelő kéri a hitelesítő adatok megadását, akkor győződjön meg arról, hogy megadja az **üzembe helyezési felhasználó konfigurálása** során létrehozott hitelesítő adatokat, nem pedig a Azure Portalba való bejelentkezéshez használt hitelesítő adatokat.
 
 ```bash
 git push azure master
@@ -466,7 +466,7 @@ A módosítás helyi adatbázisban való végrehajtásához futtasson Laravel-ad
 php artisan migrate
 ```
 
-A [Laravel elnevezési szabály](https://laravel.com/docs/5.4/eloquent#defining-models) alapján a `Task` modell (lásd: _app/Task.php_) leképezése alapértelmezés szerint a `tasks` táblára történik.
+A [Laravel elnevezési szabály](https://laravel.com/docs/5.4/eloquent#defining-models) alapján a `Task` modell (lásd: _app/Task.php_ ) leképezése alapértelmezés szerint a `tasks` táblára történik.
 
 ### <a name="update-application-logic"></a>Az alkalmazáslogika frissítése
 
@@ -560,7 +560,7 @@ A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és t
 
 Ha felvett feladatokat, azok megmaradnak az adatbázisban. Az adatséma frissítései érintetlenül hagyják a meglévő adatokat.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha várhatóan nem lesz szüksége ezekre az erőforrásokra a jövőben, törölje az erőforráscsoportot a következő parancs Cloud Shellben történő futtatásával:
 
 ```bash
@@ -569,9 +569,9 @@ az group delete --name myResourceGroup
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Erőforrások kezelése Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal) <br/>
+> [Erőforrások kezelése Azure Portal](../../azure-resource-manager/management/manage-resources-portal.md) <br/>
 > [!div class="nextstepaction"]
 > [A kiszolgáló kezelése](how-to-manage-server-cli.md)

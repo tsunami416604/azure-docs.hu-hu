@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: ccdd7b16c7ec292b8f4f4c155a6f9497c606a489
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371813"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166216"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Az Azure-beli számlázási információkhoz való hozzáférés kezelése
 
@@ -53,13 +53,13 @@ Ha a fiókadminisztrátor hozzárendelte a megfelelő szerepköröket a felhaszn
 
 1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
-    ![Képernyőkép az Azure Portal keresőmezőjéről](./media/manage-billing-access/billing-search-cost-management-billing.png)
+    ![Képernyőkép a Szolgáltatások szakaszban található Cost Management + Billing lehetőség kiemelésével.](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
 1. A bal oldali panelen válassza az **Előfizetések** elemet. A hozzáférésétől függően előfordulhat, hogy csak egy számlázási hatókör kiválasztása után tudja kiválasztani az **Előfizetések** elemet.
 
     ![Képernyőkép az előfizetések kiválasztásáról](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. Válassza a **Számlák**, majd a **Számlához való hozzáférés** lehetőséget.
+1. Válassza a **Számlák** , majd a **Számlához való hozzáférés** lehetőséget.
 
     ![Képernyőkép a számlákhoz való hozzáférés delegálásáról](./media/manage-billing-access/aa-optin01.png)
 
@@ -94,7 +94,7 @@ A Számlázási olvasó funkció előzetes verzióként érhető el, és még ne
 1. A **Kiválasztás** szövegmezőbe írja be a hozzáadni kívánt felhasználó nevét vagy e-mail-címét.
 1. Válassza ki a felhasználót.
 1. Kattintson a **Mentés** gombra.
-    ![Képernyőkép a Szerepkör-hozzárendelés hozzáadása lehetőségre történő kattintásról](./media/manage-billing-access/billing-save-role-assignment.png)
+    ![Képernyőkép a Mentés gomb kiemelésével.](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. Néhány pillanat múlva a rendszer hozzárendeli a felhasználóhoz az előfizetés Számlázási olvasó szerepkörét.
 

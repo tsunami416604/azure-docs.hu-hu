@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: e49fd0d2b4d8fc801372dbc766c2fdc7beb21b10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6086aecc73f04b25e95d3c93c60abd2164a5610
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905917"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544239"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privát hivatkozás a Azure Database for MySQL
 
 A privát kapcsolat lehetővé teszi, hogy privát végponton keresztül csatlakozzon az Azure különböző PaaS-szolgáltatásaihoz. Az Azure Private Link lényegében elérhetővé teszi az Azure-szolgáltatásokat a virtuális magánhálózaton belül. A PaaS-erőforrások a magánhálózati IP-cím használatával érhetők el, ugyanúgy, mint a virtuális hálózat más erőforrásai.
 
-A privát kapcsolati funkciót támogató Pásti-szolgáltatások listáját a privát hivatkozás [dokumentációjában](https://docs.microsoft.com/azure/private-link/index)tekintheti meg. A privát végpont egy adott [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) és alhálózaton belüli magánhálózati IP-cím.
+A privát kapcsolati funkciót támogató Pásti-szolgáltatások listáját a privát hivatkozás [dokumentációjában](../private-link/index.yml)tekintheti meg. A privát végpont egy adott [VNet](../virtual-network/virtual-networks-overview.md) és alhálózaton belüli magánhálózati IP-cím.
 
 > [!NOTE]
 > A privát hivatkozás funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MySQL-kiszolgálókon érhető el. Győződjön meg arról, hogy az adatbázis-kiszolgáló ezen díjszabási szintek egyikében található.
@@ -28,7 +28,7 @@ Az adatok Azure Database for MySQLban való szűrése akkor történik meg, amik
 
 Vegyünk például egy olyan forgatókönyvet, amely egy MySQL Workbench alkalmazást futtat egy Azure-beli virtuális gépen (VM), amely az USA nyugati régiójában kiépített Azure Database for MySQL kiszolgálóhoz csatlakozik. Az alábbi példa bemutatja, hogyan korlátozható a hozzáférés nyilvános végpontokkal a Azure Database for MySQL hálózati hozzáférés-vezérlés használatával.
 
-* Tiltsa le a nyilvános végponton keresztül Azure Database for MySQL összes Azure-szolgáltatás forgalmát az *Azure-szolgáltatások* kikapcsolásának engedélyezése beállítással. Győződjön meg arról, hogy az IP-címek vagy tartományok nem férhetnek hozzá a kiszolgálóhoz a [Tűzfalszabályok](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules) vagy a [virtuális hálózati szolgáltatás végpontján](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet)keresztül.
+* Tiltsa le a nyilvános végponton keresztül Azure Database for MySQL összes Azure-szolgáltatás forgalmát az *Azure-szolgáltatások* kikapcsolásának engedélyezése beállítással. Győződjön meg arról, hogy az IP-címek vagy tartományok nem férhetnek hozzá a kiszolgálóhoz a [Tűzfalszabályok](./concepts-firewall-rules.md) vagy a [virtuális hálózati szolgáltatás végpontján](./concepts-data-access-and-security-vnet.md)keresztül.
 
 * Csak a virtuális gép magánhálózati IP-címének használatával engedélyezze a Azure Database for MySQL forgalmat. További információt a [szolgáltatás-végpont](concepts-data-access-and-security-vnet.md) és a [VNet-tűzfalszabályok](howto-manage-vnet-using-portal.md)című cikkben talál.
 
@@ -45,7 +45,7 @@ A privát hivatkozással mostantól olyan hálózati hozzáférés-vezérlőket 
 
 Amikor a helyi gépekről csatlakozik a nyilvános végponthoz, az IP-címet egy kiszolgálói szintű tűzfalszabály használatával kell hozzáadnia az IP-alapú tűzfalhoz. Habár ez a modell jól működik, hogy lehetővé tegye az egyes gépekhez való hozzáférést a fejlesztési vagy tesztelési feladatokhoz, nehéz felügyelni éles környezetben.
 
-Privát hivatkozással engedélyezheti a létesítmények közötti hozzáférést a privát végponthoz [Express Route](https://azure.microsoft.com/services/expressroute/) (er), privát vagy [VPN-alagút](https://docs.microsoft.com/azure/vpn-gateway/)használatával. Ezt követően a nyilvános végponton keresztül is letilthatják az összes hozzáférést, és nem használják az IP-alapú tűzfalat.
+Privát hivatkozással engedélyezheti a létesítmények közötti hozzáférést a privát végponthoz [Express Route](https://azure.microsoft.com/services/expressroute/) (er), privát vagy [VPN-alagút](../vpn-gateway/index.yml)használatával. Ezt követően a nyilvános végponton keresztül is letilthatják az összes hozzáférést, és nem használják az IP-alapú tűzfalat.
 
 > [!NOTE]
 > Bizonyos esetekben a Azure Database for MySQL és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
@@ -57,8 +57,8 @@ Privát hivatkozással engedélyezheti a létesítmények közötti hozzáféré
 
 Privát végpontok szükségesek a privát kapcsolat engedélyezéséhez. Ezt a következő útmutatók segítségével végezheti el.
 
-* [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
-* [Parancssori felület](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
+* [Azure Portal](./howto-configure-privatelink-portal.md)
+* [Parancssori felület](./howto-configure-privatelink-cli.md)
 
 ### <a name="approval-process"></a>Jóváhagyási folyamat
 Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE), a MySQL-rendszergazda felügyelheti a magánhálózati végponti kapcsolatokat (PEC) Azure Database for MySQL. A hálózati rendszergazda és a DBA közötti feladatok elkülönítése hasznos lehet az Azure Database for MySQL-kapcsolat kezeléséhez. 
@@ -89,17 +89,17 @@ Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, egymássa
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Válassza ki a privát végpont portált":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Csatlakozás egy Azure-beli virtuális gépről a Virtual Network (VNet)
-Konfigurálja a [VNet](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) -társítást úgy, hogy az Azure-beli virtuális gép Azure Database for MySQL kapcsolatot hozzon létre egy egyenrangú VNet.
+Konfigurálja a [VNet](../virtual-network/tutorial-connect-virtual-networks-powershell.md) -társítást úgy, hogy az Azure-beli virtuális gép Azure Database for MySQL kapcsolatot hozzon létre egy egyenrangú VNet.
 
 ### <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Csatlakozás egy Azure-beli virtuális gépről a VNet-VNet-környezetben
-A [VNet-to-VNET VPN Gateway-kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) konfigurálása egy másik régióban vagy előfizetésben lévő Azure-beli virtuális gépről létesített Azure Database for MySQL kapcsolat létesítéséhez.
+A [VNet-to-VNET VPN Gateway-kapcsolat](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) konfigurálása egy másik régióban vagy előfizetésben lévő Azure-beli virtuális gépről létesített Azure Database for MySQL kapcsolat létesítéséhez.
 
 ### <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Csatlakozás helyszíni környezetből VPN-kapcsolaton keresztül
 A helyszíni környezet és a Azure Database for MySQL közötti kapcsolat létesítéséhez válassza ki és implementálja a következő lehetőségek egyikét:
 
-* [Pont – hely kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
-* [Helyek közötti VPN-kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
-* [ExpressRoute áramkör](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
+* [Pont – hely kapcsolat](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Helyek közötti VPN-kapcsolat](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [ExpressRoute áramkör](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Privát hivatkozás a tűzfalszabályok együttes használatával
 
@@ -115,7 +115,7 @@ A következő helyzetek és eredmények akkor lehetségesek, ha a privát hivatk
 
 Ha csak privát végpontokon szeretné használni a Azure Database for MySQL elérését, letilthatja az összes nyilvános végpont (például a [Tűzfalszabályok](concepts-firewall-rules.md) és a [VNet-végpontok](concepts-data-access-and-security-vnet.md)) beállítását az adatbázis-kiszolgálón a **nyilvános hálózati hozzáférési konfiguráció megtagadása** beállítás megadásával. 
 
-Ha ezt a beállítást az *Igen*értékre állítja, csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for MySQL. Ha ez a beállítás *nem*értékre van állítva, akkor az ügyfelek a tűzfal vagy a VNet szolgáltatás végpontjának beállításai alapján kapcsolódhatnak a Azure Database for MySQLhoz. Emellett, ha a magánhálózati hozzáférés értéke be van állítva, az ügyfelek nem tudják felvenni és/vagy frissíteni a meglévő "tűzfalszabályok" és "VNet szolgáltatás végpontjának szabályait".
+Ha ezt a beállítást az *Igen* értékre állítja, csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for MySQL. Ha ez a beállítás *nem* értékre van állítva, akkor az ügyfelek a tűzfal vagy a VNet szolgáltatás végpontjának beállításai alapján kapcsolódhatnak a Azure Database for MySQLhoz. Emellett, ha a magánhálózati hozzáférés értéke be van állítva, az ügyfelek nem tudják felvenni és/vagy frissíteni a meglévő "tűzfalszabályok" és "VNet szolgáltatás végpontjának szabályait".
 
 > [!Note]
 > Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for PostgreSQL-Single Server támogatja a általános célú és a memóriára optimalizált díjszabási szintet.
@@ -128,11 +128,11 @@ Ha meg szeretné tudni, hogyan állíthatja be a Azure Database for MySQL szám�
 
 A Azure Database for MySQL biztonsági funkcióival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* Ha Azure Database for MySQL tűzfalat szeretne konfigurálni, tekintse meg a [tűzfal támogatása](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules)című témakört.
+* Ha Azure Database for MySQL tűzfalat szeretne konfigurálni, tekintse meg a [tűzfal támogatása](./concepts-firewall-rules.md)című témakört.
 
-* Ha meg szeretné tudni, hogyan konfigurálhatja a virtuális hálózati szolgáltatás végpontját a Azure Database for MySQL számára, tekintse meg a [virtuális hálózatok elérésének konfigurálása](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet)című témakört.
+* Ha meg szeretné tudni, hogyan konfigurálhatja a virtuális hálózati szolgáltatás végpontját a Azure Database for MySQL számára, tekintse meg a [virtuális hálózatok elérésének konfigurálása](./concepts-data-access-and-security-vnet.md)című témakört.
 
-* A Azure Database for MySQL kapcsolatok áttekintését lásd: [Azure Database for MySQL kapcsolati architektúra](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture)
+* A Azure Database for MySQL kapcsolatok áttekintését lásd: [Azure Database for MySQL kapcsolati architektúra](./concepts-connectivity-architecture.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
