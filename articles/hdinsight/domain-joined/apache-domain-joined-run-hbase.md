@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73044647"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544953"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
 
@@ -45,7 +45,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-domain-users"></a>Tartományi felhasználók létrehozása
 
-Látogasson el a [HDInsight-fürt létrehozásához Enterprise Security Package](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)segítségével, és ismerkedjen meg a **sales_user1** és a **marketing_user1** tartományi felhasználók létrehozásával. Az éles forgatókönyvekben a tartományi felhasználókat az Active Directory-bérlő adja meg.
+Látogasson el a [HDInsight-fürt létrehozásához Enterprise Security Package](./apache-domain-joined-configure-using-azure-adds.md)segítségével, és ismerkedjen meg a **sales_user1** és a **marketing_user1** tartományi felhasználók létrehozásával. Az éles forgatókönyvekben a tartományi felhasználókat az Active Directory-bérlő adja meg.
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>HBase táblák létrehozása és mintaadatok importálása
 
@@ -93,13 +93,13 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
 
 ## <a name="create-ranger-policies"></a>Ranger-házirendek létrehozása
 
-Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz**.
+Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz** .
 
-1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson ** \<ClusterName> _Hbase** a **hbase**alatt.
+1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét** . Kattintson **\<ClusterName> _Hbase** a **hbase** alatt.
 
    ![HDInsight Apache Ranger felügyeleti felhasználói felülete](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. A **szabályzatok listája** képernyőn megjelenik a fürthöz létrehozott összes Ranger-szabályzat. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend. Kattintson az **új szabályzat hozzáadása**lehetőségre.
+2. A **szabályzatok listája** képernyőn megjelenik a fürthöz létrehozott összes Ranger-szabályzat. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend. Kattintson az **új szabályzat hozzáadása** lehetőségre.
 
     ![Apache Ranger HBase szabályzatok listája](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
@@ -191,7 +191,7 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user1** megtekintheti az 
 
 ### <a name="access-data-as-marketing_user1"></a>Az adathozzáférés marketing_user1
 
-1. Nyisson meg egy új SSH-kapcsolatot a fürthöz. A következő parancs használatával jelentkezzen be **marketing_user1ként**:
+1. Nyisson meg egy új SSH-kapcsolatot a fürthöz. A következő parancs használatával jelentkezzen be **marketing_user1ként** :
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -231,17 +231,17 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user1** megtekintheti az 
 
    ![HDInsight Ranger felhasználói felületi szabályzatának naplózása](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-fürtöt a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést. 
-1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
+2. A felső **keresőmezőbe** írja be a **HDInsight** kifejezést. 
+1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások** területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
 1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Apache HBase első lépései](../hbase/apache-hbase-tutorial-get-started-linux.md)

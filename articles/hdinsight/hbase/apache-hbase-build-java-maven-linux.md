@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323774"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547911"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Java-alkalmazások készítése Apache HBase
 
@@ -25,13 +25,13 @@ A jelen dokumentumban leírt lépések az [Apache Maven](https://maven.apache.or
 
 * Egy Apache HBase-fürt a HDInsight-on. Lásd: [az Apache HBase első lépései](./apache-hbase-tutorial-get-started-linux.md).
 
-* A [Java Developer Kit (JDK) 8-as verziója](https://aka.ms/azure-jdks).
+* A [Java Developer Kit (JDK) 8-as verziója](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
 * Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/).
+* Ha a PowerShellt használja, szüksége lesz az az [modulra](/powershell/azure/).
 
 * Egy szövegszerkesztő. Ez a cikk a Microsoft Jegyzettömb alkalmazást használja.
 
@@ -48,7 +48,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Maven-projekt létrehozása
 
-1. Adja meg a következő parancsot egy **hbaseapp**nevű Maven-projekt létrehozásához:
+1. Adja meg a következő parancsot egy **hbaseapp** nevű Maven-projekt létrehozásához:
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -415,7 +415,7 @@ A következő lépésekkel `scp` másolhatja a jar-t az Apache HBase elsődleges
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
     ```
 
-    Ez a parancs létrehoz egy **emberek**nevű HBase-táblázatot, és feltölti azokat az adatokkal.
+    Ez a parancs létrehoz egy **emberek** nevű HBase-táblázatot, és feltölti azokat az adatokkal.
 
 4. A táblázatban tárolt e-mail-címek kereséséhez használja a következő parancsot:
 
@@ -442,7 +442,7 @@ A következő lépésekkel `scp` másolhatja a jar-t az Apache HBase elsődleges
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>A JAR és a Run feladatok feltöltése (PowerShell)
 
-A következő lépések az Azure PowerShell az [modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) használatával töltik fel a jar-t az Apache HBase-fürt alapértelmezett tárolójába. A HDInsight-parancsmagok ezután a példák távoli futtatására szolgálnak.
+A következő lépések az Azure PowerShell az [modul](/powershell/azure/new-azureps-module-az) használatával töltik fel a jar-t az Apache HBase-fürt alapértelmezett tárolójába. A HDInsight-parancsmagok ezután a példák távoli futtatására szolgálnak.
 
 1. Az az modul telepítése és konfigurálása után hozzon létre egy nevű fájlt `hbase-runner.psm1` . A fájl tartalma legyen a következő szöveg:
 
@@ -707,6 +707,6 @@ A következő lépések az Azure PowerShell az [modul](https://docs.microsoft.co
 
 A `-showErr` (z) paraméter használatával megtekintheti a feladatok futtatásakor létrehozott szabványos hibát (stderr).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg, hogyan használható az az sqlline használata az Apache HBase](apache-hbase-query-with-phoenix.md)

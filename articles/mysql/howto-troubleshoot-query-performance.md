@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ec926bf6065e11e1b6ca2e3f6df22c4b5ee2c2c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0725de878836e415695d307b68db43802d9b5c2f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83836124"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545854"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>A profil lekérdezési teljesítményének ismertetése a Azure Database for MySQL
 A **magyarázat** egy praktikus eszköz a lekérdezések optimalizálásához. A magyarázó utasítás használatával információkat kaphat az SQL-utasítások végrehajtásáról. A következő kimenet egy példát mutat be a magyarázó utasítások végrehajtásához.
@@ -54,10 +54,10 @@ possible_keys: id
 ```
 
 Az új magyarázat azt mutatja, hogy a MySQL mostantól egy indexet használ a sorok számának 1 értékre való korlátozásához, ami jelentősen lerövidíti a keresési időt.
- 
+ 
 ## <a name="covering-index"></a>Borító indexe
 A lefedési index az indexben található lekérdezés összes oszlopát tartalmazza az adattáblákból való lekérések csökkentése érdekében. Íme egy illusztráció a következő **Group By** utasításban.
- 
+ 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -75,11 +75,11 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Ahogy a kimenet is látható, a MySQL nem használ indexeket, mert nem állnak rendelkezésre megfelelő indexek. Emellett *az ideiglenes használatot is mutatja; A file sort használatával*a MySQL egy ideiglenes táblázatot hoz létre, amely kielégíti a **Group By** záradékot.
- 
+Ahogy a kimenet is látható, a MySQL nem használ indexeket, mert nem állnak rendelkezésre megfelelő indexek. Emellett *az ideiglenes használatot is mutatja; A file sort használatával* a MySQL egy ideiglenes táblázatot hoz létre, amely kielégíti a **Group By** záradékot.
+ 
 A **C2** oszlophoz tartozó index létrehozása önmagában nem tesz különbséget, és a MySQL-nek továbbra is létre kell hoznia egy ideiglenes táblát:
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -97,9 +97,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Ebben az esetben a **C1** -es és a **C2** -es kezelt **index** is létrehozható, amelynek során a rendszer a **C2**-es értéket közvetlenül az indexben adja hozzá a további adatkeresések eltávolításához.
+Ebben az esetben a **C1** -es és a **C2** -es kezelt **index** is létrehozható, amelynek során a rendszer a **C2** -es értéket közvetlenül az indexben adja hozzá a további adatkeresések eltávolításához.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -120,7 +120,7 @@ possible_keys: covered
 A fenti magyarázat szerint a MySQL mostantól a kezelt indexet használja, és nem hoz létre ideiglenes táblát. 
 
 ## <a name="combined-index"></a>Kombinált index
-A kombinált index több oszlopból álló értékeket tartalmaz, és az Indexelt oszlopok értékeinek összefűzésével rendezhető sorok tömbje lehet.Ez a metódus a **Group By** utasításban lehet hasznos.
+A kombinált index több oszlopból álló értékeket tartalmaz, és az Indexelt oszlopok értékeinek összefűzésével rendezhető sorok tömbje lehet. Ez a metódus a **Group By** utasításban lehet hasznos.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -141,7 +141,7 @@ possible_keys: NULL
 
 A MySQL olyan *rendezési* műveletet hajt végre, amely meglehetősen lassú, különösen, ha sok sort kell rendeznie. A lekérdezés optimalizálásához összevont index hozható létre mindkét sorba rendezett oszlopon.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -160,11 +160,11 @@ possible_keys: NULL
 ```
 
 A magyarázat azt mutatja, hogy a MySQL képes a kombinált index használatára, hogy elkerülje a további rendezést, mivel az index már rendezve van.
- 
+ 
 ## <a name="conclusion"></a>Összegzés
- 
+ 
 A magyarázat és a különböző típusú indexek használata jelentősen növelheti a teljesítményt. A táblázat indexe nem feltétlenül jelenti azt, hogy a MySQL használni tudná a lekérdezésekhez. Az indexek használatával mindig érvényesítse a feltételezéseket a lekérdezések MAGYARÁZATával és optimalizálásával.
 
 
-## <a name="next-steps"></a>További lépések
-- Ha szeretné megkeresni a leginkább érintett kérdésekre adott társi válaszokat, vagy új kérdést/választ szeretne küldeni, látogasson el [a Microsoft Q&egy kérdés oldalra](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+## <a name="next-steps"></a>Következő lépések
+- Ha szeretné megkeresni a leginkább érintett kérdésekre adott társi válaszokat, vagy új kérdést/választ szeretne küldeni, látogasson el [a Microsoft Q&egy kérdés oldalra](/answers/topics/azure-database-mysql.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

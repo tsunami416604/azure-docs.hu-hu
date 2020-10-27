@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 31fc6fe02559c356f072761c024308f158ae4d9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a7d3992ecd2c74947eaa1071b97b2032000c749
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085446"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547605"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok feldolgozása és elemzése Apache Hive használatával az Azure HDInsight
 
@@ -129,7 +129,7 @@ A get_json_object UDF korlátai vannak:
 * Mivel a lekérdezés egyes mezői a lekérdezés újraelemzését igénylik, hatással vannak a teljesítményre.
 * **Get \_ A JSON_OBJECT ()** függvény egy tömb karakterlánc-ábrázolását adja vissza. Ahhoz, hogy a tömböt egy struktúra-tömbre konvertálja, reguláris kifejezésekkel kell helyettesítenie a szögletes zárójeleket ([) és a "]"), majd meg kell hívnia a felosztást a tömb beszerzéséhez.
 
-Az átalakítás oka, hogy a kaptár wiki a **json_tuple**használatát javasolja.  
+Az átalakítás oka, hogy a kaptár wiki a **json_tuple** használatát javasolja.  
 
 ### <a name="use-the-json_tuple-udf"></a>Az json_tuple UDF használata
 
@@ -146,7 +146,7 @@ A szkript kimenete a kaptár-konzolon:
 
 ![Apache Hive JSON-lekérdezés eredményei](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-Az `json_tuple` UDF az [oldalirányú nézet](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) szintaxisát használja a kaptárban, amely lehetővé teszi, hogy a JSON- \_ rekord hozzon létre egy virtuális táblázatot úgy, hogy a UDT függvényt alkalmazza az eredeti tábla minden egyes sorára. Az összetett JSON-okból az **oldalirányú nézet**ismételt használata miatt túlságosan nehézkesek lesznek. Emellett a **JSON_TUPLE** nem tudja kezelni a beágyazott JSON-ket.
+Az `json_tuple` UDF az [oldalirányú nézet](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) szintaxisát használja a kaptárban, amely lehetővé teszi, hogy a JSON- \_ rekord hozzon létre egy virtuális táblázatot úgy, hogy a UDT függvényt alkalmazza az eredeti tábla minden egyes sorára. Az összetett JSON-okból az **oldalirányú nézet** ismételt használata miatt túlságosan nehézkesek lesznek. Emellett a **JSON_TUPLE** nem tudja kezelni a beágyazott JSON-ket.
 
 ### <a name="use-a-custom-serde"></a>Egyéni SerDe használata
 
@@ -154,11 +154,11 @@ A SerDe a legjobb választás a beágyazott JSON-dokumentumok elemzéséhez. Leh
 
 ## <a name="summary"></a>Összefoglalás
 
-A kiválasztott kaptárban található JSON-operátor típusa a forgatókönyvtől függ. Ha egy egyszerű JSON-dokumentummal és egy mezővel keres, válassza ki a kaptár UDF **get_json_object**. Ha egynél több kulcsot keres, akkor használhatja a **json_tuple**. Beágyazott dokumentumok esetén használja a **JSON-SerDe**.
+A kiválasztott kaptárban található JSON-operátor típusa a forgatókönyvtől függ. Ha egy egyszerű JSON-dokumentummal és egy mezővel keres, válassza ki a kaptár UDF **get_json_object** . Ha egynél több kulcsot keres, akkor használhatja a **json_tuple** . Beágyazott dokumentumok esetén használja a **JSON-SerDe** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kapcsolódó cikkek esetében lásd:
 
-* [A Apache Hive és a HiveQL használata a HDInsight Apache Hadoop a minta Apache log4j-fájl elemzéséhez](../hdinsight-use-hive.md)
+* [A Apache Hive és a HiveQL használata a HDInsight Apache Hadoop a minta Apache log4j-fájl elemzéséhez](./hdinsight-use-hive.md)
 * [Repülési késleltetési adatelemzések elemzése a HDInsight interaktív lekérdezés használatával](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

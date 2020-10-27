@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: a029dcbebf6dfe7a2b6cb517641c824a5937ca95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988245"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547129"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Log Analytics irányítópult-vizualizációk frissítése
 
@@ -47,7 +47,7 @@ Ha egy Log Analytics rögzített rész frissíthető, az irányítópultok Log A
  
 ![Oldalsáv](media/dashboard-upgrade/update-message-1.png)
  
-![Oldalsáv](media/dashboard-upgrade/update-message-2.png)
+![A csempék vizualizációjának frissítését bemutató képernyőkép.](media/dashboard-upgrade/update-message-2.png)
 
 > [!WARNING]
 > Miután közzétette az irányítópultot, a frissítés visszafordíthatatlan. Azonban a módosítások elvesznek, ha az irányítópultról az újbóli közzététel nélkül navigál.  
@@ -56,7 +56,7 @@ Ha rákattintott, a vizualizáció frissülni fog az új technológiára. A vizu
 
 A vizualizációk frissítése után újra közzé kell tennie az irányítópultot, hogy a módosítás életbe lépjen.
 
-![Oldalsáv](media/dashboard-upgrade/update-message-3.png)
+![Képernyőkép, amely a frissített vizualizációkat jeleníti meg.](media/dashboard-upgrade/update-message-3.png)
 
 ## <a name="stage-2---migration-of-all-dashboards"></a>2. fázis – az összes irányítópult áttelepítése
 
@@ -74,7 +74,7 @@ Mivel az irányítópultok több lekérdezésből származó vizualizációkat t
 
 Az irányítópultok vizuálisan tömörek és összetettebbek lehetnek. Az irányítópultok megtekintésekor a kognitív terhelés csökkentése érdekében optimalizálja a vizualizációkat úgy, hogy a megjelenítést 25 különböző adattípusra korlátozza. Ha több mint 25, Log Analytics optimalizálja az adatátvitelt. Az adatok mindegyike különállóként jeleníti meg a legtöbb adattal rendelkező 25 típust, majd egy másik értékre csoportosítja a többi értéket. A következő diagram egy ilyen esetet mutat be.  
 
-![Oldalsáv](media/dashboard-upgrade/values-25-limit.png)
+![Képernyőkép, amely a 25 különböző adattípusú irányítópultot jeleníti meg.](media/dashboard-upgrade/values-25-limit.png)
 
 ### <a name="dashboard-refresh-on-load"></a>Irányítópult-frissítés betöltéskor
 

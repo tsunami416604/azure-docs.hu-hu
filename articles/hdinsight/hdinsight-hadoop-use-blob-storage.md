@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855667"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547435"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight
 | Storage-fiók típusa | Támogatott szolgáltatások | Támogatott teljesítményszint |Nem támogatott teljesítményszint| Támogatott hozzáférési szintek |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (általános célú v2)  | Blob     | Standard                    |Prémium| Gyors elérésű, ritka elérésű Archívum\*   |
-| Tároló (általános célú v1)   | Blob     | Standard                    |Prémium| N.A.                    |
+| Tároló (általános célú v1)   | Blob     | Standard                    |Prémium| N/A                    |
 | BlobStorage                    | Blob     | Standard                    |Prémium| Gyors elérésű, ritka elérésű Archívum\*   |
 
 Nem javasoljuk, hogy az üzleti adattároláshoz használja az alapértelmezett BLOB-tárolót. Az alapértelmezett blobtárolót ajánlatos törölni minden egyes használat után. Az alapértelmezett tároló alkalmazás-és rendszernaplókat tartalmaz. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
@@ -44,23 +44,23 @@ Egy blob-tároló megosztása, mivel a több fürt alapértelmezett fájlrendsze
 
 ## <a name="access-files-from-within-cluster"></a>Fájlok elérése a fürtön belülről
 
-Több módon is hozzáférhet a Data Lake Storage lévő fájlokhoz egy HDInsight-fürtről. Az URI-séma titkosítatlan hozzáférést biztosít (a *wasb:* előtaggal) és a TLS titkosított hozzáférését ( *wasbs*). Ajánlott a *wasbs* előtagot használnia, amikor lehetséges, még akkor is, amikor az Azure-ban ugyanabban a régióban lévő adatokat éri el.
+Több módon is hozzáférhet a Data Lake Storage lévő fájlokhoz egy HDInsight-fürtről. Az URI-séma titkosítatlan hozzáférést biztosít (a *wasb:* előtaggal) és a TLS titkosított hozzáférését ( *wasbs* ). Ajánlott a *wasbs* előtagot használnia, amikor lehetséges, még akkor is, amikor az Azure-ban ugyanabban a régióban lévő adatokat éri el.
 
-* **A teljes név használatával**. Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
+* **A teljes név használatával** . Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **A rövidített elérésiút-formátum használatával**. Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
+* **A rövidített elérésiút-formátum használatával** . Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **A relatív elérési út használatával**. Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
+* **A relatív elérési út használatával** . Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
 
     ```
     /<file.path>/
@@ -151,7 +151,7 @@ Az elérési út Ambari REST API használatával történő beszerzéséhez teki
 
 ## <a name="blob-containers"></a>Blobtárolók
 
-A blobok használatához először hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-create-storage-account.md). Ennek a lépésnek a részeként meg kell adnia egy Azure-régiót, ahol a Storage-fiók létrejön. A fürtnek és a tárfióknak ugyanabban a régióban kell lennie. A Hive-metaadattár SQL Server adatbázisnak és az Apache Oozie metaadattár SQL Server adatbázisnak ugyanabban a régióban kell lennie.
+A blobok használatához először hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-account-create.md). Ennek a lépésnek a részeként meg kell adnia egy Azure-régiót, ahol a Storage-fiók létrejön. A fürtnek és a tárfióknak ugyanabban a régióban kell lennie. A Hive-metaadattár SQL Server adatbázisnak és az Apache Oozie metaadattár SQL Server adatbázisnak ugyanabban a régióban kell lennie.
 
 Akárhol él, mindegyik létrehozott blob az Azure Storage-fiókban lévő tárolóhoz tartozik. Ez a tároló lehet a HDInsight-en kívül létrehozott meglévő blob is. Vagy lehet egy tároló, amely egy HDInsight-fürthöz lett létrehozva.
 

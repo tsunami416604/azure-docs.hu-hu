@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 86933b324d7216a6097102cf237d0402d9f63234
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27cd1c9085771bd9ac2b18c37b73235d7f18ad5a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90882673"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538085"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for MySQL számítási erőforrások számára fenntartott kapacitással
 
@@ -19,13 +19,13 @@ A Azure Database for MySQL mostantól segít pénzt megtakarítani a számítás
 
 A foglalást nem kell hozzárendelni adott Azure Database for MySQL kiszolgálókhoz. Egy már futó Azure Database for MySQL vagy újonnan üzembe helyezett szolgáltatás automatikusan megkapja a fenntartott díjszabás előnyeit. A foglalás megvásárlásával előre fizet a számítási költségekre egy vagy három év alatt. A foglalás megvásárlása után az Azure Database for MySQL számítási díjait, amelyek megfelelnek a foglalási attribútumoknak, már nem számítjuk fel az utólagos elszámolású díjszabást. A foglalás nem vonatkozik a MySQL adatbázis-kiszolgálóhoz kapcsolódó szoftverekre, hálózatokra vagy tárolási díjakra. A foglalási időszak végén a számlázási juttatás lejár, a Azure Database for MySQL pedig az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem automatikus megújítást végeznek. A díjszabással kapcsolatos információkért tekintse meg a [Azure Database for MySQL fenntartott kapacitás ajánlatát](https://azure.microsoft.com/pricing/details/mysql/). </br>
 
-A [Azure Portal](https://portal.azure.com/)Azure Database for MySQL fenntartott kapacitást is vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/monthly-payments-reservations.md). A fenntartott kapacitás megvásárlása:
+A [Azure Portal](https://portal.azure.com/)Azure Database for MySQL fenntartott kapacitást is vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/prepare-buy-reservation.md). A fenntartott kapacitás megvásárlása:
 
 * Legalább egy Nagyvállalati vagy egyéni előfizetéshez tulajdonosi szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.
 * Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
 * A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg Azure Database for MySQL fenntartott kapacitást. </br>
 
-Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglalások beszerzése után: az [Azure foglalási szolgáltatás használatának megismerése a nagyvállalati beléptetéshez](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) , valamint az [Azure-foglalás használatának](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)ismertetése az utólagos elszámolású előfizetéshez.
+Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglalások beszerzése után: az [Azure foglalási szolgáltatás használatának megismerése a nagyvállalati beléptetéshez](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) , valamint az [Azure-foglalás használatának](../cost-management-billing/reservations/understand-reserved-instance-usage.md)ismertetése az utólagos elszámolású előfizetéshez.
 
 
 ## <a name="determine-the-right-database-size-before-purchase"></a>A megfelelő adatbázis méretének meghatározása a vásárlás előtt
@@ -51,7 +51,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 | Mező | Leírás |
 | :------------ | :------- |
 | Előfizetés   | A Azure Database for MySQL fenntartott kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a Azure Database for MySQL fenntartott kapacitás foglalásának előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), vagy az utólagos elszámolású díjszabással rendelkező egyéni szerződés (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.
-| Hatókör | A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: </br></br> **Megosztva**a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó Azure Database for MySQL-kiszolgálókra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egyszeri előfizetés**esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő Azure Database for MySQL-kiszolgálókra alkalmazza a rendszer. </br></br> **Egy erőforráscsoport**, a foglalási kedvezményt a rendszer a kijelölt előfizetésben található Azure Database for MySQL-kiszolgálókra és az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz alkalmazza.
+| Hatókör | A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: </br></br> **Megosztva** a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó Azure Database for MySQL-kiszolgálókra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egyszeri előfizetés** esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő Azure Database for MySQL-kiszolgálókra alkalmazza a rendszer. </br></br> **Egy erőforráscsoport** , a foglalási kedvezményt a rendszer a kijelölt előfizetésben található Azure Database for MySQL-kiszolgálókra és az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz alkalmazza.
 | Régió | Az Azure Database for MySQL fenntartott kapacitás foglalása által érintett Azure-régió.
 | Központi telepítés típusa | Az a Azure Database for MySQL erőforrástípus, amelyre a foglalást megvásárolni szeretné.
 | Teljesítményszint | A Azure Database for MySQL-kiszolgálók szolgáltatási szintje.
@@ -60,7 +60,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="vcore-size-flexibility"></a>Virtuális mag méretének rugalmassága
 
@@ -77,10 +77,9 @@ A Azure Database for MySQL fenntartott kapacitás kezelésével kapcsolatos info
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Mi a Azure Reservations](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
-* [Az Azure Reservations kezelése](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [Az Azure Reservations-kedvezmény ismertetése](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)
-* [A foglalási kihasználtság ismertetése vállalati regisztrációnál](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)
-
+* [Mi a Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md)?
+* [Az Azure Reservations kezelése](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Az Azure Reservations-kedvezmény ismertetése](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../cost-management-billing/reservations/understand-reservation-charges-mysql.md)
+* [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](/partner-center/azure-reservations)

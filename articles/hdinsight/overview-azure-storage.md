@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e1fdae5cdb1ec806e67dcacc70510a63093a82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851373"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539462"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Az Azure Storage áttekintése a HDInsight-ben
 
@@ -21,7 +21,7 @@ Az Azure Storage egy robusztus általános célú tárolási megoldás, amely z�
 
 Javasoljuk, hogy az alapértelmezett fürtöt tárolóhoz és az üzleti adataihoz külön tároló-tárolókat használjon. A szétválasztás az, hogy elkülönítse a HDInsight-naplókat és az ideiglenes fájlokat a saját üzleti adataiból. Javasoljuk továbbá, hogy törölje az alapértelmezett BLOB-tárolót, amely az alkalmazás-és rendszernaplókat tartalmazza, miután mindegyik használattal csökkenti a tárolási költségeket. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
 
-Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális hálózatokkal** kapcsolatos korlátozásokkal a **kiválasztott hálózatokon**, ügyeljen arra, hogy a kivételt engedélyezze a **megbízható Microsoft-szolgáltatások számára**... A kivétel az, hogy a HDInsight hozzáférhessen a Storage-fiókhoz.
+Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális hálózatokkal** kapcsolatos korlátozásokkal a **kiválasztott hálózatokon** , ügyeljen arra, hogy a kivételt engedélyezze a **megbízható Microsoft-szolgáltatások számára** ... A kivétel az, hogy a HDInsight hozzáférhessen a Storage-fiókhoz.
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight tároló-architektúra
 
@@ -44,7 +44,7 @@ HDInsight-fürtökkel rendelkező Azure Storage-fiók használata esetén vegye 
 * **Nyilvános tárolók vagy nyilvános Blobok olyan Storage-fiókokban, amelyek nem csatlakoznak a fürthöz:** Csak olvasási jogosultsággal rendelkezik a tárolóban lévő blobokhoz.
   
   > [!NOTE]  
-  > A nyilvános tárolók lehetővé teszik az adott tárolóban elérhető Blobok listájának lekérését és a tároló metaadatainak beolvasását. A nyilvános blobok esetén csak akkor érheti el a blobokat, ha ismeri a pontos URL-t. További információ: [Névtelen olvasási hozzáférés tárolók és Blobok kezelésére](../storage/blobs/storage-manage-access-to-resources.md).
+  > A nyilvános tárolók lehetővé teszik az adott tárolóban elérhető Blobok listájának lekérését és a tároló metaadatainak beolvasását. A nyilvános blobok esetén csak akkor érheti el a blobokat, ha ismeri a pontos URL-t. További információ: [Névtelen olvasási hozzáférés tárolók és Blobok kezelésére](../storage/blobs/anonymous-read-access-configure.md).
 
 * A **fürthöz nem kapcsolódó Storage-fiókokban lévő privát tárolók:** A tárolóban lévő Blobok csak akkor érhetők el, ha a Webhcaten-feladatok elküldésekor a Storage-fiókot definiálja.
 
@@ -75,7 +75,7 @@ Bizonyos MapReduce-feladatok és csomagok olyan köztes eredményeket hozhatnak 
 > [!NOTE]  
 > A legtöbb HDFS-parancs (például,, `ls` `copyFromLocal` és `mkdir` ) a várt módon működik az Azure Storage-ban. Az Azure Storage-ban csak a natív HDFS-implementációra (azaz a DFS-re) vonatkozó parancsok láthatók `fschk` `dfsadmin` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Data Lake Storage Gen2 bemutatása](../storage/blobs/data-lake-storage-introduction.md)
 * [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md)

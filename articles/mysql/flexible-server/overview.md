@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167049"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537949"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -66,7 +66,7 @@ További információért lásd a [biztonsági mentési fogalmakat](concepts-bac
 
 ## <a name="network-isolation"></a>Hálózatelkülönítés
 
-Két hálózati lehetőség közül választhat a Azure Database for MySQL rugalmas kiszolgálóhoz való kapcsolódáshoz. A lehetőségek a következők: **privát hozzáférés (VNet-integráció)** és **nyilvános hozzáférés (engedélyezett IP-címek)**. 
+Két hálózati lehetőség közül választhat a Azure Database for MySQL rugalmas kiszolgálóhoz való kapcsolódáshoz. A lehetőségek a következők: **privát hozzáférés (VNet-integráció)** és **nyilvános hozzáférés (engedélyezett IP-címek)** . 
 
 * **Privát hozzáférés (VNet-integráció)** – a rugalmas kiszolgálót üzembe helyezheti az [Azure-Virtual Network](../../virtual-network/virtual-networks-overview.md). Az Azure Virtual Network privát és biztonságos hálózati kommunikációt biztosít. A virtuális hálózatok erőforrásai privát IP-címeken keresztül kommunikálhatnak.
 
@@ -75,7 +75,7 @@ Két hálózati lehetőség közül választhat a Azure Database for MySQL rugal
    * A VPN vagy a ExpressRoute használatával csatlakozhat a nem Azure-erőforrásokról a rugalmas kiszolgálóhoz
    * Nincs nyilvános végpont
 
-* **Nyilvános hozzáférés (engedélyezett IP-címek)** – a rugalmas kiszolgálót nyilvános végponttal is üzembe helyezheti. A nyilvános végpont egy nyilvánosan feloldható DNS-címe. Az "engedélyezett IP-címek" kifejezés számos olyan IP-címet jelöl, amelyet a kiszolgáló eléréséhez engedélyt ad. Ezeket az engedélyeket **Tűzfalszabályok**nevezzük.
+* **Nyilvános hozzáférés (engedélyezett IP-címek)** – a rugalmas kiszolgálót nyilvános végponttal is üzembe helyezheti. A nyilvános végpont egy nyilvánosan feloldható DNS-címe. Az "engedélyezett IP-címek" kifejezés számos olyan IP-címet jelöl, amelyet a kiszolgáló eléréséhez engedélyt ad. Ezeket az engedélyeket **Tűzfalszabályok** nevezzük.
 
 További információért lásd a [hálózatkezelési fogalmakat](concepts-networking.md) .
 
@@ -99,7 +99,7 @@ A szolgáltatás alapértelmezés szerint titkosítja a mozgásban lévő adatá
 
 További információért lásd: [titkosított kapcsolatok használata rugalmas kiszolgálókhoz](https://docs.mongodb.com/manual/tutorial/configure-ssl) .
 
-A rugalmas kiszolgálók lehetővé teszik a kiszolgálók teljes magánhálózati elérését az [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNet) integrációjának használatával. Az Azure virtuális hálózatban található kiszolgálók csak magánhálózati IP-címeken keresztül érhetők el és csatlakoztathatók. A VNet-integrációval a nyilvános hozzáférés megtagadva, és a kiszolgálók nem érhetők el nyilvános végpontok használatával. 
+A rugalmas kiszolgálók lehetővé teszik a kiszolgálók teljes magánhálózati elérését az [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNet) integrációjának használatával. Az Azure virtuális hálózatban található kiszolgálók csak magánhálózati IP-címeken keresztül érhetők el és csatlakoztathatók. A VNet-integrációval a nyilvános hozzáférés megtagadva, és a kiszolgálók nem érhetők el nyilvános végpontok használatával. 
 
 További információért lásd a [hálózatkezelési fogalmakat](concepts-networking.md) .
 
@@ -115,7 +115,7 @@ További információért tekintse meg a [figyelési fogalmakat](concepts-monito
 A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a MySQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 
 - **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközökkel, mint a mysqldump/mydumper, a lehető leggyorsabb módon telepíthetik az áttelepítést. A részletekért lásd: az áttelepítés a dump és a Restore használatával. 
-- **Azure Database Migration Service** – az egykiszolgálós, minimális állásidővel rendelkező, zökkenőmentes és egyszerűsített áttelepítéshez [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) is kihasználható. 
+- **Azure Database Migration Service** – az egykiszolgálós, minimális állásidővel rendelkező, zökkenőmentes és egyszerűsített áttelepítéshez [Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) is kihasználható. 
 
 ## <a name="azure-regions"></a>Azure-régiók
 
@@ -145,7 +145,7 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy elolvasta Azure Database for MySQL egykiszolgálós üzembe helyezési mód bevezetését, készen áll a következőre:
 
 - Hozza létre az első kiszolgálót. 

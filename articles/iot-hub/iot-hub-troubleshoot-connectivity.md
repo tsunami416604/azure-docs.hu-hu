@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 17fb1bf8aebe1bd114f970aed997e77ce8a07af1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b194812ef68820a0c310d0bac3b055360c5b5e4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150765"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538425"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Az Azure IoT Hub-vel való kapcsolat figyelése, diagnosztizálása és hibakeresése
 
@@ -28,25 +28,25 @@ A IoT-eszközök kapcsolódási problémái nehézkesek lehetnek a hibaelhárít
 
 A Azure Monitor használatával riasztásokat kaphat, és naplókat írhat az eszközök leválasztásakor.
 
-### <a name="turn-on-diagnostic-logs"></a>Diagnosztikai naplók bekapcsolása
+### <a name="turn-on-logs"></a>Naplók bekapcsolása
 
-Az eszköz kapcsolódási eseményeinek és hibáinak naplózásához kapcsolja be a diagnosztikát a IoT Hubhoz. Javasoljuk, hogy a lehető leghamarabb bekapcsolja ezeket a naplókat, mert ha a diagnosztikai naplók nincsenek engedélyezve, akkor az eszköz leválasztásakor nem lesz információ a problémáinak elhárításához.
+Az eszköz csatlakozási eseményeinek és hibáinak naplózásához hozzon létre egy diagnosztikai beállítást [IoT hub kapcsolatok erőforrás-naplóihoz](monitor-iot-hub-reference.md#connections). Azt javasoljuk, hogy a lehető leghamarabb hozza létre ezt a beállítást, mert ezek a naplók alapértelmezés szerint nem kerülnek gyűjtésre, és anélkül, hogy az eszköz leválasztásához nem fog tudni adatokat elhárítani.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Keresse meg az IoT hubot.
+1. Keresse meg az IoT hubot.
 
-3. Válassza a **diagnosztikai beállítások**lehetőséget.
+1. Válassza a **diagnosztikai beállítások** lehetőséget.
 
-4. Kattintson **a diagnosztika bekapcsolása**elemre.
+1. Válassza a **diagnosztikai beállítás hozzáadása** lehetőséget.
 
-5. A **kapcsolatok** naplóinak begyűjtésének engedélyezése.
+1. Válassza a **kapcsolatok** naplók lehetőséget.
 
-6. A könnyebb elemzés érdekében kapcsolja be a **küldés log Analytics** ([lásd a díjszabást](https://azure.microsoft.com/pricing/details/log-analytics/)). A [kapcsolódási hibák elhárítása](#resolve-connectivity-errors)című témakörben talál példát.
+1. A könnyebb elemzéshez válassza a **küldés log Analyticsra** ( [lásd: díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/)). A [kapcsolódási hibák elhárítása](#resolve-connectivity-errors)című témakörben talál példát.
 
    ![Ajánlott beállítások](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
-További információ: [Az Azure IoT hub állapotának monitorozása és a problémák gyors diagnosztizálása](iot-hub-monitor-resource-health.md).
+További információért lásd: [IoT hub figyelése](monitor-iot-hub.md).
 
 ### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Riasztások beállítása az eszköz leválasztásához a skálán
 
@@ -56,11 +56,11 @@ Ha riasztásokat szeretne kapni az eszközök leválasztásakor, konfigurálja a
 
 2. Keresse meg az IoT hubot.
 
-3. Válassza a **riasztások**lehetőséget.
+3. Válassza a **riasztások** lehetőséget.
 
 4. Válassza az **Új riasztási szabály** lehetőséget.
 
-5. Válassza a **feltétel hozzáadása**, majd a csatlakoztatott eszközök (előzetes verzió) lehetőséget.
+5. Válassza a **feltétel hozzáadása** , majd a csatlakoztatott eszközök (előzetes verzió) lehetőséget.
 
 6. A küszöbértékek és a riasztások beállítása a következő utasításokat követve.
 
@@ -72,15 +72,15 @@ Az eszközön keresztüli leválasztások *észleléséhez* , például ha tudni
 
 ## <a name="resolve-connectivity-errors"></a>Csatlakozási hibák elhárítása
 
-Ha bekapcsolja a diagnosztikai naplókat és riasztásokat a csatlakoztatott eszközökhöz, riasztást kap, ha hiba történik. Ez a szakasz azt ismerteti, hogyan lehet gyakori problémákat keresni a riasztások érkezésekor. Az alábbi lépések feltételezik, hogy beállította Azure Monitor naplókat a diagnosztikai naplókhoz.
+Amikor bekapcsolja a naplókat és a riasztásokat a csatlakoztatott eszközökhöz, riasztást kap, ha hiba történik. Ez a szakasz azt ismerteti, hogyan lehet gyakori problémákat keresni a riasztások érkezésekor. Az alábbi lépések azt feltételezik, hogy már létrehozott egy diagnosztikai beállítást, amely IoT Hub kapcsolati naplókat küld egy Log Analytics munkaterületre.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Keresse meg az IoT hubot.
 
-1. Válassza a **naplók**lehetőséget.
+1. Válassza a **naplók** lehetőséget.
 
-1. Ha el szeretné különíteni a IoT Hub csatlakozási naplófájljait, adja meg a következő lekérdezést, majd válassza a **Futtatás**lehetőséget:
+1. Ha el szeretné különíteni a IoT Hub csatlakozási naplófájljait, adja meg a következő lekérdezést, majd válassza a **Futtatás** lehetőséget:
 
     ```kusto
     AzureDiagnostics

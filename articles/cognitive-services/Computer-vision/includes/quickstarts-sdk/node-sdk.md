@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: d0e94066c6e8ab60a52761898e49bdf11997a062
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5a390e86fa3835b6ee401b899e7dad7a7eb8d01f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309819"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548107"
 ---
 <a name="HOLTop"></a>
 
@@ -25,7 +25,7 @@ ms.locfileid: "91309819"
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * A [Node.js](https://nodejs.org/) aktuális verziója
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 * [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
@@ -58,7 +58,7 @@ Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
 
 ### <a name="prepare-the-nodejs-script"></a>A Node.js parancsfájl előkészítése
 
-Hozzon létre egy új fájlt, *index.js*, majd nyissa meg egy szövegszerkesztőben. Adja hozzá a következő importálási utasításokat.
+Hozzon létre egy új fájlt, *index.js* , majd nyissa meg egy szövegszerkesztőben. Adja hozzá a következő importálási utasításokat.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imports)]
 
@@ -223,6 +223,11 @@ Mentse annak a lemezképnek az URL-címét, amelyből szöveget szeretne kinyern
 
 ### <a name="call-the-read-api"></a>Az olvasási API meghívása
 
+Adja meg a következő mezőket a függvényben az olvasási hívási állapot értékének jelöléséhez.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_statuses)]
+
+
 Adja hozzá az alábbi kódot, amely meghívja a `readTextFromURL` és a `readTextFromFile` függvényeket az adott lemezképekhez.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
@@ -235,7 +240,7 @@ Ezután adja meg a segítő függvényt `printRecText` , amely kiírja az olvas�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást a gyors üzembe helyezési `node` fájlban található paranccsal.
 
@@ -243,14 +248,14 @@ Futtassa az alkalmazást a gyors üzembe helyezési `node` fájlban található 
 node index.js
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Computer Vision API referenciája (Node.js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)

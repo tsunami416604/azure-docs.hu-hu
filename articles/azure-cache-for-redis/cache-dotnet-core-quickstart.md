@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 12466f64daa699925e4e184536b2d50c5fb89847
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89662374"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547724"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Gyors útmutató: az Azure cache használata a Redis .NET Core-alkalmazással
 
@@ -47,7 +47,7 @@ A parancsablakban váltson az új *Redistest* projektkönyvtárra.
 
 ## <a name="add-secret-manager-to-the-project"></a>A Secret Manager hozzáadása a projekthez
 
-Ebben a szakaszban hozzáadja a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/security/app-secrets) a projekthez. A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokhoz tartozó bizalmas adatokat. Ez a módszer megakadályozza, hogy véletlenül megossza az alkalmazás forráskódbeli titkos kódjait.
+Ebben a szakaszban hozzáadja a [Secret Manager eszközt](/aspnet/core/security/app-secrets) a projekthez. A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokhoz tartozó bizalmas adatokat. Ez a módszer megakadályozza, hogy véletlenül megossza az alkalmazás forráskódbeli titkos kódjait.
 
 Nyissa meg a *Redistest.csproj* fájlt. Adjon hozzá egy `DotNetCliToolReference` elemet a *Microsoft.Extensions.SecretManager.Tools* belefoglalásához. Adjon hozzá egy `UserSecretsId` elemet is az alábbiakban látható módon, és mentse a fájlt.
 
@@ -283,7 +283,7 @@ dotnet run
 ![Kész konzolalkalmazás](./media/cache-dotnet-core-quickstart/cache-console-app-complete.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -317,4 +317,4 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t e
 Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
 > [!div class="nextstepaction"]
-> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [A költségek elemzésének megkezdése a Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

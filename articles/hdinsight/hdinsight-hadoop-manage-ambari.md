@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f21b72cd519c1615d8273bf316a8d0ccad039672
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281386"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546160"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes felületével
 
@@ -78,21 +78,21 @@ A riasztások több alapértelmezett csoportba vannak rendezve, amelyek a **rias
 
 ![Apache Ambari-riasztások lapja – összefoglalás](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
-A csoportokat a **műveletek** menü segítségével kezelheti, és a **riasztási csoportok kezelése**lehetőségre kattintva.
+A csoportokat a **műveletek** menü segítségével kezelheti, és a **riasztási csoportok kezelése** lehetőségre kattintva.
 
 ![Apache Ambari – riasztási csoportok kezelése](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-A riasztási módszereket kezelheti, és riasztási értesítéseket hozhat létre a **műveletek** menüből az __értesítések kezelése__lehetőség kiválasztásával. Minden aktuális értesítés megjelenik. Hozzon létre értesítéseket innen. Értesítéseket küldhet **e-mailben** vagy **SNMP** -n, ha adott riasztási/súlyossági kombinációk történnek. Küldhet például egy e-mailt, ha a **fonal alapértelmezett** csoportjában lévő bármelyik riasztás **kritikus**értékre van állítva.
+A riasztási módszereket kezelheti, és riasztási értesítéseket hozhat létre a **műveletek** menüből az __értesítések kezelése__ lehetőség kiválasztásával. Minden aktuális értesítés megjelenik. Hozzon létre értesítéseket innen. Értesítéseket küldhet **e-mailben** vagy **SNMP** -n, ha adott riasztási/súlyossági kombinációk történnek. Küldhet például egy e-mailt, ha a **fonal alapértelmezett** csoportjában lévő bármelyik riasztás **kritikus** értékre van állítva.
 
 ![Apache Ambari riasztási értesítés létrehozása](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
 Végül, ha a __műveletek__ menüben a __riasztási beállítások kezelése__ lehetőséget választja, megadhatja, hogy a riasztások hányszor legyenek elküldve az értesítés elküldése előtt. Ezzel a beállítással elkerülhetők az átmeneti hibák értesítései.
 
-Az ingyenes [SendGrid-fiókkal](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)rendelkező riasztási értesítések oktatóanyagát az [Apache Ambari e-mail értesítések konfigurálása az Azure HDInsight-ben](./apache-ambari-email.md)című témakörben tekintheti meg.
+Az ingyenes [SendGrid-fiókkal](../sendgrid-dotnet-how-to-send-email.md)rendelkező riasztási értesítések oktatóanyagát az [Apache Ambari e-mail értesítések konfigurálása az Azure HDInsight-ben](./apache-ambari-email.md)című témakörben tekintheti meg.
 
 ### <a name="cluster"></a>Fürt
 
-Az irányítópult **metrikák** lapja több widgetet tartalmaz, amelyek megkönnyítik a fürt állapotának figyelését egy pillantással. Több widget (például **CPU-használat**) esetén további információk is megadhatók a kattintáskor.
+Az irányítópult **metrikák** lapja több widgetet tartalmaz, amelyek megkönnyítik a fürt állapotának figyelését egy pillantással. Több widget (például **CPU-használat** ) esetén további információk is megadhatók a kattintáskor.
 
 ![Apache Ambari-irányítópult metrikákkal](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
@@ -100,7 +100,7 @@ A **intenzitástérképei** lap színes intenzitástérképei jeleníti meg a me
 
 ![Apache Ambari-irányítópult a intenzitástérképei](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
-A fürtben lévő csomópontokkal kapcsolatos további információkért válassza a **gazdagépek**lehetőséget. Ezután válassza ki azt a csomópontot, amelyre kíváncsi.
+A fürtben lévő csomópontokkal kapcsolatos további információkért válassza a **gazdagépek** lehetőséget. Ezután válassza ki azt a csomópontot, amelyre kíváncsi.
 
 ![Apache Ambari-gazdagép összegzése – részletek](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
@@ -200,7 +200,7 @@ A szolgáltatás konfigurálásához kövesse az alábbi lépéseket:
 
     ![Apache Ambari szolgáltatás konfigurációja](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
-3. A megjelenített mezők használatával módosítsa a konfigurációt, majd válassza a **Mentés**lehetőséget. Vagy válasszon egy korábbi konfigurációt, majd válassza az **aktuális** lehetőséget az előző beállításokra való visszalépéshez.
+3. A megjelenített mezők használatával módosítsa a konfigurációt, majd válassza a **Mentés** lehetőséget. Vagy válasszon egy korábbi konfigurációt, majd válassza az **aktuális** lehetőséget az előző beállításokra való visszalépéshez.
 
 ## <a name="ambari-views"></a>Ambari nézetek
 
@@ -214,9 +214,9 @@ A Ambari nézetek lehetővé teszik a fejlesztők számára a felhasználói fel
 
 A következő Ambari műveletek nem támogatottak a HDInsight:
 
-* __A metrikák gyűjtő szolgáltatásának áthelyezése__. A metrika-gyűjtő szolgáltatás információinak megtekintésekor a szolgáltatási műveletek menüben elérhető műveletek egyike a __metrika-gyűjtő mozgatása__. Ez a művelet nem támogatott a HDInsight.
+* __A metrikák gyűjtő szolgáltatásának áthelyezése__ . A metrika-gyűjtő szolgáltatás információinak megtekintésekor a szolgáltatási műveletek menüben elérhető műveletek egyike a __metrika-gyűjtő mozgatása__ . Ez a művelet nem támogatott a HDInsight.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) a HDInsight-mel.
 * [Az Apache Ambari használata a HDInsight fürtkonfigurációinak optimalizálására](./hdinsight-changing-configs-via-ambari.md)

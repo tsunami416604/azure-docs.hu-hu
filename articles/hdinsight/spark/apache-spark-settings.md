@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 231ab5cc93d98d7356d47472b7e160ddd3ade790
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82188157"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545939"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
 
@@ -23,13 +23,13 @@ Az alapértelmezett HDInsight Apache Spark-fürt a következő csomópontokat ta
 
 ![Spark HDInsight architektúra](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
-A virtuális gépek és a virtuálisgép-méretek száma a HDInsight-fürt csomópontjaira hatással lehet a Spark-konfigurációra. A nem alapértelmezett HDInsight-konfigurációs értékek gyakran nem alapértelmezett Spark-konfigurációs értékeket igényelnek. HDInsight Spark-fürt létrehozásakor az egyes összetevőknél javasolt virtuálisgép-méretek láthatók. Jelenleg az Azure-hoz készült [memória-optimalizált Linux virtuális gépek mérete](../../virtual-machines/linux/sizes-memory.md) D12 v2 vagy újabb.
+A virtuális gépek és a virtuálisgép-méretek száma a HDInsight-fürt csomópontjaira hatással lehet a Spark-konfigurációra. A nem alapértelmezett HDInsight-konfigurációs értékek gyakran nem alapértelmezett Spark-konfigurációs értékeket igényelnek. HDInsight Spark-fürt létrehozásakor az egyes összetevőknél javasolt virtuálisgép-méretek láthatók. Jelenleg az Azure-hoz készült [memória-optimalizált Linux virtuális gépek mérete](../../virtual-machines/sizes-memory.md) D12 v2 vagy újabb.
 
 ## <a name="apache-spark-versions"></a>Apache Spark verziók
 
 Használja a fürt legjobb Spark-verzióját.  A HDInsight szolgáltatás a Spark és a HDInsight több verzióját is tartalmazza.  A Spark minden verziója tartalmaz egy alapértelmezett fürtkonfiguráció-készletet.  
 
-Új fürt létrehozásakor több Spark-verzió közül választhat. A teljes lista megjelenítéséhez  [HDInsight összetevőket és verziókat](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Új fürt létrehozásakor több Spark-verzió közül választhat. A teljes lista megjelenítéséhez  [HDInsight összetevőket és verziókat](../hdinsight-component-versioning.md).
 
 > [!NOTE]  
 > A HDInsight szolgáltatás Apache Spark alapértelmezett verziója figyelmeztetés nélkül változhat. Ha a verziótól függ, a Microsoft azt javasolja, hogy a .NET SDK, a Azure PowerShell és a klasszikus Azure parancssori felület használatával hozzon létre egy adott verziót.
@@ -60,7 +60,7 @@ A fürtön a teljesítmény optimalizálása előtt ellenőrizze, hogy az aktuá
 
 Megjelenik az Apache Ambari webes KEZELŐFELÜLETe, amely a fő fürterőforrás-használati metrikák irányítópultját jeleníti meg.  A Ambari-irányítópulton a Apache Spark konfiguráció és más telepített szolgáltatások láthatók. Az irányítópult tartalmaz egy **konfigurációs előzmények** lapot, ahol megtekintheti a telepített szolgáltatások információit, beleértve a Sparkot.
 
-A Apache Spark konfigurációs értékeinek megtekintéséhez válassza a konfiguráció **előzményei**lehetőséget, majd válassza a **Spark2**lehetőséget.  Válassza a **konfigurációk** fület, majd a `Spark` szolgáltatás listában válassza a (vagy a `Spark2` verziótól függően) hivatkozást.  Ekkor megjelenik a fürthöz tartozó konfigurációs értékek listája:
+A Apache Spark konfigurációs értékeinek megtekintéséhez válassza a konfiguráció **előzményei** lehetőséget, majd válassza a **Spark2** lehetőséget.  Válassza a **konfigurációk** fület, majd a `Spark` szolgáltatás listában válassza a (vagy a `Spark2` verziótól függően) hivatkozást.  Ekkor megjelenik a fürthöz tartozó konfigurációs értékek listája:
 
 ![Spark-konfigurációk](./media/apache-spark-settings/spark-configurations.png)
 
@@ -149,7 +149,7 @@ Az alábbi kód azt mutatja be, hogyan lehet módosítani egy Jupyter-jegyzetfü
 
 Az alapvető konfigurációs beállítások figyelésével biztosíthatja, hogy a Spark-feladatok kiszámítható és elvégezhető módon fussanak. Ezek a beállítások segítenek meghatározni a legjobb Spark-fürt konfigurációját az adott számítási feladatokhoz.  Emellett figyelnie kell a hosszan futó és az erőforrás-igényes Spark-feladatok végrehajtását.  A nem megfelelő konfigurációktól, például helytelen méretű végrehajtókkal kapcsolatos memória-nyomást a leggyakoribb kihívások középpontba kerül. Emellett a hosszan futó műveleteket és a feladatokat, amelyek Descartes-alapú műveleteket eredményeznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A HDInsight-ben elérhető összetevők és verziók Apache Hadoop?](../hdinsight-component-versioning.md)
 * [Apache Spark-fürt erőforrásainak kezelése a HDInsight-ben](apache-spark-resource-manager.md)

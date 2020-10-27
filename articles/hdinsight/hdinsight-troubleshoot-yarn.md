@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84224172dbfd63fee51b3a7b80f5990b04e5e228
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871966"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535025"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Apache Hadoop YARN hibaelhárítása az Azure HDInsighttal
 
@@ -24,7 +24,7 @@ Ismerkedjen meg a leggyakoribb problémákról és azok megoldásaival kapcsolat
 
 A következő lépések végrehajtásával hozzon létre egy új Ambari-várólistát, majd az összes várólista között válassza a kapacitás kiosztását.
 
-Ebben a példában két meglévő várólista (**alapértelmezett** és **thriftsvr**) is módosul 50%-os kapacitásról 25%-ra, ami az új üzenetsor (Spark) 50%-os kapacitását adja meg.
+Ebben a példában két meglévő várólista ( **alapértelmezett** és **thriftsvr** ) is módosul 50%-os kapacitásról 25%-ra, ami az új üzenetsor (Spark) 50%-os kapacitását adja meg.
 
 | Üzenetsor | Kapacitás | Maximális kapacitás |
 | --- | --- | --- |
@@ -32,7 +32,7 @@ Ebben a példában két meglévő várólista (**alapértelmezett** és **thrift
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. Válassza a **Ambari nézetek** ikont, majd válassza ki a rács mintát. Ezután válassza a **fonál üzenetsor-kezelő**elemet.
+1. Válassza a **Ambari nézetek** ikont, majd válassza ki a rács mintát. Ezután válassza a **fonál üzenetsor-kezelő** elemet.
 
     ![Apache Ambari irányítópult-szál üzenetsor-kezelője](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Válassza ki az **alapértelmezett** várólistát.
@@ -41,7 +41,7 @@ Ebben a példában két meglévő várólista (**alapértelmezett** és **thrift
 3. Az **alapértelmezett** várólista esetében módosítsa a **kapacitást** 50%-ról 25%-ra. A **thriftsvr** -várólista esetében módosítsa a **kapacitást** 25%-ra.
 
     ![Módosítsa a kapacitást 25%-ra az alapértelmezett és a thriftsvr várólisták esetében](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Új várólista létrehozásához válassza a **várólista hozzáadása**lehetőséget.
+4. Új várólista létrehozásához válassza a **várólista hozzáadása** lehetőséget.
 
     ![Apache Ambari-FONÁL irányítópult-várólista hozzáadása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -52,7 +52,7 @@ Ebben a példában két meglévő várólista (**alapértelmezett** és **thrift
 6. Hagyja meg a **kapacitás** értékeit 50%-ban, majd kattintson a **műveletek** gombra.
 
     ![Apache Ambari-fonal kiválasztása művelet](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Válassza **a Mentés és frissítés várólisták**lehetőséget.
+7. Válassza **a Mentés és frissítés várólisták** lehetőséget.
 
     ![A várólisták mentése és frissítése lehetőség kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
@@ -131,10 +131,10 @@ Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felület
 
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>További információ
 
-- [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [A fonal-fogalmak és-alkalmazások Apache Hadoop](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
@@ -142,4 +142,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 - Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](../azure-portal/supportability/how-to-create-azure-support-request.md)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

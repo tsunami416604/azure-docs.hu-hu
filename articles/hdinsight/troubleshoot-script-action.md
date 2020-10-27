@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977e3571a24e8be9d9ef6cd79e80e654ca944fa4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079259"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538816"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Parancsfájl-műveletek hibakeresése az Azure HDInsight
 
@@ -31,7 +31,7 @@ Az Apache Ambari webes FELÜLETén megtekintheti a parancsfájlok műveletei ál
 
     ![Ambari webes FELHASZNÁLÓIFELÜLET-sáv kijelölése az Ops-mel](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
-1. Keresse meg azokat a bejegyzéseket, amelyek a ** \_ customscriptaction futtatták** az **Operations** oszlopban. Ezek a bejegyzések a parancsfájl műveleteinek futtatásakor jönnek létre.
+1. Keresse meg azokat a bejegyzéseket, amelyek a **\_ customscriptaction futtatták** az **Operations** oszlopban. Ezek a bejegyzések a parancsfájl műveleteinek futtatásakor jönnek létre.
 
     ![Apache Ambari parancsfájl műveleti műveletei](./media/troubleshoot-script-action/ambari-script-action.png)
 
@@ -45,13 +45,13 @@ Ha a fürt létrehozása parancsfájl hiba miatt meghiúsul, a rendszer a napló
 
     ![Parancsfájl műveleti naplói](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    Ebben a könyvtárban a naplók külön vannak rendszerezve a **átjárócsomóponthoz**, a **munkavégző csomópont**és a **Zookeeper csomópont**számára. Lásd az alábbi példákat:
+    Ebben a könyvtárban a naplók külön vannak rendszerezve a **átjárócsomóponthoz** , a **munkavégző csomópont** és a **Zookeeper csomópont** számára. Lásd az alábbi példákat:
 
-    * **Átjárócsomóponthoz**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Átjárócsomóponthoz** : `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Munkavégző csomópont**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Munkavégző csomópont** : `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper csomópont**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper csomópont** : `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * A rendszer feltölti a megfelelő gazdagép összes **StdOut** -és **stderr** a Storage-fiókba. Minden parancsfájl-művelethez létezik egy **output- \* . txt** és **errors- \* . txt fájl** . A **output-*. txt** fájl a gazdagépen futó parancsfájl URI azonosítóját tartalmazza. A következő szöveg egy példa erre az információra:
 
@@ -59,7 +59,7 @@ Ha a fürt létrehozása parancsfájl hiba miatt meghiúsul, a rendszer a napló
     'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
     ```
 
-* Lehetséges, hogy ismételten létrehoz egy azonos nevű parancsfájl-műveleti fürtöt. Ebben **az esetben a mappa neve** alapján megkülönböztetni a megfelelő naplókat. Például a fürt **mycluster**, amely különböző dátumokban lett létrehozva, a következő naplóbejegyzések szerint jelenik meg:
+* Lehetséges, hogy ismételten létrehoz egy azonos nevű parancsfájl-műveleti fürtöt. Ebben **az esetben a mappa neve** alapján megkülönböztetni a megfelelő naplókat. Például a fürt **mycluster** , amely különböző dátumokban lett létrehozva, a következő naplóbejegyzések szerint jelenik meg:
 
     `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
@@ -75,7 +75,7 @@ Ne módosítsa a Ambari watchdog (hdinsightwatchdog) jelszavát a Linux-alapú H
 
 ## <a name="cant-import-name-blobservice"></a>Nem lehet importálni a BlobService nevet
 
-__Tüneteket__. A parancsfájl művelete sikertelen. A következő hibához hasonló szöveg jelenik meg, amikor megtekinti a műveletet a Ambari:
+__Tüneteket__ . A parancsfájl művelete sikertelen. A következő hibához hasonló szöveg jelenik meg, amikor megtekinti a műveletet a Ambari:
 
 ```
 Traceback (most recent call list):
@@ -84,9 +84,9 @@ Traceback (most recent call list):
 ImportError: cannot import name BlobService
 ```
 
-__OK__. Ez a hiba akkor fordul elő, ha a HDInsight-fürthöz tartozó Python Azure Storage-ügyfelet frissíti. A HDInsight az Azure Storage ügyféloldali 0.20.0 várja.
+__OK__ . Ez a hiba akkor fordul elő, ha a HDInsight-fürthöz tartozó Python Azure Storage-ügyfelet frissíti. A HDInsight az Azure Storage ügyféloldali 0.20.0 várja.
 
-__Megoldás__. A hiba megoldásához manuálisan kapcsolódjon az egyes fürtcsomópontokon a használatával `ssh` . Futtassa a következő parancsot a megfelelő tárolási ügyfél verziójának újratelepítéséhez:
+__Megoldás__ . A hiba megoldásához manuálisan kapcsolódjon az egyes fürtcsomópontokon a használatával `ssh` . Futtassa a következő parancsot a megfelelő tárolási ügyfél verziójának újratelepítéséhez:
 
 ```bash
 sudo pip install azure-storage==0.20.0
@@ -116,4 +116,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 * Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](../azure-portal/supportability/how-to-create-azure-support-request.md)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 32efda0c97bec10f2c8aa29d6f83a28538d64468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5dd66b16674e1441865f796153e7508acc854d0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496763"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543746"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>Oktatóanyag: Azure Database for MySQL tervezése a PowerShell használatával
 
@@ -54,7 +54,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy **myresourcegroup** nevű ERŐFORRÁSCSOPORTOT az **USA nyugati** régiójában.
 
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 Hozzon létre egy Azure Database for MySQL kiszolgálót a `New-AzMySqlServer` parancsmaggal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
 
-Az alábbi példa egy MySQL-kiszolgálót hoz létre az **USA nyugati** régiójában, a **mydemoserver** nevű **myresourcegroup** -erőforráscsoporthoz pedig a **myadmin**kiszolgáló-rendszergazdai bejelentkezési felhasználónevét. Ez egy általános célú, 2 virtuális mag és a Geo-redundáns biztonsági mentést használó, általános célú árképzési szinten található Gen 5 kiszolgáló. Dokumentálja a példa első sorában használt jelszót, mivel ez a MySQL-kiszolgáló rendszergazdai fiókjának jelszava.
+Az alábbi példa egy MySQL-kiszolgálót hoz létre az **USA nyugati** régiójában, a **mydemoserver** nevű **myresourcegroup** -erőforráscsoporthoz pedig a **myadmin** kiszolgáló-rendszergazdai bejelentkezési felhasználónevét. Ez egy általános célú, 2 virtuális mag és a Geo-redundáns biztonsági mentést használó, általános célú árképzési szinten található Gen 5 kiszolgáló. Dokumentálja a példa első sorában használt jelszót, mivel ez a MySQL-kiszolgáló rendszergazdai fiókjának jelszava.
 
 > [!TIP]
 > A kiszolgáló neve egy DNS-névbe van leképezve, ezért globálisan egyedinek kell lennie az Azure-ban.
@@ -104,7 +104,7 @@ New-AzMySqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -Serv
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
-A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat. A kapcsolódási adatok megállapításához használja az alábbi példát. Jegyezze fel a **FullyQualifiedDomainName** és a **AdministratorLogin**értékeit.
+A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat. A kapcsolódási adatok megállapításához használja az alábbi példát. Jegyezze fel a **FullyQualifiedDomainName** és a **AdministratorLogin** értékeit.
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
@@ -208,7 +208,7 @@ A visszaállítási folyamat befejeződése után keresse meg az új kiszolgál�
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával](howto-restore-server-powershell.md)

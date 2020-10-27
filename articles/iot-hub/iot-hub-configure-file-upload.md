@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
-ms.openlocfilehash: 8d374ff372e0bc3fb183d9210f663987e4804114
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: da28bfa31c74ff33a200967267500033dd6a9b1b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142531"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535875"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>IoT Hub-fájlfeltöltések konfigurálása az Azure Portallal
 
@@ -25,17 +25,17 @@ Ha IoT Hub szeretné használni a [fájlfeltöltés funkciót](iot-hub-devguide-
 
 ![IoT Hub fájlfeltöltés beállításainak megtekintése a portálon](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **Tároló**: a Azure Portal használatával kiválaszthatja az Azure Storage-fiókban lévő BLOB-tárolót az aktuális Azure-előfizetésében, hogy társítsa a IoT hub. Szükség esetén létrehozhat egy Azure Storage-fiókot a **Storage-fiókok** panelen és a blob-tárolóban a **tárolók** panelen. A IoT Hub automatikusan létrehoz egy írási engedéllyel rendelkező SAS URI-t a blob-tárolóhoz a fájlok feltöltésekor használandó eszközökhöz.
+* **Tároló** : a Azure Portal használatával kiválaszthatja az Azure Storage-fiókban lévő BLOB-tárolót az aktuális Azure-előfizetésében, hogy társítsa a IoT hub. Szükség esetén létrehozhat egy Azure Storage-fiókot a **Storage-fiókok** panelen és a blob-tárolóban a **tárolók** panelen. A IoT Hub automatikusan létrehoz egy írási engedéllyel rendelkező SAS URI-t a blob-tárolóhoz a fájlok feltöltésekor használandó eszközökhöz.
 
    ![A fájl feltöltéséhez használt tárolók megtekintése a portálon](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-* **Értesítések fogadása a feltöltött fájlokról**: a fájlfeltöltés értesítéseinek engedélyezése vagy letiltása a váltógomb használatával.
+* **Értesítések fogadása a feltöltött fájlokról** : a fájlfeltöltés értesítéseinek engedélyezése vagy letiltása a váltógomb használatával.
 
-* **Sas TTL**: Ez a beállítás a IoT hub által az eszközre visszaadott sas URI-k élettartama. Alapértelmezés szerint egy órára van beállítva, de a csúszka használatával más értékekre is testreszabható.
+* **Sas TTL** : Ez a beállítás a IoT hub által az eszközre visszaadott sas URI-k élettartama. Alapértelmezés szerint egy órára van beállítva, de a csúszka használatával más értékekre is testreszabható.
 
-* **Fájl-értesítési beállítások alapértelmezett élettartama**: a fájl feltöltésével kapcsolatos értesítési idő a lejárta előtt. Alapértelmezés szerint egy napra van beállítva, de a csúszka használatával más értékekre is testreszabható.
+* **Fájl-értesítési beállítások alapértelmezett élettartama** : a fájl feltöltésével kapcsolatos értesítési idő a lejárta előtt. Alapértelmezés szerint egy napra van beállítva, de a csúszka használatával más értékekre is testreszabható.
 
-* **Fájl értesítéseinek maximális kézbesítési száma**: az a szám, ahányszor a IoT hub megpróbált kézbesíteni egy fájlfeltöltés-értesítést. Alapértelmezés szerint 10 értékre van állítva, de a csúszka használatával más értékekre is testreszabható.
+* **Fájl értesítéseinek maximális kézbesítési száma** : az a szám, ahányszor a IoT hub megpróbált kézbesíteni egy fájlfeltöltés-értesítést. Alapértelmezés szerint 10 értékre van állítva, de a csúszka használatával más értékekre is testreszabható.
 
    ![IoT Hub fájl feltöltésének konfigurálása a portálon](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 
@@ -46,8 +46,7 @@ A IoT Hub fájlfeltöltés funkcióival kapcsolatos további információkért l
 Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 
 * [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
-* [IoT Hub metrikák](iot-hub-metrics.md)
-* [Műveletek figyelése](iot-hub-operations-monitoring.md)
+* [Az IoT hub figyelése](monitor-iot-hub.md)
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 

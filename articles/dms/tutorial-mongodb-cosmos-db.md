@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: b5e335659a26568ae11a17425c4e53c53f02a843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d06b7be7be06d037589e482fe59c4326cbfad29
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282357"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546704"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Oktatóanyag: MongoDB migrálása Azure Cosmos DB API-MongoDB offline állapotba a DMS használatával
 
@@ -56,7 +56,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
-1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
+1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás** , majd az **Előfizetések** elemet.
 
    ![Portál-előfizetések megtekintése](media/tutorial-mongodb-to-cosmosdb/portal-select-subscription1.png)
 
@@ -64,13 +64,13 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
     ![Erőforrás-szolgáltatók megtekintése](media/tutorial-mongodb-to-cosmosdb/portal-select-resource-provider.png)
 
-3. Keresse meg az áttelepítést, majd a **Microsoft. DataMigration**jobb oldalán válassza a **regisztráció**lehetőséget.
+3. Keresse meg az áttelepítést, majd a **Microsoft. DataMigration** jobb oldalán válassza a **regisztráció** lehetőséget.
 
     ![Erőforrás-szolgáltató regisztrálása](media/tutorial-mongodb-to-cosmosdb/portal-register-resource-provider.png)    
 
 ## <a name="create-an-instance"></a>Példány létrehozása
 
-1. Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service**-t.
+1. Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service** -t.
 
     ![Azure Piactér](media/tutorial-mongodb-to-cosmosdb/portal-marketplace.png)
 
@@ -100,7 +100,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa meg, és hozzon létre egy új migrálási projektet.
 
-1. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, keresse meg az Azure Database Migration Service-t, majd válassza ki az **Azure Database Migration Servicest**.
+1. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, keresse meg az Azure Database Migration Service-t, majd válassza ki az **Azure Database Migration Servicest** .
 
       ![Azure Database Migration Service összes példányának megkeresése](media/tutorial-mongodb-to-cosmosdb/dms-search.png)
 
@@ -108,7 +108,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 3. Válassza a + **Új migrálási projekt** lehetőséget.
 
-4. Az **új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **forráskiszolgáló típusa** szövegmezőben válassza a **MongoDB**lehetőséget, a **célkiszolgáló típusa** szövegmezőben válassza a **CosmosDB (MongoDB API)** lehetőséget, majd a **tevékenység típusa**beállításnál válassza az **Offline adatáttelepítés**lehetőséget. 
+4. Az **új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **forráskiszolgáló típusa** szövegmezőben válassza a **MongoDB** lehetőséget, a **célkiszolgáló típusa** szövegmezőben válassza a **CosmosDB (MongoDB API)** lehetőséget, majd a **tevékenység típusa** beállításnál válassza az **Offline adatáttelepítés** lehetőséget. 
 
     ![Database Migration Service projekt létrehozása](media/tutorial-mongodb-to-cosmosdb/dms-create-project.png)
 
@@ -122,9 +122,9 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
    > A Azure Database Migration Service nem támogatja a Azure Cosmos DB forrásként.
 
     Három mód van a forráshoz való kapcsolódásra:
-   * **Standard mód**, amely teljes tartománynevet vagy IP-címet, portszámot és a kapcsolatok hitelesítő adatait fogadja el.
-   * A **kapcsolatok karakterláncának módja**, amely fogadja a MongoDB-kapcsolatok karakterláncát a következő témakörben ismertetett módon: a [kapcsolatok karakterláncának URI formátuma](https://docs.mongodb.com/manual/reference/connection-string/).
-   * Az **Azure Storage-ból származó adatok**, amelyek elfogadják a blob Container sas URL-címét. Válassza a **blob BSON-memóriaképeket** , ha a blob-tárolóban a MongoDB [bsondump eszköz](https://docs.mongodb.com/manual/reference/program/bsondump/)által létrehozott BSON-memóriaképek találhatók, és törölje a jelölést, ha a tároló JSON-fájlokat tartalmaz.
+   * **Standard mód** , amely teljes tartománynevet vagy IP-címet, portszámot és a kapcsolatok hitelesítő adatait fogadja el.
+   * A **kapcsolatok karakterláncának módja** , amely fogadja a MongoDB-kapcsolatok karakterláncát a következő témakörben ismertetett módon: a [kapcsolatok karakterláncának URI formátuma](https://docs.mongodb.com/manual/reference/connection-string/).
+   * Az **Azure Storage-ból származó adatok** , amelyek elfogadják a blob Container sas URL-címét. Válassza a **blob BSON-memóriaképeket** , ha a blob-tárolóban a MongoDB [bsondump eszköz](https://docs.mongodb.com/manual/reference/program/bsondump/)által létrehozott BSON-memóriaképek találhatók, és törölje a jelölést, ha a tároló JSON-fájlokat tartalmaz.
 
      Ha ezt a beállítást választja, győződjön meg arról, hogy a Storage-fiókhoz tartozó kapcsolatok karakterlánca a következő formátumban jelenik meg:
 
@@ -136,9 +136,9 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
      
      Emellett az Azure Storage-beli memóriakép-információk alapján is tartsa szem előtt a következő adatokat.
 
-     * A BSON-memóriaképek esetében a blob-tárolóban lévő adatfájloknak bsondump formátumúnak kell lenniük, így az adatfájlokat a tartalmazó adatbázisok mappába kell helyezni a gyűjtemény. BSON formátumban. A metaadat-fájlokat (ha vannak ilyenek) a Format *collection*.metadata.jshasználatával kell elnevezni.
+     * A BSON-memóriaképek esetében a blob-tárolóban lévő adatfájloknak bsondump formátumúnak kell lenniük, így az adatfájlokat a tartalmazó adatbázisok mappába kell helyezni a gyűjtemény. BSON formátumban. A metaadat-fájlokat (ha vannak ilyenek) a Format *collection* .metadata.jshasználatával kell elnevezni.
 
-     * A JSON-memóriaképek esetében a blob-tárolóban lévő fájlokat a tartalmazó adatbázisokat tartalmazó mappákba kell helyezni. Az egyes adatbázis-mappákban az adatfájlokat az "adat" nevű almappába kell helyezni, és a name *Collection*. JSON formátumot kell elnevezni. A metaadat-fájlokat (ha vannak ilyenek) a "metadata" nevű almappában kell elhelyezni, és ugyanazt a formátumot kell elnevezni, a *Collection*. JSON fájllal. A metaadat-fájloknak meg kell egyezniük a MongoDB bsondump eszközzel létrehozott formátummal.
+     * A JSON-memóriaképek esetében a blob-tárolóban lévő fájlokat a tartalmazó adatbázisokat tartalmazó mappákba kell helyezni. Az egyes adatbázis-mappákban az adatfájlokat az "adat" nevű almappába kell helyezni, és a name *Collection* . JSON formátumot kell elnevezni. A metaadat-fájlokat (ha vannak ilyenek) a "metadata" nevű almappában kell elhelyezni, és ugyanazt a formátumot kell elnevezni, a *Collection* . JSON fájllal. A metaadat-fájloknak meg kell egyezniük a MongoDB bsondump eszközzel létrehozott formátummal.
 
     > [!IMPORTANT]
     > Nem ajánlott önaláírt tanúsítványt használni a Mongo-kiszolgálón. Ha azonban ilyet használ, kapcsolódjon a kiszolgálóhoz **kapcsolati sztring mód** használatával, és győződjön meg arról, hogy a kapcsolati karakterlánc ""
@@ -151,7 +151,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
    ![Forrás adatainak megadása](media/tutorial-mongodb-to-cosmosdb/dms-specify-source.png)
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 
@@ -159,7 +159,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
     ![Cél adatainak megadása](media/tutorial-mongodb-to-cosmosdb/dms-specify-target.png)
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 ## <a name="map-to-target-databases"></a>Leképezés céladatbázisokra
 
@@ -173,7 +173,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
     ![Leképezés céladatbázisokra](media/tutorial-mongodb-to-cosmosdb/dms-map-target-databases.png)
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 3. A **gyűjtemény beállítása** képernyőn bontsa ki a gyűjtemények listáját, majd tekintse át az áttelepíteni kívánt gyűjtemények listáját.
 
     Azure Database Migration Service automatikusan kijelöli az összes olyan gyűjteményt, amely szerepel a forrás MongoDB-példányon, amely nem szerepel a cél Azure Cosmos DB fiókban. Ha olyan gyűjteményeket szeretne újratelepíteni, amelyek már tartalmaznak adatfájlokat, explicit módon ki kell választania a gyűjteményeket ezen a panelen.
@@ -187,7 +187,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
     ![Gyűjtemények táblázatának kiválasztása](media/tutorial-mongodb-to-cosmosdb/dms-collection-setting.png)
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 5. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét.
 
@@ -197,7 +197,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 * Válassza a **Migrálás futtatása** lehetőséget.
 
-    Megjelenik az áttelepítési tevékenység ablak, és a tevékenység **állapota** nincs **elindítva**.
+    Megjelenik az áttelepítési tevékenység ablak, és a tevékenység **állapota** nincs **elindítva** .
 
     ![Tevékenység állapota](media/tutorial-mongodb-to-cosmosdb/dms-activity-status.png)
 
@@ -214,7 +214,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 * Az áttelepítés befejeződése után ellenőrizheti a Azure Cosmos DB-fiókját, és ellenőrizheti, hogy az összes gyűjtemény sikeresen áttelepítése sikeres volt-e.
 
-    ![Tevékenység állapota befejezve](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
+    ![Képernyőfelvétel: a Azure Cosmos DB-fiók ellenőrzésének helye, amely ellenőrzi, hogy az összes gyűjtemény sikeresen át lett-e telepítve.](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
 
 ## <a name="post-migration-optimization"></a>Áttelepítés utáni optimalizálás
 
@@ -224,6 +224,6 @@ Miután áttelepítette a MongoDB-adatbázisban tárolt adatAzure Cosmos DB API-
 
 * [Cosmos DB szolgáltatás adatai](https://azure.microsoft.com/services/cosmos-db/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az áttelepítési útmutatót a Microsoft [Database áttelepítési útmutatóban](https://datamigration.microsoft.com/)található további forgatókönyvekhez.

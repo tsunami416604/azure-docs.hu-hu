@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 29492ee6b7bce50c4807a36d0c252e18e6aadf87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008950"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538595"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Az Azure Cache for Redis adatvesztéssel járó hibáinak elhárítása
 
@@ -36,7 +36,7 @@ Ha úgy találja, hogy a kulcsok eltűntek a gyorsítótárból, ellenőrizze az
 
 ### <a name="key-expiration"></a>Kulcs lejárata
 
-A Redis-hez készült Azure cache automatikusan eltávolítja a kulcsot, ha a kulcshoz időtúllépés van rendelve, és az adott időszak lejárt. További információ a Redis-kulcs lejáratáról: a [lejárati](https://redis.io/commands/expire) parancs dokumentációja. Az időtúllépési értékek a [set](https://redis.io/commands/set), a [SETEX](https://redis.io/commands/setex), a [GETSET](https://redis.io/commands/getset)és az Other ** \* Store** parancs használatával is megadhatók.
+A Redis-hez készült Azure cache automatikusan eltávolítja a kulcsot, ha a kulcshoz időtúllépés van rendelve, és az adott időszak lejárt. További információ a Redis-kulcs lejáratáról: a [lejárati](https://redis.io/commands/expire) parancs dokumentációja. Az időtúllépési értékek a [set](https://redis.io/commands/set), a [SETEX](https://redis.io/commands/setex), a [GETSET](https://redis.io/commands/getset)és az Other **\* Store** parancs használatával is megadhatók.
 
 A kulcsok lejárati idejének lekéréséhez használja az [info](https://redis.io/commands/info) parancsot. A `Stats` szakasz a lejárt kulcsok teljes számát jeleníti meg. A `Keyspace` szakasz részletesen ismerteti az időtúllépéssel rendelkező kulcsok számát és az átlagos időtúllépési értéket.
 
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Helytelen adatbázis-kijelölés
 
-A Redis-hez készült Azure cache alapértelmezés szerint a **db0** adatbázist használja. Ha átvált egy másik adatbázisra (például **db1**), és megpróbálja beolvasni a kulcsokat, az Azure cache for Redis nem fogja tudni megkeresni azokat. Minden adatbázis logikailag különálló egység, és egy másik adatkészletet tárol. A [Select](https://redis.io/commands/select) parancs használatával más elérhető adatbázisokat is használhat, és mindegyikben megkeresheti a kulcsokat.
+A Redis-hez készült Azure cache alapértelmezés szerint a **db0** adatbázist használja. Ha átvált egy másik adatbázisra (például **db1** ), és megpróbálja beolvasni a kulcsokat, az Azure cache for Redis nem fogja tudni megkeresni azokat. Minden adatbázis logikailag különálló egység, és egy másik adatkészletet tárol. A [Select](https://redis.io/commands/select) parancs használatával más elérhető adatbázisokat is használhat, és mindegyikben megkeresheti a kulcsokat.
 
 ### <a name="redis-instance-failure"></a>Redis-példány hibája
 
@@ -114,7 +114,7 @@ A Redis egy memóriában tárolt adattároló. Az adat a Redis cache-t üzemelte
 
 A standard és a prémium szintű gyorsítótárak sokkal nagyobb rugalmasságot biztosítanak az adatvesztés ellen, ha két virtuális gépet használ egy replikált konfigurációban. Ha az ilyen gyorsítótárban lévő elsődleges csomópont meghibásodik, a replika csomópont átveszi az adatszolgáltatások automatikus kiszolgálására. Ezek a virtuális gépek külön tartományokban találhatók a hibák és a frissítések számára, így a lehető legkevesebb eséllyel elérhetetlenné válnak. Ha azonban jelentős adatközpont-kimaradás történik, előfordulhat, hogy a virtuális gépek továbbra is leállnak egymással. Ezekben a ritka esetekben az adatai elvesznek.
 
-Érdemes lehet a [Redis adatmegőrzést](https://redis.io/topics/persistence) és a [geo-replikálást](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) használni az adatvédelem ezen infrastrukturális hibákkal szembeni védelme érdekében.
+Érdemes lehet a [Redis adatmegőrzést](https://redis.io/topics/persistence) és a [geo-replikálást](./cache-how-to-geo-replication.md) használni az adatvédelem ezen infrastrukturális hibákkal szembeni védelme érdekében.
 
 ## <a name="additional-information"></a>További információ
 

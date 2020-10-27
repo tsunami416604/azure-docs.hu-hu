@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: b762b77788c3df05fbd0db349457abadcbe39b51
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 64821819530e142eb207c001d3e3ccfe349cf917
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147734"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547775"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -34,7 +34,7 @@ A IoT Hub a protokollok közötti együttműködés [általános formátumát](i
 
 ## <a name="routing-endpoints"></a>Útválasztási végpontok
 
-Az IoT hub alapértelmezett beépített végpontja (**üzenetek/események**), amely kompatibilis a Event Hubsokkal. Létrehozhat [Egyéni végpontokat](iot-hub-devguide-endpoints.md#custom-endpoints) az üzenetek átirányításához az előfizetésben lévő egyéb szolgáltatások összekapcsolásával a IoT hub. 
+Az IoT hub alapértelmezett beépített végpontja ( **üzenetek/események** ), amely kompatibilis a Event Hubsokkal. Létrehozhat [Egyéni végpontokat](iot-hub-devguide-endpoints.md#custom-endpoints) az üzenetek átirányításához az előfizetésben lévő egyéb szolgáltatások összekapcsolásával a IoT hub. 
 
 Minden üzenet az összes olyan végponthoz van irányítva, amelynek útválasztási lekérdezése megfelel. Más szóval egy üzenet több végponthoz is átirányítható.
 
@@ -49,7 +49,7 @@ A IoT Hub jelenleg a következő végpontokat támogatja:
 
 ## <a name="built-in-endpoint-as-a-routing-endpoint"></a>Beépített végpont útválasztási végpontként
 
-Az eszközről a felhőbe irányuló üzenetek fogadásához a beépített végpontról (**üzenetek/események**) a standard [Event Hubs Integration és SDK](iot-hub-devguide-messages-read-builtin.md) -k használhatók. Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, kivéve, ha egy útvonal jön létre a végponthoz.
+Az eszközről a felhőbe irányuló üzenetek fogadásához a beépített végpontról ( **üzenetek/események** ) a standard [Event Hubs Integration és SDK](iot-hub-devguide-messages-read-builtin.md) -k használhatók. Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, kivéve, ha egy útvonal jön létre a végponthoz.
 
 ## <a name="azure-storage-as-a-routing-endpoint"></a>Azure Storage útválasztási végpontként
 
@@ -59,7 +59,7 @@ IoT Hub támogatja az Azure Storage-ba való adatírást az [Apache Avro](https:
 
 A kódolási formátum csak akkor állítható be, ha a blob Storage-végpont konfigurálva van. meglévő végpont esetében nem módosítható. Meglévő végpont kódolási formátumának váltásához törölnie kell, majd újra létre kell hoznia az egyéni végpontot a kívánt formátumban. Az egyik hasznos stratégia lehet egy új egyéni végpont létrehozása a kívánt kódolási formátummal, és egy párhuzamos útvonal hozzáadása a végponthoz. Így ellenőrizheti az adatait, mielőtt törölné a meglévő végpontot.
 
-A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)vagy a [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint)használatával. Az alábbi képen látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
+A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](/cli/azure/iot/hub/routing-endpoint)vagy a [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint)használatával. Az alábbi képen látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
 
 ![BLOB Storage-végpont kódolása](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -120,13 +120,13 @@ Az alábbi oktatóanyagok segítségével megtudhatja, hogyan olvashatja el a v�
 
 ## <a name="fallback-route"></a>Tartalék útvonal
 
-A tartalék útvonal minden olyan üzenetet elküld, amely nem felel meg a lekérdezési feltételeknek a meglévő útvonalakon a beépített Event Hubs (**üzenetek/események**) számára, amely kompatibilis a [Event Hubsokkal](../event-hubs/index.yml). Ha az üzenet-útválasztás be van kapcsolva, engedélyezheti a tartalék útvonal funkciót. Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, hacsak nem jön létre útvonal a végponthoz. Ha nincs elérhető útvonal a beépített végponthoz, és a tartalék útvonal engedélyezve van, csak az útvonalakon nem egyező üzeneteket küld a rendszer a beépített végpontnak. Továbbá, ha az összes meglévő útvonal törölve van, a tartalék útvonalnak engedélyezve kell lennie az összes, a beépített végponton tárolt érték fogadásához.
+A tartalék útvonal minden olyan üzenetet elküld, amely nem felel meg a lekérdezési feltételeknek a meglévő útvonalakon a beépített Event Hubs ( **üzenetek/események** ) számára, amely kompatibilis a [Event Hubsokkal](../event-hubs/index.yml). Ha az üzenet-útválasztás be van kapcsolva, engedélyezheti a tartalék útvonal funkciót. Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, hacsak nem jön létre útvonal a végponthoz. Ha nincs elérhető útvonal a beépített végponthoz, és a tartalék útvonal engedélyezve van, csak az útvonalakon nem egyező üzeneteket küld a rendszer a beépített végpontnak. Továbbá, ha az összes meglévő útvonal törölve van, a tartalék útvonalnak engedélyezve kell lennie az összes, a beépített végponton tárolt érték fogadásához.
 
 Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal->üzenet-útválasztás panelen. A [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) Azure Resource Manager is használhat egyéni végpontot a tartalék útvonalhoz.
 
 ## <a name="non-telemetry-events"></a>Nem telemetria események
 
-Az eszközök telemetria mellett az üzenet-útválasztás is lehetővé teszi az eszköz kettős változási eseményeinek, az eszköz életciklusa eseményeinek és a digitális kettős változási események küldését. Ha például egy útvonal úgy jön létre, hogy az **eszköz kettős változási eseményre**van beállítva, akkor IoT hub üzeneteket küld a végpontnak, amely tartalmazza az eszköz kettős változását. Hasonlóképpen, ha egy útvonal az **eszköz életciklusára**beállított adatforrással jön létre, IoT hub üzenetet küld, amely jelzi, hogy az eszköz törölve lett vagy létrejött. Végezetül, a [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)részeként a fejlesztő olyan útvonalakat hozhat létre, amelyek **digitális kettős változási eseményekre** vannak beállítva, és IoT hub üzeneteket küld, amikor egy digitális Twin [tulajdonságot](../iot-pnp/iot-plug-and-play-glossary.md) állítanak be vagy módosítanak, a rendszer lecseréli a [digitális Twin](../iot-pnp/iot-plug-and-play-glossary.md) -et, vagy ha változási esemény történik az alapul szolgáló eszköz esetében.
+Az eszközök telemetria mellett az üzenet-útválasztás is lehetővé teszi az eszköz kettős változási eseményeinek, az eszköz életciklusa eseményeinek és a digitális kettős változási események küldését. Ha például egy útvonal úgy jön létre, hogy az **eszköz kettős változási eseményre** van beállítva, akkor IoT hub üzeneteket küld a végpontnak, amely tartalmazza az eszköz kettős változását. Hasonlóképpen, ha egy útvonal az **eszköz életciklusára** beállított adatforrással jön létre, IoT hub üzenetet küld, amely jelzi, hogy az eszköz törölve lett vagy létrejött. Végezetül, a [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)részeként a fejlesztő olyan útvonalakat hozhat létre, amelyek **digitális kettős változási eseményekre** vannak beállítva, és IoT hub üzeneteket küld, amikor egy digitális Twin [tulajdonságot](../iot-pnp/iot-plug-and-play-glossary.md) állítanak be vagy módosítanak, a rendszer lecseréli a [digitális Twin](../iot-pnp/iot-plug-and-play-glossary.md) -et, vagy ha változási esemény történik az alapul szolgáló eszköz esetében.
 
 A IoT Hub a Azure Event Grid-nal [is integrálva van](iot-hub-event-grid.md) az eszköz eseményeinek közzétételéhez, hogy támogassa a valós idejű integrációkat és a munkafolyamatok automatizálását ezen események alapján. Tekintse meg az [üzenet-útválasztás és a Event Grid közötti fő különbségeket](iot-hub-event-grid-routing-comparison.md) , amelyekből megtudhatja, melyik a legmegfelelőbb a forgatókönyvhöz.
 
@@ -148,7 +148,9 @@ A legtöbb esetben a késés átlagos növekedése kevesebb, mint 500 MS. A kés
 
 ## <a name="monitoring-and-troubleshooting"></a>Figyelés és hibaelhárítás
 
-IoT Hub az útválasztáshoz és a végpontokhoz kapcsolódó metrikákat biztosít, hogy áttekintést nyújtson a hub állapotáról és az elküldött üzenetekről. [IoT hub mérőszámok](iot-hub-metrics.md) felsorolja az összes olyan metrikát, amely alapértelmezés szerint engedélyezve van a IoT hub számára. Az Azure Monitor [diagnosztikai beállításokban](../iot-hub/iot-hub-monitor-resource-health.md)található diagnosztikai naplók használatával nyomon követheti **az útválasztási** lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat IoT hub által észlelt módon. A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. 
+IoT Hub az útválasztáshoz és a végpontokhoz kapcsolódó metrikákat biztosít, hogy áttekintést nyújtson a hub állapotáról és az elküldött üzenetekről. A funkcionális kategóriánként kibontott összes IoT Hub metrika listáját a [monitorozási adatok referenciájának mérőszámai](monitor-iot-hub-reference.md#metrics)című részben tekintheti meg. Nyomon követheti az útválasztási lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat, ha az IoT Hub az [IoT hub erőforrás-naplók **útvonalak** kategóriájában](monitor-iot-hub-reference.md#routes)látható. Ha többet szeretne megtudni a metrikák és az erőforrás-naplók használatáról IoT Hub segítségével, tekintse meg a [IoT hub figyelése](monitor-iot-hub.md)című témakört.
+
+A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget.
 
 További részletekért és az Útválasztás hibaelhárításához használja a [hibaelhárítási útmutatót](troubleshoot-message-routing.md) .
 

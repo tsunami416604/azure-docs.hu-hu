@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40f820a32c7848b5370cb664d706e9f20928bc5c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a02d2e32a035581d486f22b97fc789957d0b4138
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89296481"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534039"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Gyors útmutató: Azure Database for MySQL létrehozása egyszerű Azure CLI-parancs használatával – az MySQL up (előzetes verzió)
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Az az [login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel a megfelelő előfizetésnév parancskimenetéből az **id** tulajdonságot.
+Az az [login](/cli/azure/authenticate-azure-cli) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel a megfelelő előfizetésnév parancskimenetéből az **id** tulajdonságot.
 
 ```azurecli
 az login
@@ -90,7 +90,7 @@ A `az mysql up` parancs befejezése után a rendszer visszaadja a népszerű pro
 
 A kapcsolati karakterláncok újbóli listázásához használja az az [MySQL show-kapcsolat-string](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) parancsot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 A következő parancs használatával törölje a gyors útmutatóban létrehozott összes erőforrást. Ez a parancs törli a Azure Database for MySQL kiszolgálót és az erőforráscsoportot.
 
@@ -104,7 +104,7 @@ Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja 
 az mysql down
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis tervezése az Azure CLI-vel](./tutorial-design-database-using-cli.md)

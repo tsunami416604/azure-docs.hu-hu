@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44cfe9bc6cd357cc0c649cecd022d3955bb5a2ce
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756534"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545871"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
@@ -24,7 +24,7 @@ Azure Database for MySQL rugalmas kiszolgáló, a automatikusan létrehozza a ki
 
 A rugalmas kiszolgáló pillanatképes biztonsági másolatot készít az adatfájlokról, és egy helyi redundáns tárolóban tárolja őket. A kiszolgáló a tranzakciós naplók biztonsági mentését is végrehajtja, és a helyi redundáns tárolóban tárolja őket. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Az adatbázis biztonsági mentését opcionálisan 1 – 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítással történik a nyugalmi állapotban tárolt adatok esetében.
 
-Ezeket a biztonságimásolat-fájlokat nem lehet exportálni. A biztonsági másolatok csak a rugalmas kiszolgálók visszaállítási műveleteihez használhatók. A [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   -t egy MySQL-ügyfélről is használhatja egy adatbázis másolásához.
+Ezeket a biztonságimásolat-fájlokat nem lehet exportálni. A biztonsági másolatok csak a rugalmas kiszolgálók visszaállítási műveleteihez használhatók. A [mysqldump](../concepts-migrate-dump-restore.md#dump-and-restore-using-mysqldump-utility) -t egy MySQL-ügyfélről is használhatja egy adatbázis másolásához.
 
 ## <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
@@ -40,9 +40,9 @@ A biztonsági másolatok megőrzési időszaka szabályozza, hogy az idő meddig
 
 ## <a name="backup-storage-cost"></a>Biztonsági mentési tárolási díj
 
-A rugalmas kiszolgáló a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Minden további felhasznált biztonsági mentési tárterületért GB/hó díjat számítunk fel. Ha például 250 GB tárterülettel rendelkező kiszolgálót épít ki, akkor a kiszolgáló biztonsági mentéséhez 250 GB tárterület áll rendelkezésre. Ha a napi biztonsági mentés 25 GB-os, akkor akár 10 napos ingyenes biztonsági mentési tárterületet is használhat. A biztonsági mentéshez a 250 GB-nál nagyobb mennyiségű tárterületet a [díjszabási modell](https://azure.microsoft.com/pricing/details/mysql/)szerint számítjuk fel.
+A rugalmas kiszolgáló a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Minden további felhasznált biztonsági mentési tárterületért GB/hó díjat számítunk fel. Ha például 250 GB tárterülettel rendelkező kiszolgálót épít ki, akkor a kiszolgáló biztonsági mentéséhez 250 GB tárterület áll rendelkezésre. Ha a napi biztonsági mentés 25 GB-os, akkor akár 10 napos ingyenes biztonsági mentési tárterületet is használhat. A biztonsági mentéshez a 250 GB-nál nagyobb mennyiségű tárterületet a [díjszabási modell](https://azure.microsoft.com/pricing/details/mysql/)szerint számítjuk fel.
 
-A Azure Portalban elérhető Azure Monitor [biztonsági mentési tár](https://docs.microsoft.com/azure/mysql/concepts-monitoring)használható   metrikával figyelheti a kiszolgáló által felhasznált biztonsági mentési tárterületet. A **biztonsági mentési tár** használt mérőszáma az összes adatbázis biztonsági mentése és a naplózott biztonsági másolatok által felhasznált tárterület összegét adja meg a kiszolgáló biztonsági mentésének megőrzési időszaka alapján. A kiszolgáló magas szintű tranzakciós tevékenysége miatt a biztonsági másolatok tárolási kihasználtsága a teljes adatbázis méretétől függetlenül növekedhet.
+A Azure Portalban elérhető Azure Monitor [biztonsági mentési tár](../concepts-monitoring.md) használható metrikával figyelheti a kiszolgáló által felhasznált biztonsági mentési tárterületet. A **biztonsági mentési tár** használt mérőszáma az összes adatbázis biztonsági mentése és a naplózott biztonsági másolatok által felhasznált tárterület összegét adja meg a kiszolgáló biztonsági mentésének megőrzési időszaka alapján. A kiszolgáló magas szintű tranzakciós tevékenysége miatt a biztonsági másolatok tárolási kihasználtsága a teljes adatbázis méretétől függetlenül növekedhet.
 
 A biztonsági mentési tárolási költségek szabályozásának elsődleges módja a biztonsági mentés megőrzési időtartamának beállítása. 1 és 35 nap közötti megőrzési időtartamot választhat.
 
@@ -68,8 +68,8 @@ Az időponthoz való visszaállítás több esetben is hasznos lehet. A gyakori 
 
 A legutóbbi visszaállítási pont és az egyéni visszaállítási pont között [Azure Portal](how-to-restore-server-portal.md)használatával választhat.
 
--   **Legutóbbi visszaállítási pont**: a legújabb visszaállítási pont segítségével visszaállíthatja a kiszolgálót a forráskiszolgálón végrehajtott utolsó biztonsági mentésre. A visszaállítás időbélyege a portálon is megjelenik. Ez a beállítás akkor hasznos, ha gyorsan vissza szeretné állítani a kiszolgálót a legfrissített állapotba.
--   **Egyéni visszaállítási pont**: Ez lehetővé teszi, hogy az adott időpontot a rugalmas kiszolgáló számára meghatározott megőrzési időtartamon belül kiválassza. Ez a beállítás akkor hasznos, ha a kiszolgálót a pontos időpontban szeretné visszaállítani a felhasználói hibákból való helyreállításhoz.
+-   **Legutóbbi visszaállítási pont** : a legújabb visszaállítási pont segítségével visszaállíthatja a kiszolgálót a forráskiszolgálón végrehajtott utolsó biztonsági mentésre. A visszaállítás időbélyege a portálon is megjelenik. Ez a beállítás akkor hasznos, ha gyorsan vissza szeretné állítani a kiszolgálót a legfrissített állapotba.
+-   **Egyéni visszaállítási pont** : Ez lehetővé teszi, hogy az adott időpontot a rugalmas kiszolgáló számára meghatározott megőrzési időtartamon belül kiválassza. Ez a beállítás akkor hasznos, ha a kiszolgálót a pontos időpontban szeretné visszaállítani a felhasználói hibákból való helyreállításhoz.
 
 A helyreállítás becsült ideje számos tényezőtől függ, többek között az adatbázis méretétől, a tranzakciós napló biztonsági másolati mérettől, a SKU számítási méretétől és a visszaállítás időpontjától. A visszaállítási folyamat részeként a tranzakciós napló helyreállítása a legtöbb időt vesz igénybe. Ha a visszaállítási idő a teljes vagy a különbözeti pillanatkép biztonsági mentésének időpontjához közelebb van kiválasztva, a visszaállítók gyorsabbak, mivel a tranzakciós napló alkalmazása minimális. A kiszolgáló pontos helyreállítási idejének becsléséhez javasoljuk, hogy tesztelje a környezetében, mert túl sok környezeti változóval rendelkezik.
 
@@ -77,7 +77,7 @@ A helyreállítás becsült ideje számos tényezőtől függ, többek között 
 > Ha olyan rugalmas kiszolgálót állít vissza, amely a zóna redundánsan magas rendelkezésre állását állítja be, a visszaállított kiszolgáló ugyanabban a régióban és zónában lesz konfigurálva, mint az elsődleges kiszolgáló, és a rendszer egyetlen rugalmas kiszolgálóként helyezi üzembe a nem egyidejű módban. Tekintse meg a [zóna redundáns magas rendelkezésre állását](concepts-high-availability.md) a rugalmas kiszolgáló számára.
 
 > [!IMPORTANT]
-> A törölt kiszolgálók **nem**állíthatók   vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. A kiszolgálói erőforrások, a telepítés után a véletlen törlés vagy a váratlan módosítások elleni védelem érdekében a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
+> A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. A kiszolgálói erőforrások, a telepítés után a véletlen törlés vagy a váratlan módosítások elleni védelem érdekében a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="perform-post-restore-tasks"></a>Visszaállítás utáni feladatok végrehajtása
 
@@ -91,5 +91,5 @@ A **legutóbbi visszaállítási pont** vagy az **Egyéni visszaállítási pont
 ## <a name="next-steps"></a>Következő lépések
 
 -   Az [üzletmenet folytonosságának](./concepts-business-continuity.md) megismerése
--   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
+-   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
 -   Tudnivalók a [biztonsági mentésről és a helyreállításról](./concepts-backup-restore.md)

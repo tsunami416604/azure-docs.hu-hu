@@ -8,18 +8,18 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9bfdd2d03b3ab6edd04a641787475930435a9ffc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32530982bc2a9d1b5deb31b3bc71460462352258
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499602"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536419"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-cli"></a>Azure cache kezelése az Azure CLI-vel való Redis
 
 A következő táblázat az Azure CLI használatával létrehozott bash parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| Gyorsítótár létrehozása | Leírás |
+| Gyorsítótár létrehozása | Description (Leírás) |
 | ------------ | ----------- |
 | [Gyorsítótár létrehozása](./scripts/create-cache.md) | Létrehoz egy erőforráscsoportot és egy alapszintű Azure cache-gyorsítótárat a Redis számára. |
 | [Prémium szintű gyorsítótár létrehozása fürtözéssel](./scripts/create-premium-cache-cluster.md) | Létrehoz egy erőforráscsoportot és egy prémium szintű gyorsítótárat, amely lehetővé teszi a fürtözést.|
@@ -30,4 +30,4 @@ A következő táblázat az Azure CLI használatával létrehozott bash parancsf
 |**Gyorsítótár törlése**| **Leírás** |
 | [Gyorsítótár törlése](./scripts/delete-cache.md) | Egy Azure cache törlése a Redis-példányhoz  |
 
-Az Azure CLI-vel kapcsolatos további információkért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és az [Azure CLI első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Az Azure CLI-vel kapcsolatos további információkért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és az [Azure CLI első lépései](/cli/azure/get-started-with-azure-cli).

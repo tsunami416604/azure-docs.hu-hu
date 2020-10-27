@@ -4,23 +4,24 @@ description: Megtudhatja, hogyan csatlakozhat a Azure Cosmos DBhoz, és hogyan k
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 3b5886984d6e3830549e86a7c1ee46cd2483e4b4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: be37ab43db9b5b696a619cb1539981c064b4cb0e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480598"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537796"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Cosmos DB erőforrások kezelése Azure Storage Explorer használatával
 
 Az Azure Storage Explorer használatával csatlakozhat Azure Cosmos DBhoz. Lehetővé teszi az Azure-beli és a szuverén felhőkben üzemeltetett Azure Cosmos DB-fiókokhoz való kapcsolódást Windows, macOS vagy Linux rendszerről.
 
-Ugyanazzal az eszközzel kezelheti a különböző Azure-entitásokat egy helyen. Felügyelheti Azure Cosmos DB entitásokat, kezelheti az adatkezelést, frissítheti a tárolt eljárásokat és triggereket más Azure-entitásokkal, például a tárolási Blobokkal és a várólistákkal együtt.
+Ugyanazzal az eszközzel kezelheti a különböző Azure-entitásokat egy helyen. Felügyelheti Azure Cosmos DB entitásokat, kezelheti az adatkezelést, frissítheti a tárolt eljárásokat és triggereket más Azure-entitásokkal, például a tárolási Blobokkal és a várólistákkal együtt. Azure Storage Explorer támogatja az SQL, a MongoDB, a Graph és a Table API-khoz konfigurált Cosmos-fiókokat.
 
-Azure Storage Explorer támogatja az SQL, a MongoDB, a Graph és a Table API-khoz konfigurált Cosmos-fiókokat. További információért látogasson el [Azure Storage Explorer Azure Cosmos DBra]() .
+> [!NOTE]
+> A Storage Explorer Azure Cosmos DB integrációja elavult. Ebben a kiadásban a meglévő funkciók nem lesznek eltávolítva legalább egy évig. Ehelyett használja az Azure [Portalt](https://portal.azure.com/), az [Azure Portal Desktop alkalmazást](https://portal.azure.com/App/Download) vagy az önálló [Azure Cosmos Explorert](data-explorer.md) . Az alternatív lehetőségek számos olyan új funkciót tartalmaznak, amelyek jelenleg nem támogatottak a Storage Explorerban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +33,7 @@ A legújabb Azure Storage Explorer BITS telepítéséhez lásd: [Azure Storage E
 
 ## <a name="connect-to-an-azure-subscription"></a>Csatlakozás Azure-előfizetéshez
 
-1. A **Azure Storage Explorer**telepítése után válassza ki a **beépülő modul** ikont a bal oldali ablaktáblán.
+1. A **Azure Storage Explorer** telepítése után válassza ki a **beépülő modul** ikont a bal oldali ablaktáblán.
 
    :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
@@ -40,7 +41,7 @@ A legújabb Azure Storage Explorer BITS telepítéséhez lásd: [Azure Storage E
 
    :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
-1. Az **Azure bejelentkezési** párbeszédpaneljén válassza a **Bejelentkezés**lehetőséget, majd adja meg az Azure-beli hitelesítő adatait.
+1. Az **Azure bejelentkezési** párbeszédpaneljén válassza a **Bejelentkezés** lehetőséget, majd adja meg az Azure-beli hitelesítő adatait.
 
     :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
@@ -58,14 +59,14 @@ A legújabb Azure Storage Explorer BITS telepítéséhez lásd: [Azure Storage E
 
 Kapcsolati sztringet használhat egy Azure Cosmos DBhoz való kapcsolódáshoz. Ez a metódus csak az SQL és a Table API-kat támogatja. A kapcsolati karakterlánccal való kapcsolódáshoz kövesse az alábbi lépéseket:
 
-1. Keresse meg a **helyi és csatolt** elemet a bal oldali fában, kattintson a jobb gombbal **Cosmos db fiókok**elemre, majd válassza a **Kapcsolódás Cosmos db**lehetőséget.
+1. Keresse meg a **helyi és csatolt** elemet a bal oldali fában, kattintson a jobb gombbal **Cosmos db fiókok** elemre, majd válassza a **Kapcsolódás Cosmos db** lehetőséget.
 
     :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
 2. A **kapcsolódás Cosmos db** ablakban:
    1. Válassza ki az API-t a legördülő menüből.
    1. Illessze be a kapcsolatok karakterláncát a **kapcsolatok karakterlánc** mezőjébe. Az elsődleges kapcsolódási karakterlánc lekéréséhez lásd: [a kapcsolódási karakterlánc beolvasása](manage-with-powershell.md#list-keys).
-   1. Adja meg a **fiók címkéjét**, majd kattintson a **tovább** gombra az összefoglalás vizsgálatához.
+   1. Adja meg a **fiók címkéjét** , majd kattintson a **tovább** gombra az összefoglalás vizsgálatához.
    1. Válassza a **Kapcsolódás** lehetőséget a Azure Cosmos db fiók összekapcsolásához.
 
       :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
@@ -76,13 +77,13 @@ A következő lépésekkel csatlakozhat egy Azure Cosmos DB emulátorral. Ez a m
 
 1. Telepítse Cosmos DB emulátort, majd nyissa meg. Az emulátor telepítéséhez lásd: [Cosmos db Emulator](./local-emulator.md).
 
-1. Keresse meg a **helyi és csatolt** elemet a bal oldali fában, kattintson a jobb gombbal **Cosmos db fiókok**elemre, majd válassza a **Kapcsolódás Cosmos db emulátorhoz**lehetőséget.
+1. Keresse meg a **helyi és csatolt** elemet a bal oldali fában, kattintson a jobb gombbal **Cosmos db fiókok** elemre, majd válassza a **Kapcsolódás Cosmos db emulátorhoz** lehetőséget.
 
     :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
 1. A **kapcsolódás Cosmos db** ablakban:
    1. Illessze be a kapcsolatok karakterláncát a **kapcsolatok karakterlánc** mezőjébe. Az elsődleges kapcsolatok karakterláncának beolvasásával kapcsolatos információkért lásd: [a kapcsolatok karakterláncának](manage-with-powershell.md#list-keys)beolvasása.
-   1. Adja meg a **fiók címkéjét**, majd kattintson a **tovább** gombra az összefoglalás vizsgálatához.
+   1. Adja meg a **fiók címkéjét** , majd kattintson a **tovább** gombra az összefoglalás vizsgálatához.
    1. Válassza a **Kapcsolódás** lehetőséget a Azure Cosmos db fiók összekapcsolásához.
 
       :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
@@ -117,7 +118,7 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 
 #### <a name="create-a-database"></a>Adatbázis létrehozása
 
-1. Kattintson a jobb gombbal a Azure Cosmos DB fiókra, majd válassza az **adatbázis létrehozása**lehetőséget.
+1. Kattintson a jobb gombbal a Azure Cosmos DB fiókra, majd válassza az **adatbázis létrehozása** lehetőséget.
 
    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
@@ -125,7 +126,7 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 
 #### <a name="delete-a-database"></a>Adatbázis törlése
 
-1. Kattintson a jobb gombbal az adatbázisra, majd válassza az **adatbázis törlése**lehetőséget. 
+1. Kattintson a jobb gombbal az adatbázisra, majd válassza az **adatbázis törlése** lehetőséget. 
 
    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
@@ -135,11 +136,11 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 
 #### <a name="create-a-collection"></a>Gyűjtemény létrehozása
 
-1. Kattintson a jobb gombbal az adatbázisra, majd válassza a **gyűjtemény létrehozása**lehetőséget.
+1. Kattintson a jobb gombbal az adatbázisra, majd válassza a **gyűjtemény létrehozása** lehetőséget.
 
    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
-1. A gyűjtemény létrehozása ablakban adja meg a kért információkat, például a **gyűjtemény azonosítóját** **és tárolókapacitását, és**így tovább. A befejezéshez kattintson **az OK gombra** .
+1. A gyűjtemény létrehozása ablakban adja meg a kért információkat, például a **gyűjtemény azonosítóját** **és tárolókapacitását, és** így tovább. A befejezéshez kattintson **az OK gombra** .
 
    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
@@ -152,7 +153,7 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 
 #### <a name="delete-a-collection"></a>Gyűjtemény törlése
 
-- Kattintson a jobb gombbal a gyűjteményre, válassza a **gyűjtemény törlése**lehetőséget, majd az előugró ablakban válassza az **Igen** lehetőséget.
+- Kattintson a jobb gombbal a gyűjteményre, válassza a **gyűjtemény törlése** lehetőséget, majd az előugró ablakban válassza az **Igen** lehetőséget.
 
     A rendszer törli a gyűjteménycsomópontot, és automatikusan frissíti az adatbázist.
 
@@ -162,8 +163,8 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 
 #### <a name="create-and-modify-documents"></a>Dokumentumok létrehozása és módosítása
 
-- Nyissa meg a **dokumentumok** elemet a bal oldali ablaktáblán, válassza az **új dokumentum**lehetőséget, szerkessze a tartalmat a jobb oldali ablaktáblán, majd kattintson a **Mentés**gombra.
-- Egy meglévő dokumentumot is frissíthet, majd a **Mentés**gombra kattinthat. A módosítások elvetéséhez válassza az **Elvetés**lehetőséget.
+- Nyissa meg a **dokumentumok** elemet a bal oldali ablaktáblán, válassza az **új dokumentum** lehetőséget, szerkessze a tartalmat a jobb oldali ablaktáblán, majd kattintson a **Mentés** gombra.
+- Egy meglévő dokumentumot is frissíthet, majd a **Mentés** gombra kattinthat. A módosítások elvetéséhez válassza az **Elvetés** lehetőséget.
 
   :::image type="content" source="./media/storage-explorer/document.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
@@ -173,7 +174,7 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 
 #### <a name="query-for-documents"></a>Dokumentumok lekérdezése
 
-* A dokumentum szűrő szerkesztéséhez írjon be egy [SQL-lekérdezést](./sql-query-getting-started.md), majd válassza az **alkalmaz**lehetőséget.
+* A dokumentum szűrő szerkesztéséhez írjon be egy [SQL-lekérdezést](./sql-query-getting-started.md), majd válassza az **alkalmaz** lehetőséget.
 
   :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
@@ -181,7 +182,7 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 
 #### <a name="create-and-modify-a-vertex"></a>Csúcspont létrehozása és módosítása
 
-* Új csúcspont létrehozásához nyissa meg a **Graph** elemet a bal oldali ablaktáblán, válassza az **új csúcspont**lehetőséget, szerkessze a tartalmat, majd kattintson **az OK gombra**.
+* Új csúcspont létrehozásához nyissa meg a **Graph** elemet a bal oldali ablaktáblán, válassza az **új csúcspont** lehetőséget, szerkessze a tartalmat, majd kattintson **az OK gombra** .
 * Egy meglévő csúcspont módosításához válassza a jobb oldali ablaktábla toll ikonját.
 
    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
@@ -192,7 +193,7 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 
 #### <a name="filter-for-graph"></a>Gráfok szűrése
 
-* A Graph-szűrő szerkesztéséhez adjon meg egy [Gremlin-lekérdezést](gremlin-support.md), majd válassza a **szűrő alkalmazása**lehetőséget.
+* A Graph-szűrő szerkesztéséhez adjon meg egy [Gremlin-lekérdezést](gremlin-support.md), majd válassza a **szűrő alkalmazása** lehetőséget.
 
    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
@@ -201,14 +202,14 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 #### <a name="create-and-modify-a-table"></a>Tábla létrehozása és módosítása
 
 * Új tábla létrehozása:
-   1. A bal oldali ablaktáblán nyissa meg az **entitások**elemet, majd válassza a **Hozzáadás**lehetőséget.
+   1. A bal oldali ablaktáblán nyissa meg az **entitások** elemet, majd válassza a **Hozzáadás** lehetőséget.
    1. Az **entitás hozzáadása** párbeszédpanelen szerkessze a tartalmat.
    1. A tulajdonság hozzáadásához kattintson a **tulajdonság hozzáadása** gombra.
    1. Válassza a **Beszúrás** lehetőséget.
 
       :::image type="content" source="./media/storage-explorer/table.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
 
-* Egy tábla módosításához válassza a **Szerkesztés**lehetőséget, módosítsa a tartalmat, majd válassza a **frissítés**lehetőséget.
+* Egy tábla módosításához válassza a **Szerkesztés** lehetőséget, módosítsa a tartalmat, majd válassza a **frissítés** lehetőséget.
 
    
 
@@ -234,15 +235,15 @@ A jobb gombbal az Explorer ablaktáblán egy előfizetésre kattintva számos gy
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Tárolt eljárások, eseményindítók és felhasználói függvények kezelése
 
 * Tárolt eljárás létrehozása:
-  1. A bal oldali fában kattintson a jobb gombbal a **tárolt eljárások**elemre, majd válassza a **tárolt eljárás létrehozása**lehetőséget.
+  1. A bal oldali fában kattintson a jobb gombbal a **tárolt eljárások** elemre, majd válassza a **tárolt eljárás létrehozása** lehetőséget.
   
      :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Képernyőfelvétel: a beépülő modul ikonja a bal oldali ablaktáblán.":::
   
-  1. Adjon meg egy nevet a bal oldalon, írja be a tárolt eljáráshoz tartozó parancsfájlokat a jobb oldali ablaktáblán, majd válassza a **Létrehozás**lehetőséget.
+  1. Adjon meg egy nevet a bal oldalon, írja be a tárolt eljáráshoz tartozó parancsfájlokat a jobb oldali ablaktáblán, majd válassza a **Létrehozás** lehetőséget.
   
 * Meglévő tárolt eljárás szerkesztéséhez kattintson duplán az eljárásra, végezze el a frissítést, majd válassza a **frissítés** lehetőséget a mentéshez. A módosítás megszakításához válassza az **Elvetés** lehetőséget is.
 
-* Az **Eseményindítók** és az **UDF** műveletek hasonlóak a **tárolt eljárásokhoz**.
+* Az **Eseményindítók** és az **UDF** műveletek hasonlóak a **tárolt eljárásokhoz** .
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -256,7 +257,7 @@ Először indítsa újra az alkalmazást, és ellenőrizze, hogy megoldotta-e a 
 
 Előfordulhat, hogy ezt a hibát tapasztalja, a két leggyakoribb a következő:
 
-* Egy *transzparens proxy*mögött van. Valaki, mint az informatikai részleg, elfogja a HTTPS-forgalmat, visszafejti azt, majd egy önaláírt tanúsítvánnyal titkosítja azt.
+* Egy *transzparens proxy* mögött van. Valaki, mint az informatikai részleg, elfogja a HTTPS-forgalmat, visszafejti azt, majd egy önaláírt tanúsítvánnyal titkosítja azt.
 
 * Szoftvereket, például víruskereső szoftvereket futtat. A szoftver egy önaláírt TLS/SSL-tanúsítványt szúr be a kapott HTTPS-üzenetbe.
 
@@ -268,12 +269,12 @@ Ha Storage Explorer megtalál egy önaláírt tanúsítványt, nem tudja, hogy a
      - macOS és Linux: az operációs rendszer részét képezi.
 
 1. OpenSSL futtatása:
-    * Windows: Nyissa meg a telepítési könyvtárat, majd a **/bin/**, majd kattintson duplán a **openssl.exe**elemre.
+    * Windows: Nyissa meg a telepítési könyvtárat, majd a **/bin/** , majd kattintson duplán a **openssl.exe** elemre.
     * Mac és Linux: az **OpenSSL** végrehajtása terminálról.
 1. Végrehajtás `s_client -showcerts -connect microsoft.com:443` .
 1. Keresse meg az önaláírt tanúsítványokat. Ha nem biztos abban, hogy önaláírtak, akkor keresse meg a tárgy ("s:") és a kiállító ("i:") megegyezőjét.
 1. Ha bármilyen önaláírt tanúsítványt talál, másolja ki és illessze be a **-----a tanúsítvány megkezdése-----** , hogy **-----a záró tanúsítvány-----** egy újat. A CER-fájl mindegyikhez.
-1. Nyissa meg Storage Explorer, majd lépjen **Edit**az  >  **SSL-tanúsítványok**  >  **importálása tanúsítványok**módosítása elemre. A file Picker használatával keresse meg, válassza ki, majd nyissa meg a következőt:. A létrehozott CER-fájlok.
+1. Nyissa meg Storage Explorer, majd lépjen **Edit** az  >  **SSL-tanúsítványok**  >  **importálása tanúsítványok** módosítása elemre. A file Picker használatával keresse meg, válassza ki, majd nyissa meg a következőt:. A létrehozott CER-fájlok.
 
 Ha nem talál önaláírt tanúsítványokat, küldjön visszajelzést további segítségért.
 
@@ -321,7 +322,7 @@ Ha nem tudja eltávolítani a fiókot, vagy ha az újrahitelesítés hivatkozás
   * Linux rendszeren a ~/.config/StorageExplorer mappát
   
   > [!NOTE]
-  > Ha törli ezeket a fájlokat, **újra meg kell adnia az összes hitelesítő adatot**.
+  > Ha törli ezeket a fájlokat, **újra meg kell adnia az összes hitelesítő adatot** .
 
 ### <a name="httphttps-proxy-issue"></a>HTTP/HTTPS-proxyval kapcsolatos probléma
 

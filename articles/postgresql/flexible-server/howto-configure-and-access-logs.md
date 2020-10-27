@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935884"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545820"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Naplók konfigurálása és elérése Azure Database for PostgreSQL-rugalmas kiszolgálón
 
@@ -22,20 +22,20 @@ A PostgreSQL-naplók egy rugalmas kiszolgáló minden csomópontján elérhetők
 
 ## <a name="configure-diagnostic-settings"></a>Diagnosztikai beállítások konfigurálása
 
-A postgres-kiszolgáló diagnosztikai beállításait a Azure Portal, a CLI, az REST API és a PowerShell használatával engedélyezheti. A kijelölni kívánt **PostgreSQLLogs**.
+A postgres-kiszolgáló diagnosztikai beállításait a Azure Portal, a CLI, az REST API és a PowerShell használatával engedélyezheti. A kijelölni kívánt **PostgreSQLLogs** .
 
 Az erőforrás-naplók engedélyezése a Azure Portal használatával:
 
 1. A portálon lépjen a *diagnosztikai beállítások* elemre a postgres-kiszolgáló navigációs menüjében.
    
-2. Válassza a *diagnosztikai beállítás hozzáadása*lehetőséget.
+2. Válassza a *diagnosztikai beállítás hozzáadása* lehetőséget.
    :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="Diagnosztikai beállítások hozzáadása gomb":::
 
 3. Nevezze el ezt a beállítást. 
 
 4. Válassza ki az előnyben részesített végpontot (Storage-fiók, Event hub, log Analytics). 
 
-5. Válassza ki a napló típusát **PostgreSQLLogs**.
+5. Válassza ki a napló típusát **PostgreSQLLogs** .
    :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Diagnosztikai beállítások hozzáadása gomb":::
 
 7. Mentse a beállítást.
@@ -44,7 +44,7 @@ Ha az erőforrás-naplókat a PowerShell, a CLI vagy a REST API használatával 
 
 ### <a name="access-resource-logs"></a>Erőforrás-naplók elérése
 
-A naplók elérésének módja attól függ, hogy melyik végpontot választja. Az Azure Storage szolgáltatással kapcsolatban lásd a [Storage-fiók naplózása](../../azure-monitor/platform/resource-logs-collect-storage.md) című cikket. Event Hubs esetében tekintse meg a [stream Azure-naplók](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) című cikket.
+A naplók elérésének módja attól függ, hogy melyik végpontot választja. Az Azure Storage szolgáltatással kapcsolatban lásd a [Storage-fiók naplózása](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) című cikket. Event Hubs esetében tekintse meg a [stream Azure-naplók](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) című cikket.
 
 Azure Monitor naplók esetében a naplók a kiválasztott munkaterületre kerülnek. A postgres-naplók a **AzureDiagnostics** -gyűjtési módot használják, így a AzureDiagnostics táblából is lekérdezhető. A táblázatban szereplő mezők a következőkben olvashatók. További információ a lekérdezésekről és a riasztásokról: [Azure monitor naplók lekérdezése](../../azure-monitor/log-query/log-query-overview.md) – áttekintés.
 
@@ -71,5 +71,5 @@ A fenti lekérdezés a munkaterület összes postgres-kiszolgálójának utolsó
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Ismerkedés a log Analytics-lekérdezésekkel](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
-- További tudnivalók az [Azure Event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) -ról
+- [Ismerkedés a log Analytics-lekérdezésekkel](../../azure-monitor/log-query/get-started-portal.md)
+- További tudnivalók az [Azure Event hub](../../event-hubs/event-hubs-about.md) -ról

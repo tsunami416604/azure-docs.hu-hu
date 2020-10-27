@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 0761ea059350369a363ee1022b21c9da2702b396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cd522192c498d628490430c46c18c8ae08ad2e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076113"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547010"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>Az Apache Sqoop használatával importálhat és exportálhat adatApache Hadoop a HDInsight és a Azure SQL Database között
 
@@ -150,7 +150,7 @@ Az SQL-ből az Azure Storage-ba.
 
     További információ a HDInsight Azure Virtual Network használatával történő használatáról: a [HDInsight kiterjesztése az azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md) dokumentummal. További információ az Azure Virtual Networkről: [Virtual Network áttekintő](../../virtual-network/virtual-networks-overview.md) dokumentum.
 
-* Az SQL Servert úgy kell konfigurálni, hogy engedélyezze az SQL-hitelesítést. További információ: a [hitelesítési mód kiválasztása](https://msdn.microsoft.com/ms144284.aspx) dokumentum.
+* Az SQL Servert úgy kell konfigurálni, hogy engedélyezze az SQL-hitelesítést. További információ: a [hitelesítési mód kiválasztása](/sql/relational-databases/security/choose-an-authentication-mode) dokumentum.
 
 * Előfordulhat, hogy a távoli kapcsolatok fogadásához konfigurálnia kell SQL Server. További információ: az SQL Server adatbázismotor-dokumentumhoz [való csatlakozás hibáinak megoldása](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) .
 

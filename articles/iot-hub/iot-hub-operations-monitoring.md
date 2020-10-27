@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139333"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538493"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub Operations monitoring (elavult)
 
 A IoT Hub Operations monitoring lehetővé teszi, hogy valós időben figyelje a IoT hub műveleteinek állapotát. IoT Hub az eseményeket több különböző kategóriába tartozó műveletben követi nyomon. Ha egy vagy több kategóriából szeretne eseményeket küldeni, az IoT hub egy végpontjának feldolgozására is választhatja. A hibák figyelése és az adatmintázatok alapján összetettebb feldolgozás is beállítható.
 
 >[!NOTE]
->**Az IoT hub Operations monitoring elavult, és a rendszer eltávolította a IoT hubból a 2019. március 10-én**. IoT Hub működésének és állapotának figyeléséhez lásd: [Az Azure IoT hub állapotának monitorozása és a problémák gyors diagnosztizálása](iot-hub-monitor-resource-health.md). Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)című témakörben talál.
+>**Az IoT hub Operations monitoring elavult, és a rendszer eltávolította a IoT hubból a 2019. március 10-én** . A IoT Hub működésének és állapotának figyeléséhez tekintse meg a [IoT hub figyelése](monitor-iot-hub.md)című témakört. Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)című témakörben talál.
 
 A IoT Hub hat kategóriába tartozó eseményt figyeli:
 
@@ -39,11 +39,11 @@ A IoT Hub hat kategóriába tartozó eseményt figyeli:
 
 1. Hozzon létre egy IoT hubot. Az IoT hub létrehozásával kapcsolatos utasításokat az első [lépések](quickstart-send-telemetry-dotnet.md) útmutatóban találja.
 
-2. Nyissa meg az IoT hub paneljét. Innen kattintson az **Operations monitoring**elemre.
+2. Nyissa meg az IoT hub paneljét. Innen kattintson az **Operations monitoring** elemre.
 
     ![Hozzáférési műveletek figyelésének konfigurációja a portálon](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Válassza ki a figyelni kívánt figyelési kategóriákat, majd kattintson a **Mentés**gombra. Az események a **figyelési beállítások**részben felsorolt Event hub-kompatibilis végpontról olvashatók. A rendszer a IoT Hub végpontot hívja meg `messages/operationsmonitoringevents` .
+3. Válassza ki a figyelni kívánt figyelési kategóriákat, majd kattintson a **Mentés** gombra. Az események a **figyelési beállítások** részben felsorolt Event hub-kompatibilis végpontról olvashatók. A rendszer a IoT Hub végpontot hívja meg `messages/operationsmonitoringevents` .
 
     ![Az IoT hub Operations monitoringjának konfigurálása](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
@@ -97,7 +97,7 @@ Az eszköz telemetria kategóriája nyomon követi az IoT hub-ban előforduló h
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>A felhőből az eszközre irányuló parancsok
+### <a name="cloud-to-device-commands"></a>Felhő–eszköz irányú parancsok
 
 A felhőből az eszközre irányuló parancsok kategóriája nyomon követi az IoT-központban előforduló hibákat, és a felhőből az eszközre irányuló üzenet folyamatához kapcsolódik. Ez a kategória olyan hibákat tartalmaz, amelyek a felhőből az eszközre irányuló üzenetek (például jogosulatlan küldő) küldésére, a felhőből az eszközre irányuló üzenetek fogadására (például a kézbesítések számának meghaladta) és a felhőből az eszközre irányuló üzenetek fogadására (például a visszajelzés lejártára) vonatkozó hibák. Ez a kategória nem gyűjti az olyan eszközök hibáit, amelyek nem kezelik a felhőből az eszközre irányuló üzeneteket, ha a felhőből az eszközre irányuló üzenet kézbesítése sikeres volt.
 
@@ -197,11 +197,11 @@ A figyelési végponthoz való kapcsolódáshoz szükség van egy kapcsolati szt
 
 1. A portálon navigáljon a IoT Hub Resource (erőforrás) panelre.
 
-2. Válassza az **Operations monitoring**lehetőséget, és jegyezze fel az **Event hub-kompatibilis nevet** és az **Event hub-kompatibilis végponti** értékeket:
+2. Válassza az **Operations monitoring** lehetőséget, és jegyezze fel az **Event hub-kompatibilis nevet** és az **Event hub-kompatibilis végponti** értékeket:
 
     ![Az Event hub-kompatibilis végpont értékei](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Válassza a **megosztott hozzáférési házirendek**, majd a **szolgáltatás**elemet. Jegyezze fel az **elsődleges kulcs** értékét:
+3. Válassza a **megosztott hozzáférési házirendek** , majd a **szolgáltatás** elemet. Jegyezze fel az **elsődleges kulcs** értékét:
 
     ![Szolgáltatás megosztott hozzáférési házirendjének elsődleges kulcsa](./media/iot-hub-operations-monitoring/service-key.png)
 

@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 973b8a49c4a849f5a50fb3ab72321746a5ca06a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e66329b93ebd7d90258ab4670b77ca849a28189b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083474"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547996"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Apache Hive-adatok vizualizálása a Microsoft Power BI-jal és ODBC-vel az Azure HDInsightban
 
 Ismerje meg, hogyan csatlakoztathatók a Microsoft Power BI Desktop az Azure HDInsight az ODBC használatával, és Hogyan jeleníthető meg a Apache Hive adatai.
 
 > [!IMPORTANT]
-> A struktúra ODBC-illesztőjét kihasználhatja a Power BI Desktop-ben lévő általános ODBC-összekötőn keresztül történő importáláshoz. Azonban nem ajánlott a BI-munkaterhelések esetében a kaptár-lekérdezési motor nem interaktív természetét figyelembe venni. A [HDInsight interaktív lekérdezés-összekötő](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) és a [HDInsight Spark-összekötő](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jobb választás a teljesítményük szempontjából.
+> A struktúra ODBC-illesztőjét kihasználhatja a Power BI Desktop-ben lévő általános ODBC-összekötőn keresztül történő importáláshoz. Azonban nem ajánlott a BI-munkaterhelések esetében a kaptár-lekérdezési motor nem interaktív természetét figyelembe venni. A [HDInsight interaktív lekérdezés-összekötő](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) és a [HDInsight Spark-összekötő](/power-bi/spark-on-hdinsight-with-direct-connect) jobb választás a teljesítményük szempontjából.
 
 Ebben a cikkben egy `hivesampletable` struktúra-táblázat adatait Power BIba tölti be. A kaptár tábla néhány mobiltelefon-használati adatokat tartalmaz. Ezután kinyomtatja a használati adatokat a globális térképen:
 
@@ -52,25 +52,25 @@ A **hivesampletable** -struktúra tábla minden HDInsight-fürtöt tartalmaz.
 
 1. Az **adatok lekérése** párbeszédpanelen válassza **az egyéb** lehetőséget a bal oldalon, válassza ki az **ODBC** elemet a jobb oldalon, majd válassza a lenti **kapcsolat** lehetőséget.
 
-1. Az az **ODBC-ből** párbeszédpanelen válassza ki a legördülő lista utolsó szakaszában létrehozott adatforrás nevét. Ezután válassza az **OK** gombot.
+1. Az az **ODBC-ből** párbeszédpanelen válassza ki a legördülő lista utolsó szakaszában létrehozott adatforrás nevét. Ez után válassza az **OK** gombot.
 
-1. Az első használathoz egy **ODBC-illesztőprogram** párbeszédablak nyílik meg. Válassza az **alapértelmezett vagy az egyéni** lehetőséget a bal oldali menüben. Ezután válassza a **Kapcsolódás** a **navigátor**megnyitásához lehetőséget.
+1. Az első használathoz egy **ODBC-illesztőprogram** párbeszédablak nyílik meg. Válassza az **alapértelmezett vagy az egyéni** lehetőséget a bal oldali menüben. Ezután válassza a **Kapcsolódás** a **navigátor** megnyitásához lehetőséget.
 
-1. A **navigátor** párbeszédpanelen bontsa ki az **ODBC > struktúra > alapértelmezett**beállítást, válassza a **hivesampletable**lehetőséget, majd válassza a **Betöltés**lehetőséget.
+1. A **navigátor** párbeszédpanelen bontsa ki az **ODBC > struktúra > alapértelmezett** beállítást, válassza a **hivesampletable** lehetőséget, majd válassza a **Betöltés** lehetőséget.
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 
 Folytassa az utolsó eljárással.
 
-1. A vizualizációk ablaktáblán válassza a **Térkép**lehetőséget, ez egy földgömb ikon.
+1. A vizualizációk ablaktáblán válassza a **Térkép** lehetőséget, ez egy földgömb ikon.
 
     ![HDInsight Power BI a jelentés testreszabása](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
 
-1. A **mezők** panelen válassza az **ország** és a **devicemake**lehetőséget. Láthatja a térképen ábrázolt adatfeliratokat.
+1. A **mezők** panelen válassza az **ország** és a **devicemake** lehetőséget. Láthatja a térképen ábrázolt adatfeliratokat.
 
 1. Bontsa ki a térképet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan jelenítheti meg a HDInsight adatait a Power BI használatával.  További tudnivalókért olvassa el a következő cikket:
 

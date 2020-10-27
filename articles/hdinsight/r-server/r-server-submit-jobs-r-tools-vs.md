@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 402092f1667abb49da4521b91ba1f0e7d471f0d1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490254"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536232"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
-A Visual studióhoz készült [R Tools](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) a [Visual Studio 2017](https://www.visualstudio.com/downloads/)és a [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) vagy újabb verziójának közösségi (ingyenes), Professional és Enterprise kiadásának ingyenes, nyílt forráskódú bővítménye. A RTVS nem érhető el a [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019&preserve-view=true)-hez.
+A Visual studióhoz készült [R Tools](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) a [Visual Studio 2017](https://www.visualstudio.com/downloads/)és a [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) vagy újabb verziójának közösségi (ingyenes), Professional és Enterprise kiadásának ingyenes, nyílt forráskódú bővítménye. A RTVS nem érhető el a [Visual Studio 2019](/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?preserve-view=true&view=vs-2019)-hez.
 
-A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), az IntelliSense (kód befejezése), az r-könyvtárakon keresztüli [vizualizációk](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) , például a ggplot2 és a ggviz, az [r-kód hibakeresése](https://docs.microsoft.com/visualstudio/rtvs/debugging)stb.
+A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](/visualstudio/rtvs/interactive-repl) (REPL), az IntelliSense (kód befejezése), az r-könyvtárakon keresztüli [vizualizációk](/visualstudio/rtvs/visualizing-data) , például a ggplot2 és a ggviz, az [r-kód hibakeresése](/visualstudio/rtvs/debugging)stb.
 
 ## <a name="set-up-your-environment"></a>Saját környezet beállítása
 
@@ -27,17 +27,17 @@ A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](https
 
     ![A RTVS telepítése a Visual Studio 2017-ben](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. Válassza ki az *adatelemzési és analitikai alkalmazások számítási feladatait* , majd válassza ki az **r nyelv támogatását**, az **r-fejlesztés futásidejű támogatását**, valamint a **Microsoft r-ügyfél** beállításait.
+2. Válassza ki az *adatelemzési és analitikai alkalmazások számítási feladatait* , majd válassza ki az **r nyelv támogatását** , az **r-fejlesztés futásidejű támogatását** , valamint a **Microsoft r-ügyfél** beállításait.
 
 3. Nyilvános és titkos kulcsokat kell használnia az SSH-hitelesítéshez.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Telepítse a [ml Servert](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) a gépre. ML Server biztosítja a [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) és a `RxSpark` függvényeket.
+4. Telepítse a [ml Servert](/previous-versions/machine-learning-server/install/r-server-install-windows) a gépre. ML Server biztosítja a [`RevoScaleR`](/machine-learning-server/r-reference/revoscaler/revoscaler) és a `RxSpark` függvényeket.
 
 5. Telepítse a [Putty](https://www.putty.org/) -t, hogy számítási környezetet biztosítson a `RevoScaleR` függvények a helyi ügyfélről a HDInsight-fürthöz való futtatásához.
 
 6. Lehetősége van arra, hogy az adatelemzési beállításokat a Visual Studio-környezetre alkalmazza, amely új elrendezést biztosít a munkaterület számára az R-eszközökhöz.
-   1. A Visual Studio aktuális beállításainak mentéséhez használja az **eszközök > importálási és exportálási beállítások** parancsot, majd válassza a **kiválasztott környezeti Beállítások exportálása** lehetőséget, és adjon meg egy fájlnevet. A beállítások visszaállításához használja ugyanazt a parancsot, és válassza a **kiválasztott környezeti beállítások importálása**lehetőséget.
+   1. A Visual Studio aktuális beállításainak mentéséhez használja az **eszközök > importálási és exportálási beállítások** parancsot, majd válassza a **kiválasztott környezeti Beállítások exportálása** lehetőséget, és adjon meg egy fájlnevet. A beállítások visszaállításához használja ugyanazt a parancsot, és válassza a **kiválasztott környezeti beállítások importálása** lehetőséget.
 
    2. Nyissa meg az **R Tools** menüelemet, majd válassza az **adatelemzési beállítások...** elemet.
 
@@ -49,7 +49,7 @@ A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](https
 ## <a name="execute-local-r-methods"></a>Helyi R-metódusok végrehajtása
 
 1. Hozza létre a HDInsight ML Services-fürtöt.
-2. Telepítse a [RTVS bővítményt](https://docs.microsoft.com/visualstudio/rtvs/installation).
+2. Telepítse a [RTVS bővítményt](/visualstudio/rtvs/installation).
 3. Töltse le a [minta zip-fájlt](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
 4. Nyissa meg `examples/Examples.sln` a megoldást a Visual Studióban.
 5. Nyissa meg a `1-Getting Started with R.R` fájlt a `A first look at R` megoldás mappájából.
@@ -121,7 +121,7 @@ Ha egy Microsoft ML Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt
 
         ![Azure HDInsight-tár tárolók](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Válassza ki a fürt tárolójának nevét, tallózással keresse meg a **felhasználói** mappát (Előfordulhat, hogy a lista alján a *továbbiak betöltése* lehetőségre kell kattintania), majd válassza a *RevoShare*, majd a **newUser**lehetőséget. A `people.json` fájlnak a mappában kell megjelennie `newUser` .
+    4. Válassza ki a fürt tárolójának nevét, tallózással keresse meg a **felhasználói** mappát (Előfordulhat, hogy a lista alján a *továbbiak betöltése* lehetőségre kell kattintania), majd válassza a *RevoShare* , majd a **newUser** lehetőséget. A `people.json` fájlnak a mappában kell megjelennie `newUser` .
 
         ![HDInsight másolt mappa helye](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

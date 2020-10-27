@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80586976"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546007"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive az átjáró részletes ismertetése és ajánlott eljárásai
 
@@ -46,7 +46,7 @@ A következő ábra a SELECT lekérdezés lépéseit szemlélteti.
 
 A Apache Hive egy HDFS-kompatibilis fájlrendszerhez kapcsolódó összevont absztrakció. Ez az absztrakció azt jelenti, hogy a struktúra **Select** utasításai a fájlrendszerben lévő **olvasási** műveleteknek felelnek meg. Az **olvasási** műveleteket a rendszer a megfelelő sémára fordítja, mielőtt a jelentést a felhasználónak. A folyamat késése az adatmérettel és a végfelhasználók eléréséhez szükséges összes ugrással nő.
 
-A nagyméretű adatok **létrehozására** vagy **beszúrására** vonatkozó utasítások végrehajtásakor hasonló viselkedés fordulhat elő, mivel ezek a parancsok a mögöttes fájlrendszer **írási** műveleteinek felelnek meg. Az **Insert** vagy a **Load**(betöltés) helyett érdemes lehet olyan adatírást használni, mint például a nyers ork a fájlrendszer/datalake.
+A nagyméretű adatok **létrehozására** vagy **beszúrására** vonatkozó utasítások végrehajtásakor hasonló viselkedés fordulhat elő, mivel ezek a parancsok a mögöttes fájlrendszer **írási** műveleteinek felelnek meg. Az **Insert** vagy a **Load** (betöltés) helyett érdemes lehet olyan adatírást használni, mint például a nyers ork a fájlrendszer/datalake.
 
 Az Enterprise Security Pack-kompatibilis fürtökön a megfelelően összetett Apache Ranger-házirendek a lekérdezés fordítási idejének lassulását okozhatják, ami az átjáró időtúllépéséhez vezethet. Ha egy ESP-fürtön egy átjáró időtúllépését észlelte, érdemes lehet csökkenteni vagy kombinálni a Ranger-szabályzatok számát.
 
@@ -54,11 +54,11 @@ Az Enterprise Security Pack-kompatibilis fürtökön a megfelelően összetett A
 
 A fenti viselkedés részeként több helyszín áll rendelkezésre a teljesítménybeli problémák enyhítésére és megismerésére. Ha a lekérdezés teljesítményének romlását tapasztalja a HDInsight-átjárón keresztül, használja a következő feladatlistát:
 
-* Nagyméretű **választó** lekérdezések futtatásakor használja a **limit** záradékot. A **limit** záradék csökkenti az ügyfél gazdagépének jelentett összes sort. A **limit** záradék csak az eredmény generálására vonatkozik, és nem módosítja a lekérdezési tervet. Ha a **limit** záradékot szeretné alkalmazni a lekérdezési tervre, használja a konfigurációt `hive.limit.optimize.enable` . A **korlát** kombinálható egy eltolással az argumentumok **x, y korlátjának**használatával.
+* Nagyméretű **választó** lekérdezések futtatásakor használja a **limit** záradékot. A **limit** záradék csökkenti az ügyfél gazdagépének jelentett összes sort. A **limit** záradék csak az eredmény generálására vonatkozik, és nem módosítja a lekérdezési tervet. Ha a **limit** záradékot szeretné alkalmazni a lekérdezési tervre, használja a konfigurációt `hive.limit.optimize.enable` . A **korlát** kombinálható egy eltolással az argumentumok **x, y korlátjának** használatával.
 
-* Adja meg az oszlopok érdeklődését a **Select lekérdezések** futtatásakor a **Select \* **parancs használata helyett. Kevesebb oszlop kiválasztásával csökkentheti az olvasott adatmennyiséget.
+* Adja meg a fontos oszlopok nevét a **Select** lekérdezések futtatásakor a * *Select \** _ használata helyett. Kevesebb oszlop kiválasztásával csökkentheti az olvasott adatmennyiséget.
 
-* Próbálja meg az Apache Beeline használatával futtatni az érdeklődési lekérdezést. Ha az Apache Beeline használatával történő lekérés hosszabb időt vesz igénybe, a rendszer késlelteti az azonos eredmények külső eszközökön keresztüli lekérését.
+_ Futtassa az érdeklődési lekérdezést az Apache Beeline használatával. Ha az Apache Beeline használatával történő lekérés hosszabb időt vesz igénybe, a rendszer késlelteti az azonos eredmények külső eszközökön keresztüli lekérését.
 
 * Egy alapszintű kaptár-lekérdezés tesztelésével biztosíthatja, hogy a HDInsight-átjáróval létesített kapcsolatok is meghozhatók. Futtasson egy alapszintű lekérdezést két vagy több külső eszközről, és győződjön meg arról, hogy egyetlen eszköz sem fut a problémák között.
 
@@ -80,7 +80,7 @@ A fenti viselkedés részeként több helyszín áll rendelkezésre a teljesítm
 
 ## <a name="next-steps"></a>További lépések
 
-* [Apache Beeline a HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
-* [HDInsight-átjáró időtúllépésével kapcsolatos hibaelhárítási lépések](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
-* [HDInsight virtuális hálózatok](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)
-* [HDInsight expressz útvonallal](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)
+* [Apache Beeline a HDInsight](../hadoop/apache-hadoop-use-hive-beeline.md)
+* [HDInsight-átjáró időtúllépésével kapcsolatos hibaelhárítási lépések](./troubleshoot-gateway-timeout.md)
+* [HDInsight virtuális hálózatok](../hdinsight-plan-virtual-network-deployment.md)
+* [HDInsight expressz útvonallal](../connect-on-premises-network.md)

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3289f8a22e5601552ec6d44c7d37195b06913fde
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819707"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545344"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba
 
@@ -75,7 +75,8 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 | Azure Files | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
 | Azure File Sync | Igen | Igen |  |  |
 | Azure Managed Disks | Igen | Igen |  |  Ha az ügyfél által felügyelt kulcsokkal rendelkező Managed Disks titkosítását használja, le kell tiltania, majd újra engedélyeznie kell a lemezes titkosítási csoportokhoz társított rendszerhez rendelt identitásokat. És újra létre kell hoznia a szerepkör-hozzárendeléseket, azaz újra meg kell adnia a szükséges engedélyeket a lemez titkosítási csoportjai számára a Kulcstartókban. |
-| Azure Container Services a Kubernetes-hez | Igen | Igen |  |  |
+| Azure Kubernetes Service | Igen | Igen |  |  |
+| Azure Policy | Igen | Nem | Minden Azure Policy objektum, beleértve az egyéni definíciókat, a hozzárendeléseket, a kivételeket és a megfelelőségi adatok. | A definíciók [exportálására](../governance/policy/how-to/export-resources.md), importálására és újbóli hozzárendelésére van szükség. Ezután hozzon létre új szabályzat-hozzárendeléseket és a szükséges [házirend-kivételeket](../governance/policy/concepts/exemption-structure.md). |
 | Azure Active Directory tartományi szolgáltatások | Igen | Nem |  |  |
 | Alkalmazásregisztrációk | Igen | Igen |  |  |
 
@@ -108,9 +109,9 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
     az account set --subscription "Marketing"
     ```
 
-### <a name="install-the-resource-graph-extension"></a>Az erőforrás-gráf bővítmény telepítése
+### <a name="install-the-azure-resource-graph-extension"></a>Az Azure Resource Graph bővítmény telepítése
 
- Az erőforrás-gráf bővítmény lehetővé teszi, hogy az az [Graph](/cli/azure/ext/resource-graph/graph) paranccsal lekérdezze a Azure Resource Manager által felügyelt erőforrásokat. Ezt a parancsot a későbbi lépésekben fogja használni.
+ Az Azure-erőforrás- [gráfhoz](../governance/resource-graph/index.yml)készült Azure CLI-bővítmény, az *erőforrás-gráf* lehetővé teszi, hogy az az [Graph](/cli/azure/ext/resource-graph/graph) paranccsal lekérdezze Azure Resource Manager által kezelt erőforrásokat. Ezt a parancsot a későbbi lépésekben fogja használni.
 
 1. Az [az Extension List](/cli/azure/extension#az_extension_list) paranccsal ellenőrizze, hogy telepítve van *-e az erőforrás-gráf* bővítmény.
 

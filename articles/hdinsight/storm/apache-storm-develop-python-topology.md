@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 1f062a8f358ac311b53e657fb5714583458bd9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62e2583f8a4d3872a1342f0f702a1913f733e7f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87872582"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545463"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Apache Storm-topológiák fejlesztése a Python használatával a HDInsight-on
 
@@ -24,13 +24,13 @@ Megtudhatja, hogyan hozhat létre egy Python-összetevőket használó [Apache S
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa**lehetőséget.
+* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa** lehetőséget.
 
 * Egy helyi Storm fejlesztői környezet (opcionális). Helyi Storm-környezetre csak akkor van szükség, ha helyileg szeretné futtatni a topológiát. További információ: [fejlesztői környezet beállítása](https://storm.apache.org/releases/current/Setting-up-development-environment.html).
 
 * [Python 2,7 vagy újabb](https://www.python.org/downloads/).
 
-* A [Java Developer Kit (JDK) 8-as verziója](https://aka.ms/azure-jdks).
+* A [Java Developer Kit (JDK) 8-as verziója](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
@@ -114,7 +114,7 @@ Ahogy korábban már említettük, van egy `storm.py` fájl, amely megvalósítj
     storm kill wordcount
     ```
 
-    Azt is megteheti, hogy a Storm felhasználói felületét használja. A topológiához tartozó **topológiai műveletek** területen válassza a **kill**(Törlés) lehetőséget.
+    Azt is megteheti, hogy a Storm felhasználói felületét használja. A topológiához tartozó **topológiai műveletek** területen válassza a **kill** (Törlés) lehetőséget.
 
 ## <a name="run-the-topology-locally"></a>A topológia helyi futtatása
 
@@ -141,7 +141,7 @@ A topológia elindítása után a következő szöveghez hasonló módon bocsát
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-A topológia leállításához használja a __CTRL + C billentyűkombinációt__.
+A topológia leállításához használja a __CTRL + C billentyűkombinációt__ .
 
 ## <a name="next-steps"></a>Következő lépések
 

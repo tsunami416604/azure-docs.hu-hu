@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839690"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536878"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Az Azure cache geo-replikációjának beállítása a Redis
 
@@ -75,7 +75,7 @@ A földrajzi replikálás konfigurálása után a következő korlátozások von
 
     ![Képernyőfelvétel: az elsődleges és másodlagos gyorsítótárak csatolási állapotának megtekintése.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    A replikálási folyamat befejeződése után a **hivatkozás állapota** **sikeresre**változik.
+    A replikálási folyamat befejeződése után a **hivatkozás állapota** **sikeresre** változik.
 
     ![Gyorsítótár állapota](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -145,8 +145,8 @@ Igen, a virtuális hálózatok-gyorsítótárak földrajzi replikálását a ren
 
 - Az azonos VNET lévő gyorsítótárak közötti földrajzi replikálás támogatott.
 - A különböző virtuális hálózatok található gyorsítótárak közötti földrajzi replikálás is támogatott.
-  - Ha a virtuális hálózatok ugyanabban a régióban vannak, csatlakoztathatja őket a VNET- [társ](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) vagy egy [VPN Gateway VNET-VNET kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V)használatával.
-  - Ha a virtuális hálózatok különböző régiókban találhatóak, a VNET-társítást használó geo-replikáció támogatott, de az 1. VNET (1. régió) egy ügyfél-virtuális gép nem fér hozzá a gyorsítótárhoz a (z) VNET 2 (2. régió) DNS-nevével, az alapszintű belső terheléselosztó korlátozásai miatt. A VNET-társítási korlátozásokkal kapcsolatos további információkért lásd: [Virtual Network-peering-követelmények és megkötések](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Az ajánlott megoldás egy VPN Gateway VNET-VNET-kapcsolatok használata.
+  - Ha a virtuális hálózatok ugyanabban a régióban vannak, csatlakoztathatja őket a VNET- [társ](../virtual-network/virtual-network-peering-overview.md) vagy egy [VPN Gateway VNET-VNET kapcsolat](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)használatával.
+  - Ha a virtuális hálózatok különböző régiókban találhatóak, a VNET-társítást használó geo-replikáció támogatott, de az 1. VNET (1. régió) egy ügyfél-virtuális gép nem fér hozzá a gyorsítótárhoz a (z) VNET 2 (2. régió) DNS-nevével, az alapszintű belső terheléselosztó korlátozásai miatt. A VNET-társítási korlátozásokkal kapcsolatos további információkért lásd: [Virtual Network-peering-követelmények és megkötések](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Az ajánlott megoldás egy VPN Gateway VNET-VNET-kapcsolatok használata.
   
 [Ezzel az Azure-sablonnal](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)gyorsan üzembe helyezhet két földrajzi replikált gyorsítótárat egy VPN Gateway VNET – VNET kapcsolattal összekapcsolt VNET.
 
@@ -166,7 +166,7 @@ Helyreállítási pont beszerzéséhez [exportálja](cache-how-to-import-export-
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Használhatom a PowerShellt vagy az Azure CLI-t a Geo-replikáció kezeléséhez?
 
-Igen, a Geo-replikáció a Azure Portal, a PowerShell vagy az Azure CLI használatával kezelhető. További információ: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) vagy [Azure CLI-dokumentumok](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest).
+Igen, a Geo-replikáció a Azure Portal, a PowerShell vagy az Azure CLI használatával kezelhető. További információ: [PowerShell-dokumentumok](/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) vagy [Azure CLI-dokumentumok](/cli/azure/redis/server-link?view=azure-cli-latest).
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Mennyibe kerül az adatmennyiség az Azure-régiók között?
 
@@ -188,7 +188,7 @@ Az ügyfél által kezdeményezett feladatátvétel elindításához először a
 
 ### <a name="can-i-configure-a-firewall-with-geo-replication"></a>Beállíthat egy tűzfalat a Geo-replikációval?
 
-Igen, konfigurálhat egy [tűzfalat](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) a Geo-replikálás használatával. Ahhoz, hogy a Geo-replikáció egy tűzfal mellett működjön, győződjön meg arról, hogy a másodlagos gyorsítótár IP-címe hozzá van adva az elsődleges gyorsítótár tűzfalszabályok számára.
+Igen, konfigurálhat egy [tűzfalat](./cache-configure.md#firewall) a Geo-replikálás használatával. Ahhoz, hogy a Geo-replikáció egy tűzfal mellett működjön, győződjön meg arról, hogy a másodlagos gyorsítótár IP-címe hozzá van adva az elsődleges gyorsítótár tűzfalszabályok számára.
 
 ## <a name="next-steps"></a>Következő lépések
 
