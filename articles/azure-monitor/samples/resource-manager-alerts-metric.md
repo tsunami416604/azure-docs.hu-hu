@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322295"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893981"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Resource Manager-sablonok – minták metrikus riasztási szabályokhoz Azure Monitor
 
@@ -712,10 +712,10 @@ Ebben a mintában a riasztási szabály a **ResponseType** és a **ApiName** dim
 2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
 
 Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
-- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *GetBlob*
-- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *PutBlob*
-- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
-- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *PutBlob*
+- Metrika = *tranzakciók* , ResponseType = *sikeres* , ApiName = *GetBlob*
+- Metrika = *tranzakciók* , ResponseType = *sikeres* , ApiName = *PutBlob*
+- Metrika = *tranzakciók* , ResponseType = *kiszolgáló időkorlátja* , ApiName = *GetBlob*
+- Metrika = *tranzakciók* , ResponseType = *kiszolgáló időkorlátja* , ApiName = *PutBlob*
 
 ### <a name="template-file"></a>Sablonfájl
 
@@ -903,10 +903,10 @@ Ebben a mintában a riasztási szabály a **ResponseType** és a **ApiName** dim
 2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
 
 Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
-- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *GetBlob*
-- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *PutBlob*
-- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
-- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *PutBlob*
+- Metrika = *tranzakciók* , ResponseType = *sikeres* , ApiName = *GetBlob*
+- Metrika = *tranzakciók* , ResponseType = *sikeres* , ApiName = *PutBlob*
+- Metrika = *tranzakciók* , ResponseType = *kiszolgáló időkorlátja* , ApiName = *GetBlob*
+- Metrika = *tranzakciók* , ResponseType = *kiszolgáló időkorlátja* , ApiName = *PutBlob*
 
 >[!NOTE]
 > A dinamikus küszöbértékeket használó metrikus riasztási szabályok esetében jelenleg nem támogatott több feltétel.
@@ -3132,7 +3132,7 @@ Ez a minta egy dinamikus küszöbértékek metrikai riasztási szabályt hoz lé
 > [!NOTE]
 > `&amp`; a & HTML-entitásának hivatkozása. Az URL-paramétereket még mindig egyetlen & választja el, de ha HTML-ben említi az URL-címet, akkor kódolni kell. Tehát ha a pingURL paraméter értéke "&", el kell menekülnie a következővel: " `&amp` ;"
 
-### <a name="parameter-file"></a>Paraméter fájlja
+### <a name="template-file"></a>Sablonfájl
 
 ```json
 {
@@ -3234,8 +3234,6 @@ Ez a minta egy dinamikus küszöbértékek metrikai riasztási szabályt hoz lé
 }
 ```
 
-
-
 ### <a name="parameter-file"></a>Paraméter fájlja
 
 ```json
@@ -3254,14 +3252,55 @@ Ez a minta egy dinamikus küszöbértékek metrikai riasztási szabályt hoz lé
         },
         "location": {
             "value": "Replace with the location of your Application Insights resource"
-        }
+        },
+        "pingText": {
+            "defaultValue": "Optional parameter that allows you to perform a content-match for the presence of a specific string within the content returned from a pingURL response",
+            "type": "String"
+        },
     }
 }
 ```
 
+A Content-Match paraméter további konfigurációja a `pingText` sablonfájl részét képezi `Configuration/Webtest` . Konkrétan az alábbi szakaszt:
 
+```xml
+<RuleParameter Name=\"FindText\" Value=\"',parameters('pingText'), '\" />
+<RuleParameter Name=\"IgnoreCase\" Value=\"False\" />
+<RuleParameter Name=\"UseRegularExpression\" Value=\"False\" /> 
+<RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />
+```
+### <a name="test-locations"></a>Tesztelési helyszínek
 
-## <a name="next-steps"></a>További lépések
+|Id                  | Régió           |
+|:-------------------|:-----------------|
+| `emea-nl-ams-azr`  | Nyugat-Európa      |
+| `us-ca-sjc-azr`    | USA nyugati régiója          |
+| `emea-ru-msa-edge` | Az Egyesült Királyság déli régiója         |
+| `emea-se-sto-edge` | Az Egyesült Királyság nyugati régiója          |
+| `apac-sg-sin-azr`  | Délkelet-Ázsia   |
+| `us-tx-sn1-azr`    | USA déli középső régiója |
+| `us-il-ch1-azr`    | USA északi középső régiója |
+| `emea-gb-db3-azr`  | Észak-Európa     |
+| `apac-jp-kaw-edge` | Kelet-Japán       |
+| `emea-fr-pra-edge` | Közép-Franciaország   |
+| `emea-ch-zrh-edge` | Dél-Franciaország     |
+| `us-va-ash-azr`    | USA keleti régiója          |
+| `apac-hk-hkn-azr`  | Kelet-Ázsia        |
+| `us-fl-mia-edge`   | USA középső régiója       |
+| `latam-br-gru-edge`| Dél-Brazília      |
+| `emea-au-syd-edge` | Kelet-Ausztrália   |
+
+### <a name="us-government-test-locations"></a>Egyesült államokbeli kormányzati tesztelési helyszínek
+
+|Id                    | Régió           |
+|----------------------|------------------|
+| `usgov-va-azr`       | `USGov Virginia` |
+| `usgov-phx-azr`      | `USGov Arizona`  |
+| `usgov-tx-azr`       | `USGov Texas`    |
+| `usgov-ddeast-azr`   | `USDoD East`     |
+| `usgov-ddcentral-azr`| `USDoD Central`  |
+
+## <a name="next-steps"></a>Következő lépések
 
 - [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 - [További információ a riasztásokról](../platform/alerts-overview.md).

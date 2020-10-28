@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409476"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892621"
 ---
 # <a name="test-drive-technical-configuration"></a>Tesztverzió műszaki konfigurálása
 
@@ -22,15 +22,15 @@ Ha már nem szeretne tesztelési meghajtót biztosítani az ajánlatához, térj
 
 ## <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
 
-Ez az egyetlen tesztvezetés a virtuális gépekhez vagy az Azure-alkalmazásokhoz, és emellett meglehetősen részletes beállításra van szükség. Olvassa el az alábbi szakaszokat a [központi telepítési előfizetés részletei](#deployment-subscription-details) és a [tesztelési meghajtók listájában](#test-drive-listings), majd folytassa a külön témakörben [Azure Resource Manager a tesztelési meghajtók konfigurációját](azure-resource-manager-test-drive.md).
+Ez az egyetlen tesztelési lehetőség a virtuális gépekhez vagy az Azure-alkalmazások ajánlatához, és meglehetősen részletes beállításra van szükség. Olvassa el az alábbi szakaszokat a [központi telepítési előfizetés részletei](#deployment-subscription-details) és a [tesztelési meghajtók listájában](#test-drive-listings), majd folytassa a külön témakörben [Azure Resource Manager a tesztelési meghajtók konfigurációját](azure-resource-manager-test-drive.md).
 
 ## <a name="hosted-test-drive"></a>Szolgáltatott tesztelési meghajtó
 
-A Microsoft el tudja távolítani a tesztelési meghajtó beállításának összetettségét azáltal, hogy a szolgáltatás üzembe helyezését és üzembe helyezését az ilyen típusú tesztelési meghajtó használatával végzi el és tartja karban. Az ilyen típusú üzemeltetett tesztelési meghajtó konfigurációja megegyezik attól függetlenül, hogy a tesztvezetés a Dynamics 365 Business Central, a Dynamics 365 Customer engagement vagy a Dynamics 365 műveleti célközönség számára van-e megcélozva.
+A Microsoft el tudja távolítani a tesztelési meghajtó beállításának összetettségét a szolgáltatás kiépítésének és megszüntetésének üzemeltetésével és karbantartásával. Az ilyen típusú tesztelési meghajtó konfigurációja ugyanaz, függetlenül attól, hogy a tesztvezetés a Dynamics 365 Customer engagement vagy a Dynamics 365 művelet célközönségét célozza-e.
 
 - Egyidejű **tesztelési meghajtók maximális** száma (kötelező) – állítsa be a tesztelési meghajtót egyszerre használó ügyfelek maximális számát. Az egyidejű felhasználók egy Dynamics 365-licencet használnak, amíg a tesztvezetés aktív, ezért győződjön meg arról, hogy elegendő licenc áll rendelkezésre a maximálisan engedélyezett készlet támogatásához. Az ajánlott érték 3-5.
 
-- **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy hány óra elteltével maradjon aktív a tesztvezetés (legalább egy óra). Ezt követően a munkamenet véget ért, és már nem fogja használni az egyik licencét. Az ajánlat bonyolultsága alapján 2-24 óra értékű értéket ajánlunk. Ez az időtartam csak egész órában állítható be (például "2" óra érvényes). "1,5" nem). Ha elfogynak az idő, a felhasználó új munkamenetet igényelhet, és újra el szeretné érni a teszt meghajtót.
+- **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy hány óra elteltével maradjon aktív a tesztvezetés az egyes ügyfelek számára. Ezen időszak után a munkamenet véget ért, és már nem fogja használni az egyik licencét. Az ajánlat bonyolultsága alapján 2-24 óra értékű értéket ajánlunk. Ez az időtartam csak egész órában állítható be (például "2 óra"). "1,5 óra" nem). Ha elfogynak az idő, a felhasználó új munkamenetet igényelhet, és újra el szeretné érni a teszt meghajtót.
 
 - **Példány URL-címe** (kötelező) – az az URL-cím, amelyben az ügyfél elkezdi a tesztelési meghajtót. Általában a Dynamics 365-példány URL-címe, amely az alkalmazást az alkalmazással együtt futtatja (például: `https://testdrive.crm.dynamics.com` ).
 
@@ -48,7 +48,7 @@ Ezt a típusú tesztelési meghajtót nem a Microsoft üzemelteti. Használatáv
 
 - Egyidejű **tesztelési meghajtók maximális** száma (kötelező) – állítsa be a tesztelési meghajtót egyszerre használó ügyfelek maximális számát. Ezek a tesztelési meghajtók már telepítve vannak, és lehetővé teszik, hogy az ügyfelek azonnal hozzáférjenek az üzembe helyezésre való várakozás nélkül.
 
-- **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy hány óra elteltével maradjon aktív a tesztvezetés (legalább egy óra). A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
+- **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy a tesztvezetés hány óra alatt maradjon aktív állapotban. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
 
 - **Azure-erőforráscsoport neve** (kötelező) – Itt adhatja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md#resource-groups)nevét, ahol a logikai alkalmazás tesztelési meghajtója mentve lesz.
 
@@ -68,13 +68,13 @@ Annak engedélyezéséhez, hogy a Microsoft a tesztelési meghajtót az Ön nev�
 
 - **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges) – adja meg az előfizetés azonosítóját, hogy hozzáférést biztosítson az Azure-fiók szolgáltatásaihoz az erőforrás-használat jelentéskészítéséhez és számlázásához. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](../cost-management-billing/manage/create-subscription.md) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztásával megjelenítheti az előfizetés-AZONOSÍTÓját (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure ad-bérlő azonosítója** (kötelező) – adja meg a Azure Active Directory (ad) [bérlői azonosítóját](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok**elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév címe alapján is megkeresheti a következő helyen: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+- **Azure ad-bérlő azonosítója** (kötelező) – adja meg a Azure Active Directory (ad) [bérlői azonosítóját](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok** elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév címe alapján is megkeresheti a következő helyen: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 - **Azure ad-bérlő neve** (dinamikus 365 esetén szükséges) – adja meg a Azure Active Directory (ad) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
 
-- **Azure ad** -alkalmazás azonosítója (kötelező) – adja meg a Azure Active Directory (ad-) [alkalmazás azonosítóját](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például `50c464d3-4930-494c-963c-1e951d15360e` ).
+- **Azure ad** -alkalmazás azonosítója (kötelező) – adja meg a Azure Active Directory (ad-) [alkalmazás azonosítóját](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk** lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például `50c464d3-4930-494c-963c-1e951d15360e` ).
 
-- **Azure ad-alkalmazás ügyfél-titka** (kötelező) – adja meg az Azure ad-alkalmazás [ügyfelének titkos kulcsát](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. Ügyeljen rá, hogy az értéket másolja le. Az érték másolása előtt ne navigáljon el az oldalról.
+- **Azure ad-alkalmazás ügyfél-titka** (kötelező) – adja meg az Azure ad-alkalmazás [ügyfelének titkos kulcsát](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok** lehetőséget, válassza az **új ügyfél titka** elemet, írja be a leírást, válassza a **soha nem** **jár le** , és válassza a **Hozzáadás** lehetőséget. Ügyeljen rá, hogy az értéket másolja le. Az érték másolása előtt ne navigáljon el az oldalról.
 
 ## <a name="test-drive-listings"></a>Tesztelési meghajtók listázása
 
@@ -93,6 +93,14 @@ A a partner központ **Test Drive (tesztelési** meghajtó) lapján található 
 
 Ha jelenleg a partner Centerben hozza létre a tesztelési meghajtót, a folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>Következő lépések
 
+- [Tesztelési meghajtó – ajánlott eljárások](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Áttekintés](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md)
+
+## <a name="additional-resources"></a>További források
+
+## <a name="feedback"></a>Visszajelzés
+
+[A termékre](https://feedback.azure.com/forums/216369-azure-marketplace) vonatkozó visszajelzés küldése és megtekintése

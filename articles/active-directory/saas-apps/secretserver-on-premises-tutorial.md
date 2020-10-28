@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9540922619864b0c239a22422bab5f6bf178e5fe
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a87bf24c3555f2e6a259064b56b1b630f4abfe27
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678405"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894995"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>Oktatóanyag: Secret Server (On-Premises) integrálása a Azure Active Directory
 
@@ -98,7 +98,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
-    ![Aláírási beállítások](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
+    ![Képernyőfelvétel: "S A M L aláíró tanúsítvány" szakasz, amely a "tanúsítvány (Base64" "Letöltés" művelettel van kiválasztva).](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
 
 1. Válassza az **aláírás lehetőséget** az **SAML-válasz és az állítás aláírásához** .
 

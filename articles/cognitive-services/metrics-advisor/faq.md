@@ -10,22 +10,18 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131683"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893577"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrikák Advisor – gyakori kérdések
 
 ### <a name="what-is-the-cost-of-my-instance"></a>Mi a példányom díja?
 
 A példány használata jelenleg nem jár az előzetes verzióban.
-
-### <a name="why-is-the-demo-website-readonly"></a>Miért írásvédett a bemutató webhelye?
-
-A [bemutató webhelye](https://anomaly-detector.azurewebsites.net/) nyilvánosan elérhető. Ez a példány írásvédett, hogy megakadályozza az adatok véletlen feltöltését.
 
 ### <a name="why-cant-i-create-the-resource-the-pricing-tier-is-unavailable-and-it-says-you-have-already-created-1-s0-for-this-subscription"></a>Miért nem hozható létre az erőforrás? A "díjszabási szintje" nem érhető el, és azt mondja, hogy "már létrehozott 1 S0 ehhez az előfizetéshez"?
 
@@ -141,9 +137,8 @@ Az **incidens faszerkezetének** eszköze a diagnosztika oldalon csak azokat a c
  
 Ha például egy rendellenesség bekövetkezik `Service = S2 | Data Center = DC2 | Machine = M5` , a rendellenesség eltérése hatással van a szülő csomópontra `Service= S2` , amely szintén a rendellenességet észlelte, de a rendellenesség nem érinti a teljes adatközpontot `DC2` és a összes szolgáltatást `M5` . Az incidens faszerkezete az alábbi képernyőképen fog megjelenni, a legfelső anomáliát a rendszer rögzíti `Service = S2` , a kiváltó ok pedig két olyan elérési úton elemezhető, amely mindkettőt eredményezi `Service = S2 | Data Center = DC2 | Machine = M5` .
 
- :::image type="content" source="media/root-cause-paths.png" alt-text="5 a címkézett csúcspontok, amelyek két különböző elérési úttal rendelkeznek, és az S2 címkével ellátott közös csomóponttal vannak összekötve. A legfontosabb anomália a Service = S2-ben van rögzítve, és a kiváltó ok a két elérési út alapján elemezhető, mindkettő a Service = S2-hez vezet | Adatközpont = DC2 | Gép = M5" lightbox="media/root-cause-paths.png":::
+ :::image type="content" source="media/root-cause-paths.png" alt-text="5 megcímkézett csúcspont két különböző elérési úttal, amelyek egy S2-vel ellátott, közös csomóponttal vannak összekötve. A legfontosabb anomália a Service = S2-ben van rögzítve, és a kiváltó ok a két elérési út alapján elemezhető, mindkettő a Service = S2-hez vezet | Adatközpont = DC2 | Gép = M5" lightbox="media/root-cause-paths.png":::
 
 ## <a name="next-steps"></a>Következő lépések
 - [A metrikai tanácsadó áttekintése](overview.md)
-- [A bemutató webhely kipróbálása](quickstarts/explore-demo.md)
 - [A webes portál használata](quickstarts/web-portal.md)

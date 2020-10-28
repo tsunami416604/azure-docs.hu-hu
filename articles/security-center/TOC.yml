@@ -17,13 +17,13 @@
     - name: Újdonságok
       items:
         - name: Kibocsátási megjegyzések
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes.md
         - name: Fontos várható változások
-          displayName: 'release notes, changelog'
+          displayName: 'release notes, changelog, news'
           href: upcoming-changes.md
         - name: Archivált kibocsátási megjegyzések (hat hónapnál régebbiek)
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes-archive.md
     - name: A Security Center alapjai
       items:
@@ -92,6 +92,7 @@
     - name: E-mail-értesítések beállítása
       href: security-center-provide-security-contact-details.md
     - name: Riasztásra adott automatikus válasz létrehozása ARM-sablonnal
+      displayName: Resource Manager
       href: quickstart-automation-alert.md
 - name: Oktatóanyagok
   items:
@@ -238,6 +239,7 @@
           displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
           href: export-to-siem.md
         - name: Exportálás Log Analytics-munkaterületbe vagy az Azure Event Hubba
+          displayName: continuous
           href: continuous-export.md
         - name: Az összes riasztás CSV-jelentésének letöltése
           href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations

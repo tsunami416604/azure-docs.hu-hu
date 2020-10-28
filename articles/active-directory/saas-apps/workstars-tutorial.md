@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: dce05bbdaf00fe15d5809b4d353f57c2bbd55b40
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9f53072b106bedb8e49ba7f3728f39137f848a58
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520064"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Oktatóanyag: Azure Active Directory integráció a Workstars
 
@@ -61,13 +61,13 @@ A Workstars Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Workstars**kifejezést, válassza a **Workstars** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Workstars** kifejezést, válassza a **Workstars** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Workstars az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Workstars-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Workstars-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Workstars kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Workstars való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Workstars való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Workstars** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Workstars** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -126,29 +126,29 @@ Az Azure AD egyszeri bejelentkezés Workstars való konfigurálásához hajtsa v
 
 1. Egy másik böngészőablakban jelentkezzen be a Workstars vállalati webhelyre rendszergazdaként.
 
-2. A fő eszköztáron kattintson a **Beállítások**elemre.
+2. A fő eszköztáron kattintson a **Beállítások** elemre.
 
-    ![Workstars-beállítások](./media/workstars-tutorial/tutorial_workstars_sett.png)
+    ![A képernyőfelvételen a beállítások gomb látható.](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
-3. Lépjen **a bejelentkezési**  >  **Beállítások menüpontra**.
+3. Lépjen **a bejelentkezési**  >  **Beállítások menüpontra** .
 
     ![Workstars bejelentkezés](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
-    ![Workstars-beállítások](./media/workstars-tutorial/tutorial_workstars_settings.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés szakasz, ahol kiválaszthatja a beállításokat.](./media/workstars-tutorial/tutorial_workstars_settings.png)
 
 4. Az **egyszeri bejelentkezés (SAML) – beállítások** oldalon hajtsa végre a következő lépéseket:
     
     ![Workstars SAML](./media/workstars-tutorial/tutorial_workstars_saml.png)
 
-    a. Az **identitás-szolgáltató neve** szövegmezőbe írja be az **Office 365**nevet.
+    a. Az **identitás-szolgáltató neve** szövegmezőbe írja be az **Office 365** nevet.
 
-    b. Az **Identity Provider entitás-azonosító** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt.
+    b. Az **Identity Provider entitás-azonosító** szövegmezőbe illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portalból másolt.
 
     c. Másolja a letöltött tanúsítványfájl tartalmát a Jegyzettömbben, majd illessze be a **x509-tanúsítvány** szövegmezőbe. 
 
-    d. Az **SAML SSO URL** szövegmezőbe illessze be a **bejelentkezési URL**-címet, amelyet a Azure Portalból másolt.
+    d. Az **SAML SSO URL** szövegmezőbe illessze be a **bejelentkezési URL** -címet, amelyet a Azure Portalból másolt.
     
-    e. A **távoli kijelentkezési URL-cím** szövegmezőbe illessze be a **KIjelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt. 
+    e. A **távoli kijelentkezési URL-cím** szövegmezőbe illessze be a **KIjelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt. 
 
     f. Válassza a **név azonosító** **e-mailként (alapértelmezett)** lehetőséget.
 
@@ -158,7 +158,7 @@ Az Azure AD egyszeri bejelentkezés Workstars való konfigurálásához hajtsa v
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -176,21 +176,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Workstars hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Workstars**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Workstars** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Workstars**lehetőséget.
+2. Az alkalmazások listában válassza a **Workstars** lehetőséget.
 
     ![Az Workstars hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

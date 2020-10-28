@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 91c0eaf5b1e614e185747cd9ae2c32e7f4f7a707
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6d04601cb11e57f50c82680077793aef1b816bfa
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672063"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Oktatóanyag: Azure Active Directory-integráció az SAP Business ByDesign megoldással
 
@@ -110,11 +110,11 @@ Az Azure AD egyszeri bejelentkezés az SAP Business Bydesignnal való konfigurá
 
 5. Az SAP Business Bydesignnal alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A "felhasználó attribútumai" párbeszédpanelt a "szerkesztés" gomb kiválasztásával ábrázoló képernyőkép.](common/edit-attribute.png)
 
 6. A **név azonosító értékének** szerkesztéséhez kattintson a **Szerkesztés** ikonra.
 
-    ![image](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
+    ![Képernyőfelvétel: a "szerkesztés" ikonnal jelölt "felhasználói attribútumok & jogcímek" oldal.](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
 
 7. A **felhasználói jogcímek kezelése** szakaszban hajtsa végre a következő lépéseket:  ![ rendszerkép](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
 
@@ -148,7 +148,7 @@ Az Azure AD egyszeri bejelentkezés az SAP Business Bydesignnal való konfigurá
 
 3. Kattintson az **új identitás-szolgáltató** elemre, és válassza ki a metaadatokat tartalmazó XML-fájlt, amelyet a Azure Portal letöltött. A metaadatok importálásával a rendszer automatikusan feltölti a szükséges aláírási tanúsítványt és titkosítási tanúsítványt.
 
-    ![Egyetlen Sign-On konfigurálása](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![Képernyőfelvétel: "az egyszeri bejelentkezés konfigurálása" lap, amelyen be van jelölve az "identitás-szolgáltató" lap, és az "új identitás-szolgáltató" művelet van kiválasztva.](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
 4. Ha a **szolgáltatói szolgáltatás URL-címét** bele szeretné foglalni az SAML-kérelembe, válassza a include Request **Consumer Service URL-cím** elemet.
 
@@ -158,7 +158,7 @@ Az Azure AD egyszeri bejelentkezés az SAP Business Bydesignnal való konfigurá
 
 7. Kattintson a **saját rendszerek** fülre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    ![Képernyőfelvétel: "az egyszeri bejelentkezés konfigurálása" lap, amelyen be van jelölve a "saját rendszer" lap.](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
 8. Az **Azure ad bejelentkezési URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím** értéket, amelyet a Azure Portal másolt.
 

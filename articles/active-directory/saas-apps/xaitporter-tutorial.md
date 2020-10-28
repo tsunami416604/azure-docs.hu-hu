@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 03c290f73c5afb9973aadb0159239d025e2adcad
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f729828627fdb0be18f220d34227aac756ed4e13
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520013"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Oktatóanyag: Azure Active Directory integráció a XaitPorter
 
@@ -61,13 +61,13 @@ A XaitPorter Azure AD-be való integrálásának konfigurálásához hozzá kell
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **XaitPorter**kifejezést, válassza a **XaitPorter** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **XaitPorter** kifejezést, válassza a **XaitPorter** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![XaitPorter az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az XaitPorter-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az XaitPorter-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a XaitPorter kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **XaitPorter** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **XaitPorter** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -116,7 +116,7 @@ Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához hajtsa 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>XaitPorter egyetlen Sign-On konfigurálása
 
-1. A XaitPorter belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A XaitPorter belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -126,23 +126,23 @@ Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához hajtsa 
 
 3. Ha manuálisan szeretné beállítani a XaitPorter, nyisson meg egy új böngészőablakot, és jelentkezzen be a XaitPorter vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. Kattintson a **rendszergazda**elemre.
+4. Kattintson a **rendszergazda** elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/xaitporter-tutorial/user1.png)
+    ![A képernyőképen a XaitPorter helyen kiválasztott rendszergazda látható.](./media/xaitporter-tutorial/user1.png)
 
 5. Válassza az **egyszeri bejelentkezés kezelése** lehetőséget a **Rendszerbeállítás** legördülő listából.
 
-    ![Egyetlen Sign-On konfigurálása](./media/xaitporter-tutorial/user2.png)
+    ![Képernyőfelvétel: a rendszerbeállításból kiválasztott egyetlen Sign-On kezelése.](./media/xaitporter-tutorial/user2.png)
 
 6. Az **egyszeri bejelentkezés kezelése** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/xaitporter-tutorial/user3.png)
+    ![A képernyőképen látható az egyszeri bejelentkezés kezelése szakasz, ahol elvégezheti ezeket a lépéseket.](./media/xaitporter-tutorial/user3.png)
 
-    a. Jelölje be az **egyszeri Sign-On hitelesítés engedélyezése**jelölőnégyzetet.
+    a. Jelölje be az **egyszeri Sign-On hitelesítés engedélyezése** jelölőnégyzetet.
 
-    b. Az **Identity Provider beállításai** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt, majd kattintson a **beolvasás**elemre.
+    b. Az **Identity Provider beállításai** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt, majd kattintson a **beolvasás** elemre.
 
-    c. Válassza **a felhasználók létrehozásának engedélyezése**lehetőséget.
+    c. Válassza **a felhasználók létrehozásának engedélyezése** lehetőséget.
 
     d. Kattintson az **OK** gombra.
 
@@ -150,7 +150,7 @@ Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához hajtsa 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -168,21 +168,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a XaitPorter hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **XaitPorter**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **XaitPorter** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **XaitPorter**lehetőséget.
+2. Az alkalmazások listában válassza a **XaitPorter** lehetőséget.
 
     ![Az XaitPorter hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

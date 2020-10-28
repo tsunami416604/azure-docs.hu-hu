@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3f5dfcafe1c7b08a2c8320f807bf809107197d40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9b732bd25e7ef8aa084c98d5b059d422f86a4b0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335279"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895409"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Az Azure Maps API használati metrikáinak megtekintése
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan tekintheti meg Azure Maps-fiókja API-használati me
 
 ## <a name="view-metric-snapshot"></a>Metrika pillanatképének megtekintése
 
-A Maps-fiók **áttekintő** lapján néhány gyakori mérőszámot láthat. Jelenleg a *teljes kérelmeket*, a *teljes hibákat*és a *rendelkezésre állást* jeleníti meg egy kijelölhető időtartamon keresztül.
+A Maps-fiók **áttekintő** lapján néhány gyakori mérőszámot láthat. Jelenleg a *teljes kérelmeket* , a *teljes hibákat* és a *rendelkezésre állást* jeleníti meg egy kijelölhető időtartamon keresztül.
 
 ![Azure Maps használati metrikák áttekintése](media/how-to-view-api-usage/portal-overview.png)
 
@@ -31,7 +31,7 @@ Folytassa a következő szakasszal, ha testre kell szabnia ezeket a diagramokat 
 
 1. Jelentkezzen be az Azure-előfizetésbe a [portálon](https://portal.azure.com).
 
-2. Kattintson a **minden erőforrás** menüpontra a bal oldali oldalon, és navigáljon a *Azure Maps-fiókjához*.
+2. Kattintson a **minden erőforrás** menüpontra a bal oldali oldalon, és navigáljon a *Azure Maps-fiókjához* .
 
 3. Miután megnyitotta a Maps-fiókját, kattintson a bal oldali **mérőszámok** menüre.
 
@@ -66,4 +66,4 @@ Ismerkedjen meg a Azure Maps API-kkal, amelyeken nyomon szeretné követni a has
 > [Azure Maps Android SDK – útmutató](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps REST API dokumentációja](https://docs.microsoft.com/rest/api/maps)
+> [Azure Maps REST API dokumentációja](/rest/api/maps)

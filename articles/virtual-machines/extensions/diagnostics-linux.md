@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448188"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893403"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
 
@@ -39,6 +39,9 @@ Ez a bővítmény az Azure üzembe helyezési modelljeivel is működik.
 ## <a name="installing-the-extension-in-your-vm"></a>A bővítmény telepítése a virtuális gépre
 
 Ezt a bővítményt a Azure PowerShell-parancsmagok, az Azure CLI-parancsfájlok, az ARM-sablonok vagy a Azure Portal használatával engedélyezheti. További információ: [bővítmények szolgáltatásai](features-linux.md).
+
+>[!NOTE]
+>A diagnosztikai virtuálisgép-bővítmény egyes összetevőit a [log Analytics VM-bővítmény](./oms-linux.md)is tartalmazza. Az architektúra miatt ütközések merülhetnek fel, ha mindkét bővítmény ugyanabban az ARM-sablonban van létrehozva. A telepítési idejű ütközések elkerülése érdekében használja az [ `dependsOn` irányelvet](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) annak biztosítására, hogy a bővítmények egymás után legyenek telepítve. A bővítmények mindkét sorrendben telepíthetők.
 
 Ezek a telepítési utasítások és egy [letölthető minta konfiguráció](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) , amely a Lad 3,0-et konfigurálja:
 
@@ -67,8 +70,8 @@ Támogatott disztribúciók és verziók:
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Az **Azure Linux Agent 2.2.0-es vagy újabb verziója**. A legtöbb Azure-beli virtuális gép Linux-katalógusa tartalmaz 2.2.7 vagy újabb verziót. A futtatásával erősítse meg a `/usr/sbin/waagent -version` virtuális gépre telepített verziót. Ha a virtuális gép a vendég ügynök egy régebbi verzióját futtatja, a frissítéshez kövesse az [alábbi utasításokat](./update-linux-agent.md) .
-* **Azure CLI**-vel. [Állítsa be az Azure CLI](/cli/azure/install-azure-cli) -környezetet a gépen.
+* Az **Azure Linux Agent 2.2.0-es vagy újabb verziója** . A legtöbb Azure-beli virtuális gép Linux-katalógusa tartalmaz 2.2.7 vagy újabb verziót. A futtatásával erősítse meg a `/usr/sbin/waagent -version` virtuális gépre telepített verziót. Ha a virtuális gép a vendég ügynök egy régebbi verzióját futtatja, a frissítéshez kövesse az [alábbi utasításokat](./update-linux-agent.md) .
+* **Azure CLI** -vel. [Állítsa be az Azure CLI](/cli/azure/install-azure-cli) -környezetet a gépen.
 * A wget parancs, ha még nem tette meg: Futtatás `sudo apt-get install wget` .
 * Meglévő Azure-előfizetés és meglévő általános célú Storage-fiók az adattároláshoz.  Az általános célú Storage-fiókok támogatják a Table Storage-t, amelyhez szükség van.  A blob Storage-fiók nem fog működni.
 
@@ -172,7 +175,7 @@ Miután módosította a védett vagy a nyilvános beállításokat, telepítse �
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Áttelepítés a bővítmény korábbi verzióiból
 
-A bővítmény legújabb verziója **3,0**. A **régi verziók (2. x) elavultak, és a 2018. július 31-ig vagy azt követően nem**tehetők közzé.
+A bővítmény legújabb verziója **3,0** . A **régi verziók (2. x) elavultak, és a 2018. július 31-ig vagy azt követően nem** tehetők közzé.
 
 > [!IMPORTANT]
 > Ez a bővítmény bevezeti a bővítmény konfigurációjának feltörésének változásait. Egy ilyen változás történt a bővítmény biztonságának javítása érdekében; Ennek eredményeképpen a 2. x verzióra visszamenőleges kompatibilitás nem tartható karban. Emellett a bővítmény közzétevője nem azonos a 2. x verzió közzétevője verziójával.
@@ -461,7 +464,7 @@ Elem | Érték
 ------- | -----
 névtér | választható Az a-t tartalmazó-névtér, amelyen belül a lekérdezés végrehajtása történik. Ha nincs megadva, az alapértelmezett érték a [System Center platformfüggetlen szolgáltatók](https://github.com/Microsoft/SCXcore)által megvalósított "root/SCX".
 lekérdezés | A végrehajtandó a kipróbálható adatlekérdezés.
-tábla | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
+table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
 frequency | választható A lekérdezés végrehajtása közötti másodpercek száma. Az alapértelmezett érték 300 (5 perc); a minimális érték 15 másodperc.
 fogadóként | választható A további mosdók neveinek vesszővel tagolt listája, amelybe a nyers minta metrikájának eredményeit közzé kell tenni. A nyers minták összesítését a bővítmény vagy az Azure-metrika számítja ki.
 
@@ -487,7 +490,7 @@ A naplófájlok rögzítését vezérli. A LAD rögzíti az új szövegsorok ír
 Elem | Érték
 ------- | -----
 file | A figyelni és rögzíteni kívánt naplófájl teljes elérési útja. Az elérési útnak egyetlen fájlt kell megadnia; nem lehet könyvtárat átnevezni, és nem tartalmazhat helyettesítő karaktereket. A "omsagent" felhasználói fióknak olvasási hozzáféréssel kell rendelkeznie a fájl elérési útjához.
-tábla | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (a védett konfigurációban megadott módon), amelybe a fájl "farok" új sorai íródnak.
+table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (a védett konfigurációban megadott módon), amelybe a fájl "farok" új sorai íródnak.
 fogadóként | választható Vesszővel tagolt lista azoknak a további mosogatóknak a neveiről, amelyeknek a naplózási sorai elküldése megtörténjen.
 
 Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.
@@ -578,7 +581,7 @@ TransfersPerSecond | Olvasási vagy írási műveletek másodpercenként
 
 A rendszer az összes fájlrendszer összesített értékeit a beállítással szerezheti be `"condition": "IsAggregate=True"` . Az adott csatlakoztatott fájlrendszer, például a "/mnt" értékeit a beállítással lehet beolvasni `"condition": 'Name="/mnt"'` . 
 
-**Megjegyzés**: Ha a JSON helyett az Azure Portalt használja, a megfelelő feltétel mező űrlap a name = '/mnt '.
+**Megjegyzés** : Ha a JSON helyett az Azure Portalt használja, a megfelelő feltétel mező űrlap a name = '/mnt '.
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>beépített metrikák a lemez osztályhoz
 

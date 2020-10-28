@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: bbd46237e0b3b21b822b088c545c91f678a8034e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cbe6adc37025f0b727fa5f5d3ace46ed34afaa9e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792293"
+ms.locfileid: "92895222"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Security Center eseményindítóra adott válaszok automatizálása
 
@@ -205,5 +205,5 @@ Kapcsolódó anyagok esetében lásd:
 - [Biztonsági javaslatok az Azure Security Centerben](security-center-recommendations.md)
 - [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)
 - [Azure Logic Apps](../logic-apps/logic-apps-overview.md)
-- [Összekötők a Logic Appsben](/connectors/)
+- [Az Azure Logic Apps összekötői](../connectors/apis-list.md)
 - [Munkafolyamat-automatizálási adattípussémák](https://aka.ms/ASCAutomationSchemas)

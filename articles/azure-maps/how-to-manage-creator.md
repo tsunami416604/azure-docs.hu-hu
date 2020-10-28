@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6d8a2bfe20d0e7b52dcd60127b3666f0c21a792
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83677943"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895800"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure Maps létrehozójának kezelése
 
@@ -25,11 +25,11 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet egy létrehoz
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
-2. Válassza ki a Azure Maps fiókját. Ha a **legutóbbi erőforrások**alatt nem látja a Azure Maps-fiókját, akkor navigáljon a Azure Portal menüre. Válassza a **Minden erőforrás** elemet. Keresse meg és válassza ki a Azure Maps fiókját.
+2. Válassza ki a Azure Maps fiókját. Ha a **legutóbbi erőforrások** alatt nem látja a Azure Maps-fiókját, akkor navigáljon a Azure Portal menüre. Válassza a **Minden erőforrás** elemet. Keresse meg és válassza ki a Azure Maps fiókját.
 
     ![Azure Maps portál kezdőlapja](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Miután megtörtént a Azure Maps-fiók lapon, navigáljon az **Áttekintés** lehetőségre a **Creator**alatt. Azure Maps létrehozó erőforrás létrehozásához kattintson a  **Létrehozás**  gombra.
+3. Miután megtörtént a Azure Maps-fiók lapon, navigáljon az **Áttekintés** lehetőségre a **Creator** alatt. Azure Maps létrehozó erőforrás létrehozásához kattintson a  **Létrehozás**  gombra.
 
     ![Azure Maps létrehozó lap létrehozása](./media/how-to-manage-creator/creator-blade-settings.png)
 
@@ -37,7 +37,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet egy létrehoz
 
    ![Adja meg a létrehozó fiókadatok oldalát](./media/how-to-manage-creator/creator-creation-dialog.png)
 
-5. Tekintse át a beállításokat, és kattintson a **Létrehozás**gombra.
+5. Tekintse át a beállításokat, és kattintson a **Létrehozás** gombra.
 
     ![Létrehozó fiók beállításainak megerősítése lap](./media/how-to-manage-creator/creator-create-dialog.png)
 
@@ -54,7 +54,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet egy létrehoz
 
 ## <a name="delete-creator-resource"></a>Létrehozó erőforrás törlése
 
-A létrehozó erőforrás törléséhez navigáljon a Azure Maps-fiókjához. Válassza az **Áttekintés** lehetőséget a **létrehozó**területen. Kattintson a **Törlés** gombra.
+A létrehozó erőforrás törléséhez navigáljon a Azure Maps-fiókjához. Válassza az **Áttekintés** lehetőséget a **létrehozó** területen. Kattintson a **Törlés** gombra.
 
 >[!WARNING]
 >Ha törli a Azure Maps-fiók létrehozó erőforrását, akkor a Creator Services használatával létrehozott adatkészleteket, tilesets és szolgáltatás-statesets is törli.
@@ -69,7 +69,7 @@ Kattintson a **Törlés** gombra, és írja be a létrehozó nevét a törlés m
 
 A létrehozó örökli a Azure Maps Access Control (IAM) beállításait. Az adathozzáféréshez szükséges API-hívásokat hitelesítési és engedélyezési szabályokkal kell elküldeni.
 
-A létrehozói használati adatok a Azure Maps használati diagramokban és a tevékenység naplójában vannak beépítve.  További információ: [a hitelesítés kezelése Azure Mapsban](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+A létrehozói használati adatok a Azure Maps használati diagramokban és a tevékenység naplójában vannak beépítve.  További információ: [a hitelesítés kezelése Azure Mapsban](./how-to-manage-authentication.md).
 
 ## <a name="access-to-creator-services"></a>Hozzáférés a Creator szolgáltatásaihoz
 
@@ -77,7 +77,7 @@ A Creator Services csak a létrehozás során kiválasztott helyről érhető el
 
 Emellett a Creatorbe importált összes adathalmazt a létrehozó erőforrással megegyező földrajzi helyre kell feltölteni. Ha például az Creator ki van töltve az Egyesült-ban, az összes nyers adattal fel kell tölteni a-on keresztül `us.atlas.microsoft.com/mapData/upload` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Bevezetés a beltéri leképezés létrehozója számára:
 
@@ -88,7 +88,7 @@ Bevezetés a beltéri leképezés létrehozója számára:
 > [Adatátalakítás](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Adathalmaz](creator-indoor-maps.md#datasets)
+> [Adatkészlet](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)

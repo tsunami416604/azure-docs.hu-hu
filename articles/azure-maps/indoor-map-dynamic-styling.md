@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86517297"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895375"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Dinamikus stílus implementálása a Creator beltéri térképeken
 
-Azure Maps Creator [szolgáltatás állapotának szolgáltatása](https://docs.microsoft.com/rest/api/maps/featurestate) lehetővé teszi a stílusok alkalmazását a beltéri Térkép adatfunkcióinak dinamikus tulajdonságai alapján.  Például megjelenítheti a létesítmény-tárgyalókat egy adott színnel, hogy tükrözze a kihasználtsági állapotot. Ebben a cikkben bemutatjuk, hogyan lehet dinamikusan megjeleníteni a beltéri Térkép funkciókat a [szolgáltatás állapotának](https://docs.microsoft.com/rest/api/maps/featurestate) és a [beltéri webes modulnak](how-to-use-indoor-module.md)a használatával.
+Azure Maps Creator [szolgáltatás állapotának szolgáltatása](/rest/api/maps/featurestate) lehetővé teszi a stílusok alkalmazását a beltéri Térkép adatfunkcióinak dinamikus tulajdonságai alapján.  Például megjelenítheti a létesítmény-tárgyalókat egy adott színnel, hogy tükrözze a kihasználtsági állapotot. Ebben a cikkben bemutatjuk, hogyan lehet dinamikusan megjeleníteni a beltéri Térkép funkciókat a [szolgáltatás állapotának](/rest/api/maps/featurestate) és a [beltéri webes modulnak](how-to-use-indoor-module.md)a használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -66,9 +66,9 @@ A következő szakaszban az Office kihasználtsági *állapotát* állíthatja b
 
  Most frissítjük a két iroda állapotát, `UNIT26` és `UNIT27` :
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
+1. A Poster alkalmazásban válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
 
-2. Az állapot frissítéséhez használja a [Feature Update States API](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) -t. Adja át a stateset AZONOSÍTÓját és a `UNIT26` két egység egyikét. Fűzze hozzá Azure Maps előfizetési kulcsát. Itt látható az állapot frissítésére szolgáló **post** -kérelem URL-címe:
+2. Az állapot frissítéséhez használja a [Feature Update States API](/rest/api/maps/featurestate/updatestatespreview) -t. Adja át a stateset AZONOSÍTÓját és a `UNIT26` két egység egyikét. Fűzze hozzá Azure Maps előfizetési kulcsát. Itt látható az állapot frissítésére szolgáló **post** -kérelem URL-címe:
 
     ```http
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -108,7 +108,7 @@ A böngészőben korábban megnyitott webalkalmazásnak most már tükröznie ke
 
 ![Szabad hely a zöld és a foglalt helyiségben vörös színnel](./media/indoor-map-dynamic-styling/room-state.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért olvassa el a következőket:
 
@@ -124,7 +124,7 @@ Tekintse meg a cikkben említett API-kra mutató hivatkozásokat:
 > [Adatátalakítás](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Adathalmaz](creator-indoor-maps.md#datasets)
+> [Adatkészlet](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)
@@ -134,4 +134,3 @@ Tekintse meg a cikkben említett API-kra mutató hivatkozásokat:
 
 > [!div class="nextstepaction"]
 > [WFS szolgáltatás](creator-indoor-maps.md#web-feature-service-api)
-

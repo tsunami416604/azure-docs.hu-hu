@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874594"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895545"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Ajánlott eljárások Azure Maps Route Service-hez
 
-Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) Route Directions és Route Matrix API-k segítségével kiszámíthatja az egyes kért útvonalak becsült érkezési idejét (ETA). Az útválasztási API-k olyan tényezőket vesznek figyelembe, mint például a valós idejű forgalmi információk és a korábbi forgalmi adatok, például a hét kért napjának és a nap időpontjának a szokásos országúti sebessége. Az API-k a legrövidebb vagy leggyorsabb útvonalakat adják vissza több célhelyre egyszerre, sorrendben vagy optimalizált sorrendben, az idő vagy a távolság alapján. A felhasználók speciális útvonalakat és részleteket is igényelhetnek a túrázók, a kerékpárosok és a kereskedelmi járművek, például a teherautók számára. Ebben a cikkben megosztjuk az ajánlott eljárásokat a Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route)meghívásához, és megismerheti a következőket:
+Azure Maps [Route Service](/rest/api/maps/route) Route Directions és Route Matrix API-k segítségével kiszámíthatja az egyes kért útvonalak becsült érkezési idejét (ETA). Az útválasztási API-k olyan tényezőket vesznek figyelembe, mint például a valós idejű forgalmi információk és a korábbi forgalmi adatok, például a hét kért napjának és a nap időpontjának a szokásos országúti sebessége. Az API-k a legrövidebb vagy leggyorsabb útvonalakat adják vissza több célhelyre egyszerre, sorrendben vagy optimalizált sorrendben, az idő vagy a távolság alapján. A felhasználók speciális útvonalakat és részleteket is igényelhetnek a túrázók, a kerékpárosok és a kereskedelmi járművek, például a teherautók számára. Ebben a cikkben megosztjuk az ajánlott eljárásokat a Azure Maps [Route Service](/rest/api/maps/route)meghívásához, és megismerheti a következőket:
 
  * Válasszon az útvonalterv API-k és a mátrix-útválasztási API közül
  * A korábbi és várható utazási idők kérése valós idejű és korábbi forgalmi adatok alapján
@@ -27,7 +27,7 @@ Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) Route
  * Egy vagy több leállításból (útpontok) álló útvonal igénylése
  * Egy vagy több leállás útvonalának optimalizálása a legjobb megrendelés megszerzéséhez az egyes Leállítás (útpont) megkereséséhez
  * Alternatív útvonalak optimalizálása támogató pontok használatával. Például alternatív útvonalakat is kínálunk, amelyek egy elektromos járművet betöltő állomásnak adnak át.
- * A [Route Service](https://docs.microsoft.com/rest/api/maps/route) használata a Azure Maps web SDK-val
+ * A [Route Service](/rest/api/maps/route) használata a Azure Maps web SDK-val
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -113,7 +113,7 @@ Az alábbi második példában egy valós idejű útválasztási kérelemünk va
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-A válasz egy összegzést tartalmaz, az alábbi ábrán látható módon. A torlódások miatt a **trafficDelaysInSeconds** értéke nagyobb nullánál. A **historicTrafficTravelTimeInSeconds**is nagyobb.
+A válasz egy összegzést tartalmaz, az alábbi ábrán látható módon. A torlódások miatt a **trafficDelaysInSeconds** értéke nagyobb nullánál. A **historicTrafficTravelTimeInSeconds** is nagyobb.
 
 ```json
 "summary": {
@@ -140,7 +140,7 @@ Bontsa ki az `point` elemet az elérési út koordinátáinak megjelenítéséhe
 
 ![Kibontott pontok elem](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-Az útválasztási utasítások API-jai különböző, a **instructionsType** paraméter megadásával felhasználható utasítások formátumait támogatják. Az egyszerű számítógép-feldolgozásra vonatkozó utasítások formázásához használja a **instructionsType = kódolt**lehetőséget. Használja a **instructionsType = Tagged** utasítást a felhasználó szövegének megjelenítéséhez. Emellett az utasítások szövegként is formázhatók, ahol az utasítások egyes elemei meg vannak jelölve, az utasítás pedig speciális formázással jelenik meg. További információkért tekintse meg a [támogatott utasításkészlet-típusok listáját](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype).
+Az útválasztási utasítások API-jai különböző, a **instructionsType** paraméter megadásával felhasználható utasítások formátumait támogatják. Az egyszerű számítógép-feldolgozásra vonatkozó utasítások formázásához használja a **instructionsType = kódolt** lehetőséget. Használja a **instructionsType = Tagged** utasítást a felhasználó szövegének megjelenítéséhez. Emellett az utasítások szövegként is formázhatók, ahol az utasítások egyes elemei meg vannak jelölve, az utasítás pedig speciális formázással jelenik meg. További információkért tekintse meg a [támogatott utasításkészlet-típusok listáját](/rest/api/maps/route/postroutedirections#routeinstructionstype).
 
 Ha a rendszer utasításokat kér, a válasz egy új elemet ad vissza `guidance` . Az `guidance` elem két információt tartalmaz: lépésenkénti utasítások és összegzett utasítások.
 
@@ -186,7 +186,7 @@ Az alábbi válasz egy 9. osztályú veszélyes anyagot hordozó teherautóra mu
 
 ## <a name="request-traffic-information-along-a-route"></a>Forgalmi adatok kérése az útvonal mentén
 
-A Azure Maps Route Direction API-kkal a fejlesztők az egyes szakaszok típusait is megadhatják a `sectionType` kérelemben szereplő paraméterrel együtt. Megkérheti például az egyes forgalmi Jam-szegmensek sebességére vonatkozó információkat. Tekintse meg a [sectionType-kulcs értékeinek listáját](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) , és ismerkedjen meg a kért különféle részletekkel.
+A Azure Maps Route Direction API-kkal a fejlesztők az egyes szakaszok típusait is megadhatják a `sectionType` kérelemben szereplő paraméterrel együtt. Megkérheti például az egyes forgalmi Jam-szegmensek sebességére vonatkozó információkat. Tekintse meg a [sectionType-kulcs értékeinek listáját](/rest/api/maps/route/getroutedirections#sectiontype) , és ismerkedjen meg a kért különféle részletekkel.
 
 ### <a name="sample-query"></a>Mintalekérdezés
 
@@ -208,13 +208,13 @@ Ezzel a beállítással az alábbi képen látható módon színezheti a pontoka
 
 Azure Maps jelenleg két útvonal-optimalizálási formát biztosít:
 
-* Optimalizálás a kért útvonal típusa alapján, az útpontok sorrendjének módosítása nélkül. Itt megtalálhatja a [támogatott útvonal-típusokat](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routetype)
+* Optimalizálás a kért útvonal típusa alapján, az útpontok sorrendjének módosítása nélkül. Itt megtalálhatja a [támogatott útvonal-típusokat](/rest/api/maps/route/postroutedirections#routetype)
 
 * Az utazási ügynök optimalizálása, amely megváltoztatja az iránypontok sorrendjét, hogy a lehető legjobb sorrendben keresse meg az egyes leállításokat
 
 A többszörös leállítási útválasztáshoz legfeljebb 150 útpont adható meg egyetlen útvonal-kérelemben. A kezdő és záró koordináta-helyszínek megegyeznek, ahogy az az eset, amikor egy oda-és visszaút is van. Azonban legalább egy további Útpontot meg kell adnia az útvonal kiszámításához. Az útpontok a forrás és a cél koordinátái között adhatók hozzá a lekérdezéshez.
 
-Ha optimalizálni szeretné a legmegfelelőbb sorrendet a megadott útpontok megtekintéséhez, akkor a **computeBestOrder = True**értéket kell megadnia. Ezt a forgatókönyvet az utazási ügynök optimalizálási problémájának is nevezzük.
+Ha optimalizálni szeretné a legmegfelelőbb sorrendet a megadott útpontok megtekintéséhez, akkor a **computeBestOrder = True** értéket kell megadnia. Ezt a forgatókönyvet az utazási ügynök optimalizálási problémájának is nevezzük.
 
 ### <a name="sample-query"></a>Mintalekérdezés
 
@@ -262,11 +262,11 @@ Az optimális útvonal a következő útpont sorrendtel rendelkezik: 0, 5, 1, 2,
 Előfordulhat, hogy olyan helyzetekre van szüksége, amelyekben a viszonyítási útvonal nulla vagy több alternatív útvonalának kiszámításához egy útvonalat szeretne létrehozni. Előfordulhat például, hogy meg szeretné jeleníteni az ügyfelek alternatív útvonalait, amelyek átadják a kiskereskedelmi áruházat. Ebben az esetben egy helyet kell megtorzítani a támogatási pontok használatával. Itt láthatók a helyek torzításának lépései:
 
 1. Útvonal kiszámításának módja, és az útvonal válaszának lekérése
-2. Használja az útvonal elérési útját, hogy megkeresse a kívánt helyszíneket az útvonal elérési útja mentén vagy annak közelében. Használhatja például Azure Maps [Point of érdekes API](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) -t, vagy lekérdezheti saját adatait az adatbázisban.  
+2. Használja az útvonal elérési útját, hogy megkeresse a kívánt helyszíneket az útvonal elérési útja mentén vagy annak közelében. Használhatja például Azure Maps [Point of érdekes API](/rest/api/maps/search/getsearchpoi) -t, vagy lekérdezheti saját adatait az adatbázisban.  
 3. A helyszínek sorrendje az útvonal elejétől mért távolság alapján
-4. Adja hozzá ezeket a helyeket a támogatási pontokként egy új útvonal-kérelemben az [útvonal-utasítások API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)-hoz. A támogatási pontokkal kapcsolatos további tudnivalókért tekintse meg az [Route Directions API dokumentációját](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints). 
+4. Adja hozzá ezeket a helyeket a támogatási pontokként egy új útvonal-kérelemben az [útvonal-utasítások API](/rest/api/maps/route/postroutedirections)-hoz. A támogatási pontokkal kapcsolatos további tudnivalókért tekintse meg az [Route Directions API dokumentációját](/rest/api/maps/route/postroutedirections#supportingpoints). 
 
-Az útvonalterv [utáni API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)meghívásakor megadhatja a minimális eltérési időt vagy a távolsági megkötéseket, valamint a támogatási pontokat. Akkor használja ezeket a paramétereket, ha alternatív útvonalakat szeretne ajánlani, de az utazási időt is korlátozni szeretné. Ha ezeket a korlátozásokat használják, az alternatív útvonalak az adott időpontra vagy távolságra vonatkozóan a kezdőponttól érkező hivatkozási útvonalat fogják követni. Ez azt jelenti, hogy a többi útvonal a megadott megkötések alapján eltér a hivatkozási útvonaltól.
+Az útvonalterv [utáni API](/rest/api/maps/route/postroutedirections)meghívásakor megadhatja a minimális eltérési időt vagy a távolsági megkötéseket, valamint a támogatási pontokat. Akkor használja ezeket a paramétereket, ha alternatív útvonalakat szeretne ajánlani, de az utazási időt is korlátozni szeretné. Ha ezeket a korlátozásokat használják, az alternatív útvonalak az adott időpontra vagy távolságra vonatkozóan a kezdőponttól érkező hivatkozási útvonalat fogják követni. Ez azt jelenti, hogy a többi útvonal a megadott megkötések alapján eltér a hivatkozási útvonaltól.
 
 Az alábbi kép egy példát mutat be alternatív útvonalak megjelenítésére az idő és a távolság megadott eltérési korlátaival.
 
@@ -274,20 +274,20 @@ Az alábbi kép egy példát mutat be alternatív útvonalak megjelenítésére 
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Az útválasztási szolgáltatás használata egy webalkalmazásban
 
-A Azure Maps web SDK egy [szolgáltatási modult](https://docs.microsoft.com/javascript/api/azure-maps-rest/)biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST API-k használatát a web-és Node.js-alkalmazásokban JavaScript vagy írógéppel használatával. A szolgáltatás modul a visszaadott útvonalak megjelenítéséhez használható a térképen. A modul automatikusan meghatározza, hogy melyik API-t használja a GET és a POST kérésekhez.
+A Azure Maps web SDK egy [szolgáltatási modult](/javascript/api/azure-maps-rest/)biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST API-k használatát a web-és Node.js-alkalmazásokban JavaScript vagy írógéppel használatával. A szolgáltatás modul a visszaadott útvonalak megjelenítéséhez használható a térképen. A modul automatikusan meghatározza, hogy melyik API-t használja a GET és a POST kérésekhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Azure Maps Route szolgáltatás](https://docs.microsoft.com/rest/api/maps/route)
+> [Azure Maps Route szolgáltatás](/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
-> [A szolgáltatás moduljának használata](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [A szolgáltatás moduljának használata](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Útvonal megjelenítése a térképen](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [Útvonal megjelenítése a térképen](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Azure Maps NPM-csomag](https://www.npmjs.com/package/azure-maps-rest  )

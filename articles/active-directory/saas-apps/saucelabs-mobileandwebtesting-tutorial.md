@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 3128bc587a555b3766e1fad289edc8c11c195001
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 087e2d7f2db8f27378b54675095e97256d6aae9b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672047"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Oktatóanyag: Azure Active Directory integráció a Sauce Labs szolgáltatással – mobil-és webes tesztelés
 
@@ -122,15 +122,15 @@ Az Azure AD egyszeri bejelentkezés a Sauce Labs-alapú mobil-és webes tesztel�
 
 2. Kattintson a **felhasználó ikonra** , és válassza a **csoport kezelése** lapot.
 
-    ![Egyetlen Sign-On konfigurálása](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
+    ![A "felhasználó" ikont és a "Team Management" legördülő listát bemutató képernyőkép.](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
 3. Adja meg a **tartománynevet** a szövegmezőben.
 
-    ![Egyetlen Sign-On konfigurálása](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
+    ![Képernyőkép, amely egy példa tartománynevet jelenít meg a szövegmezőben.](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
 4. Kattintson a **Konfigurálás** fülre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
+    ![Az "egyszeri bejelentkezés engedélyezve" területen kiválasztott "configure" (Konfigurálás) lapot megjelenítő képernyőkép.](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
 
 5. Az **egyszeri bejelentkezés konfigurálása** szakaszban hajtsa végre a következő lépéseket.
 

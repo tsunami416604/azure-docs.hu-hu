@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 85428f682b5a5e179b5c501982749611131c6aed
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674423"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893879"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a szegmenssel
 
@@ -136,19 +136,19 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Kattintson a **Beállítások ikonra** , és görgessen le a **hitelesítéshez** , majd kattintson a **kapcsolatok** elemre.
 
-    ![Szegmens konfigurációja](./media/segment-tutorial/segment1.PNG)
+    ![Képernyőkép a "beállítások" ikon kiválasztásáról és a "kapcsolatok" lehetőségről a "hitelesítés" menüből.](./media/segment-tutorial/segment1.PNG)
 
 1. Kattintson az **új kapcsolatok hozzáadása** lehetőségre.
 
-    ![Szegmens konfigurációja](./media/segment-tutorial/segment2.PNG)
+    ![Képernyőkép, amely a "kapcsolatok" szakaszt mutatja az "új kapcsolat hozzáadása" gomb kiválasztásával.](./media/segment-tutorial/segment2.PNG)
 
 1. Válassza a **SAML 2,0** lehetőséget a konfiguráláshoz, majd kattintson a **Kapcsolódás kiválasztása** gombra.
 
-    ![Szegmens konfigurációja](./media/segment-tutorial/segment3.PNG)
+    ![A "kapcsolatok kiválasztása" szakaszt ábrázoló képernyőkép, amely az "S A M 2,0" és a "kapcsolatok kiválasztása" gomb kiválasztásával jelenik meg.](./media/segment-tutorial/segment3.PNG)
 
 1. A következő oldalon hajtsa végre a következő lépéseket:
 
-    ![Szegmens konfigurációja](./media/segment-tutorial/segment4.PNG)
+    ![Képernyőkép: az "Identity Provider konfigurálása" lap "egyszeres Sign-On U R L" és "célközönség U R L" szövegmezők kiemelve és a "tovább" gomb kiválasztásával.](./media/segment-tutorial/segment4.PNG)
 
     a. Másolja az **egyszeres Sign-On URL-címet** , és illessze be a **Válasz URL-cím** mezőbe az **alapszintű SAML-konfiguráció** párbeszédpanelen a Azure Portal.
 

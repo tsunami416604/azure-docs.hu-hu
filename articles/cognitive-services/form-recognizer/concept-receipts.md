@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761447"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893686"
 ---
 # <a name="receipt-concepts"></a>Nyugtákra vonatkozó fogalmak
 
@@ -437,7 +437,7 @@ A beérkezési API-val kinyert adatok különféle feladatok elvégzésére hasz
 
 Gyakran az üzleti költségek bejelentése magában foglalja a beérkezési képekből származó adatok manuális bevitelét. A beérkezési API-val a kibontott mezők használatával részben automatizálhatja ezt a folyamatot, és gyorsan elemezheti a nyugtákat.  
 
-Mivel a beérkezési API egyszerű JSON-kimenettel rendelkezik, több módon is használhatja a kinyert mezők értékeit. Integrálja a költségeket a belső költségekkel rendelkező alkalmazásokkal a költségelszámolás előzetes kitöltéséhez. Ennél a forgatókönyvnél további információért olvassa el, hogy a Acumatica hogyan használja a beérkezési API-t, hogy [a költségek kevésbé fájdalmas folyamaton](https://customers.microsoft.com/en-us/story/762684-acumatica-partner-professional-services-azure)alapulnak.  
+Mivel a beérkezési API egyszerű JSON-kimenettel rendelkezik, több módon is használhatja a kinyert mezők értékeit. Integrálja a költségeket a belső költségekkel rendelkező alkalmazásokkal a költségelszámolás előzetes kitöltéséhez. Ennél a forgatókönyvnél további információért olvassa el, hogy a Acumatica hogyan használja a beérkezési API-t, hogy [a költségek kevésbé fájdalmas folyamaton](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)alapulnak.  
 
 ### <a name="auditing-and-accounting"></a>Naplózás és nyilvántartás 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
-ms.openlocfilehash: eae60ba9aabe417e986c7637ce700302bfe6c7bf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2b0c42046df716c8ae65046e5f3314817da0a17e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676573"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893778"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a screencast-O-Matictel
 
@@ -139,13 +139,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A **hozzáférés lap** szakaszban kattintson a **telepítés** elemre.
 
-    ![A hozzáférés](./media/screencast-tutorial/tutorial_screencast_setup.png)
+    ![Képernyőfelvétel: a "hozzáférési lap" szakasz, amelyen a "Setup" gomb van kiválasztva.](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
 1. A **telepítési hozzáférés oldalon** hajtsa végre a következő lépéseket.
 
-1. A **hozzáférési URL** szakaszban adja meg a példánynév értéket a megadott szövegmezőben.
+1. A **hozzáférési URL** szakaszban írja be a példánynév értéket a megadott szövegmezőbe.
 
-    ![A hozzáférés](./media/screencast-tutorial/tutorial_screencast_access.png)
+    ![Képernyőkép, amely az "Access U R L" szakaszt jeleníti meg a példánynév szövegmező kiemelve.](./media/screencast-tutorial/tutorial_screencast_access.png)
 
 1. Jelölje be a **tartományi felhasználó megkövetelése** az **SAML felhasználói korlátozás (nem kötelező)** szakaszban.
 

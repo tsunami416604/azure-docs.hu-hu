@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ec62461e5a12f0c566becdfc7d9a1464433ee656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311019"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895749"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
-Ez a cikk azt ismerteti, hogyan használható a [statikus képszolgáltatás](https://docs.microsoft.com/rest/api/maps/render/getmapimage)a képösszeállítási funkcióval a raszteres térképeken található átfedések engedélyezéséhez. A képösszeállítás lehetővé teszi a raszteres csempék visszaszerzését, további adatokkal (például egyéni pushpins, címkékkel és geometriai átfedésekkel).
+Ez a cikk azt ismerteti, hogyan használható a [statikus képszolgáltatás](/rest/api/maps/render/getmapimage)a képösszeállítási funkcióval a raszteres térképeken található átfedések engedélyezéséhez. A képösszeállítás lehetővé teszi a raszteres csempék visszaszerzését, további adatokkal (például egyéni pushpins, címkékkel és geometriai átfedésekkel).
 
-Az egyéni pushpins, címkék és geometriai átfedések megjelenítéséhez használhatja a Poster alkalmazást. Azure Maps [adatszolgáltatási API-kat](https://docs.microsoft.com/rest/api/maps/data) használhat az átfedések tárolására és megjelenítésére.
+Az egyéni pushpins, címkék és geometriai átfedések megjelenítéséhez használhatja a Poster alkalmazást. Azure Maps [adatszolgáltatási API-kat](/rest/api/maps/data) használhat az átfedések tárolására és megjelenítésére.
 
 > [!Tip]
 > Gyakran sokkal költséghatékonyabb, hogy a Azure Maps web SDK használatával egy egyszerű Térkép jelenjen meg egy weboldalon, mint a statikus képszolgáltatás használata. A web SDK leképezési csempéket használ, kivéve, ha a felhasználó serpenyőben és nagyítja a térképet, gyakran csak egy tranzakció töredékét eredményezi a leképezések terhelése alapján. Vegye figyelembe, hogy a Azure Maps web SDK-val lehetőség van a pásztázás és a nagyítás letiltására. Emellett a Azure Maps web SDK az adatvizualizációs lehetőségek széles választékát kínálja, mint a statikus Térkép webszolgáltatás.  
@@ -41,9 +41,9 @@ A Azure Maps fiók S0 szintje csak a paraméter egyetlen példányát támogatja
 
 A pushpins címkékkel és egyéni képpel történő megjelenítéséhez hajtsa végre a következő lépéseket:
 
-1. Hozzon létre egy gyűjteményt, amelyben tárolni szeretné a kérelmeket. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény**elemet. Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot. 
+1. Hozzon létre egy gyűjteményt, amelyben tárolni szeretné a kérelmeket. A Poster alkalmazásban válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény** elemet. Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot. 
 
-2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a pushpins tartozó **kérelem nevét** . Válassza ki az előző lépésben létrehozott gyűjteményt, amely a kérés mentési helye. Ezután válassza a **Mentés**lehetőséget.
+2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a pushpins tartozó **kérelem nevét** . Válassza ki az előző lépésben létrehozott gyűjteményt, amely a kérés mentési helye. Ezután válassza a **Mentés** lehetőséget.
     
     ![Kérelem létrehozása a Poster-ban](./media/how-to-render-custom-data/postman-new.png)
 
@@ -62,7 +62,7 @@ A pushpins címkékkel és egyéni képpel történő megjelenítéséhez hajtsa
 > [!Note]
 > Az ebben a szakaszban ismertetett eljáráshoz egy Azure Maps fiókra van szükség az S1 díjszabási szinten.
 
-Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)használatával is beszerezheti. Az elérési út és a PIN-kód adatok feltöltéséhez kövesse az alábbi lépéseket.
+Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](/rest/api/maps/data/uploadpreview)használatával is beszerezheti. Az elérési út és a PIN-kód adatok feltöltéséhez kövesse az alábbi lépéseket.
 
 1. A Poster alkalmazásban nyisson meg egy új lapot az előző szakaszban létrehozott gyűjteményben. Válassza a HTTP POST metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet a POST-kérelem elvégzéséhez:
 
@@ -172,7 +172,7 @@ Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https:
 > Az ebben a szakaszban ismertetett eljáráshoz egy Azure Maps fiókra van szükség az S1 díjszabási szinten.
 
 
-A sokszög megjelenését a [path paraméterrel](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)módosíthatja a stílus-módosítók használatával.
+A sokszög megjelenését a [path paraméterrel](/rest/api/maps/render/getmapimage#uri-parameters)módosíthatja a stílus-módosítók használatával.
 
 1. A Poster alkalmazásban nyisson meg egy új fület a korábban létrehozott gyűjteményben. Jelölje be a HTTP lekérése metódust a szerkesztő lapon, és adja meg a következő URL-címet a GET kérelem konfigurálásához a sokszög színének és opacitásának megjelenítéséhez:
     
@@ -192,7 +192,7 @@ A sokszög megjelenését a [path paraméterrel](https://docs.microsoft.com/rest
 > Az ebben a szakaszban ismertetett eljáráshoz egy Azure Maps fiókra van szükség az S1 díjszabási szinten.
 
 
-A PIN-kódok megjelenését a stílus-módosítók hozzáadásával módosíthatja. Ha például a pushpins és a hozzájuk tartozó címkéket nagyobb vagy kisebb értékre szeretné tenni, használja a `sc` "skála stílusa" módosítót. Ez a módosító egy nullánál nagyobb értéket vesz fel. Az 1 érték a standard skála. Az 1 értéknél nagyobb értékek esetén a PIN-kód nagyobb lesz, és az 1-nél kisebb értékek kisebbek lesznek. A stílus-módosítókkal kapcsolatos további információkért lásd a [statikus képszolgáltatás elérési útja paramétereit](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+A PIN-kódok megjelenését a stílus-módosítók hozzáadásával módosíthatja. Ha például a pushpins és a hozzájuk tartozó címkéket nagyobb vagy kisebb értékre szeretné tenni, használja a `sc` "skála stílusa" módosítót. Ez a módosító egy nullánál nagyobb értéket vesz fel. Az 1 érték a standard skála. Az 1 értéknél nagyobb értékek esetén a PIN-kód nagyobb lesz, és az 1-nél kisebb értékek kisebbek lesznek. A stílus-módosítókkal kapcsolatos további információkért lásd a [statikus képszolgáltatás elérési útja paramétereit](/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 A kör-és pushpins egyéni címkékkel történő megjelenítéséhez kövesse az alábbi lépéseket:
@@ -222,6 +222,5 @@ Hasonlóképpen megváltoztathatja, hozzáadhatja és eltávolíthatja a többi 
 ## <a name="next-steps"></a>Következő lépések
 
 
-* Ismerkedjen meg a [Azure Maps Map RENDSZERKÉP API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) dokumentációjának használatával.
-* Ha többet szeretne megtudni a Azure Maps adatszolgáltatásról, tekintse meg a [szolgáltatás dokumentációját](https://docs.microsoft.com/rest/api/maps/data).
-
+* Ismerkedjen meg a [Azure Maps Map RENDSZERKÉP API](/rest/api/maps/render/getmapimage) dokumentációjának használatával.
+* Ha többet szeretne megtudni a Azure Maps adatszolgáltatásról, tekintse meg a [szolgáltatás dokumentációját](/rest/api/maps/data).

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2cda543781118a19ba4999e774b96ae81857f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2c714c2e16cb8a7a9c530e8e458c33218b1c2b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330927"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895494"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Ismerkedés a Azure Maps Android SDK-val
 
@@ -36,10 +36,10 @@ Töltse le Android Studio, és hozzon létre egy üres tevékenységgel rendelke
 
 Először hozzon létre egy új projektet egy üres tevékenységgel. Android Studio projekt létrehozásához hajtsa végre a következő lépéseket:
 
-1. **A projekt kiválasztása**területen válassza a **telefon és a tábla**lehetőséget. Az alkalmazás ezen az űrlapon fog futni.
-2. A **telefon és a tábla** lapon válassza az **üres tevékenység**elemet, majd kattintson a **tovább**gombra.
-3. A **projekt konfigurálása**területen válassza ki `API 21: Android 5.0.0 (Lollipop)` a minimális SDK-t. Ez a Azure Maps Android SDK által támogatott legkorábbi verzió.
-4. Fogadja el az alapértelmezett értéket `Activity Name` , és `Layout Name` válassza a **Befejezés**lehetőséget.
+1. **A projekt kiválasztása** területen válassza a **telefon és a tábla** lehetőséget. Az alkalmazás ezen az űrlapon fog futni.
+2. A **telefon és a tábla** lapon válassza az **üres tevékenység** elemet, majd kattintson a **tovább** gombra.
+3. A **projekt konfigurálása** területen válassza ki `API 21: Android 5.0.0 (Lollipop)` a minimális SDK-t. Ez a Azure Maps Android SDK által támogatott legkorábbi verzió.
+4. Fogadja el az alapértelmezett értéket `Activity Name` , és `Layout Name` válassza a **Befejezés** lehetőséget.
 
 A Android Studio telepítésével és új projekt létrehozásával kapcsolatos további segítségért tekintse meg a [Android Studio dokumentációját](https://developer.android.com/studio/intro/) .
 
@@ -47,7 +47,7 @@ A Android Studio telepítésével és új projekt létrehozásával kapcsolatos 
 
 ## <a name="set-up-a-virtual-device"></a>Virtuális eszköz beállítása
 
-Android Studio lehetővé teszi egy virtuális Android-eszköz beállítását a számítógépen. Ez segít az alkalmazás tesztelésében a fejlesztés során. Virtuális eszköz beállításához válassza az Android virtuális eszköz (AVD) kezelője ikont a projekt képernyő jobb felső sarkában, majd válassza a **virtuális eszköz létrehozása**lehetőséget. A AVD-kezelőt **Tools**  >  az eszköztáron az eszközök**Android**  >  **AVD Manager** lehetőség kiválasztásával is elérheti. A **telefonok** kategóriában válassza a **Nexus 5x**elemet, majd kattintson a **tovább**gombra.
+Android Studio lehetővé teszi egy virtuális Android-eszköz beállítását a számítógépen. Ez segít az alkalmazás tesztelésében a fejlesztés során. Virtuális eszköz beállításához válassza az Android virtuális eszköz (AVD) kezelője ikont a projekt képernyő jobb felső sarkában, majd válassza a **virtuális eszköz létrehozása** lehetőséget. A AVD-kezelőt **Tools**  >  az eszköztáron az eszközök **Android**  >  **AVD Manager** lehetőség kiválasztásával is elérheti. A **telefonok** kategóriában válassza a **Nexus 5x** elemet, majd kattintson a **tovább** gombra.
 
 A AVD beállításával kapcsolatos további információkért tekintse meg az [Android Studio dokumentációját](https://developer.android.com/studio/run/managing-avds).
 
@@ -57,7 +57,7 @@ A AVD beállításával kapcsolatos további információkért tekintse meg az [
 
 Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK telepítése. Az SDK telepítéséhez hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a legfelső szintű **Build. gradle** fájlt, és adja hozzá a következő kódot a **minden projekt**, **adattárak** blokkolása szakaszhoz:
+1. Nyissa meg a legfelső szintű **Build. gradle** fájlt, és adja hozzá a következő kódot a **minden projekt** , **adattárak** blokkolása szakaszhoz:
 
     ```
     maven {
@@ -83,7 +83,7 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
         implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
     
-    4. Nyissa meg a **fájlt** az eszköztáron, majd kattintson a **szinkronizálás projekt Gradle-fájlokkal**elemre.
+    4. Nyissa meg a **fájlt** az eszköztáron, majd kattintson a **szinkronizálás projekt Gradle-fájlokkal** elemre.
 3. Térképi töredék hozzáadása a fő tevékenységhez (res \> elrendezési \> tevékenység \_main.xml):
     
     ```XML
@@ -299,7 +299,7 @@ Megtudhatja, hogyan adhat hozzá átfedéses információkat a térképen:
 > [Szimbólum réteg hozzáadása Android-térképhez](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Alakzatok hozzáadása Android-térképhez](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Alakzatok hozzáadása Android-térképhez](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Térkép stílusainak módosítása Android-térképeken](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Térkép stílusainak módosítása Android-térképeken](./set-android-map-styles.md)

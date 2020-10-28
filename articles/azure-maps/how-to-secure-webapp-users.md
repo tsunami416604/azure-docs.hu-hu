@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ebdc4b219e0840c18e6bef8ebfe9b8eefa8faf3b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090216"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895588"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Webalkalmazás biztonságossá tétele felhasználói bejelentkezéssel
 
@@ -27,36 +27,36 @@ A következő útmutató egy webkiszolgálókon üzemeltetett alkalmazásra vona
 
 A bejelentkezéshez létre kell hoznia a webalkalmazást az Azure AD-ben a felhasználók számára. Ez a webalkalmazás ezután delegálja a felhasználói hozzáférést Azure Maps REST API-khoz.
 
-1. Az Azure Portal az Azure-szolgáltatások listájában válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.  
+1. Az Azure Portal az Azure-szolgáltatások listájában válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.  
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
-2. Adjon meg egy **nevet**, válassza ki a **támogatási fiók típusát**, adjon meg egy átirányítási URI-t, amely azt az URL-címet jelöli, amelyet az Azure ad kiállít a jogkivonat számára, és az URL-címet, ahol a Térkép vezérlőelem található. További részletekért tekintse meg az Azure AD [-forgatókönyvet: webalkalmazás, amely aláírja a felhasználókat](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-overview). Hajtsa végre az Azure AD-forgatókönyvben ismertetett lépéseket.  
+2. Adjon meg egy **nevet** , válassza ki a **támogatási fiók típusát** , adjon meg egy átirányítási URI-t, amely azt az URL-címet jelöli, amelyet az Azure ad kiállít a jogkivonat számára, és az URL-címet, ahol a Térkép vezérlőelem található. További részletekért tekintse meg az Azure AD [-forgatókönyvet: webalkalmazás, amely aláírja a felhasználókat](../active-directory/develop/scenario-web-app-sign-user-overview.md). Hajtsa végre az Azure AD-forgatókönyvben ismertetett lépéseket.  
 
 3. Az alkalmazás regisztrációjának befejeződése után ellenőrizze, hogy az alkalmazás-bejelentkezés működik-e a felhasználók számára. A bejelentkezést követően az alkalmazás delegált hozzáférést kaphat Azure Maps REST API-khoz.
     
-4.  Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután válassza az **API-engedélyek**engedély  >  **hozzáadása**lehetőséget. A **szervezetem által használt API**-k alatt keresse meg és válassza a **Azure Maps**lehetőséget.
+4.  Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután válassza az **API-engedélyek** engedély  >  **hozzáadása** lehetőséget. A **szervezetem által használt API** -k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek hozzáadása](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Jelölje be a **hozzáférési Azure Maps**melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása**lehetőséget.
+5. Jelölje be a **hozzáférési Azure Maps** melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek kiválasztása](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. Annak engedélyezése, hogy a webalkalmazás meghívjon Azure Maps REST API-kat úgy, hogy az alkalmazás regisztrációját egy alkalmazás titkos kódjával konfigurálja, részletes lépésekért tekintse meg a [webes API-kat meghívó](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-app-registration)webalkalmazást: alkalmazás-regisztráció. A felhasználó nevében titkos kulcs szükséges az Azure AD-ben való hitelesítéshez. Az alkalmazás regisztrációs tanúsítványát vagy titkos kódját biztonságos tárolóban kell tárolni ahhoz, hogy a webalkalmazás beolvassa az Azure AD-ben való hitelesítést. 
+6. Annak engedélyezése, hogy a webalkalmazás meghívjon Azure Maps REST API-kat úgy, hogy az alkalmazás regisztrációját egy alkalmazás titkos kódjával konfigurálja, részletes lépésekért tekintse meg a [webes API-kat meghívó](../active-directory/develop/scenario-web-app-call-api-app-registration.md)webalkalmazást: alkalmazás-regisztráció. A felhasználó nevében titkos kulcs szükséges az Azure AD-ben való hitelesítéshez. Az alkalmazás regisztrációs tanúsítványát vagy titkos kódját biztonságos tárolóban kell tárolni ahhoz, hogy a webalkalmazás beolvassa az Azure AD-ben való hitelesítést. 
    
    * Ha az alkalmazás már konfigurált egy Azure AD-alkalmazást és egy titkos kulcsot, akkor a lépés kihagyható.
 
 > [!Tip]
-> Ha az alkalmazás Azure-környezetben üzemel, javasoljuk, hogy [felügyelt identitásokat használjon az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , és egy Azure Key Vault-példányt a titkok eléréséhez [egy hozzáférési jogkivonat beszerzésével](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) Azure Key Vault titkok vagy tanúsítványok eléréséhez. A titkok beolvasásához Azure Key Vaulthoz való kapcsolódáshoz lásd: [oktatóanyag a felügyelt identitáson keresztüli kapcsolódáshoz](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app).
+> Ha az alkalmazás Azure-környezetben üzemel, javasoljuk, hogy [felügyelt identitásokat használjon az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) , és egy Azure Key Vault-példányt a titkok eléréséhez [egy hozzáférési jogkivonat beszerzésével](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) Azure Key Vault titkok vagy tanúsítványok eléréséhez. A titkok beolvasásához Azure Key Vaulthoz való kapcsolódáshoz lásd: [oktatóanyag a felügyelt identitáson keresztüli kapcsolódáshoz](../key-vault/general/tutorial-net-create-vault-azure-web-app.md).
    
 7. Hozzon létre egy biztonságos jogkivonat-végpontot a Azure Maps web SDK számára a jogkivonat eléréséhez. 
    
    * A minta jogkivonat-vezérlővel kapcsolatban lásd: [Azure Maps Azure ad-minták](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/blob/master/src/OpenIdConnect/AzureMapsOpenIdConnectv1/AzureMapsOpenIdConnect/Controllers/TokenController.cs). 
-   * A nem AspNetCore megvalósításához vagy más megoldáshoz lásd: [token beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) az Azure ad dokumentációjában.
+   * A nem AspNetCore megvalósításához vagy más megoldáshoz lásd: [token beszerzése az alkalmazáshoz](../active-directory/develop/scenario-web-app-call-api-acquire-token.md) az Azure ad dokumentációjában.
    * A biztonságos jogkivonat-végpont feladata a hitelesített és jogosult felhasználó hozzáférési jogkivonatának visszaküldése Azure Maps REST API-k meghívásához.
 
 8. Konfigurálja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) felhasználókhoz vagy csoportokhoz. Lásd: [szerepköralapú hozzáférés engedélyezése a felhasználók számára](#grant-role-based-access-for-users-to-azure-maps).
@@ -100,7 +100,7 @@ var map = new atlas.Map("map", {
 
 A webalkalmazási forgatókönyv további megértése:
 > [!div class="nextstepaction"]
-> [Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-overview)
+> [Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás](../active-directory/develop/scenario-web-app-sign-user-overview.md)
 
 A Azure Maps-fiók API-használati metrikáinak megkeresése:
 > [!div class="nextstepaction"]

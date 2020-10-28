@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: c701371a3f2f1430cf68a9164ba4ce4e6441c5c6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 89c703f6bb956409c97c36c6507519f4e884fcf2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519112"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Oktatóanyag: Azure Active Directory integráció a Zoho-nal
 
@@ -61,13 +61,13 @@ A Zoho Azure AD-be való integrálásának konfigurálásához hozzá kell adnia
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Zoho**kifejezést, válassza a **Zoho** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Zoho** kifejezést, válassza a **Zoho** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Zoho az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Zoho-vel a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Zoho-vel a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Zoho kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a Zoho használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a Zoho használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Zoho** Application Integration lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Zoho** Application Integration lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -124,7 +124,7 @@ Az Azure AD egyszeri bejelentkezés a Zoho használatával történő konfigurá
 
 1. Egy másik böngészőablakban jelentkezzen be a Zoho levelezési céges webhelyre rendszergazdaként.
 
-2. Nyissa meg a **Vezérlőpultot**.
+2. Nyissa meg a **Vezérlőpultot** .
    
     ![Vezérlőpult](./media/zoho-mail-tutorial/ic789607.png "Vezérlőpult")
 
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés a Zoho használatával történő konfigurá
        
     d. Nyissa meg Azure Portal a Jegyzettömbből letöltött Base-64 kódolású tanúsítványt, másolja a tartalmát a vágólapra, majd illessze be a **PublicKey** szövegmezőbe.
    
-    e. **Algoritmusként**válassza az **RSA**lehetőséget.
+    e. **Algoritmusként** válassza az **RSA** lehetőséget.
    
     f. Kattintson az **OK** gombra.
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés a Zoho használatával történő konfigurá
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -171,21 +171,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Zoho elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Zoho**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Zoho** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza a **Zoho**elemet.
+2. Az alkalmazások listában írja be és válassza a **Zoho** elemet.
 
     ![A Zoho hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -210,21 +210,21 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Zoho mailbe, a Zoho-ma
 
 1. Jelentkezzen be a **Zoho levelezési** céges webhelyre rendszergazdaként.
 
-1. Nyissa meg a **Vezérlőpult \> levelezési & dokumentumait**.
+1. Nyissa meg a **Vezérlőpult \> levelezési & dokumentumait** .
 
-1. Lépjen a **felhasználói adatok felhasználó \> hozzáadása**elemre.
+1. Lépjen a **felhasználói adatok felhasználó \> hozzáadása** elemre.
    
-    ![Felhasználó hozzáadása](./media/zoho-mail-tutorial/ic789611.png "Felhasználó hozzáadása")
+    ![Képernyőfelvétel: a Zoho levelezési webhely a felhasználó adataival és a kiválasztott felhasználó hozzáadásával jelenik meg.](./media/zoho-mail-tutorial/ic789611.png "Felhasználó hozzáadása")
 
 1. A **felhasználók hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![Felhasználó hozzáadása](./media/zoho-mail-tutorial/ic789612.png "Felhasználó hozzáadása")
+    ![Képernyőfelvétel: a felhasználók hozzáadása párbeszédpanel, ahol megadhatja a leírt értékeket.](./media/zoho-mail-tutorial/ic789612.png "Felhasználó hozzáadása")
    
-    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
+    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta** nevet.
 
-    b. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
+    b. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
-    c. Az **e-mail-azonosító** szövegmezőbe írja be a felhasználó e-mail azonosítóját, például **brittasimon \@ contoso.com**.
+    c. Az **e-mail-azonosító** szövegmezőbe írja be a felhasználó e-mail azonosítóját, például **brittasimon \@ contoso.com** .
 
     d. A **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
    

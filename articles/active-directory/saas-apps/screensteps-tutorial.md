@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: cf43875be0088f9f9c8c8f209f97c8443bd305bb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676598"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Oktatóanyag: Azure Active Directory integráció a ScreenSteps
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés ScreenSteps való konfigurálásához hajtsa
 
 1. Kattintson az **egyszeri bejelentkezés** elemre.
 
-    ![Távoli hitelesítés](./media/screensteps-tutorial/ic778524.png "Távoli hitelesítés")
+    ![Képernyőkép, amely az "egyszeri bejelentkezés" elemet jeleníti meg.](./media/screensteps-tutorial/ic778524.png "Távoli hitelesítés")
 
 1. Kattintson az **egyszeri bejelentkezési végpont létrehozása** lehetőségre.
 

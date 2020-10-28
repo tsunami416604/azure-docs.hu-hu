@@ -11,21 +11,16 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c0fe3c3808709de732bec8ce0599d380094405e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e01721b4b414455b47a394087192696e1ecb025
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368481"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892734"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Oktatóanyag: a Azure Machine Learning első lépései a fejlesztési környezetben (4. rész)
 
-Ebben a *négy részes oktatóanyag-sorozatban*megismerheti a Azure Machine learning alapjait, és az Azure Cloud platformon végezheti el a feladatok alapú Python gépi tanulás feladatait. Ezek a feladatok többek között a következők:
-
-1. Hozzon létre egy munkaterületet és a helyi fejlesztői környezetet a gépi tanuláshoz.
-2. A Pythonhoz készült Azure Machine Learning SDK használatával futtasson kódot a felhőben.
-3. Kezelheti a modell betanításához használt Python-környezetet.
-4. Adatok feltöltése az Azure-ba, és az adatok felhasználása a képzésben.
+Ebben a *négy részes oktatóanyag-sorozatban* megismerheti a Azure Machine learning alapjait, és az Azure Cloud platformon végezheti el a feladatok alapú Python gépi tanulás feladatait. 
 
 Az oktatóanyag-sorozat 1. részében a következőket fogja elsajátítani:
 
@@ -36,20 +31,22 @@ Az oktatóanyag-sorozat 1. részében a következőket fogja elsajátítani:
 > * Konfigurálja a helyi fejlesztési környezetet.
 > * Hozzon létre egy számítási fürtöt.
 
->[!NOTE]
-> Ez az oktatóanyag-sorozat a Python- *alapú* , nagy számítási igényű és/vagy reprodukálhatóságot igénylő gépi tanulási feladatokhoz igazított Azure Machine learning fogalmakat ismerteti. Ha a gépi tanulási feladatok nem férnek hozzá ehhez a profilhoz, a [Jupyter vagy a RStudio függvényt használja egy Azure Machine learning számítási példányon](tutorial-1st-experiment-sdk-setup.md) , hogy átlépjen a Azure Machine Learningra.
+> [!NOTE]
+> Ez az oktatóanyag-sorozat a Python- *alapú* , nagy számítási igényű és/vagy reprodukálhatóságot igénylő gépi tanulási feladatokhoz igazított Azure Machine learning fogalmakat ismerteti. Ha jobban érdeklik a felderítő munkafolyamatok, használhatja [a Jupyter vagy a RStudio-t egy Azure Machine learning számítási példányon](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálkozzon [Azure Machine learning](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálkozzon [Azure Machine learning](https://aka.ms/AMLFree).
 - A Python és a [Machine learning fogalmak](concept-azure-machine-learning-architecture.md)ismerete. Ilyenek például a környezetek, a képzések és a pontozások.
-- Helyi fejlesztési környezet: egy olyan laptop, amelyen telepítve van a Python és a kedvenc IDE (például a Visual Studio Code, a Notebookshoz vagy a Jupyter).
+- Helyi fejlesztési környezet, mint például a Visual Studio Code, a Jupyter vagy a Notebookshoz.
+- Python (3,5-3,7-es verzió).
+
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Az Azure Machine Learning SDK telepítése
 
 Az oktatóanyag során a Pythonhoz készült Azure Machine Learning SDK-t használjuk.
 
-A leginkább ismerős eszközök (például a Conda és a pip) használatával beállíthatja az oktatóanyag során használni kívánt környezetet. Telepítse a környezetet a Pythonhoz készült Azure Machine Learning SDK-val a pip használatával:
+A leggyakrabban használt eszközöket (például Conda és pip) a jelen oktatóanyagban használt Python-környezet beállítására használhatja. Telepítse a Python-környezetet a Pythonhoz készült Azure Machine Learning SDK-val a pip használatával:
 
 ```bash
 pip install azureml-sdk
@@ -79,7 +76,7 @@ A legfelső szintű címtárban `tutorial` adjon hozzá egy nevű új Python-fá
 A kódot egy interaktív munkamenetben vagy Python-fájlként is futtathatja.
 
 >[!NOTE]
-> Ha helyi fejlesztési környezetet (például laptopot) használ, a rendszer arra kéri, hogy a következő kód első futtatásakor az *eszköz kódjával* hitelesítse a munkaterületet. Kövesse a képernyőn megjelenő utasításokat.
+> Ha helyi fejlesztési környezetet (például a számítógépet) használ *, a rendszer a következő* kód első futtatásakor a munkaterületre történő hitelesítést fogja kérni. Kövesse a képernyőn megjelenő utasításokat.
 
 ```python
 # tutorial/01-create-workspace.py
@@ -102,7 +99,11 @@ cd <path/to/tutorial>
 python ./01-create-workspace.py
 ```
 
-Az előző kódrészlet futtatása után a mappa szerkezete a következőképpen fog kinézni:
+> [!TIP]
+> Ha a kód futtatásakor hibaüzenet jelenik meg, hogy nincs hozzáférése az előfizetéshez, tekintse meg a [Munkaterület létrehozása](how-to-manage-workspace.md?tab=python#create-multi-tenant) a hitelesítési lehetőségekkel kapcsolatos információkhoz című témakört.
+
+
+A *01-Create-Workspace.py* sikeres futtatása után a mappa szerkezete a következőképpen fog kinézni:
 
 ```markdown
 tutorial
@@ -139,8 +140,7 @@ try:
     print('Found existing cluster, use it.')
 except ComputeTargetException:
     compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                            max_nodes=4, 
-                                                            idle_seconds_before_scaledown=2400)
+                                                           idle_seconds_before_scaledown=2400)
     cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
 
 cpu_cluster.wait_for_completion(show_output=True)
@@ -166,7 +166,7 @@ tutorial
 └──02-create-compute.py
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a beállítási oktatóanyagban a következőket teheti:
 
@@ -174,7 +174,13 @@ Ebben a beállítási oktatóanyagban a következőket teheti:
 - Állítsa be a helyi fejlesztési környezetet.
 - Létrehozott egy Azure Machine Learning számítási fürtöt.
 
-A következő oktatóanyagban végigvezeti egy parancsfájlnak a Azure Machine Learning számítási fürtbe való beküldésének lépésein.
+Az oktatóanyag egyéb részeiben a következőket fogja elsajátítani:
+
+* 2. rész. A Pythonhoz készült Azure Machine Learning SDK használatával futtasson kódot a felhőben.
+* 3. rész. Kezelheti a modell betanításához használt Python-környezetet.
+* 4. rész. Adatok feltöltése az Azure-ba, és az adatok felhasználása a képzésben.
+
+Folytassa a következő oktatóanyaggal, amely végigvezeti egy parancsfájlnak a Azure Machine Learning számítási fürtbe való beküldésének lépésein.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: a "Helló világ!" futtatása Python-szkript az Azure-ban](tutorial-1st-experiment-hello-world.md)

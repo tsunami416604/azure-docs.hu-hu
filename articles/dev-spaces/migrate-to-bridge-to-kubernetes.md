@@ -5,21 +5,21 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 description: Az Azure dev Spaces és a Kubernetes közötti áttelepítési folyamat ismertetése
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
-ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7a7642d986d8490c5d0dc3c413e658b21b010798
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329798"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895256"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
 
 > [!IMPORTANT]
-> Az Azure dev Spaces a 2023. október 31-én megszűnik. A fejlesztőknek át kell térniük a Bridge használatával a Kubernetes, egy ügyfél-fejlesztői eszközre.
+> Az Azure dev Spaces a 2023. október 31-én megszűnik. Az ügyfeleknek át kell térniük a Bridge használatával a Kubernetes, egy ügyfél-fejlesztői eszközre.
 >
-> Az Azure dev Spaces célja a fejlesztők fejlesztése a Kubernetes fejlesztésében. Az Azure dev Spaces megközelítése jelentős kompromisszumot okozott a fejlesztők számára a Docker-és Kubernetes-konfigurációk, valamint a Kubernetes üzembe helyezési koncepcióinak megismerése érdekében. Az idő múlásával egyértelművé vált, hogy az Azure fejlesztői területeinek megközelítése nem csökkentette hatékonyan a belső hurok-fejlesztés sebességét a Kubernetes. A Kubernetes híd hatékonyan csökkenti a belső hurok-fejlesztés sebességét, és elkerüli a fejlesztők szükségtelen terheit.
+> Az Azure dev Spaces célja a felhasználók Kubernetes való fejlesztésének megkönnyítése volt. Az Azure dev Spaces megközelítése jelentős kompromisszumot okozott a felhasználók számára a Docker-és Kubernetes-konfigurációk, valamint a Kubernetes üzembe helyezési fogalmak megismerése érdekében. Az idő múlásával egyértelművé vált, hogy az Azure fejlesztői területeinek megközelítése nem csökkentette hatékonyan a belső hurok-fejlesztés sebességét a Kubernetes. A Kubernetes-híd hatékonyan csökkenti a belső hurok-fejlesztés sebességét, és elkerüli a szükségtelen terheket a felhasználók számára.
 >
-> Az alapvető feladat változatlan marad: a legjobb fejlesztői élményt kiépítve fejlesztheti, tesztelheti és hibakeresést végezhet a nagyobb alkalmazás kontextusában.
+> Az alapszintű feladat változatlan marad: hozza létre a legjobb tapasztalatokat, hogy a nagyobb alkalmazás kontextusában fejlesszen, tesztelje és hibakeresési szolgáltatás kódját.
 
 A Bridge to Kubernetes az Azure dev Spaces szolgáltatással működő számos fejlesztési forgatókönyv esetén is enyhébb súlyozást biztosít. A Bridge to Kubernetes egy ügyféloldali élmény, amely a [Visual Studióban][vs]   és a [Visual Studio Code][vsc]-ban lévő bővítményeket használja.  
 
@@ -85,7 +85,7 @@ A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben f
 1. Ha a Visual studiót használja, frissítse a Visual Studio IDE-t a 16,7-es vagy újabb verzióra, és telepítse a hidat a Kubernetes bővítményre a [Visual Studio piactérről][vs-marketplace]. Ha Visual Studio Code-ot használ, telepítse a [hidat a Kubernetes bővítményre][vsc-marketplace].
 1. Tiltsa le az Azure dev Spaces-vezérlőt az Azure Portal vagy az [Azure dev Spaces CLI][azds-delete]használatával.
 1. [Azure Cloud Shell](https://shell.azure.com)használata. Vagy Mac, Linux vagy Windows rendszerű számítógépeken, amelyeken bash van telepítve, nyisson meg egy bash shell parancssort. Győződjön meg arról, hogy a következő eszközök érhetők el a parancssori környezetben: Azure CLI, Docker, kubectl, Curl, Tar és gunzip.
-1. Hozzon létre egy tároló-beállításjegyzéket, vagy használjon egy meglévőt. Létrehozhat egy tároló-beállításjegyzéket az Azure-ban [Azure Container Registry](../container-registry/index.yml) vagy a [Docker hub](https://hub.docker.com/)használatával.
+1. Hozzon létre egy tároló-beállításjegyzéket, vagy használjon egy meglévőt. Létrehozhat egy tároló-beállításjegyzéket az Azure-ban [Azure Container Registry](../container-registry/index.yml) vagy a [Docker hub](https://hub.docker.com/)használatával. Azure Cloud Shell használatakor a Docker-rendszerképek üzemeltetése csak Azure Container Registry érhető el.
 1. Futtassa az áttelepítési parancsfájlt az Azure dev Spaces-eszközök Kubernetes-eszközökre való átalakításához. A szkript létrehoz egy új rendszerképet, amely kompatibilis a Bridge Kubernetes, feltölti a kijelölt beállításjegyzékbe, majd a [Helm](https://helm.sh) használatával frissíti a fürtöt a lemezképpel. Meg kell adnia az erőforráscsoportot, az AK-fürt nevét, valamint egy tároló-beállításjegyzéket. Az itt látható egyéb parancssori kapcsolók is elérhetők:
 
    ```azure-cli
@@ -102,6 +102,7 @@ A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben f
     -r Path to root of the project that needs to be migrated (default = current working directory)
     -t Image name & tag in format 'name:tag' (default is 'projectName:stable')
     -i Enable a public endpoint to access your service over internet. (default is false)
+    -c Docker build context path. (default = project root path passed to '-r' option)
     -y Doesn't prompt for non-tty terminals
     -d Helm Debug switch
    ```
@@ -116,7 +117,7 @@ A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben f
 
 A Kubernetes-hez a fejlesztői-specifikus útválasztást is használhatja. Az Azure dev Spaces csapatának fejlesztési forgatókönyve több Kubernetes-névteret használ, hogy elkülönítse a szolgáltatást a többi alkalmazástól a szülő és a gyermek névterek fogalma alapján. A Kubernetes híd ugyanazokat a képességeket kínálja, de a teljesítmény jellemzői és az ugyanazon alkalmazási névtéren belül vannak.
 
-Mind a Kubernetes, mind az Azure dev Spaces esetében a HTTP-fejlécek jelennek meg, és az alkalmazáson keresztül propagálva lesznek. Ha már konfigurálta az alkalmazást, hogy kezelje az Azure dev Spaces-fejlécek propagálását, akkor a fejlécet frissíteni kell. Ha át szeretne térni az Azure dev Spaces-ről a Kubernetes-re, frissítse a konfigurált fejlécet a *azds-Route-as* -től a *Kubernetes-Route-as*értékre.
+Mind a Kubernetes, mind az Azure dev Spaces esetében a HTTP-fejlécek jelennek meg, és az alkalmazáson keresztül propagálva lesznek. Ha már konfigurálta az alkalmazást, hogy kezelje az Azure dev Spaces-fejlécek propagálását, akkor a fejlécet frissíteni kell. Ha át szeretne térni az Azure dev Spaces-ről a Kubernetes-re, frissítse a konfigurált fejlécet a *azds-Route-as* -től a *Kubernetes-Route-as* értékre.
 
 ## <a name="evaluate-bridge-to-kubernetes"></a>Híd kiértékelése a Kubernetes
 
@@ -136,7 +137,7 @@ Ha azt szeretné, hogy a Kubernetes az Azure dev Spaces a fürtben való letilt�
 1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes Visual Studio Code-ban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes][use-btk-vsc].
 1. Indítsa el a hibakeresést a Visual Studióban az újonnan létrehozott híd használatával a Kubernetes indítási profilhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a híd Kubernetes működéséről.
 
@@ -146,9 +147,9 @@ További információ a híd Kubernetes működéséről.
 
 [azds-delete]: how-to/install-dev-spaces.md#remove-azure-dev-spaces-using-the-cli
 [kubernetes-extension]: https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
-[btk-sample-app]: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019#install-the-sample-application
+[btk-sample-app]: /visualstudio/containers/bridge-to-kubernetes#install-the-sample-application
 [how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
-[use-btk-vs]: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019#connect-to-your-cluster-and-debug-a-service
+[use-btk-vs]: /visualstudio/containers/bridge-to-kubernetes#connect-to-your-cluster-and-debug-a-service
 [use-btk-vsc]: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
 [vs]: https://visualstudio.microsoft.com/
 [vsc-marketplace]: https://marketplace.visualstudio.com/items?itemName=mindaro.mindaro

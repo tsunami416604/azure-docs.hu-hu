@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 60d8dc45fb26ea210b1827a6938716474faa0304
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090284"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895613"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Egyoldalas alkalmazás biztonságossá tétele felhasználói bejelentkezéssel
 
@@ -27,19 +27,19 @@ A következő útmutató olyan alkalmazásra vonatkozik, amely egy Content Serve
 
 Hozza létre a webalkalmazást az Azure AD-ben a felhasználók számára a bejelentkezéshez. A webalkalmazás delegálja a felhasználói hozzáférést Azure Maps REST API-khoz.
 
-1. Az Azure Portal az Azure-szolgáltatások listájában válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.  
+1. Az Azure Portal az Azure-szolgáltatások listájában válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.  
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
-2. Adjon meg egy **nevet**, válassza ki a **támogatási fiók típusát**, adjon meg egy átirányítási URI-t, amely azt az URL-címet jelöli, amelyet az Azure ad kiállít a jogkivonat számára, és az URL-címet, ahol a Térkép vezérlőelem található. Részletes minta: [Azure Maps Azure ad-minták](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Válassza a **Regisztráció** lehetőséget.  
+2. Adjon meg egy **nevet** , válassza ki a **támogatási fiók típusát** , adjon meg egy átirányítási URI-t, amely azt az URL-címet jelöli, amelyet az Azure ad kiállít a jogkivonat számára, és az URL-címet, ahol a Térkép vezérlőelem található. Részletes minta: [Azure Maps Azure ad-minták](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Válassza a **Regisztráció** lehetőséget.  
 
-3. Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután a **Alkalmazásregisztrációk**alatt válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**. A **szervezetem által használt API**-k alatt keresse meg és válassza a **Azure Maps**lehetőséget.
+3. Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután a **Alkalmazásregisztrációk** alatt válassza az **API-engedélyek**  >  **Hozzáadás engedélyt** . A **szervezetem által használt API** -k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek hozzáadása](./media/how-to-manage-authentication/app-permissions.png)
 
-4. Jelölje be a **hozzáférési Azure Maps**melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása**lehetőséget.
+4. Jelölje be a **hozzáférési Azure Maps** melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek kiválasztása](./media/how-to-manage-authentication/select-app-permissions.png)
@@ -75,7 +75,7 @@ Hozza létre a webalkalmazást az Azure AD-ben a felhasználók számára a beje
 
 Az egyoldalas alkalmazás forgatókönyvének további megértése:
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [Egyoldalas alkalmazás](../active-directory/develop/scenario-spa-overview.md)
 
 A Azure Maps-fiók API-használati metrikáinak megkeresése:
 > [!div class="nextstepaction"]

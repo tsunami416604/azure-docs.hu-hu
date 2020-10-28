@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 4442d7cb83ef28b1483c5156e2655deb793b3b16
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678424"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893595"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció SD-elemekkel
 
@@ -143,7 +143,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A felső menüben kattintson a **rendszer** , majd az **egyszeri bejelentkezés** lehetőségre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
+    ![Képernyőkép, amely a legördülő menüből kiválasztott "rendszer" és "egyszeri bejelentkezés" beállítást jeleníti meg.](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
 1. Az **egyszeres Sign-On beállítások** párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -167,11 +167,11 @@ Ennek a szakasznak a célja, hogy egy B. Simon nevű felhasználót SD-elemekben
 
 1. A felső menüben kattintson a **felhasználói kezelés** , majd a **felhasználók** lehetőségre.
 
-    ![SD-elemek tesztelési felhasználójának létrehozása](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
+    ![Képernyőkép, amely a "felhasználók" elemet mutatja a "felhasználói kezelés" legördülő menüből.](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
 1. Kattintson az **új felhasználó hozzáadása** lehetőségre.
 
-    ![SD-elemek tesztelési felhasználójának létrehozása](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
+    ![Képernyőkép, amely megjeleníti az "új felhasználó hozzáadása" gombot.](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
 1. Az **új felhasználó hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 

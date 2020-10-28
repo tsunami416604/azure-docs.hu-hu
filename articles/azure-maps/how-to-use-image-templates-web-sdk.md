@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f455a1132a0f63e1ba3eb5d2a57a1f9bfa9a867
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335551"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895681"
 ---
 # <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
 
@@ -24,7 +24,7 @@ A képek HTML-jelölővel és a Azure Maps web SDK-n belüli különböző réte
  - A sokszög rétegek kitöltési minta képpel is megjeleníthető. 
  - A HTML-jelölők képek és más HTML-elemek használatával adhatnak ki pontokat.
 
-A megfelelő teljesítmény biztosítása érdekében a renderelés előtt töltse be a lemezképeket a Térkép rendszerképéhez tartozó sprite-erőforrásba. A SymbolLayer [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)előre betölt néhány jelölő képet néhány színben a Térkép képének sprite-ba, alapértelmezés szerint. Ezek a jelölő képek és egyebek SVG-sablonokként érhetők el. Felhasználhatók egyéni léptékű rendszerképek létrehozására, vagy ügyfél elsődleges és másodlagos színként való használatára. Összesen 42 képsablonok vannak megadva: 27 szimbólum ikon és 15 sokszög kitöltési minta.
+A megfelelő teljesítmény biztosítása érdekében a renderelés előtt töltse be a lemezképeket a Térkép rendszerképéhez tartozó sprite-erőforrásba. A SymbolLayer [IconOptions](/javascript/api/azure-maps-control/atlas.iconoptions)előre betölt néhány jelölő képet néhány színben a Térkép képének sprite-ba, alapértelmezés szerint. Ezek a jelölő képek és egyebek SVG-sablonokként érhetők el. Felhasználhatók egyéni léptékű rendszerképek létrehozására, vagy ügyfél elsődleges és másodlagos színként való használatára. Összesen 42 képsablonok vannak megadva: 27 szimbólum ikon és 15 sokszög kitöltési minta.
 
 A képsablonok a függvény használatával adhatók hozzá a Térkép-rendszerkép sprite-erőforrásaihoz `map.imageSprite.createFromTemplate` . Ez a függvény legfeljebb öt paraméter átadását teszi lehetővé;
 
@@ -106,7 +106,7 @@ Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-jelö
 
 
 > [!TIP]
-> A képsablonok a térképen kívül is használhatók. A getImageTemplate funciton egy olyan SVG-karakterláncot ad vissza, amely helyőrzőket tartalmaz; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Cserélje le ezeket a helyőrző értékeket egy érvényes SVG-karakterlánc létrehozásához. Ezután hozzáadhatja az SVG-karakterláncot közvetlenül a HTML DOM-hoz, vagy átalakíthatja egy adaturi-ba, és beszúrhatja egy képcímkébe. Példa:
+> A képsablonok a térképen kívül is használhatók. A getImageTemplate funciton egy olyan SVG-karakterláncot ad vissza, amely helyőrzőket tartalmaz; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Cserélje le ezeket a helyőrző értékeket egy érvényes SVG-karakterlánc létrehozásához. Ezután hozzáadhatja az SVG-karakterláncot közvetlenül a HTML DOM-hoz, vagy átalakíthatja egy adaturi-ba, és beszúrhatja egy képcímkébe. Például:
 > ```JavaScript
 > //Retrieve an SVG template and replace the placeholder values.
 > var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
@@ -514,10 +514,10 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>ikon sabl
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [ImageSpriteManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
+> [ImageSpriteManager](/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [Atlas-névtér](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#functions
+> [Atlas-névtér](/javascript/api/azure-maps-control/atlas#functions
 )
 
 A következő cikkekből megtudhatja, hogy miként használhatók a képsablonok:

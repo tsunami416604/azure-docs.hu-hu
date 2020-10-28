@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87a5dec2582796c6703bfb37b76e26e53a1192c0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037456"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895783"
 ---
 # <a name="extended-geojson-geometries"></a>Kiterjesztett GeoJSON geometriák
 
@@ -29,7 +29,7 @@ A [GeoJSON specifikáció][1] csak a következő geometriákat támogatja:
 * Pont
 * Sokszög
 
-Egyes Azure Maps API-k olyan geometriákat fogadnak el, amelyek nem részei az [GeoJSON specifikációjának][1]. A geometria API-on [belüli keresés](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) például a Circle és a sokszögeket is elfogadja.
+Egyes Azure Maps API-k olyan geometriákat fogadnak el, amelyek nem részei az [GeoJSON specifikációjának][1]. A geometria API-on [belüli keresés](/rest/api/maps/search/postsearchinsidegeometry) például a Circle és a sokszögeket is elfogadja.
 
 Ez a cikk részletesen ismerteti, hogy Azure Maps kiterjeszti a [GeoJSON SPECT][1] bizonyos geometriák ábrázolására.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e1104a3821e94fe3f0ae1271301f1e36bba613d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e10ca98e0c9257187288d02483ed81915a7b321d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516256"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894722"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Oktatóanyag: Azure Active Directory integráció a Ziflow
 
@@ -61,13 +61,13 @@ A Ziflow Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Ziflow**kifejezést, válassza a **Ziflow** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Ziflow** kifejezést, válassza a **Ziflow** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Ziflow az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Ziflow-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Ziflow-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Ziflow kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Ziflow való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Ziflow való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Ziflow** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Ziflow** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -126,11 +126,11 @@ Az Azure AD egyszeri bejelentkezés Ziflow való konfigurálásához hajtsa vég
 
 1. Egy másik böngészőablakban jelentkezzen be a Ziflow biztonsági rendszergazdaként.
 
-2. Kattintson a jobb felső sarokban található avatar elemre, majd kattintson a **fiók kezelése**lehetőségre.
+2. Kattintson a jobb felső sarokban található avatar elemre, majd kattintson a **fiók kezelése** lehetőségre.
 
     ![Ziflow-konfiguráció kezelése](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
 
-3. A bal felső sarokban kattintson az **egyszeri bejelentkezés**elemre.
+3. A bal felső sarokban kattintson az **egyszeri bejelentkezés** elemre.
 
     ![Ziflow-konfiguráció aláírása](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
@@ -138,13 +138,13 @@ Az Azure AD egyszeri bejelentkezés Ziflow való konfigurálásához hajtsa vég
 
     ![Ziflow-konfiguráció egyetlen](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
-    a. Adja meg a **típust** **SAML 2.0**-ként.
+    a. Adja meg a **típust** **SAML 2.0** -ként.
 
-    b. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portal másolt.
+    b. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
 
-    c. Töltse fel a Azure Portalból letöltött Base-64 kódolt tanúsítványt a **X509 aláíró tanúsítványba**.
+    c. Töltse fel a Azure Portalból letöltött Base-64 kódolt tanúsítványt a **X509 aláíró tanúsítványba** .
 
-    d. A kijelentkezési **URL-cím** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-címet**, amelyet a Azure Portal másolt.
+    d. A kijelentkezési **URL-cím** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portal másolt.
 
     e. Az **azonosító szolgáltatójának konfigurációs beállításai** szakaszban másolja ki a kijelölt egyedi azonosító értékét, és fűzze hozzá az azonosítóhoz, majd jelentkezzen be az URL-címre az **ALAPszintű SAML-konfigurációban** Azure Portal.
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés Ziflow való konfigurálásához hajtsa vég
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -170,21 +170,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Ziflow hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Ziflow**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Ziflow** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Ziflow**lehetőséget.
+2. Az alkalmazások listában válassza a **Ziflow** lehetőséget.
 
     ![Az Ziflow hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -210,13 +210,13 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     ![Ziflow-konfiguráció személyek](./media/ziflow-tutorial/tutorial_ziflow_people.png)
 
-3. Kattintson a **Hozzáadás** , majd a **felhasználó hozzáadása**elemre.
+3. Kattintson a **Hozzáadás** , majd a **felhasználó hozzáadása** elemre.
 
-    ![Ziflow-konfiguráció hozzáadása felhasználó](./media/ziflow-tutorial/tutorial_ziflow_add.png)
+    ![Képernyőfelvétel: a felhasználó hozzáadása lehetőség van kiválasztva.](./media/ziflow-tutorial/tutorial_ziflow_add.png)
 
 4. A **felhasználó hozzáadása** előugró ablakban végezze el a következő lépéseket:
 
-    ![Ziflow-konfiguráció hozzáadása felhasználó](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
+    ![Képernyőfelvétel: a felhasználó hozzáadása párbeszédpanel, amelyen megadhatja a leírt értékeket.](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
     a. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet brittasimon@contoso.com .
 
@@ -226,7 +226,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     d. Válassza ki a Ziflow-szerepkört.
 
-    e. Kattintson az **1. felhasználó hozzáadása**lehetőségre.
+    e. Kattintson az **1. felhasználó hozzáadása** lehetőségre.
 
     > [!NOTE]
     > A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve megerősíti a fiókját, mielőtt az aktívvá válna.

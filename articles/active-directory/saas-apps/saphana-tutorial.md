@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d3a3a068a4efb2dea7d7df4bc2b88e2c33dc18b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672124"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Oktatóanyag: Azure Active Directory integráció a SAP HANA
 
@@ -121,13 +121,13 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
 
 5. SAP HANA alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A "szerkesztés" ikonnal jelölt "felhasználói attribútumok" szakaszt megjelenítő képernyőkép.](common/edit-attribute.png)
 
 6. A felhasználói **attribútumok** **& a jogcímek** párbeszédpanelen hajtsa végre a következő lépéseket:
  
     a. Kattintson a **Szerkesztés ikonra** a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![image](./media/saphana-tutorial/tutorial_usermail.png)
+    ![Képernyőfelvétel: a "szerkesztés" ikon kiválasztásával megjelenítheti a "felhasználói attribútumok & jogcímek" párbeszédpanelt.](./media/saphana-tutorial/tutorial_usermail.png)
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
 
     a. Az **Identity Provider információinak hozzáadása** panelen illessze be a metaadatok XML-fájljának tartalmát (amelyet a Azure Portalból töltött le) a **metaadatok** mezőbe.
 
-    ![Identitás-szolgáltató beállításainak megadása](./media/saphana-tutorial/sap2.png)
+    ![Képernyőkép, amely az "Identity Provider-adatok hozzáadása" panelt jeleníti meg a "metaadatok" és a "név" mezők kiemelésével.](./media/saphana-tutorial/sap2.png)
 
     b. Ha az XML-dokumentum tartalma érvényes, az elemzési folyamat kibontja az **általános** adatképernyő területén a **tulajdonos, az entitás-azonosító és a kiállító** mezőkhöz szükséges adatokat. Emellett kigyűjti a **célként** megadott képernyő URL mezőihez szükséges adatokat, például az **alap URL-címet és a SingleSignon URL-címét (*)** .
 

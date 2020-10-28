@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: d006ec692a2345f6b79c4be29446340cf4af6095
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d852d17bdf11ea45f833e3d59cacb435166827fe
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335347"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895460"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>A Azure Maps Indoor Maps modul használata
 
@@ -56,7 +56,7 @@ Ha a *Azure Maps beltéri* modul globálisan üzemeltetett Azure Content Deliver
 
 ## <a name="instantiate-the-map-object"></a>A Térkép objektumának példánya
 
-Először hozzon létre egy *Térkép objektumot*. A *map objektum* a következő lépésben lesz használva a *Indoor Manager* -objektum létrehozásához.  Az alábbi kód bemutatja, hogyan hozhatja létre a *Térkép objektumot*:
+Először hozzon létre egy *Térkép objektumot* . A *map objektum* a következő lépésben lesz használva a *Indoor Manager* -objektum létrehozásához.  Az alábbi kód bemutatja, hogyan hozhatja létre a *Térkép objektumot* :
 
 ```javascript
 const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
@@ -77,7 +77,7 @@ const map = new atlas.Map("map-id", {
 
 ## <a name="instantiate-the-indoor-manager"></a>A Indoor Manager példányának példányai
 
-A csempék beltéri tilesets és térképes stílusának betöltéséhez a *beltéri kezelőt*kell létrehoznia. Hozza létre a *Indoor Managert* a *Térkép objektum* és a megfelelő hozzáadásával `tilesetId` . Ha támogatni szeretné a [dinamikus leképezések stílusát](indoor-map-dynamic-styling.md), meg kell adnia a következőt: `statesetId` . A `statesetId` változó neve megkülönbözteti a kis-és nagybetűket. A kódnak a JavaScripthez hasonlóan kell lennie.
+A csempék beltéri tilesets és térképes stílusának betöltéséhez a *beltéri kezelőt* kell létrehoznia. Hozza létre a *Indoor Managert* a *Térkép objektum* és a megfelelő hozzáadásával `tilesetId` . Ha támogatni szeretné a [dinamikus leképezések stílusát](indoor-map-dynamic-styling.md), meg kell adnia a következőt: `statesetId` . A `statesetId` változó neve megkülönbözteti a kis-és nagybetűket. A kódnak a JavaScripthez hasonlóan kell lennie.
 
 ```javascript
 const tilesetId = "";
@@ -89,7 +89,7 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 });
 ```
 
-Az Ön által megadott állapotadatok lekérdezésének engedélyezéséhez meg kell adnia a `statesetId` és a hívást `indoorManager.setDynamicStyling(true)` . Az állapotadatok lekérdezése lehetővé teszi dinamikus tulajdonságok *vagy állapotok*állapotának dinamikus frissítését. Például egy olyan szolgáltatás, mint a szoba, a dinamikus tulajdonság (*állapot*) nevű lehet `occupancy` . Előfordulhat, hogy az alkalmazás a vizualizáción belüli változást tükröző *állapotra* vonatkozó módosításokat kíván lekérdezni. Az alábbi kód bemutatja, hogyan engedélyezheti az állapot-lekérdezéseket:
+Az Ön által megadott állapotadatok lekérdezésének engedélyezéséhez meg kell adnia a `statesetId` és a hívást `indoorManager.setDynamicStyling(true)` . Az állapotadatok lekérdezése lehetővé teszi dinamikus tulajdonságok *vagy állapotok* állapotának dinamikus frissítését. Például egy olyan szolgáltatás, mint a szoba, a dinamikus tulajdonság ( *állapot* ) nevű lehet `occupancy` . Előfordulhat, hogy az alkalmazás a vizualizáción belüli változást tükröző *állapotra* vonatkozó módosításokat kíván lekérdezni. Az alábbi kód bemutatja, hogyan engedélyezheti az állapot-lekérdezéseket:
 
 ```javascript
 const tilesetId = "";
@@ -107,7 +107,7 @@ if (statesetId.length > 0) {
 
 ## <a name="indoor-level-picker-control"></a>Beltéri szintű választó vezérlése
 
- A *beltéri szintű választó* vezérlőelem lehetővé teszi a megjelenített Térkép szintjének módosítását. A beltéri *szintű választó* vezérlését a *beltéri Manager*használatával is inicializálhatja. Itt látható a szint Control választó inicializálására szolgáló kód:
+ A *beltéri szintű választó* vezérlőelem lehetővé teszi a megjelenített Térkép szintjének módosítását. A beltéri *szintű választó* vezérlését a *beltéri Manager* használatával is inicializálhatja. Itt látható a szint Control választó inicializálására szolgáló kód:
 
 ```javascript
 const levelControl = new atlas.control.LevelControl({ position: "top-right" });
@@ -116,7 +116,7 @@ indoorManager.setOptions({ levelControl });
 
 ## <a name="indoor-events"></a>Beltéri események
 
- A *Azure Maps beltéri* modul támogatja az objektum-események *leképezését* . A *Térkép objektum* eseményeinek figyelői meghívásakor megtörténik a szint vagy a létesítmény megváltozása. Ha egy szint vagy egy létesítmény megváltozásakor kódot szeretne futtatni, helyezze a kódot az esemény-figyelőbe. Az alábbi kód azt mutatja be, hogyan adhatók hozzá esemény-figyelők a *Térkép objektumhoz*.
+ A *Azure Maps beltéri* modul támogatja az objektum-események *leképezését* . A *Térkép objektum* eseményeinek figyelői meghívásakor megtörténik a szint vagy a létesítmény megváltozása. Ha egy szint vagy egy létesítmény megváltozásakor kódot szeretne futtatni, helyezze a kódot az esemény-figyelőbe. Az alábbi kód azt mutatja be, hogyan adhatók hozzá esemény-figyelők a *Térkép objektumhoz* .
 
 ```javascript
 map.events.add("levelchanged", indoorManager, (eventData) => {
@@ -144,10 +144,10 @@ Ebből a példából megtudhatja, hogyan használhatja a *Azure Maps beltéri* m
 
 3. A HTML-fejlécben hivatkozzon a *Azure Maps beltéri* modul JavaScript-és stíluslap-stílusára.
 
-4. *Leképezési objektum*inicializálása. A *map objektum* a következő beállításokat támogatja:
+4. *Leképezési objektum* inicializálása. A *map objektum* a következő beállításokat támogatja:
     - `Subscription key` a Azure Maps elsődleges előfizetési kulcs.
     - `center` meghatározza a beltéri Térkép középpontjának földrajzi szélességét és hosszúságát. Adjon meg egy értéket, `center` Ha nem kíván értéket megadni a következőhöz: `bounds` . A formátumnak a következőképpen kell megjelennie `center` : [-122,13315, 47,63637].
-    - `bounds` az a legkisebb téglalap alakú alakzat, amely a tileset térképi adatleképezési adattárat foglalja magában. Állítsa be a értéket, `bounds` Ha nem kíván értéket beállítani `center` . A Térkép határai a [tileset List API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)meghívásával találhatók meg. A tileset-lista API a () értéket adja vissza `bbox` , amelyet elemezni és hozzárendelni lehet a következőhöz: `bounds` . A formátumot a következőképpen kell megjelennie `bounds` : [# West, # Dél, # Kelet, # North].
+    - `bounds` az a legkisebb téglalap alakú alakzat, amely a tileset térképi adatleképezési adattárat foglalja magában. Állítsa be a értéket, `bounds` Ha nem kíván értéket beállítani `center` . A Térkép határai a [tileset List API](/rest/api/maps/tileset/listpreview)meghívásával találhatók meg. A tileset-lista API a () értéket adja vissza `bbox` , amelyet elemezni és hozzárendelni lehet a következőhöz: `bounds` . A formátumot a következőképpen kell megjelennie `bounds` : [# West, # Dél, # Kelet, # North].
     - `style` lehetővé teszi a háttér színének megadását. Fehér háttér megjelenítéséhez adja meg `style` az "üres" értéket.
     - `zoom` lehetővé teszi a Térkép minimális és maximális nagyítási szintjeinek megadását.
 
@@ -257,4 +257,4 @@ További információ a térképhez tartozó további információk hozzáadás�
 > [Beltéri térképek dinamikus stílusa](indoor-map-dynamic-styling.md)
 
 > [!div class="nextstepaction"]
-> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kódminták](/samples/browse/?products=azure-maps)

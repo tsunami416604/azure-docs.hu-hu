@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 19deaa7656cc86d534278464dba1041267ef15b0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 149d0ae99975628239f8b08f3987947a99e01cbb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105039"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893233"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Az első Azure-függvény létrehozása Javával és IntelliJ
 
@@ -37,14 +37,14 @@ A Java-és IntelliJ-függvények fejlesztéséhez telepítse a következő szoft
 
 ## <a name="installation-and-sign-in"></a>Telepítés és bejelentkezés
 
-1. Az IntelliJ IDEA beállításainak párbeszédpanelén (Ctrl+Alt+S) válassza a **Beépülő modulok** lehetőséget. Ezután keresse meg **az Azure Toolkit for IntelliJ-t** a **Marketplace**-en és kattintson a **Telepítés** elemre. A telepítést követően kattintson az **Újraindítás** elemre a beépülő modul aktiválásához. 
+1. Az IntelliJ IDEA beállításainak párbeszédpanelén (Ctrl+Alt+S) válassza a **Beépülő modulok** lehetőséget. Ezután keresse meg **az Azure Toolkit for IntelliJ-t** a **Marketplace** -en és kattintson a **Telepítés** elemre. A telepítést követően kattintson az **Újraindítás** elemre a beépülő modul aktiválásához. 
 
     ![Azure Toolkit for IntelliJ beépülő modul a Marketplace-en][marketplace]
 
-2. Az Azure-fiókjába való bejelentkezéshez nyissa meg az **Azure Explorer** oldalsávot, majd kattintson az **Azure-bejelentkezés** ikonra a felső sávban (vagy az IDEA-menüben: **Eszközök/Azure/Azure-bejelentkezés**).
+2. Az Azure-fiókjába való bejelentkezéshez nyissa meg az **Azure Explorer** oldalsávot, majd kattintson az **Azure-bejelentkezés** ikonra a felső sávban (vagy az IDEA-menüben: **Eszközök/Azure/Azure-bejelentkezés** ).
     ![Az IntelliJ Azure Sign In (Azure-bejelentkezés) parancsa][intellij-azure-login]
 
-3. Az **Azure-bejelentkezés** ablakban válassza a **Bejelentkezés az eszközön** lehetőséget, majd kattintson a **Bejelentkezés** elemre ([egyéb bejelentkezési lehetőségek](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
+3. Az **Azure-bejelentkezés** ablakban válassza a **Bejelentkezés az eszközön** lehetőséget, majd kattintson a **Bejelentkezés** elemre ( [egyéb bejelentkezési lehetőségek](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
 
    ![Az Azure bejelentkezési ablaka a kiválasztott Bejelentkezés az eszközön lehetőséggel][intellij-azure-popup]
 
@@ -64,17 +64,17 @@ A Java-és IntelliJ-függvények fejlesztéséhez telepítse a következő szoft
 
 Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy helyi Azure Functions projektet. A cikk későbbi részében a függvény kódját közzé fogja tenni az Azure-ban. 
 
-1. Nyissa meg a IntelliJ üdvözlő párbeszédpaneljét, válassza az *új projekt létrehozása* elemet új projekt varázsló megnyitásához, majd válassza a *Azure functions*lehetőséget.
+1. Nyissa meg a IntelliJ üdvözlő párbeszédpaneljét, válassza az *új projekt létrehozása* elemet új projekt varázsló megnyitásához, majd válassza a *Azure functions* lehetőséget.
 
     ![Functions-projekt létrehozása](media/functions-create-first-java-intellij/create-functions-project.png)
 
-1. Válassza a *http-trigger*lehetőséget, majd kattintson a *tovább* gombra, és kövesse a varázslót a következő lapokon található összes konfiguráció átadásához. erősítse meg a projekt helyét, majd kattintson a *Befejezés*gombra. A Intellj ÖTLETE ekkor megnyitja az új projektet.
+1. Válassza a *http-trigger* lehetőséget, majd kattintson a *tovább* gombra, és kövesse a varázslót a következő lapokon található összes konfiguráció átadásához. erősítse meg a projekt helyét, majd kattintson a *Befejezés* gombra. A Intellj ÖTLETE ekkor megnyitja az új projektet.
 
     ![Functions-projekt létrehozása – Befejezés](media/functions-create-first-java-intellij/create-functions-project-finish.png)
 
 ## <a name="run-the-function-app-locally"></a>A függvényalkalmazás helyi futtatása
 
-1. A kód megjelenítéséhez keresse meg `src/main/java/org/example/functions/HttpTriggerFunction.java` a generált kódot. A *17*. sorban láthatja, hogy van egy zöld *Futtatás* gomb, kattintson rá, és válassza az *"Azure-Function-vizsga..." futtatása*lehetőséget, majd láthatja, hogy a Function alkalmazás helyileg fut néhány naplóval.
+1. A kód megjelenítéséhez keresse meg `src/main/java/org/example/functions/HttpTriggerFunction.java` a generált kódot. A *17* . sorban láthatja, hogy van egy zöld *Futtatás* gomb, kattintson rá, és válassza az *"Azure-Function-vizsga..." futtatása* lehetőséget, majd láthatja, hogy a Function alkalmazás helyileg fut néhány naplóval.
 
     ![Helyi futtatási függvények projekt](media/functions-create-first-java-intellij/local-run-functions-project.png)
 
@@ -94,7 +94,7 @@ Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy he
 
     ![Helyi hibakeresési függvények gomb](media/functions-create-first-java-intellij/local-debug-functions-button.png)
 
-1. A Töréspont hozzáadásához kattintson a fájl *20* . sorára `src/main/java/org/example/functions/HttpTriggerFunction.java` , majd nyissa meg újra a végpontot, és `http://localhost:7071/api/HttpTrigger-Java?name=Azure` Keresse meg a töréspontot, és próbálja ki a további hibakeresési funkciókat, például a *Step*, a *Watch*, a *kiértékelés*. A hibakeresési munkamenet leállításához kattintson a Leállítás gombra.
+1. A Töréspont hozzáadásához kattintson a fájl *20* . sorára `src/main/java/org/example/functions/HttpTriggerFunction.java` , majd nyissa meg újra a végpontot, és `http://localhost:7071/api/HttpTrigger-Java?name=Azure` Keresse meg a töréspontot, és próbálja ki a további hibakeresési funkciókat, például a *Step* , a *Watch* , a *kiértékelés* . A hibakeresési munkamenet leállításához kattintson a Leállítás gombra.
 
     ![Helyi hibakeresési függvények megszakítása](media/functions-create-first-java-intellij/local-debug-functions-break.png)
 
@@ -104,7 +104,7 @@ Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy he
 
     ![Függvények üzembe helyezése az Azure-ban](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
 
-1. Ha még nincs függvényalkalmazás, kattintson *a nem elérhető függvény lehetőségre, és kattintson az új létrehozása*elemre.
+1. Ha még nincs függvényalkalmazás, kattintson *a nem elérhető függvény lehetőségre, és kattintson az új létrehozása* elemre.
 
     ![Függvények üzembe helyezése az Azure Create app szolgáltatásban](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
 
@@ -114,13 +114,13 @@ Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy he
 
 1. Válassza ki azt a Function alkalmazást, amelyet központilag telepíteni szeretne, (az imént létrehozott új Function alkalmazás automatikusan ki lesz választva). A függvények telepítéséhez kattintson a *Futtatás* gombra.
 
-    ![Függvények üzembe helyezése az Azure Run szolgáltatásban](media/functions-create-first-java-intellij/deploy-functions-run.png)
+    ![A képernyőképen a Azure Functions központi telepítése párbeszédpanel látható.](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![Függvények üzembe helyezése az Azure log-ban](media/functions-create-first-java-intellij/deploy-functions-log.png)
 
 ## <a name="manage-azure-functions-from-idea"></a>Azure Functions kezelése az IDEA-ból
 
-1. A függvények az *Azure Explorerrel* is kezelhetők a saját ötletében, kattintson a *függvényalkalmazásre*, majd az összes funkció itt látható.
+1. A függvények az *Azure Explorerrel* is kezelhetők a saját ötletében, kattintson a *függvényalkalmazásre* , majd az összes funkció itt látható.
 
     ![Függvények megtekintése az Explorerben](media/functions-create-first-java-intellij/explorer-view-functions.png)
 
@@ -128,19 +128,19 @@ Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy he
 
     ![Függvények tulajdonságainak megjelenítése](media/functions-create-first-java-intellij/explorer-functions-show-properties.png)
 
-1. Kattintson a jobb gombbal a függvény *HttpTrigger-Java*elemre, és válassza az *trigger függvény*lehetőséget, majd láthatja, hogy a böngésző megnyílik az trigger URL-címével.
+1. Kattintson a jobb gombbal a függvény *HttpTrigger-Java* elemre, és válassza az *trigger függvény* lehetőséget, majd láthatja, hogy a böngésző megnyílik az trigger URL-címével.
 
-    ![Függvények üzembe helyezése az Azure Run szolgáltatásban](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
+    ![A képernyőképen a U R L-vel rendelkező böngésző látható.](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
 
 ## <a name="add-more-functions-to-the-project"></a>További függvények hozzáadása a projekthez
 
-1. Kattintson a jobb gombbal a csomag *org. example. functions* elemre, és válassza a *New-> Azure functions osztály*elemet. 
+1. Kattintson a jobb gombbal a csomag *org. example. functions* elemre, és válassza a *New-> Azure functions osztály* elemet. 
 
     ![Függvények hozzáadása a projekt bejegyzéséhez](media/functions-create-first-java-intellij/add-functions-entry.png)
 
 1. Töltse ki az osztály neve *HttpTest* , és válassza a *HttpTrigger* elemet a Function osztály létrehozása varázslóban, kattintson az *OK* gombra a létrehozáshoz, így új függvényeket hozhat létre.
 
-    ![Függvények hozzáadása a projekthez az trigger kiválasztása](media/functions-create-first-java-intellij/add-functions-trigger.png)
+    ![Képernyőfelvétel: a függvény osztályának létrehozása párbeszédpanel.](media/functions-create-first-java-intellij/add-functions-trigger.png)
     
     ![Függvények hozzáadása a projekt kimenetéhez](media/functions-create-first-java-intellij/add-functions-output.png)
 
@@ -148,10 +148,10 @@ Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy he
 
 1. Azure Functions törlése az Azure Explorerben
       
-      ![Függvények hozzáadása a projekthez az trigger kiválasztása](media/functions-create-first-java-intellij/delete-function.png)
+      ![A képernyőképen a helyi menüből kiválasztott törlés látható.](media/functions-create-first-java-intellij/delete-function.png)
       
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Létrehozott egy Java functions-projektet egy HTTP által aktivált függvénnyel, futtatta azt a helyi gépen, és üzembe helyezte az Azure-ban. Most terjessze ki a függvényt...
 

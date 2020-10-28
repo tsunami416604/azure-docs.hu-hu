@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 000f6a80a2cee14abc3d954de479dd87b1edf876
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090250"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895596"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Egyoldalas alkalmazások biztonságossá tétele nem interaktív bejelentkezéssel
 
@@ -30,15 +30,15 @@ Az alábbi útmutató egy olyan alkalmazásra vonatkozik, amely a Azure Active D
 
 Hozzon létre egy biztonságos webszolgáltatási alkalmazást, amely felelős az Azure AD-vel való hitelesítéshez. 
 
-1. Hozzon létre egy függvényt a Azure Portalban. További információt az Azure- [függvény létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function)című témakörben talál.
+1. Hozzon létre egy függvényt a Azure Portalban. További információt az Azure- [függvény létrehozása](../azure-functions/functions-create-first-azure-function.md)című témakörben talál.
 
-2. Konfigurálja az Azure-függvény CORS szabályzatát, hogy az egyetlen oldal webalkalmazása is elérhető legyen. Ez biztosítja a böngésző ügyfelei számára a webalkalmazás engedélyezett eredetét. Lásd: [CORS funkció hozzáadása](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api#add-cors-functionality).
+2. Konfigurálja az Azure-függvény CORS szabályzatát, hogy az egyetlen oldal webalkalmazása is elérhető legyen. Ez biztosítja a böngésző ügyfelei számára a webalkalmazás engedélyezett eredetét. Lásd: [CORS funkció hozzáadása](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
-3. [Adjon hozzá egy rendszerhez rendelt identitást](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) az Azure-függvényhez, hogy lehetővé váljon egy egyszerű szolgáltatásnév létrehozása az Azure ad-ben való hitelesítéshez.  
+3. [Adjon hozzá egy rendszerhez rendelt identitást](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) az Azure-függvényhez, hogy lehetővé váljon egy egyszerű szolgáltatásnév létrehozása az Azure ad-ben való hitelesítéshez.  
 
 4. Szerepköralapú hozzáférést biztosít a rendszer által hozzárendelt identitáshoz a Azure Maps fiókhoz. A részletekért lásd: [szerepköralapú hozzáférés megadása](#grant-role-based-access) .
 
-5. Kód írása az Azure-függvény számára Azure Maps hozzáférési tokenek beszerzéséhez a rendszer által hozzárendelt identitással az egyik támogatott mechanizmus vagy a REST protokoll használatával. Lásd: [tokenek beszerzése az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+5. Kód írása az Azure-függvény számára Azure Maps hozzáférési tokenek beszerzéséhez a rendszer által hozzárendelt identitással az egyik támogatott mechanizmus vagy a REST protokoll használatával. Lásd: [tokenek beszerzése az Azure-erőforrásokhoz](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
     Példa A példa REST protokollra:
 
@@ -64,8 +64,8 @@ Hozzon létre egy biztonságos webszolgáltatási alkalmazást, amely felelős a
 
 6. Az Azure Function HttpTrigger biztonságának konfigurálása
 
-   * [Függvény-hozzáférési kulcs létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#authorization-keys)
-   * [Biztonságos http-végpont](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production) az Azure-függvény számára az éles környezetben.
+   * [Függvény-hozzáférési kulcs létrehozása](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
+   * [Biztonságos http-végpont](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production) az Azure-függvény számára az éles környezetben.
    
 7. Webalkalmazás-Azure Maps webes SDK konfigurálása. 
 
@@ -102,25 +102,25 @@ Hozzon létre egy biztonságos webszolgáltatási alkalmazást, amely felelős a
 
 ## <a name="grant-role-based-access"></a>Szerepköralapú hozzáférés biztosítása
 
-Az Azure *szerepköralapú hozzáférés-vezérlés (Azure RBAC)* hozzáférését úgy biztosíthatja, hogy a rendszer által hozzárendelt identitást hozzárendeli egy vagy több Azure-beli szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre.
+Az Azure *szerepköralapú hozzáférés-vezérlés (Azure RBAC)* hozzáférését úgy biztosíthatja, hogy a rendszer által hozzárendelt identitást hozzárendeli egy vagy több Azure-beli szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök** elemet, majd keressen rá a *Azure Maps* kezdetű szerepkörökre.
 
-1. Nyissa meg **Azure Maps-fiókját**. Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés**elemet.
+1. Nyissa meg **Azure Maps-fiókját** . Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés** elemet.
 
     > [!div class="mx-imgBorder"]
     > ![Hozzáférés biztosítása az Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. A **szerepkör-hozzárendelések** lap **szerepkör**területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. **A hozzáférés társítása**területen válassza a **függvényalkalmazás**lehetőséget. Válassza ki a résztvevőt név alapján. Kattintson a **Mentés** gombra.
+2. A **szerepkör-hozzárendelések** lap **szerepkör** területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő** . **A hozzáférés társítása** területen válassza a **függvényalkalmazás** lehetőséget. Válassza ki a résztvevőt név alapján. Kattintson a **Mentés** gombra.
 
-   * A [szerepkör-hozzárendelések hozzáadása vagy eltávolítása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)című témakörben talál további információt.
+   * A [szerepkör-hozzárendelések hozzáadása vagy eltávolítása](../role-based-access-control/role-assignments-portal.md)című témakörben talál további információt.
 
 > [!WARNING]
-> Azure Maps beépített szerepkör-definíciók nagyon nagy engedélyezési hozzáférést biztosítanak számos Azure Maps REST API-hoz. Az API-k minimális hozzáférésének korlátozásához tekintse meg az [Egyéni szerepkör-definíció létrehozása és a rendszerhez rendelt identitás hozzárendelése](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) az egyéni szerepkör-definícióhoz című témakört. Ez lehetővé teszi az alkalmazás számára a Azure Maps eléréséhez szükséges legalacsonyabb jogosultságot.
+> Azure Maps beépített szerepkör-definíciók nagyon nagy engedélyezési hozzáférést biztosítanak számos Azure Maps REST API-hoz. Az API-k minimális hozzáférésének korlátozásához tekintse meg az [Egyéni szerepkör-definíció létrehozása és a rendszerhez rendelt identitás hozzárendelése](../role-based-access-control/custom-roles.md) az egyéni szerepkör-definícióhoz című témakört. Ez lehetővé teszi az alkalmazás számára a Azure Maps eléréséhez szükséges legalacsonyabb jogosultságot.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Az egyoldalas alkalmazás forgatókönyvének további megértése:
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [Egyoldalas alkalmazás](../active-directory/develop/scenario-spa-overview.md)
 
 A Azure Maps-fiók API-használati metrikáinak megkeresése:
 > [!div class="nextstepaction"]

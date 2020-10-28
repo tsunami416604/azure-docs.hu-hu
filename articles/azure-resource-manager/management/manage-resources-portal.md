@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 266ad613a4966b26fc4a6ddffbb7b4196aa937b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2274a551542b06996941b49e7d047baf3e8b3ca
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372102"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894032"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-erőforrások kezelése a Azure Portal használatával
 
@@ -29,22 +29,22 @@ A Resource Manager-sablonok létrehozása után a Azure Portal használatával �
 
 ## <a name="open-resources"></a>Erőforrások megnyitása
 
-Az Azure-erőforrások az Azure-szolgáltatások és az erőforráscsoportok szerint vannak rendszerezve. Az alábbi eljárások azt mutatják be, hogyan nyitható meg a **mystorage0207**nevű Storage-fiók. A virtuális gép egy **mystorage0207rg**nevű erőforráscsoporthoz tartozik.
+Az Azure-erőforrások az Azure-szolgáltatások és az erőforráscsoportok szerint vannak rendszerezve. Az alábbi eljárások azt mutatják be, hogyan nyitható meg a **mystorage0207** nevű Storage-fiók. A virtuális gép egy **mystorage0207rg** nevű erőforráscsoporthoz tartozik.
 
 Erőforrás megnyitása a szolgáltatás típusa szerint:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali ablaktáblán válassza ki az Azure-szolgáltatást. Ebben az esetben a **Storage-fiókok**.  Ha nem látja a felsorolt szolgáltatást, válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a szolgáltatás típusát.
+2. A bal oldali ablaktáblán válassza ki az Azure-szolgáltatást. Ebben az esetben a **Storage-fiókok** .  Ha nem látja a felsorolt szolgáltatást, válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a szolgáltatás típusát.
 
     ![Az Azure-erőforrás megnyitása a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
 3. Válassza ki a megnyitni kívánt erőforrást.
 
-    ![Az Azure-erőforrás megnyitása a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+    ![A kiválasztott erőforrást kiemelő képernyőkép.](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
 
     A Storage-fiók A következőképpen néz ki:
 
-    ![Az Azure-erőforrás megnyitása a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+    ![A Storage-fiók megjelenését bemutató képernyőkép.](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
 
 Erőforrás megnyitása erőforráscsoport szerint:
 
@@ -66,14 +66,14 @@ A képernyőképen az Azure-beli virtuális gépek felügyeleti lehetőségei l�
 2. Válassza a **Törlés** elemet. Az alábbi képernyőfelvételen egy virtuális gép felügyeleti lehetőségei láthatók.
 
     ![Azure-erőforrás törlése](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
-3. Írja be az erőforrás nevét a törlés megerősítéséhez, majd válassza a **Törlés**lehetőséget.
+3. Írja be az erőforrás nevét a törlés megerősítéséhez, majd válassza a **Törlés** lehetőséget.
 
 További információ arról, hogy a Azure Resource Manager hogyan rendeli az erőforrások törlését: [Azure Resource Manager erőforráscsoport törlése](delete-resource-group.md).
 
 ## <a name="move-resources"></a>Erőforrások áthelyezése
 
 1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [erőforrások megnyitása](#open-resources).
-2. Válassza az **Áthelyezés**lehetőséget. Az alábbi képernyőfelvételen egy Storage-fiók felügyeleti lehetőségei láthatók.
+2. Válassza az **Áthelyezés** lehetőséget. Az alábbi képernyőfelvételen egy Storage-fiók felügyeleti lehetőségei láthatók.
 
     ![Azure-erőforrás áthelyezése](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
 3. Válassza az **Áthelyezés másik erőforráscsoporthoz** lehetőséget, vagy **váltson egy másik előfizetésre** az igényeitől függően.
@@ -85,10 +85,10 @@ További információ: [Erőforrások áthelyezése új erőforráscsoportba vag
 A zárolás megakadályozza a szervezet más felhasználói számára a kritikus erőforrások, például az Azure-előfizetés, az erőforráscsoport vagy az erőforrás véletlen törlését vagy módosítását. 
 
 1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [erőforrások megnyitása](#open-resources).
-2. Válassza a **zárolások**lehetőséget. Az alábbi képernyőfelvételen egy Storage-fiók felügyeleti lehetőségei láthatók.
+2. Válassza a **zárolások** lehetőséget. Az alábbi képernyőfelvételen egy Storage-fiók felügyeleti lehetőségei láthatók.
 
     ![Azure-erőforrás zárolása](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
-3. Válassza a **Hozzáadás**lehetőséget, majd adja meg a zárolási tulajdonságokat.
+3. Válassza a **Hozzáadás** lehetőséget, majd adja meg a zárolási tulajdonságokat.
 
 További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](lock-resources.md).
 
@@ -100,7 +100,7 @@ A címkézés segítségével logikailag rendszerezheti az erőforráscsoportot 
 2. Válassza a **Címkék** lehetőséget. Az alábbi képernyőfelvételen egy Storage-fiók felügyeleti lehetőségei láthatók.
 
     ![Azure-erőforrás címkézése](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
-3. Adja meg a címke tulajdonságait, majd kattintson a **Mentés**gombra.
+3. Adja meg a címke tulajdonságait, majd kattintson a **Mentés** gombra.
 
 További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](tag-resources.md#portal).
 

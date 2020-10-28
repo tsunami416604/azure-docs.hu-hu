@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: e9be10a121b223c7eeb3957c34cf42c1abe7646e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 68e961336d7e86f9983fea49044137894ab0f985
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519960"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Oktatóanyag: Azure Active Directory integráció a Yodeck
 
@@ -61,13 +61,13 @@ A Yodeck Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Yodeck**kifejezést, válassza a **Yodeck** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Yodeck** kifejezést, válassza a **Yodeck** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Yodeck az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Yodeck-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Yodeck-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Yodeck kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Yodeck való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Yodeck való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Yodeck** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Yodeck** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -105,7 +105,7 @@ Az Azure AD egyszeri bejelentkezés Yodeck való konfigurálásához hajtsa vég
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![image](common/both-preintegrated-signon.png)
+    ![Képernyőfelvétel: alapszintű SAML-konfiguráció a metaadatok feltöltése hivatkozással.](common/both-preintegrated-signon.png)
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://app.yodeck.com/login`
 
@@ -115,9 +115,9 @@ Az Azure AD egyszeri bejelentkezés Yodeck való konfigurálásához hajtsa vég
 
 ### <a name="configure-yodeck-single-sign-on"></a>Yodeck egyetlen Sign-On konfigurálása
 
-1. A **Yodeck**belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A **Yodeck** belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
-    ![image](./media/target-process-tutorial/install_extension.png)
+    ![A képernyőképen a bővítmény telepítése gomb látható.](./media/target-process-tutorial/install_extension.png)
 
 1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés Yodeck** gombra a Yodeck alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a Yodeck való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
 
@@ -127,19 +127,19 @@ Az Azure AD egyszeri bejelentkezés Yodeck való konfigurálásához hajtsa vég
 
 1. Egy másik böngészőablakban jelentkezzen be a Yodeck vállalati webhelyre rendszergazdaként.
 
-1. Kattintson a **felhasználói beállítások** lehetőségre az oldal jobb felső sarkában, és válassza a **Fiókbeállítások**lehetőséget.
+1. Kattintson a **felhasználói beállítások** lehetőségre az oldal jobb felső sarkában, és válassza a **Fiókbeállítások** lehetőséget.
 
-    ![Yodeck-konfiguráció](./media/yodeck-tutorial/configure1.png)
+    ![A képernyőképen a felhasználóhoz kiválasztott Fiókbeállítások láthatók.](./media/yodeck-tutorial/configure1.png)
 
 1. Válassza az **SAML** lehetőséget, és hajtsa végre a következő lépéseket:
 
-    ![Yodeck-konfiguráció](./media/yodeck-tutorial/configure2.png)
+    ![Képernyőfelvétel: az SAML lap, amelyen elvégezheti ezeket a lépéseket.](./media/yodeck-tutorial/configure2.png)
 
     a. Válassza **az importálás URL-** címről lehetőséget.
 
-    b. Az **URL** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt, majd kattintson az **Importálás**elemre.
+    b. Az **URL** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt, majd kattintson az **Importálás** elemre.
     
-    c. Az **alkalmazás-összevonási metaadatok URL-címének**importálása után a többi mező automatikusan kitöltődik.
+    c. Az **alkalmazás-összevonási metaadatok URL-címének** importálása után a többi mező automatikusan kitöltődik.
 
     d. Kattintson a **Mentés** gombra.
 
@@ -147,7 +147,7 @@ Az Azure AD egyszeri bejelentkezés Yodeck való konfigurálásához hajtsa vég
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -165,21 +165,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Yodeck hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Yodeck**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Yodeck** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Yodeck**lehetőséget.
+2. Az alkalmazások listában válassza a **Yodeck** lehetőséget.
 
     ![Az Yodeck hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -201,21 +201,21 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Yo
 
 1. Jelentkezzen be a Yodeck vállalati webhelyre rendszergazdaként.
 
-2. Kattintson a **felhasználói beállítások** lehetőségre az oldal jobb felső sarkában, és válassza a **felhasználók**lehetőséget.
+2. Kattintson a **felhasználói beállítások** lehetőségre az oldal jobb felső sarkában, és válassza a **felhasználók** lehetőséget.
 
-    ![Alkalmazott hozzáadása](./media/yodeck-tutorial/user1.png)
+    ![Képernyőfelvétel: a felhasználó számára kijelölt felhasználók.](./media/yodeck-tutorial/user1.png)
 
 3. Kattintson a **+ felhasználó** lehetőségre a **felhasználó adatai** lap megnyitásához.
 
-    ![Alkalmazott hozzáadása](./media/yodeck-tutorial/user2.png)
+    ![Képernyőfelvétel: a felhasználók gomb.](./media/yodeck-tutorial/user2.png)
 
 4. A **felhasználó adatai** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Alkalmazott hozzáadása](./media/yodeck-tutorial/user3.png)
+    ![A képernyőképen a felhasználói adatok lap látható, ahol elvégezheti ezeket a lépéseket.](./media/yodeck-tutorial/user3.png)
 
-    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
+    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta** nevet.
 
-    b. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
+    b. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
     c. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet brittasimon@contoso.com .
 

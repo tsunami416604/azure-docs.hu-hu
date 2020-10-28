@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc37f2b3f603262f67a46746187df6e4b5a494b5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272956"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895528"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Forgalmi adatok megjelenítése a térképen Azure Maps Android SDK használatával
 
@@ -21,7 +21,7 @@ A flow-adatok és az incidensek az adatok a térképen megjeleníthető kétfél
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy megjelenjen a forgalom a térképen, [Azure-fiókot kell létrehoznia](quick-demo-map-app.md#create-an-azure-maps-account), és [be kell szereznie egy előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account). Ezután telepítenie kell a [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t, és be kell töltenie egy térképet.
+Ahhoz, hogy megjelenjen a forgalom a térképen, [Azure-fiókot kell létrehoznia](quick-demo-map-app.md#create-an-azure-maps-account), és [be kell szereznie egy előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account). Ezután telepítenie kell a [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) -t, és be kell töltenie egy térképet.
 
 ## <a name="incidents-traffic-data"></a>Incidensek forgalmi adatok
 
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 Egy adott szolgáltatás incidensének beszerzéséhez használhatja az alábbi kódot. Ha egy szolgáltatásra kattint, a kód logikája ellenőrzi az incidenseket, és létrehoz egy üzenetet az incidensről. Egy üzenet jelenik meg a képernyő alján a részletekkel.
 
-1. Először szerkesztenie kell a **res > elrendezést > activity_main.xml**, hogy az alábbihoz hasonlóan néz ki. A `mapcontrol_centerLat` , a és a `mapcontrol_centerLng` értékeket a `mapcontrol_zoom` kívánt értékekre cserélheti. Visszahívás: a nagyítási szint 0 és 22 közötti érték. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik.
+1. Először szerkesztenie kell a **res > elrendezést > activity_main.xml** , hogy az alábbihoz hasonlóan néz ki. A `mapcontrol_centerLat` , a és a `mapcontrol_centerLng` értékeket a `mapcontrol_zoom` kívánt értékekre cserélheti. Visszahívás: a nagyítási szint 0 és 22 közötti érték. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>

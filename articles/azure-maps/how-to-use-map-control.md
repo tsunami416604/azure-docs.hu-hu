@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21fd5f5c94b56f2f63d0e90d9982edd60a2d95d6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335330"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895443"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps-térképvezérlő használata
 
@@ -26,7 +26,7 @@ A térképkezelés weblapon való használatához a következő előfeltételek 
 
 * [Hozzon Azure Maps fiókot](quick-demo-map-app.md#create-an-azure-maps-account) , és [szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
 
-* Szerezze be a Azure Active Directory (HRE) hitelesítő adatait a [hitelesítési beállításokkal](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
+* Szerezze be a Azure Active Directory (HRE) hitelesítő adatait a [hitelesítési beállításokkal](/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Új Térkép létrehozása egy weblapon
 
@@ -75,7 +75,7 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
     </style>
    ```
 
-4. A lap törzsében adjon hozzá egy elemet, `<div>` és adjon neki egy `id` **myMap**.
+4. A lap törzsében adjon hozzá egy elemet, `<div>` és adjon neki egy `id` **myMap** .
 
    ```HTML
     <body onload="InitMap()">
@@ -83,7 +83,7 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
     </body>
    ```
 
-5. Most pedig inicializáljuk a Térkép vezérlőelemet. A vezérlő hitelesítéséhez szükség van egy Azure Maps előfizetési kulcsra, vagy Azure Active Directory (HRE) hitelesítő adatokat kell használnia a [hitelesítési beállításokkal](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
+5. Most pedig inicializáljuk a Térkép vezérlőelemet. A vezérlő hitelesítéséhez szükség van egy Azure Maps előfizetési kulcsra, vagy Azure Active Directory (HRE) hitelesítő adatokat kell használnia a [hitelesítési beállításokkal](/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
     Ha előfizetés-kulcsot használ a hitelesítéshez, másolja és illessze be a következő script elemet az `<head>` elembe, és az első `<script>` elem alatt. Cserélje le a `<Your Azure Maps Key>` t a Azure Maps elsődleges előfizetési kulcsára.
 
@@ -279,7 +279,7 @@ További információ hozzáadása a térképhez:
 > [Térkép létrehozása](map-create.md)
 
 > [!div class="nextstepaction"]
-> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kódminták](/samples/browse/?products=azure-maps)
 
 A Azure Active Directory (HRE) Azure Maps használatával történő integrálását bemutató minták listáját a következő témakörben tekintheti meg:
 

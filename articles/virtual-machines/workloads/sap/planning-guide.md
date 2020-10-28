@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: a0347e76a39be8bada9ec59eb8accef17e784951
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea53eda3863ea5164142fa0d37fff7be365a4d5c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738130"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894100"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -1832,7 +1832,7 @@ Az Azure Managed Disks szolgáltatás automatikusan a virtuális gép tartalék 
 
 Az Azure-infrastruktúrát és a Storage-fiókokat használó SAP NetWeaver rendszer minta architektúrája a következőképpen néz ki:
 
-![Az Azure Infrastructure HA használatával magasabb rendelkezésre állást érhet el az SAP-alkalmazások számára][planning-guide-figure-2900]
+![Az Azure Infrastructure HA-és Storage-fiókokat használó SAP NetWeaver-rendszereket bemutató diagram.][planning-guide-figure-2900]
 
 Az Azure-infrastruktúrát és Managed Diskst használó SAP NetWeaver rendszer minta architektúrája a következőképpen nézhet ki:
 
@@ -1892,7 +1892,7 @@ Csak a nem felügyelt lemezek: az alább ismertetett fogalmakat a számos SAP-re
 
 ##### <a name="windows-logologo_windows-ha-on-windows"></a>![Windows-embléma.][Logo_Windows] HA Windows rendszeren
 
-![SAP NetWeaver Application HA architektúra SQL Server az Azure IaaS][planning-guide-figure-3200]
+![Diagram, amely az Azure IaaS SQL Server az SAP NetWeaver Application HA Architecture architektúrát mutatja be.][planning-guide-figure-3200]
 
 Az SAP NetWeaver rendszerhez az alábbi Azure-összeállítások használhatók az infrastruktúra-problémák és a gazdagép-javítások hatásának csökkentése érdekében:
 

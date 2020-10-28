@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: d8bf94bf0048efee05864b951429239de2def87a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669398"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895056"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ScaleX Enterprise-nal
 
@@ -148,11 +148,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
     > [!NOTE]
     > A contoso csak példaként szolgál. Ez legyen a vállalat tényleges neve.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/scalex-enterprise-tutorial/Test_Admin.png)
+    ![A jobb felső sarokban található menüből kiválasztott cég nevét bemutató képernyőkép.](./media/scalex-enterprise-tutorial/Test_Admin.png)
 
 1. Válassza az **integrációk** lehetőséget a felső menüben, majd válassza az **egyszeri bejelentkezés** lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/scalex-enterprise-tutorial/admin_sso.png) 
+    ![A legördülő menüből kiválasztott "integrációs" és "egyszeri bejelentkezés" képernyőt megjelenítő képernyőkép.](./media/scalex-enterprise-tutorial/admin_sso.png) 
 
 1. Töltse ki az űrlapot a következőképpen:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: be3634ea051c99acf7b706da266179c93a1be861
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2d87be085331c174b58e2a475e18efa54a78cfea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676661"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Oktatóanyag: Azure Active Directory integráció az SAP Cloud platformmal
 
@@ -150,7 +150,7 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
 
 3. A megbízhatósági kezelés szakaszban a **helyi szolgáltató** területen hajtsa végre a következő lépéseket:
 
-    ![Megbízhatóság kezelése](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Megbízhatóság kezelése")
+    ![A "megbízhatósági kezelés" szakaszt a "helyi szolgáltató" lapon és az összes kijelölt szövegmezőben ábrázoló képernyőkép.](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Megbízhatóság kezelése")
    
     a. Kattintson a **Szerkesztés** gombra.
 
@@ -178,7 +178,7 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
 
 5. Kattintson a **megbízható identitás-szolgáltató** fülre, majd a **megbízható identitás-szolgáltató hozzáadása** lehetőségre.
    
-    ![Megbízhatóság kezelése](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Megbízhatóság kezelése")
+    ![Képernyőkép, amely a "megbízható identitás-szolgáltató" lapon bejelölt "megbízhatósági kezelés" lapot mutatja.](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Megbízhatóság kezelése")
    
     >[!NOTE]
     >A megbízható identitás-szolgáltatók listájának kezeléséhez a helyi szolgáltató szakaszban kell megadnia az egyéni konfiguráció típusát. Az alapértelmezett konfigurációs típus esetében az SAP ID szolgáltatás nem szerkeszthető és implicit megbízhatósági kapcsolattal rendelkezik. Nincs, nem rendelkezik megbízhatósági beállításokkal.

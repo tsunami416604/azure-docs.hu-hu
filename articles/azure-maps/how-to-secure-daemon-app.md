@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dd04f404330a6c86e2df09da610e16ba9b721f3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355856"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895647"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon-alkalmazás biztonságossá tétele
 
@@ -27,11 +27,11 @@ Az alábbi útmutató a megbízható és biztonságos környezetben üzemeltetet
 
 ## <a name="scenario-shared-key-authentication"></a>Forgatókönyv: megosztott kulcsos hitelesítés
 
-Azure Maps fiók létrehozása után létrejön az elsődleges és a másodlagos kulcs. Javasoljuk, hogy az elsődleges kulcsot használja előfizetési kulcsként, ha [megosztott kulcsos hitelesítést használ a Azure Maps meghívásához](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication). Másodlagos kulcsot használhat olyan forgatókönyvekben, mint például a kulcsok változásai. További információ: [hitelesítés Azure Mapsban](https://aka.ms/amauth).
+Azure Maps fiók létrehozása után létrejön az elsődleges és a másodlagos kulcs. Javasoljuk, hogy az elsődleges kulcsot használja előfizetési kulcsként, ha [megosztott kulcsos hitelesítést használ a Azure Maps meghívásához](./azure-maps-authentication.md#shared-key-authentication). Másodlagos kulcsot használhat olyan forgatókönyvekben, mint például a kulcsok változásai. További információ: [hitelesítés Azure Mapsban](./azure-maps-authentication.md).
 
 ### <a name="securely-store-shared-key"></a>Megosztott kulcs biztonságos tárolása
 
-Az elsődleges és a másodlagos kulcs engedélyezi az összes API-nak a Maps-fiókhoz való engedélyezését. Az alkalmazásoknak biztonságos tárolóban (például Azure Key Vault) kell tárolniuk a kulcsokat. Az alkalmazásnak Azure Key Vault titokként kell lekérnie a megosztott kulcsot, hogy ne tárolja a megosztott kulcsot egyszerű szövegként az alkalmazás konfigurációjában. A Azure Key Vault konfigurálásának megismeréséhez tekintse meg a [Azure Key Vault fejlesztői útmutató](https://docs.microsoft.com/azure/key-vault/general/developers-guide)című témakört.
+Az elsődleges és a másodlagos kulcs engedélyezi az összes API-nak a Maps-fiókhoz való engedélyezését. Az alkalmazásoknak biztonságos tárolóban (például Azure Key Vault) kell tárolniuk a kulcsokat. Az alkalmazásnak Azure Key Vault titokként kell lekérnie a megosztott kulcsot, hogy ne tárolja a megosztott kulcsot egyszerű szövegként az alkalmazás konfigurációjában. A Azure Key Vault konfigurálásának megismeréséhez tekintse meg a [Azure Key Vault fejlesztői útmutató](../key-vault/general/developers-guide.md)című témakört.
 
 A folyamat a következő lépésekből áll:
 
@@ -44,7 +44,7 @@ A folyamat a következő lépésekből áll:
 7. Hozzon létre Azure Maps REST API kérelmet megosztott kulccsal.
 
 > [!Tip]
-> Ha az alkalmazást az Azure-környezetben üzemelteti, egy felügyelt identitást kell megvalósítani, hogy csökkentse a Azure Key Vault-hitelesítéshez szükséges titkos kód kezelésének költségeit és összetettségét. Tekintse meg a következő Azure Key Vault [oktatóanyagot a felügyelt identitáson keresztül történő kapcsolódáshoz](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app).
+> Ha az alkalmazást az Azure-környezetben üzemelteti, egy felügyelt identitást kell megvalósítani, hogy csökkentse a Azure Key Vault-hitelesítéshez szükséges titkos kód kezelésének költségeit és összetettségét. Tekintse meg a következő Azure Key Vault [oktatóanyagot a felügyelt identitáson keresztül történő kapcsolódáshoz](../key-vault/general/tutorial-net-create-vault-azure-web-app.md).
 
 A démon alkalmazás feladata a megosztott kulcs biztonságos tárolóból való beolvasása. A Azure Key Vault megvalósításához az Azure AD-n keresztül történő hitelesítésre van szükség a titok eléréséhez. Ehelyett azt javasoljuk, hogy a megosztott kulcsos hitelesítéssel kapcsolatos további összetettségi és üzemeltetési követelmények eredményeképpen Azure Maps közvetlen Azure AD-hitelesítést.
 
@@ -62,7 +62,7 @@ Azure Maps fiók létrehozása után a Azure Maps `x-ms-client-id` érték szere
 
 Azure-erőforrásokon való futtatáskor konfigurálja az Azure által felügyelt identitásokat, hogy az alacsony költségeket, a minimális hitelesítőadat-kezelési erőfeszítést engedélyezze. 
 
-A felügyelt identitások alkalmazáshoz való hozzáférésének engedélyezéséhez tekintse meg a [felügyelt identitások áttekintését](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) .
+A felügyelt identitások alkalmazáshoz való hozzáférésének engedélyezéséhez tekintse meg a [felügyelt identitások áttekintését](../active-directory/managed-identities-azure-resources/overview.md) .
 
 Felügyelt identitás előnyei:
 
@@ -75,46 +75,46 @@ Felügyelt identitás előnyei:
 
 A nem Azure-beli környezetekben felügyelt identitások nem érhetők el. Ezért egy egyszerű szolgáltatásnevet kell konfigurálnia egy Azure AD-alkalmazás regisztrálásával a Daemon-alkalmazáshoz.
 
-1. Az Azure Portal az Azure-szolgáltatások listájában válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.  
+1. Az Azure Portal az Azure-szolgáltatások listájában válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.  
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
-2. Ha már regisztrálta az alkalmazást, folytassa a következő lépéssel. Ha még nem regisztrálta az alkalmazást, adjon meg egy **nevet**, válassza ki a **támogatási fiók típusát**, majd válassza a **regisztráció**lehetőséget.  
+2. Ha már regisztrálta az alkalmazást, folytassa a következő lépéssel. Ha még nem regisztrálta az alkalmazást, adjon meg egy **nevet** , válassza ki a **támogatási fiók típusát** , majd válassza a **regisztráció** lehetőséget.  
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás regisztrációjának részletei](./media/how-to-manage-authentication/app-create.png)
 
-3. Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután a **Alkalmazásregisztrációk**alatt válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**. A **szervezetem által használt API**-k alatt keresse meg és válassza a **Azure Maps**lehetőséget.
+3. Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután a **Alkalmazásregisztrációk** alatt válassza az **API-engedélyek**  >  **Hozzáadás engedélyt** . A **szervezetem által használt API** -k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek hozzáadása](./media/how-to-manage-authentication/app-permissions.png)
 
-4. Jelölje be a **hozzáférési Azure Maps**melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása**lehetőséget.
+4. Jelölje be a **hozzáférési Azure Maps** melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek kiválasztása](./media/how-to-manage-authentication/select-app-permissions.png)
 
 5. Az alábbi lépések végrehajtásával hozzon létre egy ügyfél-titkos kulcsot, vagy konfigurálja a tanúsítványt.
 
-    * Ha az alkalmazása kiszolgálói vagy alkalmazás-hitelesítést használ, akkor az alkalmazás regisztrációs oldalán lépjen a **tanúsítványok & Secrets**elemre. Ezután töltsön fel egy nyilvános kulcsú tanúsítványt, vagy hozzon létre egy jelszót az **új ügyfél-titok**lehetőség kiválasztásával.
+    * Ha az alkalmazása kiszolgálói vagy alkalmazás-hitelesítést használ, akkor az alkalmazás regisztrációs oldalán lépjen a **tanúsítványok & Secrets** elemre. Ezután töltsön fel egy nyilvános kulcsú tanúsítványt, vagy hozzon létre egy jelszót az **új ügyfél-titok** lehetőség kiválasztásával.
 
         > [!div class="mx-imgBorder"]
         > ![Ügyfél titkos kulcsának létrehozása](./media/how-to-manage-authentication/app-keys.png)
 
-    * A **Hozzáadás**gombra kattintva másolja a titkos kulcsot, és tárolja biztonságosan egy olyan szolgáltatásban, mint például a Azure Key Vault. Tekintse át [Azure Key Vault fejlesztői útmutatót](https://docs.microsoft.com/azure/key-vault/general/developers-guide) a tanúsítvány vagy a titkos kulcs biztonságos tárolásához. Ezt a titkot fogja használni a jogkivonatok Azure AD-ből való lekéréséhez.
+    * A **Hozzáadás** gombra kattintva másolja a titkos kulcsot, és tárolja biztonságosan egy olyan szolgáltatásban, mint például a Azure Key Vault. Tekintse át [Azure Key Vault fejlesztői útmutatót](../key-vault/general/developers-guide.md) a tanúsítvány vagy a titkos kulcs biztonságos tárolásához. Ezt a titkot fogja használni a jogkivonatok Azure AD-ből való lekéréséhez.
 
         > [!div class="mx-imgBorder"]
         > ![Ügyfél titkos kulcsának hozzáadása](./media/how-to-manage-authentication/add-key.png)
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Szerepköralapú hozzáférés biztosítása a Daemon-alkalmazáshoz Azure Maps
 
-Az *Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)* a létrehozott felügyelt identitás vagy az egyszerű szolgáltatásnév hozzárendelésével adhatja meg egy vagy több Azure Maps szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
+Az *Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)* a létrehozott felügyelt identitás vagy az egyszerű szolgáltatásnév hozzárendelésével adhatja meg egy vagy több Azure Maps szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök** elemet, majd keressen rá a *Azure Maps* kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
 
 > [!div class="mx-imgBorder"]
 > ![Elérhető szerepkörök megtekintése](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. Nyissa meg **Azure Maps-fiókját**. Válassza a **Hozzáférés-vezérlés (IAM)** > **Szerepkör-hozzárendelések** lehetőséget.
+1. Nyissa meg **Azure Maps-fiókját** . Válassza a **Hozzáférés-vezérlés (IAM)** > **Szerepkör-hozzárendelések** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Hozzáférés biztosítása az Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
@@ -124,7 +124,7 @@ Az *Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)* a létrehozot
     > [!div class="mx-imgBorder"]
     > ![Képernyőfelvétel: a kiválasztott hozzáadással rendelkező roll-hozzárendelések megjelenítése.](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. Válasszon egy beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés hozzárendelése**területen válassza ki az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** vagy felügyelt identitás elemet a **felhasználóhoz rendelt felügyelt identitásrendszer**  /  **hozzárendelt felügyelt identitásával**. Válassza ki a rendszerbiztonsági tag. Kattintson a **Mentés** gombra.
+3. Válasszon egy beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő** . A **hozzáférés hozzárendelése** területen válassza ki az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** vagy felügyelt identitás elemet a **felhasználóhoz rendelt felügyelt identitásrendszer**  /  **hozzárendelt felügyelt identitásával** . Válassza ki a rendszerbiztonsági tag. Kattintson a **Mentés** gombra.
 
     > [!div class="mx-imgBorder"]
     > ![Szerepkör-hozzárendelés hozzáadása](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
@@ -133,7 +133,7 @@ Az *Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)* a létrehozot
 
 ## <a name="request-token-with-managed-identity"></a>Kérelem jogkivonata felügyelt identitással
 
-Miután konfigurálta a felügyelt identitást a szolgáltatói erőforráshoz, az Azure SDK vagy a REST API használatával szerezzen be jogkivonatot a Azure Mapshoz, a [hozzáférési token beszerzésével](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token)kapcsolatos részletekért lásd:. Az útmutató alapján a várt érték azt jelzi, hogy a rendszer egy hozzáférési jogkivonatot ad vissza, amely REST API kérések esetén használható.
+Miután konfigurálta a felügyelt identitást a szolgáltatói erőforráshoz, az Azure SDK vagy a REST API használatával szerezzen be jogkivonatot a Azure Mapshoz, a [hozzáférési token beszerzésével](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)kapcsolatos részletekért lásd:. Az útmutató alapján a várt érték azt jelzi, hogy a rendszer egy hozzáférési jogkivonatot ad vissza, amely REST API kérések esetén használható.
 
 ## <a name="request-token-with-application-registration"></a>Igénylési jogkivonat az alkalmazás regisztrálásával
 
@@ -168,7 +168,7 @@ Válasz:
 }
 ```
 
-Részletesebb példákat az [Azure ad hitelesítési forgatókönyvei](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)című témakörben talál.
+Részletesebb példákat az [Azure ad hitelesítési forgatókönyvei](../active-directory/develop/authentication-vs-authorization.md)című témakörben talál.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090437"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895630"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Egy bemeneti korlátozott eszköz biztonságossá tétele az Azure AD-vel és a Azure Maps REST API-kkal
 
@@ -25,42 +25,42 @@ Ez az útmutató azt ismerteti, hogyan lehet biztonságossá tenni olyan nyilvá
 ## <a name="create-an-application-registration-in-azure-ad"></a>Alkalmazás-regisztráció létrehozása az Azure AD-ben
 
 > [!NOTE]
-> * **Előfeltétel-olvasás:** [forgatókönyv: a webes API-kat meghívó asztali alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview)
+> * **Előfeltétel-olvasás:** [forgatókönyv: a webes API-kat meghívó asztali alkalmazás](../active-directory/develop/scenario-desktop-overview.md)
 > * A következő forgatókönyv az eszköz kódjának folyamatát használja, amely nem tartalmaz egy webböngészőt a jogkivonat beszerzéséhez.
 
 Hozza létre az eszközön alapuló alkalmazást az Azure AD-ben az Azure AD-bejelentkezés engedélyezéséhez. Ez az alkalmazás hozzáférést kap a Azure Maps REST API-khoz.
 
-1. Az Azure Portal az Azure-szolgáltatások listájában válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.  
+1. Az Azure Portal az Azure-szolgáltatások listájában válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.  
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
-2. Adjon meg egy **nevet**, a **szervezeti könyvtárban** válassza a fiókok lehetőséget, csak a **támogatott fióktípus**. Az **átirányítási URI**-k területen adja meg a **nyilvános ügyfél/natív (Mobile & Desktop)** értéket, majd adja hozzá `https://login.microsoftonline.com/common/oauth2/nativeclient` az értéket. További részletekért tekintse meg az Azure AD [Desktop alkalmazást, amely meghívja a webes API-kat: alkalmazás-regisztráció](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration). Ezután **regisztrálja** az alkalmazást.
+2. Adjon meg egy **nevet** , a **szervezeti könyvtárban** válassza a fiókok lehetőséget, csak a **támogatott fióktípus** . Az **átirányítási URI** -k területen adja meg a **nyilvános ügyfél/natív (Mobile & Desktop)** értéket, majd adja hozzá `https://login.microsoftonline.com/common/oauth2/nativeclient` az értéket. További részletekért tekintse meg az Azure AD [Desktop alkalmazást, amely meghívja a webes API-kat: alkalmazás-regisztráció](../active-directory/develop/scenario-desktop-app-registration.md). Ezután **regisztrálja** az alkalmazást.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás regisztrációs adatainak hozzáadása a név és az átirányítási URI számára](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. Navigáljon a **hitelesítéshez** , és engedélyezze **nyilvános ügyfélként az alkalmazás kezelését**. Ez lehetővé teszi az Azure AD-ban az eszköz kódjának hitelesítését.
+3. Navigáljon a **hitelesítéshez** , és engedélyezze **nyilvános ügyfélként az alkalmazás kezelését** . Ez lehetővé teszi az Azure AD-ban az eszköz kódjának hitelesítését.
     
     > [!div class="mx-imgBorder"]
     > ![Alkalmazások regisztrálásának engedélyezése nyilvános ügyfélként](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután válassza az **API-engedélyek**engedély  >  **hozzáadása**lehetőséget. A **szervezetem által használt API**-k alatt keresse meg és válassza a **Azure Maps**lehetőséget.
+4.  Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután válassza az **API-engedélyek** engedély  >  **hozzáadása** lehetőséget. A **szervezetem által használt API** -k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek hozzáadása](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Jelölje be a **hozzáférési Azure Maps**melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása**lehetőséget.
+5. Jelölje be a **hozzáférési Azure Maps** melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek kiválasztása](./media/how-to-manage-authentication/select-app-permissions.png)
 
 6. Konfigurálja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) felhasználókhoz vagy csoportokhoz. Lásd: [szerepköralapú hozzáférés biztosítása a felhasználók számára a Azure Maps](#grant-role-based-access-for-users-to-azure-maps).
 
-7. Kód hozzáadása a jogkivonat-adatfolyam beszerzéséhez az alkalmazásban a megvalósítás részleteiért lásd: az [eszköz kódjának folyamata](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow). A jogkivonatok beszerzése során hivatkozzon a hatókörre: `user_impersonation` Ez a korábbi lépéseknél lett kiválasztva.
+7. Kód hozzáadása a jogkivonat-adatfolyam beszerzéséhez az alkalmazásban a megvalósítás részleteiért lásd: az [eszköz kódjának folyamata](../active-directory/develop/scenario-desktop-acquire-token.md#device-code-flow). A jogkivonatok beszerzése során hivatkozzon a hatókörre: `user_impersonation` Ez a korábbi lépéseknél lett kiválasztva.
 
 > [!Tip]
-> Hozzáférési jogkivonatok beszerzése a Microsoft Authentication Library (MSAL) használatával. A [webes API-kat meghívó asztali alkalmazásra vonatkozó javaslatok megtekintése: kód konfigurálása](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-configuration)
+> Hozzáférési jogkivonatok beszerzése a Microsoft Authentication Library (MSAL) használatával. A [webes API-kat meghívó asztali alkalmazásra vonatkozó javaslatok megtekintése: kód konfigurálása](../active-directory/develop/scenario-desktop-app-configuration.md)
 
 8. Állítsa össze a HTTP-kérést a beszerzett jogkivonattal az Azure AD-ből, és küldjön egy érvényes HTTP-ügyféllel rendelkező kérelmet.
 

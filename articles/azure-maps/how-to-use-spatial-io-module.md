@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335296"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895392"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>A Azure Maps térbeli IO-modul használata
 
-A Azure Maps web SDK a **térbeli IO-modult**biztosítja, amely a térbeli és a Azure Maps web SDK-val együtt JavaScript vagy írógéppel használatával integrálja a térbeli adategységeket. A modul robusztus funkciói lehetővé teszik a fejlesztők számára a következőket:
+A Azure Maps web SDK a **térbeli IO-modult** biztosítja, amely a térbeli és a Azure Maps web SDK-val együtt JavaScript vagy írógéppel használatával integrálja a térbeli adategységeket. A modul robusztus funkciói lehetővé teszik a fejlesztők számára a következőket:
 
 - [Gyakori térbeli adatfájlok olvasása és írása](spatial-io-read-write-spatial-data.md). A támogatott fájlformátumok közé tartozik a KML, a KMZ, a GPX, a GeoRSS, a GML, a GeoJSON és a CSV fájl, amely térbeli adatokat tartalmazó oszlopokat tartalmaz. A Well-Known szöveget (WKT) is támogatja.
 - [Csatlakozhat nyílt térinformatikai konzorcium (OGC) szolgáltatáshoz, és integrálhatja az Azure Maps web SDK-val. Az overlay web Map Services (WMS) és a web Map csempe-szolgáltatások (WMTS) rétegként jelennek meg a térképen](spatial-io-add-ogc-map-layer.md).
@@ -40,7 +40,7 @@ Ez a videó áttekintést nyújt a térbeli IO-modulról a Azure Maps web SDK-ba
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A térbeli i/o-modul használatához [Azure Maps fiókot kell létrehoznia](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) , és [be kell szereznie a fiókjához tartozó elsődleges előfizetési kulcsot](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account).
+A térbeli i/o-modul használatához [Azure Maps fiókot kell létrehoznia](./quick-demo-map-app.md#create-an-azure-maps-account) , és [be kell szereznie a fiókjához tartozó elsődleges előfizetési kulcsot](./quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
 ## <a name="installing-the-spatial-io-module"></a>A térbeli IO-modul telepítése
 
@@ -68,7 +68,7 @@ A Azure Maps térbeli i/o-modult a két lehetőség egyikének használatával t
 
 1. Hozzon létre egy új HTML-fájlt.
 
-2. Töltse be a Azure Maps web SDK-t, és inicializálja a Térkép vezérlőelemet. A részletekért tekintse meg a [Azure Maps Map Control](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) útmutatót. Ha elkészült ezzel a lépéssel, a HTML-fájlnak így kell kinéznie:
+2. Töltse be a Azure Maps web SDK-t, és inicializálja a Térkép vezérlőelemet. A részletekért tekintse meg a [Azure Maps Map Control](./how-to-use-map-control.md) útmutatót. Ha elkészült ezzel a lépéssel, a HTML-fájlnak így kell kinéznie:
 
     ```html
     <!DOCTYPE html>
@@ -256,4 +256,4 @@ Az itt bemutatott funkció csak a térbeli IO-modul számos funkciójának egyik
 Tekintse át a Azure Maps térbeli IO dokumentációját:
 
 > [!div class="nextstepaction"]
-> [Azure Maps térbeli IO-csomag](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)
+> [Azure Maps térbeli IO-csomag](/javascript/api/azure-maps-spatial-io/)

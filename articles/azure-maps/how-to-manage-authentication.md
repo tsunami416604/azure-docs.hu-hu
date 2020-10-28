@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089451"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895766"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
 
@@ -22,16 +22,16 @@ Azure Maps fiók létrehozása után létrejön egy ügyfél-azonosító és egy
 
 ## <a name="view-authentication-details"></a>Hitelesítés részleteinek megtekintése
 
-Azure Maps fiók létrehozása után létrejön az elsődleges és a másodlagos kulcs. Javasoljuk, hogy egy elsődleges kulcsot használjon előfizetési kulcsként, ha [megosztott kulcsos hitelesítést használ a Azure Maps meghívásához](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication). Másodlagos kulcsot használhat olyan forgatókönyvekben, mint például a kulcsok változásai. További információ: [hitelesítés Azure Mapsban](https://aka.ms/amauth).
+Azure Maps fiók létrehozása után létrejön az elsődleges és a másodlagos kulcs. Javasoljuk, hogy egy elsődleges kulcsot használjon előfizetési kulcsként, ha [megosztott kulcsos hitelesítést használ a Azure Maps meghívásához](./azure-maps-authentication.md#shared-key-authentication). Másodlagos kulcsot használhat olyan forgatókönyvekben, mint például a kulcsok változásai. További információ: [hitelesítés Azure Mapsban](./azure-maps-authentication.md).
 
-A hitelesítési adatokat a Azure Portalban tekintheti meg. A fiókjában a **Beállítások** menüben válassza a **hitelesítés**lehetőséget.
+A hitelesítési adatokat a Azure Portalban tekintheti meg. A fiókjában a **Beállítások** menüben válassza a **hitelesítés** lehetőséget.
 
 > [!div class="mx-imgBorder"]
 > ![Hitelesítés részletei](./media/how-to-manage-authentication/how-to-view-auth.png)
 
 ## <a name="discover-category-and-scenario"></a>Kategória és forgatókönyv felderítése
 
-Az alkalmazásra vonatkozó igényektől függően az alkalmazás biztonságossá tétele bizonyos utakat igényel. Az Azure AD kategóriákat határoz meg a hitelesítési folyamatok széles körének támogatásához. Tekintse meg az [alkalmazások kategóriáit](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#application-categories) , hogy megtudja, melyik kategóriába tartozik az alkalmazás.
+Az alkalmazásra vonatkozó igényektől függően az alkalmazás biztonságossá tétele bizonyos utakat igényel. Az Azure AD kategóriákat határoz meg a hitelesítési folyamatok széles körének támogatásához. Tekintse meg az [alkalmazások kategóriáit](../active-directory/develop/authentication-flows-app-scenarios.md#application-categories) , hogy megtudja, melyik kategóriába tartozik az alkalmazás.
 
 > [!NOTE]
 > Ha megosztott kulcsos hitelesítést használ, a kategóriák és a forgatókönyvek megismerése segít az alkalmazás biztonságossá tételében.
@@ -43,9 +43,9 @@ Az alábbi táblázat a Azure Maps gyakori hitelesítési és engedélyezési fo
 > [!IMPORTANT]
 > A Microsoft az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alkalmazásával javasolja a Azure Active Directory (Azure AD) megvalósítását.
 
-| Forgatókönyv                                                                                    | Hitelesítés | Engedélyezés | Fejlesztési tevékenység | Működési tevékenység |
+| Használati eset                                                                                    | Hitelesítés | Engedélyezés | Fejlesztési tevékenység | Működési tevékenység |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Megosztott kulcsos     | N.A.           | Közepes             | Magas               |
+| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Megosztott kulcsos     | N/A           | Közepes             | Magas               |
 | [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Azure AD       | Magas          | Alacsony                | Közepes             |
 | [Web Single Page-alkalmazás interaktív egyszeri bejelentkezéssel](./how-to-secure-spa-users.md) | Azure AD       | Magas          | Közepes             | Közepes             |
 | [Web Single Page-alkalmazás nem interaktív bejelentkezéssel](./how-to-secure-spa-app.md)      | Azure AD       | Magas          | Közepes             | Közepes             |
@@ -56,14 +56,14 @@ A táblázatban található hivatkozások részletes konfigurációs informáci�
 
 ## <a name="view-role-definitions"></a>Szerepkör-definíciók megtekintése
 
-A Azure Maps számára elérhető Azure-szerepkörök megtekintéséhez lépjen a hozzáférés- **vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
+A Azure Maps számára elérhető Azure-szerepkörök megtekintéséhez lépjen a hozzáférés- **vezérlés (iam)** elemre. Válassza ki a **szerepkörök** elemet, majd keressen rá a *Azure Maps* kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
 
 > [!div class="mx-imgBorder"]
 > ![Elérhető szerepkörök megtekintése](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 ## <a name="view-role-assignments"></a>Szerepkör-hozzárendelések megtekintése
 
-A Azure Mapshoz hozzáféréssel rendelkező felhasználók és alkalmazások megtekintéséhez lépjen a **Access Control (iam)** elemre. Itt válassza ki a **szerepkör-hozzárendelések**lehetőséget, majd a szűrést **Azure Maps**alapján.
+A Azure Mapshoz hozzáféréssel rendelkező felhasználók és alkalmazások megtekintéséhez lépjen a **Access Control (iam)** elemre. Itt válassza ki a **szerepkör-hozzárendelések** lehetőséget, majd a szűrést **Azure Maps** alapján.
 
 > [!div class="mx-imgBorder"]
 > ![Hozzáférésre jogosult felhasználók és alkalmazások megtekintése](./media/how-to-manage-authentication/how-to-view-amrbac.png)
@@ -77,11 +77,11 @@ Igényeljen tokent az Azure AD-jogkivonat végpontján. Az Azure AD-kérelemben 
 | Azure nyilvános felhő     | `https://login.microsoftonline.com` | `https://atlas.microsoft.com/` |
 | Azure Government felhő | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
-További információ az Azure AD-től a felhasználók és a szolgáltatások hozzáférési jogkivonatának igénylésével kapcsolatban: [hitelesítési forgatókönyvek az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios) és a [forgatókönyvekben](./how-to-manage-authentication.md#determine-authentication-and-authorization)megadott forgatókönyvek megtekintése.
+További információ az Azure AD-től a felhasználók és a szolgáltatások hozzáférési jogkivonatának igénylésével kapcsolatban: [hitelesítési forgatókönyvek az Azure ad-hez](../active-directory/develop/authentication-vs-authorization.md) és a [forgatókönyvekben](./how-to-manage-authentication.md#determine-authentication-and-authorization)megadott forgatókönyvek megtekintése.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: [Azure ad és Azure Maps web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+További információ: [Azure ad és Azure Maps web SDK](./how-to-use-map-control.md).
 
 A Azure Maps-fiók API-használati metrikáinak megkeresése:
 > [!div class="nextstepaction"]
