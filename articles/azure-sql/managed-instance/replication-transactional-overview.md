@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: a335f6ac015397ba2b2634d0d604c194a768260a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283207"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790814"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Tranzakciós replikáció az Azure SQL felügyelt példányaival (előzetes verzió)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,15 +35,15 @@ A tranzakciós replikálás használatával leküldheti az Azure SQL felügyelt 
 - Példány-adatbázis az Azure SQL felügyelt példányában
 
   > [!NOTE]
-  > Az Azure SQL felügyelt példányok összes funkciójának használatához a [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)legújabb verzióját kell használnia.
+  > Az Azure SQL felügyelt példányok összes funkciójának használatához a [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) és a [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)legújabb verzióját kell használnia.
 
 ### <a name="components"></a>Összetevők
 
-A tranzakciós replikáció legfontosabb összetevői a **közzétevő**, a **terjesztő**és az **előfizető**, ahogyan az a következő képen látható:  
+A tranzakciós replikáció legfontosabb összetevői a **közzétevő** , a **terjesztő** és az **előfizető** , ahogyan az a következő képen látható:  
 
 ![replikálás SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Szerepkör | Azure SQL Database | Felügyelt Azure SQL-példány |
+| Role | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
 | **Publisher** | Nem | Igen |
 | **Terjesztő** | Nem | Igen|
@@ -65,21 +65,21 @@ Az Azure SQL felügyelt példánya a következő SQL Server-verziók előfizető
 
    > [!NOTE]
    >
-   > - Az olyan SQL Server más verziói esetében, amelyek nem támogatják az Azure-ban lévő objektumok közzétételét, a [republishing](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) adatmódszer használatával áthelyezheti az adatátvitelt a SQL Server újabb verzióiba.
+   > - Az olyan SQL Server más verziói esetében, amelyek nem támogatják az Azure-ban lévő objektumok közzétételét, a [republishing](/sql/relational-databases/replication/republish-data) adatmódszer használatával áthelyezheti az adatátvitelt a SQL Server újabb verzióiba.
    > - Ha egy régebbi verzió használatával próbál meg konfigurálni a replikálást, a hiba szám MSSQL_REPL20084 (a folyamat nem tudott csatlakozni az előfizetőhöz.) és a MSSQ_REPL40532 (a bejelentkezés által kért kiszolgáló nem nyitható meg \<name> . A bejelentkezés sikertelen.)
 
 ### <a name="types-of-replication"></a>Replikálási típusok
 
-A replikáció különböző [típusú](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
+A replikáció különböző [típusú](/sql/relational-databases/replication/types-of-replication):
 
 | Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen |
-| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
-| [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
-| [**Egyenrangú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
-| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
-| [**Frissíthető előfizetések**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
+| [**Normál tranzakciós**](/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen |
+| [**Pillanatkép**](/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
+| [**Replikálás egyesítése**](/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
+| [**Egyenrangú**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
+| [**Kétirányú**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
+| [**Frissíthető előfizetések**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>Támogatási mátrix
@@ -148,7 +148,7 @@ Ebben a konfigurációban a Azure SQL Database vagy az Azure SQL felügyelt pél
 - Konfigurálja a VPN-társítást a replikációs résztvevők virtuális hálózatai között, ha a virtuális hálózatok eltérőek.
 
 > [!NOTE]
-> Ha a kimenő hálózati biztonsági csoport (NSG) 445-es portja le van tiltva, ha a terjesztő egy Azure SQL felügyelt példány-adatbázis, és az előfizető a helyszínen van, akkor a 53-es hiba léphet fel egy Azure Storage-fájlhoz való csatlakozáskor. A probléma megoldásához [frissítse a VNET NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) .
+> Ha a kimenő hálózati biztonsági csoport (NSG) 445-es portja le van tiltva, ha a terjesztő egy Azure SQL felügyelt példány-adatbázis, és az előfizető a helyszínen van, akkor a 53-es hiba léphet fel egy Azure Storage-fájlhoz való csatlakozáskor. A probléma megoldásához [frissítse a VNET NSG](../../storage/files/storage-troubleshoot-windows-file-connection-problems.md) .
 
 ## <a name="with-failover-groups"></a>Feladatátvételi csoportokkal
 
@@ -196,16 +196,16 @@ A tranzakciós replikáció konfigurálásával kapcsolatos további informáci�
 
 - [Replikáció konfigurálása egy SQL felügyelt példány közzétevője és előfizetője között](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Replikáció konfigurálása egy felügyelt SQL-példány közzétevője, az SQL felügyelt példány-terjesztője és SQL Server előfizető között](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
-- [Hozzon létre egy kiadványt](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-- [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) , amely a kiszolgáló nevét használja előfizetőként (például `N'azuresqldbdns.database.windows.net` a (z) Azure SQL Database nevű adatbázist a céladatbázisként (például **AdventureWorks**). )
+- [Hozzon létre egy kiadványt](/sql/relational-databases/replication/publish/create-a-publication).
+- [Hozzon létre egy leküldéses előfizetést](/sql/relational-databases/replication/create-a-push-subscription) , amely a kiszolgáló nevét használja előfizetőként (például `N'azuresqldbdns.database.windows.net` a (z) Azure SQL Database nevű adatbázist a céladatbázisként (például **AdventureWorks** ). )
 
 ## <a name="see-also"></a>Lásd még  
 
 - [Replikálás SQL felügyelt példánnyal és feladatátvételi csoporttal](transact-sql-tsql-differences-sql-server.md#replication)
 - [Replikáció az SQL Database-be](../database/replication-to-sql-database.md)
 - [Replikálás felügyelt példányra](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Leküldéses előfizetés létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [A replikáció típusai](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Figyelés (replikálás)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Előfizetés inicializálása](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [Kiadvány létrehozása](/sql/relational-databases/replication/publish/create-a-publication)
+- [Leküldéses előfizetés létrehozása](/sql/relational-databases/replication/create-a-push-subscription/)
+- [A replikáció típusai](/sql/relational-databases/replication/types-of-replication)
+- [Figyelés (replikálás)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Előfizetés inicializálása](/sql/relational-databases/replication/initialize-a-subscription)

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448904"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790406"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Az SQLite-adatbázis migrálása Azure SQL Database kiszolgáló nélkülire
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,13 +53,13 @@ Ha követte az alábbi lépéseket, az adatbázis Azure SQL Database kiszolgál�
     - Az ADF elindítása (szerző és figyelő a szolgáltatásból a Azure Portal)
     - Kattintson a "Szerző" fülre (kék ceruza) a bal oldalon
     - Kattintson a kapcsolatok (bal alsó), majd az integrációs modulok elemre.
-    - Vegyen fel új Self-Hosted Integration Runtime, adjon meg egy nevet, válassza a *2. lehetőséget*.
+    - Vegyen fel új Self-Hosted Integration Runtime, adjon meg egy nevet, válassza a *2. lehetőséget* .
 
 5. Hozzon létre egy új társított szolgáltatást a forrás SQLite-adatbázishoz a Data Factory.
 
     ![Képernyőfelvétel: üres társított szolgáltatások panel Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
 
-6. A **kapcsolatok**területen a **társított szolgáltatás**alatt kattintson az **új**elemre.
+6. A **kapcsolatok** területen a **társított szolgáltatás** alatt kattintson az **új** elemre.
 
 7. Az "ODBC" összekötő keresése és kiválasztása
 
@@ -109,4 +109,4 @@ Ha követte az alábbi lépéseket, az adatbázis Azure SQL Database kiszolgál�
 ## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg a rövid útmutató [: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](single-database-create-quickstart.md)című témakört.
-- Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](../../sql-database/sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).
+- Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](./resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).

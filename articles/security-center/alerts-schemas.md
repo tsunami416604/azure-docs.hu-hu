@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341940"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789216"
 ---
 # <a name="security-alerts-schemas"></a>Biztonsági riasztások sémái
 
@@ -25,7 +25,7 @@ Ha az előfizetése engedélyezve van az Azure Defender számára, akkor biztons
 Ezeket a biztonsági riasztásokat megtekintheti Azure Security Center **veszélyforrások elleni védelmi** oldalain, illetve külső eszközökkel, például a következőkkel:
 
 - [Azure Sentinel](../sentinel/index.yml) – a Microsoft Felhőbeli natív Siem-je. A Sentinel Connector Azure Security Center riasztásokat küld, és elküldi azokat az Azure Sentinel [log Analytics munkaterületére](../azure-monitor/learn/quick-create-workspace.md) .
-- Harmadik féltől származó SIEM-k – a Security Center [folyamatos exportálási](continuous-export.md) eszközeivel küldhet adatküldést az [Azure-Event Hubsba](../event-hubs/index.yml). Ezután integrálja az Event hub-adatait egy harmadik féltől származó SIEM-mel.
+- Harmadik féltől származó SIEM-ekkel való adatküldés az [Azure Event Hubsba](../event-hubs/index.yml). Ezután integrálja az Event hub-adatait egy harmadik féltől származó SIEM-mel. További információ a [stream-riasztásokról a Siem, a SOAR vagy az IT Service Management megoldáshoz](export-to-siem.md).
 - [A REST API](/rest/api/securitycenter/) – ha a REST API használatával fér hozzá a riasztásokhoz, tekintse meg az [online riasztások API dokumentációját](/rest/api/securitycenter/alerts).
 
 Ha bármilyen programozott módszert használ a riasztások felhasználásához, a megfelelő sémára lesz szüksége az Ön számára releváns mezők megtalálásához. Emellett, ha egy Event hub-ba exportál, vagy a munkafolyamat-automatizálást általános HTTP-összekötővel próbálja elindítani, a sémák segítségével megfelelően elemezheti a JSON-objektumokat.
@@ -46,8 +46,9 @@ Az alábbiakban megtalálhatja az átadott riasztási események sémáját:
 - Az Security Center munkafolyamat-automatizálásában konfigurált Azure Logic app-példányok
 - Azure Event hub a Security Center folyamatos exportálási funkciójával
 
-További információ a munkafolyamat-automatizálási szolgáltatásról: [válaszok automatizálása a riasztásokra és javaslatokra](workflow-automation.md).
-További információ a folyamatos exportálásról: [riasztások és javaslatok exportálása](continuous-export.md).
+További információ a munkafolyamat-automatizálási szolgáltatásról: [Security Center eseményindítók válaszának automatizálása](workflow-automation.md).
+
+További információ a folyamatos exportálásról: [Security Center adatok folyamatos exportálása](continuous-export.md).
 
 [!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
 
@@ -185,5 +186,5 @@ A biztonsági riasztások Security Centeron kívülről történő elérésének
 
 - [Azure Sentinel](../sentinel/index.yml) – a Microsoft Felhőbeli natív Siem-je
 - [Azure Event Hubs](../event-hubs/index.yml) – a Microsoft teljes körűen felügyelt, valós idejű adatfeldolgozási szolgáltatása
-- Security Center [folyamatos exportálási funkciója](continuous-export.md)
+- [Security Center-adatfeldolgozás folyamatos exportálása](continuous-export.md)
 - [Log Analytics-munkaterületek](../azure-monitor/learn/quick-create-workspace.md) – a Azure Monitor a log Analytics munkaterületen tárolja a naplózási adatokat, egy olyan tárolót, amely adatokat és konfigurációs adatokat tartalmaz.

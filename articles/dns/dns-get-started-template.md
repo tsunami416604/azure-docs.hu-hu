@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 09/8/2020
 ms.author: duau
 ms.custom: subject-armqs
-ms.openlocfilehash: 986258631d47989e5be5e738da86f844283ce706
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 24460167e2279e7d3001d0bc16d050beb5b55289
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093820"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791001"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Rövid útmutató: Azure DNS zóna és rekord létrehozása ARM-sablonnal
 
-Ez a rövid útmutató azt ismerteti, hogyan használható egy Azure Resource Manager sablon (ARM-sablon) egy olyan DNS-zóna létrehozásához, amely egy rekordot tartalmaz.
+Ez a rövid útmutató azt ismerteti, hogyan használható egy Azure Resource Manager sablon (ARM-sablon) egy olyan DNS-zóna létrehozásához, `A` amelyben rekord található.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,20 +34,20 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-azure-dns-new-zone) közül származik.
 
-Ebben a rövid útmutatóban egy egyedi DNS-zónát fog létrehozni a azurequickstart utótaggal * <span>.</span> org*. Egy két IP-címre *mutató rekord is* a zónába kerül.
+Ebben a rövid útmutatóban egy egyedi DNS-zónát fog létrehozni a következő utótaggal: `azurequickstart.org` . `A`Két IP-címre mutató rekord is a zónába kerül.
 
 :::code language="json" source="~/quickstart-templates/101-azure-dns-new-zone/azuredeploy.json":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
-* [**Microsoft. Network/dnsZones**](/azure/templates/microsoft.network/dnsZones)
-* [**Microsoft. Network/dnsZones/a**](/azure/templates/microsoft.network/dnsZones/A) (egy rekordnak a zónában való létrehozásához használatos)
+- [**Microsoft. Network/dnsZones**](/azure/templates/microsoft.network/dnsZones)
+- [**Microsoft. Network/dnsZones/A**](/azure/templates/microsoft.network/dnsZones/A): rekord létrehozásához használatos `A` a zónában.
 
 Az Azure Traffic Manager-hoz kapcsolódó további sablonokért tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez. 
+1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,11 +66,11 @@ Az Azure Traffic Manager-hoz kapcsolódó további sablonokért tekintse meg az 
 
 1. A PowerShell-szkript másolásához válassza a **Másolás** az előző kódrészletből lehetőséget.
 
-1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés**lehetőséget.
+1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
 
 1. Adja meg az értékeket.
 
-    A sablon központi telepítése létrehoz egy zónát egy olyan rekorddal, amely két IP-címre mutat. Az erőforráscsoport neve a projekt neve **RG** hozzáfűzéssel.
+    A sablon központi telepítése egy olyan zónát hoz létre, amely egy `A` rekorddal két IP-címre mutat. Az erőforráscsoport neve a projekt neve **RG** hozzáfűzéssel.
 
     A sablon üzembe helyezése néhány másodpercig tart. Ha elkészült, a kimenet a következőhöz hasonló:
 
@@ -80,7 +80,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
 
@@ -90,7 +90,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
     :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Azure DNS zóna Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
 
-1. Válassza ki a DNS-zónát a ** <span>azurequickstart</span> utótaggal. Ellenőrizze, hogy a** zóna megfelelően lett-e létrehozva egy **olyan** rekorddal, amely a **1.2.3.4** és a **1.2.3.5**értékére hivatkozik.
+1. Válassza ki a DNS-zónát az utótaggal annak `azurequickstart.org` ellenőrzéséhez, hogy a zóna megfelelően lett-e létrehozva a `A` és a értékére hivatkozó rekorddal `1.2.3.4` `1.2.3.5` .
 
     :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Azure DNS zóna Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
 
@@ -98,13 +98,13 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 1. Nyisson meg egy parancssort, és futtassa a következő parancsot:
 
-   ```
+   ```cmd
    nslookup www.<dns zone name> <name server name>
    ```
 
    Például:
 
-   ```
+   ```cmd
    nslookup www.2lwynbseszpam.azurequickstart.org ns1-09.azure-dns.com.
    ```
 
@@ -112,9 +112,9 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
     :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Azure DNS zóna Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
 
-A gazdagép neve: **www<span>. 2lwynbseszpam. azurequickstart.</span> a szervezeti** feloldja a **1.2.3.4** és a **1.2.3.5**, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
+A gazdagép neve a `www.2lwynbseszpam.azurequickstart.org` és a értékre van feloldva `1.2.3.4` `1.2.3.5` , ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szüksége a DNS-zónával létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a DNS-zónát és az összes kapcsolódó erőforrást.
 
@@ -127,10 +127,11 @@ Remove-AzResourceGroup -Name <your resource group name>
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
-* DNS-zóna
-* A-rekord
 
-Most, hogy létrehozta az első DNS-zónáját és-rekordját a Azure Resource Manager sablonnal, létrehozhat egy webalkalmazáshoz tartozó rekordokat egy egyéni tartományban.
+- DNS-zóna
+- `A` rekord
+
+Most, hogy létrehozta az első DNS-zónáját és-rekordját egy ARM-sablonnal, létrehozhat egy egyéni tartományba tartozó webalkalmazáshoz tartozó rekordokat.
 
 > [!div class="nextstepaction"]
 > [Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban](./dns-web-sites-custom-domain.md)

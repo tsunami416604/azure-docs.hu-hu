@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6133d838fa31919a37ddd633193e5559c50de9b6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317055"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790440"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyelésére és hibakeresésére (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ Az elérhető Intelligent Insights lehetőségek a következők:
 
 A Intelligent Insights kimenete az elemzéshez több célhelyre is továbbítható:
 
-- A Log Analytics munkaterületre továbbított kimenet a Azure Portal felhasználói felületén keresztül is megtekinthető a [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) használatával. Ez az integrált Azure-megoldás, amely a legfontosabb módszer az ismeretek megtekintésére.
+- A Log Analytics munkaterületre továbbított kimenet a Azure Portal felhasználói felületén keresztül is megtekinthető a [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) használatával. Ez az integrált Azure-megoldás, amely a legfontosabb módszer az ismeretek megtekintésére.
 - Az Azure Event Hubsba továbbított kimenet használható az egyéni figyelési és riasztási forgatókönyvek fejlesztéséhez
 - Az Azure Storage-ba továbbított kimenet használható az egyéni alkalmazások fejlesztéséhez, például az egyéni jelentéskészítéshez, a hosszú távú adatarchiváláshoz és így tovább.
 
@@ -107,7 +107,7 @@ Az alábbi példa egy Azure SQL Analyticson keresztül megtekintett Intelligent 
 
 ### <a name="set-up-with-event-hubs"></a>Beállítás a Event Hubs
 
-Ahhoz, hogy a Intelligent Insightst Event Hubs használatával lehessen használni, a Intelligent Insights naplózási adatokat Event Hubsra kell továbbítani, a [metrikák és diagnosztika naplózása](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) és [Az Azure Diagnostics-naplók továbbítása a Event Hubsba](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)című témakörben talál.
+Ahhoz, hogy a Intelligent Insightst Event Hubs használatával lehessen használni, a Intelligent Insights naplózási adatokat Event Hubsra kell továbbítani, a [metrikák és diagnosztika naplózása](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) és [Az Azure Diagnostics-naplók továbbítása a Event Hubsba](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)című témakörben talál.
 
 Ha egyéni figyelést és riasztást szeretne beállítani a Event Hubs használatával, tekintse meg a [Mi a teendő a metrikákkal és a diagnosztikai naplókkal foglalkozó](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)témakört Event Hubs.
 

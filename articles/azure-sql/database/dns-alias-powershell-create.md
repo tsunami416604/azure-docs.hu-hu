@@ -2,7 +2,7 @@
 title: DNS-alias (PowerShell & Azure CLI)
 description: A PowerShell és az Azure CLI-parancsmagok lehetővé teszik az új ügyfélkapcsolatok átirányítását egy másik Azure-beli SQL Server-kiszolgálóra anélkül, hogy meg kellene érintenie az ügyfél konfigurációját.
 keywords: DNS SQL Database
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: c1006cce4125adf67b9e3009bf8e27c0123acfd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02cfd839ed1b75fd85553f2e5a5150cadc29ff8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443641"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790457"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell DNS-aliashoz Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -52,14 +52,14 @@ A kód futtatásához szerkessze a helyőrző értékeit úgy, hogy azok megfele
 
 A használt parancsmagok a következők:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): DNS-aliast hoz létre a Azure SQL Database szolgáltatási rendszerben. Az alias az 1. kiszolgálóra hivatkozik.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): az 1. kiszolgálóhoz rendelt összes alias beolvasása és listázása.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról a 2. kiszolgálóra.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): távolítsa el az aliast a 2. kiszolgálóról az alias nevének használatával.
+- [New-AzSqlServerDNSAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias): DNS-aliast hoz létre a Azure SQL Database szolgáltatási rendszerben. Az alias az 1. kiszolgálóra hivatkozik.
+- [Get-AzSqlServerDNSAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): az 1. kiszolgálóhoz rendelt összes alias beolvasása és listázása.
+- [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról a 2. kiszolgálóra.
+- [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): távolítsa el az aliast a 2. kiszolgálóról az alias nevének használatával.
 
 A telepítéshez vagy frissítéshez olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
 
-`Get-Module -ListAvailable Az`A verzió megkereséséhez használja a *PowerShell \_ise.exe*.
+`Get-Module -ListAvailable Az`A verzió megkereséséhez használja a *PowerShell \_ise.exe* .
 
 ```powershell
 $subscriptionName = '<subscriptionName>';
@@ -98,10 +98,10 @@ Remove-AzSqlServerDnsAlias –ResourceGroupName $resourceGroupName2 -ServerName 
 
 A használt parancsok a következők:
 
-- [az SQL Server DNS-alias Create](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): létrehoz egy DNS-aliast a kiszolgálóhoz. Az alias az 1. kiszolgálóra hivatkozik.
-- az [SQL Server DNS-alias show](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): az 1. kiszolgálóhoz rendelt összes alias beolvasása és listázása.
-- az [SQL Server DNS-alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról a 2. kiszolgálóra.
-- az [SQL Server DNS-alias delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): távolítsa el az aliast a 2-es kiszolgálóról az alias nevével.
+- [az SQL Server DNS-alias Create](/powershell/module/az.Sql/New-azSqlServerDnsAlias): létrehoz egy DNS-aliast a kiszolgálóhoz. Az alias az 1. kiszolgálóra hivatkozik.
+- az [SQL Server DNS-alias show](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): az 1. kiszolgálóhoz rendelt összes alias beolvasása és listázása.
+- az [SQL Server DNS-alias set](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról a 2. kiszolgálóra.
+- az [SQL Server DNS-alias delete](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): távolítsa el az aliast a 2-es kiszolgálóról az alias nevével.
 
 Telepítéshez vagy frissítéshez: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
@@ -142,4 +142,4 @@ az sql server dns-alias delete –-resource-group $resourceGroupName2 --server $
 
 ## <a name="next-steps"></a>Következő lépések
 
-A SQL Database DNS-alias funkciójának részletes ismertetését lásd: [Azure SQL Database DNS-aliasa](../../sql-database/dns-alias-overview.md).
+A SQL Database DNS-alias funkciójának részletes ismertetését lásd: [Azure SQL Database DNS-aliasa](./dns-alias-overview.md).

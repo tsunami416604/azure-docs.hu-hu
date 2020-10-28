@@ -14,14 +14,14 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ec7ed958ac045c68fd7b616903f401dd07d8166
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293373"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789828"
 ---
-# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Az Azure-beli virtuális gépen futó SQL Server verziójának módosítása helyben
+# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Az Azure-beli virtuális gépen SQL Server verzió helyben történő módosítása
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
@@ -32,7 +32,7 @@ Ez a cikk azt ismerteti, hogyan módosíthatja a Microsoft SQL Server verziójá
 SQL Server helyben történő frissítéséhez a következő feltételek érvényesek:
 
 - A SQL Server kívánt verziójának telepítési adathordozójának megadása kötelező. A [Frissítési garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [Mennyiségilicenc-szolgáltatási központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx) szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, az Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják, amely a SQL Server újabb verziójával rendelkezik (ez általában a C:\SQLServerFull-ben található).
-- A kiadási [frissítéseknek a támogatási frissítések elérési útját](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)kell követniük.
+- A kiadási [frissítéseknek a támogatási frissítések elérési útját](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)kell követniük.
 
 ## <a name="planning-for-version-change"></a>A verzió módosításának tervezése
 
@@ -40,34 +40,34 @@ Javasoljuk, hogy a verzió módosítása előtt tekintse át a következő eleme
 
 1. Győződjön meg arról, hogy a verzió mely újdonságait tervezi frissíteni:
 
-   - Az [SQL 2019](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15) újdonságai
-   - Az [SQL 2017](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15) újdonságai
-   - Az [SQL 2016](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15) újdonságai
-   - Az [SQL 2014](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014) újdonságai
+   - Az [SQL 2019](/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15) újdonságai
+   - Az [SQL 2017](/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15) újdonságai
+   - Az [SQL 2016](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15) újdonságai
+   - Az [SQL 2014](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014) újdonságai
 
-1. Javasoljuk, hogy tekintse meg azon verzió [kompatibilitási tanúsítványát](https://docs.microsoft.com/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) , amelyet módosítani szeretne, hogy az adatbázis-kompatibilitási módok használatával csökkentse a frissítés hatását.
+1. Javasoljuk, hogy tekintse meg azon verzió [kompatibilitási tanúsítványát](/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) , amelyet módosítani szeretne, hogy az adatbázis-kompatibilitási módok használatával csökkentse a frissítés hatását.
 1. A sikeres eredmény biztosításához tekintse át a következő cikkeket:
 
    - [Videó: a SQL Server modernizálása | PAM lorincz & Pedro Lopes | 20 éves bérlet](https://www.youtube.com/watch?v=5RPkuQHcxxs&feature=youtu.be)
-   - [Database Experimentation Assistant AB-teszteléshez](https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
-   - [Adatbázisok frissítése a lekérdezés-hangolási asszisztens használatával](https://docs.microsoft.com/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
-   - [Az adatbázis-kompatibilitási szint módosítása és a lekérdezési tároló használata](https://docs.microsoft.com/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
+   - [Database Experimentation Assistant AB-teszteléshez](/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
+   - [Adatbázisok frissítése a lekérdezés-hangolási asszisztens használatával](/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
+   - [Az adatbázis-kompatibilitási szint módosítása és a lekérdezési tároló használata](/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
 
 ## <a name="upgrade-sql-version"></a>SQL-verzió frissítése
 
 > [!WARNING]
 > A SQL Server verziójának frissítése a társított szolgáltatások, például a Analysis Services és az R szolgáltatások mellett SQL Server újraindítását végzi.
 
-A SQL Server verziójának frissítéséhez szerezze be a SQL Server telepítési adathordozóját a későbbi verzióhoz, amely [támogatja a SQL Server frissítési útvonalát](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) , és hajtsa végre a következő lépéseket:
+A SQL Server verziójának frissítéséhez szerezze be a SQL Server telepítési adathordozóját a későbbi verzióhoz, amely [támogatja a SQL Server frissítési útvonalát](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) , és hajtsa végre a következő lépéseket:
 
 1. A folyamat megkezdése előtt biztonsági mentést készíthet az adatbázisokról, beleértve a rendszer (kivéve a tempdb) és a felhasználói adatbázisokat. Azure Backup Services használatával is létrehozhat egy alkalmazás-konzisztens virtuálisgép-biztonsági mentést.
 1. Indítsa el a Setup.exe a SQL Server telepítési adathordozóról.
-1. A telepítővarázsló elindítja a SQL Server telepítési központot. SQL Server meglévő példányának frissítéséhez válassza a navigációs ablaktábla **telepítés** elemét, majd válassza a frissítés lehetőséget a **SQL Server egy korábbi verziójából**.
+1. A telepítővarázsló elindítja a SQL Server telepítési központot. SQL Server meglévő példányának frissítéséhez válassza a navigációs ablaktábla **telepítés** elemét, majd válassza a frissítés lehetőséget a **SQL Server egy korábbi verziójából** .
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="SQL Server verziójának frissítésére szolgáló kijelölés":::
 
-1. A **termékkulcs** lapon válassza ki azt a lehetőséget, amely azt jelzi, hogy a SQL Server ingyenes kiadására szeretne-e frissíteni, vagy a termék éles verziójának PID-kulcsa van. További információ: [SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) és a [támogatott verzió és kiadás frissítései (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)támogatott szolgáltatásai.
-1. Kattintson a **tovább** gombra, amíg el nem éri a **frissítésre kész** lapot, majd válassza a **frissítés**lehetőséget. A módosítás érvénybe léptetéséhez a telepítési ablak több percig is leállhat. A **teljes** oldal megerősíti, hogy a frissítés befejeződött. A frissítéshez szükséges lépésenkénti eljárásért tekintse meg [a teljes eljárást](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure).
+1. A **termékkulcs** lapon válassza ki azt a lehetőséget, amely azt jelzi, hogy a SQL Server ingyenes kiadására szeretne-e frissíteni, vagy a termék éles verziójának PID-kulcsa van. További információ: [SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) és a [támogatott verzió és kiadás frissítései (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)támogatott szolgáltatásai.
+1. Kattintson a **tovább** gombra, amíg el nem éri a **frissítésre kész** lapot, majd válassza a **frissítés** lehetőséget. A módosítás érvénybe léptetéséhez a telepítési ablak több percig is leállhat. A **teljes** oldal megerősíti, hogy a frissítés befejeződött. A frissítéshez szükséges lépésenkénti eljárásért tekintse meg [a teljes eljárást](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure).
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="SQL Server verziójának frissítésére szolgáló kijelölés":::
 
@@ -118,7 +118,7 @@ Miután módosította SQL Server verzióját, regisztrálja újra a SQL Server V
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért tekintse át a következő cikkeket:
+További információkat az következő cikkekben talál:
 
 - [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)

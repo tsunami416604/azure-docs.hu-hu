@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f30f92df505abeff108f8d1c503cb33162d2e409
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533546"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790916"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>A fürt létrehozása nem sikerül a InvalidNetworkConfigurationErrorCode az Azure HDInsight
 
@@ -68,6 +68,19 @@ Az Azure Storage és az SQL nem rendelkezik rögzített IP-címmel, ezért enged
 
     Ha vannak meghatározott útvonalak, ellenőrizze, hogy vannak-e útvonalak az IP-címekhez ahhoz a régióhoz, ahol a fürtöt telepítették, és az egyes útvonalak **NextHopType** az **Internet** . A fenti cikkben leírt minden szükséges IP-címhez meg kell adni egy útvonalat.
 
+## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"Nem sikerült kimenő kapcsolatot létesíteni a fürtből a HDInsight erőforrás-szolgáltatóval folytatott kommunikációhoz. Győződjön meg arról, hogy a kimenő kapcsolat engedélyezve van. "
+
+### <a name="issue"></a>Probléma
+
+A hiba leírása a következőt tartalmazza: "nem sikerült létrehozni a kimenő kapcsolatot a fürtből a HDInsight erőforrás-szolgáltatóval folytatott kommunikációhoz. Győződjön meg arról, hogy a kimenő kapcsolat engedélyezve van. "
+
+### <a name="cause"></a>Ok
+
+Privát csatolt HDInsight-fürtök használatakor a fürt kimenő hozzáférését úgy kell konfigurálni, hogy lehetővé tegye a kapcsolódást a HDInsight erőforrás-szolgáltatóhoz.
+
+### <a name="resolution"></a>Feloldás
+
+* A probléma megoldásához tekintse meg a HDInsight Private link telepítési lépéseit a [privát hivatkozás](../hdinsight-private-link.md) beállítása című témakörben.
 ---
 
 ## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>"A virtuális hálózat konfigurációja nem kompatibilis a HDInsight-követelményekkel"

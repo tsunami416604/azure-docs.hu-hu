@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: dd9b84c379f368e4cb4bcf1b5122e394456cd9e8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168239"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789760"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Az Azure Shared Disks (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ Helyezzen üzembe egy felügyelt prémium SSD lemezt, amelyen engedélyezve van 
 Vegyen fel egy Azure-beli megosztott lemezt a következő módon: 
 
 
-1. Mentse a következő parancsfájlt *SharedDiskConfig.jsként*: 
+1. Mentse a következő parancsfájlt *SharedDiskConfig.jsként* : 
 
    ```JSON
    { 
@@ -151,17 +151,17 @@ Ellenőrizze a fürtöt a felhasználói felületen vagy a PowerShell használat
 
 A fürt a felhasználói felületen való ellenőrzéséhez tegye a következőket az egyik virtuális gépen:
 
-1. A **Kiszolgálókezelő**területen válassza az **eszközök**, majd a **Feladatátvevőfürt-kezelő**lehetőséget.
-1. A **Feladatátvevőfürt-kezelő**alatt válassza a **művelet**, majd a **Konfiguráció ellenőrzése**lehetőséget.
+1. A **Kiszolgálókezelő** területen válassza az **eszközök** , majd a **Feladatátvevőfürt-kezelő** lehetőséget.
+1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet** , majd a **Konfiguráció ellenőrzése** lehetőséget.
 1. Kattintson a **Tovább** gombra.
-1. A **kiszolgálók vagy fürt kijelölése**területen adja meg mindkét virtuális gép nevét.
-1. A **tesztelési beállítások**területen válassza a **csak a kiválasztott tesztek futtatása**lehetőséget. 
+1. A **kiszolgálók vagy fürt kijelölése** területen adja meg mindkét virtuális gép nevét.
+1. A **tesztelési beállítások** területen válassza a **csak a kiválasztott tesztek futtatása** lehetőséget. 
 1. Kattintson a **Tovább** gombra.
-1. A **teszt kiválasztása**területen válassza az összes teszt lehetőséget a **tárolás** *kivételével*
+1. A **teszt kiválasztása** területen válassza az összes teszt lehetőséget a **tárolás** *kivételével*
 
 ## <a name="test-cluster-failover"></a>Fürt feladatátvételének tesztelése
 
-Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban**kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az**alapszintű fürt erőforrásainak**  >  **kiválasztásához**, majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
+Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban** kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az **alapszintű fürt erőforrásainak**  >  **kiválasztásához** , majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Fürt feladatátvételének tesztelése az alapvető erőforrás más csomópontokra való áthelyezésével":::
 
@@ -171,15 +171,15 @@ Miután konfigurálta a feladatátvevő fürtöt és a fürt összes összetevő
 
 1. Kapcsolódjon az első virtuális géphez RDP protokoll (RDP) használatával.
 
-1. **Feladatátvevőfürt-kezelő**ellenőrizze, hogy az összes alapvető fürterőforrás az első virtuális gépen van-e. Ha szükséges, helyezze át az összes erőforrást az adott virtuális gépre.
+1. **Feladatátvevőfürt-kezelő** ellenőrizze, hogy az összes alapvető fürterőforrás az első virtuális gépen van-e. Ha szükséges, helyezze át az összes erőforrást az adott virtuális gépre.
 
 1. Keresse meg a telepítési adathordozót. Ha a virtuális gép az egyik Azure Marketplace-lemezképet használja, az adathordozó a következő helyen található: `C:\SQLServer_<version number>_Full` . 
 
-1. Válassza a **beállítás**lehetőséget.
+1. Válassza a **beállítás** lehetőséget.
 
-1. **SQL Server telepítési központban**válassza a **telepítés**lehetőséget.
+1. **SQL Server telepítési központban** válassza a **telepítés** lehetőséget.
 
-1. Válassza az **új SQL Server feladatátvevő fürt telepítése**lehetőséget. A varázsló utasításait követve telepítse a SQL Server-t.
+1. Válassza az **új SQL Server feladatátvevő fürt telepítése** lehetőséget. A varázsló utasításait követve telepítse a SQL Server-t.
 
 Az adatkönyvtáraknak az Azure-beli megosztott lemezeken kell lenniük. 
 
@@ -187,12 +187,12 @@ Az adatkönyvtáraknak az Azure-beli megosztott lemezeken kell lenniük.
 
 1. Miután a telepítő telepíti a (z)-t az első csomóponton, csatlakozzon a második csomóponthoz RDP használatával.
 
-1. Nyissa meg a **SQL Server telepítési központot**, majd válassza a **telepítés**lehetőséget.
+1. Nyissa meg a **SQL Server telepítési központot** , majd válassza a **telepítés** lehetőséget.
 
-1. Válassza **a csomópont hozzáadása SQL Server feladatátvevő fürthöz**lehetőséget. A varázsló utasításait követve telepítse a SQL Servert, és adja hozzá a kiszolgálót a modulhoz.
+1. Válassza **a csomópont hozzáadása SQL Server feladatátvevő fürthöz** lehetőséget. A varázsló utasításait követve telepítse a SQL Servert, és adja hozzá a kiszolgálót a modulhoz.
 
    >[!NOTE]
-   >Ha SQL Servert tartalmazó Azure Marketplace Gallery-rendszerképet használt, SQL Server eszközöket tartalmazott a rendszerképben. Ha nem használja ezeket a képeket, telepítse külön a SQL Server-eszközöket. További információ: [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >Ha SQL Servert tartalmazó Azure Marketplace Gallery-rendszerképet használt, SQL Server eszközöket tartalmazott a rendszerképben. Ha nem használja ezeket a képeket, telepítse külön a SQL Server-eszközöket. További információ: [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
    >
 
 ## <a name="register-with-the-sql-vm-rp"></a>Regisztrálás az SQL VM RP-vel
@@ -219,7 +219,7 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 - Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#management-modes) támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, állítsa be a kapcsolatot a [virtuális hálózat nevével és az Azure Load balancerrel](failover-cluster-instance-vnn-azure-load-balancer-configure.md) vagy az [elosztott hálózat nevével (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
 

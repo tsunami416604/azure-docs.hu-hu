@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: fb64348e53dc92ef8f5830f2649afdf9eca3a9ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9997ea737b96185b31a7f51996a396fb5fc46c4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616482"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790185"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>A séma változásainak az Azure-ban való replikálásának automatizálása SQL-adatszinkronizálás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-Az trigger beszúr egy rekordot a séma módosítása követési táblába az egyes ALTER TABLE parancsokhoz. Ez a példa egy szűrőt hoz létre, amellyel elkerülhető a séma- **DataSync**alatt végzett séma-módosítások replikálása, mivel ezeket az adatszinkronizálási szolgáltatás legvalószínűbben végzi. Ha csak bizonyos típusú sémákat szeretne replikálni, vegyen fel további szűrőket.
+Az trigger beszúr egy rekordot a séma módosítása követési táblába az egyes ALTER TABLE parancsokhoz. Ez a példa egy szűrőt hoz létre, amellyel elkerülhető a séma- **DataSync** alatt végzett séma-módosítások replikálása, mivel ezeket az adatszinkronizálási szolgáltatás legvalószínűbben végzi. Ha csak bizonyos típusú sémákat szeretne replikálni, vegyen fel további szűrőket.
 
 További eseményindítókat is hozzáadhat a séma más típusú változásainak replikálásához. Hozzon létre például CREATE_PROCEDURE, ALTER_PROCEDURE és DROP_PROCEDURE eseményindítókat a tárolt eljárások módosításainak replikálásához.
 
@@ -231,7 +231,7 @@ További információ az SQL Data Syncről:
         -  [Azure SQL Database és egy SQL Server-példányban található adatbázis közötti szinkronizálás a PowerShell használatával](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-data-sync-agent-overview.md)
 -   Ajánlott eljárások – [ajánlott eljárások az Azure SQL-adatszinkronizálás](sql-data-sync-best-practices.md)
--   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](sql-data-sync-monitor-sync.md)
+-   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](./monitor-tune-overview.md)
 -   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása]()
 -   A szinkronizálási séma frissítése
     -   A PowerShell [használatával – egy meglévő szinkronizálási csoportban lévő szinkronizálási séma frissítéséhez használja a PowerShellt](scripts/update-sync-schema-in-sync-group.md) .

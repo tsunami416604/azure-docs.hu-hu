@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ac4f41a36a2a18a65816be5ea74e88d0b364294
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850965"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789063"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>A App Service Azure Defender bemutatása
 
@@ -50,7 +50,7 @@ A Azure App Service-csomag a App Service Azure Defenderrel való ellátásához:
 A Security Center natív módon van integrálva a App Serviceval, így nincs szükség az üzembe helyezésre és a bevezetésre – az integráció átlátható.
 
 >[!NOTE]
-> A díjszabás és beállítások lap felsorolja az adott **erőforrás mennyiségére**vonatkozó példányok számát. Ez a számítási példányok teljes számát jelöli az előfizetéshez tartozó összes App Service csomag esetében, amely akkor fut, amikor megnyitotta a díjszabási szintet tartalmazó lapot.
+> A díjszabás és beállítások lap felsorolja az adott **erőforrás mennyiségére** vonatkozó példányok számát. Ez a számítási példányok teljes számát jelöli az előfizetéshez tartozó összes App Service csomag esetében, amely akkor fut, amikor megnyitotta a díjszabási szintet tartalmazó lapot.
 >
 > Azure App Service számos különböző csomagot kínál. A App Service terv meghatározza a futtatandó webalkalmazás számítási erőforrásainak készletét. Ezek egyenértékűek a hagyományos webes üzemeltetésű kiszolgáló-farmokkal. Egy vagy több alkalmazás úgy konfigurálható, hogy ugyanazon a számítási erőforrásokon (vagy ugyanabban a App Service tervben) fusson.
 >
@@ -64,7 +64,7 @@ Ebből a cikkből megtudhatta, hogyan App Service Azure Defendert.
 
 A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket: 
 
-- Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy másik biztonsági terméktől Security Center fogadta-e, exportálhatja. Ha a riasztásokat az Azure Sentinelbe, a harmadik féltől származó SIEM-re vagy más külső eszközre szeretné exportálni, kövesse a [riasztások a Siem](continuous-export.md)-ben való exportálásának utasításait.
+- Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy másik biztonsági terméktől Security Center fogadta-e, exportálhatja. Ha a riasztásokat az Azure Sentinelbe, a harmadik féltől származó SIEM-re vagy más külső eszközre szeretné exportálni, kövesse a [stream-riasztások a Siem, a SOAR vagy az IT Service Management megoldásban](export-to-siem.md)című témakör utasításait.
 - A Azure App Service riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureappserv)tekintheti meg.
 - App Service csomagokkal kapcsolatos további információkért lásd: [app Service csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).
 - > [!div class="nextstepaction"]

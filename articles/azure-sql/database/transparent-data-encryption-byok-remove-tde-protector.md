@@ -5,19 +5,19 @@ description: Ismerje meg, hogy miként reagálhat az Azure SQL Database vagy az 
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 77f2312438f3f9db7aa4e0dc7cc0f672644a87c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657e3967d9e34147364114cec4d946e900f60032
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617401"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791375"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Transzparens adattitkosítás (TDE)-védő eltávolítása a PowerShell használatával
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,16 +26,16 @@ ms.locfileid: "91617401"
 Ez a témakör azt ismerteti, hogyan lehet reagálni az olyan Azure SQL Database vagy Azure szinapszis-elemzések potenciálisan sérült TDE, amelyek Azure Key Vault-Bring Your Own Key (BYOK) támogatásban lévő ügyfél által felügyelt kulcsokkal használják a TDE-t. Ha többet szeretne megtudni a TDE BYOK-támogatásáról, tekintse meg az [Áttekintés oldalt](transparent-data-encryption-byok-overview.md).
 
 > [!CAUTION]
-> Az ebben a cikkben leírt eljárásokat csak szélsőséges esetekben vagy tesztelési környezetekben lehet elvégezni. Tekintse át a lépéseket körültekintően, mivel a Azure Key Vault aktívan használt TDE-védők törlése az **adatbázis elérhetetlenné válását**eredményezi.
+> Az ebben a cikkben leírt eljárásokat csak szélsőséges esetekben vagy tesztelési környezetekben lehet elvégezni. Tekintse át a lépéseket körültekintően, mivel a Azure Key Vault aktívan használt TDE-védők törlése az **adatbázis elérhetetlenné válását** eredményezi.
 
 Ha egy kulcs gyanúja fennáll, hogy egy adott szolgáltatás vagy felhasználó jogosulatlanul hozzáfért a kulcshoz, akkor érdemes törölni a kulcsot.
 
-Ne feledje, hogy ha a TDE-védőt Key Vaultban törli, akár 10 percen belül, minden titkosított adatbázis megtagadja az összes kapcsolatot a megfelelő hibaüzenettel, és nem [érhető](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector)el az állapota.
+Ne feledje, hogy ha a TDE-védőt Key Vaultban törli, akár 10 percen belül, minden titkosított adatbázis megtagadja az összes kapcsolatot a megfelelő hibaüzenettel, és nem [érhető](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector)el az állapota.
 
 Ez a útmutató a feltört incidensek válasza után a kívánt eredménytől függően két megközelítést mutat be:
 
-- Az adatbázisok Azure SQL Database/Azure szinapszis Analyticsben való **elérhetetlenné**tétele.
-- A Azure SQL Database/Azure Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisainak **elérhetetlenné**tétele.
+- Az adatbázisok Azure SQL Database/Azure szinapszis Analyticsben való **elérhetetlenné** tétele.
+- A Azure SQL Database/Azure Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisainak **elérhetetlenné** tétele.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ Ez a útmutató a feltört incidensek válasza után a kívánt eredménytől f�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
- Az Az modul telepítési útmutatását [az Azure PowerShell telepítését](/powershell/azure/install-az-ps) ismertető cikkben találja. Adott parancsmagok esetén lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+ Az Az modul telepítési útmutatását [az Azure PowerShell telepítését](/powershell/azure/install-az-ps) ismertető cikkben találja. Adott parancsmagok esetén lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/).
 
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager (RM) modul továbbra is támogatott, de a jövőbeli fejlesztés az az. SQL modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).

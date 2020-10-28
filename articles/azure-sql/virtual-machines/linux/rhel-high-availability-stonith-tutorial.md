@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358916"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790236"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ez az oktatóanyag az Azure CLI használatával helyezi üzembe az erőforrásokat az Azure-ban.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -242,7 +242,7 @@ A parancs befejeződése után a következő eredményeket kell megkapnia:
     done
     ```
 
-A fenti parancs létrehozza a virtuális gépeket, és létrehoz egy alapértelmezett VNet a virtuális gépek számára. További információ a különböző konfigurációkról: az [VM Create](https://docs.microsoft.com/cli/azure/vm) article.
+A fenti parancs létrehozza a virtuális gépeket, és létrehoz egy alapértelmezett VNet a virtuális gépek számára. További információ a különböző konfigurációkról: az [VM Create](/cli/azure/vm) article.
 
 A következőhöz hasonló eredményt kell kapnia, ha a parancs minden virtuális géphez befejeződik:
 
@@ -304,7 +304,7 @@ Kapcsolódjon az egyes virtuálisgép-csomópontokhoz, és az alábbi útmutatá
 1. A következő parancsokkal frissítheti és telepítheti a pacemaker-csomagokat az összes csomóponton:
 
     > [!NOTE]
-    > az **nmap** ennek a parancsnak a részeként a hálózatban elérhető IP-címek keresésére szolgáló eszközként van telepítve. Nem kell telepítenie az **nmap**-t, de ez az oktatóanyag későbbi részében is hasznos lehet.
+    > az **nmap** ennek a parancsnak a részeként a hálózatban elérhető IP-címek keresésére szolgáló eszközként van telepítve. Nem kell telepítenie az **nmap** -t, de ez az oktatóanyag későbbi részében is hasznos lehet.
 
     ```bash
     sudo yum update -y
@@ -489,7 +489,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  3. Kattintson [ **Alkalmazásregisztrációk**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Kattintson az **új regisztráció** elemre.
  5. Adjon meg **Name** egy nevet `<resourceGroupName>-app` , például **: válassza a fiókok ebben a szervezeti címtárban** lehetőséget.
- 6. Válassza az alkalmazás típusa **web**lehetőséget, írja be a bejelentkezési URL-címet (például http://localhost) kattintson a Hozzáadás gombra. A bejelentkezési URL-cím nincs használatban, és bármely érvényes URL-cím lehet. Ha elkészült, kattintson a **regisztráció** gombra.
+ 6. Válassza az alkalmazás típusa **web** lehetőséget, írja be a bejelentkezési URL-címet (például http://localhost) kattintson a Hozzáadás gombra. A bejelentkezési URL-cím nincs használatban, és bármely érvényes URL-cím lehet. Ha elkészült, kattintson a **regisztráció** gombra.
  7. Válassza ki a **tanúsítványokat és a titkokat** az új alkalmazás regisztrálásához, majd kattintson az **új ügyfél titka** elemre.
  8. Adja meg az új kulcs leírását (ügyfél titkos kulcsa), válassza a **soha nem jár le** lehetőséget, majd kattintson a **Hozzáadás** gombra.
  9. Jegyezze fel a titok értékét. Az egyszerű szolgáltatás jelszavaként van használatban
@@ -571,7 +571,7 @@ Rendelje hozzá az `Linux Fence Agent Role-<username>` utolsó lépésben létre
 5. Kattintson **a szerepkör-hozzárendelés hozzáadása** elemre.
 6. Szerepkör kiválasztása `Linux Fence Agent Role-<username>` a **szerepkör** listából
 7. A **Select (kiválasztás** ) listán adja meg a fent létrehozott alkalmazás nevét. `<resourceGroupName>-app`
-8. Kattintson a **Mentés** gombra.
+8. Kattintson a **Mentés** gombra
 9. Ismételje meg a fenti lépéseket a fürt összes csomópontján.
 
 ### <a name="create-the-stonith-devices"></a>A STONITH-eszközök létrehozása
@@ -1216,7 +1216,7 @@ Node: <VM3> fenced
 ```
 A kerítések eszközének tesztelésével kapcsolatos további információkért tekintse meg a következő [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a rendelkezésre állási csoport figyelőjét szeretné használni a SQL Server példányaihoz, létre kell hoznia és konfigurálnia kell egy Load balancert.
 

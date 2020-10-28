@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 972e4bcfc0eb20903dafc598bad812d0afe98afb
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 093d470052a639ad3d4e819d08fad7c34b547d44
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428316"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789505"
 ---
 # <a name="what-is-azure-sql-database"></a>Mi az Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,7 +26,7 @@ Az Azure SQL Database egy olyan adatbázismotor, amely egy teljes mértékben fe
 
 Az Azure SQL Database használatával magas rendelkezésre állású és nagy teljesítményű adattároló réteget hozhat létre az Azure-ban az alkalmazások és a megoldások számára. A SQL Database a különböző modern felhőalapú alkalmazások számára megfelelő választás lehet, mivel lehetővé teszi a kapcsolati és [nem kapcsolati struktúrák](../multi-model-features.md), például a diagramok, a JSON, a térbeli és az XML feldolgozását.
 
-A Azure SQL Database az [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)legújabb stabil verziójára épül. Használhatja a speciális lekérdezés-feldolgozási funkciókat, például [a nagy teljesítményű memóriában lévő technológiákat és az](../in-memory-oltp-overview.md) [intelligens lekérdezések feldolgozását](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Az SQL Server legújabb funkciói először az SQL Database-ben jelennek meg, és csak ezután válnak elérhetővé magában az SQL Serverben. Az SQL Server legújabb funkciói a karbantartás és frissítés terhei nélkül állnak az Ön rendelkezésére úgy, hogy már több millió adatbázison tesztelték őket. 
+A Azure SQL Database az [Microsoft SQL Server adatbázismotor](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)legújabb stabil verziójára épül. Használhatja a speciális lekérdezés-feldolgozási funkciókat, például [a nagy teljesítményű memóriában lévő technológiákat és az](../in-memory-oltp-overview.md) [intelligens lekérdezések feldolgozását](/sql/relational-databases/performance/intelligent-query-processing?toc=%252fazure%252fsql-database%252ftoc.json). Az SQL Server legújabb funkciói először az SQL Database-ben jelennek meg, és csak ezután válnak elérhetővé magában az SQL Serverben. Az SQL Server legújabb funkciói a karbantartás és frissítés terhei nélkül állnak az Ön rendelkezésére úgy, hogy már több millió adatbázison tesztelték őket. 
 
 A SQL Database lehetővé teszi a teljesítmény egyszerű meghatározását és méretezését két különböző beszerzési modellen belül: egy [virtuális mag-alapú vásárlási modellt](service-tiers-vcore.md) és egy [DTU-alapú vásárlási modellt](service-tiers-dtu.md). Az SQL Database egy teljeskörűen felügyelt szolgáltatás, amely beépített magas rendelkezésre állással, biztonsági mentésekkel és egyéb gyakori karbantartási műveletekkel rendelkezik. A Microsoft az SQL és az operációs rendszer kódjának összes javítását és frissítését kezeli. A mögöttes infrastruktúrát Önnek nem kell kezelnie.
 
@@ -37,7 +37,7 @@ Ha még nem ismeri a Azure SQL Database, tekintse meg a részletes [Azure SQL-vi
 
 Azure SQL Database a következő telepítési beállításokat biztosítja egy adatbázishoz:
 
-- Az [önálló adatbázisok](single-database-overview.md) egy teljes körűen felügyelt, elkülönített adatbázist jelentenek. Ezt a lehetőséget akkor használhatja, ha olyan modern Felhőbeli alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyeknek egyetlen megbízható adatforrásra van szükségük. Egy adatbázis a [SQL Server adatbázis-motorban](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)található [tárolt adatbázishoz](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json) hasonlít.
+- Az [önálló adatbázisok](single-database-overview.md) egy teljes körűen felügyelt, elkülönített adatbázist jelentenek. Ezt a lehetőséget akkor használhatja, ha olyan modern Felhőbeli alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyeknek egyetlen megbízható adatforrásra van szükségük. Egy adatbázis a [SQL Server adatbázis-motorban](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)található [tárolt adatbázishoz](/sql/relational-databases/databases/contained-databases?toc=%252fazure%252fsql-database%252ftoc.json) hasonlít.
 - A [rugalmas készlet](elastic-pool-overview.md) olyan [önálló adatbázisok](single-database-overview.md) gyűjteménye, amelyek erőforrásainak, például a processzornak vagy a memóriának a közös készletét tartalmazzák. Az önálló adatbázisok egy rugalmas készletbe helyezhetők és kivehetők.
 
 > [!IMPORTANT]
@@ -53,7 +53,7 @@ Megadhatja a hozzárendelt erőforrások mennyiségét.
 
 Az általános célú szolgáltatási szinten az első alkalmazását egy kis méretű, egyetlen adatbázison is létrehozhatja. Ezt követően manuálisan vagy programozott módon módosíthatja a szolgáltatási szintet az üzleti szempontból kritikus szolgáltatási rétegre, hogy megfeleljen a megoldás igényeinek. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak a szükséges erőforrásokért kell fizetnie.
 
-A *dinamikus méretezhetőség* különbözik az automatikus *méretezéstől*. Automatikus skálázás esetén a szolgáltatás adott feltételek alapján, automatikusan méretez, míg a dinamikus méretezhetőség lehetővé teszi a manuális méretezést, amely nem jár állásidővel. Az egyetlen adatbázis-beállítás támogatja a manuális dinamikus méretezhetőséget, de nem automatikus méretezést. Ha automatikus megoldást keres, érdemes megfontolni a rugalmas készletek használatát, amely lehetővé teszi, hogy az adatbázisok osztozzanak egy készlet erőforrásain az egyes adatbázisok egyedi igényei alapján. Egy másik lehetőség a parancsfájlok használata, amelyek segítségével automatizálható egy adott adatbázis skálázhatósága. Példa: [egyetlen adatbázis figyelése és méretezése a PowerShell használatával](scripts/monitor-and-scale-database-powershell.md).
+A *dinamikus méretezhetőség* különbözik az automatikus *méretezéstől* . Automatikus skálázás esetén a szolgáltatás adott feltételek alapján, automatikusan méretez, míg a dinamikus méretezhetőség lehetővé teszi a manuális méretezést, amely nem jár állásidővel. Az egyetlen adatbázis-beállítás támogatja a manuális dinamikus méretezhetőséget, de nem automatikus méretezést. Ha automatikus megoldást keres, érdemes megfontolni a rugalmas készletek használatát, amely lehetővé teszi, hogy az adatbázisok osztozzanak egy készlet erőforrásain az egyes adatbázisok egyedi igényei alapján. Egy másik lehetőség a parancsfájlok használata, amelyek segítségével automatizálható egy adott adatbázis skálázhatósága. Példa: [egyetlen adatbázis figyelése és méretezése a PowerShell használatával](scripts/monitor-and-scale-database-powershell.md).
 
 ### <a name="purchasing-models"></a>Vásárlási modellek
 
@@ -92,13 +92,13 @@ A Azure SQL Database fejlett monitorozási és hibaelhárítási funkciókat biz
  - A SQL Server adatbázismotor legújabb verziójában elérhető beépített figyelési képességek. Lehetővé teszik a valós idejű teljesítménnyel kapcsolatos megállapításokat. 
  - Az Azure által biztosított, a nagy számú adatbázis-példány figyelésére és hibakeresésére képes,
 
-A [query Store](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)egy beépített SQL Server figyelési funkciója, amely valós időben rögzíti a lekérdezések teljesítményét, és lehetővé teszi a lehetséges teljesítménnyel kapcsolatos problémák és a legfontosabb erőforrás-felhasználók azonosítását. Az automatikus hangolás és a javaslatok a romlott teljesítményével és hiányzó vagy duplikált indexekkel kapcsolatos tanácsokat nyújtanak. A SQL Database automatikus hangolásával manuálisan alkalmazhatja a hibákat kijavító szkripteket, vagy engedélyezheti SQL Database a javítás alkalmazását. A SQL Database tesztelheti és ellenőrizheti, hogy a javítás bizonyos előnyöket biztosít-e, és az eredménytől függően megőrzi vagy visszaállíthatja a változást. A lekérdezési tároló és az Automatikus hangolási funkciók mellett a standard [DMV és a XEvent](monitoring-with-dmvs.md) is használható a munkaterhelés teljesítményének figyelésére.
+A [query Store](/sql/relational-databases/performance/best-practice-with-the-query-store)egy beépített SQL Server figyelési funkciója, amely valós időben rögzíti a lekérdezések teljesítményét, és lehetővé teszi a lehetséges teljesítménnyel kapcsolatos problémák és a legfontosabb erőforrás-felhasználók azonosítását. Az automatikus hangolás és a javaslatok a romlott teljesítményével és hiányzó vagy duplikált indexekkel kapcsolatos tanácsokat nyújtanak. A SQL Database automatikus hangolásával manuálisan alkalmazhatja a hibákat kijavító szkripteket, vagy engedélyezheti SQL Database a javítás alkalmazását. A SQL Database tesztelheti és ellenőrizheti, hogy a javítás bizonyos előnyöket biztosít-e, és az eredménytől függően megőrzi vagy visszaállíthatja a változást. A lekérdezési tároló és az Automatikus hangolási funkciók mellett a standard [DMV és a XEvent](monitoring-with-dmvs.md) is használható a munkaterhelés teljesítményének figyelésére.
 
 Az Azure [beépített teljesítmény-figyelési](performance-guidance.md) és [riasztási](alerts-insights-configure-portal.md) eszközöket kínál a teljesítmény-minősítéssel együtt, amely lehetővé teszi több ezer adatbázis állapotának figyelését. Ezeknek az eszközöknek a használatával gyorsan elemezheti a fel-vagy leskálázás hatásait az aktuális vagy tervezett teljesítménybeli igények alapján. Emellett a SQL Database a könnyebb monitorozás érdekében [mérőszámokat és erőforrás-naplókat is képes kibocsátani](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) . Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
 
-- **Azure Storage**: nagy mennyiségű telemetria alacsony áron való archiválásához.
-- **Azure Event Hubs**: SQL Database telemetria integrálása az egyéni figyelési megoldással vagy a gyors folyamatokkal.
-- **Azure monitor naplók**: beépített figyelési megoldás jelentéskészítési, riasztási és kockázatcsökkentő képességekkel.
+- **Azure Storage** : nagy mennyiségű telemetria alacsony áron való archiválásához.
+- **Azure Event Hubs** : SQL Database telemetria integrálása az egyéni figyelési megoldással vagy a gyors folyamatokkal.
+- **Azure monitor naplók** : beépített figyelési megoldás jelentéskészítési, riasztási és kockázatcsökkentő képességekkel.
 
 ![Az Azure monitoring architektúra ábrája](./media/sql-database-paas-overview/architecture.png)
 
@@ -149,8 +149,8 @@ Számos partnerünk, akik [SaaS több-bérlős alkalmazásokat](saas-tenancy-app
 
 SQL Database két automatikus finomhangolási szempont [érhető el](automatic-tuning-overview.md):
 
-- **Automatikus indexkezelés**: Azonosítja az adatbázishoz hozzáadandó és az abból eltávolítandó indexeket.
-- **Automatikus terv javítása**: azonosítja a problémás terveket, és javítja az SQL-terv teljesítményével kapcsolatos problémákat.
+- **Automatikus indexkezelés** : Azonosítja az adatbázishoz hozzáadandó és az abból eltávolítandó indexeket.
+- **Automatikus terv javítása** : azonosítja a problémás terveket, és javítja az SQL-terv teljesítményével kapcsolatos problémákat.
 
 ### <a name="adaptive-query-processing"></a>Adaptív lekérdezés-feldolgozás
 
@@ -158,7 +158,7 @@ Használhatja az [adaptív lekérdezések feldolgozását](/sql/relational-datab
 
 ## <a name="advanced-security-and-compliance"></a>Magas szintű biztonság és megfelelőség
 
-Az SQl Database számos [beépített biztonsági és megfelelőségi szolgáltatást](../../active-directory/identity-protection/security-overview.md) kínálva járul hozzá, hogy az Ön alkalmazása eleget tegyen a különféle biztonsági és megfelelőségi elvárásoknak.
+Az SQl Database számos [beépített biztonsági és megfelelőségi szolgáltatást](../../active-directory/identity-protection/concept-identity-protection-security-overview.md) kínálva járul hozzá, hogy az Ön alkalmazása eleget tegyen a különféle biztonsági és megfelelőségi elvárásoknak.
 
 > [!IMPORTANT]
 > A Microsoft minősített Azure SQL Database (az összes üzembe helyezési lehetőség) számos megfelelőségi szabvány alapján. További információkért tekintse meg a [Microsoft Azure adatvédelmi központot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
@@ -180,7 +180,7 @@ A [naplózás](../../azure-sql/database/auditing-overview.md) nyomon követi az 
 
 ### <a name="data-encryption"></a>Adattitkosítás
 
-Az SQL Database titkosítás biztosításával segíti az adatok védelmét. A mozgásban lévő adatforgalom a [Transport Layer Security](https://support.microsoft.com/kb/3135244)szolgáltatást használja. A nyugalmi állapotban lévő adatok esetében [transzparens adattitkosítást](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használ. A használatban lévő adatkezeléshez [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)használ.
+Az SQL Database titkosítás biztosításával segíti az adatok védelmét. A mozgásban lévő adatforgalom a [Transport Layer Security](https://support.microsoft.com/kb/3135244)szolgáltatást használja. A nyugalmi állapotban lévő adatok esetében [transzparens adattitkosítást](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használ. A használatban lévő adatkezeléshez [Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)használ.
 
 ### <a name="data-discovery-and-classification"></a>Adatfelderítés és besorolás
 
@@ -198,8 +198,8 @@ Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létreho
 |:---|:---|
 |[Az Azure Portal](https://portal.azure.com/)|Webalapú alkalmazás az összes Azure-szolgáltatás kezeléséhez.|
 |[Azure Data Studio](/sql/azure-data-studio/)|Platformfüggetlen adatbázis-eszköz, amely Windows, macOS és Linux rendszeren fut.|
-|[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.|
-|[SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Ingyenes, letölthető ügyfélalkalmazás SQL Server a kapcsolódó adatbázisok, adatbázisok Azure SQL Database, integrációs szolgáltatások csomagjai, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.|
+|[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)|Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.|
+|[SQL Server Data Tools a Visual Studióban](/sql/ssdt/download-sql-server-data-tools-ssdt)|Ingyenes, letölthető ügyfélalkalmazás SQL Server a kapcsolódó adatbázisok, adatbázisok Azure SQL Database, integrációs szolgáltatások csomagjai, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és az Azure Azure szinapszis Analytics (korábban SQL Data Warehouse) lekérdezéséhez.|
 
 A SQL Database támogatja a Python, a Java, a Node.js, a PHP, a Ruby és a .NET alkalmazások létrehozását macOS, Linux és Windows rendszeren. Az SQL Database az SQL Serverrel azonos [adatkapcsolattárakat](connect-query-content-reference-guide.md#libraries) támogat.
@@ -218,11 +218,11 @@ Nem. A javítások hatása általában nem észlelhető, ha az alkalmazásban [�
 
 - [DBA stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): kérdezze meg az adatbázis adminisztrációs kérdéseit.
 - [Stack overflow](https://stackoverflow.com/questions/tagged/sql-server): forduljon a fejlesztési kérdésekhez.
-- [A Microsoft Q&egy kérdést tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
+- [A Microsoft Q&egy kérdést tartalmazó oldalt](/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
 - [Visszajelzés](https://aka.ms/sqlfeedback): hibák jelentése és funkciók kérése.
 - [Reddit](https://www.reddit.com/r/SQLServer/): beszéljen SQL Server.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/sql-database/) , amely az önálló adatbázisokra és a rugalmas készletekre vonatkozó költség-összehasonlításokat és számológépeket tartalmazza.
 - Az első lépésekhez tekintse meg ezeket a rövid útmutatókat:
@@ -237,4 +237,3 @@ Nem. A javítások hatása általában nem észlelhető, ha az alkalmazásban [�
 
 - További információ a bejelentett új képességekről: [SQL Database Azure-útiterve](https://azure.microsoft.com/roadmap/?category=databases).
 - Tekintse meg a [Azure SQL Database blogot](https://azure.microsoft.com/blog/topics/database), ahol SQL Server termék csapat tagjainak blogja a SQL Database híreket és szolgáltatásokat tartalmazza.
-

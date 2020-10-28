@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628366"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791256"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Alkalmazás csatlakoztatása felügyelt Azure SQL-példányhoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ A virtuális hálózatok összekapcsolásának két lehetősége van:
 A társítás előnyben részesített, mivel a Microsoft gerinc hálózatot használja, így a kapcsolati szempontból nem észlelhető különbség a virtuális gépek és az azonos virtuális hálózatok közötti késésben. A virtuális hálózatok közötti társítás az azonos régióban található hálózatok között támogatott. A globális virtuális hálózati társítást az alábbi megjegyzésben ismertetett korlátozás is támogatja.  
 
 > [!IMPORTANT]
-> [9/22/2020-ben bejelentettük a globális virtuális hálózati társítást az újonnan létrehozott virtuális fürtökhöz](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Ez azt jelenti, hogy a globális virtuális hálózati társítás támogatott a bejelentési dátum után üres alhálózatokban létrehozott SQL felügyelt példányok esetében, valamint az ezen alhálózatokban létrehozott összes további felügyelt példány esetében is. A többi SQL felügyelt példányok társításának támogatása az azonos régióban található hálózatokra korlátozódik a [globális virtuális hálózati társítás korlátai](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
+> [9/22/2020-ben bejelentettük a globális virtuális hálózati társítást az újonnan létrehozott virtuális fürtökhöz](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Ez azt jelenti, hogy a globális virtuális hálózati társítás támogatott a bejelentési dátum után üres alhálózatokban létrehozott SQL felügyelt példányok esetében, valamint az ezen alhálózatokban létrehozott összes további felügyelt példány esetében is. A többi SQL felügyelt példányok társításának támogatása az azonos régióban található hálózatokra korlátozódik a [globális virtuális hálózati társítás korlátai](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
 
 ## <a name="connect-from-on-premises"></a>Helyi kapcsolat 
 
@@ -71,10 +71,10 @@ Az ügyfelek által megvalósított egy másik forgatókönyv, ahol a VPN-átjá
 
 ![Virtuális hálózati társviszony](./media/connect-application-instance/vnet-peering.png)
 
-Miután beállította az alapszintű infrastruktúrát, módosítania kell néhány beállítást, hogy a VPN-átjáró láthassa az SQL felügyelt példányát futtató virtuális hálózat IP-címeit. Ehhez végezze el a következő nagyon specifikus módosításokat a társítási **Beállítások**alatt.
+Miután beállította az alapszintű infrastruktúrát, módosítania kell néhány beállítást, hogy a VPN-átjáró láthassa az SQL felügyelt példányát futtató virtuális hálózat IP-címeit. Ehhez végezze el a következő nagyon specifikus módosításokat a társítási **Beállítások** alatt.
 
-1. A VPN-átjárót üzemeltető virtuális hálózaton válassza a társítások lehetőséget **, lépjen**a FELÜGYELt SQL-példányhoz tartozó virtuális hálózati kapcsolatra, majd kattintson az **átjáró-átvitel engedélyezése**lehetőségre.
-2. Az SQL felügyelt példányát futtató virtuális hálózaton válassza a társítások **lehetőséget, lépjen**a VPN-átjáróhoz tartozó virtuális hálózati kapcsolatra, majd kattintson a **távoli átjárók használata**lehetőségre.
+1. A VPN-átjárót üzemeltető virtuális hálózaton válassza a társítások lehetőséget **, lépjen** a FELÜGYELt SQL-példányhoz tartozó virtuális hálózati kapcsolatra, majd kattintson az **átjáró-átvitel engedélyezése** lehetőségre.
+2. Az SQL felügyelt példányát futtató virtuális hálózaton válassza a társítások **lehetőséget, lépjen** a VPN-átjáróhoz tartozó virtuális hálózati kapcsolatra, majd kattintson a **távoli átjárók használata** lehetőségre.
 
 ## <a name="connect-azure-app-service"></a>Azure App Service összekötése 
 
@@ -151,8 +151,8 @@ Az eszközök és illesztőprogramok következő minimális verziói ajánlottak
 |JDBC-illesztő| 6.4.0 |
 |Node.js-illesztő| 2.1.1 |
 |OLEDB-illesztő| 18.0.2.0 |
-|SSMS| 18,0 vagy [újabb](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) vagy újabb |
+|SSMS| 18,0 vagy [újabb](/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) vagy újabb |
 
 ## <a name="next-steps"></a>Következő lépések
 

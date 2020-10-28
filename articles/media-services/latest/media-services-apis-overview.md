@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b01208c67610ff220df1654d10211472e0eed61f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 416fb9fc4ce0622a710f2c119942edc4986ddd06
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426858"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790576"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-kkal
 
@@ -32,8 +32,8 @@ Ez a cikk azokat a szabályokat ismerteti, amelyek az entitásokra és API-kra v
 
 A Media Services-erőforrások és a Media Services API eléréséhez először hitelesítenie kell magát. A Media Services az [Azure Active Directory- (Azure AD-) alapú](../../active-directory/fundamentals/active-directory-whatis.md) hitelesítést támogatja. Két gyakran használt hitelesítési lehetőség:
  
-* **Szolgáltatásnév-hitelesítés**: Szolgáltatások (például: webalkalmazások, függvényalkalmazások, logikai alkalmazások, API-k és mikroszolgáltatások) hitelesítésére szolgál. Ezt a hitelesítési módszert általában a démonszolgáltatásokat, közepes szintű szolgáltatásokat vagy ütemezett feladatokat futtató alkalmazások használják. A webalkalmazások esetében például mindig olyan közepes rétegnek kell lennie, amely a Media Serviceshoz kapcsolódik egy egyszerű szolgáltatással.
-* **Felhasználóhitelesítés**: Olyan személyek hitelesítésére szolgál, akik a Media Services-erőforrásokkal való interakcióhoz használják az alkalmazást. Az interaktív alkalmazásnak először fel kell kérnie a felhasználót a hitelesítési adatainak a megadására. Ilyen alkalmazás lehet például egy olyan felügyeletikonzol-alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő streamelés monitorozására használnak.
+* **Szolgáltatásnév-hitelesítés** : Szolgáltatások (például: webalkalmazások, függvényalkalmazások, logikai alkalmazások, API-k és mikroszolgáltatások) hitelesítésére szolgál. Ezt a hitelesítési módszert általában a démonszolgáltatásokat, közepes szintű szolgáltatásokat vagy ütemezett feladatokat futtató alkalmazások használják. A webalkalmazások esetében például mindig olyan közepes rétegnek kell lennie, amely a Media Serviceshoz kapcsolódik egy egyszerű szolgáltatással.
+* **Felhasználóhitelesítés** : Olyan személyek hitelesítésére szolgál, akik a Media Services-erőforrásokkal való interakcióhoz használják az alkalmazást. Az interaktív alkalmazásnak először fel kell kérnie a felhasználót a hitelesítési adatainak a megadására. Ilyen alkalmazás lehet például egy olyan felügyeletikonzol-alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő streamelés monitorozására használnak.
 
 A Media Services API megköveteli, hogy a REST API-kéréseket kezdeményező felhasználó vagy alkalmazás hozzáféréssel rendelkezzen a Media Services-fiókerőforráshoz, és **Közreműködő** vagy **Tulajdonos** szerepkört használjon. Az API elérhető az **Olvasó** szerepkörrel, de ekkor csak a **lekérési** vagy a **listázási** művelet érhető el. További információ: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Services fiókokhoz](rbac-overview.md).
 
@@ -109,11 +109,11 @@ Media Services a következő hosszan futó műveletekkel rendelkezik:
 * [Streamvégpontok leállítása](/rest/api/media/streamingendpoints/stop)
 * [Streamvégpontok skálázása](/rest/api/media/streamingendpoints/scale)
 
-A hosszú művelet sikeres beküldésekor "202 elfogadva", és a művelet befejezéséhez a visszaadott művelet azonosítója alapján kell lekérdezni a műveletet.
+A hosszú művelet sikeres beküldésekor egy "201-hoz létrehozott" érték jelenik meg, és a művelet befejezéséhez a visszaadott művelet azonosítója alapján kell lekérdezni a műveletet.
 
 Az [aszinkron Azure-műveletek nyomon követése](../../azure-resource-manager/management/async-operations.md) című cikk részletesen ismerteti, hogyan követheti nyomon az aszinkron Azure-műveletek állapotát a válaszban visszaadott értékek alapján.
 
-Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében csak egy hosszan futó művelet támogatott. Az indítás után a hosszú ideig futó műveletnek meg kell felelnie, mielőtt egy későbbi, hosszan futó műveletet elindítson ugyanazon a LiveEvent vagy a kapcsolódó élő kimeneteken. Több élő kimenettel rendelkező élő események esetén várnia kell egy hosszú ideig futó művelet befejezését egy élő kimeneten, mielőtt a hosszú ideig futó műveletet aktivál egy másik élő kimeneten. 
+Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében csak egy hosszan futó művelet támogatott. Az indítás után a hosszú ideig futó műveletnek meg kell felelnie, mielőtt egy későbbi, hosszan futó műveletet elindítson ugyanazon a LiveEvent vagy a kapcsolódó élő kimeneteken. Több élő kimenettel rendelkező élő események esetén várnia kell egy hosszú ideig futó művelet befejezését egy élő kimeneten, mielőtt a hosszú ideig futó műveletet aktivál egy másik élő kimeneten.
 
 ## <a name="sdks"></a>SDK-k
 
@@ -152,7 +152,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](./access-api-howto.md)-hoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolódás Media Services Javával](configure-connect-java-howto.md)
 * [Kapcsolódás Media Services a .NET-tel](configure-connect-dotnet-howto.md)

@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619814"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791273"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Bővített események Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -71,7 +71,7 @@ A kapcsolódó témakörök két mintakód-mintát biztosítanak:
 
 ## <a name="new-catalog-views"></a>Új katalógus nézetei
 
-A kiterjesztett események funkciót számos [katalógus-nézet](https://msdn.microsoft.com/library/ms174365.aspx)támogatja. A katalógus nézeteiből megtudhatja, hogy az aktuális adatbázisban a felhasználó által létrehozott esemény-munkamenetek *metaadatai vagy definíciói* szerepelnek-e. A nézetek nem adnak vissza adatokat az aktív esemény-munkamenetek példányairól.
+A kiterjesztett események funkciót számos [katalógus-nézet](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql)támogatja. A katalógus nézeteiből megtudhatja, hogy az aktuális adatbázisban a felhasználó által létrehozott esemény-munkamenetek *metaadatai vagy definíciói* szerepelnek-e. A nézetek nem adnak vissza adatokat az aktív esemény-munkamenetek példányairól.
 
 | Neve<br/>Katalógus nézet | Leírás |
 |:--- |:--- |
@@ -81,11 +81,11 @@ A kiterjesztett események funkciót számos [katalógus-nézet](https://msdn.mi
 | **sys.database_event_session_targets** |Egy adott esemény-munkamenethez tartozó összes esemény céljának sorát adja vissza. |
 | **sys.database_event_sessions** |Az adatbázis minden esemény-munkamenetének sorát adja vissza. |
 
-A Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek, amelyek. *Server \_ * helyett a. *Database \_ *nevet tartalmazzák. A név mint **sys.server_event_%**.
+A Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek, amelyek. *Server \_* helyett a. *Database \_* nevet tartalmazzák. A név mint **sys.server_event_%** .
 
-## <a name="new-dynamic-management-views-dmvs"></a>Új dinamikus felügyeleti nézetek [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Új dinamikus felügyeleti nézetek [(DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
-A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](https://msdn.microsoft.com/library/bb677293.aspx) , amelyek támogatják a kiterjesztett eseményeket. DMV az *aktív* esemény-munkamenetekről.
+A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) , amelyek támogatják a kiterjesztett eseményeket. DMV az *aktív* esemény-munkamenetekről.
 
 | DMV neve | Leírás |
 |:--- |:--- |
@@ -95,9 +95,9 @@ A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](htt
 | **sys.dm_xe_database_session_targets** |A munkamenet-célokkal kapcsolatos adatokat adja vissza. |
 | **sys.dm_xe_database_sessions** |Az aktuális adatbázisra hatókörben lévő minden esemény-munkamenet sorát adja vissza. |
 
-A Microsoft SQL Server hasonló katalógus-nézetek neve nem a név * \_ adatbázis* része, például:
+A Microsoft SQL Server hasonló katalógus-nézetek neve nem a név *\_ adatbázis* része, például:
 
-- **sys.dm_xe_sessions**a név helyett<br/>**sys.dm_xe_database_sessions**.
+- **sys.dm_xe_sessions** a név helyett<br/>**sys.dm_xe_database_sessions** .
 
 ### <a name="dmvs-common-to-both"></a>DMV közös
 
@@ -140,11 +140,11 @@ SELECT
 
 Az alábbi célok az esemény-munkamenetek eredményét rögzíthetik Azure SQL Databaseon:
 
-- [Gyűrűs puffer célja](https://msdn.microsoft.com/library/ff878182.aspx) – röviden megtarthatja az események mennyiségét a memóriában.
-- [Esemény-számláló célja](https://msdn.microsoft.com/library/ff878025.aspx) – a kiterjesztett események munkamenete során felmerülő összes esemény megszámlálása.
-- [Event file Target](https://msdn.microsoft.com/library/ff878115.aspx) – a teljes pufferek írása egy Azure Storage-tárolóba.
+- [Gyűrűs puffer célja](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)) – röviden megtarthatja az események mennyiségét a memóriában.
+- [Esemény-számláló célja](/previous-versions/sql/sql-server-2016/ff878025(v=sql.130)) – a kiterjesztett események munkamenete során felmerülő összes esemény megszámlálása.
+- [Event file Target](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) – a teljes pufferek írása egy Azure Storage-tárolóba.
 
-A [Windows esemény-nyomkövetés (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) API nem érhető el a kibővített eseményekhez Azure SQL Databaseon.
+A [Windows esemény-nyomkövetés (ETW)](/dotnet/framework/wcf/samples/etw-tracing) API nem érhető el a kibővített eseményekhez Azure SQL Databaseon.
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -183,11 +183,11 @@ Az **eseményvezérelt fájl** célja hálózati késést vagy hibát tapasztalh
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 
 - [Azure PowerShell használata az Azure Storage](/powershell/module/az.storage/)-ban.
-- [Azure Storage-parancsmagok](https://docs.microsoft.com/powershell/module/Azure.Storage)
+- [Azure Storage-parancsmagok](/powershell/module/Azure.Storage)
 - [Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)](/powershell/module/az.storage/)
 - [A blob Storage használata a .NET-keretrendszerrel](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
-- [ESEMÉNY-munkamenet létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql)
+- [ESEMÉNY-munkamenet létrehozása (Transact-SQL)](/sql/t-sql/statements/create-event-session-transact-sql)
 - [Jonathan Kehayias ' blogbejegyzések a bővített eseményekről Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 - Az Azure *Service Updates* weboldala, a paraméterrel leszűkítve Azure SQL Database:
   - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
@@ -195,6 +195,6 @@ Az **eseményvezérelt fájl** célja hálózati késést vagy hibát tapasztalh
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

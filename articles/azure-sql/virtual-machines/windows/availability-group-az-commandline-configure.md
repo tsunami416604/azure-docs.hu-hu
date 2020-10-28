@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 78414e26836d1547fe195a0a7844b6a98bb0dfc8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168256"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790083"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport konfigurálása a PowerShell vagy az a CLI használatával 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Az Always On rendelkezésre állási csoport konfigurálásához a következő e
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Egy tartományvezérlővel rendelkező erőforráscsoport. 
-- Egy vagy több [, az Azure-ban SQL Server 2016 (vagy újabb) Enterprise Edition rendszert futtató,](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) tartományhoz csatlakoztatott virtuális gép *ugyanazon* rendelkezésre állási csoporton vagy *különböző* rendelkezésre állási zónákban, amelyek [regisztrálva vannak az SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md).  
+- Egy vagy több [, az Azure-ban SQL Server 2016 (vagy újabb) Enterprise Edition rendszert futtató,](./create-sql-vm-portal.md) tartományhoz csatlakoztatott virtuális gép *ugyanazon* rendelkezésre állási csoporton vagy *különböző* rendelkezésre állási zónákban, amelyek [regisztrálva vannak az SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md).  
 - A [PowerShell](/powershell/scripting/install/installing-powershell) vagy az [Azure CLI](/cli/azure/install-azure-cli)legújabb verziója. 
 - Két elérhető (egyetlen entitás sem használja) IP-címek. Az egyik a belső terheléselosztó. A másik a rendelkezésre állási csoporttal megegyező alhálózaton belüli figyelő. Ha meglévő terheléselosztó használatával rendelkezik, csak egy elérhető IP-címet kell használnia a rendelkezésre állási csoport figyelője számára. 
 
@@ -64,7 +64,7 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 ```
 
 >[!TIP]
-> Előfordulhat, hogy a hiba akkor jelenik meg, `az sql: 'vm' is not in the 'az sql' command group` Ha az Azure CLI elavult verzióját használja. Töltse le az [Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli-windows) , hogy megszerezze a hibát.
+> Előfordulhat, hogy a hiba akkor jelenik meg, `az sql: 'vm' is not in the 'az sql' command group` Ha az Azure CLI elavult verzióját használja. Töltse le az [Azure CLI legújabb verzióját](/cli/azure/install-azure-cli-windows) , hogy megszerezze a hibát.
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -84,7 +84,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>Fürt metaadatainak meghatározása
 
-Az Azure CLI az [SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group) parancs a rendelkezésre állási csoportot üzemeltető Windows Server feladatátvételi fürt (WSFC) szolgáltatás metaadatait kezeli. A fürt metaadatai közé tartozik a Active Directory tartomány, a fürt fiókjai, a Felhőbeli tanúként használandó Storage-fiókok és a SQL Server verziója. Az az [SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group#az-sql-vm-group-create) paranccsal definiálhatja a WSFC metaadatait, hogy az első SQL Server VM hozzáadásakor a fürt a megadott módon legyen létrehozva. 
+Az Azure CLI az [SQL VM Group](/cli/azure/sql/vm/group) parancs a rendelkezésre állási csoportot üzemeltető Windows Server feladatátvételi fürt (WSFC) szolgáltatás metaadatait kezeli. A fürt metaadatai közé tartozik a Active Directory tartomány, a fürt fiókjai, a Felhőbeli tanúként használandó Storage-fiókok és a SQL Server verziója. Az az [SQL VM Group Create](/cli/azure/sql/vm/group#az-sql-vm-group-create) paranccsal definiálhatja a WSFC metaadatait, hogy az első SQL Server VM hozzáadásakor a fürt a megadott módon legyen létrehozva. 
 
 A következő kódrészlet a fürt metaadatait határozza meg:
 
@@ -129,7 +129,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>Virtuális gépek hozzáadása a fürthöz
 
-A fürt első SQL Server VM hozzáadásával létrehozza a fürtöt. Az az [SQL VM-bővítmény – csoport](https://docs.microsoft.com/cli/azure/sql/vm#az-sql-vm-add-to-group) parancs létrehozza a fürtöt a korábban megadott névvel, telepíti a fürt szerepkört a SQL Server virtuális gépekre, és hozzáadja őket a fürthöz. A parancs későbbi használata `az sql vm add-to-group` további SQL Server virtuális gépeket ad hozzá az újonnan létrehozott fürthöz. 
+A fürt első SQL Server VM hozzáadásával létrehozza a fürtöt. Az az [SQL VM-bővítmény – csoport](/cli/azure/sql/vm#az-sql-vm-add-to-group) parancs létrehozza a fürtöt a korábban megadott névvel, telepíti a fürt szerepkört a SQL Server virtuális gépekre, és hozzáadja őket a fürthöz. A parancs későbbi használata `az sql vm add-to-group` további SQL Server virtuális gépeket ad hozzá az újonnan létrehozott fürthöz. 
 
 A következő kódrészlet létrehozza a fürtöt, és hozzáadja az első SQL Server VMt: 
 
@@ -240,7 +240,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 ---
 
 >[!IMPORTANT]
-> Az egyes SQL Server VMokhoz tartozó nyilvános IP-erőforrásnak standard SKU-nak kell lennie, hogy kompatibilis legyen a standard Load balancerrel. A virtuális gép nyilvános IP-címéhez tartozó SKU meghatározásához lépjen az **erőforráscsoport**elemre, válassza ki a **nyilvános IP-cím** erőforrást a kívánt SQL Server VMhoz, és keresse meg az értéket az **áttekintő** ablaktábla **SKU** elemében.  
+> Az egyes SQL Server VMokhoz tartozó nyilvános IP-erőforrásnak standard SKU-nak kell lennie, hogy kompatibilis legyen a standard Load balancerrel. A virtuális gép nyilvános IP-címéhez tartozó SKU meghatározásához lépjen az **erőforráscsoport** elemre, válassza ki a **nyilvános IP-cím** erőforrást a kívánt SQL Server VMhoz, és keresse meg az értéket az **áttekintő** ablaktábla **SKU** elemében.  
 
 ## <a name="create-listener"></a>Figyelő létrehozása
 
@@ -250,7 +250,7 @@ Az *alhálózati erőforrás-azonosító* a `/subnets/<subnetname>` virtuális h
    1. Nyissa meg az erőforráscsoportot a [Azure Portal](https://portal.azure.com). 
    1. Válassza ki a virtuális hálózati erőforrást. 
    1. A **Beállítások** ablaktáblán válassza a **Tulajdonságok** lehetőséget. 
-   1. Azonosítsa a virtuális hálózat erőforrás-AZONOSÍTÓját, és fűzze hozzá a `/subnets/<subnetname>` végponthoz az alhálózati erőforrás-azonosító létrehozásához. Példa:
+   1. Azonosítsa a virtuális hálózat erőforrás-AZONOSÍTÓját, és fűzze hozzá a `/subnets/<subnetname>` végponthoz az alhálózati erőforrás-azonosító létrehozásához. Például:
       - A virtuális hálózati erőforrás-azonosító: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
       - Az alhálózat neve: `default`
       - Ezért az alhálózati erőforrás-azonosító a következő: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
@@ -510,7 +510,7 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért tekintse át a következő cikkeket: 
+További információkat az következő cikkekben talál: 
 
 * [SQL Server virtuális gépek áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server virtuális gépekkel kapcsolatos gyakori kérdések](frequently-asked-questions-faq.md)
@@ -521,4 +521,4 @@ További információért tekintse át a következő cikkeket:
 * [Rendelkezésre állási csoport felügyelete &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
 * [A rendelkezésre állási csoportok figyelése &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
 * [Az Always On rendelkezésre állási csoportokra vonatkozó Transact-SQL-utasítások áttekintése &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
-* [Az Always On rendelkezésre állási csoportokhoz tartozó PowerShell-parancsmagok áttekintése &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)  
+* [Az Always On rendelkezésre állási csoportokhoz tartozó PowerShell-parancsmagok áttekintése &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)

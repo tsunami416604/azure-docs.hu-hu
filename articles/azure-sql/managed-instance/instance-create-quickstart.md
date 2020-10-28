@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 09/26/2019
-ms.openlocfilehash: 2f2e8c6be128e5004769dca2f42a6c8013510cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf606af0425c04873dadcf47932c806a1099942a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325232"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788706"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Gyors útmutató: felügyelt SQL-példány felügyelt példányának létrehozása
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,8 +34,8 @@ Felügyelt példány létrehozásához kövesse az alábbi lépéseket:
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az **Azure SQL** kifejezést a keresőmezőbe.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be az **Azure SQL** kifejezést a keresőmezőbe.
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. Az Azure SQL felügyelt példányával kapcsolatos további információkat az **SQL felügyelt példányok** csempén látható **Részletek megjelenítése** lehetőség választásával tekintheti meg.
 1. Kattintson a **Létrehozás** gombra.
 
@@ -64,7 +64,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
    ![Felügyelt példány űrlapja](./media/instance-create-quickstart/mi-create-tab-configure-performance.png)
 
-- Ha a felügyelt SQL-példány létrehozása előtt szeretné áttekinteni a beállításokat, válassza a **felülvizsgálat + létrehozás**lehetőséget. Vagy konfigurálja a hálózatkezelési beállításokat a következő lehetőség kiválasztásával **: hálózatkezelés**.
+- Ha a felügyelt SQL-példány létrehozása előtt szeretné áttekinteni a beállításokat, válassza a **felülvizsgálat + létrehozás** lehetőséget. Vagy konfigurálja a hálózatkezelési beállításokat a következő lehetőség kiválasztásával **: hálózatkezelés** .
 
 ### <a name="networking-tab"></a>Hálózatkezelés lap
 
@@ -79,9 +79,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
    | **Virtuális hálózat** | Válassza az **új virtuális hálózat létrehozása** vagy egy érvényes virtuális hálózat és alhálózat lehetőséget.| Ha egy hálózat vagy alhálózat nem érhető el, akkor azt módosítani kell, [hogy megfeleljen a hálózati követelményeknek](vnet-existing-add-subnet.md) , mielőtt kiválasztja az új felügyelt példány célhelyének. További információ az SQL felügyelt példányának hálózati környezetének konfigurálásával kapcsolatos követelményekről: [virtuális hálózat konfigurálása SQL felügyelt példányhoz](connectivity-architecture-overview.md). |
    | **Kapcsolat típusa** | Válasszon egy proxy és egy átirányítási kapcsolat típusa közül.|További információ a kapcsolatok típusairól: az [Azure SQL felügyelt példányának kapcsolattípus](../database/connectivity-architecture.md#connection-policy).|
    | **Nyilvános végpont**  | Válassza az **Engedélyezés** lehetőséget. | Ahhoz, hogy egy felügyelt példány elérhető legyen a nyilvános adatvégponton keresztül, engedélyeznie kell ezt a beállítást. | 
-   | **Hozzáférés engedélyezése** (ha a **nyilvános végpont** engedélyezve van) | Válasszon egyet a lehetőségek közül.   |A portál felhasználói felülete lehetővé teszi egy biztonsági csoport nyilvános végponttal való konfigurálását. </br> </br> A forgatókönyv alapján válasszon a következő lehetőségek közül: </br> <ul> <li>**Azure-szolgáltatások**: ezt a lehetőséget akkor javasoljuk, ha Power bi vagy egy másik több-bérlős szolgáltatásból csatlakozik. </li> <li> **Internet**: tesztelési célokra használható, ha gyorsan el szeretné végezni a felügyelt példányok üzembe helyezését. Éles környezetekhez nem ajánlott. </li> <li> **Nincs hozzáférés**: Ez a beállítás egy **megtagadási** biztonsági szabályt hoz létre. Módosítsa ezt a szabályt úgy, hogy egy nyilvános végponton keresztül elérhetővé váljon a felügyelt példány. </li> </ul> </br> A nyilvános végpontok biztonságával kapcsolatos további információkért tekintse meg az [Azure SQL felügyelt példány biztonságos használata nyilvános végponttal](public-endpoint-overview.md)című témakört.|
+   | **Hozzáférés engedélyezése** (ha a **nyilvános végpont** engedélyezve van) | Válasszon egyet a lehetőségek közül.   |A portál felhasználói felülete lehetővé teszi egy biztonsági csoport nyilvános végponttal való konfigurálását. </br> </br> A forgatókönyv alapján válasszon a következő lehetőségek közül: </br> <ul> <li>**Azure-szolgáltatások** : ezt a lehetőséget akkor javasoljuk, ha Power bi vagy egy másik több-bérlős szolgáltatásból csatlakozik. </li> <li> **Internet** : tesztelési célokra használható, ha gyorsan el szeretné végezni a felügyelt példányok üzembe helyezését. Éles környezetekhez nem ajánlott. </li> <li> **Nincs hozzáférés** : Ez a beállítás egy **megtagadási** biztonsági szabályt hoz létre. Módosítsa ezt a szabályt úgy, hogy egy nyilvános végponton keresztül elérhetővé váljon a felügyelt példány. </li> </ul> </br> A nyilvános végpontok biztonságával kapcsolatos további információkért tekintse meg az [Azure SQL felügyelt példány biztonságos használata nyilvános végponttal](public-endpoint-overview.md)című témakört.|
 
-- A felügyelt példány létrehozása előtt válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. Vagy konfigurálja a további egyéni beállításokat a **Tovább: további beállítások**lehetőség kiválasztásával.
+- A felügyelt példány létrehozása előtt válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. Vagy konfigurálja a további egyéni beállításokat a **Tovább: további beállítások** lehetőség kiválasztásával.
 
 ### <a name="additional-settings"></a>További beállítások
 
@@ -93,10 +93,10 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
    | Beállítás| Ajánlott érték | Leírás |
    | ------ | --------------- | ----------- |
-   | **Rendezés** | Válassza ki a felügyelt példányhoz használni kívánt rendezést. Ha SQL Serverból telepít át adatbázisokat, ellenőrizze a forrás rendezését a használatával, `SELECT SERVERPROPERTY(N'Collation')` és használja ezt az értéket.| További információ a rendezésekről: [a kiszolgáló rendezésének beállítása vagy módosítása](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+   | **Rendezés** | Válassza ki a felügyelt példányhoz használni kívánt rendezést. Ha SQL Serverból telepít át adatbázisokat, ellenőrizze a forrás rendezését a használatával, `SELECT SERVERPROPERTY(N'Collation')` és használja ezt az értéket.| További információ a rendezésekről: [a kiszolgáló rendezésének beállítása vagy módosítása](/sql/relational-databases/collations/set-or-change-the-server-collation).|   
    | **Időzóna** | Válassza ki azt az időzónát, amelyet a felügyelt példány figyelembe fog venni.|További információ: [időzóna](timezones-overview.md).|
    | **Használat feladatátvételi másodlagosként** | Válassza az **Igen** lehetőséget. | Ezzel a beállítással engedélyezheti a felügyelt példány másodlagos feladatátvételi csoportként való használatát.|
-   | **Elsődleges SQL felügyelt példánya** (ha a **másodlagos feladatátvételi** beállítás értéke **Igen**) | Válasszon egy meglévő elsődleges felügyelt példányt, amely ugyanabban a DNS-zónában lesz csatlakoztatva, mint a létrehozandó felügyelt példány. | Ez a lépés lehetővé teszi a feladatátvételi csoport létrehozás utáni konfigurációját. További információ: [oktatóanyag: felügyelt példány hozzáadása feladatátvételi csoporthoz](failover-group-add-instance-tutorial.md).|
+   | **Elsődleges SQL felügyelt példánya** (ha a **másodlagos feladatátvételi** beállítás értéke **Igen** ) | Válasszon egy meglévő elsődleges felügyelt példányt, amely ugyanabban a DNS-zónában lesz csatlakoztatva, mint a létrehozandó felügyelt példány. | Ez a lépés lehetővé teszi a feladatátvételi csoport létrehozás utáni konfigurációját. További információ: [oktatóanyag: felügyelt példány hozzáadása feladatátvételi csoporthoz](failover-group-add-instance-tutorial.md).|
 
 ## <a name="review--create"></a>Ellenőrzés és létrehozás
 
@@ -120,7 +120,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 > [!TIP]
 > Ha bezárta a webböngészőt, vagy áthelyezte a telepítési folyamat képernyőről, kövesse az alábbi lépéseket az üzembe helyezési folyamat helyének megkereséséhez:
 > 1. A Azure Portal nyissa meg az erőforráscsoportot (az **alapok** lapon), amelyre telepíteni kívánja az SQL felügyelt példányát.
-> 2. Válassza a **központi telepítések**lehetőséget.
+> 2. Válassza a **központi telepítések** lehetőséget.
 > 3. Válassza ki az SQL felügyelt példány központi telepítési műveletét folyamatban.
 
 > [!IMPORTANT]
@@ -151,7 +151,7 @@ A hálózati beállítások finomhangolásához ellenőrizze a következőket:
 
 3. Térjen vissza az erőforráscsoporthoz, és válassza ki a hálózati biztonsági csoportot.
 
-   ![Hálózati biztonsági csoport](./media/instance-create-quickstart/network-security-group.png)
+   ![Hálózati biztonsági csoporttal](./media/instance-create-quickstart/network-security-group.png)
 
 4. Tekintse át a bejövő és kimenő biztonsági szabályokat. 
 
@@ -173,9 +173,9 @@ A felügyelt SQL-példányhoz való kapcsolódáshoz kövesse az alábbi lépés
 
    ![Állomásnév](./media/instance-create-quickstart/host-name.png)
 
-   A másolt érték egy teljes tartománynevet (FQDN) jelöl, amely az SQL felügyelt példányhoz való kapcsolódáshoz használható. A következőhöz hasonló példa: *your_host_name. a1b2c3d4e5f6. database. Windows. net*.
+   A másolt érték egy teljes tartománynevet (FQDN) jelöl, amely az SQL felügyelt példányhoz való kapcsolódáshoz használható. A következőhöz hasonló példa: *your_host_name. a1b2c3d4e5f6. database. Windows. net* .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a felügyelt SQL-példányokhoz való kapcsolódásról:
 - Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfc3abd30fad3e86544430e5a4ecb8510e77c9e5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293458"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789930"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Üzletmenet-folytonosság és HADR az Azure-ban SQL Server Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +54,7 @@ Magas rendelkezésre állású megoldást használhat a always on rendelkezésre
 
 | Technológia | Példa architektúrák |
 | --- | --- |
-| **Rendelkezésre állási csoportok** |Az azonos régióban található Azure-beli virtuális gépeken futó rendelkezésre állási replikák magas rendelkezésre állást biztosítanak. Konfigurálnia kell egy tartományvezérlő virtuális gépet, mivel a Windows feladatátvételi fürtszolgáltatáshoz Active Directory tartomány szükséges.<br/><br/> A nagyobb redundancia és rendelkezésre állás érdekében az Azure-beli virtuális gépek különböző [rendelkezésre állási zónákban](../../../availability-zones/az-overview.md) helyezhetők üzembe a [rendelkezésre állási csoport áttekintése című témakörben](availability-group-overview.md)leírtak szerint. Ha a rendelkezésre állási csoportban lévő SQL Server virtuális gépek rendelkezésre állási zónákba vannak telepítve, akkor az Azure- [standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) a figyelőhöz az Azure [SQL virtuális gép CLI](availability-group-az-cli-configure.md) -ben és az [Azure gyorsindító-sablonok](availability-group-quickstart-template-configure.md) cikkeiben leírtak szerint.<br/> ![Rendelkezésre állási csoportok](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>További információ: [rendelkezésre állási csoportok konfigurálása az Azure-ban (GUI)](availability-group-azure-marketplace-template-configure.md). |
+| **Rendelkezésre állási csoportok** |Az azonos régióban található Azure-beli virtuális gépeken futó rendelkezésre állási replikák magas rendelkezésre állást biztosítanak. Konfigurálnia kell egy tartományvezérlő virtuális gépet, mivel a Windows feladatátvételi fürtszolgáltatáshoz Active Directory tartomány szükséges.<br/><br/> A nagyobb redundancia és rendelkezésre állás érdekében az Azure-beli virtuális gépek különböző [rendelkezésre állási zónákban](../../../availability-zones/az-overview.md) helyezhetők üzembe a [rendelkezésre állási csoport áttekintése című témakörben](availability-group-overview.md)leírtak szerint. Ha a rendelkezésre állási csoportban lévő SQL Server virtuális gépek rendelkezésre állási zónákba vannak telepítve, akkor az Azure- [standard Load Balancer](../../../load-balancer/load-balancer-overview.md) a figyelőhöz az Azure [SQL virtuális gép CLI](./availability-group-az-commandline-configure.md) -ben és az [Azure gyorsindító-sablonok](availability-group-quickstart-template-configure.md) cikkeiben leírtak szerint.<br/> ![Rendelkezésre állási csoportok](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>További információ: [rendelkezésre állási csoportok konfigurálása az Azure-ban (GUI)](./availability-group-quickstart-template-configure.md). |
 | **Feladatátvevő fürt példányai** |A feladatátvevő fürtök példányai SQL Server virtuális gépeken támogatottak. Mivel a (z)%-os szolgáltatáshoz megosztott tárterület szükséges, öt megoldás fog működni SQL Server Azure-beli virtuális gépeken: <br/><br/> – Azure-beli [megosztott lemezek](failover-cluster-instance-azure-shared-disks-manually-configure.md) használata a Windows Server 2019-hez. A megosztott felügyelt lemezek olyan Azure-termékek, amelyek lehetővé teszik, hogy egyszerre több virtuális géphez csatolja a felügyelt lemezeket. A fürtben lévő virtuális gépek a fürtözött alkalmazás által választott foglalás alapján elolvashatják vagy írhatják a csatlakoztatott lemezt a SCSI-alapú állandó foglalások (SCSI PR) használatával. Az SCSI PR egy iparági szabványnak megfelelő tárolási megoldás, amelyet a helyi hálózaton (SAN) futó alkalmazások használnak. A felügyelt lemezeken az SCSI PR engedélyezése lehetővé teszi, hogy az Azure-ba is áttelepítse ezeket az alkalmazásokat. <br/><br/>– [Közvetlen tárolóhelyek \( S2D \) ](failover-cluster-instance-storage-spaces-direct-manually-configure.md) használatával biztosíthatja a Windows Server 2016-es és újabb szoftveres virtuális San-t.<br/><br/>– [Prémium fájlmegosztás](failover-cluster-instance-premium-file-share-manually-configure.md) használata a Windows Server 2012-es és újabb verzióihoz. A prémium szintű fájlmegosztás SSD-biztonsági mentéssel, konzisztensen alacsony késéssel, és teljes mértékben támogatott a-vel való használatra.<br/><br/>– A partneri megoldás által a fürtözéshez támogatott tárterület használata. A SIOS DataKeeper használó konkrét példáért lásd a blogbejegyzés [feladatátvételi fürtszolgáltatását és a SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).<br/><br/>-Megosztott blokkos tároló használata távoli iSCSI-tárolóhoz az Azure ExpressRoute keresztül. Például a NetApp Private Storage (NPS) egy iSCSI-célt tesz elérhetővé az ExpressRoute-n keresztül az Azure-beli virtuális gépek Equinix.<br/><br/>A Microsoft-partnerek megosztott tárolási és adatreplikációs megoldásaiért forduljon a szállítóhoz a feladatátvételi adatokhoz való hozzáféréssel kapcsolatos esetleges problémákhoz.<br/><br/>||
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>Csak az Azure-ban: vész-helyreállítási megoldások
@@ -90,7 +90,7 @@ A következő ábrán a telepítő az Azure virtuális gépen futó SQL Server f
 
 További információkért tekintse meg a [termék licencelési feltételeit](https://www.microsoft.com/licensing/product-licensing/products). 
 
-A kedvezmény engedélyezéséhez lépjen a [SQL Server virtuális gép erőforrására](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource). Válassza a **Konfigurálás** lehetőséget a **Beállítások**területen, majd válassza a vész- **helyreállítási** lehetőséget a **SQL Server licenc**alatt. Jelölje be a jelölőnégyzetet annak ellenőrzéséhez, hogy ez a SQL Server VM passzív replikaként lesz-e használatban, majd válassza az **alkalmaz** lehetőséget a beállítások mentéséhez. 
+A kedvezmény engedélyezéséhez lépjen a [SQL Server virtuális gép erőforrására](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource). Válassza a **Konfigurálás** lehetőséget a **Beállítások** területen, majd válassza a vész- **helyreállítási** lehetőséget a **SQL Server licenc** alatt. Jelölje be a jelölőnégyzetet annak ellenőrzéséhez, hogy ez a SQL Server VM passzív replikaként lesz-e használatban, majd válassza az **alkalmaz** lehetőséget a beállítások mentéséhez. 
 
 ![Vész-helyreállítási replika konfigurálása az Azure-ban](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 
@@ -101,12 +101,12 @@ Az Azure-beli virtuális gépek, a tárolók és a hálózatkezelés eltérő m�
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Magas rendelkezésre állású csomópontok rendelkezésre állási csoportokban
 Az Azure-beli rendelkezésre állási csoportok lehetővé teszik, hogy a magas rendelkezésre állású csomópontokat különálló tartalék tartományokra és frissítési tartományokra helyezze. Az Azure platform egy frissítési tartományt és egy tartalék tartományt rendel a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez. Ez az adatközponton belüli konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és teljesítse az 99,95%-os Azure SLA-t. 
 
-Magas rendelkezésre állású telepítés konfigurálásához helyezzen minden résztvevő SQL Server virtuális gépet ugyanabban a rendelkezésre állási csoportba, hogy elkerülje az alkalmazás vagy az adatvesztést a karbantartási események során. Ugyanahhoz a rendelkezésre állási csoporthoz csak az azonos felhőalapú szolgáltatásban lévő csomópontok vehetnek részt. További információk: [Virtuális gépek rendelkezésre állásának kezelése](../../../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Magas rendelkezésre állású telepítés konfigurálásához helyezzen minden résztvevő SQL Server virtuális gépet ugyanabban a rendelkezésre állási csoportba, hogy elkerülje az alkalmazás vagy az adatvesztést a karbantartási események során. Ugyanahhoz a rendelkezésre állási csoporthoz csak az azonos felhőalapú szolgáltatásban lévő csomópontok vehetnek részt. További információk: [Virtuális gépek rendelkezésre állásának kezelése](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Magas rendelkezésre állású csomópontok egy rendelkezésre állási zónában
 A rendelkezésre állási zónák egy Azure-régióban található egyedi fizikai helyek. Minden zóna egy vagy több független energiaellátással, hűtéssel és hálózatkezeléssel felszerelt adatközpontból áll. A rendelkezésre állási zónák régión belüli fizikai elkülönítése segíti az alkalmazások és az adatok adatközpontbeli meghibásodások elleni védettségét azáltal, hogy legalább egy virtuális gép elérhetővé válik, és megfelel az 99,99%-os Azure SLA-nak. 
 
-A magas rendelkezésre állás konfigurálásához helyezze a részt SQL Server virtuális gépeket a régió rendelkezésre állási zónái között. A rendelkezésre állási zónák közötti hálózati átvitel további díjakat is igénybe vesz. További információ: [rendelkezésre állási zónák](/azure/availability-zones/az-overview). 
+A magas rendelkezésre állás konfigurálásához helyezze a részt SQL Server virtuális gépeket a régió rendelkezésre állási zónái között. A rendelkezésre állási zónák közötti hálózati átvitel további díjakat is igénybe vesz. További információ: [rendelkezésre állási zónák](../../../availability-zones/az-overview.md). 
 
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>A feladatátvevő fürt működése az Azure hálózatkezelésében
@@ -123,7 +123,7 @@ Két csomópontos fürt létrehozásakor és online állapotba állításakor ve
 
 Ezt a forgatókönyvet elkerülheti úgy, hogy nem használt statikus IP-címet rendel hozzá a fürt hálózati neveként, hogy a fürt hálózatnév online állapotba kerüljön. Használhat például egy kapcsolaton belüli IP-címet, például a 169.254.1.1-t. A folyamat leegyszerűsítése érdekében lásd: a [Windows feladatátvevő fürt konfigurálása az Azure-ban rendelkezésre állási csoportok számára](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx).
 
-További információ: [rendelkezésre állási csoportok konfigurálása az Azure-ban (GUI)](availability-group-azure-marketplace-template-configure.md).
+További információ: [rendelkezésre állási csoportok konfigurálása az Azure-ban (GUI)](./availability-group-quickstart-template-configure.md).
 
 ### <a name="support-for-availability-group-listeners"></a>A rendelkezésre állási csoport figyelők támogatása
 A rendelkezésre állási csoport figyelők a Windows Server 2012-es vagy újabb verzióját futtató Azure-beli virtuális gépeken támogatottak. Ezt a támogatást a rendelkezésre állási csoport csomópontjait használó Azure-beli virtuális gépeken engedélyezett elosztott terhelésű végpontok használatával lehet elvégezni. A figyelőkhöz speciális konfigurációs lépéseket kell követnie, amelyek az Azure-ban és a helyszínen futó összes ügyfélalkalmazás esetében működnek.
@@ -136,7 +136,7 @@ Ha a rendelkezésre állási csoport több Azure-alhálózatra is kiterjed (pél
 Továbbra is csatlakozhat az egyes rendelkezésre állási replikához, ha közvetlenül a szolgáltatási példányhoz csatlakozik. Emellett mivel a rendelkezésre állási csoportok visszamenőleg kompatibilisek az adatbázis-tükrözési ügyfelekkel, csatlakozhat a rendelkezésre állási replikához, például az adatbázis-tükrözési partnerekhez, ha a replikák az adatbázis-tükrözéshez hasonlóan vannak konfigurálva:
 
 * Van egy elsődleges replika és egy másodlagos replika.
-* A másodlagos replika nem olvashatóként van konfigurálva (**olvasható másodlagos** beállítás: **nem**).
+* A másodlagos replika nem olvashatóként van konfigurálva ( **olvasható másodlagos** beállítás: **nem** ).
 
 Az alábbi példa egy olyan ügyfél-kapcsolódási karakterláncot mutat be, amely megfelel ehhez az adatbázis-tükrözéshez hasonló konfigurációnak a ADO.NET vagy a SQL Server Native Client használatával:
 
@@ -146,11 +146,11 @@ Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=Avail
 
 További információ az ügyfelek kapcsolatáról:
 
-* [A kapcsolatok sztring kulcsszavainak használata SQL Server Native Client](https://msdn.microsoft.com/library/ms130822.aspx)
-* [Ügyfelek összekötése egy adatbázis-tükrözési munkamenettel (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [Csatlakozás a rendelkezésre állási csoport figyelője számára a hibrid informatikai szolgáltatásban](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
-* [A rendelkezésre állási csoport figyelők, az ügyfélkapcsolatok és az alkalmazások feladatátvétele (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [Database-Mirroring kapcsolatok karakterláncok használata rendelkezésre állási csoportokkal](https://technet.microsoft.com/library/hh213417.aspx)
+* [A kapcsolatok sztring kulcsszavainak használata SQL Server Native Client](/sql/relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client)
+* [Ügyfelek összekötése egy adatbázis-tükrözési munkamenettel (SQL Server)](/sql/database-engine/database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server)
+* [Csatlakozás a rendelkezésre állási csoport figyelője számára a hibrid informatikai szolgáltatásban](/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
+* [A rendelkezésre állási csoport figyelők, az ügyfélkapcsolatok és az alkalmazások feladatátvétele (SQL Server)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
+* [Database-Mirroring kapcsolatok karakterláncok használata rendelkezésre állási csoportokkal](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
 
 ### <a name="network-latency-in-hybrid-it"></a>Hálózati késés a hibrid informatikai szolgáltatásban
 A HADR-megoldás üzembe helyezésével feltételezhető, hogy a helyszíni hálózat és az Azure közötti magas hálózati késés fordul elő. Amikor replikákat telepít az Azure-ba, szinkron véglegesítés helyett aszinkron végrehajtást használjon a szinkronizálási módhoz. Ha a helyszíni és az Azure-ban egyaránt telepíti az adatbázis-tükrözési kiszolgálókat, a magas szintű biztonsági mód helyett használja a nagy teljesítményű módot.
@@ -162,8 +162,4 @@ Ha nem szeretné letiltani a Geo-replikációt a Storage-fiókon, akkor az adatb
 
 ## <a name="next-steps"></a>Következő lépések
 
-Döntse el, hogy egy [rendelkezésre állási csoport](availability-group-overview.md) vagy egy [feladatátvevő fürt példánya](failover-cluster-instance-overview.md) a legjobb üzletmenet-folytonossági megoldás-e a vállalat számára. Ezután tekintse át az [ajánlott eljárásokat](hadr-cluster-best-practices.md) a környezet konfigurálásához a magas rendelkezésre állás és a vész-helyreállítás érdekében. 
-
-
-
-
+Döntse el, hogy egy [rendelkezésre állási csoport](availability-group-overview.md) vagy egy [feladatátvevő fürt példánya](failover-cluster-instance-overview.md) a legjobb üzletmenet-folytonossági megoldás-e a vállalat számára. Ezután tekintse át az [ajánlott eljárásokat](hadr-cluster-best-practices.md) a környezet konfigurálásához a magas rendelkezésre állás és a vész-helyreállítás érdekében.

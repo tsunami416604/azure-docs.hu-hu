@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: b89b8cc58cb48770b9b42036f8b834cc1bf11b8b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441130"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790882"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által kezelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ A Azure SQL Database és az Azure szinapszis Analytics esetében a TDE-védő a 
 > Azok a szolgáltatás által felügyelt TDE használó felhasználók, akik az ügyfél által felügyelt TDE szeretnék használni, az adatváltási folyamat során titkosítva maradnak, és az adatbázisfájlok nem lesznek újra titkosítva. Ha egy szolgáltatás által felügyelt kulcsról egy ügyfél által felügyelt kulcsra vált át, csak a ADATTITKOSÍTÁSI kulcsot újratitkosítására van szükség, amely gyors és online művelet.
 
 > [!NOTE]
-> A platform által felügyelt kulcsokkal rendelkező Azure SQL-ügyfelek számára az inaktív adatok titkosításának két rétegét, az infrastruktúra-titkosítást (AES-256 titkosítási algoritmus használatával) végezheti el. Ez egy kiegészítő titkosítási réteget is tartalmaz, amely a TDE és az ügyfél által felügyelt kulcsokkal együtt már elérhető. Azure SQL Database és felügyelt példány esetében az infrastruktúra-titkosítás bekapcsolásakor a rendszer az összes adatbázist, beleértve a főadatbázist és az egyéb rendszeradatbázisokat is titkosítja. Ekkor az ügyfeleknek hozzáférést kell kérniük ehhez a képességhez. Ha érdekli ezt a funkciót, forduljon a következőhöz: AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
+> <a id="doubleencryption"></a> A platform által felügyelt kulcsokkal rendelkező Azure SQL-ügyfelek számára az inaktív adatok titkosításának két rétegét, az infrastruktúra-titkosítást (AES-256 titkosítási algoritmus használatával) végezheti el. Ez egy kiegészítő titkosítási réteget is tartalmaz, amely a TDE és az ügyfél által felügyelt kulcsokkal együtt már elérhető. Azure SQL Database és felügyelt példány esetében az infrastruktúra-titkosítás bekapcsolásakor a rendszer az összes adatbázist, beleértve a főadatbázist és az egyéb rendszeradatbázisokat is titkosítja. Ekkor az ügyfeleknek hozzáférést kell kérniük ehhez a képességhez. Ha érdekli ezt a funkciót, forduljon a következőhöz: AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Az ügyfél által felügyelt TDE előnyei
 
@@ -82,7 +82,7 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 
 - Adja meg a kiszolgáló vagy a felügyelt példány hozzáférését a Key vaulthoz (get, wrapKey, unwrapKey) a saját Azure Active Directory identitásának használatával. A Azure Portal használatakor az Azure AD-identitás automatikusan létrejön. A PowerShell vagy a parancssori felület használatakor az Azure AD-identitást explicit módon létre kell hozni, és ellenőrizni kell a befejezést. Lásd: a TDE és a [BYOK](transparent-data-encryption-byok-configure.md) konfigurálása, valamint a TDE és a [BYOK konfigurálása az SQL felügyelt példányához](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) , részletes útmutatást nyújt a PowerShell használatakor.
 
-- Ha a AKV használatával tűzfalat használ, engedélyeznie kell *a megbízható Microsoft-szolgáltatások engedélyezése beállítást a tűzfal megkerüléséhez*.
+- Ha a AKV használatával tűzfalat használ, engedélyeznie kell *a megbízható Microsoft-szolgáltatások engedélyezése beállítást a tűzfal megkerüléséhez* .
 
 ### <a name="requirements-for-configuring-tde-protector"></a>A TDE-védő konfigurálásának követelményei
 
@@ -95,7 +95,7 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 - Ha meglévő kulcsot importál a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokat (. pfx,. byok vagy. backup) adja meg.
 
 > [!NOTE]
-> Az Azure SQL mostantól támogatja a felügyelt HSM-ben tárolt RSA-kulcs használatát TDE-védőként. Ez a funkció **nyilvános előzetes**verzióban érhető el. Azure Key Vault felügyelt HSM egy teljes körűen felügyelt, magas rendelkezésre állású, egybérlős, szabványoknak megfelelő felhőalapú szolgáltatás, amely lehetővé teszi a felhőalapú alkalmazások titkosítási kulcsainak védelmét az FIPS 140-2 3. szintű hitelesített HSM használatával. További információ a [felügyelt HSM](https://aka.ms/mhsm).
+> Az Azure SQL mostantól támogatja a felügyelt HSM-ben tárolt RSA-kulcs használatát TDE-védőként. Ez a funkció **nyilvános előzetes** verzióban érhető el. Azure Key Vault felügyelt HSM egy teljes körűen felügyelt, magas rendelkezésre állású, egybérlős, szabványoknak megfelelő felhőalapú szolgáltatás, amely lehetővé teszi a felhőalapú alkalmazások titkosítási kulcsainak védelmét az FIPS 140-2 3. szintű hitelesített HSM használatával. További információ a [felügyelt HSM](../../key-vault/managed-hsm/index.yml).
 
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Javaslatok az ügyfél által felügyelt TDE konfigurálásához
@@ -106,7 +106,7 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 
 - Állítsa be a Key Vault erőforrás-zárolását annak szabályozására, hogy ki törölheti a kritikus erőforrást, és megelőzheti a véletlen vagy jogosulatlan törlést. További információ az [erőforrás-zárolásokról](../../azure-resource-manager/management/lock-resources.md).
 
-- Naplózás és jelentéskészítés engedélyezése az összes titkosítási kulcson: a Key Vault olyan naplókat biztosít, amelyek könnyen beilleszthető más biztonsági információkba és az eseménykezelő eszközeibe. Az Operations Management Suite [log Analytics](../../azure-monitor/insights/azure-key-vault.md) egy olyan szolgáltatásra mutat példát, amely már integrálva van.
+- Naplózás és jelentéskészítés engedélyezése az összes titkosítási kulcson: a Key Vault olyan naplókat biztosít, amelyek könnyen beilleszthető más biztonsági információkba és az eseménykezelő eszközeibe. Az Operations Management Suite [log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) egy olyan szolgáltatásra mutat példát, amely már integrálva van.
 
 - A titkosított adatbázisok magas rendelkezésre állásának biztosítása érdekében az egyes kiszolgálókat két, különböző régiókban található kulcstartóval kapcsolja össze, és ugyanazokat a kulcsfontosságú anyagokat kell tárolnia. Csak a Key vaultban lévő kulcs megjelölése a TDE-védővel megegyező régióban. A rendszer automatikusan átvált a kulcstartóra a távoli régióban, ha az adott régióban található kulcstartót érintő leállás van.
 
@@ -126,7 +126,7 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 
 ## <a name="inaccessible-tde-protector"></a>Elérhetetlen TDE-védő
 
-Ha az transzparens adattitkosítás ügyfél által felügyelt kulcs használatára van konfigurálva, a TDE-védő folyamatos hozzáférésre van szükség ahhoz, hogy az adatbázis online maradjon. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt TDE-védőhöz a AKV-ben, egy adatbázis akár 10 percen belül megtagadja az összes kapcsolatot a megfelelő hibaüzenettel, és nem *érhető*el az állapota. Az egyetlen olyan művelet, amely nem elérhető állapotban van, nem érhető el.
+Ha az transzparens adattitkosítás ügyfél által felügyelt kulcs használatára van konfigurálva, a TDE-védő folyamatos hozzáférésre van szükség ahhoz, hogy az adatbázis online maradjon. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt TDE-védőhöz a AKV-ben, egy adatbázis akár 10 percen belül megtagadja az összes kapcsolatot a megfelelő hibaüzenettel, és nem *érhető* el az állapota. Az egyetlen olyan művelet, amely nem elérhető állapotban van, nem érhető el.
 
 > [!NOTE]
 > Ha az adatbázis egy időszakos hálózati leállás miatt nem érhető el, nincs szükség beavatkozásra, és az adatbázisok automatikusan újra online állapotba kerülnek.
@@ -135,7 +135,7 @@ A kulcshoz való hozzáférés visszaállítását követően az adatbázis viss
 
 - Ha a kulcs-hozzáférés 8 órán belül helyreáll, az adatbázis a következő órában automatikusan meggyógyítható.
 
-- Ha a rendszer 8 óránál hosszabb idő után állítja vissza a kulcsot, az automatikus javítás nem lehetséges, az adatbázis visszaállításához további lépésekre van szükség a portálon, és a folyamat az adatbázis méretétől függően jelentős időmennyiséget vehet igénybe. Miután az adatbázis ismét online állapotba került, korábban konfigurálta a kiszolgálói szintű beállításokat, például a [feladatátvételi csoport](auto-failover-group-overview.md) konfigurációját, az időponthoz tartozó visszaállítási előzményeket, a címkék pedig **elvesznek**. Ezért javasoljuk olyan értesítési rendszer megvalósítását, amely lehetővé teszi, hogy 8 órán belül azonosítsa és kezelje az alapul szolgáló kulcsfontosságú hozzáférési problémákat.
+- Ha a rendszer 8 óránál hosszabb idő után állítja vissza a kulcsot, az automatikus javítás nem lehetséges, az adatbázis visszaállításához további lépésekre van szükség a portálon, és a folyamat az adatbázis méretétől függően jelentős időmennyiséget vehet igénybe. Miután az adatbázis ismét online állapotba került, korábban konfigurálta a kiszolgálói szintű beállításokat, például a [feladatátvételi csoport](auto-failover-group-overview.md) konfigurációját, az időponthoz tartozó visszaállítási előzményeket, a címkék pedig **elvesznek** . Ezért javasoljuk olyan értesítési rendszer megvalósítását, amely lehetővé teszi, hogy 8 órán belül azonosítsa és kezelje az alapul szolgáló kulcsfontosságú hozzáférési problémákat.
 
 Az alábbiakban megtekintheti a portálon megjelenő további lépéseket, amelyekkel elérhetetlenné válik az adatbázisok online állapotba helyezése.
 
@@ -146,7 +146,7 @@ Az alábbiakban megtekintheti a portálon megjelenő további lépéseket, amely
 
 Előfordulhat, hogy a Key vaulthoz megfelelő hozzáférési jogokkal rendelkező személy véletlenül letiltja a kiszolgáló hozzáférését a kulcshoz:
 
-- a Key Vault *Get*, *wrapKey*, *unwrapKey* engedélyeinek visszavonása a kiszolgálóról
+- a Key Vault *Get* , *wrapKey* , *unwrapKey* engedélyeinek visszavonása a kiszolgálóról
 
 - a kulcs törlése
 
@@ -163,7 +163,7 @@ További információ [az adatbázisok elérhetetlenné válásának gyakori oka
 Az adatbázis állapotának figyeléséhez és a TDE-védő hozzáférésének elvesztése miatti riasztások engedélyezéséhez konfigurálja a következő Azure-szolgáltatásokat:
 
 - [Azure Resource Health](../../service-health/resource-health-overview.md). Egy nem elérhető adatbázis, amely elvesztette a TDE-védőt, "nem érhető el" jelenik meg, miután megtagadták az adatbázishoz való első kapcsolódást.
-- A [tevékenység naplója](../../service-health/alerts-activity-log-service-notifications.md) , ha az ügyfél által felügyelt kulcstartóban lévő TDE-védőhöz való hozzáférés meghiúsul, a rendszer hozzáadja a bejegyzéseket a tevékenység naplójához.  Az eseményekhez tartozó riasztások létrehozása lehetővé teszi, hogy a lehető leghamarabb visszaállítsa a hozzáférést.
+- A [tevékenység naplója](../../service-health/alerts-activity-log-service-notifications-portal.md) , ha az ügyfél által felügyelt kulcstartóban lévő TDE-védőhöz való hozzáférés meghiúsul, a rendszer hozzáadja a bejegyzéseket a tevékenység naplójához.  Az eseményekhez tartozó riasztások létrehozása lehetővé teszi, hogy a lehető leghamarabb visszaállítsa a hozzáférést.
 - A [csoportok](../../azure-monitor/platform/action-groups.md) meghatározhatják, hogy az értesítések és a riasztások a beállításoknak megfelelően legyenek elküldve, például e-mail-/SMS-/leküldéses/hang-, Logic app-, ITSM-vagy Automation-Runbook.
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Adatbázis biztonsági mentése és visszaállítása az ügyfél által felügyelt TDE
@@ -209,7 +209,7 @@ Ha el szeretné kerülni, hogy a kulcsfontosságú anyagok hiányában a Geo-rep
 
 A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md)című témakör lépéseit. A feladatátvételi tesztet rendszeresen kell elvégezni annak ellenőrzéséhez, hogy a SQL Database megőrizte-e a Key vaultok hozzáférési engedélyét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél által felügyelt TDE tartozó általános műveletekhez:
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335069"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789607"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL Database-adatbázisok tárterületének kezelése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ A következő esetekben szükség lehet a fájlterület használatának monitoro
 
 A Azure Portalban megjelenő legtöbb tárolóhely-metrika és a következő API-k csak a felhasznált adatlapok méretét mérik:
 
-- Azure Resource Manager alapú mérőszámok API-k, beleértve a PowerShell [Get-metrikákat](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- Azure Resource Manager alapú mérőszámok API-k, beleértve a PowerShell [Get-metrikákat](/powershell/module/az.monitor/get-azmetric)
+- T-SQL: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 A következő API-k ugyanakkor az adatbázisokhoz és rugalmas készletekhez lefoglalt terület méretét is mérik:
 
-- T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL:  [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Az adatfájlok zsugorítása
 
@@ -59,7 +59,7 @@ A Azure SQL Database nem csökkenti automatikusan az adatfájlokat, hogy visszai
 
 A következő tárolóhelyek mennyiségének megismerése fontos az adatbázisok fájlméretének kezeléséhez.
 
-|Adatbázis mennyisége|Definíció|Megjegyzések|
+|Adatbázis mennyisége|Meghatározás|Megjegyzések|
 |---|---|---|
 |**Felhasznált adatterület**|Az adatbázis-adatmennyiségek 8 KB-os lapokon való tárolására szolgáló tárterület.|Általánosságban elmondható, hogy a felhasznált terület növekedése (csökkenés) a lapkáknál (deletes). Bizonyos esetekben a felhasznált terület nem változik a lapkákon és a törléseken a műveletben érintett adatmennyiségtől és a töredezettségtől függően. Ha például egy sort töröl minden adatoldalról, nem feltétlenül csökkenti a felhasznált területet.|
 |**Lefoglalt adatterület**|Az adatbázis-adattárolás számára elérhetővé tett formázott fájl mérete.|A lefoglalt terület mennyisége automatikusan növekszik, de a törlés után soha nem csökken. Ez a viselkedés biztosítja, hogy a jövőbeli lapkák gyorsabbak legyenek, mivel a tárhelyet nem kell formázni.|
@@ -115,7 +115,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 
 A következő tárolóhelyek mennyiségének megismerése fontos a rugalmas készlet tárterületének kezeléséhez.
 
-|Rugalmas készlet mennyisége|Definíció|Megjegyzések|
+|Rugalmas készlet mennyisége|Meghatározás|Megjegyzések|
 |---|---|---|
 |**Felhasznált adatterület**|A rugalmas készletben lévő összes adatbázis által használt adatterület összegzése.||
 |**Lefoglalt adatterület**|A rugalmas készlet összes adatbázisa által lefoglalt adatterület összegzése.||
@@ -148,7 +148,7 @@ A rendszer a készletben lévő egyes adatbázisok számára lefoglalt terület 
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor. Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
-A PowerShell-parancsfájlhoz SQL Server PowerShell-modulra van szükség – lásd: a telepítéshez szükséges [PowerShell-modul letöltése](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) .
+A PowerShell-parancsfájlhoz SQL Server PowerShell-modulra van szükség – lásd: a telepítéshez szükséges [PowerShell-modul letöltése](/sql/powershell/download-sql-server-ps-module) .
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -214,7 +214,7 @@ DBCC SHRINKDATABASE (N'db1')
 
 Ez a parancs hatással lehet az adatbázis teljesítményére a futása közben, és ha lehetséges, alacsony használati időszakok alatt kell futnia.  
 
-További információ erről a parancsról: [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+További információ erről a parancsról: [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
 
 ### <a name="auto-shrink"></a>Automatikus zsugorodás
 
@@ -226,11 +226,11 @@ Az automatikus zsugorodás engedélyezéséhez módosítsa az adatbázis nevét 
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-További információ erről a parancsról: [adatbázis-beállítási](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) beállítások.
+További információ erről a parancsról: [adatbázis-beállítási](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) beállítások.
 
 ### <a name="rebuild-indexes"></a>Indexek újraépítése
 
-Az adatbázis-adatfájlok összezsugorodása után az indexek töredezettek lehetnek, és elveszítik a teljesítmény optimalizálásának hatékonyságát. Ha a teljesítmény romlása történik, érdemes megfontolnia az adatbázis-indexek újjáépítését. Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az [indexek újrarendezése és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+Az adatbázis-adatfájlok összezsugorodása után az indexek töredezettek lehetnek, és elveszítik a teljesítmény optimalizálásának hatékonyságát. Ha a teljesítmény romlása történik, érdemes megfontolnia az adatbázis-indexek újjáépítését. Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az [indexek újrarendezése és újraépítése](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 ## <a name="next-steps"></a>Következő lépések
 

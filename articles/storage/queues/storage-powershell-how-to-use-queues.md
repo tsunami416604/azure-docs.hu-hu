@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d1f758390a270f072bc08e13d1d542e08e4df553
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425545"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791137"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-műveletek végrehajtása az Azure PowerShell-lel
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Helyszínek listájának beolvasása
 
-Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ez a gyakorlat a **eastus**-t fogja használni. Ezt a változót a későbbi használat érdekében a változó **helyén** tárolja.
+Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ez a gyakorlat a **eastus** -t fogja használni. Ezt a változót a későbbi használat érdekében a változó **helyén** tárolja.
 
 ```powershell
 Get-AzLocation | Select-Object Location
@@ -86,7 +86,7 @@ $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-További információ az Azure Queue szolgáltatás elnevezési szabályairól: [várólisták és metaadatok elnevezése](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+További információ az Azure Queue szolgáltatás elnevezési szabályairól: [várólisták és metaadatok elnevezése](/rest/api/storageservices/Naming-Queues-and-Metadata).
 
 ## <a name="retrieve-a-queue"></a>Üzenetsor beolvasása
 
@@ -133,7 +133,7 @@ Ez a **láthatósági időkorlát** azt határozza meg, hogy az üzenet hányszo
 
 A kód két lépésben beolvas egy üzenetet a várólistából. A [Microsoft. Azure. Storage. üzenetsor. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) metódus meghívásakor a következő üzenet jelenik meg a várólistán. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. Az üzenet üzenetsorből való eltávolításának befejezéséhez hívja meg a [Microsoft. Azure. Storage. üzenetsor. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metódust.
 
-Az alábbi példában elolvashatja a három üzenetsor-üzenetet, majd várjon 10 másodpercet (a láthatatlanság időtúllépését). Ezután olvassa el újra a három üzenetet, és törölje az üzeneteket a **DeleteMessage**meghívásával. Ha az üzenetek törlése után megpróbálja beolvasni a várólistát, $queueMessage a rendszer NULL értéket ad vissza.
+Az alábbi példában elolvashatja a három üzenetsor-üzenetet, majd várjon 10 másodpercet (a láthatatlanság időtúllépését). Ezután olvassa el újra a három üzenetet, és törölje az üzeneteket a **DeleteMessage** meghívásával. Ha az üzenetek törlése után megpróbálja beolvasni a várólistát, $queueMessage a rendszer NULL értéket ad vissza.
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue
@@ -171,7 +171,7 @@ Ha törölni szeretne egy várólistát és a benne található összes üzenete
 Remove-AzStorageQueue –Name $queueName –Context $ctx
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az ebben a gyakorlatban létrehozott összes eszköz eltávolításához távolítsa el az erőforráscsoportot. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott Storage-fiókot és magát az erőforráscsoportot.
 
@@ -179,7 +179,7 @@ Az ebben a gyakorlatban létrehozott összes eszköz eltávolításához távol�
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta az alapszintű üzenetsor-tárolás kezelését a PowerShell használatával, beleértve a következőket:
 

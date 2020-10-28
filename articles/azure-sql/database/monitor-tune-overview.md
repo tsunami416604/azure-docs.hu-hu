@@ -11,23 +11,23 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e5ab1f07473a2572f7fb228139da8670fd6269c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596979"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790355"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-A Azure SQL Database és az Azure SQL felügyelt példányában lévő adatbázisok teljesítményének figyeléséhez először figyelje a számítási feladatok által használt CPU-és IO-erőforrásokat az adott szolgáltatási szint és teljesítmény szintjének kiválasztása során kiválasztott adatbázis-teljesítmény szintjéhez képest. Ennek elvégzéséhez Azure SQL Database és az Azure SQL felügyelt példánya olyan erőforrás-metrikákat bocsát ki, amelyek megtekinthetők a Azure Portal vagy a következő SQL Server felügyeleti eszközök valamelyikével: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
+A Azure SQL Database és az Azure SQL felügyelt példányában lévő adatbázisok teljesítményének figyeléséhez először figyelje a számítási feladatok által használt CPU-és IO-erőforrásokat az adott szolgáltatási szint és teljesítmény szintjének kiválasztása során kiválasztott adatbázis-teljesítmény szintjéhez képest. Ennek elvégzéséhez Azure SQL Database és az Azure SQL felügyelt példánya olyan erőforrás-metrikákat bocsát ki, amelyek megtekinthetők a Azure Portal vagy a következő SQL Server felügyeleti eszközök valamelyikével: [Azure Data Studio](/sql/azure-data-studio/what-is) vagy [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
 Azure SQL Database számos adatbázis-tanácsadót biztosít az intelligens teljesítmény-hangolási javaslatok és az Automatikus hangolási beállítások biztosításához a teljesítmény javítása érdekében. Emellett Lekérdezési terheléselemző megjeleníti a legtöbb CPU-és IO-használatért felelős lekérdezések részleteit az önálló és a készletezett adatbázisok esetében.
 
 A Azure SQL Database és az Azure SQL felügyelt példánya fejlett monitorozási és hangolási képességeket biztosít a mesterséges intelligencia számára, hogy segítséget nyújtson az adatbázisok és megoldások teljesítményének elhárításában és maximalizálásában. Dönthet úgy, hogy a [Intelligent Insights](intelligent-insights-overview.md) és más adatbázis-erőforrás-naplók és-metrikák [adatfolyam-exportálását](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) több, a felhasználás és az elemzés céljára szolgáló célhelyre konfigurálja, különösen az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)használatával. A Azure SQL Analytics egy fejlett felhőalapú figyelési megoldás, amely az összes adatbázis teljesítményének figyelésére használható nagy léptékű és több előfizetésben egyetlen nézetben. Az exportálható naplók és metrikák listáját az [Exportálás diagnosztikai telemetria](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export) című témakörben tekintheti meg.
 
-A SQL Server saját monitorozási és diagnosztikai funkciókkal rendelkezik, amelyek SQL Database és az SQL felügyelt példányainak kiaknázását, például a [lekérdezési tárolót](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) és a [dinamikus felügyeleti nézeteket (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)használják. A különböző teljesítménnyel kapcsolatos problémák figyeléséhez tekintse meg a [figyelés DMV használatával](monitoring-with-dmvs.md) szkripteket.
+A SQL Server saját monitorozási és diagnosztikai funkciókkal rendelkezik, amelyek SQL Database és az SQL felügyelt példányainak kiaknázását, például a [lekérdezési tárolót](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) és a [dinamikus felügyeleti nézeteket (DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)használják. A különböző teljesítménnyel kapcsolatos problémák figyeléséhez tekintse meg a [figyelés DMV használatával](monitoring-with-dmvs.md) szkripteket.
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>A Azure Portal funkcióinak figyelése és finomhangolása
 
@@ -44,7 +44,7 @@ A **mérőszámok** nézetben gyorsan figyelheti a Azure Portal különböző er
 
 ### <a name="database-advisors-in-azure-sql-database"></a>Adatbázis-tanácsadók a Azure SQL Database
 
-A Azure SQL Database olyan [adatbázis-tanácsadókat](database-advisor-implement-performance-recommendations.md) tartalmaz, amelyek teljesítmény-hangolási javaslatokat biztosítanak az önálló és a készletezett adatbázisokhoz. Ezek a javaslatok a Azure Portal és a [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseadvisor)használatával is elérhetők. Az [automatikus hangolást](automatic-tuning-overview.md) is engedélyezheti, hogy a Azure SQL Database automatikusan implementálja ezeket a hangolási javaslatokat.
+A Azure SQL Database olyan [adatbázis-tanácsadókat](database-advisor-implement-performance-recommendations.md) tartalmaz, amelyek teljesítmény-hangolási javaslatokat biztosítanak az önálló és a készletezett adatbázisokhoz. Ezek a javaslatok a Azure Portal és a [PowerShell](/powershell/module/az.sql/get-azsqldatabaseadvisor)használatával is elérhetők. Az [automatikus hangolást](automatic-tuning-overview.md) is engedélyezheti, hogy a Azure SQL Database automatikusan implementálja ezeket a hangolási javaslatokat.
 
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Lekérdezési terheléselemző a Azure SQL Database
 
@@ -99,29 +99,29 @@ A diagnosztikai beállításokat a mérőszámok és az erőforrás-naplók a k�
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület a Azure Monitor
 
-A metrikák és az erőforrás-naplók a [Azure Monitor log Analytics munkaterületére](../../azure-monitor/platform/resource-logs-collect-workspace.md)is továbbíthatók. Az itt továbbított adatfolyamokat az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)is felhasználhatja, ami egy kizárólag Felhőbeli figyelési megoldás, amely a teljesítményadatokat, a riasztásokat és a kockázatcsökkentő ajánlásokat tartalmazó adatbázisok intelligens figyelését teszi lehetővé. A Log Analytics munkaterületre továbbított adatok elemezhetők más figyelési adatokkal, és lehetővé teszik más Azure Monitor funkciók, például a riasztások és a vizualizációk kihasználása is.
+A metrikák és az erőforrás-naplók a [Azure Monitor log Analytics munkaterületére](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)is továbbíthatók. Az itt továbbított adatfolyamokat az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)is felhasználhatja, ami egy kizárólag Felhőbeli figyelési megoldás, amely a teljesítményadatokat, a riasztásokat és a kockázatcsökkentő ajánlásokat tartalmazó adatbázisok intelligens figyelését teszi lehetővé. A Log Analytics munkaterületre továbbított adatok elemezhetők más figyelési adatokkal, és lehetővé teszik más Azure Monitor funkciók, például a riasztások és a vizualizációk kihasználása is.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-A metrikákat és az erőforrás-naplókat továbbíthatja az [Azure Event Hubsba](../../azure-monitor/platform/resource-logs-stream-event-hubs.md). Adatfolyam-diagnosztikai telemetria az Event hubok számára a következő funkciók biztosításához:
+A metrikákat és az erőforrás-naplókat továbbíthatja az [Azure Event Hubsba](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs). Adatfolyam-diagnosztikai telemetria az Event hubok számára a következő funkciók biztosításához:
 
-- **Stream-naplók harmadik féltől származó naplózási és telemetria rendszerekhez**
+- **Naplókat streamelhet külső naplózási és telemetriarendszerekbe**
 
   Továbbítsa az összes mérőszámot és erőforrás-naplót egy adott esemény központba egy harmadik féltől származó SIEM-vagy log Analytics-eszközre.
-- **Egyéni telemetria és naplózási platform létrehozása**
+- **Egyéni telemetria- és naplózási platformot hozhat létre**
 
   Az Event hubok nagymértékben méretezhető közzétételi-előfizetési természete lehetővé teszi a metrikák és erőforrás-naplók rugalmas betöltését egy egyéni telemetria platformra. A részletekért lásd: [globális méretű telemetria platform tervezése és méretezése az Azure Event Hubsban](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
-- **A szolgáltatás állapotának megtekintése az adattovábbítási Power BI**
+- **Megtekintheti a szolgáltatások állapotát az adatoknak a Power BI-ba történő streamelésével**
 
-  Event Hubs, Stream Analytics és Power BI használatával alakítsa át diagnosztikai adatait az Azure-szolgáltatások közel valós idejű elemzéséhez. A megoldás részleteiért tekintse meg a [stream Analytics és Power bi: valós idejű elemzési irányítópultot a folyamatos adattovábbításhoz](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard) .
+  Event Hubs, Stream Analytics és Power BI használatával alakítsa át diagnosztikai adatait az Azure-szolgáltatások közel valós idejű elemzéséhez. A megoldás részleteiért tekintse meg a [stream Analytics és Power bi: valós idejű elemzési irányítópultot a folyamatos adattovábbításhoz](../../stream-analytics/stream-analytics-power-bi-dashboard.md) .
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Stream-metrikák és erőforrás-naplók az [Azure Storage](../../azure-monitor/platform/resource-logs-collect-storage.md)-ba. Az Azure Storage használatával nagy mennyiségű diagnosztikai telemetria archiválható az előző két folyamatos átviteli lehetőség díjainak töredékéért.
+Stream-metrikák és erőforrás-naplók az [Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)-ba. Az Azure Storage használatával nagy mennyiségű diagnosztikai telemetria archiválható az előző két folyamatos átviteli lehetőség díjainak töredékéért.
 
 ## <a name="use-extended-events"></a>Kiterjesztett események használata 
 
-Emellett a speciális figyeléshez és hibaelhárításhoz is használhatja a SQL Server [kiterjesztett eseményeit](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) . A kiterjesztett események architektúrája lehetővé teszi a felhasználók számára, hogy a teljesítménnyel kapcsolatos problémák elhárításához vagy azonosításához szükséges mennyiségű vagy kevés adatot gyűjtsenek. További információ a Azure SQL Database kiterjesztett eseményeinek használatáról: [kiterjesztett események a Azure SQL Databaseban](xevent-db-diff-from-svr.md).
+Emellett a speciális figyeléshez és hibaelhárításhoz is használhatja a SQL Server [kiterjesztett eseményeit](/sql/relational-databases/extended-events/extended-events) . A kiterjesztett események architektúrája lehetővé teszi a felhasználók számára, hogy a teljesítménnyel kapcsolatos problémák elhárításához vagy azonosításához szükséges mennyiségű vagy kevés adatot gyűjtsenek. További információ a Azure SQL Database kiterjesztett eseményeinek használatáról: [kiterjesztett események a Azure SQL Databaseban](xevent-db-diff-from-svr.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

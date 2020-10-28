@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 06763624231fde344990da6d0a4639bcccdedf00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41f3505388e72fba15277067a94cf4e473008f20
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448868"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790423"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server-adatbázisok migrálása az Azure SQL Database-be
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,11 +41,11 @@ A következő lista az egyetlen vagy készletezett adatbázis SQL Server adatbá
 
   ![VSSSDT áttelepítési ábra](./media/migrate-to-database-from-sql-server/azure-sql-migration-sql-db.png)
 
-1. A [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)legújabb verziójának használatával [mérje](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) fel az adatbázis kompatibilitását.
+1. A [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)legújabb verziójának használatával [mérje](/sql/dma/dma-assesssqlonprem) fel az adatbázis kompatibilitását.
 2. A szükséges javításokat Transact-SQL szkriptekként készítse elő.
-3. Végezze el az áttelepített forrásadatbázis tranzakciós szempontból konzisztens másolatát, vagy állítson le új tranzakciókat a forrás-adatbázisból az áttelepítés során. Az utóbbi lehetőség végrehajtásának módszerei közé tartozik az Ügyfélkapcsolat letiltása vagy az [adatbázis-pillanatkép](https://msdn.microsoft.com/library/ms175876.aspx)létrehozása. Az áttelepítés után a tranzakciós replikáció használatával frissítheti az áttelepített adatbázisokat az áttelepítéshez szükséges kivágási pont utáni változásokkal. Lásd: [a Migrálás tranzakciós áttelepítés használatával](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication).  
+3. Végezze el az áttelepített forrásadatbázis tranzakciós szempontból konzisztens másolatát, vagy állítson le új tranzakciókat a forrás-adatbázisból az áttelepítés során. Az utóbbi lehetőség végrehajtásának módszerei közé tartozik az Ügyfélkapcsolat letiltása vagy az [adatbázis-pillanatkép](/sql/relational-databases/databases/create-a-database-snapshot-transact-sql)létrehozása. Az áttelepítés után a tranzakciós replikáció használatával frissítheti az áttelepített adatbázisokat az áttelepítéshez szükséges kivágási pont utáni változásokkal. Lásd: [a Migrálás tranzakciós áttelepítés használatával](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication).  
 4. Helyezze üzembe a Transact-SQL szkripteket a javítások alkalmazásához az adatbázis másolatán.
-5. [Telepítse át](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql) az adatbázis másolatát egy új adatbázisba Azure SQL Database a Data Migration Assistant használatával.
+5. [Telepítse át](/sql/dma/dma-migrateonpremsql) az adatbázis másolatát egy új adatbázisba Azure SQL Database a Data Migration Assistant használatával.
 
 > [!NOTE]
 > A DMA használata helyett használhat BACPAC-fájlt is. Lásd: [BACPAC-fájl importálása egy új adatbázisba Azure SQL Databaseban](database-import.md).
@@ -63,11 +63,11 @@ Az alábbi lista az importálási teljesítmény optimalizálására vonatkozó 
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>A teljesítmény optimalizálása a migrálás befejezése után
 
-A migrálás befejezése után végezzen teljes vizsgálatot a [statisztikák frissítéséhez](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql).
+A migrálás befejezése után végezzen teljes vizsgálatot a [statisztikák frissítéséhez](/sql/t-sql/statements/update-statistics-transact-sql).
 
 ## <a name="method-2-use-transactional-replication"></a>2. módszer: Tranzakciós replikáció használata
 
-Ha nem engedheti meg, hogy az áttelepítést követően eltávolítsa a SQL Server adatbázist az éles környezetből, SQL Server tranzakciós replikációt is használhat áttelepítési megoldásként. A módszer használatának feltétele, hogy a forrásadatbázisnak meg kell felelnie a [tranzakciós replikáció követelményeinek](https://msdn.microsoft.com/library/mt589530.aspx), valamint kompatibilisnek kell lennie az Azure SQL Database-szel is. További információ a mindig bekapcsolt SQL-replikációról: [replikáció konfigurálása always on rendelkezésre állási csoportokhoz (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
+Ha nem engedheti meg, hogy az áttelepítést követően eltávolítsa a SQL Server adatbázist az éles környezetből, SQL Server tranzakciós replikációt is használhat áttelepítési megoldásként. A módszer használatának feltétele, hogy a forrásadatbázisnak meg kell felelnie a [tranzakciós replikáció követelményeinek](./replication-to-sql-database.md), valamint kompatibilisnek kell lennie az Azure SQL Database-szel is. További információ a mindig bekapcsolt SQL-replikációról: [replikáció konfigurálása always on rendelkezésre állási csoportokhoz (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 
 A megoldás használatához az adatbázist Azure SQL Database előfizetőként kell konfigurálnia az áttelepíteni kívánt SQL Server-példányra. A tranzakciós replikáció terjesztője szinkronizálja az adatokat szinkronizálni kívánt adatbázisból (a közzétevőből), eközben új tranzakciók továbbra is történnek.
 
@@ -108,22 +108,21 @@ Tippek és különbségek az SQL Database-be való migráláshoz
 Számos kompatibilitási probléma merülhet fel, amelyek a forrásadatbázis SQL Server verziójától és az áttelepíteni kívánt adatbázis összetettségének függvényében is előfordulhatnak. Az SQL Server korábbi verziói több kompatibilitási problémával rendelkeznek. A következő forrásanyagokat érdemes használnia a keresőmotorokban végzett internetes keresés mellett:
 
 - [Az Azure SQL Database-ben nem támogatott SQL Server-adatbázisfunkciók](transact-sql-tsql-differences-sql-server.md)
-- [Megszűnt adatbázismotor-funkció az SQL Server 2016-ban](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
-- [Megszűnt adatbázismotor-funkció az SQL Server 2014-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
-- [Megszűnt adatbázismotor-funkció az SQL Server 2012-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
-- [Megszűnt adatbázismotor-funkció az SQL Server 2008 R2-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
-- [Megszűnt adatbázismotor-funkció az SQL Server 2005-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
+- [Megszűnt adatbázismotor-funkció az SQL Server 2016-ban](/sql/database-engine/discontinued-database-engine-functionality-in-sql-server)
+- [Megszűnt adatbázismotor-funkció az SQL Server 2014-ben](/sql/database-engine/discontinued-database-engine-functionality-in-sql-server?viewFallbackFrom=sql-server-2014)
+- [Megszűnt adatbázismotor-funkció az SQL Server 2012-ben](/previous-versions/sql/sql-server-2012/ms144262(v=sql.110))
+- [Megszűnt adatbázismotor-funkció az SQL Server 2008 R2-ben](/previous-versions/sql/sql-server-2008-r2/ms144262(v=sql.105))
+- [Megszűnt adatbázismotor-funkció az SQL Server 2005-ben](/previous-versions/sql/sql-server-2005/ms144262(v=sql.90))
 
-Az interneten való keresés és ezen erőforrások használata mellett a [Microsoft Q&a kérdéses oldalt Azure SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) vagy [StackOverflow](https://stackoverflow.com/).
+Az interneten való keresés és ezen erőforrások használata mellett a [Microsoft Q&a kérdéses oldalt Azure SQL Database](/answers/topics/azure-sql-database.html) vagy [StackOverflow](https://stackoverflow.com/).
 
 > [!IMPORTANT]
 > Az Azure SQL felügyelt példánya lehetővé teszi, hogy a meglévő SQL Server-példányokat és annak adatbázisait minimálisan, kompatibilitási problémák nélkül áttelepítse. Lásd: [Mi az a felügyelt példány](../managed-instance/sql-managed-instance-paas-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure SQL EMEA Engineers blogon lévő szkripttel [monitorozhatja a Tempdb-adatbázis felhasználását a migrálás közben](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/).
-- Az Azure SQL EMEA Engineers blogon lévő szkripttel [monitorozhatja az adatbázis tranzakciósnapló-területét a migrálás időtartama alatt](https://docs.microsoft.com/archive/blogs/azuresqlemea/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database).
-- További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
-- További információ a UTC idő kezeléséről a migrálás után: [Alapértelmezett időzóna módosítása a saját időzónájára](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/).
-- További információ az adatbázis alapértelmezett nyelvének migrálás utáni módosításáról: [Az Azure SQL Database alapértelmezett nyelvének módosítása](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/).
- 
+- Az Azure SQL EMEA Engineers blogon lévő szkripttel [monitorozhatja a Tempdb-adatbázis felhasználását a migrálás közben](/archive/blogs/azuresqlemea/lesson-learned-10-monitoring-tempdb-usage).
+- Az Azure SQL EMEA Engineers blogon lévő szkripttel [monitorozhatja az adatbázis tranzakciósnapló-területét a migrálás időtartama alatt](/archive/blogs/azuresqlemea/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database).
+- További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
+- További információ a UTC idő kezeléséről a migrálás után: [Alapértelmezett időzóna módosítása a saját időzónájára](/archive/blogs/azuresqlemea/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone).
+- További információ az adatbázis alapértelmezett nyelvének migrálás utáni módosításáról: [Az Azure SQL Database alapértelmezett nyelvének módosítása](/archive/blogs/azuresqlemea/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database).

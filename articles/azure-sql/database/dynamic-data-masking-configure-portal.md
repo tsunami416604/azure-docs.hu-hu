@@ -11,17 +11,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 1d4c29cdb9cf24f87df4acc3556b318a1079810a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f8c296860fc36772a85039e27c86a72614c2a50
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443610"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791052"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Ismerkedjen meg SQL Database dinamikus adatmaszkolással a Azure Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Ez a cikk bemutatja, hogyan valósítható meg a [dinamikus adatmaszkolás](dynamic-data-masking-overview.md) a Azure Portal. A dinamikus adatmaszkolást [Azure SQL Database parancsmagok](https://docs.microsoft.com/powershell/module/az.sql/) vagy a [REST API](https://docs.microsoft.com/rest/api/sql/)használatával is megvalósíthatja.
+Ez a cikk bemutatja, hogyan valósítható meg a [dinamikus adatmaszkolás](dynamic-data-masking-overview.md) a Azure Portal. A dinamikus adatmaszkolást [Azure SQL Database parancsmagok](/powershell/module/az.sql/) vagy a [REST API](/rest/api/sql/)használatával is megvalósíthatja.
 
 > [!NOTE]
 > Ez a funkció nem állítható be az Azure szinapszis portál használatával (PowerShell vagy REST API használata) vagy az SQL felügyelt példányával. További információ: [dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking).
@@ -42,7 +42,7 @@ Ez a cikk bemutatja, hogyan valósítható meg a [dinamikus adatmaszkolás](dyna
 
     ![Képernyőfelvétel: a maszkolási szabály hozzáadása konfiguráció lapja.](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
-6. Válassza ki a **sémát**, a **táblát** és az **oszlopot** a maszkoláshoz kijelölt mező definiálásához.
+6. Válassza ki a **sémát** , a **táblát** és az **oszlopot** a maszkoláshoz kijelölt mező definiálásához.
 7. **Válassza ki, hogyan legyen maszk** a bizalmas adatmaszkolási kategóriák listájából.
 
     ![Képernyőkép, amely az érzékeny adatmaszkolási kategóriákat jeleníti meg a válassza ki a maszkolás módját szakaszban.](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
@@ -60,4 +60,4 @@ Ez a cikk bemutatja, hogyan valósítható meg a [dinamikus adatmaszkolás](dyna
 ## <a name="next-steps"></a>Következő lépések
 
 - A dinamikus adatmaszkolás áttekintését lásd: [dinamikus adatmaszkolás](dynamic-data-masking-overview.md).
-- A dinamikus adatmaszkolást [Azure SQL Database parancsmagok](https://docs.microsoft.com/powershell/module/az.sql/) vagy a [REST API](https://docs.microsoft.com/rest/api/sql/)használatával is megvalósíthatja.
+- A dinamikus adatmaszkolást [Azure SQL Database parancsmagok](/powershell/module/az.sql/) vagy a [REST API](/rest/api/sql/)használatával is megvalósíthatja.

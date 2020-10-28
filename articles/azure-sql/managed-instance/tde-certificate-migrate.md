@@ -4,24 +4,24 @@ description: Egy adatbázis adatbázis-titkosítási kulcsát védő tanúsítv�
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: 08adfd7b69d580f6a231f13f9fb2793d828e16a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80ff16156348db9c3a209757b48b7d54615d9104
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618162"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790695"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE-védelemmel ellátott adatbázis tanúsítványának migrálása az Azure SQL felügyelt példányaira
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Ha [transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) által védett adatbázist telepít át az Azure SQL felügyelt példányára a natív visszaállítási lehetőséggel, a SQL Server példány megfelelő tanúsítványát át kell telepíteni az adatbázis-visszaállítás előtt. Ez a cikk végigvezeti a tanúsítvány manuális áttelepítésének folyamatán a felügyelt Azure SQL-példányon:
+Ha [transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) által védett adatbázist telepít át az Azure SQL felügyelt példányára a natív visszaállítási lehetőséggel, a SQL Server példány megfelelő tanúsítványát át kell telepíteni az adatbázis-visszaállítás előtt. Ez a cikk végigvezeti a tanúsítvány manuális áttelepítésének folyamatán a felügyelt Azure SQL-példányon:
 
 > [!div class="checklist"]
 >
@@ -38,20 +38,20 @@ Ha egy teljes körűen felügyelt szolgáltatást használ a TDE-védelemmel ell
 
 A cikkben leírt lépések elvégzéséhez a következő előfeltételekre lesz szüksége:
 
-* Telepített [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) parancssori eszköz egy helyszíni kiszolgálón vagy egy olyan számítógépen, amely hozzáfér a fájlként exportált tanúsítványhoz. A Pvk2Pfx eszköz a [vállalati Windows illesztőprogram-csomag](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)része, amely egy önálló parancssori környezet.
+* Telepített [Pvk2Pfx](/windows-hardware/drivers/devtest/pvk2pfx) parancssori eszköz egy helyszíni kiszolgálón vagy egy olyan számítógépen, amely hozzáfér a fájlként exportált tanúsítványhoz. A Pvk2Pfx eszköz a [vállalati Windows illesztőprogram-csomag](/windows-hardware/drivers/download-the-wdk)része, amely egy önálló parancssori környezet.
 * Telepített [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell), 5.0-s vagy újabb verzió.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
-* Azure PowerShell modul [telepítve és frissítve](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* Azure PowerShell modul [telepítve és frissítve](/powershell/azure/install-az-ps).
 * [Az az. SQL modul](https://www.powershellgallery.com/packages/Az.Sql).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Az Azure SQL felügyelt példánya továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRM modulok parancsainak argumentumai lényegében azonosak.
+> Az Azure SQL felügyelt példánya továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRM modulok parancsainak argumentumai lényegében azonosak.
 
 Futtassa a következő parancsokat a PowerShellben a modul telepítéséhez/frissítéséhez:
 
@@ -125,7 +125,7 @@ Ha a tanúsítványt a SQL Server helyi számítógép tanúsítványtárolójá
 
 2. A tanúsítványok MMC beépülő modulban bontsa ki az elérési út személyes > tanúsítványok elemet a tanúsítványok listájának megtekintéséhez.
 
-3. Kattintson a jobb gombbal a tanúsítványra, majd kattintson az **Exportálás**parancsra.
+3. Kattintson a jobb gombbal a tanúsítványra, majd kattintson az **Exportálás** parancsra.
 
 4. Kövesse a varázslót a tanúsítvány és a titkos kulcs. pfx formátumba való exportálásához.
 
@@ -160,7 +160,7 @@ Ha a tanúsítványt a SQL Server helyi számítógép tanúsítványtárolójá
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Először létre kell hoznia [egy Azure Key vaultot](/azure/key-vault/key-vault-manage-with-cli2) a *. pfx* fájllal.
+Először létre kell hoznia [egy Azure Key vaultot](../../key-vault/general/manage-with-cli2.md) a *. pfx* fájllal.
 
 1. Előkészítő lépések a PowerShellben:
 

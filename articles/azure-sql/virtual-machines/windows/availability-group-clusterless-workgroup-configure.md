@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298829"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790032"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Munkacsoport rendelkezésre állási csoportjának konfigurálása 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -53,14 +53,14 @@ Ebben a lépésben konfigurálja mindkét kiszolgáló DNS-utótagját. Példáu
 A DNS-utótag konfigurálásához kövesse az alábbi lépéseket:
 
 1. RDP-be az első csomópontra, és nyissa meg a Kiszolgálókezelő alkalmazást. 
-1. Válassza a **helyi kiszolgáló** lehetőséget, majd válassza ki a virtuális gép nevét a **számítógép neve**alatt. 
-1. A **számítógép átnevezéséhez**kattintson a **módosítás..** . elemre... 
+1. Válassza a **helyi kiszolgáló** lehetőséget, majd válassza ki a virtuális gép nevét a **számítógép neve** alatt. 
+1. A **számítógép átnevezéséhez** kattintson a **módosítás..** . elemre... 
 1. Módosítsa a munkacsoport nevének nevét úgy, hogy az legyen értelmes, például `AGWORKGROUP` : 
 
    ![Munkacsoport nevének módosítása](./media/availability-group-clusterless-workgroup-configure/1-change-workgroup-name.png)
 
 1. Válassza a **továbbiak...** lehetőséget a **DNS-utótag és a NetBIOS-számítógépnév** párbeszédpanel megnyitásához. 
-1. Írja be a DNS-utótag nevét a **számítógép elsődleges DNS-utótagja**mezőbe, például `ag.wgcluster.example.com` :, majd kattintson **az OK gombra**: 
+1. Írja be a DNS-utótag nevét a **számítógép elsődleges DNS-utótagja** mezőbe, például `ag.wgcluster.example.com` :, majd kattintson **az OK gombra** : 
 
    ![DNS-utótag hozzáadása](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
@@ -107,20 +107,20 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 Ebben a lépésben a feladatátvevő fürtöt fogja létrehozni. Ha nem ismeri ezeket a lépéseket, követheti őket a [feladatátvevő fürt oktatóanyagában](failover-cluster-instance-storage-spaces-direct-manually-configure.md).
 
 Jelentős eltérések az oktatóanyag és a munkacsoporthoz tartozó fürt esetében elvégzendő teendők között:
-- Törölje a **tárolót**, és **közvetlen tárolóhelyek** a fürt érvényesítésének futtatásakor. 
+- Törölje a **tárolót** , és **közvetlen tárolóhelyek** a fürt érvényesítésének futtatásakor. 
 - Ha a csomópontokat hozzáadja a fürthöz, adja hozzá a teljes nevet, például:
    - `AGNode1.ag.wgcluster.example.com`
    - `AGNode2.ag.wgcluster.example.com`
-- Törölje **az összes megfelelő tároló hozzáadása a fürthöz**jelölőnégyzet jelölését. 
+- Törölje **az összes megfelelő tároló hozzáadása a fürthöz** jelölőnégyzet jelölését. 
 
 A fürt létrehozása után rendeljen hozzá egy statikus fürt IP-címét. Ehhez kövesse az alábbi lépéseket:
 
-1. Az egyik csomóponton nyissa meg a **Feladatátvevőfürt-kezelőt**, válassza ki a fürtöt, kattintson a jobb gombbal a **névre: \<ClusterNam> ** a **fürt alapvető erőforrásai** területen, majd válassza a **Tulajdonságok**lehetőséget. 
+1. Az egyik csomóponton nyissa meg a **Feladatátvevőfürt-kezelőt** , válassza ki a fürtöt, kattintson a jobb gombbal a **névre: \<ClusterNam>** a **fürt alapvető erőforrásai** területen, majd válassza a **Tulajdonságok** lehetőséget. 
 
    ![A fürt nevének megnyitása](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
-1. Válassza ki az IP-címet az **IP-címek** területen, és válassza a **Szerkesztés**lehetőséget. 
-1. Válassza a **statikus használata**lehetőséget, adja meg a fürt IP-címét, majd kattintson **az OK gombra**: 
+1. Válassza ki az IP-címet az **IP-címek** területen, és válassza a **Szerkesztés** lehetőséget. 
+1. Válassza a **statikus használata** lehetőséget, adja meg a fürt IP-címét, majd kattintson **az OK gombra** : 
 
    ![Statikus IP-cím megadása a fürt számára](./media/availability-group-clusterless-workgroup-configure/6-provide-static-ip-for-cluster.png)
 
@@ -184,7 +184,7 @@ Az első csomópont konfigurálásához kövesse az alábbi lépéseket:
 
 A második csomópont konfigurálásához kövesse az alábbi lépéseket: 
 
-1. Kapcsolódjon a második csomóponthoz **SQL Server Management Studio**, például: `AGNode2` . 
+1. Kapcsolódjon a második csomóponthoz **SQL Server Management Studio** , például: `AGNode2` . 
 1. Egy **új lekérdezési** ablakban futtassa a következő Transact-SQL (T-SQL) utasítást egy összetett és biztonságos jelszóra való frissítés után: 
 
    ```sql
@@ -291,6 +291,4 @@ Ebben az utolsó lépésben konfigurálja a terheléselosztó-t a [Azure Portal]
 
 ## <a name="next-steps"></a>Következő lépések
 
-A rendelkezésre állási csoport konfigurálásához az [az SQL VM CLI](availability-group-az-cli-configure.md) -t is használhatja. 
-
-
+A rendelkezésre állási csoport konfigurálásához az [az SQL VM CLI](./availability-group-az-commandline-configure.md) -t is használhatja.

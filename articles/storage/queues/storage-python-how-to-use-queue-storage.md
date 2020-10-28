@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 79334db46b6f035aabffcca133ed4f5cb8df3637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b4592b846477fe16e5ebcff7c9adfb45f7fe559
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855566"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790508"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Az Azure üzenetsor-tároló használata a Pythonból
 
@@ -293,13 +293,13 @@ queue_service.delete_queue(queue_name)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a várólista-tárolás alapjait, kövesse az alábbi hivatkozásokat további információért.
 
 * [Az Azure Queues Python API-referenciája](/python/api/azure-storage-queue)
 * [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
-* [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355)
+* [Az Azure Storage-szolgáltatások REST API-ja](/rest/api/storageservices/)
 
 [Az Azure üzenetsor Storage ügyféloldali kódtára a Pythonhoz]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
 [Azure SDK for Python]: https://github.com/azure/azure-sdk-for-python

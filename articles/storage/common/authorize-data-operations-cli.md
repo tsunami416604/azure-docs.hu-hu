@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 66815dac145c8c30b770e831a002f6a0ee093675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be5729320f27e38907c4de6844bf3126cf41747b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714577"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789658"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Válassza ki, hogyan engedélyezze a hozzáférést a blobhoz vagy a várólistához az Azure CLI-vel
 
@@ -43,7 +43,7 @@ A paraméter használatához győződjön `--auth-mode` meg arról, hogy telepí
 
 Ha Azure AD-beli hitelesítő adatokkal jelentkezik be az Azure CLI-be, az OAuth 2,0 hozzáférési tokent ad vissza. Ezt a tokent a rendszer automatikusan használja az Azure CLI-vel, hogy engedélyezze a további adatműveleteket a blob vagy a várólista-tárolón. A támogatott műveletek esetében már nem kell átadnia egy fiók kulcsát vagy SAS-jogkivonatát a paranccsal.
 
-Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyeket rendelhet a blob-és üzenetsor-szolgáltatásokhoz az Azure AD rendszerbiztonsági tag számára. Az Azure Storage-beli Azure-szerepkörökkel kapcsolatos további információkért lásd: [hozzáférési jogosultságok kezelése az Azure Storage-adatokhoz az Azure RBAC](storage-auth-aad-rbac.md).
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyeket rendelhet a blob-és üzenetsor-szolgáltatásokhoz az Azure AD rendszerbiztonsági tag számára. Az Azure Storage-beli Azure-szerepkörökkel kapcsolatos további információkért lásd: [hozzáférési jogosultságok kezelése az Azure Storage-adatokhoz az Azure RBAC](./storage-auth-aad-rbac-portal.md).
 
 ### <a name="permissions-for-calling-data-operations"></a>Az adatműveletek meghívására vonatkozó engedélyek
 
@@ -55,7 +55,7 @@ További információ az egyes Azure Storage-műveletekhez szükséges engedély
 
 Az alábbi példa bemutatja, hogyan hozhat létre tárolót az Azure CLI-vel az Azure AD-beli hitelesítő adataival. A tároló létrehozásához be kell jelentkeznie az Azure CLI-be, és szüksége lesz egy erőforráscsoport és egy Storage-fiókra. Az erőforrások létrehozásával kapcsolatos további információkért lásd: rövid útmutató [: Blobok létrehozása, letöltése és listázása az Azure CLI-vel](../blobs/storage-quickstart-blobs-cli.md).
 
-1. A tároló létrehozása előtt rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez](storage-auth-aad-rbac.md).
+1. A tároló létrehozása előtt rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez](./storage-auth-aad-rbac-portal.md).
 
     > [!IMPORTANT]
     > Az Azure-beli szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.

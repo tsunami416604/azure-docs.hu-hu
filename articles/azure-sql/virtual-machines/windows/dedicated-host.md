@@ -13,20 +13,20 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 140d95aeb7baf4b342044bc178d108239236229b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677678"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789794"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM futtatása egy dedikált Azure-gazdagépen 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk a SQL Server virtuális gép (VM) [Azure dedikált gazdagépen](/azure/virtual-machines/windows/dedicated-hosts)való használatának részleteit részletezi. Az Azure dedikált gazdagép további információit az [Azure dedikált gazdagép bevezetését](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)ismertető blogbejegyzésben találja. 
+Ez a cikk a SQL Server virtuális gép (VM) [Azure dedikált gazdagépen](../../../virtual-machines/dedicated-hosts.md)való használatának részleteit részletezi. Az Azure dedikált gazdagép további információit az [Azure dedikált gazdagép bevezetését](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)ismertető blogbejegyzésben találja. 
 
 ## <a name="overview"></a>Áttekintés
-Az [Azure dedikált gazdagép](/azure/virtual-machines/windows/dedicated-hosts) olyan szolgáltatás, amely fizikai kiszolgálókat biztosít, amelyek egy vagy több virtuális gép üzemeltetésére alkalmasak egyetlen Azure-előfizetéshez. A dedikált gazdagépek ugyanazok a fizikai kiszolgálók, amelyeket a Microsoft adatközpontjai használnak erőforrásként. Dedikált gazdagépeket a régión, a rendelkezésre állási zónán és a tartalék tartományon belül is kiépítheti. Ezután elhelyezheti a virtuális gépeket közvetlenül a kiépített gazdagépeken, bármilyen konfigurációban, amely a legjobban megfelel az igényeinek.
+Az [Azure dedikált gazdagép](../../../virtual-machines/dedicated-hosts.md) olyan szolgáltatás, amely fizikai kiszolgálókat biztosít, amelyek egy vagy több virtuális gép üzemeltetésére alkalmasak egyetlen Azure-előfizetéshez. A dedikált gazdagépek ugyanazok a fizikai kiszolgálók, amelyeket a Microsoft adatközpontjai használnak erőforrásként. Dedikált gazdagépeket a régión, a rendelkezésre állási zónán és a tartalék tartományon belül is kiépítheti. Ezután elhelyezheti a virtuális gépeket közvetlenül a kiépített gazdagépeken, bármilyen konfigurációban, amely a legjobban megfelel az igényeinek.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -54,7 +54,7 @@ A meglévő SQL Server licencek használatára vonatkozó gazdagép-szintű beá
 
 
 ## <a name="provisioning"></a>Kiépítés  
-A SQL Server VM dedikált gazdagépre való kiépítés nem különbözik az Azure-beli virtuális gépektől. Ezt a [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), a [Azure Portal](../../../virtual-machines/windows/dedicated-hosts-portal.md)és az [Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md)használatával teheti meg.
+A SQL Server VM dedikált gazdagépre való kiépítés nem különbözik az Azure-beli virtuális gépektől. Ezt a [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), a [Azure Portal](../../../virtual-machines/dedicated-hosts-portal.md)és az [Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md)használatával teheti meg.
 
 Egy meglévő SQL Server VM a dedikált gazdagéphez való hozzáadásának folyamata állásidőt igényel, de nem befolyásolja az adatvesztést, és nem fog adatvesztést okozni. Ennek ellenére az áthelyezés előtt biztonsági mentést kell készíteni az összes adatbázisról, beleértve a rendszeradatbázisokat is.
 
@@ -78,5 +78,3 @@ További információkat az következő cikkekben talál:
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)
 * [A Windows rendszerű virtuális gépek SQL Server díjszabási útmutatója](pricing-guidance.md)
 * [Windows rendszerű virtuális gépen SQL Server kibocsátási megjegyzései](doc-changes-updates-release-notes.md)
-
-

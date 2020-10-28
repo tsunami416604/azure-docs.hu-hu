@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f969c30033604cb4b331b5ed86d992af371f9c75
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 154a7b17fc09c55e83b65eef8d479904c36e87eb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490815"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791188"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Oktatóanyag: helyszíni adatáttelepítés a felhőalapú tárolóba a AzCopy használatával
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 Az oktatóanyag elvégzéséhez töltse le a AzCopy legújabb verzióját. Lásd: Ismerkedés [a AzCopy szolgáltatással](storage-use-azcopy-v10.md).
 
-Ha Windows rendszert használ, szüksége lesz a [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) programra, mert az oktatóanyag azt használja a feladatok ütemezéséhez. A Linux-felhasználók e célra a crontab parancsot használják.
+Ha Windows rendszert használ, szüksége lesz a [Schtasks](/windows/win32/taskschd/schtasks) programra, mert az oktatóanyag azt használja a feladatok ütemezéséhez. A Linux-felhasználók e célra a crontab parancsot használják.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -62,7 +62,7 @@ Helyezze a AzCopy-fájlt bárhol a számítógépre. Adja hozzá a fájl helyét
 
 ## <a name="authenticate-with-azure-ad"></a>Hitelesítés az Azure AD-vel
 
-Először rendelje hozzá a [Storage blob adatközreműködői](/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) szerepkört az identitásához. Lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-információk eléréséhez](/azure/storage/common/storage-auth-aad-rbac-portal).
+Először rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) szerepkört az identitásához. Lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-információk eléréséhez](./storage-auth-aad-rbac-portal.md).
 
 Ezután nyisson meg egy parancssort, írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
 
@@ -78,7 +78,7 @@ Ekkor megjelenik egy bejelentkezési ablak. Ebben az ablakban jelentkezzen be az
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Egy mappa tartalmának feltöltése a Blob Storage-ba
 
-Az AzCopyval feltöltheti egy mappa összes fájlját a Blob Storage-ba [Windows](/azure/storage/common/storage-use-azcopy) vagy [Linux](/azure/storage/common/storage-use-azcopy-linux) rendszeren. Egy mappa összes blobjának feltöltéséhez írja be a következő AzCopy-parancsot:
+Az AzCopyval feltöltheti egy mappa összes fájlját a Blob Storage-ba [Windows](./storage-use-azcopy-v10.md) vagy [Linux](./storage-use-azcopy-v10.md) rendszeren. Egy mappa összes blobjának feltöltéséhez írja be a következő AzCopy-parancsot:
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -135,7 +135,7 @@ azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycont
 
 ---
 
-Ebben az oktatóanyagban a [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) eszközt használjuk egy ütemezett feladat létrehozásához Windows rendszeren, és a [Crontab](http://crontab.org/) parancsot egy cron feladat létrehozásához Linux rendszeren.
+Ebben az oktatóanyagban a [Schtasks](/windows/win32/taskschd/schtasks) eszközt használjuk egy ütemezett feladat létrehozásához Windows rendszeren, és a [Crontab](http://crontab.org/) parancsot egy cron feladat létrehozásához Linux rendszeren.
 
  A **Schtasks** lehetővé teszi a rendszergazdák számára ütemezett feladatok létrehozását, törlését, lekérdezését, módosítását, futtatását és befejezését helyi vagy távoli számítógépeken. A **Cron** lehetővé teszi a Linux- és Unix-felhasználók számára parancsok vagy szkriptek futtatását adott dátumon és időpontban [cron-kifejezések](https://en.wikipedia.org/wiki/Cron#CRON_expression) használatával.
 
@@ -166,7 +166,7 @@ A parancs a következő paramétereket használja:
 - A `/TN` paramétert a feladat nevének megadásához.
 - A `/TR` paramétert a `script.bat` fájl elérési útjának megadásához.
 
-További információk az ütemezett feladatok létrehozásáról Windows rendszeren: [Schtasks](https://technet.microsoft.com/library/cc772785(v=ws.10).aspx#BKMK_minutes).
+További információk az ütemezett feladatok létrehozásáról Windows rendszeren: [Schtasks](/previous-versions/orphan-topics/ws.10/cc772785(v=ws.10)#BKMK_minutes).
 
 ---
 
@@ -176,7 +176,7 @@ Ha ellenőrizni szeretné, hogy az ütemezett/cron feladat megfelelően fut-e, h
 
 A helyszíni adatok Azure Storage-ba, vagy a Storage-adatok helyszíni tárolóba történő áthelyezésével kapcsolatos további információkért kövesse az alábbi hivatkozást:
 
-* [Adatok áthelyezése az Azure Storage-ba és az-ból](/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
+* [Adatok áthelyezése az Azure Storage-ba és az-ból](./storage-choose-data-transfer-solution.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).  
 
 A AzCopy kapcsolatos további információkért tekintse meg a következő cikkeket:
 

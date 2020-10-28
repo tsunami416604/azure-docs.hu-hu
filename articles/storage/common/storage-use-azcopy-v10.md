@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b1d25ae127d9a732225859a09622bb057c348e28
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ce6398f63149a7f5dd3102d75c8db324f526c419
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488486"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791154"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -37,7 +37,7 @@ Először töltse le a AzCopy V10-es végrehajtható fájlt a számítógép bá
 Ezek a fájlok zip-fájlként (Windows és Mac) vagy tar-fájlként (Linux) vannak tömörítve. A kátrányos fájl Linux rendszeren való letöltéséhez és kibontásához tekintse meg a Linux-disztribúció dokumentációját.
 
 > [!NOTE]
-> Ha át szeretné másolni az adatait az [Azure Table Storage](/azure/storage/tables/table-storage-overview) szolgáltatásba és onnan, akkor telepítse az [AzCopy 7,3](https://aka.ms/downloadazcopynet)-es verzióját.
+> Ha át szeretné másolni az adatait az [Azure Table Storage](../tables/table-storage-overview.md) szolgáltatásba és onnan, akkor telepítse az [AzCopy 7,3](https://aka.ms/downloadazcopynet)-es verzióját.
 
 
 ## <a name="run-azcopy"></a>Az AzCopy futtatása
@@ -80,14 +80,14 @@ Azure Active Directory használatával hitelesítő adatokat adhat meg, ahelyett
 
 A szükséges engedély szintje attól függ, hogy fájlokat tölt fel, vagy csak letölti őket.
 
-Ha csak le szeretné tölteni a fájlokat, ellenőrizze, hogy a [tároló blob-Adatolvasója](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) hozzá van-e rendelve a felhasználói identitáshoz, a felügyelt identitáshoz vagy az egyszerű szolgáltatáshoz.
+Ha csak le szeretné tölteni a fájlokat, ellenőrizze, hogy a [tároló blob-Adatolvasója](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) hozzá van-e rendelve a felhasználói identitáshoz, a felügyelt identitáshoz vagy az egyszerű szolgáltatáshoz.
 
-> A felhasználói identitások, a felügyelt identitások és az egyszerű szolgáltatások mindegyike *rendszerbiztonsági tag*, ezért a jelen cikk további részében a *rendszerbiztonsági tag* kifejezést fogjuk használni.
+> A felhasználói identitások, a felügyelt identitások és az egyszerű szolgáltatások mindegyike *rendszerbiztonsági tag* , ezért a jelen cikk további részében a *rendszerbiztonsági tag* kifejezést fogjuk használni.
 
 Ha fájlokat szeretne feltölteni, ellenőrizze, hogy a következő szerepkörök egyike van-e hozzárendelve a rendszerbiztonsági tag számára:
 
-- [Storage-blobadatok közreműködője](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
-- [Storage-blobadatok tulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
+- [Storage-blobadatok közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [Storage-blobadatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 
 Ezeket a szerepköröket a következő hatókörök bármelyikében lehet hozzárendelni a rendszerbiztonsági tag számára:
 
@@ -96,14 +96,14 @@ Ezeket a szerepköröket a következő hatókörök bármelyikében lehet hozzá
 - Erőforráscsoport
 - Előfizetés
 
-A szerepkörök ellenőrzésével és hozzárendelésével kapcsolatos információkért lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-információk eléréséhez](/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+A szerepkörök ellenőrzésével és hozzárendelésével kapcsolatos információkért lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-információk eléréséhez](./storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json).
 
 > [!NOTE]
 > Ne feledje, hogy az Azure-szerepkör-hozzárendelések akár öt percet is igénybe vehetnek.
 
 Ha a rendszerbiztonsági tag hozzá van adva a célként megadott tároló vagy könyvtár hozzáférés-vezérlési listájához (ACL), nem kell rendelkeznie a rendszerbiztonsági tag számára hozzárendelt szerepkörök valamelyikével. Az ACL-ben a rendszerbiztonsági tag írási engedélyre van szüksége a célhely könyvtárához, és a tárolón és minden szülő könyvtáron végre kell hajtania az engedélyeket.
 
-További információ: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](/azure/storage/blobs/data-lake-storage-access-control).
+További információ: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](../blobs/data-lake-storage-access-control.md).
 
 #### <a name="authenticate-a-user-identity"></a>Felhasználói identitás hitelesítése
 
@@ -137,9 +137,9 @@ A szkript futtatása előtt interaktívan kell bejelentkeznie legalább egyszer,
 
 Bejelentkezhet a fiókjába egy ügyfél titkos kódjával vagy egy olyan tanúsítvány jelszavával, amely társítva van a szolgáltatásnév alkalmazásának regisztrálásához.
 
-Ha többet szeretne megtudni az egyszerű szolgáltatásnév létrehozásáról, tekintse meg a [How to: use The Portal for Azure ad-alkalmazás és egyszerű szolgáltatásnév, amely hozzáfér az erőforrásokhoz](/azure/active-directory/develop/howto-create-service-principal-portal).
+Ha többet szeretne megtudni az egyszerű szolgáltatásnév létrehozásáról, tekintse meg a [How to: use The Portal for Azure ad-alkalmazás és egyszerű szolgáltatásnév, amely hozzáfér az erőforrásokhoz](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-Az egyszerű szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directory](/azure/active-directory/develop/app-objects-and-service-principals)
+Az egyszerű szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md)
 
 ##### <a name="using-a-client-secret"></a>Ügyfél-titkos kód használata
 
@@ -205,7 +205,7 @@ Ha többet szeretne megtudni a rendszerszintű felügyelt identitás engedélyez
 
 ##### <a name="using-a-system-wide-managed-identity"></a>Rendszerszintű felügyelt identitás használata
 
-Először is győződjön meg arról, hogy engedélyezte a rendszerszintű felügyelt identitást a virtuális gépen. Tekintse meg a [rendszer által hozzárendelt felügyelt identitást](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity).
+Először is győződjön meg arról, hogy engedélyezte a rendszerszintű felügyelt identitást a virtuális gépen. Tekintse meg a [rendszer által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
 
 Ezután a parancssorba írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
 
@@ -215,7 +215,7 @@ azcopy login --identity
 
 ##### <a name="using-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás használata
 
-Először is győződjön meg arról, hogy engedélyezte a felhasználó által hozzárendelt felügyelt identitást a virtuális gépen. Tekintse meg a [felhasználó által hozzárendelt felügyelt identitást](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity).
+Először is győződjön meg arról, hogy engedélyezte a felhasználó által hozzárendelt felügyelt identitást a virtuális gépen. Tekintse meg a [felhasználó által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity).
 
 Ezután a parancssorba írja be a következő parancsok bármelyikét, majd nyomja le az ENTER billentyűt.
 
@@ -247,7 +247,7 @@ A példában szereplő parancs rekurzív módon másolja át az adatait egy hely
 azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-Ha többet szeretne megtudni az SAS-jogkivonatokról és a beszerzéséről, tekintse meg a [közös hozzáférésű aláírások (SAS) használata](/azure/storage/common/storage-sas-overview)című témakört.
+Ha többet szeretne megtudni az SAS-jogkivonatokról és a beszerzéséről, tekintse meg a [közös hozzáférésű aláírások (SAS) használata](./storage-sas-overview.md)című témakört.
 
 ## <a name="transfer-files"></a>Fájlok átvitele
 

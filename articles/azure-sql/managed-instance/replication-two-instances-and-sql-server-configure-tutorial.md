@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058556"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790797"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Oktatóanyag: tranzakciós replikáció konfigurálása az Azure SQL felügyelt példánya és SQL Server között
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ A tranzakciós replikáció lehetővé teszi az adatok replikálását az egyik 
 
 A tranzakciós replikáció jelenleg nyilvános előzetes verzióban érhető el a felügyelt SQL-példányhoz. 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -38,7 +38,7 @@ Ez az oktatóanyag egy tapasztalt közönség számára készült, és feltétel
 
 
 > [!NOTE]
-> Ez a cikk a [tranzakciós replikáció](/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti az Azure SQL felügyelt példányain. Nem kapcsolódik a [feladatátvételi csoportokhoz](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), az Azure SQL felügyelt példányának szolgáltatása, amely lehetővé teszi az egyes példányok teljes olvasható replikáinak létrehozását. A [tranzakciós replikáció feladatátvételi csoportokkal való](replication-transactional-overview.md#with-failover-groups)konfigurálásakor további szempontokat is figyelembe kell venni.
+> Ez a cikk a [tranzakciós replikáció](/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti az Azure SQL felügyelt példányain. Nem kapcsolódik a [feladatátvételi csoportokhoz](../database/auto-failover-group-overview.md), az Azure SQL felügyelt példányának szolgáltatása, amely lehetővé teszi az egyes példányok teljes olvasható replikáinak létrehozását. A [tranzakciós replikáció feladatátvételi csoportokkal való](replication-transactional-overview.md#with-failover-groups)konfigurálásakor további szempontokat is figyelembe kell venni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,7 +69,7 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 Hozzon létre két felügyelt példányt az új erőforráscsoporthoz a [Azure Portal](https://portal.azure.com)használatával.
 
 - A közzétevő felügyelt példányának neve legyen `sql-mi-publisher` (a véletlenszerűség néhány karakterrel együtt), a virtuális hálózat nevének pedig a következőnek kell lennie: `vnet-sql-mi-publisher` .
-- A terjesztő felügyelt példányának neve (a `sql-mi-distributor` véletlenszerűség néhány karakterével együtt), és _a közzétevő felügyelt példányával megegyező virtuális hálózatban_kell lennie.
+- A terjesztő felügyelt példányának neve (a `sql-mi-distributor` véletlenszerűség néhány karakterével együtt), és _a közzétevő felügyelt példányával megegyező virtuális hálózatban_ kell lennie.
 
    ![A terjesztőhöz tartozó közzétevő VNet használata](./media/replication-two-instances-and-sql-server-configure-tutorial/use-same-vnet-for-distributor.png)
 
@@ -155,11 +155,11 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
    ![Privát DNS-zóna létrehozása](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Tekintse át a saját DNS-zóna paramétereit, majd válassza a **Létrehozás** lehetőséget az erőforrás létrehozásához.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Tekintse át a saját DNS-zóna paramétereit, majd válassza a **Létrehozás** lehetőséget az erőforrás létrehozásához.
 
 ### <a name="create-an-a-record"></a>Rekord létrehozása
 
-1. Nyissa meg az új **saját DNS zónát** , és válassza az **Áttekintés**lehetőséget.
+1. Nyissa meg az új **saját DNS zónát** , és válassza az **Áttekintés** lehetőséget.
 1. Válassza a **+ rekordazonosító** lehetőséget egy új rekord létrehozásához.
 1. Adja meg a SQL Server VM nevét, valamint a magánhálózati belső IP-címet.
 
@@ -169,11 +169,11 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
 ### <a name="link-the-virtual-network"></a>A virtuális hálózat összekapcsolása
 
-1. Nyissa meg az új **saját DNS zónát** , és válassza a **virtuális hálózati kapcsolatok**elemet.
+1. Nyissa meg az új **saját DNS zónát** , és válassza a **virtuális hálózati kapcsolatok** elemet.
 1. Válassza a **+ Hozzáadás** lehetőséget.
 1. Adja meg a hivatkozás nevét, például: `Pub-link` .
 1. Válassza ki az előfizetést a legördülő menüből, majd válassza ki a közzétevő felügyelt példányának virtuális hálózatát.
-1. Jelölje be az **automatikus regisztráció engedélyezése**melletti jelölőnégyzetet.
+1. Jelölje be az **automatikus regisztráció engedélyezése** melletti jelölőnégyzetet.
 
    ![VNet-hivatkozás létrehozása](./media/replication-two-instances-and-sql-server-configure-tutorial/configure-vnet-link.png)
 
@@ -182,7 +182,7 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
 ## <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-[Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtár számára, majd hozzon létre egy [fájlmegosztást](../../storage/files/storage-how-to-create-file-share.md) a Storage-fiókon belül.
+[Hozzon létre egy Azure Storage-fiókot](../../storage/common/storage-account-create.md#create-a-storage-account) a munkakönyvtár számára, majd hozzon létre egy [fájlmegosztást](../../storage/files/storage-how-to-create-file-share.md) a Storage-fiókon belül.
 
 Másolja a fájlmegosztás elérési útját a (z) formátumban: `\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -210,7 +210,7 @@ GO
 -- Drop database if it exists
 IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'ReplTutorial')
 BEGIN
-    DROP DATABASE ReplTutorial
+    DROP DATABASE ReplTutorial
 END
 GO
 
@@ -283,13 +283,13 @@ A terjesztés konfigurálása után már létrehozhatja a kiadványt. Ehhez köv
 
 1. SQL Server SQL Server Management Studio elindítása.
 1. Kapcsolódjon a `sql-mi-publisher` felügyelt példányhoz.
-1. A **Object Explorer**bontsa ki a **replikálás** csomópontot, majd kattintson a jobb gombbal a **helyi közzétételi** mappára. **Új kiadvány**kiválasztása...
+1. A **Object Explorer** bontsa ki a **replikálás** csomópontot, majd kattintson a jobb gombbal a **helyi közzétételi** mappára. **Új kiadvány** kiválasztása...
 1. Kattintson a **tovább** gombra, ha az üdvözlőlapot át szeretné helyezni.
 1. A **kiadvány-adatbázis** lapon válassza ki a `ReplTutorial` korábban létrehozott adatbázist. Kattintson a **Tovább** gombra.
-1. A **kiadvány típusa** lapon válassza a **tranzakciós kiadvány**lehetőséget. Kattintson a **Tovább** gombra.
-1. A **cikkek** lapon jelölje be a **táblák**melletti jelölőnégyzetet. Kattintson a **Tovább** gombra.
+1. A **kiadvány típusa** lapon válassza a **tranzakciós kiadvány** lehetőséget. Kattintson a **Tovább** gombra.
+1. A **cikkek** lapon jelölje be a **táblák** melletti jelölőnégyzetet. Kattintson a **Tovább** gombra.
 1. A **tábla sorainak szűrése** lapon a szűrők hozzáadása nélkül válassza a **Next (tovább** ) lehetőséget.
-1. A **Pillanatkép-ügynök** lapon jelölje be a pillanatkép azonnali létrehozása elem melletti jelölőnégyzetet, **és az előfizetések inicializálásához tartsa elérhetővé a pillanatképet**. Kattintson a **Tovább** gombra.
+1. A **Pillanatkép-ügynök** lapon jelölje be a pillanatkép azonnali létrehozása elem melletti jelölőnégyzetet, **és az előfizetések inicializálásához tartsa elérhetővé a pillanatképet** . Kattintson a **Tovább** gombra.
 1. Az **ügynök biztonsága** lapon válassza a **biztonsági beállítások...** lehetőséget. Adja meg SQL Server bejelentkezési hitelesítő adatait a pillanatkép-ügynökhöz, és kapcsolódjon a közzétevőhöz. Kattintson az **OK** gombra a **Pillanatkép-ügynök biztonsági** oldalának bezárásához. Kattintson a **Tovább** gombra.
 
    ![A Snapshot Agent biztonságának konfigurálása](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
@@ -349,13 +349,13 @@ Use ReplTutorial
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
-1. Válassza ki a felügyelt példány (oka) t, majd válassza a **Törlés**lehetőséget. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. Ez a folyamat hosszabb időt is igénybe vehet a háttérben, és amíg el nem végzi a műveletet, nem fogja tudni törölni a *virtuális fürtöt* vagy bármely más függő erőforrást. Figyelje meg a törlést a **tevékenység** lapon a felügyelt példány törlésének megerősítéséhez.
-1. A felügyelt példány törlése után törölje a *virtuális fürtöt* úgy, hogy kiválasztja az erőforráscsoportot, majd a **Törlés**lehetőséget választja. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget.
-1. Törölje a többi erőforrást. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget.
-1. Törölje az erőforráscsoportot az **erőforráscsoport törlése**elem kiválasztásával, írja be az erőforráscsoport nevét, majd válassza a `myResourceGroup` **Törlés**lehetőséget.
+1. Válassza ki a felügyelt példány (oka) t, majd válassza a **Törlés** lehetőséget. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés** lehetőséget. Ez a folyamat hosszabb időt is igénybe vehet a háttérben, és amíg el nem végzi a műveletet, nem fogja tudni törölni a *virtuális fürtöt* vagy bármely más függő erőforrást. Figyelje meg a törlést a **tevékenység** lapon a felügyelt példány törlésének megerősítéséhez.
+1. A felügyelt példány törlése után törölje a *virtuális fürtöt* úgy, hogy kiválasztja az erőforráscsoportot, majd a **Törlés** lehetőséget választja. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés** lehetőséget.
+1. Törölje a többi erőforrást. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés** lehetőséget.
+1. Törölje az erőforráscsoportot az **erőforráscsoport törlése** elem kiválasztásával, írja be az erőforráscsoport nevét, majd válassza a `myResourceGroup` **Törlés** lehetőséget.
 
 ## <a name="known-errors"></a>Ismert hibák
 
@@ -414,7 +414,7 @@ Tekintse meg a [Mi az Azure SQL felügyelt példány?](sql-managed-instance-paas
 - [Fenyegetések észlelése](threat-detection-configure.md)
 - [Dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking)
 - [Sorszintű biztonság](/sql/relational-databases/security/row-level-security)
-- [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [Transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>SQL felügyelt példány képességei
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474852"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789012"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Az Azure Defender beállítása a Storage szolgáltatáshoz
 
@@ -37,7 +37,7 @@ Az alábbi lista összefoglalja az Azure Defender for Storage szolgáltatás el�
 
 - Kiadás állapota:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (általánosan elérhető)
-  - [Azure Files](/azure/storage/files/storage-files-introduction) (általánosan elérhető)
+  - [Azure Files](../files/storage-files-introduction.md) (általánosan elérhető)
   - Azure Data Lake Storage Gen2 (általánosan elérhető)
 - Felhők<br>
     ✔ Kereskedelmi felhők<br>
@@ -53,10 +53,10 @@ Az Azure Defendert a következő szakaszokban ismertetett módon állíthatja be
 Amikor előfizet a Azure Security Center Standard szintjére, az Azure Defender automatikusan beállítja az összes Storage-fiókját. Az Azure Defender a következő módon engedélyezhető vagy tiltható le a Storage-fiókok számára egy adott előfizetésben:
 
 1. A [Azure Portal](https://portal.azure.com) **Azure Security Center** elindítása.
-1. A főmenü **felügyelet**területén válassza a **díjszabás & beállítások**lehetőséget.
+1. A főmenü **felügyelet** területén válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki azt az előfizetést, amelyhez engedélyezni vagy letiltani szeretné az Azure Defendert.
 1. Válassza az **Azure Defender** lehetőséget, hogy engedélyezze az Azure Defendert az előfizetéshez.
-1. Az **Azure Defender-csomag kiválasztása erőforrás típusa**területen keresse meg a **tárolási** sort, és válassza az **engedélyezve** lehetőséget a **terv** oszlopban.
+1. Az **Azure Defender-csomag kiválasztása erőforrás típusa** területen keresse meg a **tárolási** sort, és válassza az **engedélyezve** lehetőséget a **terv** oszlopban.
 1. Mentse a módosításokat.
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
@@ -66,8 +66,8 @@ Az Azure Defender mostantól engedélyezve van az előfizetésben található ö
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. Indítsa el a [Azure Portal](https://portal.azure.com/).
-1. Nyissa meg a tárfiókot. A **Beállítások**területen válassza a **fokozott biztonság**lehetőséget.
-1. Válassza **Az Azure Defender engedélyezése a tárolóhoz**lehetőséget.
+1. Nyissa meg a tárfiókot. A **Beállítások** területen válassza a **fokozott biztonság** lehetőséget.
+1. Válassza **Az Azure Defender engedélyezése a tárolóhoz** lehetőséget.
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
 
@@ -138,4 +138,4 @@ A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Storage-fiókok naplóiról](/rest/api/storageservices/About-Storage-Analytics-Logging)
-- További információ a [Azure Security Center](../../security-center/security-center-intro.md)
+- További információ a [Azure Security Center](../../security-center/security-center-introduction.md)

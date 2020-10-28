@@ -11,27 +11,27 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619831"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791290"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>A kibővített eseményekhez tartozó gyűrűs pufferek Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-A tesztelés során egy teljes kódrészletet szeretne használni a kibővített eseményekre vonatkozó információk rögzítéséhez és jelentéséhez. A kiterjesztett események legkönnyebben megcélozható a [gyűrűs puffer célja](https://msdn.microsoft.com/library/ff878182.aspx).
+A tesztelés során egy teljes kódrészletet szeretne használni a kibővített eseményekre vonatkozó információk rögzítéséhez és jelentéséhez. A kiterjesztett események legkönnyebben megcélozható a [gyűrűs puffer célja](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)).
 
 Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket tartalmazza:
 
 1. Létrehoz egy táblázatot, amely a következővel szemlélteti az-t:.
-2. Munkamenetet hoz létre egy meglévő bővített eseményhez, azaz **SQLServer.sql_statement_starting**.
+2. Munkamenetet hoz létre egy meglévő bővített eseményhez, azaz **SQLServer.sql_statement_starting** .
 
-   * Az esemény olyan SQL-utasításokra korlátozódik, amelyek egy adott frissítési karakterláncot tartalmaznak: a **(z) "% Update tabEmployee%" utasítást**.
-   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célnak, azaz  **package0.ring_buffer**.
+   * Az esemény olyan SQL-utasításokra korlátozódik, amelyek egy adott frissítési karakterláncot tartalmaznak: a **(z) "% Update tabEmployee%" utasítást** .
+   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célnak, azaz  **package0.ring_buffer** .
 3. Elindítja az esemény-munkamenetet.
 4. Néhány egyszerű SQL UPDATE-utasítást is kiad.
 5. Egy SQL SELECT utasítás kiírása az esemény kimenetének a gyűrűs pufferből való lekéréséhez.
@@ -50,12 +50,12 @@ Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket ta
 * SQL Server Management Studio (ssms.exe), ideális esetben a legújabb havi frissítési verzió.
   A legújabb ssms.exe a következő címről töltheti le:
   
-  * A című témakör a [letöltés SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  * A című témakör a [letöltés SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
   * [Közvetlen hivatkozás a letöltésre.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Kódminta
 
-Nagyon kicsi módosítás esetén a következő gyűrűs puffer kód Azure SQL Database vagy Microsoft SQL Server is futtatható. A különbség a (z) "_database" csomópont jelenléte a (z) 5. lépésben a FROM záradékban használt dinamikus felügyeleti nézetek (DMV) nevében. Példa:
+Nagyon kicsi módosítás esetén a következő gyűrűs puffer kód Azure SQL Database vagy Microsoft SQL Server is futtatható. A különbség a (z) "_database" csomópont jelenléte a (z) 5. lépésben a FROM záradékban használt dinamikus felügyeleti nézetek (DMV) nevében. Például:
 
 * sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets
@@ -218,9 +218,9 @@ GO
 
 `ssms.exe`A kód futtatására szolgáló mintát használtuk.
 
-Az eredmények megtekintéséhez a **target_data_XML**oszlop fejléc alatti cellára kattintott.
+Az eredmények megtekintéséhez a **target_data_XML** oszlop fejléc alatti cellára kattintott.
 
-Ezután az eredmények ablaktáblán rákattintott a cellára **target_data_XML**oszlop fejlécében. Ekkor kattintson a létrehozott egy másik fájl fülre a ssms.exe, amelyben az eredmény cellájának tartalma XML-ként jelenik meg.
+Ezután az eredmények ablaktáblán rákattintott a cellára **target_data_XML** oszlop fejlécében. Ekkor kattintson a létrehozott egy másik fájl fülre a ssms.exe, amelyben az eredmény cellájának tartalma XML-ként jelenik meg.
 
 A kimenet az alábbi blokkban látható. Úgy néz ki, hogy hosszú, de csak két **\<event>** elemből áll.
 
@@ -349,6 +349,6 @@ A kiterjesztett eseményekre vonatkozó egyéb mintakód-témakörök a követke
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

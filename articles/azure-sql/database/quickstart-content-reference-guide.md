@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: cd1880f58d4ef457cdc411e065588204a5ad6672
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 727792b110c3bc486d31214096be1934539f6d11
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448767"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790304"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Első lépések az önálló adatbázisok Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,15 +41,15 @@ Az adatbázis létrehozásához, konfigurálásához és méretezéséhez haszn�
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>Migrálás egyetlen adatbázisba minimális állásidővel
 
-Ezekkel a gyors útmutatókkal gyorsan létrehozhatja vagy importálhatja az adatbázist az Azure-ba egy `.bacpac` fájl használatával. A `.bacpac` és a `.dacpac` fájlok azonban úgy lettek kialakítva, hogy gyorsan mozogjanak az adatbázisokat a SQL Server különböző verzióiban, illetve az Azure sqlon belül, vagy a folyamatos integrációt a DevOps-folyamatba. Ez a módszer azonban nem az üzemi adatbázisok minimális állásidővel való áttelepítésére lett tervezve, mert nem kell új adatmennyiséget hozzáadnia, várnia kell, amíg befejeződik a forrásadatbázis exportálása egy `.bacpac` fájlba, majd várnia kell, amíg az importálás befejeződik Azure SQL Database. Az összes várakozási idő az alkalmazás leállását eredményezi, különösen a nagyméretű adatbázisok esetében. Az éles adatbázis áthelyezéséhez jobb módszerre van szüksége az áttelepítéshez, amely minimális állásidőt garantál. Ehhez használja a [adatáttelepítési szolgáltatást (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait fokozatosan visszaküldi a visszaállítani kívánt önálló adatbázisra. Így gyorsan válthat az alkalmazás forrásról a cél adatbázisára a minimális állásidővel.
+Ezekkel a gyors útmutatókkal gyorsan létrehozhatja vagy importálhatja az adatbázist az Azure-ba egy `.bacpac` fájl használatával. A `.bacpac` és a `.dacpac` fájlok azonban úgy lettek kialakítva, hogy gyorsan mozogjanak az adatbázisokat a SQL Server különböző verzióiban, illetve az Azure sqlon belül, vagy a folyamatos integrációt a DevOps-folyamatba. Ez a módszer azonban nem az üzemi adatbázisok minimális állásidővel való áttelepítésére lett tervezve, mert nem kell új adatmennyiséget hozzáadnia, várnia kell, amíg befejeződik a forrásadatbázis exportálása egy `.bacpac` fájlba, majd várnia kell, amíg az importálás befejeződik Azure SQL Database. Az összes várakozási idő az alkalmazás leállását eredményezi, különösen a nagyméretű adatbázisok esetében. Az éles adatbázis áthelyezéséhez jobb módszerre van szüksége az áttelepítéshez, amely minimális állásidőt garantál. Ehhez használja a [adatáttelepítési szolgáltatást (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%252fazure%252fsql-database%252ftoc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait fokozatosan visszaküldi a visszaállítani kívánt önálló adatbázisra. Így gyorsan válthat az alkalmazás forrásról a cél adatbázisára a minimális állásidővel.
 
 ## <a name="hands-on-learning-modules"></a>Gyakorlati tanulási modulok
 
 Az alábbi Microsoft Learn-modulok segítenek a Azure SQL Databaseról való ingyenes tanulásban.
 
-- [Adatbázis kiépítése SQL Databaseban az alkalmazásadatok tárolásához](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [Azure SQL Database-adatbázist lekérdező ASP.NET-alkalmazás fejlesztése és konfigurálása](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [Az adatbázis védelme Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [Adatbázis kiépítése SQL Databaseban az alkalmazásadatok tárolásához](/learn/modules/provision-azure-sql-db/)
+- [Azure SQL Database-adatbázist lekérdező ASP.NET-alkalmazás fejlesztése és konfigurálása](/learn/modules/develop-app-that-queries-azure-sql/)
+- [Az adatbázis védelme Azure SQL Database](/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>Következő lépések
 

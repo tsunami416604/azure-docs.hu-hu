@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031092"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791086"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Alkalmazás engedélyeinek szerkesztése vagy visszavonása a saját alkalmazások portálján
 
@@ -30,13 +30,13 @@ Ha szervezeti alkalmazásokat használ a **saját alkalmazások** portálon, akk
 
 ## <a name="manage-app-accounts"></a>Alkalmazás-fiókok kezelése
 
-Ha meg szeretné tekinteni az Ön vagy a rendszergazda által megadott alkalmazásokat, válassza a **...** lehetőséget, ha a **saját alkalmazások** portálon egy alkalmazásra viszi a kurzort, majd válassza az **alkalmazás kezelése**lehetőséget:
+Ha meg szeretné tekinteni az Ön vagy a rendszergazda által megadott alkalmazásokat, válassza a **...** lehetőséget, ha a **saját alkalmazások** portálon egy alkalmazásra viszi a kurzort, majd válassza az **alkalmazás kezelése** lehetőséget:
 
-![Alkalmazások kezelése a saját alkalmazások portálján](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
+![Alkalmazások kezelése a saját alkalmazások portálján](media/my-applications-portal-permissions-saved-accounts/my-apps-home-woodgrove.png)
 
 Az engedélyek ablak felső részén megtekintheti, hogy milyen személyeket járult hozzá. Az alkalmazások engedélyei közé tartozik például a naptár, a névjegyek vagy a kamera elérésének lehetősége.
 
-Az **engedélyek visszavonása**lehetőség kiválasztásával visszavonhatja a beleegyezett engedélyek bármelyikét, azonban előfordulhat, hogy az alkalmazások eltávolításával bizonyos funkciók is megszakadnak. Ha problémái vannak az engedélyek vagy fiókok eltávolítása után, további segítségért forduljon a szervezet ügyfélszolgálatához.
+Az **engedélyek visszavonása** lehetőség kiválasztásával visszavonhatja a beleegyezett engedélyek bármelyikét, azonban előfordulhat, hogy az alkalmazások eltávolításával bizonyos funkciók is megszakadnak. Ha problémái vannak az engedélyek vagy fiókok eltávolítása után, további segítségért forduljon a szervezet ügyfélszolgálatához.
 
 ![Alkalmazás engedélyeinek visszavonása a saját alkalmazások portálján](media/my-applications-portal-permissions-saved-accounts/revoke-permissions.png)
 

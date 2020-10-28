@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 1e8810e8b0c02aec33f55fb8f0689eec3c5bad8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616703"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791324"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -89,7 +89,7 @@ Azure SQL Database esetében a virtuális hálózati szabályok funkció a köve
 
 Ha Azure SQL Database szolgáltatási végpontokat használ, tekintse át a következő szempontokat:
 
-- **Azure SQL Database nyilvános IP-címekre való kimenő forgalom szükséges**: hálózati biztonsági csoportokat (NSG) kell megnyitni ahhoz, hogy a kapcsolat lehetővé váljon a Azure SQL Database IP-címek számára. Ezt a Azure SQL Database NSG- [szolgáltatásának címkéi](../../virtual-network/security-overview.md#service-tags) segítségével teheti meg.
+- **Azure SQL Database nyilvános IP-címekre való kimenő forgalom szükséges** : hálózati biztonsági csoportokat (NSG) kell megnyitni ahhoz, hogy a kapcsolat lehetővé váljon a Azure SQL Database IP-címek számára. Ezt a Azure SQL Database NSG- [szolgáltatásának címkéi](../../virtual-network/network-security-groups-overview.md#service-tags) segítségével teheti meg.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -112,9 +112,9 @@ A Base és a COPY utasítást általában arra használják, hogy az Azure szina
 
 #### <a name="prerequisites"></a>Előfeltételek
 
-- Telepítse az Azure PowerShellt a kapcsolódó [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps) alapján.
-- Ha általános célú v1 vagy Blob Storage-fiókja van, először frissítenie kell az általános célú v2 fiókra az [itt található útmutatások](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) szerint.
-- Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. Ennek a konfigurációnak a engedélyezése lehetővé teszi a Base és a COPY utasítás számára, hogy erős hitelesítéssel kapcsolódjon a Storage-fiókhoz, ahol a hálózati forgalom az Azure-gerincen marad. További információt ebben az [útmutatóban](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) talál.
+- Telepítse az Azure PowerShellt a kapcsolódó [útmutató](/powershell/azure/install-az-ps) alapján.
+- Ha általános célú v1 vagy Blob Storage-fiókja van, először frissítenie kell az általános célú v2 fiókra az [itt található útmutatások](../../storage/common/storage-account-upgrade.md) szerint.
+- Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. Ennek a konfigurációnak a engedélyezése lehetővé teszi a Base és a COPY utasítás számára, hogy erős hitelesítéssel kapcsolódjon a Storage-fiókhoz, ahol a hálózati forgalom az Azure-gerincen marad. További információt ebben az [útmutatóban](../../storage/common/storage-network-security.md#exceptions) talál.
 
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
@@ -129,21 +129,21 @@ A Base és a COPY utasítást általában arra használják, hogy az Azure szina
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)segítségével.
+1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](../../storage/common/storage-account-create.md)segítségével.
 
    > [!NOTE]
    >
-   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
-   > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](../../storage/common/storage-account-upgrade.md)segítségével.
+   > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](../../storage/blobs/data-lake-storage-known-issues.md).
 
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendelje hozzá a **Storage blob-adatközreműködő** Azure-szerepkört az Azure szinapszis Analytics szolgáltatást futtató kiszolgálóhoz, amelyet a következő #1 lépésben regisztrált: Azure Active Directory (HRE).
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendelje hozzá a **Storage blob-adatközreműködő** Azure-szerepkört az Azure szinapszis Analytics szolgáltatást futtató kiszolgálóhoz, amelyet a következő #1 lépésben regisztrált: Azure Active Directory (HRE).
 
    > [!NOTE]
-   > Ezt a lépést csak a Storage-fiók tulajdonosi jogosultsággal rendelkező tagjai hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Ezt a lépést csak a Storage-fiók tulajdonosi jogosultsággal rendelkező tagjai hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md).
   
 1. **Alapszintű kapcsolat az Azure Storage-fiókkal:**
 
-   1. Hozzon létre egy adatbázis- **[főkulcsot](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** , ha még nem hozott létre egy korábbiat:
+   1. Hozzon létre egy adatbázis- **[főkulcsot](/sql/t-sql/statements/create-master-key-transact-sql)** , ha még nem hozott létre egy korábbiat:
 
        ```sql
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
@@ -157,7 +157,7 @@ A Base és a COPY utasítást általában arra használják, hogy az Azure szina
 
        > [!NOTE]
        >
-       > - Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert ez a mechanizmus [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) használ a borítók alatt.
+       > - Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert ez a mechanizmus [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md) használ a borítók alatt.
        > - Az identitás nevének **"Managed Service Identity"** kell lennie a VNet által védett Azure Storage-fiókkal való együttműködéshez.
 
    1. Hozzon létre külső adatforrást `abfss://` sémával az általános célú v2 Storage-fiókhoz való csatlakozáshoz a következő paranccsal:
@@ -168,11 +168,11 @@ A Base és a COPY utasítást általában arra használják, hogy az Azure szina
 
        > [!NOTE]
        >
-       > - Ha már rendelkezik az általános célú v1-vagy blob Storage-fiókhoz társított külső táblákkal, először el kell dobnia ezeket a külső táblákat, majd el kell dobnia a megfelelő külső adatforrást. Ezután hozzon létre egy külső adatforrást az `abfss://` általános célú v2-es Storage-fiókhoz csatlakozó sémával a fentiek szerint, és hozza létre újra az összes külső táblázatot az új külső adatforrás használatával. Használhatja a [Parancsfájlok létrehozása és közzététele varázslót](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) a Create-scriptek létrehozásához az összes külső táblázat számára a könnyebb kezelhetőség érdekében.
-       > - A sémával kapcsolatos további információkért `abfss://` tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
-       > - A külső ADATFORRÁS LÉTREHOZÁSával kapcsolatos további információkért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+       > - Ha már rendelkezik az általános célú v1-vagy blob Storage-fiókhoz társított külső táblákkal, először el kell dobnia ezeket a külső táblákat, majd el kell dobnia a megfelelő külső adatforrást. Ezután hozzon létre egy külső adatforrást az `abfss://` általános célú v2-es Storage-fiókhoz csatlakozó sémával a fentiek szerint, és hozza létre újra az összes külső táblázatot az új külső adatforrás használatával. Használhatja a [Parancsfájlok létrehozása és közzététele varázslót](/sql/ssms/scripting/generate-and-publish-scripts-wizard) a Create-scriptek létrehozásához az összes külső táblázat számára a könnyebb kezelhetőség érdekében.
+       > - A sémával kapcsolatos további információkért `abfss://` tekintse meg ezt az [útmutatót](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md).
+       > - A külső ADATFORRÁS LÉTREHOZÁSával kapcsolatos további információkért tekintse meg ezt az [útmutatót](/sql/t-sql/statements/create-external-data-source-transact-sql).
 
-   1. Lekérdezés normál módon [külső táblák](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)használatával.
+   1. Lekérdezés normál módon [külső táblák](/sql/t-sql/statements/create-external-table-transact-sql)használatával.
 
 ### <a name="azure-sql-database-blob-auditing"></a>BLOB-naplózás Azure SQL Database
 
@@ -188,11 +188,11 @@ A **IgnoreMissingVNetServiceEndpoint** jelzőt a PowerShell használatával áll
 
 ## <a name="errors-40914-and-40615"></a>40914 és 40615 hibák
 
-A 40914-es kapcsolati hiba a Azure Portal tűzfal ablaktábláján megadott *virtuális hálózati szabályokra*vonatkozik. A 40615-es hiba hasonló, azzal a különbséggel, hogy a tűzfal *IP-címeire vonatkozó szabályokra* vonatkozik.
+A 40914-es kapcsolati hiba a Azure Portal tűzfal ablaktábláján megadott *virtuális hálózati szabályokra* vonatkozik. A 40615-es hiba hasonló, azzal a különbséggel, hogy a tűzfal *IP-címeire vonatkozó szabályokra* vonatkozik.
 
 ### <a name="error-40914"></a>40914-es hiba
 
-*Üzenet szövege:* Nem nyitható meg a bejelentkezés által kért "*[Server-Name]*" kiszolgáló. Az ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.
+*Üzenet szövege:* Nem nyitható meg a bejelentkezés által kért " *[Server-Name]* " kiszolgáló. Az ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.
 
 *Hiba leírása:* Az ügyfél olyan alhálózatban található, amely virtuális hálózati kiszolgáló-végpontokkal rendelkezik. A kiszolgálónak azonban nincs olyan virtuális hálózati szabálya, amely engedélyezi az alhálózatnak az adatbázissal való kommunikációt.
 
@@ -210,7 +210,7 @@ A 40914-es kapcsolati hiba a Azure Portal tűzfal ablaktábláján megadott *vir
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>A portál létrehozhat egy virtuális hálózati szabályt
 
-Ez a szakasz azt szemlélteti, hogyan használható a [Azure Portal][http-azure-portal-link-ref-477t] egy *virtuális hálózati szabály* létrehozásához az adatbázisban a Azure SQL Databaseban. A szabály közli az adatbázissal, hogy fogadja a kommunikációt egy adott alhálózatból, amely *Virtual Network szolgáltatási végpontként*van megjelölve.
+Ez a szakasz azt szemlélteti, hogyan használható a [Azure Portal][http-azure-portal-link-ref-477t] egy *virtuális hálózati szabály* létrehozásához az adatbázisban a Azure SQL Databaseban. A szabály közli az adatbázissal, hogy fogadja a kommunikációt egy adott alhálózatból, amely *Virtual Network szolgáltatási végpontként* van megjelölve.
 
 > [!NOTE]
 > Ha szolgáltatási végpontot szeretne hozzáadni a kiszolgáló VNet, először győződjön meg arról, hogy a szolgáltatási végpontok be vannak kapcsolva az alhálózathoz.
@@ -231,16 +231,16 @@ Belsőleg a PowerShell-parancsmagok az SQL VNet műveleteihez REST API-kat hívn
 
 Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network szolgáltatás végpontjának Azure SQL Databasehoz tartozó *nevét adja* meg.
 
-- A megfelelő végpont-típus neve a **Microsoft. SQL**.
+- A megfelelő végpont-típus neve a **Microsoft. SQL** .
 - Ha az alhálózat nem címkézhető a típus nevével, tekintse [meg az alhálózat ellenőrzése végpontot][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure Portal lépések
 
-1. Jelentkezzen be az [Azure Portalra][http-azure-portal-link-ref-477t].
+1. Jelentkezzen be az [Azure Portal][http-azure-portal-link-ref-477t].
 
-2. Keresse meg és válassza ki az **SQL-kiszolgálók**elemet, majd válassza ki a kiszolgálót. A **Biztonság**területen válassza a **tűzfalak és virtuális hálózatok**lehetőséget.
+2. Keresse meg és válassza ki az **SQL-kiszolgálók** elemet, majd válassza ki a kiszolgálót. A **Biztonság** területen válassza a **tűzfalak és virtuális hálózatok** lehetőséget.
 
 3. Állítsa be az **Azure-szolgáltatások hozzáférés engedélyezése** a kikapcsoláshoz lehetőséget.
 
@@ -255,7 +255,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 
     > [!TIP]
     > Meg kell adnia az alhálózat helyes **címének előtagját** . Az értéket a portálon találja.
-    > Navigáljon az összes **All resources** &gt; **All types** &gt; **virtuális hálózat**típusú erőforráshoz. A szűrő megjeleníti a virtuális hálózatokat. Kattintson a virtuális hálózatra, majd az **alhálózatok**elemre. A **címtartomány** oszlopban a szükséges előtag szerepel.
+    > Navigáljon az összes **All resources** &gt; **All types** &gt; **virtuális hálózat** típusú erőforráshoz. A szűrő megjeleníti a virtuális hálózatokat. Kattintson a virtuális hálózatra, majd az **alhálózatok** elemre. A **címtartomány** oszlopban a szükséges előtag szerepel.
 
     ![Adja meg a mezőket az új szabályhoz.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -298,12 +298,12 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]:scripts/vnet-service-endpoint-rule-powershell-create.md
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]:scripts/vnet-service-endpoint-rule-powershell-create.md#a-verify-subnet-is-endpoint-ps-100
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
-[vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
+[vm-virtual-network-service-endpoints-overview-649d]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [vpn-gateway-indexmd-608y]: ../../vpn-gateway/index.yml
 
 <!-- Link references, to text, Outside this GitHub repo (HTTP). -->
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
-[rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
+[rest-api-virtual-network-rules-operations-862r]: /rest/api/sql/virtualnetworkrules
 
 <!-- ??2
 #### Syntax related articles

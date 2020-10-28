@@ -12,16 +12,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 4afb6844512bd59a5c377d826267a748837ed855
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: be327fabdffc0f98dc0449b51e7e4d73651d80d8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951995"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789488"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés
 
-Ha Azure SQL Database és az Azure szinapszis Analytics [Azure Portal](single-database-create-quickstart.md) hoz létre logikai SQL Server-kiszolgálót, az eredmény egy nyilvános végpont, amely a következő formátumú: *yourservername.database.Windows.net*.
+Ha Azure SQL Database és az Azure szinapszis Analytics [Azure Portal](single-database-create-quickstart.md) hoz létre logikai SQL Server-kiszolgálót, az eredmény egy nyilvános végpont, amely a következő formátumú: *yourservername.database.Windows.net* .
 
 A következő hálózati hozzáférés-vezérlésekkel szelektíven engedélyezheti az adatbázisokhoz való hozzáférést a nyilvános végponton keresztül:
 
@@ -34,7 +34,7 @@ Az adatbázishoz való privát hozzáférést is engedélyezheti a [virtuális h
 - Privát hivatkozás: ezzel a szolgáltatással létrehozhat egy privát végpontot a [logikai SQL Server](logical-servers.md) számára egy adott virtuális hálózaton belül
 
 > [!IMPORTANT]
-> Ez a cikk *nem* vonatkozik az **SQL felügyelt példányára**. A hálózati konfigurációval kapcsolatos további információkért lásd: [Csatlakozás az Azure SQL felügyelt példányához](../managed-instance/connect-application-instance.md) .
+> Ez a cikk *nem* vonatkozik az **SQL felügyelt példányára** . A hálózati konfigurációval kapcsolatos további információkért lásd: [Csatlakozás az Azure SQL felügyelt példányához](../managed-instance/connect-application-instance.md) .
 
 Tekintse meg az alábbi videót, amely részletesen ismerteti ezeket a hozzáférés-vezérléseket, és hogy mit tesznek:
 
@@ -42,13 +42,13 @@ Tekintse meg az alábbi videót, amely részletesen ismerteti ezeket a hozzáfé
 
 ## <a name="allow-azure-services"></a>Azure-szolgáltatások engedélyezése
 
-Alapértelmezés szerint a Azure Portal új logikai SQL [-](single-database-create-quickstart.md)kiszolgáló létrehozásakor ez a beállítás **ki van kapcsolva**. Ez a beállítás akkor jelenik meg, ha a kapcsolat engedélyezett a nyilvános szolgáltatási végpont használatával.
+Alapértelmezés szerint a Azure Portal új logikai SQL [-](single-database-create-quickstart.md)kiszolgáló létrehozásakor ez a beállítás **ki van kapcsolva** . Ez a beállítás akkor jelenik meg, ha a kapcsolat engedélyezett a nyilvános szolgáltatási végpont használatával.
 
 Ezt a beállítást a tűzfal ablaktáblán is módosíthatja, miután a logikai SQL-kiszolgáló létrejött a következőképpen.
   
 ![Képernyőkép a kiszolgáló tűzfalának kezeléséről][2]
 
-Ha **a**be értékre van állítva, a kiszolgáló engedélyezi az Azure határán belüli összes erőforrás kommunikációját, amely esetleg nem része az előfizetésnek.
+Ha **a** be értékre van állítva, a kiszolgáló engedélyezi az Azure határán belüli összes erőforrás kommunikációját, amely esetleg nem része az előfizetésnek.
 
 Sok esetben a **on** beállítás nagyobb mértékben megengedhető, mint amit a legtöbb ügyfél szeretne. Előfordulhat, hogy ezt a beállítást ki szeretné **kapcsolni** , és lecseréli a szigorúbb IP-tűzfalszabályok vagy a virtuális hálózati tűzfalszabályok használatával. 
 
@@ -56,11 +56,11 @@ Ez azonban hatással van az Azure-beli virtuális gépeken futó alábbi szolgá
 
 ### <a name="import-export-service"></a>Exportálási szolgáltatás importálása
 
-Az importálási exportálási szolgáltatás nem működik, ha az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ki van kapcsolva**. Azonban a probléma megoldásához manuálisan is [futtathatja sqlpackage.exe egy Azure](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) -beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
+Az importálási exportálási szolgáltatás nem működik, ha az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ki van kapcsolva** . Azonban a probléma megoldásához manuálisan is [futtathatja sqlpackage.exe egy Azure](./database-import-export-azure-services-off.md) -beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
 
 ### <a name="data-sync"></a>Adatszinkronizálás
 
-Ahhoz, hogy az adatszinkronizálási funkciót az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** **kikapcsolva**értékre állítsa, egyedi tűzfalszabály-bejegyzéseket kell létrehoznia, hogy az **SQL-szolgáltatás címkéje** alapján [adja hozzá az IP-címeket](firewall-create-server-level-portal-quickstart.md) a **hub** -adatbázist üzemeltető régióhoz.
+Ahhoz, hogy az adatszinkronizálási funkciót az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** **kikapcsolva** értékre állítsa, egyedi tűzfalszabály-bejegyzéseket kell létrehoznia, hogy az **SQL-szolgáltatás címkéje** alapján [adja hozzá az IP-címeket](firewall-create-server-level-portal-quickstart.md) a **hub** -adatbázist üzemeltető régióhoz.
 Adja hozzá ezeket a kiszolgálói szintű tűzfalszabályok a **hub** -és **tag** -adatbázisokat üzemeltető kiszolgálókhoz (amelyek különböző régiókban lehetnek)
 
 Az alábbi PowerShell-szkripttel állítson elő IP-címeket az USA nyugati régiójában lévő SQL Service-címkének megfelelően
@@ -110,7 +110,7 @@ Az IP-alapú tűzfal az Azure-beli logikai SQL Server egyik funkciója, amely me
 
 ## <a name="virtual-network-firewall-rules"></a>Virtuális hálózat tűzfalszabályai
 
-Az IP-szabályok mellett a kiszolgáló tűzfala lehetővé teszi a *virtuális hálózati szabályok*megadását.  
+Az IP-szabályok mellett a kiszolgáló tűzfala lehetővé teszi a *virtuális hálózati szabályok* megadását.  
 További információ: [Virtual Network szolgáltatás-végpontok és szabályok Azure SQL Database](vnet-service-endpoint-rule-overview.md) vagy a videó megtekintése:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
@@ -121,9 +121,9 @@ A virtuális hálózati tűzfalszabályok megismerése során vegye figyelembe a
 
 **Virtuális hálózat:** Az Azure-előfizetéshez társított virtuális hálózatokkal is rendelkezhet
 
-**Alhálózat:** Egy virtuális hálózat **alhálózatokat**tartalmaz. Az alhálózatokhoz társított bármely Azure-beli virtuális gép (VM). Egy alhálózat több virtuális gépet vagy más számítási csomópontot is tartalmazhat. A virtuális hálózatán kívüli számítási csomópontok nem férnek hozzá a virtuális hálózathoz, kivéve, ha úgy konfigurálja a biztonságot, hogy engedélyezze a hozzáférést.
+**Alhálózat:** Egy virtuális hálózat **alhálózatokat** tartalmaz. Az alhálózatokhoz társított bármely Azure-beli virtuális gép (VM). Egy alhálózat több virtuális gépet vagy más számítási csomópontot is tartalmazhat. A virtuális hálózatán kívüli számítási csomópontok nem férnek hozzá a virtuális hálózathoz, kivéve, ha úgy konfigurálja a biztonságot, hogy engedélyezze a hozzáférést.
 
-**Virtuális hálózati szolgáltatás végpontja:** A [virtuális hálózati szolgáltatás végpontja](../../virtual-network/virtual-network-service-endpoints-overview.md) olyan alhálózat, amelynek tulajdonságértékek egy vagy több formális Azure-szolgáltatástípus nevét tartalmazzák. Ebben a cikkben a **Microsoft. SQL**típus neve érdekli, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik.
+**Virtuális hálózati szolgáltatás végpontja:** A [virtuális hálózati szolgáltatás végpontja](../../virtual-network/virtual-network-service-endpoints-overview.md) olyan alhálózat, amelynek tulajdonságértékek egy vagy több formális Azure-szolgáltatástípus nevét tartalmazzák. Ebben a cikkben a **Microsoft. SQL** típus neve érdekli, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik.
 
 **Virtuális hálózati szabály:** A kiszolgálóhoz tartozó virtuális hálózati szabály egy alhálózat, amely a kiszolgáló hozzáférés-vezérlési listájában (ACL) szerepel. Ahhoz, hogy a SQL Databaseban lévő adatbázis ACL-je legyen, az alhálózatnak tartalmaznia kell a **Microsoft. SQL** típus nevét. Egy virtuális hálózati szabály közli a kiszolgálóval, hogy fogadja a kommunikációt az alhálózaton lévő összes csomópontról.
 
@@ -138,17 +138,17 @@ A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gé
 > [!NOTE]
 > Még nem rendelkezhet SQL Database alhálózaton. Ha a kiszolgáló a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belüli összes csomópont kommunikálhat a SQL Databaseával. Ebben az esetben a virtuális gépek kommunikálhatnak a SQL Database anélkül, hogy virtuális hálózati szabályokat vagy IP-szabályokat kellene megadnia.
 
-## <a name="private-link"></a>Privát kapcsolat
+## <a name="private-link"></a>Private Link
 
-A privát hivatkozás lehetővé teszi, hogy egy **privát végponton**keresztül kapcsolódjon egy kiszolgálóhoz. A privát végpont egy magánhálózati IP-cím egy adott [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) és alhálózaton belül.
+A privát hivatkozás lehetővé teszi, hogy egy **privát végponton** keresztül kapcsolódjon egy kiszolgálóhoz. A privát végpont egy magánhálózati IP-cím egy adott [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) és alhálózaton belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kiszolgálói szintű IP-tűzfalszabály létrehozásával kapcsolatos rövid útmutató: [adatbázis létrehozása SQL Databaseban](single-database-create-quickstart.md).
 
 - A kiszolgálói szintű virtuális hálózati tűzfalszabály létrehozásával kapcsolatos rövid útmutatóért lásd: [Virtual Network szolgáltatási végpontok és a Azure SQL Database szabályai](vnet-service-endpoint-rule-overview.md).
 
-- A nyílt forráskódú vagy harmadik féltől származó alkalmazásokból származó SQL Database adatbázishoz való csatlakozással kapcsolatos segítségért lásd: ügyfél-útmutató [kódok mintái SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+- A nyílt forráskódú vagy harmadik féltől származó alkalmazásokból származó SQL Database adatbázishoz való csatlakozással kapcsolatos segítségért lásd: ügyfél-útmutató [kódok mintái SQL Database](/previous-versions/azure/ee336282(v=azure.100)).
 
 - További információ a megnyitható további portokról **: SQL Database** a [ADO.net 4,5-as és a 1433 SQL Database-es porton túli portok](adonet-v12-develop-direct-route-ports.md) területén
 
@@ -159,4 +159,3 @@ A privát hivatkozás lehetővé teszi, hogy egy **privát végponton**keresztü
 <!--Image references-->
 [1]: media/quickstart-create-single-database/new-server2.png
 [2]: media/quickstart-create-single-database/manage-server-firewall.png
- 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: e515df0ff8c7cd3794efb4db567ef7146ccb7a03
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 211ce85fdbf918171ecfc7964bbcdfa2ef245990
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424234"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790712"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,12 +44,12 @@ Az SQL felügyelt példánya a Azure SQL Database és az SQL Server adatbázismo
 
 | **Pásti előnyei** | **Az üzletmenet folytonossága** |
 | --- | --- |
-|Nincs hardveres vásárlás és felügyelet <br>Nincs felügyeleti terhelés a mögöttes infrastruktúra kezeléséhez <br>Gyors kiépítés és a szolgáltatás skálázása <br>Automatikus javítás és verziófrissítés <br>Integráció más Pásti adatszolgáltatásokkal |99,99%-os rendelkezésre állási SLA  <br>Beépített [magas rendelkezésre állás](../database/high-availability-sla.md) <br>[Automatizált biztonsági mentéssel](../database/automated-backups-overview.md) védett adatvédelem <br>Ügyfél által konfigurálható biztonsági másolatok megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági másolatok](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true) <br>[Időponthoz tartozó adatbázis-visszaállítási](../database/recovery-using-backups.md#point-in-time-restore) képesség |
+|Nincs hardveres vásárlás és felügyelet <br>Nincs felügyeleti terhelés a mögöttes infrastruktúra kezeléséhez <br>Gyors kiépítés és a szolgáltatás skálázása <br>Automatikus javítás és verziófrissítés <br>Integráció más Pásti adatszolgáltatásokkal |99,99%-os rendelkezésre állási SLA  <br>Beépített [magas rendelkezésre állás](../database/high-availability-sla.md) <br>[Automatizált biztonsági mentéssel](../database/automated-backups-overview.md) védett adatvédelem <br>Ügyfél által konfigurálható biztonsági másolatok megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági másolatok](/sql/t-sql/statements/backup-transact-sql?preserve-view=true&view=azuresqldb-mi-current) <br>[Időponthoz tartozó adatbázis-visszaállítási](../database/recovery-using-backups.md#point-in-time-restore) képesség |
 |**Biztonság és megfelelőség** | **Felügyelet**|
-|Elszigetelt környezet ([VNet-integráció](connectivity-architecture-overview.md), egybérlős szolgáltatás, dedikált számítás és tárolás) <br>[Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure ad) hitelesítés](../database/authentication-aad-overview.md), egyszeri bejelentkezés támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a>  <br>Megfelel a megfelelőségi szabványoknak, mint a Azure SQL Database <br>[SQL-naplózás](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager API a szolgáltatások kiosztásának és méretezésének automatizálásához <br>A szolgáltatás kézi üzembe helyezéséhez és méretezéséhez Azure Portal funkció <br>Data Migration Service
+|Elszigetelt környezet ([VNet-integráció](connectivity-architecture-overview.md), egybérlős szolgáltatás, dedikált számítás és tárolás) <br>[Transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure ad) hitelesítés](../database/authentication-aad-overview.md), egyszeri bejelentkezés támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a>  <br>Megfelel a megfelelőségi szabványoknak, mint a Azure SQL Database <br>[SQL-naplózás](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager API a szolgáltatások kiosztásának és méretezésének automatizálásához <br>A szolgáltatás kézi üzembe helyezéséhez és méretezéséhez Azure Portal funkció <br>Data Migration Service
 
 > [!IMPORTANT]
-> Az Azure SQL felügyelt példánya számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure megfelelőségi ajánlatait](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers), ahol megtalálhatja az SQL felügyelt példányok megfelelőségi tanúsítások legfrissebb listáját, amely a **SQL Database**alatt található.
+> Az Azure SQL felügyelt példánya számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure megfelelőségi ajánlatait](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers), ahol megtalálhatja az SQL felügyelt példányok megfelelőségi tanúsítások legfrissebb listáját, amely a **SQL Database** alatt található.
 
 Az SQL felügyelt példány legfontosabb funkciói az alábbi táblázatban láthatók:
 
@@ -65,9 +65,9 @@ Az SQL felügyelt példány legfontosabb funkciói az alábbi táblázatban lát
 | VNet – Azure Resource Manager üzemelő példány | Igen |
 | VNet – klasszikus üzembe helyezési modell | Nem |
 | Portál támogatása | Igen|
-| Beépített integrációs szolgáltatás (SSIS) | Nem – a SSIS a [Azure Data Factory Péter](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) részét képezi |
-| Beépített Analysis Service (SSAS) | Nem – a SSAS külön [Péter](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Beépített jelentéskészítési szolgáltatás (SSRS) | Nem – használjon [Power bi](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) többoldalas jelentéseket, vagy az SSRS-t egy Azure-beli virtuális gépen üzemelteti. A felügyelt SQL-példányok nem futtathatják az SSRS-t szolgáltatásként, SQL Server hitelesítéssel az Azure-beli virtuális gépen telepített jelentéskészítő kiszolgálókhoz is tárolhatnak [SSRS-katalógus-adatbázisokat](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) . |
+| Beépített integrációs szolgáltatás (SSIS) | Nem – a SSIS a [Azure Data Factory Péter](../../data-factory/tutorial-deploy-ssis-packages-azure.md) részét képezi |
+| Beépített Analysis Service (SSAS) | Nem – a SSAS külön [Péter](../../analysis-services/analysis-services-overview.md) |
+| Beépített jelentéskészítési szolgáltatás (SSRS) | Nem – használjon [Power bi](/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) többoldalas jelentéseket, vagy az SSRS-t egy Azure-beli virtuális gépen üzemelteti. A felügyelt SQL-példányok nem futtathatják az SSRS-t szolgáltatásként, SQL Server hitelesítéssel az Azure-beli virtuális gépen telepített jelentéskészítő kiszolgálókhoz is tárolhatnak [SSRS-katalógus-adatbázisokat](/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) . |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
@@ -85,8 +85,8 @@ További információk a hardveres generációk közötti különbségről az [S
 
 A felügyelt SQL-példány két szolgáltatási rétegben érhető el:
 
-- **Általános célú**: olyan alkalmazásokhoz tervezve, amelyek jellemzően teljesítménybeli és I/O-késleltetési követelményekkel rendelkeznek.
-- **Üzleti szempontból kritikus**: az alacsony I/O-késési követelményekkel rendelkező alkalmazások számára lett kialakítva, és minimális hatással van a mögöttes karbantartási műveletekre a munkaterhelés esetében.
+- **Általános célú** : olyan alkalmazásokhoz tervezve, amelyek jellemzően teljesítménybeli és I/O-késleltetési követelményekkel rendelkeznek.
+- **Üzleti szempontból kritikus** : az alacsony I/O-késési követelményekkel rendelkező alkalmazások számára lett kialakítva, és minimális hatással van a mögöttes karbantartási műveletekre a munkaterhelés esetében.
 
 Mindkét szolgáltatási szinten 99,99%-os rendelkezésre állást garantálunk, és lehetővé teszi a tárolási méret és a számítási kapacitás egymástól független kiválasztását. További információ az Azure SQL felügyelt példány magas rendelkezésre állású architektúrával kapcsolatban: [magas rendelkezésre állás és Azure SQL felügyelt példány](../database/high-availability-sla.md).
 
@@ -98,7 +98,7 @@ Az alábbi lista ismerteti a általános célú szolgáltatási szintje főbb je
 - Nagy teljesítményű Azure Blob Storage (8 TB)
 - Beépített [magas rendelkezésre állás](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) a megbízható Azure Blob Storage és az [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) alapján
 
-További információ: [tárolási réteg a általános célú rétegben és a](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) [tárolási teljesítményre vonatkozó ajánlott eljárások és szempontok az SQL felügyelt példányaihoz (általános célú)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
+További információ: [tárolási réteg a általános célú rétegben és a](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) [tárolási teljesítményre vonatkozó ajánlott eljárások és szempontok az SQL felügyelt példányaihoz (általános célú)](/archive/blogs/sqlcat/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose).
 
 További információ a szolgáltatási szintek közötti különbségről az [SQL felügyelt példányának erőforrás-korlátaiban](resource-limits.md#service-tier-characteristics).
 
@@ -110,7 +110,7 @@ Az alábbi lista a üzletileg kritikus szolgáltatási szintje főbb jellemzőit
 
 - A legnagyobb teljesítménnyel és HA követelményekkel rendelkező üzleti alkalmazásokhoz tervezve
 - A szolgáltatás villámgyors helyi SSD-tárolóval (1 TB-ig Gen4 és akár 4 TB-ig Gen5) is rendelkezik
-- Beépített [magas rendelkezésre](../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) állás az [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és az [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) alapján
+- Beépített [magas rendelkezésre](../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) állás az [Always On rendelkezésre állási csoportok](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és az [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) alapján
 - Beépített további [írásvédett adatbázis-replikák](../database/read-scale-out.md) , amelyek jelentéskészítésre és más írásvédett számítási feladatokra is használhatók
 - [Memóriabeli OLTP](../in-memory-oltp-overview.md) , amely nagy teljesítményű követelményekkel használható munkaterheléshez  
 
@@ -156,9 +156,9 @@ A titkosított adatbázisok SQL felügyelt példányra történő áttelepítés
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-integráció
 
-Az SQL felügyelt példánya támogatja a hagyományos SQL Server adatbázismotor-bejelentkezéseket és az Azure AD-vel integrált bejelentkezéseket. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) (**nyilvános előzetes**verzió) a helyszíni adatbázis-bejelentkezések Azure-beli felhőalapú verziója, amelyet a helyszíni környezetben használ. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) lehetővé teszik, hogy az Azure AD-bérlőből származó felhasználókat és csoportokat az igaz példányra kiterjedő rendszerbiztonsági tagként adja meg, amely képes bármely példány szintű művelet végrehajtására, beleértve az azonos felügyelt példányon belüli adatbázis-lekérdezéseket is.
+Az SQL felügyelt példánya támogatja a hagyományos SQL Server adatbázismotor-bejelentkezéseket és az Azure AD-vel integrált bejelentkezéseket. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) ( **nyilvános előzetes** verzió) a helyszíni adatbázis-bejelentkezések Azure-beli felhőalapú verziója, amelyet a helyszíni környezetben használ. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) lehetővé teszik, hogy az Azure AD-bérlőből származó felhasználókat és csoportokat az igaz példányra kiterjedő rendszerbiztonsági tagként adja meg, amely képes bármely példány szintű művelet végrehajtására, beleértve az azonos felügyelt példányon belüli adatbázis-lekérdezéseket is.
 
-Új szintaxist vezetünk be az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) létrehozásához **a külső szolgáltatótól**. A szintaxissal kapcsolatos további információkért tekintse meg a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Bejelentkezés létrehozása</a>című témakört, és tekintse át a [Azure Active Directory-rendszergazda létesítése az SQL felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) című cikket.
+Új szintaxist vezetünk be az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) létrehozásához **a külső szolgáltatótól** . A szintaxissal kapcsolatos további információkért tekintse meg a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Bejelentkezés létrehozása</a>című témakört, és tekintse át a [Azure Active Directory-rendszergazda létesítése az SQL felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) című cikket.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
@@ -168,12 +168,12 @@ Az SQL felügyelt példányai lehetővé teszik az adatbázis-felhasználók és
 
 Az SQL felügyelt példányának hitelesítése arra utal, hogy a felhasználók hogyan igazolják identitásukat az adatbázishoz való csatlakozáskor. A felügyelt SQL-példány két típusú hitelesítést támogat:  
 
-- **SQL-hitelesítés**:
+- **SQL-hitelesítés** :
 
   Ez a hitelesítési módszer egy felhasználónevet és egy jelszót használ.
-- **Azure Active Directory hitelesítés**:
+- **Azure Active Directory hitelesítés** :
 
-  Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ, és felügyelt és integrált tartományok esetén támogatott. [Amikor csak lehet](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode), használja az Active Directory-hitelesítést (beépített biztonság).
+  Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ, és felügyelt és integrált tartományok esetén támogatott. [Amikor csak lehet](/sql/relational-databases/security/choose-an-authentication-mode), használja az Active Directory-hitelesítést (beépített biztonság).
 
 ### <a name="authorization"></a>Engedélyezés
 
@@ -185,7 +185,7 @@ Az SQL felügyelt példánya a helyszíni vagy IaaS adatbázis-megvalósítások
 
 ### <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás  
 
-Az áttelepítési módszer az SQL-alapú biztonsági mentéseket használja az Azure Blob Storage-ba. Az Azure Storage-blobokban tárolt biztonsági másolatok közvetlenül visszaállíthatók egy felügyelt példányra a [T-SQL Restore parancs](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current&preserve-view=true)használatával.
+Az áttelepítési módszer az SQL-alapú biztonsági mentéseket használja az Azure Blob Storage-ba. Az Azure Storage-blobokban tárolt biztonsági másolatok közvetlenül visszaállíthatók egy felügyelt példányra a [T-SQL Restore parancs](/sql/t-sql/statements/restore-statements-transact-sql?preserve-view=true&view=azuresqldb-mi-current)használatával.
 
 - A Wide World Importers – standard adatbázis biztonságimásolat-fájljának visszaállítását bemutató rövid útmutató: [biztonságimásolat-fájl visszaállítása felügyelt példányra](restore-sample-database-quickstart.md). Ez a rövid útmutató azt mutatja be, hogy fel kell töltenie egy biztonságimásolat-fájlt az Azure Blob Storage-ba, és biztonságossá kell tennie egy közös hozzáférés-aláírási (SAS-) kulcs használatával.
 - További információ az URL-címről való visszaállításról: [NATÍV visszaállítás az URL-](migrate-to-instance-from-sql-server.md#native-restore-from-url)címről.
@@ -195,7 +195,7 @@ Az áttelepítési módszer az SQL-alapú biztonsági mentéseket használja az 
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-A Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, hogy a zökkenőmentes áttelepítések több adatbázisból az Azure-beli adatplatformokra minimális állásidővel. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik féltől származó és SQL Server adatbázisok áthelyezéséhez szükséges feladatokat a Azure SQL Database, az Azure SQL felügyelt példányának és az Azure-beli virtuális gépen SQL Server. Lásd: a helyszíni [adatbázis migrálása az SQL felügyelt példányára Database Migration Service használatával](https://aka.ms/migratetoMIusingDMS).
+A Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, hogy a zökkenőmentes áttelepítések több adatbázisból az Azure-beli adatplatformokra minimális állásidővel. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik féltől származó és SQL Server adatbázisok áthelyezéséhez szükséges feladatokat a Azure SQL Database, az Azure SQL felügyelt példányának és az Azure-beli virtuális gépen SQL Server. Lásd: a helyszíni [adatbázis migrálása az SQL felügyelt példányára Database Migration Service használatával](../../dms/tutorial-sql-server-to-managed-instance.md).
 
 ## <a name="sql-features-supported"></a>Támogatott SQL-funkciók
 
@@ -213,12 +213,12 @@ Az SQL felügyelt példányának előnye, hogy mindig naprakészek a felhőben, 
 
 Néhány kulcsfontosságú különbség:
 
-- A magas rendelkezésre állás az [Always On rendelkezésre állási csoportokhoz](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)hasonló technológiával beépített és előre konfigurált.
+- A magas rendelkezésre állás az [Always On rendelkezésre állási csoportokhoz](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)hasonló technológiával beépített és előre konfigurált.
 - Csak automatikus biztonsági mentések és időponthoz tartozó visszaállítások érhetők el. `copy-only`Az ügyfelek olyan biztonsági másolatokat indíthatnak, amelyek nem akadályozzák az automatikus biztonsági mentési láncot.
 - A teljes fizikai elérési utak megadása nem támogatott, ezért az összes vonatkozó forgatókönyvet másképp kell támogatni: az adatbázis visszaállítása nem támogatja az ÁTHELYEZÉSt, az adatbázis létrehozása nem teszi lehetővé a fizikai elérési utak használatát, BULK INSERT csak az Azure-Blobokkal működik, stb.
 - Az SQL felügyelt példánya támogatja az [Azure ad-hitelesítést](../database/authentication-aad-overview.md) a Windows-hitelesítés Felhőbeli alternatívája.
 - A felügyelt SQL-példányok automatikusan kezelik az In-Memory OLTP objektumokat tartalmazó adatbázisok XTP-fájlcsoportok és-fájljait.
-- Az SQL felügyelt példánya támogatja a SQL Server Integration Services (SSIS) szolgáltatást, és üzemeltetheti a SSIS-csomagokat tároló SSIS-katalógust (SSISDB), de a rendszer felügyelt Azure-SSIS Integration Runtime (IR) hajtja végre Azure Data Factory. Lásd: [Azure-SSIS IR létrehozása a Data Factoryban](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). A SSIS funkcióinak összehasonlítását lásd: [SQL Database összehasonlítása az SQL felügyelt példányával](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
+- Az SQL felügyelt példánya támogatja a SQL Server Integration Services (SSIS) szolgáltatást, és üzemeltetheti a SSIS-csomagokat tároló SSIS-katalógust (SSISDB), de a rendszer felügyelt Azure-SSIS Integration Runtime (IR) hajtja végre Azure Data Factory. Lásd: [Azure-SSIS IR létrehozása a Data Factoryban](../../data-factory/create-azure-ssis-integration-runtime.md). A SSIS funkcióinak összehasonlítását lásd: [SQL Database összehasonlítása az SQL felügyelt példányával](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
 
 ### <a name="administration-features"></a>Felügyeleti funkciók
 
@@ -237,7 +237,7 @@ A következő táblázat több, a Transact-SQL szolgáltatáson keresztül elér
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban: `<instanceName>` . `<dnsPrefix>` . a database.windows.net, ahol az az `<instanceName>` ügyfél által megadott név, míg a `<dnsPrefix>` neve automatikusan létrejön a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98"), például:.|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](instance-create-quickstart.md).
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).

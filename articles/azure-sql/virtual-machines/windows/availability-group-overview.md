@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4919abd29ecf10c9116257750374ef53b4bd9d16
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166539"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789913"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On rendelkezésre állási csoport SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Az alábbi ábra az Azure-beli virtuális gépeken SQL Server rendelkezésre ál
 
 ## <a name="vm-redundancy"></a>VM-redundancia 
 
-A redundancia és a magas rendelkezésre állás növeléséhez a SQL Server virtuális gépeknek ugyanahhoz a [rendelkezésre állási csoporthoz](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)vagy különböző [rendelkezésre állási zónákhoz](/azure/availability-zones/az-overview)kell tartoznia.
+A redundancia és a magas rendelkezésre állás növeléséhez a SQL Server virtuális gépeknek ugyanahhoz a [rendelkezésre állási csoporthoz](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)vagy különböző [rendelkezésre állási zónákhoz](../../../availability-zones/az-overview.md)kell tartoznia.
 
 A rendelkezésre állási csoport olyan erőforrások csoportosítása, amelyek úgy vannak konfigurálva, hogy ne legyenek két tartomány ugyanabban a rendelkezésre állási zónában. Ezzel megelőzhető, hogy a csoportba tartozó erőforrások több erőforrásra is hatással legyenek az üzembe helyezés során. 
 
@@ -74,7 +74,7 @@ A rendelkezésre állási csoportok több lehetőség közül választhatnak az 
 
 Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalmazza: 
 
-| |**[Azure Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](availability-group-az-cli-configure.md)**|**[Gyorsindítás sablonok](availability-group-quickstart-template-configure.md)**|**[Kézi](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+| |**[Azure Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[Gyorsindítás sablonok](availability-group-quickstart-template-configure.md)**|**[Kézi](availability-group-manually-configure-prerequisites-tutorial.md)** | 
 |---------|---------|---------|--------- |---------|
 |**SQL Server-verzió** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server-kiadás** |Enterprise |Enterprise |Enterprise |Enterprise, standard|
@@ -83,7 +83,7 @@ Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalma
 |**Létrehozza a rendelkezésre állási csoportot** |Igen |Nem|Nem|Nem|
 |**A figyelő és a Load Balancer egymástól függetlenül jön létre** |Nem|Nem|Nem|Igen|
 |**Lehetséges DNN-figyelőt létrehozni ezzel a módszerrel?**|Nem|Nem|Nem|Igen|
-|**WSFC kvórum konfiguráció**n|Felhőbeli tanúsító|Felhőbeli tanúsító|Felhőbeli tanúsító|Mind|
+|**WSFC kvórum konfiguráció** n|Felhőbeli tanúsító|Felhőbeli tanúsító|Felhőbeli tanúsító|Mind|
 |**DR több régióban** |Nem|Nem|Nem|Igen|
 |**Többalhálózat támogatása** |Igen|Igen|Igen|Igen|
 |**Meglévő AD támogatása**|Igen|Igen|Igen|Igen|
@@ -98,8 +98,8 @@ Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalma
 
 Azure IaaS virtuális gépek vendég feladatátvevő fürtjein kiszolgálónként (fürtcsomópontonként) egyetlen hálózati adapter és egyetlen alhálózat használatát javasoljuk. Az Azure-hálózatkezelés fizikai redundanciával rendelkezik, ami felesleges hálózati adaptereket és alhálózatokat tesz lehetővé az Azure IaaS VM-vendég fürtön. Bár a fürtellenőrzési jelentés figyelmeztetést küld, amely szerint a csomópontok csak egyetlen hálózaton érhetők el, ez a figyelmeztetés nyugodtan figyelmen kívül hagyható az Azure IaaS virtuális gépek vendég feladatátvevő fürtjein. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse át a [HADR ajánlott eljárásait](hadr-cluster-best-practices.md) , és ismerkedjen meg a rendelkezésre állási csoport üzembe helyezésével a [Azure Portal](availability-group-azure-portal-configure.md), az [Azure CLI/PowerShell](availability-group-az-cli-configure.md), a [Gyorsindítás sablonok](availability-group-quickstart-template-configure.md) vagy a [manuális](availability-group-manually-configure-prerequisites-tutorial.md)használatával.
+Tekintse át a [HADR ajánlott eljárásait](hadr-cluster-best-practices.md) , és ismerkedjen meg a rendelkezésre állási csoport üzembe helyezésével a [Azure Portal](availability-group-azure-portal-configure.md), az [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), a [Gyorsindítás sablonok](availability-group-quickstart-template-configure.md) vagy a [manuális](availability-group-manually-configure-prerequisites-tutorial.md)használatával.
 
-Azt is megteheti, hogy egy [fürtözött rendelkezésre állási csoportot](availability-group-clusterless-workgroup-configure.md) vagy rendelkezésre állási csoportot telepít [több régióban](availability-group-manually-configure-multiple-regions.md). 
+Azt is megteheti, hogy egy [fürtözött rendelkezésre állási csoportot](availability-group-clusterless-workgroup-configure.md) vagy rendelkezésre állási csoportot telepít [több régióban](availability-group-manually-configure-multiple-regions.md).

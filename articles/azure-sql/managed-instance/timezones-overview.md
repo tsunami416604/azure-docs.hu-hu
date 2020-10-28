@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978356"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790627"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának időzónái
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,7 +51,7 @@ A felügyelt példányok időzónája a példány létrehozásakor állítható 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-Adja meg az timezoneId tulajdonságot a [Resource Manager-sablonban](https://aka.ms/sql-mi-create-arm-posh) az időzóna beállításához a példány létrehozásakor.
+Adja meg az timezoneId tulajdonságot a [Resource Manager-sablonban](./scripts/create-powershell-azure-resource-manager-template.md) az időzóna beállításához a példány létrehozásakor.
 
 ```json
 "properties": {
@@ -95,7 +95,7 @@ Egy feladatátvételi csoportban lévő elsődleges és másodlagos példányon 
 
 ## <a name="limitations"></a>Korlátozások
 
-- A meglévő felügyelt példány időzónája nem módosítható. Megkerülő megoldásként hozzon létre egy új felügyelt példányt a megfelelő időzónával, majd végezze el a manuális biztonsági mentést és visszaállítást, vagy azt, amit ajánlunk, végezze el az adott [példány időpontjának visszaállítását](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database).
+- A meglévő felügyelt példány időzónája nem módosítható. Megkerülő megoldásként hozzon létre egy új felügyelt példányt a megfelelő időzónával, majd végezze el a manuális biztonsági mentést és visszaállítást, vagy azt, amit ajánlunk, végezze el az adott [példány időpontjának visszaállítását](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database).
 - A SQL Server Agenti feladatokból indított külső folyamatok nem veszik figyelembe a példány időzónáját.
 
 ## <a name="list-of-supported-time-zones"></a>Támogatott időzónák listája
@@ -243,7 +243,7 @@ Egy feladatátvételi csoportban lévő elsődleges és másodlagos példányon 
 
 ## <a name="see-also"></a>Lásd még 
 
-- [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
-- [Időzóna (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [CURRENT_TIMEZONE (Transact-SQL)](/sql/t-sql/functions/current-timezone-transact-sql)
+- [CURRENT_TIMEZONE_ID (Transact-SQL)](/sql/t-sql/functions/current-timezone-id-transact-sql)
+- [Időzóna (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

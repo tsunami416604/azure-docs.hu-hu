@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2914a0e9b4c38cff01222ac9a9bffc99827d7162
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 16ac28e46e9231918f433c0e9eb077cb0d8cf230
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488741"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791171"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan engedélyezhető a blob-vagy üzenetsor-adatokhoz va
 
 Ahhoz, hogy az Azure-erőforrásokhoz felügyelt identitások használatával engedélyezzék a blobokhoz és a várólistákhoz való hozzáférést a virtuális gépről, először engedélyeznie kell a felügyelt identitásokat az Azure-erőforrásokhoz a virtuális gépen. Ha szeretné megtudni, hogyan engedélyezheti az Azure-erőforrások felügyelt identitásait, tekintse meg az alábbi cikkek egyikét:
 
-- [Azure Portalra](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure Portalra](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -163,6 +163,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A tárolási és az Azure RBAC hozzáférési jogosultságának kezelése](storage-auth-aad-rbac.md).
+- [A tárolási és az Azure RBAC hozzáférési jogosultságának kezelése](./storage-auth-aad-rbac-portal.md).
 - [Használja az Azure ad-t a Storage-alkalmazásokhoz](storage-auth-aad-app.md).
 - [PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a Blobok adatainak eléréséhez](../blobs/authorize-active-directory-powershell.md)

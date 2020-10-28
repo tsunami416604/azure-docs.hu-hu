@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a5760d3daaa13a5ed16230e1ffb7fe3691455e09
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427032"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788825"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Választás a virtuális mag és a DTU beszerzési modelljei közül – Azure SQL Database és az SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -104,7 +104,7 @@ A munkaterhelés által használt erőforrások nem érintik az Azure-felhőben 
 
 ![Határolókeret](./media/purchasing-models/bounding-box.png)
 
-A DTU leghasznosabb a különböző számítási méretek és szolgáltatási szintek adatbázisai számára lefoglalt relatív erőforrások megismerése. Példa:
+A DTU leghasznosabb a különböző számítási méretek és szolgáltatási szintek adatbázisai számára lefoglalt relatív erőforrások megismerése. Például:
 
 - A DTU megkettőzése az adatbázis számítási méretének növelésével egyenlő az adatbázis számára elérhető erőforrások készletének megkettőzésével.
 - A prémium szintű szolgáltatási szint P11-adatbázisa a 1750 DTU 350-szor több DTU számítási teljesítményt biztosít, mint az alapszintű szolgáltatási szint adatbázisa 5 DTU.  
@@ -127,7 +127,7 @@ Hozzáadhat további Edtu az adatbázis-leállás nélküli meglévő készletek
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>A munkaterhelés által igényelt DTU számának meghatározása
 
-Ha meglévő helyszíni vagy SQL Server virtuális gépek munkaterhelését szeretné áttelepíteni SQL Databasere, a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) használatával közelítse meg a szükséges DTU számát. Meglévő SQL Database számítási feladatokhoz használja a [lekérdezési teljesítménnyel](query-performance-insight-use.md) kapcsolatos elemzéseket az adatbázis-erőforrás-felhasználás (DTU) megismeréséhez, és mélyebb elemzéseket kaphat a számítási feladatok optimalizálásához. A [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézet (DMV) lehetővé teszi az elmúlt órában az erőforrás-felhasználás megtekintését. Az [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) katalógus nézet az elmúlt 14 napban az erőforrás-felhasználást jeleníti meg, de az átlagosan öt perces átlagot biztosít.
+Ha meglévő helyszíni vagy SQL Server virtuális gépek munkaterhelését szeretné áttelepíteni SQL Databasere, a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) használatával közelítse meg a szükséges DTU számát. Meglévő SQL Database számítási feladatokhoz használja a [lekérdezési teljesítménnyel](query-performance-insight-use.md) kapcsolatos elemzéseket az adatbázis-erőforrás-felhasználás (DTU) megismeréséhez, és mélyebb elemzéseket kaphat a számítási feladatok optimalizálásához. A [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézet (DMV) lehetővé teszi az elmúlt órában az erőforrás-felhasználás megtekintését. Az [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) katalógus nézet az elmúlt 14 napban az erőforrás-felhasználást jeleníti meg, de az átlagosan öt perces átlagot biztosít.
 
 ### <a name="determine-dtu-utilization"></a>DTU kihasználtságának meghatározása
 
@@ -135,7 +135,7 @@ Egy adatbázis vagy egy rugalmas készlet DTU/eDTU-korlátjának (DTU/eDTU-kihas
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-A képlet bemeneti értékei [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)és [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV szerezhetők be. Más szóval, a DTU/eDTU-kihasználtság százalékos arányának meghatározása egy adatbázis vagy egy rugalmas készlet DTU/eDTU-korlátja felé, a legnagyobb százalékos értéket kell választania a következők közül: `avg_cpu_percent` , `avg_data_io_percent` és `avg_log_write_percent` egy adott időpontban.
+A képlet bemeneti értékei [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)és [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV szerezhetők be. Más szóval, a DTU/eDTU-kihasználtság százalékos arányának meghatározása egy adatbázis vagy egy rugalmas készlet DTU/eDTU-korlátja felé, a legnagyobb százalékos értéket kell választania a következők közül: `avg_cpu_percent` , `avg_data_io_percent` és `avg_log_write_percent` egy adott időpontban.
 
 > [!NOTE]
 > Az adatbázisok DTU-korlátját CPU, olvasás, írás és memória határozza meg az adatbázis számára. Mivel azonban a SQL Database motor általában az adatgyorsítótárhoz tartozó összes rendelkezésre álló memóriát használja a teljesítmény javítása érdekében, az `avg_memory_usage_percent` érték általában 100 százalék lesz, az aktuális adatbázis-terheléstől függetlenül. Ezért annak ellenére, hogy a memória indirekt módon befolyásolja a DTU korlátot, a rendszer nem használja a DTU-kihasználtsági képletben.
@@ -150,13 +150,13 @@ A DTU-alapú vásárlási modellben az ügyfelek nem választhatják ki az adatb
 
 Egy adatbázis például áthelyezhető más hardveres generációba, ha azt egy másik szolgáltatási célnak megfelelően felhasználják, vagy ha egy adatközpontban az aktuális infrastruktúra megközelíti a kapacitási korlátokat, vagy ha a jelenleg használt hardvert az élettartama miatt leszerelik.
 
-Ha egy adatbázist más hardverre helyez át, a számítási feladatok teljesítménye változhat. A DTU-modell garantálja, hogy a [DTU teljesítményteszt](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) számítási feladatának átviteli sebessége és válaszideje lényegesen azonos marad, mivel az adatbázis egy másik hardveres generációra kerül át, feltéve, hogy a szolgáltatási cél (a DTU száma) ugyanaz marad.
+Ha egy adatbázist más hardverre helyez át, a számítási feladatok teljesítménye változhat. A DTU-modell garantálja, hogy a [DTU teljesítményteszt](./service-tiers-dtu.md#dtu-benchmark) számítási feladatának átviteli sebessége és válaszideje lényegesen azonos marad, mivel az adatbázis egy másik hardveres generációra kerül át, feltéve, hogy a szolgáltatási cél (a DTU száma) ugyanaz marad.
 
 Azonban a Azure SQL Database futó ügyfelek számítási feladatainak széles spektrumán az is előfordulhat, hogy a különböző hardverek ugyanazon szolgáltatási célkitűzéshez való használatának következményei is erősebbek. A különböző számítási feladatok előnyeit a különböző hardverkonfiguráció és funkciók teszik ki. Ezért a DTU-teljesítményteszttől eltérő számítási feladatoknál láthatja a teljesítménybeli különbségeket, ha az adatbázis az egyik hardveres generációról a másikra lép.
 
 Például a hálózati késésre érzékeny alkalmazások jobb teljesítményt láthatnak a Gen5 hardveren és a Gen4-ben, a gyorsított hálózatkezelés a Gen5-ben való használata miatt, de az intenzív olvasási IO-t használó alkalmazások jobb teljesítményt biztosíthatnak a Gen4 hardver és a Gen5 miatt, mivel a Gen4 nagyobb memória érhető el.
 
-Azok az ügyfelek, akik a hardveres változásokra érzékeny munkaterhelésekkel vagy olyan ügyfelekkel foglalkoznak, akik szeretnék szabályozni a hardveres létrehozást a saját adatbázisaik számára, a [virtuális mag](service-tiers-vcore.md) modell használatával választhatják ki az előnyben részesített hardveres generációkat az adatbázisok létrehozásakor Az egyes virtuális mag-modellekben az egyes szolgáltatási célok erőforrás-korlátozásai dokumentálva vannak, mind az [önálló adatbázisok](resource-limits-vcore-single-databases.md) , mind a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)esetében. A virtuális mag-modellben található hardveres generációkkal kapcsolatos további információkért lásd: [Hardware Generations](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
+Azok az ügyfelek, akik a hardveres változásokra érzékeny munkaterhelésekkel vagy olyan ügyfelekkel foglalkoznak, akik szeretnék szabályozni a hardveres létrehozást a saját adatbázisaik számára, a [virtuális mag](service-tiers-vcore.md) modell használatával választhatják ki az előnyben részesített hardveres generációkat az adatbázisok létrehozásakor Az egyes virtuális mag-modellekben az egyes szolgáltatási célok erőforrás-korlátozásai dokumentálva vannak, mind az [önálló adatbázisok](resource-limits-vcore-single-databases.md) , mind a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)esetében. A virtuális mag-modellben található hardveres generációkkal kapcsolatos további információkért lásd: [Hardware Generations](./service-tiers-vcore.md#hardware-generations).
 
 ## <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
@@ -168,7 +168,7 @@ Nem. Nem kell offline állapotba hoznia az alkalmazást. Az új szolgáltatási 
 
 Igen, a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával könnyedén átalakíthatja az adatbázist bármely támogatott teljesítménybeli célkitűzésre. Lásd: [önálló adatbázisok kezelése](single-database-scale.md) és [rugalmas készletek kezelése](elastic-pool-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A virtuális mag-alapú vásárlási modellel kapcsolatos további információkért lásd: [virtuális mag-alapú vásárlási modell](service-tiers-vcore.md).
 - A DTU-alapú vásárlási modellel kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](service-tiers-dtu.md).

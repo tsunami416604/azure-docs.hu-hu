@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 06587d80851839188f8d8dcfa870d331e8fa96d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293356"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789845"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Az Azure-beli virtuális gépen futó SQL Server kiadásának módosítása helyben
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Ha a SQL Server kiadását belsőleg módosították a SQL Server VMre, akkor a 
 A SQL Server kiadásának helyben történő megváltoztatásához a következőkre lesz szüksége: 
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
-- Az [SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md)regisztrált [Windows-SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
+- Az [SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md)regisztrált [Windows-SQL Server VM](./create-sql-vm-portal.md) .
 - Állítsa be az adathordozót SQL Server **kívánt kiadásával** . A [Frissítési garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [Mennyiségilicenc-szolgáltatási központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx) szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják (általában a következő helyen található `C:\SQLServerFull` ). 
 
 
@@ -50,7 +50,7 @@ SQL Server kiadásának frissítéséhez szerezze be a SQL Server kívánt kiad�
 
    ![SQL Server kiadásának frissítésére szolgáló kijelölés](./media/change-sql-server-edition/edition-upgrade.png)
 
-1. Kattintson a **Next (tovább** ) gombra, amíg el nem éri a **Verziófrissítési kiadás** oldalát, majd válassza a **frissítés**lehetőséget. Előfordulhat, hogy a beállítási időszak néhány percen belül leáll, amíg a módosítás érvénybe lép. A **teljes** oldal megerősíti, hogy a kiadás frissítése befejeződött. 
+1. Kattintson a **Next (tovább** ) gombra, amíg el nem éri a **Verziófrissítési kiadás** oldalát, majd válassza a **frissítés** lehetőséget. Előfordulhat, hogy a beállítási időszak néhány percen belül leáll, amíg a módosítás érvénybe lép. A **teljes** oldal megerősíti, hogy a kiadás frissítése befejeződött. 
 
 A SQL Server kiadás frissítése után módosítsa a Azure Portal SQL Server virtuális gép kiadás tulajdonságát. Ezzel frissíti a virtuális géphez társított metaadatokat és számlázást.
 
@@ -77,9 +77,9 @@ A SQL Server kiadásának visszaminősítése után módosítsa a Azure Portal S
 
 Miután módosította SQL Server kiadását a telepítési adathordozó használatával, és regisztrálta a SQL Server VM az [SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md), a Azure Portal használatával módosíthatja a SQL Server VM kiadási tulajdonságát a számlázási célokra. Ehhez kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
 1. Nyissa meg a SQL Server virtuális gép erőforrását. 
-1. A **Beállítások**területen válassza a **Konfigurálás**lehetőséget. Ezután válassza ki az SQL Server kívánt kiadását a **kiadás**alatti legördülő listából. 
+1. A **Beállítások** területen válassza a **Konfigurálás** lehetőséget. Ezután válassza ki az SQL Server kívánt kiadását a **kiadás** alatti legördülő listából. 
 
    ![Kiadási metaadatok módosítása](./media/change-sql-server-edition/edition-change-in-portal.png)
 
@@ -96,11 +96,9 @@ Miután módosította SQL Server kiadását a telepítési adathordozó használ
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért tekintse át a következő cikkeket: 
+További információkat az következő cikkekben talál: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)
 * [A Windows rendszerű virtuális gépek SQL Server díjszabási útmutatója](pricing-guidance.md)
 * [Windows rendszerű virtuális gépen SQL Server kibocsátási megjegyzései](doc-changes-updates-release-notes.md)
-
-

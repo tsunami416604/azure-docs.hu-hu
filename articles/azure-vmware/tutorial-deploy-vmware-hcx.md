@@ -3,12 +3,12 @@ title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: c78eae11497702054bb54b5980228fd0a3962577
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 424abeef567d88f7de37f7a7a4ab7a7a8b6ef3bc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367771"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791409"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -17,7 +17,7 @@ Ebből a cikkből megtudhatja, hogyan helyezheti üzembe és konfigurálhatja a 
 A VMware HCX Advanced Connector előre telepítve van az Azure VMware megoldásban. Legfeljebb három helyszíni kapcsolatot támogat (a helyszínen a felhőben vagy a felhőben). Ha három helynél több kapcsolatra van szüksége, küldjön egy [támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support) a [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) bővítmény engedélyezéséhez. A bővítmény jelenleg előzetes verzióban érhető el. 
 
 >[!NOTE]
->A VMware HCX Enterprise Edition (EE) előzetes verziójú szolgáltatásként érhető el az Azure VMware megoldásban. Ingyenes, és az előzetes verziójú szolgáltatás használati feltételeinek hatálya alá tartozik. A VMware HCX EE szolgáltatás általánosan elérhetővé válik, és 30 napos értesítést kap, hogy a számlázás átvált. Lehetősége van a szolgáltatás kikapcsolására vagy letiltására is.
+>A VMware HCX Enterprise Edition (EE) előzetes verziójú szolgáltatásként érhető el az Azure VMware megoldásban. Ingyenes, és az előzetes verziójú szolgáltatás használati feltételeinek hatálya alá tartozik. A VMware HCX EE szolgáltatás általánosan elérhetővé válik, és 30 napos értesítést kap, hogy a számlázás átvált. Lehetősége van a szolgáltatás kikapcsolására vagy letiltására is. A borsó megjegyzése szerint jelenleg nincs egyszerű visszalépési útvonal a HCX Enterprise-ből a fejlett HCX, és a visszalépést kiválasztó ügyfeleknek újra kell telepíteniük a felmerülő állásidőt.
 
 Első lépésként alaposan tekintse [át a jelen](#before-you-begin)cikk a [szoftver verziószámára vonatkozó követelményeket](#software-version-requirements)és az [Előfeltételek](#prerequisites) című szakaszt. 
 
@@ -78,10 +78,10 @@ További információt a [VMware HCX dokumentációjában](https://docs.vmware.c
 > [!NOTE]
 > Mielőtt telepítené a virtuális berendezést a helyszíni vCenter, le kell töltenie a VMware HCX-összekötő PETESEJTJEIt. 
 
-1. Nyisson meg egy böngészőablakot, és jelentkezzen be az Azure VMware Solution HCX Managerbe a `https://x.x.x.9` 443-es porton a **cloudadmin** felhasználói hitelesítő adataival, majd lépjen a **support (támogatás**) elemre.
+1. Nyisson meg egy böngészőablakot, és jelentkezzen be az Azure VMware Solution HCX Managerbe a `https://x.x.x.9` 443-es porton a **cloudadmin** felhasználói hitelesítő adataival, majd lépjen a **support (támogatás** ) elemre.
 
    > [!TIP]
-   > Jegyezze fel a HCX Cloud Manager IP-címét az Azure VMware megoldásban. Az IP-cím azonosításához az Azure VMware-megoldás panelen lépjen a kapcsolat **kezelése**,  >  **Connectivity** majd a **HCX** lapra. 
+   > Jegyezze fel a HCX Cloud Manager IP-címét az Azure VMware megoldásban. Az IP-cím azonosításához az Azure VMware-megoldás panelen lépjen a kapcsolat **kezelése** ,  >  **Connectivity** majd a **HCX** lapra. 
    >
    >A vCenter jelszava a saját felhő beállításakor lett meghatározva.
 
@@ -96,13 +96,13 @@ További információt a [VMware HCX dokumentációjában](https://docs.vmware.c
 
    :::image type="content" source="media/tutorial-vmware-hcx/configure-template.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/configure-template.png":::
 
-1. Tekintse át a licencfeltételeket. Ha elfogadja, válassza ki a szükséges tárterületet és hálózatot, majd válassza a **tovább**lehetőséget.
+1. Tekintse át a licencfeltételeket. Ha elfogadja, válassza ki a szükséges tárterületet és hálózatot, majd válassza a **tovább** lehetőséget.
 
-1. A **sablon testreszabása**mezőben adja meg az összes szükséges információt. 
+1. A **sablon testreszabása** mezőben adja meg az összes szükséges információt. 
 
    :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
-1. Kattintson a **tovább**gombra, ellenőrizze a konfigurációt, majd válassza a **Befejezés** lehetőséget az HCX-összekötő petesejtjeinek telepítéséhez.
+1. Kattintson a **tovább** gombra, ellenőrizze a konfigurációt, majd válassza a **Befejezés** lehetőséget az HCX-összekötő petesejtjeinek telepítéséhez.
      
    > [!NOTE]
    > A jelenleg üzembe helyezett VMware HCX-összekötőt általában a fürt felügyeleti hálózatára telepíti a rendszer.  
@@ -117,32 +117,32 @@ Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megol
 
 Miután telepítette a VMware HCX Connector-összekötőt a helyszínen, és elindítja a készüléket, készen áll az aktiválásra. Először is be kell szereznie egy licenckulcs az Azure VMware-megoldás portálján.
 
-1. Az Azure VMware-megoldás portálján lépjen a kapcsolat **kezelése**  >  **Connectivity**elemre, válassza a **HCX** lapot, majd kattintson a **Hozzáadás**gombra.
+1. Az Azure VMware-megoldás portálján lépjen a kapcsolat **kezelése**  >  **Connectivity** elemre, válassza a **HCX** lapot, majd kattintson a **Hozzáadás** gombra.
 
 1. A **rendszergazdai** hitelesítő adataival jelentkezzen be a helyszíni VMware HCX Managerbe `https://HCXManagerIP:9443` . 
 
    > [!IMPORTANT]
    > Ügyeljen arra, hogy tartalmazza a `9443` portszámot a VMware HCX Manager IP-címével.
 
-1. A **Licencelés**mezőben adja meg a **HCX speciális kulcsának**kulcsát.  
+1. A **Licencelés** mezőben adja meg a **HCX speciális kulcsának** kulcsát.  
    
     > [!NOTE]
     > A VMware HCX-kezelőnek meg kell nyitnia az internet-hozzáférést, vagy konfigurálnia kell egy proxyt.
 
-1. Az **Adatközpont helye mezőben**adja meg a legközelebbi helyet a VMware HCX Manager helyszíni telepítéséhez.
+1. Az **Adatközpont helye mezőben** adja meg a legközelebbi helyet a VMware HCX Manager helyszíni telepítéséhez.
 
-1. A **rendszer neve**területen módosítsa a nevet, vagy fogadja el az alapértelmezett értéket.
+1. A **rendszer neve** területen módosítsa a nevet, vagy fogadja el az alapértelmezett értéket.
    
-1. Válassza **az igen, a folytatás**lehetőséget.
+1. Válassza **az igen, a folytatás** lehetőséget.
     
-1. A **vCenter összekapcsolásához**adja meg a vCenter-kiszolgáló teljes tartománynevét vagy IP-címét, valamint a megfelelő hitelesítő adatokat, majd válassza a **Folytatás**lehetőséget.
+1. A **vCenter összekapcsolásához** adja meg a vCenter-kiszolgáló teljes tartománynevét vagy IP-címét, valamint a megfelelő hitelesítő adatokat, majd válassza a **Folytatás** lehetőséget.
    
-1. Az **SSO/PSC konfigurálása**lapon adja meg a platform Services-vezérlő teljes tartománynevét vagy IP-címét, majd válassza a **Folytatás**lehetőséget.
+1. Az **SSO/PSC konfigurálása** lapon adja meg a platform Services-vezérlő teljes tartománynevét vagy IP-címét, majd válassza a **Folytatás** lehetőséget.
    
    >[!NOTE]
    >Ez a bejegyzés általában megegyezik a vCenter teljes tartománynevével vagy IP-címével.
 
-1. Ellenőrizze, hogy az összes bemenet helyes-e, majd válassza az **Újraindítás**lehetőséget.
+1. Ellenőrizze, hogy az összes bemenet helyes-e, majd válassza az **Újraindítás** lehetőséget.
     
    > [!NOTE]
    > Az újraindítás után késleltetést tapasztal, mielőtt a rendszer megkéri a következő lépéssel.
@@ -162,11 +162,11 @@ Most már készen áll egy hely párosításának hozzáadására, egy hálózat
 
 A VMware HCX Cloud Managert az adatközpont VMware HCX-összekötője segítségével csatlakoztathatja az Azure VMware megoldásban. 
 
-1. Jelentkezzen be a helyszíni vCenter, és a Home ( **Kezdőlap**) területen válassza a **HCX**lehetőséget.
+1. Jelentkezzen be a helyszíni vCenter, és a Home ( **Kezdőlap** ) területen válassza a **HCX** lehetőséget.
 
    :::image type="content" source="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png":::
 
-1. Az **infrastruktúra**területen válassza a **hely párosítása**elemet, majd válassza a **Kapcsolódás távoli helyhez** lehetőséget (a képernyő közepén). 
+1. Az **infrastruktúra** területen válassza a **hely párosítása** elemet, majd válassza a **Kapcsolódás távoli helyhez** lehetőséget (a képernyő közepén). 
 
    :::image type="content" source="media/tutorial-vmware-hcx/connect-remote-site.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/connect-remote-site.png":::
 
@@ -196,7 +196,7 @@ Négy hálózati profilt fog létrehozni:
    - Replikáció
    - Uplink
 
-1. Az **infrastruktúra**területen válassza az **összekötő**  >  **többhelyes szolgáltatás háló**  >  **hálózati profilok**  >  **hálózati profil létrehozása**lehetőséget.
+1. Az **infrastruktúra** területen válassza az **összekötő**  >  **többhelyes szolgáltatás háló**  >  **hálózati profilok**  >  **hálózati profil létrehozása** lehetőséget.
 
    :::image type="content" source="media/tutorial-vmware-hcx/network-profile-start.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/network-profile-start.png":::
 
@@ -209,57 +209,57 @@ Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMwar
 
 ### <a name="create-a-compute-profile"></a>Számítási profil létrehozása
 
-1. Válassza a **számítási profilok**  >  **számítási profil létrehozása**lehetőséget.
+1. Válassza a **számítási profilok**  >  **számítási profil létrehozása** lehetőséget.
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-create.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/compute-profile-create.png":::
 
-1. Adja meg a profil nevét, és válassza a **Folytatás**lehetőséget.  
+1. Adja meg a profil nevét, és válassza a **Folytatás** lehetőséget.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/name-compute-profile.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/name-compute-profile.png":::
 
-1. Válassza ki az engedélyezni kívánt szolgáltatásokat, például az áttelepítést, a hálózati bővítményt vagy a vész-helyreállítást, majd válassza a **Folytatás**lehetőséget.
+1. Válassza ki az engedélyezni kívánt szolgáltatásokat, például az áttelepítést, a hálózati bővítményt vagy a vész-helyreállítást, majd válassza a **Folytatás** lehetőséget.
   
    > [!NOTE]
    > Általában semmi sem változik.
 
-1. A **szolgáltatás erőforrásainak kiválasztása**területen válasszon ki egy vagy több szolgáltatási erőforrást (fürtöket) a kiválasztott VMware HCX-szolgáltatások engedélyezéséhez.  
+1. A **szolgáltatás erőforrásainak kiválasztása** területen válasszon ki egy vagy több szolgáltatási erőforrást (fürtöket) a kiválasztott VMware HCX-szolgáltatások engedélyezéséhez.  
 
-1. Ha a helyszíni adatközpontban látja a fürtöket, válassza a **Folytatás**lehetőséget.
+1. Ha a helyszíni adatközpontban látja a fürtöket, válassza a **Folytatás** lehetőséget.
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-service-resource.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/select-service-resource.png":::
 
-1. Az **adattár kiválasztása**lapon válassza ki az adattár tárolási erőforrását a VMware HCX Interconnect berendezések telepítéséhez. Ezután válassza a **Folytatás** elemet.
+1. Az **adattár kiválasztása** lapon válassza ki az adattár tárolási erőforrását a VMware HCX Interconnect berendezések telepítéséhez. Ezután válassza a **Folytatás** elemet.
 
    Ha több erőforrás van kiválasztva, a VMware HCX az elsőként kiválasztott erőforrást használja a kapacitás kimerülése előtt.   
 
    :::image type="content" source="media/tutorial-vmware-hcx/deployment-resources-and-reservations.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/deployment-resources-and-reservations.png":::  
 
-1. A **felügyeleti hálózati profil kiválasztása**lapon válassza ki az előző lépésekben létrehozott felügyeleti hálózati profilt. Ezután válassza a **Folytatás** elemet.  
+1. A **felügyeleti hálózati profil kiválasztása** lapon válassza ki az előző lépésekben létrehozott felügyeleti hálózati profilt. Ezután válassza a **Folytatás** elemet.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-management-network-profile.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/select-management-network-profile.png":::
 
    > [!NOTE]
    > A felügyeleti hálózati profil lehetővé teszi, hogy a VMware HCX készülékek kommunikálhassanak a vCenter. Az ESXi-gazdagépek elérhetők a profilon keresztül.
 
-1. A **kimenő hálózati profil kiválasztása**lapon válassza ki az előző lépésekben létrehozott kimenő hálózati profilt. Ezután válassza a **Folytatás** elemet.
+1. A **kimenő hálózati profil kiválasztása** lapon válassza ki az előző lépésekben létrehozott kimenő hálózati profilt. Ezután válassza a **Folytatás** elemet.
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-uplink-network-profile.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/select-uplink-network-profile.png":::
 
-1. A **VMotion hálózati profil kiválasztása**lapon válassza ki az előző lépések során létrehozott vMotion hálózati profilt. Ezután válassza a **Folytatás** elemet.
+1. A **VMotion hálózati profil kiválasztása** lapon válassza ki az előző lépések során létrehozott vMotion hálózati profilt. Ezután válassza a **Folytatás** elemet.
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-vmotion-network-profile.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/select-vmotion-network-profile.png":::
 
-1. A **vSphere-replikációs hálózati profil kiválasztása**lapon válassza ki az előző lépések során létrehozott replikációs hálózati profilt. Ezután válassza a **Folytatás** elemet.
+1. A **vSphere-replikációs hálózati profil kiválasztása** lapon válassza ki az előző lépések során létrehozott replikációs hálózati profilt. Ezután válassza a **Folytatás** elemet.
 
    A legtöbb esetben a replikációs hálózati profil megegyezik a felügyeleti hálózati profillal.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-replication-network-profile.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/select-replication-network-profile.png":::
 
-1. A **hálózati bővítmények számára válassza az elosztott kapcsolók lehetőséget**, válassza ki azokat az elosztott virtuális kapcsolókat, amelyek az Azure VMware-megoldásba áttelepíteni kívánt virtuális gépeket tartalmazzák egy 2. rétegbeli kiterjesztett hálózaton. Ezután válassza a **Folytatás** elemet.
+1. A **hálózati bővítmények számára válassza az elosztott kapcsolók lehetőséget** , válassza ki azokat az elosztott virtuális kapcsolókat, amelyek az Azure VMware-megoldásba áttelepíteni kívánt virtuális gépeket tartalmazzák egy 2. rétegbeli kiterjesztett hálózaton. Ezután válassza a **Folytatás** elemet.
 
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
-1. Tekintse át a kapcsolatok szabályait, és válassza a **Folytatás**lehetőséget.  
+1. Tekintse át a kapcsolatok szabályait, és válassza a **Folytatás** lehetőséget.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/review-connection-rules.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/review-connection-rules.png":::
 
@@ -281,16 +281,16 @@ Itt az ideje, hogy konfiguráljon egy Service meshot a helyszíni és az Azure V
    >
    > Ügyeljen arra, hogy ellenőrizze a [HCX szükséges portokat](https://ports.vmware.com/home/VMware-HCX).
 
-1. Az **infrastruktúra**területen válassza az **összekötő**  >  **szolgáltatás háló**  >  **Létrehozás szolgáltatás háló létrehozása**lehetőséget.    
+1. Az **infrastruktúra** területen válassza az **összekötő**  >  **szolgáltatás háló**  >  **Létrehozás szolgáltatás háló létrehozása** lehetőséget.    
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-service-mesh.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/create-service-mesh.png":::
 
-1. Tekintse át az előre feltöltött helyeket, majd válassza a **Folytatás**lehetőséget. 
+1. Tekintse át az előre feltöltött helyeket, majd válassza a **Folytatás** lehetőséget. 
 
    >[!NOTE]
    >Ha ez az első Service Mesh-konfiguráció, nem kell módosítania ezt a képernyőt.  
 
-1. Válassza ki a forrás-és távoli számítási profilokat a legördülő listából, majd válassza a **Folytatás**lehetőséget.  
+1. Válassza ki a forrás-és távoli számítási profilokat a legördülő listából, majd válassza a **Folytatás** lehetőséget.  
 
    A beállítások határozzák meg azokat az erőforrásokat, amelyeken a virtuális gépek a VMware HCX-szolgáltatásokat használhatják.  
 
@@ -298,17 +298,17 @@ Itt az ideje, hogy konfiguráljon egy Service meshot a helyszíni és az Azure V
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-compute-profile-remote.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/select-compute-profile-remote.png":::
 
-1. Tekintse át azokat a szolgáltatásokat, amelyek engedélyezve lesznek, majd válassza a **Folytatás**lehetőséget.  
+1. Tekintse át azokat a szolgáltatásokat, amelyek engedélyezve lesznek, majd válassza a **Folytatás** lehetőséget.  
 
-1. A **speciális konfigurációban – a kimenő hálózati profilok felülbírálása**lehetőségnél válassza a **Folytatás**lehetőséget.  
+1. A **speciális konfigurációban – a kimenő hálózati profilok felülbírálása** lehetőségnél válassza a **Folytatás** lehetőséget.  
 
    A kimenő hálózati profilok csatlakoznak ahhoz a hálózathoz, amelyen keresztül a távoli hely összekötő készülékei elérhetők.  
   
-1. A **Speciális konfiguráció-hálózati bővítmények Felskálázása**lapon tekintse át, majd válassza a **Folytatás**lehetőséget. 
+1. A **Speciális konfiguráció-hálózati bővítmények Felskálázása** lapon tekintse át, majd válassza a **Folytatás** lehetőséget. 
 
-1. A **Speciális konfiguráció-Traffic Engineering**szolgáltatásban tekintse át és végezze el a szükséges módosításokat, majd kattintson a **Continue (folytatás**) gombra.
+1. A **Speciális konfiguráció-Traffic Engineering** szolgáltatásban tekintse át és végezze el a szükséges módosításokat, majd kattintson a **Continue (folytatás** ) gombra.
 
-1. Tekintse át a topológia előzetes verzióját, és válassza a **Folytatás**lehetőséget.
+1. Tekintse át a topológia előzetes verzióját, és válassza a **Folytatás** lehetőséget.
 
 1. Adja meg a szolgáltatás rácsvonalának felhasználóbarát nevét, és válassza a **Befejezés gombot a befejezéshez** .  
 
@@ -321,7 +321,7 @@ Itt az ideje, hogy konfiguráljon egy Service meshot a helyszíni és az Azure V
    :::image type="content" source="media/tutorial-vmware-hcx/service-mesh-green.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/service-mesh-green.png":::
 
 1. Ellenőrizze a szolgáltatás rácsvonalának állapotát a készülék állapotának ellenőrzésével. 
-1. Válassza az **összekötő**  >  **berendezések**lehetőséget.
+1. Válassza az **összekötő**  >  **berendezések** lehetőséget.
 
    :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
 
@@ -333,19 +333,19 @@ Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megol
 
 Ha a helyszíni környezetből származó hálózatokat az Azure VMware megoldásba kívánja terjeszteni, kövesse az alábbi lépéseket:
 
-1. A **szolgáltatások**területen válassza a **hálózati kiterjesztés**lehetőséget, majd válassza **a hálózati bővítmény létrehozása**lehetőséget.
+1. A **szolgáltatások** területen válassza a **hálózati kiterjesztés** lehetőséget, majd válassza **a hálózati bővítmény létrehozása** lehetőséget.
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
 
-1. Válassza ki az Azure VMware-megoldásra kiterjeszteni kívánt hálózatokat, majd kattintson a **tovább**gombra.
+1. Válassza ki az Azure VMware-megoldásra kiterjeszteni kívánt hálózatokat, majd kattintson a **tovább** gombra.
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-extend-networks.png" alt-text="Képernyőkép a OVF-sablon tallózásáról.":::
 
-1. Adja meg a helyszíni átjáró IP-címét minden kibővíteni kívánt hálózat esetében, majd válassza a **Küldés**lehetőséget. 
+1. Adja meg a helyszíni átjáró IP-címét minden kibővíteni kívánt hálózat esetében, majd válassza a **Küldés** lehetőséget. 
 
    :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-gateway.png" alt-text="Képernyőkép a OVF-sablon tallózásáról.":::
 
-   A hálózati bővítmény befejeződése néhány percet vesz igénybe. Ha igen, akkor a bővítmény állapotának változása **befejeződött**.
+   A hálózati bővítmény befejeződése néhány percet vesz igénybe. Ha igen, akkor a bővítmény állapotának változása **befejeződött** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="Képernyőkép a OVF-sablon tallózásáról." lightbox="media/tutorial-vmware-hcx/extension-complete.png":::
 

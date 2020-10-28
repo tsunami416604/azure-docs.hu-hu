@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb3fd9136f78a332a22f973d211dec748c4fb260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317072"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789811"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>A Azure PowerShell használata az Azure-beli SQL Server kiépítéséhez Virtual Machines
 
@@ -28,7 +28,7 @@ ms.locfileid: "91317072"
 
 Ez az útmutató a PowerShell használatának azon lehetőségeit ismerteti, amelyekkel az Azure Virtual Machines (VM) SQL Server kiépíthető. Az alapértelmezett értékekre támaszkodó, egyszerűsített Azure PowerShell például az [SQL VM Azure PowerShell](sql-vm-create-powershell-quickstart.md)gyors útmutatójában talál.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -135,15 +135,15 @@ A következő változók használatával határozhatja meg a virtuális géphez 
    Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
-1. Ebben az oktatóanyagban használja a SQL Server 2017 fejlesztői kiadását (**SQLDEV**). A fejlesztői kiadás szabadon jogosult tesztelésre és fejlesztésre, és csak a virtuális gép futtatásának költségeit kell fizetnie.
+1. Ebben az oktatóanyagban használja a SQL Server 2017 fejlesztői kiadását ( **SQLDEV** ). A fejlesztői kiadás szabadon jogosult tesztelésre és fejlesztésre, és csak a virtuális gép futtatásának költségeit kell fizetnie.
 
    ```powershell
    $Sku = "SQLDEV"
    ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-A Resource Manager-alapú üzemi modellben az elsőként létrehozott objektum az erőforráscsoport. A [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával hozzon létre egy Azure-erőforráscsoportot és annak erőforrásait. Adja meg az erőforráscsoport nevének és helyének korábban inicializált változóit.
+A Resource Manager-alapú üzemi modellben az elsőként létrehozott objektum az erőforráscsoport. A [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával hozzon létre egy Azure-erőforráscsoportot és annak erőforrásait. Adja meg az erőforráscsoport nevének és helyének korábban inicializált változóit.
 
 Futtassa ezt a parancsmagot az új erőforráscsoport létrehozásához.
 
@@ -153,7 +153,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-A virtuális gépnek tárolási erőforrásokat kell megadnia az operációsrendszer-lemezhez, valamint a SQL Server-és naplófájlokhoz. Az egyszerűség kedvéért egyetlen lemezt fog létrehozni mindkettőhöz. Az [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) parancsmaggal később további lemezeket is csatolhat, hogy a SQL Server adatait és naplófájljait dedikált lemezekre helyezze. A [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) parancsmag használatával hozzon létre egy szabványos Storage-fiókot az új erőforráscsoporthoz. Adja meg a Storage-fiók neve, a tárolási SKU-név és a hely számára korábban inicializált változókat.
+A virtuális gépnek tárolási erőforrásokat kell megadnia az operációsrendszer-lemezhez, valamint a SQL Server-és naplófájlokhoz. Az egyszerűség kedvéért egyetlen lemezt fog létrehozni mindkettőhöz. Az [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) parancsmaggal később további lemezeket is csatolhat, hogy a SQL Server adatait és naplófájljait dedikált lemezekre helyezze. A [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancsmag használatával hozzon létre egy szabványos Storage-fiókot az új erőforráscsoporthoz. Adja meg a Storage-fiók neve, a tárolási SKU-név és a hely számára korábban inicializált változókat.
 
 Futtassa ezt a parancsmagot az új Storage-fiók létrehozásához.
 
@@ -176,7 +176,7 @@ A virtuális gépnek számos hálózati erőforrásra van szüksége a hálózat
 
 ### <a name="create-a-virtual-network-subnet-configuration"></a>Virtuális hálózati alhálózat konfigurációjának létrehozása
 
-Először hozzon létre egy alhálózat-konfigurációt a virtuális hálózat számára. Ebben az oktatóanyagban hozzon létre egy alapértelmezett alhálózatot a [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) parancsmag használatával. Adja meg azokat a változókat, amelyeket korábban inicializált az alhálózat neve és a címe előtaghoz.
+Először hozzon létre egy alhálózat-konfigurációt a virtuális hálózat számára. Ebben az oktatóanyagban hozzon létre egy alapértelmezett alhálózatot a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) parancsmag használatával. Adja meg azokat a változókat, amelyeket korábban inicializált az alhálózat neve és a címe előtaghoz.
 
 > [!NOTE]
 > Megadhatja a virtuális hálózati alhálózat konfigurációjának további tulajdonságait ezen parancsmag használatával, de ez az oktatóanyag hatókörén kívül esik.
@@ -189,7 +189,7 @@ $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefi
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Ezután hozza létre a virtuális hálózatot az új erőforráscsoporthoz a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) parancsmag használatával. Adja meg azokat a változókat, amelyeket korábban inicializált a név, a hely és a címzés előtagja számára. Használja az előző lépésben megadott alhálózati konfigurációt.
+Ezután hozza létre a virtuális hálózatot az új erőforráscsoporthoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) parancsmag használatával. Adja meg azokat a változókat, amelyeket korábban inicializált a név, a hely és a címzés előtagja számára. Használja az előző lépésben megadott alhálózati konfigurációt.
 
 Futtassa ezt a parancsmagot a virtuális hálózat létrehozásához.
 
@@ -201,7 +201,7 @@ $VNet = New-AzVirtualNetwork -Name $VNetName `
 
 ### <a name="create-the-public-ip-address"></a>A nyilvános IP-cím létrehozása
 
-Most, hogy a virtuális hálózat definiálva van, konfigurálnia kell egy IP-címet a virtuális géphez való csatlakozáshoz. Ebben az oktatóanyagban hozzon létre egy nyilvános IP-címet a dinamikus IP-címzés használatával az internetkapcsolat támogatásához. A [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) parancsmag használatával hozza létre a nyilvános IP-címet az új erőforráscsoporthoz. Adja meg azokat a változókat, amelyeket korábban inicializált a név, a hely, a kiosztási módszer és a DNS-tartománynév címkéje számára.
+Most, hogy a virtuális hálózat definiálva van, konfigurálnia kell egy IP-címet a virtuális géphez való csatlakozáshoz. Ebben az oktatóanyagban hozzon létre egy nyilvános IP-címet a dinamikus IP-címzés használatával az internetkapcsolat támogatásához. A [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) parancsmag használatával hozza létre a nyilvános IP-címet az új erőforráscsoporthoz. Adja meg azokat a változókat, amelyeket korábban inicializált a név, a hely, a kiosztási módszer és a DNS-tartománynév címkéje számára.
 
 > [!NOTE]
 > A nyilvános IP-cím további tulajdonságait is meghatározhatja ezzel a parancsmaggal, de ez a kezdeti oktatóanyag hatókörén kívül esik. Létrehozhat egy magánhálózati címeket vagy egy statikus címekből álló címeket is, de ez az oktatóanyag hatókörén kívül is van.
@@ -243,7 +243,7 @@ A virtuális gép biztonságossá tételéhez és SQL Server a forgalomhoz hozzo
 
 ### <a name="create-the-network-interface"></a>A hálózati adapter létrehozása
 
-Most már készen áll a virtuális gép hálózati adapterének létrehozására. A [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) parancsmag használatával hozza létre a hálózati adaptert az új erőforráscsoporthoz. Adja meg a korábban definiált nevet, helyet, alhálózatot és nyilvános IP-címet.
+Most már készen áll a virtuális gép hálózati adapterének létrehozására. A [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) parancsmag használatával hozza létre a hálózati adaptert az új erőforráscsoporthoz. Adja meg a korábban definiált nevet, helyet, alhálózatot és nyilvános IP-címet.
 
 Futtassa ezt a parancsmagot a hálózati adapter létrehozásához.
 
@@ -265,7 +265,7 @@ Most, hogy a tárolási és hálózati erőforrások definiálva vannak, készen
 
 ### <a name="create-the-vm-object"></a>A virtuálisgép-objektum létrehozása
 
-Kezdje a virtuális gép méretének megadásával. Ebben az oktatóanyagban egy DS13 kell megadni. Konfigurálható virtuálisgép-objektum létrehozásához használja a [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) parancsmagot. Adja meg a név és a méret korábban inicializált változóit.
+Kezdje a virtuális gép méretének megadásával. Ebben az oktatóanyagban egy DS13 kell megadni. Konfigurálható virtuálisgép-objektum létrehozásához használja a [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) parancsmagot. Adja meg a név és a méret korábban inicializált változóit.
 
 Futtassa ezt a parancsmagot a virtuálisgép-objektum létrehozásához.
 
@@ -275,7 +275,7 @@ $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 
 ### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>Hitelesítő objektum létrehozása a helyi rendszergazdai hitelesítő adatok nevének és jelszavának tárolásához
 
-A virtuális gép operációs rendszerének beállítása előtt a helyi rendszergazdai fiók hitelesítő adatait biztonságos karakterláncként kell megadnia. Ennek elvégzéséhez használja a [Get-hitelesítőadat](https://technet.microsoft.com/library/hh849815.aspx) parancsmagot.
+A virtuális gép operációs rendszerének beállítása előtt a helyi rendszergazdai fiók hitelesítő adatait biztonságos karakterláncként kell megadnia. Ennek elvégzéséhez használja a [Get-hitelesítőadat](/powershell/module/microsoft.powershell.security/get-credential) parancsmagot.
 
 Futtassa a következő parancsmagot. A virtuális gép helyi rendszergazdájának nevét és jelszavát be kell írnia a PowerShell hitelesítő adatok kérése ablakba.
 
@@ -285,7 +285,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>A virtuális gép operációs rendszerének tulajdonságainak beállítása
 
-Most már készen áll a virtuális gép operációs rendszerének tulajdonságainak beállítására a [set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) parancsmaggal.
+Most már készen áll a virtuális gép operációs rendszerének tulajdonságainak beállítására a [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) parancsmaggal.
 
 - Az operációs rendszer típusának beállítása Windowsként.
 - A [virtuálisgép-ügynök](../../../virtual-machines/extensions/agent-windows.md) telepítésének megkövetelése.
@@ -302,7 +302,7 @@ $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine `
 
 ### <a name="add-the-network-interface-to-the-virtual-machine"></a>Hálózati adapter hozzáadása a virtuális géphez
 
-Ezután az [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) parancsmag használatával adja hozzá a hálózati adaptert a korábban megadott változóhoz.
+Ezután az [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) parancsmag használatával adja hozzá a hálózati adaptert a korábban megadott változóhoz.
 
 Futtassa ezt a parancsmagot a virtuális gép hálózati adapterének beállításához.
 
@@ -322,7 +322,7 @@ $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDis
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>A virtuális gép operációsrendszer-lemezének tulajdonságainak beállítása
 
-Ezután állítsa be a virtuális gép operációsrendszer-lemezének tulajdonságait a [set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) parancsmag használatával. 
+Ezután állítsa be a virtuális gép operációsrendszer-lemezének tulajdonságait a [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) parancsmag használatával. 
 
 - Azt határozza meg, hogy a virtuális gép operációs rendszere egy rendszerképből fog származni.
 - Állítsa be a gyorsítótárazást csak olvasásra (mivel SQL Server ugyanarra a lemezre van telepítve).
@@ -337,7 +337,7 @@ $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name `
 
 ### <a name="specify-the-platform-image-for-the-virtual-machine"></a>A virtuális gép platformjának rendszerképének megadása
 
-Az utolsó konfigurációs lépés a virtuális géphez tartozó platform rendszerképének megadása. Ebben az oktatóanyagban használja a legújabb SQL Server 2016 CTP-rendszerképet. Használja a [set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) parancsmagot, hogy ezt a rendszerképet a korábban meghatározott változók használatával használja.
+Az utolsó konfigurációs lépés a virtuális géphez tartozó platform rendszerképének megadása. Ebben az oktatóanyagban használja a legújabb SQL Server 2016 CTP-rendszerképet. Használja a [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) parancsmagot, hogy ezt a rendszerképet a korábban meghatározott változók használatával használja.
 
 Futtassa ezt a parancsmagot a virtuális géphez tartozó platform rendszerképének megadásához.
 
@@ -349,7 +349,7 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
 
 ## <a name="create-the-sql-vm"></a>Az SQL virtuális gép létrehozása
 
-Most, hogy befejezte a konfigurációs lépéseket, készen áll a virtuális gép létrehozására. A [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag használatával hozza létre a virtuális gépet a megadott változók használatával.
+Most, hogy befejezte a konfigurációs lépéseket, készen áll a virtuális gép létrehozására. A [New-AzVM](/powershell/module/az.compute/new-azvm) parancsmag használatával hozza létre a virtuális gépet a megadott változók használatával.
 
 > [!TIP]
 > A virtuális gépek létrehozása néhány percet is igénybe vehet.

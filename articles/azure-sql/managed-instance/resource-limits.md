@@ -12,14 +12,14 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34f71dfeb0b4e5f94d953137fd45777bf14baa4e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618114"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790763"
 ---
-# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Az Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése
+# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>A felügyelt Azure SQL-példány erőforráskorlátainak áttekintése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Ez a cikk áttekintést nyújt az Azure SQL felügyelt példányainak technikai jellemzőiről és erőforrás-korlátairól, és információt nyújt arról, hogyan kérheti le a határértékek növelését.
@@ -82,7 +82,7 @@ Az SQL felügyelt példányának két szolgáltatási szintje van: [általános 
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
 | Memóriabeli OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
 | Munkamenetek maximális száma | 30000 | 30000 |
-| Egyidejű feldolgozók maximális száma (kérelem) | Gen4:210 * virtuális mag száma + 800<br>Gen5:105 * virtuális mag száma + 800 | Gen4:210 * virtuális mag száma + 800<br>Gen5:105 * virtuális mag száma + 800 |
+| Egyidejű feldolgozók maximális száma (kérelem) | Gen4: 210 x virtuális magok száma + 800<br>Gen5: 105 x virtuális magok száma + 800 | Gen4: 210 x virtuális magok száma + 800<br>Gen5: 105 x virtuális magok száma + 800 |
 | [Írásvédett replikák](../database/read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
 | Számítási elkülönítés | Gen5<br/>– 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|Gen5<br/>– 60, 64, 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|
 
@@ -120,7 +120,7 @@ Az SQL felügyelt példány jelenleg csak a következő típusú előfizetések 
 
 - [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/)
-- [Felhőalapú szolgáltató (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [Felhőalapú szolgáltató (CSP)](/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Előfizetések havi Azure-Kredittel a Visual Studio-előfizetőknek](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
@@ -132,8 +132,8 @@ Az SQL felügyelt példány jelenleg csak a következő típusú előfizetések 
 
 A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt SQL-példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek (ez igény szerint növelhető, ha egy speciális [támogatási kérést hoz létre a Azure Portal az](../database/quota-increase-request.md) előfizetés típusától függően:
 
-- **Alhálózat korlátja**: azon alhálózatok maximális száma, amelyekben az SQL felügyelt példány példányai egyetlen régióban vannak üzembe helyezve.
-- **virtuális mag-egység korlátja**: az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
+- **Alhálózat korlátja** : azon alhálózatok maximális száma, amelyekben az SQL felügyelt példány példányai egyetlen régióban vannak üzembe helyezve.
+- **virtuális mag-egység korlátja** : az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
 
 > [!Note]
 > Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. A határértékek igény szerinti növeléséhez hozzon létre egy speciális [támogatási kérelmet a Azure Portal,](../database/quota-increase-request.md) ha az aktuális régióban több példányra van szüksége. Alternatív megoldásként új SQL-példányokat is létrehozhat egy másik Azure-régióban a támogatási kérések küldése nélkül.
@@ -150,7 +150,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
 
-\* Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL felügyelt példánya telepítve van, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
+\* Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL felügyelt példánya telepítve van, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával** .
 
 \*\* A nagyobb alhálózat-és virtuális mag korlátozások a következő régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, Dél-Európa, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
 

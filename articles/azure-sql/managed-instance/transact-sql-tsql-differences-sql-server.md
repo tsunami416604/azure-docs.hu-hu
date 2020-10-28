@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973308"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790610"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ A felügyelt SQL-példány nem fér hozzá a fájlmegosztás és a Windows-mapp�
 
 Lásd: tanúsítvány és [biztonsági mentési tanúsítvány](/sql/t-sql/statements/backup-certificate-transact-sql) [létrehozása](/sql/t-sql/statements/create-certificate-transact-sql) . 
  
-**Áthidaló megoldás**: a tanúsítvány biztonsági másolatának létrehozása és a biztonsági mentés visszaállítása helyett [szerezze be a tanúsítvány bináris tartalmát és titkos kulcsát, tárolja. SQL-fájlként, és hozzon létre a bináris fájlból](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
+**Áthidaló megoldás** : a tanúsítvány biztonsági másolatának létrehozása és a biztonsági mentés visszaállítása helyett [szerezze be a tanúsítvány bináris tartalmát és titkos kulcsát, tárolja. SQL-fájlként, és hozzon létre a bináris fájlból](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -153,7 +153,7 @@ A felügyelt SQL-példány nem fér hozzá a fájlokhoz, így a titkosítási sz
 - Egy Azure ad-csoportra leképezett Azure AD-bejelentkezés beállítása, mivel az adatbázis tulajdonosa nem támogatott.
 - Az Azure AD-kiszolgáló rendszerbiztonsági tagjainak más Azure AD-rendszerbiztonsági tag használatával történő megszemélyesítése támogatott, például a [Execute as](/sql/t-sql/statements/execute-as-transact-sql) záradékkal. A végrehajtás korlátozásként:
 
-  - Az Azure AD-felhasználók nem támogatják a (z) rendszerbeli VÉGREHAJTÁSt, ha a név eltér a bejelentkezési névvel. Ilyen eset például, amikor a felhasználó létrehozása a [myAadUser] szintaxissal történik a LOGIN [] típusból, john@contoso.com és a megszemélyesítést a User = _myAadUser_exec használatával kísérli meg. Amikor létrehoz egy **felhasználót** egy Azure ad-kiszolgálói rendszerbiztonsági tag (login) alapján, a **bejelentkezéshez**ugyanazt a login_name kell megadnia a user_name.
+  - Az Azure AD-felhasználók nem támogatják a (z) rendszerbeli VÉGREHAJTÁSt, ha a név eltér a bejelentkezési névvel. Ilyen eset például, amikor a felhasználó létrehozása a [myAadUser] szintaxissal történik a LOGIN [] típusból, john@contoso.com és a megszemélyesítést a User = _myAadUser_ exec használatával kísérli meg. Amikor létrehoz egy **felhasználót** egy Azure ad-kiszolgálói rendszerbiztonsági tag (login) alapján, a **bejelentkezéshez** ugyanazt a login_name kell megadnia a user_name.
   - Csak a szerepkör részét képező SQL Server szintű rendszerbiztonsági tag (login) futhat `sysadmin` a következő, az Azure ad-résztvevőket megcélzó műveletek:
 
     - VÉGREHAJTÁS FELHASZNÁLÓKÉNT
@@ -220,7 +220,7 @@ További információ: [Alter Database set partner és set tanúsító](/sql/t-s
 
 - Több naplófájl nem támogatott.
 - A memóriában tárolt objektumok nem támogatottak a általános célú szolgáltatási rétegben. 
-- A általános célú-példányok száma legfeljebb 280, amely adatbázis-kiszolgálónként legfeljebb 280 fájlt jelent. A általános célú szinten található adatfájlok és naplófájlok is beleszámítanak a korlátba. [Az üzletileg kritikus szinten az adatbázis 32 767-es fájljait támogatja](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+- A általános célú-példányok száma legfeljebb 280, amely adatbázis-kiszolgálónként legfeljebb 280 fájlt jelent. A általános célú szinten található adatfájlok és naplófájlok is beleszámítanak a korlátba. [Az üzletileg kritikus szinten az adatbázis 32 767-es fájljait támogatja](./resource-limits.md#service-tier-characteristics).
 - Az adatbázis nem tartalmazhat FileStream-adatkészletet tartalmazó fájlcsoportok. A visszaállítás sikertelen, ha a. bak tartalmaz egy `FILESTREAM` adatkészletet. 
 - Minden fájl az Azure Blob Storage-ba kerül. A fájl i/o-és átviteli sebessége az egyes fájlok méretétől függ.
 
@@ -354,14 +354,14 @@ A SQL Serverban engedélyezett nem dokumentált DBCC utasítások nem támogatot
 ### <a name="distributed-transactions"></a>Elosztott tranzakciók
 
 Az [Elosztott tranzakciók](../database/elastic-transactions-overview.md) részleges támogatása jelenleg nyilvános előzetes verzióban érhető el. A támogatott forgatókönyvek a következők:
-* Azok a tranzakciók, amelyekben a résztvevők csak a [kiszolgálói megbízhatósági csoport](https://aka.ms/mitrusted-groups)részét képező Azure SQL felügyelt példányok.
+* Azok a tranzakciók, amelyekben a résztvevők csak a [kiszolgálói megbízhatósági csoport](./server-trust-group-overview.md)részét képező Azure SQL felügyelt példányok.
 * A .NET (TransactionScope Class) és a Transact-SQL által kezdeményezett tranzakciók.
 
 Az Azure SQL felügyelt példánya jelenleg nem támogatja az MSDTC által a helyszínen vagy az Azure Virtual Machines által rendszeresen támogatott egyéb forgatókönyveket.
 
 ### <a name="extended-events"></a>Bővített események
 
-Bizonyos Windows-specifikus célok a kiterjesztett eseményekhez (Xevent típusú eseményekhez) nem támogatottak:
+A bővített események (XEvents) egyes Windows-specifikus céljai nem támogatottak:
 
 - A `etw_classic_sync` cél nem támogatott. `.xel`Fájlok tárolása az Azure Blob Storage-ban. Lásd: [etw_classic_sync cél](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
 - A `event_file` cél nem támogatott. `.xel`Fájlok tárolása az Azure Blob Storage-ban. Lásd: [event_file cél](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
@@ -482,7 +482,7 @@ A több példányban elérhető Service Broker nem támogatott:
   - `remote proc trans`
 - `sp_execute_external_scripts` nem támogatott. Lásd: [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` nem támogatott. Lásd: [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures`nem támogatottak, köztük `sp_addextendedproc`   a és a `sp_dropextendedproc` . Lásd: [kiterjesztett tárolt eljárások](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `Extended stored procedures` nem támogatottak, köztük `sp_addextendedproc` a és a `sp_dropextendedproc` . Lásd: [kiterjesztett tárolt eljárások](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db` és `sp_detach_db` nem támogatott. Lásd: [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)és [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
 ### <a name="system-functions-and-variables"></a>Rendszerfunkciók és változók
@@ -527,13 +527,13 @@ A felügyelt SQL-példányok következő MSDB-sémáinak a megfelelő előre def
 
 - Általános szerepkörök
   - TargetServersRole
-- [Rögzített adatbázis-szerepkörök](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [Rögzített adatbázis-szerepkörök](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail szerepkörök](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail szerepkörök](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
   - DatabaseMailUserRole
-- [Integrációs szolgáltatások szerepkörei](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [Integrációs szolgáltatások szerepkörei](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
   - db_ssisadmin
   - db_ssisltduser
   - db_ssisoperator
@@ -543,7 +543,7 @@ A felügyelt SQL-példányok következő MSDB-sémáinak a megfelelő előre def
 
 ### <a name="error-logs"></a>Hibanaplók
 
-Az SQL felügyelt példánya részletes információkat helyez el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [SQL felügyelt példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) vagy [SQL felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
+Az SQL felügyelt példánya részletes információkat helyez el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [SQL felügyelt példány – sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) vagy [SQL felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
 
 ## <a name="next-steps"></a>Következő lépések
 

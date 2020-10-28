@@ -18,6 +18,7 @@
         - name: Nyilvános zóna létrehozása – parancssori felület
           href: dns-getstarted-cli.md
         - name: Nyilvános zóna létrehozása – ARM-sablon
+          displayName: Resource Manager
           href: dns-get-started-template.md
     - name: Private DNS
       items:

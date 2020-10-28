@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 6758aed67949032bb93086527623b60af33e716e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c364fe7fa0ac4dd70a01a75478289ea861dee7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079557"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790831"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>Felügyelt példány létrehozása Azure Resource Manager sablonnal a PowerShell használatával
 
@@ -46,7 +46,7 @@ A példány neve, az SQL-rendszergazda felhasználóneve, a VNet/alhálózat és
 Ez a példa feltételezi, hogy [létrehozott egy érvényes hálózati környezetet](../virtual-network-subnet-create-arm-template.md) , vagy [módosított egy meglévő VNet](../vnet-existing-add-subnet.md) a felügyelt példányhoz. Szükség esetén külön [Azure Resource Manager sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)is előkészítheti a hálózati környezetet. 
 
 
-A minta a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) és a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)parancsmagot használja, ezért győződjön meg arról, hogy telepítette a következő PowerShell-modulokat:
+A minta a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és a [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)parancsmagot használja, ezért győződjön meg arról, hogy telepítette a következő PowerShell-modulokat:
 
 ```powershell
 Install-Module Az.Network
@@ -136,7 +136,7 @@ New-AzResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGr
 
 A parancsfájl befejeződése után a felügyelt példány az összes Azure-szolgáltatásból és a konfigurált IP-címről is elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 

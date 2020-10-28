@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 773f011e0c79dc7b246ddc4a737914c15fe0f2f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645785"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789539"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Alkalmazások és adatbázisok hangolása a Azure SQL Database és az Azure SQL felügyelt példányának teljesítményéhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ A létrehozást követően ugyanez a SELECT utasítás egy másik tervet is vál
 
 ![A javított indexekkel rendelkező lekérdezési terv](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-A legfontosabb az, hogy a megosztott, a nyersanyag-rendszerek i/o-kapacitása korlátozottabb, mint egy dedikált kiszolgáló-gép esetén. A felesleges i/o-k minimálisra csökkentik a rendszer maximális előnyeit a szolgáltatási rétegek számítási méretének erőforrásaiban. A megfelelő fizikai adatbázis-kialakítási lehetőségek jelentős mértékben javítják az egyes lekérdezések késését, javítják a méretezési egység által kezelt egyidejű kérelmek átviteli sebességét, és minimálisra csökkenthetik a lekérdezés teljesítéséhez szükséges költségeket. További információ a hiányzó index DMV: [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+A legfontosabb az, hogy a megosztott, a nyersanyag-rendszerek i/o-kapacitása korlátozottabb, mint egy dedikált kiszolgáló-gép esetén. A felesleges i/o-k minimálisra csökkentik a rendszer maximális előnyeit a szolgáltatási rétegek számítási méretének erőforrásaiban. A megfelelő fizikai adatbázis-kialakítási lehetőségek jelentős mértékben javítják az egyes lekérdezések késését, javítják a méretezési egység által kezelt egyidejű kérelmek átviteli sebességét, és minimálisra csökkenthetik a lekérdezés teljesítéséhez szükséges költségeket. További információ a hiányzó index DMV: [sys.dm_db_missing_index_details](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-missing-index-details-transact-sql).
 
 ### <a name="query-tuning-and-hinting"></a>Lekérdezések finomhangolása és célzása
 
@@ -232,7 +232,7 @@ ORDER BY start_time DESC
 
 **Sys.resource_stats** ellenőrizheti, hogy egy teszt erőforrása több vagy kevesebb erőforrást használ-e, mint egy másik teszt. Amikor összehasonlítja az adatmennyiséget, elkülöníti a tesztek időzítését, hogy ne legyenek ugyanabban az 5 perces ablakban a **sys.resource_stats** nézetben. A gyakorlat célja, hogy minimálisra csökkentse a felhasznált erőforrások teljes mennyiségét, és ne csökkentse a maximális erőforrásokat. Általában egy kódrészlet optimalizálása a késéshez is csökkenti az erőforrások felhasználását. Győződjön meg arról, hogy az alkalmazáson végzett módosítások szükségesek, és hogy a módosítások nem érintik negatívan az alkalmazásban a lekérdezési mutatókat használó személy felhasználói élményét.
 
-Ha a munkaterhelés ismétlődő lekérdezéseket tartalmaz, gyakran érdemes rögzíteni és érvényesíteni a csomag választási lehetőségeit, mivel az az adatbázis üzemeltetéséhez szükséges minimális erőforrás-méretet vezérli. Az érvényesítése után időnként újra megvizsgálja a csomagokat, hogy azok ne legyenek lecsökkentve. További információ a [lekérdezési mutatókkal (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
+Ha a munkaterhelés ismétlődő lekérdezéseket tartalmaz, gyakran érdemes rögzíteni és érvényesíteni a csomag választási lehetőségeit, mivel az az adatbázis üzemeltetéséhez szükséges minimális erőforrás-méretet vezérli. Az érvényesítése után időnként újra megvizsgálja a csomagokat, hogy azok ne legyenek lecsökkentve. További információ a [lekérdezési mutatókkal (Transact-SQL)](/sql/t-sql/queries/hints-transact-sql-query).
 
 ### <a name="very-large-database-architectures"></a>Nagyon nagy adatbázis-architektúrák
 

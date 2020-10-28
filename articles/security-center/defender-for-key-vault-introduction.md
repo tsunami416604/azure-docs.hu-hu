@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91a0ea19f53d1da7631154cb71f96e495cc93857
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449084"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788995"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>A Key Vault Azure Defender bemutatása
 
@@ -55,5 +55,5 @@ Ebből a cikkből megtudhatta, hogyan Key Vault Azure Defendert.
 A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket: 
 
 - [Key Vault biztonsági riasztások](alerts-reference.md#alerts-azurekv)– az összes Azure Security Center riasztáshoz tartozó hivatkozási tábla Key Vault szakasza
-- [Riasztások exportálása SIEM-be](continuous-export.md)
+- [Security Center-adatfeldolgozás folyamatos exportálása](continuous-export.md)
 - [Riasztások letiltása az Azure Defenderből](alerts-suppression-rules.md)

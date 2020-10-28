@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: 3a8086c75a7125b744730de83c760db44ce222e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164567"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790100"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure Portal használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport (előzetes verzió) konfigurálásához 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Az Always On rendelkezésre állási csoport a Azure Portal használatával tör
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Egy tartományvezérlővel rendelkező erőforráscsoport. 
-- Egy vagy több [, az Azure-ban SQL Server 2016 (vagy újabb) Enterprise Edition rendszert futtató,](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) tartományhoz csatlakoztatott virtuális gép *ugyanazon* a rendelkezésre állási csoporton vagy *különböző* rendelkezésre állási zónákban, amelyek [teljes KEZELHETŐSÉGI módban vannak regisztrálva az SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md) , és ugyanazt a tartományi FIÓKOT használják a SQL Server szolgáltatáshoz az egyes virtuális gépeken.
+- Egy vagy több [, az Azure-ban SQL Server 2016 (vagy újabb) Enterprise Edition rendszert futtató,](./create-sql-vm-portal.md) tartományhoz csatlakoztatott virtuális gép *ugyanazon* a rendelkezésre állási csoporton vagy *különböző* rendelkezésre állási zónákban, amelyek [teljes KEZELHETŐSÉGI módban vannak regisztrálva az SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md) , és ugyanazt a tartományi FIÓKOT használják a SQL Server szolgáltatáshoz az egyes virtuális gépeken.
 - Két elérhető (egyetlen entitás sem használja) IP-címek. Az egyik a belső terheléselosztó. A másik a rendelkezésre állási csoporttal megegyező alhálózaton belüli figyelő. Ha meglévő terheléselosztó használatával rendelkezik, csak egy elérhető IP-címet kell használnia a rendelkezésre állási csoport figyelője számára. 
 
 ## <a name="permissions"></a>Engedélyek
@@ -61,7 +61,7 @@ Ha még nem rendelkezik meglévő fürttel, hozza létre a Azure Portal használ
 
 1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
-1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások**területen. 
+1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások** területen. 
 1. Válassza az **+ új Windows Server feladatátvevő fürt** lehetőséget a **Windows feladatátvevő fürt konfigurálása** lap megnyitásához.  
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-cluster.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
@@ -70,7 +70,7 @@ Ha még nem rendelkezik meglévő fürttel, hozza létre a Azure Portal használ
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
-1. Bontsa ki a **Windows Server feladatátvételi fürt hitelesítő adatait** a SQL Server szolgáltatásfiók, valamint a fürt operátora és a rendszerindítási fiókok [hitelesítő adatainak](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) megadásához, ha azok eltérnek a SQL Server szolgáltatáshoz használt fióktól. 
+1. Bontsa ki a **Windows Server feladatátvételi fürt hitelesítő adatait** a SQL Server szolgáltatásfiók, valamint a fürt operátora és a rendszerindítási fiókok [hitelesítő adatainak](/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) megadásához, ha azok eltérnek a SQL Server szolgáltatáshoz használt fióktól. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon"
     ```
@@ -85,7 +85,7 @@ Ehhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
-1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások**területen. 
+1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások** területen. 
 1. Válassza a **meglévő Windows Server feladatátvételi fürt** beléptetése lehetőséget a **Windows Server feladatátvételi fürt** bevezetési oldalának megnyitásához. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
@@ -102,7 +102,7 @@ A fürt létrehozása vagy előkészítése után hozza létre a rendelkezésre 
 
 1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
-1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások**területen. 
+1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások** területen. 
 1. Válassza az **+ új always on rendelkezésre állási csoport** lehetőséget a **rendelkezésre állási csoport létrehozása** lap megnyitásához.
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
@@ -138,8 +138,8 @@ Ha SQL Server Management Studio használatával szeretne adatbázisokat felvenni
 1. Kapcsolódjon az egyik SQL Server virtuális géphez az előnyben részesített módszer, például a Távoli asztali kapcsolat (RDP) használatával. 
 1. Nyissa meg SQL Server Management Studio (SSMS).
 1. Kapcsolódjon a SQL Server-példányhoz. 
-1. Bontsa ki az **Always on magas rendelkezésre állást** **Object Explorer**.
-1. Bontsa ki a **rendelkezésre állási csoportok**csomópontot, kattintson a jobb gombbal a rendelkezésre állási csoportra, és válassza az **adatbázis hozzáadása lehetőséget.**
+1. Bontsa ki az **Always on magas rendelkezésre állást** **Object Explorer** .
+1. Bontsa ki a **rendelkezésre állási csoportok** csomópontot, kattintson a jobb gombbal a rendelkezésre állási csoportra, és válassza az **adatbázis hozzáadása lehetőséget.**
 
    :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
@@ -157,7 +157,7 @@ Ha további SQL Server virtuális gépeket szeretne hozzáadni a fürthöz, köv
 
 1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
-1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások**területen. 
+1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások** területen. 
 1. Válassza a **Windows Server feladatátvevő fürt konfigurálása** elemet a **Windows Server feladatátvevő fürt konfigurálása** lap megnyitásához. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
@@ -172,7 +172,7 @@ A központi telepítés állapotát a **tevékenység naplójában** tekintheti 
 ## <a name="modify-availability-group"></a>Rendelkezésre állási csoport módosítása 
 
 
-**További replikákat adhat hozzá** a rendelkezésre állási csoporthoz, **konfigurálhatja a figyelőt**, vagy **törölheti a figyelőt** a Azure Portal **magas rendelkezésre állási** lapjáról a rendelkezésre állási csoport melletti három pontra (...) kattintva: 
+**További replikákat adhat hozzá** a rendelkezésre állási csoporthoz, **konfigurálhatja a figyelőt** , vagy **törölheti a figyelőt** a Azure Portal **magas rendelkezésre állási** lapjáról a rendelkezésre állási csoport melletti három pontra (...) kattintva: 
 
 :::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
@@ -245,7 +245,7 @@ Ha meg szeretné tekinteni a központi telepítés naplóit, és tekintse meg az
 
 1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 1. Navigáljon az erőforráscsoporthoz.
-1. A **Beállítások**területen válassza a **központi telepítések** lehetőséget.
+1. A **Beállítások** területen válassza a **központi telepítések** lehetőséget.
 1. A központi telepítéssel kapcsolatos további információért válassza ki a kívánt központi telepítést. 
 
 
@@ -262,7 +262,7 @@ Ez azt jelzi, hogy az erőforrás-szolgáltató nem fér hozzá a SQL Server szo
 - Ellenőrizze, hogy a portálon megadott hitelesítő adatok megfelelnek-e a SQL Server szolgáltatásnak. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 A rendelkezésre állási csoportokról további információt a következő témakörben talál:

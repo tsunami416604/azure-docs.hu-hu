@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271188"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790593"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-végpontok hívása Azure Logic Apps használatával
 
@@ -27,6 +27,8 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített htt
   Általában a REST-végpontnak teljesítenie kell ezt a feltételt az összekötő működéséhez:
 
   * A hencegő fájlt nyilvánosan elérhető HTTPS URL-címen kell tárolni.
+  
+  * A hencegő fájlnak tartalmaznia kell egy `operationID` , a definícióban szereplő minden művelethez. Ha nem, az összekötő csak az utolsó műveletet jeleníti meg a hencegő fájlban. 
 
   * A hencegő fájlnak engedélyezni kell a [több eredetű erőforrás-megosztást (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
@@ -42,13 +44,13 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített htt
 
 Ez a beépített trigger HTTP-kérést küld egy REST API leíró hencegő fájl URL-címére, és egy olyan választ ad vissza, amely tartalmazza a fájl tartalmát.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic app Designerben.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
 1. A tervezőben a keresőmezőbe írja be szűrőként a "hencegés" kifejezést. Az **Eseményindítók** listából válassza ki a **http + hencegő** eseményindítót.
 
    ![HTTP + hencegő trigger kiválasztása](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra**.
+1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra** .
 
    Ez a példa a [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)az USA nyugati régiójában található hencegő URL-címet használja:
 
@@ -72,23 +74,23 @@ Ez a beépített trigger HTTP-kérést küld egy REST API leíró hencegő fájl
 
 1. Folytassa a logikai alkalmazás munkafolyamatának kialakítását olyan műveletekkel, amelyek az eseményindító indításakor futnak.
 
-1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 ## <a name="add-an-http--swagger-action"></a>HTTP + hencegés művelet hozzáadása
 
 Ez a beépített művelet HTTP-kérést küld a REST API leíró hencegő fájl URL-címére, és egy választ ad vissza, amely tartalmazza a fájl tartalmát.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg a logikai alkalmazást a Logic app Designerben.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Válassza ki azt a lépést, amelyben hozzá szeretné adni a HTTP + hencegés műveletet, és válassza az **új lépés**lehetőséget.
+1. Válassza ki azt a lépést, amelyben hozzá szeretné adni a HTTP + hencegés műveletet, és válassza az **új lépés** lehetőséget.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A tervezőben a keresőmezőbe írja be szűrőként a "hencegés" kifejezést. A **műveletek** listából válassza a **http + hencegés** műveletet.
 
     ![HTTP + hencegés művelet kiválasztása](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra**.
+1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra** .
 
    Ez a példa a [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)az USA nyugati régiójában található hencegő URL-címet használja:
 
@@ -110,7 +112,7 @@ Ez a beépített művelet HTTP-kérést küld a REST API leíró hencegő fájl 
 
    A HTTP + hencegés számára elérhető hitelesítési típusokkal kapcsolatos további információkért lásd: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 <a name="host-swagger"></a>
 
@@ -120,7 +122,7 @@ Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg 
 
 1. [Hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md).
 
-1. Most engedélyezze a CORS a blobhoz. A Storage-fiók menüjében válassza a **CORS**lehetőséget. A **blob Service** lapon adja meg ezeket az értékeket, majd kattintson a **Mentés**gombra.
+1. Most engedélyezze a CORS a blobhoz. A Storage-fiók menüjében válassza a **CORS** lehetőséget. A **blob Service** lapon adja meg ezeket az értékeket, majd kattintson a **Mentés** gombra.
 
    | Tulajdonság | Érték |
    |----------|-------|
@@ -133,7 +135,7 @@ Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg 
 
    Bár ez a példa a [Azure Portal](https://portal.azure.com)használja, használhat egy eszközt, például [Azure Storage Explorert](https://storageexplorer.com/), vagy automatikusan konfigurálhatja ezt a beállítást a [PowerShell-parancsfájl](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)használatával.
 
-1. [Hozzon létre egy BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). A tároló **Áttekintés** paneljén válassza a **hozzáférési szint módosítása**lehetőséget. A **nyilvános hozzáférési szint** listából válassza a **blob (névtelen olvasási hozzáférés csak blobokhoz)** lehetőséget, majd kattintson **az OK gombra**.
+1. [Hozzon létre egy BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). A tároló **Áttekintés** paneljén válassza a **hozzáférési szint módosítása** lehetőséget. A **nyilvános hozzáférési szint** listából válassza a **blob (névtelen olvasási hozzáférés csak blobokhoz)** lehetőséget, majd kattintson **az OK gombra** .
 
 1. [Töltse fel a hencegő fájlt a blob-tárolóba](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), vagy a [Azure Portalon](https://portal.azure.com) vagy [Azure Storage Exploreron](https://storageexplorer.com/)keresztül.
 
@@ -166,4 +168,3 @@ Itt talál további információt a HTTP + hencegő triggerből vagy műveletbő
 ## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
-

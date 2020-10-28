@@ -11,18 +11,18 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 09/02/2020
-ms.openlocfilehash: 36010ff0206ddf9dae08391eb6e4c3dd7762cc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e01e74f5086f7f1eb7e85661fbd35f452d8dae8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319333"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790202"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Valós idejű big data elemzések felgyorsítása a Spark-összekötő használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 > [!NOTE]
-> A Sep 2020-től kezdve ez az összekötő nem marad aktívan fenntartva. A [SQL Server és az Azure SQL Apache Spark-összekötője](https://docs.microsoft.com/sql/connect/spark/connector) azonban mostantól elérhető, és támogatja a Python és az R-kötéseket, a könnyebben használható felületet a tömeges adatbeszúráshoz és számos más tökéletesítéshez. Nyomatékosan javasoljuk, hogy az új összekötő kiértékelését és használatát ne használja. A régi összekötő (ez az oldal) adatait csak archiválási célokra őrzi meg a rendszer.
+> A Sep 2020-től kezdve ez az összekötő nem marad aktívan fenntartva. A [SQL Server és az Azure SQL Apache Spark-összekötője](/sql/connect/spark/connector) azonban mostantól elérhető, és támogatja a Python és az R-kötéseket, a könnyebben használható felületet a tömeges adatbeszúráshoz és számos más tökéletesítéshez. Nyomatékosan javasoljuk, hogy az új összekötő kiértékelését és használatát ne használja. A régi összekötő (ez az oldal) adatait csak archiválási célokra őrzi meg a rendszer.
 
 A Spark-összekötő lehetővé teszi, hogy a Azure SQL Database, az Azure SQL felügyelt példányain lévő adatbázisok, és SQL Server a Spark-feladatokhoz bemeneti adatforrásként vagy kimeneti adatfogadóként működjenek. Lehetővé teszi a valós idejű tranzakciós adatmennyiségek kihasználása big data elemzésekben, és az ad hoc lekérdezések és jelentéskészítés eredményének fenntartása. A beépített JDBC-összekötőhöz képest ez az összekötő lehetővé teszi, hogy tömegesen helyezzen be adatait az adatbázisba. A soros és a soros beszúrást is lehetővé teszi, amely 10x-vel gyorsabb teljesítményt nyújt. A Spark-összekötő támogatja Azure Active Directory (Azure AD) hitelesítést a Azure SQL Database és az Azure SQL felügyelt példányához való csatlakozáshoz, így az adatbázist az Azure AD-fiókjával is csatlakoztathatja a Azure Databricks. Hasonló felületeket biztosít a beépített JDBC-összekötővel. A meglévő Spark-feladatok egyszerűen áttelepíthetők az új összekötő használatára.
 
@@ -238,4 +238,4 @@ Ha még nem tette meg, töltse le a Spark-összekötőt az [Azure-sqldb-Spark Gi
 - [Minta Azure Databricks notebookok](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [Mintául szolgáló parancsfájlok (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-Érdemes áttekinteni a [Apache Spark SQL, a DataFrames és az adatkészletek útmutatóját](https://spark.apache.org/docs/latest/sql-programming-guide.html) , valamint a [Azure Databricks dokumentációját](https://docs.microsoft.com/azure/azure-databricks/)is.
+Érdemes áttekinteni a [Apache Spark SQL, a DataFrames és az adatkészletek útmutatóját](https://spark.apache.org/docs/latest/sql-programming-guide.html) , valamint a [Azure Databricks dokumentációját](/azure/azure-databricks/)is.

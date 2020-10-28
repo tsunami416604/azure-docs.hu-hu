@@ -9,16 +9,16 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e71e56b9da06bfd8f3be24481efd619b788a8839
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822282"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789675"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez
 
-Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Az Azure Storage erőforrás-szolgáltató a Azure Resource Manageron alapuló szolgáltatás, amely hozzáférést biztosít az Azure Storage felügyeleti erőforrásaihoz. Az Azure Storage erőforrás-szolgáltatója olyan erőforrások létrehozására, frissítésére, kezelésére és törlésére használható, mint a Storage-fiókok, a privát végpontok és a fiók-hozzáférési kulcsok. További információ a Azure Resource Managerről: [Azure Resource Manager áttekintése](/azure/azure-resource-manager/resource-group-overview).
+Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Az Azure Storage erőforrás-szolgáltató a Azure Resource Manageron alapuló szolgáltatás, amely hozzáférést biztosít az Azure Storage felügyeleti erőforrásaihoz. Az Azure Storage erőforrás-szolgáltatója olyan erőforrások létrehozására, frissítésére, kezelésére és törlésére használható, mint a Storage-fiókok, a privát végpontok és a fiók-hozzáférési kulcsok. További információ a Azure Resource Managerről: [Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md).
 
 Az Azure Storage erőforrás-szolgáltatóval olyan műveleteket hajthat végre, mint például a Storage-fiók létrehozása vagy törlése, illetve az előfizetéshez tartozó Storage-fiókok listájának beolvasása. Az Azure Storage erőforrás-szolgáltatótól érkező kérések engedélyezéséhez használja a Azure Active Directory (Azure AD) szolgáltatást. Ez a cikk azt ismerteti, hogyan rendelhet hozzá engedélyeket a felügyeleti erőforrásokhoz, és olyan példákat mutat be, amelyek bemutatják, hogyan lehet kérelmeket készíteni az Azure Storage erőforrás-szolgáltatón.
 
@@ -32,9 +32,9 @@ Az Azure Storage támogatja az Azure AD-t a blob-és üzenetsor-tárolással kap
 
 ## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>Felügyeleti engedélyek kiosztása Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)
 
-Minden Azure-előfizetéshez tartozik egy társított Azure Active Directory, amely kezeli a felhasználókat, a csoportokat és az alkalmazásokat. A [Microsoft Identity platform](/azure/active-directory/develop/)kontextusában egy felhasználót, csoportot vagy alkalmazást is a rendszerbiztonsági tag néven is ismert. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával megadhat hozzáférést az előfizetéshez tartozó erőforrásokhoz egy olyan rendszerbiztonsági tag számára, amely a Active Directoryban van meghatározva.
+Minden Azure-előfizetéshez tartozik egy társított Azure Active Directory, amely kezeli a felhasználókat, a csoportokat és az alkalmazásokat. A [Microsoft Identity platform](../../active-directory/develop/index.yml)kontextusában egy felhasználót, csoportot vagy alkalmazást is a rendszerbiztonsági tag néven is ismert. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával megadhat hozzáférést az előfizetéshez tartozó erőforrásokhoz egy olyan rendszerbiztonsági tag számára, amely a Active Directoryban van meghatározva.
 
-Amikor Azure-szerepkört rendel egy rendszerbiztonsági tag számára, azt a hatókört is megadja, amelyen a szerepkör által biztosított engedélyek érvényben vannak. Felügyeleti műveletekhez hozzárendelhet egy szerepkört az előfizetés, az erőforráscsoport vagy a Storage-fiók szintjén. Az Azure-szerepköröket hozzárendelheti egy rendszerbiztonsági tag számára a [Azure Portal](https://portal.azure.com/), az [Azure CLI-eszközök](../../cli-install-nodejs.md), a [PowerShell](/powershell/azure/)vagy az [Azure Storage erőforrás-szolgáltató REST API](/rest/api/storagerp)használatával.
+Amikor Azure-szerepkört rendel egy rendszerbiztonsági tag számára, azt a hatókört is megadja, amelyen a szerepkör által biztosított engedélyek érvényben vannak. Felügyeleti műveletekhez hozzárendelhet egy szerepkört az előfizetés, az erőforráscsoport vagy a Storage-fiók szintjén. Az Azure-szerepköröket hozzárendelheti egy rendszerbiztonsági tag számára a [Azure Portal](https://portal.azure.com/), az [Azure CLI-eszközök](/cli/azure/install-classic-cli), a [PowerShell](/powershell/azure/)vagy az [Azure Storage erőforrás-szolgáltató REST API](/rest/api/storagerp)használatával.
 
 További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md) és a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad-rendszergazdai szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -53,7 +53,7 @@ A tárolási felügyeleti műveletek meghívására engedélyt biztosító beép
 | **Felhasználói hozzáférés adminisztrátora** | Kezelheti a Storage-fiókhoz való hozzáférést.   | Igen, lehetővé teszi a rendszerbiztonsági tag számára, hogy engedélyeket rendeljenek magukhoz és másokhoz. |
 | **Virtuális gépek közreműködője** | Felügyelheti a virtuális gépeket, de nem azt a Storage-fiókot, amelyhez csatlakoznak.   | Igen, a Storage-fiók kulcsainak megtekintésére és újralétrehozására vonatkozó engedélyeket biztosít. |
 
-A tábla harmadik oszlopa azt jelzi, hogy a beépített szerepkör támogatja-e a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**. Ez a művelet engedélyt ad a Storage-fiók kulcsainak olvasására és újbóli előállítására. Az Azure Storage felügyeleti erőforrásainak eléréséhez szükséges engedélyek nem tartalmazzák az adathozzáférésre vonatkozó engedélyeket is. Ha azonban egy felhasználó hozzáfér a fiók kulcsaihoz, akkor a fiókok kulcsaival érheti el az Azure Storage-adatvédelmet a megosztott kulcsos hitelesítésen keresztül.
+A tábla harmadik oszlopa azt jelzi, hogy a beépített szerepkör támogatja-e a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet** . Ez a művelet engedélyt ad a Storage-fiók kulcsainak olvasására és újbóli előállítására. Az Azure Storage felügyeleti erőforrásainak eléréséhez szükséges engedélyek nem tartalmazzák az adathozzáférésre vonatkozó engedélyeket is. Ha azonban egy felhasználó hozzáfér a fiók kulcsaihoz, akkor a fiókok kulcsaival érheti el az Azure Storage-adatvédelmet a megosztott kulcsos hitelesítésen keresztül.
 
 ### <a name="custom-roles-for-management-operations"></a>Egyéni szerepkörök felügyeleti műveletekhez
 
@@ -76,6 +76,6 @@ További információ az Azure-beli üzembe helyezési modellekről: [Resource M
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Resource Manager áttekintése](/azure/azure-resource-manager/resource-group-overview)
+- [Az Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md)
 - [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md)
 - [Az Azure Storage erőforrás-szolgáltató skálázhatósági céljai](scalability-targets-resource-provider.md)

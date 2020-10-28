@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
-ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620188"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791307"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Az eseménynaplóban a kiterjesztett események Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "91620188"
 
 Egy teljes kódrészletet szeretne, amely robusztus módszert biztosít a kiterjesztett események adatainak rögzítésére és jelentésére.
 
-A Microsoft SQL Server az Event [file Target](https://msdn.microsoft.com/library/ff878115.aspx) használatával tárolja az esemény kimeneteit egy helyi merevlemez-fájlba. Ezek a fájlok azonban nem érhetők el Azure SQL Database számára. Ehelyett az Azure Storage szolgáltatást használjuk az Event file cél támogatásához.
+A Microsoft SQL Server az Event [file Target](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) használatával tárolja az esemény kimeneteit egy helyi merevlemez-fájlba. Ezek a fájlok azonban nem érhetők el Azure SQL Database számára. Ehelyett az Azure Storage szolgáltatást használjuk az Event file cél támogatásához.
 
 Ez a témakör egy kétfázisú mintakód-mintát mutat be:
 
@@ -39,7 +39,7 @@ Ez a témakör egy kétfázisú mintakód-mintát mutat be:
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 - Azure-fiók és -előfizetés. Regisztrálhat [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
 - Bármely adatbázis, amelyben létrehozhat egy táblát.
@@ -49,12 +49,12 @@ Ez a témakör egy kétfázisú mintakód-mintát mutat be:
 - SQL Server Management Studio (ssms.exe), ideális esetben a legújabb havi frissítési verzió.
   A legújabb ssms.exe a következő címről töltheti le:
   
-  - A című témakör a [letöltés SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  - A című témakör a [letöltés SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
   - [Közvetlen hivatkozás a letöltésre.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 - Telepítenie kell a [Azure PowerShell modulokat](https://go.microsoft.com/?linkid=9811175) .
 
-  - A modulok olyan parancsokat biztosítanak, mint a- **New-AzStorageAccount**.
+  - A modulok olyan parancsokat biztosítanak, mint a- **New-AzStorageAccount** .
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>1. fázis: az Azure Storage-tároló PowerShell-kódja
 
@@ -62,7 +62,7 @@ Ez a PowerShell a kétfázisú mintakód 1. fázisa.
 
 A parancsfájl egy lehetséges korábbi Futtatás után megtisztított parancsokkal kezdődik, és a rerunnable.
 
-1. Illessze be a PowerShell-szkriptet egy egyszerű szövegszerkesztőbe, például Notepad.exeba, és mentse a parancsfájlt fájlként a **. ps1**kiterjesztéssel.
+1. Illessze be a PowerShell-szkriptet egy egyszerű szövegszerkesztőbe, például Notepad.exeba, és mentse a parancsfájlt fájlként a **. ps1** kiterjesztéssel.
 2. Indítsa el a PowerShell ISE-t rendszergazdaként.
 3. A parancssorba írja be a következőt:<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>majd nyomja le az ENTER billentyűt.
 4. A PowerShell ISE-ben nyissa meg a **. ps1** fájlt. Futtassa a szkriptet.
@@ -258,7 +258,7 @@ A PowerShell-parancsfájl néhány elnevezett értéket kinyomtatott, amikor vé
 6. Mentse, majd futtassa a parancsfájlt.
 
 > [!WARNING]
-> Az előző PowerShell-parancsfájl által generált SAS-kulcs értéke "?" kezdetű lehet. (kérdőjel). Ha a következő T-SQL-parancsfájlban az SAS-kulcsot használja, *el kell távolítania a vezetőt (?*). Ellenkező esetben előfordulhat, hogy a biztonság blokkolja a saját erőfeszítéseit.
+> Az előző PowerShell-parancsfájl által generált SAS-kulcs értéke "?" kezdetű lehet. (kérdőjel). Ha a következő T-SQL-parancsfájlban az SAS-kulcsot használja, *el kell távolítania a vezetőt (?* ). Ellenkező esetben előfordulhat, hogy a biztonság blokkolja a saját erőfeszítéseit.
 
 ### <a name="transact-sql-code"></a>Transact-SQL-kód
 
@@ -496,19 +496,19 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Az előző Transact-SQL-szkript a következő rendszerfüggvényt használta a event_file olvasásához:
 
-- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql)
 
 A kiterjesztett események adatainak megtekintésére szolgáló speciális beállítások magyarázata a következő címen érhető el:
 
-- [A megcélzott adatok speciális megtekintése a kiterjesztett eseményekről](https://msdn.microsoft.com/library/mt752502.aspx)
+- [A megcélzott adatok speciális megtekintése a kiterjesztett eseményekről](/sql/relational-databases/extended-events/advanced-viewing-of-target-data-from-extended-events-in-sql-server)
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>A kód minta konvertálása SQL Serverre való futtatásra
 
 Tegyük fel, hogy az előző Transact-SQL-mintát szeretné futtatni Microsoft SQL Serveron.
 
-- Az egyszerűség kedvéért szeretné teljesen lecserélni az Azure Storage-tároló használatát egy egyszerű fájllal (például *C:\myeventdata.xel*). A fájl a SQL Servert futtató számítógép helyi merevlemezére íródik.
-- Nem szükséges semmilyen Transact-SQL-utasítás a **főkulcs létrehozásához** és a **hitelesítő adatok létrehozásához**.
-- Az **esemény-munkamenet létrehozása** utasításban, az **Add Target** záradékában a **filename =** számára hozzárendelt http-értéket cserélje le a teljes elérésiút-karakterlánccal (például *C:\myfile.xel*).
+- Az egyszerűség kedvéért szeretné teljesen lecserélni az Azure Storage-tároló használatát egy egyszerű fájllal (például *C:\myeventdata.xel* ). A fájl a SQL Servert futtató számítógép helyi merevlemezére íródik.
+- Nem szükséges semmilyen Transact-SQL-utasítás a **főkulcs létrehozásához** és a **hitelesítő adatok létrehozásához** .
+- Az **esemény-munkamenet létrehozása** utasításban, az **Add Target** záradékában a **filename =** számára hozzárendelt http-értéket cserélje le a teljes elérésiút-karakterlánccal (például *C:\myfile.xel* ).
   
   - Nincs szükség Azure Storage-fiókra.
 
@@ -517,8 +517,8 @@ Tegyük fel, hogy az előző Transact-SQL-mintát szeretné futtatni Microsoft S
 Az Azure Storage szolgáltatás fiókjaival és tárolókkal kapcsolatos további információkért lásd:
 
 - [A blob Storage használata a .NET-keretrendszerrel](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Tárolók, blobok és metaadatok elnevezése és hivatkozása](https://msdn.microsoft.com/library/azure/dd135715.aspx)
-- [A legfelső szintű tároló használata](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [1. lecke: tárolt hozzáférési szabályzat és közös hozzáférésű aláírás létrehozása Azure-tárolón](https://msdn.microsoft.com/library/dn466430.aspx)
-  - [2. lecke: SQL Server hitelesítő adat létrehozása közös hozzáférési aláírás használatával](https://msdn.microsoft.com/library/dn466435.aspx)
-- [Microsoft SQL Server bővített eseményei](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
+- [Tárolók, blobok és metaadatok elnevezése és hivatkozása](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
+- [A legfelső szintű tároló használata](/rest/api/storageservices/Working-with-the-Root-Container)
+- [1. lecke: tárolt hozzáférési szabályzat és közös hozzáférésű aláírás létrehozása Azure-tárolón](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage)
+  - [2. lecke: SQL Server hitelesítő adat létrehozása közös hozzáférési aláírás használatával](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#2---create-a-sql-server-credential-using-a-shared-access-signature)
+- [Microsoft SQL Server bővített eseményei](/sql/relational-databases/extended-events/extended-events)

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: fbde77de0ad8698ff82b80b440ae1d4bdcae1f36
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426997"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790270"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Írásvédett replikák használata írásvédett lekérdezési feladatok kiszervezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ Az *olvasási Felskálázási* funkció alapértelmezés szerint engedélyezve v
 > [!NOTE]
 > Az olvasási felskálázás mindig engedélyezve van a felügyelt példány üzletileg kritikus szolgáltatási rétegében.
 
-Ha az SQL-kapcsolódási karakterlánca konfigurálva van `ApplicationIntent=ReadOnly` , az alkalmazás az adott adatbázis vagy felügyelt példány írásvédett replikájának lesz átirányítva. További információ a tulajdonság használatáról `ApplicationIntent` : az [alkalmazás szándékának megadása](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+Ha az SQL-kapcsolódási karakterlánca konfigurálva van `ApplicationIntent=ReadOnly` , az alkalmazás az adott adatbázis vagy felügyelt példány írásvédett replikájának lesz átirányítva. További információ a tulajdonság használatáról `ApplicationIntent` : az [alkalmazás szándékának megadása](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
 Ha biztosítani szeretné, hogy az alkalmazás az SQL-kapcsolati sztring beállításától függetlenül az elsődleges replikához kapcsolódjon `ApplicationIntent` , explicit módon le kell tiltania az olvasási méretezést az adatbázis létrehozásakor vagy a konfigurációjának módosításakor. Ha például az adatbázist standard vagy általános célú szintről prémium, üzletileg kritikus vagy nagy kapacitású szintre frissíti, és biztosítani szeretné, hogy az összes kapcsolat továbbra is az elsődleges replikára lépjen, tiltsa le az olvasási felskálázást. A letiltásával kapcsolatos további információkért lásd: az [olvasási felskálázás engedélyezése és letiltása](#enable-and-disable-read-scale-out).
 
@@ -85,18 +85,18 @@ Ha írásvédett replikához csatlakozik, a dinamikus felügyeleti nézetek (DMV
 
 A gyakran használt nézetek a következők:
 
-| Name | Cél |
+| Name (Név) | Cél |
 |:---|:---|
-|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Erőforrás-kihasználtsági metrikákat biztosít az elmúlt órában, beleértve a CPU-t, az adatio-t és a naplózási írási kihasználtságot a szolgáltatási célkitűzések korlátaihoz képest.|
-|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Az adatbázismotor-példány összesített várakozási statisztikáját biztosítja. |
-|[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| A replika állapotának és szinkronizálási statisztikájának nyújtása. A várólista méretének megismétlése és az Ismétlési arány a csak olvasható replikán lévő Adatkésési mutatókként szolgál. |
-|[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Adatbázismotor-teljesítményszámlálókat biztosít.|
-|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Lekérdezési végrehajtási statisztikákat biztosít, például a végrehajtások számát, a felhasznált CPU-időt stb.|
-|[sys.dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Gyorsítótárazott lekérdezési terveket biztosít. |
-|[sys.dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Lekérdezési szöveget biztosít a gyorsítótárazott lekérdezési tervhez.|
-|[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Valós idejű lekérdezési előrehaladást biztosít a lekérdezések végrehajtása közben.|
-|[sys.dm_exec_query_plan_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| A legutóbbi ismert tényleges végrehajtási tervet tartalmazza, beleértve egy lekérdezés futásidejű statisztikáit.|
-|[sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Az összes adatbázisfájlok tárolási IOPS, átviteli sebességét és késési statisztikáit biztosítja. |
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Erőforrás-kihasználtsági metrikákat biztosít az elmúlt órában, beleértve a CPU-t, az adatio-t és a naplózási írási kihasználtságot a szolgáltatási célkitűzések korlátaihoz képest.|
+|[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Az adatbázismotor-példány összesített várakozási statisztikáját biztosítja. |
+|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| A replika állapotának és szinkronizálási statisztikájának nyújtása. A várólista méretének megismétlése és az Ismétlési arány a csak olvasható replikán lévő Adatkésési mutatókként szolgál. |
+|[sys.dm_os_performance_counters](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Adatbázismotor-teljesítményszámlálókat biztosít.|
+|[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Lekérdezési végrehajtási statisztikákat biztosít, például a végrehajtások számát, a felhasznált CPU-időt stb.|
+|[sys.dm_exec_query_plan ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Gyorsítótárazott lekérdezési terveket biztosít. |
+|[sys.dm_exec_sql_text ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Lekérdezési szöveget biztosít a gyorsítótárazott lekérdezési tervhez.|
+|[sys.dm_exec_query_profiles](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Valós idejű lekérdezési előrehaladást biztosít a lekérdezések végrehajtása közben.|
+|[sys.dm_exec_query_plan_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| A legutóbbi ismert tényleges végrehajtási tervet tartalmazza, beleértve egy lekérdezés futásidejű statisztikáit.|
+|[sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Az összes adatbázisfájlok tárolási IOPS, átviteli sebességét és késési statisztikáit biztosítja. |
 
 > [!NOTE]
 > Az `sys.resource_stats` és a `sys.elastic_pool_resource_stats` DMV a logikai főadatbázisban az elsődleges replika erőforrás-kihasználtsági adatai.
@@ -109,13 +109,13 @@ Az elsődleges replika munkamenet-definícióján alapuló, írásvédett replik
 
 ### <a name="transaction-isolation-level-on-read-only-replicas"></a>Tranzakció-elkülönítési szint írásvédett replikák esetén
 
-A csak olvasási replikákat futtató lekérdezések mindig a [Pillanatkép](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) -tranzakciók elkülönítési szintjére vannak leképezve. A pillanatkép-elkülönítés a sorok verziószámozását használja a blokkoló forgatókönyvek blokkolására, ahol az olvasók blokkolja az írókat.
+A csak olvasási replikákat futtató lekérdezések mindig a [Pillanatkép](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) -tranzakciók elkülönítési szintjére vannak leképezve. A pillanatkép-elkülönítés a sorok verziószámozását használja a blokkoló forgatókönyvek blokkolására, ahol az olvasók blokkolja az írókat.
 
-Ritka esetekben, ha egy pillanatkép-elkülönítési tranzakció hozzáfér egy másik párhuzamos tranzakcióban módosított objektum-metaadatokhoz, akkor az [3961](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)-es hiba miatt nem sikerült a pillanatkép-elkülönítési tranzakció végrehajtása a (z)%. * ls adatbázisban, mert az utasításhoz hozzáférő objektum egy másik párhuzamos tranzakcióban található DDL-utasítással lett módosítva a tranzakció kezdete óta. Ez nem engedélyezett, mert a metaadatok nincsenek verzióval ellátva. A metaadatok egyidejű frissítése inkonzisztenciát okozhat, ha a pillanatkép-elkülönítést keverik. "
+Ritka esetekben, ha egy pillanatkép-elkülönítési tranzakció hozzáfér egy másik párhuzamos tranzakcióban módosított objektum-metaadatokhoz, akkor az [3961](/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)-es hiba miatt nem sikerült a pillanatkép-elkülönítési tranzakció végrehajtása a (z)%. * ls adatbázisban, mert az utasításhoz hozzáférő objektum egy másik párhuzamos tranzakcióban található DDL-utasítással lett módosítva a tranzakció kezdete óta. Ez nem engedélyezett, mert a metaadatok nincsenek verzióval ellátva. A metaadatok egyidejű frissítése inkonzisztenciát okozhat, ha a pillanatkép-elkülönítést keverik. "
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Hosszú ideig futó lekérdezések csak olvasható replikák esetén
 
-A csak olvasási replikán futó lekérdezéseknek hozzá kell férniük a lekérdezésben hivatkozott objektumok metaadataihoz (táblák, indexek, statisztikák stb.). Ritka esetekben, ha egy metaadat-objektum módosul az elsődleges replikán, miközben egy lekérdezés zárolva van ugyanazon az objektumon az írásvédett replikán, a lekérdezés [blokkolhatja](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) azt a folyamatot, amely az elsődleges replikáról a írásvédett replikára alkalmazza a módosításokat. Ha egy ilyen lekérdezés hosszú ideig futott, a csak olvasási replikát jelentősen el lehet végezni az elsődleges replikával való szinkronizálás során. 
+A csak olvasási replikán futó lekérdezéseknek hozzá kell férniük a lekérdezésben hivatkozott objektumok metaadataihoz (táblák, indexek, statisztikák stb.). Ritka esetekben, ha egy metaadat-objektum módosul az elsődleges replikán, miközben egy lekérdezés zárolva van ugyanazon az objektumon az írásvédett replikán, a lekérdezés [blokkolhatja](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) azt a folyamatot, amely az elsődleges replikáról a írásvédett replikára alkalmazza a módosításokat. Ha egy ilyen lekérdezés hosszú ideig futott, a csak olvasási replikát jelentősen el lehet végezni az elsődleges replikával való szinkronizálás során. 
 
 Ha egy csak olvasható replikán egy hosszan futó lekérdezés okozza ezt a blokkolást, a rendszer automatikusan leállítja, és a munkamenet 1219-as hibát kap, "a munkamenete le lett választva a magas prioritású DDL-művelet miatt".
 
@@ -123,7 +123,7 @@ Ha egy csak olvasható replikán egy hosszan futó lekérdezés okozza ezt a blo
 > Ha a 3961-as vagy a 1219-es hibát kapja egy írásvédett replika lekérdezésének futtatásakor, próbálja megismételni a lekérdezést.
 
 > [!TIP]
-> A prémium és üzletileg kritikus szolgáltatási szinten, ha egy írásvédett replikához csatlakozik, a (z `redo_queue_size` `redo_rate` ) [sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV-ban található és oszlopok az adatszinkronizálási folyamat figyelésére használhatók, amely a csak olvasható replikán lévő Adatkésési mutatókként szolgál.
+> A prémium és üzletileg kritikus szolgáltatási szinten, ha egy írásvédett replikához csatlakozik, a (z `redo_queue_size` `redo_rate` ) [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV-ban található és oszlopok az adatszinkronizálási folyamat figyelésére használhatók, amely a csak olvasható replikán lévő Adatkésési mutatókként szolgál.
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>Az olvasási felskálázás engedélyezése és letiltása
@@ -144,7 +144,7 @@ Az olvasási Felskálázási beállítást az adatbázis **konfigurálása** pan
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager modul továbbra is támogatott, de a jövőbeli fejlesztés az az. SQL modulhoz készült. A Azure Resource Manager modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a Azure Resource Manager modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
-Azure PowerShell az olvasási felskálázás kezelése a december 2016 Azure PowerShell vagy újabb verzióra van szükség. A legújabb PowerShell-kiadást itt tekintheti meg: [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Azure PowerShell az olvasási felskálázás kezelése a december 2016 Azure PowerShell vagy újabb verzióra van szükség. A legújabb PowerShell-kiadást itt tekintheti meg: [Azure PowerShell](/powershell/azure/install-az-ps).
 
 A [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) parancsmag meghívásával letilthatja vagy újból engedélyezheti az olvasási felskálázást Azure PowerShell a `Enabled` `Disabled` paraméterhez a kívánt érték (vagy) megadásával `-ReadScale` .
 
@@ -180,7 +180,7 @@ Body: {
 }
 ```
 
-További információ: [adatbázisok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+További információ: [adatbázisok – létrehozás vagy frissítés](/rest/api/sql/databases/createorupdate).
 
 ## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>Az `tempdb` adatbázis használata írásvédett replikán
 
@@ -195,6 +195,6 @@ Ebben a formában a Geo-replika létrehozása két további írásvédett replik
 > [!NOTE]
 > Nincs automatikus ciklikus multiplexelés vagy más terheléselosztási útvonal a földrajzilag replikált másodlagos adatbázis replikái között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a SQL Database nagy kapacitású-ajánlatról: [nagy kapacitású szolgáltatási szintje](service-tier-hyperscale.md).

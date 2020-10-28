@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6f1a94ae070419c38efb481e8f3967aec6a212d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 61ccc0231989589836e00088b9ca03d0cb49baca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533954"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790950"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Hozzáférési korlátozások Azure App Service
 
@@ -24,7 +24,11 @@ Amikor kérelmet küld az alkalmazására, a rendszer kiértékeli a címet a ho
 
 A hozzáférés-korlátozási képesség a App Service előtér-szerepkörökben valósul meg, amelyek felsőbb rétegben találhatók a feldolgozó gazdagépeken, ahol a kód fut. Ezért a hozzáférési korlátozások gyakorlatilag hálózati ACL-ek.
 
-A webalkalmazáshoz való hozzáférés korlátozása Azure-Virtual Network (VNet) nevű [szolgáltatás-végpontok][serviceendpoints]. A szolgáltatási végpontok lehetővé teszik a több-bérlős szolgáltatásokhoz való hozzáférés korlátozását a kiválasztott alhálózatokból. A hálózati oldalon és a szolgáltatásban is engedélyezve kell lennie. Nem működik a App Service Environmentban üzemeltetett alkalmazások forgalmának korlátozására. Ha App Service Environment, akkor az alkalmazáshoz való hozzáférést az IP-cím szabályaival szabályozhatja.
+A webalkalmazáshoz való hozzáférés korlátozása Azure-Virtual Network (VNet) nevű [szolgáltatás-végpontok][serviceendpoints]. A szolgáltatási végpontok lehetővé teszik a több-bérlős szolgáltatásokhoz való hozzáférés korlátozását a kiválasztott alhálózatokból. Nem működik a App Service Environmentban üzemeltetett alkalmazások forgalmának korlátozására. Ha App Service Environment, akkor az alkalmazáshoz való hozzáférést az IP-cím szabályaival szabályozhatja.
+
+> [!NOTE]
+> A szolgáltatás-végpontokat engedélyezni kell mind a hálózatkezelési, mind az Azure-szolgáltatáshoz, amelyen az engedélyezve van. A szolgáltatási végpontokat támogató Azure-szolgáltatások listáját itt tekintheti meg: [Virtual Network szolgáltatási végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
+>
 
 ![hozzáférési korlátozások folyamata](media/app-service-ip-restrictions/access-restrictions-flow.png)
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 37f0b890cd4942e5dcb47b496d661eb7c54db94d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093514"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789726"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Gyors útmutató: ExpressRoute-áramkör létrehozása egy ARM-sablon használatával
 
@@ -34,16 +34,16 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet) közül származik.
 
-Ebben a rövid útmutatóban egy ExpressRoute-áramkört fog létrehozni a *Equinix* -ben a szolgáltatóként. Az áramkör *prémium SKU*-t, *50 Mbps*sávszélességet és a *Washington DC*egyenrangú helyét fogja használni. A privát társítás a *192.168.10.16/30* és a *192.168.10.20/30* elsődleges és másodlagos alhálózattal lesz engedélyezve. A virtuális hálózatok a *HighPerformance ExpressRoute-átjáróval*együtt is létrejönnek.
+Ebben a rövid útmutatóban egy ExpressRoute-áramkört fog létrehozni a *Equinix* -ben a szolgáltatóként. Az áramkör *prémium SKU* -t, *50 Mbps* sávszélességet és a *Washington DC* egyenrangú helyét fogja használni. A privát társítás a *192.168.10.16/30* és a *192.168.10.20/30* elsődleges és másodlagos alhálózattal lesz engedélyezve. A virtuális hálózatok a *HighPerformance ExpressRoute-átjáróval* együtt is létrejönnek.
 
-:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json" range="001-351" highlight="183-219":::
+:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
 * [**Microsoft. Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
 * [**Microsoft. Network/expressRouteCircuits/társaik**](/azure/templates/microsoft.network/expressRouteCircuits/peerings) (az áramkörön a privát társak engedélyezésére használják)
 * [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups) (hálózati biztonsági csoport a virtuális hálózat alhálózatai esetében)
-* [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks) 
+* [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
 * [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicIPAddresses) (a nyilvános IP-címet a ExpressRoute-átjáró használja)
 * [**Microsoft. Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways) (a ExpressRoute-átjáró a VNet kapcsolására használatos az áramkörhöz)
 
@@ -51,7 +51,7 @@ A ExpressRoute kapcsolatos további sablonokért tekintse meg az [Azure Gyorsind
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez. 
+1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -70,7 +70,7 @@ A ExpressRoute kapcsolatos további sablonokért tekintse meg az [Azure Gyorsind
 
 1. A PowerShell-szkript másolásához válassza a **Másolás** az előző kódrészletből lehetőséget.
 
-1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés**lehetőséget.
+1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
 
 1. Adja meg az értékeket.
 
@@ -84,7 +84,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
 
@@ -94,14 +94,14 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
      :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
 
-1. Válassza ki az ExpressRoute áramkör **er-ck01** annak ellenőrzéséhez, hogy az áramkör állapota **engedélyezve**van-e, a szolgáltató állapota nincs **kiépítve** , és a privát társítás állapota **kiépítve**.
+1. Válassza ki az ExpressRoute áramkör **er-ck01** annak ellenőrzéséhez, hogy az áramkör állapota **engedélyezve** van-e, a szolgáltató állapota nincs **kiépítve** , és a privát társítás állapota **kiépítve** .
 
     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
 
 > [!NOTE]
 > A virtuális hálózat áramkörhöz való összekapcsolásához meg kell hívnia a szolgáltatót a létesítési folyamat befejezéséhez.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szüksége a ExpressRoute áramkörrel létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a ExpressRoute áramkört és az összes kapcsolódó erőforrást.
 
@@ -114,6 +114,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
+
 * ExpressRoute-kapcsolatcsoport
 * Virtual Network
 * VPN Gateway

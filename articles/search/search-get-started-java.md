@@ -10,16 +10,16 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ed44431af6d99daa5549d019f42efda4bbf9912b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 336f58635465f77c60d04c53bb1893cb60f5f35f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91540353"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791222"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
-> * [JavaScript](search-get-started-nodejs.md)
+> * [JavaScript](search-get-started-javascript.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Portál](search-get-started-portal.md)
@@ -29,7 +29,7 @@ ms.locfileid: "91540353"
 
 Hozzon létre egy Java-konzolos alkalmazást, amely a [IntelliJ](https://www.jetbrains.com/idea/), a [Java 11 SDK](/java/azure/jdk/)és az [Azure Cognitive Search REST API](/rest/api/searchservice/)használatával hoz létre, tölt be és kérdez le egy keresési indexet. Ez a cikk részletes útmutatást nyújt az alkalmazás létrehozásához. Azt is megteheti, hogy [letölti és futtatja a teljes alkalmazást](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,33 +49,33 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    Hozzon létre egy lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
+:::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 A szolgáltatásnak eljuttatott minden kérelemhez API-kulcs szükséges. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="set-up-your-environment"></a>Saját környezet beállítása
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
 Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új projektet.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-1. Nyissa meg a IntelliJ ÖTLETET, és válassza az **új projekt létrehozása**lehetőséget.
-1. Válassza a **Maven**lehetőséget.
+1. Nyissa meg a IntelliJ ÖTLETET, és válassza az **új projekt létrehozása** lehetőséget.
+1. Válassza a **Maven** lehetőséget.
 1. A **Project SDK** listában válassza ki a Java 11 SDK-t.
 
     :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
-1. A **GroupID** és a **ArtifactId**mezőbe írja be a következőt: `AzureSearchQuickstart` .
+1. A **GroupID** és a **ArtifactId** mezőbe írja be a következőt: `AzureSearchQuickstart` .
 1. Fogadja el a fennmaradó alapértékeket a projekt megnyitásához.
 
 ### <a name="specify-maven-dependencies"></a>Maven-függőségek meghatározása
 
-1. Válassza a **fájl**  >  **beállításai**lehetőséget.
-1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés**  >  **eszközök**  >  **Maven**-  >  **Importálás**lehetőséget.
+1. Válassza a **fájl**  >  **beállításai** lehetőséget.
+1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés**  >  **eszközök**  >  **Maven** -  >  **Importálás** lehetőséget.
 1. Jelölje be a  **Maven-projektek automatikus importálása** jelölőnégyzetet, majd kattintson az **OK** gombra az ablak bezárásához. A Maven beépülő modulok és egyéb függőségek mostantól automatikusan szinkronizálva lesznek, amikor a következő lépésben frissíti a pom.xml fájlt.
 
     :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
@@ -133,8 +133,8 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="set-up-the-project-structure"></a>A projekt szerkezetének beállítása
 
-1. Válassza a **fájl**  >  **projekt szerkezete**lehetőséget.
-1. Válassza ki a **modulokat**, és bontsa ki a forrás fát a mappa tartalmának eléréséhez `src`  >   `main` .
+1. Válassza a **fájl**  >  **projekt szerkezete** lehetőséget.
+1. Válassza ki a **modulokat** , és bontsa ki a forrás fát a mappa tartalmának eléréséhez `src`  >   `main` .
 1. A `src`  >   `main`  >  `java` mappában adja hozzá a `app` és a `service` mappákat. Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
 1. A `src`  >   `main`  > `resources` mappában adja hozzá a `app` és a `service` mappákat.
 
@@ -146,7 +146,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="add-azure-cognitive-search-service-information"></a>Azure Cognitive Search szolgáltatás adatainak hozzáadása
 
-1. A **projekt** ablakban bontsa ki a forrás fát a mappa eléréséhez `src`  >   `main`  > `resources`  >  `app` , és adjon hozzá egy `config.properties` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **projekt** ablakban bontsa ki a forrás fát a mappa eléréséhez `src`  >   `main`  > `resources`  >  `app` , és adjon hozzá egy `config.properties` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl** lehetőséget, majd adja meg a fájl nevét.
 
 1. Másolja a következő beállításokat az új fájlba, és cserélje le a, a `<YOUR-SEARCH-SERVICE-NAME>` `<YOUR-ADMIN-KEY>` és a nevet a `<YOUR-QUERY-KEY>` szolgáltatás nevére és kulcsaira. Ha a szolgáltatási végpontja `https://mydemo.search.windows.net` , a szolgáltatás neve a következő lesz: `"mydemo"` .
 
@@ -160,7 +160,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="add-the-main-method"></a>A Main metódus hozzáadása
 
-1. A `src`  >   `main`  >  `java`  >  `app` mappában adjon hozzá egy `App` osztályt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java-osztály**lehetőséget, majd adja meg az osztály nevét.
+1. A `src`  >   `main`  >  `java`  >  `app` mappában adjon hozzá egy `App` osztályt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java-osztály** lehetőséget, majd adja meg az osztály nevét.
 1. Nyissa meg az `App` osztályt, és cserélje le a tartalmat a következő kódra. Ez a kód tartalmazza a `main` metódust. 
 
     A nem kommentált kód beolvassa a keresési szolgáltatás paramétereit, és a segítségével létrehozza a keresési szolgáltatás ügyfelének egy példányát. A Search szolgáltatás ügyfelének kódját a következő szakaszban adja hozzá a rendszer.
@@ -259,7 +259,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="add-the-http-operations"></a>HTTP-műveletek hozzáadása
 
-1. A `src`  >   `main`  >  `java`  >  `service` mappában adjon hozzá egy `SearchServiceClient` osztályt. Ehhez válassza ki a `service` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java-osztály**lehetőséget, majd adja meg az osztály nevét.
+1. A `src`  >   `main`  >  `java`  >  `service` mappában adjon hozzá egy `SearchServiceClient` osztályt. Ehhez válassza ki a `service` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java-osztály** lehetőséget, majd adja meg az osztály nevét.
 1. Nyissa meg az `SearchServiceClient` osztályt, és cserélje le a tartalmát a következő kódra. Ez a kód biztosítja az Azure Cognitive Search REST API használatához szükséges HTTP-műveleteket. Az index létrehozásának, a dokumentumok feltöltésének és az index lekérdezésének további módszerei egy későbbi szakaszban lesznek hozzáadva.
 
     ```java
@@ -384,7 +384,7 @@ A feldolgozás befejezésekor keressen egy sikeres BUILD-üzenetet, amelyet egy 
 
 A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartalmaz. Egyszerű mező például a "pezsgő" vagy a "Description". A "címe" mező egy összetett mező, mert almezővel rendelkezik, például "utca címe" és "város". Ebben a rövid útmutatóban az index definíciója a JSON használatával van megadva.
 
-1. A **projekt** ablakban bontsa ki a forrás fát a mappa eléréséhez `src`  >   `main`  > `resources`  >  `service` , és adjon hozzá egy `index.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **projekt** ablakban bontsa ki a forrás fát a mappa eléréséhez `src`  >   `main`  > `resources`  >  `service` , és adjon hozzá egy `index.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl** lehetőséget, majd adja meg a fájl nevét.
 
 1. Nyissa meg a `index.json` fájlt, és szúrja be a következő index-definíciót.
 
@@ -571,7 +571,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
     
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-1. A **projekt** ablakban bontsa ki a forrás fát a mappa eléréséhez `src`  >   `main`  > `resources`  >  `service` , és adjon hozzá egy `hotels.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a  **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **projekt** ablakban bontsa ki a forrás fát a mappa eléréséhez `src`  >   `main`  > `resources`  >  `service` , és adjon hozzá egy `hotels.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a  **fájl** lehetőséget, majd adja meg a fájl nevét.
 1. Szúrja be a következő szállodai dokumentumokat a fájlba.
 
     ```json
@@ -818,7 +818,7 @@ Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lek�
 
     Keresse meg az egyes lekérdezések összegzését és eredményeit. A futtatásnak SIKERESnek kell lennie a BUILD SIKERe üzenettel és egy nulla (0) kilépési kóddal.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
@@ -826,7 +826,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a Java-rövid útmutatóban egy sor feladatot dolgozott ki egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. Ha az alapfogalmakat jól ismeri, javasoljuk, hogy az indexelő műveleteinek a REST-ben való használatát ismertető cikket.
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 8e64e1a63b01e900988c999321423dfe92df00c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14031118a93f5760b302e4d2b76334205be6d087
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335058"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789624"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Oktatóanyag: földrajzilag elosztott adatbázis implementálása (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következő elemeket:
 
@@ -120,7 +120,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha kiválasztja az adatbázist, majd a **Beállítások**  >  **geo-replikálás**lehetőséget.
+A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha kiválasztja az adatbázist, majd a **Beállítások**  >  **geo-replikálás** lehetőséget.
 
 ![Geo-replikálási beállítások](./media/geo-distributed-application-configure-tutorial/geo-replication.png)
 

@@ -13,6 +13,7 @@
     - name: ExpressRoute-kapcsolatcsoport létrehozása – parancssori felület
       href: howto-circuit-cli.md
     - name: ExpressRoute-kapcsolatcsoport létrehozása – ARM-sablon
+      displayName: Resource Manager
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: Oktatóanyagok

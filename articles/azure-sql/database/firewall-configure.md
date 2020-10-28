@@ -12,20 +12,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 9b6b0ee6fa33ecd0d677d7d075236517d85d4ab7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 802c126548a6fa7062a262e2f939c9a214480794
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335120"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789641"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Ha egy új kiszolgálót hoz létre Azure SQL Database vagy az Azure szinapszis Analytics *portra beállított mysqlserver*nevű szolgáltatását, például egy kiszolgálói szintű tűzfal blokkolja a kiszolgáló nyilvános végpontjának hozzáférését (amely a *mysqlserver.database.Windows.net*címen érhető el). Az egyszerűség kedvéért a *SQL Database* az SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) használatára is vonatkozik.
+Ha egy új kiszolgálót hoz létre Azure SQL Database vagy az Azure szinapszis Analytics *portra beállított mysqlserver* nevű szolgáltatását, például egy kiszolgálói szintű tűzfal blokkolja a kiszolgáló nyilvános végpontjának hozzáférését (amely a *mysqlserver.database.Windows.net* címen érhető el). Az egyszerűség kedvéért a *SQL Database* az SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) használatára is vonatkozik.
 
 > [!IMPORTANT]
-> Ez a cikk *nem* vonatkozik az *Azure SQL felügyelt példányaira*. További információ a hálózati konfigurációról: [az alkalmazás összekötése az Azure SQL felügyelt példányával](../managed-instance/connect-application-instance.md).
+> Ez a cikk *nem* vonatkozik az *Azure SQL felügyelt példányaira* . További információ a hálózati konfigurációról: [az alkalmazás összekötése az Azure SQL felügyelt példányával](../managed-instance/connect-application-instance.md).
 >
 > Az Azure szinapszis csak a kiszolgálói szintű IP-tűzfalszabályok használatát támogatja. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak.
 
@@ -50,7 +50,7 @@ Az adatbázis-szintű IP-tűzfalszabályok lehetővé teszik az ügyfelek szám�
   
 - A fő-és a felhasználói adatbázisokhoz csak az adatbázis-szintű IP-tűzfalszabályok hozhatók létre és kezelhetők a Transact-SQL-utasítások használatával, és csak az első kiszolgálói szintű tűzfal konfigurálása után.
 - Ha olyan IP-címtartományt ad meg az adatbázis-szintű IP-tűzfalszabály számára, amely a kiszolgálói szintű IP-tűzfalszabályok tartományán kívül esik, csak azok az ügyfelek férhetnek hozzá az adatbázishoz, amelyek IP-címmel rendelkeznek az adatbázis-szintű tartományon.
-- Az adatbázishoz legfeljebb 128 adatbázis-szintű IP-tűzfalszabályok tartozhat. Az adatbázis-szintű IP-tűzfalszabályok konfigurálásával kapcsolatos további információkért tekintse meg a jelen cikk későbbi, [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx)című példáját.
+- Az adatbázishoz legfeljebb 128 adatbázis-szintű IP-tűzfalszabályok tartozhat. Az adatbázis-szintű IP-tűzfalszabályok konfigurálásával kapcsolatos további információkért tekintse meg a jelen cikk későbbi, [sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)című példáját.
 
 ### <a name="recommendations-for-how-to-set-firewall-rules"></a>A tűzfalszabályok beállításával kapcsolatos javaslatok
 
@@ -63,11 +63,11 @@ Az adatbázis szintű IP-tűzfalszabályok használatát javasoljuk, ha lehetsé
 
 *Egy adatbázis felhasználóinak teljesen el kell különíteni egy másik adatbázisból?*
 
-Ha *Igen*, az adatbázis-szintű IP-tűzfalszabályok használatával engedélyezze a hozzáférést. Ez a módszer elkerüli a kiszolgálói szintű IP-tűzfalszabályok használatát, ami lehetővé teszi a tűzfalon keresztüli hozzáférését az összes adatbázishoz. Ez csökkenti a védelem mélységét.
+Ha *Igen* , az adatbázis-szintű IP-tűzfalszabályok használatával engedélyezze a hozzáférést. Ez a módszer elkerüli a kiszolgálói szintű IP-tűzfalszabályok használatát, ami lehetővé teszi a tűzfalon keresztüli hozzáférését az összes adatbázishoz. Ez csökkenti a védelem mélységét.
 
 *Az IP-címekhez tartozó felhasználóknak hozzáférésre van szükségük az összes adatbázishoz?*
 
-Ha *Igen*, a kiszolgálói szintű IP-tűzfalszabályok használatával csökkentse az IP-tűzfalszabályok konfigurálásához szükséges időt.
+Ha *Igen* , a kiszolgálói szintű IP-tűzfalszabályok használatával csökkentse az IP-tűzfalszabályok konfigurálásához szükséges időt.
 
 *Az IP-tűzfalszabályok konfigurálását végző személy vagy csapat csak a Azure Portalon, a PowerShellen vagy a REST APIon keresztül fér hozzá?*
 
@@ -107,18 +107,18 @@ Ha engedélyezni szeretné az Azure-ban üzemeltetett alkalmazások számára az
 
 Az Azure SQL Serverre vonatkozó IP-tűzfalszabályok létrehozásához és kezeléséhez az alábbi szerepkörök egyikével kell rendelkeznie:
 
-- a [SQL Server közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor) szerepkörben
-- az [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepkörben
+- a [SQL Server közreműködő](../../role-based-access-control/built-in-roles.md#sql-server-contributor) szerepkörben
+- az [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) szerepkörben
 - Az Azure-SQL Server tartalmazó erőforrás tulajdonosa
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP-tűzfalszabályok létrehozása és kezelése
 
-Az első kiszolgálói szintű tűzfalbeállítások létrehozásához használja a [Azure Portal](https://portal.azure.com/) vagy programozott módon az [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql), az [azure CLI](https://docs.microsoft.com/cli/azure/sql/server/firewall-rule)vagy egy Azure [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)használatával. Ezen metódusok vagy Transact-SQL használatával további kiszolgálói szintű IP-tűzfalszabályok hozhatók létre és kezelhetők.
+Az első kiszolgálói szintű tűzfalbeállítások létrehozásához használja a [Azure Portal](https://portal.azure.com/) vagy programozott módon az [Azure PowerShell](/powershell/module/az.sql), az [azure CLI](/cli/azure/sql/server/firewall-rule)vagy egy Azure [REST API](/rest/api/sql/firewallrules/createorupdate)használatával. Ezen metódusok vagy Transact-SQL használatával további kiszolgálói szintű IP-tűzfalszabályok hozhatók létre és kezelhetők.
 
 > [!IMPORTANT]
 > Az adatbázis-szintű IP-tűzfalszabályok csak a Transact-SQL használatával hozhatók létre és kezelhetők.
 
-A teljesítmény javítása érdekében a kiszolgálószintű IP-tűzfalszabályokat átmenetileg adatbázisszinten is gyorsítótárazza a rendszer. A gyorsítótár frissítésével kapcsolatban lásd: [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
+A teljesítmény javítása érdekében a kiszolgálószintű IP-tűzfalszabályokat átmenetileg adatbázisszinten is gyorsítótárazza a rendszer. A gyorsítótár frissítésével kapcsolatban lásd: [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql).
 
 > [!TIP]
 > Az adatbázis- [naplózás](../../azure-sql/database/auditing-overview.md) használatával naplózhatja a kiszolgáló szintű és az adatbázis szintű tűzfal változásait.
@@ -138,17 +138,17 @@ Ha egy kiszolgálói szintű IP-tűzfalszabály beállítását szeretné beáll
 
     Ekkor megnyílik a kiszolgáló **tűzfalbeállítások** lapja.
 
-2. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá a használt számítógép IP-címét, majd kattintson a **Mentés**gombra. Az aktuális IP-címhez kiszolgálói szintű IP-tűzfalszabály jön létre.
+2. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá a használt számítógép IP-címét, majd kattintson a **Mentés** gombra. Az aktuális IP-címhez kiszolgálói szintű IP-tűzfalszabály jön létre.
 
     ![Kiszolgálói szintű IP-tűzfalszabály beállítása](./media/firewall-configure/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>A kiszolgáló áttekintése lapon
 
-Megnyílik a kiszolgáló Áttekintés lapja. Megjeleníti a teljes kiszolgálónevet (például *mynewserver20170403.database.Windows.net*), és további konfigurálási lehetőségeket biztosít.
+Megnyílik a kiszolgáló Áttekintés lapja. Megjeleníti a teljes kiszolgálónevet (például *mynewserver20170403.database.Windows.net* ), és további konfigurálási lehetőségeket biztosít.
 
 1. Ha ezen a lapon szeretné beállítani a kiszolgálói szintű szabályt, válassza a bal oldalon található **Beállítások** menüből a **tűzfal** lehetőséget.
 
-2. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá a használt számítógép IP-címét, majd kattintson a **Mentés**gombra. Az aktuális IP-címhez kiszolgálói szintű IP-tűzfalszabály jön létre.
+2. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá a használt számítógép IP-címét, majd kattintson a **Mentés** gombra. Az aktuális IP-címhez kiszolgálói szintű IP-tűzfalszabály jön létre.
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Az IP-tűzfalszabályok kezelése a Transact-SQL használatával
 
@@ -161,7 +161,7 @@ Megnyílik a kiszolgáló Áttekintés lapja. Megjeleníti a teljes kiszolgáló
 | [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) |Adatbázis |Az adatbázis-szintű IP-tűzfalszabályok létrehozása vagy frissítése |
 | [sp_delete_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database) |Adatbázisok |Adatbázis-szintű IP-tűzfalszabályok eltávolítása |
 
-Az alábbi példa a meglévő szabályokat tekinti át, lehetővé teszi a kiszolgáló *contoso*IP-címeinek tartományát, és töröl egy IP-tűzfalszabály-szabályt:
+Az alábbi példa a meglévő szabályokat tekinti át, lehetővé teszi a kiszolgáló *contoso* IP-címeinek tartományát, és töröl egy IP-tűzfalszabály-szabályt:
 
 ```sql
 SELECT * FROM sys.firewall_rules ORDER BY name;
@@ -174,7 +174,7 @@ EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
    @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 ```
 
-A kiszolgálói szintű IP-tűzfalszabály törléséhez hajtsa végre az *sp_delete_firewall_rule* tárolt eljárást. A következő példa törli a szabály *ContosoFirewallRule*:
+A kiszolgálói szintű IP-tűzfalszabály törléséhez hajtsa végre az *sp_delete_firewall_rule* tárolt eljárást. A következő példa törli a szabály *ContosoFirewallRule* :
 
 ```sql
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
@@ -232,10 +232,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | API | Szint | Leírás |
 | --- | --- | --- |
-| [Tűzfalszabályok listázása](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Kiszolgáló |Megjeleníti az aktuális kiszolgálói szintű IP-tűzfalszabályok szabályait |
-| [Tűzfalszabályok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Kiszolgáló |Kiszolgálói szintű IP-tűzfalszabályok létrehozása vagy frissítése |
-| [Tűzfalszabályok törlése](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Kiszolgáló |Eltávolítja a kiszolgálói szintű IP-tűzfalszabályok szabályait |
-| [Tűzfalszabályok beolvasása](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Kiszolgáló | Kiszolgálói szintű IP-tűzfalszabályok beolvasása |
+| [Tűzfalszabályok listázása](/rest/api/sql/firewallrules/listbyserver) |Kiszolgáló |Megjeleníti az aktuális kiszolgálói szintű IP-tűzfalszabályok szabályait |
+| [Tűzfalszabályok létrehozása vagy frissítése](/rest/api/sql/firewallrules/createorupdate) |Kiszolgáló |Kiszolgálói szintű IP-tűzfalszabályok létrehozása vagy frissítése |
+| [Tűzfalszabályok törlése](/rest/api/sql/firewallrules/delete) |Kiszolgáló |Eltávolítja a kiszolgálói szintű IP-tűzfalszabályok szabályait |
+| [Tűzfalszabályok beolvasása](/rest/api/sql/firewallrules/get) | Kiszolgáló | Kiszolgálói szintű IP-tűzfalszabályok beolvasása |
 
 ## <a name="troubleshoot-the-database-firewall"></a>Az adatbázistűzfal hibaelhárítása
 

@@ -2,17 +2,17 @@
 title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
-ms.date: 10/23/2020
-ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 10/27/2020
+ms.openlocfilehash: 051122c2030683eb2f3c57191dbbfa3bfd2bf6b7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518024"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789369"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-an-event-hubs-namespace"></a>Mi az Event Hubs névtér?
 A névtér az Event hub/Kafka témakörök hatóköri tárolója. Egyedi [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)-t biztosít. A névtér olyan alkalmazás-tárolóként szolgál, amely több Event hub-vagy Kafka-témakört is képes elhelyezni. 
@@ -184,8 +184,19 @@ Ha a teljes **kimenő** forgalom vagy az esemény teljes kilépési aránya a n�
 
 A bejövő és a kimenő forgalomra vonatkozó kvóták külön vannak kikényszerítve, így egyetlen feladó sem csökkentheti az események felhasználását, és nem akadályozhatja meg, hogy a fogadó eseményt küldjön az Event hub-ba.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Korlátozva van a foglalható/kiválasztható átviteli egységek (TUs) száma?
-Több-bérlős ajánlat esetében az átviteli egységek akár 40-ig is növekednek (a portálon akár 20 darabot is kiválaszthat, és egy támogatási jegyet is megadhat, hogy 40 TUs-re ugyanazon a névtéren). Az 40-as túllépés Event Hubs a **dedikált Event Hubs-fürtök**nevű erőforrás/kapacitás alapú modellt kínálja. A dedikált fürtöket kapacitási egységekben (ke) értékesítjük.
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-reservedselected"></a>Korlátozva van a fenntartott/kiválasztható átviteli egységek száma?
+
+Ha alapszintű vagy standard szintű névteret hoz létre a Azure Portalban, a névtérhez legfeljebb 20 TUs-t választhat. Ahhoz, hogy **pontosan** 40 TUs-re növelje, küldjön egy  [támogatási kérést](../azure-portal/supportability/how-to-create-azure-support-request.md).  
+
+1. Az **Event Bus-névtér** lapon válassza az **új támogatási kérelem** lehetőséget a bal oldali menüben. 
+1. Az **új támogatási kérelem** oldalon hajtsa végre az alábbi lépéseket:
+    1. **Összefoglalva** , néhány Szóval írja le a problémát. 
+    1. A **probléma típusa** beállításnál válassza a **kvóta** lehetőséget. 
+    1. A **probléma altípusa** beállításnál válassza **az átviteli egység növelésének vagy csökkentésének kérelmét** . 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="Support request lap":::
+
+Az 40-as túllépés Event Hubs a dedikált Event Hubs-fürtök nevű erőforrás/kapacitás alapú modellt kínálja. A dedikált fürtöket kapacitási egységekben (ke) értékesítjük. További információ: [dedikált Event Hubs – áttekintés](event-hubs-dedicated-overview.md).
 
 ## <a name="dedicated-clusters"></a>Dedikált fürtök
 
@@ -199,7 +210,7 @@ A Event Hubs dedikált fürt beállításával kapcsolatos részletes utasítás
 [!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
 
-## <a name="best-practices"></a>Ajánlott eljárások
+## <a name="partitions"></a>Partíciók
 
 ### <a name="how-many-partitions-do-i-need"></a>Hány partícióra van szükségem?
 A partíciók száma a létrehozáskor van megadva, és 1 és 32 között kell lennie. A partíciók száma nem módosítható, ezért érdemes megfontolni a hosszú távú méretezést a partíciók számának beállításakor. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. További információ a partíciókon: [partíciók](event-hubs-features.md#partitions).
@@ -209,6 +220,21 @@ A létrehozás időpontjában érdemes lehet beállítani a lehető legmagasabb 
 Event Hubs úgy lett kialakítva, hogy a felhasználói csoportok számára egyetlen partíciós olvasót engedélyezzen. A legtöbb felhasználási esetben a négy partíció alapértelmezett beállítása elegendő. Ha az esemény feldolgozását szeretné méretezni, érdemes lehet további partíciókat hozzáadnia. Nincs konkrét átviteli korlát a partíción, azonban a névtérben lévő összesített átviteli sebességet az átviteli egységek száma korlátozza. A névtérben lévő átviteli egységek számának növelésével további partíciók is lehetnek, amelyek lehetővé teszik az egyidejű olvasók számára a maximális átviteli sebesség elérését.
 
 Ha azonban van olyan modellje, amelyben az alkalmazás affinitással rendelkezik egy adott partícióhoz, akkor a partíciók számának növelésével nem élvezheti Önt. További információ: [rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md).
+
+### <a name="increase-partitions"></a>Partíciók bővítése
+Egy támogatási kérelem elküldésével megadhatja, hogy a partíciók száma a 40 (pontos) értékre legyen növelve. 
+
+1. Az **Event Bus-névtér** lapon válassza az **új támogatási kérelem** lehetőséget a bal oldali menüben. 
+1. Az **új támogatási kérelem** oldalon hajtsa végre az alábbi lépéseket:
+    1. **Összefoglalva** , néhány Szóval írja le a problémát. 
+    1. A **probléma típusa** beállításnál válassza a **kvóta** lehetőséget. 
+    1. A **probléma altípusa** beállításnál válassza **a partíció módosítására vonatkozó kérés** lehetőséget. 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Support request lap":::
+
+A partíciók száma pontosan 40-ra növelhető. Ebben az esetben az adatmennyiséget is növelni kell 40-ra. Ha később úgy dönt, hogy a TU-korlátot a <= 20 értékre csökkenti, a maximális partíciós korlát 32-ra is csökken. 
+
+A partíciók csökkenése nem érinti a meglévő Event hubokat, mert a partíciók az Event hub szintjén vannak alkalmazva, és a hub létrehozása után nem változtathatók meg. 
 
 ## <a name="pricing"></a>Díjszabás
 

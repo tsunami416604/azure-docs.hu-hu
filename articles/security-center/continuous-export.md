@@ -6,16 +6,16 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: ffc74e05d6cbe7722b9bf293c1a1e75a7de1b879
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: cd4f2198721e0d92abe22b1b6d95dceda2dc874d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342059"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789182"
 ---
-# <a name="continuously-export-security-alerts-and-recommendations"></a>Biztonsági riasztások és javaslatok folyamatos exportálása
+# <a name="continuously-export-security-center-data"></a>Security Center-adatfeldolgozás folyamatos exportálása
 
 Azure Security Center részletes biztonsági riasztásokat és javaslatokat hoz létre. Ezeket megtekintheti a portálon vagy a programozott eszközökön keresztül is. Előfordulhat, hogy ezen információk némelyikét vagy mindegyikét exportálnia kell, hogy nyomon kövesse a környezetben található többi figyelési eszközt. 
 
@@ -28,7 +28,7 @@ A **folyamatos exportálással** teljes mértékben testreszabhatja, hogy *mi* t
 Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Analytics munkaterületekre vagy az Azure Event Hubsra.
 
 > [!NOTE]
-> Ha a Security Centert egy SIEM-mel szeretné integrálni, a beállításokért tekintse át [a stream-riasztásokat egy Siem](export-to-siem.md) -hez.
+> Ha a Security Centert egy SIEM-rel szeretné integrálni, tekintse meg a következőt: a [stream-riasztások egy Siem-, szárnyaló-vagy informatikai szolgáltatási megoldáshoz](export-to-siem.md).
 
 > [!TIP]
 > A Security Center a CSV-re történő manuális exportálást is lehetőséget nyújt. További információ a [riasztások és javaslatok manuális egyszeri exportálásával](#manual-one-time-export-of-alerts-and-recommendations)kapcsolatban.
@@ -41,7 +41,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Anal
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|<ul><li>**Biztonsági rendszergazda** vagy az erőforráscsoport **tulajdonosa**</li><li>Írási engedélyek a célként megadott erőforráshoz</li><li>Ha az alábbiakban ismertetett Azure Policy "DeployIfNotExist" szabályzatot használja, a szabályzatok hozzárendelésére vonatkozó engedélyekre is szüksége lesz</li></ul>|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz), egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz), egyéb gov|
 |||
 
 
@@ -52,15 +52,15 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Anal
 
 A folyamatos exportálást a Azure Portal Security Center lapjain, a Security Center REST API vagy a megadott Azure Policy sablonok használatával konfigurálhatja. A részletekért válassza az alábbi megfelelő fület.
 
-### <a name="use-the-azure-portal"></a>[**A Azure Portal használata**](#tab/azure-portal)
+### <a name="use-the-azure-portal"></a>[**Az Azure Portal használata**](#tab/azure-portal)
 
 ### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Folyamatos exportálás konfigurálása Azure Portal Security Center lapjain
 
 Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos exportálást állít be Log Analytics munkaterületre vagy az Azure Event Hubsra.
 
-1. A Security Center oldalsávján válassza a **díjszabás & beállítások**lehetőséget.
+1. A Security Center oldalsávján válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki azt az előfizetést, amelyhez be szeretné állítani az adatexportálást.
-1. Az előfizetés beállítások oldalának oldalsávján válassza a **folyamatos exportálás**lehetőséget.
+1. Az előfizetés beállítások oldalának oldalsávján válassza a **folyamatos exportálás** lehetőséget.
     A [ ![ Azure Security Center exportálási](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) lehetőségei itt láthatók az exportálási beállítások. Minden elérhető exportálási célponthoz van egy lap. 
 1. Válassza ki az exportálni kívánt adattípust, és válasszon az egyes típusok szűrőinek közül (például csak a nagy súlyosságú riasztások exportálása).
 1. Ha a választás a következő négy javaslat egyikét tartalmazza, akkor a sebezhetőségi felmérés eredményei együttesen is felvehetők:
@@ -129,7 +129,7 @@ A folyamatos exportálási konfigurációk a szervezeten belüli üzembe helyez�
 1. Az &quot;exportálási cél":::
     > 2. A Azure Policy menüben válassza a **definíciók** lehetőséget, és keressen rájuk név alapján. 
 
-1. A megfelelő Azure Policy lapon válassza a **hozzárendelés**lehetőséget.
+1. A megfelelő Azure Policy lapon válassza a **hozzárendelés** lehetőséget.
     :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban&quot; :::
 
 1. Az &quot;exportálási cél":::
@@ -145,7 +145,7 @@ A folyamatos exportálási konfigurációk a szervezeten belüli üzembe helyez�
 
 1. Az &quot;exportálási cél" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. Ha a hozzárendelést meglévő előfizetésekre szeretné alkalmazni, nyissa meg a **szervizelés** lapot, és válassza a Szervizelési feladat létrehozása lehetőséget.
-1. Tekintse át az összefoglalás lapot, és válassza a **Létrehozás**lehetőséget.
+1. Tekintse át az összefoglalás lapot, és válassza a **Létrehozás** lehetőséget.
 
 --- 
 
@@ -160,7 +160,7 @@ A biztonsági riasztások és javaslatok tárolása a *SecurityAlert* és a *Sec
 Az alábbi táblákat tartalmazó Log Analytics-megoldás neve attól függ, hogy engedélyezve van-e az Azure Defender: Security ("Security and Audit") vagy a SecurityCenterFree. 
 
 > [!TIP]
-> A cél munkaterületen lévő információk megtekintéséhez engedélyeznie kell a következő megoldások valamelyikét **Security and Audit** vagy **SecurityCenterFree**.
+> A cél munkaterületen lévő információk megtekintéséhez engedélyeznie kell a következő megoldások valamelyikét **Security and Audit** vagy **SecurityCenterFree** .
 
 ![A * SecurityAlert * tábla Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
 
@@ -175,15 +175,15 @@ Azure Monitor egységes riasztási élményt nyújt számos Azure-riasztáshoz, 
 
 Ha Azure Monitor Security Center riasztásait és javaslatait szeretné megtekinteni, Log Analytics lekérdezéseken alapuló riasztási szabályt állítson be (naplózási riasztás):
 
-1. A Azure Monitor **riasztások** lapján válassza az **új riasztási szabály**lehetőséget.
+1. A Azure Monitor **riasztások** lapján válassza az **új riasztási szabály** lehetőséget.
 
     ![Azure Monitor riasztások lapja](./media/continuous-export/azure-monitor-alerts.png)
 
 1. A szabály létrehozása lapon konfigurálja az új szabályt (ugyanúgy, mint a [naplózási riasztási szabály konfigurálása a Azure monitorban](../azure-monitor/platform/alerts-unified-log.md)):
 
-    * Az **erőforrás**mezőben válassza ki azt a log Analytics munkaterületet, amelyhez biztonsági riasztásokat és javaslatokat exportált.
+    * Az **erőforrás** mezőben válassza ki azt a log Analytics munkaterületet, amelyhez biztonsági riasztásokat és javaslatokat exportált.
 
-    * A **feltétel**beállításnál válassza az **egyéni naplók keresése**lehetőséget. A megjelenő oldalon konfigurálja a lekérdezést, az lookback időszakot és a gyakorisági időszakot. A keresési lekérdezésben beírhatja a *SecurityAlert* vagy a *SecurityRecommendation* kifejezést, hogy lekérdezze azokat az adattípusokat, amelyek Security Center folyamatos exportálást végeznek, amikor engedélyezi a folyamatos exportálást log Analytics szolgáltatásba. 
+    * A **feltétel** beállításnál válassza az **egyéni naplók keresése** lehetőséget. A megjelenő oldalon konfigurálja a lekérdezést, az lookback időszakot és a gyakorisági időszakot. A keresési lekérdezésben beírhatja a *SecurityAlert* vagy a *SecurityRecommendation* kifejezést, hogy lekérdezze azokat az adattípusokat, amelyek Security Center folyamatos exportálást végeznek, amikor engedélyezi a folyamatos exportálást log Analytics szolgáltatásba. 
     
     * Megadhatja az aktiválni kívánt [műveleti csoportot](../azure-monitor/platform/action-groups.md) is. A műveleti csoportok elindíthatják az e-mailek küldését, a ITSM jegyeket, a webhookokat és egyebeket.
     ![Azure Monitor riasztási szabály](./media/continuous-export/azure-monitor-alert-rule.png)
@@ -210,6 +210,29 @@ További információ a [log Analytics munkaterület díjszabásáról](https://
 
 További információ az [Azure Event hub díjszabásáról](https://azure.microsoft.com/pricing/details/event-hubs/).
 
+
+### <a name="does-the-export-include-data-about-the-current-state-of-all-resources"></a>Az Exportálás az összes erőforrás aktuális állapotával kapcsolatos információkat tartalmaz?
+
+Nem. A folyamatos Exportálás az **események** folyamatos továbbítására készült:
+
+- Az Exportálás engedélyezése előtt fogadott **riasztások** nem lesznek exportálva.
+- A **javaslatok** akkor lesznek elküldve, amikor egy erőforrás megfelelőségi állapota megváltozik. Például, ha egy erőforrás kifogástalan állapotról sérültre vált. Ezért a riasztásokhoz hasonlóan a nem módosult erőforrásokra vonatkozó ajánlásokat is, mivel az exportálás nem lesz exportálva.
+
+
+### <a name="why-are-recommendations-sent-at-different-intervals"></a>A javaslatok elküldése miért különböző időközönként történik?
+
+A különböző javaslatok különböző megfelelőségi értékelési időközökkel rendelkeznek, ami néhány perctől akár néhány napig változhat. Ennek következtében a javaslatok eltérhetnek az exportálás során megjelenő időtartamtól.
+
+### <a name="does-continuous-export-support-any-business-continuity-or-disaster-recovery-bcdr-scenarios"></a>Támogatja a folyamatos Exportálás az üzletmenet folytonosságát vagy a vész-helyreállítási (BCDR) forgatókönyveket?
+
+Ha a környezetet olyan BCDR-forgatókönyvek esetében készíti elő, amelyekben a cél erőforrás leállás vagy más katasztrófa esetén fordul elő, akkor a szervezet felelőssége az adatvesztés megelőzése azáltal, hogy az Azure Event Hubs, Log Analytics munkaterület és a Logic app irányelvek alapján hozza létre a biztonsági mentéseket.
+
+További információ az [Azure Event Hubs-geo-vész-helyreállítással](../event-hubs/event-hubs-geo-dr.md)kapcsolatban.
+
+
+### <a name="is-continuous-export-available-with-azure-security-center-free"></a>A folyamatos exportálás elérhető Azure Security Center ingyenes?
+
+Igen! Vegye figyelembe, hogy sok Security Center riasztás csak akkor érhető el, ha engedélyezve van az Azure Defender. Az exportált adataiban megjelenő riasztások megtekintésének jó módja, ha a Azure Portal Security Center oldalain látható riasztásokat látja.
 
 
 

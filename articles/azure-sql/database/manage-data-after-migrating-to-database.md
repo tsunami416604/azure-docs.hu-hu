@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439775"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789573"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,8 +101,8 @@ A [Azure Security Center](https://azure.microsoft.com/services/security-center/)
 
 A SQL Databaseban két hitelesítési módszer érhető el:
 
-- [Azure Active Directory hitelesítés](authentication-aad-overview.md)
-- [SQL-hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [Azure Active Directory-hitelesítés](authentication-aad-overview.md)
+- [SQL-hitelesítés](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 A hagyományos Windows-hitelesítés nem támogatott. Azure Active Directory (Azure AD) egy központi identitás-és hozzáférés-kezelési szolgáltatás. Ezzel kihasználhatja az egyszeri bejelentkezéses hozzáférést (SSO) a szervezet minden munkatársa számára. Ez azt jelenti, hogy a hitelesítő adatok az összes Azure-szolgáltatásban meg vannak osztva az egyszerűbb hitelesítéshez. 
 
@@ -113,7 +113,7 @@ Az Azure AD az [azure multi-Factor Authenticationt](authentication-mfa-ssms-over
 |Inkább nem a Azure Active Directory (Azure AD) használata az Azure-ban|[SQL-hitelesítés](security-overview.md) használata|
 |Az AD-t a helyszínen SQL Server használni|[ÖSSZEVONÁSA ad az Azure ad-vel](../../active-directory/hybrid/whatis-hybrid-identity.md), és használja az Azure ad-hitelesítést. Ezzel az egyszeri bejelentkezést is használhatja.|
 |Meg kell kényszeríteni Multi-Factor Authentication|A [Microsoft feltételes hozzáférésének](conditional-access-configure.md)biztosításához a multi-Factor Authentication szabályzatot kell használni, és [Az Azure ad univerzális hitelesítést](authentication-mfa-ssms-overview.md)kell használnia multi-Factor Authentication-támogatással.|
-|Legyenek a Microsoft-fiókok (live.com, outlook.com) vagy más tartományok (gmail.com) vendég fiókjai|Az [Azure ad univerzális hitelesítés](authentication-mfa-ssms-overview.md) használata SQL Database/adattárházban, amely az [Azure ad B2B-együttműködés](../../active-directory/b2b/what-is-b2b.md)használatát teszi lehetővé.|
+|Legyenek a Microsoft-fiókok (live.com, outlook.com) vagy más tartományok (gmail.com) vendég fiókjai|Az [Azure ad univerzális hitelesítés](authentication-mfa-ssms-overview.md) használata SQL Database/adattárházban, amely az [Azure ad B2B-együttműködés](../../active-directory/external-identities/what-is-b2b.md)használatát teszi lehetővé.|
 |Bejelentkezve a Windowsba egy összevont tartomány Azure AD-beli hitelesítő adataival|Az [Azure ad integrált hitelesítésének](authentication-aad-configure.md)használata.|
 |Az Azure-ba nem összevont tartomány hitelesítő adataival vannak bejelentkezve a Windowsba|Az [Azure ad integrált hitelesítésének](authentication-aad-configure.md)használata.|
 |Olyan közepes szintű szolgáltatásokkal kell rendelkezniük, amelyeknek SQL Database vagy Azure szinapszis Analyticshez kell csatlakozniuk|Az [Azure ad integrált hitelesítésének](authentication-aad-configure.md)használata.|
@@ -304,7 +304,7 @@ A SQL Database különböző szolgáltatási szinteket kínál alapszintű, stan
 |**Szolgáltatási szint**|**Gyakori használati esetek**|
 |---|---|
 |**Basic**|Egy maroknyi felhasználóval és egy olyan adatbázissal, amely nem rendelkezik magas párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel. |
-|**Normál**|A jelentős párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel rendelkező alkalmazások alacsony – közepes i/o-igényekkel párosulnak. |
+|**Standard**|A jelentős párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel rendelkező alkalmazások alacsony – közepes i/o-igényekkel párosulnak. |
 |**Prémium**|Számos egyidejű felhasználóval, magas CPU/memóriával és magas i/o-igényű alkalmazásokkal. A magas Egyidejűség, a nagy átviteli sebesség és a késésre érzékeny alkalmazások kihasználhatják a prémium szintet. |
 |||
 
@@ -320,11 +320,11 @@ A SQL Database olyan intelligens technikákat használ, amelyek lehetővé teszi
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Hogyan az adatok exportálása és importálása BACPAC-fájlként a SQL Database használatával a Azure Portal
 
-- **Exportálás**: az adatbázis Azure SQL Database BACPAC fájlként is exportálható a Azure Portal
+- **Exportálás** : az adatbázis Azure SQL Database BACPAC fájlként is exportálható a Azure Portal
 
    ![Adatbázis-exportálás](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Importálás**: az BACPAC-fájlként importálhatja az adatait Azure SQL Database adatbázisba a Azure Portal használatával.
+- **Importálás** : az BACPAC-fájlként importálhatja az adatait Azure SQL Database adatbázisba a Azure Portal használatával.
 
    ![adatbázis importálása](./media/manage-data-after-migrating-to-database/import1.png)
 
