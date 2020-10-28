@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.author: metan
-ms.openlocfilehash: ddae4a99964e438c003fe0ff0db91c5808fa7631
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: 31c1ef8d75b4c12e4dd6a360852feb27857ac412
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761107"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636544"
 ---
 # <a name="how-to-store-user-preferences"></a>Felhasználói beállítások tárolása
 
-Ez a cikk bemutatja, hogyan tárolhatja a felhasználó felhasználói FELÜLETi beállításait (a **felhasználói beállításoknak**megfelelően) a [-Preferences](./reference.md#options) és a [-onPreferencesChanged](./reference.md#options) teljes olvasó SDK-beállításokkal.
+Ez a cikk bemutatja, hogyan tárolhatja a felhasználó felhasználói FELÜLETi beállításait (a **felhasználói beállításoknak** megfelelően) a [-Preferences](./reference.md#options) és a [-onPreferencesChanged](./reference.md#options) teljes olvasó SDK-beállításokkal.
 
-Ha a [CookiePolicy](./reference.md#cookiepolicy-options) SDK beállítás *engedélyezve*értékre van állítva, a felhasználóbarát olvasó alkalmazás tárolja a cookie-k **felhasználói beállításait** (a szöveg méretét, a téma színét, a betűtípust stb.), amelyek egy adott böngészőhöz és eszközhöz tartoznak. Minden alkalommal, amikor a felhasználó ugyanazzal a böngészővel és eszközön indítja el az olvasót, megnyílik a felhasználó beállításai az adott eszköz utolsó munkamenetében. Ha azonban a felhasználó egy másik böngészőben vagy eszközön nyitja meg az olvasót, a beállítások kezdetben a magával ragadó olvasó alapértelmezett beállításaival lesznek konfigurálva, és a felhasználónak újra be kell állítania a beállításait, és így minden egyes használt eszközön. A `-preferences` és a teljes `-onPreferencesChanged` OLVASÓi SDK-k lehetővé teszik, hogy az alkalmazások különböző böngészőkben és eszközökön barangolják a felhasználók beállításait, így a felhasználó egységes felhasználói felülettel rendelkezik, ahol az alkalmazást használják.
+Ha a [CookiePolicy](./reference.md#cookiepolicy-options) SDK beállítás *engedélyezve* értékre van állítva, a felhasználóbarát olvasó alkalmazás tárolja a cookie-k **felhasználói beállításait** (a szöveg méretét, a téma színét, a betűtípust stb.), amelyek egy adott böngészőhöz és eszközhöz tartoznak. Minden alkalommal, amikor a felhasználó ugyanazzal a böngészővel és eszközön indítja el az olvasót, megnyílik a felhasználó beállításai az adott eszköz utolsó munkamenetében. Ha azonban a felhasználó egy másik böngészőben vagy eszközön nyitja meg az olvasót, a beállítások kezdetben a magával ragadó olvasó alapértelmezett beállításaival lesznek konfigurálva, és a felhasználónak újra be kell állítania a beállításait, és így minden egyes használt eszközön. A `-preferences` és a teljes `-onPreferencesChanged` OLVASÓi SDK-k lehetővé teszik, hogy az alkalmazások különböző böngészőkben és eszközökön barangolják a felhasználók beállításait, így a felhasználó egységes felhasználói felülettel rendelkezik, ahol az alkalmazást használják.
 
 Először is, a `-onPreferencesChanged` visszahívási SDK beállítás megadásával, amikor elindítja a felhasználóbarát olvasó alkalmazást, a magától megjelenő olvasó egy `-preferences` sztringet küld vissza a gazda alkalmazásnak, amikor a felhasználó megváltoztatja a beállításait az olvasói munkamenet során. Ezután a gazda alkalmazás feladata a felhasználói beállítások tárolása a saját rendszerében. Ha ugyanez a felhasználó ismét elindítja az olvasót, a gazda alkalmazás lekérheti a felhasználó beállításait a tárolóból, és karakterlánc-SDK-ként adhatja meg azokat a felhasználóbarát `-preferences` olvasó alkalmazás indításakor, hogy a felhasználó beállításait visszaállítsa.
 

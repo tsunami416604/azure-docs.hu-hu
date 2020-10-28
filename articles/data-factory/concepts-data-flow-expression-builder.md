@@ -7,18 +7,18 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531059"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635371"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Kifejezések létrehozása a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A leképezési adatfolyamban számos átalakítási tulajdonságot kifejezésként kell megadni. Ezek a kifejezések olyan oszlop-értékekkel, paraméterekkel, függvényekkel, operátorokkal és literálokból állnak, amelyek futási időben kiértékelik a Spark adattípust. Az adatforgalom leképezése egy dedikált felülettel rendelkezik, amelynek célja, hogy segítse Önt a **kifejezés-szerkesztő**elnevezésű kifejezések létrehozásában. Az  [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) -kódok kiemeléséhez, a szintaxis ellenőrzéséhez és az autocomplete értékhez való kihasználása lehetővé teszi, hogy a Kifejezésszerkesztő megkönnyítse az adatforgalom kiépítését. Ez a cikk azt ismerteti, hogy miként használható a Kifejezésszerkesztő az üzleti logikájának hatékony felépítéséhez.
+A leképezési adatfolyamban számos átalakítási tulajdonságot kifejezésként kell megadni. Ezek a kifejezések olyan oszlop-értékekkel, paraméterekkel, függvényekkel, operátorokkal és literálokból állnak, amelyek futási időben kiértékelik a Spark adattípust. Az adatforgalom leképezése egy dedikált felülettel rendelkezik, amelynek célja, hogy segítse Önt a **kifejezés-szerkesztő** elnevezésű kifejezések létrehozásában. Az  [IntelliSense](/visualstudio/ide/using-intellisense) -kódok kiemeléséhez, a szintaxis ellenőrzéséhez és az autocomplete értékhez való kihasználása lehetővé teszi, hogy a Kifejezésszerkesztő megkönnyítse az adatforgalom kiépítését. Ez a cikk azt ismerteti, hogy miként használható a Kifejezésszerkesztő az üzleti logikájának hatékony felépítéséhez.
 
 ![Expression Builder](media/data-flow/expresion-builder.png "Kifejezésszerkesztő")
 
@@ -32,7 +32,7 @@ Bizonyos átalakítások, mint például a [szűrő](data-flow-filter.md), a ké
 
 ![Kék kifejezés mező](media/data-flow/expressionbox.png "Kifejezésszerkesztő")
 
-Ha egyező vagy csoportosított oszlopokra hivatkozik, akkor egy kifejezés kinyerheti az oszlopokból származó értékeket. Kifejezés létrehozásához válassza a **számított oszlop**lehetőséget.
+Ha egyező vagy csoportosított oszlopokra hivatkozik, akkor egy kifejezés kinyerheti az oszlopokból származó értékeket. Kifejezés létrehozásához válassza a **számított oszlop** lehetőséget.
 
 ![Számított oszlop beállítás](media/data-flow/computedcolumn.png "Kifejezésszerkesztő")
 

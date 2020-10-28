@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b7324115c880fb1ee4d5a1730a3b84a289cee4b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55582fb8c4fc80ab005a01ec015035963404e639
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490139"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637411"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása az Azure szinapszis Analytics-be és-ból (korábban SQL Data Warehouse) a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -37,7 +37,7 @@ Az adatok az **Azure szinapszis Analyticsből** a következő adattárakba máso
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-Az adatok a következő adattárakból másolhatók **Az Azure szinapszis analyticsbe**:
+Az adatok a következő adattárakból másolhatók **Az Azure szinapszis analyticsbe** :
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
@@ -50,13 +50,13 @@ Az Azure szinapszis Analytics-összekötő támogatja az alapszintű hitelesít�
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy Azure-beli szinapszis-elemzésbe vagy-re irányuló adatátvitelt.
 
-Az adatok másolása varázslóval az Azure szinapszis Analytics szolgáltatásba másolt adatok másolására szolgáló folyamat létrehozásának legegyszerűbb módja. Tekintse meg az [oktatóanyagot: az adatgyűjtés a szinapszis Analytics szolgáltatásba](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) című témakört Data Factory, amely a folyamat létrehozásával kapcsolatos gyors áttekintést nyújt az adatmásolási varázsló segítségével.
+Az adatok másolása varázslóval az Azure szinapszis Analytics szolgáltatásba másolt adatok másolására szolgáló folyamat létrehozásának legegyszerűbb módja. Tekintse meg az [oktatóanyagot: az adatgyűjtés a szinapszis Analytics szolgáltatásba](../load-azure-sql-data-warehouse.md) című témakört Data Factory, amely a folyamat létrehozásával kapcsolatos gyors áttekintést nyújt az adatmásolási varázsló segítségével.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** és **REST API** . A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
-1. Hozzon létre egy **adatelőállítót**. Egy adatelőállító egy vagy több folyamatot is tartalmazhat. 
+1. Hozzon létre egy **adatelőállítót** . Egy adatelőállító egy vagy több folyamatot is tartalmazhat. 
 2. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához. Ha például egy Azure Blob Storage-ból másol egy Azure szinapszis Analytics-re, két társított szolgáltatást hoz létre, amely összekapcsolja az Azure Storage-fiókját és az Azure szinapszis Analytics szolgáltatást az adatokkal rendelkező gyárával. Az Azure szinapszis Analytics szolgáltatáshoz kapcsolódó társított szolgáltatások tulajdonságainál tekintse meg a [társított szolgáltatás tulajdonságai](#linked-service-properties) című szakaszt. 
 3. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához. Az utolsó lépésben említett példában létrehoz egy adatkészletet, amely megadja a bemeneti adatokat tartalmazó BLOB-tárolót és mappát. Emellett létrehoz egy másik adatkészletet is, amely megadja a táblázatot az Azure szinapszis Analyticsben, amely a blob Storage-ból másolt adatokat tárolja. Az Azure szinapszis Analytics szolgáltatásra jellemző adatkészlet-tulajdonságokért lásd: [adatkészlet tulajdonságai](#dataset-properties) szakasz.
 4. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges. A korábban említett példában a BlobSource forrásként és SqlDWSinkként használja a másolási tevékenységhez. Hasonlóképpen, ha az Azure szinapszis Analyticsről az Azure Blob Storagera másol, a másolási tevékenységben SqlDWSource és BlobSink használ. Az Azure szinapszis Analyticsre jellemző másolási tevékenység tulajdonságairól a [másolási tevékenység tulajdonságai](#copy-activity-properties) című szakaszban olvashat. Az adattár forrásként vagy fogadóként való használatával kapcsolatos részletekért kattintson az adattár előző szakaszában található hivatkozásra.
@@ -74,7 +74,7 @@ Az alábbi táblázat az Azure szinapszis Analytics társított szolgáltatásho
 | connectionString |A connectionString tulajdonsághoz tartozó Azure szinapszis Analytics-példányhoz való kapcsolódáshoz szükséges információk megadása. Csak az alapszintű hitelesítés támogatott. |Igen |
 
 > [!IMPORTANT]
-> Konfigurálja [Azure SQL Database tűzfalat](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) és az adatbázis-kiszolgálót, hogy [engedélyezze az Azure-szolgáltatások számára a kiszolgáló elérését](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Emellett, ha adatokat másol az Azure-ba az Azure-on kívülről, többek között a helyszíni adatforrásokból a (z) és a (z) adatfeldolgozó-átjáróval, konfigurálja a megfelelő IP-címtartományt azon számítógép számára, amely adatokat küld az Azure szinapszis Analyticsnek.
+> Konfigurálja [Azure SQL Database tűzfalat](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure) és az adatbázis-kiszolgálót, hogy [engedélyezze az Azure-szolgáltatások számára a kiszolgáló elérését](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure). Emellett, ha adatokat másol az Azure-ba az Azure-on kívülről, többek között a helyszíni adatforrásokból a (z) és a (z) adatfeldolgozó-átjáróval, konfigurálja a megfelelő IP-címtartományt azon számítógép számára, amely adatokat küld az Azure szinapszis Analyticsnek.
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
@@ -94,7 +94,7 @@ A tevékenységek definiálásához elérhető & tulajdonságok teljes listájá
 Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
 
 ### <a name="sqldwsource"></a>SqlDWSource
-Ha a forrás **SqlDWSource**típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
+Ha a forrás **SqlDWSource** típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
@@ -146,11 +146,11 @@ A **SqlDWSink** a következő tulajdonságokat támogatja:
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. Részletekért lásd: [ismételhetőség szakasz](#repeatability-during-copy). |Egy lekérdezési utasítás. |Nem |
 | allowPolyBase |Azt jelzi, hogy a BULKINSERT mechanizmus helyett a következőt kell-e használni (ha van ilyen). <br/><br/> **Az adatok Azure szinapszis-elemzésbe való betöltésének ajánlott módja a Base használata.** Megkötések és részletek a következő témakörben találhatók: az [adatok betöltése az Azure szinapszis analyticsbe](#use-polybase-to-load-data-into-azure-synapse-analytics) című szakasza. |Igaz <br/>False (alapértelmezett) |Nem |
-| polyBaseSettings |A tulajdonságok olyan csoportja, amely akkor adható meg, ha a **allowPolybase** tulajdonság értéke **true (igaz**). |&nbsp; |Nem |
-| rejectValue |A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg. <br/><br/>További információ a [create External Table (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) című témakör **argumentumok** szakaszában található alapszintű elutasítás beállításairól. |0 (alapértelmezett), 1, 2,... |Nem |
+| polyBaseSettings |A tulajdonságok olyan csoportja, amely akkor adható meg, ha a **allowPolybase** tulajdonság értéke **true (igaz** ). |&nbsp; |Nem |
+| rejectValue |A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg. <br/><br/>További információ a [create External Table (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) című témakör **argumentumok** szakaszában található alapszintű elutasítás beállításairól. |0 (alapértelmezett), 1, 2,... |Nem |
 | rejectType |Megadja, hogy a rejectValue beállítás literál értékként vagy százalékként van-e megadva. |Érték (alapértelmezett), százalék |Nem |
 | rejectSampleValue |Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát. |1, 2,... |Igen, ha **rejectType** a rejectType **százaléka** |
-| useTypeDefault |Meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, ha a viszonyítási adatok beolvasása a szövegfájlból történik.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)argumentumai című szakaszban olvashat bővebben. |Igaz, hamis (alapértelmezett) |Nem |
+| useTypeDefault |Meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, ha a viszonyítási adatok beolvasása a szövegfájlból történik.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)argumentumai című szakaszban olvashat bővebben. |Igaz, hamis (alapértelmezett) |Nem |
 | writeBatchSize |Az SQL-táblába szúrja be az adatmennyiséget, ha a puffer mérete eléri a writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |Nem |
 
@@ -164,9 +164,9 @@ A **SqlDWSink** a következő tulajdonságokat támogatja:
 ```
 
 ## <a name="use-polybase-to-load-data-into-azure-synapse-analytics"></a>Adatok betöltése az Azure szinapszis Analytics szolgáltatásba a Base használatával
-A **[Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** használatával nagy mennyiségű adat a nagy adatátviteli sebességű Azure szinapszis-elemzésbe való betöltésének hatékony módja. Az átviteli sebesség nagy mennyiségű nyereségét az alapértelmezett BULKINSERT mechanizmus helyett a Base használatával láthatja. Lásd: a [teljesítmény hivatkozási számának másolása](data-factory-copy-activity-performance.md#performance-reference) részletes összehasonlítással. A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+A **[Base](/sql/relational-databases/polybase/polybase-guide)** használatával nagy mennyiségű adat a nagy adatátviteli sebességű Azure szinapszis-elemzésbe való betöltésének hatékony módja. Az átviteli sebesség nagy mennyiségű nyereségét az alapértelmezett BULKINSERT mechanizmus helyett a Base használatával láthatja. Lásd: a [teljesítmény hivatkozási számának másolása](data-factory-copy-activity-performance.md#performance-reference) részletes összehasonlítással. A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
-* Ha a forrásadatok az **Azure blobban vagy a Azure Data Lake Storeban**vannak, és a formátum kompatibilis a Base-sel, akkor közvetlenül másolhat az Azure szinapszis analyticsbe a Base használatával. A részleteket lásd: a **[közvetlen másolás a Base használatával](#direct-copy-using-polybase)** .
+* Ha a forrásadatok az **Azure blobban vagy a Azure Data Lake Storeban** vannak, és a formátum kompatibilis a Base-sel, akkor közvetlenül másolhat az Azure szinapszis analyticsbe a Base használatával. A részleteket lásd: a **[közvetlen másolás a Base használatával](#direct-copy-using-polybase)** .
 * Ha a forrás adattárat és a formátumot eredetileg nem a Base támogatja, használhatja a **[szakaszos másolást a albase szolgáltatás használatával](#staged-copy-using-polybase)** . Emellett jobb átviteli sebességet is biztosít, ha automatikusan konvertálja az adatok alap-kompatibilis formátumba, és az adatok tárolása az Azure Blob Storage-ban történik. Ezután betöltődik az Azure szinapszis Analyticsbe.
 
 Állítsa a `allowPolyBase` tulajdonságot **true (igaz** ) értékre, ahogy az alábbi példában látható, hogy a Azure Data Factory, hogy az adatok az Azure szinapszis analyticsbe való másolásához használhatók legyenek. Ha a allowPolyBase értéke TRUE (igaz) értékre van állítva, akkor a tulajdonság csoport segítségével megadhatja a tulajdonságok `polyBaseSettings` csoportot. a polyBaseSettings használatával használható tulajdonságokkal kapcsolatos részletekért tekintse meg a [SqlDWSink](#sqldwsink) szakaszt.
@@ -189,18 +189,18 @@ A **[Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase
 Az Azure szinapszis Analytics-előAzure Data Lake Store közvetlenül támogatja az Azure blobot és a (egyszerű szolgáltatásnév használatával) forrásként és adott fájlformátumokra vonatkozó követelményekkel. Ha a forrásadatok megfelelnek az ebben a részben ismertetett feltételeknek, a forrás-adattárból közvetlenül másolhatja az Azure szinapszis Analytics szolgáltatást a Base paranccsal. Ellenkező esetben [a szakaszos másolást a Base paranccsal](#staged-copy-using-polybase)végezheti el.
 
 > [!TIP]
-> Az adatok Data Lake Storeról az Azure szinapszis Analytics szolgáltatásba való hatékony másolásához további információ [Azure Data Factory az Azure szinapszis Analytics szolgáltatással való Data Lake Store használatakor még egyszerűbbé és kényelmesebbvé teszi az adatok elemzését](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
+> Az adatok Data Lake Storeról az Azure szinapszis Analytics szolgáltatásba való hatékony másolásához további információ [Azure Data Factory az Azure szinapszis Analytics szolgáltatással való Data Lake Store használatakor még egyszerűbbé és kényelmesebbvé teszi az adatok elemzését](/archive/blogs/azuredatalake/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse).
 
 Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállításokat, és automatikusan visszakerül a BULKINSERT mechanizmusra az adatáthelyezéshez.
 
-1. A **forráshoz társított szolgáltatás** típusa: **AzureStorage** vagy **AzureDataLakeStore az egyszerű szolgáltatás hitelesítésével**.
-2. A **bemeneti adatkészlet** a következő típusú: **AzureBlob** vagy **AzureDataLakeStore**, és a tulajdonságok területen a `type` **OrcFormat**, a **ParquetFormat**vagy a **Szövegformátum** érték szerepel a következő konfigurációkkal:
+1. A **forráshoz társított szolgáltatás** típusa: **AzureStorage** vagy **AzureDataLakeStore az egyszerű szolgáltatás hitelesítésével** .
+2. A **bemeneti adatkészlet** a következő típusú: **AzureBlob** vagy **AzureDataLakeStore** , és a tulajdonságok területen a `type` **OrcFormat** , a **ParquetFormat** vagy a **Szövegformátum** érték szerepel a következő konfigurációkkal:
 
-   1. `rowDelimiter` csak **\n**lehet.
-   2. `nullValue`**üres karakterláncra** ("") van beállítva, vagy `treatEmptyAsNull` **igaz**értékre van állítva.
-   3. `encodingName` értéke **UTF-8**, amely az **alapértelmezett** érték.
+   1. `rowDelimiter` csak **\n** lehet.
+   2. `nullValue`**üres karakterláncra** ("") van beállítva, vagy `treatEmptyAsNull` **igaz** értékre van állítva.
+   3. `encodingName` értéke **UTF-8** , amely az **alapértelmezett** érték.
    4. `escapeChar`,,, `quoteChar` `firstRowAsHeader` és `skipLineCount` nincsenek megadva.
-   5. `compression` nem lehet **tömörítés**, **gzip**vagy **deflate**.
+   5. `compression` nem lehet **tömörítés** , **gzip** vagy **deflate** .
 
       ```JSON
       "typeProperties": {
@@ -220,7 +220,7 @@ Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállít
       ```
 
 3. Nincs beállítás a `skipHeaderLineCount` **BlobSource** vagy a **AzureDataLakeStore** alatt a folyamat másolási tevékenységéhez.
-4. A `sliceIdentifierColumnName` folyamat másolási tevékenységéhez nem tartozik beállítás a **SqlDWSink** alatt. (A Base garantálja, hogy minden adat frissítve lett, vagy egyetlen futtatásban sem frissül. Az **ismételhetőség**elérése érdekében használhatja a `sqlWriterCleanupScript` következőt:).
+4. A `sliceIdentifierColumnName` folyamat másolási tevékenységéhez nem tartozik beállítás a **SqlDWSink** alatt. (A Base garantálja, hogy minden adat frissítve lett, vagy egyetlen futtatásban sem frissül. Az **ismételhetőség** elérése érdekében használhatja a `sqlWriterCleanupScript` következőt:).
 5. Nincs `columnMapping` használatban a társított másolási tevékenységben.
 
 ### <a name="staged-copy-using-polybase"></a>Előkészített másolás a Base használatával
@@ -260,7 +260,7 @@ A szolgáltatás használatához hozzon létre egy [Azure Storage-beli társíto
 A következő szakaszokban az [Azure szinapszis Analytics ajánlott eljárásaiban](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)említett további ajánlott eljárásokat ismertetjük.
 
 ### <a name="required-database-permission"></a>Szükséges adatbázis-engedély
-A viszonyítási alap használatához az szükséges, hogy a felhasználó az adatok betöltését az Azure szinapszis Analyticsben a ["vezérlés" engedéllyel](https://msdn.microsoft.com/library/ms191291.aspx) rendelkezzen a céladatbázis számára. Ennek egyik módja, ha az adott felhasználót a "db_owner" szerepkör tagjaként adja hozzá. [Ebből a szakaszból](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)megtudhatja, hogyan teheti meg ezt a műveletet.
+A viszonyítási alap használatához az szükséges, hogy a felhasználó az adatok betöltését az Azure szinapszis Analyticsben a ["vezérlés" engedéllyel](/sql/relational-databases/security/permissions-database-engine) rendelkezzen a céladatbázis számára. Ennek egyik módja, ha az adott felhasználót a "db_owner" szerepkör tagjaként adja hozzá. [Ebből a szakaszból](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)megtudhatja, hogyan teheti meg ezt a műveletet.
 
 ### <a name="row-size-and-data-type-limitation"></a>Sor mérete és adattípus korlátozása
 A kiinduló terhelések csak **1 MB** -nál kisebb sorok betöltésére korlátozódnak, és nem tölthetők be VARCHR (max), NVARCHAR (max) vagy VARBINARY (max) értékre. Tekintse [meg a](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)következőt:.
@@ -268,7 +268,7 @@ A kiinduló terhelések csak **1 MB** -nál kisebb sorok betöltésére korláto
 Ha 1 MB-nál nagyobb méretű adatsorokkal rendelkezik, érdemes lehet függőlegesen felosztani a forrás táblákat több kis méretre, ahol a legnagyobb sorok mérete nem haladhatja meg a korlátot. Ezután a kisebb táblák betölthetők a Base használatával, és összevonva az Azure szinapszis Analytics szolgáltatásban.
 
 ### <a name="azure-synapse-analytics-resource-class"></a>Azure szinapszis analitikai erőforrás-osztály
-A lehető legjobb átviteli sebesség elérése érdekében érdemes lehet nagyobb erőforrás-osztályt rendelni ahhoz a felhasználóhoz, amely az adatok Azure szinapszis Analyticsbe való betöltésére használatos. Ebből a témakörből megtudhatja, hogyan teheti ezt meg a [felhasználói erőforrás osztályra vonatkozó példa módosítása](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)után.
+A lehető legjobb átviteli sebesség elérése érdekében érdemes lehet nagyobb erőforrás-osztályt rendelni ahhoz a felhasználóhoz, amely az adatok Azure szinapszis Analyticsbe való betöltésére használatos. Ebből a témakörből megtudhatja, hogyan teheti ezt meg a [felhasználói erőforrás osztályra vonatkozó példa módosítása](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md)után.
 
 ### <a name="tablename-in-azure-synapse-analytics"></a>Táblanév az Azure szinapszis Analyticsben
 A következő táblázat példákat mutat be arra, hogyan határozhatja meg a **Táblanév** tulajdonságot az adatkészlet JSON-ban a séma és a tábla különböző kombinációi esetében.
@@ -308,7 +308,7 @@ Data Factory létrehozza a tárolóban található táblát a forrás adattárba
 | Bites | Bites |
 | Tizedesjegy | Tizedesjegy |
 | Numerikus | Tizedesjegy |
-| Lebegőpontos értékek | Lebegőpontos értékek |
+| Float | Float |
 | Money | Money |
 | Valós | Valós |
 | Túlcsordulási | Túlcsordulási |
@@ -340,7 +340,7 @@ Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-act
 
 Amikor az Azure szinapszis Analytics szolgáltatásból &ba helyezi az adatátvitelt, a következő leképezéseket használja az SQL típusa és a .NET típus között, és fordítva.
 
-A leképezés megegyezik a [ADO.net Adattípusának SQL Server-leképezésével](https://msdn.microsoft.com/library/cc716729.aspx).
+A leképezés megegyezik a [ADO.net Adattípusának SQL Server-leképezésével](/dotnet/framework/data/adonet/sql-server-data-type-mappings).
 
 | SQL Server adatbázismotor típusa | .NET-keretrendszer típusa |
 | --- | --- |
@@ -354,7 +354,7 @@ A leképezés megegyezik a [ADO.net Adattípusának SQL Server-leképezésével]
 | DateTimeOffset |DateTimeOffset |
 | Tizedesjegy |Tizedesjegy |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
-| Lebegőpontos értékek |Dupla |
+| Float |Dupla |
 | image |Bájt [] |
 | int |Int32 |
 | pénzt |Tizedesjegy |
@@ -511,7 +511,7 @@ A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, i
 
 **Másolási tevékenység SqlDWSource és BlobSink rendelkező folyamatokban:**
 
-A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **SqlDWSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **SqlReaderQuery** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az adatforrást.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **SqlDWSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink** . A **SqlReaderQuery** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az adatforrást.
 
 ```JSON
 {
@@ -695,7 +695,7 @@ A minta az Azure szinapszis Analytics "Sajáttábla" nevű táblájába másolja
 ```
 **Másolási tevékenység BlobSource és SqlDWSink rendelkező folyamatokban:**
 
-A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **BlobSource** értékre van állítva, a **fogadó típusa** pedig **SqlDWSink**.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **BlobSource** értékre van állítva, a **fogadó típusa** pedig **SqlDWSink** .
 
 ```JSON
 {
@@ -744,7 +744,7 @@ A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kime
   }
 }
 ```
-A bemutatókat lásd: az [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](data-factory-load-sql-data-warehouse.md) és az Azure szinapszis Analytics dokumentációjában [Azure Data Factory cikk betöltésével](../../sql-data-warehouse/sql-data-warehouse-get-started-load-with-azure-data-factory.md) .
+A bemutatókat lásd: az [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](data-factory-load-sql-data-warehouse.md) és az Azure szinapszis Analytics dokumentációjában [Azure Data Factory cikk betöltésével](../load-azure-sql-data-warehouse.md) .
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
 A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.

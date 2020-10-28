@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91f2b338ac9cda96521a5fe1d555de054826e273
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84702294"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637632"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok áthelyezése Azure Cosmos DBba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -39,9 +39,9 @@ Az adatok fájlként történő másolásához JSON-fájlok vagy más Cosmos DB-
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával áthelyezi az adatok Azure Cosmos DBba vagy a rendszerbe.
 
-A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** és **REST API** . A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -478,7 +478,7 @@ Ezután a Cosmos DB kimeneti JSON a következőképpen fog megjelenni:
   "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
 }
 ```
-Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúrák engedélyezettek. Azure Data Factory lehetővé teszi a felhasználó számára a hierarchia jelölését a **nestingSeparator**-n keresztül, amely a következő: "." Ebben a példában. Az elválasztó használatával a másolási tevékenység a "név. First", a "név. középső" és a "name. Last" kifejezésnek megfelelően létrehozza a "Name" objektumot az első, középső és utolsó értékkel.
+Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúrák engedélyezettek. Azure Data Factory lehetővé teszi a felhasználó számára a hierarchia jelölését a **nestingSeparator** -n keresztül, amely a következő: "." Ebben a példában. Az elválasztó használatával a másolási tevékenység a "név. First", a "név. középső" és a "name. Last" kifejezésnek megfelelően létrehozza a "Name" objektumot az első, középső és utolsó értékkel.
 
 ## <a name="appendix"></a>Függelék
 1. **Kérdés:** Támogatja a másolási tevékenység a meglévő rekordok frissítését?
@@ -487,7 +487,7 @@ Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúr
 2. **Kérdés:** Hogyan próbálkozik újra egy másolattal, hogy Azure Cosmos DB a már másolt rekordokkal?
 
     **Válasz:** Ha a rekordok "ID" mezővel rendelkeznek, és a másolási művelet egy ugyanazzal az AZONOSÍTÓval rendelkező rekordot próbál beszúrni, a másolási művelet hibát jelez.
-3. **Kérdés:** Data Factory támogatja a [tartomány vagy a kivonatoló alapú adatparticionálást](../../cosmos-db/sql-api-partition-data.md)?
+3. **Kérdés:** Data Factory támogatja a [tartomány vagy a kivonatoló alapú adatparticionálást](../../cosmos-db/partitioning-overview.md)?
 
     **Válasz:** Nem.
 4. **Kérdés:** Megadhatok egynél több Azure Cosmos DB gyűjteményt egy táblához?

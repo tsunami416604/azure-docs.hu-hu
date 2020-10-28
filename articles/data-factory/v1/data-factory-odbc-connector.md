@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c68b1f4d76a1899ce473c57f3a6d5de1eab71c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707378"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636867"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Adatok áthelyezése az ODBC-adattárakból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -47,9 +47,9 @@ A adatkezelés átjárón kívül telepítenie kell az ODBC-illesztőt is az ada
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy ODBC-adattárból származó adatokkal.
 
-A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** és **REST API** . A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -94,7 +94,7 @@ Az alábbi táblázat az ODBC-hez társított szolgáltatáshoz tartozó JSON-el
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>Egyszerű hitelesítés használata titkosított hitelesítő adatokkal
-A hitelesítő adatokat a [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) 1,0 (Azure PowerShell) parancsmag vagy a [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 vagy a Azure PowerShell korábbi verziója) használatával titkosíthatja.
+A hitelesítő adatokat a [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) 1,0 (Azure PowerShell) parancsmag vagy a [New-AzureDataFactoryEncryptValue](/previous-versions/azure/dn834940(v=azure.100)) (0,9 vagy a Azure PowerShell korábbi verziója) használatával titkosíthatja.
 
 ```json
 {
@@ -293,7 +293,7 @@ A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, i
 
 **Másolási tevékenység az ODBC-forrással (RelationalSource) és a blob-fogadóval (BlobSink) rendelkező folyamatokban**
 
-A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az összes adatforrást.
+A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink** . A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az összes adatforrást.
 
 ```json
 {
@@ -346,7 +346,7 @@ Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-act
 1. Konvertálás natív forrásokból .NET-típusra
 2. Konvertálás .NET-típusról natív fogadó típusra
 
-Az adatok az ODBC-adattárakból való áthelyezésekor az ODBC-adattípusok a .NET-típusokra vannak leképezve az [ODBC adattípus-leképezések](https://msdn.microsoft.com/library/cc668763.aspx) témakörben említettek szerint.
+Az adatok az ODBC-adattárakból való áthelyezésekor az ODBC-adattípusok a .NET-típusokra vannak leképezve az [ODBC adattípus-leképezések](/dotnet/framework/data/adonet/odbc-data-type-mappings) témakörben említettek szerint.
 
 ## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
 A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz való leképezésével kapcsolatos további tudnivalókért lásd: [adatkészlet oszlopainak leképezése Azure Data Factoryban](data-factory-map-columns.md).
@@ -357,7 +357,7 @@ Az adatok a kapcsolódó adattárakból való másolása során érdemes megism�
 ## <a name="troubleshoot-connectivity-issues"></a>Kapcsolati problémák hibaelhárítása
 A kapcsolódási problémák elhárításához használja **adatkezelés átjáró Configuration Manager** **diagnosztika** lapját.
 
-1. **Adatkezelés átjáró Configuration Manager**elindítása. A "C:\Program Files\Microsoft adatkezelés Gateway\1.0\Shared\ConfigManager.exe" parancsot futtathatja közvetlenül (vagy) az **átjáróra** való kereséssel, hogy megtalálja a **Microsoft adatkezelés Gateway** alkalmazásra mutató hivatkozást, ahogy az alábbi képen is látható.
+1. **Adatkezelés átjáró Configuration Manager** elindítása. A "C:\Program Files\Microsoft adatkezelés Gateway\1.0\Shared\ConfigManager.exe" parancsot futtathatja közvetlenül (vagy) az **átjáróra** való kereséssel, hogy megtalálja a **Microsoft adatkezelés Gateway** alkalmazásra mutató hivatkozást, ahogy az alábbi képen is látható.
 
     ![Keresés az átjárón](./media/data-factory-odbc-connector/search-gateway.png)
 2. Váltson a **diagnosztika** lapra.

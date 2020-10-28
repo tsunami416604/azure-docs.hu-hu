@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 3598db409e5493737753a8a1b03de168af5c664b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629378"
+ms.locfileid: "92637190"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -183,7 +183,7 @@ Az alábbi hibaüzenetből tisztán láthatja a szerelvény *rendszerét. a Valu
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
-A GAC-val kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
+A GAC-val kapcsolatos további információkért tekintse meg [ezt a cikket](/dotnet/framework/app-domains/gac).
 
 
 ### <a name="how-to-audit-self-hosted-ir-key-missing"></a>A helyi integrációs modul hiányzó kulcsának naplózása
@@ -468,7 +468,7 @@ A várt válasz a következő:
 
 > [!NOTE] 
 > Proxyval kapcsolatos megfontolások:
-> *    Győződjön meg arról, hogy a proxykiszolgálót a biztonságos címzettek listára kell helyezni. Ha igen, győződjön meg arról, hogy [ezek a tartományok](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) a biztonságos címzettek listán vannak.
+> *    Győződjön meg arról, hogy a proxykiszolgálót a biztonságos címzettek listára kell helyezni. Ha igen, győződjön meg arról, hogy [ezek a tartományok](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network) a biztonságos címzettek listán vannak.
 > *    Győződjön meg arról, hogy a "wu2.frontend.clouddatahub.net/" TLS/SSL-tanúsítvány megbízható-e a proxykiszolgálón.
 > *    Ha Active Directory hitelesítést használ a proxyn, módosítsa a szolgáltatásfiókot arra a felhasználói fiókra, amely a proxyt "Integration Runtime szolgáltatás" néven éri el.
 
@@ -632,7 +632,7 @@ Hogyan állapítható meg, hogy hatással van-e a következőkre:
 - Ha a tűzfalszabályok a teljes tartománynevek alapján a következő dokumentumban ismertetett módszerrel vannak meghatározva, akkor nem érinti a rendszer: [tűzfal-konfiguráció és engedélyezési lista beállítása az IP-címekhez](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
 - A rendszer akkor is érintett, ha a kimenő IP-címek engedélyezési listáját explicit módon engedélyezi a vállalati tűzfalon.
 
-Érintett művelet: a hálózati infrastruktúra csapatának értesítése a hálózati konfiguráció frissítéséhez, hogy a legújabb Data Factory IP-címeket a 2020. november 8-án használja.  A legújabb IP-címek letöltéséhez nyissa meg a [szolgáltatás címkék IP-címtartomány letöltési hivatkozását](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
+Érintett művelet: a hálózati infrastruktúra csapatának értesítése a hálózati konfiguráció frissítéséhez, hogy a legújabb Data Factory IP-címeket a 2020. november 8-án használja.  A legújabb IP-címek letöltéséhez nyissa meg a [szolgáltatás címkék IP-címtartomány letöltési hivatkozását](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
 ##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>2. forgatókönyv: az Azure-beli virtuális GÉPEN futó, saját üzemeltetésű Integration Runtime kimenő kommunikációja az ügyfél által felügyelt Azure Virtual Network szolgáltatáson belül
 Hogyan állapítható meg, hogy hatással van-e a következőkre:
@@ -641,14 +641,14 @@ Hogyan állapítható meg, hogy hatással van-e a következőkre:
  ![Cél-ellenőrzési](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
 - Akkor is hatással van, ha explicit módon engedélyezi a kimenő IP-címek engedélyezési listáját a NSG-szabályok beállításban az Azure-beli virtuális hálózaton.
 
-Érintett művelet: értesítés a hálózati infrastruktúra csapatáról az Azure-beli virtuális hálózati konfiguráció NSG-szabályainak frissítéséhez, hogy a legújabb Data Factory IP-címeket használják a 2020. november 8-án.  A legújabb IP-címek letöltéséhez nyissa meg a [szolgáltatás címkék IP-címtartomány letöltési hivatkozását](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
+Érintett művelet: értesítés a hálózati infrastruktúra csapatáról az Azure-beli virtuális hálózati konfiguráció NSG-szabályainak frissítéséhez, hogy a legújabb Data Factory IP-címeket használják a 2020. november 8-án.  A legújabb IP-címek letöltéséhez nyissa meg a [szolgáltatás címkék IP-címtartomány letöltési hivatkozását](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>3. forgatókönyv: a SSIS Integration Runtime kimenő kommunikációja az ügyfél által felügyelt Azure virtuális hálózaton
 - Ellenőrizze, hogy van-e olyan kimenő NSG-szabály a magánhálózaton, amely SSIS Integration Runtime tartalmaz. Ha nincsenek kimenő korlátozások, akkor nincs hatása.
 - Ha a kimenő szabályok korlátozásai vannak, ellenőrizze, hogy a szolgáltatás címkéjét használja-e. Ha a szolgáltatás címkét használja, akkor nem kell módosítania vagy semmit hozzáadnia, mivel az új IP-címtartományok a meglévő szolgáltatási címke alatt találhatók.
 - Akkor is hatással van, ha explicit módon engedélyezi a kimenő IP-címek engedélyezési listáját a NSG-szabályok beállításban az Azure-beli virtuális hálózaton.
 
-Érintett művelet: értesítés a hálózati infrastruktúra csapatáról az Azure-beli virtuális hálózati konfiguráció NSG-szabályainak frissítéséhez, hogy a legújabb Data Factory IP-címeket használják a 2020. november 8-án.  A legújabb IP-címek letöltéséhez nyissa meg a [szolgáltatás címkék IP-címtartomány letöltési hivatkozását](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
+Érintett művelet: értesítés a hálózati infrastruktúra csapatáról az Azure-beli virtuális hálózati konfiguráció NSG-szabályainak frissítéséhez, hogy a legújabb Data Factory IP-címeket használják a 2020. november 8-án.  A legújabb IP-címek letöltéséhez nyissa meg a [szolgáltatás címkék IP-címtartomány letöltési hivatkozását](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
 ### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Nem hozható létre megbízhatósági kapcsolat a biztonságos SSLTLS csatornához 
 
@@ -709,7 +709,7 @@ A hibaelhárítással kapcsolatos további segítségért próbálkozzon a köve
 *  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory szolgáltatásra vonatkozó kérelmek](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Microsoft Q&egy kérdés oldal](/answers/topics/azure-data-factory.html)
 *  [Stack túlfolyó fórum a Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-információk a Data Factory](https://twitter.com/hashtag/DataFactory)
 *  [Adatforgalom teljesítményének feltérképezése útmutató](concepts-data-flow-performance.md)

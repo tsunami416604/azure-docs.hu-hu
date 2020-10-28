@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: c549e8169ad7fc7a5eb7f810d76deb33af0e5f65
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508961"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636153"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Oktatóanyag: Azure Active Directory integráció a Work.com
 
@@ -129,11 +129,11 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
 2. Nyissa meg a **telepítőt** .
    
-    ![Beállítás](./media/work-com-tutorial/ic794108.png "Telepítés")
+    ![Képernyőfelvétel: a felhasználó menüből kiválasztott beállítás.](./media/work-com-tutorial/ic794108.png "Telepítés")
 
 3. A bal oldali navigációs ablaktábla **felügyelet** szakaszában kattintson a **tartományi felügyelet** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **saját tartomány** lehetőségre a **saját tartomány** lap megnyitásához. 
    
-    ![Saját tartomány](./media/work-com-tutorial/ic767825.png "Saját tartomány")
+    ![Képernyőfelvétel: a tartomány kiválasztott tartományának felügyelete az adminisztráció ablaktáblán.](./media/work-com-tutorial/ic767825.png "Saját tartomány")
 
 4. Annak ellenőrzéséhez, hogy a tartomány megfelelően van-e beállítva, győződjön meg arról, hogy a " **4. lépés központi telepítése a felhasználók számára** " értékre van állítva, és tekintse át a " **saját tartomány beállításai** " című részt.
    
@@ -143,7 +143,7 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
 6. Nyissa meg a **telepítőt** .
     
-    ![Beállítás](./media/work-com-tutorial/ic794108.png "Telepítés")
+    ![Képernyőfelvétel: a felhasználó menüből kiválasztott beállítás.](./media/work-com-tutorial/ic794108.png "Telepítés")
 
 7. Bontsa ki a **biztonsági vezérlők** menüt, majd kattintson az **egyszeres Sign-On beállítások** elemre.
     
@@ -186,15 +186,15 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
 10. A Work.com klasszikus portál bal oldali navigációs paneljén kattintson a **tartományi felügyelet** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **saját tartomány** lehetőségre a **saját tartomány** lap megnyitásához. 
     
-    ![Saját tartomány](./media/work-com-tutorial/ic794115.png "Saját tartomány")
+    ![Képernyőfelvétel: a tartomány-felügyeleti listából kiválasztott tartomány.](./media/work-com-tutorial/ic794115.png "Saját tartomány")
 
 11. A **saját tartomány** lapon a **bejelentkezési oldal védjegyezése** szakaszban kattintson a **Szerkesztés** elemre.
     
-    ![Bejelentkezési oldal arculata](./media/work-com-tutorial/ic767826.png "Bejelentkezési oldal arculata")
+    ![Képernyőfelvétel: a bejelentkezési oldal védjegyezési szakasza, ahol a szerkesztés lehetőséget választhatja.](./media/work-com-tutorial/ic767826.png "Bejelentkezési oldal arculata")
 
 12. A **bejelentkezési oldal védjegyezése** lapon a **hitelesítési szolgáltatás** szakaszban megjelenik az **SAML SSO-beállítások** neve. Jelölje ki, majd kattintson a **Mentés** gombra.
     
-    ![Bejelentkezési oldal arculata](./media/work-com-tutorial/ic784366.png "Bejelentkezési oldal arculata")
+    ![A képernyőképen a bejelentkezési oldal arculata látható, ahol kiválaszthatja a beállítás nevét, amely P P E.](./media/work-com-tutorial/ic784366.png "Bejelentkezési oldal arculata")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -256,7 +256,7 @@ Ahhoz Azure Active Directory, hogy a felhasználók bejelentkezhetnek, a Work.co
 
 2. Nyissa meg a **telepítőt** .
    
-    ![Beállítás](./media/work-com-tutorial/IC794108.png "Telepítés")
+    ![Képernyőfelvétel: a felhasználó menüből kiválasztott beállítás.](./media/work-com-tutorial/ic794108.png "Telepítés")
 
 3. Nyissa meg a **felhasználók kezelése \>** lehetőséget.
    

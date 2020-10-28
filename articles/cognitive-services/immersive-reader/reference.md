@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
-ms.author: metan
-ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761549"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636527"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Magával ragadó olvasó JavaScript SDK-referenciája (v 1.1)
 
@@ -48,7 +48,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | `token` | sztring | Az Azure AD hitelesítési jogkivonata. További részletekért tekintse meg a részletes [olvasó-erőforrás létrehozását](./how-to-create-immersive-reader.md) ismertető témakört. |
 | `subdomain` | sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. További részletekért tekintse meg a részletes [olvasó-erőforrás létrehozását](./how-to-create-immersive-reader.md) ismertető témakört. |
 | `content` | [Tartalom](#content) | Egy objektum, amely a magába foglaló olvasóban megjelenítendő tartalmat tartalmazza. |
-| `options` | [Lehetőségek](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
+| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
 
 #### <a name="returns"></a>Válaszok
 
@@ -181,7 +181,7 @@ A hibával kapcsolatos információkat tartalmaz.
 
 #### <a name="error-codes"></a>Hibakódok
 
-| Code | Leírás |
+| Kód | Leírás |
 | ---- | ----------- |
 | BadArgument | A megadott argumentum érvénytelen: `message` a [hiba](#error)paramétere. |
 | Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
@@ -273,13 +273,13 @@ Default value: "text/plain"
 | --------- | ----------- |
 | szöveg/egyszerű | Egyszerű szöveg. |
 | szöveg/html | HTML-tartalom. [További információ](#html-support)|
-| Application/MathML + XML | Matematikai Markup Language (MathML). [További információk](./how-to/display-math.md).
+| Application/MathML + XML | Matematikai Markup Language (MathML). [További információ](./how-to/display-math.md).
 | alkalmazás/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word. docx formátumú dokumentum.
 
 
 <br>
 
-## <a name="options"></a>Lehetőségek
+## <a name="options"></a>Beállítások
 
 Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizonyos viselkedéseit konfigurálják.
 
@@ -314,7 +314,7 @@ Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizony
 | onExit | Függvény | Végrehajtja, amikor a magától megjelenő olvasó kilép. |
 | allowFullscreen | Logikai | Teljes képernyős váltás lehetősége (az alapértelmezett érték igaz). |
 | hideExitButton | Logikai | Azt jelzi, hogy el kell-e rejteni a megölelő olvasó kilépési gombjának nyilát (az alapértelmezett érték hamis). Ez csak akkor lehet igaz, ha egy olyan alternatív mechanizmus van megadva, amely kizárja az olvasót (például a mobil eszköztár vissza nyilát). |
-| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Az olvasó cookie-felhasználásának beállítása (az alapértelmezett érték a *CookiePolicy. disable*). A gazda alkalmazás feladata a szükséges felhasználói jóváhagyások beszerzése az EU cookie-k megfelelőségi szabályzatának megfelelően. Lásd: [cookie-házirend beállításai](#cookiepolicy-options). |
+| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Az olvasó cookie-felhasználásának beállítása (az alapértelmezett érték a *CookiePolicy. disable* ). A gazda alkalmazás feladata a szükséges felhasználói jóváhagyások beszerzése az EU cookie-k megfelelőségi szabályzatának megfelelően. Lásd: [cookie-házirend beállításai](#cookiepolicy-options). |
 | disableFirstRun | Logikai | Tiltsa le az első futtatási élményt. |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Beállítások a beolvasás konfigurálásához. |
 | translationOptions | [TranslationOptions](#translationoptions) | A fordítás konfigurálásának beállításai. |
@@ -487,7 +487,7 @@ Values available: "Calibri", "Sitka", "ComicSans"
 enum CookiePolicy { Disable, Enable }
 ```
 
-**Az alább felsorolt beállítások csak tájékoztató jellegűek**. A teljes olvasó tárolja a beállításait, vagy a felhasználói beállításokat a cookie-kon. Ez a *cookiePolicy* beállítás **letiltja** a cookie-k alapértelmezett használatát, hogy megfeleljen az EU cookie-megfelelőségi törvényeinek. Ha újra engedélyezni szeretné a cookie-kat, és vissza kívánja állítani az olvasói felhasználói beállítások alapértelmezett funkcióit, meg kell győződnie arról, hogy a webhely vagy alkalmazás beolvassa a felhasználótól a cookie-k engedélyezéséhez szükséges megfelelő engedélyt. Ezután, ha újra engedélyezni szeretné a cookie-kat a lebilincselő olvasóban, explicit módon be kell állítania a *cookiePolicy* beállítást a *cookiePolicy. Enable* értékre, amikor elindítja a lebilincselő olvasót. Az alábbi táblázat azt ismerteti, hogy milyen beállítások jelennek meg a saját cookie-ban, amikor a *cookiePolicy* beállítás engedélyezve van.
+**Az alább felsorolt beállítások csak tájékoztató jellegűek** . A teljes olvasó tárolja a beállításait, vagy a felhasználói beállításokat a cookie-kon. Ez a *cookiePolicy* beállítás **letiltja** a cookie-k alapértelmezett használatát, hogy megfeleljen az EU cookie-megfelelőségi törvényeinek. Ha újra engedélyezni szeretné a cookie-kat, és vissza kívánja állítani az olvasói felhasználói beállítások alapértelmezett funkcióit, meg kell győződnie arról, hogy a webhely vagy alkalmazás beolvassa a felhasználótól a cookie-k engedélyezéséhez szükséges megfelelő engedélyt. Ezután, ha újra engedélyezni szeretné a cookie-kat a lebilincselő olvasóban, explicit módon be kell állítania a *cookiePolicy* beállítást a *cookiePolicy. Enable* értékre, amikor elindítja a lebilincselő olvasót. Az alábbi táblázat azt ismerteti, hogy milyen beállítások jelennek meg a saját cookie-ban, amikor a *cookiePolicy* beállítás engedélyezve van.
 
 #### <a name="settings-parameters"></a>Beállítások paraméterei
 

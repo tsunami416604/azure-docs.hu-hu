@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ab3b5c2ba892205f87235f7f0ce009719016622d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a99e7e5f27f8c3503c7fa6124d27cfc4e7f4a4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322127"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636765"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>SSIS-csomag meghívása tárolt eljárási tevékenység használatával Azure Data Factory
 Ez a cikk azt ismerteti, hogyan hívhat meg egy SSIS-csomagot egy Azure Data Factory folyamatból egy tárolt eljárási tevékenység használatával. 
@@ -32,7 +32,7 @@ Ez a cikk azt ismerteti, hogyan hívhat meg egy SSIS-csomagot egy Azure Data Fac
 A jelen cikkben található útmutató Azure SQL Databaset használ. Használhatja a felügyelt Azure SQL-példányokat is.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul létrehozása
-Hozzon létre egy Azure-SSIS integrációs modult, ha még nem rendelkezik az oktatóanyag részletes utasításával [: SSIS-csomagok telepítése](../tutorial-create-azure-ssis-runtime-portal.md). Azure-SSIS integrációs modul létrehozásához nem használható az 1. Data Factory-es verzió. 
+Hozzon létre egy Azure-SSIS integrációs modult, ha még nem rendelkezik az oktatóanyag részletes utasításával [: SSIS-csomagok telepítése](../tutorial-deploy-ssis-packages-azure.md). Azure-SSIS integrációs modul létrehozásához nem használható az 1. Data Factory-es verzió. 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 Ebben a szakaszban a Azure PowerShell használatával hozzon létre egy Data Factory folyamatot egy tárolt eljárási tevékenységgel, amely egy SSIS-csomagot hív meg.
@@ -100,8 +100,8 @@ Hozzon létre egy társított szolgáltatást, amely összekapcsolja az adatbáz
         }
         }
     ```
-2. A **Azure PowerShellban**váltson a **C:\ADF\RunSSISPackage** mappára.
-3. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService**. 
+2. A **Azure PowerShellban** váltson a **C:\ADF\RunSSISPackage** mappára.
+3. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService** . 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -168,7 +168,7 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
     }    
     ```
 
-2. A folyamat létrehozásához: **RunSSISPackagePipeline**, futtassa a **New-AzDataFactoryPipeline** parancsmagot.
+2. A folyamat létrehozásához: **RunSSISPackagePipeline** , futtassa a **New-AzDataFactoryPipeline** parancsmagot.
 
     ```powershell
     $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -196,6 +196,5 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
     select * from catalog.executions
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A tárolt eljárási tevékenységgel kapcsolatos részletekért tekintse meg a [tárolt eljárási tevékenységről](data-factory-stored-proc-activity.md) szóló cikket.
-

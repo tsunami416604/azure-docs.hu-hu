@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c7765d65b63c9cee83a76a13448506f61aa8472
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568901"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637156"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul monitorozása az Azure Data Factoryben
 
@@ -48,7 +48,7 @@ A következő táblázat az Azure Integration Runtime parancsmag által visszaad
 | Tulajdonság | Leírás |
 -------- | ------------- | 
 | Name (Név) | Az Azure Integration Runtime neve. |  
-| Állam | Az Azure Integration Runtime állapota. | 
+| Állapot | Az Azure Integration Runtime állapota. | 
 | Hely | Az Azure Integration Runtime helye. Az Azure Integration Runtime helyével kapcsolatos részletekért lásd: [az Integration Runtime bemutatása](concepts-integration-runtime.md). |
 | DataFactoryName | Annak az adatelőállítónak a neve, amelyhez az Azure Integration Runtime tartozik. | 
 | ResourceGroupName | Azon erőforráscsoport neve, amelyhez az adatelőállító tartozik.  |
@@ -72,7 +72,7 @@ Ez a szakasz a Get-AzDataFactoryV2IntegrationRuntime parancsmag által visszaado
 
 ### <a name="properties"></a>Tulajdonságok
 
-Az alábbi táblázat az **egyes csomópontok**figyelési tulajdonságainak leírását tartalmazza:
+Az alábbi táblázat az **egyes csomópontok** figyelési tulajdonságainak leírását tartalmazza:
 
 | Tulajdonság | Leírás | 
 | -------- | ----------- | 
@@ -82,8 +82,8 @@ Az alábbi táblázat az **egyes csomópontok**figyelési tulajdonságainak leí
 | Igénybe vehető memória | Rendelkezésre álló memória a saját üzemeltetésű integrációs modul csomópontján. Ez az érték a közel valós idejű pillanatkép. | 
 | Processzorhasználat | Egy saját üzemeltetésű Integration Runtime-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép. |
 | Hálózatkezelés (be/ki) | Egy saját üzemeltetésű integrációs modul csomópontjának hálózati kihasználtsága. Ez az érték a közel valós idejű pillanatkép. | 
-| Egyidejű feladatok (futó/korlát) | **Fut**. Az egyes csomópontokon futó feladatok vagy feladatok száma. Ez az érték a közel valós idejű pillanatkép. <br/><br/>**Korlát**. A korlát az egyes csomópontok maximális egyidejű feladatait jelzi. Ez az érték a gép méretétől függően van meghatározva. Az egyidejű feladatok végrehajtásának korlátját növelheti a speciális forgatókönyvekben, ha a tevékenységek a CPU, a memória vagy a hálózat kihasználtsága alatt állnak. Ez a funkció egy egycsomópontos, saját üzemeltetésű integrációs futtatókörnyezettel is elérhető. |
-| Szerepkör | A több csomópontos, saját üzemeltetésű integrációs modulban két típusú szerepkör létezik – diszpécser és feldolgozó. Minden csomópont munkavégző, ami azt jelenti, hogy mind a feladatok végrehajtásához használhatók. Csak egy kiosztó csomópont létezik, amely a feladatok/feladatok a Cloud servicesből való lekérésére és különböző munkavégző csomópontokra történő küldésére szolgál. A diszpécser csomópont is egy feldolgozó csomópont. |
+| Egyidejű feladatok (futó/korlát) | **Fut** . Az egyes csomópontokon futó feladatok vagy feladatok száma. Ez az érték a közel valós idejű pillanatkép. <br/><br/>**Korlát** . A korlát az egyes csomópontok maximális egyidejű feladatait jelzi. Ez az érték a gép méretétől függően van meghatározva. Az egyidejű feladatok végrehajtásának korlátját növelheti a speciális forgatókönyvekben, ha a tevékenységek a CPU, a memória vagy a hálózat kihasználtsága alatt állnak. Ez a funkció egy egycsomópontos, saját üzemeltetésű integrációs futtatókörnyezettel is elérhető. |
+| Role | A több csomópontos, saját üzemeltetésű integrációs modulban két típusú szerepkör létezik – diszpécser és feldolgozó. Minden csomópont munkavégző, ami azt jelenti, hogy mind a feladatok végrehajtásához használhatók. Csak egy kiosztó csomópont létezik, amely a feladatok/feladatok a Cloud servicesből való lekérésére és különböző munkavégző csomópontokra történő küldésére szolgál. A diszpécser csomópont is egy feldolgozó csomópont. |
 
 A tulajdonságok egyes beállításai több értelmet mutatnak, ha a saját üzemeltetésű integrációs modulban két vagy több csomópont van (azaz egy kibővíthető forgatókönyvben).
 
@@ -93,7 +93,7 @@ Az egyidejű feladatok korlátjának alapértelmezett értéke a számítógép 
 
 A csomópontok számának növelésével bővítheti a méretezést. A csomópontok számának növelésével az egyidejű feladatok korlátja az összes rendelkezésre álló csomópont egyidejű feladat-határértékének összege.  Ha például egy csomópont legfeljebb tizenkét egyidejű feladatot futtat, akkor három további hasonló csomópont hozzáadásával legfeljebb 48 egyidejű feladat futtatható (azaz 4 x 12). Javasoljuk, hogy csak akkor növelje az egyidejű feladatok korlátját, ha az egyes csomópontok alapértelmezett értékeivel alacsony erőforrás-használatot lát.
 
-A Azure Portalban felülbírálhatja a számított alapértelmezett értéket. Válassza a szerző > kapcsolatok > Integration Runtimes > szerkesztés > csomópontok > egyidejű feladatok értékének módosítása csomópontra. Használhatja a PowerShell [Update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) parancsot is.
+A Azure Portalban felülbírálhatja a számított alapértelmezett értéket. Válassza a szerző > kapcsolatok > Integration Runtimes > szerkesztés > csomópontok > egyidejű feladatok értékének módosítása csomópontra. Használhatja a PowerShell [Update-Azdatafactoryv2integrationruntimenode](/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) parancsot is.
   
 ### <a name="status-per-node"></a>Állapot (/csomópont)
 
@@ -181,7 +181,7 @@ A következő táblázat a Azure-SSIS IR a fenti parancsmag által visszaadott t
 | Csomópontok                        | A Azure-SSIS IR lefoglalt/rendelkezésre álló csomópontjai csomópont-specifikus állapotokkal (kezdő/elérhető/újrahasznosítási/nem elérhető) és végrehajtható hibákkal rendelkeznek. |
 | OtherErrors                  | A nem csomópont-specifikus végrehajtható hibák a Azure-SSIS IR. |
 | LastOperation                | A Azure-SSIS IR utolsó indítási/leállítási műveletének eredménye, ha a művelet sikertelen. |
-| Állam                        | A Azure-SSIS IR teljes állapota (kezdeti/indítás/elindítva/leállítás/leállítva). |
+| Állapot                        | A Azure-SSIS IR teljes állapota (kezdeti/indítás/elindítva/leállítás/leállítva). |
 | Hely                     | A Azure-SSIS IR helye. |
 | NodeSize                     | A Azure-SSIS IR egyes csomópontjainak mérete. |
 | NodeCount                    | A Azure-SSIS IR csomópontjainak száma. |
@@ -234,60 +234,60 @@ Ezután válassza ki a Azure-SSIS IR nevét a figyelési oldal megnyitásához, 
 
 #### <a name="status-tile"></a>ÁLLAPOT csempe
 
-A Azure-SSIS IR figyelése oldal **állapot** csempén láthatja a teljes állapotát, például a **futó** vagy **leállított**állapotot. Ha kiválasztja a **futó** állapotot, megjelenik egy élő **Leállítás** gombbal rendelkező ablak, amely leállítja a Azure-SSIS IR. A **leállított** állapot kiválasztásakor megjelenik egy élő **Start** gombbal rendelkező ablak, amely elindítja a Azure-SSIS IR. Az előugró ablak is rendelkezik egy **SSIS-csomag végrehajtásával** , amely automatikusan létrehoz egy ADF-folyamatot a Azure-SSIS IR futtatott SSIS-csomag végrehajtásával (lásd: [SSIS csomagok futtatása az ADF-folyamatokban végrehajtható SSIS-előkészítési tevékenységekben](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) és egy **erőforrás-azonosító** szövegmezőben, amelyből a Azure-SSIS IR erőforrás-azonosítót () másolhatja `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` . Az ADF-t és Azure-SSIS IR neveket tartalmazó Azure-SSIS IR erőforrás-azonosító utótagja olyan SSIS hoz létre, amely a független szoftvergyártók (ISV) további prémium/licenccel rendelkező összetevőinek megvásárlására és a Azure-SSIS IRhoz való kötésére használható (lásd a [prémium/licencelt összetevők telepítését a Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
+A Azure-SSIS IR figyelése oldal **állapot** csempén láthatja a teljes állapotát, például a **futó** vagy **leállított** állapotot. Ha kiválasztja a **futó** állapotot, megjelenik egy élő **Leállítás** gombbal rendelkező ablak, amely leállítja a Azure-SSIS IR. A **leállított** állapot kiválasztásakor megjelenik egy élő **Start** gombbal rendelkező ablak, amely elindítja a Azure-SSIS IR. Az előugró ablak is rendelkezik egy **SSIS-csomag végrehajtásával** , amely automatikusan létrehoz egy ADF-folyamatot a Azure-SSIS IR futtatott SSIS-csomag végrehajtásával (lásd: [SSIS csomagok futtatása az ADF-folyamatokban végrehajtható SSIS-előkészítési tevékenységekben](./how-to-invoke-ssis-package-ssis-activity.md)) és egy **erőforrás-azonosító** szövegmezőben, amelyből a Azure-SSIS IR erőforrás-azonosítót () másolhatja `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` . Az ADF-t és Azure-SSIS IR neveket tartalmazó Azure-SSIS IR erőforrás-azonosító utótagja olyan SSIS hoz létre, amely a független szoftvergyártók (ISV) további prémium/licenccel rendelkező összetevőinek megvásárlására és a Azure-SSIS IRhoz való kötésére használható (lásd a [prémium/licencelt összetevők telepítését a Azure-SSIS IR](./how-to-develop-azure-ssis-ir-licensed-components.md)).
 
 ![A Azure-SSIS IR ÁLLAPOTú csempe figyelése](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
 
 #### <a name="ssisdb-server-endpoint-tile"></a>SSISDB kiszolgálói VÉGPONT csempe
 
-Ha olyan projekt-telepítési modellt használ, amelyben a csomagok tárolása a Azure SQL Database-kiszolgáló vagy a felügyelt példány által üzemeltetett SSISDB történik, akkor a Azure-SSIS IR figyelési lapján megjelenik a **SSISDB-kiszolgáló végpontjának** csempe (lásd: [a Azure-SSIS IR központi telepítési beállítások konfigurálása](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Ezen a csempén választhat egy hivatkozást, amely kijelöli a Azure SQL Database kiszolgálóját vagy a felügyelt példányt egy ablak megnyitásához, ahol a kiszolgálói végpontot egy szövegmezőből másolhatja, és a SSMS-hez való kapcsolódáskor a csomagok üzembe helyezésére, konfigurálására, futtatására és kezelésére használhatja. Az előugró ablakban kiválaszthatja a **Azure SQL Database vagy a felügyelt példány beállításainak megjelenítése** HIVATKOZÁST a SSISDB újrakonfigurálásához/átméretezéséhez Azure Portalban.
+Ha olyan projekt-telepítési modellt használ, amelyben a csomagok tárolása a Azure SQL Database-kiszolgáló vagy a felügyelt példány által üzemeltetett SSISDB történik, akkor a Azure-SSIS IR figyelési lapján megjelenik a **SSISDB-kiszolgáló végpontjának** csempe (lásd: [a Azure-SSIS IR központi telepítési beállítások konfigurálása](./tutorial-deploy-ssis-packages-azure.md#deployment-settings-page)). Ezen a csempén választhat egy hivatkozást, amely kijelöli a Azure SQL Database kiszolgálóját vagy a felügyelt példányt egy ablak megnyitásához, ahol a kiszolgálói végpontot egy szövegmezőből másolhatja, és a SSMS-hez való kapcsolódáskor a csomagok üzembe helyezésére, konfigurálására, futtatására és kezelésére használhatja. Az előugró ablakban kiválaszthatja a **Azure SQL Database vagy a felügyelt példány beállításainak megjelenítése** HIVATKOZÁST a SSISDB újrakonfigurálásához/átméretezéséhez Azure Portalban.
 
 ![A Azure-SSIS IR SSISDB csempe monitorozása](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
 
 #### <a name="proxy--staging-tile"></a>PROXY/előkészítés csempe
 
-Ha letölti, telepíti és konfigurálja Self-Hosted IR-t (a-t) proxyként a Azure-SSIS IR számára a helyszíni adateléréshez, akkor a Azure-SSIS IR figyelési lapján megjelenik a **proxy/előkészítés** csempéje (lásd: a Hálózatfigyelő [beállítása proxyként a Azure-SSIS IR számára](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Ezen a csempén kiválaszthatja azt a hivatkozást, amely kijelöli a szükséges elemet, hogy megnyissa a figyelési oldalát. Kiválaszthat egy másik hivatkozást is, amely kijelöli az Azure-Blob Storage az előkészítéshez a társított szolgáltatás újrakonfigurálásához.
+Ha letölti, telepíti és konfigurálja Self-Hosted IR-t (a-t) proxyként a Azure-SSIS IR számára a helyszíni adateléréshez, akkor a Azure-SSIS IR figyelési lapján megjelenik a **proxy/előkészítés** csempéje (lásd: a Hálózatfigyelő [beállítása proxyként a Azure-SSIS IR számára](./self-hosted-integration-runtime-proxy-ssis.md)). Ezen a csempén kiválaszthatja azt a hivatkozást, amely kijelöli a szükséges elemet, hogy megnyissa a figyelési oldalát. Kiválaszthat egy másik hivatkozást is, amely kijelöli az Azure-Blob Storage az előkészítéshez a társított szolgáltatás újrakonfigurálásához.
 
 #### <a name="validate-vnet--subnet-tile"></a>VNET/ALHÁLÓZAT csempe ellenőrzése
 
-Ha a Azure-SSIS IRt egy VNet csatlakoztatja, a Azure-SSIS IR figyelése lapon megjelenik a **VNet/alhálózati csempe ellenőrzése** (lásd: [a Azure-SSIS IR csatlakoztatása egy VNet](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)). Ezen a csempén kiválaszthat egy olyan hivatkozást, amely a VNet és az alhálózatot megjelöli egy ablak megnyitásához, ahol a VNet erőforrás-AZONOSÍTÓját () és az alhálózat nevét a szövegmezőből is ellenőrizheti, valamint `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet` érvényesítheti a VNet és az alhálózati konfigurációkat, így biztosítva, hogy a szükséges bejövő/kimenő hálózati forgalom és a Azure-SSIS IR felügyelete ne legyen akadályban.
+Ha a Azure-SSIS IRt egy VNet csatlakoztatja, a Azure-SSIS IR figyelése lapon megjelenik a **VNet/alhálózati csempe ellenőrzése** (lásd: [a Azure-SSIS IR csatlakoztatása egy VNet](./join-azure-ssis-integration-runtime-virtual-network.md)). Ezen a csempén kiválaszthat egy olyan hivatkozást, amely a VNet és az alhálózatot megjelöli egy ablak megnyitásához, ahol a VNet erőforrás-AZONOSÍTÓját () és az alhálózat nevét a szövegmezőből is ellenőrizheti, valamint `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet` érvényesítheti a VNet és az alhálózati konfigurációkat, így biztosítva, hogy a szükséges bejövő/kimenő hálózati forgalom és a Azure-SSIS IR felügyelete ne legyen akadályban.
 
 ![A Azure-SSIS IR figyelése – csempe ellenőrzése](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
 
 #### <a name="diagnose-connectivity-tile"></a>KAPCSOLATi csempe DIAGNOSZTIZÁLása
 
-A Azure-SSIS IR figyelése lap **kapcsolat diagnosztizálása** csempén a **kapcsolat tesztelése** hivatkozásra kattintva megtekintheti az ablakokat, ahol ellenőrizheti a Azure-SSIS IR és a kapcsolódó csomag/konfiguráció/adattárolók közötti kapcsolatokat, valamint a felügyeleti szolgáltatásokat a teljes tartománynév (FQDN) IP MCDREAMSCENE-címével és a kijelölt porttal (lásd: [kapcsolatok tesztelése a Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)).
+A Azure-SSIS IR figyelése lap **kapcsolat diagnosztizálása** csempén a **kapcsolat tesztelése** hivatkozásra kattintva megtekintheti az ablakokat, ahol ellenőrizheti a Azure-SSIS IR és a kapcsolódó csomag/konfiguráció/adattárolók közötti kapcsolatokat, valamint a felügyeleti szolgáltatásokat a teljes tartománynév (FQDN) IP MCDREAMSCENE-címével és a kijelölt porttal (lásd: [kapcsolatok tesztelése a Azure-SSIS IR](./ssis-integration-runtime-diagnose-connectivity-faq.md)).
 
 ![Képernyőkép, amely bemutatja, hol tesztelheti a Azure-SSIS IR és a kapcsolódó csomag/konfiguráció/adattárak közötti kapcsolatokat.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>STATIKUS nyilvános IP-címek csempe
 
-Ha a saját statikus nyilvános IP-címeit a Azure-SSIS IR számára teszi elérhetővé, megjelenik a **statikus nyilvános IP** -címek csempe a Azure-SSIS IR monitorozási oldalon (lásd: [saját statikus nyilvános IP-címek létrehozása a Azure-SSIS IRhoz](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)). Ezen a csempén kiválaszthatja az első/második statikus nyilvános IP-címeire mutató hivatkozásokat a Azure-SSIS IR számára egy ablak megnyitásához, ahol az erőforrás-azonosítót ( `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress` ) egy szövegmezőből másolhatja. Az előugró ablakban bejelölheti az első/második statikus **nyilvános IP-cím beállításainak megjelenítése** hivatkozást is, amely az első/második statikus nyilvános IP-cím (Azure Portal) kezelésére használható.
+Ha a saját statikus nyilvános IP-címeit a Azure-SSIS IR számára teszi elérhetővé, megjelenik a **statikus nyilvános IP** -címek csempe a Azure-SSIS IR monitorozási oldalon (lásd: [saját statikus nyilvános IP-címek létrehozása a Azure-SSIS IRhoz](./join-azure-ssis-integration-runtime-virtual-network.md#publicIP)). Ezen a csempén kiválaszthatja az első/második statikus nyilvános IP-címeire mutató hivatkozásokat a Azure-SSIS IR számára egy ablak megnyitásához, ahol az erőforrás-azonosítót ( `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress` ) egy szövegmezőből másolhatja. Az előugró ablakban bejelölheti az első/második statikus **nyilvános IP-cím beállításainak megjelenítése** hivatkozást is, amely az első/második statikus nyilvános IP-cím (Azure Portal) kezelésére használható.
 
 ![Képernyőfelvétel: az első/második statikus nyilvános IP-címek kijelölése.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>PACKAGE STOREs csempe
 
-Ha olyan csomag-telepítési modellt használ, ahol a csomagok tárolása az Azure SQL felügyelt példánya által üzemeltetett, és Azure-SSIS IR csomagkezelő használatával felügyelt fájlrendszerben, Azure Files/SQL Server adatbázisban (MSDB) történik, akkor a **csomag tárolja** csempét a Azure-SSIS IR monitorozási lapján (lásd: [a Azure-SSIS IR központi telepítési beállításainak konfigurálása](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Ezen a csempén kiválaszthat egy hivatkozást, amely a Azure-SSIS IR csatolt csomagjainak számát jelöli egy ablak megnyitásához, ahol újrakonfigurálhatja a megfelelő társított szolgáltatásokat a Azure-SSIS IR-csomagok tárolói számára az Azure SQL felügyelt példánya által üzemeltetett fájlrendszer/Azure Files/MSDB tetején.
+Ha olyan csomag-telepítési modellt használ, ahol a csomagok tárolása az Azure SQL felügyelt példánya által üzemeltetett, és Azure-SSIS IR csomagkezelő használatával felügyelt fájlrendszerben, Azure Files/SQL Server adatbázisban (MSDB) történik, akkor a **csomag tárolja** csempét a Azure-SSIS IR monitorozási lapján (lásd: [a Azure-SSIS IR központi telepítési beállításainak konfigurálása](./tutorial-deploy-ssis-packages-azure.md#deployment-settings-page)). Ezen a csempén kiválaszthat egy hivatkozást, amely a Azure-SSIS IR csatolt csomagjainak számát jelöli egy ablak megnyitásához, ahol újrakonfigurálhatja a megfelelő társított szolgáltatásokat a Azure-SSIS IR-csomagok tárolói számára az Azure SQL felügyelt példánya által üzemeltetett fájlrendszer/Azure Files/MSDB tetején.
 
 ![A Azure-SSIS IR-csomag csempe figyelése](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
 
 #### <a name="errors-tile"></a>HIBA (ok) csempe
 
-Ha problémák merülnek fel a Azure-SSIS IR indítása/leállítása/karbantartása/frissítése során, megjelenik egy további **hiba (ok)** csempe a Azure-SSIS IR figyelési oldalon. Ezen a csempén kiválaszthat egy hivatkozást, amely a Azure-SSIS IR által generált hibák számát jelöli egy ablak megnyitásához, ahol további részletekben láthatja a hibákat, és átmásolhatja őket a hibaelhárítási útmutatóban található ajánlott megoldások kereséséhez (lásd: [a Azure-SSIS IR hibaelhárítása](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)).
+Ha problémák merülnek fel a Azure-SSIS IR indítása/leállítása/karbantartása/frissítése során, megjelenik egy további **hiba (ok)** csempe a Azure-SSIS IR figyelési oldalon. Ezen a csempén kiválaszthat egy hivatkozást, amely a Azure-SSIS IR által generált hibák számát jelöli egy ablak megnyitásához, ahol további részletekben láthatja a hibákat, és átmásolhatja őket a hibaelhárítási útmutatóban található ajánlott megoldások kereséséhez (lásd: [a Azure-SSIS IR hibaelhárítása](./ssis-integration-runtime-management-troubleshoot.md)).
 
 ![Azure-SSIS IR figyelése – csempe DIAGNOSZTIZÁLása](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>Az Azure SSIS Integration Runtime figyelése Azure Monitor
 
-A Azure-SSIS IR Azure Monitorsal való figyelésével kapcsolatban lásd: [SSIS-műveletek figyelése a Azure monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)használatával.
+A Azure-SSIS IR Azure Monitorsal való figyelésével kapcsolatban lásd: [SSIS-műveletek figyelése a Azure monitor](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)használatával.
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>További információ az Azure-SSIS Integration Runtime-ról
 
 Az Azure-SSIS integrációs modulról további információt az alábbi cikkekben talál:
 
 - [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk általános információkat tartalmaz az integrációs modulokról, beleértve a Azure-SSIS IRt is. 
-- [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk részletes útmutatást nyújt a Azure-SSIS IR létrehozásához és a Azure SQL Database használatáról az SSIS-katalógus (SSISDB) futtatásához. 
+- [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](./tutorial-deploy-ssis-packages-azure.md). Ez a cikk részletes útmutatást nyújt a Azure-SSIS IR létrehozásához és a Azure SQL Database használatáról az SSIS-katalógus (SSISDB) futtatásához. 
 - [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatást nyújt az Azure SQL felügyelt példányának SSISDB való futtatásához. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan indíthatja el, állíthatja le vagy törölheti a Azure-SSIS IR. Emellett további csomópontok hozzáadásával is bemutatja, hogyan méretezheti azt ki. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk útmutatást nyújt a Azure-SSIS IR virtuális hálózathoz való csatlakoztatásához.

@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 7183a9c75c78a973b53a9c8c065d62c592b13151
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6c0908d2656d9d6464ae1f94d5b0cd68f759530a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441108"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637343"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -36,6 +36,7 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 - A konfigurációt jelenleg csak parancssori felület vagy REST-kérelmek használatával lehet elvégezni. A Azure Portal vagy a PowerShell nem használható.
+- A ```--export-all-tables``` CLI-ben és a REST-ben való beállítás nem támogatott, és el lesz távolítva. Explicit módon meg kell adnia a táblák listáját az exportálási szabályokban.
 - A támogatott táblázatok jelenleg csak a [támogatott táblák](#supported-tables) szakaszban vannak korlátozva. Ha az adatexportálási szabály nem támogatott táblát tartalmaz, akkor a művelet sikeres lesz, de a rendszer nem exportálja az adott táblára vonatkozó adatvesztést. Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, a hiba miatt sikertelen lesz. ```Table <tableName> does not exist in the workspace.```
 - A Log Analytics munkaterület a következők kivételével bármely régióban lehet:
   - Észak-Svájc
@@ -63,9 +64,9 @@ Az adatexportálási szolgáltatáshoz jelenleg nem számítunk fel további dí
 ## <a name="export-destinations"></a>Célhelyek exportálása
 
 ### <a name="storage-account"></a>Tárfiók
-Az adatküldés óránként történik a Storage-fiókok számára. Az adatexportálási konfiguráció egy tárolót hoz létre a Storage *-* fiókban lévő összes táblához a (z) nevű tárolóban, amelyet a tábla neve követ. Például a tábla *SecurityEvent* egy *am-SecurityEvent*nevű tárolóba fog elküldeni.
+Az adatküldés óránként történik a Storage-fiókok számára. Az adatexportálási konfiguráció egy tárolót hoz létre a Storage *-* fiókban lévő összes táblához a (z) nevű tárolóban, amelyet a tábla neve követ. Például a tábla *SecurityEvent* egy *am-SecurityEvent* nevű tárolóba fog elküldeni.
 
-A Storage-fiók blobjának elérési útja a következő: *WorkspaceResourceId =/Subscriptions/Subscription-ID/resourcegroups/ \<resource-group\> /providers/Microsoft.operationalinsights/workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d =/h =/m = \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js*. Mivel a hozzáfűzési Blobok a Storage-ban lévő 50K-írásokra korlátozódnak, az exportált Blobok száma kiterjeszthető, ha a Hozzáfűzések száma magas. Ilyen esetben a Blobok elnevezési mintája PT1H_ #. JSON lesz, ahol a # a növekményes Blobok száma.
+A Storage-fiók blobjának elérési útja a következő: *WorkspaceResourceId =/Subscriptions/Subscription-ID/resourcegroups/ \<resource-group\> /providers/Microsoft.operationalinsights/workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d =/h =/m = \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js* . Mivel a hozzáfűzési Blobok a Storage-ban lévő 50K-írásokra korlátozódnak, az exportált Blobok száma kiterjeszthető, ha a Hozzáfűzések száma magas. Ilyen esetben a Blobok elnevezési mintája PT1H_ #. JSON lesz, ahol a # a növekményes Blobok száma.
 
 A Storage-fiók adatformátuma [JSON-vonal](diagnostic-logs-append-blobs.md). Ez azt jelenti, hogy az egyes rekordok egy sortöréssel vannak elválasztva, a külső rekordok tömbje és a JSON-rekordok közötti vesszők nélkül. 
 
@@ -74,7 +75,7 @@ A Storage-fiók adatformátuma [JSON-vonal](diagnostic-logs-append-blobs.md). Ez
 Log Analytics adatexportálás írási blobokat írhat a nem módosítható tárolási fiókokba, ha az időalapú adatmegőrzési házirendek engedélyezve vannak a *allowProtectedAppendWrites* beállításnál. Így új blokkokat írhat egy hozzáfűzési blobba, miközben megőrizheti a módosíthatatlansági védelmét és megfelelőségét. Lásd: a [védett hozzáfűzési Blobok írásának engedélyezése](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
 
 ### <a name="event-hub"></a>Eseményközpont
-A rendszer közel valós időben küldi el az adatait az Event hub számára, mivel Azure Monitor. A rendszer minden olyan adattípushoz létrehoz egy Event hub *-* t, amelyet a név és a tábla neve után exportál. Például a *SecurityEvent* tábla egy *am-SecurityEvent*nevű Event hub számára fog eljuttatni. Ha azt szeretné, hogy az exportált adatai egy adott esemény központhoz jussanak, vagy ha olyan névvel rendelkezik, amely meghaladja az 47 karakteres korlátot, akkor megadhatja a saját Event hub-nevét, és exportálhatja az összes táblát.
+A rendszer közel valós időben küldi el az adatait az Event hub számára, mivel Azure Monitor. A rendszer minden olyan adattípushoz létrehoz egy Event hub *-* t, amelyet a név és a tábla neve után exportál. Például a *SecurityEvent* tábla egy *am-SecurityEvent* nevű Event hub számára fog eljuttatni. Ha azt szeretné, hogy az exportált adatai egy adott esemény központhoz jussanak, vagy ha olyan névvel rendelkezik, amely meghaladja az 47 karakteres korlátot, akkor megadhatja a saját Event hub-nevét, és exportálhatja a megadott táblák összes adatait.
 
 Az exportált adatok mennyisége gyakran növekszik az idő múlásával, és az Event hub-méretezést növelni kell a nagyobb adatátviteli sebesség kezelésére, valamint a szabályozás és az adatkésés elkerülésére. A Event Hubs automatikus feltöltési funkciójának használatával automatikusan méretezheti és növelheti az átviteli egységek számát, és megfelel a használati igényeknek. A részletekért lásd: az [Azure Event Hubs átviteli egységek automatikus vertikális felskálázása](../../event-hubs/event-hubs-auto-inflate.md) .
 
@@ -98,7 +99,7 @@ A következő Azure-erőforrás-szolgáltatónak regisztrálnia kell az előfize
 
 - Microsoft. bepillantások
 
-Ez az erőforrás-szolgáltató valószínűleg már regisztrálva lesz a legtöbb Azure Monitor felhasználó számára. Az ellenőrzéshez lépjen a Azure Portal **előfizetések** elemre. Válassza ki az előfizetését, majd kattintson az **erőforrás-szolgáltatók** elemre a menü **Beállítások** szakaszában. Keresse meg a **Microsoft. ininsights**szolgáltatást. Ha az állapota **regisztrálva**van, akkor már regisztrálva van. Ha nem, kattintson a **regisztrálás** gombra a regisztráláshoz.
+Ez az erőforrás-szolgáltató valószínűleg már regisztrálva lesz a legtöbb Azure Monitor felhasználó számára. Az ellenőrzéshez lépjen a Azure Portal **előfizetések** elemre. Válassza ki az előfizetését, majd kattintson az **erőforrás-szolgáltatók** elemre a menü **Beállítások** szakaszában. Keresse meg a **Microsoft. ininsights** szolgáltatást. Ha az állapota **regisztrálva** van, akkor már regisztrálva van. Ha nem, kattintson a **regisztrálás** gombra a regisztráláshoz.
 
 Az erőforrás-szolgáltatót az [Azure Resource Providers és types](../../azure-resource-manager/management/resource-providers-and-types.md)című témakörben leírtak szerint is használhatja. A következő egy minta parancs a PowerShell használatával:
 
@@ -107,13 +108,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ```
 
 ### <a name="allow-trusted-microsoft-services"></a>Megbízható Microsoft-szolgáltatások engedélyezése
-Ha úgy állította be a Storage-fiókot, hogy az engedélyezze a hozzáférést a kiválasztott hálózatokból, vegyen fel egy kivételt, amely lehetővé teszi, hogy Azure Monitor írni a fiókba. A Storage-fiókhoz tartozó **tűzfalak és virtuális hálózatok** **lehetőségnél válassza a megbízható Microsoft-szolgáltatások engedélyezése a Storage-fiókhoz**lehetőséget.
+Ha úgy állította be a Storage-fiókot, hogy az engedélyezze a hozzáférést a kiválasztott hálózatokból, vegyen fel egy kivételt, amely lehetővé teszi, hogy Azure Monitor írni a fiókba. A Storage-fiókhoz tartozó **tűzfalak és virtuális hálózatok** **lehetőségnél válassza a megbízható Microsoft-szolgáltatások engedélyezése a Storage-fiókhoz** lehetőséget.
 
 [![A Storage-fiók tűzfala és virtuális hálózatai](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 
 ### <a name="create-or-update-data-export-rule"></a>Adatexportálási szabály létrehozása vagy frissítése
-Az adatexportálási szabályok határozzák meg az összes táblából vagy a táblák bizonyos tábláiból exportálandó adatok egyetlen célhelyre való exportálásának adatait. Több szabályt is létrehozhat, ha több célhelyre kell küldenie.
+Az adatexportálási szabály a táblák egy adott célhelyére exportálandó adatmennyiséget határozza meg. Minden célhoz létrehozhat egy szabályt.
+
+Az alábbi CLI-paranccsal megtekintheti a munkaterületen lévő táblákat. Ez segíthet a kívánt táblák másolásában és az adatexportálási szabályban való felvételében.
+```azurecli
+az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+```
 
 A következő parancs használatával hozzon létre egy adatexportálási szabályt egy Storage-fiókhoz a parancssori felület használatával.
 
@@ -142,8 +148,8 @@ A kérelem törzse megadja a táblák célhelyét. A következő egy minta törz
             "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name"
         },
         "tablenames": [
-"table1",
-    "table2" 
+            "table1",
+            "table2" 
         ],
         "enable": true
     }
@@ -165,9 +171,26 @@ Az alábbi példa egy Event hub REST-kérelmét követi.
         "enable": true
     }
 }
-
 ```
 
+Az alábbi példa egy Event hub REST-kérelmére szolgál, ahol az Event hub neve van megadva. Ebben az esetben a rendszer az összes exportált adattovábbítást elküldi az Event hub-nak.
+
+```json
+{
+    "properties": {
+        "destination": {
+            "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.EventHub/namespaces/eventhub-namespaces-name",
+            "metaData": {
+                "EventHubName": "eventhub-name"
+        },
+        "tablenames": [
+            "table1",
+            "table2"
+        ],
+        "enable": true
+    }
+}
+```
 
 ## <a name="view-data-export-configuration"></a>Adatexportálási konfiguráció megtekintése
 Az alábbi parancs használatával megtekintheti az adatexportálási szabály konfigurációját a parancssori felület használatával.
@@ -423,6 +446,6 @@ A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódn
 | WVDManagement | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az exportált adatok lekérdezése az Azure Adatkezelőból](azure-data-explorer-query-storage.md).

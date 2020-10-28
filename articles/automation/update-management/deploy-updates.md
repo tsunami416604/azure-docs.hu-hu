@@ -3,14 +3,14 @@ title: Frissítési központi telepítések létrehozása Azure Automation Updat
 description: Ez a cikk a frissítések központi telepítésének ütemezett és állapotának áttekintését ismerteti.
 services: automation
 ms.subservice: update-management
-ms.date: 10/21/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1f4c04bf4a26e67a905679db23e303c2762d90c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d6594e1cdd7925a4287cf9edbfd5324b427338f4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426414"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637598"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Frissítések központi telepítése és eredmények áttekintése
 
@@ -20,7 +20,7 @@ Az egyes forgatókönyvek esetében a központi telepítéshez a kiválasztott g
 
 * Az operációs rendszer automatikusan ki van választva a gép operációs rendszere alapján
 * A frissítendő célszámítógép automatikusan célként van beállítva
-* Az ütemterv konfigurálásakor megadhatja, hogy a **Frissítés most**megtörténjen, vagy ismétlődő ütemtervet használ.
+* Az ütemterv konfigurálásakor megadhatja, hogy a **Frissítés most** megtörténjen, vagy ismétlődő ütemtervet használ.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -43,11 +43,11 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
 
 2. A kiválasztott erőforrástól függően navigáljon Update Management:
 
-   * Ha az Automation-fiók lehetőséget választotta, lépjen **a frissítés kezelése** elemre az **Update Management**alatt, majd válassza a **frissítés központi telepítésének**megkezdése lehetőséget.
-   * Ha az Azure-beli virtuális gépet választotta, lépjen a **vendég + gazdagép frissítéseire**, majd válassza **a Update Management ugrás**lehetőséget.
-   * Ha kiválasztott egy arc-kompatibilis kiszolgálót, lépjen a **Update Managementra**, majd válassza a **frissítés központi telepítésének**megkezdése lehetőséget.
+   * Ha az Automation-fiók lehetőséget választotta, lépjen **a frissítés kezelése** elemre az **Update Management** alatt, majd válassza a **frissítés központi telepítésének** megkezdése lehetőséget.
+   * Ha az Azure-beli virtuális gépet választotta, lépjen a **vendég + gazdagép frissítéseire** , majd válassza **a Update Management ugrás** lehetőséget.
+   * Ha kiválasztott egy arc-kompatibilis kiszolgálót, lépjen a **Update Managementra** , majd válassza a **frissítés központi telepítésének** megkezdése lehetőséget.
 
-3. Az **új frissítés telepítése**alatt, a **név** mezőben adjon meg egy egyedi nevet a telepítéshez.
+3. Az **új frissítés telepítése** alatt, a **név** mezőben adjon meg egy egyedi nevet a telepítéshez.
 
 4. Válassza ki a frissítés központi telepítéséhez használni kívánt operációs rendszert.
 
@@ -68,7 +68,7 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
 
     Ha a központi telepítés célja csak a frissítések kiválasztása, akkor a következő lépésben leírtak szerint ki kell választania a frissítések **belefoglalása/kizárása** beállítás konfigurálásakor az összes előre kiválasztott frissítési besorolást. Ez biztosítja, hogy csak azok a frissítések legyenek telepítve a célszámítógépen, amelyeket az adott központi telepítésbe való *felvételhez* megadott.
 
-8. A **frissítések belefoglalása/kizárása** régió használatával vegye fel vagy zárja ki a kiválasztott frissítéseket a központi telepítésből. A **Belefoglalás/kizárás** lapon adja meg a tudásbáziscikk azonosítójának sorszámait, amelyeket bele szeretne foglalni vagy ki kell zárni.
+8. A **frissítések belefoglalása/kizárása** régió használatával vegye fel vagy zárja ki a kiválasztott frissítéseket a központi telepítésből. A **Belefoglalás/kizárás** lapon adja meg a Windows-frissítések belefoglalásához vagy kizárásához szükséges TUDÁSBÁZISCIKK-azonosítók számát. A támogatott Linux-disztribúciók esetében adja meg a csomag nevét.
 
    > [!IMPORTANT]
    > Ne feledje, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy kizárási szabályt `*` , Update Management kizárja az összes javítást vagy csomagot a telepítésből. A kizárt javítások továbbra is hiányzóként jelennek meg a gépeken. Linux rendszerű gépek esetén, ha olyan csomagot tartalmaz, amely egy kizárt függő csomaggal rendelkezik, Update Management nem telepíti a fő csomagot.
@@ -76,12 +76,15 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
    > [!NOTE]
    > Nem adhat meg olyan frissítéseket, amelyek felváltották a frissítés központi telepítésbe való felvételét.
 
-9. Válassza az **időzítési beállítások**lehetőséget. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
+   > [!IMPORTANT]
+   > A Red Hat Enterprise esetében a kernel frissítése a YUM-ben csomagokként is megjelenik. Ha nem zárja ki a kernel-frissítéseket tartalmazó frissítéseket, Update Management fogja alkalmazni ezeket a frissítéseket.
+
+9. Válassza az **időzítési beállítások** lehetőséget. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 
     > [!NOTE]
     > Ez a beállítás eltérő, ha egy arc-kompatibilis kiszolgálót jelölt ki. A **Frissítés most** lehetőségre kattintva 20 percet is igénybe vehet a jövőben.
 
-10. Az **ismétlődéssel** megadhatja, hogy a telepítés egyszer történjen-e, vagy ismétlődő ütemezéset használ, majd kattintson **az OK gombra**.
+10. Az **ismétlődéssel** megadhatja, hogy a telepítés egyszer történjen-e, vagy ismétlődő ütemezéset használ, majd kattintson **az OK gombra** .
 
 11. A **parancsfájlok előtti és utáni parancsfájlok** területen válassza ki az üzembe helyezés előtt és után futtatandó parancsfájlokat. További információ: a [parancsfájlok előtti és utáni parancsfájlok kezelése](pre-post-scripts.md).
 
@@ -102,14 +105,14 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
     * Csak újraindítás; Ez a beállítás nem telepíti a frissítéseket
 
     > [!NOTE]
-    > Az újraindítás [kezeléséhez használt beállításkulcsok](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) alatt felsorolt beállításkulcsok újraindítási eseményt okozhatnak, ha az újraindítási **Beállítások** úgy vannak beállítva, hogy **Soha ne induljon újra**.
+    > Az újraindítás [kezeléséhez használt beállításkulcsok](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) alatt felsorolt beállításkulcsok újraindítási eseményt okozhatnak, ha az újraindítási **Beállítások** úgy vannak beállítva, hogy **Soha ne induljon újra** .
 
-14. Amikor befejezte a központi telepítési ütemterv konfigurálását, válassza a **Létrehozás**lehetőséget.
+14. Amikor befejezte a központi telepítési ütemterv konfigurálását, válassza a **Létrehozás** lehetőséget.
 
     ![A frissítés ütemezési beállításai ablaktábla](./media/deploy-updates/manageupdates-schedule-win.png)
 
     > [!NOTE]
-    > Amikor befejezte a központi telepítési ütemterv konfigurálását egy kiválasztott ív-kompatibilis kiszolgálón, válassza a **felülvizsgálat + létrehozás**lehetőséget.
+    > Amikor befejezte a központi telepítési ütemterv konfigurálását egy kiválasztott ív-kompatibilis kiszolgálón, válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
 15. Ekkor visszalép az állapot-irányítópultra. Válassza a **központi telepítési ütemtervek** lehetőséget a létrehozott központi telepítési ütemterv megjelenítéséhez. Legfeljebb 500 ütemterv szerepel a felsorolásban. Ha több mint 500 ütemterve van, és szeretné áttekinteni a teljes listát, tekintse meg a [szoftverfrissítési konfigurációk – lista](/rest/api/automation/softwareupdateconfigurations/list) REST API metódust. Az API 2019-06-01-es vagy újabb verzióját kell megadni.
 
@@ -121,7 +124,7 @@ A heti frissítések központi telepítésének létrehozásához minta-runbook 
 
 ## <a name="check-deployment-status"></a>Központi telepítés állapotának keresése
 
-Az ütemezett telepítés megkezdése után az állapotot az **Update Management**( **Előzmények** ) lapon tekintheti meg. Ha a telepítés fut, az állapota **Folyamatban** lesz. Az üzembe helyezés sikeres befejeződése után az állapot **sikeresre**változik. Ha az üzemelő példány egy vagy több frissítésével hibát észlel, az állapot **sikertelen**lesz.
+Az ütemezett telepítés megkezdése után az állapotot az **Update Management** ( **Előzmények** ) lapon tekintheti meg. Ha a telepítés fut, az állapota **Folyamatban** lesz. Az üzembe helyezés sikeres befejeződése után az állapot **sikeresre** változik. Ha az üzemelő példány egy vagy több frissítésével hibát észlel, az állapot **sikertelen** lesz.
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>Befejezett frissítés telepítésének eredményeinek megtekintése
 
@@ -129,7 +132,7 @@ Az üzembe helyezés befejezésekor kiválaszthatja, hogy az eredmények megjele
 
 [![Központi telepítési állapot irányítópultjának frissítése egy adott központi telepítéshez](./media/deploy-updates/manageupdates-view-results.png)](./media/deploy-updates/manageupdates-view-results-expanded.png#lightbox)
 
-A **frissítés eredményei**között az összefoglalás a frissítések és a telepítési eredmények teljes számát adja meg a cél virtuális gépeken. A jobb oldali táblázat a frissítések részletes részletezését és a telepítés eredményét jeleníti meg.
+A **frissítés eredményei** között az összefoglalás a frissítések és a telepítési eredmények teljes számát adja meg a cél virtuális gépeken. A jobb oldali táblázat a frissítések részletes részletezését és a telepítés eredményét jeleníti meg.
 
 Az elérhető értékek a következők:
 
@@ -144,6 +147,6 @@ Válassza a **kimenet** lehetőséget, hogy megtekintse a runbook a cél virtuá
 
 A telepítés közben felmerülő hibák részletes információinak megtekintéséhez válassza a **Hibák** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha meg szeretné tudni, hogyan hozhat létre riasztásokat a telepítési eredmények frissítésével kapcsolatban, tekintse meg [a riasztások létrehozása a Update Managementhoz](configure-alerts.md)című témakört.

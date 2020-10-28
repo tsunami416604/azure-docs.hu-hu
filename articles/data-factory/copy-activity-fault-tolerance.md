@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 4a0529248c58f7fa7f962d9d1432411c351c7bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440643"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634777"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Másolási tevékenység hibatűrése az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -93,7 +93,7 @@ path | A naplófájlok elérési útja. | A naplófájlok tárolásához haszná
 > - Csak akkor, ha több fájlt ad meg a forrás adatkészletben, ami lehet mappa, helyettesítő karakter vagy fájlok listája, a másolási tevékenység kihagyhatja az adott hibaüzeneteket. Ha egyetlen fájl van megadva a forrás adatkészletben a célhelyre való másoláshoz, a másolási tevékenység sikertelen lesz, ha hiba történt.
 >
 > Ha a rendszer a forrás-és a célhelyek között inkonzisztensként ellenőrzi, hogy az adott fájlok kimaradnak-e:
-> - Az adatkonzisztencia-dokumentációból további részleteket [itt](https://docs.microsoft.com/azure/data-factory/copy-activity-data-consistency)talál.
+> - Az adatkonzisztencia-dokumentációból további részleteket [itt](./copy-activity-data-consistency.md)talál.
 
 ### <a name="monitoring"></a>Figyelés 
 
@@ -146,22 +146,22 @@ A fenti naplóból megtekintheti, bigfile.csv ki lett hagyva, mert egy másik al
 ### <a name="supported-scenarios"></a>Támogatott esetek
 A másolási tevékenység három olyan forgatókönyvet támogat, amelyek nem kompatibilis táblázatos adatok észlelésére, kihagyására és naplózására alkalmasak:
 
-- Nem **kompatibilis a forrás adattípusa és a fogadó natív típusa között**. 
+- Nem **kompatibilis a forrás adattípusa és a fogadó natív típusa között** . 
 
     Példa: adatok másolása CSV-fájlból a blob Storage-ból egy SQL Database-be egy olyan séma-definícióval, amely három INT típusú oszlopot tartalmaz. A numerikus adatértékeket tartalmazó CSV-fájlok sorai, például az 123 456 789-es sorok sikeres másolása a fogadó tárolóba. Azonban a nem numerikus értékeket tartalmazó sorok, például az 123 456, az ABC nem kompatibilisként és kimarad.
 
-- A **forrás és a fogadó közötti oszlopok száma nem egyezik**.
+- A **forrás és a fogadó közötti oszlopok száma nem egyezik** .
 
     Például: adatok másolása egy CSV-fájlból a blob Storage-ban egy SQL Database-be olyan séma-definícióval, amely hat oszlopot tartalmaz. A hat oszlopot tartalmazó CSV-fájl sorainak másolása sikeresen megtörtént a fogadó tárolóba. A több mint hat oszlopot tartalmazó CSV-fájlok nem kompatibilisként vannak észlelve, és kimaradnak.
 
-- **Az elsődleges kulcs megsértése SQL Server/Azure SQL Database/Azure Cosmos db írásakor**.
+- **Az elsődleges kulcs megsértése SQL Server/Azure SQL Database/Azure Cosmos db írásakor** .
 
     Például: adatok másolása egy SQL-kiszolgálóról egy SQL-adatbázisba. Elsődleges kulcs van definiálva a fogadó SQL-adatbázisban, de nincs ilyen elsődleges kulcs definiálva a forrás SQL-kiszolgálón. A forrásban található duplikált sorok nem másolhatók a fogadóba. A másolási tevékenység csak a forrásadatok első sorát másolja a fogadóba. A duplikált elsődleges kulcs értékét tartalmazó következő forrásfájlokat inkompatibilisként észleli a rendszer, és kihagyja.
 
 >[!NOTE]
 >- Az adatok az Azure szinapszis Analyticsben (korábban SQL Data Warehouse) való betöltéséhez a Base használatával konfigurálja a natív hibatűrési beállításokat úgy, hogy a másolási tevékenység "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" értékének megadásával visszautasítja a szabályzatokat. A lent látható módon továbbra is engedélyezheti a "Base inkompatibilis" sorok átirányítását a blob-vagy ADLS.
 >- Ez a funkció nem érvényes, ha a másolási tevékenység úgy van konfigurálva, hogy meghívja az [Amazon vöröseltolódásának eltávolítását](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift).
->- Ez a funkció nem érvényes, ha a másolási tevékenység konfigurálva van egy tárolt eljárás meghívására [egy SQL-](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)fogadóból.
+>- Ez a funkció nem érvényes, ha a másolási tevékenység konfigurálva van egy tárolt eljárás meghívására [egy SQL-](./connector-azure-sql-database.md#invoke-a-stored-procedure-from-a-sql-sink)fogadóból.
 
 ### <a name="configuration"></a>Konfiguráció
 A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok másolási tevékenységbe való kihagyásának konfigurálásához:
@@ -296,7 +296,5 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 ## <a name="next-steps"></a>Következő lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység áttekintése](copy-activity-overview.md)
+- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Másolási tevékenység teljesítménye](copy-activity-performance.md)
-
-

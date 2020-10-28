@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 50e6ce9b4c206650de72d9cdd41bdd6dd555acd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948962a73137f78ec26a01c1d2f54d883e76783
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566601"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637445"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első adat-előállító létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "91566601"
 > Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg az [adat-előállító Data Factoryvel való létrehozását ismertető rövid útmutatót](../quickstart-create-data-factory-dot-net.md) című cikket.
 
 > [!WARNING]
-> Az Azure Portalon az ADF v1-es & üzembe helyezésére szolgáló JSON-szerkesztő a 2019. július 31-én ki lesz kapcsolva. 2019. július 31-ig továbbra is használhatja az [ADF v1 PowerShell-parancsmagokat](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), az [ADF v1 .net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)-t, az [ADF v1 REST API-kat](https://docs.microsoft.com/rest/api/datafactory/) a szerzői & üzembe helyezéséhez az ADF v1-es folyamataihoz.
+> Az Azure Portalon az ADF v1-es & üzembe helyezésére szolgáló JSON-szerkesztő a 2019. július 31-én ki lesz kapcsolva. 2019. július 31-ig továbbra is használhatja az [ADF v1 PowerShell-parancsmagokat](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), az [ADF v1 .net SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)-t, az [ADF v1 REST API-kat](/rest/api/datafactory/) a szerzői & üzembe helyezéséhez az ADF v1-es folyamataihoz.
 
 Ez az oktatóanyag bemutatja, hogyan hozhatja létre első adat-előállítóját az[Azure Portal](https://portal.azure.com/) használatával. Ha ezt az oktatóanyagot más eszközök/SDK-k használatával szeretné elvégezni, válassza ki az egyik lehetőséget a legördülő listából. 
 
@@ -52,9 +52,9 @@ A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy 
 
 Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-1. Válassza az **új**  >  **adatok és Analitika**  >  **Data Factory**lehetőséget.
+1. Válassza az **új**  >  **adatok és Analitika**  >  **Data Factory** lehetőséget.
 
    ![A Create (Létrehozás) panel](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 
@@ -70,7 +70,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
    >
 1. Az **Előfizetés** területen válassza ki azt az Azure-előfizetést, ahol létre kívánja hozni az adat-előállítót.
 
-1. Jelöljön ki egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Az oktatóanyaghoz hozzon létre egy **ADFGetStartedRG**nevű erőforráscsoportot.
+1. Jelöljön ki egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Az oktatóanyaghoz hozzon létre egy **ADFGetStartedRG** nevű erőforráscsoportot.
 
 1. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listában csak a Data Factory szolgáltatás által támogatott régiók jelennek meg.
 
@@ -123,7 +123,7 @@ Ebben a lépésben társítja a tárfiókot az adat-előállítójához. A jelen
 ### <a name="create-an-hdinsight-linked-service"></a>HDInsight társított szolgáltatás létrehozása
 Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factoryhoz. Az HDInsight-fürt automatikusan jön létre futásidőben. A feldolgozás befejezése és adott idejű tétlenség után törlődik.
 
-1. A Data Factory szerkesztőben **válassza az**  >  **új számítási**  >  **igény szerinti HDInsight-fürt**lehetőséget.
+1. A Data Factory szerkesztőben **válassza az**  >  **új számítási**  >  **igény szerinti HDInsight-fürt** lehetőséget.
 
     ![A New compute (Új számítás) elem](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 
@@ -159,9 +159,9 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
 
      b. Igény szerinti HDInsight-fürt helyett saját HDInsight-fürtöt is használhat. További információ: [HDInsight társított szolgáltatás](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
 
-     c. Az HDInsight-fürt létrehoz egy alapértelmezett tárolót a JSON-tulajdonságban megadott blobtárolóban (**linkedServiceName**). Az HDInsight a fürt törlésekor nem törli ezt a tárolót. Ez a működésmód szándékos. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer a szeletek feldolgozásakor mindig létrehoz egy HDInsight-fürtöt, kivéve, ha van meglévő élő fürt (**timeToLive**). A fürt automatikusan törlődik a feldolgozás befejezésekor.
+     c. Az HDInsight-fürt létrehoz egy alapértelmezett tárolót a JSON-tulajdonságban megadott blobtárolóban ( **linkedServiceName** ). Az HDInsight a fürt törlésekor nem törli ezt a tárolót. Ez a működésmód szándékos. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer a szeletek feldolgozásakor mindig létrehoz egy HDInsight-fürtöt, kivéve, ha van meglévő élő fürt ( **timeToLive** ). A fürt automatikusan törlődik a feldolgozás befejezésekor.
 
-     Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg a blobtárolóban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: "ADF**yourdatafactoryname** - **linkedservicename**-datetimestamp". A blobtárolóból olyan eszközökkel törölheti a tárolókat, mint például az [Azure Storage Explorer](https://storageexplorer.com/).
+     Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg a blobtárolóban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: "ADF **yourdatafactoryname** - **linkedservicename** -datetimestamp". A blobtárolóból olyan eszközökkel törölheti a tárolókat, mint például az [Azure Storage Explorer](https://storageexplorer.com/).
 
      További információ: [Igény szerinti HDInsight társított szolgáltatás](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 
@@ -169,7 +169,7 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
 
     ![Üzembe helyezés lehetőség](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
 
-1. Győződjön meg arról, hogy a bal oldali fanézetben megjelenik az **AzureStorageLinkedService** és a **HDInsightOnDemandLinkedService**.
+1. Győződjön meg arról, hogy a bal oldali fanézetben megjelenik az **AzureStorageLinkedService** és a **HDInsightOnDemandLinkedService** .
 
     ![Képernyőkép, amely azt mutatja, hogy a AzureStorageLinkedService és a HDInsightOnDemandLinkedService össze vannak kapcsolva.](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
@@ -177,7 +177,7 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
 Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás bemeneti és kimeneti adatait képviselik. Ezek az adatkészletek az oktatóanyagban előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkoznak. A társított szolgáltatás egy tárfiókra mutat. Az adatkészletek meghatározzák a bemeneti és kimeneti adatokat tartalmazó tárban lévő tárolót, mappát és fájlnevet.   
 
 ### <a name="create-the-input-dataset"></a>A bemeneti adatkészlet létrehozása
-1. A Data Factory szerkesztőben **válassza az**  >  **új adatkészlet**  >  **Azure Blob Storage**elemet.
+1. A Data Factory szerkesztőben **válassza az**  >  **új adatkészlet**  >  **Azure Blob Storage** elemet.
 
     ![New dataset (Új adatkészlet)](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 
@@ -210,14 +210,14 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 
    | Tulajdonság | Beágyazott alatt | Leírás |
    |:--- |:--- |:--- |
-   | típus | properties |A tulajdonság beállítása **AzureBlob**, mert az adatok blobtárolóban találhatók. |
+   | típus | properties |A tulajdonság beállítása **AzureBlob** , mert az adatok blobtárolóban találhatók. |
    | linkedServiceName | formátumban |Az előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkozik. |
    | folderPath | typeProperties | A bemeneti blobokat tartalmazó blobtárolót és mappát adja meg. | 
    | fileName | typeProperties |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az oktatóanyagban csak az input.log fájl feldolgozása történik meg. |
    | típus | formátumban |A naplófájlok szövegformátumúak, ezért a **TextFormat** típust használjuk. |
    | columnDelimiter | formátumban |A naplófájlokban az oszlopok vesszővel (`,`) vannak elválasztva. |
-   | frequency/interval | availability |A gyakoriság beállítás értéke **Hónap**, az időköz beállítás értéke **1**, tehát a bemeneti szeletek havonta érhetők el. |
-   | external | properties | Ez a tulajdonság **igaz** értékre van állítva, ha a bemeneti adatokat nem ez a folyamat hozta létre. Mivel ebben az oktatóanyagban a bemeneti naplófájlt nem ez a folyamat hozta létre, a tulajdonság értéke **igaz**. |
+   | frequency/interval | availability |A gyakoriság beállítás értéke **Hónap** , az időköz beállítás értéke **1** , tehát a bemeneti szeletek havonta érhetők el. |
+   | external | properties | Ez a tulajdonság **igaz** értékre van állítva, ha a bemeneti adatokat nem ez a folyamat hozta létre. Mivel ebben az oktatóanyagban a bemeneti naplófájlt nem ez a folyamat hozta létre, a tulajdonság értéke **igaz** . |
 
     További információ ezekről a JSON-tulajdonságokról: [Azure Blob-összekötő](data-factory-azure-blob-connector.md#dataset-properties).
 
@@ -226,7 +226,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 ### <a name="create-the-output-dataset"></a>A kimeneti adatkészlet létrehozása
 Most a kimeneti adatkészletet hozza létre, amely a blobtárolóban tárolt kimeneti adatokat képviseli.
 
-1. A Data Factory szerkesztőben **válassza az**  >  **új adatkészlet**  >  **Azure Blob Storage**elemet.
+1. A Data Factory szerkesztőben **válassza az**  >  **új adatkészlet**  >  **Azure Blob Storage** elemet.
 
 1. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-kódrészletben hozza létre az **AzureBlobOutput** nevű adatkészletet, és határozza meg a Hive-szkript által előállított adatok szerkezetét. Emellett határozza meg azt is, hogy az eredmények tárolása az **adfgetstarted** nevű blob-tárolóban és a **partitioneddata** nevű mappában történjen. Az **availability** (rendelkezésre állás) szakasz meghatározza, hogy a kimeneti adatkészlet havonta jön létre.
 
@@ -261,7 +261,7 @@ Most a kimeneti adatkészletet hozza létre, amely a blobtárolóban tárolt kim
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező első folyamatot. A bementi szelet havonta érhető el (a gyakoriság értéke hónap, az időközé 1). A kimeneti szelet havonta jön létre. A tevékenység ütemező tulajdonsága szintén havi értékre van állítva. A kimeneti adatkészlet és a tevékenységütemező beállításainak egyezniük kell. Jelenleg a kimeneti adatkészlet vezérli az ütemezést, ezért kimeneti adatkészletet akkor is létre kell hoznia, ha a tevékenység nem állít elő semmilyen kimenetet. Ha a tevékenység nem fogad semmilyen bemenetet, kihagyhatja a bemeneti adatkészlet létrehozását. Az alábbi JSON-kódrészletben használt tulajdonságok magyarázata a szakasz végén található.
 
-1. A Data Factory-szerkesztőben válassza **az**  >  **új folyamat**lehetőséget.
+1. A Data Factory-szerkesztőben válassza **az**  >  **új folyamat** lehetőséget.
 
     ![Az Új folyamat lehetőség](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 
@@ -325,7 +325,7 @@ Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező els
 
     A folyamat **start** (kezdés) és **end** (befejezés) tulajdonságai a folyamat aktív időszakát határozzák meg.
 
-    A tevékenység JSON-fájljában meg van határozva, hogy a Hive-szkript a **linkedServiceName**: **HDInsightOnDemandLinkedService** által meghatározott számítási szolgáltatáson fut.
+    A tevékenység JSON-fájljában meg van határozva, hogy a Hive-szkript a **linkedServiceName** : **HDInsightOnDemandLinkedService** által meghatározott számítási szolgáltatáson fut.
 
    > [!NOTE]
    > A példában használt JSON-tulajdonságokkal kapcsolatos további információért lásd a [Data Factory folyamatait és tevékenységeit](data-factory-create-pipelines.md) ismertető témakör a folyamat JSON-fájljáról szóló részét.
@@ -367,13 +367,13 @@ Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező els
 
     Az előző nézethez való visszatéréshez a fenti menüben kattintson a **Data Factory** elemre.
 
-1. A **diagram** nézetben kattintson duplán az adatkészlet **AzureBlobInput**. Győződjön meg arról, hogy a szelet állapota **Kész**. Eltarthat néhány percig, amíg a szelet **Kész** állapotúként jelenik meg. Ha ez néhány perces várakozás után sem történik meg, ellenőrizze, hogy a megfelelő tárolóba (**adfgetstarted**) és mappába (**inputdata**) helyezte-e a bemeneti fájlt (**input.log**).
+1. A **diagram** nézetben kattintson duplán az adatkészlet **AzureBlobInput** . Győződjön meg arról, hogy a szelet állapota **Kész** . Eltarthat néhány percig, amíg a szelet **Kész** állapotúként jelenik meg. Ha ez néhány perces várakozás után sem történik meg, ellenőrizze, hogy a megfelelő tárolóba ( **adfgetstarted** ) és mappába ( **inputdata** ) helyezte-e a bemeneti fájlt ( **input.log** ).
 
    ![Kész állapotú bemeneti szelet](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
 
 1. Zárja be az **AzureBlobInput** panelt.
 
-1. A **diagram** nézetben kattintson duplán az adatkészlet **AzureBlobOutput**. Megjelenik a feldolgozás alatt álló szelet.
+1. A **diagram** nézetben kattintson duplán az adatkészlet **AzureBlobOutput** . Megjelenik a feldolgozás alatt álló szelet.
 
    ![Adatkészlet feldolgozása folyamatban](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 
@@ -402,7 +402,7 @@ Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező els
    További információ: [Folyamatok monitorozása és kezelése az Azure Portal paneljeivel](data-factory-monitor-manage-pipelines.md).
 
 > [!IMPORTANT]
-> A szelet sikeres feldolgozásakor a rendszer törli a bemeneti fájlt. Ezért ha újra szeretné futtatni a szeletet, vagy újra el szeretné végezni az oktatóanyagot, töltse fel a bemeneti fájlt (**input. log**) az **adfgetstarted** tároló **inputdata** mappájába.
+> A szelet sikeres feldolgozásakor a rendszer törli a bemeneti fájlt. Ezért ha újra szeretné futtatni a szeletet, vagy újra el szeretné végezni az oktatóanyagot, töltse fel a bemeneti fájlt ( **input. log** ) az **adfgetstarted** tároló **inputdata** mappájába.
 >
 >
 
@@ -431,13 +431,13 @@ Az oktatóanyag során létrehozott egy adat-előállítót, amely egy HDInsight
 * Két adatkészlet létrehozása, amelyek leírják a bemeneti és kimeneti adatokat a folyamat HDInsight Hive-tevékenysége számára.
 * Egy HDInsight Hive-tevékenységgel rendelkező folyamat létrehozása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely egy Hive-szkriptet futtat egy igény szerinti HDInsight-fürtön. A másolási tevékenység a blob Storage-ból Azure SQL Databaseba való másolásával kapcsolatos információkért lásd [: oktatóanyag: adatok másolása blob Storage-ból a SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Lásd még
 | Témakör | Leírás |
 |:--- |:--- |
-| [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
+| [Pipelines](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti a Data Factory adatkészleteit. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti a Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
 | [Folyamatok monitorozása és felügyelete a Monitor & Manage alkalmazással](data-factory-monitor-manage-app.md) |Ez a cikk ismerteti, hogyan monitorozhatja és kezelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management alkalmazással. |

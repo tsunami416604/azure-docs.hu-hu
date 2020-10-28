@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: fad9584f663675e9bf534a56bb223094479f39c5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 19a0446cc0e69b860d6238ef7d7823cfa0afbb7c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148033"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636221"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
 
@@ -50,7 +50,7 @@ Az előfizetésben található engedélyek megtekintéséhez lépjen be az Azure
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 és 2017
 Ebben az oktatóanyagban egy SQL Server-adatbázist használ *forrásként* szolgáló adattárként. Az oktatóanyagban létrehozott adatfeldolgozó folyamata a SQL Server-adatbázisból (forrás) a blob Storage-ba (fogadóba) másolja az adatait. Ezután hozzon létre egy **EMP** nevű táblát a SQL Server-adatbázisban, és szúrjon be néhány minta bejegyzést a táblába.
 
-1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [SQL Server Management Studio letöltését ismertető](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) cikket.
+1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [SQL Server Management Studio letöltését ismertető](/sql/ssms/download-sql-server-management-studio-ssms) cikket.
 
 1. Csatlakozzon az SQL Server-példányához a hitelesítő adataival.
 
@@ -94,7 +94,7 @@ Ebben az oktatóanyagban a tárfiók nevét és kulcsát használjuk. A tárfió
 #### <a name="create-the-adftutorial-container"></a>Adftutorial tároló létrehozása
 Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Storage-ban.
 
-1. A **Storage-fiók** ablakban lépjen az **Áttekintés**elemre, majd válassza a **tárolók**lehetőséget.
+1. A **Storage-fiók** ablakban lépjen az **Áttekintés** elemre, majd válassza a **tárolók** lehetőséget.
 
     ![A Blobok elem választása](media/tutorial-hybrid-copy-powershell/select-blobs.png)
 
@@ -110,7 +110,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban.
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory** :
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -120,16 +120,16 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
    ![Új adat-előállító neve](./media/doc-common-process/name-not-available-error.png)
 
-1. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
+1. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni.
 1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
-   - Válassza a **meglévő használata**lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
+   - Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
 
-   - Válassza az **új létrehozása**lehetőséget, és adja meg az erőforráscsoport nevét.
+   - Válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét.
         
      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket.
 1. A **Verzió** résznél válassza a **V2** értéket.
-1. A **hely**területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Data Factory által használt adattárak (például a Storage és az SQL Database) és számítási erőforrások (például az Azure HDInsight) más régiókban is lehetnek.
+1. A **hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Data Factory által használt adattárak (például a Storage és az SQL Database) és számítási erőforrások (például az Azure HDInsight) más régiókban is lehetnek.
 1. Kattintson a **Létrehozás** gombra.
 
 1. A létrehozás befejezése után megjelenik a **Data Factory** lap a képen látható módon:
@@ -144,31 +144,31 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
    ![Első lépések lap](./media/doc-common-process/get-started-page.png)
 
-1. A **Tulajdonságok**terület általános paneljén adja meg **SQLServerToBlobPipeline** a SQLServerToBlobPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
+1. A **Tulajdonságok** terület általános paneljén adja meg **SQLServerToBlobPipeline** a SQLServerToBlobPipeline **nevet** . Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
-1. A **tevékenységek** eszközben bontsa ki az **Áthelyezés & átalakítás**elemet. Húzza a **Másolás** tevékenységet a folyamat tervezési felületére. Állítsa a tevékenység nevét a következőre: **CopySqlServerToAzureBlobActivity**.
+1. A **tevékenységek** eszközben bontsa ki az **Áthelyezés & átalakítás** elemet. Húzza a **Másolás** tevékenységet a folyamat tervezési felületére. Állítsa a tevékenység nevét a következőre: **CopySqlServerToAzureBlobActivity** .
 
 1. A **Tulajdonságok** ablakban lépjen a **Forrás** lapra, és válassza a **+ Új** elemet.
 
-1. Az **új adatkészlet** párbeszédpanelen keressen **SQL Server**. Válassza a **SQL Server**lehetőséget, majd kattintson a **Folytatás**gombra.
+1. Az **új adatkészlet** párbeszédpanelen keressen **SQL Server** . Válassza a **SQL Server** lehetőséget, majd kattintson a **Folytatás** gombra.
     ![Új SqlServer adatkészlet](./media/tutorial-hybrid-copy-portal/create-sqlserver-dataset.png)
 
-1. A **tulajdonságok beállítása** párbeszédpanel Név mezőjébe írja be a **SqlServerDataset** **nevet**. A **társított szolgáltatás**területen válassza az **+ új**lehetőséget. Ebben a lépésben egy kapcsolatot hoz létre a forrásadatkészlettel (az SQL Server-adatbázissal).
+1. A **tulajdonságok beállítása** párbeszédpanel Név mezőjébe írja be a **SqlServerDataset** **nevet** . A **társított szolgáltatás** területen válassza az **+ új** lehetőséget. Ebben a lépésben egy kapcsolatot hoz létre a forrásadatkészlettel (az SQL Server-adatbázissal).
 
-1. Az **új társított szolgáltatás** párbeszédpanelen adja hozzá a **nevet** a **SqlServerLinkedService**mezőhöz. A **Csatlakozás Integration Runtime használatával**területen válassza az **+ új**lehetőséget.  Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely adatokat másol a gépen futó SQL Server-adatbázisból a Blob Storage-ba.
+1. Az **új társított szolgáltatás** párbeszédpanelen adja hozzá a **nevet** a **SqlServerLinkedService** mezőhöz. A **Csatlakozás Integration Runtime használatával** területen válassza az **+ új** lehetőséget.  Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely adatokat másol a gépen futó SQL Server-adatbázisból a Blob Storage-ba.
 
-1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját**üzemeltetésű lehetőséget, majd kattintson a **Folytatás**gombra.
+1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját** üzemeltetésű lehetőséget, majd kattintson a **Folytatás** gombra.
 
-1. A név mezőben adja meg a **TutorialIntegrationRuntime**. Ezután válassza a **Létrehozás** elemet.
+1. A név mezőben adja meg a **TutorialIntegrationRuntime** . Ezután válassza a **Létrehozás** elemet.
 
-1. A beállítások lapon **kattintson ide a számítógép expressz telepítésének elindításához**. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
+1. A beállítások lapon **kattintson ide a számítógép expressz telepítésének elindításához** . Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
     ![Integrációs modul telepítése](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
 
 1. A **Integration Runtime (helyi) expressz telepítés** ablakban válassza a **Bezárás** lehetőséget a folyamat befejeződése után.
 
     ![Az integrációs modul (saját üzemeltetésű) expressz telepítése](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
 
-1. Az **új társított szolgáltatás (SQL Server)** párbeszédpanelen ellenőrizze, hogy a **TutorialIntegrationRuntime** van-e kiválasztva a **Csatlakozás Integration Runtime használatával**. Ezután hajtsa végre a következő lépéseket:
+1. Az **új társított szolgáltatás (SQL Server)** párbeszédpanelen ellenőrizze, hogy a **TutorialIntegrationRuntime** van-e kiválasztva a **Csatlakozás Integration Runtime használatával** . Ezután hajtsa végre a következő lépéseket:
 
     a. A **Név** mezőben adja meg az **SqlServerLinkedService** nevet.
 
@@ -178,11 +178,11 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
     d. A **Hitelesítés típusa** alatt válassza ki azt a hitelesítési típust, amelyet a Data Factorynak az SQL Server-adatbázishoz történő csatlakozáshoz használnia kell.
 
-    e. A **Felhasználónév** és a **Jelszó** alatt adja meg a felhasználónevet és a jelszót. Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány \\ \\ myuser*.
+    e. A **Felhasználónév** és a **Jelszó** alatt adja meg a felhasználónevet és a jelszót. Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány \\ \\ myuser* .
 
     f. Válassza a **Kapcsolat tesztelése** elemet. Ezzel a lépéssel ellenőrizheti, hogy Data Factory tud-e csatlakozni a SQL Server-adatbázishoz a létrehozott saját üzemeltetésű integrációs modul használatával.
 
-    : A társított szolgáltatás mentéséhez válassza a **Létrehozás**lehetőséget.
+    : A társított szolgáltatás mentéséhez válassza a **Létrehozás** lehetőséget.
  
     ![Új társított szolgáltatás (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
 
@@ -190,15 +190,15 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
     a. Ellenőrizze, hogy a **Társított szolgáltatás** mezőben látható-e az **SqlServerLinkedService** szolgáltatás.
 
-    b. A **tábla neve**területen válassza a **[dbo] elemet. [ EMP]**.
+    b. A **tábla neve** területen válassza a **[dbo] elemet. [ EMP]** .
     
-    c. Válassza az **OK** lehetőséget.
+    c. Kattintson az **OK** gombra.
 
 1. Lépjen az **SQLServerToBlobPipeline** folyamatot tartalmazó lapra, vagy válassza az **SQLServerToBlobPipeline** folyamatot a fanézetben.
 
 1. Lépjen a **Fogadó** lapra a **Tulajdonságok** ablak alján, és válassza a **+ Új** elemet.
 
-1. Az **új adatkészlet** párbeszédpanelen válassza az **Azure Blob Storage**elemet. Ezután válassza a **Folytatás** elemet.
+1. Az **új adatkészlet** párbeszédpanelen válassza az **Azure Blob Storage** elemet. Ezután válassza a **Folytatás** elemet.
 
 1. A **formátum kiválasztása** párbeszédpanelen válassza ki az adatai formátumának típusát. Ezután válassza a **Folytatás** elemet.
 
@@ -208,38 +208,38 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
 1. Az **új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen írja be a **AzureStorageLinkedService** nevet, válassza ki a Storage-fiók nevét a **Storage-fiók** neve listából. Tesztelje a kapcsolódást, majd válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
 
-1. A társított szolgáltatás létrehozása után vissza kell térnie a **set Properties (tulajdonságok beállítása** ) lapra. Válassza az **OK** lehetőséget.
+1. A társított szolgáltatás létrehozása után vissza kell térnie a **set Properties (tulajdonságok beállítása** ) lapra. Kattintson az **OK** gombra.
 
 1. Nyissa meg a fogadó adatkészletet. A **Kapcsolat** lapon hajtsa végre az alábbi lépéseket:
 
     a. Ellenőrizze, hogy a **Társított szolgáltatás** részen az **AzureStorageLinkedService** van-e kiválasztva.
 
-    b. A **fájl elérési útja**mezőbe írja be a **adftutorial/Fromonprem** értéket a **tároló/könyvtár** részhez. Ha a kimeneti mappa nem létezik az adftutorial tárolóban, a Data Factory automatikusan létrehozza azt.
+    b. A **fájl elérési útja** mezőbe írja be a **adftutorial/Fromonprem** értéket a **tároló/könyvtár** részhez. Ha a kimeneti mappa nem létezik az adftutorial tárolóban, a Data Factory automatikusan létrehozza azt.
 
-    c. A **fájl** résznél válassza a **dinamikus tartalom hozzáadása**lehetőséget.
+    c. A **fájl** résznél válassza a **dinamikus tartalom hozzáadása** lehetőséget.
     ![dinamikus kifejezés a fájlnév feloldásához](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-    d. Adja hozzá `@CONCAT(pipeline().RunId, '.txt')` , majd válassza a **Befejezés**lehetőséget. Ez a művelet átnevezi a fájlt a PipelineRunID.txt.
+    d. Adja hozzá `@CONCAT(pipeline().RunId, '.txt')` , majd válassza a **Befejezés** lehetőséget. Ez a művelet átnevezi a fájlt a PipelineRunID.txt.
 
 1. Lépjen a megnyitott folyamatot tartalmazó lapra, vagy válassza ki a folyamatot a fanézetben. Ellenőrizze, hogy a **Fogadó-adatkészlet** mezőben az **AzureBlobDataset** érték van-e kiválasztva.
 
-1. A folyamat beállításainak érvényesítéséhez válassza az **Érvényesítés** elemet a folyamat eszköztárán. A **cső érvényesítési kimenetének**bezárásához válassza a **>>** ikont.
+1. A folyamat beállításainak érvényesítéséhez válassza az **Érvényesítés** elemet a folyamat eszköztárán. A **cső érvényesítési kimenetének** bezárásához válassza a **>>** ikont.
     ![folyamat ellenőrzése](./media/tutorial-hybrid-copy-portal/validate-pipeline.png)
     
 
-1. A Data Factory létrehozott entitások közzétételéhez válassza az **összes közzététele**lehetőséget.
+1. A Data Factory létrehozott entitások közzétételéhez válassza az **összes közzététele** lehetőséget.
 
 1. Várjon, amíg megjelenik a **Közzététel befejeződött** előugró ablak. A közzététel állapotának megtekintéséhez jelölje be az **értesítések megjelenítése** hivatkozást az ablak tetején. Az értesítési ablak bezárásához válassza a **Bezárás** elemet.
 
 
 ## <a name="trigger-a-pipeline-run"></a>Folyamat futtatásának aktiválása
-Válassza az **trigger hozzáadása** elemet a folyamat eszköztárán, majd válassza az **aktiválás most**lehetőséget.
+Válassza az **trigger hozzáadása** elemet a folyamat eszköztárán, majd válassza az **aktiválás most** lehetőséget.
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
 1. Lépjen a **figyelés** lapra. Megjelenik az előző lépésben manuálisan aktivált folyamat.
 
-1. A folyamat futtatásához társított tevékenységek megtekintéséhez válassza a **SQLServerToBlobPipeline** lehetőséget a *folyamat neve*alatt. 
+1. A folyamat futtatásához társított tevékenységek megtekintéséhez válassza a **SQLServerToBlobPipeline** lehetőséget a *folyamat neve* alatt. 
     ![Folyamatfuttatások monitorozása](./media/tutorial-hybrid-copy-portal/pipeline-runs.png)
 
 1. A **tevékenység-futtatások** lapon válassza a részletek (szemüvegek képe) hivatkozást a másolási művelet részleteinek megtekintéséhez. Ha vissza szeretne térni a folyamat futtatási nézetéhez, válassza a felül lévő **összes folyamat futtatása** lehetőséget.

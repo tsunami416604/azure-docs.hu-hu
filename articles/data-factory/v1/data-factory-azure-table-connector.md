@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7802a3fe4fb904aad7fd9257edbf8b10efe127
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84702311"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637428"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok áthelyezése az Azure Table-be és onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -36,9 +36,9 @@ Bármilyen támogatott forrásból származó adattárból átmásolhatja az ada
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely az Azure-Table Storage különböző eszközök/API-k használatával helyezi át az adatátvitelt.
 
-A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** és **REST API** . A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait: 
 
@@ -104,7 +104,7 @@ A **AzureTableSink** a következő tulajdonságokat támogatja a typeProperties 
 | azureTableDefaultPartitionKeyValue |A fogadó által használható alapértelmezett partíciós kulcs értéke. |Egy karakterlánc-érték. |Nem |
 | azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciós kulcsként használja a rendszer. Ha nincs megadva, a rendszer a AzureTableDefaultPartitionKeyValue használja a partíciós kulcsként. |Egy oszlop neve. |Nem |
 | azureTableRowKeyName |Adja meg annak az oszlopnak a nevét, amelynek az oszlop értékeit a rendszer a sor kulcsaként használja. Ha nincs megadva, használja az egyes sorok GUID azonosítóját. |Egy oszlop neve. |Nem |
-| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be.<br/><br/>Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Ha szeretné megtudni, hogyan működnek ezek a beállítások (egyesítés és csere), tekintse meg az [entitás beszúrása és egyesítése](https://msdn.microsoft.com/library/azure/hh452241.aspx) , illetve az [entitások beszúrása vagy cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjére vonatkozik, nem a tábla szintjére, és egyik sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. |egyesítés (alapértelmezett)<br/>csere |Nem |
+| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be.<br/><br/>Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Ha szeretné megtudni, hogyan működnek ezek a beállítások (egyesítés és csere), tekintse meg az [entitás beszúrása és egyesítése](/rest/api/storageservices/Insert-Or-Merge-Entity) , illetve az [entitások beszúrása vagy cseréje](/rest/api/storageservices/Insert-Or-Replace-Entity) témaköröket. <br/><br> Ez a beállítás a sor szintjére vonatkozik, nem a tábla szintjére, és egyik sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. |egyesítés (alapértelmezett)<br/>csere |Nem |
 | writeBatchSize |Beilleszti az adatbevitelt az Azure-táblába, amikor a writeBatchSize vagy a writeBatchTimeout találat. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Beilleszti az adatbevitelt az Azure-táblába a writeBatchSize vagy a writeBatchTimeout találatakor |időtartomány<br/><br/>Például: "00:20:00" (20 perc) |Nem (alapértelmezett érték a Storage-ügyfél alapértelmezett időtúllépési értéke 90 mp) |
 
@@ -155,7 +155,7 @@ A minta egy Azure-táblában lévő alapértelmezett partícióhoz tartozó, ór
   }
 }
 ```
-Azure Data Factory az Azure Storage társított szolgáltatásainak két típusát támogatja: **AzureStorage** és **AzureStorageSas**. Az első beállításnál megadhatja a kapcsolati karakterláncot, amely tartalmazza a fiók kulcsát, és a későbbiekben a közös hozzáférésű aláírás (SAS) URI-ját is megadja. Részletekért lásd a [társított szolgáltatások](#linked-service-properties) szakaszt.  
+Azure Data Factory az Azure Storage társított szolgáltatásainak két típusát támogatja: **AzureStorage** és **AzureStorageSas** . Az első beállításnál megadhatja a kapcsolati karakterláncot, amely tartalmazza a fiók kulcsát, és a későbbiekben a közös hozzáférésű aláírás (SAS) URI-ját is megadja. Részletekért lásd a [társított szolgáltatások](#linked-service-properties) szakaszt.  
 
 **Azure Table bemeneti adatkészlet:**
 
@@ -250,7 +250,7 @@ A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, i
 
 **Másolási tevékenység AzureTableSource és BlobSink rendelkező folyamatokban:**
 
-A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **AzureTableSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **AzureTableSourceQuery** tulajdonsággal megadott SQL-lekérdezés minden órában kiválasztja az alapértelmezett partíció adatait.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **AzureTableSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink** . A **AzureTableSourceQuery** tulajdonsággal megadott SQL-lekérdezés minden órában kiválasztja az alapértelmezett partíció adatait.
 
 ```JSON
 {
@@ -323,7 +323,7 @@ A minta idősorozat-adatok másolását egy Azure-blobból az Azure-táblázatba
 }
 ```
 
-Azure Data Factory az Azure Storage társított szolgáltatásainak két típusát támogatja: **AzureStorage** és **AzureStorageSas**. Az első beállításnál megadhatja a kapcsolati karakterláncot, amely tartalmazza a fiók kulcsát, és a későbbiekben a közös hozzáférésű aláírás (SAS) URI-ját is megadja. Részletekért lásd a [társított szolgáltatások](#linked-service-properties) szakaszt.
+Azure Data Factory az Azure Storage társított szolgáltatásainak két típusát támogatja: **AzureStorage** és **AzureStorageSas** . Az első beállításnál megadhatja a kapcsolati karakterláncot, amely tartalmazza a fiók kulcsát, és a későbbiekben a közös hozzáférésű aláírás (SAS) URI-ját is megadja. Részletekért lásd a [társított szolgáltatások](#linked-service-properties) szakaszt.
 
 **Azure Blob bemeneti adatkészlet:**
 
@@ -417,7 +417,7 @@ A minta az Azure Table "Sajáttábla" nevű táblájába másolja az adatmásolt
 
 **Másolási tevékenység BlobSource és AzureTableSink rendelkező folyamatokban:**
 
-A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **BlobSource** értékre van állítva, a **fogadó típusa** pedig **AzureTableSink**.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **BlobSource** értékre van állítva, a **fogadó típusa** pedig **AzureTableSink** .
 
 ```JSON
 {
@@ -472,7 +472,7 @@ Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-act
 1. Konvertálás natív forrásokból .NET-típusra
 2. Konvertálás .NET-típusról natív fogadó típusra
 
-Amikor az Azure-táblázatból &ba helyezi az adatátvitelt, az Azure- [Table Service által definiált következő leképezések](https://msdn.microsoft.com/library/azure/dd179338.aspx) az Azure Table OData-típusok és a .net-típus között használatosak, és fordítva.
+Amikor az Azure-táblázatból &ba helyezi az adatátvitelt, az Azure- [Table Service által definiált következő leképezések](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) az Azure Table OData-típusok és a .net-típus között használatosak, és fordítva.
 
 | OData-adatok típusa | .NET-típus | Részletek |
 | --- | --- | --- |

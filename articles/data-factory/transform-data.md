@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 039afdafdccbefe03b5b366a89256409fda482e9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 37eac4acab7232e44f94e852b1c04c5549447b09
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368859"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637683"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factoryben
 
@@ -49,7 +49,7 @@ Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure D
 
 ### <a name="wrangling-data-flows"></a>Huzavona-adatfolyamok
 
-A Azure Data Factory huzavona adatforgalma lehetővé teszi a kód nélküli adatelőkészítést a felhőalapú méretezési iteratív. A huzavona-adatfolyamatok integrálva vannak a [Power Query online](https://docs.microsoft.com/power-query/) -nal, és a Spark-végrehajtással elérhetővé teszi Power Query M funkciókat az adatok huzavona a felhőben. További információ: huzavona- [adatfolyamok](wrangling-data-flow-overview.md).
+A Azure Data Factory huzavona adatforgalma lehetővé teszi a kód nélküli adatelőkészítést a felhőalapú méretezési iteratív. A huzavona-adatfolyamatok integrálva vannak a [Power Query online](/power-query/) -nal, és a Spark-végrehajtással elérhetővé teszi Power Query M funkciókat az adatok huzavona a felhőben. További információ: huzavona- [adatfolyamok](wrangling-data-flow-overview.md).
 
 ## <a name="external-transformations"></a>Külső átalakítások
 
@@ -103,8 +103,8 @@ Létrehozhat egy egyéni tevékenységet R-parancsfájlok futtatására egy olya
 ### <a name="compute-environments"></a>Számítási környezetek
 Hozzon létre egy társított szolgáltatást a számítási környezethez, majd használja a társított szolgáltatást egy átalakítási tevékenység definiálásakor. Data Factory által támogatott számítási környezeteknek két típusa van. 
 
-- **Igény szerinti**: ebben az esetben a számítástechnikai környezetet teljes mértékben a Data Factory felügyeli. A Data Factory szolgáltatás automatikusan hozza létre, mielőtt egy feladatot elküld az adatok feldolgozásához, és eltávolítja azokat a feladatok befejezésekor. Konfigurálhatja és szabályozhatja az igény szerinti számítási környezet részletes beállításait a feladatok végrehajtásához, a fürtözés kezeléséhez és a rendszerindítás műveleteihez. 
-- **Saját**környezet használata: ebben az esetben regisztrálhat saját számítástechnikai környezetet (például HDInsight-fürtöt) a Data Factory társított szolgáltatásként. A számítástechnikai környezetet Ön felügyeli, és a Data Factory szolgáltatás ezt használja a tevékenységek végrehajtásához. 
+- **Igény szerinti** : ebben az esetben a számítástechnikai környezetet teljes mértékben a Data Factory felügyeli. A Data Factory szolgáltatás automatikusan hozza létre, mielőtt egy feladatot elküld az adatok feldolgozásához, és eltávolítja azokat a feladatok befejezésekor. Konfigurálhatja és szabályozhatja az igény szerinti számítási környezet részletes beállításait a feladatok végrehajtásához, a fürtözés kezeléséhez és a rendszerindítás műveleteihez. 
+- **Saját** környezet használata: ebben az esetben regisztrálhat saját számítástechnikai környezetet (például HDInsight-fürtöt) a Data Factory társított szolgáltatásként. A számítástechnikai környezetet Ön felügyeli, és a Data Factory szolgáltatás ezt használja a tevékenységek végrehajtásához. 
 
 A Data Factory által támogatott számítási szolgáltatások megismeréséhez tekintse meg a [számítási társított szolgáltatások](compute-linked-services.md) című cikket. 
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: fef41a177f653dc67835897a48d734400a37a0d0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 60a18591687eb7953063e16397719191eece7844
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496007"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637088"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -111,7 +111,7 @@ Az Azure Private-hivatkozást is engedélyezheti a munkaterülethez. A privát h
 ## <a name="data-encryption"></a>Adattitkosítás
 
 > [!IMPORTANT]
-> Az éles környezetben való titkosításhoz __a Microsoft__Azure Machine learning számítási fürt használatát javasolja. A Microsoft az Azure Kubernetes Service használatát javasolja az éles környezetbeli adattitkosításhoz a __következtetések__során.
+> Az éles környezetben való titkosításhoz __a Microsoft__ Azure Machine learning számítási fürt használatát javasolja. A Microsoft az Azure Kubernetes Service használatát javasolja az éles környezetbeli adattitkosításhoz a __következtetések__ során.
 >
 > Azure Machine Learning számítási példány fejlesztési és tesztelési környezet. A használatakor azt javasoljuk, hogy a fájlokat, például jegyzetfüzeteket és parancsfájlokat egy fájlmegosztás tárolja. Az adatait adattárban kell tárolni.
 
@@ -158,12 +158,7 @@ Az ügyfél által felügyelt kulcsokkal rendelkező Cosmos DB példány kiépí
         > [!NOTE]
         > Ez a Key Vault-példány különbözhet a munkaterület kiépítésekor Azure Machine Learning által létrehozott kulcstartótól. Ha ugyanazt a Key Vault-példányt szeretné használni a munkaterülethez, a [key_vault paraméter](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)használatával adja meg ugyanazt a kulcstartót, miközben a munkaterületet kiépíti. 
 
-Ez a Cosmos DB-példány egy Microsoft által felügyelt erőforráscsoport keretében jön létre az előfizetésében, valamint a szükséges erőforrásokkal együtt. A felügyelt erőforráscsoport formátuma a neve `<AML Workspace Resource Group Name><GUID>` . Ha a Azure Machine Learning-munkaterület privát végpontot használ, a rendszer a Cosmos DB példányhoz is létrehoz egy virtuális hálózatot. Ez a VNet a Cosmos DB és Azure Machine Learning közötti kommunikáció biztonságossá tételére szolgál.
-
-> [!IMPORTANT]
-> * Ne törölje az ezt a Cosmos DB példányt tartalmazó erőforráscsoportot, vagy a csoportban automatikusan létrehozott összes erőforrást. Ha törölnie kell az erőforráscsoportot, Cosmos DB példányt stb., törölnie kell az azt használó Azure Machine Learning-munkaterületet. A társított munkaterület törlésekor az erőforráscsoport, a Cosmos DB-példány és az egyéb automatikusan létrehozott erőforrások törlődnek.
-> * Ehhez a Cosmos DB-fiókhoz az alapértelmezett [__kérési egység__](../cosmos-db/request-units.md) __8000__-kor van beállítva. Az érték módosítása nem támogatott.
-> * Nem adhat meg saját VNet a létrehozott Cosmos DB-példánnyal való használatra. A virtuális hálózat nem módosítható. Például nem módosíthatja az általa használt IP-címtartományt.
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 Ha el kell __forgatnia vagy vissza kell vonnia__ a kulcsot, bármikor megteheti. A kulcsok elforgatásakor Cosmos DB megkezdi az új kulcs (legújabb verzió) használatát az inaktív adatok titkosításához. Kulcs visszavonása (letiltása) esetén Cosmos DB a sikertelen kérelmeket. Ez általában egy órát vesz igénybe a rotáció vagy a visszavonás érvénybe léptetéséhez.
 
@@ -261,7 +256,7 @@ Ha olyan szolgáltatásokat használ, mint például az automatizált Machine Le
 
 ### <a name="metrics"></a>Mérőszámok
 
-Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning munkaterület metrikáit. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd válassza a **metrikák**elemet:
+Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning munkaterület metrikáit. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd válassza a **metrikák** elemet:
 
 [![A munkaterület mérőszámait ábrázoló képernyőkép](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
 
@@ -371,8 +366,8 @@ A részletek a következők:
 
 A [Azure Policy](/azure/governance/policy) egy irányítási eszköz, amely lehetővé teszi, hogy az Azure-erőforrások megfeleljenek a szabályzatoknak. A Azure Machine Learning használatával a következő házirendeket rendelheti hozzá:
 
-* **Ügyfél által felügyelt kulcs**: naplózás vagy betartatás, hogy a munkaterületeknek ügyfél által felügyelt kulcsot kell-e használniuk.
-* **Privát hivatkozás**: annak ellenőrzése, hogy a munkaterületek használnak-e privát végpontot a virtuális hálózattal való kommunikációhoz.
+* **Ügyfél által felügyelt kulcs** : naplózás vagy betartatás, hogy a munkaterületeknek ügyfél által felügyelt kulcsot kell-e használniuk.
+* **Privát hivatkozás** : annak ellenőrzése, hogy a munkaterületek használnak-e privát végpontot a virtuális hálózattal való kommunikációhoz.
 
 A Azure Policyről a [Azure Policy dokumentációjában](/azure/governance/policy/overview)talál további információt.
 

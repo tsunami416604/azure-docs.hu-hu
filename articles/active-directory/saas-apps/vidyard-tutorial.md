@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f10ffeae9e583c03831b81da2ecf7c128a5ddc8e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4176c92d48b67b9f9207f22ebd8939b5ec1437ee
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516273"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Oktatóanyag: Azure Active Directory integráció a Vidyard
 
@@ -63,13 +63,13 @@ A Vidyard Azure AD-be való integrálásának konfigurálásához hozzá kell ad
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Vidyard**kifejezést, válassza a **Vidyard** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Vidyard** kifejezést, válassza a **Vidyard** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Vidyard az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Vidyard-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Vidyard-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Vidyard kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Vidyard való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Vidyard való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Vidyard** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Vidyard** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -101,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés Vidyard való konfigurálásához hajtsa vé
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Vidyard tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://secure.vidyard.com/sso/saml/<unique id>/metadata`
 
@@ -109,7 +109,7 @@ Az Azure AD egyszeri bejelentkezés Vidyard való konfigurálásához hajtsa vé
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Vidyard tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://secure.vidyard.com/sso/saml/<unique id>/login`
 
@@ -136,15 +136,15 @@ Az Azure AD egyszeri bejelentkezés Vidyard való konfigurálásához hajtsa vé
 
 2. A Vidyard irányítópulton válassza a **csoport**  >  **Biztonság** lehetőséget.
 
-    ![Vidyard-konfiguráció](./media/vidyard-tutorial/configure1.png)
+    ![A képernyőképen a csoportból kiválasztott biztonság látható a Vidyard szoftver webhelyén.](./media/vidyard-tutorial/configure1.png)
 
 3. Kattintson az **új profil** fülre.
 
-    ![Vidyard-konfiguráció](./media/vidyard-tutorial/configure2.png)
+    ![A képernyőképen az új profil gomb látható.](./media/vidyard-tutorial/configure2.png)
 
 4. Az **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Vidyard-konfiguráció](./media/vidyard-tutorial/configure3.png)
+    ![Képernyőfelvétel: az SAML konfigurációs szakasza, ahol megadhatja a leírt értékeket.](./media/vidyard-tutorial/configure3.png)
 
     a. Adja meg az általános profil nevét a **profilnév** szövegmezőben.
 
@@ -162,18 +162,18 @@ Az Azure AD egyszeri bejelentkezés Vidyard való konfigurálásához hajtsa vé
 
 5. Az egyszeri bejelentkezés lapon válassza a **hozzárendelés** meglévő profil mellett lehetőséget.
 
-    ![Vidyard-konfiguráció](./media/vidyard-tutorial/configure4.png)
+    ![A képernyőképen az Azure A D S O-profil hozzárendelés gombja látható.](./media/vidyard-tutorial/configure4.png)
 
     > [!NOTE]
     > Miután létrehozott egy SSO-profilt, rendelje hozzá bármely olyan csoporthoz, amelyhez a felhasználóknak hozzáférésre van szükségük az Azure-on keresztül. Ha a felhasználó nem létezik azon a csoporton belül, amelyhez hozzá lettek rendelve, a Vidyard automatikusan létrehoz egy felhasználói fiókot, és valós időben rendeli hozzá a szerepkört.
 
-6. Válassza ki a szervezet csoportját, amely a **hozzárendelhető csoportok számára**látható.
+6. Válassza ki a szervezet csoportját, amely a **hozzárendelhető csoportok számára** látható.
 
-    ![Vidyard-konfiguráció](./media/vidyard-tutorial/configure5.png)
+    ![Képernyőfelvétel: az SAML-konfiguráció társítása a szervezetek szakaszhoz, ahol kiválaszthatja a csoportot.](./media/vidyard-tutorial/configure5.png)
 
-7. A hozzárendelt csoportokat a **jelenleg hozzárendelt csoportok**területen tekintheti meg. Válasszon egy szerepkört a csoport számára a szervezet számára, és kattintson a **Confirm (megerősítés**) gombra.
+7. A hozzárendelt csoportokat a **jelenleg hozzárendelt csoportok** területen tekintheti meg. Válasszon egy szerepkört a csoport számára a szervezet számára, és kattintson a **Confirm (megerősítés** ) gombra.
 
-    ![Vidyard-konfiguráció](./media/vidyard-tutorial/configure6.png)
+    ![Képernyőfelvétel: az SAML-konfiguráció társítása a szervezetek szakaszhoz, ahol kiválaszthat egy szerepkört.](./media/vidyard-tutorial/configure6.png)
 
     > [!NOTE]
     > További információkért tekintse meg [ezt a dokumentációt](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard).
@@ -182,7 +182,7 @@ Az Azure AD egyszeri bejelentkezés Vidyard való konfigurálásához hajtsa vé
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -200,21 +200,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Vidyard hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Vidyard**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Vidyard** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Vidyard**lehetőséget.
+2. Az alkalmazások listában válassza a **Vidyard** lehetőséget.
 
     ![Az Vidyard hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

@@ -2,16 +2,14 @@
 title: Kubernetes-erőforrások elérése a Azure Portal (előzetes verzió)
 description: Ismerje meg, hogyan kezelheti a Kubernetes-erőforrásokkal az Azure Kubernetes szolgáltatás (ak) fürtjét a Azure Portal.
 services: container-service
-author: laurenhughes
 ms.topic: article
 ms.date: 09/21/2020
-ms.author: lahugh
-ms.openlocfilehash: ce51e76829c19def1c1603b1a88592d1e683ccae
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ae617615a8ba83e311a416581fb41d3cb6ca1b05
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070639"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635609"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Kubernetes-erőforrások elérése a Azure Portal (előzetes verzió)
 
@@ -62,7 +60,7 @@ A Kubernetes erőforrás nézet egy YAML-szerkesztőt is tartalmaz. A beépítet
 
 :::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="A Azure Portalban megjelenő Kubernetes-Pod-információ.":::
 
-A YAML szerkesztése után a módosításokat a **felülvizsgálat + mentés**lehetőség kiválasztásával, a módosítások megerősítésével, majd újbóli mentésével alkalmazza a rendszer.
+A YAML szerkesztése után a módosításokat a **felülvizsgálat + mentés** lehetőség kiválasztásával, a módosítások megerősítésével, majd újbóli mentésével alkalmazza a rendszer.
 
 >[!WARNING]
 > A közvetlen üzemi változások felhasználói felületen vagy CLI-n keresztüli végrehajtása nem ajánlott, a [folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) ajánlott eljárásainak](kubernetes-action.md)használata. Az Azure Portal Kubernetes-felügyeleti képességei és a YAML-szerkesztő az új üzemelő példányok fejlesztéséhez és teszteléséhez készült.

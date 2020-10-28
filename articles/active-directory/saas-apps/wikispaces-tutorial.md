@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f48e9f039917fbd7f4437b8a0d3b81e65a0f9b62
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f62e746a189a14838227a40be3bca9d05553a642
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520285"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Oktatóanyag: Azure Active Directory integráció a Wikispaces
 
@@ -61,13 +61,13 @@ A Wikispaces Azure AD-be való integrálásának konfigurálásához hozzá kell
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Wikispaces**kifejezést, válassza a **Wikispaces** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Wikispaces** kifejezést, válassza a **Wikispaces** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Wikispaces az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Wikispaces-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Wikispaces-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Wikispaces kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Wikispaces való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Wikispaces való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Wikispaces** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Wikispaces** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **Wikispaces** oldalon,
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -148,21 +148,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Wikispaces hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Wikispaces**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Wikispaces** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Wikispaces**lehetőséget.
+2. Az alkalmazások listában válassza a **Wikispaces** lehetőséget.
 
     ![Az Wikispaces hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -184,17 +184,17 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Wikispaces, a Wikispac
 
 1. Jelentkezzen be a **Wikispaces** vállalati webhelyre rendszergazdaként.
 
-2. Ugrás a **tagokhoz**.
+2. Ugrás a **tagokhoz** .
    
     ![Tagok](./media/wikispaces-tutorial/ic787193.png "Tagok")
 
-3. Kattintson a **személyek meghívása**elemre.
+3. Kattintson a **személyek meghívása** elemre.
    
-    ![Személyek meghívása](./media/wikispaces-tutorial/ic787194.png "Személyek meghívása")
+    ![Képernyőfelvétel: a tagok lap, amelyen kiválaszthatja a személyek meghívása lehetőséget.](./media/wikispaces-tutorial/ic787194.png "Személyek meghívása")
 
 4. A **személyek meghívása** szakaszban hajtsa végre a következő lépéseket:
    
-    ![Személyek meghívása](./media/wikispaces-tutorial/ic787208.png "Személyek meghívása")
+    ![Képernyőfelvétel: a Meghívási személyek szakasz, ahol megadhatja a felhasználói adatbevitelt.](./media/wikispaces-tutorial/ic787208.png "Személyek meghívása")
    
     a. Írja be a kapcsolódó szövegmezőbe felvenni kívánt érvényes Azure AD **-fiók felhasználónevét vagy e-mail-címét** .
    

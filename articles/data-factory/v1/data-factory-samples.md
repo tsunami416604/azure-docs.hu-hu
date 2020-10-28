@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e2b7e96934c96dd944e17a1ef1ffb51a6ee89bf4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92360002"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636833"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – minták
 > [!NOTE]
@@ -33,7 +33,7 @@ A [GitHub Azure-DataFactory adattár](https://github.com/azure/azure-datafactory
 | [Http-adatletöltő minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Ez a példa az adatok HTTP-végpontról Blob Storage Azure-ba történő letöltését mutatja be az egyéni .NET-tevékenységek használatával. |
 | [Több mint alkalmazástartomány dot Net-tevékenység mintája](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Ez a minta lehetővé teszi egy olyan egyéni .NET-tevékenység létrehozását, amely nem korlátozódik az ADF-indító által használt szerelvény-verzióra (például WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsv 6.0. x stb.). |
 | [R-szkript futtatása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Ez a minta tartalmazza a RScript.exe meghívásához használható Data Factory egyéni tevékenységet. Ez a minta csak a saját (nem igény szerinti) HDInsight-fürttel működik, amelyen már telepítve van az R. |
-| [Spark-feladatok meghívása a HDInsight Hadoop-fürtön](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Ez a minta bemutatja, hogyan hívhat meg egy Spark-programot a MapReduce tevékenység használatával. A Spark program csak az egyik Azure Blob-tárolóból másol át egy másikba. |
+| [Spark-feladatok meghívása a HDInsight Hadoop-fürtön](../tutorial-transform-data-spark-portal.md) |Ez a minta bemutatja, hogyan hívhat meg egy Spark-programot a MapReduce tevékenység használatával. A Spark program csak az egyik Azure Blob-tárolóból másol át egy másikba. |
 | [Twitter-elemzés Azure Machine Learning Studio (klasszikus) batch pontozási tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Ez a minta azt mutatja be, hogyan használható a AzureMLBatchScoringActivity egy olyan Azure Machine Learning modell meghívására, amely Twitter-hangulat elemzését, pontozását, előrejelzését stb. |
 | [Twitter-elemzés egyéni tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ez a minta azt mutatja be, hogyan használható egy egyéni .NET-tevékenység egy olyan Azure Machine Learning modell meghívásához, amely Twitter-hangulat elemzését, pontozását, előrejelzését stb. végzi. |
 | [Paraméteres folyamatok Azure Machine Learninghoz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |A minta egy végpontok közötti C#-kódot biztosít, amellyel N folyamatokat helyezhet üzembe a pontozáshoz és az átképzéshez egy másik régió paraméterrel, ahol a régiók listája egy parameters.txt fájlból származik, amely ebben a példában szerepel. |
@@ -80,34 +80,34 @@ A számítógépre a következőket kell telepíteni:
 
 * Visual Studio 2013 vagy Visual Studio 2015
 * Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
-* Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ha a Visual Studio 2013-at használja, a beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson az **eszközök**  ->  **bővítmények**elemre, és frissítse az  ->  **online**  ->  **Visual Studio Gallery**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update szolgáltatást**.
+* Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ha a Visual Studio 2013-at használja, a beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson az **eszközök**  ->  **bővítmények** elemre, és frissítse az  ->  **online**  ->  **Visual Studio Gallery**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update szolgáltatást** .
 
 ### <a name="use-data-factory-templates"></a>Data Factory-sablonok használata
-1. Kattintson a menüben a **fájl** elemre, mutasson az **új**elemre, majd kattintson a **projekt**elemre.
+1. Kattintson a menüben a **fájl** elemre, mutasson az **új** elemre, majd kattintson a **projekt** elemre.
 2. A **New Project** (Új projekt) párbeszédablakban hajtsa végre az alábbi lépéseket:
 
-   1. A **sablonok**területen válassza a **DataFactory** lehetőséget.
+   1. A **sablonok** területen válassza a **DataFactory** lehetőséget.
    2. Válassza ki **Data Factory sablonokat** a jobb oldali ablaktáblán.
-   3. Adjon meg a projekt **nevét**.
+   3. Adjon meg a projekt **nevét** .
    4. Válassza ki a projekt **helyét** .
    5. Kattintson az **OK** gombra.
 
       ![A New project (Új projekt) párbeszédpanel](./media/data-factory-samples/vs-new-project-adf-templates.png)
-3. A **Data Factory sablonok** párbeszédpanelen válassza ki a minta sablont a **használati eset sablonok** szakaszban, majd kattintson a **tovább**gombra. Az alábbi lépések végigvezetik az **ügyfél profilkészítési** sablonjának használatával. A lépések hasonlóak a többi mintához.
+3. A **Data Factory sablonok** párbeszédpanelen válassza ki a minta sablont a **használati eset sablonok** szakaszban, majd kattintson a **tovább** gombra. Az alábbi lépések végigvezetik az **ügyfél profilkészítési** sablonjának használatával. A lépések hasonlóak a többi mintához.
 
     ![Data Factory Sablonok párbeszédpanel](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
 4. A **Data Factory konfiguráció** párbeszédpanelen kattintson a **tovább** gombra az **Data Factory alapjai** lapon.
 5. Az **adatgyár konfigurálása** oldalon hajtsa végre a következő lépéseket:
-   1. Válassza az **új Data Factory létrehozása**lehetőséget. Kiválaszthatja a **meglévő adatelőállító használata**lehetőséget is.
+   1. Válassza az **új Data Factory létrehozása** lehetőséget. Kiválaszthatja a **meglévő adatelőállító használata** lehetőséget is.
    2. Adja meg az adatelőállító **nevét** .
    3. Válassza ki azt az **Azure-előfizetést** , amelyben létre kívánja hozni az adatbázis-előállítót.
    4. Válassza ki az adatelőállítóhoz tartozó **erőforráscsoportot** .
-   5. Válassza ki az **USA nyugati**régiójában, az **USA keleti** **régiójában**vagy **Észak-Európában** .
+   5. Válassza ki az **USA nyugati** régiójában, az **USA keleti** **régiójában** vagy **Észak-Európában** .
    6. Kattintson a **Tovább** gombra.
 6. Az **adattárak konfigurálása** lapon adja meg a meglévő **adatbázist a Azure SQL Database** és az **Azure Storage-fiókban** (vagy) hozzon létre egy adatbázist/tárolót, és kattintson a Tovább gombra.
-7. A **számítás konfigurálása** lapon válassza az Alapértelmezések lehetőséget, majd kattintson a **tovább**gombra.
-8. Az **Összefoglalás** lapon tekintse át az összes beállítást, majd kattintson a **tovább**gombra.
-9. A **telepítés állapota** lapon várja meg a telepítés befejeződését, majd kattintson a **Befejezés**gombra.
+7. A **számítás konfigurálása** lapon válassza az Alapértelmezések lehetőséget, majd kattintson a **tovább** gombra.
+8. Az **Összefoglalás** lapon tekintse át az összes beállítást, majd kattintson a **tovább** gombra.
+9. A **telepítés állapota** lapon várja meg a telepítés befejeződését, majd kattintson a **Befejezés** gombra.
 10. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a projektre, majd kattintson a **Publish** (Közzététel) parancsra.
 11. Ha megjelenik a **Sign in to your Microsoft account** (Bejelentkezés a Microsoft-fiókba) párbeszédpanel, adja meg az Azure-előfizetéssel rendelkező fiókja hitelesítő adatait, és kattintson a **sign in** (bejelentkezés) elemre.
 12. A következő párbeszédpanelnek kell megjelennie:
@@ -122,4 +122,4 @@ A számítógépre a következőket kell telepíteni:
 15. Tekintse át az összefoglalót, és kattintson a **Tovább** gombra az üzembehelyezési folyamat elindításához, és a **Deployment Status** (Üzembehelyezési állapot) megtekintéséhez.
 16. A **Deployment Status** (Üzembehelyezési állapot) oldalon meg kell jelennie az üzembehelyezési folyamat állapotának. Miután befejeződött az üzembe helyezés, kattintson a Finish (Befejezés) gombra.
 
-Lásd: [az első adat-előállító létrehozása (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) a Visual studio használatával Data Factory entitások létrehozásához és az Azure-ba való közzétételéhez.          
+Lásd: [az első adat-előállító létrehozása (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) a Visual studio használatával Data Factory entitások létrehozásához és az Azure-ba való közzétételéhez.

@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276663"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635320"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>A Azure-SSIS Integration Runtime konfigurálása nagy teljesítményhez
 
@@ -118,11 +118,11 @@ Az y tengely azon csomagok száma, amelyek egy órán belül befejezték a végr
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-A **AzureSSISNodeNumber** az integrációs modul méretezhetőségét állítja be. Az Integration Runtime átviteli sebessége arányos a **AzureSSISNodeNumber**. Először állítsa be a **AzureSSISNodeNumber** egy kisebb értékre, figyelje az integrációs modul átviteli sebességét, majd állítsa be a forgatókönyv értékét. A munkavégző csomópontok számának újrakonfigurálásával kapcsolatban lásd: [Az Azure SSIS Integration Runtime kezelése](manage-azure-ssis-integration-runtime.md).
+A **AzureSSISNodeNumber** az integrációs modul méretezhetőségét állítja be. Az Integration Runtime átviteli sebessége arányos a **AzureSSISNodeNumber** . Először állítsa be a **AzureSSISNodeNumber** egy kisebb értékre, figyelje az integrációs modul átviteli sebességét, majd állítsa be a forgatókönyv értékét. A munkavégző csomópontok számának újrakonfigurálásával kapcsolatban lásd: [Az Azure SSIS Integration Runtime kezelése](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Ha már egy hatékony munkavégző csomópontot használ a csomagok futtatásához, a **AzureSSISMaxParallelExecutionsPerNode** növelése növelheti az integrációs modul teljes átviteli sebességét. Ha a maximális értéket szeretné megnövelni, a **AzureSSISMaxParallelExecutionsPerNode**frissítéséhez Azure PowerShellt kell használnia. A megfelelő értéket a csomag költsége és a munkavégző csomópontok következő beállításai alapján becsülheti fel. További információ: [általános célú virtuális gépek méretei](../virtual-machines/windows/sizes-general.md).
+Ha már egy hatékony munkavégző csomópontot használ a csomagok futtatásához, a **AzureSSISMaxParallelExecutionsPerNode** növelése növelheti az integrációs modul teljes átviteli sebességét. Ha a maximális értéket szeretné megnövelni, a **AzureSSISMaxParallelExecutionsPerNode** frissítéséhez Azure PowerShellt kell használnia. A megfelelő értéket a csomag költsége és a munkavégző csomópontok következő beállításai alapján becsülheti fel. További információ: [általános célú virtuális gépek méretei](../virtual-machines/sizes-general.md).
 
 | Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -161,7 +161,7 @@ A **SSISDBPricingTier** a SSIS-katalógus adatbázisának (SSISDB) díjszabási 
 
 -   Ha a naplózási szint részletes értékre van állítva, válasszon egy nagyobb teljesítményű adatbázist (például S3). A nem hivatalos házon belüli tesztelésnek megfelelően az S3 árképzési szint 2 csomóponttal, 128 párhuzamos számokkal és részletes naplózási szinttel támogatja a SSIS-csomagok végrehajtását.
 
-Az adatbázis díjszabási szintjét a Azure Portal elérhető adatbázis- [tranzakciós egység](../sql-database/sql-database-what-is-a-dtu.md) (DTU) használati információk alapján is módosíthatja.
+Az adatbázis díjszabási szintjét a Azure Portal elérhető adatbázis- [tranzakciós egység](../azure-sql/database/service-tiers-dtu.md) (DTU) használati információk alapján is módosíthatja.
 
 ## <a name="design-for-high-performance"></a>Nagy teljesítményű rendszer tervezése
 Az Azure-on futó SSIS-csomagok tervezése eltér a helyszíni végrehajtáshoz szükséges csomagok tervezésének. Az egyazon csomagban található több független feladat egyesítése helyett a Azure-SSIS IR hatékonyabb végrehajtásához válassza el őket több csomagra. Hozzon létre egy csomag-végrehajtást minden csomaghoz, így nem kell megvárniuk egymás befejezését. Ez a megközelítés az Azure-SSIS integrációs modul skálázhatóságának előnyeit és a teljes átviteli sebességet javítja.

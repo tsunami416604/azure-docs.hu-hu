@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2c308bd038f273a7cec0442e42f8a749bc4bb8fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3539b867d8f03d11e7799498d0207a65ac9db7d8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073556"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636629"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>SSISDB-naplók karbantartása az Azure Elastic Database-feladatokkal
 
@@ -160,7 +160,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 ## <a name="clean-up-logs-with-transact-sql"></a>Naplók törlése a Transact-SQL-sel
 
-A következő példa Transact-SQL-szkriptek új rugalmas feladatot hoznak létre a SSISDB-napló karbantartására szolgáló tárolt eljárás elindításához. További információ: [a Transact-SQL (T-SQL) használata Elastic Database feladatok létrehozásához és kezeléséhez](../sql-database/elastic-jobs-tsql.md).
+A következő példa Transact-SQL-szkriptek új rugalmas feladatot hoznak létre a SSISDB-napló karbantartására szolgáló tárolt eljárás elindításához. További információ: [a Transact-SQL (T-SQL) használata Elastic Database feladatok létrehozásához és kezeléséhez](../azure-sql/database/elastic-jobs-tsql-create-manage.md).
 
 1. Hozzon létre vagy azonosítson egy üres S0 vagy magasabb Azure SQL Database, hogy a SSISDBCleanup-feladatok adatbázisa legyen. Ezután hozzon létre egy rugalmas feladatot a [Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
 

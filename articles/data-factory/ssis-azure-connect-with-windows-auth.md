@@ -10,25 +10,25 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 5dd8e483751010a6090e0ec415c40d381e978fd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14d016f0deba518f16908492b4fae020b2dcc58c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84118811"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637547"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Adattárak és fájlmegosztások elérése Windows-hitelesítéssel, Azure-beli SSIS-csomagokból
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-A Windows-hitelesítéssel olyan adattárakhoz férhet hozzá, mint például az SQL-kiszolgálók, a fájlmegosztások, a Azure Files stb. a Azure Data Factory (ADF) Azure-SSIS Integration Runtimeon (IR) futó SSIS-csomagokból. Az adattárak lehetnek a helyszínen, az Azure Virtual Machines (VM) szolgáltatásban, vagy az Azure-ban felügyelt szolgáltatásként futnak. Ha a helyszínen vannak, csatlakoztatnia kell a Azure-SSIS IRt a helyszíni hálózathoz csatlakoztatott Virtual Networkhoz (Microsoft Azure Virtual Network), lásd: [csatlakozás Azure-SSIS IR egy Microsoft Azure Virtual Networkhoz](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Az adattárakat négy módon érheti el a Azure-SSIS IR futó SSIS-csomagokból származó Windows-hitelesítéssel:
+A Windows-hitelesítéssel olyan adattárakhoz férhet hozzá, mint például az SQL-kiszolgálók, a fájlmegosztások, a Azure Files stb. a Azure Data Factory (ADF) Azure-SSIS Integration Runtimeon (IR) futó SSIS-csomagokból. Az adattárak lehetnek a helyszínen, az Azure Virtual Machines (VM) szolgáltatásban, vagy az Azure-ban felügyelt szolgáltatásként futnak. Ha a helyszínen vannak, csatlakoztatnia kell a Azure-SSIS IRt a helyszíni hálózathoz csatlakoztatott Virtual Networkhoz (Microsoft Azure Virtual Network), lásd: [csatlakozás Azure-SSIS IR egy Microsoft Azure Virtual Networkhoz](./join-azure-ssis-integration-runtime-virtual-network.md). Az adattárakat négy módon érheti el a Azure-SSIS IR futó SSIS-csomagokból származó Windows-hitelesítéssel:
 
 | Kapcsolati módszer | Hatályos hatókör | Telepítési lépés | Hozzáférési módszer a csomagokban | A hitelesítőadat-készletek és a csatlakoztatott erőforrások száma | A csatlakoztatott erőforrások típusa | 
 |---|---|---|---|---|---|
-| Tevékenység szintű végrehajtási környezet beállítása | SSIS-csomag végrehajtása tevékenység | Konfigurálja a **Windows-hitelesítés** tulajdonságot úgy, hogy a "végrehajtás/Futtatás as" környezetet állítsa be, amikor SSIS-csomagokat futtat az ADF-folyamatokban végrehajtott SSIS-csomagként.<br/><br/> További információ: a [SSIS-csomag végrehajtása tevékenység konfigurálása](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity). | Erőforrások közvetlen elérése a csomagokban UNC elérési úton keresztül, például fájlmegosztás vagy Azure Files használata esetén: `\\YourFileShareServerName\YourFolderName` vagy `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Csak egy hitelesítőadat-készlet támogatása az összes csatlakoztatott erőforráshoz | -Fájlmegosztás a helyszínen/Azure-beli virtuális gépeken<br/><br/> – Azure Files, lásd: [Azure-fájlmegosztás használata](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -SQL-kiszolgálók helyszíni/Azure-beli virtuális gépeken Windows-hitelesítéssel<br/><br/> – Egyéb erőforrások Windows-hitelesítéssel |
-| Katalógus szintű végrehajtási környezet beállítása | Azure-SSIS IR, de a tevékenység szintű végrehajtási környezet beállításakor felül van bírálva (lásd fent) | Futtassa a SSISDB `catalog.set_execution_credential` tárolt eljárást a "végrehajtás/Futtatás as" környezet beállításához.<br/><br/> További információért tekintse meg az alábbi cikk további részeit. | Erőforrások közvetlen elérése a csomagokban UNC elérési úton keresztül, például fájlmegosztás vagy Azure Files használata esetén: `\\YourFileShareServerName\YourFolderName` vagy `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Csak egy hitelesítőadat-készlet támogatása az összes csatlakoztatott erőforráshoz | -Fájlmegosztás a helyszínen/Azure-beli virtuális gépeken<br/><br/> – Azure Files, lásd: [Azure-fájlmegosztás használata](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -SQL-kiszolgálók helyszíni/Azure-beli virtuális gépeken Windows-hitelesítéssel<br/><br/> – Egyéb erőforrások Windows-hitelesítéssel |
-| Hitelesítő adatok megőrzése `cmdkey` parancs használatával | Azure-SSIS IR, de a tevékenység/katalógus szintű végrehajtási környezet beállításakor felül van bírálva (lásd fent) | Futtassa a `cmdkey` parancsot egy egyéni telepítési parancsfájlban ( `main.cmd` ) a Azure-SSIS IR kiépítés során, például ha fájlmegosztást vagy Azure Files használ: `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword` vagy `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey` .<br/><br/> További információ: [a Azure-SSIS IR telepítőjének testreszabása](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup). | Erőforrások közvetlen elérése a csomagokban UNC elérési úton keresztül, például fájlmegosztás vagy Azure Files használata esetén: `\\YourFileShareServerName\YourFolderName` vagy `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Több hitelesítőadat-készlet támogatása a különböző csatlakoztatott erőforrásokhoz | -Fájlmegosztás a helyszínen/Azure-beli virtuális gépeken<br/><br/> – Azure Files, lásd: [Azure-fájlmegosztás használata](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -SQL-kiszolgálók helyszíni/Azure-beli virtuális gépeken Windows-hitelesítéssel<br/><br/> – Egyéb erőforrások Windows-hitelesítéssel |
-| Meghajtók csatlakoztatása a csomag végrehajtási idején (nem állandó) | /Csomag | Futtassa a parancsot a következőben `net use` : folyamat végrehajtása feladat, amelyet a rendszer a csomagokban a Control flow elején adott hozzá, például: `net use D: \\YourFileShareServerName\YourFolderName` | Fájlmegosztás elérése csatlakoztatott meghajtókon keresztül | Több meghajtó támogatása a különböző fájlmegosztás esetén | -Fájlmegosztás a helyszínen/Azure-beli virtuális gépeken<br/><br/> – Azure Files, lásd: [Azure-fájlmegosztás használata](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) |
+| Tevékenység szintű végrehajtási környezet beállítása | SSIS-csomag végrehajtása tevékenység | Konfigurálja a **Windows-hitelesítés** tulajdonságot úgy, hogy a "végrehajtás/Futtatás as" környezetet állítsa be, amikor SSIS-csomagokat futtat az ADF-folyamatokban végrehajtott SSIS-csomagként.<br/><br/> További információ: a [SSIS-csomag végrehajtása tevékenység konfigurálása](./how-to-invoke-ssis-package-ssis-activity.md). | Erőforrások közvetlen elérése a csomagokban UNC elérési úton keresztül, például fájlmegosztás vagy Azure Files használata esetén: `\\YourFileShareServerName\YourFolderName` vagy `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Csak egy hitelesítőadat-készlet támogatása az összes csatlakoztatott erőforráshoz | -Fájlmegosztás a helyszínen/Azure-beli virtuális gépeken<br/><br/> – Azure Files, lásd: [Azure-fájlmegosztás használata](../storage/files/storage-how-to-use-files-windows.md) <br/><br/> -SQL-kiszolgálók helyszíni/Azure-beli virtuális gépeken Windows-hitelesítéssel<br/><br/> – Egyéb erőforrások Windows-hitelesítéssel |
+| Katalógus szintű végrehajtási környezet beállítása | Azure-SSIS IR, de a tevékenység szintű végrehajtási környezet beállításakor felül van bírálva (lásd fent) | Futtassa a SSISDB `catalog.set_execution_credential` tárolt eljárást a "végrehajtás/Futtatás as" környezet beállításához.<br/><br/> További információért tekintse meg az alábbi cikk további részeit. | Erőforrások közvetlen elérése a csomagokban UNC elérési úton keresztül, például fájlmegosztás vagy Azure Files használata esetén: `\\YourFileShareServerName\YourFolderName` vagy `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Csak egy hitelesítőadat-készlet támogatása az összes csatlakoztatott erőforráshoz | -Fájlmegosztás a helyszínen/Azure-beli virtuális gépeken<br/><br/> – Azure Files, lásd: [Azure-fájlmegosztás használata](../storage/files/storage-how-to-use-files-windows.md) <br/><br/> -SQL-kiszolgálók helyszíni/Azure-beli virtuális gépeken Windows-hitelesítéssel<br/><br/> – Egyéb erőforrások Windows-hitelesítéssel |
+| Hitelesítő adatok megőrzése `cmdkey` parancs használatával | Azure-SSIS IR, de a tevékenység/katalógus szintű végrehajtási környezet beállításakor felül van bírálva (lásd fent) | Futtassa a `cmdkey` parancsot egy egyéni telepítési parancsfájlban ( `main.cmd` ) a Azure-SSIS IR kiépítés során, például ha fájlmegosztást vagy Azure Files használ: `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword` vagy `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey` .<br/><br/> További információ: [a Azure-SSIS IR telepítőjének testreszabása](./how-to-configure-azure-ssis-ir-custom-setup.md). | Erőforrások közvetlen elérése a csomagokban UNC elérési úton keresztül, például fájlmegosztás vagy Azure Files használata esetén: `\\YourFileShareServerName\YourFolderName` vagy `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Több hitelesítőadat-készlet támogatása a különböző csatlakoztatott erőforrásokhoz | -Fájlmegosztás a helyszínen/Azure-beli virtuális gépeken<br/><br/> – Azure Files, lásd: [Azure-fájlmegosztás használata](../storage/files/storage-how-to-use-files-windows.md) <br/><br/> -SQL-kiszolgálók helyszíni/Azure-beli virtuális gépeken Windows-hitelesítéssel<br/><br/> – Egyéb erőforrások Windows-hitelesítéssel |
+| Meghajtók csatlakoztatása a csomag végrehajtási idején (nem állandó) | /Csomag | Futtassa a parancsot a következőben `net use` : folyamat végrehajtása feladat, amelyet a rendszer a csomagokban a Control flow elején adott hozzá, például: `net use D: \\YourFileShareServerName\YourFolderName` | Fájlmegosztás elérése csatlakoztatott meghajtókon keresztül | Több meghajtó támogatása a különböző fájlmegosztás esetén | -Fájlmegosztás a helyszínen/Azure-beli virtuális gépeken<br/><br/> – Azure Files, lásd: [Azure-fájlmegosztás használata](../storage/files/storage-how-to-use-files-windows.md) |
 |||||||
 
 > [!WARNING]
@@ -44,7 +44,7 @@ Ha Windows-hitelesítést használ egy SSIS-csomagban, akkor csak egy hitelesít
 
 Ha olyan tartományi hitelesítő adatokat szeretne biztosítani, amelyek lehetővé teszik, hogy a csomagok Windows-hitelesítéssel férhessenek hozzá a helyszíni adattárakhoz, tegye a következőket:
 
-1. SQL Server Management Studio (SSMS) vagy más eszközzel csatlakozhat a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. SQL Server Management Studio (SSMS) vagy más eszközzel csatlakozhat a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Ha a SSISDB-t aktuális adatbázisként kívánja megnyitni, nyisson meg egy lekérdezési ablakot.
 
@@ -60,7 +60,7 @@ Ha olyan tartományi hitelesítő adatokat szeretne biztosítani, amelyek lehet�
 
 Az aktív tartományi hitelesítő adatok megtekintéséhez tegye a következőket:
 
-1. A SSMS vagy más eszközzel kapcsolódjon a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. A SSMS vagy más eszközzel kapcsolódjon a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Ha a SSISDB-t aktuális adatbázisként kívánja megnyitni, nyisson meg egy lekérdezési ablakot.
 
@@ -75,7 +75,7 @@ Az aktív tartományi hitelesítő adatok megtekintéséhez tegye a következők
 ### <a name="clear-domain-credentials"></a>Tartományi hitelesítő adatok törlése
 A jelen cikkben leírtak szerint megadott hitelesítő adatok törléséhez és eltávolításához tegye a következőket:
 
-1. A SSMS vagy más eszközzel kapcsolódjon a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. A SSMS vagy más eszközzel kapcsolódjon a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Ha a SSISDB-t aktuális adatbázisként kívánja megnyitni, nyisson meg egy lekérdezési ablakot.
 
@@ -105,9 +105,9 @@ Ha a helyszíni SQL Server az Azure-ban futó csomagokból szeretné elérni, te
 
 1.  A SQL Server Konfigurációkezelőban engedélyezze a TCP/IP protokollt.
 
-2. Hozzáférés engedélyezése a Windows tűzfalon keresztül. További információ: [a Windows tűzfal konfigurálása SQL Server eléréséhez](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access).
+2. Hozzáférés engedélyezése a Windows tűzfalon keresztül. További információ: [a Windows tűzfal konfigurálása SQL Server eléréséhez](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access).
 
-3. Csatlakoztassa a Azure-SSIS IRt egy olyan Microsoft Azure Virtual Networkhoz, amely a helyszíni SQL Serverhoz van csatlakoztatva.  További információ: [Join Azure-SSIS IR to a Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+3. Csatlakoztassa a Azure-SSIS IRt egy olyan Microsoft Azure Virtual Networkhoz, amely a helyszíni SQL Serverhoz van csatlakoztatva.  További információ: [Join Azure-SSIS IR to a Microsoft Azure Virtual Network](./join-azure-ssis-integration-runtime-virtual-network.md).
 
 4. A SSISDB `catalog.set_execution_credential` tárolt eljárás használatával adja meg a hitelesítő adatokat a jelen cikkben leírtak szerint.
 
@@ -132,7 +132,7 @@ A helyszíni fájlmegosztás az Azure-ban futó csomagokból való eléréséhez
 
 1. Hozzáférés engedélyezése a Windows tűzfalon keresztül.
 
-2. Csatlakoztassa a Azure-SSIS IRt egy olyan Microsoft Azure Virtual Networkhoz, amely a helyszíni fájlmegosztás számára van csatlakoztatva.  További információ: [Join Azure-SSIS IR to a Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+2. Csatlakoztassa a Azure-SSIS IRt egy olyan Microsoft Azure Virtual Networkhoz, amely a helyszíni fájlmegosztás számára van csatlakoztatva.  További információ: [Join Azure-SSIS IR to a Microsoft Azure Virtual Network](./join-azure-ssis-integration-runtime-virtual-network.md).
 
 3. A SSISDB `catalog.set_execution_credential` tárolt eljárás használatával adja meg a hitelesítő adatokat a jelen cikkben leírtak szerint.
 
@@ -140,7 +140,7 @@ A helyszíni fájlmegosztás az Azure-ban futó csomagokból való eléréséhez
 
 Az Azure-beli virtuális gépen lévő fájlmegosztás az Azure-ban futó csomagokból való eléréséhez tegye a következőket:
 
-1. A SSMS vagy más eszközzel kapcsolódjon a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. A SSMS vagy más eszközzel kapcsolódjon a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Ha a SSISDB-t aktuális adatbázisként kívánja megnyitni, nyisson meg egy lekérdezési ablakot.
 
@@ -156,7 +156,7 @@ További információ a Azure Filesről: [Azure Files](https://azure.microsoft.c
 
 Ha az Azure-ban futó csomagokból Azure Files fájlmegosztást szeretne elérni, tegye a következőket:
 
-1. A SSMS vagy más eszközzel kapcsolódjon a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. A SSMS vagy más eszközzel kapcsolódjon a SSISDB-t üzemeltető SQL Database/SQL felügyelt példányhoz. További információ: [Kapcsolódás a SSISDB-hez az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Ha a SSISDB-t aktuális adatbázisként kívánja megnyitni, nyisson meg egy lekérdezési ablakot.
 
@@ -166,8 +166,8 @@ Ha az Azure-ban futó csomagokból Azure Files fájlmegosztást szeretne elérni
    catalog.set_execution_credential @domain = N'Azure', @user = N'<storage-account-name>', @password = N'<storage-account-key>'
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Telepítse a csomagokat. További információ: [SSIS-projekt üzembe helyezése az Azure-ban a SSMS használatával](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms).
-- Futtassa a csomagokat. További információ: [SSIS-csomagok futtatása az Azure-ban a SSMS-](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)mel.
-- A csomagok beosztása. További információ: [SSIS-csomagok beosztása az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).
+- Telepítse a csomagokat. További információ: [SSIS-projekt üzembe helyezése az Azure-ban a SSMS használatával](/sql/integration-services/ssis-quickstart-deploy-ssms).
+- Futtassa a csomagokat. További információ: [SSIS-csomagok futtatása az Azure-ban a SSMS-](/sql/integration-services/ssis-quickstart-run-ssms)mel.
+- A csomagok beosztása. További információ: [SSIS-csomagok beosztása az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).

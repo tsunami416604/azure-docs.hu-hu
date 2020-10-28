@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440507"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635762"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory – gyakori kérdések
 
@@ -67,10 +67,10 @@ A felhasználók a dokumentált REST API-kat is használhatják a Data Factory v
 ### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>Ismétlődő fejlesztés és hibakeresés a Visual Tools használatával
 Azure Data Factory vizuális eszközök lehetővé teszik az ismétlődő fejlesztést és hibakeresést. Létrehozhatja a folyamatokat, és elvégezheti a tesztek futtatását a folyamat vásznon található **hibakeresési** funkció használatával anélkül, hogy egyetlen sor kódot írna. A teszt eredményét a folyamat vászonjának **output (kimenet** ) ablakában tekintheti meg. A tesztelés sikeres futtatása után további tevékenységeket adhat hozzá a folyamathoz, és ismétlődő módon folytathatja a hibakeresést. A teszt futtatása is megszakítható, miután folyamatban van. 
 
-A **hibakeresés**megkezdése előtt nem kell közzétennie a Changes-et a Refactory szolgáltatásban. Ez olyan esetekben hasznos, amikor azt szeretné, hogy az új hozzáadások vagy módosítások a várt módon működjenek, mielőtt frissíti az adatfeldolgozó munkafolyamatokat a fejlesztési, tesztelési vagy éles környezetekben. 
+A **hibakeresés** megkezdése előtt nem kell közzétennie a Changes-et a Refactory szolgáltatásban. Ez olyan esetekben hasznos, amikor azt szeretné, hogy az új hozzáadások vagy módosítások a várt módon működjenek, mielőtt frissíti az adatfeldolgozó munkafolyamatokat a fejlesztési, tesztelési vagy éles környezetekben. 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS-csomagok üzembe helyezésének lehetősége az Azure-ban 
-Ha át szeretné helyezni a SSIS számítási feladatait, létrehozhat egy Data Factory, és üzembe helyezhet egy Azure-SSIS integrációs modult. Az Azure-SSIS integrációs modul az Azure-beli virtuális gépek (csomópontok) teljes körűen felügyelt fürtje, amely a SSIS-csomagok felhőben történő futtatására van kijelölve. Részletes útmutatásért lásd a [SSIS-csomagok üzembe helyezése az Azure-](tutorial-create-azure-ssis-runtime-portal.md) ban című oktatóanyagot. 
+Ha át szeretné helyezni a SSIS számítási feladatait, létrehozhat egy Data Factory, és üzembe helyezhet egy Azure-SSIS integrációs modult. Az Azure-SSIS integrációs modul az Azure-beli virtuális gépek (csomópontok) teljes körűen felügyelt fürtje, amely a SSIS-csomagok felhőben történő futtatására van kijelölve. Részletes útmutatásért lásd a [SSIS-csomagok üzembe helyezése az Azure-](./tutorial-deploy-ssis-packages-azure.md) ban című oktatóanyagot. 
  
 ### <a name="sdks"></a>SDK-k
 Ha Ön fejlett felhasználó, és egy programozott felületet keres, a Data Factory az SDK-k széles választékát kínálja, amelyeket a folyamatok létrehozásához, kezeléséhez vagy monitorozásához használhat a kedvenc IDE használatával. A nyelvi támogatás magában foglalja a .NET, a PowerShell, a Python és a REST használatát.
@@ -83,7 +83,7 @@ A 2017-es kezdeti nyilvános előzetes kiadás óta a Data Factory a következő
 
 -    A projektek/csomagok SSIS-adatbázisának (SSISDB) üzemeltetéséhez a Azure SQL Database három további konfigurációjának/változatának támogatása:
 -    SQL Database virtuális hálózati szolgáltatásbeli végpontokkal
--    Felügyelt SQL-példány
+-    SQL Managed Instance
 -    Rugalmas készlet
 -    Egy klasszikus virtuális hálózatra épülő Azure Resource Manager virtuális hálózat támogatása a jövőben elavulttá válik, ami lehetővé teszi az Azure-SSIS integrációs modul beléptetését vagy csatlakoztatását egy, a virtuális hálózati szolgáltatás végpontokkal/MI/helyszíni adateléréssel SQL Database konfigurált virtuális hálózathoz. További információkért lásd még: [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md).
 -    Azure Active Directory-(Azure AD-) hitelesítés és SQL-hitelesítés támogatása a SSISDB való kapcsolódáshoz, az Azure AD-hitelesítés engedélyezése a Data Factory felügyelt identitásával az Azure-erőforrásokhoz
@@ -95,9 +95,9 @@ A 2017-es kezdeti nyilvános előzetes kiadás óta a Data Factory a következő
 ## <a name="what-is-the-integration-runtime"></a>Mi az Integration Runtime?
 Az Integration Runtime az a számítási infrastruktúra, amelyet a Azure Data Factory használ a következő adatintegrációs képességek biztosítására különböző hálózati környezetekben:
 
-- **Adatáthelyezés**: az adatáthelyezéshez az integrációs modul a forrás és a cél adattárolók között helyezi át az adatátvitelt, miközben támogatja a beépített összekötőket, a formátum átalakítását, az oszlopok hozzárendelését, valamint a teljesítmény és a skálázható adatátvitelt.
-- **Küldési tevékenységek**: átalakításhoz az integrációs modul képes natív módon végrehajtani a SSIS-csomagokat.
-- **SSIS-csomagok végrehajtása**: az Integration Runtime natív módon végrehajtja a SSIS-csomagokat egy felügyelt Azure számítási környezetben. Az Integration Runtime számos számítási szolgáltatáson (például Azure HDInsight, Azure Machine Learning, SQL Database és SQL Server) futó átalakítási tevékenységek elküldését és figyelését is támogatja.
+- **Adatáthelyezés** : az adatáthelyezéshez az integrációs modul a forrás és a cél adattárolók között helyezi át az adatátvitelt, miközben támogatja a beépített összekötőket, a formátum átalakítását, az oszlopok hozzárendelését, valamint a teljesítmény és a skálázható adatátvitelt.
+- **Küldési tevékenységek** : átalakításhoz az integrációs modul képes natív módon végrehajtani a SSIS-csomagokat.
+- **SSIS-csomagok végrehajtása** : az Integration Runtime natív módon végrehajtja a SSIS-csomagokat egy felügyelt Azure számítási környezetben. Az Integration Runtime számos számítási szolgáltatáson (például Azure HDInsight, Azure Machine Learning, SQL Database és SQL Server) futó átalakítási tevékenységek elküldését és figyelését is támogatja.
 
 Az integrációs modul egy vagy több példányát is telepítheti az adatáthelyezéshez és-átalakításhoz szükséges módon. Az Integration Runtime egy Azure-beli nyilvános hálózaton vagy egy privát hálózaton (helyszíni, Azure Virtual Network vagy Amazon Web Services virtuális magánhálózati felhőben [VPC]) is futtatható. 
 
@@ -109,7 +109,7 @@ Az Integration Runtime-példányok száma nincs korlátozva az adatelőállító
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Mik a Azure Data Factory legfelső szintű fogalmai?
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. A Azure Data Factory négy fő összetevőt tartalmaz, amelyek együtt működnek olyan platformként, amelyen adatvezérelt munkafolyamatokat hozhat létre az adatáthelyezési és-átalakítási lépésekkel.
 
-### <a name="pipelines"></a>Folyamatok
+### <a name="pipelines"></a>Pipelines
 A data factory egy vagy több folyamattal rendelkezhet. A folyamat a tevékenységek logikai csoportosítása a Munkaegységek elvégzéséhez. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. Egy folyamat például tartalmazhat olyan tevékenységeket, amelyek egy Azure-blobból töltenek le adatot, majd egy HDInsight-fürtön futtatnak egy kaptár-lekérdezést az adatok particionálásához. Ennek az az előnye, hogy egy folyamattal kezelheti a tevékenységeket készletként ahelyett, hogy az egyes tevékenységeket külön kell kezelnie. Egy folyamaton belül összekapcsolhatja a tevékenységeket, hogy azok egymás után is működjenek, vagy egymástól függetlenül, párhuzamosan is működhetnek.
 
 ### <a name="data-flows"></a>Adatfolyamok
@@ -159,7 +159,7 @@ A Azure Data Factory díjszabásáról a [Data Factory díjszabását](https://a
 A Azure Data Factory legfrissebb információit a következő webhelyeken teheti meg:
 
 - [Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [Dokumentáció kezdőlapja](/azure/data-factory)
+- [Dokumentáció kezdőlapja](./index.yml)
 - [Termék kezdőlapja](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="technical-deep-dive"></a>Technikai Deep Dive 

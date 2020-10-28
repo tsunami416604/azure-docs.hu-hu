@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.author: metan
-ms.openlocfilehash: 968f3c9fbfea1e2f04fb029605173087f6f311c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: 73084f5116083b190b6fa31e504ffc5e8f6f39f6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88516503"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636493"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Oktatóanyag: hozzon létre egy iOS-alkalmazást, amely egy fényképből származó tartalommal (Swift) indít el egy lebilincselő olvasót
 
@@ -24,7 +24,7 @@ A [Computer Vision Cognitive Services Read API](https://docs.microsoft.com/azure
 
 Ebben az oktatóanyagban egy iOS-alkalmazást hoz létre a semmiből, és integrálja az olvasási API-t, valamint a magával ragadó olvasót az olvasói SDK használatával. Ebben az oktatóanyagban egy teljes körű működő minta érhető [el.](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +38,7 @@ Hozzon létre egy új projektet a Xcode-ben.
 
 ![Új projekt](./media/ios/xcode-create-project.png)
 
-Válassza az **Egynézetes alkalmazás**lehetőséget.
+Válassza az **Egynézetes alkalmazás** lehetőséget.
 
 ![Új egynézetes alkalmazás](./media/ios/xcode-single-view-app.png)
 
@@ -97,6 +97,6 @@ Az alkalmazáson belül készítsen vagy töltsön fel egy fényképet a "fényk
 
 ![Modern olvasó](./media/ios/picture-to-immersive-reader-ipad.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg az [olvasói SDK-referenciát](./reference.md)

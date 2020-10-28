@@ -8,12 +8,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 36660854b9a7ae13431545392ef551694b48e97c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2b95e0de642dc17865643ec569e7220fe5581b2
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82628912"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637496"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Fájlok megnyitása és mentése a helyszínen és az Azure-ban az Azure-ban üzembe helyezett SSIS-csomagokkal
 
@@ -33,7 +33,7 @@ Ha a helyi fájlrendszert használó csomagokat a SSIS az Azure-ban szeretné ha
 
 2. Csatlakoztassa a helyszíni fájlmegosztást egy Azure-beli virtuális hálózathoz.
 
-3. Csatlakoztassa a Azure-SSIS IRt ugyanahhoz a virtuális hálózathoz. További információ: [Az Azure SSIS Integration Runtime csatlakoztatása egy virtuális hálózathoz](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+3. Csatlakoztassa a Azure-SSIS IRt ugyanahhoz a virtuális hálózathoz. További információ: [Az Azure SSIS Integration Runtime csatlakoztatása egy virtuális hálózathoz](./join-azure-ssis-integration-runtime-virtual-network.md).
 
 4. A Windows-hitelesítést használó hozzáférési hitelesítő adatok beállításával összekapcsolhatja a Azure-SSIS IR az ugyanazon a virtuális hálózaton belüli helyi fájlmegosztás használatával. További információ: [Kapcsolódás adatokhoz és fájlmegosztáshoz Windows-hitelesítéssel](ssis-azure-connect-with-windows-auth.md).
 
@@ -49,8 +49,8 @@ Ha helyi fájlrendszereket használó csomagokat SSIS az Azure-ban, akkor a köv
 
 3. Frissítse a csomagok helyi fájlelérési útvonalait az Azure Filesra mutató UNC elérési utakra. Például frissítsen a következőre: `C:\abc.txt` `\\<storage-account-name>.file.core.windows.net\<share-name>\abc.txt` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Telepítse a csomagokat. További információ: [SSIS-projekt üzembe helyezése az Azure-ban a SSMS használatával](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms).
-- Futtassa a csomagokat. További információ: [SSIS-csomagok futtatása az Azure-ban a SSMS-](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)mel.
-- A csomagok beosztása. További információ: [SSIS-csomagok beosztása az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).
+- Telepítse a csomagokat. További információ: [SSIS-projekt üzembe helyezése az Azure-ban a SSMS használatával](/sql/integration-services/ssis-quickstart-deploy-ssms).
+- Futtassa a csomagokat. További információ: [SSIS-csomagok futtatása az Azure-ban a SSMS-](/sql/integration-services/ssis-quickstart-run-ssms)mel.
+- A csomagok beosztása. További információ: [SSIS-csomagok beosztása az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).

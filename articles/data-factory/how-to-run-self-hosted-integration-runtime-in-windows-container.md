@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: d6f292ff89a70de90e6b86f19f73de26963d997f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7035da173102e59aec9c643381bad701d6facf38
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927563"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634538"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Self-Hosted Integration Runtime futtatása a Windows-tárolóban
 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan futtatható Self-Hosted Integration Runtime a Wi
 A Azure Data Factory Self-Hosted Integration Runtime hivatalos Windows-tárolójának támogatását. Letöltheti a Docker-Build forráskódját, és összekapcsolhatja a saját folyamatos szállítási folyamatában lévő építési és üzemeltetési folyamatot. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
-- [A Windows-tárolóra vonatkozó követelmények](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/system-requirements)
+- [A Windows-tárolóra vonatkozó követelmények](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker 2,3-es és újabb verziói 
 - Self-Hosted Integration Runtime 4.11.7512.1 és újabb verzió 
 ## <a name="get-started"></a>Bevezetés 
@@ -61,7 +61,5 @@ Az alábbi funkciók jelenleg nem támogatottak Self-Hosted Integration Runtime 
 - Automatikus frissítés 
 
 ### <a name="next-steps"></a>Következő lépések
-- Tekintse át [az Integration Runtime fogalmait a Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
-- Ismerje meg, hogyan [hozhat létre saját üzemeltetésű integrációs modult a Azure Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
-
-
+- Tekintse át [az Integration Runtime fogalmait a Azure Data Factoryban](./concepts-integration-runtime.md).
+- Ismerje meg, hogyan [hozhat létre saját üzemeltetésű integrációs modult a Azure Portal](./create-self-hosted-integration-runtime.md).

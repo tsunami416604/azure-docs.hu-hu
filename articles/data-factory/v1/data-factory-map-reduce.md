@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 98e352024ceea322f09947baf1bc759459a2af19
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359968"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636850"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>MapReduce-programok meghívása Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359968"
 > * [MapReduce tevékenység](data-factory-map-reduce.md)
 > * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 > * [Spark-tevékenység](data-factory-spark.md)
-> * [Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység](data-factory-azure-ml-update-resource-activity.md)
+> * [Az Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenysége](data-factory-azure-ml-batch-execution-activity.md)
+> * [Az Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenysége](data-factory-azure-ml-update-resource-activity.md)
 > * [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-tevékenység](data-factory-usql-activity.md)
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
@@ -49,7 +49,7 @@ A Pig/kaptár-parancsfájlok Windows-/Linux-alapú HDInsight-fürtökön való f
 ## <a name="json-for-hdinsight-mapreduce-activity"></a>JSON a HDInsight MapReduce-tevékenységhez
 A HDInsight tevékenység JSON-definíciójában: 
 
-1. Állítsa be a **tevékenység** **típusát** a **HDInsight**értékre.
+1. Állítsa be a **tevékenység** **típusát** a **HDInsight** értékre.
 2. Adja meg a **Osztálynév** tulajdonság osztályának nevét.
 3. Adja meg a JAR-fájl elérési útját, beleértve a **jarFilePath** tulajdonság fájlnevét.
 4. A **jarLinkedService** tulajdonsághoz tartozó jar-fájlt tartalmazó Azure Blob Storagera hivatkozó társított szolgáltatás megadása.   
@@ -183,7 +183,7 @@ Az ebben a példában szereplő folyamathoz csak egy: HDInsightMapReduce típus�
 
 | Tulajdonság | Jegyzetek |
 |:--- |:--- |
-| típus |A típust **HDInsightMapReduce**értékre kell beállítani. |
+| típus |A típust **HDInsightMapReduce** értékre kell beállítani. |
 | className |Az osztály neve: **WordCount** |
 | jarFilePath |Az osztályt tartalmazó jar-fájl elérési útja. Ha a következő kódot másolja/illeszti be, ne felejtse el módosítani a fürt nevét. |
 | jarLinkedService |Az Azure Storage társított szolgáltatása, amely tartalmazza a jar-fájlt. Ez a társított szolgáltatás a HDInsight-fürthöz társított tárterületre hivatkozik. |
@@ -235,14 +235,14 @@ Az ebben a példában szereplő folyamathoz csak egy: HDInsightMapReduce típus�
 ## <a name="run-spark-programs"></a>Spark-programok futtatása
 A MapReduce tevékenység használatával Spark-programokat futtathat a HDInsight Spark-fürtökön. A részletekért lásd: [Invoke Spark programs from Azure Data Factory](data-factory-spark.md) (Spark-programok meghívása az Azure Data Factory-ból).  
 
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Developer Reference]: /previous-versions/azure/dn834987(v=azure.100)
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>Lásd még:
@@ -251,4 +251,3 @@ A MapReduce tevékenység használatával Spark-programokat futtathat a HDInsigh
 * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 * [Spark-programok meghívása](data-factory-spark.md)
 * [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
-

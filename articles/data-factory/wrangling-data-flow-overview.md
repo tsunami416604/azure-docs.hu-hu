@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082851"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636068"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Mik azok az huzavona-adatforgalom?
 
@@ -21,7 +21,7 @@ ms.locfileid: "87082851"
 
 A szervezeteknek adatelőkészítést és huzavona kell végezniük az olyan összetett adatmennyiségek pontos elemzéséhez, amelyek napról napra folyamatosan növekednek. Az adatelőkészítésre azért van szükség, hogy a szervezetek különböző üzleti folyamatok során használhassák az adatmennyiséget, és csökkentsék az időt az értékre.
 
-A Azure Data Factory huzavona adatforgalma lehetővé teszi a kód nélküli adatelőkészítést a felhőalapú méretezési iteratív. A huzavona-adatfolyamatok integrálva vannak [Power Query online](https://docs.microsoft.com/power-query/) -nal, és Power Query M funkciókat biztosítanak a adat-előállító felhasználók számára.
+A Azure Data Factory huzavona adatforgalma lehetővé teszi a kód nélküli adatelőkészítést a felhőalapú méretezési iteratív. A huzavona-adatfolyamatok integrálva vannak [Power Query online](/power-query/) -nal, és Power Query M funkciókat biztosítanak a adat-előállító felhasználók számára.
 
 A huzavona adatáramlási folyamata az Power Query online mashup-szerkesztő által generált, a Felhőbeli méretezés végrehajtásához készült Spark-kódra.
 
@@ -68,6 +68,6 @@ A támogatott átalakításokkal kapcsolatos további információkért lásd: [
 
 Az huzavona-adatfolyam jelenleg csak egy fogadóba való írást támogatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [hozhat létre huzavona-adatfolyamokat](wrangling-data-flow-tutorial.md).

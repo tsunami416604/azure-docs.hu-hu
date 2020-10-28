@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: f609cfb0945d79cfa8ae21b786a5761b92b9dabb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7545f593aea2aca8c0aa240d44bcef3b7a1ca7c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84324623"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636272"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS Integration Runtime újrakonfigurálása
 
@@ -28,10 +28,10 @@ Ez a cikk azt ismerteti, hogyan lehet újrakonfigurálni egy meglévő Azure-SSI
 A Azure-SSIS IR leállításához, szerkesztéséhez/újrakonfigurálásához vagy törléséhez Data Factory felhasználói felületet használhat. 
 
 1. Nyissa meg Data Factory felhasználói felületét úgy, hogy kijelöli az adatelőállító kezdőlapjának **szerző & figyelése** csempéjét.
-2. Válassza a **felügyeleti központ** **Kezdőlap**, **Szerkesztés**és **figyelés** csomópontokat a **kapcsolatok** ablaktábla megjelenítéséhez.
+2. Válassza a **felügyeleti központ** **Kezdőlap** , **Szerkesztés** és **figyelés** csomópontokat a **kapcsolatok** ablaktábla megjelenítéséhez.
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>Azure-SSIS IR újrakonfigurálása
-A **Manage** hub **kapcsolatok** ablaktábláján váltson az **Integration Runtimes (integrációs** modulok) lapra, és válassza a **frissítés**lehetőséget. 
+A **Manage** hub **kapcsolatok** ablaktábláján váltson az **Integration Runtimes (integrációs** modulok) lapra, és válassza a **frissítés** lehetőséget. 
 
    ![Kapcsolatok ablaktábla](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
 
@@ -88,11 +88,11 @@ Az Azure-SSIS integrációs modul egy példányának üzembe helyezése és elin
    Remove-AzResourceGroup -Name $ResourceGroupName -Force 
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-SSIS futtatókörnyezettel kapcsolatos további információkért tekintse meg a következő témaköröket: 
 
 - [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk az integrációs modulokkal kapcsolatos általános információkat tartalmaz, beleértve a Azure-SSIS IR. 
-- [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk részletes útmutatást nyújt egy Azure-SSIS IR létrehozásához, és a Azure SQL Database használatával futtatja az SSIS-katalógust. 
+- [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](./tutorial-deploy-ssis-packages-azure.md). Ez a cikk részletes útmutatást nyújt egy Azure-SSIS IR létrehozásához, és a Azure SQL Database használatával futtatja az SSIS-katalógust. 
 - [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatást nyújt az Azure SQL felügyelt példányának használatáról és az IR virtuális hálózathoz való csatlakoztatásáról. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti, hogyan használható az Azure Portal a virtuális hálózat oly módon való konfigurálására, hogy az Azure-SSIS integrációs modul csatlakozhasson ahhoz. 
 - [Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk bemutatja, hogyan kérhet le információkat egy Azure-SSIS integrációs modulról, és ismerteti a visszaadott információkban található állapotok leírását.

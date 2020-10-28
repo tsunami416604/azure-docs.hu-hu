@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 3db7112516941e53c07e1521f15140a8b9c28e47
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9562c9fd590ea1234fb2378f03861141e58432ff
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147960"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637530"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
 
@@ -50,7 +50,7 @@ Az előfizetésben található engedélyek megtekintéséhez kattintson az Azure
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 és 2017
 Ebben az oktatóanyagban egy SQL Server-adatbázist használ *forrásként* szolgáló adattárként. Az oktatóanyagban létrehozott adatfeldolgozó folyamata a SQL Server-adatbázisból (forrás) származó adatok másolása az Azure Blob Storage-ba (fogadó). Ezután létre fog hozni egy **emp** nevű táblát az SQL Server-adatbázisban, és beszúr a táblába néhány mintabejegyzést.
 
-1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [Az SQL Server Management Studio letöltését ismertető](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) szakaszt.
+1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [Az SQL Server Management Studio letöltését ismertető](/sql/ssms/download-sql-server-management-studio-ssms) szakaszt.
 
 1. Csatlakozzon az SQL Server-példányához a hitelesítő adataival.
 
@@ -179,7 +179,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Az adat-előállító példányok létrehozásához annak a felhasználói fióknak, amellyel belép az Azure-ba, a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie.
-> * Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+> * Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory** : [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
 >
 >
 
@@ -271,7 +271,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
     ![Integrációs modul regisztrálása](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-1. Az **új Integration Runtime (helyi) csomópont** ablakban válassza a **Befejezés**lehetőséget.
+1. Az **új Integration Runtime (helyi) csomópont** ablakban válassza a **Befejezés** lehetőséget.
 
     ![Integration Runtime új csomópontja ablak](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
@@ -415,7 +415,7 @@ Ebben a lépésben összekapcsolja SQL Server példányát az adatelőállítóv
     > - Válassza ki az SQL Server-példányhoz való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.
     > - Cserélje le az értékét  **\<integration runtime name>** az Integration Runtime nevére.
     > - A fájl mentése előtt cserélje le a,, **\<servername>** **\<databasename>** **\<username>** és **\<password>** értéket a SQL Server példányának értékeire.
-    > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány \\ \\ myuser*.
+    > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány \\ \\ myuser* .
 
 1. A bizalmas adatok (felhasználónév, jelszó stb.) titkosításához futtassa a `New-AzDataFactoryV2LinkedServiceEncryptedCredential` parancsmagot.  
     A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja. A titkosított hitelesítő adatok tárolása a saját üzemeltetésű integrációs modul csomópontján helyileg történik (a helyi gépen). A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az *encryptedLinkedService.json* fájlba), amely titkosított hitelesítő adatokat tartalmaz.
@@ -480,7 +480,7 @@ Ebben a lépésben megadhat egy adatkészletet, amely az SQL Server-adatbázisp�
 ### <a name="create-a-dataset-for-azure-blob-storage-sink"></a>Adatkészlet létrehozása a Azure Blob Storage-hez (fogadó)
 Ebben a lépésben az Azure Blob Storage-be másolni kívánt adatokat képviselő adatkészletet adja meg. Az adatkészlet típusa AzureBlob. Ez az oktatóanyagban korábban létrehozott Azure Storage társított szolgáltatásra vonatkozik.
 
-A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket az adat-előállító használ futtatáskor az Azure Storage-fiókhoz való kapcsolódásra. Ez az adatkészlet azt az Azure Storage-beli mappát határozza meg, amelybe a rendszer az adatokat másolja az SQL Server-adatbázisból. Ebben az oktatóanyagban a mappa a következő: *adftutorial/fromonprem*, ahol az `adftutorial` a blobtároló, a `fromonprem` pedig a mappa.
+A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket az adat-előállító használ futtatáskor az Azure Storage-fiókhoz való kapcsolódásra. Ez az adatkészlet azt az Azure Storage-beli mappát határozza meg, amelybe a rendszer az adatokat másolja az SQL Server-adatbázisból. Ebben az oktatóanyagban a mappa a következő: *adftutorial/fromonprem* , ahol az `adftutorial` a blobtároló, a `fromonprem` pedig a mappa.
 
 1. Hozzon létre egy *AzureBlobDataset.json* nevű JSON-fájlt a *C:\ADFv2Tutorial* mappában a következő kóddal:
 
@@ -531,7 +531,7 @@ A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket az a
     ```
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
-Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendelkező folyamatot. A másolási tevékenység az SqlServerDataset készletet használja bemeneti adatkészletként, illetve az AzureBlobDataset készletet kimeneti adatkészletként. A forrás típusa *SqlSource*, a fogadó típusa *BlobSink*.
+Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendelkező folyamatot. A másolási tevékenység az SqlServerDataset készletet használja bemeneti adatkészletként, illetve az AzureBlobDataset készletet kimeneti adatkészletként. A forrás típusa *SqlSource* , a fogadó típusa *BlobSink* .
 
 1. Hozzon létre egy *SqlServerToBlobPipeline.json* nevű JSON-fájlt a *C:\ADFv2Tutorial* mappában a következő kóddal:
 

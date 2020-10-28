@@ -10,12 +10,12 @@ ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9615dc358b1c5bed0e48c07c2571ccce05fcdf2e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84659712"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637207"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime létrehozása és konfigurálása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,27 +41,27 @@ Integration Runtime a **set-AzDataFactoryV2IntegrationRuntime PowerShell-** para
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-Azure IR esetén a típust **felügyelt**értékre kell beállítani. Nem kell megadnia a számítási adatokat, mert teljes mértékben felügyelt a felhőben. Azure-SSIS IR létrehozásához a számítási adatokat, például a csomópontok méretét és a csomópontok darabszámát kell megadni. További információ: [Azure-SSIS IR létrehozása és konfigurálása](create-azure-ssis-integration-runtime.md).
+Azure IR esetén a típust **felügyelt** értékre kell beállítani. Nem kell megadnia a számítási adatokat, mert teljes mértékben felügyelt a felhőben. Azure-SSIS IR létrehozásához a számítási adatokat, például a csomópontok méretét és a csomópontok darabszámát kell megadni. További információ: [Azure-SSIS IR létrehozása és konfigurálása](create-azure-ssis-integration-runtime.md).
 
 A Set-AzDataFactoryV2IntegrationRuntime PowerShell-parancsmag használatával meglévő Azure IR is konfigurálhat a hely módosításához. Az Azure IR helyével kapcsolatos további információkért lásd: az [Integration Runtime bemutatása](concepts-integration-runtime.md).
 
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure IR létrehozása Azure Data Factory felhasználói felületen
 A következő lépések végrehajtásával hozhat létre Azure IR a Azure Data Factory felhasználói felületen.
 
-1. Azure Data Factory felhasználói felületének első **lépések** oldalán válassza a [kezelés fület](https://docs.microsoft.com/azure/data-factory/author-management-hub) a bal szélső ablaktáblán.
+1. Azure Data Factory felhasználói felületének első **lépések** oldalán válassza a [kezelés fület](./author-management-hub.md) a bal szélső ablaktáblán.
 
    ![A Kezdőlap kezelés gombja](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Válassza az **integrációs** modulok lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új**lehetőséget.
+1. Válassza az **integrációs** modulok lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új** lehetőséget.
 
    ![Integrációs modul létrehozása](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. Az **Integration Runtime telepítése** lapon válassza az **Azure, a saját**üzemeltetésű lehetőséget, majd kattintson a **Folytatás**gombra. 
+1. Az **Integration Runtime telepítése** lapon válassza az **Azure, a saját** üzemeltetésű lehetőséget, majd kattintson a **Folytatás** gombra. 
 
-1. A következő lapon válassza az **Azure** lehetőséget Azure IR létrehozásához, majd válassza a **Folytatás**lehetőséget.
+1. A következő lapon válassza az **Azure** lehetőséget Azure IR létrehozásához, majd válassza a **Folytatás** lehetőséget.
    ![Integrációs modul létrehozása](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
-1. Adja meg a Azure IR nevét, majd válassza a **Létrehozás**lehetőséget.
+1. Adja meg a Azure IR nevét, majd válassza a **Létrehozás** lehetőséget.
    ![Azure IR létrehozása](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. Ekkor megjelenik egy előugró értesítés, amikor a létrehozás befejeződik. Az **Integration Runtimes (integrációs** modulok) lapon győződjön meg arról, hogy az újonnan létrehozott IR megjelenik a listában.
@@ -87,9 +87,8 @@ Azure IR létrehozása után hivatkozhat rá a társított szolgáltatás defin�
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az integrációs modulok egyéb típusainak létrehozásáról a következő cikkekben talál további információt:
 
 - [Saját üzemeltetésű integrációs modul létrehozása](create-self-hosted-integration-runtime.md)
 - [Azure SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md)
- 

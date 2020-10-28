@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85249652"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637258"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Séma-és adattípus-leképezés a másolási tevékenységben
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,7 +54,7 @@ A leképezést konfigurálhatja Data Factory authoring UI-> másolási tevékeny
 | path     | Az egyes mezőkhöz tartozó JSON-elérésiút-kifejezés kibontása vagy leképezése. Hierarchikus forrásra és fogadóra vonatkozik, például Cosmos DB, MongoDB vagy REST-összekötők.<br>A root objektum alatti mezők esetében a JSON elérési útja a root karakterrel kezdődik `$` ; a tulajdonság által választott tömbben lévő mezők esetében a `collectionReference` JSON-útvonal a tömb elemtől kezdve nem `$` . | Nem       |
 | típus     | Data Factory a forrás vagy a fogadó oszlop közbenső adattípusa. Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | Nem       |
 | kulturális környezet  | A forrás vagy a fogadó oszlop kulturális környezete. Akkor alkalmazza, ha a típus értéke `Datetime` vagy `Datetimeoffset` . A mező alapértelmezett értéke: `en-us`.<br>Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | Nem       |
-| formátumban   | A Type vagy a típushoz használandó formázó sztring `Datetime` `Datetimeoffset` . A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | Nem       |
+| formátumban   | A Type vagy a típushoz használandó formázó sztring `Datetime` `Datetimeoffset` . A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](/dotnet/standard/base-types/custom-date-and-time-format-strings) . Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | Nem       |
 
 A következő tulajdonságokat támogatja a (z) `translator` mellett `mappings` :
 
@@ -170,7 +170,7 @@ Ha például a forrás MongoDB-dokumentum a következő tartalommal rendelkezik:
 }
 ```
 
-És egy szövegfájlba kívánja másolni a következő formátumban a fejlécben a tömbben található adatok összegyűjtésével *(order_pd és order_price)* , valamint a közös legfelső szintű információkkal való összekapcsolással *(szám, dátum és város)*:
+És egy szövegfájlba kívánja másolni a következő formátumban a fejlécben a tömbben található adatok összegyűjtésével *(order_pd és order_price)* , valamint a közös legfelső szintű információkkal való összekapcsolással *(szám, dátum és város)* :
 
 | rendelésszáma | RendelésDátuma | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |
@@ -182,13 +182,13 @@ Megadhatja a leképezést Data Factory szerzői felhasználói felületen:
 
 1. A másolási tevékenység – > leképezés lapon kattintson a **séma importálása** gombra a forrás-és fogadó sémák importálásához. Ahogy Data Factory a séma importálásakor a legfontosabb néhány objektumot, ha bármelyik mező nem jelenik meg, felveheti a hierarchiában a megfelelő rétegbe – vigye a kurzort egy meglévő mezőnév fölé, és válassza a csomópont, objektum vagy tömb hozzáadását.
 
-2. Válassza ki azt a tömböt, amelyről meg szeretné ismételni az adatok kinyerését. A rendszer automatikusan kitölti a **gyűjteményi referenciát**. Vegye figyelembe, hogy ilyen művelet esetén csak egyetlen tömb támogatott.
+2. Válassza ki azt a tömböt, amelyről meg szeretné ismételni az adatok kinyerését. A rendszer automatikusan kitölti a **gyűjteményi referenciát** . Vegye figyelembe, hogy ilyen művelet esetén csak egyetlen tömb támogatott.
 
 3. Rendelje hozzá a szükséges mezőket a fogadóhoz. A Data Factory automatikusan meghatározza a hierarchikus oldalhoz tartozó JSON-útvonalakat.
 
 ![Hierarchia leképezése táblázatos KEZELŐFELÜLET használatával](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 
-Átválthat a **speciális szerkesztőre**is, amely esetben közvetlenül megtekintheti és szerkesztheti a mezők JSON-elérési útvonalait. Ha ebben a nézetben új leképezést ad hozzá, adja meg a JSON elérési útját.
+Átválthat a **speciális szerkesztőre** is, amely esetben közvetlenül megtekintheti és szerkesztheti a mezők JSON-elérési útvonalait. Ha ebben a nézetben új leképezést ad hozzá, adja meg a JSON elérési útját.
 
 ![Hierarchia leképezése táblázatos formában a speciális szerkesztő használatával](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png)
 
@@ -283,9 +283,9 @@ A másolási tevékenység jelenleg a következő közbenső adattípusokat tám
 
 A következő adattípus-átalakítások támogatottak a forrás és a fogadó közti közbenső típusok között.
 
-| Source\Sink | Logikai érték | Bájtos tömb | Tizedesjegy | Dátum/idő <small>(1)</small> | Lebegőpontos pont <small>(2)</small> | GUID | Egész szám <small>(3)</small> | Sztring | időtartam |
+| Source\Sink | Logikai | Bájtos tömb | Tizedesjegy | Dátum/idő <small>(1)</small> | Lebegőpontos pont <small>(2)</small> | GUID | Egész szám <small>(3)</small> | Sztring | időtartam |
 | ----------- | ------- | ---------- | ------- | ---------------------------- | ------------------------------ | ---- | -------------------------- | ------ | -------- |
-| Logikai érték     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
+| Logikai     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | Bájtos tömb  |         | ✓          |         |                              |                                |      |                            | ✓      |          |
 | Dátum/idő   |         |            |         | ✓                            |                                |      |                            | ✓      |          |
 | Tizedesjegy     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
@@ -314,9 +314,9 @@ Az adattípusok átalakításának másolási tevékenységében a következő t
 | *Alatt `typeConversionSettings`* |                                                              |          |
 | allowDataTruncation              | Adatcsonkítás engedélyezése, ha a forrásadatok konvertálása a másolás során eltérő típussal történik, például decimálisról egészre, a DatetimeOffset és a DateTime értékre. <br>Az alapértelmezett érték true (igaz). | Nem       |
 | treatBooleanAsNumber             | A logikai értékek számként való kezelése, például igaz, mint 1.<br>Az alapértelmezett érték false (hamis). | Nem       |
-| dateTimeFormat                   | Formázhatja a karakterláncot, ha a dátumok közötti konverzió időzóna-eltolás és karakterláncok nélkül, például: `yyyy-MM-dd HH:mm:ss.fff` .  Részletes információkért tekintse meg az [Egyéni dátum-és időformátum-karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
-| dateTimeOffsetFormat             | Formázhatja a karakterláncot, ha az időzóna-eltolással és a karakterláncokkal, például: `yyyy-MM-dd HH:mm:ss.fff zzz` .  Részletes információkért tekintse meg az [Egyéni dátum-és időformátum-karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
-| timeSpanFormat                   | Formázhatja a karakterláncot az időszakok és karakterláncok közötti átalakításkor, például: `dd\.hh\:mm` . Részletes információkért tekintse meg az [Egyéni TimeSpan formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) . | Nem       |
+| dateTimeFormat                   | Formázhatja a karakterláncot, ha a dátumok közötti konverzió időzóna-eltolás és karakterláncok nélkül, például: `yyyy-MM-dd HH:mm:ss.fff` .  Részletes információkért tekintse meg az [Egyéni dátum-és időformátum-karakterláncot](/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
+| dateTimeOffsetFormat             | Formázhatja a karakterláncot, ha az időzóna-eltolással és a karakterláncokkal, például: `yyyy-MM-dd HH:mm:ss.fff zzz` .  Részletes információkért tekintse meg az [Egyéni dátum-és időformátum-karakterláncot](/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
+| timeSpanFormat                   | Formázhatja a karakterláncot az időszakok és karakterláncok közötti átalakításkor, például: `dd\.hh\:mm` . Részletes információkért tekintse meg az [Egyéni TimeSpan formázási karakterláncokat](/dotnet/standard/base-types/custom-timespan-format-strings) . | Nem       |
 | kulturális környezet                          | A típusok konvertálásakor használandó kulturális információk (például `en-us` vagy `fr-fr` ). | Nem       |
 
 **Példa**
@@ -356,7 +356,7 @@ Az adattípusok átalakításának másolási tevékenységében a következő t
 
 ### <a name="alternative-column-mapping-legacy-model"></a>Alternatív oszlop – leképezés (örökölt modell)
 
-Megadhatja a másolási tevékenység-> `translator`  ->  `columnMappings` a táblázatos adatokat a leképezéshez. Ebben az esetben a "Structure" szakasz szükséges a bemeneti és a kimeneti adatkészletekhez is. Az oszlop-hozzárendelés támogatja a "Structure" **forrás-adatkészlet összes oszlopának vagy részhalmazának leképezését a "Structure" fogadó adatkészlet összes oszlopára**. A következő hibák a kivételt eredményezik:
+Megadhatja a másolási tevékenység-> `translator`  ->  `columnMappings` a táblázatos adatokat a leképezéshez. Ebben az esetben a "Structure" szakasz szükséges a bemeneti és a kimeneti adatkészletekhez is. Az oszlop-hozzárendelés támogatja a "Structure" **forrás-adatkészlet összes oszlopának vagy részhalmazának leképezését a "Structure" fogadó adatkészlet összes oszlopára** . A következő hibák a kivételt eredményezik:
 
 - A forrás adattároló lekérdezési eredményének nincs olyan oszlopa, amely meg van adva a (z) "Structure" bemeneti adatkészletben.
 - A fogadó adattár (ha előre definiált sémával rendelkezik) nem rendelkezik olyan oszloppal, amely meg van adva a "Structure" (kimeneti adatkészlet) szakaszban.
@@ -455,7 +455,7 @@ Megadhatja a másolási tevékenység-> `translator`  ->  `schemaMapping` a hier
 | Tulajdonság            | Leírás                                                  | Kötelező |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | típus                | A másolási tevékenység fordítójának Type tulajdonságát a következőre kell beállítani: **TabularTranslator** | Igen      |
-| schemaMapping       | Kulcs-érték párok gyűjteménye, amely a **forrás oldalról a fogadó oldalra való**leképezési kapcsolatot jelöli.<br/>- **Kulcs:** a forrást jelöli. **Táblázatos forrás**esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus forrás**esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez.<br>- **Érték:** a fogadót jelöli. **Táblázatos**fogadó esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus**fogadó esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez. <br>Hierarchikus adat esetén a gyökér objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. a tulajdonság által választott tömbben lévő mezők esetében `collectionReference` a JSON-útvonal a tömb elemből indul el. | Igen      |
+| schemaMapping       | Kulcs-érték párok gyűjteménye, amely a **forrás oldalról a fogadó oldalra való** leképezési kapcsolatot jelöli.<br/>- **Kulcs:** a forrást jelöli. **Táblázatos forrás** esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus forrás** esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez.<br>- **Érték:** a fogadót jelöli. **Táblázatos** fogadó esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus** fogadó esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez. <br>Hierarchikus adat esetén a gyökér objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. a tulajdonság által választott tömbben lévő mezők esetében `collectionReference` a JSON-útvonal a tömb elemből indul el. | Igen      |
 | collectionReference | Ha szeretné megismételni és kinyerni a **tömbben** lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. Ez a tulajdonság csak akkor támogatott, ha a hierarchikus adatforrás a forrás. | Nem       |
 
 **Példa: másolás a MongoDB-ből az Oracle-be:**
@@ -487,7 +487,7 @@ Ha például a következő tartalommal rendelkezik a MongoDB-dokumentummal:
 }
 ```
 
-és a következő formátumban szeretné átmásolni egy Azure SQL-táblába a tömbben lévő adatok összesimításával *(order_pd és order_price)* , valamint a közös legfelső szintű információkkal való összekapcsolással *(szám, dátum és város)*:
+és a következő formátumban szeretné átmásolni egy Azure SQL-táblába a tömbben lévő adatok összesimításával *(order_pd és order_price)* , valamint a közös legfelső szintű információkkal való összekapcsolással *(szám, dátum és város)* :
 
 | rendelésszáma | RendelésDátuma | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |
@@ -523,7 +523,7 @@ Konfigurálja a séma-leképezési szabályt a következő másolási tevékenys
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység áttekintése](copy-activity-overview.md)
+- [Másolási tevékenység – áttekintés](copy-activity-overview.md)

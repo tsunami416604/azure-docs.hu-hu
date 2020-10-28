@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a5bf53597c0706a5ef435d6ab8cc06e14726db8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442479"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636901"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Töltsön be 1 TB-ot az Azure szinapszis Analytics szolgáltatásba 15 perc alatt Data Factory
 > [!NOTE]
@@ -26,11 +26,11 @@ ms.locfileid: "89442479"
 
 Az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővíthető adatbázis, amely nagy mennyiségű, a kapcsolatok és a nem kapcsolatok kezelésére képes.  A nagymértékben párhuzamos feldolgozási (MPP) architektúrára épülő Azure szinapszis Analytics a vállalati adattárház számítási feladataihoz van optimalizálva.  A felhő rugalmasságának köszönhetően rugalmasan méretezheti a tárolást és a számításokat egymástól függetlenül.
 
-Az Azure szinapszis Analytics használatának első lépései mostantól minden eddiginél könnyebben **Azure Data Factory**.  A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely az Azure szinapszis Analytics és a meglévő rendszer adatainak feltöltésére használható, és értékes időt takaríthat meg az Azure szinapszis Analytics kiértékelése és az elemzési megoldások kiépítése során. Az alábbi főbb előnyökkel jár az Azure szinapszis Analytics szolgáltatásba való betöltés a Azure Data Factory használatával:
+Az Azure szinapszis Analytics használatának első lépései mostantól minden eddiginél könnyebben **Azure Data Factory** .  A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely az Azure szinapszis Analytics és a meglévő rendszer adatainak feltöltésére használható, és értékes időt takaríthat meg az Azure szinapszis Analytics kiértékelése és az elemzési megoldások kiépítése során. Az alábbi főbb előnyökkel jár az Azure szinapszis Analytics szolgáltatásba való betöltés a Azure Data Factory használatával:
 
-* **Könnyen beállítható**: 5 lépésből álló intuitív varázsló, amely nem igényel parancsfájlt.
-* **Gazdag adattár-támogatás**: beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez.
-* **Biztonságos és megfelelő**: az adatátvitel HTTPS-vagy ExpressRoute keresztül történik, és a globális szolgáltatás jelenléte biztosítja, hogy az adatai soha nem hagyják el a földrajzi határt
+* **Könnyen beállítható** : 5 lépésből álló intuitív varázsló, amely nem igényel parancsfájlt.
+* **Gazdag adattár-támogatás** : beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez.
+* **Biztonságos és megfelelő** : az adatátvitel HTTPS-vagy ExpressRoute keresztül történik, és a globális szolgáltatás jelenléte biztosítja, hogy az adatai soha nem hagyják el a földrajzi határt
 * **Páratlan teljesítmény a Base használatával** – a Base használatával a leghatékonyabb módszer az adatok áthelyezése az Azure szinapszis analyticsbe. Az átmeneti blob funkcióval nagy terhelési sebességet érhet el az Azure Blob Storage melletti összes adattárolóból, amelyet alapértelmezés szerint a Base támogat.
 
 Ebből a cikkből megtudhatja, hogyan használhatók a Data Factory másolási varázslóval az Azure-Blob Storage 1 TB-os adatok betöltésére az Azure szinapszis Analytics szolgáltatásba 15 percen belül, több mint 1,2 GB/s sebességnél.
@@ -56,7 +56,7 @@ Ez a cikk részletes útmutatást nyújt az adatáthelyezéshez az Azure szinaps
     Most másolja a generált fájlokat az Azure-Blobba.  Tekintse át az adatok átvitele [a helyszíni fájlrendszerbe és a rendszerből a Azure Data Factory használatával](data-factory-onprem-file-system-connector.md) című témakört, amely az ADF-másolás használatával végezhető el.    
 * Azure szinapszis Analytics: Ez a kísérlet a 6 000 DWU-mel létrehozott Azure szinapszis Analyticsbe tölti be az adatgyűjtést.
 
-    Az Azure szinapszis Analytics-adatbázis létrehozásával kapcsolatos részletes utasításokért tekintse meg az [Azure szinapszis Analytics létrehozása](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) című témakört.  Annak érdekében, hogy a lehető leghatékonyabban lehessen betölteni az Azure szinapszis Analytics-elemzést a Base használatával, a teljesítmény beállításban engedélyezett maximális számú adatraktár-egység (DWU) közül választhat, amely 6 000 DWU.
+    Az Azure szinapszis Analytics-adatbázis létrehozásával kapcsolatos részletes utasításokért tekintse meg az [Azure szinapszis Analytics létrehozása](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) című témakört.  Annak érdekében, hogy a lehető leghatékonyabban lehessen betölteni az Azure szinapszis Analytics-elemzést a Base használatával, a teljesítmény beállításban engedélyezett maximális számú adatraktár-egység (DWU) közül választhat, amely 6 000 DWU.
 
   > [!NOTE]
   > Az Azure Blobból való betöltéskor az adatok betöltésének teljesítménye közvetlenül az Azure szinapszis Analytics szolgáltatáshoz konfigurált DWU számával arányos:
@@ -79,7 +79,7 @@ Ez a cikk részletes útmutatást nyújt az adatáthelyezéshez az Azure szinaps
 
     Ez a kísérlet az Azure szinapszis Analyticsbe az erőforrás-osztály használatával tölti be az adatgyűjtést `xlargerc` .
 
-    A lehető legjobb átviteli sebesség eléréséhez a másolást az erőforrás osztályhoz tartozó Azure szinapszis Analytics-felhasználó használatával kell elvégezni `xlargerc` .  Ebből a témakörből megtudhatja, hogyan teheti ezt meg a [felhasználói erőforrás osztályra vonatkozó példa módosítása](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)után.  
+    A lehető legjobb átviteli sebesség eléréséhez a másolást az erőforrás osztályhoz tartozó Azure szinapszis Analytics-felhasználó használatával kell elvégezni `xlargerc` .  Ebből a témakörből megtudhatja, hogyan teheti ezt meg a [felhasználói erőforrás osztályra vonatkozó példa módosítása](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md)után.  
 * Hozzon létre egy céltáblabeli sémát az Azure szinapszis Analytics-adatbázisban a következő DDL-utasítás futtatásával:
 
     ```SQL  
@@ -112,18 +112,18 @@ Ez a cikk részletes útmutatást nyújt az adatáthelyezéshez az Azure szinaps
 
 ## <a name="launch-copy-wizard"></a>A Másolás varázsló indítása
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Kattintson az **erőforrás létrehozása** elemre a bal felső sarokban, kattintson az **intelligencia és Analitika**elemre, majd a **Data Factory**elemre.
+2. Kattintson az **erőforrás létrehozása** elemre a bal felső sarokban, kattintson az **intelligencia és Analitika** elemre, majd a **Data Factory** elemre.
 3. Az **új adatgyár** panelen:
 
-   1. Adja **LoadIntoSQLDWDataFactory** meg a LoadIntoSQLDWDataFactory **nevet**.
-       Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja: a **"LoadIntoSQLDWDataFactory" nem érhető el**az adatfeldolgozó neve, módosítsa az adatgyár nevét (például yournameLoadIntoSQLDWDataFactory), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
-   2. Válassza ki az Azure- **előfizetését**.
+   1. Adja **LoadIntoSQLDWDataFactory** meg a LoadIntoSQLDWDataFactory **nevet** .
+       Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja: a **"LoadIntoSQLDWDataFactory" nem érhető el** az adatfeldolgozó neve, módosítsa az adatgyár nevét (például yournameLoadIntoSQLDWDataFactory), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
+   2. Válassza ki az Azure- **előfizetését** .
    3. Az erőforráscsoportban hajtsa végre a következő lépések egyikét:
       1. Meglévő erőforráscsoport kiválasztásához kattintson a **Use existing** (Meglévő használata) elemre.
       2. Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
-   4. Válassza ki a Data Factory **helyét**.
+   4. Válassza ki a Data Factory **helyét** .
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
-   6. Kattintson a **Létrehozás** lehetőségre.
+   6. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után a **Data Factory** panel jelenik meg, ahogy az a következő képen látható:
 
    ![Data factory kezdőlap](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -148,38 +148,38 @@ A **Properties** (Tulajdonságok) oldalon:
 ## <a name="step-2-configure-source"></a>2. lépés: a forrás konfigurálása
 Ez a szakasz a forrás konfigurálásának lépéseit mutatja be: az Azure-Blob az 1 TB-os TPC-H soros elemek fájljait tartalmazza.
 
-1. Válassza ki az **Azure Blob Storage** adattáraként, majd kattintson a **tovább**gombra.
+1. Válassza ki az **Azure Blob Storage** adattáraként, majd kattintson a **tovább** gombra.
 
     ![Másolási varázsló – forrás kiválasztása lap](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-2. Adja meg az Azure Blob Storage-fiókhoz tartozó kapcsolatok adatait, és kattintson a **tovább**gombra.
+2. Adja meg az Azure Blob Storage-fiókhoz tartozó kapcsolatok adatait, és kattintson a **tovább** gombra.
 
     ![Másolás varázsló – forrásként szolgáló kapcsolatok adatai](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. Válassza ki a TPC-H sor elem fájljait tartalmazó **mappát** , és kattintson a **tovább**gombra.
+3. Válassza ki a TPC-H sor elem fájljait tartalmazó **mappát** , és kattintson a **tovább** gombra.
 
     ![Másolás varázsló – bemeneti mappa kiválasztása](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. A **tovább**gombra kattintás után a rendszer automatikusan észleli a fájlformátum beállításait.  Győződjön meg arról, hogy az oszlop elválasztója "|" az alapértelmezett vessző "," helyett.  Az adatmegjelenítés után kattintson a **tovább** gombra.
+4. A **tovább** gombra kattintás után a rendszer automatikusan észleli a fájlformátum beállításait.  Győződjön meg arról, hogy az oszlop elválasztója "|" az alapértelmezett vessző "," helyett.  Az adatmegjelenítés után kattintson a **tovább** gombra.
 
     ![Másolás varázsló – fájlformátum-beállítások](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>3. lépés: a cél konfigurálása
 Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a cél: `lineitem` Table táblát az Azure szinapszis Analytics-adatbázisban.
 
-1. Válassza az **Azure szinapszis Analytics** lehetőséget célként szolgáló tárolóként, majd kattintson a **tovább**gombra.
+1. Válassza az **Azure szinapszis Analytics** lehetőséget célként szolgáló tárolóként, majd kattintson a **tovább** gombra.
 
     ![Másolási varázsló – cél adattár kiválasztása](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Adja meg az Azure szinapszis Analytics szolgáltatáshoz kapcsolódó információkat.  Győződjön meg arról, hogy a szerepkör tagja a felhasználónak `xlargerc` (lásd az **Előfeltételek** című szakaszt a részletes utasításokhoz), majd kattintson a **tovább**gombra.
+2. Adja meg az Azure szinapszis Analytics szolgáltatáshoz kapcsolódó információkat.  Győződjön meg arról, hogy a szerepkör tagja a felhasználónak `xlargerc` (lásd az **Előfeltételek** című szakaszt a részletes utasításokhoz), majd kattintson a **tovább** gombra.
 
     ![Másolási varázsló – cél kapcsolatok adatai](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. Válassza ki a cél táblát, és kattintson a **tovább**gombra.
+3. Válassza ki a cél táblát, és kattintson a **tovább** gombra.
 
     ![Másolás varázsló – tábla-hozzárendelés lap](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. A séma-hozzárendelés lapon hagyja bejelölés nélkül az "oszlop-hozzárendelés alkalmazása" lehetőséget, és kattintson a **tovább**gombra.
+4. A séma-hozzárendelés lapon hagyja bejelölés nélkül az "oszlop-hozzárendelés alkalmazása" lehetőséget, és kattintson a **tovább** gombra.
 
 ## <a name="step-4-performance-settings"></a>4. lépés: a teljesítmény beállításai
 

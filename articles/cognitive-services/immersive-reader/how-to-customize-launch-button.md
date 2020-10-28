@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.author: metan
-ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: 6d6757af6619edd41709a4b8f06ef615cd35bf30
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75946209"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636578"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>A megölelő olvasó gomb testreszabása
 
@@ -79,6 +79,6 @@ A lebilincselő olvasó ikonjának mérete az attribútum használatával konfig
 <div class='immersive-reader-button' data-icon-px-size='50'></div>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg az [olvasói SDK-referenciát](./reference.md)
