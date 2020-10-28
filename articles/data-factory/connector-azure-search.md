@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0484d846501ef20e5d474668c45324452d0c8fc8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81418235"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638227"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Adatmásolás Azure Cognitive Search-indexbe Azure Data Factory használatával
 
@@ -110,12 +110,12 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="azure-cognitive-search-as-sink"></a>Azure-Cognitive Search fogadóként
 
-Az Azure Cognitive Searchba való másoláshoz állítsa a forrás típusát a másolás tevékenység **AzureSearchIndexSink**. A másolási tevékenység fogadója szakasz a következő **sink** tulajdonságokat támogatja:
+Az Azure Cognitive Searchba való másoláshoz állítsa a forrás típusát a másolás tevékenység **AzureSearchIndexSink** . A másolási tevékenység fogadója szakasz a következő **sink** tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureSearchIndexSink** | Igen |
-| writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).<br/><br/>Az engedélyezett értékek: **merge** (default) és **upload**. | Nem |
+| writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).<br/><br/>Az engedélyezett értékek: **merge** (default) és **upload** . | Nem |
 | writeBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) .<br/><br/>Az engedélyezett értékek: integer 1 – 1 000; az alapértelmezett érték a 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
@@ -124,10 +124,10 @@ AzureSearchSink upsert az adatírás során. Más szóval, amikor egy dokumentum
 
 A AzureSearchSink a következő két upsert-viselkedést biztosítja (a AzureSearch SDK használatával):
 
-- **Egyesítés**: az új dokumentum összes oszlopát egyesítheti a meglévővel. Az új dokumentumban null értékű oszlopok esetén a meglévő érték megmarad.
-- **Feltöltés**: az új dokumentum lecseréli a meglévőt. Az új dokumentumban nem megadott oszlopok esetében az érték null, ha a meglévő dokumentumban nem null érték van megadva, vagy nem.
+- **Egyesítés** : az új dokumentum összes oszlopát egyesítheti a meglévővel. Az új dokumentumban null értékű oszlopok esetén a meglévő érték megmarad.
+- **Feltöltés** : az új dokumentum lecseréli a meglévőt. Az új dokumentumban nem megadott oszlopok esetében az érték null, ha a meglévő dokumentumban nem null érték van megadva, vagy nem.
 
-Az alapértelmezett viselkedés az **Egyesítés**.
+Az alapértelmezett viselkedés az **Egyesítés** .
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize tulajdonság
 
@@ -171,16 +171,16 @@ A következő táblázat meghatározza, hogy az Azure Cognitive Search adattípu
 
 | Az Azure Cognitive Search adattípusa | Az Azure Cognitive Search fogadóban támogatott |
 | ---------------------- | ------------------------------ |
-| Sztring | I |
-| Int32 | I |
-| Int64 | I |
-| Dupla | I |
-| Logikai érték | I |
-| DataTimeOffset | I |
+| Sztring | Y |
+| Int32 | Y |
+| Int64 | Y |
+| Dupla | Y |
+| Logikai | Y |
+| DataTimeOffset | Y |
 | Karakterlánc-tömb | N |
 | Geographypoint adattípuson | N |
 
-Jelenleg más adattípusok, például a ComplexType nem támogatottak. Az Azure Cognitive Search támogatott adattípusok teljes listájáért lásd: [támogatott adattípusok (azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
+Jelenleg más adattípusok, például a ComplexType nem támogatottak. Az Azure Cognitive Search támogatott adattípusok teljes listájáért lásd: [támogatott adattípusok (azure Cognitive Search)](/rest/api/searchservice/supported-data-types).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

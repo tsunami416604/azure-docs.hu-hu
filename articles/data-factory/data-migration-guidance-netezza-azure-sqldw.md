@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8192b1351d54acbb553bacb8b36474cba271cb05
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442837"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638074"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>A helyszíni Netezza-kiszolgálóról az Azure-ba történő Migrálás Azure Data Factory használata 
 
@@ -41,13 +41,13 @@ Azure Data Factory olyan kiszolgáló nélküli architektúrát kínál, amely k
 
 Az előző ábrát a következőképpen lehet értelmezni:
 
-- Egyetlen másolási tevékenység kihasználhatja a méretezhető számítási erőforrások előnyeit. Azure Integration Runtime használatakor az egyes másolási tevékenységeknél [akár 256 DIUs-t](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) is megadhat kiszolgáló nélküli módon. Ha saját üzemeltetésű integrációs modult (helyi IR) használ, manuálisan méretezheti a gépet, vagy akár több gépre is kiterjesztheti ([legfeljebb négy csomópontot](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)), és egyetlen másolási tevékenység osztja el a partíciókat az összes csomópont között. 
+- Egyetlen másolási tevékenység kihasználhatja a méretezhető számítási erőforrások előnyeit. Azure Integration Runtime használatakor az egyes másolási tevékenységeknél [akár 256 DIUs-t](./copy-activity-performance.md#data-integration-units) is megadhat kiszolgáló nélküli módon. Ha saját üzemeltetésű integrációs modult (helyi IR) használ, manuálisan méretezheti a gépet, vagy akár több gépre is kiterjesztheti ([legfeljebb négy csomópontot](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)), és egyetlen másolási tevékenység osztja el a partíciókat az összes csomópont között. 
 
 - Egy másolási tevékenység több szál használatával olvas be és ír az adattárba. 
 
-- Azure Data Factory a vezérlés folyamata egyszerre több másolási tevékenységet is elindíthat. Például elindíthatja őket az [egyes hurkok](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)használatával. 
+- Azure Data Factory a vezérlés folyamata egyszerre több másolási tevékenységet is elindíthat. Például elindíthatja őket az [egyes hurkok](./control-flow-for-each-activity.md)használatával. 
 
-További információ: [másolási tevékenység teljesítményének és méretezhetőségének útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
+További információ: [másolási tevékenység teljesítményének és méretezhetőségének útmutatója](./copy-activity-performance.md).
 
 ## <a name="resilience"></a>Rugalmasság
 
@@ -95,33 +95,33 @@ Az előző ábrát a következőképpen lehet értelmezni:
 
 ### <a name="manage-authentication-and-credentials"></a>A hitelesítés és a hitelesítő adatok kezelése 
 
-- A Netezza való hitelesítéshez használhatja az ODBC- [hitelesítést a kapcsolódási karakterláncon keresztül](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties). 
+- A Netezza való hitelesítéshez használhatja az ODBC- [hitelesítést a kapcsolódási karakterláncon keresztül](./connector-netezza.md#linked-service-properties). 
 
 - Hitelesítés az Azure Blob Storage-ban: 
 
-   - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). A Azure Active Directory (Azure AD) automatikusan felügyelt Azure Data Factory identitására épülő felügyelt identitások lehetővé teszik a folyamatok konfigurálását anélkül, hogy hitelesítő adatokat kellene megadniuk a társított szolgáltatás definíciójában.  
+   - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](./connector-azure-blob-storage.md#managed-identity). A Azure Active Directory (Azure AD) automatikusan felügyelt Azure Data Factory identitására épülő felügyelt identitások lehetővé teszik a folyamatok konfigurálását anélkül, hogy hitelesítő adatokat kellene megadniuk a társított szolgáltatás definíciójában.  
 
-   - Azt is megteheti, hogy az Azure Blob Storage-ban az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), a [közös hozzáférési aláírás](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)vagy a [Storage-fiók kulcsa](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)segítségével végez hitelesítést. 
+   - Azt is megteheti, hogy az Azure Blob Storage-ban az [egyszerű szolgáltatásnév](./connector-azure-blob-storage.md#service-principal-authentication), a [közös hozzáférési aláírás](./connector-azure-blob-storage.md#shared-access-signature-authentication)vagy a [Storage-fiók kulcsa](./connector-azure-blob-storage.md#account-key-authentication)segítségével végez hitelesítést. 
 
 - Hitelesítés Azure Data Lake Storage Gen2: 
 
-   - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity).
+   - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](./connector-azure-data-lake-storage.md#managed-identity).
    
-   - Használhatja a [szolgáltatásnevet](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) vagy a [Storage-fiók kulcsát](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)is. 
+   - Használhatja a [szolgáltatásnevet](./connector-azure-data-lake-storage.md#service-principal-authentication) vagy a [Storage-fiók kulcsát](./connector-azure-data-lake-storage.md#account-key-authentication)is. 
 
 - Hitelesítés az Azure szinapszis Analytics szolgáltatásban:
 
-   - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
+   - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](./connector-azure-sql-data-warehouse.md#managed-identity).
    
-   - Használhatja az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) vagy az [SQL-hitelesítés](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)szolgáltatást is.
+   - Használhatja az [egyszerű szolgáltatásnév](./connector-azure-sql-data-warehouse.md#service-principal-authentication) vagy az [SQL-hitelesítés](./connector-azure-sql-data-warehouse.md#sql-authentication)szolgáltatást is.
 
-- Ha nem használ felügyelt identitásokat az Azure-erőforrásokhoz, javasoljuk, hogy [a hitelesítő adatokat a Azure Key Vaultban tárolja](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) , hogy egyszerűbb legyen a kulcsok központi kezelése és elforgatása anélkül, hogy módosítani kellene Azure Data Factory társított szolgáltatásokat. Ez a [CI/CD-vel kapcsolatos ajánlott eljárások](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)egyike is. 
+- Ha nem használ felügyelt identitásokat az Azure-erőforrásokhoz, javasoljuk, hogy [a hitelesítő adatokat a Azure Key Vaultban tárolja](./store-credentials-in-key-vault.md) , hogy egyszerűbb legyen a kulcsok központi kezelése és elforgatása anélkül, hogy módosítani kellene Azure Data Factory társított szolgáltatásokat. Ez a [CI/CD-vel kapcsolatos ajánlott eljárások](./continuous-integration-deployment.md#best-practices-for-cicd)egyike is. 
 
 ### <a name="migrate-initial-snapshot-data"></a>Kezdeti pillanatkép-adatok migrálása 
 
 Kis tábláknál (azaz a 100 GB-nál kisebb mennyiségű, illetve az Azure-ba áttelepíthető, két órán belül elérhető) táblákon minden egyes másolási feladatot betöltenek. A nagyobb átviteli sebesség érdekében több Azure Data Factory másolási feladatot is futtathat a különálló táblák egyidejű betöltéséhez. 
 
-Az egyes másolási feladatokon belül a párhuzamos lekérdezések futtatásához és az adatok partíciók szerinti másolásához a [ `parallelCopies` tulajdonság beállítását](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) a következő adatpartíciós beállítások egyikével is elérheti:
+Az egyes másolási feladatokon belül a párhuzamos lekérdezések futtatásához és az adatok partíciók szerinti másolásához a [ `parallelCopies` tulajdonság beállítását](./copy-activity-performance.md#parallel-copy) a következő adatpartíciós beállítások egyikével is elérheti:
 
 - A nagyobb hatékonyság érdekében javasoljuk, hogy egy adatszeletből induljon el.  Győződjön meg arról, hogy a `parallelCopies` beállításban szereplő érték kisebb, mint az Netezza-kiszolgálón lévő tábla adatszelet partícióinak teljes száma.  
 
@@ -192,18 +192,18 @@ Az előző feltételezések alapján itt látható a becsült ár:
 További információt a következő cikkekben és útmutatókban talál:
 
 - [Adatok migrálása helyszíni adattárház-adatbázisból az Azure-ba Azure Data Factory használatával](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
-- [Netezza-összekötő](https://docs.microsoft.com/azure/data-factory/connector-netezza)
-- [ODBC-összekötő](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure szinapszis Analytics-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [Másolási tevékenység teljesítményének hangolási útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Helyi integrációs modul létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Saját üzemeltetésű integrációs modul, HA és méretezhetőség](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Az adatáthelyezés biztonsági szempontjai](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Hitelesítő adatok tárolása az Azure Key Vaultban](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Adatok növekményes másolása egy táblából](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
-- [Adatok növekményes másolása több táblából](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+- [Netezza-összekötő](./connector-netezza.md)
+- [ODBC-összekötő](./connector-odbc.md)
+- [Azure Blob Storage-összekötő](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2-összekötő](./connector-azure-data-lake-storage.md)
+- [Azure szinapszis Analytics-összekötő](./connector-azure-sql-data-warehouse.md)
+- [Másolási tevékenység teljesítményének hangolási útmutatója](./copy-activity-performance.md)
+- [Helyi integrációs modul létrehozása és konfigurálása](./create-self-hosted-integration-runtime.md)
+- [Saját üzemeltetésű integrációs modul, HA és méretezhetőség](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Az adatáthelyezés biztonsági szempontjai](./data-movement-security-considerations.md)
+- [Hitelesítő adatok tárolása az Azure Key Vaultban](./store-credentials-in-key-vault.md)
+- [Adatok növekményes másolása egy táblából](./tutorial-incremental-copy-portal.md)
+- [Adatok növekményes másolása több táblából](./tutorial-incremental-copy-multiple-tables-portal.md)
 - [Azure Data Factory díjszabási oldala](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>Következő lépések

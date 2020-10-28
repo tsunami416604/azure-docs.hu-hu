@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: d77b4b5824c4426f106d10ca246c5b0d5e76327a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d6c29cb41d38e5473a9b24dbc89fd99d3e19c16f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372259"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638329"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület állapotának figyelése Azure Monitor
-A Log Analytics munkaterület teljesítményének és rendelkezésre állásának Azure Monitor-ban való fenntartásához képesnek kell lennie proaktív módon észlelni a felmerülő problémákat. Ez a cikk azt ismerteti, hogyan figyelheti a Log Analytics munkaterület állapotát a [műveleti](/azure-monitor/reference/tables/operation) tábla adatai alapján. Ez a táblázat minden Log Analytics-munkaterület része, és a munkaterületen előforduló hibákat és figyelmeztetéseket tartalmazza. Rendszeresen tekintse át ezeket az adatait, és hozzon létre riasztásokat, amelyekkel proaktívan értesítheti, ha vannak olyan fontos incidensek a munkaterületen.
+A Log Analytics munkaterület teljesítményének és rendelkezésre állásának Azure Monitor-ban való fenntartásához képesnek kell lennie proaktív módon észlelni a felmerülő problémákat. Ez a cikk azt ismerteti, hogyan figyelheti a Log Analytics munkaterület állapotát a [műveleti](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tábla adatai alapján. Ez a táblázat minden Log Analytics-munkaterület része, és a munkaterületen előforduló hibákat és figyelmeztetéseket tartalmazza. Rendszeresen tekintse át ezeket az adatait, és hozzon létre riasztásokat, amelyekkel proaktívan értesítheti, ha vannak olyan fontos incidensek a munkaterületen.
 
-## <a name="_logsoperation-function"></a>_LogsOperation függvény
-Azure Monitor naplók a probléma előfordulásakor a munkaterületen lévő [művelet](/azure-monitor/reference/tables/operation) táblájában lévő hibák részleteit küldi el. A **_LogsOperation** System függvény a **műveleti** táblázaton alapul, és egyszerűsített információt nyújt az elemzéshez és a riasztásokhoz.
+## <a name="_logoperation-function"></a>_LogOperation függvény
+Azure Monitor naplók a probléma előfordulásakor a munkaterületen lévő [művelet](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) táblájában lévő hibák részleteit küldi el. A **_LogOperation** System függvény a **műveleti** táblázaton alapul, és egyszerűsített információt nyújt az elemzéshez és a riasztásokhoz.
 
 ## <a name="columns"></a>Oszlopok
 
-A **_LogsOperation** függvény az alábbi táblázatban szereplő oszlopokat adja vissza.
+A **_LogOperation** függvény az alábbi táblázatban szereplő oszlopokat adja vissza.
 
 | Oszlop | Leírás |
 |:---|:---|
@@ -36,7 +36,7 @@ A **_LogsOperation** függvény az alábbi táblázatban szereplő oszlopokat ad
 
 
 ## <a name="categories"></a>Kategóriák
-Az alábbi táblázat a _LogsOperations függvény kategóriáit ismerteti. 
+Az alábbi táblázat a _LogOperation függvény kategóriáit ismerteti. 
 
 | Kategória | Leírás |
 |:---|:---|
@@ -66,7 +66,7 @@ A betöltési műveletek olyan problémák, amelyek az adatok betöltése során
 | Betöltési arány | Információ | A betöltési arány a 70%-ra közeledik. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
 | Betöltési arány | Figyelmeztetés | A betöltési arány elérte a korlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
 | Betöltési arány | Hiba   | Elérte a díjszabási korlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
-| Tárolás | Hiba   | A Storage-fiók nem érhető el, mert a használt hitelesítő adatok érvénytelenek.  |
+| Storage | Hiba   | A Storage-fiók nem érhető el, mert a használt hitelesítő adatok érvénytelenek.  |
 
 
 
@@ -80,10 +80,10 @@ Az ajánlott stratégia a probléma szintjén alapuló két riasztási szabály 
 A naplózási riasztási szabályok létrehozásához használja a következő eljárást a [naplók létrehozása, megtekintése és kezelése Azure monitor használatával](../platform/alerts-log.md) . A következő szakaszok ismertetik az egyes szabályok részleteit.
 
 
-| Lekérdezés | Küszöbérték | Időszak | Frequency |
+| Lekérdezés | Küszöbérték | Időszak | Gyakoriság |
 |:---|:---|:---|:---|
-| `_LogsOperation | where Level == "Error"`   | 0 | 5 | 5 |
-| `_LogsOperation | where Level == "Warning"` | 0 | 1440 | 1440 |
+| `_LogOperation | where Level == "Error"`   | 0 | 5 | 5 |
+| `_LogOperation | where Level == "Warning"` | 0 | 1440 | 1440 |
 
 Ezek a riasztási szabályok ugyanúgy reagálnak a hibákra vagy figyelmeztetésekre vonatkozó összes műveletre. Ahogy egyre jobban megismerik a riasztásokat generáló műveleteket, érdemes lehet az adott műveletekben különbözőképpen válaszolni. Előfordulhat például, hogy az értesítéseket különböző személyeknek szeretné elküldeni adott műveletekhez. 
 

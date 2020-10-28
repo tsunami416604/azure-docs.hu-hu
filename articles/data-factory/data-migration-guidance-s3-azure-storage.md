@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be1cb7abbc243e3f79e183223fbbb32380f5d02d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616924"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638040"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata 
 
@@ -41,9 +41,9 @@ Az ügyfelek sikeresen áttelepítették az Amazon S3-ból az Azure-ba Blob Stor
 
 A fenti képen azt mutatjuk be, hogyan érheti el a nagy adatátviteli sebességet a különböző párhuzamossági szinteken:
  
-- Egy másolási tevékenység kihasználhatja a skálázható számítási erőforrások előnyeit: Azure Integration Runtime használata esetén [akár 256 DIUs-t](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) is megadhat az egyes másolási tevékenységekhez kiszolgáló nélküli módon. saját üzemeltetésű Integration Runtime használatakor manuálisan is méretezheti a gépet, vagy akár több gépre is kibővíthető ([legfeljebb 4 csomópont](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)), és egyetlen másolási tevékenység fogja particionálni az összes csomóponton beállított fájlt. 
+- Egy másolási tevékenység kihasználhatja a skálázható számítási erőforrások előnyeit: Azure Integration Runtime használata esetén [akár 256 DIUs-t](./copy-activity-performance.md#data-integration-units) is megadhat az egyes másolási tevékenységekhez kiszolgáló nélküli módon. saját üzemeltetésű Integration Runtime használatakor manuálisan is méretezheti a gépet, vagy akár több gépre is kibővíthető ([legfeljebb 4 csomópont](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)), és egyetlen másolási tevékenység fogja particionálni az összes csomóponton beállított fájlt. 
 - Egy másolási tevékenység több szál használatával olvas be és ír az adattárba. 
-- Az ADF-vezérlési folyamat egyszerre több másolási tevékenységet is elindíthat, például az [egyes hurkok esetében](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+- Az ADF-vezérlési folyamat egyszerre több másolási tevékenységet is elindíthat, például az [egyes hurkok esetében](./control-flow-for-each-activity.md). 
 
 ## <a name="resilience"></a>Rugalmasság
 
@@ -81,10 +81,10 @@ Az adatáttelepítés privát kapcsolaton keresztül:
 
 ### <a name="authentication-and-credential-management"></a>Hitelesítés és hitelesítőadat-kezelés 
 
-- Ha az Amazon S3-fiókkal szeretne hitelesítést végezni, [hozzáférési kulcsot kell használnia a iam-fiókhoz](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties). 
-- Több hitelesítési típus is támogatott az Azure Blob Storagehoz való kapcsolódáshoz.  A [felügyelt identitások Azure-erőforrásokhoz való](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) használata erősen ajánlott: az Azure ad-ben automatikusan felügyelt ADF azonosítására épülő megoldás lehetővé teszi a folyamatok konfigurálását anélkül, hogy hitelesítő adatokat kellene megadnia a társított szolgáltatás definíciójában.  Azt is megteheti, hogy az Azure-Blob Storage az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), a [közös hozzáférési aláírás](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)vagy a [Storage-fiók kulcsa](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)segítségével hitelesíti. 
-- Több hitelesítési típus is támogatott a Azure Data Lake Storage Gen2hoz való kapcsolódáshoz.  Az [Azure-erőforrásokhoz felügyelt identitások](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) használata kifejezetten ajánlott, bár az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) vagy a [Storage-fiók kulcsa](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) is használható. 
-- Ha nem használ felügyelt identitásokat az Azure-erőforrásokhoz, [a hitelesítő adatok tárolása Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) erősen ajánlott, hogy könnyebb legyen a kulcsok központi kezelése és elforgatása az ADF-hez társított szolgáltatások módosítása nélkül.  Ez a [CI/CD-vel kapcsolatos ajánlott eljárások](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)egyike is. 
+- Ha az Amazon S3-fiókkal szeretne hitelesítést végezni, [hozzáférési kulcsot kell használnia a iam-fiókhoz](./connector-amazon-simple-storage-service.md#linked-service-properties). 
+- Több hitelesítési típus is támogatott az Azure Blob Storagehoz való kapcsolódáshoz.  A [felügyelt identitások Azure-erőforrásokhoz való](./connector-azure-blob-storage.md#managed-identity) használata erősen ajánlott: az Azure ad-ben automatikusan felügyelt ADF azonosítására épülő megoldás lehetővé teszi a folyamatok konfigurálását anélkül, hogy hitelesítő adatokat kellene megadnia a társított szolgáltatás definíciójában.  Azt is megteheti, hogy az Azure-Blob Storage az [egyszerű szolgáltatásnév](./connector-azure-blob-storage.md#service-principal-authentication), a [közös hozzáférési aláírás](./connector-azure-blob-storage.md#shared-access-signature-authentication)vagy a [Storage-fiók kulcsa](./connector-azure-blob-storage.md#account-key-authentication)segítségével hitelesíti. 
+- Több hitelesítési típus is támogatott a Azure Data Lake Storage Gen2hoz való kapcsolódáshoz.  Az [Azure-erőforrásokhoz felügyelt identitások](./connector-azure-data-lake-storage.md#managed-identity) használata kifejezetten ajánlott, bár az [egyszerű szolgáltatásnév](./connector-azure-data-lake-storage.md#service-principal-authentication) vagy a [Storage-fiók kulcsa](./connector-azure-data-lake-storage.md#account-key-authentication) is használható. 
+- Ha nem használ felügyelt identitásokat az Azure-erőforrásokhoz, [a hitelesítő adatok tárolása Azure Key Vault](./store-credentials-in-key-vault.md) erősen ajánlott, hogy könnyebb legyen a kulcsok központi kezelése és elforgatása az ADF-hez társított szolgáltatások módosítása nélkül.  Ez a [CI/CD-vel kapcsolatos ajánlott eljárások](./continuous-integration-deployment.md#best-practices-for-cicd)egyike is. 
 
 ### <a name="initial-snapshot-data-migration"></a>Kezdeti pillanatkép-adatok áttelepítése 
 
@@ -138,16 +138,16 @@ A fenti feltételezések alapján a becsült ár a következő:
 ![A tábla képernyőképe a becsült árat mutatja.](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>További referenciák 
-- [Amazon Simple Storage szolgáltatás-összekötő](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Másolási tevékenység teljesítményének hangolási útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Saját üzemeltetésű Integration Runtime létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Saját üzemeltetésű integrációs modul, HA és méretezhetőség](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Az adatáthelyezés biztonsági szempontjai](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Hitelesítő adatok tárolása az Azure Key Vaultban](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [A fájl növekményes másolása az idő particionált fájljának neve alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
-- [Új és módosított fájlok másolása a LastModifiedDate alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [Amazon Simple Storage szolgáltatás-összekötő](./connector-amazon-simple-storage-service.md)
+- [Azure Blob Storage-összekötő](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2-összekötő](./connector-azure-data-lake-storage.md)
+- [Másolási tevékenység teljesítményének hangolási útmutatója](./copy-activity-performance.md)
+- [Saját üzemeltetésű Integration Runtime létrehozása és konfigurálása](./create-self-hosted-integration-runtime.md)
+- [Saját üzemeltetésű integrációs modul, HA és méretezhetőség](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Az adatáthelyezés biztonsági szempontjai](./data-movement-security-considerations.md)
+- [Hitelesítő adatok tárolása az Azure Key Vaultban](./store-credentials-in-key-vault.md)
+- [A fájl növekményes másolása az idő particionált fájljának neve alapján](./tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
+- [Új és módosított fájlok másolása a LastModifiedDate alapján](./tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 - [Az ADF díjszabási lapja](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="template"></a>Sablon

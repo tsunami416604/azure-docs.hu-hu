@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f890e4c47a427b6ca8c07463d6795f0813ef5bbd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83873637"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638193"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása a DB2-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -49,7 +49,7 @@ Pontosabban, ez a DB2-összekötő a következő IBM DB2 platformokat és verzi�
 * IBM DB2 a LUW 10,1
 
 >[!TIP]
->A DB2-összekötő a Microsoft OLE DB Provider for DB2ra épül. A DB2-összekötők hibáinak elhárításához tekintse meg az [adatszolgáltató hibakódait](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors).
+>A DB2-összekötő a Microsoft OLE DB Provider for DB2ra épül. A DB2-összekötők hibáinak elhárításához tekintse meg az [adatszolgáltató hibakódait](/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -79,7 +79,7 @@ A kapcsolatok karakterláncán belüli jellemző tulajdonságok:
 |:--- |:--- |:--- |
 | kiszolgáló |A DB2-kiszolgáló neve. Megadhatja azt a portszámot, amelyet a kiszolgáló neve a kettősponttal elválasztva, például: `server:port` .<br>A DB2-összekötő használja az DDM/DRDA protokollt, és alapértelmezés szerint a 50000-as portot használja, ha nincs megadva. Előfordulhat, hogy az adott DB2-adatbázis által használt port eltér a verziótól és a beállításaitól, például az alapértelmezett port 50000, az alapértelmezett port a, az alapértelmezett AS400 446 vagy 448, ha a TLS engedélyezve van. A port konfigurálásának módjáról a következő DB2-dokumentumokat tekintse meg: [DB2 z/os](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)és [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Igen |
 | adatbázis |A DB2-adatbázis neve. |Igen |
-| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett érték: **alapszintű**. |Igen |
+| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett érték: **alapszintű** . |Igen |
 | username |Adja meg a DB2-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
 | packageCollection | Itt adhatja meg, hogy a rendszer hol hozza létre az ADF által az adatbázis lekérdezése során automatikusan létrehozott szükséges csomagokat. Ha nincs beállítva, Data Factory a {username} értéket használja alapértelmezett értékként. | Nem |
@@ -114,13 +114,13 @@ A kapcsolatok karakterláncán belüli jellemző tulajdonságok:
         "type": "Db2",
         "typeProperties": {
             "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -168,7 +168,7 @@ Az adatok DB2-ből való másolásához a következő tulajdonságok támogatott
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Db2Table** | Igen |
 | schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -255,7 +255,7 @@ Az adatok DB2-ből való másolása során a rendszer a következő leképezése
 | Tizedesjegy |Tizedesjegy |
 | DecimalFloat |Tizedesjegy |
 | Dupla |Dupla |
-| Lebegőpontos értékek |Dupla |
+| Float |Dupla |
 | Grafikus |Sztring |
 | Egész szám |Int32 |
 | LongVarBinary |Bájt [] |
@@ -275,5 +275,5 @@ Az adatok DB2-ből való másolása során a rendszer a következő leképezése
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

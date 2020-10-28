@@ -2,15 +2,15 @@
 title: Erőforrások üzembe helyezése a bérlőn
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a bérlői hatókörben egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 48b3fbcedb119ae699624e79f83297f4ecbc9ede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 854ccbd43509b6c0b5a04357844c78c32b7e6396
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372391"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668694"
 ---
-# <a name="create-resources-at-the-tenant-level"></a>Erőforrások létrehozása a bérlői szinten
+# <a name="tenant-deployments-with-arm-templates"></a>Bérlői üzemelő példányok ARM-sablonokkal
 
 A szervezete leállása esetén előfordulhat, hogy az Azure AD-bérlőn belül meg kell adnia és hozzá kell rendelnie a [szabályzatokat](../../governance/policy/overview.md) vagy az [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/overview.md) . A bérlői szintű sablonok használatával a szabályzatok deklaratív alkalmazása és a szerepkörök globális szinten való hozzárendelését végezheti el.
 
@@ -49,13 +49,19 @@ A bérlői központi telepítésekhez használt séma eltér az erőforráscsopo
 Sablonok esetén használja a következőt:
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    ...
+}
 ```
 
 A paraméterérték sémája megegyezik az összes központi telepítési hatókörnél. A paraméter fájljaihoz használja a következőt:
 
 ```json
-https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
 ```
 
 ## <a name="required-access"></a>Szükséges hozzáférés
@@ -78,21 +84,11 @@ A Azure Active Directory globális rendszergazdája nem rendelkezik automatikusa
 
 A rendszerbiztonsági tag most már rendelkezik a sablon üzembe helyezéséhez szükséges engedélyekkel.
 
-## <a name="deployment-scopes"></a>Központi telepítési hatókörök
-
-Bérlőn való üzembe helyezéskor a bérlő vagy a felügyeleti csoportok, az előfizetések és az erőforráscsoportok is megcélozható a bérlőben. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
-
-A sablon erőforrások szakaszában meghatározott erőforrások a bérlőre lesznek alkalmazva.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
-
-Egy felügyeleti csoportnak a bérlőn belüli célzásához adjon hozzá egy beágyazott központi telepítést, és adja meg a `scope` tulajdonságot.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
-
 ## <a name="deployment-commands"></a>Üzembe helyezési parancsok
 
 A bérlők központi telepítésére vonatkozó parancsok eltérnek az erőforráscsoport-telepítések parancsaitól.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az Azure CLI esetén használja az [az Deployment bérlő Create](/cli/azure/deployment/tenant#az-deployment-tenant-create):
 
@@ -103,6 +99,8 @@ az deployment tenant create \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Azure PowerShell esetén használja a [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
 
 ```azurepowershell-interactive
@@ -112,38 +110,58 @@ New-AzTenantDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
-REST API esetén használjon [központi telepítéseket – létrehozás vagy frissítés a bérlői hatókörben](/rest/api/resources/deployments/createorupdateattenantscope).
+---
+
+További információt az üzembe helyezési parancsokról és az ARM-sablonok üzembe helyezési lehetőségeiről a következő témakörben talál:
+
+* [Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal](deploy-portal.md)
+* [Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel](deploy-cli.md)
+* [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md)
+* [Erőforrások üzembe helyezése ARM-sablonokkal és Azure Resource Manager REST API](deploy-rest.md)
+* [Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával](deploy-to-azure-button.md)
+* [ARM-sablonok üzembe helyezése Cloud Shell](deploy-cloud-shell.md)
+
+## <a name="deployment-scopes"></a>Központi telepítési hatókörök
+
+Felügyeleti csoportba való központi telepítés esetén az erőforrások a következőre helyezhetők:
+
+* a bérlő
+* a bérlőn belüli felügyeleti csoportok
+* előfizetések
+* erőforráscsoportok (két beágyazott üzemelő példányon keresztül)
+* a [bővítmény erőforrásai](scope-extension-resources.md) alkalmazhatók az erőforrásokra
+
+A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+
+Ez a szakasz bemutatja, hogyan határozhat meg különböző hatóköröket. Ezeket a különböző hatóköröket egyetlen sablonban kombinálhatja.
+
+### <a name="scope-to-tenant"></a>Hatókör a bérlőre
+
+A sablon erőforrások szakaszában meghatározott erőforrások a bérlőre lesznek alkalmazva.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
+
+### <a name="scope-to-management-group"></a>Hatókör a felügyeleti csoportnak
+
+Egy felügyeleti csoportnak a bérlőn belüli célzásához adjon hozzá egy beágyazott központi telepítést, és adja meg a `scope` tulajdonságot.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+
+### <a name="scope-to-subscription"></a>Hatókör az előfizetéshez
+
+Az előfizetéseket a bérlőn belül is megcélozhatja. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+
+A bérlőn belüli előfizetés célzásához használjon egy beágyazott telepítést és a `subscriptionId` tulajdonságot.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
 
 ## <a name="deployment-location-and-name"></a>Központi telepítés helye és neve
 
 Bérlői szintű központi telepítések esetén meg kell adnia egy helyet a központi telepítéshez. A központi telepítés helye nem azonos a telepített erőforrások helyétől. A központi telepítés helye határozza meg, hogy hol tárolja a telepítési adatforrásokat.
 
-Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy.js** nevű sablon üzembe helyezése például a **azuredeploy**alapértelmezett központi telepítési nevét hozza létre.
+Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy.js** nevű sablon üzembe helyezése például a **azuredeploy** alapértelmezett központi telepítési nevét hozza létre.
 
 Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha a hibakódot kapja `InvalidDeploymentLocation` , használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
-
-## <a name="use-template-functions"></a>A Template functions használata
-
-A bérlői központi telepítések esetén fontos szempont a sablon funkcióinak használata:
-
-* A [resourceGroup ()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
-* Az [előfizetés ()](template-functions-resource.md#subscription) függvény **nem** támogatott.
-* A [Reference ()](template-functions-resource.md#reference) és a [List ()](template-functions-resource.md#list) függvények támogatottak.
-* Ne használja a [resourceId ()](template-functions-resource.md#resourceid) parancsot a bérlői szinten üzembe helyezett erőforrások erőforrás-azonosítójának lekéréséhez.
-
-  Ehelyett használja a [tenantResourceId ()](template-functions-resource.md#tenantresourceid) függvényt.
-
-  Ha például egy beépített szabályzat-definíció erőforrás-AZONOSÍTÓját szeretné lekérni, használja a következőt:
-
-  ```json
-  tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
-  ```
-
-  A visszaadott erőforrás-azonosító formátuma a következő:
-
-  ```json
-  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  ```
 
 ## <a name="create-management-group"></a>Felügyeleti csoport létrehozása
 

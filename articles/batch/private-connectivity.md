@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan csatlakozhat egy Azure Batch-fiókhoz privát v
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f797dbda7888eb8ea9f5c76e3b527fb98d896ee4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542138"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669012"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privát végpontok használata Azure Batch-fiókokkal
 
@@ -28,20 +28,20 @@ Ez a cikk azt ismerteti, hogyan hozható létre egy privát batch-fiók, és hog
 
 A következő lépésekkel hozzon létre egy privát batch-fiókot a Azure Portal használatával:
 
-1. Az **erőforrás létrehozása** panelen válassza a **Batch szolgáltatás** lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-2. Adja meg az előfizetés, az erőforráscsoport, a régió és a Batch-fiók nevét az **alapok** lapon, majd válassza a **Tovább: speciális**lehetőséget.
-3. A **speciális** lapon állítsa be a **nyilvános hálózati hozzáférés** **Letiltva**lehetőséget.
-4. A **Beállítások**területen válassza a **privát végponti kapcsolatok** , majd a **+ privát végpont**elemet.
+1. Az **erőforrás létrehozása** panelen válassza a **Batch szolgáltatás** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
+2. Adja meg az előfizetés, az erőforráscsoport, a régió és a Batch-fiók nevét az **alapok** lapon, majd válassza a **Tovább: speciális** lehetőséget.
+3. A **speciális** lapon állítsa be a **nyilvános hálózati hozzáférés** **Letiltva** lehetőséget.
+4. A **Beállítások** területen válassza a **privát végponti kapcsolatok** , majd a **+ privát végpont** elemet.
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="Magánhálózati végpontok kapcsolatai":::
-5. Az **alapvető beállítások** panelen adja meg vagy válassza ki az előfizetést, az erőforráscsoportot, a magánhálózati végpont erőforrásának nevét és a régió részleteit, majd válassza a **Tovább: erőforrás**elemet.
-6. Az **erőforrás** ablaktáblán állítsa be az **erőforrás típusát** **Microsoft.BatCH/batchAccounts**értékre. Válassza ki az elérni kívánt privát batch-fiókot, majd válassza a **Tovább: konfigurálás**lehetőséget.
+5. Az **alapvető beállítások** panelen adja meg vagy válassza ki az előfizetést, az erőforráscsoportot, a magánhálózati végpont erőforrásának nevét és a régió részleteit, majd válassza a **Tovább: erőforrás** elemet.
+6. Az **erőforrás** ablaktáblán állítsa be az **erőforrás típusát** **Microsoft.BatCH/batchAccounts** értékre. Válassza ki az elérni kívánt privát batch-fiókot, majd válassza a **Tovább: konfigurálás** lehetőséget.
    :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Magánhálózati végpontok kapcsolatai":::
 7. A **konfiguráció** ablaktáblán adja meg vagy válassza ki az alábbi adatokat:
-   - **Virtuális hálózat**: válassza ki a virtuális hálózatot.
-   - **Alhálózat**: válassza ki az alhálózatot.
-   - **Integráció a saját DNS-zónával**: válassza az **Igen**lehetőséget. A magánhálózati végponthoz való kapcsolódáshoz DNS-rekordra van szükség. Javasoljuk, hogy a privát végpontot egy privát DNS-zónával integrálja. Saját DNS-kiszolgálókat is használhat, vagy létrehozhat DNS-rekordokat a virtuális gépeken található gazdagép-fájlok használatával.
-   - **Saját DNS zóna**: válassza a privatelink <region> lehetőséget. batch.azure.com. A magánhálózati DNS-zóna automatikusan meg van határozva. A Azure Portal használatával nem módosítható.
-8. Válassza a **felülvizsgálat + létrehozás**lehetőséget, majd várjon, amíg az Azure érvényesíti a konfigurációt.
+   - **Virtuális hálózat** : válassza ki a virtuális hálózatot.
+   - **Alhálózat** : válassza ki az alhálózatot.
+   - **Integráció a saját DNS-zónával** : válassza az **Igen** lehetőséget. A magánhálózati végponthoz való kapcsolódáshoz DNS-rekordra van szükség. Javasoljuk, hogy a privát végpontot egy privát DNS-zónával integrálja. Saját DNS-kiszolgálókat is használhat, vagy létrehozhat DNS-rekordokat a virtuális gépeken található gazdagép-fájlok használatával.
+   - **Saját DNS zóna** : válassza a privatelink \<region\> lehetőséget. batch.azure.com. A magánhálózati DNS-zóna automatikusan meg van határozva. A Azure Portal használatával nem módosítható.
+8. Válassza a **felülvizsgálat + létrehozás** lehetőséget, majd várjon, amíg az Azure érvényesíti a konfigurációt.
 9. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 A magánhálózati végpont kiépítés után a Batch-fiókot a privát végpont használatával is elérheti ugyanazon a virtuális hálózaton lévő virtuális gépekről. A Azure Portal IP-címének megtekintése:

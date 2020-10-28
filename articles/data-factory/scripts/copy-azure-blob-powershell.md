@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: cd8c8450d6e747e9789c785d1c594532b94a36cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9550556aa022a9211072fd4c5fb18acb4ee7882e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443075"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637989"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>A PowerShell használatával hozzon létre egy adatfeldolgozó-folyamatot a felhőben tárolt adatmásoláshoz
 
@@ -26,7 +26,7 @@ Ez a példa PowerShell-szkript létrehoz egy folyamatot a Azure Data Factoryban,
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure Storage-fiók**. A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozását](../../storage/common/storage-account-create.md) ismertető cikket. 
+* **Azure Storage-fiók** . A blobtároló **forrás-** és **fogadó** adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozását](../../storage/common/storage-account-create.md) ismertető cikket. 
 * Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az Azure Blob Storage-hoz való kapcsolódáshoz olyan eszközöket használhat, mint például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) . hozzon létre egy BLOB-tárolót, töltse fel a bemeneti fájlt, és ellenőrizze a kimeneti fájlt.
 
 ## <a name="sample-script"></a>Példaszkript
@@ -68,6 +68,6 @@ Ez a szkript a következő parancsokat használja:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/).
 
 További Azure Data Factory PowerShell-szkriptek is találhatók a [Azure Data Factory PowerShell-mintákban](../samples-powershell.md).

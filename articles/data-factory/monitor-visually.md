@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48373c9ffc9146b6e62b62fb7d7fe10d571ce27f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570142"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638108"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Az Azure Data Factory vizuális monitorozása
 
@@ -36,7 +36,7 @@ Az alapértelmezett figyelési nézet a folyamat futtatásának listáját tarta
 | Futtatás indítása | A folyamat futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Időtartam | Futtatás időtartama (óó: PP: SS) |
 | Aktiválta: | A folyamatot elindító trigger neve |
-| status | **Sikertelen**, **sikeres**, **folyamatban**, **megszakítva**vagy **várólistán** lévő |
+| status | **Sikertelen** , **sikeres** , **folyamatban** , **megszakítva** vagy **várólistán** lévő |
 | Széljegyzetek | Egy folyamathoz társított szűrhető Címkék  |
 | Paraméterek | A folyamat futtatásának paraméterei (név/érték párok) |
 | Hiba | Ha a folyamat nem sikerült, a futtatási hiba |
@@ -55,11 +55,11 @@ Ha a tevékenységek futtatását szeretné megtekinteni az egyes folyamatokhoz,
 | **Oszlop neve** | **Leírás** |
 | --- | --- |
 | Tevékenységnév | A folyamaton belüli tevékenység neve |
-| Művelettípus | A tevékenység típusa, például **Másolás**, **ExecuteDataFlow**vagy **AzureMLExecutePipeline** |
+| Művelettípus | A tevékenység típusa, például **Másolás** , **ExecuteDataFlow** vagy **AzureMLExecutePipeline** |
 | Műveletek | Ikonok, amelyekkel megtekintheti a JSON bemeneti adatait, a JSON kimeneti adatait vagy a tevékenységekre vonatkozó részletes figyelési tapasztalatokat | 
 | Futtatás indítása | A tevékenység futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Időtartam | Futtatás időtartama (óó: PP: SS) |
-| status | **Sikertelen**, **sikeres**, **folyamatban**vagy **megszakítva** |
+| status | **Sikertelen** , **sikeres** , **folyamatban** vagy **megszakítva** |
 | Integration Runtime | Integration Runtime a tevékenység futtatása |
 | Felhasználói tulajdonságok | A tevékenység felhasználó által definiált tulajdonságai |
 | Hiba | Ha a tevékenység nem sikerült, a futtatási hiba |
@@ -93,8 +93,8 @@ Annak a bekapcsolása, hogy a folyamat futása a Futtatás kezdő időpontja sze
 | **Oszlop neve** | **Leírás** |
 | --- | --- |
 | Folyamat neve | Szűrés a folyamat nevével. |
-| Futtatás indítása |  Határozza meg a folyamat futási idejének időtartományát. A lehetőségek közé tartoznak a gyors szűrők az **elmúlt 24 órában**, a **múlt héten**és az **elmúlt 30 napban** , illetve az egyéni dátum és idő kiválasztásához. |
-| Futtatás állapota | Szűrő futtatása állapot szerint: **sikeres**, **sikertelen**, **várólistára helyezett**, **megszakított**vagy **folyamatban**. |
+| Futtatás indítása |  Határozza meg a folyamat futási idejének időtartományát. A lehetőségek közé tartoznak a gyors szűrők az **elmúlt 24 órában** , a **múlt héten** és az **elmúlt 30 napban** , illetve az egyéni dátum és idő kiválasztásához. |
+| Futtatás állapota | Szűrő futtatása állapot szerint: **sikeres** , **sikertelen** , **várólistára helyezett** , **megszakított** vagy **folyamatban** . |
 | Széljegyzetek | Szűrés az egyes folyamatokra alkalmazott címkék alapján |
 | Futtatás | Szűrés, hogy meg szeretné-e jeleníteni a reran-folyamatokat |
 
@@ -110,7 +110,7 @@ Növelje és csökkentse a listanézet oszlopszélességét az oszlop fejlécén
 
 ## <a name="rerun-activities-inside-a-pipeline"></a>Tevékenységek újrafuttatása egy folyamaton belül
 
-A tevékenységeket egy folyamaton belül futtathatja újra. Válassza a **tevékenységek megtekintése futtatása**lehetőséget, majd válassza ki azt a tevékenységet a folyamaton belül, amelyből a folyamatot újra szeretné futtatni.
+A tevékenységeket egy folyamaton belül futtathatja újra. Válassza a **tevékenységek megtekintése futtatása** lehetőséget, majd válassza ki azt a tevékenységet a folyamaton belül, amelyből a folyamatot újra szeretné futtatni.
 
 ![Tevékenységfuttatások megtekintése](media/monitor-visually/rerun-activities-image1.png)
 
@@ -118,7 +118,7 @@ A tevékenységeket egy folyamaton belül futtathatja újra. Válassza a **tevé
 
 ### <a name="rerun-from-failed-activity"></a>Újrafuttatás sikertelen tevékenységből
 
-Ha egy tevékenység meghiúsul, időtúllépés vagy megszakítva, a folyamat a **sikertelen tevékenységből**való újrafuttatásával újrafuttathatja a folyamatot.
+Ha egy tevékenység meghiúsul, időtúllépés vagy megszakítva, a folyamat a **sikertelen tevékenységből** való újrafuttatásával újrafuttathatja a folyamatot.
 
 ![Sikertelen művelet újrafuttatása](media/monitor-visually/rerun-failed-activity.png)
 
@@ -168,7 +168,7 @@ Válassza ki az **információs** ikont a bal alsó sarokban. Ezután válassza 
 
 ## <a name="alerts"></a>Riasztások
 
-Data Factory a támogatott mérőszámokra vonatkozó riasztásokat is kiemelheti. A **Monitor**  >  kezdéshez válassza a**riasztások figyelése & mérőszámok** lehetőséget a Data Factory figyelése lapon.
+Data Factory a támogatott mérőszámokra vonatkozó riasztásokat is kiemelheti. A **Monitor**  >  kezdéshez válassza a **riasztások figyelése & mérőszámok** lehetőséget a Data Factory figyelése lapon.
 
 ![A adatgyár-figyelő lapja](media/monitor-visually/start-page.png)
 
@@ -212,4 +212,4 @@ A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a 
 
 ## <a name="next-steps"></a>Következő lépések
 
-A folyamatok figyelésével és kezelésével kapcsolatos információkért tekintse meg a [folyamatok programozott figyelése és kezelése](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) című cikket.
+A folyamatok figyelésével és kezelésével kapcsolatos információkért tekintse meg a [folyamatok programozott figyelése és kezelése](./monitor-programmatically.md) című cikket.

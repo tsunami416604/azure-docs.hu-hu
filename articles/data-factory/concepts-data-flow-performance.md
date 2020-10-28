@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874832"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637870"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -155,7 +155,7 @@ Azure SQL Database rendelkezik egy "forrás" particionálás nevű egyedi partic
 
 #### <a name="isolation-level"></a>Elkülönítési szint
 
-Egy Azure SQL-forrás rendszer olvasásának elkülönítési szintje hatással van a teljesítményre. A "nem véglegesített olvasás" lehetőség kiválasztásával biztosíthatja a leggyorsabb teljesítményt, és megakadályozhatja az adatbázisok zárolását. Az SQL elkülönítési szintjeivel kapcsolatos további tudnivalókért tekintse meg az [elkülönítési szintek ismertetése](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)című témakört.
+Egy Azure SQL-forrás rendszer olvasásának elkülönítési szintje hatással van a teljesítményre. A "nem véglegesített olvasás" lehetőség kiválasztásával biztosíthatja a leggyorsabb teljesítményt, és megakadályozhatja az adatbázisok zárolását. Az SQL elkülönítési szintjeivel kapcsolatos további tudnivalókért tekintse meg az [elkülönítési szintek ismertetése](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)című témakört.
 
 #### <a name="read-using-query"></a>Olvasás a lekérdezés használatával
 
@@ -163,7 +163,7 @@ Azure SQL Database a tábla vagy SQL-lekérdezés használatával olvashatja el.
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure szinapszis analitikai források
 
-Az Azure szinapszis Analytics használatakor a forrás beállításai között az **átmeneti engedélyezés** nevű beállítás található. Ez lehetővé teszi, hogy az [ADF-ből a szinapszis használatával tudjon](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)olvasni, ami jelentősen javítja az olvasási teljesítményt. A Gen2 engedélyezéséhez meg kell adnia egy Azure-Blob Storage vagy Azure Data Lake Storage-előkészítési helyet az adatfolyam tevékenységi beállításai között.
+Az Azure szinapszis Analytics használatakor a forrás beállításai között az **átmeneti engedélyezés** nevű beállítás található. Ez lehetővé teszi, hogy az [ADF-ből a szinapszis használatával tudjon](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)olvasni, ami jelentősen javítja az olvasási teljesítményt. A Gen2 engedélyezéséhez meg kell adnia egy Azure-Blob Storage vagy Azure Data Lake Storage-előkészítési helyet az adatfolyam tevékenységi beállításai között.
 
 ![Előkészítés engedélyezése](media/data-flow/enable-staging.png "Előkészítés engedélyezése")
 
@@ -198,7 +198,7 @@ Ezek az Azure SQL DB-ben vagy a szinapszis-tárolón belül, az adatfolyamatok l
 ![Indexek letiltása](media/data-flow/disable-indexes-sql.png "Indexek letiltása")
 
 > [!WARNING]
-> Az indexek letiltásakor az adatfolyam gyakorlatilag nem veszi át az adatbázis irányítását, és a lekérdezések nem valószínű, hogy sikeresek lesznek. Ennek eredményeképpen számos ETL-feladat aktiválva lesz az éjszaka közepén, hogy elkerülje ezt az ütközést. További információ az [indexek letiltásának korlátozásait](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) ismerteti.
+> Az indexek letiltásakor az adatfolyam gyakorlatilag nem veszi át az adatbázis irányítását, és a lekérdezések nem valószínű, hogy sikeresek lesznek. Ennek eredményeképpen számos ETL-feladat aktiválva lesz az éjszaka közepén, hogy elkerülje ezt az ütközést. További információ az [indexek letiltásának korlátozásait](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) ismerteti.
 
 #### <a name="scaling-up-your-database"></a>Az adatbázis vertikális felskálázása
 
@@ -206,7 +206,7 @@ Ezek az Azure SQL DB-ben vagy a szinapszis-tárolón belül, az adatfolyamatok l
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure szinapszis Analytics-mosogatók
 
-Az Azure szinapszis Analyticsbe való íráskor győződjön meg arról, hogy az **előkészítés engedélyezése** True (igaz) értékre van állítva. Ez lehetővé teszi, hogy az ADF olyan [albase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) használatával legyen írható, amely hatékonyan betölti az adatok tömeges betöltését. Egy Azure Data Lake Storage Gen2 vagy Azure Blob Storage-fiókra kell hivatkoznia, amely az adatok előkészítését teszi elérhetővé a Base használatakor.
+Az Azure szinapszis Analyticsbe való íráskor győződjön meg arról, hogy az **előkészítés engedélyezése** True (igaz) értékre van állítva. Ez lehetővé teszi, hogy az ADF olyan [albase](/sql/relational-databases/polybase/polybase-guide) használatával legyen írható, amely hatékonyan betölti az adatok tömeges betöltését. Egy Azure Data Lake Storage Gen2 vagy Azure Blob Storage-fiókra kell hivatkoznia, amely az adatok előkészítését teszi elérhetővé a Base használatakor.
 
 A kiindulási módszertől eltérő módon ugyanazok az ajánlott eljárások érvényesek az Azure szinapszis Analyticsre Azure SQL Databaseként.
 
@@ -226,7 +226,7 @@ Az alapértelmezett beállítás kiválasztásával a leggyorsabb **értéket** 
 
 Az elnevezési **minta** beállításával az egyes partíciós fájlok egy több felhasználóbarát névre lesznek átnevezve. Ez a művelet az írás után történik, és valamivel lassabb, mint az alapértelmezett érték. A partíciók segítségével manuálisan nevezheti el az egyes partíciókat.
 
-Ha egy oszlop megfelel az adatkimenetnek, akkor az **oszlopokban szereplő adatként**is kiválaszthatja az adatokat. Ez átrendezi az adatszerkezetet, és hatással lehet a teljesítményre, ha az oszlopok nem egyenletesen oszlanak el.
+Ha egy oszlop megfelel az adatkimenetnek, akkor az **oszlopokban szereplő adatként** is kiválaszthatja az adatokat. Ez átrendezi az adatszerkezetet, és hatással lehet a teljesítményre, ha az oszlopok nem egyenletesen oszlanak el.
 
 Az **egyetlen fájlba történő kimenet** egyetlen partícióba egyesíti az összes adatokat. Ez hosszú írási időt eredményez, különösen a nagyméretű adatkészletek esetében. A Azure Data Factory csapat kifejezetten azt ajánlja, hogy **ne** válassza ezt a lehetőséget, kivéve, ha erre nincs kifejezett üzleti ok.
 
@@ -247,7 +247,7 @@ A CosmosDB való íráskor az átviteli sebesség és a köteg méretének módo
 
 #### <a name="broadcasting"></a>Szórásos
 
-Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam elég kicsi ahhoz, hogy illeszkedjenek a munkavégző csomópont memóriához, a **szórás**engedélyezésével optimalizálhatja a teljesítményt. A szórás akkor történik meg, amikor kisméretű adatkereteket küld a fürt összes csomópontjára. Ez lehetővé teszi, hogy a Spark-motor a nagyméretű adatfolyamban lévő adatok újrakeverése nélkül hajtson végre egy illesztést. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy a csatlakoztatás egyik oldalát sugározza-e a rendszer. Ha ismeri a bejövő adatait, és biztos lehet benne, hogy az egyik stream jelentősen kisebb lesz, mint a másik, válassza a **rögzített** szórás lehetőséget. A rögzített műsorszórási kényszeríti a Sparkot a kiválasztott adatfolyam szórására. 
+Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam elég kicsi ahhoz, hogy illeszkedjenek a munkavégző csomópont memóriához, a **szórás** engedélyezésével optimalizálhatja a teljesítményt. A szórás akkor történik meg, amikor kisméretű adatkereteket küld a fürt összes csomópontjára. Ez lehetővé teszi, hogy a Spark-motor a nagyméretű adatfolyamban lévő adatok újrakeverése nélkül hajtson végre egy illesztést. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy a csatlakoztatás egyik oldalát sugározza-e a rendszer. Ha ismeri a bejövő adatait, és biztos lehet benne, hogy az egyik stream jelentősen kisebb lesz, mint a másik, válassza a **rögzített** szórás lehetőséget. A rögzített műsorszórási kényszeríti a Sparkot a kiválasztott adatfolyam szórására. 
 
 Ha a sugárzott adat mérete túl nagy a Spark-csomóponthoz, előfordulhat, hogy kevés a memória. A memóriabeli hibák elkerülése érdekében használja a **memóriára optimalizált** fürtöket. Ha az adatfolyam-végrehajtás során szórási időtúllépéseket tapasztal, kikapcsolhatja a szórásos optimalizálást. Ez azonban lassabban fogja végrehajtani az adatfolyamatokat.
 

@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
-ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332100"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638176"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be a Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,14 +56,14 @@ A Dynamics 365 esetében a következő típusú alkalmazások támogatottak:
 
 Ez az összekötő nem támogatja más típusú alkalmazások, például a pénzügy, a műveletek és a tehetség használatát.
 
-Ez a Dynamics-összekötő a [Dynamics xrm-eszközökre](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)épül.
+Ez a Dynamics-összekötő a [Dynamics xrm-eszközökre](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)épül.
 
 >[!TIP]
 >A Dynamics 365-as pénzügyi és-műveletek adatainak másolásához használhatja a [Dynamics AX-összekötőt](connector-dynamics-ax.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha az összekötőt az Azure AD szolgáltatással szeretné használni – az egyszerű hitelesítéshez be kell állítania a kiszolgálók közötti (S2S) hitelesítést Common Data Service vagy Dynamics rendszerbe. A részletes lépésekért tekintse meg [ezt a cikket](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) .
+Ha az összekötőt az Azure AD szolgáltatással szeretné használni – az egyszerű hitelesítéshez be kell állítania a kiszolgálók közötti (S2S) hitelesítést Common Data Service vagy Dynamics rendszerbe. A részletes lépésekért tekintse meg [ezt a cikket](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) .
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -172,7 +172,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>A Dynamics 365 és a Dynamics CRM helyszíni központi TELEPÍTÉSsel
 
-A Dynamics online-hoz képest további tulajdonságok az **állomásnév** és a **port**.
+A Dynamics online-hoz képest további tulajdonságok az **állomásnév** és a **port** .
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
@@ -255,7 +255,7 @@ A Dynamicsből származó adatok másolásához a másolási tevékenység **for
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát "DynamicsSource", "DynamicsCrmSource" vagy "CommonDataServiceForAppsSource" értékre kell beállítani. | Igen |
-| lekérdezés | A FetchXML egy saját lekérdezési nyelv, amelyet a Dynamics online-ban és a helyszínen is használhat. Tekintse meg a következő példát. További információ: [lekérdezések készítése a FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nem, ha az `entityName` adatkészletben meg van adva |
+| lekérdezés | A FetchXML egy saját lekérdezési nyelv, amelyet a Dynamics online-ban és a helyszínen is használhat. Tekintse meg a következő példát. További információ: [lekérdezések készítése a FetchXML](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8)). | Nem, ha az `entityName` adatkészletben meg van adva |
 
 >[!NOTE]
 >A PK oszlop mindig akkor is másolódik, ha a FetchXML-lekérdezésben konfigurált oszlop nem tartalmazza azt.
@@ -326,12 +326,12 @@ Az adatmásoláshoz a másolási **tevékenység** elfogadója szakasz a követk
 | writeBehavior | A művelet írási viselkedése. Az értéknek "Upsert" értékűnek kell lennie. | Igen |
 | alternateKeyName | Az entitáson definiált másodlagos kulcs neve upsert. | Nem. |
 | writeBatchSize | Az egyes kötegekben a Dynamicsba írt adatsorok száma. | Nem. Az alapértelmezett érték 10. |
-| ignoreNullValues | Azt határozza meg, hogy a rendszer figyelmen kívül hagyja-e a null értékeket a Key mezőktől eltérő bemeneti adatokból az írási művelet során.<br/><br/>Az érvényes értékek **igazak** és **hamisak**:<ul><li>**True (igaz**): a célobjektum nem módosult, ha upsert vagy frissítési műveletet végez. Definiált alapértelmezett érték beszúrása egy beszúrási művelet végrehajtásakor.</li><li>**Hamis**: a upsert vagy frissítési művelet végrehajtásakor a célként megadott objektumban lévő Adatfrissítés NULL értékre. Szúrjon be egy null értéket a beszúrási művelet végrehajtásakor.</li></ul> | Nem. Az alapértelmezett érték **false (hamis**). |
+| ignoreNullValues | Azt határozza meg, hogy a rendszer figyelmen kívül hagyja-e a null értékeket a Key mezőktől eltérő bemeneti adatokból az írási művelet során.<br/><br/>Az érvényes értékek **igazak** és **hamisak** :<ul><li>**True (igaz** ): a célobjektum nem módosult, ha upsert vagy frissítési műveletet végez. Definiált alapértelmezett érték beszúrása egy beszúrási művelet végrehajtásakor.</li><li>**Hamis** : a upsert vagy frissítési művelet végrehajtásakor a célként megadott objektumban lévő Adatfrissítés NULL értékre. Szúrjon be egy null értéket a beszúrási művelet végrehajtásakor.</li></ul> | Nem. Az alapértelmezett érték **false (hamis** ). |
 
 >[!NOTE]
 >A fogadó **writeBatchSize** és a **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** másolási tevékenységének alapértelmezett értéke 10. Ezért a 100-es rekordokat a rendszer alapértelmezés szerint egyszerre küldi el a Dynamics számára.
 
-A Dynamics 365 online esetében a [szervezeten belül két egyidejű batch-hívás](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)van korlátozva. Ha túllépi a korlátot, a rendszer a "kiszolgáló foglalt" kivételt az első kérelem futtatása előtt kidobja. Az egyidejű hívások szabályozásának elkerüléséhez tartsa a **writeBatchSize** 10 vagy kevesebb értékkel.
+A Dynamics 365 online esetében a [szervezeten belül két egyidejű batch-hívás](/previous-versions/dynamicscrm-2016/developers-guide/jj863631(v=crm.8)#Run-time%20limitations)van korlátozva. Ha túllépi a korlátot, a rendszer a "kiszolgáló foglalt" kivételt az első kérelem futtatása előtt kidobja. Az egyidejű hívások szabályozásának elkerüléséhez tartsa a **writeBatchSize** 10 vagy kevesebb értékkel.
 
 A **writeBatchSize** és a **parallelCopies** optimális kombinációja az entitás sémájától függ. A séma elemei közé tartozik az oszlopok száma, a sor mérete, valamint a beépülő modulok, a munkafolyamatok és a munkafolyamat-tevékenységek száma. A **writeBatchSize** (10) &times; **parallelCopies** (10) alapértelmezett beállítása a Dynamics szolgáltatásnak megfelelő javaslat. Ez az érték a legtöbb Dynamics-entitás esetében működik, bár lehetséges, hogy nem adja meg a legjobb teljesítményt. A teljesítmény finomhangolásához módosítsa a kombinációt a másolási tevékenység beállításaiban.
 
@@ -397,7 +397,7 @@ Konfigurálja a megfelelő Data Factory adattípust a forrás-Dynamics adattípu
 | AttributeType. status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> A Dynamics-adattípusok **AttributeType. CalendarRules**, **AttributeType. MultiSelectPicklist**és **AttributeType. PartyList** nem támogatottak.
+> A Dynamics-adattípusok **AttributeType. CalendarRules** , **AttributeType. MultiSelectPicklist** és **AttributeType. PartyList** nem támogatottak.
 
 ## <a name="writing-data-to-a-lookup-field"></a>Adatírás keresési mezőbe
 
@@ -413,15 +413,15 @@ Ha olyan keresőmezőt szeretne írni, amelynek több célja van, például az �
 
 Tegyük fel például, hogy a forrásnak a következő két oszlopa van:
 
-- **GUID**típusú **CustomerField** -oszlop, amely a cél entitás elsődleges kulcsának értéke a dynamicsben.
-- **Karakterlánc**típusú **cél** oszlop, amely a célként megadott entitás logikai neve.
+- **GUID** típusú **CustomerField** -oszlop, amely a cél entitás elsődleges kulcsának értéke a dynamicsben.
+- **Karakterlánc** típusú **cél** oszlop, amely a célként megadott entitás logikai neve.
 
-Azt is tegyük fel, hogy az ilyen típusú Adatmásolás a fogadó Dynamics entitás **Customer**mezőjébe **CustomerField** .
+Azt is tegyük fel, hogy az ilyen típusú Adatmásolás a fogadó Dynamics entitás **Customer** mezőjébe **CustomerField** .
 
 A másolási tevékenység oszlop leképezése részen a következő módon képezze le a két oszlopot:
 
-- **CustomerField** a **CustomerField**. Ez a leképezés a normál mezők leképezése.
-- **Cél** a **CustomerField \@ EntityReference**. A fogadó oszlop az entitások hivatkozását jelképező virtuális oszlop. Adja meg az ilyen mezőneveket a leképezésben, mivel azok nem jelennek meg a sémák importálásával.
+- **CustomerField** a **CustomerField** . Ez a leképezés a normál mezők leképezése.
+- **Cél** a **CustomerField \@ EntityReference** . A fogadó oszlop az entitások hivatkozását jelképező virtuális oszlop. Adja meg az ilyen mezőneveket a leképezésben, mivel azok nem jelennek meg a sémák importálásával.
 
 ![Dynamics keresési mező oszlopának leképezése](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 

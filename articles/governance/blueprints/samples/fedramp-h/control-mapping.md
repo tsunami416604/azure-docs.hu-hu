@@ -1,20 +1,20 @@
 ---
 title: FedRAMP nagy terv-minta vezérlők
 description: A FedRAMP magas tervrajzi minta leképezésének vezérlése. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 07/31/2020
+ms.date: 10/26/2020
 ms.topic: sample
-ms.openlocfilehash: 99fcb41e1961cbf7def766249940023eb2f330f7
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0b729046d44d76f71dfb520db16e6fd268d421c9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929353"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669381"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>A FedRAMP magas tervrajzi minta leképezésének vezérlése
 
 A következő cikk részletesen ismerteti, hogyan FedRAMP az Azure-tervezetek a FedRAMP High Controls szolgáltatásban. A vezérlőkkel kapcsolatos további információkért lásd: [FedRAMP biztonsági vezérlők alapterve](https://www.fedramp.gov/).
 
-A következő leképezések a **FedRAMP magas szintű** vezérlői. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki az ** \[ előnézetet \] : a naplózás FedRAMP magas szintű vezérléssel és adott virtuálisgép-bővítmények üzembe helyezésével támogassa a naplózási követelmények** beépített házirend-kezdeményezését.
+A következő leképezések a **FedRAMP magas szintű** vezérlői. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki az **\[ előnézetet \] : a naplózás FedRAMP magas szintű vezérléssel és adott virtuálisgép-bővítmények üzembe helyezésével támogassa a naplózási követelmények** beépített házirend-kezdeményezését.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem egy-az-egyhez vagy egy teljes egyezés egy vezérlőelem és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-h/control-mapping.md).

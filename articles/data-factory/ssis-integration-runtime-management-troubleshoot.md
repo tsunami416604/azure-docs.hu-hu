@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86172026"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637921"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>A SSIS Integration Runtime-kezelés hibáinak megoldása Azure Data Factory
 
@@ -82,7 +82,7 @@ Az ilyen típusú hibaüzenet így néz ki: "érvénytelen objektumnév" catalog
 
 ## <a name="custom-setup-issues"></a>Egyéni telepítési problémák
 
-Az egyéni telepítés során használható felülten hozzáadhatja saját telepítési lépései az SSIS IR üzembe helyezése vagy újrakonfigurálása során. További információ: [Az Azure SSIS IR telepítésének testreszabása](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
+Az egyéni telepítés során használható felülten hozzáadhatja saját telepítési lépései az SSIS IR üzembe helyezése vagy újrakonfigurálása során. További információ: [Az Azure SSIS IR telepítésének testreszabása](./how-to-configure-azure-ssis-ir-custom-setup.md).
 
 Győződjön meg arról, hogy a tároló csak a szükséges egyéni telepítőfájlokat tartalmazza; a tároló összes fájlja le lesz töltve az SSIS IR feldolgozó csomópontjára. Azt javasoljuk, hogy a szkript az SSIS IR-ban való futtatása előtt tesztelje az egyéni telepítési szkriptet egy helyi gépen a szkriptvégrehajtási hibák javítása érdekében.
 
@@ -114,7 +114,7 @@ Ez a hiba azt jelenti, hogy az egyéni telepítés végrehajtási naplóinak a b
 
 ## <a name="virtual-network-configuration"></a>Virtuális hálózati konfiguráció
 
-Amikor az SSIS integrációs modult az Azure Virtual Networkhöz csatlakoztatja, a SSIS IR a felhasználói előfizetéshez tartozó virtuális hálózatot használja. További információért tekintse meg [az Azure-SSIS IR virtuális hálózathoz történő csatlakoztatásával](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) foglalkozó cikket.
+Amikor az SSIS integrációs modult az Azure Virtual Networkhöz csatlakoztatja, a SSIS IR a felhasználói előfizetéshez tartozó virtuális hálózatot használja. További információért tekintse meg [az Azure-SSIS IR virtuális hálózathoz történő csatlakoztatásával](./join-azure-ssis-integration-runtime-virtual-network.md) foglalkozó cikket.
 Miután a SSIS IR sikeresen elindult, ha hálózati kapcsolati problémák léptek fel, megpróbálhatja a probléma diagnosztizálására használni a [kapcsolat diagnosztizálása eszközt](ssis-integration-runtime-diagnose-connectivity-faq.md) .
 Ha virtuális hálózattal kapcsolatos probléma jelentkezik, az alábbi hibák egyike jelenik meg.
 
@@ -141,7 +141,7 @@ Ezek a hibák azt jelentik, hogy a virtuális hálózat nem létezik, az Azure B
 
 A következő hibaüzenet így néz ki: "nem sikerült kiépíteni a Integration Runtime a VNet. Ha a DNS-kiszolgáló vagy a NSG beállításai konfigurálva vannak, ellenőrizze, hogy a DNS-kiszolgáló elérhető-e, és hogy a NSG megfelelően van-e konfigurálva. "
 
-Ebben az esetben valószínűleg egyéni konfigurációt alkalmazott a DNS-kiszolgáló vagy a hálózati biztonsági csoport beállításait illetően, amely megakadályozza az SSIS IR által igényelt Azure-kiszolgálónév feloldását vagy elérését. További információ: [Az SSIS IR virtuális hálózatának konfigurálása](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az Azure Data Factory támogatási csapatával.
+Ebben az esetben valószínűleg egyéni konfigurációt alkalmazott a DNS-kiszolgáló vagy a hálózati biztonsági csoport beállításait illetően, amely megakadályozza az SSIS IR által igényelt Azure-kiszolgálónév feloldását vagy elérését. További információ: [Az SSIS IR virtuális hálózatának konfigurálása](./join-azure-ssis-integration-runtime-virtual-network.md). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az Azure Data Factory támogatási csapatával.
 
 ### <a name="vnetresourcegrouplockedduringupgrade"></a>VNetResourceGroupLockedDuringUpgrade
 
@@ -157,11 +157,11 @@ Ha leállítja a SSIS IR-t, a rendszer a virtuális hálózathoz kapcsolódó ö
 
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
-Ez a hiba akkor fordul elő, ha az integrációs modul fut, és azt jelenti, hogy az integrációs modul állapota nem megfelelő. Ezt a hibát mindig a DNS-kiszolgáló vagy a hálózati biztonsági csoport konfigurációjának változása okozza, amely blokkolja a SSIS IR-t a szükséges szolgáltatáshoz való csatlakozáskor. Mivel a DNS-kiszolgáló és a hálózati biztonsági csoport konfigurációját az ügyfél szabályozza, az ügyfélnek kell kijavítania a blokkolást okozó problémákat a saját oldaláról. További információ: [Az SSIS IR virtuális hálózatának konfigurálása](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az Azure Data Factory támogatási csapatával.
+Ez a hiba akkor fordul elő, ha az integrációs modul fut, és azt jelenti, hogy az integrációs modul állapota nem megfelelő. Ezt a hibát mindig a DNS-kiszolgáló vagy a hálózati biztonsági csoport konfigurációjának változása okozza, amely blokkolja a SSIS IR-t a szükséges szolgáltatáshoz való csatlakozáskor. Mivel a DNS-kiszolgáló és a hálózati biztonsági csoport konfigurációját az ügyfél szabályozza, az ügyfélnek kell kijavítania a blokkolást okozó problémákat a saját oldaláról. További információ: [Az SSIS IR virtuális hálózatának konfigurálása](./join-azure-ssis-integration-runtime-virtual-network.md). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az Azure Data Factory támogatási csapatával.
 
 ## <a name="static-public-ip-addresses-configuration"></a>Statikus nyilvános IP-címek konfigurálása
 
-Ha a Azure-SSIS IRt az Azure Virtual Networkhoz csatlakoztatja, akkor a saját statikus nyilvános IP-címei is megadhatók az IR-hez, hogy az IR hozzáférhessen az adott IP-címekhez való hozzáférést korlátozó adatforrásokhoz. További információért tekintse meg [az Azure-SSIS IR virtuális hálózathoz történő csatlakoztatásával](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) foglalkozó cikket.
+Ha a Azure-SSIS IRt az Azure Virtual Networkhoz csatlakoztatja, akkor a saját statikus nyilvános IP-címei is megadhatók az IR-hez, hogy az IR hozzáférhessen az adott IP-címekhez való hozzáférést korlátozó adatforrásokhoz. További információért tekintse meg [az Azure-SSIS IR virtuális hálózathoz történő csatlakoztatásával](./join-azure-ssis-integration-runtime-virtual-network.md) foglalkozó cikket.
 
 A fenti virtuális hálózati problémák mellett előfordulhat, hogy a statikus nyilvános IP-címekkel kapcsolatos problémát is kielégíti. További segítségért tekintse meg az alábbi hibákat.
 
@@ -174,7 +174,7 @@ Ez a hiba többféle okból is előfordulhat a Azure-SSIS IR indításakor:
 | A megadott statikus nyilvános IP-cím már használatban van, adja meg két használaton kívüli Azure-SSIS Integration Runtime. | Válassza ki a két nem használt statikus nyilvános IP-címet, vagy távolítsa el az aktuális referenciákat a megadott nyilvános IP-címre, majd indítsa újra a Azure-SSIS IR. |
 | A megadott statikus nyilvános IP-címnek nincs DNS-neve, adjon meg kettőt a Azure-SSIS Integration Runtime DNS-nevével. | A nyilvános IP-cím DNS-nevét Azure Portalban is beállíthatja, ahogy az alábbi képen látható. A konkrét lépések a következők: (1) nyissa meg Azure Portal és goto a nyilvános IP-cím erőforrás lapját. (2) válassza ki a **konfiguráció** szakaszt, és állítsa be a DNS-nevet, majd kattintson a **Save (Mentés** ) gombra; (3) indítsa újra a Azure-SSIS IR. |
 | A Azure-SSIS Integration Runtime megadott VNet és statikus nyilvános IP-címeinek ugyanazon a helyen kell lenniük. | Az Azure-hálózat követelményeinek megfelelően a statikus nyilvános IP-címnek és a virtuális hálózatnak ugyanabban a helyen és előfizetésben kell lennie. Adjon meg két érvényes statikus nyilvános IP-címet, és indítsa újra a Azure-SSIS IR. |
-| A megadott statikus nyilvános IP-cím egy alapszintű, a Azure-SSIS Integration Runtime számára két standardot adjon meg. | További segítségért tekintse meg a [nyilvános IP-cím SKU-](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) t. |
+| A megadott statikus nyilvános IP-cím egy alapszintű, a Azure-SSIS Integration Runtime számára két standardot adjon meg. | További segítségért tekintse meg a [nyilvános IP-cím SKU-](../virtual-network/public-ip-addresses.md#sku) t. |
 
 ![Azure-SSIS integrációs modul](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 

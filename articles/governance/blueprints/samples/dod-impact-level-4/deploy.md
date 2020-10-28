@@ -1,14 +1,14 @@
 ---
 title: DoD Impact Level 4 terv minta
 description: A DoD Impact Level 4 tervre vonatkozó lépések üzembe helyezése minta, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 09/17/2020
+ms.date: 10/26/2020
 ms.topic: sample
-ms.openlocfilehash: 7ab2e5967031b52bcad7c1b6f38b546cb8a7eb86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 128f47798830c6a51d8fe7a9b67b9f0d7749dc71
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978422"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669498"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 terv minta üzembe helyezése
 
@@ -29,12 +29,12 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. A bal oldalon válassza az **Első lépések** oldalt, és válassza a _Terv létrehozása_ területen a **Létrehozás** lehetőséget.
 
-1. Keresse meg a **DoD Impact Level 4** tervezet mintát _más minták_ alatt, és válassza a **minta használata**lehetőséget.
+1. Keresse meg a **DoD Impact Level 4** tervezet mintát _más minták_ alatt, és válassza a **minta használata** lehetőséget.
 
-1. Adja meg a tervminta _alapvető beállításait_:
+1. Adja meg a tervminta _alapvető beállításait_ :
 
-   - **Terv neve**: adjon meg egy nevet a DoD Impact Level 4 terv mintájának másolatához.
-   - **Definíció helye**: használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
+   - **Terv neve** : adjon meg egy nevet a DoD Impact Level 4 terv mintájának másolatához.
+   - **Definíció helye** : használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
 
 1. Válassza az oldal tetején lévő _Összetevők_ lapot, vagy az oldal alján lévő **Következő: Összetevők** lehetőséget.
 
@@ -42,17 +42,17 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 ## <a name="publish-the-sample-copy"></a>Ugyanazon másolat közzététele
 
-A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött létre, és **közzé kell tenni**, mielőtt hozzárendelhetné és üzembe helyezhetné. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás a DoD Impact Level 4 vezérlőn kívülről is áthelyezhető.
+A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött létre, és **közzé kell tenni** , mielőtt hozzárendelhetné és üzembe helyezhetné. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás a DoD Impact Level 4 vezérlőn kívülről is áthelyezhető.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
 1. Válassza a bal oldali **Tervdefiníciók** oldalt. A szűrőkkel keresse meg a tervminta másolatát, majd válassza ki.
 
-1. Válassza ki az oldal tetején található **Terv közzététele** lehetőséget. A jobb oldalt megjelenő új oldalon adja meg a tervminta másolatának **verzióját**. Ez a tulajdonság akkor hasznos, ha később módosításokat végez. Adjon meg olyan **módosítási megjegyzéseket** , mint például a DoD IL4 Blueprint minta első verziója. Ezután válassza a lap alján található **Közzététel** lehetőséget.
+1. Válassza ki az oldal tetején található **Terv közzététele** lehetőséget. A jobb oldalt megjelenő új oldalon adja meg a tervminta másolatának **verzióját** . Ez a tulajdonság akkor hasznos, ha később módosításokat végez. Adjon meg olyan **módosítási megjegyzéseket** , mint például a DoD IL4 Blueprint minta első verziója. Ezután válassza a lap alján található **Közzététel** lehetőséget.
 
 ## <a name="assign-the-sample-copy"></a>Ugyanazon másolat hozzárendelése
 
-Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
+Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
@@ -64,11 +64,11 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
    - Alapvető beállítások
 
-     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, mindegyikhez létrejön egy hozzárendelés a beírt paraméterekkel.
-     - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
+     - **Előfizetések** : válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, mindegyikhez létrejön egy hozzárendelés a beírt paraméterekkel.
+     - **Hozzárendelés neve** : a név előre ki van töltve a terv neve alapján.
        Módosítsa igény szerint, vagy hagyja meg az eredetit.
-     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
+     - **Hely** : válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Terv definíciójának verziója** : válasszon egy **közzétett** verziót a terv mintájának másolatáról.
 
    - Hozzárendelés zárolása
 
@@ -85,7 +85,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 1. Az összes paraméter megadása után válassza az oldal alján lévő **Hozzárendelés** lehetőséget. Létrejön a terv hozzárendelése, és megkezdődik az összetevő üzembe helyezése. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának ellenőrzéséhez nyissa meg a terv hozzárendelését.
 
 > [!WARNING]
-> Az Azure Blueprints szolgáltatás és a beépített tervminták **ingyenesek**. Az Azure-erőforrások [díjszabása termékalapú](https://azure.microsoft.com/pricing/). A [díjkalkulátorral](https://azure.microsoft.com/pricing/calculator/) megbecsülheti a tervminta által üzembe helyezett erőforrások futtatásának költségét.
+> Az Azure Blueprints szolgáltatás és a beépített tervminták **ingyenesek** . Az Azure-erőforrások [díjszabása termékalapú](https://azure.microsoft.com/pricing/). A [díjkalkulátorral](https://azure.microsoft.com/pricing/calculator/) megbecsülheti a tervminta által üzembe helyezett erőforrások futtatásának költségét.
 
 ## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
@@ -130,7 +130,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
 |\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetés írási engedélyekkel rendelkező fiókjaiban|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a DoD Impact Level 4 tervrajzi minta üzembe helyezésének lépéseit, tekintse meg a következő cikkeket a terv és a vezérlési leképezés megismeréséhez:
 

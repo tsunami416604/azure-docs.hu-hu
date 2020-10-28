@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63c31312070fbac99959d833344ccf04760bb8e4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84021891"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637887"
 ---
 # <a name="use-case---customer-profiling"></a>Használati eset – ügyfél-profilkészítés
 Azure Data Factory a megoldási gyorssegédek Cortana Intelligence Suite megvalósításához használt számos szolgáltatás egyike.  További információ a Cortana Intelligenceről: [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). Ebben a dokumentumban egy egyszerű használati esetet ismertetünk, amely segít megismerni, hogy Azure Data Factory Hogyan oldhatók meg a gyakori elemzési problémák.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 A contoso egy szerencsejáték-cég, amely több platformhoz hoz létre játékokat: játékkonzolok, kézi eszközök és személyi számítógépek (PC-k). Ahogy a játékosok játszanak ilyen játékokat, nagy mennyiségű naplózási adatok készülnek, amelyek nyomon követik a felhasználó használati mintáit, a játék stílusát és a felhasználói preferenciákat.  Demográfiai, regionális és Termékadatok együttes használata esetén a contoso az elemzések elvégzésével megtudhatja, hogyan javíthatja a játékosok élményét, és hogyan célozhatja meg azokat a frissítésekhez és a játékon belüli vásárlásokhoz. 
 
 A contoso célja, hogy a játékosok szerencsejáték-előzményei alapján azonosítsa a fel-eladás/értékesítés utáni lehetőségeket, és látványos funkciókat adjon az üzleti növekedéshez, és jobb felhasználói élményt nyújtson az ügyfeleknek. Ebben a használati esetben egy szerencsejáték-vállalatot használunk egy üzleti példaként. A vállalat a játékosok viselkedése alapján szeretné optimalizálni játékait. Ezek az alapelvek minden olyan vállalkozásra érvényesek, amely az ügyfeleit a termékeivel és szolgáltatásaival kapcsolatban kívánja elérni, és fokozza ügyfelei tapasztalatait.
@@ -29,7 +29,7 @@ A contoso célja, hogy a játékosok szerencsejáték-előzményei alapján azon
 Ebben a megoldásban a contoso szeretné kiértékelni a közelmúltban elindított marketing-kampány hatékonyságát. Kezdjük a nyers játékok naplóival, feldolgozzuk és gazdagítjuk azokat a térinformatikai adataival, összekapcsoljuk azokat a hirdetési referenciákkal, és végül egy Azure SQL Databaseba másoljuk a kampány hatásának elemzéséhez.
 
 ## <a name="deploy-solution"></a>Megoldás üzembe helyezése
-Ehhez az egyszerű használati esethez mindössze egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/), egy [Azure Blob Storage-fiók](../../storage/common/storage-account-create.md)és egy [Azure SQL Database](../../sql-database/sql-database-get-started.md)szükséges. Az ügyfél profilkészítési folyamatát az adatok előállítójának kezdőlapján a **minta folyamatok** csempén helyezheti üzembe.
+Ehhez az egyszerű használati esethez mindössze egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/), egy [Azure Blob Storage-fiók](../../storage/common/storage-account-create.md)és egy [Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md)szükséges. Az ügyfél profilkészítési folyamatát az adatok előállítójának kezdőlapján a **minta folyamatok** csempén helyezheti üzembe.
 
 1. Hozzon létre egy adatelőállítót, vagy nyisson meg egy meglévő adatgyárat. Az adatok-előállító létrehozásához szükséges lépésekért lásd: [adatok másolása blob Storageról SQL Databasera Data Factory használatával](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 2. Az adatelőállító **adatelőállító** paneljén kattintson a **mintavételezési folyamatok** csempére.
@@ -65,4 +65,3 @@ Ebben a példában a Data Factory a bemeneti adatokat másoló tevékenységek, 
 
 ## <a name="benefits"></a>Előnyök
 A felhasználói profil elemzésének optimalizálása és az üzleti célokkal való összehangolása révén a Gaming Company gyorsan gyűjthet használati mintákat, és elemezheti a marketing kampányok hatékonyságát.
-

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c6a46f6c8a57b681f66bb98fced17bf0e2464fcd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86231233"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638244"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Az Azure Data Factory és a Data Factory 1. verziójának összehasonlítása
 
@@ -87,7 +87,7 @@ Akkor használja az Azure SSIS modult, ha át szeretné helyezni az SSIS számí
 
 Az Azure-SSIS integrációs modul egy, az SSIS-csomagok felhőben történő futtatására kijelölt Azure-beli virtuális gépekből (csomópontokból) álló, teljesen felügyelt fürt. Miután üzembe helyezte az Azure-SSIS integrációs modult, ugyanazokat az eszközöket használhatja, amelyeket az SSIS-csomagok helyszíni SSIS-környezetben való üzembe helyezéséhez használt. 
 
-Például az SQL Server Data Tools vagy az SQL Server Management Studio használatával üzembe helyezhet SSIS-csomagokat ebben az Azure-beli modulban. Lépésenkénti útmutatásért lásd a következő oktatóanyagot: [SQL Server Integration Services-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). 
+Például az SQL Server Data Tools vagy az SQL Server Management Studio használatával üzembe helyezhet SSIS-csomagokat ebben az Azure-beli modulban. Lépésenkénti útmutatásért lásd a következő oktatóanyagot: [SQL Server Integration Services-csomagok üzembe helyezése az Azure-ban](./tutorial-deploy-ssis-packages-azure.md). 
 
 ## <a name="flexible-scheduling"></a>Rugalmas ütemezés
 A Data Factory aktuális verziójában nem kell megadnia az adatkészletek rendelkezésre állásának ütemezését. Megadhat egy eseményindító erőforrást, amely folyamatokat ütemezhet egy óraütemező paradigmából. Paramétereket is átadhat a folyamatoknak egy eseményindítóból egy rugalmas ütemezési és végrehajtási modell érdekében. 
@@ -103,7 +103,7 @@ Az aktuális verzió az 1. verziónál több adattárba vagy adattárból tört�
 ## <a name="support-for-on-demand-spark-cluster"></a>Igény szerinti Spark-fürt támogatása
 Az aktuális verzió támogatja az igény szerinti Azure HDInsight Spark-fürt létrehozását. Igény szerinti Spark-fürt létrehozásához Sparkként határozza meg a fürt típusát az igény szerinti HDInsight társított szolgáltatás meghatározásában. Ezután úgy konfigurálhatja a Spark-tevékenységet a folyamatban, hogy ezt a társított szolgáltatást használja. 
 
-A tevékenység futásidőben való végrehajtásakor a Data Factory szolgáltatás automatikusan létrehozza a Spark-fürtöt. További információkért tekintse át a következő cikkeket:
+A tevékenység futásidőben való végrehajtásakor a Data Factory szolgáltatás automatikusan létrehozza a Spark-fürtöt. További információkat az következő cikkekben talál:
 
 - [Spark-tevékenység a Data Factory aktuális verziójában](transform-data-using-spark.md)
 - [Azure HDInsight igény szerinti társított szolgáltatás](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)
@@ -118,13 +118,13 @@ További információ: [Az egyéni tevékenységek közötti különbségek a Da
 ## <a name="sdks"></a>SDK-k
  a Data Factory aktuális verziója az SDK-k szélesebb választékát biztosítja, amelyeket folyamatok létrehozásához, kezeléséhez és monitorozásához használhat.
 
-- **.NET SDK**: A .NET SDK frissült az aktuális verzióban.
+- **.NET SDK** : A .NET SDK frissült az aktuális verzióban.
 
-- **PowerShell**: A PowerShell-parancsmagok frissültek az aktuális verzióban. Az aktuális verzióhoz tartozó parancsmagoknak **szerepel datafactoryv2** van a névben, például: Get-AzDataFactoryV2. 
+- **PowerShell** : A PowerShell-parancsmagok frissültek az aktuális verzióban. Az aktuális verzióhoz tartozó parancsmagoknak **szerepel datafactoryv2** van a névben, például: Get-AzDataFactoryV2. 
 
-- **Python SDK**: Ez az SDK az aktuális verzióban lett bevezetve.
+- **Python SDK** : Ez az SDK az aktuális verzióban lett bevezetve.
 
-- **REST API**: A REST API frissült az aktuális verzióban. 
+- **REST API** : A REST API frissült az aktuális verzióban. 
 
 Az aktuális verzióban frissített SDK-k visszamenőlegesen nem kompatibilisek a V1 verzió ügyfeleivel. 
 
@@ -133,11 +133,11 @@ Az aktuális verzióban frissített SDK-k visszamenőlegesen nem kompatibilisek 
 | | 2-es verzió | 1-es verzió |
 | ------ | -- | -- | 
 | **Azure Portal** | [Igen](quickstart-create-data-factory-portal.md) | Nem |
-| **Azure PowerShell** | [Igen](quickstart-create-data-factory-powershell.md) | [Igen](data-factory-build-your-first-pipeline-using-powershell.md) |
-| **.NET SDK** | [Igen](quickstart-create-data-factory-dot-net.md) | [Igen](data-factory-build-your-first-pipeline-using-vs.md) |
-| **REST API** | [Igen](quickstart-create-data-factory-rest-api.md) | [Igen](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Azure PowerShell** | [Igen](quickstart-create-data-factory-powershell.md) | [Igen](./v1/data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [Igen](quickstart-create-data-factory-dot-net.md) | [Igen](./v1/data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST API** | [Igen](quickstart-create-data-factory-rest-api.md) | [Igen](./v1/data-factory-build-your-first-pipeline-using-rest-api.md) |
 | **Python SDK** | [Igen](quickstart-create-data-factory-python.md) | Nem |
-| **Resource Manager-sablon** | [Igen](quickstart-create-data-factory-resource-manager-template.md) | [Igen](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **Resource Manager-sablon** | [Igen](quickstart-create-data-factory-resource-manager-template.md) | [Igen](./v1/data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>Szerepkörök és engedélyek
 
@@ -147,5 +147,5 @@ Az 1. verziójú Data Factory közreműködői szerepkörével létrehozhatók �
 az aktuális verzióban a data factorykat az [Azure Monitor](monitor-using-azure-monitor.md) segítségével is monitorozhatja. Az új PowerShell-parancsmagok támogatják az [integrációs modulok](monitor-integration-runtime.md) monitorozását. A V1 és a V2 is támogatja a vizuális monitorozást egy monitorozási alkalmazáson keresztül, amely az Azure Portalról indítható el.
 
 
-## <a name="next-steps"></a>További lépések
-A következő rövid útmutatók részletes utasításait követve megtudhatja, hogyan hozhat létre egy adatelőállítót: [PowerShell](quickstart-create-data-factory-powershell.md), [.net](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 
+## <a name="next-steps"></a>Következő lépések
+A következő rövid útmutatók részletes utasításait követve megtudhatja, hogyan hozhat létre egy adatelőállítót: [PowerShell](quickstart-create-data-factory-powershell.md), [.net](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md).

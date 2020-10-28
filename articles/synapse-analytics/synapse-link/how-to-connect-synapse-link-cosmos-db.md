@@ -1,6 +1,6 @@
 ---
 title: Csatlakozás az Azure szinapszis hivatkozásához (előzetes verzió) Azure Cosmos DB
-description: Azure Cosmos DB csatlakoztatása egy szinapszis-munkaterülethez az Azure szinapszis hivatkozásával
+description: Megtudhatja, hogyan csatlakoztathat egy Azure Cosmos DB adatbázist egy Azure szinapszis-munkaterülethez az Azure szinapszis hivatkozásával.
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 50717c7e8a7b0f748df98c1896e1b7eb64cd7be3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3434953de3460d3eff066768474f03aa0e14165e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819355"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668590"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Csatlakozás az Azure szinapszis hivatkozásához (előzetes verzió) Azure Cosmos DB
 
@@ -24,50 +24,50 @@ Ez a cikk azt ismerteti, hogyan férhet hozzá egy Azure Cosmos DB-adatbázishoz
 
 Mielőtt a munkaterülethez csatlakoztatná egy Azure Cosmos DB adatbázist, a következőkre lesz szüksége:
 
+* Meglévő Azure Cosmos DB adatbázis, vagy hozzon létre egy új fiókot a gyors útmutató [: Azure Cosmos db-fiók kezelése](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)című témakörben leírtak szerint.
+* Meglévő Azure szinapszis-munkaterület, vagy hozzon létre egy új munkaterületet a gyors útmutató [: szinapszis-munkaterület létrehozása](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)című témakör lépéseit követve.
+
 > [!IMPORTANT]
-> A Azure Cosmos DB Azure szinapszis hivatkozása jelenleg támogatott olyan munkaterületek esetében, amelyeken nincs engedélyezve a felügyelt virtuális hálózat. 
+> A Azure Cosmos DB Azure szinapszis hivatkozása jelenleg támogatott olyan munkaterületek esetében, amelyeken nincs engedélyezve a felügyelt virtuális hálózat.
 
-* Meglévő Azure Cosmos DB adatbázis, vagy hozzon létre egy új [fiókot a rövid](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account) útmutató után
-* Meglévő szinapszis munkaterület, vagy hozzon létre egy új munkaterületet [a rövid](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) útmutató után 
+## <a name="enable-synapse-link-on-an-azure-cosmos-db-database-account"></a>Szinapszis-hivatkozás engedélyezése Azure Cosmos DB adatbázis-fiókon
 
-## <a name="enable-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB analitikus tároló engedélyezése
+Ha nagy léptékű elemzést szeretne Azure Cosmos DB a működési teljesítményének befolyásolása nélkül, javasoljuk, hogy a Azure Cosmos DB számára engedélyezze a szinapszis-hivatkozást. A szinapszis hivatkozása HTAP képességet biztosít egy tárolóhoz, és beépített támogatást nyújt az Azure Szinapszisban.
 
-Ha nagy léptékű elemzést szeretne Azure Cosmos DB a működési teljesítményének befolyásolása nélkül, javasoljuk, hogy engedélyezze a szinapszis-hivatkozást Azure Cosmos DBhoz. A szinapszis hivatkozása HTAP képességet biztosít egy tárolóhoz, és beépített támogatást nyújt az Azure Szinapszisban.
+## <a name="go-to-synapse-studio"></a>Ugrás a szinapszis Studióra
 
-## <a name="navigate-to-synapse-studio"></a>Navigáljon a szinapszis studióhoz
+Az Azure szinapszis munkaterületen válassza a **szinapszis Studio elindítása** lehetőséget. A szinapszis Studio kezdőlapján **válassza az** adatObject Explorer.
 
-A szinapszis munkaterületen válassza a **szinapszis Studio elindítása**lehetőséget. A szinapszis Studio kezdőlapján **válassza az adatelemet**, amely végigvezeti az **adatObject Explorer**.
+## <a name="connect-an-azure-cosmos-db-database-to-an-azure-synapse-workspace"></a>Azure Cosmos DB-adatbázis összekötése egy Azure-beli szinapszis-munkaterülettel
 
-## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Azure Cosmos DB-adatbázis összekötése egy szinapszis-munkaterülettel
+Azure Cosmos DB adatbázis csatlakoztatása társított szolgáltatásként történik. Egy Azure Cosmos DB társított szolgáltatással böngészhet és megtekintheti az adatApache Spark az Azure szinapszis Analytics vagy az SQL Azure Cosmos DBba való beolvasását és írását.
 
-Azure Cosmos DB adatbázis csatlakoztatása társított szolgáltatásként történik. Az Azure Cosmos DB társított szolgáltatás lehetővé teszi a felhasználóknak az adatok tallózását, olvasását és írását Apache Spark az Azure szinapszis Analytics vagy az SQL alkalmazásba Azure Cosmos DBba.
+Az adatok Object Explorer az alábbi lépéseket követve közvetlenül csatlakozhat egy Azure Cosmos DB-adatbázishoz:
 
-Az adatok Object Explorer a következő lépések végrehajtásával közvetlenül kapcsolódhat egy Azure Cosmos DB-adatbázishoz:
+1. Válassza ki az **+** ikont a közelében. **Data**
+1. Válassza **a Kapcsolódás külső adatforráshoz** lehetőséget.
+1. Válassza ki azt az API-t, amelyhez csatlakozni szeretne, például az **SQL API** -t vagy **a MongoDB API** -ját.
+1. Válassza a **Folytatás** lehetőséget.
+1. A társított szolgáltatás neveként adjon meg egy rövid nevet. A név megjelenik az adatObject Explorerban, és az Azure szinapszis-futtatókörnyezetek használják az adatbázishoz és a tárolóhoz való kapcsolódáshoz.
+1. Válassza ki a **Azure Cosmos db fiók nevét** és az **adatbázis nevét** .
+1. Választható Ha nincs megadva régió, a rendszer az Azure szinapszis futásidejű műveleteit arra a legközelebbi régió felé irányítja, ahol az analitikai tár engedélyezve van. Manuálisan is beállíthatja azt a régiót, amelyet a felhasználók használni tudnak a Azure Cosmos DB analitikus tároló eléréséhez. Válassza a **további kapcsolatok tulajdonságai** lehetőséget, majd válassza az **új** lehetőséget. A **tulajdonságnév** területen adja meg a **PreferredRegions** nevet. Állítsa be az **értéket** a kívánt régióra, például **WestUS2** . (A szavak és a szám között nincsenek szóközök.)
+1. Kattintson a **Létrehozás** gombra.
 
-1. Válassza ki ***+*** az ikont az adatközpont közelében
-2. **Külső adatkapcsolat** kiválasztása
-3. Válassza ki azt az API-t, amelyhez csatlakozni szeretne: SQL API vagy API a MongoDB-hez
-4. Válassza a ***Folytatás*** elemet
-5. Nevezze el a társított szolgáltatást. A név megjelenik a Object Explorerban, és a szinapszis futtatási idejének használatával csatlakozik az adatbázishoz és a tárolóhoz. A felhasználóbarát név használatát javasoljuk.
-6. Válassza ki a **Azure Cosmos db fiók nevét** és az **adatbázis nevét**
-7. Választható Ha nincs megadva régió, a szinapszis futásidejű műveletei a legközelebbi régió felé irányítva lesznek, ahol az analitikai tároló engedélyezve van. Manuálisan is beállíthatja, hogy mely régióhoz szeretné elérni a felhasználókat Azure Cosmos DB analitikus tárolóban. Válassza a **további kapcsolatok tulajdonságai** lehetőséget, majd az **új**elemet. A **tulajdonságnév**területen írjon ***PreferredRegions*** , és állítsa be a kívánt régió **értékét** (például: WestUS2, nincs szóköz a szavak és a számok között)
-8. Kattintson a ***Létrehozás*** elemre.
+Azure Cosmos DB adatbázisok a **Azure Cosmos db** szakasz **csatolt** lapján jelennek meg. A Azure Cosmos DB lehetővé teszi, hogy a HTAP-kompatibilis tárolót egy csak OLTP tárolóból megkülönböztesse a következő ikonok használatával:
 
-Azure Cosmos DB adatbázisok láthatók a Azure Cosmos DB szakaszban **csatolt** lapon. A Azure Cosmos DB lehetővé teszi, hogy egy HTAP-kompatibilis tárolót a OLTP csak a következő ikonokkal lehessen megkülönböztetni:
+**OLTP-tároló** :
 
-**OLTP csak tároló**:
+![A OLTP tároló ikonját megjelenítő vizualizáció.](../media/quickstart-connect-synapse-link-cosmosdb/oltp-container.png)
 
-![OLTP-tároló](../media/quickstart-connect-synapse-link-cosmosdb/oltp-container.png)
+**HTAP-kompatibilis tároló** :
 
-**HTAP engedélyezett tárolója**:
-
-![HTAP-tároló](../media/quickstart-connect-synapse-link-cosmosdb/htap-container.png)
+![A HTAP tároló ikonját megjelenítő vizualizáció.](../media/quickstart-connect-synapse-link-cosmosdb/htap-container.png)
 
 ## <a name="quickly-interact-with-code-generated-actions"></a>Gyors interakció a kód által generált műveletekkel
 
-Ha a jobb gombbal rákattint egy tárolóra, olyan kézmozdulatok listája látható, amelyek elindítják a Spark vagy az SQL futási idejét. A tárolóba való írás a Azure Cosmos DB tranzakciós tárolójával történik, és a rendszer a kérelmek egységeit fogja felhasználni.  
+Ha a jobb gombbal rákattint egy tárolóra, megtekintheti a Spark-vagy SQL-futtatókörnyezetet kiváltó kézmozdulatok listáját. A tárolóba való írás a Azure Cosmos DB tranzakciós tárolójával történik, és a rendszer a kérelmek egységeit fogja felhasználni.  
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedjen meg a szinapszis és a Azure Cosmos DB között támogatottak között](./concept-synapse-link-cosmos-db-support.md)
+* [Ismerje meg, mi támogatott az Azure szinapszis és a Azure Cosmos DB között?](./concept-synapse-link-cosmos-db-support.md)
 * [Ismerje meg, hogyan kérdezheti le az analitikai áruházat a Spark használatával](./how-to-query-analytical-store-spark.md)

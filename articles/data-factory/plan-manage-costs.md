@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: ca76563475dfbf8d35595c1de3cdee37f80e3ce1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83691263"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638006"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>A Azure Data Factory költségeinek megtervezése és kezelése
 
@@ -56,15 +56,15 @@ A havi számla becsléséhez mostantól a 30 tevékenység-és a 380-es DIU is c
 
 ## <a name="use-budgets-and-cost-alerts"></a>Költségvetések és költségriasztások használata
 
-A költségek kezeléséhez [költségvetéseket](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets) és riasztásokat hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról.  A riasztások a költségvetés és a költségek küszöbértékei alapján működnek.  Amikor létrehoz egy költségvetést, megteheti az előfizetés szintjén vagy alacsonyabb részletességgel, ha további szűrőket ad hozzá, például az erőforrás-azonosítót és a mérőszám nevét.  Azonban nem hozhat létre költségvetést az egyes folyamatokhoz a gyáron belül.
+A költségek kezeléséhez [költségvetéseket](../cost-management-billing/costs/tutorial-acm-create-budgets.md) és riasztásokat hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról.  A riasztások a költségvetés és a költségek küszöbértékei alapján működnek.  Amikor létrehoz egy költségvetést, megteheti az előfizetés szintjén vagy alacsonyabb részletességgel, ha további szűrőket ad hozzá, például az erőforrás-azonosítót és a mérőszám nevét.  Azonban nem hozhat létre költségvetést az egyes folyamatokhoz a gyáron belül.
 
 ## <a name="monitor-costs-at-factory-level"></a>A költségek figyelése a gyári szinten
 
-A Azure Data Factory használatának megkezdése után megtekintheti a Azure Portal [Cost Analysis](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis) ablaktáblájában felmerülő költségeket.
+A Azure Data Factory használatának megkezdése után megtekintheti a Azure Portal [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md) ablaktáblájában felmerülő költségeket.
 
-1. A [Cost Analysis](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis)megtekintéséhez nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **nyitott Cost-elemzés**lehetőséget.
+1. A [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md)megtekintéséhez nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **nyitott Cost-elemzés** lehetőséget.
 2. Az alapértelmezett nézet az aktuális hónap összesített költségeit jeleníti meg.  Átválthat egy másik időtartományra, és más részletességgel is, például naponta vagy havonta.
-3. Egy szolgáltatás, például a Azure Data Factory költségeinek szűkítéséhez válassza a **szűrő hozzáadása** , majd a **szolgáltatásnév**lehetőséget.  Ezután válassza ki az Azure-beli **adatok Factory v2** elemet a listából.
+3. Egy szolgáltatás, például a Azure Data Factory költségeinek szűkítéséhez válassza a **szűrő hozzáadása** , majd a **szolgáltatásnév** lehetőséget.  Ezután válassza ki az Azure-beli **adatok Factory v2** elemet a listából.
 4. További szűrőket is hozzáadhat, amelyekkel elemezheti az adott gyári példány költségeit és az adott ADF-fogyasztásmérő részletességét.
 
    ![Költségelemzés](media/plan-manage-costs/cost-analysis.png)
@@ -81,7 +81,7 @@ Ha a folyamat neve melletti **fogyasztás** gombra kattint, megjelenik egy előu
 
 ![A folyamat felhasználásának részletei](media/plan-manage-costs/pipeline-consumption-details.png)
 
-A folyamat-futtatási használat nézet az egyes ADF-mérőszámok mennyiségét mutatja az adott folyamat futtatásához, de nem jeleníti meg a tényleges díjat, mert a számlán felhasznált összeg a kapott Azure-fiók típusától és a használt pénznem típusától függ.  A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data).
+A folyamat-futtatási használat nézet az egyes ADF-mérőszámok mennyiségét mutatja az adott folyamat futtatásához, de nem jeleníti meg a tényleges díjat, mert a számlán felhasznált összeg a kapott Azure-fiók típusától és a használt pénznem típusától függ.  A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](../cost-management-billing/costs/understand-cost-mgt-data.md).
 
 ## <a name="monitor-consumption-at-activity-run-level"></a>A felhasználás figyelése tevékenység-futtatási szinten
 Miután megértette az összesített felhasználást a folyamat futási szintjén, vannak olyan forgatókönyvek, ahol további részletezést és azonosítást kell végeznie, amely a folyamaton belül a legdrágább tevékenység.
@@ -96,10 +96,10 @@ Itt látható egy példa a leképezési adatfolyam tevékenységének futtatás�
 
 ![Adatfolyam kimenete](media/plan-manage-costs/dataflow-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekből többet tudhat meg a díjszabás működéséről Azure Data Factoryban:
 
 - [Azure Data Factory díjszabási oldala](https://azure.microsoft.com/pricing/details/data-factory/ssis/)
-- [A Azure Data Factory ismertetése példákkal](https://docs.microsoft.com/azure/data-factory/pricing-concepts)
+- [A Azure Data Factory ismertetése példákkal](./pricing-concepts.md)
 - [Azure Data Factory árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/?service=data-factory)

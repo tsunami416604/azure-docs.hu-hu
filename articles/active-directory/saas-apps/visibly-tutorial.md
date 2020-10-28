@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: jeedes
-ms.openlocfilehash: ac2de40b50bf66d5664ddd904b2f963fb18bc838
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: de41e1ef021ea3da2b3a5bef4268469aab448a21
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519323"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637938"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visibly"></a>Oktatóanyag: Azure Active Directory az egyszeri bejelentkezés (SSO) integrációja a látható módon
 
@@ -49,15 +49,15 @@ Az Azure AD-ba való integráció konfigurálásához a katalógusból látható
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **látható** kifejezést.
 1. Válassza az eredmények panel **látható** elemét, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-visibly"></a>Azure AD SSO konfigurálása és tesztelése láthatóan
 
-Konfigurálja és tesztelje az Azure AD SSO-t, és láthatóan használja a **B. Simon**nevű tesztet. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között.
+Konfigurálja és tesztelje az Azure AD SSO-t, és láthatóan használja a **B. Simon** nevű tesztet. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között.
 
 Az Azure AD SSO konfigurálásához és a látható módon történő teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -72,8 +72,8 @@ Az Azure AD SSO konfigurálásához és a látható módon történő tesztelés
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **látható** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **látható** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -91,7 +91,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a látható alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name |  Forrás attribútum|
+    | Name (Név) |  Forrás attribútum|
     | ----------- | --------- |
     | city | User. City |
     | lastName | felhasználó. vezetéknév |
@@ -110,25 +110,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentkezést használja, hogy a hozzáférését láthatóan biztosítsa.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **látható**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **látható** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -142,19 +142,19 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 
 1. Navigáljon a **Beállítások** lehetőségre a navigációs menüből.
 
-    ![Konfigurációja](./media/visibly-tutorial/settings.png)
+    ![A képernyőfelvételen a kiválasztott beállítások lehetőség látható.](./media/visibly-tutorial/settings.png)
 
 1. Kattintson a beállításokban található **integrációk** elemre.
 
-    ![Konfigurációja](./media/visibly-tutorial/integrations.png)
+    ![A képernyőfelvételen a beállítások menüből kiválasztott integrációk láthatók.](./media/visibly-tutorial/integrations.png)
 
-1. Az **integrációk**területen válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **integrációk** területen válassza az **egyszeri bejelentkezés** lehetőséget.
 
-    ![Konfigurációja](./media/visibly-tutorial/sso.png)
+    ![Képernyőfelvétel: az integrációs szolgáltatásból kiválasztott S S S](./media/visibly-tutorial/sso.png)
 
 1. Hajtsa végre a következő lépéseket a következő lapon.
 
-    ![Konfigurációja](./media/visibly-tutorial/configuration.png)
+    ![Képernyőfelvétel: S S O integrációs oldal, ahol megadhatja a leírt értékeket.](./media/visibly-tutorial/configuration.png)
 
     a. Az **entitás-azonosító** szövegmezőbe illessze be azt az **entitás-azonosító** értéket, amelyet a Azure Portal másolt.
 
@@ -162,7 +162,7 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 
     c. Az **egyszeri bejelentkezés neve** szövegmezőben adjon meg egy érvényes nevet.
 
-    d. Nyissa meg a letöltött **tanúsítványt (Base64)** a Azure Portal a Jegyzettömbben, és illessze be a tartalmat a **tanúsítvány** szövegmezőbe, vagy a tanúsítvány **feltöltése**lehetőség kiválasztásával feltöltheti a **tanúsítványt** is.
+    d. Nyissa meg a letöltött **tanúsítványt (Base64)** a Azure Portal a Jegyzettömbben, és illessze be a tartalmat a **tanúsítvány** szövegmezőbe, vagy a tanúsítvány **feltöltése** lehetőség kiválasztásával feltöltheti a **tanúsítványt** is.
 
     e. Kattintson a **Mentés** gombra.
 
