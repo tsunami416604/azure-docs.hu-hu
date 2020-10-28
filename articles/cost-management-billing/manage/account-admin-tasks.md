@@ -7,14 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.custom: contentperfq2
+ms.openlocfilehash: c9f344ec6eae40db2c76f3712df6f1f9d8cead37
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447704"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668869"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Fiókadminisztrátori feladatok az Azure Portalon
 
@@ -27,7 +28,7 @@ Ezen feladatok elvégzéséhez fiókadminisztrátornak kell lennie.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Navigáljon az előfizetés fizetési módjaihoz
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
+1. Jelentkezzen be az Azure Portalra fiókadminisztrátorként.
 
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -58,7 +59,7 @@ Az aktív fizetési mód módosításához hozzáadhat egy új hitelkártyát, v
 
     ![A hitelkártya hozzáadása űrlapot megjelenítő képernyőkép.](./media/account-admin-tasks/subscription-add-payment-method-x.png)
 
-1. Ha ezt a kártyát szeretné aktív fizetési módként beállítani, jelölje be az **Ez legyen az aktív fizetési mód** beállítás melletti jelölőnégyzetet az űrlap felett. Ez a kártya lesz innentől az aktív fizetési eszköz az összes olyan előfizetés esetben, amely a kiválasztott előfizetéssel azonos kártyát használ.
+1. Ha ezt a kártyát szeretné aktív fizetési módként beállítani, jelölje be az  **Ez legyen az aktív fizetési mód**  beállítás melletti jelölőnégyzetet az űrlap felett. Ez a kártya lesz innentől az aktív fizetési eszköz az összes olyan előfizetés esetben, amely a kiválasztott előfizetéssel azonos kártyát használ.
 
     ![Képernyőkép a kártyát aktív fizetési móddá tevő jelölőnégyzettel.](./media/account-admin-tasks/subscription-make-active-payment-method-x.png)
 
@@ -115,9 +116,9 @@ Ha szerkeszteni szeretné a számlás fizetési mód címét, kattintson az elő
 
 Az Azure-költségkerettel elkerülheti a kreditek mennyiségét meghaladó kiadásokat. A költségkeretet bármikor eltávolíthatja mindaddig, amíg az Azure-előfizetéséhez érvényes fizetési mód van társítva. A több hónapnyi kreditet tartalmazó előfizetési típusok, például a Visual Studio Enterprise és Visual Studio Professional esetében a következő számlázási időszak elején újra engedélyezheti a költségkeretet.
 
-A költségkeret nem érhető el hűségszerződéses csomagokat és használatalapú fizetéses csomagokat tartalmazó előfizetésekhez. Tekintse meg [az Azure-előfizetések típusait és a költségkeret elérhetőségét](https://azure.microsoft.com/support/legal/offer-details/) ismertető cikket.
+A költségkeret nem érhető el hűségszerződéses csomagokat és használatalapú fizetéses csomagokat tartalmazó előfizetésekhez.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
+1. Jelentkezzen be az Azure Portalra fiókadminisztrátorként.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/account-admin-tasks/search-bar.png)
@@ -145,7 +146,7 @@ A költségkeret nem érhető el hűségszerződéses csomagokat és használata
 
 Ha Azure in Open licencelési előfizetéssel rendelkezik, az Azure Portalon krediteket adhat hozzá az előfizetéshez egy termékkulcs beváltásával vagy a kreditek hitelkártyával való megvásárlásával.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
+1. Jelentkezzen be az Azure Portalra fiókadminisztrátorként.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/account-admin-tasks/search-bar.png)

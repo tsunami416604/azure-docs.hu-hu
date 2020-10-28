@@ -3,18 +3,18 @@ title: Rövid útmutató – Az Azure-költségek feltérképezése költségele
 description: Ez a rövid útmutató bemutatja, hogyan vizsgálhatja meg és elemezheti vállalata Azure-költségeit a Költségelemzés szolgáltatás használatával.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 10/26/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: seodec18
-ms.openlocfilehash: 62651f611654fa601752308ac2fa7f4c388297d6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.custom: contentperfq2
+ms.openlocfilehash: 31a95d8c02ee540fe6b52088159f04535c39ea93
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132839"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676844"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -42,7 +42,7 @@ További információért az Azure Cost Management adataihoz való hozzáférés
 
 ## <a name="review-costs-in-cost-analysis"></a>Költségek áttekintése a Költségelemzés használatával
 
-A költségek a költségelemzésben való áttekintéséhez nyissa meg a hatókört az Azure Portalon, majd válassza ki a **Költségelemzés** lehetőséget a menüben. Például lépjen az **Előfizetések** pontra, válasszon ki egy előfizetést a listában, majd válassza a **Költségelemzés** menüpontot. A **Hatókör** elemmel másik hatókörre válthat a költségelemzésben. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
+A költségek a költségelemzésben való áttekintéséhez nyissa meg a hatókört az Azure Portalon, majd válassza ki a **Költségelemzés** lehetőséget a menüben. Például lépjen az **Előfizetések** pontra, válasszon ki egy előfizetést a listában, majd válassza a **Költségelemzés** menüpontot. A **Hatókör** elemmel másik hatókörre válthat a költségelemzésben.
 
 A választott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a költségkezelés során. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett egy magasabb szintű hatókört választ ki, amely alá több alacsonyabb szintű hatókör is tartozik, és szűrő alkalmazásával keresi meg a kívánt beágyazott hatóköröket. Ezt a megközelítést azért fontos megérteni, mert nem biztos, hogy minden személy rendelkezik hozzáféréssel egyetlen szülőhatókörhöz, amely több beágyazott hatókört is magába foglal.
 
@@ -52,15 +52,15 @@ Ha többet szeretne megtudni a költségelemzésről, tekintse meg [a Cost Manag
 
 A kezdő költségelemzési nézet a következő területeket foglalja magába.
 
-**Halmozott költség nézet**: A költségelemzés előre definiált nézete. Minden nézet tartalmaz dátumtartományra, részletességre, csoportosítási szempontra és szűrésre vonatkozó beállításokat. Az alapértelmezett nézet az aktuális számlázási időszakra vonatkozó halmozott költségeket mutatja, de átválthat a többi beépített nézetre. További információ: [Költségnézetek testreszabása](#customize-cost-views).
+**Halmozott költség nézet** : A költségelemzés előre definiált nézete. Minden nézet tartalmaz dátumtartományra, részletességre, csoportosítási szempontra és szűrésre vonatkozó beállításokat. Az alapértelmezett nézet az aktuális számlázási időszakra vonatkozó halmozott költségeket mutatja, de átválthat a többi beépített nézetre.
 
-**Tényleges költség**: Az aktuális hónap összes keletkező és a számlán megjelenő használati és vásárlási költségét mutatja.
+**Tényleges költség** : Az aktuális hónap összes keletkező és a számlán megjelenő használati és vásárlási költségét mutatja.
 
-**Előrejelzés**: A választott időszak összes előrevetített költségét jeleníti meg.
+**Előrejelzés** : A választott időszak összes előrevetített költségét jeleníti meg.
 
-**Költségkeret**: A kijelölt hatókör tervezett költségkeretét jeleníti meg, amennyiben az elérhető.
+**Költségkeret** : A kijelölt hatókör tervezett költségkeretét jeleníti meg, amennyiben az elérhető.
 
-**Halmozott részletesség**: Megjeleníti az összes összesített napi kiadást a számlázási időszak kezdetétől számítva. Miután számlázási fiókjához vagy előfizetéséhez [létrehozta költségvetését](tutorial-acm-create-budgets.md), itt gyorsan, költségkeretéhez viszonyítottan áttekintheti kiadási trendjeit. A kurzort egy adott dátum felé helyezve megtekintheti az adott nap halmozott költségeit.
+**Halmozott részletesség** : Megjeleníti az összes összesített napi kiadást a számlázási időszak kezdetétől számítva. Miután számlázási fiókjához vagy előfizetéséhez létrehozta költségvetését, itt gyorsan, költségkeretéhez viszonyítottan áttekintheti kiadási trendjeit. A kurzort egy adott dátum felé helyezve megtekintheti az adott nap halmozott költségeit.
 
 **Kimutatásdiagramok (fánkdiagramok)** : Dinamikus kimutatásokat tesznek lehetővé azzal, hogy a teljes költséget alapvető jellemzők alapján bontják le. Az aktuális hónap költségeit jelenítik meg a legnagyobbaktól a legkisebbekig. A kimutatásdiagramokat bármikor módosíthatja másik kimutatás kiválasztásával. A költségek alapértelmezetten a következő kategóriákba vannak sorolva: szolgáltatás (fogyasztásmérő kategóriája), hely (régió), valamint gyermekhatókör. Például a regisztrációs fiókok a számlázási fiókok alatt, az erőforráscsoportok az előfizetések alatt, az erőforrások pedig az erőforráscsoportok alatt jelennek meg.
 
@@ -87,7 +87,7 @@ Költségek erőforrások szerint | Eddig a folyó hónapban melyik erőforráso
 
 Azonban sok esetben ennél mélyebb elemzésre is szükség lehet. A testreszabást az oldal tetején a dátum kiválasztásánál kezdhetjük.
 
-Alapértelmezetten a költségelemzés az aktuális hónap adatait jeleníti meg. A dátumválasztóval gyorsan válthat néhány általános dátumtartomány között. Ilyen például az elmúlt hét nap, a múlt hónap, az aktuális év vagy egy egyéni dátumtartomány. A használatalapú előfizetéseknél a számlázási időszakon alapuló, a naptári hónaptól független dátumtartományok is elérhetők, például az aktuális számlázási időszak vagy az utolsó számla. A menü tetején az **<ELŐZŐ** és a **KÖVETKEZŐ>** hivatkozásokkal léphet az előző vagy a következő időszakra. Például az **<ELŐZŐ** hivatkozásra kattintva az **előző 7 nap** helyett a **8–14 nappal ezelőtti**, majd a **15–21 nappal ezelőtti** tartomány jelenik meg.
+Alapértelmezetten a költségelemzés az aktuális hónap adatait jeleníti meg. A dátumválasztóval gyorsan válthat néhány általános dátumtartomány között. Ilyen például az elmúlt hét nap, a múlt hónap, az aktuális év vagy egy egyéni dátumtartomány. A használatalapú előfizetéseknél a számlázási időszakon alapuló, a naptári hónaptól független dátumtartományok is elérhetők, például az aktuális számlázási időszak vagy az utolsó számla. A menü tetején az **<ELŐZŐ** és a **KÖVETKEZŐ>** hivatkozásokkal léphet az előző vagy a következő időszakra. Például az **<ELŐZŐ** hivatkozásra kattintva az **előző 7 nap** helyett a **8–14 nappal ezelőtti** , majd a **15–21 nappal ezelőtti** tartomány jelenik meg.
 
 ![Dátumválasztó az erre a hónapra vonatkozó kiválasztást bemutató példával](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -108,9 +108,9 @@ Ha kikapcsolja a kiadások előrejelzését, a jövőbeli dátumok esetében nem
 
 Általánosságban elmondható, hogy a felhasznált erőforrásokra vonatkozó adatok vagy értesítések 8–12 órán belül jelennek meg.
 
-**Csoportosítást** végezhet általános tulajdonságok alapján a költségek lebontásához és a legfontosabb közreműködők azonosításához. Az erőforráscímkék szerinti csoportosításhoz például válassza ki azt a címkekulcsot, amely alapján csoportosítani szeretne. A költségek az egyes címkeértékek szerint vannak lebontva egy külön szegmenssel az olyan erőforrások számára, amelyeken nincs alkalmazva az adott címke.  A csoportosítási és szűrési lehetőségekkel kapcsolatban a [csoportosítási és szűrési lehetőségeket](./group-filter.md) ismertető szakaszban talál további információt.
+**Csoportosítást** végezhet általános tulajdonságok alapján a költségek lebontásához és a legfontosabb közreműködők azonosításához. Az erőforráscímkék szerinti csoportosításhoz például válassza ki azt a címkekulcsot, amely alapján csoportosítani szeretne. A költségek az egyes címkeértékek szerint vannak lebontva egy külön szegmenssel az olyan erőforrások számára, amelyeken nincs alkalmazva az adott címke.
 
-A legtöbb [Azure-erőforrás támogatja a címkézést](../../azure-resource-manager/management/tag-support.md). Ugyanakkor néhány címke nem érhető el a Költségkezelés és számlázás területen. Továbbá az erőforráscsoport-címkék sem támogatottak. A címkék támogatása a címke erőforráson való alkalmazása *utáni* jelentett használatra vonatkozik. A címkék nem jelennek meg visszamenőlegesen a költségösszesítések esetében.
+A legtöbb Azure-erőforrás támogatja a címkézést. Ugyanakkor néhány címke nem érhető el a Költségkezelés és számlázás területen. Továbbá az erőforráscsoport-címkék sem támogatottak. A címkék támogatása a címke erőforráson való alkalmazása *utáni* jelentett használatra vonatkozik. A címkék nem jelennek meg visszamenőlegesen a költségösszesítések esetében.
 
 További információért a költségadatok láthatóságának Azure-címkeszabályzat használatával történő javításáról tekintse meg a [Címkeszabályzatok áttekintése az Azure Cost Managementtel](https://www.youtube.com/watch?v=nHQYcYGKuyw) című videót.
 
@@ -118,7 +118,7 @@ További információért a költségadatok láthatóságának Azure-címkeszab�
 
 ![Csoportosított napi halmozott nézet az Azure-szolgáltatások múlt hónapi költségeivel](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Alapértelmezés szerint a költségelemzés az összes keletkező és számlán megjelenő használati és vásárlási költséget, más néven a **Tényleges költséget** mutatja. A tényleges költség ideális arra, hogy egyeztetni tudja a számlát. A költségekben jelentkező kiugró vásárlások mindazonáltal aggodalmakra adhatnak okot, ha nem szeretne rendellenes kiadásokat vagy a költségekben jelentkező egyéb változásokat látni. A foglalásvásárlási költségek által okozott kiugró csúcsok kisimításához váltson **amortizált költségekre**.
+Alapértelmezés szerint a költségelemzés az összes keletkező és számlán megjelenő használati és vásárlási költséget, más néven a **Tényleges költséget** mutatja. A tényleges költség ideális arra, hogy egyeztetni tudja a számlát. A költségekben jelentkező kiugró vásárlások mindazonáltal aggodalmakra adhatnak okot, ha nem szeretne rendellenes kiadásokat vagy a költségekben jelentkező egyéb változásokat látni. A foglalásvásárlási költségek által okozott kiugró csúcsok kisimításához váltson **amortizált költségekre** .
 
 ![Váltson a tényleges és az amortizált költség között, hogy megtekinthesse a teljes időszakra leosztott, illetve a foglalást használó erőforrásokhoz rendelt foglalásvásárlásokat](./media/quick-acm-cost-analysis/metric-picker.png)
 
@@ -154,11 +154,9 @@ A költségelemzés rögzítéséhez kattintson a rögzítési ikonra a jobb fel
 
 A költségelemzésre mutató hivatkozás megosztásához válassza a panel tetején lévő **Megosztás** lehetőséget. Egy egyéni URL-cím fog megjelenni, amely megnyitja az adott hatókörre vonatkozó nézetet. Ha nincs hozzáférése a költséghez, az URL-cím használatakor a "hozzáférés megtagadva" üzenet jelenik meg.
 
-Az egyes támogatott hatókörök költségeihez való hozzáférés megadásával kapcsolatban tekintse meg [A hatókörök ismertetése és használata](understand-work-scopes.md) címe részt.
-
 ## <a name="download-usage-data"></a>Használati adatok letöltése
 
-Előfordulhat, hogy további elemzés céljából le kell töltenie az adatait, egyesíteni kell őket a saját adataival, vagy integrálnia kell őket a saját rendszereibe. A Cost Management több különböző lehetőséget kínál. Ha egy olyan alkalmi jellegű, részletes összegzésre van szüksége, mint amilyen a költségelemzésben is elérhető, hozza létre a szükséges nézetet. Ezt követően töltse le az **Exportálás**, majd az **Adatok letöltése CSV-fájlba** vagy az  **Adatok letöltése Excel-fájlba** lehetőség kiválasztásával. Az Excel-fájlba történő letöltés további információt nyújt a letöltés létrehozására használt nézetről, például a hatókörről, a lekérdezéskonfigurációról, a teljes összegről és a létrehozás dátumáról.
+Előfordulhat, hogy további elemzés céljából le kell töltenie az adatait, egyesíteni kell őket a saját adataival, vagy integrálnia kell őket a saját rendszereibe. A Cost Management több különböző lehetőséget kínál. Ha egy olyan alkalmi jellegű, részletes összegzésre van szüksége, mint amilyen a költségelemzésben is elérhető, hozza létre a szükséges nézetet. Ezt követően töltse le az **Exportálás** , majd az **Adatok letöltése CSV-fájlba** vagy az  **Adatok letöltése Excel-fájlba** lehetőség kiválasztásával. Az Excel-fájlba történő letöltés további információt nyújt a letöltés létrehozására használt nézetről, például a hatókörről, a lekérdezéskonfigurációról, a teljes összegről és a létrehozás dátumáról.
 
 Ha a teljes, nem összesített adatkészletre van szüksége, töltse le a számlázási fiókból. Ezután a portál bal oldali navigációs paneljén található szolgáltatáslistából válassza ki a **Költségkezelés + Számlázás** lehetőséget. Válassza ki a számlázási fiókját, ha van. Lépjen a **Felhasználás + díjak** oldalra, majd kattintson a kívánt számlázási időszak **Letöltés** ikonjára.
 

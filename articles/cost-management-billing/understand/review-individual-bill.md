@@ -7,14 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.custom: contentperfq2
+ms.openlocfilehash: c4a9a981017becd0d9343d9c287a4fe9341d7c43
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653281"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678135"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Oktatóanyag: Az egyéni Azure-előfizetéshez tartozó számla áttekintése
 
@@ -32,9 +33,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fizetős számlázási *Microsoft Online Services Program*-fiókkal kell rendelkeznie. A fiók létrehozása az Azure webhelyén keresztül, az Azure-regisztráció alkalmával történik. Ilyen eset, ha rendelkezik [használatalapú fizetést használó fiókkal](https://azure.microsoft.com/offers/ms-azr-0003p/) vagy [Visual Studio-előfizető](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+Fizetős számlázási *Microsoft Online Services Program* -fiókkal kell rendelkeznie. A fiók létrehozása az Azure webhelyén keresztül, az Azure-regisztráció alkalmával történik. Ilyen eset, ha rendelkezik használatalapú fizetést használó fiókkal vagy Visual Studio-előfizető.
 
-Az [ingyenes Azure-fiókokhoz](https://azure.microsoft.com/offers/ms-azr-0044p/) csak a havi kreditösszeg túllépése esetén készülnek számlák.
+Az ingyenes Azure-fiókokhoz csak a havi kreditösszeg túllépése esetén készülnek számlák.
 
 30 napnál több időnek kell eltelnie el az Azure-előfizetés életbe lépése óta. Az Azure a számlázási időszak végén küld Önnek számlát.
 
@@ -48,7 +49,7 @@ Az [ingyenes Azure-fiókokhoz](https://azure.microsoft.com/offers/ms-azr-0044p/)
 
 A használati adatok és a költségek összehasonlításának első lépése a számla és használati adatok fájljának letöltése. A részletes használatot tartalmazó CSV-fájl a számlázási időszak és a napi használat szerint jeleníti meg a díjakat. Ez nem tartalmazza az adóinformációkat. A fájlok letöltéséhez fiókadminisztrátornak kell lennie vagy Tulajdonos szerepkörrel kell rendelkeznie.
 
-Az Azure Portalon írja be az *előfizetések* szöveget a keresőmezőbe, majd kattintson az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) elemre.
+Az Azure Portalon írja be az *előfizetések* szöveget a keresőmezőbe, majd kattintson az **Előfizetések** elemre.
 
 [![Lépjen az előfizetések területére](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
@@ -69,7 +70,7 @@ Ha a **Nem érhető el** üzenet jelenik meg, számos oka lehet annak, hogy nem 
 - 30 napnál kevesebb telt el az Azure-előfizetés életbe lépése óta.
 - Az adott számlázási időszakhoz nem tartoznak használati adatok.
 - A számla még nem lett létrehozva. Várja meg a számlázási időszak végét.
-- Nem rendelkezik engedéllyel a számlák megtekintéséhez. Előfordulhat, hogy nem látja a régi számlákat, ha nem Ön a fiókadminisztrátor. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](../manage/manage-billing-access.md).
+- Nem rendelkezik engedéllyel a számlák megtekintéséhez. Előfordulhat, hogy nem látja a régi számlákat, ha nem Ön a fiókadminisztrátor.
 - Ha ingyenes próbaverziós előfizetéssel rendelkezik, vagy nem haladta meg az előfizetésében foglalt jóváírás havi keretét, csak abban az esetben fog számlát kapni, ha Microsoft-ügyfélszerződéssel rendelkezik.
 
 A következő lépés a díjtételek áttekintése. A számlája az adókat és a használati díjakat tartalmazza.
@@ -107,11 +108,9 @@ A használati adatokat tartalmazó CSV-fájlban szűrjön a *MeterName* értékr
 
 Az összegzett *Költség* értéknek pontosan meg kell egyeznie az egyedi erőforrás *használati díjai* esetében kiszámlázott költséggel.
 
-További információért lásd: [Az Azure-számlák ismertetése](understand-invoice.md) és [Az Azure részletes használatának ismertetése](understand-usage.md).
-
 ## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>A kiszámlázott díjtételek összehasonlítása a költségelemzésben szereplő használati adatokkal
 
-Az Azure Portalon való költségelemzés szintén segíthet a díjtételek ellenőrzésében. A kiszámlázott használat és díjtételek gyors áttekintéséhez válassza ki előfizetését az Azure Portal [Előfizetések oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Ezután kattintson a **Költségelemzés** elemre, majd a nézetlistában a **Számla részletei** elemre.
+Az Azure Portalon való költségelemzés szintén segíthet a díjtételek ellenőrzésében. A kiszámlázott használat és díjtételek gyors áttekintéséhez válassza ki előfizetését az Azure Portal Előfizetések oldalán. Ezután kattintson a **Költségelemzés** elemre, majd a nézetlistában a **Számla részletei** elemre.
 
 ![A Számla részletei lehetőség kiválasztását bemutató példa](./media/review-individual-bill/cost-analysis-select-invoice-details.png)
 
@@ -129,7 +128,7 @@ A költségelemzésben megjelenített költségeknek pontosan meg kell egyezniü
 
 A külső szolgáltatások vagy a piactér díjai olyan erőforrásokra vonatkoznak, amelyeket külső szoftverszállítók készítettek. Ezek az erőforrások az Azure Marketplace-ből érhetők el. A Barracuda-tűzfal például egy harmadik fél által kínált Azure Marketplace-erőforrás. A tűzfal és a hozzá tartozó mérőszámok összes díja külső szolgáltatási díjként jelenik meg.
 
-A külső szolgáltatási díjakat külön számlázzuk. Ezek a díjak nincsenek feltüntetve az Azure-számlán. További tudnivalókért lásd [az Azure külső szolgáltatásaival kapcsolatos díjak ismertetését](understand-azure-marketplace-charges.md).
+A külső szolgáltatási díjakat külön számlázzuk. Ezek a díjak nincsenek feltüntetve az Azure-számlán.
 
 ### <a name="resources-are-billed-by-usage-meters"></a>Az erőforrások számlázása a használat mérésére szolgáló eszközök alapján történik
 
@@ -158,13 +157,9 @@ A számla összegének kiszámításához használt mérőeszközök a használa
 
 <a name="payment"></a>
 
-Ha hitelkártyás fizetést állít be fizetési módként, a rendszer a számlázási időszak lejárta után 10 napon belül automatikusan felszámítja az összeget. A hitelkártya-kivonatban a költségsorban a következő szerepel: **MSFT Azure**.
+Ha hitelkártyás fizetést állít be fizetési módként, a rendszer a számlázási időszak lejárta után 10 napon belül automatikusan felszámítja az összeget. A hitelkártya-kivonatban a költségsorban a következő szerepel: **MSFT Azure** .
 
 A megterhelt hitelkártya megváltoztatásához tekintse meg a [hitelkártya az Azure-ban történő hozzáadását, frissítését vagy eltávolítását](../manage/change-credit-card.md) ismertető szakaszt.
-
-[Számlás fizetés](../manage/pay-by-invoice.md) esetén küldje az utalást a számla alján megadott helyre.
-
-Az utalás állapotának ellenőrzéséhez [hozzon létre egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="next-steps"></a>További lépések
 
