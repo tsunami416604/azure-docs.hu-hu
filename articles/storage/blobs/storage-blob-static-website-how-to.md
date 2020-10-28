@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2359c762c9ad653ee2eed294709ad7bf6b2a31c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289871"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671118"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -38,11 +38,11 @@ A statikus webhely üzemeltetése olyan szolgáltatás, amelyet engedélyeznie k
 
 4. Válassza az engedélyezve lehetőséget a statikus webhely-üzemeltetési **funkció** engedélyezéséhez a Storage-fiókhoz.
 
-5. Az **index dokumentum neve** mezőben adja meg az alapértelmezett index lapot (például: *index.html*). 
+5. Az **index dokumentum neve** mezőben adja meg az alapértelmezett index lapot (például: *index.html* ). 
 
    Az alapértelmezett index lap akkor jelenik meg, ha a felhasználó a statikus webhely gyökerére navigál.  
 
-6. A **hiba-dokumentum elérési útja** mezőben válasszon egy alapértelmezett hibaüzenetet (például: *404.html*). 
+6. A **hiba-dokumentum elérési útja** mezőben válasszon egy alapértelmezett hibaüzenetet (például: *404.html* ). 
 
    Az alapértelmezett hiba lap akkor jelenik meg, ha a felhasználó olyan oldalra próbál navigálni, amely nem szerepel a statikus webhelyén.
 
@@ -151,7 +151,7 @@ Ezek az utasítások bemutatják, hogyan tölthet fel fájlokat a Azure Portalba
    ![Tartalomtípusok keresése](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
    >[!NOTE]
-   > A Storage Explorer automatikusan beállítja ezt a tulajdonságot `text/html` a gyakran felismerhető bővítményekhez, például: `.html` . Bizonyos esetekben azonban ezt saját magának kell beállítania. Ha nem állítja be ezt a tulajdonságot `text/html` , a böngésző felszólítja a felhasználót, hogy a tartalom megjelenítése helyett letöltse a fájlt. A tulajdonság beállításához kattintson a jobb gombbal a fájlra, majd kattintson a **Tulajdonságok**parancsra.
+   > A Storage Explorer automatikusan beállítja ezt a tulajdonságot `text/html` a gyakran felismerhető bővítményekhez, például: `.html` . Bizonyos esetekben azonban ezt saját magának kell beállítania. Ha nem állítja be ezt a tulajdonságot `text/html` , a böngésző felszólítja a felhasználót, hogy a tartalom megjelenítése helyett letöltse a fájlt. A tulajdonság beállításához kattintson a jobb gombbal a fájlra, majd kattintson a **Tulajdonságok** parancsra.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -204,7 +204,7 @@ A webhely oldalait egy böngészőből tekintheti meg a webhely nyilvános URL-c
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Storage-fiók fiók áttekintése oldalán megjelenő ablaktáblán válassza a **statikus webhely**lehetőséget. A webhely URL-címe az **elsődleges végpont** mezőben jelenik meg.
+A Storage-fiók fiók áttekintése oldalán megjelenő ablaktáblán válassza a **statikus webhely** lehetőséget. A webhely URL-címe az **elsődleges végpont** mezőben jelenik meg.
 
 ![Azure Storage – statikus webhelyek mérőszámai metrika](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
@@ -249,7 +249,7 @@ A metrikák engedélyezése után a **$web** tárolóban található fájlokra v
    > [!NOTE]
    > A metrikák adatait a rendszer a különböző metrikák API-kkal összekapcsolva hozza létre. A portál csak az adott időkereten belül használt API-tagokat jeleníti meg, hogy csak az adatvisszaadó tagokra összpontosítsanak. Annak érdekében, hogy ki tudja választani a szükséges API-tagot, az első lépés az időkeret kibontása.
 
-2. Kattintson az időkeret gombra, válasszon ki egy időkeretet, majd kattintson az **alkalmaz**gombra.
+2. Kattintson az időkeret gombra, válasszon ki egy időkeretet, majd kattintson az **alkalmaz** gombra.
 
    ![Azure Storage – statikus webhelyek metrikáinak időtartománya](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
@@ -259,7 +259,7 @@ A metrikák engedélyezése után a **$web** tárolóban található fájlokra v
 
 4. Ezután válassza ki a **kimenő** forgalom metrikáját.
 
-   ![Azure Storage – statikus webhelyek mérőszámai metrika](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+   ![Képernyőkép, amely megjeleníti az Azure Storage statikus webhelyeinek kimenő metrikáját.](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
 5. Válassza ki az **összeg** elemet az *összesítési* választóból.
 

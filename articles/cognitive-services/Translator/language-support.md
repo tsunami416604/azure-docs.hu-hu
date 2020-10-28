@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282299"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669639"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -47,7 +47,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |kínai (egyszerűsített)|    `zh-Hans`|
 |kínai (hagyományos)|   `zh-Hant`       |
 |Horvát|  `hr`    |
-|Cseh| `cs`    |
+|cseh| `cs`    |
 |Dari|  `prs`   |
 |Dán|    `da`        |
 |Holland| `nl`|
@@ -62,10 +62,10 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Görög| `el`    |
 |gudzsaráti|  `gu`    |
 |Haiti kreol|    `ht`        |
-|Héber |`he`   |
+|héber |`he`   |
 |Hindi| `hi`    |
 |Hmong DAW| `mww`   |
-|Magyar| `hu`    |
+|magyar| `hu`    |
 |Izlandi| `is`    |
 |Indonéz|    `id`    |
 |Ír | `ga`|
@@ -75,7 +75,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Kazak|`kk`|
 |Klingon|   `tlh-Latn`  |
 |Klingon (plqaD)|   `tlh-Piqd`  |
-|Koreai |`ko`   |
+|koreai |`ko`   |
 |Kurd (Közép)  |`ku`   |
 |Kurd (északi) |`kmr`  |
 |Lett|   `lv`    |
@@ -86,11 +86,11 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Máltai|   `mt`    |
 |maori| `mi`  |
 |marathi| `mr`  |
-|Norvég| `nb`    |
+|norvég| `nb`    |
 |Odia|  `or`    |
 |Pasto|    `ps`    |
 |perzsa|   `fa`    |
-|Lengyel|    `pl`    |
+|lengyel|    `pl`    |
 |Portugál (Brazília)|   `pt-br` |
 |Portugál (Portugália)| `pt-pt` |
 |pandzsábi|`pa`|
@@ -102,15 +102,15 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Szerb (latin betűs)|   `sr-Latn`       |
 |Szlovák|    `sk`    |
 |Szlovén| `sl`    |
-|Spanyol|   `es`    |
+|spanyol|   `es`    |
 |szuahéli|   `sw`    |
-|Svéd|   `sv`    |
+|svéd|   `sv`    |
 |Tahitian|  `ty`    |
 |tamil| `ta`    |
 |telugu|    `te`    |
 |Thai|  `th`    |
 |Tongai|    `to`    |
-|Török|   `tr`        |
+|török|   `tr`        |
 |Ukrán| `uk`    |
 |urdu|  `ur`    |
 |Vietnámi|    `vi`    |
@@ -146,36 +146,35 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 |Görög| `el`    |
 |gudzsaráti|  `gu`    |
 |Haiti kreol|    `ht`        |
-|Héber |`he`   |
+|héber |`he`   |
 |Hindi| `hi`    |
-|Magyar| `hu`    |
+|magyar| `hu`    |
 |Izlandi| `is`    |
 |Indonéz|    `id`    |
 |Ír | `ga`|
 |Olasz|   `it`    |
 |Japán|  `ja`    |
 |Klingon|   `tlh-Latn`  |
-|Koreai |`ko`   |
+|koreai |`ko`   |
 |Kurd (Közép)  |`ku-Arab`  |
 |Lett|   `lv`    |
 |Litván|    `lt`    |
 |Maláj| `ms`        |
 |Máltai|   `mt`    |
-|Norvég| `nb`    |
+|norvég| `nb`    |
 |Pasto|    `ps`    |
 |perzsa|   `fa`    |
 |Lengyel|    `pl`    |
-|Portugál (Brazília)|   `pt-br` |
-|Portugál (Portugália)| `pt-pt` |
+|Portugál|    `pt`    |
 |Román|  `ro`    |
 |Orosz|   `ru`    |
 |Szerb (cirill betűs)|    `sr-Cyrl`|
 |Szerb (latin betűs)|   `sr-Latn`       |
 |Szlovák|    `sk`    |
 |Szlovén| `sl`    |
-|Spanyol|   `es`    |
+|spanyol|   `es`    |
 |szuahéli|   `sw`    |
-|Svéd|   `sv`    |
+|svéd|   `sv`    |
 |Tahitian|  `ty`    |
 |Thai|  `th`    |
 |Török|   `tr`        |
@@ -201,7 +200,7 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 | Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos) `Hant`| <--> | Latin betűs `Latn` |
 | Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos) `Hant`| <--> | kínai (egyszerűsített) `Hans` |
 | gudzsaráti | `gu`  | gudzsaráti `Gujr` | <--> | Latin betűs `Latn` |
-| Héber | `he` | héber `Hebr` | <--> | Latin betűs `Latn` |
+| héber | `he` | héber `Hebr` | <--> | Latin betűs `Latn` |
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latin betűs `Latn` |
 | Japán | `ja` | japán `Jpan` | <--> | Latin betűs `Latn` |
 | kannada | `kn` | kannada `Knda` | <--> | Latin betűs `Latn` |
@@ -240,32 +239,32 @@ Tekintse meg a [szótári keresési](reference/v3-0-dictionary-lookup.md) és a 
 | Német      | `de`          |
 | Görög      | `el`          |
 | Haiti kreol      | `ht`          |
-| Héber      | `he`          |
+| héber      | `he`          |
 | Hindi      | `hi`          |
 | Hmong DAW      | `mww`          |
-| Magyar      | `hu`          |
+| magyar      | `hu`          |
 | Izlandi    | `is`  |
 | Indonéz      | `id`          |
 | Olasz      | `it`          |
 | Japán      | `ja`          |
 | Klingon      | `tlh`          |
-| Koreai      | `ko`          |
+| koreai      | `ko`          |
 | Lett      | `lv`          |
 | Litván      | `lt`          |
 | Maláj      | `ms`          |
 | Máltai      | `mt`          |
-| Norvég      | `nb`          |
+| norvég      | `nb`          |
 | perzsa      | `fa`          |
-| Lengyel      | `pl`          |
+| lengyel      | `pl`          |
 | Portugál (Brazília)     | `pt-br`          |
 | Román      | `ro`          |
 | Orosz      | `ru`          |
 | Szerb (latin betűs)      | `sr-Latn`          |
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |
-| Spanyol      | `es`          |
+| spanyol      | `es`          |
 | szuahéli      | `sw`          |
-| Svéd      | `sv`          |
+| svéd      | `sv`          |
 | tamil      | `ta`          |
 | Thai      | `th`          |
 | Török      | `tr`          |
@@ -307,16 +306,16 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Német      | `de`          |
 | Görög      | `el`          |
 | gudzsaráti| `gu`    |
-| Héber      | `he`          |
+| héber      | `he`          |
 | Hindi      | `hi`          |
-| Magyar      | `hu`          |
+| magyar      | `hu`          |
 | Izlandi | `is` |
 | Indonéz|   `id`    |
 | Ír | `ga`  |
 | Olasz      | `it`          |
 | Japán      | `ja`          |
 |kannada|`kn`|
-| Koreai      | `ko`          |
+| koreai      | `ko`          |
 | Lett      | `lv`          |
 | Litván      | `lt`          |
 | Malgas| `mg`    |
@@ -324,9 +323,9 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 |Máltai|   `mt`    |
 | maori| `mi`  |
 | marathi| `mr`  |
-| Norvég      | `nb`          |
+| norvég      | `nb`          |
 | perzsa      | `fa`          |
-| Lengyel      | `pl`          |
+| lengyel      | `pl`          |
 | Portugál (Brazília) | `pt-br` |
 | pandzsábi|`pa`|
 | Román      | `ro`          |
@@ -335,19 +334,19 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Szerb (latin betűs)      | `sr-Latn`          |
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |
-| Spanyol      | `es`          |
+| spanyol      | `es`          |
 | szuahéli|  `sw`    |
-| Svéd      | `sv`          |
+| svéd      | `sv`          |
 |Tahitian|  `ty`    |
 | Thai      | `th`          |
 |Tongai|    `to`    |
-| Török      | `tr`          |
+| török      | `tr`          |
 | Ukrán      | `uk`          |
 | urdu| `ur`    |
 | Vietnámi      | `vi`          |
 | walesi | `cy` |
 
-## <a name="speech-translation"></a>Speech Translation
+## <a name="speech-translation"></a>Beszédfordítás
 A fordítás a fordító és a Cognitive Services Speech Service használatával érhető el. A [beszédfelismerési szolgáltatás dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/speech-service/) tájékozódhat a beszédfelismerés használatáról és az összes [elérhető nyelvi lehetőségről](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 ### <a name="speech-to-text"></a>Diktálás
@@ -366,15 +365,15 @@ A beszédet szöveggé alakíthatja, hogy a választott szöveg nyelvét leford�
 |Finn|
 |Francia|
 |Francia (Kanada)|
-|Német|
+|német|
 |gudzsaráti|
 |Hindi|
 |Olasz|
 |Japán|
 |Koreai|
 |marathi|
-|Norvég|
-|Lengyel|
+|norvég|
+|lengyel|
 |Portugál (Brazília)|
 |Portugál (Portugália)|
 |Orosz|
@@ -406,7 +405,7 @@ Szöveg konvertálása beszédre A szöveg és a beszéd használatával a ford�
 |Francia (Kanada)|
 |Német|
 |Görög|
-|Héber|
+|héber|
 |Hindi|
 |Magyar|
 |Indonéz|
@@ -414,8 +413,8 @@ Szöveg konvertálása beszédre A szöveg és a beszéd használatával a ford�
 |Japán|
 |Koreai|
 |Maláj|
-|Norvég|
-|Lengyel|
+|norvég|
+|lengyel|
 |Portugál (Brazília)|
 |Portugál (Portugália)|
 |Román|

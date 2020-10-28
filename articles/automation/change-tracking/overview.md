@@ -3,14 +3,14 @@ title: A Azure Automation Change Tracking és a leltár áttekintése
 description: Ez a cikk ismerteti a Change Tracking és a leltár szolgáltatást, amely segít azonosítani a szoftvereket és a Microsoft szolgáltatásbeli módosításokat a környezetben.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9654529723b5b69c15358be9e06db4f8cbed35e3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209824"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670742"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -48,7 +48,7 @@ A Change Tracking és a leltár nem támogatja, vagy a következő korlátozáso
 - Rekurzió a Windows beállításjegyzékének nyomon követéséhez
 - Hálózati fájlrendszerek
 - Különböző telepítési módszerek
-- *a Windowson tárolt **. exe** fájlok
+- *a Windowson tárolt *_. exe_* fájlok
 - A **Maximális fájlméret** oszlop és az értékek nem használhatók az aktuális implementációban.
 - Ha egy 30 perces gyűjtési ciklusban több mint 2500 fájlt próbál összegyűjteni, a Change Tracking és a leltározás teljesítménye csökkenhet.
 - Ha a hálózati forgalom magas, a rekordok módosítása akár hat órát is igénybe vehet.
@@ -77,13 +77,15 @@ Amikor hálózati biztonsági szabályokat hoz létre, vagy Azure Firewall konfi
 
 ## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
-Az alábbi módokon engedélyezheti a Change Tracking és a leltárt, és kiválaszthatja a felügyelni kívánt gépeket:
+A következő módokon engedélyezheti a Change Tracking és a leltárt:
 
-* [Egy Azure-beli virtuális gépről](enable-from-vm.md).
-* [Több Azure-beli virtuális gép tallózása](enable-from-portal.md).
-* [Egy Azure Automation-fiókból](enable-from-automation-account.md).
-* Az arc-kompatibilis kiszolgálók vagy a nem Azure-alapú gépek esetében telepítse a Log Analytics ügynököt az Azure arc-kompatibilis kiszolgálókról a virtuálisgép- [bővítmény](../../azure-arc/servers/manage-vm-extensions.md) használatával, majd [engedélyezze a munkaterületen lévő gépek](enable-from-automation-account.md#enable-machines-in-the-workspace) Change Tracking és leltározását.
-* [Automatizálási Runbook használatával](enable-from-runbook.md).
+- Egy vagy több Azure-beli és nem Azure-beli gép [automatizálási fiókjából](enable-from-automation-account.md) .
+
+- Manuálisan nem Azure-beli gépek esetén, beleértve az [Azure arc-kompatibilis kiszolgálókon](../../azure-arc/servers/overview.md)regisztrált gépeket vagy kiszolgálókat. A hibrid gépek esetében javasoljuk, hogy Log Analytics a Windows-ügynököt az [Azure arc-kompatibilis kiszolgálókhoz](../../azure-arc/servers/overview.md)csatlakoztassa, majd a Azure Policy használatával rendelje hozzá a [log Analytics Agent üzembe helyezését a *Linux* vagy a *Windows* Azure arc Machines](../../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjéhez. Ha azt tervezi, hogy a gépeket Azure Monitor for VMs használatával is figyeli, használja az [Enable Azure monitor for VMS](../../governance/policy/samples/built-in-initiatives.md#monitoring) Initiative parancsot.
+
+- Egyetlen Azure-beli virtuális géphez a Azure Portal [virtuális gép lapján](enable-from-vm.md) . Ez a forgatókönyv Linux és Windows rendszerű virtuális gépek esetében érhető el.
+
+- [Több Azure](enable-from-portal.md) -beli virtuális gép esetén válassza ki őket a Azure Portal Virtual Machines lapján.
 
 ## <a name="tracking-file-changes"></a>A fájlok változásainak követése
 
@@ -106,8 +108,8 @@ A Change Tracking és a leltár lehetővé teszi a Windows-beállításkulcsok v
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | A leállításkor futó parancsfájlokat figyeli.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Figyeli azokat a kulcsokat, amelyek betöltődik, mielőtt a felhasználó bejelentkezik a Windows-fiókba. A kulcs a 64 bites számítógépeken futó 32 bites alkalmazásokhoz használatos.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Az Alkalmazásbeállítások változásainak figyelése.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Azokat a helyi menüparancsokat figyeli, amelyek közvetlenül a Windows Intézőben csatlakoztathatók, és általában folyamatban van a **explorer.exe**használatával történő futtatás.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | A figyeli a közvetlenül a Windows Intézőben összekapcsoló Hook-kezelőket, és általában a **explorer.exe**használatával futtatja a folyamatot.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Azokat a helyi menüparancsokat figyeli, amelyek közvetlenül a Windows Intézőben csatlakoztathatók, és általában folyamatban van a **explorer.exe** használatával történő futtatás.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | A figyeli a közvetlenül a Windows Intézőben összekapcsoló Hook-kezelőket, és általában a **explorer.exe** használatával futtatja a folyamatot.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Figyelők az ikon átfedését kezelő regisztrációja.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Figyelők a 64 bites számítógépeken futó 32 bites alkalmazásokhoz tartozó ikon átfedési kezelői regisztrációja.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Figyelők az Internet Explorer új böngésző Helper Object beépülő moduljaihoz. Az aktuális oldal Document Object Model (DOM) elérésére és a Navigálás vezérlésére szolgál.
@@ -117,7 +119,7 @@ A Change Tracking és a leltár lehetővé teszi a Windows-beállításkulcsok v
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli. Hasonló a **system.ini** fájl [Drivers] szakaszához.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli a 64 bites számítógépeken futó 32 bites alkalmazásokhoz. Hasonló a **system.ini** fájl [Drivers] szakaszához.
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Az ismert vagy leggyakrabban használt rendszerdll-fájlok listáját figyeli. A figyelés megakadályozza, hogy a felhasználók a rendszer DLL-fájljainak eldobásával kihasználják a gyenge alkalmazásspecifikus címtárbeli engedélyeket.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | A Windows rendszerhez készült interaktív bejelentkezési támogatási modellben figyeli azon csomagok listáját, amelyekről értesítéseket kaphat a **winlogon.exeról **.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | A Windows rendszerhez készült interaktív bejelentkezési támogatási modellben figyeli azon csomagok listáját, amelyekről értesítéseket kaphat a **winlogon.exeról** .
 
 ## <a name="recursion-support"></a>Rekurzió támogatása
 
@@ -125,7 +127,7 @@ A Change Tracking és a leltár támogatja a rekurziót, ami lehetővé teszi he
 
 - Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
 
-- A helyettesítő karaktereket csak a fájl elérési útjának utolsó szegmensében használhatja, például **c:\mappa \\ fájl*** vagy **/etc/*. conf**.
+- A helyettesítő karaktereket csak a fájl elérési útjának utolsó szegmensében használhatja, például **c:\mappa \\ file** _ vagy _ */etc/* . conf * *.
 
 - Ha egy környezeti változónak érvénytelen az elérési útja, az érvényesítés sikeres lesz, de az elérési út meghiúsul.
 
@@ -160,7 +162,7 @@ A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfe
 
 ### <a name="microsoft-service-data"></a>Microsoft-szolgáltatásokra vonatkozó adatkezelés
 
-A Microsoft-szolgáltatások alapértelmezett gyűjtési gyakorisága 30 perc. A gyakoriságot a **beállítások szerkesztése**elemre a **Microsoft-szolgáltatások** lapon található csúszka használatával konfigurálhatja.
+A Microsoft-szolgáltatások alapértelmezett gyűjtési gyakorisága 30 perc. A gyakoriságot a **beállítások szerkesztése** elemre a **Microsoft-szolgáltatások** lapon található csúszka használatával konfigurálhatja.
 
 ![Microsoft-szolgáltatások csúszka](./media/overview/windowservices.png)
 

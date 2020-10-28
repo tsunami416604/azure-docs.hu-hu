@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: f1908e243b7cb1def2eac8a1d46d5f087a25f8c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 32ea1dd2141a8df1fb495af64848f87e9f152328
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936401"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669730"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a .NET Core (C#) használata egy adatbázis lekérdezéséhez Azure SQL Database vagy Azure SQL felügyelt példányban
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "88936401"
 Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és a C# kódot fogja használni az adatbázishoz való kapcsolódáshoz. Ezután futtasson egy Transact-SQL-utasítást az adatok lekérdezéséhez.
 
 > [!TIP]
-> A következő Microsoft Learn modul segítséget nyújt a [ASP.NET-alkalmazások fejlesztéséhez és konfigurálásához, amelyek egy adatbázist kérdeznek le Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+> A következő Microsoft Learn modul segítséget nyújt a [ASP.NET-alkalmazások fejlesztéséhez és konfigurálásához, amelyek egy adatbázist kérdeznek le Azure SQL Database](/learn/modules/develop-app-that-queries-azure-sql/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -57,7 +57,7 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
 
 A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok lekérése. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok**  vagy az **SQL-felügyelt példányok** lapra.
 
@@ -68,7 +68,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 ## <a name="get-adonet-connection-information-optional---sql-database-only"></a>ADO.NET-kapcsolatok adatainak beolvasása (nem kötelező – csak SQL Database)
 
-1. Navigáljon a **mySampleDatabase** lapra, és a **Beállítások**területen válassza a **kapcsolódási karakterláncok**lehetőséget.
+1. Navigáljon a **mySampleDatabase** lapra, és a **Beállítások** területen válassza a **kapcsolódási karakterláncok** lehetőséget.
 
 2. Tekintse át az **ADO.NET** teljes kapcsolati sztringjét.
 
@@ -84,7 +84,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
     dotnet new console
     ```
 
-    Ez a parancs új alkalmazás-projektfájlok létrehozását hozza létre, beleértve a kezdeti C#-programkódot (**program.cs**), egy XML-konfigurációs fájlt (**sqltest. csproj**) és a szükséges bináris fájlokat.
+    Ez a parancs új alkalmazás-projektfájlok létrehozását hozza létre, beleértve a kezdeti C#-programkódot ( **program.cs** ), egy XML-konfigurációs fájlt ( **sqltest. csproj** ) és a szükséges bináris fájlokat.
 
 2. Egy szövegszerkesztőben nyissa meg a **sqltest. csproj** fájlt, és illessze be a következő XML-kódot a `<Project>` címkék közé. Ez az XML `System.Data.SqlClient` függőségként adja meg.
 
@@ -96,7 +96,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 ## <a name="insert-code-to-query-the-database-in-azure-sql-database"></a>Kód beszúrása az adatbázis lekérdezéséhez Azure SQL Database
 
-1. Egy szövegszerkesztőben nyissa meg a **program.cs**.
+1. Egy szövegszerkesztőben nyissa meg a **program.cs** .
 
 2. Cserélje le a tartalmát a következő kódra, és adja hozzá a kiszolgáló, az adatbázis, a Felhasználónév és a jelszó megfelelő értékeit.
 
@@ -202,9 +202,9 @@ namespace sqltest
 
 3. Az alkalmazás ablakának bezárásához kattintson az **ENTER** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés a .NET Core használatába Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
 - Ismerkedjen meg [a .NET-keretrendszer és a Visual Studio használatával a Azure SQL Database vagy az Azure SQL felügyelt példányának összekapcsolásával és lekérdezésével](connect-query-dotnet-visual-studio.md).  
 - Megtudhatja, hogyan [tervezheti meg első adatbázisát a SSMS](design-first-database-tutorial.md) , vagy [megtervezheti az adatbázist, és csatlakozhat a C# és a ADO.net](design-first-database-csharp-tutorial.md)szolgáltatáshoz.
-- A .NET-ről a [.NET dokumentációjában](https://docs.microsoft.com/dotnet/) talál további információt.
+- A .NET-ről a [.NET dokumentációjában](/dotnet/) talál további információt.

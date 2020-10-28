@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886499"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672079"
 ---
 # <a name="data-discovery--classification"></a>Adatfelderítés és -besorolás
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ A legérzékenyebb adatok lehetnek például az üzleti, pénzügyi, egészség�
 - A szigorúan bizalmas adatokat tartalmazó adatbázisok biztonságának szabályozása és a hozzáférés megerősítése.
 
 > [!NOTE]
-> További információ a helyszíni SQL Serverról: SQL- [Adatfelderítés & besorolása](https://go.microsoft.com/fwlink/?linkid=866999).
+> További információ a helyszíni SQL Serverról: SQL- [Adatfelderítés & besorolása](/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Mi az az adatfelderítési & besorolás?
 
@@ -55,18 +55,18 @@ Ez a szakasz a következő lépéseit ismerteti:
 
 A besorolás két metaadat-attribútumot tartalmaz:
 
-- **Címkék**: a fő besorolási attribútumok, amelyek az oszlopban tárolt adatmennyiség érzékenységi szintjének meghatározására szolgálnak.  
-- **Adattípusok**: az oszlopban tárolt adatok típusával kapcsolatos részletesebb információkat biztosító attribútumok.
+- **Címkék** : a fő besorolási attribútumok, amelyek az oszlopban tárolt adatmennyiség érzékenységi szintjének meghatározására szolgálnak.  
+- **Adattípusok** : az oszlopban tárolt adatok típusával kapcsolatos részletesebb információkat biztosító attribútumok.
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>Besorolási besorolás meghatározása és testreszabása
 
 Az adatfelderítési & besorolása tartalmaz egy beépített érzékenységi címkét és egy beépített adattípust és felderítési logikát. Mostantól testre szabhatja ezt a taxonómiát, és kifejezetten a környezetre szabott rangsorolási és besorolási konstrukciókat definiálhat.
 
-A besorolási besorolást a teljes Azure-szervezet egyik központi helyén definiálhatja és testreszabhatja. Ez a hely [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), a biztonsági szabályzat részeként. Ezt a feladatot csak a szervezet legfelső szintű felügyeleti csoportjának rendszergazdai jogosultsággal rendelkező személye teheti meg.
+A besorolási besorolást a teljes Azure-szervezet egyik központi helyén definiálhatja és testreszabhatja. Ez a hely [Azure Security Center](../../security-center/security-center-introduction.md), a biztonsági szabályzat részeként. Ezt a feladatot csak a szervezet legfelső szintű felügyeleti csoportjának rendszergazdai jogosultsággal rendelkező személye teheti meg.
 
 Az Information Protection házirend-kezelésének részeként egyéni címkéket adhat meg, rangsorolhatja őket, és társíthatja őket egy kiválasztott adattípussal. Saját egyéni adattípusokat is hozzáadhat, és karakterlánc-mintázatokkal konfigurálhatja őket. A rendszer hozzáadja a mintákat a felderítési logikához az ilyen típusú adattípusok azonosításához az adatbázisokban.
 
-További információ: [az SQL Information Protection-szabályzat testreszabása Azure Security Center (előzetes verzió)](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+További információ: [az SQL Information Protection-szabályzat testreszabása Azure Security Center (előzetes verzió)](../../security-center/security-center-info-protection-policy.md).
 
 Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az egyes adatbázisok besorolását a testreszabott házirend használatával.
 
@@ -91,7 +91,7 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 
    - Egy adott oszlopra vonatkozó javaslat elfogadásához jelölje be a megfelelő sor bal oldali oszlopában található jelölőnégyzetet. Az összes javaslat elfogadottként való megjelöléséhez jelölje be a bal szélső jelölőnégyzetet a javaslatok táblázat fejlécében.
 
-   - A kiválasztott javaslatok alkalmazásához válassza a **kiválasztott javaslatok elfogadása**lehetőséget.
+   - A kiválasztott javaslatok alkalmazásához válassza a **kiválasztott javaslatok elfogadása** lehetőséget.
 
 1. Az oszlopokat manuálisan is osztályozhatja, Alternatív megoldásként vagy a javaslaton alapuló besorolás mellett:
 
@@ -105,7 +105,7 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Bizalmas adatokhoz való hozzáférés naplózása
 
-Az Information-Protection paradigma fontos aspektusa a bizalmas adatokhoz való hozzáférés figyelése. Az [Azure SQL audit](../../azure-sql/database/auditing-overview.md) továbbfejlesztett funkciója, hogy egy új mezőt tartalmazzon a naplóban `data_sensitivity_information` . Ez a mező a lekérdezés által visszaadott adatérzékeny besorolásokat (címkéket) naplózza. Bemutatunk egy példát:
+Az Information-Protection paradigma fontos aspektusa a bizalmas adatokhoz való hozzáférés figyelése. Az [Azure SQL audit](../../azure-sql/database/auditing-overview.md) továbbfejlesztett funkciója, hogy egy új mezőt tartalmazzon a naplóban `data_sensitivity_information` . Ez a mező a lekérdezés által visszaadott adatérzékeny besorolásokat (címkéket) naplózza. Íme egy példa:
 
 ![Az auditnaplóban](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
@@ -125,7 +125,7 @@ Ezek a beépített szerepkörök módosíthatják egy adatbázis adatbesorolás�
 - Közreműködő
 - SQL-biztonságkezelő
 
-További információ az [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)szerepköralapú engedélyeiről.
+További információ az [Azure RBAC](../../role-based-access-control/overview.md)szerepköralapú engedélyeiről.
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>Besorolások kezelése
 
@@ -140,42 +140,42 @@ A T-SQL használatával oszlop besorolásokat adhat hozzá vagy távolíthat el,
 
 A T-SQL osztályozási szolgáltatással való használatáról a következő hivatkozásokban talál további információt:
 
-- Egy vagy több oszlop besorolásának hozzáadása vagy frissítése: [érzékenységi besorolás hozzáadása](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- A besorolás eltávolítása egy vagy több oszlopból: az [érzékenység besorolásának eldobása](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- Az adatbázis összes besorolásának megtekintése: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- Egy vagy több oszlop besorolásának hozzáadása vagy frissítése: [érzékenységi besorolás hozzáadása](/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- A besorolás eltávolítása egy vagy több oszlopból: az [érzékenység besorolásának eldobása](/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Az adatbázis összes besorolásának megtekintése: [sys.sensitivity_classifications](/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="use-powershell-cmdlets"></a>PowerShell-parancsmagok használata
 Az Azure SQL Database és az Azure SQL felügyelt példányaira vonatkozó besorolások és javaslatok kezelése a PowerShell használatával.
 
 #### <a name="powershell-cmdlets-for-azure-sql-database"></a>PowerShell-parancsmagok a Azure SQL Databasehoz
 
-- [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
-- [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
-- [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
-- [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
-- [AzSqlDatabaSesensitivityRecommendation engedélyezése](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
-- [AzSqlDatabaseSensitivityRecommendation letiltása](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
+- [Get-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
+- [Set-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [Remove-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [Get-AzSqlDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+- [AzSqlDatabaSesensitivityRecommendation engedélyezése](/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
+- [AzSqlDatabaseSensitivityRecommendation letiltása](/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
 #### <a name="powershell-cmdlets-for-azure-sql-managed-instance"></a>PowerShell-parancsmagok az Azure SQL felügyelt példányaihoz
 
-- [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
-- [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
-- [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
-- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
-- [AzSqlInstanceDatabaseSensitivityRecommendation engedélyezése](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
-- [AzSqlInstanceDatabaseSensitivityRecommendation letiltása](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
+- [Get-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
+- [Set-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [Remove-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+- [AzSqlInstanceDatabaseSensitivityRecommendation engedélyezése](/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
+- [AzSqlInstanceDatabaseSensitivityRecommendation letiltása](/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 ### <a name="use-the-rest-api"></a>A REST API használata
 
 A REST API használatával programozott módon kezelheti a besorolásokat és a javaslatokat. A közzétett REST API a következő műveleteket támogatja:
 
-- [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): a megadott oszlop érzékenységi címkéjét hozza létre vagy frissíti.
-- [Delete (Törlés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete)): törli a megadott oszlop érzékenységi címkéjét.
-- [Javaslat letiltása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): a megadott oszlop érzékenységi javaslatainak letiltása.
-- [Javaslat engedélyezése](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): a megadott oszlopra vonatkozó érzékenységi javaslatokat tesz lehetővé. (A javaslatok alapértelmezés szerint engedélyezve vannak az összes oszlopban.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): lekéri a megadott oszlop érzékenységi címkéjét.
-- [Aktuális adatbázis listázása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): lekéri a megadott adatbázis aktuális érzékenységi címkéit.
-- Az [adatbázis által ajánlott lista](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): lekéri a megadott adatbázis javasolt érzékenységi címkéit.
+- [Létrehozás vagy frissítés](/rest/api/sql/sensitivitylabels/createorupdate): a megadott oszlop érzékenységi címkéjét hozza létre vagy frissíti.
+- [Delete (Törlés](/rest/api/sql/sensitivitylabels/delete)): törli a megadott oszlop érzékenységi címkéjét.
+- [Javaslat letiltása](/rest/api/sql/sensitivitylabels/disablerecommendation): a megadott oszlop érzékenységi javaslatainak letiltása.
+- [Javaslat engedélyezése](/rest/api/sql/sensitivitylabels/enablerecommendation): a megadott oszlopra vonatkozó érzékenységi javaslatokat tesz lehetővé. (A javaslatok alapértelmezés szerint engedélyezve vannak az összes oszlopban.)
+- [Get](/rest/api/sql/sensitivitylabels/get): lekéri a megadott oszlop érzékenységi címkéjét.
+- [Aktuális adatbázis listázása](/rest/api/sql/sensitivitylabels/listcurrentbydatabase): lekéri a megadott adatbázis aktuális érzékenységi címkéit.
+- Az [adatbázis által ajánlott lista](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): lekéri a megadott adatbázis javasolt érzékenységi címkéit.
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Következő lépések
 

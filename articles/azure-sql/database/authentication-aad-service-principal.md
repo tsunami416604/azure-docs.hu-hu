@@ -9,18 +9,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/21/2020
-ms.openlocfilehash: 2ded60f8c57d8c9db374bf77efe6dfd1a71690bc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6e397242bd699adcba4737014ebbce72aadc8ec2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482927"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669813"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory egyszerű szolgáltatásnév az Azure SQL-sel
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-A Azure Active Directory (Azure AD) felhasználói létrehozásának támogatása Azure SQL Database (SQL DB) és az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) az Azure ad-alkalmazások (egyszerű szolgáltatásnév) nevében jelenleg **nyilvános előzetes**verzióban érhető el.
+A Azure Active Directory (Azure AD) felhasználói létrehozásának támogatása Azure SQL Database (SQL DB) és az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) az Azure ad-alkalmazások (egyszerű szolgáltatásnév) nevében jelenleg **nyilvános előzetes** verzióban érhető el.
 
 > [!NOTE]
 > Ezt a funkciót már támogatja az SQL felügyelt példánya.
@@ -34,7 +34,7 @@ Ha egy Azure AD-alkalmazást a Azure Portal vagy egy PowerShell-parancs használ
 - Egy alkalmazásobjektum
 - Egy szolgáltatásnév-objektum
 
-Az Azure AD-alkalmazásokkal kapcsolatos további információkért tekintse meg a [Azure Active Directory alkalmazás-és szolgáltatásnév objektumait](../../active-directory/develop/app-objects-and-service-principals.md) , és [hozzon létre egy Azure-beli szolgáltatásnevet a Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps).
+Az Azure AD-alkalmazásokkal kapcsolatos további információkért tekintse meg a [Azure Active Directory alkalmazás-és szolgáltatásnév objektumait](../../active-directory/develop/app-objects-and-service-principals.md) , és [hozzon létre egy Azure-beli szolgáltatásnevet a Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
 A SQL Database, az Azure szinapszis és az SQL felügyelt példánya a következő Azure AD-objektumokat támogatja:
 
@@ -59,7 +59,7 @@ Az Azure AD-objektumok létrehozásához SQL Database és Azure Szinapszisban eg
     New-AzSqlServer -ResourceGroupName <resource group> -Location <Location name> -ServerName <Server name> -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -AssignIdentity
     ```
 
-    További információ: [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) parancs.
+    További információ: [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) parancs.
 
     - Meglévő Azure SQL logikai kiszolgálók esetén hajtsa végre a következő parancsot:
     
@@ -67,12 +67,12 @@ Az Azure AD-objektumok létrehozásához SQL Database és Azure Szinapszisban eg
     Set-AzSqlServer -ResourceGroupName <resource group> -ServerName <Server name> -AssignIdentity
     ```
 
-    További információ: [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) parancs.
+    További információ: [set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) parancs.
 
     - A Get-AzSqlServer parancs végrehajtásával ellenőrizze, hogy a kiszolgáló identitása hozzá van-e rendelve a kiszolgálóhoz.
 
     > [!NOTE]
-    > A kiszolgáló identitása a CLI-parancsokkal is hozzárendelhető. További információ: [az SQL Server Create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create&preserve-view=true) és [az SQL Server Update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update&preserve-view=true).
+    > A kiszolgáló identitása a CLI-parancsokkal is hozzárendelhető. További információ: [az SQL Server Create](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create&preserve-view=true) és [az SQL Server Update](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update&preserve-view=true).
 
 2. Adja meg az Azure AD [**Directory-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) engedélyeit a kiszolgáló számára létrehozott vagy a kiszolgálóhoz rendelt identitásnak.
     - Az engedély megadásához kövesse az SQL felügyelt példányának az alábbi cikkben elérhető leírását: az [Azure ad-rendszergazda kiépítése (SQL felügyelt példány)](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
@@ -81,9 +81,9 @@ Az Azure AD-objektumok létrehozásához SQL Database és Azure Szinapszisban eg
 > [!IMPORTANT]
 > Az 1. és a 2. lépést a fenti sorrendben kell végrehajtani. Először hozza létre vagy rendelje hozzá a kiszolgáló identitását, majd adja meg a [**Directory-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) engedélyét. Ha kihagyja a fenti lépések egyikét, vagy mindkettő végrehajtási hibát okoz az Azure AD-objektum Azure SQL-beli létrehozásakor egy Azure AD-alkalmazás nevében.
 >
-> Ha a szolgáltatásnevet az Azure AD-rendszergazda beállítására vagy törlésére használja, az alkalmazásnak tartalmaznia kell a [könyvtárat is. Read. All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) Application API engedély az Azure ad-ben. Az [Azure ad-rendszergazda beállításához szükséges engedélyekkel](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)és az Azure ad-felhasználók Azure ad-alkalmazás nevében történő létrehozásával kapcsolatos részletes utasításokért lásd [: oktatóanyag: Azure ad-felhasználók létrehozása az Azure ad-alkalmazásokkal](authentication-aad-service-principal-tutorial.md).
+> Ha a szolgáltatásnevet az Azure AD-rendszergazda beállítására vagy törlésére használja, az alkalmazásnak tartalmaznia kell a [könyvtárat is. Read. All](/graph/permissions-reference#application-permissions-18) Application API engedély az Azure ad-ben. Az [Azure ad-rendszergazda beállításához szükséges engedélyekkel](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)és az Azure ad-felhasználók Azure ad-alkalmazás nevében történő létrehozásával kapcsolatos részletes utasításokért lásd [: oktatóanyag: Azure ad-felhasználók létrehozása az Azure ad-alkalmazásokkal](authentication-aad-service-principal-tutorial.md).
 >
-> A **nyilvános előzetes**verzióban a címtár- **olvasók** szerepkört hozzárendelheti egy CSOPORThoz az Azure ad-ben. A csoport tulajdonosai ezután hozzáadhatják a felügyelt identitást a csoport tagjaként, ami megkerülheti a **globális rendszergazda** vagy a **Kiemelt szerepkörök rendszergazdájának** , hogy megadja a **címtár-olvasók** szerepkört. A szolgáltatással kapcsolatos további információkért lásd: az [Azure SQL Azure Active Directory Directory-olvasók szerepköre](authentication-aad-directory-readers-role.md).
+> A **nyilvános előzetes** verzióban a címtár- **olvasók** szerepkört hozzárendelheti egy CSOPORThoz az Azure ad-ben. A csoport tulajdonosai ezután hozzáadhatják a felügyelt identitást a csoport tagjaként, ami megkerülheti a **globális rendszergazda** vagy a **Kiemelt szerepkörök rendszergazdájának** , hogy megadja a **címtár-olvasók** szerepkört. A szolgáltatással kapcsolatos további információkért lásd: az [Azure SQL Azure Active Directory Directory-olvasók szerepköre](authentication-aad-directory-readers-role.md).
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>A nyilvános előzetes verzió hibaelhárítása és korlátozásai
 
@@ -94,7 +94,7 @@ Az Azure AD-objektumok létrehozásához SQL Database és Azure Szinapszisban eg
       - A fenti hiba esetén kövesse az [identitás az Azure SQL logikai kiszolgálóhoz való hozzárendelésének](authentication-aad-service-principal-tutorial.md#assign-an-identity-to-the-azure-sql-logical-server) lépéseit, és az [SQL logikai kiszolgáló identitásához rendeljen címtár-olvasók engedélyt](authentication-aad-service-principal-tutorial.md#assign-directory-readers-permission-to-the-sql-logical-server-identity).
     > [!NOTE]
     > A fent jelzett hibaüzenetek megváltoznak, mielőtt a Feature GA egyértelműen azonosítani tudja az Azure AD-alkalmazás támogatásának hiányzó telepítési követelményét.
-- Az Azure AD-alkalmazás Azure AD-rendszergazdaként való beállítása az SQL felügyelt példányhoz csak a CLI-parancs és a PowerShell-parancs használatával támogatott az [az. SQL 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) vagy újabb. További információt az az [SQL mi ad-admin Create](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin?view=azure-cli-latest#az-sql-mi-ad-admin-create&preserve-view=true) és [set-AzSqlInstanceActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) parancsokban talál. 
+- Az Azure AD-alkalmazás Azure AD-rendszergazdaként való beállítása az SQL felügyelt példányhoz csak a CLI-parancs és a PowerShell-parancs használatával támogatott az [az. SQL 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) vagy újabb. További információt az az [SQL mi ad-admin Create](/cli/azure/sql/mi/ad-admin?view=azure-cli-latest&preserve-view=true#az-sql-mi-ad-admin-create) és [set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) parancsokban talál. 
     - Ha az SQL felügyelt példányának Azure Portal szeretné beállítani az Azure AD-rendszergazdát, lehetséges megkerülő megoldásként hozzon létre egy Azure AD-csoportot. Ezután adja hozzá az egyszerű szolgáltatásnevet (Azure AD-alkalmazást) a csoporthoz, és állítsa be a csoportot Azure AD-rendszergazdaként a felügyelt SQL-példányhoz.
     - Az egyszerű szolgáltatásnév (Azure AD alkalmazás) Azure AD-rendszergazdaként való beállítása SQL Database és az Azure szinapszis használata a Azure Portal, a [PowerShell](authentication-aad-configure.md?tabs=azure-powershell#powershell-for-sql-database-and-azure-synapse)és a [CLI](authentication-aad-configure.md?tabs=azure-cli#powershell-for-sql-database-and-azure-synapse) -parancsok használatával támogatott.
 - Egy másik Azure AD-bérlőhöz tartozó egyszerű szolgáltatással rendelkező Azure AD-alkalmazás nem fog sikerülni, ha egy másik bérlőben létrehozott SQL Database vagy SQL felügyelt példányhoz fér hozzá. Az alkalmazáshoz rendelt egyszerű szolgáltatásnak ugyanahhoz a bérlőhöz kell tartoznia, mint az SQL logikai kiszolgálónak vagy a felügyelt példánynak.
@@ -104,5 +104,3 @@ Az Azure AD-objektumok létrehozásához SQL Database és Azure Szinapszisban eg
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Azure AD-felhasználók létrehozása az Azure AD-alkalmazásokkal](authentication-aad-service-principal-tutorial.md)
-
-

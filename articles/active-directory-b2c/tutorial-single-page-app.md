@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e485065588fefa95868df9865f317de54e6ef020
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 3a3eb77315953c3791e09c4326af7cc3e3231a69
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628779"
+ms.locfileid: "92670046"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure AD B2C
 
@@ -117,13 +117,13 @@ Most, hogy beolvasta a mintát, frissítse a kódot a Azure AD B2C bérlői nev�
     };
     ```
 
-1. Nyissa meg a `authConfig.js` fájlt a *JavaScriptSPA* mappában.
+1. Nyissa meg a *authConfig.js* fájlt a *JavaScriptSPA* mappában.
 1. Az `msalConfig` objektumban frissítse a következőket:
     * `clientId`egy korábbi lépésben rögzített **alkalmazás-(ügyfél-) azonosítóval**
     * `authority` URI a Azure AD B2C bérlői nevével és az előfeltételek részeként létrehozott regisztrációs/bejelentkezési felhasználói folyamat nevével (például *B2C_1_signupsignin1* )
-1. Nyissa meg az `policies.js` fájlt.
+1. Nyissa meg a *policies.js* fájlt.
 1. Keresse meg a és a bejegyzéseket, `names` `authorities` és cserélje le őket a 2. lépésben létrehozott szabályzatok nevére. Cserélje le a helyére a `fabrikamb2c.onmicrosoft.com` Azure ad B2C bérlő nevét, például: `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>` .
-1. Nyissa meg az `apiConfig.js` fájlt.
+1. Nyissa meg a *apiConfig.js* fájlt.
 1. Keresse meg a hatókörök hozzárendelését, `b2cScopes` és cserélje le az URL-címet a webes API-hoz létrehozott hatókör URL-címére, például: `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]` .
 1. Keresse meg az API URL-címének hozzárendelését, `webApi` és cserélje le az aktuális URL-címet arra az URL-címre, ahol a webes API-t telepítette a 4. lépésben, például: `webApi: http://localhost:5000/hello` .
 

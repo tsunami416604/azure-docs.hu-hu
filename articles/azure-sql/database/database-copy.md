@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 3aaa666ac6b7ddffcf5e0d2f5b62d26bd0f96004
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 99eea73add47b6498833de7bfd7728feb4c5c4ab
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516205"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671565"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása Azure SQL Database
 
@@ -43,7 +43,7 @@ Ha kiszolgálói szintű bejelentkezési adatokat használ az adatok eléréséh
 
 ## <a name="copy-using-the-azure-portal"></a>Másolás az Azure Portal használatával
 
-Ha a Azure Portal használatával szeretne másolni egy adatbázist, nyissa meg az adatbázis lapját, majd kattintson a **Másolás**gombra.
+Ha a Azure Portal használatával szeretne másolni egy adatbázist, nyissa meg az adatbázis lapját, majd kattintson a **Másolás** gombra.
 
    ![Adatbázis-másolat](./media/database-copy/database-copy.png)
 
@@ -82,7 +82,7 @@ Az adatbázis másolása aszinkron művelet, de a céladatbázis közvetlenül a
 
 Jelentkezzen be a Master adatbázisba a kiszolgáló-rendszergazdai bejelentkezéssel vagy a másolni kívánt adatbázist létrehozó bejelentkezéssel. Az adatbázis sikeres másolásához a kiszolgáló rendszergazdájának nem a szerepkör tagjának kell lennie `dbmanager` . További információ a bejelentkezésekről és a kiszolgálóhoz való csatlakozásról: [bejelentkezések kezelése](logins-create-manage.md).
 
-A forrásadatbázis másolásának megkezdése az [adatbázis létrehozása... AZ utasítás MÁSOLATa](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) . A T-SQL-utasítás addig fut, amíg az adatbázis-másolási művelet be nem fejeződik.
+A forrásadatbázis másolásának megkezdése az [adatbázis létrehozása... AZ utasítás MÁSOLATa](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) . A T-SQL-utasítás addig fut, amíg az adatbázis-másolási művelet be nem fejeződik.
 
 > [!NOTE]
 > A T-SQL-utasítás leállítása nem szakítja meg az adatbázis-másolási műveletet. A művelet befejezéséhez dobja el a céladatbázis-adatbázist.
@@ -143,13 +143,13 @@ A [SQL Database másolása másik kiszolgálóra](#copy-to-a-different-server) s
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet állapotának figyelése
 
-Figyelje a másolási folyamatot a [sys. Databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)és [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek lekérdezésével. A másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra**van beállítva.
+Figyelje a másolási folyamatot a [sys. Databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)és [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek lekérdezésével. A másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra** van beállítva.
 
-* Ha a másolás meghiúsul, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **gyanúsnak**van beállítva. Hajtsa végre a DROP utasítást az új adatbázison, majd próbálkozzon újra később.
-* Ha a másolás sikeres, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **online**értékre van állítva. A másolás befejeződött, és az új adatbázis egy normál adatbázis, amely a forrás-adatbázistól függetlenül módosítható.
+* Ha a másolás meghiúsul, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **gyanúsnak** van beállítva. Hajtsa végre a DROP utasítást az új adatbázison, majd próbálkozzon újra később.
+* Ha a másolás sikeres, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **online** értékre van állítva. A másolás befejeződött, és az új adatbázis egy normál adatbázis, amely a forrás-adatbázistól függetlenül módosítható.
 
 > [!NOTE]
-> Ha úgy dönt, hogy megszakítja a másolást, amíg folyamatban van, hajtsa végre a [drop Database](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) utasítást az új adatbázison.
+> Ha úgy dönt, hogy megszakítja a másolást, amíg folyamatban van, hajtsa végre a [drop Database](/sql/t-sql/statements/drop-database-transact-sql) utasítást az új adatbázison.
 
 > [!IMPORTANT]
 > Ha olyan másolatot kell létrehoznia, amely lényegesen kisebb szolgáltatási céllal rendelkezik, mint a forrás, akkor előfordulhat, hogy a céladatbázis nem rendelkezik elegendő erőforrással a kiindulási folyamat befejezéséhez, és a másolási Opera meghibásodását okozhatja. Ebben a forgatókönyvben egy geo-visszaállítási kérelem használatával hozzon létre egy másolatot egy másik kiszolgálón és/vagy egy másik régióban. További információ: [Azure SQL Database helyreállítása az adatbázis biztonsági mentései segítségével](recovery-using-backups.md#geo-restore) .
@@ -182,7 +182,7 @@ Ha szeretné megtekinteni a központi telepítések alatt lévő műveleteket a 
 
 ## <a name="resolve-logins"></a>Bejelentkezések feloldása
 
-Miután az új adatbázis online állapotú a célkiszolgálón, az [Alter User](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) utasítással újra felhasználhatja a felhasználókat az új adatbázisból a célkiszolgálón való bejelentkezéshez. Az árva felhasználók megoldásához tekintse meg az [árva felhasználók hibaelhárítása](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)című témakört. Lásd még: [Hogyan lehet felügyelni a Azure SQL Database biztonsági mentést a katasztrófa utáni helyreállítás után](active-geo-replication-security-configure.md).
+Miután az új adatbázis online állapotú a célkiszolgálón, az [Alter User](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) utasítással újra felhasználhatja a felhasználókat az új adatbázisból a célkiszolgálón való bejelentkezéshez. Az árva felhasználók megoldásához tekintse meg az [árva felhasználók hibaelhárítása](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)című témakört. Lásd még: [Hogyan lehet felügyelni a Azure SQL Database biztonsági mentést a katasztrófa utáni helyreállítás után](active-geo-replication-security-configure.md).
 
 Az új adatbázisban lévő összes felhasználó megőrzi a forrás-adatbázisban lévő engedélyeket. Az adatbázis-példányt kezdeményező felhasználó az új adatbázis adatbázis-tulajdonosa lesz. A másolás sikeres és a többi felhasználó újraleképezése után csak az adatbázis tulajdonosa jelentkezhet be az új adatbázisba.
 

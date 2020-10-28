@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284363"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672109"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>A Azure SQL Database teljesítményére vonatkozó javaslatok Database Advisor
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,10 +29,10 @@ A teljesítmény áttekintése áttekintést nyújt az adatbázis teljesítmény
 
 ![A Azure SQL Database teljesítményének áttekintése](./media/database-advisor-implement-performance-recommendations/performance-overview-annotated.png)
 
-- A **javaslatok** csempéje az adatbázis hangolási javaslatainak részletezését biztosítja (a három legfontosabb javaslat látható, ha van több). A csempére kattintva megtekintheti a **[teljesítményre vonatkozó javaslat beállításait](database-advisor-find-recommendations-portal.md#viewing-recommendations)**.
+- A **javaslatok** csempéje az adatbázis hangolási javaslatainak részletezését biztosítja (a három legfontosabb javaslat látható, ha van több). A csempére kattintva megtekintheti a **[teljesítményre vonatkozó javaslat beállításait](database-advisor-find-recommendations-portal.md#viewing-recommendations)** .
 - A **hangolási tevékenység** csempe összefoglalja az adatbázis folyamatban lévő és befejezett hangolási műveleteit, így gyors áttekintést nyújt a hangolási tevékenység előzményeiről. Erre a csempére kattintva megtekintheti az adatbázis teljes hangolási előzményeit.
 - Az **automatikus hangolás** csempéje az adatbázis **[Automatikus hangolási konfigurációját](automatic-tuning-enable.md)** jeleníti meg (az adatbázisra automatikusan alkalmazott hangolási beállításokat). A csempére kattintva megnyílik az Automation konfigurálása párbeszédpanel.
-- Az **adatbázis-lekérdezések** csempe az adatbázis lekérdezési teljesítményének összegzését jeleníti meg (a teljes DTU-használat és a legfelső szintű erőforrás-felhasználású lekérdezések esetében). A csempére kattintva **[lekérdezési terheléselemző](query-performance-insight-use.md)**.
+- Az **adatbázis-lekérdezések** csempe az adatbázis lekérdezési teljesítményének összegzését jeleníti meg (a teljes DTU-használat és a legfelső szintű erőforrás-felhasználású lekérdezések esetében). A csempére kattintva **[lekérdezési terheléselemző](query-performance-insight-use.md)** .
 
 ## <a name="performance-recommendation-options"></a>Teljesítménnyel kapcsolatos javaslatok beállításai
 
@@ -55,9 +55,9 @@ A múltban alkalmazott hangolási műveletek teljes előzményeit is megtalálha
 
 Azure SQL Database folyamatosan figyeli a futó lekérdezéseket, és azonosítja azokat az indexeket, amelyek javíthatják a teljesítményt. Ha elég biztos abban, hogy egy adott index hiányzik, létrejön egy új **create index** -javaslat.
 
-Azure SQL Database megbízhatóságot épít az index teljesítményének becslésével. A becsült teljesítménytől függően a javaslatok magas, közepes vagy alacsony értékre vannak kategorizálva.
+Azure SQL Database megbízhatóságot épít az index teljesítményének becslésével. A becsült teljesítménynövekedéstől függően az ajánlások a magas, közepes vagy alacsony kategóriába tartoznak.
 
-A javaslatok használatával létrehozott indexek mindig automatikusan létrehozott indexként vannak megjelölve. Láthatja, hogy mely indexek automatikusan jönnek létre a [sys. Indexes nézet megtekintésével](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql). Az automatikusan létrehozott indexek nem gátolják meg a MÓDOSÍTÁSi/ÁTNEVEZÉSi parancsokat.
+A javaslatok használatával létrehozott indexek mindig automatikusan létrehozott indexként vannak megjelölve. Láthatja, hogy mely indexek automatikusan jönnek létre a [sys. Indexes nézet megtekintésével](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql). Az automatikusan létrehozott indexek nem gátolják meg a MÓDOSÍTÁSi/ÁTNEVEZÉSi parancsokat.
 
 Ha úgy próbálja eldobni az oszlopot, hogy az automatikusan létrehozott indextel rendelkezik, a parancs áthalad. Az automatikusan létrehozott index el lesz dobva a paranccsal is. A normál indexek letiltják az ALTER/Átnevezés parancsot az indexelt oszlopokon.
 
@@ -105,7 +105,7 @@ A "séma javítása" javaslat akkor jelenik meg, ha Azure SQL Database észleli 
 
 | SQL-hibakód | Üzenet |
 | --- | --- |
-| 201 |A (z) "" eljárás vagy függvény a (z) ""*paramétert várja*, amely nem lett megadva. |
+| 201 |A (z) "" eljárás vagy függvény a (z) "" *paramétert várja* , amely nem lett megadva. |
 | 207 |Érvénytelen oszlopnév: "*". |
 | 208 |Érvénytelen objektumnév: "*". |
 | 213 |Az oszlop neve vagy a megadott értékek száma nem felel meg a tábla definíciójának. |
@@ -114,7 +114,7 @@ A "séma javítása" javaslat akkor jelenik meg, ha Azure SQL Database észleli 
 
 ## <a name="custom-applications"></a>Egyéni alkalmazások
 
-A fejlesztők fontolóra vehetik az egyéni alkalmazások fejlesztését a Azure SQL Database teljesítményével kapcsolatos javaslatok használatával. Az adatbázis-portálon felsorolt összes javaslat a [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API-n keresztül érhető el.
+A fejlesztők fontolóra vehetik az egyéni alkalmazások fejlesztését a Azure SQL Database teljesítményével kapcsolatos javaslatok használatával. Az adatbázis-portálon felsorolt összes javaslat a [Get-AzSqlDatabaseRecommendedAction](/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API-n keresztül érhető el.
 
 ## <a name="next-steps"></a>Következő lépések
 

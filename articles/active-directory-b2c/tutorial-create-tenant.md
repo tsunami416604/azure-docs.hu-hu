@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 10/22/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbccbcf1ac85b63c5610b9904a84e5e6e3fb6c63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce41f979a46ae2bda568b5db79f0e0304705dd8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922194"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670217"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C bérlő létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Jelentkezzen be egy olyan Azure-fiókkal, amelyet legalább a [közreműködő](../role-based-access-control/built-in-roles.md) szerepkörhöz rendeltek az előfizetésben vagy az előfizetésben található erőforráscsoporthoz.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/). Jelentkezzen be egy olyan Azure-fiókkal, amelyet legalább a [közreműködő](../role-based-access-control/built-in-roles.md) szerepkörhöz rendeltek az előfizetésben vagy az előfizetésben található erőforráscsoporthoz.
 
 1. Válassza ki az előfizetést tartalmazó könyvtárat.
 
@@ -46,23 +46,29 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     ![Előfizetés bérlője, könyvtár + előfizetés-szűrő és előfizetés-bérlő kiválasztva](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
 1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
-1. Keresse meg **Azure Active Directory B2C**, majd válassza a **Létrehozás**lehetőséget.
+1. Keresse meg **Azure Active Directory B2C** , majd válassza a **Létrehozás** lehetőséget.
 1. Válassza az **Új Azure AD B2C-bérlő létrehozása** lehetőséget.
 
     ![Új Azure AD B2C bérlő létrehozása Azure Portal](media/tutorial-create-tenant/portal-02-create-tenant.png)
+    
+1. Adja meg a **szervezet nevét** és a **kezdeti tartománynevet** . Válassza ki az **országot vagy régiót** (ez később nem módosítható), majd válassza a **Létrehozás** lehetőséget.
 
-1. A **címtár létrehozása** lapon adja meg a következőket:
+    A tartománynév a teljes bérlői tartománynév részeként használatos. Ebben a példában a bérlő neve *contosob2c.onmicrosoft.com* :
 
-   - **Szervezet neve** – adja meg a Azure ad B2C bérlő nevét.
-   - **Kezdeti tartománynév** – adja meg a Azure ad B2C-bérlő tartománynevét.
-   - **Ország vagy régió** – válassza ki az országot vagy régiót a listából. Ezt a kijelölést később nem lehet módosítani.
-   - **Előfizetés** – válassza ki az előfizetését a listából.
-   - **Erőforráscsoport** – válasszon ki egy erőforráscsoportot, amely a bérlőt fogja tartalmazni. Vagy válassza az **új létrehozása**lehetőséget, adja meg az erőforráscsoport **nevét** , válassza ki az **erőforráscsoport helyét**, majd kattintson **az OK gombra**.
+1. Miután befejeződött a bérlő létrehozása, válassza az **új B2C-bérlő létrehozása vagy** a bérlői Létrehozás lap tetején található meglévő bérlő hivatkozásra mutató hivatkozást.
 
-    ![Bérlői űrlap létrehozása a példákban szereplő értékekkel Azure Portal](media/tutorial-create-tenant/review-and-create-tenant.png)
+    ![A bérlői navigációs hivatkozás kiemelése Azure Portal](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
-1. Tekintse át a címtár beállításait. Ezután válassza a **Létrehozás** elemet.
+1. Válassza a **meglévő Azure ad B2C bérlő összekapcsolása az Azure-előfizetéssel** lehetőséget. Ennek a lépésnek a végrehajtásához tulajdonosi szerepkörként kell bejelentkeznie.
+
+   ![Meglévő előfizetés összekapcsolása Azure Portal](media/tutorial-create-tenant/portal-05-link-subscription.png)
+
+1. Válassza ki a létrehozott **Azure ad B2C bérlőt** , majd válassza ki az **előfizetését** .
+
+    Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget. Adja meg a bérlőt tartalmazó erőforráscsoport **nevét** , válassza ki az **erőforráscsoport helyét** , majd válassza a **Létrehozás** lehetőséget.
+
+    ![Az előfizetési beállítások űrlapjának csatolása Azure Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+    
 
 Egy Azure-előfizetéshez több Azure AD B2C bérlőt is csatolhat számlázási célokra. Bérlő összekapcsolásához rendszergazdai jogosultsággal kell rendelkeznie a Azure AD B2C bérlőben, és az Azure-előfizetésben legalább egy közreműködő szerepkört hozzá kell rendelni. Lásd: [Azure ad B2C bérlő összekapcsolása egy előfizetéssel](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 
@@ -84,14 +90,14 @@ Ahelyett, hogy minden alkalommal, amikor a Bérlővel dolgozni szeretne, az **ö
 
 Ezt a műveletet csak egyszer kell végrehajtania. Mielőtt elvégzi ezeket a lépéseket, győződjön meg arról, hogy az előző szakaszban leírtak szerint átváltotta a Azure AD B2C bérlőt tartalmazó könyvtárba, [majd válassza ki a B2C-bérlői címtárat](#select-your-b2c-tenant-directory).
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget.
-1. A **minden szolgáltatás** keresése mezőben keresse meg **Azure ad B2C**, vigye a kurzort a keresési eredmények fölé, majd válassza ki a csillag ikont az elemleírásban. **Azure ad B2C** most megjelenik a **kedvencek**területen található Azure Portal.
-1. Ha módosítani szeretné az új kedvenc pozícióját, lépjen a Azure Portal menüre, válassza a **Azure ad B2C**lehetőséget, majd húzza a kívánt helyzetbe.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. A Azure Portal menüben válassza a **minden szolgáltatás** lehetőséget.
+1. A **minden szolgáltatás** keresése mezőben keresse meg **Azure ad B2C** , vigye a kurzort a keresési eredmények fölé, majd válassza ki a csillag ikont az elemleírásban. **Azure ad B2C** most megjelenik a **kedvencek** területen található Azure Portal.
+1. Ha módosítani szeretné az új kedvenc pozícióját, lépjen a Azure Portal menüre, válassza a **Azure ad B2C** lehetőséget, majd húzza a kívánt helyzetbe.
 
     ![Azure AD B2C, Kedvencek menü, Microsoft Azure Portal](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

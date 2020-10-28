@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ee906b406f5fd09fc870626f1905541a4270c66
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90032996"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670525"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (előzetes verzió)
 
@@ -73,7 +73,7 @@ Az Azure-igazolás a legjobb választás a pólók igazolására, mivel az a kö
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>Üzletmenet-folytonosság és vész-helyreállítási (BCDR) támogatás
 
-Az [üzletmenet folytonossága és](/azure/best-practices-availability-paired-regions) a vész-helyreállítási szolgáltatás (BCDR) lehetővé teszi az Azure-igazolást, hogy enyhítse a jelentős rendelkezésre állási problémákkal vagy egy adott régióban észlelt katasztrófákkal kapcsolatos szolgáltatások megszakadását.
+Az [üzletmenet folytonossága és](../best-practices-availability-paired-regions.md) a vész-helyreállítási szolgáltatás (BCDR) lehetővé teszi az Azure-igazolást, hogy enyhítse a jelentős rendelkezésre állási problémákkal vagy egy adott régióban észlelt katasztrófákkal kapcsolatos szolgáltatások megszakadását.
 
 A BCDR által jelenleg támogatott régiók alább találhatók
 - USA 2. keleti régiója – az USA középső régiója> párosítva.
@@ -87,8 +87,7 @@ A két régióban üzembe helyezett fürtök normál körülmények között egy
 - A vezérlési sík összes művelete le lesz tiltva. Az ügyfelek nem tudnak tanúsítvány-előállítók létrehozására és a szabályzatok frissítésére az elsődleges régióban
 - Az összes adatsík művelet, beleértve a tanúsító hívásokat, továbbra is az elsődleges régióban fog működni
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg az [Azure igazolásának alapfogalmait](basic-concepts.md)
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)
-

@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: a3ceb78a85546e5e75c4c484f131b67ff7fc9249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eecd4220cdda471807e4b84261d7f76c31b9ba70
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824149"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672341"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Az Azure SQL-kapcsolatok beállításai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "91824149"
 Ez a cikk a Azure SQL Database és az Azure szinapszis Analytics-kiszolgálóhoz való kapcsolódást szabályozó beállításokat ismerteti. Ezek a beállítások a kiszolgálóhoz társított **összes** SQL Database és Azure szinapszis-adatbázisra érvényesek.
 
 > [!IMPORTANT]
-> Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira**.
+> Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira** .
 
 A kapcsolódási beállítások a **tűzfalak és a virtuális hálózatok** képernyőn érhetők el, az alábbi képernyőképen látható módon:
 
@@ -33,14 +33,14 @@ A kapcsolódási beállítások a **tűzfalak és a virtuális hálózatok** ké
 
 ## <a name="deny-public-network-access"></a>Nyilvános hálózati hozzáférés megtagadása
 
-Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Igen**értékre állítja, csak a magánhálózati végpontokon keresztüli kapcsolatok engedélyezettek. Ha a beállítás értéke **nem** (alapértelmezett), az ügyfelek csatlakozhatnak nyilvános végpontokkal (az IP-alapú tűzfalszabályok, a VNET-alapú tűzfalszabályok) vagy a privát végpontok (privát hivatkozás használatával), a [hálózati hozzáférés áttekintése című](network-access-controls-overview.md)témakörben leírtak szerint. 
+Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Igen** értékre állítja, csak a magánhálózati végpontokon keresztüli kapcsolatok engedélyezettek. Ha a beállítás értéke **nem** (alapértelmezett), az ügyfelek csatlakozhatnak nyilvános végpontokkal (az IP-alapú tűzfalszabályok, a VNET-alapú tűzfalszabályok) vagy a privát végpontok (privát hivatkozás használatával), a [hálózati hozzáférés áttekintése című](network-access-controls-overview.md)témakörben leírtak szerint. 
 
  ![Képernyőfelvétel a nyilvános hálózati hozzáférés megtagadásával létesített kapcsolatról][2]
 
 A **nyilvános hálózati hozzáférés megtagadási** beállításának az **Igen** értékre állítására tett kísérletek a logikai kiszolgálón lévő meglévő privát végpontok nélkül sikertelenek lesznek, és a következőhöz hasonló hibaüzenet jelenik meg:  
 
 > [!NOTE]
-> A virtuális hálózati tűzfalszabályok olyan logikai kiszolgálókon való definiálásához, amelyek magánhálózati végpontokkal már konfigurálva vannak, állítsa a **nem**értékre a **nyilvános hálózati hozzáférés megtagadása** beállítást.
+> A virtuális hálózati tűzfalszabályok olyan logikai kiszolgálókon való definiálásához, amelyek magánhálózati végpontokkal már konfigurálva vannak, állítsa a **nem** értékre a **nyilvános hálózati hozzáférés megtagadása** beállítást.
 
 ```output
 Error 42102
@@ -48,7 +48,7 @@ Unable to set Deny Public Network Access to Yes since there is no private endpoi
 Please set up private endpoints and retry the operation. 
 ```
 
-Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Igen**értékre állítja, csak a magánhálózati végpontokon keresztüli kapcsolatok engedélyezettek, és a nyilvános végpontokon keresztül létesített összes kapcsolat megtagadva a következőhöz hasonló hibaüzenettel:  
+Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Igen** értékre állítja, csak a magánhálózati végpontokon keresztüli kapcsolatok engedélyezettek, és a nyilvános végpontokon keresztül létesített összes kapcsolat megtagadva a következőhöz hasonló hibaüzenettel:  
 
 ```output
 Error 47073
@@ -57,7 +57,7 @@ The public network interface on this server is not accessible.
 To connect to this server, use the Private Endpoint from inside your virtual network.
 ```
 
-Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Igen**értékre állítja, a tűzfalszabályok hozzáadására vagy frissítésére tett kísérletek a következőhöz hasonló hibaüzenettel lesznek megtagadva:
+Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Igen** értékre állítja, a tűzfalszabályok hozzáadására vagy frissítésére tett kísérletek a következőhöz hasonló hibaüzenettel lesznek megtagadva:
 
 ```output
 Error 42101
@@ -68,7 +68,7 @@ To manage server or database level firewall rules, please enable the public netw
 ## <a name="change-public-network-access-via-powershell"></a>Nyilvános hálózati hozzáférés módosítása a PowerShell használatával
 
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A következő parancsfájlhoz a [Azure PowerShell modul](/powershell/azure/install-az-ps)szükséges.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A következő parancsfájlhoz a [Azure PowerShell modul](/powershell/azure/install-az-ps)szükséges.
 
 A következő PowerShell-szkript bemutatja, hogyan `Get` és `Set` a **nyilvános hálózati hozzáférés** tulajdonságot a kiszolgáló szintjén:
 
@@ -85,7 +85,7 @@ Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group 
 ## <a name="change-public-network-access-via-cli"></a>Nyilvános hálózati hozzáférés módosítása a CLI-n keresztül
 
 > [!IMPORTANT]
-> Az ebben a szakaszban szereplő összes parancsfájlhoz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)szükséges.
+> Az ebben a szakaszban szereplő összes parancsfájlhoz az [Azure CLI](/cli/azure/install-azure-cli)szükséges.
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI bash-rendszerhéjban
 
@@ -124,7 +124,7 @@ Login failed with invalid TLS version
 ## <a name="set-minimal-tls-version-via-powershell"></a>Minimális TLS-verzió beállítása a PowerShell használatával
 
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A következő parancsfájlhoz a [Azure PowerShell modul](/powershell/azure/install-az-ps)szükséges.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A következő parancsfájlhoz a [Azure PowerShell modul](/powershell/azure/install-az-ps)szükséges.
 
 A következő PowerShell-szkript bemutatja, hogyan `Get` és `Set` a **minimális TLS-verzió** tulajdonságot a logikai kiszolgáló szintjén:
 
@@ -141,7 +141,7 @@ Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group 
 ## <a name="set-minimal-tls-version-via-azure-cli"></a>Minimális TLS-verzió beállítása az Azure CLI-n keresztül
 
 > [!IMPORTANT]
-> Az ebben a szakaszban szereplő összes parancsfájlhoz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)szükséges.
+> Az ebben a szakaszban szereplő összes parancsfájlhoz az [Azure CLI](/cli/azure/install-azure-cli)szükséges.
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI bash-rendszerhéjban
 
@@ -164,7 +164,7 @@ A [kapcsolati házirend](connectivity-architecture.md#connection-policy) határo
 ## <a name="change-connection-policy-via-powershell"></a>A kapcsolatbiztonsági szabályzat módosítása a PowerShell használatával
 
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A következő parancsfájlhoz a [Azure PowerShell modul](/powershell/azure/install-az-ps)szükséges.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A következő parancsfájlhoz a [Azure PowerShell modul](/powershell/azure/install-az-ps)szükséges.
 
 A következő PowerShell-szkript bemutatja, hogyan módosíthatja a kapcsolódási szabályzatot a PowerShell használatával:
 
@@ -185,7 +185,7 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ## <a name="change-connection-policy-via-azure-cli"></a>A kapcsolatkérelem-házirend módosítása az Azure CLI-n keresztül
 
 > [!IMPORTANT]
-> Az ebben a szakaszban szereplő összes parancsfájlhoz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)szükséges.
+> Az ebben a szakaszban szereplő összes parancsfájlhoz az [Azure CLI](/cli/azure/install-azure-cli)szükséges.
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI bash-rendszerhéjban
 
@@ -223,7 +223,7 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ## <a name="next-steps"></a>Következő lépések
 
 - A Azure SQL Database kapcsolatok működésének áttekintését lásd: [kapcsolati architektúra](connectivity-architecture.md)
-- További információ a kiszolgálók kapcsolódási házirendjének módosításáról: [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- További információ a kiszolgálók kapcsolódási házirendjének módosításáról: [Conn-Policy](/cli/azure/sql/server/conn-policy).
 
 <!--Image references-->
 [1]: media/single-database-create-quickstart/manage-connectivity-settings.png

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: fc3b5b096e339d0c0f4bca7afc92d7315246fcd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d3a3a068a4efb2dea7d7df4bc2b88e2c33dc18b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552288"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Oktatóanyag: Azure Active Directory integráció a SAP HANA
 
@@ -27,7 +27,7 @@ A SAP HANA az Azure AD-vel való integrálása a következő előnyöket biztos�
 * Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a SAP HANAba (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -72,13 +72,13 @@ SAP HANA az Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **SAP HANA**kifejezést, válassza a **SAP HANA** az eredmények paneljén, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **SAP HANA** kifejezést, válassza a **SAP HANA** az eredmények paneljén, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![SAP HANA az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését SAP HANA a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését SAP HANA a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a SAP HANA kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -96,7 +96,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **SAP HANA** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **SAP HANA** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -133,7 +133,7 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
 
     b. Az **átalakítás** listából válassza a **ExtractMailPrefix ()** elemet.
 
-    c. Az **1. paraméter** listából válassza a **User. mail**elemet.
+    c. Az **1. paraméter** listából válassza a **User. mail** elemet.
 
     d. Kattintson a **Mentés** gombra.
 
@@ -148,7 +148,7 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
     > [!NOTE]
     > Az alapértelmezett konfigurációban az URL-cím átirányítja a kérést egy bejelentkezési képernyőre, amelyhez hitelesített SAP HANA adatbázis-felhasználó hitelesítő adatai szükségesek. A bejelentkező felhasználónak rendelkeznie kell az SAML felügyeleti feladatok végrehajtásához szükséges engedélyekkel.
 
-2. A XSA webes felületén nyissa meg az **SAML-identitás szolgáltatóját**. Innen válassza a **+** képernyő alján található gombot az **Identity Provider információinak hozzáadása** panel megjelenítéséhez. Ezután hajtsa végre a következő lépéseket:
+2. A XSA webes felületén nyissa meg az **SAML-identitás szolgáltatóját** . Innen válassza a **+** képernyő alján található gombot az **Identity Provider információinak hozzáadása** panel megjelenítéséhez. Ezután hajtsa végre a következő lépéseket:
 
     ![Identitás-szolgáltató hozzáadása](./media/saphana-tutorial/sap1.png)
 
@@ -169,7 +169,7 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
 
     ![Mentés gomb](./media/saphana-tutorial/sap4.png)
 
-4. A HANA Studióban, a **konfiguráció** lap rendszertulajdonságai között, az **SAML**alapján szűrheti a beállításokat. Ezután módosítsa a **assertion_timeout** **10 másodperc** és **120 másodperc**közötti értékre.
+4. A HANA Studióban, a **konfiguráció** lap rendszertulajdonságai között, az **SAML** alapján szűrheti a beállításokat. Ezután módosítsa a **assertion_timeout** **10 másodperc** és **120 másodperc** közötti értékre.
 
     ![assertion_timeout beállítás](./media/saphana-tutorial/sap7.png)
 
@@ -177,7 +177,7 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -196,21 +196,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezi az Azure egyszeri bejelentkezést az SAP HANA elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **SAP HANA**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **SAP HANA** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza a **SAP HANA**lehetőséget.
+2. Az alkalmazások listában írja be és válassza a **SAP HANA** lehetőséget.
 
     ![Az alkalmazások lista SAP HANA hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -227,7 +227,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezi az Azure egyszeri
 ### <a name="create-sap-hana-test-user"></a>SAP HANA tesztelési felhasználó létrehozása
 
 Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a SAP HANAba, be kell építenie azokat a SAP HANAban.
-SAP HANA támogatja az igény szerinti **üzembe**helyezést, amely alapértelmezés szerint engedélyezve van.
+SAP HANA támogatja az igény szerinti **üzembe** helyezést, amely alapértelmezés szerint engedélyezve van.
 
 Ha manuálisan kell létrehoznia egy felhasználót, hajtsa végre a következő lépéseket:
 
@@ -238,11 +238,11 @@ Ha manuálisan kell létrehoznia egy felhasználót, hajtsa végre a következő
 
     ![Felhasználó létrehozása](./media/saphana-tutorial/sap5.png)
 
-2. Jelölje be a láthatatlan jelölőnégyzetet az **SAML**bal oldalán, majd válassza a **Konfigurálás** hivatkozást.
+2. Jelölje be a láthatatlan jelölőnégyzetet az **SAML** bal oldalán, majd válassza a **Konfigurálás** hivatkozást.
 
-3. Válassza a **Hozzáadás** lehetőséget az SAML-identitásszolgáltató hozzáadásához.  Válassza ki a megfelelő SAML-IDENTITÁSSZOLGÁLTATÓ, majd kattintson **az OK gombra**.
+3. Válassza a **Hozzáadás** lehetőséget az SAML-identitásszolgáltató hozzáadásához.  Válassza ki a megfelelő SAML-IDENTITÁSSZOLGÁLTATÓ, majd kattintson **az OK gombra** .
 
-4. Adja hozzá a **külső identitást** (ebben az esetben BrittaSimon), **vagy válasszon egyet**. Ezután válassza az **OK** gombot.
+4. Adja hozzá a **külső identitást** (ebben az esetben BrittaSimon), **vagy válasszon egyet** . Ez után válassza az **OK** gombot.
 
    > [!Note]
    > Ha a **bármely** jelölőnégyzet nincs bejelölve, akkor a HANA-beli felhasználónévnek pontosan egyeznie kell a felhasználó nevével az UPN-ben a tartomány utótagja előtt. (Például BrittaSimon@contoso.com BrittaSimon válik a HANA-ban.)
@@ -260,13 +260,12 @@ Ha manuálisan kell létrehoznia egy felhasználót, hajtsa végre a következő
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a SAP HANA csempére kattint, automatikusan be kell jelentkeznie arra a SAP HANAra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a SAP HANA csempére kattint, automatikusan be kell jelentkeznie arra a SAP HANAra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

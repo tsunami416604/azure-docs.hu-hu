@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ad8f3e146c13e7b88752b8ef6d514346542ce26
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443882"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672264"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Teljesítményre vonatkozó javaslatok keresése és alkalmazása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,12 +25,12 @@ A Azure Portal használatával olyan teljesítménnyel kapcsolatos javaslatokat 
 
 ## <a name="viewing-recommendations"></a>Javaslatok megtekintése
 
-A teljesítménnyel kapcsolatos javaslatok megtekintéséhez és alkalmazásához a megfelelő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../../role-based-access-control/overview.md) engedélyek szükségesek az Azure-ban. Az **olvasó**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a javaslatok megtekintéséhez és a **tulajdonoshoz**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a műveletek végrehajtásához; indexek létrehozása vagy eldobása, indexek létrehozásának megszakítása.
+A teljesítménnyel kapcsolatos javaslatok megtekintéséhez és alkalmazásához a megfelelő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../../role-based-access-control/overview.md) engedélyek szükségesek az Azure-ban. Az **olvasó** , az **SQL-adatbázis közreműködői** engedélyekre van szükség a javaslatok megtekintéséhez és a **tulajdonoshoz** , az **SQL-adatbázis közreműködői** engedélyekre van szükség a műveletek végrehajtásához; indexek létrehozása vagy eldobása, indexek létrehozásának megszakítása.
 
 A következő lépések végrehajtásával találhat teljesítménnyel kapcsolatos javaslatokat a Azure Portal:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Nyissa meg az **összes szolgáltatás**  >  **SQL-adatbázisát**, és válassza ki az adatbázist.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+2. Nyissa meg az **összes szolgáltatás**  >  **SQL-adatbázisát** , és válassza ki az adatbázist.
 3. A kiválasztott adatbázishoz elérhető javaslatok megtekintéséhez navigáljon a **teljesítménnyel kapcsolatos javaslathoz** .
 
 A teljesítménnyel kapcsolatos javaslatok az alábbi ábrán láthatóhoz hasonló táblázatban láthatók:
@@ -86,9 +86,9 @@ Ha a javaslatok listája olyan elemeket tartalmaz, amelyeket el szeretne távol�
 
 Ha kívánja, hozzáadhat elvetett elemeket a **javaslatok** listájához:
 
-1. A **javaslatok** lapon kattintson az **elvetettek megtekintése**elemre.
+1. A **javaslatok** lapon kattintson az **elvetettek megtekintése** elemre.
 2. A részletek megtekintéséhez válasszon ki egy elvetett elemet a listából.
-3. Ha szeretné, kattintson az **Elvetés visszavonása** gombra, és adja hozzá az indexet a **javaslatok**fő listájához.
+3. Ha szeretné, kattintson az **Elvetés visszavonása** gombra, és adja hozzá az indexet a **javaslatok** fő listájához.
 
 > [!NOTE]
 > Vegye figyelembe, hogy ha SQL Database [automatikus hangolás](automatic-tuning-overview.md) engedélyezve van, és ha manuálisan elvetett egy javaslatot a listáról, a rendszer soha nem alkalmazza automatikusan az adott javaslatot. A javaslatok figyelmen kívül hagyása egy praktikus módszer a felhasználók számára, hogy az automatikus hangolás engedélyezve legyen abban az esetben, ha egy konkrét javaslatot nem kell alkalmazni.
@@ -98,7 +98,7 @@ Ha kívánja, hozzáadhat elvetett elemeket a **javaslatok** listájához:
 
 Az adatbázis beállítható úgy, hogy automatikusan végrehajtsa az ajánlásokat. Amint a javaslatok elérhetővé válnak, a rendszer automatikusan alkalmazza őket. A szolgáltatás által kezelt összes javaslathoz hasonlóan, ha a teljesítményre gyakorolt hatás negatív, a rendszer visszaállít egy javaslatot.
 
-1. A **javaslatok** lapon kattintson az **automatizálás**lehetőségre:
+1. A **javaslatok** lapon kattintson az **automatizálás** lehetőségre:
 
    ![Advisor-beállítások](./media/database-advisor-find-recommendations-portal/settings.png)
 2. Válassza ki az automatizálni kívánt műveleteket:
@@ -112,13 +112,13 @@ Miután kiválasztotta a kívánt konfigurációt, kattintson az Alkalmaz gombra
 
 ### <a name="manually-apply-recommendations-through-t-sql"></a>Javaslatok manuális alkalmazása a T-SQL használatával
 
-Válassza ki az egyik javaslatot, majd kattintson a **parancsfájl megjelenítése**lehetőségre. Futtassa ezt a szkriptet az adatbázison, hogy manuálisan alkalmazza a javaslatot.
+Válassza ki az egyik javaslatot, majd kattintson a **parancsfájl megjelenítése** lehetőségre. Futtassa ezt a szkriptet az adatbázison, hogy manuálisan alkalmazza a javaslatot.
 
-*A manuálisan végrehajtott indexek figyelése és érvényesítése a szolgáltatás teljesítményére gyakorolt hatás miatt nem* történik meg, ezért azt javasoljuk, hogy a létrehozás után figyelje ezeket az indexeket, hogy ellenőrizze, hogy a teljesítmény-és módosítási és törlési műveletekhez szükség van-e. Az indexek létrehozásával kapcsolatos részletekért lásd: [create index (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql). Emellett a manuálisan alkalmazott javaslatok továbbra is aktívak maradnak, és megjelennek a 24-48 óra javaslatok listájában. mielőtt a rendszer automatikusan visszavonja őket. Ha hamarabb el szeretné távolítani a javaslatot, manuálisan elvégezheti azt.
+*A manuálisan végrehajtott indexek figyelése és érvényesítése a szolgáltatás teljesítményére gyakorolt hatás miatt nem* történik meg, ezért azt javasoljuk, hogy a létrehozás után figyelje ezeket az indexeket, hogy ellenőrizze, hogy a teljesítmény-és módosítási és törlési műveletekhez szükség van-e. Az indexek létrehozásával kapcsolatos részletekért lásd: [create index (Transact-SQL)](/sql/t-sql/statements/create-index-transact-sql). Emellett a manuálisan alkalmazott javaslatok továbbra is aktívak maradnak, és megjelennek a 24-48 óra javaslatok listájában. mielőtt a rendszer automatikusan visszavonja őket. Ha hamarabb el szeretné távolítani a javaslatot, manuálisan elvégezheti azt.
 
 ### <a name="canceling-recommendations"></a>Javaslatok megszakítása
 
-A **függőben lévő**, **érvényesítési**vagy **sikerességi** állapotú javaslatok megvonhatók. Nem lehet megszakítani a **végrehajtás** állapotával kapcsolatos ajánlásokat.
+A **függőben lévő** , **érvényesítési** vagy **sikerességi** állapotú javaslatok megvonhatók. Nem lehet megszakítani a **végrehajtás** állapotával kapcsolatos ajánlásokat.
 
 1. Válasszon ki egy javaslatot a **hangolási előzmények** területen a **javaslatok részletei** lap megnyitásához.
 2. Kattintson a **Mégse** gombra a javaslat alkalmazási folyamatának megszakításához.
@@ -156,7 +156,7 @@ A javaslatok sikeres implementálása után (jelenleg csak az indexelési művel
 
 ![Teljesítmény-hatás figyelése](./media/database-advisor-find-recommendations-portal/query-insights.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Azure SQL Database az adatbázis teljesítményének javítására vonatkozó ajánlásokat tartalmaz. A T-SQL-parancsfájlok nyújtásával segítséget nyújt az adatbázis optimalizálásában, és végül a lekérdezési teljesítmény javításában.
 
@@ -170,6 +170,6 @@ Figyelje a javaslatokat, és alkalmazza őket a teljesítmény pontosítására.
 
 ## <a name="additional-resources"></a>További források
 
-* [Lekérdezéstár](https://msdn.microsoft.com/library/dn817826.aspx)
-* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
+* [Lekérdezéstár](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
+* [CREATE INDEX](/sql/t-sql/statements/create-index-transact-sql)
 * [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)

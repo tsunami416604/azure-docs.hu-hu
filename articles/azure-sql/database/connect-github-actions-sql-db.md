@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: cd08b02cb3b67ce615ffa1003ee1e4441a281c17
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92285136"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669746"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>A GitHub-műveletek használata a Azure SQL Databasehoz való kapcsolódáshoz
 
@@ -26,7 +26,7 @@ A következőkre lesz szükség:
 - Egy GitHub-adattár dacpac-csomaggal ( `Database.dacpac` ). Ha nem rendelkezik GitHub-fiókkal, [regisztráljon ingyenesen](https://github.com/join).  
 - Egy Azure SQL Database.
     - [Rövid útmutató: Azure SQL Database önálló adatbázis létrehozása](single-database-create-quickstart.md)
-    - [Dacpac-csomag létrehozása meglévő SQL Server adatbázisból](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+    - [Dacpac-csomag létrehozása meglévő SQL Server adatbázisból](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 
 ## <a name="workflow-file-overview"></a>A munkafolyamat-fájl áttekintése
 
@@ -68,7 +68,7 @@ A kimenet egy JSON-objektum, amelynek a szerepkör-hozzárendelési hitelesítő
 
 ## <a name="copy-the-sql-connection-string"></a>Az SQL-alapú kapcsolatok karakterláncának másolása 
 
-A Azure Portal lépjen a Azure SQL Database, és nyissa meg a **Beállítások**  >  **kapcsolódási karakterláncok**lehetőséget. Másolja az **ADO.NET** kapcsolati sztringet. Cserélje le a és a helyőrző értékét `your_database` `your_password` . A kapcsolódási karakterlánc a kimenethez hasonlóan fog kinézni. 
+A Azure Portal lépjen a Azure SQL Database, és nyissa meg a **Beállítások**  >  **kapcsolódási karakterláncok** lehetőséget. Másolja az **ADO.NET** kapcsolati sztringet. Cserélje le a és a helyőrző értékét `your_database` `your_password` . A kapcsolódási karakterlánc a kimenethez hasonlóan fog kinézni. 
 
 ```output
     Server=tcp:my-sql-server.database.windows.net,1433;Initial Catalog={your-database};Persist Security Info=False;User ID={admin-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -80,7 +80,7 @@ A kapcsolatok sztringjét GitHub-titokként fogja használni.
 
 1. A [githubon](https://github.com/)tallózzon a tárházban.
 
-1. Válassza a **beállítások > titkok > új titok**lehetőséget.
+1. Válassza a **beállítások > titkok > új titok** lehetőséget.
 
 1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adja meg a titkot a nevet `AZURE_CREDENTIALS` .
 
@@ -101,7 +101,7 @@ A kapcsolatok sztringjét GitHub-titokként fogja használni.
 
 1. Nyissa meg a GitHub-tárház **műveleteit** . 
 
-2. Válassza **a saját munkafolyamat beállítása**lehetőséget. 
+2. Válassza **a saját munkafolyamat beállítása** lehetőséget. 
 
 2. Töröljön mindent a `on:` munkafolyamat-fájl szakasza után. Előfordulhat például, hogy a hátralévő munkafolyamat így néz ki. 
 
@@ -187,11 +187,11 @@ A kapcsolatok sztringjét GitHub-titokként fogja használni.
  
    :::image type="content" source="media/quickstart-sql-github-actions/github-actions-run-sql.png" alt-text="A GitHub-műveletek futtatásának naplója":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha az Azure SQL Database-adatbázisra és-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg az Azure-t és a GitHub-integrációt](https://docs.microsoft.com/azure/developer/github/)
+> [Ismerje meg az Azure-t és a GitHub-integrációt](/azure/developer/github/)

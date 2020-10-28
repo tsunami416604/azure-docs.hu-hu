@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: 30cf90f6020ecd4eb560ac0fe2886ff03c552d13
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a864b2b3e0379a8b0a1d67c97a63b3d5c52f9e58
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825569"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669724"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a .NET és a C# használata a Visual Studióban Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz való kapcsolódáshoz és lekérdezéshez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
 
 Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok**  vagy az **SQL-felügyelt példányok** lapra.
 
@@ -64,19 +64,19 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
 
 1. Hozzon létre egy új projektet a Visual Studióban. 
    
-1. Az **új projekt** párbeszédpanelen válassza a **Visual C#**, **Console app (.NET-keretrendszer)** elemet.
+1. Az **új projekt** párbeszédpanelen válassza a **Visual C#** , **Console app (.NET-keretrendszer)** elemet.
    
-1. Adja meg a *sqltest* a projekt neveként, majd kattintson **az OK gombra**. Létrejön az új projekt. 
+1. Adja meg a *sqltest* a projekt neveként, majd kattintson **az OK gombra** . Létrejön az új projekt. 
    
-1. Válassza a **projekt**  >  **NuGet-csomagok kezelése**lehetőséget. 
+1. Válassza a **projekt**  >  **NuGet-csomagok kezelése** lehetőséget. 
    
-1. A **NuGet csomagkezelő**lapján válassza a **Tallózás** lapot, majd keresse meg és válassza ki a **Microsoft. Form. SqlClient**elemet.
+1. A **NuGet csomagkezelő** lapján válassza a **Tallózás** lapot, majd keresse meg és válassza ki a **Microsoft. Form. SqlClient** elemet.
    
-1. A **Microsoft. SqlClient** lapon válassza a **telepítés**lehetőséget. 
+1. A **Microsoft. SqlClient** lapon válassza a **telepítés** lehetőséget. 
    - Ha a rendszer kéri, kattintson az **OK** gombra a telepítés folytatásához. 
-   - Ha megjelenik a **licenc elfogadására** szolgáló ablak, válassza az **Elfogadom**lehetőséget.
+   - Ha megjelenik a **licenc elfogadására** szolgáló ablak, válassza az **Elfogadom** lehetőséget.
    
-1. A telepítés befejezésekor lezárhatja a **NuGet csomagkezelő eszközt**. 
+1. A telepítés befejezésekor lezárhatja a **NuGet csomagkezelő eszközt** . 
    
 1. A Kódszerkesztő eszközben cserélje le a **program.cs** tartalmát a következő kódra. Cserélje le a, `<your_server>` , `<your_username>` `<your_password>` , és a értékeit `<your_database>` .
    
@@ -139,7 +139,7 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. Az alkalmazás futtatásához válassza a **hibakeresés**  >  **megkezdése**lehetőséget, vagy válassza az eszköztáron az **Indítás** lehetőséget, vagy nyomja le az **F5**billentyűt.
+1. Az alkalmazás futtatásához válassza a **hibakeresés**  >  **megkezdése** lehetőséget, vagy válassza az eszköztáron az **Indítás** lehetőséget, vagy nyomja le az **F5** billentyűt.
 1. Győződjön meg arról, hogy az adatbázisból az első 20 kategória/termék sor van visszaadva, majd az alkalmazás ablakának bezárásához.
 
 ## <a name="next-steps"></a>Következő lépések
@@ -147,11 +147,10 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
 - Megtudhatja, hogyan [csatlakozhat egy adatbázishoz a Azure SQL Database a .net Core használatával](connect-query-dotnet-core.md) a Windows/Linux/MacOS rendszeren.  
 - További információ [a .NET Core használatának első lépéseiről Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
 - Megtudhatja, hogyan [tervezheti meg az első adatbázisát Azure SQL Database a SSMS használatával](design-first-database-tutorial.md) , vagy [az első adatbázis megtervezésével Azure SQL Database a .NET használatával](design-first-database-csharp-tutorial.md).
-- A .NET-ről a [.NET dokumentációjában](https://docs.microsoft.com/dotnet/) talál további információt.
+- A .NET-ről a [.NET dokumentációjában](/dotnet/) talál további információt.
 - Próbálja ki újra a logikai példát: [kapcsolódjon rugalmasan az Azure SQL-hez a ADO.NET használatával][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
-
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net

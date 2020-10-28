@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8019c049d830df0c2f3301a450eed60145c8eab3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89570447"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670104"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C lévő szabályzati kulcsok áttekintése
 
@@ -34,7 +34,7 @@ A Azure Portal szolgáltatások közötti megbízhatósági kapcsolat létrehoz�
 
 ## <a name="policy-keyset-and-keys"></a>Szabályzat kulcskészlet és kulcsok
 
-A Azure AD B2C található házirend-kulcsok legfelső szintű erőforrása a **kulcskészlet** tároló. Mindegyik kulcskészlet legalább egy **kulcsot**tartalmaz. A kulcsnak a következő attribútumokkal kell rendelkezniük:
+A Azure AD B2C található házirend-kulcsok legfelső szintű erőforrása a **kulcskészlet** tároló. Mindegyik kulcskészlet legalább egy **kulcsot** tartalmaz. A kulcsnak a következő attribútumokkal kell rendelkezniük:
 
 | Attribútum |  Kötelező | Megjegyzések |
 | --- | --- |--- |
@@ -58,7 +58,7 @@ Biztonsági okokból a Azure AD B2C rendszeres időközönként, vagy vészhelyz
 
 Ha egy Azure AD B2C kulcskészlet több kulccsal rendelkezik, akkor a következő feltételek alapján csak az egyik kulcs aktív egyszerre:
 
-- A kulcs aktiválása az **aktiválási dátumon**alapul.
+- A kulcs aktiválása az **aktiválási dátumon** alapul.
   - A kulcsok az aktiválási dátum szerint növekvő sorrendben vannak rendezve. A jövőbeli aktiválási dátummal rendelkező kulcsok lejjebb jelennek a listában. Az aktiválási dátum nélküli kulcsok a lista alján találhatók.
   - Ha az aktuális dátum és idő nagyobb, mint a kulcs aktiválási dátuma, Azure AD B2C aktiválja a kulcsot, és leállítja az előző aktív kulcs használatát.
 - Ha az aktuális kulcs lejárati ideje eltelt, és a kulcstároló tartalmaz egy olyan új kulcsot, amely *nem a korábbi* és a *lejárati* idő alatt érvényes, akkor az új kulcs automatikusan aktívvá válik.
@@ -71,13 +71,20 @@ A kulcstárolón belüli aktuális aktív kulcs lekéréséhez használja a Micr
 
 Aláírási és titkosítási kulcsok hozzáadása vagy törlése:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
-1. Az Áttekintés lap **szabályzatok**területén válassza az **identitási élmény keretrendszere**elemet.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
+1. Az Áttekintés lap **szabályzatok** területén válassza az **identitási élmény keretrendszere** elemet.
 1. **Házirend-kulcsok** kiválasztása 
-    1. Új kulcs hozzáadásához válassza a **Hozzáadás**lehetőséget.
-    1. Új kulcs eltávolításához jelölje ki a kulcsot, majd válassza a **Törlés**lehetőséget. A kulcs törléséhez írja be a törlendő kulcstároló nevét. Azure AD B2C törli a kulcsot, és létrehozza a kulcs másolatát a. bak utótaggal.
+    1. Új kulcs hozzáadásához válassza a **Hozzáadás** lehetőséget.
+    1. Új kulcs eltávolításához jelölje ki a kulcsot, majd válassza a **Törlés** lehetőséget. A kulcs törléséhez írja be a törlendő kulcstároló nevét. Azure AD B2C törli a kulcsot, és létrehozza a kulcs másolatát a. bak utótaggal.
+
+### <a name="replace-a-key"></a>Kulcs cseréje
+
+A kulcskészlet kulcsai nem helyezhetők át vagy nem cserélhetők le. Ha módosítania kell egy meglévő kulcsot:
+
+- Azt javasoljuk, hogy adjon hozzá egy új kulcsot az **aktiválási dátumhoz** az aktuális dátumra és időpontra vonatkozóan. Azure AD B2C aktiválja az új kulcsot, és leállítja az előző aktív kulcs használatát.
+- Azt is megteheti, hogy létrehoz egy új kulcskészlet-t a megfelelő kulcsokkal. Frissítse a szabályzatot az új kulcskészlet használatára, majd távolítsa el a régi kulcskészlet-t. 
 
 ## <a name="next-steps"></a>Következő lépések
 

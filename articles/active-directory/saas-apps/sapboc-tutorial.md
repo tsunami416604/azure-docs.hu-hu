@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9edbb499788b61135d761c5dfa69ce42c9275932
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 946388fa60e0f6147db2986192392740fa3949f4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548747"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671838"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Oktatóanyag: SAP Analytics-felhő integrálása Azure Active Directory
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAP Analytics-f
 * Lehetővé teheti a felhasználók számára, hogy az Azure AD-fiókjával automatikusan bejelentkezzenek az SAP Analytics-felhőbe.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,15 +47,15 @@ Az SAP Analytics Cloud Azure AD-be való integrálásának konfigurálásához h
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe a **SAP Analytics Cloud** kifejezést.
 1. Válassza az **SAP Analytics Cloud** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Konfigurálja és tesztelje az Azure AD SSO-t az SAP Analytics-felhővel egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az SAP Analytics-felhőben.
+Konfigurálja és tesztelje az Azure AD SSO-t az SAP Analytics-felhővel egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az SAP Analytics-felhőben.
 
 Az Azure AD SSO SAP Analytics-felhővel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -70,8 +70,8 @@ Az Azure AD SSO SAP Analytics-felhővel való konfigurálásához és tesztelés
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)az **SAP Analytics Cloud** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **SAP Analytics Cloud** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -103,7 +103,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az SAP Analytics felhőalapú vállalati webhelyére.
 
-2. Válassza a **menü**  >  **System**  >  **rendszerfelügyelet**menüpontot.
+2. Válassza a **menü**  >  **System**  >  **rendszerfelügyelet** menüpontot.
     
     ![Válassza a menü, majd a rendszer, majd az adminisztráció lehetőséget.](./media/sapboc-tutorial/config1.png)
 
@@ -111,15 +111,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     
     ![A biztonság lapon kattintson a Szerkesztés ikonra.](./media/sapboc-tutorial/config2.png)  
 
-4. A **hitelesítési módszer**beállításnál válassza az **SAML egyszeri Sign-On (SSO)** lehetőséget.
+4. A **hitelesítési módszer** beállításnál válassza az **SAML egyszeri Sign-On (SSO)** lehetőséget.
 
     ![SAML-Sign-On kiválasztása a hitelesítési módszerhez](./media/sapboc-tutorial/config3.png)  
 
-5. A szolgáltatói metaadatok letöltéséhez (1. lépés) válassza a **Letöltés**lehetőséget. A metaadat-fájlban keresse meg és másolja a **entityID** értéket. A Azure Portal az **alapszintű SAML-konfiguráció** párbeszédpanelen illessze be az értéket az **azonosító** mezőbe.
+5. A szolgáltatói metaadatok letöltéséhez (1. lépés) válassza a **Letöltés** lehetőséget. A metaadat-fájlban keresse meg és másolja a **entityID** értéket. A Azure Portal az **alapszintű SAML-konfiguráció** párbeszédpanelen illessze be az értéket az **azonosító** mezőbe.
 
     ![Másolja és illessze be a entityID értéket](./media/sapboc-tutorial/config4.png)  
 
-6. Ha fel szeretné tölteni a szolgáltatói metaadatokat (2. lépés) a Azure Portal letöltött fájlban, az **Identity Provider metaadatainak feltöltése**területen válassza a **feltöltés**lehetőséget.  
+6. Ha fel szeretné tölteni a szolgáltatói metaadatokat (2. lépés) a Azure Portal letöltött fájlban, az **Identity Provider metaadatainak feltöltése** területen válassza a **feltöltés** lehetőséget.  
 
     ![Az identitás-szolgáltató metaadatainak feltöltése területen válassza a feltöltés lehetőséget.](./media/sapboc-tutorial/config5.png)
 
@@ -127,7 +127,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Felhasználói attribútum kiválasztása](./media/sapboc-tutorial/config6.png)
 
-8. A fiók identitás-szolgáltatóval való ellenőrzéséhez (4. lépés) a **bejelentkezési hitelesítő adatok (e-mail)** mezőben adja meg a felhasználó e-mail-címét. Ezután válassza a **Fiók ellenőrzése**lehetőséget. A rendszer hozzáadja a bejelentkezési hitelesítő adatokat a felhasználói fiókhoz.
+8. A fiók identitás-szolgáltatóval való ellenőrzéséhez (4. lépés) a **bejelentkezési hitelesítő adatok (e-mail)** mezőben adja meg a felhasználó e-mail-címét. Ezután válassza a **Fiók ellenőrzése** lehetőséget. A rendszer hozzáadja a bejelentkezési hitelesítő adatokat a felhasználói fiókhoz.
 
     ![Adja meg az e-mailt, és válassza a fiók ellenőrzése lehetőséget](./media/sapboc-tutorial/config7.png)
 
@@ -139,25 +139,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az SAP Analytics-felhőhöz való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **SAP Analytics-felhő**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **SAP Analytics-felhő** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -173,7 +173,7 @@ Felhasználói fiók kiépítése:
 
 1. Jelentkezzen be rendszergazdaként az SAP Analytics felhőalapú vállalati webhelyére.
 
-2. Válassza a **menü**  >  **biztonsági**  >  **felhasználók**lehetőséget.
+2. Válassza a **menü**  >  **biztonsági**  >  **felhasználók** lehetőséget.
 
     ![Alkalmazott hozzáadása](./media/sapboc-tutorial/user1.png)
 
@@ -183,17 +183,17 @@ Felhasználói fiók kiépítése:
 
     Ezután hajtsa végre a következő lépéseket:
 
-    a. A **felhasználói azonosító** mezőben adja meg a felhasználó felhasználói azonosítóját, például: **B**.
+    a. A **felhasználói azonosító** mezőben adja meg a felhasználó felhasználói azonosítóját, például: **B** .
 
-    b. A **keresztnév** mezőbe írja be a felhasználó utónevét, például: **B**.
+    b. A **keresztnév** mezőbe írja be a felhasználó utónevét, például: **B** .
 
-    c. A **vezetéknév** mezőbe írja be a felhasználó vezetéknevét, például **Simon**.
+    c. A **vezetéknév** mezőbe írja be a felhasználó vezetéknevét, például **Simon** .
 
-    d. A **megjelenítendő név** mezőbe írja be a felhasználó teljes nevét, például: **B. Simon**.
+    d. A **megjelenítendő név** mezőbe írja be a felhasználó teljes nevét, például: **B. Simon** .
 
     e. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét, például: `b.simon@contoso.com` .
 
-    f. A **szerepkörök kiválasztása** lapon válassza ki a megfelelő szerepkört a felhasználó számára, majd kattintson az **OK gombra**.
+    f. A **szerepkörök kiválasztása** lapon válassza ki a megfelelő szerepkört a felhasználó számára, majd kattintson az **OK gombra** .
 
       ![Válasszon szerepkört](./media/sapboc-tutorial/user3.png)
 
@@ -203,13 +203,12 @@ Felhasználói fiók kiépítése:
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a SAP Analytics felhő csempére kattint, automatikusan be kell jelentkeznie arra az SAP Analytics-felhőbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a SAP Analytics felhő csempére kattint, automatikusan be kell jelentkeznie arra az SAP Analytics-felhőbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)

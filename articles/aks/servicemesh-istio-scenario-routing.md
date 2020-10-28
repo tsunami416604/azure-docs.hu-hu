@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 871a764c549de75d5a9e1449ba2e0737d38a4094
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83799947"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670945"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligens Útválasztás és Kanári-kiadások használata az Azure Kubernetes Service (Istio) szolgáltatásban (ak)
 
@@ -39,7 +39,7 @@ Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekints
 
 ## <a name="about-this-application-scenario"></a>Az alkalmazással kapcsolatos forgatókönyv
 
-A minta**AK-** szavazási alkalmazás két szavazati lehetőséget biztosít **Dogs**a felhasználóknak. Létezik egy tárolási összetevő, amely megőrzi a szavazatok számát az egyes lehetőségeknél. Emellett van egy analitikai összetevő, amely részletesen ismerteti az egyes lehetőségekhez leadott szavazatok körét.
+A minta **AK-** szavazási alkalmazás két szavazati lehetőséget biztosít **Dogs** a felhasználóknak. Létezik egy tárolási összetevő, amely megőrzi a szavazatok számát az egyes lehetőségeknél. Emellett van egy analitikai összetevő, amely részletesen ismerteti az egyes lehetőségekhez leadott szavazatok körét.
 
 Ebben az alkalmazási helyzetben az `1.0` analitikai összetevő szavazási alkalmazásának és verziójának verzióját kell telepítenie `1.0` . Az analitikai összetevő a szavazatok számának egyszerű számát tartalmazza. A szavazó alkalmazás és az elemzési összetevő `1.0` a Storage összetevő verziójával kommunikál, amelyet a Redis támogat.
 
@@ -53,7 +53,7 @@ Ha biztos abban, hogy a verzió `2.0` a vártnak megfelelően működik a felhas
 
 Kezdjük azzal, hogy üzembe helyezi az alkalmazást az Azure Kubernetes-szolgáltatás (ak) fürtjében. Az alábbi ábra bemutatja, hogy mit futtat a szakasz vége `1.0` : az összes olyan összetevő verziója, amelyen a bejövő kérelmek a Istio inbounds-átjárón keresztül lettek kiszolgálva:
 
-![Az AK szavazási alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-01.png)
+![Diagram, amely az összes összetevő 1,0-es verzióját mutatja, és a bejövő kérelmeket a Istio beáramló átjárón keresztül szervizelték.](media/servicemesh/istio/scenario-routing-components-01.png)
 
 A cikkben ismertetett összetevők az [Azure-Samples/AK-szavazó-alkalmazás][github-azure-sample] GitHub-tárházban érhetők el. A következő módon töltheti le az összetevőket vagy klónozott a tárházat:
 
@@ -180,7 +180,7 @@ Végezzük el az analitikai összetevő új verziójának üzembe helyezését. 
 
 Az alábbi ábrán látható, hogy mi fog futni a szakasz végén, az összetevőnek csak az összetevőjét tartalmazó verziója `1.1` `voting-analytics` van forgalomban `voting-app` . Annak ellenére `1.0` , hogy az `voting-analytics` összetevő verziója továbbra is fut, és a szolgáltatás hivatkozik `voting-analytics` rá, a Istio-proxyk nem engedélyezik a felé irányuló és onnan érkező forgalmat.
 
-![Az AK szavazási alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-02.png)
+![Az a diagram, amely csak a szavazási-elemzési összetevő 1,1-es verzióját jeleníti meg, a szavazó-alkalmazás összetevőtől érkező forgalomra van irányítva.](media/servicemesh/istio/scenario-routing-components-02.png)
 
 Telepítse `1.1` az `voting-analytics` összetevő verzióját. Hozza létre ezt az összetevőt a `voting` névtérben:
 
@@ -361,7 +361,7 @@ Az alábbi ábrán látható, hogy mit fog futni a szakasz végén.
 * Az összetevő verziószáma `2.0` `voting-app` , az összetevő verziója `2.0` `voting-analytics` és verziója `2.0` `voting-storage` képes kommunikálni egymással.
 * `2.0`Az összetevő verziója `voting-app` csak olyan felhasználók számára érhető el, akiknek van beállított szolgáltatás-jelölője. Ezt a változást a szolgáltatás jelölője egy cookie-n keresztül kezeli.
 
-![Az AK szavazási alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-03.png)
+![Diagram, amely bemutatja, hogy mit fog futni a szakasz végén.](media/servicemesh/istio/scenario-routing-components-03.png)
 
 Először frissítse a Istio-cél szabályait és a virtuális szolgáltatásokat az új összetevők kiszolgálásához. Ezek a frissítések biztosítják, hogy a forgalom ne legyen helytelen az új összetevőkre irányítva, és a felhasználók nem kapnak váratlan hozzáférést:
 
@@ -415,7 +415,7 @@ A szavazatok száma eltér az alkalmazás verziójától. Ez a különbség kiem
 
 Miután sikeresen tesztelte a Kanári-kiadást, frissítse a `voting-app` virtuális szolgáltatást, hogy átirányítsa az összes forgalmat az összetevő összes verziójára `2.0` `voting-app` . Az összes felhasználó láthatja `2.0` az alkalmazás verzióját, függetlenül attól, hogy a szolgáltatás jelölője be van-e állítva vagy sem:
 
-![Az AK szavazási alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-04.png)
+![Diagram, amely azt mutatja, hogy a felhasználók az alkalmazás 2,0-es verzióját látják, függetlenül attól, hogy a szolgáltatás jelölője be van-e állítva.](media/servicemesh/istio/scenario-routing-components-04.png)
 
 A már nem kívánt összetevők verzióinak eltávolításához frissítse az összes célhely-szabályt. Ezután frissítse az összes virtuális szolgáltatást, hogy ne hivatkozzon a verziókra.
 
@@ -439,7 +439,7 @@ A következő példa kimenete azt mutatja, hogy az AK szavazó alkalmazás össz
 namespace "voting" deleted
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Istio Bookinfo Application example][istio-bookinfo-example]használatával további forgatókönyveket is megvizsgálhat.
 

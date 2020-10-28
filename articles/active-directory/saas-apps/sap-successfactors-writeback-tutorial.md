@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: bbd274f6b039ef4492068d939c755ab279c2830a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 52c71e06b33ef29c2ef0628d651c7f72e41b87ff
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069984"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671889"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Oktatóanyag: az attribútumok az Azure AD-ből az SAP SuccessFactors való visszaírásának konfigurálása
 Ennek az oktatóanyagnak a célja, hogy megjelenjenek az Azure AD-ből származó, az SAP SuccessFactors Employee Central-re vonatkozó írási és olvasási műveletek lépései. 
@@ -57,11 +57,11 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 ### <a name="create-an-api-permissions-role"></a>API-engedélyek szerepkör létrehozása
 
 1. Jelentkezzen be az SAP SuccessFactors egy olyan felhasználói fiókkal, amely hozzáféréssel rendelkezik a felügyeleti központhoz.
-1. Keressen rá az *engedélyek kezelése*lehetőségre, majd válassza a **jogosultsági szerepkörök kezelése** elemet a keresési eredmények közül.
+1. Keressen rá az *engedélyek kezelése* lehetőségre, majd válassza a **jogosultsági szerepkörök kezelése** elemet a keresési eredmények közül.
 
    ![Engedélyezési szerepkörök kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
 
-1. Az engedélyezési szerepkör listából válassza az **új létrehozása**lehetőséget.
+1. Az engedélyezési szerepkör listából válassza az **új létrehozása** lehetőséget.
 
    > [!div class="mx-imgBorder"]
    > ![Új engedélyezési szerepkör létrehozása](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
@@ -71,26 +71,26 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
    > [!div class="mx-imgBorder"]
    > ![Engedélyezési szerepkör részletei](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
 
-1. Az engedély beállításai területen kattintson az **engedély...** elemre, majd görgessen le az engedélyezési listáról, és kattintson az **integrációs eszközök kezelése**lehetőségre. Jelölje be a **rendszergazda számára a ODATA API alapszintű hitelesítéssel való elérésének engedélyezése**jelölőnégyzetet.
+1. Az engedély beállításai területen kattintson az **engedély...** elemre, majd görgessen le az engedélyezési listáról, és kattintson az **integrációs eszközök kezelése** lehetőségre. Jelölje be a **rendszergazda számára a ODATA API alapszintű hitelesítéssel való elérésének engedélyezése** jelölőnégyzetet.
 
    > [!div class="mx-imgBorder"]
    > ![Integrációs eszközök kezelése](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
 
-1. Görgessen le ugyanabban a mezőben, és válassza az **Employee Central API**elemet. Az alább látható engedélyek hozzáadásával olvassa el a ODATA API-t és a szerkesztést a ODATA API használatával. Válassza a szerkesztés lehetőséget, ha azt tervezi, hogy ugyanazt a fiókot használja a SuccessFactors forgatókönyvhöz való visszaíráshoz. 
+1. Görgessen le ugyanabban a mezőben, és válassza az **Employee Central API** elemet. Az alább látható engedélyek hozzáadásával olvassa el a ODATA API-t és a szerkesztést a ODATA API használatával. Válassza a szerkesztés lehetőséget, ha azt tervezi, hogy ugyanazt a fiókot használja a SuccessFactors forgatókönyvhöz való visszaíráshoz. 
 
    > [!div class="mx-imgBorder"]
    > ![Írási engedélyek olvasása](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
-1. Kattintson a **kész**gombra. Kattintson a **Save Changes** (Módosítások mentése) gombra.
+1. Kattintson a **kész** gombra. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Engedélyezési csoport létrehozása az API-felhasználó számára
 
-1. A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra*, majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
+1. A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra* , majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
 
    > [!div class="mx-imgBorder"]
    > ![Engedélyezési csoportok kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
 
-1. A jogosultsági csoportok kezelése ablakban kattintson az **új létrehozása**elemre.
+1. A jogosultsági csoportok kezelése ablakban kattintson az **új létrehozása** elemre.
 
    > [!div class="mx-imgBorder"]
    > ![Új csoport hozzáadása](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
@@ -109,8 +109,8 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>Engedélyezési szerepkör megadása az engedélyezési csoportnak
 
-1. A SuccessFactors felügyeleti központban keressen rá az *engedélyezési szerepkörök kezelése*lehetőségre, majd válassza az **engedélyezési szerepkörök kezelése** lehetőséget a keresési eredmények közül.
-1. Az **engedélyezési szerepkör listából**válassza ki az API-használati engedélyekhez létrehozott szerepkört.
+1. A SuccessFactors felügyeleti központban keressen rá az *engedélyezési szerepkörök kezelése* lehetőségre, majd válassza az **engedélyezési szerepkörök kezelése** lehetőséget a keresési eredmények közül.
+1. Az **engedélyezési szerepkör listából** válassza ki az API-használati engedélyekhez létrehozott szerepkört.
 1. Az adja **meg ezt a szerepkört a következőhöz:...** kattintson a **Hozzáadás...** gombra.
 1. Válassza az **engedély csoport.** .. lehetőséget a legördülő menüből, majd kattintson a **kiválasztás...** elemre a csoportok ablak megnyitásához, és válassza ki a fenti létrehozott csoportot. 
 
@@ -134,34 +134,34 @@ A SuccessFactors visszaírási kiépítési alkalmazás bizonyos *kódokat* hasz
 
 Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók be, amelyből a felhasználó kiválaszthat. A különböző típusú e-mailek és telefonszámok (például üzleti, személyes és egyéb) a lista egy listás használatával jelennek meg. Ebben a lépésben a SuccessFactors-bérlőben konfigurált listákat azonosítjuk az e-mailek és telefonszámok értékének tárolására. 
  
-1. A SuccessFactors felügyeleti központban keressen az *üzleti konfiguráció kezelése*elemre. 
+1. A SuccessFactors felügyeleti központban keressen az *üzleti konfiguráció kezelése* elemre. 
 
    > [!div class="mx-imgBorder"]
    > ![Üzleti konfiguráció kezelése](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. A **HRIS elemek**területen válassza a **emailInfo** elemet, majd kattintson az **e-mail típusú** mező *részleteire* .
+1. A **HRIS elemek** területen válassza a **emailInfo** elemet, majd kattintson az **e-mail típusú** mező *részleteire* .
 
    > [!div class="mx-imgBorder"]
    > ![E-mail-adatok beolvasása](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. Az e **-mail-típus** részletei lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecEmailType**. Ez azonban eltérő lehet a bérlőben. 
+1. Az e **-mail-típus** részletei lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecEmailType** . Ez azonban eltérő lehet a bérlőben. 
 
    > [!div class="mx-imgBorder"]
    > ![E-mail lista azonosítása](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
 
-1. A **HRIS elemek**területen válassza a **phoneInfo** elemet, majd kattintson a **telefonos típus** mező *részleteire* .
+1. A **HRIS elemek** területen válassza a **phoneInfo** elemet, majd kattintson a **telefonos típus** mező *részleteire* .
 
    > [!div class="mx-imgBorder"]
    > ![Telefonos adatok beolvasása](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
 
-1. A **telefon típusa** Részletek lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecPhoneType**. Ez azonban eltérő lehet a bérlőben. 
+1. A **telefon típusa** Részletek lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecPhoneType** . Ez azonban eltérő lehet a bérlőben. 
 
    > [!div class="mx-imgBorder"]
    > ![Telefonos lista azonosítása](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>EmailType állandó értékének beolvasása
 
-1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert*. 
+1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert* . 
 1. Használja az előző szakaszban rögzített e-mail-lista nevét (pl. ecEmailType) az e-mail lista megkereséséhez. 
 
    > [!div class="mx-imgBorder"]
@@ -183,11 +183,11 @@ Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók
    > ![E-mail típus kódjának beolvasása](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
 
    > [!NOTE]
-   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *8 448*, akkor a *emailType* az Azure AD-ben állítsa be a *8448* állandó számra (a vessző karakter nélkül). 
+   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *8 448* , akkor a *emailType* az Azure AD-ben állítsa be a *8448* állandó számra (a vessző karakter nélkül). 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>PhoneType állandó értékének beolvasása
 
-1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert*. 
+1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert* . 
 1. Használja az előző szakaszban rögzített telefonos választási lista nevét a telefonos lista megkereséséhez. 
 
    > [!div class="mx-imgBorder"]
@@ -198,7 +198,7 @@ Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók
    > [!div class="mx-imgBorder"]
    > ![Az aktív telefonos típus lista megnyitása](./media/sap-successfactors-inbound-provisioning/open-active-phone-type-picklist.png)
 
-1. A telefonos listára vonatkozó listán tekintse át a különböző típusú telefonszámokat a **lista értékei**között.
+1. A telefonos listára vonatkozó listán tekintse át a különböző típusú telefonszámokat a **lista értékei** között.
 
    > [!div class="mx-imgBorder"]
    > ![Telefonos típusok áttekintése](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
@@ -214,7 +214,7 @@ Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók
    > ![Mobiltelefon kódjának beolvasása](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
 
    > [!NOTE]
-   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *10 606*, akkor a *cellPhoneType* az Azure AD-ben állítsa be a *10606* állandó számra (a vessző karakter nélkül). 
+   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *10 606* , akkor a *cellPhoneType* az Azure AD-ben állítsa be a *10606* állandó számra (a vessző karakter nélkül). 
 
 
 ## <a name="configuring-successfactors-writeback-app"></a>SuccessFactors visszaírási-alkalmazás konfigurálása
@@ -233,11 +233,11 @@ Ez a szakasz a következő lépéseit tartalmazza:
 
 2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
 
-3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
+3. Válassza a **vállalati alkalmazások** , majd **az összes alkalmazás** lehetőséget.
 
-4. Válassza az **alkalmazás hozzáadása**lehetőséget, és válassza az **összes** kategóriát.
+4. Válassza az **alkalmazás hozzáadása** lehetőséget, és válassza az **összes** kategóriát.
 
-5. Keresse meg a **SuccessFactors visszaírási**, és adja hozzá az alkalmazást a gyűjteményből.
+5. Keresse meg a **SuccessFactors visszaírási** , és adja hozzá az alkalmazást a gyűjteményből.
 
 6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
 
@@ -253,7 +253,7 @@ Ez a szakasz a következő lépéseit tartalmazza:
 
    * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
     > [!NOTE]
-    > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) állapotba kerülnek.
+    > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](../app-provisioning/application-provisioning-quarantine-status.md) állapotba kerülnek.
 
    * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a SuccessFactors hitelesítő adatok és az URL-cím érvényes-e.
     >[!div class="mx-imgBorder"]
@@ -265,7 +265,7 @@ Ez a szakasz a következő lépéseit tartalmazza:
 
 Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan áramlanak a SuccessFactors a Active Directoryba.
 
-1. A kiépítés lapon a **leképezések**területen kattintson a **Azure Active Directory felhasználók kiépítése**elemre.
+1. A kiépítés lapon a **leképezések** területen kattintson a **Azure Active Directory felhasználók kiépítése** elemre.
 
 1. A **forrás objektum hatóköre** mezőben kiválaszthatja, hogy az Azure ad mely felhasználói készleteit kell figyelembe venni az attribútum-alapú szűrők definiálásával. Az alapértelmezett hatókör a "minden felhasználó az Azure AD-ben". 
    > [!TIP]
@@ -281,8 +281,8 @@ Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan 
    | 2 | Levelezés | e-mail | Leképezi az e-mail-attribútum forrását. Tesztelési célból leképezheti a userPrincipalName e-mail-címre. |
    | 3 | 8448 | emailType | Ez az állandó érték az üzleti levelezéshez társított SuccessFactors-azonosító érték. Frissítse ezt az értéket a SuccessFactors-környezetnek megfelelően. Az érték megadásának lépéseiért tekintse meg az [állandó érték beolvasása a emailType](#retrieve-constant-value-for-emailtype) című szakaszt. |
    | 4 | true | emailIsPrimary | Ezzel az attribútummal állíthatja be az üzleti e-maileket elsődlegesként a SuccessFactors-ben. Ha az üzleti e-mailek nem elsődlegesek, állítsa hamis értékre ezt a jelzőt. |
-   | 5 | userPrincipalName | [custom01 – custom15] | Az **Új leképezés hozzáadása**lehetőséggel írhat userPrincipalName vagy bármely Azure ad-attribútumot a SuccessFactors felhasználói objektumában elérhető egyéni attribútumra.  |
-   | 6 | helyszíni samAccountName | username | Az **Új leképezés hozzáadása**lehetőséggel megadhatja a helyszíni sAMAccountName a SuccessFactors username attribútumhoz. |
+   | 5 | userPrincipalName | [custom01 – custom15] | Az **Új leképezés hozzáadása** lehetőséggel írhat userPrincipalName vagy bármely Azure ad-attribútumot a SuccessFactors felhasználói objektumában elérhető egyéni attribútumra.  |
+   | 6 | helyszíni samAccountName | username | Az **Új leképezés hozzáadása** lehetőséggel megadhatja a helyszíni sAMAccountName a SuccessFactors username attribútumhoz. |
    | 7 | SSO | loginMethod | Ha a SuccessFactors-bérlő [részleges egyszeri bejelentkezésre](https://apps.support.sap.com/sap/support/knowledge/en/2320766)van beállítva, akkor az új leképezés hozzáadása lehetőséggel megadhatja, hogy a LOGINMETHOD "SSO" vagy "pwd" konstans értékre legyen állítva. |
    | 8 | telephoneNumber | businessPhoneNumber | Ezt a leképezést használhatja a *telephoneNumber* az Azure ad-ből a SuccessFactors Business/Work telefonszámra. |
    | 9 | 10605 | businessPhoneType | Ez az állandó érték a vállalati telefonhoz társított SuccessFactors-azonosító érték. Frissítse ezt az értéket a SuccessFactors-környezetnek megfelelően. Az érték megadásának lépéseiért tekintse meg az [állandó érték beolvasása a phoneType](#retrieve-constant-value-for-phonetype) című szakaszt. |
@@ -302,13 +302,13 @@ Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan 
     >[!div class="mx-imgBorder"]
     >![Speciális beállítások megjelenítése](./media/sap-successfactors-inbound-provisioning/show-advanced-options.png)
 
-1. Kattintson az **attribútumok szerkesztése SuccessFactors**elemre. 
+1. Kattintson az **attribútumok szerkesztése SuccessFactors** elemre. 
 
    > [!NOTE] 
    > Ha az **attribútumok szerkesztése SuccessFactors** beállítás nem jelenik meg a Azure Portalban, használja az URL-címet az *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* oldal eléréséhez. 
 
 1. Az ebben a nézetben szereplő **API-kifejezés** oszlop az összekötő által használt JSON-elérésiút-kifejezéseket jeleníti meg. 
-1. Frissítse a JSON-elérésiút-kifejezéseket a vállalati telefon és a mobiltelefon számára a környezetnek megfelelő azonosító érték (*businessPhoneType* és *cellPhoneType*) használatára. 
+1. Frissítse a JSON-elérésiút-kifejezéseket a vállalati telefon és a mobiltelefon számára a környezetnek megfelelő azonosító érték ( *businessPhoneType* és *cellPhoneType* ) használatára. 
 
     >[!div class="mx-imgBorder"]
     >![Telefonos JSON-elérésiút változása](./media/sap-successfactors-inbound-provisioning/phone-json-path-change.png)
@@ -322,11 +322,11 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 > [!TIP]
 > Alapértelmezés szerint a kiépítési szolgáltatás bekapcsolásakor a rendszer kiépítési műveleteket kezdeményez a hatókörben lévő összes felhasználó számára. Ha hibák vannak a leképezési vagy az adatproblémákkal kapcsolatban, akkor előfordulhat, hogy a kiépítési feladat meghiúsul, és a karanténba helyezési állapotba lép. Ennek elkerüléséhez ajánlott eljárásként Azt javasoljuk, hogy a **forrás objektum hatókör** -szűrőjét konfigurálja, és tesztelje az attribútumok hozzárendeléseit néhány tesztelési felhasználóval, mielőtt elindítja a teljes szinkronizálást az összes felhasználó számára. Miután meggyőződött arról, hogy a leképezések működnek, és megadja a kívánt eredményeket, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
 
-1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
+1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a** következőre:.
 
-1. Válassza a **hatókör**elemet. Az alábbi lehetőségek közül választhat: 
-   * **Minden felhasználó és csoport szinkronizálása**: akkor válassza ezt a lehetőséget, ha az Azure ad-ből az összes felhasználóhoz tartozó leképezett attribútumokat szeretné a SuccessFactors- **Mappings**re írni  ->  **Source Object Scope**. 
-   * **Csak a hozzárendelt felhasználók és csoportok szinkronizálása**: akkor válassza ezt a lehetőséget, ha **csak a felhasználók**  ->  **Manage**  ->  **és csoportok** kezelése menüpontban az alkalmazáshoz hozzárendelt felhasználókra vonatkozó leképezett attribútumok írhatók vissza. Ezeket a felhasználókat a **hozzárendelések**  ->  **forrás objektum hatókörében**meghatározott hatóköri szabályok is vonatkoznak.
+1. Válassza a **hatókör** elemet. Az alábbi lehetőségek közül választhat: 
+   * **Minden felhasználó és csoport szinkronizálása** : akkor válassza ezt a lehetőséget, ha az Azure ad-ből az összes felhasználóhoz tartozó leképezett attribútumokat szeretné a SuccessFactors- **Mappings** re írni  ->  **Source Object Scope** . 
+   * **Csak a hozzárendelt felhasználók és csoportok szinkronizálása** : akkor válassza ezt a lehetőséget, ha **csak a felhasználók**  ->  **Manage**  ->  **és csoportok** kezelése menüpontban az alkalmazáshoz hozzárendelt felhasználókra vonatkozó leképezett attribútumok írhatók vissza. Ezeket a felhasználókat a **hozzárendelések**  ->  **forrás objektum hatókörében** meghatározott hatóköri szabályok is vonatkoznak.
 
    > [!div class="mx-imgBorder"]
    > ![Visszaírási hatókörének kiválasztása](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
@@ -356,4 +356,3 @@ Tekintse meg az SAP SuccessFactors integrációs útmutatójának [visszaírási
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a SuccessFactors és a Azure Active Directory között](successfactors-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
 * [Útmutató a kiépítési konfigurációk exportálásához és importálásához](../app-provisioning/export-import-provisioning-configuration.md)
-

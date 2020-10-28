@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 817267414555ea0641e8fb8a8392976a4789c780
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096215"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670128"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Önérvényesített technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -53,7 +53,7 @@ Az alábbi példa egy önérvényesített technikai profilt mutat be az e-mailek
 
 ## <a name="display-claims"></a>Jogcímek megjelenítése
 
-A megjelenítési jogcímek szolgáltatás jelenleg **előzetes**verzióban érhető el.
+A megjelenítési jogcímek szolgáltatás jelenleg **előzetes** verzióban érhető el.
 
 A **DisplayClaims** elem tartalmazza azon jogcímek listáját, amelyeket a képernyőn kell megjeleníteni az adatok felhasználónak való összegyűjtéséhez. A megjelenítési jogcímek értékének előre való feltöltéséhez használja a korábban leírt bemeneti jogcímeket. Az elem tartalmazhat alapértelmezett értéket is.
 
@@ -114,7 +114,7 @@ Ha egy olyan levélre vonatkozó szabályzat, amely ezt az alapszintű örökli,
 </TechnicalProfile>
 ```
 
-Az `age` alapházirendben lévő jogcím már nem jelenik meg a képernyőn a felhasználó számára – ez gyakorlatilag "rejtett". A jogcím megjelenítéséhez `age` és a kor értékének a felhasználótól való összegyűjtéséhez hozzá kell adnia egy `age` **DisplayClaim**.
+Az `age` alapházirendben lévő jogcím már nem jelenik meg a képernyőn a felhasználó számára – ez gyakorlatilag "rejtett". A jogcím megjelenítéséhez `age` és a kor értékének a felhasználótól való összegyűjtéséhez hozzá kell adnia egy `age` **DisplayClaim** .
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
@@ -133,10 +133,10 @@ Az önellenőrzött technikai profilokban a kimeneti jogcímek gyűjteménye a k
 
 Kimeneti jogcímek használata:
 
-- **A jogcímeket kimeneti jogcím-átalakítás**eredményezi.
+- **A jogcímeket kimeneti jogcím-átalakítás** eredményezi.
 - A **kimeneti jogcímek alapértelmezett értékének beállítása** anélkül, hogy adatokat kellene begyűjtenie a felhasználótól, vagy vissza kell adni az adatokat az érvényesítési technikai profilból. Az `LocalAccountSignUpWithLogonEmail` önérvényesített technikai profil állítja be a **végrehajtotta a SelfAsserted-input** jogcímet a következőre: `true` .
 - **Az érvényesítési technikai profil a kimeneti jogcímeket adja vissza** – a technikai profil egy érvényesítési műszaki profilt hívhat meg, amely visszaadja a jogcímeket. Előfordulhat, hogy fel kívánja készíteni a jogcímeket, és visszaadja azokat a felhasználói utazás következő hangolási lépéseihez. Ha például helyi fiókkal jelentkezik be, a nevű önaláírt technikai profil `SelfAsserted-LocalAccountSignin-Email` meghívja a nevű érvényesítési technikai profilt `login-NonInteractive` . Ez a technikai profil ellenőrzi a felhasználói hitelesítő adatokat, és a felhasználói profilt is visszaadja. Ilyen például a "userPrincipalName", a "displayName", a "givenName" és a "vezetéknév".
-- A **megjelenítési vezérlő visszaadja a kimeneti jogcímeket** – a technikai profil egy [megjelenítési vezérlőelemre](display-controls.md)mutató hivatkozással rendelkezhet. A megjelenítési vezérlő bizonyos jogcímeket ad vissza, például az ellenőrzött e-mail-címet. Előfordulhat, hogy fel kívánja készíteni a jogcímeket, és visszaadja azokat a felhasználói utazás következő hangolási lépéseihez. A megjelenítési vezérlő szolgáltatás jelenleg **előzetes**verzióban érhető el.
+- A **megjelenítési vezérlő visszaadja a kimeneti jogcímeket** – a technikai profil egy [megjelenítési vezérlőelemre](display-controls.md)mutató hivatkozással rendelkezhet. A megjelenítési vezérlő bizonyos jogcímeket ad vissza, például az ellenőrzött e-mail-címet. Előfordulhat, hogy fel kívánja készíteni a jogcímeket, és visszaadja azokat a felhasználói utazás következő hangolási lépéseihez. A megjelenítési vezérlő szolgáltatás jelenleg **előzetes** verzióban érhető el.
 
 Az alábbi példa azt mutatja be, hogyan használható egy önérvényesített technikai profil, amely a megjelenítési jogcímeket és a kimeneti jogcímeket egyaránt használja.
 
@@ -175,6 +175,14 @@ Az alábbi példa azt mutatja be, hogyan használható egy önérvényesített t
 </TechnicalProfile>
 ```
 
+### <a name="output-claims-sign-up-or-sign-in-page"></a>Kimeneti jogcímek regisztrálása vagy bejelentkezési lapja
+
+Egy kombinált regisztrációs és bejelentkezési oldalon vegye figyelembe az alábbiakat, ha a Content definition [DataUri](contentdefinitions.md#datauri) elemet használja az a `unifiedssp` vagy az `unifiedssd` oldal típusát adja meg:
+
+- A rendszer csak a Felhasználónév és a jelszó jogcímeket jeleníti meg.
+- Az első két kimeneti jogcímnek a felhasználónévnek és a jelszónak (ebben a sorrendben) kell lennie. 
+- Más jogcímek nem jelennek meg; a jogcímek esetében be kell állítania a jogcím- `defaultValue` űrlap érvényesítése technikai profilt, vagy meg kell hívnia a jogcímeket. 
+
 ## <a name="persist-claims"></a>Jogcímek fenntartása
 
 A PersistedClaims elem nincs használatban. Az önérvényesített technikai profil nem tartja Azure AD B2Cba az adatvédelmet. Ehelyett egy olyan érvényesítési technikai profilra irányuló hívás történik, amely felelős az adatmegőrzésért. A regisztrálási szabályzat például az `LocalAccountSignUpWithLogonEmail` önérvényesített technikai profilt használja az új felhasználói profil összegyűjtéséhez. A `LocalAccountSignUpWithLogonEmail` technikai profil meghívja az érvényesítési technikai profilt, hogy létrehozza a fiókot Azure ad B2Cban.
@@ -203,7 +211,7 @@ Az üzleti logikával meghívhat egy REST API technikai profilt, felülírhatja 
 | Setting. forgotPasswordLinkLocation <sup>2</sup>| Nem| Az elfelejtett jelszó hivatkozását jeleníti meg. Lehetséges értékek: `AfterInput` (alapértelmezett) a hivatkozás megjelenik az oldal alján, vagy `None` eltávolítja az elfelejtett jelszó hivatkozást.|
 | Setting. enableRememberMe <sup>2</sup>| Nem| Megjeleníti a [bejelentkezett marad](custom-policy-keep-me-signed-in.md) jelölőnégyzetet. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). |
 | Setting. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Nem| Javítja a felhasználói élményt, ha megvárja, amíg a felhasználó leállítja a beírást, majd érvényesíti az értéket. Az alapértelmezett érték 2000 ezredmásodperc. |
-| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
+| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 
 Megjegyzések:
 1. Elérhető a Content definition [DataUri](contentdefinitions.md#datauri) típusa `unifiedssp` vagy `unifiedssd` .

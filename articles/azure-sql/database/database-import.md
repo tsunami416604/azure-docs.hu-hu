@@ -11,23 +11,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: ec3da815a9ca3e55fd65f1f0a64a81b74c6d2979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08aaec23b0edc0e797d26d4b51081f6daa5b5c19
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613747"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671227"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: BACPAC-fájl importálása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázisba
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) -fájl használatával importálhat egy SQL Server adatbázist Azure SQL Database vagy SQL felügyelt példányba. Az adatokat importálhatja az Azure Blob Storage-ben tárolt BACPAC-fájlból (csak standard tárolás), vagy egy helyszíni tárolóból. Ha maximálisra szeretné növelni az importálási sebességet több, gyorsabb erőforrás biztosításával, skálázza az adatbázist magasabb szolgáltatási szintre és nagyobb számítási méretre az importálási folyamat során. A sikeres importálás után vertikálisan leskálázhatja őket.
+[BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) -fájl használatával importálhat egy SQL Server adatbázist Azure SQL Database vagy SQL felügyelt példányba. Az adatokat importálhatja az Azure Blob Storage-ben tárolt BACPAC-fájlból (csak standard tárolás), vagy egy helyszíni tárolóból. Ha maximálisra szeretné növelni az importálási sebességet több, gyorsabb erőforrás biztosításával, skálázza az adatbázist magasabb szolgáltatási szintre és nagyobb számítási méretre az importálási folyamat során. A sikeres importálás után vertikálisan leskálázhatja őket.
 
 > [!NOTE]
 > Az importált adatbázis kompatibilitási szintje a forrás adatbázis kompatibilitási szintjén alapul.
 
 > [!IMPORTANT]
-> Az adatbázis importálása után úgy is dönthet, hogy az adatbázist az aktuális kompatibilitási szinten (a AdventureWorks2008R2-adatbázis 100-as szintjén) vagy magasabb szinten szeretné használni. Az adatbázis meghatározott kompatibilitási szinten való működtetésének következményeivel és lehetőségeivel kapcsolatos további információkért lásd: [ADATBÁZIS kompatibilitási szintjének MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). A kompatibilitási szintekkel kapcsolatos további adatbázisszintű beállításokról itt talál információt: [ADATBÁZISHOZ KÖTŐDŐ KONFIGURÁCIÓ MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
+> Az adatbázis importálása után úgy is dönthet, hogy az adatbázist az aktuális kompatibilitási szinten (a AdventureWorks2008R2-adatbázis 100-as szintjén) vagy magasabb szinten szeretné használni. Az adatbázis meghatározott kompatibilitási szinten való működtetésének következményeivel és lehetőségeivel kapcsolatos további információkért lásd: [ADATBÁZIS kompatibilitási szintjének MÓDOSÍTÁSA](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). A kompatibilitási szintekkel kapcsolatos további adatbázisszintű beállításokról itt talál információt: [ADATBÁZISHOZ KÖTŐDŐ KONFIGURÁCIÓ MÓDOSÍTÁSA](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
 
 ## <a name="using-azure-portal"></a>Az Azure Portal használata
 
@@ -42,31 +42,31 @@ Ha az adatbázist egy BACPAC-fájlból egy [Azure SQL felügyelt példányba](..
 > [!NOTE]
 > A Azure Portal vagy PowerShell által küldött importálási/exportálási kérelmeket feldolgozó gépeknek a BACPAC-fájlt, valamint a Data-Tier Application Framework (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentősen eltér az azonos méretű adatbázisok között, és az adatbázis méretének háromszorosára lehet szükség. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy néhány kérelem meghiúsul a hibával `There is not enough space on the disk` . Ebben az esetben a megkerülő megoldás az sqlpackage.exe futtatása egy olyan gépen, amely elegendő helyi lemezterülettel rendelkezik. A probléma elkerülése érdekében javasoljuk, hogy a 150GB-nál nagyobb adatbázisok importálására/exportálására SqlPackage használjon.
 
-1. Ha a Azure Portal használatával szeretne importálni egy BACPAC-fájlból egy új önálló adatbázisba, nyissa meg a megfelelő kiszolgáló lapot, majd az eszköztáron válassza az **adatbázis importálása**lehetőséget.  
+1. Ha a Azure Portal használatával szeretne importálni egy BACPAC-fájlból egy új önálló adatbázisba, nyissa meg a megfelelő kiszolgáló lapot, majd az eszköztáron válassza az **adatbázis importálása** lehetőséget.  
 
    ![Adatbázis import1](./media/database-import/sql-server-import-database.png)
 
 1. Válassza ki a Storage-fiókot és a tárolót a BACPAC fájlhoz, majd válassza ki azt a BACPAC-fájlt, amelyből importálni kívánja.
 
-1. Adja meg az új adatbázis méretét (általában megegyezik a forrással), és adja meg a cél SQL Server hitelesítő adatokat. A Azure SQL Databaseban található új adatbázis lehetséges értékeinek listáját az [adatbázis létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)című témakörben tekintheti meg.
+1. Adja meg az új adatbázis méretét (általában megegyezik a forrással), és adja meg a cél SQL Server hitelesítő adatokat. A Azure SQL Databaseban található új adatbázis lehetséges értékeinek listáját az [adatbázis létrehozása](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)című témakörben tekintheti meg.
 
    ![Adatbázis import2](./media/database-import/sql-server-import-database-settings.png)
 
 1. Kattintson az **OK** gombra.
 
-1. Az importálás előrehaladásának figyeléséhez nyissa meg az adatbázis kiszolgáló lapját, és a **Beállítások**területen válassza az **Importálás/exportálás előzmények**elemet. Ha a művelet sikeres, az importálás **Befejezve** állapotba kerül.
+1. Az importálás előrehaladásának figyeléséhez nyissa meg az adatbázis kiszolgáló lapját, és a **Beállítások** területen válassza az **Importálás/exportálás előzmények** elemet. Ha a művelet sikeres, az importálás **Befejezve** állapotba kerül.
 
    ![Adatbázis-importálás állapota](./media/database-import/sql-server-import-database-history.png)
 
-1. Annak ellenőrzéséhez, hogy az adatbázis él-e a kiszolgálón, válassza az **SQL-adatbázisok** lehetőséget, és ellenőrizze, hogy az új adatbázis **online állapotban**van-e.
+1. Annak ellenőrzéséhez, hogy az adatbázis él-e a kiszolgálón, válassza az **SQL-adatbázisok** lehetőséget, és ellenőrizze, hogy az új adatbázis **online állapotban** van-e.
 
 ## <a name="using-sqlpackage"></a>A SqlPackage használata
 
-Ha SQL Server adatbázist szeretne importálni a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogrammal, tekintse meg a [paraméterek és tulajdonságok importálása](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)című témakört. [A Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és SQL Server Data Tools tartalmazza a SqlPackage. A legújabb [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) a Microsoft letöltőközpontból is letöltheti.
+Ha SQL Server adatbázist szeretne importálni a [SqlPackage](/sql/tools/sqlpackage) parancssori segédprogrammal, tekintse meg a [paraméterek és tulajdonságok importálása](/sql/tools/sqlpackage#import-parameters-and-properties)című témakört. [A Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) és SQL Server Data Tools tartalmazza a SqlPackage. A legújabb [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) a Microsoft letöltőközpontból is letöltheti.
 
-A méretezés és a teljesítmény érdekében javasoljuk, hogy a SqlPackage a legtöbb éles környezetben használja a Azure Portal használata helyett. Az SQL Server Customer tanácsadó csapatának blogja a fájlok használatával történő áttelepítéssel kapcsolatban `BACPAC` lásd: [áttelepítés SQL Serverról Azure SQL DATABASEre BACPAC-fájlok használatával](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+A méretezés és a teljesítmény érdekében javasoljuk, hogy a SqlPackage a legtöbb éles környezetben használja a Azure Portal használata helyett. Az SQL Server Customer tanácsadó csapatának blogja a fájlok használatával történő áttelepítéssel kapcsolatban `BACPAC` lásd: [áttelepítés SQL Serverról Azure SQL DATABASEre BACPAC-fájlok használatával](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
 
-A következő SqlPackage-utasítás importálja a **AdventureWorks2008R2** -adatbázist a helyi tárolóból egy **MYNEWSERVER20170403**nevű logikai SQL Server-kiszolgálóra. Létrehoz egy **myMigratedDatabase** nevű új adatbázist egy **prémium** szintű szolgáltatási szinttel és egy **P6** szolgáltatás-célkitűzéssel. A környezetnek megfelelően módosítsa ezeket az értékeket.
+A következő SqlPackage-utasítás importálja a **AdventureWorks2008R2** -adatbázist a helyi tárolóból egy **MYNEWSERVER20170403** nevű logikai SQL Server-kiszolgálóra. Létrehoz egy **myMigratedDatabase** nevű új adatbázist egy **prémium** szintű szolgáltatási szinttel és egy **P6** szolgáltatás-célkitűzéssel. A környezetnek megfelelően módosítsa ezeket az értékeket.
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=<migratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -156,12 +156,12 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 Ezeket a varázslókat is használhatja.
 
-- [Adatrétegbeli alkalmazás importálása varázsló SQL Server Management Studioban](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
-- [SQL Server Importálás és exportálás varázsló](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
+- [Adatrétegbeli alkalmazás importálása varázsló SQL Server Management Studioban](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
+- [SQL Server Importálás és exportálás varázsló](/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Ha meg szeretné tudni, hogyan csatlakozhat az adatbázishoz, és hogyan lehet lekérdezéseket Azure SQL Databaseban, tekintse meg a gyors útmutató [: Azure SQL Database: a SQL Server Management Studio használatával csatlakozhat az adatlekérdezéshez](connect-query-ssms.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).
 - A teljes SQL Server adatbázis-áttelepítési folyamatról, beleértve a teljesítménnyel kapcsolatos ajánlásokat is, tekintse meg a [SQL Server adatbázis áttelepítésének Azure SQL Database](migrate-to-database-from-sql-server.md).
-- A tárolási kulcsok és a közös hozzáférési aláírások biztonságos kezelésével és megosztásával kapcsolatos további információkért lásd: az [Azure Storage biztonsági útmutatója](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+- A tárolási kulcsok és a közös hozzáférési aláírások biztonságos kezelésével és megosztásával kapcsolatos további információkért lásd: az [Azure Storage biztonsági útmutatója](../../storage/blobs/security-recommendations.md).
