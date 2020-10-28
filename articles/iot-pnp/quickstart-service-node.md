@@ -7,13 +7,13 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js
-ms.openlocfilehash: b144d49daf9ab89a4553b93e3b36c9c2c8bef9ca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 9a71a45f69f7a2bd2fbc198292526a6928e421a2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521324"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736001"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Gyors útmutató: interakció a megoldáshoz csatlakoztatott IoT Plug and Play eszközzel (Node.js)
 
@@ -69,8 +69,8 @@ Ebben a rövid útmutatóban egy, a IoT Plug and Play eszközként Node.jsba ír
 
 A [környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóanyagok](set-up-environment.md) létrehozott két környezeti változót a minta konfigurálásához a IoT hub és az eszközhöz való kapcsolódáshoz:
 
-* **IOTHUB_CONNECTION_STRING**: a IoT hub-kapcsolatok karakterlánca korábban már jegyzett készített.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_CONNECTION_STRING** : a IoT hub-kapcsolatok karakterlánca korábban már jegyzett készített.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"` .
 
 Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node.jsban, hogy együttműködjön az imént beállított eszközzel.
 
@@ -164,7 +164,7 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node.jsban, hog
 Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
 
 > [!NOTE]
-> Ezek a szolgáltatási minták a **beállításjegyzék** osztályt használják a **IoT hub szolgáltatás ügyfelének**. Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
+> Ezek a szolgáltatási minták a **beállításjegyzék** osztályt használják a **IoT hub szolgáltatás ügyfelének** . Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
 
 ### <a name="update-a-writable-property"></a>Írható tulajdonság frissítése
 

@@ -6,16 +6,16 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 05/01/2020
+ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d0063594309dc7a1c12c61b6dd18fec1d93f1082
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893084"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738753"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>A szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan használhatók a jegyzetfüzetek az Azure szinapszis
 
 ## <a name="create-a-notebook"></a>Jegyzetfüzet létrehozása
 
-Kétféleképpen hozhat létre jegyzetfüzetet. Létrehozhat egy új jegyzetfüzetet, vagy importálhat egy meglévő jegyzetfüzetet egy Azure-beli szinapszis-munkaterületre a **Object Explorerból**. Az Azure szinapszis Studio notebookok felismerik a standard Jupyter Notebook IPYNB-fájlokat.
+Kétféleképpen hozhat létre jegyzetfüzetet. Létrehozhat egy új jegyzetfüzetet, vagy importálhat egy meglévő jegyzetfüzetet egy Azure-beli szinapszis-munkaterületre a **Object Explorerból** . Az Azure szinapszis Studio notebookok felismerik a standard Jupyter Notebook IPYNB-fájlokat.
 
 ![importálási jegyzetfüzet létrehozása](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
@@ -44,11 +44,11 @@ A jegyzetfüzetek cellákból állnak, amelyek a kód vagy a szöveg különáll
 
 Több módon is hozzáadhat új cellákat a jegyzetfüzethez.
 
-1. Bontsa ki a bal felső **+ cella** gombot, és válassza a **kódlap hozzáadása** vagy a **szöveg hozzáadása cellát**.
+1. Bontsa ki a bal felső **+ cella** gombot, és válassza a **kódlap hozzáadása** vagy a **szöveg hozzáadása cellát** .
 
     ![cella hozzáadása a cellához – gomb](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
-2. Vigye a kurzort a két cella közötti területre, majd válassza a **kód hozzáadása** vagy a **szöveg hozzáadása**lehetőséget.
+2. Vigye a kurzort a két cella közötti területre, majd válassza a **kód hozzáadása** vagy a **szöveg hozzáadása** lehetőséget.
 
     ![cella – térköz hozzáadása](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
@@ -142,7 +142,7 @@ Kattintson a három pontra (...), és nyissa meg a jobb szélen a további cella
 
 ### <a name="delete-a-cell"></a>Cella törlése
 
-Ha törölni szeretne egy cellát, válassza a három pontot (...), majd a jobb szélen kattintson a **cella törlése**lehetőségre. 
+Ha törölni szeretne egy cellát, válassza a három pontot (...), majd a jobb szélen kattintson a **cella törlése** lehetőségre. 
 
 [A billentyűparancsokat a parancs módban](#shortcut-keys-under-command-mode)is használhatja. Az aktuális cella törléséhez nyomja le a **d, d** billentyűt.
   
@@ -167,12 +167,12 @@ A kódok celláit egyenként vagy egyszerre is futtathatja a jegyzetfüzetben. A
 
 A kód több módon is futtatható a cellában.
 
-1. Vigye a kurzort a futtatni kívánt cellára, és válassza a **cella futtatása** gombot, vagy nyomja le a **CTRL + ENTER**billentyűkombinációt.
+1. Vigye a kurzort a futtatni kívánt cellára, és válassza a **cella futtatása** gombot, vagy nyomja le a **CTRL + ENTER** billentyűkombinációt.
 
    ![Futtatás – 1. cella](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
 
 
-2. A jobb szélen található további cellahivatkozások menü eléréséhez válassza a három pontot (**..**.). Ezután válassza a **cella futtatása**lehetőséget.
+2. A jobb szélen található további cellahivatkozások menü eléréséhez válassza a három pontot ( **..** .). Ezután válassza a **cella futtatása** lehetőséget.
 
    ![Futtatás – 2. cella](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
    
@@ -186,7 +186,7 @@ Az **összes futtatása** gomb kiválasztásával az aktuális jegyzetfüzet ös
 
 ### <a name="run-all-cells-above-or-below"></a>Az összes fenti vagy alatti cella futtatása
 
-A jobb szélen található további cellahivatkozások menü eléréséhez válassza a három pontot (**..**.). Ezután válassza a **fenti cellák futtatása** lehetőséget, hogy az összes cellát az aktuálisan futó sorban futtassa. Válassza az **alábbi cellák futtatása** lehetőséget az összes cella az aktuális szakasz alatti futtatásához.
+A jobb szélen található további cellahivatkozások menü eléréséhez válassza a három pontot ( **..** .). Ezután válassza a **fenti cellák futtatása** lehetőséget, hogy az összes cellát az aktuálisan futó sorban futtassa. Válassza az **alábbi cellák futtatása** lehetőséget az összes cella az aktuális szakasz alatti futtatásához.
 
    ![futtatási cellák – fent vagy lent](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -211,7 +211,7 @@ Az egyes feladatokhoz vagy fázisokhoz tartozó feladatok száma segít a Spark-
 
 ### <a name="spark-session-config"></a>Spark-munkamenet konfigurációja
 
-Megadhatja az időtúllépés időtartamát, a számot és a végrehajtók számát, hogy az aktuális Spark-munkamenetet adja meg a **konfigurálási munkamenetben**. Indítsa újra a Spark-munkamenetet a konfigurációs módosítások érvénybe léptetéséhez. Az összes gyorsítótárazott jegyzetfüzet-változó törlődik.
+Megadhatja az időtúllépés időtartamát, a számot és a végrehajtók számát, hogy az aktuális Spark-munkamenetet adja meg a **konfigurálási munkamenetben** . Indítsa újra a Spark-munkamenetet a konfigurációs módosítások érvénybe léptetéséhez. Az összes gyorsítótárazott jegyzetfüzet-változó törlődik.
 
 [![munkamenet-kezelés](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
@@ -275,7 +275,7 @@ Az elsődleges Storage-fiókban lévő adatelérést közvetlenül is elérheti.
 
 ### <a name="produce-rendered-table-view"></a>Megjelenített táblázatos nézet létrehozása
 
-Táblázatos eredményeket tartalmazó nézetet biztosítunk a sávdiagram, a diagram, a tortadiagram, a pontdiagram és a diagramterület létrehozásához. Az adatait anélkül is megjelenítheti, hogy kódot kellene írnia. A diagramok testreszabhatók a **diagram beállításaiban**. 
+Táblázatos eredményeket tartalmazó nézetet biztosítunk a sávdiagram, a diagram, a tortadiagram, a pontdiagram és a diagramterület létrehozásához. Az adatait anélkül is megjelenítheti, hogy kódot kellene írnia. A diagramok testreszabhatók a **diagram beállításaiban** . 
 
 A **(z)%% SQL** Magic parancsok kimenete alapértelmezés szerint a megjelenített tábla nézetben jelenik meg. Meghívhatja <code>display(df)</code> a Spark DataFrames, a pandák DataFrames, a List vagy a rugalmas elosztott adatkészletek (RDD) függvényt a megjelenített tábla nézet létrehozásához.
 
@@ -294,9 +294,9 @@ A <code>display(df, summary = True)</code> segítségével megtekintheti egy ado
 
 ### <a name="render-html-or-interactive-libraries"></a>HTML-vagy interaktív könyvtárak renderelése
 
-A **displayHTML ()** használatával HTML-kódot is megjelenítheti, beleértve a JavaScriptet, a CSS-t, a D3-t vagy az interaktív kódtárakat, például a **bokeh**-t
+A **displayHTML ()** használatával HTML-kódot is megjelenítheti, beleértve a JavaScriptet, a CSS-t, a D3-t vagy az interaktív kódtárakat, például a **bokeh** -t
 
-Az alábbi ábrán egy példa látható a karakterjelek ábrázolására a **bokeh**használatával.
+Az alábbi ábrán egy példa látható a karakterjelek ábrázolására a **bokeh** használatával.
 
    ![bokeh – példa](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
    
@@ -357,7 +357,7 @@ Elérhető vonali varázslatok: [% lsmagic](https://ipython.readthedocs.io/en/st
 Elérhető cella-varázslatok: [%% idő](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% csharp](#use-multiple-languages)
 
 
-## <a name="orchestrate-notebook"></a>Jegyzetfüzetek összehangolása
+## <a name="integrate-a-notebook"></a>Jegyzetfüzet integrálása
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>Jegyzetfüzet hozzáadása egy folyamathoz
 

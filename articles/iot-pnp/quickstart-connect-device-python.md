@@ -7,13 +7,13 @@ ms.date: 7/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: 187a0598dfc26394d1fd48e67d83ef7e98ef6226
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91574023"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737303"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>Gyors útmutató: minta IoT csatlakoztatása Plug and Play IoT Hub (Python)
 
@@ -37,7 +37,7 @@ A helyi Python-környezetben a következő módon telepítse a csomagot:
 pip install azure-iot-device
 ```
 
-A Python SDK IoT-tárház klónozása és a **Master**:
+A Python SDK IoT-tárház klónozása és a **Master** :
 
 ```cmd/sh
 git clone https://github.com/Azure/azure-iot-sdk-python
@@ -61,7 +61,7 @@ Nyissa meg a **simple_thermostat.** a fájlt egy szövegszerkesztőben. Figyelje
 
     1. Az eszközoldali SDK használatával hozza létre az eszköz ügyfelet, és csatlakozik az IoT hubhoz.
 
-    1. Frissítések tulajdonságai. Az általunk használt modell, a **termosztát**, valamint `targetTemperature` `maxTempSinceLastReboot` a termosztát két tulajdonsága, hogy mi lesz a használata. A tulajdonságok a `patch_twin_reported_properties` on definiált metódus használatával frissülnek `device_client` .
+    1. Frissítések tulajdonságai. Az általunk használt modell, a **termosztát** , valamint `targetTemperature` `maxTempSinceLastReboot` a termosztát két tulajdonsága, hogy mi lesz a használata. A tulajdonságok a `patch_twin_reported_properties` on definiált metódus használatával frissülnek `device_client` .
 
     1. A **execute_command_listener** függvény használatával elindítja a parancsokra vonatkozó kérelmek figyelését. A függvény egy "figyelőt" állít be a szolgáltatásból érkező parancsok figyelésére. A figyelő beállításakor a, a `method_name` `user_command_handler` és a `create_user_response_handler` .
         - A `user_command_handler` függvény határozza meg, hogy az eszköz mit tegyen, ha parancsot kap. Ha például a riasztás leáll, a parancs fogadásának hatása felébred. Gondolja át ezt a parancsot a meghívott parancs hatására.
@@ -69,7 +69,7 @@ Nyissa meg a **simple_thermostat.** a fájlt egy szövegszerkesztőben. Figyelje
 
     1. Elindítja a telemetria küldését. A **pnp_send_telemetry** a pnp_methods. file. reszelő fájlban van definiálva. A mintakód egy hurok használatával hívja meg ezt a függvényt nyolc másodpercenként.
 
-    1. Letiltja az összes figyelőt és feladatot, és a **q** vagy a **q**gomb megnyomásakor a hurok is létezik.
+    1. Letiltja az összes figyelőt és feladatot, és a **q** vagy a **q** gomb megnyomásakor a hurok is létezik.
 
 [!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 
@@ -98,7 +98,7 @@ Az ügyfél mintájának elindítása után az Azure IoT Explorer eszköz haszn�
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hubhoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
 

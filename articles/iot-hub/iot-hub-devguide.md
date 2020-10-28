@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81728815"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735927"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub – fejlesztői útmutató
 
@@ -52,7 +52,7 @@ Ez a IoT Hub fejlesztői útmutató a következő cikkeket tartalmazza:
 
 * [Fájlok feltöltése egy eszközről](iot-hub-devguide-file-upload.md) leírja, hogyan tölthet fel fájlokat egy eszközről. A cikk olyan témakörökkel kapcsolatos információkat is tartalmaz, mint például a feltöltési folyamat által küldött értesítések.
 
-* [Az eszközök identitásának kezelése IoT hub ismerteti, hogy az](iot-hub-devguide-identity-registry.md)egyes IoT hub-beli identitás-beállításjegyzék mely információkat tárolja. A cikk azt is leírja, hogyan érheti el és módosíthatja azt.
+* [Az eszközök identitásának kezelése IoT hub ismerteti, hogy az](iot-hub-devguide-identity-registry.md) egyes IoT hub-beli identitás-beállításjegyzék mely információkat tárolja. A cikk azt is leírja, hogyan érheti el és módosíthatja azt.
 
 * A [IoT hubhoz való hozzáférés szabályozása](iot-hub-devguide-security.md) : az eszközök és a Felhőbeli összetevők IoT hub funkcióinak elérését biztosító biztonsági modellt ismerteti. A cikk a tokenek és az X. 509 tanúsítványok használatáról, valamint a megadható engedélyek részleteiről tartalmaz információkat.
 

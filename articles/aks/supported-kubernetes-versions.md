@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a36eb588c7128f13fb21b368d308ed00171fbb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a10340d4c2bd2811204af41fba5b32cbe9c4e905
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335534"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735065"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -95,7 +95,7 @@ New Supported Version List
 
 A `kubectl` *Kube-apiserver* verziójához viszonyítva egy régebbi vagy újabb verziójú alverziót is használhat, amely összhangban van a [kubectl Kubernetes-támogatási szabályzatával](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl).
 
-Ha például a *Kube-apiserver* értéke *1,17*, akkor a *1,18* *1,16* -es verzióit használhatja a következővel: `kubectl` *Kube-apiserver*.
+Ha például a *Kube-apiserver* értéke *1,17* , akkor a *1,18* *1,16* -es verzióit használhatja a következővel: `kubectl` *Kube-apiserver* .
 
 A verziójának telepítéséhez vagy frissítéséhez futtassa a következőt: `kubectl` `az aks install-cli` .
 
@@ -121,7 +121,7 @@ Előfordulhat, hogy a rendszer kihagyja az adott javítási kiadásokat, vagy a 
 
 ## <a name="azure-portal-and-cli-versions"></a>Azure Portal és CLI-verziók
 
-Ha AK-fürtöt telepít a portálon vagy az Azure CLI-vel, a fürt alapértelmezett értéke az N-1 alverzió és a legújabb javítás. Ha például az AK támogatja a következőt: *1.17. a*, *1.17. b*, *1.16. c*, *1.16. d*, *1.15. e*és *1.15. f*, a kiválasztott alapértelmezett verzió az *1.16. c*.
+Ha AK-fürtöt telepít a portálon vagy az Azure CLI-vel, a fürt alapértelmezett értéke az N-1 alverzió és a legújabb javítás. Ha például az AK támogatja a következőt: *1.17. a* , *1.17. b* , *1.16. c* , *1.16. d* , *1.15. e* és *1.15. f* , a kiválasztott alapértelmezett verzió az *1.16. c* .
 
 Ha szeretné megtudni, hogy az előfizetéshez és a régióhoz jelenleg milyen verziók érhetők el, használja az az [AK Get-Versions][az-aks-get-versions] parancsot. A következő példa a *EastUS* régió elérhető Kubernetes-verzióit sorolja fel:
 
@@ -135,11 +135,12 @@ A korábbi kiadási előzményekért lásd [itt](https://en.wikipedia.org/wiki/K
 
 |  K8s verziója | Felsőbb rétegbeli kiadás  | AK – előzetes verzió  | AK-GA  | Elhasználódott |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | Sep – 19-19  | Jan 2019   | Mar 2020  | 1,19 GA | 
+| 1.16  | Sep – 19-19  | Jan 2019   | Mar 2020  | Jan 2021 * | 
 | 1,17  | Dec-09-19  | Jan 2019   | Jul 2020  | 1,20 GA | 
 | 1,18  | Mar-23-20  | 2020. május   | Augusztus 2020  | 1,21 GA | 
 | 1,19  | Aug-04-20  | Sep 2020   | November 2020  | 1,22 GA | 
 | 1,20  | Dec-08-20  | Jan 2021   | Mar 2021  | 1,23 GA | 
+\* Az AK-i ünnepek miatt a 1,16. november 2020. és január 2021 között kiterjesztik az élettartamot. [További információk](https://github.com/Azure/AKS/releases/tag/2020-10-12)
 
 ## <a name="faq"></a>GYIK
 
@@ -149,7 +150,7 @@ A Kubernetes 1,19- [ben a nyílt forráskódú közösség 1 évre kibővített 
 
 **Mi történik, ha egy felhasználó olyan alverzióval frissít egy Kubernetes-fürtöt, amely nem támogatott?**
 
-Ha az *n-3* vagy régebbi verzióját használja, az azt jelenti, hogy a támogatáson kívül esik, és a rendszer a frissítésre kéri. Ha az n-3 verzióról n-2-ra történő verziófrissítés sikeres, akkor a támogatási szabályzatunk keretében visszakerül. Példa:
+Ha az *n-3* vagy régebbi verzióját használja, az azt jelenti, hogy a támogatáson kívül esik, és a rendszer a frissítésre kéri. Ha az n-3 verzióról n-2-ra történő verziófrissítés sikeres, akkor a támogatási szabályzatunk keretében visszakerül. Például:
 
 - Ha a legrégebbi támogatott AK-verzió *1,15. a* , és Ön a *1,14. b* vagy régebbi verziót használja, a támogatáson kívül van.
 - Ha a *1,14. b* verzióról *1.15* -re vagy annál nagyobbra történő frissítés sikeres, a támogatási szabályzatunk keretében visszakerül.
@@ -176,7 +177,7 @@ A vezérlési síkon az összes csomópont-készlet verziójának egy ablakában
 
 Ha egy támogatott AK-fürtöt frissít, a Kubernetes alverzióit nem lehet kihagyni. Például a *1.12. x*  ->  *1.13. x* vagy *1.13. x*  ->  *1.14. x* közötti frissítések engedélyezettek, a *1.12. x*  ->  *1.14. x* azonban nem.
 
-A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x*1.13. x verzióról kell frissíteni,  ->  *1.13.x*majd az *1.13. x*  ->  *1.14. x*verziójáról kell frissíteni.
+A frissítéshez *1.12. x*  ->  *1,14. x* -ről először a *1.12. x* 1.13. x verzióról kell frissíteni,  ->  *1.13.x* majd az *1.13. x*  ->  *1.14. x* verziójáról kell frissíteni.
 
 Több verzió kihagyása csak akkor végezhető el, ha nem támogatott verzióról frissít vissza egy támogatott verzióra. Például nem támogatott *1.10. x* – > egy támogatott *1.15. x-et* lehet befejezni.
 

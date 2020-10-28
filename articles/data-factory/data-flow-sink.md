@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2020
-ms.openlocfilehash: 81ce3fae74a14c91db23c991ab0b53accd6568a6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 5845ab6419d6914b9221df1ae1280d31aba0ae7a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107708"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737533"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
@@ -26,19 +26,19 @@ Minden fogadó transzformáció pontosan egy Azure Data Factory adatkészlet-obj
 
 ## <a name="inline-datasets"></a>Beágyazott adatkészletek
 
-A fogadó-átalakítás létrehozásakor adja meg, hogy a fogadó információ egy adatkészlet-objektumon belül vagy a fogadó átalakításban van-e definiálva. A legtöbb formátum csak az egyikben vagy a másikban érhető el. Adja meg a megfelelő összekötő-dokumentumot, amelyből megtudhatja, hogyan használhat egy adott összekötőt.
+A fogadó-átalakítás létrehozásakor adja meg, hogy a fogadó információ egy adatkészlet-objektumon belül vagy a fogadó átalakításban van-e definiálva. A legtöbb formátum csak az egyikben vagy a másikban érhető el. Egy adott összekötő használatának megismeréséhez tekintse meg a megfelelő összekötő-dokumentumot.
 
-Ha egy formátum a beágyazott és egy adatkészlet objektumban is támogatott, akkor mindkettőnek van előnye. Az adatkészlet-objektumok újrafelhasználható entitások, amelyek más adatfolyamatokban és tevékenységekben, például másolásban is kihasználhatók. Ezek különösen akkor hasznosak, ha megerősített sémát használ. Az adatkészletek nem a Spark-alapúak, és esetenként előfordulhat, hogy felül kell bírálni bizonyos beállításokat vagy sémákat a fogadó átalakításban.
+Ha egy formátum a beágyazott és egy adatkészlet objektumban is támogatott, akkor mindkettőnek van előnye. Az adatkészlet-objektumok újrafelhasználható entitások, amelyek más adatfolyamatokban és hasonló tevékenységekben, például másolásban is használhatók. Ezek az újrafelhasználható entitások különösen akkor hasznosak, ha megerősített sémát használ. Az adathalmazok nem a Sparkon alapulnak. Esetenként előfordulhat, hogy felül kell bírálnia bizonyos beállításokat vagy séma-kivetítést a fogadó átalakításban.
 
-A beágyazott adatkészletek használata rugalmas sémák, egyszeri fogadó példányok vagy paraméteres mosogatók használata esetén ajánlott. Ha a fogadó erősen paraméteres, a beágyazott adatkészletek lehetővé teszik, hogy ne hozzon létre egy "dummy" objektumot. A beágyazott adatkészletek a Spark szolgáltatáson alapulnak, és a tulajdonságaik az adatfolyamok számára natívak.
+A beágyazott adatkészletek használata akkor ajánlott, ha rugalmas sémákat, egyszeri fogadó példányokat vagy paraméteres mosogatókat használ. Ha a fogadó erősen paraméteres, a beágyazott adatkészletek lehetővé teszik, hogy ne hozzon létre egy "dummy" objektumot. A beágyazott adatkészletek a Sparkon alapulnak, és a tulajdonságaik az adatfolyamhoz képest natívak.
 
 Ha egy beágyazott adatkészletet szeretne használni, válassza ki a kívánt formátumot a fogadó **típus** -választóban. A fogadó adatkészlet kiválasztása helyett válassza ki azt a társított szolgáltatást, amelyhez csatlakozni szeretne.
 
-![Beágyazott adatkészlet](media/data-flow/inline-selector.png "Beágyazott adatkészlet")
+![A beágyazott kijelölést bemutató képernyőkép.](media/data-flow/inline-selector.png "A beágyazott kijelölést bemutató képernyőkép.")
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Támogatott fogadó típusok
 
-Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) módszert követ, és az Azure-ban mind az *előkészítési* adatkészletekkel működik. A forrás-átalakítás jelenleg a következő adatkészleteket használhatja:
+Az adatforgalom leképezése egy kinyerési, betöltési és átalakítási (ELT) módszert követ, és az Azure-ban mind az *előkészítési* adatkészletekkel működik. Jelenleg a következő adatkészletek használhatók forrás-átalakításban.
 
 | Összekötő | Formátum | Adatkészlet/beágyazott |
 | --------- | ------ | -------------- |
@@ -48,42 +48,42 @@ Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) m
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Felügyelt Azure SQL-példány (előzetes verzió)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Az ezekhez az összekötőhöz tartozó beállítások a **Beállítások** lapon találhatók. A beállításokkal kapcsolatos információ-és adatfolyam-parancsfájlok példák az összekötő dokumentációjában találhatók. 
+Az ezekhez az összekötőhöz tartozó beállítások a **Beállítások** lapon találhatók. A beállításokkal kapcsolatos információ-és adatfolyam-parancsfájlok példák az összekötő dokumentációjában találhatók.
 
-Az Azure Data Factorynek több mint [90 natív összekötőhöz](connector-overview.md) van hozzáférése. Ha az adatfolyamatból más forrásoknak is szeretne adatírást készíteni, a másolási tevékenység használatával töltse be az adatok egy támogatott fogadóból.
+Azure Data Factory több mint [90 natív összekötőhöz](connector-overview.md)férhet hozzá. Ha az adatfolyamatból más forrásoknak is szeretne adatírást készíteni, a másolási tevékenység használatával töltse be az adatok egy támogatott fogadóból.
 
 ## <a name="sink-settings"></a>Fogadó beállításai
 
-Miután hozzáadta a fogadót, konfigurálja a fogadó **lapon.** Itt kiválaszthatja vagy létrehozhatja azt az adatkészletet, amelyet a fogadó ír. Az adatkészlet paramétereinek fejlesztési értékei konfigurálhatók a [hibakeresési beállításokban](concepts-data-flow-debug-mode.md) (a hibakeresési módot kötelező bekapcsolni).
+Miután hozzáadta a fogadót, konfigurálja a fogadó **lapon.** Itt kiválaszthatja vagy létrehozhatja azt az adatkészletet, amelyet a fogadó ír. Az adatkészlet paramétereinek fejlesztői értékeit a [hibakeresési beállításokban](concepts-data-flow-debug-mode.md)lehet konfigurálni. (A hibakeresési módot be kell kapcsolni.)
 
-Az alábbi videó számos különböző fogadó lehetőséget mutat be a szöveges tagolt fájltípusok esetében:
+A következő videó számos különböző fogadó lehetőséget ismertet a szöveggel tagolt fájltípusok esetében.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
-![Fogadó beállításai](media/data-flow/sink-settings.png "Fogadó beállításai")
+![A fogadó beállításait bemutató képernyőkép.](media/data-flow/sink-settings.png "A fogadó beállításait bemutató képernyőkép.")
 
-**Séma drift:** a [Schema drift](concepts-data-flow-schema-drift.md) az adatforgalomban lévő rugalmas sémák natív módon történő kezelése, anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait. Engedélyezze a séma eltolásának engedélyezése **lehetőséget** a fogadó adatsémában definiált további oszlopok írására.
+**Séma drift** : a [séma eltolódása](concepts-data-flow-schema-drift.md) Data Factory a rugalmas sémák natív kezelésére az adatfolyamatokban anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait. Engedélyezze a séma eltolásának engedélyezése **lehetőséget** , hogy további oszlopokat írjon a fogadó adatsémában definiált elemek fölé.
 
-**Séma ellenőrzése:** Ha a séma ellenőrzése beállítás be van jelölve, az adatfolyam sikertelen lesz, ha a bejövő forrás sémájának bármely oszlopa nem található a forrás kivetítésben, vagy ha az adattípusok nem egyeznek. Ezzel a beállítással kényszerítheti ki, hogy a forrásadatok megfelelnek a megadott leképezési szerződésnek. Az adatbázis-forrás forgatókönyvekben nagyon hasznos az oszlopnevek vagy típusok megváltozásának jelzése.
+**Séma ellenőrzése** : Ha a séma ellenőrzése beállítás be van jelölve, az adatfolyam sikertelen lesz, ha a bejövő forrás sémájának bármely oszlopa nem található a forrás kivetítésben, vagy ha az adattípusok nem egyeznek. Ezzel a beállítással kényszerítheti ki, hogy a forrásadatok megfelelnek a megadott leképezési szerződésnek. Az adatbázis-forrás forgatókönyvekben hasznos lehet az oszlopnevek vagy típusok megváltozásának jelzésére.
 
 ## <a name="field-mapping"></a>Mezőleképezés
 
-A kiválasztott átalakításhoz hasonlóan a fogadó **leképezés** lapján eldöntheti, hogy a bejövő oszlopok milyen módon lesznek írva. Alapértelmezés szerint a rendszer az összes bemeneti oszlopot leképezi, beleértve az elsodródott oszlopokat is. Ez az úgynevezett **automatikus leképezés**.
+A kiválasztott átalakításhoz hasonlóan a fogadó **leképezés** lapján eldöntheti, hogy a bejövő oszlopok milyen módon lesznek írva. Alapértelmezés szerint a rendszer az összes bemeneti oszlopot leképezi, beleértve az elsodródott oszlopokat is. Ezt a viselkedést az *automapping* szolgáltatásnak nevezzük.
 
-Ha kikapcsolja az automatikus leképezést, lehetőség van a rögzített oszlop alapú hozzárendelések vagy a szabály alapú leképezések hozzáadására. A szabályokon alapuló leképezések lehetővé teszik, hogy a mintázat egyezésének megfelelő kifejezéseket írjon a logikai és fizikai oszlopnevek. A szabályokon alapuló leképezéssel kapcsolatos további információkért lásd: az [adatforgalom leképezése az oszlopok mintái között](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+Ha kikapcsolja az automapping szolgáltatást, a rögzített oszlop alapú hozzárendelések vagy a szabályokon alapuló leképezések is hozzáadhatók. A szabályokon alapuló hozzárendelésekkel a mintázatok egyeztetésével írhat kifejezéseket. A rögzített leképezési leképezések logikai és fizikai oszlopnevek. A szabályokon alapuló leképezéssel kapcsolatos további információkért lásd: az [adatforgalom leképezése az oszlopok mintái között](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
 
 ## <a name="custom-sink-ordering"></a>Egyéni fogadó rendelés
 
-Alapértelmezés szerint az determinált sorrendben több mosogatóba történik az adatgyűjtés. A végrehajtó motor párhuzamosan fogja írni az Adatátalakítási logikát, és az egyes futtatások esetében a fogadó sorrend eltérő lehet. A fogadó rendezésének megadásához és pontos elfogadásához engedélyezze az **Egyéni fogadó megrendelését** az adatfolyam Általános lapján. Ha ez a beállítás engedélyezve van, a mosogatók egymás után, növekvő sorrendben lesznek írva.
+Alapértelmezés szerint az determinált sorrendben több mosogatóba történik az adatgyűjtés. A végrehajtó motor párhuzamosan írja az adatelemzési logikát, mivel az átalakítási logika befejeződött, és az egyes futtatások sorrendje eltérő lehet. A fogadó pontos sorrendjének megadásához engedélyezze az **Egyéni fogadó sorrendet** az adatfolyam **általános** lapján. Ha engedélyezve van, a mosogatók egymás után, növekvő sorrendben íródnak.
 
-![Egyéni fogadó rendelés](media/data-flow/custom-sink-ordering.png "Egyéni fogadó rendelés")
+![Képernyőkép, amely az egyéni fogadó sorrendet mutatja.](media/data-flow/custom-sink-ordering.png "Képernyőkép, amely az egyéni fogadó sorrendet mutatja.")
 
 ## <a name="data-preview-in-sink"></a>Az adatelőnézet a fogadóban
 
 Amikor egy hibakeresési fürtön beolvas egy előnézetet, a rendszer nem írja le az adatait a fogadóba. Egy pillanatkép arról, hogy az adatok milyen módon lesznek visszaadva, de semmi sem kerül a célhelyre. Az adatok a fogadóba való írásának teszteléséhez futtasson egy folyamat-hibakeresést a folyamat vásznon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy létrehozta az adatfolyamatot, adjon hozzá egy [adatfolyam-tevékenységet a folyamathoz](concepts-data-flow-overview.md).

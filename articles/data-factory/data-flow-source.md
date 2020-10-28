@@ -8,38 +8,38 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2020
-ms.openlocfilehash: 0efcc82617c75089ff2bf396133f9fbc7ec701ea
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a8890db90fa9f76b676a5fb944f74a773b00c8cd
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107691"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737506"
 ---
-# <a name="source-transformation-in-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamban 
+# <a name="source-transformation-in-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A forrás-átalakítás konfigurálja az adatforrást az adatfolyamhoz. Az adatfolyamatok tervezésekor az első lépés mindig a forrás-átalakítás konfigurálását fogja beállítani. Forrás hozzáadásához kattintson a **forrás hozzáadása** mezőre az adatfolyam-vászonban.
+A forrás-átalakítás konfigurálja az adatforrást az adatfolyamhoz. Az adatfolyamatok tervezésekor az első lépés mindig a forrás-átalakítás konfigurálása. Forrás hozzáadásához jelölje ki a **forrás hozzáadása** mezőt az adatfolyam vásznon.
 
 Minden adatfolyamhoz szükség van legalább egy forrás-átalakításra, de az adatátalakítások végrehajtásához tetszőleges számú forrást adhat hozzá. Ezeket a forrásokat összekapcsolhatja a csatlakozással, a kereséssel vagy a Union-transzformációval együtt.
 
-Minden forrás-átalakítás pontosan egy adatkészlethez vagy egy társított szolgáltatáshoz van társítva. Az adatkészlet határozza meg az adatokat, amelyeket írni vagy olvasni szeretne. Ha file-alapú adatkészletet használ, a forrás helyettesítő karaktereit és listáját használva egyszerre több fájllal is dolgozhat.
+Minden forrás-átalakítás pontosan egy adatkészlethez vagy egy társított szolgáltatáshoz van társítva. Az adatkészlet határozza meg az adatokat, amelyeket írni vagy olvasni szeretne. Ha fájl alapú adatkészletet használ, a forrásban helyettesítő karakterekkel és fájlokkal is használhat egyszerre több fájllal való munkát.
 
 ## <a name="inline-datasets"></a>Beágyazott adatkészletek
 
-A forrás-átalakítás létrehozásakor létrehozott első döntés az, hogy a forrásadatok definiálva vannak-e egy adatkészlet-objektumban vagy a forrás-átalakításon belül. A legtöbb formátum csak az egyikben vagy a másikban érhető el. Adja meg a megfelelő összekötő-dokumentumot, amelyből megtudhatja, hogyan használhat egy adott összekötőt.
+A forrás-átalakítás létrehozásakor létrehozott első döntés az, hogy a forrásadatok definiálva vannak-e egy adatkészlet-objektumban vagy a forrás-átalakításon belül. A legtöbb formátum csak az egyikben vagy a másikban érhető el. Egy adott összekötő használatának megismeréséhez tekintse meg a megfelelő összekötő-dokumentumot.
 
-Ha egy formátum a beágyazott és egy adatkészlet objektumban is támogatott, akkor mindkettőnek van előnye. Az adatkészlet-objektumok újrafelhasználható entitások, amelyek más adatfolyamatokban és tevékenységekben, például másolásban is kihasználhatók. Ezek különösen akkor hasznosak, ha megerősített sémát használ. Az adatkészletek nem a Spark-alapúak, és esetenként előfordulhat, hogy felül kell bírálni bizonyos beállításokat vagy séma-kivetítést a forrás-átalakításban.
+Ha egy formátum a beágyazott és egy adatkészlet objektumban is támogatott, akkor mindkettőnek van előnye. Az adatkészlet-objektumok újrafelhasználható entitások, amelyek más adatfolyamatokban és hasonló tevékenységekben, például másolásban is használhatók. Ezek az újrafelhasználható entitások különösen akkor hasznosak, ha megerősített sémát használ. Az adathalmazok nem a Sparkon alapulnak. Esetenként előfordulhat, hogy felül kell bírálnia bizonyos beállításokat vagy séma-kivetítést a forrás-átalakításban.
 
-A beágyazott adatkészletek használata rugalmas sémák, egyszeri forrásoldali példányok vagy paraméteres források használata esetén ajánlott. Ha a forrás erősen paraméteres, a beágyazott adatkészletek lehetővé teszik, hogy ne hozzon létre egy "dummy" objektumot. A beágyazott adatkészletek a Spark szolgáltatáson alapulnak, és a tulajdonságaik az adatfolyamok számára natívak.
+A beágyazott adatkészletek használata akkor ajánlott, ha rugalmas sémákat, egyszeri forrásoldali példányokat vagy paraméteres forrásokat használ. Ha a forrás erősen paraméteres, a beágyazott adatkészletek lehetővé teszik, hogy ne hozzon létre egy "dummy" objektumot. A beágyazott adatkészletek a Sparkon alapulnak, és a tulajdonságaik az adatfolyamhoz képest natívak.
 
-Ha egy beágyazott adatkészletet szeretne használni, válassza ki a kívánt formátumot a **forrás típusa** választóban. A forrás-adatkészlet kiválasztása helyett válassza ki azt a társított szolgáltatást, amelyhez csatlakozni szeretne.
+Ha egy beágyazott adatkészletet szeretne használni, válassza ki a kívánt formátumot a **Forrástípus** -választóban. A forrás-adatkészlet kiválasztása helyett válassza ki azt a társított szolgáltatást, amelyhez csatlakozni szeretne.
 
-![Beágyazott adatkészlet](media/data-flow/inline-selector.png "Beágyazott adatkészlet")
+![A beágyazott kijelölést bemutató képernyőkép.](media/data-flow/inline-selector.png "A beágyazott kijelölést bemutató képernyőkép.")
 
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a> Támogatott források típusai
 
-Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) módszert követ, és az Azure-ban mind az *előkészítési* adatkészletekkel működik. A forrás-átalakítás jelenleg a következő adatkészleteket használhatja:
+Az adatforgalom leképezése egy kinyerési, betöltési és átalakítási (ELT) módszert követ, és az Azure-ban mind az *előkészítési* adatkészletekkel működik. Jelenleg a következő adatkészletek használhatók forrás-átalakításban.
 
 | Összekötő | Formátum | Adatkészlet/beágyazott |
 | --------- | ------ | -------------- |
@@ -52,35 +52,35 @@ Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) m
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Az ezekhez az összekötőhöz tartozó beállítások a **forrás beállításai** lapon találhatók. A beállításokkal kapcsolatos információ-és adatfolyam-parancsfájlok példák az összekötő dokumentációjában találhatók. 
+Az ezekhez az összekötőhöz tartozó beállítások a **forrás beállításai** lapon találhatók. A beállításokkal kapcsolatos információ-és adatfolyam-parancsfájlok példák az összekötő dokumentációjában találhatók.
 
-Az Azure Data Factorynek több mint [90 natív összekötőhöz](connector-overview.md) van hozzáférése. Az adatfolyamatban lévő más forrásokból származó adatok belefoglalásához használja a másolási tevékenységet az adatok betöltéséhez az egyik támogatott átmeneti területre.
+Azure Data Factory több mint [90 natív összekötőhöz](connector-overview.md)férhet hozzá. Az adatfolyamatban lévő más forrásokból származó adatok belefoglalásához használja a másolási tevékenységet az adatok betöltéséhez az egyik támogatott átmeneti területre.
 
 ## <a name="source-settings"></a>Forrásbeállítások
 
-Miután hozzáadta a forrást, konfigurálja a **beállításokat a forrás beállításai** lapon. Itt kiválaszthatja vagy létrehozhatja a forrásként szolgáló adatkészletet. Kiválaszthatja az adataihoz tartozó séma-és mintavételi beállításokat is. 
+Miután hozzáadta a forrást, konfigurálja a **beállításokat a forrás beállításai** lapon. Itt kiválaszthatja vagy létrehozhatja a forrásként szolgáló adatkészletet. Kiválaszthatja az adataihoz tartozó séma-és mintavételi beállításokat is.
 
-Az adatkészlet paramétereinek fejlesztési értékei konfigurálhatók a [hibakeresési beállításokban](concepts-data-flow-debug-mode.md) (a hibakeresési módot kötelező bekapcsolni).
+Az adatkészlet paramétereinek fejlesztői értékeit a [hibakeresési beállításokban](concepts-data-flow-debug-mode.md)lehet konfigurálni. (A hibakeresési módot be kell kapcsolni.)
 
-![Forrás beállításai lap](media/data-flow/source1.png "Forrás beállításai lap")
+![A forrás beállításai lapot megjelenítő képernyőkép.](media/data-flow/source1.png "A forrás beállításai lapot megjelenítő képernyőkép.")
 
-**Kimeneti adatfolyam neve:** A forrás-átalakítás neve.
+**Kimeneti adatfolyam neve** : a forrás-átalakítás neve.
 
-**Forrás típusa:** Válassza ki, hogy egy beágyazott adatkészletet vagy egy meglévő adatkészlet-objektumot szeretne használni.
+**Forrás típusa** : válassza ki, hogy egy beágyazott adatkészletet vagy egy meglévő adatkészlet-objektumot szeretne használni.
 
-A **kapcsolatok tesztelése:** Annak ellenőrzése, hogy az adatfolyam Spark-szolgáltatása sikeresen tud-e csatlakozni a forrás-adatkészletben használt társított szolgáltatáshoz. A funkció engedélyezéséhez a hibakeresési módot kell bekapcsolni.
+**Kapcsolat tesztelése** : Ellenőrizze, hogy az adatfolyam Spark szolgáltatása sikeresen tud-e csatlakozni a forrás adatkészletben használt társított szolgáltatáshoz. A funkció engedélyezéséhez a hibakeresési módot kell bekapcsolni.
 
-**Séma drift:** a [Schema drift](concepts-data-flow-schema-drift.md) az adatforgalomban lévő rugalmas sémák natív módon történő kezelése, anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait.
+**Séma drift** : a [séma eltolódása](concepts-data-flow-schema-drift.md) Data Factory a rugalmas sémák natív kezelésére az adatfolyamatokban anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait.
 
-* Jelölje be a **séma drift engedélyezése** jelölőnégyzetet, ha a forrás oszlopai gyakran változnak. Ez a beállítás lehetővé teszi, hogy az összes bejövő forrás mező áthaladjon a fogadóra történő átalakításokon.
+* Jelölje be a **séma-drift engedélyezése** jelölőnégyzetet, ha a forrás oszlopai gyakran változnak. Ez a beállítás lehetővé teszi, hogy az összes bejövő forrás mező áthaladjon a fogadóra történő átalakításokon.
 
-* A **következtetett oszlopok** kiválasztásakor a rendszer arra utasítja az adatelőállítót, hogy észlelje és definiálja az egyes felderített új oszlopok adattípusait. Ha ez a funkció ki van kapcsolva, az összes lebegő oszlop karakterlánc típusú lesz.
+* A **következtetett oszlopok típusának** kiválasztása arra utasítja a Data Factoryt, hogy észlelje és definiálja az egyes felderített új oszlopok adattípusait. Ha ez a funkció ki van kapcsolva, az összes lebegő oszlop karakterlánc típusú lesz.
 
-**Séma ellenőrzése:** Ha a séma ellenőrzése beállítás be van jelölve, az adatfolyam nem fog futni, ha a bejövő forrásadatok nem egyeznek az adatkészlet meghatározott sémájával.
+**Séma ellenőrzése:** Ha a **séma ellenőrzése** beállítás be van jelölve, az adatfolyam nem fog futni, ha a bejövő forrásadatok nem egyeznek az adatkészlet meghatározott sémájával.
 
-**Sorok számának kihagyása:** A sorok kihagyása mező meghatározza, hogy az adatkészlet elején hány sort kell figyelmen kívül hagyni.
+**Sorok kihagyása** : a sorok **kihagyása** mező meghatározza, hogy az adatkészlet elején hány sort kell figyelmen kívül hagyni.
 
-**Mintavételezés:** A mintavétel engedélyezése a forrás sorainak számának korlátozásához. Akkor használja ezt a beállítást, ha hibakeresési célból teszteli vagy felveszi az adatait a forrásból.
+**Mintavételezés** : engedélyezze a **mintavételezést** a forrásból származó sorok számának korlátozásához. Akkor használja ezt a beállítást, ha hibakeresési célból teszteli vagy felveszi az adatait a forrásból.
 
 Ha ellenőrizni szeretné, hogy a forrás megfelelően van-e konfigurálva, kapcsolja be a hibakeresési módot, és olvassa be az adatelőnézett. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
 
@@ -89,36 +89,36 @@ Ha ellenőrizni szeretné, hogy a forrás megfelelően van-e konfigurálva, kapc
 
 ## <a name="source-options"></a>Forrás beállításai
 
-A forrás beállításai lap az összekötőre és a választott formátumra vonatkozó beállításokat tartalmazza. További információkat és példákat a kapcsolódó [Összekötők dokumentációjában talál](#supported-sources).
+A **forrás beállításai** lap az összekötőre és a választott formátumra vonatkozó beállításokat tartalmazza. További információkat és példákat a megfelelő [összekötő dokumentációjában](#supported-sources)talál.
 
 ## <a name="projection"></a>Vetület
 
-Az adatkészletekben lévő sémák esetében a forrás vetülete határozza meg a forrásadatok adatoszlopait, típusait és formátumait. A legtöbb adatkészlet, például az SQL és a parketta esetében a forrás kivetítése úgy van rögzítve, hogy tükrözze az adatkészletben definiált sémát. Ha a forrásfájlok nem megfelelően vannak beírva (például a sima CSV-fájlok a Parquet-fájlok helyett), megadhatja a forrás-átalakítás egyes mezőinek adattípusait.
+Az adatkészletekben lévő sémák esetében a forrás vetülete határozza meg a forrásadatok adatoszlopait, típusait és formátumait. A legtöbb adatkészlet, például az SQL és a parketta esetében a forrásban lévő leképezés egy adatkészletben definiált sémának megfelelően van rögzítve. Ha a forrásfájlok nem szigorúak (például a parketta-fájlok helyett a Flat. CSV fájlok), megadhatja a forrás-átalakítás egyes mezőinek adattípusait.
 
-![Beállítások a kivetítés lapon](media/data-flow/source3.png "Vetület")
+![A vetítés lapon megjelenő beállításokat megjelenítő képernyőkép.](media/data-flow/source3.png "A vetítés lapon megjelenő beállításokat megjelenítő képernyőkép.")
 
 Ha a szövegfájl nem rendelkezik meghatározott sémával, válassza az **adattípusok észlelése** lehetőséget, hogy Data Factory az adattípusok mintavételezését és következtetését. Válassza az **alapértelmezett formátum megadása** lehetőséget az alapértelmezett adatformátumok automatikus észleléséhez.
 
 A **séma alaphelyzetbe állítása** visszaállítja a leképezést a hivatkozott adatkészletben definiált értékre.
 
-Módosíthatja az oszlop adattípusait egy lefelé irányuló adatfolyamból származtatott oszlop transzformációjában. Az oszlopnevek módosításához válasszon transzformációt.
+Az oszlop adattípusait egy alsóbb rétegbeli származtatott oszlop transzformációjában módosíthatja. Az oszlopnevek módosításához válasszon transzformációt.
 
 ### <a name="import-schema"></a>Séma importálása
 
-A **leképezés** lapon a **séma importálása** gomb lehetővé teszi, hogy egy aktív hibakeresési fürttel hozzon létre egy séma-kivetítést. Minden Forrástípus esetében elérhető, a séma importálásakor a rendszer felülírja az adatkészletben definiált leképezést. Az adatkészlet-objektum nem lesz módosítva.
+A **leképezés** lapon kattintson a **séma importálása** gombra, hogy egy aktív hibakeresési fürtöt hozzon létre a séma-kivetítés létrehozásához. Minden Forrástípus esetében elérhető. A séma importálása itt felülbírálja az adatkészletben definiált leképezést. Az adatkészlet-objektum nem módosul.
 
-Ez olyan adatkészletekben hasznos, mint például a Avro és az összetett adatstruktúrákat támogató Azure Cosmos DB, amelyek nem igénylik a séma-definíciókat az adatkészletben. A beágyazott adatkészletek esetében ez az egyetlen módszer az oszlop metaadatainak a séma-eltolódás nélküli hivatkozására.
+A séma importálása olyan adatkészletekben hasznos, mint a Avro és a Azure Cosmos DB, amelyek olyan összetett adatstruktúrákat támogatnak, amelyek nem igényelnek sémát az adatkészletben. A beágyazott adatkészletek esetében a séma importálása az egyetlen módja a séma-eltolódás nélküli oszlop metaadatainak hivatkozásának.
 
 ## <a name="optimize-the-source-transformation"></a>A forrás átalakítás optimalizálása
 
 Az **optimalizálás** lapon megadhatja a partíciók adatainak szerkesztését az egyes átalakítási lépésekben. A legtöbb esetben az **aktuális particionálás használata** optimalizálja a forrás ideális particionálási struktúráját.
 
-Ha Azure SQL Database forrásból olvassa be az olvasást, az egyéni **forrás** -particionálás valószínűleg a leggyorsabb adatok olvasását fogja végezni. Az ADF a nagyméretű lekérdezések olvasásával párhuzamosan csatlakozik az adatbázishoz. Ez a forrás particionálás egy oszlopon vagy egy lekérdezés használatával végezhető el.
+Ha Azure SQL Database forrásról olvas, az egyéni **forrás** -particionálás valószínűleg a leggyorsabb adatok olvasását végzi. Data Factory nagy lekérdezéseket olvas be azzal, hogy párhuzamosan csatlakozik az adatbázishoz. Ez a forrás particionálás egy oszlopon vagy egy lekérdezés használatával végezhető el.
 
-![Forrás partíció beállításai](media/data-flow/sourcepart3.png "particionálás")
+![A forrás partíció beállításait megjelenítő képernyőkép.](media/data-flow/sourcepart3.png "A forrás partíció beállításait megjelenítő képernyőkép.")
 
 További információ a leképezési adatfolyamon belüli optimalizálásról: [optimalizálás lap](concepts-data-flow-overview.md#optimize).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megkezdheti az adatforgalom kiépítése egy [származtatott oszlopos átalakítással](data-flow-derived-column.md) és egy [kiválasztott átalakítással](data-flow-select.md).

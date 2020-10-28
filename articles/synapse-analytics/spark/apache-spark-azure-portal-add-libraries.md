@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 02f627c9f606ced7e1b0d991e5053dab17050292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826729"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737974"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 
@@ -58,7 +58,7 @@ Könyvtárak telepítése Spark-készletre (előzetes verzió) a készlet létre
    
 3. Töltse fel a környezet konfigurációs fájlját a lap **csomagok** területén található fájl-választó használatával. 
    
-![Python-kódtárak hozzáadása a készlet létrehozása során](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Python-kódtárak hozzáadása")
+    ![Python-kódtárak hozzáadása a készlet létrehozása során](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Python-kódtárak hozzáadása")
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Csomagok telepítése a szinapszis munkaterületről
@@ -68,11 +68,11 @@ További kódtárak frissítése vagy hozzáadása a Spark-készlethez (előzete
    
 2.  Indítsa el az Azure szinapszis Analytics-munkaterületet a Azure Portal.
 
-3.  Válassza a **felügyelet** elemet a fő navigációs panelen, majd válassza ki **Apache Spark készleteket**.
+3.  Válassza a **felügyelet** elemet a fő navigációs panelen, majd válassza ki **Apache Spark készleteket** .
    
 4. Válasszon egyetlen Spark-készletet, és töltse fel a környezet konfigurációs fájlját a lap  **csomagok** területén található fájl-választóval.
 
-![Python-kódtárak hozzáadása a szinapszisban](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png "Python-kódtárak hozzáadása")
+    ![Python-kódtárak hozzáadása a szinapszisban](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>Csomagok telepítése a Azure Portal
 Függvénytár telepítése Spark-készletre (előzetes verzió) közvetlenül a Azure Portalról:
@@ -85,7 +85,7 @@ Függvénytár telepítése Spark-készletre (előzetes verzió) közvetlenül a
 
  4. Töltse fel a környezet konfigurációs fájlját a fájl-választó használatával.
 
-![Képernyőfelvétel: a környezeti konfigurációs fájl feltöltése gomb.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python-kódtárak hozzáadása")
+    ![Képernyőfelvétel: a környezeti konfigurációs fájl feltöltése gomb.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python-kódtárak hozzáadása")
 
 ### <a name="verify-installed-libraries"></a>Telepített kódtárak ellenőrzése
 
@@ -106,13 +106,13 @@ Könyvtár frissítése vagy eltávolítása:
 
 3. Navigáljon a **csomagok** szakaszhoz, és töltsön fel egy új környezeti konfigurációs fájlt
    
-4. A módosítások mentése után le kell állítania az aktív munkameneteket, és újra kell indítania a készletet. Lehetőség van arra is, hogy az aktív munkamenetek befejezéséhez a jelölőnégyzet bejelölésével **kényszerítse az új beállítások**megadását.
+4. A módosítások mentése után le kell állítania az aktív munkameneteket, és újra kell indítania a készletet. Lehetőség van arra is, hogy az aktív munkamenetek befejezéséhez a jelölőnégyzet bejelölésével **kényszerítse az új beállítások** megadását.
 
-![Python-kódtárak hozzáadása](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python-kódtárak hozzáadása")
+    ![Python-kódtárak hozzáadása](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python-kódtárak hozzáadása")
    
 
 > [!IMPORTANT]
-> Ha az **új beállítások kényszerítése**lehetőséget választja, akkor a kiválasztott Spark-készlet összes aktuális munkamenete megszűnik. A munkamenetek befejezése után meg kell várnia, amíg a készlet újra fog indulni. 
+> Ha az **új beállítások kényszerítése** lehetőséget választja, akkor a kiválasztott Spark-készlet összes aktuális munkamenete megszűnik. A munkamenetek befejezése után meg kell várnia, amíg a készlet újra fog indulni. 
 >
 > Ha a beállítás nincs bejelölve, meg kell várnia, amíg az aktuális Spark-munkamenet véget ér, vagy manuálisan le is állíthatja. Ha a munkamenet véget ért, engedélyeznie kell a készlet újraindítását. 
 

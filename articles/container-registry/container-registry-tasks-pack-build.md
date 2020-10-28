@@ -3,13 +3,13 @@ title: Rendszerkép létrehozása Felhőbeli natív Buildpack
 description: Az az ACR Pack Build paranccsal hozzon létre egy tároló-rendszerképet egy alkalmazásból, és leküldheti Azure Container Registryra anélkül, hogy Docker használ.
 ms.topic: article
 ms.date: 10/24/2019
-ms.custom: devx-track-js
-ms.openlocfilehash: cad7d5c066dd8c8a7468833cb67e6085f067417a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 264fc7314c78088ebfefb9ddb8edbe38fa16581a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262110"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736626"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Rendszerkép létrehozása és elküldése egy Felhőbeli natív Buildpack használatával
 
@@ -85,7 +85,7 @@ A rendszerkép sikeres felépítése után a Docker használatával futtathatja,
 az acr login --name myregistry
 ```
 
-Futtassa a rendszerképet, és cserélje le a képcímkét a *runid*:
+Futtassa a rendszerképet, és cserélje le a képcímkét a *runid* :
 
 ```console
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid

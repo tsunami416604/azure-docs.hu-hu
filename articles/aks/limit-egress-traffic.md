@@ -5,14 +5,14 @@ services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
-ms.custom: fasttrack-edit
+ms.custom: fasttrack-edit, devx-track-azurecli
 author: palma21
-ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe6907ac659b94494472a327ff0b47e630ed89a0
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570376"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735576"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -29,17 +29,17 @@ Az AK kimenő függőségei szinte teljesen meg vannak határozva teljes TARTOM�
 Alapértelmezés szerint az AK-fürtök korlátlan kimenő (kimenő) internet-hozzáféréssel rendelkeznek. A hálózati hozzáférés ezen szintje lehetővé teszi, hogy a futtatott csomópontok és szolgáltatások igény szerint hozzáférhessenek a külső erőforrásokhoz. Ha korlátozni szeretné a kimenő forgalom forgalmát, a fürt kifogástalan karbantartási feladatainak megtartása érdekében korlátozott számú portot és címet kell elérhetővé tenni. A kimenő címek biztonságossá tételének legegyszerűbb megoldása egy olyan tűzfal-eszköz használata, amely a tartománynevek alapján képes a kimenő forgalom vezérlésére. Azure Firewall például a célként megadott teljes tartománynév alapján korlátozhatja a kimenő HTTP-és HTTPS-forgalmat. Az előnyben részesített tűzfal-és biztonsági szabályokat is konfigurálhatja, hogy engedélyezze ezeket a szükséges portokat és címeket.
 
 > [!IMPORTANT]
-> Ez a dokumentum csak azt ismerteti, hogyan lehet zárolni az AK-alhálózatot elhagyó forgalmat. Az AK-ban alapértelmezés szerint nincsenek beáramlási követelmények.  A **belső alhálózati forgalom** blokkolása hálózati biztonsági csoportokkal (NSG) és tűzfalakkal nem támogatott. A fürtön belüli forgalom szabályozásához és letiltásához használja a [***hálózati házirendeket***][network-policy].
+> Ez a dokumentum csak azt ismerteti, hogyan lehet zárolni az AK-alhálózatot elhagyó forgalmat. Az AK-ban alapértelmezés szerint nincsenek beáramlási követelmények.  A **belső alhálózati forgalom** blokkolása hálózati biztonsági csoportokkal (NSG) és tűzfalakkal nem támogatott. A fürtön belüli forgalom szabályozásához és letiltásához használja a [ * *_hálózati házirendek_* _][network-policy]lehetőséget.
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Szükséges kimenő hálózati szabályok és teljes tartománynevek az AK-fürtökhöz
 
 A következő hálózati és FQDN/alkalmazási szabályok szükségesek egy AK-fürthöz, akkor használhatja őket, ha a Azure Firewallon kívüli megoldást szeretne konfigurálni.
 
-* Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom)
+_ Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom)
 * Az FQDN HTTP-/HTTPS-végpontok a tűzfal eszközén helyezhetők el.
 * A helyettesítő HTTP/HTTPS-végpontok olyan függőségek, amelyek számos minősítőtől függően eltérőek lehetnek az AK-fürttől.
 * Az AK egy belépésvezérlés használatával adja hozzá a teljes tartománynevet környezeti változóként a Kube-rendszer és a forgalomirányító-rendszer területen lévő összes központi telepítéshez, amely biztosítja, hogy a csomópontok és az API-kiszolgáló közötti összes rendszerkommunikáció az API-kiszolgáló teljes tartománynevét használja, nem az API-kiszolgáló IP-címét. 
-* Ha van olyan alkalmazás vagy megoldás, amelynek az API-kiszolgálóval kell kommunikálnia, **további** hálózati szabályt kell hozzáadnia, hogy engedélyezze a *TCP-kommunikációt az API-kiszolgáló IP-címének 443-es portján*.
+* Ha van olyan alkalmazás vagy megoldás, amelynek az API-kiszolgálóval kell kommunikálnia, **további** hálózati szabályt kell hozzáadnia, hogy engedélyezze a *TCP-kommunikációt az API-kiszolgáló IP-címének 443-es portján* .
 * Ritka esetekben, ha van karbantartási művelet, az API-kiszolgáló IP-címe változhat. Az API-kiszolgáló IP-címét megváltoztató tervezett karbantartási műveletek mindig előre lesznek továbbítva.
 
 
@@ -765,7 +765,7 @@ Ekkor meg kell jelennie az AK-szavazati alkalmazásnak. Ebben a példában a tű
 ![A képernyőképen az a K-S szavazási alkalmazás jelenik meg, amely a macskák, a kutyák és az alaphelyzetek, valamint az összesítések gombjaival rendelkezik](media/limit-egress-traffic/aks-vote.png)
 
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törlését.
 

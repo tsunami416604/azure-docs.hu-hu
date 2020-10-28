@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6629f02178b7c00ccc849e2ccfc3f0a48f419a7f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315292"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735565"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migrálási terv létrehozása az Azure Migrate-tel
 
@@ -20,7 +20,7 @@ Ez a cikk egy rövid útmutatót tartalmaz, amellyel átalakíthatja az Azure-ba
 - [Általános kérdések](resources-faq.md) a Azure Migrate
 - Az [Azure Migrate berendezéssel](common-questions-appliance.md) kapcsolatos kérdések
 - A [kiszolgálók áttelepítésével](common-questions-server-migration.md) kapcsolatos kérdések
-- A [Azure Migrate fórumban](https://aka.ms/AzureMigrateForum) választ kaphat kérdéseire
+- A [Azure Migrate fórumban](https://docs.microsoft.com/answers/topics/azure-migrate.html) választ kaphat kérdéseire
 
 ## <a name="define-the-goals-of-cloud-migration"></a>A Felhőbeli áttelepítés céljainak meghatározása
 
@@ -75,13 +75,13 @@ Mivel az Azure rugalmasságot biztosít a felhő kapacitásának időbeli átmé
 ### <a name="readiness-and-suitability-analysis-for-azure"></a>Készültség és megfelelőség elemzése az Azure-hoz
 Exportálja az Azure VM Assessment-jelentést, és a következő készültségi kategóriák szerint szűrje az Azure-beli virtuális gépek készültségének megismeréséhez:
 
-- **Készen áll az Azure-ra**: ezeket a gépeket áttelepítheti az Azure-ba a módosítások nélkül  
+- **Készen áll az Azure-ra** : ezeket a gépeket áttelepítheti az Azure-ba a módosítások nélkül  
 
-- **Feltételesen készen áll az Azure**-ra: ezeket a gépeket áttelepítheti az Azure-ba, de a kiszolgálókon az értékeléshez megadott szervizelési útmutató alapján kisebb módosításokat kell végeznie.
+- **Feltételesen készen áll az Azure** -ra: ezeket a gépeket áttelepítheti az Azure-ba, de a kiszolgálókon az értékeléshez megadott szervizelési útmutató alapján kisebb módosításokat kell végeznie.
 
-- **Nem áll készen az Azure-ra**: ezek a gépek nem telepíthetők át az Azure-ba, és az áttelepítés előtt elhárítani kell a problémákat a Szervizelési útmutató szerint.
+- **Nem áll készen az Azure-ra** : ezek a gépek nem telepíthetők át az Azure-ba, és az áttelepítés előtt elhárítani kell a problémákat a Szervizelési útmutató szerint.
 
-- A **készültség ismeretlen**: Azure Migrate nem tudja meghatározni a gép készültségét, mert nincs elegendő metaadat
+- A **készültség ismeretlen** : Azure Migrate nem tudja meghatározni a gép készültségét, mert nincs elegendő metaadat
 
 Az adatbázis-értékelések használatával felmérhetővé teheti a SQL Server-adatközpont áttelepítésének készültségét Azure SQL Database vagy Azure SQL felügyelt példányokra. Az egyes SQL Server-példányok esetében az áttelepítési készültségi állapot százalékos aránya látható. Emellett az egyes példányok esetében a javasolt cél az Azure-ban, a potenciális áttelepítési blokkolók, a megszakított változások száma, az Azure SQL DB/Azure SQL-alapú virtuális gép készültségi szintje és a kompatibilitási szint is látható. Mélyebben is megtudhatja, hogy milyen hatással van az áttelepítési blokkolók és javaslatok a kijavítására.
 
@@ -95,19 +95,19 @@ Ha a gép az Azure-hoz való használatra készként van megjelölve, a kiszolg�
 
 Az értékelések *teljesítmény-alapú* jobb méretezési lehetősége lehetővé teszi az Azure-beli számítási feladatok optimalizálását. A megadásában kívül néhány más út is van, amelyek segítenek a költségmegtakarításban:
 
-- **Fenntartott példányok**: fenntartott példányok esetén a költségek jelentős mértékben csökkenthetők a Windows és Linux rendszerű (VM-EK) és a 3 éves szerződéssel ellátott utólagos elszámolású díjszabáshoz képest.
+- **Fenntartott példányok** : fenntartott példányok esetén a költségek jelentős mértékben csökkenthetők a Windows és Linux rendszerű (VM-EK) és a 3 éves szerződéssel ellátott utólagos elszámolású díjszabáshoz képest.
 
-- **Azure Hybrid Benefits**: a Windows Server-licenceket az Azure-ba frissítheti, és a fenntartott példányok lehetőségeivel kombinálhatja azokat.
+- **Azure Hybrid Benefits** : a Windows Server-licenceket az Azure-ba frissítheti, és a fenntartott példányok lehetőségeivel kombinálhatja azokat.
 
-- **Nagyvállalati szerződés ajánlat (EA)**: a nagyvállalati szerződés az előfizetésre vonatkozó beépített megtakarításokat kínál
+- **Nagyvállalati szerződés ajánlat (EA)** : a nagyvállalati szerződés az előfizetésre vonatkozó beépített megtakarításokat kínál
 
-- **Ajánlatok**: több Azure-ajánlat létezik, például Pay-As-You-Go Dev/Test és Enterprise dev/test, amely alacsonyabb sebességet biztosít a fejlesztési és tesztelési virtuális gépek számára
+- **Ajánlatok** : több Azure-ajánlat létezik, például Pay-As-You-Go Dev/Test és Enterprise dev/test, amely alacsonyabb sebességet biztosít a fejlesztési és tesztelési virtuális gépek számára
 
-- **Virtuális gép rendelkezésre állása**: az időtartamot naponként, havonta és órában is megemlítheti, ha az Azure-beli virtuális gépek a költségek csökkentése érdekében futnak (nem alkalmazható a ri esetében)
+- **Virtuális gép rendelkezésre állása** : az időtartamot naponként, havonta és órában is megemlítheti, ha az Azure-beli virtuális gépek a költségek csökkentése érdekében futnak (nem alkalmazható a ri esetében)
 
-- **Célcsoport**: több felmérést is létrehozhat különböző régiókban, amelyekkel összehasonlíthatja, ha a földrajz egy bizonyos régióba való migrálása költséghatékonyabb lehet
+- **Célcsoport** : több felmérést is létrehozhat különböző régiókban, amelyekkel összehasonlíthatja, ha a földrajz egy bizonyos régióba való migrálása költséghatékonyabb lehet
 
-- **Teljesítmény-alapú javaslatok**: ajánlott eljárásként próbálja meg használni a tartalomvédelemmel elválasztott Azure-beli virtuális gépekre vonatkozó javaslatokat, amelyek segítenek a Felhőbeli költségek megtakarításában
+- **Teljesítmény-alapú javaslatok** : ajánlott eljárásként próbálja meg használni a tartalomvédelemmel elválasztott Azure-beli virtuális gépekre vonatkozó javaslatokat, amelyek segítenek a Felhőbeli költségek megtakarításában
 
 ### <a name="visualize-data"></a>Adatok vizualizációja
 
@@ -125,7 +125,7 @@ Most, hogy minden fontos információval rendelkezik az áttelepítési döntés
 
 Néhány ajánlott áttelepítési stratégia:
 
-- **Rangsorolja a gyors WINS**-t: az értékelési jelentések segítségével azonosíthatja az alacsony teljesítményű gyümölcsöket, beleértve a teljes mértékben kész kiszolgálókat és adatbázisokat, és minimális erőfeszítést igényel az Azure-ba való Migrálás során:
+- **Rangsorolja a gyors WINS** -t: az értékelési jelentések segítségével azonosíthatja az alacsony teljesítményű gyümölcsöket, beleértve a teljes mértékben kész kiszolgálókat és adatbázisokat, és minimális erőfeszítést igényel az Azure-ba való Migrálás során:
     - Azure-kompatibilis: exportálja az értékelési jelentést, és szűrje az összes olyan gépet, amely készen áll az Azure-ra. Ez lehet a gépek első olyan csoportja, amelyet a Azure Migrate: Server áttelepítési eszközzel lehet feloldani és áttérni.
     - OPERÁCIÓS rendszer vége: az értékelési jelentés exportálása és a Windows Server 2008 és a Windows Server 2008 R2 operációs rendszert futtató összes gép szűrése. Ezek a SKU-támogatások megszűnnek, és az Azure-ba való Migrálás után csak az Azure ingyenes biztonsági frissítéseket biztosít. A fenntartott példányok kombinálása, Azure Hybrid Benefit és használata esetén a megtakarítás sokkal magasabb lehet.
     - SQL Server Migrálás: az adatbázis-értékelési javaslatok segítségével áttelepítheti az adatbázisokat az Azure SQL Database-adatbázisok számára a Azure Migrate használatával: adatbázis-áttelepítés és az Azure SQL virtuális gép számára kész adatbázisok a Azure Migrate: Server Migration használatával.
@@ -133,9 +133,9 @@ Néhány ajánlott áttelepítési stratégia:
     - Túlterhelt virtuális gépek: exportálja az értékelési jelentést és kiszűri a gépeket alacsony CPU-kihasználtsággal (%) és memória kihasználtsága (%).  Ezt a lehetőséget használhatja arra, hogy áttelepítsen egy virtuális gépre az Azure-ban, és mentse a kihasználatlan erőforrásokért fizetett árat.
     - Kapacitási megkötések: exportálja az értékelési jelentést és kiszűri a gépeket magas CPU-kihasználtsággal (%) és memória kihasználtsága (%).  Az Azure-ba való Migrálás és az igények kielégítése érdekében az automatikus skálázási képesség kihasználásával megakadályozható, hogy a virtuális gépek megszakítsák és növeljék a teljesítményt. Megtekintheti az értékelési jelentést is, hogy megértse a tárolási korlátozásokat a lemez IOPS és átviteli sebességének elemzésével, és keresse meg az igényeinek leginkább megfelelő ajánlott lemezt.
 
-- **Kis-és nagyvállalati lépések**: Kezdje a minimális kockázatú és kevésbé összetett alkalmazások és munkaterhelések áthelyezését az áttelepítési stratégia megbízhatóságának kiépítéséhez. A fejlesztési és tesztelési környezet számítási feladatainak kipróbálásához és áttelepítéséhez a szervezet CMDB-tárházával is összemetszheti Azure Migrate értékelési javaslatait. Az ezekből a próbaverzióokból származó tanulás az éles számítási feladatok áttelepítése során használható.  
+- **Kis-és nagyvállalati lépések** : Kezdje a minimális kockázatú és kevésbé összetett alkalmazások és munkaterhelések áthelyezését az áttelepítési stratégia megbízhatóságának kiépítéséhez. A fejlesztési és tesztelési környezet számítási feladatainak kipróbálásához és áttelepítéséhez a szervezet CMDB-tárházával is összemetszheti Azure Migrate értékelési javaslatait. Az ezekből a próbaverzióokból származó tanulás az éles számítási feladatok áttelepítése során használható.  
 
-- **Megfelel a szabályozási/iparági követelményeknek**: az Azure a legnagyobb megfelelőségi portfóliót tartja az iparágban, az ajánlatok szélessége és mélysége tekintetében. Használja ezt a lehetőséget, hogy rangsorolja az Azure-ba való áttelepítést, és megfeleljen az országos, regionális és iparági szabványoknak és törvényeknek. Ez különösen igaz azoknak a szervezeteknek, amelyek üzleti szempontból kritikus fontosságú vagy bizalmas adatokkal rendelkeznek, vagy nagy mértékben szabályozott iparágakban vannak, ahol a szabványok és rendeletek bővelkednek, és bizonyos esetekben gyakran változhatnak, ami megnehezíti a lépést.  
+- **Megfelel a szabályozási/iparági követelményeknek** : az Azure a legnagyobb megfelelőségi portfóliót tartja az iparágban, az ajánlatok szélessége és mélysége tekintetében. Használja ezt a lehetőséget, hogy rangsorolja az Azure-ba való áttelepítést, és megfeleljen az országos, regionális és iparági szabványoknak és törvényeknek. Ez különösen igaz azoknak a szervezeteknek, amelyek üzleti szempontból kritikus fontosságú vagy bizalmas adatokkal rendelkeznek, vagy nagy mértékben szabályozott iparágakban vannak, ahol a szabványok és rendeletek bővelkednek, és bizonyos esetekben gyakran változhatnak, ami megnehezíti a lépést.  
 
 ## <a name="finalize-the-migration-planandprepare-formigration"></a>Az áttelepítési terv véglegesítése és felkészülés az áttelepítésre
 

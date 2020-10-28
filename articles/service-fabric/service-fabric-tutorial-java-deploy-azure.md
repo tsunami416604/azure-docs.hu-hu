@@ -3,13 +3,13 @@ title: Java-alkalmazás üzembe helyezése Service Fabric-fürtön az Azure-ban
 description: Ez az oktatóanyag azt mutatja be, hogyan kell üzembe helyezni egy Java Service Fabric-alkalmazást egy Azure Service Fabric-fürtön.
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 3e00e478e20fbd0bc4ff6ed17b330f0d16488be6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532058"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738909"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Java-alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
 
@@ -176,8 +176,8 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     }
     ```
 
-13. Megnyitja az **sfdeploy.parameters.json**-t. Módosítsa az alábbi paramétereket, majd mentse a fájlt.
-    - **clusterName**. Csak kisbetűket és számokat használjon.
+13. Megnyitja az **sfdeploy.parameters.json** -t. Módosítsa az alábbi paramétereket, majd mentse a fájlt.
+    - **clusterName** . Csak kisbetűket és számokat használjon.
     - **adminUserName** (ürestől eltérő értékre)
     - **adminPassword** (ürestől eltérő értékre)
 

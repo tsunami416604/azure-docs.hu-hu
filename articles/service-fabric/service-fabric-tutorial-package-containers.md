@@ -3,13 +3,13 @@ title: Tárolók csomagolása és üzembe helyezése
 description: Az oktatóanyag azt ismerteti, hogyan hozhat létre egy Azure Service Fabric-alkalmazásdefiníciót a Yeoman használatával, és hogyan csomagolhatja be az alkalmazást.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 5840539b6c51a0070a98f03dbda3c596fd5c2516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539877"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738860"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Oktatóanyag: Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként a Yeoman használatával
 
@@ -99,7 +99,7 @@ A használt szolgáltatás hozzáadásának bejegyzései:
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-Az oktatóanyag fennmaradó részében a **TestContainer** könyvtárban fogunk dolgozni. Például: *./TestContainer/TestContainer*. A könyvtár tartalmának az alábbinak kell lennie.
+Az oktatóanyag fennmaradó részében a **TestContainer** könyvtárban fogunk dolgozni. Például: *./TestContainer/TestContainer* . A könyvtár tartalmának az alábbinak kell lennie.
 
 ```bash
 $ ls
@@ -393,7 +393,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
  </ServiceManifest>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban több tárolót csomagolt egy Service Fabric-alkalmazásba a Yeoman használatával, majd az alkalmazást üzembe helyezte és futtatta egy Service Fabric-fürtön. A következő lépéseket hajtotta végre:
 

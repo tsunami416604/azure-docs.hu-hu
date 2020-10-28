@@ -3,13 +3,13 @@ title: Java fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.custom: devx-track-java
-ms.openlocfilehash: 2dfd00484e84f4b2c31e52392df43bb07a800f73
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fcacfd96ece68424c876b0349ceb49d3eaabb598
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519622"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736690"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -45,7 +45,7 @@ A fenti hivatkozások azt mutatják be, hogyan hozhatja létre az első függvé
 
 ### <a name="project-scaffolding"></a>Projekt – Állványzat
 
-Ha a terminálról szeretne parancssori fejlesztést használni, a Java-alapú függvények projektjeinek legegyszerűbb módja az `Apache Maven` archetípusok használata. A Azure Functions Java Maven archetípusa a következő _GroupID_van közzétéve:_artifactId_: [com. microsoft. Azure: Azure-functions-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
+Ha a terminálról szeretne parancssori fejlesztést használni, a Java-alapú függvények projektjeinek legegyszerűbb módja az `Apache Maven` archetípusok használata. A Azure Functions Java Maven archetípusa a következő _GroupID_ van közzétéve: _artifactId_ : [com. microsoft. Azure: Azure-functions-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
 Az alábbi parancs egy új Java-függvény projektet hoz létre a következő archetípus használatával:
 

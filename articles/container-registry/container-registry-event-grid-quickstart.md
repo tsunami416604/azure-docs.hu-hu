@@ -3,13 +3,13 @@ title: Rövid útmutató – események küldése Event Gridba
 description: Ebben a rövid útmutatóban engedélyezheti Event Grid eseményeit a tároló-beállításjegyzékben, majd elküldheti a tároló-rendszerkép leküldését és az események törlését egy minta alkalmazásba.
 ms.topic: article
 ms.date: 08/23/2018
-ms.custom: seodec18
-ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 3e9e9a7d6016f53225c1b2f31fb8eef91e202c7a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78403240"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736872"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: események küldése a privát tároló beállításjegyzékből a Event Gridba
 
@@ -19,7 +19,7 @@ A cikk lépéseinek elvégzése után a tároló-beállításjegyzékből eljutt
 
 ![Webböngésző – a minta-webalkalmazás három fogadott eseménysel való megjelenítése][sample-app-01]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][azure-account], mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -202,11 +202,11 @@ Az alábbi képernyőfelvételen a három eseménnyel rendelkező minta alkalmaz
 
 Gratulálunk! Ha a és az `ImagePushed` `ImageDeleted` eseményeket látja, a beállításjegyzék az eseményeket Event Gridba küldi, és Event Grid továbbítja ezeket az eseményeket a webalkalmazás-végpontnak.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, az alábbi Azure CLI-paranccsal törölheti őket. Egy erőforráscsoport törlésekor a benne lévő összes erőforrás véglegesen törlődik.
 
-**Figyelmeztetés**: Ez a művelet nem visszafordíthatatlan. A parancs futtatása előtt győződjön meg arról, hogy már nincs szüksége a csoport erőforrásaira.
+**Figyelmeztetés** : Ez a művelet nem visszafordíthatatlan. A parancs futtatása előtt győződjön meg arról, hogy már nincs szüksége a csoport erőforrásaira.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME
@@ -218,7 +218,7 @@ A Event Grid dokumentációjában találhatja meg az Azure Container Registry es
 
 [Container Registry Azure Event Gridi esemény sémája](../event-grid/event-schema-container-registry.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy tároló-beállításjegyzéket, amely egy ACR-feladatokból álló képet készített, törölte azt, és felhasználta a beállításjegyzék eseményeit Event Grid egy minta alkalmazással. Ezután lépjen be az ACR-feladatok oktatóanyagba, ahol többet tudhat meg a Felhőbeli tároló-lemezképek létrehozásáról, beleértve az alapszintű lemezkép frissítésének automatizált buildeit is:
 

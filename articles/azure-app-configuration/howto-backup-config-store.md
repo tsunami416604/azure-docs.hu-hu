@@ -6,16 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074855"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737092"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Alkalmazás-konfigurációs tárolók automatikus biztonsági mentése
 
@@ -46,7 +46,7 @@ Ebben az oktatóanyagban egy másodlagos tárolót fog létrehozni a `centralus`
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -62,7 +62,7 @@ az group create --name $resourceGroupName --location westus
 ## <a name="create-app-configuration-stores"></a>Alkalmazás-konfigurációs tárolók létrehozása
 
 Hozza létre az elsődleges és a másodlagos alkalmazás konfigurációs tárolóit különböző régiókban.
-Cserélje le a  `<primary_appconfig_name>` és `<secondary_appconfig_name>` a nevet a konfigurációs tárolók egyedi neveire. Az egyes tárolók nevének egyedinek kell lennie, mert DNS-névként van használatban.
+Cserélje le a `<primary_appconfig_name>` és `<secondary_appconfig_name>` a nevet a konfigurációs tárolók egyedi neveire. Az egyes tárolók nevének egyedinek kell lennie, mert DNS-névként van használatban.
 
 ```azurecli-interactive
 primaryAppConfigName="<primary_appconfig_name>"
@@ -213,7 +213,7 @@ Az összes működésének teszteléséhez létrehozhat, frissíthet vagy törö
 az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 ```
 
-Kiváltotta az eseményt. Néhány pillanat múlva a Event Grid elküldi az eseményről szóló értesítést a várólistára. *A függvény következő ütemezett futtatása után*tekintse meg a másodlagos tároló konfigurációs beállításait, és ellenőrizze, hogy tartalmazza-e az elsődleges tároló frissített kulcs-értékét.
+Kiváltotta az eseményt. Néhány pillanat múlva a Event Grid elküldi az eseményről szóló értesítést a várólistára. *A függvény következő ütemezett futtatása után* tekintse meg a másodlagos tároló konfigurációs beállításait, és ellenőrizze, hogy tartalmazza-e az elsődleges tároló frissített kulcs-értékét.
 
 > [!NOTE]
 > A [függvényt](../azure-functions/functions-manually-run-non-http.md) a tesztelés és a hibaelhárítás során manuálisan is aktiválhatja anélkül, hogy az ütemezett időzítő-triggerre kellene várnia.
@@ -248,7 +248,7 @@ Ha nem látja az új beállítást a másodlagos tárolóban:
 - Az [Azure Application Insights](../azure-functions/functions-monitoring.md?tabs=cmd)használatával beállíthatja a Azure functions figyelését és riasztását is. 
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 Ha azt tervezi, hogy ezzel az alkalmazás-konfigurációval és esemény-előfizetéssel folytatja a munkát, ne törölje a cikkben létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő parancs használatával törölheti a cikkben létrehozott erőforrásokat.
 
 ```azurecli-interactive

@@ -4,13 +4,13 @@ description: Ismerje meg, hogyan teheti biztonságossá az adatbázis-kapcsolato
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.custom: devx-track-csharp, mvc, cli-validate
-ms.openlocfilehash: 19e1d71cd766a99a32e90e2f83dc717ba56b795f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
+ms.openlocfilehash: 633e3a6386b9e6098e167c7fdd542d98c16fae48
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984047"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737884"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -75,9 +75,9 @@ Active Directory-rendszergazda hozzáadásával kapcsolatos további informáci�
 ## <a name="set-up-visual-studio"></a>A Visual Studio telepítése
 
 ### <a name="windows-client"></a>Windows-ügyfél
-A Windowshoz készült Visual Studio integrálva van az Azure AD-hitelesítéssel. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a Fiókbeállítások **kiválasztásával**  >  **Account Settings** a menüben, majd kattintson a **fiók hozzáadása**lehetőségre.
+A Windowshoz készült Visual Studio integrálva van az Azure AD-hitelesítéssel. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a Fiókbeállítások **kiválasztásával**  >  **Account Settings** a menüben, majd kattintson a **fiók hozzáadása** lehetőségre.
 
-Az Azure ad-felhasználó Azure-szolgáltatásbeli hitelesítéshez való beállításához válassza az **eszközök**  >  **lehetőséget** a menüben, majd válassza az **Azure szolgáltatás-hitelesítési**  >  **fiók kiválasztása**lehetőséget. Válassza ki a hozzáadott Azure AD-felhasználót, és kattintson **az OK**gombra.
+Az Azure ad-felhasználó Azure-szolgáltatásbeli hitelesítéshez való beállításához válassza az **eszközök**  >  **lehetőséget** a menüben, majd válassza az **Azure szolgáltatás-hitelesítési**  >  **fiók kiválasztása** lehetőséget. Válassza ki a hozzáadott Azure AD-felhasználót, és kattintson **az OK** gombra.
 
 Most már készen áll az alkalmazás fejlesztésére és hibakeresésére SQL Database a háttérben, az Azure AD-hitelesítés használatával.
 
@@ -107,7 +107,7 @@ A Visual Studióban nyissa meg a Package Manager konzolt, és adja hozzá a [Mic
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-A *Web.config*a fájl elejéről dolgozik, és hajtsa végre a következő módosításokat:
+A *Web.config* a fájl elejéről dolgozik, és hajtsa végre a következő módosításokat:
 
 - A alkalmazásban `<configSections>` adja hozzá a következő szakasz deklarációját:
 
@@ -142,13 +142,13 @@ A Visual Studióban nyissa meg a Package Manager konzolt, és adja hozzá a [Mic
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-A [ASP.net Core és SQL Database oktatóanyagban](tutorial-dotnetcore-sqldb-app.md) `MyDbConnection` nincs használatban a kapcsolatok karakterlánca, mert a helyi fejlesztési környezet egy SQLite-adatbázisfájlt használ, és az Azure éles környezet a app Service származó kapcsolatok karakterláncot használ. Active Directory hitelesítéssel mindkét környezet ugyanazt a kapcsolódási karakterláncot szeretné használni. A *appsettings.jsa*(z) elemnél cserélje le a következőt a `MyDbConnection` kapcsolatok karakterláncának értékére:
+A [ASP.net Core és SQL Database oktatóanyagban](tutorial-dotnetcore-sqldb-app.md) `MyDbConnection` nincs használatban a kapcsolatok karakterlánca, mert a helyi fejlesztési környezet egy SQLite-adatbázisfájlt használ, és az Azure éles környezet a app Service származó kapcsolatok karakterláncot használ. Active Directory hitelesítéssel mindkét környezet ugyanazt a kapcsolódási karakterláncot szeretné használni. A *appsettings.jsa* (z) elemnél cserélje le a következőt a `MyDbConnection` kapcsolatok karakterláncának értékére:
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
 ```
 
-Ezután adja meg a Entity Framework adatbázis-környezetet a SQL Database hozzáférési jogkivonatával. A *Data\MyDatabaseContext.cs*-ben adja hozzá a következő kódot az üres konstruktor kapcsos zárójelében `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` :
+Ezután adja meg a Entity Framework adatbázis-környezetet a SQL Database hozzáférési jogkivonatával. A *Data\MyDatabaseContext.cs* -ben adja hozzá a következő kódot az üres konstruktor kapcsos zárójelében `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` :
 
 ```csharp
 var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
@@ -194,7 +194,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 ### <a name="grant-permissions-to-managed-identity"></a>Engedélyek megadása a felügyelt identitásnak
 
 > [!NOTE]
-> Ha szeretné, felveheti az identitást egy [Azure ad-csoportba](../active-directory/fundamentals/active-directory-manage-groups.md), majd az identitás helyett SQL Database hozzáférést biztosíthat az Azure ad-csoportnak. Az alábbi parancsok például hozzáadják az előző lépés felügyelt identitását egy új, _myAzureSQLDBAccessGroup_nevű csoporthoz:
+> Ha szeretné, felveheti az identitást egy [Azure ad-csoportba](../active-directory/fundamentals/active-directory-manage-groups.md), majd az identitás helyett SQL Database hozzáférést biztosíthat az Azure ad-csoportnak. Az alábbi parancsok például hozzáadják az előző lépés felügyelt identitását egy új, _myAzureSQLDBAccessGroup_ nevű csoporthoz:
 > 
 > ```azurecli-interactive
 > groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
@@ -220,7 +220,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* a felügyelt identitás neve az Azure AD-ben. Ha az identitás rendszerhez van rendelve, a név mindig ugyanaz, mint a App Service alkalmazás neve. Az Azure AD-csoportok engedélyeinek megadásához használja helyette a csoport megjelenítendő nevét (például *myAzureSQLDBAccessGroup*).
+*\<identity-name>* a felügyelt identitás neve az Azure AD-ben. Ha az identitás rendszerhez van rendelve, a név mindig ugyanaz, mint a App Service alkalmazás neve. Az Azure AD-csoportok engedélyeinek megadásához használja helyette a csoport megjelenítendő nevét (például *myAzureSQLDBAccessGroup* ).
 
 Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba.
 
@@ -239,13 +239,13 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 Már csak közzé kell tennie a módosításait az Azure-ban.
 
-**Ha az [oktatóanyagból származik: ASP.NET-alkalmazás létrehozása az Azure-ban a SQL Databaseval](app-service-web-tutorial-dotnet-sqldatabase.md)**, tegye közzé a módosításokat a Visual Studióban. A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a **DotNetAppSqlDb** projektre, és válassza a **Publish** (Közzététel) elemet.
+**Ha az [oktatóanyagból származik: ASP.NET-alkalmazás létrehozása az Azure-ban a SQL Databaseval](app-service-web-tutorial-dotnet-sqldatabase.md)** , tegye közzé a módosításokat a Visual Studióban. A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a **DotNetAppSqlDb** projektre, és válassza a **Publish** (Közzététel) elemet.
 
 ![Közzététel a Megoldáskezelőből](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
 A közzétételi oldalon kattintson a **Publish** (Közzététel) elemre. 
 
-**Ha [oktatóanyag: hozzon létre egy ASP.NET Core és SQL Database alkalmazást a Azure app Serviceban](tutorial-dotnetcore-sqldb-app.md)**, tegye közzé a módosításokat a git használatával a következő parancsokkal:
+**Ha [oktatóanyag: hozzon létre egy ASP.NET Core és SQL Database alkalmazást a Azure app Serviceban](tutorial-dotnetcore-sqldb-app.md)** , tegye közzé a módosításokat a git használatával a következő parancsokkal:
 
 ```bash
 git commit -am "configure managed identity"
@@ -260,7 +260,7 @@ Most már ugyanúgy szerkesztheti a feladatlistát, mint korábban.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

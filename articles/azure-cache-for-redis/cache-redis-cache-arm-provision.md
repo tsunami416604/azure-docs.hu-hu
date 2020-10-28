@@ -7,14 +7,14 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: fdfa8c767757aa17983a28d0d586698551326fe4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8bd9a45ec7c43d9338dec184afd784d2b163c410
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545327"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735978"
 ---
-# <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>Azure cache létrehozása Redis ARM-sablon használatával
+# <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>Rövid útmutató: Azure cache létrehozása Redis ARM-sablon használatával
 
 Megtudhatja, hogyan hozhat létre olyan Azure Resource Manager-sablont (ARM-sablon), amely üzembe helyez egy Azure-gyorsítótárat a Redis. A gyorsítótárat meglévő Storage-fiókkal is használhatja a diagnosztikai adatkezelés érdekében. Azt is megtudhatja, hogyan határozhatja meg, hogy mely erőforrások legyenek telepítve, és hogyan határozhatja meg a központi telepítés végrehajtásakor megadott paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. Jelenleg a diagnosztikai beállítások az adott régióban lévő összes gyorsítótárhoz meg vannak osztva egy előfizetéshez. A régió egyik gyorsítótárának frissítése hatással van a régió összes többi gyorsítótárára.
 
@@ -66,7 +66,7 @@ A legújabb sablonok kereséséhez tekintse meg az Azure rövid útmutató [sabl
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Nyissa meg a létrehozott Redis cache-gyorsítótárat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások felszabadítása

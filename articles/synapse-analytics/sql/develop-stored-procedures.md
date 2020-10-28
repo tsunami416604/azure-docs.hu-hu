@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279067"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737854"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Tárolt eljárások használata a szinapszis SQL-ben
 
@@ -24,6 +24,9 @@ Tippek a tárolt eljárások megvalósításához a szinapszis SQL-készletben m
 ## <a name="what-to-expect"></a>Amire számíthat
 
 A szinapszis SQL számos, a SQL Serverban használt T-SQL-funkciót támogat. Még ennél is fontosabb, hogy a megoldás teljesítményének maximalizálása érdekében Felskálázási funkciók érhetők el.
+
+> [!NOTE]
+> Az eljárás törzsében csak a szinapszis SQL Surface területén támogatott funkciókat használhatja. Tekintse át [ezt a cikket](overview-features.md) a tárolt eljárásokban használható objektumok és utasítások azonosításához. Az ezekben a cikkekben található példákban olyan általános funkciók vannak használatban, amelyek kiszolgáló nélküli és kiépített felületen egyaránt elérhetők.
 
 Az SQL-készlet méretezésének és teljesítményének fenntartása érdekében vannak olyan funkciók és funkciók is, amelyek viselkedési különbségekkel és másokkal rendelkeznek, amelyek nem támogatottak.
 

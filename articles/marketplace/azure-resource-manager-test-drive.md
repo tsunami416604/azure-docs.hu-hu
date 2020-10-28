@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287949"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735604"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
 
@@ -35,6 +35,9 @@ A központi telepítési sablon tartalmazza a megoldását alkotó összes Azure
   - **Hideg** – az ilyen típusú példányok az egyes régiókban esetlegesen üzembe helyezhető példányok teljes számát jelölik. A hideg példányok esetében a teljes tesztvezetés Resource Manager-sablon szükséges ahhoz, hogy egy ügyfél a tesztelési meghajtót használja, így a *hideg* példányok sokkal lassabban töltődnek be, mint a *forró* példányok. A kompromisszum az, hogy csak a tesztvezetés időtartamára kell fizetnie, *nem* mindig fut az Azure-előfizetésében, mint a *forró* példányok esetében.
 
 - **Tesztvezetés Azure Resource Manager sablon** – töltse fel a Azure Resource Manager sablont tartalmazó. zip fájlt. További információ a Azure Resource Manager sablon létrehozásáról a rövid útmutató a [Azure Resource Manager-sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)című cikkben található.
+
+    > [!note]
+    > A sikeres közzétételhez fontos, hogy érvényesítse az ARM-sablon formátumát. Ezt kétféleképpen teheti meg (1) egy [online API-eszköz](https://docs.microsoft.com/rest/api/resources/deployments/validate) vagy (2) használatával, [tesztelési célú telepítéssel](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).
 
 - **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy hány óra elteltével marad aktív a tesztvezetés. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után. Csak egész számokat használjon (például "2" óra érvényes, "1,5").
 
@@ -293,11 +296,11 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
 
 ![Tesztelési meghajtó üzembe helyezésének előfizetése – részletek](media/test-drive/deployment-subscription-details.png)
 
-1. Szerezze be az **Azure-előfizetés azonosítóját**. Ez hozzáférést biztosít az Azure-szolgáltatásokhoz és a Azure Portalhoz. Az előfizetés az erőforrás-használat jelentését és a szolgáltatások számlázását jelenti. Ha még nem rendelkezik külön Azure-előfizetéssel kizárólag tesztelési meghajtókhoz, végezze el az egyiket. Az Azure-előfizetések azonosítóit (például `1a83645ac-1234-5ab6-6789-1h234g764ghty1` ) a bal oldali navigációs menüben található **előfizetések** lehetőségre Azure Portal való bejelentkezéssel, illetve az előfizetések kiválasztásával érheti el.
+1. Szerezze be az **Azure-előfizetés azonosítóját** . Ez hozzáférést biztosít az Azure-szolgáltatásokhoz és a Azure Portalhoz. Az előfizetés az erőforrás-használat jelentését és a szolgáltatások számlázását jelenti. Ha még nem rendelkezik külön Azure-előfizetéssel kizárólag tesztelési meghajtókhoz, végezze el az egyiket. Az Azure-előfizetések azonosítóit (például `1a83645ac-1234-5ab6-6789-1h234g764ghty1` ) a bal oldali navigációs menüben található **előfizetések** lehetőségre Azure Portal való bejelentkezéssel, illetve az előfizetések kiválasztásával érheti el.
 
    ![Azure-előfizetések](media/test-drive/azure-subscriptions.png)
 
-2. Szerezze be az **Azure ad-bérlő azonosítóját**. Ha már rendelkezik egy bérlői azonosítóval, **Azure Active Directory**  >  **Tulajdonságok**  >  **címtár-azonosítójában**található:
+2. Szerezze be az **Azure ad-bérlő azonosítóját** . Ha már rendelkezik egy bérlői azonosítóval, **Azure Active Directory**  >  **Tulajdonságok**  >  **címtár-azonosítójában** található:
 
    ![Azure Active Directory tulajdonságai](media/test-drive/azure-active-directory-properties.png)
 
@@ -306,14 +309,14 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
 3. **Azure ad alkalmazás ID** – új alkalmazás létrehozása és regisztrálása. Ezt az alkalmazást fogjuk használni a test Drive-példányon végrehajtott műveletek végrehajtásához.
 
    1. Navigáljon az újonnan létrehozott címtárhoz vagy már meglévő könyvtárhoz, és válassza a Azure Active Directory lehetőséget a szűrő ablaktáblán.
-   2. Keressen **Alkalmazásregisztrációk** és válassza a **Hozzáadás**lehetőséget.
+   2. Keressen **Alkalmazásregisztrációk** és válassza a **Hozzáadás** lehetőséget.
    3. Adja meg az alkalmazás nevét.
    4. Válassza ki a **webalkalmazás/API** **típusát** .
    5. Adjon meg bármilyen értéket a bejelentkezési URL-címben, ez a mező nincs használatban.
    6. Kattintson a **Létrehozás** gombra.
-   7. Az alkalmazás létrehozása után válassza a **Tulajdonságok**  >  **több-bérlős beállítást** , majd a **Mentés**lehetőséget.
+   7. Az alkalmazás létrehozása után válassza a **Tulajdonságok**  >  **több-bérlős beállítást** , majd a **Mentés** lehetőséget.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 5. Másolja ki az alkalmazás AZONOSÍTÓját a regisztrált alkalmazáshoz, és illessze be a test Drive (teszt) mezőbe.
 
@@ -323,7 +326,7 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
 
    1. Válassza ki a tesztelési meghajtóhoz használt **előfizetés** típusát.
    1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
-   1. Válassza ki a **szerepkör-hozzárendelések** lapot, majd **adja hozzá a szerepkör-hozzárendelést**.
+   1. Válassza ki a **szerepkör-hozzárendelések** lapot, majd **adja hozzá a szerepkör-hozzárendelést** .
 
       ![Új Access Control rendszerbiztonsági tag hozzáadása](media/test-drive/access-control-principal.jpg)
 
@@ -331,9 +334,9 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
 
       ![Engedélyek hozzáadása](media/test-drive/access-control-permissions.jpg)
 
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
 
-7. **Azure ad alkalmazás** hitelesítési kulcs létrehozása. A **kulcsok**területen adja meg a **kulcs leírását**, állítsa be az időtartamot, hogy **Soha ne járjon le** (a lejárt kulcs megszakítja a tesztelési meghajtót éles környezetben), majd válassza a **Mentés**lehetőséget. Másolja és illessze be ezt az értéket a szükséges tesztvezetés mezőjébe.
+7. **Azure ad alkalmazás** hitelesítési kulcs létrehozása. A **kulcsok** területen adja meg a **kulcs leírását** , állítsa be az időtartamot, hogy **Soha ne járjon le** (a lejárt kulcs megszakítja a tesztelési meghajtót éles környezetben), majd válassza a **Mentés** lehetőséget. Másolja és illessze be ezt az értéket a szükséges tesztvezetés mezőjébe.
 
 ![Megjeleníti az Azure AD-alkalmazás kulcsait](media/test-drive/azure-ad-app-keys.png)
 
@@ -349,7 +352,7 @@ Most, hogy az összes Test Drive-mező elkészült, **tegye közzé** újra az a
 
 Ne törölje az ügyfelek számára kiépített tesztvezetés-példányokat. a test Drive szolgáltatás automatikusan törli ezeket az erőforráscsoportokat, miután az ügyfél befejezte azt.
 
-Ha már elégedett az előzetes verzió ajánlatával, itt az ideje, hogy **éljünk**! Végső felülvizsgálati folyamattal ellenőrizheti a teljes végpontok közötti élményt. Ha elutasítjuk az ajánlatot, elküldjük Önnek az ajánlat mérnöki kapcsolattartóját, amely elmagyarázza, mit kell rögzíteni.
+Ha már elégedett az előzetes verzió ajánlatával, itt az ideje, hogy **éljünk** ! Végső felülvizsgálati folyamattal ellenőrizheti a teljes végpontok közötti élményt. Ha elutasítjuk az ajánlatot, elküldjük Önnek az ajánlat mérnöki kapcsolattartóját, amely elmagyarázza, mit kell rögzíteni.
 
 ## <a name="next-steps"></a>Következő lépések
 

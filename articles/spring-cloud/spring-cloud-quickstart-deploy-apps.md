@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 29eb99d9e009d58c44be8f9d2e5d9fa01d117092
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092953"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735594"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Gyors útmutató: alkalmazások létrehozása és üzembe helyezése az Azure Spring Cloud-ban
 
@@ -222,7 +222,7 @@ A projekt fordítása körülbelül 5 percet vesz igénybe. Ha elkészült, egye
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Hozzon létre Azure Spring Cloud-szolgáltatásokat az előző lépésben létrehozott JAR-fájlokkal. Három alkalmazást fog létrehozni: **átjáró**, **Auth-szolgáltatás**és **fiók-szolgáltatás**.
+1. Hozzon létre Azure Spring Cloud-szolgáltatásokat az előző lépésben létrehozott JAR-fájlokkal. Három alkalmazást fog létrehozni: **átjáró** , **Auth-szolgáltatás** és **fiók-szolgáltatás** .
 
     ```azurecli
     az spring-cloud app create --name gateway
@@ -306,23 +306,23 @@ Egy webböngészőn keresztül elérhetővé kell tennie az alkalmazást. Az át
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>Gateway-alkalmazás üzembe helyezése az Azure Spring Cloud-on
 Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával Azure Toolkit for IntelliJval, és ki kell választania az előfizetését. A bejelentkezés részleteiért lásd: [telepítés és bejelentkezés](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. Kattintson a jobb gombbal a projektre a IntelliJ Project Explorerben, és válassza az **Azure**-  ->  **üzembe helyezés az Azure Spring Cloud**-ban lehetőséget.
+1. Kattintson a jobb gombbal a projektre a IntelliJ Project Explorerben, és válassza az **Azure** -  ->  **üzembe helyezés az Azure Spring Cloud** -ban lehetőséget.
 
     ![Üzembe helyezés az Azure 1-ben](media/spring-cloud-intellij-howto/revision-deploy-to-azure-1.png)
 
-1. A **név** mezőben adja hozzá a következőt *: átjáró* a meglévő **névhez**.
-1. Az összetevő **szövegmezőben** válassza a *com. piggymetrics: Gateway: 1.0-pillanatkép*elemet.
+1. A **név** mezőben adja hozzá a következőt *: átjáró* a meglévő **névhez** .
+1. Az összetevő **szövegmezőben** válassza a *com. piggymetrics: Gateway: 1.0-pillanatkép* elemet.
 1. Az **előfizetés** szövegmezőben ellenőrizze az előfizetését.
 1. A **Spring Cloud** szövegmezőben válassza ki azt az Azure Spring Cloud-példányt, amelyet az [Azure Spring Cloud-példány kiépítése](./spring-cloud-quickstart-provision-service-instance.md)című részben hozott létre.
-1. Az *engedélyezéshez*állítsa be a **nyilvános végpontot** .
+1. Az *engedélyezéshez* állítsa be a **nyilvános végpontot** .
 1. Az **alkalmazás:** szövegmezőben válassza az **alkalmazás létrehozása...** lehetőséget.
-1. Adja meg az *átjárót*, majd kattintson **az OK**gombra.
+1. Adja meg az *átjárót* , majd kattintson **az OK** gombra.
 
     ![Üzembe helyezés az Azure-ban OK](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
-1. A párbeszédpanel **Indítás előtt** szakaszában kattintson duplán a *Maven cél futtatása*elemre.
+1. A párbeszédpanel **Indítás előtt** szakaszában kattintson duplán a *Maven cél futtatása* elemre.
 1. A **Working Directory** szövegmezőben navigáljon a *piggymetrics/Gateway* mappára.
-1. A **parancssori** szövegmezőbe írja be a *Package-DskipTests*értéket. Kattintson az **OK** gombra.
+1. A **parancssori** szövegmezőbe írja be a *Package-DskipTests* értéket. Kattintson az **OK** gombra.
 1. A telepítés elindításához kattintson a **Futtatás** gombra az **Azure Spring Cloud app üzembe helyezése** párbeszédpanel alján. A beépülő modul futtatja a parancsot `mvn package` az `gateway` alkalmazáson, és telepíti a parancs által generált jar-t `package` .
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>Auth-szolgáltatás és fiók-szolgáltatásbeli alkalmazások üzembe helyezése az Azure Spring Cloud-ban
@@ -330,7 +330,7 @@ A fenti lépéseket megismételve üzembe helyezheti és futtathatja `auth-servi
 
 1. Módosítsa a **nevet** és **az összetevőt az** alkalmazás azonosításához `auth-service` .
 1. Az **alkalmazás:** szövegmezőben válassza az **alkalmazás létrehozása...** lehetőséget az alkalmazások létrehozásához. `auth-service`
-1. Győződjön meg arról, hogy a **nyilvános végpont** beállítás *Letiltva*értékre van állítva.
+1. Győződjön meg arról, hogy a **nyilvános végpont** beállítás *Letiltva* értékre van állítva.
 1. A párbeszédpanel **Indítás előtt** szakaszában váltson a **munkakönyvtárra** a *piggymetrics/Auth-Service* mappára.
 1. A telepítés elindításához kattintson a **Futtatás** gombra az **Azure Spring Cloud app üzembe helyezése** párbeszédpanel alján. 
 1. Ismételje meg ezeket az eljárásokat a konfigurálásához és telepítéséhez `account-service` .

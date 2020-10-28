@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
-ms.date: 04/15/2020
-ms.openlocfilehash: 143713649afd7f9e42f517713b6b2365ee1605a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: f942525f1360a134f58f18e0ec76a84b0ceee50b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260274"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738176"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Oktatóanyag: Apache Spark feladatdefiníció létrehozása a szinapszis Studióban
 
@@ -43,11 +43,11 @@ Ebben a szakaszban a PySpark (Python) Apache Spark feladatainak definícióját 
 
 1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
-2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) nyissa meg a mintaképeket **python.zipához **, majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount.py** és **shakespeare.txt** fájlokat. 
+2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) nyissa meg a mintaképeket **python.zipához** , majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount.py** és **shakespeare.txt** fájlokat. 
 
      ![Példák a fájlokra](./media/apache-spark-job-definitions/sample-files.png)
 
-3. Válassza ki az **adatokhoz**   ->  **csatolt**   ->  **Azure Data Lake Storage Gen2**, és töltse fel a **WordCount.py**,   és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe. 
+3. Válassza ki az **adatokhoz**  ->  **csatolt**  ->  **Azure Data Lake Storage Gen2** , és töltse fel a **WordCount.py** , és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe. 
 
      ![Python-fájl feltöltése](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -85,15 +85,15 @@ Ebben a szakaszban létrehoz egy Apache Spark Apache Spark (Scala) feladatdefin�
 
  1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
- 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) nyissa meg a mintaképeket **scala.zipához **, majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount. jar** és **shakespeare.txt** fájlokat. 
+ 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) nyissa meg a mintaképeket **scala.zipához** , majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount. jar** és **shakespeare.txt** fájlokat. 
  
      ![Sample Files Scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. Válassza ki az **adatokhoz**   ->  **csatolt**   ->  **Azure Data Lake Storage Gen2**, és töltse fel a **WordCount. jar**fájlt,   és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
+ 3. Válassza ki az **adatokhoz**  ->  **csatolt**  ->  **Azure Data Lake Storage Gen2** , és töltse fel a **WordCount. jar** fájlt, és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
  
      ![a Scala-struktúra előkészítése](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. Válassza ki a hub **fejlesztése** lehetőséget, válassza a "+" ikont, és válassza a **Spark-feladattípus** lehetőséget egy új Spark-feladatdefiníció létrehozásához. (A minta képe megegyezik a **Apache Spark Job Definition (Python) PySpark létrehozásához szükséges**4. lépéssel.)
+ 4. Válassza ki a hub **fejlesztése** lehetőséget, válassza a "+" ikont, és válassza a **Spark-feladattípus** lehetőséget egy új Spark-feladatdefiníció létrehozásához. (A minta képe megegyezik a **Apache Spark Job Definition (Python) PySpark létrehozásához szükséges** 4. lépéssel.)
 
  5. Válassza ki a **Spark (Scala)** elemet a Apache Spark Job definition Main ablak nyelv legördülő listájában.
 
@@ -125,15 +125,15 @@ Ebben a szakaszban létrehoz egy Apache Spark Apache Spark (Scala) feladatdefin�
 Ebben a szakaszban létre fog hozni egy Apache Spark feladatdefiníció a .NET Sparkhoz (C#/F #).
  1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
- 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) nyissa meg a mintaképeket **dotnet.zipához **, majd bontsa ki a tömörített csomagot, és bontsa ki a **wordcount.zip** és **shakespeare.txt** fájlokat. 
+ 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) nyissa meg a mintaképeket **dotnet.zipához** , majd bontsa ki a tömörített csomagot, és bontsa ki a **wordcount.zip** és **shakespeare.txt** fájlokat. 
 
      ![DotNet-minta](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Válassza ki az **adatokhoz**   ->  **csatolt**   ->  **Azure Data Lake Storage Gen2**, és töltse fel **wordcount.zip**   és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
+ 3. Válassza ki az **adatokhoz**  ->  **csatolt**  ->  **Azure Data Lake Storage Gen2** , és töltse fel **wordcount.zip** és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
  
      ![DotNet-struktúra előkészítése](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. Válassza ki a hub **fejlesztése** lehetőséget, válassza a "+" ikont, és válassza a **Spark-feladattípus** lehetőséget egy új Spark-feladatdefiníció létrehozásához. (A minta képe megegyezik a **Apache Spark Job Definition (Python) PySpark létrehozásához szükséges**4. lépéssel.)
+ 4. Válassza ki a hub **fejlesztése** lehetőséget, válassza a "+" ikont, és válassza a **Spark-feladattípus** lehetőséget egy új Spark-feladatdefiníció létrehozásához. (A minta képe megegyezik a **Apache Spark Job Definition (Python) PySpark létrehozásához szükséges** 4. lépéssel.)
 
  5. Válassza a **.net Spark (C#/f #)** lehetőséget a Apache Spark Job definition főablakában található nyelv legördülő listából.
 
@@ -177,7 +177,7 @@ Apache Spark feladatdefiníció létrehozása után elküldheti azt egy Apache S
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>2. forgatókönyv: folyamatban lévő Apache Spark-feladatok megtekintése
 
- 1. Válassza a **figyelés**, majd a **Apache Spark alkalmazások** lehetőséget. Megtalálhatja az elküldött Apache Spark alkalmazást.
+ 1. Válassza a **figyelés** , majd a **Apache Spark alkalmazások** lehetőséget. Megtalálhatja az elküldött Apache Spark alkalmazást.
 
      ![Spark-alkalmazás megtekintése](./media/apache-spark-job-definitions/view-spark-application.png)
 
@@ -197,13 +197,13 @@ Ebben a szakaszban egy Apache Spark feladatdefiníció hozzáadása a folyamatho
 
  1. Nyisson meg egy meglévő Apache Spark feladatdefiníció.
 
- 2. Válassza ki Apache Spark feladatdefiníció jobb felső sarkában található ikont, válassza a **meglévő folyamat**vagy az **új folyamat**elemet. További információért tekintse meg a folyamat lapját.
+ 2. Válassza ki Apache Spark feladatdefiníció jobb felső sarkában található ikont, válassza a **meglévő folyamat** vagy az **új folyamat** elemet. További információért tekintse meg a folyamat lapját.
 
      ![Hozzáadás a pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
      ![Hozzáadás a pipeline2](./media/apache-spark-job-definitions/add-to-pipeline02.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután az Azure szinapszis Studio használatával létrehozhat Power BI adatkészleteket, és kezelheti a Power BI adatokat. Ha további információt szeretne, folytassa a [Power bi munkaterület összekapcsolásával egy szinapszis-munkaterülettel](../quickstart-power-bi.md) . 
 

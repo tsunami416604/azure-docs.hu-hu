@@ -10,13 +10,13 @@ ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
-ms.custom: how-to, seodec18
-ms.openlocfilehash: e15092ee767e6840f190027b0a35af3ce07e8ba9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, seodec18, devx-track-azurecli
+ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425646"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736617"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 
@@ -45,7 +45,7 @@ Ha Ön a munkaterület tulajdonosa, szerepköröket adhat hozzá és távolítha
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager-sablonok](/azure/role-based-access-control/role-assignments-template)
+- [Azure Resource Manager sablonok](/azure/role-based-access-control/role-assignments-template)
 
 Ha telepítette a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md)-t, a parancssori felület parancsaival rendelhet hozzá szerepköröket a felhasználókhoz:
 
@@ -173,7 +173,7 @@ Jelenleg nem tesszük közzé az [Azure beépített szerepköreit](/azure/role-b
 
 Igen, íme néhány gyakori forgatókönyv az egyéni javasolt szerepkör-definíciókkal együtt, amelyeket a saját egyéni szerepköreinek definiálására használhat alapszintű:
 
-* __Adattudós egyéni__: lehetővé teszi, hogy az adattudós a munkaterületen belül minden műveletet elvégezzen, **kivéve**a következőket:
+* __Adattudós egyéni__ : lehetővé teszi, hogy az adattudós a munkaterületen belül minden műveletet elvégezzen, **kivéve** a következőket:
 
     * Számítás létrehozása
     * Modellek üzembe helyezése üzemi AK-fürtön
@@ -209,7 +209,7 @@ Igen, íme néhány gyakori forgatókönyv az egyéni javasolt szerepkör-defin�
     }
     ```
 
-* __Adattudós által korlátozott egyéni__: a korlátozott szerepkör-definíciók nem helyettesítő karakterek az engedélyezett műveletekben. A munkaterületen belül minden műveletet elvégezhet, **kivéve**a következőket:
+* __Adattudós által korlátozott egyéni__ : a korlátozott szerepkör-definíciók nem helyettesítő karakterek az engedélyezett műveletekben. A munkaterületen belül minden műveletet elvégezhet, **kivéve** a következőket:
 
     * Számítás létrehozása
     * Modellek üzembe helyezése üzemi AK-fürtön
@@ -270,7 +270,7 @@ Igen, íme néhány gyakori forgatókönyv az egyéni javasolt szerepkör-defin�
     }
     ```
      
-* __Egyéni MLflow adattudós__: lehetővé teszi, hogy az adattudós az összes támogatott MLflow AzureML-műveletet hajtsa végre, **kivéve**a következőket:
+* __Egyéni MLflow adattudós__ : lehetővé teszi, hogy az adattudós az összes támogatott MLflow AzureML-műveletet hajtsa végre, **kivéve** a következőket:
 
    * Számítás létrehozása
    * Modellek üzembe helyezése üzemi AK-fürtön
@@ -310,7 +310,7 @@ Igen, íme néhány gyakori forgatókönyv az egyéni javasolt szerepkör-defin�
     }
     ```   
 
-* __Egyéni MLOps__: lehetővé teszi, hogy egy szerepkört rendeljen egy egyszerű szolgáltatáshoz, és ezzel automatizálja az MLOps-folyamatokat. Például egy már közzétett folyamaton való futtatáshoz:
+* __Egyéni MLOps__ : lehetővé teszi, hogy egy szerepkört rendeljen egy egyszerű szolgáltatáshoz, és ezzel automatizálja az MLOps-folyamatokat. Például egy már közzétett folyamaton való futtatáshoz:
 
     `mlops_custom_role.json` :
     ```json
@@ -351,7 +351,7 @@ Igen, íme néhány gyakori forgatókönyv az egyéni javasolt szerepkör-defin�
     }
     ```
 
-* __Munkaterület rendszergazdája__: lehetővé teszi az összes művelet végrehajtását egy munkaterület hatókörén belül, **kivéve**a következőket:
+* __Munkaterület rendszergazdája__ : lehetővé teszi az összes művelet végrehajtását egy munkaterület hatókörén belül, **kivéve** a következőket:
 
     * Új munkaterület létrehozása
     * Előfizetés vagy munkaterület szintű kvóták kiosztása
@@ -381,7 +381,7 @@ Igen, íme néhány gyakori forgatókönyv az egyéni javasolt szerepkör-defin�
     ```
 
 <a name="labeler"></a>
-* __Egyéni Labeler__: lehetővé teszi, hogy csak az adat címkézésére szolgáló szerepkört definiáljon:
+* __Egyéni Labeler__ : lehetővé teszi, hogy csak az adat címkézésére szolgáló szerepkört definiáljon:
 
     `labeler_custom_role.json` :
     ```json
@@ -475,7 +475,7 @@ Az új szerepkör-definíció teljes hatókörére vonatkozó engedélyekkel kel
 Az előfizetési szintű engedélyekre van szükség a munkaterületen található kvóta-alapú műveletek elvégzéséhez. Ez azt jelenti, hogy az előfizetési szint kvótájának vagy a munkaterületnek a felügyelt számítási erőforrásokra vonatkozó kvótájának beállítása csak akkor fordulhat elő, ha az előfizetés hatókörében írási engedélyekkel rendelkezik. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Vállalati biztonság áttekintése](concept-enterprise-security.md)
 - [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)

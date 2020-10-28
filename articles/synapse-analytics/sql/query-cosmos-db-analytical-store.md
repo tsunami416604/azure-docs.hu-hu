@@ -9,23 +9,23 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c5fa326fa05a34ae5b51054b867a766489b85c16
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2b1af6fa5b0ccb95476c4ae169481e4aaa15f4f9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670697"
+ms.locfileid: "92737830"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Lekérdezés Azure Cosmos DB az Azure-beli kiszolgáló nélküli SQL-készlettel az Azure szinapszis-hivatkozás (előzetes verzió)
 
-A szinapszis kiszolgáló nélküli SQL-készlete (korábban SQL on-demand) lehetővé teszi az olyan Azure Cosmos DB-tárolókban lévő adatok elemzését, amelyek az [Azure szinapszis hivatkozásával](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) közel valós időben engedélyezve vannak, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezését, valamint a bi-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a t-SQL felületen keresztül.
+A szinapszis kiszolgáló nélküli SQL-készlete lehetővé teszi az olyan Azure Cosmos DB-tárolókban lévő adatok elemzését, amelyek az [Azure szinapszis hivatkozásával](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) közel valós időben engedélyezve vannak, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezését, valamint a bi-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a t-SQL felületen keresztül.
 
 Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) felületét támogatja, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét. Azt is megteheti, hogy a lekérdezés eredményeit a Azure Cosmos DB az Azure Blob Storage vagy Azure Data Lake Storage a [külső tábla létrehozása lehetőséggel](develop-tables-cetas.md#cetas-in-sql-on-demand)együtt beolvassa az adatokat. A kiszolgáló nélküli SQL-készlet lekérdezési eredményei jelenleg nem tárolhatók a [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)használatával Azure Cosmos db.
 
 Ebből a cikkből megtudhatja, hogyan írhat lekérdezéseket kiszolgáló nélküli SQL-készlettel, amely az Azure Cosmos DB tárolók adatait fogja lekérdezni, amelyeken engedélyezve van a szinapszis-hivatkozás. Ezután további információt olvashat a kiszolgáló nélküli SQL-készlet nézeteinek létrehozásáról Azure Cosmos DB tárolók között, és összekapcsolhatja őket [az oktatóanyag Power bi](./tutorial-data-analyst.md) modelljeivel. 
 
 > [!IMPORTANT]
-> Ez az oktatóanyag olyan [Azure Cosmos db jól definiált sémával](../../cosmos-db/analytical-store-introduction.md#schema-representation) rendelkező tárolót használ, amely a jövőben támogatott lekérdezési élményt nyújt. A kiszolgáló nélküli SQL-készlet lekérdezési élménye [Azure Cosmos db teljes hűségű sémához](#full-fidelity-schema) olyan ideiglenes viselkedés, amely az előzetes visszajelzések alapján módosítva lesz. Ne támaszkodjon arra a sémára, amelyet a `OPENROWSET` függvény a teljes hűségű tárolók számára biztosít a nyilvános előzetes verzió során, mert előfordulhat, hogy a lekérdezés experinece módosítva lett, és jól definiált sémával van igazítva. Visszajelzés kéréséhez lépjen kapcsolatba a [szinapszis link Product csapatával](mailto:cosmosdbsynapselink@microsoft.com) .
+> Ez az oktatóanyag [Azure Cosmos db jól definiált sémával](../../cosmos-db/analytical-store-introduction.md#schema-representation)rendelkező tárolót használ. A kiszolgáló nélküli SQL-készlet lekérdezési élménye [Azure Cosmos db teljes hűségű sémához](#full-fidelity-schema) olyan ideiglenes viselkedés, amely az előzetes visszajelzések alapján módosítva lesz. Ne támaszkodjon a (z `OPENROWSET` ) záradék nélküli Function séma `WITH` használatára, amely teljes körű megbízhatósági sémával rendelkező tárolóból olvas be adatokat, mert a lekérdezési élmény módosítható, és jól definiált sémával van igazítva. Küldjön visszajelzést az [Azure szinapszis Analytics visszajelzési fórumáról](https://feedback.azure.com/forums/307516-azure-synapse-analytics) , vagy lépjen kapcsolatba a [szinapszis link Product csapatával](mailto:cosmosdbsynapselink@microsoft.com) , és küldjön visszajelzést.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -76,7 +76,15 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-A fenti példában arra utasítja a kiszolgáló nélküli SQL-készletet, hogy a `covid` `MyCosmosDbAccount` Azure Cosmos db kulcs használatával hitelesített Azure Cosmos db fiókban található adatbázishoz kapcsolódjon. Ezután elérjük a tároló `EcdcCases` analitikus tárolóját a `West US 2` régióban. Mivel a tulajdonságok nem rendelkeznek kivetítéssel, `OPENROWSET` a Function a Azure Cosmos db elemek összes tulajdonságát visszaküldi.
+A fenti példában arra utasítja a kiszolgáló nélküli SQL-készletet, hogy a `covid` `MyCosmosDbAccount` Azure Cosmos db kulcs használatával hitelesített Azure Cosmos db fiókban található adatbázishoz kapcsolódjon. Ezután elérjük a tároló `EcdcCases` analitikus tárolóját a `West US 2` régióban. Mivel a tulajdonságok nem rendelkeznek kivetítéssel, `OPENROWSET` a Function a Azure Cosmos db elemek összes tulajdonságát visszaküldi. 
+
+A Cosmos DB tárolóban található elemek `date_rep` , `cases` és tulajdonságok alapján a `geo_id` lekérdezés eredményei a következő táblázatban láthatók:
+
+| date_rep | esetekben | geo_id |
+| --- | --- | --- |
+| 2020-08-13 | 254 | RS |
+| 2020-08-12 | 235 | RS |
+| 2020-08-11 | 163 | RS |
 
 Ha más tárolóból származó adatokkal kell megvizsgálnia ugyanabban a Azure Cosmos DB-adatbázisban, használhatja ugyanazt a kapcsolódási karakterláncot és a hivatkozáshoz szükséges tárolót harmadik paraméterként:
 
@@ -180,7 +188,6 @@ További információ az [összetett adattípusok elemzéséről a szinapszis-hi
 > [!IMPORTANT]
 > Ha a szövegben nem várt karakterek jelennek meg, például `MÃƒÂ©lade` ahelyett, `Mélade` hogy az adatbázis-rendezés nem az [UTF8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) -rendezésre van beállítva. 
 > [Módosítsa az adatbázis rendezését](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) néhány UTF8-rendezésre úgy, hogy néhány SQL-utasítást használ, például: `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
-
 
 ## <a name="flattening-nested-arrays"></a>Beágyazott tömbök összeolvasztása
 
@@ -286,12 +293,16 @@ Minden értéknél megtekintheti Cosmos DB tároló elemben azonosított típust
 Az esetek száma az értékként tárolt információ `int32` , de egy érték decimális számként van megadva. Az érték `float64` típusa. Ha vannak olyan értékek, amelyek meghaladják a legnagyobb `int32` számot, a típusként lesznek tárolva `int64` . A `geo_id` példában szereplő összes érték típusaként van tárolva `string` .
 
 > [!IMPORTANT]
-> A teljes hűség séma mindkét értéket a várt típusokkal és a helytelenül beírt típusokkal rendelkező értékekkel teszi elérhetővé.
+> `OPENROWSET``WITH`a záradék nélküli függvény mindkét értéket a várt típusokkal és a helytelenül beírt típusokkal rendelkező értékekkel teszi elérhetővé. Ez a funcion adatfeltárásra szolgál, nem pedig jelentéskészítéshez. Ne elemezze a függvény által visszaadott JSON-értékeket jelentés készítéséhez, és explicit [with záradék](#querying-items-with-full-fidelity-schema) használatával hozza létre a jelentéseket.
 > Az Azure Cosmos DB tárolóban helytelen típusú értékeket kell megtisztítani, hogy a teljes hűségű analitikus tárolóban alkalmazni lehessen a megrendelést. 
 
 A Mongo DB API-fajta Azure Cosmos DB-fiókjainak lekérdezéséhez további információt talál a teljes körű megbízhatósági séma megjelenítéséről az analitikus tárolóban, valamint az [itt](../../cosmos-db/analytical-store-introduction.md#analytical-schema)használandó bővített tulajdonságokat.
 
-A teljes hűségű séma lekérdezése során explicit módon meg kell adnia az SQL-típust és a várt Cosmos DB tulajdonság típusát a `WITH` záradékban. A következő példában feltételezzük, hogy a tulajdonsághoz `string` és a megfelelő típusú tulajdonsághoz megfelelő típus van `geo_id` `int32` `cases` :
+### <a name="querying-items-with-full-fidelity-schema"></a>Elemek lekérdezése teljes hűséggel rendelkező sémával
+
+A teljes hűségű séma lekérdezése során explicit módon meg kell adnia az SQL-típust és a várt Cosmos DB tulajdonság típusát a `WITH` záradékban. Ne használja `OPENROWSET` a nem `WITH` záradékot a jelentésekben, mert az eredményhalmaz formátuma a visszajelzések alapján módosítható az előzetes verzióban.
+
+A következő példában feltételezzük, hogy a tulajdonsághoz `string` és a megfelelő típusú tulajdonsághoz megfelelő típus van `geo_id` `int32` `cases` :
 
 ```sql
 SELECT geo_id, cases = SUM(cases)
@@ -305,7 +316,9 @@ FROM OPENROWSET(
 GROUP BY geo_id
 ```
 
-A más típusokkal rendelkező értékek nem lesznek visszaadva a `geo_id` és `cases` az oszlopokban, és a lekérdezés a `NULL` cellákban lévő értéket adja vissza. Ez a lekérdezés csak a `cases` () kifejezésben megadott típusra hivatkozik `cases.int32` . Ha olyan értékekkel rendelkezik, `cases.int64` `cases.float64` amelyek nem törölhetők Cosmos db tárolóban, akkor explicit módon hivatkozni kell rájuk a `WITH` záradékban, és össze kell állítania az eredményeket. A következő lekérdezés összesíti a (z) `int32` `int64` és az `float64` oszlopban tárolt adatokat `cases` :
+A `geo_id` és `cases` más típusokkal rendelkező értékek értékként lesznek visszaadva `NULL` . Ez a lekérdezés csak a `cases` () kifejezésben megadott típusra hivatkozik `cases.int32` .
+
+Ha olyan értékekkel rendelkezik, `cases.int64` `cases.float64` amelyek nem tisztíthatók Cosmos db tárolóban, explicit módon hivatkozni kell rájuk a `WITH` záradékban, és össze kell kapcsolniuk az eredményeket. A következő lekérdezés összesíti a (z) `int32` `int64` és az `float64` oszlopban tárolt adatokat `cases` :
 
 ```sql
 SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
@@ -326,7 +339,7 @@ Ebben a példában az esetek száma a következőképpen van tárolva `int32` `i
 ## <a name="known-issues"></a>Ismert problémák
 
 - Az **aliast** a függvény után kell megadni `OPENROWSET` (például: `OPENROWSET (...) AS function_alias` ). Az alias kihagyása okozhatja a csatlakoztatási problémákat, és a kiszolgáló nélküli SQL-végpont átmenetileg nem érhető el. Ezt a problémát november 2020-én oldja fel a rendszer.
-- A kiszolgáló nélküli SQL-készlet lekérdezési élménye [Azure Cosmos db teljes hűségű sémához](#full-fidelity-schema) olyan ideiglenes viselkedés, amely az előzetes visszajelzések alapján módosul. Ne támaszkodjon arra a sémára, amelyet a `OPENROWSET` függvény a nyilvános előzetes verzió során biztosít, mivel előfordulhat, hogy a lekérdezési élmény jól definiált sémával van igazítva. Visszajelzés kéréséhez lépjen kapcsolatba a [szinapszis link Product csapatával](mailto:cosmosdbsynapselink@microsoft.com) .
+- A kiszolgáló nélküli SQL-készlet lekérdezési élménye [Azure Cosmos db teljes hűségű sémához](#full-fidelity-schema) olyan ideiglenes viselkedés, amely az előzetes visszajelzések alapján módosul. Ne támaszkodjon arra, hogy a záradék nélküli séma a nyilvános előzetes verzióban is elérhető `OPENROWSET` `WITH` legyen, mert a lekérdezési élmény a felhasználói visszajelzések alapján jól definiált sémával van igazítva. Visszajelzés kéréséhez lépjen kapcsolatba a [szinapszis link Product csapatával](mailto:cosmosdbsynapselink@microsoft.com) .
 
 A lehetséges hibák és hibaelhárítási műveletek az alábbi táblázatban láthatók:
 

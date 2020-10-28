@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: georgewallace
 ms.author: gwallace
 keywords: ARO, openshift, az ARO, Red Hat, CLI
-ms.custom: mvc
-ms.openlocfilehash: eedd796e3223c6cbcd0844cc4e814a35172d6c7e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3082f30f46a1e450a9ac42958163894c014de66d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078527"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737204"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 privát fürt létrehozása
 
@@ -81,7 +81,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
    CLUSTER=aro-cluster             # the name of your cluster
    ```
 
-1. **Hozzon létre egy erőforráscsoportot**
+1. **Erőforráscsoport létrehozása**
 
     Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az [az Group Create] [az-Group-Create] parancs használatával.
 
@@ -192,7 +192,7 @@ az aro create \
 A parancs végrehajtása után az `az aro create` általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
 
 >[!IMPORTANT]
-> Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com**, a OpenShift-konzol a beépített tartomány helyett egy URL-címen lesz elérhető `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+> Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com** , a OpenShift-konzol a beépített tartomány helyett egy URL-címen lesz elérhető `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
 > Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ a által létrehozott összes útvonalhoz `*.apps.<random>.<location>.aroapp.io` .  Ha az egyéni DNS lehetőséget választja, akkor a fürthöz való csatlakozás után a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) az API-kiszolgáló bejövő vezérlője és [Egyéni hitelesítésszolgáltatója](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)számára.
 
@@ -233,7 +233,7 @@ Indítsa el a konzol URL-címét egy böngészőben, és jelentkezzen be a `kube
 
 ## <a name="install-the-openshift-cli"></a>A OpenShift parancssori felületének telepítése
 
-Ha bejelentkezett a OpenShift webkonzolba, kattintson a következőre **?** a jobb felső sarokban, majd a **parancssori eszközök menüpontban**. Töltse le a számítógépének megfelelő kiadást.
+Ha bejelentkezett a OpenShift webkonzolba, kattintson a következőre **?** a jobb felső sarokban, majd a **parancssori eszközök menüpontban** . Töltse le a számítógépének megfelelő kiadást.
 
 ![Azure Red Hat OpenShift bejelentkezési képernyő](media/aro4-download-cli.png)
 

@@ -8,12 +8,13 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+- devx-track-azurecli
+ms.openlocfilehash: 7efcff5709995898a6ec950dfea6450f7e0dd48d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490747"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736799"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -47,14 +48,14 @@ A prémium csomaggal az alkalmazás mindig egy adott számú példányon áll k�
 > [!NOTE]
 > Minden prémium csomagnak legalább egy aktív (számlázott) példánya lesz.
 
-A Azure Portal mindig kész példányok számát beállíthatja úgy, hogy kijelöli a **függvényalkalmazás**, majd a **platform szolgáltatásai** lapra kattint, majd kiválasztja a **kiskálázási** lehetőségeket. Az alkalmazás szerkesztése ablakban a mindig kész példányok az adott alkalmazásra vonatkoznak.
+A Azure Portal mindig kész példányok számát beállíthatja úgy, hogy kijelöli a **függvényalkalmazás** , majd a **platform szolgáltatásai** lapra kattint, majd kiválasztja a **kiskálázási** lehetőségeket. Az alkalmazás szerkesztése ablakban a mindig kész példányok az adott alkalmazásra vonatkoznak.
 
 ![Rugalmas méretezési beállítások](./media/functions-premium-plan/scale-out.png)
 
 Az Azure CLI-vel is konfigurálhatja az alkalmazások mindig kész példányait.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="pre-warmed-instances"></a>Előre bemelegítő példányok
@@ -68,7 +69,7 @@ Amint az első trigger bekövetkezik, az öt mindig kész példány válik aktí
 Az Azure CLI használatával módosíthatja az alkalmazások előre bemelegítő példányainak számát.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="maximum-instances-for-an-app"></a>Alkalmazások maximális példányai
@@ -99,7 +100,7 @@ A terv létrehozásakor kétféle séma-beállítás létezik: a példányok min
 
 Ha az alkalmazás a mindig kész példányokon túli példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok számlázása csak akkor történik meg, ha az Ön által futtatott, illetve az Ön számára lefoglalt, másodpercenként.  A legjobb megoldás, ha az alkalmazást a megadott maximális korlátra szeretné méretezni.
 
-A csomag méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag **kibővítő** lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
+A csomag méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag **kibővítő** lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai** alatt).
 
 Az Azure CLI maximális burst korlátját is megnövelheti:
 
@@ -122,7 +123,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 ### <a name="available-instance-skus"></a>Rendelkezésre álló példányok SKU-ban
 
-A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  Az egyes példányok kiosztása után a rendszer a másodpercenként kiosztott magok és memóriák teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
+A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  Az egyes példányok kiosztása után a rendszer a másodpercenként kiosztott magok és memóriák teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.
 
 |Termékváltozat|Cores|Memória|Storage|
 |--|--|--|--|

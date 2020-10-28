@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan helyezhet üzembe tárolókat a Azure Container
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cca1001f0f84f4e4fc87df233f872fc1efdb3267
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173656"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736725"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés az Azure Container Instancesben az Azure Container Registryből
 
@@ -18,9 +18,9 @@ ms.locfileid: "92173656"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-**Azure Container Registry**: szüksége van egy Azure Container registryre – és legalább egy tároló-rendszerképre a beállításjegyzékben – a cikk lépéseinek végrehajtásához. Ha szüksége van egy beállításjegyzékre, tekintse meg a [tároló-beállításjegyzék létrehozása az Azure CLI használatával](../container-registry/container-registry-get-started-azure-cli.md)című témakört.
+**Azure Container Registry** : szüksége van egy Azure Container registryre – és legalább egy tároló-rendszerképre a beállításjegyzékben – a cikk lépéseinek végrehajtásához. Ha szüksége van egy beállításjegyzékre, tekintse meg a [tároló-beállításjegyzék létrehozása az Azure CLI használatával](../container-registry/container-registry-get-started-azure-cli.md)című témakört.
 
-**Azure CLI**: az ebben a cikkben szereplő parancssori példák az [Azure CLI](/cli/azure/) -t használják, és a bash rendszerhéjhoz vannak formázva. [Az Azure CLI](/cli/azure/install-azure-cli) -t helyileg is telepítheti, vagy használhatja a [Azure Cloud Shell][cloud-shell-bash].
+**Azure CLI** : az ebben a cikkben szereplő parancssori példák az [Azure CLI](/cli/azure/) -t használják, és a bash rendszerhéjhoz vannak formázva. [Az Azure CLI](/cli/azure/install-azure-cli) -t helyileg is telepítheti, vagy használhatja a [Azure Cloud Shell][cloud-shell-bash].
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -70,7 +70,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Az `--role` előző parancsban szereplő argumentum konfigurálja az egyszerű szolgáltatást a *acrpull* szerepkörrel, amely csak lekéréses hozzáférést biztosít a beállításjegyzékhez. A leküldéses és lekéréses hozzáférés engedélyezéséhez módosítsa az `--role` argumentumot *acrpush*értékre.
+Az `--role` előző parancsban szereplő argumentum konfigurálja az egyszerű szolgáltatást a *acrpull* szerepkörrel, amely csak lekéréses hozzáférést biztosít a beállításjegyzékhez. A leküldéses és lekéréses hozzáférés engedélyezéséhez módosítsa az `--role` argumentumot *acrpush* értékre.
 
 Ezután tárolja a szolgáltatásnév *AppID* a tárolóban, amely a hitelesítéshez Azure Container Registry átadni kívánt **Felhasználónév** .
 
@@ -147,9 +147,9 @@ Ha a tároló lemezképeit egy Azure Container registryben tartja karban, egysze
 
 1. A Azure Portal navigáljon a tároló-beállításjegyzékhez.
 
-1. Ha szeretné ellenőrizni, hogy a rendszergazdai fiók engedélyezve van-e, válassza a **hozzáférési kulcsok**lehetőséget, majd a **rendszergazda felhasználó** területen válassza az **Engedélyezés**lehetőséget.
+1. Ha szeretné ellenőrizni, hogy a rendszergazdai fiók engedélyezve van-e, válassza a **hozzáférési kulcsok** lehetőséget, majd a **rendszergazda felhasználó** területen válassza az **Engedélyezés** lehetőséget.
 
-1. Válassza ki a **tárak**elemet, majd válassza ki a telepíteni kívánt tárházat, kattintson a jobb gombbal a telepíteni kívánt tároló lemezkép címkéjére, majd válassza a **példány futtatása**parancsot.
+1. Válassza ki a **tárak** elemet, majd válassza ki a telepíteni kívánt tárházat, kattintson a jobb gombbal a telepíteni kívánt tároló lemezkép címkéjére, majd válassza a **példány futtatása** parancsot.
 
     !["Példány futtatása" Azure Container Registry a Azure Portal][acr-runinstance-contextmenu]
 

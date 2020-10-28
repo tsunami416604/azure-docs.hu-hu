@@ -9,17 +9,17 @@ keywords: IPv6, Azure Load Balancer, Dual stack, nyilvános IP-cím, natív IPv6
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97fdf55032e92585d723b54e21079098cdc19636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87001573"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735908"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Nyilvános Load Balancer létrehozása IPv6-tal az Azure CLI használatával
 
@@ -48,11 +48,11 @@ A következő lépések bemutatják, hogyan hozható létre nyilvános terhelés
 
 Terheléselosztó üzembe helyezéséhez hozza létre és konfigurálja a következő objektumokat:
 
-* **Előtér-IP-konfiguráció**: nyilvános IP-címeket tartalmaz a bejövő hálózati forgalomhoz.
-* **Háttérbeli címkészlet**: hálózati adaptereket (NIC) tartalmaz ahhoz, hogy a virtuális gépek hálózati forgalmat fogadjanak a terheléselosztó számára.
-* **Terheléselosztási szabályok**: olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját képezik le a háttérbeli címkészlet egy portjára.
-* **Bejövő NAT-szabályok**: olyan hálózati címfordítási (NAT) szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját képezik le egy portra a háttérbeli címkészlet adott virtuális gépe számára.
-* **Mintavételek: olyan**állapot-mintavételt tartalmaz, amelyek a virtuálisgép-példányok rendelkezésre állásának vizsgálatára szolgálnak a háttérbeli címkészlet esetében.
+* **Előtér-IP-konfiguráció** : nyilvános IP-címeket tartalmaz a bejövő hálózati forgalomhoz.
+* **Háttérbeli címkészlet** : hálózati adaptereket (NIC) tartalmaz ahhoz, hogy a virtuális gépek hálózati forgalmat fogadjanak a terheléselosztó számára.
+* **Terheléselosztási szabályok** : olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját képezik le a háttérbeli címkészlet egy portjára.
+* **Bejövő NAT-szabályok** : olyan hálózati címfordítási (NAT) szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját képezik le egy portra a háttérbeli címkészlet adott virtuális gépe számára.
+* **Mintavételek: olyan** állapot-mintavételt tartalmaz, amelyek a virtuálisgép-példányok rendelkezésre állásának vizsgálatára szolgálnak a háttérbeli címkészlet esetében.
 
 ## <a name="set-up-azure-cli"></a>Az Azure CLI beállítása
 
@@ -122,7 +122,7 @@ Ebben a példában az Azure CLI-eszközöket egy PowerShell-parancsablakban futt
     > [!IMPORTANT]
     > A terheléselosztó a nyilvános IP-cím tartományának címkéjét használja teljes tartománynévként (FQDN). Ez a klasszikus üzembe helyezés változása, amely a Cloud Service-nevet használja a terheléselosztó FQDN-ként.
     >
-    > Ebben a példában a teljes tartománynév *contoso09152016.southcentralus.cloudapp.Azure.com*.
+    > Ebben a példában a teljes tartománynév *contoso09152016.southcentralus.cloudapp.Azure.com* .
 
 ## <a name="create-front-end-and-back-end-pools"></a>Előtér-és háttér-készletek létrehozása
 
