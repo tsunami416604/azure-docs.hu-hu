@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: 6038ec1d83957f20ca6e2759eeb5a88e66c2f77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bfbf56b6e5f2be33b407945490531e6e2e8ac47
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443416"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781260"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Teljesítményszámlálók létrehozása a szegmenses Térkép kezelőjé teljesítményének nyomon követéséhez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,19 +35,19 @@ Rögzítheti egy szegmenses [Térkép kezelőjének](elastic-scale-shard-map-man
 
 ## <a name="create-performance-category-and-counters"></a>Teljesítmény kategória és számlálók létrehozása
 
-A számlálók létrehozásához hívja meg a [ShardMapManagementFactory osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)CreatePerformanceCategoryAndCounters metódusát. Csak egy rendszergazda hajthatja végre a metódust:
+A számlálók létrehozásához hívja meg a [ShardMapManagementFactory osztály](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)CreatePerformanceCategoryAndCounters metódusát. Csak egy rendszergazda hajthatja végre a metódust:
 
 `ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()`
 
 [Ezt](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) a PowerShell-szkriptet használhatja a metódus végrehajtásához is.
 A metódus a következő teljesítményszámlálókat hozza létre:  
 
-* **Gyorsítótárazott leképezések**: a szegmenses térképhez gyorsítótárazott leképezések száma.
-* **DDR-műveletek/mp**: az adatszegmensi térképhez kapcsolódó adattovábbítási műveletek aránya. Ez a számláló akkor frissül, ha a [OpenConnectionForKey ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) hívása sikeres csatlakozást eredményez a cél szegmenshez.
-* **Keresési gyorsítótár látogatottságának leképezése/mp**: a gyorsítótár keresési műveleteinek aránya a szegmenses leképezésben.
-* **Leképezési keresési gyorsítótár-kihagyás/mp**: a sikertelen gyorsítótár-keresési műveletek gyakorisága a szegmenses leképezésben való leképezésekhez.
-* A (z) **gyorsítótárban hozzáadott vagy frissített leképezések**: a szegmenshez tartozó Térkép gyorsítótárban való hozzáadásának vagy frissítésének gyakorisága.
-* **Hozzárendelések eltávolítva a gyorsítótárból/másodpercből**: a szegmensek közötti Térkép gyorsítótárában lévő leképezések eltávolításának gyakorisága.
+* **Gyorsítótárazott leképezések** : a szegmenses térképhez gyorsítótárazott leképezések száma.
+* **DDR-műveletek/mp** : az adatszegmensi térképhez kapcsolódó adattovábbítási műveletek aránya. Ez a számláló akkor frissül, ha a [OpenConnectionForKey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) hívása sikeres csatlakozást eredményez a cél szegmenshez.
+* **Keresési gyorsítótár látogatottságának leképezése/mp** : a gyorsítótár keresési műveleteinek aránya a szegmenses leképezésben.
+* **Leképezési keresési gyorsítótár-kihagyás/mp** : a sikertelen gyorsítótár-keresési műveletek gyakorisága a szegmenses leképezésben való leképezésekhez.
+* A (z) **gyorsítótárban hozzáadott vagy frissített leképezések** : a szegmenshez tartozó Térkép gyorsítótárban való hozzáadásának vagy frissítésének gyakorisága.
+* **Hozzárendelések eltávolítva a gyorsítótárból/másodpercből** : a szegmensek közötti Térkép gyorsítótárában lévő leképezések eltávolításának gyakorisága.
 
 A teljesítményszámlálók minden egyes gyorsítótárazott szegmens-leképezéshez jönnek létre.  
 
@@ -55,8 +55,8 @@ A teljesítményszámlálók minden egyes gyorsítótárazott szegmens-leképez�
 
 A következő események indítják el a teljesítményszámlálók létrehozását:  
 
-* A [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) inicializálása a [lelkes betöltéssel](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy), ha a ShardMapManager tartalmaz bármely szegmenses térképet. Ezek közé tartoznak a [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) és a [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) metódusok.
-* Egy szegmenses Térkép sikeres keresése ( [GetShardMap ()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap ()](https://msdn.microsoft.com/library/azure/dn824212.aspx) vagy [GetRangeShardMap ()](https://msdn.microsoft.com/library/azure/dn824173.aspx)használatával).
+* A [ShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) inicializálása a [lelkes betöltéssel](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy), ha a ShardMapManager tartalmaz bármely szegmenses térképet. Ezek közé tartoznak a [GetSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) és a [TryGetSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) metódusok.
+* Egy szegmenses Térkép sikeres keresése ( [GetShardMap ()](/previous-versions/azure/dn824215(v=azure.100)), [GetListShardMap ()](/previous-versions/azure/dn824212(v=azure.100)) vagy [GetRangeShardMap ()](/previous-versions/azure/dn824173(v=azure.100))használatával).
 * A CreateShardMap () használatával sikerült létrehozni a szegmenses leképezést.
 
 A teljesítményszámlálókat a rendszer az összes gyorsítótárazási művelettel frissíti a szegmens térképen és leképezéseken. A szegmens-hozzárendelés sikeres eltávolítása a DeleteShardMap () használatával a teljesítményszámlálók példányának törlését eredményezi.  

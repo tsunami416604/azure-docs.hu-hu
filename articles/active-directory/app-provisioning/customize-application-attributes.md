@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bf88782cf771c01a6a167d4584ad86dc69795c59
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069874"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781481"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -90,7 +90,7 @@ A kiválasztott számú alkalmazás, például a ServiceNow, a Box és a G Suite
 
 ![Példa a kiépített csoporttal és felhasználói objektumokkal rendelkező ServiceNow](./media/customize-application-attributes/24.png)
 
-A csoportok kiosztása opcionálisan engedélyezhető vagy letiltható úgy, hogy kijelöli a **hozzárendelések**csoport leképezése elemét, és **engedélyezi** az **attribútum-leképezési** képernyőn a kívánt beállítást.
+A csoportok kiosztása opcionálisan engedélyezhető vagy letiltható úgy, hogy kijelöli a **hozzárendelések** csoport leképezése elemét, és **engedélyezi** az **attribútum-leképezési** képernyőn a kívánt beállítást.
 
 A csoport objektumainak részeként kiépített attribútumok ugyanúgy testreszabhatók, mint a korábban leírt felhasználói objektumok. 
 
@@ -107,9 +107,12 @@ Az attribútumok listájának testreszabását támogató alkalmazások és rend
 
 - Salesforce
 - ServiceNow
-- Workday
+- Munkanapokat Active Directory/munkanapokat Azure Active Directory
+- SuccessFactors Active Directory/SuccessFactors-re Azure Active Directory
 - Azure Active Directory (az[Azure AD Graph API alapértelmezett attribútumai](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
 - Az [SCIM 2,0](https://tools.ietf.org/html/rfc7643)-et támogató alkalmazások, ahol az [alapsémában](https://tools.ietf.org/html/rfc7643) definiált attribútumokat fel kell venni
+- Ha Azure Active Directory visszaírási a munkanap vagy a SuccessFactors számára, a rendszer támogatja a támogatott attribútumok (XPATH és JSONPath) megfelelő metaadatainak frissítését, de nem támogatott új munkanapokat vagy SuccessFactors-attribútumokat hozzáadni az alapértelmezett sémán kívül.
+
 
 > [!NOTE]
 > A támogatott attribútumok listájának szerkesztése csak olyan rendszergazdák számára ajánlott, akik testre szabták az alkalmazásaikat és rendszereit, és az egyéni attribútumok definiálásának első kézből való ismerete. Ez esetenként az alkalmazás vagy a rendszer által biztosított API-k és fejlesztői eszközök ismeretét igényli.
@@ -133,16 +136,16 @@ A támogatott attribútumok listájának szerkesztésekor a következő tulajdon
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Egyéni kiterjesztési attribútum kiépítés egy SCIM-kompatibilis alkalmazásba
 A SCIM RFC egy alapszintű felhasználót és csoportot határoz meg, és lehetővé teszi, hogy a bővítmények megfeleljenek a sémának az alkalmazás igényeinek megfelelően. Egyéni attribútum hozzáadása SCIM-alkalmazáshoz:
-   1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com), válassza a **vállalati alkalmazások**lehetőséget, válassza ki az alkalmazást, majd válassza a **kiépítés**lehetőséget.
-   2. A **leképezések**területen válassza ki azt az objektumot (felhasználót vagy csoportot), amelyhez egyéni attribútumot szeretne hozzáadni.
-   3. A lap alján válassza a **Speciális beállítások megjelenítése**lehetőséget.
-   4. Válassza **a AppName szerkesztése**elemet.
-   5. Az attribútum lista alján adja meg az egyéni attribútum adatait a megadott mezőkben. Ezután válassza az **attribútum hozzáadása**elemet.
+   1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com), válassza a **vállalati alkalmazások** lehetőséget, válassza ki az alkalmazást, majd válassza a **kiépítés** lehetőséget.
+   2. A **leképezések** területen válassza ki azt az objektumot (felhasználót vagy csoportot), amelyhez egyéni attribútumot szeretne hozzáadni.
+   3. A lap alján válassza a **Speciális beállítások megjelenítése** lehetőséget.
+   4. Válassza **a AppName szerkesztése** elemet.
+   5. Az attribútum lista alján adja meg az egyéni attribútum adatait a megadott mezőkben. Ezután válassza az **attribútum hozzáadása** elemet.
 
 A SCIM alkalmazások esetében az attribútum nevének az alábbi példában látható mintázatot kell követnie. A "CustomExtensionName" és a "CustomAttribute" testreszabható az alkalmazás követelményei szerint, például:  
  * urn: IETF: params: scim: sémák: bővítmény: CustomExtensionName: 2.0: felhasználó: CustomAttribute 
  * urn: IETF: params: scim: sémák: bővítmény: 2.0: CustomExtensionName: CustomAttribute  
- * urn: IETF: params: scim: sémák: bővítmény: CustomExtensionName: 2.0: user. CustomAttributeName: Value
+ * urn: IETF: params: scim: sémák: kiterjesztés: CustomExtensionName: 2.0: User: CustomAttributeName: Value
 
 Ezek az utasítások csak a SCIM-kompatibilis alkalmazásokra vonatkoznak. Az olyan alkalmazások, mint a ServiceNow és a Salesforce, nem integráltak az Azure AD-vel a SCIM használatával, ezért nem igénylik ezt az adott névteret egyéni attribútumok hozzáadásakor.
 
@@ -174,7 +177,7 @@ Az egyéni attribútumok nem lehetnek hivatkozási attribútumok vagy többért�
        "displayName": "John Smith"
      }
    },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User": {
      "CustomAttribute": "701984",
    },
    "meta": {

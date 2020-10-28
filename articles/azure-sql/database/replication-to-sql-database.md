@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362129"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780954"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikálás Azure SQL Databasere
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "91362129"
 Az Azure SQL Databaset leküldéses előfizetőként konfigurálhatja egy egyirányú tranzakciós vagy pillanatképes replikációs topológiában.
 
 > [!NOTE]
-> Ez a cikk a [tranzakciós replikáció](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti Azure SQL Databaseban. Nem kapcsolódik az [aktív geo-replikáláshoz](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication), amely egy Azure SQL Database funkció, amely lehetővé teszi az egyes adatbázisok teljes olvasható replikáinak létrehozását.
+> Ez a cikk a [tranzakciós replikáció](/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti Azure SQL Databaseban. Nem kapcsolódik az [aktív geo-replikáláshoz](./active-geo-replication-overview.md), amely egy Azure SQL Database funkció, amely lehetővé teszi az egyes adatbázisok teljes olvasható replikáinak létrehozását.
 
 ## <a name="supported-configurations"></a>Támogatott konfigurációk
   
@@ -50,16 +50,16 @@ A Azure SQL Database összes funkciójának használatához a [SQL Server Manage
 
 ### <a name="types-of-replication"></a>Replikálási típusok
 
-A replikáció különböző [típusú](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
+A replikáció különböző [típusú](/sql/relational-databases/replication/types-of-replication):
 
 | Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen | 
-| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
-| [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
-| [**Egyenrangú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
-| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
-| [**Frissíthető előfizetések**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
+| [**Normál tranzakciós**](/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen | 
+| [**Pillanatkép**](/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
+| [**Replikálás egyesítése**](/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
+| [**Egyenrangú**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
+| [**Kétirányú**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
+| [**Frissíthető előfizetések**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
 | &nbsp; | &nbsp; | &nbsp; |
 
   
@@ -126,14 +126,14 @@ Azure SQL Database-előfizetések esetén a következő beállítások nem támo
 
 Hozzon létre egy kiadványt és egy leküldéses előfizetést. További információkért lásd:
   
-- [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) , amely a kiszolgáló nevét használja előfizetőként (például **N'azuresqldbdns. database. Windows. net**) és a Azure SQL Database nevet célként megadott adatbázisként (például **AdventureWorks**).  
+- [Kiadvány létrehozása](/sql/relational-databases/replication/publish/create-a-publication)
+- [Hozzon létre egy leküldéses előfizetést](/sql/relational-databases/replication/create-a-push-subscription/) , amely a kiszolgáló nevét használja előfizetőként (például **N'azuresqldbdns. database. Windows. net** ) és a Azure SQL Database nevet célként megadott adatbázisként (például **AdventureWorks** ).  
 
 ## <a name="see-also"></a>Lásd még:  
 
 - [Tranzakciós replikáció](../managed-instance/replication-transactional-overview.md)
-- [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Leküldéses előfizetés létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [A replikáció típusai](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Figyelés (replikálás)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Előfizetés inicializálása](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [Kiadvány létrehozása](/sql/relational-databases/replication/publish/create-a-publication)
+- [Leküldéses előfizetés létrehozása](/sql/relational-databases/replication/create-a-push-subscription/)
+- [A replikáció típusai](/sql/relational-databases/replication/types-of-replication)
+- [Figyelés (replikálás)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Előfizetés inicializálása](/sql/relational-databases/replication/initialize-a-subscription)

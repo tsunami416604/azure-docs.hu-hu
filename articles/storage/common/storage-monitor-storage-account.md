@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 14edb8db945a9b69ba77d56cd19a4524876ede03
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676810"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782008"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Tárfiók monitorozása az Azure Portalon
 
@@ -27,7 +27,7 @@ Javasoljuk, hogy tekintse át [Azure monitor a Storage szolgáltatáshoz](../../
 >
 > Azure Files jelenleg támogatja Storage Analytics metrikákat, de még nem támogatja a naplózást.
 >
-> A prémium szintű teljesítmény-blokkoló blob Storage-fiókok nem támogatják a Storage analitikai metrikáit, de támogatják a naplózást. Az REST API vagy az ügyféloldali kódtár segítségével programozott módon engedélyezheti a naplózást. Ha a prémium szintű blob blob Storage-fiókokkal rendelkező mérőszámokat szeretné megtekinteni, érdemes lehet [Az Azure Storage-metrikákat használni a Azure monitorban](storage-metrics-in-azure-monitor.md).
+> A prémium szintű teljesítmény-blokkoló blob Storage-fiókok nem támogatják a Storage analitikai metrikáit, de támogatják a naplózást. Az REST API vagy az ügyféloldali kódtár segítségével programozott módon engedélyezheti a naplózást. Ha a prémium szintű blob blob Storage-fiókokkal rendelkező mérőszámokat szeretné megtekinteni, érdemes lehet [Az Azure Storage-metrikákat használni a Azure monitorban](../blobs/monitor-blob-storage.md).
 >
 > Az Azure Storage szolgáltatással kapcsolatos problémák azonosítására, diagnosztizálására és hibaelhárítására vonatkozó részletes útmutató a Storage Analytics és egyéb eszközök használatáról: [Microsoft Azure Storage figyelése, diagnosztizálása és hibaelhárítása](storage-monitoring-diagnosing-troubleshooting.md).
 >

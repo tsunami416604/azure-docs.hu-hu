@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab77c8cf563c315768ad1c16089d8d939c085322
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325164"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782654"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Mi az Azure SQL felügyelt példányok készlete (előzetes verzió)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ A példányok emellett támogatják a natív VNet-integrációt is, így több p
 
 A példány-készletek a következő előnyöket nyújtják:
 
-1. 2 virtuális mag-példányok üzemeltetése. * \* Csak a példányok készletében lévő példányok esetében*.
+1. 2 virtuális mag-példányok üzemeltetése. *\* Csak a példányok készletében lévő példányok esetében* .
 2. Kiszámítható és gyors példány üzembe helyezési ideje (legfeljebb 5 perc).
 3. Minimális IP-cím kiosztása.
 
@@ -59,9 +59,9 @@ Az alábbi lista azokat a fő felhasználási eseteket tartalmazza, amelyekben a
 
 ## <a name="architecture"></a>Architektúra
 
-A példány-készletek hasonló architektúrával rendelkeznek a normál (*egyetlen*) felügyelt példányokhoz. Az Azure-beli [virtuális hálózatokon belüli központi telepítések](../../virtual-network/virtual-network-for-azure-services.md)támogatásához   , valamint az ügyfelek elkülönítésének és biztonságának biztosításához a példány-készletek a [virtuális fürtökre](connectivity-architecture-overview.md#high-level-connectivity-architecture)is támaszkodnak. A virtuális fürtök az ügyfél virtuális hálózati alhálózatán belül üzembe helyezett elkülönített virtuális gépek dedikált készletét jelölik.
+A példány-készletek hasonló architektúrával rendelkeznek a normál ( *egyetlen* ) felügyelt példányokhoz. Az Azure-beli [virtuális hálózatokon belüli központi telepítések](../../virtual-network/virtual-network-for-azure-services.md) támogatásához, valamint az ügyfelek elkülönítésének és biztonságának biztosításához a példány-készletek a [virtuális fürtökre](connectivity-architecture-overview.md#high-level-connectivity-architecture)is támaszkodnak. A virtuális fürtök az ügyfél virtuális hálózati alhálózatán belül üzembe helyezett elkülönített virtuális gépek dedikált készletét jelölik.
 
-A két üzemi modell közötti fő különbség az, hogy a példányok több SQL Server folyamat telepítését teszik lehetővé ugyanazon a virtuálisgép-csomóponton, amely a [Windows-feladatok objektumaira](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)érvényes erőforrás, míg az egyes példányok mindig önállóak a virtuálisgép-csomópontokon.
+A két üzemi modell közötti fő különbség az, hogy a példányok több SQL Server folyamat telepítését teszik lehetővé ugyanazon a virtuálisgép-csomóponton, amely a [Windows-feladatok objektumaira](/windows/desktop/ProcThread/job-objects)érvényes erőforrás, míg az egyes példányok mindig önállóak a virtuálisgép-csomópontokon.
 
 A következő ábra egy példány-készletet és két, ugyanabban az alhálózatban üzembe helyezett példányt mutat be, és bemutatja a telepítési modellek fő architektúrájának részleteit:
 
@@ -76,7 +76,7 @@ A példánykészletekre és a készletekben lévő példányokra többféle erő
 - A példány-készletek csak Gen5 hardveren érhetők el.
 - A készletben lévő felügyelt példányok dedikált PROCESSZORral és MEMÓRIÁval rendelkeznek, így az összes példány virtuális mag összesített száma nem lehet kisebb a készlethez lefoglalt virtuális mag számával.
 - Az összes [példány-szintű korlát](resource-limits.md#service-tier-characteristics) a készleten belül létrehozott példányokra vonatkozik.
-- A példányok szintjének korlátain kívül két korlátot is megszabhatnak *a példány-készlet szintjén*:
+- A példányok szintjének korlátain kívül két korlátot is megszabhatnak *a példány-készlet szintjén* :
   - A tárterület teljes mérete (8 TB).
   - A készletben lévő adatbázisok teljes száma (100).
 - A HRE-rendszergazda nem állítható be a példány-készleten belül üzembe helyezett példányokhoz, ezért a HRE-hitelesítés nem használható.
@@ -137,8 +137,8 @@ a készlet virtuális mag díja attól függetlenül történik, hogy hány pél
 
 A számítási díj (virtuális mag mérve) esetében két díjszabási lehetőség érhető el:
 
-  1. *Licenccel együtt*: a SQL Server licencek díját is tartalmazza. Azok az ügyfelek, akik úgy döntenek, hogy nem alkalmazzák a meglévő SQL Server licenceket frissítési garanciával.
-  2. *Azure Hybrid Benefit*: kedvezményes ár, amely SQL Server Azure Hybrid Benefit tartalmaz. Az ügyfelek a frissítési garanciával rendelkező meglévő SQL Server-licencek használatával dönthetik el ezt az árat. A jogosultsági és egyéb részleteket lásd: [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
+  1. *Licenccel együtt* : a SQL Server licencek díját is tartalmazza. Azok az ügyfelek, akik úgy döntenek, hogy nem alkalmazzák a meglévő SQL Server licenceket frissítési garanciával.
+  2. *Azure Hybrid Benefit* : kedvezményes ár, amely SQL Server Azure Hybrid Benefit tartalmaz. Az ügyfelek a frissítési garanciával rendelkező meglévő SQL Server-licencek használatával dönthetik el ezt az árat. A jogosultsági és egyéb részleteket lásd: [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 A különböző díjszabási lehetőségek beállítása nem lehetséges a készletben lévő egyes példányok esetében. A szülő készletben lévő összes példánynak licenccel ellátott árat vagy Azure Hybrid Benefit árat kell tartalmaznia. A készlethez tartozó licencelési modell a készlet létrehozása után módosítható.
 

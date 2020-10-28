@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 09/16/2020
-ms.openlocfilehash: 2792a93748600d71c37972058c8e496928543c9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 947d842860452425f8b30fbdaf9558c2a94a89a2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330706"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781209"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Rugalmas készlet erőforrásainak méretezése Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan méretezhetők a rugalmas készletekhez és a készl
 
 ## <a name="change-compute-resources-vcores-or-dtus"></a>Számítási erőforrások módosítása (virtuális mag vagy DTU)
 
-A virtuális mag vagy a Edtu számának első kiválasztását követően a rugalmas készletet dinamikusan felfelé vagy lefelé méretezheti a tényleges tapasztalatok alapján a [Azure Portal](elastic-pool-manage.md#azure-portal), a [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), az [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)vagy a [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update)használatával.
+A virtuális mag vagy a Edtu számának első kiválasztását követően a rugalmas készletet dinamikusan felfelé vagy lefelé méretezheti a tényleges tapasztalatok alapján a [Azure Portal](elastic-pool-manage.md#azure-portal), a [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), az [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)vagy a [REST API](/rest/api/sql/elasticpools/update)használatával.
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>A szolgáltatási réteg módosításának vagy a számítási méret átméretezésének a következményei
 
@@ -57,7 +57,7 @@ A szolgáltatási réteg módosításának becsült késése, az önálló adatb
 >
 > - A szolgáltatási szint vagy a rugalmas készletre vonatkozó számítási kapacitás módosítása esetén a készletben lévő összes adatbázisban használt terület összesítését kell használni a becslés kiszámításához.
 > - Ha az adatbázist egy rugalmas készletre vagy-re helyezi át, csak az adatbázis által használt terület befolyásolja a késést, nem a rugalmas készlet által használt területet.
-> - A standard és a általános célú rugalmas készletek esetében a rugalmas készletből vagy a rugalmas készletekből álló adatbázisok késése az adatbázis méretétől függ, ha a rugalmas készlet prémium szintű fájlmegosztást ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) használó tárterületet használ. Annak megállapításához, hogy egy készlet PFS-tárolót használ-e, hajtsa végre a következő lekérdezést a készletben lévő bármelyik adatbázis környezetében. Ha a AccountType oszlopban a vagy a érték `PremiumFileStorage` szerepel `PremiumFileStorage-ZRS` , a készlet PFS-tárolót használ.
+> - A standard és a általános célú rugalmas készletek esetében a rugalmas készletből vagy a rugalmas készletekből álló adatbázisok késése az adatbázis méretétől függ, ha a rugalmas készlet prémium szintű fájlmegosztást ([PFS](../../storage/files/storage-files-introduction.md)) használó tárterületet használ. Annak megállapításához, hogy egy készlet PFS-tárolót használ-e, hajtsa végre a következő lekérdezést a készletben lévő bármelyik adatbázis környezetében. Ha a AccountType oszlopban a vagy a érték `PremiumFileStorage` szerepel `PremiumFileStorage-ZRS` , a készlet PFS-tárolót használ.
 
 ```sql
 SELECT s.file_id,
@@ -69,7 +69,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](https://docs.microsoft.com/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a következő két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a következő két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>A szolgáltatási réteg módosításának és a számítási méret átméretezésének további szempontjai
 
@@ -100,7 +100,7 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 ### <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
 - A rugalmas készlet eDTU díja bizonyos mennyiségű tárterületet foglal magában, többletköltség nélkül. A benne foglalt mennyiségen túli extra tárterület kiépíthető a maximális méretkorlát 250 GB-ig, 1 TB-ig, majd 256 GB-onként 1 TB-nál nagyobb mértékben. A foglalt tárolási és a maximális méretkorlát esetében lásd [: rugalmas készlet: a tárolási méretek és a számítási méretek](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
-- A rugalmas készletek extra tárterületét a [Azure Portal](elastic-pool-manage.md#azure-portal), a [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), az [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)vagy a [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update)használatával lehet kiépíteni a maximális méret növelésével.
+- A rugalmas készletek extra tárterületét a [Azure Portal](elastic-pool-manage.md#azure-portal), a [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), az [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)vagy a [REST API](/rest/api/sql/elasticpools/update)használatával lehet kiépíteni a maximális méret növelésével.
 - A rugalmas készlet extra tárterületének díja a további tárterület mérete, a szolgáltatási szinten található extra tárolási egység árával megszorozva. További információ az extra tárterület díjszabásáról: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]

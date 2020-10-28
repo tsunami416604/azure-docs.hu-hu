@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 0689cea221142ec9c9bdbb18ab82fab00a3e2fe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5442ddab5b4925e40250e63833a634006db7aead
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398612"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781447"
 ---
 # <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -34,7 +34,7 @@ A dinamikus adatmaszkolási házirend beállításához a Azure Portal a **dinam
 
 ### <a name="dynamic-data-masking-permissions"></a>Dinamikus adatmaszkolási engedélyek
 
-A dinamikus adatmaszkolás konfigurálható a Azure SQL Database-rendszergazda, a kiszolgálói rendszergazda vagy az [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepköreivel.
+A dinamikus adatmaszkolás konfigurálható a Azure SQL Database-rendszergazda, a kiszolgálói rendszergazda vagy az [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) szerepköreivel.
 
 ### <a name="dynamic-data-masking-policy"></a>Dinamikus adatmaszkolási szabályzat
 
@@ -60,15 +60,15 @@ A DDM-javaslatok motorja az adatbázis egyes mezőit potenciálisan bizalmas mez
 
 ### <a name="data-masking-policies"></a>Adatmaszkolási szabályzatok
 
-- [Get-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
-- [Set-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
+- [Get-AzSqlDatabaseDataMaskingPolicy](/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
+- [Set-AzSqlDatabaseDataMaskingPolicy](/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
 
 ### <a name="data-masking-rules"></a>Adatmaszkolási szabályok
 
-- [Get-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
-- [Új – AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
-- [Remove-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
-- [Set-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
+- [Get-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
+- [Új – AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
+- [Remove-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
+- [Set-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-rest-api"></a>Dinamikus adatmaszkolás beállítása az adatbázishoz a REST API használatával
 
@@ -76,10 +76,10 @@ A REST API használatával programozott módon kezelheti az adatmaszkolási szab
 
 ### <a name="data-masking-policies"></a>Adatmaszkolási szabályzatok
 
-- [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): adatbázis-adatmaszkolási szabályzat létrehozása vagy frissítése.
-- Get: adatbázis-adatmaszkolási házirend [beolvasása](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get). 
+- [Létrehozás vagy frissítés](/rest/api/sql/datamaskingpolicies/createorupdate): adatbázis-adatmaszkolási szabályzat létrehozása vagy frissítése.
+- Get: adatbázis-adatmaszkolási házirend [beolvasása](/rest/api/sql/datamaskingpolicies/get). 
 
 ### <a name="data-masking-rules"></a>Adatmaszkolási szabályok
 
-- [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/datamaskingrules/createorupdate): adatbázis-adatmaszkolási szabály létrehozása vagy frissítése.
-- [Listázás adatbázis szerint](https://docs.microsoft.com/rest/api/sql/datamaskingrules/listbydatabase): lekéri az adatbázis-adatmaszkolási szabályok listáját.
+- [Létrehozás vagy frissítés](/rest/api/sql/datamaskingrules/createorupdate): adatbázis-adatmaszkolási szabály létrehozása vagy frissítése.
+- [Listázás adatbázis szerint](/rest/api/sql/datamaskingrules/listbydatabase): lekéri az adatbázis-adatmaszkolási szabályok listáját.

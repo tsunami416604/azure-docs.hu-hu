@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: d291adcf53469825f32b664cb7f4ffdb0bbf244b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3abfffcfb47a9530b6a04762624eee9d6ee9bc81
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441017"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780461"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Bevezetés egy több-bérlős SaaS-alkalmazásba, amely az adatbázis-/bérlői mintát használja Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,11 +43,11 @@ Az alkalmazás üzembe helyezése után vizsgálja meg a következő, a kezdeti 
 | Oktatóanyag | Leírás |
 |:--|:--|
 | [Útmutató és tippek az SQL Database több-bérlős SaaS-alkalmazáshoz – példa](saas-tenancy-wingtip-app-guidance-tips.md) | Töltse le és futtassa a PowerShell-parancsfájlokat az alkalmazás részeinek előkészítéséhez. |
-|[A Wingtip SaaS-alkalmazás üzembe helyezése és megismerése](../../sql-database/saas-dbpertenant-get-started-deploy.md)|  Üzembe helyezheti és felfedezheti az Wingtip SaaS-alkalmazást az Azure-előfizetésével. |
-|[Bérlők kiépítése és katalogizálása](../../sql-database/saas-dbpertenant-provision-and-catalog.md)| Megtudhatja, hogyan kapcsolódik az alkalmazás a bérlőhöz egy katalógus-adatbázis használatával, valamint arról, hogy a katalógus hogyan képezi le a bérlőket az adataiknak. |
-|[Teljesítmény figyelése és kezelése](../../sql-database/saas-dbpertenant-performance-monitoring.md)| Megtudhatja, hogyan használhatja a SQL Database figyelési funkcióit, és riasztásokat állíthat be, ha túllépi a teljesítménnyel kapcsolatos küszöbértékeket. |
-|[Monitorozás az Azure Monitor naplóival](../../sql-database/saas-dbpertenant-log-analytics.md) | Megtudhatja, hogyan használhat [Azure monitor naplókat](../../azure-monitor/log-query/log-query-overview.md) nagy mennyiségű erőforrás több készleten történő figyeléséhez. |
-|[Egyetlen bérlő visszaállítása](../../sql-database/saas-dbpertenant-restore-single-tenant.md)| Megtudhatja, hogyan állíthatja vissza a bérlői adatbázist egy korábbi időpontra. Azt is megtudhatja, hogyan lehet visszaállítani egy párhuzamos adatbázisra, amely a meglévő bérlői adatbázist online állapotba hagyja. |
+|[A Wingtip SaaS-alkalmazás üzembe helyezése és megismerése](./saas-dbpertenant-get-started-deploy.md)|  Üzembe helyezheti és felfedezheti az Wingtip SaaS-alkalmazást az Azure-előfizetésével. |
+|[Bérlők kiépítése és katalogizálása](./saas-dbpertenant-provision-and-catalog.md)| Megtudhatja, hogyan kapcsolódik az alkalmazás a bérlőhöz egy katalógus-adatbázis használatával, valamint arról, hogy a katalógus hogyan képezi le a bérlőket az adataiknak. |
+|[Teljesítmény figyelése és kezelése](./saas-dbpertenant-performance-monitoring.md)| Megtudhatja, hogyan használhatja a SQL Database figyelési funkcióit, és riasztásokat állíthat be, ha túllépi a teljesítménnyel kapcsolatos küszöbértékeket. |
+|[Monitorozás az Azure Monitor naplóival](./saas-dbpertenant-log-analytics.md) | Megtudhatja, hogyan használhat [Azure monitor naplókat](../../azure-monitor/log-query/log-query-overview.md) nagy mennyiségű erőforrás több készleten történő figyeléséhez. |
+|[Egyetlen bérlő visszaállítása](./saas-dbpertenant-restore-single-tenant.md)| Megtudhatja, hogyan állíthatja vissza a bérlői adatbázist egy korábbi időpontra. Azt is megtudhatja, hogyan lehet visszaállítani egy párhuzamos adatbázisra, amely a meglévő bérlői adatbázist online állapotba hagyja. |
 |[Bérlői adatbázis sémájának kezelése](saas-tenancy-schema-management.md)| Megtudhatja, hogyan frissítheti a sémát, és hogyan frissítheti a hivatkozási információkat az összes bérlői adatbázisban. |
 |[Több-bérlős elosztott lekérdezések futtatása](saas-tenancy-cross-tenant-reporting.md) | Hozzon létre egy ad hoc elemzési adatbázist, és futtasson valós idejű elosztott lekérdezéseket az összes bérlő között.  |
 |[Elemzés futtatása a kinyert bérlői adatbázison](saas-tenancy-tenant-analytics.md) | A bérlői adatok kinyerése egy elemzési adatbázisba vagy adattárházba offline elemzési lekérdezésekhez. |
@@ -56,4 +56,4 @@ Az alkalmazás üzembe helyezése után vizsgálja meg a következő, a kezdeti 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Általános útmutatás és tippek a Wingtip tickets SaaS-alkalmazás üzembe helyezéséhez és használatához – példa](saas-tenancy-wingtip-app-guidance-tips.md)
-- [A Wingtip SaaS-alkalmazás üzembe helyezése](../../sql-database/saas-dbpertenant-get-started-deploy.md)
+- [A Wingtip SaaS-alkalmazás üzembe helyezése](./saas-dbpertenant-get-started-deploy.md)

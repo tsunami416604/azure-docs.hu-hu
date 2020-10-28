@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d2e50502c8c3e37c5d48359079e2e72c13feea4a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 17a29621d3d70d56745d2e51e0ce80974876a9ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487874"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782161"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure import/export szolgáltatás: gyakori kérdések
 
@@ -55,13 +55,13 @@ Nem. Az adatimportáláshoz használt meghajtókat az Azure WAImportExport eszk�
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Kell-e lemez-előkészítést végezni az exportálási feladatok létrehozásakor?
 
-Nem. Néhány előzetes vizsgálat ajánlott. A szükséges lemezek számának ellenőrzéséhez használja a WAImportExport eszköz PreviewExport parancsát. További információ: a [meghajtó használatának előzetes megtekintése exportálási feladathoz](https://msdn.microsoft.com/library/azure/dn722414.aspx). A parancs segítségével megtekintheti a kiválasztott Blobok meghajtó-használatát a használni kívánt meghajtók méretétől függően. Azt is győződjön meg arról, hogy az exportálási feladatokhoz tartozó merevlemezre beolvasható és írható.
+Nem. Néhány előzetes vizsgálat ajánlott. A szükséges lemezek számának ellenőrzéséhez használja a WAImportExport eszköz PreviewExport parancsát. További információ: a [meghajtó használatának előzetes megtekintése exportálási feladathoz](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1). A parancs segítségével megtekintheti a kiválasztott Blobok meghajtó-használatát a használni kívánt meghajtók méretétől függően. Azt is győződjön meg arról, hogy az exportálási feladatokhoz tartozó merevlemezre beolvasható és írható.
 
 ## <a name="importexport-jobs"></a>Importálási/exportálási feladatok
 
 ### <a name="can-i-cancel-my-job"></a>Törölhetem a feladatot?
 
-Igen. A feladat megszakítható, ha az állapota **Létrehozás** vagy **szállítás**. Ezen szakaszok után a feladat nem szakítható meg, és az utolsó szakaszig folytatódik.
+Igen. A feladat megszakítható, ha az állapota **Létrehozás** vagy **szállítás** . Ezen szakaszok után a feladat nem szakítható meg, és az utolsó szakaszig folytatódik.
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Meddig lehet megtekinteni a Befejezett feladatok állapotát a Azure Portal?
 
@@ -132,7 +132,7 @@ Nem. Minden meghajtó titkosítva van a BitLocker szolgáltatással.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Hogyan férhetnek hozzá a szolgáltatás által importált adatkezelési lehetőségekhez?
 
-Az Azure Storage-fiókjában lévő adat eléréséhez használja a Azure Portal vagy a [Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer) .  
+Az Azure Storage-fiókjában lévő adat eléréséhez használja a Azure Portal vagy a [Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) .  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Az importálás befejezése után az adataim hogyan néznek ki a Storage-fiókban? Megőrzött a címtár-hierarchia?
 
@@ -144,7 +144,7 @@ Függ. A meghajtó előkészítésekor megadhatja, hogy a rendszer felülírja v
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Kompatibilis a WAImportExport eszköz a 32 bites operációs rendszerekkel?
 
-Nem. A WAImportExport eszköz csak a 64 bites Windows operációs rendszerekkel kompatibilis. A támogatott operációs rendszerek teljes listájáért keresse fel a [támogatott operációs rendszereket](/azure/storage/common/storage-import-export-requirements).
+Nem. A WAImportExport eszköz csak a 64 bites Windows operációs rendszerekkel kompatibilis. A támogatott operációs rendszerek teljes listájáért keresse fel a [támogatott operációs rendszereket](./storage-import-export-requirements.md).
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Mekkora a blobok és az oldal Blobok maximális mérete az Azure import/export által támogatott?
 

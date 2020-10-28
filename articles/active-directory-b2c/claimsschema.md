@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201361"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781719"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -92,7 +92,7 @@ A **protokoll** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Név | Igen | A Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek a következők: OAuth1, OAuth2, egy SAML2, OpenIdConnect. |
+| Name (Név) | Igen | A Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek a következők: OAuth1, OAuth2, egy SAML2, OpenIdConnect. |
 | PartnerClaimType | Igen | A használni kívánt jogcím-típus neve. |
 
 A következő példában, amikor az Identity Experience Framework egy egy SAML2-identitás szolgáltatóval vagy egy függő entitás alkalmazásával kommunikál **, a** OpenIdConnect és a OAuth2-mel leképezi a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` jogcímet `family_name` .
@@ -109,7 +109,7 @@ A következő példában, amikor az Identity Experience Framework egy egy SAML2-
 </ClaimType>
 ```
 
-Ennek eredményeképpen a Azure AD B2C által kiállított JWT-jogkivonat a `family_name` claimType neve helyett kibocsátja **surname**a nevet.
+Ennek eredményeképpen a Azure AD B2C által kiállított JWT-jogkivonat a `family_name` claimType neve helyett kibocsátja **surname** a nevet.
 
 ```json
 {
@@ -228,7 +228,7 @@ Az alábbi példa egy **e-mail-** jogcímet konfigurál a reguláris kifejezése
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9.!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
     </Restriction>
  </ClaimType>
 ```
@@ -284,7 +284,7 @@ Az **EmailBox** felhasználói bevitel típusa egy alapszintű e-mail-beviteli m
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>EmailBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
   </Restriction>
 </ClaimType>
 ```

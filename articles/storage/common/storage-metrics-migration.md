@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c1dc0c7f37dc848ecd361848934cbcc5640afc66
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4a4624a94a27f00201c55a320f1745783b06d169
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490764"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781923"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Váltás a mérőszámokra Azure Monitor
 
@@ -35,7 +35,7 @@ A Azure Monitor mérőszámokra való áttéréshez a következő módszert ajá
    > [!NOTE]
    > A Azure Monitor metrikái alapértelmezés szerint engedélyezve vannak, ezért a metrikák rögzítésének megkezdéséhez semmit nem kell tennie. A metrikák megtekintéséhez azonban diagramokat vagy irányítópultokat kell létrehoznia. 
  
-5. Ha olyan riasztási szabályokat hozott létre, amelyek klasszikus tárolási metrikán alapulnak, akkor hozzon létre Azure Monitor mérőszámokon alapuló [riasztási szabályokat](/azure/azure-monitor/platform/alerts-overview) . 
+5. Ha olyan riasztási szabályokat hozott létre, amelyek klasszikus tárolási metrikán alapulnak, akkor hozzon létre Azure Monitor mérőszámokon alapuló [riasztási szabályokat](../../azure-monitor/platform/alerts-overview.md) . 
 
 6. Miután megtekintheti Azure Monitor összes mérőszámát, kikapcsolhatja a klasszikus naplózást. 
 
@@ -53,7 +53,7 @@ A metrikák támogatása érdekében a klasszikus metrikák csak az Azure Blob S
 
 Ha a fiókban lévő tevékenység nem indít el mérőszámot, a klasszikus metrikák a nulla (0) értéket jelenítik meg az adott metrika esetében. A Azure Monitor metrikái teljes mértékben kihagyják az adatokat, ami tisztább jelentésekhez vezet. Például klasszikus metrikákkal, ha nem jelentettek időtúllépési hibát a rendszer, akkor a `ServerTimeoutError` metrikák tábla értéke 0. A Azure Monitor nem ad vissza adatokat, ha a mérőszám értékét a `Transactions` dimenzióval megegyező értékkel kérdezi le `ResponseType` `ServerTimeoutError` . 
 
-Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](/azure/azure-monitor/platform/data-platform-metrics).
+Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](../../azure-monitor/platform/data-platform-metrics.md).
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 
@@ -70,7 +70,7 @@ Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse
 | `ContainerCount`      | `ContainerCount` |
 
 > [!NOTE]
-> Több új kapacitási mérőszám is létezik, amelyek klasszikus metrikák nem voltak elérhetők. A teljes lista megtekintéséhez lásd: [mérőszámok](../common/monitor-storage-reference.md#metrics).
+> Több új kapacitási mérőszám is létezik, amelyek klasszikus metrikák nem voltak elérhetők. A teljes lista megtekintéséhez lásd: [mérőszámok](../blobs/monitor-blob-storage-reference.md#metrics).
 
 **Tranzakciós metrikák**
 
@@ -117,5 +117,4 @@ Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)
-
+* [Azure Monitor](../../azure-monitor/overview.md)

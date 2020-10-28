@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995557"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782501"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Az Azure SQL felügyelt példányok kezelési műveleteinek megszakítása
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,7 +75,7 @@ Ha a megszakítási kérelem meghiúsul, vagy a Mégse gomb nem aktív, az azt j
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha még nincs Azure PowerShell telepítve, tekintse meg [a Azure PowerShell modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps)ismertető témakört.
+Ha még nincs Azure PowerShell telepítve, tekintse meg [a Azure PowerShell modul telepítését](/powershell/azure/install-az-ps)ismertető témakört.
 
 A kezelési művelet megszakításához meg kell adnia a felügyeleti művelet nevét. Ezért először használja a Get parancsot a műveletek listájának lekéréséhez, majd a művelet megszakításához.
 
@@ -93,7 +93,7 @@ foreach ($mo in $managementOperations ) {
 }
 ```
 
-A részletes parancsok magyarázatát lásd: [Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation) és [stop-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation).
+A részletes parancsok magyarázatát lásd: [Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation) és [stop-AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -110,13 +110,13 @@ az sql mi op cancel -g yourResourceGroupName --mi yourInstanceName -n $operation
 done
 ```
 
-Részletes parancsok magyarázata: [az SQL mi op](https://docs.microsoft.com/cli/azure/sql/mi/op).
+Részletes parancsok magyarázata: [az SQL mi op](/cli/azure/sql/mi/op).
 
 ---
 
 ## <a name="canceled-deployment-request"></a>Megszakított központi telepítési kérelem
 
-A 2020-02-02-es API-verzióval a példány-létrehozási kérelem elfogadása után a példány erőforrásként kezd megjelenni, függetlenül attól, hogy a telepítési folyamat állapota (felügyelt példány állapota **kiépítés**). Ha megszakítja a példány központi telepítési kérését (az új példány létrehozása), a felügyelt példány a **kiépítési** állapotból a **FailedToCreate**-be kerül.
+A 2020-02-02-es API-verzióval a példány-létrehozási kérelem elfogadása után a példány erőforrásként kezd megjelenni, függetlenül attól, hogy a telepítési folyamat állapota (felügyelt példány állapota **kiépítés** ). Ha megszakítja a példány központi telepítési kérését (az új példány létrehozása), a felügyelt példány a **kiépítési** állapotból a **FailedToCreate** -be kerül.
 
 A nem sikerült létrehozni kívánt példányok továbbra is erőforrásként jelennek meg, és: 
 

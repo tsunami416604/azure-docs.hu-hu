@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 10/13/2020
-ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b4a8b809fc135a4af26fae10912890f2017153f4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058267"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780920"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Fenntartott kapacitással rendelkező erőforrások költségeinek mentése – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -58,7 +58,7 @@ Tegyük fel például, hogy egy általános célt futtat, Gen5 – 16 virtuális
     | Mező      | Leírás|
     |------------|--------------|
     |Előfizetés|A kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a foglalás előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek (az MS-AZR-0017P vagy MS-AZR-0148P) vagy az utólagos elszámolású díjszabásnak (az MS-AZR-0003P vagy az MS-AZR-0023P) megfelelő egyedi szerződésnek kell lennie. Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.|
-    |Hatókör       |A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a lehetőséget választja <br/><br/>**Megosztva**a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó adatbázisra vagy felügyelt példányra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.<br/><br/>**Egyszeri előfizetés**esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő adatbázisokra vagy felügyelt példányokra alkalmazza a rendszer. <br/><br/>**Egy erőforráscsoport**, a foglalási kedvezmény a kiválasztott előfizetésben található adatbázisok vagy felügyelt példányok példányaira, valamint az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz lesz alkalmazva.|
+    |Hatókör       |A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a lehetőséget választja <br/><br/>**Megosztva** a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó adatbázisra vagy felügyelt példányra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.<br/><br/>**Egyszeri előfizetés** esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő adatbázisokra vagy felügyelt példányokra alkalmazza a rendszer. <br/><br/>**Egy erőforráscsoport** , a foglalási kedvezmény a kiválasztott előfizetésben található adatbázisok vagy felügyelt példányok példányaira, valamint az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz lesz alkalmazva.|
     |Régió      |Az Azure-régió, amelyre a kapacitás foglalása vonatkozik.|
     |Központi telepítés típusa|Az az SQL-erőforrástípus, amelyre a foglalást megvásárolni szeretné.|
     |Teljesítményszint|Az adatbázisok vagy a felügyelt példányok szolgáltatási szintje. |
@@ -98,4 +98,4 @@ Az Azure Reservationszel kapcsolatos további információkért tekintse meg a k
 - [Az Azure Reservations-kedvezmény ismertetése](../../cost-management-billing/reservations/understand-reservation-charges.md)
 - [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
-- [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](/partner-center/azure-reservations)

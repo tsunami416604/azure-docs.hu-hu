@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ea3456dbd1d0942cba48c97d70982ae088d73f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254038"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782977"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>Alkalmazásfejlesztés áttekintése – SQL Database & SQL felügyelt példánya
 
@@ -27,7 +27,7 @@ Ez a cikk végigvezeti a fejlesztőnek az Azure-adatbázishoz való csatlakozás
 
 A Azure SQL Database összekapcsolásához és lekérdezéséhez különböző [programozási nyelveket és platformokat](connect-query-content-reference-guide.md) használhat. Megtalálhatja az adatbázishoz való kapcsolódáshoz használható [minta alkalmazásokat](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) .
 
-Használhatja a nyílt forráskódú eszközöket, például a [gepárd](https://github.com/wunderlist/cheetah), az [SQL-CLI](https://www.npmjs.com/package/sql-cli)és a [vs Code](https://code.visualstudio.com/)-ot. Ezen kívül az Azure SQL Database olyan Microsoft-eszközöket is támogat, mint például a [Visual Studio](https://www.visualstudio.com/downloads/) és az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). A Azure Portal, a PowerShell és a REST API-k segítségével további hatékonyságot érhet el.
+Használhatja a nyílt forráskódú eszközöket, például a [gepárd](https://github.com/wunderlist/cheetah), az [SQL-CLI](https://www.npmjs.com/package/sql-cli)és a [vs Code](https://code.visualstudio.com/)-ot. Ezen kívül az Azure SQL Database olyan Microsoft-eszközöket is támogat, mint például a [Visual Studio](https://www.visualstudio.com/downloads/) és az [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms). A Azure Portal, a PowerShell és a REST API-k segítségével további hatékonyságot érhet el.
 
 ## <a name="authentication"></a>Hitelesítés
 
@@ -39,7 +39,7 @@ További információ az [adatbázis-hozzáférés és a bejelentkezés kezelés
 
 Az ügyfél csatlakozási logikájában írja felül az alapértelmezett időtúllépési értéket 30 másodpercre. A 15 másodperces időtúllépési érték túl rövid az internetkapcsolattól függő kapcsolatok számára.
 
-Ha [kapcsolatkészletet](https://msdn.microsoft.com/library/8xx3tyca.aspx) használ, azonnal bontsa a kapcsolatot, ha a program már nem használja aktívan, és nem is tervezi az ismételt használatát.
+Ha [kapcsolatkészletet](/dotnet/framework/data/adonet/sql-server-connection-pooling) használ, azonnal bontsa a kapcsolatot, ha a program már nem használja aktívan, és nem is tervezi az ismételt használatát.
 
 Kerülje a hosszan futó tranzakciók elkerülését, mert az infrastruktúra vagy a kapcsolatok meghibásodása is visszaállíthatja a tranzakciót. Ha lehetséges, Ossza szét a tranzakciót a több kisebb tranzakcióban, és a [teljesítmény növelése érdekében használjon batchs-t](../performance-improve-use-batching.md).
 
@@ -56,7 +56,7 @@ További információ a Azure SQL Database tervezett karbantartási eseményeine
 - A Azure SQL Databasehoz való ügyfélkapcsolatok időnként megkerülik a proxyt, és közvetlenül az adatbázissal működnek. Ekkor válnak fontossá az 1433-astól különböző portok. További információért [Azure SQL Database kapcsolati architektúrát](connectivity-architecture.md) és [portokat a 1433 ADO.NET 4,5 és SQL Database](adonet-v12-develop-direct-route-ports.md).
 - A felügyelt SQL-példányok példányának hálózati konfigurációja: [SQL felügyelt példány hálózati konfigurációja](../managed-instance/how-to-content-reference-guide.md#network-configuration).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg [SQL Database](sql-database-paas-overview.md) és az [SQL felügyelt példányának](../managed-instance/sql-managed-instance-paas-overview.md)összes funkcióját.
 

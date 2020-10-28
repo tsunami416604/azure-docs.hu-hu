@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: dineshm
-ms.openlocfilehash: c16f02922b2e815ddd4986ab07bf260b20d871ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1ec251edf384e8032a67dc66982787d17c75dbd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87826500"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781464"
 ---
 # <a name="what-are-azure-queues"></a>Mik az Azure-üzenetsorok?
 
@@ -35,11 +35,11 @@ A Queue szolgáltatás az alábbi összetevőkből áll:
 
 * **Storage-fiók:** Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. A Storage-fiók kapacitásával kapcsolatos további információkért lásd [a szabványos Storage-fiókok skálázhatósági és teljesítménybeli céljait](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)ismertető témakört.
 
-* **Üzenetsor:** Az üzenetsorok üzenetek készleteit tartalmazzák. A **várólista nevének csak kisbetűsnek kell** lennie. Az üzenetsorok elnevezésével kapcsolatos információkat lásd: [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Üzenetsorok és metaadatok elnevezése).
+* **Üzenetsor:** Az üzenetsorok üzenetek készleteit tartalmazzák. A **várólista nevének csak kisbetűsnek kell** lennie. Az üzenetsorok elnevezésével kapcsolatos információkat lásd: [Naming Queues and Metadata](/rest/api/storageservices/Naming-Queues-and-Metadata) (Üzenetsorok és metaadatok elnevezése).
 
 * **Üzenet:** Egy legfeljebb 64 KB méretű, tetszőleges méretű üzenet. Az 2017-07-29-es verzió előtt az engedélyezett maximális élettartam hét nap. A 2017-07-29-es vagy újabb verzió esetén a maximális élettartam lehet bármilyen pozitív szám, vagy-1, amely azt jelzi, hogy az üzenet nem jár le. Ha a paraméter nincs megadva, az alapértelmezett élettartam hét nap.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tárfiók létrehozása](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* [Tárfiók létrehozása](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json)
 * [A Queues használatának első lépései a .NET használatával](storage-dotnet-how-to-use-queues.md)

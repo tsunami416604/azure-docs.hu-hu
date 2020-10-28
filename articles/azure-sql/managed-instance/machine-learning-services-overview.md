@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: 2fb584d999d48c7d29420db26daebf592790af2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676816"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782416"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)
 
@@ -44,7 +44,7 @@ Machine Learning Services használata R/Python-támogatással az Azure SQL felü
 
 - **Modellek és szkriptek üzembe helyezése tárolt eljárásokban** – a parancsfájlok és a betanított modellek csak a T-SQL tárolt eljárásokban való beágyazással működőképesek. Az Azure SQL felügyelt példányához csatlakozó alkalmazások az ilyen modellek előrejelzéseit és intelligencia előnyeit csak tárolt eljárás meghívásával érhetik el. A natív T-SQL ELŐREJELZÉSi függvényt is használhatja a működővé tenni modellek gyors értékeléséhez a nagy egyidejű valós idejű pontozási forgatókönyvekben.
 
-A Python és az R alapszintű terjesztése a Machine Learning Services része. Olyan nyílt forráskódú csomagokat és keretrendszereket telepíthet és használhat, mint például a PyTorch, a TensorFlow és a scikit-Learn, valamint a Microsoft-csomagok [revoscalepy csomagjai](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-revoscalepy) és [microsoftml](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-microsoftml) a Pythonhoz, valamint [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler), [microsoftml](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml), [OLAP](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-olapr)és [sqlrutils](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-sqlrutils) for R.
+A Python és az R alapszintű terjesztése a Machine Learning Services része. Olyan nyílt forráskódú csomagokat és keretrendszereket telepíthet és használhat, mint például a PyTorch, a TensorFlow és a scikit-Learn, valamint a Microsoft-csomagok [revoscalepy csomagjai](/sql/advanced-analytics/python/ref-py-revoscalepy) és [microsoftml](/sql/advanced-analytics/python/ref-py-microsoftml) a Pythonhoz, valamint [RevoScaleR](/sql/advanced-analytics/r/ref-r-revoscaler), [microsoftml](/sql/advanced-analytics/r/ref-r-microsoftml), [OLAP](/sql/advanced-analytics/r/ref-r-olapr)és [sqlrutils](/sql/advanced-analytics/r/ref-r-sqlrutils) for R.
 
 <a name="signup"></a>
 
@@ -85,6 +85,6 @@ A felügyelt SQL-példányokban a Machine Learning Services használata nem java
 ## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg [SQL Server Machine learning Services főbb különbségeit](machine-learning-services-differences.md).
-- Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)című témakört.
-- Az R-Machine Learning Services használatának megismeréséhez tekintse meg az [r-parancsfájlok futtatása](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)című témakört.
-- A más SQL-platformokon futó gépi tanulásról további információt az [SQL Machine learning dokumentációjában](https://docs.microsoft.com/sql/machine-learning/)talál.
+- Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)című témakört.
+- Az R-Machine Learning Services használatának megismeréséhez tekintse meg az [r-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)című témakört.
+- A más SQL-platformokon futó gépi tanulásról további információt az [SQL Machine learning dokumentációjában](/sql/machine-learning/)talál.

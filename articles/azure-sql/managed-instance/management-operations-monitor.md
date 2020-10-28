@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995354"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782450"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Az Azure SQL felügyelt példányok kezelési műveleteinek figyelése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -62,9 +62,9 @@ Ezek az API-k:
 
 | Parancs | Leírás |
 | --- | --- |
-|[Felügyelt példányok műveletei – Get](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|Felügyeleti művelet beolvasása felügyelt példányon.|
-|[Felügyelt példányok műveletei – Mégse](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|Megszakítja az aszinkron műveletet a felügyelt példányon.|
-|[Felügyelt példányok műveletei – lista felügyelt példány alapján](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Lekéri a felügyelt példányon végrehajtott műveletek listáját.|
+|[Felügyelt példányok műveletei – Get](/rest/api/sql/managedinstanceoperations/get)|Felügyeleti művelet beolvasása felügyelt példányon.|
+|[Felügyelt példányok műveletei – Mégse](/rest/api/sql/managedinstanceoperations/cancel)|Megszakítja az aszinkron műveletet a felügyelt példányon.|
+|[Felügyelt példányok műveletei – lista felügyelt példány alapján](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Lekéri a felügyelt példányon végrehajtott műveletek listáját.|
 
 > [!NOTE]
 > Az API 2020-02-02-es verziójának használatával megtekintheti a felügyelt példány létrehozása műveletet a műveletek listájában. Ez a Azure Portal és a legújabb PowerShell-és Azure CLI-csomagokban használt alapértelmezett verzió.
@@ -98,7 +98,7 @@ $managementOperations = Get-AzSqlInstanceOperation `
     -ManagedInstanceName $managedInstance  -ResourceGroupName $resourceGroup
 ```
 
-A részletes parancsok magyarázatát lásd: [Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation).
+A részletes parancsok magyarázatát lásd: [Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -108,7 +108,7 @@ Az az SQL mi op-lista lekéri a felügyelt példányon végrehajtott műveletek 
 az sql mi op list -g yourResourceGroupName --mi yourInstanceName 
 ```
 
-Részletes parancsok magyarázata: [az SQL mi op](https://docs.microsoft.com/cli/azure/sql/mi/op).
+Részletes parancsok magyarázata: [az SQL mi op](/cli/azure/sql/mi/op).
 
 ---
 

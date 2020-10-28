@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: f0f5069ca063f95cb845921c0d716b6c013c9e83
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c809a1ae525fb7fab6dceebb3241e229e8a0284e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479748"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781838"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Az Azure Blob Storage költségeinek megtervezése és kezelése
 
@@ -56,19 +56,19 @@ Ez a szakasz részletesebben ismerteti az egyes lehetőségeket.
 
 Az Azure Storage szolgáltatás számára fenntartott kapacitással pénzt takaríthat meg a blob-adattárolási költségekkel kapcsolatban. Az Azure Storage szolgáltatás számára fenntartott kapacitás kedvezményt biztosít a blokkos blobok és a standard szintű Storage-fiókok Azure Data Lake Storage Gen2 adatai számára, ha egy vagy három évre szóló foglalást végez. A foglalás rögzített tárolási kapacitást biztosít a foglalás feltételeihez. Az Azure Storage szolgáltatás számára fenntartott kapacitás jelentős mértékben csökkentheti a blokk-blobok és Azure Data Lake Storage Gen2-adatmennyiségek kapacitásának költségeit. 
 
-További információ: a [blob Storage költségeinek optimalizálása a fenntartott kapacitással](/azure/storage/blobs/storage-blob-reserved-capacity).
+További információ: a [blob Storage költségeinek optimalizálása a fenntartott kapacitással](../blobs/storage-blob-reserved-capacity.md).
 
 #### <a name="organize-data-into-access-tiers"></a>Adatszervezés hozzáférési rétegekbe
 
 A költségek csökkentése érdekében a blob-adatmennyiséget a legköltséghatékonyabb hozzáférési rétegekbe helyezheti el. Három olyan csomag közül választhat, amelyek az adatfelhasználással kapcsolatos költségek optimalizálására szolgálnak. Például a *gyors* elérési szint nagyobb tárolási kapacitással jár, de alacsonyabb a hozzáférési díj. Ezért ha gyakran szeretné elérni az adatokhoz való hozzáférést, a gyors elérésű szint lehet a leghatékonyabb megoldás. Ha ritkábban szeretné elérni az adatokhoz való hozzáférést, a *hideg* vagy az *archiválási* szint a legalkalmasabb lehet, mert az adatokhoz való hozzáférés költségeit csökkenti az adattárolás költségeinek csökkentése érdekében.    
 
-További információ [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal).
+További információ [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md?tabs=azure-portal).
 
 #### <a name="automatically-move-data-between-access-tiers"></a>Adatátviteli rétegek közötti automatikus áthelyezés
 
 Az életciklus-kezelési házirendek segítségével rendszeres időközönként helyezheti át az adatszinteket a legtöbb pénz megtakarítása érdekében. Ezek a szabályzatok az Ön által megadott szabályok használatával helyezhetik át az adataikat. Létrehozhat például egy olyan szabályt, amely blobokat helyez át az archív szintre, ha a blobot 90 napon belül nem módosították. Az adatelérési szintet beállító szabályzatok létrehozásával megtervezheti az igényeinek leginkább megfelelő tárolási lehetőségeket.
 
-További információ: [Az Azure Blob Storage életciklusának kezelése](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+További információ: [Az Azure Blob Storage életciklusának kezelése](../blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
 ## <a name="create-budgets"></a>Költségvetések létrehozása
 
@@ -87,11 +87,11 @@ Az Azure Storage költségeinek megtekintése a Cost Analysis szolgáltatásban:
 
 1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 
-2. Nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **Cost Analysis**lehetőséget. Ezután módosíthatja egy adott előfizetés hatókörét a **hatókör** legördülő menüből.
+2. Nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **Cost Analysis** lehetőséget. Ezután módosíthatja egy adott előfizetés hatókörét a **hatókör** legördülő menüből.
 
    ![A hatókört ábrázoló képernyőfelvétel](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
-4. Ha csak az Azure Storage költségeit szeretné megtekinteni, válassza a **szűrő hozzáadása** , majd a **szolgáltatásnév**lehetőséget. Ezután válassza a **tároló** elemet a listából. 
+4. Ha csak az Azure Storage költségeit szeretné megtekinteni, válassza a **szűrő hozzáadása** , majd a **szolgáltatásnév** lehetőséget. Ezután válassza a **tároló** elemet a listából. 
 
    Az alábbi példa az Azure Storage szolgáltatással kapcsolatos költségeket mutatja be:
 

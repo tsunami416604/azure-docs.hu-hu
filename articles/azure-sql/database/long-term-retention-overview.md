@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: 83d3bb78ef27af377b0a8c5edf75f658a0ca93e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8250fc39fe58168ddc13b7bcf5c040b57d5e92fb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450231"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782620"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Hosszú távú adatmegőrzés – Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -26,7 +26,7 @@ Számos alkalmazás rendelkezik olyan szabályozási, megfelelőségi vagy egyé
 A hosszú idejű adatmegőrzés engedélyezhető a Azure SQL Database számára, és az Azure SQL felügyelt példányának korlátozott nyilvános előzetes verziója. Ez a cikk a hosszú távú adatmegőrzés fogalmi áttekintését tartalmazza. A hosszú távú adatmegőrzés konfigurálásáról lásd: [Azure SQL Database ltr konfigurálása](long-term-backup-retention-configure.md) és az [Azure SQL felügyelt példányok ltr konfigurálása](../managed-instance/long-term-backup-retention-configure.md). 
 
 > [!NOTE]
-> Az SQL-ügynök feladatainak használatával a csak a 35 napnál nem régebben ütemezett [biztonsági mentéseket](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) ÜTEMEZHET a ltr helyett.
+> Az SQL-ügynök feladatainak használatával a csak a 35 napnál nem régebben ütemezett [biztonsági mentéseket](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) ÜTEMEZHET a ltr helyett.
 
 
 ## <a name="how-long-term-retention-works"></a>A hosszú távú adatmegőrzés működése
@@ -36,7 +36,7 @@ A biztonsági másolatok hosszú távú megőrzése (LTR) az [automatikusan lét
 A LTR engedélyezéséhez adjon meg egy szabályzatot négy paraméter kombinációjának használatával: heti biztonsági másolatok megőrzése (W), havi biztonsági másolatok megőrzése (M), éves biztonsági másolat megőrzése (Y) és év hete (WeekOfYear). Ha a W lehetőséget választja, a rendszer minden héten a hosszú távú tárterületre másolja a biztonsági mentést. Az M érték megadásával az egyes hónapok első biztonsági másolatát a rendszer a hosszú távú tárterületre másolja. Ha az Y értéket adja meg, a WeekOfYear által megadott hét során a rendszer a hosszú távú tárterületre másolja az egyik biztonsági mentést. Ha a megadott WeekOfYear a házirend konfigurálásakor a múltban van, akkor az első LTR biztonsági mentés a következő évben jön létre. Minden biztonsági mentés a LTR biztonsági mentésének létrehozásakor konfigurált házirend-paramétereknek megfelelően hosszú távú tárolóban marad.
 
 > [!NOTE]
-> A LTR szabályzat módosítása csak a jövőbeli biztonsági másolatokra vonatkozik. Ha például a heti biztonsági másolatok megőrzése (W), a havi biztonsági másolatok megőrzése (M) vagy az éves biztonsági másolatok megőrzése (Y) módosul, az új adatmegőrzési beállítás csak az új biztonsági másolatokra lesz érvényes. A meglévő biztonsági másolatok megőrzése nem lesz módosítva. Ha a régi LTR biztonsági mentéseket a megőrzési időtartam lejárta előtt szeretné törölni, [manuálisan kell törölnie a biztonsági mentéseket](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups).
+> A LTR szabályzat módosítása csak a jövőbeli biztonsági másolatokra vonatkozik. Ha például a heti biztonsági másolatok megőrzése (W), a havi biztonsági másolatok megőrzése (M) vagy az éves biztonsági másolatok megőrzése (Y) módosul, az új adatmegőrzési beállítás csak az új biztonsági másolatokra lesz érvényes. A meglévő biztonsági másolatok megőrzése nem lesz módosítva. Ha a régi LTR biztonsági mentéseket a megőrzési időtartam lejárta előtt szeretné törölni, [manuálisan kell törölnie a biztonsági mentéseket](./long-term-backup-retention-configure.md#delete-ltr-backups).
 > 
 
 Példák a LTR házirendre:
@@ -84,7 +84,7 @@ A biztonsági másolatok hosszú távú megőrzése és az Azure SQL felügyelt 
 - **Korlátozott nyilvános előzetes** verzió – ez az előzetes verzió csak az EA-és CSP-előfizetések esetében érhető el, és korlátozott rendelkezésre állást biztosít.  
 - [**Csak PowerShell**](../managed-instance/long-term-backup-retention-configure.md) – jelenleg nincs Azure Portal támogatás. A LTR engedélyezni kell a PowerShell használatával. 
 
-A regisztráció igényléséhez hozzon létre egy [Azure-támogatási jegyet](https://azure.microsoft.com/support/create-ticket/). A probléma típusa beállításnál válassza a technikai probléma lehetőséget, válassza az SQL felügyelt példány lehetőséget, és a probléma típusa beállításnál válassza a **biztonsági mentés, visszaállítás és Üzletmenet-folytonosság/hosszú távú biztonsági mentés**lehetőséget. A kérelemben adja meg azt az állapotot, amelyet az SQL felügyelt példányának LTR korlátozott nyilvános előzetes verziójára szeretne regisztrálni.
+A regisztráció igényléséhez hozzon létre egy [Azure-támogatási jegyet](https://azure.microsoft.com/support/create-ticket/). A probléma típusa beállításnál válassza a technikai probléma lehetőséget, válassza az SQL felügyelt példány lehetőséget, és a probléma típusa beállításnál válassza a **biztonsági mentés, visszaállítás és Üzletmenet-folytonosság/hosszú távú biztonsági mentés** lehetőséget. A kérelemben adja meg azt az állapotot, amelyet az SQL felügyelt példányának LTR korlátozott nyilvános előzetes verziójára szeretne regisztrálni.
 
 ## <a name="configure-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének konfigurálása
 
@@ -99,4 +99,3 @@ Ha egy adatbázist szeretne visszaállítani a LTR-tárolóból, kiválaszthatja
 ## <a name="next-steps"></a>Következő lépések
 
 Mivel az adatbázis biztonsági mentései védik az adatokat a véletlen sérüléstől vagy törléstől, fontos szerepet játszanak az üzletmenet folytonossága és a vész-helyreállítási stratégia. SQL Database az üzletmenet-folytonossági megoldásokkal kapcsolatos további információkért lásd: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
- 

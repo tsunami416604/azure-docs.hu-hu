@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 73b48f8bcb4ec6facfebfc62d03ee5cd8237f504
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7bb4cca6f58cb4ad0722c1407d2ef3062c3747e2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490798"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781957"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Az alapszintű Azure Storage szolgáltatás bemutatása
 
@@ -46,7 +46,7 @@ A következő táblázat összehasonlítja a fájlokat, a blobokat, a lemezeket,
 | **Azure Files** |A teljes körűen felügyelt felhőalapú fájlmegosztást biztosít, amely bárhonnan elérhető az iparági szabványnak megfelelő SMB protokollon keresztül.<br><br>Azure-fájlmegosztást csatlakoztathat a felhőből vagy a helyszíni Windows, Linux és macOS rendszerű környezetekről. | Olyan alkalmazást szeretne átemelni és átállítani a felhőbe, amely már a natív fájlrendszer API-kat használja az Azure-ban futó más alkalmazások közötti adatmegosztáshoz.<br/><br/>Szeretné cserélni vagy kiegészíteni a helyszíni fájlkiszolgálók vagy NAS-eszközöket.<br><br> Olyan fejlesztési és hibakeresési eszközöket szeretne tárolni, amelyeknek számos virtuális gépről kell elérniük. |
 | **Azure Blobs** | Lehetővé teszi a strukturálatlan adatmennyiségek tárolását és elérését a blokkos Blobok nagy méretekben.<br/><br/>A [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) is támogatja a vállalati Big Data elemzési megoldásokhoz. | Azt szeretné, hogy az alkalmazás támogassa a folyamatos átvitelt és a véletlenszerű hozzáférési forgatókönyveket.<br/><br/>Bárhonnan elérhetővé szeretné tenni az alkalmazásadatok elérését.<br/><br/>Az Azure-ban szeretne létrehozni egy vállalati adattavat, és big data elemzést hajt végre. |
 | **Azure Disks** | Lehetővé teszi az adatok tartós tárolását és elérését egy csatlakoztatott virtuális merevlemezről. | A natív fájlrendszerű API-kat használó alkalmazások "átemelése" és "eltolása" szükséges az állandó lemezekre való olvasáshoz és az adatíráshoz.<br/><br/>Olyan adatok tárolására van szükség, amelyek nem szükségesek azon a virtuális gépen kívülről való hozzáféréshez, amelyhez a lemez csatlakoztatva van. |
-| **Azure-üzenetsorok** | Lehetővé teszi az alkalmazások összetevői közötti aszinkron üzenetsor-kezelést. | El szeretné választani az alkalmazás-összetevőket, és aszinkron üzenetküldést használ a közöttük való kommunikációhoz.<br><br>A Queue Storage és a Service Bus Queues használata esetén a következő témakörben talál útmutatást: [Storage Queues and Service Bus Queues – összehasonlítás és kontrasztos](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted). |
+| **Azure-üzenetsorok** | Lehetővé teszi az alkalmazások összetevői közötti aszinkron üzenetsor-kezelést. | El szeretné választani az alkalmazás-összetevőket, és aszinkron üzenetküldést használ a közöttük való kommunikációhoz.<br><br>A Queue Storage és a Service Bus Queues használata esetén a következő témakörben talál útmutatást: [Storage Queues and Service Bus Queues – összehasonlítás és kontrasztos](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md). |
 | **Azure-táblák** | Lehetővé teszi a strukturált NoSQL-alapú adattárolást a felhőben, amely egy kulcs/attribútum-tárolót biztosít a séma nélküli kialakításhoz. | Rugalmas adatkészleteket szeretne tárolni, például a webalkalmazásokhoz, a címjegyzékekhez, az eszköz adataihoz vagy a szolgáltatás által igényelt más típusú metaadatokhoz tartozó felhasználói adatokat. <br/><br/>Ha a Table Storage és a Azure Cosmos DB Table API használatát ismerteti, tekintse meg a [fejlesztés a Azure Cosmos DB Table API és az Azure Table Storage](../../cosmos-db/table-support.md)szolgáltatással című témakört. |
 
 ## <a name="blob-storage"></a>Blob Storage
@@ -93,7 +93,7 @@ További információ az Azure Queuesról: [Bevezetés az Azure Queues használa
 
 ## <a name="table-storage"></a>Table Storage
 
-Az Azure Table Storage mostantól az Azure Cosmos DB része. Az Azure Table Storage dokumentációját lásd: [Az Azure Table Storage áttekintése](../tables/table-storage-overview.md). A meglévő Azure Table Storage-szolgáltatáson kívül elérhető egy új Azure Cosmos DB Table API-ajánlat, amely teljesítményoptimalizált táblákat, globális elosztást és automatikus másodlagos indexeket is biztosít. Ha többet szeretne megtudni, és próbálja ki az új prémium szintű élményt, tekintse meg [Azure Cosmos DB Table API](https://aka.ms/premiumtables).
+Az Azure Table Storage mostantól az Azure Cosmos DB része. Az Azure Table Storage dokumentációját lásd: [Az Azure Table Storage áttekintése](../tables/table-storage-overview.md). A meglévő Azure Table Storage-szolgáltatáson kívül elérhető egy új Azure Cosmos DB Table API-ajánlat, amely teljesítményoptimalizált táblákat, globális elosztást és automatikus másodlagos indexeket is biztosít. Ha többet szeretne megtudni, és próbálja ki az új prémium szintű élményt, tekintse meg [Azure Cosmos DB Table API](../../cosmos-db/table-introduction.md).
 
 További információ a Table Storage-ról: [Az Azure Table Storage áttekintése](../tables/table-storage-overview.md).
 
@@ -115,7 +115,7 @@ Minden Azure Storage-kérelemnek engedélyezve kell lennie. Az Azure Storage a k
 - **Azure AD-hitelesítés az Azure Files SMB-en keresztül.** Azure Files támogatja az SMB-(Server Message Block) identitás-alapú hitelesítést Azure Active Directory Domain Services (Azure AD DS) vagy helyszíni Active Directory tartományi szolgáltatások (előzetes verzió) használatával. A tartományhoz csatlakoztatott Windows rendszerű virtuális gépek Azure AD-beli hitelesítő adatokkal érhetik el az Azure-fájlmegosztást. További információ: [Azure Files identitás-alapú hitelesítés támogatásának áttekintése az SMB-hozzáféréshez](../files/storage-files-active-directory-overview.md) és a [Azure Files központi telepítésének megtervezéséhez](../files/storage-files-planning.md#identity).
 - **Hitelesítés megosztott kulccsal.** A Azure Storage Blob, fájlok, üzenetsor és Table Services támogatja a megosztott kulccsal való hitelesítést. A megosztott kulcsos hitelesítést használó ügyfelek minden, a Storage-fiók elérési kulcsával aláírt kérelemmel továbbítanak egy fejlécet. További információ: [Engedélyezés megosztott kulccsal](/rest/api/storageservices/authorize-with-shared-key).
 - **Hitelesítés közös hozzáférésű aláírásokkal (SAS).** A közös hozzáférésű aláírás (SAS) egy olyan karakterlánc, amely egy olyan biztonsági jogkivonatot tartalmaz, amely egy tárolási erőforrás URI azonosítójának hozzáfűzésére használható. A biztonsági jogkivonat olyan korlátozásokat ágyaz be, mint az engedélyek és a hozzáférés intervalluma. További információ: [Shared Access Signatures (SAS) használata](storage-sas-overview.md).
-- **A tárolók és Blobok névtelen hozzáférése.** Előfordulhat, hogy a tároló és a Blobok nyilvánosan elérhetők. Ha megadja, hogy a tároló vagy a blob nyilvános, akkor bárki névtelenül olvashatja. nincs szükség hitelesítésre. További információ: [Névtelen olvasási hozzáférés tárolók és Blobok kezelésére](../blobs/storage-manage-access-to-resources.md).
+- **A tárolók és Blobok névtelen hozzáférése.** Előfordulhat, hogy a tároló és a Blobok nyilvánosan elérhetők. Ha megadja, hogy a tároló vagy a blob nyilvános, akkor bárki névtelenül olvashatja. nincs szükség hitelesítésre. További információ: [Névtelen olvasási hozzáférés tárolók és Blobok kezelésére](../blobs/anonymous-read-access-configure.md).
 
 ## <a name="encryption"></a>Titkosítás
 
@@ -131,7 +131,7 @@ Az Azure Storage ügyféloldali kódtárai módszerekkel titkosítják az adatok
 
 ## <a name="redundancy"></a>Redundancia
 
-Az Azure Storage több példányban tárolja az adatait, így biztosítva, hogy az adatai tartósak legyenek. A Storage-fiók beállításakor ki kell választania egy redundancia beállítást. További információ: [Azure Storage-redundancia](/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json).
+Az Azure Storage több példányban tárolja az adatait, így biztosítva, hogy az adatai tartósak legyenek. A Storage-fiók beállításakor ki kell választania egy redundancia beállítást. További információ: [Azure Storage-redundancia](./storage-redundancy.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json).
 
 ## <a name="transfer-data-to-and-from-azure-storage"></a>Adatok átvitele az Azure Storage-ba és onnan
 
@@ -160,7 +160,7 @@ A Storage-fiókokban lévő erőforrásokat bármilyen, HTTP/HTTPS-kérelmeket e
 
 - [A Storage erőforrás-szolgáltató REST API-ja](/rest/api/storagerp/)
 - [Storage erőforrás-szolgáltató ügyfél a .NET-hez](/dotnet/api/overview/azure/storage/management)
-- [A Storage szolgáltatásfelügyelet REST API-ja](https://msdn.microsoft.com/library/azure/ee460790.aspx)
+- [A Storage szolgáltatásfelügyelet REST API-ja](/previous-versions/azure/reference/ee460790(v=azure.100))
 
 ### <a name="azure-storage-data-movement-api-and-library-references"></a>Az Azure Storage adatátviteli API-ja és kódtárhivatkozásai
 

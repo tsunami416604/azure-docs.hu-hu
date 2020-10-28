@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443316"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781226"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentés
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Itt létre kell hoznia egy szegmenses Térkép-kezelőt, és több szegmenst is 
 1. Hozza létre és futtassa a **Elastic Database Tools** minta alkalmazás első lépéseit. Ehhez kövesse a cikk szakaszának [letöltés és Futtatás a minta](elastic-scale-get-started.md#download-and-run-the-sample-app-1)alkalmazást. Az összes lépés befejezését követően a következő parancssor jelenik meg:
 
     ![parancssor][1]
-2. A parancssorba írja be az "1" kifejezést, majd nyomja le az **ENTER**billentyűt. Ez létrehozza a szegmens Térkép-kezelőt, és két szegmenst hoz létre a kiszolgálóhoz. Ezután írja be a "3" kifejezést, és nyomja le az **ENTER**billentyűt. Ismételje meg a műveletet négyszer. Ez beszúrja a szegmensekben található mintavételi adatsorokat.
+2. A parancssorba írja be az "1" kifejezést, majd nyomja le az **ENTER** billentyűt. Ez létrehozza a szegmens Térkép-kezelőt, és két szegmenst hoz létre a kiszolgálóhoz. Ezután írja be a "3" kifejezést, és nyomja le az **ENTER** billentyűt. Ismételje meg a műveletet négyszer. Ez beszúrja a szegmensekben található mintavételi adatsorokat.
 3. A [Azure Portal](https://portal.azure.com) három új adatbázist kell megjelenítenie a kiszolgálón:
 
    ![A Visual Studio megerősítése][2]
@@ -121,13 +121,13 @@ Figyelje meg, hogy a lekérdezés összesíti az összes szegmens eredményét, 
 
 1. Indítsa el az Excel 2013 alkalmazást.
 2. Navigáljon az **adatszalagra** .
-3. Kattintson **a más forrásokból** lehetőségre, és kattintson **az SQL Server**lehetőségre.
+3. Kattintson **a más forrásokból** lehetőségre, és kattintson **az SQL Server** lehetőségre.
 
    ![Excel-importálás más forrásokból][5]
 4. Az **adatkapcsolatok varázslóban** adja meg a kiszolgáló nevét és a bejelentkezési hitelesítő adatokat. Ezután kattintson a **Tovább** gombra.
-5. A párbeszédpanelen **válassza ki a kívánt adatkészletet tartalmazó adatbázist**, és válassza ki a **ElasticDBQuery** -adatbázist.
-6. Válassza ki a **Customers (ügyfelek)** táblát a lista nézetben, és kattintson a **tovább**gombra. Ezután kattintson a **Befejezés** gombra.
-7. Az **adatimportálás** űrlapon a **válassza ki, hogyan szeretné megtekinteni az adatait a munkafüzetben**, válassza a **tábla** lehetőséget, majd kattintson **az OK**gombra.
+5. A párbeszédpanelen **válassza ki a kívánt adatkészletet tartalmazó adatbázist** , és válassza ki a **ElasticDBQuery** -adatbázist.
+6. Válassza ki a **Customers (ügyfelek)** táblát a lista nézetben, és kattintson a **tovább** gombra. Ezután kattintson a **Befejezés** gombra.
+7. Az **adatimportálás** űrlapon a **válassza ki, hogyan szeretné megtekinteni az adatait a munkafüzetben** , válassza a **tábla** lehetőséget, majd kattintson **az OK** gombra.
 
 Az **ügyfelek** tábla összes sora, amely különböző szegmensekben van tárolva, feltölti az Excel-lapot.
 
@@ -144,7 +144,7 @@ A díjszabással kapcsolatos információkért tekintse meg a [SQL Database díj
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](elastic-query-getting-started-vertical.md).
 * A függőlegesen particionált információk szintaxisát és mintáit lásd: [függőlegesen particionált adatlekérdezés](elastic-query-vertical-partitioning.md)
 * A horizontálisan particionált információk szintaxisát és mintáit lásd: [vízszintesen particionált adatlekérdezés](elastic-query-horizontal-partitioning.md)
-* Lásd: az [SP \_ \_ távoli futtatása](https://msdn.microsoft.com/library/mt703714) olyan tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
+* Lásd: az [SP \_ \_ távoli futtatása](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) olyan tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
 
 
 <!--Image references-->

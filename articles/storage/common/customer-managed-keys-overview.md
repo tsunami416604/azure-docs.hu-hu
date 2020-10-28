@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 993c0bdf1e8e29a7cff9bd1cad60bf78386b16a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578223"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782229"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz
 
@@ -65,7 +65,7 @@ Ha meg szeretné tudni, hogyan konfigurálhatja az Azure Storage-titkosítást a
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok az Azure AD szolgáltatásban az Azure-erőforrások felügyelt identitásait használják. A felügyelt identitások jelenleg nem támogatják a könyvtárak közötti forgatókönyveket. Ha az ügyfél által felügyelt kulcsokat a Azure Portal konfigurálja, a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alatt lévő Storage-fiókhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a Storage-fiókot egyik Azure AD-címtárból a másikba, a Storage-fiókhoz társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok többé nem fognak működni. További információ: **előfizetés továbbítása Azure ad-címtárak között** [Gyakori kérdések és ismert problémák az Azure-erőforrások felügyelt identitásával](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)kapcsolatban.  
 
-Az Azure Storage encryption a 2048, 3072 és 4096 méretű RSA-és RSA-HSM-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
+Az Azure Storage encryption a 2048, 3072 és 4096 méretű RSA-és RSA-HSM-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért lásd: [a kulcsok ismertetése](../../key-vault/keys/about-keys.md).
 
 A Key Vault vagy a Managed HSM használata a kapcsolódó költségekkel jár. További információ: [Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
 
@@ -109,7 +109,7 @@ A műveletek ismételt meghívásához állítsa vissza a hozzáférést az ügy
 
 Az ebben a szakaszban nem szereplő adatműveletek az ügyfél által felügyelt kulcsok visszavonása, illetve a kulcs letiltását vagy törlését követően is folytatódnak.
 
-Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a [PowerShellt](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) vagy az [Azure CLI](storage-encryption-keys-cli.md#revoke-customer-managed-keys)-t.
+Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a [PowerShellt](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys) vagy az [Azure CLI](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys)-t.
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>Ügyfél által felügyelt kulcsok az Azure Managed Disks szolgáltatáshoz
 

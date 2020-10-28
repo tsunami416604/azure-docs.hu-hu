@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: 53428a542bb8d8d546e68f63aaf80ee40f2b0874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4258c60335a13a6c0f27588aac1c6cdb185fcf6a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450254"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782800"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Ismerkedés a JSON-funkciókkal Azure SQL Database és az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -196,6 +196,4 @@ A JSON-tömbként formázott és a tárolt eljárás paraméterként megadott gy
 
 Ha szeretné megtudni, hogyan integrálhatja a JSON-t az alkalmazásba, tekintse meg ezeket az erőforrásokat:
 
-Ha többet szeretne megtudni a JSON alkalmazásba való integrálásához szükséges különböző forgatókönyvekről, tekintse meg a [Channel 9 videójában](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) található bemutatókat, vagy keressen olyan forgatókönyvet, amely megfelel a [JSON-blogbejegyzésekben](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases)használt használati esetnek.
-
-
+Ha többet szeretne megtudni a JSON alkalmazásba való integrálásához szükséges különböző forgatókönyvekről, tekintse meg a [Channel 9 videójában](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) található bemutatókat, vagy keressen olyan forgatókönyvet, amely megfelel a [JSON-blogbejegyzésekben](/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases)használt használati esetnek.

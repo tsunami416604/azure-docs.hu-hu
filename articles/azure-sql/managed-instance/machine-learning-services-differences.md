@@ -1,6 +1,6 @@
 ---
 title: Machine Learning Services főbb eltérései (előzetes verzió)
-description: Ez a témakör a Machine Learning Services az Azure SQL felügyelt példányban és a SQL Server Machine Learning Servicesban való főbb különbségeit ismerteti.
+description: Ez a cikk az Azure SQL felügyelt példányain és a Machine Learning Services SQL Server Machine Learning Services közötti fő különbségeket ismerteti.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: machine-learning
@@ -11,17 +11,17 @@ author: garyericson
 ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
-ms.date: 05/27/2020
-ms.openlocfilehash: 9ff2de18042c466bdd8fa6c71194fff4286c820d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: adf454ac697f8cabf4256ebfc5baa5d0d1c76264
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325096"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782467"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>A felügyelt Azure SQL-példányon és az SQL Serveren elérhető Machine Learning Services közötti fő eltérések
 
-Az [Azure SQL felügyelt példányának (előzetes verzió) Machine learning Services](machine-learning-services-overview.md) funkciója közel azonos a [SQL Server Machine learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). A következőkben néhány kulcsfontosságú különbség van.
+Az [Azure SQL felügyelt példányának (előzetes verzió) Machine learning Services](machine-learning-services-overview.md) funkciója közel azonos a [SQL Server Machine learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning). A következőkben néhány kulcsfontosságú különbség van.
 
 > [!IMPORTANT]
 > Az Azure SQL felügyelt példányának Machine Learning Services jelenleg nyilvános előzetes verzióban érhető el. A regisztrációhoz lásd: [regisztráció az előzetes](machine-learning-services-overview.md#signup)verzióra.
@@ -33,19 +33,19 @@ Az előzetes verziójú szolgáltatásra az alábbi korlátozások vonatkoznak:
 - A visszacsatolási kapcsolatok nem működnek (lásd: a [SQL Server egy Python-vagy R-parancsfájlból történő visszacsatolási kapcsolata](/sql/machine-learning/connect/loopback-connection)).
 - A külső erőforráskészletek nem támogatottak.
 - Csak a Python és az R nyelv támogatott. Külső nyelvek (például Java) nem adhatók hozzá.
-- A [Message Passing Interface](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) (MPI) felületet használó forgatókönyvek nem támogatottak.
+- A [Message Passing Interface](/message-passing-interface/microsoft-mpi) (MPI) felületet használó forgatókönyvek nem támogatottak.
 
-Szolgáltatásiszint-célkitűzés (SLO) frissítése esetén frissítse az SLO-t, és hozzon létre támogatási jegyet az R/Python dedikált erőforráskorlátainak újbóli engedélyezéséhez.
+A szolgáltatási szint célkitűzés (SLO) frissítése esetén frissítse az SLO-t, és egy támogatási jegyet, hogy engedélyezze újra az R/Python dedikált erőforrás-korlátait.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-Machine Learning Services a felügyelt SQL-példányon, és SQL Server támogatja a Python és az R [bővíthetőségi keretrendszert](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework)is. A legfontosabb különbségek a következők:
+Machine Learning Services a felügyelt SQL-példányon, és SQL Server támogatja a Python és az R [bővíthetőségi keretrendszert](/sql/advanced-analytics/concepts/extensibility-framework)is. A legfontosabb különbségek a következők:
 
 - A Python és az R kezdeti verziói különböznek a felügyelt SQL-példányok Machine Learning Services és SQL Server:
 
   | Rendszer               | Python | R     |
   |----------------------|--------|-------|
-  | Felügyelt SQL-példány | 3.7.1  | 3.5.2 |
+  | SQL Managed Instance | 3.7.1  | 3.5.2 |
   | SQL Server           | 3.5.2  | 3.3.3 |
 
 - Nincs szükség a-on keresztül történő konfigurálásra `external scripts enabled` `sp_configure` . Miután [regisztrált](machine-learning-services-overview.md#signup) az előzetes verzióra, a Machine learning engedélyezve van az Azure SQL felügyelt példányain.
@@ -54,32 +54,32 @@ Machine Learning Services a felügyelt SQL-példányon, és SQL Server támogatj
 
 A Python és az R csomagkezelő a felügyelt SQL-példány és a SQL Server között eltérően működik. Ezek a különbségek a következők:
 
-- A csomagok nem hajthatnak végre kimenő hálózati hívásokat. Ez a korlátozás hasonlít a SQL Server [Machine learning Services alapértelmezett tűzfalszabályok esetében](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration) , de nem módosítható az SQL felügyelt példányában.
 - A külső futtatókörnyezettől (például Java) függő csomagok nem támogatottak, vagy az operációs rendszer API-jait kell telepíteni a telepítéshez vagy a használathoz.
+- A csomagok elvégezhetik a kimenő hálózati hívásokat (az előzetes verzióról korábban is változhatnak). A kimenő hálózati hívások engedélyezéséhez beállíthatja a megfelelő kimenő biztonsági szabályokat a [hálózati biztonsági csoport](/azure/virtual-network/network-security-groups-overview) szintjén.
 
 A Python és az R csomagok kezelésével kapcsolatos további információkért lásd:
 
-- [Python-csomagadatok lekérése](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
-- [R-csomagadatok lekérése](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [Python-csomagadatok lekérése](/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
+- [R-csomagadatok lekérése](/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
 
 ## <a name="resource-governance"></a>Erőforrások szabályozása
 
-Nem lehetséges az R-erőforrások korlátozása [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) és külső erőforráskészlet használatával.
+Nem lehetséges az R-erőforrások korlátozása [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) és külső erőforráskészlet használatával.
 
-A nyilvános előzetes verzióban az R-erőforrások a felügyelt SQL-példányok erőforrásainak legfeljebb 20%-át adják, és a választott szolgáltatásszinttől függenek. További információ: [Azure SQL Database vásárlási modellek](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+A nyilvános előzetes verzióban az R-erőforrások a felügyelt SQL-példányok erőforrásainak legfeljebb 20%-át adják, és a választott szolgáltatásszinttől függenek. További információ: [Azure SQL Database vásárlási modellek](../database/purchasing-models.md).
 
 ### <a name="insufficient-memory-error"></a>Nincs elég memória-hiba
 
 Ha nincs elegendő memória az R számára, hibaüzenet jelenik meg. Gyakori hibaüzenetek:
 
-- Nem lehet kommunikálni a futtatókörnyezettel a (z) * * * * * * * kérelem azonosítójának "R" parancsfájljában. Ellenőrizze az R-futtatókörnyezet követelményeit
-- R-szkripthiba történt az „sp_execute_external_script” végrehajtása során (HRESULT 0x80004004). ...külső szkripthiba történt: „...nem sikerült memóriát (0 MB) lefoglalni az R_AllocStringBuffer C-függvényben”
-- Külső parancsfájl hiba történt: hiba: nem foglalható le a méret vektora.
+- `Unable to communicate with the runtime for 'R' script for request id: *******. Please check the requirements of 'R' runtime`
+- `'R' script error occurred during execution of 'sp_execute_external_script' with HRESULT 0x80004004. ...an external script error occurred: "..could not allocate memory (0 Mb) in C function 'R_AllocStringBuffer'"`
+- `An external script error occurred: Error: cannot allocate vector of size.`
 
 A memóriahasználat az R-szkriptekben használt memória mennyiségétől és a párhuzamosan végrehajtott lekérdezések számától függ. Ha a fenti hibaüzeneteket kapja, skálázza az adatbázist magasabb szolgáltatási szintre a probléma elhárításához.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [Azure SQL felügyelt példányának](machine-learning-services-overview.md)áttekintését Machine learning Services.
-- Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)című témakört.
-- Az R-Machine Learning Services használatának megismeréséhez tekintse meg az [r-parancsfájlok futtatása](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)című témakört.
+- Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)című témakört.
+- Az R-Machine Learning Services használatának megismeréséhez tekintse meg az [r-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)című témakört.
