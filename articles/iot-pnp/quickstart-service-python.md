@@ -7,13 +7,13 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: d04a1eda7dc414233075f5d70e29c967c8bdfc35
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ad5fa271e3abfaf0c7ee4884881262773a9ad485
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946076"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741486"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>Rövid útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play eszköz (Python) használata
 
@@ -80,14 +80,14 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használunk a Pythonban, h
 1. Nyissa meg a *registry_manager_pnp_sample.* rajzfájl fájlt, és tekintse át a kódot. Ez a minta bemutatja, hogyan használhatja a **IoTHubRegistryManager** osztályt a IoT Plug and Play eszközével való interakcióhoz.
 
 > [!NOTE]
-> Ezek a szolgáltatási minták a **IoTHubRegistryManager** osztályt használják a **IoT hub szolgáltatás ügyfelétől**. Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
+> Ezek a szolgáltatási minták a **IoTHubRegistryManager** osztályt használják a **IoT hub szolgáltatás ügyfelétől** . Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
 
 ### <a name="get-the-device-twin"></a>Az eszköz dupla letöltése
 
 A [környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóanyagok](set-up-environment.md) létrehozott két környezeti változót a minta konfigurálásához a IoT hub és az eszközhöz való kapcsolódáshoz:
 
-* **IOTHUB_CONNECTION_STRING**: a IoT hub-kapcsolatok karakterlánca korábban már jegyzett készített.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_CONNECTION_STRING** : a IoT hub-kapcsolatok karakterlánca korábban már jegyzett készített.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"` .
 
 Használja a következő parancsot a **szolgáltatás** -terminálon a minta futtatásához:
 
@@ -175,7 +175,7 @@ Done generating
 {"tempReport": {"avgTemp": 34.2, "endTime": "09/07/2020 09:58:11", "maxTemp": 49, "minTemp": 10, "startTime": "09/07/2020 09:56:51"}}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

@@ -3,13 +3,13 @@ title: Linuxos Container-alkalmazás létrehozása Service Fabric az Azure-ban
 description: Ebben a rövid útmutatóban egy Docker-rendszerképet készít az alkalmazásával, amelyet leküld egy tárolóregisztrációs adatbázisba, majd üzembe helyezi a tárolót egy Service Fabric-fürtön.
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 27a21a685d8dc4aa92585ce49b21d1986a54209f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91541509"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741925"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rövid útmutató: Linux-tárolók üzembe helyezése a Service Fabricben
 
@@ -107,7 +107,7 @@ A Mozilla Firefox az Ubuntu 16,04 alapértelmezett böngészője. A tanúsítvá
     ./install.sh
     ```
 
-3. Nyisson meg egy webböngészőt, majd navigáljon a fürt Service Fabric Explorer-végpontjára. A végpont formátuma a következő:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; például: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
+3. Nyisson meg egy webböngészőt, majd navigáljon a fürt Service Fabric Explorer-végpontjára. A végpont formátuma a következő:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer** ; például: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Bontsa ki az **alkalmazások** csomópontot, és ellenőrizze, hogy most már van-e bejegyzés a szavazási alkalmazás típusához és a létrehozott példányhoz.
 
@@ -149,7 +149,7 @@ A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lé
 
     Most már méretezheti a webes előtér-szolgáltatás példányainak számát.
 
-3. Módosítsa a számot **2**-re, és kattintson a **Szolgáltatás méretezése** gombra.
+3. Módosítsa a számot **2** -re, és kattintson a **Szolgáltatás méretezése** gombra.
 4. Kattintson a **fabric:/Voting/azurevotefront** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
 
     ![A Service Fabric Explorer méretezési szolgáltatása befejezve][containersquickstartscaledone]
@@ -158,7 +158,7 @@ A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lé
 
 Ezzel az egyszerű felügyeleti eljárással megduplázta az előtér-szolgáltatás számára a felhasználói terhelések feldolgozásához rendelkezésre álló erőforrások mennyiségét. Fontos tudni, hogy nincs szükség több példányra ahhoz, hogy a szolgáltatás megbízhatóan fusson. Ha egy szolgáltatás meghibásodik, a Service Fabric gondoskodik róla, hogy egy új szolgáltatáspéldány elinduljon a fürtben.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Használja a sablonban megadott eltávolítási szkriptet (uninstall.sh) az alkalmazáspéldánynak a fürtről történő törléséhez, és törölje az alkalmazástípus regisztrációját. A szkriptnek némi időre van szüksége a példány kiürítéséhez, ezért a telepítési szkriptet nem érdemes azonnal ezen szkript után futtatni. A Service Fabric Explorerrel megállapíthatja, hogy mikor lett eltávolítva a példány és mikor lett megszüntetve az alkalmazástípus regisztrációja.
 
@@ -182,7 +182,7 @@ Ha végzett a fürt használatával, eltávolíthatja a tanúsítványt a tanús
 - Mac rendszeren: Használja a Keychain alkalmazást.
 - Ubuntu rendszeren: Kövesse a tanúsítványok megtekintéséhez használt lépéseket, majd távolítsa el a tanúsítványt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy Linux-alapú tárolóalkalmazást egy Service Fabric-fürtön az Azure-ban, elvégezte az alkalmazás feladatátvételét és méretezte azt a fürtben. Ha bővebb információra van szüksége a Linux-tárolók Service Fabricben való használatával kapcsolatban, lépjen tovább a Linux-tárolóalkalmazásokról szóló oktatóanyagra.
 

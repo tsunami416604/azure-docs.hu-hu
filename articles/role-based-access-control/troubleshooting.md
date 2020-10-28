@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: seohack1
-ms.openlocfilehash: 069c290de0278202b2e20d67f0ce792a0a79c345
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: seohack1, devx-track-azurecli
+ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368230"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741073"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -120,7 +120,7 @@ Ha nemrég meghívott egy felhasználót a szerepkör-hozzárendelés létrehoz�
 
 Ha azonban ez a rendszerbiztonsági tag nem a közelmúltban meghívott felhasználó, akkor lehet, hogy egy törölt rendszerbiztonsági tag. Ha szerepkört rendel egy rendszerbiztonsági tag számára, és később törli a rendszerbiztonsági tag törlését a szerepkör-hozzárendelés eltávolítása nélkül, akkor a rendszerbiztonsági tag **nem található identitásként** jelenik meg, és **ismeretlen** típusú.
 
-Ha Azure PowerShell használatával sorolja fel ezt a szerepkör-hozzárendelést, akkor előfordulhat, hogy egy üres `DisplayName` és egy `ObjectType` **ismeretlen**érték jelenik meg. A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) például a következő kimenethez hasonló szerepkör-hozzárendelést ad vissza:
+Ha Azure PowerShell használatával sorolja fel ezt a szerepkör-hozzárendelést, akkor előfordulhat, hogy egy üres `DisplayName` és egy `ObjectType` **ismeretlen** érték jelenik meg. A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) például a következő kimenethez hasonló szerepkör-hozzárendelést ad vissza:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -222,14 +222,14 @@ A webalkalmazásokhoz hasonlóan a virtuális gép panel egyes funkcióinak ír�
 
 A virtuális gépek a tartománynevek, a virtuális hálózatok, a tárolási fiókok és a riasztási szabályokhoz kapcsolódnak.
 
-Ezeknek az elemeknek **írási** hozzáférésre van szükségük a **virtuális géphez**:
+Ezeknek az elemeknek **írási** hozzáférésre van szükségük a **virtuális géphez** :
 
 * Végpontok  
 * IP-címek  
 * Lemezek  
 * Bővítmények  
 
-Ezeknek **írási** hozzáférésre van szükségük a **virtuális géphez**és az **erőforráscsoporthoz** (a tartománynévvel együtt):  
+Ezeknek **írási** hozzáférésre van szükségük a **virtuális géphez** és az **erőforráscsoporthoz** (a tartománynévvel együtt):  
 
 * Rendelkezésre állási csoport  
 * Elosztott terhelésű készlet  
@@ -239,7 +239,7 @@ Ha nem fér hozzá ezekhez a csempéhöz, kérje meg a rendszergazdát, hogy a k
 
 ## <a name="azure-functions-and-write-access"></a>Azure Functions és írási hozzáférés
 
-A [Azure functions](../azure-functions/functions-overview.md) egyes funkcióinak írási hozzáférésre van szükségük. Ha például egy felhasználó hozzá van rendelve az [olvasó](built-in-roles.md#reader) szerepkörhöz, nem fogja tudni megtekinteni a functions alkalmazásban lévő függvényeket. Megjelenik a portál **(nincs hozzáférés)**.
+A [Azure functions](../azure-functions/functions-overview.md) egyes funkcióinak írási hozzáférésre van szükségük. Ha például egy felhasználó hozzá van rendelve az [olvasó](built-in-roles.md#reader) szerepkörhöz, nem fogja tudni megtekinteni a functions alkalmazásban lévő függvényeket. Megjelenik a portál **(nincs hozzáférés)** .
 
 ![A Function alkalmazások nem férnek hozzá](./media/troubleshooting/functionapps-noaccess.png)
 

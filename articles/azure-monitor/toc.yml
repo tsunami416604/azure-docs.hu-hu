@@ -556,8 +556,6 @@
               href: platform/alerts-managing-smart-groups.md
             - name: Riasztási és intelligenscsoport-állapotok kezelése
               href: platform/alerts-managing-alert-states.md
-            - name: Egyéb monitorozási szolgáltatások riasztásainak kezelése
-              href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: Alert API
           href: platform/api-alerts.md
         - name: Riasztások hibaelhárítása
@@ -576,8 +574,6 @@
               href: platform/itsmc-service-manager-script.md
             - name: A ServiceNow ITSM-szinkronizálási problémáinak javítása
               href: platform/itsmc-resync-servicenow.md
-        - name: Riasztáskezelési megoldás
-          href: platform/alert-management-solution.md
         - name: Klasszikus riasztási szabályok migrálása
           items:
             - name: A klasszikus riasztások bemutatása
@@ -1138,6 +1134,8 @@
               href: insights/vmware.md
             - name: Wire Data-megoldás
               href: insights/wire-data.md
+            - name: Riasztáskezelési megoldás
+              href: platform/alert-management-solution.md
     - name: Munkafüzetek
       items:
         - name: Áttekintés

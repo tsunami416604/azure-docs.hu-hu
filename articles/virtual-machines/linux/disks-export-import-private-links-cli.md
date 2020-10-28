@@ -7,13 +7,13 @@ ms.topic: overview
 ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: 5c846bc126d6a6a8b0a8ed4a599c6d43a4d83616
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 66c331a79a4da7b8fb397e7d0209b24e00645783
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421220"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741720"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI – a felügyelt lemezek importálási/exportálási hozzáférésének korlátozása privát hivatkozásokkal
 
@@ -155,7 +155,7 @@ az snapshot create -n $snapshotNameSecuredWithPL \
 --disk-access $diskAccessId 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [GYIK a privát hivatkozásokról](../faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
 - [Felügyelt pillanatképek a CLI használatával történő exportálása/másolása virtuális merevlemezként egy másik régióban lévő tárfiókba](../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md)

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: a1d89def944529235a0141d7e700049f15d1d0a7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424974"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741887"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 
@@ -25,8 +25,8 @@ Megtudhatja, hogyan végezhet hitelesítést a Azure Machine Learning munkaterü
 
 Általában kétféle hitelesítés használható a Azure Machine Learning használatával:
 
-* __Interaktív__: a fiókját a Azure Active Directory közvetlenül a hitelesítéshez, vagy a hitelesítéshez használt token beszerzéséhez használja. Az interaktív hitelesítés a kísérletezés és az ismétlődő fejlesztés során használatos. Vagy az erőforrásokhoz (például webszolgáltatásokhoz) való hozzáférés szabályozása felhasználónkénti alapon.
-* __Egyszerű szolgáltatásnév__: egyszerű szolgáltatásnév-fiókot hoz létre a Azure Active Directoryban, és a hitelesítéshez vagy a jogkivonat lekéréséhez használja azt. Az egyszerű szolgáltatásnév akkor használatos, ha automatikus folyamatra van szükség a szolgáltatásban való hitelesítéshez anélkül, hogy felhasználói beavatkozásra lenne szükség. Például egy folyamatos integrációs és üzembe helyezési parancsfájl, amely a modell minden egyes változásakor betanítja és teszteli a modellt. Egy egyszerű szolgáltatás használatával is lekérheti a tokent egy webszolgáltatáshoz való hitelesítéshez, ha nem szeretné, hogy a szolgáltatás végfelhasználója hitelesítse magát. Vagy ha a végfelhasználói hitelesítés nem közvetlenül a Azure Active Directory használatával történik.
+* __Interaktív__ : a fiókját a Azure Active Directory közvetlenül a hitelesítéshez, vagy a hitelesítéshez használt token beszerzéséhez használja. Az interaktív hitelesítés a kísérletezés és az ismétlődő fejlesztés során használatos. Vagy az erőforrásokhoz (például webszolgáltatásokhoz) való hozzáférés szabályozása felhasználónkénti alapon.
+* __Egyszerű szolgáltatásnév__ : egyszerű szolgáltatásnév-fiókot hoz létre a Azure Active Directoryban, és a hitelesítéshez vagy a jogkivonat lekéréséhez használja azt. Az egyszerű szolgáltatásnév akkor használatos, ha automatikus folyamatra van szükség a szolgáltatásban való hitelesítéshez anélkül, hogy felhasználói beavatkozásra lenne szükség. Például egy folyamatos integrációs és üzembe helyezési parancsfájl, amely a modell minden egyes változásakor betanítja és teszteli a modellt. Egy egyszerű szolgáltatás használatával is lekérheti a tokent egy webszolgáltatáshoz való hitelesítéshez, ha nem szeretné, hogy a szolgáltatás végfelhasználója hitelesítse magát. Vagy ha a végfelhasználói hitelesítés nem közvetlenül a Azure Active Directory használatával történik.
 
 A használt hitelesítési típustól függetlenül az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az erőforrásokhoz engedélyezett hozzáférés szintjének hatókörére szolgál. Egy telepített modell hozzáférési jogkivonatának beolvasására használt fióknak például olvasási hozzáféréssel kell rendelkeznie a munkaterülethez. További információ az Azure RBAC: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
 
@@ -285,8 +285,8 @@ A változó `token_response` egy olyan szótár, amely tartalmazza a tokent és 
 
 A Azure Machine Learning által létrehozott modell-telepítések két hitelesítési módszert biztosítanak:
 
-* **kulcs-alapú**: a rendszer statikus kulcsot használ a webszolgáltatáshoz való hitelesítéshez.
-* **jogkivonat-alapú**: a munkaterületről kell beszerezni egy ideiglenes jogkivonatot, amely a webszolgáltatáshoz való hitelesítéshez használatos. Ez a jogkivonat egy adott idő elteltével lejár, és frissíteni kell a webszolgáltatással folytatott munka folytatásához.
+* **kulcs-alapú** : a rendszer statikus kulcsot használ a webszolgáltatáshoz való hitelesítéshez.
+* **jogkivonat-alapú** : a munkaterületről kell beszerezni egy ideiglenes jogkivonatot, amely a webszolgáltatáshoz való hitelesítéshez használatos. Ez a jogkivonat egy adott idő elteltével lejár, és frissíteni kell a webszolgáltatással folytatott munka folytatásához.
 
     > [!NOTE]
     > A jogkivonat-alapú hitelesítés csak az Azure Kubernetes szolgáltatásban való üzembe helyezéskor érhető el.
@@ -319,7 +319,7 @@ aci_service = Model.deploy(workspace=ws,
 aci_service.wait_for_deployment(True)
 ```
 
-Az Auth kulcsok beolvasásához használja a következőt: `aci_service.get_keys()` . A kulcs újragenerálása érdekében használja a `regen_key()` függvényt, és adja át az **elsődleges** vagy a **másodlagos**műveletet.
+Az Auth kulcsok beolvasásához használja a következőt: `aci_service.get_keys()` . A kulcs újragenerálása érdekében használja a `regen_key()` függvényt, és adja át az **elsődleges** vagy a **másodlagos** műveletet.
 
 ```python
 aci_service.regen_key("Primary")
@@ -335,7 +335,7 @@ Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhaszn
 
 * **Alapértelmezés szerint** a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
 * A jogkivonat-hitelesítés **nem támogatott** , ha Azure Container instances telepíti.
-* A jogkivonat-hitelesítés **nem használható a kulcs alapú hitelesítéssel megegyező időpontban**.
+* A jogkivonat-hitelesítés **nem használható a kulcs alapú hitelesítéssel megegyező időpontban** .
 
 A jogkivonat-hitelesítés vezérléséhez használja a (z) `token_auth_enabled` paramétert a központi telepítés létrehozásakor vagy frissítésekor:
 
@@ -381,7 +381,7 @@ print(token)
 >
 > Továbbá minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Rendszerkép-besorolási modell betanítása és üzembe helyezése](tutorial-train-models-with-aml.md).

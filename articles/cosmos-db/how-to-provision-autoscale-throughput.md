@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 823f5f90bc1a72b1df87ee21e37cf39fed0b2340
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 452259015cf78234aa6a96194342de20db9a3724
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486157"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740886"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>A Azure Cosmos DB-SQL API-ban lévő adatbázison vagy tárolón lévő autoskálázási teljesítmény kiépítése
 
@@ -29,11 +29,11 @@ Ha más API-t használ, tekintse meg a [MongoDB API](how-to-provision-throughput
 
 1. Navigáljon a Azure Cosmos DB-fiókjához, és nyissa meg a **adatkezelő** lapot.
 
-1. Válassza az **új tároló elemet.** Adja meg az adatbázis, a tároló és a partíciós kulcs nevét. Az **átviteli sebesség**területen válassza az **autoskálázás** lehetőséget, és állítsa be azt a [maximális átviteli sebességet (ru/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) , amelyet az adatbázisnak vagy a tárolónak méreteznie kell.
+1. Válassza az **új tároló elemet.** Adja meg az adatbázis, a tároló és a partíciós kulcs nevét. Az **átviteli sebesség** területen válassza az **autoskálázás** lehetőséget, és állítsa be azt a [maximális átviteli sebességet (ru/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) , amelyet az adatbázisnak vagy a tárolónak méreteznie kell.
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Tároló létrehozása és az autoscale kiépített átviteli sebességének konfigurálása":::
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 Ha a megosztott átviteli sebességű adatbázison szeretné kiépíteni az autoskálázást, válassza az **adatbázis átviteli sebességének kiépítése** lehetőséget új adatbázis létrehozásakor. 
 
@@ -48,7 +48,7 @@ Ha a megosztott átviteli sebességű adatbázison szeretné kiépíteni az auto
 
 1. Válassza ki a tároló **méretezését és beállításait** , vagy méretezze át az adatbázis **méretét** .
 
-1. A **skála**területen válassza az **autoskálázás** lehetőséget, és **mentse**.
+1. A **skála** területen válassza az **autoskálázás** lehetőséget, és **mentse** .
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Tároló létrehozása és az autoscale kiépített átviteli sebességének konfigurálása":::
 

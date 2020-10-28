@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
-ms.openlocfilehash: 4757ebc61f980a0d035a248940cba0d1824cf153
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547860"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741615"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése az Azure HDInsight
 
@@ -77,7 +77,7 @@ A **Hue** esetében az alábbi lépéseket hajthatja végre:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki azt a fürtöt, amelyre az alkalmazást telepítette.
 1. A **Beállítások** menüben válassza az **alkalmazások** lehetőséget.
 1. A tulajdonságok megtekintéséhez válassza a **színárnyalat** lehetőséget a listából.  
@@ -125,7 +125,7 @@ Ha egy alkalmazás telepítése nem sikerült, a következő három helyről lá
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki azt a fürtöt, amelyre az alkalmazást telepítette.
 1. A **Beállítások** menüben válassza az **alkalmazások** lehetőséget.
 1. Kattintson a jobb gombbal az eltávolítani kívánt alkalmazásra, majd válassza a **Törlés** lehetőséget.

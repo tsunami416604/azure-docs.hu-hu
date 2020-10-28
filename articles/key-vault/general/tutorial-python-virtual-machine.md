@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 89118f13bc009ce60d4fd1c82dfe7688bf1e551b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336700"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741279"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a Pythonban
 
@@ -66,7 +66,7 @@ Hozzon létre egy **myVM** nevű virtuális gépet az alábbi módszerek egyiké
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Az Azure Portal](../../virtual-machines/windows/quick-create-portal.md) |
 
-Linuxos virtuális gép Azure CLI használatával történő létrehozásához használja az az [VM Create](/cli/azure/vm) parancsot.  A következő példa egy *azureuser*nevű felhasználói fiókot vesz fel. A `--generate-ssh-keys` paraméter használatával automatikusan létrejön egy SSH-kulcs, és elhelyezhető az alapértelmezett kulcs helyén (*~/.ssh*). 
+Linuxos virtuális gép Azure CLI használatával történő létrehozásához használja az az [VM Create](/cli/azure/vm) parancsot.  A következő példa egy *azureuser* nevű felhasználói fiókot vesz fel. A `--generate-ssh-keys` paraméter használatával automatikusan létrejön egy SSH-kulcs, és elhelyezhető az alapértelmezett kulcs helyén ( *~/.ssh* ). 
 
 ```azurecli-interactive
 az vm create \
@@ -129,7 +129,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>A minta Python-szkript létrehozása és szerkesztése
 
-A virtuális gépen hozzon létre egy **sample.py**nevű Python-fájlt. Szerkessze a fájlt, hogy tartalmazza a következő kódot, majd cserélje le a "<a-Unique-kulcstartó-Name>" kifejezést a Key Vault nevével:
+A virtuális gépen hozzon létre egy **sample.py** nevű Python-fájlt. Szerkessze a fájlt, hogy tartalmazza a következő kódot, majd cserélje le a "<a-Unique-kulcstartó-Name>" kifejezést a Key Vault nevével:
 
 ```python
 from azure.keyvault.secrets import SecretClient
@@ -148,7 +148,7 @@ print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_s
 
 ## <a name="run-the-sample-python-app"></a>A Python-alkalmazás mintájának futtatása
 
-Végül futtassa a **sample.py**. Ha minden jól ment, vissza kell adni a titkos kulcs értékét:
+Végül futtassa a **sample.py** . Ha minden jól ment, vissza kell adni a titkos kulcs értékét:
 
 ```bash
 python3 sample.py
@@ -156,7 +156,7 @@ python3 sample.py
 The value of secret 'mySecret' in '<your-unique-keyvault-name>' is: 'Success!'
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.  Ezt gyorsan elvégezheti, ha egyszerűen törli azt az erőforráscsoportot, amelyhez tartoznak:
 
@@ -164,6 +164,6 @@ Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót
 az group delete -g myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

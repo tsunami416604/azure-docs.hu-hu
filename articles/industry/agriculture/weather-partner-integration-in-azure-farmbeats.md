@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: 661147769d8ae845066e912a84118c9fd3f93486
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dd5d05ff6ed2368308f90f61ea0a6f107e43acd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674911"
+ms.locfileid: "92740785"
 ---
 # <a name="weather-partner-integration"></a>Időjárási partner integrációja
 
@@ -180,7 +180,7 @@ Az összekötő Docker-nek képesnek kell lennie frissítések küldésére a me
 
 ## <a name="weather-data-telemetry-specifications"></a>Időjárási adatok (telemetria) – specifikációk
 
-Az időjárási adatszolgáltatások egy olyan kanonikus üzenetre vannak leképezve, amelyet egy Azure Event hub-ba küldenek feldolgozásra. Az Azure EventHub egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból. Az időjárási adatokat FarmBeats küldéséhez létre kell hoznia egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hub-nak. Ha többet szeretne megtudni a telemetria küldéséről, tekintse meg a [telemetria küldése az Event hubhoz](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) című témakört.
+Az időjárási adatszolgáltatások egy olyan kanonikus üzenetre vannak leképezve, amelyet egy Azure Event hub-ba küldenek feldolgozásra. Az Azure Event Hubs egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból. Az időjárási adatokat FarmBeats küldéséhez létre kell hoznia egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hub-nak. Ha többet szeretne megtudni a telemetria küldéséről, tekintse meg a [telemetria küldése az Event hubhoz](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) című témakört.
 
 Itt található egy Python-kód, amely a telemetria ügyfélként küldi el a megadott Event hub-nak.
 

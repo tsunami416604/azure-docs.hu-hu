@@ -7,12 +7,13 @@ ms.topic: article
 author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
-ms.openlocfilehash: e5f1a70182d4b31a1bcd0a811be32bdfc55129d9
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: contperfq2
+ms.openlocfilehash: f7c08172f3a60487ae6e15260a0cd5fc5e4a712c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168440"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740753"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Az Azure-beli használati kötelezettségvállalás előnyei
 
@@ -54,6 +55,6 @@ Ha nem biztos abban, hogy a szervezete rendelkezik-e megfelelő szerződéssel, 
 > [!IMPORTANT]
 > Az ajánlatokat közvetlenül az Azure Marketplace-en keresztül kell megvásárolni, egy olyan regisztrációval, amely a szervezet Azure-beli fogyasztási kötelezettségvállalásával kapcsolatos, hogy hozzájáruljon a vásárláshoz a kötelezettségvállalás teljesítése érdekében. A Cloud Solution Provider (CSP), bármely más viszonteladói csatorna vagy a piactéren kívül vásárolt ajánlatok nem járulnak hozzá a kötelezettségvállaláshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni arról, hogy a szervezet hogyan használhatja ki az Azure Marketplace-t, végezze el a Microsoft Learn modult: a [Felhőbeli közbeszerzés és az Azure Marketplace irányításának egyszerűsítése](https://aka.ms/cm.marketplaceprocurement).
