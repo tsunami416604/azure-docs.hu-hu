@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8998f03fa44529a5f006936a01f711a279178245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e15a8dc5e9f918c630397d6d6593f5bf561755
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84045682"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786904"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Rugalmas adatbázis-eszközök – gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,11 @@ Ne használja a hitelesítő adatokat "felhasználó azonosítója = username@se
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Létre kell hozni egy szegmenses Térkép-kezelőt, és fel kell tölteni a szegmenseket minden alkalommal, amikor elkezdem az alkalmazásaim
 
-Nem – a [ShardMapManagerFactory. CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)egy egyszeri művelet, amely létrehozta a szegmenses Térkép-kezelőt.  Az alkalmazásnak a [ShardMapManagerFactory. TryGetSqlShardMapManager ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) hívást kell használnia az alkalmazás indítási ideje alatt.  Alkalmazás-tartományhoz csak egy ilyen hívásnak kell lennie.
+Nem – a [ShardMapManagerFactory. CreateSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)egy egyszeri művelet, amely létrehozta a szegmenses Térkép-kezelőt.  Az alkalmazásnak a [ShardMapManagerFactory. TryGetSqlShardMapManager ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) hívást kell használnia az alkalmazás indítási ideje alatt.  Alkalmazás-tartományhoz csak egy ilyen hívásnak kell lennie.
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Kérdésem van a rugalmas adatbázis-eszközök használatával kapcsolatban, hogyan kaphatok választ
 
-Kérjük, lépjen kapcsolatba velünk a [Microsoft Q&a SQL Database vonatkozó kérdés oldalán](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
+Kérjük, lépjen kapcsolatba velünk a [Microsoft Q&a SQL Database vonatkozó kérdés oldalán](/answers/topics/azure-sql-database.html).
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Ha horizontális Felskálázási kulccsal szerezem be az adatbázis-csatlakozást, továbbra is lekérheti az ugyanazon a szegmensen lévő többi horizontális Felskálázási kulcsra vonatkozó adatlekérdezést.  Ez a kialakítás
 

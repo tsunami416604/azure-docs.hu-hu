@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 46eee878ba8cf1d12edf262241d5df8ef8ccc82f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442942"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786717"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés a Elastic Database eszközökkel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -98,23 +98,23 @@ A minta letöltéséhez és futtatásához kövesse az alábbi lépéseket:
 Gratulálunk! Sikeresen felépítette és futtatta az első felhalmozott alkalmazást a SQL Database Elastic Database eszközeinek használatával. A Visual Studióval vagy a SQL Server Management Studiotel csatlakozhat az adatbázishoz, és gyors áttekintést készíthet a minta által létrehozott szegmensekről. Ekkor megjelenik az új, példaként használt szegmens-adatbázisok és a minta által létrehozott szegmens Map Manager-adatbázis.
 
 > [!IMPORTANT]
-> Javasoljuk, hogy mindig a Management Studio legújabb verzióját használja, hogy szinkronizálva maradjon az Azure-ban és a SQL Database. [Az SQL Server Management Studio frissítése](https://msdn.microsoft.com/library/mt238290.aspx).
+> Javasoljuk, hogy mindig a Management Studio legújabb verzióját használja, hogy szinkronizálva maradjon az Azure-ban és a SQL Database. [Az SQL Server Management Studio frissítése](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ## <a name="key-pieces-of-the-code-sample"></a>A mintakód legfontosabb darabjai
 
-* Szegmensek **és szegmens térképek kezelése**: a kód azt mutatja be, hogyan használhatók a *ShardManagementUtils.cs* -fájlban a szegmensek, tartományok és leképezések. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).  
+* Szegmensek **és szegmens térképek kezelése** : a kód azt mutatja be, hogyan használhatók a *ShardManagementUtils.cs* -fájlban a szegmensek, tartományok és leképezések. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).  
 
-* **Adatfüggő útválasztás**: a jobb oldali szegmenshez tartozó tranzakciók útválasztása a *DataDependentRoutingSample.cs* fájlban látható. További információ: [az Adatkezeléstől függő útválasztás](https://go.microsoft.com/?linkid=9862596).
+* **Adatfüggő útválasztás** : a jobb oldali szegmenshez tartozó tranzakciók útválasztása a *DataDependentRoutingSample.cs* fájlban látható. További információ: [az Adatkezeléstől függő útválasztás](https://go.microsoft.com/?linkid=9862596).
 
-* **Több szegmensre történő lekérdezés**: a *MultiShardQuerySample.cs* -fájlban láthatók a több szegmens közötti lekérdezések. További információ: [több szegmensből álló lekérdezés](https://go.microsoft.com/?linkid=9862597).
+* **Több szegmensre történő lekérdezés** : a *MultiShardQuerySample.cs* -fájlban láthatók a több szegmens közötti lekérdezések. További információ: [több szegmensből álló lekérdezés](https://go.microsoft.com/?linkid=9862597).
 
-* **Üres**szegmensek hozzáadása: az új üres szegmensek ismétlődő hozzáadását a *CreateShardSample.cs* -fájlban található kód hajtja végre. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).
+* **Üres** szegmensek hozzáadása: az új üres szegmensek ismétlődő hozzáadását a *CreateShardSample.cs* -fájlban található kód hajtja végre. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Egyéb rugalmas skálázási műveletek
 
-* **Meglévő szegmens felosztása**: a szegmensek felosztására szolgáló képességeket a felosztott egyesítési eszköz is megadja. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md).
+* **Meglévő szegmens felosztása** : a szegmensek felosztására szolgáló képességeket a felosztott egyesítési eszköz is megadja. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md).
 
-* A meglévő szegmensek **egyesítése**: a szegmens egyesítéseket a felosztási egyesítés eszköz használatával is elvégezheti. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md).
+* A meglévő szegmensek **egyesítése** : a szegmens egyesítéseket a felosztási egyesítés eszköz használatával is elvégezheti. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md).
 
 ## <a name="cost"></a>Költségek
 
@@ -134,7 +134,7 @@ Elastic Database eszközökkel kapcsolatos további információkért tekintse m
   * [Szilánkok rugalmassága a script Centerben](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [rugalmas skálázási közlemény](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * 9. csatorna: [rugalmas méretezés – áttekintés videó](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Vitafórum: [Microsoft Q&Azure SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html)
+* Vitafórum: [Microsoft Q&Azure SQL Database](/answers/topics/azure-sql-database.html)
 * A teljesítmény mérése: teljesítményszámlálók a szegmenses [Térkép kezelőjéhez](elastic-database-client-library.md)
 
 <!--Anchors-->

@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9aadf7d9cd27763cafb878d0b35d13a140a304
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f6e10d3e5b33a07c223a3913bba0b220df2ff64
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89008403"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787380"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>A várólista tárolásának teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -52,7 +52,7 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan egy olya
 
 Ha az alkalmazás megközelíti vagy túllépi a méretezhetőségi célokat, akkor a tranzakciós késések vagy a szabályozás nagyobb mértékben merülhet fel. Amikor az Azure Storage szabályozza az alkalmazást, a szolgáltatás megkezdi a 503 (foglalt kiszolgáló) vagy a 500 (művelet időtúllépése) hibakódok visszaadását. A méretezhetőségi célok korlátain belül maradó hibák elkerülésének fontos része az alkalmazás teljesítményének növelése.
 
-További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
+További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](./scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Storage-fiókok maximális száma
 
@@ -77,7 +77,7 @@ Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a telje
 
 A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazás teljesítményében, az alábbi szakaszokban leírtak szerint.
 
-#### <a name="throughput"></a>Teljesítmény
+#### <a name="throughput"></a>Átviteli sebesség
 
 A sávszélesség miatt a probléma gyakran az ügyfél képességei. A nagyobb méretű Azure-példányok nagyobb kapacitású hálózati adapterekkel rendelkeznek, ezért érdemes nagyobb méretű virtuális gépeket használni, ha egy gépről nagyobb hálózati korlátokra van szüksége. Ha egy helyszíni alkalmazásból fér hozzá az Azure Storage-hoz, ugyanez a szabály vonatkozik rá: Ismerje meg az ügyféleszközök hálózati képességeit és a hálózati kapcsolatot az Azure Storage-beli helyhez, vagy javítsa azokat igény szerint, vagy tervezze meg az alkalmazását a képességein belül.
 
@@ -128,7 +128,7 @@ A kapcsolatok megnyitása előtt állítsa be a kapcsolati korlátot.
 
 Más programozási nyelvek esetében az adott nyelv dokumentációjában megtudhatja, hogyan állíthatja be a kapcsolódási korlátot.  
 
-További információ [: a webszolgáltatások közzétételét ismertető webszolgáltatások: egyidejű kapcsolatok](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+További információ [: a webszolgáltatások közzétételét ismertető webszolgáltatások: egyidejű kapcsolatok](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>A szálak minimális számának megemelése
 
@@ -146,7 +146,7 @@ Míg a párhuzamosság kiválóan használható a teljesítmény szempontjából
 
 ## <a name="client-libraries-and-tools"></a>Ügyféloldali kódtárak és eszközök
 
-A legjobb teljesítmény érdekében mindig használja a Microsoft által biztosított legújabb ügyféloldali kódtárakat és eszközöket. Az Azure Storage ügyféloldali kódtárai különböző nyelveken érhetők el. Az Azure Storage a PowerShellt és az Azure CLI-t is támogatja. A Microsoft aktívan fejleszti ezeket az ügyfélszoftvereket és eszközöket a teljesítmény szem előtt tartásával, naprakészen tartja a legújabb verziókat, és gondoskodik arról, hogy a bevált teljesítményekkel kapcsolatos gyakorlatokat belsőleg kezeljék. További információt az [Azure Storage dokumentációjában](/azure/storage/#reference)talál.
+A legjobb teljesítmény érdekében mindig használja a Microsoft által biztosított legújabb ügyféloldali kódtárakat és eszközöket. Az Azure Storage ügyféloldali kódtárai különböző nyelveken érhetők el. Az Azure Storage a PowerShellt és az Azure CLI-t is támogatja. A Microsoft aktívan fejleszti ezeket az ügyfélszoftvereket és eszközöket a teljesítmény szem előtt tartásával, naprakészen tartja a legújabb verziókat, és gondoskodik arról, hogy a bevált teljesítményekkel kapcsolatos gyakorlatokat belsőleg kezeljék. További információt az [Azure Storage dokumentációjában](./reference.md)talál.
 
 ## <a name="handle-service-errors"></a>Szolgáltatás hibáinak kezelése
 
@@ -193,7 +193,7 @@ A várólisták segítségével méretezhetővé teheti az alkalmazás architekt
 - A várólisták használatával várakozó munkaterhelések hozhatók létre az alkalmazásban felhasználható számítási és kiegyenlítő feladatok elvégzéséhez. Előfordulhat például, hogy a felhasználóktól érkező kéréseket a processzorok intenzív működéséhez, például a feltöltött képek átméretezéséhez szeretné elvégezni.
 - A várólisták segítségével elválaszthatja az alkalmazás egyes részeit, így egymástól függetlenül méretezheti azokat. A webes előtér például a felhasználók által egy várólistába helyezheti a későbbi elemzést és tárolást. További feldolgozói szerepkör-példányok hozzáadásával feldolgozhatja a várólista-adatkészletek igény szerinti feldolgozását.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Skálázhatóság és teljesítménybeli célok a várólista-tároláshoz](scalability-targets.md)
 - [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167950"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786428"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürtkonfiguráció ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Konfiguráljon egy Azure-beli megosztott lemezt a tanúsító lemezként.
 Első lépésként tekintse meg [a tanúsító lemez konfigurálása](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)című témakört.
 
 
-**Támogatott operációs rendszer**: mind   
+**Támogatott operációs rendszer** : mind   
 
 
 ### <a name="cloud-witness"></a>Felhőbeli tanúsító
@@ -66,7 +66,7 @@ A Felhőbeli tanúsító a feladatátvevő fürt Kvórumának olyan típusa, ame
 Első lépésként tekintse meg [a Felhőbeli tanúsító konfigurálása](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)című témakört.
 
 
-**Támogatott operációs rendszer**: Windows Server 2016 és újabb verziók   
+**Támogatott operációs rendszer** : Windows Server 2016 és újabb verziók   
 
 
 ### <a name="file-share-witness"></a>Tanúsító fájlmegosztás
@@ -78,7 +78,7 @@ Ha Azure-fájlmegosztást fog használni, csatlakoztathatja a [prémium fájlmeg
 Első lépésként tekintse [meg a tanúsító fájlmegosztás konfigurálása](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)című témakört.
 
 
-**Támogatott operációs rendszer**: Windows Server 2012 és újabb verziók   
+**Támogatott operációs rendszer** : Windows Server 2012 és újabb verziók   
 
 ## <a name="connectivity"></a>Kapcsolatok
 
@@ -89,7 +89,7 @@ Használjon Azure Load Balancer vagy elosztott hálózati névvel (DNN) rendelke
 
 A következő táblázat a HADR-kapcsolatok támogatását hasonlítja össze: 
 
-| |**Virtuális hálózat neve (VNN)**  |**Elosztott hálózat neve (DNN)**  |
+| |**Virtual Network neve (VNN)**  |**Elosztott hálózat neve (DNN)**  |
 |---------|---------|---------|
 |**Operációs rendszer minimális verziója**| Mind | Windows Server 2016 |
 |**Minimális SQL Server-verzió** |Mind |SQL Server 2019 CU2 (-es)<br/> SQL Server 2019 CU8 (AG)|
@@ -104,9 +104,9 @@ A terheléselosztó használata során enyhe feladatátvételi késleltetés tö
 
 Első lépésként ismerje meg, hogyan konfigurálhatja Azure Load Balancer a [feladatátvevő fürt példányára](failover-cluster-instance-vnn-azure-load-balancer-configure.md) vagy egy [rendelkezésre állási csoportra](availability-group-vnn-azure-load-balancer-configure.md)
 
-**Támogatott operációs rendszer**: mind   
-**Támogatott SQL-verzió**: ALL   
-**Támogatott HADR-megoldás**: feladatátvevő fürt példánya és rendelkezésre állási csoport   
+**Támogatott operációs rendszer** : mind   
+**Támogatott SQL-verzió** : ALL   
+**Támogatott HADR-megoldás** : feladatátvevő fürt példánya és rendelkezésre állási csoport   
 
 
 ### <a name="distributed-network-name-dnn"></a>Elosztott hálózat neve (DNN)
@@ -124,9 +124,9 @@ A legtöbb SQL Server a funkciók a DNN használatakor transzparens módon műk�
 
 Első lépésként ismerje meg, hogyan konfigurálhatja az elosztott hálózati név erőforrást [egy feladatátvevő fürt](failover-cluster-instance-distributed-network-name-dnn-configure.md) vagy egy [rendelkezésre állási csoport](availability-group-distributed-network-name-dnn-listener-configure.md) számára.
 
-**Támogatott operációs rendszer**: Windows Server 2016 és újabb verziók   
-**Támogatott SQL-verzió**: SQL Server 2019 CU2 (Version) és SQL Server 2019 CU8 (AG)   
-**Támogatott HADR-megoldás**: feladatátvevő fürt példánya és rendelkezésre állási csoport   
+**Támogatott operációs rendszer** : Windows Server 2016 és újabb verziók   
+**Támogatott SQL-verzió** : SQL Server 2019 CU2 (Version) és SQL Server 2019 CU8 (AG)   
+**Támogatott HADR-megoldás** : feladatátvevő fürt példánya és rendelkezésre állási csoport   
 
 
 ## <a name="limitations"></a>Korlátozások
@@ -135,7 +135,7 @@ A következő korlátozásokat érdemes figyelembe venni, ha az Azure-ban vagy r
 
 ### <a name="msdtc"></a>MSDTC 
 
-Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
+Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
 
 Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy korábbi verzióiban fürtözött megosztott kötetekkel, mert:
 
@@ -143,7 +143,6 @@ Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután meghatározta a megoldáshoz szükséges ajánlott eljárásokat, első lépésként [készítse elő a SQL Server VMt a (](failover-cluster-instance-prepare-vm.md) [Azure Portal](availability-group-azure-portal-configure.md)), az [Azure CLI/PowerShell](availability-group-az-cli-configure.md)vagy az [Azure gyorsindítási sablonok](availability-group-quickstart-template-configure.md)használatával, vagy hozza létre a rendelkezésre állási csoportot. 
-
+Miután meghatározta a megoldáshoz szükséges ajánlott eljárásokat, első lépésként [készítse elő a SQL Server VMt a (](failover-cluster-instance-prepare-vm.md) [Azure Portal](availability-group-azure-portal-configure.md)), az [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)vagy az [Azure gyorsindítási sablonok](availability-group-quickstart-template-configure.md)használatával, vagy hozza létre a rendelkezésre állási csoportot.

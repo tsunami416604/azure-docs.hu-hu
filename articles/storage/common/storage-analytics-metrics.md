@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: ef38e36ce1d2c7968e3eb7079270626629523334
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f1ab2be598a24a2448fed44742733633a8e0fc8f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518735"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787601"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics metrikák (klasszikus)
 
@@ -23,11 +23,11 @@ Az Azure Storage a Storage Analytics megoldást használja az összesített tran
 - A tárolási szolgáltatáshoz intézett kérelmekkel kapcsolatos problémák diagnosztizálása.
 - Javítsa a szolgáltatást használó alkalmazások teljesítményét.
 
- Storage Analytics metrikák alapértelmezés szerint engedélyezve vannak az új Storage-fiókok esetében. A metrikákat a [Azure Portal](https://portal.azure.com/)is konfigurálhatja. További információ: [Storage-fiók figyelése a Azure Portalban](/azure/storage/storage-monitor-storage-account). Storage Analytics programozott módon is engedélyezheti a REST API vagy az ügyféloldali kódtár használatával. A szolgáltatás tulajdonságainak beállítása művelettel engedélyezheti a Storage Analytics az egyes szolgáltatásokhoz.  
+ Storage Analytics metrikák alapértelmezés szerint engedélyezve vannak az új Storage-fiókok esetében. A metrikákat a [Azure Portal](https://portal.azure.com/)is konfigurálhatja. További információ: [Storage-fiók figyelése a Azure Portalban](./storage-monitor-storage-account.md). Storage Analytics programozott módon is engedélyezheti a REST API vagy az ügyféloldali kódtár használatával. A szolgáltatás tulajdonságainak beállítása művelettel engedélyezheti a Storage Analytics az egyes szolgáltatásokhoz.  
 
 > [!NOTE]
 > Storage Analytics metrikák érhetők el az Azure Blob Storage-hoz, az Azure üzenetsor-tároláshoz, az Azure Table Storage-hoz és a Azure Fileshoz.
-> Storage Analytics metrikák mostantól klasszikus metrikák. Azt javasoljuk, hogy Storage Analytics mérőszámok helyett [Azure monitor használjon tárolási metrikákat](monitor-storage.md) .
+> Storage Analytics metrikák mostantól klasszikus metrikák. Azt javasoljuk, hogy Storage Analytics mérőszámok helyett [Azure monitor használjon tárolási metrikákat](../blobs/monitor-blob-storage.md) .
 
 ## <a name="transaction-metrics"></a>Tranzakciómetrikák  
  Az egyes tárolási szolgáltatások és a kért API-művelet óránkénti vagy percenkénti időközönként rögzíti az adatmennyiséget, amely magában foglalja a bejövő és a kimenő, a rendelkezésre állási, a hibák és a kategorizált kérelmek százalékos arányát. A tranzakció részleteinek teljes listáját itt tekintheti meg: [Storage Analytics mérőszámok tábla sémája](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
@@ -45,9 +45,9 @@ Az Azure Storage a Storage Analytics megoldást használja az összesített tran
 
  A rendszer naponta rögzíti a kapacitási adatkészletet a Storage-fiók blob-szolgáltatásához, és két tábla entitást ír. Az egyik entitás statisztikai adatokat biztosít a felhasználói adatokhoz, a másik pedig a `$logs` Storage Analytics által használt BLOB-tároló statisztikáit tartalmazza. A *$MetricsCapacityBlob* tábla a következő statisztikákat tartalmazza:  
 
-- **Kapacitás**: a Storage-fiók blob szolgáltatása által felhasznált tárterület mérete bájtban megadva.  
-- **ContainerCount**: a Storage-fiók blob szolgáltatásában lévő blob-tárolók száma.  
-- **ObjectCount**: a Storage-fiók blob szolgáltatásában lévő véglegesített és nem véglegesített blokk-vagy oldal-Blobok száma.  
+- **Kapacitás** : a Storage-fiók blob szolgáltatása által felhasznált tárterület mérete bájtban megadva.  
+- **ContainerCount** : a Storage-fiók blob szolgáltatásában lévő blob-tárolók száma.  
+- **ObjectCount** : a Storage-fiók blob szolgáltatásában lévő véglegesített és nem véglegesített blokk-vagy oldal-Blobok száma.  
 
   További információ a kapacitási metrikákkal kapcsolatban: [Storage Analytics mérőszámok tábla sémája](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
 
@@ -71,7 +71,7 @@ Az alábbi lépéseket követve engedélyezheti a metrikákat a [Azure Portalban
 
 1. Nyissa meg a Storage-fiókját.
 1. Válassza a **diagnosztikai beállítások (klasszikus)** lehetőséget a menü ablaktáblán.
-1. Győződjön **meg**arról, hogy az **állapot** beállítása be értékre van állítva.
+1. Győződjön **meg** arról, hogy az **állapot** beállítása be értékre van állítva.
 1. Válassza ki a figyelni kívánt szolgáltatások mérőszámait.
 1. Adja meg az adatmegőrzési szabályzatot, amely azt jelzi, hogy meddig kell megőrizni a metrikákat és a naplózási adatokat.
 1. Válassza a **Mentés** lehetőséget.
@@ -83,12 +83,12 @@ A helyi gépen található PowerShell használatával konfigurálhatja a Storage
 
 A tárolási metrikákat vezérlő parancsmagok a következő paramétereket használják:  
 
-* **ServiceType**: a lehetséges értékek a **blob**, **üzenetsor**, **tábla**és **fájl**.
-* **MetricsType**: a lehetséges értékek **óra** és **perc**.  
-* **MetricsLevel**: a lehetséges értékek a következők:
-   * **Nincs**: a figyelés kikapcsolása.
-   * **Szolgáltatás**: olyan mérőszámokat gyűjt, mint a bejövő és a kimenő forgalom, a rendelkezésre állás, a késés és a sikerességi arány, amely a blob, a várólista, a tábla és a Fájlszolgáltatások esetében összesítve van.
-   * **ServiceAndApi**: a szolgáltatási metrikák mellett az Azure Storage szolgáltatás API-ban minden tárolási művelethez ugyanazt a metrikát gyűjti.
+* **ServiceType** : a lehetséges értékek a **blob** , **üzenetsor** , **tábla** és **fájl** .
+* **MetricsType** : a lehetséges értékek **óra** és **perc** .  
+* **MetricsLevel** : a lehetséges értékek a következők:
+   * **Nincs** : a figyelés kikapcsolása.
+   * **Szolgáltatás** : olyan mérőszámokat gyűjt, mint a bejövő és a kimenő forgalom, a rendelkezésre állás, a késés és a sikerességi arány, amely a blob, a várólista, a tábla és a Fájlszolgáltatások esetében összesítve van.
+   * **ServiceAndApi** : a szolgáltatási metrikák mellett az Azure Storage szolgáltatás API-ban minden tárolási művelethez ugyanazt a metrikát gyűjti.
 
 Például a következő parancs a Storage-fiókban lévő blob-szolgáltatás perc mérőszámait kapcsolja be, a megőrzési időtartam pedig öt napra van beállítva: 
 
@@ -112,12 +112,12 @@ A következő parancs lekérdezi a blob szolgáltatás aktuális óránkénti me
 Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
-Az Azure PowerShell-parancsmagoknak az Azure-előfizetéssel való használatához való konfigurálásával és a használni kívánt alapértelmezett Storage-fiók kiválasztásával kapcsolatos információkért lásd: [Azure PowerShell telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+Az Azure PowerShell-parancsmagoknak az Azure-előfizetéssel való használatához való konfigurálásával és a használni kívánt alapértelmezett Storage-fiók kiválasztásával kapcsolatos információkért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).  
 
 ## <a name="enable-storage-metrics-programmatically"></a>A tárolási mérőszámok programozott módon történő engedélyezése  
 Amellett, hogy a Azure Portal vagy a Azure PowerShell parancsmagokat használja a tárolási metrikák szabályozására, használhatja az egyik Azure Storage API-t is. Ha például .NET nyelvet használ, használhatja az Azure Storage ügyféloldali kódtárat.  
 
-A **CloudBlobClient**, a **CloudQueueClient**, a **CloudTableClient**és a **CloudFileClient** osztályok minden olyan metódussal rendelkeznek, mint például a **SetServiceProperties** **és a SetServicePropertiesAsync,** amelyek paraméterként egy **ServiceProperties** objektumot készítenek. A **ServiceProperties** objektum használatával konfigurálhatja a tárolási metrikákat. Az alábbi C#-kódrészlet például azt mutatja be, hogyan módosíthatja a metrikák szintjét és a megőrzési napokat az óránkénti üzenetsor-metrikák esetében:  
+A **CloudBlobClient** , a **CloudQueueClient** , a **CloudTableClient** és a **CloudFileClient** osztályok minden olyan metódussal rendelkeznek, mint például a **SetServiceProperties** **és a SetServicePropertiesAsync,** amelyek paraméterként egy **ServiceProperties** objektumot készítenek. A **ServiceProperties** objektum használatával konfigurálhatja a tárolási metrikákat. Az alábbi C#-kódrészlet például azt mutatja be, hogyan módosíthatja a metrikák szintjét és a megőrzési napokat az óránkénti üzenetsor-metrikák esetében:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -130,7 +130,7 @@ serviceProperties.HourMetrics.RetentionDays = 10;
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
 
-További információ a tárolási metrikák konfigurálásáról .NET-nyelv használatával: [Azure Storage ügyféloldali kódtárak a .net-hez](https://msdn.microsoft.com/library/azure/mt347887.aspx).  
+További információ a tárolási metrikák konfigurálásáról .NET-nyelv használatával: [Azure Storage ügyféloldali kódtárak a .net-hez](/dotnet/api/overview/azure/storage).  
 
 A tárolási metrikák REST API használatával történő konfigurálásával kapcsolatos általános információkért lásd: [Storage Analytics engedélyezése és konfigurálása](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).  
 
@@ -140,11 +140,11 @@ Miután konfigurálta Storage Analytics mérőszámokat a Storage-fiók figyelé
 1. Nyissa meg a Storage-fiókját a [Azure Portal](https://portal.azure.com).
 1. Válassza a **metrikák (klasszikus)** lehetőséget azon szolgáltatás menüjében, amelynek a metrikáit meg szeretné tekinteni.
 1. Válassza ki a konfigurálni kívánt diagramot.
-1. A **diagram szerkesztése** ablaktáblán válassza ki az **időtartományt**, a **diagram típusát**és a diagramon megjeleníteni kívánt metrikákat.
+1. A **diagram szerkesztése** ablaktáblán válassza ki az **időtartományt** , a **diagram típusát** és a diagramon megjeleníteni kívánt metrikákat.
 
 A Storage-fiókja Azure Portal menüjének **figyelés (klasszikus)** szakaszában beállíthatja a [riasztási szabályokat](#metrics-alerts). Küldhet például e-mailes riasztásokat, hogy értesítést kapjon, ha egy adott metrika elér egy bizonyos értéket.
 
-Ha le szeretné tölteni a mérőszámokat a hosszú távú tároláshoz, vagy helyileg kívánja elemezni őket, egy eszközt kell használnia, vagy írnia kell egy kódot a táblák olvasásához. Az elemzéshez le kell töltenie a perc mérőszámait. A táblák nem jelennek meg, ha a Storage-fiókban lévő összes táblát listázza, de közvetlenül a név alapján érheti el őket. Számos Storage-szemöldök eszköz ismeri ezeket a táblázatokat, és lehetővé teszi, hogy közvetlenül megtekintse őket. Az elérhető eszközök listáját az [Azure Storage-ügyféleszközök](/azure/storage/storage-explorers)című témakörben tekintheti meg.
+Ha le szeretné tölteni a mérőszámokat a hosszú távú tároláshoz, vagy helyileg kívánja elemezni őket, egy eszközt kell használnia, vagy írnia kell egy kódot a táblák olvasásához. Az elemzéshez le kell töltenie a perc mérőszámait. A táblák nem jelennek meg, ha a Storage-fiókban lévő összes táblát listázza, de közvetlenül a név alapján érheti el őket. Számos Storage-szemöldök eszköz ismeri ezeket a táblázatokat, és lehetővé teszi, hogy közvetlenül megtekintse őket. Az elérhető eszközök listáját az [Azure Storage-ügyféleszközök](./storage-explorers.md)című témakörben tekintheti meg.
 
 |Mérőszámok|Táblák nevei|Jegyzetek| 
 |-|-|-|  
@@ -163,13 +163,13 @@ A táblázatok sémáinak részletes ismertetését lásd: [Storage Analytics m�
 
 Ebben a példában a perc mérőszámok adatainál a partíciós kulcs a percenkénti felbontásban használja az időt. A sor kulcsa azonosítja a sorban tárolt információ típusát. Az információ a hozzáférési típustól és a kérelem típusától tevődik össze:  
 
--   A hozzáférési típus vagy **felhasználó** vagy **rendszer**, ahol a **felhasználó** a tárolási szolgáltatáshoz tartozó összes felhasználói kérésre hivatkozik, és a **rendszer** a Storage Analytics által benyújtott kérelmekre hivatkozik.  
--   A kérelem típusa vagy **mind**, ebben az esetben ez egy összesítő sor, vagy azonosítja az adott API-t (például **QueryEntity** vagy **UpdateEntity**).  
+-   A hozzáférési típus vagy **felhasználó** vagy **rendszer** , ahol a **felhasználó** a tárolási szolgáltatáshoz tartozó összes felhasználói kérésre hivatkozik, és a **rendszer** a Storage Analytics által benyújtott kérelmekre hivatkozik.  
+-   A kérelem típusa vagy **mind** , ebben az esetben ez egy összesítő sor, vagy azonosítja az adott API-t (például **QueryEntity** vagy **UpdateEntity** ).  
 
 Ez a mintaadatok egy percen belüli összes rekordot jeleníti meg (a 11-es naptól számítva), így a **QueryEntities** -kérések száma, valamint a **QueryEntity** -kérések száma és a **UpdateEntity** -kérelmek száma akár hét is felveszi. Ez az összeg a **felhasználó: minden** sorban látható. Hasonlóképpen, az átlagos végpontok közötti késés 104,4286 a **felhasználónál: az összes** sor kiszámításával ((143,8 * 5) + 3 + 9)/7.  
 
 ## <a name="metrics-alerts"></a>Metrikák riasztásai
-Érdemes lehet riasztásokat beállítani a [Azure Portalban](https://portal.azure.com) , hogy automatikusan értesüljön a tárolási szolgáltatások működésével kapcsolatos fontos változásokról. Ha Storage Explorer eszközzel tölti le ezeket a metrikákat, a Microsoft Excel segítségével elemezheti az adatokat. Az elérhető Storage Explorer eszközök listáját az [Azure Storage-ügyféleszközök](/azure/storage/storage-explorers)című témakörben tekintheti meg. Riasztásokat konfigurálhat a **riasztás (klasszikus)** ablaktáblán, amely a **figyelés (klasszikus)** területen érhető el a Storage-fiók menü paneljén.
+Érdemes lehet riasztásokat beállítani a [Azure Portalban](https://portal.azure.com) , hogy automatikusan értesüljön a tárolási szolgáltatások működésével kapcsolatos fontos változásokról. Ha Storage Explorer eszközzel tölti le ezeket a metrikákat, a Microsoft Excel segítségével elemezheti az adatokat. Az elérhető Storage Explorer eszközök listáját az [Azure Storage-ügyféleszközök](./storage-explorers.md)című témakörben tekintheti meg. Riasztásokat konfigurálhat a **riasztás (klasszikus)** ablaktáblán, amely a **figyelés (klasszikus)** területen érhető el a Storage-fiók menü paneljén.
 
 > [!IMPORTANT]
 > Előfordulhat, hogy a tárolási esemény és a megfelelő óránkénti vagy perces metrikai adatok rögzítése között késés történik. Percenkénti metrika esetén több percnyi adat is írható egyszerre. Ez a probléma a korábbi percekben lebonyolított tranzakciókat eredményezheti az aktuális percek tranzakciójában. Ha ez a probléma történik, előfordulhat, hogy a riasztási szolgáltatás nem rendelkezik az összes rendelkezésre álló metrikai adattal a beállított riasztási intervallumhoz, ami a riasztások váratlan elégetését eredményezheti.

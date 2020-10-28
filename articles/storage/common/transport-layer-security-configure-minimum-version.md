@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/27/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f506ac46b8aa503138cec33918534ea309defc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018577"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785799"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Transport Layer Security (TLS) minimálisan szükséges verziójának kikényszerítés a Storage-fiókra irányuló kérelmekhez
 
@@ -33,7 +33,7 @@ További információ a TLS adott verziójának megadásáról az ügyfélalkalm
 
 A Storage-fiók minimális TLS-verziójának kikényszerített elutasítása esetén olyan ügyfelektől érkező kéréseket kell elutasítania, amelyek adatokat küldenek a TLS egy régebbi verziójával. Ha meg szeretné tudni, hogy a minimális TLS-verzió konfigurálása milyen hatással lehet az ügyfélalkalmazások használatára, a Microsoft javasolja, hogy engedélyezze a naplózást az Azure Storage-fiókhoz, és elemezze a naplókat egy idő elteltével a TLS-ügyfélalkalmazások által használt verziók észlelése érdekében.
 
-A kérelmek Azure Storage-fiókba való naplózásához és az ügyfél által használt TLS-verzió meghatározásához használhatja az Azure Storage-naplózást Azure Monitor (előzetes verzió). További információ: az [Azure Storage figyelése](monitor-storage.md).
+A kérelmek Azure Storage-fiókba való naplózásához és az ügyfél által használt TLS-verzió meghatározásához használhatja az Azure Storage-naplózást Azure Monitor (előzetes verzió). További információ: az [Azure Storage figyelése](../blobs/monitor-blob-storage.md).
 
 Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/log-query/get-started-portal.md).
 
@@ -44,16 +44,16 @@ Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzé
 1. Az Azure Portalon nyissa meg a tárfiókot.
 1. A figyelés szakaszban válassza a **diagnosztikai beállítások (előzetes verzió)** lehetőséget.
 1. Válassza ki azt az Azure Storage-szolgáltatást, amelyhez be szeretné jelentkezni a kérelmeket. Például válassza a **blob** lehetőséget a blob Storage-ba irányuló kérelmek naplózásához.
-1. Válassza a **diagnosztikai beállítás hozzáadása**lehetőséget.
+1. Válassza a **diagnosztikai beállítás hozzáadása** lehetőséget.
 1. Adja meg a diagnosztikai beállítás nevét.
-1. A **Kategória részletei**területen, a **napló** szakaszban válassza ki a naplózandó kérelmek típusát. Az olvasási, írási és törlési kérelmek naplózása is megadható. Ha például a **StorageRead** és a **StorageWrite** lehetőséget választja, a a kiválasztott szolgáltatásba írja be az olvasási és írási kérelmeket.
-1. A **célhely részletei**területen válassza **a Küldés log Analyticsba**lehetőséget. Válassza ki az előfizetését és a korábban létrehozott Log Analytics munkaterületet, ahogy az az alábbi képen is látható.
+1. A **Kategória részletei** területen, a **napló** szakaszban válassza ki a naplózandó kérelmek típusát. Az olvasási, írási és törlési kérelmek naplózása is megadható. Ha például a **StorageRead** és a **StorageWrite** lehetőséget választja, a a kiválasztott szolgáltatásba írja be az olvasási és írási kérelmeket.
+1. A **célhely részletei** területen válassza **a Küldés log Analyticsba** lehetőséget. Válassza ki az előfizetését és a korábban létrehozott Log Analytics munkaterületet, ahogy az az alábbi képen is látható.
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/create-diagnostic-setting-logs.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
 
 Miután létrehozta a diagnosztikai beállítást, a rendszer a Storage-fiókra irányuló kérelmeket a beállításnak megfelelően naplózza. További információ: [diagnosztikai beállítás létrehozása az erőforrás-naplók és-metrikák az Azure-ban való összegyűjtéséhez](../../azure-monitor/platform/diagnostic-settings.md).
 
-A Azure Monitor Azure Storage-naplókban elérhető mezőkre vonatkozó hivatkozásokat itt tekintheti meg: [erőforrás-naplók (előzetes verzió)](monitor-storage-reference.md#resource-logs-preview).
+A Azure Monitor Azure Storage-naplókban elérhető mezőkre vonatkozó hivatkozásokat itt tekintheti meg: [erőforrás-naplók (előzetes verzió)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview).
 
 ### <a name="query-logged-requests-by-tls-version"></a>Naplózott kérelmek lekérdezése TLS-verzió alapján
 
@@ -91,9 +91,6 @@ Ha biztos abban, hogy a TLS régebbi verzióit használó ügyfelektől érkező
 
 A Storage-fiók minimális TLS-verziójának konfigurálásához állítsa be a **MinimumTlsVersion** verzióját a fiókhoz. Ez a tulajdonság minden olyan Storage-fiókhoz elérhető, amely a Azure Resource Manager telepítési modellel lett létrehozva. További információ a Azure Resource Manager telepítési modellről: a [Storage-fiók áttekintése](storage-account-overview.md).
 
-> [!NOTE]
-> A **MinimumTlsVersion** tulajdonság jelenleg csak az Azure nyilvános felhőben lévő Storage-fiókok esetében érhető el.
-
 # <a name="portal"></a>[Portál](#tab/portal)
 
 Amikor létrehoz egy Azure Portal Storage-fiókot, a rendszer alapértelmezés szerint a TLS minimális verzióját 1,2-re állítja.
@@ -102,7 +99,7 @@ Ha egy meglévő Storage-fiók minimális TLS-verzióját szeretné konfiguráln
 
 1. Az Azure Portalon nyissa meg a tárfiókot.
 1. Válassza ki a **konfigurációs** beállítást.
-1. A **TLS minimális verziója**területen a legördülő listából válassza ki az ebben a Storage-fiókban található adatok eléréséhez szükséges TLS minimális verzióját az alábbi ábrán látható módon.
+1. A **TLS minimális verziója** területen a legördülő listából válassza ki az ebben a Storage-fiókban található adatok eléréséhez szükséges TLS minimális verzióját az alábbi ábrán látható módon.
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
 
@@ -110,7 +107,7 @@ Ha egy meglévő Storage-fiók minimális TLS-verzióját szeretné konfiguráln
 
 Ha egy Storage-fiók minimális TLS-verzióját szeretné konfigurálni a PowerShell-lel, telepítse [Azure PowerShell 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) vagy újabb verziót. Ezután konfigurálja a **MinimumTLSVersion** tulajdonságot egy új vagy meglévő Storage-fiókhoz. A **MinimumTlsVersion** érvényes értékei: `TLS1_0` , `TLS1_1` és `TLS1_2` .
 
-A **MinimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva a PowerShell-lel rendelkező Storage-fiók létrehozásakor. Ez a tulajdonság csak akkor ad vissza értéket, ha explicit módon beállította. A Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket, ha a tulajdonság értéke **Null**.
+A **MinimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva a PowerShell-lel rendelkező Storage-fiók létrehozásakor. Ez a tulajdonság csak akkor ad vissza értéket, ha explicit módon beállította. A Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket, ha a tulajdonság értéke **Null** .
 
 A következő példa létrehoz egy Storage-fiókot, és beállítja a **MinimumTLSVersion** a TLS 1,1-re, majd frissíti a fiókot, és beállítja a **MinimumTLSVersion** a TLS 1,2-re. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
@@ -142,7 +139,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 
 Az Azure CLI-vel rendelkező Storage-fiókok minimális TLS-verziójának konfigurálásához telepítse az Azure CLI 2.9.0 vagy újabb verzióját. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ezután konfigurálja a **minimumTlsVersion** tulajdonságot egy új vagy meglévő Storage-fiókhoz. A **minimumTlsVersion** érvényes értékei: `TLS1_0` , `TLS1_1` és `TLS1_2` .
 
-A **minimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva, amikor létrehoz egy Storage-fiókot az Azure CLI-vel. Ez a tulajdonság csak akkor ad vissza értéket, ha explicit módon beállította. A Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket, ha a tulajdonság értéke **Null**.
+A **minimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva, amikor létrehoz egy Storage-fiókot az Azure CLI-vel. Ez a tulajdonság csak akkor ad vissza értéket, ha explicit módon beállította. A Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket, ha a tulajdonság értéke **Null** .
 
 A következő példa létrehoz egy Storage-fiókot, és beállítja a **minimumTLSVersion** a TLS 1,1-re. Ezután frissíti a fiókot, és beállítja a **minimumTLSVersion** tulajdonságot a TLS 1,2 értékre. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
@@ -176,9 +173,9 @@ az storage account show \
 
 Egy sablonhoz tartozó Storage-fiók minimális TLS-verziójának konfigurálásához hozzon létre egy sablont a **MinimumTLSVersion** tulajdonsággal, a, vagy a értékre `TLS1_0` `TLS1_1` `TLS1_2` . A következő lépések azt ismertetik, hogyan lehet sablont létrehozni a Azure Portalban.
 
-1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
-1. A **Keresés a piactéren**mezőbe írja be a **sablon központi telepítése**kifejezést, majd nyomja le az **ENTER**billentyűt.
-1. Válassza **template Deployment (üzembe helyezés egyéni sablonok használatával) (előzetes verzió)**, válassza a **Létrehozás**lehetőséget, majd **a szerkesztőben válassza a saját sablon**létrehozása lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
+1. A **Keresés a piactéren** mezőbe írja be a **sablon központi telepítése** kifejezést, majd nyomja le az **ENTER** billentyűt.
+1. Válassza **template Deployment (üzembe helyezés egyéni sablonok használatával) (előzetes verzió)** , válassza a **Létrehozás** lehetőséget, majd **a szerkesztőben válassza a saját sablon** létrehozása lehetőséget.
 1. A sablon szerkesztőjében illessze be a következő JSON-t egy új fiók létrehozásához, és állítsa be a TLS 1,2-es minimális verzióját. Ne felejtse el lecserélni a helyőrzőket a saját értékeire a szögletes zárójelben.
 
     ```json
@@ -221,7 +218,7 @@ A TLS minimális verziójának konfigurálásához az Azure Storage erőforrás-
 
 ### <a name="check-the-minimum-required-tls-version-for-multiple-accounts"></a>Több fiókhoz tartozó minimálisan szükséges TLS-verzió keresése
 
-Ha szeretné megtekinteni a minimálisan szükséges TLS-verziót egy olyan Storage-fiókon belül, amely optimális teljesítménnyel rendelkezik, használhatja az Azure Resource Graph Explorert a Azure Portal. Ha többet szeretne megtudni az Erőforrásgrafikon Explorer használatáról, tekintse meg a gyors útmutató [: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](/azure/governance/resource-graph/first-query-portal).
+Ha szeretné megtekinteni a minimálisan szükséges TLS-verziót egy olyan Storage-fiókon belül, amely optimális teljesítménnyel rendelkezik, használhatja az Azure Resource Graph Explorert a Azure Portal. Ha többet szeretne megtudni az Erőforrásgrafikon Explorer használatáról, tekintse meg a gyors útmutató [: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](../../governance/resource-graph/first-query-portal.md).
 
 A következő lekérdezés futtatása az Erőforrásgrafikon Explorerben a Storage-fiókok listáját adja vissza, és megjeleníti az egyes fiókok minimális TLS-verzióját:
 
@@ -249,11 +246,11 @@ A Azure Policy olyan hatásokat támogat, amelyek meghatározzák, hogy mi tört
 Az alábbi lépéseket követve hozhat létre olyan házirendet, amely a Azure Portal minimális TLS-verziójának naplózási hatásával rendelkezik:
 
 1. A Azure Portal navigáljon a Azure Policy szolgáltatáshoz.
-1. A **szerzői műveletek** szakaszban válassza a **definíciók**lehetőséget.
+1. A **szerzői műveletek** szakaszban válassza a **definíciók** lehetőséget.
 1. Új házirend-definíció létrehozásához válassza a **házirend-definíció hozzáadása** lehetőséget.
 1. A **definíció helye** mezőnél válassza a **továbbiak** lehetőséget, hogy megadja a naplózási házirend erőforrásának helyét.
 1. Adja meg a szabályzat nevét. Igény szerint megadhat egy leírást és egy kategóriát is.
-1. A **házirend-szabály**területen adja hozzá a következő házirend-definíciót a **' policyrule osztály** szakaszhoz.
+1. A **házirend-szabály** területen adja hozzá a következő házirend-definíciót a **' policyrule osztály** szakaszhoz.
 
     ```json
     {
@@ -286,12 +283,12 @@ Ezután rendelje hozzá a szabályzatot egy erőforráshoz. A szabályzat hatók
 A szabályzatnak a Azure Portal való hozzárendeléséhez kövesse az alábbi lépéseket:
 
 1. A Azure Portal navigáljon a Azure Policy szolgáltatáshoz.
-1. A **szerzői műveletek** szakaszban válassza a **hozzárendelések**lehetőséget.
+1. A **szerzői műveletek** szakaszban válassza a **hozzárendelések** lehetőséget.
 1. Új szabályzat-hozzárendelés létrehozásához válassza a **házirend hozzárendelése** lehetőséget.
 1. A **hatókör** mezőben válassza ki a szabályzat-hozzárendelés hatókörét.
 1. A **házirend-definíció** mezőben válassza a **továbbiak** gombot, majd válassza ki az előző szakaszban meghatározott házirendet a listából.
 1. Adja meg a szabályzat-hozzárendelés nevét. A leírás megadása nem kötelező.
-1. Hagyja *engedélyezve*a **házirend-kényszerítési** beállítást. Ez a beállítás nincs hatással a naplózási házirendre.
+1. Hagyja *engedélyezve* a **házirend-kényszerítési** beállítást. Ez a beállítás nincs hatással a naplózási házirendre.
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a hozzárendelés létrehozásához.
 
 ### <a name="view-compliance-report"></a>Megfelelőségi jelentés megtekintése
@@ -303,7 +300,7 @@ Több percet is igénybe vehet, amíg a megfelelőségi jelentés elérhetővé 
 Ha meg szeretné tekinteni a megfelelőségi jelentést a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. A Azure Portal navigáljon a Azure Policy szolgáltatáshoz.
-1. Válassza a **megfelelőség**lehetőséget.
+1. Válassza a **megfelelőség** lehetőséget.
 1. Szűrje az eredményeket az előző lépésben létrehozott szabályzat-hozzárendelés nevére. A jelentés azt jeleníti meg, hogy hány erőforrás felel meg a szabályzatnak.
 1. További részletekért tekintse meg a jelentés részletezését, beleértve a nem megfelelő tárolási fiókok listáját.
 

@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597970"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786071"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS-definíció létrehozása és közös hozzáférésű aláírási jogkivonatok beolvasása a kódban
 
@@ -23,7 +23,7 @@ A Storage-fiókját a kulcstartóban tárolt közös hozzáférésű aláírás 
 > [!NOTE]
 > Azt javasoljuk, hogy [szerepköralapú Access Control (RBAC)](../../storage/common/storage-auth-aad.md) használatával biztonságossá tegye a Storage-fiókját a kiváló biztonság és a könnyű használat érdekében a megosztott kulcs engedélyezésével.
 
-Ez a cikk olyan .NET-kód mintáit tartalmazza, amely létrehoz egy SAS-definíciót, és SAS-jogkivonatokat olvas be. Tekintse meg a [ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) -mintát a teljes részletekért, beleértve a generált ügyfelet Key Vault által felügyelt Storage-fiókokhoz. Az SAS-tokenek létrehozásával és tárolásával kapcsolatos információkért lásd: a [Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI](overview-storage-keys.md) -vel, illetve a [Storage-fiókok kulcsainak kezelése Key Vault és Azure PowerShell](overview-storage-keys-powershell.md).
+Ez a cikk olyan .NET-kód mintáit tartalmazza, amely létrehoz egy SAS-definíciót, és SAS-jogkivonatokat olvas be. Tekintse meg a [ShareLink](/samples/azure/azure-sdk-for-net/share-link/) -mintát a teljes részletekért, beleértve a generált ügyfelet Key Vault által felügyelt Storage-fiókokhoz. Az SAS-tokenek létrehozásával és tárolásával kapcsolatos információkért lásd: a [Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI](overview-storage-keys.md) -vel, illetve a [Storage-fiókok kulcsainak kezelése Key Vault és Azure PowerShell](overview-storage-keys-powershell.md).
 
 ## <a name="code-samples"></a>Kódminták
 
@@ -41,7 +41,7 @@ Miután létrejött az SAS-definíció, lekérheti az a-t használó SAS-tokenek
 
 Ha a közös hozzáférésű aláírási jogkivonat hamarosan lejár, akkor újra lekérheti ugyanezt a titkot egy új létrehozásához.
 
-A Key Vault SAS-tokenről az Azure Storage-szolgáltatásokhoz való hozzáférésre vonatkozó beolvasással kapcsolatos útmutatóért lásd: [fiók sas használata a blob Service eléréséhez](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+A Key Vault SAS-tokenről az Azure Storage-szolgáltatásokhoz való hozzáférésre vonatkozó beolvasással kapcsolatos útmutatóért lásd: [fiók sas használata a blob Service eléréséhez](../../storage/common/storage-account-sas-create-dotnet.md#use-an-account-sas-from-a-client)
 
 > [!NOTE]
 > Az alkalmazásnak fel kell készülnie az SAS frissítésére, ha az 403 a tárterületről, így kezelheti azt az esetet, amikor a kulcsot feltörték, és a normál rotációs időszaknál gyorsabban kell elforgatni. 

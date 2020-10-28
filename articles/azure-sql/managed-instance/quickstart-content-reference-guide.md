@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 7c7268aa361c77f1d466ab7a58b74aa91090dc4b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae2f2b8b9b6f3bc934321b13dcefeff46e43b089
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84708569"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788162"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának első lépései
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,16 +44,16 @@ Első lépésként létre kell hoznia az első SQL-beli felügyelt példányát 
   > - A helyi hálózatról Express Route vagy helyek közötti kapcsolat is használható, de ezek a módszerek nem tartoznak a rövid útmutatók körébe.
   > - Ha a megőrzési időszakot 0 (korlátlan megőrzés) értékre módosítja bármely más értékre, vegye figyelembe, hogy az adatmegőrzés csak a megőrzési érték módosítását követően írt naplókra vonatkozik
 
-A felügyelt SQL-példány manuális létrehozása helyett használhatja a [PowerShellt](scripts/create-configure-managed-instance-powershell.md), [a PowerShellt Resource Manager-sablonnal](scripts/create-powershell-azure-resource-manager-template.md)vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) -vel a folyamat parancsfájlhoz és automatizálásához.
+A felügyelt SQL-példány manuális létrehozása helyett használhatja a [PowerShellt](scripts/create-configure-managed-instance-powershell.md), [a PowerShellt Resource Manager-sablonnal](scripts/create-powershell-azure-resource-manager-template.md)vagy az [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) -vel a folyamat parancsfájlhoz és automatizálásához.
 
 ### <a name="migrate-your-databases"></a>Adatbázisok migrálása
 
-A felügyelt SQL-példányok létrehozása és a hozzáférés konfigurálása után megkezdheti a SQL Server-adatbázisok áttelepítését. Az áttelepítés sikertelen lehet, ha az áttelepíteni kívánt forrásadatbázis nem támogatott funkciói vannak. A hibák elkerülése és a kompatibilitás ellenőrzése érdekében [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) segítségével elemezheti az adatbázisait SQL Server és megkeresheti az SQL felügyelt példányra való áttelepítést megakadályozó problémákat, például a [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) vagy több naplófájlt. Ha megoldja ezeket a problémákat, az adatbázisok készen állnak az SQL felügyelt példányra való áttelepítésre. [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) egy másik hasznos eszköz, amely rögzíti a munkaterhelést SQL Server és visszajátszhatja azt egy SQL felügyelt példányon, így megállapítható, hogy az SQL-ben felügyelt példányra való Migrálás során probléma merül fel.
+A felügyelt SQL-példányok létrehozása és a hozzáférés konfigurálása után megkezdheti a SQL Server-adatbázisok áttelepítését. Az áttelepítés sikertelen lehet, ha az áttelepíteni kívánt forrásadatbázis nem támogatott funkciói vannak. A hibák elkerülése és a kompatibilitás ellenőrzése érdekében [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) segítségével elemezheti az adatbázisait SQL Server és megkeresheti az SQL felügyelt példányra való áttelepítést megakadályozó problémákat, például a [FileStream](/sql/relational-databases/blob/filestream-sql-server) vagy több naplófájlt. Ha megoldja ezeket a problémákat, az adatbázisok készen állnak az SQL felügyelt példányra való áttelepítésre. [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) egy másik hasznos eszköz, amely rögzíti a munkaterhelést SQL Server és visszajátszhatja azt egy SQL felügyelt példányon, így megállapítható, hogy az SQL-ben felügyelt példányra való Migrálás során probléma merül fel.
 
 Ha biztos benne, hogy áttelepítheti az adatbázist egy felügyelt SQL-példányra, a natív SQL Server visszaállítási képességeivel állíthatja vissza az adatbázist egy SQL felügyelt példányra egy `.bak` fájlból. Ezzel a módszerrel áttelepítheti az adatbázisokat a helyszíni vagy az Azure Virtual Machines telepített SQL Server-adatbázismotor használatával. Gyors útmutató: visszaállítás a [biztonsági másolatból egy SQL-felügyelt példányra](restore-sample-database-quickstart.md). Ebben a rövid útmutatóban egy, `.bak` Az Azure Blob Storage-ban tárolt fájlból kell visszaállítani a `RESTORE` Transact-SQL parancs használatával.
 
 > [!TIP]
-> Ha a `BACKUP` Transact-SQL parancs használatával szeretne biztonsági másolatot készíteni az adatbázisról az Azure Blob Storage-ban, tekintse [meg SQL Server biztonsági mentés URL-címére](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
+> Ha a `BACKUP` Transact-SQL parancs használatával szeretne biztonsági másolatot készíteni az adatbázisról az Azure Blob Storage-ban, tekintse [meg SQL Server biztonsági mentés URL-címére](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
 Ezek a rövid útmutatók lehetővé teszik az adatbázis biztonsági másolatának gyors létrehozását, konfigurálását és visszaállítását egy SQL-felügyelt példányra. Bizonyos esetekben testre kell szabnia vagy automatizálni kell az SQL felügyelt példányának és a szükséges hálózati környezetnek a telepítését. A következő forgatókönyvek leírását alább találja.
 
@@ -72,11 +72,11 @@ A korábban említett rövid útmutatók lehetővé teszik egy SQL felügyelt p�
 Ahhoz azonban, hogy a termelési adatbázist vagy akár fejlesztési, illetve tesztelési adatbázisokat is át szeretne telepíteni az egyes teljesítménytesztekhez, érdemes megfontolnia néhány további módszer használatát, például a következőket:
 
 - Teljesítményteszt – mérje fel a forrás SQL Server példányának alapteljesítmény-mérőszámait, és hasonlítsa össze azokat a célként megadott SQL felügyelt példány teljesítmény-metrikákkal, ahol az adatbázist áttelepítette. További információ a [teljesítmény-összehasonlítással kapcsolatos ajánlott eljárásokról](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
-- Online áttelepítés – a `RESTORE` jelen cikkben ismertetett natív módon meg kell várnia az adatbázisok visszaállítását (és az Azure Blob Storage-ba való másolását, ha ott még nem tárolja őket). Ez az alkalmazás bizonyos állásidőt okoz, különösen nagyobb adatbázisok esetén. Az éles adatbázis áthelyezéséhez használja az [adatáttelepítési szolgáltatást (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait a visszaállított SQL felügyelt példány-adatbázisra fokozatosan kikényszeríti. Így gyorsan átválthatja az alkalmazást a forrásról a cél adatbázisra minimális állásidővel.
+- Online áttelepítés – a `RESTORE` jelen cikkben ismertetett natív módon meg kell várnia az adatbázisok visszaállítását (és az Azure Blob Storage-ba való másolását, ha ott még nem tárolja őket). Ez az alkalmazás bizonyos állásidőt okoz, különösen nagyobb adatbázisok esetén. Az éles adatbázis áthelyezéséhez használja az [adatáttelepítési szolgáltatást (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%252fazure%252fsql-database%252ftoc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait a visszaállított SQL felügyelt példány-adatbázisra fokozatosan kikényszeríti. Így gyorsan átválthatja az alkalmazást a forrásról a cél adatbázisra minimális állásidővel.
 
 További információ az [ajánlott áttelepítési folyamatról](migrate-to-instance-from-sql-server.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [SQL felügyelt példányának támogatott funkcióinak magas szintű listáját itt](../database/features-comparison.md) , valamint az [itt olvasható részleteket és ismert problémákat](transact-sql-tsql-differences-sql-server.md).
 - Ismerje meg [az SQL felügyelt példányának technikai jellemzőit](resource-limits.md#service-tier-characteristics).

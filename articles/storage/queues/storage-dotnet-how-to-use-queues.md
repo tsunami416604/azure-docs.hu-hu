@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855922"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787465"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 
@@ -71,7 +71,7 @@ A következő négy csomagra kell hivatkoznia a projektben az oktatóanyag elvé
 
 A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseket:
 
-1. Kattintson a jobb gombbal a projektre **megoldáskezelő**, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Kattintson a jobb gombbal a projektre **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 1. **Tallózás** kiválasztása
 1. Keressen rá az interneten az "Azure. Storage. Queues" kifejezésre, és válassza a **telepítés** lehetőséget a Storage ügyféloldali kódtár és függőségeinek telepítéséhez. Ez az Azure. Storage. Common és az Azure. Core kódtárakat is telepíti, amelyek a várólista-függvénytár függőségei.
 1. Keressen rá az interneten a "System.Configuration.ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget a Configuration Manager telepítéséhez.
@@ -86,7 +86,7 @@ A következő három csomagra kell hivatkoznia a projektben az oktatóanyag elv�
 
 A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseket:
 
-1. Kattintson a jobb gombbal a projektre **megoldáskezelő**, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Kattintson a jobb gombbal a projektre **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 1. **Tallózás** kiválasztása
 1. Keressen rá az interneten a "Microsoft. Azure. Storage. üzenetsor" kifejezésre, és válassza a **telepítés** lehetőséget a Storage ügyféloldali kódtár és függőségeinek telepítéséhez. Ez a Microsoft. Azure. Storage. Common könyvtárat is telepíti, amely a várólista-függvénytár függősége.
 1. Keressen rá az interneten a "Microsoft.Azure.ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget az Azure-Configuration Manager telepítéséhez.
@@ -349,7 +349,7 @@ queue.DeleteMessage(retrievedMessage);
 
 ## <a name="use-async-await-pattern-with-common-queue-storage-apis"></a>Async-Await mintázat használata közös Queue Storage API-kkal
 
-Ez a példa bemutatja, hogyan használható az Async-Await mintázat a közös Queue Storage API-kkal. A minta meghívja az adott módszerek aszinkron verzióját. Az aszinkronitást az egyes módszerek *Async* utótagja jelöli. Ha Async módszert használ, az Async-Await mintázat felfüggeszti a helyi végrehajtást a hívás befejeződéséig. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más feladatokkal foglalkozzon. Ennek segítségével elkerülhetők a szűk keresztmetszetek a teljesítményben, és az alkalmazás általános válaszkészsége is javul. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) (Async és Await (C# és Visual Basic)).
+Ez a példa bemutatja, hogyan használható az Async-Await mintázat a közös Queue Storage API-kkal. A minta meghívja az adott módszerek aszinkron verzióját. Az aszinkronitást az egyes módszerek *Async* utótagja jelöli. Ha Async módszert használ, az Async-Await mintázat felfüggeszti a helyi végrehajtást a hívás befejeződéséig. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más feladatokkal foglalkozzon. Ennek segítségével elkerülhetők a szűk keresztmetszetek a teljesítményben, és az alkalmazás általános válaszkészsége is javul. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](/previous-versions/hh191443(v=vs.140)) (Async és Await (C# és Visual Basic)).
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -489,10 +489,10 @@ queue.Delete();
 Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről is.
 
 - A Queue szolgáltatás elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
-  - [A Storage ügyféloldali kódtára a .NET-hez – referencia](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [REST API-referencia](https://msdn.microsoft.com/library/azure/dd179355)
+  - [A Storage ügyféloldali kódtára a .NET-hez – referencia](/dotnet/api/overview/azure/storage)
+  - [REST API-referencia](/rest/api/storageservices/)
 - Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
-  - [Get started with Azure Table Storage using .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel) a strukturált adatok tárolásához.
-  - [Get started with Azure Blob storage using .NET](../blobs/storage-dotnet-how-to-use-blobs.md) (Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel) a strukturálatlan adatok tárolásához.
+  - [Get started with Azure Table Storage using .NET](../../cosmos-db/tutorial-develop-table-dotnet.md) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel) a strukturált adatok tárolásához.
+  - [Get started with Azure Blob storage using .NET](../blobs/storage-quickstart-blobs-dotnet.md) (Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel) a strukturálatlan adatok tárolásához.
   - [Csatlakozzon az SQL Database adatbázishoz .NET (C#) használatával](../../azure-sql/database/connect-query-dotnet-core.md) a relációs adatok tárolásához.
 - Megtudhatja, hogyan egyszerűsítheti az Azure Storage-ban az [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)használatával írt kódot.

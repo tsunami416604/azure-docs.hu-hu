@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 039fabbbb04f352042973f559e34a3c3a77e7500
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: cf297cdeec88a31950d007246f987957db80e247
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340427"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785884"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -26,9 +26,9 @@ Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági meg
 ## <a name="integrated-azure-security-solutions"></a>Integrált Azure biztonsági megoldások
 A Security Center használatával egyszerűen engedélyezhet integrált biztonsági megoldásokat az Azure-ban. Az előnyök:
 
-- **Egyszerűsített üzembe helyezés**: A Security Center segítségével az integrált partnermegoldások egy optimalizált folyamat mentén helyezhetőek üzembe. Az olyan megoldások esetében, mint például az antimalware és a sebezhetőségi felmérés, a Security Center képes kiépíteni az ügynököt a virtuális gépekre. A tűzfalak esetében Security Center a szükséges hálózati konfiguráció nagy részét is elvégezheti.
-- **Integrált észlelések**: a partneri megoldások biztonsági eseményeit a rendszer automatikusan összegyűjti, összesíti és megjeleníti Security Center riasztások és incidensek részeként. Ezek az események más forrásoktól érkező észlelésekhez is kapcsolódnak, ami fejlett fenyegetésészlelési képességeket biztosít.
-- **Egyesített állapotmonitorozás és -kezelés**: Az integrált állapotesemények lehetővé teszik az összes partnermegoldás gyors monitorozását. Az alapszintű felügyeletből könnyen elérhető a speciális beállítás a partnermegoldás használatával.
+- **Egyszerűsített üzembe helyezés** : A Security Center segítségével az integrált partnermegoldások egy optimalizált folyamat mentén helyezhetőek üzembe. Az olyan megoldások esetében, mint például az antimalware és a sebezhetőségi felmérés, a Security Center képes kiépíteni az ügynököt a virtuális gépekre. A tűzfalak esetében Security Center a szükséges hálózati konfiguráció nagy részét is elvégezheti.
+- **Integrált észlelések** : a partneri megoldások biztonsági eseményeit a rendszer automatikusan összegyűjti, összesíti és megjeleníti Security Center riasztások és incidensek részeként. Ezek az események más forrásoktól érkező észlelésekhez is kapcsolódnak, ami fejlett fenyegetésészlelési képességeket biztosít.
+- **Egyesített állapotmonitorozás és -kezelés** : Az integrált állapotesemények lehetővé teszik az összes partnermegoldás gyors monitorozását. Az alapszintű felügyeletből könnyen elérhető a speciális beállítás a partnermegoldás használatával.
 
 Az integrált biztonsági megoldások jelenleg a [Qualys](https://www.qualys.com/public-cloud/#azure) és a [Rapid7](https://www.rapid7.com/products/insightvm/) , valamint a Microsoft Application Gateway webalkalmazási tűzfal általi sebezhetőségi felmérést is tartalmaznak.
 
@@ -49,9 +49,9 @@ A Security Centerből üzembe helyezett Azure biztonsági megoldások automatiku
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Integrált Azure biztonsági megoldások és egyéb adatforrások kezelése
 
-1. A [Azure Portal](https://azure.microsoft.com/features/azure-portal/)nyissa meg **Security Center**.
+1. A [Azure Portal](https://azure.microsoft.com/features/azure-portal/)nyissa meg **Security Center** .
 
-1. A Security Center menüjében válassza a **biztonsági megoldások**elemet.
+1. A Security Center menüjében válassza a **biztonsági megoldások** elemet.
 
 A **biztonsági megoldások** lapon megtekintheti az integrált Azure biztonsági megoldások állapotát, és alapszintű felügyeleti feladatokat futtathat.
 
@@ -105,5 +105,5 @@ Az **Adatforrások hozzáadása** szakasz sorolja fel az egyéb csatlakoztathat�
 
 Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. A kapcsolódó információk a következő cikkekben találhatók:
 
-* [Biztonsági riasztások és javaslatok exportálása](continuous-export.md). Ismerje meg, hogyan telepítheti az integrációt az Azure Sentinel vagy más SIEM használatával.
+* [Security Center-adatfeldolgozás folyamatos exportálása](continuous-export.md). Ismerje meg, hogyan telepítheti az integrációt az Azure Sentinel vagy más SIEM használatával.
 * [Biztonsági állapot monitorozása a Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.

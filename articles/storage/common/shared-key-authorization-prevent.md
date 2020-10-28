@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 16080440a9458753992c62309ce75ed241fb64d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7679c613c4804f7df315918ee5d6946c07eb8b4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715116"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787737"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure Storage-fiókhoz tartozó megosztott kulcs engedélyezésének tiltása (előzetes verzió)
 
@@ -47,12 +47,12 @@ A Storage-fiókra irányuló kérések engedélyezésének nyomon követéséhez
 
 Kövesse az alábbi lépéseket egy olyan metrika létrehozásához, amely nyomon követi a megosztott kulccsal vagy SAS-val végzett kérelmeket:
 
-1. Az Azure Portalon nyissa meg a tárfiókot. A **figyelés** szakaszban válassza a **metrikák**lehetőséget.
+1. Az Azure Portalon nyissa meg a tárfiókot. A **figyelés** szakaszban válassza a **metrikák** lehetőséget.
 1. Válassza a **Metrika hozzáadása** lehetőséget. A **metrika** párbeszédpanelen a következő értékeket kell megadnia:
     1. Hagyja meg a **hatókör** mezőt a Storage-fiók nevére.
-    1. Adja meg a **metrikai névteret** a *fiókhoz*. Ez a mérőszám a Storage-fiókkal kapcsolatos összes kérésről jelentést küld.
-    1. Állítsa a **metrika** mezőt a *tranzakciók*értékre.
-    1. Állítsa az **Összesítés** mezőt Sum ( *összeg*) értékre.
+    1. Adja meg a **metrikai névteret** a *fiókhoz* . Ez a mérőszám a Storage-fiókkal kapcsolatos összes kérésről jelentést küld.
+    1. Állítsa a **metrika** mezőt a *tranzakciók* értékre.
+    1. Állítsa az **Összesítés** mezőt Sum ( *összeg* ) értékre.
 
     Az új metrika megjeleníti a tranzakciók számának összegét a Storage-fiókhoz egy adott időtartamon belül. Az eredményül kapott metrika a következő képen látható módon jelenik meg:
 
@@ -60,9 +60,9 @@ Kövesse az alábbi lépéseket egy olyan metrika létrehozásához, amely nyomo
 
 1. Ezután a **szűrő hozzáadása** gombra kattintva hozzon létre egy szűrőt a mérőszámban az engedélyezési típushoz.
 1. A **szűrő** párbeszédpanelen a következő értékeket kell megadnia:
-    1. Állítsa a **tulajdonság** értékét *hitelesítésre*.
+    1. Állítsa a **tulajdonság** értékét *hitelesítésre* .
     1. Állítsa az **operátor** mezőt az egyenlőségjel (=) értékre.
-    1. A **Values (értékek** ) mezőben válassza a *fiók kulcs* és *sas*elemet.
+    1. A **Values (értékek** ) mezőben válassza a *fiók kulcs* és *sas* elemet.
 1. A jobb felső sarokban válassza ki azt az időtartományt, amelynek meg szeretné tekinteni a metrikáját. Azt is jelezheti, hogy a kérelmek összesítésének milyen részletességgel kell megjelennie, ha az intervallumokat 1 perc és 1 hónap között adja meg. Például állítsa be az **időtartományt** 30 napra, az **időrészletességet** pedig 1 napra, hogy az elmúlt 30 napban összesítse a kérelmeket.
 
 Miután konfigurálta a metrikát, a Storage-fiókra irányuló kérések megjelennek a gráfon. Az alábbi képen a megosztott kulccsal rendelkező vagy SAS-tokenrel létrehozott kérelmek láthatók. A kérelmek összesítése naponta történik az elmúlt harminc napban.
@@ -75,7 +75,7 @@ A riasztási szabályt úgy is beállíthatja, hogy értesítést kapjon arról,
 
 Az Azure Storage-naplók rögzítik a Storage-fiókkal kapcsolatos kérések részleteit, beleértve a kérelem engedélyezésének módját is. A naplók elemzésével meghatározhatja, hogy mely ügyfelek engedélyezik a megosztott kulccsal vagy SAS-jogkivonattal történő kérelmeket.
 
-Ha a kérelmeket az Azure Storage-fiókjába kívánja naplózni, hogy kiértékelje a jogosultságokat, az Azure Storage-naplózást Azure Monitor (előzetes verzió) használatával is használhatja. További információ: az [Azure Storage figyelése](../common/monitor-storage.md).
+Ha a kérelmeket az Azure Storage-fiókjába kívánja naplózni, hogy kiértékelje a jogosultságokat, az Azure Storage-naplózást Azure Monitor (előzetes verzió) használatával is használhatja. További információ: az [Azure Storage figyelése](../blobs/monitor-blob-storage.md).
 
 Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/log-query/get-started-portal.md).
 
@@ -88,10 +88,10 @@ Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzé
 1. Az Azure Portalon nyissa meg a tárfiókot.
 1. A figyelés szakaszban válassza a **diagnosztikai beállítások (előzetes verzió)** lehetőséget.
 1. Válassza ki azt az Azure Storage-szolgáltatást, amelyhez be szeretné jelentkezni a kérelmeket. Például válassza a **blob** lehetőséget a blob Storage-ba irányuló kérelmek naplózásához.
-1. Válassza a **diagnosztikai beállítás hozzáadása**lehetőséget.
+1. Válassza a **diagnosztikai beállítás hozzáadása** lehetőséget.
 1. Adja meg a diagnosztikai beállítás nevét.
-1. A **Kategória részletei**között, a **napló** szakaszban válassza az **StorageRead**, a **StorageWrite**és a **StorageDelete** lehetőséget, hogy naplózza az összes adatkérést a kiválasztott szolgáltatásba.
-1. A **célhely részletei**területen válassza **a Küldés log Analyticsba**lehetőséget. Válassza ki az előfizetését és a korábban létrehozott Log Analytics munkaterületet, ahogy az az alábbi képen is látható.
+1. A **Kategória részletei** között, a **napló** szakaszban válassza az **StorageRead** , a **StorageWrite** és a **StorageDelete** lehetőséget, hogy naplózza az összes adatkérést a kiválasztott szolgáltatásba.
+1. A **célhely részletei** területen válassza **a Küldés log Analyticsba** lehetőséget. Válassza ki az előfizetését és a korábban létrehozott Log Analytics munkaterületet, ahogy az az alábbi képen is látható.
 
     :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="Képernyőfelvétel a metrikák a megosztott kulccsal vagy SAS-vel végzett tranzakciók összegének konfigurálásáról":::
 
@@ -99,7 +99,7 @@ A Storage-fiókban minden egyes Azure Storage-erőforráshoz diagnosztikai beál
 
 Miután létrehozta a diagnosztikai beállítást, a rendszer a Storage-fiókra irányuló kérelmeket a beállításnak megfelelően naplózza. További információ: [diagnosztikai beállítás létrehozása az erőforrás-naplók és-metrikák az Azure-ban való összegyűjtéséhez](../../azure-monitor/platform/diagnostic-settings.md).
 
-A Azure Monitor Azure Storage-naplókban elérhető mezőkre vonatkozó hivatkozásokat itt tekintheti meg: [erőforrás-naplók (előzetes verzió)](../common/monitor-storage-reference.md#resource-logs-preview).
+A Azure Monitor Azure Storage-naplókban elérhető mezőkre vonatkozó hivatkozásokat itt tekintheti meg: [erőforrás-naplók (előzetes verzió)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview).
 
 #### <a name="query-logs-for-requests-made-with-shared-key-or-sas"></a>Megosztott kulccsal vagy SAS-vel készített kérelmek lekérdezési naplói
 
@@ -118,9 +118,9 @@ A lekérdezésen alapuló riasztási szabályt úgy is konfigurálhat, hogy ért
 
 Miután elvégezte a Storage-fiókra vonatkozó kérések engedélyezését, megteheti, hogy meggátolja a hozzáférést a megosztott kulcson keresztül. Először is frissítenie kell minden olyan alkalmazást, amely megosztott kulcsos hitelesítést használ az Azure AD használatához. A naplók és a metrikák figyeléséhez lásd: az ügyfélalkalmazások által az áttérés nyomon követéséhez [használt engedélyezési típus észlelése](#detect-the-type-of-authorization-used-by-client-applications) . Az Azure AD blob-és üzenetsor-adatokkal való használatával kapcsolatos további információkért lásd: [a blobok és várólisták hozzáférésének engedélyezése Azure Active Directory használatával](storage-auth-aad.md).
 
-Ha biztos abban, hogy nyugodtan el tudja utasítani a megosztott kulccsal rendelkező kéréseket, akkor a Storage-fiók **AllowSharedKeyAccess** tulajdonságát **false**értékre állíthatja.
+Ha biztos abban, hogy nyugodtan el tudja utasítani a megosztott kulccsal rendelkező kéréseket, akkor a Storage-fiók **AllowSharedKeyAccess** tulajdonságát **false** értékre állíthatja.
 
-A **AllowSharedKeyAccess** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt. A Storage-fiók engedélyezi a megosztott kulccsal rendelkező kérelmeket, ha a tulajdonság értéke **Null** vagy **igaz**.
+A **AllowSharedKeyAccess** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt. A Storage-fiók engedélyezi a megosztott kulccsal rendelkező kérelmeket, ha a tulajdonság értéke **Null** vagy **igaz** .
 
 > [!WARNING]
 > Ha bármely ügyfél jelenleg megosztott kulccsal fér hozzá a Storage-fiókban lévő adatokhoz, akkor a Microsoft azt javasolja, hogy az ügyfeleket az Azure AD-ba telepítse át, mielőtt a megosztott kulcshoz hozzáfér a Storage-fiókhoz.
@@ -130,8 +130,8 @@ A **AllowSharedKeyAccess** tulajdonság alapértelmezés szerint nincs beállít
 Az alábbi lépéseket követve engedélyezheti a megosztott kulcs engedélyezését egy Storage-fiókhoz a Azure Portalban:
 
 1. Az Azure Portalon nyissa meg a tárfiókot.
-1. Keresse meg a **konfigurációs** beállítást a **Beállítások**területen.
-1. A **megosztott kulcs hozzáférésének engedélyezése** **Letiltva**értékre.
+1. Keresse meg a **konfigurációs** beállítást a **Beállítások** területen.
+1. A **megosztott kulcs hozzáférésének engedélyezése** **Letiltva** értékre.
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Képernyőfelvétel a metrikák a megosztott kulccsal vagy SAS-vel végzett tranzakciók összegének konfigurálásáról":::
 
@@ -182,7 +182,7 @@ az storage container create \
 
 ### <a name="check-the-shared-key-access-setting-for-multiple-accounts"></a>Több fiók közös kulcsú hozzáférésének beállítása
 
-Ha szeretné, hogy a megosztott kulcs hozzáférési beállítása a Storage-fiókok és az optimális teljesítmény között legyen, használhatja az Azure Resource Graph Explorert a Azure Portal. Ha többet szeretne megtudni az Erőforrásgrafikon Explorer használatáról, tekintse meg a gyors útmutató [: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](/azure/governance/resource-graph/first-query-portal).
+Ha szeretné, hogy a megosztott kulcs hozzáférési beállítása a Storage-fiókok és az optimális teljesítmény között legyen, használhatja az Azure Resource Graph Explorert a Azure Portal. Ha többet szeretne megtudni az Erőforrásgrafikon Explorer használatáról, tekintse meg a gyors útmutató [: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](../../governance/resource-graph/first-query-portal.md).
 
 A következő lekérdezés futtatása az Erőforrásgrafikon Explorerben a Storage-fiókok listáját adja vissza, és megjeleníti az egyes fiókok megosztott kulcsokra vonatkozó hozzáférési beállításait:
 
@@ -195,7 +195,7 @@ resources
 
 ## <a name="understand-how-disallowing-shared-key-affects-sas-tokens"></a>Ismerje meg, hogy a megosztott kulcs letiltása hogyan befolyásolja az SAS-tokeneket
 
-Ha a megosztott kulcs nem engedélyezett a Storage-fiók esetében, az Azure Storage a SAS-tokenek és a kérés által megcélozott szolgáltatás típusa alapján kezeli az SAS-jogkivonatokat. Az alábbi táblázat bemutatja, hogyan történik az egyes SAS-típusok engedélyezése, és hogy az Azure Storage hogyan fogja kezelni ezt az SAS-t, ha a **AllowSharedKeyAccess** tulajdonsága **hamis**.
+Ha a megosztott kulcs nem engedélyezett a Storage-fiók esetében, az Azure Storage a SAS-tokenek és a kérés által megcélozott szolgáltatás típusa alapján kezeli az SAS-jogkivonatokat. Az alábbi táblázat bemutatja, hogyan történik az egyes SAS-típusok engedélyezése, és hogy az Azure Storage hogyan fogja kezelni ezt az SAS-t, ha a **AllowSharedKeyAccess** tulajdonsága **hamis** .
 
 | SAS típusa | Engedélyezési típus | Viselkedés, ha a AllowSharedKeyAccess hamis |
 |-|-|-|
@@ -215,11 +215,11 @@ Néhány Azure-eszköz lehetővé teszi az Azure AD-hitelesítés használatát 
 |-|-|
 | Azure Portal | Támogatott. A Azure Portal Azure AD-fiókjával való engedélyezésével kapcsolatos információkért lásd: [a blob-adatokhoz való hozzáférés engedélyezésének kiválasztása a Azure Portal](../blobs/authorize-blob-access-portal.md). |
 | AzCopy | BLOB Storage esetén támogatott. További információ a AzCopy-műveletek engedélyezéséről: [válassza ki, hogyan adja meg az engedélyezési hitelesítő adatokat](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) a AzCopy dokumentációjában. |
-| Azure Storage Explorer | BLOB Storage és csak Azure Data Lake Storage Gen2 esetén támogatott. Az Azure AD-hozzáférés a várólista-tárolóhoz nem támogatott. Ügyeljen arra, hogy kiválassza a megfelelő Azure AD-bérlőt. További információ: [Bevezetés a Storage Explorer használatába](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) |
+| Azure Storage Explorer | BLOB Storage és csak Azure Data Lake Storage Gen2 esetén támogatott. Az Azure AD-hozzáférés a várólista-tárolóhoz nem támogatott. Ügyeljen arra, hogy kiválassza a megfelelő Azure AD-bérlőt. További információ: [Bevezetés a Storage Explorer használatába](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
 | Azure PowerShell | Támogatott. További információ az Azure ad-val kapcsolatos PowerShell-parancsok engedélyezéséről: [PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a Blobok adatainak eléréséhez](../blobs/authorize-active-directory-powershell.md) , illetve [PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a várólista adatainak eléréséhez](../queues/authorize-active-directory-powershell.md). |
 | Azure CLI | Támogatott. További információ arról, hogyan engedélyezhető az Azure CLI-parancsok használata az Azure AD-vel a blob-és üzenetsor-adatok eléréséhez: [Azure CLI-parancsok futtatása Azure ad-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](authorize-data-operations-cli.md). |
 | Azure IoT Hub | Támogatott. További információ: [IoT hub virtuális hálózatok támogatása](../../iot-hub/virtual-network-support.md). |
-| Azure Cloud Shell | A Azure Cloud Shell a Azure Portal integrált rendszerhéja. Azure Cloud Shell a fájlok megőrzését a Storage-fiókban lévő Azure-fájlmegosztás tárolja. Ezek a fájlok elérhetetlenné válnak, ha a megosztott kulcs engedélyezése nem engedélyezett a Storage-fiók esetében. További információ: [a Microsoft Azure Files Storage összekötése](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage). <br /><br /> Ha a Azure Cloud Shell parancsainak futtatásával szeretné kezelni azokat a Storage-fiókokat, amelyekhez a megosztott kulcsokhoz való hozzáférés nem engedélyezett, először győződjön meg arról, hogy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosította a szükséges engedélyeket ezekhez a fiókokhoz. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md). |
+| Azure Cloud Shell | A Azure Cloud Shell a Azure Portal integrált rendszerhéja. Azure Cloud Shell a fájlok megőrzését a Storage-fiókban lévő Azure-fájlmegosztás tárolja. Ezek a fájlok elérhetetlenné válnak, ha a megosztott kulcs engedélyezése nem engedélyezett a Storage-fiók esetében. További információ: [a Microsoft Azure Files Storage összekötése](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Ha a Azure Cloud Shell parancsainak futtatásával szeretné kezelni azokat a Storage-fiókokat, amelyekhez a megosztott kulcsokhoz való hozzáférés nem engedélyezett, először győződjön meg arról, hogy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosította a szükséges engedélyeket ezekhez a fiókokhoz. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md). |
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
@@ -236,10 +236,10 @@ Az előzetes verzió az alábbi szakaszokban ismertetett korlátozásokat tartal
 
 Az Azure-metrikák és a bejelentkezés Azure Monitor nem tesz különbséget az előzetes verzióban található különböző típusú közös hozzáférési aláírások között. Az Azure Metrikaböngésző **sas** -szűrője és az Azure Storage-beli **sas** -mezője Azure monitor a bármely sas-típussal jóváhagyott jelentési kérelmeket. Azonban a közös hozzáférésű aláírások különböző típusai eltérőek, és másképp viselkednek, ha a megosztott kulcshoz való hozzáférés nem engedélyezett:
 
-- A szolgáltatás SAS-jogkivonata vagy a fiók SAS-tokenje megosztott kulccsal van ellátva, és a blob Storage-ra vonatkozó kérelemben nem engedélyezett, ha a **AllowSharedKeyAccess** tulajdonság **hamis**értékre van állítva.
-- A felhasználói delegálási SAS engedélyezve van az Azure AD-ben, és a blob Storage iránti kérelemben engedélyezett, ha a **AllowSharedKeyAccess** tulajdonság **hamis**értékre van állítva.
+- A szolgáltatás SAS-jogkivonata vagy a fiók SAS-tokenje megosztott kulccsal van ellátva, és a blob Storage-ra vonatkozó kérelemben nem engedélyezett, ha a **AllowSharedKeyAccess** tulajdonság **hamis** értékre van állítva.
+- A felhasználói delegálási SAS engedélyezve van az Azure AD-ben, és a blob Storage iránti kérelemben engedélyezett, ha a **AllowSharedKeyAccess** tulajdonság **hamis** értékre van állítva.
 
-Ha a Storage-fiók forgalmát értékeli, vegye figyelembe, hogy az [ügyfélalkalmazások által használt engedélyezési típus észlelése](#detect-the-type-of-authorization-used-by-client-applications) című témakörben leírtak szerint a metrikák és a naplók is tartalmazhatnak felhasználói DELEGÁLÁSi sas-vel készített kérelmeket. Ha többet szeretne megtudni arról, hogy az Azure Storage hogyan válaszol az SAS-re, ha a **AllowSharedKeyAccess** tulajdonság értéke **false (hamis**), tekintse meg a [megosztott kulcs tiltása a sas-jogkivonatokat érintő](#understand-how-disallowing-shared-key-affects-sas-tokens)tudnivalókat ismertető témakört.
+Ha a Storage-fiók forgalmát értékeli, vegye figyelembe, hogy az [ügyfélalkalmazások által használt engedélyezési típus észlelése](#detect-the-type-of-authorization-used-by-client-applications) című témakörben leírtak szerint a metrikák és a naplók is tartalmazhatnak felhasználói DELEGÁLÁSi sas-vel készített kérelmeket. Ha többet szeretne megtudni arról, hogy az Azure Storage hogyan válaszol az SAS-re, ha a **AllowSharedKeyAccess** tulajdonság értéke **false (hamis** ), tekintse meg a [megosztott kulcs tiltása a sas-jogkivonatokat érintő](#understand-how-disallowing-shared-key-affects-sas-tokens)tudnivalókat ismertető témakört.
 
 ### <a name="requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false"></a>A SAS-tokenekkel rendelkező kérések engedélyezettek a várólisták, táblák és fájlok esetében, ha a AllowSharedKeyAccess hamis.
 

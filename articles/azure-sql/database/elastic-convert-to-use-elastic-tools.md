@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443476"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787142"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Meglévő adatbázisok migrálása a vertikális felskálázáshoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -72,7 +72,7 @@ Egybérlős modell esetén hozzon létre egy **lista-hozzárendelési** szegmens
 
 ![Lista megfeleltetése][1]
 
-A több-bérlős modell több bérlőt rendel egy adott adatbázishoz (és több adatbázisból is terjesztheti a bérlők csoportjait). Akkor használja ezt a modellt, ha várható, hogy az egyes bérlők kis mennyiségű adatra van szükségük. Ebben a modellben a **tartomány-hozzárendelés**használatával rendeljen hozzá bérlőket egy adatbázishoz.
+A több-bérlős modell több bérlőt rendel egy adott adatbázishoz (és több adatbázisból is terjesztheti a bérlők csoportjait). Akkor használja ezt a modellt, ha várható, hogy az egyes bérlők kis mennyiségű adatra van szükségük. Ebben a modellben a **tartomány-hozzárendelés** használatával rendeljen hozzá bérlőket egy adatbázishoz.
 
 ![Tartomány-hozzárendelés][2]
 
@@ -150,7 +150,7 @@ Get-Shards -ShardMap $ShardMap
 Get-Mappings -ShardMap $ShardMap
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A telepítés befejezése után megkezdheti az Elastic Database ügyféloldali függvénytár használatát. Az [Adatfüggő útválasztást](elastic-scale-data-dependent-routing.md) és a [több szegmensre](elastic-scale-multishard-querying.md)kiterjedő lekérdezést is használhatja.
 
@@ -168,7 +168,7 @@ A több bérlős szoftverszolgáltatás (SaaS) típusú adatbázis-alkalmazások
 
 ## <a name="questions-and-feature-requests"></a>Kérdések és szolgáltatások kérései
 
-Ha kérdése van, használja a [Microsoft Q&a SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) és a szolgáltatásokra vonatkozó kérelmeket, vegye fel őket a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
+Ha kérdése van, használja a [Microsoft Q&a SQL Database](/answers/topics/azure-sql-database.html) és a szolgáltatásokra vonatkozó kérelmeket, vegye fel őket a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/elastic-convert-to-use-elastic-tools/listmapping.png

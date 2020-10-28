@@ -10,19 +10,19 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619984"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788281"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-A [felügyelt példányok](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) nyilvános végpontja lehetővé teszi a felügyelt példányhoz való adathozzáférést a [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md)kívülről. Felügyelt példányát a több-bérlős Azure-szolgáltatásokból (például Power BI, Azure App Service vagy egy helyszíni hálózatból) érheti el. A felügyelt példányok nyilvános végpontjának használatával nem szükséges VPN-t használnia, ami segít elkerülni a VPN átviteli sebességét.
+A [felügyelt példányok](./sql-managed-instance-paas-overview.md) nyilvános végpontja lehetővé teszi a felügyelt példányhoz való adathozzáférést a [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md)kívülről. Felügyelt példányát a több-bérlős Azure-szolgáltatásokból (például Power BI, Azure App Service vagy egy helyszíni hálózatból) érheti el. A felügyelt példányok nyilvános végpontjának használatával nem szükséges VPN-t használnia, ami segít elkerülni a VPN átviteli sebességét.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebből a cikkből megtudhatja, hogyan:
 
 > [!div class="checklist"]
 >
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>A felügyelt példány nyilvános végpontjának összekapcsolási karakterláncának beszerzése
 
 1. Navigáljon a felügyelt példány konfigurálása lapra, amelyen engedélyezve van a nyilvános végpont. Válassza a **kapcsolatok karakterláncok** lapot a **Beállítások** konfiguráció alatt.
-1. Vegye figyelembe, hogy a nyilvános végpont állomásneve <mi_name> formátumban jön. **Public**. <dns_zone>. database.Windows.net és a csatlakozáshoz használt port 3342.
+1. Vegye figyelembe, hogy a nyilvános végpont állomásneve <mi_name> formátumban jön. **Public** . <dns_zone>. database.Windows.net és a csatlakozáshoz használt port 3342.
 
     ![A képernyőképen a nyilvános és a privát végpontokhoz tartozó kapcsolatok karakterláncai láthatók.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 9b4d0fadf157ce1eef6821ccbc32f5725aea611f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31be497d017cb60de6f46d7657889c9c1fabef4a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616516"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788349"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Adatbázis visszaállítása az Azure SQL felügyelt példányában egy korábbi időpontra
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ A Azure Portal, a PowerShell vagy az Azure CLI használatával visszaállíthat 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
 2. Nyissa meg az SQL felügyelt példányát, és válassza ki a visszaállítani kívánt adatbázist.
 3. Válassza a **visszaállítás** lehetőséget az adatbázis lapon:
 
@@ -67,7 +67,7 @@ A Azure Portal, a PowerShell vagy az Azure CLI használatával visszaállíthat 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha még nincs Azure PowerShell telepítve, tekintse meg [a Azure PowerShell modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps)ismertető témakört.
+Ha még nincs Azure PowerShell telepítve, tekintse meg [a Azure PowerShell modul telepítését](/powershell/azure/install-az-ps)ismertető témakört.
 
 Az adatbázis PowerShell használatával történő visszaállításához adja meg a paraméterek értékét a következő parancsban. Ezután futtassa a parancsot:
 
@@ -106,7 +106,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceName $targetInstanceName 
 ```
 
-Részletekért lásd: [Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase).
+Részletekért lásd: [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Az elérhető paraméterek részletes ismertetését lásd a [CLI dokumentációjában, amely az adatbázisok SQL felügyelt példányban történő visszaállítását](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)ismerteti.
+Az elérhető paraméterek részletes ismertetését lásd a [CLI dokumentációjában, amely az adatbázisok SQL felügyelt példányban történő visszaállítását](/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)ismerteti.
 
 ---
 
@@ -139,7 +139,7 @@ A törölt adatbázisok visszaállítása a PowerShell vagy a Azure Portal haszn
 ### <a name="portal"></a>Portál 
 
 
-Felügyelt adatbázis helyreállításához a Azure Portal segítségével nyissa meg az SQL felügyelt példányának áttekintés lapját, és válassza a **törölt adatbázisok**lehetőséget. Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be az új adatbázis nevét, amely a biztonsági másolatból visszaállított adatokkal lesz létrehozva.
+Felügyelt adatbázis helyreállításához a Azure Portal segítségével nyissa meg az SQL felügyelt példányának áttekintés lapját, és válassza a **törölt adatbázisok** lehetőséget. Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be az új adatbázis nevét, amely a biztonsági másolatból visszaállított adatokkal lesz létrehozva.
 
   ![Képernyőkép a törölt Azure SQL-példány-adatbázis visszaállításáról](./media/point-in-time-restore/restore-deleted-sql-managed-instance-annotated.png)
 
@@ -205,13 +205,13 @@ DROP DATABASE WorldWideImporters;
 
 Az alábbi módszerek egyikével csatlakozhat az adatbázishoz az SQL felügyelt példányában:
 
-- [SSMS/Azure Data Studio Azure-beli virtuális gépen keresztül](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Pont–hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Nyilvános végpont](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [SSMS/Azure Data Studio Azure-beli virtuális gépen keresztül](./connect-vm-instance-configure.md)
+- [Pont–hely kapcsolat](./point-to-site-p2s-configure.md)
+- [Nyilvános végpont](./public-endpoint-configure.md)
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Portal válassza ki az adatbázist a felügyelt SQL-példányból, majd válassza a **Törlés**lehetőséget.
+A Azure Portal válassza ki az adatbázist a felügyelt SQL-példányból, majd válassza a **Törlés** lehetőséget.
 
    ![Adatbázis törlése a Azure Portal használatával](./media/point-in-time-restore/delete-database-from-mi.png)
 
@@ -247,9 +247,9 @@ ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 
 Az alábbi módszerek egyikével csatlakozhat az adatbázishoz az SQL felügyelt példányában:
 
-- [Azure-beli virtuális gép](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Pont–hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Nyilvános végpont](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Azure-beli virtuális gép](./connect-vm-instance-configure.md)
+- [Pont–hely kapcsolat](./point-to-site-p2s-configure.md)
+- [Nyilvános végpont](./public-endpoint-configure.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

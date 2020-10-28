@@ -13,18 +13,18 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b09d808201d58b571b2fe5ceb2e228d4e1c21d11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28ab0a158507e3f29ecfdc026203d92d71877633
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316953"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786513"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure-beli, SQL-t futtató virtuális gépek licencmodelljének módosítása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 
-Ez a cikk azt ismerteti, hogyan változtatható meg egy SQL Server virtuális gép (VM) licencelési modellje az Azure-ban az új SQL Server VM erőforrás-szolgáltató, a **Microsoft. SqlVirtualMachine**használatával.
+Ez a cikk azt ismerteti, hogyan változtatható meg egy SQL Server virtuális gép (VM) licencelési modellje az Azure-ban az új SQL Server VM erőforrás-szolgáltató, a **Microsoft. SqlVirtualMachine** használatával.
 
 A virtuális gépek három licenccel rendelkeznek, amelyek SQL Server üzemeltetik: utólagos elszámolású, Azure Hybrid Benefit (AHB) és vész-helyreállítási (DR). A SQL Server VM licencelési modelljét a Azure Portal, az Azure CLI vagy a PowerShell használatával módosíthatja. 
 
@@ -49,7 +49,7 @@ A SQL Server licencelése a virtuális gép kiépített állapotában, vagy kés
 A SQL Server VM licencelési modelljének módosítása az alábbi követelményekkel rendelkezik: 
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
-- Az [SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md)regisztrált [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
+- Az [SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md)regisztrált [SQL Server VM](./create-sql-vm-portal.md) .
 - A frissítési [garancia](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatára vonatkozó követelmény. 
 
 
@@ -62,7 +62,7 @@ A SQL Server VM licencelési modelljének módosítása az alábbi követelmény
 A licencelési modellt közvetlenül a portálról is módosíthatja: 
 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és nyissa meg az [SQL Virtual Machines-erőforrást](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) a SQL Server VMhoz. 
-1. Válassza a **Konfigurálás** lehetőséget a **Beállítások**területen. 
+1. Válassza a **Konfigurálás** lehetőséget a **Beállítások** területen. 
 1. Válassza a **Azure Hybrid Benefit** lehetőséget, majd jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy rendelkezik-e a frissítési garanciával rendelkező SQL Server licenccel. 
 1. Válassza az **alkalmaz** lehetőséget a configure ( **Konfigurálás** ) lap alján. 
 
@@ -83,7 +83,7 @@ Az Azure CLI használatával módosíthatja a licenc modelljét.
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-**Fizetés menet közben**: 
+**Fizetés menet közben** : 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -174,11 +174,9 @@ Ez a hiba olyan virtuális gépeken fordul elő, amelyek egynél több hálózat
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért tekintse át a következő cikkeket: 
+További információkat az következő cikkekben talál: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)
 * [A Windows rendszerű virtuális gépek SQL Server díjszabási útmutatója](pricing-guidance.md)
 * [Windows rendszerű virtuális gépen SQL Server kibocsátási megjegyzései](../../database/doc-changes-updates-release-notes.md)
-
-

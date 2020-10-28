@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhat egyéni tárolókat a Azure App 
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5b1bf9b205fc1eb90c6eeae3a101def764381213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264575"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787057"
 ---
-# <a name="configure-a-custom-container-for-azure-app-service"></a>Egyéni tároló konfigurálása Azure App Servicehoz
+# <a name="configure-a-custom-container-for-azure-app-service"></a>Egyéni tároló konfigurálása az Azure App Service-hez
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat egyéni tárolókat Azure App Service futtatásához.
 
@@ -212,7 +212,7 @@ A Docker-naplók több módon is elérhetők:
 
 ### <a name="in-azure-portal"></a>Azure Portal
 
-A Docker-naplók a portálon, az alkalmazás **tároló beállításai** lapján jelennek meg. A naplók csonkoltek, de a **Letöltés**lehetőségre kattintva letöltheti az összes naplót. 
+A Docker-naplók a portálon, az alkalmazás **tároló beállításai** lapján jelennek meg. A naplók csonkoltek, de a **Letöltés** lehetőségre kattintva letöltheti az összes naplót. 
 
 ### <a name="from-the-kudu-console"></a>A kudu-konzolról
 
@@ -272,7 +272,7 @@ A processzorok többmagos vagy feleznie processzorok lehetnek. Az egyes díjszab
 
 ## <a name="customize-health-ping-behavior"></a>Az állapot pingelése viselkedés testreszabása
 
-App Service úgy véli, hogy egy tároló sikeresen elindul a tároló indításakor, és válaszol egy HTTP-pingelésre. A Health ping kérelem tárolói a fejlécet `User-Agent= "App Service Hyper-V Container Availability Check"` . Ha a tároló elindul, de bizonyos idő elteltével nem válaszol a pingelésre, App Service naplóz egy eseményt a Docker-naplóban, mondván, hogy a tároló nem indult el. 
+App Service úgy véli, hogy egy tároló sikeresen elindul a tároló indításakor, és válaszol egy HTTP-pingelésre. A Health ping kérelem tartalmazza a fejlécet `User-Agent= "App Service Hyper-V Container Availability Check"` . Ha a tároló elindul, de bizonyos idő elteltével nem válaszol a pingelésre, App Service naplóz egy eseményt a Docker-naplóban, mondván, hogy a tároló nem indult el. 
 
 Ha az alkalmazás erőforrás-igényes, előfordulhat, hogy a tároló nem válaszol a HTTP-ping időben. Ha a HTTP-pingelések meghiúsulnak, állítsa be az `CONTAINER_AVAILABILITY_CHECK_MODE` alkalmazás beállításait. Megadhatja a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
 
@@ -365,7 +365,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 A *Docker-compose. YML* fájlban rendelje hozzá a ( `volumes` `${WEBAPP_STORAGE_HOME}` ) beállítást. 
 
-A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Példa:
+A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Például:
 
 ```yaml
 wordpress:

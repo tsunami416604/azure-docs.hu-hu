@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 340cdd97e7097a9fe6f0653d9f50f5a5cc41f890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740930"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787958"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Oktatóanyag: AI által generált kereshető tartalom az Azure-blobokból a .NET SDK használatával
 
@@ -46,13 +46,13 @@ A készségkészlet Cognitive Services API-k alapján beépített képességeket
 > [!Note]
 > Ehhez az oktatóanyaghoz az ingyenes keresési szolgáltatást használhatja. Az ingyenes keresési szolgáltatás három indexre, három indexelő elemre és három adatforrásra korlátozza a szolgáltatást. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a szolgáltatásban az új erőforrások elfogadására szolgáló helyiséggel.
 
-## <a name="download-sample-data"></a>Mintaadatok letöltése
+## <a name="download-sample-data"></a>Töltse le a mintaadatokat
 
 A mintaadatok a vegyes tartalomtípusú 14 fájlból állnak, amelyeket egy későbbi lépésben fel kell tölteni az Azure Blob Storage-ba.
 
 1. Nyissa meg ezt a [OneDrive mappát](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) , és a bal felső sarokban kattintson a **Letöltés** elemre a fájlok számítógépre másolásához. 
 
-1. Kattintson a jobb gombbal a zip-fájlra, és válassza az **összes kibontása**lehetőséget. A különböző típusok 14 fájlból állnak. Ehhez a gyakorlathoz a 7-et fogja használni.
+1. Kattintson a jobb gombbal a zip-fájlra, és válassza az **összes kibontása** lehetőséget. A különböző típusok 14 fájlból állnak. Ehhez a gyakorlathoz a 7-et fogja használni.
 
 Az oktatóanyag forráskódját le is töltheti. A forráskód az **oktatóanyag-AI-dúsítás/v11** mappában található az [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) adattárban.
 
@@ -64,7 +64,7 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 ### <a name="start-with-azure-storage"></a>Első lépések az Azure Storage-ban
 
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/) , és kattintson az **+ erőforrás létrehozása**elemre.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/) , és kattintson az **+ erőforrás létrehozása** elemre.
 
 1. Keressen rá a *Storage-fiókra* , és válassza ki a Microsoft Storage-fiók ajánlatát.
 
@@ -72,13 +72,13 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Az alapok lapon a következő elemek szükségesek. Minden más esetében fogadja el az alapértelmezett értékeket.
 
-   * **Erőforráscsoport**. Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
+   * **Erőforráscsoport** . Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
 
-   * **Tárfiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
+   * **Tárfiók neve** . Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus* . 
 
-   * **Hely**. Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
+   * **Hely** . Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
 
-   * **Fiók típusa**. Válassza ki az alapértelmezett *StorageV2 (általános célú v2)*.
+   * **Fiók típusa** . Válassza ki az alapértelmezett *StorageV2 (általános célú v2)* .
 
 1. A szolgáltatás létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
 
@@ -86,7 +86,7 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Kattintson a **Blobok** szolgáltatás elemre.
 
-1. Kattintson a **+ tároló** elemre egy tároló létrehozásához, és nevezze el a *fogaskerék-Search-demo kifejezést*.
+1. Kattintson a **+ tároló** elemre egy tároló létrehozásához, és nevezze el a *fogaskerék-Search-demo kifejezést* .
 
 1. Válassza a *fogaskerék-keresés-bemutató* lehetőséget, majd kattintson a **feltöltés** gombra, és nyissa meg azt a mappát, ahová a letöltött fájlokat mentette. Válassza az összes tizennégy fájl lehetőséget, majd kattintson **az OK** gombra a feltöltéshez.
 
@@ -124,11 +124,11 @@ Az Azure Cognitive Search szolgáltatással való kommunikációhoz szüksége l
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások**  >  **kulcsaiban**másolja a szolgáltatásra vonatkozó összes jogosultsághoz tartozó rendszergazdai kulcsot. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban** másolja a szolgáltatásra vonatkozó összes jogosultsághoz tartozó rendszergazdai kulcsot. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-   ![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-javascript/service-name-and-keys.png)
 
 Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -146,19 +146,19 @@ Ebben a projektben telepítse a `Azure.Search.Documents` és a legújabb verzió
 
 1. Tallózással keresse meg [Azure.Search.Document](https://www.nuget.org/packages/Azure.Search.Documents).
 
-1. Válassza ki a legújabb verziót, majd kattintson a **telepítés**gombra.
+1. Válassza ki a legújabb verziót, majd kattintson a **telepítés** gombra.
 
 1. Az előző lépések megismétlésével telepítse [Microsoft.Extensions.Configszülő](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) , és [Microsoft.Extensions.Configuration.Jsbe a](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json)következőre:.
 
 ### <a name="add-service-connection-information"></a>Szolgáltatás-összekapcsolási adatok hozzáadása
 
-1. Kattintson a jobb gombbal a projektre a megoldáskezelő, majd **Add**válassza az  >  **új elem hozzáadása..** . lehetőséget. 
+1. Kattintson a jobb gombbal a projektre a megoldáskezelő, majd **Add** válassza az  >  **új elem hozzáadása..** . lehetőséget. 
 
-1. Nevezze el a fájlt `appsettings.json` , majd válassza a **Hozzáadás**lehetőséget. 
+1. Nevezze el a fájlt `appsettings.json` , majd válassza a **Hozzáadás** lehetőséget. 
 
 1. A fájl belefoglalása a kimeneti könyvtárba.
-    1. Kattintson a jobb gombbal a elemre `appsettings.json` , és válassza a **Tulajdonságok**lehetőséget. 
-    1. Módosítsa a másolás értékét a **kimeneti könyvtárba** a **másoláshoz, ha újabb**.
+    1. Kattintson a jobb gombbal a elemre `appsettings.json` , és válassza a **Tulajdonságok** lehetőséget. 
+    1. Módosítsa a másolás értékét a **kimeneti könyvtárba** a **másoláshoz, ha újabb** .
 
 1. Másolja az alábbi JSON-t az új JSON-fájlba.
 
@@ -173,7 +173,7 @@ Ebben a projektben telepítse a `Azure.Search.Documents` és a legújabb verzió
 
 Adja hozzá a keresési szolgáltatás és a blob Storage-fiók adatait. Ne felejtse el, hogy ezt az információt az előző szakaszban jelzett szolgáltatás létesítési lépéseiből kérheti le.
 
-A **SearchServiceUri**mezőben adja meg a teljes URL-címet.
+A **SearchServiceUri** mezőben adja meg a teljes URL-címet.
 
 ### <a name="add-namespaces"></a>Névterek hozzáadása
 
@@ -285,7 +285,7 @@ Fordítsa le és futtassa a megoldást. Mivel ez az első kérés, a Azure Porta
 
 ### <a name="step-2-create-a-skillset"></a>2. lépés: készségkészlet létrehozása
 
-Ebben a szakaszban megadhatja az adataira alkalmazni kívánt gazdagító lépések készletét. Az egyes alkoholtartalom-növelési lépések a *szaktudás* és a dúsítási lépések egy *készségkészlet*. Ez az oktatóanyag [beépített kognitív képességeket](cognitive-search-predefined-skills.md) használ a készségkészlet:
+Ebben a szakaszban megadhatja az adataira alkalmazni kívánt gazdagító lépések készletét. Az egyes alkoholtartalom-növelési lépések a *szaktudás* és a dúsítási lépések egy *készségkészlet* . Ez az oktatóanyag [beépített kognitív képességeket](cognitive-search-predefined-skills.md) használ a készségkészlet:
 
 * [Optikai karakterfelismerés](cognitive-search-skill-ocr.md) a nyomtatott és a kézírásos szöveg felismeréséhez a képfájlokban.
 
@@ -580,7 +580,7 @@ A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 
 Az index mezői a Model osztály használatával vannak meghatározva. A modellosztály minden tulajdonsága olyan attribútumokkal rendelkezik, amelyek meghatározzák a vonatkozó indexmező kereséssel kapcsolatos viselkedéseit. 
 
-Hozzáadjuk a modell osztályt egy új C#-fájlhoz. Kattintson a jobb gombbal a projektre **Add**, és válassza  >  az**új elem hozzáadása...** lehetőséget, válassza a "class" elemet, és nevezze el a fájlt `DemoIndex.cs` , majd válassza a **Hozzáadás**lehetőséget.
+Hozzáadjuk a modell osztályt egy új C#-fájlhoz. Kattintson a jobb gombbal a projektre **Add** , és válassza  >  az **új elem hozzáadása...** lehetőséget, válassza a "class" elemet, és nevezze el a fájlt `DemoIndex.cs` , majd válassza a **Hozzáadás** lehetőséget.
 
 Ügyeljen arra, hogy a és a névterek típusait is használni kívánja `Azure.Search.Documents.Indexes` `System.Text.Json.Serialization` .
 
@@ -826,13 +826,13 @@ Az Azure Cognitive Search oktatóanyag-konzol alkalmazásaiban általában egy 2
 
 A legegyszerűbb lehetőség a portálon található [keresési böngésző](search-explorer.md) . Először futtasson egy üres lekérdezést, amely visszaadja az összes dokumentumot, vagy egy célzottabb keresést, amely a folyamat által létrehozott új mező tartalmát adja vissza. 
 
-1. Azure Portal a keresés áttekintése lapon válassza az **indexek**lehetőséget.
+1. Azure Portal a keresés áttekintése lapon válassza az **indexek** lehetőséget.
 
 1. Keresés **`demoindex`** a listában. 14 dokumentummal kell rendelkeznie. Ha a dokumentumok száma nulla, az indexelő vagy még fut, vagy még nincs frissítve a lap. 
 
 1. Válassza az **`demoindex`** lehetőséget. A Search Explorer az első lap.
 
-1. A tartalom kereshető, amint az első dokumentum betöltődik. A tartalom meglétének ellenőrzéséhez a **Keresés**gombra kattintva futtasson egy meghatározatlan lekérdezést. Ez a lekérdezés az összes aktuálisan indexelt dokumentumot adja vissza, így egy ötlet, hogy mit tartalmaz az index.
+1. A tartalom kereshető, amint az első dokumentum betöltődik. A tartalom meglétének ellenőrzéséhez a **Keresés** gombra kattintva futtasson egy meghatározatlan lekérdezést. Ez a lekérdezés az összes aktuálisan indexelt dokumentumot adja vissza, így egy ötlet, hogy mit tartalmaz az index.
 
 1. Ezután illessze be a következő karakterláncot a felügyelhető eredményekhez: `search=*&$select=id, languageCode, organizations`
 
@@ -852,13 +852,13 @@ A [beépített készségek](cognitive-search-predefined-skills.md) a készségk�
 
 Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszert a későbbi futtatásokhoz. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Emellett azt is megtanulta, hogyan ellenőrizheti az indexelő állapotát, illetve hogy melyik objektumokat kell törölnie a folyamat újrafuttatása előtt.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 

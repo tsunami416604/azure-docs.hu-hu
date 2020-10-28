@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 0eb38dbb01e1e7d820159a5085b262dae3c04e8f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1a1e9c394f3665845b1f2bbbd605322b43f5f25d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075331"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787227"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben
 
@@ -55,7 +55,7 @@ A Azure Resource Manager használó erőforrásokon végrehajtott összes felada
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory-alkalmazás létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Az API Management Service-példányát tartalmazó előfizetés használatával navigáljon a Azure Active Directory **Alkalmazásregisztrációk** (Azure Active Directory **Azure Active Directory** > felügyelet/Alkalmazásregisztrációk) lapjára.
 
     > [!NOTE]
@@ -66,23 +66,23 @@ A Azure Resource Manager használó erőforrásokon végrehajtott összes felada
     A **Létrehozás** ablak a jobb oldalon jelenik meg. Itt adhatja meg a HRE alkalmazáshoz kapcsolódó információkat.
 
 4. Adjon nevet az alkalmazásnak.
-5. Az alkalmazás típusa mezőben válassza a **natív**lehetőséget.
-6. Adjon meg egy helyőrző URL-címet `http://resources` , például az **átirányítási URI**esetében, mivel ez egy kötelező mező, de az értéket nem használja később. Az alkalmazás mentéséhez kattintson a jelölőnégyzetre.
+5. Az alkalmazás típusa mezőben válassza a **natív** lehetőséget.
+6. Adjon meg egy helyőrző URL-címet `http://resources` , például az **átirányítási URI** esetében, mivel ez egy kötelező mező, de az értéket nem használja később. Az alkalmazás mentéséhez kattintson a jelölőnégyzetre.
 7. Kattintson a **Létrehozás** gombra.
 
 ### <a name="add-an-application"></a>Alkalmazás hozzáadása
 
-1. Az alkalmazás létrehozása után kattintson az **API-engedélyek**elemre.
-2. Kattintson **az + engedély hozzáadása**lehetőségre.
-4. Kattintson a **Microsoft API-k kiválasztása elemre**.
-5. Válassza az **Azure Service Management**lehetőséget.
-6. Kattintson a **kiválasztás**gombra.
+1. Az alkalmazás létrehozása után kattintson az **API-engedélyek** elemre.
+2. Kattintson **az + engedély hozzáadása** lehetőségre.
+4. Kattintson a **Microsoft API-k kiválasztása elemre** .
+5. Válassza az **Azure Service Management** lehetőséget.
+6. Kattintson a **kiválasztás** gombra.
 
     ![Engedélyek hozzáadása](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
 7. Kattintson a **delegált engedélyek** elemre az újonnan hozzáadott alkalmazás mellett, jelölje be az **Access Azure Service Management (előzetes verzió)** jelölőnégyzetet.
-8. Kattintson a **kiválasztás**gombra.
-9. Kattintson az **engedélyek megadása**elemre.
+8. Kattintson a **kiválasztás** gombra.
+9. Kattintson az **engedélyek megadása** elemre.
 
 ### <a name="configuring-your-app"></a>Az alkalmazás konfigurálása
 
@@ -115,7 +115,7 @@ namespace GetTokenResourceManagerRequests
 
 Cserélje le `{tenant id}` , `{application id}` és `{redirect uri}` használja az alábbi utasításokat:
 
-1. Cserélje le a helyére a `{tenant id}` létrehozott Azure Active Directory alkalmazás bérlői azonosítóját. Az azonosítót **Alkalmazásregisztrációk**  ->  **végpontokra**kattintva érheti el.
+1. Cserélje le a helyére a `{tenant id}` létrehozott Azure Active Directory alkalmazás bérlői azonosítóját. Az azonosítót **Alkalmazásregisztrációk**  ->  **végpontokra** kattintva érheti el.
 
     ![Végpontok][api-management-endpoint]
 
@@ -152,7 +152,7 @@ ahol:
 -   `subscriptionId` -Annak az előfizetésnek az azonosítója, amely a API Management szolgáltatást tárolja, amelyről biztonsági másolatot szeretne készíteni
 -   `resourceGroupName` -Az Azure API Management szolgáltatás erőforráscsoport neve
 -   `serviceName` – annak a API Management-szolgáltatásnak a neve, amelyről biztonsági másolatot készít a létrehozás időpontjában.
--   `api-version` -csere a `2018-06-01-preview`
+-   `api-version` -csere a `2019-12-01`
 
 A kérelem törzsében adja meg a cél Azure Storage-fiók nevét, a hozzáférési kulcsot, a blob-tároló nevét és a biztonsági másolat nevét:
 
@@ -171,10 +171,10 @@ A Backup egy hosszú ideig futó művelet, amely több mint egy percet is igény
 
 #### <a name="constraints-when-making-backup-or-restore-request"></a>Biztonsági mentési vagy visszaállítási kérelem végrehajtásakor megkötések
 
--   A kérelem törzsében megadott **tárolónak** **léteznie kell**.
+-   A kérelem törzsében megadott **tárolónak** **léteznie kell** .
 -   A biztonsági mentés folyamatban van, így **elkerülhető a szolgáltatásban történt felügyeleti változások** , például az SKU frissítése vagy a lefokozás, a tartománynév módosítása és egyebek.
 -   A biztonsági másolat visszaállítását csak a létrehozás időpontja óta **30 napig garantáljuk** .
--   A szolgáltatás konfigurációjában (például az API-k, a házirendek és a fejlesztői portál megjelenésében) **végrehajtott módosítások** **kizárhatók a biztonsági mentésből, és elvesznek**.
+-   A szolgáltatás konfigurációjában (például az API-k, a házirendek és a fejlesztői portál megjelenésében) **végrehajtott módosítások** **kizárhatók a biztonsági mentésből, és elvesznek** .
 -   Hozzáférés **engedélyezése** a vezérlési síkon az Azure Storage-fiókba, ha engedélyezve van a [tűzfal][azure-storage-ip-firewall] . Az ügyfélnek meg kell nyitnia az [Azure API Management vezérlési sík IP-címeit][control-plane-ip-address] a Storage-fiókjában a biztonsági mentéshez vagy a visszaállításhoz. Ennek az az oka, hogy az Azure Storage-ba irányuló kérések nem címfordítást nyilvános IP-címekre a számítási > (Azure API Management Control Plane). A régiók közötti tárolási kérelem címfordítást lesz.
 
 #### <a name="what-is-not-backed-up"></a>Mi nem biztonsági mentés
@@ -202,7 +202,7 @@ ahol:
 -   `subscriptionId` -Annak az előfizetésnek az azonosítója, amely a API Management szolgáltatást tárolja, és amelyről biztonsági másolatot kíván visszaállítani
 -   `resourceGroupName` -Az Azure API Management szolgáltatást tároló erőforráscsoport neve, amelyről biztonsági másolatot kíván visszaállítani
 -   `serviceName` – annak a API Management-szolgáltatásnak a neve, amelyet a rendszer a létrehozáskor adott vissza.
--   `api-version` -csere a `2018-06-01-preview`
+-   `api-version` -csere a `api-version=2019-12-01`
 
 A kérelem törzsében határozza meg a biztonságimásolat-fájl helyét. Adja hozzá az Azure Storage-fiók nevét, a hozzáférési kulcsot, a blob-tároló nevét és a biztonsági másolat nevét:
 
@@ -222,7 +222,7 @@ A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több p
 > [!IMPORTANT]
 > A visszaállított szolgáltatás **SKU** -jának **meg kell egyeznie** a visszaállítani kívánt biztonsági másolati szolgáltatás SKU-jának.
 >
-> A szolgáltatás konfigurációjában (például API-k, házirendek, fejlesztői portál megjelenés) végrehajtott **módosítások** **felülírhatják**a visszaállítási műveletet.
+> A szolgáltatás konfigurációjában (például API-k, házirendek, fejlesztői portál megjelenés) végrehajtott **módosítások** **felülírhatják** a visszaállítási műveletet.
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 

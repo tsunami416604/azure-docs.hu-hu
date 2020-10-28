@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92358998"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787159"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Oktatóanyag: osztályozás, vizsgálat és válaszadás a biztonsági riasztásokra
 Security Center folyamatosan elemzi a hibrid Felhőbeli számítási feladatokat a fejlett Analitika és a fenyegetések felderítése révén, hogy figyelmeztessen a Felhőbeli erőforrásaiban esetlegesen rosszindulatú tevékenységekre. A riasztásokat más biztonsági termékekből és szolgáltatásokból is integrálhatja Security Centerba. A riasztások beadását követően gyors beavatkozásra van szükség a lehetséges biztonsági problémák kivizsgálásához és szervizeléséhez. 
@@ -31,7 +31,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 > * Biztonsági riasztás vizsgálata a kiváltó ok okának megállapításához
 > * Válaszadás a biztonsági riasztásokra, és az alapvető ok enyhítése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyagban szereplő funkciók átlépéséhez engedélyeznie kell az Azure Defender használatát. Az Azure Defender szolgáltatás díjmentesen kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). A gyors üzembe helyezés Security Center végigvezeti Önt a verziófrissítés [lépésein](security-center-get-started.md) .
@@ -49,7 +49,7 @@ Ezen a lapon áttekintheti a környezetében található aktív biztonsági rias
 Ha a riasztások súlyossága alapján osztályozásakor a riasztások fontosságát, a riasztásokat az első nagyobb súlyossággal kell kezelni. További tudnivalók a riasztások súlyosságáról: [Hogyan vannak besorolva a riasztások?](security-center-alerts-overview.md#how-are-alerts-classified).
 
 > [!TIP]
-> Azure Security Center csatlakozhat a legnépszerűbb SIEM-megoldásokhoz, beleértve az Azure Sentinelt is, és a riasztásokat a választott eszköztől használhatja. További információ a [riasztások Siem-re való exportálásáról](continuous-export.md).
+> Azure Security Center csatlakozhat a legnépszerűbb SIEM-megoldásokhoz, beleértve az Azure Sentinelt is, és a riasztásokat a választott eszköztől használhatja. További információ a [stream-riasztásokról a Siem, a SOAR vagy az IT Service Management megoldáshoz](export-to-siem.md).
 
 
 ## <a name="investigate-a-security-alert"></a>Biztonsági riasztás vizsgálata
@@ -87,14 +87,14 @@ Miután kivizsgálta a riasztást, és megértette a hatókörét, választ kaph
 1.  A logikai alkalmazások automatikus válaszokkal történő elindításához használja az **trigger automatikus válasza** szakaszt.
 1.  Ha az észlelt tevékenység *nem* rosszindulatú, akkor a **hasonló riasztások mellőzése** szakaszban letilthatja az ilyen típusú riasztásokat.
 
-1.  Ha befejezte a vizsgálatot a riasztásban, és a megfelelő módon válaszolt, módosítsa az állapotot elvetett **értékre**.
+1.  Ha befejezte a vizsgálatot a riasztásban, és a megfelelő módon válaszolt, módosítsa az állapotot elvetett **értékre** .
 
     :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Biztonsági riasztások listája lap":::
 
     Ezzel eltávolítja a riasztást a fő riasztások listájáról. A riasztások listája lapon található szűrő használatával megtekintheti az összes **elhagyott** állapottal rendelkező riasztást.
 
 1.  Javasoljuk, hogy visszajelzést nyújtson a Microsoftnak a riasztásról:
-    1. A riasztás **hasznosként** vagy **nem hasznosként**való megjelölése.
+    1. A riasztás **hasznosként** vagy **nem hasznosként** való megjelölése.
     1. Válasszon ki egy okot, és adjon hozzá egy megjegyzést.
 
         :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Biztonsági riasztások listája lap":::
@@ -108,9 +108,9 @@ A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre 
 
 Ha nem folytatja a folytatást, vagy le szeretné tiltani valamelyik funkciót:
 
-1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás és beállítások**lehetőséget.
+1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás és beállítások** lehetőséget.
 1. Válassza ki az adott előfizetést.
-1. A visszalépéshez válassza az **Azure Defender kikapcsolva**lehetőséget.
+1. A visszalépéshez válassza az **Azure Defender kikapcsolva** lehetőséget.
 1. Az automatikus kiépítés letiltásához nyissa meg az **adatgyűjtés** lapot, és állítsa be az **automatikus kiépítés** **beállítást.**
 4. Válassza a **Mentés** lehetőséget.
 

@@ -10,13 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 661622b296a7a81a8d4c203e86a7c8d61c386e5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 0da0a56a64aa9b4500d36da2f6c86fc4c07f4c0f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843226"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786054"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>A titkos kód elforgatásának automatizálása a hitelesítő adatok egy készletét használó erőforrásokhoz
 
@@ -44,9 +44,9 @@ Az alábbi telepítési hivatkozás használható, ha nincs meglévő Key Vault 
 
 [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget. Nevezze el a csoport **akvrotation**.
-1. Az **SQL**-rendszergazdai bejelentkezés területen írja be az SQL-rendszergazda bejelentkezési nevét. 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget. Nevezze el a csoport **akvrotation** .
+1. Az **SQL** -rendszergazdai bejelentkezés területen írja be az SQL-rendszergazda bejelentkezési nevét. 
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
     ![Erőforráscsoport létrehozása](../media/rotate-2.png)
@@ -84,12 +84,12 @@ A Function alkalmazáshoz a következő összetevők szükségesek:
 
    [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
-1. Az **erőforráscsoport** listában válassza a **akvrotation**lehetőséget.
-1. Az **SQL-kiszolgáló neve**mezőbe írja be az SQL Server nevét az elforgatáshoz használt jelszóval.
-1. A **Key Vault neve**mezőbe írja be a Key Vault nevét
-1. A **Függvényalkalmazás neve**mezőbe írja be a Function alkalmazás nevét.
-1. A **titok neve**mezőbe írja be a titkos kód nevét, ahová a rendszer a jelszót tárolja.
-1. A tárház **URL-címében**írja be a következőt: függvény kód GitHub helye ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp.git** )
+1. Az **erőforráscsoport** listában válassza a **akvrotation** lehetőséget.
+1. Az **SQL-kiszolgáló neve** mezőbe írja be az SQL Server nevét az elforgatáshoz használt jelszóval.
+1. A **Key Vault neve** mezőbe írja be a Key Vault nevét
+1. A **Függvényalkalmazás neve** mezőbe írja be a Function alkalmazás nevét.
+1. A **titok neve** mezőbe írja be a titkos kód nevét, ahová a rendszer a jelszót tárolja.
+1. A tárház **URL-címében** írja be a következőt: függvény kód GitHub helye ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp.git** )
 1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget.
 
@@ -115,7 +115,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-A Function alkalmazás létrehozásával és a felügyelt identitások Key Vault való elérésével kapcsolatos információkért tekintse meg a [Function-alkalmazás létrehozása a Azure Portal](/azure/azure-functions/functions-create-function-app-portal), a [felügyelt identitás használata a App Service és a Azure functions](/azure/app-service/overview-managed-identity)számára című témakört, és [rendeljen hozzá egy Key Vault hozzáférési szabályzatot a Azure Portal használatával](../general/assign-access-policy-portal.md).
+A Function alkalmazás létrehozásával és a felügyelt identitások Key Vault való elérésével kapcsolatos információkért tekintse meg a [Function-alkalmazás létrehozása a Azure Portal](../../azure-functions/functions-create-function-app-portal.md), a [felügyelt identitás használata a App Service és a Azure functions](../../app-service/overview-managed-identity.md)számára című témakört, és [rendeljen hozzá egy Key Vault hozzáférési szabályzatot a Azure Portal használatával](../general/assign-access-policy-portal.md).
 
 ### <a name="rotation-function"></a>Rotációs függvény
 Az előző lépésben üzembe helyezett esemény egy olyan eseményt használ, amely a Key Vault és az SQL-adatbázis frissítésével elindítja a titkos kód elforgatását. 
@@ -207,7 +207,7 @@ Egy rövid lejárati dátummal rendelkező titkos kulcs létrehozásához `Secre
 
 ## <a name="test-and-verify"></a>Tesztelés és ellenőrzés
 
-A titkos kód elforgatásának ellenőrzéséhez nyissa meg a **Key Vault**  >  **Secrets**:
+A titkos kód elforgatásának ellenőrzéséhez nyissa meg a **Key Vault**  >  **Secrets** :
 
 ![Ugrás a titkokra](../media/rotate-8.png)
 
@@ -228,10 +228,10 @@ A webalkalmazáshoz a következő összetevők szükségesek:
    [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json)
 
 1. Válassza ki a **akvrotation** erőforráscsoportot.
-1. Az **SQL-kiszolgáló neve**mezőbe írja be az SQL Server nevét az elforgatáshoz használt jelszóval.
-1. A **Key Vault neve**mezőbe írja be a Key Vault nevét
-1. A **titok neve**mezőbe írja be a titkos kód nevét, ahol a jelszó tárolva van
-1. A tárház **URL-címe**mezőbe írja be a következőt: webalkalmazás-kód GitHub helye ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** )
+1. Az **SQL-kiszolgáló neve** mezőbe írja be az SQL Server nevét az elforgatáshoz használt jelszóval.
+1. A **Key Vault neve** mezőbe írja be a Key Vault nevét
+1. A **titok neve** mezőbe írja be a titkos kód nevét, ahol a jelszó tárolva van
+1. A tárház **URL-címe** mezőbe írja be a következőt: webalkalmazás-kód GitHub helye ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** )
 1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget.
 
@@ -242,9 +242,9 @@ Ugrás a telepített alkalmazás URL-címére:
  
 https://akvrotation-app.azurewebsites.net/
 
-Amikor az alkalmazás megnyílik a böngészőben, látni fogja a **generált titkos értéket** , és egy **adatbázishoz kapcsolódó** , *igaz*értéket.
+Amikor az alkalmazás megnyílik a böngészőben, látni fogja a **generált titkos értéket** , és egy **adatbázishoz kapcsolódó** , *igaz* értéket.
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 
 - Oktatóanyag: [az erőforrások rotációja két hitelesítő adatokkal](tutorial-rotation-dual.md)
 - Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)

@@ -9,12 +9,12 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 1ec9884dbb8c3d02caaa7d8621905a32e7b1e36a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eb7984097b4edf34ed2f0214e1453246e12916f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84047544"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786751"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ A **Elastic Database** eszközök használatával könnyedén felskálázást k�
 * [Elastic Database felosztási-egyesítési eszköz](elastic-scale-overview-split-and-merge.md): áthelyezi az adatátvitelt a felosztott adatbázisok között. Ez az eszköz akkor hasznos, ha egy több-bérlős adatbázisból egy egybérlős adatbázisba helyezi át az adatáthelyezést (vagy fordítva). Lásd: [rugalmas adatbázis Split-Merge eszközének oktatóanyaga](elastic-scale-configure-deploy-split-and-merge.md).
 * [Rugalmas adatbázis-feladatok](elastic-jobs-overview.md): a feladatok segítségével nagy számú adatbázist kezelhet Azure SQL Databaseokban. Egyszerűen végezhet olyan adminisztratív műveleteket, mint a séma módosítása, a hitelesítő adatok kezelése, a hivatkozási adatok frissítései, a teljesítményadatok gyűjtése vagy a bérlő (ügyfél) telemetria-gyűjtemény a feladatok használatával.
 * [Elastic Database Query](elastic-query-overview.md) (előzetes verzió): lehetővé teszi, hogy olyan Transact-SQL-lekérdezést futtasson, amely több adatbázisra is kiterjed. Ez lehetővé teszi, hogy a rendszer olyan jelentéskészítő eszközöket létesítsen, mint például az Excel, a Power BI, a tabló stb.).
-* [Rugalmas tranzakciók](elastic-transactions-overview.md): Ez a funkció lehetővé teszi, hogy több adatbázisra kiterjedő tranzakciókat futtasson. A rugalmas adatbázis-tranzakciók az ADO .NET-et használó .NET-alkalmazások számára érhetők el, és az ismerős programozási felülettel integrálhatók a [System. Transaction osztályok](https://msdn.microsoft.com/library/system.transactions.aspx)használatával.
+* [Rugalmas tranzakciók](elastic-transactions-overview.md): Ez a funkció lehetővé teszi, hogy több adatbázisra kiterjedő tranzakciókat futtasson. A rugalmas adatbázis-tranzakciók az ADO .NET-et használó .NET-alkalmazások számára érhetők el, és az ismerős programozási felülettel integrálhatók a [System. Transaction osztályok](/dotnet/api/system.transactions)használatával.
 
 Az alábbi ábra egy olyan architektúrát mutat be, amely tartalmazza az adatbázisok gyűjteményéhez kapcsolódó **Elastic Database funkciókat** .
 
@@ -33,7 +33,7 @@ Ebben a grafikában az adatbázis színei a sémákat jelölik. Azonos színnel 
 
 1. Az Azure-ban az **SQL Database-adatbázisok** horizontálisan üzemelő architektúrán keresztül futnak.
 2. A **Elastic Database ügyféloldali kódtár** használatával kezelhetők a szegmensek.
-3. Az adatbázisok egy részhalmaza **rugalmas készletbe**kerül. (Lásd: [Mi az a készlet?](elastic-pool-overview.md)).
+3. Az adatbázisok egy részhalmaza **rugalmas készletbe** kerül. (Lásd: [Mi az a készlet?](elastic-pool-overview.md)).
 4. Az **Elastic Database feladatok** ütemezett vagy ad hoc T-SQL-parancsfájlokat futtatnak az összes adatbázison.
 5. A **felosztott egyesítés eszköz** az adatok egyik szegmensből egy másikba való áthelyezésére szolgál.
 6. A **Elastic Database lekérdezés** lehetővé teszi egy olyan lekérdezés írását, amely az összes adatbázisra kiterjed a szegmens készletében.
@@ -89,7 +89,7 @@ Más forgatókönyvek esetén több bérlőt is becsomagolhat adatbázisokba, é
 ### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Adatok áthelyezése többről egybérlős adatbázisokba
 SaaS-alkalmazások létrehozásakor jellemző, hogy a leendő ügyfelek számára a szoftver próbaverzióját kínálja. Ebben az esetben költséghatékony, ha több-bérlős adatbázist használ az adatkezeléshez. Ha azonban az ügyfél válik elérhetővé, akkor egy egybérlős adatbázis jobb, mivel jobb teljesítményt nyújt. Ha az ügyfél a próbaidőszak alatt hozta létre az adatait, a [Split-Merge eszközzel](elastic-scale-overview-split-and-merge.md) helyezheti át a több-bérlő adatait az új egybérlős adatbázisba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az ügyféloldali függvénytárat bemutató minta alkalmazáshoz lásd: Ismerkedés [a Elastic Database eszközökkel](elastic-scale-get-started.md).
 
 Ha a meglévő adatbázisokat az eszközök használatára szeretné átalakítani, tekintse meg a [meglévő adatbázisok áttelepítésének felskálázását](elastic-convert-to-use-elastic-tools.md)ismertető témakört.
@@ -104,4 +104,3 @@ A rugalmas készletre vonatkozó részletek megtekintéséhez tekintse meg a [ru
 [2]:./media/elastic-scale-introduction/h_versus_vert.png
 [3]:./media/elastic-scale-introduction/overview.png
 [4]:./media/elastic-scale-introduction/single_v_multi_tenant.png
-

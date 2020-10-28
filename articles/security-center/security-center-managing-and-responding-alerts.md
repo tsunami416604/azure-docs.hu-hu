@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e17c7d6618d67d66c89875696c5c529af3a85ea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75ca0438336825bf8d4bbdc6e08eca109f430fde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440558"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785918"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 
@@ -46,7 +46,7 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 
    ![A Biztonsági riasztások oldal a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-1. A megjelenített riasztások szűréséhez kattintson a **szűrő**lehetőségre, és a megnyíló **szűrő** panelen válassza ki az alkalmazni kívánt szűrési beállításokat. A lista a kiválasztott szűrőnek megfelelően frissíti a frissítéseket. A szűrés nagyon hasznos lehet. Például olyankor, ha az elmúlt 24 órában történt biztonsági riasztásokat szeretné kezelni, mert egy, a rendszerbe történő lehetséges behatolást vizsgál.
+1. A megjelenített riasztások szűréséhez kattintson a **szűrő** lehetőségre, és a megnyíló **szűrő** panelen válassza ki az alkalmazni kívánt szűrési beállításokat. A lista a kiválasztott szűrőnek megfelelően frissíti a frissítéseket. A szűrés nagyon hasznos lehet. Például olyankor, ha az elmúlt 24 órában történt biztonsági riasztásokat szeretné kezelni, mert egy, a rendszerbe történő lehetséges behatolást vizsgál.
 
     ![A riasztások szűrése a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
 
@@ -80,4 +80,4 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 Ebből a dokumentumból megtudhatta, hogyan tekintheti meg a biztonsági riasztásokat. A kapcsolódó anyagokkal kapcsolatban lásd a következő lapokat:
 
 - [Riasztás-elnyomási szabályok konfigurálása](alerts-suppression-rules.md)
-- [A riasztásokra és javaslatokra adott válaszok automatizálása a munkafolyamat-automatizálással](workflow-automation.md)
+- [Security Center eseményindítóra adott válaszok automatizálása](workflow-automation.md)
