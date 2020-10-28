@@ -7,22 +7,22 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
-ms.openlocfilehash: 55fff7e4e36f066ba8ae5734e483df393fbd72cd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e20733cb4b93fcfac7606895746645727f12d6c8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488656"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783827"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Azure Storage Explorer blob verziószámozási útmutatója
 
-Microsoft Azure Storage Explorer a blob-verziók egyszerű elérését és kezelését teszi lehetővé. Ez az útmutató segít megérteni, hogyan működik a blob verziószámozása Storage Explorerban. A folytatás előtt javasoljuk, hogy olvassa el a [blob verziószámozásával](/azure/storage/blobs/versioning-overview)kapcsolatos további tudnivalókat.
+Microsoft Azure Storage Explorer a blob-verziók egyszerű elérését és kezelését teszi lehetővé. Ez az útmutató segít megérteni, hogyan működik a blob verziószámozása Storage Explorerban. A folytatás előtt javasoljuk, hogy olvassa el a [blob verziószámozásával](../blobs/versioning-overview.md)kapcsolatos további tudnivalókat.
 
 ## <a name="terminology"></a>Terminológia
 
 Ez a szakasz néhány definíciót tartalmaz, amelyek segítenek megérteni a használatot ebben a cikkben.
 
-- Soft DELETE: egy alternatív automatikus adatvédelmi funkció. További információ a [Soft delete](/azure/storage/blobs/soft-delete-blob-overview)szolgáltatásról.
+- Soft DELETE: egy alternatív automatikus adatvédelmi funkció. További információ a [Soft delete](../blobs/soft-delete-blob-overview.md)szolgáltatásról.
 - Aktív blob: A blob vagy A blob verziója aktív állapotban jön létre. Csak aktív állapotban lévő blobokon vagy blob-verziókon lehet működni.
 - Soft-Deleted blob: A blob vagy A blob verziója nem törölhető. A Soft-Deleted Blobok csak a megőrzési időszakra érvényesek.
 - BLOB verziója: engedélyezve lett A blob verziószámozásával létrehozott blob. Minden blob-verzió egy verzióazonosító-AZONOSÍTÓval van társítva.
@@ -117,5 +117,5 @@ Minden blob-verzió saját hozzáférési szintű. A blob-verziók hozzáférés
 
 ## <a name="see-also"></a>Lásd még:
 
-* [BLOB verziószámozása](/azure/storage/blobs/versioning-overview)
-* [Blobok helyreállítható törlése](/azure/storage/blobs/soft-delete-blob-overview)
+* [BLOB verziószámozása](../blobs/versioning-overview.md)
+* [Blobok helyreállítható törlése](../blobs/soft-delete-blob-overview.md)

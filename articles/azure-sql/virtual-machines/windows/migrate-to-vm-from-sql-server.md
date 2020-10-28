@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 83b29252038f88bf8b81299303442abd0cc36814
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7375bf4f408f4ec24b7cc288245720525d8e49eb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298660"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785544"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>SQL Server adatbázis migrálása egy Azure-beli virtuális gépen SQL Server
 
@@ -42,8 +42,8 @@ Az elsődleges áttelepítési módszerek a következők:
 * Válassza le az adatok és naplófájlok fájljait, másolja őket az Azure Blob Storage-ba, majd csatolja őket az Azure-beli virtuális gépen lévő SQL Serverhoz az URL-címről.
 * Alakítsa át a helyszíni fizikai gépet egy Hyper-V virtuális merevlemezre, töltse fel az Azure Blob Storage-ba, majd telepítse azt új virtuális gépként a feltöltött VHD használatával.
 * A merevlemez szállítása a Windows import/export szolgáltatás használatával.
-* Ha a helyszíni AlwaysOn rendelkezésre állási csoporttal rendelkezik, az Azure- [replika hozzáadása varázslóval](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) hozzon létre egy replikát az Azure-ban, a feladatátvételt, és irányítsa a felhasználókat az Azure Database-példányra.
-* SQL Server [tranzakciós replikálással](https://msdn.microsoft.com/library/ms151176.aspx) konfigurálja az Azure SQL Server-példányt előfizetőként, tiltsa le a replikációt, és irányítsa a felhasználókat az Azure Database-példányra.
+* Ha a helyszíni AlwaysOn rendelkezésre állási csoporttal rendelkezik, az Azure- [replika hozzáadása varázslóval](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-onprem-availability) hozzon létre egy replikát az Azure-ban, a feladatátvételt, és irányítsa a felhasználókat az Azure Database-példányra.
+* SQL Server [tranzakciós replikálással](/sql/relational-databases/replication/transactional/transactional-replication) konfigurálja az Azure SQL Server-példányt előfizetőként, tiltsa le a replikációt, és irányítsa a felhasználókat az Azure Database-példányra.
 
 > [!TIP]
 > Ugyanezeket a technikákat használhatja az adatbázisok SQL Server virtuális gépek közötti áthelyezéséhez az Azure-ban. Nem támogatott például, hogy egy SQL Server Gallery-rendszerkép virtuális gépet egy verzióról vagy kiadásról egy másikra frissítsen. Ebben az esetben létre kell hoznia egy új SQL Server VMt az új verzióval/kiadással, majd a cikkben ismertetett áttelepítési módszerek egyikének használatával kell áthelyeznie az adatbázisokat. 
@@ -57,19 +57,19 @@ Az adatbázis-áttelepítési folyamat során az állásidő minimalizálásáho
 Ha a fenti metódusok használata nem lehetséges, akkor manuálisan telepítse át az adatbázist. Általánosságban elmondható, hogy az adatbázis biztonsági mentését választja, majd az adatbázis biztonsági másolatát az Azure-ba másolja, majd visszaállítja az adatbázist. Az adatbázisfájlok saját maguk is másolhatók az Azure-ba, majd csatolhatók. Az adatbázisok Azure-beli virtuális gépekre való áttelepítésének több módja is van.
 
 > [!NOTE]
-> Ha a SQL Server régebbi verzióiról SQL Server 2014-re vagy SQL Server 2016-re frissít, érdemes megfontolnia, hogy szükség van-e a módosításokra. Javasoljuk, hogy az áttelepítési projekt részeként a SQL Server új verziója által nem támogatott szolgáltatások összes függőségét foglalkozzon. További információ a támogatott kiadásokról és forgatókönyvekről: [frissítés SQL Serverra](https://msdn.microsoft.com/library/bb677622.aspx).
+> Ha a SQL Server régebbi verzióiról SQL Server 2014-re vagy SQL Server 2016-re frissít, érdemes megfontolnia, hogy szükség van-e a módosításokra. Javasoljuk, hogy az áttelepítési projekt részeként a SQL Server új verziója által nem támogatott szolgáltatások összes függőségét foglalkozzon. További információ a támogatott kiadásokról és forgatókönyvekről: [frissítés SQL Serverra](/sql/database-engine/install-windows/upgrade-sql-server).
 
 A következő táblázat felsorolja az egyes elsődleges áttelepítési módszereket, és bemutatja, hogy az egyes módszerek használata a legmegfelelőbb-e.
 
 | Módszer | Forrás adatbázis verziója | Céladatbázis verziója | Forrás-adatbázis biztonsági másolatának mérete korlátozás | Jegyzetek |
 | --- | --- | --- | --- | --- |
-| [Helyszíni biztonsági mentés tömörítéssel és a biztonságimásolat-fájl manuális másolása az Azure-beli virtuális gépre](#back-up-and-restore) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Ez a technika egyszerű és jól tesztelt az adatbázisok számítógépek közötti áthelyezéséhez. |
+| [Helyszíni biztonsági mentés tömörítéssel és a biztonságimásolat-fájl manuális másolása az Azure-beli virtuális gépre](#back-up-and-restore) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](../../../index.yml) | Ez a technika egyszerű és jól tesztelt az adatbázisok számítógépek közötti áthelyezéséhez. |
 | [Készítsen biztonsági másolatot az URL-címre, és állítsa vissza az Azure-beli virtuális gépre az URL-címről](#backup-to-url-and-restore-from-url) |SQL Server 2012 SP1 CU2 vagy újabb | SQL Server 2012 SP1 CU2 vagy újabb | < 12,8 TB SQL Server 2016, ellenkező esetben < 1 TB | Ez a módszer csak egy másik módszer a biztonságimásolat-fájl áthelyezésére a virtuális gépre az Azure Storage használatával. |
-| [Válassza le, majd másolja az adatok és a naplófájlokat az Azure Blob Storage-ba, majd csatolja SQL Server az Azure-beli virtuális gépen az URL-címről](#detach-and-attach-from-a-url) | SQL Server 2005 vagy újabb |SQL Server 2014 vagy újabb | [Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Akkor használja ezt a módszert, ha [ezeket a fájlokat az Azure Blob Storage szolgáltatással tervezi tárolni](https://msdn.microsoft.com/library/dn385720.aspx) , és csatolja őket egy Azure-beli virtuális gépen futó SQL Serverhoz, különösen nagy méretű adatbázisokhoz |
-| [Helyszíni gép konvertálása Hyper-V virtuális merevlemezekre, feltöltés az Azure Blob Storage-ba, majd új virtuális gép üzembe helyezése feltöltött VHD használatával](#convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Akkor használja, ha [saját SQL Server-licencet](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md)használ, és egy olyan adatbázist telepít át, amelyet a SQL Server egy régebbi verzióján fog futtatni, vagy ha a rendszer-és felhasználói adatbázisokat más felhasználói adatbázisokból és/vagy rendszer-adatbázisokból származó áttelepítésének részeként együtt telepíti. |
-| [Merevlemez-meghajtó kiszállítása a Windows import/export szolgáltatással](#ship-a-hard-drive) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |A [Windows import/export szolgáltatás](../../../storage/common/storage-import-export-service.md) használata, ha a manuális másolási módszer túl lassú, például nagyon nagy méretű adatbázisokkal |
-| [Az Azure-replika hozzáadása varázsló használata](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) |SQL Server 2012 vagy újabb |SQL Server 2012 vagy újabb |[Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Csökkentse az állásidőt, ha mindig helyszíni üzembe helyezést használ |
-| [SQL Server tranzakciós replikáció használata](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Akkor használja, ha csökkentenie kell az állásidőt, és nincs mindig helyszíni üzembe helyezése |
+| [Válassza le, majd másolja az adatok és a naplófájlokat az Azure Blob Storage-ba, majd csatolja SQL Server az Azure-beli virtuális gépen az URL-címről](#detach-and-attach-from-a-url) | SQL Server 2005 vagy újabb |SQL Server 2014 vagy újabb | [Azure VM-tároló korlátja](../../../index.yml) | Akkor használja ezt a módszert, ha [ezeket a fájlokat az Azure Blob Storage szolgáltatással tervezi tárolni](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) , és csatolja őket egy Azure-beli virtuális gépen futó SQL Serverhoz, különösen nagy méretű adatbázisokhoz |
+| [Helyszíni gép konvertálása Hyper-V virtuális merevlemezekre, feltöltés az Azure Blob Storage-ba, majd új virtuális gép üzembe helyezése feltöltött VHD használatával](#convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](../../../index.yml) |Akkor használja, ha [saját SQL Server-licencet](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md)használ, és egy olyan adatbázist telepít át, amelyet a SQL Server egy régebbi verzióján fog futtatni, vagy ha a rendszer-és felhasználói adatbázisokat más felhasználói adatbázisokból és/vagy rendszer-adatbázisokból származó áttelepítésének részeként együtt telepíti. |
+| [Merevlemez-meghajtó kiszállítása a Windows import/export szolgáltatással](#ship-a-hard-drive) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](../../../index.yml) |A [Windows import/export szolgáltatás](../../../storage/common/storage-import-export-service.md) használata, ha a manuális másolási módszer túl lassú, például nagyon nagy méretű adatbázisokkal |
+| [Az Azure-replika hozzáadása varázsló használata](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-onprem-availability) |SQL Server 2012 vagy újabb |SQL Server 2012 vagy újabb |[Azure VM-tároló korlátja](../../../index.yml) |Csökkentse az állásidőt, ha mindig helyszíni üzembe helyezést használ |
+| [SQL Server tranzakciós replikáció használata](/sql/relational-databases/replication/transactional/transactional-replication) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](../../../index.yml) |Akkor használja, ha csökkentenie kell az állásidőt, és nincs mindig helyszíni üzembe helyezése |
 
 ## <a name="back-up-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -82,14 +82,14 @@ Készítsen biztonsági másolatot az adatbázisról a tömörítéssel, másolj
 
 ## <a name="backup-to-url-and-restore-from-url"></a>Biztonsági mentés URL-címre és visszaállítás URL-címről
 
-Helyi fájlra történő biztonsági mentés helyett használhatja a [biztonsági mentést az URL-címre](https://msdn.microsoft.com/library/dn435916.aspx) , majd visszaállíthatja a virtuális gépre az URL-címet. A SQL Server 2016 támogatja a csíkozott biztonságimásolat-készleteket. Ajánlott teljesítményre, és a Blobok méretének túllépéséhez szükségesek. A nagy méretű adatbázisok esetében ajánlott a [Windows import/export szolgáltatás](../../../storage/common/storage-import-export-service.md) használata.
+Helyi fájlra történő biztonsági mentés helyett használhatja a [biztonsági mentést az URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-to-url) , majd visszaállíthatja a virtuális gépre az URL-címet. A SQL Server 2016 támogatja a csíkozott biztonságimásolat-készleteket. Ajánlott teljesítményre, és a Blobok méretének túllépéséhez szükségesek. A nagy méretű adatbázisok esetében ajánlott a [Windows import/export szolgáltatás](../../../storage/common/storage-import-export-service.md) használata.
 
 ## <a name="detach-and-attach-from-a-url"></a>Leválasztás és csatolás URL-címről
 
-Válassza le az adatbázist és a naplófájlokat, majd vigye át őket az [Azure Blob Storage](https://msdn.microsoft.com/library/dn385720.aspx)-ba. Ezután csatolja az adatbázist az Azure-beli virtuális gépen lévő URL-címről. Ezt a módszert akkor használja, ha azt szeretné, hogy a fizikai adatbázisfájlok a blob Storage-ban legyenek tárolva, ami nagyon nagy adatbázisok esetén hasznos lehet. A következő általános lépésekkel telepítheti át a felhasználói adatbázisokat a manuális módszer használatával:
+Válassza le az adatbázist és a naplófájlokat, majd vigye át őket az [Azure Blob Storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)-ba. Ezután csatolja az adatbázist az Azure-beli virtuális gépen lévő URL-címről. Ezt a módszert akkor használja, ha azt szeretné, hogy a fizikai adatbázisfájlok a blob Storage-ban legyenek tárolva, ami nagyon nagy adatbázisok esetén hasznos lehet. A következő általános lépésekkel telepítheti át a felhasználói adatbázisokat a manuális módszer használatával:
 
 1. Válassza le az adatbázisfájlok a helyszíni adatbázis-példányból.
-2. Másolja a leválasztott adatbázisfájlok az Azure Blob Storage-ba a [AZCopy parancssori segédprogram](../../../storage/common/storage-use-azcopy.md)használatával.
+2. Másolja a leválasztott adatbázisfájlok az Azure Blob Storage-ba a [AZCopy parancssori segédprogram](../../../storage/common/storage-use-azcopy-v10.md)használatával.
 3. Csatolja az adatbázisfájlok az Azure URL-címről az SQL Server példányhoz az Azure-beli virtuális gépen.
 
 ## <a name="convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm"></a>Konvertálás virtuális gépre, feltölthető egy URL-címre, és üzembe helyezése új virtuális gépként
@@ -97,7 +97,7 @@ Válassza le az adatbázist és a naplófájlokat, majd vigye át őket az [Azur
 Ezzel a módszerrel az összes rendszer-és felhasználói adatbázist áttelepítheti egy helyszíni SQL Server-példányból egy Azure-beli virtuális gépre. A következő általános lépésekkel telepítheti át a teljes SQL Server példányt a manuális metódus használatával:
 
 1. Fizikai vagy virtuális gépek átalakítása Hyper-V virtuális merevlemezekre.
-2. Töltse fel a VHD-fájlokat az Azure Storage [-ba az Add-AzureVHD parancsmag](https://msdn.microsoft.com/library/windowsazure/dn495173.aspx)használatával.
+2. Töltse fel a VHD-fájlokat az Azure Storage [-ba az Add-AzureVHD parancsmag](/previous-versions/azure/dn495173(v=azure.100))használatával.
 3. Helyezzen üzembe egy új virtuális gépet a feltöltött virtuális merevlemez használatával.
 
 > [!NOTE]
@@ -114,5 +114,4 @@ További információ: [SQL Server az Azure Virtual Machines áttekintése](sql-
 > [!TIP]
 > Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](frequently-asked-questions-faq.md).
 
-A rögzített lemezképből származó SQL Server Azure-beli virtuális gépeken való létrehozásával kapcsolatos utasításokért lásd: [tippek & trükkök a "klónozás" Azure SQL-alapú virtuális gépeken a rögzített lemezképek](https://blogs.msdn.microsoft.com/psssql/2016/07/06/tips-tricks-on-cloning-azure-sql-virtual-machines-from-captured-images/) alapján a CSS SQL Server Engineers blogban.
-
+A rögzített lemezképből származó SQL Server Azure-beli virtuális gépeken való létrehozásával kapcsolatos utasításokért lásd: [tippek & trükkök a "klónozás" Azure SQL-alapú virtuális gépeken a rögzített lemezképek](/archive/blogs/psssql/tips-tricks-on-cloning-azure-sql-virtual-machines-from-captured-images) alapján a CSS SQL Server Engineers blogban.

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ea413c3879f61f735290717d06a132048169971
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ca3b218da7835ee9f3e9e8653f4829767a1ffb07
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426692"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783470"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a .NET-hez
 
@@ -34,12 +34,12 @@ További források:
 * [API-referenciadokumentáció](/dotnet/api/azure.storage.queues)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [Példák](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Példák](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
 * Az operációs rendszer jelenlegi [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Győződjön meg arról, hogy az SDK-t és nem a futtatókörnyezetet kapja meg.
 
 ## <a name="setting-up"></a>Beállítás
@@ -48,9 +48,9 @@ Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure ü
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *QueuesQuickstartV12*nevű .net Core-alkalmazást.
+Hozzon létre egy *QueuesQuickstartV12* nevű .net Core-alkalmazást.
 
-1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *QueuesQuickstartV12*nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *QueuesQuickstartV12* nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs* .
 
    ```console
    dotnet new console -n QueuesQuickstartV12
@@ -327,7 +327,7 @@ Ha az alkalmazás szünetelteti az üzenetek fogadását, akkor a [Azure Portalb
 
 Nyomja le az **ENTER** billentyűt az üzenetek fogadásához és törléséhez. Ha a rendszer kéri, nyomja meg ismét az **ENTER** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre üzenetsor-t, és hogyan adhat hozzá üzeneteket az aszinkron .NET-kód használatával. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 

@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276924"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783980"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Vészhelyreállítás és tárfiók feladatátvétele
 
@@ -54,9 +54,9 @@ Fontos, hogy az alkalmazást a kezdettől kezdve a magas rendelkezésre állás 
 Emellett vegye figyelembe ezeket az ajánlott eljárásokat az Azure Storage-beli adattárolási adatai magas rendelkezésre állásának fenntartásához:
 
 - **Lemezek:** A [Azure Backup](https://azure.microsoft.com/services/backup/) használatával biztonsági mentést készíthet az Azure-beli virtuális gépek által használt VM-lemezekről. Vegye fontolóra a [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) használatát a virtuális gépek biztonságának biztosítása érdekében regionális katasztrófa esetén is.
-- **Blobok letiltása:** Ha a [AzCopy](storage-use-azcopy.md), a [Azure PowerShell](/powershell/module/az.storage/)vagy az [Azure adatátviteli függvénytárat](storage-use-data-movement-library.md)használja, a [Soft delete](../blobs/storage-blob-soft-delete.md) bekapcsolásával védelmet biztosíthat az objektum-szintű törlések és a felülírások ellen, vagy más régióba másolja a blokk blobokat egy másikba.
-- **Fájlok:** A [AzCopy](storage-use-azcopy.md) vagy a [Azure PowerShell](/powershell/module/az.storage/) segítségével másolja át a fájlokat egy másik különböző régióban lévő Storage-fiókba.
-- **Táblák:** a [AzCopy](storage-use-azcopy.md) használatával exportálhatja a tábla-és más tárolási fiókokat egy másik régióban.
+- **Blobok letiltása:** Ha a [AzCopy](./storage-use-azcopy-v10.md), a [Azure PowerShell](/powershell/module/az.storage/)vagy az [Azure adatátviteli függvénytárat](storage-use-data-movement-library.md)használja, a [Soft delete](../blobs/soft-delete-blob-overview.md) bekapcsolásával védelmet biztosíthat az objektum-szintű törlések és a felülírások ellen, vagy más régióba másolja a blokk blobokat egy másikba.
+- **Fájlok:** A [AzCopy](./storage-use-azcopy-v10.md) vagy a [Azure PowerShell](/powershell/module/az.storage/) segítségével másolja át a fájlokat egy másik különböző régióban lévő Storage-fiókba.
+- **Táblák:** a [AzCopy](./storage-use-azcopy-v10.md) használatával exportálhatja a tábla-és más tárolási fiókokat egy másik régióban.
 
 ## <a name="track-outages"></a>Kimaradások nyomon követése
 
@@ -132,7 +132,7 @@ Mivel az Azure Storage erőforrás-szolgáltató nem hajtja végre a feladatátv
 
 ### <a name="azure-virtual-machines"></a>Azure-beli virtuális gépek
 
-Az Azure Virtual Machines (VM) nem végez feladatátvételt a fiók feladatátvételének részeként. Ha az elsődleges régió elérhetetlenné válik, és feladatátvételt hajt végre a másodlagos régióban, akkor a feladatátvételt követően újra létre kell hoznia a virtuális gépeket. Emellett lehetséges, hogy a fiók feladatátvételével kapcsolatos adatvesztés történik. A Microsoft az Azure-beli virtuális gépekre jellemző, [magas rendelkezésre állású](../../virtual-machines/windows/manage-availability.md) és vész- [helyreállítási](../../virtual-machines/windows/backup-recovery.md) útmutatót javasolja.
+Az Azure Virtual Machines (VM) nem végez feladatátvételt a fiók feladatátvételének részeként. Ha az elsődleges régió elérhetetlenné válik, és feladatátvételt hajt végre a másodlagos régióban, akkor a feladatátvételt követően újra létre kell hoznia a virtuális gépeket. Emellett lehetséges, hogy a fiók feladatátvételével kapcsolatos adatvesztés történik. A Microsoft az Azure-beli virtuális gépekre jellemző, [magas rendelkezésre állású](../../virtual-machines/manage-availability.md) és vész- [helyreállítási](../../virtual-machines/backup-recovery.md) útmutatót javasolja.
 
 ### <a name="azure-unmanaged-disks"></a>Nem felügyelt Azure-lemezek
 
@@ -162,7 +162,7 @@ A fiók feladatátvétele nem támogatja a következő szolgáltatásokat és sz
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Adatok másolása a feladatátvétel alternatívájaként
 
-Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagoshoz, akkor megtervezheti, hogy az alkalmazás a másodlagos végpontról olvasson. Ha nem szeretné átvenni a feladatátvételt az elsődleges régió meghibásodása esetén, olyan eszközöket használhat, mint például a [AzCopy](storage-use-azcopy.md), a [Azure PowerShell](/powershell/module/az.storage/)vagy az [Azure adatátviteli függvénytár](../common/storage-use-data-movement-library.md) , amellyel a másodlagos régióban lévő Storage-fiókjából egy másik Storage-fiókba másolhatja az adatait egy nem érintett régióban. Ezután a Storage-fiókra irányíthatja az alkalmazásokat az olvasási és az írási rendelkezésre álláshoz is.
+Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagoshoz, akkor megtervezheti, hogy az alkalmazás a másodlagos végpontról olvasson. Ha nem szeretné átvenni a feladatátvételt az elsődleges régió meghibásodása esetén, olyan eszközöket használhat, mint például a [AzCopy](./storage-use-azcopy-v10.md), a [Azure PowerShell](/powershell/module/az.storage/)vagy az [Azure adatátviteli függvénytár](../common/storage-use-data-movement-library.md) , amellyel a másodlagos régióban lévő Storage-fiókjából egy másik Storage-fiókba másolhatja az adatait egy nem érintett régióban. Ezután a Storage-fiókra irányíthatja az alkalmazásokat az olvasási és az írási rendelkezésre álláshoz is.
 
 > [!CAUTION]
 > A fiók feladatátvételét nem szabad az adatáttelepítési stratégia részeként használni.

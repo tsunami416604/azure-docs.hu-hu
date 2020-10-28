@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 08f677c23cce6eb840a1caee15dcddf6c8311517
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488690"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784048"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Azure-megoldás kiválasztása adatátvitelhez
 
@@ -71,14 +71,14 @@ Az Azure Storage-fiókját Azure Portalban is megtekintheti, és kiválaszthatja
 ## <a name="next-steps"></a>Következő lépések
 
 - [Ismerkedjen meg Azure Storage Explorerával](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [Olvassa el a AzCopy áttekintését](/azure/storage/common/storage-use-azcopy-v10).
+- [Olvassa el a AzCopy áttekintését](./storage-use-azcopy-v10.md).
 - [Rövid útmutató: Blobok feltöltése, letöltése és listázása a PowerShell-lel](../blobs/storage-quickstart-blobs-powershell.md)
 - [Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel](../blobs/storage-quickstart-blobs-cli.md)
 - Ismerkedjen meg a következőkkel:
 
-    - [Az offline átvitelek Azure Data Box, Azure Data Box Disk és Azure Data Box Heavy](/azure/databox/).
-    - [Online átvitelek Azure Data Box Gateway és Azure stack Edge](/azure/databox-online/).
-- [Ismerje meg, mi az Azure Data Factory](/azure/data-factory/copy-activity-overview).
+    - [Az offline átvitelek Azure Data Box, Azure Data Box Disk és Azure Data Box Heavy](../../databox/index.yml).
+    - [Online átvitelek Azure Data Box Gateway és Azure stack Edge](../../databox-online/index.yml).
+- [Ismerje meg, mi az Azure Data Factory](../../data-factory/copy-activity-overview.md).
 - Adatok átvitele a REST API-k használatával
 
     - [A .NET-ben](/dotnet/api/overview/azure/storage)

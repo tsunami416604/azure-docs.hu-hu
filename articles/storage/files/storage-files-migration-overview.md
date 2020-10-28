@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654259"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785612"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
@@ -34,11 +34,11 @@ A Migrálás kulcsa a fájloknak az aktuális tárolási helyről az Azure-ba va
 
 Íme a fájl két alapvető összetevője:
 
-- **Adatfolyam: egy**fájl adatfolyama tárolja a fájl tartalmát.
-- **Fájl metaadatai**: a fájl metaadatai rendelkeznek a következő alösszetevőkkel:
+- **Adatfolyam: egy** fájl adatfolyama tárolja a fájl tartalmát.
+- **Fájl metaadatai** : a fájl metaadatai rendelkeznek a következő alösszetevőkkel:
    * Fájlattribútumok, például írásvédett
    * Fájlengedélyek, amelyek *NTFS-engedélyekként* , illetve *fájl-és mappa-ACL* -ként hívhatók.
-   * Időbélyegek, amelyek többsége a létrehozás és a legutóbbi módosítás időbélyege
+   * Időbélyegek, a legtöbb esetben a létrehozás és az utolsó módosítás időbélyege
    * Egy alternatív adatfolyam, amely a nem szabványos tulajdonságok nagyobb mennyiségének tárolására szolgáló terület
 
 Az áttelepítés során a fájlok hűségét a következőkre lehet definiálni:
@@ -111,7 +111,7 @@ Több fájlmásolás-eszköz is elérhető a Microsofttól és másoktól. Az á
 
     Amikor első alkalommal futtatja az eszközt, az átmásolja az adatmennyiséget. Ez a kezdeti Futtatás akár egy darabig is tarthat. Gyakran hosszabb ideig tart, mint amennyire szeretné, hogy az adatforrást offline állapotba vegyék az üzleti folyamatok számára.
 
-    Ha egy forrást egy célhelyre tükröz (a **Robocopy/Mir**hasonlóan), az eszközt ugyanezen a forráson és a célon is futtathatja. A Futtatás sokkal gyorsabb, mert csak az előző Futtatás után megjelenő források módosításait kell továbbítania. A másolási eszköz újbóli futtatása így jelentősen csökkentheti az állásidőt.
+    Ha egy forrást egy célhelyre tükröz (a **Robocopy/Mir** hasonlóan), az eszközt ugyanezen a forráson és a célon is futtathatja. A Futtatás sokkal gyorsabb, mert csak az előző Futtatás után megjelenő források módosításait kell továbbítania. A másolási eszköz újbóli futtatása így jelentősen csökkentheti az állásidőt.
 
 Az alábbi táblázat a Microsoft-eszközöket és az Azure-fájlmegosztás jelenlegi alkalmazhatóságát sorolja fel:
 
@@ -121,7 +121,7 @@ Az alábbi táblázat a Microsoft-eszközöket és az Azure-fájlmegosztás jele
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Natívan integrálva van az Azure-fájlmegosztásba. | Teljes hűség. * |
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Storage áttelepítési szolgáltatás | Közvetetten támogatott. Az Azure-fájlmegosztás hálózati meghajtóként is csatlakoztatható SMS-célkiszolgálón. | Teljes hűség. * |
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, 10,4-es vagy újabb verzió| Támogatott. | Teljes hűség. * |
-|![Nem teljes mértékben ajánlott](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Támogatott. | Nem másolja a metaadatokat. [A Data Box a Azure file Sync használatával használható](storage-sync-offline-data-transfer.md). |
+|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Támogatott. | A DataBox mostantól teljes mértékben támogatja a metaadatokat. A [Data Box a Azure file Sync használatával együtt is használható](storage-sync-offline-data-transfer.md). |
 |![Nem teljes mértékben ajánlott](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer, 1,14-es verzió | Támogatott. | Nem másolja át az ACL-eket. Az időbélyegeket támogatja.  |
 |![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Támogatott. | Nem másolja a metaadatokat. |
 |||||
@@ -144,7 +144,7 @@ Az eszköz használatával perspektívát hozhat létre [Azure file Sync közpon
 
 Az eszköz tesztelt verziója a 4.4.1-es verzió. Kompatibilis a Felhőbeli rétegbeli fájlokkal. Az eszköz a normál működés közben nem idézi elő a rétegekből származó fájlok felidézését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 1. Hozzon létre egy tervet, amely az Azure-fájlmegosztás (csak felhőalapú vagy hibrid) telepítését kívánja használni.
 1. Tekintse át az elérhető áttelepítési útmutatók listáját, és keresse meg az Azure-fájlmegosztás forrására és üzembe helyezésére vonatkozó részletes útmutatót.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 38e1fc7f062908f8c4a4b9aa903ca09dd7fb9ea5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342331"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784167"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center készültségi ütemterv
 Ez a dokumentum egy készültségi ütemtervet tartalmaz, amely az Azure Security Center használatának első lépéseiben nyújt segítséget.
@@ -78,7 +78,7 @@ Videók
 
 Cikkek    
 * [Az Azure Security Center használata incidensmegoldásra](./tutorial-security-incident.md)
-* [Válasz automatizálása a munkafolyamat-automatizálással](workflow-automation.md)
+* [Az Automation használata Security Center eseményindítók megválaszolására](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Speciális felhővédelem
 

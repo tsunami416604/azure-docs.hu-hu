@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 050252718e4796ff20d57be3fdeac98f0cf04fdf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267023"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785221"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Mi az Azure webalkalmazási tűzfal az Azure Application Gateway?
 
@@ -24,7 +24,7 @@ A WAF on Application Gateway az Open Web Application Security Project (OWASP) [a
 Az alább felsorolt WAF-funkciók egy WAF szabályzaton belül találhatók. Több házirend is létrehozható, és társítható egy Application Gatewayhoz, az egyes figyelőkhöz vagy egy Application Gateway elérésiút-alapú útválasztási szabályaihoz. Így szükség esetén külön házirendeket hozhat a Application Gateway mögött lévő helyekhez. A WAF-szabályzatokkal kapcsolatos további információkért lásd: [WAF szabályzat létrehozása](create-waf-policy-ag.md).
 
    > [!NOTE]
-   > Az URI-WAF szabályzatok nyilvános előzetes verzióban érhetők el. Ez azt jelenti, hogy ez a funkció a Microsoft kiegészítő használati feltételeinek hatálya alá tartozik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > Az URI-WAF szabályzatok nyilvános előzetes verzióban érhetők el. Ez azt jelenti, hogy ez a funkció a Microsoft kiegészítő használati feltételeinek hatálya alá tartozik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Application Gateway WAF diagram](../media/ag-overview/waf1.png)
 
@@ -60,7 +60,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * Egyéni szabályok létrehozása az alkalmazás igényeinek megfelelően
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 - SQL-befecskendezéses védelem.
 - Helyek közötti parancsfájlok elleni védelem.
@@ -74,6 +74,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 - Egyéni szabályokat hozhat létre az alkalmazások konkrét igényeinek megfelelően.
 - Geo-szűrési forgalom, amely engedélyezi vagy letiltja bizonyos országok/régiók hozzáférését az alkalmazásaihoz. (előzetes verzió)
 - Az alkalmazásait a robotoktól a bot-elhárítási szabályokkal védekezhet. (előzetes verzió)
+- A JSON és az XML vizsgálata a kérelem törzsében
 
 ## <a name="waf-policy-and-rules"></a>WAF szabályzat és szabályok
 
@@ -121,8 +122,8 @@ Ha a bot Protection engedélyezve van, a rendszer a rosszindulatú robot ügyfel
 
 A Application Gateway WAF a következő két módban való futtatásra konfigurálható:
 
-* **Észlelési mód**: figyeli és naplózza az összes veszélyforrás riasztást. A diagnosztika szakaszban bekapcsolja Application Gateway naplózási **diagnosztikát.** Győződjön meg arról is, hogy a WAF-napló ki van választva és be van kapcsolva. A webalkalmazási tűzfal nem blokkolja a bejövő kérelmeket, ha az észlelési módban működik.
-* **Megelőzési mód**: a szabályok által észlelhető behatolások és támadások blokkolása. A támadó "403 jogosulatlan hozzáférés" kivételt kap, és a kapcsolat bezárult. A megelőzési mód rögzíti az ilyen támadásokat a WAF-naplókban.
+* **Észlelési mód** : figyeli és naplózza az összes veszélyforrás riasztást. A diagnosztika szakaszban bekapcsolja Application Gateway naplózási **diagnosztikát.** Győződjön meg arról is, hogy a WAF-napló ki van választva és be van kapcsolva. A webalkalmazási tűzfal nem blokkolja a bejövő kérelmeket, ha az észlelési módban működik.
+* **Megelőzési mód** : a szabályok által észlelhető behatolások és támadások blokkolása. A támadó "403 jogosulatlan hozzáférés" kivételt kap, és a kapcsolat bezárult. A megelőzési mód rögzíti az ilyen támadásokat a WAF-naplókban.
 
 > [!NOTE]
 > Azt javasoljuk, hogy rövid idő alatt futtasson egy újonnan telepített WAF az észlelési módban az éles környezetben. Ez lehetőséget biztosít a [tűzfalak](../../application-gateway/application-gateway-diagnostics.md#firewall-log) beszerzésére és a kivételek vagy [Egyéni szabályok](./custom-waf-rules-overview.md) frissítésére a megelőzési módra való áttérés előtt. Ez segít csökkenteni a váratlan letiltott forgalom előfordulását.
@@ -131,9 +132,9 @@ A Application Gateway WAF a következő két módban való futtatásra konfigur�
 
 A OWASP két módja van annak eldöntésére, hogy le kell-e tiltani a forgalmat: hagyományos mód és anomália pontozási mód.
 
-Hagyományos módban a szabályoknak megfelelő forgalom a többi szabálytól függetlenül tekintendő. Ez a mód könnyen értelmezhető. Ha azonban nincs információ arról, hogy hány szabály felel meg egy adott kérésnek, a korlátozás. Tehát a anomália pontozási mód be lett vezetve. Ez az alapértelmezett érték a OWASP 3 esetében. *x*.
+Hagyományos módban a szabályoknak megfelelő forgalom a többi szabálytól függetlenül tekintendő. Ez a mód könnyen értelmezhető. Ha azonban nincs információ arról, hogy hány szabály felel meg egy adott kérésnek, a korlátozás. Tehát a anomália pontozási mód be lett vezetve. Ez az alapértelmezett érték a OWASP 3 esetében. *x* .
 
-A anomália pontozási módban a szabályoknak megfelelő forgalom nem lesz azonnal letiltva, ha a tűzfal megelőzési módban van. A szabályok bizonyos súlyossággal rendelkeznek: *kritikus*, *hiba*, *Figyelmeztetés*vagy *Figyelmeztetés*. Ez a súlyosság befolyásolja a kérelem numerikus értékét, amelyet az anomália pontszámnak nevezünk. Egy *Figyelmeztetési* szabály például a következőhöz járul hozzá: 3 – a pontszám. Egy *kritikus* szabály egyezése 5.
+A anomália pontozási módban a szabályoknak megfelelő forgalom nem lesz azonnal letiltva, ha a tűzfal megelőzési módban van. A szabályok bizonyos súlyossággal rendelkeznek: *kritikus* , *hiba* , *Figyelmeztetés* vagy *Figyelmeztetés* . Ez a súlyosság befolyásolja a kérelem numerikus értékét, amelyet az anomália pontszámnak nevezünk. Egy *Figyelmeztetési* szabály például a következőhöz járul hozzá: 3 – a pontszám. Egy *kritikus* szabály egyezése 5.
 
 |Súlyosság  |Érték  |
 |---------|---------|

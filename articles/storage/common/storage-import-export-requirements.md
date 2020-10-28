@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d17b9cdebf06e7d754a23a7224bbe3dba1a2832c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276397"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783606"
 ---
 # <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerkövetelményei
 
@@ -50,7 +50,7 @@ A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Sto
 Az egyes feladatokhoz csak egy Storage-fiókból vagy azokból lehet adatátvitelt alkalmazni. Ez azt jelenti, hogy egyetlen importálási/exportálási feladattípus nem terjedhet több Storage-fiókra. További információ az új Storage-fiókok létrehozásáról: [Storage-fiók létrehozása](storage-account-create.md).
 
 > [!IMPORTANT]
-> Azon tárolási fiókok esetében, amelyeken engedélyezve van a [Virtual Network szolgáltatás-végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)   szolgáltatás, a **megbízható Microsoft-szolgáltatások engedélyezése...** beállítással [engedélyezheti az importálási/exportálási](/azure/storage/common/storage-network-security) szolgáltatást az Azure-ba irányuló adatok importálásához/exportálásához.
+> Azon tárolási fiókok esetében, amelyeken engedélyezve van a [Virtual Network szolgáltatás-végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) szolgáltatás, a **megbízható Microsoft-szolgáltatások engedélyezése...** beállítással [engedélyezheti az importálási/exportálási](./storage-network-security.md) szolgáltatást az Azure-ba irányuló adatok importálásához/exportálásához.
 
 ## <a name="supported-storage-types"></a>Támogatott tárolótípusok
 
@@ -92,6 +92,6 @@ A nagy számú meghajtó több feladaton is elosztható, és a létrehozható fe
 
 Merevlemezek előkészítésekor és az adatok WAImportExport eszközzel történő másolásakor külső USB-adaptereket is használhat. A legtöbbet a polcon lévő USB 3,0 vagy újabb rendszerű adaptereknek működniük kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](storage-use-azcopy.md)
+* [Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](./storage-use-azcopy-v10.md)

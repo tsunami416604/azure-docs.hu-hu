@@ -10,12 +10,12 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f1cdd04be4b5774944f70e551221a08261aef22d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488894"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784354"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -76,7 +76,7 @@ Nincsenek.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +98,7 @@ az login
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N.A.
+N/A
 
 ---
 
@@ -106,7 +106,7 @@ N.A.
 
 Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. A tárfiók létrehozásakor lehetősége van létrehozni egy új erőforráscsoportot, vagy választhat egy meglévő erőforráscsoportot. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
 
-Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. Az itt leírt lépések egy általános célú v2-es Storage-fiókot hoznak létre, de a bármilyen típusú Storage-fiók létrehozásának lépései hasonlóak. További információ a tárfiókok típusairól és a tárfiókok egyéb beállításairól: [Az Azure Storage-fiókok áttekintése](storage-account-overview.md).
+Az **általános célú v2** -tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. Az itt leírt lépések egy általános célú v2-es Storage-fiókot hoznak létre, de a bármilyen típusú Storage-fiók létrehozásának lépései hasonlóak. További információ a tárfiókok típusairól és a tárfiókok egyéb beállításairól: [Az Azure Storage-fiókok áttekintése](storage-account-overview.md).
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -199,7 +199,7 @@ Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storag
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-A Storage-fiók létrehozásához használhatja a Azure PowerShell vagy az Azure CLI-t is egy Resource Manager-sablon üzembe helyezéséhez. Az ebben a útmutatóban használt sablon [Azure Resource Manager Gyorsindítás sablonokból](https://azure.microsoft.com/resources/templates/101-storage-account-create/)származik. A parancsfájlok futtatásához válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**lehetőséget.
+A Storage-fiók létrehozásához használhatja a Azure PowerShell vagy az Azure CLI-t is egy Resource Manager-sablon üzembe helyezéséhez. Az ebben a útmutatóban használt sablon [Azure Resource Manager Gyorsindítás sablonokból](https://azure.microsoft.com/resources/templates/101-storage-account-create/)származik. A parancsfájlok futtatásához válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés** lehetőséget.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -223,7 +223,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 A sablon módosításával vagy újak létrehozásával kapcsolatos további információkért lásd:
 
-- [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/).
+- [Azure Resource Manager dokumentáció](../../azure-resource-manager/index.yml).
 - A [Storage-fiók sablonjának referenciája](/azure/templates/microsoft.storage/allversions).
 - [További, a Storage-fiók sablonjának mintái](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
 
@@ -279,7 +279,7 @@ Másik lehetőségként törölheti az erőforráscsoportot, amely törli a Stor
 > [!WARNING]
 > A törölt tárfiókokat nem lehet visszaállítani, és nem lehet a törlés előtt abban tárolt tartalmakat helyreállítani. A fiók törlése előtt készítsen biztonsági másolatot minden menteni kívánt tartalomról. Ez igaz a fiókban lévő összes erőforrásra is – ha töröl egy blobot, táblát, üzenetsort vagy fájlt, az véglegesen törölve lesz.
 >
-> Ha egy Azure virtuális géppel társított tárfiókot próbál törölni, egy hibaüzenetet kaphat, amely szerint a tárfiók még használatban van. A hiba elhárításához a Storage- [fiókok törlésekor a hibák elhárítása](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)című témakörben talál segítséget.
+> Ha egy Azure virtuális géppel társított tárfiókot próbál törölni, egy hibaüzenetet kaphat, amely szerint a tárfiók még használatban van. A hiba elhárításához a Storage- [fiókok törlésekor a hibák elhárítása](../../virtual-machines/troubleshooting/index.yml)című témakörben talál segítséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

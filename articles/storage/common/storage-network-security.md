@@ -9,12 +9,12 @@ ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 96e06e31ae3c963459a0f6b4772147197913b52a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2eed5a8ad783d325ef040b3a358e80a6517f08e8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488588"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783640"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -64,9 +64,9 @@ A Storage-fiókok alapértelmezett hálózati hozzáférési szabályait a Azure
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
-1. Kattintson a **tűzfalak és virtuális hálózatok**beállítások menüjére.
+1. Kattintson a **tűzfalak és virtuális hálózatok** beállítások menüjére.
 
-1. Ha alapértelmezés szerint szeretné megtagadni a hozzáférést, válassza a **kijelölt hálózatokból**való hozzáférés engedélyezése lehetőséget. Ha minden hálózatról engedélyezni szeretné a forgalmat, engedélyezze a hozzáférést az **Összes hálózatnak**.
+1. Ha alapértelmezés szerint szeretné megtagadni a hozzáférést, válassza a **kijelölt hálózatokból** való hozzáférés engedélyezése lehetőséget. Ha minden hálózatról engedélyezni szeretné a forgalmat, engedélyezze a hozzáférést az **Összes hálózatnak** .
 
 1. A módosítások alkalmazásához kattintson a **Mentés** gombra.
 
@@ -118,13 +118,13 @@ A Storage-fiókok alapértelmezett hálózati hozzáférési szabályait a Azure
 
 A Storage-fiókokat úgy is konfigurálhatja, hogy csak bizonyos alhálózatokról engedélyezze a hozzáférést. Az engedélyezett alhálózatok ugyanahhoz az előfizetéshez vagy egy másik előfizetéshez tartozó VNet tartozhatnak, beleértve a más Azure Active Directory bérlőhöz tartozó előfizetéseket is.
 
-Engedélyezzen egy [szolgáltatási végpontot](/azure/virtual-network/virtual-network-service-endpoints-overview) az Azure Storage-hoz a VNet belül. A szolgáltatási végpont az Azure Storage szolgáltatás optimális elérési útján irányítja át a forgalmat a VNet. Az alhálózat és a virtuális hálózat identitásait is továbbítjuk az egyes kérésekhez. A rendszergazdák ezután konfigurálhatják a Storage-fiók hálózati szabályait, amelyek lehetővé teszik a kérelmek fogadását egy adott alhálózatról egy VNet. Azok az ügyfelek, akik ezen hálózati szabályokon keresztül kaptak hozzáférést, továbbra is meg kell felelniük a Storage-fiók engedélyezési követelményeinek az adat eléréséhez.
+Engedélyezzen egy [szolgáltatási végpontot](../../virtual-network/virtual-network-service-endpoints-overview.md) az Azure Storage-hoz a VNet belül. A szolgáltatási végpont az Azure Storage szolgáltatás optimális elérési útján irányítja át a forgalmat a VNet. Az alhálózat és a virtuális hálózat identitásait is továbbítjuk az egyes kérésekhez. A rendszergazdák ezután konfigurálhatják a Storage-fiók hálózati szabályait, amelyek lehetővé teszik a kérelmek fogadását egy adott alhálózatról egy VNet. Azok az ügyfelek, akik ezen hálózati szabályokon keresztül kaptak hozzáférést, továbbra is meg kell felelniük a Storage-fiók engedélyezési követelményeinek az adat eléréséhez.
 
 Az egyes Storage-fiókok akár 200 virtuális hálózati szabályt is támogatnak, amelyek az [IP-hálózati szabályokkal](#grant-access-from-an-internet-ip-range)kombinálhatók.
 
 ### <a name="available-virtual-network-regions"></a>Elérhető virtuális hálózati régiók
 
-Általánosságban elmondható, hogy a szolgáltatási végpontok az ugyanazon az Azure-régióban lévő virtuális hálózatok és szolgáltatási példányok között működnek. A szolgáltatási végpontok Azure Storage-ban való használatakor ez a hatókör nő a [párosított régió](/azure/best-practices-availability-paired-regions)belefoglalásával. A szolgáltatási végpontok lehetővé teszik a folytonosságot a regionális feladatátvétel során, és hozzáférnek a csak olvasható, Geo-redundáns tárolási (RA-GRS) példányokhoz. Azok a hálózati szabályok, amelyek hozzáférést biztosítanak egy virtuális hálózatról a Storage-fiókhoz, hozzáférést biztosítanak az RA-GRS-példányokhoz is.
+Általánosságban elmondható, hogy a szolgáltatási végpontok az ugyanazon az Azure-régióban lévő virtuális hálózatok és szolgáltatási példányok között működnek. A szolgáltatási végpontok Azure Storage-ban való használatakor ez a hatókör nő a [párosított régió](../../best-practices-availability-paired-regions.md)belefoglalásával. A szolgáltatási végpontok lehetővé teszik a folytonosságot a regionális feladatátvétel során, és hozzáférnek a csak olvasható, Geo-redundáns tárolási (RA-GRS) példányokhoz. Azok a hálózati szabályok, amelyek hozzáférést biztosítanak egy virtuális hálózatról a Storage-fiókhoz, hozzáférést biztosítanak az RA-GRS-példányokhoz is.
 
 A regionális leállás során felmerülő vész-helyreállítás tervezése során előre létre kell hoznia a virtuális hálózatok a párosított régióban. Engedélyezze a szolgáltatás-végpontokat az Azure Storage-hoz, és az ezekhez az alternatív virtuális hálózatokhoz hozzáférést biztosító hálózati szabályokkal. Ezután alkalmazza ezeket a szabályokat a Geo-redundáns Storage-fiókokra.
 
@@ -148,18 +148,18 @@ A Storage-fiókok virtuális hálózati szabályai a Azure Portal, a PowerShell 
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
-1. Kattintson a **tűzfalak és virtuális hálózatok**beállítások menüjére.
+1. Kattintson a **tűzfalak és virtuális hálózatok** beállítások menüjére.
 
-1. Győződjön meg arról, hogy a **kijelölt hálózatokból**való hozzáférés engedélyezését választotta.
+1. Győződjön meg arról, hogy a **kijelölt hálózatokból** való hozzáférés engedélyezését választotta.
 
-1. Ha új hálózati szabállyal szeretne hozzáférést biztosítani egy virtuális hálózathoz, a **virtuális hálózatok**területen kattintson a **meglévő virtuális hálózat hozzáadása**lehetőségre, válassza a **virtuális hálózatok** és **alhálózatok** lehetőséget, majd kattintson a **Hozzáadás**gombra. Új virtuális hálózat létrehozásához és az IT-hozzáférés biztosításához kattintson az **új virtuális hálózat hozzáadása**lehetőségre. Adja meg az új virtuális hálózat létrehozásához szükséges adatokat, majd kattintson a **Létrehozás**gombra.
+1. Ha új hálózati szabállyal szeretne hozzáférést biztosítani egy virtuális hálózathoz, a **virtuális hálózatok** területen kattintson a **meglévő virtuális hálózat hozzáadása** lehetőségre, válassza a **virtuális hálózatok** és **alhálózatok** lehetőséget, majd kattintson a **Hozzáadás** gombra. Új virtuális hálózat létrehozásához és az IT-hozzáférés biztosításához kattintson az **új virtuális hálózat hozzáadása** lehetőségre. Adja meg az új virtuális hálózat létrehozásához szükséges adatokat, majd kattintson a **Létrehozás** gombra.
 
     > [!NOTE]
     > Ha az Azure Storage szolgáltatási végpontja korábban nem lett konfigurálva a kiválasztott virtuális hálózathoz és alhálózatokhoz, akkor a művelet részeként konfigurálhatja.
     >
     > Jelenleg csak az ugyanahhoz a Azure Active Directory bérlőhöz tartozó virtuális hálózatok jelennek meg a szabályok létrehozásakor. Egy másik bérlőhöz tartozó virtuális hálózatban lévő alhálózathoz való hozzáférés biztosításához használja a PowerShell, a CLI vagy a REST API-kat.
 
-1. Virtuális hálózat vagy alhálózat szabályának eltávolításához kattintson a **...** elemre a virtuális hálózat vagy alhálózat helyi menüjének megnyitásához, majd kattintson az **Eltávolítás**gombra.
+1. Virtuális hálózat vagy alhálózat szabályának eltávolításához kattintson a **...** elemre a virtuális hálózat vagy alhálózat helyi menüjének megnyitásához, majd kattintson az **Eltávolítás** gombra.
 
 1. A módosítások alkalmazásához kattintson a **Mentés** gombra.
 
@@ -197,7 +197,7 @@ A Storage-fiókok virtuális hálózati szabályai a Azure Portal, a PowerShell 
     ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás** értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -235,18 +235,18 @@ A Storage-fiókok virtuális hálózati szabályai a Azure Portal, a PowerShell 
     ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás** értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Hozzáférés biztosítása internetes IP-címtartományról
 
 A Storage-fiókok konfigurálásával engedélyezheti a hozzáférést a megadott nyilvános internetes IP-címtartományok eléréséhez. Ez a konfiguráció hozzáférést biztosít bizonyos internetalapú szolgáltatásokhoz és helyszíni hálózatokhoz, és blokkolja az általános internetes forgalmat.
 
-Adja meg az engedélyezett IP-címtartományok [CIDR jelöléssel](https://tools.ietf.org/html/rfc4632) a *16.17.18.0/24* formátumban, illetve olyan egyedi IP-címeket, mint a *16.17.18.19*.
+Adja meg az engedélyezett IP-címtartományok [CIDR jelöléssel](https://tools.ietf.org/html/rfc4632) a *16.17.18.0/24* formátumban, illetve olyan egyedi IP-címeket, mint a *16.17.18.19* .
 
    > [!NOTE]
    > A "/31" vagy a "/32" előtaggal rendelkező kisméretű címtartományok nem támogatottak. Ezeket a tartományokat egyedi IP-cím szabályokkal kell konfigurálni.
 
-Az IP-hálózati szabályok csak a **nyilvános internetes** IP-címek esetében engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózati hálózatok közé tartoznak a következők: _10. *_, _172,16. *_  -  _172,31. *_ és _192,168. *_.
+Az IP-hálózati szabályok csak a **nyilvános internetes** IP-címek esetében engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózati hálózatok közé tartoznak a következők: _10. *_ , _172,16. *_  -  _172,31. *_ és _192,168. *_ .
 
    > [!NOTE]
    > Az IP-hálózati szabályok nem befolyásolják a Storage-fiókkal azonos Azure-régióból származó kérelmeket. A [virtuális hálózati szabályok](#grant-access-from-a-virtual-network) használatával engedélyezze az azonos régiókra vonatkozó kérelmeket.
@@ -262,7 +262,7 @@ Az egyes Storage-fiókok legfeljebb 200 IP-hálózati szabályt támogatnak.
 
 Ahhoz, hogy hozzáférést biztosítson a helyszíni hálózatokról a Storage-fiókhoz egy IP-hálózati szabállyal, meg kell határoznia a hálózat által használt internet felé irányuló IP-címeket. Segítségért forduljon a hálózati rendszergazdához.
 
-Ha a [ExpressRoute](/azure/expressroute/expressroute-introduction) -t használja a telephelyéről, a nyilvános és a Microsoft-partnerek számára, meg kell határoznia a használt NAT IP-címeket. Nyilvános társviszony-létesítés esetén alapértelmezés szerint minden ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. A Microsoft-társak esetében a használt NAT IP-címek vagy a szolgáltató által biztosított vagy biztosított ügyfelek. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering).
+Ha a [ExpressRoute](../../expressroute/expressroute-introduction.md) -t használja a telephelyéről, a nyilvános és a Microsoft-partnerek számára, meg kell határoznia a használt NAT IP-címeket. Nyilvános társviszony-létesítés esetén alapértelmezés szerint minden ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. A Microsoft-társak esetében a használt NAT IP-címek vagy a szolgáltató által biztosított vagy biztosított ügyfelek. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](../../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering).
 
 ### <a name="managing-ip-network-rules"></a>IP-hálózati szabályok kezelése
 
@@ -272,11 +272,11 @@ A Storage-fiókok IP-hálózati szabályait a Azure Portal, a PowerShell vagy a 
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
-1. Kattintson a **tűzfalak és virtuális hálózatok**beállítások menüjére.
+1. Kattintson a **tűzfalak és virtuális hálózatok** beállítások menüjére.
 
-1. Győződjön meg arról, hogy a **kijelölt hálózatokból**való hozzáférés engedélyezését választotta.
+1. Győződjön meg arról, hogy a **kijelölt hálózatokból** való hozzáférés engedélyezését választotta.
 
-1. Ha hozzáférést szeretne biztosítani egy internetes IP-tartományhoz, adja meg az IP-címet vagy címtartományt (CIDR formátumban) a **tűzfal**  >  **címtartomány alatt**.
+1. Ha hozzáférést szeretne biztosítani egy internetes IP-tartományhoz, adja meg az IP-címet vagy címtartományt (CIDR formátumban) a **tűzfal**  >  **címtartomány alatt** .
 
 1. Az IP-hálózati szabály eltávolításához kattintson a címtartomány melletti Kuka ikonra.
 
@@ -317,7 +317,7 @@ A Storage-fiókok IP-hálózati szabályait a Azure Portal, a PowerShell vagy a 
     ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás** értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -354,11 +354,11 @@ A Storage-fiókok IP-hálózati szabályait a Azure Portal, a PowerShell vagy a 
     ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás** értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
 ## <a name="exceptions"></a>Kivételek
 
-A hálózati szabályok segítenek a biztonságos környezet létrehozásában az alkalmazások és az adatok közötti kapcsolatokhoz a legtöbb esetben. Néhány alkalmazás azonban olyan Azure-szolgáltatástól függ, amely nem különíthető el egyedien a virtuális hálózat vagy az IP-cím szabályai alapján. Az alkalmazások teljes funkcionalitásának lehetővé tételéhez azonban az ilyen szolgáltatásokat biztosítani kell a tároláshoz. Ilyen helyzetekben használhatja a **_megbízható Microsoft-szolgáltatások engedélyezése..._* _ beállítás, amely lehetővé teszi, hogy az ilyen szolgáltatások hozzáférjenek az adataihoz, naplóihoz vagy elemzéséhez.
+A hálózati szabályok segítenek a biztonságos környezet létrehozásában az alkalmazások és az adatok közötti kapcsolatokhoz a legtöbb esetben. Néhány alkalmazás azonban olyan Azure-szolgáltatástól függ, amely nem különíthető el egyedien a virtuális hálózat vagy az IP-cím szabályai alapján. Az alkalmazások teljes funkcionalitásának lehetővé tételéhez azonban az ilyen szolgáltatásokat biztosítani kell a tároláshoz. Ilyen helyzetekben használhatja a * *_megbízható Microsoft-szolgáltatások engedélyezése..._* _ beállítás, amely lehetővé teszi, hogy az ilyen szolgáltatások hozzáférjenek az adataihoz, naplóihoz vagy elemzéséhez.
 
 ### <a name="trusted-microsoft-services"></a>Megbízható Microsoft-szolgáltatások
 
@@ -372,39 +372,39 @@ Ha engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezése...**
 
 | Szolgáltatás                  | Erőforrás-szolgáltató neve     | Engedélyezett műveletek                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure Backup             | Microsoft. Recoveryservices szolgáltatónál | Biztonsági másolatok futtatása és a nem felügyelt lemezek visszaállítása a IAAS virtuális gépeken. (felügyelt lemezekhez nem szükséges). [További információk](/azure/backup/backup-introduction-to-azure-backup). |
-| Azure Data Box           | Microsoft. DataBox          | Lehetővé teszi az Azure-ba történő adatimportálást Data Box használatával. [További információk](/azure/databox/data-box-overview). |
-| Azure DevTest Labs       | Microsoft. segédösszetevője       | Egyéni rendszerkép létrehozása és az összetevők telepítése. [További információk](../../devtest-labs/devtest-lab-overview.md). |
-| Azure Event Grid         | Microsoft. EventGrid        | Engedélyezze Blob Storage az események közzétételét, és engedélyezze a Event Grid közzétételét a tárolási várólistákon. Tudnivalók a [blob Storage-eseményekről](/azure/event-grid/event-sources) és [a várólistákon való közzétételről](/azure/event-grid/event-handlers). |
-| Azure Event Hubs         | Microsoft. EventHub         | Adatok archiválása Event Hubs rögzítéssel. [További információk](/azure/event-hubs/event-hubs-capture-overview). |
+| Azure Backup             | Microsoft. Recoveryservices szolgáltatónál | Biztonsági másolatok futtatása és a nem felügyelt lemezek visszaállítása a IAAS virtuális gépeken. (felügyelt lemezekhez nem szükséges). [További információ](../../backup/backup-overview.md). |
+| Azure Data Box           | Microsoft. DataBox          | Lehetővé teszi az Azure-ba történő adatimportálást Data Box használatával. [További információ](../../databox/data-box-overview.md). |
+| Azure DevTest Labs       | Microsoft. segédösszetevője       | Egyéni rendszerkép létrehozása és az összetevők telepítése. [További információ](../../devtest-labs/devtest-lab-overview.md). |
+| Azure Event Grid         | Microsoft. EventGrid        | Engedélyezze Blob Storage az események közzétételét, és engedélyezze a Event Grid közzétételét a tárolási várólistákon. Tudnivalók a [blob Storage-eseményekről](../../event-grid/overview.md#event-sources) és [a várólistákon való közzétételről](../../event-grid/event-handlers.md). |
+| Azure Event Hubs         | Microsoft. EventHub         | Adatok archiválása Event Hubs rögzítéssel. [További információk](../../event-hubs/event-hubs-capture-overview.md). |
 | Azure File Sync          | Microsoft. StorageSync      | Lehetővé teszi a helyszíni fájlkiszolgáló átalakítását az Azure-fájlmegosztás gyorsítótárába. Lehetővé teszi a többhelyes szinkronizálást, a gyors katasztrófa-helyreállítást és a Felhőbeli biztonsági mentést. [További információ](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft. HDInsight        | Az alapértelmezett fájlrendszer kezdeti tartalmának kiépítése egy új HDInsight-fürthöz. [További információk](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
-| Azure importálási exportálás      | Microsoft. ImportExport     | Lehetővé teszi az adatok importálását az Azure Storage-ba vagy az Azure Storage-ból származó adatok exportálását az Azure Storage import/export szolgáltatás használatával. [További információk](/azure/storage/common/storage-import-export-service).  |
-| Azure Monitor            | Microsoft. bepillantások         | Lehetővé teszi, hogy a figyelési adatai biztonságos Storage-fiókba legyenek írva, beleértve az erőforrás-naplókat, Azure Active Directory a bejelentkezést és a naplókat, valamint Microsoft Intune naplókat. [További információk](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Azure-hálózatkezelés         | Microsoft.Network          | A hálózati forgalmi naplók tárolása és elemzése, beleértve a Network Watcher és Traffic Analytics szolgáltatásokat. [További információk](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
-| Azure Site Recovery      | Microsoft. SiteRecovery     | Engedélyezze a replikációt az Azure IaaS-alapú virtuális gépek vész-helyreállításához, ha tűzfalon alapuló gyorsítótár-, forrás-vagy tároló-fiókot használ.  [További információk](/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
+| Azure HDInsight          | Microsoft. HDInsight        | Az alapértelmezett fájlrendszer kezdeti tartalmának kiépítése egy új HDInsight-fürthöz. [További információ](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
+| Azure importálási exportálás      | Microsoft. ImportExport     | Lehetővé teszi az adatok importálását az Azure Storage-ba vagy az Azure Storage-ból származó adatok exportálását az Azure Storage import/export szolgáltatás használatával. [További információ](./storage-import-export-service.md).  |
+| Azure Monitor            | Microsoft. bepillantások         | Lehetővé teszi, hogy a figyelési adatai biztonságos Storage-fiókba legyenek írva, beleértve az erőforrás-naplókat, Azure Active Directory a bejelentkezést és a naplókat, valamint Microsoft Intune naplókat. [További információ](../../azure-monitor/platform/roles-permissions-security.md). |
+| Azure-hálózatkezelés         | Microsoft.Network          | A hálózati forgalmi naplók tárolása és elemzése, beleértve a Network Watcher és Traffic Analytics szolgáltatásokat. [További információ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
+| Azure Site Recovery      | Microsoft. SiteRecovery     | Engedélyezze a replikációt az Azure IaaS-alapú virtuális gépek vész-helyreállításához, ha tűzfalon alapuló gyorsítótár-, forrás-vagy tároló-fiókot használ.  [További információ](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
 
 A **megbízható Microsoft-szolgáltatások engedélyezése...** beállítás azt is lehetővé teszi, hogy az alábbi szolgáltatások egy adott példánya hozzáférhessen a Storage-fiókhoz, ha explicit módon [hozzárendel egy Azure-szerepkört](storage-auth-aad.md#assign-azure-roles-for-access-rights) az adott erőforrás-példányhoz tartozó [rendszerhez rendelt felügyelt identitáshoz](../../active-directory/managed-identities-azure-resources/overview.md) . Ebben az esetben a példányhoz való hozzáférés hatóköre megfelel a felügyelt identitáshoz rendelt Azure-szerepkörnek.
 
 | Szolgáltatás                        | Erőforrás-szolgáltató neve                 | Cél            |
 | :----------------------------- | :------------------------------------- | :----------------- |
-| Azure API Management           | Microsoft.ApiManagement/service        | Lehetővé teszi az API Management szolgáltatás számára a tűzfal mögötti tárolási fiókok elérését a házirendek használatával. [További információk](/azure/api-management/api-management-authentication-policies#use-managed-identity-in-send-request-policy). |
+| Azure API Management           | Microsoft.ApiManagement/service        | Lehetővé teszi az API Management szolgáltatás számára a tűzfal mögötti tárolási fiókok elérését a házirendek használatával. [További információ](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Cognitive Search         | Microsoft. Search/searchServices        | Lehetővé teszi Cognitive Search szolgáltatások számára a Storage-fiókok elérését indexelésre, feldolgozásra és lekérdezésre. |
 | Azure Container Registry Tasks | Microsoft. ContainerRegistry/nyilvántartók | Az ACR-feladatok tároló-lemezképek létrehozásakor férhetnek hozzá a Storage-fiókokhoz. |
 | Azure Data Factory             | Microsoft. DataFactory/gyárak        | Lehetővé teszi a Storage-fiókok elérését az ADF futtatókörnyezeten keresztül. |
 | Azure Data Share               | Microsoft. DataShare/fiókok           | Lehetővé teszi a Storage-fiókok elérését az adatmegosztáson keresztül. |
 | Azure IoT Hub                  | Microsoft. Devices/IotHubs              | Engedélyezi az IoT hub adatainak blob Storage-ba való írását. [További információ](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
-| Azure Logic Apps               | Microsoft. Logic/munkafolyamatok              | Lehetővé teszi a Logic apps számára a Storage-fiókok elérését. [További információk](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
-| Azure Machine Learning szolgáltatás | Microsoft.MachineLearningServices      | Engedélyezett Azure Machine Learning munkaterületek a kísérlet kimenetét, modelljeit és naplóit írják a blob Storage-ba, és beolvasják az adatokat. [További információk](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
-| Azure Synapse Analytics (korábban SQL Data Warehouse)       | Microsoft.Sql                          | Lehetővé teszi az adatok importálását és exportálását adott SQL-adatbázisokból a COPY utasítás vagy a Base használatával. [További információk](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure SQL Database       | Microsoft.Sql                          | Lehetővé teszi a Storage-fiókok adatainak [importálását](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) és a naplózási adatok [írását](/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall) a tűzfal mögötti tárolási fiókokba. |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics             | Lehetővé teszi a folyamatos átviteli feladatok adatainak blob Storage-ba való írását. [További információk](/azure/stream-analytics/blob-output-managed-identity). |
+| Azure Logic Apps               | Microsoft. Logic/munkafolyamatok              | Lehetővé teszi a Logic apps számára a Storage-fiókok elérését. [További információ](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
+| Azure Machine Learning szolgáltatás | Microsoft.MachineLearningServices      | Engedélyezett Azure Machine Learning munkaterületek a kísérlet kimenetét, modelljeit és naplóit írják a blob Storage-ba, és beolvasják az adatokat. [További információ](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). | 
+| Azure Synapse Analytics (korábban SQL Data Warehouse)       | Microsoft.Sql                          | Lehetővé teszi az adatok importálását és exportálását adott SQL-adatbázisokból a COPY utasítás vagy a Base használatával. [További információ](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure SQL Database       | Microsoft.Sql                          | Lehetővé teszi a Storage-fiókok adatainak [importálását](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) és a naplózási adatok [írását](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) a tűzfal mögötti tárolási fiókokba. |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics             | Lehetővé teszi a folyamatos átviteli feladatok adatainak blob Storage-ba való írását. [További információ](../../stream-analytics/blob-output-managed-identity.md). |
 | Azure Synapse Analytics        | Microsoft. szinapszis/munkaterületek          | Lehetővé teszi az Azure Storage-beli adatokhoz való hozzáférést a szinapszis Analyticsből. |
 
 
 ### <a name="storage-analytics-data-access"></a>Storage Analytics-adathozzáférés
 
-Bizonyos esetekben a hálózat határain kívülről kell hozzáférni az olvasási erőforrás-naplókhoz és a metrikához. A megbízható szolgáltatások a Storage-fiókhoz való hozzáférésének konfigurálásakor engedélyezheti az olvasási hozzáférést a naplófájlokhoz, a metrikák tábláihoz vagy mindkettőhöz. [További információ a Storage Analytics használatáról.](/azure/storage/storage-analytics)
+Bizonyos esetekben a hálózat határain kívülről kell hozzáférni az olvasási erőforrás-naplókhoz és a metrikához. A megbízható szolgáltatások a Storage-fiókhoz való hozzáférésének konfigurálásakor engedélyezheti az olvasási hozzáférést a naplófájlokhoz, a metrikák tábláihoz vagy mindkettőhöz. [További információ a Storage Analytics használatáról.](./storage-analytics.md)
 
 ### <a name="managing-exceptions"></a>Kivételek kezelése
 
@@ -414,11 +414,11 @@ A hálózati szabályok kivételeit a Azure Portal, a PowerShell vagy az Azure C
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
-1. Kattintson a **tűzfalak és virtuális hálózatok**beállítások menüjére.
+1. Kattintson a **tűzfalak és virtuális hálózatok** beállítások menüjére.
 
-1. Győződjön meg arról, hogy a **kijelölt hálózatokból**való hozzáférés engedélyezését választotta.
+1. Győződjön meg arról, hogy a **kijelölt hálózatokból** való hozzáférés engedélyezését választotta.
 
-1. A **kivételek**területen válassza ki a megadni kívánt kivételeket.
+1. A **kivételek** területen válassza ki a megadni kívánt kivételeket.
 
 1. A módosítások alkalmazásához kattintson a **Mentés** gombra.
 
@@ -445,7 +445,7 @@ A hálózati szabályok kivételeit a Azure Portal, a PowerShell vagy az Azure C
     ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a kivételek eltávolítása ne legyen hatással.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás** értékre állítsa, vagy a kivételek eltávolítása ne legyen hatással.
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -470,10 +470,10 @@ A hálózati szabályok kivételeit a Azure Portal, a PowerShell vagy az Azure C
     ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a kivételek eltávolítása ne legyen hatással.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás** értékre állítsa, vagy a kivételek eltávolítása ne legyen hatással.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az Azure Network Service-végpontokról a [szolgáltatási végpontokon](/azure/virtual-network/virtual-network-service-endpoints-overview).
+További információ az Azure Network Service-végpontokról a [szolgáltatási végpontokon](../../virtual-network/virtual-network-service-endpoints-overview.md).
 
 Mélyebb betekintést nyújt az Azure Storage biztonságára az [Azure Storage biztonsági útmutatójában](../blobs/security-recommendations.md).

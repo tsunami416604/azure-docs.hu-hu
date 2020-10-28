@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 3bc71e10167b21b65616dd20f8edb9a1d902527e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fbe930780ff026be748bc42104f821ee9e5c443
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83798350"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785102"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Gyakori kérdések az Azure webalkalmazási tűzfallal kapcsolatban Application Gateway
 
@@ -58,8 +58,11 @@ További információ: [OWASP Top-10 biztonsági rések](https://owasp.org/www-p
 
 Igen. Engedélyezheti a DDoS Protection szolgáltatást azon a virtuális hálózaton, amelyen az Application Gateway telepítve van. Ezzel a beállítással biztosíthatja, hogy a Azure DDoS Protection szolgáltatás az Application Gateway virtuális IP-címét (VIP) is védi.
 
+### <a name="does-waf-store-customer-data"></a>Az WAF tárolja az ügyféladatokat?
 
-## <a name="next-steps"></a>További lépések
+Nem, a WAF nem tárolja az ügyféladatokat.
+
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg az [Azure webalkalmazási tűzfalat](../overview.md).
 - További információ az [Azure bejáratáról](../../frontdoor/front-door-overview.md).

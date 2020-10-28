@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: 3273324044f5d99a2400eee5325d3adb20f4ac0c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: f98927e71a675cc6264c413ba07b3cf689b91560
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631376"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784286"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások - – referencia-útmutató
 
@@ -25,7 +25,7 @@ Ez a cikk felsorolja azokat a biztonsági riasztásokat, amelyek az Azure Defend
 
 Ha szeretné megtudni, hogyan válaszolhat ezekre a riasztásokra, tekintse meg a [biztonsági riasztások kezelése és válaszadás a Azure Security Center-ben](security-center-managing-and-responding-alerts.md)című témakört.
 
-A riasztások (és javaslatok) exportálásával kapcsolatos információkért lásd: [biztonsági riasztások és javaslatok exportálása (előzetes verzió)](continuous-export.md).
+A riasztások exportálásának megismeréséhez tekintse meg a [Security Center-információk folyamatos exportálását](continuous-export.md)ismertető témakört.
 
 A lap alján található egy táblázat, amely leírja a riasztások szándékának kategorizálásához használt Azure Security Center kill láncot. 
 
@@ -462,4 +462,4 @@ A riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következő
 
 - [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)
 - [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
-- [Biztonsági riasztások és javaslatok exportálása (előzetes verzió)](continuous-export.md)
+- [Security Center-adatfeldolgozás folyamatos exportálása](continuous-export.md)

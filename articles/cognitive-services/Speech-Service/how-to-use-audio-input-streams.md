@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3c8d3162e13c31204ed317edc653756b04ef8dd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3baedd49843c7721b6dba464054d5535b4c4f1cd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934123"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785340"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Tudnivalók a Speech SDK hangbemeneti stream API-ról
 
@@ -26,7 +26,7 @@ A hangbemeneti streamek használatakor a következő lépések szükségesek:
 
 - A hangadatfolyam formátumának meghatározása. A formátumnak a Speech SDK és a Speech szolgáltatás által támogatottnak kell lennie. Jelenleg csak a következő konfiguráció támogatott:
 
-  Hangminták PCM formátumban, egy csatorna, 16 bit/minta, 8000 vagy 16000 minta másodpercenként (16000 vagy 32000 bájt/s), két blokk igazítása (16 bit, beleértve a minta kitöltését).
+  A hangminták PCM formátumúak, egy csatorna, 16 bit/minta, 8000 vagy 16000 minta másodpercenként (16000 vagy 32000 bájt/s), két blokk igazítása (16 bit, beleértve a minta kitöltését).
 
   A hangformátum létrehozásához az SDK-ban található megfelelő kód a következőképpen néz ki:
 
@@ -37,7 +37,7 @@ A hangbemeneti streamek használatakor a következő lépések szükségesek:
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- Győződjön meg arról, hogy a kód képes a nyers hangadatok megadására a specifikációk alapján. Ha a hangforrások adatai nem felelnek meg a támogatott formátumoknak, a hangot át kell kódolni a szükséges formátumba.
+- Győződjön meg arról, hogy a kód biztosítja a nyers hangadatokat ezeknek a specifikációknak megfelelően. Gondoskodjon arról is, hogy a 16 bites minták a kis endian formátumban érkezzenek meg. Az aláírt minták is támogatottak. Ha a hangforrások adatai nem felelnek meg a támogatott formátumoknak, a hangot át kell kódolni a szükséges formátumba.
 
 - Hozzon létre saját hangbemeneti stream-osztályt a következőből származtatva: `PullAudioInputStreamCallback` . A és a tagok implementálása `Read()` `Close()` . A pontos függvény aláírása nyelvtől függ, de a kód a következőhöz hasonlóan fog kinézni:
 
@@ -74,7 +74,7 @@ A hangbemeneti streamek használatakor a következő lépések szükségesek:
   var text = result.GetText();
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Lásd: beszéd felismerése a C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

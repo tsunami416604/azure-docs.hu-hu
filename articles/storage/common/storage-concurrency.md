@@ -11,12 +11,12 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac54282135759f14f17ed16b9779013f849bd8d7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b83a8bfbc79af344c4d158ee65134034db714e9c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488673"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783963"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Egyidejűség kezelése a Microsoft Azure Storage szolgáltatásban
 
@@ -85,7 +85,7 @@ catch (StorageException ex)
 }
 ```
 
-Az Azure Storage Emellett támogatja a feltételes fejléceket is, például **Ha a-Modified-Since**, **IF-remodified-since**, **If-None-Match**és a fejlécek kombinációit. További információ: [feltételes fejlécek megadása a blob Service-műveletekhez](https://msdn.microsoft.com/library/azure/dd179371.aspx).
+Az Azure Storage Emellett támogatja a feltételes fejléceket is, például **Ha a-Modified-Since** , **IF-remodified-since** , **If-None-Match** és a fejlécek kombinációit. További információ: [feltételes fejlécek megadása a blob Service-műveletekhez](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations).
 
 A következő táblázat összefoglalja azokat a tároló-műveleteket, amelyek elfogadják a feltételes fejléceket, például ha a kérésben **egyeznek** , és amelyek ETAG értéket adnak vissza a válaszban.
 
@@ -128,9 +128,9 @@ A következő táblázat összefoglalja azokat a blob-műveleteket, amelyek elfo
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>A Blobok pesszimista párhuzamossága
 
-Egy blob kizárólagos használatra történő zárolásához szerezzen be [bérletet](https://msdn.microsoft.com/library/azure/ee691972.aspx) . Bérlet beolvasásakor meg kell adnia a bérlet időtartamát. Az időszak 15 – 60 másodperc vagy végtelen értékre, amely egy exkluzív zárolásra vonatkozik. Újítson meg egy véges bérletet a kibővítéséhez. Bérlet felszabadítása, ha elkészült. Blob Storage automatikusan felszabadítja a véges bérleteket, amikor lejárnak.
+Egy blob kizárólagos használatra történő zárolásához szerezzen be [bérletet](/rest/api/storageservices/Lease-Blob) . Bérlet beolvasásakor meg kell adnia a bérlet időtartamát. Az időszak 15 – 60 másodperc vagy végtelen értékre, amely egy exkluzív zárolásra vonatkozik. Újítson meg egy véges bérletet a kibővítéséhez. Bérlet felszabadítása, ha elkészült. Blob Storage automatikusan felszabadítja a véges bérleteket, amikor lejárnak.
 
-A bérletek lehetővé teszik a különböző szinkronizálási stratégiák támogatását. A stratégiák közé tartoznak az *Exkluzív írási/közös olvasási*, *kizárólagos írási/kizárólagos olvasási*és *közös írási/kizárólagos olvasási*műveletek. Ha a bérlet létezik, az Azure Storage kizárólagos írási (Put, set és DELETE művelet) kikényszeríti a kizárólagosságot az olvasási műveletekhez, ezért a fejlesztőnek biztosítania kell, hogy minden ügyfélalkalmazás címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél érvényes címbérleti AZONOSÍTÓval rendelkezik. Azok az olvasási műveletek, amelyek nem tartalmazzák a címbérlet-azonosítót, megosztott olvasást eredményeznek.
+A bérletek lehetővé teszik a különböző szinkronizálási stratégiák támogatását. A stratégiák közé tartoznak az *Exkluzív írási/közös olvasási* , *kizárólagos írási/kizárólagos olvasási* és *közös írási/kizárólagos olvasási* műveletek. Ha a bérlet létezik, az Azure Storage kizárólagos írási (Put, set és DELETE művelet) kikényszeríti a kizárólagosságot az olvasási műveletekhez, ezért a fejlesztőnek biztosítania kell, hogy minden ügyfélalkalmazás címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél érvényes címbérleti AZONOSÍTÓval rendelkezik. Azok az olvasási műveletek, amelyek nem tartalmazzák a címbérlet-azonosítót, megosztott olvasást eredményeznek.
 
 A következő C#-kódrészlet egy példát mutat be arra, hogy egy blobon 30 másodpercig szerezzen be egy kizárólagos bérletet, frissíti a blob tartalmát, majd felszabadítsa a bérletet. Ha már létezik érvényes bérlet a blobon egy új bérlet beolvasásakor, a Blob service "HTTP (409) ütközés" állapotot ad vissza. Az alábbi kódrészlet egy **AccessCondition** objektumot használ a címbérleti információk beágyazására, amikor a a blobnak a Storage szolgáltatásban való frissítésére vonatkozó kérést küld.  A teljes minta innen tölthető le: az [Azure Storage használatával történő Egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
@@ -161,7 +161,7 @@ catch (StorageException ex)
 }
 ```
 
-Ha a bérlet AZONOSÍTÓjának átadása nélkül próbál meg írási műveletet végrehajtani egy bérelt blobon, a kérelem 412-as hibával meghiúsul. Ha a bérlet a **UploadText** metódus meghívása előtt lejár, de továbbra is átadja a bérlet azonosítóját, a kérelem **412** -as hibával meghiúsul. A bérlet lejárati idejének és a címbérleti azonosítók kezelésével kapcsolatos további információkért tekintse meg a [bérleti blob](https://msdn.microsoft.com/library/azure/ee691972.aspx) Rest dokumentációját.
+Ha a bérlet AZONOSÍTÓjának átadása nélkül próbál meg írási műveletet végrehajtani egy bérelt blobon, a kérelem 412-as hibával meghiúsul. Ha a bérlet a **UploadText** metódus meghívása előtt lejár, de továbbra is átadja a bérlet azonosítóját, a kérelem **412** -as hibával meghiúsul. A bérlet lejárati idejének és a címbérleti azonosítók kezelésével kapcsolatos további információkért tekintse meg a [bérleti blob](/rest/api/storageservices/Lease-Blob) Rest dokumentációját.
 
 A következő blob-műveletek használhatnak címbérleteket a pesszimista Egyidejűség kezeléséhez:
 
@@ -184,7 +184,7 @@ A következő blob-műveletek használhatnak címbérleteket a pesszimista Egyid
 
 ### <a name="pessimistic-concurrency-for-containers"></a>A tárolók pesszimista egyidejűsége
 
-A tárolók bérletei lehetővé teszik ugyanazokat a szinkronizálási stratégiákat, mint a Blobok (*kizárólagos írási/megosztott olvasási*, *kizárólagos írási/kizárólagos olvasási*és *közös írási/kizárólagos olvasási*), a Blobokkal ellentétben azonban a tárolási szolgáltatás csak a kizárólagosságot alkalmazza a törlési műveletekre. Egy aktív bérlettel rendelkező tároló törléséhez az ügyfélnek tartalmaznia kell az aktív címbérlet AZONOSÍTÓját a törlési kérelemmel. Az összes többi tároló-művelet sikeres egy bérelt tárolón anélkül, hogy a bérlet AZONOSÍTÓját, amely esetben megosztott műveleteket hajt végre. Ha a frissítés (Put vagy set) vagy az olvasási műveletek kizárólagossága szükséges, a fejlesztőknek biztosítaniuk kell, hogy az összes ügyfél címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél érvényes címbérleti AZONOSÍTÓval rendelkezik.
+A tárolók bérletei lehetővé teszik ugyanazokat a szinkronizálási stratégiákat, mint a Blobok ( *kizárólagos írási/megosztott olvasási* , *kizárólagos írási/kizárólagos olvasási* és *közös írási/kizárólagos olvasási* ), a Blobokkal ellentétben azonban a tárolási szolgáltatás csak a kizárólagosságot alkalmazza a törlési műveletekre. Egy aktív bérlettel rendelkező tároló törléséhez az ügyfélnek tartalmaznia kell az aktív címbérlet AZONOSÍTÓját a törlési kérelemmel. Az összes többi tároló-művelet sikeres egy bérelt tárolón anélkül, hogy a bérlet AZONOSÍTÓját, amely esetben megosztott műveleteket hajt végre. Ha a frissítés (Put vagy set) vagy az olvasási műveletek kizárólagossága szükséges, a fejlesztőknek biztosítaniuk kell, hogy az összes ügyfél címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél érvényes címbérleti AZONOSÍTÓval rendelkezik.
 
 A következő tároló-műveletek használhatnak címbérleteket a pesszimista Egyidejűség kezeléséhez:
 
@@ -198,9 +198,9 @@ A következő tároló-műveletek használhatnak címbérleteket a pesszimista E
 
 További információkért lásd:
 
-* [Feltételes fejlécek megadása Blob Service-műveletekhez](https://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Bérlet tárolója](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Blobbérlet](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Feltételes fejlécek megadása Blob Service-műveletekhez](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations)
+* [Bérlet tárolója](/rest/api/storageservices/Lease-Container)
+* [Blobbérlet](/rest/api/storageservices/Lease-Blob)
 
 ## <a name="managing-concurrency-in-table-storage"></a>A Egyidejűség kezelése a Table Storage-ban
 
@@ -259,7 +259,7 @@ A táblázatokat használó fejlesztőknek általában optimista párhuzamosság
 
 További információkért lásd:
 
-* [Entitások műveletei](https://msdn.microsoft.com/library/azure/dd179375.aspx)
+* [Entitások műveletei](/rest/api/storageservices/Operations-on-Entities)
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>A párhuzamosság kezelése a várólista-szolgáltatásban
 
@@ -269,8 +269,8 @@ Az üzenetsor-szolgáltatás nem támogatja az optimista vagy a pesszimista pár
 
 További információkért lásd:
 
-* [A Queue szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Üzenetek beolvasása](https://msdn.microsoft.com/library/azure/dd179474.aspx)
+* [A Queue szolgáltatás REST API-ja](/rest/api/storageservices/Queue-Service-REST-API)
+* [Üzenetek beolvasása](/rest/api/storageservices/Get-Messages)
 
 ## <a name="managing-concurrency-in-azure-files"></a>Egyidejűség kezelése Azure Files
 
@@ -280,7 +280,7 @@ Amikor egy SMB-ügyfél egy fájlt nyit meg a törléshez, az a fájlt függőbe
 
 További információkért lásd:
 
-* [Fájlok zárolásának kezelése](https://msdn.microsoft.com/library/azure/dn194265.aspx)
+* [Fájlok zárolásának kezelése](/rest/api/storageservices/Managing-File-Locks)
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -292,5 +292,5 @@ Az Azure Storage-ról további információt a következő témakörben talál:
 
 * [Microsoft Azure Storage Kezdőlap](https://azure.microsoft.com/services/storage/)
 * [A Microsoft Azure Storage bemutatása](storage-introduction.md)
-* A [blob](../blobs/storage-dotnet-how-to-use-blobs.md), a [tábla](../../cosmos-db/table-storage-how-to-use-dotnet.md), a [várólisták](../storage-dotnet-how-to-use-queues.md)és a [fájlok](../storage-dotnet-how-to-use-files.md) tárolási első lépések
+* A [blob](../blobs/storage-quickstart-blobs-dotnet.md), a [tábla](../../cosmos-db/tutorial-develop-table-dotnet.md), a [várólisták](../queues/storage-dotnet-how-to-use-queues.md)és a [fájlok](../files/storage-dotnet-how-to-use-files.md) tárolási első lépések
 * Tárolási architektúra – [Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency) -ellenőrzéssel

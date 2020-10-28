@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: f174ba30251757182866f9f446eefb10588618e9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1446b501b9d91c94c12c82755d0e31f361f8cd8f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428089"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783419"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtár a JavaScripthez
 
@@ -34,12 +34,12 @@ További források:
 * [API-referenciadokumentáció](/javascript/api/@azure/storage-queue/)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
 * [Csomag (node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue)
-* [Példák](/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Példák](../common/storage-samples-javascript.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
 * Az operációs rendszer jelenlegi [Node.js](https://nodejs.org/en/download/) .
 
 ## <a name="setting-up"></a>Beállítás
@@ -48,7 +48,7 @@ Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet az Azure ü
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *Queues-Gyorsindítás-V12*nevű Node.js alkalmazást.
+Hozzon létre egy *Queues-Gyorsindítás-V12* nevű Node.js alkalmazást.
 
 1. A konzol ablakban (például cmd, PowerShell vagy bash) hozzon létre egy új könyvtárat a projekthez.
 
@@ -62,7 +62,7 @@ Hozzon létre egy *Queues-Gyorsindítás-V12*nevű Node.js alkalmazást.
     cd queues-quickstart-v12
     ```
 
-1. Hozzon létre egy *package.js*nevű új szövegfájlt. Ez a fájl határozza meg a Node.js projektet. Mentse ezt a fájlt a *Queues-Gyorsindítás-V12* könyvtárba. A fájl tartalma:
+1. Hozzon létre egy *package.js* nevű új szövegfájlt. Ez a fájl határozza meg a Node.js projektet. Mentse ezt a fájlt a *Queues-Gyorsindítás-V12* könyvtárba. A fájl tartalma:
 
     ```json
     {
@@ -118,7 +118,7 @@ A projekt könyvtárából:
 
     ```
 
-1. Mentse az új fájlt *queues-quickstart-v12.jsként * a *Queues-Gyorsindítás-V12* könyvtárba.
+1. Mentse az új fájlt *queues-quickstart-v12.jsként* a *Queues-Gyorsindítás-V12* könyvtárba.
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -347,7 +347,7 @@ Done
 
 Lépjen be a hibakeresőbe, és vizsgálja meg a [Azure Portal](https://portal.azure.com) a folyamat során. Ellenőrizze a Storage-fiókját, hogy az üzenetek a várólistán legyenek létrehozva és törölve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre várólistát, és hogyan adhat hozzá üzeneteket a JavaScript-kód használatával. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 

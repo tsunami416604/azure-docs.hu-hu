@@ -10,12 +10,12 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091610"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783878"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Configure Azure Storage connection strings (Az Azure Storage kapcsolati sztringek konfigurálása)
 
@@ -35,7 +35,7 @@ Az alkalmazásnak a futásidejű kapcsolati sztringhez kell hozzáférnie, hogy 
 
 * A kapcsolatok karakterláncát egy környezeti változóban tárolhatja.
 * Az asztalon vagy eszközön futó alkalmazás a kapcsolati karakterláncot egy **app.config** vagy **web.config** fájlban tárolja. Adja hozzá a kapcsolódási karakterláncot a **appSettings** szakaszhoz ezekben a fájlokban.
-* Az Azure Cloud Service-ben futó alkalmazások tárolhatják a kapcsolatok karakterláncát az [Azure szolgáltatás konfigurációs sémájának (. cscfg) fájljában](https://msdn.microsoft.com/library/ee758710.aspx). Adja hozzá a kapcsolódási karakterláncot a szolgáltatás konfigurációs fájljának **ConfigurationSettings** szakaszához.
+* Az Azure Cloud Service-ben futó alkalmazások tárolhatják a kapcsolatok karakterláncát az [Azure szolgáltatás konfigurációs sémájának (. cscfg) fájljában](/previous-versions/azure/reference/ee758710(v=azure.100)). Adja hozzá a kapcsolódási karakterláncot a szolgáltatás konfigurációs fájljának **ConfigurationSettings** szakaszához.
 
 A kapcsolati karakterlánc egy konfigurációs fájlban való tárolása megkönnyíti a kapcsolati sztring frissítését a [Azurite Storage Emulator](../common/storage-use-azurite.md) és egy Felhőbeli Azure Storage-fiók közötti váltáshoz. Csak úgy kell szerkesztenie a kapcsolódási karakterláncot, hogy az a célként megadott környezetre mutasson.
 
@@ -57,10 +57,10 @@ A kapcsolódási karakterlánc például a következőhöz hasonló lehet:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Bár az Azure Storage a HTTP-t és a HTTPS-t is támogatja egy kapcsolati sztringben, a *https használata kifejezetten ajánlott*.
+Bár az Azure Storage a HTTP-t és a HTTPS-t is támogatja egy kapcsolati sztringben, a *https használata kifejezetten ajánlott* .
 
 > [!TIP]
-> A Storage-fiókhoz tartozó kapcsolatok karakterláncait a [Azure Portal](https://portal.azure.com)találja. Az **SETTINGS**  >  elsődleges és másodlagos hozzáférési kulcsokhoz tartozó kapcsolati karakterláncok megjelenítéséhez nyissa meg a beállítások**hozzáférési kulcsait** a Storage-fiók menüjének paneljén.
+> A Storage-fiókhoz tartozó kapcsolatok karakterláncait a [Azure Portal](https://portal.azure.com)találja. Az **SETTINGS**  >  elsődleges és másodlagos hozzáférési kulcsokhoz tartozó kapcsolati karakterláncok megjelenítéséhez nyissa meg a beállítások **hozzáférési kulcsait** a Storage-fiók menüjének paneljén.
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Kapcsolati karakterlánc létrehozása közös hozzáférési aláírás használatával

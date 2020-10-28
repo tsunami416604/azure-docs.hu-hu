@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: ee1b4da6f02623346d078b9812c99e5093dc2691
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b4408b2f8c631453281ecf6f214d49318252a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408215"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785051"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
 
-Ez a cikk segítséget nyújt az időszakos kapcsolati hibák és a [Azure app Service](./overview.md)kapcsolódó teljesítménybeli problémák elhárításában. Ez a témakör további információkat nyújt a és a hibaelhárítási módszereiről, valamint a forrásoldali hálózati fordítási (SNAT) portok kimerítéséről. Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az [MSDN Azure-beli szakértőkkel és a stack overflow fórumokkal](https://azure.microsoft.com/support/forums/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+Ez a cikk segítséget nyújt az időszakos kapcsolati hibák és a [Azure app Service](./overview.md)kapcsolódó teljesítménybeli problémák elhárításában. Ez a témakör további információkat nyújt a és a hibaelhárítási módszereiről, valamint a forrásoldali hálózati fordítási (SNAT) portok kimerítéséről. Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az [MSDN Azure-beli szakértőkkel és a stack overflow fórumokkal](https://azure.microsoft.com/support/forums/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.
 
 ## <a name="symptoms"></a>Hibajelenségek
 
@@ -32,7 +32,7 @@ Az Azure app Service-ben üzemeltetett alkalmazások és függvények a követke
 Ezen tünetek egyik fő oka, hogy az alkalmazás példánya nem tud új kapcsolódást nyitni a külső végponthoz, mert elérte a következő korlátozások valamelyikét:
 
 * TCP-kapcsolatok: az elvégezhető kimenő kapcsolatok száma korlátozott. Ez a használt munkavégző méretével van társítva.
-* SNAT-portok: az Azure-beli [Kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md)esetében az Azure a forrás hálózati CÍMFORDÍTÁS (SNAT) és egy Load Balancer (az ügyfelek számára nem elérhető) használatával kommunikál az Azure-on kívüli végpontokkal a nyilvános IP-címeken, valamint az Azure-ba irányuló végponti pontokat, amelyek nem használják ki a szolgáltatás végpontját. Az Azure app Service minden példánya eredetileg előre lefoglalt számú **128** SNAT-portot kap. Ez a korlát befolyásolja a kapcsolatok megnyitását ugyanahhoz a gazdagéphez és port kombinációhoz. Ha az alkalmazás a címek és a portok kombinációinak együttes használatával hoz létre kapcsolatokat, nem fogja használni a SNAT-portokat. A rendszer akkor használja a SNAT-portokat, ha ismétlődő hívásokat végez ugyanahhoz a címnek és port kombinációhoz. A portok felszabadítása után a port igény szerint újra felhasználható. Az Azure hálózati terheléselosztó csak 4 perc várakozás után visszaállítja a SNAT-portot a lezárt kapcsolatoktól.
+* SNAT-portok: az Azure-beli [Kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md)esetében az Azure a forrás hálózati CÍMFORDÍTÁS (SNAT) és egy Load Balancer (az ügyfelek számára nem elérhető) használatával kommunikál az Azure-on kívüli végpontokkal a nyilvános IP-címeken, valamint az Azure-ba irányuló végponti pontokat, amelyek nem használják ki a szolgáltatás/privát végpontok előnyeit. Az Azure app Service minden példánya eredetileg előre lefoglalt számú **128** SNAT-portot kap. Ez a korlát befolyásolja a kapcsolatok megnyitását ugyanahhoz a gazdagéphez és port kombinációhoz. Ha az alkalmazás a címek és a portok kombinációinak együttes használatával hoz létre kapcsolatokat, nem fogja használni a SNAT-portokat. A rendszer akkor használja a SNAT-portokat, ha ismétlődő hívásokat végez ugyanahhoz a címnek és port kombinációhoz. A portok felszabadítása után a port igény szerint újra felhasználható. Az Azure hálózati terheléselosztó csak 4 perc várakozás után visszaállítja a SNAT-portot a lezárt kapcsolatoktól.
 
 Amikor az alkalmazások és a függvények gyorsan megnyitnak egy új csatlakozást, gyorsan kihasználhatják az 128-es portok előre lefoglalt kvótáját. Ezután le lesznek tiltva, amíg egy új SNAT-port elérhetővé válik, vagy a további SNAT-portok dinamikusan kiosztásával, vagy egy visszaigényelt SNAT-port újbóli használatával. Azok az alkalmazások vagy függvények, amelyek nem tudnak új kapcsolatokat létrehozni, a jelen cikk a **jelenségek** című szakaszában ismertetett problémák valamelyikével kezdődnek.
 
@@ -130,7 +130,7 @@ Ha nem tudja, hogy az alkalmazás viselkedése elég gyors legyen, néhány eszk
 
 [App Service Diagnostics](./overview-diagnostics.md) segítségével megkeresheti a SNAT-portok foglalási adatait, és megfigyelheti egy app Service-hely SNAT-portok foglalási metrikáját. A SNAT-portok foglalási információinak megkereséséhez kövesse az alábbi lépéseket:
 
-1. App Service diagnosztika eléréséhez navigáljon a App Service webalkalmazáshoz vagy App Service Environment a [Azure Portal](https://portal.azure.com/). A bal oldali navigációs sávon válassza a **problémák diagnosztizálása és megoldása**lehetőséget.
+1. App Service diagnosztika eléréséhez navigáljon a App Service webalkalmazáshoz vagy App Service Environment a [Azure Portal](https://portal.azure.com/). A bal oldali navigációs sávon válassza a **problémák diagnosztizálása és megoldása** lehetőséget.
 2. Rendelkezésre állás és teljesítmény kategória kiválasztása
 3. Válassza a SNAT port kimerülése csempét a kategória alatt található elérhető csempék listájában. A gyakorlat az, hogy 128 alatt maradjon.
 Ha szüksége van rá, továbbra is megnyithatja a támogatási jegyet, és a támogatási szakembernek az Ön számára készült mérőszámot fogja kapni.

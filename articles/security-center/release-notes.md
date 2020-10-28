@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 047bfac9179fd10383fc91155c7cb6e737fda516
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 78eb7ae9a73217bfe7b9ef58cb46a70cc312c481
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558703"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784371"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -37,6 +37,7 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 - [Biztonsági rések felmérése helyszíni és többfelhős gépekhez (előzetes verzió)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Azure Firewall javaslat hozzáadva (előzetes verzió)](#azure-firewall-recommendation-added-preview)
 - [Az illetékes IP-tartományokat a gyors javítással frissített Kubernetes Services-javaslatban kell meghatározni.](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
+- [A szabályozási megfelelőségi irányítópult mostantól tartalmazza a szabványok eltávolításának lehetőségét](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
 - [Microsoft. Security/securityStatuses tábla eltávolítva az Azure Resource Graphből (ARG)](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Biztonsági rések felmérése helyszíni és többfelhős gépekhez (előzetes verzió)
@@ -75,6 +76,15 @@ Az ajánlott **IP-címtartományok meghatározása a Kubernetes Services szolgá
 A javaslatról és az egyéb Security Center javaslatokról további részleteket a [biztonsági javaslatok – útmutató](recommendations-reference.md)című témakörben talál.
 
 :::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="A hitelesítő IP-tartományokat a Kubernetes Services javaslatban kell meghatározni a gyors javítás lehetőséggel":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>A szabályozási megfelelőségi irányítópult mostantól tartalmazza a szabványok eltávolításának lehetőségét
+
+A Security Center szabályozási megfelelőségi irányítópultja betekintést nyújt a megfelelőségi állapotba, és megfelel a megfelelőségi ellenőrzéseknek és követelményeknek.
+
+Az irányítópult a szabályozási szabványok alapértelmezett készletét tartalmazza. Ha a megadott szabványok bármelyike nem felel meg a szervezete számára, most egy egyszerű folyamat, amellyel egyszerűen eltávolíthatja őket a felhasználói felületről egy előfizetéshez. A szabványokat csak az *előfizetés* szintjén lehet eltávolítani; a felügyeleti csoport hatóköre nem.
+
+További információ: [standard eltávolítása az irányítópultról](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard).
 
 
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Microsoft. Security/securityStatuses tábla eltávolítva az Azure Resource Graphből (ARG)
@@ -669,7 +679,7 @@ A szabályzatok az Azure Policy szolgáltatásban találhatók:
 
 Ismerkedés a [munkafolyamat-automatizálási sablonokkal](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 
-További információ a két exportálási házirend használatáról: [Azure Security Center riasztások és javaslatok folyamatos exportálása a házirend](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745)segítségével.
+További információ a két exportálási házirend használatáról [: a Munkafolyamat-automatizálás konfigurálása a megadott szabályzatok segítségével](workflow-automation.md#configure-workflow-automation-at-scale-using-the-supplied-policies) és [folyamatos exportálás beállítása](continuous-export.md#set-up-a-continuous-export).
 
 
 ### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>Új javaslat a NSG használatára a nem internetre irányuló virtuális gépek elleni védelemhez

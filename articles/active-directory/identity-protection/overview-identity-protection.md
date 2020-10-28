@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996528"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783181"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
 
@@ -39,9 +39,9 @@ Az 2018 Alex Weinert [októberi blogbejegyzést](https://techcommunity.microsoft
 >
 > Az Ignite tavaly megbeszélte az első 3 támadást az Identity Systems-ben. Itt láthatók a támadások legutóbbi mennyisége
 >   
->   - **Visszajátszási ismétlés**: 4,6 milliárd támadás észlelhető 2018 májusában
->   - **Jelszó spray**: 350k áprilisban 2018
->   - **Adathalászat**: ez nehezen számszerűsíthető, de a 23M kockázati eseményeinek száma a 2018-as számú.
+>   - **Visszajátszási ismétlés** : 4,6 milliárd támadás észlelhető 2018 májusában
+>   - **Jelszó spray** : 350k áprilisban 2018
+>   - **Adathalászat** : ez nehezen számszerűsíthető, de a 23M kockázati eseményeinek száma a 2018-as számú.
 
 ## <a name="risk-detection-and-remediation"></a>Kockázatok észlelése és szervizelése
 
@@ -87,7 +87,7 @@ Az Identity Protection-információk Azure Sentineltel való integrálásával k
 
 Az Identity Protection használatához a felhasználóknak biztonsági olvasónak, biztonsági kezelőnek, biztonsági rendszergazdának, globális olvasónak vagy globális rendszergazdának kell lenniük ahhoz, hogy hozzáférjenek.
 
-| Szerepkör | Elvégezhető | Nem hajtható végre |
+| Role | Elvégezhető | Nem hajtható végre |
 | --- | --- | --- |
 | Globális rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz |   |
 | Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz | Felhasználó jelszavának alaphelyzetbe állítása |
@@ -107,9 +107,9 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 | Kockázati szabályzatok | Felhasználói kockázati házirend (Identity Protection használatával)  | Nem | Nem |Igen | 
 | Kockázati szabályzatok | Bejelentkezési kockázati szabályzat (Identity Protection vagy feltételes hozzáférés használatával)  | Nem |  Nem |Igen |
 | Biztonsági jelentések | Áttekintés |  Nem | Nem |Igen |
-| Biztonsági jelentések | Kockázatos felhasználók  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
-| Biztonsági jelentések | Kockázatos bejelentkezések  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
-| Biztonsági jelentések | Kockázatészlelések   | No | Korlátozott információ| Teljes hozzáférés|
+| Biztonsági jelentések | Kockázatos felhasználók  | Korlátozott információ. Csak közepes és magas kockázatú felhasználók jelennek meg. Nincsenek részletek vagy kockázati előzmények. | Korlátozott információ. Csak közepes és magas kockázatú felhasználók jelennek meg. Nincsenek részletek vagy kockázati előzmények. | Teljes hozzáférés|
+| Biztonsági jelentések | Kockázatos bejelentkezések  | Korlátozott információ. A rendszer nem jelenít meg kockázati adatokat vagy kockázati szintet. | Korlátozott információ. A rendszer nem jelenít meg kockázati adatokat vagy kockázati szintet. | Teljes hozzáférés|
+| Biztonsági jelentések | Kockázatészlelések   | Nem | Korlátozott információ. Nem találhatók részletek a fiókban.| Teljes hozzáférés|
 | Értesítések | Veszélyeztetett felhasználók észlelt riasztásai  | Nem | Nem |Igen |
 | Értesítések | Heti kivonat| Nem | Nem | Igen | 
 | | MFA-regisztrációs szabályzat | Nem | Nem | Igen |

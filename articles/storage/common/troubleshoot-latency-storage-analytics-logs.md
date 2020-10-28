@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 6c29fd00a19c930995d748027b2ec04eaa12a5ec
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480649"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785595"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Késési problémák elhárítása Storage Analytics-naplók használatával
 
@@ -27,7 +27,7 @@ Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a ké
 
 ## <a name="recommended-steps"></a>Javasolt lépések
 
-1. Töltse le a [Storage Analytics naplókat](/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
+1. Töltse le a [Storage Analytics naplókat](./storage-analytics-logging.md#download-storage-logging-log-data).
 
 2. A következő PowerShell-parancsfájl használatával alakítsa át a nyers formátumú naplókat táblázatos formátumba:
 
@@ -114,7 +114,7 @@ A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg 
 * Server-Latency
 * Client-Latency
 
-A **RequestStatus = sikerrel**rendelkező **GetBlob-műveletben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, ez azt jelzi, hogy az Azure Storage nagy mennyiségű időt tölt ki az ügyfélnek az adatírás során. Ez a késleltetés Client-Side problémát jelez.
+A **RequestStatus = sikerrel** rendelkező **GetBlob-műveletben** , ha a **maximális idő** az **ügyfél-késésben** van elköltve, ez azt jelzi, hogy az Azure Storage nagy mennyiségű időt tölt ki az ügyfélnek az adatírás során. Ez a késleltetés Client-Side problémát jelez.
 
 **Ajánlás**
 
@@ -129,7 +129,7 @@ A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg 
 * Server-Latency
 * Client-Latency
 
-A **RequestStatus = (SAS) NetworkError**rendelkező **GetBlob-műveletekben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, a leggyakoribb probléma az, hogy az ügyfél le van választva, mielőtt lejár az időkorlát a tárolási szolgáltatásban.
+A **RequestStatus = (SAS) NetworkError** rendelkező **GetBlob-műveletekben** , ha a **maximális idő** az **ügyfél-késésben** van elköltve, a leggyakoribb probléma az, hogy az ügyfél le van választva, mielőtt lejár az időkorlát a tárolási szolgáltatásban.
 
 **Ajánlás**
 
@@ -144,7 +144,7 @@ A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg 
 * Server-Latency
 * Client-Latency
 
-Ha a **RequestStatus = sikerrel**rendelkező **put művelet** során a **maximális idő** az **ügyfél-késésben**van, akkor ez azt jelzi, hogy az ügyfél több időt vesz igénybe az Azure Storage-ba való adatküldéshez. Ez a késleltetés Client-Side problémát jelez.
+Ha a **RequestStatus = sikerrel** rendelkező **put művelet** során a **maximális idő** az **ügyfél-késésben** van, akkor ez azt jelzi, hogy az ügyfél több időt vesz igénybe az Azure Storage-ba való adatküldéshez. Ez a késleltetés Client-Side problémát jelez.
 
 **Ajánlás**
 
@@ -159,10 +159,9 @@ A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg 
 * Server-Latency
 * Client-Latency
 
-A **RequestStatus = (SAS) NetworkError**rendelkező **PutBlob-műveletekben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, a leggyakoribb probléma az, hogy az ügyfél le van választva, mielőtt lejár az időkorlát a tárolási szolgáltatásban.
+A **RequestStatus = (SAS) NetworkError** rendelkező **PutBlob-műveletekben** , ha a **maximális idő** az **ügyfél-késésben** van elköltve, a leggyakoribb probléma az, hogy az ügyfél le van választva, mielőtt lejár az időkorlát a tárolási szolgáltatásban.
 
 **Ajánlás**
 
 * Vizsgálja meg az ügyfél kódját, hogy megtudja, miért és mikor szakad meg az ügyfél a Storage szolgáltatással.
 * A Wireshark, a Microsoft Message Analyzer vagy a Tcping használatával vizsgálja meg az ügyfél hálózati kapcsolati problémáit.
-

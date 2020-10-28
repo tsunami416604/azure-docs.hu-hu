@@ -14,12 +14,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 131deabfbd29e4d55a3f34252e3ba68261872ca0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298576"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785493"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>SQL Server VM áthelyezése az Azure-ban lévő másik régióba Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ Készítse elő mind a forrás SQL Server VM, mind a cél régiót az áthelyez�
     - Azure Site Recovery automatikusan felfedi és létrehoz egy virtuális hálózatot, amikor engedélyezi a forrás virtuális gép replikálását. Emellett előre létrehozhat egy hálózatot, és hozzárendelheti a virtuális géphez a replikáció engedélyezéséhez a felhasználói folyamaton belül. A célként megadott régióban manuálisan kell létrehoznia a többi erőforrást.
 - A forrás virtuális gép konfigurációja alapján a leggyakrabban használt hálózati erőforrások létrehozásához tekintse meg a következő dokumentációt: 
     - [Hálózati biztonsági csoportok](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [Terheléselosztó](../../../load-balancer/tutorial-load-balancer-standard-internal-portal.md)
+    - [Terheléselosztóval](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
     - [Nyilvános IP-cím](../../../virtual-network/virtual-network-public-ip-address.md)
     - További hálózatkezelési összetevőkért tekintse meg a [hálózatkezelési dokumentációt](../../../virtual-network/virtual-networks-overview.md).
 - Ha tesztelni szeretné a konfigurációt, manuálisan hozza létre a nem éles hálózatot a célként megadott régióban. Ezt a lépést javasoljuk, mert minimális beavatkozást biztosít az üzemi hálózattal. 
@@ -73,22 +73,22 @@ Készítse elő mind a forrás SQL Server VM, mind a cél régiót az áthelyez�
 
 A következő lépések bemutatják, hogyan másolhatók az adatAzure Site Recoveryek a célként megadott régióba. Hozza létre a Recovery Services-tárolót a forrás régiótól eltérő bármely régióban. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
 1. Válassza a navigációs ablaktábla bal felső sarkában található **erőforrás létrehozása** lehetőséget. 
-1. Válassza ki **& felügyeleti eszközöket** , majd válassza **a biztonsági mentés és site Recovery**lehetőséget. 
-1. Az **alapvető beállítások** lap **projekt részletei**területén hozzon létre egy új erőforráscsoportot a céltartományban, vagy válasszon ki egy meglévő erőforráscsoportot a célként megadott régióban. 
-1. A **példány részletei**területen adja meg a tároló nevét, majd válassza ki a kívánt **régiót** a legördülő menüből. 
+1. Válassza ki **& felügyeleti eszközöket** , majd válassza **a biztonsági mentés és site Recovery** lehetőséget. 
+1. Az **alapvető beállítások** lap **projekt részletei** területén hozzon létre egy új erőforráscsoportot a céltartományban, vagy válasszon ki egy meglévő erőforráscsoportot a célként megadott régióban. 
+1. A **példány részletei** területen adja meg a tároló nevét, majd válassza ki a kívánt **régiót** a legördülő menüből. 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a Recovery Services-tároló létrehozásához. 
 1. A navigációs ablaktábla bal felső sarkában válassza a **minden szolgáltatás** lehetőséget, majd a keresőmezőbe írja be a következőt: `recovery services` . 
 1. Opcionálisan Válassza ki **Recovery Services** -tároló melletti csillagot a gyors navigációs sávon való hozzáadáshoz. 
 1. Válassza a **Recovery Services** -tárolók lehetőséget, majd válassza ki a létrehozott Recovery Services-tárolót. 
-1. Az **Áttekintés** panelen válassza a **replikálás**lehetőséget. 
+1. Az **Áttekintés** panelen válassza a **replikálás** lehetőséget. 
 
    ![Replikáció konfigurálása](./media/move-sql-vm-different-region/configure-replication.png)
 
 1. Válassza a **forrás** lehetőséget, majd válassza ki az **Azure** -t a forrásként. Válassza ki a megfelelő értékeket a többi legördülő mezőhöz, például a forrás virtuális gépek helyét. A **forrás erőforráscsoport** mezőben csak a **forrás helye** régióban található erőforráscsoportok lesznek láthatók. 
 1. Válassza a **virtuális gépek** lehetőséget, majd válassza ki az áttelepíteni kívánt virtuális gépeket. A virtuális gép kijelölésének mentéséhez kattintson **az OK gombra** . 
-1. Válassza a **Beállítások**lehetőséget, majd válassza ki a **célhelyet** a legördülő menüből. Ennek a korábban előkészített erőforráscsoporthoz kell lennie. 
+1. Válassza a **Beállítások** lehetőséget, majd válassza ki a **célhelyet** a legördülő menüből. Ennek a korábban előkészített erőforráscsoporthoz kell lennie. 
 1. Ha testreszabta a replikációt, válassza a **cél erőforrások létrehozása** lehetőséget, hogy létrehozza az erőforrásokat az új helyen. 
 1. Az erőforrás-létrehozás befejezése után válassza a **replikáció engedélyezése** lehetőséget a SQL Server VM replikálásának megkezdéséhez a forrásból a célként megadott régióba.
 1. A replikáció állapotát a helyreállítási tárolóra navigálva, a **replikált elemek** kiválasztásával és a SQL Server VM **állapotának** megtekintésével tekintheti meg. A **védett** állapot azt jelzi, hogy a replikáció befejeződött. 
@@ -98,8 +98,8 @@ A következő lépések bemutatják, hogyan másolhatók az adatAzure Site Recov
 ## <a name="test-move-process"></a>Mozgási folyamat tesztelése
 A következő lépések bemutatják, hogyan használhatja a Azure Site Recovery az áthelyezési folyamat teszteléséhez. 
 
-1. Navigáljon a **Recovery Services** -tárolóhoz a [Azure Portal](https://portal.azure.com) , és válassza a **replikált elemek**lehetőséget. 
-1. Válassza ki az áthelyezni kívánt SQL Server VM, ellenőrizze, hogy a **replikálás állapota kifogástalan állapotú** -e, majd válassza a **feladatátvételi teszt**lehetőséget. **Healthy** 
+1. Navigáljon a **Recovery Services** -tárolóhoz a [Azure Portal](https://portal.azure.com) , és válassza a **replikált elemek** lehetőséget. 
+1. Válassza ki az áthelyezni kívánt SQL Server VM, ellenőrizze, hogy a **replikálás állapota kifogástalan állapotú** -e, majd válassza a **feladatátvételi teszt** lehetőséget. **Healthy** 
 
    ![Feladatátvételi teszt a virtuális gépen](./media/move-sql-vm-different-region/test-failover-of-replicated-vm.png)
 
@@ -109,28 +109,28 @@ A következő lépések bemutatják, hogyan használhatja a Azure Site Recovery 
    >[!IMPORTANT]
    > Javasoljuk, hogy használjon külön Azure-beli virtuálisgép-hálózatot a feladatátvételi teszthez. Ne használja a replikáció engedélyezésekor beállított éles hálózatot, és a virtuális gépeket végül át kívánja helyezni. 
 
-1. Az előrehaladás figyeléséhez navigáljon a tárolóhoz, válassza ki **site Recovery feladatokat** a **figyelés**területen, majd válassza ki a folyamatban lévő **feladatátvételi teszt** feladatot.
+1. Az előrehaladás figyeléséhez navigáljon a tárolóhoz, válassza ki **site Recovery feladatokat** a **figyelés** területen, majd válassza ki a folyamatban lévő **feladatátvételi teszt** feladatot.
 
    ![Feladatátvételi teszt előrehaladásának figyelése](./media/move-sql-vm-different-region/monitor-failover-test-job.png)
 
 1. A teszt befejezése után navigáljon a **virtuális gépekhez** a portálon, és tekintse át az újonnan létrehozott virtuális gépet. Győződjön meg arról, hogy a SQL Server VM fut, a mérete megfelelő, és csatlakoztatva van a megfelelő hálózathoz. 
-1. Törölje a teszt részeként létrehozott virtuális gépet, mert **a feladatátvételi beállítás** szürkén jelenik meg, amíg a feladatátvételi teszt erőforrásai nem törlődnek. Váltson vissza a tárolóhoz, válassza a **replikált elemek**lehetőséget, válassza ki a SQL Server VM, majd válassza a **feladatátvételi teszt törlése**lehetőséget. Jegyezze fel és mentse a teszttel kapcsolatos megfigyeléseket a **Megjegyzések** szakaszban, és jelölje be a tesztelés elem melletti jelölőnégyzetet **. Törölje a feladatátvételi teszt virtuális gépeket**. Az **OK** gombra kattintva törölheti az erőforrásokat a teszt után. 
+1. Törölje a teszt részeként létrehozott virtuális gépet, mert **a feladatátvételi beállítás** szürkén jelenik meg, amíg a feladatátvételi teszt erőforrásai nem törlődnek. Váltson vissza a tárolóhoz, válassza a **replikált elemek** lehetőséget, válassza ki a SQL Server VM, majd válassza a **feladatátvételi teszt törlése** lehetőséget. Jegyezze fel és mentse a teszttel kapcsolatos megfigyeléseket a **Megjegyzések** szakaszban, és jelölje be a tesztelés elem melletti jelölőnégyzetet **. Törölje a feladatátvételi teszt virtuális gépeket** . Az **OK** gombra kattintva törölheti az erőforrásokat a teszt után. 
 
    ![elemek tisztítása a feladatátvételi teszt után](./media/move-sql-vm-different-region/cleanup-test-items.png)
 
 ## <a name="move-the-sql-server-vm"></a>A SQL Server VM áthelyezése 
 A következő lépések bemutatják, hogyan helyezheti át a SQL Server VM a forrás régiójából a kívánt régióba. 
 
-1. Navigáljon a **Recovery Services** -tárolóhoz, válassza a **replikált elemek**lehetőséget, válassza ki a virtuális gépet, majd válassza a **feladatátvétel**lehetőséget. 
+1. Navigáljon a **Recovery Services** -tárolóhoz, válassza a **replikált elemek** lehetőséget, válassza ki a virtuális gépet, majd válassza a **feladatátvétel** lehetőséget. 
 
    ![Feladatátvétel kezdeményezése](./media/move-sql-vm-different-region/initiate-failover.png)
 
-1. Válassza ki a **legújabb, alkalmazás-konzisztens** helyreállítási pontot a **helyreállítási pont**alatt. 
-1. Jelölje be a **gép leállítása a feladatátvétel**megkezdése előtt jelölőnégyzetet. Site Recovery megkísérli leállítani a forrás virtuális gépet a feladatátvétel elindítása előtt. A feladatátvétel akkor is folytatódik, ha a Leállítás nem sikerül. 
+1. Válassza ki a **legújabb, alkalmazás-konzisztens** helyreállítási pontot a **helyreállítási pont** alatt. 
+1. Jelölje be a **gép leállítása a feladatátvétel** megkezdése előtt jelölőnégyzetet. Site Recovery megkísérli leállítani a forrás virtuális gépet a feladatátvétel elindítása előtt. A feladatátvétel akkor is folytatódik, ha a Leállítás nem sikerül. 
 1. A feladatátvétel elindításához kattintson **az OK gombra** .
 1. Az előző szakaszban a feladatátvételi teszt figyelése során megtekintett **site Recovery feladatok** oldaláról is figyelheti a feladatátvételi folyamatot. 
 1. Miután a feladatok befejeződik, győződjön meg arról, hogy a SQL Server VM a várt módon jelenik meg a célként megadott régióban. 
-1. Lépjen vissza a tárolóhoz, válassza a **replikált elemek**lehetőséget, válassza ki a SQL Server VM, majd a **véglegesítés** gombra kattintva fejezze be az áthelyezési folyamatot a célként megadott régióba. Várjon, amíg a véglegesítési feladatok befejeződik. 
+1. Lépjen vissza a tárolóhoz, válassza a **replikált elemek** lehetőséget, válassza ki a SQL Server VM, majd a **véglegesítés** gombra kattintva fejezze be az áthelyezési folyamatot a célként megadott régióba. Várjon, amíg a véglegesítési feladatok befejeződik. 
 1. Regisztrálja SQL Server VM az SQL VM erőforrás-szolgáltatóval, hogy engedélyezze az SQL-alapú **virtuális gépek** kezelhetőségét az erőforrás-szolgáltatóhoz társított Azure Portalokban és szolgáltatásokban. További információ: [SQL Server VM regisztrálása az SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md). 
 
   > [!WARNING]
@@ -139,8 +139,8 @@ A következő lépések bemutatják, hogyan helyezheti át a SQL Server VM a for
 ## <a name="clean-up-source-resources"></a>Forrás erőforrásainak törlése
 A számlázási díjak elkerüléséhez távolítsa el a SQL Server VM a tárolóból, és törölje a szükségtelenül kapcsolódó erőforrásokat. 
 
-1. Váltson vissza az **site Recovery** -tárolóra, válassza a **replikált elemek**lehetőséget, majd válassza ki a SQL Server VM. 
-1. Válassza a **replikáció letiltása**lehetőséget. Válasszon ki egy okot a védelem letiltására, majd kattintson **az OK gombra** a replikáció letiltásához. 
+1. Váltson vissza az **site Recovery** -tárolóra, válassza a **replikált elemek** lehetőséget, majd válassza ki a SQL Server VM. 
+1. Válassza a **replikáció letiltása** lehetőséget. Válasszon ki egy okot a védelem letiltására, majd kattintson **az OK gombra** a replikáció letiltásához. 
 
    >[!IMPORTANT]
    > Fontos, hogy ezt a lépést a Azure Site Recovery replikálásának elkerülése érdekében végezze el. 
@@ -150,11 +150,9 @@ A számlázási díjak elkerüléséhez távolítsa el a SQL Server VM a tárol�
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért tekintse át a következő cikkeket: 
+További információkat az következő cikkekben talál: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server Windows rendszerű virtuális gépen – gyakori kérdések](frequently-asked-questions-faq.md)
 * [SQL Server a Windows rendszerű virtuális gépek díjszabási útmutatójában](pricing-guidance.md)
 * [SQL Server a Windows rendszerű virtuális gépek kibocsátási megjegyzései](doc-changes-updates-release-notes.md)
-
-

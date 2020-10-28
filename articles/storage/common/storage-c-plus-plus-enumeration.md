@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 008991a6eda8a2eac9e7a39074c9e0bddb0c51b5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488707"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784098"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-erőforrások listázása C++ nyelven
 
@@ -34,7 +34,7 @@ Ezek a módszerek különböző túlterhelések használatával jelennek meg a k
 
 ## <a name="asynchronous-versus-synchronous"></a>Aszinkron és szinkron
 
-Mivel a C++-os Storage ügyféloldali kódtára a [C++ Rest-könyvtárra](https://github.com/Microsoft/cpprestsdk)épül, a [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)használatával a következő módon támogatjuk az aszinkron műveleteket. Példa:
+Mivel a C++-os Storage ügyféloldali kódtára a [C++ Rest-könyvtárra](https://github.com/Microsoft/cpprestsdk)épül, a [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)használatával a következő módon támogatjuk az aszinkron műveleteket. Például:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -59,8 +59,8 @@ Ezért nem célszerű egyetlen válaszban lévő összes objektumot listázni. E
 
 A szegmentált listázási műveletre adott válasz az alábbiakat tartalmazza:
 
-* *_segment*, amely a tőzsdei API-hoz való egyetlen hívás eredményét adja vissza.
-* *continuation_token*, amelyet a következő hívásnak továbbít a rendszer, hogy az eredmények következő oldalát kapja meg. Ha nincs több eredmény a visszaadáshoz, a folytatási jogkivonat null értékű.
+* *_segment* , amely a tőzsdei API-hoz való egyetlen hívás eredményét adja vissza.
+* *continuation_token* , amelyet a következő hívásnak továbbít a rendszer, hogy az eredmények következő oldalát kapja meg. Ha nincs több eredmény a visszaadáshoz, a folytatási jogkivonat null értékű.
 
 A tárolóban lévő összes blob listázása például a következő kódrészlethez hasonló lehet. A kód a [mintákban](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)érhető el:
 
@@ -198,7 +198,7 @@ További információ az Azure Storage-ról és az ügyféloldali kódtár a C++
 
 * [A Blob Storage használata a C++-ból](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [A Table Storage használata a C++-ból](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [A Queue Storage használata C++-szal](../storage-c-plus-plus-how-to-use-queues.md)
+* [A Queue Storage használata C++-szal](../queues/storage-c-plus-plus-how-to-use-queues.md)
 * [Az Azure Storage ügyféloldali kódtára a C++ API dokumentációhoz.](https://azure.github.io/azure-storage-cpp/)
 * [Az Azure Storage csapat blogja](/archive/blogs/windowsazurestorage/)
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)

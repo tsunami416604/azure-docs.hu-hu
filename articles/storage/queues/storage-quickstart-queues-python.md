@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 057b20d9c14b9a25a1e713d25796e1f0ac93daaa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 57fc0ebc10158b41539d4802aa6a8ebdd466dd90
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428037"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783300"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Pythonhoz
 
@@ -34,12 +34,12 @@ További források:
 * [API-referenciadokumentáció](/python/api/azure-storage-queue/index)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
 * [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-queue/)
-* [Példák](/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Példák](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
 * [Python](https://www.python.org/downloads/) az operációs rendszerhez – 2,7, 3,5 vagy újabb
 
 ## <a name="setting-up"></a>Beállítás
@@ -48,7 +48,7 @@ Ez a szakasz végigvezeti a projekt előkészítésének folyamatán a Pythonhoz
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *Queues-Gyorsindítás-V12*nevű Python-alkalmazást.
+Hozzon létre egy *Queues-Gyorsindítás-V12* nevű Python-alkalmazást.
 
 1. A konzol ablakban (például cmd, PowerShell vagy bash) hozzon létre egy új könyvtárat a projekthez.
 
@@ -307,7 +307,7 @@ Ha az alkalmazás szünetelteti az üzenetek fogadását, akkor a [Azure Portalb
 
 Nyomja le az **ENTER** billentyűt az üzenetek fogadásához és törléséhez. Ha a rendszer kéri, nyomja meg ismét az **ENTER** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre üzenetsor-t, és hogyan adhat hozzá üzeneteket a Python-kóddal. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 

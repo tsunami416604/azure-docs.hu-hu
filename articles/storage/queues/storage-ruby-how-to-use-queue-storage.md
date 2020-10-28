@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: bb7619500cc142eca52ca0a1a6e0b670e6b8f51a
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7270ea589d82c09081aec5d81d1cd0b50b1b8a9f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425479"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785578"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>How to use Queue storage from Ruby (A Queue Storage használata Rubyval)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -22,14 +22,14 @@ ms.locfileid: "92425479"
 
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket a Microsoft Azure Queue Storage szolgáltatás használatával. A minták a Ruby Azure API használatával íródnak.
-A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása**és **törlése** , valamint a **várólisták létrehozása és törlése**.
+A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása** , **bepillantása** , **beolvasása** és **törlése** , valamint a **várólisták létrehozása és törlése** .
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Ruby-alkalmazás létrehozása
-Ruby-alkalmazás létrehozása. Útmutatásért lásd: [Ruby-alkalmazás létrehozása linuxon app Service](/azure/app-service/quickstart-ruby).
+Ruby-alkalmazás létrehozása. Útmutatásért lásd: [Ruby-alkalmazás létrehozása linuxon app Service](../../app-service/quickstart-ruby.md).
 
 ## <a name="configure-your-application-to-access-storage"></a>Az alkalmazás konfigurálása a tároló elérésére
 Az Azure Storage használatához le kell töltenie és használnia kell a Ruby Azure-csomagot, amely a tárolási REST-szolgáltatásokkal kommunikáló kényelmi könyvtárakat tartalmaz.
@@ -96,7 +96,7 @@ result = azure_queue_service.peek_messages("test-queue",
 ## <a name="how-to-dequeue-the-next-message"></a>Útmutató: a következő üzenet elküldése
 A várólistákból két lépésben törölhet üzenetet.
 
-1. Ha a híváslista ** \_ ()** üzenetet hívja, alapértelmezés szerint a következő üzenet jelenik meg egy várólistában. Megadhatja azt is, hogy hány üzenetet szeretne kapni. A **listaelemek \_ () üzenetből** visszaadott üzenetek láthatatlanná válnak a várólistáról érkező más kódoknál. A láthatósági időtúllépést másodpercben adja meg paraméterként.
+1. Ha a híváslista **\_ ()** üzenetet hívja, alapértelmezés szerint a következő üzenet jelenik meg egy várólistában. Megadhatja azt is, hogy hány üzenetet szeretne kapni. A **listaelemek \_ () üzenetből** visszaadott üzenetek láthatatlanná válnak a várólistáról érkező más kódoknál. A láthatósági időtúllépést másodpercben adja meg paraméterként.
 2. Az üzenet várólistából való eltávolításának befejezéséhez a **delete_message ()** hívását is meg kell hívni.
 
 Az üzenetek eltávolításának kétlépéses folyamata biztosítja, hogy ha a kód a hardver vagy a szoftver meghibásodása miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód a **törlési \_ üzenetet ()** közvetlenül az üzenet feldolgozását követően hívja meg.

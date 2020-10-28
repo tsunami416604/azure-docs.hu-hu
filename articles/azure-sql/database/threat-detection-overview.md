@@ -13,12 +13,12 @@ ms.author: ronmat
 ms.reviewer: vanto, sstein
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: bf228d31180f5c2223fde7433d2d9b335e2b8853
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83b9515e16fcf2c2158586297545206d57e1a6e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284159"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785119"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Komplex veszélyforrások elleni védelem a Azure SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics számára
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -35,7 +35,7 @@ A teljes körű vizsgálathoz ajánlott engedélyezni a naplózást, amely az ad
 
 ## <a name="alerts"></a>Riasztások
 
-A Azure SQL Database komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A Azure SQL Database riasztások listájáért tekintse meg a [SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) riasztásait a Azure Security Center](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-sql-db-and-warehouse).
+A Azure SQL Database komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A Azure SQL Database riasztások listájáért tekintse meg a [SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) riasztásait a Azure Security Center](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse).
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>Gyanús esemény észlelésének megismerése
 
@@ -65,5 +65,5 @@ Kattintson a komplex **veszélyforrások elleni védelem riasztása** lehetősé
 - További információ [az összetett veszélyforrások elleni védelemről az Azure SQL felügyelt példányain](../managed-instance/threat-detection-configure.md).
 - További információ [Az Azure Defender for SQL szolgáltatásról](azure-defender-for-sql.md).
 - További információ a [Azure SQL Database naplózásról](../../azure-sql/database/auditing-overview.md)
-- További információ az [Azure Security Centerről](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- A díjszabással kapcsolatos további információkért tekintse meg a [Azure SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) .  
+- További információ az [Azure Security Centerről](../../security-center/security-center-introduction.md)
+- A díjszabással kapcsolatos további információkért tekintse meg a [Azure SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) .

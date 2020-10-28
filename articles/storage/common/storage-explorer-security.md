@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: b403a960016be3795857ddd5645eb73e53e83bd6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488605"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783759"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer biztonsági útmutató
 
@@ -44,13 +44,13 @@ Ez a szakasz a tárolási erőforrások biztonságossá tételéhez használhat�
 
 #### <a name="azure-role-based-access-control-azure-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 
-Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview) részletes hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Az Azure-szerepköröket és-engedélyeket a Azure Portal lehet felügyelni.
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) részletes hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Az Azure-szerepköröket és-engedélyeket a Azure Portal lehet felügyelni.
 
 Storage Explorer támogatja az Azure RBAC hozzáférését a Storage-fiókokhoz, a Blobokhoz és a várólistákhoz. Ha hozzáférésre van szüksége a fájlmegosztás vagy a táblák számára, hozzá kell rendelnie az Azure-szerepköröket, amelyek engedélyeket adnak a Storage-fiók kulcsainak listázásához.
 
 #### <a name="access-control-lists-acls"></a>Hozzáférés-vezérlési lista (ACL-ek)
 
-A [hozzáférés-vezérlési listák (ACL-ek)](/azure/storage/blobs/data-lake-storage-access-control) lehetővé teszik a fájlok és mappák szintjének hozzáférését ADLS Gen2 blob-tárolókban. Az ACL-eket Storage Explorer használatával kezelheti.
+A [hozzáférés-vezérlési listák (ACL-ek)](../blobs/data-lake-storage-access-control.md) lehetővé teszik a fájlok és mappák szintjének hozzáférését ADLS Gen2 blob-tárolókban. Az ACL-eket Storage Explorer használatával kezelheti.
 
 ### <a name="shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS)
 
@@ -81,7 +81,7 @@ A Storage-fiókok kulcsai korlátlan hozzáférést biztosítanak a szolgáltat�
 
 Egyes Azure-szerepkörök engedélyt adnak a Storage-fiók kulcsainak lekérésére. Az ezekkel a szerepkörökkel rendelkező személyek hatékonyan kihasználhatják az Azure RBAC által biztosított vagy megtagadott engedélyeket. Javasoljuk, hogy csak akkor adja meg ezt az engedélyt, ha szükséges.
 
-A Storage Explorer a kérések hitelesítéséhez a Storage-fiókok kulcsait fogja használni, ha vannak ilyenek. Ezt a funkciót letilthatja a beállítások (**szolgáltatások > Storage-fiókok > a kulcsok használatának letiltása**). Egyes szolgáltatások nem támogatják az Azure RBAC, például a klasszikus Storage-fiókok használatát. Ezek a funkciók továbbra is kulcsokat igényelnek, és ezt a beállítást nem érinti.
+A Storage Explorer a kérések hitelesítéséhez a Storage-fiókok kulcsait fogja használni, ha vannak ilyenek. Ezt a funkciót letilthatja a beállítások ( **szolgáltatások > Storage-fiókok > a kulcsok használatának letiltása** ). Egyes szolgáltatások nem támogatják az Azure RBAC, például a klasszikus Storage-fiókok használatát. Ezek a funkciók továbbra is kulcsokat igényelnek, és ezt a beállítást nem érinti.
 
 Ha kulcsokat kell használnia a tárolási erőforrások eléréséhez, javasoljuk a következő irányelveket:
 
@@ -102,4 +102,4 @@ A blob-tárolók nyilvános hozzáférésének engedélyezésekor a következő 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Biztonsági javaslatok](/azure/storage/blobs/security-recommendations)
+- [Biztonsági javaslatok](../blobs/security-recommendations.md)

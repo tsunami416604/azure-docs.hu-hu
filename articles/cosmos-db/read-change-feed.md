@@ -5,18 +5,18 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0252af90a6afb5b2a59620afaa61702f208991e7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282064"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785255"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB-változáscsatorna olvasása
 
-A Azure Cosmos DB változási csatornát leküldéses modell vagy lekéréses modell használatával is használhatja. A leküldéses modellel egy kiszolgáló (a változási hírcsatorna-feldolgozó) olyan ügyfélnek küldi a munkát, amely üzleti logikával rendelkezik a munka feldolgozásához. A kiszolgálón azonban az utolsó feldolgozott munka állapotának ellenőrzése és tárolása is bonyolult.
+A Azure Cosmos DB változási csatornát leküldéses modell vagy lekéréses modell használatával is használhatja. Leküldéses modell esetén a hírcsatorna-feldolgozó folyamat leküldi a munkát egy olyan ügyfélnek, amely üzleti logikával rendelkezik a munka feldolgozásához. Azonban az utolsó feldolgozott munka működésének és tárolásának megkeresésének összetettsége az adatváltozások kezelése processzoron belül történik.
 
 A lekéréses modellel az ügyfélnek le kell kérnie a munkát a-kiszolgálóról. A-ügyfél ebben az esetben nem csupán az üzleti logikát dolgozza fel a feldolgozáshoz, hanem az utolsó feldolgozott munka állapotát is tárolja, így a terheléselosztás több ügyfélnél párhuzamosan működik, és hibák kezelésére is alkalmas.
 
@@ -68,7 +68,7 @@ A integrálással több ügyfélen is feldolgozhatja, ugyanúgy, mint a Change f
 A lekéréses modellel nem érhető el "legalább egyszeri" kézbesítési garancia. A lekéréses modell alacsony szintű vezérlést biztosít annak eldöntéséhez, hogy hogyan szeretné kezelni a hibákat.
 
 > [!NOTE]
-> A hírcsatorna-váltási lekérési modell jelenleg csak előzetes verzióban érhető [el a Azure Cosmos db .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview) -ban. Az előzetes verzió még nem érhető el más SDK-verziókhoz.
+> A hírcsatorna-váltási lekérési modell jelenleg csak előzetes verzióban érhető [el a Azure Cosmos db .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview) -ban. Az előzetes verzió még nem érhető el más SDK-verziókhoz.
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Adatcsatorna módosítása a Cassandra és a MongoDB API-khoz
 

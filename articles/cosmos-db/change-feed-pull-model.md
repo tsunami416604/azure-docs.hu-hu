@@ -6,21 +6,21 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 59f1231e2edf3277898ff57d8e6f8da42ee057ca
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: aa0586ab2a0ff21e3187bba070dd4be7ef325288
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276990"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784677"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>A hírcsatorna lekérési modelljének módosítása Azure Cosmos DB
 
 Ha a Change feed pull modellt használja, a saját tempójában használhatja a Azure Cosmos DB változási csatornát. Ahogy az [adatváltozási folyamattal](change-feed-processor.md)már megteheti a változást, a hírcsatorna-lekérési modell módosításával integrálással a változások feldolgozását több módosítási csatornán keresztül is.
 
 > [!NOTE]
-> A hírcsatorna-váltási lekérési modell jelenleg csak előzetes verzióban érhető [el a Azure Cosmos db .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview) -ban. Az előzetes verzió még nem érhető el más SDK-verziókhoz.
+> A hírcsatorna-váltási lekérési modell jelenleg csak előzetes verzióban érhető [el a Azure Cosmos db .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview) -ban. Az előzetes verzió még nem érhető el más SDK-verziókhoz.
 
 ## <a name="comparing-with-change-feed-processor"></a>Összehasonlítás a csatorna változása folyamattal
 
@@ -44,9 +44,13 @@ Az alábbi helyzetekben érdemes megfontolni a lekéréses modell használatát:
 | A változási hírcsatorna aktuális pontjának nyomon követése | Bérlet (Azure Cosmos DB tárolóban tárolva) | Folytatási token (memóriában tárolt vagy manuálisan megőrzött) |
 | A korábbi módosítások visszajátszásának lehetősége | Igen, leküldéses modellel | Igen, lekéréses modellel|
 | A jövőbeli változások lekérdezése | Automatikusan ellenőrzi a módosításokat a felhasználó által megadott érték alapján `WithPollInterval` | Kézi |
+| Olyan viselkedés, ahol nincsenek új módosítások | Automatikus várakozás `WithPollInterval` és ismételt vizsgálat | Meg kell fognia a kivételt, és manuálisan újra kell ellenőriznie |
 | A teljes tároló változásainak feldolgozása | Igen, és automatikusan párhuzamosan, több szálon/gépen, ugyanarról a tárolóból| Igen, és manuálisan párhuzamosan a FeedTokens használatával |
 | Csak egyetlen partíciós kulcs változásainak feldolgozása | Nem támogatott | Igen|
 | Támogatási szint | Általánosan elérhető | Előnézet |
+
+> [!NOTE]
+> A Change feed processzor használatával történő olvasástól eltérően explicit módon kell kezelnie azokat az eseteket, amelyekben nincsenek új módosítások. 
 
 ## <a name="consuming-an-entire-containers-changes"></a>Teljes tároló módosításainak felhasználása
 
@@ -75,14 +79,22 @@ FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterat
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorForTheEntireContainer.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorForTheEntireContainer.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
+
+Mivel a változási csatorna gyakorlatilag az összes jövőbeli írást és frissítést magában foglaló elemek végtelen listája, a értéke `HasMoreResults` mindig igaz. Amikor megpróbálja beolvasni a változási csatornát, és nincsenek elérhető új módosítások, a rendszer kivételt fog kapni. A fenti példában a kivételt 5 másodperccel a módosítások ismételt ellenőrzésének megkezdése előtt kell megvárni.
 
 ## <a name="consuming-a-partition-keys-changes"></a>Partíciós kulcs módosításainak felhasználása
 
@@ -93,11 +105,17 @@ FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<Use
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorForThePartitionKey.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorForThePartitionKey.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -129,11 +147,17 @@ Abban az esetben, ha a FeedRanges-t szeretné használni, rendelkeznie kell egy 
 FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]));
 while (iteratorA.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorA.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorA.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -144,11 +168,17 @@ while (iteratorA.HasMoreResults)
 FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]));
 while (iteratorB.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorB.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorA.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -164,13 +194,19 @@ string continuation = null;
 
 while (iterator.HasMoreResults)
 {
-   FeedResponse<User> users = await iterator.ReadNextAsync();
-   continuation = users.ContinuationToken;
+   try { 
+        FeedResponse<User> users = await iterator.ReadNextAsync();
+        continuation = users.ContinuationToken;
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
-    }
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+   }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
+    }   
 }
 
 // Some time later

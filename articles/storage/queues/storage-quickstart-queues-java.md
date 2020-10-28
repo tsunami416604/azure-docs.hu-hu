@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6be3c0f3b7ff8e44bd9dda089c803a27e883383
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90015024"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783436"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Javához
 
@@ -33,14 +33,14 @@ További források:
 * [API-referenciadokumentáció](/java/api/overview/azure/storage-queue-readme)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [Példák](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Példák](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Java Development Kit (JDK)](/java/azure/jdk/) 8-as vagy újabb verziója
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -48,9 +48,9 @@ Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet az Azure ü
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *Queues-Gyorsindítás-V12*nevű Java-alkalmazást.
+Hozzon létre egy *Queues-Gyorsindítás-V12* nevű Java-alkalmazást.
 
-1. A konzol ablakban (például a cmd, a PowerShell vagy a bash) a Maven használatával hozzon létre egy új Console-alkalmazást a *Queues-Gyorsindítás-V12*néven. A "Hello World!" létrehozásához írja be a következő **MVN** -parancsot: Java-projekt.
+1. A konzol ablakban (például a cmd, a PowerShell vagy a bash) a Maven használatával hozzon létre egy új Console-alkalmazást a *Queues-Gyorsindítás-V12* néven. A "Hello World!" létrehozásához írja be a következő **MVN** -parancsot: Java-projekt.
 
    ```console
    mvn archetype:generate -DgroupId=com.queues.quickstart \
@@ -365,7 +365,7 @@ Ha az alkalmazás szünetelteti az üzenetek fogadását, akkor a [Azure Portalb
 
 Nyomja le az **ENTER** billentyűt az üzenetek fogadásához és törléséhez. Ha a rendszer kéri, nyomja meg ismét az **ENTER** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre várólistát, és hogyan adhat hozzá üzeneteket a Java-kóddal. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 
