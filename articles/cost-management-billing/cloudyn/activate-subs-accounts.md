@@ -3,25 +3,25 @@ title: Azure-előfizetések és -fiókok aktiválása
 description: Engedélyezheti az Azure Resource Manager API-kkal való hozzáférését új és meglévő fiókok számára, és gyakori fiókproblémákat oldhat meg.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 52ac239369f2998a3a8eac9c400512ac845a0c49
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: b1b7ea7467be107bd1af9daf0869c77ff0b94c70
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131428"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537345"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure-előfizetések és -fiókok aktiválása a Cloudynnel
 
 Az Azure Resource Manager hitelesítő adatainak hozzáadásával vagy frissítésével a Cloudyn az Ön Azure-bérlőjén található összes fiókot és előfizetést megtekintheti. Ha engedélyezte az Azure Diagnostics bővítményt a virtuális gépein, akkor a Cloudyn kiterjesztett metrikákat, például CPU- és memóriaadatokat gyűjthet. Ez a cikk azt ismerteti, hogy hogyan engedélyezheti az Azure Resource Manager API-kkal való hozzáférést az új és meglévő fiókok számára. Emellett a gyakori fiókproblémák megoldásához is útmutatást nyújt.
 
-A Cloudyn nem fér hozzá a legtöbb Azure-előfizetési adathoz, ha az előfizetés _inaktivált_. Ha azt szeretné, hogy a Cloudyn hozzáférjen az _inaktivált_ fiókokhoz, akkor szerkesztenie kell ezeket.
+A Cloudyn nem fér hozzá a legtöbb Azure-előfizetési adathoz, ha az előfizetés _inaktivált_ . Ha azt szeretné, hogy a Cloudyn hozzáférjen az _inaktivált_ fiókokhoz, akkor szerkesztenie kell ezeket.
 
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
@@ -44,7 +44,7 @@ Ha az Ön fiókja **Közreműködő** szerepkörrel rendelkezik, nem rendelheti 
 4. Ellenőrizze az **Alkalmazásregisztrációk** beállítást.
     - Ha **Igen** értékre van állítva, akkor nem rendszergazdai felhasználók is regisztrálhatnak AD-alkalmazásokat. Ez a beállítás azt jelenti, hogy az Azure AD-bérlő bármely felhasználója regisztrálhat alkalmazásokat.  
     ![alkalmazásregisztrációk kiválasztása a Felhasználói beállításokban](./media/activate-subs-accounts/app-register.png)
-    - Ha az **Alkalmazásregisztrációk** beállítás értéke **Nem**, akkor csak a bérlői rendszergazdák regisztrálhatnak Azure Active Directory-alkalmazásokat. A bérlői rendszergazdának kell regisztrálnia a CloudynCollector alkalmazást.
+    - Ha az **Alkalmazásregisztrációk** beállítás értéke **Nem** , akkor csak a bérlői rendszergazdák regisztrálhatnak Azure Active Directory-alkalmazásokat. A bérlői rendszergazdának kell regisztrálnia a CloudynCollector alkalmazást.
 
 
 ## <a name="add-an-account-or-update-a-subscription"></a>Fiók hozzáadása vagy előfizetés frissítése
@@ -72,7 +72,7 @@ Fiókok hozzáadásakor vagy előfizetések frissítésekor hozzáférést bizto
     2. A **Számlázási fiók** területen kattintson az **Előfizetések** lehetőségre.
     3. A **Saját előfizetések** területen válassza ki az előfizetését.
     4. A díj azonosítója az **Ajánlat azonosítója** alatt található. Másolja ki az előfizetéshez tartozó ajánlat azonosítóját.
-4. Az Új fiók hozzáadása (vagy az Előfizetés szerkesztése) mezőben kattintson a **Mentés** (vagy a **Tovább**) lehetőségre. A program átirányítja az Azure Portalra.
+4. Az Új fiók hozzáadása (vagy az Előfizetés szerkesztése) mezőben kattintson a **Mentés** (vagy a **Tovább** ) lehetőségre. A program átirányítja az Azure Portalra.
 5. Jelentkezzen be az Portalra. Kattintson az **Elfogadás** gombra, így engedélyezi a Cloudyn Collector számára, hogy hozzáférjen az Azure-fiókjához.
 
     A program ekkor átirányítja a Cloudyn fiókkezelő oldalára, az előfizetését pedig **aktív** fiókállapotra frissíti. Ekkor egy zöld pipának kell megjelennie a Resource Manager oszlop alatt.
@@ -89,14 +89,14 @@ Amikor először használja a Cloudyn portálját, a következő üzenetek jelen
 
 - *A megadott API-kulcs nem felső szintű regisztrációs kulcs* üzenet jelenik meg a **Cloudyn beállítása** varázslóban.
 - *Közvetlen regisztráció – Nem* üzenet jelenik meg a Nagyvállalati szerződés portálján.
-- *Nem találhatók az elmúlt 30 napra vonatkozó használati adatok. Lépjen kapcsolatba a terjesztőjével, és ellenőrizze, hogy engedélyezve van-e a korrektúra az Ön Azure-fiókjában*, amely a Cloudyn portálján jelenik meg.
+- *Nem találhatók az elmúlt 30 napra vonatkozó használati adatok. Lépjen kapcsolatba a terjesztőjével, és ellenőrizze, hogy engedélyezve van-e a korrektúra az Ön Azure-fiókjában* , amely a Cloudyn portálján jelenik meg.
 
 Az előző üzenetek arra utalnak, hogy egy viszonteladón vagy felhőszolgáltatón keresztül vásárolt Azure Nagyvállalati szerződést. A viszonteladónak vagy a felhőszolgáltatónak kell engedélyeznie a _korrektúrát_ az Azure-fiókjában, mielőtt Ön megtekinthetné az adatait a Cloudyn szolgáltatásban.
 
 A problémák megoldása:
 
 1. A viszonteladónak engedélyeznie kell a _korrektúrát_ a fiókjában. Útmutatás: [Közvetett ügyfeleknek szóló előkészítési útmutató](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
-2. Létre kell hoznia egy kulcsot az Azure Nagyvállalati Szerződésben, amelyet a Cloudynnel használhat. Útmutatás: [Azure Nagyvállalati Szerződés regisztrálása és a költségadatok megtekintése](./quick-register-ea.md).
+2. Létre kell hoznia egy kulcsot az Azure Nagyvállalati Szerződésben, amelyet a Cloudynnel használhat.
 
 A Cloudyn beállításához az Azure Nagyvállalati Szerződés API-kulcsának létrehozása előtt engedélyeznie kell az Azure számlázási API-t a következő útmutató követésével:
 
@@ -133,6 +133,6 @@ $url = "https://login.windows.net/"+$tenant+"/oauth2/authorize?api-version=1&res
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha még nem végezte el a Cloudyn első oktatóanyagát, itt megtekintheti: [Használat és költségek áttekintése](tutorial-review-usage.md).

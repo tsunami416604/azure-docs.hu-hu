@@ -8,13 +8,13 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: 3b21353c7e5338c78b9d56e79ac5da3fa7e9af84
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 7d93bd757a39247302a6bc09009a1a814425c32f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687586"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745363"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Gyorsútmutató: Költségvetés létrehozása ARM-sablonnal
 
@@ -84,25 +84,25 @@ A sablonban egyetlen Azure-erőforrás van definiálva:
 
    :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager-sablon, költségvetés létrehozása, portál üzembe helyezése]" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
    
-    * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: ha szükséges, jelöljön ki egy meglévő erőforráscsoportot, vagy **hozzon létre egy újat**.
-    * **Régió**: válasszon ki egy Azure-régiót. Például: **USA középső régiója**.
-    * **Költségvetés neve**: adja meg a költségvetés nevét. Egyedinek kell lennie az erőforráscsoporton belül. Csak alfanumerikus, aláhúzásjel és kötőjel karakterek engedélyezettek.
-    * **Összeg**: adja meg a költségek költségvetéssel nyomon követendő teljes összegét.
-    * **Időfelbontási szint**: adja meg a költségvetés időtartamát. Az engedélyezett értékek: Havi, Negyedéves és Éves. Az időfelbontási szint végén a költségvetés visszaáll az alaphelyzetre.
-    * **Kezdő dátum**: adja meg a kezdő dátumot a hónap első napjával, ÉÉÉÉ-HH-NN formátumban. A jövőbeli kezdő dátumoknak a mai dátumhoz képest három hónapon belül kell lenniük. Az időfelbontási szint időtartammal megadhat múltbeli kezdő dátumot is.
-    * **Záró dátum**: adja meg a költségvetés záró dátumát ÉÉÉÉ-HH-NN formátumban. 
-    * **Első küszöbérték**: adja meg az első értesítés küszöbértékét. A rendszer értesítést küld, ha a költség meghaladja a küszöbértéket. Ez mindig egy százalékos érték, 0 és 1000 között.
-    * **Második küszöbérték**: adja meg a második értesítés küszöbértékét. A rendszer értesítést küld, ha a költség meghaladja a küszöbértéket. Ez mindig egy százalékos érték, 0 és 1000 között.
-    * **Kapcsolattartási szerepkörök**: adja meg azon kapcsolattartási szerepkörök listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. Az alapértelmezett értékek: Tulajdonos, Közreműködő és Olvasó. A várt formátum: `["Owner","Contributor","Reader"]`.
-    * **Kapcsolattartási e-mail-címek**: adja meg azon e-mail-címek listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. A várt formátum: `["user1@domain.com","user2@domain.com"]`.
-    * **Kapcsolattartási csoportok**: adja meg azon műveletcsoportok erőforrás-azonosítójának listáját (teljes erőforrás-URI-ként), amelyeknek a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. Sztringtömböt fogad el. A várt formátum: `["action group resource ID1","action group resource ID2"]`. Ha nem szeretne műveletcsoportokat használni, adja meg a következőt: `[]`.
-    * **Erőforráscsoport szűrőértékei**: adja meg a szűrendő erőforráscsoport-nevek listáját. A várt formátum: `["Resource Group Name1","Resource Group Name2"]`. Ha nem szeretne szűrőt alkalmazni, adja meg a következőt: `[]`. 
-    * **Mérési kategória szűrőértékei**: adja meg az Azure-szolgáltatás mérési kategóriáinak listáját. A várt formátum: `["Meter Category1","Meter Category2"]`. Ha nem szeretne szűrőt alkalmazni, adja meg a következőt: `[]`.
+    * **Előfizetés** : válasszon ki egy Azure-előfizetést.
+    * **Erőforráscsoport** : ha szükséges, jelöljön ki egy meglévő erőforráscsoportot, vagy **hozzon létre egy újat** .
+    * **Régió** : válasszon ki egy Azure-régiót. Például: **USA középső régiója** .
+    * **Költségvetés neve** : adja meg a költségvetés nevét. Egyedinek kell lennie az erőforráscsoporton belül. Csak alfanumerikus, aláhúzásjel és kötőjel karakterek engedélyezettek.
+    * **Összeg** : adja meg a költségek költségvetéssel nyomon követendő teljes összegét.
+    * **Időfelbontási szint** : adja meg a költségvetés időtartamát. Az engedélyezett értékek: Havi, Negyedéves és Éves. Az időfelbontási szint végén a költségvetés visszaáll az alaphelyzetre.
+    * **Kezdő dátum** : adja meg a kezdő dátumot a hónap első napjával, ÉÉÉÉ-HH-NN formátumban. A jövőbeli kezdő dátumoknak a mai dátumhoz képest három hónapon belül kell lenniük. Az időfelbontási szint időtartammal megadhat múltbeli kezdő dátumot is.
+    * **Záró dátum** : adja meg a költségvetés záró dátumát ÉÉÉÉ-HH-NN formátumban. 
+    * **Első küszöbérték** : adja meg az első értesítés küszöbértékét. A rendszer értesítést küld, ha a költség meghaladja a küszöbértéket. Ez mindig egy százalékos érték, 0 és 1000 között.
+    * **Második küszöbérték** : adja meg a második értesítés küszöbértékét. A rendszer értesítést küld, ha a költség meghaladja a küszöbértéket. Ez mindig egy százalékos érték, 0 és 1000 között.
+    * **Kapcsolattartási szerepkörök** : adja meg azon kapcsolattartási szerepkörök listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. Az alapértelmezett értékek: Tulajdonos, Közreműködő és Olvasó. A várt formátum: `["Owner","Contributor","Reader"]`.
+    * **Kapcsolattartási e-mail-címek** : adja meg azon e-mail-címek listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. A várt formátum: `["user1@domain.com","user2@domain.com"]`.
+    * **Kapcsolattartási csoportok** : adja meg azon műveletcsoportok erőforrás-azonosítójának listáját (teljes erőforrás-URI-ként), amelyeknek a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. Sztringtömböt fogad el. A várt formátum: `["action group resource ID1","action group resource ID2"]`. Ha nem szeretne műveletcsoportokat használni, adja meg a következőt: `[]`.
+    * **Erőforráscsoport szűrőértékei** : adja meg a szűrendő erőforráscsoport-nevek listáját. A várt formátum: `["Resource Group Name1","Resource Group Name2"]`. Ha nem szeretne szűrőt alkalmazni, adja meg a következőt: `[]`. 
+    * **Mérési kategória szűrőértékei** : adja meg az Azure-szolgáltatás mérési kategóriáinak listáját. A várt formátum: `["Meter Category1","Meter Category2"]`. Ha nem szeretne szűrőt alkalmazni, adja meg a következőt: `[]`.
    
 3. Az Azure-előfizetés típusától függően hajtsa végre az alábbi műveletek egyikét:
    - Válassza az **Áttekintés + létrehozás** lehetőséget.
-   - Tekintse át a használati feltételeket, és válassza az **Elfogadom a fenti feltételeket és kikötéseket**, majd a **Vásárlás** lehetőséget.
+   - Tekintse át a használati feltételeket, és válassza az **Elfogadom a fenti feltételeket és kikötéseket** , majd a **Vásárlás** lehetőséget.
 
 4. Ha az **Felülvizsgálat + létrehozás** lehetőséget választotta, a sablon érvényesítve lesz. Kattintson a **Létrehozás** gombra.  
 
@@ -112,7 +112,7 @@ Az Azure Portalon helyezhető üzembe a sablon. Az Azure Portalon kívül haszn�
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-Az Azure Portalon ellenőrizheti, hogy létrejött-e a költségvetés. Ezt itt teheti meg: **Költségkezelés + Számlázás** > válasszon egy hatókört > **Költségvetések**. Esetleg az alábbi Azure CLI- vagy Azure PowerShell-szkriptekkel tekintheti meg a költségvetést.
+Az Azure Portalon ellenőrizheti, hogy létrejött-e a költségvetés. Ezt itt teheti meg: **Költségkezelés + Számlázás** > válasszon egy hatókört > **Költségvetések** . Esetleg az alábbi Azure CLI- vagy Azure PowerShell-szkriptekkel tekintheti meg a költségvetést.
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
