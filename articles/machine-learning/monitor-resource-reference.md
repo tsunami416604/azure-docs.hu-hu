@@ -1,7 +1,6 @@
 ---
-title: Az adatfigyelés ismertetése | Microsoft Docs
-titleSuffix: Azure Machine Learning
-description: Ismerkedjen meg a Azure Machine Learning gyűjtött adatokkal és erőforrásokkal, és Azure Monitor elérhető. Azure Monitor gyűjti és felfedi a Azure Machine Learning munkaterületre vonatkozó adatokat, és lehetővé teszi a metrikák megtekintését, a riasztások beállítását és a naplózott adatok elemzését.
+title: Figyelő Azure Machine Learning adathivatkozása | Microsoft Docs
+description: A Azure Machine Learning figyeléséhez szükséges fontos referenciaanyagok. Ismerkedjen meg a Azure Machine Learning gyűjtött adatokkal és erőforrásokkal, és Azure Monitor elérhető. Azure Monitor gyűjti és felfedi a Azure Machine Learning munkaterületre vonatkozó adatokat, és lehetővé teszi a metrikák megtekintését, a riasztások beállítását és a naplózott adatok elemzését.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +8,127 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 04/27/2020
-ms.openlocfilehash: 405b0aa051d0d1142d7dd4ccbf2bca4ef9cc3545
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/02/2020
+ms.openlocfilehash: edd2b3e02c1a768b1f18a62faaf9b59539b92774
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650591"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739147"
 ---
-# <a name="azure-machine-learning-monitoring-data-reference"></a>Az Azure Machine learning monitorozási adatreferenciája
+# <a name="monitoring-azure-machine-learning-data-reference"></a>Az Azure Machine learning-adatreferenciák monitorozása
 
 Ismerje meg az Azure Monitor által gyűjtött adatokat és erőforrásokat az Azure Machine Learning munkaterületről. A figyelési adatok gyűjtésével és elemzésével kapcsolatos részletekért tekintse meg a [figyelési Azure Machine learning](monitor-azure-machine-learning.md) .
 
+## <a name="metrics"></a>Mérőszámok
+
+Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan összegyűjtött platform-metrikákat. A metrikák erőforrás-szolgáltatója a [Microsoft. MachineLearningServices/workspaces](/azure/azure-monitor/platform/metrics-supported#microsoftmachinelearningservicesworkspaces).
+
+**Modell**
+
+| Metrika | Egység | Leírás |
+| ----- | ----- | ----- |
+| A modell üzembe helyezése nem sikerült | Darabszám | A sikertelen telepítési modellek száma. |
+| A modell üzembe helyezése elindult | Darabszám | A modell központi telepítésének száma megkezdődött. |
+| A modell telepítése sikerült | Darabszám | A sikeres modell-telepítések száma. |
+| A modell regisztrálása nem sikerült | Darabszám | A sikertelen modell-regisztrációk száma. |
+| A modell regisztrálása sikerült | Darabszám | A sikeres modell-regisztrációk száma. |
+
+**Kvóta**
+
+A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használhatók.
+
+| Metrika | Egység | Leírás |
+| ----- | ----- | ----- |
+| Aktív magok | Darabszám | Az aktív számítási magok száma. |
+| Aktív csomópontok | Darabszám | Az aktív csomópontok száma. |
+| Üresjárati magok | Darabszám | Az üresjáratban lévő számítási magok száma. |
+| Tétlen csomópontok | Darabszám | Az üresjáratban lévő számítási csomópontok száma. |
+| Magok kihagyása | Darabszám | A magok elhagyásának száma. |
+| Csomópontok elhagyása | Darabszám | A csomópontok elhagyásának száma. |
+| Előzik magok | Darabszám | A előzik magok száma. |
+| Előzik-csomópontok | Darabszám | A előzik-csomópontok száma. |
+| Kvóta kihasználtsága (%) | Százalék | A felhasznált kvóta százalékaránya. |
+| Magok száma összesen | Darabszám | A magok teljes száma. |
+| Csomópontok összesen | Darabszám | Az összes csomópont. |
+| Használhatatlan magok | Darabszám | A használhatatlan magok száma. |
+| Használhatatlan csomópontok | Darabszám | A használhatatlan csomópontok száma. |
+
+**Erőforrás**
+
+| Metrika | Egység | Leírás |
+| ----- | ----- | ----- |
+| CpuUtilization | Százalék | A CPU százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Ez a metrika csak akkor jelenik meg, ha egy művelet egy csomóponton fut. Egy adott feladattípus egy vagy több csomópontot is használhat. Ez a mérőszám egy csomóponton van közzétéve. |
+| GpuUtilization | Százalék | A GPU hány százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Egy csomópont egy vagy több GPU-val rendelkezhet. Ez a mérőszám egy GPU-onként van közzétéve. |
+
+**Futtatás**
+
+A képzések futtatásával kapcsolatos információk.
+
+| Metrika | Egység | Leírás |
+| ----- | ----- | ----- |
+| Befejezett futtatások | Darabszám | A befejezett futtatások száma. |
+| Sikertelen futtatások | Darabszám | A sikertelen futtatások száma. |
+| Elindított futtatások | Darabszám | Az elindított futtatások száma. |
+
+## <a name="metric-dimensions"></a>Metrikus méretek
+
+A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdimenziós mérőszámok](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+
+A Azure Machine Learning a metrikához tartozó következő dimenziókkal rendelkezik.
+
+| Dimenzió | Leírás |
+| ---- | ---- |
+| Fürt neve | A számítási példány neve. Minden kvóta-metrika esetében elérhető. |
+| VM-család neve | A fürt által használt virtuálisgép-család neve. Elérhető a kvóta kihasználtsága százalékban. |
+| Virtuális gép prioritása | A virtuális gép prioritása. Elérhető a kvóta kihasználtsága százalékban.
+| CreatedTime | Csak CpuUtilization és GpuUtilization esetén érhető el. |
+| DeviceId | Az eszköz azonosítója (GPU). Csak a GpuUtilization esetében érhető el. |
+| NodeId | Annak a csomópontnak az azonosítója, amelybe a feladatot futtatja. Csak CpuUtilization és GpuUtilization esetén érhető el. |
+| RunId | A futtatási/feladatokhoz tartozó azonosító. Csak CpuUtilization és GpuUtilization esetén érhető el. |
+| ComputeType | A futtatáshoz használt számítási típus. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
+| PipelineStepType | A Futtatás során használt [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) típusa. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
+| PublishedPipelineId | A futtatásban használt közzétett folyamat azonosítója. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
+| RunType | A Futtatás típusa. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
+
+A RunType dimenzió érvényes értékei a következők:
+
+| Érték | Leírás |
+| ----- | ----- |
+| Experiment | Nem folyamatban lévő futtatások. |
+| PipelineRun | Egy folyamat futtatása, amely egy StepRun szülője. |
+| StepRun | Egy folyamat lépésének futtatása. |
+| ReusedStepRun | Az előző futtatást használó folyamat lépéseinek futtatása. |
+
+## <a name="activity-log"></a>Tevékenységnapló
+
+A következő táblázat felsorolja azokat a Azure Machine Learning kapcsolódó műveleteket, amelyek a tevékenység naplójában hozhatók létre.
+
+| Művelet | Leírás |
+|:---|:---|
+| Machine Learning munkaterület létrehozása vagy frissítése | Egy munkaterület lett létrehozva vagy frissítve |
+| CheckComputeNameAvailability | Ellenőrizze, hogy a számítási név már használatban van-e |
+| A számítási erőforrások létrehozása vagy frissítése | Egy számítási erőforrás lett létrehozva vagy frissítve |
+| A számítási erőforrások törlése | Egy számítási erőforrás törölve lett |
+| Titkos kulcsok listázása | Machine Learning munkaterület titkos kódjainak művelete |
+
 ## <a name="resource-logs"></a>Erőforrásnaplók
 
-A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyűjtött Azure Machine Learning erőforrás-naplók tulajdonságait sorolja fel.
+Ez a szakasz felsorolja a Azure Machine Learning munkaterülethez összegyűjthető erőforrás-naplók típusait.
+
+Erőforrás-szolgáltató és típus: [Microsoft. MachineLearningServices/munkaterület](/azure/azure-monitor/platform/resource-logs-categories#microsoftmachinelearningservicesworkspaces).
+
+| Kategória | Megjelenítendő név |
+| ----- | ----- |
+| AmlComputeClusterEvent | AmlComputeClusterEvent |
+| AmlComputeClusterNodeEvent | AmlComputeClusterNodeEvent |
+| AmlComputeCpuGpuUtilization | AmlComputeCpuGpuUtilization |
+| AmlComputeJobEvent | AmlComputeJobEvent |
+| AmlRunStatusChangedEvent | AmlRunStatusChangedEvent |
+
+## <a name="schemas"></a>Sémák
+
+A következő sémákat használják Azure Machine Learning
 
 ### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents táblázat
 
@@ -42,8 +147,8 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | ResourceGroupName | Az erőforráscsoport neve |
 | JobName | A feladattípus neve |
 | ClusterId | A fürt azonosítója |
-| EventType | A feladatok eseményének típusa, például JobSubmitted, JobRunning, JobFailed, JobSucceeded stb. |
-| ExecutionState | A feladatot (a futtatást), például az üzenetsor-kezelést, a futtatást, a sikeres műveletet, nem sikerült |
+| EventType | A feladatok eseményének típusa. Például: JobSubmitted, JobRunning, JobFailed, JobSucceeded. |
+| ExecutionState | A feladattípus állapota (a Futtatás). Például: várólistára állított, Futtatás, sikeres, sikertelen |
 | ErrorDetails | A feladattal kapcsolatos hibák részletei |
 | CreationApiVersion | A feladatok létrehozásához használt API-verzió |
 | ClusterResourceGroupName | A fürt erőforráscsoport-neve |
@@ -109,7 +214,7 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | VmSize | A csomópont virtuális gép mérete |
 | VmFamilyName | A virtuális gép családja, amelyhez a csomópont tartozik |
 | VmPriority | Dedikált/LowPriority létrehozott csomópont prioritása |
-| Publisher | A virtuálisgép-rendszerkép kiadója, például Microsoft-dsvm |
+| Publisher | A virtuális gép rendszerképének közzétevője. Például: Microsoft-dsvm |
 | Ajánlat | A virtuális gép létrehozásával kapcsolatos ajánlat |
 | SKU | A létrehozott csomópont/virtuális gép SKU-jának száma |
 | Verzió | A csomópont/virtuális gép létrehozásakor használt rendszerkép verziója |
@@ -122,93 +227,8 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | StartTaskEndTime | A csomóponthoz rendelt feladat befejezésének ideje |
 | TotalE2ETimeInSeconds | A teljes idő csomópont aktív volt |
 
-### <a name="metrics"></a>Mérőszámok
 
-Az alábbi táblázatok felsorolják az összes metrika Azure Machine Learning gyűjtött platform-metrikákat a névtér **Azure Machine learning-munkaterület**.
-
-**Modell**
-
-| Metrika | Egység | Leírás |
-| ----- | ----- | ----- |
-| A modell üzembe helyezése nem sikerült | Darabszám | A sikertelen telepítési modellek száma. |
-| A modell üzembe helyezése elindult | Darabszám | A modell központi telepítésének száma megkezdődött. |
-| A modell telepítése sikerült | Darabszám | A sikeres modell-telepítések száma. |
-| A modell regisztrálása nem sikerült | Darabszám | A sikertelen modell-regisztrációk száma. |
-| A modell regisztrálása sikerült | Darabszám | A sikeres modell-regisztrációk száma. |
-
-**Kvóta**
-
-A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használhatók.
-
-| Metrika | Egység | Leírás |
-| ----- | ----- | ----- |
-| Aktív magok | Darabszám | Az aktív számítási magok száma. |
-| Aktív csomópontok | Darabszám | Az aktív csomópontok száma. |
-| Üresjárati magok | Darabszám | Az üresjáratban lévő számítási magok száma. |
-| Tétlen csomópontok | Darabszám | Az üresjáratban lévő számítási csomópontok száma. |
-| Magok kihagyása | Darabszám | A magok elhagyásának száma. |
-| Csomópontok elhagyása | Darabszám | A csomópontok elhagyásának száma. |
-| Előzik magok | Darabszám | A előzik magok száma. |
-| Előzik-csomópontok | Darabszám | A előzik-csomópontok száma. |
-| Kvóta kihasználtsága (%) | Százalék | A felhasznált kvóta százalékaránya. |
-| Magok száma összesen | Darabszám | A magok teljes száma. |
-| Csomópontok összesen | Darabszám | Az összes csomópont. |
-| Használhatatlan magok | Darabszám | A használhatatlan magok száma. |
-| Használhatatlan csomópontok | Darabszám | A használhatatlan csomópontok száma. |
-
-A kvóta metrikáinak szűrésére a következő dimenziók használhatók:
-
-| Méret | Elérhető metrikák (k) | Leírás |
-| ---- | ---- | ---- |
-| Fürt neve | Az összes kvóta mérőszáma | A számítási példány neve. |
-| VM-család neve | Kvóta kihasználtsága (%) | A fürt által használt virtuálisgép-család neve. |
-| Virtuális gép prioritása | Kvóta kihasználtsága (%) | A virtuális gép prioritása.
-
-**Erőforrás**
-
-| Metrika | Egység | Leírás |
-| ----- | ----- | ----- |
-| CpuUtilization | Százalék | A CPU százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Ez a metrika csak akkor jelenik meg, ha egy művelet egy csomóponton fut. Egy adott feladattípus egy vagy több csomópontot is használhat. Ez a mérőszám egy csomóponton van közzétéve. |
-| GpuUtilization | Százalék | A GPU hány százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Egy csomópont egy vagy több GPU-val rendelkezhet. Ez a mérőszám egy GPU-onként van közzétéve. |
-
-Az alábbi méretek használhatók az erőforrás-metrikák szűréséhez:
-
-| Méret | Leírás |
-| ----- | ----- |
-| CreatedTime | |
-| DeviceId | Az eszköz azonosítója (GPU). Csak a GpuUtilization esetében érhető el. |
-| NodeId | Annak a csomópontnak az azonosítója, amelybe a feladatot futtatja. |
-| RunId | A futtatási/feladatokhoz tartozó azonosító. |
-
-**Futtassa**
-
-A képzések futtatásával kapcsolatos információk.
-
-| Metrika | Egység | Leírás |
-| ----- | ----- | ----- |
-| Befejezett futtatások | Darabszám | A befejezett futtatások száma. |
-| Sikertelen futtatások | Darabszám | A sikertelen futtatások száma. |
-| Elindított futtatások | Darabszám | Az elindított futtatások száma. |
-
-A következő méretek használhatók a futtatási metrikák szűréséhez:
-
-| Méret | Leírás |
-| ---- | ---- |
-| ComputeType | A futtatáshoz használt számítási típus. |
-| PipelineStepType | A Futtatás során használt [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) típusa. |
-| PublishedPipelineId | A futtatásban használt közzétett folyamat azonosítója. |
-| RunType | A Futtatás típusa. |
-
-A RunType dimenzió érvényes értékei a következők:
-
-| Érték | Leírás |
-| ----- | ----- |
-| Experiment | Nem folyamatban lévő futtatások. |
-| PipelineRun | Egy folyamat futtatása, amely egy StepRun szülője. |
-| StepRun | Egy folyamat lépésének futtatása. |
-| ReusedStepRun | Az előző futtatást használó folyamat lépéseinek futtatása. |
-
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - A figyelési Azure Machine Learning leírását a [figyelés Azure Machine learning](monitor-azure-machine-learning.md) című részben tekintheti meg.
 - Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](/azure/azure-monitor/insights/monitor-azure-resource) .

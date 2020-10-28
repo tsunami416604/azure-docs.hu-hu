@@ -748,8 +748,6 @@
           href: connector-troubleshoot-guide.md
         - name: Adatfolyamok
           href: data-flow-troubleshoot-guide.md
-        - name: Adatok másolása eszköz
-          href: copy-data-tool-troubleshoot-guide.md
         - name: Helyi integrációs futtatókörnyezetek
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS integrációs modul
@@ -783,7 +781,7 @@
     - name: Blog
       href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: Kérdés feltevése – Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: Kérdés feltevése – Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: Szolgáltatás igénylése

@@ -200,7 +200,7 @@
     - name: Esettanulmányok
       href: data-factory-customer-case-studies.md
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Díjkalkulátor

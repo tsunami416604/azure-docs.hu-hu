@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: aba28e867f5fdb7bfaa917547f60565c39e382dd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: d3e856256e02e2c1914aeec493a87ffe992bbf13
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977765"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740326"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken
 
@@ -201,7 +201,7 @@ Az alábbi táblázat a meglévő vagy futó virtuális gépek Resource Manager-
 | keyVaultName | Annak a kulcstárolónak a neve, amelyre a titkosítási kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI-parancs használatával kérheti le `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` .|
 | keyVaultResourceGroup | A kulcstárolót tartalmazó erőforráscsoport neve. |
 |  keyEncryptionKeyURL | A titkosítási kulcs titkosításához használt kulcs titkosítási kulcsának URL-címe. Ez a paraméter nem kötelező, ha a UseExistingKek legördülő listában a **nokek** lehetőséget választja. Ha a UseExistingKek legördülő listában a **KEK** elemet választja, meg kell adnia a _keyEncryptionKeyURL_ értéket. |
-| volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. 
+| volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_ , _az adatok_ és _az összes_ . 
 | forceUpdateTag | Adjon meg egy egyedi értéket, például egy GUID-azonosítót, amikor a műveletnek kényszerített futtatást kell futtatnia. |
 | location | Az összes erőforrás helyei. |
 

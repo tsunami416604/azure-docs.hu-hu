@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: ceb4a3356ef78d2129f76bd11f555a9ca5206d51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e66edb1325d1c603e89f877f1d34f60c136eb1db
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87505834"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740720"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI parancsfájl-minta – logikai alkalmazás létrehozása
 
 Ez a szkript egy minta logikai alkalmazást hoz létre az [Azure CLI Logic apps bővítménnyel](/cli/azure/ext/logic/logic?view=azure-cli-latest)( `az logic` ). A Logic apps Azure CLI-n keresztüli létrehozásával és kezelésével kapcsolatos részletes útmutatóért tekintse meg az [Azure cli Logic apps](quickstart-logic-apps-azure-cli.md)gyors üzembe helyezési útmutatóját.
 
 > [!WARNING]
-> Az Azure CLI Logic Apps bővítménye jelenleg *kísérleti jellegű* , és *nem vonatkozik az ügyfélszolgálatra*. Ezt a CLI-bővítményt körültekintően használhatja, különösen akkor, ha a bővítményt éles környezetben használja.
+> Az Azure CLI Logic Apps bővítménye jelenleg *kísérleti jellegű* , és *nem vonatkozik az ügyfélszolgálatra* . Ezt a CLI-bővítményt körültekintően használhatja, különösen akkor, ha a bővítményt éles környezetben használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -201,7 +201,7 @@ Ez a minta parancsfájl a következő parancsokat használja egy új erőforrás
 | [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | Létrehoz egy logikai alkalmazást a paraméterben meghatározott munkafolyamat alapján `--definition` . |
 | [`az group delete`](/cli/azure/vm/extension?view=azure-cli-latest) | Töröl egy erőforráscsoportot és annak összes beágyazott erőforrását. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információkért tekintse meg az [Azure CLI dokumentációját](/cli/azure/?view=azure-cli-latest).
 

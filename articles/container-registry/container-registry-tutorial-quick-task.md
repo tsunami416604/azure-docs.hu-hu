@@ -3,13 +3,13 @@ title: Oktatóanyag – gyors tároló – rendszerkép összeállítása
 description: Ebben az oktatóanyagban megtudhatja, hogyan állíthat össze Docker-tárolórendszerképet az Azure-ban az Azure Container Registry Tasks (ACR Tasks) használatával, majd hogyan helyezheti azokat üzembe az Azure Container Instances szolgáltatásban.
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 43d2c277fe3297c7e5ee55046118add352853640
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259483"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739534"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Tárolólemezképek buildelése és üzembe helyezése a felhőben az Azure Container Registry Tasks használatával
 
@@ -87,7 +87,7 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-Miután a regisztrációs adatbázis létrejött, az ACR Tasks használatával állítson össze egy tárolórendszerképet a mintakódból. Az [az acr build][az-acr-build] parancs futtatásával hajtson végre egy *gyors feladatot*:
+Miután a regisztrációs adatbázis létrejött, az ACR Tasks használatával állítson össze egy tárolórendszerképet a mintakódból. Az [az acr build][az-acr-build] parancs futtatásával hajtson végre egy *gyors feladatot* :
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -203,7 +203,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Az `--role` előző parancsban szereplő argumentum konfigurálja az egyszerű szolgáltatást a *acrpull* szerepkörrel, amely csak lekéréses hozzáférést biztosít a beállításjegyzékhez. A leküldéses és lekéréses hozzáférés engedélyezéséhez módosítsa az `--role` argumentumot *acrpush*értékre.
+Az `--role` előző parancsban szereplő argumentum konfigurálja az egyszerű szolgáltatást a *acrpull* szerepkörrel, amely csak lekéréses hozzáférést biztosít a beállításjegyzékhez. A leküldéses és lekéréses hozzáférés engedélyezéséhez módosítsa az `--role` argumentumot *acrpush* értékre.
 
 Ezután tárolja el a szolgáltatásnév *appId* azonosítóját a tárolóban, amely az Azure Container Registry szolgáltatásban a hitelesítéskor megadandó **felhasználónév** lesz:
 
@@ -278,7 +278,7 @@ Amikor megjelenik a `Server running at http://localhost:80` üzenet, adja meg a 
 
 A konzolt a `Control+C` billentyűkombinációval választhatja le a tárolóról.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Állítsa le a tárolópéldányt az [az container delete][az-container-delete] paranccsal:
 
@@ -293,7 +293,7 @@ az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután egy gyors feladattal tesztelte a belső ciklust, konfiguráljon egy **összeállítási feladatot** a tárolórendszerképek összeállításának automatikus aktiválására, amikor forráskódot véglegesít egy Git-adattárban:
 

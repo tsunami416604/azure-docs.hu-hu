@@ -3,13 +3,13 @@ title: Tároló lemezképek létrehozása Service Fabric az Azure-ban
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre tárolórendszerképeket többtárolós Service Fabric-alkalmazásokhoz.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 73d202b3b812b59ed8dadd4a6508dfe2873ecd6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 31b5f870465bc1dff9d6ff7827a4efed084bcf62
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532210"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739064"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux Service Fabric-fürtön
 
@@ -194,7 +194,7 @@ azure-vote-front
 
 Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Container Registry-példány tárolja. Ezt a rendszerképet telepítjük az ACR-ből egy Service Fabric-fürtre a következő oktatóanyagok során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy alkalmazást hoztak létre a GitHubról, és a tároló lemezképeit létrehozták, és elküldték a beállításjegyzékbe. A következő lépéseket hajtotta végre:
 

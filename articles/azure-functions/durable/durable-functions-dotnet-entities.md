@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d480b8db69b34eda7ca1ea8e1b2755179f9c673f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88d2a23104b67dae8fd480406eb9171e9f3d5652
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88055173"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740006"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Fejlesztői útmutató a tartós entitásokhoz a .NET-ben
 
@@ -203,7 +203,7 @@ A típusok ellenőrzésének biztosításán kívül a felületek hasznosak lehe
 
 ### <a name="example-client-signals-entity-through-interface"></a>Példa: ügyfél-jeleket kezelő entitás kapcsolaton keresztül
 
-Az ügyfél kódja `SignalEntityAsync<TEntityInterface>` a használatával jeleket küldhet a megvalósítás alatt álló entitásoknak `TEntityInterface` . Példa:
+Az ügyfél kódja `SignalEntityAsync<TEntityInterface>` a használatával jeleket küldhet a megvalósítás alatt álló entitásoknak `TEntityInterface` . Például:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -427,7 +427,7 @@ public class HttpEntity
     [JsonIgnore]
     private readonly HttpClient client;
 
-    public class HttpEntity(IHttpClientFactory factory)
+    public HttpEntity(IHttpClientFactory factory)
     {
         this.client = factory.CreateClient();
     }

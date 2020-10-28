@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt egy A
 services: container-service
 ms.topic: quickstart
 ms.date: 09/11/2020
-ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 2695126b8ad515735907558e3c316b87ac5dfbdc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc,subject-armqs, devx-track-azurecli
+ms.openlocfilehash: f0ef1c32035eed26c0717364bda030b6b7662b3e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070741"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740293"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Gyors útmutató: Azure Kubernetes-szolgáltatás (ak) fürt üzembe helyezése ARM-sablon használatával
 
@@ -88,18 +88,18 @@ További AK-mintákért tekintse meg az AK gyors üzembe helyezési [sablonok][a
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
-    Ebben a rövid útmutatóban hagyja meg az operációsrendszer- *lemez mérete (GB*), az *ügynökök száma*, az ügynök virtuálisgép- *mérete*, az *operációs rendszer típusa*és a *Kubernetes-verzió*alapértelmezett értékeit. Adja meg a saját értékeit a következő sablon paramétereinek:
+    Ebben a rövid útmutatóban hagyja meg az operációsrendszer- *lemez mérete (GB* ), az *ügynökök száma* , az ügynök virtuálisgép- *mérete* , az *operációs rendszer típusa* és a *Kubernetes-verzió* alapértelmezett értékeit. Adja meg a saját értékeit a következő sablon paramétereinek:
 
-    * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget. Adja meg az erőforráscsoport egyedi nevét, például *myResourceGroup*, majd kattintson **az OK gombra**.
-    * **Hely**: válasszon egy helyet, például az **USA keleti**régióját.
-    * **Fürt neve**: adjon meg egy egyedi nevet az AK-fürthöz, például *myAKSCluster*.
-    * **DNS-előtag**: adjon meg egy egyedi DNS-előtagot a fürthöz, például *myakscluster*.
-    * **Linux-rendszergazdai Felhasználónév**: adjon meg egy felhasználónevet az SSH-val való kapcsolódáshoz, például: *azureuser*.
-    * **Nyilvános SSH RSA-kulcs**: másolja és illessze be az SSH-kulcspár *nyilvános* részét (alapértelmezés szerint a *~/.ssh/id_rsa. pub*fájl tartalma).
-    * **Egyszerű szolgáltatásnév ügyfél-azonosítója**: másolja és illessze be az egyszerű szolgáltatásnév *AppID* a `az ad sp create-for-rbac` paranccsal.
-    * **Egyszerű szolgáltatásnév ügyfél titka**: másolja és illessze be az egyszerű szolgáltatás *jelszavát* a `az ad sp create-for-rbac` parancsból.
-    * Elfogadom **a fenti feltételeket és kikötéseket**: jelölje be ezt a jelölőnégyzetet az egyeztetéshez.
+    * **Előfizetés** : válasszon ki egy Azure-előfizetést.
+    * **Erőforráscsoport** : válassza az **új létrehozása** lehetőséget. Adja meg az erőforráscsoport egyedi nevét, például *myResourceGroup* , majd kattintson **az OK gombra** .
+    * **Hely** : válasszon egy helyet, például az **USA keleti** régióját.
+    * **Fürt neve** : adjon meg egy egyedi nevet az AK-fürthöz, például *myAKSCluster* .
+    * **DNS-előtag** : adjon meg egy egyedi DNS-előtagot a fürthöz, például *myakscluster* .
+    * **Linux-rendszergazdai Felhasználónév** : adjon meg egy felhasználónevet az SSH-val való kapcsolódáshoz, például: *azureuser* .
+    * **Nyilvános SSH RSA-kulcs** : másolja és illessze be az SSH-kulcspár *nyilvános* részét (alapértelmezés szerint a *~/.ssh/id_rsa. pub* fájl tartalma).
+    * **Egyszerű szolgáltatásnév ügyfél-azonosítója** : másolja és illessze be az egyszerű szolgáltatásnév *AppID* a `az ad sp create-for-rbac` paranccsal.
+    * **Egyszerű szolgáltatásnév ügyfél titka** : másolja és illessze be az egyszerű szolgáltatás *jelszavát* a `az ad sp create-for-rbac` parancsból.
+    * Elfogadom **a fenti feltételeket és kikötéseket** : jelölje be ezt a jelölőnégyzetet az egyeztetéshez.
 
     ![Resource Manager-sablon Azure Kubernetes Service-fürt létrehozásához a portálon](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
@@ -129,7 +129,7 @@ A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kube
 kubectl get nodes
 ```
 
-A következő példa kimenetében az előző lépésekben létrehozott csomópontok láthatók. Győződjön meg arról, hogy az összes csomópont állapota *kész*:
+A következő példa kimenetében az előző lépésekben létrehozott csomópontok láthatók. Győződjön meg arról, hogy az összes csomópont állapota *kész* :
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -257,7 +257,7 @@ A folyamat állapotának monitorozásához használja [kubectl get service][kube
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben a *külső IP-cím* az *Azure-vote-elülső* szolgáltatáshoz *függőben*jelenik meg.
+Kezdetben a *külső IP-cím* az *Azure-vote-elülső* szolgáltatáshoz *függőben* jelenik meg.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -274,7 +274,7 @@ Az Azure vote alkalmazás működés közbeni megtekintéséhez nyisson meg egy 
 
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha a fürtre már nincs szükség, az [az group delete][az-group-delete] paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 

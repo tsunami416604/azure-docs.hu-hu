@@ -314,7 +314,7 @@
         - name: IaaS-alapú virtuális gépek lemeztípusának kiválasztása
           href: ../disks-types.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Titkosítás
-          href: disk-encryption.md
+          href: ../disk-encryption.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Lemezes tároláshoz kapcsolódó lefoglalások
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Virtuálisgép- és lemezteljesítmény

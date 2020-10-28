@@ -25,13 +25,13 @@
     - name: Az Internet Analyzer hibaelhárítása
       href: troubleshoot.md
     - name: Internet Analyzer – Parancssori felülettel kapcsolatos referencia
-      href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
+      href: /cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Előzetes verzió – SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

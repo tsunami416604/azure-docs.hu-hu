@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 689582d73e29cb60cc2ee5294b568b5db2f73244
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87078123"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739333"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Gyors útmutató: logikai alkalmazások munkafolyamatainak létrehozása és üzembe helyezése ARM-sablon használatával
 
@@ -78,7 +78,7 @@ Kövesse a Gyorsindítás sablon üzembe helyezéséhez használni kívánt beá
 
    ![Információk megadása a gyors üzembe helyezési sablonhoz](./media/quickstart-create-deploy-azure-resource-manager-template/create-logic-app-template-portal.png)
 
-1. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet.
+1. Ha elkészült, válassza a **felülvizsgálat + létrehozás** elemet.
 
 1. Folytassa az [üzembe helyezett erőforrások áttekintése](#review-deployed-resources)című témakör lépéseit.
 
@@ -234,7 +234,7 @@ A logikai alkalmazás megtekintéséhez használhatja a Azure Portal, futtathatj
 
 1. A Logic app Designer megnyitása után tekintse át a Gyorsindítás sablon által létrehozott logikai alkalmazást.
 
-1. A logikai alkalmazás teszteléséhez a tervező eszköztárán válassza a **Futtatás**lehetőséget.
+1. A logikai alkalmazás teszteléséhez a tervező eszköztárán válassza a **Futtatás** lehetőséget.
 
 ### <a name="cli"></a>[Parancssori felület](#tab/azure-cli)
 
@@ -280,7 +280,7 @@ További információ [: Logic Apps REST API: munkafolyamatok – Get](/rest/api
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, érdemes megtartania ezeket az erőforrásokat. Ha már nincs szüksége a logikai alkalmazásra, törölje az erőforráscsoportot a Azure Portal, az Azure CLI, az Azure PowerShell vagy az erőforrás-kezelés REST API használatával.
 
@@ -288,7 +288,7 @@ Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal
 
 1. A Azure Portal keresse meg és válassza ki a törölni kívánt erőforráscsoportot, amely `Check-Azure-Status-RG` ebben a példában található.
 
-1. Az erőforráscsoport menüben válassza az **Áttekintés** lehetőséget, ha még nincs bejelölve. Az Áttekintés lapon válassza az **erőforráscsoport törlése**elemet.
+1. Az erőforráscsoport menüben válassza az **Áttekintés** lehetőséget, ha még nincs bejelölve. Az Áttekintés lapon válassza az **erőforráscsoport törlése** elemet.
 
 1. A megerősítéshez adja meg az erőforráscsoport nevét.
 
@@ -337,7 +337,7 @@ További információ [: erőforrás-kezelés REST API: erőforráscsoportok –
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

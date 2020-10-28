@@ -359,9 +359,9 @@
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks
     - name: Az Azure Maps használati feltételei
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Az Azure Maps árképzése

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: dc8aa50c5c4ecb5e4b56a7e49453c266dad28818
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 4b0e54c434f68a8a26f49b6ba0c1010e93d36ad6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678095"
+ms.locfileid: "92739898"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>SAP-megoldások Azure Monitor üzembe helyezése Azure Portal
 
@@ -54,7 +54,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
 
 4. Adja meg a használni kívánt adatbázis-bérlő nevét. Bármelyik bérlőt kiválaszthatja, de javasoljuk a **SYSTEMDB** használatát, mivel a figyelési területek szélesebb körét teszi lehetővé. 
 
-5. Adja meg a HANA-adatbázishoz tartozó SQL-portszámot. A portszámnak **[3]** [  +  **példány #]**  +  **[13]** vagy **[3]** [példány  +  **#]**  +  **[15]** formátumúnak kell lennie. Például 30013 vagy 30015. 
+5. Adja meg a HANA-adatbázishoz tartozó SQL-portszámot. A portszámnak a ( **[3]** [  +  **instance #]**  +  **[13]** formátumban kell lennie. Például 30013. 
 
 6. Adja meg a használni kívánt adatbázis-felhasználónevet. Győződjön meg arról, hogy az adatbázis-felhasználónak van hozzárendelve a **figyelés** és a **katalógus olvasási** szerepköre. 
 

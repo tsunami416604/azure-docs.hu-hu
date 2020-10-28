@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85bbdff2f7e67434a3e21aaf51af96c1e851eb0d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826662"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740187"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Wind
 - A továbbiakban nem kell helyi rendszergazdai fiókokat kezelnie.
 - Az Azure RBAC lehetővé teszi a megfelelő hozzáférés megadását a virtuális gépek igény szerinti eléréséhez, és ha már nincs rá szükség, távolítsa el azt.
 - A virtuális géphez való hozzáférés engedélyezése előtt az Azure AD feltételes hozzáférése további követelményeket is kikényszerítheti, például: 
-   - Többtényezős hitelesítés
+   - Multi-Factor Authentication
    - Bejelentkezési kockázat-ellenőrzési
 - Automatizálhatja és méretezheti az Azure AD Joint az Azure Windows rendszerű virtuális gépekhez, amelyek részét képezik a VDI üzembe helyezésének.
 
@@ -81,12 +81,12 @@ Engedélyezheti az Azure AD-bejelentkezést a Windows Server 2019 Datacenter vag
 
 Windows Server 2019 Datacenter rendszerű virtuális gép létrehozása az Azure-ban Azure AD-bejelentkezéssel: 
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)egy olyan fiókkal, amely hozzáfér a virtuális gépek létrehozásához, majd válassza az **+ erőforrás létrehozása**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)egy olyan fiókkal, amely hozzáfér a virtuális gépek létrehozásához, majd válassza az **+ erőforrás létrehozása** lehetőséget.
 1. Írja be a **Windows Server** kifejezést a piactér keresési sávjában.
    1. Kattintson a **Windows Server** lehetőségre, és válassza a **Windows Server 2019 Datacenter** elemet a szoftvercsomag kiválasztása listából.
-   1. Kattintson a **Létrehozás**gombra.
-1. A "felügyelet" lapon engedélyezze a **HRE hitelesítő adatokkal (előzetes verzió) való bejelentkezést** a Azure Active Directory szakasz alatt, a ki és **be**lehetőségnél.
-1. Győződjön **meg**arról, hogy a **rendszerhez rendelt felügyelt identitás** az identitás szakaszban be értékre van állítva. A műveletnek automatikusan kell történnie, ha engedélyezi a bejelentkezést az Azure AD-beli hitelesítő adatokkal.
+   1. Kattintson a **Létrehozás** gombra.
+1. A "felügyelet" lapon engedélyezze a **HRE hitelesítő adatokkal (előzetes verzió) való bejelentkezést** a Azure Active Directory szakasz alatt, a ki és **be** lehetőségnél.
+1. Győződjön **meg** arról, hogy a **rendszerhez rendelt felügyelt identitás** az identitás szakaszban be értékre van állítva. A műveletnek automatikusan kell történnie, ha engedélyezi a bejelentkezést az Azure AD-beli hitelesítő adatokkal.
 1. Ugorjon végig a virtuális gép létrehozásának további tapasztalatain. Ebben az előzetes verzióban létre kell hoznia egy rendszergazdai felhasználónevet és jelszót a virtuális géphez.
 
 ![Bejelentkezés Azure AD-beli hitelesítő adatokkal virtuális gép létrehozása](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
@@ -146,8 +146,8 @@ Ekkor megjelenik a (z) `provisioningState` `Succeeded` , ha a bővítmény telep
 
 Most, hogy létrehozta a virtuális gépet, konfigurálnia kell az Azure RBAC-szabályzatot annak meghatározásához, hogy ki tud bejelentkezni a virtuális gépre. A VM-bejelentkezés engedélyezéséhez két Azure-szerepkör használható:
 
-- **Virtuális gép rendszergazdai bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszergazdai jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
-- **Virtuális gép felhasználói bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
+- **Virtuális gép rendszergazdai bejelentkezése** : az ehhez a szerepkörhöz hozzárendelt felhasználók rendszergazdai jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
+- **Virtuális gép felhasználói bejelentkezése** : az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
 
 > [!NOTE]
 > Annak engedélyezéséhez, hogy a felhasználó RDP-en keresztül jelentkezzen be a virtuális GÉPRE, hozzá kell rendelnie a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét. Egy virtuális géphez hozzárendelt tulajdonosi vagy közreműködői szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan a virtuális gépre RDP-kapcsolaton keresztül bejelentkezni. Ez a virtuális gépeket vezérlő személyek, illetve a virtuális gépeket elérő személyek között naplózható elkülönítést biztosít.
@@ -163,10 +163,10 @@ Szerepkör-hozzárendelések konfigurálása az Azure AD-ben engedélyezett Wind
 
 1. Navigáljon az adott virtuális gép áttekintő oldalára
 1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a menüpontok közül.
-1. Válassza a **Hozzáadás**, **szerepkör-hozzárendelés hozzáadása** lehetőséget a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
-1. A **szerepkör** legördülő listában válasszon ki egy szerepkört, például a **virtuális gép rendszergazdai felhasználónevét** vagy a **virtuális gép felhasználói bejelentkezését**.
+1. Válassza a **Hozzáadás** , **szerepkör-hozzárendelés hozzáadása** lehetőséget a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
+1. A **szerepkör** legördülő listában válasszon ki egy szerepkört, például a **virtuális gép rendszergazdai felhasználónevét** vagy a **virtuális gép felhasználói bejelentkezését** .
 1. A **Select (kiválasztás** ) mezőben válasszon ki egy felhasználót, egy csoportot, egy szolgáltatásnevet vagy egy felügyelt identitást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
-1. A szerepkör hozzárendeléséhez válassza a **Mentés**lehetőséget.
+1. A szerepkör hozzárendeléséhez válassza a **Mentés** lehetőséget.
 
 Néhány pillanat elteltével a rendszerbiztonsági tag a kiválasztott hatókörhöz rendeli a szerepkört.
 

@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/05/2020
-ms.openlocfilehash: 7573abbbee479bfb0d1710beba3b95d084a5e657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: a5db3935ae445ee7dcf8129eb1d4c75fcb64302f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898880"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739200"
 ---
 # <a name="apply-transformation-module"></a>Átalakítási modul alkalmazása
 
 Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
-Ezzel a modullal módosíthatja a bemeneti adatkészletet egy korábban számított transzformáció alapján.
+Ezzel a modullal módosíthatja a bemeneti adatkészletet egy korábban számított transzformáció alapján. Ez a modul akkor szükséges, ha frissítenie kell az átalakításokat a következtetési folyamatokban.
 
 Ha például a z-score-t használta a betanítási adatok normalizálása érdekében a **normalizálás** adatmodul használatával, akkor azt a z-score értéket érdemes használni, amelyet a program a pontozási fázisban is kiszámított képzéshez. Azure Machine Learning a normalizálás módszerét átalakíthatja átalakításként, majd az **átalakítás alkalmazása** paranccsal alkalmazhatja a z-pontszámot a bemeneti adatokra a pontozás előtt.
 
@@ -46,7 +46,14 @@ A Designer lehetővé teszi adatátalakítások **adatkészletként** való ment
   
 1. Kapcsolja össze a kívánt modul adatkészlet-kimenetét az **átalakítási** modul megfelelő bemeneti portjával.
   
-1. Ha egy átalakítást szeretne alkalmazni az új adatkészletre, futtassa a folyamatot.  
+1. Ha egy átalakítást szeretne alkalmazni az új adatkészletre, küldje el a folyamatot.  
+
+> [!IMPORTANT]
+> Annak biztosítása érdekében, hogy a folyamatban lévő folyamatok a betanítási folyamatokban is megvalósíthatók legyenek, az alábbi lépéseket kell követnie minden alkalommal, amikor a betanítási folyamat frissült az átalakítás során:
+> 1. A betanítási folyamat során regisztrálja a [Select Columns átalakító](select-columns-transform.md) kimenetét adatkészletként.
+> ![A modul kimeneti adatkészletének regisztrálása](media/module/select-columns-transform-register-dataset.png)
+> 1. A következtetési folyamatban távolítsa el a **TD-** modult, és cserélje le az előző lépésben regisztrált adatkészletre.
+> ![A TD modul cseréje](media/module/replace-tranformation-directory.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

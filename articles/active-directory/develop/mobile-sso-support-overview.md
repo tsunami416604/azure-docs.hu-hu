@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 27a58fc66de31fef272ab2f2c2bfaa9896a07d4b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209764"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740141"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Az egyszeri bejelentkezés és az alkalmazás-védelmi szabályzatok támogatása a fejleszthető mobil alkalmazásokban
 
@@ -47,7 +47,7 @@ Ha jelenleg a [ADAL könyvtárat](../azuread-dev/active-directory-authentication
 
 Az iOS-alkalmazások [esetében egy rövid](quickstart-v2-ios.md) útmutató bemutatja, hogyan állíthatja be a bejelentkezéseket a MSAL használatával, valamint [útmutatást nyújt a MSAL konfigurálásához a különböző SSO-forgatókönyvekhez](single-sign-on-macos-ios.md).
 
-Az Android-alkalmazások esetében [van egy rövid útmutató, amely](quickstart-v2-android.md) bemutatja, hogyan állíthatja be a bejelentkezéseket a MSAL használatával, valamint útmutatást a felügyelt [hitelesítés](brokered-auth.md) vagy az [engedélyezési ügynökök](authorization-agents.md)használatához.
+Az Android-alkalmazások esetében [van egy rövid útmutató, amely](quickstart-v2-android.md) bemutatja, hogyan állíthatja be a bejelentkezéseket a MSAL használatával, valamint útmutatást nyújt az [alkalmazások közötti egyszeri bejelentkezés engedélyezéséhez az Androidon a MSAL használatával](msal-android-single-sign-on.md).
 
 ### <a name="use-the-system-web-browser"></a>A rendszerböngésző használata
 
