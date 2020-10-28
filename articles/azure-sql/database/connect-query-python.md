@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5257e8730830c6b51808d5d014bc3bdec6036bfe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3cbda70fd836482448aa381f6e781ed15666f2c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87843963"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675170"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Python használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  A Homebrew és a Python, az ODBC-illesztő és a SQLCMD, valamint a SQL Server Python-illesztőprogramjának telepítéséhez használja a **1,2**, **1,3**és **2,1** lépéseket a [python-alkalmazások létrehozása a MacOS rendszeren SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
+  A Homebrew és a Python, az ODBC-illesztő és a SQLCMD, valamint a SQL Server Python-illesztőprogramjának telepítéséhez használja a **1,2** , **1,3** és **2,1** lépéseket a [python-alkalmazások létrehozása a MacOS rendszeren SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
 
   További információ: [Microsoft ODBC-illesztőprogram MacOS rendszeren](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
 
@@ -81,7 +81,7 @@ A Python és az adatbázis Azure SQL Databaseban való megismeréséhez lásd: [
 
 A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok lekérése. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 2. Nyissa meg az **SQL-adatbázisok**  vagy az SQL- **felügyelt példányok** lapot.
 
@@ -92,7 +92,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 ## <a name="create-code-to-query-your-database"></a>Kód létrehozása az adatbázis lekérdezéséhez 
 
-1. Egy szövegszerkesztőben hozzon létre egy új, *sqltest.py*nevű fájlt.  
+1. Egy szövegszerkesztőben hozzon létre egy új, *sqltest.py* nevű fájlt.  
    
 1. Adja hozzá a következő kódot. Helyettesítse be a, a, a és a saját értékeit \<server> \<database> \<username> \<password> .
    
@@ -127,9 +127,8 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 1. Győződjön meg arról, hogy a 20 legfontosabb kategória/termék sorait adja vissza, majd zárjuk be a parancssorablakot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
-- [Microsoft Python-illesztőprogramok a SQL Server](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
+- [Microsoft Python-illesztőprogramok a SQL Server](/sql/connect/python/python-driver-for-sql-server/)
 - [Python fejlesztői központ](https://azure.microsoft.com/develop/python/?v=17.23h)
-

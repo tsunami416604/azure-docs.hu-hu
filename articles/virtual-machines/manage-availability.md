@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 11444fc599b46ceff90eda562d2fd557bcaf53b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9d9a9c878c96c7f5a38466c494e4b90287c984da
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961340"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92734950"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Linux rendszerű virtuális gépek rendelkezésre állásának kezelése
 
@@ -34,7 +34,7 @@ Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem terve
 
 Az ilyen események okozta állásidő hatásainak csökkentése érdekében javasoljuk, hogy kövesse az alábbi bevált gyakorlatokat a virtuális gépek magas rendelkezésre állásának biztosításához:
 
-* Availabiilty zónák használata az adatközpont hibái elleni védelemhez
+* Adatközpont-hibák elleni védelem Availability Zones használata
 * Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében
 * Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel
 * Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre
@@ -46,11 +46,11 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 
 A [rendelkezésre állási zónák](../availability-zones/az-overview.md) kibővítik a vezérlés szintjét, hogy a virtuális gépeken elérhető alkalmazások és adatmennyiségek rendelkezésre álljanak. A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosítása érdekében az összes engedélyezett régióban legalább három különálló zónának kell lennie. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodását. Zóna – a redundáns szolgáltatások az alkalmazások és az adatok replikálását Availability Zones az egypontos meghibásodások elleni védelem érdekében.
 
-Az Azure-régiók rendelkezésre állási zónái egy tartalék **tartomány** és egy **frissítési tartomány**kombinációja. Ha például három vagy több virtuális gépet hoz létre három zónában egy Azure-régióban, a virtuális gépeket a rendszer gyakorlatilag három tartalék tartományba és három frissítési tartományba terjeszti. Az Azure platform felismeri ezt az eloszlást a frissítési tartományok között, hogy megbizonyosodjon róla, hogy a különböző zónákban lévő virtuális gépek nem frissülnek egyidőben.
+Az Azure-régiók rendelkezésre állási zónái egy tartalék **tartomány** és egy **frissítési tartomány** kombinációja. Ha például három vagy több virtuális gépet hoz létre három zónában egy Azure-régióban, a virtuális gépeket a rendszer gyakorlatilag három tartalék tartományba és három frissítési tartományba terjeszti. Az Azure platform felismeri ezt az eloszlást a frissítési tartományok között, hogy megbizonyosodjon róla, hogy a különböző zónákban lévő virtuális gépek nem frissülnek egyidőben.
 
 Az Azure Availability Zones az iparág legjobb 99,99%-os rendelkezésre állását kínálja a virtuális gép számára. Ha a megoldásait a zónákban lévő replikált virtuális gépek használatára kívánja használni, az alkalmazások és az adatok az adatközpont elvesztése miatt is védhetők. Ha egy zóna biztonsága sérül, a replikált alkalmazások és az adatszolgáltatások azonnal elérhetők lesznek egy másik zónában.
 
-![Rendelkezésre állási zónák](./media/virtual-machines-common-manage-availability/three-zones-per-region.png)
+![Rendelkezésreállási zónák](./media/virtual-machines-common-manage-availability/three-zones-per-region.png)
 
 További információ a Windows vagy [Linux](./linux/create-cli-availability-zone.md) [rendszerű](./windows/create-powershell-availability-zone.md) virtuális gépek rendelkezésre állási zónában való üzembe helyezéséről.
 
@@ -97,7 +97,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni, kövesse az alábbi ajánlott eljárásokat azokhoz a tárolási fiókokhoz, amelyekben a virtuális merevlemezek (VHD-k) [blobként](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)vannak tárolva.
 
 1. **Tárolja az egyazon virtuális géppel társított összes lemezt (operációsrendszer- és adatlemezt) ugyanabban a tárfiókban.**
-2. **Tekintse át az Azure Storage-fiókban nem felügyelt lemezek számának [korlátozásait](../storage/blobs/scalability-targets-premium-page-blobs.md) ** , mielőtt további virtuális merevlemezeket adna hozzá egy Storage-fiókhoz
+2. **Tekintse át az Azure Storage-fiókban nem felügyelt lemezek számának [korlátozásait](../storage/blobs/scalability-targets-premium-page-blobs.md)** , mielőtt további virtuális merevlemezeket adna hozzá egy Storage-fiókhoz
 3. **Használjon külön Storage-fiókot a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez.** Ne tárolja az egyazon rendelkezésre állási csoportban lévő virtuális gépeket ugyanabban a Storage-fiókban. A különböző rendelkezésre állási csoportokban lévő virtuális gépek számára elfogadható a tárolási fiókok megosztása, ha a fenti ajánlott eljárások követik a nem ![ felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre

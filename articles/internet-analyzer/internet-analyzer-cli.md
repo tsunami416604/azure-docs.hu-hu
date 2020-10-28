@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: e5a7984cd868e7fbac08ec80f92fe28ad13d84e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a76e4007965c263671554bbcd937dbf3b4b0a6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308095"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676217"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Internet Analyzer-teszt létrehozása a parancssori felület használatával (előzetes verzió)
 
@@ -37,7 +37,7 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
 
 ## <a name="profile-and-test-creation"></a>Profil és tesztelés létrehozása
 1. Az Internet Analyzer előnézeti hozzáférésének beszerzése a **hogyan az előzetes** verzióban való részvétel után? az [Azure Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című témakörben olvashat.
-2. [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t.
+2. [Telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t.
 3. Futtassa a `login` parancsot egy CLI-munkamenet elindításához:
     ```azurecli-interactive
     az login
@@ -50,9 +50,9 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
 
 5. Válassza ki az előfizetési azonosítót, amely hozzáférést kapott az Internet Analyzer nyilvános előzetes verziójához.
 
-    A bejelentkezést követően megjelenik az Azure-fiókjához társított előfizetések listája. Az előfizetési információ az a `isDefault: true` jelenleg aktivált előfizetés a bejelentkezés után. Egy másik előfizetés kiválasztásához használja az az [Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) parancsot az előfizetés-azonosítóval a következőre való váltáshoz:. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    A bejelentkezést követően megjelenik az Azure-fiókjához társított előfizetések listája. Az előfizetési információ az a `isDefault: true` jelenleg aktivált előfizetés a bejelentkezés után. Egy másik előfizetés kiválasztásához használja az az [Account set](/cli/azure/account#az-account-set) parancsot az előfizetés-azonosítóval a következőre való váltáshoz:. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
-    Nem interaktív módok is rendelkezésre állnak a bejelentkezéshez, amelyekről részletesen [az Azure CLI-vel történő bejelentkezést](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) ismertető részben olvashat.
+    Nem interaktív módok is rendelkezésre állnak a bejelentkezéshez, amelyekről részletesen [az Azure CLI-vel történő bejelentkezést](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) ismertető részben olvashat.
 
 6. **[Nem kötelező]** Hozzon létre egy új Azure-erőforráscsoportot:
     ```azurecli-interactive
@@ -130,8 +130,8 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
     ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A támogatott parancsok és használati példák teljes listájáért keresse fel az [Internet Analyzer CLI-referenciáját](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) .
+* A támogatott parancsok és használati példák teljes listájáért keresse fel az [Internet Analyzer CLI-referenciáját](/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) .
 * Olvassa el az [Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című részt.
-* További információ az [Internet Analyzer-ügyfél](internet-analyzer-embed-client.md) beágyazásáról és az [Egyéni végpontok](internet-analyzer-custom-endpoint.md)létrehozásáról. 
+* További információ az [Internet Analyzer-ügyfél](internet-analyzer-embed-client.md) beágyazásáról és az [Egyéni végpontok](internet-analyzer-custom-endpoint.md)létrehozásáról.

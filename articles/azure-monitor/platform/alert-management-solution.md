@@ -6,26 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: 26943971eeee96ed831c5d524868a2342891d594
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: adc29916c6b674531d7b0e8fcdd4e151b4a17bde
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108405"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677574"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Alert Management megoldás az Azure-ban Log Analytics
 
 ![Alert Management ikon](media/alert-management-solution/icon.png)
 
-> [!NOTE]
->  A Azure Monitor mostantól támogatja a [riasztások nagy léptékű kezelésére](./alerts-overview.md)szolgáló továbbfejlesztett képességeket, beleértve az olyan [figyelési eszközök által generált eszközöket is, mint a System Center Operations Manager, a Zabbix vagy a Nagios](./alerts-managing-nagios-zabbix-scom.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
->  
-
-
 A Alert Management megoldás segítségével elemezheti a Log Analytics adattár összes riasztását.  Ezek a riasztások különböző forrásokból származnak, beleértve a [log Analytics által létrehozott](./alerts-overview.md) vagy [a Nagios-ból vagy Zabbix importált](../learn/quick-collect-linux-computer.md)forrásokból származó forrásokat is. A megoldás a [csatlakoztatott System Center Operations Manager felügyeleti csoportok](./om-agents.md)riasztásait is importálja.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A megoldás a Log Analytics-tárházban található összes rekordtal működik, és a **riasztások**típusával a rekordok összegyűjtéséhez bármilyen konfigurációt kell végrehajtania.
+A megoldás a Log Analytics-tárházban található összes rekordtal működik, és a **riasztások** típusával a rekordok összegyűjtéséhez bármilyen konfigurációt kell végrehajtania.
 
 - Log Analytics riasztások esetén [hozzon létre riasztási szabályokat](./alerts-overview.md) a riasztási rekordok közvetlen létrehozásához a tárházban.
 - A Nagios-és Zabbix-riasztások esetében [konfigurálja ezeket a kiszolgálókat](../learn/quick-collect-linux-computer.md) a riasztások log Analyticsba küldéséhez.
@@ -68,7 +63,7 @@ A **Alert Management** csempére kattintva nyissa meg a **Alert Management** ir�
 | Kritikus riasztások |A kritikus súlyosságú riasztások a riasztás neve szerint vannak csoportosítva.  Kattintson a riasztás nevére a riasztásra vonatkozó összes rekord visszaadására szolgáló napló kereséséhez. |
 | Figyelmeztető riasztások |A figyelmeztetés súlyosságával rendelkező összes riasztást a riasztás neve szerint csoportosítva.  Kattintson a riasztás nevére a riasztásra vonatkozó összes rekord visszaadására szolgáló napló kereséséhez. |
 | Aktív System Center Operations Manager riasztások |A Operations Managerból gyűjtött összes riasztás a riasztást generáló forrástól *eltérő* állapotú. |
-| Minden aktív riasztás |Minden olyan riasztás, amelynek súlyossága a riasztás neve szerint van csoportosítva. Csak a *lezárt*állapotú Operations Manager riasztásokat tartalmazza. |
+| Minden aktív riasztás |Minden olyan riasztás, amelynek súlyossága a riasztás neve szerint van csoportosítva. Csak a *lezárt* állapotú Operations Manager riasztásokat tartalmazza. |
 
 Ha a jobb oldali görgetésre kattint, az irányítópulton számos gyakori lekérdezés látható, melyre kattintva elvégezheti a riasztási adatok [naplóbeli keresését](../log-query/log-query-overview.md) .
 
@@ -76,9 +71,9 @@ Ha a jobb oldali görgetésre kattint, az irányítópulton számos gyakori lek�
 
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
-A Alert Management megoldás bármilyen típusú **riasztással**rendelkező rekordot elemez.  A Log Analytics által létrehozott vagy a Nagios vagy Zabbix által gyűjtött riasztásokat a megoldás nem gyűjti közvetlenül.
+A Alert Management megoldás bármilyen típusú **riasztással** rendelkező rekordot elemez.  A Log Analytics által létrehozott vagy a Nagios vagy Zabbix által gyűjtött riasztásokat a megoldás nem gyűjti közvetlenül.
 
-A megoldás nem importálja a riasztásokat a System Center Operations Managerból, és létrehoz egy megfelelő rekordot a **riasztási** típussal és a **OpsManager**SourceSystem.  Ezek a rekordok a következő táblázatban szereplő tulajdonságokkal rendelkeznek:  
+A megoldás nem importálja a riasztásokat a System Center Operations Managerból, és létrehoz egy megfelelő rekordot a **riasztási** típussal és a **OpsManager** SourceSystem.  Ezek a rekordok a következő táblázatban szereplő tulajdonságokkal rendelkeznek:  
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
@@ -118,5 +113,5 @@ A következő táblázat a megoldás által gyűjtött riasztási rekordokra von
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](./alerts-overview.md).

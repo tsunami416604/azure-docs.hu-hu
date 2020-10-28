@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/09/2020
 ms.author: duau
-ms.custom: seodec18
-ms.openlocfilehash: 292f50877fe40127e5aea95e395109bc76e1f75d
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 7a482e268137946222f1c8b427424598bd78f935
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940871"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735101"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Oktatóanyag: társítások létrehozása és módosítása ExpressRoute-áramkörhöz a CLI használatával
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet útválasztási 
 > * [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
 > 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - Microsoft-társítások konfigurálása, frissítése és törlése egy áramkörhöz
 > - Azure-beli privát kapcsolatok konfigurálása, frissítése és törlése egy áramkörhöz
@@ -44,7 +44,7 @@ Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgá
 
 A ExpressRoute áramkörhöz privát és Microsoft-társítást is beállíthat. A társításokat tetszőleges sorrendben lehet konfigurálni. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. További információ az útválasztási tartományokról és a társításokról: [ExpressRoute-útválasztási tartományok](expressroute-circuit-peerings.md).
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Microsoftos társviszony
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoftos társhálózat-létesítés
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
 
@@ -185,7 +185,7 @@ az network express-route peering update --circuit-name MyCircuit -g ExpressRoute
 az network express-route peering update -g ExpressRouteResourceGroup --circuit-name MyCircuit --peering-type MicrosoftPeering --ip-version ipv6 --primary-peer-subnet 2002:db00::/126 --secondary-peer-subnet 2003:db00::/126 --advertised-public-prefixes 2002:db00::/126
 ```
 
-## <a name="azure-private-peering"></a><a name="private"></a>Azure-beli privát társviszony
+## <a name="azure-private-peering"></a><a name="private"></a>Azure-beli privát társhálózat-létesítés
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát társ-összevonási konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
 
@@ -310,7 +310,7 @@ A konfiguráció bármely részét frissítheti a következő példán keresztü
 az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 ### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft társviszony-létesítés törlése
 

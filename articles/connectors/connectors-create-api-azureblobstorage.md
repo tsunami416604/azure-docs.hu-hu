@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284081"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677730"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Blobok létrehozása és kezelése az Azure Blob Storageban Azure Logic Apps használatával
 
@@ -29,11 +29,11 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure L
 
 ## <a name="limits"></a>Korlátok
 
-* Alapértelmezés szerint az Azure Blob Storage-műveletek a *50 MB vagy annál kisebb*fájlokat képesek olvasni vagy írni. Ha 50 MB-nál nagyobb fájlokat szeretne kezelni, de legfeljebb 1024 MB-ra, az Azure Blob Storage-műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md). A **blob-tartalom beolvasása** művelet implicit módon adatdarabolást használ.
+* Alapértelmezés szerint az Azure Blob Storage-műveletek a *50 MB vagy annál kisebb* fájlokat képesek olvasni vagy írni. Ha 50 MB-nál nagyobb fájlokat szeretne kezelni, de legfeljebb 1024 MB-ra, az Azure Blob Storage-műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md). A **blob-tartalom beolvasása** művelet implicit módon adatdarabolást használ.
 
 * Az Azure Blob Storage-eseményindítók nem támogatják a darabolást. Fájl tartalmának kérésekor a triggerek csak 50 MB vagy annál kisebb fájlokat választanak ki. A 50 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
 
-  * Használjon olyan Azure Blob Storage triggert, amely a fájl tulajdonságait adja vissza, például **egy blob hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+  * Használjon olyan Azure Blob Storage triggert, amely a fájl tulajdonságait adja vissza, például **egy blob hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
 
   * Kövesse a triggert az Azure Blob Storage **blob-tartalom lekérése** művelettel, amely beolvassa a teljes fájlt, és implicit módon használja a darabolást.
 
@@ -73,7 +73,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
    3. Válassza ki az intervallumot és a gyakoriságot, hogy milyen gyakran szeretné megkeresni a triggert a mappa változásaihoz.
 
-4. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+4. Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 5. Most folytassa a logikai alkalmazáshoz egy vagy több művelet hozzáadását azokkal a feladatokkal, amelyeket el szeretne végezni az trigger eredményeivel.
 
@@ -85,11 +85,11 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben. Ez a példa a Azure Portal használja.
 
-2. A Logic app Designerben az trigger vagy a művelet alatt válassza az **új lépés**lehetőséget.
+2. A Logic app Designerben az trigger vagy a művelet alatt válassza az **új lépés** lehetőséget.
 
    ![Új lépés hozzáadása a Logic app-munkafolyamathoz](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
 3. A keresőmezőbe írja be szűrőként az "Azure Blob" kifejezést. A műveletek listából válassza ki a kívánt műveletet.
 
@@ -108,7 +108,7 @@ Ha a kapcsolat már létezik, adja meg a szükséges információkat a műveleth
 
    2. Keresse meg és válassza ki a kívánt fájlt a blob **azonosítójának** száma alapján. Ezt az **azonosítót** a blob metaadatokban találja, amelyeket a korábban leírt blob Storage-trigger ad vissza.
 
-5. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+5. Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 A logikai alkalmazás teszteléséhez győződjön meg arról, hogy a kiválasztott mappa blobot tartalmaz.
 
 Ez a példa csak egy blob tartalmát kéri le. A tartalom megtekintéséhez adjon hozzá egy másik műveletet, amely létrehoz egy fájlt a blobtal egy másik összekötő használatával. Adjon meg például egy olyan OneDrive műveletet, amely létrehoz egy fájlt a blob tartalma alapján.
@@ -183,9 +183,9 @@ Ahhoz, hogy a Microsoft megbízható szolgáltatások hozzáférjenek a Storage-
 
 A kivétel és a felügyelt identitás támogatásának beállításához kövesse az alábbi általános lépéseket:
 
-1. A Storage-fiók **Beállítások**területén válassza a **tűzfalak és virtuális hálózatok**lehetőséget. A **hozzáférés engedélyezése**lehetőségnél válassza a **kiválasztott hálózatok** lehetőséget, hogy megjelenjenek a kapcsolódó beállítások.
+1. A Storage-fiók **Beállítások** területén válassza a **tűzfalak és virtuális hálózatok** lehetőséget. A **hozzáférés engedélyezése** lehetőségnél válassza a **kiválasztott hálózatok** lehetőséget, hogy megjelenjenek a kapcsolódó beállítások.
 
-1. A **kivételek**területen jelölje be **a megbízható Microsoft-szolgáltatások számára a Storage-fiók elérésének engedélyezése**jelölőnégyzetet, majd kattintson a **Mentés**gombra.
+1. A **kivételek** területen jelölje be **a megbízható Microsoft-szolgáltatások számára a Storage-fiók elérésének engedélyezése** jelölőnégyzetet, majd kattintson a **Mentés** gombra.
 
    ![Válassza ki a Microsoft megbízható szolgáltatásokat engedélyező kivételt](./media/connectors-create-api-azureblobstorage/allow-trusted-services-firewall.png)
 
@@ -202,9 +202,8 @@ A kivétel és a felügyelt identitás támogatásának beállításához köves
 
 ### <a name="access-storage-accounts-through-azure-api-management"></a>Hozzáférés a Storage-fiókokhoz az Azure API Management
 
-Ha [API Management](../api-management/api-management-key-concepts.md)dedikált szintet használ, a tárolási API-t a API Management használatával is elvégezheti, és engedélyezheti az utóbbi IP-címeit a tűzfalon keresztül. Alapvetően adja hozzá a API Management által használt Azure-beli virtuális hálózatot a Storage-fiók tűzfal-beállításához. Ezután használhatja a API Management műveletet vagy a HTTP-műveletet az Azure Storage API-k meghívásához. Ha azonban ezt a lehetőséget választja, a hitelesítési folyamatot saját kezűleg kell kezelnie. További információ: [Simple Enterprise Integration Architecture](https://aka.ms/aisarch).
+Ha [API Management](../api-management/api-management-key-concepts.md)dedikált szintet használ, a tárolási API-t a API Management használatával is elvégezheti, és engedélyezheti az utóbbi IP-címeit a tűzfalon keresztül. Alapvetően adja hozzá a API Management által használt Azure-beli virtuális hálózatot a Storage-fiók tűzfal-beállításához. Ezután használhatja a API Management műveletet vagy a HTTP-műveletet az Azure Storage API-k meghívásához. Ha azonban ezt a lehetőséget választja, a hitelesítési folyamatot saját kezűleg kell kezelnie. További információ: [Simple Enterprise Integration Architecture](/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
-

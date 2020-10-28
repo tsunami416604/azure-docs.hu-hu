@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7393c36099795bbc989ae4b690100284d53f08e5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323706"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678392"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Impact Analysis Application Insights
 
-A hatás azt elemzi, hogy a betöltési idő és más tulajdonságok milyen hatással vannak az alkalmazás különböző részeinek konverziós arányára. Pontosabban fogalmazva azt észleli, hogy egy **oldal nézet**, egy **egyéni esemény**vagy **kérelem** **bármely dimenziója** hatással van-e egy másik **oldal** vagy **egyéni esemény**használatára. 
+A hatás azt elemzi, hogy a betöltési idő és más tulajdonságok milyen hatással vannak az alkalmazás különböző részeinek konverziós arányára. Pontosabban fogalmazva azt észleli, hogy egy **oldal nézet** , egy **egyéni esemény** vagy **kérelem** **bármely dimenziója** hatással van-e egy másik **oldal** vagy **egyéni esemény** használatára. 
 
 ![Hatás eszköz](./media/usage-impact/0001-impact.png)
 
@@ -36,10 +36,10 @@ A teljesítmény elemzése azonban csak a hatások egy részhalmaza lehet. Mivel
 
 Ha szeretné megkezdeni a kérdések megválaszolását a hatás eszközzel, válassza ki a kezdeti oldal nézetet, az egyéni eseményt vagy a kérelmet.
 
-![Hatás eszköz](./media/usage-impact/0002-dropdown.png)
+![Képernyőkép, amely azt mutatja, hogy hol válassza ki a kezdeti oldal nézetet, az egyéni eseményt vagy a kérést.](./media/usage-impact/0002-dropdown.png)
 
 1. Válassza ki az oldal nézetét az **oldal nézet** legördülő menüjéből.
-2. Hagyja meg az **elemzés módját, hogy** a legördülő lista az alapértelmezett **időtartamot** válassza (ebben **a kontextusban az** **oldal betöltési ideje**alias).
+2. Hagyja meg az **elemzés módját, hogy** a legördülő lista az alapértelmezett **időtartamot** válassza (ebben **a kontextusban az** **oldal betöltési ideje** alias).
 3. A legördülő lista **használatának hatásaként** válassza ki az egyéni eseményt. Az eseménynek meg kell felelnie az 1. lépésben kiválasztott oldal nézet felhasználói felületi elemének.
 
 ![Az eredmények képernyőképe](./media/usage-impact/0003-results.png)
@@ -65,26 +65,26 @@ A motorháztető alatt az Impact eszköz a [Pearson korrelációs együtthatóra
 
 A Impact Analysis működésének alapvető részletezése a következő:
 
-Legyen _a_ = az első legördülő listában kiválasztott fő oldal nézet/egyéni esemény/kérelem. (**Az oldal nézethez**).
+Legyen _a_ = az első legördülő listában kiválasztott fő oldal nézet/egyéni esemény/kérelem. ( **Az oldal nézethez** ).
 
-Legyen _B_ = a másodlagos lap nézete/egyéni kiválasztott esemény (**a használata hatással**van).
+Legyen _B_ = a másodlagos lap nézete/egyéni kiválasztott esemény ( **a használata hatással** van).
 
-A hatás a kiválasztott időtartományban lévő felhasználók összes munkamenetének mintáját vizsgálja. Minden egyes munkamenet esetében az _a_egyes előfordulásait keresi.
+A hatás a kiválasztott időtartományban lévő felhasználók összes munkamenetének mintáját vizsgálja. Minden egyes munkamenet esetében az _a_ egyes előfordulásait keresi.
 
 A munkamenetek két különböző típusú _almunkamenetre_ bonthatók, a következő két feltétel egyike alapján:
 
-- Az átalakított almunkamenetek egy _b_ eseménnyel végződő munkamenetből állnak, és minden _olyan_ eseményt foglalnak magukban, amelyek a _b_előtt történnek.
-- A nem konvertált almunkamenet akkor következik be, amikor _az összes művelet a_ _B_terminál nélkül történik.
+- Az átalakított almunkamenetek egy _b_ eseménnyel végződő munkamenetből állnak, és minden _olyan_ eseményt foglalnak magukban, amelyek a _b_ előtt történnek.
+- A nem konvertált almunkamenet akkor következik be, amikor _az összes művelet a_ _B_ terminál nélkül történik.
 
-A hatás végső kiszámításának módja attól függően változik, hogy metrika vagy dimenzió alapján elemezzük-e a rendszer. A metrikák esetében az összes _egy_almunkamenetben átlaga. Míg a dimenziók esetében az egyes értékek értéke _1/N_ értékkel _járul hozzá a_ _B_ -hez rendelt értékhez, ahol _N_ az almunkamenetben _lévők_száma.
+A hatás végső kiszámításának módja attól függően változik, hogy metrika vagy dimenzió alapján elemezzük-e a rendszer. A metrikák esetében az összes _egy_ almunkamenetben átlaga. Míg a dimenziók esetében az egyes értékek értéke _1/N_ értékkel _járul hozzá a_ _B_ -hez rendelt értékhez, ahol _N_ az almunkamenetben _lévők_ száma.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](./api-custom-events-metrics.md#trackevent) vagy [oldalletöltések](./api-custom-events-metrics.md#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)
-    - [Felhasználókövetés](usage-flows.md)
+    - [Felhasználói folyamatok](usage-flows.md)
     - [Munkafüzetek](../platform/workbooks-overview.md)
     - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
 

@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89280179"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678169"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory átmenő hitelesítés: gyors útmutató
 
@@ -72,9 +72,9 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben.
      | **8080** (nem kötelező) | A hitelesítési ügynökök tíz percenként jelentést készítenek az állapotukról az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. A 8080-es port _nem_ használatos a felhasználói bejelentkezésekhez. |
      
      Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
-   - Ha a tűzfal vagy a proxy engedélyezi a DNS-engedélyezési lehetőséget, vegyen fel kapcsolatokat a ** \* . msappproxy.net** és a ** \* . servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
+   - Ha a tűzfal vagy a proxy engedélyezi a DNS-engedélyezési lehetőséget, vegyen fel kapcsolatokat a **\* . msappproxy.net** és a **\* . servicebus.Windows.net** . Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
    - A hitelesítési ügynököknek hozzá kell férniük a **login.Windows.net** és a **login.microsoftonline.com** a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
-   - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **mscrl.microsoft.com:80**, **CRL.microsoft.com:80**, **OCSP.msocsp.com:80**és **www \. Microsoft.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
+    - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **crl3.Digicert.com:80** , **crl4.Digicert.com:80** , **ocsp.digicert.com:80** , **www \. d-trust.net:80** , **root-C3-Ca2-2009.OCSP.d-Trust.net:80** , **CRL.microsoft.com:80** , **oneocsp.microsoft.com:80** és **OCSP.msocsp.com:80** . Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Government a felhő előfeltételei
 Mielőtt engedélyezné az átmenő hitelesítés engedélyezését Azure AD Connect a 2. lépéssel, töltse le az PTA ESP-ügynök legújabb kiadását a Azure Portal.  Győződjön meg arról, hogy az ügynök verziója **1.5.1742.0.** kell fordítani.  Az ügynök ellenőrzéséhez lásd: a [hitelesítési ügynökök frissítése](how-to-connect-pta-upgrade-preview-authentication-agents.md)
@@ -88,11 +88,11 @@ Az ügynök legújabb kiadásának letöltése után folytassa az alábbi utasí
 >[!IMPORTANT]
 >Az átmenő hitelesítést engedélyezheti a Azure AD Connect elsődleges vagy átmeneti kiszolgálón. Erősen ajánlott engedélyezni az elsődleges kiszolgálóról. Ha a jövőben egy Azure AD Connect átmeneti kiszolgálót állít be, továbbra is az átmenő hitelesítést **kell** választania bejelentkezési lehetőségként; egy másik lehetőség választása **letiltja** az átmenő hitelesítést a bérlőn, és felülbírálja a beállítást az elsődleges kiszolgálón.
 
-Ha első alkalommal telepíti a Azure AD Connect, válassza az [egyéni telepítési útvonalat](how-to-connect-install-custom.md). A **felhasználói bejelentkezés** lapon válassza az **áteresztő hitelesítés** lehetőséget a **bejelentkezési módszerként**. A sikeres befejezést követően az áteresztő hitelesítési ügynök ugyanarra a kiszolgálóra van telepítve, mint a Azure AD Connect. Emellett az áteresztő hitelesítés funkció engedélyezve van a bérlőn.
+Ha első alkalommal telepíti a Azure AD Connect, válassza az [egyéni telepítési útvonalat](how-to-connect-install-custom.md). A **felhasználói bejelentkezés** lapon válassza az **áteresztő hitelesítés** lehetőséget a **bejelentkezési módszerként** . A sikeres befejezést követően az áteresztő hitelesítési ügynök ugyanarra a kiszolgálóra van telepítve, mint a Azure AD Connect. Emellett az áteresztő hitelesítés funkció engedélyezve van a bérlőn.
 
 ![Azure AD Connect: felhasználói bejelentkezés](./media/how-to-connect-pta-quick-start/sso3.png)
 
-Ha már telepítette Azure AD Connect az [expressz telepítés](how-to-connect-install-express.md) vagy az [egyéni telepítési](how-to-connect-install-custom.md) útvonal használatával, jelölje be a **felhasználói bejelentkezési feladat módosítása** Azure ad Connecton lehetőséget, majd kattintson a **tovább**gombra. Ezután válassza az **átmenő hitelesítés** lehetőséget a bejelentkezési módszerként. A sikeres befejezést követően az áteresztő hitelesítési ügynök ugyanarra a kiszolgálóra van telepítve, mint a Azure AD Connect, és a szolgáltatás engedélyezve van a bérlőn.
+Ha már telepítette Azure AD Connect az [expressz telepítés](how-to-connect-install-express.md) vagy az [egyéni telepítési](how-to-connect-install-custom.md) útvonal használatával, jelölje be a **felhasználói bejelentkezési feladat módosítása** Azure ad Connecton lehetőséget, majd kattintson a **tovább** gombra. Ezután válassza az **átmenő hitelesítés** lehetőséget a bejelentkezési módszerként. A sikeres befejezést követően az áteresztő hitelesítési ügynök ugyanarra a kiszolgálóra van telepítve, mint a Azure AD Connect, és a szolgáltatás engedélyezve van a bérlőn.
 
 ![Azure AD Connect: felhasználói bejelentkezés módosítása](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
@@ -105,9 +105,9 @@ Kövesse ezeket az utasításokat annak ellenőrzéséhez, hogy az áteresztő h
 
 1. Jelentkezzen be a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival.
 2. A bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget.
-3. Válassza a **Azure ad Connect**lehetőséget.
-4. Győződjön meg arról, hogy az **átmenő hitelesítés** funkció **engedélyezve**állapotú.
-5. Válassza **az átmenő hitelesítés**lehetőséget. Az **átmenő hitelesítés** panel felsorolja azokat a kiszolgálókat, amelyeken a hitelesítési ügynökök telepítve vannak.
+3. Válassza a **Azure ad Connect** lehetőséget.
+4. Győződjön meg arról, hogy az **átmenő hitelesítés** funkció **engedélyezve** állapotú.
+5. Válassza **az átmenő hitelesítés** lehetőséget. Az **átmenő hitelesítés** panel felsorolja azokat a kiszolgálókat, amelyeken a hitelesítési ügynökök telepítve vannak.
 
 ![Azure Active Directory felügyeleti központ: Azure AD Connect panel](./media/how-to-connect-pta-quick-start/pta7.png)
 
@@ -134,7 +134,7 @@ Ennek elkezdéséhez kövesse az alábbi utasításokat a hitelesítési ügynö
 
 1. A hitelesítési ügynök legújabb verziójának (1.5.193.0 vagy újabb verzió) letöltéséhez jelentkezzen be a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival.
 2. A bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget.
-3. Válassza a **Azure ad Connect**lehetőséget, válassza az **átmenő hitelesítés**lehetőséget, majd válassza az **ügynök letöltése**lehetőséget.
+3. Válassza a **Azure ad Connect** lehetőséget, válassza az **átmenő hitelesítés** lehetőséget, majd válassza az **ügynök letöltése** lehetőséget.
 4. Válassza a **feltételek elfogadása & Letöltés** gombot.
 
 ![Azure Active Directory felügyeleti központ: hitelesítési ügynök letöltése gomb](./media/how-to-connect-pta-quick-start/pta9.png)
@@ -166,7 +166,7 @@ Másodszor, létrehozhat és futtathat felügyelet nélküli telepítési paranc
   ```
 
 >[!IMPORTANT]
->Ha egy hitelesítési ügynök telepítve van egy virtuális gépen, a virtuális gép nem telepíthető másik hitelesítési ügynök beállítására. Ez a metódus nem **támogatott**.
+>Ha egy hitelesítési ügynök telepítve van egy virtuális gépen, a virtuális gép nem telepíthető másik hitelesítési ügynök beállítására. Ez a metódus nem **támogatott** .
 
 ## <a name="step-5-configure-smart-lockout-capability"></a>5. lépés: az intelligens zárolási képesség konfigurálása
 

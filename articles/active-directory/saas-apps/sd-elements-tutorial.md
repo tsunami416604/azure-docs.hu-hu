@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 323d6324bc99028a3df4cb9cada133ad8cd990aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4442d7cb83ef28b1483c5156e2655deb793b3b16
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543261"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678424"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció SD-elemekkel
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhat SD-elemeket Azure Ac
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az SD-elemekbe az Azure AD-fiókkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,15 +47,15 @@ Az SD-elemek Azure AD-integrációjának konfigurálásához SD-elemeket kell ho
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be az **SD-elemek** kifejezést a keresőmezőbe.
 1. Válassza ki az **SD-elemeket** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sd-elements"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése SD-elemekhez
 
-Konfigurálja és tesztelje az Azure AD SSO-t SD-elemekkel egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó számára az SD-elemekben.
+Konfigurálja és tesztelje az Azure AD SSO-t SD-elemekkel egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó számára az SD-elemekben.
 
 Az Azure AD SSO SD-elemekkel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -70,8 +70,8 @@ Az Azure AD SSO SD-elemekkel való konfigurálásához és teszteléséhez hajts
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **SD-elemek** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **SD-elemek** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -91,7 +91,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az SD-elemek alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név |  Forrás attribútum|
+    | Name (Név) |  Forrás attribútum|
     | --- | --- |
     | e-mail |User. mail |
     | FirstName |User. givenName |
@@ -109,25 +109,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az SD-elemek elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **SD-elemek elemet**.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **SD-elemek elemet** .
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be az SD-elemek bérlője rendszergazdaként.
 
-1. A felső menüben kattintson a **rendszer**, majd az **egyszeri bejelentkezés**lehetőségre.
+1. A felső menüben kattintson a **rendszer** , majd az **egyszeri bejelentkezés** lehetőségre.
 
     ![Egyetlen Sign-On konfigurálása](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
@@ -149,11 +149,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Egyetlen Sign-On konfigurálása](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
 
-    a. **SSO-típusként**válassza az **SAML**lehetőséget.
+    a. **SSO-típusként** válassza az **SAML** lehetőséget.
 
-    b. Az **Identity Provider entitás-azonosító** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt.
+    b. Az **Identity Provider entitás-azonosító** szövegmezőbe illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portalból másolt.
 
-    c. Az **Identitáskezelés egyetlen Sign-On szolgáltatás** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
+    c. Az **Identitáskezelés egyetlen Sign-On szolgáltatás** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt.
 
     d. Kattintson a **Mentés** gombra.
 
@@ -165,11 +165,11 @@ Ennek a szakasznak a célja, hogy egy B. Simon nevű felhasználót SD-elemekben
 
 1. A webböngésző ablakban jelentkezzen be az SD-elemek vállalati webhelyre rendszergazdaként.
 
-1. A felső menüben kattintson a **felhasználói kezelés**, majd a **felhasználók**lehetőségre.
+1. A felső menüben kattintson a **felhasználói kezelés** , majd a **felhasználók** lehetőségre.
 
     ![SD-elemek tesztelési felhasználójának létrehozása](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
-1. Kattintson az **új felhasználó hozzáadása**lehetőségre.
+1. Kattintson az **új felhasználó hozzáadása** lehetőségre.
 
     ![SD-elemek tesztelési felhasználójának létrehozása](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
@@ -181,24 +181,24 @@ Ennek a szakasznak a célja, hogy egy B. Simon nevű felhasználót SD-elemekben
 
     b. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét (például **B).**
 
-    c. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
+    c. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
-    d. **Szerepkörként**válassza a **felhasználó**lehetőséget.
+    d. **Szerepkörként** válassza a **felhasználó** lehetőséget.
 
-    e. Kattintson a **felhasználó létrehozása**gombra.
+    e. Kattintson a **felhasználó létrehozása** gombra.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a SD-elemek csempére kattint, akkor automatikusan be kell jelentkeznie azon SD-elemekre, amelyekhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a SD-elemek csempére kattint, akkor automatikusan be kell jelentkeznie azon SD-elemekre, amelyekhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
 - [SD-elemek kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

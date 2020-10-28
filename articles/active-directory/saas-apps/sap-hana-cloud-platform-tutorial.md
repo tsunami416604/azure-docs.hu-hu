@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be3634ea051c99acf7b706da266179c93a1be861
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546763"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Oktatóanyag: Azure Active Directory integráció az SAP Cloud platformmal
 
@@ -27,7 +27,7 @@ Az SAP Cloud platform és az Azure AD integrálásával a következő előnyöke
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az SAP Cloud platformba (egyszeri bejelentkezés) az Azure AD-fiókkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -37,7 +37,7 @@ Az Azure AD-integráció SAP Cloud platformmal való konfigurálásához a köve
 * Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
 * SAP Cloud platform egyszeri bejelentkezésre alkalmas előfizetés
 
-Az oktatóanyag elvégzése után az SAP Cloud platformhoz rendelt Azure AD-felhasználók egyszeri bejelentkezést végezhetnek az alkalmazásba a [hozzáférési panel bevezetésének](../user-help/active-directory-saas-access-panel-introduction.md)használatával.
+Az oktatóanyag elvégzése után az SAP Cloud platformhoz rendelt Azure AD-felhasználók egyszeri bejelentkezést végezhetnek az alkalmazásba a [hozzáférési panel bevezetésének](../user-help/my-apps-portal-end-user-access.md)használatával.
 
 >[!IMPORTANT]
 >Az egyszeri bejelentkezés teszteléséhez telepítenie kell egy alkalmazást, vagy elő kell fizetnie egy alkalmazásra az SAP Cloud platform-fiókjában. Ebben az oktatóanyagban egy alkalmazást helyezünk üzembe a fiókban.
@@ -67,13 +67,13 @@ Az SAP Cloud platform Azure AD-integrációjának konfigurálásához hozzá kel
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **SAP Cloud platform**kifejezést, válassza az **SAP Cloud platform** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **SAP Cloud platform** kifejezést, válassza az **SAP Cloud platform** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![SAP Cloud platform az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az SAP Cloud platformon konfigurálhatja és tesztelheti egy **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az SAP Cloud platformon konfigurálhatja és tesztelheti egy **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az SAP Cloud platformon található kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés SAP Cloud platformmal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -91,7 +91,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)az **SAP Cloud platform** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **SAP Cloud platform** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -148,21 +148,21 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
    
     ![Bizalom](./media/sap-hana-cloud-platform-tutorial/ic790800.png "Bizalom")
 
-3. A megbízhatósági kezelés szakaszban a **helyi szolgáltató**területen hajtsa végre a következő lépéseket:
+3. A megbízhatósági kezelés szakaszban a **helyi szolgáltató** területen hajtsa végre a következő lépéseket:
 
     ![Megbízhatóság kezelése](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Megbízhatóság kezelése")
    
     a. Kattintson a **Szerkesztés** gombra.
 
-    b. A **konfiguráció típusa**mezőben válassza az **Egyéni**lehetőséget.
+    b. A **konfiguráció típusa** mezőben válassza az **Egyéni** lehetőséget.
 
-    c. A **helyi szolgáltató neve**beállításnál hagyja meg az alapértelmezett értéket. Másolja ezt az értéket, és illessze be az SAP Cloud platformhoz készült Azure AD-konfiguráció **azonosító** mezőjébe.
+    c. A **helyi szolgáltató neve** beállításnál hagyja meg az alapértelmezett értéket. Másolja ezt az értéket, és illessze be az SAP Cloud platformhoz készült Azure AD-konfiguráció **azonosító** mezőjébe.
 
-    d. Az **aláíró kulcs** és az **aláíró tanúsítvány** kulcspár létrehozásához kattintson a kulcspár **létrehozása**lehetőségre.
+    d. Az **aláíró kulcs** és az **aláíró tanúsítvány** kulcspár létrehozásához kattintson a kulcspár **létrehozása** lehetőségre.
 
-    e. **Elsődleges propagálásként**válassza a **Letiltva**lehetőséget.
+    e. **Elsődleges propagálásként** válassza a **Letiltva** lehetőséget.
 
-    f. **Kényszerített hitelesítésként**válassza a **Letiltva**lehetőséget.
+    f. **Kényszerített hitelesítésként** válassza a **Letiltva** lehetőséget.
 
     : Kattintson a **Mentés** gombra.
 
@@ -170,13 +170,13 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
    
     ![Metaadatok beolvasása](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Metaadatok beolvasása")
 
-    a. Töltse le az SAP Cloud platform metaadat-fájlját a **metaadatok lekérése**elemre kattintva.
+    a. Töltse le az SAP Cloud platform metaadat-fájlját a **metaadatok lekérése** elemre kattintva.
 
     b. Nyissa meg a letöltött SAP Cloud platform metadata XML-fájlt, és keresse meg a **ns3: AssertionConsumerService** címkét.
  
     c. Másolja a **Location** attribútum értékét, majd illessze be az SAP Cloud platformhoz készült Azure ad **-konfiguráció válasz URL** mezőjébe.
 
-5. Kattintson a **megbízható identitás-szolgáltató** fülre, majd a **megbízható identitás-szolgáltató hozzáadása**lehetőségre.
+5. Kattintson a **megbízható identitás-szolgáltató** fülre, majd a **megbízható identitás-szolgáltató hozzáadása** lehetőségre.
    
     ![Megbízhatóság kezelése](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Megbízhatóság kezelése")
    
@@ -190,16 +190,16 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
     ![Megbízhatóság kezelése](./media/sap-hana-cloud-platform-tutorial/ic793932.png "Megbízhatóság kezelése")
     
     >[!NOTE]
-    >A metaadat-fájl feltöltése után a rendszer automatikusan kitölti az **egyszeri bejelentkezési URL-cím**, az **egyszeri KIJELENTKEZÉSI URL-cím**és az **aláíró tanúsítvány** értékét.
+    >A metaadat-fájl feltöltése után a rendszer automatikusan kitölti az **egyszeri bejelentkezési URL-cím** , az **egyszeri KIJELENTKEZÉSI URL-cím** és az **aláíró tanúsítvány** értékét.
     > 
      
 7. Kattintson az **Attribútumok** fülre.
 
 8. Az **attribútumok** lapon hajtsa végre a következő lépést:
     
-    ![Attribútumok](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Attribútumok") 
+    ![Jellemzők](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Jellemzők") 
 
-    a. Kattintson a **Assertion-Based attribútum hozzáadása**lehetőségre, majd adja hozzá a következő kijelentési attribútumokat:
+    a. Kattintson a **Assertion-Based attribútum hozzáadása** lehetőségre, majd adja hozzá a következő kijelentési attribútumokat:
        
     | Érvényesítési attribútum | Elsődleges attribútum |
     | --- | --- |
@@ -221,15 +221,15 @@ Választható lépésként konfigurálhatja az Azure Active Directory identitás
 
 A csoportok használata az SAP Cloud platformon lehetővé teszi, hogy dinamikusan rendeljen hozzá egy vagy több felhasználót egy vagy több szerepkörhöz az SAP Cloud platform-alkalmazásokban, az SAML 2,0-utasítás attribútumainak értékei alapján. 
 
-Ha például a "*Szerződés = ideiglenes*" attribútumot tartalmazza, az összes érintett felhasználót fel kell venni az "*ideiglenes*" csoportba. Az "*ideiglenes*" csoport egy vagy több olyan szerepkört tartalmazhat, amelyek egy vagy több, az SAP Cloud platform-fiókban üzembe helyezett alkalmazásból származnak.
+Ha például a " *Szerződés = ideiglenes* " attribútumot tartalmazza, az összes érintett felhasználót fel kell venni az " *ideiglenes* " csoportba. Az " *ideiglenes* " csoport egy vagy több olyan szerepkört tartalmazhat, amelyek egy vagy több, az SAP Cloud platform-fiókban üzembe helyezett alkalmazásból származnak.
  
-Ha egyszerre több felhasználót szeretne hozzárendelni egy vagy több szerepkörhöz az SAP Cloud platform-fiókban, használja az állítási alapú csoportokat. Ha csak egy vagy több felhasználót szeretne hozzárendelni bizonyos szerepkörökhöz, azt javasoljuk, hogy közvetlenül az SAP Cloud platform cockpit "**engedélyek**" lapján Rendeljen hozzájuk.
+Ha egyszerre több felhasználót szeretne hozzárendelni egy vagy több szerepkörhöz az SAP Cloud platform-fiókban, használja az állítási alapú csoportokat. Ha csak egy vagy több felhasználót szeretne hozzárendelni bizonyos szerepkörökhöz, azt javasoljuk, hogy közvetlenül az SAP Cloud platform cockpit " **engedélyek** " lapján Rendeljen hozzájuk.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -248,21 +248,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az SAP Cloud platform elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **SAP Cloud platform**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **SAP Cloud platform** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza ki az **SAP Cloud platform**elemet.
+2. Az alkalmazások listában írja be és válassza ki az **SAP Cloud platform** elemet.
 
     ![Az SAP Cloud platform hivatkozása az alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -288,7 +288,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az SAP Cloud platformba,
    
     ![Engedélyek](./media/sap-hana-cloud-platform-tutorial/ic790805.png "Engedélyek")
    
-    a. Kattintson az **Engedélyezés**elemre.
+    a. Kattintson az **Engedélyezés** elemre.
 
     b. Kattintson a **felhasználók** fülre.
 
@@ -302,13 +302,12 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az SAP Cloud platformba,
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a SAP Cloud platform csempére kattint, automatikusan be kell jelentkeznie az SAP Cloud platformra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a SAP Cloud platform csempére kattint, automatikusan be kell jelentkeznie az SAP Cloud platformra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

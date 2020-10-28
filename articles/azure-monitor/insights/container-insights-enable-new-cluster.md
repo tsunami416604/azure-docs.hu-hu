@@ -3,13 +3,13 @@ title: Új Azure Kubernetes Service-(ak-) fürt figyelése | Microsoft Docs
 description: Megtudhatja, hogyan engedélyezheti a figyelést egy új Azure Kubernetes Service (ak) fürthöz a Azure Monitor for containers előfizetéssel.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320323"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735076"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Új Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
@@ -34,12 +34,12 @@ Ha [új AK-fürtöt helyez üzembe a Terraform használatával](/azure/developer
 >[!NOTE]
 >Ha a Terraform használata mellett dönt, akkor a Terraform Azure RM Provider 1.17.0 vagy újabb verzióját kell futtatnia.
 
-Ha Azure Monitor szeretne hozzáadni a tárolóhoz a munkaterülethez, tekintse meg a [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) és a profil befejezéséhez a [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) , majd a **oms_agent**megadása című témakört. 
+Ha Azure Monitor szeretne hozzáadni a tárolóhoz a munkaterülethez, tekintse meg a [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) és a profil befejezéséhez a [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) , majd a **oms_agent** megadása című témakört. 
 
 Miután engedélyezte a figyelést, és az összes konfigurációs feladat sikeresen befejeződött, két módon figyelheti a fürt teljesítményét:
 
 * Közvetlenül az AK-fürtben válassza az **állapot** lehetőséget a bal oldali ablaktáblán.
-* A kiválasztott fürt AK-fürt lapjának **figyelés tároló-bepillantások** csempéjét választva. Azure Monitor a bal oldali ablaktáblán válassza az **állapot**lehetőséget. 
+* A kiválasztott fürt AK-fürt lapjának **figyelés tároló-bepillantások** csempéjét választva. Azure Monitor a bal oldali ablaktáblán válassza az **állapot** lehetőséget. 
 
   ![A tárolók Azure Monitor kiválasztásának lehetőségei az AK-ban](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
@@ -113,7 +113,7 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 

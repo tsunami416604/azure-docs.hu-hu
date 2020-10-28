@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5094bd4aa5ac68c24f284cfb74e410fbdf089af7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536239"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677184"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Az OCR Docker-tárolók olvasásának konfigurálása
 
@@ -90,19 +90,19 @@ A Computer Vision tárolók nem használnak bemeneti vagy kimeneti csatlakoztat�
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](computer-vision-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Választható| Name (Név) | Adattípus | Leírás |
+|Nem kötelező| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | Computer Vision tárolók nem használják ezt.|
-|Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nem kötelező| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa Docker-futtatási parancsokra
 
 Az alábbi példák a konfigurációs beállítások segítségével szemléltetik a parancsok írását és használatát `docker run` .  A rendszer futtatása után a tároló továbbra is futni fog, amíg [le nem állítja](computer-vision-how-to-install-containers.md#stop-the-container) .
 
-* **Vonal-folytatási karakter**: a következő részben lévő Docker-parancsok a háttér perjelet használják `\` , mint a sor folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. 
-* **Argumentumok sorrendje**: ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
+* **Vonal-folytatási karakter** : a következő részben lévő Docker-parancsok a háttér perjelet használják `\` , mint a sor folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. 
+* **Argumentumok sorrendje** : ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
 
-Cserélje le a {_argument_name_} értéket a saját értékeire:
+Cserélje le a { _argument_name_ } értéket a saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
@@ -138,29 +138,6 @@ ApiKey={API_KEY}
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
 mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-Logging:Console:LogLevel:Default=Information
-```
-
-# <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
-
-### <a name="basic-example"></a>Alapszintű példa
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-### <a name="logging-example"></a>Példa naplózásra 
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

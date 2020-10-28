@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64bef8a1cd4353ed9602c36cf728a0d727458251
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444911"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675136"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Riasztások létrehozása a Azure SQL Database és az Azure szinapszis Analytics számára a Azure Portal használatával
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -45,7 +45,7 @@ A riasztási szabályokkal kapcsolatos információkat a
 * [Az Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Parancssori felület (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Monitor REST API](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Riasztási szabály létrehozása metrika esetén a Azure Portal
 
@@ -57,14 +57,14 @@ A riasztási szabályokkal kapcsolatos információkat a
 3. Kattintson az **új riasztási szabály** gombra a **szabály létrehozása** lap megnyitásához.
   ![Szabály létrehozása](./media/alerts-insights-configure-portal/create-rule.png)
 
-4. A **feltétel** szakaszban kattintson a **Hozzáadás**gombra.
+4. A **feltétel** szakaszban kattintson a **Hozzáadás** gombra.
   ![Feltétel meghatározása](./media/alerts-insights-configure-portal/create-rule.png)
 5. A **jel logikai beállítása** lapon válasszon ki egy jelet.
   ![Jel kiválasztása](./media/alerts-insights-configure-portal/select-signal.png)
-6. Ha kiválasztott egy jelet, például a **CPU-százalékot**, megjelenik a **jel logikai beállítása** lap.
+6. Ha kiválasztott egy jelet, például a **CPU-százalékot** , megjelenik a **jel logikai beállítása** lap.
   ![Jellogika konfigurálása](./media/alerts-insights-configure-portal/configure-signal-logic.png)
-7. Ezen a lapon konfigurálhatja a küszöbértéket, az operátort, az összesítési típust, a küszöbértéket, az Összesítés részletességét és a kiértékelés gyakoriságát. Ezután kattintson a **kész**gombra.
-8. A **szabály létrehozása**lapon válasszon ki egy meglévő **műveleti csoportot** , vagy hozzon létre egy új csoportot. A műveleti csoport lehetővé teszi, hogy meghatározza a riasztási feltétel bekövetkezésekor végrehajtandó műveletet.
+7. Ezen a lapon konfigurálhatja a küszöbértéket, az operátort, az összesítési típust, a küszöbértéket, az Összesítés részletességét és a kiértékelés gyakoriságát. Ezután kattintson a **kész** gombra.
+8. A **szabály létrehozása** lapon válasszon ki egy meglévő **műveleti csoportot** , vagy hozzon létre egy új csoportot. A műveleti csoport lehetővé teszi, hogy meghatározza a riasztási feltétel bekövetkezésekor végrehajtandó műveletet.
   ![Műveleti csoport definiálása](./media/alerts-insights-configure-portal/action-group.png)
 
 9. Adja meg a szabály nevét, adjon meg egy opcionális leírást, válassza ki a szabály súlyossági szintjét, adja meg, hogy engedélyezi-e a szabályt a szabályok létrehozásakor, majd kattintson a **szabály riasztás létrehozása** elemre a metrikai szabály riasztásának létrehozásához.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 168b3d51b66078b3d4c2e113711d3124820dd6bd
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876515"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677789"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Oktatóanyag – webalkalmazás migrálása a Bing Maps szolgáltatásból
 
@@ -53,7 +53,7 @@ Az alábbi táblázat a Bing Maps V8 JavaScript SDK legfontosabb API-funkcióit 
 | Geocoder szolgáltatás         | ✓                                                                                      |
 | Directions szolgáltatás       | ✓                                                                                      |
 | Távolsági mátrix szolgáltatás  | ✓                                                                                      |
-| Térbeli adatszolgáltatás     | N.A.                                                                                    |
+| Térbeli adatszolgáltatás     | N/A                                                                                    |
 | Satellite/antenna-képek | ✓                                                                                      |
 | Madarak szemének képei         | Tervezve                                                                                |
 | Utcai-képek       | Tervezve                                                                                |
@@ -668,7 +668,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **További források**
 
--   [Sorok hozzáadása a térképhez](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-lines-to-the-map)
+-   [Sorok hozzáadása a térképhez](https://docs.microsoft.com/azure/azure-maps/map-add-line-layer)
 -   [Vonal rétegének beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
 -   [Adatvezérelt stíluskifejezések használata](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
 
@@ -744,7 +744,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **További források**
 
--   [Sokszög hozzáadása a térképhez](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-polygon-to-the-map)
+-   [Sokszög hozzáadása a térképhez](https://docs.microsoft.com/azure/azure-maps/map-add-shape#use-a-polygon-layer)
 -   [Kör hozzáadása a térképhez](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-circle-to-the-map)
 -   [Sokszög réteg beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 -   [Vonal rétegének beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
@@ -1467,7 +1467,7 @@ A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a köve
 
 **Utána: Azure Maps**
 
-Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbeli adatformátumok könnyen integrálhatók a [térbeli IO modul](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)használatával. Ez a modul a térbeli adatok olvasását és írását is magában foglalja, valamint egy egyszerű adatréteget is tartalmaz, amely könnyen megjelenítheti ezeket a térbeli adatformátumokból származó adatok bármelyikét. A térbeli adatfájlokban lévő információk beolvasásához adjon meg egy URL-címet vagy egy nyers adat karakterláncként vagy blobként a  `atlas.io.read`   függvénybe. Ezzel visszaadja a fájl összes elemzett adatait, amelyet aztán hozzáadhat a térképhez. A KML egy kicsit összetettebb, mint a legtöbb térbeli adatformátum, mivel sokkal több stílussal kapcsolatos információt tartalmaz. Az  `SpatialDataLayer`   osztály támogatja a stílusok renderelési többségét, azonban a szolgáltatásba való betöltés előtt az ikonokat be kell tölteni a térképbe, és a rendszernek külön fel kell vennie a terepeket a térképbe. Ha egy URL-címen keresztül tölt be egy adatkészletet, azt egy CORs-kompatibilis végponton kell üzemeltetni, vagy a proxy szolgáltatást az olvasási függvénynek kell átadnia.
+Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbeli adatformátumok könnyen integrálhatók a [térbeli IO modul](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)használatával. Ez a modul a térbeli adatok olvasását és írását is magában foglalja, valamint egy egyszerű adatréteget is tartalmaz, amely könnyen megjelenítheti ezeket a térbeli adatformátumokból származó adatok bármelyikét. A térbeli adatfájlokban lévő információk beolvasásához adjon meg egy URL-címet vagy egy nyers adat karakterláncként vagy blobként a `atlas.io.read` függvénybe. Ezzel visszaadja a fájl összes elemzett adatait, amelyet aztán hozzáadhat a térképhez. A KML egy kicsit összetettebb, mint a legtöbb térbeli adatformátum, mivel sokkal több stílussal kapcsolatos információt tartalmaz. Az `SpatialDataLayer` osztály támogatja a stílusok renderelési többségét, azonban a szolgáltatásba való betöltés előtt az ikonokat be kell tölteni a térképbe, és a rendszernek külön fel kell vennie a terepeket a térképbe. Ha egy URL-címen keresztül tölt be egy adatkészletet, azt egy CORs-kompatibilis végponton kell üzemeltetni, vagy a proxy szolgáltatást az olvasási függvénynek kell átadnia.
 
 ```html
 <!DOCTYPE html>

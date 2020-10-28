@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 83ae2fdea2ffe586a626f8a45cba74a22c07ae7b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3151da4375c440bec44523711448149f51440d5c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87102034"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676536"
 ---
 # <a name="setting-up-access-for-azure-dev-tools"></a>Az Azure fejlesztői eszközök hozzáférésének beállítása
 
@@ -30,9 +30,9 @@ Ha hozzáférést szeretne kérni a Visual Studio Subscriptionhoz, ezt a [felüg
 ## <a name="for-students-faculty-and-administrators"></a>Tanulók, oktatók és rendszergazdák számára
 Az Azure dev Tools Studences az [Education-központon](https://aka.ms/devtoolsforteaching)keresztül érheti el.
 
-A tanulók és az oktatók egyaránt hozzáférhetnek a szoftver letöltési előnyeihez a Education-központon keresztül. A Education-központ a Azure Portalon belül található, és a tanulók számára könnyű hozzáférést biztosít a teljes katalógushoz, valamint a teljes [Microsoft Learn](https://docs.microsoft.com/learn/) katalógushoz.
+A tanulók és az oktatók egyaránt hozzáférhetnek a szoftver letöltési előnyeihez a Education-központon keresztül. A Education-központ a Azure Portalon belül található, és a tanulók számára könnyű hozzáférést biztosít a teljes katalógushoz, valamint a teljes [Microsoft Learn](/learn/) katalógushoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Tanulói fiókok kezelése](manage-students.md)
 
 - [Támogatási lehetőségek](program-support.md)

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 14360ab7668248f39c8ad0916eb964ffe11f7959
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331294"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677912"
 ---
 # <a name="vm-certification-troubleshooting"></a>Virtuális gépek tanúsításával kapcsolatos hibaelhárítás
 
@@ -29,13 +29,16 @@ Ha olyan kérést küld, amely a rendszerkép frissítéssel való újbóli köz
 
 Ez a hiba akkor fordul elő, ha egy másik közzétevőhöz tartozó alaprendszerképet használ, és frissítette a rendszerképet. Ebben az esetben a rendszerkép közzététele nem engedélyezett.
 
-A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről, és végezze el a módosítását. További információért tekintse át a következő cikkeket:
+A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről, és végezze el a módosítását. További információkat az következő cikkekben talál:
 
 - [Linux-rendszerképek](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows-rendszerképek](azure-vm-create-using-approved-base.md)
 
 > [!Note]
 > Ha az Azure Marketplace-ről nem készített linuxos alapképet használ, az első partíciót 2048 KB-ra ellensúlyozhatja. Ez lehetővé teszi, hogy a formázatlan terület felhasználható legyen új számlázási adatok hozzáadására, és lehetővé teszi az Azure számára a virtuális gép közzétételét az Azure Marketplace-en.  
+
+> [!Note]
+> Ha olyan linuxos alaprendszerképet használ, amely nem a piactéren alapul, az első partíciót 2048 KB-ra lehet ellensúlyozni. Ez lehetővé teszi, hogy a formázatlan terület felhasználható legyen új számlázási adatok hozzáadására, és lehetővé teszi az Azure számára a virtuális gép közzétételét a piactéren.  
 
 ## <a name="vm-extension-failure"></a>VM-bővítmény hibája
 
@@ -44,18 +47,18 @@ Ellenőrizze, hogy a rendszerkép támogatja-e a virtuálisgép-bővítményeket
 A virtuálisgép-bővítmények engedélyezéséhez tegye a következőket:
 
 1. Válassza ki a linuxos virtuális gépet.
-1. Lépjen a **diagnosztikai beállítások menüpontra**.
-1. Az alapmátrixok engedélyezéséhez frissítse a **Storage-fiókot**.
+1. Lépjen a **diagnosztikai beállítások menüpontra** .
+1. Az alapmátrixok engedélyezéséhez frissítse a **Storage-fiókot** .
 1. Válassza a **Mentés** lehetőséget.
 
    ![Vendégszintű monitorozás engedélyezése](./media/create-vm/vm-certification-issues-solutions-1.png)
 
 A virtuálisgép-bővítmények megfelelő aktiválásának ellenőrzéséhez tegye a következőket:
 
-1. A virtuális gépen válassza a virtuálisgép- **bővítmények** fület, majd ellenőrizze a **Linux diagnosztikai bővítmény**állapotát.
+1. A virtuális gépen válassza a virtuálisgép- **bővítmények** fület, majd ellenőrizze a **Linux diagnosztikai bővítmény** állapotát.
 1. 
-    * Ha az állapot kiosztása *sikeres*volt, a bővítmények tesztelési esete lett átadva.  
-    * Ha az állapot *kiépítés sikertelen*, a bővítmények tesztelési esete meghiúsult, és be kell állítania a megerősített jelzőt.
+    * Ha az állapot kiosztása *sikeres* volt, a bővítmények tesztelési esete lett átadva.  
+    * Ha az állapot *kiépítés sikertelen* , a bővítmények tesztelési esete meghiúsult, és be kell állítania a megerősített jelzőt.
 
       ![A kiépítés sikerességét bemutató képernyőkép](./media/create-vm/vm-certification-issues-solutions-2.png)
 
@@ -120,8 +123,8 @@ A következő táblázat felsorolja a korábbi tesztelési esetek végrehajtása
 |---|---|---|---|
 |1|Linux-ügynök verziója – tesztelési eset|A Linux-ügynök minimális verziója 2.2.41 vagy újabb. Ezt a követelményt a 2020. május 1. óta kötelező megadni.|Frissítse a Linux-ügynök verzióját, és 2,241-es vagy újabb verziójának kell lennie. További információt a [Linux-ügynök verziójának frissítését ismertető oldalon](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)talál.|
 |2|Bash-előzmények tesztelési esete|Hibaüzenet jelenik meg, ha az elküldött képen a bash-előzmények mérete meghaladja az 1 kilobájtot (KB). A méret 1 KB-ra van korlátozva, így biztosítható, hogy a rendszer ne rögzítse az esetlegesen bizalmas adatokat a bash-előzmények fájljában.|A probléma megoldásához csatlakoztassa a virtuális merevlemezt bármely más működő virtuális géphez, és végezze el a kívánt módosításokat (például törölje a *. bash* -előzmények fájljait), hogy csökkentse a méretet 1 KB-nál kisebb vagy egyenlő értékre.|
-|3|Szükséges kernel-paraméterek tesztelési esete|Ez a hibaüzenet akkor jelenik meg, ha a **konzol** értéke nem **ttyS0**értékre van állítva. A következő parancs futtatásával győződjön meg arról, hogy:<br>`cat /proc/cmdline`|Állítsa be a **konzol** értékét a **ttyS0**értékre, majd küldje el újra a kérelmet.|
-|4|ClientAlive intervalluma – tesztelési eset|Ha az eszközkészlet eredménye sikertelen eredményt ad a tesztelési esethez, a **ClientAliveInterval**nem megfelelő értékkel rendelkezik.|Állítsa a **ClientAliveInterval** értéket a 235 értéknél kisebbre vagy azzal egyenlőre, majd küldje el újra a kérelmet.|
+|3|Szükséges kernel-paraméterek tesztelési esete|Ez a hibaüzenet akkor jelenik meg, ha a **konzol** értéke nem **ttyS0** értékre van állítva. A következő parancs futtatásával győződjön meg arról, hogy:<br>`cat /proc/cmdline`|Állítsa be a **konzol** értékét a **ttyS0** értékre, majd küldje el újra a kérelmet.|
+|4|ClientAlive intervalluma – tesztelési eset|Ha az eszközkészlet eredménye sikertelen eredményt ad a tesztelési esethez, a **ClientAliveInterval** nem megfelelő értékkel rendelkezik.|Állítsa a **ClientAliveInterval** értéket a 235 értéknél kisebbre vagy azzal egyenlőre, majd küldje el újra a kérelmet.|
 
 ### <a name="windows-test-cases"></a>Windows-tesztelési esetek
 
@@ -148,7 +151,7 @@ A következő táblázat felsorolja az eszközkészlet által futtatott Windows-
 |17|Vezeték nélküli helyi hálózat szolgáltatás|Vezeték nélküli LAN szolgáltatás. Ez a kiszolgálói funkció még nem támogatott. Az alkalmazás nem függ ettől a szolgáltatástól.|
 |
 
-Ha az előző tesztelési esetekkel kapcsolatos hibákkal találkozik, tekintse meg a megoldás táblázatának **Leírás** oszlopát. Ha további információra van szüksége, forduljon a támogatási csoporthoz.
+Ha az előző tesztelési esetekkel kapcsolatos hibákkal találkozik, tekintse meg a megoldás táblázatának **Leírás** oszlopát. Ha további információra van szüksége, forduljon a támogatási csoporthoz. 
 
 ## <a name="data-disk-size-verification"></a>Adatlemez méretének ellenőrzése
 
@@ -181,7 +184,7 @@ Mivel a virtuális gépek engedélyezik a hozzáférést az alapul szolgáló op
 
 A WannaCry vírussal kapcsolatos potenciális támadás megelőzése érdekében győződjön meg arról, hogy az összes Windows-lemezképre vonatkozó kérelem frissítve lett a legújabb javítással.
 
-Az operációs rendszer részletes verzióját a Windows Server javított verziójának és az általa támogatott minimális verziónak a következő táblázatban tekintheti meg:
+Az operációs rendszer részletes verzióját a Windows Server javított verziójának és az általa támogatott minimális verziónak a következő táblázatban tekintheti meg: 
 
 A képfájl verziója ellenőrizhető a `C:\windows\system32\drivers\srv.sys` vagy rendszerből `srv2.sys` .
 
@@ -205,13 +208,13 @@ Frissítse a kernelt jóváhagyott verzióval, majd küldje el újra a kérelmet
 
 Ha a rendszerkép nincs telepítve a következő kernel-verziók egyikével, frissítse a megfelelő javításokkal. Kérje meg a szükséges jóváhagyást a támogatási csapattól a rendszerkép frissítése után a szükséges javításokkal:
 
-- CVE-2019-11477
-- CVE-2019-11478
+- CVE-2019-11477 
+- CVE-2019-11478 
 - CVE-2019-11479
 
 |OPERÁCIÓSRENDSZER-család|Verzió|Kernel|
 |---|---|---|
-|Ubuntu|14,04 LTS|4.4.0 – 151|
+|Ubuntu|14,04 LTS|4.4.0 – 151| 
 ||14,04 LTS|4.15.0-1049-*-Azure|
 ||16,04 LTS|4.15.0 – 1049|
 ||18,04 LTS|4.18.0 – 1023|
@@ -242,7 +245,7 @@ Ha a rendszerkép nincs telepítve a következő kernel-verziók egyikével, fri
 ||SLES15|4.12.14-5.30.1 (kernel-Azure)|
 ||SLES15 az SAP-hoz|4.12.14-5.30.1 (kernel-Azure)|
 ||SLES15SP1|4.12.14-5.30.1 (kernel-Azure)|
-|Oracle|6,10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3
+|Oracle|6,10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0 – 7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>A RHCK a fenti RHEL követi|
 ||7.6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
 |CoreOS stabil 2079.6.0|4.19.43*|
@@ -267,13 +270,22 @@ Ha a tesztelési esetek virtuális gépen való futtatása során a hozzáféré
 
 Ellenőrizze, hogy engedélyezve van-e a megfelelő hozzáférés ahhoz a fiókhoz, amelyen az önteszt esetek futnak. Ha a hozzáférés nincs engedélyezve, engedélyezze a tesztelési esetek futtatását. Ha nem szeretné engedélyezni a hozzáférést, megoszthatja az egyéni tesztelési eset eredményeit a támogatási csapattal.
 
-## <a name="download-failure"></a>Letöltési hiba
+Ha a kérést SSH-letiltott képpel szeretné elküldeni a minősítési folyamathoz, kövesse az alábbi lépéseket
 
+1. Hajtsa végre az Azure-eszközkészletet a rendszerképén. (Kérjük, töltse le a [legújabb eszközkészletet](https://aka.ms/AzureCertificationTestTool)
+
+2. Vegyen fel egy [támogatási jegyet](https://aka.ms/marketplacepublishersupport), csatolja az eszközkészlet jelentését, és adja meg az ajánlat részleteit, a közzétevő nevét, a csomag azonosítóját, az SKU-t és a verziót.
+
+3. Küldje el újra a minősítési kérelmét..
+
+
+## <a name="download-failure"></a>Letöltési hiba
+    
 Tekintse meg az alábbi táblázatot a virtuálisgép-rendszerkép megosztott hozzáférési aláírás (SAS) URL-címével történő letöltésekor felmerülő problémákról.
 
 |Használati eset|Hiba|Ok|Megoldás|
 |---|---|---|---|
-|1|A blob nem található|Lehet, hogy a VHD-t törölték vagy áthelyezték a megadott helyről.||
+|1|A blob nem található|Lehet, hogy a VHD-t törölték vagy áthelyezték a megadott helyről.|| 
 |2|BLOB használatban|A virtuális merevlemezt egy másik belső folyamat használja.|A VHD-nek a használatban lévő állapotban kell lennie, amikor letölti egy SAS URL-cím használatával.|
 |3|Érvénytelen SAS URL-cím|A virtuális merevlemezhez tartozó SAS URL-cím helytelen.|Szerezze be a megfelelő SAS URL-címet.|
 |4|Érvénytelen aláírás|A virtuális merevlemezhez tartozó SAS URL-cím helytelen.|Szerezze be a megfelelő SAS URL-címet.|
@@ -288,13 +300,98 @@ A virtuális merevlemez elküldésekor győződjön meg arról, hogy a VHD első
 >[!NOTE]
 >* Bizonyos speciális rendszerképekhez, például az Azure Marketplace-ről az Azure-beli Windows alapképekre épülő, a számlázási címke megkeresése és a rendelkezésre álló belső értékekkel való megfelelés esetén figyelmen kívül hagyja a MB partíciót.
 
+
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-on-an-empty-vhd"></a>Az első MB-os (2048 KB) partíció létrehozásának lépései (csak Linux esetén) üres virtuális merevlemezen
+
+1. lépés: bármilyen típusú virtuális gép létrehozása (példa: Ubuntu, cent OS stb.). Töltse ki a kötelező mezőket, és kattintson a "Next: Disks>" (tovább) elemre.
+![Következő: lemezek parancs](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+2. lépés: hozzon létre egy nem felügyelt lemezt a fenti virtuális géphez.
+![Nem felügyelt lemez létrehozása](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+Vegye figyelembe, hogy az alapértelmezett értékeket használhatja, vagy megadhat bármilyen értéket a mezőkhöz, például a hálózati adapterhez, a NSG és a nyilvános IP-címhez.
+
+3. lépés: a virtuális gép létrehozása után kattintson a "lemezek" elemre a bal oldalon, ahogy az alább látható, ![ kattintson a "lemezek" elemre.](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+4. lépés: csatlakoztassa a virtuális merevlemezt adatlemezként a fenti virtuális géphez a partíciós tábla az alábbi módon történő létrehozásához.
+![A virtuális merevlemez csatolása](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+Kattintson a adatlemez hozzáadása-> meglévő blob-> Tallózás a VHD Storage-fiókja – > tároló – > válassza a VHD – > kattintson az OK gombra az alábbi módon: \
+![VHD kiválasztása](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+A VHD-t adatlemezként adja hozzá a rendszer, majd a lemez hozzáadása után újraindítja a virtuális gépet
+
+5. lépés: a virtuális gép újraindítása után a PuTTY (vagy bármely más ügyfél) használatával jelentkezzen be a virtuális gépre, és futtassa a "sudo-i" parancsot a gyökérszintű hozzáférés megszerzéséhez.
+
+![Bejelentkezés a virtuális gépre](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+6. lépés: az alábbi lépések végrehajtásával hozzon létre partíciót a virtuális merevlemezen.
+
+a) Type fdisk/dev/sdb parancs
+
+b) a meglévő partíciók listájának a VHD-ből való megtekintéséhez írja be a p betűt.
+
+c) a d típussal törli a virtuális merevlemezen elérhető összes meglévő partíciót (ezt a lépést kihagyhatja, ha nincs rá szükség) az ![ összes meglévő partíció törlése](./media/create-vm/vm-certification-issues-solutions-21.png)
+
+d) az n típussal hozzon létre új partíciót, és válassza a p lehetőséget (elsődleges partíció).
+
+e) adja meg a 2048-as értéket az "első szektor" értékként, és az "utolsó szektor" lehetőséget is meghagyhatja, mivel az alapértelmezett értéket fogja megtenni. Vegye figyelembe, hogy az összes adat 2048 KB-ig lesz törölve.
+           
+>[!NOTE]
+>* Vegye figyelembe, hogy a fenti parancs végrehajtása előtt a partíció létrehozásával a meglévő összes adatát törli a rendszer a 2048 KB-ig, ezért javasoljuk, hogy készítsen biztonsági másolatot a virtuális merevlemezről.
+
+Tekintse meg az alábbi képernyőképet a hivatkozáshoz.
+![Törölt adat](./media/create-vm/vm-certification-issues-solutions-22.png)
+
+f a w típussal erősítse meg a partíció létrehozását. 
+
+![Partíció létrehozása](./media/create-vm/vm-certification-issues-solutions-23.png)
+
+g) a partíciós táblát ellenőrizheti az n fdisk/dev/sdb parancs futtatásával és a p beírásával, majd az alábbi módon láthatja, hogy a partíció 2048 eltolási értékkel jön létre. 
+
+ ![2048 eltolás](./media/create-vm/vm-certification-issues-solutions-24.png)
+
+7. lépés: válassza le a virtuális MEREVLEMEZt a virtuális gépről, és törölje a virtuális GÉPET.
+
+         
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-by-moving-the-existing-data-on-vhd"></a>Az első MB-os (2048 KB-os) partíció létrehozásának lépései (csak Linux esetén) a meglévő virtuális merevlemezen lévő adatáthelyezéssel
+
+1. lépés: bármilyen típusú virtuális gép létrehozása (példa: Ubuntu, cent OS stb.). Töltse ki a kötelező mezőket, és kattintson a "Next: Disks>" (tovább) elemre.
+![Kattintson a "tovább: lemezek>" elemre.](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+2. lépés: hozzon létre egy nem felügyelt lemezt a fenti virtuális géphez.
+![Nem felügyelt lemez létrehozása](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+Vegye figyelembe, hogy az alapértelmezett értékeket használhatja, vagy megadhat bármilyen értéket a mezőkhöz, például a hálózati adapterhez, a NSG és a nyilvános IP-címhez.
+
+3. lépés: a virtuális gép létrehozása után kattintson a "lemezek" elemre a bal oldalon, ahogy az alább látható, ![ kattintson a "lemezek" elemre.](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+4. lépés: csatlakoztassa a virtuális merevlemezt adatlemezként a fenti virtuális géphez a partíciós tábla az alábbi módon történő létrehozásához.
+![Partíciós tábla](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+Kattintson a adatlemez hozzáadása-> meglévő blob-> Tallózás a VHD Storage-fiókja – > tároló – > válassza a VHD – > kattintson az OK gombra az alábbi módon: \
+![VHD kiválasztása](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+A VHD-t adatlemezként adja hozzá a rendszer, majd a lemez hozzáadása után újraindítja a virtuális gépet
+
+5. lépés: a virtuális gép újraindítása után jelentkezzen be a virtuális gépre a PuTTY használatával, és futtassa a "sudo-i" parancsot a gyökérszintű hozzáférés eléréséhez. \
+![Bejelentkezés újraindítás után](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+6. lépés: Kérjük, Excute az echo "+ 1M," parancsát | sfdisk--Move-adat/dev/SDC-N 1 ![ végrehajtás parancs](./media/create-vm/vm-certification-issues-solutions-25.png)
+
+>[!NOTE]
+>* Vegye figyelembe, hogy a fenti parancs végrehajtása több időt is igénybe vehet, mivel a lemez méretétől függ.
+
+7. lépés: válassza le a virtuális MEREVLEMEZt a virtuális gépről, és törölje a virtuális GÉPET.
+
+
 ## <a name="default-credentials"></a>Alapértelmezett hitelesítő adatok
 
 Mindig győződjön meg arról, hogy az alapértelmezett hitelesítő adatok nem lesznek elküldve a beküldött VHD-vel. Az alapértelmezett hitelesítő adatok hozzáadásával a VHD-k sebezhetővé teszik a biztonsági fenyegetéseket. Ehelyett hozzon létre saját hitelesítő adatokat a virtuális merevlemez elküldésekor.
   
 ## <a name="datadisk-mapped-incorrectly"></a>Helytelenül megfeleltetett adatlemez
 
-Ha egy kérelem több adatlemezzel van elküldve, de a sorrendjük nem sorrendben van, akkor ez egy leképezési probléma. Ha például három adatlemez van, a számozási sorrendnek *0, 1, 2*értéknek kell lennie. Minden más rendelés leképezési problémaként van kezelve.
+Ha egy kérelem több adatlemezzel van elküldve, de a sorrendjük nem sorrendben van, akkor ez egy leképezési probléma. Ha például három adatlemez van, a számozási sorrendnek *0, 1, 2* értéknek kell lennie. Minden más rendelés leképezési problémaként van kezelve.
 
 Küldje el újra a kérést az adatlemezek megfelelő előkészítésével.
 
@@ -306,11 +403,11 @@ Rendszerkép létrehozásakor előfordulhat, hogy a rendszer leképezi vagy hozz
 
 Ha az Azure Marketplace-ről származó összes lemezképet újra fel kell használni, általánosítva kell lennie az operációs rendszer virtuális merevlemezének.
 
-* **Linux rendszeren**a következő folyamat általánosítja a Linux rendszerű virtuális gépet, és újratelepíti külön virtuális gépre.
+* **Linux rendszeren** a következő folyamat általánosítja a Linux rendszerű virtuális gépet, és újratelepíti külön virtuális gépre.
 
   Az SSH ablakban adja meg a következő parancsot: `sudo waagent -deprovision+user`
 
-* **Windows**esetén a használatával általánosíthatja a Windows-lemezképeket `sysreptool` .
+* **Windows** esetén a használatával általánosíthatja a Windows-lemezképeket `sysreptool` .
 
 További információ erről az eszközről: a [rendszer-előkészítés (Sysprep) áttekintése]( https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
@@ -326,7 +423,7 @@ Az adatlemezzel kapcsolatos hibák megoldásához használja az alábbi tábláz
 
 ## <a name="remote-access-issue"></a>Távelérési probléma
 
-Ha a Windows-rendszerképhez nincs engedélyezve a RDP protokoll (RDP) beállítás, akkor ez a hibaüzenet jelenik meg.
+Ha a Windows-rendszerképhez nincs engedélyezve a RDP protokoll (RDP) beállítás, akkor ez a hibaüzenet jelenik meg. 
 
 Az RDP-hozzáférés engedélyezése a Windows-rendszerképekhez a beküldése előtt.
 
@@ -404,10 +501,10 @@ A következő műveleteket végezheti el egy rögzített virtuálisgép-rendszer
 A lépések végrehajtásához elő kell készítenie a felvenni kívánt virtuálisgép-rendszerképhez tartozó technikai eszközöket. További információkért lásd: [virtuális gép létrehozása jóváhagyott alap használatával](azure-vm-create-using-approved-base.md) vagy [virtuális gép létrehozása saját rendszerkép használatával](azure-vm-create-using-own-image.md), valamint [sas URI létrehozása a virtuálisgép-rendszerképhez](azure-vm-get-sas-uri.md).
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés** lehetőséget.
 3. Az **ajánlat-alias** oszlopban válassza ki az ajánlatot.
 4. A **terv áttekintése** lap **név** oszlopában válassza ki azt a csomagot, amelyhez hozzá szeretné adni a virtuális gépet.
-5. A **technikai konfiguráció** lap virtuálisgép- **rendszerképek** területén válassza a **+ virtuálisgép-rendszerkép hozzáadása**elemet.
+5. A **technikai konfiguráció** lap virtuálisgép- **rendszerképek** területén válassza a **+ virtuálisgép-rendszerkép hozzáadása** elemet.
 
 > [!NOTE]
 > Egyszerre csak egy virtuálisgép-rendszerképet adhat hozzá. Több virtuálisgép-rendszerkép hozzáadásához tegye közzé az elsőt, mielőtt hozzáadja a következő virtuálisgép-lemezképet.
@@ -420,24 +517,24 @@ Folytassa a következő szakasszal, hogy eltávolítsa a virtuálisgép-rendszer
 #### <a name="remove-the-vm-image-with-the-security-vulnerability-or-exploit"></a>Távolítsa el a virtuálisgép-rendszerképet a biztonsági sebezhetőséggel vagy a kiaknázással
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés** lehetőséget.
 3. Az **ajánlat-alias** oszlopban válassza ki az ajánlatot.
 4. A **terv áttekintése** lap **név** oszlopában válassza ki a csomagot az eltávolítani kívánt virtuális géppel.
-5. A **technikai konfiguráció** lap virtuálisgép- **lemezképek** területén, az eltávolítani kívánt virtuálisgép-rendszerkép mellett válassza a virtuálisgép- **lemezkép eltávolítása**lehetőséget.
-6. A megjelenő párbeszédpanelen válassza a **Folytatás**lehetőséget.
+5. A **technikai konfiguráció** lap virtuálisgép- **lemezképek** területén, az eltávolítani kívánt virtuálisgép-rendszerkép mellett válassza a virtuálisgép- **lemezkép eltávolítása** lehetőséget.
+6. A megjelenő párbeszédpanelen válassza a **Folytatás** lehetőséget.
 7. Válassza a **Piszkozat mentése** lehetőséget.
 
 Az ajánlat újbóli közzétételéhez folytassa a következő szakasszal.
 
 #### <a name="republish-the-offer"></a>Az ajánlat ismételt közzététele
 
-1. Válassza **a felülvizsgálat és közzététel**lehetőséget.
+1. Válassza **a felülvizsgálat és közzététel** lehetőséget.
 2. Ha bármilyen információt meg kell adnia a minősítési csapatnak, adja hozzá a **Megjegyzések a minősítéshez** mezőben.
 3. Kattintson a **Publish** (Közzététel) elemre.
 
 A közzétételi folyamat befejezéséhez tekintse meg az [ajánlatok áttekintése és közzététele](review-publish-offer.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuálisgép-ajánlat tulajdonságainak konfigurálása](azure-vm-create-properties.md)
 - [Aktív Piactéri előnyök](partner-center-portal/marketplace-rewards.md)

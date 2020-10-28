@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 2d0b53581bbc2211df156b90326fc73d0c2ae091
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46f93dffe0a998f29ff7157a2866b52d13482834
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548711"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676520"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Cloud platform Identity Authentication szolgáltatással
 
@@ -26,7 +26,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAP Cloud platf
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az SAP Cloud platform Identity Authentication szolgáltatásba az Azure AD-fiókkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
 * Az SAP Cloud platform Identity Authentication támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett SSO-t
-* Miután konfigurálta az SAP Cloud platform identitás-hitelesítését, kikényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását biztosítja. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Miután konfigurálta az SAP Cloud platform identitás-hitelesítését, kikényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását biztosítja. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 Mielőtt belemerül a technikai részletekbe, fontos megérteni a megtekinteni kívánt fogalmakat. Az SAP Cloud platform Identity Authentication és Active Directory összevonási szolgáltatások (AD FS) lehetővé teszi, hogy az egyszeri bejelentkezést az Azure AD (identitásszolgáltató) által védett alkalmazásokban vagy szolgáltatásokban implementálja az SAP Cloud platform Identity Authentication által védett SAP-alkalmazásokkal és-szolgáltatásokkal.
 
@@ -67,15 +67,15 @@ Az SAP Cloud platform identitás-hitelesítés Azure AD-be való integrálásán
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be az **SAP Cloud platform Identity Authentication** kifejezést a keresőmezőbe.
 1. Válassza az **SAP Cloud platform Identity Authentication** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-cloud-platform-identity-authentication"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az SAP Cloud platform identitás-hitelesítéséhez
 
-Konfigurálja és tesztelje az Azure AD SSO-t az SAP Cloud platform Identity Authentication használatával egy **B. Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az SAP Cloud platform Identity Authentication szolgáltatásban.
+Konfigurálja és tesztelje az Azure AD SSO-t az SAP Cloud platform Identity Authentication használatával egy **B. Simon** nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az SAP Cloud platform Identity Authentication szolgáltatásban.
 
 Az Azure AD SSO az SAP Cloud platform Identity Authentication használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -90,13 +90,13 @@ Az Azure AD SSO az SAP Cloud platform Identity Authentication használatával t�
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)az **SAP Cloud platform Identity Authentication** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **SAP Cloud platform Identity Authentication** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Ha az **alapszintű SAML-konfigurációt** szeretné **identitásszolgáltató**módban konfigurálni, hajtsa végre a következő lépéseket:
+4. Ha az **alapszintű SAML-konfigurációt** szeretné **identitásszolgáltató** módban konfigurálni, hajtsa végre a következő lépéseket:
 
     ![SAP Cloud platform Identity Authentication tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -107,7 +107,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba az [SAP Cloud platform Identity Authentication ügyfél-támogatási csapatával](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) . Ha nem érti az azonosító értékét, olvassa el az SAP Cloud platform Identity Authentication dokumentációját a [bérlői SAML 2,0-konfigurációról](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
 
-5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP**-kezdeményezésű módban szeretné konfigurálni:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -kezdeményezésű módban szeretné konfigurálni:
 
     ![SAP Cloud platform Identity Authentication tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
@@ -122,7 +122,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az SAP Cloud platform Identity Authentication alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------------- |
     | firstName | User. givenName |
 
@@ -144,25 +144,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezést, ha hozzáférést biztosít az SAP Cloud platform Identity Authentication szolgáltatáshoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **SAP Cloud platform Identity Authentication**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **SAP Cloud platform Identity Authentication** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -176,9 +176,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 2. A Azure Portal válassza a **Mentés** gombot.
 
-3. Folytassa a következőket csak abban az esetben, ha az SSO-t egy másik SAP-alkalmazáshoz szeretné hozzáadni és engedélyezni. Ismételje meg a következő szakaszt: **SAP Cloud platform Identity Authentication hozzáadása**a katalógusból.
+3. Folytassa a következőket csak abban az esetben, ha az SSO-t egy másik SAP-alkalmazáshoz szeretné hozzáadni és engedélyezni. Ismételje meg a következő szakaszt: **SAP Cloud platform Identity Authentication hozzáadása** a katalógusból.
 
-4. A Azure Portal az **SAP Cloud platform Identity Authentication** Application Integration lapon válassza a **csatolt bejelentkezés**lehetőséget.
+4. A Azure Portal az **SAP Cloud platform Identity Authentication** Application Integration lapon válassza a **csatolt bejelentkezés** lehetőséget.
 
     ![Csatolt Sign-On konfigurálása](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked_sign_on.png)
 
@@ -201,18 +201,18 @@ További információ arról, hogyan engedélyezheti vagy tilthatja le az identi
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a SAP Cloud platform Identity Authentication csempére kattint, automatikusan be kell jelentkeznie az SAP Cloud platform Identity Authentication szolgáltatásba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a SAP Cloud platform Identity Authentication csempére kattint, automatikusan be kell jelentkeznie az SAP Cloud platform Identity Authentication szolgáltatásba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
 - [Az SAP Cloud platform identitás-hitelesítésének kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [Az SAP Cloud platform identitás-hitelesítésének biztosítása speciális láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Az SAP Cloud platform identitás-hitelesítésének biztosítása speciális láthatósággal és vezérlőkkel](/cloud-app-security/proxy-intro-aad)

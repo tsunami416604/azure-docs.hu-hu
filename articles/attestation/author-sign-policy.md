@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a3afb12ac831d87b03d0bb16d1b7ef553f1bb906
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90006819"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675984"
 ---
 # <a name="how-to-author-and-sign-an-attestation-policy"></a>Igazolási szabályzat létrehozása és aláírása
 
@@ -36,7 +36,7 @@ issuancerules
  
 A házirend-fájl három szegmensből áll, ahogy az a fentiekben látható:
 
-- **verzió**: a verziószám a követett nyelvtan verziószáma. 
+- **verzió** : a verziószám a követett nyelvtan verziószáma. 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ A házirend-fájl három szegmensből áll, ahogy az a fentiekben látható:
 
     Jelenleg az egyetlen támogatott verzió a 1,0-es verzió.
 
-- **engedélyezési szabályok**: az első ellenőrizendő jogcím-szabályok gyűjteménye annak megállapítására, hogy az Azure-igazolásnak folytatódnia kell-e a **issuancerules**. A jogcím szabályai a definiált sorrendben lesznek érvényesek.
+- **engedélyezési szabályok** : az első ellenőrizendő jogcím-szabályok gyűjteménye annak megállapítására, hogy az Azure-igazolásnak folytatódnia kell-e a **issuancerules** . A jogcím szabályai a definiált sorrendben lesznek érvényesek.
 
-- **issuancerules**: olyan jogcím-szabályok gyűjteménye, amelyeket a rendszer kiértékel, hogy további információkat adjon hozzá az igazolási eredményhez a Szabályzatban meghatározottak szerint. A jogcím szabályai a definiált sorrendben érvényesek, és szintén nem kötelezőek.
+- **issuancerules** : olyan jogcím-szabályok gyűjteménye, amelyeket a rendszer kiértékel, hogy további információkat adjon hozzá az igazolási eredményhez a Szabályzatban meghatározottak szerint. A jogcím szabályai a definiált sorrendben érvényesek, és szintén nem kötelezőek.
 
 További információért lásd a [jogcím és a jogcím szabályait](claim-rule-grammar.md) .
    
@@ -54,7 +54,7 @@ További információért lásd a [jogcím és a jogcím szabályait](claim-rule
 
 1. Hozzon létre egy új fájlt.
 1. Adjon hozzá verziót a fájlhoz.
-1. Vegyen fel szakaszt a **engedélyezési szabályok** és a **issuancerules**.
+1. Vegyen fel szakaszt a **engedélyezési szabályok** és a **issuancerules** .
 
   ```
   version=1.0;
@@ -84,9 +84,9 @@ További információért lásd a [jogcím és a jogcím szabályait](claim-rule
   };
   ```
 
-  Ha a bejövő jogcímek készlete olyan jogcímet tartalmaz, amely megfelel a típusnak, az értéknek és a kiállítónak, az engedély () művelet tájékoztatja a házirend-motort a **issuancerules**feldolgozásáról.
+  Ha a bejövő jogcímek készlete olyan jogcímet tartalmaz, amely megfelel a típusnak, az értéknek és a kiállítónak, az engedély () művelet tájékoztatja a házirend-motort a **issuancerules** feldolgozásáról.
   
-5. Adja hozzá a **issuancerules**a jogcím-szabályokat.
+5. Adja hozzá a **issuancerules** a jogcím-szabályokat.
 
   ```
   version=1.0;
@@ -128,8 +128,8 @@ Miután létrehozott egy házirendet a szabályzat JWS formátumban való feltö
      ```
 
 2. Választható Írja alá a szabályzatot. Az Azure-igazolás a következő algoritmusokat támogatja:
-     - **Nincs**: ne írja alá a szabályzat hasznos adatait.
-     - **RS256**: a szabályzat hasznos adatainak aláírására szolgáló támogatott algoritmus
+     - **Nincs** : ne írja alá a szabályzat hasznos adatait.
+     - **RS256** : a szabályzat hasznos adatainak aláírására szolgáló támogatott algoritmus
 
 3. Töltse fel a JWS, és ellenőrizze a szabályzatot.
      - Ha a házirend-fájl szintaktikai hibáktól mentes, a szolgáltatás elfogadja a házirend-fájlt.
@@ -170,6 +170,6 @@ print("\nAttestation Policy JWS:")
 print(encoded.decode('utf-8'))
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)
-- [SGX ENKLÁVÉHOZ enklávé igazolása kód-minták használatával](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [SGX ENKLÁVÉHOZ enklávé igazolása kód-minták használatával](/samples/browse/?expanded=azure&terms=attestation)

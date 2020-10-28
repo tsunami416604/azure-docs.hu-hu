@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57afbe2ebdde7755eec659f56e402315a60ec7d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979845"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676624"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználó kiépítési felállításához 
 Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. 
@@ -95,32 +95,32 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 ### <a name="create-an-api-permissions-role"></a>API-engedélyek szerepkör létrehozása
 
 * Jelentkezzen be az SAP SuccessFactors egy olyan felhasználói fiókkal, amely hozzáféréssel rendelkezik a felügyeleti központhoz.
-* Keressen rá az *engedélyek kezelése*lehetőségre, majd válassza a **jogosultsági szerepkörök kezelése** elemet a keresési eredmények közül.
+* Keressen rá az *engedélyek kezelése* lehetőségre, majd válassza a **jogosultsági szerepkörök kezelése** elemet a keresési eredmények közül.
   ![Engedélyezési szerepkörök kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* Az engedélyezési szerepkör listából válassza az **új létrehozása**lehetőséget.
+* Az engedélyezési szerepkör listából válassza az **új létrehozása** lehetőséget.
   > [!div class="mx-imgBorder"]
   > ![Új engedélyezési szerepkör létrehozása](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
 * Adja hozzá az új engedély szerepkörhöz tartozó **szerepkör nevét** és **leírását** . A név és a Leírás azt jelzi, hogy a szerepkör API-használati engedélyekkel rendelkezik.
   > [!div class="mx-imgBorder"]
   > ![Engedélyezési szerepkör részletei](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* Az engedély beállításai területen kattintson az **engedély...** elemre, majd görgessen le az engedélyezési listáról, és kattintson az **integrációs eszközök kezelése**lehetőségre. Jelölje be a **rendszergazda számára a ODATA API alapszintű hitelesítéssel való elérésének engedélyezése**jelölőnégyzetet.
+* Az engedély beállításai területen kattintson az **engedély...** elemre, majd görgessen le az engedélyezési listáról, és kattintson az **integrációs eszközök kezelése** lehetőségre. Jelölje be a **rendszergazda számára a ODATA API alapszintű hitelesítéssel való elérésének engedélyezése** jelölőnégyzetet.
   > [!div class="mx-imgBorder"]
   > ![Integrációs eszközök kezelése](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Görgessen le ugyanabban a mezőben, és válassza az **Employee Central API**elemet. Az alább látható engedélyek hozzáadásával olvassa el a ODATA API-t és a szerkesztést a ODATA API használatával. Válassza a szerkesztés lehetőséget, ha azt tervezi, hogy ugyanazt a fiókot használja a visszaírási SuccessFactors-forgatókönyvhöz. 
+* Görgessen le ugyanabban a mezőben, és válassza az **Employee Central API** elemet. Az alább látható engedélyek hozzáadásával olvassa el a ODATA API-t és a szerkesztést a ODATA API használatával. Válassza a szerkesztés lehetőséget, ha azt tervezi, hogy ugyanazt a fiókot használja a visszaírási SuccessFactors-forgatókönyvhöz. 
   > [!div class="mx-imgBorder"]
   > ![Írási engedélyek olvasása](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
   >[!NOTE]
   >A kiépítési alkalmazás által beolvasott attribútumok teljes listájáért tekintse meg a [SuccessFactors attribútum-referenciát](../app-provisioning/sap-successfactors-attribute-reference.md) .
 
-* Kattintson a **kész**gombra. Kattintson a **Save Changes** (Módosítások mentése) gombra.
+* Kattintson a **kész** gombra. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Engedélyezési csoport létrehozása az API-felhasználó számára
 
-* A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra*, majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
+* A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra* , majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
   > [!div class="mx-imgBorder"]
   > ![Engedélyezési csoportok kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* A jogosultsági csoportok kezelése ablakban kattintson az **új létrehozása**elemre.
+* A jogosultsági csoportok kezelése ablakban kattintson az **új létrehozása** elemre.
   > [!div class="mx-imgBorder"]
   > ![Új csoport hozzáadása](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
 * Adja hozzá a csoport nevét az új csoporthoz. A csoport nevének azt kell jeleznie, hogy a csoport API-felhasználók számára készült.
@@ -133,8 +133,8 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>Engedélyezési szerepkör megadása az engedélyezési csoportnak
 
-* A SuccessFactors felügyeleti központban keressen rá az *engedélyezési szerepkörök kezelése*lehetőségre, majd válassza az **engedélyezési szerepkörök kezelése** lehetőséget a keresési eredmények közül.
-* Az **engedélyezési szerepkör listából**válassza ki az API-használati engedélyekhez létrehozott szerepkört.
+* A SuccessFactors felügyeleti központban keressen rá az *engedélyezési szerepkörök kezelése* lehetőségre, majd válassza az **engedélyezési szerepkörök kezelése** lehetőséget a keresési eredmények közül.
+* Az **engedélyezési szerepkör listából** válassza ki az API-használati engedélyekhez létrehozott szerepkört.
 * Az adja **meg ezt a szerepkört a következőhöz:...** kattintson a **Hozzáadás...** gombra.
 * Válassza az **engedély csoport.** .. lehetőséget a legördülő menüből, majd kattintson a **kiválasztás...** elemre a csoportok ablak megnyitásához, és válassza ki a fenti létrehozott csoportot. 
   > [!div class="mx-imgBorder"]
@@ -162,11 +162,11 @@ Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a Su
 
 2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
 
-3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
+3. Válassza a **vállalati alkalmazások** , majd **az összes alkalmazás** lehetőséget.
 
-4. Válassza az **alkalmazás hozzáadása**lehetőséget, és válassza az **összes** kategóriát.
+4. Válassza az **alkalmazás hozzáadása** lehetőséget, és válassza az **összes** kategóriát.
 
-5. Keresse meg a **SuccessFactors Active Directory a felhasználók üzembe**helyezését, és adja hozzá az alkalmazást a katalógusból.
+5. Keresse meg a **SuccessFactors Active Directory a felhasználók üzembe** helyezését, és adja hozzá az alkalmazást a katalógusból.
 
 6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
 
@@ -182,7 +182,7 @@ Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a Su
 A helyszíni Active Directory létrehozásához a kiépítési ügynököt olyan kiszolgálóra kell telepíteni, amely .NET 4.7.1 + keretrendszert és hálózati hozzáférést biztosít a kívánt Active Directory tartomány (ok) hoz.
 
 > [!TIP]
-> A .NET-keretrendszer verzióját a kiszolgálón tekintheti meg az [itt](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)megadott utasítások alapján.
+> A .NET-keretrendszer verzióját a kiszolgálón tekintheti meg az [itt](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)megadott utasítások alapján.
 > Ha a kiszolgáló nem rendelkezik .NET 4.7.1 vagy újabb verzióval, letöltheti [innen.](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)  
 
 Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és kövesse az alábbi lépéseket az ügynök konfigurációjának befejezéséhez.
@@ -247,7 +247,7 @@ Ebben a lépésben kapcsolatot létesít a SuccessFactors és a Active Directory
 
    * **Rendszergazdai jelszó –** Adja meg a SuccessFactors API felhasználói fiók jelszavát. 
 
-   * **Bérlői URL-cím –** Adja meg a SuccessFactors OData API Services-végpont nevét. Csak a kiszolgáló állomásnevét adja meg http vagy https nélkül. Ennek az értéknek a következőhöz hasonlóan kell kinéznie: **<API-Server-name>. SuccessFactors.com**.
+   * **Bérlői URL-cím –** Adja meg a SuccessFactors OData API Services-végpont nevét. Csak a kiszolgáló állomásnevét adja meg http vagy https nélkül. Ennek az értéknek a következőhöz hasonlóan kell kinéznie: **<API-Server-name>. SuccessFactors.com** .
 
    * **Active Directory erdő –** A Active Directory tartományának neve, az ügynökkel való regisztrálással. A legördülő listából válassza ki a kiépítés célját. Ez az érték általában karakterlánc, például: *contoso.com*
 
@@ -258,7 +258,7 @@ Ebben a lépésben kapcsolatot létesít a SuccessFactors és a Active Directory
 
    * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
     > [!NOTE]
-    > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) állapotba kerülnek.
+    > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](../app-provisioning/application-provisioning-quarantine-status.md) állapotba kerülnek.
 
    * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy érvényesek-e a SuccessFactors hitelesítő adatai és az ügynök telepítésére konfigurált AD hitelesítő adatok.
     >[!div class="mx-imgBorder"]
@@ -270,7 +270,7 @@ Ebben a lépésben kapcsolatot létesít a SuccessFactors és a Active Directory
 
 Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan áramlanak a SuccessFactors a Active Directoryba.
 
-1. A kiépítés lapon a **leképezések**területen kattintson a **SuccessFactors-felhasználók szinkronizálása a helyszíni Active Directory**lehetőségre.
+1. A kiépítés lapon a **leképezések** területen kattintson a **SuccessFactors-felhasználók szinkronizálása a helyszíni Active Directory** lehetőségre.
 
 1. A **forrás objektum hatóköre** mezőben kiválaszthatja, hogy a SuccessFactors melyik felhasználói készletének hatóköre legyen az ad-hez való kiépítés az attribútum-alapú szűrők készletének definiálásával. Az alapértelmezett hatókör a "minden felhasználó a SuccessFactors". Példa szűrők:
 
@@ -340,7 +340,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 > [!TIP]
 > Alapértelmezés szerint a kiépítési szolgáltatás bekapcsolásakor a rendszer kiépítési műveleteket kezdeményez a hatókörben lévő összes felhasználó számára. Ha a leképezési vagy SuccessFactors adatokkal kapcsolatos hibák léptek fel, akkor előfordulhat, hogy a kiépítési feladat meghiúsul, és a karanténba helyezési állapotba lép. Ennek elkerüléséhez ajánlott eljárásként Azt javasoljuk, hogy a **forrás objektum hatókör** -szűrőjét konfigurálja, és tesztelje az attribútumok hozzárendeléseit néhány tesztelési felhasználóval, mielőtt elindítja a teljes szinkronizálást az összes felhasználó számára. Miután meggyőződött arról, hogy a leképezések működnek, és megadja a kívánt eredményeket, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
 
-1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
+1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a** következőre:.
 
 2. Kattintson a **Mentés** gombra.
 

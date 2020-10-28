@@ -1,236 +1,169 @@
 ---
-author: areddish
-ms.author: areddish
+author: PatrickFarley
+ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 09/15/2020
-ms.openlocfilehash: 16fbffa31563920e28538a961e621c894d105173
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/25/2020
+ms.openlocfilehash: 7ef19e72b519d16da66306e4bf64f70f5c708927
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90604904"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678231"
 ---
-Ez az útmutató útmutatást és mintakód segítséget nyújt a Custom Vision a Pythonhoz készült ügyféloldali kódtár használatának megkezdéséhez egy objektum-észlelési modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+Ismerkedés a Custom Vision a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az objektum-észlelési modell felépítési példájának kódját. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
 
 > [!NOTE]
 > Ha kód írása _nélkül_ szeretne létrehozni és betanítani egy objektum-észlelési modellt, tekintse meg a [böngészőalapú útmutatást](../../get-started-build-detector.md) .
 
+A Pythonhoz készült Custom Vision ügyféloldali kódtára a következőre használható:
+
+* Új Custom Vision-projekt létrehozása
+* Címkék hozzáadása a projekthez
+* Képek feltöltése és címkézése
+* A projekt betanítása
+* Az aktuális iteráció közzététele
+* Az előrejelzési végpont tesztelése
+
+[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-customvision/azure/cognitiveservices/vision/customvision)  |  [Csomag (PyPI)](https://pypi.org/project/azure-cognitiveservices-vision-customvision/)  |  [Példák](https://docs.microsoft.com/samples/browse/?products=azure&term=vision&terms=vision&languages=python)
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [A Python 2.7-es vagy újabb, illetve 3.5-ös vagy újabb verziója](https://www.python.org/downloads/)
-- [pip](https://pip.pypa.io/en/stable/installing/) eszköz
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* [Python 3.x](https://www.python.org/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" hozzon létre egy Custom Vision erőforrást egy "  target="_blank"> Custom Vision erőforrás létrehozásához <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal egy képzési és előrejelzési erőforrás létrehozásához, valamint a kulcsok és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
+    * Az alkalmazás Custom Visionhoz való összekapcsolásához szüksége lesz a létrehozott erőforrások kulcsára és végpontra. A kulcsokat és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
-## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
+## <a name="setting-up"></a>Beállítás
 
-Ha Custom Vision for Pythont szeretne írni egy rendszerkép-elemzési alkalmazásba, szüksége lesz a Custom Vision ügyféloldali könyvtárára. Futtassa a következő parancsot a PowerShellben:
+### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
+
+Ha Custom Vision for Pythont szeretne írni egy rendszerkép-elemzési alkalmazásba, szüksége lesz a Custom Vision ügyféloldali könyvtárára. A Python telepítése után futtassa a következő parancsot a PowerShellben vagy a konzol ablakban:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
-A képeket letöltheti a [Python példákkal](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) együtt.
+### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
+Hozzon létre egy új Python-fájlt, és importálja a következő könyvtárakat.
 
-[!INCLUDE [python-get-images](../../includes/python-get-images.md)]
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_imports)]
 
-## <a name="add-the-code"></a>A kód hozzáadása
+> [!TIP]
+> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.cs), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
 
-Hozzon létre egy új fájlt *sample.py* néven a használni kívánt projektkönyvtárban.
+Hozzon létre változókat az erőforrás Azure-végpontja és előfizetési kulcsai számára.
 
-## <a name="create-the-custom-vision-project"></a>A Custom Vision projekt létrehozása
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_creds)]
 
-Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. A végpont URL-címét a Custom Vision webhely beállítások lapján szerezheti be.
 
-A projekt létrehozásakor további beállítások megadásához tekintse meg a **[create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-&preserve-view=true)** metódust (a [Kiderítő webportál összeállításának](../../get-started-build-detector.md) útmutatója).  
+> [!IMPORTANT]
+> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Custom Vision erőforrások telepítése sikeresen megtörtént, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsokat és végpontokat az **Erőforrás-kezelés** területen találja az erőforrások **kulcs és végpont** oldalain. A képzési és előrejelzési kulcsokat is meg kell kapnia.
+>
+> A megjelenő erőforrás-azonosító értékét az erőforrás **Áttekintés** lapján, az **előfizetés-azonosító** mezőben találja.
+>
+> Ne felejtse el eltávolítani a kulcsokat a kódból, amikor elkészült, és soha ne tegye közzé őket nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) cikkben talál.
 
-```Python
-from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry, Region
-from msrest.authentication import ApiKeyCredentials
+## <a name="object-model"></a>Objektummodell
 
-ENDPOINT = "<your API endpoint>"
+|Név|Leírás|
+|---|---|
+|[CustomVisionTrainingClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) | Ez az osztály kezeli a modellek létrehozását, betanítását és közzétételét. |
+|[CustomVisionPredictionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python)| Ez az osztály kezeli a modellek lekérdezését az objektum-észlelési előrejelzésekhez.|
+|[ImagePrediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-python)| Ez az osztály egyetlen objektumra vonatkozó előrejelzést definiál egyetlen rendszerképben. Az objektum AZONOSÍTÓját és nevét, az objektum határoló mező helyét és egy megbízhatósági pontszámot tartalmaz.|
 
-# Replace with a valid key
-training_key = "<your training key>"
-prediction_key = "<your prediction key>"
-prediction_resource_id = "<your prediction resource id>"
+## <a name="code-examples"></a>Kódpéldák
 
-publish_iteration_name = "detectModel"
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült Custom Vision ügyféloldali kódtár használatával:
 
-credentials = ApiKeyCredentials(in_headers={"Training-key": training_key})
-trainer = CustomVisionTrainingClient(ENDPOINT, credentials)
+* [Az ügyfél hitelesítése](#authenticate-the-client)
+* [Új Custom Vision-projekt létrehozása](#create-a-new-custom-vision-project)
+* [Címkék hozzáadása a projekthez](#add-tags-to-the-project)
+* [Képek feltöltése és címkézése](#upload-and-tag-images)
+* [A projekt betanítása](#train-the-project)
+* [Az aktuális iteráció közzététele](#publish-the-current-iteration)
+* [Az előrejelzési végpont tesztelése](#test-the-prediction-endpoint)
 
-# Find the object detection domain
-obj_detection_domain = next(domain for domain in trainer.get_domains() if domain.type == "ObjectDetection" and domain.name == "General")
+## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-# Create a new project
-print ("Creating project...")
-project = trainer.create_project("My Detection Project", domain_id=obj_detection_domain.id)
-```
+Egy képzési és előrejelzési ügyfél létrehozása a végponttal és a kulcsokkal. Hozzon létre **ApiKeyServiceClientCredentials** objektumokat a kulcsokkal, és használja őket a végponttal egy [CustomVisionTrainingClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) és egy [CustomVisionPredictionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python) objektum létrehozásához.
 
-## <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_auth)]
 
-Ha a projektben szeretné létrehozni az objektum címkéit, adja hozzá a következő kódot a *sample.py*végéhez:
 
-```Python
-# Make two tags in the new project
-fork_tag = trainer.create_tag(project.id, "fork")
-scissors_tag = trainer.create_tag(project.id, "scissors")
-```
+## <a name="create-a-new-custom-vision-project"></a>Új Custom Vision-projekt létrehozása
+
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. 
+
+A projekt létrehozásakor további beállítások megadásához tekintse meg a [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-&preserve-view=true) metódust (a [Kiderítő webportál összeállításának](../../get-started-build-detector.md) útmutatója).  
+
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_create)]
+
+
+## <a name="add-tags-to-the-project"></a>Címkék hozzáadása a projekthez
+
+Ha a projektben szeretné létrehozni az objektum címkéit, adja hozzá a következő kódot:
+
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_tags)]
+
 
 ## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-Ha képeket címkéz az objektum-észlelési projektekben, az egyes címkézett objektumok régióját normalizált koordináták használatával kell megadnia.
+Először töltse le a projekthez tartozó mintaképeket. Mentse a [Sample images mappa](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ObjectDetection/Images) tartalmát a helyi eszközre.
+
+Ha képeket címkéz az objektum-észlelési projektekben, az egyes címkézett objektumok régióját normalizált koordináták használatával kell megadnia. A következő kód a mintául szolgáló rendszerképeket társítja a címkézett régiójával. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_tagging)]
 
 > [!NOTE]
 > Ha nem rendelkezik kattintással és húzással a régiók koordinátáinak megjelöléséhez, használhatja a webes felhasználói felületet a következő címen: [Customvision.ai](https://www.customvision.ai/). Ebben a példában a koordináták már meg vannak biztosítva.
 
-
-A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Ebben az oktatóanyagban a régiók a kóddal hardcoded. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság.
-
-```Python
-fork_image_regions = {
-    "fork_1": [ 0.145833328, 0.3509314, 0.5894608, 0.238562092 ],
-    "fork_2": [ 0.294117659, 0.216944471, 0.534313738, 0.5980392 ],
-    "fork_3": [ 0.09191177, 0.0682516545, 0.757352948, 0.6143791 ],
-    "fork_4": [ 0.254901975, 0.185898721, 0.5232843, 0.594771266 ],
-    "fork_5": [ 0.2365196, 0.128709182, 0.5845588, 0.71405226 ],
-    "fork_6": [ 0.115196079, 0.133611143, 0.676470637, 0.6993464 ],
-    "fork_7": [ 0.164215669, 0.31008172, 0.767156839, 0.410130739 ],
-    "fork_8": [ 0.118872553, 0.318251669, 0.817401946, 0.225490168 ],
-    "fork_9": [ 0.18259804, 0.2136765, 0.6335784, 0.643790841 ],
-    "fork_10": [ 0.05269608, 0.282303959, 0.8088235, 0.452614367 ],
-    "fork_11": [ 0.05759804, 0.0894935, 0.9007353, 0.3251634 ],
-    "fork_12": [ 0.3345588, 0.07315363, 0.375, 0.9150327 ],
-    "fork_13": [ 0.269607842, 0.194068655, 0.4093137, 0.6732026 ],
-    "fork_14": [ 0.143382356, 0.218578458, 0.7977941, 0.295751631 ],
-    "fork_15": [ 0.19240196, 0.0633497, 0.5710784, 0.8398692 ],
-    "fork_16": [ 0.140931368, 0.480016381, 0.6838235, 0.240196079 ],
-    "fork_17": [ 0.305147052, 0.2512582, 0.4791667, 0.5408496 ],
-    "fork_18": [ 0.234068632, 0.445702642, 0.6127451, 0.344771236 ],
-    "fork_19": [ 0.219362751, 0.141781077, 0.5919118, 0.6683006 ],
-    "fork_20": [ 0.180147052, 0.239820287, 0.6887255, 0.235294119 ]
-}
-
-scissors_image_regions = {
-    "scissors_1": [ 0.4007353, 0.194068655, 0.259803921, 0.6617647 ],
-    "scissors_2": [ 0.426470578, 0.185898721, 0.172794119, 0.5539216 ],
-    "scissors_3": [ 0.289215684, 0.259428144, 0.403186262, 0.421568632 ],
-    "scissors_4": [ 0.343137264, 0.105833367, 0.332107842, 0.8055556 ],
-    "scissors_5": [ 0.3125, 0.09766343, 0.435049027, 0.71405226 ],
-    "scissors_6": [ 0.379901975, 0.24308826, 0.32107842, 0.5718954 ],
-    "scissors_7": [ 0.341911763, 0.20714055, 0.3137255, 0.6356209 ],
-    "scissors_8": [ 0.231617644, 0.08459154, 0.504901946, 0.8480392 ],
-    "scissors_9": [ 0.170343131, 0.332957536, 0.767156839, 0.403594762 ],
-    "scissors_10": [ 0.204656869, 0.120539248, 0.5245098, 0.743464053 ],
-    "scissors_11": [ 0.05514706, 0.159754932, 0.799019635, 0.730392158 ],
-    "scissors_12": [ 0.265931368, 0.169558853, 0.5061275, 0.606209159 ],
-    "scissors_13": [ 0.241421565, 0.184264734, 0.448529422, 0.6830065 ],
-    "scissors_14": [ 0.05759804, 0.05027781, 0.75, 0.882352948 ],
-    "scissors_15": [ 0.191176474, 0.169558853, 0.6936275, 0.6748366 ],
-    "scissors_16": [ 0.1004902, 0.279036, 0.6911765, 0.477124184 ],
-    "scissors_17": [ 0.2720588, 0.131977156, 0.4987745, 0.6911765 ],
-    "scissors_18": [ 0.180147052, 0.112369314, 0.6262255, 0.6666667 ],
-    "scissors_19": [ 0.333333343, 0.0274019931, 0.443627447, 0.852941155 ],
-    "scissors_20": [ 0.158088237, 0.04047389, 0.6691176, 0.843137264 ]
-}
-```
-
 Ezután a társítások ezen térképével feltöltheti az egyes mintaképeket a régió koordinátáival (legfeljebb 64 lemezképet tölthet fel egyetlen kötegben). Adja hozzá a következő kódot.
+
+
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_upload)]
 
 > [!NOTE]
 > A lemezképek elérési útját módosítania kell, attól függően, hogy a Cognitive Services Python SDK Samples-tárházat korábban letöltötte.
 
-```Python
-# Update this with the path to where you downloaded the images.
-base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
+## <a name="train-the-project"></a>A projekt betanítása
 
-# Go through the data table above and create the images
-print ("Adding images...")
-tagged_images_with_regions = []
+Ez a kód az előrejelzési modell első iterációját hozza létre. 
 
-for file_name in fork_image_regions.keys():
-    x,y,w,h = fork_image_regions[file_name]
-    regions = [ Region(tag_id=fork_tag.id, left=x,top=y,width=w,height=h) ]
-
-    with open(base_image_url + "images/fork/" + file_name + ".jpg", mode="rb") as image_contents:
-        tagged_images_with_regions.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), regions=regions))
-
-for file_name in scissors_image_regions.keys():
-    x,y,w,h = scissors_image_regions[file_name]
-    regions = [ Region(tag_id=scissors_tag.id, left=x,top=y,width=w,height=h) ]
-
-    with open(base_image_url + "images/scissors/" + file_name + ".jpg", mode="rb") as image_contents:
-        tagged_images_with_regions.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), regions=regions))
-
-upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=tagged_images_with_regions))
-if not upload_result.is_batch_successful:
-    print("Image batch upload failed.")
-    for image in upload_result.images:
-        print("Image status: ", image.status)
-    exit(-1)
-```
-
-## <a name="train-and-publish-the-project"></a>A projekt betanítása és közzététele
-
-Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
-
-```Python
-import time
-
-print ("Training...")
-iteration = trainer.train_project(project.id)
-while (iteration.status != "Completed"):
-    iteration = trainer.get_iteration(project.id, iteration.id)
-    print ("Training status: " + iteration.status)
-    time.sleep(1)
-
-# The iteration is now trained. Publish it to the project endpoint
-trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, prediction_resource_id)
-print ("Done!")
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_train)]
 
 > [!TIP]
 > Betanítás kiválasztott címkékkel
 >
 > Igény szerint betaníthatja az alkalmazott címkék egy részhalmazát. Ezt akkor érdemes megtenni, ha még nem alkalmazta elég bizonyos címkéket, de másokkal is rendelkezik. A **[train_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#train-project-project-id--training-type-none--reserved-budget-in-hours-0--force-train-false--notification-email-address-none--selected-tags-none--custom-headers-none--raw-false----operation-config-&preserve-view=true)** hívásban állítsa a választható paramétert *selected_tags* a használni kívánt címkék azonosító sztringek listájára. A modell betanításával csak a listán szereplő címkéket ismeri fel a rendszer.
 
-## <a name="use-the-prediction-endpoint"></a>Az előrejelzési végpont használata
+## <a name="publish-the-current-iteration"></a>Az aktuális iteráció közzététele
+
+Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi. A következő kód a modell aktuális iterációját teszi elérhetővé a lekérdezéshez. 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_publish)]
+
+## <a name="test-the-prediction-endpoint"></a>Az előrejelzési végpont tesztelése
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
-```Python
-from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
-from msrest.authentication import ApiKeyCredentials
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_test)]
 
-# Now there is a trained endpoint that can be used to make a prediction
-prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
-predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
 
-# Open the sample image and get back the prediction results.
-with open(base_image_url + "images/Test/test_od_image.jpg", mode="rb") as test_data:
-    results = predictor.detect_image(project.id, publish_iteration_name, test_data)
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
-# Display the results.    
-for prediction in results.predictions:
-    print("\t" + prediction.tag_name + ": {0:.2f}% bbox.left = {1:.2f}, bbox.top = {2:.2f}, bbox.width = {3:.2f}, bbox.height = {4:.2f}".format(prediction.probability * 100, prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height))
-```
-
-## <a name="run-the-application"></a>Az alkalmazás futtatása
-
-Futtassa a *sample.py* fájlt.
+Futtassa a *CustomVisionQuickstart.py* .
 
 ```powershell
-python sample.py
+python CustomVisionQuickstart.py
 ```
 
-Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti, hogy a tesztkép (amely a **samples/vision/images/Test** helyen található) megfelelően lett-e megcímkézve, és helyes-e az észlelési régió.
+Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti, hogy a **<base_image_location>/images/test** található) tesztelési rendszerkép megfelelően van-e megjelölve, és hogy az észlelési régió helyes-e. Vissza is léphet a [Custom Vision webhelyére](https://customvision.ai), és megtekintheti az újonnan létrehozott projekt aktuális állapotát.
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most végrehajtotta az objektum-észlelési folyamat minden lépését a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
 
@@ -238,4 +171,5 @@ Most végrehajtotta az objektum-észlelési folyamat minden lépését a kódban
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
 
 * [Mi a Custom Vision?](../../overview.md)
+* A minta forráskódja megtalálható a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.cs)
 * [Az SDK dokumentációja](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

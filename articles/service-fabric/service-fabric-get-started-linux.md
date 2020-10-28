@@ -4,12 +4,12 @@ description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre 
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168409"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675282"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -17,9 +17,9 @@ ms.locfileid: "92168409"
 > * [Linux](service-fabric-get-started-linux.md)
 > * [Mac OS X](service-fabric-get-started-mac.md)
 
-Az Azure Service Fabric alkalmazások telepítéséhez és futtatásához [Service-Fabric-Application-model.md] a linuxos fejlesztői gépen telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-fejlesztéshez készült opcionális SDK-kat is telepítheti. 
+Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-fejlesztéshez készült opcionális SDK-kat is telepítheti. 
 
-A cikkben ismertetett lépések azt feltételezik, hogy natív módon telepíti a Linux rendszert, vagy használja a (Service Fabric beépített-tároló rendszerképét) [ https://hub.docker.com/_/microsoft-service-fabric-onebox ], például: `mcr.microsoft.com/service-fabric/onebox:u18` .
+A cikkben ismertetett lépések azt feltételezik, hogy natív módon telepíti a Linux rendszert, vagy használja a [Service Fabric beépített-tároló rendszerképet](https://hub.docker.com/_/microsoft-service-fabric-onebox), például: `mcr.microsoft.com/service-fabric/onebox:u18` .
 
 A felhőben vagy a helyszínen üzemeltetett Service Fabric entitásokat az Azure Service Fabric parancssori felületével (CLI) kezelheti. A parancssori felület telepítési módját a [Service Fabric parancssori felület telepítését](./service-fabric-cli.md) ismertető témakörben találja.
 
@@ -298,13 +298,13 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 > 
 > Ubuntu rendszeren ajánlott közvetlenül az Eclipse webhelyéről elvégezni a telepítést csomagtelepítő helyett (`apt` vagy `apt-get`). Így biztosan az Eclipse legfrissebb verzióját fogja beszerezni. Telepítheti a Java-fejlesztőknek vagy a Java EE-fejlesztőknek készült Eclipse IDE-t.
 
-1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. A telepített összetevők verziójának megtekintéséhez válassza az **Help**  >  **Eclipse**-  >  **telepítés részleteinek**súgóját. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
+1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. A telepített összetevők verziójának megtekintéséhez válassza az **Help**  >  **Eclipse** -  >  **telepítés részleteinek** súgóját. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
 
-2. A Service Fabric beépülő modul telepítéséhez válassza a **Súgó**  >  **új szoftver telepítése**lehetőséget.
+2. A Service Fabric beépülő modul telepítéséhez válassza a **Súgó**  >  **új szoftver telepítése** lehetőséget.
 
-3. A **Work with (munka** ) mezőben adja meg a **https: \/ /dl.microsoft.com/Eclipse**értéket.
+3. A **Work with (munka** ) mezőben adja meg a **https: \/ /dl.microsoft.com/Eclipse** értéket.
 
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza a **Hozzáadás** elemet.
 
     ![Az Available Software (Elérhető szoftver) lap][sf-eclipse-plugin]
 
@@ -312,7 +312,7 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 
 6. Hajtsa végre a telepítés lépéseit. Ezután fogadja el a végfelhasználói licencszerződést.
 
-Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Jelölje be az **Help**  >  **Eclipse**-  >  **telepítés részleteinek**súgóját. Ezután keressen rá Service Fabric a telepített beépülő modulok listájában. Válassza a **frissítés** lehetőséget, ha újabb verzió érhető el.
+Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Jelölje be az **Help**  >  **Eclipse** -  >  **telepítés részleteinek** súgóját. Ezután keressen rá Service Fabric a telepített beépülő modulok listájában. Válassza a **frissítés** lehetőséget, ha újabb verzió érhető el.
 
 További információ: [Service Fabric beépülő modul az Eclipse-alapú Java-alkalmazásfejlesztéshez](service-fabric-get-started-eclipse.md).
 
@@ -350,7 +350,7 @@ A Service Fabric SDK-k eltávolításához futtassa a következő parancsokat.
     npm uninstall -g generator-azuresfguest
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83652161"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676781"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Felhőalapú tárolási alkalmazások monitorozása és hibaelhárítása
 
@@ -37,13 +37,13 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
 
 ## <a name="turn-on-logging-and-metrics"></a>A naplózás és a mérőszámok bekapcsolása
 
-A bal oldali menüben válassza az **Erőforráscsoportok**, a **myResourceGroup** elemet, majd válassza ki a tárfiókját az erőforrások listájából.
+A bal oldali menüben válassza az **Erőforráscsoportok** , a **myResourceGroup** elemet, majd válassza ki a tárfiókját az erőforrások listájából.
 
 A **Diagnosztikai beállítások (klasszikus)** területen állítsa az **Állapot** beállítást **Be** értékre. Győződjön meg arról, hogy a **Blob tulajdonságai** területen lévő összes beállítás engedélyezve van.
 
 Ha elkészült, kattintson a **Mentés** gombra.
 
-![Diagnosztika panel](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
+![Képernyőfelvétel: a naplózás és a metrikák bekapcsolásának konfigurációs beállításait tartalmazó szakasz.](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>Riasztások engedélyezése
 
@@ -89,15 +89,15 @@ Ebben az esetben a [Microsoft Message Analyzer](https://technet.microsoft.com/li
 
 Töltse le és telepítse a [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) alkalmazást.
 
-Indítsa el az alkalmazást, és válassza a **fájl**  >  **megnyitása**  >  **más forrásokból**lehetőséget.
+Indítsa el az alkalmazást, és válassza a **fájl**  >  **megnyitása**  >  **más forrásokból** lehetőséget.
 
-A **File Selector** (Fájl kiválasztása) párbeszédablakban válassza a **+ Add Azure Connection** (+ Azure-kapcsolat hozzáadása) lehetőséget. Adja meg a **tárfiók nevét** és a **fiókkulcsot**, majd kattintson az **OK** gombra.
+A **File Selector** (Fájl kiválasztása) párbeszédablakban válassza a **+ Add Azure Connection** (+ Azure-kapcsolat hozzáadása) lehetőséget. Adja meg a **tárfiók nevét** és a **fiókkulcsot** , majd kattintson az **OK** gombra.
 
 ![Microsoft Message Analyzer – Azure Storage-kapcsolat hozzáadása párbeszédpanel](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 
 A csatlakozást követően bontsa ki a tárolókat a Storage fanézetében a naplóblobok megtekintéséhez. Válassza ki a legutóbbi naplóbejegyzést, és kattintson az **OK** gombra.
 
-![Microsoft Message Analyzer – Azure Storage-kapcsolat hozzáadása párbeszédpanel](media/storage-monitor-troubleshoot-storage-application/figure4.png)
+![Képernyőkép, amely a Microsoft Message Analyzert jeleníti meg, és kiemeli a kiválasztott naplófájlt.](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
 A **New Session** (Új munkamenet) párbeszédpanelen kattintson a **Start** (Indítás) gombra a napló megtekintéséhez.
 
@@ -107,7 +107,7 @@ Miután a naplót megnyitotta, megtekintheti a Storage-eseményeket. Ahogy az al
 
 A [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) szintén egy olyan eszköz, amelyet a tárfiókkal való kommunikációhoz használhat, beleértve a **$logs** tárolót és az abban található naplókat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat negyedik, utolsó részében megismerkedett a tárfiókok monitorozásával és hibaelhárításával, például a következőkkel:
 

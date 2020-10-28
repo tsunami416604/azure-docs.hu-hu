@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 8aeb44c6cbcb18bcd18408142bdfdeccffbbe055
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 96f2c96e7770ec7acc690a1d057fef16db5b88ed
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454843"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>Oktatóanyag: Azure Active Directory szintű integráció
 
@@ -56,14 +56,14 @@ Az Azure AD-ba való kiépítésének konfigurálásához fel kell vennie a kata
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból **szakaszban írja be** a kifejezést a keresőmezőbe.
 1. Válassza az eredmények panel kiértékelése **lehetőséget, majd** adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést úgy konfigurálja és teszteli, hogy a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést úgy konfigurálja és teszteli, hogy a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség.
 
 Az Azure AD-alapú egyszeri bejelentkezés a következő építőelemek használatával konfigurálható és tesztelhető:
@@ -79,8 +79,8 @@ Az Azure AD-alapú egyszeri bejelentkezés a következő építőelemek használ
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a többtényezős **alkalmazás-** integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a többtényezős **alkalmazás-** integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -116,11 +116,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. A képernyő felső részén válassza az **új felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A képernyő felső részén válassza az **új felhasználó** lehetőséget.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
-   1. A **Felhasználónév** mezőbe írja be a nevet `<username>@<companydomain>.<extension>` . Például így: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a nevet `<username>@<companydomain>.<extension>` . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -128,13 +128,13 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 
 Ebben a szakaszban a B. Simon számára engedélyezheti az Azure egyszeri bejelentkezést, ha a hozzáférést a mértékek alapján biztosítja.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások **listában válassza a**kiválasztva lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások **listában válassza a** kiválasztva lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -144,7 +144,7 @@ Ebben a szakaszban a B. Simon számára engedélyezheti az Azure egyszeri bejele
 
 ### <a name="configure-degreed-sso"></a>Többfokozatú egyszeri bejelentkezés konfigurálása
 
-Ha az egyszeri bejelentkezést a kibővített **oldalon szeretné** konfigurálni, akkor a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt URL-címeket kell elküldenie Azure Portalról a kibővített [támogatási csapatnak](mailto:admin@degreed.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést a kibővített **oldalon szeretné** konfigurálni, akkor a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt URL-címeket kell elküldenie Azure Portalról a kibővített [támogatási csapatnak](mailto:sso@degreed.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-degreed-test-user"></a>Többfokozatú tesztelési felhasználó létrehozása
 
@@ -153,7 +153,7 @@ Ennek a szakasznak a célja, hogy egy Britta Simon nevű felhasználót hozzon l
 Ez a szakasz nem tartalmaz műveleti elemeket. Ha még nem létezik, a rendszer létrehoz egy új felhasználót a kiterjedően való hozzáférésre tett kísérlet során.
 
 > [!NOTE]
-> Ha manuálisan kell létrehoznia egy felhasználót, fel kell vennie a kapcsolatot a [többfokozatú támogatási csapattal](mailto:admin@degreed.com).
+> Ha manuálisan kell létrehoznia egy felhasználót, fel kell vennie a kapcsolatot a [többfokozatú támogatási csapattal](mailto:sso@degreed.com).
 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése

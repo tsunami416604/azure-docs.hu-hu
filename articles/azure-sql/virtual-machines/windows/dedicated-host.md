@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 40c851e5ff5fc83ccf6b6d67e319bb97bd860bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 140d95aeb7baf4b342044bc178d108239236229b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669103"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677678"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM futtatása egy dedikált Azure-gazdagépen 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,15 +30,14 @@ Az [Azure dedikált gazdagép](/azure/virtual-machines/windows/dedicated-hosts) 
 
 ## <a name="limitations"></a>Korlátozások
 
-- A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-- A következő virtuálisgép-sorozatok támogatottak: DSv3 és ESv3. 
+- Nem minden virtuálisgép-sorozat támogatott a dedikált gazdagépeken, a virtuálisgép-sorozat elérhetősége pedig régiónként változik. További információ: [Az Azure dedikált gazdagépek áttekintése](../../../virtual-machines/dedicated-hosts.md).
 
 ## <a name="licensing"></a>Licencek
 
 Két különböző licencelési lehetőség közül választhat, ha a SQL Server VM egy Azure dedikált gazdagépen helyezi el. 
 
-  - **SQL virtuális gép licencelése**: Ez a meglévő licencelési lehetőség, ahol egyenként kell fizetnie az egyes SQL Server VM licencekhez. 
-  - **Dedikált gazdagép licencelése**: az Azure dedikált gazdagéphez elérhető új licencelési modell, ahol a SQL Server licencek a gazdagép szintjén vannak csomagolva és fizetve. 
+  - **SQL virtuális gép licencelése** : Ez a meglévő licencelési lehetőség, ahol egyenként kell fizetnie az egyes SQL Server VM licencekhez. 
+  - **Dedikált gazdagép licencelése** : az Azure dedikált gazdagéphez elérhető új licencelési modell, ahol a SQL Server licencek a gazdagép szintjén vannak csomagolva és fizetve. 
 
 
 A meglévő SQL Server licencek használatára vonatkozó gazdagép-szintű beállítások: 
@@ -73,7 +72,7 @@ A: a meglévő Windows Server-és SQL Server-licencek értékét frissítési ga
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért tekintse át a következő cikkeket: 
+További információkat az következő cikkekben talál: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)

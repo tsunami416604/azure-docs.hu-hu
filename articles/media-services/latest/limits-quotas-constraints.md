@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: b1836b1d0dc69a2a0b186a54974895eb0d8cd91a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6ca7a444f2a3d4babe220548edb10bd37784be7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265490"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678110"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Kvóták és korlátozások Azure Media Services
@@ -32,7 +32,7 @@ Ez a cikk a leggyakoribb Microsoft Azure Media Services-korlátozásokat sorolja
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Egyetlen előfizetésben lévő [fiókok Media Services](media-services-account-concept.md) | 25 (rögzített) |
+| Egyetlen előfizetésben lévő [fiókok Media Services](media-services-account-concept.md) | 100 (rögzített) |
 
 ## <a name="asset-limits"></a>Eszközök korlátai
 
@@ -90,7 +90,7 @@ A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akk
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| [Adatfolyam-végpontok](streaming-endpoint-concept.md) (leállított vagy futó) Media Services fiókkal|2 |
+| [Adatfolyam-végpontok](streaming-endpoint-concept.md) (leállított vagy futó) Media Services fiókkal | 2 |
 | Prémium szintű folyamatos átviteli egységek | 10 |
 | [Dinamikusjegyzék-szűrők](filters-dynamic-manifest-overview.md)|100|
 | [Folyamatos átviteli házirendek](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
@@ -102,9 +102,9 @@ A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akk
 
 ## <a name="protection-limits"></a>Védelmi korlátok
 
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
-| A [tartalmi kulcsokra vonatkozó házirend](content-key-policy-concept.md) beállításai |30 | 
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
+| A [tartalmi kulcsokra vonatkozó házirend](content-key-policy-concept.md) beállításai |30 |
 | Licencek havonta az egyes DRM-típusok esetében Media Services Key Delivery Service-fiókban|1,000,000|
 
 ## <a name="support-ticket"></a>Támogatási jegy

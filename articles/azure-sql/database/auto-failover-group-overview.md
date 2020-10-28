@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627227"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675298"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -243,7 +243,7 @@ Mivel minden példány el van különítve a saját VNet, engedélyezni kell a k
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Feladatátvételi csoport létrehozása a felügyelt példányok között eltérő előfizetésekben
 
-Létrehozhat egy feladatátvételi csoportot két különböző előfizetésben lévő SQL felügyelt példányok között, feltéve, hogy az előfizetések ugyanahhoz a [Azure Active Directory bérlőhöz](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)vannak társítva. A PowerShell API használatakor ezt megteheti a `PartnerSubscriptionId` másodlagos SQL felügyelt példányának paraméterének megadásával. REST API használatakor a paraméterben szereplő minden példány-azonosító `properties.managedInstancePairs` rendelkezhet saját subscriptionID is.
+Létrehozhat egy feladatátvételi csoportot két különböző előfizetésben lévő SQL felügyelt példányok között, feltéve, hogy az előfizetések ugyanahhoz a [Azure Active Directory bérlőhöz](../../active-directory/fundamentals/active-directory-whatis.md#terminology)vannak társítva. A PowerShell API használatakor ezt megteheti a `PartnerSubscriptionId` másodlagos SQL felügyelt példányának paraméterének megadásával. REST API használatakor a paraméterben szereplő minden példány-azonosító `properties.managedInstancePairs` rendelkezhet saját subscriptionID is.
   
 > [!IMPORTANT]
 > A Azure Portal nem támogatja a feladatátvételi csoportok létrehozását a különböző előfizetések között. Emellett a meglévő feladatátvételi csoportok esetében a különböző előfizetések és/vagy erőforráscsoportok esetében a feladatátvételt nem lehet manuálisan kezdeményezni a portálon keresztül az elsődleges SQL felügyelt példányon. Ehelyett azt a földrajzilag másodlagos példányból kell kezdeményeznie.
@@ -341,8 +341,8 @@ Ha az üzletmenet-folytonossági terv automatikus feladatátvételi csoportokkal
 1. [Nyilvános IP-cím létrehozása](../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 2. [Hozzon létre egy nyilvános Load balancert](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) , és rendelje hozzá a nyilvános IP-címet.
 3. [Hozzon létre egy virtuális hálózatot és a virtuális gépeket](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) az előtér-összetevőkhöz
-4. [Hozzon létre egy hálózati biztonsági csoportot](../../virtual-network/security-overview.md) , és konfigurálja a bejövő kapcsolatokat.
-5. Győződjön meg arról, hogy a kimenő kapcsolatok Azure SQL Database az "SQL" [szolgáltatás címkével](../../virtual-network/security-overview.md#service-tags).
+4. [Hozzon létre egy hálózati biztonsági csoportot](../../virtual-network/network-security-groups-overview.md) , és konfigurálja a bejövő kapcsolatokat.
+5. Győződjön meg arról, hogy a kimenő kapcsolatok Azure SQL Database az "SQL" [szolgáltatás címkével](../../virtual-network/network-security-groups-overview.md#service-tags).
 6. Hozzon létre egy [SQL Database tűzfalszabály](firewall-configure.md) , amely engedélyezi az 1. lépésben létrehozott nyilvános IP-címről érkező bejövő forgalmat.
 
 A kimenő hozzáférés konfigurálásával és a tűzfalszabályok által használt IP-címekkel kapcsolatos további információkért lásd: terheléselosztó [kimenő kapcsolatai](../../load-balancer/load-balancer-outbound-connections.md).
@@ -362,7 +362,7 @@ Ha egy feladatátvételi csoportot állít be az elsődleges és a másodlagos S
 - Az SQL felügyelt példány példányai által használt virtuális hálózatokat [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [expressz útvonalon](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)keresztül kell csatlakoztatni. Ha két virtuális hálózat egy helyszíni hálózaton keresztül csatlakozik, győződjön meg arról, hogy nem blokkolja tűzfalszabály az 5022-es és a 11000–11999-es portokat. A globális VNet-társítást az alábbi megjegyzésben ismertetett korlátozás támogatja.
 
    > [!IMPORTANT]
-   > [9/22/2020-ben bejelentettük a globális virtuális hálózati társítást az újonnan létrehozott virtuális fürtökhöz](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Ez azt jelenti, hogy a globális virtuális hálózati társítás támogatott a bejelentési dátum után üres alhálózatokban létrehozott SQL felügyelt példányok esetében, valamint az ezen alhálózatokban létrehozott összes további felügyelt példány esetében is. A többi SQL felügyelt példányok társításának támogatása az azonos régióban található hálózatokra korlátozódik a [globális virtuális hálózati társítás korlátai](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
+   > [9/22/2020-ben bejelentettük a globális virtuális hálózati társítást az újonnan létrehozott virtuális fürtökhöz](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Ez azt jelenti, hogy a globális virtuális hálózati társítás támogatott a bejelentési dátum után üres alhálózatokban létrehozott SQL felügyelt példányok esetében, valamint az ezen alhálózatokban létrehozott összes további felügyelt példány esetében is. A többi SQL felügyelt példányok társításának támogatása az azonos régióban található hálózatokra korlátozódik a [globális virtuális hálózati társítás korlátai](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
 
 - A két felügyelt SQL-példány virtuális hálózatok nem rendelkezhet átfedésben lévő IP-címekkel.
 - A hálózati biztonsági csoportokat (NSG) úgy kell beállítania, hogy az 5022-es portnak és a 11000–12000 közötti tartományba eső portoknak engedélyezni kell a másik felügyelt példány alhálózatával folytatott bejövő és kimenő forgalmat. Ezzel lehetővé teszi a virtuális hálózatok közötti replikációs forgalmat.
@@ -406,7 +406,7 @@ Vegye figyelembe a következő korlátozásokat:
 
 ## <a name="programmatically-managing-failover-groups"></a>Feladatátvételi csoportok programozott kezelése
 
-Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és az aktív geo-replikáció programozott módon is felügyelhető Azure PowerShell és a REST API használatával. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure/). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
+Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és az aktív geo-replikáció programozott módon is felügyelhető Azure PowerShell és a REST API használatával. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](/rest/api/sql/) és [Azure PowerShell parancsmagokat](/powershell/azure/). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>SQL Database feladatátvétel kezelése
 
@@ -435,13 +435,13 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 | API | Leírás |
 | --- | --- |
-| [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Feladatátvételi csoport létrehozása vagy frissítése |
-| [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
-| [Feladatátvétel (tervezett)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | A teljes adatszinkronizálással elindítja az aktuális elsődleges kiszolgálóról a másodlagos kiszolgálóra irányuló feladatátvételt.|
-| [Adatvesztés kényszerített feladatátvételének engedélyezése](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Az aktuális elsődleges kiszolgálóról a másodlagos kiszolgálóra történő feladatátvételt az adatok szinkronizálása nélkül indítja el. A művelet adatvesztést okozhat. |
-| [Feladatátvételi csoport beolvasása](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Lekéri a feladatátvételi csoport konfigurációját. |
-| [Feladatátvételi csoportok listázása kiszolgáló szerint](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | A kiszolgálón található feladatátvételi csoportok felsorolása. |
-| [Feladatátvételi csoport frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | A feladatátvételi csoport konfigurációjának frissítése. |
+| [Feladatátvételi csoport létrehozása vagy frissítése](/rest/api/sql/failovergroups/createorupdate) | Feladatátvételi csoport létrehozása vagy frissítése |
+| [Feladatátvételi csoport törlése](/rest/api/sql/failovergroups/delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
+| [Feladatátvétel (tervezett)](/rest/api/sql/failovergroups/failover) | A teljes adatszinkronizálással elindítja az aktuális elsődleges kiszolgálóról a másodlagos kiszolgálóra irányuló feladatátvételt.|
+| [Adatvesztés kényszerített feladatátvételének engedélyezése](/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Az aktuális elsődleges kiszolgálóról a másodlagos kiszolgálóra történő feladatátvételt az adatok szinkronizálása nélkül indítja el. A művelet adatvesztést okozhat. |
+| [Feladatátvételi csoport beolvasása](/rest/api/sql/failovergroups/get) | Lekéri a feladatátvételi csoport konfigurációját. |
+| [Feladatátvételi csoportok listázása kiszolgáló szerint](/rest/api/sql/failovergroups/listbyserver) | A kiszolgálón található feladatátvételi csoportok felsorolása. |
+| [Feladatátvételi csoport frissítése](/rest/api/sql/failovergroups/update) | A feladatátvételi csoport konfigurációjának frissítése. |
 
 ---
 
@@ -473,12 +473,12 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 | API | Leírás |
 | --- | --- |
-| [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Feladatátvételi csoport konfigurációjának létrehozása vagy frissítése |
-| [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Feladatátvételi csoport eltávolítása a példányból |
-| [Feladatátvétel (tervezett)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | A teljes adatszinkronizálással elindítja az aktuális elsődleges példány feladatátvételét erre a példányra. |
-| [Adatvesztés kényszerített feladatátvételének engedélyezése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Az aktuális elsődleges példányról a másodlagos példányra történő feladatátvételt az adatok szinkronizálása nélkül indítja el. A művelet adatvesztést okozhat. |
-| [Feladatátvételi csoport beolvasása](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | lekéri a feladatátvételi csoport konfigurációját. |
-| [Feladatátvételi csoportok listázása hely szerint](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Egy helyen lévő feladatátvételi csoportok felsorolása. |
+| [Feladatátvételi csoport létrehozása vagy frissítése](/rest/api/sql/instancefailovergroups/createorupdate) | Feladatátvételi csoport konfigurációjának létrehozása vagy frissítése |
+| [Feladatátvételi csoport törlése](/rest/api/sql/instancefailovergroups/delete) | Feladatátvételi csoport eltávolítása a példányból |
+| [Feladatátvétel (tervezett)](/rest/api/sql/instancefailovergroups/failover) | A teljes adatszinkronizálással elindítja az aktuális elsődleges példány feladatátvételét erre a példányra. |
+| [Adatvesztés kényszerített feladatátvételének engedélyezése](/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Az aktuális elsődleges példányról a másodlagos példányra történő feladatátvételt az adatok szinkronizálása nélkül indítja el. A művelet adatvesztést okozhat. |
+| [Feladatátvételi csoport beolvasása](/rest/api/sql/instancefailovergroups/get) | lekéri a feladatátvételi csoport konfigurációját. |
+| [Feladatátvételi csoportok listázása hely szerint](/rest/api/sql/instancefailovergroups/listbylocation) | Egy helyen lévő feladatátvételi csoportok felsorolása. |
 
 ---
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c670c011f911e9b27f1280800508124d32e696cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19a9abe3a03a384a69950a8ed9b63353e6e36588
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489843"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676260"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Gyors útmutató: tárolási események továbbítása webes végponthoz az Azure CLI-vel
 
@@ -24,7 +24,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a c
 
 A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat a webalkalmazásnak küldte el a rendszer.
 
-![Előfizetési esemény megtekintése](./media/storage-blob-event-quickstart/view-results.png)
+![Képernyőkép a webalkalmazásnak elküldhető eseményekről a Azure Event Grid-megjelenítőről.](./media/storage-blob-event-quickstart/view-results.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,7 +34,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` paranccsal.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -147,7 +147,7 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
 
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 Ha azt tervezi, hogy folytatja a tárfiók és az esemény előfizetésének használatát, akkor ne törölje a cikkben létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
 
 A `<resource_group_name>` elemet cserélje le a fent létrehozott erőforráscsoportra.
@@ -156,7 +156,7 @@ A `<resource_group_name>` elemet cserélje le a fent létrehozott erőforráscso
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthatnak segítséget a Blob Storage-események és az Event Grid:
 

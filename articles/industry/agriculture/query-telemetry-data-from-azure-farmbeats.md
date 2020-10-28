@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
-ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9067e2f78c8098d4a21263ac89caf03da631274
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80349802"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677489"
 ---
 # <a name="query-ingested-telemetry-data"></a>Feldolgozott telemetria-adatok lekérdezése
 
@@ -24,7 +24,7 @@ Mielőtt folytatná ezt a cikket, győződjön meg róla, hogy telepítette a Fa
 
 Az érzékelő telemetria-információinak betöltéséhez látogasson el a [korábbi telemetria-adatbevitelre](ingest-historical-telemetry-data-in-azure-farmbeats.md)
 
-Mielőtt továbblépne, meg kell győződnie arról, hogy jól ismeri a FarmBeats REST API-kat, mivel az API-k használatával kérdezi le a betöltött telemetria. A FarmBeats API-kkal kapcsolatos további információkért lásd: [FARMBEATS REST API](rest-api-in-azure-farmbeats.md)-k. Győződjön meg **arról, hogy képes API-kérelmeket készíteni a FarmBeats Datahub-végpontjának**.
+Mielőtt továbblépne, meg kell győződnie arról, hogy jól ismeri a FarmBeats REST API-kat, mivel az API-k használatával kérdezi le a betöltött telemetria. A FarmBeats API-kkal kapcsolatos további információkért lásd: [FARMBEATS REST API](rest-api-in-azure-farmbeats.md)-k. Győződjön meg **arról, hogy képes API-kérelmeket készíteni a FarmBeats Datahub-végpontjának** .
 
 ## <a name="query-ingested-sensor-telemetry-data"></a>Betöltött érzékelő telemetria-beli lekérdezése
 
@@ -111,15 +111,15 @@ A fenti példában szereplő válaszban a lekérdezett érzékelő telemetria k�
 
 A FarmBeats [Azure Time Series Insights (ÁME)](https://azure.microsoft.com/services/time-series-insights/) használatával teszi lehetővé az adatok betöltését, tárolását, lekérdezését és megjelenítését a IoT-skálán – a nagy mértékben környezetfüggő és idősorozatra optimalizált adatok.
 
-A rendszer telemetria-adatkérést fogad egy EventHub, majd feldolgozza és leküldi a FarmBeats erőforráscsoport belüli ÁME-környezetbe. Az adatok közvetlenül az ÁME-ből kérhetők le. További információ: az [ÁME dokumentációja](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)
+A rendszer telemetria-adatkérést fogad egy EventHub, majd feldolgozza és leküldi a FarmBeats erőforráscsoport belüli ÁME-környezetbe. Az adatok közvetlenül az ÁME-ből kérhetők le. További információ: az [ÁME dokumentációja](../../time-series-insights/time-series-insights-explorer.md)
 
 Kövesse az alábbi lépéseket az ÁME-beli adatmegjelenítéshez:
 
-1. Nyissa meg az **Azure Portal**  >  **FarmBeats DataHub erőforráscsoportot** > válassza a **Time Series Insights** Environment (ÁME-XXXX) > **adatelérési házirendek**lehetőséget. Felhasználó hozzáadása olvasó vagy közreműködői hozzáféréssel.
-2. Nyissa meg **Time Series Insights** környezet **Áttekintés** lapját (ÁME-XXXX), és válassza ki a **Time Series Insights Explorer URL-címét**. Most már láthatóvá teheti a betöltött telemetria.
+1. Nyissa meg az **Azure Portal**  >  **FarmBeats DataHub erőforráscsoportot** > válassza a **Time Series Insights** Environment (ÁME-XXXX) > **adatelérési házirendek** lehetőséget. Felhasználó hozzáadása olvasó vagy közreműködői hozzáféréssel.
+2. Nyissa meg **Time Series Insights** környezet **Áttekintés** lapját (ÁME-XXXX), és válassza ki a **Time Series Insights Explorer URL-címét** . Most már láthatóvá teheti a betöltött telemetria.
 
 A telemetria tárolása, lekérdezése és megjelenítése mellett az ÁME is lehetővé teszi az integrációt egy Power BI irányítópulton. További információ: [itt]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Mostantól lekérdezte az érzékelő adatait az Azure FarmBeats-példányból. Most megismerheti, hogyan [hozhatja](generate-maps-in-azure-farmbeats.md#generate-maps) ki a térképeket a farmokhoz.

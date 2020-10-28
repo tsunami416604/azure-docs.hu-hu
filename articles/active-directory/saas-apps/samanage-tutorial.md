@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab720430af0341f3a42d9f4d4dc19b9469872211
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707577"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Oktatóanyag: Azure Active Directory integráció a SolarWinds Service Desk szolgáltatással (korábban Samanage)
 
@@ -27,7 +27,7 @@ A SolarWinds és az Azure AD integrálásával a következő előnyöket nyújtj
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a SolarWinds (egyszeri bejelentkezés) az Azure AD-fiókokkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -61,13 +61,13 @@ A SolarWinds Azure AD-be való integrálásának konfigurálásához hozzá kell
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **SolarWinds**kifejezést, válassza a **SolarWinds** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **SolarWinds** kifejezést, válassza a **SolarWinds** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![SolarWinds az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az SolarWinds-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az SolarWinds-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a SolarWinds kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés SolarWinds való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés SolarWinds való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **SolarWinds** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **SolarWinds** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -132,7 +132,7 @@ Az Azure AD egyszeri bejelentkezés SolarWinds való konfigurálásához hajtsa 
    
     ![Irányítópult](./media/samanage-tutorial/tutorial_samanage_001.png "Irányítópult")
 
-3. Kattintson az **egyszeri bejelentkezés**elemre.
+3. Kattintson az **egyszeri bejelentkezés** elemre.
    
     ![Egyszeri bejelentkezés](./media/samanage-tutorial/tutorial_samanage_002.png "Egyszeri bejelentkezés")
 
@@ -140,7 +140,7 @@ Az Azure AD egyszeri bejelentkezés SolarWinds való konfigurálásához hajtsa 
    
     ![Bejelentkezés az SAML használatával](./media/samanage-tutorial/tutorial_samanage_003.png "Bejelentkezés az SAML használatával")
  
-    a. Kattintson **az egyszeri Sign-On engedélyezése SAML**használatával lehetőségre.  
+    a. Kattintson **az egyszeri Sign-On engedélyezése SAML** használatával lehetőségre.  
  
     b. Az **identitás-szolgáltató URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.    
  
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés SolarWinds való konfigurálásához hajtsa 
  
     f. Nyissa meg Azure Portal a Jegyzettömbből letöltött Base-64 kódolású tanúsítványt, másolja a vágólapra a tartalmát, majd illessze be az **Identity Provider x. 509-tanúsítvány beillesztése** szövegmezőbe.
  
-    : Kattintson **a felhasználók létrehozása lehetőségre, ha nem léteznek a SolarWinds-ben**.
+    : Kattintson **a felhasználók létrehozása lehetőségre, ha nem léteznek a SolarWinds-ben** .
  
     h. Kattintson a **Frissítés** parancsra.
 
@@ -160,7 +160,7 @@ Az Azure AD egyszeri bejelentkezés SolarWinds való konfigurálásához hajtsa 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -179,19 +179,19 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a SolarWinds hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **SolarWinds**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **SolarWinds** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **SolarWinds**lehetőséget.
+2. Az alkalmazások listában válassza a **SolarWinds** lehetőséget.
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -222,11 +222,11 @@ SolarWinds esetén a kiépítés manuális feladat.
    
     ![Felhasználók](./media/samanage-tutorial/tutorial_samanage_006.png "Felhasználók")
 
-4. Kattintson az **új felhasználó**elemre.
+4. Kattintson az **új felhasználó** elemre.
    
     ![Új felhasználó](./media/samanage-tutorial/tutorial_samanage_007.png "Új felhasználó")
 
-5. Írja be a létrehozni kívánt Azure Active Directory fiók **nevét** és **e-mail-címét** , majd kattintson a **felhasználó létrehozása**lehetőségre.
+5. Írja be a létrehozni kívánt Azure Active Directory fiók **nevét** és **e-mail-címét** , majd kattintson a **felhasználó létrehozása** lehetőségre.
    
     ![Felhasználó létrehozása](./media/samanage-tutorial/tutorial_samanage_008.png "Felhasználó létrehozása")
    
@@ -237,13 +237,12 @@ SolarWinds esetén a kiépítés manuális feladat.
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a SolarWinds csempére kattint, automatikusan be kell jelentkeznie arra a SolarWinds, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a SolarWinds csempére kattint, automatikusan be kell jelentkeznie arra a SolarWinds, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

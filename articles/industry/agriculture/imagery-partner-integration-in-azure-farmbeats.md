@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82613285"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675943"
 ---
 # <a name="imagery-partner-integration"></a>Képalkotási partner integrációja
 
@@ -43,9 +43,9 @@ Az API-k a hencegés műszaki dokumentációját tartalmazzák. További inform�
 
 ## <a name="authentication"></a>Hitelesítés
 
-A FarmBeats Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure ad) szolgáltatást használ. A Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít. 
+A FarmBeats Microsoft Azure [Active Directory](../../app-service/overview-authentication-authorization.md) (Azure ad) szolgáltatást használ. A Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít. 
 
-További információ az Azure AD-ről: [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
+További információ az Azure AD-ről: [Azure Active Directory](../../app-service/overview-authentication-authorization.md).   
 
 A FarmBeats Datahub tulajdonosi hitelesítést használ, amelynek a következő hitelesítő adatokra van szüksége:
 
@@ -138,10 +138,10 @@ Miután a partner rendelkezik hitelesítő adatokkal a FarmBeats-Datahub való k
 
 1.  Hozzon létre egy új kiterjesztett típust a következő mezőkhöz a feltölteni kívánt képtípusnak megfelelően:
 
-    - **Jelenet forrása**: például drone_partner_name
-    - **Jelenet típusa**: például a drone
-    - **Jelenet fájltípusa**: például a klorofill indexe
-    - **Jelenet tartalmának típusa**: például rendszerkép/TIFF
+    - **Jelenet forrása** : például drone_partner_name
+    - **Jelenet típusa** : például a drone
+    - **Jelenet fájltípusa** : például a klorofill indexe
+    - **Jelenet tartalmának típusa** : például rendszerkép/TIFF
 
 2.  Hívja meg a/Farms API-t, hogy lekérje a farmok listáját az Azure FarmBeats rendszerből.
 3.  Adja meg az ügyfél számára, hogy egyetlen farmot válasszon a farmok listájáról.
@@ -498,6 +498,6 @@ API-Válasz:
 A/SceneFile API-hoz intézett POST hívása egy SAS-feltöltési URL-címet ad vissza, amely a. csv vagy. TIFF fájl feltöltésére használható az Azure Blob Storage-ügyfél vagy-könyvtár használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A REST API-alapú integráció részleteivel kapcsolatos további információkért lásd: [REST API](rest-api-in-azure-farmbeats.md).

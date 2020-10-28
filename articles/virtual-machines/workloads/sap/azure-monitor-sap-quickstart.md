@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 6deb7b535c3876ae8a8e83174b97a75582e82e58
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dc8aa50c5c4ecb5e4b56a7e49453c266dad28818
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996436"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678095"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>SAP-megoldások Azure Monitor üzembe helyezése Azure Portal
 
@@ -24,7 +24,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
 
 ## <a name="create-monitoring-resource"></a>Figyelési erőforrás létrehozása
 
-1. Válassza ki Azure Monitor az **Azure Marketplace**-en elérhető **SAP-megoldásokhoz** .
+1. Válassza ki Azure Monitor az **Azure Marketplace** -en elérhető **SAP-megoldásokhoz** .
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-1.png" alt-text="A rendszerkép az Azure Marketplace-en elérhető SAP-megoldások Azure Monitor kiválasztását mutatja be." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-1.png":::
 
@@ -47,15 +47,18 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
 
 2. Válassza a **szolgáltató hozzáadása** lehetőséget, majd a legördülő listából válassza a **SAP HANA** lehetőséget. 
 
+   > [!IMPORTANT]
+   > Győződjön meg arról, hogy SAP HANA szolgáltató konfigurálva van a SAP HANA "Master" csomóponthoz.
+
 3. Adja meg a HANA-kiszolgáló magánhálózati IP-címét.
 
 4. Adja meg a használni kívánt adatbázis-bérlő nevét. Bármelyik bérlőt kiválaszthatja, de javasoljuk a **SYSTEMDB** használatát, mivel a figyelési területek szélesebb körét teszi lehetővé. 
 
-5. Adja meg a HANA-adatbázishoz tartozó SQL-portszámot. A portszámnak **[3]**[  +  **példány #]**  +  **[13]** vagy **[3]**[példány  +  **#]**  +  **[15]** formátumúnak kell lennie. Például 30013 vagy 30015. 
+5. Adja meg a HANA-adatbázishoz tartozó SQL-portszámot. A portszámnak **[3]** [  +  **példány #]**  +  **[13]** vagy **[3]** [példány  +  **#]**  +  **[15]** formátumúnak kell lennie. Például 30013 vagy 30015. 
 
 6. Adja meg a használni kívánt adatbázis-felhasználónevet. Győződjön meg arról, hogy az adatbázis-felhasználónak van hozzárendelve a **figyelés** és a **katalógus olvasási** szerepköre. 
 
-7. Ha elkészült, válassza a **szolgáltató hozzáadása**elemet. Szükség esetén folytassa a további szolgáltatók hozzáadását, vagy válassza a **felülvizsgálat + létrehozás** lehetőséget a telepítés befejezéséhez.
+7. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Szükség esetén folytassa a további szolgáltatók hozzáadását, vagy válassza a **felülvizsgálat + létrehozás** lehetőséget a telepítés befejezéséhez.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="A rendszerkép az Azure Marketplace-en elérhető SAP-megoldások Azure Monitor kiválasztását mutatja be." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
@@ -70,7 +73,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
  
 3. Adja meg a rendszerazonosító (SID), az állomásnév és a fürt nevét.
 
-4. Ha elkészült, válassza a **szolgáltató hozzáadása**elemet. Szükség esetén folytassa a további szolgáltatók hozzáadását, vagy válassza a **felülvizsgálat + létrehozás** lehetőséget a telepítés befejezéséhez.
+4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Szükség esetén folytassa a további szolgáltatók hozzáadását, vagy válassza a **felülvizsgálat + létrehozás** lehetőséget a telepítés befejezéséhez.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="A rendszerkép az Azure Marketplace-en elérhető SAP-megoldások Azure Monitor kiválasztását mutatja be." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
@@ -108,7 +111,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
 
 3. Töltse ki a mezőket a Microsoft SQL Serverhoz tartozó adatok használatával. 
 
-4. Ha elkészült, válassza a **szolgáltató hozzáadása**elemet. Szükség esetén folytassa a további szolgáltatók hozzáadását, vagy válassza a **felülvizsgálat + létrehozás** lehetőséget a telepítés befejezéséhez.
+4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Szükség esetén folytassa a további szolgáltatók hozzáadását, vagy válassza a **felülvizsgálat + létrehozás** lehetőséget a telepítés befejezéséhez.
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="A rendszerkép az Azure Marketplace-en elérhető SAP-megoldások Azure Monitor kiválasztását mutatja be." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 

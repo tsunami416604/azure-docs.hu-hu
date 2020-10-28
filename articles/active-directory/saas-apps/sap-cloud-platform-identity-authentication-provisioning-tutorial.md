@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b3fa2996edf5882cc02eeee92bcc3114bcd33348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a2a0c94dc4691c17eebe235055015a2853bacb4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273415"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677580"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Oktatóanyag: az SAP Cloud platform Identity Authentication konfigurálása automatikus felhasználó-kiépítés esetén
 
@@ -50,22 +50,22 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 ## <a name="setup-sap-cloud-platform-identity-authentication-for-provisioning"></a>SAP Cloud platform-identitás hitelesítésének beállítása a kiépítés számára
 
-1. Jelentkezzen be az [SAP Cloud platform Identity Authentication felügyeleti konzolján](https://sapmsftintegration.accounts.ondemand.com/admin). Navigáljon a **felhasználók & engedélyek > rendszergazdák**.
+1. Jelentkezzen be az [SAP Cloud platform Identity Authentication felügyeleti konzolján](https://sapmsftintegration.accounts.ondemand.com/admin). Navigáljon a **felhasználók & engedélyek > rendszergazdák** .
 
     ![SAP Cloud platform Identity Authentication felügyeleti konzol](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
 2.  A bal oldali panelen kattintson a **+ Hozzáadás** gombra, hogy új rendszergazdát adjon a listához. Válassza a **számítógép hozzáadása** lehetőséget, és adja meg a számítógép nevét.   
 
 > [!NOTE]
-> Az SAP Cloud platform Identity Authentication rendszergazdán-felhasználónak **System**típusúnak kell lennie. A normál rendszergazda felhasználó létrehozása *jogosulatlan* hibákat eredményezhet a kiépítés során.   
+> Az SAP Cloud platform Identity Authentication rendszergazdán-felhasználónak **System** típusúnak kell lennie. A normál rendszergazda felhasználó létrehozása *jogosulatlan* hibákat eredményezhet a kiépítés során.   
 
-3.  Az engedélyek konfigurálása területen kapcsolja be a váltás gombot a **felhasználók kezelése** és a **csoportok kezelése**elemnél.
+3.  Az engedélyek konfigurálása területen kapcsolja be a váltás gombot a **felhasználók kezelése** és a **csoportok kezelése** elemnél.
 
     ![SAP Cloud platform Identity Authentication SCIM hozzáadása](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/configurationauth.png)
 
-4. Egy e-mailt fog kapni a fiók aktiválásához és a jelszó beállításához az **SAP Cloud platform Identity Authentication szolgáltatáshoz**.
+4. Egy e-mailt fog kapni a fiók aktiválásához és a jelszó beállításához az **SAP Cloud platform Identity Authentication szolgáltatáshoz** .
 
-4.  Másolja a **felhasználói azonosítót** és a **jelszót**. Ezeket az értékeket a rendszer az SAP Cloud platform Identity Authentication alkalmazás üzembe helyezés lapján, a rendszergazdai Felhasználónév és a rendszergazda jelszava mezőkben adja meg a Azure Portal.
+4.  Másolja a **felhasználói azonosítót** és a **jelszót** . Ezeket az értékeket a rendszer az SAP Cloud platform Identity Authentication alkalmazás üzembe helyezés lapján, a rendszergazdai Felhasználónév és a rendszergazda jelszava mezőkben adja meg a Azure Portal.
 
 ## <a name="add-sap-cloud-platform-identity-authentication-from-the-gallery"></a>SAP Cloud platform Identity Authentication hozzáadása a katalógusból
 
@@ -73,11 +73,11 @@ Az SAP Cloud platform Identity Authentication konfigurálása előtt az Azure AD
 
 **Az SAP Cloud platform Identity Authentication az Azure AD Application Galleryből való hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -85,7 +85,7 @@ Az SAP Cloud platform Identity Authentication konfigurálása előtt az Azure AD
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **SAP Cloud platform Identity Authentication**elemet, válassza az **SAP Cloud platform Identity Authentication** lehetőséget az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **SAP Cloud platform Identity Authentication** elemet, válassza az **SAP Cloud platform Identity Authentication** lehetőséget az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![SAP Cloud platform Identity Authentication az eredmények listájában](common/search-new-app.png)
 
@@ -94,7 +94,7 @@ Az SAP Cloud platform Identity Authentication konfigurálása előtt az Azure AD
 Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálásának lépésein az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján a felhasználók és/vagy csoportok létrehozásához, frissítéséhez és letiltásához az SAP Cloud platform identitás-hitelesítésében.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést az SAP Cloud platform Identity Authentication esetében, az [SAP Cloud platform Identity Authentication egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést az SAP Cloud platform Identity Authentication esetében, az [SAP Cloud platform Identity Authentication egyszeri bejelentkezés oktatóanyagában](./sap-hana-cloud-platform-identity-authentication-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>Az Azure AD-beli SAP Cloud platform Identity Authentication automatikus felhasználó-kiépítés beállítása:
 
@@ -102,7 +102,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **SAP Cloud platform Identity Authentication**lehetőséget.
+2. Az alkalmazások listában válassza az **SAP Cloud platform Identity Authentication** lehetőséget.
 
     ![Az SAP Cloud platform Identity Authentication hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -114,17 +114,17 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<tenantID>.accounts.ondemand.com/service/scim ` meg a **bérlői URL-címet**. Adja meg a korábban a **rendszergazdai felhasználónévben** és a **rendszergazdai jelszóban** lekért **felhasználói azonosító** és **jelszó** értékét. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak az SAP Cloud platform Identity Authentication szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy az SAP Cloud platform identitás-hitelesítési fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<tenantID>.accounts.ondemand.com/service/scim ` meg a **bérlői URL-címet** . Adja meg a korábban a **rendszergazdai felhasználónévben** és a **rendszergazdai jelszóban** lekért **felhasználói azonosító** és **jelszó** értékét. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak az SAP Cloud platform Identity Authentication szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy az SAP Cloud platform identitás-hitelesítési fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók SAP Cloud platform Identity Authentication**lehetőséget.
+8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók SAP Cloud platform Identity Authentication** lehetőséget.
 
     ![SAP Cloud platform Identity Authentication felhasználói leképezések](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/mapping.png)
 
@@ -162,4 +162,3 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
-

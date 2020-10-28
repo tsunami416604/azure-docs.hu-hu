@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89567809"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675695"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Gyakran ismételt kérdések a Education-központ
 
@@ -46,7 +46,7 @@ Az Azure for Students-előfizetés hozzáférést biztosít bizonyos szoftverfej
 
 ### <a name="what-is-microsoft-learn"></a>Mi a Microsoft Learn?
 
-A [Microsoft Learn](https://docs.microsoft.com/learn/) egy ingyenes, online tanulási platform, amely lehetővé teszi az Azure-technológiák saját tempójában való megismerését. A képzési útvonalak kombinálják a modulokat, amelyek lehetővé teszik az alapok használatának megkezdését, majd a valós kihívásokkal foglalkozó speciális metódusokra való áttérést.
+A [Microsoft Learn](/learn/) egy ingyenes, online tanulási platform, amely lehetővé teszi az Azure-technológiák saját tempójában való megismerését. A képzési útvonalak kombinálják a modulokat, amelyek lehetővé teszik az alapok használatának megkezdését, majd a valós kihívásokkal foglalkozó speciális metódusokra való áttérést.
 
 ### <a name="can-azure-for-students-be-used-for-production-or-only-for-development"></a>Használható-e az Azure diákoknak éles környezetben, vagy csak fejlesztési célokra?
 
@@ -97,7 +97,7 @@ Ezt a szoftvert a [Education-központ](https://ms.portal.azure.com/#blade/Micros
 
 ### <a name="what-is-microsoft-learn"></a>Mi a Microsoft Learn?
 
-A [Microsoft Learn](https://docs.microsoft.com/learn/) egy ingyenes, online tanulási platform, amely lehetővé teszi az Azure-technológiák saját tempójában való megismerését. A képzési útvonalak kombinálják a modulokat, amelyek lehetővé teszik az alapok használatának megkezdését, majd a valós kihívásokkal foglalkozó speciális metódusokra való áttérést.
+A [Microsoft Learn](/learn/) egy ingyenes, online tanulási platform, amely lehetővé teszi az Azure-technológiák saját tempójában való megismerését. A képzési útvonalak kombinálják a modulokat, amelyek lehetővé teszik az alapok használatának megkezdését, majd a valós kihívásokkal foglalkozó speciális metódusokra való áttérést.
 
 ## <a name="azure-academic-grant"></a>Azure Academic-támogatás
 
@@ -172,7 +172,7 @@ Machine Learning Server (korábban R Server)<br>
 Hyper-V Server<br>
 Microsoft Project<br>
 A Visual studióhoz készült távoli eszközök<br>
-SharePoint-kiszolgáló<br>
+SharePoint Server<br>
 Skype Vállalati kiszolgáló<br>
    :::column-end:::
    :::column span="":::
@@ -252,8 +252,8 @@ Ha továbbra sem tud bejelentkezni, forduljon az előfizetés rendszergazdájáh
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>Hogyan megkeresni az előfizetői azonosítót?
 
-- **Amikor először regisztrálja a programot**: az előfizetői azonosító a kapott előfizetés-üdvözlő e-mailben szerepel.
-- **Ha megújította az előfizetését**: az előfizetői azonosító az előfizetés-rendszergazda által fogadott megújítási e-mailben szerepel.
+- **Amikor először regisztrálja a programot** : az előfizetői azonosító a kapott előfizetés-üdvözlő e-mailben szerepel.
+- **Ha megújította az előfizetését** : az előfizetői azonosító az előfizetés-rendszergazda által fogadott megújítási e-mailben szerepel.
 
 Az előfizetői azonosító a Visual Studio Subscription portálon is elérhető. Miután bejelentkezett, tekintse meg az **előfizetést** a **fiókom oldalon.**
 
@@ -282,7 +282,7 @@ Ha nem kapja meg ezeket az emlékeztető e-maileket, és aggódik, hogy előfize
 
 Másik lehetőségként nyissa meg az [Azure fejlesztői eszközök for Teaching-renew oldalt](https://portal.azureforeducation.microsoft.com/), és fejezze be a megújítási folyamatot.
 
-Az előfizetés lejárati idejének vizsgálatához nyissa meg az [Azure dev Tools for Teaching Management Portalt](https://azureforeducation.microsoft.com/account/Subscriptions), és tekintse meg az **előfizetések**területen.
+Az előfizetés lejárati idejének vizsgálatához nyissa meg az [Azure dev Tools for Teaching Management Portalt](https://azureforeducation.microsoft.com/account/Subscriptions), és tekintse meg az **előfizetések** területen.
 
 ### <a name="what-if-i-need-more-help"></a>Mi a teendő, ha további segítségre van szükségem?
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 38fac23b3fdc5820a7a407a4a7d89d0064cf8e93
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: cc094376ed6d5a183b65a598ca9d0a55670be70e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101783"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676725"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Oktatóanyag: a Salesforce-homokozó konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -33,7 +33,7 @@ Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már re
 
 Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
 
-A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra vagy csoportokra van szükség az Azure AD-ben a Salesforce homokozó alkalmazáshoz. A döntés elvégzése után ezeket a felhasználókat hozzárendelheti a Salesforce sandbox-alkalmazáshoz a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) című részben leírtak szerint.
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra vagy csoportokra van szükség az Azure AD-ben a Salesforce homokozó alkalmazáshoz. A döntés elvégzése után ezeket a felhasználókat hozzárendelheti a Salesforce sandbox-alkalmazáshoz a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md) című részben leírtak szerint.
 
 ### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Fontos Tippek a felhasználók Salesforce-beli Sandboxhoz való hozzárendeléséhez
 
@@ -71,11 +71,11 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
    
     b. A **rendszergazdai jelszó** szövegmezőbe írja be a fiókhoz tartozó jelszót.
 
-1. A Salesforce-beli sandbox biztonsági jogkivonat beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanahhoz a Salesforce sandbox-beli rendszergazdai fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások**elemre.
+1. A Salesforce-beli sandbox biztonsági jogkivonat beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanahhoz a Salesforce sandbox-beli rendszergazdai fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások** elemre.
 
      ![Képernyőfelvétel: a Beállítások hivatkozás kiválasztva.](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó-kiépítés engedélyezése")
 
-1. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat alaphelyzetbe állítása**elemre.
+1. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat alaphelyzetbe állítása** elemre.
   
     ![Képernyőfelvétel: a személyes adatokból kiválasztott biztonsági jogkivonat alaphelyzetbe állítása.](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó-kiépítés engedélyezése")
 
@@ -109,4 +109,4 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-* [Egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)
+* [Egyszeri bejelentkezés konfigurálása](./salesforce-sandbox-tutorial.md)

@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: a99c6412650cac565414817c91752ae85b8ad37d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8447eae4ea7234a7f47219cc81441650121b84ae
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539598"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676169"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Az Azure HDInsight Apache Kafka-fürtök használata REST-proxy használatával
 
-A Kafka REST proxy lehetővé teszi, hogy egy REST API HTTP-n keresztül kommunikáljon a Kafka-fürttel. Ez a művelet azt jelenti, hogy a Kafka-ügyfelek a virtuális hálózatán kívül is lehetnek. Az ügyfelek a Kafka-könyvtárakra való támaszkodás helyett egyszerű HTTP-hívásokat végezhetnek a Kafka-fürthöz. Ebből a cikkből megtudhatja, hogyan hozhat létre REST proxyt használó Kafka-fürtöt. Egy mintakód is elérhetővé teszi, amely bemutatja, hogyan hívhatja meg a REST proxyt.
+A Kafka REST proxy lehetővé teszi a Kafka-fürttel való interakciót a HTTPS-en keresztül REST API. Ez a művelet azt jelenti, hogy a Kafka-ügyfelek a virtuális hálózatán kívül is lehetnek. Az ügyfelek a Kafka-könyvtárakra való támaszkodás helyett egyszerű, biztonságos HTTPS-hívásokat végezhetnek a Kafka-fürthöz. Ebből a cikkből megtudhatja, hogyan hozhat létre REST proxyt használó Kafka-fürtöt. Egy mintakód is elérhetővé teszi, amely bemutatja, hogyan hívhatja meg a REST proxyt.
 
 ## <a name="rest-api-reference"></a>REST API-referencia
 
@@ -37,7 +37,7 @@ A REST-proxyval rendelkező HDInsight Kafka-fürt létrehozása új nyilvános v
 
 A Kafka REST-proxyhoz való hozzáférés Azure Active Directory biztonsági csoportokkal felügyelhető. A Kafka-fürt létrehozásakor adja meg az Azure AD biztonsági csoportot a REST-végponti hozzáféréssel. A REST-proxyhoz hozzáférést igénylő Kafka-ügyfeleket a csoport tulajdonosának kell regisztrálnia ehhez a csoporthoz. A csoport tulajdonosa regisztrálhat a portálon keresztül vagy a PowerShell használatával.
 
-A REST proxy-végponti kérelmek esetében az ügyfélalkalmazások OAuth jogkivonatot kapnak. A jogkivonat a biztonsági csoporttagság ellenőrzéséhez használatos. Keresse meg az alábbi [ügyfélalkalmazás-mintát](#client-application-sample) , amely bemutatja, hogyan szerezhet be egy OAuth tokent. Az ügyfélalkalmazás átadja a OAuth tokent a HTTP-kérelemben a REST-proxynak.
+A REST proxy-végponti kérelmek esetében az ügyfélalkalmazások OAuth jogkivonatot kapnak. A jogkivonat a biztonsági csoporttagság ellenőrzéséhez használatos. Keresse meg az alábbi [ügyfélalkalmazás-mintát](#client-application-sample) , amely bemutatja, hogyan szerezhet be egy OAuth tokent. Az ügyfélalkalmazás átadja a HTTPS-kérelemben szereplő OAuth tokent a REST-proxynak.
 
 > [!NOTE]
 > További információ a HRE biztonsági csoportokról: [alkalmazás-és erőforrás-hozzáférés kezelése Azure Active Directory csoportok használatával](../../active-directory/fundamentals/active-directory-manage-groups.md). A OAuth-tokenek működésével kapcsolatos további információkért lásd: [hozzáférés engedélyezése Azure Active Directory webalkalmazásokhoz a OAuth 2,0 Code Grant flow használatával](../../active-directory/azuread-dev/v1-protocols-oauth-code.md).

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3fb177afa804788632f22d24bbd376d64cbe1c9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81e60e3bb7a1b0f34a29ccd9cebf3d82279027e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250691"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676657"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>A kísérlet futtatásának nyomon követése és a ML-modellek üzembe helyezése MLflow és Azure Machine Learning (előzetes verzió)
 
@@ -50,7 +50,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 
  A MLflow követése olyan metrikai naplózási és összetevő-tárolási funkciókat kínál, amelyek csak a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-n keresztül érhetők el.
 
-| Képesség | MLflow követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning parancssori felület | Azure Machine Learning Studio|
+| Képesség | MLflow követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Munkaterület kezelése |   | ✓ | ✓ | ✓ |
 | Adattárak használata  |   | ✓ | ✓ | |
@@ -343,7 +343,7 @@ webservice.wait_for_deployment()
 
 A szolgáltatás üzembe helyezése több percet is igénybe vehet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha nem tervezi a naplózott metrikák és összetevők használatát a munkaterületen, akkor a törlési képesség jelenleg nem érhető el. Ehelyett törölje a Storage-fiókot és-munkaterületet tartalmazó erőforráscsoportot, így nem számítunk fel díjat:
 
@@ -360,6 +360,9 @@ Ha nem tervezi a naplózott metrikák és összetevők használatát a munkater�
 ## <a name="example-notebooks"></a>Példajegyzetfüzetek
 
 Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
+
+> [!NOTE]
+> A mlflow-t használó példák Közösség által vezérelt tárháza a következő címen érhető el: https://github.com/Azure/azureml-examples .
 
 ## <a name="next-steps"></a>Következő lépések
 

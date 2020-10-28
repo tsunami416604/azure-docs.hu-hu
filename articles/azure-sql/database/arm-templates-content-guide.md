@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 48a2c00f7ff487def13e9872c4f43a3ca36809ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5202145af6f60f34bdce57aa94f4fec92a8b227f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444635"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677270"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL felügyelt példányának Azure Resource Manager sablonjai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,7 +39,7 @@ Az alábbi táblázat a Azure SQL Database Azure Resource Manager sablonjaira mu
 | [Azure-webalkalmazás és SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Ez a példa létrehoz egy ingyenes Azure-webalkalmazást és egy Azure SQL Database-adatbázist az "alapszintű" szolgáltatási szinten.|
 | [Azure-webalkalmazás és Redis Cache a következővel SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Ez a sablon létrehoz egy webalkalmazást, egy Redis Cache és egy adatbázist ugyanabban az erőforráscsoporthoz, és két kapcsolati karakterláncot hoz létre a webalkalmazásban az adatbázishoz és Redis Cachehoz.|
 | [Adatok importálása a blob Storage-ból az ADF V2 használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Ez a Azure Resource Manager-sablon létrehoz egy Azure Data Factory v2-példányt, amely az Azure Blob Storage-ból másolja a SQL Databaseba.|
-| [HDInsight-fürt adatbázissal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Ez a sablon lehetővé teszi, hogy HDInsight-fürtöt, logikai SQL Servert, adatbázist és két táblát hozzon létre. Ezt a sablont a [Sqoop használata a Hadoop használatával című HDInsight cikkben](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop)használja. |
+| [HDInsight-fürt adatbázissal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Ez a sablon lehetővé teszi, hogy HDInsight-fürtöt, logikai SQL Servert, adatbázist és két táblát hozzon létre. Ezt a sablont a [Sqoop használata a Hadoop használatával című HDInsight cikkben](../../hdinsight/hadoop/hdinsight-use-sqoop.md)használja. |
 | [Az Azure logikai alkalmazás, amely egy ütemezett SQL tárolt eljárást futtat](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Ez a sablon lehetővé teszi, hogy olyan logikai alkalmazást hozzon létre, amely egy ütemezett SQL tárolt eljárást fog futtatni. Az eljáráshoz tartozó argumentumok a sablon törzs szakaszába helyezhetők.|
 
 ## <a name="azure-sql-managed-instance"></a>[Felügyelt Azure SQL-példány](#tab/managed-instance)
@@ -54,4 +54,3 @@ A következő táblázat hivatkozásokat tartalmaz az Azure SQL felügyelt péld
 | [SQL felügyelt példány virtuális géppel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Ez a központi telepítés létrehoz egy Azure-beli virtuális hálózatot két alhálózattal `ManagedInstance` és `Management` . Az SQL felügyelt példánya üzembe lesz helyezve az `ManagedInstance` alhálózatban. Az alhálózaton a SQL Server Management Studio (SSMS) legújabb verzióját tartalmazó virtuális gép lesz telepítve `Management` . |
 
 ---
-

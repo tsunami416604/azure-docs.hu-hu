@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
-ms.custom: fasttrack-new
-ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: fasttrack-new, devx-track-js
+ms.openlocfilehash: aa3bce73d2a91538dff0fdeb9e0eb814d878459a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253694"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676027"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Az OAuth 2,0, a Azure Active Directory B2C és az Azure API Management által védett SPA-háttérrendszer
 
@@ -180,7 +180,7 @@ A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha e
    > A Function API mostantól nem hívható meg, mint az API Management vagy a címe.
    
 ## <a name="import-the-function-app-definition"></a>A Function app-definíció importálása
-1. Nyissa meg a *API Management*panelt, majd nyissa meg a *példányt*.
+1. Nyissa meg a *API Management* panelt, majd nyissa meg a *példányt* .
 1. Válassza ki az API-kat a példány API Management szakaszából.
 1. Az "új API hozzáadása" panelen válassza a "függvényalkalmazás" lehetőséget, majd az előugró ablak tetején válassza a "teljes" lehetőséget.
 1. Kattintson a Tallózás gombra, válassza ki az API-t üzemeltető Function alkalmazást, és kattintson a Kiválasztás gombra.
@@ -457,7 +457,7 @@ A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha e
 ## <a name="and-were-done"></a>És készen vagyunk
 A fenti lépések módosíthatók és szerkeszthetők úgy, hogy a Azure AD B2C számos különböző felhasználási igényét lehetővé tegyék a API Management.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-vs-authorization.md)verzióról.
 * További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.
 * A háttér-szolgáltatás biztonságossá tételének egyéb módjaival kapcsolatban lásd: [kölcsönös Tanúsítványos hitelesítés](api-management-howto-mutual-certificates.md).

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
-ms.date: 09/21/2020
-ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: bb9e17a4befcdcf1a322734c6cc5d75d653f23e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321424"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676140"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>A Azure SQL Database és az SQL felügyelt példányának biztonsági képességeinek áttekintése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -41,7 +41,7 @@ A [virtuális hálózati szolgáltatás végpontok](../../virtual-network/virtua
 A [virtuális hálózati szabályok](vnet-service-endpoint-rule-overview.md) lehetővé teszik, hogy a Azure SQL Database csak a virtuális hálózaton belüli kijelölt alhálózatokból továbbított kommunikációt fogadják.
 
 > [!NOTE]
-> A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik az **SQL felügyelt példányára**. További információ a szükséges hálózati konfigurációról: [Csatlakozás felügyelt példányhoz](../managed-instance/connect-application-instance.md)
+> A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik az **SQL felügyelt példányára** . További információ a szükséges hálózati konfigurációról: [Csatlakozás felügyelt példányhoz](../managed-instance/connect-application-instance.md)
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
@@ -52,11 +52,11 @@ A [virtuális hálózati szabályok](vnet-service-endpoint-rule-overview.md) leh
 
 A hitelesítés az a folyamat, amellyel a felhasználó igazolni kívánja. A Azure SQL Database és az SQL felügyelt példánya két hitelesítési típust támogat:
 
-- **SQL-hitelesítés**:
+- **SQL-hitelesítés** :
 
     Az SQL-hitelesítés a felhasználó hitelesítésére utal Azure SQL Database vagy Azure SQL felügyelt példányhoz való csatlakozáskor Felhasználónév és jelszó használatával. A kiszolgáló létrehozásakor meg kell adni egy felhasználónévvel és jelszóval rendelkező **kiszolgáló-rendszergazdai** bejelentkezést. Ezeknek a hitelesítő adatoknak a használatával a **kiszolgáló rendszergazdája** a kiszolgálón vagy a példányon található adatbázis-tulajdonosként hitelesítheti magát. Ezt követően további SQL-bejelentkezéseket és felhasználókat hozhat létre a kiszolgáló rendszergazdája, amely lehetővé teszi a felhasználók számára a Felhasználónév és a jelszó használatával történő kapcsolódást.
 
-- **Azure Active Directory hitelesítés**:
+- **Azure Active Directory hitelesítés** :
 
     Azure Active Directory hitelesítés a [Azure SQL Databasehoz](sql-database-paas-overview.md), az [Azure SQL felügyelt példányához](../managed-instance/sql-managed-instance-paas-overview.md) és az [Azure szinapszis analyticshez](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) való csatlakozás mechanizmusa az Azure Active Directory (Azure ad) identitások használatával. Az Azure AD-hitelesítés lehetővé teszi, hogy a rendszergazdák központilag kezeljék az adatbázis-felhasználók identitásait és engedélyeit, valamint egy központi helyen lévő többi Azure-szolgáltatást. Ez magában foglalja a jelszó-tárolás minimalizálása és a központosított jelszó-rotációs házirendek használatát.
 
@@ -65,7 +65,7 @@ A hitelesítés az a folyamat, amellyel a felhasználó igazolni kívánja. A Az
     Az elérhető további Azure AD-hitelesítési lehetőségek a SQL Server Management Studio-kapcsolatokhoz [Active Directory univerzális hitelesítés,](authentication-mfa-ssms-overview.md) például [multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) és [feltételes hozzáférés](conditional-access-configure.md).
 
 > [!IMPORTANT]
-> Az adatbázisok és kiszolgálók Azure-beli kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései vezérlik. További információ erről a cikkről: [szerepköralapú hozzáférés-vezérlés Azure Portalban](../../role-based-access-control/overview.md). A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik az **SQL felügyelt példányára**. Ha további információkra van szüksége a hálózati konfigurációval kapcsolatban, tekintse meg a következő cikket a [felügyelt példányhoz való csatlakozásról](../managed-instance/connect-application-instance.md) .
+> Az adatbázisok és kiszolgálók Azure-beli kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései vezérlik. További információ erről a cikkről: [szerepköralapú hozzáférés-vezérlés Azure Portalban](../../role-based-access-control/overview.md). A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik az **SQL felügyelt példányára** . Ha további információkra van szüksége a hálózati konfigurációval kapcsolatban, tekintse meg a következő cikket a [felügyelt példányhoz való csatlakozásról](../managed-instance/connect-application-instance.md) .
 
 ## <a name="authorization"></a>Engedélyezés
 
@@ -97,13 +97,13 @@ A komplex veszélyforrások elleni védelem a naplók elemzésével azonosíthat
 
 ### <a name="transport-layer-security-encryption-in-transit"></a>Transport Layer Security (adatátviteli titkosítás)
 
-Az SQL Database és az SQL felügyelt példányának biztonságos vásárlói adatai a [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)használatával végzett adattitkosítással.
+A SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics biztonságos ügyféladatokat biztosít a [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)használatával végzett adattitkosítással.
 
-A SQL Database és az SQL felügyelt példánya az összes kapcsolat esetében mindig kikényszeríti a titkosítást (SSL/TLS). Ez biztosítja, hogy az összes adatforgalom titkosítva legyen az ügyfél és a kiszolgáló között, függetlenül attól, hogy a **titkosítás** vagy a **TrustServerCertificate** a kapcsolati sztringben van-e beállítva.
+Az SQL Database, az SQL felügyelt példánya és az Azure szinapszis minden kapcsolat esetében mindig kikényszeríti a titkosítást (SSL/TLS). Ez biztosítja, hogy az összes adatforgalom titkosítva legyen az ügyfél és a kiszolgáló között, függetlenül attól, hogy a **titkosítás** vagy a **TrustServerCertificate** a kapcsolati sztringben van-e beállítva.
 
 Ajánlott eljárásként Azt javasoljuk, hogy az alkalmazás által használt kapcsolati sztringben egy titkosított kapcsolatot határozzon meg, és _**ne**_ Bízzon meg a kiszolgálói tanúsítványban. Ez arra kényszeríti az alkalmazást, hogy ellenőrizze a kiszolgáló tanúsítványát, így megakadályozza, hogy az alkalmazás sebezhető legyen a középső típusú támadásokban lévő ember számára.
 
-Például a ADO.NET-illesztőprogram használata esetén ez a  **titkosítás = True** és a **TrustServerCertificate = false**használatával valósítható meg. Ha a Azure Portalból szerzi be a kapcsolatok karakterláncát, akkor a megfelelő beállításokkal fog rendelkezni.
+Például a ADO.NET-illesztőprogram használata esetén ez a  **titkosítás = True** és a **TrustServerCertificate = false** használatával valósítható meg. Ha a Azure Portalból szerzi be a kapcsolatok karakterláncát, akkor a megfelelő beállításokkal fog rendelkezni.
 
 > [!IMPORTANT]
 > Vegye figyelembe, hogy egyes nem Microsoft-illesztőprogramok nem használhatják a TLS-t alapértelmezés szerint, vagy a TLS (<1,2) régebbi verzióját használják a működéshez. Ebben az esetben a kiszolgáló továbbra is lehetővé teszi az adatbázishoz való kapcsolódást. Javasoljuk azonban, hogy értékelje a biztonsági kockázatokat, amelyek lehetővé teszik, hogy az ilyen illesztőprogramok és alkalmazások csatlakozzanak a SQL Databasehoz, különösen ha bizalmas adatokat tárol.
@@ -112,7 +112,7 @@ Például a ADO.NET-illesztőprogram használata esetén ez a  **titkosítás = 
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Transzparens adattitkosítás (titkosítás – REST)
 
-[A Azure SQL Database és az SQL felügyelt példányának transzparens adattitkosítás (TDE)](transparent-data-encryption-tde-overview.md) biztonsági réteget biztosít, amely segít az inaktív adatok védelmében a nyers fájlokhoz vagy biztonsági másolatokhoz való jogosulatlan vagy offline hozzáférés esetén. Gyakori forgatókönyvek például a következők: adatközpont-lopás vagy hardver vagy adathordozó nem biztonságos ártalmatlanítása, például lemezmeghajtók és biztonsági mentési szalagok.A TDE egy AES titkosítási algoritmussal titkosítja a teljes adatbázist, amely nem igényli, hogy az alkalmazás fejlesztői ne kelljen módosítaniuk a meglévő alkalmazásokat.
+A [SQL Database, az SQL felügyelt példányának és az Azure szinapszis Analytics transzparens adattitkosítása (TDE)](transparent-data-encryption-tde-overview.md) egy biztonsági réteget biztosít, amely segít az inaktív adatoknak a nyers fájlokhoz vagy biztonsági másolatokhoz való jogosulatlan vagy offline hozzáférésének biztosításához. Gyakori forgatókönyvek például a következők: adatközpont-lopás vagy hardver vagy adathordozó nem biztonságos ártalmatlanítása, például lemezmeghajtók és biztonsági mentési szalagok.A TDE egy AES titkosítási algoritmussal titkosítja a teljes adatbázist, amely nem igényli, hogy az alkalmazás fejlesztői ne kelljen módosítaniuk a meglévő alkalmazásokat.
 
 Az Azure-ban az összes újonnan létrehozott adatbázis alapértelmezés szerint titkosítva van, és az adatbázis-titkosítási kulcsot egy beépített kiszolgálótanúsítvány védi.  A tanúsítvány-karbantartási és-rotációs szolgáltatást a szolgáltatás felügyeli, és nem igényel bemenetet a felhasználótól. A titkosítási kulcsok felügyeletét előnyben részesített ügyfelek a [Azure Key Vaultban](../../key-vault/general/secure-your-key-vault.md)kezelhetik a kulcsokat.
 

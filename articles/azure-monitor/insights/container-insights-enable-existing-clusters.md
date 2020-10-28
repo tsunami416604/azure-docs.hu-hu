@@ -3,13 +3,13 @@ title: Az Azure Kubernetes Service (ak)-fürt üzembe helyezésének figyelése 
 description: Megtudhatja, hogyan engedélyezheti az előfizetésében már üzembe helyezett tárolók Azure Monitor az Azure Kubernetes Service-(ak-) fürtök figyelését.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 9f3b9240bc10f4eaa4c9967d8c7bbb956eeab4e1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165400"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735134"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>A már üzembe helyezett Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
@@ -24,11 +24,11 @@ Engedélyezheti a már üzembe helyezett AK-fürtök figyelését a támogatott 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-using-azure-cli"></a>Engedélyezés az Azure CLI használatával
 
-A következő lépés lehetővé teszi az AK-fürt figyelését az Azure CLI használatával. Ebben a példában nem kell előzetesen létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet az AK-fürt előfizetés alapértelmezett erőforráscsoporthoz, ha az egyik még nem létezik a régióban.  A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \<GUID> - \<Region> *formátumához hasonlít.
+A következő lépés lehetővé teszi az AK-fürt figyelését az Azure CLI használatával. Ebben a példában nem kell előzetesen létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet az AK-fürt előfizetés alapértelmezett erőforráscsoporthoz, ha az egyik még nem létezik a régióban.  A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \<GUID> - \<Region>* formátumához hasonlít.
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -58,7 +58,7 @@ Ha inkább egy meglévő munkaterületet szeretne integrálni, hajtsa végre a k
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
     ```
 
-    Másolja a **SubscriptionId**értékét.
+    Másolja a **SubscriptionId** értékét.
 
 2. Váltson a Log Analytics munkaterületet üzemeltető előfizetésre a következő paranccsal:
 
@@ -72,7 +72,7 @@ Ha inkább egy meglévő munkaterületet szeretne integrálni, hajtsa végre a k
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója**alá.
+    A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója** alá.
 
 4. Futtassa a következő parancsot a figyelési bővítmény engedélyezéséhez, és cserélje le a paraméter értékét `--workspace-resource-id` . A karakterlánc értékének idézőjelek közé kell esnie:
 
@@ -105,13 +105,13 @@ Ha inkább egy meglévő munkaterületet szeretne integrálni, hajtsa végre a k
 
 Ha az AK-fürt figyelését szeretné engedélyezni a Azure Monitor Azure Portalban, tegye a következőket:
 
-1. A Azure Portal válassza a **figyelő**elemet.
+1. A Azure Portal válassza a **figyelő** elemet.
 
 2. Válassza ki a **tárolókat** a listából.
 
-3. A **figyelő-tárolók** lapon válassza a nem **figyelt fürtök**lehetőséget.
+3. A **figyelő-tárolók** lapon válassza a nem **figyelt fürtök** lehetőséget.
 
-4. A nem figyelt fürtök listájában keresse meg a tárolót a listában, és kattintson az **Engedélyezés**gombra.
+4. A nem figyelt fürtök listájában keresse meg a tárolót a listában, és kattintson az **Engedélyezés** gombra.
 
 5. Ha egy meglévő Log Analytics munkaterülettel rendelkezik, amely a fürttel azonos előfizetésben található, **Azure monitor a tárolók** lapon, válassza ki a kívánt elemet a legördülő listából.
     A lista előadja az alapértelmezett munkaterületet és helyet, amelyet az AK-tároló üzembe helyez az előfizetésben.
@@ -127,11 +127,11 @@ A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mie
 
 Ha közvetlenül szeretné engedélyezni a figyelést a Azure Portal egyik AK-fürtjéből, tegye a következőket:
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget.
+1. A Azure Portal válassza a **minden szolgáltatás** lehetőséget.
 
-2. Az erőforrások listájában kezdje el begépelni a **tárolókat**.  A lista a bemenet alapján szűri a szűrőket.
+2. Az erőforrások listájában kezdje el begépelni a **tárolókat** .  A lista a bemenet alapján szűri a szűrőket.
 
-3. Válassza a **Kubernetes Services**elemet.
+3. Válassza a **Kubernetes Services** elemet.
     
 4. A Kubernetes szolgáltatások listájában válasszon ki egy szolgáltatást.
 
@@ -376,7 +376,7 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 

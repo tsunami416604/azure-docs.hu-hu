@@ -12,12 +12,12 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: d567876e0210c025fa34c5b82791eafe4cdff561
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d147303df43c4f86843df518c71316e6a97b6671
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372153"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678082"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender SQL-hez
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -31,7 +31,7 @@ Az Azure Defender fejlett SQL biztonsági képességeket biztosít, beleértve a
 - A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni, nyomon követni és segíteni a lehetséges adatbázis-sebezhetőségeket. A szolgáltatás láthatóságot biztosít a biztonsági állapotában, valamint a biztonsági problémák megoldásához és az adatbázis-erődítmények fejlesztéséhez szükséges műveleteket is tartalmaz.
 - Az [Advanced Threat Protection](threat-detection-overview.md) észleli az adatbázisai hozzáférésére és az adatbázisai biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket. Folyamatosan figyeli az adatbázist a gyanús tevékenységekhez, és azonnali biztonsági riasztásokat biztosít a potenciális sebezhetőségekről, az Azure SQL-injektálási támadásokról és a rendellenes adatbázis-hozzáférési mintákról. Az Advanced Threat Protection által adott riasztások tartalmazzák a gyanús tevékenység részleteit, és javaslatot tesznek a fenyegetés kivizsgálására és mérséklésére tett műveletekre.
 
-Engedélyezze az Azure Defender for SQL szolgáltatást egyszer az összes elérhető funkció engedélyezéséhez. Egyetlen kattintással engedélyezheti az Azure Defendert az Azure [-ban vagy](logical-servers.md) az SQL-ben felügyelt példányon lévő összes adatbázishoz. Az Azure Defender-beállítások engedélyezéséhez vagy kezeléséhez az [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepkörhöz vagy az adatbázis vagy a kiszolgáló rendszergazdai szerepköreihez kell tartoznia.
+Az SQL-hez készült Azure Defendert csak egyszer kell engedélyeznie, ekkor ugyanis az összes benne foglalt funkciót is engedélyezi. Egyetlen kattintással engedélyezheti az Azure Defendert az Azure [-ban vagy](logical-servers.md) az SQL-ben felügyelt példányon lévő összes adatbázishoz. Az Azure Defender-beállítások engedélyezéséhez vagy kezeléséhez az [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) szerepkörhöz vagy az adatbázis vagy a kiszolgáló rendszergazdai szerepköreihez kell tartoznia.
 
 Az Azure Defender for SQL díjszabásával kapcsolatos további információkért tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -62,10 +62,10 @@ Egy adott adatbázis Azure Defender-beállításainak felülbírálásához jel�
 
 Ha a jelölőnégyzet be van jelölve, megadhatja a megfelelő beállításokat ehhez az adatbázishoz.
 
-Az Azure Defender a kiszolgáló vagy a felügyelt példány SQL-beállításaihoz is elérhető az Azure Defender-adatbázis paneljén. Kattintson a **Beállítások** elemre az Azure Defender fő ablaktábláján, majd kattintson az **Azure DEFENDER megtekintése az SQL Server-beállításokhoz**lehetőségre.
+Az Azure Defender a kiszolgáló vagy a felügyelt példány SQL-beállításaihoz is elérhető az Azure Defender-adatbázis paneljén. Kattintson a **Beállítások** elemre az Azure Defender fő ablaktábláján, majd kattintson az **Azure DEFENDER megtekintése az SQL Server-beállításokhoz** lehetőségre.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a [sebezhetőségi felmérésről](sql-vulnerability-assessment.md)
 - További információ a komplex [veszélyforrások elleni védelemről](threat-detection-configure.md)
-- További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- További információ a [Azure Security Center](../../security-center/security-center-introduction.md)

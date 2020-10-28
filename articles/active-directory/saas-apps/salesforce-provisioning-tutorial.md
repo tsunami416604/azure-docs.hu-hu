@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: e22511717b6a86f9e0cf53986152c4d6bab68780
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a18984c441f5fe47f6ffd54cccff8c37cb57a038
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101766"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676734"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Salesforce konfigurálása
 
@@ -31,13 +31,13 @@ Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már re
 > [!IMPORTANT]
 > Ha Salesforce.com próbaverziós fiókot használ, akkor nem fogja tudni beállítani az automatikus felhasználó-kiépítés beállítását. A próbaverziós fiókokhoz nincs engedélyezve a szükséges API-hozzáférés, amíg meg nem vásárolják őket. Ezt a korlátozást egy ingyenes [fejlesztői fiók](https://developer.salesforce.com/signup) használatával érheti el az oktatóanyag elvégzéséhez.
 
-Ha Salesforce sandbox-környezetet használ, tekintse meg a [Salesforce homokozó integrációs oktatóanyagát](https://go.microsoft.com/fwLink/?LinkID=521879).
+Ha Salesforce sandbox-környezetet használ, tekintse meg a [Salesforce homokozó integrációs oktatóanyagát](./salesforce-sandbox-tutorial.md).
 
 ## <a name="assigning-users-to-salesforce"></a>Felhasználók kiosztása a Salesforce
 
 Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
 
-A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra vagy csoportokra van szükség az Azure AD-ben a Salesforce alkalmazás eléréséhez. A döntés elvégzése után ezeket a felhasználókat hozzárendelheti a Salesforce-alkalmazáshoz a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) című részben leírtak szerint.
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra vagy csoportokra van szükség az Azure AD-ben a Salesforce alkalmazás eléréséhez. A döntés elvégzése után ezeket a felhasználókat hozzárendelheti a Salesforce-alkalmazáshoz a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md) című részben leírtak szerint.
 
 ### <a name="important-tips-for-assigning-users-to-salesforce"></a>Fontos Tippek a felhasználók Salesforce való hozzárendeléséhez
 
@@ -75,11 +75,11 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
     b. A **rendszergazdai jelszó** szövegmezőbe írja be a fiókhoz tartozó jelszót.
 
-6. A Salesforce biztonsági jogkivonat beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanahhoz a Salesforce-rendszergazdai fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások**elemre.
+6. A Salesforce biztonsági jogkivonat beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanahhoz a Salesforce-rendszergazdai fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások** elemre.
 
     ![Képernyőfelvétel: a Beállítások hivatkozás kiválasztva.](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó-kiépítés engedélyezése")
 
-7. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat alaphelyzetbe állítása**elemre.
+7. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat alaphelyzetbe állítása** elemre.
   
     ![Képernyőfelvétel: a személyes adatokból kiválasztott biztonsági jogkivonat alaphelyzetbe állítása.](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó-kiépítés engedélyezése")
 
@@ -122,7 +122,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * Az Azure AD-kiépítési szolgáltatás támogatja a felhasználó számára a kiépítési nyelvet, a területi beállításokat és az időzónát. Ezek az attribútumok az alapértelmezett attribútum-hozzárendelésekben találhatók, de nem rendelkeznek alapértelmezett forrásoldali attribútummal. Győződjön meg arról, hogy az alapértelmezett forrásoldali attribútumot választotta, és hogy a forrás attribútum a SalesForce által várt formátumban van. Például az localeSidKey for English (Egyesült Államok) en_US. Tekintse át az [itt](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) megadott útmutatót a megfelelő localeSidKey-formátum meghatározásához. A languageLocaleKey formátumait [itt](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)találja. A formátum helyességének biztosítása mellett előfordulhat, hogy az [itt](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)leírtak szerint a nyelvnek engedélyezve kell lennie a felhasználók számára. 
 * **SalesforceLicenseLimitExceeded:** A felhasználó nem hozható létre a célalkalmazás alkalmazásban, mert nincsenek elérhető licencek ehhez a felhasználóhoz. További licenceket is megadhat a célalkalmazás számára, vagy áttekintheti a felhasználói hozzárendelések és attribútumok leképezésének konfigurációját, hogy a megfelelő felhasználók hozzá legyenek rendelve a megfelelő attribútumokhoz.
 * **SalesforceDuplicateUserName:** A felhasználót nem lehet kiépíteni, mert egy másik Salesforce.com-bérlőben duplikált "username" Salesforce.com rendelkezik.A Salesforce.com-ben a "username" attribútum értékének egyedinek kell lennie az összes Salesforce.com-bérlőn.Alapértelmezés szerint a felhasználó userPrincipalName Azure Active Directory a "username" lesz a Salesforce.com.Itt két lehetősége van.Az egyik lehetőség, hogy megkeresse és átnevezi a felhasználót a "username" névvel a másik Salesforce.com-bérlőben, ha a másik bérlőt is felügyeli.A másik lehetőség az Azure Active Directory felhasználó hozzáférésének eltávolítása arra a Salesforce.com-bérlőre, amelyhez a címtár integrálva van. A következő szinkronizálási kísérlet során újra próbálkozunk a művelettel. 
-* **SalesforceRequiredFieldMissing:** A Salesforce használatához bizonyos attribútumoknak jelen kell lennie a felhasználó számára a felhasználó sikeres létrehozásához vagy frissítéséhez. Ez a felhasználó nem rendelkezik a szükséges attribútumok egyikével. Győződjön meg arról, hogy az attribútumok, például az e-mailek és az aliasok fel vannak töltve az összes olyan felhasználóra, akit a Salesforce kíván kiépíteni. Azokat a felhasználókat, akik nem rendelkeznek ezekkel az attribútumokkal, [attribútum-alapú hatóköri szűrőket](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)használnak fel. 
+* **SalesforceRequiredFieldMissing:** A Salesforce használatához bizonyos attribútumoknak jelen kell lennie a felhasználó számára a felhasználó sikeres létrehozásához vagy frissítéséhez. Ez a felhasználó nem rendelkezik a szükséges attribútumok egyikével. Győződjön meg arról, hogy az attribútumok, például az e-mailek és az aliasok fel vannak töltve az összes olyan felhasználóra, akit a Salesforce kíván kiépíteni. Azokat a felhasználókat, akik nem rendelkeznek ezekkel az attribútumokkal, [attribútum-alapú hatóköri szűrőket](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)használnak fel. 
 * A Salesforce való kiépítés alapértelmezett attribútumának leképezése magában foglalja az SingleAppRoleAssignments kifejezést, amely az Azure AD-ben a Salesforce-ben történő appRoleAssignments leképezésére használható. Győződjön meg arról, hogy a felhasználók nem rendelkeznek több alkalmazás-szerepkör-hozzárendeléssel az Azure AD-ben, mivel az attribútumok leképezése csak az egyik szerepkör kiosztását támogatja. 
 * A Salesforce megköveteli, hogy az e-mail-frissítéseket manuálisan kell jóváhagyni a módosítás előtt. Ennek eredményeképpen előfordulhat, hogy a kiépítési naplók több bejegyzést is láthatnak a felhasználó e-mail-címének frissítéséhez (az e-mail módosításának jóváhagyása után).
 
@@ -131,4 +131,4 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-* [Egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)
+* [Egyszeri bejelentkezés konfigurálása](./salesforce-tutorial.md)

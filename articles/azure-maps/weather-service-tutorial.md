@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 717cb600f1bdae228f45409cb271ab04d1d51a19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5499402e94cad8673da597afd68571b77047192a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310101"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677696"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
 A szélenergia egy alternatív energiaforrás a fosszilis tüzelőanyagok számára a klímaváltozás elleni küzdelem érdekében. Mivel a szél nem felel meg a természetnek, a szélenergia-kezelőknek gépi tanulási (ML) modelleket kell létrehozniuk a szélenergia kapacitásának előrejelzéséhez. Ez az előrejelzés szükséges a villamosenergia-kereslet kielégítéséhez, valamint a hálózat stabilitásának biztosításához. Ebben az oktatóanyagban bemutatjuk, hogyan történik a Azure Maps időjárási előrejelzési információk összevonása a bemutatóval az időjárási olvasmányok esetében. A Azure Maps időjárási szolgáltatás meghívásával az időjárás-előrejelzési adatkérést kéri a rendszer.
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
 > * A felhőben [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) adatfájlokkal dolgozhat.
@@ -41,7 +41,7 @@ Az oktatóanyag elvégzéséhez először a következőket kell tennie:
 
 A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
-Az Azure-jegyzetfüzetek megismeréséhez és az első lépésekhez kövesse az [Azure notebook létrehozása](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)című témakör utasításait.
+Az Azure-jegyzetfüzetek megismeréséhez és az első lépésekhez kövesse az [Azure notebook létrehozása](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebooks-project)című témakör utasításait.
 
 > [!Note]
 > A projekthez tartozó Jupyter notebook-fájl az [időjárási térképek Jupyter notebook-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)tölthető le.
@@ -193,7 +193,7 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a k�
 
 Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)-k.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Notebooksről:
 

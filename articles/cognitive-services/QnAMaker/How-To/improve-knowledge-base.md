@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776493"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678365"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Az aktív tanulás javasolt kérdéseinek elfogadása a Tudásbázisban
 
@@ -22,15 +22,15 @@ Az aktív tanulás megváltoztatja a tudásbázist vagy Search Service a javasla
 
 ## <a name="turn-on-active-learning"></a>Az aktív tanulás bekapcsolása
 
-A javasolt kérdések megjelenítéséhez [be kell kapcsolni a QnA Maker erőforrás aktív tanulását](use-active-learning.md) .
+A javasolt kérdések megjelenítéséhez [be kell kapcsolni a QnA Maker erőforrás aktív tanulását](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions) .
 
 ## <a name="view-suggested-questions"></a>Javasolt kérdések megtekintése
 
-1. A javasolt kérdések megtekintéséhez a Tudásbázis **szerkesztése** lapon válassza a **megtekintési beállítások**, majd az **aktív tanulási javaslatok megjelenítése**lehetőséget.
+1. A javasolt kérdések megtekintéséhez a Tudásbázis **szerkesztése** lapon válassza a **megtekintési beállítások** , majd az **aktív tanulási javaslatok megjelenítése** lehetőséget.
 
     [![A portál szerkesztés szakaszában válassza a javaslatok megjelenítése lehetőséget, hogy megtekintse az aktív tanulás új kérdéseit.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. A tudásbázist a kérdések és válaszok párok alapján szűrheti, hogy csak a javaslatok jelenjenek meg a **szűrési javaslatok**lehetőség kiválasztásával.
+1. A tudásbázist a kérdések és válaszok párok alapján szűrheti, hogy csak a javaslatok jelenjenek meg a **szűrési javaslatok** lehetőség kiválasztásával.
 
     [![A szűrés javaslatok szerint váltógomb csak az aktív tanulás javasolt kérdéseit jeleníti meg.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 

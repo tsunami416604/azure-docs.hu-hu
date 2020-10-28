@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444535"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677239"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Naplózás írása a VNet és a tűzfal mögötti Storage-fiókba
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -41,16 +41,16 @@ Ahhoz, hogy a naplózás egy VNet vagy tűzfal mögötti Storage-fiókba írjon,
 >
 > * Általános célú v2-es Storage-fiók. Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, [frissítsen egy általános célú v2 Storage-fiókra](../../storage/common/storage-account-upgrade.md). További információ: Storage- [fiókok típusai](../../storage/common/storage-account-overview.md#types-of-storage-accounts).
 > * A Storage-fióknak ugyanazon az előfizetésen kell lennie, és ugyanazon a helyen kell lennie, mint a [logikai SQL Servernek](logical-servers.md).
-> * Az Azure Storage-fiókhoz szükséges `Allow trusted Microsoft services to access this storage account` . Állítsa be ezt a Storage **-fiók tűzfalakon és virtuális hálózatokon**.
+> * Az Azure Storage-fiókhoz szükséges `Allow trusted Microsoft services to access this storage account` . Állítsa be ezt a Storage **-fiók tűzfalakon és virtuális hálózatokon** .
 > * Rendelkeznie kell `Microsoft.Authorization/roleAssignments/write` engedéllyel a kiválasztott Storage-fiókhoz. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="configure-in-azure-portal"></a>Konfigurálás az Azure Portalon
 
 Kapcsolódjon [Azure Portal](https://portal.azure.com) az előfizetéséhez. Navigáljon az erőforráscsoport és a kiszolgáló területére.
 
-1. Kattintson a **naplózás** elemre a biztonsági fejléc alatt. Válassza **a**be lehetőséget.
+1. Kattintson a **naplózás** elemre a biztonsági fejléc alatt. Válassza **a** be lehetőséget.
 
-2. Válassza a **tárterület**lehetőséget. Válassza ki azt a Storage-fiókot, ahol a rendszer menti a naplókat. A Storage-fióknak meg kell felelnie az [Előfeltételek](#prerequisites)szakaszban felsorolt követelményeknek.
+2. Válassza a **tárterület** lehetőséget. Válassza ki azt a Storage-fiókot, ahol a rendszer menti a naplókat. A Storage-fióknak meg kell felelnie az [Előfeltételek](#prerequisites)szakaszban felsorolt követelményeknek.
 
 3. **Tároló részleteinek** megnyitása
 
@@ -93,7 +93,7 @@ Az SQL audit beállítása az események VNet vagy tűzfal mögötti Storage-fi�
    Set-AzSqlServer -ResourceGroupName <your resource group> -ServerName <azure server name> -AssignIdentity
    ```
 
-   [**REST API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate):
+   [**REST API**](/rest/api/sql/servers/createorupdate):
 
    Példa a kérelemre
 
@@ -117,12 +117,12 @@ Az SQL audit beállítása az események VNet vagy tűzfal mögötti Storage-fi�
    }
    ```
 
-2. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a tárfiókot. Keresse meg **Access Control (iam)**, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendeljen hozzá **Storage blob-adatközreműködő** Azure-szerepkört a Azure Active Directory (Azure ad) szolgáltatásban regisztrált adatbázist futtató kiszolgálóhoz az előző lépésben leírtak szerint.
+2. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a tárfiókot. Keresse meg **Access Control (iam)** , majd kattintson a **szerepkör-hozzárendelés hozzáadása** lehetőségre. Rendeljen hozzá **Storage blob-adatközreműködő** Azure-szerepkört a Azure Active Directory (Azure ad) szolgáltatásban regisztrált adatbázist futtató kiszolgálóhoz az előző lépésben leírtak szerint.
 
    > [!NOTE]
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
 
-3. Konfigurálja a [kiszolgáló blob naplózási házirendjét](/rest/api/sql/server%20auditing%20settings/createorupdate)a *storageAccountAccessKey*megadása nélkül:
+3. Konfigurálja a [kiszolgáló blob naplózási házirendjét](/rest/api/sql/server%20auditing%20settings/createorupdate)a *storageAccountAccessKey* megadása nélkül:
 
    Példa a kérelemre
 

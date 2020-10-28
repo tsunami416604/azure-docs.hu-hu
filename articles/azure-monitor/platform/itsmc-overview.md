@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: f47a23a3b95975d98d3825bc5b14ed0522102a0c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 344e15d3c15474fc8959b120f86bb86f22217ef6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547639"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677007"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
 
@@ -65,7 +65,7 @@ A kapcsolatok létrehozása előtt hozzá kell adnia a ITSM-csatoló megoldást.
    >[!NOTE]
    >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már Log Analytics munkaterületek.
 
-5. Kattintson a **Létrehozás** gombra.
+5. Kattintson az **OK** gombra.
 
 A megoldás erőforrásának telepítésekor megjelenik egy értesítés az ablak jobb felső sarkában.
 
@@ -122,28 +122,29 @@ A műveleti csoportok moduláris és újrahasznosítható módszert biztosítana
 
 Kövesse az alábbi eljárást:
 
-1. Azure Portal kattintson a  **figyelés** elemre.
-2. A bal oldali ablaktáblán kattintson a  **műveleti csoportok** elemre. Megjelenik a **műveleti csoport hozzáadása** ablak.
+1. A Azure Portal kattintson a  **riasztások** elemre.
+2. A felső ablaktáblán kattintson a  **műveletek kezelése** lehetőségre. Megjelenik a **műveleti csoport hozzáadása** ablak.
 
     ![Műveletcsoportok](media/itsmc-overview/action-groups.png)
 
-3. Adja meg a műveleti csoport **nevét** és **gazdagépbejegyzés** . Válassza ki azt az **erőforráscsoportot** és- **előfizetést** , amelyben létre szeretné hozni a műveleti csoportot.
+3. Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyben létre szeretné hozni a műveleti csoportot. Adja meg a műveleti csoport **nevét** és **megjelenítendő nevét** . Kattintson a **Next (tovább) gombra: értesítések** .
 
     ![Műveleti csoportok részletei](media/itsmc-overview/action-groups-details.png)
 
-4. A műveletek listában válassza a **ITSM** elemet a **művelet típusa** legördülő menüből. Adja meg a művelet **nevét** , majd kattintson a **részletek szerkesztése** elemre.
-5. Válassza ki azt az **előfizetést** , ahol a log Analytics munkaterület található. Válassza ki a **kapcsolatok** nevét (a ITSM-csatoló nevét), majd a munkaterület nevét. Például: "MyITSMMConnector (Sajátmunkaterület)".
+4. Az értesítési listában kattintson a **Nest: műveletek** elemre.
+5. A műveletek listában válassza a **ITSM** elemet a **művelet típusa** legördülő menüből. Adja meg a művelet **nevét** , majd kattintson a **Szerkesztés részleteit** jelképező tollra.
+6. Válassza ki azt az **előfizetést** , ahol a log Analytics munkaterület található. Válassza ki a **kapcsolatok** nevét (a ITSM-csatoló nevét), majd a munkaterület nevét. Például: "MyITSMMConnector (Sajátmunkaterület)".
 
     ![ITSM művelet részletei](media/itsmc-overview/itsm-action-details.png)
 
-6. Válassza ki a **munkaelem** típusát a legördülő menüből.
+7. Válassza ki a **munkaelem** típusát a legördülő menüből.
 
-7. Ha a mező kitöltését rögzített értékekkel szeretné kitölteni, jelölje be az "egyéni sablon használata" jelölőnégyzetet, máskülönben válasszon egy meglévő [sablont](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a legördülő listából, és töltse ki a sablon mezőket rögzített értékekkel.
+8. Ha a mező kitöltését rögzített értékekkel szeretné kitölteni, jelölje be az "egyéni sablon használata" jelölőnégyzetet, máskülönben válasszon egy meglévő [sablont](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a legördülő listából, és töltse ki a sablon mezőket rögzített értékekkel.
 
-8. Ha bejelöli az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása jelölőnégyzetet, minden konfigurációs elem saját munkaelemgel fog rendelkezni. Ez azt jelenti, hogy a konfigurációs elemek egy munkaeleme lesz, és a rendszer a létrehozandó riasztások alapján frissíti.
+9. Ha bejelöli az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása jelölőnégyzetet, minden konfigurációs elem saját munkaelemgel fog rendelkezni. Ez azt jelenti, hogy a konfigurációs elemek egy munkaeleme lesz, és a rendszer a létrehozandó riasztások alapján frissíti.
 Ha kijelöli az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása jelölőnégyzetet, minden riasztás új munkaelemet hoz létre, ami azt jelenti, hogy egy konfigurációs elemnél több riasztás is lehet.
 
-9. Kattintson az **OK** gombra.
+10. Kattintson az **OK** gombra.
 
 Azure-riasztási szabály létrehozásakor/szerkesztésekor használjon egy ITSM műveletet tartalmazó műveleti csoportot. A riasztás indításakor a rendszer létrehozza/frissíti a munkaelemet a ITSM eszközben.
 
@@ -162,7 +163,7 @@ A kapcsolatok beállításakor a ITSM-összekötő akár 120 napos incidenst is 
 
 Az incidens és a változási kérelmek adatai megjeleníthetők a megoldás ITSM-csatoló irányítópultjának használatával.
 
-![Log Analytics képernyő](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![A ITSM-csatoló irányítópultot megjelenítő képernyőkép.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Az irányítópult információt nyújt az összekötő állapotáról is, amely kiindulási pontként használható a kapcsolatokkal kapcsolatos problémák elemzéséhez.
 

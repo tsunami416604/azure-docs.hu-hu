@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: a5842c5f3130b39f75b5339274b84feb2e0f283f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0f121caddc6b629920479a34bef7b284dea117a4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547095"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677495"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
 
@@ -30,13 +30,13 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Microsoft Grap
 
 A logikai alkalmazás munkafolyamata olyan műveleteket is használhat, amelyek válaszokat kapnak a Microsoft Graph biztonsági összekötőtől, és ezt a kimenetet a munkafolyamat más műveletei számára is elérhetővé teszik. A munkafolyamatban más műveletek is megadhatók a Microsoft Graph biztonsági összekötő műveleteiből származó kimenet használatával. Ha például magas súlyosságú riasztásokat kap a Microsoft Graph biztonsági összekötőn keresztül, az Outlook Connector használatával e-mailben elküldheti ezeket a riasztásokat egy e-mail-üzenetben. 
 
-A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse meg a [Microsoft Graph biztonsági API áttekintése](https://aka.ms/graphsecuritydocs)című témakört. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Ha Microsoft Flow vagy PowerApps keres, tekintse meg a [Mi az a flow?](https://flow.microsoft.com/) vagy a [Mi a PowerApps?](https://powerapps.microsoft.com/) című témakört.
+A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse meg a [Microsoft Graph biztonsági API áttekintése](/graph/security-concept-overview)című témakört. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Ha Microsoft Flow vagy PowerApps keres, tekintse meg a [Mi az a flow?](https://flow.microsoft.com/) vagy a [Mi a PowerApps?](https://powerapps.microsoft.com/) című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A Microsoft Graph Security-összekötő használatához *explicit* Azure Active Directorybeli bérlői rendszergazdai hozzájárulás szükséges, amely a [Microsoft Graph Security hitelesítési követelményei](https://aka.ms/graphsecurityauth) közé is tartozik. Ehhez a megkötéshez a Microsoft Graph biztonsági összekötő alkalmazás-azonosítója és neve szükséges, amelyet a [Azure Portal](https://portal.azure.com)is talál:
+* A Microsoft Graph Security-összekötő használatához *explicit* Azure Active Directorybeli bérlői rendszergazdai hozzájárulás szükséges, amely a [Microsoft Graph Security hitelesítési követelményei](/graph/security-authorization) közé is tartozik. Ehhez a megkötéshez a Microsoft Graph biztonsági összekötő alkalmazás-azonosítója és neve szükséges, amelyet a [Azure Portal](https://portal.azure.com)is talál:
 
   | Tulajdonság | Érték |
   |----------|-------|
@@ -159,9 +159,8 @@ Az ezzel az összekötővel használható lekérdezésekkel kapcsolatos további
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](https://aka.ms/graphsecurityconnectorreference).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/microsoftgraphsecurity/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
-

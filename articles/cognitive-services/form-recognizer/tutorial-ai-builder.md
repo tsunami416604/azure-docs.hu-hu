@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 0261c495ad08000f9041390658e0f19954b71669
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 124c8fca569365a4b892dc325518f45c7f98900c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517021"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675917"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Oktatóanyag: űrlap-feldolgozó alkalmazás létrehozása AI-szerkesztővel
 
@@ -40,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="create-a-form-processing-project"></a>Űrlap-feldolgozási projekt létrehozása
 
 1. Lépjen a [Power apps](https://make.powerapps.com/) vagy a [Power automatizálás](https://flow.microsoft.com/signin)szolgáltatáshoz, és jelentkezzen be a szervezeti fiókjával.
-1. A bal oldali panelen válassza az **AI Builder**  >  **Build**elemet.
+1. A bal oldali panelen válassza az **AI Builder**  >  **Build** elemet.
 1. Válassza ki az **űrlap feldolgozására** szolgáló kártyát.
 1. Adja meg a modell nevét.
 1. Kattintson a **Létrehozás** gombra.
@@ -62,14 +62,14 @@ A **dokumentumok hozzáadása** lapon minta dokumentumokat kell megadnia ahhoz, 
 ### <a name="upload-your-documents"></a>Dokumentumok feltöltése
 
 1. Válassza a **Dokumentumok hozzáadása** lehetőséget, jelöljön ki legalább öt dokumentumot, majd kattintson a **Feltöltés** gombra.
-1. A feltöltés befejezése után válassza a **Bezárás**lehetőséget.
-1. Ezután válassza az **elemzés**lehetőséget.
+1. A feltöltés befejezése után válassza a **Bezárás** lehetőséget.
+1. Ezután válassza az **elemzés** lehetőséget.
 
 > [!NOTE] 
 > Miután felöltötte ezeket a dokumentumokat, eltávolíthat közülük néhányat, vagy feltölthet továbbiakat.
 
 > [!div class="mx-imgBorder"]
-> ![dokumentumok hozzáadása lap](./media/tutorial-ai-builder/add-documents-page.png)
+> ![Képernyőkép a dokumentumok hozzáadása gomb kiemeléséhez.](./media/tutorial-ai-builder/add-documents-page.png)
 
 ### <a name="analyze-your-documents"></a>Dokumentumok elemzése
 
@@ -89,8 +89,8 @@ A mező kiválasztása lapon válassza ki a kívánt mezőket:
 
     Ha egy észlelt mezőre kattint, az alábbi információk jelennek meg:
 
-    - **Mezőnév**: az észlelt mező feliratának neve.
-    - **Mező értéke**: az észlelt mező értéke.
+    - **Mezőnév** : az észlelt mező feliratának neve.
+    - **Mező értéke** : az észlelt mező értéke.
 
 > [!div class="mx-imgBorder"]
 > ![címkézés lap](./media/tutorial-ai-builder/select-fields-page.png)
@@ -110,7 +110,7 @@ Ha nem a modell automatikusan észlelte a címkézni kívánt mezőt, rajzoljon 
 
 A Részletek lapon tesztelheti a modellt a közzététel vagy használat előtt:
 
-1. A Részletek lapon válassza a **Gyorsteszt**lehetőséget.
+1. A Részletek lapon válassza a **Gyorsteszt** lehetőséget.
 2. Egy dokumentumot áthúzhat, vagy kiválaszthatja a **feltöltés az eszközről** lehetőséget a tesztoldal feltöltéséhez. A gyorsteszt néhány másodperc után megjeleníti az eredményeket.
 3. Kiválaszthatja az **Indítás** lehetőséget egy másik teszt futtatásához, vagy ha elkészült, akkor a **Bezárás** gombra.
 

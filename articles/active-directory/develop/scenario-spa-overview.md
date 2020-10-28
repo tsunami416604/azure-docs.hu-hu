@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 658e7f206f892c9dc241aab228aa933884f95b94
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257316"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675636"
 ---
 # <a name="scenario-single-page-application"></a>Forgatókönyv: egyoldalas alkalmazás
 
@@ -38,7 +38,7 @@ A Microsoft Identity platform **két** lehetőséget kínál, amelyek lehetővé
 
 ![Egyoldalas alkalmazások – hitelesítés](./media/scenarios/spa-app-auth.svg)
 
-- [OAuth 2,0 implicit folyamat](./v2-oauth2-implicit-grant-flow.md). Az implicit engedélyezési folyamat lehetővé teszi, hogy az alkalmazás **azonosítót** és **hozzáférési** jogkivonatokat kapjon. Az engedélyezési kód folyamatával ellentétben az implicit engedélyezési folyamat nem ad vissza **frissítési jogkivonatot**.
+- [OAuth 2,0 implicit folyamat](./v2-oauth2-implicit-grant-flow.md). Az implicit engedélyezési folyamat lehetővé teszi, hogy az alkalmazás **azonosítót** és **hozzáférési** jogkivonatokat kapjon. Az engedélyezési kód folyamatával ellentétben az implicit engedélyezési folyamat nem ad vissza **frissítési jogkivonatot** .
 
 ![Egyoldalas alkalmazások – implicit](./media/scenarios/spa-app.svg)
 

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9be94183fc34c2dbee3503d21e2e643d5296a82b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461124"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677410"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Ismerkedés a Group chat Hero-mintával
 
@@ -56,9 +56,9 @@ A &quot;csevegés indítása":::
 
 A fő csevegési képernyő összetevői:
 
-- **Fő csevegési felület**: ez az alapvető csevegési élmény, amellyel a felhasználók küldhetnek és kaphatnak üzeneteket. Üzenetek küldéséhez használhatja a beviteli körzetet, és nyomja le az ENTER billentyűt (vagy használja a Küldés gombot). A fogadott csevegési üzeneteket a küldő a helyes névvel és Emoji kategorizálja. A csevegési terület két típusú értesítést fog látni: 1) értesítéseket írhat be, amikor a felhasználó begépeli és 2) az üzenetek küldésére és olvasására vonatkozó értesítéseket.
-- **Fejléc**: ez az a hely, ahol a felhasználó látni fogja a csevegési szál címét, valamint a résztvevő és a beállítások oldalsó sávjának a vezérlését, valamint a csevegési munkamenetből való kilépéshez szükséges vezérlőket.
-- **Oldalsó sáv**: ebben az esetben a rendszer a fejlécben szereplő vezérlők használatával jeleníti meg a résztvevőket és a beállítási információkat. A résztvevők oldalsó sáv tartalmazza a csevegés résztvevőinek listáját, valamint egy hivatkozást, amely meghívja a résztvevőket a csevegési munkamenetbe. A beállítások oldal sáv lehetővé teszi a csevegési szál címének konfigurálását. 
+- **Fő csevegési felület** : ez az alapvető csevegési élmény, amellyel a felhasználók küldhetnek és kaphatnak üzeneteket. Üzenetek küldéséhez használhatja a beviteli körzetet, és nyomja le az ENTER billentyűt (vagy használja a Küldés gombot). A fogadott csevegési üzeneteket a küldő a helyes névvel és Emoji kategorizálja. A csevegési terület két típusú értesítést fog látni: 1) értesítéseket írhat be, amikor a felhasználó begépeli és 2) az üzenetek küldésére és olvasására vonatkozó értesítéseket.
+- **Fejléc** : ez az a hely, ahol a felhasználó látni fogja a csevegési szál címét, valamint a résztvevő és a beállítások oldalsó sávjának a vezérlését, valamint a csevegési munkamenetből való kilépéshez szükséges vezérlőket.
+- **Oldalsó sáv** : ebben az esetben a rendszer a fejlécben szereplő vezérlők használatával jeleníti meg a résztvevőket és a beállítási információkat. A résztvevők oldalsó sáv tartalmazza a csevegés résztvevőinek listáját, valamint egy hivatkozást, amely meghívja a résztvevőket a csevegési munkamenetbe. A beállítások oldal sáv lehetővé teszi a csevegési szál címének konfigurálását. 
 
 Az alábbiakban további információkat talál a minta beállításához szükséges előfeltételekről és lépésekről.
 
@@ -81,7 +81,7 @@ A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyi
 ## <a name="before-running-the-sample-for-the-first-time"></a>A minta első futtatása előtt
 
 1. Nyisson meg egy PowerShell-példányt, a Windows Terminalt, a parancssort vagy a megfelelőt, és navigáljon ahhoz a könyvtárhoz, amelyet a minta klónozására szeretne használni.
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
 3. Szerezze be a `Connection String` Azure Portal. A kapcsolati karakterláncokkal kapcsolatos további információkért lásd: [Azure kommunikációs erőforrások létrehozása](../quickstarts/create-communication-resource.md)
 4. A `Connection String` hozzáadását követően adja hozzá a kapcsolódási karakterláncot a csevegés mappájában található **appsettings.js** fájlhoz. Adja meg a kapcsolatok sztringjét a (z) változóban: `ResourceConnectionString` .
 
@@ -102,16 +102,16 @@ A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyi
 2. Hozzon létre egy új közzétételi profilt, és válassza ki az Azure-előfizetését.
 3. A közzététel előtt adja hozzá a (z `Edit App Service Settings` ) és a (z), és adja meg a `ResourceConnectionString` (z) kulcsot, és adja meg a (appsettings.json) értéket a (z) értékként.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
-További információért tekintse át a következő cikkeket:
+További információkat az következő cikkekben talál:
 
 - Tudnivalók a [csevegési fogalmakról](../concepts/chat/concepts.md)
 - Ismerkedjen meg a [csevegő ügyféloldali függvénytárával](../concepts/chat/sdk-features.md)

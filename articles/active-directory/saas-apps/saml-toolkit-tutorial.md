@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 7886691559a63e6d54ea748582f641f33cecf995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26618382223a87f779f95452000a39126f37efbb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979749"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675431"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Azure AD SAML Toolkit használatával
 
@@ -48,14 +48,14 @@ Az Azure ad SAML Toolkit Azure AD-integrációjának konfigurálásához hozzá 
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **Azure ad SAML Toolkit** kifejezést.
 1. Válassza az **Azure ad SAML Toolkit** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso-for-azure-ad-saml-toolkit"></a>Azure AD SSO konfigurálása és tesztelése az Azure AD SAML-eszközkészlethez
 
-Konfigurálja és tesztelje az Azure AD SSO-t az Azure AD SAML Toolkit segítségével egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure ad-felhasználó és a kapcsolódó felhasználó között az Azure AD SAML Toolkit-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t az Azure AD SAML Toolkit segítségével egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure ad-felhasználó és a kapcsolódó felhasználó között az Azure AD SAML Toolkit-ben.
 
 Az Azure AD SSO Azure AD SAML Toolkit használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
@@ -70,8 +70,8 @@ Az Azure AD SSO Azure AD SAML Toolkit használatával történő konfigurálás�
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az Azure Portal az **Azure ad SAML Toolkit** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az Azure Portal az **Azure ad SAML Toolkit** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -94,37 +94,37 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban az Azure AD SAML Toolkit elérésének biztosításával engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **Azure ad SAML Toolkit**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **Azure ad SAML Toolkit** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-azure-ad-saml-toolkit-sso"></a>Az Azure AD SAML Toolkit egyszeri bejelentkezésének konfigurálása
 
-1. Nyisson meg egy új böngészőablakot, ha még nem regisztrált az Azure AD SAML-eszközkészlet webhelyén, először regisztráljon a **regisztrálás**gombra kattintva. Ha már regisztrált, jelentkezzen be az Azure AD SAML Toolkit vállalati webhelyre a regisztrált bejelentkezési hitelesítő adatok használatával.
+1. Nyisson meg egy új böngészőablakot, ha még nem regisztrált az Azure AD SAML-eszközkészlet webhelyén, először regisztráljon a **regisztrálás** gombra kattintva. Ha már regisztrált, jelentkezzen be az Azure AD SAML Toolkit vállalati webhelyre a regisztrált bejelentkezési hitelesítő adatok használatával.
 
     ![Azure AD SAML Toolkit-regisztráció](./media/saml-toolkit-tutorial/register.png)
 
-1. Kattintson az **SAML-konfigurációra**.
+1. Kattintson az **SAML-konfigurációra** .
 
     ![Azure AD SAML Toolkit SAML-konfiguráció](./media/saml-toolkit-tutorial/saml-configure.png)
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Létrehozás** gombra.
 
     ![Azure AD SAML Toolkit](./media/saml-toolkit-tutorial/createsso.png)
 
@@ -140,7 +140,7 @@ Ebben a szakaszban az Azure AD SAML Toolkit elérésének biztosításával enge
 
     1. Kattintson a **fájl kiválasztása** elemre, és töltse fel a Azure Portalból letöltött **tanúsítvány-(RAW-)** fájlt.
 
-    1. Kattintson a **Létrehozás** elemre.
+    1. Kattintson a **Létrehozás** gombra.
 
     1. Másolja be a bejelentkezési URL-címet, az azonosítót és az ACS URL-értékeket az SAML Toolkit SSO konfigurációs lapján, és illessze be a beillesztett szövegmezőket a Azure Portal **alapszintű SAML-konfiguráció szakaszában** .
 
@@ -156,8 +156,8 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 2. Lépjen közvetlenül az SAML Toolkit bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-3. Használhatja a Microsoft Access panelt. Amikor a hozzáférési panelen a SAML-eszközkészlet csempére kattint, automatikusan be kell jelentkeznie az SAML-eszközkészletbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Használhatja a Microsoft Access panelt. Amikor a hozzáférési panelen a SAML-eszközkészlet csempére kattint, automatikusan be kell jelentkeznie az SAML-eszközkészletbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure AD SAML Toolkit konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+Az Azure AD SAML Toolkit konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

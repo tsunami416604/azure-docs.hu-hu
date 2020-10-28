@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1bee00261cd96f61a39389f31a52109f4e64b5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510266"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675821"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -46,13 +46,13 @@ Kövesse az alábbi lépéseket:
 
       b. Válassza ki a FarmBeats-telepítés részeként létrehozott **alkalmazás-regisztrációt** . Ez a neve megegyezik a FarmBeats datahub.
 
-      c. Válassza ki **az API közzététele** lehetőséget > válassza az **ügyfélalkalmazás hozzáadása** lehetőséget, és adja meg a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az **Engedélyezés hatókört**. Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) az alábbi lépések végrehajtásához:
+      c. Válassza ki **az API közzététele** lehetőséget > válassza az **ügyfélalkalmazás hozzáadása** lehetőséget, és adja meg a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az **Engedélyezés hatókört** . Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) az alábbi lépések végrehajtásához:
 
 3. Nyissa meg a Cloud Shellt. Ez a beállítás a Azure Portal jobb felső sarkában található eszköztáron érhető el.
 
     ![Azure Portal eszköztár](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-4. Győződjön meg arról, hogy a környezet **PowerShell**-re van beállítva. Alapértelmezés szerint a bash értékre van beállítva.
+4. Győződjön meg arról, hogy a környezet **PowerShell** -re van beállítva. Alapértelmezés szerint a bash értékre van beállítva.
 
     ![PowerShell eszköztár-beállítás](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
@@ -70,7 +70,7 @@ Kövesse az alábbi lépéseket:
 
 7. Futtassa az alábbi parancsot. Ezzel letölt egy parancsfájlt a saját könyvtárába.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive 
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
@@ -84,7 +84,7 @@ Kövesse az alábbi lépéseket:
 
     ```
 
-9. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét.
+9. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont** , a **bérlői azonosító** , az **ügyfél-azonosító** , az **ügyfél titkos kulcsa** és a **EventHub kapcsolódási karakterláncának** értékét.
 
 
 ## <a name="create-device-or-sensor-metadata"></a>Eszköz vagy érzékelő metaadatainak létrehozása
@@ -96,10 +96,10 @@ Kövesse az alábbi lépéseket:
  > [!NOTE]
  > Partnerként csak olvasási, létrehozási és frissítési metaadatokat lehet elérni. **a törlési lehetőség csak a partnerre korlátozódik.**
 
-- /**DeviceModel**: a DeviceModel megfelel az eszköz metaadatainak, például a gyártónak és az eszköz típusának, amely vagy egy átjáró vagy egy csomópont.
-- /**Eszköz**: az eszköz a farmon található fizikai eszköznek felel meg.
-- /**SensorModel**: a SensorModel megfelel az érzékelő metaadatainak, például a gyártó, az érzékelő típusa, amely az analóg vagy a digitális, valamint az érzékelő mérése, például a környezeti hőmérséklet és a nyomás.
-- /**Érzékelő**: az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
+- /**DeviceModel** : a DeviceModel megfelel az eszköz metaadatainak, például a gyártónak és az eszköz típusának, amely vagy egy átjáró vagy egy csomópont.
+- /**Eszköz** : az eszköz a farmon található fizikai eszköznek felel meg.
+- /**SensorModel** : a SensorModel megfelel az érzékelő metaadatainak, például a gyártó, az érzékelő típusa, amely az analóg vagy a digitális, valamint az érzékelő mérése, például a környezeti hőmérséklet és a nyomás.
+- /**Érzékelő** : az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
 
 
 |        DeviceModel   |  Javaslatok   |
@@ -192,9 +192,9 @@ access_token = token_response.get('access_token')
 
 Itt láthatók a leggyakoribb kérelmek fejlécei, amelyeket meg kell adni, amikor API-hívást végez a FarmBeats Datahub:
 
-- **Content-Type**: Application/JSON
-- **Engedélyezés**: tulajdonos <Access-Token>
-- **Elfogadás**: alkalmazás/JSON
+- **Content-Type** : Application/JSON
+- **Engedélyezés** : tulajdonos <Access-Token>
+- **Elfogadás** : alkalmazás/JSON
 
 ### <a name="input-payload-to-create-metadata"></a>A metaadatok létrehozására szolgáló bemeneti adattartalom
 
@@ -336,7 +336,7 @@ Most, hogy létrehozta az eszközöket és az érzékelőket a FarmBeats-ben, el
 
 ### <a name="create-a-telemetry-client"></a>Telemetria-ügyfél létrehozása
 
-A telemetria az Azure Event Hubsba kell küldenie feldolgozásra. Az Azure Event Hubs egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból. Ha telemetria-adatokat szeretne küldeni a FarmBeats, hozzon létre egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hubhoz. A telemetria küldésével kapcsolatos további információkért lásd: [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send).
+A telemetria az Azure Event Hubsba kell küldenie feldolgozásra. Az Azure Event Hubs egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból. Ha telemetria-adatokat szeretne küldeni a FarmBeats, hozzon létre egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hubhoz. A telemetria küldésével kapcsolatos további információkért lásd: [Azure Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>Telemetria-üzenet küldése ügyfélként
 
@@ -431,9 +431,9 @@ Példa egy telemetria-üzenetre:
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Nem lehet megtekinteni a telemetria adatait az érzékelőkből származó múltbeli/adatfolyam-adatok betöltése után
 
-**Tünet**: az eszközök vagy érzékelők üzembe helyezése megtörténik, és létrehozta az eszközöket/érzékelőket a FarmBeats-on és a betöltött telemetria a EventHub, de nem tudja lekérdezni vagy megtekinteni a telemetria-adatot a FarmBeats.
+**Tünet** : az eszközök vagy érzékelők üzembe helyezése megtörténik, és létrehozta az eszközöket/érzékelőket a FarmBeats-on és a betöltött telemetria a EventHub, de nem tudja lekérdezni vagy megtekinteni a telemetria-adatot a FarmBeats.
 
-**Javítási művelet**:
+**Javítási művelet** :
 
 1. Győződjön meg arról, hogy végrehajtotta a megfelelő partneri regisztrációt – ezt megteheti, ha a datahub henceg, a/partner API-ra navigálva elvégezheti a beolvasást, és ellenőrizheti, hogy a partner regisztrálva van-e. Ha nem, kövesse a partner hozzáadásához [szükséges lépéseket](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) .
 

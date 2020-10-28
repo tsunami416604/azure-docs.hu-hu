@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 126df6e7f4d227c20c2173a1e2d4c0d7361b043f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 080e2daf5065c0762fb039a84e62580e5c915ddb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962445"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735174"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure Portal használatával
 
 Az Azure Key Vault egy olyan felhőszolgáltatás, amely a titkos kulcsok biztonságos tárolására szolgál. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebben a rövid útmutatóban egy kulcstartót hoz létre, majd eltárol benne egy titkos kulcsot. A Key Vaulttal kapcsolatosan további információt az [Áttekintés](../general/overview.md) szakaszban talál.
 
-További információ a titkokról: (about-secrets.md).
+További információ a titkokról: [About Secrets](about-secrets.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,25 +34,26 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása** lehetőséget.
 2. A keresőmezőbe írja be a **Key Vault** kifejezést.
 3. Az eredmények listájában válassza a **Key Vault** lehetőséget.
 4. A Key Vault szakaszban kattintson a **Létrehozás** gombra.
 5. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:
-    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban a **contoso-vault2-** t használjuk. 
-    - **Előfizetés**: Válassza ki az előfizetést.
-    - Az **erőforráscsoport**területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
+    - **Név** : Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban a **contoso-vault2-** t használjuk. 
+    - **Előfizetés** : Válassza ki az előfizetést.
+    - Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
     - A **Hely** legördülő menüből válassza ki a helyet.
     - A többi beállítást hagyja az alapértelmezett értéken.
 6. A fenti adatok megadása után válassza a **Létrehozás** elemet.
 
 Jegyezze fel az alábbi két tulajdonságot:
 
-* **Tároló neve**: A példában ez a **Contoso-Vault2**. Ezt a nevet fogja majd más lépésekben is használni.
-* **Tár URI-ja**: A példában ez a https://contoso-vault2.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **Tároló neve** : A példában ez a **Contoso-Vault2** . Ezt a nevet fogja majd más lépésekben is használni.
+* **Tár URI-ja** : A példában ez a https://contoso-vault2.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
-Key Vault az Azure CLI-vel és a PowerShell-lel is létrehozható: [hozzon létre Key Vault a PowerShell](../general/quick-create-powershell.md) 
- [create Key Vault használatával az Azure CLI használatával](../general/quick-create-cli.md)
+Key Vault az Azure CLI és a PowerShell használatával is létrehozható:
+- [Key Vault létrehozása a PowerShell használatával](../general/quick-create-powershell.md)
+- [Key Vault létrehozása az Azure CLI-vel](../general/quick-create-cli.md)
 
 Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen az új kulcstartón.
 
@@ -62,12 +63,12 @@ Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen a
 
 Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ebben az esetben egy alkalmazás által használható jelszót fogunk megadni. A jelszó neve **ExamplePassword** , és a **hVFkk965BuUv** értékét tárolja.
 
-1. A Key Vault tulajdonságok lapon válassza a **titkok**elemet.
+1. A Key Vault tulajdonságok lapon válassza a **titkok** elemet.
 2. Kattintson a **Létrehozás/Importálás** gombra.
 3. A **Titkos kód létrehozása** képernyőn válassza az alábbi értékeket:
-    - **Feltöltési beállítások**: Manuális.
-    - **Név**: ExamplePassword.
-    - **Érték**: hVFkk965BuUv
+    - **Feltöltési beállítások** : Manuális.
+    - **Név** : ExamplePassword.
+    - **Érték** : hVFkk965BuUv
     - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Létrehozás** gombra.
 
 Miután megérkezett az üzenet arról, hogy a titkos kulcs sikeresen létrejött, kattintson rá a listában. 
@@ -82,7 +83,7 @@ A jobb oldali ablaktáblán látható "titkos érték megjelenítése" gombra ka
 
 ![A titkos érték megjelent](../media/quick-create-portal/current-version-shown.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Erre a rövid útmutatóra egyéb Key Vault-útmutatók és oktatóanyagok is épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése a Portalon keresztül:

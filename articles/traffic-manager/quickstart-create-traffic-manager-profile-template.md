@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
-ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299150"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675999"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Rövid útmutató: Traffic Manager profil létrehozása ARM-sablonnal
 
@@ -43,7 +43,7 @@ Az Azure Traffic Manager-hoz kapcsolódó további sablonokért tekintse meg az 
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez. 
+1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -62,11 +62,11 @@ Az Azure Traffic Manager-hoz kapcsolódó további sablonokért tekintse meg az 
 
 1. A PowerShell-szkript másolásához válassza a **Másolás** az előző kódrészletből lehetőséget.
 
-1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés**lehetőséget.
+1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
 
 1. Adja meg az értékeket.
 
-    A sablon üzembe helyezése két külső végponttal rendelkező profilt hoz létre. A **Endpoint1** a *w<span>WW. Microsoft</span>. com* célként megadott végpontját használja Észak- **Európában**. A **Endpoint2** a *d<span>OCS. Microsoft</span>. com* CÉLKÉNT megadott végpontját használja az **USA déli középső**régiójában. 
+    A sablon üzembe helyezése két külső végponttal rendelkező profilt hoz létre. A **Endpoint1** `www.microsoft.com` az **észak-európai** hellyel rendelkező cél végpontot használja. A **Endpoint2** `docs.microsoft.com` az **USA déli középső** régiójában található célállomás végpontját használja.
 
     Az erőforráscsoport neve a projekt neve **RG** hozzáfűzéssel.
 
@@ -87,23 +87,25 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
     Get-AzTrafficManagerProfile -Name ExternalEndpointExample -ResourceGroupName $resourceGroupName | Select RelativeDnsName
     ```
 
-    Másolja a **RelativeDnsName** értéket. Traffic Manager profiljának DNS-neve *<* relativednsname *>. trafficmanager.net*. 
+    Másolja a **RelativeDnsName** értéket. A Traffic Manager-profil DNS-neve: `<relativednsname>.trafficmanager.net` .
 
-1. A helyi PowerShellben futtassa a következő parancsot a **{relativeDNSname}** változó lecserélése a *<* relativeDNSname *>. trafficmanager.net*értékre.
+1. Egy helyi PowerShellben futtassa a következő parancsot a **{relativeDNSname}** változónak a paranccsal való lecserélésével `<relativednsname>.trafficmanager.net` .
 
     ```powershell
     Resolve-DnsName -Name {relativeDNSname} | Select-Object NameHost | Select -First 1
     ```
-    Meg kell kapnia a *w<span>WW. Microsoft</span>. com* vagy *d<span>OCS. Microsoft</span>. com* NameHost, attól függően, hogy melyik régióhoz közelebb van.
 
-1. Annak ellenőrzéséhez, hogy fel tudja-e oldani a másik végpontot, tiltsa le az utolsó lépésben kapott cél végpontját. A **{végpontneve}** helyére írja be a következőt: **endpoint1** vagy **endpoint2** , ha le szeretné tiltani a *w<span>WW. Microsoft</span>. com* vagy *d<span>OCS. Microsoft</span>. com* célját.
+    Egy NameHost kell beszereznie, `www.microsoft.com` vagy `docs.microsoft.com` attól függően, hogy melyik régió közelebb van az Ön számára.
+
+1. Annak ellenőrzéséhez, hogy fel tudja-e oldani a másik végpontot, tiltsa le az utolsó lépésben kapott cél végpontját. Cserélje le a **{végpontneve}** parancsot a **endpoint1** vagy a **endpoint2** értékre a vagy a cél letiltásához `www.microsoft.com` `docs.microsoft.com` .
 
     ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name {endpointName} -Type ExternalEndpoints -ProfileName ExternalEndpointExample -ResourceGroupName $resourceGroupName -Force
     ```
-1. Futtassa a parancsot a 2. lépésből a helyi PowerShellben. Ezúttal a másik végpont NameHost kell beszereznie. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+1. Futtassa a parancsot a 2. lépésből a helyi PowerShellben. Ezúttal a másik végpont NameHost kell beszereznie.
+
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szüksége a Traffic Manager profilra, törölje az erőforráscsoportot. Ezzel eltávolítja a Traffic Manager profilt és az összes kapcsolódó erőforrást.
 
@@ -113,10 +115,9 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozta a következőket:
-* Traffic Manager-profil
+Ebben a rövid útmutatóban létrehozott egy Traffic Manager profilt.
 
 Ha többet szeretne megtudni az útválasztási forgalomról, folytassa a Traffic Manager oktatóanyagokkal.
 

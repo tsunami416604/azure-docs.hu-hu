@@ -10,24 +10,24 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 829a106a643c10626a65855152375c349cd76f9a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d00caa91e7b6a19edbb6ac2d38fcea1e2a0d5f05
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87833589"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676854"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>A Java és a JDBC használata Azure SQL Database
 
-Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure SQL Databaseban](https://docs.microsoft.com/azure/sql-database/)található információk tárolására és lekérésére.
+Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure SQL Databaseban](/azure/sql-database/)található információk tárolására és lekérésére.
 
 A JDBC a szabványos Java API a hagyományos kapcsolati adatbázisokhoz való kapcsolódáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy Azure-fiók. Ha még nem rendelkezik ilyennel, [kérjen meg egy ingyenes próbaverziót](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) vagy az [Azure CLI](/cli/azure/install-azure-cli). Javasoljuk, hogy Azure Cloud Shell, hogy automatikusan bejelentkezzen, és hozzáférhessen minden szükséges eszközhöz.
-- Támogatott [Java Development Kit](https://aka.ms/azure-jdks), 8-as verzió (Azure Cloud Shell).
+- [Azure Cloud Shell](../../cloud-shell/quickstart.md) vagy az [Azure CLI](/cli/azure/install-azure-cli). Javasoljuk, hogy Azure Cloud Shell, hogy automatikusan bejelentkezzen, és hozzáférhessen minden szükséges eszközhöz.
+- Támogatott [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), 8-as verzió (Azure Cloud Shell).
 - Az [Apache Maven](https://maven.apache.org/) Build eszköz.
 
 ## <a name="prepare-the-working-environment"></a>A munkahelyi környezet előkészítése
@@ -69,7 +69,7 @@ az group create \
 A létrehozott első dolog egy felügyelt Azure SQL Database-kiszolgáló.
 
 > [!NOTE]
-> A rövid útmutatóban Azure SQL Database kiszolgálók létrehozásával kapcsolatos részletes információkat a következő témakörben olvashatja [: Azure SQL Database önálló adatbázis létrehozása](/azure/sql-database/sql-database-single-database-get-started).
+> A rövid útmutatóban Azure SQL Database kiszolgálók létrehozásával kapcsolatos részletes információkat a következő témakörben olvashatja [: Azure SQL Database önálló adatbázis létrehozása](./single-database-create-quickstart.md).
 
 A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő parancsot:
 
@@ -494,8 +494,8 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)  
 - [Microsoft JDBC-illesztőprogram SQL Serverhez](https://github.com/microsoft/mssql-jdbc)  
-- [Hibák jelentése/kérdések felvetése](https://github.com/microsoft/mssql-jdbc/issues)  
+- [Hibák jelentése/kérdések felvetése](https://github.com/microsoft/mssql-jdbc/issues)

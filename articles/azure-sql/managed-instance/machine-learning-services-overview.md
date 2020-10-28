@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: d7a3c86f3d9cf083a8746f753b8c5287c774a93e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb584d999d48c7d29420db26daebf592790af2b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263267"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676816"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)
 
@@ -28,7 +28,7 @@ A Machine Learning Services az Azure SQL felügyelt példányainak (előzetes ve
 > Ez az előzetes verziójú funkció kezdetben csak korlátozott számú régióban érhető el az Egyesült Államokban, Ázsia-Európában és Ausztráliában, és később további régiók is elérhetők.
 >
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 > [Regisztráljon az előzetes](#signup) verzióra.
 
@@ -54,21 +54,29 @@ A korlátozott nyilvános előzetes verzióra az [Azure előzetes](https://azure
 
 Ha szeretne csatlakozni az előzetes verzióhoz, és elfogadja ezeket a feltételeket, akkor a regisztrációt az Azure támogatási jegyének létrehozásával kérheti le [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) . 
 
+1. A **támogatási jegy létrehozása** lapon kattintson az **incidens létrehozása** lehetőségre.
+
+1. Új jegy létrehozásához a **Súgó + támogatás** lapon kattintson az **új támogatási kérelem** elemre.
+
 1. Válassza ki a következő beállításokat:
    - Probléma típusa – **technikai**
    - Előfizetés – *válassza ki az előfizetését*
-   - Szolgáltatás – **SQL Database felügyelt példány**
+   - Szolgáltatás – **SQL felügyelt példány**
+   - Erőforrás – *a felügyelt példány kiválasztása*
    - Összefoglalás – *adja meg a kérelem rövid leírását*
    - Probléma típusa – **Machine learning Services a felügyelt SQL-példányhoz (előzetes verzió)**
    - Probléma altípusa – **egyéb probléma vagy "How to" kérdések**
 
-1. Kattintson a **Tovább gombra: megoldások**.
+1. Kattintson a **Tovább gombra: megoldások** .
 
-1. Olvassa el az előzetes verzióra vonatkozó információkat, majd kattintson a **részletek**gombra.
+1. Olvassa el az előzetes verzióra vonatkozó információkat, majd kattintson a **Tovább gombra: részletek** .
 
-1. A **Leírás**mezőben adja meg a kérés sajátosságait, beleértve az előzetes verzióban regisztrálni kívánt logikai kiszolgáló nevét, régióját és ELŐfizetési azonosítóját. Szükség szerint adja meg a további adatokat.
+1. Ezen az oldalon:
+   - Ha **szeretne regisztrálni az előzetes** verzióra, válassza az **Igen** lehetőséget. 
+   - A **Leírás** mezőben adja meg a kérés sajátosságait, beleértve az előzetes verzióban regisztrálni kívánt logikai kiszolgáló nevét, régióját és előfizetés-azonosítóját. Szükség szerint adja meg a további adatokat.
+   - Válassza ki a kívánt kapcsolattartási módszert. 
 
-1. Ha elkészült, kattintson a **Tovább gombra: felülvizsgálat + létrehozás**, majd kattintson a **Létrehozás**gombra.
+1. Ha elkészült, kattintson a **Tovább gombra: Tekintse át a + létrehozás** elemet, majd kattintson a **Létrehozás** gombra.
 
 Miután regisztrált a programban, a Microsoft belépteti Önt a nyilvános előzetes verzióba és engedélyezi a Machine Learning Servicest a meglévő vagy az új adatbázisban.
 

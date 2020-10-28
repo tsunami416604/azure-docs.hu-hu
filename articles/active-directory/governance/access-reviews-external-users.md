@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
 ms.author: barclayn
-ms.openlocfilehash: 64ff2a2a7ad6f07aac959422eadec7f24b210d88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19f88da6a678221cde66bf61668d16ba9ab998a4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505840"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677310"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Az Azure Active Directory (Azure AD) identitás-szabályozás használatával áttekintheti és eltávolíthatja azokat a külső felhasználókat, akik már nem rendelkeznek erőforrás-hozzáféréssel
 
@@ -67,11 +67,11 @@ A felülvizsgálat befejeződése után a **Results (eredmények** ) oldalon lá
 
 ## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews-preview"></a>Külső identitások letiltása és törlése az Azure AD hozzáférési felülvizsgálatokkal (előzetes verzió)
 
-A nem kívánt külső identitások más erőforrásokból, például csoportokból vagy alkalmazásokból való eltávolításának lehetősége mellett az Azure AD hozzáférési felülvizsgálatai letilthatják a külső identitásokat a bérlőbe való bejelentkezéstől, és 30 nap elteltével törölhetik a bérlő külső identitásait.
+A nem kívánt külső identitások más erőforrásokból, például csoportokból vagy alkalmazásokból való eltávolításának lehetősége mellett az Azure AD hozzáférési felülvizsgálatai letilthatják a külső identitásokat a bérlőbe való bejelentkezéstől, és 30 nap elteltével törölhetik a bérlő külső identitásait. Miután kiválasztotta a **felhasználó letiltását 30 napig, majd eltávolítja a felhasználót a bérlőből** , a felülvizsgálat 30 napig a "alkalmazás" állapotban marad. Ezen időszak alatt a beállítások, eredmények, felülvizsgálók vagy naplók az aktuális felülvizsgálat alatt nem tekinthetők meg és nem konfigurálhatók. 
 
 ![befejezési beállítások](media/access-reviews-external-users/upon-completion-settings.png)
 
-Új hozzáférési felülvizsgálat létrehozásakor a "befejezési beállítások" szakaszban a **megtagadott felhasználókra vonatkozó művelet** megadásával megadható, hogy a **felhasználók 30 napig jelentkezzenek be, majd a bérlőből távolítsák el a felhasználót**.
+Új hozzáférési felülvizsgálat létrehozásakor a "befejezési beállítások" szakaszban a **megtagadott felhasználókra vonatkozó művelet** megadásával megadható, hogy a **felhasználók 30 napig jelentkezzenek be, majd a bérlőből távolítsák el a felhasználót** .
 Ez a beállítás, amely jelenleg előzetes verzióban érhető el, lehetővé teszi külső identitások azonosítását, blokkolását és törlését az Azure AD-bérlőből. A felülvizsgáló által áttekintett és megtagadott külső identitások le lesznek tiltva és törlődnek, az erőforrás-hozzáféréstől vagy a csoporttagságtól függetlenül. Ez a beállítás a legutóbb Utolsó lépésként használatos, miután ellenőrizte, hogy a külső felhasználók – áttekintés többé nem hordozzák az erőforrás-hozzáférést, és biztonságosan eltávolíthatók a bérlőtől, vagy ha meg szeretné győződni arról, hogy azok el lesznek távolítva, függetlenül attól, hogy azok állandó hozzáféréssel rendelkeznek. A "letiltás és törlés" funkció először blokkolja a külső felhasználót, így elkerülheti a bérlőbe való bejelentkezés és az erőforrások elérésének lehetőségét. Ebben a szakaszban nem vonja vissza az erőforrás-hozzáférést, és ha újra szeretné létrehozni a külső felhasználót, a bejelentkezést újra lehet konfigurálni. Ha további műveletre nincs szükség, a rendszer 30 nap elteltével törli a letiltott külső identitást, eltávolítja a fiókot és a hozzáférését.
 
 ## <a name="next-steps"></a>Következő lépések

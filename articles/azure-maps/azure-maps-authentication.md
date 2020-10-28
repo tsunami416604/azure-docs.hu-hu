@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ecbbb9580a9a79ae52320ea53a4831ac8ef57f8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091406"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678189"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
 
@@ -104,7 +104,7 @@ Egyes Azure Maps szolgáltatások emelt szintű jogosultságokat igényelhetnek 
 | Létrehozó            | Azure Maps adatközreműködő |
 | Térbeli            | Azure Maps adatközreműködő |
 
-Az Azure RBAC beállításainak megtekintésével kapcsolatos információkért lásd: az [Azure RBAC konfigurálása Azure Mapshoz](https://aka.ms/amrbac).
+Az Azure RBAC beállításainak megtekintésével kapcsolatos információkért lásd: az [Azure RBAC konfigurálása Azure Mapshoz](./how-to-manage-authentication.md).
 
 #### <a name="custom-role-definitions"></a>Egyéni szerepkör-definíciók
 
@@ -114,7 +114,7 @@ Ezt követően az egyéni szerepkör-definíció bármely rendszerbiztonsági ta
 
 Íme néhány példa arra, hogy az egyéni szerepkörök Hogyan javíthatják az alkalmazások biztonságát.
 
-| Forgatókönyv                                                                                                                                                                                                                 | Egyéni szerepkörre vonatkozó adatművelet (ek)                                                                                                                  |
+| Használati eset                                                                                                                                                                                                                 | Egyéni szerepkörre vonatkozó adatművelet (ek)                                                                                                                  |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | Nyilvános vagy interaktív bejelentkezési weblap, amely alapszintű Térkép csempével és más REST API-kkal nem rendelkezik.                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | Olyan alkalmazás, amely csak fordított helymeghatározáshoz és más REST API-k használatát igényli.                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |

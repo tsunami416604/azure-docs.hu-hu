@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: bddb33210f3b1d76a89ce18ddf6884898905f388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b592591f3d2190fdcc9ed7b3b12b2eca20a25a5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91286403"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675833"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés ServiceNow konfigurálása
 
@@ -35,16 +35,16 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a ServiceNow és a 
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
+* [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
+* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../users-groups-roles/directory-assign-admin-roles.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
 * Calgary vagy magasabb [ServiceNow-példány](https://www.servicenow.com/)
 * [ServiceNow Express-példány](https://www.servicenow.com/) (Helsinki vagy újabb)
 * Felhasználói fiók a ServiceNow-ben a rendszergazdai szerepkörrel
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
-1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Határozza meg, hogy az [Azure ad és a ServiceNow között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+1. Ismerje meg [az átadási szolgáltatás működését](../app-provisioning/user-provisioning.md).
+2. Határozza meg, hogy ki lesz [az átadás hatókörében](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+3. Határozza meg, hogy az [Azure ad és a ServiceNow között milyen adatleképezést kell leképezni](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="step-2-configure-servicenow-to-support-provisioning-with-azure-ad"></a>2. lépés ServiceNow konfigurálása az Azure AD-vel való kiépítés támogatásához
 
@@ -58,23 +58,23 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 3. Győződjön meg arról, hogy a következő beállítások **le vannak tiltva** a ServiceNow:
 
-   1. Válassza a **rendszerbiztonsági**  >  **magas biztonsági beállítások**  >  **alapszintű hitelesítés szükséges a bejövő séma-kérelmekhez**beállítást.
-   2. Válassza a **Rendszertulajdonságok**  >  **webszolgáltatások**  >  **alapszintű hitelesítés szükséges a bejövő SOAP-kérelmekhez**lehetőséget.
+   1. Válassza a **rendszerbiztonsági**  >  **magas biztonsági beállítások**  >  **alapszintű hitelesítés szükséges a bejövő séma-kérelmekhez** beállítást.
+   2. Válassza a **Rendszertulajdonságok**  >  **webszolgáltatások**  >  **alapszintű hitelesítés szükséges a bejövő SOAP-kérelmekhez** lehetőséget.
      
    > [!IMPORTANT]
-   > Ha a beállítás *engedélyezve*van, a kiépítési motor nem fog kommunikálni a ServiceNow.
+   > Ha a beállítás *engedélyezve* van, a kiépítési motor nem fog kommunikálni a ServiceNow.
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>3. lépés ServiceNow hozzáadása az Azure AD Application Galleryből
 
-Vegyen fel ServiceNow az Azure AD-alkalmazás-katalógusból a ServiceNow való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a ServiceNow az SSO-hoz, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet. 
+Vegyen fel ServiceNow az Azure AD-alkalmazás-katalógusból a ServiceNow való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a ServiceNow az SSO-hoz, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
 
-Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja. 
+Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
 
-* Felhasználók és csoportok ServiceNow való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
+* Felhasználók és csoportok ServiceNow való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
-* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-servicenow"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a ServiceNow 
@@ -87,7 +87,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **ServiceNow**lehetőséget.
+2. Az alkalmazások listában válassza a **ServiceNow** lehetőséget.
 
     ![Az ServiceNow hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -109,11 +109,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a ServiceNow**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a ServiceNow** lehetőséget.
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő ServiceNow. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a ServiceNow felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a ServiceNow API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő ServiceNow. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a ServiceNow felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a ServiceNow API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a ServiceNow**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a ServiceNow** lehetőséget.
 
 11. Tekintse át az Azure AD-ből szinkronizált ServiceNow az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a ServiceNow tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -136,13 +136,13 @@ Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatároz
 ## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
 Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
 
-1. Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
-2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
-3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.  
+1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
+2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 * **InvalidLookupReference:** Bizonyos attribútumok, például a részleg és a ServiceNow-ben való kiépítés során az értékeknek már léteznie kell a ServiceNow található egyik táblázatban. Előfordulhat például, hogy két helyet (Seattle, Los Angeles) és három részleget (Sales, Finance, marketing) tartalmaz **a ServiceNow** . Ha olyan felhasználót próbál kiépíteni, amelyben a részlege "Sales", és a tartózkodási hely "Seattle", akkor a rendszer sikeresen kiépíti. Ha olyan felhasználót próbál kiépíteni, amely a "Sales" osztályt és a "LA" helyet kísérli meg, a felhasználó nem lesz kiépítve. A (z) LA helyet fel kell venni a ServiceNow hivatkozási táblájába, vagy az Azure AD felhasználói attribútumát frissíteni kell, hogy az megfeleljen a ServiceNow formátumának. 
-* **EntryJoiningPropertyValueIsMissing:** A megfelelő attribútum azonosításához tekintse át az [attribútumok leképezéseit](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) . Ennek az értéknek jelen kell lennie a kiépíteni próbált felhasználón vagy csoportban. 
+* **EntryJoiningPropertyValueIsMissing:** A megfelelő attribútum azonosításához tekintse át az [attribútumok leképezéseit](../app-provisioning/customize-application-attributes.md) . Ennek az értéknek jelen kell lennie a kiépíteni próbált felhasználón vagy csoportban. 
 * Tekintse át a [SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) -t, hogy megértse az összes követelményt és korlátozást (például a felhasználó országkód megadásának formátuma)
 * A rendszer alapértelmezés szerint a kiépítési kérelmeket a https://{saját példányának neve}. Service-Now. com/{Table-Name} értékre továbbítja. Ha egyéni bérlői URL-címet igényel, a teljes URL-címet megadhatja a példány neve mezőben.
 * **ServiceNowInstanceInvalid** 
@@ -151,8 +151,8 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
    Ez a hiba azt jelzi, hogy a ServiceNow-példánnyal kommunikáló probléma történt. Győződjön meg arról, hogy a következő beállítások *le vannak tiltva* a ServiceNow:
    
-   1. Válassza a **rendszerbiztonsági**  >  **magas biztonsági beállítások**  >  **alapszintű hitelesítés szükséges a bejövő séma-kérelmekhez**beállítást.
-   2. Válassza a **Rendszertulajdonságok**  >  **webszolgáltatások**  >  **alapszintű hitelesítés szükséges a bejövő SOAP-kérelmekhez**lehetőséget.
+   1. Válassza a **rendszerbiztonsági**  >  **magas biztonsági beállítások**  >  **alapszintű hitelesítés szükséges a bejövő séma-kérelmekhez** beállítást.
+   2. Válassza a **Rendszertulajdonságok**  >  **webszolgáltatások**  >  **alapszintű hitelesítés szükséges a bejövő SOAP-kérelmekhez** lehetőséget.
 
 ## <a name="additional-resources"></a>További források
 

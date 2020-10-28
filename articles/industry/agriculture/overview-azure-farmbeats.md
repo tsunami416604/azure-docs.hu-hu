@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d9882f23096e19435566323de4d0ebaf7c0af3ef
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b08013e9d015d3c987c0032761bebccd4b57ec72
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331923"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678029"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Az Azure FarmBeats áttekintése (előzetes verzió)
 
 Az Azure FarmBeats egy, az Azure Marketplace-en elérhető üzleti célú ajánlat. Lehetővé teszi a mezőgazdasági adathalmazok összesítését a szolgáltatók között. Az Azure FarmBeats lehetővé teszi a mesterséges intelligencia (AI) vagy gépi tanulási (ML) modellek összeolvasztott adatkészleteken alapuló összeállítását. Az Azure FarmBeats használatával a mezőgazdasági vállalkozások a legfontosabb értékekre összpontosítanak, nem pedig az adatkezelés nem differenciált nagy mennyiségű emelését.
 
 > [!NOTE]
-> Az Azure FarmBeats jelenleg nyilvános előzetes verzióban érhető el. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az Azure-FarmBeats szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja az [Azure FarmBeats támogatási fórumát](https://aka.ms/farmbeatssupport) .
+> Az Azure FarmBeats jelenleg nyilvános előzetes verzióban érhető el. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az Azure-FarmBeats szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja az [Azure FarmBeats támogatási fórumát](/answers/topics/azure-farmbeats.html) .
 
 ![A Project Farm veri](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
@@ -66,10 +66,10 @@ A rendszergazdák több partnert is hozzáadhatnak adatszolgáltatóként az Azu
 Az Azure FarmBeats díjmentesen vehető igénybe, és csak a használt Azure-erőforrásokért kell fizetnie. Az alábbi források segítségével többet tudhat meg az ajánlatról:
 
 - Tekintse meg a legújabb Azure FarmBeats híreket, ha meglátogatja az [Azure FarmBeats blogját](https://aka.ms/farmbeatsblog).
-- Kérjen segítséget az [Azure FarmBeats támogatási fórumának](https://aka.ms/farmbeatssupport)kérdéseivel.
+- Kérjen segítséget az [Azure FarmBeats támogatási fórumának](/answers/topics/azure-farmbeats.html)kérdéseivel.
 - Küldjön visszajelzést az [Azure FarmBeats visszajelzési fórumának](https://aka.ms/farmbeatsfeedback)funkcióinak közzétételével vagy szavazásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure FarmBeats telepítése](install-azure-farmbeats.md)

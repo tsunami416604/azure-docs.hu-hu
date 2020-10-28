@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.custom: devx-track-ansible
-ms.openlocfilehash: 8e34f73f1c403e3a7d21c6c30844f8b9073b3113
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-ansible, devx-track-azurecli
+ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373572"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735116"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
@@ -30,7 +30,7 @@ OpenShift-fürt üzembe helyezése után további elemeket is beállíthat. Ez a
 
 Ha Azure Active Directoryt szeretne használni a hitelesítéshez, először létre kell hoznia egy Azure AD-alkalmazás regisztrációját. Ez a folyamat két lépést foglal magában: az alkalmazás regisztrációjának létrehozása és az engedélyek konfigurálása.
 
-### <a name="create-an-app-registration"></a>Alkalmazás-regisztráció létrehozása
+### <a name="create-an-app-registration"></a>Alkalmazásregisztráció létrehozása
 
 Ezek a lépések az Azure CLI használatával hozhatják létre az alkalmazás regisztrációját és a grafikus felhasználói felületet (portál) az engedélyek megadásához. Az alkalmazás regisztrációjának létrehozásához a következő öt információra van szüksége:
 
@@ -70,11 +70,11 @@ Jegyezze fel a parancs által visszaadott appId tulajdonságot egy későbbi lé
 
 Az Azure Portalon:
 
-1. Válassza ki **Azure Active Directory**az  >  **alkalmazás regisztrációját**.
+1. Válassza ki **Azure Active Directory** az  >  **alkalmazás regisztrációját** .
 2. Keresse meg az alkalmazás regisztrációját (például OCPAzureAD).
 3. Az eredmények között kattintson az alkalmazás regisztrációja elemre.
-4. A **Beállítások**területen válassza a **szükséges engedélyek**lehetőséget.
-5. A **szükséges engedélyek**területen válassza a **Hozzáadás**lehetőséget.
+4. A **Beállítások** területen válassza a **szükséges engedélyek** lehetőséget.
+5. A **szükséges engedélyek** területen válassza a **Hozzáadás** lehetőséget.
 
    ![Alkalmazás regisztrálása](media/openshift-post-deployment/app-registration.png)
 
@@ -82,7 +82,7 @@ Az Azure Portalon:
 
    ![Alkalmazás regisztrálása API kiválasztása](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. A 2. lépés: válassza az engedélyek lehetőséget, válassza a **Bejelentkezés és a felhasználói profil olvasása** a **delegált engedélyek**területen, majd kattintson a **kiválasztás**elemre.
+7. A 2. lépés: válassza az engedélyek lehetőséget, válassza a **Bejelentkezés és a felhasználói profil olvasása** a **delegált engedélyek** területen, majd kattintson a **kiválasztás** elemre.
 
    ![Alkalmazás-regisztrálási hozzáférés](media/openshift-post-deployment/app-registration-access.png)
 
@@ -202,6 +202,6 @@ A OSBA a OpenShift-on való telepítéséhez kövesse az itt található utasít
 > [!NOTE]
 > Csak a OpenShift-projekt sablonjának lépéseit kell végrehajtania, nem a teljes telepítés szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [OpenShift-tároló platform – első lépések](https://docs.openshift.com)

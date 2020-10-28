@@ -3,13 +3,13 @@ title: 'Gyors útmutató: felügyeleti csoport létrehozása JavaScript-sel'
 description: Ebben a rövid útmutatóban a JavaScript használatával hozzon létre egy felügyeleti csoportot, amely erőforrás-hierarchiába rendezi az erőforrásokat.
 ms.date: 09/30/2020
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7a234a6619eafd650451ae5d6bce37388c824f33
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: devx-track-js
+ms.openlocfilehash: 965e4b8f81a26cab8f6e34cab3e51d6a97f5a6a6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91604673"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676230"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Gyors útmutató: felügyeleti csoport létrehozása JavaScript-sel
 
@@ -90,7 +90,7 @@ Annak engedélyezéséhez, hogy a JavaScript lekérdezze az Azure Resource Graph
    node index.js --groupID "<NEW_MG_GROUP_ID>" --displayName "<NEW_MG_FRIENDLY_NAME>"
    ```
 
-   Ügyeljen arra, hogy az egyes jogkivonat- `<>` helyőrzőket cserélje le a _felügyeleti csoport azonosítóját_ és a _felügyeleti csoport rövid nevét_.
+   Ügyeljen arra, hogy az egyes jogkivonat- `<>` helyőrzőket cserélje le a _felügyeleti csoport azonosítóját_ és a _felügyeleti csoport rövid nevét_ .
 
    Ahogy a parancsfájl megkísérli a hitelesítést, az alábbi üzenethez hasonló üzenet jelenik meg a terminálon:
 
@@ -100,7 +100,7 @@ Annak engedélyezéséhez, hogy a JavaScript lekérdezze az Azure Resource Graph
 
 A felügyeleti csoport létrehozásának eredménye kimenet a konzolon.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha el szeretné távolítani a telepített kódtárakat az alkalmazásból, futtassa a következő parancsot.
 
@@ -108,7 +108,7 @@ Ha el szeretné távolítani a telepített kódtárakat az alkalmazásból, futt
 npm uninstall @azure/arm-managementgroups @azure/ms-rest-nodeauth yargs
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport rendelkezhet előfizetésekkel vagy más felügyeleti csoportokkal.
 

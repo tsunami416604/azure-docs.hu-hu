@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c3630105e70ac28e7e9041aa9d5400f724401a5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 50188ad5fea0ee34a6896f0045e3bbcbfb553aaa
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209674"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677305"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>A Change Tracking és az Inventory engedélyezése Automation-fiókból
 
@@ -31,7 +31,7 @@ Jelentkezzen be az Azure-ba https://portal.azure.com .
 
 ## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
-1. Navigáljon az Automation-fiókjához, és válassza a **leltár** vagy a **change Tracking** elemet a **konfiguráció**felügyelete alatt.
+1. Navigáljon az Automation-fiókjához, és válassza a **leltár** vagy a **change Tracking** elemet a **konfiguráció** felügyelete alatt.
 
 2. Válassza ki az Log Analytics munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés** lehetőségre a Change Tracking és a leltár engedélyezéséhez. A telepítés elvégzése akár 15 percet is igénybe vehet.
 
@@ -39,7 +39,7 @@ Jelentkezzen be az Azure-ba https://portal.azure.com .
 
 ## <a name="enable-azure-vms"></a>Azure-beli virtuális gépek engedélyezése
 
-1. Az Automation-fiókban válassza a **leltár** vagy a **change Tracking** elemet a **konfiguráció**felügyelete alatt.
+1. Az Automation-fiókban válassza a **leltár** vagy a **change Tracking** elemet a **konfiguráció** felügyelete alatt.
 
 2. Kattintson az **+ Azure-beli virtuális gépek hozzáadása** lehetőségre, és válasszon ki egy vagy több virtuális gépet a listából. A nem engedélyezhető virtuális gépek szürkén jelennek meg, és nem választhatók ki. Az Azure-beli virtuális gépek bármely régióban létezhetnek, függetlenül az Automation-fiókja helyétől. 
 
@@ -49,25 +49,25 @@ Jelentkezzen be az Azure-ba https://portal.azure.com .
 
 ## <a name="enable-non-azure-vms"></a>Nem Azure-beli virtuális gépek engedélyezése
 
-Az Azure-ban nem szereplő gépeket manuálisan kell hozzáadni.
+Az Azure-ban nem szereplő gépeket manuálisan kell hozzáadni. Javasoljuk, hogy a Windows vagy Linux rendszerhez készült Log Analytics-ügynök telepítésével először csatlakoztassa a gépet az [Azure arc-kompatibilis kiszolgálókhoz](../../azure-arc/servers/overview.md), majd Azure Policy használatával rendelje hozzá a [log Analytics-ügynököt a *Linux* vagy a *Windows* Azure arc Machines](../../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjéhez. Ha azt is tervezi, hogy a gépeket Azure Monitor for VMs használatával figyeli, használja az [Enable Azure monitor for VMS](../../governance/policy/samples/built-in-initiatives.md#monitoring) Initiative parancsot.
 
-1. Az Automation-fiókban válassza a **leltár** vagy a **változások követése** lehetőséget a **konfiguráció**felügyelete alatt.
+1. Az Automation-fiókban válassza a **leltár** vagy a **változások követése** lehetőséget a **konfiguráció** felügyelete alatt.
 
-2. Kattintson a **nem Azure-beli gép hozzáadása**lehetőségre. Ez a művelet egy új böngészőablakot nyit meg, amely [útmutatást nyújt a Windows log Analytics ügynökének telepítésére és konfigurálására](../../azure-monitor/platform/log-analytics-agent.md) , hogy a gép megkezdhesse a Change Tracking és a leltározási műveletek bejelentését. Ha olyan gépet engedélyez, amelyet jelenleg Operations Manager felügyel, nincs szükség új ügynökre, és a munkaterület adatai bekerülnek a meglévő ügynökbe.
+2. Kattintson a **nem Azure-beli gép hozzáadása** lehetőségre. Ez a művelet egy új böngészőablakot nyit meg, amely [útmutatást nyújt a Windows log Analytics ügynökének telepítésére és konfigurálására](../../azure-monitor/platform/log-analytics-agent.md) , hogy a gép megkezdhesse a Change Tracking és a leltározási műveletek bejelentését. Ha olyan gépet engedélyez, amelyet jelenleg Operations Manager felügyel, nincs szükség új ügynökre, és a munkaterület adatai bekerülnek a meglévő ügynökbe.
 
 ## <a name="enable-machines-in-the-workspace"></a>Gépek engedélyezése a munkaterületen
 
 A manuálisan telepített gépeket vagy számítógépeket, amelyeket a munkaterülethez már jelentett, a Change Tracking és a leltár engedélyezéséhez hozzá kell adni a Azure Automationhoz.
 
-1. Az Automation-fiókban válassza a **leltár** vagy a **change Tracking** elemet a **konfiguráció**felügyelete alatt.
+1. Az Automation-fiókban válassza a **leltár** vagy a **change Tracking** elemet a **konfiguráció** felügyelete alatt.
 
-2. Válassza a **számítógépek kezelése**lehetőséget. Előfordulhat, hogy a **gépek kezelése** lehetőség szürkén jelenik meg, ha korábban az Engedélyezés lehetőséget választotta az **összes rendelkezésre álló és jövőbeli gépen**
+2. Válassza a **számítógépek kezelése** lehetőséget. Előfordulhat, hogy a **gépek kezelése** lehetőség szürkén jelenik meg, ha korábban az Engedélyezés lehetőséget választotta az **összes rendelkezésre álló és jövőbeli gépen**
 
     ![Mentett keresések](media/enable-from-automation-account/manage-machines.png)
 
 3. Az összes rendelkezésre álló gép Change Tracking és leltárának engedélyezéséhez válassza az Engedélyezés lehetőséget az összes **elérhető gépen** a **gépek kezelése** lapon. Ez a művelet letiltja a vezérlőt, hogy egyenként vegyen fel gépeket, és hozzáadja a munkaterületnek jelentő összes gépet a számítógépcsoport mentett keresési lekérdezéséhez. Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** lehetőséget.
 
-4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a beállítás törli a mentett keresés és a hatókör konfigurációját a munkaterületről, és megnyitja a szolgáltatást a munkaterületnek jelentett összes Azure-beli és nem Azure-beli gép számára. Ha bejelöli ezt a jelölőnégyzetet, ez a művelet véglegesen letiltja a **gépek kezelése** lehetőséget, mivel nem maradt hatókör-konfiguráció.
+4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen** . Ez a beállítás törli a mentett keresés és a hatókör konfigurációját a munkaterületről, és megnyitja a szolgáltatást a munkaterületnek jelentett összes Azure-beli és nem Azure-beli gép számára. Ha bejelöli ezt a jelölőnégyzetet, ez a művelet véglegesen letiltja a **gépek kezelése** lehetőséget, mivel nem maradt hatókör-konfiguráció.
 
     > [!NOTE]
     > Mivel ez a lehetőség törli a mentett keresés és a hatókör konfigurációját a Log Analyticson belül, fontos, hogy a beállítás kiválasztása előtt távolítsa el az összes törlési zárolást a Log Analytics munkaterületen. Ha nem, akkor a beállítás nem távolítja el a konfigurációkat, ezért azokat manuálisan kell eltávolítania.

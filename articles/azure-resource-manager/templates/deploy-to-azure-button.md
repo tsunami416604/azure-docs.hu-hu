@@ -2,17 +2,24 @@
 title: Üzembe helyezés az Azure-ban gomb
 description: Azure Resource Manager-sablonok GitHub-tárházból való üzembe helyezéséhez használja a gombot.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079476"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675393"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával
 
-Ez a cikk bemutatja, hogyan helyezhetők üzembe sablonok egy GitHub-tárházból a **telepítés az Azure** -ban gomb használatával. A gombot közvetlenül a GitHub-adattárban található README.md-fájlhoz, vagy egy olyan weboldalhoz is hozzáadhatja, amely hivatkozik a tárházra. Ez a metódus csak az erőforráscsoport-szintű telepítést támogatja.
+Ez a cikk bemutatja, hogyan helyezhetők üzembe sablonok egy GitHub-tárházból a **telepítés az Azure** -ban gomb használatával. A gombot közvetlenül a GitHub-tárházban található README.md-fájlhoz is hozzáadhatja. Azt is megteheti, hogy a gombot egy olyan weblapra adja, amely hivatkozik a tárházra.
+
+A központi telepítési hatókör meghatározása a sablon sémája alapján történik. További információkért lásd:
+
+* [erőforráscsoportok](deploy-to-resource-group.md)
+* [előfizetések](deploy-to-subscription.md)
+* [felügyeleti csoportok](deploy-to-management-group.md)
+* [bérlők](deploy-to-tenant.md).
 
 ## <a name="use-common-image"></a>Közös rendszerkép használata
 
@@ -28,7 +35,7 @@ A rendszerkép a következőképpen jelenik meg:
 
 ## <a name="create-url-for-deploying-template"></a>URL-cím létrehozása sablon üzembe helyezéséhez
 
-A sablon URL-címének létrehozásához Kezdje a tárházban található sablon nyers URL-címével. A nyers URL-cím megjelenítéséhez válassza a **RAW**elemet.
+A sablon URL-címének létrehozásához Kezdje a tárházban található sablon nyers URL-címével. A nyers URL-cím megjelenítéséhez válassza a **RAW** elemet.
 
 :::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="Nyers kiválasztása":::
 
@@ -38,7 +45,7 @@ Az URL-cím formátuma:
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Ezt követően az URL-cím kódolja. Használhat online kódolót, vagy futtathat egy parancsot. A következő PowerShell-példa azt szemlélteti, hogyan kódolhat egy értéket az URL-cím.
+Ezután alakítsa át az URL-címet egy URL-kódolású értékre. Használhat online kódolót, vagy futtathat egy parancsot. A következő PowerShell-példa azt szemlélteti, hogyan kódolhat egy értéket az URL-cím.
 
 ```powershell
 [uri]::EscapeDataString($url)
@@ -92,6 +99,6 @@ A portálon egy ablaktábla jelenik meg, amely lehetővé teszi a paraméterek �
 
 ![A portál használata az üzembe helyezéshez](./media/deploy-to-azure-button/portal.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a sablonokról: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).

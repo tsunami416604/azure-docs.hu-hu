@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 918ba128eca8ebf8b452c0f1126e4b7e611542d8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 10/22/2020
+ms.openlocfilehash: 5935bc3f59585b19fc3b45bdfd567bb1f9404234
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514469"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675585"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése
 
-A keresési szolgáltatásnak küldött összes kérelemnek egy írásvédett API-kulcsot kell használnia, amely kifejezetten a szolgáltatáshoz lett létrehozva. Az API-Key az egyetlen mechanizmus a keresési szolgáltatási végponthoz való hozzáférés hitelesítéséhez, és minden kérelemhez szerepelnie kell. A [Rest-megoldásokban](search-get-started-postman.md)általában az API-kulcs van megadva a kérelem fejlécében. A [.net-megoldásokban](search-howto-dotnet-sdk.md#core-scenarios)a rendszer gyakran konfigurációs beállításként adja meg a kulcsot, majd [hitelesítő adatként](/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (felügyeleti kulcs) vagy [SearchCredentials](/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (lekérdezési kulcsként) továbbítja a [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient).
+A keresési szolgáltatásnak küldött összes kérésnek csak olvashatónak kell lennie `api-key` , amely kifejezetten a szolgáltatáshoz lett létrehozva. A a `api-key` keresési szolgáltatási végponthoz való hozzáférés hitelesítésének egyetlen mechanizmusa, amely minden kérelemben szerepelnie kell. 
+
++ A [Rest-megoldásokban](search-get-started-postman.md)általában az API-kulcs van megadva a kérelem fejlécében
+
++ A [.net-megoldásokban](search-howto-dotnet-sdk.md)a kulcsokat gyakran konfigurációs beállításként kell megadni, majd [AzureKeyCredential](/dotnet/api/azure.azurekeycredential) kell átadni
 
 A kulcsok a szolgáltatás kiépítés során jönnek létre a keresési szolgáltatással. A [Azure Portalban](https://portal.azure.com)megtekintheti és beszerezheti a kulcs értékeit.
 
@@ -43,7 +47,7 @@ A keresési szolgáltatás eléréséhez két típusú kulcs használható: admi
 
 A hozzáférési kulcsokat a portálon vagy a [felügyeleti REST API](/rest/api/searchmanagement/)keresztül szerezheti be. További információ: [felügyeleti és lekérdezési API-kulcsok kezelése](search-security-api-keys.md).
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Az előfizetéshez tartozó [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listázása.
 3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások**  > **kulcsok** elemre a felügyeleti és a lekérdezési kulcsok megtekintéséhez.
 
@@ -55,10 +59,10 @@ A lekérdezési kulcsok csak olvasási hozzáférést biztosítanak a dokumentum
 
 Az ügyfélalkalmazások hozzáférésének és műveleteinek korlátozása elengedhetetlen a szolgáltatásban található keresési eszközök védelméhez. Az ügyfélalkalmazások által létrehozott összes lekérdezéshez mindig használjon egy lekérdezési kulcsot, nem pedig rendszergazdai kulcsot.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Az előfizetéshez tartozó [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listázása.
-3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások**  > **kulcsok**elemre.
-4. Kattintson a **lekérdezési kulcsok kezelése**lehetőségre.
+3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások**  > **kulcsok** elemre.
+4. Kattintson a **lekérdezési kulcsok kezelése** lehetőségre.
 5. Használja a szolgáltatáshoz már létrehozott lekérdezési kulcsot, vagy hozzon létre akár 50 új lekérdezési kulcsot. Az alapértelmezett lekérdezési kulcs neve nem, de a kezelhetőséghez további lekérdezési kulcsok is megtekinthetők.
 
    :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Portál lap, beállítások beolvasása, kulcsok szakasz" border="false":::

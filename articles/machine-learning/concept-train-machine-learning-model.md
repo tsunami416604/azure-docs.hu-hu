@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d34748a2b9f46bde187b4f003e210ffdaecd93e2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079071"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675680"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -26,14 +26,14 @@ A Azure Machine Learning számos lehetőséget kínál a modellek betanításár
     | Betanítási módszer | Leírás |
     | ----- | ----- |
     | [Konfiguráció futtatása](#run-configuration) | A **modellek betanításának tipikus módja** egy képzési parancsfájl használata és a konfiguráció futtatása. A futtatási konfiguráció biztosítja a modell betanításához használt képzési környezet konfigurálásához szükséges információkat. Megadhatja a betanítási parancsfájlt, a számítási célt és az Azure ML-környezetet a futtatási konfigurációban, és futtathatja a betanítási feladatot. |
-    | [Automatizált gépi tanulás](#automated-machine-learning) | Az automatizált gépi tanulás lehetővé teszi a **modellek széles körű adatelemzési és programozási ismeretek nélküli tanítását**. Az adatelemzési és-programozási hátterű felhasználók számára lehetővé teszi az idő és az erőforrások megtakarítását az algoritmus kiválasztásának és a hiperparaméter hangolásának automatizálásával. Az automatizált gépi tanulás használatakor nem kell aggódnia a futtatási konfiguráció definiálásával kapcsolatban. |
-    | [Gépi tanulási folyamat](#machine-learning-pipeline) | A folyamatok nem egy másik betanítási módszer, hanem a **munkafolyamatok moduláris, újrafelhasználható lépésekkel való definiálásának módja**, amely magában foglalhatja a munkafolyamatok részét képező képzést is. A gépi tanulási folyamatokban az automatizált gépi tanulás és a konfiguráció futtatása a modellek betanításához. Mivel a folyamatok nem kifejezetten a képzésre összpontosítottak, a folyamat használatának okai a többi tanítási módszernél változatosabbek. Általában a következőket lehet használni:<br>* Olyan **felügyelet nélküli folyamatokat szeretne ütemezni** , mint például a hosszan futó betanítási feladatok vagy az adatok előkészítése.<br>* **Több olyan lépést** is használhat, amely heterogén számítási erőforrásokon és tárolási helyeken is össze van hangolva.<br>* Használja a folyamatot **újrafelhasználható sablonként** adott forgatókönyvekhez, például az újraképzéshez vagy a kötegelt pontozáshoz.<br>* A munkafolyamathoz tartozó **adatforrások, bemenetek és kimenetek nyomon követése és verziószáma** .<br>* A munkafolyamatot **különböző csapatok valósítják meg, amelyek egymástól függetlenül működnek**. A lépések ezután összekapcsolhatók egy folyamattal a munkafolyamat megvalósításához. |
+    | [Automatizált gépi tanulás](#automated-machine-learning) | Az automatizált gépi tanulás lehetővé teszi a **modellek széles körű adatelemzési és programozási ismeretek nélküli tanítását** . Az adatelemzési és-programozási hátterű felhasználók számára lehetővé teszi az idő és az erőforrások megtakarítását az algoritmus kiválasztásának és a hiperparaméter hangolásának automatizálásával. Az automatizált gépi tanulás használatakor nem kell aggódnia a futtatási konfiguráció definiálásával kapcsolatban. |
+    | [Gépi tanulási folyamat](#machine-learning-pipeline) | A folyamatok nem egy másik betanítási módszer, hanem a **munkafolyamatok moduláris, újrafelhasználható lépésekkel való definiálásának módja** , amely magában foglalhatja a munkafolyamatok részét képező képzést is. A gépi tanulási folyamatokban az automatizált gépi tanulás és a konfiguráció futtatása a modellek betanításához. Mivel a folyamatok nem kifejezetten a képzésre összpontosítottak, a folyamat használatának okai a többi tanítási módszernél változatosabbek. Általában a következőket lehet használni:<br>* Olyan **felügyelet nélküli folyamatokat szeretne ütemezni** , mint például a hosszan futó betanítási feladatok vagy az adatok előkészítése.<br>* **Több olyan lépést** is használhat, amely heterogén számítási erőforrásokon és tárolási helyeken is össze van hangolva.<br>* Használja a folyamatot **újrafelhasználható sablonként** adott forgatókönyvekhez, például az újraképzéshez vagy a kötegelt pontozáshoz.<br>* A munkafolyamathoz tartozó **adatforrások, bemenetek és kimenetek nyomon követése és verziószáma** .<br>* A munkafolyamatot **különböző csapatok valósítják meg, amelyek egymástól függetlenül működnek** . A lépések ezután összekapcsolhatók egy folyamattal a munkafolyamat megvalósításához. |
 
 + [Azure Machine learning SDK for r (előzetes verzió)](#r-sdk-preview): az r-hez készült SDK a reticulate csomagot használja a Azure Machine learning Python SDK-hoz való kötéshez. Ez lehetővé teszi a Python SDK-ban megvalósított alapvető objektumok és módszerek elérését bármely R-környezetből.
 
-+ **Tervező**: a Azure Machine learning Designer egyszerű belépési pontot biztosít a gépi tanuláshoz a fogalmak vagy a kis kódolási élményt biztosító felhasználók számára. Lehetővé teszi a modellek betanítását egy fogd és vidd webes KEZELŐFELÜLET használatával. A Python-kódokat használhatja a terv részeként, vagy betaníthatja a modelleket anélkül, hogy kódot kellene írnia.
++ **Tervező** : a Azure Machine learning Designer egyszerű belépési pontot biztosít a gépi tanuláshoz a fogalmak vagy a kis kódolási élményt biztosító felhasználók számára. Lehetővé teszi a modellek betanítását egy fogd és vidd webes KEZELŐFELÜLET használatával. A Python-kódokat használhatja a terv részeként, vagy betaníthatja a modelleket anélkül, hogy kódot kellene írnia.
 
-+ **CLI**: a Machine learning parancssori felülete parancsokat biztosít a Azure Machine Learningekkel kapcsolatos gyakori feladatokhoz, és gyakran használják **parancsfájlok futtatására és automatizálására**. Ha például létrehozta a betanítási parancsfájlt vagy folyamatot, a CLI-vel elindíthatja a betanítást egy adott időpontban, vagy a betanításhoz használt adatfájlokat is frissíti. A betanítási modellek a betanítási feladatokat elküldő parancsokat biztosítanak. A futtatási konfigurációkkal vagy folyamatokkal küldhet feladatokat.
++ **CLI** : a Machine learning parancssori felülete parancsokat biztosít a Azure Machine Learningekkel kapcsolatos gyakori feladatokhoz, és gyakran használják **parancsfájlok futtatására és automatizálására** . Ha például létrehozta a betanítási parancsfájlt vagy folyamatot, a CLI-vel elindíthatja a betanítást egy adott időpontban, vagy a betanításhoz használt adatfájlokat is frissíti. A betanítási modellek a betanítási feladatokat elküldő parancsokat biztosítanak. A futtatási konfigurációkkal vagy folyamatokkal küldhet feladatokat.
 
 A képzési módszerek mindegyike különböző típusú számítási erőforrásokat használhat a betanításhoz. Ezeket az erőforrásokat együttesen [__számítási céloknak__](concept-azure-machine-learning-architecture.md#compute-targets)nevezzük. A számítási cél lehet egy helyi gép vagy egy felhőalapú erőforrás, például egy Azure Machine Learning számítási, Azure-HDInsight vagy távoli virtuális gép.
 
@@ -53,7 +53,7 @@ A futtatási konfigurációt a helyi számítógép esetében is elindíthatja, 
 
 * [Mi az a futtatási konfiguráció?](concept-azure-machine-learning-architecture.md#run-configurations)
 * [Oktatóanyag: az első ML-modell betanítása](tutorial-1st-experiment-sdk-train.md)
-* [Példák: Jupyter Notebook betanítási modellekre vonatkozó példák](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
+* [Példák: Jupyter Notebook és Python-példák a betanítási modellekre](https://github.com/Azure/azureml-examples)
 * [Útmutató: képzések futtatásának konfigurálása](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>Automatizált gépi tanulás
@@ -64,8 +64,8 @@ Adja meg az iterációkat, a hiperparaméter beállításait, a featurization é
 > A Python SDK mellett a [Azure Machine learning Studióban](https://ml.azure.com)is használhatja az automatikus ml-t.
 
 * [Mi az automatizált gépi tanulás?](concept-automated-ml.md)
-* [Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással](tutorial-first-experiment-automated-ml.md)
-* [Oktatóanyag: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez](tutorial-auto-train-models.md)
+* [Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással](tutorial-first-experiment-automated-ml.md)
+* [Oktatóanyag: Automatizált gépi tanulás használata a taxiutak árának előrejelzéséhez](tutorial-auto-train-models.md)
 * [Példák: Jupyter Notebook a gépi tanulásra vonatkozó példák](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [Útmutató: automatizált ML-kísérletek konfigurálása a Pythonban](how-to-configure-auto-train.md)
 * [Útmutató: az idősorozat-előrejelzési modell alapképzése](how-to-auto-train-forecast.md)
@@ -107,7 +107,7 @@ Ha úgy dönt, hogy a helyi gépen ("konfigurálás helyi futtatásként") van b
 
 Az R SDK lehetővé teszi az R nyelv használatát a Azure Machine Learning. Az SDK a reticulate csomagot használja a Azure Machine Learning Python SDK-hoz való kötéshez. Ez hozzáférést biztosít a Python SDK-ban megvalósított alapvető objektumokhoz és módszerekhez bármilyen R-környezetből.
 
-További információért tekintse át a következő cikkeket:
+További információkat az következő cikkekben talál:
 
 * [Oktatóanyag: logisztikai regressziós modell létrehozása](tutorial-1st-r-experiment.md)
 * [Az R-hez készült Azure Machine Learning SDK-referenciák](https://azure.github.io/azureml-sdk-for-r/index.html)

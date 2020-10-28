@@ -4,15 +4,15 @@ description: A helyszíni proxy-és tűzfalbeállítások Azure File Sync megism
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/24/2019
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69fdfea6768a895db1f85df4c2936936a2ffd3f5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903714"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675780"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Azure File Sync összekapcsolja a helyszíni kiszolgálókat a Azure Fileshoz, és lehetővé teszi a többhelyes szinkronizálást és a felhőalapú rétegbeli funkciókat. Ennek megfelelően a helyszíni kiszolgálónak csatlakoznia kell az internethez. A rendszergazdának el kell döntenie, hogy melyik a legjobb elérési út ahhoz, hogy a kiszolgáló elérje az Azure Cloud Services szolgáltatást.
@@ -121,6 +121,8 @@ Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előford
 | Nyilvános | Kelet-Ázsia | https: \/ /eastasia01.AFS.Azure.net<br>https: \/ /kailani11.One.microsoft.com | Délkelet-Ázsia | https: \/ /TM-eastasia01.AFS.Azure.net<br>https: \/ /TM-kailani11.One.microsoft.com |
 | Nyilvános | USA keleti régiója | https: \/ /eastus01.AFS.Azure.net<br>https: \/ /kailani1.One.microsoft.com | USA nyugati régiója | https: \/ /TM-eastus01.AFS.Azure.net<br>https: \/ /TM-kailani1.One.microsoft.com |
 | Nyilvános | USA 2. keleti régiója | https: \/ /eastus201.AFS.Azure.net<br>https: \/ /Kailani-ESS.One.microsoft.com | USA középső régiója | https: \/ /TM-eastus201.AFS.Azure.net<br>https: \/ /TM-Kailani-ESS.One.microsoft.com |
+| Nyilvános | Észak-Németország | https: \/ /germanynorth01.AFS.Azure.net | Középnyugat-Németország | https: \/ /TM-germanywestcentral01.AFS.Azure.net |
+| Nyilvános | Középnyugat-Németország | https: \/ /germanywestcentral01.AFS.Azure.net | Észak-Németország | https: \/ /TM-germanynorth01.AFS.Azure.net |
 | Nyilvános | Kelet-Japán | https: \/ /japaneast01.AFS.Azure.net | Nyugat-Japán | https: \/ /TM-japaneast01.AFS.Azure.net |
 | Nyilvános | Nyugat-Japán | https: \/ /japanwest01.AFS.Azure.net | Kelet-Japán | https: \/ /TM-japanwest01.AFS.Azure.net |
 | Nyilvános | Dél-Korea középső régiója | https: \/ /koreacentral01.AFS.Azure.net/ | Dél-Korea déli régiója | https: \/ /TM-koreacentral01.AFS.Azure.net/ |

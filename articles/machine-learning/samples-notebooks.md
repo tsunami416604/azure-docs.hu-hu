@@ -11,14 +11,17 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 14ae5f01e23a7922f508c4a2674e1a3f29e354b8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f8b4256f33a143c711a23a3564c2a46c69e0783b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166063"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675769"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>A Azure Machine Learning megismerése Jupyter notebookokkal
+
+> [!NOTE] 
+> A példák Közösség által vezérelt tárháza a következő címen érhető el: https://github.com/Azure/azureml-examples .
 
 A [Azure Machine learning jegyzetfüzetek tárháza](https://github.com/azure/machinelearningnotebooks) tartalmazza a legújabb Azure Machine learning Python SDK-mintákat. Ezek a Juypter-jegyzetfüzetek úgy vannak kialakítva, hogy segítsenek az SDK megismerésében, és modellként szolgálni a saját gépi tanulási projektekhez.
 
@@ -53,7 +56,7 @@ A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-lemezkép
 
 [!INCLUDE [aml-dsvm-server](../../includes/aml-dsvm-server.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a [minta jegyzetfüzetekkel](https://github.com/Azure/MachineLearningNotebooks) , hogy megismerje, milyen Azure Machine learning lehet.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/21/2020
+ms.date: 10/23/2020
 ms.author: aahi
-ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 14b4e7217b6e902023e5e82f8dbd404e43b36ef0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973121"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676154"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrálás az olvasási v3. x OCR-tárolóba
 
@@ -29,21 +29,11 @@ Ha az OCR-tároló Computer Vision 2. verzióját használja, ebből a cikkből 
 
 ## <a name="api-changes"></a>API-változások
 
-Az olvasási v3. x tárolók a Computer Vision API 3. verzióját használják, és a következő végpontokkal rendelkeznek:
-
-#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+Az olvasási v 3.1-es tároló a Computer Vision API 3. verzióját használja, és a következő végpontokkal rendelkezik:
 
 * `/vision/v3.1-preview.2/read/analyzeResults/{operationId}`
 * `/vision/v3.1-preview.2/read/analyze`
 * `/vision/v3.1-preview.2/read/syncAnalyze`
-
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
-
-* `/vision/v3.0/read/analyzeResults/{operationId}`
-* `/vision/v3.0/read/analyze`
-* `/vision/v3.0/read/syncAnalyze`
-
----
 
 Az alkalmazások a felhőalapú olvasási API-k 3. verziójának használatára való frissítésével kapcsolatos részletes információkért tekintse meg az [Computer Vision v3 REST API áttelepítési útmutatót](https://docs.microsoft.com/azure/cognitive-services/computer-vision/upgrade-api-versions) . Ezek az adatok a tárolóra is érvényesek. Vegye figyelembe, hogy a szinkronizálási műveletek csak a tárolók esetében támogatottak.
 
@@ -53,8 +43,7 @@ A követelmények és javaslatok a másodpercenként egy egyszeri kéréssel ren
 
 |Tároló  |Minimális | Ajánlott  |
 |---------|---------|------|
-|Olvasás 3,0 – előzetes verzió     | 8 mag, 16 GB memória         | 8 mag, 24 GB memória
-|Olvasás 3,1 – előzetes verzió | 8 mag, 16 GB memória         | 8 mag, 24 GB memória
+|Olvasás 3,1 – előzetes verzió | 8 mag, 16 GB memória         | 8 mag, 24 GB memória |
 
 Minden mag legalább 2,6 gigahertz (GHz) vagy gyorsabb lehet.
 

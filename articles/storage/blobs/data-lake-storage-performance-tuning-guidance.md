@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905405"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677351"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 optimalizálása a teljesítményhez
 
@@ -27,7 +27,7 @@ A Data Lake Storage Gen2 méretezheti, hogy az összes elemzési forgatókönyv 
 
 Amikor adatfeldolgozást végez egy forrásoldali rendszerből a Data Lake Storage Gen2ba, fontos figyelembe venni, hogy a forrás hardver, a forrás hálózati hardver és a Data Lake Storage Gen2 hálózati kapcsolata a szűk keresztmetszet.  
 
-![Data Lake Storage Gen2 teljesítmény](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![Diagram, amely azokat a tényezőket mutatja be, amelyeket figyelembe kell venni, amikor egy forrásoldali rendszerből Data Lake Storage Gen2ba tölt be adatot.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
 Fontos, hogy az adatáthelyezést ne befolyásolja ezek a tényezők.
 
@@ -107,7 +107,7 @@ Egy HDInsight-fürtben három réteg található, amelyek úgy állíthatók be,
 
 **Futtasson több csomóponttal és/vagy nagyobb méretű virtuális géppel rendelkező fürtöt.**  Egy nagyobb fürt lehetővé teszi, hogy több FONALas tárolót futtasson az alábbi képen látható módon.
 
-![Data Lake Storage Gen2 teljesítmény](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![Diagram, amely bemutatja, hogy egy nagyobb fürt hogyan teszi lehetővé több FONALas tároló futtatását.](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
 **Használjon nagyobb hálózati sávszélességű virtuális gépeket.**  A hálózati sávszélesség mennyisége szűk keresztmetszetet jelenthet, ha a Data Lake Storage Gen2 átviteli sebességnél kevesebb hálózati sávszélesség van.  A különböző virtuális gépek eltérő hálózati sávszélességet fognak tartalmazni.  Válasszon olyan virtuálisgép-típust, amely a legnagyobb lehetséges hálózati sávszélességgel rendelkezik.
 
@@ -115,7 +115,7 @@ Egy HDInsight-fürtben három réteg található, amelyek úgy állíthatók be,
 
 **Használjon kisebb FONALas tárolókat.**  Csökkentse az egyes FONALak tárolóinak méretét, hogy több tárolót hozzon létre azonos mennyiségű erőforrással.
 
-![Data Lake Storage Gen2 teljesítmény](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![Diagram, amely az egyes fonal-tárolók méretének csökkentése érdekében a további tárolók létrehozásához szükséges eredményt jeleníti meg.](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
 A számítási feladattól függően mindig szükség van egy minimálisan szükséges szál-tároló méretre. Ha túl kis tárolót választ, a feladatok memórián kívüli problémákba fognak futni. Általában a FONALas tárolók nem lehetnek 1 GB-nál kisebbek. Gyakori, hogy a 3GB FONALas tárolók láthatók. Bizonyos munkaterhelések esetén nagyobb méretű FONALas tárolók szükségesek.  
 
@@ -125,7 +125,7 @@ A számítási feladattól függően mindig szükség van egy minimálisan szük
 
 **Az összes rendelkezésre álló tároló használata.**  Állítsa be, hogy a tevékenységek száma egyenlő legyen, vagy nagyobb legyen, mint a rendelkezésre álló tárolók száma, hogy minden erőforrás kihasználható legyen.
 
-![Data Lake Storage Gen2 teljesítmény](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![Az összes tároló használatát bemutató diagram.](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
 **A sikertelen feladatok költségesek.** Ha az egyes feladatok nagy mennyiségű adattal dolgoznak fel, akkor a feladat meghibásodása költséges újrapróbálkozást eredményez.  Ezért jobb, ha több feladatot hoz létre, amelyek mindegyike kis mennyiségű adat feldolgozását dolgozza fel.
 

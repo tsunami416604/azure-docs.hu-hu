@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 7de9de7e1ba8028cbdb24744775294a4890afe40
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c40f1762ea7c87ea73ec20e47b0398e0d3e364b4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547741"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677148"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
@@ -350,7 +350,7 @@ A következő eljárással hozhat létre egy elővance-kapcsolatokat:
 | **Adatszinkronizálás** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát** : 120 nap. |
 | **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha be van jelölve, a ITSMC létrehozza az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) a támogatott ITSM-rendszeren. **Alapértelmezett** : letiltva.|
 
-![Megjelenő kapcsolatok](media/itsmc-connections/itsm-connections-provance-latest.png)
+![Képernyőfelvétel a kapcsolat neve és a partner típusa listáról.](media/itsmc-connections/itsm-connections-provance-latest.png)
 
 **Sikeres csatlakozás és szinkronizálás** :
 
@@ -428,6 +428,6 @@ Az ügyfél-azonosító/-kulcs Cherwell való létrehozásához kövesse az alá
     ![Cherwell-felhasználói azonosító](media/itsmc-connections/itsmc-cherwell-client-id.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  - [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
 

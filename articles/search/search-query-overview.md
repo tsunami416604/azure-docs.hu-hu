@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c05db39e02a6bc2a7fa5d62b8b891626eb0d241
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537718"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675801"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Az Azure Cognitive Search lekérdezési típusai és összetétele
 
@@ -59,9 +59,9 @@ Ha követte ezt a rövid útmutatót a [Hotels bemutató index létrehozásához
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>A lekérdezési műveletek engedélyezése az index alapján
 
-Az index tervezési és lekérdezési kialakítása szorosan összekapcsolható az Azure Cognitive Searchban. Fontos, hogy tudd elölről, hogy az *index séma*, amely az egyes mezők attribútumait határozza meg, meghatározza, hogy milyen típusú lekérdezést hozhat létre. 
+Az index tervezési és lekérdezési kialakítása szorosan összekapcsolható az Azure Cognitive Searchban. Fontos, hogy tudd elölről, hogy az *index séma* , amely az egyes mezők attribútumait határozza meg, meghatározza, hogy milyen típusú lekérdezést hozhat létre. 
 
-Egy mező indexelése az engedélyezett műveletekkel – azt határozza meg, hogy egy mező *kereshető* -e az indexben, lekérhető az *eredmények között,* *rendezhető*, *szűrhető*és így tovább. A példában a lekérdezési karakterláncban `"$orderby": "Rating"` csak a működik, mert a minősítés mező az index sémában *rendezhető* van megjelölve. 
+Egy mező indexelése az engedélyezett műveletekkel – azt határozza meg, hogy egy mező *kereshető* -e az indexben, lekérhető az *eredmények között,* *rendezhető* , *szűrhető* és így tovább. A példában a lekérdezési karakterláncban `"$orderby": "Rating"` csak a működik, mert a minősítés mező az index sémában *rendezhető* van megjelölve. 
 
 ![A szállodai minta index-definíciója](./media/search-query-overview/hotel-sample-index-definition.png "A szállodai minta index-definíciója")
 
@@ -78,8 +78,8 @@ A lekérdezési kérelemhez szükséges elemek a következő összetevőket tart
 
 + A szolgáltatási végpont és az indexelési dokumentumok gyűjteménye rögzített és felhasználó által definiált összetevőket tartalmazó URL-címként kifejezve: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (Csak REST) szükséges, mert az API több verziója mindig elérhető. 
-+ **`api-key`**, vagy egy lekérdezési vagy felügyeleti API-kulcs, hitelesíti a kérést a szolgáltatásnak.
-+ **`queryType`**(egyszerű vagy teljes), amely kihagyható, ha a beépített alapértelmezett egyszerű szintaxist használja.
++ **`api-key`** , vagy egy lekérdezési vagy felügyeleti API-kulcs, hitelesíti a kérést a szolgáltatásnak.
++ **`queryType`** (egyszerű vagy teljes), amely kihagyható, ha a beépített alapértelmezett egyszerű szintaxist használja.
 + **`search`** vagy **`filter`** adja meg az egyeztetési feltételeket, amelyek nem adhatók meg, ha üres keresést szeretne végezni. Mindkét lekérdezési típust az egyszerű elemző is tárgyalja, de a speciális lekérdezésekhez a keresési paraméter szükséges a komplex lekérdezési kifejezések átadásához.
 
 Az összes többi keresési paraméter megadása nem kötelező. Az attribútumok teljes listájáért lásd: [index létrehozása (REST)](/rest/api/searchservice/create-index). A paraméterek a feldolgozás során való használatának alaposabb megismeréséhez lásd: [Hogyan működik a teljes szöveges keresés az Azure Cognitive Searchban](search-lucene-query-architecture.md).
@@ -92,7 +92,7 @@ A következő táblázat a lekérdezések elküldéséhez szükséges API-kat é
 |-------------|-------------|
 | [Keresési ablak (portál)](search-explorer.md) | Az index és az API-Version beállításokhoz biztosít keresési sávot. Az eredményeket JSON-dokumentumként adja vissza a rendszer. Feltárásra, tesztelésre és érvényesítésre ajánlott. <br/>[Részletek](search-get-started-portal.md#query-index) | 
 | [Poster vagy más REST-eszközök](search-get-started-postman.md) | A webes tesztelési eszközök kiváló választás a REST-hívások kialakításához. A REST API az Azure Cognitive Search minden lehetséges műveletét támogatja. Ebből a cikkből megtudhatja, hogyan állíthatja be a HTTP-kérések fejlécét és törzsét a kérelmek Azure Cognitive Searchba való küldéséhez.  |
-| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | Az Azure Cognitive Search index lekérdezéséhez használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Az Azure Cognitive Search index lekérdezéséhez használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md)  |
 | [Dokumentumok keresése (REST API)](/rest/api/searchservice/search-documents) | Metódusok beolvasása vagy közzététele indexeken a lekérdezési paraméterek használatával további bevitelhez.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Válasszon elemzőt: Simple | teljes
@@ -159,7 +159,7 @@ A lapozási keresési eredményekről a cikk a [keresési eredmények az Azure C
 ### <a name="ordering-results"></a>Az eredmények rendezése
 Ha keresési lekérdezés eredményeit fogadja, kérheti, hogy az Azure Cognitive Search egy adott mezőben lévő értékek alapján rendezve jelenítse meg az eredményeket. Alapértelmezés szerint az Azure Cognitive Search megrendeli a keresési eredményeket az egyes dokumentumok keresési pontszáma alapján, amely a [TF-IDF-](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)ből származik.
 
-Ha azt szeretné, hogy az Azure Cognitive Search az eredményeket a keresési pontszámtól eltérő értékkel adja vissza, akkor használhatja a **`orderby`** keresési paramétert. Megadhatja a paraméter értékét, **`orderby`** hogy a mezőneveket és a [** `geo.distance()` függvény**](query-odata-filter-orderby-syntax.md) hívásait is tartalmazza a térinformatikai értékek számára. Az egyes kifejezéseket követve `asc` jelezheti, hogy a rendszer növekvő sorrendben kéri az eredményeket, és **`desc`** jelzi, hogy az eredményeket csökkenő sorrendben kell megadni. Alapértelmezés szerint a rangsorolás növekvő sorrendben történik.
+Ha azt szeretné, hogy az Azure Cognitive Search az eredményeket a keresési pontszámtól eltérő értékkel adja vissza, akkor használhatja a **`orderby`** keresési paramétert. Megadhatja a paraméter értékét, **`orderby`** hogy a mezőneveket és a [**`geo.distance()` függvény**](query-odata-filter-orderby-syntax.md) hívásait is tartalmazza a térinformatikai értékek számára. Az egyes kifejezéseket követve `asc` jelezheti, hogy a rendszer növekvő sorrendben kéri az eredményeket, és **`desc`** jelzi, hogy az eredményeket csökkenő sorrendben kell megadni. Alapértelmezés szerint a rangsorolás növekvő sorrendben történik.
 
 
 ### <a name="hit-highlighting"></a>Találatok kiemelése

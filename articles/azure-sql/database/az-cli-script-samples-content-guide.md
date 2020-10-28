@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 893ea607b322c2f9b2d8a4e8b5b087e21c476d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f28d8f82796f54002312514b1a34e3dd8b666a3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497171"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675252"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-minták Azure SQL Database és SQL felügyelt példányhoz 
  
@@ -73,7 +73,7 @@ Az alábbi táblázat a felügyelt Azure SQL-példányokra mutató hivatkozások
 | [Feladatátvételi csoport konfigurálása SQL felügyelt példányhoz](../../sql-database/scripts/sql-database-add-managed-instance-to-failover-group-cli.md) | Két példányban hozza létre a felügyelt SQL-példányokat, hozzáadja azokat egy feladatátvételi csoporthoz, majd a felügyelt elsődleges SQL-példányról a másodlagos SQL felügyelt példányra ellenőrzi a feladatátvételt. |
 |||
 
-További példák a felügyelt SQL-példányokra: adatbázis [létrehozása](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/), [frissítése](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/), [áthelyezése](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)és parancsfájlok [használata](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) .
+További példák a felügyelt SQL-példányokra: adatbázis [létrehozása](/archive/blogs/sqlserverstorageengine/create-azure-sql-managed-instance-using-azure-cli), [frissítése](/archive/blogs/sqlserverstorageengine/modify-azure-sql-database-managed-instance-using-azure-cli), [áthelyezése](/archive/blogs/sqlserverstorageengine/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance)és parancsfájlok [használata](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) .
 
 További információ az [SQL felügyelt példány Azure CLI API](../managed-instance/api-references-create-manage-instance.md#azure-cli-create-and-configure-managed-instances)-ról.
 
