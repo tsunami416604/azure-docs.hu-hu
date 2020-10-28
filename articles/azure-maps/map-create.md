@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 62aa8f966126d95af003478e7f43d3ccea2b48cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310407"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890921"
 ---
 # <a name="create-a-map"></a>Térkép létrehozása
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre térképet és animálhat eg
 
 ## <a name="loading-a-map"></a>Térkép betöltése
 
-A Térkép betöltéséhez hozzon létre egy új, a [map osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)egy példányát. A Térkép inicializálásakor adjon át egy DIV-elem AZONOSÍTÓját a térkép megjelenítéséhez, és adja át a Térkép betöltéséhez használni kívánt beállításokat. Ha a névtérben nincs megadva az alapértelmezett hitelesítési információ `atlas` , ezeket az adatokat a térképi beállításokban kell megadni a Térkép betöltésekor. A Térkép a teljesítmény érdekében aszinkron módon több erőforrást is betölt. A Térkép példányának létrehozása után csatoljon egy vagy egy `ready` `load` eseményt a térképhez, majd adja hozzá a térképhez kapcsolódó további kódokat az eseménykezelőhöz. Az `ready` esemény akkor következik be, amikor a térképnek elegendő erőforrása van betöltve a programozott módon való interakcióhoz. Az `load` esemény akkor következik be, amikor a Térkép kezdeti nézete befejeződött. 
+A Térkép betöltéséhez hozzon létre egy új, a [map osztály](/javascript/api/azure-maps-control/atlas.map)egy példányát. A Térkép inicializálásakor adjon át egy DIV-elem AZONOSÍTÓját a térkép megjelenítéséhez, és adja át a Térkép betöltéséhez használni kívánt beállításokat. Ha a névtérben nincs megadva az alapértelmezett hitelesítési információ `atlas` , ezeket az adatokat a térképi beállításokban kell megadni a Térkép betöltésekor. A Térkép a teljesítmény érdekében aszinkron módon több erőforrást is betölt. A Térkép példányának létrehozása után csatoljon egy vagy egy `ready` `load` eseményt a térképhez, majd adja hozzá a térképhez kapcsolódó további kódokat az eseménykezelőhöz. Az `ready` esemény akkor következik be, amikor a térképnek elegendő erőforrása van betöltve a programozott módon való interakcióhoz. Az `load` esemény akkor következik be, amikor a Térkép kezdeti nézete befejeződött. 
 
 <br/>
 
@@ -48,10 +48,10 @@ Tekintse meg a CodePen-on található <a href='https://codepen.io/azuremaps/pen/
 
 Ha létrehoz egy térképet, több különböző típusú lehetőség is átadható, amelyekkel testre szabhatja a Térkép funkcióit az alábbi listában.
 
-- A [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions) és a [CameraBoundOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions) a Térkép által megjelenített terület megadására szolgálnak.
-- A [ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) annak megadására szolgálnak, hogy a Térkép hogyan működjön együtt a térképet használó szolgáltatásokkal.
-- A [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) a Térkép megadására szolgálnak.
-- A [UserInteractionOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) annak megadására szolgálnak, hogy a Térkép hogyan legyen elérhető, amikor a felhasználó kommunikál a térképpel. 
+- A [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) és a [CameraBoundOptions](/javascript/api/azure-maps-control/atlas.cameraboundsoptions) a Térkép által megjelenített terület megadására szolgálnak.
+- A [ServiceOptions](/javascript/api/azure-maps-control/atlas.serviceoptions) annak megadására szolgálnak, hogy a Térkép hogyan működjön együtt a térképet használó szolgáltatásokkal.
+- A [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions) a Térkép megadására szolgálnak.
+- A [UserInteractionOptions](/javascript/api/azure-maps-control/atlas.userinteractionoptions) annak megadására szolgálnak, hogy a Térkép hogyan legyen elérhető, amikor a felhasználó kommunikál a térképpel. 
 
 Ezek a beállítások a Térkép betöltése után is frissíthetők a `setCamera` ,, `setServiceOptions` `setStyle` és `setUserInteraction` függvények használatával. 
 
@@ -81,7 +81,7 @@ map.setCamera({
 });
 ```
 
-A következő kódban létrejön egy [leképezési objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) , és a középpont és a nagyítási beállítások vannak megadva. A Térkép tulajdonságai, például a középpont és a nagyítási szint a [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions)részei.
+A következő kódban létrejön egy [leképezési objektum](/javascript/api/azure-maps-control/atlas.map) , és a középpont és a nagyítási beállítások vannak megadva. A Térkép tulajdonságai, például a középpont és a nagyítási szint a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)részei.
 
 <br/>
 
@@ -101,7 +101,7 @@ map.setCamera({
 });
 ```
 
-A következő kódban a [Térkép objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) a-on keresztül épül fel `new atlas.Map()` . Térképi tulajdonságok, például `CameraBoundsOptions` a Térkép osztály [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) függvényében definiálhatók. A határértékek és a kitöltés tulajdonságai a használatával állíthatók be `setCamera` .
+A következő kódban a [Térkép objektum](/javascript/api/azure-maps-control/atlas.map) a-on keresztül épül fel `new atlas.Map()` . Térképi tulajdonságok, például `CameraBoundsOptions` a Térkép osztály [setCamera](/javascript/api/azure-maps-control/atlas.map) függvényében definiálhatók. A határértékek és a kitöltés tulajdonságai a használatával állíthatók be `setCamera` .
 
 <br/>
 
@@ -110,7 +110,7 @@ A következő kódban a [Térkép objektum](https://docs.microsoft.com/javascrip
 
 ### <a name="animate-map-view"></a>Animálási Térkép nézet
 
-A Térkép kamera-beállításainak beállításakor az [animációs beállítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.animationoptions) is megadhatók. Ezekkel a beállításokkal adhatja meg, hogy milyen típusú animációt és időtartamot kell figyelembe venni a kamera áthelyezéséhez.
+A Térkép kamera-beállításainak beállításakor az [animációs beállítások](/javascript/api/azure-maps-control/atlas.animationoptions) is megadhatók. Ezekkel a beállításokkal adhatja meg, hogy milyen típusú animációt és időtartamot kell figyelembe venni a kamera áthelyezéséhez.
 
 ```javascript
 map.setCamera({
@@ -130,12 +130,12 @@ A következő kódban az első kód blokk létrehoz egy térképet, és beállí
 
 ## <a name="request-transforms"></a>Kérelmek átalakítása
 
-Időnként hasznos lehet a Térkép vezérlőelem által készített HTTP-kérések módosítása. Példa:
+Időnként hasznos lehet a Térkép vezérlőelem által készített HTTP-kérések módosítása. Például:
 
 - További fejlécek hozzáadása a csempe-kérésekhez. Ez gyakran a jelszóval védett szolgáltatások esetében történik.
 - Módosítsa az URL-címeket a kérelmek proxy szolgáltatáson keresztüli futtatásához.
 
-A térképhez tartozó [szolgáltatási beállításokkal](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) `transformRequest` megadható, hogy a Térkép által kezdeményezett összes kérést módosíthassa. A `transformRequest` beállítás egy függvény, amely két paramétert vesz igénybe: egy karakterlánc-URL-címet és egy erőforrástípus-karakterláncot, amely megadja, hogy a rendszer milyen típusú kérést használ. Ennek a függvénynek egy [RequestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters) eredményt kell visszaadnia.
+A térképhez tartozó [szolgáltatási beállításokkal](/javascript/api/azure-maps-control/atlas.serviceoptions) `transformRequest` megadható, hogy a Térkép által kezdeményezett összes kérést módosíthassa. A `transformRequest` beállítás egy függvény, amely két paramétert vesz igénybe: egy karakterlánc-URL-címet és egy erőforrástípus-karakterláncot, amely megadja, hogy a rendszer milyen típusú kérést használ. Ennek a függvénynek egy [RequestParameters](/javascript/api/azure-maps-control/atlas.requestparameters) eredményt kell visszaadnia.
 
 ```JavaScript
 transformRequest: (url: string, resourceType: string) => RequestParameters
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>A kód kipróbálása
 
-Tekintse meg a kód mintáit. A JavaScript-kódot a **js lapon** szerkesztheti, és az **eredmény lapon**megtekintheti a Térkép nézet módosításait. Kattintson a Szerkesztés elemre a **CodePen**, a jobb felső sarokban, és módosítsa a kódot a CodePen.
+Tekintse meg a kód mintáit. A JavaScript-kódot a **js lapon** szerkesztheti, és az **eredmény lapon** megtekintheti a Térkép nézet módosításait. Kattintson a Szerkesztés elemre a **CodePen** , a jobb felső sarokban, és módosítsa a kódot a CodePen.
 
 <a id="relatedReference"></a>
 
@@ -180,7 +180,7 @@ Tekintse meg a kód mintáit. A JavaScript-kódot a **js lapon** szerkesztheti, 
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Térkép](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)
@@ -197,4 +197,4 @@ Az alkalmazás funkcióinak hozzáadásához tekintse meg a kód példáit:
 > [Vezérlőelemek hozzáadása a térképhez](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kódminták](/samples/browse/?products=azure-maps)

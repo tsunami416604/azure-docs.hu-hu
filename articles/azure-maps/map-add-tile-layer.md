@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 8450fbd5287c88431f21753a9c88e8603455f844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3619995739c51d68b00f37ebea3a38680a6b6e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310424"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890977"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Csemperéteg hozzáadása térképhez
 
 Ez a cikk bemutatja, hogyan fedi le a csempéket a térképre. A csempe rétegek lehetővé teszik, hogy az alapszintű Térkép csempék fölé írja a képeket Azure Maps. A Azure Maps csempe rendszerével kapcsolatos további információkért lásd: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
 
-Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a lemezképeket lehet előre megjeleníteni vagy dinamikusan megjeleníteni. Az előre megjelenített lemezképek, mint a kiszolgálók bármely más lemezképe, egy elnevezési konvenció használatával, amely a csempe rétegének ismerete. A dinamikusan renderelt képek egy szolgáltatás használatával töltik be a képeket valós időben. Az Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer) osztály három különböző csempe-szolgáltatási elnevezési konvenciót támogat: 
+Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a lemezképeket lehet előre megjeleníteni vagy dinamikusan megjeleníteni. Az előre megjelenített lemezképek, mint a kiszolgálók bármely más lemezképe, egy elnevezési konvenció használatával, amely a csempe rétegének ismerete. A dinamikusan renderelt képek egy szolgáltatás használatával töltik be a képeket valós időben. Az Azure Maps [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) osztály három különböző csempe-szolgáltatási elnevezési konvenciót támogat: 
 
 * X, Y, nagyítás jelölése – az X az oszlop, az Y a csempe rácsában lévő csempe sora, a nagyítási szint pedig a nagyítási szint alapján van megadva.
 * Quadkey-jelölés – az x, y és nagyítási adatokat egyetlen karakterlánc-értékre kombinálja. Ez a karakterlánc-érték egyetlen csempe egyedi azonosítója lesz.
 * Határolókeret – a határolókeret koordinátáit tartalmazó képet ad meg: `{west},{south},{east},{north}` . Ezt a formátumot általában a [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms)használják.
 
 > [!TIP]
-> A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer) nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére a térképen. Nem csak a csempe réteg hozható létre egy képből, a vektoros adatok csempe rétegként is megjeleníthető. Ha a vektoros adatmegjelenítést csempe rétegként jeleníti meg, a Térkép vezérlőelemnek csak az általuk képviselt adatmennyiségnél kisebb méretű csempéket kell betöltenie. Ezt a technikát általában több millió adatsor megjelenítésére használják a térképen.
+> A [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére a térképen. Nem csak a csempe réteg hozható létre egy képből, a vektoros adatok csempe rétegként is megjeleníthető. Ha a vektoros adatmegjelenítést csempe rétegként jeleníti meg, a Térkép vezérlőelemnek csak az általuk képviselt adatmennyiségnél kisebb méretű csempéket kell betöltenie. Ezt a technikát általában több millió adatsor megjelenítésére használják a térképen.
 
 A csempe rétegbe átadott csempe URL-címnek http vagy HTTPS URL-címnek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonhoz, amely a következő paramétereket használja: 
 
@@ -74,10 +74,10 @@ A csempe réteg osztályának számos stílusa van. Itt látható egy eszköz, a
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+> [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
 
 > [!div class="nextstepaction"]
-> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+> [TileLayerOptions](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 

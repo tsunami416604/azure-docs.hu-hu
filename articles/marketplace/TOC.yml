@@ -139,14 +139,16 @@
                   href: azure-vm-create-certification-faq.md
     - name: Tanácsadói szolgáltatások
       items:
-        - name: Tanácsadói szolgáltatásokra vonatkozó ajánlat megtervezése
-          href: consulting-services.md
-        - name: Tanácsadói szolgáltatásokra vonatkozó ajánlat létrehozása és közzététele
-          items:
-            - name: Előfeltételek
-              href: partner-center-portal/consulting-service-prerequisites.md
-            - name: Tanácsadási szolgáltatásajánlat létrehozása
-              href: partner-center-portal/create-consulting-service-offer.md
+        - name: Tanácsadási szolgáltatásra vonatkozó ajánlat megtervezése
+          href: plan-consulting-service-offer.md
+        - name: Tanácsadási szolgáltatásajánlat létrehozása
+          href: create-consulting-service-offer.md
+        - name: Tanácsadási szolgáltatás tulajdonságainak konfigurálása
+          href: create-consulting-service-offer-properties.md
+        - name: Tanácsadási szolgáltatási lista konfigurálása
+          href: create-consulting-service-offer-listing.md
+        - name: Díjszabás és rendelkezésre állás konfigurálása
+          href: create-consulting-service-pricing-availability.md
     - name: Dynamics 365-ajánlatok
       items:
         - name: Dynamics 365-ajánlat megtervezése

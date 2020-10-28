@@ -110,7 +110,7 @@
         - name: Azure Resource Manager-sablon
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: TCP üresjárati időkorlát konfigurálása Load Balancer
+    - name: A TCP alaphelyzetbe állításának és üresjárati időtúllépésének konfigurálása
       href: load-balancer-tcp-idle-timeout.md
     - name: A Load Balancer elosztási módjának konfigurálása
       href: load-balancer-distribution-mode.md

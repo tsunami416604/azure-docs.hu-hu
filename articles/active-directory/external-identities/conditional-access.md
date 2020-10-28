@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47ec082daa6eee4ab593fdb5523087f9eb5b038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eccbbb22814788aaf06fa6fd10d8c376203c1d49
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274146"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892451"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Feltételes hozzáférés VÁLLALATKÖZI együttműködéssel rendelkező felhasználók számára
 
@@ -110,5 +110,5 @@ A kockázatalapú bejelentkezési szabályzatok jelenleg nem alkalmazhatók a B2
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-* [Az Azure AD B2B-együttműködésének licencelése](licensing-guidance.md)
+* [Az External Identities díjszabása](external-identities-pricing.md)
 * [Azure Active Directory vállalatközi együttműködés – gyakori kérdések](faq.md)

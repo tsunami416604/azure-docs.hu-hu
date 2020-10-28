@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: eedbbc0126adacc2a9bdc151aa6dbc27c7ba0750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211bcbf27f3a9e885a4bc2c4e5edd27db7907edf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310254"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890768"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Sokszög-kihúzási réteg hozzáadása a térképhez
 
-Ebből a cikkből megtudhatja, hogyan használhatja a sokszög-kihúzási réteget, hogy a `Polygon` és a `MultiPolygon` szolgáltatáshoz tartozó geometriákat extrudált alakzatokként jelenítse A Azure Maps web SDK támogatja a kör geometriáinak megjelenítését a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)meghatározottak szerint. Ezek a körök a térképen való megjelenítéskor sokszögekre alakíthatók. Az Atlas becsomagolásakor az összes funkció geometriája könnyen frissíthető [. Alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) osztálya
+Ebből a cikkből megtudhatja, hogyan használhatja a sokszög-kihúzási réteget, hogy a `Polygon` és a `MultiPolygon` szolgáltatáshoz tartozó geometriákat extrudált alakzatokként jelenítse A Azure Maps web SDK támogatja a kör geometriáinak megjelenítését a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)meghatározottak szerint. Ezek a körök a térképen való megjelenítéskor sokszögekre alakíthatók. Az Atlas becsomagolásakor az összes funkció geometriája könnyen frissíthető [. Alakzat](/javascript/api/azure-maps-control/atlas.shape) osztálya
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Sokszög kihúzási rétegének használata
 
-A [sokszög kihúzási rétegének](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) összekötése egy adatforrással. Ezután betöltve a térképen. A sokszög kihúzási rétege `Polygon` kihúzott alakzatként jeleníti meg a és a funkciók területét `MultiPolygon` . A  `height` `base` sokszög kihúzási rétegének és tulajdonságai határozzák meg az extrudált alakzat területének és magasságának alaptávolságát **méterben**. A következő kód bemutatja, hogyan hozható létre sokszög, hogyan adható hozzá egy adatforráshoz, és Hogyan jeleníthető meg a sokszög kihúzási rétegének osztálya alapján.
+A [sokszög kihúzási rétegének](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) összekötése egy adatforrással. Ezután betöltve a térképen. A sokszög kihúzási rétege `Polygon` kihúzott alakzatként jeleníti meg a és a funkciók területét `MultiPolygon` . A  `height` `base` sokszög kihúzási rétegének és tulajdonságai határozzák meg az extrudált alakzat területének és magasságának alaptávolságát **méterben** . A következő kód bemutatja, hogyan hozható létre sokszög, hogyan adható hozzá egy adatforráshoz, és Hogyan jeleníthető meg a sokszög kihúzási rétegének osztálya alapján.
 
 > [!Note]
 > A `base` sokszög kihúzási rétegében megadott érték nem lehet kisebb, mint az `height` .
@@ -45,7 +45,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/eYYYNox'>extrudál
 
 ## <a name="add-a-circle-to-the-map"></a>Kör hozzáadása a térképhez
 
-Azure Maps a GeoJSON séma egy kiterjesztett verzióját használja, amely az [itt](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)feljegyzett körök definícióját adja meg. Egy extrudált kör megjeleníthető a térképen úgy, hogy létrehoz egy `point` tulajdonsággal rendelkező szolgáltatást, `subType` `Circle` valamint egy számozott `Radius` tulajdonságot, amely a sugarat a **méterben**jelöli. Példa:
+Azure Maps a GeoJSON séma egy kiterjesztett verzióját használja, amely az [itt](./extend-geojson.md#circle)feljegyzett körök definícióját adja meg. Egy extrudált kör megjeleníthető a térképen úgy, hogy létrehoz egy `point` tulajdonsággal rendelkező szolgáltatást, `subType` `Circle` valamint egy számozott `Radius` tulajdonságot, amely a sugarat a **méterben** jelöli. Például:
 
 ```javascript
 {
@@ -83,10 +83,10 @@ A sokszög kihúzási rétegének számos stílusa van. Itt látható egy eszkö
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Sokszög](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
+> [Sokszög](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [sokszög kihúzási rétege](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)
+> [sokszög kihúzási rétege](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)
 
 További források:
 

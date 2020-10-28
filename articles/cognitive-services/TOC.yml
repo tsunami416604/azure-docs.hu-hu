@@ -9,6 +9,8 @@
       href: whats-new-docs.md
     - name: Cognitive Services és Machine Learning
       href: cognitive-services-and-machine-learning.md
+    - name: Cognitive Services – fejlesztési lehetőségek
+      href: cognitive-services-development-options.md
     - name: Egyéni altartományok a Cognitive Serviceshez
       href: cognitive-services-custom-subdomains.md
     - name: Nyelvi támogatás

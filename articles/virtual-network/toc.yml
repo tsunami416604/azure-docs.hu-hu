@@ -240,6 +240,8 @@
               href: virtual-network-public-ip-address.md
             - name: Nyilvános IP-előtag kezelése
               href: manage-public-ip-address-prefix.md
+            - name: Nyilvános IP-címek frissítése
+              href: virtual-network-public-ip-address-upgrade.md
             - name: 'IP-cím hozzáadása hálózati adapterekhez, illetve IP-cím eltávolítása hálózati adapterekből'
               href: virtual-network-network-interface-addresses.md
             - name: Útválasztási beállítás

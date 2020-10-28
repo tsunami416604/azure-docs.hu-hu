@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9e83fcd6a8e6a7b0c81f47cc3ad97b7f55da1b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c67ff71ccc7690fbf3362b423ba4b6a56091684
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713184"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891244"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -29,19 +29,19 @@ Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmen
 
 | ISV-partner | Leírás és integrációs útmutató  |
 | :--- | :--- |
-| ![embléma](./media/partner-gallery/arkose-logo.png) | A [Arkóz Labs](./partner-arkose-labs.md) egy csalások elleni megelőzési megoldás szolgáltatója, amely segítséget nyújt a szervezeteknek a robotok elleni támadásokkal, a fiókok átvételi támadásokkal és a csalárd fiókok megnyitásával
-| ![embléma](./media/partner-gallery/experian-logo.png) | A [Experian](./partner-experian.md) egy személyazonosság-ellenőrző és ellenőrző szolgáltató, amely a felhasználói attribútumok alapján kockázatértékeléseket végez a csalások megelőzése érdekében.|
-| ![embléma](./media/partner-gallery/hypr-logo.png) | A [HYPR](./partner-hypr.md) egy valódi, jelszóval nem rendelkező hitelesítésszolgáltató, amely a nyilvános kulcsú titkosítással rendelkező jelszavakat a csalások, az adathalászat és a hitelesítő adatok újrafelhasználásának megszüntetésével helyettesíti.|
-| ![embléma](./media/partner-gallery/idology-logo.png) | A [IDology](./partner-idology.md) egy azonosító-ellenőrzési megoldásokkal, csalás-megelőzési megoldásokkal, megfelelőségi megoldásokkal és egyebekkel rendelkező személyazonosság-ellenőrzési és-ellenőrző szolgáltató.|
-| ![embléma](./media/partner-gallery/itsme-logo.png) | a [itsme](./partner-itsme.md) egy elektronikus azonosítási, hitelesítési és megbízhatósági szolgáltatás (eiDAS) által kompatibilis digitális azonosító megoldás, amely lehetővé teszi a felhasználók számára, hogy a kártyák olvasói, jelszavas, kétfaktoros hitelesítés és több PIN-kód nélkül is biztonságosan bejelentkezzenek. |
-| ![embléma](./media/partner-gallery/jumio-logo.png) | A [Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely lehetővé teszi a valós idejű automatizált azonosítók ellenőrzését, így biztosítva az ügyféladatok védelmét. |
-| ![embléma](./media/partner-gallery/lexisnexis-logo.png) | A [LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználó azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszköze alapján. |
-| ![embléma](./media/partner-gallery/onfido-logo.png) | A [Onfido](./partner-onfido.md) egy dokumentum-azonosító és egy arc biometria-ellenőrzési megoldás, amely lehetővé teszi a vállalatok számára, hogy valós időben tudják kielégíteni *az ügyfél* és az identitás követelményeit.  |
-| ![embléma](./media/partner-gallery/saviynt-logo.png) | A [Saviynt](./partner-saviynt.md) Felhőbeli natív platform intelligens elemzési funkciókat használ, és lehetővé teszi az alkalmazások integrálását az informatikai modernizáció egyszerűsítése és a jobb biztonság, irányítás és megfelelőség elősegítése érdekében. Az üzleti modernizáció megváltoztatja a vállalatoknak a hozzáférési kérelmek felülvizsgálati módszereit, a hozzáférési felülvizsgálatokat, a jelentés-elemzéseket és a minősítési kampányok egyszerűsítését.  |
-| ![embléma](./media/partner-gallery/trusona-logo.png) | A [Trusona](./partner-trusona.md) -integráció segítségével biztonságosan bejelentkezhet, és engedélyezheti a jelszó nélküli hitelesítést, a többtényezős hitelesítést és a digitális licencek vizsgálatát.|
-| ![embléma](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldást biztosít a többtényezős hitelesítés (MFA) SMS egyszeri jelszó (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések, valamint a Payment Services-irányelv 2 (PSD2) direktíva követelményeinek teljesítéséhez.|
-| ![embléma](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-typingdna.md) egy, a felhasználó gépelési mintáján alapuló személyazonosság-ellenőrzési megoldás, amely a többtényezős hitelesítést kényszeríti, és segít megfelelni a 2. szintű Payment Services-irányelv (PSD2) SCA-követelményeinek. |
-| ![embléma](./media/partner-gallery/whoiam-logo.png) | A [WhoIAM](./partner-whoiam.md) egy márkás identitáskezelésrendszer-(BRIMS-) alkalmazás, amely lehetővé teszi, hogy a szervezetek hang-, SMS-és e-mail-cím alapján ellenőrizzék a felhasználói bázist. 
+| ![Képernyőkép egy arkos Labs-emblémáról.](./media/partner-gallery/arkose-logo.png) | A [Arkóz Labs](./partner-arkose-labs.md) egy csalások elleni megelőzési megoldás szolgáltatója, amely segítséget nyújt a szervezeteknek a robotok elleni támadásokkal, a fiókok átvételi támadásokkal és a csalárd fiókok megnyitásával
+| ![Képernyőkép egy Experian-emblémáról.](./media/partner-gallery/experian-logo.png) | A [Experian](./partner-experian.md) egy személyazonosság-ellenőrző és ellenőrző szolgáltató, amely a felhasználói attribútumok alapján kockázatértékeléseket végez a csalások megelőzése érdekében.|
+| ![Képernyőkép egy HYPR-emblémáról.](./media/partner-gallery/hypr-logo.png) | A [HYPR](./partner-hypr.md) egy valódi, jelszóval nem rendelkező hitelesítésszolgáltató, amely a nyilvános kulcsú titkosítással rendelkező jelszavakat a csalások, az adathalászat és a hitelesítő adatok újrafelhasználásának megszüntetésével helyettesíti.|
+| ![Képernyőkép egy IDology-emblémáról.](./media/partner-gallery/idology-logo.png) | A [IDology](./partner-idology.md) egy azonosító-ellenőrzési megoldásokkal, csalás-megelőzési megoldásokkal, megfelelőségi megoldásokkal és egyebekkel rendelkező személyazonosság-ellenőrzési és-ellenőrző szolgáltató.|
+| ![Képernyőkép egy itsme-emblémáról.](./media/partner-gallery/itsme-logo.png) | a [itsme](./partner-itsme.md) egy elektronikus azonosítási, hitelesítési és megbízhatósági szolgáltatás (eiDAS) által kompatibilis digitális azonosító megoldás, amely lehetővé teszi a felhasználók számára, hogy a kártyák olvasói, jelszavas, kétfaktoros hitelesítés és több PIN-kód nélkül is biztonságosan bejelentkezzenek. |
+| ![Képernyőkép egy Jumio-emblémáról.](./media/partner-gallery/jumio-logo.png) | A [Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely lehetővé teszi a valós idejű automatizált azonosítók ellenőrzését, így biztosítva az ügyféladatok védelmét. |
+| ![Képernyőkép egy LexisNexis-emblémáról.](./media/partner-gallery/lexisnexis-logo.png) | A [LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználó azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszköze alapján. |
+| ![Képernyőkép egy Onfido-emblémáról.](./media/partner-gallery/onfido-logo.png) | A [Onfido](./partner-onfido.md) egy dokumentum-azonosító és egy arc biometria-ellenőrzési megoldás, amely lehetővé teszi a vállalatok számára, hogy valós időben tudják kielégíteni *az ügyfél* és az identitás követelményeit.  |
+| ![Képernyőkép egy Saviynt-emblémáról.](./media/partner-gallery/saviynt-logo.png) | A [Saviynt](./partner-saviynt.md) Felhőbeli natív platform intelligens elemzési funkciókat használ, és lehetővé teszi az alkalmazások integrálását az informatikai modernizáció egyszerűsítése és a jobb biztonság, irányítás és megfelelőség elősegítése érdekében. Az üzleti modernizáció megváltoztatja a vállalatoknak a hozzáférési kérelmek felülvizsgálati módszereit, a hozzáférési felülvizsgálatokat, a jelentés-elemzéseket és a minősítési kampányok egyszerűsítését.  |
+| ![Képernyőkép egy Trusona-emblémáról.](./media/partner-gallery/trusona-logo.png) | A [Trusona](./partner-trusona.md) -integráció segítségével biztonságosan bejelentkezhet, és engedélyezheti a jelszó nélküli hitelesítést, a többtényezős hitelesítést és a digitális licencek vizsgálatát.|
+| ![Képernyőkép egy Twilio az alkalmazás emblémájának ellenőrzéséhez.](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldást biztosít a többtényezős hitelesítés (MFA) SMS egyszeri jelszó (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések, valamint a Payment Services-irányelv 2 (PSD2) direktíva követelményeinek teljesítéséhez.|
+| ![Képernyőkép, amely a TypingDNA emblémát jeleníti meg.](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-typingdna.md) egy, a felhasználó gépelési mintáján alapuló személyazonosság-ellenőrzési megoldás, amely a többtényezős hitelesítést kényszeríti, és segít megfelelni a 2. szintű Payment Services-irányelv (PSD2) SCA-követelményeinek. |
+| ![Képernyőkép, amely a WhoIAM emblémát jeleníti meg.](./media/partner-gallery/whoiam-logo.png) | A [WhoIAM](./partner-whoiam.md) egy márkás identitáskezelésrendszer-(BRIMS-) alkalmazás, amely lehetővé teszi, hogy a szervezetek hang-, SMS-és e-mail-cím alapján ellenőrizzék a felhasználói bázist. 
 
 ## <a name="next-steps"></a>Következő lépések
 

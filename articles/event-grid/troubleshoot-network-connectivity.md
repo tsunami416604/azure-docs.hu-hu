@@ -5,16 +5,16 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119004"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892315"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Kapcsolódási problémák elhárítása – Azure Event Grid
 
-Számos oka lehet annak, hogy az ügyfélalkalmazások nem tudnak csatlakozni egy Event Grid témakörhöz/tartományhoz. Előfordulhat, hogy az Ön által tapasztalt kapcsolódási problémák állandóak vagy átmenetiek. Ha a probléma minden alkalommal (állandó) történik, érdemes lehet megtekinteni a szervezet tűzfalbeállítások beállításait, az IP-tűzfal beállításait, a szolgáltatás címkéit, a privát végpontokat és egyebeket. Átmeneti problémák esetén a parancsok futtatásával ellenőrizhetők az eldobott csomagok, és a hálózati nyomkövetés beszerzése segíthet a hibák elhárításában.
+Számos oka lehet annak, hogy az ügyfélalkalmazások nem tudnak csatlakozni egy Event Grid témakörhöz/tartományhoz. Előfordulhat, hogy az Ön által tapasztalt kapcsolódási problémák állandóak vagy átmenetiek. Ha a probléma bármikor (állandó) történik, érdemes lehet megtekinteni a szervezet tűzfalbeállítások beállításait, az IP-tűzfal beállításait, a szolgáltatás címkéit, a privát végpontokat és egyebeket. Átmeneti problémák esetén a parancsok futtatásával ellenőrizhetők az eldobott csomagok, és a hálózati nyomkövetés beszerzése segíthet a hibák elhárításában.
 
 Ez a cikk tippekkel szolgál a Azure Event Grid kapcsolódási problémáinak elhárításához.
 
@@ -22,7 +22,7 @@ Ez a cikk tippekkel szolgál a Azure Event Grid kapcsolódási problémáinak el
 
 Ha az alkalmazás egyáltalán nem tud csatlakozni az Event gridhez, kövesse a jelen szakaszban ismertetett lépéseket a probléma megoldásához.
 
-### <a name="check-if-there-is-a-service-outage"></a>Ellenőrizze, hogy van-e leállás a szolgáltatásban
+### <a name="check-if-theres-a-service-outage"></a>Ellenőrizze, hogy van-e leállás a szolgáltatásban
 
 Keresse meg az Azure Event Grid szolgáltatás kimaradását az [Azure szolgáltatás állapota helyen](https://azure.microsoft.com/status/).
 
@@ -50,12 +50,14 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Ha az Azure-t használja, időnként engedélyeznie kell bizonyos IP-címtartományok vagy URL-címek használatát a vállalati tűzfalon vagy proxyn a használt összes Azure-szolgáltatás eléréséhez. Ellenőrizze, hogy engedélyezett-e a forgalom a Event Grid által használt IP-címeken. Az Azure Event Grid által használt IP-címek esetében lásd: az [Azure IP-címtartományok és a szolgáltatás címkéi – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519) és [szolgáltatás AzureEventGrid](network-security.md#service-tags).
 
+Az [Azure IP-címtartományok és szolgáltatás-címkék – a nyilvános Felhőbeli](https://www.microsoft.com/download/details.aspx?id=56519) dokumentum az IP-címeket is felsorolja **régiónként** . A **témakör régiója** és a **párosított régió** a vállalati tűzfalon vagy proxyn is engedélyezheti a címtartományt. Egy adott régióhoz tartozó párosított régió esetében lásd [: Üzletmenet-folytonosság és vész-helyreállítási (BCDR): Azure párosított régiók](/azure/best-practices-availability-paired-regions). 
+
 > [!NOTE]
 > Az új IP-címek hozzáadhatók a AzureEventGrid szolgáltatás címkéjéhez, bár ez nem szokásos. Ezért érdemes hetente megnézni a szolgáltatás címkéit.
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Annak ellenőrzése, hogy a AzureEventGrid szolgáltatás címkéje engedélyezve van-e a hálózati biztonsági csoportokban
 
-Ha az alkalmazás egy alhálózaton belül fut, és ha van hálózati biztonsági csoport, akkor ellenőrizze, hogy engedélyezett-e az internetes kimenő forgalom vagy a AzureEventGrid szolgáltatás címkéje. Tekintse meg a [szolgáltatás címkéit](../virtual-network/service-tags-overview.md)
+Ha az alkalmazás egy alhálózaton belül fut, és ha van hálózati biztonsági csoport, akkor ellenőrizze, hogy engedélyezett-e az internetes kimenő forgalom vagy a AzureEventGrid szolgáltatás címkéje. Lásd a [szolgáltatás címkéit](../virtual-network/service-tags-overview.md)
 
 ### <a name="check-the-ip-firewall-settings-for-your-topicdomain"></a>A témakör/tartomány IP-tűzfal beállításainak megtekintése
 
@@ -63,7 +65,7 @@ Győződjön meg arról, hogy az EventGrid-témakör/tartomány IP-tűzfala nem 
 
 Alapértelmezés szerint a Event Grid témakörök/tartományok az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét.
 
-Az IP-tűzfalszabályok a Event Grid témakör/tartomány szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Minden olyan IP-címről érkező kapcsolódási kísérlet, amely nem felel meg egy engedélyezett IP-szabálynak a Event Grid témakörön/tartományon tiltottként van visszautasítva. A válasz nem említi az IP-szabályt.
+Az IP-tűzfalszabályok a Event Grid témakör/tartomány szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Minden olyan IP-címről érkező kapcsolódási kísérlet, amely nem felel meg egy engedélyezett IP-szabálynak a Event Grid témakör/tartományon, tiltottként van visszautasítva. A válasz nem említi az IP-szabályt.
 
 További információ: az [IP-tűzfalszabályok konfigurálása Azure Event Grid témakörhöz/tartományhoz](configure-firewall.md).
 
@@ -83,7 +85,7 @@ Diagnosztikai naplók engedélyezése Event Grid témakörhöz/tartományhoz a [
 
 ### <a name="check-if-the-eventgrid-topicdomain-can-be-accessed-using-only-a-private-endpoint"></a>Ellenőrizze, hogy a EventGrid témakör/tartomány csak privát végponttal érhető-e el
 
-Ha a Event Grid témakör/tartomány úgy van konfigurálva, hogy csak privát végponton keresztül legyen elérhető, ellenőrizze, hogy az ügyfélalkalmazás hozzáfér-e a témakörhöz/tartományhoz a privát végponton. Ennek megerősítéséhez ellenőrizze, hogy az ügyfélalkalmazás egy alhálózaton belül fut-e, és van-e privát végpont az adott alhálózat Event Grid témaköréhez/tartományához.
+Ha a Event Grid témakör/tartomány úgy van konfigurálva, hogy csak privát végponton keresztül legyen elérhető, ellenőrizze, hogy az ügyfélalkalmazás hozzáfér-e a témakörhöz/tartományhoz a privát végponton. A megerősítéshez ellenőrizze, hogy az ügyfélalkalmazás egy alhálózaton belül fut-e, és van-e privát végpont az adott alhálózat Event Grid témaköréhez/tartományához.
 
 Az [Azure Private link Service](../private-link/private-link-overview.md) lehetővé teszi Azure Event Grid elérését a virtuális hálózat **privát végpontján** keresztül. A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
@@ -116,6 +118,6 @@ Az átmeneti kapcsolódási problémák a háttérrendszer frissítése és újr
 
 Ezeknek az átmeneti hibáknak a kifogása, a biztonsági mentés és a hívás újbóli kipróbálása biztosítja, hogy a kód rugalmasan kezelje ezeket az átmeneti problémákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, tegye fel a problémát a [stack overflow fórumba](https://stackoverflow.com/questions/tagged/azure-eventgrid) , vagy nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

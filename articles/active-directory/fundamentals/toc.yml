@@ -79,6 +79,8 @@
               href: sync-ldap.md
             - name: SCIM-szinkronizálás
               href: sync-scim.md
+        - name: Az Azure-ban használt hitelesítésszolgáltatók
+          href: certificate-authorities.md
     - name: Üzembehelyezési útmutató
       items:
         - name: 'Üzembe helyezés 30, 90 vagy hosszabb idő alatt'

@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 07/30/2020
-  ms.openlocfilehash: eda40d7dafa2c9946798067622e2732cf9de738d
-  ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+  ms.date: 10/26/2020
+  ms.openlocfilehash: e69daf8f2756a165b000df271bffa73f8b14a979
+  ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/20/2020
-  ms.locfileid: "92282489"
+  ms.lasthandoff: 10/27/2020
+  ms.locfileid: "92747262"
 landingContent:
 - title: Az ARM-sablonok ismertetése
   linkLists:
@@ -107,20 +107,26 @@ landingContent:
       url: deploy-rest.md
     - text: Üzembe helyezés az Azure-ban gomb
       url: deploy-to-azure-button.md
+    - text: Cloud Shell
+      url: deploy-cloud-shell.md
     - text: What-if típusú üzembe helyezés
       url: template-deploy-what-if.md
 - title: Hatókörön belüli üzembe helyezés
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Erőforráscsoport
+      url: deploy-to-resource-group.md
     - text: Előfizetés
       url: deploy-to-subscription.md
     - text: Felügyeleti csoport
       url: deploy-to-management-group.md
     - text: Bérlő
       url: deploy-to-tenant.md
-    - text: Hatókörközi üzemelő példányok
-      url: cross-scope-deployment.md
+    - text: Bővítmény-erőforrás hatókörkezelése
+      url: scope-extension-resources.md
+    - text: Hatókörökben használt sablonfüggvények
+      url: scope-functions.md
 - title: A referencia tartalmának áttekintése
   linkLists:
   - linkListType: reference

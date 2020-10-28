@@ -10,28 +10,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ecbbb9580a9a79ae52320ea53a4831ac8ef57f8b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dc3792b5eff1b0ba51f5d7938e52e6914660109a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678189"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889884"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
 
-Azure Maps a kérelmek hitelesítésének két módját támogatja: megosztott kulcsos hitelesítés és [Azure Active Directory (Azure ad)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) hitelesítés. Ez a cikk mindkét hitelesítési módszert ismerteti Azure Maps szolgáltatások megvalósításának elősegítése érdekében.
+Azure Maps a kérelmek hitelesítésének két módját támogatja: megosztott kulcsos hitelesítés és [Azure Active Directory (Azure ad)](../active-directory/fundamentals/active-directory-whatis.md) hitelesítés. Ez a cikk mindkét hitelesítési módszert ismerteti Azure Maps szolgáltatások megvalósításának elősegítése érdekében.
 
 > [!NOTE]
-> A Azure Mapsekkel való biztonságos kommunikáció javítása érdekében mostantól támogatjuk a Transport Layer Security (TLS) 1,2, és a TLS 1,0 és 1,1 támogatását kihasználjuk. Ha jelenleg a TLS 1. x protokollt használja, értékelje ki a TLS 1,2 készültséget, és fejlesszen egy áttelepítési tervet a [tls 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem)című cikkben ismertetett teszteléssel.
+> A Azure Mapsekkel való biztonságos kommunikáció javítása érdekében mostantól támogatjuk a Transport Layer Security (TLS) 1,2, és a TLS 1,0 és 1,1 támogatását kihasználjuk. Ha jelenleg a TLS 1. x protokollt használja, értékelje ki a TLS 1,2 készültséget, és fejlesszen egy áttelepítési tervet a [tls 1,0-probléma megoldása](/security/solving-tls1-problem)című cikkben ismertetett teszteléssel.
 
 ## <a name="shared-key-authentication"></a>Megosztott kulcsos hitelesítés
 
  Az elsődleges és a másodlagos kulcsok a Azure Maps fiók létrehozása után jönnek létre. Javasoljuk, hogy az elsődleges kulcsot használja előfizetési kulcsként, amikor a Azure Maps megosztott kulcsos hitelesítéssel hívja meg. A megosztott kulcsos hitelesítés egy Azure Maps fiók által generált kulcsot ad át egy Azure Maps szolgáltatáshoz. A szolgáltatásokra Azure Maps minden egyes kérelemhez adja hozzá az *előfizetési kulcsot* paraméterként az URL-címhez. A másodlagos kulcsot olyan helyzetekben lehet használni, mint például a kulcsok változásai.  
 
-A kulcsok a Azure Portalban való megtekintésével kapcsolatos információkért lásd: a [hitelesítés kezelése](https://aka.ms/amauthdetails).
+A kulcsok a Azure Portalban való megtekintésével kapcsolatos információkért lásd: a [hitelesítés kezelése](./how-to-manage-authentication.md#view-authentication-details).
 
 > [!TIP]
-> Biztonsági okokból ajánlott elforgatni az elsődleges és a másodlagos kulcsok között. A kulcsok elforgatásához frissítse az alkalmazást a másodlagos kulcs használatára, telepítse, majd nyomja le az elsődleges kulcs melletti ciklus/frissítés gombot egy új elsődleges kulcs létrehozásához. A régi elsődleges kulcs le lesz tiltva. A kulcsok elforgatásával kapcsolatos további információkért lásd: [Azure Key Vault beállítása kulcsfontosságú rotációs és naplózási](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring) szolgáltatással
+> Biztonsági okokból ajánlott elforgatni az elsődleges és a másodlagos kulcsok között. A kulcsok elforgatásához frissítse az alkalmazást a másodlagos kulcs használatára, telepítse, majd nyomja le az elsődleges kulcs melletti ciklus/frissítés gombot egy új elsődleges kulcs létrehozásához. A régi elsődleges kulcs le lesz tiltva. A kulcsok elforgatásával kapcsolatos további információkért lásd: [Azure Key Vault beállítása kulcsfontosságú rotációs és naplózási](../key-vault/secrets/tutorial-rotation-dual.md) szolgáltatással
 
 ## <a name="azure-ad-authentication"></a>Azure AD-hitelesítés
 
@@ -45,17 +45,17 @@ Azure Maps elfogadja a **OAuth 2,0** hozzáférési jogkivonatokat egy Azure Map
 
 A Azure Maps minden Azure Maps-fiókhoz létrehoz egy *egyedi azonosítót (ügyfél-azonosítót)* . Ha az ügyfél-azonosítót további paraméterekkel kombinálja, kérhet tokeneket az Azure AD-től.
 
-További információ az Azure AD konfigurálásáról és a Azure Maps jogkivonatok igényléséről: [a Azure Maps hitelesítésének kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+További információ az Azure AD konfigurálásáról és a Azure Maps jogkivonatok igényléséről: [a Azure Maps hitelesítésének kezelése](./how-to-manage-authentication.md).
 
-Az Azure AD-vel történő hitelesítéssel kapcsolatos általános információkért lásd: [Mi az a hitelesítés?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+Az Azure AD-vel történő hitelesítéssel kapcsolatos általános információkért lásd: [Mi az a hitelesítés?](../active-directory/develop/authentication-vs-authorization.md).
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Felügyelt identitások az Azure-erőforrásokhoz és a Azure Maps
 
-Az Azure- [erőforrások felügyelt identitásai](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) biztosítják az Azure-szolgáltatásokat egy automatikusan felügyelt alkalmazás-alapú rendszerbiztonsági tag számára, amely képes hitelesíteni az Azure ad-t. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával a felügyelt identitás rendszerbiztonsági tag jogosult a Azure Maps-szolgáltatások elérésére. Néhány példa a felügyelt identitásokra: Azure App Service, Azure Functions és Azure Virtual Machines. A felügyelt identitások listáját lásd: [felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+Az Azure- [erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) biztosítják az Azure-szolgáltatásokat egy automatikusan felügyelt alkalmazás-alapú rendszerbiztonsági tag számára, amely képes hitelesíteni az Azure ad-t. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával a felügyelt identitás rendszerbiztonsági tag jogosult a Azure Maps-szolgáltatások elérésére. Néhány példa a felügyelt identitásokra: Azure App Service, Azure Functions és Azure Virtual Machines. A felügyelt identitások listáját lásd: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ### <a name="configuring-application-azure-ad-authentication"></a>Az alkalmazás Azure AD-hitelesítésének konfigurálása
 
-Az alkalmazások az Azure ad-ben egy vagy több támogatott forgatókönyv használatával hitelesítve lesznek az Azure AD-Bérlővel. Az egyes Azure AD-alkalmazási forgatókönyvek az üzleti igények alapján eltérő követelményeket jelentenek. Egyes alkalmazások felhasználói bejelentkezést igényelhetnek, és más alkalmazásokhoz is szükség lehet az alkalmazás bejelentkezési élményére. További információ: [hitelesítési folyamatok és alkalmazási forgatókönyvek](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios).
+Az alkalmazások az Azure ad-ben egy vagy több támogatott forgatókönyv használatával hitelesítve lesznek az Azure AD-Bérlővel. Az egyes Azure AD-alkalmazási forgatókönyvek az üzleti igények alapján eltérő követelményeket jelentenek. Egyes alkalmazások felhasználói bejelentkezést igényelhetnek, és más alkalmazásokhoz is szükség lehet az alkalmazás bejelentkezési élményére. További információ: [hitelesítési folyamatok és alkalmazási forgatókönyvek](../active-directory/develop/authentication-flows-app-scenarios.md).
 
 Miután az alkalmazás hozzáférési jogkivonatot kap, az SDK és/vagy az alkalmazás egy HTTPS-kérést küld a következő, a szükséges HTTP-fejléceket tartalmazó, a többi REST API HTTP-fejléceken kívül:
 
@@ -76,15 +76,15 @@ x-ms-client-id: 30d7cc….9f55
 Authorization: Bearer eyJ0e….HNIVN
 ```
 
-Az ügyfél-azonosító megtekintésével kapcsolatos információkért lásd a [hitelesítési adatok megtekintése](https://aka.ms/amauthdetails)című témakört.
+Az ügyfél-azonosító megtekintésével kapcsolatos információkért lásd a [hitelesítési adatok megtekintése](./how-to-manage-authentication.md#view-authentication-details)című témakört.
 
 ## <a name="authorization-with-role-based-access-control"></a>Engedélyezés szerepköralapú hozzáférés-vezérléssel
 
-Azure Maps támogatja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) összes elsődleges típusának elérését, beleértve az egyes Azure ad-felhasználók, csoportok, alkalmazások, Azure-erőforrások és az Azure által felügyelt identitások használatát. A rendszerbiztonsági tag-típusok engedélyeket, más néven szerepkör-definíciókat kapnak. A szerepkör-definíciók engedélyeket biztosítanak a REST API műveletekhez. Egy vagy több Azure Maps-fiókhoz való hozzáférés alkalmazása hatókörként ismert. A rendszerbiztonsági tag, a szerepkör-definíció és a hatókör alkalmazásakor a rendszer létrehoz egy szerepkör-hozzárendelést. 
+Azure Maps támogatja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) összes elsődleges típusának elérését, beleértve az egyes Azure ad-felhasználók, csoportok, alkalmazások, Azure-erőforrások és az Azure által felügyelt identitások használatát. A rendszerbiztonsági tag-típusok engedélyeket, más néven szerepkör-definíciókat kapnak. A szerepkör-definíciók engedélyeket biztosítanak a REST API műveletekhez. Egy vagy több Azure Maps-fiókhoz való hozzáférés alkalmazása hatókörként ismert. A rendszerbiztonsági tag, a szerepkör-definíció és a hatókör alkalmazásakor a rendszer létrehoz egy szerepkör-hozzárendelést. 
 
 A következő részekben az Azure RBAC Azure Maps integrációjának fogalmait és összetevőit tárgyaljuk. A Azure Maps-fiók beállításának részeként egy Azure AD-címtár van társítva ahhoz az Azure-előfizetéshez, amelyhez a Azure Maps-fiók található. 
 
-Az Azure RBAC konfigurálásakor ki kell választania egy rendszerbiztonsági tag szerepkör-hozzárendelését. Ha szeretné megtudni, hogyan adhat hozzá szerepkör-hozzárendeléseket a Azure Portal, tekintse meg az [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)című témakört.
+Az Azure RBAC konfigurálásakor ki kell választania egy rendszerbiztonsági tag szerepkör-hozzárendelését. Ha szeretné megtudni, hogyan adhat hozzá szerepkör-hozzárendeléseket a Azure Portal, tekintse meg az [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása](../role-based-access-control/role-assignments-portal.md)című témakört.
 
 ### <a name="picking-a-role-definition"></a>Szerepkör-definíció kiválasztása
 
@@ -110,7 +110,7 @@ Az Azure RBAC beállításainak megtekintésével kapcsolatos információkért 
 
 Az alkalmazások biztonságának egyik aspektusa, hogy alkalmazza a legalacsonyabb jogosultsági szint elvét. Ez az alapelv azt feltételezi, hogy a rendszerbiztonsági tag csak a szükséges hozzáférésre jogosult, és nincs további hozzáférése. Az egyéni szerepkör-definíciók létrehozása olyan használati eseteket támogat, amelyek további részletességet igényelnek a hozzáférés-vezérléshez. Egyéni szerepkör-definíció létrehozásához kiválaszthatja azokat a konkrét adatműveleteket, amelyek belefoglalják vagy kizárják a definíciót.
 
-Ezt követően az egyéni szerepkör-definíció bármely rendszerbiztonsági tag szerepkör-hozzárendelésében használható. Az Azure egyéni szerepkör-definíciókkal kapcsolatos további tudnivalókért tekintse meg az [Azure egyéni szerepkörei](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)című témakört.
+Ezt követően az egyéni szerepkör-definíció bármely rendszerbiztonsági tag szerepkör-hozzárendelésében használható. Az Azure egyéni szerepkör-definíciókkal kapcsolatos további tudnivalókért tekintse meg az [Azure egyéni szerepkörei](../role-based-access-control/custom-roles.md)című témakört.
 
 Íme néhány példa arra, hogy az egyéni szerepkörök Hogyan javíthatják az alkalmazások biztonságát.
 
@@ -123,7 +123,7 @@ Ezt követően az egyéni szerepkör-definíció bármely rendszerbiztonsági ta
 
 ### <a name="understanding-scope"></a>A hatókör ismertetése
 
-Szerepkör-hozzárendelés létrehozásakor az az Azure-erőforrás-hierarchiában van definiálva. A hierarchia tetején egy [felügyeleti csoport](https://docs.microsoft.com/azure/governance/management-groups/overview) , a legalacsonyabb pedig egy Azure-erőforrás, például egy Azure Maps-fiók.
+Szerepkör-hozzárendelés létrehozásakor az az Azure-erőforrás-hierarchiában van definiálva. A hierarchia tetején egy [felügyeleti csoport](../governance/management-groups/overview.md) , a legalacsonyabb pedig egy Azure-erőforrás, például egy Azure Maps-fiók.
 Ha hozzárendel egy szerepkör-hozzárendelést egy erőforráscsoporthoz, a hozzáférés több Azure Maps fiókhoz vagy erőforráshoz is engedélyezhető a csoportban.
 
 > [!TIP]
@@ -133,12 +133,12 @@ Ha hozzárendel egy szerepkör-hozzárendelést egy erőforráscsoporthoz, a hoz
 
 További információ az Azure RBAC:
 > [!div class="nextstepaction"]
-> [Azure szerepkör-alapú hozzáférés](https://docs.microsoft.com/azure/role-based-access-control/overview)
+> [Azure szerepkör-alapú hozzáférés](../role-based-access-control/overview.md)
 
 Ha többet szeretne megtudni az alkalmazások Azure AD-vel és Azure Maps-vel való hitelesítéséről, tekintse meg a következőt:
 > [!div class="nextstepaction"]
-> [Hitelesítés kezelése Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)
+> [Hitelesítés kezelése Azure Maps](./how-to-manage-authentication.md)
 
 Ha többet szeretne megtudni a Azure Maps térképkezelés Azure AD-vel való hitelesítéséről, olvassa el a következőt:
 > [!div class="nextstepaction"]
-> [Használja a Azure Maps térképkezelés](https://aka.ms/amaadmc)
+> [Használja a Azure Maps térképkezelés](./how-to-use-map-control.md)

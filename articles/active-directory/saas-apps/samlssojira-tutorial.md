@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 1b947ad28283912e0ba75debd8f4471d693be888
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fe241a3fd74e1421f1bd3d39087fe776ee7b61d9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675534"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a JIRA by Solution GmbH által
 
@@ -99,7 +99,7 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
 
 4. Ha az **alapszintű SAML-konfiguráció** szakaszban szeretné konfigurálni az alkalmazást a **identitásszolgáltató** által kezdeményezett módban, hajtsa végre a következő lépéseket:
 
-    ![SAML egyszeri bejelentkezés a JIRA és az URL-címek egyszeri bejelentkezési adatai alapján](common/idp-intiated.png)
+    ![Képernyőkép, amely az "alapszintű k L konfiguráció" szakaszt jeleníti meg az "azonosító" és a "válasz U R L" szövegmezővel, valamint a "Mentés" gomb kiválasztásával.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -124,37 +124,37 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
 
 2. Vigye a kurzort a jobb oldalon található fogaskerék fölé, majd kattintson az **Alkalmazások kezelése** lehetőségre.
     
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon1.png)
+    ![Képernyőkép, amely egy nyilat mutat a fogaskerék ikonra, és a legördülő menüből kiválasztott "alkalmazások kezelése" lehetőség látható.](./media/samlssojira-tutorial/addon1.png)
 
 3. Ha a rendszer átirányítja a rendszergazdai hozzáférés lapra, adja meg a **jelszót** , és kattintson a **Confirm (megerősítés** ) gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon2.png)
+    ![A "rendszergazdai hozzáférés" oldalt megjelenítő képernyőkép.](./media/samlssojira-tutorial/addon2.png)
 
 4. A JIRA általában átirányítja Önt a Atlassian Marketplace-re. Ha nem, kattintson az **új alkalmazások keresése** elemre a bal oldali panelen. Keressen **SAML egyszeri bejelentkezést (SSO) a JIRA** , és kattintson a **telepítés** gombra az SAML beépülő modul telepítéséhez.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store.png)
+    ![Képernyőkép, amely a "Atlassian Marketplace for JIRA" oldalt jeleníti meg, és egy nyíl mutat a "telepítés" gombra az "S az M L Single Sign on (S O) JIRA, S A M L/S S O" alkalmazásban.](./media/samlssojira-tutorial/store.png)
 
 5. A beépülő modul telepítése megkezdődik. Ha elkészült, kattintson a **Bezárás** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store-2.png)
+    ![A "telepítés" párbeszédpanelt megjelenítő képernyőkép.](./media/samlssojira-tutorial/store-2.png)
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store-3.png)
+    ![Képernyőkép, amely a "telepített és kész" állapotot mutatja. a "Bezárás" gomb kiválasztásával rendelkező párbeszédpanel.](./media/samlssojira-tutorial/store-3.png)
 
 6. Ezután kattintson a **kezelés** elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store-4.png)
+    ![Képernyőkép, amely megjeleníti a "kezelés" gomb kiválasztásával megjelenő "S L-es egyszeri bejelentkezést (S O) JIRA, S L/S S O" alkalmazást.](./media/samlssojira-tutorial/store-4.png)
     
 8. Ezt követően kattintson a **configure (Konfigurálás** ) elemre az imént telepített beépülő modul konfigurálásához.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store-5.png)
+    ![Képernyőkép az "alkalmazások kezelése" oldalról, a "configure" gomb kiválasztásával a "S A JIRA" SingleSignOn.](./media/samlssojira-tutorial/store-5.png)
 
 9. Az **SAML SingleSignon beépülő modul konfigurálása** varázslóban kattintson az **új identitásszolgáltató hozzáadása** lehetőségre az Azure ad új identitás-szolgáltatóként való konfigurálásához.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon4.png) 
+    ![A képernyőképen az "üdvözlő" oldal jelenik meg, az "új I d P hozzáadása" gomb kiválasztásával.](./media/samlssojira-tutorial/addon4.png) 
 
 10. Az **SAML-azonosító kiválasztása** lapon hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon5a.png)
+    ![Képernyőfelvétel: "az S A M L Identity Provider kiválasztása" lap "I d P type" és "Name" szövegmező kiemelve, valamint a "tovább" gomb kiválasztásával.](./media/samlssojira-tutorial/addon5a.png)
  
     a. Állítsa be az **Azure ad** -t identitásszolgáltató típusként.
     
@@ -166,11 +166,11 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
     
 11. Az **identitás-szolgáltató konfigurációja** lapon kattintson a **tovább** gombra.
  
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon5b.png)
+    ![A "személyazonosság-szolgáltatói konfiguráció" oldalt megjelenítő képernyőkép.](./media/samlssojira-tutorial/addon5b.png)
 
 12. Az **SAML-identitásszolgáltató metaadatainak importálása** oldalon hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon5c.png)
+    ![Képernyőkép, amely az "M L I d P-Metaadatok importálása" lapot jeleníti meg a "metaadatok kiválasztása X M L fájl kijelölése" művelet kiválasztásával.](./media/samlssojira-tutorial/addon5c.png)
 
     a. Kattintson a **metaadatok XML-fájljának kiválasztása** gombra, és válassza ki a letöltött **összevonási METAADATOKAT tartalmazó XML-** fájlt.
 
@@ -182,19 +182,19 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
     
 13. A **felhasználói azonosító attribútum és átalakítás** lapon kattintson a **tovább** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon5d.png)
+    ![Képernyőfelvétel: "a felhasználó I D attribútuma és átalakítása" oldal, amelyen a "Next" gomb van kiválasztva.](./media/samlssojira-tutorial/addon5d.png)
     
 14. A beállítások mentéséhez kattintson a **felhasználó létrehozása és frissítése** lapon a **Mentés &** elemre.
     
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon6a.png)
+    ![A "felhasználó létrehozása és frissítése" oldalt megjelenítő képernyőkép, amely a "Mentés & Next" (következő) gombra kattint.](./media/samlssojira-tutorial/addon6a.png)
     
 15. A **beállítások tesztelése** lapon kattintson a **teszt kihagyása & a manuális konfigurálás** lehetőségre a felhasználói teszt azonnali kihagyása érdekében. Ez a következő szakaszban lesz elvégezve, és néhány beállítást igényel a Azure Portal.
     
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon6b.png)
+    ![Képernyőfelvétel: "a beállítások tesztelése" lapon a "teszt kihagyása & manuális beállítása" gomb látható.](./media/samlssojira-tutorial/addon6b.png)
     
 16. A figyelmeztetés kihagyásához kattintson **az OK** gombra.
     
-    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon6c.png)
+    ![Képernyőkép, amely az "O K" gombbal jelölt figyelmeztető párbeszédpanelt jeleníti meg.](./media/samlssojira-tutorial/addon6c.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -256,15 +256,15 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az S
 
 2. Vigye a kurzort a fogaskerék fölé, és válassza a **felhasználói kezelés** lehetőséget.
 
-   ![Alkalmazott hozzáadása](./media/samlssojira-tutorial/user1.png)
+   ![Képernyőfelvétel: a "fogaskerék" ikont ábrázoló nyíl a legördülő menüből kiválasztott "felhasználói kezelés".](./media/samlssojira-tutorial/user1.png)
 
 3. Ha a rendszer átirányítja a rendszergazdai hozzáférés lapra, írja be a **jelszót** , és kattintson a **Confirm (megerősítés** ) gombra.
 
-    ![Alkalmazott hozzáadása](./media/samlssojira-tutorial/user2.png) 
+    ![Képernyőfelvétel: a "jelszó" szövegmezőben a "rendszergazdai hozzáférés" oldal jelenik meg.](./media/samlssojira-tutorial/user2.png) 
 
 4. A **felhasználói kezelés** lap szakaszban kattintson a **felhasználó létrehozása** elemre.
 
-    ![Alkalmazott hozzáadása](./media/samlssojira-tutorial/user3-new.png) 
+    ![Képernyőkép, amely a "felhasználó-kezelés" fület jeleníti meg a "felhasználó létrehozása" gomb kiválasztásával.](./media/samlssojira-tutorial/user3-new.png) 
 
 5. Az **"új felhasználó létrehozása"** párbeszédpanelen hajtsa végre a következő lépéseket. A felhasználót pontosan ugyanúgy kell létrehoznia, mint az Azure AD-ben:
 

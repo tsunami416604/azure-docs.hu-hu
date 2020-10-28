@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: a67fad5d0980730eb73f4219f12eaf3a7b9ec7dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 903574a8c8696f10d9903a685bab8d12b3e6395f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310475"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891036"
 ---
 # <a name="add-a-popup-to-the-map"></a>Felugró ablak hozzáadása a térképhez
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá egy előugró pontot egy térképen.
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-A következő kód egy szimbólum réteget használva hozzáadja a térképhez egy pont funkciót, amely rendelkezik `name` `description` a és a tulajdonsággal. Az [előugró osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) egy példánya jön létre, de nem jelenik meg. Az Egérgombok az előugró ablak megnyitásának és bezárásának elindításához lesznek hozzáadva a szimbólum réteghez. Ha a jelölő szimbólum látható, az előugró ablak `position` tulajdonsága a jelölő pozíciójának megfelelően frissül, és a `content` beállítás egy olyan HTML-vel frissül, amely betakarja az  `name` `description` egérmutatót a pont funkció és tulajdonságai között. Ekkor megjelenik a felugró ablak a térképen a `open` függvény használatával.
+A következő kód egy szimbólum réteget használva hozzáadja a térképhez egy pont funkciót, amely rendelkezik `name` `description` a és a tulajdonsággal. Az [előugró osztály](/javascript/api/azure-maps-control/atlas.popup) egy példánya jön létre, de nem jelenik meg. Az Egérgombok az előugró ablak megnyitásának és bezárásának elindításához lesznek hozzáadva a szimbólum réteghez. Ha a jelölő szimbólum látható, az előugró ablak `position` tulajdonsága a jelölő pozíciójának megfelelően frissül, és a `content` beállítás egy olyan HTML-vel frissül, amely betakarja az  `name` `description` egérmutatót a pont funkció és tulajdonságai között. Ekkor megjelenik a felugró ablak a térképen a `open` függvény használatával.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -279,13 +279,13 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>előugró
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Felugró ablak](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Felugró ablak](/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
-> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+> [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 > [!div class="nextstepaction"]
-> [PopupTemplate](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popuptemplate)
+> [PopupTemplate](/javascript/api/azure-maps-control/atlas.popuptemplate)
 
 A következő nagyszerű cikkekből megtudhatja a kódok teljes mintáit:
 

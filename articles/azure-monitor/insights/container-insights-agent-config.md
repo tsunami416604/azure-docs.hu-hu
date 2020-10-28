@@ -3,12 +3,12 @@ title: Azure Monitor konfigurálása a containers Agent adatgyűjtéshez | Micro
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Monitor for containers Agent az stdout/stderr és a környezeti változók naplózási gyűjteményének vezérléséhez.
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 1644e541ee873a5bb058dd9bde2b82a907a400ff
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f21b841bc129012b684d2a1c59eb72989fe9e0e0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320409"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890496"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Ügynökadatok gyűjtésének konfigurálása a tárolókhoz készült Azure Monitorban
 
@@ -57,7 +57,7 @@ A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügyn�
 
 A következő lépések végrehajtásával konfigurálja és telepítheti a ConfigMap konfigurációs fájlját a fürtön.
 
-1. Töltse le a [sablon CONFIGMAP YAML fájlt](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-agentconfig.yaml) , és mentse azt tároló-Keresztesné Gréczi Ágnes-MS-agentconfig. YAML néven. 
+1. Töltse le a [sablon CONFIGMAP YAML fájlt](https://aka.ms/container-azm-ms-agentconfig) , és mentse azt tároló-Keresztesné Gréczi Ágnes-MS-agentconfig. YAML néven. 
 
    > [!NOTE]
    > Ez a lépés nem szükséges az Azure Red Hat OpenShift használata esetén, mert a ConfigMap-sablon már létezik a fürtön.
@@ -101,7 +101,7 @@ A konfigurációs módosítások alkalmazásával kapcsolatos hibák a felülviz
     config::error::Exception while parsing config map for log collection/env variable settings: \nparse error on value \"$\" ($end), using defaults, please check config map for errors
     ```
 
-- A Log Analytics munkaterület **KubeMonAgentEvents** táblájában. Az adatküldés óránként, a konfigurációs *hibák súlyossága miatt.* Ha nincsenek hibák, a táblázatban szereplő *bejegyzés súlyossági adatokkal*fog rendelkezni, ami nem jelent hibát. A **címkék** tulajdonság további információkat tartalmaz a pod és a Container azonosítóról, amelyen a hiba történt, valamint az első előfordulást, az utolsó előfordulást és a számlálást is az elmúlt órában.
+- A Log Analytics munkaterület **KubeMonAgentEvents** táblájában. Az adatküldés óránként, a konfigurációs *hibák súlyossága miatt.* Ha nincsenek hibák, a táblázatban szereplő *bejegyzés súlyossági adatokkal* fog rendelkezni, ami nem jelent hibát. A **címkék** tulajdonság további információkat tartalmaz a pod és a Container azonosítóról, amelyen a hiba történt, valamint az első előfordulást, az utolsó előfordulást és a számlálást is az elmúlt órában.
 
 - Az Azure Red Hat OpenShift ellenőrizze a omsagent naplóit, ha a **ContainerLog** táblában ellenőrzi, hogy a OpenShift naplózási gyűjteménye engedélyezve van-e.
 

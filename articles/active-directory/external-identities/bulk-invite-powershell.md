@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89e24d9ff76184c36aee5c14f15f9713b30f6f1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e047f11cc243ab1a36a8c61dd1b229d9e115115
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905910"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892485"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Oktatóanyag: az Azure AD B2B csoportmunka-felhasználók tömeges meghívása a PowerShell használatával
 
@@ -63,7 +63,7 @@ A kimenet alapján tegye a következők egyikét:
    Install-Module AzureADPreview
    ```
 
-Előfordulhat, hogy egy megjelenő üzenet tájékoztatja Önt, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg **Y**-t a modul telepítéséhez.
+Előfordulhat, hogy egy megjelenő üzenet tájékoztatja Önt, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg **Y** -t a modul telepítéséhez.
 
 ### <a name="get-test-email-accounts"></a>E-mail-tesztfiókok létrehozása
 
@@ -116,7 +116,7 @@ foreach ($email in $invitations)
 
 A szkript meghívót küld az Invitations.csv fájlban található e-mail-címeknek. Minden felhasználó számára a következőhöz hasonló kimenetnek kell megjelennie:
 
-![Felhasználói elfogadásra várakozást mutató PowerShell kimenet](media/tutorial-bulk-invite/B2BBulkImport.png)
+![Képernyőkép, amely megjeleníti a függőben lévő felhasználók elfogadását tartalmazó PowerShell-kimenetet.](media/tutorial-bulk-invite/B2BBulkImport.png)
 
 ## <a name="verify-users-exist-in-the-directory"></a>A felhasználók a könyvtárban való megjelenésének ellenőrzése
 
@@ -126,9 +126,9 @@ Annak ellenőrzésére, hogy a meghívott felhasználókat hozzáadták-e az Azu
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-A meghívott felhasználókat a következő formátumban kell megjelennie: *emailaddress*#EXT # \@ *tartomány*. Például *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
+A meghívott felhasználókat a következő formátumban kell megjelennie: *emailaddress* #EXT # \@ *tartomány* . Például *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com* , ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs rájuk szükség, törölheti a tesztfelhasználói fiókokat a címtárban. A felhasználói fiók törléséhez a következő parancsot futtassa:
 
@@ -138,7 +138,7 @@ Ha már nincs rájuk szükség, törölheti a tesztfelhasználói fiókokat a c�
 
 Például: `Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban tömeges meghívókat küldött szervezeten kívüli vendégfelhasználóknak. A következő szakaszban megtudhatja, hogyan működik a meghívások érvényesítési folyamata.
 

@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 858bf042593045059c988ae1b2796b063b33bb6e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 1a57660733b7257b224c38a55059f1bf069495a0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047573"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890242"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Mi a mérőszámok tanácsadója (előzetes verzió)? 
 
@@ -53,16 +53,14 @@ Elemezheti a többdimenziós metrikákban észlelt rendellenességeket, és [int
 A munkafolyamat egyszerű: az adatfeldolgozás után finomíthatja a rendellenességek észlelését, és létrehozhat konfigurációkat, hogy illeszkedjenek a forgatókönyvhöz.
 
 1. [Hozzon létre egy Azure-erőforrást](../cognitive-services-apis-create-account.md) a metrikák tanácsadójának. 
-2. Próbálja ki a bemutató webhelyet, és tekintse meg az előre konfigurált mintaadatok használatával kapcsolatos példát. 
-3. Hozza létre első figyelőjét a webes portál használatával.
+2. Hozza létre első figyelőjét a webes portál használatával.
     1. Az adatok előkészítése
     2. Az anomáliák finomhangolása
     3. Feliratkozás riasztásokra
     4. Diagnosztikai ismeretek megtekintése
-1. A példány testreszabásához használja a REST API.
+3. A példány testreszabásához használja a REST API.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Próbálja ki a [bemutató webhelyet](quickstarts/explore-demo.md).
 * Ismerkedjen meg a gyors útmutatóval: [Figyelje meg az első mérőszámot a weben](quickstarts/web-portal.md).
 * Ismerkedés a gyors üzembe helyezéssel: [a REST API-k segítségével testre szabhatja a megoldást](quickstarts/rest-api.md).

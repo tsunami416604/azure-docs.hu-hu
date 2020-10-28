@@ -317,16 +317,10 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Az Azure parancssori felület használatával
               href: iot-hub-configure-file-upload-cli.md
-        - name: Metrikák az Azure Monitorban
-          href: iot-hub-metrics.md
-        - name: Diagnosztikai naplók beállítása
-          href: iot-hub-monitor-resource-health.md
         - name: A központ védelmének biztosítása X.509-tanúsítvánnyal
           href: iot-hub-security-x509-get-started.md
         - name: IoT Hub frissítése
           href: iot-hub-upgrade.md
-        - name: Üzenet-nyomkövetés engedélyezése
-          href: iot-hub-distributed-tracing.md
         - name: IP-szűrés konfigurálása
           href: iot-hub-ip-filtering.md
         - name: Nyilvános hálózati hozzáférés kezelése
@@ -339,6 +333,16 @@
               href: iot-hub-automatic-device-management-cli.md
         - name: IoT-eszközök tömeges importálása és exportálása
           href: iot-hub-bulk-identity-mgmt.md
+    - name: Figyelés
+      items:
+        - name: Az IoT Hub monitorozása
+          href: monitor-iot-hub.md
+        - name: Adatreferencia monitorozása
+          href: monitor-iot-hub-reference.md
+        - name: Üzenet-nyomkövetés engedélyezése
+          href: iot-hub-distributed-tracing.md
+        - name: IoT Hub – szolgáltatás- és erőforrás-állapot
+          href: iot-hub-azure-service-health-integration.md
     - name: Valós eszközök használata
       items:
         - name: Online szimulátor használata

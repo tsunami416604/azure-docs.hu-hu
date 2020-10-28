@@ -14,9 +14,17 @@
           href: security-center-services.md
         - name: Azure PaaS-erőforrások funkciólefedettsége
           href: features-paas.md
-    - name: A Security Center újdonságai
-      displayName: release notes
-      href: release-notes.md
+    - name: Újdonságok
+      items:
+        - name: Kibocsátási megjegyzések
+          displayName: changelog
+          href: release-notes.md
+        - name: Fontos várható változások
+          displayName: 'release notes, changelog'
+          href: upcoming-changes.md
+        - name: Archivált kibocsátási megjegyzések (hat hónapnál régebbiek)
+          displayName: changelog
+          href: release-notes-archive.md
     - name: A Security Center alapjai
       items:
         - name: A Security Center áttekintő lapja
@@ -217,8 +225,13 @@
         - name: Az Information Protection-szabályzat testreszabása
           href: security-center-info-protection-policy.md
     - name: Az Azure Defender használata tárolóregisztrációs adatbázisokhoz
-      displayName: 'ACR, registry, images'
-      href: defender-for-container-registries-usage.md
+      items:
+        - name: Biztonsági rések meglétének ellenőrzése a regisztrációs adatbázis rendszerképei kapcsán
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md
+        - name: Meghatározott rendszerkép-sebezhetőségi eredmények letiltása
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
     - name: Riasztások és javaslatok exportálása
       items:
         - name: 'Exportálás SIEM-be, SOAR-ba vagy ITSM-be'
@@ -272,8 +285,6 @@
           href: faq-vms.md
         - name: Meglévő Azure Log Analytics-felhasználók
           href: faq-azure-monitor-logs.md
-    - name: A Security Center újdonságainak archívuma
-      href: release-notes-archive.md
     - name: Az Azure-ütemterv blogja
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Végpontvédelmi értékelés és javaslatok

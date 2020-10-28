@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 082695069a66efb3919be0667407ba73d963c572
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91285332"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889952"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -60,29 +60,29 @@ Azure Maps a következő szolgáltatásokból áll, amelyek földrajzi kontextus
 
 ### <a name="data-service"></a>Adatszolgáltatás
 
-Az adatleképezések esetében elengedhetetlen az adatkezelés. Az adatszolgáltatással a térbeli adatok és a képek összeállításával használható térinformatikai adatok tölthetők fel és tárolhatók.  Az ügyféladatok a Azure Maps szolgáltatáshoz közelebb hozása csökkenti a késést, növeli a termelékenységet, és új forgatókönyveket hoz létre az alkalmazásaiban. A szolgáltatással kapcsolatos részletekért tekintse meg az [adatszolgáltatás dokumentációját](https://docs.microsoft.com/rest/api/maps/data).
+Az adatleképezések esetében elengedhetetlen az adatkezelés. Az adatszolgáltatással a térbeli adatok és a képek összeállításával használható térinformatikai adatok tölthetők fel és tárolhatók.  Az ügyféladatok a Azure Maps szolgáltatáshoz közelebb hozása csökkenti a késést, növeli a termelékenységet, és új forgatókönyveket hoz létre az alkalmazásaiban. A szolgáltatással kapcsolatos részletekért tekintse meg az [adatszolgáltatás dokumentációját](/rest/api/maps/data).
 
 ### <a name="geolocation-service"></a>Földrajzi hely szolgáltatás
 
 A térinformatikai szolgáltatással megtekintheti az IP-címek beolvasott kétbetűs ország/régió kódját. Ez a szolgáltatás segít a felhasználói élmény fokozásában azáltal, hogy a földrajzi hely alapján testreszabott alkalmazási tartalmakat biztosít.
 
-További részletekért olvassa el a [térinformatikai szolgáltatás dokumentációját](https://docs.microsoft.com/rest/api/maps/geolocation).
+További részletekért olvassa el a [térinformatikai szolgáltatás dokumentációját](/rest/api/maps/geolocation).
 
 ### <a name="mobility-service"></a>Mobilitási szolgáltatás
 
 A Azure Maps mobilitási szolgáltatás javítja a nyilvános átviteli funkciókkal rendelkező alkalmazások fejlesztési idejét, például a tranzit útválasztást és a közeli nyilvános átvitelek keresését. A felhasználók részletes információkat kérhetnek a továbbítási leállásokról, a sorokról és az ütemtervekről. A mobilitási szolgáltatás azt is lehetővé teszi, hogy a felhasználók leállítsák a leállítási és a vonalas geometriákat, a leállási, a soros és a szolgáltatási területekre vonatkozó riasztásokat, valamint a valós idejű, nyilvános tranzit Emellett a mobilitási szolgáltatás útválasztási funkciókat biztosít a multimodális utazási tervezési lehetőségekkel. A multimodális utazás megtervezése magában foglalja a gyaloglást, a kerékpározást és a nyilvános továbbítási lehetőségeket, mindezt egyetlen útra. A felhasználók a részletes multimodális lépésenkénti útvonalakat is használhatják.
 
-A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [mobilitási szolgáltatás dokumentációját](https://docs.microsoft.com/rest/api/maps/mobility).
+A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [mobilitási szolgáltatás dokumentációját](/rest/api/maps/mobility).
 
 ### <a name="render-service"></a>Megjelenítő szolgáltatás
 
-A jelenleg előzetes verzióban elérhető [Render Service v2](https://docs.microsoft.com/rest/api/maps/renderv2) bevezeti a [Get Map csempe v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)új verzióját. A Get Map csempe v2 API mostantól lehetővé teszi az ügyfeleknek, hogy a Azure Maps Creator használatával létrehozott Azure Maps Road csempéket, időjárási csempéket vagy Térkép csempéket kérjenek. Javasoljuk, hogy használja az új Get Map csempe v2 API-t.  
+A jelenleg előzetes verzióban elérhető [Render Service v2](/rest/api/maps/renderv2) bevezeti a [Get Map csempe v2 API](/rest/api/maps/renderv2/getmaptilepreview)új verzióját. A Get Map csempe v2 API mostantól lehetővé teszi az ügyfeleknek, hogy a Azure Maps Creator használatával létrehozott Azure Maps Road csempéket, időjárási csempéket vagy Térkép csempéket kérjenek. Javasoljuk, hogy használja az új Get Map csempe v2 API-t.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Példa a Azure Maps web SDK-val létrehozott lakossági változások leképezésére":::
 
-További részletekért olvassa el a [Render Service v2 dokumentációját](https://docs.microsoft.com/rest/api/maps/renderv2).
+További részletekért olvassa el a [Render Service v2 dokumentációját](/rest/api/maps/renderv2).
 
-A GA-ban (általános rendelkezésre állás) található Render Service v1 szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Render Service v1 dokumentációját](https://docs.microsoft.com/rest/api/maps/render).  
+A GA-ban (általános rendelkezésre állás) található Render Service v1 szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Render Service v1 dokumentációját](/rest/api/maps/render).  
 
 ### <a name="route-service"></a>Útvonal szolgáltatás
 
@@ -96,7 +96,7 @@ A Route szolgáltatás speciális készlet-funkciókat kínál, például:
 * Az utazási idő és a távolságok egy készlet és a célhely között.
 * Azon útvonalak vagy távolságok megkeresése, amelyeket a felhasználók az idő-vagy üzemanyag-követelmények alapján utazhatnak.
 
-Az útválasztási képességekkel kapcsolatos részletekért olvassa el az [útvonal-szolgáltatás dokumentációját](https://docs.microsoft.com/rest/api/maps/route).
+Az útválasztási képességekkel kapcsolatos részletekért olvassa el az [útvonal-szolgáltatás dokumentációját](/rest/api/maps/route).
 
 ### <a name="search-service"></a>Keresési szolgáltatás
 
@@ -111,13 +111,13 @@ A Search szolgáltatás olyan speciális funkciókat is kínál, mint például 
 * Kötegelt keresési kérelmek csoportja.
 * Keressen az elektromos járműveket betöltő állomások és a hasznos helyek (POI-EK) számára a márkanév alapján.
 
-A keresési funkciókkal kapcsolatos további információkért olvassa el a [keresési szolgáltatás dokumentációját](https://docs.microsoft.com/rest/api/maps/search).
+A keresési funkciókkal kapcsolatos további információkért olvassa el a [keresési szolgáltatás dokumentációját](/rest/api/maps/search).
 
 ### <a name="spatial-service"></a>Térbeli szolgáltatás
 
 A térbeli szolgáltatás gyorsan elemzi a tartózkodási hely adatait, hogy az időben és a térben zajló eseményekről tájékoztassa az ügyfeleket. Lehetővé teszi a közel valós idejű elemzést és az események prediktív modellezését.
 
-A szolgáltatás lehetővé teszi, hogy az ügyfelek a közös térinformatikai matematikai számítások könyvtára révén fokozzák a helyük felderítését. Gyakori számítások például a legközelebbi pont, a nagy kör távolsága és a pufferek. Ha többet szeretne megtudni a szolgáltatásról és a különböző funkciókról, olvassa el a [térbeli szolgáltatás dokumentációját](https://docs.microsoft.com/rest/api/maps/spatial).
+A szolgáltatás lehetővé teszi, hogy az ügyfelek a közös térinformatikai matematikai számítások könyvtára révén fokozzák a helyük felderítését. Gyakori számítások például a legközelebbi pont, a nagy kör távolsága és a pufferek. Ha többet szeretne megtudni a szolgáltatásról és a különböző funkciókról, olvassa el a [térbeli szolgáltatás dokumentációját](/rest/api/maps/spatial).
 
 ### <a name="timezone-service"></a>Időzóna szolgáltatás
 
@@ -155,7 +155,7 @@ Az időzóna szolgáltatás lekérdezésére jellemző JSON-válasz az alábbi p
 }
 ```
 
-A szolgáltatással kapcsolatos részletekért olvassa el az [időzóna szolgáltatás dokumentációját](https://docs.microsoft.com/rest/api/maps/timezone).
+A szolgáltatással kapcsolatos részletekért olvassa el az [időzóna szolgáltatás dokumentációját](/rest/api/maps/timezone).
 
 ### <a name="traffic-service"></a>Forgalom szolgáltatás
 
@@ -166,15 +166,15 @@ A Traffic szolgáltatás olyan webszolgáltatások csomagja, amelyeket a fejlesz
 
 ![Példa a forgalmi adatokat tartalmazó térképre](media/about-azure-maps/intro_traffic.png)
 
-További információt a [Traffic Service dokumentációjában](https://docs.microsoft.com/rest/api/maps/traffic)talál.
+További információt a [Traffic Service dokumentációjában](/rest/api/maps/traffic)talál.
 
 ### <a name="weather-service"></a>Időjárás-szolgáltatás
 
 Az időjárási szolgáltatás olyan API-kat kínál, amelyeket a fejlesztők egy adott hely időjárási adatainak lekérésére használhatnak. Az információk olyan részleteket tartalmaznak, mint például a megfigyelési dátum és idő, az időjárási feltételek rövid leírása, az időjárási ikon, a csapadék jelzői, a hőmérséklet és a Szélsebesség. A rendszer további részleteket, például a RealFeel™ hőmérsékletét és az UV-indexet is visszaadja.
 
-A fejlesztők az [útvonal-API beolvasása](https://docs.microsoft.com/rest/api/maps/weather/getweatheralongroutepreview) lehetőséggel használhatják az időjárási információkat egy adott útvonalon. Emellett a szolgáltatás támogatja az olyan iránypontok időjárási értesítéseinek létrehozását, amelyeket az időjárási veszélyek, például az árvizek vagy a nagy esőzések érintenek.
+A fejlesztők az [útvonal-API beolvasása](/rest/api/maps/weather/getweatheralongroutepreview) lehetőséggel használhatják az időjárási információkat egy adott útvonalon. Emellett a szolgáltatás támogatja az olyan iránypontok időjárási értesítéseinek létrehozását, amelyeket az időjárási veszélyek, például az árvizek vagy a nagy esőzések érintenek.
 
-A [Get Map csempe v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) lehetővé teszi a múltbeli, aktuális és jövőbeli radar-és műholdas csempék kérését.
+A [Get Map csempe v2 API](/rest/api/maps/renderv2/getmaptilepreview) lehetővé teszi a múltbeli, aktuális és jövőbeli radar-és műholdas csempék kérését.
 
 ![Példa valós idejű időjárási radar csempéket tartalmazó térképre](media/about-azure-maps/intro_weather.png)
 
@@ -184,21 +184,21 @@ A Maps Creator Service olyan webszolgáltatások csomagja, amelyekkel a fejleszt
 
 A Maps Creator három alapvető szolgáltatást nyújt:
 
-* [Adatkészlet szolgáltatás](https://docs.microsoft.com/rest/api/maps/dataset). Az adatkészlet szolgáltatással hozzon létre egy adatkészletet egy konvertált rajz-csomag adatainak használatával. A csomagra vonatkozó követelményekkel kapcsolatos információkért lásd: rajzi csomag követelményei.
+* [Adatkészlet szolgáltatás](/rest/api/maps/dataset). Az adatkészlet szolgáltatással hozzon létre egy adatkészletet egy konvertált rajz-csomag adatainak használatával. A csomagra vonatkozó követelményekkel kapcsolatos információkért lásd: rajzi csomag követelményei.
 
-* [Átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/dataset). A konverziós szolgáltatás használatával a DWG-kialakítási fájlokat átalakíthatja a beltéri térképek számára.
+* [Átalakítási szolgáltatás](/rest/api/maps/dataset). A konverziós szolgáltatás használatával a DWG-kialakítási fájlokat átalakíthatja a beltéri térképek számára.
 
-* [Tileset szolgáltatás](https://docs.microsoft.com/rest/api/maps/tileset). Az tileset szolgáltatás használatával hozzon létre egy adatkészletet vektoros ábrázolással. Az alkalmazások használhatnak egy tileset az adatkészlet vizualizációs csempe alapú nézetének megjelenítéséhez.
+* [Tileset szolgáltatás](/rest/api/maps/tileset). Az tileset szolgáltatás használatával hozzon létre egy adatkészletet vektoros ábrázolással. Az alkalmazások használhatnak egy tileset az adatkészlet vizualizációs csempe alapú nézetének megjelenítéséhez.
 
-* [Szolgáltatás állapota szolgáltatás](https://docs.microsoft.com/rest/api/maps/featurestate). A szolgáltatás állapota szolgáltatással támogatja a dinamikus leképezések stílusát. A dinamikus Térkép stílusa lehetővé teszi, hogy az alkalmazások valós idejű eseményeket tükrözzék a IoT rendszerek által biztosított tárhelyeken.
+* [Szolgáltatás állapota szolgáltatás](/rest/api/maps/featurestate). A szolgáltatás állapota szolgáltatással támogatja a dinamikus leképezések stílusát. A dinamikus Térkép stílusa lehetővé teszi, hogy az alkalmazások valós idejű eseményeket tükrözzék a IoT rendszerek által biztosított tárhelyeken.
 
-* [WFS szolgáltatás](https://docs.microsoft.com/rest/api/maps/featurestate). A WFS szolgáltatás segítségével lekérdezheti a beltéri Térkép adatait. A WFS szolgáltatás a [nyílt TÉRINFORMATIKAI konzorcium API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) -szabványokat követi egyetlen adatkészlet lekérdezéséhez.
+* [WFS szolgáltatás](/rest/api/maps/featurestate). A WFS szolgáltatás segítségével lekérdezheti a beltéri Térkép adatait. A WFS szolgáltatás a [nyílt TÉRINFORMATIKAI konzorcium API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) -szabványokat követi egyetlen adatkészlet lekérdezéséhez.
 
 ## <a name="programming-model"></a>Programozási modell
 
-A Azure Maps a mobilitáshoz készült, és több platformon futó alkalmazások fejlesztéséhez is segítséget nyújt. Olyan programozási modellt használ, amely az agnosztikus nyelvét használja, és támogatja a JSON-kimenetet a [REST API](https://docs.microsoft.com/rest/api/maps/)-kon keresztül.
+A Azure Maps a mobilitáshoz készült, és több platformon futó alkalmazások fejlesztéséhez is segítséget nyújt. Olyan programozási modellt használ, amely az agnosztikus nyelvét használja, és támogatja a JSON-kimenetet a [REST API](/rest/api/maps/)-kon keresztül.
 
-A Azure Maps egy egyszerű programozási modellel is kényelmes [JavaScript-leképezési vezérlőt](https://docs.microsoft.com/javascript/api/azure-maps-control) biztosít. A fejlesztés a webes és a mobil alkalmazások esetében is gyorsan és egyszerűen elvégezhető.
+A Azure Maps egy egyszerű programozási modellel is kényelmes [JavaScript-leképezési vezérlőt](/javascript/api/azure-maps-control) biztosít. A fejlesztés a webes és a mobil alkalmazások esetében is gyorsan és egyszerűen elvégezhető.
 
 ## <a name="power-bi-visual"></a>Power BI-vizualizáció
 
@@ -227,7 +227,7 @@ A Azure Maps szolgáltatások jelenleg csak a következő országokban/régiókb
 
 Ellenőrizze, hogy az aktuális IP-cím helye támogatott országban/régióban található-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a Azure Mapst bemutató minta alkalmazást:
 

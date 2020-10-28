@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ad5c2b973a74bc9fa0f6ca2f59f92a26b666e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714970"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891461"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Gyakori kérdések az Azure-beli automanage virtuális gépekről
 
 Ez a cikk a [virtuális gépek Azure-beli automanage szolgáltatásával](automanage-virtual-machines.md)kapcsolatos leggyakoribb kérdésekre ad választ.
 
-Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az [MSDN webhelyen](https://azure.microsoft.com/support/forums/)található Azure-fórumokra, és stack overflow. Felteheti a problémát ezekben a fórumokon, vagy közzéteheti a [ @AzureSupport Twitteren](https://twitter.com/AzureSupport). Azure-támogatási kérést is küldhet. Ha támogatási kérést szeretne küldeni, az [Azure-támogatás lapon](https://azure.microsoft.com/support/options/)válassza a **támogatás**lekérése lehetőséget.
+Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az [MSDN webhelyen](https://azure.microsoft.com/support/forums/)található Azure-fórumokra, és stack overflow. Felteheti a problémát ezekben a fórumokon, vagy közzéteheti a [ @AzureSupport Twitteren](https://twitter.com/AzureSupport). Azure-támogatási kérést is küldhet. Ha támogatási kérést szeretne küldeni, az [Azure-támogatás lapon](https://azure.microsoft.com/support/options/)válassza a **támogatás** lekérése lehetőséget.
 
 
 ## <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
@@ -32,7 +32,6 @@ Az alábbi előfeltételek az Azure automanage szolgáltatás engedélyezéséne
 - A virtuális gépeknek támogatott régióban kell lenniük
 - A felhasználónak megfelelő engedélyekkel kell rendelkeznie
 - Csak a nem méretezési csoportba tartozó virtuális gépek
-- A virtuális gépek nem csatolhatnak egy másik előfizetésben lévő log Analytics-munkaterülethez
 - Az automanage nem támogatja a homokozó-előfizetéseket.
 
 **Milyen Azure RBAC engedélyre van szükség az automanage engedélyezéséhez?**
@@ -106,7 +105,7 @@ Nem, az automanage nem konfigurálja újra. Elkezdjük figyelni a szolgáltatás
 
 **Miért van a virtuális gép hibás állapota az automanage portálon?**
 
-Ha az állapotot *nem sikerült*megtekinteni, a virtuális gép által használt erőforráscsoport használatával elháríthatja a telepítést. Lépjen az **erőforráscsoportok**elemre, válassza ki az erőforráscsoportot, kattintson a **központi telepítések** elemre, és tekintse meg a *hibás* állapotot a hiba részleteivel együtt.
+Ha az állapotot *nem sikerült* megtekinteni, a virtuális gép által használt erőforráscsoport használatával elháríthatja a telepítést. Lépjen az **erőforráscsoportok** elemre, válassza ki az erőforráscsoportot, kattintson a **központi telepítések** elemre, és tekintse meg a *hibás* állapotot a hiba részleteivel együtt.
 
 **Hogyan szerezhetem be az automanage hibaelhárítási támogatását?**
 

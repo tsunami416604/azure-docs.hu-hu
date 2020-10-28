@@ -36,9 +36,11 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Core
+        - name: ASP.NET-mag
           href: quickstart-v2-aspnet-core-webapp.md
-        - name: NodeJS
+        - name: Node.js – MSAL | Előzetes verzió
+          href: quickstart-v2-nodejs-webapp-msal.md
+        - name: Node.js – Passport.js
           href: quickstart-v2-nodejs-webapp.md
           displayName: OIDC
         - name: Java

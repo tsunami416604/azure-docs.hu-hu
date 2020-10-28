@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d94a681fa987a4b23dbcda744c2f8516da4437a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87128556"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891665"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Térkép réteg hozzáadása a Nyílt térinformatikai konzorciumból (OGC)
 
@@ -78,15 +78,15 @@ Az alábbi eszköz a webes térképi szolgáltatásokból (WMS) és a web Map cs
 
 A Térkép beállításait a proxy szolgáltatás használatára is megadhatja. A proxy szolgáltatás lehetővé teszi az olyan tartományokban tárolt erőforrások betöltését, amelyeken nincs engedélyezve a CORS.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [OgcMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
+> [OgcMapLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
 
 > [!div class="nextstepaction"]
-> [OgcMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
+> [OgcMapLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
 
 Tekintse meg az alábbi cikkeket, amelyek tartalmazzák a térképekhez felvehető mintakód-mintákat:
 

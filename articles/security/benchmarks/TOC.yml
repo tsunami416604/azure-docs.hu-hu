@@ -161,6 +161,8 @@
       href: ../../service-bus-messaging/security-baseline.md
     - name: A Service Fabric alapkonfigurációja
       href: ../../service-fabric/security-baseline.md
+    - name: A Site Recovery alapkonfigurációja
+      href: ../../site-recovery/security-baseline.md
     - name: A Stream Analytics alapkonfigurációja
       href: ../../stream-analytics/security-baseline.md
     - name: A Synapse Analytics biztonsági alapkonfigurációja

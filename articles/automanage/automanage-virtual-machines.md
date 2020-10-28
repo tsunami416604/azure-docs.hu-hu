@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 3f6786ad8b7a9a635770be378e3efd0716be2428
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519656"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891502"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
 
@@ -44,11 +44,13 @@ Több előfeltételt kell figyelembe vennie, mielőtt az Azure-beli automanage-t
 - Csak Windows Server-alapú virtuális gépek
 - A virtuális gépeknek futniuk kell
 - A virtuális gépeknek támogatott régióban kell lenniük
-- A felhasználónak megfelelő engedélyekkel kell rendelkeznie
-- A virtuális gépek nem csatolhatnak egy másik előfizetésben lévő log Analytics-munkaterülethez
+- A felhasználónak megfelelő engedélyekkel kell rendelkeznie (lásd az alábbi bekezdést)
 - Az automanage nem támogatja a homokozó-előfizetéseket.
 
-Rendelkeznie kell a **közreműködő** szerepkörrel, hogy engedélyezze az automanage-t egy meglévő automanage-fiók használatával. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
+A virtuális gépeket tartalmazó erőforráscsoporthoz **közreműködő** szerepkörrel kell rendelkeznie, amely lehetővé teszi, hogy a virtuális gépeken egy meglévő automanage fiók használatával engedélyezze az automanage szolgáltatást. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, az előfizetéséhez a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt. 
+
+> [!NOTE]
+> Ha egy másik előfizetésben lévő munkaterülethez csatlakozó virtuális gépen szeretné használni az automanage-t, az egyes előfizetésekben a fent ismertetett engedélyekkel kell rendelkeznie.
 
 Azt is fontos megjegyezni, hogy az automatikus felügyelet csak a következő régiókban található Windows rendszerű virtuális gépeket támogatja: Nyugat-Európa, az USA keleti régiója, USA 2. nyugati régiója, Közép-Kanada, USA nyugati középső régiója.
 
@@ -67,7 +69,7 @@ Az összes ilyen szolgáltatás esetében automatikusan bevezetést, automatikus
 
 A Azure Portalban engedélyezheti a meglévő virtuális gépeken a felügyeletet, vagy új virtuális gép létrehozásakor. A folyamat tömör lépéseihez tekintse meg a [virtuális gépekkel kapcsolatos](quick-create-virtual-machines-portal.md)gyors útmutató című témakört.
 
-Ha első alkalommal engedélyezi a virtuális gép autofelügyeletét, a Azure Portal kereshet az **automanage – Azure virtuális gépek ajánlott eljárásaiban**. Kattintson a **meglévő virtuális gép engedélyezése**lehetőségre, válassza ki a bevezetni kívánt virtuális gépeket, kattintson a **kiválasztás**, majd az **Engedélyezés**elemre, és készen áll.
+Ha első alkalommal engedélyezi a virtuális gép autofelügyeletét, a Azure Portal kereshet az **automanage – Azure virtuális gépek ajánlott eljárásaiban** . Kattintson a **meglévő virtuális gép engedélyezése** lehetőségre, válassza ki a bevezetni kívánt virtuális gépeket, kattintson a **kiválasztás** , majd az **Engedélyezés** elemre, és készen áll.
 
 Előfordulhat, hogy a virtuális géppel való kommunikációra csak akkor van szükség, ha a virtuális gépet szervizelni próbáltuk, de ezt a szolgáltatást nem sikerült kijavítani. Ha sikeresen szervizeljük a virtuális gépet, akkor még a riasztás nélkül visszatesszük a megfelelőséget.
 
@@ -105,7 +107,7 @@ Az automatikus felügyelet fiók a biztonsági környezet vagy az az identitás,
 Ha a virtuális gépeken engedélyezi az automanage funkciót, az Azure Portal-élményben az Azure-beli **virtuális gépre vonatkozó ajánlott eljárások** panel speciális legördülő menüje lehetővé teszi az automanage-fiók hozzárendelését vagy manuális létrehozását.
 
 > [!NOTE]
-> Rendelkeznie kell a **közreműködő** szerepkörrel, hogy engedélyezze az automanage-t egy meglévő automanage-fiók használatával. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
+> Rendelkeznie kell a **közreműködő** szerepkörrel a virtuális gépeket tartalmazó erőforráscsoporthoz, amely lehetővé teszi a virtuális gépeken az automanage-t egy meglévő automanage-fiók használatával. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, az előfizetéséhez a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
 
 
 ## <a name="status-of-vms"></a>Virtuális gépek állapota
@@ -121,7 +123,7 @@ Az **állapot** oszlopban a következő állapotok jelenhetnek meg:
 - *Konfigurálva* – a virtuális gép konfigurálva van, és nem észlelhető eltolódás
 - *Sikertelen* – a virtuális gép átsodródott, ezért nem sikerült elhárítani
 
-Ha az **állapotot** *nem sikerült*megtekinteni, a virtuális gép által használt erőforráscsoport használatával elháríthatja a telepítést. Lépjen az **erőforráscsoportok**elemre, válassza ki az erőforráscsoportot, kattintson a **központi telepítések** elemre, és tekintse meg a *hibás* állapotot a hiba részleteivel együtt.
+Ha az **állapotot** *nem sikerült* megtekinteni, a virtuális gép által használt erőforráscsoport használatával elháríthatja a telepítést. Lépjen az **erőforráscsoportok** elemre, válassza ki az erőforráscsoportot, kattintson a **központi telepítések** elemre, és tekintse meg a *hibás* állapotot a hiba részleteivel együtt.
 
 
 ## <a name="disabling-automanage-for-vms"></a>Virtuális gépek autokezelésének letiltása
@@ -132,7 +134,7 @@ Ehhez a Azure Portal nyissa meg az automatikus **kezelés – Azure virtuális g
 
 :::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Intelligensen integrált szolgáltatások.":::
 
-A **Letiltás**előtt olvassa el figyelmesen az üzenetküldést az eredményül kapott előugró ablakban.
+A **Letiltás** előtt olvassa el figyelmesen az üzenetküldést az eredményül kapott előugró ablakban.
 
 > [!NOTE]
 > A virtuális gépeken az automanagement letiltása a következő viselkedést eredményezi:

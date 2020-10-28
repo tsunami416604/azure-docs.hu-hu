@@ -1,21 +1,21 @@
 ---
 title: Portok megnyitása virtuális géphez Azure PowerShell használatával
-description: Ismerje meg, hogyan nyithat meg egy portot/hozzon létre egy végpontot a Windows rendszerű virtuális géphez az Azure Resource Manager-alapú üzembe helyezési móddal és Azure PowerShell
+description: Megtudhatja, hogyan nyithat meg egy portot/hozzon létre egy végpontot a virtuális géphez Azure PowerShell használatával
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a417c271c16aabe91836f425f26c0a55e7103557
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a432ce978f6fa9e3a472cb15e9ef9241bc41004d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973937"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891754"
 ---
-# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Portok és végpontok megnyitása az Azure-beli virtuális gépeken a PowerShell használatával
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>Portok és végpontok megnyitása virtuális géphez a PowerShell használatával
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Gyors parancsok
@@ -27,9 +27,9 @@ Jelentkezzen be az Azure-fiókjába:
 Connect-AzAccount
 ```
 
-Az alábbi példákban cserélje le a paraméterek nevét a saját értékeire. Példa a paraméterek neveire: *myResourceGroup*, *myNetworkSecurityGroup*és *myVnet*.
+Az alábbi példákban cserélje le a paraméterek nevét a saját értékeire. Példa a paraméterek neveire: *myResourceGroup* , *myNetworkSecurityGroup* és *myVnet* .
 
-Hozzon létre egy szabályt a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). A következő példa egy *myNetworkSecurityGroupRule* nevű szabályt hoz létre a *80*-es porton a *TCP* -forgalom engedélyezéséhez:
+Hozzon létre egy szabályt a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). A következő példa egy *myNetworkSecurityGroupRule* nevű szabályt hoz létre a *80* -es porton a *TCP* -forgalom engedélyezéséhez:
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -45,7 +45,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Ezután hozza létre a hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) , és rendelje hozzá az IMÉNT létrehozott http-szabályt az alábbiak szerint. A következő példa egy *myNetworkSecurityGroup*nevű hálózati biztonsági csoportot hoz létre:
+Ezután hozza létre a hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) , és rendelje hozzá az IMÉNT létrehozott http-szabályt az alábbiak szerint. A következő példa egy *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot hoz létre:
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88055462"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890275"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Hozza létre első tartós funkcióját a C-ben\#
 
@@ -21,7 +21,7 @@ A *Durable Functions* [Azure functions](../functions-overview.md) , amely lehet�
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code-ot a "Hello World" tartós funkciójának helyi létrehozására és tesztelésére.  Ez a függvény összehangolja és láncokba rendezi a más függvények hívásait. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a VS Code [Azure functions bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)részeként érhetők el.
 
-![Tartós funkció futtatása az Azure-ban](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
+![Képernyőfelvétel: a Visual Studio Code ablak tartós funkcióval rendelkezik.](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,7 +49,7 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
     ![Függvényprojekt létrehozása](media/durable-functions-create-first-csharp/functions-vscode-create-project.png)
 
-1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás**lehetőséget.
+1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás** lehetőséget.
 
 1. Az utasításokat követve adja meg a következő információkat:
 
@@ -76,7 +76,7 @@ A következő lépésekkel hozhatja létre a projektben a tartós függvény kó
     | Adja meg a függvény nevét | HelloOrchestration | Azon osztály neve, amelyben a függvények jönnek létre |
     | Névtér megadása | Vállalati. függvény | A generált osztály névtere |
 
-1. Ha a VS Code megkéri a Storage-fiók kiválasztására, válassza a **Storage-fiók kiválasztása**lehetőséget. Az utasításokat követve adja meg a következő információkat egy új Storage-fiók létrehozásához az Azure-ban.
+1. Ha a VS Code megkéri a Storage-fiók kiválasztására, válassza a **Storage-fiók kiválasztása** lehetőséget. Az utasításokat követve adja meg a következő információkat egy új Storage-fiók létrehozásához az Azure-ban.
 
     | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
@@ -152,7 +152,7 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 1. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code használatával C# tartós Function-alkalmazást hozhat létre és tehet közzé.
 
@@ -165,7 +165,7 @@ A Visual Studio Code használatával C# tartós Function-alkalmazást hozhat lé
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és tesztelheti a "Hello World" tartós funkciót a Visual Studio 2019 használatával.  Ez a függvény összehangolja és láncokba rendezi a más függvények hívásait. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök az Azure-fejlesztési számítási feladatok részeként érhetők el a Visual Studio 2019-ben.
 
-![Tartós funkció futtatása az Azure-ban](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![A képernyőfelvételen a Visual Studio 2019-ablaka tartós funkcióval jelenik meg.](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -181,15 +181,15 @@ Az oktatóanyag elvégzéséhez:
 
 A Azure Functions sablon létrehoz egy projektet, amely közzétehető egy Azure-beli Function alkalmazásban. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében.
 
-1. A Visual Studióban válassza **New**  >  a **fájl** menü új**projekt** elemét.
+1. A Visual Studióban válassza **New**  >  a **fájl** menü új **projekt** elemét.
 
-1. Az **új projekt létrehozása** párbeszédpanelen keresse meg a elemet, `functions` válassza ki a **Azure functions** sablont, és kattintson a **tovább**gombra. 
+1. Az **új projekt létrehozása** párbeszédpanelen keresse meg a elemet, `functions` válassza ki a **Azure functions** sablont, és kattintson a **tovább** gombra. 
 
     ![Új projekt párbeszédpanel a Visual Studióban egy függvény létrehozásához](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-1. Írjon be egy **projekt nevét** a projekthez, majd kattintson **az OK gombra**. A projekt nevének érvényesnek kell lennie C# névtérként, ezért ne használjon aláhúzást, kötőjelet vagy más nem alfanumerikus karaktereket.
+1. Írjon be egy **projekt nevét** a projekthez, majd kattintson **az OK gombra** . A projekt nevének érvényesnek kell lennie C# névtérként, ezért ne használjon aláhúzást, kötőjelet vagy más nem alfanumerikus karaktereket.
 
-1. Az **új Azure functions alkalmazás létrehozása**területen használja a képet követő táblázatban megadott beállításokat.
+1. Az **új Azure functions alkalmazás létrehozása** területen használja a képet követő táblázatban megadott beállításokat.
 
     ![Új Azure Functions alkalmazás párbeszédpanel létrehozása a Visual Studióban](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
@@ -205,11 +205,11 @@ A Azure Functions sablon létrehoz egy projektet, amely közzétehető egy Azure
 
 A következő lépésekkel hozhatja létre a projektben a tartós függvény kódját.
 
-1. Kattintson a jobb gombbal a projektre a Visual Studióban, majd válassza az **Add**  >  **új Azure-függvény**hozzáadása lehetőséget.
+1. Kattintson a jobb gombbal a projektre a Visual Studióban, majd válassza az **Add**  >  **új Azure-függvény** hozzáadása lehetőséget.
 
     ![Új függvény hozzáadása](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 
-1. Ellenőrizze, hogy az **Azure Function** be van-e jelölve a Hozzáadás menüben, írja be a C#-fájl nevét, majd válassza a **Hozzáadás**lehetőséget.
+1. Ellenőrizze, hogy az **Azure Function** be van-e jelölve a Hozzáadás menüben, írja be a C#-fájl nevét, majd válassza a **Hozzáadás** lehetőséget.
 
 1. Válassza ki a **Durable functions a hangszerelési** sablont, majd kattintson **az OK gombra** .
 
@@ -237,7 +237,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
 3. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába, és hajtsa végre a kérelmet. Az alábbiakban látható a böngészőben a helyi GET kérelemre a függvény által visszaadott válasz:
 
-    ![A függvény által visszaadott localhost válasz a böngészőben](./media/durable-functions-create-first-csharp/functions-vs-status.png)
+    ![A képernyőképen egy böngészőablak jelenik meg, amelyen a statusQueryGetUri meghívták.](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 
     A válasz a HTTP-függvény kezdeti eredménye, amely közli, hogy a tartós összehangolás sikeresen elindult.  Még nem az előkészítés végeredménye.  A válasz több hasznos URL-címet is tartalmaz.  Most pedig lekérdezjük a folyamat állapotát.
 
@@ -261,7 +261,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
     }
     ```
 
-5. A hibakeresés leállításához nyomja le a **SHIFT + F5**billentyűkombinációt.
+5. A hibakeresés leállításához nyomja le a **SHIFT + F5** billentyűkombinációt.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 
@@ -281,7 +281,7 @@ A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az A
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio használatával C# tartós Function-alkalmazást hozhat létre és tesz közzé.
 

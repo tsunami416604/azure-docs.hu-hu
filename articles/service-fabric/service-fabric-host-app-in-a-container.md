@@ -3,18 +3,18 @@ title: .NET-alkalmazás üzembe helyezése tárolóban az Azure Service Fabric
 description: Megtudhatja, hogyan helyezhet tárolóba egy meglévő .NET-alkalmazást a Visual Studio segítségével, illetve hogyan végezhet helyi hibakeresést a Service Fabric szolgáltatásbeli tárolókon. A tárolóba helyezett alkalmazást a rendszer Azure-tárolóregisztrációs adatbázisba küldi, és üzembe helyezi egy Service Fabric-fürtben. Az Azure-ban való üzembe helyezéskor az alkalmazás Azure SQL-adatbázist használ adatmegőrzéshez.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: c2e44db9bc813b346493b4d23b9f48b279e245b3
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b7c841c1185cb2e289a230eb1078a13d4ccd48f8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122063"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889935"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Oktatóanyag: Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre
 
 Ez az oktatóanyag bemutatja, hogyan helyezhet tárolóba egy meglévő ASP.NET-alkalmazást és csomagot Service Fabric-alkalmazásként.  Futtassa a tárolókat helyileg egy Service Fabric fejlesztési fürtön, és telepítse az alkalmazást az Azure-ba.  Az alkalmazás [Azure SQL-adatbázisban](../azure-sql/database/sql-database-paas-overview.md) őrzi meg az adatokat.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -37,7 +37,7 @@ Az oktatóanyag a következőket ismerteti:
 
 1. Töltse le a [Fabrikam Fiber CallCenter][link-fabrikam-github] mintaalkalmazást.  Kattintson a **download archive** (archívum letöltése) hivatkozásra.  A *fabrikam.zip* fájl *sourceCode* mappájából bontsa ki a *sourceCode.zip* fájlt, majd bontsa ki abból a *VS2015* könyvtárat a számítógépére.
 
-2. Győződjön meg róla, hogy a Fabrikam Fiber CallCenter alkalmazás hiba nélkül buildelhető és futtatható.  Indítsa el a Visual Studiót **rendszergazdaként**, és nyissa meg a [FabrikamFiber.CallCenter.sln][link-fabrikam-github] fájlt.  Nyomja le az F5 billentyűt az alkalmazás debugolásához és futtatásához.
+2. Győződjön meg róla, hogy a Fabrikam Fiber CallCenter alkalmazás hiba nélkül buildelhető és futtatható.  Indítsa el a Visual Studiót **rendszergazdaként** , és nyissa meg a [FabrikamFiber.CallCenter.sln][link-fabrikam-github] fájlt.  Nyomja le az F5 billentyűt az alkalmazás debugolásához és futtatásához.
 
    ![A helyi gazdagépen futó Fabrikam Fiber CallCenter alkalmazás kezdőlapjának képernyőképe. Az oldalon megjelenik egy irányítópult, amelyen a támogatási hívások listája látható.][fabrikam-web-page]
 
@@ -151,13 +151,13 @@ A következőket teheti:
 
 Ez az oktatóanyag a fürt Visual Studióból való létrehozását ismerteti, mely ideális megoldás tesztelési forgatókönyvekhez. Ha más módon hoz létre fürtöt, vagy ha már rendelkezik fürttel, akkor átmásolhatja a kapcsolati végpontját, vagy kiválaszthatja azt az előfizetéséből.
 
-Mielőtt elkezdené, nyissa meg a FabrikamFiber. Web->PackageRoot->ServiceManifest.xml a Megoldáskezelőban. Jegyezze fel a **végpontban**felsorolt webes kezelőfelület portját.
+Mielőtt elkezdené, nyissa meg a FabrikamFiber. Web->PackageRoot->ServiceManifest.xml a Megoldáskezelőban. Jegyezze fel a **végpontban** felsorolt webes kezelőfelület portját.
 
 A fürt létrehozásakor:
 
 1. A Megoldáskezelőben kattintson a jobb gombbal a **FabrikamFiber.CallCenterApplication** alkalmazásprojektre, és válassza a **Közzététel** lehetőséget.
 2. Jelentkezzen be az Azure-fiókjával, hogy hozzáférjen az előfizetéséhez vagy előfizetéseihez.
-3. A **kapcsolatok végpontjának**legördülő menüben válassza az **új fürt létrehozása...** lehetőséget.
+3. A **kapcsolatok végpontjának** legördülő menüben válassza az **új fürt létrehozása...** lehetőséget.
 4. A **Fürt létrehozása** párbeszédpanelen módosítsa az alábbi beállításokat:
 
     a. Adja meg a fürtje nevét a **Fürt neve** mezőben, valamint a használni kívánt előfizetést és helyet. Jegyezze fel a fürterőforrás-csoport nevét.
@@ -169,7 +169,7 @@ A fürt létrehozásakor:
     d. Válassza a **virtuális gép részletei** lapot. Itt adhatja meg a fürtöt alkotó Virtual Machineshoz (VM) használni kívánt jelszót. A felhasználónév és jelszó használatával távolról csatlakozhat a virtuális gépekhez. A virtuális gép méretét is ki kell választania és ha szükséges, módosíthatja a virtuális gép rendszerképét is.
 
     > [!IMPORTANT]
-    > Válasszon olyan SKU-t, amely támogatja a futó tárolókat. A fürtcsomópontjain található Windows Server operációs rendszernek kompatibilisnek kell lennie a tárolóján futó Windows Server operációs rendszerével. További tudnivalókat a [Windows Server tároló operációs rendszerének és a gazdagép operációs rendszerének kompatibilitását ismertető cikket](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). Alapértelmezés szerint ez az oktatóanyag létrehoz egy Docker-rendszerképet, amely a Windows Server 2016 LTSC-re épül. Az erre a képre épülő tárolók a tárolókkal rendelkező Windows Server 2016 Datacenterrel létrehozott fürtökön fognak futni. Ha azonban létrehoz egy fürtöt, vagy már egy létező a tárolókkal rendelkező Windows Server Datacenter Core 1709 rendszerre épülő fürtöt használ, meg kell változtatnia azt a Windows Server operációs rendszerképet, amelyre a tároló épül. Nyissa meg a **Dockerfile** fájlt a **FabrikamFiber.Web** projektben, tegye megjegyzésbe a létező `FROM` utasítást (`windowsservercore-ltsc` alapján), és törölje a `windowsservercore-1709` alapú `FROM` utasítás elöl a megjegyzésjelölőt.
+    > Válasszon olyan SKU-t, amely támogatja a futó tárolókat. A fürtcsomópontjain található Windows Server operációs rendszernek kompatibilisnek kell lennie a tárolóján futó Windows Server operációs rendszerével. További tudnivalókat a [Windows Server tároló operációs rendszerének és a gazdagép operációs rendszerének kompatibilitását ismertető cikket](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). Alapértelmezés szerint ez az oktatóanyag létrehoz egy Docker-rendszerképet, amely a Windows Server 2016 LTSC-re épül. Az erre a képre épülő tárolók a tárolókkal rendelkező Windows Server 2016 Datacenterrel létrehozott fürtökön fognak futni. Ha azonban létrehoz egy fürtöt, vagy egy meglévő fürtöt használ a Windows Server egy másik verziója alapján, akkor módosítania kell azt az operációsrendszer-rendszerképet, amelyre a tároló alapul. Nyissa meg a **Docker** a **FabrikamFiber. Web** projektben, véleményezze a `FROM` Windows Server korábbi verzióján alapuló meglévő utasítást, és adjon hozzá egy `FROM` utasítást a kívánt verzió címkéje alapján a [Windows Server Core DockerHub lapról](https://hub.docker.com/_/microsoft-windows-servercore). További információ a Windows Server Core kiadásokról, a támogatási ütemtervekről és a verziószámozásról: [Windows Server Core kiadási információ](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info). 
 
     e. A **Speciális** lapon adja meg, hogy mely alkalmazásport legyen megnyitva a terheléselosztón a fürt üzembe helyezésekor. Ezt a portot vette figyelembe a fürt létrehozása előtt. Hozzáadhat egy meglévő Application Insights-kulcsot is, amelyet az alkalmazás naplófájljainak útválasztásához használhat.
 
@@ -241,7 +241,7 @@ Az üzembe helyezés folyamatát a kimeneti ablakban követheti nyomon. Ha az al
 
 A CI/CD-alkalmazástelepítés Service Fabric-fürtben végzett, Azure DevOpsszal való konfigurálásáról lásd: [Oktatóanyag: Alkalmazások üzembe helyezése Service Fabric-fürtön CI/CD használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Az oktatóanyagban ismertetett folyamat ugyanaz ehhez a (FabrikamFiber) projekthez, csak hagyja ki a szavazási minta letöltését, és a szavazás helyett a FabrikamFiber nevet írja be az adattár neveként.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha végzett, ne felejtse el eltávolítani a létrehozott erőforrásokat.  Ennek legegyszerűbb módja az, ha törli azt az erőforráscsoportot, amely tartalmazza a Service Fabric-fürtöt, az Azure SQL-adatbázist és az Azure Container Registry-adatbázist.
 

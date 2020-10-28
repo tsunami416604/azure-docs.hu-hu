@@ -59,13 +59,13 @@
         - name: Szerepköralapú hozzáférés-vezérlés
           displayName: rbac
           href: role-based-access-control.md
+        - name: Az Azure Policy támogatása
+          href: policy.md
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
-        - name: Az Azure Policy támogatása
-          href: policy.md
     - name: Elemzés az Azure Synapse Linkkel
       items:
         - name: Azure Synapse Link a Cosmos DB-hez
@@ -202,11 +202,14 @@
           href: templates-samples-sql.md
     - name: Alapelvek
       items:
-        - name: Dokumentumadatok modellezése
-          displayName: document
-          href: modeling-data.md
-        - name: Particionálás
+        - name: Modellezés és particionálás
           items:
+            - name: Dokumentumadatok modellezése
+              displayName: document
+              href: modeling-data.md
+            - name: Modellezés és particionálás – valós életből vett példa
+              displayName: 'model, partition, example'
+              href: how-to-model-partition-example.md
             - name: Szintetikus partíciókulcs
               href: synthetic-partition-keys.md
         - name: SQL-lekérdezés
@@ -631,13 +634,13 @@
           items:
             - name: Kiosztott átviteli sebesség
               items:
-                - name: Standard (manuális) átviteli sebesség kiosztása egy tárolón
+                - name: Standard (manuális) átviteli sebesség kiosztása – tároló
                   displayName: 'request units, RUs, RU, collection level'
                   href: how-to-provision-container-throughput.md
-                - name: Standard (manuális) átviteli sebesség kiosztása egy adatbázison
+                - name: Standard (manuális) átviteli sebesség kiosztása – adatbázis
                   displayName: 'request units, RUs, RU, shared throughput, database level'
                   href: how-to-provision-database-throughput.md
-                - name: Automatikusan skálázott átviteli sebesség kiosztása egy adatbázison
+                - name: Automatikusan skálázott átviteli sebesség kiosztása – adatbázis vagy tároló
                   displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
                   href: how-to-provision-autoscale-throughput.md
                 - name: RU/s megbecslése a Cosmos Capacity Plannerrel
@@ -657,9 +660,6 @@
               href: large-partition-keys.md
             - name: Tároló lekérdezése
               href: how-to-query-container.md
-            - name: Adatmodellezés és -particionálás – valós életből vett példa
-              displayName: 'model, partition, example'
-              href: how-to-model-partition-example.md
             - name: Migrálás particionált tárolókra
               href: migrate-containers-partitioned-to-nonpartitioned.md
             - name: Élettartam konfigurálása
@@ -1179,8 +1179,6 @@
       items:
         - name: Válaszfejlécek
           href: gremlin-headers.md
-        - name: Korlátok
-          href: gremlin-limits.md
         - name: REST erőforrás-szolgáltató
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Resource Manager-sablon

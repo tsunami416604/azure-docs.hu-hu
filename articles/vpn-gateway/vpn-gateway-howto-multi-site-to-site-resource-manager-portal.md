@@ -6,36 +6,28 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.workload: infrastructure-services
-ms.date: 09/02/2020
+ms.date: 10/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "89401197"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890148"
 ---
-# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Helyek közötti kapcsolat hozzáadása egy meglévő VPN Gateway-kapcsolattal rendelkező VNet
+# <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>További S2S-kapcsolatok hozzáadása egy VNet: Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
 >
-> 
 
-Ebből a cikkből megtudhatja, hogyan adhat helyek közötti (S2S) kapcsolatokat egy olyan VPN-átjáróhoz, amely meglévő kapcsolattal rendelkezik a Azure Portal használatával. Ezt a kapcsolattípust gyakran "többhelyes" konfigurációnak nevezzük. Hozzáadhat S2S-kapcsolatokat olyan VNet, amely már rendelkezik S2S kapcsolattal, pont – hely kapcsolattal vagy VNet – VNet kapcsolattal. A kapcsolatok hozzáadásakor bizonyos korlátozások vonatkoznak. A konfigurálás megkezdése előtt ellenőrizze a cikk [elkezdése](#before) című szakaszát. 
+Ez a cikk segítséget nyújt további helyek közötti (S2S) kapcsolatok hozzáadásához egy meglévő kapcsolattal rendelkező VPN-átjáróhoz. Ezt az architektúrát gyakran "többhelyes" konfigurációnak nevezzük. Hozzáadhat S2S-kapcsolatokat olyan VNet, amely már rendelkezik S2S kapcsolattal, pont – hely kapcsolattal vagy VNet – VNet kapcsolattal. A kapcsolatok hozzáadásakor bizonyos korlátozások vonatkoznak. A konfigurálás megkezdése előtt ellenőrizze a cikk [előfeltételeinek](#before) szakaszát.
 
 Ez a cikk olyan Resource Manager-virtuális hálózatok vonatkozik, amelyek Útvonalalapú VPN-átjáróval rendelkeznek. Ezek a lépések nem vonatkoznak az új ExpressRoute vagy helyek közötti kapcsolati konfigurációkra. Ha azonban csupán új VPN-kapcsolattal bővít egy már meglévő, egyidejű konfigurációt, ezeket a lépéseket használhatja. Az egyidejű kapcsolatokkal kapcsolatos információkért lásd: [ExpressRoute/S2S](../expressroute/expressroute-howto-coexist-resource-manager.md) egyidejű kapcsolatok.
 
-### <a name="deployment-models-and-methods"></a>Üzemi modellek és módszerek
-[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+## <a name="prerequisites"></a><a name="before"></a>Előfeltételek
 
-Ezt a táblázatot úgy frissítjük, ahogy új cikkek és további eszközök válnak elérhetővé ehhez a konfigurációhoz. Ha egy cikk elérhetővé válik, közvetlenül a táblából csatoljuk.
-
-[!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
-
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
 Ellenőrizze a következő elemeket:
 
 * Nem konfigurál új, meglévő ExpressRoute és VPN Gateway konfigurációt.
@@ -45,47 +37,49 @@ Ellenőrizze a következő elemeket:
 * Kompatibilis a VPN-eszközzel, és valaki, aki be tudja állítani. Lásd: [About VPN Devices](vpn-gateway-about-vpn-devices.md) (Tudnivalók a VPN-eszközökről). Ha nem jártas a VPN-eszköz konfigurálásában, vagy nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, együtt kell működnie valakivel, aki ezeket az adatokat megadhatja Önnek.
 * A VPN-eszközhöz külsőleg megtekintett nyilvános IP-címet kell megnéznie.
 
-## <a name="part-1---configure-a-connection"></a><a name="part1"></a>1. rész – kapcsolat konfigurálása
+## <a name="configure-a-connection"></a><a name="configure"></a>Kapcsolatok konfigurálása
+
 1. Egy böngészőből keresse fel az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
-2. Kattintson a **minden erőforrás** lehetőségre, és keresse meg a **virtuális hálózati átjárót** az erőforrások listájából, és kattintson rá.
-3. A **virtuális hálózati átjáró** lapon kattintson a **kapcsolatok**elemre.
-   
-    ![Kapcsolatok lap](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Kapcsolatok lap")<br>
-4. A **kapcsolatok** lapon kattintson a **+ Hozzáadás**gombra.
-   
-    ![Kapcsolatok hozzáadása gomb](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Kapcsolatok hozzáadása gomb")<br>
-5. A **kapcsolatok hozzáadása** lapon töltse ki a következő mezőket:
-   
+1. Válassza ki az **összes erőforrást** , és keresse meg a **virtuális hálózati átjárót** az erőforrások listájából, és jelölje ki.
+1. A **virtuális hálózati átjáró** lapon válassza a **kapcsolatok** lehetőséget.
+
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connections.png" alt-text="VPN Gateway-kapcsolatok":::
+1. A **kapcsolatok** lapon válassza a **+ Hozzáadás** lehetőséget.
+1. Ekkor megnyílik a **kapcsolatok hozzáadása** lap.
+
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="VPN Gateway-kapcsolatok":::
+1. A **kapcsolatok hozzáadása** lapon töltse ki a következő mezőket:
+
    * **Név:** Az a név, amelyet a helyhez szeretne adni, amelyhez a kapcsolódást hozza létre.
    * **Kapcsolattípus:** Válassza **a helyek közötti (IPSec)** lehetőséget.
-     
-     ![A kapcsolatok hozzáadása lap](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "A kapcsolatok hozzáadása lap")<br>
 
-## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>2. rész – helyi hálózati átjáró hozzáadása
-1. Kattintson a **helyi hálózati átjáró** elemre, és ** _válassza ki a helyi hálózati átjáró_*_ elemet. Ekkor megnyílik a _* helyi hálózati átjáró kiválasztása** lap.
-   
-    ![Helyi hálózati átjáró kiválasztása](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Helyi hálózati átjáró kiválasztása")<br>
-2. Kattintson az **új létrehozása** elemre a **helyi hálózati átjáró létrehozása** lap megnyitásához.
-   
-    ![Helyi hálózati átjáró létrehozása lap](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Helyi hálózati átjáró létrehozása")<br>
-3. A **helyi hálózati átjáró létrehozása** lapon töltse ki a következő mezőket:
-   
+## <a name="add-a-local-network-gateway"></a><a name="local"></a>Helyi hálózati átjáró hozzáadása
+
+1. A **helyi hálózati átjáró** mezőben válassza ki **_a helyi hálózati átjáró_ ( *_) lehetőséget. Ekkor megnyílik a* helyi hálózati átjáró kiválasztása** lap.
+1. Válassza az **+ új létrehozása** lehetőséget a **helyi hálózati átjáró létrehozása** lap megnyitásához.
+
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="VPN Gateway-kapcsolatok":::
+1. A **helyi hálózati átjáró létrehozása** lapon töltse ki a következő mezőket:
+
    * **Név:** A helyi hálózati átjáró erőforrásához adni kívánt név.
-   * **IP-cím:** Azon a helyen található VPN-eszköz nyilvános IP-címe, amelyhez csatlakozni szeretne.
+   * **Végpont:** Azon a helyen található VPN-eszköz nyilvános IP-címe, amelyhez csatlakozni szeretne, vagy a végpont teljes tartományneve.
    * **Címterület:** Az új helyi hálózati helyre átirányítani kívánt címtartomány.
-4. A módosítások mentéséhez kattintson az **OK** gombra a **helyi hálózati átjáró létrehozása** lapon.
+1. A módosítások mentéséhez kattintson az **OK gombra** a **helyi hálózati átjáró létrehozása** lapon.
 
-## <a name="part-3---add-the-shared-key-and-create-the-connection"></a><a name="part3"></a>3. rész – a megosztott kulcs hozzáadása és a kapcsolat létrehozása
-1. A **Kapcsolódás hozzáadása** lapon adja meg a kapcsolatok létrehozásához használni kívánt megosztott kulcsot. Lekérheti a megosztott kulcsot a VPN-eszközről, vagy létrehozhat egyet, majd beállíthatja, hogy a VPN-eszköz ugyanazt a megosztott kulcsot használja. A lényeg az, hogy a kulcsok pontosan ugyanazok.
-   
-    ![Megosztott kulcs](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Megosztott kulcs")<br>
-2. A lap alján kattintson az **OK** gombra a kapcsolódás létrehozásához.
+## <a name="add-the-shared-key"></a><a name="part3"></a>A megosztott kulcs hozzáadása
 
-## <a name="part-4---verify-the-vpn-connection"></a><a name="part4"></a>4. rész – a VPN-kapcsolat ellenőrzése
+1. A helyi hálózati átjáró létrehozása után térjen vissza a **Kapcsolódás hozzáadása** lapra.
+1. Fejezze be a fennmaradó mezőket. A **megosztott kulcs (PSK)** esetében beolvashatja a megosztott kulcsot a VPN-eszközről, vagy létrehozhat egyet, majd beállíthatja, hogy a VPN-eszköz ugyanazt a megosztott kulcsot használja. A lényeg az, hogy a kulcsok pontosan ugyanazok.
 
+## <a name="create-the-connection"></a><a name="create"></a>A kapcsolat létrehozása
 
-[!INCLUDE [vpn-gateway-verify-connection-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+1. A lap alján kattintson az **OK gombra** a kapcsolódás létrehozásához. A létrehozás azonnal elindul.
+1. A kapcsolatok befejeződése után megtekintheti és ellenőrizheti.
+
+## <a name="view-and-verify-the-vpn-connection"></a><a name="verify"></a>A VPN-kapcsolat megtekintése és ellenőrzése
+
+[!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információért tekintse meg a [Virtual Machines képzési](/learn/paths/deploy-a-website-with-azure-virtual-machines/) tervét.
+Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információ: [Virtual Machines learning paths](/learn/paths/deploy-a-website-with-azure-virtual-machines/).

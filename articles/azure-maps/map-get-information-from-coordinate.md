@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: af31ab04653beb440655c4ab1a75946bed17c01b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31e4004379340912051204786da592fe33a5bd63
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285094"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890751"
 ---
 # <a name="get-information-from-a-coordinate"></a>Koordináta információinak lekérése
 
 Ebből a cikkből megtudhatja, hogyan végezhet fordított címtartomány-keresést, amely megjeleníti egy rákattintott előugró hely címeit.
 
-A fordított címek keresésének kétféleképpen végezhető el. Az egyik módszer az, ha lekérdezi az [Azure Maps fordított címtartomány-keresés API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -t egy szolgáltatási modulon keresztül. A másik lehetőség, hogy a [beolvasás API](https://fetch.spec.whatwg.org/) használatával kérelmet küld a [Azure Maps fordított CÍMTARTOMÁNY-kereső API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -nak a címek kereséséhez. Az alábbiakban mindkét módszert megvizsgáljuk.
+A fordított címek keresésének kétféleképpen végezhető el. Az egyik módszer az, ha lekérdezi az [Azure Maps fordított címtartomány-keresés API](/rest/api/maps/search/getsearchaddressreverse) -t egy szolgáltatási modulon keresztül. A másik lehetőség, hogy a [beolvasás API](https://fetch.spec.whatwg.org/) használatával kérelmet küld a [Azure Maps fordított CÍMTARTOMÁNY-kereső API](/rest/api/maps/search/getsearchaddressreverse) -nak a címek kereséséhez. Az alábbiakban mindkét módszert megvizsgáljuk.
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>Fordított keresési kérelem küldése a szolgáltatási modulon keresztül
 
@@ -29,15 +29,15 @@ A fordított címek keresésének kétféleképpen végezhető el. Az egyik mód
 
 A fenti kódban az első blokk létrehozza a Térkép objektumot, és beállítja a hitelesítési mechanizmust a hozzáférési jogkivonat használatára. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
 
-A második kódrészlet létrehoz egy `TokenCredential` -t, amely hitelesíti a hozzáférési jogkivonattal Azure maps http-kérelmeket. Ezután továbbítja a- `TokenCredential` t, `atlas.service.MapsURL.newPipeline()` és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) -példányt. A a `searchURL` Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveletekhez tartozó URL-címet jelöli.
+A második kódrészlet létrehoz egy `TokenCredential` -t, amely hitelesíti a hozzáférési jogkivonattal Azure maps http-kérelmeket. Ezután továbbítja a- `TokenCredential` t, `atlas.service.MapsURL.newPipeline()` és létrehoz egy [folyamat](/javascript/api/azure-maps-rest/atlas.service.pipeline) -példányt. A a `searchURL` Azure Maps [keresési](/rest/api/maps/search) műveletekhez tartozó URL-címet jelöli.
 
-A harmadik kódú blokk frissíti az egérmutató stílusát egy mutatóra, és létrehoz egy [előugró](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup#open) objektumot. Útmutatásért tekintse [meg az előugró ablak hozzáadása a térképen](./map-add-popup.md) .
+A harmadik kódú blokk frissíti az egérmutató stílusát egy mutatóra, és létrehoz egy [előugró](/javascript/api/azure-maps-control/atlas.popup#open) objektumot. Útmutatásért tekintse [meg az előugró ablak hozzáadása a térképen](./map-add-popup.md) .
 
-A kód negyedik blokkja egy egérkattintással jeleníti meg az [esemény-figyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events). Az aktiváláskor egy keresési lekérdezést hoz létre a rákattintott pont koordinátáival. Ezután a [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)metódus használatával kérdezi le a [keresési fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -t a koordináták címeihez. Ezután a válaszból a metódussal Kinyer egy GeoJSON-gyűjteményt `geojson.getFeatures()` .
+A kód negyedik blokkja egy egérkattintással jeleníti meg az [esemény-figyelőt](/javascript/api/azure-maps-control/atlas.map#events). Az aktiváláskor egy keresési lekérdezést hoz létre a rákattintott pont koordinátáival. Ezután a [getSearchAddressReverse](/javascript/api/azure-maps-rest/atlas.service.searchurl#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)metódus használatával kérdezi le a [keresési fordított API](/rest/api/maps/search/getsearchaddressreverse) -t a koordináták címeihez. Ezután a válaszból a metódussal Kinyer egy GeoJSON-gyűjteményt `geojson.getFeatures()` .
 
 A kód ötödik blokkja beállítja a HTML-előugró tartalmat, hogy megjelenjen a válasz címe a rákattintott koordináta-pozícióhoz.
 
-A kurzor, a felugró objektum és a click esemény változása mind a Térkép [betöltési eseményének figyelőben](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)jön létre. A kód szerkezete biztosítja a Térkép teljes terhelését a koordináták adatainak beolvasása előtt.
+A kurzor, a felugró objektum és a click esemény változása mind a Térkép [betöltési eseményének figyelőben](/javascript/api/azure-maps-control/atlas.map#events)jön létre. A kód szerkezete biztosítja a Térkép teljes terhelését a koordináták adatainak beolvasása előtt.
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Fordított keresési kérelem készítése a fetch API használatával
 
@@ -48,11 +48,11 @@ A térképre kattintva fordított geocode-kérelmet készíthet az adott helyhez
 
 A fenti kódban a kód első blokkja létrehozza a Térkép objektumot, és beállítja a hitelesítési mechanizmust a hozzáférési jogkivonat használatára. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
 
-A kód második blokkja frissíti az egérmutató stílusát egy mutatóra. Előugró objektumot hoz [popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup#open) létre. Útmutatásért tekintse [meg az előugró ablak hozzáadása a térképen](./map-add-popup.md) .
+A kód második blokkja frissíti az egérmutató stílusát egy mutatóra. Előugró objektumot hoz [popup](/javascript/api/azure-maps-control/atlas.popup#open) létre. Útmutatásért tekintse [meg az előugró ablak hozzáadása a térképen](./map-add-popup.md) .
 
-A kód harmadik blokkja egy esemény-figyelőt hoz létre egérkattintáshoz. Ha egérkattintásra kattint, a [beolvasás API](https://fetch.spec.whatwg.org/) használatával kérdezi le a [Azure Maps fordított CÍMTARTOMÁNY-keresés API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -t a rákattintott koordináták címeire. A sikeres válaszhoz a rendszer a kijelölt helyhez tartozó címeket gyűjti. Meghatározza az előugró tartalmat és a pozíciót az előugró osztály [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup#setoptions-popupoptions-) funkciójával.
+A kód harmadik blokkja egy esemény-figyelőt hoz létre egérkattintáshoz. Ha egérkattintásra kattint, a [beolvasás API](https://fetch.spec.whatwg.org/) használatával kérdezi le a [Azure Maps fordított CÍMTARTOMÁNY-keresés API](/rest/api/maps/search/getsearchaddressreverse) -t a rákattintott koordináták címeire. A sikeres válaszhoz a rendszer a kijelölt helyhez tartozó címeket gyűjti. Meghatározza az előugró tartalmat és a pozíciót az előugró osztály [setOptions](/javascript/api/azure-maps-control/atlas.popup#setoptions-popupoptions-) funkciójával.
 
-A kurzor, a felugró objektum és a click esemény változása mind a Térkép [betöltési eseményének figyelőben](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)jön létre. A kód szerkezete biztosítja a Térkép teljes terhelését a koordináták adatainak beolvasása előtt.
+A kurzor, a felugró objektum és a click esemény változása mind a Térkép [betöltési eseményének figyelőben](/javascript/api/azure-maps-control/atlas.map#events)jön létre. A kód szerkezete biztosítja a Térkép teljes terhelését a koordináták adatainak beolvasása előtt.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -62,10 +62,10 @@ A kurzor, a felugró objektum és a click esemény változása mind a Térkép [
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Térkép](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Felugró ablak](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Felugró ablak](/javascript/api/azure-maps-control/atlas.popup)
 
 A következő cikkekben talál részletes példákat:
 

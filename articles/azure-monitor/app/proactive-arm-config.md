@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87309341"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890513"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával
 
@@ -21,12 +21,12 @@ Ez a módszer akkor használható, ha új Application Insights erőforrásokat t
 ## <a name="smart-detection-rule-configuration"></a>Intelligens észlelési szabály konfigurációja
 
 Az intelligens detektálási szabályokhoz a következő beállításokat konfigurálhatja:
-- Ha a szabály engedélyezve van (az alapértelmezett érték **igaz**.)
-- Ha az e-maileket el kell juttatni az előfizetés [figyelési olvasójának](../../role-based-access-control/built-in-roles.md#monitoring-reader) felhasználóinak, illetve a [közreműködői szerepkörök figyelésére](../../role-based-access-control/built-in-roles.md#monitoring-contributor) , ha észlelés található (az alapértelmezett érték **igaz**.)
+- Ha a szabály engedélyezve van (az alapértelmezett érték **igaz** .)
+- Ha az e-maileket el kell juttatni az előfizetés [figyelési olvasójának](../../role-based-access-control/built-in-roles.md#monitoring-reader) felhasználóinak, illetve a [közreműködői szerepkörök figyelésére](../../role-based-access-control/built-in-roles.md#monitoring-contributor) , ha észlelés található (az alapértelmezett érték **igaz** .)
 - Minden további e-mail-címzett, akinek értesítést kell kapnia, amikor észlelés található.
-    -  Az e-mail-konfiguráció nem érhető el az _előzetes_verzióként megjelölt intelligens észlelési szabályokhoz.
+    -  Az e-mail-konfiguráció nem érhető el az _előzetes_ verzióként megjelölt intelligens észlelési szabályokhoz.
 
-Ha engedélyezni szeretné a szabályok beállításait a Azure Resource Manageron keresztül, az intelligens észlelési szabály konfigurációja mostantól belső erőforrásként is elérhető a **ProactiveDetectionConfigs**nevű Application Insights erőforráson belül.
+Ha engedélyezni szeretné a szabályok beállításait a Azure Resource Manageron keresztül, az intelligens észlelési szabály konfigurációja mostantól belső erőforrásként is elérhető a **ProactiveDetectionConfigs** nevű Application Insights erőforráson belül.
 A maximális rugalmasság érdekében minden egyes intelligens észlelési szabályt egyedi értesítési beállításokkal lehet konfigurálni.
 
 ## <a name="examples"></a>Példák
@@ -44,7 +44,7 @@ Az összes minta egy _"myApplication"_ nevű Application Insights erőforrásra,
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -75,7 +75,7 @@ Az összes minta egy _"myApplication"_ nevű Application Insights erőforrásra,
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -106,7 +106,7 @@ Az összes minta egy _"myApplication"_ nevű Application Insights erőforrásra,
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -120,7 +120,7 @@ Az összes minta egy _"myApplication"_ nevű Application Insights erőforrásra,
           "properties": {
             "name": "longdependencyduration",
             "sendEmailsToSubscriptionOwners": true,
-            "customEmails": ['alice@contoso.com', 'bob@contoso.com'],
+            "customEmails": ["alice@contoso.com", "bob@contoso.com"],
             "enabled": true
           }
         }

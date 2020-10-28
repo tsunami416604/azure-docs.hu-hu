@@ -8,16 +8,16 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b085fbc6e330d38b59fce0c494f672b00c712b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb4e49e6c0e3f011015d40b8eca036d5218674c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85120520"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891699"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>StylesObject-séma – útmutató dinamikus térképekhez
 
-Ez a cikk egy útmutató a JSON-sémához és szintaxisához `StylesObject` . A a `StylesObject` `StyleObject` stateset-stílusokat jelképező tömb. A Azure Maps Creator [szolgáltatás állapotának szolgáltatásával](https://docs.microsoft.com/rest/api/maps/featurestate) alkalmazhatja a stateset stílusait a beltéri Térkép adatszolgáltatásaira. Miután létrehozta a stateset stílusait, és hozzárendelte őket a beltéri térképi funkciókhoz, használhatja őket dinamikus beltéri térképek létrehozásához. A dinamikus beltéri térképek létrehozásával kapcsolatos további információkért lásd: [dinamikus stílus implementálása a Creator beltéri térképekhez](indoor-map-dynamic-styling.md).
+Ez a cikk egy útmutató a JSON-sémához és szintaxisához `StylesObject` . A a `StylesObject` `StyleObject` stateset-stílusokat jelképező tömb. A Azure Maps Creator [szolgáltatás állapotának szolgáltatásával](/rest/api/maps/featurestate) alkalmazhatja a stateset stílusait a beltéri Térkép adatszolgáltatásaira. Miután létrehozta a stateset stílusait, és hozzárendelte őket a beltéri térképi funkciókhoz, használhatja őket dinamikus beltéri térképek létrehozásához. A dinamikus beltéri térképek létrehozásával kapcsolatos további információkért lásd: [dinamikus stílus implementálása a Creator beltéri térképekhez](indoor-map-dynamic-styling.md).
 
 ## <a name="styleobject"></a>StyleObject
 

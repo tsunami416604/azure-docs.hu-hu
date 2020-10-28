@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 74c8ba4ed1f228b9b3ba90b46c47f538d71ff409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96553e75d4b982cfe67d03961d4356a3844f253c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310458"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890997"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Sokszög réteg hozzáadása a térképhez
 
-Ez a cikk bemutatja, hogyan jelenítheti meg a `Polygon` Térkép területeit és `MultiPolygon` funkcióit a térképen a sokszög réteg használatával. A Azure Maps web SDK támogatja a kör alakú geometriák létrehozását is a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)definiált módon. Ezeket a köröket a rendszer sokszögekre alakítja át a térképen való megjelenítéskor. Az Atlas használatával egyszerűen frissíthető az összes szolgáltatás geometriája [. Alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) osztálya
+Ez a cikk bemutatja, hogyan jelenítheti meg a `Polygon` Térkép területeit és `MultiPolygon` funkcióit a térképen a sokszög réteg használatával. A Azure Maps web SDK támogatja a kör alakú geometriák létrehozását is a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)definiált módon. Ezeket a köröket a rendszer sokszögekre alakítja át a térképen való megjelenítéskor. Az Atlas használatával egyszerűen frissíthető az összes szolgáltatás geometriája [. Alakzat](/javascript/api/azure-maps-control/atlas.shape) osztálya
 
 ## <a name="use-a-polygon-layer"></a>Sokszög réteg használata 
 
-Ha egy sokszög réteg egy adatforráshoz van csatlakoztatva, és a térképen töltődik be, az a terület és a funkciók között jelenik meg `Polygon` `MultiPolygon` . Sokszög létrehozásához vegye fel azt egy adatforrásba, majd a [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer) osztály használatával jelenítse meg a sokszög réteget.
+Ha egy sokszög réteg egy adatforráshoz van csatlakoztatva, és a térképen töltődik be, az a terület és a funkciók között jelenik meg `Polygon` `MultiPolygon` . Sokszög létrehozásához vegye fel azt egy adatforrásba, majd a [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer) osztály használatával jelenítse meg a sokszög réteget.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -115,7 +115,7 @@ A Azure Maps web SDK ezeket a `Point` funkciókat `Polygon` szolgáltatásokra k
 
 ## <a name="make-a-geometry-easy-to-update"></a>Geometria egyszerű frissítése
 
-Egy `Shape` osztály egy [geometriát](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry) vagy [szolgáltatást](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature) csomagol, és megkönnyíti ezeknek a funkcióknak a frissítését és karbantartását. Egy alakzat változójának létrehozásához adjon át egy geometriát vagy egy tulajdonságot az alakzat konstruktorának.
+Egy `Shape` osztály egy [geometriát](/javascript/api/azure-maps-control/atlas.data.geometry) vagy [szolgáltatást](/javascript/api/azure-maps-control/atlas.data.feature) csomagol, és megkönnyíti ezeknek a funkcióknak a frissítését és karbantartását. Egy alakzat változójának létrehozásához adjon át egy geometriát vagy egy tulajdonságot az alakzat konstruktorának.
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -137,10 +137,10 @@ Az alábbi mintakód bemutatja, hogyan lehet kör alakú GeoJSON objektumot becs
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Sokszög](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
+> [Sokszög](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
+> [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
 
 > [!div class="nextstepaction"]
 > [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)

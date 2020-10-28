@@ -13,7 +13,7 @@
       href: invite-users.md
 - name: Oktatóanyagok
   items:
-    - name: Csatlakozás az Azure szolgáltatáshoz
+    - name: Új Azure-hoz csatlakoztatott fiók létrehozása
       href: connect-to-azure.md
     - name: A Video Indexer API használata
       href: video-indexer-use-apis.md

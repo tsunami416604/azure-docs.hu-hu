@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 1193bfe74e8b5e20d2189c143f6ca0cb09abfd49
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: fc9c5e1f5922543ea14b13e3e5b424190dbbfb7a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329644"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892196"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuális gépi bővítmény Linuxhoz
 
@@ -105,17 +105,20 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa |
+| Name (Név) | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | közzétevő | Microsoft. EnterpriseCloud. monitoring |
 | típus | OmsAgentForLinux |
-| typeHandlerVersion | 1,7 |
+| typeHandlerVersion | 1.13 |
 | Munkaterület azonosítója (például) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
+
+>[!NOTE]
+>A Log Analytics virtuálisgép-bővítmény egyes összetevőit a diagnosztika virtuálisgép- [bővítmény](./diagnostics-linux.md)is tartalmazza. Az architektúra miatt ütközések merülhetnek fel, ha mindkét bővítmény ugyanabban az ARM-sablonban van létrehozva. A telepítési idejű ütközések elkerülése érdekében használja az [ `dependsOn` irányelvet](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) annak biztosítására, hogy a bővítmények egymás után legyenek telepítve. A bővítmények mindkét sorrendben telepíthetők.
 
 Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amely az üzembe helyezés utáni konfigurációt igényli, például Azure Monitor naplók bevezetését. A Log Analytics Agent virtuálisgép-bővítményt tartalmazó példa Resource Manager-sablon az [Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)rövid útmutatójában található. 
 
@@ -135,7 +138,7 @@ Az alábbi példa azt feltételezi, hogy a virtuálisgép-bővítmény a virtuá
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -160,7 +163,7 @@ Ha a bővítmény JSON-fájlját a sablon gyökerébe helyezi, az erőforrás ne
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -173,7 +176,7 @@ Ha a bővítmény JSON-fájlját a sablon gyökerébe helyezi, az erőforrás ne
 
 ## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
 
-Az Azure CLI használatával telepítheti az Log Analytics Agent virtuálisgép-bővítményt egy meglévő virtuális gépre. Cserélje le az alábbi *myWorkspaceKey* értéket a munkaterület kulcsával és a *myWorkspaceId* értékkel a munkaterület-azonosítójával. Ezek az értékek a Azure Portal *Speciális beállítások*területén található log Analytics munkaterületén találhatók. 
+Az Azure CLI használatával telepítheti az Log Analytics Agent virtuálisgép-bővítményt egy meglévő virtuális gépre. Cserélje le az alábbi *myWorkspaceKey* értéket a munkaterület kulcsával és a *myWorkspaceId* értékkel a munkaterület-azonosítójával. Ezek az értékek a Azure Portal *Speciális beállítások* területén található log Analytics munkaterületén találhatók. 
 
 ```azurecli
 az vm extension set \
@@ -181,7 +184,7 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.10.1 --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
+  --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
   --settings '{"workspaceId":"myWorkspaceId"}'
 ```
 

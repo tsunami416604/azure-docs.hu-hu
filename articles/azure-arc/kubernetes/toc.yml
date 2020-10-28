@@ -33,3 +33,7 @@
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+- name: További források
+  items:
+    - name: Azure Arc – gyorsútmutató
+      href: 'https://github.com/microsoft/azure_arc'

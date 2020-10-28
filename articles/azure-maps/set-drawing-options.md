@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b40dbd91357038d1e98b04628bd866ebb336381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328887"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890632"
 ---
 # <a name="use-the-drawing-tools-module"></a>A Rajzeszközök modul használata
 
-A Azure Maps web SDK egy *Rajzeszközök modult*biztosít. Ez a modul megkönnyíti a Térkép alakzatainak rajzolását és szerkesztését egy beviteli eszköz, például egy egér vagy egy érintőképernyő használatával. Ennek a modulnak a fő osztálya a [rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). A projektmenedzser biztosítja a Térkép alakzatainak rajzolásához és szerkesztéséhez szükséges összes képességet. Közvetlenül is használható, és integrálva van egy egyéni eszköztár felhasználói felülettel. Használhatja a beépített [rajzolási eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) osztályt is. 
+A Azure Maps web SDK egy *Rajzeszközök modult* biztosít. Ez a modul megkönnyíti a Térkép alakzatainak rajzolását és szerkesztését egy beviteli eszköz, például egy egér vagy egy érintőképernyő használatával. Ennek a modulnak a fő osztálya a [rajzolási kezelő](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). A projektmenedzser biztosítja a Térkép alakzatainak rajzolásához és szerkesztéséhez szükséges összes képességet. Közvetlenül is használható, és integrálva van egy egyéni eszköztár felhasználói felülettel. Használhatja a beépített [rajzolási eszköztár](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) osztályt is. 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>A rajzolási eszközök modul betöltése egy weblapon
 
-1. Hozzon létre egy új HTML-fájlt, és [a szokásos módon implementálja a térképet](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+1. Hozzon létre egy új HTML-fájlt, és [a szokásos módon implementálja a térképet](./how-to-use-map-control.md).
 2. Töltse be a Azure Maps rajzolási eszközök modulját. Kétféleképpen is betöltheti:
     - Használja az Azure Maps Services modul globálisan üzemeltetett, Azure Content Delivery Network verzióját. Adja hozzá a JavaScript és a CSS stíluslap hivatkozását a `<head>` fájl eleméhez:
 
@@ -44,7 +44,7 @@ A Azure Maps web SDK egy *Rajzeszközök modult*biztosít. Ez a modul megkönny�
 
 ## <a name="use-the-drawing-manager-directly"></a>A rajzolási kezelő közvetlen használata
 
-Miután betöltötte a rajzolási eszközök modult az alkalmazásba, engedélyezheti a rajzolási és szerkesztési funkciókat a [rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)használatával. Megadhatja, hogy a rendszer hogyan hozza létre a rajzolási beállításokat, vagy a `drawingManager.setOptions()` függvényt használja.
+Miután betöltötte a rajzolási eszközök modult az alkalmazásba, engedélyezheti a rajzolási és szerkesztési funkciókat a [rajzolási kezelő](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)használatával. Megadhatja, hogy a rendszer hogyan hozza létre a rajzolási beállításokat, vagy a `drawingManager.setOptions()` függvényt használja.
 
 ### <a name="set-the-drawing-mode"></a>Rajzolási mód beállítása
 
@@ -122,10 +122,10 @@ Megtudhatja, hogyan használhatja a rajzolási eszközök modul további funkci�
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Térkép](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [Rajzolási kezelő](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Rajzolási eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [Rajzolási eszköztár](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

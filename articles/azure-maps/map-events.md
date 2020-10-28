@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0621e0ecfbb91d151e3cc78d3b345ab92133695c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310373"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890785"
 ---
 # <a name="interact-with-the-map"></a>A térképpel való interakció
 
-Ez a cikk bemutatja, hogyan használhatja a [map Events osztályt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events). A tulajdonság kiemeli az eseményeket a térképen és a Térkép különböző rétegein. Az eseményeket kiemelheti a HTML-jelölővel való interakció során is.
+Ez a cikk bemutatja, hogyan használhatja a [map Events osztályt](/javascript/api/azure-maps-control/atlas.map#events). A tulajdonság kiemeli az eseményeket a térképen és a Térkép különböző rétegein. Az eseményeket kiemelheti a HTML-jelölővel való interakció során is.
 
 ## <a name="interact-with-the-map"></a>A térképpel való interakció
 
@@ -117,4 +117,4 @@ A következő cikkekben talál részletes példákat:
 > [A Azure Maps Services modul használata](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kódminták](/samples/browse/?products=azure-maps)

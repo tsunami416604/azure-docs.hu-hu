@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 54a196cc8323e676dfb054a5fad260302833fa53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d0197a16c8074ce961c2b403724149929f566f7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090686"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890717"
 ---
 # <a name="show-directions-from-a-to-b"></a>Útvonal megjelenítése A-ból B-be
 
 Ebből a cikkből megtudhatja, hogyan hajthat végre egy útvonal-kérést, és hogyan jelenítheti meg az útvonalat a térképen.
 
-Ezt kétféleképpen teheti meg. Az első módszer az [Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) lekérdezése egy szolgáltatási modulon keresztül. A második módszer az [API beolvasása](https://fetch.spec.whatwg.org/) , hogy keresési kérést végezzen a [Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)-hoz. Az alábbiakban mindkét módszert ismertetjük.
+Ezt kétféleképpen teheti meg. Az első módszer az [Azure Maps Route API](/rest/api/maps/route/getroutedirections) lekérdezése egy szolgáltatási modulon keresztül. A második módszer az [API beolvasása](https://fetch.spec.whatwg.org/) , hogy keresési kérést végezzen a [Azure Maps Route API](/rest/api/maps/route/getroutedirections)-hoz. Az alábbiakban mindkét módszert ismertetjük.
 
 ## <a name="query-the-route-via-service-module"></a>Az útvonal lekérdezése a Service Module használatával
 
@@ -29,21 +29,21 @@ Ezt kétféleképpen teheti meg. Az első módszer az [Azure Maps Route API](htt
 
 A fenti kódban az első blokk létrehozza a Térkép objektumot, és beállítja a hitelesítési mechanizmust a hozzáférési jogkivonat használatára. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
 
-A kód második blokkja létrehoz egy `TokenCredential` -t a hozzáférési jogkivonattal Azure Maps HTTP-kérések hitelesítéséhez. Ezután továbbítja a- `TokenCredential` t, `atlas.service.MapsURL.newPipeline()` és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) -példányt. A a `routeURL` Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) műveletekhez tartozó URL-címet jelöli.
+A kód második blokkja létrehoz egy `TokenCredential` -t a hozzáférési jogkivonattal Azure Maps HTTP-kérések hitelesítéséhez. Ezután továbbítja a- `TokenCredential` t, `atlas.service.MapsURL.newPipeline()` és létrehoz egy [folyamat](/javascript/api/azure-maps-rest/atlas.service.pipeline) -példányt. A a `routeURL` Azure Maps [Route](/rest/api/maps/route) műveletekhez tartozó URL-címet jelöli.
 
-A kód harmadik blokkja létrehoz egy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) objektumot a térképhez, és hozzáadja azt.
+A kód harmadik blokkja létrehoz egy [DataSource](/javascript/api/azure-maps-control/atlas.source.datasource) objektumot a térképhez, és hozzáadja azt.
 
-A kód negyedik blokkja a kezdő [és végponti](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point) objektumokat hozza létre, és hozzáadja őket az adatforrás-objektumhoz.
+A kód negyedik blokkja a kezdő [és végponti](/javascript/api/azure-maps-control/atlas.data.point) objektumokat hozza létre, és hozzáadja őket az adatforrás-objektumhoz.
 
-A vonal a LineString egyik [funkciója](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature) . A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) az  [adatforrásban](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) sorokként burkolt vonalakat jeleníti meg a térképen. A kód negyedik blokkja létrehoz egy sor réteget a térképhez, és hozzáadja azt. Lásd: egy sor rétegének tulajdonságai a következő helyen: [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions).
+A vonal a LineString egyik [funkciója](/javascript/api/azure-maps-control/atlas.data.feature) . A [LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) az  [adatforrásban](/javascript/api/azure-maps-control/atlas.source.datasource) sorokként burkolt vonalakat jeleníti meg a térképen. A kód negyedik blokkja létrehoz egy sor réteget a térképhez, és hozzáadja azt. Lásd: egy sor rétegének tulajdonságai a következő helyen: [LinestringLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions).
 
-A [szimbólum-réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer) szövegeket vagy ikonokat [használ a pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)-alapú adatforrásba becsomagolt megjelenítéshez. A szöveg vagy az ikon szimbólumként jelenik meg a térképen. A kód ötödik blokkja egy szimbólum réteget hoz létre, és hozzáadja a térképhez.
+A [szimbólum-réteg](/javascript/api/azure-maps-control/atlas.layer.symbollayer) szövegeket vagy ikonokat [használ a pont](/javascript/api/azure-maps-control/atlas.source.datasource)-alapú adatforrásba becsomagolt megjelenítéshez. A szöveg vagy az ikon szimbólumként jelenik meg a térképen. A kód ötödik blokkja egy szimbólum réteget hoz létre, és hozzáadja a térképhez.
 
-A kód hatodik blokkja lekérdezi a Azure Maps útválasztási szolgáltatást, amely a [szolgáltatás modul](how-to-use-services-module.md)részét képezi. A RouteURL [calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#methods) metódusa a kezdő-és végpontok közötti útvonal lekérésére szolgál. Ezután a válaszból kinyert egy GeoJSON-gyűjteményt, amely a metódussal lett kibontva, `geojson.getFeatures()` és a rendszer hozzáadja az adatforráshoz. Ezután a választ útvonalként jeleníti meg a térképen. További információ a vonal a térképhez való hozzáadásáról: [vonal hozzáadása a térképhez](map-add-line-layer.md).
+A kód hatodik blokkja lekérdezi a Azure Maps útválasztási szolgáltatást, amely a [szolgáltatás modul](how-to-use-services-module.md)részét képezi. A RouteURL [calculateRouteDirections](/javascript/api/azure-maps-rest/atlas.service.routeurl#methods) metódusa a kezdő-és végpontok közötti útvonal lekérésére szolgál. Ezután a válaszból kinyert egy GeoJSON-gyűjteményt, amely a metódussal lett kibontva, `geojson.getFeatures()` és a rendszer hozzáadja az adatforráshoz. Ezután a választ útvonalként jeleníti meg a térképen. További információ a vonal a térképhez való hozzáadásáról: [vonal hozzáadása a térképhez](map-add-line-layer.md).
 
-A kód utolsó blokkja a Térkép [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával állítja be a leképezés határait.
+A kód utolsó blokkja a Térkép [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával állítja be a leképezés határait.
 
-Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera határai az esemény- [figyelőn](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)belül jönnek létre. A kód szerkezete biztosítja, hogy az eredmények csak a Térkép teljes betöltése után jelenjenek meg.
+Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera határai az esemény- [figyelőn](/javascript/api/azure-maps-control/atlas.map#events)belül jönnek létre. A kód szerkezete biztosítja, hogy az eredmények csak a Térkép teljes betöltése után jelenjenek meg.
 
 ## <a name="query-the-route-via-fetch-api"></a>Az útvonal lekérdezése a fetch API használatával
 
@@ -52,19 +52,19 @@ Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera hat
 
 A fenti kódban a kód első blokkja létrehozza a Térkép objektumot, és beállítja a hitelesítési mechanizmust a hozzáférési jogkivonat használatára. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.
 
-A kód második blokkja létrehoz és hozzáadja a térképhez egy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) objektumot.
+A kód második blokkja létrehoz és hozzáadja a térképhez egy [DataSource](/javascript/api/azure-maps-control/atlas.source.datasource) objektumot.
 
-A harmadik kódú blokk létrehozza az útvonal kezdő és célhelyét. Ezután hozzáadja azokat az adatforráshoz. A [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)használatával kapcsolatos utasításokért tekintse [meg a térképen a PIN-kód hozzáadása](map-add-pin.md) című témakört.
+A harmadik kódú blokk létrehozza az útvonal kezdő és célhelyét. Ezután hozzáadja azokat az adatforráshoz. A [addPins](/javascript/api/azure-maps-control/atlas.map)használatával kapcsolatos utasításokért tekintse [meg a térképen a PIN-kód hozzáadása](map-add-pin.md) című témakört.
 
-A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) az  [adatforrásban](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) sorokként burkolt vonalakat jeleníti meg a térképen. A kód negyedik blokkja létrehoz egy sor réteget a térképhez, és hozzáadja azt. Lásd: egy sor rétegének tulajdonságai a következő helyen: [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions).
+A [LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) az  [adatforrásban](/javascript/api/azure-maps-control/atlas.source.datasource) sorokként burkolt vonalakat jeleníti meg a térképen. A kód negyedik blokkja létrehoz egy sor réteget a térképhez, és hozzáadja azt. Lásd: egy sor rétegének tulajdonságai a következő helyen: [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions).
 
-A [szimbólum-réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer) szöveggel vagy ikonokkal jeleníti meg a pont-alapú adatforrásokat az [adatforrásban](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) szimbólumként a térképen. A kód ötödik blokkja egy szimbólum réteget hoz létre, és hozzáadja a térképhez. Tekintse meg a szimbólumok rétegének tulajdonságait a következő helyen: [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions).
+A [szimbólum-réteg](/javascript/api/azure-maps-control/atlas.layer.symbollayer) szöveggel vagy ikonokkal jeleníti meg a pont-alapú adatforrásokat az [adatforrásban](/javascript/api/azure-maps-control/atlas.source.datasource) szimbólumként a térképen. A kód ötödik blokkja egy szimbólum réteget hoz létre, és hozzáadja a térképhez. Tekintse meg a szimbólumok rétegének tulajdonságait a következő helyen: [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions).
 
-A következő kódrészlet létrehozza `SouthWest` és `NorthEast` rámutat a kezdő és a célhelyről, és beállítja a Térkép határait a Térkép [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságának használatával.
+A következő kódrészlet létrehozza `SouthWest` és `NorthEast` rámutat a kezdő és a célhelyről, és beállítja a Térkép határait a Térkép [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságának használatával.
 
-A kód utolsó blokkja a [beolvasás API](https://fetch.spec.whatwg.org/) -t használja a [Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)-ra irányuló keresési kérések elvégzéséhez. A rendszer elemzi a választ. Ha a válasz sikeres volt, a szélességi és a hosszúsági adatokat a rendszer egy sor létrehozásához használja a pontok összekapcsolásával. Ekkor a rendszer hozzáadja az adatforráshoz a sor-adatforrást, hogy az útvonalat a térképen jelenítse meg. Útmutatásért lásd: [vonal hozzáadása a térképen](map-add-line-layer.md) .
+A kód utolsó blokkja a [beolvasás API](https://fetch.spec.whatwg.org/) -t használja a [Azure Maps Route API](/rest/api/maps/route/getroutedirections)-ra irányuló keresési kérések elvégzéséhez. A rendszer elemzi a választ. Ha a válasz sikeres volt, a szélességi és a hosszúsági adatokat a rendszer egy sor létrehozásához használja a pontok összekapcsolásával. Ekkor a rendszer hozzáadja az adatforráshoz a sor-adatforrást, hogy az útvonalat a térképen jelenítse meg. Útmutatásért lásd: [vonal hozzáadása a térképen](map-add-line-layer.md) .
 
-Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera határai az esemény- [figyelőn](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)belül jönnek létre. Azt szeretnénk, hogy az eredmények a Térkép teljes betöltése után is megjelenjenek.
+Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera határai az esemény- [figyelőn](/javascript/api/azure-maps-control/atlas.map#events)belül jönnek létre. Azt szeretnénk, hogy az eredmények a Térkép teljes betöltése után is megjelenjenek.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -74,7 +74,7 @@ Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera hat
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Térkép](/javascript/api/azure-maps-control/atlas.map)
 
 A következő cikkekben talál részletes példákat:
 
